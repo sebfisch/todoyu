@@ -71,10 +71,38 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 	 * @return	String
 	 */
 	private function getJsSetup() {
+		$calConf	= array(
+			'inputField'	=> '"' . $this->getHtmlID() . '"',
+			'range'			=> '[1990,2020]',
+			'ifFormat'		=> '"' . TodoyuTime::getFormat('date') . '"',
+			'align'			=> '"br"',
+			'button'		=> '"' . $this->getHtmlID() . '-calicon"',
+			'firstDay'		=> 1
+		);
+
+		$custom	= is_array($this->config['calendar']) ? $this->config['calendar'] : array();
+		$config	= array_merge($calConf, $custom);
+
+		TodoyuDebug::printInFirebug($config);
+
+		$jsConf	= array();
+
+		foreach($config as $key => $value) {
+			$jsConf[] = $key . ' : ' . $value;
+		}
+
+		$script	= '<script>Calendar.setup({' . implode(',', $jsConf) . '});</script>';
+
+		return $script;
+
+
+
+
+
 		return '<script>
 				Calendar.setup({
 				 inputField : "' . $this->getHtmlID() . '", // id of the input field
-				 range : [1990, 2020], // allowed years
+				 range : [' . $range . '], // allowed years
 				 ifFormat : "' . TodoyuTime::getFormat('date') . '", // format of the input field
 				 align: "br",
 				 button : "' . $this->getHtmlID() . '-calicon", // trigger for the calendar (button ID)
