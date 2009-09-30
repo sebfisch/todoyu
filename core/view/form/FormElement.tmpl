@@ -1,0 +1,13 @@
+<div id="formElement-{$htmlId}" class="fElement {$containerClass} {$class} {if $odd}odd{else}even{/if} {if $error}error{/if}">
+	<div id="formElement-{$htmlId}-labelbox" class="fLabel {if $required}required{/if}">
+		<label for="{$htmlId}" id="{$htmlId}-label">{$label}</label>
+		{if $required}<span class="required">*</span>{/if}
+	</div>
+	<div id="formElement-{$htmlId}-inputbox" class="fField">
+		{block name="field"}
+			This part should be replaced by your field template
+		{/block}
+		{if $error && $errorMessage}<span class="errorMessage">{$errorMessage}</span>{/if}
+		</div>
+	<div class="fClear"><!-- --></div>
+</div>

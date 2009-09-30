@@ -1,0 +1,4 @@
+{if ! $noFormTag == 1 }<form name="{$name}" id="{$htmlId}" class="fForm{if $class} {$class}{/if}" method="{$method}" action="{$action}" {if $onsubmit}onsubmit="{$onsubmit}"{/if} {if $enctype}enctype="{$enctype}"{/if} {$extraAttributes}>{/if}
+{$hiddenFields}
+{$fieldsets}
+{if ! $noFormTag == 1 }</form>{/if}

@@ -1,0 +1,10 @@
+{extends main.tmpl}
+
+{block name="box"}
+<h1>{$title}</h1>
+<p>{$text}</p>
+<form method="post">
+	<input type="submit" value="Check server compatibility">
+	<input type="hidden" name="command" value="start">
+</form>
+{/block}

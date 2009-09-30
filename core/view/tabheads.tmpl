@@ -1,0 +1,8 @@
+<ul class="tabslist {$class}" id="{$htmlId}">
+{foreach $tabs tab}
+	{include "tabhead.tmpl"}
+{/foreach}
+</ul>
+<script type="text/javascript">
+Todoyu.Tabs.create('{$htmlId}', {$jsHandler});
+</script>

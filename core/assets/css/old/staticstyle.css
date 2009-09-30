@@ -1,0 +1,42 @@
+/* Suggested order:
+ * display
+ * list-style
+ * position
+ * float
+ * clear
+ * width
+ * height
+ * margin
+ * padding
+ * border
+ * background
+ * color
+ * font
+ * text-decoration
+ * text-align
+ * vertical-align
+ * white-space
+ * other text
+ * content
+ *
+ */
+
+
+
+
+
+
+
+
+/* -----------------------------------------------
+	standard todoyu style - try to replace
+----------------------------------------------- */
+
+/*------------------------------ todoyu_output.php */
+.todoyuoutput_displayNone {
+	display:none;
+}
+
+.midGrey {
+	color: #d9d9d9;
+}

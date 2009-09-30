@@ -1,0 +1,22 @@
+# set expire headers by file type:
+<IfModule mod_expires.c>
+ExpiresActive on
+ExpiresDefault A60
+ExpiresByType image/gif "access plus 1 week"
+ExpiresByType image/jpeg "access plus 1 week"
+ExpiresByType image/png "access plus 1 week"
+ExpiresByType image/x-icon "access plus 1 week"
+
+ExpiresByType text/css "access plus 1 week"
+
+# NOTE: deactivate the js expiry settings (next to lines) temporary when applying js-changes!
+ExpiresByType text/javascript "access plus 1 week"
+ExpiresByType application/x-javascript "access plus 1 week"
+</IfModule>
+
+# dont add ETag statenent into response of file based documents:
+FileETag none
+
+# compress text/ html/ xml/ javascript / json output:
+AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript application/json
+Header append Vary Accept-Encoding

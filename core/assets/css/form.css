@@ -1,0 +1,463 @@
+/* new css */
+form {
+	margin:0;
+	padding:0;
+}
+	* html form {height:1%}
+
+	fieldset {
+		float:left; /* is a bugfix */
+		width: 100%;
+		margin:0;
+		padding:0;
+		border: none;
+	}
+
+	* html fieldset {height:1%} /* IE6 */
+
+		/* buttons, footerline */
+		fieldset.buttons {
+			margin:0 0 0.5em 0;
+			padding:0.2em 0;
+		}
+
+	legend {
+		display: none;
+	}
+
+input,
+textarea,
+select {
+	position: relative;
+	width: 100%;
+	border: 1px solid #000;
+}
+
+input {}
+
+	input.checkbox,
+	input.radio {
+		border: none;
+		width: auto;
+	}
+
+	input.button {
+		border: none;
+		width: auto;
+	}
+
+	input.datetime {
+		float:left;
+		width:95px;
+		margin-right:5px;
+	}
+
+
+textarea {
+	font-size:0.9em;
+}
+
+select {}
+
+	select.auto       {width:auto;}
+	select.day        {width:40px;margin-right:2px;}
+	select.month      {width:40px;margin-right:2px;}
+	select.monthnames {margin-left:2px;}
+	select.year       {width:60px;}
+	select.datetime   {width:150px;}
+
+	select optgroup {
+		padding-top: 5px;
+	}
+
+	select optgroup option {
+		background: #fff;
+	}
+
+label {
+
+}
+
+	label span.required {}
+
+/* ------- HTML building ------- */
+div.fElement {
+	position: relative;
+	margin:0;
+	padding:3px 2px 3px 2px;
+	height: auto !important;
+	height: 1%;
+}
+
+	/* label */
+	div.fElement .fLabel {
+		display: inline;
+		float: left;
+		text-align: right;
+		width: 39%;
+		padding-right: 1%;
+	}
+	div.fElement .fLabel label {}
+
+	div.fElement .required {}
+	div.fElement .required label {}
+
+	/* input */
+	div.fElement .fField {
+		display: inline;
+		float: right;
+		width: 59%;
+		padding-right:3px;
+	}
+
+	div.fElement .fField input {
+	}
+
+	div.fElement .fClear {
+		clear: both;
+	}
+	/* types */
+
+	.typeTextinput {}
+
+	.typeDateinput {}
+
+		div.typeDateinput .fField input {
+			float:left;
+			width:70px;
+			margin-right:5px;
+		}
+		div.typeDatetimeinput .fField input {
+			float:left;
+			width:90px;
+			margin-right:5px;
+		}
+		div.typeTimeinput .fField input {
+			float:left;
+			width:30px;
+		}
+
+	.typeCheckbox {}
+
+		div.typeCheckbox .fLabel {
+			float:right;
+			width:56%;
+			padding-right:0;
+			padding-left:0;
+			text-align:left;
+		}
+			/* checkbox in a fField element. */
+			/* example: Address in Ext Contact */
+			.fField div.typeCheckbox .fLabel {
+				width:54%;
+			}
+
+		div.typeCheckbox .fField {
+			float:left;
+			width:2%;
+			padding-right:0;
+			padding-left:0;
+			margin-left:41%;
+		} typeDatabaseRelation
+
+
+
+	.typeDatabaseRelation {}
+
+		.typeDatabaseRelation .foreignRecordsActionControll {
+			display:block;
+		}
+
+		.typeDatabaseRelation .foreignRecordsActionControll a.add {
+			background:transparent url(../img/bg_button_sprite.png) no-repeat scroll 0px -874px;
+		}
+
+		.typeDatabaseRelation .databaseRelation {
+			border-top:1px solid #ccc;
+		}
+		.typeDatabaseRelation .databaseRelation span.label {
+			float:left;
+			cursor: pointer;
+		}
+		.typeDatabaseRelation .databaseRelation span.additionalStuff {
+			float:right;
+		}
+		.typeDatabaseRelation .databaseRelation span.additionalStuff a.remove {
+			background:transparent url(../img/bg_button_sprite.png) no-repeat scroll 0px -842px;
+		}
+
+
+	fieldset.buttons div,
+	fieldset.buttons div.fElement .fField {float:left;width:auto;}
+	fieldset.buttons div.fElement .fLabel {display:none;width:auto;}
+
+
+/* design */
+input, textarea, select {border-color: #848484 #e8e5de #e8e5de #848484;}
+
+fieldset div.odd {background-color: #f3f3f3;}
+fieldset div.even {}
+
+fieldset.buttons,
+fieldset.buttons div.odd,
+fieldset.buttons div.even,
+fieldset.buttons button span.rgt {background-color: #e2e2e2;}
+
+
+
+/* none floating fields */
+fieldset.noneFloatingInput div.fElement .fField,
+fieldset.noneFloatingInput div.fElement .fLabel {
+	float:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* old css ... check and remove */
+
+.selectScrollbarHide {
+	overflow:hidden;
+}
+
+span.selectScrollbarHide {display:block;}
+
+	.selectScrollbarHide select {
+		min-width:107%;
+		width:100% !important;
+		width:107%;
+	}
+
+.commentElement {
+	position: relative;
+	height: auto !important;
+	height: 1px;
+}
+
+.floatingElement .formContainer,
+.floatingElement .formElement,
+.floatingElement .commentElement {
+	float: left;
+}
+
+.floatingElement .formContainer .formContainer,
+.floatingElement .formContainer .formElement,
+.floatingElement .formContainer .commentElement {
+	float: none;
+}
+
+.formElement .checkbox,
+.formElement .radio,
+.formElement .button {
+	width: auto !important;
+}
+
+/* --- right aligned Label --- */
+
+/* --- Float Rendering --- */
+.floatingElement {
+	float: left;
+	width: 49%;
+}
+
+/* --- none floating Input --- */
+.noneFloatingInput .formElement {
+	width: 100%;
+}
+
+.noneFloatingInput .formElement .formLabel,
+.noneFloatingInput .formElement .formField {
+	width: 100%;
+}
+
+.noneFloatingInput .formElement .formLabel {
+	display: block;
+	float: none;
+	text-align: left;
+}
+
+.noneFloatingInput .formElement .formField {
+	display: block;
+	float: none;
+}
+
+.noneFloatingInput .formElement input,
+.noneFloatingInput .formElement textarea,
+.noneFloatingInput .formElement select,
+.noneFloatingInput .formElement fieldset {
+	width: 100%;
+}
+
+/* --- required element after --- */
+.requiredElement span {
+	position: static;
+}
+
+/* --- right floating Input --- */
+.formElement .formLabel {
+	padding-right: 2%;
+	width: 39%;
+}
+
+.formElement .formField {
+	width: 58%;
+}
+
+.formElement .formLabel {
+	display: inline;
+	float: left;
+}
+
+.formElement .formField {
+	display: inline;
+	float: right;
+}
+
+.formElement input,
+.formElement textarea,
+.formElement select {
+	width: 100%;
+}
+
+.formElement textarea {
+	height: 100px;
+}
+
+.dateElement input {
+	width: 73px !important;
+	width: 77px;
+	margin-right: 10px;
+	float: left;
+}
+
+/* --- left floating radio --- */
+.formElement fieldset input {
+	clear: left;
+	float: left;
+	height: 18px;
+}
+
+.formElement fieldset label {
+	float: left;
+	width: 88% !important;
+	width: 83%;
+	line-height: 18px;
+}
+
+*+html .formElement fieldset label {
+	width: 83% !important;
+}
+
+/* formFieldRowDiv [+] and [-] elements */
+.formFieldRowDiv {
+	display: block;
+	padding: 5px 10px;
+	background: #d5dee5;
+}
+
+.formFieldRowDiv_link {
+	display: block;
+	padding: 5px 10px;
+	background: #E5E5E5;
+	margin:0 0 4px 0;
+}
+
+.formLabel .fieldHasError label{
+	color: red;
+}
+
+.formLabel .errorMessage {
+	color: red;
+	font-style: italic;
+}
+
+
+/* autocomplete list*/
+.div-autocompletion	{
+		z-index: 100;
+	}
+
+	.div-autocompletion li{
+		background: #F0F0EE;
+		border: 0px solid #CCCCCC;
+		border-width: 0 1px 1px 1px;
+		padding: 2px 0 2px 3px;
+	}
+
+
+	.div-autocompletion li.selected {
+		background: #d5dee5;
+	}
+
+	.div-autocompletion .empty{
+		background: none;
+		border: none;
+		border-width: 0 0 0 0;
+		padding: 0 0 0 0;
+	}
+
+
+input.narrowInput {
+	width:22px;
+}
+label.narrowInput {
+	margin:0 8px 0 0;
+}
+
+.formElement.fieldname-save {
+	margin: 12px 0 0 0;
+	background-color: #E5EFF8;
+}
+
+.formElement .databaseRelation {
+	margin-top: 5px;
+}
+
+.formElement .databaseRelation .formtrigger {
+	padding: 5px 0 5px 19px;
+}
+
+.formElement .databaseRelation .formtrigger a.remove {
+	background: transparent url(../img/icons_dev.png) no-repeat 0 -1610px;
+	height: 16px;
+	width: 16px;
+	position: absolute;
+	right: 5px;
+}
+
+.formElement .databaseRelation .closed {
+	background: #e5eff8 url(../img/toggle_plus.png) no-repeat 5px 8px;
+}
+
+.formElement .databaseRelation .open {
+	background: #e5eff8 url(../img/toggle_minus.png) no-repeat 5px 8px;
+}
+
+.formElement .foreignRecordsActionControll {
+	height: 30px;
+	background-color: #a8c7de
+}
+
+.formElement .foreignRecordsActionControll a {
+	background: transparent url(../img/icons_dev.png) no-repeat -2px -292px;
+	height: 16px;
+	width: 17px;
+	position: absolute;
+	top: 7px;
+	right: 7px;
+}

@@ -1,0 +1,89 @@
+/* Suggested order:
+ * display
+ * list-style
+ * position
+ * float
+ * clear
+ * width
+ * height
+ * margin
+ * padding
+ * border
+ * background
+ * color
+ * font
+ * text-decoration
+ * text-align
+ * vertical-align
+ * white-space
+ * other text
+ * content
+ *
+ */
+
+
+
+#debug div, #debug div * { color:#B7FF3A !important; font-weight:normal; }
+table.typo3-debug td {
+	background-color: #313D47 !important;
+	border: 1px solid #3F5A12 !important; }
+
+.inlineLink { text-decoration: underline; }
+
+div.popUpWindow {
+	border-style: solid;
+	border-color: rgb(182, 199, 211);
+	border-width: 1px 2px 2px;
+}
+div.popupImprint {
+	z-index: 300;
+	position: absolute;
+	left: 260px;
+	top: 164px;
+	width: 606px;
+	height: 368px;
+	background-color: #fff;
+	display:none;
+}
+
+
+/* global (appearing on all pages) style elements: */
+.toTop {
+	padding:0 0 3px 16px;
+	margin:0 0 0 -16px;
+	background: url(../img/sprite-global.png) no-repeat 0 2px;
+}
+
+/* left column: portal */
+.panelPortal_taskstatusFilter {
+	padding:0 4px 3px 16px;
+	margin:0 0 0 -16px;
+	background: url(../img/sprite-left_col-portal.png) no-repeat 0 0;
+}
+.panelProjects_taskstatusFilter {
+	padding:0 4px 3px 16px;
+	margin:0 0 0 -24px;
+	background: url(../img/sprite-left_col-portal.png) no-repeat 0 0;
+}
+.panelProjects_projects {
+	padding:0 4px 3px 16px;
+	margin:0 0 0 -24px;
+	background: url(../img/sprite-left_col-portal.png) no-repeat 0 0;
+}
+.panelPortal_report {
+	padding:0 4px 3px 16px;
+	margin:0 0 0 -16px;
+	background: url(../img/sprite-left_col-portal.png) no-repeat 0 -64px;
+}
+.panelPortal_addQuickTask {
+	padding:0 4px 3px 16px;
+	margin:0 0 0 -16px;
+	background: url(../img/sprite-left_col-portal.png) no-repeat -1px -33px;
+}
+.panelPortal_bookmarks {
+	padding:0 4px 3px 16px;
+	margin:0 0 0 -16px;
+	background: url(../img/sprite-left_col-portal.png) no-repeat 0 -96px;
+}
+
+a.quickInfoLink:hover {text-decoration:underline;}

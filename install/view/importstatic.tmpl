@@ -1,0 +1,10 @@
+{extends main.tmpl}
+
+{block name="box"}
+<h1>{$title}</h1>
+<p>DB connection is stored, import static data now.</p>
+<form method="post">
+	<input type="submit" value="Import static database data">
+	<input type="hidden" name="command" value="importstatic">
+</form>
+{/block}

@@ -1,0 +1,80 @@
+/* Suggested order:
+ * display
+ * list-style
+ * position
+ * float
+ * clear
+ * width
+ * height
+ * margin
+ * padding
+ * border
+ * background
+ * color
+ * font
+ * text-decoration
+ * text-align
+ * vertical-align
+ * white-space
+ * other text
+ * content
+ *
+ */
+
+/* -----------------------------------------------
+	standard form formatting, do not change!!!
+----------------------------------------------- */
+
+
+/* -----------------------------------------------
+	Customized Rendering
+----------------------------------------------- */
+
+
+/* -----------------------------------------------
+	Customized Styling
+----------------------------------------------- */
+.formElement,
+.commentElement {
+	padding-bottom: 4px;
+}
+
+.formElement .formLabel {
+	line-height: 16px;
+}
+
+.checkboxElement input {
+	top: 0 !important;
+	top: -2px;
+	left: 0 !important;
+	left: -4px;
+}
+
+*+html .checkboxElement input {
+	top: -2px !important;
+	left: -4px !important;
+}
+
+.checkboxElement .formField span {
+	margin-left: 10px;
+	color: #ccc;
+}
+
+.radioElement fieldset input {
+	top: 2px;
+	left: 0 !important;
+	left: -4px;
+	height: auto !important;
+	margin-right: 5px !important;
+	margin-right: 1px;
+}
+
+*:first-child+html .radioElement fieldset input {
+	height: 18px !important;
+}
+
+*+html .radioElement fieldset input {
+	top: 2px !important;
+	left: -4px !important;
+	margin-right: 1px !important;
+}

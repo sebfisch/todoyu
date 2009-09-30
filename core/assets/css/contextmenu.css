@@ -1,0 +1,92 @@
+#contextmenu {
+	display: none;
+	position: absolute;
+	width: 150px;
+	z-index: 100000;
+	background-color:#f1f1f1;
+}
+
+#contextmenu li {
+	border: 1px solid #d5dee5;
+	margin-bottom: -1px;
+}
+
+#contextmenu li a,
+#contextmenu li span {
+	display: block;
+	padding: 0 10px 0 29px;
+	line-height: 20px;
+	background-color: #F8F8F8;
+	cursor: pointer;
+	background-repeat:no-repeat;
+	text-align: left;
+}
+
+#contextmenu li a:hover,
+#contextmenu li span:hover {
+	background-color: #EFEFEF;
+}
+
+#contextmenu li ul {
+	display:none;
+	position: absolute;
+	z-index: 100001;
+	width: 150px;
+}
+
+#contextmenu li.header a {
+	padding:0px 5px;
+	font-weight:bold;
+	background-color:#4F8AB4 !important;
+	color:#FFF;
+	font-size:10px;
+	cursor:default;
+}
+
+
+
+
+
+
+
+/*
+#contextmenu li.addTask a { background:url(../img/sprite-contextmenu.png) no-repeat -294px -109px; }
+#contextmenu li.addTask a:hover { background:url(../img/sprite-contextmenu.png) no-repeat -294px -290px; }
+#contextmenu li.addContainer a { background:url(../img/sprite-contextmenu.png) no-repeat -294px -132px; }
+#contextmenu li.addContainer a:hover { background:url(../img/sprite-contextmenu.png) no-repeat -294px -313px; }
+#contextmenu li.addComment a { background:url(../img/sprite-contextmenu.png) no-repeat -294px -84px; }
+#contextmenu li.addComment a:hover { background:url(../img/sprite-contextmenu.png) no-repeat -294px -265px; }
+#contextmenu li.jumpTo a {	background:url(../img/sprite-contextmenu.png) no-repeat -294px 1px; }
+#contextmenu li.jumpTo a:hover { background:url(../img/sprite-contextmenu.png) no-repeat -294px -181px; }
+#contextmenu li.editTask a { background:url(../img/sprite-contextmenu.png) no-repeat -294px -19px; }
+#contextmenu li.editTask a:hover { background:url(../img/sprite-contextmenu.png) no-repeat -294px -199px; }
+#contextmenu li.cloneTask a { background:url(../img/sprite-contextmenu.png) no-repeat -294px -152px; }
+#contextmenu li.cloneTask a:hover { background:url(../img/sprite-contextmenu.png) no-repeat -294px -333px; }
+#contextmenu li.cloneAppointment a { background:url(../img/sprite-contextmenu.png) no-repeat -294px -364px; }
+#contextmenu li.cloneAppointment a:hover { background:url(../img/sprite-contextmenu.png) no-repeat 0 -364px; }
+#contextmenu li.deleteTask a { background:url(../img/sprite-contextmenu.png) no-repeat -294px -39px; }
+#contextmenu li.deleteTask a:hover { background:url(../img/sprite-contextmenu.png) no-repeat -294px -220px; }
+#contextmenu li.toggleBookmark a { background:url(../img/sprite-contextmenu.png) no-repeat -294px -63px; }
+#contextmenu li.toggleBookmark a:hover { background:url(../img/sprite-contextmenu.png) no-repeat -294px -244px; }
+#contextmenu li.timeTrackStart a { background:url(../img/sprite-contextmenu.png) no-repeat -294px -393px; }
+#contextmenu li.timeTrackStart a:hover { background:url(../img/sprite-contextmenu.png) no-repeat -3px -393px; }
+#contextmenu li.addTaskBookmark a { background:url(../img/sprite-icons.png) no-repeat 0 -1064px; }
+#contextmenu li.changeTaskStatus span { background:url(../img/sprite-icons.png) no-repeat 0px -202px; }
+#contextmenu li.addTaskSubmenu span { background:url(../img/sprite-icons.png) no-repeat 0 -519px; }
+#contextmenu li.changeToStatusPlaning a { padding:0 0 0 22px; background:url(../img/sprite-contextmenu.png) no-repeat 0 2px; }
+#contextmenu li.changeToStatusPlaning a:hover { padding:0 0 0 22px; background:url(../img/sprite-contextmenu.png) no-repeat 0 -179px; }
+#contextmenu li.changeToStatusOpen a {	background:url(../img/sprite-contextmenu.png) no-repeat 0 -18px; }
+#contextmenu li.changeToStatusOpen a:hover { background:url(../img/sprite-contextmenu.png) no-repeat 0 -199px; }
+#contextmenu li.changeToStatusInprogress a { background:url(../img/sprite-contextmenu.png) no-repeat 0 -38px; }
+#contextmenu li.changeToStatusInprogress a:hover { background:url(../img/sprite-contextmenu.png) no-repeat 0 -219px; }
+#contextmenu li.changeToStatusConfirmation a { background-color:#fff; background:url(../img/sprite-contextmenu.png) no-repeat 0 -85px; }
+#contextmenu li.changeToStatusConfirmation a:hover { background:url(../img/sprite-contextmenu.png) no-repeat 0 -266px; }
+#contextmenu li.changeToStatusDone a {	background:url(../img/sprite-contextmenu.png) no-repeat 0 -109px; }
+#contextmenu li.changeToStatusDone a:hover { background:url(../img/sprite-contextmenu.png) no-repeat 0 -290px; }
+#contextmenu li.changeToStatusAccepted a {	background:url(../img/sprite-contextmenu.png) no-repeat 0 -109px; }
+#contextmenu li.changeToStatusAccepted a:hover { background:url(../img/sprite-contextmenu.png) no-repeat 0 -290px; }
+#contextmenu li.changeToStatusRejected a {	background-color:#fff; background:url(../img/sprite-contextmenu.png) no-repeat 0 -133px; }
+#contextmenu li.changeToStatusRejected a:hover { background:url(../img/sprite-contextmenu.png) no-repeat 0 -314px; }
+#contextmenu li.changeToStatusCleared a { background:url(../img/sprite-contextmenu.png) no-repeat 0 -156px; }
+#contextmenu li.changeToStatusCleared a:hover { background:url(../img/sprite-contextmenu.png) no-repeat 0 -337px; }
+*/

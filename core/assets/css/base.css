@@ -1,0 +1,198 @@
+/* -----------------------------------------------
+	standard formatting, do not change!!!
+----------------------------------------------- */
+
+* {
+	color: #000;
+	font-size: 11px;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-repeat: no-repeat;
+}
+
+html, body {
+	height: 101%;
+	text-align: center;
+}
+
+/* HTML Tags */
+
+img {
+	border: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:focus{
+	outline:none;
+}
+
+caption {
+	display: none;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table.fixedTable {
+	table-layout: fixed;
+}
+
+th {
+	text-align: left;
+	vertical-align: top;
+}
+
+td {
+	vertical-align: top;
+}
+
+ul {
+	list-style: none;
+}
+
+
+
+/* Heading */
+
+h1 {
+	margin:0;
+	padding:0;
+}
+
+h1 span {
+	float:left;
+}
+
+h1, h1 * {
+	font-size: 10px;
+	font-weight: normal;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+h2 {}
+
+h3 {
+	height: 12px;
+	padding: 5px 0 7px 12px;
+	background-color: #D5DEE5;
+	/*margin:0 0 8px 0;*/
+	font-weight: normal;
+	/*text-transform: uppercase;*/
+	white-space: nowrap;
+}
+
+h4 {
+		height: 12px;
+		padding: 5px 0 7px 12px;
+		background-color: #fff;
+		border-bottom: 1px solid #e1e1e1;
+		font-weight: normal;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+
+
+
+
+/* Shortcuts */
+
+.positionRelative {
+	position:relative;
+}
+
+.clear {
+	clear: both;
+}
+
+.clearNone {
+	clear: none;
+}
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+	padding-right: 1px;
+}
+
+.overflow {
+	overflow: auto !important;
+	overflow: inherit;
+	height: auto !important;
+	height: 100%;
+	/* ie7 needs this sometimes */
+	min-height: 100%;
+	padding-bottom: 1px;
+}
+
+.overflowHidden {
+	overflow: hidden;
+}
+
+.marginNone {
+	margin: 0 !important;
+}
+
+.backgroundNone {
+	background: none !important;
+}
+
+.backgroundColorTransparent {
+	background-color: transparent;
+}
+
+.borderNone {
+	border: none;
+}
+
+.fontWeightNormal {
+	font-weight: normal;
+}
+
+.fontWeightBold {
+	font-weight: bold;
+}
+.textTransformUppercase {
+	text-transform: uppercase;
+}
+.displayInline {
+	display: inline;
+}
+.displayBlock {
+	display: block;
+}
+.hide,
+.displayNone,
+.hidden {
+	display: none;
+}
+.error {
+	color: red;
+}
+
+.pointerCursor {
+	cursor: pointer;
+}
+
+.textIndent {
+	text-indent: -9999px;
+}
+
+#box {
+	text-align: left;
+}
+
+#notification {
+	margin: 0 0 0 18px;
+	padding: 6px 8px 12px 8px;
+	background-color: #F6F8F0;
+	border: 1px solid #aaa;
+}

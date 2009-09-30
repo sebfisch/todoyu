@@ -1,0 +1,18 @@
+body {
+	background-color: #fff;
+}
+
+#box {
+	width: auto;
+	min-height: auto;
+	height: auto !important;
+	height: auto;
+	margin-left: 0;
+	border: none;
+	background-color: transparent;
+}
+
+#header, 
+#panel {
+	display: none;
+}

@@ -1,0 +1,123 @@
+#navi-main {
+	position:absolute;
+	z-index:100;
+	bottom:0;
+	left:0;
+	width:100%;
+}
+
+ul#navi-main-list {
+	margin:0 auto;
+	width:978px;
+}
+
+ul#navi-main-list li {
+	float: left;
+	background-image:url('../img/colF_r13.png');
+	background-position:100% 0;
+	margin-right:3px;
+}
+
+ul#navi-main-list li a {
+	display: block;
+	width: auto !important;
+	width: 1px;
+	height: auto !important;
+	height: 1px;
+	line-height: 30px;
+	padding:0 13px 0 0;
+	font-size: 13px;
+	font-weight:bold;
+	text-transform:uppercase;
+	letter-spacing: 1px;
+	white-space: nowrap;
+	background-image:url('../img/shadow01.png');
+	background-position:50% 100%;
+
+}
+
+ul#navi-main-list li a span.lt {
+	display:block;
+	float:left;
+	width:13px;
+	height:13px;
+	background-image:url('../img/colF_r13.png');
+}
+
+ul#navi-main-list li:hover a,
+ul#navi-main-list li a.active {
+	background-image:none;
+}
+
+ul#navi-main-list li.active {
+	background-color: #e3eace; /* bcl02 */
+}
+
+ul#navi-main-list li:hover {
+	background-color: #d3dabb; /* bcl03 */
+}
+
+/* level 2 */
+
+ul#navi-main-list li:hover ul {
+	left: auto;
+}
+
+ul#navi-main-list li ul {
+	position: absolute;
+	top: 29px;
+	left: -9999px;
+	width: 180px !important;
+	width: 210px;
+	margin-top:1px;
+	margin-left: -30px;
+	padding: 0 30px 30px 30px;
+	text-transform:none;
+}
+
+ul#navi-main-list li ul li {
+	width:100%;
+	background-image:none;
+	background-color: #d3dabb; /* bcl03 */
+	text-align:left;
+
+}
+
+ul#navi-main-list li ul li.first {
+}
+
+ul#navi-main-list li ul li.last {
+	position: relative;
+	background-color:red;
+}
+
+ul#navi-main-list li ul li.last span.lb,
+ul#navi-main-list li ul li.last span.rb {
+	display:block;
+	position: absolute;
+	top:0;
+	left:0;
+	width:51%;
+	height:13px;
+	background-image:url('../img/col3_bg_r13.png');
+	background-position:0 100%;
+	background-color:transparent;
+}
+
+ul#navi-main-list li ul li.last span.rb {
+	left:auto;
+	right:0;
+	background-position:100% 100%;
+}
+
+ul#navi-main-list li ul li a {
+	padding: 2px 10px;
+	line-height: 16px;
+	font-size:11px;
+	font-weight:normal;
+	background-image:none;
+}
+
+ul#navi-main-list li ul li a:hover {
+	background-color:#adb989; /* bcl04 */
+}

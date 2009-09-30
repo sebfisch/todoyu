@@ -1,0 +1,971 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>TODOYU coding guidelines</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="../../lib/js/prototype.js"></script>
+<script type="text/javascript" src="javascript.js"></script>
+</head>
+<body>
+<div id="contents">
+  <h2>Coding Guidelines</h2>
+  <ul>
+    <li><a href="#1">1. Language</a></li>
+    <li><a href="#2">2. Filename convention</a></li>
+    <li><a href="#3">3. Filestructure</a></li>
+    <ul>
+      <li><a href="#3_1">3.1 Extensions' filestructure</a></li>
+      <li><a href="#3_2">3.2 Extensions' default sub folders</a></li>
+      <li><a href="#3_3">3.3 Optional folders with predefined names</a></li>
+    </ul>
+    <li><a href="#4_1">4. PHP Code formatting</a></li>
+    <li><a href="#4_2">4.2 PHP Code rules</a></li>
+    <li><a href="#5">5. JS Code formatting</a></li>
+    <ul>
+      <li><a href="#5_1">5.1 JS libraries: core</a></li>
+      <li><a href="#5_2">5.2 JS libraries: prototype</a></li>
+      <li><a href="#5_3">5.3 JS libraries: scriptaculous</a></li>
+      <li><a href="#5_4">5.4 JS libraries: jscalendar, sCal</a></li>
+    </ul>
+    <li><a href="#6">6. Database structure, tables/ columns naming convention</a></li>
+    <li><a href="#8">7. TODOYU extensions</a></li>
+    <ul>
+      <li><a href="#7_1">7.1 Configuration files</a></li>
+      <li><a href="#7_2">7.2 assets (JS, CSS, images)</a></li>
+      <li><a href="#7_3">7.3 view</a></li>
+      <li><a href="#7_4">7.4 classes</a></li>
+      <li><a href="#7_5">7.5 actions</a></li>
+      <li><a href="#7_6">7.6 Locale (localization)</a></li>
+    </ul>
+    <li><a href="#8">8. Templating standards (Dwoo)</a></li>
+  </ul>
+  <h2>HOW-TO's</h2>
+  <ul>
+    <li><a href="#ht1">Constants</a></li>
+    <li><a href="#ht5">EXTIDs</a></li>
+    <li><a href="#ht2">Register Config Files</a></li>
+    <li><a href="#ht3">Register Asset Files</a></li>
+    <li><a href="#ht4">Debugging</a></li>
+    <li><a href="#ht5">Render content</a></li>
+    <li><a href="#ht_pwidget">Create a PanelWidget</a></li>
+    <li><a href="#ht_observerpanelwidget">Observe a PanelWidget</a></li>
+    <li><a href="#ht7">Filter widget definitions</a></li>
+    <li><a href="#ht8">Popups</a></li>
+    <li><a href="#ht9">Formulare</a></li>
+  </ul>
+</div>
+<!-- ........................................................................................... -->
+<!-- ........................................................................................... -->
+<!-- ........................................................................................... -->
+<div id="content">
+  <h1>todoyu - General coding guidelines</h1>
+  <br/>
+  <a id="1"></a>
+  <h2>1. Language</h2>
+  <p> The common language within code is <strong>english</strong>, all components within TODOYU are thus to be named english.<br/>
+    This applies to names of: <strong>files, folders, classes, methods, doc-comments, help files</strong> etc.<br/>
+  </p>
+  <!-- ........................................................................................... -->
+  <hr/>
+  <a id="2"></a>
+  <h2>2. Filename convention</h2>
+  <p>
+  	<strong>Allowed characters in filenames:</strong> <font class="code">a-z</font>, <font class="code">A-Z</font>, <font class="code">0-9</font>, <font class="code">_</font>, <font class="code">.</font>
+  	<br/><br/>
+  	Underscores <font class="code">_</font> may be used for separation of multiple words in filenames,<br />
+  	e.g. type and key, for example "PanelWidget_ProjectTree.class.js") where needed.<br/><br/>
+    <strong>PHP class files and JS filenames</strong> are written in <strong>"camel case"</strong> style.<br/>
+    All <strong>folders</strong> and other files (PHP script files, CSS files, XML files, etc.) are written in <strong>lowercase characters</strong>.
+
+  </p>
+  <!-- ........................................................................................... -->
+  <hr/>
+  <a id="3"></a>
+  <h2>3. Filestructure</h2>
+  <p> TODOYU's fundamental file structure:
+  <ul>
+    <li>
+      <div class="leftCol">/assets/</div>
+      <div class="description">core assets (CSS, JS and Image)</div>
+    </li>
+    <li>
+      <div class="leftCol">/cache/</div>
+      <div class="description">TODOYU's cache files</div>
+    </li>
+    <li>
+      <div class="leftCol">/config/</div>
+      <div class="description">core system configuration files</div>
+    </li>
+    <li>
+      <div class="leftCol">/core/</div>
+      <div class="description">the actual system core PHP classes and script files</div>
+    </li>
+    <li>
+      <div class="leftCol">/doc/</div>
+      <div class="description">all TODOYU system documentation</div>
+    </li>
+    <li>
+      <div class="leftCol">/ext/</div>
+      <div class="description">all TODOYU extensions (see 3.1.)</div>
+    </li>
+    <li>
+      <div class="leftCol">/lib/</div>
+      <div class="description">third party libraries</div>
+    </li>
+    <li>
+      <div class="leftCol">/update/</div>
+      <div class="description"> update scripts: used for data migration activities <br/>
+        (import/export and structural modifications during updates) <br/>
+        <br/>
+      </div>
+    </li>
+    <br/>
+    <li>
+      <div class="leftCol">/install/</div>
+      <div class="description review">
+      ??? installer files</li>
+    <li>
+      <div class="leftCol">/files/</div>
+      <div class="description review">???</div>
+    </li>
+    <li>
+      <div class="leftCol">/dev/</div>
+      <div class="description review">???</div>
+    </li>
+    <li>
+      <div class="leftCol">/tests/</div>
+      <div class="description review">???</div>
+    </li>
+  </ul>
+  </p>
+  <a id="3_1"></a>
+  <h3>
+  3.1 Extensions' filestructure
+  </h2>
+  <p> Each extension resides in it's own (named by lowercased alphabetic letters) folder under the path '/ext/'.<br/>
+    All files belonging to an extension are stored within that extension's own folder.<br/>
+  </p>
+  <a id="3_2"></a>
+  <h3>3.2 Extensions' default sub folders</h3>
+  <p>
+  <ul>
+    <li>
+      <div class="leftCol">/class/</div>
+      <div class="description"> All extension classes, e.g Name.class.php <br/>
+        (Uppercase leading character, camelCased, alphabetic letters) <br/>
+        <br/>
+      </div>
+    </li>
+    <li>
+      <div class="leftCol">/config/</div>
+      <div class="spacer"></div>
+      <div class="description">(lowercased) PHP configuration files</div>
+    </li>
+    <li>
+      <div class="leftCol">/locale/</div>
+      <div class="spacer"></div>
+      <div class="description">XML localization files</div>
+    </li>
+    <li>
+      <div class="leftCol">/view/</div>
+      <div class="spacer"></div>
+      <div class="description">Initial view (layout) of the extension</div>
+    </li>
+  </ul>
+  </p>
+  <a id="3_3"></a>
+  <h3>3.3 Optional folders with predefined naming to be used are</h3>
+  <p>
+  <ul>
+    <li>
+      <div class="leftCol">/doc/</div>
+      <div class="spacer"></div>
+      <div class="description">all extension documentation files</div>
+    </li>
+    <li>
+      <div class="leftCol">/install/</div>
+      <div class="spacer"></div>
+      <div class="description review">??? temporary or to be kept as a convention?</div>
+    </li>
+  </ul>
+  </p>
+  <!-- ........................................................................................... -->
+  <hr/>
+  <a id="4"></a>
+  <h2>4. PHP Code conventions</h2>
+  <h3>4.1 PHP Code formatting</h3>
+  <p>
+  <ul>
+    <li>
+      <div class="enumedTitle">General</div>
+      <div class="description">
+        <ul>
+          <li> Code is indented using single tabs. </li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="enumedTitle">Comments</div>
+      <div class="description">
+        <ul>
+          <li>Multi- and single-line comments are preceeded by one blank line.</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="enumedTitle">Parenthesis, Parameters</div>
+      <div class="description">
+        <ul>
+          <li> Elements inside parenthesis are wrapped by single space, commas of parameters are follwed by one space. </li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="enumedTitle">Operators</div>
+      <ul>
+        <li>
+          <div class="enumedTitle">Space around</div>
+          <div class="description">
+            <ul>
+              <li> <font class="code">=</font> Assignments, <font class="code">==</font> Comparisoms, Arithmetic-/ logical-/ colon- and question- expressions
+                (<font class="code">?</font>, <font class="code">:</font>) </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="enumedTitle">Alignments</div>
+          <div class="description">
+            <ul>
+              <li>Operator blocks of +3 variables are aligned</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="enumedTitle">Functions, Classes and Objects</div>
+      <ul>
+        <li>
+          <div class="enumedTitle">not spaced:</div>
+          <div class="description">
+            <ul>
+              <li> <font class="code">-&gt;</font> or <font class="code">::</font>, no space before opening brackets <font class="code">(</font> </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="enumedTitle">spaced:</div>
+          <div class="description">
+            <ul>
+              <li> between <font class="code">)</font> and <font class="code">{</font>, eg. <font class="code">while(...) {...</font> </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="enumedTitle">Control Structures</div>
+      <ul>
+        <li>
+          <div class="enumedTitle">Space:</div>
+          <div class="description">
+            <ul>
+              <li> Between <font class="code">for</font> elements </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="enumedTitle">No Space:</div>
+          <div class="description">
+            <ul>
+              <li> Before Parenthesis (eg: "while(...") </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="enumedTitle">Linebreaks:</div>
+          <div class="description">
+            <ul>
+              <li> Blank line after <font class="code">break</font> </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="enumedTitle">No Linebreaks:</div>
+          <div class="description">
+            <ul>
+              <li> Opening bracket on same line, <font class="code">else</font>/ <font class="code">elseif</font> on same line as <font class="code">}</font> </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="enumedTitle">Indents:</div>
+          <div class="description">
+            <ul>
+              <li> Extra indent for <font class="code">case</font> and <font class="code">default</font> </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="enumedTitle">Arrays and Concatenation:</div>
+      <ul>
+        <li>
+          <div class="enumedTitle">Alignment:</div>
+          <div class="description">
+            <ul>
+              <li> Non-empty associative arrays as vertical block </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="enumedTitle">Space around:</div>
+          <div class="description">
+            <ul>
+              <li> Concat elements (<font class="code">.=</font>, <font class="code">.</font>), double arrow (<font class="code">=&gt;</font>) </li>
+              <li> Concatenation with +3 elements as vertical block, using <font class="code">.=</font> </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="enumedTitle">Empty lines</div>
+      <ul>
+        <div class="description">
+          <ul>
+            <li>3 Lines between member variables and first function</li>
+            <li>3 Lines between functions</li>
+          </ul>
+        </div>
+      </ul>
+    </li>
+    <li>
+      <div class="enumedTitle">phpDoc Comments</div>
+      <ul>
+        <li>Standard phpDoc formating parts divided by tabs in column layout.</li>
+        <li><font class="keyword">Class Doc-Block:</font> description, the package name (always "Todoyu"), <br/>
+          a subpackage name (extension name) and an author. <br/>
+          <br/>
+        </li>
+        <li><font class="keyword">Function Doc-Block:</font> description, parameters, return value </li>
+        <li><font class="keyword">Parameters Doc:</font> Type (ex: Integer), variable name and description </li>
+      </ul>
+    </li>
+  </ul>
+  </p>
+  <h3>4.2 PHP Code rules / conventions</h3>
+  <p>
+  <ul>
+    <li>Functions
+      <ul>
+        <li>Per function there is only <strong>one <font class="code">return</font></strong> (use variables!)</li>
+        <li><strong>Identifiers naming:</strong> Numeric identifiers, like the extension-ID are always called <font class="code">ID</font>, textual identifiers like e.g names of PanelWidgets are called <font class="code">key</font></li>
+        <li>The word &quot;ID&quot; is always written in uppercase. Ex: TaskManger::getTaskIDs()</li>
+      </ul>
+    </li>
+  </ul>
+  </p>
+  <!-- ........................................................................................... -->
+  <hr/>
+  <a id="5"></a>
+  <h2>5. JS Code formatting</h2>
+  <p> The conventions for <a class="internal" href="#4">PHP Code format</a> apply analogous also to JavaScript Code.<br/>
+  </p>
+  <a id="5_1"></a>
+  <h3>5.1 JS libraries: core</h3>
+  <p>
+  <ul>
+    <li>
+      <div class="leftColWid2">/core/js/Todoyu.js/</div>
+      <div class="description">Main TODOYU JS core class</div>
+    </li>
+    <li>
+      <div class="leftColWid2">/core/js/ContextMenu.js</div>
+      <div class="description">TODOYU contextmenu JS class</div>
+    </li>
+    <li>
+      <div class="leftColWid2">/core/js/Time.js</div>
+      <div class="description">TODOYU time (calculation, formating, conversion) Class</div>
+    </li>
+    <li>
+      <div class="leftColWid2">/core/js/UI</div>
+      <div class="description">TODOYU user interface related Class</div>
+    </li>
+    <li>
+      <div class="leftColWid2">/core/js/Helper.js</div>
+      <div class="description">TODOYU general helper JS Class</div>
+    </li>
+  </ul>
+  </p>
+  <a id="5_2"></a>
+  <h3>5.2 JS libraries: prototype</h3>
+  <p>
+  <ul>
+    <li> <a class="external" href="http://www.prototypejs.org/" target="_blank">prototype js</a> </li>
+    <li> <a class="external" href="http://www.prototypejs.org/api" target="_blank">prototype API Docs</a> </li>
+  </ul>
+  </p>
+  <a id="5_3"></a>
+  <h3>5.3 JS libraries: scriptaculous</h3>
+  <p>
+  <ul>
+    <li> <a class="external" href="http://script.aculo.us/" target="_blank">http://script.aculo.us/</a> </li>
+    <li> <a class="external" href="http://wiki.github.com/madrobby/scriptaculous" target="_blank">scriptaculous GitHub (Documentation WIKI)</a> </li>
+  </ul>
+  </p>
+  <a id="5_4"></a>
+  <h3>5.4 JS libraries: jscalendar, sCal</h3>
+  <p>
+  <ul>
+    <li> <a class="external" href="http://www.dynarch.com/projects/calendar/" target="_blank">http://www.dynarch.com/projects/calendar/</a> </li>
+    <li> <a class="external" href="http://www.dynarch.com/static/jscalendar-1.0/doc/html/reference.html" target="_blank">jsCalendar HTML documentation</a> </li>
+    <li><br/><br/> <a class="external" href="http://scal.fieldguidetoprogrammers.com/scal-v02-documentation" target="_blank">Scal 0.2 documentation</a> </li>
+  </ul>
+  	some Scal snippets:
+  	<pre class="code" style="padding-left: 20px !important;">
+var Cal = new scal('samplecal',updateelement,options);
+
+	// Changes the current date from 11-01-2009 to 12-01-2009
+Cal.setCurrentDate('monthup');
+
+	// Changes the the current date from 12-01-2009 12-01-2010
+Cal.setCurrentDate('yearup');
+
+	// Changes the current date to the original date: 11-01-2009
+Cal.setCurrentDate('init');
+
+	// Changes the current date from 11-01-2009 to 10-01-2009
+Cal.setCurrentDate('monthdown');
+
+	// Changes the current date from 10-01-2009 to 10-01-2008
+Cal.setCurrentDate('yeardown');
+var d = new Date(2007,10,1);
+
+	// Changes the current date to 11-01-2007
+Cal.setCurrentDate(d);
+	</pre>
+  </p>
+  <!-- ........................................................................................... -->
+  <hr/>
+  <a id="6"></a>
+  <h2>6. Database structure, naming convention</h2>
+  <h3>6.1 General table prefixes</h3>
+  <p> &bull; To be able to conclude the responsible extension mainly handling the respective data,
+    and the kind of data being stored, all table names are built like <font class="code">ext_extensionKey_tableIdentifier</font>. <br/>
+    &bull; System core tables are prefixed with <font class="code">sys_</font>, <br/>
+    &bull; Static data tables (e.g countries, currencies, etc.) are prefixed with <font class="code">dat_</font>. </p>
+  <h3>6.2 MM tables:</h3>
+  <p> MM relation tables are to be named like: <font class="code">ext_extensionKey_mm_localTable_foreignTable</font>, <br/>
+    e.g <font class="code">ext_user_mm_user_address</font>. </p>
+  <h3>6.2. Columns structure/ naming convention</h3>
+  <h4>6.2.1 Mandatory fields</h4>
+  <p> Primary key to all tables: <font class="code">id</font> </p>
+  <br/>
+  <h4>6.2.2 Categorical column name prefixes by field/ data type</h4>
+  <p>
+  <ul>
+    <li>
+      <div class="wrapper">
+        <div class="leftCol">ID</div>
+        <div class="description"> <font class="code">id_foreignTableName</font> (e.g <font class="code">id_project</font> for an ID of the table <font class="code">ext_project_project</font>) </div>
+      </div>
+      <div class="wrapper">
+      <div class="leftCol">
+        <!-- -->
+      </div>
+      <div class="review description">??? should'nt the extKey appear additionally to the table name?</div>
+      <div class="wrapper">
+    </li>
+    <li>
+      <div class="leftCol">Date</div>
+      <div class="description"> <font class="code">date_description</font> (e.g <font class="code">date_create</font>, <font class="code">date_update</font>) </div>
+    </li>
+    <li>
+      <div class="leftCol">Boolean</div>
+      <div class="description"><font class="code">is_description</font> (e.g <font class="code">is_confirmed</font>, <font class="code">is_approved</font>)</div>
+      <strong>Exceptions:</strong> <font class="code">deleted</font>, <font class="code">hidden</font> are Boolean fields, being named without <font class="code">is_</font>-prefix.
+      <div class="review description">??? maybe more consistent by also using is_ prefix?</div>
+    </li>
+  </ul>
+  </p>
+  <!-- ........................................................................................... -->
+  <hr/>
+  <a id="7"></a>
+  <h2>7. TODOYU extensions</h2>
+  <p> To configure TODOYU to use an extension, the extension key must be listed within <font class="code">$CONFIG['EXT']['installed']</font> (<font class="code">\config\extensions.php</font>). <br/>
+    <br/>
+    The extension's main file is <font class="code">ext.php</font>, stored within the root-folder of the resp. extension. </p>
+  <a id="7_1"></a>
+  <h3>7.1 Configuration files</h3>
+  <p> All extension configuration files are stored within <font class="code">\config\</font>.<br/>
+    The main configuration file is named <font class="code">\config\extension.php</font> </p>
+  <a id="7_2"></a>
+  <h3>7.2 Assets (JS, CSS, images)</h3>
+  <p> All asset files of extensions are stored within <font class="code">\assets\css\</font>, <font class="code">\assets\img\</font> or <font class="code">\assets\js\</font> (etc.).<br/>
+    The main main CSS- and JS- assets are called <font class="code">\assets\css\ext.css</font> and <font class="code">\assets\js\ext.js</font>. </p>
+  <a id="7_3"></a>
+  <h3>7.3 view</h3>
+  <a id="7_4"></a>
+  <h3>7.4 classes</h3>
+  <p> Classes of extensions are stored in <font class="code">\class\</font>.<br/>
+    Some most common classes of extensions are: (assuming the extension being called 'Demo' in this example)
+  <ul>
+    <li>
+      <div class="leftColWid3">/class/Demo.class.php</div>
+      <div class="description">Data object (data records structural definition), see <a href="#f7_4_1">explanation</a></div>
+    </li>
+    <li>
+      <div class="leftColWid3">/class/DemoManager.class.php</div>
+      <div class="description">Manager class (methods to gather/ update object data records)</div>
+    </li>
+    <li>
+      <div class="leftColWid3">/class/DemoPreferences.class.php</div>
+      <div class="description">Preferences management of the extension</div>
+    </li>
+    <li>
+      <div class="leftColWid3">/class/DemoRenderer.class.php</div>
+      <div class="description">Extending Core Renderer class, rendering of content, panels, widgets, etc.</div>
+    </li>
+    <li>
+      <div class="leftColWid3">/class/DemoFilter.class.php</div>
+      <div class="description">Compile and execute ext. specific active filters</div>
+    </li>
+    <li>
+      <div class="leftColWid3">/class/DemoSearch.class.php</div>
+      <div class="description">Delivers extension specific search results</div>
+    </li>
+    <li>
+      <div class="leftColWid3">/class/DemoDiv.class.php</div>
+      <div class="description">Miscellanious methods not fitting into the other extensions' classes</div>
+    </li>
+  </ul>
+  <a id="7_4_1"></a> <strong>Object and Manager explanation:</strong><br/>
+  The Object class and it's Manager class serve to implement new structural data record definitions and methods to gather/ modify
+  the respective data.<br/>
+  <strong>Example:</strong><br/>
+  To work with the records in the database, create two classes. An object container (Car) and a manager class (CarManager). To access the values of the object, use the "Car" object: $car->getMaxSpeed(). To manage the records, user CarManager::addCar()
+  Do implement these two classes for each new record type needed.
+  </p>
+  <a id="7_5"></a>
+  <h3>7.5. actions</h3>
+  <p> Actions are to be assorted and classified by their context:<br />
+    E.g. all task-related actions are assembled in <font class="code">\action\task.php</font>,
+    differenciated by the <font class="code">cmd</font> parameter, specifying the particular action command.
+    This way there is only one action-file (e.g \action\task.php) containing clearly arranged all contextual assorted actions.
+    Each command-handler within the action file evokes the respective method(s), application logic is to be kept within the
+    class methods, so that the actions file itself can be reviewed quickly and easily. </p>
+  <a id="7_6"></a>
+  <h3>7.6 Locale (localization)</h3>
+  <p> Localization to multiple languages is done using XML files in <font class="code">\locale\</font>, the basic localization file is always
+    called <font class="code">\locale\ext.xml</font>. </p>
+  <!-- ........................................................................................... -->
+  <hr/>
+  <a id="8"></a>
+  <h2>8. Templating standards (Dwoo)</h2>
+  <p> TODOYU uses <a class="external" href="http://dwoo.org/" target="_blank">Dwoo</a> for templating.<br />
+  <ul>
+    <li> <a class="external" href="http://wiki.dwoo.org/index.php/GettingStarted" target="_blank">Getting started with Dwoo</a> </li>
+    <li> Dwoo is based on <a class="external" href="http://www.smarty.net/" target="_blank">Smarty</a> </li>
+  </ul>
+  <br/>
+  The basic template for TODOYU extensions to be used for initial rendering when loading the complete page (obverse e.g to AJAX requests)
+  is <font class="code">\extname\view\ext.tmpl</font>.
+  </p>
+  <br/>
+  <br/>
+  <!-- ........................................................................................... -->
+  <!-- ........................................................................................... -->
+  <!-- ........................................................................................... -->
+  <hr/>
+  <hr/>
+  <br/>
+  <h1>todoyu - HOW-TO's</h1>
+  <a id="ht1"></a>
+  <h2>Constants</h2>
+  <p> System core constants (stati, paths, levels, etc.) can be found in: <font class="code">\core\inc\constants.php</font>. </p>
+  <br/>
+  <hr/>
+  <a id="ht5"></a>
+  <h2>EXTIDs</h2>
+  <p> Every extension needs a unique extension id. The extension-id is defined as a PHP constant named like: <font class="code">EXTID_NAME</font>.
+    All already taken ids can be displayed via: <font class="code">Debug::printHtml( ExtensionManager::getInstalledExtIds() );</font> </p>
+  <br/>
+  <hr/>
+  <a id="ht2"></a>
+  <h2>Register Config Files</h2>
+  <p> To register config files of your extension write this to your <font class="code">extkey/ext.php</font><br />
+    <font class="code"> require( PATH_EXT_BOOKMARK . '/config/config_filename.php' ); </font> </p>
+  <hr />
+  <a id="ht3"></a>
+  <h2>Register Asset Files</h2>
+  <p>
+  <ul>
+    <li> First Step: Create an asset in the correct asset folder of your extension <font class="code">\extname\asset\*asset-type*\file_name.file_type</font> (asset types are JS/IMG/CSS) </li>
+    <li> Second Step: Register the file in the assets.php <font class="code">\extname\config\assets.php</font>
+      <p> <br />
+        For example:<br />
+      <pre class="code">
+$CONFIG['EXT']['bookmark']['assets'] = array(
+	'default' => array(
+		'js' => array(
+			array(
+				'file' 		=> 'ext/bookmark/assets/js/Bookmark.js',
+				'position'	=> 90
+			),
+		),
+	),
+);
+						</pre>
+      <strong>Important:</strong> Check that your assets.php file is registered <a href="#ht2">(See: Register Config Files)</a><br />
+      <br />
+      </p>
+    </li>
+    <li> Use now following function to include your assets where you need it:<br />
+      <font class="code"> TodoyuPage::addExtAssets('extkey'); </font> </li>
+  </ul>
+  </p>
+  <hr />
+  <a id="ht4"></a>
+  <h2>Debugging</h2>
+  <p>
+  <h3>From PHP</h3>
+  TODOYU's built-in <font class="code">Debug</font>-class already offers the following methods to comfortable trace debug outputs:<br/>
+  <ul>
+    <li> <font class="code">Debug::printHtml();</font> </li>
+    <li> <font class="code">Debug::printInFirebug();</font> </li>
+    <li> <font class="code">Debug::printJson();</font> </li>
+    <li> <font class="code">Debug::printPlain();</font> </li>
+  </ul>
+
+  <br/><h3>From within Dwoo</h3>
+  <p>These Dwoo commands can be used to debug variable from inside a dwoo template in todoyu:<br/>
+  	<table border="1">
+  		<tr>
+  			<th>Trace the whole data rendering array</th>
+  			<th>Trace a specific variable</th>
+  		</tr>
+  		<tr>
+	  		<td class="code">{dump $}</td>
+	  		<td class="code">{dump $varName}</td>
+  		</tr>
+  		<tr>
+	  		<td class="code">{debug $}</td>
+	  		<td class="code">{debug $varName}</td>
+  		</tr>
+  	</table>
+
+  </p>
+
+  <h3>From JavaScript</h3>
+  <p> ... </p>
+  </p>
+  <!-- ........................................................................................... -->
+  <hr/>
+  <h2><a name="ht5" id="ht6"></a>Add Content to a specific area</h2>
+  <p>To render your own content in a specific area, register your rendering function in the config array:</p>
+  <p>&nbsp;</p>
+  <p class="code">$CONFIG['EXT']['project']['renderer']['content'] = 'Your::function';</p>
+  <p>&nbsp;</p>
+  <p>Check the documentation of the specific extension to find out which render areas are available.</p>
+  <p>&nbsp;</p>
+  <!-- ........................................................................................... -->
+  <hr/>
+  <h2 name="ht_pwidget"><a name="ht_pwidget" id="ht_pwidget"></a>Create a PanelWidget</h2>
+  <h3>Make your PanelWidget class</h3>
+  <p>Create the class file in the model folder in your extension. A PanelWidget class has to start with &quot;PanelWidget&quot;. Ex: ext/demo/model/PanelWidgetMyDemoTool.class.php</p>
+  <p>The constructor of the PanelWidget has to take 2 parameters which are arrays:</p>
+  <ul>
+    <li>array $config: widget configuration</li>
+    <li>array $params: parameters of the current request</li>
+  </ul>
+  <p>The first thing you have to do in your constructor, call the parent::__construct() to initialize the widget. In the constructor you can also add some assets and load widget configuration and data.</p>
+  <h3>Define widget assets</h3>
+  <p>Add widget-specific assets inside <font class="code">config/assets.php</font>.
+Use a specific sub-array e.g called 'pwidgetMyTool' within the config array
+  (<font class="code">$CONFIG['EXT'][EXTKEY]['assets']</font>), structured identical to the sub array <font class="code">'default'</font> and <font class="code">'public'</font>.</p>
+  <p>&nbsp;</p>
+  <p>Load the defined assets in the constructor of the PanelWidget. Ex: TodoyuPage::addExtAssets(EXTKEY, 'pWidgetDemo');</p>
+  <h3>Create language file for widget</h3>
+  <p>Register the localization-XML file of the widget (within <font class="code">ext\extname\ext.php</font>) to be available later.
+  Example: <font class="code">TodoyuLocale::registerModule('panelwidgetUserSelector', PATH_EXT_USER . '/locale/pwidgetUserSelector.xml');</font></p>
+  <p>&nbsp;</p>
+  <h3>Call the Javascript init() function</h3>
+  <p>To call the init() function for the PanelWidgets Javascript, add this to your constructor:</p>
+  <p class="code">    TodoyuPage::addJsOnloadedFunction('Todoyu.Ext.project.PanelWidget.ProjectTree.init.bind(Todoyu.Ext.project.PanelWidget.ProjectTree)');</p>
+  <p>You need to bind the init function to its parent object, because else it will be the window object.<br/>
+    <br/>
+  </p>
+  </p>
+
+  <!-- ........................................................................................... -->
+
+  <hr />
+  <h2><a name="ht_observerpanelwidget"></a>Observe a PanelWidget</h2>
+  <p>First the PanelWidget has to be observable. So the PanelWidget has to observe itself to check for any changes. If a change is detected (click-event, form field change or whatever), the PanelWidget has to inform the PanelWidget-Observer, so he can inform all listeners. The listeners have to register themself by the observer with the key of the PanelWidget which should be observed and a handler function which will be called.</p>
+  <p>Order how the register and react:</p>
+  <ol>
+    <li>LISTENER registers his handler function for a PanelWidget at the OBSERVER<br>
+    Todoyu.PanelWidget.observe('observedWidgetKey', this.onWidgetChanged.bind(this));</li>
+    <li>WIDGET observes itself. The easiest way would be an observer for a DOM element<br>
+    $('widgetDomElement').observer('click', this.onClicked.bindAsEventListener(this));</li>
+    <li>Event: User clicked on the widget (changed some values)</li>
+    <li>WIDGET observer registers the event and calls the function onUpdate()</li>
+    <li>The WIDGETs onUpdate() function calls the observer with its own key and the current values<br>
+    Todoyu.PanelWidget.inform(this.key, currentValues)</li>
+    <li>The OBSERVER gives the parameters to all registered handlers for the calling widget</li>
+  </ol>
+  <p>&nbsp;</p>
+
+  <!-- ........................................................................................... -->
+
+  <br/><br/><hr/>
+  <h2><a name="ht7" id="ht7"></a>Filter widget definitions</h2>
+  <p>
+  <ul>
+    <li> Filter widgets of an extension are defined in <font class="code">ext/extkey/conf/filters.php</font> </li>
+    <li> Define your Filter Widgets in following array <font class="code">$CONFIG['FILTERS']['YOURTYPE']</font> </li>
+    <li> The array key of each widget is its name (use Camelcase!) </li>
+  </ul>
+  <h3>There is a list of fields which are required in this array:</h3>
+  <table border="1">
+    <tr>
+      <td>funcRef</td>
+      <td>string: 'class::function'</td>
+      <td>Function to filter your Records.</td>
+    </tr>
+    <tr>
+      <td>label</td>
+      <td>string: 'LLL:path.to.my.label'</td>
+      <td>Label of the widget</td>
+    </tr>
+    <tr>
+      <td>optgroup</td>
+      <td>string: 'LLL:path.to.my.optgroup.label'</td>
+      <td>You can define to which option-group your widget belongs to</td>
+    </tr>
+    <tr>
+      <td>widget</td>
+      <td>string: 'textinput'</td>
+      <td>The type of your widget</td>
+    </tr>
+    <tr>
+      <td>wConf</td>
+      <td>array</td>
+      <td>individual configurations, depends on widget type.</td>
+    </tr>
+  </table>
+  <h3>Individual widget configurations (wConf) by Type</h3>
+  <h4>textinput</h4>
+  <table border="1">
+    <tr>
+      <td>autocomplete</td>
+      <td>bool</td>
+      <td>Has this field an autocompletion funciton?</td>
+    </tr>
+    <tr>
+      <td>funcRef</td>
+      <td>string: 'class::function'</td>
+      <td>Function to handle the autocompletion returns an array('item_ID' => 'item_label')</td>
+    </tr>
+    <tr>
+      <td>funcParams</td>
+      <td>array</td>
+      <td>Feel free to add some more Parameters to the autocompletion function</td>
+    </tr>
+    <tr>
+      <td>LabelFuncRef</td>
+      <td>string: 'class::function'</td>
+      <td>Function to set the Autocompleter text field to the correct value.</td>
+    </tr>
+  </table>
+  <h4>checkbox</h4>
+  <table border="1">
+    <tr>
+      <td>checked</td>
+      <td>bool</td>
+      <td>Is it checked by default?</td>
+    </tr>
+  </table>
+  <h4>select</h4>
+  <table border="1">
+    <tr>
+      <td>multiple</td>
+      <td>bool</td>
+      <td>Is it a multiple selector?</td>
+    </tr>
+    <tr>
+      <td>size</td>
+      <td>integer</td>
+      <td>size of the selector</td>
+    </tr>
+    <tr>
+      <td>funcRef</td>
+      <td>string: 'class::function'</td>
+      <td>Function to handle the options of the selector. Returns an array('item_ID' => 'item_label')</td>
+    </tr>
+    <tr>
+      <td>funcParams</td>
+      <td>array</td>
+      <td>Feel free to add some more Parameters to the selector function</td>
+    </tr>
+  </table>
+  <h4>Radio</h4>
+  <table border="1">
+    <tr>
+      <td>funcRef</td>
+      <td>string: 'class:function'</td>
+      <td>Function to handle the options of the radion. Returns an array('item_ID' => 'item_label')</td>
+    </tr>
+    <tr>
+      <td>funcParams</td>
+      <td>array</td>
+      <td>Feel free to add some more Parameters to the radio function</td>
+    </tr>
+  </table>
+  <h3>Example</h3>
+  <pre class="code">
+$CONFIG['FILTERS']['DEMO'] = array (
+	'demoName' => array(
+		'funcRef'	=> 'demoFilterHandler::filterByDemoName',
+		'label'		=> 'LLL:demo.filterwidget.demoName',
+		'optgroup'	=> 'LLL:demo.filterwidget.optgroup1',
+		'widget'	=> 'textinput',
+		'wConf'		=> array (
+			'autocomplete'	=> true,
+			'funcRef'		=> 'demoFilterHandler::autocompleteDemoNames',
+			'funcParams'	=> array (
+				'orderBy'	=> 'sorting'
+			)
+		)
+	)
+);
+		</pre>
+  <h3>Register an own type of filterwidgets</h3>
+  <p>It is possible to add an own widget type of filterwigets: </p>
+  <ul>
+    <li> FilterWidgets are registered in following file: <font class="code">ext/extkey/conf/filterwidgetconf.php</font> </li>
+    <li> Define your Filterwidget type in following array: <font class="code">$CONFIG['FILTERCONF']['FILTERWIDGETS']</font> </li>
+    <li> The array key of each type is its name </li>
+  </ul>
+  <h4>Fields to define</h4>
+  <table border="1">
+    <tr>
+      <td>tmpl</td>
+      <td>string</td>
+      <td>Path to your tmpl file</td>
+    </tr>
+    <tr>
+      <td>customDefinitionProcFunc</td>
+      <td>string: 'class::method'</td>
+      <td>Function to manipulate the definitions, which are given to the template. Parameter is the array of definitions, the return value too.</td>
+    </tr>
+  </table>
+  </p>
+
+  <!-- ........................................................................................... -->
+
+  <br/><br/><hr/>
+  <h2><a name="ht8" id="ht7"></a>Popups</h2>
+  <p>
+  	<h4>1. Evoking rendering/ display/ hiding (toggeling) of a popup-layer (use in JavaScript)</h4>
+	Using the command:<br/>
+	<font class="code">Todoyu.Popup.toggle(popupLayerID, contentUrl);</font><br/>
+	todoyu's popup-library will handle popup-layers almost automaticly, the different effects are:<br/>
+	<table border="1">
+		<tr>
+			<th>Situation</th>
+			<th>Effect</th>
+		</tr
+		><tr>
+			<td>The popup-layer does not exist yet (first usage)</td>
+			<td>The popup-layer will be rendered (see 2.) and displayed</td>
+		</tr>
+		<tr>
+			<td>The popup-layer does exist and is visible</td>
+			<td>The popup-layer will be toggled to be invisible</td>
+		</tr>
+		<tr>
+			<td>The popup-layer does exist and is invisible</td>
+			<td>The popup-layer will be toggled to be ininvisible</td>
+		</tr>
+	</table>
+
+	<br/><br/>
+  	<h4>2. Rendering content in a popup-layer (use inside PHP controller)</h4>
+  	To have content rendered inside a popup-window, use the command:<br/>
+  	<font class="code">renderPopup($template, $data = array(), $compiler = null, $output = false, $id = '', $width = 920, $height = 200, $left = 20, $top = 20, $title = 'todoyu warning: no popup title given!') {</font>
+  	<br/><br/>
+  	The procedure is the same as when rendering regular (non-popup) content with dwoo in todoyu, but the rendered content will be inserted inside a popup-layer.
+  	The popup-layer to include the rendered content, will be rendered automaticly from todoyu's core's popup-layer template (by the given parameters specifying
+  	 the popup's ID, width, height, position and title).
+  	<br/><br/>
+
+  </p>
+  
+  <!-- ........................................................................................... -->
+
+  <br/><br/><hr/>
+  <h2><a name="ht9" id="ht9"></a>Formulare</h2>
+
+	<h3>Button (normal)</h3>
+<pre class="code htmlcode">
+<div class="formElement buttonElement">
+	<div class="formField">
+		<button type="submit" class="button"><span>{Label}</span><span class="rgt"><!-- right --></span></button>
+	</div>
+	<div class="formClear"><!-- --></div>
+</div>
+</pre>
+
+	<h3>Button (mit Icon)</h3>
+<pre class="code htmlcode">
+<div class="formElement buttonElement">
+	<div class="formField">
+		<button type="submit" class="button"><span class="[[green]]hasIcon yourClassName[[/green]]" >{Label}</span><span class="rgt"><!-- right --></span></button>
+	</div>
+	<div class="formClear"><!-- --></div>
+</div>
+</pre>
+
+<h2><a name="ht10" id="ht10"></a>Form XML </h2>
+	<h3>Footer - Save and Cancel Button</h3>
+<pre class="code xmlcode">
+<fieldset name="[[green]]buttons[[/green]]">
+		<legend>Actions</legend>
+		<class>buttons</class>
+		<elements>
+			<field type="button" name="save">
+				<text>LLL:form.field.save</text>
+				<type>submit</type>
+				<class>[[green]]buttonSave[[/green]]</class>
+				[[green]]<hasIcon>1</hasIcon>[[/green]]
+			</field>
+			<field type="button" name="cancel">
+				<text>LLL:form.field.cancel</text>
+				<type>button</type>
+				<class>[[green]]buttonCancel[[/green]]</class>
+				<onclick>Todoyu.Ext.portal.PanelWidget.quickTaskWizard.closePopup()</onclick>
+				[[green]]<hasIcon>1</hasIcon>[[/green]]
+			</field>
+		</elements>
+</fieldset>
+</pre>
+
+	<h3>Button with Icon</h3>
+	<p>Make a &lt;hasIcon&gt; Attribute</p>
+<pre class="code xmlcode">
+<field type="button" name="save">
+	<text>LLL:form.field.save</text>
+	<type>submit</type>
+	<class>buttonSave</class>
+	[[green]]<hasIcon>1</hasIcon>[[/green]]
+</field>
+</fieldset>
+</pre>
+
+</div>
+</body>
+</html>

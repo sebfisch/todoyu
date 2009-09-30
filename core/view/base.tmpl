@@ -1,0 +1,56 @@
+{include "core/view/pageheader.tmpl"}
+
+<body id="todoyu-{$bodyID}" class="todoyu-{$bodyID}" {foreach $bodyAttributes attribut}{$attribute.name}="{$attribute.value}" {/foreach}>
+
+{foreach $bodyElements bodyElement}
+{$bodyElement}
+{/foreach}
+
+<div id="header">
+	<div class="inner bclFF">
+		{include "core/view/toppanel.tmpl"}
+		{$navigation}
+	</div>
+</div>
+<div id="box">
+	<div id="contentBox">
+		<div id="main">
+			<div id="panel" class="panel">
+				<div class="panelHeader"><!-- panel header --></div>
+			{block "panel"}
+				Column for PanelWidgets
+			{/block}
+				<div class="panelFooter"><!-- panel footer --></div>
+			</div>
+			<div id="right" class="content bclFF">
+				<span class="lt"><!-- left / top --></span>
+				<span class="rt"><!-- right / top --></span>
+				<span class="lb"><!-- left / bottom --></span>
+				<span class="rb"><!-- right / bottom --></span>
+				<div id="content">
+					{block "content"}
+						Main content area
+					{/block}
+				</div><!-- /inner -->
+			</div>
+			<div class="clear"><!-- --></div>
+		</div>
+	</div>
+</div>
+
+{include "core/view/footer.tmpl"}
+
+<ul id="contextmenu"></ul>
+
+{if $jsInlines}
+<script type="text/javascript">
+/*]]>*/
+{foreach $jsInlines jsInline}
+{$jsInline}
+{/foreach}
+/*<![CDATA[*/
+</script>
+{/if}
+
+</body>
+</html>

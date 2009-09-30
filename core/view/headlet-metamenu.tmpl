@@ -1,0 +1,9 @@
+{extends "headlet.tmpl"}
+
+{block "headlet"}
+	<ul id="metamenu" class="metamenu">
+{foreach $entries entry}
+		<li id="metamenu-{$entry.key}"{if $dwoo.foreach.default.first} class="first"{/if}><a href="{$entry.href}" {if $entry.onClick}onclick="{$entry.onClick}"{/if} {if $entry.onMouseOver}onmouseover="{$entry.onMouseOver}"{/if} {if $entry.onMouseOut}onmouseout="{$entry.onMouseOut}"{/if}>{$entry.label}</a></li>
+{/foreach}
+	</ul>
+{/block}

@@ -1,0 +1,21 @@
+.content .contentElement {
+	clear: both;
+}
+.content ul.noListType li {
+	background: none;
+	padding-left: 0;
+}
+.content ol {
+	margin-left: 20px;
+}
+.content dt {
+	font-weight: bold;
+}
+.content em {
+	margin: 0 !important;
+	margin: 0 -1px;
+}
+
+/* -----------------------------------------------
+	standard todoyu content style
+----------------------------------------------- */

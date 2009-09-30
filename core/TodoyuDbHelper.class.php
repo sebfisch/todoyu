@@ -1,0 +1,96 @@
+<?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
+
+/**
+ * Various database helper functions
+ * Usefull database operations used in several extensions
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+
+class TodoyuDbHelper {
+
+	/**
+	 * Save MM relations from 1 record to n others
+	 *
+	 * @param	String		$mmTable			Link table
+	 * @param	String		$localField			Locale field name (for the one record linked to the others)
+	 * @param	String		$foreignField		Foreign field name for the other records
+	 * @param	Integer		$idRecord			The linking record
+	 * @param	Array		$foreignRecordIDs	The other linked records
+	 * @param	Bool		$removeCurrent		Remove all current links of the record
+	 */
+	public static function saveMMrelations($mmTable, $localField, $foreignField, $idRecord, array $foreignRecordIDs, $removeCurrent = true) {
+		$idRecord			= intval($idRecord);
+		$foreignRecordIDs	= TodoyuDiv::intvalArray($foreignRecordIDs, true, true);
+
+		if( $removeCurrent ) {
+			self::removeMMrelations($mmTable, $localField, $idRecord);
+		}
+
+		foreach($foreignRecordIDs as $idForeignRecord) {
+			self::addMMrelation($mmTable, $localField, $foreignField, $idRecord, $idForeignRecord);
+		}
+	}
+
+
+
+	/**
+	 * Add a single MM relation
+	 *
+	 * @param unknown_type $mmTable
+	 * @param unknown_type $localField
+	 * @param unknown_type $foreignField
+	 * @param unknown_type $idLocalRecord
+	 * @param unknown_type $idForeignRecord
+	 */
+	public static function addMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord) {
+		$data	= array(
+			$localField		=> intval($idLocalRecord),
+			$foreignField	=> intval($idForeignRecord)
+		);
+
+		Todoyu::db()->addRecord($mmTable, $data);
+	}
+
+	public static function removeMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord) {
+		$idLocalRecord	= intval($idLocalRecord);
+		$idForeignRecord= intval($idForeignRecord);
+
+		$where	= 	Todoyu::db()->backtick($localField) . ' = ' . $idLocalRecord . ' AND ' .
+					Todoyu::db()->backtick($foreignField) . ' = ' . $idForeignRecord;
+		$limit	= 1;
+
+		return Todoyu::db()->doDelete($mmTable, $where, $limit);
+	}
+
+	public static function removeMMrelations($mmTable, $field, $idRecord) {
+		$idRecord	= intval($idRecord);
+		$where		= Todoyu::db()->backtick($field) . ' = ' . $idRecord;
+
+		Todoyu::db()->doDelete($mmTable, $where);
+	}
+
+}
+
+
+?>

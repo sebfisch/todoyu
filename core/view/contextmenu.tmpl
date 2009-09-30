@@ -1,0 +1,9 @@
+{foreach $items item}
+	<li class="{$item.key}" id="contextmenu-{$item.key}" onmouseover="Todoyu.ContextMenu.submenu('{$item.key}', true)" onmouseout="Todoyu.ContextMenu.submenu('{$item.key}', false)">
+		<a onclick="{$item.jsAction}" href="javascript:void(0)" class="{$item.class}">{$item.label}</a>
+	{if $item.submenu}
+		<ul class="context-submenu" id="contextmenu-{$item.key}-submenu">
+			{$item.submenu}
+		</ul>
+	{/if}</li>
+{/foreach}

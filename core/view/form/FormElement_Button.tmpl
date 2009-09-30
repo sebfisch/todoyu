@@ -1,0 +1,5 @@
+{extends "core/view/form/FormElement.tmpl"}
+
+{block name="field"}
+<button class="{$inputClass} {$class}" type="{$type}" name="{$htmlName}" id="{$htmlId}" {if $onclick}onclick="{$onclick}"{/if}{if $title}title="{$title}"{/if}><span{if $hasIconClass} class="{$hasIconClass}"{/if}>{$text}</span><span class="rgt"></span></button>
+{/block}

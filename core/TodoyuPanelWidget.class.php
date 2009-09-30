@@ -1,0 +1,277 @@
+<?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
+
+/**
+ * Base class for panel widgets
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+
+abstract class TodoyuPanelWidget {
+
+	/**
+	 * Data of the widget
+	 *
+	 * @var	Array
+	 */
+	protected $data 	= array();
+
+	/**
+	 * Widget config
+	 *
+	 * @var	Array
+	 */
+	protected $config;
+
+	/**
+	 * Widget parameters
+	 *
+	 * @var	Array
+	 */
+	protected $params;
+
+	/**
+	 * Area ID where widget is rendered (used to load specific configuration)
+	 *
+	 * @var	Integer
+	 */
+	protected $idArea = 0;
+
+	/**
+	 * Collapsed status
+	 *
+	 * @var	Boolean
+	 */
+	protected $collapsed = false;
+
+
+
+	/**
+	 * Initialize basic panel widget configuration
+	 *
+	 * @param	String		$ext		Extension key where the widget is located
+	 * @param	String		$id			Panel widget ID (class name without TodoyuPanelWidget)
+	 * @param	String		$title		Title of the panel widget
+	 * @param	Array		$config		Configuration array for the widget
+	 * @param	Array		$params		Custom parameters for current page request
+	 * @param	Integer		$idArea		Area ID
+	 */
+	public function __construct($ext, $id, $title, array $config = array(), array $params = array(), $idArea = 0) {
+		$this->set('ext', $ext);
+		$this->set('id', $id);
+
+		$this->setTitle($title);
+		$this->setClass($id);
+
+		$this->config	= $config;
+		$this->params	= $params;
+		$this->idArea	= intval($idArea);
+
+		$this->setCollapsed();
+	}
+
+
+
+	/**
+	 * Set data
+	 *
+	 * @param	String		$key
+	 * @param	Mixed		$value
+	 */
+	public function set($key, $value) {
+		$this->data[$key] = $value;
+	}
+
+
+
+	/**
+	 * Set widget title
+	 *
+	 * @param	String		$title
+	 */
+	public function setTitle($title) {
+		$this->set('title', TodoyuDiv::getLabel($title));
+	}
+
+
+
+	/**
+	 * Set widget class
+	 *
+	 * @param	String		$class
+	 */
+	public function setClass($class) {
+		$this->set('class', $class);
+	}
+
+
+	/**
+	 * Add a css class
+	 *
+	 * @param	String		$class
+	 */
+	public function addClass($class) {
+		$classes	= explode(' ', $this->getClass());
+		$classes[]	= $class;
+		$classes	= implode(' ', array_unique($classes));
+
+		$this->setClass($classes);
+	}
+
+
+
+	/**
+	 * Add a hasIcon class
+	 *
+	 */
+	public function addHasIconClass() {
+		$this->addClass('hasIcon');
+	}
+
+
+
+	/**
+	 * set collapsed
+	 *
+	 */
+	public function setCollapsed()	{
+		$this->set('collapsed', TodoyuPanelWidgetManager::loadCollapsedStatus($this->get('ext'), $this->get('id')));
+	}
+
+
+	/**
+	 * Get data
+	 *
+	 * @param	String		$key
+	 * @return	Mixed
+	 */
+	public function get($key) {
+		return $this->data[$key];
+	}
+
+
+
+	/**
+	 * Get ID
+	 *
+	 * @return	String
+	 */
+	public function getID() {
+		return $this->get('id');
+	}
+
+
+
+	/**
+	 * Get box classes
+	 *
+	 * @return	String
+	 */
+	public function getClass() {
+		return $this->get('class');
+	}
+
+
+
+	/**
+	 * Get title
+	 *
+	 * @return	String
+	 */
+	public function getTitle() {
+		return $this->get('title');
+	}
+
+
+
+	/**
+	 * Get area ID
+	 *
+	 * @return	Integer
+	 */
+
+	public function getArea() {
+		return $this->idArea;
+	}
+
+
+
+	/**
+	 * Check if widget is configured as collapsed
+	 *
+	 * @return	Boolean
+	 */
+
+	public function isCollapsed() {
+		return $this->collapsed === true;
+	}
+
+
+
+	/**
+	 * Set box content
+	 *
+	 * @param	String		$content
+	 */
+	protected function setContent($content) {
+		$this->set('content', $content);
+	}
+
+
+
+	/**
+	 * Get content
+	 *
+	 * @return	String
+	 */
+	public function getContent() {
+		return $this->get('content');
+	}
+
+
+
+	/**
+	 * Render panel widget
+	 *
+	 * @return	String
+	 */
+	public function render() {
+		$tmpl	= 'core/view/panelwidget.tmpl';
+
+		return render($tmpl, $this->data);
+	}
+
+
+
+	/**
+	 * Checks if the panel widget is allowed
+	 *
+	 * @return	Boolean
+	 */
+	public function isAllowed()	{
+		return allowed($this->get('ext'), get_class($this));
+	}
+
+}
+
+
+?>

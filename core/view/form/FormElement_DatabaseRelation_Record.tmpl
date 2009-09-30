@@ -1,0 +1,13 @@
+
+<div id="foreign-record-{$record.type}-{$key}" class="databaseRelation">
+	<div id="foreign-record-{$record.type}-{$key}-trigger" class="formtrigger closed" onclick="Todoyu.Form.toggleSubform(this);">
+		<span class="label" title="{Label form.icon.edit}">{$record._label}</span>
+		<span class="additionalStuff">
+			<a href="javascript:void(0)" id="remove-{$record.type}-{$record.index}" class="icon remove removeForeignRecord remove-{$record.type}" onclick="Todoyu.Form.removeSubRecord(this);return false;" title="{Label form.icon.remove}"><span class="hidden">{Label form.icon.remove}</span></a>
+		</span>
+	</div>
+	<div id="foreign-record-{$record.type}-{$key}-formhtml" {if $error != true}style="display:none;"{/if}>
+		{$record.formHTML}
+	</div>
+	<div class="clear"><!-- --></div>
+</div>

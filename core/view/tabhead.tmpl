@@ -1,0 +1,9 @@
+<li id="{$tab.htmlId}" class="item bcg05 tabkey-{$tab.classKey|default:"0"} {$tab.id} {$tab.class} {$tab.position} {if $tab.id == $active}active{/if}">
+	<p id="{$tab.htmlId}-label" class="label">
+		<span class="lt"><!-- --></span>
+		{if $tab.hasIcon == 1}
+		<span class="icon"><!-- icon --></span>
+		{/if}
+		<span class="labeltext">{$tab.label}{if $tab.elementAmount > 0} ({$tab.elementAmount}){/if}</span>
+	</p>
+</li>

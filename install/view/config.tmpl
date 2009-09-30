@@ -1,0 +1,28 @@
+{extends main.tmpl}
+
+{block name="box"}
+<h1>{$title}</h1>
+<p>{$text}</p>
+<form method="post">
+	<table width="500" border="0" cellspacing="0" cellpadding="3">
+      <tr>
+        <td width="109">System Name</td>
+        <td width="379"><input name="systemname" type="text" id="systemname" value="{$fields.server}" /></td>
+      </tr>
+      <tr>
+        <td>System Email</td>
+        <td><input type="text" name="email" id="email" value="{$fields.username}" /></td>
+      </tr>
+      <tr>
+        <td>Language</td>
+        <td><select name="language" id="language">
+          <option value="de">German (deutsch)</option>
+          <option value="en">English (english)</option>
+        </select>
+        </td>
+      </tr>
+    </table>
+<input type="submit" value="Save configuration">
+	<input type="hidden" name="command" value="config">
+</form>
+{/block}

@@ -1,0 +1,630 @@
+<?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
+
+/**
+ * Manage stylesheets and javascripts which are added to the page
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+
+class TodoyuPageAssetManager {
+
+	/**
+	 * Javascripts to add to the page
+	 *
+	 * @var	Array
+	 */
+	private static $javascripts = array();
+
+	/**
+	 * Stylesheets to add to the page
+	 *
+	 * @var	Array
+	 */
+	private static $stylesheets = array();
+
+
+
+	/**
+	 * Add a javascript file to the page (it will be processed as configured)
+	 *
+	 * @param	String		$pathToFile			Path to original file
+	 * @param	Integer		$position			Position in filelist
+	 * @param	Boolean		$compress			Compress content?
+	 * @param	Boolean		$merge				Include file into merge file?
+	 * @param	Boolean		$localize			Parse locale labels
+	 */
+	public static function addJavascript($pathToFile, $position = 100, $compress = true, $merge = true, $localize = true) {
+		$absPathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
+		$position		= intval($position) == 0 ? 100 : intval($position);
+		$compress		= $compress === false ? false : true ;
+		$merge			= $merge 	=== false ? false : true ;
+		$localize		= $localize === false ? false : true ;
+
+			// Break if file not found
+		if( $absPathToFile === false || ! is_file($absPathToFile) ) {
+			TodoyuDebug::printHtml($pathToFile, 'File not found');
+			return false;
+		}
+
+			// Add file, if not already in list
+		if( ! array_key_exists($absPathToFile, self::$javascripts) ) {
+			self::$javascripts[$absPathToFile] = array(
+				'file'		=> $absPathToFile,
+				'position'	=> $position,
+				'compress'	=> $compress,
+				'merge'		=> $merge,				
+				'localize'	=> $localize,
+				'lib'		=> strstr($absPathToFile, PATH_LIB) !== false
+			);
+		}
+	}
+
+
+
+	/**
+	 * Add a stylesheet file to the page (it will be processed as configured)
+	 *
+	 * @param	String		$pathToFile			Path to original file
+	 * @param	String		$media				Media type
+	 * @param	Integer		$position			Position in filelist
+	 * @param	Boolean		$compress			Compress content?
+	 * @param	Boolean		$merge				Include file into merge file?
+	 */
+	public static function addStylesheet($pathToFile, $media = 'all', $position = 100, $compress = true, $merge = true) {
+		$pathToFile	= TodoyuDiv::pathAbsolute($pathToFile);
+		$position	= intval($position) == 0 ? 100 : intval($position);
+		$compress	= $compress === false ? false : true ;
+		$merge		= $merge 	=== false ? false : true ;
+
+		if( ! is_file($pathToFile) ) {
+			TodoyuDebug::printHtml($pathToFile, 'File not found');
+		}
+
+		if( ! array_key_exists($pathToFile, self::$stylesheets) ) {
+			self::$stylesheets[$pathToFile] = array(
+				'file'		=> $pathToFile,
+				'position'	=> $position,
+				'compress'	=> $compress,
+				'merge'		=> $merge,
+				'media'		=> $media
+			);
+		}
+	}
+
+
+
+	/**
+	 * Add processed assets (js+css) to the page
+	 *
+	 */
+	public static function addAssetsToPage() {
+			// Make cache folders
+		TodoyuDiv::makeDirDeep(PATH_CACHE . '/js');
+		TodoyuDiv::makeDirDeep(PATH_CACHE . '/css');
+
+			// Add javascripts
+		$jsFiles	= self::getJavascripts();
+		
+			// Add all js files
+		foreach($jsFiles as $jsFile) {
+			TodoyuPage::add('jsFiles', array(
+				'file' => $jsFile
+			));
+		}
+
+			// Add stylesheets
+		$cssFiles	= self::getStylesheets();
+
+			// Add all css files
+		foreach($cssFiles as $cssFile) {
+			TodoyuPage::add('cssFiles', array(
+				'file' 	=> $cssFile['file'],
+				'media' => $cssFile['media']
+			));
+		}
+	}
+
+
+
+
+
+
+
+
+	### GLOBAL METHODS ###
+
+
+
+	/**
+	 * Build a unique mergefile name
+	 * The md5 hash is based on the content of the configuration and the
+	 * modification times of all included files
+	 *
+	 * @param	Array		$fileConfigs
+	 * @param	String		$fileExt
+	 * @return	String
+	 */
+	private static function buildMergefileName(array $fileConfigs, $fileExt) {
+		$fileConfigs= TodoyuDiv::sortArrayByLabel($fileConfigs, 'position');
+		$files		= TodoyuDiv::getColumnFromArray($fileConfigs, 'file');
+		$modTimes	= '';
+
+		foreach($files as $file) {
+			if(is_file($file))	{
+				$modTimes .= filemtime($file);
+			}
+		}
+
+		$md5hash	= md5(json_encode($fileConfigs) . $modTimes);
+
+		return $md5hash . '.' . $fileExt;
+	}
+
+
+
+
+
+
+
+
+
+
+	### JAVASCRIPT ###
+
+
+	/**
+	 * Get all JavaScripts which have to be included in the page
+	 *
+	 * @return	Array
+	 */
+	private static function getJavascripts() {
+		$files	= array();
+		$single	= array();
+		
+			// Arrays of core / 3rd party merge file configs
+		$merge		= array();
+		$libsMerge	= array();
+
+		$javascripts= TodoyuDiv::sortArrayByLabel(self::$javascripts, 'position');
+		$doMerging	= $GLOBALS['CONFIG']['CACHE']['JS']['merge'] === true;
+		
+		foreach( $javascripts as $fileConfig ) {
+			if( $doMerging && $fileConfig['merge'] ) {
+					// If file is a thirdparty library, add to a seperate merge file
+				if( $fileConfig['lib'] === true ) {
+					$libsMerge[]	= $fileConfig;
+				} else {
+					$merge[]	= $fileConfig;
+				}
+			} else {
+				$single[]	= $fileConfig;
+			}
+		}
+
+			// Add single files to list
+		if( sizeof($single) ) {
+			$files = self::getSingleJavascriptFiles($single);
+		}
+		
+			// Add library merge file to list
+		if( sizeof($libsMerge) > 0 ) {
+			$files[] = self::getMergedJavascriptFile($libsMerge);
+		}
+
+			// Add merge-file to list
+		if( sizeof($merge) > 0 ) {
+			$files[] = self::getMergedJavascriptFile($merge);
+		}
+
+		return $files;
+	}
+
+
+	/**
+	 * Get the javascript merge file
+	 *
+	 * @param	Array		$fileConfigs		Configs for all files which have merging enabled
+	 * @return	String		Web path to merge file in cache
+	 */
+	private static function getMergedJavascriptFile(array $fileConfigs) {
+		$mergeFileName	= self::buildMergefileName($fileConfigs, 'js');
+		$mergeFilePath	= PATH_CACHE . '/js/' . $mergeFileName;
+
+			// If merge file doesn't exist yet, create it
+		if( ! is_file($mergeFilePath) ) {
+			$mergeCode	= '';
+
+			$doLocalize	= $GLOBALS['CONFIG']['CACHE']['JS']['localize'];
+			$doCompress	= $GLOBALS['CONFIG']['CACHE']['JS']['compress'];
+
+			foreach($fileConfigs as $fileConfig) {
+				$fileCode	= file_get_contents($fileConfig['file']);
+
+				if( $doLocalize && $fileConfig['localize'] ) {
+					$fileCode = self::localizeJavascript($fileCode);
+				}
+				if( $doCompress && $fileConfig['compress'] ) {
+					$fileCode = self::compressJavascript($fileCode);
+				}
+
+					// If not compressed, add file information at the top of the code
+				if( $doCompress === false ) {
+					$fileCode = "\n\n// " . TodoyuFileManager::pathWeb($fileConfig['file']) . "\n//" . str_repeat('=', 50) . "\n" . $fileCode;
+				}
+
+				$mergeCode .= $fileCode;
+			}
+
+			file_put_contents($mergeFilePath, $mergeCode);
+		}
+
+		return TodoyuFileManager::pathWeb($mergeFilePath);
+	}
+
+
+
+	/**
+	 * Get paths to javascript files which are not merged (but possibly compressed and localized)
+	 *
+	 * @param	Array		$fileConfigs
+	 * @return	Array
+	 */
+	private static function getSingleJavascriptFiles(array $fileConfigs) {
+		$fileConfigs= TodoyuDiv::sortArrayByLabel($fileConfigs);
+		$files		= array();
+		$doLocalize	= $GLOBALS['CONFIG']['CACHE']['JS']['localize'] === true;
+		$doCompress	= $GLOBALS['CONFIG']['CACHE']['JS']['compress'] === true;
+
+		foreach($fileConfigs as $fileConfig) {
+			if( ($doLocalize && $fileConfig['localize']) || ($doCompress && $fileConfig['compress']) ) {
+
+				$localized	= $doLocalize && $fileConfig['localize'];
+				$compressed	= $doCompress && $fileConfig['compress'];
+
+					// Get file path
+				$filePath	= self::getSingleJavascriptPath($fileConfig['file'], $compressed, $localized);
+
+				if( ! is_file($filePath) ) {
+					$fileCode	= file_get_contents($fileConfig['file']);
+
+					if( $localized ) {
+						$fileCode 	= self::localizeJavascript($fileCode);
+						$localized	= true;
+					}
+					if( $compressed ) {
+						$fileCode	= self::compressJavascript($fileCode);
+						$compressed	= true;
+					}
+
+						// Save content in this file
+					TodoyuDiv::makeDirDeep( dirname($filePath) );
+					file_put_contents($filePath, $fileCode);
+				}
+			} else {
+				$filePath	= $fileConfig['file'];
+			}
+
+			$files[] = TodoyuFileManager::pathWeb($filePath);
+		}
+
+		return $files;
+	}
+
+
+
+	/**
+	 * Path to single javascript file
+	 *
+	 * @param	String		$pathToFile
+	 * @param	Boolean		$compressed
+	 * @param	Boolean		$localized
+	 * @return	String
+	 */
+	private static function getSingleJavascriptPath($pathToFile, $compressed = false, $localized = false) {
+		$pathToFile	= TodoyuDiv::pathAbsolute($pathToFile);
+		$dirHash	= TodoyuDiv::md5short(dirname($pathToFile));
+		$pathInfo	= pathinfo($pathToFile);
+		$basename	= basename($pathToFile, '.' . $pathInfo['extension']);
+
+		$postfix	= ($compressed?'-min':'') . ($localized?'-'.TodoyuLocale::getLocale():'');
+
+		$storagePath= PATH_CACHE . '/js/' . $dirHash . '.' . $basename . $postfix . '.' . $pathInfo['extension'];
+
+		return $storagePath;
+	}
+
+
+
+	/**
+	 * Compress javascript code
+	 *
+	 * @param	String		$javascriptCode
+	 * @return	String
+	 */
+	private static function compressJavascript($javascriptCode) {
+		return JSMin::minify($javascriptCode);
+	}
+
+
+
+	/**
+	 * Localize a javascript
+	 *
+	 * @param	String	$javascriptCode
+	 * @return	String
+	 */
+	private static function localizeJavascript($javascriptCode) {
+		return preg_replace_callback($GLOBALS['CONFIG']['CACHE']['JS']['localePattern'], array('PageAssetManager', 'localizeJavascriptCallback'), $javascriptCode);
+	}
+
+
+
+	/**
+	 * Callback for javascrip localization
+	 *
+	 * @param	Array		$match		Regex matching data
+	 * @return	String
+	 */
+	private static function localizeJavascriptCallback(array $match) {
+		return TodoyuLocale::getLabel($match[1]);
+	}
+
+
+
+
+
+
+
+
+
+
+
+	### STYLESHEETS ###
+
+
+	/**
+	 * Get stylesheets which have to be included in the page
+	 * The files are merged and compressed as configured in the asset array
+	 *
+	 * @return	Array
+	 */
+	private static function getStylesheets() {
+		$files	= array();
+		$merge	= array();
+		$single	= array();
+
+		$stylesheets= TodoyuDiv::sortArrayByLabel(self::$stylesheets, 'position');
+		$doMerging	= $GLOBALS['CONFIG']['CACHE']['CSS']['merge'];
+
+		foreach( $stylesheets as $fileConfig ) {
+			if( $doMerging && $fileConfig['merge'] ) {
+				$merge[]	= $fileConfig;
+			} else {
+				$single[]	= $fileConfig;
+			}
+		}
+
+			// Process non-merge files
+		if( sizeof($single) ) {
+			$files = array_merge($files, self::getSingleCssFiles($single));
+		}
+
+			// Process merge files
+		if( sizeof($merge) > 0 ) {
+			$files = array_merge($files, self::getMergedCssFiles($merge));
+		}
+
+		return $files;
+	}
+
+
+
+	/**
+	 * Get single css files (non-merge)
+	 *
+	 * @param	Array		$fileConfigs
+	 * @return	Array		List of file paths with media type attribute
+	 */
+	private static function getSingleCssFiles(array $fileConfigs) {
+		$fileConfigs= TodoyuDiv::sortArrayByLabel($fileConfigs, 'position');
+		$files		= array();
+		$doCompress	= $GLOBALS['CONFIG']['CACHE']['CSS']['compress'];
+
+		foreach($fileConfigs as $fileConfig) {
+			if( $doCompress && $fileConfig['compress'] ) {
+				$compressed	= false;
+
+					// Load file content
+				$fileCode	= file_get_contents($fileConfig['file']);
+
+				if( $doCompress && $fileConfig['compress'] ) {
+					$fileCode	= self::compressStylesheet($fileCode);
+					$compressed	= true;
+				}
+
+					// Get file path (absolute)
+				$filePath	= self::getSingleStylesheetPath($fileConfig['file'], $compressed, $fileConfig['media']);
+
+					// Rewrite external media paths (url())
+				$fileCode	= self::rewriteRelativPaths($fileCode, $fileConfig['file'], $filePath);
+
+					// Save content in this file
+				TodoyuDiv::makeDirDeep( dirname($filePath) );
+				file_put_contents($filePath, $fileCode);
+			} else {
+				$filePath	= $fileConfig['file'];
+			}
+
+			$files[] = array(
+				'file'	=> TodoyuFileManager::pathWeb($filePath),
+				'media'	=> $fileConfig['media']
+			);
+		}
+
+		return $files;
+	}
+
+
+
+	/**
+	 * Get path to cached css file
+	 *
+	 * @param	String		$pathToFile			Path to uncached file
+	 * @param	Boolean		$compressed			Compress content with cssmin?
+	 * @return	String		Absolute path for the cache file
+	 */
+	private static function getSingleStylesheetPath($pathToFile, $compressed = false) {
+		$pathToFile	= TodoyuDiv::pathAbsolute($pathToFile);
+		$dirHash	= TodoyuDiv::md5short(dirname($pathToFile));
+		$pathInfo	= pathinfo($pathToFile);
+		$basename	= basename($pathToFile, '.' . $pathInfo['extension']);
+
+		$postfix	= $compressed ? '-min' : '' ;
+
+		$storagePath= PATH_CACHE . '/css/' . $basename . '-' . $dirHash . $postfix . '.' . $pathInfo['extension'];
+
+		return $storagePath;
+	}
+
+
+
+	/**
+	 * Get merged css files (one for each media type)
+	 *
+	 * @param	Array		$fileConfigs
+	 * @return	Array
+	 */
+	private static function getMergedCssFiles(array $fileConfigs) {
+		$files		= array();
+		$media		= array();
+		$doCompress	= $GLOBALS['CONFIG']['CACHE']['CSS']['compress'];
+
+			// Split in to the different media types
+		foreach($fileConfigs as $fileConfig) {
+			$media[$fileConfig['media']][] = $fileConfig;
+		}
+
+			// Process all files of a media type
+		foreach($media as $mediaType => $mediaFileConfigs) {
+			$mergeFilePath = PATH_CACHE . '/css/' . self::buildMergefileName($mediaFileConfigs, 'css');
+
+				// If merge file doesn't exist yet, create it
+			if( ! is_file($mergeFilePath) ) {
+				$mergeCode	= '';
+
+				foreach($mediaFileConfigs as $fileConfig) {
+					if(is_file($fileConfig['file']))	{
+							// Load file content
+						$fileCode	= file_get_contents($fileConfig['file']);
+							// Rewrite external media paths (url())
+						$fileCode	= self::rewriteRelativPaths($fileCode, $fileConfig['file'], $mergeFilePath);
+
+						if( $doCompress && $fileConfig['compress'] ) {
+							$fileCode = self::compressStylesheet($fileCode);
+						}
+
+							// If not compressed, add file information at the top of the code
+						if( $doCompress === false ) {
+							$fileCode = "\n\n// " . TodoyuFileManager::pathWeb($fileConfig['file']) . "\n//" . str_repeat('=', 50) . "\n" . $fileCode;
+						}
+
+						$mergeCode .= $fileCode;
+					}
+				}
+
+					// Write content into file
+				file_put_contents($mergeFilePath, $mergeCode);
+			}
+
+			$files[] = array(
+				'file'	=> TodoyuFileManager::pathWeb($mergeFilePath),
+				'media'	=> $mediaType
+			);
+		}
+
+		return $files;
+	}
+
+
+
+	/**
+	 * Compress css code
+	 *
+	 * @param	String		$cssCode
+	 * @return	String
+	 */
+	private static function compressStylesheet($cssCode) {
+		return cssmin::minify($cssCode);
+	}
+
+
+
+	/**
+	 *  Rewrite relative css paths in files
+	 *
+	 * @param	String		$cssCode
+	 * @param	String		$pathToUncompressedFile
+	 * @return 	String
+	 */
+	private static function rewriteRelativPaths($cssCode, $pathToUncompressedFile) {
+			// Remove quotes in url() elements
+		$pattern	= '|url\([\'"]{1}([^\'")]+?)[\'"]{1}\)|';
+		$replace	= 'url($1)';
+		$cssCode	= preg_replace($pattern, $replace, $cssCode);
+
+			// Rewrite paths
+		$search		= 'url(';
+		$replace 	= 'url(../../' . dirname( TodoyuFileManager::pathWeb($pathToUncompressedFile) ) . '/';
+		$cssCode	= str_replace($search, $replace, $cssCode);
+
+			// Make a real path
+		$search		= '|url\((.*?)\)|';
+		$cssCode	= preg_replace_callback($search, array(self,'callbackRealpath'), $cssCode);
+
+		return $cssCode;
+	}
+
+
+
+	/**
+	 * Callback for make a nicer and shorter path in the css file url attributes
+	 *
+	 * @param	Array		$match		Matching data array
+	 * @return	String
+	 */
+	private static function callbackRealpath(array $match) {
+		$realpath	= realpath(PATH_CACHE . '/css/' . $match[1]);
+
+		if( $realpath !== false ) {
+			$realpath = '../../' . TodoyuFileManager::pathWeb($realpath);
+		} else {
+			$realpath = $match[1];
+		}
+
+		return 'url(' . $realpath . ')';
+	}
+
+}
+
+
+?>
