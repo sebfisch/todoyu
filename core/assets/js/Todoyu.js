@@ -146,6 +146,10 @@ var Todoyu = {
 		var queryParams = document.location.href.toQueryParams();
 
 		return (queryParams.ext);
+	},
+	
+	notify: function(type, message, countdown) {
+		Todoyu.Notification.add(type, message, countdown);
 	}
 
 };

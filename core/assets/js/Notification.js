@@ -19,6 +19,116 @@
 ***************************************************************/
 
 Todoyu.Notification = {
+	
+	/**
+	 * Default countdown if non set
+	 */
+	defaultCountdown: 5,
+	
+	/**
+	 * Template object
+	 */	
+	template: null,
+	
+	/**
+	 * Current id for note, incremented
+	 */
+	id: 1,
+	
+	
+	/**
+	 * Add new notification
+	 * @param	String		type
+	 * @param	String		message
+	 * @param	Integer		countdown
+	 */
+	add: function(type, message, countdown) {
+		this.init();
+		
+		countdown	= Object.isUndefined(countdown) ? this.defaultCountdown : countdown;
+		var id		= this.id++;
+		
+		var data	= {
+			'id': id,
+			'type': type,
+			'message': message,
+			'countdown': countdown			
+		};
+		
+		var note	= this.template.evaluate(data);
+		
+		this.appendNote(id, note);
+		this.countDown.bind(this).delay(1, id);
+	},
+	
+	
+	
+	/**
+	 * Close when clicking in the close button
+	 * @param	DomElement		closeButton
+	 */
+	close: function(closeButton) {
+		var idNote = $(closeButton).up('div.note').id.split('-').last();
+		
+		this.closeNote(idNote);
+	},
+	
+	
+	
+	/**
+	 * Close note by ID
+	 * @param	Integer		id
+	 */
+	closeNote: function(id) {
+		$('notification-note-' + id).fade({
+			'duration': 0.7
+		});
+	},
+	
+	
+	
+	/**
+	 * Init template
+	 */
+	init: function() {
+		if( this.template === null ) {
+			this.template = new Template( '<div class="note #{type}" id="notification-note-#{id}"><div class="icon"></div><div class="message">#{message}</div><div class="countdown">#{countdown}</div><div class="close" onclick="Todoyu.Notification.close(this)"></div></div>');
+		}
+	},
+	
+	
+	
+	/**
+	 * Append new note
+	 * @param	Integer		id
+	 * @param	String		code
+	 */
+	appendNote: function(id, code) {
+		$('notes').insert({'top':code});
+	},
+	
+	
+	
+	/**
+	 * 
+	 * @param	Integer		id
+	 */
+	countDown: function(id) {		
+		var countBox= $('notification-note-' + id).down('.countdown');	
+		var current	= parseInt(countBox.innerHTML, 10);
+
+		if( current === 0 ) {
+			this.closeNote(id);
+		} else {
+			countBox.update(current-1);
+			this.countDown.bind(this).delay(1, id);
+		}
+	},
+	
+
+	
+	
+	
 
 	idElement: 'notification',
 

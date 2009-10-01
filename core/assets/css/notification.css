@@ -1,0 +1,98 @@
+#notifications {
+	position:fixed;
+	z-index:1000;
+	text-align:center;
+	width:100%;
+	left:0;
+	top:105px;
+}
+
+#notifications div.notes {
+	width:978px;
+	margin:0 auto;
+}
+
+#notifications div.note {
+	height:12px;
+	text-align:left;
+	margin-left:283px;
+	width:658px;
+	padding:10px;
+	border:1px solid #AAA;
+	background-color:#FFF;
+	margin-bottom:2px;
+	opacity:0.95;
+}
+
+#notifications div.note div {
+	display:block;
+	float:left;
+	clear:none;
+}
+
+#notifications div.note div.icon {
+	width:16px;
+	height:16px;
+	margin-right:15px;
+	margin-top:-2px;
+}
+
+#notifications div.note div.message {
+	font-weight:bold;
+	color:#333;
+	width:560px;
+	margin-right:20px;
+}
+
+#notifications div.note div.countdown {
+	width:16px;
+	height:16px;
+	text-align:right;
+	margin-right:10px;
+	color:#666;
+}
+
+#notifications div.note div.close {
+	width:16px;
+	height:16px;
+	background:url(../img/notify/cancel.png) 0 0 no-repeat;
+	cursor:pointer;
+}
+
+#notifications div.note div.clear {
+	clear:both;
+}
+
+
+
+/* Success */
+#notifications div.success {
+	background-color:#00ff00;
+}
+
+#notifications div.success div.icon {
+	background:url(../img/notify/accept.png) 0 0 no-repeat;
+}
+
+
+
+/* Error */
+#notifications div.error {
+	background-color:#ff8800;
+}
+
+#notifications div.error div.icon {
+	background:url(../img/notify/error.png) 0 0 no-repeat;
+}
+
+
+/* Info */
+#notifications div.info {
+	background-color:#EFEFEF;
+}
+
+#notifications div.info div.icon {
+	background:url(../img/notify/information.png) 0 0 no-repeat;
+}
+
+

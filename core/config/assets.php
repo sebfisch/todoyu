@@ -190,6 +190,11 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
+			'file'		=> 'core/assets/css/notification.css',
+			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
 			'file'		=> 'core/assets/css/navi.css',
 			'media'		=> 'all',
 			'position'	=> 10
