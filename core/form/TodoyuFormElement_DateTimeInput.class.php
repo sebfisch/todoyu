@@ -87,6 +87,12 @@ class TodoyuFormElement_DateTimeInput extends TodoyuFormElement {
 
 
 
+	/**
+	 * Set value
+	 * If its not already a timestamp, parse it
+	 *
+	 * @param	Mixed		$value			Integer or string in datetime format
+	 */
 	public function setValue($value) {
 		if( ! is_numeric($value) ) {
 			$value = TodoyuTime::parseDateTime($value);
@@ -105,7 +111,6 @@ class TodoyuFormElement_DateTimeInput extends TodoyuFormElement {
 	public function getStorageData() {
 		return $this->getValue();
 	}
-
 
 }
 

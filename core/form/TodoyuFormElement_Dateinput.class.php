@@ -94,20 +94,6 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 		$script	= '<script>Calendar.setup({' . implode(',', $jsConf) . '});</script>';
 
 		return $script;
-
-
-
-
-
-		return '<script>
-				Calendar.setup({
-				 inputField : "' . $this->getHtmlID() . '", // id of the input field
-				 range : [' . $range . '], // allowed years
-				 ifFormat : "' . TodoyuTime::getFormat('date') . '", // format of the input field
-				 align: "br",
-				 button : "' . $this->getHtmlID() . '-calicon", // trigger for the calendar (button ID)
-				 firstDay : 1
-				 });</script>';
 	}
 
 

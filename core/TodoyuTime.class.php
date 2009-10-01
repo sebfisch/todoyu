@@ -290,7 +290,6 @@ class TodoyuTime {
 		$dateParts	= strptime($dateTimeString, $format);
 
 		if( $dateParts === false ) {
-			TodoyuDebug::printInFirebug($dateTimeString, 'Parsing date failed');
 			return 0;
 		}
 
@@ -304,9 +303,9 @@ class TodoyuTime {
 				$dateParts['tm_hour'],
 				$dateParts['tm_min'],
 				$dateParts['tm_sec'],
-				$dateParts['tm_mon'] + 1,
+				$dateParts['tm_mon'],
 				$dateParts['tm_mday'],
-				$dateParts['tm_year'] + 1900
+				$dateParts['tm_year']
 			);
 		}
 	}
