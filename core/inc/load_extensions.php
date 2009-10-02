@@ -34,7 +34,9 @@ foreach($installedExtensions as $extKey) {
 	$extDir	= TodoyuExtensions::getExtPath($extKey);
 	$extFile= $extDir . '/ext.php';
 
-	require_once($extFile);
+	if( is_file($extFile) ) {
+		require_once($extFile);
+	}
 }
 
 ?>

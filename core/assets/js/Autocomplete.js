@@ -95,7 +95,7 @@ Todoyu.Autocomplete = {
 	 * @param	Event	event
 	 */
 	onKeydown: function(event) {
-		if( event.keyCode !== Event.KEY_RETURN ) {
+		if( event.keyCode !== Event.KEY_RETURN && event.keyCode !== Event.KEY_TAB ) {
 			this.selectedFromList = false;
 		}
 	},
