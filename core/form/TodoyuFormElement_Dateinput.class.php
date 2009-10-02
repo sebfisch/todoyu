@@ -83,8 +83,6 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 		$custom	= is_array($this->config['calendar']) ? $this->config['calendar'] : array();
 		$config	= array_merge($calConf, $custom);
 
-		TodoyuDebug::printInFirebug($config);
-
 		$jsConf	= array();
 
 		foreach($config as $key => $value) {
