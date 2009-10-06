@@ -61,7 +61,17 @@ Todoyu.Notification = {
 		this.countDown.bind(this).delay(1, id);
 	},
 	
+	addInfo: function(message, countdown) {
+		this.add('info', message, countdown);
+	},
 	
+	addError: function(message, countdown) {
+		this.add('error', message, countdown);
+	},
+	
+	addSuccess: function(message, countdown) {
+		this.add('success', message, countdown);
+	},
 	
 	/**
 	 * Close when clicking in the close button

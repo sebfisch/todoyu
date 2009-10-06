@@ -36,17 +36,20 @@ class TodoyuFileManager {
 	 */
 	public static function pathAbsolute($path) {
 		$path	= trim($path);
-		
+
+			// Replace directory seperatory with current system settings
+		$path = str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, $path);
+
 			// If no absolute path
-		if( substr($path, 0, 1) !== '/' && substr($path, 1, 2) !== ':\\' ) {
+		if( substr($path, 0, strlen(PATH)) !== PATH ) {
 			$path = PATH . DIRECTORY_SEPARATOR . $path;
 		}
-		
+
 			// Remove slash at the end
 		if( substr($path, -1, 1) === DIRECTORY_SEPARATOR ) {
 			$path = substr($path, 0, -1);
 		}
-		
+
 		return $path;
 	}
 
@@ -61,7 +64,7 @@ class TodoyuFileManager {
 	public static function pathWeb($absolutePath) {
 		return str_replace('\\', '/', str_replace(PATH . DIRECTORY_SEPARATOR, '', self::pathAbsolute($absolutePath)));
 	}
-	
+
 
 
 	/**
@@ -134,9 +137,9 @@ class TodoyuFileManager {
 
 		return $folders;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Delete all files inside given folder
 	 *
@@ -156,9 +159,9 @@ class TodoyuFileManager {
 			unlink($pathToFolder . '/' . $file);
 		}
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Replace all not allowed characters of a filename by "_" or another character
 	 *
@@ -168,12 +171,12 @@ class TodoyuFileManager {
 
 	public static function makeCleanFilename($dirtyFilename, $replaceBy = '_') {
 		$pattern	= '|[^A-Za-z0-9\.-_\[\]()]|';
-		
+
 		return preg_replace($pattern, $replaceBy, $dirtyFilename);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Create multiple subdirectories to create a path structure in the filesystem
 	 * The path will be a directory (don't give a file path as parameter!)
@@ -182,27 +185,17 @@ class TodoyuFileManager {
 	 */
 	public static function makeDirDeep($directoryPath) {
 		$directoryPath	= self::pathAbsolute($directoryPath);
-		
-			// Prevent directory creation outside of the base path	
-		if( substr($directoryPath, 0, 1) === '/' && ! stristr($directoryPath, PATH) ) {
-			die('Directory creation outside of the PATH is not allowed');
-		}
-		
-			// If PATH is not already a part of the directory path, prepend it (assume its a relative path)
-		if( ! stristr($directoryPath, PATH) ) {
-			$directoryPath = PATH . DIRECTORY_SEPARATOR . $directoryPath;
-		}
-		
+
 			// Check if directory already exists
 		if( is_dir($directoryPath) ) {
 			return true;
 		}
-		
+
 			// Remove base PATH, we only create the subfolders. Split the parts
 		$directoryPath	= str_replace(PATH, '', $directoryPath);
 		$pathParts		= array_slice(explode(DIRECTORY_SEPARATOR, $directoryPath), 1);
 		$basePath		= PATH;
-		
+
 			// Create each level of the subfolder
 		foreach( $pathParts as $pathPart ) {
 			$currentPath = $basePath . DIRECTORY_SEPARATOR . $pathPart;

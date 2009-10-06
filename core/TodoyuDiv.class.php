@@ -1059,6 +1059,7 @@ class TodoyuDiv {
 			if( is_array($disallowedPaths) ) {
 				foreach($disallowedPaths as $disallowedPath) {
 					if( strpos($absoluteFilePath, $disallowedPath) !== false ) {
+
 						return false;
 					}
 				}
@@ -1072,6 +1073,8 @@ class TodoyuDiv {
 				}
 			}
 		}
+
+
 
 			// If file not found, or no allowing config available, disallow download
 		return false;

@@ -103,7 +103,7 @@ var Todoyu = {
 		if( Object.isString(hash) ) {
 			url += '#' + hash;
 		}
-
+		
 		document.location.href = url;
 	},
 
@@ -150,6 +150,19 @@ var Todoyu = {
 	
 	notify: function(type, message, countdown) {
 		Todoyu.Notification.add(type, message, countdown);
-	}
+	},
+	
+	notifyError: function(message, countdown) {
+		this.notify('error', message, countdown);
+	},
+	
+	notifyInfo: function(message, countdown) {
+		this.notify('info', message, countdown);
+	},
+	
+	notifySuccess: function(message, countdown) {
+		this.notify('success', message, countdown);
+	},
+	
 
 };
