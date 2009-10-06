@@ -27,15 +27,15 @@
  */
 
 class TodoyuDiv {
-	
+
 	/**
 	 * Mcrypt instance
 	 *
 	 * @var	Object
 	 */
 	private static $mcrypt = null;
-	
-	
+
+
 
 	/**
 	 * Extract a single field from a array
@@ -865,15 +865,15 @@ class TodoyuDiv {
 	public static function pathWeb($absolutePath) {
 		return TodoyuFileManager::pathWeb($absolutePath);
 	}
-	
-	
+
+
 	public static function isAllowedTodoyuPath($path) {
 		$path	= TodoyuFileManager::pathAbsolute($path);
-		
+
 		return stripos($path, PATH) === 0;
 	}
-	
-	
+
+
 
 	/**
 	 * Crop a text to a specific length. If text is cropped, a postfix will be added (default: ...)
@@ -1320,9 +1320,9 @@ class TodoyuDiv {
 	public static function wrapString($string, $wrap)	{
 		return str_replace('|', $string, $wrap);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Use a field value in an array as index of the array
 	 *
@@ -1332,17 +1332,17 @@ class TodoyuDiv {
 	 */
 	public static function useFieldAsIndex(array $array, $fieldname) {
 		$new = array();
-		
+
 		foreach($array as $index => $item) {
 			$item['_oldIndex'] = $index;
 			$new[$item[$fieldname]] = $item;
 		}
-		
+
 		return $new;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Explode a string in camel case format
 	 *
@@ -1351,12 +1351,12 @@ class TodoyuDiv {
 	 */
 	public static function explodeCamelCase($camelCaseString) {
 		$spaced	= preg_replace( '/([a-z0-9])([A-Z])/', "$1 $2", $camelCaseString);
-		
-		return explode(' ', $spaced);	
+
+		return explode(' ', $spaced);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Build an URL with given parameters prefixed with todoyu path
 	 *
@@ -1366,18 +1366,18 @@ class TodoyuDiv {
 	public static function buildUrl(array $params) {
 		$query		= PATH_WEB . '?';
 		$queryParts	= array();
-		
+
 		foreach($params as $name => $value) {
 			$queryParts[] = $name . '=' . urlencode($value);
 		}
 
 		$query .= implode('&', $queryParts);
-		
+
 		return $query;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Initialize mcypt
 	 *
@@ -1396,11 +1396,11 @@ class TodoyuDiv {
 			$key = substr($GLOBALS['CONFIG']['SYSTEM']['encryptionKey'], 0, $expectedKeySize);
 				// Initialize mcrypt library with mode/cipher, encryption key, and random initialization vector
 			mcrypt_generic_init(self::$mcrypt, $key, $vector);
-		}		
+		}
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Encrypt element
 	 *
@@ -1409,15 +1409,15 @@ class TodoyuDiv {
 	 */
 	public static function encrypt($input) {
 		self::initMcrypt();
-		
+
 		$stringToEncrypt	= serialize($input);
 		$encryptedString	= mcrypt_generic(self::$mcrypt, $stringToEncrypt);
 
 		return base64_encode($encryptedString);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Decrypt string to element
 	 *
@@ -1426,13 +1426,28 @@ class TodoyuDiv {
 	 */
 	public static function decrypt($encryptedString) {
 		self::initMcrypt();
-		
+
 		$encryptedString	= base64_decode($encryptedString);
 		$decryptedString	= mdecrypt_generic(self::$mcrypt, $encryptedString);
-		
+
 		return unserialize($decryptedString);
 	}
-	
+
+
+
+	/**
+	 * Make sure the variable is an array
+	 * If it's not, there are two options: get an empty array or make the input the first element of the array
+	 *
+	 *
+	 * @param	Mixed		$input
+	 * @param	Bool		$convert		Convert to array element or get an empty array
+	 * @return	Array
+	 */
+	public static function assureArray($input, $convert = false) {
+		return is_array($input) ? $input : ($convert ? array($input) : array());
+	}
+
 }
 
 
