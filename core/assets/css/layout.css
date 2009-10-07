@@ -22,7 +22,7 @@ body {
 	#menuCurrentTimeTracking {
 
 	}
-	
+
 
 #box {
 	position: relative;
@@ -406,6 +406,21 @@ div.error { border: 1px solid #ff0000; }
 	#panelwidget-daytracks ul li.status-accepted { border-left-color: green; }
 	#panelwidget-daytracks ul li.status-rejected { border-left-color:#A60000; }
 */
+
+input.toggleSelect {
+	display: none;
+}
+label.toggleSelect {
+	padding: 0 22px 18px 0;
+	cursor:pointer;
+}
+
+label.toggleSelect.collapse {
+	background:url('../img/ico_toggle_select.png') no-repeat 0 0;
+}
+label.toggleSelect.expand {
+	background:url('../img/ico_toggle_select.png') no-repeat -44px 0;
+}
 
 /* ==================================================
 	colors
