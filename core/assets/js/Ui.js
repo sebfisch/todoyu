@@ -379,6 +379,10 @@ Todoyu.Ui = {
 		} else {
 			return false;
 		}
+	},
+	
+	showDurationPicker: function(idElement) {
+		return new DurationPicker(idElement);
 	}
 
 };

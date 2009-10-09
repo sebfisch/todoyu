@@ -110,6 +110,10 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 57
 		),
 		array(
+			'file'		=> 'core/assets/js/Hook.js',
+			'position'	=> 57
+		),
+		array(
 			'file'		=> 'core/assets/js/Time.js',
 			'position'	=> 58
 		),
@@ -140,6 +144,10 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/js/Autocomplete.js',
 			'position'	=> 65
+		),
+		array(
+			'file'		=> 'core/assets/js/DurationPicker.js',
+			'position'	=> 66
 		)
 	),
 
@@ -236,6 +244,11 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/lib/js/prototype-window/themes/todoyu.css',
+			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/durationpicker.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		)

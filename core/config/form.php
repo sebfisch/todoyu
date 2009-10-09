@@ -77,7 +77,7 @@ $CONFIG['FORM']['TYPES']['button'] = array(
 
 $CONFIG['FORM']['TYPES']['timeinput'] = array(
 	'class'		=> 'TodoyuFormElement_Timeinput',
-	'template'	=> 'core/view/form/FormElement_Textinput.tmpl'
+	'template'	=> 'core/view/form/FormElement_Timeinput.tmpl'
 );
 
 $CONFIG['FORM']['TYPES']['RTE'] = array(

@@ -19,6 +19,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+//ini_set('eaccelerator.enable', 0);
 
 	// Measure processing time
 define('TIME_START', microtime(true));
