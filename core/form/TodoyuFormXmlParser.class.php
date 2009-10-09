@@ -176,13 +176,14 @@ class TodoyuFormXmlParser {
 
 		$field	= TodoyuFormFactory::createField($type, $name, $fieldset, $config);
 
-		if( $field !== false ) {
+		if( $field instanceof TodoyuFormElement ) {
 			$fieldset->addField($name, $field);
 			return true;
 		} else {
-			TodoyuDebug::printInFirebug($name, 'Cannot add the field');
+			Todoyu::log('Can\'t create field object. Invalid config?', LOG_LEVEL_ERROR, $config);
 			return false;
 		}
+
 	}
 
 }

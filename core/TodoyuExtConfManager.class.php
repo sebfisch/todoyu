@@ -9,20 +9,33 @@ class TodoyuExtConfManager {
 	}
 
 
+	public static function hasExtConf($extKey) {
+		$xmlPath = self::getXmlPath($extKey);
+
+		return TodoyuFileManager::isFile($xmlPath);
+	}
+
+
+
+	/**
+	 * Get extConf form
+	 *
+	 * @param	String		$extKey
+	 * @return	TodoyuForm
+	 */
 	public static function getForm($extKey) {
-		$xmlPath	= self::getExtensionConfigPath($extKey);
+		$xmlPath	= self::getXmlPath($extKey);
 
-		if( self::extensionHasConfig($extKey) ) {
-			$form	= new TodoyuForm($xmlPath);
-			$form->setUseRecordID(false);
+		$form	= new TodoyuForm($xmlPath);
+		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, 0);
 
-			$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, 0);
-			//$form	= TodoyuFormHook::callLoadData()
+		$data	= self::getExtConf($extKey);
+		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, 0);
 
+		$form->setUseRecordID(false);
+		$form->setFormData($data);
 
-		}
-
-
+		return $form;
 	}
 
 
