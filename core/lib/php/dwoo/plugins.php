@@ -36,13 +36,14 @@
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo		$dwoo
- * @param	String		$key		label-key
- * @param	String		$locale		locale (de,en,...)
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String			$key		label-key
+ * @param	String			$locale		locale (de,en,...)
  * @return	String
  */
-function Dwoo_Plugin_Label_compile(Dwoo_Compiler $compiler, $key, $locale = null) {
-	return 'TodoyuDiv::getLabel(' . $key . ',' . $locale . ')';
+function Dwoo_Plugin_Label_compile(Dwoo_Compiler $compiler, $key, $plain = false, $locale = null) {
+	return 'findLabel(' . $key . ', ' . $plain . ', ' . $locale . ')';
+	//return 'TodoyuLocale::getLabel(' . $key . ',' . $locale . ')';
 }
 
 

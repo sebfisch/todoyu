@@ -1,0 +1,19 @@
+
+
+{include "copyright_notice.tmpl"}
+
+	// ***********************************************************************
+	// DON'T EDIT THIS FILE. ALL CHANGES WILL BE REMOVED ON NEXT CONFIG UPDATE
+	// ***********************************************************************
+
+
+	// Installed extensions
+$CONFIG['EXT']['installed'] = '{$extList}';
+
+
+	// Extension config
+$CONFIG['EXTCONF'] = array();
+{foreach $extConf extKey confString}
+$CONFIG['EXTCONF']['{$extKey}']			= '{$confString}';
+{/foreach}
+

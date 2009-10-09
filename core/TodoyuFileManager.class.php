@@ -209,6 +209,20 @@ class TodoyuFileManager {
 		}
 	}
 
+
+
+	/**
+	 * Check if file exists. Also relative path from PATH
+	 *
+	 * @param	String		$path
+	 * @return	Bool
+	 */
+	public static function isFile($path) {
+		$path	= self::pathAbsolute($path);
+
+		return is_file($path);
+	}
+
 }
 
 

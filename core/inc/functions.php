@@ -36,6 +36,24 @@ function Label($labelKey, $locale = null) {
 
 
 /**
+ * Find label. If plain is true, check for LLL, because also plaintext is allowed
+ *
+ * @param	String		$label		Label reference or plain text
+ * @param	Bool		$plain		If true, label has to start with LLL: or will be interpreted as plaintext
+ * @param	String		$locale		Forced locale
+ * @return	String
+ */
+function findLabel($label, $plain = false, $locale = null) {
+	if( $plain ) {
+		return TodoyuDiv::getLabel($label, $locale);
+	} else {
+		return TodoyuLocale::getLabel($label, $locale);
+	}
+}
+
+
+
+/**
  * Get user id. If parameter is not set or 0, get the current users id
  *
  * @param	Integer		$idUser
