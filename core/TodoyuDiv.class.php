@@ -64,16 +64,21 @@ class TodoyuDiv {
 	 * @param	Array		$array			Dirty array
 	 * @param	Boolean		$onlyPositive	Set negative values zero
 	 * @param	Boolean		$removeZeros	Remove all zero values
+	 * @param	Boolean		$parseConstants	Parse constants?
 	 * @return	Array		Integer array
 	 */
-	public static function intvalArray($array, $onlyPositive = false, $removeZeros = true) {
+	public static function intvalArray($array, $onlyPositive = false, $removeZeros = true, $parseConstants = false) {
 		if( ! is_array($array) ) {
 			return array();
 		}
 
 			// Make integers
 		foreach($array as $index => $value) {
-			$array[$index] = intval($value);
+			if (! $parseConstants) {
+				$array[$index] = intval($value);
+			} else {
+				$array[$index] = defined($value) ? constant($value) : intval($value);
+			}
 		}
 
 			// Set negative values zero
@@ -575,12 +580,13 @@ class TodoyuDiv {
 	 * @param	String		$string				The list
 	 * @param	Boolean		$onlyPositive		Set negative values zero
 	 * @param	Boolean		$removeZeros		Remove all zero values
+	 * @param	Boolean		$parseConstants		Parse constants?
 	 * @return	Array
 	 */
-	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false) {
+	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false, $parseConstants = false) {
 		$parts	= explode($delimiter, $string);
 
-		return TodoyuDiv::intvalArray($parts, $onlyPositive, $removeZeros);
+		return TodoyuDiv::intvalArray($parts, $onlyPositive, $removeZeros, $parseConstants);
 	}
 
 
