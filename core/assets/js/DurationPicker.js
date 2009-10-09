@@ -161,12 +161,12 @@ var DurationPicker = Class.create({
 		
 		this.divHour = new Element('div', {
 			'id': this._makeID('durationpicker-hour'),
-			'class': 'dpHour'
+			'class': 'dpHour dpCol'
 		});
 		
 		this.divMinute = new Element('div', {
 			'id': this._makeID('durationpicker-minute'),
-			'class': 'dpMinute'
+			'class': 'dpMinute dpCol'
 		});
 		
 		this.picker.insert(new Element('div', {
@@ -233,8 +233,24 @@ var DurationPicker = Class.create({
 	 * @param	Event		event
 	 */
 	_onSelection: function(event) {
-		this.updateElement();
-		this.hide();
+		var column	= event.findElement('div.dpCol');
+		var delay	= 0;
+		
+		if( column !== event.element() ) {
+			var type = column.id.split('-').last();
+			var value= Todoyu.Helper.intval(event.element().innerHTML);
+			
+			if( type == 'hour' ) {
+				this.setHour(value);
+			} else {
+				this.setMinute(value);
+			}
+			
+			delay = 0.5;
+		}
+		
+		this.updateElement.bind(this).delay(delay);
+		this.hide.bind(this).delay(delay);
 	},
 	
 	/**
