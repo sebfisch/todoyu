@@ -42,7 +42,7 @@
  * @return	String
  */
 function Dwoo_Plugin_Label_compile(Dwoo_Compiler $compiler, $key, $locale = null) {
-	return 'TodoyuLocale::getLabel(' . $key . ',' . $locale . ')';
+	return 'TodoyuDiv::getLabel(' . $key . ',' . $locale . ')';
 }
 
 
