@@ -28,27 +28,6 @@
 
 class TodoyuValidator {
 
-
-	/**
-	 * Check a value with a validator function
-	 *
-	 * @param	Stirng		$name		Validator function name
-	 * @param	Mixed		$value		Value to check
-	 * @param	Array		$config		Validator config if necessary
-	 * @return	Boolean
-	 */
-	public static function validate($validatorName, $fieldValue, array $validatorConfig, TodoyuFormElement $formElement, array $formData = array()) {
-		if( method_exists('TodoyuValidator', $validatorName) ) {
-			return call_user_func(array('TodoyuValidator', $validatorName), $fieldValue, $validatorConfig, $formElement, $formData);
-		} else {
-			TodoyuDebug::printHtml("Validator '$validatorName' not found", 'Invalid validator');
-
-			return false;
-		}
-	}
-
-
-
 	/**
 	 * Validate string being email address
 	 *
@@ -70,11 +49,34 @@ class TodoyuValidator {
 	 * Validate variable being numeric digit
 	 *
 	 * @param	String 		$digit
-	 * @param	Array		$config
 	 * @return	Boolean
 	 */
-	public static function isDigit($value, array $validatorConfig = array(), TodoyuFormElement $formElement = null, array $formData = array()) {
+	public static function isDigit($value) {
 		return trim(intval($value)) === trim($value);
+	}
+
+
+
+	/**
+	 * Check if value is a number
+	 *
+	 * @param	String		$value
+	 * @return	Bool
+	 */
+	public static function isNumber($value ) {
+		return is_numeric($value);
+	}
+
+
+
+	/**
+	 * Check if value is decimal
+	 *
+	 * @param	String		$value
+	 * @return	Bool
+	 */
+	public static function isDecimal($value) {
+		return trim(floatval($value)) === trim($value);
 	}
 
 
@@ -83,7 +85,6 @@ class TodoyuValidator {
 	 * Validate string not being empty
 	 *
 	 * @param	String		$string
-	 * @param	Array		$config
 	 * @return	String
 	 */
 	public static function isNotEmpty($value) {
@@ -93,9 +94,32 @@ class TodoyuValidator {
 
 
 	/**
+	 * Check if number is in range. The numbers are intrepreted as float values
+	 *
+	 * @param	Float		$value
+	 * @param	Float		$bottom
+	 * @param	Float		$top
+	 * @param	Bool		$allowRanges
+	 * @return	Bool
+	 */
+	public static function isInRange($value, $bottom, $top, $allowRanges = true) {
+		$value	= floatval($value);
+		$bottom	= floatval($bottom);
+		$top	= floatval($top);
+
+		if( $allowRanges ) {
+			return $value >= $bottom && $value <= $top;
+		} else {
+			return $value > $bottom && $value < $top;
+		}
+	}
+
+
+
+	/**
 	 * Validate timestamp not being at 00:00:00
 	 *
-	 * @param	Integer	$time
+	 * @param	String		$value
 	 * @return	Boolean
 	 */
 	public static function isNotZerotime($value) {
@@ -146,7 +170,7 @@ class TodoyuValidator {
 	 * @param	Array		$config
 	 * @return	Boolean
 	 */
-	public static function illegalChars($value, array $validatorConfig = array(), TodoyuFormElement $formElement = null, array $formData = array()) {
+	public static function illegalChars($value, array $validatorConfig = array()) {
 		$chars	= $validatorConfig['char'];
 
 		if( is_array($chars) ) {

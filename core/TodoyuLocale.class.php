@@ -59,7 +59,7 @@ class TodoyuLocale {
 	 */
 	public static function setLocale($locale) {
 		self::$locale = $locale;
-		
+
 			// Set php locale
 		setlocale(LC_ALL, $locale);
 	}

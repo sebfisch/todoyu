@@ -312,7 +312,7 @@ class TodoyuForm implements ArrayAccess {
 			$newValue = $this->formdata[$name];
 
 			if( ! is_null($newValue) ) {
-				$this->hiddenFields[$name] = $newValue;
+				$this->hiddenFields[$name]['value'] = $newValue;
 			}
 		}
 	}
@@ -538,8 +538,11 @@ class TodoyuForm implements ArrayAccess {
 	 * @param	String		$name
 	 * @param	String		$value
 	 */
-	public function setHiddenField($name, $value) {
-		$this->hiddenFields[$name] = $value;
+	public function addHiddenField($name, $value, $noStorage = false) {
+		$this->hiddenFields[$name] = array(
+			'value'		=> $value,
+			'noStorage' => $noStorage
+		);
 	}
 
 
@@ -551,7 +554,7 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	String
 	 */
 	public function getHiddenField($name) {
-		return $this->hiddenFields[$name];
+		return $this->hiddenFields[$name]['value'];
 	}
 
 
@@ -559,10 +562,19 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Get the hiddenfield array
 	 *
-	 * @return array
+	 * @param	Bool	$onlyStorage		Only get storage fields
+	 * @return	Array
 	 */
-	public function getHiddenFields()	{
-		return $this->hiddenFields;
+	public function getHiddenFields($onlyStorage = false)	{
+		$data	= array();
+
+		foreach($this->hiddenFields as $name => $config) {
+			if( $onlyStorage === false || $config['noStorage'] !== true ) {
+				$data[$name] = $config['value'];
+			}
+		}
+
+		return $data;
 	}
 
 
@@ -895,7 +907,7 @@ class TodoyuForm implements ArrayAccess {
 			$this->setFormData($formData);
 		}
 
-		$data	= $this->hiddenFields;
+		$data	= $this->getHiddenFields(true);
 
 		foreach($this->fields as $name => $field) {
 			$value	= $field->getStorageData();
@@ -917,10 +929,10 @@ class TodoyuForm implements ArrayAccess {
 		$content	= '';
 		$template	= $GLOBALS['CONFIG']['FORM']['templates']['hidden'];
 
-		foreach( $this->hiddenFields as $name => $value ) {
+		foreach( $this->hiddenFields as $name => $config ) {
 			$data	= array('htmlId'	=> self::makeID($name),
 							'htmlName'	=> self::makeName($name),
-							'value'		=> htmlspecialchars($value));
+							'value'		=> htmlspecialchars($config['value']));
 
 			$content .= render($template, $data);
 		}

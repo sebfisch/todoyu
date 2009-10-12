@@ -1,35 +1,88 @@
 <?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
 
+/**
+ * Action controller request dispatcher
+ * Handle request and call the action controller
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
 class TodoyuActionDispatcher {
-	
+
+	/**
+	 * Get request extension.
+	 * Fallback for last requested extension and default
+	 *
+	 * @return 	String
+	 */
 	private static function getExtension() {
 		$ext	= TodoyuRequest::getExt();
-		
+
 		if( ! is_string($ext) ) {
 			$ext	= TodoyuPreferenceManager::getLastExt();
-			
+
 			if( $ext === false ) {
 				$ext = $GLOBALS['CONFIG']['FE']['DEFAULT']['ext'];
 			}
 		}
-		
+
 		return $ext;
 	}
-	
+
+
+
+	/**
+	 * Ger request controller
+	 * Fallback for default controller
+	 *
+	 * @return	String
+	 */
 	private static function getController() {
 		$ctrl	= TodoyuRequest::getController();
-		
+
 		if( ! is_string($ctrl) ) {
 			$ctrl = $GLOBALS['CONFIG']['FE']['DEFAULT']['controller'];
 		}
-		
+
 		return $ctrl;
 	}
-	
+
+
+
+	/**
+	 * Get request command/action
+	 *
+	 * @return	String
+	 */
 	private static function getCommand() {
 		return TodoyuRequest::getCommand();
 	}
-	
+
+
+
+	/**
+	 * Dispatch request. Call selected controller
+	 *
+	 */
 	public static function dispatch() {
 		if( self::isController(EXT, CONTROLLER) ) {
 			$params		= TodoyuRequest::getAll();
@@ -37,39 +90,57 @@ class TodoyuActionDispatcher {
 		} else {
 			self::errorControllerNotFound(EXT, CONTROLLER);
 		}
-		
+
 			// Execute command
 		try {
 			echo $controller->runAction(COMMAND);
 		} catch(TodoyuControllerException $e) {
-			$e->printError();			
+			$e->printError();
 		} catch(Exception $e) {
 			die("Error: " . $e->getMessage());
 		}
 	}
-	
+
+
+
+	/**
+	 * Print error message if requested controller not found
+	 *
+	 * @param	String		$ext
+	 * @param	String		$controller
+	 */
 	private static function errorControllerNotFound($ext, $controller) {
 		ob_clean();
-		
+
 		TodoyuHeader::sendHeaderPlain();
-		
+
 		echo "Request controller not found!\n";
 		echo "Extension: " . $ext . "\n";
 		echo "Controller: " . $controller . "\n\n";
-		
+
 		$params	= TodoyuRequest::getAll();
-		
+
 		print_r($params);
-		
-		exit();		
+
+		exit();
 	}
-	
+
+
+
+	/**
+	 * Get class name for action controller
+	 * Classname is prefixed with "Todoyu", camel case ext and controller and postfixed with "ActionController"
+	 *
+	 * @param	String		$ext
+	 * @param	String		$controller
+	 * @return	String
+	 */
 	private static function getControllerClassName($ext, $controller) {
 		return 'Todoyu' . ucfirst(trim($ext)) . ucfirst(trim($controller)) . 'ActionController';
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get action controller object for the $ext-$controller combination
 	 * @param	String		$ext
@@ -78,12 +149,12 @@ class TodoyuActionDispatcher {
 	 */
 	public static function getControllerObject($ext, $controller, array $params = array()) {
 		$controllerClassName	= self::getControllerClassName($ext, $controller);
-		
+
 		return new $controllerClassName($params);
 	}
 
-	
-	
+
+
 	/**
 	 * Check if a controller class exists
 	 *
@@ -93,12 +164,10 @@ class TodoyuActionDispatcher {
 	 */
 	public static function isController($ext, $controller) {
 		$controllerClassName = self::getControllerClassName($ext, $controller);
-		
+
 		return class_exists($controllerClassName, true);
 	}
-	
-	
-}
 
+}
 
 ?>

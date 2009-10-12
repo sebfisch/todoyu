@@ -23,7 +23,7 @@ Todoyu.Notification = {
 	/**
 	 * Default countdown if non set
 	 */
-	defaultCountdown: 5,
+	defaultCountdown: 3,
 	
 	/**
 	 * Template object

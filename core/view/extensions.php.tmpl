@@ -12,8 +12,7 @@ $CONFIG['EXT']['installed'] = '{$extList}';
 
 
 	// Extension config
-$CONFIG['EXTCONF'] = array();
 {foreach $extConf extKey confString}
-$CONFIG['EXTCONF']['{$extKey}']			= '{$confString}';
+$CONFIG['EXT']['{$extKey}']['extConf'] = unserialize(stripslashes('{$confString}'));
 {/foreach}
 

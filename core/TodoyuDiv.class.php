@@ -1373,7 +1373,7 @@ class TodoyuDiv {
 	 * @return	String
 	 */
 	public static function buildUrl(array $params) {
-		$query		= PATH_WEB . '?';
+		$query		= PATH_WEB . '/?';
 		$queryParts	= array();
 
 		foreach($params as $name => $value) {

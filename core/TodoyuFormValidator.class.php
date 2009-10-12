@@ -91,6 +91,11 @@ class TodoyuFormValidator {
 		return TodoyuValidator::hasMaxLength($value, $maxLength);
 	}
 
+	private static function isDecimal($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+		TodoyuDebug::printInFirebug($value);
+		return TodoyuValidator::isDecimal($value);
+	}
+
 
 
 	/**

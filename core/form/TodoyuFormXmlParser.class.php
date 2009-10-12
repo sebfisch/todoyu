@@ -103,7 +103,7 @@ class TodoyuFormXmlParser {
 	private static function parseHiddenFields() {
 		if( self::$xml->hiddenFields ) {
 			foreach( self::$xml->hiddenFields->field as $field ) {
-				self::$form->setHiddenField((string)$field['name'], (string)$field);
+				self::$form->addHiddenField((string)$field['name'], (string)$field, ((string)$field['noStorage']==='true'));
 			}
 		}
 	}

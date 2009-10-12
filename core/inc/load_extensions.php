@@ -29,9 +29,6 @@ foreach($installedExtensions as $extKey) {
 	TodoyuExtensions::addIncludePath($extDir . '/controller');
 }
 
-	// Load extConf for all extensions
-TodoyuExtConfManager::load();
-
 	// Load all ext.php files to init the extensions
 foreach($installedExtensions as $extKey) {
 	$extDir	= TodoyuExtensions::getExtPath($extKey);

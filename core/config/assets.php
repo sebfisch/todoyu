@@ -251,6 +251,11 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'file'		=> 'core/assets/css/durationpicker.css',
 			'media'		=> 'all',
 			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/list.css',
+			'media'		=> 'all',
+			'position'	=> 10
 		)
 //		array(
 //			'file'		=> 'lib/js/jscal2/css/jscal2.css',
