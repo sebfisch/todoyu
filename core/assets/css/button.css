@@ -28,6 +28,17 @@ button span.hasIcon {
 	background-position:8px 0;
 }
 
+button span.icon {
+	margin:3px 2px 0 8px;
+	padding:0;
+}
+button span.label {
+	white-space:nowrap;
+	margin-left:10px;
+	margin-right:3px;
+	padding:0;
+}
+
 .headerLine button span.rgt,
 button span.rgt {
 	display:block;
@@ -96,6 +107,13 @@ button.button span {
 	white-space: nowrap;
 }
 */
+
+
+
+
+
+
+
 
 button.createDateButton {
 	margin-left:202px !important;

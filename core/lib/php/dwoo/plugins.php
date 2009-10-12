@@ -407,4 +407,18 @@ function Dwoo_Plugin_cleanHtml_compile(Dwoo_Compiler $compiler, $html) {
 }
 
 
+function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '') {
+	$tmpl	= 'core/view/button.tmpl';
+	$data	= array(
+		'label'		=> $label,
+		'onclick'	=> $onclick,
+		'class'		=> $class,
+		'id'		=> $id
+	);
+
+	return render($tmpl, $data);
+}
+
+
+
 ?>
