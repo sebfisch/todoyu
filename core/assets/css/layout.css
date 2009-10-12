@@ -455,3 +455,88 @@ label.toggleSelect.expand {
 /*.bcg08 {background-color:#;}*/
 .bcg09 {background-color:#999;}
 
+/* ===================================================
+	alphabetical index
+====================================================== */
+select.indexLetters option {
+    padding-left:16px !important;
+}
+
+option.indexLetterA {
+	background:url('../img/indexletters.png') no-repeat 0 1px;
+}
+option.indexLetterB {
+	background:url('../img/indexletters.png') no-repeat 0 -27px;
+}
+option.indexLetterC {
+	background:url('../img/indexletters.png') no-repeat 0 -56px;
+}
+option.indexLetterD {
+	background:url('../img/indexletters.png') no-repeat 0 -84px;
+}
+option.indexLetterE {
+	background:url('../img/indexletters.png') no-repeat 0 -111px;
+}
+option.indexLetterF {
+	background:url('../img/indexletters.png') no-repeat 0 -139px;
+}
+option.indexLetterG {
+	background:url('../img/indexletters.png') no-repeat 0 -167px;
+}
+option.indexLetterH {
+	background:url('../img/indexletters.png') no-repeat 0 -195px;
+}
+option.indexLetterI {
+	background:url('../img/indexletters.png') no-repeat 0 -223px;
+}
+option.indexLetterJ {
+	background:url('../img/indexletters.png') no-repeat 0 -251px;
+}
+option.indexLetterK {
+	background:url('../img/indexletters.png') no-repeat 0 -279px;
+}
+option.indexLetterL {
+	background:url('../img/indexletters.png') no-repeat 0 -307px;
+}
+option.indexLetterM {
+	background:url('../img/indexletters.png') no-repeat 0 -335px;
+}
+option.indexLetterN {
+	background:url('../img/indexletters.png') no-repeat 0 -364px;
+}
+option.indexLetterO {
+	background:url('../img/indexletters.png') no-repeat 0 -391px;
+}
+option.indexLetterP {
+	background:url('../img/indexletters.png') no-repeat 0 -419px;
+}
+option.indexLetterQ {
+	background:url('../img/indexletters.png') no-repeat 0 -447px;
+}
+option.indexLetterR {
+	background:url('../img/indexletters.png') no-repeat 0 -475px;
+}
+option.indexLetterS {
+	background:url('../img/indexletters.png') no-repeat 0 -503px;
+}
+option.indexLetterT {
+	background:url('../img/indexletters.png') no-repeat 0 -531px;
+}
+option.indexLetterU {
+	background:url('../img/indexletters.png') no-repeat 0 -559px;
+}
+option.indexLetterV {
+	background:url('../img/indexletters.png') no-repeat 0 -587px;
+}
+option.indexLetterW {
+	background:url('../img/indexletters.png') no-repeat 0 -615px;
+}
+option.indexLetterX {
+	background:url('../img/indexletters.png') no-repeat 0 -643px;
+}
+option.indexLetterY {
+	background:url('../img/indexletters.png') no-repeat 0 -671px;
+}
+option.indexLetterZ {
+	background:url('../img/indexletters.png') no-repeat 0 -699px;
+}
