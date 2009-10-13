@@ -19,6 +19,12 @@
 ***************************************************************/
 
 Todoyu.Form = {
+	
+	subFormIndex: 100,
+	
+	getNextIndex: function() {
+		return this.subFormIndex++;
+	},
 
 	/**
 	 *	Get serialized data of form containing given element
@@ -85,30 +91,21 @@ Todoyu.Form = {
 	 *	@param	unknown_type	ext
 	 *	@param	unknown_type	controller
 	 */
-	addSubform: function(form, formname, field, ext, controller)	{
-		if(ext && controller)	{
-			var container = $('foreign-records-'+field);
+	addSubform: function(idRecord, formname, fieldname, updateExt, updateController) {
+		var container	= $('foreign-records-' + idRecord + '-' + fieldname);
 
-			var index = container.select('.databaseRelation').length;
+		var url 	= Todoyu.getUrl(updateExt, updateController);
+		var options = {
+			'parameters': {
+				'cmd':		'addSubform',
+				'form': 	formname,
+				'field':	fieldname,
+				'record':	idRecord,
+				'index': 	this.getNextIndex()
+			}
+		};
 
-			var cmd = 'addSubform';
-
-			var url = Todoyu.getUrl(ext, controller);
-
-			var options = {
-				'parameters': {
-					'form':		form,
-					'field':	field,
-					'cmd':		cmd,
-					'formname': formname,
-					'indexOfForeignRecord': index
-				}
-			};
-
-			Todoyu.Ui.insert(container.id, url, options);
-		} else {
-			alert('no extension and/or controller defined');
-		}
+		Todoyu.Ui.insert(container, url, options);
 	},
 
 

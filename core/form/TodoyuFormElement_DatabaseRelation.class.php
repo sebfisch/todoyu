@@ -99,7 +99,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$data['foreignRecords']		= $this->loadForeignRecord( $data );
 		$data['foreignRecordConf']	= $this->getAttribute('foreignRecordConf');
 		$data['fieldname']			= $data['@attributes']['name'];
-		$data['formbasename']		= $this->getForm()->getAttribute('formbasename');
+//		$data['formbasename']		= $this->getForm()->getAttribute('formbasename');
 		$data['formname']			= $this->getForm()->getName();
 
 		return $data;
@@ -117,6 +117,10 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$tmpl			= $this->getTemplate();
 		$data			= $this->getData();
 		$data['odd']	= $odd;
+
+		TodoyuDebug::printInFirebug($tmpl);
+
+		$data['idRecord']	= $this->getForm()->getRecordID();
 
 		$data['error'] = $this->error;
 		$data['errorMessage'] = $this->errorMessage;
@@ -148,6 +152,8 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 		$data['record']		= $this->getRecordConf($index);
 		$data['key']		= $index;
+
+		TodoyuDebug::printHtml($data, 'data');
 
 		return render('core/view/form/FormElement_DatabaseRelation_Record.tmpl', $data);
 	}
@@ -190,7 +196,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	protected function loadForeignRecordForm(array $config, $index)	{
 		$xmlPath	= $config['foreignformxml'];
 
-		TodoyuDebug::printInFirebug($xmlPath, 'xmlPath');
+//		TodoyuDebug::printInFirebug($xmlPath, 'xmlPath');
 
 		if ($xmlPath)	{
 				// Construct form object
@@ -203,10 +209,10 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 			$form		= TodoyuFormHook::callBuildForm($xmlPath, $form, $index);
 			$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $editID);
 
-			$form['formbasename'] = $form->getName();
+//			$form->setAttribute('formbasename', $form->getName());
 
 			$name	= $this->makeForeignRecordName($form, $index);
-			$form->offsetSet('name', $name);
+			$form['name'] = $name;
 
 				// Set form data
 			$form->setFormData($formData);

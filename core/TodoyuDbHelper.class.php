@@ -57,11 +57,11 @@ class TodoyuDbHelper {
 	/**
 	 * Add a single MM relation
 	 *
-	 * @param unknown_type $mmTable
-	 * @param unknown_type $localField
-	 * @param unknown_type $foreignField
-	 * @param unknown_type $idLocalRecord
-	 * @param unknown_type $idForeignRecord
+	 * @param	String		$mmTable			Link table
+	 * @param	String		$localField			Locale field name (for the one record linked to the others)
+	 * @param	String		$foreignField		Foreign field name for the other records
+	 * @param	Integer		$idLocalRecord
+	 * @param	Integer		$idForeignRecord
 	 */
 	public static function addMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord) {
 		$data	= array(
