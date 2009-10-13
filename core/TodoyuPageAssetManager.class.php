@@ -72,7 +72,7 @@ class TodoyuPageAssetManager {
 				'file'		=> $absPathToFile,
 				'position'	=> $position,
 				'compress'	=> $compress,
-				'merge'		=> $merge,				
+				'merge'		=> $merge,
 				'localize'	=> $localize,
 				'lib'		=> strstr($absPathToFile, PATH_LIB) !== false
 			);
@@ -124,7 +124,7 @@ class TodoyuPageAssetManager {
 
 			// Add javascripts
 		$jsFiles	= self::getJavascripts();
-		
+
 			// Add all js files
 		foreach($jsFiles as $jsFile) {
 			TodoyuPage::add('jsFiles', array(
@@ -200,14 +200,14 @@ class TodoyuPageAssetManager {
 	private static function getJavascripts() {
 		$files	= array();
 		$single	= array();
-		
+
 			// Arrays of core / 3rd party merge file configs
 		$merge		= array();
 		$libsMerge	= array();
 
 		$javascripts= TodoyuDiv::sortArrayByLabel(self::$javascripts, 'position');
 		$doMerging	= $GLOBALS['CONFIG']['CACHE']['JS']['merge'] === true;
-		
+
 		foreach( $javascripts as $fileConfig ) {
 			if( $doMerging && $fileConfig['merge'] ) {
 					// If file is a thirdparty library, add to a seperate merge file
@@ -225,7 +225,7 @@ class TodoyuPageAssetManager {
 		if( sizeof($single) ) {
 			$files = self::getSingleJavascriptFiles($single);
 		}
-		
+
 			// Add library merge file to list
 		if( sizeof($libsMerge) > 0 ) {
 			$files[] = self::getMergedJavascriptFile($libsMerge);
@@ -374,7 +374,7 @@ class TodoyuPageAssetManager {
 	 * @return	String
 	 */
 	private static function localizeJavascript($javascriptCode) {
-		return preg_replace_callback($GLOBALS['CONFIG']['CACHE']['JS']['localePattern'], array('PageAssetManager', 'localizeJavascriptCallback'), $javascriptCode);
+		return preg_replace_callback($GLOBALS['CONFIG']['CACHE']['JS']['localePattern'], array('TodoyuPageAssetManager', 'localizeJavascriptCallback'), $javascriptCode);
 	}
 
 

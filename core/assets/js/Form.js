@@ -48,26 +48,8 @@ Todoyu.Form = {
 	 *
 	 *	@param	unknown_type	trigger
 	 */
-	toggleSubform: function(trigger)	{
-		var triggerID = trigger.id;
-
-		subFormID = triggerID.replace(/trigger/, 'formhtml');
-
-		if(trigger.hasClassName('closed'))	{
-			if($(subFormID))	{
-				$(subFormID).style.display = 'block';
-			}
-
-			trigger.removeClassName('closed');
-			trigger.addClassName('open');
-		} else {
-			if($(subFormID))	{
-				$(subFormID).style.display = 'none';
-			}
-
-			trigger.removeClassName('open');
-			trigger.addClassName('closed');
-		}
+	toggleSubform: function(idRecord, fieldName, index)	{
+		$('foreign-record-' + idRecord + '-' + fieldName + '-' + index + '-formhtml').toggle();
 	},
 
 
@@ -93,7 +75,8 @@ Todoyu.Form = {
 	 */
 	addSubform: function(idRecord, formname, fieldname, updateExt, updateController) {
 		var container	= $('foreign-records-' + idRecord + '-' + fieldname);
-
+		var index		= this.getNextIndex();
+		
 		var url 	= Todoyu.getUrl(updateExt, updateController);
 		var options = {
 			'parameters': {
@@ -101,11 +84,16 @@ Todoyu.Form = {
 				'form': 	formname,
 				'field':	fieldname,
 				'record':	idRecord,
-				'index': 	this.getNextIndex()
-			}
+				'index': 	index
+			},
+			'onComplete': this.onSubformAdded.bind(this, idRecord, formname, fieldname, index)
 		};
 
 		Todoyu.Ui.insert(container, url, options);
+	},
+	
+	onSubformAdded: function(idRecord, formName, fieldName, index, response) {
+		//this.toggleSubform(idRecord, fieldName, index);
 	},
 
 

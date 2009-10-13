@@ -1,12 +1,12 @@
 
 <div id="foreign-record-{$idRecord}-{$record.type}-{$key}" class="databaseRelation">
-	<div id="foreign-record-{$record.type}-{$key}-trigger" class="formtrigger closed" onclick="Todoyu.Form.toggleSubform(this);">
+	<div id="foreign-record-{$idRecord}-{$record.type}-{$key}-trigger" onclick="Todoyu.Form.toggleSubform({$idRecord}, '{$record.type}', '{$key}')" class="formtrigger">
 		<span class="label" title="{Label form.icon.edit}">{$record._label}</span>
 		<span class="additionalStuff">
-			<a href="javascript:void(0)" id="remove-{$record.type}-{$record.index}" class="icon remove removeForeignRecord remove-{$record.type}" onclick="Todoyu.Form.removeSubRecord(this);return false;" title="{Label form.icon.remove}"><span class="hidden">{Label form.icon.remove}</span></a>
+			<a href="javascript:void(0)" id="remove-{$idRecord}-{$record.type}-{$record.index}" class="icon remove removeForeignRecord remove-{$record.type}" onclick="Todoyu.Form.removeSubRecord(this)" title="{Label form.icon.remove}"><span class="hidden">{Label form.icon.remove}</span></a>
 		</span>
 	</div>
-	<div id="foreign-record-{$record.type}-{$key}-formhtml" {if $error != true}style="display:none;"{/if}>
+	<div id="foreign-record-{$idRecord}-{$record.type}-{$key}-formhtml" {if $error != true}style="display:none;"{/if}>
 		{$record.formHTML}
 	</div>
 	<div class="clear"><!-- --></div>

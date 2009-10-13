@@ -6,7 +6,7 @@
 	<div class="foreignRecordsActionControll overflow">
 		<a onclick="Todoyu.Form.addSubform({$idRecord}, '{$formname}', '{$fieldname}', '{$foreignRecordConf.addSubformConfig.ext}', '{$foreignRecordConf.addSubformConfig.controller}')" class="icon add addForeignRecord" href="javascript:void(0)" title="{Label form.icon.add}"><span class="hidden">{Label form.icon.add}</span></a>
 	</div>
-	{foreach $foreignRecords key record}
+	{foreach $records index record}
 		{include "core/view/form/FormElement_DatabaseRelation_Record.tmpl"}
 	{/foreach}
 </div>

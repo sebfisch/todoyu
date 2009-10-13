@@ -27,14 +27,6 @@
  */
 class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
-	/**
-	 * Record config array
-	 *
-	 * @var	Array
-	 */
-	protected $recordConf = array();
-
-
 
 	/**
 	 * Constructor of the class
@@ -50,57 +42,48 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 
 	/**
-	 * Check database form element values array being given
+	 * Set value
 	 *
-	 * @param	Integer	$index		numeric index of the databaseRelation field
-	 * @return	Boolean
+	 * @param	Array		$value
 	 */
-	public function getValueArr($index) {
-		$values = $this->getAttribute('default');
+	public function setValue($value) {
+		$records	= TodoyuDiv::assureArray($value);
 
-		return is_array( $values[$index] ) ? $values[$index] : array();
+		parent::setValue($records);
 	}
 
 
 
 	/**
-	 * Get record config
+	 * Get record data
 	 *
-	 * @param	Integer	$index		numeric index of the databaseRelation field
-	 * @return	Mixed
-	 */
-	public function getRecordConf($index)	{
-		return $this->recordConf[$index];
-	}
-
-
-
-	/**
-	 * Add record config attribute
-	 *
-	 * @param	Integer	$index		numeric index of the databaseRelation field
-	 * @param	String	$name
-	 * @param	Mixed	$value
-	 */
-	public function addRecordConfAttribute($index, $name, $value) {
-		$this->recordConf[$index][$name]	= $value;
-	}
-
-
-
-	/**
-	 * Returns data of databaseRelation field
-	 *
+	 * @param	Integer		$index
 	 * @return	Array
+	 */
+	public function getRecord($index) {
+		$index	= intval($index);
+
+		if( ! is_array($this->config['default'][$index]) ) {
+			$this->config['default'][$index] = array();
+		}
+
+		return $this->config['default'][$index];
+	}
+
+
+
+	/**
+	 * Get field data for rendering
+	 *
+	 * @return Array
 	 */
 	public function getData() {
 		$data = parent::getData();
 
-		$data['foreignRecords']		= $this->loadForeignRecord( $data );
-		$data['foreignRecordConf']	= $this->getAttribute('foreignRecordConf');
-		$data['fieldname']			= $data['@attributes']['name'];
-//		$data['formbasename']		= $this->getForm()->getAttribute('formbasename');
-		$data['formname']			= $this->getForm()->getName();
+		$data['records']	= $this->getRecordsTemplateData();
+		$data['fieldname']	= $this->getName();
+		$data['formname']	= $this->getForm()->getName();
+		$data['idRecord']	= $this->getForm()->getRecordID();
 
 		return $data;
 	}
@@ -114,48 +97,53 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @return	String
 	 */
 	public function render($odd = false) {
-		$tmpl			= $this->getTemplate();
-		$data			= $this->getData();
-		$data['odd']	= $odd;
+		return parent::render($odd);
 
-		TodoyuDebug::printInFirebug($tmpl);
-
-		$data['idRecord']	= $this->getForm()->getRecordID();
-
-		$data['error'] = $this->error;
-		$data['errorMessage'] = $this->errorMessage;
-
-		$fieldHTML = render($tmpl, $data);
-
-//		$foreignFormXML	= $data['foreignRecordConf']['foreignformxml'];
-//		if ($foreignFormXML != '') {
-//			$fieldHTML	= TodoyuFormHook::callDatabaseRelationFieldModifier($foreignFormXML, $fieldHTML, $data);
-//		}
-
-		return $fieldHTML;
+//		$tmpl			= $this->getTemplate();
+//		$data			= $this->getData();
+//		$data['odd']	= $odd;
+//
+//		$data['error'] = $this->error;
+//		$data['errorMessage'] = $this->errorMessage;
+//
+//		$fieldHTML = render($tmpl, $data);
+//
+////		$foreignFormXML	= $data['foreignRecordConf']['foreignformxml'];
+////		if ($foreignFormXML != '') {
+////			$fieldHTML	= TodoyuFormHook::callDatabaseRelationFieldModifier($foreignFormXML, $fieldHTML, $data);
+////		}
+//
+//		return $fieldHTML;
 	}
 
 
 
 	/**
-	 * Returns empty form of a new record
+	 * Render new record without data
 	 *
-	 * @param	Array	$config
-	 * @param	Integer	$index		numeric index of the databaseRelation field
+	 * @param	Integer		$index
 	 * @return	String
 	 */
 	public function addNewRecord($index = 0)	{
-		$data = $this->getData();
+		$tmpl	= 'core/view/form/FormElement_DatabaseRelation_Record.tmpl';
+		$data	= array();
 
-			// Set record offsets
-		$this->handleRecord($data, $this->getAttribute('foreignRecordConf'), $index);
+		$data['record']		= $this->getRecordTemplateData($index);
+		$data['key']		= $this->getName();
+		$data['idRecord']	= $this->getForm()->getRecordID();
 
-		$data['record']		= $this->getRecordConf($index);
-		$data['key']		= $index;
+		return render($tmpl, $data);
+	}
 
-		TodoyuDebug::printHtml($data, 'data');
 
-		return render('core/view/form/FormElement_DatabaseRelation_Record.tmpl', $data);
+
+	/**
+	 * Get configuration array for foreign records
+	 *
+	 * @return	Array
+	 */
+	protected function getRecordsConfig() {
+		return $this->getAttribute('foreignRecordConf');
 	}
 
 
@@ -166,144 +154,131 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @param	Array	$data
 	 * @return	Array
 	 */
-	protected function loadForeignRecord($data)	{
-		$foreignRecords = array();
-
-		$recordID = $this->getForm()->getRecordID();
-
-		$foreignRecordConf = $this->getAttribute('foreignRecordConf');
-
-		$records = $this->getValue();
-		if(is_array($records))	{
-			foreach($records as $index => $foreignRecord)	{
-				$this->handleRecord($data, $foreignRecordConf, $index);
-				$foreignRecords[$index] = $this->getRecordConf($index);
-			}
-		}
-
-		return $foreignRecords;
+	protected function getRecords() {
+		return TodoyuDiv::assureArray($this->getValue());
 	}
 
 
 
 	/**
-	 * Load form from foreign record.
+	 * Get template data for all records
 	 *
-	 * @param	Array	$config
-	 * @param	Integer	$index		numeric index of the databaseRelation field
+	 * @return	Array
+	 */
+	protected function getRecordsTemplateData() {
+		$records	= $this->getRecords();
+
+		foreach($records as $index => $record) {
+			$records[$index] = $this->getRecordTemplateData($index);
+		}
+
+		return $records;
+	}
+
+
+
+	/**
+	 * Get path to record form xml
+	 *
 	 * @return	String
 	 */
-	protected function loadForeignRecordForm(array $config, $index)	{
-		$xmlPath	= $config['foreignformxml'];
+	protected function getRecordsFormXml() {
+		$recordConfig = $this->getRecordsConfig();
 
-//		TodoyuDebug::printInFirebug($xmlPath, 'xmlPath');
+		return $recordConfig['foreignformxml'];
+	}
 
-		if ($xmlPath)	{
-				// Construct form object
-			$form	= new TodoyuForm( $xmlPath );
 
-				// Load form data
-			$formData	= $this->getValueArr($index);
-			$editID		= $formData['id'];
 
-			$form		= TodoyuFormHook::callBuildForm($xmlPath, $form, $index);
-			$formData	= TodoyuFormHook::callLoadData($xmlPath, $formData, $editID);
+	/**
+	 * Render foreign record form
+	 *
+	 * @param	Index		$index
+	 * @return	String
+	 */
+	protected function renderRecordForm($index)	{
+		$xmlPath = $this->getRecordsFormXml();
 
-//			$form->setAttribute('formbasename', $form->getName());
+			// Construct form object
+		$recordForm	= new TodoyuForm($xmlPath);
 
-			$name	= $this->makeForeignRecordName($form, $index);
-			$form['name'] = $name;
+			// Load form data
+		$recordData	= $this->getRecord($index);
+		$idRecord	= intval($recordData['id']);
 
-				// Set form data
-			$form->setFormData($formData);
-			$form->setRecordID($editID);
-			$form->setAttribute('noFormTag', 1);
+		$recordForm	= TodoyuFormHook::callBuildForm($xmlPath, $recordForm, $idRecord);
+		$recordData	= TodoyuFormHook::callLoadData($xmlPath, $recordData, $idRecord);
 
-				// Evoke assigned validators
-			if ( $this->getForm()->getValidateForm() )	{
-				if( ! $form->isValid() )	{
-					$this->setErrorMessage( Label('form.field.hasError') );
-					$this->setErrorTrue();
-				}
+		$formName	= $this->getForm()->getName() . '[' . $recordForm->getName() . '][' . $index . ']';
+
+			// Set form data
+		$recordForm->setFormData($recordData);
+		$recordForm->setRecordID($idRecord);
+		$recordForm->setAttribute('noFormTag', true);
+		$recordForm->setName($formName);
+
+			// Evoke assigned validators
+		if( $this->getForm()->getValidateForm() )	{
+			$recordForm->isValid();
+//			if( ! $form->isValid() )	{
+//				$this->setErrorMessage( Label('form.field.hasError') );
+//				$this->setErrorTrue();
+//			}
+		}
+
+			// Render
+		return $recordForm->render();
+	}
+
+
+
+	/**
+	 * Get record label defined by config
+	 *
+	 * @param	Index		$index
+	 * @return	String
+	 */
+	protected function getRecordLabel($index)	{
+		$conf	= $this->getRecordsConfig();
+		$record	= $this->getRecord($index);
+		$label	= '';
+
+		if( TodoyuDiv::isFunctionReference($conf['foreignLabelUserFunc']) )	{
+			$label = TodoyuDiv::callUserFunction($conf['foreignLabelUserFunc'], $this, $record);
+		} elseif( ! empty($conf['foreignLabelField']) ) {
+			if( ! empty($record[$conf['foreignLabelField']]) ) {
+				$label	= $record[$conf['foreignLabelField']];
 			}
-
-				// Render
-			return $form->render();
-
 		} else {
-			return 'ERROR: no form-XML defined';
-		}
-	}
-
-
-
-	/**
-	 * Get label of user function
-	 *
-	 * @param	Array	$conf		configuration array
-	 * @param	Integer	$index		numeric index of the databaseRelation field
-	 * @return	String
-	 */
-	protected function getForeignRecordLabel($conf, $index)	{
-		if($conf['foreignLabelUserFunc'])	{
-			$label = $this->callLabelUserFunc($conf['foreignLabelUserFunc'], $index);
-		} else if($conf['foreignLabelField']) {
-			$values = $this->getValueArr($index);
-			$label	= $values[$conf['foreignLabelField']];
-		}else {
 			$label =  '[no label field defined]';
 		}
 
-		return strlen( trim($label) ) > 0 ? $label : TodoyuLocale::getLabel('form.databaserelation.nolabel');
-	}
-
-
-
-	/**
-	 * If there is a userfunction configured for the label call it
-	 *
-	 * @param	String	$userFunc
-	 * @param	Integer	$index		numeric index of the databaseRelation field
-	 * @return	String
-	 */
-	protected function callLabelUserFunc($userFunc, $index)	{
-		if( TodoyuDiv::isFunctionReference($userFunc) ) {
-			return TodoyuDiv::callUserFunction($userFunc, $this, $this->getValueArr($index));
-		} else {
-			return false;
+		if( $label === '' ) {
+			$label = TodoyuLocale::getLabel('form.databaserelation.nolabel');
 		}
+
+		return $label;
 	}
 
 
 
 	/**
-	 * Creates form name of foreign record
+	 * Get record with template data
 	 *
-	 * @param	TodoyuForm	$form
-	 * @param	Integer	$index		numeric index of the databaseRelation field
-	 * @return	String
+	 * @param	Integer		$index
+	 * @return	Array
 	 */
-	protected function makeForeignRecordName(TodoyuForm $form, $index)	 {
-		$localName = $this->getForm()->getName();
+	protected function getRecordTemplateData($index) {
+		$record		= $this->getRecord($index);
 
-		return $localName . '[' . $form->getName() . '][' . $index . ']';
+		$record['index'] 	= $index;
+		$record['_label'] 	= $this->getRecordLabel($index);
+		$record['type'] 	= $this->getName();
+		$record['formHTML']	= $this->renderRecordForm($index);
+
+		return $record;
 	}
 
-
-
-	/**
-	 * Set record offsets
-	 *
-	 * @param	Array	$data
-	 * @param	Array	$foreignRecordConf
-	 * @param	Integer	$index		numeric index of the databaseRelation field
-	*/
-	protected function handleRecord($data, $foreignRecordConf, $index)	{
-		$this->addRecordConfAttribute($index, 'index', $data['default'][0]['id']);
-		$this->addRecordConfAttribute($index, '_label', $this->getForeignRecordLabel($foreignRecordConf, $index));
-		$this->addRecordConfAttribute($index, 'type', $data['nodeAttributes']['name']);
-		$this->addRecordConfAttribute($index, 'formHTML', $this->loadForeignRecordForm($foreignRecordConf, $index));
-	}
 }
 
 ?>

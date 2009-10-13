@@ -95,7 +95,7 @@ class TodoyuLocale {
 		$label	= self::getCachedLabel($moduleKey, $labelIndex, $locale);
 
 		if ($label == '') {
-			$label	= 'Label not found: \'' .$labelKey . '\'';
+			$label	= 'Label not found: #' .$labelKey . '#';
 			Todoyu::log($label, LOG_LEVEL_NOTICE);
 		}
 
