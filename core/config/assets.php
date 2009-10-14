@@ -38,7 +38,7 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'lib/js/tiny_mce/tiny_mce.js',
 			'position'	=> 20,
-			'merge'		=> true,
+			'merge'		=> false,
 			'localize'	=> false,
 			'compress'	=> false
 		),
