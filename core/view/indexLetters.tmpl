@@ -1,0 +1,5 @@
+<div class="indexLetters">
+	{foreach $letters letter active}
+		<a class="indexLetter{$letter}{if !$active} inactive{/if}" href="javascript:void(0)" {if $active}onclick="Todoyu.Ui.scrollToAnchor('{$indexName}_{$letter}')"{/if}></a>
+	{/foreach}
+</div>

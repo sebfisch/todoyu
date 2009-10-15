@@ -458,6 +458,36 @@ select.indexLetters option {
     padding-left:16px !important;
 }
 
+div.indexLetters {
+	display:block;
+	clear:both;
+	margin:10px 0 5px 5px;
+	padding:0px;
+	height:20px;
+	width:500px;
+	border-bottom:1px dashed #CCC;	
+}
+
+div.indexLetters a {
+	display:inline-block;
+	width:12px;
+	height:16px;
+	margin:1px 2px;
+	cursor:pointer;
+}
+
+div.indexLetters a.inactive {
+	opacity:0.3;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	cursor:default;
+}
+
+
+
+
+
+
 .indexLetterA {
 	background:url('../img/indexletters.png') no-repeat 0 1px;
 }

@@ -310,11 +310,16 @@ Todoyu.Ui = {
 		if( location.hash !== '') {
 
 			var name	= location.hash.substr(1);
-			var element	= $(document.getElementsByName(name)[0]);
-
-			if(element) {
-				$(element).scrollToElement();
-			}
+			
+			this.scrollToAnchor(name);
+		}
+	},
+	
+	scrollToAnchor: function(name) {
+		var element	= $(document.getElementsByName(name)[0]);
+				
+		if(element) {
+			$(element).scrollToElement();
 		}
 	},
 
