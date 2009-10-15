@@ -26,21 +26,6 @@ Todoyu.Form = {
 		return this.subFormIndex++;
 	},
 
-	/**
-	 *	Get serialized data of form containing given element
-	 *
-	 *	@param	unknown_type	idElement
-	 */
-	getContainingFormData: function( idElement ) {
-		var idForm		= $(idElement).form.id;
-		if (idForm !== '' && $(idForm)) {
-			var formData	= Form.serialize(idForm);
-		} else {
-			var formData	= '';
-		}
-
-		return formData;
-	},
 
 
 	/**
@@ -136,7 +121,8 @@ Todoyu.Form = {
 	 * @param	Integer		index
 	 */
 	focusFirstRecordField: function(idRecord, fieldName, index) {
-		var field	= $('foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml').select('input', 'select', 'textarea').first();
+		var formHTML= $('foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml');
+		var field	= formHTML.select('input[type!=hidden]', 'select', 'textarea').first();
 
 		if( field )  {
 			field.focus();

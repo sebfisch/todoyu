@@ -1,12 +1,19 @@
 <?php
 
 /**
+ * strptime() for windows. The original has been modified because of several bugs
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+
+
+/**
  * Implementation of strptime() for PHP on Windows.
  * Modified from http://au.php.net/manual/en/function.strptime.php#82004
  *
- * @param str $date
- * @param str $format
- * @return array
+ * @param	String		$date
+ * @param	String		$format
+ * @return	Array		Parsed date
  */
 function strptime($date, $format) {
 	if( !($date = strptime_strToDate($date, $format)) )
@@ -58,9 +65,9 @@ function strptime($date, $format) {
  * Called by strptime().
  * Modified from http://au.php.net/manual/en/function.strptime.php#81611
  *
- * @param str $date
- * @param str $format
- * @return array
+ * @param	String		$date
+ * @param	String		$format
+ * @return	Array
  */
 function strptime_strToDate($date, $format) {
 	$search = array('%d', '%D', '%j', // day
@@ -71,7 +78,7 @@ function strptime_strToDate($date, $format) {
 	$replace = array('(\d{2})', '(\w{3})', '(\d{1,2})', //day
 					 '(\d{2})', '(\d{2})', '(\d{1,2})', // month
 					 '(\d{4})', '(\d{2})', // year
-					 '(\d{1,2})', '(\d{1,2})', '(\d{2})', '\d{2}', // hour
+					 '(\d{1,2})', '(\d{1,2})', '(\d{1,2})', '\d{2}', // hour
 					 '(\d{2})', '(\d{2})');
 
 	$pattern = str_replace($search, $replace, $format);

@@ -47,9 +47,6 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @param	Array		$value
 	 */
 	public function setValue($value) {
-
-		TodoyuDebug::printInFirebug($value, 'set value dbREL');
-
 		$records	= TodoyuDiv::assureArray($value);
 
 		parent::setValue($records);

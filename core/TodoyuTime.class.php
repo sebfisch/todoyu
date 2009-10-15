@@ -263,16 +263,21 @@ class TodoyuTime {
 	 * @return	Integer		Unix timestamp
 	 */
 	public static function parseDate($dateString) {
-		$format		= self::getFormat('date');
-		$dateParts	= strptime($dateString, $format);
+		$dateString	= trim($dateString);
+		$time		= 0;
 
-			// Fix for built in function (windows function work correctly)
-		if( PHP_OS !== 'WINNT' ) {
-			$dateParts['tm_year']	= $dateParts['tm_year'] + 1900;
-			$dateParts['tm_mon']	= $dateParts['tm_mon'] + 1;
+		if( $dateString !== '' ) {
+			$format		= self::getFormat('date');
+			$dateParts	= strptime($dateString, $format);
+
+				// Fix for built in function (windows function works correctly)
+			if( PHP_OS !== 'WINNT' && $dateParts !== false ) {
+				$dateParts['tm_year']	= $dateParts['tm_year'] + 1900;
+				$dateParts['tm_mon']	= $dateParts['tm_mon'] + 1;
+			}
+
+			$time = mktime(0, 0, 0, $dateParts['tm_mon'], $dateParts['tm_mday'], $dateParts['tm_year']);
 		}
-
-		$time = mktime(0, 0, 0, $dateParts['tm_mon'], $dateParts['tm_mday'], $dateParts['tm_year']);
 
 		return $time;
 	}

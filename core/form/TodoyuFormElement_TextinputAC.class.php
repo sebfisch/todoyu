@@ -63,28 +63,21 @@ class TodoyuFormElement_TextinputAC extends TodoyuFormElement {
 	 * @return	Array
 	 */
 	public function getData() {
-		$displayLabel = '';
+		$data = parent::getData();
 
 		if( $this->hasAttribute('config') )	{
 			$config	= $this->getAttribute('config');
-			$funcRef= $config['acLabelFunc']; 
-			
+			$funcRef= $config['acLabelFunc'];
+
 			if( TodoyuDiv::isFunctionReference($funcRef) ) {
-				$displayLabel = TodoyuDiv::callUserFunction($funcRef, $this->getValue());
+				$data['displayaLabel'] = TodoyuDiv::callUserFunction($funcRef, $this->getValue());
 			}
 		}
-		
-//		$this->setValue($label);
 
-//		TodoyuDebug::printInFirebug($label, 'label ' . $this->getName());
-//		TodoyuDebug::printInFirebug($this->getValue(), 'getValue ' . $this->getName());
-
-		$this->setAttribute('displayLabel', $displayLabel);
-
-		return parent::getData();
+		return $data;
 	}
-	
-	
+
+
 
 	/**
 	 * Renders the autocompletion - suggestions
@@ -99,6 +92,6 @@ class TodoyuFormElement_TextinputAC extends TodoyuFormElement {
 	public static function renderAutocompletion(array $results)	{
 		return TodoyuRenderer::renderAutocompleteList($results);
 	}
-	
+
 }
 ?>

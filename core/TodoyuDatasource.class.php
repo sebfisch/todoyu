@@ -33,19 +33,79 @@ class TodoyuDatasource {
 	/**
 	 * Fetch records from 'static_....' table
 	 *
-	 * @param	String	$table		table postfix (will be prefixed with 'static_')
-	 * @param	Boolean	$locale		add localized labels?
+	 * @param	String	$type		table postfix (will be prefixed with 'static_')
 	 * @param	String	$where		optional WHERE-clause
 	 */
-	public static function getStaticRecords( $table, $locale = false, $where = '' ) {
-		$records	= Todoyu::db()->getArray(
-			'*',
-			'static_' . $table,
-			($where == '') ? '' : $where
+	public static function getStaticRecords($type, $where = '') {
+		$fields	= '*';
+		$table	= 'static_' . $type;
+
+		return Todoyu::db()->getArray($fields, $table, $where);
+	}
+
+
+	public static function getStaticRecordOptions($type, $keyValue, $keyLabel, $localize = true) {
+		$records	= self::getStaticRecords($type);
+
+		if( $localize ) {
+			foreach($records as $index => $record) {
+				$records[$index]['label']		= self::getStaticLabel($type, $record[$keyLabel]);
+			}
+			$keyLabel = 'label';
+		}
+
+		$reform	= array(
+			$keyValue	=> 'value',
+			$keyLabel	=> 'label'
 		);
 
-		return $records;
+		$options= TodoyuDiv::reformArray($records, $reform, true);
+		$options= TodoyuDiv::sortArrayByLabel($options, 'label');
+
+		return $options;
 	}
+
+
+
+
+	/**
+	 * Render options array (each containing 'value' and 'label') for select element from 'static_...' table
+	 *
+	 * @param	String	$tablePostfix		table postfix (will be prefixed with 'static_')
+	 * @param	String	$labelKey
+	 * @param	String	$valueField
+	 * @param	Boolean	$sortByLabel
+	 * @return	Array
+	 */
+	public static function getStaticOptions($type, $labelKey = 'name', $valueField = 'id', $sortByLabel = true ) {
+		$records			= self::getStaticRecords($type);
+		$selectorEntries	= self::localizeStaticRecords($records, $type, $labelKey, $valueField, $sortByLabel );
+
+		$options	= array();
+		foreach($selectorEntries as $value => $label) {
+			$options[] = array(
+				'value'		=> $value,
+				'label'		=> $label
+			);
+		}
+
+		return $options;
+	}
+
+
+	public static function getStaticLabel($type, $key) {
+		$labelKey	= 'static_' . $type . '.' . $key;
+
+		return TodoyuLocale::getLabel($labelKey);
+	}
+
+
+
+
+
+
+
+
 
 
 
@@ -139,30 +199,6 @@ class TodoyuDatasource {
 
 
 
-	/**
-	 * Render options array (each containing 'value' and 'label') for select element from 'static_...' table
-	 *
-	 * @param	String	$tablePostfix		table postfix (will be prefixed with 'static_')
-	 * @param	String	$labelKey
-	 * @param	String	$valueField
-	 * @param	Boolean	$sortByLabel
-	 * @return	Array
-	 */
-	public static function getStaticOptions( $tablePostfix = 'country', $labelKey = 'name', $valueField = 'id', $sortByLabel = true ) {
-		$records			= self::getStaticRecords( $tablePostfix, true );
-		$selectorEntries	= self::localizeStaticRecords( $records, $tablePostfix, $labelKey, $valueField, $sortByLabel );
-
-		$options	= array();
-		foreach($selectorEntries as $value => $label) {
-			$options[] = array(
-				'value'		=> $value,
-				'label'		=> $label
-			);
-		}
-
-		return $options;
-	}
-
 
 
 
@@ -174,6 +210,17 @@ class TodoyuDatasource {
 	public static function getStaticCountryOptions() {
 
 		return self::getStaticOptions( 'country', 'name' );
+	}
+
+
+
+	public static function getCountries() {
+		return self::getStaticRecords('country');
+	}
+
+
+	public static function getCountryOptions() {
+		return self::getStaticRecordOptions('country', 'id', 'iso_alpha3', true);
 	}
 
 
@@ -192,7 +239,7 @@ class TodoyuDatasource {
 	 * @return	Array
 	 */
 	public static function getStaticValsBeginningWith( $tablePostfix = 'country', $labelKey = 'name', $whereClause = '', $beginningWith = '', $valueField = 'id', $renderLabelAsValue = false, $sortByLabel = true ) {
-		$records			= self::getStaticRecords( $tablePostfix, true, $whereClause );
+		$records			= self::getStaticRecords($tablePostfix, $whereClause );
 		$valEntries	= self::localizeStaticRecords( $records, $tablePostfix, $labelKey, $valueField, $sortByLabel );
 
 		$entries		= array();
