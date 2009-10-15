@@ -146,7 +146,7 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 65
 		),
 		array(
-			'file'		=> 'core/assets/js/DurationPicker.js',
+			'file'		=> 'core/assets/js/TimePicker.js',
 			'position'	=> 66
 		)
 	),
@@ -248,7 +248,7 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/durationpicker.css',
+			'file'		=> 'core/assets/css/timepicker.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),

@@ -48,8 +48,12 @@ Todoyu.Form = {
 	 *
 	 *	@param	unknown_type	trigger
 	 */
-	toggleSubform: function(idRecord, fieldName, index)	{
-		$('foreign-record-' + idRecord + '-' + fieldName + '-' + index + '-formhtml').toggle();
+	toggleRecordForm: function(idRecord, fieldName, index)	{
+		var idForm = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml';
+		
+		if( Todoyu.exists(idForm) ) {
+			$(idForm).toggle();
+		}
 	},
 
 
@@ -58,42 +62,85 @@ Todoyu.Form = {
 	 *
 	 *	@param	unknown_type	removeLink
 	 */
-	removeSubRecord: function(removeLink)	{
-		removeLink.up('.databaseRelation').remove();
+	removeRecord: function(idRecord, fieldName, index) {
+		var idElement	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
+		
+		$(idElement).remove();
+				
+		/*
+		Effect.BlindUp(idElement);
+		
+		$(idElement).remove.delay(1);
+		
+		
+		, {
+			'scaleMode': 'contents',
+			'afterFinish': function(){
+				console.log('remove');
+				//$(idElement).remove()
+			}
+		});
+		*/
+				
 	},
-
-
-
+	
+	
 	/**
-	 *	Add sub form
-	 *
-	 *	@param	unknown_type	form
-	 *	@param	unknown_type	formname
-	 *	@param	unknown_type	field
-	 *	@param	unknown_type	ext
-	 *	@param	unknown_type	controller
+	 * Add a new record
+	 * @param	Integer		idRecord
+	 * @param	String		formName
+	 * @param	Stirng		fieldName
+	 * @param	String		updateExt
+	 * @param	String		updateController
 	 */
-	addSubform: function(idRecord, formname, fieldname, updateExt, updateController) {
-		var container	= $('foreign-records-' + idRecord + '-' + fieldname);
+	addRecord: function(idRecord, formName, fieldName, updateExt, updateController) {
+		var container	= $('foreignrecords-' + idRecord + '-' + fieldName);
 		var index		= this.getNextIndex();
 		
 		var url 	= Todoyu.getUrl(updateExt, updateController);
 		var options = {
 			'parameters': {
 				'cmd':		'addSubform',
-				'form': 	formname,
-				'field':	fieldname,
+				'form': 	formName,
+				'field':	fieldName,
 				'record':	idRecord,
 				'index': 	index
 			},
-			'onComplete': this.onSubformAdded.bind(this, idRecord, formname, fieldname, index)
+			'onComplete': this.onRecordAdded.bind(this, idRecord, formName, fieldName, index)
 		};
 
 		Todoyu.Ui.insert(container, url, options);
 	},
 	
-	onSubformAdded: function(idRecord, formName, fieldName, index, response) {
-		//this.toggleSubform(idRecord, fieldName, index);
+	
+	
+	/**
+	 * Callback when new record added
+	 * @param	Integer		idRecord
+	 * @param	String		formName
+	 * @param	String		fieldName
+	 * @param	String		index
+	 * @param	String		response
+	 */
+	onRecordAdded: function(idRecord, formName, fieldName, index, response) {
+		this.toggleRecordForm(idRecord, fieldName, index);
+		this.focusFirstRecordField(idRecord, fieldName, index);
+	},
+	
+	
+	
+	/**
+	 * Focus first record field
+	 * @param	Integer		idRecord
+	 * @param	String		fieldName
+	 * @param	Integer		index
+	 */
+	focusFirstRecordField: function(idRecord, fieldName, index) {
+		var field	= $('foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml').select('input', 'select', 'textarea').first();
+		
+		if( field )  {
+			field.focus();
+		}
 	},
 
 

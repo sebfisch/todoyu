@@ -1,4 +1,4 @@
-var DurationPicker = Class.create({
+var TimePicker = Class.create({
 	
 	/**
 	 * Selected hour and minute
@@ -33,8 +33,9 @@ var DurationPicker = Class.create({
 	 * Constructor
 	 * @param	String		idElement
 	 */
-	initialize: function(idElement) {
-		this.element	= $(idElement);
+	initialize: function(idElement, config) {		
+		this.element= $(idElement);
+		this.config	= $H(this.config).merge(config || {}).toObject();
 		
 		var dur = this._readDuration();
 		

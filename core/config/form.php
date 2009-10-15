@@ -80,6 +80,11 @@ $CONFIG['FORM']['TYPES']['timeinput'] = array(
 	'template'	=> 'core/view/form/FormElement_Timeinput.tmpl'
 );
 
+$CONFIG['FORM']['TYPES']['duration'] = array(
+	'class'		=> 'TodoyuFormElement_Duration',
+	'template'	=> 'core/view/form/FormElement_Duration.tmpl'
+);
+
 $CONFIG['FORM']['TYPES']['RTE'] = array(
 	'class'		=> 'TodoyuFormElement_RTE',
 	'template'	=> 'core/view/form/FormElement_RTE.tmpl'

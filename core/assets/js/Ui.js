@@ -381,8 +381,17 @@ Todoyu.Ui = {
 		}
 	},
 	
+	showTimePicker: function(idElement, config) {
+		config = $H({
+			'rangeHour': [0,23],
+			'rangeMinute': [0,55]
+		}).merge(config).toObject();
+				
+		return new TimePicker(idElement, config);
+	},
+	
 	showDurationPicker: function(idElement) {
-		return new DurationPicker(idElement);
+		return new TimePicker(idElement);
 	}
 
 };

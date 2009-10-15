@@ -132,7 +132,8 @@ div.fElement {
 			width:90px;
 			margin-right:5px;
 		}
-		div.typeTimeinput .fField input {
+		div.typeTimeinput .fField input,
+		div.typeDuration .fField input  {
 			float:left;
 			width:30px;
 		}

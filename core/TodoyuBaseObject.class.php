@@ -99,7 +99,7 @@ class TodoyuBaseObject implements ArrayAccess {
 		$methodName	= 'get' . $memberName;
 
 		if( method_exists($this, $methodName) ) {
-			return call_user_method($methodName, $this, array());
+			return call_user_func(array($this, $methodName));
 		} elseif( array_key_exists($dataKey, $this->data) ) {
 			return $this->get($dataKey);
 		} else {

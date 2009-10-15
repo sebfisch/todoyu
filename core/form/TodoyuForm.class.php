@@ -302,9 +302,9 @@ class TodoyuForm implements ArrayAccess {
 				$field->setValue($value);
 			}
 
-			if($this->getValidateForm())	{
-				$this->validateField($field);
-			}
+//			if($this->getValidateForm())	{
+//				$this->validateField($field);
+//			}
 		}
 
 			// Update hidden fields
