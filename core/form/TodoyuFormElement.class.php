@@ -165,6 +165,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$this->config['required']		= $this->hasAttribute('required');
 		$this->config['hasErrorClass']	= $this->hasAttribute('hasError') ? 'fieldHasError':'';
 		$this->config['hasIconClass']	= $this->hasAttribute('hasIcon') ? 'hasIcon icon' . ucfirst($this->name):'';
+		$this->config['wizard']			= $this->getWizardConfiguration();
 
 		return $this->config;
 	}
@@ -493,6 +494,28 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	}
 
 
+
+	/**
+	 * Returns Form field wizard configurations
+	 *
+	 * @return	Array
+	 */
+	public function getWizardConfiguration()	{
+		if($this->hasAttribute('wizard'))	{
+			$wizardConf = array(
+				'hasWizard'		=> true,
+				'wizardConf'	=> $this->getAttribute('wizard')
+			);
+
+			$wizardConf['wizardConf']['idRecord']	= intval($this->getForm()->getRecordID());
+
+			if($wizardConf['wizardConf']['displayCondition'])	{
+				$wizardConf['hasWizard'] = TodoyuDiv::callUserFunctionArray($wizardConf['wizardConf']['displayCondition'], $wizardConf);
+			}
+		}
+
+		return $wizardConf;
+	}
 }
 
 ?>

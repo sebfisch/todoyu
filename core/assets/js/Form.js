@@ -19,9 +19,9 @@
 ***************************************************************/
 
 Todoyu.Form = {
-	
+
 	subFormIndex: 100,
-	
+
 	getNextIndex: function() {
 		return this.subFormIndex++;
 	},
@@ -50,7 +50,7 @@ Todoyu.Form = {
 	 */
 	toggleRecordForm: function(idRecord, fieldName, index)	{
 		var idForm = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml';
-		
+
 		if( Todoyu.exists(idForm) ) {
 			$(idForm).toggle();
 		}
@@ -64,15 +64,15 @@ Todoyu.Form = {
 	 */
 	removeRecord: function(idRecord, fieldName, index) {
 		var idElement	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
-		
+
 		$(idElement).remove();
-				
+
 		/*
 		Effect.BlindUp(idElement);
-		
+
 		$(idElement).remove.delay(1);
-		
-		
+
+
 		, {
 			'scaleMode': 'contents',
 			'afterFinish': function(){
@@ -81,10 +81,10 @@ Todoyu.Form = {
 			}
 		});
 		*/
-				
+
 	},
-	
-	
+
+
 	/**
 	 * Add a new record
 	 * @param	Integer		idRecord
@@ -96,7 +96,7 @@ Todoyu.Form = {
 	addRecord: function(idRecord, formName, fieldName, updateExt, updateController) {
 		var container	= $('foreignrecords-' + idRecord + '-' + fieldName);
 		var index		= this.getNextIndex();
-		
+
 		var url 	= Todoyu.getUrl(updateExt, updateController);
 		var options = {
 			'parameters': {
@@ -111,9 +111,9 @@ Todoyu.Form = {
 
 		Todoyu.Ui.insert(container, url, options);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Callback when new record added
 	 * @param	Integer		idRecord
@@ -126,9 +126,9 @@ Todoyu.Form = {
 		this.toggleRecordForm(idRecord, fieldName, index);
 		this.focusFirstRecordField(idRecord, fieldName, index);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Focus first record field
 	 * @param	Integer		idRecord
@@ -137,7 +137,7 @@ Todoyu.Form = {
 	 */
 	focusFirstRecordField: function(idRecord, fieldName, index) {
 		var field	= $('foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml').select('input', 'select', 'textarea').first();
-		
+
 		if( field )  {
 			field.focus();
 		}
@@ -162,8 +162,30 @@ Todoyu.Form = {
 			}
 		});
 
+	},
+
+
+
+	/**
+	 *	Expand all foreign records in a form
+	 *
+	 *	@param	unknown_type	buttonID
+	 */
+	openWizard: function(idRecord, idField, extension, controller, command, height, width, title)	{
+		var url		= Todoyu.getUrl(extension,	controller);
+		var options	= {
+			'parameters': {
+				'cmd': command,
+				'idRecord': idRecord,
+				'idField': idField
+			}
+		};
+		var idPopup	= 'popup-'+idField;
+		var title	= title ? title : 'Form Wizard';
+		var width	= width > 0 ? width : 480;
+		var height	= height > 0 ? height: 300;
+
+		Todoyu.Popup.openWindow(idPopup, title, width, height, 0, 0, url, options);
 	}
-
-
 
 };

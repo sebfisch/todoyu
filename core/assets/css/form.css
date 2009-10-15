@@ -462,3 +462,12 @@ label.narrowInput {
 	top: 7px;
 	right: 7px;
 }
+
+.fField span.wizardIcon  {
+	height: 16px;
+	width: 16px;
+	display: block;
+	float: right;
+	background: transparent url(../img/icons_dev.png) no-repeat 0 -2100px;
+}
+
