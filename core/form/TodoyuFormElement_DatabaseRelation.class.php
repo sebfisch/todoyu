@@ -88,7 +88,9 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$data['formname']	= $this->getForm()->getName();
 		$data['idRecord']	= $this->getForm()->getRecordID();
 
-		TodoyuDebug::printInFirebug($data['fieldname'], 'fieldname');
+//		TodoyuDebug::printInFirebug($data['fieldname'], 'fieldname');
+
+//		TodoyuDebug::printHtml($data);
 
 		return $data;
 	}
@@ -102,6 +104,8 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @return	String
 	 */
 	public function render($odd = false) {
+
+
 		return parent::render($odd);
 	}
 
@@ -148,7 +152,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$recordForm	= TodoyuFormHook::callBuildForm($xmlPath, $recordForm, $idRecord);
 		$recordData	= TodoyuFormHook::callLoadData($xmlPath, $recordData, $idRecord);
 
-		$formName	= $this->getForm()->getName() . '[' . $recordForm->getName() . '][' . $index . ']';
+		$formName	= $this->getForm()->getName() . '[' . $this->getName() . '][' . $index . ']';
 
 			// Set form data
 		$recordForm->setFormData($recordData);

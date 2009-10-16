@@ -118,7 +118,8 @@ Todoyu.Tabs = {
 	
 	
 	getActive: function(list) {
-		$(list).select('li.item')
+		//console.log($(list).select('li.active'));
+		return $(list).select('li.active').first().getAttribute('id').split('-').last();
 	},
 
 
