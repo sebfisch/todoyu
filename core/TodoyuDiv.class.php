@@ -1048,6 +1048,12 @@ class TodoyuDiv {
 		return unserialize($decryptedString);
 	}
 
+
+
+	public static function splitCamelCase($string) {
+		return preg_split('/([A-Z][^A-Z]*)/', $string, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+	}
+
 }
 
 ?>

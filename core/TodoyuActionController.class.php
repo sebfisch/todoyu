@@ -35,9 +35,9 @@ abstract class TodoyuActionController {
 	 * @var	Array
 	 */
 	protected $params;
-	
-	
-	
+
+
+
 	/**
 	 * Constructor
 	 * Set params and call init function
@@ -46,22 +46,46 @@ abstract class TodoyuActionController {
 	 */
 	public final function __construct(array $params) {
 		$this->params	= $params;
-		
+
+//		TodoyuRightsManager::reloadRights();
+
 		$this->init($params);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Destructor is unused at the moment
 	 *
 	 */
 	public function __destruct() {
-		
+
 	}
-	
-	
-	
+
+	protected final function getClassNameParts() {
+		return TodoyuDiv::splitCamelCase(get_class($this));
+	}
+
+
+	protected function hasActionAccess($action) {
+		$classParts	= $this->getClassNameParts();
+		$extKey		= strtolower($classParts[1]);
+		$controller	= strtolower($classParts[2]);
+
+		return allowed($extKey, 'action:' . $controller . ':' . $action);
+	}
+
+
+	protected final function hasControllerAccess() {
+		$classParts	= $this->getClassNameParts();
+		$extKey		= strtolower($classParts[1]);
+		$controller	= strtolower($classParts[2]);
+
+		return allowed($extKey, 'controller:' . $controller);
+	}
+
+
+
 	/**
 	 * Init function
 	 * Can be overriden in extended class. Can be used as constructor alternative
@@ -71,9 +95,9 @@ abstract class TodoyuActionController {
 	public function init(array $params) {
 		// Override for custom init
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Run requested action
 	 * If requested action is not defined in current object, check for _unknowAction.
@@ -84,22 +108,62 @@ abstract class TodoyuActionController {
 	 */
 	public final function runAction($action = 'default') {
 		$result	= false;
-		
+
+			// Check if action exists
 		if( $this->isAction($action) ) {
-			$method	= $this->getActionMethodName($action);
-			$result	= call_user_func(array($this, $method), $this->params);
+				// Check action access rights
+			if( $this->hasActionAccess($action) ) {
+					// Access granted
+				$method	= $this->getActionMethodName($action);
+				$result	= call_user_func(array($this, $method), $this->params);
+			} else {
+					// No access
+				$this->sendNoAccessResponse($action);
+				exit();
+			}
+			// If action method not found
 		} elseif( method_exists($this, '_unknownAction') ) {
-			$result	= call_user_func(array($this, '_unknownAction'), $action, $this->params);
+			if( $this->hasActionAccess('_unknownAction') ) {
+				$result	= call_user_func(array($this, '_unknownAction'), $action, $this->params);
+			} else {
+					// No access
+				$this->sendNoAccessResponse($action);
+				exit();
+			}
 		} else {
 			throw new TodoyuControllerException(EXT, get_class($this), $action, 'Action "' . $action . '" not found in ' . get_class($this));
 			$result	= false;
 		}
-		
+
+
 		return $result;
 	}
-	
-	
-	
+
+
+	protected final function sendNoAccessResponse($action) {
+		if( TodoyuRequest::isAjaxRequest() ) {
+			TodoyuHeader::sendTodoyuHeader('noAccess', true);
+		} else {
+			TodoyuDebug::printHtml('Action: ' . $action, 'No access: ' . date('r'));
+		}
+
+		exit();
+	}
+
+
+
+	/**
+	 * Prototype of _unknownAction
+	 *
+	 * @param	String		$action
+	 * @param	Array		$params
+	 */
+	protected function _unknownAction($action, array $params) {
+		die("Unknown action: " . htmlentities($action));
+	}
+
+
+
 	/**
 	 * Get method name for the action
 	 *
@@ -109,9 +173,9 @@ abstract class TodoyuActionController {
 	protected function getActionMethodName($action) {
 		return strtolower($action) . 'Action';
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Check if action exists (method is defined)
 	 *
@@ -123,9 +187,9 @@ abstract class TodoyuActionController {
 
 		return method_exists($this, $funcName);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Dummy default action
 	 * If controller is called without an action and defaultAction is not defined in
@@ -136,7 +200,7 @@ abstract class TodoyuActionController {
 	public function defaultAction($params = array()) {
 		die("THERE IS NO DEFAULT ACTION DEFINED");
 	}
-	
+
 }
 
 ?>

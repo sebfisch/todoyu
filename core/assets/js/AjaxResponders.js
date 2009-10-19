@@ -53,10 +53,17 @@ Todoyu.AjaxResponders = {
 	 */
 	onComplete: function(response) {
 		this.goToHash(response);
-
+		this.checkNoAccessError(response);
+		
 		if( Ajax.activeRequestCount === 0 ) {
 			Todoyu.Ui.ajaxLoader(false);
 			Todoyu.Ui.setLinkCursor(false);
+		}
+	},
+	
+	checkNoAccessError: function(response) {
+		if( response.getHeader('Todoyu-noAccess') == 1 ) {
+			Todoyu.notifyError('No access');
 		}
 	},
 
@@ -68,21 +75,10 @@ Todoyu.AjaxResponders = {
 	 *	@param	unknown_type	response
 	 */
 	goToHash: function(response) {
-		var hash = this.getHashHeader(response);
+		var hash = response.getHeader('Todoyu-Hash');
 		
 		if( hash !== null && Todoyu.exists(hash) ) {
 			$(hash).scrollToElement();
 		}
-	},
-
-
-
-	/**
-	 *	Please enter Description here...
-	 *
-	 *	@param	unknown_type	response
-	 */
-	getHashHeader: function(response) {
-		return response.transport.getResponseHeader('Todoyu-Hash');
 	}
 };

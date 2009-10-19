@@ -85,6 +85,39 @@ class TodoyuLocale {
 	 * @return	String		Translated label
 	 */
 	public static function getLabel($labelKey, $locale = null) {
+		$label	= self::getLabelInternal($labelKey, $locale);
+
+		if( $label === '' && $GLOBALS['CONFIG']['DEBUG'] ) {
+			Todoyu::log($label, LOG_LEVEL_NOTICE);
+			$label	= 'Label not found: #' .$labelKey . '#';
+		}
+
+		return $label;
+	}
+
+
+
+	/**
+	 * Get label if it exists. If not existing, get empty string
+	 *
+	 * @param	String		$labelKey
+	 * @param	String		$locale
+	 * @return	String
+	 */
+	public static function getLabelIfExists($labelKey, $locale = null) {
+		return trim(self::getLabelInternal($labelKey, $locale));
+	}
+
+
+
+	/**
+	 * Get label or null if not existing
+	 *
+	 * @param	String		$labelKey
+	 * @param	String		$locale
+	 * @return	String		Or NULL
+	 */
+	private static function getLabelInternal($labelKey, $locale = null) {
 		$locale	= is_null($locale) ? self::$locale : $locale ;
 
 			// Split path parts into module and label index
@@ -92,14 +125,7 @@ class TodoyuLocale {
 		$moduleKey	=  substr($keyParts[0], 0, 4) == 'LLL:' ? substr($keyParts[0], 4) : $keyParts[0];
 		$labelIndex	= $keyParts[1];
 
-		$label	= self::getCachedLabel($moduleKey, $labelIndex, $locale);
-
-		if ($label == '') {
-			$label	= 'Label not found: #' .$labelKey . '#';
-			Todoyu::log($label, LOG_LEVEL_NOTICE);
-		}
-
-		return $label;
+		return self::getCachedLabel($moduleKey, $labelIndex, $locale);
 	}
 
 
@@ -112,15 +138,9 @@ class TodoyuLocale {
 	 * @return	String
 	 */
 	public static function labelExists($labelKey, $locale = null)	{
-		$locale = is_null($locale)	? self::$locale : $locale ;
+		$label	= self::getLabelInternal($labelKey, $locale);
 
-		$keyParts	= explode('.', $labelKey, 2);
-		$moduleKey	= substr($keyParts[0], 0, 4) === 'LLL:' ? substr($keyParts[0], 4) : $keyParts[0];
-		$labelIndex	= $keyParts[1];
-
-		$label	= self::getCachedLabel($moduleKey, $labelIndex, $locale);
-
-		return $label == '' ? false : true;
+		return !is_null($label);
 	}
 
 

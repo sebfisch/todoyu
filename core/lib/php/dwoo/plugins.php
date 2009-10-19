@@ -484,4 +484,10 @@ function Dwoo_Plugin_IndexLetters(Dwoo $dwoo, array $records, $field, $indexName
 }
 
 
+
+function Dwoo_Plugin_allowed_compile(Dwoo_Compiler $compiler, $ext, $right) {
+	return 'allowed(' . $ext . ',' . $right . ')';
+}
+
+
 ?>
