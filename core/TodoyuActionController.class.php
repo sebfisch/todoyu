@@ -47,8 +47,6 @@ abstract class TodoyuActionController {
 	public final function __construct(array $params) {
 		$this->params	= $params;
 
-//		TodoyuRightsManager::reloadRights();
-
 		$this->init($params);
 	}
 
@@ -68,6 +66,7 @@ abstract class TodoyuActionController {
 
 
 	protected function hasActionAccess($action) {
+		return true;
 		$classParts	= $this->getClassNameParts();
 		$extKey		= strtolower($classParts[1]);
 		$controller	= strtolower($classParts[2]);
@@ -77,6 +76,7 @@ abstract class TodoyuActionController {
 
 
 	protected final function hasControllerAccess() {
+		return true;
 		$classParts	= $this->getClassNameParts();
 		$extKey		= strtolower($classParts[1]);
 		$controller	= strtolower($classParts[2]);
