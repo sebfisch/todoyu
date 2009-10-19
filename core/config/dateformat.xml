@@ -15,7 +15,7 @@
 		<label index="DshortD2MshortY2">%a, %b %d %y</label>
 		<label index="DshortD2MlongY4">%a, %B %d %Y</label>
 		<label index="DlongD2MlongY4">%A, %B %d %Y</label>
-		<label index="calendarweek">CW %V</label>
+		<label index="calendarweek">CW %W</label>
 		<label index="date">%d/%m/%y</label>
 		<label index="time">%H:%M</label>
 		<label index="timesec">%H:%M:%S</label>
@@ -36,7 +36,7 @@
 		<label index="DshortD2MshortY2">%a, %d. %b %y</label>
 		<label index="DshortD2MlongY4">%a, %d. %B %Y</label>
 		<label index="DlongD2MlongY4">%A, %d. %B %Y</label>
-		<label index="calendarweek">KW %V</label>
+		<label index="calendarweek">KW %W</label>
 		<label index="date">%d.%m.%Y</label>
 		<label index="time">%H:%M</label>
 		<label index="timesec">%H:%M:%S</label>
