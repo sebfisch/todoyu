@@ -54,7 +54,7 @@ class TodoyuContextMenuManager {
 		}
 
 			// Sort registered functions by position flag
-		$funcRefs = TodoyuDiv::sortArrayByLabel($funcRefs, 'position');
+		$funcRefs = TodoyuArray::sortByLabel($funcRefs, 'position');
 		
 			// Check that the registered functions exist
 		foreach($funcRefs as $index => $function) {

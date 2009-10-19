@@ -195,7 +195,7 @@ class TodoyuRightsManager {
 	 */
 	public static function getExtGroupRights($ext, array $groups = array()) {
 		$extID	= TodoyuExtensions::getExtID($ext);
-		$groups	= TodoyuDiv::intvalArray($groups, true, true);
+		$groups	= TodoyuArray::intval($groups, true, true);
 
 		$fields	= '`right`, id_group';
 		$table	= self::TABLE;

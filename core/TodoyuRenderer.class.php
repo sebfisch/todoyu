@@ -28,6 +28,23 @@
 
 class TodoyuRenderer {
 
+	/**
+	 * Render all navigations
+	 *
+	 * @return	String
+	 */
+	public static function renderNavigation() {
+		$tmpl	= 'core/view/navi.tmpl';
+
+		$data	= array(
+			'navigation'=> TodoyuFrontend::getMenuEntries(),
+			'active'	=> TodoyuFrontend::getActiveTab()
+		);
+
+		return render($tmpl, $data);
+	}
+
+
 
 	/**
 	 * Call all registered render functions for an area (content,panel,menu,etc)

@@ -462,7 +462,7 @@ class TodoyuPage {
 		self::renderHeadlets();
 
 			// Add main navigation
-		self::set('navigation', TodoyuLayoutRenderer::renderNavigation());
+		self::set('navigation', TodoyuRenderer::renderNavigation());
 
 			// Call finishing functions
 		self::callFinishingFunctions();

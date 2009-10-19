@@ -45,9 +45,9 @@ class TodoyuHookManager {
 			$hooks = array();
 		}
 		
-		$hooks	= TodoyuDiv::sortArrayByLabel($hooks, 'position');
+		$hooks	= TodoyuArray::sortByLabel($hooks, 'position');
 
-		return TodoyuDiv::getColumnFromArray($hooks, 'function');	
+		return TodoyuArray::getColumn($hooks, 'function');	
 	}
 
 	

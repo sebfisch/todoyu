@@ -38,8 +38,8 @@ class TodoyuColors {
 		$spriteFilename	= 'colors.png';
 
 			// Make sure folders exists
-		TodoyuDiv::makeDirDeep( PATH_CACHE . '/css/');
-		TodoyuDiv::makeDirDeep( PATH_CACHE . '/img/');
+		TodoyuFileManager::makeDirDeep( PATH_CACHE . '/css/');
+		TodoyuFileManager::makeDirDeep( PATH_CACHE . '/img/');
 
 
 			// Does CSS file not exist or is it not up-to-date?

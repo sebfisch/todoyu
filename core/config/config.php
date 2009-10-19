@@ -57,5 +57,7 @@ TodoyuHeadletManager::registerRight('TodoyuHeadletMetaMenu', 80);
 
 $CONFIG['AUTH']['loginCookieName']	= 'todoyulogin';
 
+$CONFIG['SYSTEM']['language']	= 'en';
+
 
 ?>

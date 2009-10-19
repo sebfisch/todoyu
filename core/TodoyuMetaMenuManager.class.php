@@ -69,7 +69,7 @@ class TodoyuMetaMenuManager {
 			}
 		}
 
-		return TodoyuDiv::sortArrayByLabel($GLOBALS['CONFIG']['MetaMenu'], 'position');
+		return TodoyuArray::sortByLabel($GLOBALS['CONFIG']['MetaMenu'], 'position');
 	}
 
 }

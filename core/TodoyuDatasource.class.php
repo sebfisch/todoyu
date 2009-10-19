@@ -59,8 +59,8 @@ class TodoyuDatasource {
 			$keyLabel	=> 'label'
 		);
 
-		$options= TodoyuDiv::reformArray($records, $reform, true);
-		$options= TodoyuDiv::sortArrayByLabel($options, 'label');
+		$options= TodoyuArray::reform($records, $reform, true);
+		$options= TodoyuArray::sortByLabel($options, 'label');
 
 		return $options;
 	}

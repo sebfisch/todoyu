@@ -60,7 +60,7 @@ class TodoyuFormXmlParser {
 	 */
 	public static function parse($form, $xmlFile) {
 		self::$form		= $form;
-		self::$xmlFile	= TodoyuDiv::pathAbsolute($xmlFile);
+		self::$xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
 
 		if( ! is_file($xmlFile) ) {
 			Todoyu::log('Form XML file not found (\'' . self::$xmlFile . '\')', LOG_LEVEL_CRITICAL);
@@ -172,7 +172,7 @@ class TodoyuFormXmlParser {
 		$type	= trim($fieldXmlObj['type']);
 		$name	= trim($fieldXmlObj['name']);
 
-		$config	= TodoyuDiv::simpleXmlToArray($fieldXmlObj);
+		$config	= TodoyuArray::fromSimpleXML($fieldXmlObj);
 
 		$field	= TodoyuFormFactory::createField($type, $name, $fieldset, $config);
 

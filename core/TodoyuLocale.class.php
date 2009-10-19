@@ -150,7 +150,7 @@ class TodoyuLocale {
 	 * @param	String		$absPathToFile		Absolute path to the locallang XML file
 	 */
 	public static function register($identifier, $absPathToFile) {
-		$absPathToFile = TodoyuDiv::pathAbsolute($absPathToFile);
+		$absPathToFile = TodoyuFileManager::pathAbsolute($absPathToFile);
 
 		if( !is_file($absPathToFile) ) {
 			TodoyuDebug::printHtml($absPathToFile, 'Locale file not found!', null, true);
@@ -365,7 +365,7 @@ class TodoyuLocale {
 		$cacheData	= serialize($locallangArray);
 		$cacheFile	= self::getCacheFileName($moduleKey, $locale);
 
-		TodoyuDiv::makeDirDeep(dirname($cacheFile));
+		TodoyuFileManager::makeDirDeep(dirname($cacheFile));
 
 		return file_put_contents($cacheFile, $cacheData) !== false;
 	}

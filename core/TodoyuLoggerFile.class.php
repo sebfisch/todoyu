@@ -55,7 +55,7 @@ class TodoyuLoggerFile {
 			if( is_string($logFilePath) ) {
 					// If file doesn't exist, create it
 				if( ! is_file($logFilePath) ) {
-					TodoyuDiv::makeDirDeep(dirname($logFilePath));
+					TodoyuFileManager::makeDirDeep(dirname($logFilePath));
 					touch($logFilePath);
 				}
 

@@ -89,7 +89,7 @@ class TodoyuHeadletManager {
 			}
 		}
 
-		$headlets	= TodoyuDiv::sortArrayByLabel($headlets, 'position');
+		$headlets	= TodoyuArray::sortByLabel($headlets, 'position');
 
 		return $headlets;
 	}

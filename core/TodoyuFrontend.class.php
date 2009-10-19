@@ -167,7 +167,7 @@ class TodoyuFrontend {
 					$submenu[$key]['active'] = true;
 				}
 			}
-			$submenu = TodoyuDiv::sortArrayByLabel($submenu, 'position');
+			$submenu = TodoyuArray::sortByLabel($submenu, 'position');
 		} else {
 			$submenu = array();
 		}
@@ -197,11 +197,11 @@ class TodoyuFrontend {
 
 			if( $tabs[$index]['submenu'] ) {
 					// sort by 'position', remove duplicate entries
-				$tabs[$index]['submenu'] = TodoyuDiv::sortArrayByLabel($tabs[$index]['submenu'], 'position', false, false, false, SORT_REGULAR, 'href');
+				$tabs[$index]['submenu'] = TodoyuArray::sortByLabel($tabs[$index]['submenu'], 'position', false, false, false, SORT_REGULAR, 'href');
 			}
 		}
 
-		$tabs = TodoyuDiv::sortArrayByLabel($tabs, 'position');
+		$tabs = TodoyuArray::sortByLabel($tabs, 'position');
 
 		return $tabs;
 	}

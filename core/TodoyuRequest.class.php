@@ -50,7 +50,7 @@ class TodoyuRequest {
 
 			// Strip slashes on array values
 		if( is_array($value) ) {
-			$value = TodoyuDiv::arrayStripslashes($value);
+			$value = TodoyuArray::stripslashes($value);
 		}
 
 		return $value;
@@ -64,8 +64,8 @@ class TodoyuRequest {
 	 * @return	Array
 	 */
 	public static function getAll() {
-		$get	= TodoyuDiv::arrayStripslashes($_GET);
-		$post	= TodoyuDiv::arrayStripslashes($_POST);
+		$get	= TodoyuArray::stripslashes($_GET);
+		$post	= TodoyuArray::stripslashes($_POST);
 
 		return array_merge($get, $post);
 	}

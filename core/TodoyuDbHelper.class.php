@@ -41,7 +41,7 @@ class TodoyuDbHelper {
 	 */
 	public static function saveMMrelations($mmTable, $localField, $foreignField, $idRecord, array $foreignRecordIDs, $removeCurrent = true) {
 		$idRecord			= intval($idRecord);
-		$foreignRecordIDs	= TodoyuDiv::intvalArray($foreignRecordIDs, true, true);
+		$foreignRecordIDs	= TodoyuArray::intval($foreignRecordIDs, true, true);
 
 		if( $removeCurrent ) {
 			self::removeMMrelations($mmTable, $localField, $idRecord);

@@ -47,7 +47,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @param	Array		$value
 	 */
 	public function setValue($value) {
-		$records	= TodoyuDiv::assureArray($value);
+		$records	= TodoyuArray::assure($value);
 
 		parent::setValue($records);
 	}
@@ -193,7 +193,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @return	Array
 	 */
 	protected function getRecords() {
-		return TodoyuDiv::assureArray($this->getValue());
+		return TodoyuArray::assure($this->getValue());
 	}
 
 

@@ -140,7 +140,7 @@ class TodoyuForm implements ArrayAccess {
 	 * @param	String		$xmlFile		Path to XML form definition
 	 */
 	public function __construct($xmlFile) {
-		$this->xmlFile	= TodoyuDiv::pathAbsolute($xmlFile);
+		$this->xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
 
 			// Load all available form configuration
 		TodoyuExtensions::loadAllForm();
@@ -403,7 +403,7 @@ class TodoyuForm implements ArrayAccess {
 	 * @param	 $xmlPath		Path to sub form XML file
 	 */
 	public function addElementsFromXML($xmlPath) {
-		$xmlPath	= TodoyuDiv::pathAbsolute($xmlPath);
+		$xmlPath	= TodoyuFileManager::pathAbsolute($xmlPath);
 		$form		= new TodoyuForm($xmlPath);
 
 		$fieldsets	= $form->getFieldsets();

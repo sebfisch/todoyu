@@ -53,7 +53,7 @@ class TodoyuFormHook {
 		if( ! is_array($hooks) ) {
 			$hooks = array();
 		} else {
-			$hooks = TodoyuDiv::sortArrayByLabel($hooks);
+			$hooks = TodoyuArray::sortByLabel($hooks);
 		}
 
 		return $hooks;

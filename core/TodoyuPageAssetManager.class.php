@@ -91,7 +91,7 @@ class TodoyuPageAssetManager {
 	 * @param	Boolean		$merge				Include file into merge file?
 	 */
 	public static function addStylesheet($pathToFile, $media = 'all', $position = 100, $compress = true, $merge = true) {
-		$pathToFile	= TodoyuDiv::pathAbsolute($pathToFile);
+		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
 		$position	= intval($position) == 0 ? 100 : intval($position);
 		$compress	= $compress === false ? false : true ;
 		$merge		= $merge 	=== false ? false : true ;
@@ -119,8 +119,8 @@ class TodoyuPageAssetManager {
 	 */
 	public static function addAssetsToPage() {
 			// Make cache folders
-		TodoyuDiv::makeDirDeep(PATH_CACHE . '/js');
-		TodoyuDiv::makeDirDeep(PATH_CACHE . '/css');
+		TodoyuFileManager::makeDirDeep(PATH_CACHE . '/js');
+		TodoyuFileManager::makeDirDeep(PATH_CACHE . '/css');
 
 			// Add javascripts
 		$jsFiles	= self::getJavascripts();
@@ -165,8 +165,8 @@ class TodoyuPageAssetManager {
 	 * @return	String
 	 */
 	private static function buildMergefileName(array $fileConfigs, $fileExt) {
-		$fileConfigs= TodoyuDiv::sortArrayByLabel($fileConfigs, 'position');
-		$files		= TodoyuDiv::getColumnFromArray($fileConfigs, 'file');
+		$fileConfigs= TodoyuArray::sortByLabel($fileConfigs, 'position');
+		$files		= TodoyuArray::getColumn($fileConfigs, 'file');
 		$modTimes	= '';
 
 		foreach($files as $file) {
@@ -205,7 +205,7 @@ class TodoyuPageAssetManager {
 		$merge		= array();
 		$libsMerge	= array();
 
-		$javascripts= TodoyuDiv::sortArrayByLabel(self::$javascripts, 'position');
+		$javascripts= TodoyuArray::sortByLabel(self::$javascripts, 'position');
 		$doMerging	= $GLOBALS['CONFIG']['CACHE']['JS']['merge'] === true;
 
 		foreach( $javascripts as $fileConfig ) {
@@ -290,7 +290,7 @@ class TodoyuPageAssetManager {
 	 * @return	Array
 	 */
 	private static function getSingleJavascriptFiles(array $fileConfigs) {
-		$fileConfigs= TodoyuDiv::sortArrayByLabel($fileConfigs);
+		$fileConfigs= TodoyuArray::sortByLabel($fileConfigs);
 		$files		= array();
 		$doLocalize	= $GLOBALS['CONFIG']['CACHE']['JS']['localize'] === true;
 		$doCompress	= $GLOBALS['CONFIG']['CACHE']['JS']['compress'] === true;
@@ -317,7 +317,7 @@ class TodoyuPageAssetManager {
 					}
 
 						// Save content in this file
-					TodoyuDiv::makeDirDeep( dirname($filePath) );
+					TodoyuFileManager::makeDirDeep( dirname($filePath) );
 					file_put_contents($filePath, $fileCode);
 				}
 			} else {
@@ -341,7 +341,7 @@ class TodoyuPageAssetManager {
 	 * @return	String
 	 */
 	private static function getSingleJavascriptPath($pathToFile, $compressed = false, $localized = false) {
-		$pathToFile	= TodoyuDiv::pathAbsolute($pathToFile);
+		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
 		$dirHash	= TodoyuDiv::md5short(dirname($pathToFile));
 		$pathInfo	= pathinfo($pathToFile);
 		$basename	= basename($pathToFile, '.' . $pathInfo['extension']);
@@ -413,7 +413,7 @@ class TodoyuPageAssetManager {
 		$merge	= array();
 		$single	= array();
 
-		$stylesheets= TodoyuDiv::sortArrayByLabel(self::$stylesheets, 'position');
+		$stylesheets= TodoyuArray::sortByLabel(self::$stylesheets, 'position');
 		$doMerging	= $GLOBALS['CONFIG']['CACHE']['CSS']['merge'];
 
 		foreach( $stylesheets as $fileConfig ) {
@@ -446,7 +446,7 @@ class TodoyuPageAssetManager {
 	 * @return	Array		List of file paths with media type attribute
 	 */
 	private static function getSingleCssFiles(array $fileConfigs) {
-		$fileConfigs= TodoyuDiv::sortArrayByLabel($fileConfigs, 'position');
+		$fileConfigs= TodoyuArray::sortByLabel($fileConfigs, 'position');
 		$files		= array();
 		$doCompress	= $GLOBALS['CONFIG']['CACHE']['CSS']['compress'];
 
@@ -469,7 +469,7 @@ class TodoyuPageAssetManager {
 				$fileCode	= self::rewriteRelativPaths($fileCode, $fileConfig['file'], $filePath);
 
 					// Save content in this file
-				TodoyuDiv::makeDirDeep( dirname($filePath) );
+				TodoyuFileManager::makeDirDeep( dirname($filePath) );
 				file_put_contents($filePath, $fileCode);
 			} else {
 				$filePath	= $fileConfig['file'];
@@ -494,7 +494,7 @@ class TodoyuPageAssetManager {
 	 * @return	String		Absolute path for the cache file
 	 */
 	private static function getSingleStylesheetPath($pathToFile, $compressed = false) {
-		$pathToFile	= TodoyuDiv::pathAbsolute($pathToFile);
+		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
 		$dirHash	= TodoyuDiv::md5short(dirname($pathToFile));
 		$pathInfo	= pathinfo($pathToFile);
 		$basename	= basename($pathToFile, '.' . $pathInfo['extension']);

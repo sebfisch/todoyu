@@ -117,6 +117,9 @@ class TodoyuAuth {
 			// Clear session
 		TodoyuSessionManager::clearSession();
 
+			// Delete relogin cookie
+		setcookie($GLOBALS['CONFIG']['AUTH']['loginCookieName'], '', 1);
+
 			// Generate a new session id for the logged out user
 		session_regenerate_id(true);
 	}
@@ -196,6 +199,7 @@ class TodoyuAuth {
 	 * @return	Array
 	 */
 	public static function cookieLoginHook(array $requestVars, array $originalRequestVars) {
+		return $requestVars;
 		$cookieName	= $GLOBALS['CONFIG']['AUTH']['loginCookieName'];
 		$cookieValue= $_COOKIE[$cookieName];
 

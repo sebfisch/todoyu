@@ -133,6 +133,9 @@ TodoyuLocale::register('static_currency', PATH_CORE . '/locale/static_currency.x
 TodoyuLocale::register('static_territory', PATH_CORE . '/locale/static_territory.xml');
 
 
+	// Init Locale for locallang files
+TodoyuLocale::setLocale( Todoyu::getLang() );
+
 	// Load extensions
 require( PATH_CORE . '/inc/load_extensions.php' );
 
@@ -141,8 +144,5 @@ require_once( PATH_CONFIG . '/override.php');
 
 	// Load default init script
 require_once( PATH_CORE . '/inc/init.php');
-
-	// Init Locale for locallang files
-TodoyuLocale::setLocale( Todoyu::getLang() );
 
 ?>

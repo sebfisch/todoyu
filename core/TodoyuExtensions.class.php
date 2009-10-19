@@ -129,14 +129,14 @@ class TodoyuExtensions {
 	 */
 	public static function isPathInExtDir($extKey, $filePath) {
 		$path = realpath($filePath);
-		
+
 		if( $path === false ) {
 			return false;
 		}
-		
+
 			// Extensio path
 		$extPath	= self::getExtPath($extKey);
-		
+
 			// Check if the extension path is the first part of the file path (position = 0)
 		return strpos($path, $extPath) === 0;
 	}
@@ -274,7 +274,7 @@ class TodoyuExtensions {
 	 */
 	public static function loadAllTypeConfig($type) {
 		$extKeys	= self::getInstalledExtKeys();
-		
+
 		foreach($extKeys as $extKey) {
 			self::loadConfigIfAvailable($extKey, $type);
 		}

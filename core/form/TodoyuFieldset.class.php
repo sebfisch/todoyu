@@ -241,7 +241,7 @@ class TodoyuFieldset implements ArrayAccess {
 	 * @param	 $xmlPath		Path to sub form XML file
 	 */
 	public function addElementsFromXML($xmlPath) {
-		$xmlPath	= TodoyuDiv::pathAbsolute($xmlPath);
+		$xmlPath	= TodoyuFileManager::pathAbsolute($xmlPath);
 		$form		= new TodoyuForm($xmlPath);
 
 		$fieldsets	= $form->getFieldsets();

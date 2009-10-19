@@ -42,7 +42,7 @@ class TodoyuPanelWidgetManager {
 		$widgets	= $GLOBALS['CONFIG']['EXT'][$ext]['panelWidgets'];
 
 		if( is_array($widgets) ) {
-			$widgets = TodoyuDiv::sortArrayByLabel($widgets);
+			$widgets = TodoyuArray::sortByLabel($widgets);
 		} else {
 			$widgets = array();
 		}
