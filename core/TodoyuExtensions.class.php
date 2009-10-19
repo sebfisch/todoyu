@@ -162,7 +162,7 @@ class TodoyuExtensions {
 	 * @return	Array		Or false if not defined
 	 */
 	public static function getExtInfo($extKey) {
-		self::loadConfigIfAvailable($extKey, 'extinfo');
+		self::loadConfig($extKey, 'extinfo');
 
 		if( is_array($GLOBALS['CONFIG']['EXT'][$extKey]['info']) ) {
 			return $GLOBALS['CONFIG']['EXT'][$extKey]['info'];
@@ -198,17 +198,19 @@ class TodoyuExtensions {
 	 * @param	String		$type		Type of the config file (=filename)
 	 * @return	Boolean		Loading status
 	 */
-	public static function loadConfigIfAvailable($extKey, $type) {
+	public static function loadConfig($extKey, $type) {
 		global $CONFIG;
 
 		$filePath	= realpath(PATH_EXT . '/' . $extKey . '/config/' . $type . '.php');
 
 		if( $filePath !== false && self::isPathInExtDir($extKey, $filePath) ) {
-			include_once($filePath);
-			return true;
-		} else {
-			return false;
+			if( is_file($filePath) ) {
+				include_once($filePath);
+				return true;
+			}
 		}
+
+		return false;
 	}
 
 
@@ -220,7 +222,7 @@ class TodoyuExtensions {
 	 * @return	Boolean
 	 */
 	public static function loadRights($extKey) {
-		return self::loadConfigIfAvailable($extKey, 'rights');
+		return self::loadConfig($extKey, 'rights');
 	}
 
 
@@ -232,7 +234,7 @@ class TodoyuExtensions {
 	 * @return	Boolean
 	 */
 	public static function loadTables($extKey) {
-		return self::loadConfigIfAvailable($extKey, 'tables');
+		return self::loadConfig($extKey, 'tables');
 	}
 
 
@@ -244,7 +246,7 @@ class TodoyuExtensions {
 	 * @return	Boolean
 	 */
 	public static function loadFilters($extKey) {
-		return self::loadConfigIfAvailable($extKey, 'filters');
+		return self::loadConfig($extKey, 'filters');
 	}
 
 
@@ -276,7 +278,7 @@ class TodoyuExtensions {
 		$extKeys	= self::getInstalledExtKeys();
 
 		foreach($extKeys as $extKey) {
-			self::loadConfigIfAvailable($extKey, $type);
+			self::loadConfig($extKey, $type);
 		}
 	}
 

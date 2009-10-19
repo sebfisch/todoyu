@@ -59,5 +59,6 @@ $CONFIG['AUTH']['loginCookieName']	= 'todoyulogin';
 
 $CONFIG['SYSTEM']['language']	= 'en';
 
+$CONFIG['EXT_REQUEST_HANDLER'] = array();
 
 ?>

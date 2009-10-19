@@ -84,11 +84,14 @@ class TodoyuActionDispatcher {
 	 *
 	 */
 	public static function dispatch() {
+		self::callExtOnRequestHandler(EXT);
+
 		if( self::isController(EXT, CONTROLLER) ) {
 			$params		= TodoyuRequest::getAll();
 			$controller	= self::getControllerObject(EXT, CONTROLLER, $params);
 		} else {
 			self::errorControllerNotFound(EXT, CONTROLLER);
+			exit();
 		}
 
 			// Execute command
@@ -99,6 +102,34 @@ class TodoyuActionDispatcher {
 		} catch(Exception $e) {
 			die("Error: " . $e->getMessage());
 		}
+	}
+
+
+
+	/**
+	 * Call extension request handler function
+	 *
+	 * @param	String		$ext
+	 */
+	private static function callExtOnRequestHandler($ext) {
+		$handler	= $GLOBALS['CONFIG']['EXT_REQUEST_HANDLER'][$ext];
+
+		if( ! empty($handler) && TodoyuDiv::isFunctionReference($handler) ) {
+			TodoyuDiv::callUserFunction($handler);
+		}
+	}
+
+
+
+	/**
+	 * Register an extension request handler
+	 * This functions will be called on every extension request
+	 *
+	 * @param	String		$ext
+	 * @param	String		$function
+	 */
+	public static function registerRequestHandler($ext, $function) {
+		$GLOBALS['CONFIG']['EXT_REQUEST_HANDLER'][$ext] = $function;
 	}
 
 
