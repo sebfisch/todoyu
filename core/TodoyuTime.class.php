@@ -86,10 +86,17 @@ class TodoyuTime {
 		);
 	}
 
+	
+	
+	/**
+	 *	Get range (start and end timestamp) of month
+	 *
+	 *	@param	Integer	$timestamp
+	 */
 	public static function getMonthRange($timestamp) {
 		$timestamp	= intval($timestamp);
 		$start		= self::getMonthStart($timestamp);
-		$end		= mktime(23, 59, 59, date('n', $start), date('t', $start), date('Y', $start));
+		$end		= mktime(0, 0, 0, date('n', $start) + 1, date('t', $start), date('Y', $start)) - 1;
 
 		return array(
 		'start'	=> $start,
