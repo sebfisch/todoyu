@@ -15,13 +15,7 @@ Element.addMethods({
    * @param	HtmlElement		element
    */
   scrollToElement: function(element) {
-  	element = $(element);
-	element.scrollTo();
-
-	if( Todoyu.exists('header') ) {
-		var headerHeight = $('header').getHeight();
-		scrollBy(0, -headerHeight);
-	}
+  	Todoyu.Ui.scrollToElement(element);
 
 	return element;
   }

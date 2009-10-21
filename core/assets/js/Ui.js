@@ -317,10 +317,10 @@ Todoyu.Ui = {
 	
 	scrollToAnchor: function(name) {
 		var element	= $(document.getElementsByName(name)[0]);
-				
+			
 		if(element) {
-			$(element).scrollToElement();
-		}
+			this.scrollToElement(element);
+		}		
 	},
 
 
@@ -331,8 +331,13 @@ Todoyu.Ui = {
 	 *	@param	unknown_type	element
 	 */
 	scrollToElement: function(element) {
-		$(element).scrollTo();
-		window.scrollBy(0, -72);
+		element = $(element);
+		element.scrollTo();
+	
+		if( Todoyu.exists('header') ) {
+			var headerHeight = $('header').getHeight();
+			window.setTimeout(window.scrollBy, 10, 0, -headerHeight);
+		}
 	},
 
 
