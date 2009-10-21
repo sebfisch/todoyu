@@ -65,24 +65,24 @@ abstract class TodoyuActionController {
 	}
 
 
-	protected function hasActionAccess($action) {
-		return true;
-		$classParts	= $this->getClassNameParts();
-		$extKey		= strtolower($classParts[1]);
-		$controller	= strtolower($classParts[2]);
-
-		return allowed($extKey, 'action:' . $controller . ':' . $action);
-	}
-
-
-	protected final function hasControllerAccess() {
-		return true;
-		$classParts	= $this->getClassNameParts();
-		$extKey		= strtolower($classParts[1]);
-		$controller	= strtolower($classParts[2]);
-
-		return allowed($extKey, 'controller:' . $controller);
-	}
+//	protected function hasActionAccess($action) {
+//		return true;
+//		$classParts	= $this->getClassNameParts();
+//		$extKey		= strtolower($classParts[1]);
+//		$controller	= strtolower($classParts[2]);
+//
+//		return allowed($extKey, 'action:' . $controller . ':' . $action);
+//	}
+//
+//
+//	protected final function hasControllerAccess() {
+//		return true;
+//		$classParts	= $this->getClassNameParts();
+//		$extKey		= strtolower($classParts[1]);
+//		$controller	= strtolower($classParts[2]);
+//
+//		return allowed($extKey, 'controller:' . $controller);
+//	}
 
 
 
@@ -112,24 +112,24 @@ abstract class TodoyuActionController {
 			// Check if action exists
 		if( $this->isAction($action) ) {
 				// Check action access rights
-			if( $this->hasActionAccess($action) ) {
+			//if( $this->hasActionAccess($action) ) {
 					// Access granted
 				$method	= $this->getActionMethodName($action);
 				$result	= call_user_func(array($this, $method), $this->params);
-			} else {
-					// No access
-				$this->sendNoAccessResponse($action);
-				exit();
-			}
+//			} else {
+//					// No access
+//				$this->sendNoAccessResponse($action);
+//				exit();
+//			}
 			// If action method not found
 		} elseif( method_exists($this, '_unknownAction') ) {
-			if( $this->hasActionAccess('_unknownAction') ) {
+//			if( $this->hasActionAccess('_unknownAction') ) {
 				$result	= call_user_func(array($this, '_unknownAction'), $action, $this->params);
-			} else {
-					// No access
-				$this->sendNoAccessResponse($action);
-				exit();
-			}
+//			} else {
+//					// No access
+//				$this->sendNoAccessResponse($action);
+//				exit();
+//			}
 		} else {
 			throw new TodoyuControllerException(EXT, get_class($this), $action, 'Action "' . $action . '" not found in ' . get_class($this));
 			$result	= false;
@@ -140,15 +140,15 @@ abstract class TodoyuActionController {
 	}
 
 
-	protected final function sendNoAccessResponse($action) {
-		if( TodoyuRequest::isAjaxRequest() ) {
-			TodoyuHeader::sendTodoyuHeader('noAccess', true);
-		} else {
-			TodoyuDebug::printHtml('Action: ' . $action, 'No access: ' . date('r'));
-		}
-
-		exit();
-	}
+//	protected final function sendNoAccessResponse($action) {
+//		if( TodoyuRequest::isAjaxRequest() ) {
+//			TodoyuHeader::sendTodoyuHeader('noAccess', true);
+//		} else {
+//			TodoyuDebug::printHtml('Action: ' . $action, 'No access: ' . date('r'));
+//		}
+//
+//		exit();
+//	}
 
 
 
