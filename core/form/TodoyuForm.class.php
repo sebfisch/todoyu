@@ -214,6 +214,19 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
+	 * Add extra form data without replacing the current one (overrides existing keys)
+	 *
+	 * @param	Array		$data
+	 */
+	public function addFormData(array $data) {
+		$this->formdata	= array_merge($this->formdata, $data);
+
+		$this->updateFieldValues();
+	}
+
+
+
+	/**
 	 * Get stored form data
 	 *
 	 * @return	Array
@@ -371,9 +384,11 @@ class TodoyuForm implements ArrayAccess {
 			$fieldset	= new TodoyuFieldset($this, $name);
 		}
 
+			// Set form parent to this form and register fields in the form
+		$fieldset->setParent($this);
+		$fieldset->setFieldsToForm($this);
 
 		$this->fieldsets[$name] = $fieldset;
-
 
 			// Register fieldset
 		$this->registerFieldset($name, $fieldset);

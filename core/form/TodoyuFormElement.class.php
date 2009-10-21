@@ -359,8 +359,6 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$formData		= $this->getForm()->getFormData();
 
 		foreach($validations as $validatorName => $validatorConfig) {
-			$config['formdata'] = $formData;
-
 			$isValid = TodoyuFormValidator::validate($validatorName, $this->getStorageData(), $validatorConfig, $this, $formData);
 
 			if( $isValid === false ) {

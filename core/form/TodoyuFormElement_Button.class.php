@@ -87,12 +87,12 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 		$this->setAttribute('text', TodoyuDiv::getLabel($this->getAttribute('text')));
 
 		if( $this->hasAttribute('onclick') ) {
-			$this->setAttribute( 'onclick', $this->getForm()->parseWithFormData($this->getAttribute('onclick') ) );
+			$this->setAttribute('onclick', $this->getForm()->parseWithFormData($this->getAttribute('onclick')));
 		}
 
 		if( $this->hasAttribute('title') ) {
 			$title	= Label($this->getAttribute('title'));
-			$this->setAttribute( 'title', $this->getForm()->parseWithFormData( $title ) );
+			$this->setAttribute('title', $this->getForm()->parseWithFormData( $title ) );
 		}
 
 		return parent::getData();;
