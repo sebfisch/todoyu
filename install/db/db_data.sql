@@ -313,10 +313,11 @@ INSERT INTO `ext_user_customerrole` (`id`, `deleted`, `title`) VALUES
 -- Daten für Tabelle `ext_user_mm_customer_user`
 --
 
-INSERT INTO `ext_user_mm_customer_user` (`id`, `id_customer`, `id_user`, `id_workaddress`, `id_jobtype`) VALUES
-(1, 5, 1, 0, 0),
-(2, 6, 2, 0, 0),
-(3, 5, 3, 0, 0);
+INSERT INTO `ext_user_mm_customer_user` (`id`, `id_customer`, `id_user`, `id_workaddress`, `id_jobtype`, `ext_resources_efficiency`, `ext_resources_wl_mon_am`, `ext_resources_wl_mon_pm`, `ext_resources_wl_tue_am`, `ext_resources_wl_tue_pm`, `ext_resources_wl_wed_am`, `ext_resources_wl_wed_pm`, `ext_resources_wl_thu_am`, `ext_resources_wl_thu_pm`, `ext_resources_wl_fri_am`, `ext_resources_wl_fri_pm`, `ext_resources_wl_sat_am`, `ext_resources_wl_sat_pm`, `ext_resources_wl_sun_am`, `ext_resources_wl_sun_pm`) VALUES
+(1, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 6, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
 
 --
 -- Daten für Tabelle `ext_user_mm_user_address`
@@ -366,10 +367,10 @@ INSERT INTO `ext_user_preference` (`id_user`, `ext`, `area`, `preference`, `item
 -- Daten für Tabelle `ext_user_user`
 --
 
-INSERT INTO `ext_user_user` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `username`, `password`, `email`, `type`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`, `id_jobtype`, `ext_resources_efficiency`, `ext_resources_wl_mon_am`, `ext_resources_wl_mon_pm`, `ext_resources_wl_tue_am`, `ext_resources_wl_tue_pm`, `ext_resources_wl_wed_am`, `ext_resources_wl_wed_pm`, `ext_resources_wl_thu_am`, `ext_resources_wl_thu_pm`, `ext_resources_wl_fri_am`, `ext_resources_wl_fri_pm`, `ext_resources_wl_sat_am`, `ext_resources_wl_sat_pm`, `ext_resources_wl_sun_am`, `ext_resources_wl_sun_pm`, `id_workaddress`) VALUES
-(1, 1246615200, 0, 1246615200, 0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'demo@todoyu.com', 1, 1, 1, 'Bob', 'Thingummy', 'BOTH', 'm', '', '1966-10-05', 14, 100, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 0, 0, 0, 0, 0),
-(2, 0, 1, 1254213351, 0, 'alfred', 'a55e28b5514b1b1292a9018549edc271', 'alfred345KJHFSD', 2, 1, 1, 'Alfred', 'Hitchcock', 'ALHI', 'm', '', '1899-08-13', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(3, 0, 1, 1254213483, 0, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 1, 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  INSERT INTO `ext_user_user` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `username`, `password`, `email`, `type`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
+(1, 1246615200, 0, 1246615200, 0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'demo@todoyu.com', 1, 1, 1, 'Bob', 'Thingummy', 'BOTH', 'm', '', '1966-10-05'),
+(2, 0, 1, 1254213351, 0, 'alfred', 'a55e28b5514b1b1292a9018549edc271', 'alfred345KJHFSD', 2, 1, 1, 'Alfred', 'Hitchcock', 'ALHI', 'm', '', '1899-08-13'),
+(3, 0, 1, 1254213483, 0, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 1, 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20');
 
 --
 -- Daten für Tabelle `history`
