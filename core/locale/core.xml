@@ -55,6 +55,20 @@
 		<label index="weekday.friday">Friday</label>
 		<label index="weekday.saturday">Saturday</label>
 		<label index="weekday.sunday">Sunday</label>
+		<label index="time.second">Second</label>
+		<label index="time.seconds">Seconds</label>
+		<label index="time.minute">Minute</label>
+		<label index="time.minutes">Minutes</label>
+		<label index="time.hour">Hour</label>
+		<label index="time.hours">Hours</label>
+		<label index="date.day">Day</label>
+		<label index="date.days">Days</label>
+		<label index="date.week">Week</label>
+		<label index="date.weeks">Weeks</label>
+		<label index="date.month">Month</label>
+		<label index="date.months">Months</label>
+		<label index="date.year">Year</label>
+		<label index="date.years">Years</label>
 	</labels>
 	<labels lang="de">
 		<label index="loading">laden</label>
@@ -111,5 +125,19 @@
 		<label index="weekday.friday">Freitag</label>
 		<label index="weekday.saturday">Samstag</label>
 		<label index="weekday.sunday">Sonntag</label>
+		<label index="time.second">Sekunde</label>
+		<label index="time.seconds">Sekunden</label>
+		<label index="time.minute">Minute</label>
+		<label index="time.minutes">Minuten</label>
+		<label index="time.hour">Stunde</label>
+		<label index="time.hours">Stunden</label>
+		<label index="date.day">Tag</label>
+		<label index="date.days">Tage</label>
+		<label index="date.week">Woche</label>
+		<label index="date.weeks">Wochen</label>
+		<label index="date.month">Monat</label>
+		<label index="date.months">Monate</label>
+		<label index="date.year">Jahr</label>
+		<label index="date.years">Jahre</label>
 	</labels>
 </locallang>
