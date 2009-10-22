@@ -279,6 +279,40 @@ class TodoyuFormValidator {
 		return strlen(trim($value)) == $minLength;
 	}
 
+
+
+	/**
+	 * Validate for a good password
+	 *
+	 * @param	String				$value
+	 * @param 	TodoyuFormElement 	$validatorConfig
+	 * @param	Array				$formElement
+	 * @param 	Array				$formData
+	 * @return	Bool
+	 */
+	public static function goodPassword($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+		$idUser	= intval($formData['id']);
+		$pass	= trim($value);
+
+			// Only validate for new users or if a new password has been typed in
+		if( $idUser === 0 || $pass !== '' ) {
+			$checks		= $GLOBALS['CONFIG']['EXT']['user']['isGoodPassword'];
+			$validator	= new TodoyuPasswordValidator($checks);
+
+			TodoyuDebug::printInFirebug($checks);
+
+			if( $validator->validate($pass) === false ) {
+				$errors	= $validator->getErrors();
+
+				$formElement->setErrorMessage($errors[0]);
+
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 }
 
 

@@ -181,7 +181,6 @@ class TodoyuLocale {
 
 
 
-
 	/**
 	 * Add translation of a module to the internal cache
 	 *

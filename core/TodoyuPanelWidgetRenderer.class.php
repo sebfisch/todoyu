@@ -41,10 +41,10 @@ class TodoyuPanelWidgetRenderer {
 
 		$content	= '';
 
-			// Render default widgets from config
+		// Render default widgets from config
 		$content	.= self::renderDefaultPanelWidgets($extKey, $params);
-		
-			// Render user defined widgets from database
+
+		// Render user defined widgets from database
 		$content	.= self::renderUserPanelWidgets($extKey, $params);
 
 		return $content;
@@ -83,7 +83,7 @@ class TodoyuPanelWidgetRenderer {
 	 */
 	private static function renderDefaultPanelWidgets($extKey, array $params = array()) {
 		$panelWidgets	= TodoyuPanelWidgetManager::getDefaultPanelWidgets($extKey);
-		
+
 		return self::render($extKey, $panelWidgets, $params);
 	}
 
@@ -114,17 +114,19 @@ class TodoyuPanelWidgetRenderer {
 	private static function render($extKey, array $panelWidgets, array $params = array()) {
 		$content	= '';
 		$idArea		= TodoyuExtensions::getExtID($extKey);
-		
-			// Render the widgets
+
+		// Render the widgets
 		foreach($panelWidgets as $pWidgetConfig) {
 			$widgetClass	= $pWidgetConfig['widget'];
 			$config			= is_array($pWidgetConfig['config']) ? $pWidgetConfig['config'] : array();
 			// changed: if no array key exists expand the widget by default.
 
+
+
 			if( class_exists($widgetClass) ) {
-				$widget	= new $widgetClass($config, $params, $idArea);
-					// Check if panelWidget is allowed to be displayed
-				if( $widget->isAllowed() )	{
+				// Check if panelWidget is allowed to be displayed
+				if( call_user_func(array($widgetClass, 'isAllowed') ) )	{
+					$widget	= new $widgetClass($config, $params, $idArea);
 					$content .= $widget->render();
 				} else {
 					// Widget not allowed

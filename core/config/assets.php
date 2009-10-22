@@ -78,12 +78,12 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'compress'	=> true
 		),
 		array(
-			'file'		=> 'core/assets/js/Todoyu.js',
-			'position'	=> 50
+			'file'		=> 'core/lib/js/prototype/prototype.js',
+			'position'	=> 26
 		),
 		array(
-			'file'		=> 'core/assets/js/extend/prototype.js',
-			'position'	=> 51
+			'file'		=> 'core/assets/js/Todoyu.js',
+			'position'	=> 50
 		),
 		array(
 			'file'		=> 'core/assets/js/Ui.js',

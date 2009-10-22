@@ -980,8 +980,6 @@ class TodoyuDiv {
 		$query		= PATH_WEB . (PATH_WEB === '/' ? '?' : '/?');
 		$queryParts	= array();
 
-		TodoyuDebug::printInFirebug($query, 'query');
-
 		foreach($params as $name => $value) {
 			$queryParts[] = $name . '=' . urlencode($value);
 		}
