@@ -44,6 +44,20 @@ class TodoyuArray {
 
 		return $column;
 	}
+	
+	
+	
+	/**
+	 *	Get first key of associative array
+	 * 
+	 *	@param	Array	$array
+	 *	@return	String
+	 */
+	public static function getFirstKey($array) {
+		reset($array);
+		
+		return key($array);
+	}
 
 
 
