@@ -53,6 +53,16 @@ class TodoyuDbHelper {
 	}
 
 
+	public static function saveExtendedMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord, array $data) {
+		$idLocalRecord	= intval($idLocalRecord);
+		$idForeignRecord= intval($idLocalRecord);
+
+		self::removeMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord);
+
+		return Todoyu::db()->addRecord($mmTable, $data);
+	}
+
+
 
 	/**
 	 * Add a single MM relation

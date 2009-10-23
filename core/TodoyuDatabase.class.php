@@ -877,6 +877,25 @@ class TodoyuDatabase {
 
 
 	/**
+	 * Get an array with the $indexField value as array-key
+	 * Alias for getArray()
+	 *
+	 * @param	String		$indexField
+	 * @param	String		$fields
+	 * @param	String		$table
+	 * @param	String		$where
+	 * @param	String		$groupBy
+	 * @param	String		$orderBy
+	 * @param	String		$limit
+	 * @return	Array
+	 */
+	public function getIndexArray($indexField, $fields, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '') {
+		return $this->getArray($fields, $table, $where, $groupBy, $orderBy, $limit, $indexField);
+	}
+
+
+
+	/**
 	 * The the value of a single field.
 	 * The query should limit the result rows to 1 (all others are ignored anyway)
 	 *
