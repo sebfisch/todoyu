@@ -183,7 +183,6 @@ class TodoyuColors {
 		$idColor	= intval($idColor);
 
 		$idColor	= self::getColorID( $idColor );
-
 		$rgb		= self::getColorRGB( $idColor );
 
 		$color = array(

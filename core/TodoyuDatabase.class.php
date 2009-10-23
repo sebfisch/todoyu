@@ -889,7 +889,7 @@ class TodoyuDatabase {
 	 * @param	String		$limit
 	 * @return	Array
 	 */
-	public function getIndexArray($indexField, $fields, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '') {
+	public function getIndexedArray($indexField, $fields, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '') {
 		return $this->getArray($fields, $table, $where, $groupBy, $orderBy, $limit, $indexField);
 	}
 
