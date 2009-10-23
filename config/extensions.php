@@ -19,6 +19,6 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['EXT']['installed'] = 'admin,sysmanager,user,loginpage,portal,project,dev,calendar,comment,timetracking,assets,daytracks,search,bookmark,contact';
+$CONFIG['EXT']['installed'] = 'admin,sysmanager,user,loginpage,portal,project,dev,calendar,comment,timetracking,assets,daytracks,search,bookmark,contact,billing,resources';
 
 ?>
