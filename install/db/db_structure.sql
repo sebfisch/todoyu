@@ -725,10 +725,13 @@ CREATE TABLE `ext_project_task` (
 
 DROP TABLE IF EXISTS `ext_project_userrole`;
 CREATE TABLE `ext_project_userrole` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date_create` int(10) NOT NULL,
+  `id_user_create` smallint(5) NOT NULL,
+  `date_update` int(10) NOT NULL,
   `rolekey` varchar(35) NOT NULL,
   `title` varchar(60) NOT NULL,
-  `deleted` tinyint(1) NOT NULL default '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
