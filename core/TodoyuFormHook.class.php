@@ -33,9 +33,11 @@ class TodoyuFormHook {
 	 *
 	 * @var	Array
 	 */
-	public static $hooks = array(	'buildForm' => array(),
-									'loadData'	=> array(),
-									'saveData'	=> array());
+	public static $hooks = array(
+		'buildForm' => array(),
+		'loadData'	=> array(),
+		'saveData'	=> array()
+	);
 
 
 
