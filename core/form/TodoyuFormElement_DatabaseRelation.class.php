@@ -88,10 +88,6 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$data['formname']	= $this->getForm()->getName();
 		$data['idRecord']	= $this->getForm()->getRecordID();
 
-//		TodoyuDebug::printInFirebug($data['fieldname'], 'fieldname');
-
-//		TodoyuDebug::printHtml($data);
-
 		return $data;
 	}
 
@@ -104,7 +100,6 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @return	String
 	 */
 	public function render($odd = false) {
-
 
 		return parent::render($odd);
 	}
