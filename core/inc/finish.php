@@ -4,6 +4,4 @@
 
 //TodoyuDebug::printInFirebug(TIME_TOTAL, 'Script runtime');
 
-TodoyuDebug::printHtml(TodoyuLocale::$cache['admin']);
-
 ?>
