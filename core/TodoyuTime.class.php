@@ -33,13 +33,15 @@ class TodoyuTime {
 	const SECONDS_DAY	= 86400;
 	const SECONDS_WEEK	= 604800;
 
+
+
 	/**
-	 * Make timestamp for start of day
+	 * Get timestamp of start of day
 	 *
 	 * @param	Integer		$timestamp
 	 * @return	Integer
 	 */
-	public static function timestampStartOfDay($timestamp = false) {
+	public static function getStartOfDay($timestamp = false) {
 		$timestamp = $timestamp === false ? NOW : intval($timestamp);
 
 		return mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp), date('Y', $timestamp));
@@ -53,7 +55,7 @@ class TodoyuTime {
 	 * @param	Integer		$timestamp
 	 * @return	Integer
 	 */
-	public static function timestampEndOfDay($timestamp = false) {
+	public static function getEndOfDay($timestamp = false) {
 		$timestamp = $timestamp === false ? NOW : intval($timestamp);
 
 		return mktime(23, 59, 59, date('n', $timestamp), date('j', $timestamp), date('Y', $timestamp));
@@ -69,20 +71,25 @@ class TodoyuTime {
 	 */
 	public static function getDayRange($timestamp = false) {
 		return array(
-		'start'	=> self::timestampStartOfDay($timestamp),
-		'end'	=> self::timestampEndOfDay($timestamp)
+			'start'	=> self::getStartOfDay($timestamp),
+			'end'	=> self::getEndOfDay($timestamp)
 		);
 	}
+	
 
 
+	/**
+	 *	Get timestamps of start and of week that contains the given timestamp
+	 *
+	 *	@param	Integer	$timestamp
+	 */
 	public static function getWeekRange($timestamp) {
 		$timestamp	= intval($timestamp);
 		$start		= self::getWeekstart($timestamp);
-		$end		= $start + 7 * 86400 - 1;
 
 		return array(
-		'start'	=> $start,
-		'end'	=> $end
+			'start'	=> $start,
+			'end'	=> $start + 7 * 86400 - 1
 		);
 	}
 
@@ -99,14 +106,13 @@ class TodoyuTime {
 		$end		= mktime(0, 0, 0, date('n', $start) + 1, date('t', $start), date('Y', $start)) - 1;
 
 		return array(
-		'start'	=> $start,
-		'end'	=> $end
+			'start'	=> $start,
+			'end'	=> $end
 		);
 	}
-
-
-
-
+	
+	
+	
 	/**
 	 * Get start and end timestamp of every day in the week of the timestamp
 	 *
@@ -115,27 +121,20 @@ class TodoyuTime {
 	 */
 	public static function getWeekStart($timestamp) {
 		$timestamp	= intval($timestamp);
-		$dayStart	= self::getDayStart($timestamp);
+		$dayStart	= self::getStartOfDay($timestamp);
 		$weekday	= self::getWeekday($timestamp, true);
 		$weekStart	= $dayStart - $weekday * 86400;
 
 		return $weekStart;
 	}
 
-
-
+	
+	
 	/**
-	 * Get timestamp for the day in timestamp, but with hours, minutes and seconds = 0
-	 *
-	 * @param	Integer		$timestamp
-	 * @return	integer
+	 *	Get timestamp of first day of month
+	 * 
+	 *	@param	Integer	$timestamp
 	 */
-	public static function getDayStart($timestamp) {
-		$timestamp	= intval($timestamp);
-
-		return mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp), date('Y', $timestamp));
-	}
-
 	public static function getMonthStart($timestamp) {
 		$timestamp	= intval($timestamp);
 
@@ -161,12 +160,32 @@ class TodoyuTime {
 
 		return $weekday;
 	}
+	
+	
+	
+	/**
+	 * Get number of day of week of given timestamp (0 = sunday, 1 = monday... or 0 = monday, 1 = tuesday..)
+	 *
+	 * @param	Integer			$timestamp
+	 * @return	Integer
+	 */
+	public static function getWeekdayNum( $timestamp, $startWithMonday = false ) {
+		$dayNum = date('w', $timestamp);
+
+		if ($startWithMonday) {
+			$dayNum -= 1;
+			if ($dayNum == -1) {
+				$dayNum = 6;
+			}
+		}
+
+		return $dayNum;
+	}
 
 
 
 	/**
-	 * Get time parts (hours, minutes, seconds) from an integer
-	 * which represents seconds
+	 * Get time parts (hours, minutes, seconds) from an integer which represents seconds
 	 *
 	 * @param	Integer		$seconds		Number of seconds
 	 * @return	Array		[hours,minutes,seconds]
@@ -179,9 +198,9 @@ class TodoyuTime {
 		$seconds	= $seconds - $minutes * 60;
 
 		return array(
-		'hours'		=> $hours,
-		'minutes'	=> $minutes,
-		'seconds'	=> $seconds
+			'hours'		=> $hours,
+			'minutes'	=> $minutes,
+			'seconds'	=> $seconds
 		);
 	}
 
@@ -253,7 +272,7 @@ class TodoyuTime {
 	public static function parseDateString($dateString)	{
 		$time = self::parseDateTime($dateString);
 
-		// If parseDateTime did not work, try parseDate
+			// if parseDateTime did not work, try parseDate
 		if( $time === false ) {
 			$time = self::parseDate($dateString);
 		}
@@ -308,8 +327,8 @@ class TodoyuTime {
 		if( array_key_exists('timestamp', $dateParts) ) {
 			return $dateParts['timestamp'];
 		} else {
-			$dateParts['tm_year'] += 1900;
-			$dateParts['tm_mon'] += 1;
+			$dateParts['tm_year']	+= 1900;
+			$dateParts['tm_mon']	+= 1;
 
 			return mktime(
 				$dateParts['tm_hour'],
@@ -378,27 +397,6 @@ class TodoyuTime {
 
 
 	/**
-	 * Get number of day of week of given timestamp (0 = sunday, 1 = monday... or 0 = monday, 1 = tuesday..)
-	 *
-	 * @param	Integer			$timestamp
-	 * @return	Integer
-	 */
-	public static function getWeekdayNum( $timestamp, $startWithMonday = false ) {
-		$dayNum = date('w', $timestamp);
-
-		if ($startWithMonday) {
-			$dayNum -= 1;
-			if ($dayNum == -1) {
-				$dayNum = 6;
-			}
-		}
-
-		return $dayNum;
-	}
-
-
-
-	/**
 	 * Round timestamp to next full or half an hour
 	 *
 	 * @param	Integer	$time		Timestamp
@@ -413,7 +411,6 @@ class TodoyuTime {
 			case '10':	case '40':
 				$timestamp += 1200;
 				break;
-
 
 			case '20':	case '50':
 				$timestamp += 600;
@@ -498,7 +495,7 @@ class TodoyuTime {
 		$year	= date('Y', $timestamp);
 		$month	= date('n', $timestamp);
 
-		// get timestamp of previous month
+			// get timestamp of previous month
 		$timestamp	= mktime(0, 0, 0, ($month + $shiftMonthBy), 1, $year);
 
 		return date( 't' , $timestamp );
@@ -517,26 +514,13 @@ class TodoyuTime {
 	 * @return	Boolean
 	 */
 	public function spansIntersect($start1, $end1, $start2, $end2) {
-		if (		// span2 ends within span1
-		($end2 >= $start1 && $end2 <= $end1)
-
-		// span2 lays within span1
-		||	($start2 >= $start1 && $end2 <= $end1)
-
-		// span2 starts within span 1
-		||	($start2 >= $start1 && $start2 <= $end1)
-
-		// span2 wraps span1
-		||	($start2 <= $start1 && $end2 >= $end1)
+		$intersect = false;
+		
+		if (	// span2 ends within span1 OR span2 lays within span1 OR span2 starts within span 1 OR span2 wraps span1
+			 ($end2 >= $start1 && $end2 <= $end1) || ($start2 >= $start1 && $end2 <= $end1) || ($start2 >= $start1 && $start2 <= $end1) ||	($start2 <= $start1 && $end2 >= $end1)
+			&& ! ($start2 == $end1 || $start1 == $end2)
 		) {
 			$intersect = true;
-
-			if ($start2 == $end1 || $start1 == $end2) {
-				$intersect = false;
-			}
-
-		} else {
-			$intersect = false;
 		}
 
 		return $intersect;
@@ -559,11 +543,7 @@ class TodoyuTime {
 		$dateStart2	= intval($dateStart2);
 		$dateEnd2	= intval($dateEnd2);
 
-		if( $dateEnd2 <= $dateStart1 ) {
-			return false;
-		}
-
-		if( $dateStart2 >= $dateEnd1 ) {
+		if( $dateEnd2 <= $dateStart1 || $dateStart2 >= $dateEnd1 ) {
 			return false;
 		}
 
@@ -573,22 +553,22 @@ class TodoyuTime {
 
 
 	/**
-	 * Returns the timestamps of the last cyle borders.
+	 * Returns the timestamps of the last cyle borders as ass. array
 	 *
-	 * eg: param = 1
+	 * Example:
+	 * 	param = 1	- start/end of last month
+	 *	param = 3	- start/end of last quarter
 	 *
-	 * start/end of last month
-	 *
-	 * param = 3
-	 *
-	 * start/end of last quarter
-	 *
-	 * @param	Int $monthStart;
+	 * @param	Integer	$monthsPerCycle
+	 * @return	Array
 	 */
 	public static function getCycleBorderDates($monthsPerCycle = 0)	{
-		$monthStart = mktime(0, 0, 0, date('n')-$monthsPerCycle, 1, date('Y'));
+		$monthStart = mktime(0, 0, 0, date('n') - $monthsPerCycle, 1, date('Y'));
 
-		return array('start' => $monthStart, 'end' => mktime(23, 59, 59, (date('n')-$monthsPerCycle), date('t', $monthStart), date('Y')));
+		return array(
+			'start'	=> $monthStart,
+			'end'	=> mktime( 23, 59, 59, date('n') - $monthsPerCycle, date('t', $monthStart), date('Y') )
+		);
 	}
 
 
