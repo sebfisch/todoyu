@@ -1,4 +1,4 @@
-<div id="formElement-{$htmlId}" class="fElement {$containerClass} {$class} {if $odd}odd{else}even{/if} {if $error}error{/if} {if $wizard.hasWizard}hasWizard{/if}">
+<div id="formElement-{$htmlId}" class="fElement {$containerClass} {$class} {if $odd}odd{else}even{/if} {if $error}error{/if} {if $wizard.hasWizard}hasWizard{/if}" {if $style}style="{$style}"{/if}>
 	<div id="formElement-{$htmlId}-labelbox" class="fLabel {if $required}required{/if}">
 		<label for="{$htmlId}" id="{$htmlId}-label">{$label}</label>
 		{if $required}<span class="required">*</span>{/if}

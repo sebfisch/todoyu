@@ -28,6 +28,24 @@
 class TodoyuFormManager {
 
 	/**
+	 * Create a form object, set record ID and call buildForm hook
+	 *
+	 * @param	String		$xmlPath
+	 * @param	Integer		$idRecord
+	 * @return	TodoyuForm
+	 */
+	public static function getForm($xmlPath, $idRecord = 0) {
+		$form	= new TodoyuForm($xmlPath);
+
+		$form->setRecordID($idRecord);
+
+		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $idRecord);
+
+		return $form;
+	}
+
+
+	/**
 	 * Render a subrecord of a database relation field
 	 *
 	 * @param	String		$xmlPath

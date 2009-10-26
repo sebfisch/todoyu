@@ -484,6 +484,8 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$tmpl	= $this->getTemplate();
 		$data	= $this->getData();
 
+//		TodoyuDebug::printHtml($data);
+
 		$data['odd'] 			= $odd ? true : false;
 		$data['error'] 			= $this->error;
 		$data['errorMessage'] 	= $this->errorMessage;

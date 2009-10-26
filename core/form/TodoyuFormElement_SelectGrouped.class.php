@@ -57,7 +57,7 @@ class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 		switch( sizeof($funcRef) ) {
 				// funcRef is built like class::function
 			case 2:
-				$groups	= call_user_func($funcRef, $this->getForm()->getFormData());
+				$groups	= call_user_func($funcRef, $this);
 				foreach($groups as $group => $options) {
 					foreach($options as $option) {
 						$this->addOption($group, $option['value'], $option['label'], $option['selected'], $option['disabled']);
@@ -68,6 +68,7 @@ class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 
 				// funcRef is built like class::function::param, param is e.g the field ID
 			case 3:
+				Todoyu::log('Non standard 3 parts select source function: ' . $source['function'], LOG_LEVEL_NOTICE);
 				$funcParam	= $funcRef[2];
 				array_pop($funcRef);
 				$groups	= call_user_func($funcRef, $this->getForm()->getFormData(), $funcParam);
