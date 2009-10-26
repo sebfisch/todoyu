@@ -42,7 +42,7 @@ class TodoyuMetaMenuManager {
 	public static function addEntry($key, $label, $position = 100, $href = '', $onClick = '', $onMouseOver = '', $onMouseOut = '') {
 		$GLOBALS['CONFIG']['MetaMenu'][$key] = array(
 			'key'		=> $key,
-			'label'		=> TodoyuDiv::getLabel($label),
+			'label'		=> $label,
 			'position'	=> intval($position),
 			'href'		=> $href == '' ? 'javascript:void(0)' : $href,
 			'onClick'	=> $onClick,
