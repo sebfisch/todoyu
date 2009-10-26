@@ -16,7 +16,9 @@ html, body {
 	text-align: center;
 }
 
-/* HTML Tags */
+/* --------------------------
+    HTML Tags
+   -------------------------- */
 
 img {
 	border: 0;
@@ -55,9 +57,9 @@ ul {
 	list-style: none;
 }
 
-
-
-/* Heading */
+/* ------------------------------
+    Heading
+   ------------------------------ */
 
 h1 {
 	margin:0;
@@ -97,11 +99,9 @@ h4 {
 		white-space: nowrap;
 	}
 
-
-
-
-
-/* Shortcuts */
+/* -------------------------------
+    shortcuts
+   ------------------------------- */
 
 .positionRelative {
 	position:relative;
@@ -195,4 +195,8 @@ h4 {
 	padding: 6px 8px 12px 8px;
 	background-color: #F6F8F0;
 	border: 1px solid #aaa;
+}
+
+.red {
+	color: #ad5050;
 }

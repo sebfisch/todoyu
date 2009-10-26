@@ -345,8 +345,8 @@ Todoyu.Ui = {
 	/**
 	 *	Collapse / expand element
 	 *
-	 *	@param	unknown_type	idElement
-	 *	@param	unknown_type	toggle
+	 *	@param	Integer	idElement
+	 *	@param	Element	toggle
 	 */
 	collapseExpandElement: function(idElement, toggle) {
 		var options = {
@@ -354,7 +354,7 @@ Todoyu.Ui = {
 		};
 
 		var content = $(idElement);
-
+		
 		if( content.visible() ) {
 			Effect.SlideUp( content, options );
 		} else {
@@ -390,7 +390,16 @@ Todoyu.Ui = {
 			return false;
 		}
 	},
-	
+
+
+
+	/**
+	 *	Show time picker
+	 * 
+	 *	@param	Integer	idElement
+	 *	@param	Array	config
+	 *	@return	TimePicker
+	 */
 	showTimePicker: function(idElement, config) {
 		config = $H({
 			'rangeHour': [0,23],
@@ -399,7 +408,15 @@ Todoyu.Ui = {
 				
 		return new TimePicker(idElement, config);
 	},
-	
+
+
+
+	/**
+	 *	Enter Description here...
+	 *
+	 * 	@param	unknown_type	idElement
+	 * 	@return	TimePicker
+	 */
 	showDurationPicker: function(idElement) {
 		return new TimePicker(idElement);
 	}
