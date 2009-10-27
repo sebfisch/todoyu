@@ -141,11 +141,35 @@ class TodoyuCache {
 	}
 
 
+
+	/**
+	 * Remove a record from cache
+	 *
+	 * @param	String		$className
+	 * @param	Integer		$idRecord
+	 */
 	public static function removeRecord($className, $idRecord) {
 		$idRecord	= intval($idRecord);
 		$idCache	= self::makeClassKey($className, $idRecord);
 
 		self::remove($idCache);
+	}
+
+
+
+	/**
+	 * Add a record to cache
+	 * The record has to be of the type TodoyuBaseObject (or extended)
+	 *
+	 * @param	TodoyuBaselObject 		$record
+	 */
+	public static function addRecord(TodoyuBaseObject $record) {
+		$className	= get_class($record);
+		$idRecord	= $record->getID();
+
+		$idCache	= self::makeClassKey($className, $idRecord);
+
+		TodoyuCache::set($idCache, $record);
 	}
 
 
