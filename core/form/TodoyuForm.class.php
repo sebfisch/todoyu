@@ -762,8 +762,7 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	TodoyuFormElement
 	 */
 	public function getField($name) {
-
-		return $this->fields[ $name ];
+		return $this->fields[$name];
 	}
 
 

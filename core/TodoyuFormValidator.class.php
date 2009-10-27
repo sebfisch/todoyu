@@ -92,7 +92,6 @@ class TodoyuFormValidator {
 	}
 
 	private static function isDecimal($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
-		TodoyuDebug::printInFirebug($value);
 		return TodoyuValidator::isDecimal($value);
 	}
 
@@ -299,7 +298,7 @@ class TodoyuFormValidator {
 			$checks		= $GLOBALS['CONFIG']['EXT']['user']['isGoodPassword'];
 			$validator	= new TodoyuPasswordValidator($checks);
 
-			TodoyuDebug::printInFirebug($checks);
+//			TodoyuDebug::printInFirebug($checks);
 
 			if( $validator->validate($pass) === false ) {
 				$errors	= $validator->getErrors();

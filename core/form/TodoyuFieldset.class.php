@@ -122,7 +122,19 @@ class TodoyuFieldset implements ArrayAccess {
 	 * @return	TodoyuFormElement
 	 */
 	public function getField($name) {
-		return $this->getForm()->getField($name);
+		return $this->elements[$name];
+	}
+
+
+
+	/**
+	 * Get a fieldset by name
+	 *
+	 * @param	String		$name
+	 * @return	TodoyuFieldset
+	 */
+	public function getFieldset($name) {
+		return $this->elements[$name];
 	}
 
 
@@ -204,12 +216,23 @@ class TodoyuFieldset implements ArrayAccess {
 	 * @param	String		$name
 	 * @return	TodoyuFieldset
 	 */
-	public function addFieldset($name, TodoyuFieldset $fieldset = null) {
+	public function addFieldset($name, TodoyuFieldset $fieldset = null, $position = null) {
 		if( is_null($fieldset) ) {
 			$fieldset = new TodoyuFieldset($this, $name);
 		}
 
-		$this->elements[$name] = $fieldset;
+			// Set fieldset parent
+		$fieldset->setParent($this);
+
+			// If no position given, append element
+		if( is_null($position) ) {
+			$this->elements[$name] = $fieldset;
+		} else {
+				// If position available, insert element at given positon
+			$pos = explode(':', $position);
+
+			$this->elements = TodoyuArray::insertElement($this->elements, $name, $fieldset, $pos[0], $pos[1]);
+		}
 
 		$this->getForm()->registerFieldset($name, $fieldset);
 
@@ -223,10 +246,22 @@ class TodoyuFieldset implements ArrayAccess {
 	 *
 	 * @param	String		$name			Name of the field
 	 * @param	String		$field			Field object
+	 * @param	String		$position		Insert position. Format: after:title, before:status
 	 * @return	TodoyuFormElement
 	 */
-	public function addField($name, TodoyuFormElement $field) {
-		$this->elements[$name] = $field;
+	public function addField($name, TodoyuFormElement $field, $position = null) {
+			// Set the new parent fieldset
+		$field->setFieldset($this);
+
+			// If no position given, append element
+		if( is_null($position) ) {
+			$this->elements[$name] = $field;
+		} else {
+				// If position available, insert element at given positon
+			$pos = explode(':', $position);
+
+			$this->elements = TodoyuArray::insertElement($this->elements, $name, $field, $pos[0], $pos[1]);
+		}
 
 		$this->getForm()->registerField($name, $field);
 
@@ -240,14 +275,16 @@ class TodoyuFieldset implements ArrayAccess {
 	 *
 	 * @param	 $xmlPath		Path to sub form XML file
 	 */
-	public function addElementsFromXML($xmlPath) {
+	public function addElementsFromXML($xmlPath, $position = null) {
 		$xmlPath	= TodoyuFileManager::pathAbsolute($xmlPath);
 		$form		= new TodoyuForm($xmlPath);
 
 		$fieldsets	= $form->getFieldsets();
 
 		foreach($fieldsets as $fieldset) {
-			$this->injectFieldset($fieldset);
+			$this->injectFieldset($fieldset, $position);
+
+			$position = 'after:' . $fieldset->getName();
 		}
 	}
 
@@ -259,12 +296,12 @@ class TodoyuFieldset implements ArrayAccess {
 	 * @param	TodoyuFieldset	$fieldset
 	 * @return	TodoyuFieldset
 	 */
-	public function injectFieldset(TodoyuFieldset $fieldset) {
+	public function injectFieldset(TodoyuFieldset $fieldset, $position = null) {
 		$fieldset->setParent($this);
 
 		$fieldset->setFieldsToForm($this->getForm());
 
-		return $this->addFieldset($fieldset->getName(), $fieldset);
+		return $this->addFieldset($fieldset->getName(), $fieldset, $position);
 	}
 
 

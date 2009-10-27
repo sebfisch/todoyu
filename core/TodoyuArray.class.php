@@ -44,18 +44,18 @@ class TodoyuArray {
 
 		return $column;
 	}
-	
-	
-	
+
+
+
 	/**
 	 *	Get first key of associative array
-	 * 
+	 *
 	 *	@param	Array	$array
 	 *	@return	String
 	 */
 	public static function getFirstKey($array) {
 		reset($array);
-		
+
 		return key($array);
 	}
 
@@ -290,33 +290,54 @@ class TodoyuArray {
 	 * @param	Boolean		$replace		Replace an existing element
 	 * @return	Array		Array with new item inside
 	 */
+	public static function insertElement(array $array, $newKeyName, $newItem, $mode = 'after', $refKeyName = null, $replace = true) {
+		$mode		= $mode === 'after' ? 'after' : 'before';
+		$exists		= array_key_exists($refKeyName, $array);
+		$refKeyName	= $exists ? $refKeyName : null;
+		$newArray	= array();
 
-	public static function insertElement(array $array, $newArrayItem, $keyname, $beforeItem = false, $replace = true) {
-		$arrayKeys	= array_flip(array_keys($array));
-		$position	= $arrayKeys[$beforeItem];
-		$exists		= array_key_exists($keyname, $array);
+			// Remove current element if it already exists and replace is set true
+		if( $exists && $replace && $newKeyName === $refKeyName ) {
+			unset($array[$refKeyName]);
+		}
 
 			// Stop here if key exists and replacing is disabled
-		if( $exists === true && $replace === false ) {
-			return $array;
-		}
-
-			// If no insert position defined or not found, append new item
-		if( $beforeItem === false || $position === null ) {
-			$array[$keyname] = $newArrayItem;
+		if( $exists === true && $replace === false && $newKeyName === $refKeyName ) {
+				// No action if element already exists and replacing is disabled
+			$newArray =& $array;
+			TodoyuDebug::printHtml($array);
 		} else {
-				// Split array at insert position
-			$itemsBefore= array_slice($array, 0, $position, true);
-			$itemsAfter	= array_slice($array, $position, 1000, true);
+				// If no reference set and mode is before, insert as first element
+			if( $mode === 'before' && $refKeyName === null ) {
+				$newArray[$newKeyName] = $newItem;
+			}
 
-				// Append new item to the first half
-			$itemsBefore[$keyname] = $newArrayItem;
+			foreach($array as $key => $item) {
+					// When insert reference element found
+				if( $key === $refKeyName ) {
+						// Insert new element before
+					if( $mode === 'before' ) {
+						$newArray[$newKeyName] = $newItem;
+					}
+						// Insert element
+					$newArray[$key] = $item;
+						// Insert new element after
+					if( $mode === 'after' ) {
+						$newArray[$newKeyName] = $newItem;
+					}
+				} else {
+						// Normal key copy
+					$newArray[$key] = $item;
+				}
+			}
 
-				// Concat both parts
-			$array = array_merge($itemsBefore, $itemsAfter);
+				// If no reference set and mode is after, insert as last element
+			if( $mode === 'after' && $refKeyName === null ) {
+				$newArray[$newKeyName] = $newItem;
+			}
 		}
 
-		return $array;
+		return $newArray;
 	}
 
 
