@@ -376,10 +376,11 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Add a new fieldset and return a reference to it
 	 *
-	 * @param	String		$name
+	 * @param	String			$name
+	 * @param	TodoyuFieldset	$fieldset
 	 * @return	TodoyuFieldset
 	 */
-	public function addFieldset($name, TodoyuFieldset $fieldset = null) {
+	public function addFieldset($name, TodoyuFieldset $fieldset = null, $position = null) {
 		if( is_null($fieldset) ) {
 			$fieldset	= new TodoyuFieldset($this, $name);
 		}
@@ -388,7 +389,18 @@ class TodoyuForm implements ArrayAccess {
 		$fieldset->setParent($this);
 		$fieldset->setFieldsToForm($this);
 
-		$this->fieldsets[$name] = $fieldset;
+			// If no position given, append element
+		if( is_null($position) ) {
+			$this->elements[$name] = $fieldset;
+		} else {
+				// If position available, insert element at given positon
+			$pos = explode(':', $position);
+
+			$this->fieldsets = TodoyuArray::insertElement($this->fieldsets, $name, $fieldset, $pos[0], $pos[1]);
+		}
+
+
+//		$this->fieldsets[$name] = $fieldset;
 
 			// Register fieldset
 		$this->registerFieldset($name, $fieldset);
@@ -404,10 +416,11 @@ class TodoyuForm implements ArrayAccess {
 	 * @param	TodoyuFieldset	$fieldset
 	 * @return	TodoyuFieldset
 	 */
-	public function injectFieldset(TodoyuFieldset $fieldset) {
+	public function injectFieldset(TodoyuFieldset $fieldset, $position = null) {
 		$fieldset->setParent($this);
+		$fieldset->setFieldsToForm($this);
 
-		return $this->addFieldset($fieldset->getName(), $fieldset);
+		return $this->addFieldset($fieldset->getName(), $fieldset, $position);
 	}
 
 
@@ -415,17 +428,46 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Add all elements of a form to this form
 	 *
-	 * @param	 $xmlPath		Path to sub form XML file
+	 * @param	$xmlPath		Path to sub form XML file
+	 * @param	$position		Insert position
 	 */
-	public function addElementsFromXML($xmlPath) {
+	public function addElementsFromXML($xmlPath, $position = null) {
 		$xmlPath	= TodoyuFileManager::pathAbsolute($xmlPath);
 		$form		= new TodoyuForm($xmlPath);
 
 		$fieldsets	= $form->getFieldsets();
 
 		foreach($fieldsets as $fieldset) {
-			$this->injectFieldset($fieldset);
+			$this->injectFieldset($fieldset, $position);
+
+			$position = 'after:' . $fieldset->getName();
 		}
+	}
+
+
+
+	/**
+	 * Add elements from an other XML into the form after the element named $name
+	 *
+	 * @see		$this->addElementsFromXML()
+	 * @param	String		$xmlPath		Path to the xml file
+	 * @param	String		$name			Name of the field to insert the elements after
+	 */
+	public function addElementsFromXMLAfter($xmlPath, $name) {
+		$this->addElementsFromXML($xmlPath, 'after:' . $name);
+	}
+
+
+
+	/**
+	 * Add elements from an other XML into the form before the element named $name
+	 *
+	 * @see		$this->addElementsFromXML()
+	 * @param	String		$xmlPath		Path to the xml file
+	 * @param	String		$name			Name of the field to insert the elements before
+	 */
+	public function addElementsFromXMLBefore($xmlPath, $name) {
+		$this->addElementsFromXML($xmlPath, 'before:' . $name);
 	}
 
 

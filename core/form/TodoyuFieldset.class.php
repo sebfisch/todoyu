@@ -213,7 +213,8 @@ class TodoyuFieldset implements ArrayAccess {
 	 * Creates a new fieldset and adds it to the child list
 	 * and return a reference to the fieldset
 	 *
-	 * @param	String		$name
+	 * @param	String			$name
+	 * @param	TodoyuFieldset	$fieldset
 	 * @return	TodoyuFieldset
 	 */
 	public function addFieldset($name, TodoyuFieldset $fieldset = null, $position = null) {
@@ -324,7 +325,6 @@ class TodoyuFieldset implements ArrayAccess {
 	 */
 	public function injectFieldset(TodoyuFieldset $fieldset, $position = null) {
 		$fieldset->setParent($this);
-
 		$fieldset->setFieldsToForm($this->getForm());
 
 		return $this->addFieldset($fieldset->getName(), $fieldset, $position);
