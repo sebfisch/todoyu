@@ -291,6 +291,32 @@ class TodoyuFieldset implements ArrayAccess {
 
 
 	/**
+	 * Add elements from an other XML into the fieldset after the element named $name
+	 *
+	 * @see		$this->addElementsFromXML()
+	 * @param	String		$xmlPath		Path to the xml file
+	 * @param	String		$name			Name of the field to insert the elements after
+	 */
+	public function addElementsFromXMLAfter($xmlPath, $name) {
+		$this->addElementsFromXML($xmlPath, 'after:' . $name);
+	}
+
+
+
+	/**
+	 * Add elements from an other XML into the fieldset before the element named $name
+	 *
+	 * @see		$this->addElementsFromXML()
+	 * @param	String		$xmlPath		Path to the xml file
+	 * @param	String		$name			Name of the field to insert the elements before
+	 */
+	public function addElementsFromXMLBefore($xmlPath, $name) {
+		$this->addElementsFromXML($xmlPath, 'before:' . $name);
+	}
+
+
+
+	/**
 	 * Inject an existing fieldset into the form
 	 *
 	 * @param	TodoyuFieldset	$fieldset
