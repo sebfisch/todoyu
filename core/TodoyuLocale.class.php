@@ -122,7 +122,7 @@ class TodoyuLocale {
 
 			// Split path parts into module and label index
 		$keyParts	= explode('.', $labelKey, 2);
-		$moduleKey	=  substr($keyParts[0], 0, 4) == 'LLL:' ? substr($keyParts[0], 4) : $keyParts[0];
+		$moduleKey	= substr($keyParts[0], 0, 4) == 'LLL:' ? substr($keyParts[0], 4) : $keyParts[0];
 		$labelIndex	= $keyParts[1];
 
 		return self::getCachedLabel($moduleKey, $labelIndex, $locale);
@@ -256,12 +256,14 @@ class TodoyuLocale {
 				// Get file paths (files don't need to exist!)
 			$origFile	= self::getModulePath($moduleKey);
 			$cacheFile	= self::getCacheFileName($moduleKey, $locale);
+
 			$extFile	= self::getExternalFileName($moduleKey, $locale);
 			$extFileEn	= self::getExternalFileName($moduleKey, 'en');
 
 				// Get file modification times
 			$mTimeOrig	= intval(@filemtime($origFile));
 			$mTimeCache	= intval(@filemtime($cacheFile));
+			
 			$mTimeExt	= intval(@filemtime($extFile));
 			$mTimeExtEn	= intval(@filemtime($extFileEn));
 
