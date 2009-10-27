@@ -231,6 +231,10 @@ class TodoyuDatabase {
 	 * @return	String
 	 */
 	public function backtick($value) {
+		if( stristr($value, '.') !== false ) {
+			$value = str_replace('.', '`.`', $value);
+		}
+
 		return '`' . $value . '`';
 	}
 

@@ -45,25 +45,15 @@ class TodoyuErrorHandler {
 	 */
 	public static function handleTodoyuDbException(TodoyuDbException $exception) {
 		if( $GLOBALS['CONFIG']['DEBUG'] ) {
-			if( TodoyuHeader::isSent() ) {
-				switch( TodoyuHeader::getType() ) {
-					case 'PLAIN':
-						echo $exception->getErrorAsPlain();
-						break;
+			ob_end_clean();
 
+			$type = TodoyuHeader::getType();
 
-					case 'JSON':
-						echo $exception->getErrorAsJson();
-						break;
-
-
-					case 'HTML':
-					default:
-						echo $exception->getErrorAsHtml(false);
-						break;
-				}
+			if( TodoyuRequest::isAjaxRequest() || $type === 'PLAIN' ) {
+				echo $exception->getErrorAsPlain();
+			} elseif($type === 'JSON' ) {
+				echo $exception->getErrorAsJson();
 			} else {
-				TodoyuHeader::sendHeaderHTML();
 				echo $exception->getErrorAsHtml(true);
 			}
 
@@ -140,12 +130,12 @@ class TodoyuErrorHandler {
 		TodoyuHeader::sendHeaderPlain();
 		die('ERROR: ' . $message);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Render simple error message
-	 * 
+	 *
 	 * @param	$title			Error title
 	 * @param	$message		Error message
 	 * @return	String
@@ -156,7 +146,7 @@ class TodoyuErrorHandler {
 			'title'		=> $title,
 			'message'	=> $message
 		);
-		
+
 		return render($tmpl, $data);
 	}
 

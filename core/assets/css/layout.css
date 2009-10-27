@@ -161,6 +161,8 @@ body {
 	width: 100%;
 	height: 85px;
 	text-align:left;
+	margin-top:30px;
+	margin-bottom:100px;
 }
 
 #footer * {

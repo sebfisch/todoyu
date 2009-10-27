@@ -973,18 +973,33 @@ class TodoyuDiv {
 	/**
 	 * Build an URL with given parameters prefixed with todoyu path
 	 *
-	 * @param	Array		$params
+	 * @param	Array		$params		Parameters as key=>value
+	 * @param	String		$hash		Hash (#hash)
+	 * @param	Bool		$absolute	Absolute URL with host server
 	 * @return	String
 	 */
-	public static function buildUrl(array $params) {
-		$query		= PATH_WEB . (PATH_WEB === '/' ? '?' : '/?');
+	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {
+		$query		= trim(PATH_WEB, '/') . '?';// PATH_WEB . (PATH_WEB === '/' ? '?' : '/?');
 		$queryParts	= array();
 
+			// Add all parameters encoded
 		foreach($params as $name => $value) {
 			$queryParts[] = $name . '=' . urlencode($value);
 		}
 
+			// Concatinate
 		$query .= implode('&', $queryParts);
+
+			// Add hash
+		if( ! empty($hash) ) {
+			$query .= '#' . $hash;
+		}
+
+		if( $absolute ) {
+			$query = SERVER_URL . $query;
+		}
+
+		TodoyuDebug::printInFirebug($query, 'query');
 
 		return $query;
 	}
