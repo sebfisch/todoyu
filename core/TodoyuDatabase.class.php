@@ -807,6 +807,23 @@ class TodoyuDatabase {
 
 
 	/**
+	 * Check if a record exists in a table
+	 *
+	 * @param	String		$table
+	 * @param	Integer		$idRecord
+	 * @return	Bool
+	 */
+	public function isRecord($table, $idRecord) {
+		$idRecord	= intval($idRecord);
+
+		$where	= 'id = ' . $idRecord;
+
+		return $this->hasResult('id', $table, $where);
+	}
+
+
+
+	/**
 	 * Get a column from database
 	 *
 	 * @param	String		$field						Single field to select
