@@ -138,9 +138,9 @@ class TodoyuOdt {
 		$content = file_get_contents($this->tmpOdtDir.'/content.xml');
 
 		foreach($markersArray as $markerName => $valueToReplace)	{
-			$value = nl2br($value);
-			$value = preg_replace('/[\n\s]*\<br \/\>[\n\s]*/',']]><text:line-break/><![CDATA[', trim($value));
-			$value = str_replace('&nbsp;',' ',$value);
+			$valueToReplace = nl2br($valueToReplace);
+			$valueToReplace = preg_replace('/[\n\s]*\<br \/\>[\n\s]*/',']]><text:line-break/><![CDATA[', trim($valueToReplace));
+			$valueToReplace = str_replace('&nbsp;',' ',$valueToReplace);
 
 			$content = $this->replaceMarker($markerName, $valueToReplace, $content);
 		}
@@ -159,7 +159,7 @@ class TodoyuOdt {
 	 * @return	String
 	 */
 	public function replaceMarker($markerName, $value, $content)	{
-		return str_replace('<text:placeholder text:placeholder-type="text">&lt;'.$markerName.'&gt;</text:placeholder>','<![CDATA['.$value.']]>',$content);
+		return str_replace( '<text:placeholder text:placeholder-type="text">&lt;'.$markerName.'&gt;</text:placeholder>' , '<![CDATA['.$value.']]>' , $content);
 	}
 
 

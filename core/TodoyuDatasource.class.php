@@ -317,9 +317,25 @@ class TodoyuDatasource {
 		$idCountry = intval($idCountry);
 
 		$res = Todoyu::db()->getRecord('static_country', $idCountry );
-		$region	= Label('static_country.' . $res['iso_alpha3'] . '.name');
+		$country	= Label('static_country.' . $res['iso_alpha3'] . '.name');
 
-		return $region;
+		return $country;
+	}
+
+
+
+	/**
+	 * returns the short label of given country
+	 *
+	 * @param	Integer	$idCountry
+	 * @return	String
+	 */
+	public static function getCountryShort( $idCountry )	{
+		$idCountry = intval($idCountry);
+
+		$res = Todoyu::db()->getRecord('static_country', $idCountry);
+
+		return $res['iso_alpha2'];
 	}
 
 
