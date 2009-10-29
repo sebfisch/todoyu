@@ -83,7 +83,7 @@ class TodoyuOdt {
 	 * Initializes the class
 	 *
 	 */
-	private function init()	{
+	protected function init()	{
 		if(!is_dir($this->tmpDir))	{
 			mkdir($this->tmpDir);
 		}
@@ -126,6 +126,7 @@ class TodoyuOdt {
 	}
 
 
+
 	/**
 	 *	Replaces markers from markersarray
 	 * 	-> arraykey		=> markername
@@ -141,10 +142,85 @@ class TodoyuOdt {
 			$value = preg_replace('/[\n\s]*\<br \/\>[\n\s]*/',']]><text:line-break/><![CDATA[', trim($value));
 			$value = str_replace('&nbsp;',' ',$value);
 
-			$content = str_replace('<text:placeholder text:placeholder-type="text">&lt;'.$markerName.'&gt;</text:placeholder>','<![CDATA['.$value.']]>',$content);
+			$content = $this->replaceMarker($markerName, $valueToReplace, $content);
 		}
 
 		file_put_contents($this->tmpOdtDir.'/content.xml', $content);
+	}
+
+
+
+	/**
+	 * replaces a single marker
+	 *
+	 * @param	String	$markerName
+	 * @param	String	$value
+	 * @param	String	$content
+	 * @return	String
+	 */
+	public function replaceMarker($markerName, $value, $content)	{
+		return str_replace('<text:placeholder text:placeholder-type="text">&lt;'.$markerName.'&gt;</text:placeholder>','<![CDATA['.$value.']]>',$content);
+	}
+
+
+
+	/**
+	 * Extracts the Given Table from the content.
+	 *
+	 * if $keepContentBeforeTable is given. We don't extract the table from the Content before.
+	 * This is used for deleting obsolete Tables in the Template.
+	 *
+	 * @param	String	$document
+	 * @param	Integer	$number
+	 * @param	Boolean	$keepContentBeforeTable
+	 *
+	 * @access private
+	 */
+	protected function extractTableFromDocument($document, $number = 1, $keepContentBeforeTable = false) {
+		$approach = $document;
+
+		// Take everything whats after x table ($number)
+		for($i = 1; $i < $number; $i++)	{
+			$approach = mb_substr($approach, mb_strpos($approach, '</table:table>')+mb_strlen('</table:table>'));
+		}
+
+		// Remove everything whats before the requested table
+		$approach = ($keepContentBeforeTable) ? $approach:mb_substr($approach, mb_strpos($approach, '<table:table '));
+
+		return $approach;
+	}
+
+
+
+	/**
+	 *  Extract the Xth row from table. Default is 1 for the first row.
+	 * 	e.g. you need a template row which is not the first, set which to x.
+	 *
+	 * 	x - is allaways the number of the row.
+	 *
+	 * @param	String	$table
+	 * @param 	Integer	$which
+	 * @return	String
+	 */
+	protected function extractRowFromTable($table, $which = 1) {
+		$approach = $table;	// $approach always is the "approach" to the searched: the table row
+
+			// take all what's not AFTER the header-rows
+		$approach = mb_substr($approach, mb_strpos($approach, '</table:table-header-rows>') + mb_strlen('</table:table-header-rows>'));
+
+		if($which > 1)	{	// drop all whats behind the end of the table's row
+			for($i = 1; $i < $which; $i++)	{	//here we kill first all unused rows which are before the needed one.
+				$tmpApproach	=	mb_substr($approach, 0, mb_strpos($approach, '</table:table-row>')+mb_strlen('</table:table-row>'));
+				$approach		=	str_replace($tmpApproach, '', $approach);
+			}
+
+			$approach = mb_substr($approach, 0, mb_strpos($approach, '</table:table-row>')+mb_strlen('</table:table-row>'));
+
+		} else {
+			$approach = mb_substr($approach, 0, mb_strpos($approach, '</table:table-row>')+mb_strlen('</table:table-row>'));
+		}
+
+		return $approach;
 	}
 
 
