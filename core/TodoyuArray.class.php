@@ -62,6 +62,20 @@ class TodoyuArray {
 
 
 	/**
+	 *	Get key of last element in associative array
+	 *
+	 *	@param	Array	$array
+	 *	@return	String
+	 */
+	public static function getLastKey($array) {
+		end($array);
+		
+		return key($array);
+	}
+
+
+
+	/**
 	 * Convert all array values to integers. This means all 'non-integer' will be 0
 	 * If $onlyPositive is true, all negative integers will be zero too
 	 * If $onlyPositive and $removeZeros are true, new array will contain only positive integers
