@@ -73,9 +73,9 @@ class TodoyuContextMenu {
 	 */
 	private function init() {
 		TodoyuExtensions::loadAllContextMenus();
-		
+
 		$funcRefs	= TodoyuContextMenuManager::getTypeFunctions($this->type);
-		
+
 			// Get items from all functions
 		foreach($funcRefs as $funcRef) {
 			$modified	=  TodoyuDiv::callUserFunction($funcRef['function'], $this->idElement, $this->elements);
@@ -139,6 +139,11 @@ class TodoyuContextMenu {
 	}
 
 
+
+	/**
+	 * Print json encoded contextmenu struct
+	 *
+	 */
 	public function printJSON() {
 		TodoyuHeader::sendHeaderJSON();
 

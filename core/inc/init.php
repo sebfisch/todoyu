@@ -41,7 +41,7 @@ if( TodoyuBrowserInfo::isIE() ) {
 }
 
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuRequest::setDefaultRequestVarsHook', 10);
-TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::cookieLoginHook', 20);
-TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::onLoadHook', 1000);
+TodoyuHookManager::registerHook('core', 'onload', 'TodoyuCookieLogin::tryCookieLogin', 20);
+TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::checkLoginStatus', 1000);
 
 ?>

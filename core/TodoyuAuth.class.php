@@ -118,7 +118,7 @@ class TodoyuAuth {
 		TodoyuSessionManager::clearSession();
 
 			// Delete relogin cookie
-		setcookie($GLOBALS['CONFIG']['AUTH']['loginCookieName'], '', 1);
+		TodoyuCookieLogin::removeRemainLoginCookie();
 
 			// Generate a new session id for the logged out user
 		session_regenerate_id(true);
@@ -191,59 +191,13 @@ class TodoyuAuth {
 
 
 	/**
-	 * Hook to process the "remain login" cookie if not yet logged in
-	 * Called by the core->onload hook
-	 *
-	 * @param	Array		$requestVars
-	 * @param	Array		$originalRequestVars
-	 * @return	Array
-	 */
-	public static function cookieLoginHook(array $requestVars, array $originalRequestVars) {
-		return $requestVars;
-		$cookieName	= $GLOBALS['CONFIG']['AUTH']['loginCookieName'];
-		$cookieValue= $_COOKIE[$cookieName];
-
-			// Only make cookie login, if not already done
-		if( ! self::isLoggedIn() ) {
-			if( ! empty($cookieValue) ) {
-					// Decrypt cookie data
-				$cookieData	= TodoyuDiv::decrypt($cookieValue);
-
-					// If
-				if( is_array($cookieData) ) {
-					$userAgendHash	= md5($_SERVER['HTTP_USER_AGENT']);
-
-					if( $cookieData['useragentHash'] === $userAgendHash ) {
-						if( self::isValidLogin($cookieData['username'], $cookieData['passhash']) ) {
-							$idUser = TodoyuUserManager::getUserIDbyUsername($cookieData['username']);
-							TodoyuAuth::login($idUser);
-							self::setRemainLoginCookie($idUser);
-
-							TodoyuHeader::reload();
-							exit();
-						} else {
-							Todoyu::log('Cookie login failed (username/password)', LOG_LEVEL_SECURITY);
-						}
-					} else {
-						Todoyu::log('Cookie login failed (useragent)', LOG_LEVEL_SECURITY);
-					}
-				}
-			}
-		}
-
-		return $requestVars;
-	}
-
-
-
-	/**
 	 * Override request vars, if user is not logged in
 	 *
 	 * @param	Array		$requestVars
 	 * @param	Array		$originalRequestVars
 	 * @return	Array
 	 */
-	public static function onLoadHook(array $requestVars, array $originalRequestVars) {
+	public static function checkLoginStatus(array $requestVars, array $originalRequestVars) {
 		if( ! self::isLoggedIn() && ! self::isNoLoginRequired($requestVars['ext'], $requestVars['ctrl']) )  {
 			$requestVars['ext']	= $GLOBALS['CONFIG']['AUTH']['login']['ext'];
 			$requestVars['ctrl']= $GLOBALS['CONFIG']['AUTH']['login']['controller'];
@@ -252,40 +206,6 @@ class TodoyuAuth {
 		return $requestVars;
 	}
 
-
-
-	/**
-	 * Set encrypted login cookie for direct login
-	 *
-	 * @param	Integer		$idUser
-	 */
-	public static function setRemainLoginCookie($idUser) {
-		$cookieName	= $GLOBALS['CONFIG']['AUTH']['loginCookieName'];
-		$value		= self::generateRemainLoginCode($idUser);
-		$expires	= NOW + TodoyuTime::SECONDS_WEEK;
-
-		setcookie($cookieName, $value, $expires, PATH_WEB, null, false, true);
-	}
-
-
-
-	/**
-	 * Generate the encrypted content for the remain login cookie
-	 *
-	 * @param	Integer		$idUser
-	 * @return	String
-	 */
-	public static function generateRemainLoginCode($idUser) {
-		$idUser	= intval($idUser);
-		$user	= TodoyuUserManager::getUser($idUser);
-		$data	= array(
-			'username'		=> $user->getUsername(),
-			'passhash'		=> $user->getPassword(),
-			'useragentHash'	=> md5($_SERVER['HTTP_USER_AGENT'])
-		);
-
-		return TodoyuDiv::encrypt($data);
-	}
 
 }
 

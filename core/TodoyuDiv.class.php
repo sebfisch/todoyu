@@ -778,7 +778,7 @@ class TodoyuDiv {
 	 * @param	Integer		$charsAfter		Characters included after the keyword
 	 * @return	String		Substring with keyword surrounded by the original text
 	 */
-	public static function getSubstring($string, $keyword, $charsBefore = 20, $charsAfter = 20) {
+	public static function getSubstring($string, $keyword, $charsBefore = 20, $charsAfter = 20, $htmlEntities = true) {
 		$charsBefore= intval($charsBefore);
 		$charsAfter	= intval($charsAfter);
 		$keyLen		= strlen(trim($keyword));
@@ -786,7 +786,13 @@ class TodoyuDiv {
 		$start		= TodoyuDiv::intInRange($pos-$charsBefore, 0);
 		$subLen		= $charsBefore + $keyLen + $charsAfter;
 
-		return substr($string, $start, $subLen);
+		if( $htmlEntities ) {
+			$string = htmlentities(substr(html_entity_decode($string), $start, $subLen));
+		} else {
+			$string = substr($string, $start, $subLen);
+		}
+
+		return $string;
 	}
 
 

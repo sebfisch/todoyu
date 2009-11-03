@@ -76,7 +76,7 @@ Todoyu.Popup = {
 	 *	@param	unknown_type	contentUrl
 	 *	@param	unknown_type	requestOptions
 	 */
-	openWindow: function(idPopup, titleTxt, winWidth, winHeight, posTop, posLeft, contentUrl, requestOptions) {
+	openWindow: function(idPopup, titleTxt, winWidth, winHeight, contentUrl, requestOptions) {
 
 			// Set overlay show/ hide options
 		Windows.overlayShowEffectOptions = this.config.overlayShowEffectOptions;
@@ -87,8 +87,8 @@ Todoyu.Popup = {
 			id:					idPopup,
 			className:			"dialog",
 			title:				titleTxt,
-			top:				posTop,
-			left:				posLeft,
+			//top:				posTop,
+			//left:				posLeft,
 
 			resizable:			true,
 			closable:			true,
@@ -119,6 +119,8 @@ Todoyu.Popup = {
 		requestOptions.onComplete = this.onContentLoaded.bind(this);
 
 		this.popup.setAjaxContent(contentUrl, requestOptions, false, false);
+		
+		return this.popup;
 	},
 
 
