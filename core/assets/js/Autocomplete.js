@@ -45,15 +45,19 @@ Todoyu.Autocomplete = {
 			parameters:	'&cmd=' + config.acListener.cmd	+ '&acelementid=' + idElement,
 			afterUpdateElement:	this.onElementSelected.bind(this)
 		};
+				
+		if( config.options ) {
+			options = $H(options).update(config.options).toObject();
+		}
 		
 			// Create autocompleter
-		this.acRefs[idElement] = new Ajax.Autocompleter(inputField, suggestDiv, url, options);
+		this.acRefs[idElement] = new Todoyu.Autocompleter(inputField, suggestDiv, url, options);
 
 			// Observe input
 		$(inputField).observe('change', this.onInputChange.bindAsEventListener(this));
 			// Observe input for key down to clean up invalid input
 		$(inputField).observe('keydown', this.onKeydown.bindAsEventListener(this));
-	},
+	},	
 	
 	
 	
@@ -128,3 +132,4 @@ Todoyu.Autocomplete = {
 	}
 	
 };
+

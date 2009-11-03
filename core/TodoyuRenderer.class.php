@@ -95,6 +95,9 @@ class TodoyuRenderer {
 			'results' => $options
 		);
 
+			// Send number of elements as header
+		TodoyuHeader::sendTodoyuHeader('acElements', sizeof($options));
+
 		return render($tmpl, $data);
 	}
 

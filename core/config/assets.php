@@ -86,6 +86,10 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 50
 		),
 		array(
+			'file'		=> 'core/lib/js/prototype/Autocompleter.js',
+			'position'	=> 51
+		),
+		array(
 			'file'		=> 'core/assets/js/Ui.js',
 			'position'	=> 52
 		),
