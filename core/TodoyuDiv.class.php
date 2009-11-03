@@ -88,9 +88,6 @@ class TodoyuDiv {
 
 
 
-
-
-
 	/**
 	 * Remove array entries by their value
 	 *
@@ -108,10 +105,6 @@ class TodoyuDiv {
 
 		return $array;
 	}
-
-
-
-
 
 
 
@@ -139,13 +132,6 @@ class TodoyuDiv {
 
 		return $cleanedArray;
 	}
-
-
-
-
-
-
-
 
 
 
@@ -631,7 +617,6 @@ class TodoyuDiv {
 	 * @param	Boolean		$noLabel		Don't append label
 	 * @return	String
 	 */
-
 	public static function formatSize($filesize, array $labels = null, $noLabel = false) {
 		$filesize	= intval($filesize);
 
