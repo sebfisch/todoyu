@@ -75,7 +75,7 @@ class TodoyuTime {
 			'end'	=> self::getEndOfDay($timestamp)
 		);
 	}
-	
+
 
 
 	/**
@@ -93,8 +93,8 @@ class TodoyuTime {
 		);
 	}
 
-	
-	
+
+
 	/**
 	 *	Get range (start and end timestamp) of month
 	 *
@@ -110,9 +110,9 @@ class TodoyuTime {
 			'end'	=> $end
 		);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get start and end timestamp of every day in the week of the timestamp
 	 *
@@ -128,11 +128,11 @@ class TodoyuTime {
 		return $weekStart;
 	}
 
-	
-	
+
+
 	/**
 	 *	Get timestamp of first day of month
-	 * 
+	 *
 	 *	@param	Integer	$timestamp
 	 */
 	public static function getMonthStart($timestamp) {
@@ -160,9 +160,9 @@ class TodoyuTime {
 
 		return $weekday;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get number of day of week of given timestamp (0 = sunday, 1 = monday... or 0 = monday, 1 = tuesday..)
 	 *
@@ -202,6 +202,24 @@ class TodoyuTime {
 			'minutes'	=> $minutes,
 			'seconds'	=> $seconds
 		);
+	}
+
+
+
+	/**
+	 *	Get present amount of first hour of given amount of hours
+	 *
+	 *	@param	Float $hours
+	 *	@return	Float
+	 */
+	public static function firstHourLeftOver($hours) {
+		if ( $hours > 1.0 ) {
+			$hours	= 1.0;
+		} elseif( $hours <= 0.0 ) {
+			$hours	= 0.0;
+		}
+
+		return $hours;
 	}
 
 
@@ -515,7 +533,7 @@ class TodoyuTime {
 	 */
 	public function spansIntersect($start1, $end1, $start2, $end2) {
 		$intersect = false;
-		
+
 		if (	// span2 ends within span1 OR span2 lays within span1 OR span2 starts within span 1 OR span2 wraps span1
 			 ($end2 >= $start1 && $end2 <= $end1) || ($start2 >= $start1 && $end2 <= $end1) || ($start2 >= $start1 && $start2 <= $end1) ||	($start2 <= $start1 && $end2 >= $end1)
 			&& ! ($start2 == $end1 || $start1 == $end2)
