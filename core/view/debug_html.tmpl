@@ -1,12 +1,16 @@
 <div style="margin-top:10px;text-align:left;padding:10px; border:2px solid #F00; background-color:#FEF7E7; margin-bottom:10px">
-<em style="display:block;padding-bottom:10px; font-size:12px;font-family:'Courier New'">{$caller.fileshort} : {$caller.line}</em>
-{if $title}<strong style="font-size:14px">Debug: {$title}</strong>{/if}
-<pre style="font-family:'Courier New', Courier, monospace; margin-top:10px; margin-bottom:0px">
-{$debug}
-</pre>
-{if $backtrace != ''}
-	<br/><strong><a href="javascript:void(0)" onclick="if(this.innerHTML.indexOf('▼') == -1){ this.update('▼ Backtrace'); } else { this.update('► Backtrace'); } $('{md5 $backtrace}').toggle();">► Backtrace</a></strong><br/>
-	<div id="{md5 $backtrace}" style="display:none; background-color:#FFFCF6; border:1px solid #666;">
-		<pre style="font-family:Courier New;">{$backtrace}</pre></div>
-{/if}
+	<em style="display:block;padding-bottom:10px; font-size:12px;font-family:'Courier New'">{$caller.fileshort} : {$caller.line}</em>
+	{if $title}
+		<strong style="font-size:14px">Debug: {$title}</strong>
+	{/if}
+	<pre style="font-family:'Courier New', Courier, monospace; margin-top:10px; margin-bottom:0px">
+		{$debug}
+	</pre>
+	{if $backtrace}
+	<hr/>
+	<strong style="font-size:14px">Backtrace:</strong><br/>
+	<pre>
+		{$backtrace}
+	</pre>
+	{/if}
 </div>

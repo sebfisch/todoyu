@@ -128,8 +128,8 @@ class TodoyuArray {
 	/**
 	 * Rename key of an array, defined by mapping array. Only mapped keys will be in the reformed array
 	 *
-	 * @param	Array		$array
-	 * @param	Array		$reformConfig		[old=>new,old=>new]
+	 * @param	Array	$array
+	 * @param	Array	$reformConfig		[old=>new,old=>new]
 	 * @return	Array
 	 */
 	public static function reform(array $array, array $reformConfig, $copyAllData = false) {
@@ -151,7 +151,7 @@ class TodoyuArray {
 	/**
 	 * Stripslashes on all array values and subarrays
 	 *
-	 * @param	Array		$array
+	 * @param	Array	$array
 	 * @return	Array
 	 */
 	public static function stripslashes(array $array) {

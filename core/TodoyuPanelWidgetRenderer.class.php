@@ -115,13 +115,11 @@ class TodoyuPanelWidgetRenderer {
 		$content	= '';
 		$idArea		= TodoyuExtensions::getExtID($extKey);
 
-		// Render the widgets
+			// Render the widgets
 		foreach($panelWidgets as $pWidgetConfig) {
 			$widgetClass	= $pWidgetConfig['widget'];
 			$config			= is_array($pWidgetConfig['config']) ? $pWidgetConfig['config'] : array();
-			// changed: if no array key exists expand the widget by default.
-
-
+			// Changed: if no array key exists expand the widget by default.
 
 			if( class_exists($widgetClass) ) {
 				// Check if panelWidget is allowed to be displayed
@@ -134,8 +132,8 @@ class TodoyuPanelWidgetRenderer {
 				}
 			} else {
 				$debug	= 'Can\'t find requested panel widget: "' . $widgetClass . '"';
-
 				TodoyuDebug::printHtml($debug, 'PanelWidget not found!', null, true);
+				TodoyuDebug::printHtml($pWidgetConfig, 'Widget config');
 			}
 		}
 
