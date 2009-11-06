@@ -366,22 +366,6 @@ class TodoyuDiv {
 
 
 	/**
-	 * Implode array with given delimiter, force items to be integers
-	 *
-	 * @param	Array	$array
-	 * @param	String	$delimiter
-	 */
-	public static function intImplode($array = array(), $delimiter = ',') {
-		foreach($array as $id => $value) {
-			$array[$id] = intval($value);
-		}
-
-		return implode($delimiter, $array);
-	}
-
-
-
-	/**
 	 * Remove absolute site path from a path
 	 *
 	 * @param	String		$path
