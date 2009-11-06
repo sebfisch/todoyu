@@ -114,7 +114,7 @@ abstract class TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	protected function _unknownAction($action, array $params) {
-		die("Unknown action: " . htmlentities($action));
+		die('Unknown action: ' . htmlentities($action));
 	}
 
 
@@ -153,7 +153,7 @@ abstract class TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	public function defaultAction($params = array()) {
-		die("THERE IS NO DEFAULT ACTION DEFINED");
+		die('THERE IS NO DEFAULT ACTION DEFINED');
 	}
 
 }
