@@ -97,6 +97,13 @@ Todoyu.Time = {
 		};
 	},
 
+
+
+	/**
+	 *	Get shifted time
+	 *
+	 *	@todo	comment
+	 */		
 	getShiftedTime: function(baseTime, step, direction) {
 		var factor	= direction === 'up' ? 1 : -1 ;
 		var baseTime= this.getDayStart(baseTime);
@@ -105,39 +112,55 @@ Todoyu.Time = {
 		if( step === 'month' ) {
 			if( direction === 'up' && date.getMonth() == 11 ) {
 				date.setMonth(0);
-				date.setYear(date.getYear+1);
+				date.setYear(date.getYear + 1);
 			} else if( direction === 'down' && date.getMonth() == 0 ) {
 				date.setMonth(11);
-				date.setYear(date.getYear-1);
+				date.setYear(date.getYear - 1);
 			} else {
-				date.setMonth(date.getMonth()+factor);
+				date.setMonth(date.getMonth() + factor);
 			}
 		} else {
 			date.setTime(date.getTime() + (factor * this.seconds[step] * 1000));
 		}
 
-		return parseInt(date.getTime()/1000, 10);
+		return parseInt(date.getTime() / 1000, 10);
 	},
 
+	
+	
+	/**
+	 *	Get timestamp at start of day
+	 *
+	 *	@param	Integer	time
+	 *	@return	Integer
+	 */
 	getDayStart: function(time) {
-		var date = new Date(time*1000);
+		var date = new Date(time * 1000);
 
 		date.setHours(0);
 		date.setMinutes(0);
 		date.setSeconds(0);
 
-		return parseInt(date.getTime()/1000, 10);
+		return parseInt(date.getTime() / 1000, 10);
 	},
 
+
+
+	/**
+	 *	Get timestamp at start of week
+	 *
+	 *	@param	Integer	time
+	 *	@return	Integer
+	 */
 	getWeekStart: function(time) {
-		var date = new Date(time*1000);
+		var date = new Date(time * 1000);
 
 		date.setHours(0);
 		date.setMinutes(0);
 		date.setSeconds(0);
 
-		var time = parseInt(date.getTime()/1000, 10);
-		var shift = (((date.getDay()%7)-1)*-1);
+		var time = parseInt(date.getTime() / 1000, 10);
+		var shift = (((date.getDay() % 7) - 1) * -1);
 
 		time += shift * this.seconds.day;
 
@@ -158,6 +181,22 @@ Todoyu.Time = {
 		date.setSeconds(0);
 
 		return date.getTime();
+	},
+	
+	
+	
+	/**
+	 *	Get amount of days in month
+	 *
+	 *	@param	Integer	time
+	 *	@return	Integer
+	 */
+	getDaysInMonth: function(time) {
+		var date	= new Date(time * 1000);
+		var year	= date.getFullYear();
+		var month	= date.getMonth();
+		
+		return 32 - new Date(year, month, 32).getDate();
 	}
 
 };
