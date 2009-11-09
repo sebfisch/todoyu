@@ -417,7 +417,13 @@ Todoyu.Ui = {
 	 * 	@param	unknown_type	idElement
 	 * 	@return	TimePicker
 	 */
-	showDurationPicker: function(idElement) {
+	showDurationPicker: function(idElement, config) {
+		config = config || {}; 
+		config = $H({
+			'rangeHour': [0,99],
+			'rangeMinute': [0,55]
+		}).merge(config).toObject();
+		
 		return new TimePicker(idElement);
 	}
 
