@@ -111,9 +111,6 @@ require_once( PATH_LOCALCONF . '/system.php');
 
 
 
-
-
-
 	// Add form include path
 TodoyuExtensions::addIncludePath( PATH_CORE . '/form' );
 

@@ -171,7 +171,7 @@ Todoyu.Form = {
 		var width	= width > 0 ? width : 480;
 		var height	= height > 0 ? height: 300;
 
-		Todoyu.Popup.openWindow(idPopup, title, width, height, 0, 0, url, options);
+		Todoyu.Popup.openWindow(idPopup, title, width, height, url, options);
 	}
 
 };

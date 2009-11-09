@@ -24,12 +24,15 @@
  *	@see http://prototype-window.xilinus.com/documentation.html
  */
 
-Todoyu.Popup = {
 
+Todoyu.Popup = {
+	
 	/**
 	 * Popup object reference
 	 */
-	popup: null,
+	popup: {},
+	
+	last: null,
 
 	timeoutID:	null,
 
@@ -43,13 +46,17 @@ Todoyu.Popup = {
 	},
 
 
-
+	
 	/**
-	 *	Enter Description here...
-	 *
+	 * Get popup reference
+	 * @param	String		idPopup
 	 */
-	getPopup: function() {
-		return this.popup;
+	getPopup: function(idPopup) {
+		return this.popup[idPopup];
+	},
+	
+	getLastPopup: function() {
+		return this.last;
 	},
 
 
@@ -58,7 +65,7 @@ Todoyu.Popup = {
 	 *	Get ID
 	 *
 	 */
-	getID: function() {
+	getIDXXXX: function() {
 		return this.popup.getId();
 	},
 
@@ -76,20 +83,17 @@ Todoyu.Popup = {
 	 *	@param	unknown_type	contentUrl
 	 *	@param	unknown_type	requestOptions
 	 */
-	openWindow: function(idPopup, titleTxt, winWidth, winHeight, contentUrl, requestOptions) {
+	openWindow: function(idPopup, title, winWidth, winHeight, contentUrl, requestOptions) {
 
 			// Set overlay show/ hide options
 		Windows.overlayShowEffectOptions = this.config.overlayShowEffectOptions;
 		Windows.overlayHideEffectOptions = this.config.overlayHideEffectOptions;
 
 			// Construct popup
-		this.popup = new Window({
+		this.popup[idPopup] = new Window({
 			id:					idPopup,
 			className:			"dialog",
-			title:				titleTxt,
-			//top:				posTop,
-			//left:				posLeft,
-
+			title:				title,
 			resizable:			true,
 			closable:			true,
 			minimizable:		true,
@@ -110,17 +114,20 @@ Todoyu.Popup = {
 			effectOptions:		null,
 			parent:				document.getElementsByTagName("body").item(0)
 		});
-
+		
 			// Show popup and activate content overlay
-		this.popup.showCenter(true);
+		this.getPopup(idPopup).showCenter(true);
 
 			// Load & set inner content, install general click (== update seize) observer
 		requestOptions = requestOptions || {};
-		requestOptions.onComplete = this.onContentLoaded.bind(this);
+		requestOptions.onComplete = this.onContentLoaded.bind(this, idPopup);
 
-		this.popup.setAjaxContent(contentUrl, requestOptions, false, false);
+		this.getPopup(idPopup).setAjaxContent(contentUrl, requestOptions, false, false);
 		
-		return this.popup;
+			// Save last opened popup
+		this.last = this.getPopup(idPopup);		
+		
+		return this.getPopup(idPopup);
 	},
 
 
@@ -132,10 +139,26 @@ Todoyu.Popup = {
 	 *	2. upon closing:	the cick observer (1) is stopped
 	 *
 	 */
-	onContentLoaded: function() {
-		this.getContentElement().observe('mouseup', this.onMouseUp.bindAsEventListener(this));
+	onContentLoaded: function(idPopup, response) {
+		//this.getPopup(idPopup).updateHeight();
+		
+		
+		//this.getContentElement(idPopup).observe('mouseup', this.onMouseUp.bindAsEventListener(this, idPopup));
 
-		this.getPopup().setCloseCallback(this.onWindowClose.bindAsEventListener(this));
+		//this.getPopup(idPopup).setCloseCallback(this.onWindowClose.bindAsEventListener(this, idPopup));
+	},
+
+
+	/**
+	 *	Enter Description here...
+	 *
+	 *	@param	unknown_type	event
+	 */
+	onWindowClose: function(event, idPopup) {
+		//this.getContentElement(idPopup).stopObserving('mouseup');
+		//this.clearTimeout();
+
+		//return true;
 	},
 
 
@@ -145,22 +168,8 @@ Todoyu.Popup = {
 	 *
 	 *	@param	unknown_type	event
 	 */
-	onWindowClose: function(event) {
-		this.getContentElement().stopObserving('mouseup');
-		this.clearTimeout();
-
-		return true;
-	},
-
-
-
-	/**
-	 *	Enter Description here...
-	 *
-	 *	@param	unknown_type	event
-	 */
-	onMouseUp: function(event) {
-		this.timeoutID = this.updateHeight.bind(this).delay(0.3, true);
+	onMouseUp: function(event, idPopup) {
+		//this.timeoutID = this.updateHeight.bind(this).delay(0.3, idPopup, true);
 	},
 
 
@@ -169,8 +178,8 @@ Todoyu.Popup = {
 	 *	Enter Description here...
 	 *
 	 */
-	getContentElement: function() {
-		return $(this.getID() + '_content');
+	getContentElement: function(idPopup) {
+		return $(idPopup + '_content');
 	},
 
 
@@ -180,12 +189,13 @@ Todoyu.Popup = {
 	 *
 	 *	@param	Boolean clearTimeout
 	 */
-	updateHeight: function(clearTimeout) {
-		this.getPopup().updateHeight();
-
+	updateHeight: function(idPopup, clearTimeout) {
+		this.getPopup(idPopup).updateHeight();
+/*
 		if( clearTimeout ) {
 			this.clearTimeout();
 		}
+		*/
 	},
 
 
@@ -195,10 +205,12 @@ Todoyu.Popup = {
 	 *
 	 */
 	clearTimeout: function() {
+		/*
 		if( this.timeoutID !== null ) {
 			window.clearTimeout(this.timeoutID);
 			this.timeoutID = null;
 		}
+		*/
 	},
 
 
@@ -209,12 +221,12 @@ Todoyu.Popup = {
 	 *	@param	unknown_type	contentUrl
 	 *	@param	unknown_type	requestOptions
 	 */
-	updateContent: function(contentUrl, requestOptions) {
-		this.getPopup().setAjaxContent(contentUrl, requestOptions, false, false);
+	updateContent: function(idPopup, contentUrl, requestOptions) {		
+		this.getPopup(idPopup).setAjaxContent(contentUrl, requestOptions, false, false);
 	},
 	
-	setContent: function(content) {
-		this.getPopup().setHTMLContent(content);		
+	setContent: function(idPopup, content) {
+		this.getPopup(idPopup).setHTMLContent(content);		
 	},
 
 
@@ -222,8 +234,8 @@ Todoyu.Popup = {
 	 *	Refresh popup
 	 *
 	 */
-	refresh: function() {
-		this.getPopup().refresh();
+	refresh: function(idPopup) {
+		this.getPopup(idPopup).refresh();
 	},
 
 
@@ -231,8 +243,8 @@ Todoyu.Popup = {
 	 *	Close popup
 	 *
 	 */
-	close: function() {
-		this.getPopup().close();
+	close: function(idPopup) {
+		this.getPopup(idPopup).close();
 	}
 
 };
