@@ -974,8 +974,6 @@ class TodoyuDiv {
 			$query = SERVER_URL . $query;
 		}
 
-		TodoyuDebug::printInFirebug($query, 'query');
-
 		return $query;
 	}
 

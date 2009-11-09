@@ -143,7 +143,4 @@ require( PATH_CORE . '/inc/load_extensions.php' );
 require_once( PATH_CONFIG . '/override.php');
 require_once( PATH_LOCALCONF . '/override.php');
 
-	// Load default init script
-require_once( PATH_CORE . '/inc/init.php');
-
 ?>

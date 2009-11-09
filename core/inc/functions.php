@@ -138,4 +138,27 @@ function allowed($extKey, $right) {
 }
 
 
+
+/**
+ * Add IE custom scripts to the browser (if its an IE)
+ *
+ */
+function initIEcustomScripts() {
+	if( TodoyuBrowserInfo::isIE() ) {
+		$browserVersion	= TodoyuBrowserInfo::getMajorVersion();
+
+		if( $browserVersion < 7 ) {
+			$GLOBALS['CONFIG']['FE']['PAGE']['assets']['js'][] = array(
+				'file'		=> 'core/assets/js/IEbelow7.js',
+				'position'	=> 1000
+			);
+
+			$GLOBALS['CONFIG']['FE']['PAGE']['assets']['css'][] = array(
+				'file'		=> 'core/assets/css/iebelow7.css',
+				'position'	=> 1000
+			);
+		}
+	}
+}
+
 ?>

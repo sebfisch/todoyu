@@ -5,8 +5,15 @@ chdir(dirname(dirname(__FILE__)));
 
 ob_start();
 
+	// Preinclude constants
+
+
 	// Include global include file
 require_once('core/inc/global.php');
+	// Load default init script
+require_once( PATH_CORE . '/inc/init.php');
+
+
 require_once('install/model/TodoyuInstaller.class.php');
 
 //ob_clean();

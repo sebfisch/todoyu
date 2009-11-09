@@ -26,6 +26,8 @@ define('TIME_START', microtime(true));
 
 	// Include global include file
 require_once('core/inc/global.php');
+	// Load default init script
+require_once('core/inc/init.php');
 
 	// Send "no cache" header
 TodoyuHeader::sendNoCacheHeaders();

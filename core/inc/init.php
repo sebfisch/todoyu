@@ -24,21 +24,7 @@
  * @todo	Use hook functions to allow others to hook in here
  */
 
-if( TodoyuBrowserInfo::isIE() ) {
-	$browserVersion	= TodoyuBrowserInfo::getMajorVersion();
-
-	if( $browserVersion < 7 ) {
-		$CONFIG['FE']['PAGE']['assets']['js'][] = array(
-			'file'		=> 'core/assets/js/IEbelow7.js',
-			'position'	=> 1000
-		);
-
-		$CONFIG['FE']['PAGE']['assets']['css'][] = array(
-			'file'		=> 'core/assets/css/iebelow7.css',
-			'position'	=> 1000
-		);
-	}
-}
+initIEcustomScripts();
 
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuRequest::setDefaultRequestVarsHook', 10);
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuCookieLogin::tryCookieLogin', 20);
