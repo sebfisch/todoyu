@@ -354,7 +354,7 @@ Todoyu.Ui = {
 		};
 
 		var content = $(idElement);
-		
+
 		if( content.visible() ) {
 			Effect.SlideUp( content, options );
 		} else {

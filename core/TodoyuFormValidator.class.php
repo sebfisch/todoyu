@@ -49,6 +49,7 @@ class TodoyuFormValidator {
 	}
 
 
+
 	/**
 	 * User custom function caller
 	 * Calls the function defined in the <function> attribute the same way
@@ -70,21 +71,62 @@ class TodoyuFormValidator {
 
 
 
+	/**
+	 *	Validate value not being empty
+	 *
+	 *	@param	unknown_type	$value
+	 *	@param	Array	$validatorConfig
+	 *	@param	TodoyuFormElement	$formElement
+	 *	@param	Array	$formData
+	 *	@return	Boolean
+	 */
 	private static function isNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		return TodoyuValidator::isNotEmpty($value);
 	}
 
 
+
+	/**
+	 *	Validate value not being zero (time)
+	 *
+	 *	@param	unknown_type		$value
+	 *	@param	Array				$validatorConfig
+	 *	@param	TodoyuFormElement	$formElement
+	 *	@param	Array				$formData
+	 *	@return	Boolean
+	 */
 	private static function isNotZeroTime($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		return TodoyuValidator::isNotZerotime($value);
 	}
 
+
+
+	/**
+	 *	Validate value not having at least giben minimum length
+	 *
+	 *	@param	unknown_type		$value
+	 *	@param	Array				$validatorConfig
+	 *	@param	TodoyuFormElement	$formElement
+	 *	@param	Array				$formData
+	 *	@return	Boolean
+	 */
 	private static function minLength($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		$minLength	= intval($validatorConfig);
 
 		return TodoyuValidator::hasMinLength($value, $minLength);
 	}
 
+
+
+	/**
+	 *	Validate value not exceeding maximum length
+	 *
+	 *	@param	unknown_type		$value
+	 *	@param	Array				$validatorConfig
+	 *	@param	TodoyuFormElement	$formElement
+	 *	@param	Array				$formData
+	 *	@return	Boolean
+	 */
 	private static function maxLength($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		$maxLength	= intval($validatorConfig);
 
@@ -313,6 +355,5 @@ class TodoyuFormValidator {
 	}
 
 }
-
 
 ?>
