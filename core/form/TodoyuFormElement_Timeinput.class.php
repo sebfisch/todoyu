@@ -67,6 +67,23 @@ class TodoyuFormElement_Timeinput extends TodoyuFormElement_Textinput {
 
 		parent::setValue($value);
 	}
+	
+	
+	
+	/**
+	 * Get value of the timeinput field (as numeric seconds value)
+	 * @return	Integer		Seconds
+	 */
+	public function getValue() {
+		$value = parent::getValue();
+		
+		if( ! is_numeric($value) ) {
+			$value = TodoyuTime::parseTime($value, false);
+			$this->setValue($value);
+		}
+		
+		return $value;
+	}
 
 
 

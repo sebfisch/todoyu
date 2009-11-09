@@ -74,10 +74,10 @@ class TodoyuFormValidator {
 	/**
 	 *	Validate value not being empty
 	 *
-	 *	@param	unknown_type	$value
-	 *	@param	Array	$validatorConfig
+	 *	@param	String				$value		Field value
+	 *	@param	Array				$validatorConfig
 	 *	@param	TodoyuFormElement	$formElement
-	 *	@param	Array	$formData
+	 *	@param	Array				$formData
 	 *	@return	Boolean
 	 */
 	private static function isNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
@@ -88,15 +88,20 @@ class TodoyuFormValidator {
 
 	/**
 	 *	Validate value not being zero (time)
+	 *  Most time fields provide the value as numeric in seconds. String version separated by : is also valid
 	 *
-	 *	@param	unknown_type		$value
+	 *	@param	String				$value
 	 *	@param	Array				$validatorConfig
 	 *	@param	TodoyuFormElement	$formElement
 	 *	@param	Array				$formData
 	 *	@return	Boolean
 	 */
 	private static function isNotZeroTime($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
-		return TodoyuValidator::isNotZerotime($value);
+		if( is_numeric($value) ) {
+			return intval($value) > 0;
+		} else {
+			return TodoyuValidator::isNotZerotime($value);
+		}		
 	}
 
 
