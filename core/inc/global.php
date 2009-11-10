@@ -64,10 +64,11 @@ require_once( PATH_CORE . '/TodoyuDiv.class.php' );
 require_once( PATH_CORE . '/TodoyuPreferenceManager.class.php' );
 require_once( PATH_CORE . '/TodoyuFileManager.class.php' );
 require_once( PATH_CORE . '/TodoyuRightsManager.class.php' );
+
+	// Include basic user classes
 require_once( PATH_EXT .  '/user/model/TodoyuUser.class.php' );
 require_once( PATH_EXT .  '/user/model/TodoyuUserManager.class.php' );
 require_once( PATH_EXT .  '/user/model/TodoyuUserPreferences.class.php' );
-
 
 
 	// Load development classes
@@ -108,7 +109,6 @@ require_once( PATH_LOCALCONF . '/extensions.php');
 require_once( PATH_LOCALCONF . '/db.php');
 require_once( PATH_LOCALCONF . '/config.php');
 require_once( PATH_LOCALCONF . '/system.php');
-
 
 
 	// Add form include path

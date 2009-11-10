@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
+		<label index="yes">Yes</label>
+		<label index="no">No</label>
 		<label index="loading">loading</label>
 		<label index="hrs">h</label>
 		<label index="expandall">Expand all</label>
@@ -11,7 +13,6 @@
 		<label index="edit">Edit</label>
 		<label index="title">Title</label>
 		<label index="description">Description</label>
-		<label index="yes">Yes</label>
 		<label index="date">Date</label>
 		<label index="dateFormat">y.n.j</label>
 		<label index="load">Load</label>
@@ -71,6 +72,8 @@
 		<label index="date.years">Years</label>
 	</labels>
 	<labels lang="de">
+		<label index="yes">Ja</label>
+		<label index="no">Nein</label>
 		<label index="loading">laden</label>
 		<label index="hrs"> Std.</label>
 		<label index="expandall">Alle aufklappen</label>
@@ -81,7 +84,6 @@
 		<label index="edit">Editieren</label>
 		<label index="title">Titel</label>
 		<label index="description">Beschreibung</label>
-		<label index="no">no</label>
 		<label index="date">Datum</label>
 		<label index="dateFormat">d.m.Y</label>
 		<label index="load">Laden</label>

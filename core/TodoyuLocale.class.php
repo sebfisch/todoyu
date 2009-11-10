@@ -86,13 +86,29 @@ class TodoyuLocale {
 	 */
 	public static function getLabel($labelKey, $locale = null) {
 		$label	= self::getLabelInternal($labelKey, $locale);
-
+		
 		if( $label === '' && $GLOBALS['CONFIG']['DEBUG'] ) {
 			Todoyu::log($label, LOG_LEVEL_NOTICE);
 			$label	= 'Label not found: #' .$labelKey . '#';
 		}
 
 		return $label;
+	}
+	
+	
+	
+	/**
+	 * Get label which will be parsed with wildcards like printf()
+	 * 
+	 * @param	String		$labelKey
+	 * @param	Array		$wildcards
+	 * @param	String		$locale
+	 * @return	String
+	 */
+	public static function getFormatLabel($labelKey, array $wildcards = array(), $locale = null) {
+		$label	= self::getLabel($labelKey, $locale);
+		
+		return vsprintf($label, $wildcards);
 	}
 
 

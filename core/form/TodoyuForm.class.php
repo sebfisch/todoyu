@@ -268,9 +268,9 @@ class TodoyuForm implements ArrayAccess {
 	 */
 	public function getRecordID() {
 		if( $this->idRecord > 0 ) {
-			return $this->idRecord;
+			return intval($this->idRecord);
 		} elseif( isset($this->formdata['id']) ) {
-			return $this->formdata['id'];
+			return intval($this->formdata['id']);
 		} else {
 			return 0;
 		}

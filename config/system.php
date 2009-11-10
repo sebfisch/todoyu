@@ -24,7 +24,7 @@ $CONFIG['SYSTEM']['email']		= 'ferni@snowflake.ch';
 $CONFIG['SYSTEM']['language']	= 'de';
 $CONFIG['SYSTEM']['locale']		= 'de_DE.utf8';
 
-//$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
+$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
 
 $CONFIG['SYSTEM']['encryptionKey']	= 'ea049b6654f0a182dfd9bab073ef41d9';
 

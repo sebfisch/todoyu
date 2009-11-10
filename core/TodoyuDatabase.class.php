@@ -1140,8 +1140,8 @@ class TodoyuDatabase {
 	private function printConnectionError($error, $errorNo) {
 		ob_end_clean();
 
-		$title	= 'DB connection failed';
-		$message= 'Cannot connect to the server "' . htmlentities($this->config['server']) . '"<br />Check server or change in config/db.php<br />' . $error;
+		$title	= 'Cannot connect to the server "' . htmlentities($this->config['server']) . '"';
+		$message= $error . '<br/><br />Check server or change in config/db.php';
 
 		include('core/view/error.html');
 	}
