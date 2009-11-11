@@ -1,17 +1,17 @@
 <div class="myStyle">
-
-	{* Add a comment where useful *}
-
+	{* --------- Comments use one line for themselves. Use as many minuses as needed --------  *}
 	<ul id="userlist">
+	{* --- Dwoo functions are indented like the surrounding tags --- *}
 	{foreach $users user}
 		<li>{$user.name} {$user.firstname}</li>
 	{/foreach}
 	</ul>
-
+	
+	{myCustomPlugin date=$date}
 </div>
-
+{* --------- Comments follow ---------  *}
 {*
 - Use dot (.) seperation to access the array elements. Be careful to avoid dots in your keynames, it won't work
-- Embed your dwoo template code into the HTML structure. Indent like the surrounding code
-- Dwoo template code is easier to find if you leave some blank lines before and/or after a command (ex. loops)
+- Embed your Dwoo template code into the HTML structure. Indent like the surrounding code
+- Tip: Dwoo template code is easier to find if you leave some blank lines before and/or after a command (e.g. loops)
 *}

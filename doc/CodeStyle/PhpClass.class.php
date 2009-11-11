@@ -6,41 +6,47 @@
 class MyCamelCaseClassName {
 
 	/**
+	 * Some description
+	 *
+	 * @var	String
+	 */
+	private $myVar = '';
+	
+	
+
+	/**
 	 * Add a good method description. Don't tell the obvious stuff!
 	 *
 	 * @param	Integer			$idRecord
-	 * @param	AnOtherClass 	$otherClass			Use typehints where possible
-	 * @return	Integer			The return value MUST always be from the same type
+	 * @param	Array			$data
+	 * @param	AnotherClass 	$otherClass			Use typehints where possible
+	 * @return	Integer			A function always has one type of "return value"
 	 */
-	public function doSomethingWithARecord($idRecord, AnOtherClass $otherClass) {
-			// Always validate parameters
+	public function doSomething($idRecord, array $data, AnotherClass $otherClass) {
+			// Always validate parameters (in public functions)
 		$idRecord	= intval($idRecord);
 
 			// Check what you really want to know, and do this as exactly as possible
 		if( $idRecord === 0 ) {
 
 		}
-
-			// Bad style (what are we checking for?)
-		if( $idRecord ) {
-
-		}
-
-		return $idRecord + $idRecord;
+		
+		return $idRecord;
 	}
 
+	
 
 	/**
 	 * Render functions should always start with "render"
 	 * A render function only should compose the data for the template.
-	 * The make calculations and get data from the database, use a manager function
+	 * To calculate data or get data from the database, use a manager function
 	 *
 	 * @return	String
 	 */
 	public static function renderSomething() {
-			// Define the path to the template
+			// Define the path to the template file
 		$tmpl	= 'ext/project/view/something.tmpl';
-			// Define the data array for dwoo
+			// Define the data array for Dwoo
 		$data	= array(
 			'key1'	=> 'somedata',
 			'subkey'=> array(
@@ -51,8 +57,6 @@ class MyCamelCaseClassName {
 
 		return render($tmpl, $data);
 	}
-
 }
-
 
 ?>
