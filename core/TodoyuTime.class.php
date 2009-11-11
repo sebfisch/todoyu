@@ -394,6 +394,8 @@ class TodoyuTime {
 		$timestamp	= intval($timestamp);
 		$format		= self::getFormat($formatName);
 
+		TodoyuDebug::printInFirebug($format);
+
 		return strftime($format, $timestamp);
 	}
 

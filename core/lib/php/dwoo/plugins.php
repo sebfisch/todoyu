@@ -490,4 +490,32 @@ function Dwoo_Plugin_allowed_compile(Dwoo_Compiler $compiler, $ext, $right) {
 }
 
 
+
+/**
+ * NOT READY YET!
+ *
+ * @param Dwoo $dwoo
+ * @param unknown_type $id
+ * @param unknown_type $name
+ * @param unknown_type $onchange
+ * @param unknown_type $class
+ * @param unknown_type $style
+ * @param array $options
+ * @param unknown_type $selected
+ * @return unknown
+ */
+function Dwoo_Plugin_select(Dwoo $dwoo, $id = '', $name = '', $onchange = '', $class = '', $style = '', array $options = array(), $selected = -1) {
+	$tmpl	= 'core/view/select.tmpl';
+	$data	= array(
+		'id'		=> $id,
+		'name'		=> $name,
+		'onchange'	=> $onchange,
+		'options'	=> $options,
+		'selected'	=> $selected
+	);
+
+	return render($tmpl, $data);
+}
+
+
 ?>
