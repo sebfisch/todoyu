@@ -31,10 +31,12 @@ class TodoyuHeadletRenderer {
 	/**
 	 * Render headlets for an area
 	 *
+	 * @param	String		$type			Headlet type
 	 * @param	String		$areaKey		Key of the current area
+	 * @param	Array		$params
 	 * @return	String
 	 */
-	public static function renderAreaHeadlets($type, $areaKey) {
+	public static function renderAreaHeadlets($type, $areaKey, array $params = array()) {
 		$type		= strtoupper(trim($type));
 		$headlets	= TodoyuHeadletManager::getAreaHeadlets($type, $areaKey);
 		$content	= '';
@@ -43,7 +45,7 @@ class TodoyuHeadletRenderer {
 			$class	= $headletConfig['class'];
 
 			if( class_exists($class) ) {
-				$headlet = new $class();
+				$headlet = new $class($params);
 
 				$content .= $headlet->render();
 			}

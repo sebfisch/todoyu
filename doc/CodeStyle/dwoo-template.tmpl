@@ -1,0 +1,17 @@
+<div class="myStyle">
+
+	{* Add a comment where useful *}
+
+	<ul id="userlist">
+	{foreach $users user}
+		<li>{$user.name} {$user.firstname}</li>
+	{/foreach}
+	</ul>
+
+</div>
+
+{*
+- Use dot (.) seperation to access the array elements. Be careful to avoid dots in your keynames, it won't work
+- Embed your dwoo template code into the HTML structure. Indent like the surrounding code
+- Dwoo template code is easier to find if you leave some blank lines before and/or after a command (ex. loops)
+*}

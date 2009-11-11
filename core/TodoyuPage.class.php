@@ -424,8 +424,9 @@ class TodoyuPage {
 	private static function renderHeadlets() {
 		if( TodoyuAuth::isLoggedIn() ) {
 			$areaKey		= Todoyu::getAreaKey();
-			$headletsLeft	= TodoyuHeadletRenderer::renderAreaHeadlets('LEFT', $areaKey);
-			$headletsRight	= TodoyuHeadletRenderer::renderAreaHeadlets('RIGHT', $areaKey);
+			$params			= TodoyuRequest::getAll();
+			$headletsLeft	= TodoyuHeadletRenderer::renderAreaHeadlets('LEFT', $areaKey, $params);
+			$headletsRight	= TodoyuHeadletRenderer::renderAreaHeadlets('RIGHT', $areaKey, $params);
 
 			self::set('headletsLeft', $headletsLeft);
 			self::set('headletsRight', $headletsRight);
@@ -469,9 +470,6 @@ class TodoyuPage {
 
 			// Add javascripts and stylesheet to page
 		self::addJavascriptAndStylesheetsToPage();
-
-			// Remove later ...
-		//self::addJSlocale();
 
 		return render(self::$template, self::$data);
 	}

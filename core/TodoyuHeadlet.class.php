@@ -41,17 +41,32 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 */
 	protected $data		= array();
 
+	/**
+	 * Request parameters
+	 *
+	 * @var	Array
+	 */
+	protected $params	= array();
+
 
 	/**
 	 * Headlet constructor which calls the init function
 	 * if defined
-	 *
+	 * @param	Array		$params		Request parameters
 	 * @final
 	 */
-	public final function __construct() {
-		if( method_exists($this, 'init') ) {
-			$this->init();
-		}
+	public final function __construct(array $params = array()) {
+		$this->init();
+	}
+
+
+
+	/**
+	 * Init function for panel widget, alternative for constructor
+	 *
+	 */
+	protected function init() {
+		// Dummy, override in extended headlet
 	}
 
 
