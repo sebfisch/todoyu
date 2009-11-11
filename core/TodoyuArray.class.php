@@ -219,7 +219,7 @@ class TodoyuArray {
 
 				// Filter for duplicate field contents,  if requested
 			if ($avoidDuplicateFieldKey != '') {
-				$labelKeyArray = TodoyuDiv::array_remove_duplicates($labelKeyArray, $avoidDuplicateFieldKey);
+				$labelKeyArray = self::removeDuplicates($labelKeyArray, $avoidDuplicateFieldKey);
 			}
 
 			$sortedArray = array_values($labelKeyArray);
@@ -470,6 +470,100 @@ class TodoyuArray {
 		}
 
 		return $array;
+	}
+
+
+		/**
+	 * Use logical AND conjunction upon (intersect) given sub arrays.
+	 *
+	 * @param	Array		$array
+	 * @return	Array
+	 */
+	public static function intersectSubArrays(array $array) {
+		if( sizeof($array) === 1 ) {
+			return array_shift($array);
+		} else {
+			return call_user_func_array('array_intersect', $array);
+		}
+	}
+
+
+
+	/**
+	 * Use logical OR conjunction upon (merge) given sub array.
+	 *
+	 * @param	Array		$array
+	 * @return	Array
+	 */
+	public static function mergeSubArrays(array $array) {
+		if( sizeof($array) === 1 ) {
+			return array_shift($array);
+		} else {
+			return call_user_func_array('array_merge', $array);
+		}
+	}
+
+
+
+	/**
+	 * Merge multiple arrays and return a unique array
+	 * Combination of array_merge and array_unique
+	 *
+	 * @param	Array		Multiple array arguments like array_merge
+	 * @return	Array
+	 */
+	public static function mergeUnique() {
+		$funcArgs	= func_get_args();
+		$merged		= call_user_func_array('array_merge', $funcArgs);
+
+		return array_unique($merged);
+	}
+
+
+
+	/**
+	 * Remove array entries by their value
+	 *
+	 * @param	Array		$array
+	 * @param	Array		$valuesToRemove
+	 * @param	Boolean		$reindex
+	 * @return	Array
+	 */
+	public static function removeByValue(array $array, array $valuesToRemove, $reindex = true) {
+		$array = array_diff($array, $valuesToRemove);
+
+		if( $reindex ) {
+			$array = array_merge($array);
+		}
+
+		return $array;
+	}
+
+
+
+	/**
+	 * Remove duplicate entries in given field of array
+	 *
+	 * @param	Array	$array
+	 * @param	String	$key
+	 * @return	Array
+	 */
+	public static function removeDuplicates($array, $key) {
+		$vals	 		= array();
+		$cleanedArray	= array();
+
+			// iterate all ass. sub arrays
+		foreach($array as $entryID => $entryData) {
+			$value		= $entryData[ $key ];
+
+			if (! in_array($value, $vals)) {
+				$cleanedArray[ $entryID ]	= $entryData;
+			}
+
+			$vals[]	= $value;
+		}
+
+		return $cleanedArray;
 	}
 
 }
