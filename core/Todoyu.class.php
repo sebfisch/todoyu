@@ -75,6 +75,12 @@ class Todoyu {
 
 			// Log
 		self::$logger = TodoyuLogger::getInstance($GLOBALS['CONFIG']['LOG']['active'], $GLOBALS['CONFIG']['LOG']['level']);
+
+			// Init Locale for locallang files
+		TodoyuLocale::setLocale(self::getLang());
+
+			// Set php locale
+		setlocale(LC_ALL, $GLOBALS['CONFIG']['SYSTEM']['locale']);
 	}
 
 

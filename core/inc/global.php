@@ -132,10 +132,6 @@ TodoyuLocale::register('static_country_zone', PATH_CORE . '/locale/static_countr
 TodoyuLocale::register('static_currency', PATH_CORE . '/locale/static_currency.xml');
 TodoyuLocale::register('static_territory', PATH_CORE . '/locale/static_territory.xml');
 
-
-	// Init Locale for locallang files
-TodoyuLocale::setLocale( Todoyu::getLang() );
-
 	// Load extensions
 require( PATH_CORE . '/inc/load_extensions.php' );
 
