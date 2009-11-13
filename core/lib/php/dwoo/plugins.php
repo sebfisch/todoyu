@@ -418,13 +418,14 @@ function Dwoo_Plugin_cleanHtml_compile(Dwoo_Compiler $compiler, $html) {
  * @param	Integer		$id			HTML id
  * @return	String
  */
-function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '') {
+function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '', $title = '') {
 	$tmpl	= 'core/view/button.tmpl';
 	$data	= array(
 		'label'		=> $label,
 		'onclick'	=> $onclick,
 		'class'		=> $class,
-		'id'		=> $id
+		'id'		=> $id,
+		'title'		=> $title
 	);
 
 	return render($tmpl, $data);
