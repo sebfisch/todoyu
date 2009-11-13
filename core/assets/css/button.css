@@ -110,11 +110,6 @@ button.button span {
 
 
 
-
-
-
-
-
 button.createDateButton {
 	margin-left:202px !important;
 	padding-right: 12px !important;
@@ -127,16 +122,19 @@ button.save span {
 	padding-left: 30px;
 	background: url(../img/sprite-button_icons.png) no-repeat 0 -160px;
 }
+
 button.saveAndClose span {
 	padding-right: 20px;
 	padding-left: 30px;
 	background: url(../img/sprite-button_icons.png) no-repeat 0 -344px;
 }
+
 button.saveAndNew span {
 	padding-right: 20px;
 	padding-left: 30px;
 	background: url(../img/sprite-button_icons.png) no-repeat 0 -377px;
 }
+
 button.cancel span {
 	padding-right: 20px;
 	padding-left: 30px;
@@ -148,11 +146,13 @@ button.datasheet span {
 	padding-left: 30px;
 	background: url(../img/sprite-button_icons.png) no-repeat 0 -192px;
 }
+
 button.exportOdt span {
 	padding-right: 20px;
 	padding-left: 30px;
 	background: url(../img/sprite-button_icons.png) no-repeat 0 -128px;
 }
+
 button.exportPdf span {
 	padding-right: 20px;
 	padding-left: 30px;
@@ -259,7 +259,7 @@ input.exportButton {
 	background: url(../img/sprite-button_bgs.png) no-repeat 0 -264px;
 }
 
-/* asset buttons */
+	/* asset buttons */
 input.uploadSingleButton {
 	padding: 2px 10px 1px 22px;
 	background: url(../img/sprite-button_bgs.png) no-repeat 0 -561px;

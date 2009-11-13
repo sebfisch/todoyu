@@ -54,7 +54,10 @@ body {
 }
 
 
-/* Panel */
+/* --------------
+	Panel
+   --------------*/
+
 	#panel {
 		position: relative;
 		top:20px;
@@ -71,7 +74,7 @@ body {
 
 		#panel .panelHeader {
 			height:8px;
-			background: url('../img/panel_header.png') no-repeat 0 0;
+			background:url('../img/panel_header.png') no-repeat 0 0;
 		}
 
 		#panel .panelWidget {
@@ -83,7 +86,7 @@ body {
 		#panel .panelFooter {
 			height:51px;
 			margin-top:-2px;
-			background: url('../img/panel_footer.png') no-repeat 0 0;
+			background:url('../img/panel_footer.png') no-repeat 0 0;
 		}
 
 #panel.collapsed {
@@ -110,7 +113,10 @@ body {
 }
 
 
-/* Content column */
+
+/* -------------------
+	Content column
+   -------------------*/
 
 #right {
 	position: relative;
@@ -138,7 +144,7 @@ body {
 	.content span.lb {bottom:0;left:0;background-position:0 100%;}
 	.content span.rb {bottom:0;right:0;background-position:100% 100%;}
 
-	/* default left / top not display */
+		/* default left / top not display */
 	.content span.lt {display:none;}
 
 #content {
@@ -153,7 +159,11 @@ body {
 	width: 938px;
 }
 
-/** Footer */
+
+
+/* --------------
+	Footer
+   --------------*/
 
 #footer {
 	display:block;
@@ -192,8 +202,10 @@ body {
 
 #footer .line hr {display:none;}
 
+
+
 /* -----------------
-	panel
+	Panel
    ----------------- */
 #panel * {
 	font-size: 10px;
@@ -285,7 +297,12 @@ body {
 		color:#000;
 	}
 
-/* ?? */
+	
+
+/* --------------------------------------------------------
+	Dev stamp (marking certain areas as 'in development')
+   --------------------------------------------------------*/
+
 #devstamp {
 	position: absolute;
 	left: 4px;
@@ -293,8 +310,10 @@ body {
 	z-index: 100;
 }
 
+
+
 /* ----------------------------
-	popup
+	Popup
    ---------------------------- */
 
 .popup {
@@ -356,28 +375,79 @@ body {
 	border-color:#808080;
 }
 
+
+
 /* -------------------------------
-	styles & status
+	Styles & status
    ------------------------------- */
 
-div.toggled {background-color:#adb989;font-weight: bold;}
+div.toggled {
+	background-color:#adb989;font-weight: bold;
+}
+
 li.odd,
-div.odd {background-color: #f3f3f3;}
+div.odd {
+	background-color: #f3f3f3;
+}
+
 li.even,
-div.even {background-color: transparent;}
+div.even {
+	background-color: transparent;
+}
 
-div.error { border: 1px solid #ff0000; }
+div.error {
+	border: 1px solid #ff0000;
+}
 
-.bcStatus1 { border-color:#7f007f; } /* planning */
-.bcStatus2 { border-color:#FF0000; } /* open */
-.bcStatus3 { border-color:#FFAC00; } /* progress */
-.bcStatus4 { border-color:#FFFC00; } /* confirm */
-.bcStatus5 { border-color:#77DC00; } /* done */
-.bcStatus6 { border-color:green; } /* accepted */
-.bcStatus7 { border-color:#A60000; } /* rejected */
-.bcStatus8 { border-color:grey; } /* cleared */
-.bcStatus9 { border-color:#2335e0; } /* warranty */
-.bcStatus10 { border-color:pink; } /* customer */
+	/* planning */
+.bcStatus1 {
+	border-color:#7f007f;
+}
+
+	/* open */
+.bcStatus2 {
+	border-color:#FF0000;
+}
+
+	/* progress */
+.bcStatus3 {
+	border-color:#FFAC00;
+}
+
+	/* confirm */
+.bcStatus4 {
+	border-color:#FFFC00;
+}
+
+	/* done */
+.bcStatus5 {
+	border-color:#77DC00;
+}
+
+	/* accepted */
+.bcStatus6 {
+	border-color:green;
+}
+
+	/* rejected */
+.bcStatus7 {
+	border-color:#A60000;
+}
+
+	/* cleared */
+.bcStatus8 {
+	border-color:grey;
+}
+
+	/* warranty */
+.bcStatus9 {
+	border-color:#2335e0;
+}
+
+	/* customer */
+.bcStatus10 {
+	border-color:pink;
+}
 
 /*
 		div.bookmarkStatusPlanning { background-color: #7f007f; }
@@ -406,6 +476,7 @@ div.error { border: 1px solid #ff0000; }
 input.toggleSelect {
 	display: none;
 }
+
 label.toggleSelect {
 	padding: 0 22px 18px 0;
 	cursor:pointer;
@@ -414,12 +485,15 @@ label.toggleSelect {
 label.toggleSelect.collapse {
 	background:url('../img/ico_toggle_select.png') no-repeat 0 0;
 }
+
 label.toggleSelect.expand {
 	background:url('../img/ico_toggle_select.png') no-repeat -44px 0;
 }
 
+
+
 /* ---------------
-	colors
+	Colors
    --------------- */
 
 /* layout */
@@ -452,8 +526,10 @@ label.toggleSelect.expand {
 /*.bcg08 {background-color:#;}*/
 .bcg09 {background-color:#999;}
 
+
+
 /* -------------------------------
-	alphabetical index
+	Alphabetical index
    ------------------------------- */
 
 select.indexLetters option {
@@ -484,11 +560,6 @@ div.indexLetters a.inactive {
 	filter: alpha(opacity=30);
 	cursor:default;
 }
-
-
-
-
-
 
 .indexLetterA {
 	background:url('../img/indexletters.png') no-repeat 0 1px;

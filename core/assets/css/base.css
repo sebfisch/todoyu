@@ -1,5 +1,5 @@
 /* -----------------------------------------------
-	standard formatting, do not change!!!
+	Standard formatting, do not change!!!
 ----------------------------------------------- */
 
 * {
@@ -15,6 +15,8 @@ html, body {
 	height: 101%;
 	text-align: center;
 }
+
+
 
 /* --------------------------
     HTML Tags
@@ -56,6 +58,8 @@ td {
 ul {
 	list-style: none;
 }
+
+
 
 /* ------------------------------
     Heading
@@ -99,8 +103,10 @@ h4 {
 		white-space: nowrap;
 	}
 
+
+
 /* -------------------------------
-    shortcuts
+    Shortcuts
    ------------------------------- */
 
 .positionRelative {

@@ -1,4 +1,5 @@
-/* new css */
+	/* New css */
+
 form {
 	margin:0;
 	padding:0;
@@ -80,7 +81,11 @@ label {
 
 	label span.required {}
 
-/* ------- HTML building ------- */
+	
+/* -----------------
+	HTML building
+   -----------------*/
+
 div.fElement {
 	position: relative;
 	margin:0;
@@ -102,7 +107,7 @@ div.fElement {
 	div.fElement .required {}
 	div.fElement .required label {}
 
-	/* input */
+		/* input */
 	div.fElement .fField {
 		display: inline;
 		float: right;
@@ -116,8 +121,8 @@ div.fElement {
 	div.fElement .fClear {
 		clear: both;
 	}
-	/* types */
 
+		/* Types */
 	.typeTextinput {}
 
 	.typeDateinput {}
@@ -161,8 +166,6 @@ div.fElement {
 			margin-left:41%;
 		} typeDatabaseRelation
 
-
-
 	.typeDatabaseRelation {}
 
 		.typeDatabaseRelation .foreignRecordsActionControll {
@@ -193,20 +196,29 @@ div.fElement {
 	fieldset.buttons div.fElement .fLabel {display:none;width:auto;}
 
 
-/* design */
-input, textarea, select {border-color: #848484 #e8e5de #e8e5de #848484;}
+/* -----------------
+	Design
+   -----------------*/
 
-fieldset div.odd {background-color: #f3f3f3;}
+input, textarea, select {
+	border-color: #848484 #e8e5de #e8e5de #848484;
+}
+
+fieldset div.odd {
+	background-color: #f3f3f3;
+}
+
 fieldset div.even {}
 
 fieldset.buttons,
 fieldset.buttons div.odd,
 fieldset.buttons div.even,
-fieldset.buttons button span.rgt {background-color: #e2e2e2;}
+fieldset.buttons button span.rgt {
+	background-color: #e2e2e2;
+}
 
 
-
-/* none floating fields */
+	/* none floating fields */
 fieldset.noneFloatingInput div.fElement .fField,
 fieldset.noneFloatingInput div.fElement .fLabel {
 	float:none;
@@ -214,23 +226,9 @@ fieldset.noneFloatingInput div.fElement .fLabel {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* old css ... check and remove */
+/* ---------------------------------------
+	Old css ... @todo Check and remove
+   ---------------------------------------*/
 
 .selectScrollbarHide {
 	overflow:hidden;
@@ -268,15 +266,14 @@ span.selectScrollbarHide {display:block;}
 	width: auto !important;
 }
 
-/* --- right aligned Label --- */
-
-/* --- Float Rendering --- */
+	/* --- right aligned Label --- */
+	/* Float Rendering */
 .floatingElement {
 	float: left;
 	width: 49%;
 }
 
-/* --- none floating Input --- */
+	/* none floating Input */
 .noneFloatingInput .formElement {
 	width: 100%;
 }
@@ -470,4 +467,3 @@ label.narrowInput {
 	float: right;
 	background: transparent url(../img/icons_dev.png) no-repeat 0 -2100px;
 }
-

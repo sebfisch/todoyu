@@ -16,7 +16,12 @@ div.icon {
 	padding: 0 0 12px 8px;
 }
 
-/* Listings */
+
+
+/* -----------------
+	Listings
+   -----------------*/
+
 ul.ulList {}
 ul.ulList li.listItem {overflow:hidden;line-height:18px;}
 * html ul.ulList li.listItem {overflow:visible;height:1%;}
@@ -24,7 +29,11 @@ ul.ulList li.listItem span {display:block;float:left;}
 ul.ulList li.listItemHeader {}
 ul.ulList li.listItemHeader span {font-weight:bold;}
 
-/* Box */
+
+
+/* -----------------
+	Box
+   -----------------*/
 
 div.infoBox {
 	margin:0.5em 0;
@@ -39,7 +48,11 @@ div.infoBox div.content {
 	padding:0.5em;
 }
 
-/* Heading */
+
+
+/* -----------------
+	Heading
+   -----------------*/
 
 h1 {
 	position: relative;
@@ -122,7 +135,7 @@ h1 {
 }
 
 
-/* h3 */
+	/* h3 */
 .headLabel span {
 	display: block;
 	float: left;

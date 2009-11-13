@@ -57,7 +57,11 @@ ul#navi-main-list li:hover {
 	background-color: #d3dabb; /* bcl03 */
 }
 
-/* level 2 */
+
+
+/* -------------------
+	Level 2
+   ------------------- */
 
 ul#navi-main-list li:hover ul {
 	left: auto;

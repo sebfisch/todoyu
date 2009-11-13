@@ -1,4 +1,8 @@
-/* task tabs and tab contents */
+
+/* -------------------
+	Task tabs and tab contents
+   ------------------- */
+
 .tabs {
 	z-index: 2;
 	height:26px;
@@ -127,8 +131,6 @@
 
 
 
-
-
 /*
 .tabs li a span {
 	display:block;
@@ -153,4 +155,3 @@
 	top: 3px;
 }
 */
-

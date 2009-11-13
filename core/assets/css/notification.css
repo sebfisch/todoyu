@@ -65,7 +65,10 @@
 
 
 
-/* Success */
+/* -------------------
+	Success
+   ------------------- */
+
 #notifications div.success {
 	background-color:#00ff00;
 }
@@ -76,7 +79,10 @@
 
 
 
-/* Error */
+/* -------------------
+	Error
+   ------------------- */
+
 #notifications div.error {
 	background-color:#ff8800;
 }
@@ -86,7 +92,10 @@
 }
 
 
-/* Info */
+
+/* -------------------
+	Info
+   ------------------- */
 #notifications div.info {
 	background-color:#EFEFEF;
 }
@@ -94,5 +103,3 @@
 #notifications div.info div.icon {
 	background:url(../img/notify/information.png) 0 0 no-repeat;
 }
-
-
