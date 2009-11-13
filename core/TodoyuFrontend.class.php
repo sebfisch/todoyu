@@ -141,7 +141,7 @@ class TodoyuFrontend {
 	 * @param	String		$href
 	 * @param	Integer		$position
 	 */
-	public static function addSubmenuEntry($parentKey, $key, $label, $href, $position = 50) {
+public static function addSubmenuEntry($parentKey, $key, $label, $href, $position = 50) {
 		$GLOBALS['CONFIG']['FE']['NAVI']['entries'][$parentKey]['submenu'][] = array(
 			'key'		=> $key,
 			'label'		=> TodoyuDiv::getLabel($label),
@@ -149,6 +149,7 @@ class TodoyuFrontend {
 			'position'	=> $position
 		);
 	}
+
 
 
 	/**

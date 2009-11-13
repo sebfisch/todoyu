@@ -25,7 +25,7 @@ ul#navi-main-list li a {
 	height: auto !important;
 	height: 1px;
 	line-height: 30px;
-	padding:0 13px 0 0;
+	padding:0 14px 0 0;
 	font-size: 13px;
 	font-weight:bold;
 	text-transform:uppercase;
@@ -39,7 +39,7 @@ ul#navi-main-list li a {
 ul#navi-main-list li a span.lt {
 	display:block;
 	float:left;
-	width:13px;
+	width:14px;
 	height:13px;
 	background-image:url('../img/colF_r13.png');
 }
@@ -71,7 +71,7 @@ ul#navi-main-list li ul {
 	position: absolute;
 	top: 29px;
 	left: -9999px;
-	width: 170px !important;
+	width: 200px !important;
 	margin-top:1px;
 	margin-left: -30px;
 	padding: 0 30px 30px 30px;
