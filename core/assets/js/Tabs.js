@@ -100,26 +100,51 @@ Todoyu.Tabs = {
 
 		var list = Event.findElement(e, 'ul');
 
-		this.setActive(list, element);
+		this.setActive(element);
 	},
 
 
 
 	/**
-	 *	Enter Description here...
+	 *	Set active element in a list
 	 *
-	 *	@param	unknown_type	list
-	 *	@param	unknown_type	element
+	 *	@param	String		element		Tab element or its ID
 	 */
-	setActive: function(list, element) {
-		$(list).select('li').invoke('removeClassName', 'active');
+	setActive: function(element) {
+		$(element).up('ul').select('li').invoke('removeClassName', 'active');
 		$(element).addClassName('active');
+	},
+
+
+
+	/**
+	 * Get currently active tab in a list
+	 *
+	 * @param	String		list		List element or its ID
+	 */
+	getActive: function(list) {
+		return $(list).down('li.active');
 	},
 	
 	
-	getActive: function(list) {
-		//console.log($(list).select('li.active'));
-		return $(list).select('li.active').first().getAttribute('id').split('-').last();
+	
+	/**
+	 * Get key of the active tab of the list
+	 * @param	String		list		List or its ID
+	 */
+	getActiveKey: function(list) {
+		return this.getActive(list).getAttribute('id').split('-').last();
+	},
+
+
+
+	/**
+	 * Set labeltext of a tab
+	 * @param	String		element		Tab element or its ID
+	 * @param	String		label		Labeltext
+	 */
+	setLabel: function(element, label) {
+		$(element).down('span.labeltext').update(label);
 	},
 
 
