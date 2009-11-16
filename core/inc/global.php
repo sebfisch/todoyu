@@ -64,6 +64,7 @@ require_once( PATH_CORE . '/TodoyuDiv.class.php' );
 require_once( PATH_CORE . '/TodoyuPreferenceManager.class.php' );
 require_once( PATH_CORE . '/TodoyuFileManager.class.php' );
 require_once( PATH_CORE . '/TodoyuRightsManager.class.php' );
+require_once( PATH_CORE . '/TodoyuHookManager.class.php' );
 
 	// Include basic user classes
 require_once( PATH_EXT .  '/user/model/TodoyuUser.class.php' );

@@ -19,7 +19,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-require_once('simpletest/autorun.php');
+//require_once('simpletest/autorun.php');
 
 
 class TestOfFirsttest extends UnitTestCase {
