@@ -1,5 +1,5 @@
 {extends "core/view/form/FormElement.tmpl"}
 
 {block name="field"}
-	<input class="{$inputClass} {$class}" type="checkbox" name="{$htmlName}" id="{$htmlId}" value="1" {if $disabled}disabled="disabled"{/if} {$extraAttributes} />
+	<input class="{$inputClass} {$class}" type="checkbox" name="{$htmlName}" id="{$htmlId}" value="1" {if $disabled}disabled="disabled"{/if}{if $onclick}onclick="{$onclick}"{/if} {$extraAttributes} />
 {/block}

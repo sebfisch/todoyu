@@ -89,6 +89,7 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 			$jsConf[] = $key . ' : ' . $value;
 		}
 
+
 		$script	= '<script>Calendar.setup({' . implode(',', $jsConf) . '});</script>';
 
 		return $script;
