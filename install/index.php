@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL ^ E_NOTICE);
+
 	// Change current work directory to main directory to prevent path problems
 chdir(dirname(dirname(__FILE__)));
 
