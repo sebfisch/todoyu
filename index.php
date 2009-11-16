@@ -19,8 +19,6 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-//ini_set('eaccelerator.enable', 0);
-
 	// Measure processing time
 define('TIME_START', microtime(true));
 
@@ -42,7 +40,7 @@ $requestVars	= TodoyuRequest::getCurrentRequestVars();
 	// Set definitive request vars as constants
 define('EXT',		$requestVars['ext']);
 define('CONTROLLER',$requestVars['ctrl']);
-define('COMMAND', 	$requestVars['cmd']);
+define('ACTION', 	$requestVars['action']);
 define('AREA', 		$requestVars['area']);
 
 	// Dispatch request to selected controller

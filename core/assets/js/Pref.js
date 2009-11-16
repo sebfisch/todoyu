@@ -30,16 +30,16 @@ Todoyu.Pref = {
 	 *	Save user preference (AJAX)
 	 *
 	 *	@param	unknown_type	ext
-	 *	@param	unknown_type	cmd
+	 *	@param	unknown_type	action
 	 *	@param	unknown_type	value
 	 *	@param	unknown_type	idItem
 	 *	@param	unknown_type	onComplete
 	 */
-	save: function(ext, cmd, value, idItem, onComplete) {
+	save: function(ext, action, value, idItem, onComplete) {
 		var url		= Todoyu.getUrl(ext, 'preference');
 		var options	= {
 			'parameters': {
-				'cmd':		cmd,
+				'action':		action,
 				'value':	value,
 				'item':		idItem,
 				'area':		Todoyu.getArea()
@@ -68,7 +68,7 @@ Todoyu.Pref = {
 		var url		= Todoyu.getUrl(ext, 'preference');
 		var options	= {
 			'parameters': {
-				'cmd':			'get',
+				'action':			'get',
 				'preference':	preference
 			},
 			'asynchronous':		false,

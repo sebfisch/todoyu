@@ -146,8 +146,8 @@ class TodoyuRequest {
 	 *
 	 * @return	String
 	 */
-	public static function getCommand() {
-		return self::getParam('cmd');
+	public static function getAction() {
+		return self::getParam('action');
 	}
 
 
@@ -159,11 +159,11 @@ class TodoyuRequest {
 	 */
 	public static function getArea() {
 		$area	= self::getParam('area');
-		
+
 		if( is_null($area) ) {
 			$area = self::getParam('ext');
 		}
-		
+
 		return $area;
 	}
 
@@ -188,28 +188,28 @@ class TodoyuRequest {
 	public static function isAjaxRequest() {
 		return $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get the four basic request vars which are always neccessary
 	 *
-	 * @return	Array		[ext,ctrl,cmd,area]
+	 * @return	Array		[ext,ctrl,action,area]
 	 */
 	public static function getBasicRequestVars() {
 		return array(
 			'ext'	=> self::getExt(),
 			'ctrl'	=> self::getController(),
-			'cmd'	=> self::getCommand(),
+			'action'=> self::getAction(),
 			'area'	=> self::getAreaID()
 		);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get current valid request vars
-	 * The basic request vars (ext,controller,cmd,area) will be processed by
+	 * The basic request vars (ext,controller,action,area) will be processed by
 	 * the core/onload hooks. These hooks can modifiy the request vars (for login or what ever)
 	 *
 	 * @return	Array
@@ -217,12 +217,12 @@ class TodoyuRequest {
 	public static function getCurrentRequestVars() {
 		$requestVars	= self::getBasicRequestVars();
 		$requestVars	= TodoyuHookManager::callHookDataModifier('core', 'onload', $requestVars, array($requestVars));
-		
+
 		return $requestVars;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Set the default request vars if they are not defined in the request
 	 * This is the first hook which processes the request vars
@@ -235,28 +235,28 @@ class TodoyuRequest {
 			// Check ext for a valid string and set defaults if needed
 		if( empty($requestVars['ext']) ) {
 			$ext = false;
-			
+
 			if( TodoyuAuth::isLoggedIn() ) {
 				$ext	= TodoyuPreferenceManager::getLastExt();
 			}
-			
+
 			if( $ext === false ) {
 				$ext = $GLOBALS['CONFIG']['FE']['DEFAULT']['ext'];
 			}
-			
+
 			$requestVars['ext'] = $ext;
 		}
-		
+
 			// Check controller
 		if( empty($requestVars['ctrl']) ) {
 			$requestVars['ctrl'] = $GLOBALS['CONFIG']['FE']['DEFAULT']['controller'];
 		}
-		
+
 			// Check command
-		if( empty($requestVars['cmd']) ) {
-			$requestVars['cmd']	= 'default';
+		if( empty($requestVars['action']) ) {
+			$requestVars['action']	= 'default';
 		}
-		
+
 		return $requestVars;
 	}
 

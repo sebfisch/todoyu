@@ -231,11 +231,12 @@ class Todoyu {
 		$classFile = $className . '.class.php';
 
 		foreach($GLOBALS['CONFIG']['AUTOLOAD'] as $includePath) {
-			if( file_exists($includePath . '/' . $classFile) ) {
+			if( is_file($includePath . '/' . $classFile) ) {
 				include_once($includePath . '/' . $classFile);
 				break;
 			}
 		}
+//		TodoyuLoggerFile::log('Autoload: ' . $className, LOG_LEVEL_DEBUG, '', '', '');
 	}
 
 }

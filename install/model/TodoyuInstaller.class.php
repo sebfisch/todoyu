@@ -104,9 +104,9 @@ class TodoyuInstaller {
 	 * @param	Array		$data
 	 */
 	public static function processStep($data) {
-		$cmd	= $data['command'];
+		$action	= $data['action'];
 
-		switch($cmd) {
+		switch($action) {
 			case 'start':
 				self::setStep(1);
 				break;

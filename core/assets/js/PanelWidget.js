@@ -61,10 +61,10 @@ Todoyu.PanelWidget = {
 	 *	@param	unknown_type	idArea
 	 */
 	saveToggleStatus: function(ext, widgetName, expand, idArea) {
-		var cmd	= 'pwidget';
+		var action	= 'pwidget';
 		var pref= expand ? 'expand' : 'collapse';
 
-		Todoyu.Pref.save(ext, cmd, pref, widgetName, idArea);
+		Todoyu.Pref.save(ext, action, pref, widgetName, idArea);
 	},
 
 

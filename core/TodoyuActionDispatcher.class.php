@@ -73,8 +73,8 @@ class TodoyuActionDispatcher {
 	 *
 	 * @return	String
 	 */
-	private static function getCommand() {
-		return TodoyuRequest::getCommand();
+	private static function getAction() {
+		return TodoyuRequest::getAction();
 	}
 
 
@@ -94,9 +94,9 @@ class TodoyuActionDispatcher {
 			exit();
 		}
 
-			// Execute command
+			// Execute action
 		try {
-			echo $controller->runAction(COMMAND);
+			echo $controller->runAction(ACTION);
 		} catch(TodoyuControllerException $e) {
 			$e->printError();
 		} catch(Exception $e) {

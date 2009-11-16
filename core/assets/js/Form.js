@@ -85,7 +85,7 @@ Todoyu.Form = {
 		var url 	= Todoyu.getUrl(updateExt, updateController);
 		var options = {
 			'parameters': {
-				'cmd':		'addSubform',
+				'action':		'addSubform',
 				'form': 	formName,
 				'field':	fieldName,
 				'record':	idRecord,
@@ -161,7 +161,7 @@ Todoyu.Form = {
 		var url		= Todoyu.getUrl(extension,	controller);
 		var options	= {
 			'parameters': {
-				'cmd': command,
+				'action': command,
 				'idRecord': idRecord,
 				'idField': idField
 			}

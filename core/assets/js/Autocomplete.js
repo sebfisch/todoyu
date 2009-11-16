@@ -42,7 +42,7 @@ Todoyu.Autocomplete = {
 			paramName:	this.config.paramName,
 			minChars:	config.acListener.minChars || this.config.minChars,
 			callback:	this.beforeRequestCallback.bind(this),
-			parameters:	'&cmd=' + config.acListener.cmd	+ '&acelementid=' + idElement,
+			parameters:	'&action=' + config.acListener.action	+ '&acelementid=' + idElement,
 			afterUpdateElement:	this.onElementSelected.bind(this)
 		};
 				

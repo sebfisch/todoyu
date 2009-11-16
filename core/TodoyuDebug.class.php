@@ -103,8 +103,6 @@ class TodoyuDebug {
 			return;
 		}
 
-		TodoyuHeader::sendHeaderHTML();
-
 		if( $item === false || $item === true || $item === '' ) {
 			ob_start();
 			var_dump($item);
@@ -163,11 +161,11 @@ class TodoyuDebug {
 	 */
 	public static function printLastQueryInFirebug($ident = null) {
 		$title	= 'Last Query';
-		
+
 		if( ! is_null($ident) ) {
 			$title .= ' (' . $ident . ')';
 		}
-		
+
 		self::printInFirebug(Todoyu::db()->getLastQuery(), $title);
 	}
 
