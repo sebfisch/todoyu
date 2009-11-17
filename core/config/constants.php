@@ -25,16 +25,16 @@ define('TODOYU', true);
 
 	// Path
 define( 'PATH', 			dirname(dirname(dirname(__FILE__))) );
-define( 'PATH_WEB',		dirname($_SERVER['SCRIPT_NAME']) );
-define( 'PATH_CACHE',	PATH . DIRECTORY_SEPARATOR . 'cache' );
+define( 'PATH_WEB',			dirname($_SERVER['SCRIPT_NAME']) );
+define( 'PATH_CACHE',		PATH . DIRECTORY_SEPARATOR . 'cache' );
 define( 'PATH_CORE',		PATH . DIRECTORY_SEPARATOR . 'core' );
-define( 'PATH_EXT',		PATH . DIRECTORY_SEPARATOR . 'ext' );
-define( 'PATH_CONFIG',	PATH_CORE . DIRECTORY_SEPARATOR . 'config' );
-define( 'PATH_LOCALCONF',PATH . DIRECTORY_SEPARATOR . 'config' );
-define( 'PATH_LIB',		PATH . DIRECTORY_SEPARATOR . 'lib' );
+define( 'PATH_EXT',			PATH . DIRECTORY_SEPARATOR . 'ext' );
+define( 'PATH_CONFIG',		PATH_CORE . DIRECTORY_SEPARATOR . 'config' );
+define( 'PATH_LOCALCONF',	PATH . DIRECTORY_SEPARATOR . 'config' );
+define( 'PATH_LIB',			PATH . DIRECTORY_SEPARATOR . 'lib' );
 define( 'PATH_PEAR',		PATH_LIB . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'PEAR' );
 define( 'PATH_TEMP',		PATH_CACHE . DIRECTORY_SEPARATOR . 'temp' );
-define( 'PATH_FILES',	PATH . DIRECTORY_SEPARATOR . 'files' );
+define( 'PATH_FILES',		PATH . DIRECTORY_SEPARATOR . 'files' );
 
 
 	// Constants
