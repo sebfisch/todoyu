@@ -28,16 +28,19 @@
 
 class TodoyuExtensions {
 
-	/**
-	 * Cache for the installed extensions
-	 *
-	 * @var	Array
-	 */
-	private static $installed = null;
-
 	private static $extIDs = array();
 
 	private static $extKeys = array();
+
+	private static function saveInstalledExtensions() {
+		$file	= PATH_CONFIG . '/extensions.php';
+		$tmpl	= PATH_CORE . '/view/extensions.php.tmpl';
+		$data	= array(
+			'extensions'	=> $GLOBALS['CONFIG']['EXT']['installed']
+		);
+
+		TodoyuFileManager::saveTemplatedFile($file, $tmpl, $data);
+	}
 
 
 
@@ -47,11 +50,7 @@ class TodoyuExtensions {
 	 * @return	Array
 	 */
 	public static function getInstalledExtKeys() {
-		if( is_null(self::$installed) ) {
-			self::$installed = explode(',', $GLOBALS['CONFIG']['EXT']['installed']);
-		}
-
-		return self::$installed;
+		return $GLOBALS['CONFIG']['EXT']['installed'];
 	}
 
 
@@ -60,6 +59,7 @@ class TodoyuExtensions {
 	 * Get extension keys (folder names) of extensions which are located in
 	 * the /ext folder, but not installed at the moment
 	 *
+	 * @return	Array
 	 */
 	public static function getNotInstalledExtKeys() {
 		$extFolders		= TodoyuFileManager::getFoldersInFolder(PATH_EXT);
@@ -98,6 +98,28 @@ class TodoyuExtensions {
 		$installed	= self::getInstalledExtKeys();
 
 		return in_array($extKey, $installed);
+	}
+
+
+
+
+	public static function install($extKey) {
+		$GLOBALS['CONFIG']['EXT']['installed'][] = $extKey;
+
+		$GLOBALS['CONFIG']['EXT']['installed'] = array_unique($GLOBALS['CONFIG']['EXT']['installed']);
+
+		self::saveInstalledExtensions();
+	}
+
+
+	public static function uninstall($extKey) {
+		$installed	= array_flip($GLOBALS['CONFIG']['EXT']['installed']);
+
+		unset($installed[$extKey]);
+
+		$GLOBALS['CONFIG']['EXT']['installed']	= array_keys($installed);
+
+		self::saveInstalledExtensions();
 	}
 
 

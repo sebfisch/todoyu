@@ -108,9 +108,11 @@ require_once( PATH_CONFIG . '/assets.php');
 require_once( PATH_CONFIG . '/cache.php');
 require_once( PATH_CONFIG . '/log.php');
 require_once( PATH_CONFIG . '/colors.php');
+require_once( PATH_CONFIG . '/extensions.php');
+require_once( PATH_CONFIG . '/extconf.php');
 
 	// Load local config
-require_once( PATH_LOCALCONF . '/extensions.php');
+
 require_once( PATH_LOCALCONF . '/db.php');
 require_once( PATH_LOCALCONF . '/config.php');
 require_once( PATH_LOCALCONF . '/system.php');

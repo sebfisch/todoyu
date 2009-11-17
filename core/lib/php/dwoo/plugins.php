@@ -454,6 +454,19 @@ function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '') {
 
 
 /**
+ * Build page content title
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String			$title
+ * @return	String
+ */
+function Dwoo_Plugin_Title_compile(Dwoo_Compiler $compiler, $title) {
+	return '\'<div class="title">\' . htmlentities(' . $title . ') . \'</div>\'';
+}
+
+
+
+/**
  * Index letter generator
  * Generates letters from A-Z with links the the anchors
  *

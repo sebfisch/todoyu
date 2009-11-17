@@ -223,6 +223,30 @@ class TodoyuFileManager {
 		return is_file($path);
 	}
 
+
+
+	/**
+	 * Save file content based on a template
+	 *
+	 * @param	String		$savePath		Path where the file is saved
+	 * @param	String		$tmpl			Path to the template file
+	 * @param	Array		$data			Template data
+	 * @param	Bool		$wrapAsPhp		Wrap content with PHP start and end tags
+	 */
+	public static function saveTemplatedFile($savePath, $tmpl, array $data = array(), $wrapAsPhp = true) {
+		$savePath	= self::pathAbsolute($savePath);
+
+			// Render file content
+		$content= render($tmpl, $data);
+
+		if( $wrapAsPhp ) {
+				// Add php start and end tag
+			$content= TodoyuDiv::wrapString($content, '<?php|?>');
+		}
+
+		return file_put_contents($savePath, $content) !== false;
+	}
+
 }
 
 

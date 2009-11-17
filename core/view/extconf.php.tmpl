@@ -6,7 +6,8 @@
 	// DON'T EDIT THIS FILE. ALL CHANGES WILL BE REMOVED ON NEXT CONFIG UPDATE
 	// ***********************************************************************
 
-
-	// Installed extensions
-$CONFIG['EXT']['installed'] = array('{implode("','", $extensions)}');
+	// Extension config
+{foreach $extConf extKey confString}
+$CONFIG['EXT']['{$extKey}']['extConf'] = unserialize(stripslashes('{$confString}'));
+{/foreach}
 

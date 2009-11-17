@@ -101,14 +101,13 @@ class TodoyuExtConfManager {
 	 *
 	 */
 	public static function saveExtConf() {
-		$file	= PATH_LOCALCONF . '/extensions.php';
+		$file	= PATH_CONFIG . '/extensions.php';
 		$tmpl	= 'core/view/extensions.php.tmpl';
-		$data	= array();
+		$data	= array(
+			'extConf'	=> array()
+		);
 
-		$extKeys= TodoyuExtensions::getInstalledExtKeys();
-
-		$data['extList'] = implode(',',$extKeys);
-		$data['extConf'] = array();
+		$extKeys	= TodoyuExtensions::getInstalledExtKeys();
 
 		foreach($extKeys as $extKey) {
 			$extConf	= self::getExtConf($extKey);
@@ -116,12 +115,8 @@ class TodoyuExtConfManager {
 			$data['extConf'][$extKey] = addslashes(serialize($extConf));
 		}
 
-			// Render file content
-		$content= render($tmpl, $data);
-			// Add php start and end tag
-		$content= TodoyuDiv::wrapString($content, '<?php|?>');
-
-		file_put_contents($file, $content);
+			// Save file
+		TodoyuFileManager::saveTemplatedFile($file, $tmpl, $data);
 	}
 
 
