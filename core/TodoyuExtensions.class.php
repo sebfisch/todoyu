@@ -57,6 +57,20 @@ class TodoyuExtensions {
 
 
 	/**
+	 * Get extension keys (folder names) of extensions which are located in
+	 * the /ext folder, but not installed at the moment
+	 *
+	 */
+	public static function getNotInstalledExtKeys() {
+		$extFolders		= TodoyuFileManager::getFoldersInFolder(PATH_EXT);
+		$extInstalled	= TodoyuExtensions::getInstalledExtKeys();
+
+		return array_diff($extFolders, $extInstalled);
+	}
+
+
+
+	/**
 	 * Get extension ids and keys of all installed extensions
 	 *
 	 * @return	Array
