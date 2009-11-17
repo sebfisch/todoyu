@@ -110,3 +110,9 @@ ul#navi-main-list li ul li a {
 ul#navi-main-list li ul li a:hover {
 	background-color:#EFF3E5; /* bcl04 */
 }
+
+
+/* Todoyu tab */
+#navi-main-list li.itemtodoyu {
+	float:right;
+}

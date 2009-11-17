@@ -123,10 +123,10 @@ class TodoyuFrontend {
 		if (! isset($GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key])) {
 			$GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key] = array(
 				'key'		=> $key,
-				'label'		=> TodoyuDiv::getLabel($label),
+				'label'		=> $label,
 				'href'		=> $href,
 				'position'	=> $position
-				);
+			);
 		}
 	}
 
@@ -141,7 +141,7 @@ class TodoyuFrontend {
 	 * @param	String		$href
 	 * @param	Integer		$position
 	 */
-public static function addSubmenuEntry($parentKey, $key, $label, $href, $position = 50) {
+	public static function addSubmenuEntry($parentKey, $key, $label, $href, $position = 50) {
 		$GLOBALS['CONFIG']['FE']['NAVI']['entries'][$parentKey]['submenu'][] = array(
 			'key'		=> $key,
 			'label'		=> TodoyuDiv::getLabel($label),

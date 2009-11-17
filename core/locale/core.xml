@@ -70,6 +70,7 @@
 		<label index="date.months">Months</label>
 		<label index="date.year">Year</label>
 		<label index="date.years">Years</label>
+		<label index="tab.todoyu.label">Todoyu</label>
 	</labels>
 	<labels lang="de">
 		<label index="yes">Ja</label>
