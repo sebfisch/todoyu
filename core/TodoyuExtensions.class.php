@@ -114,32 +114,14 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Add an extension classpath to the global include path
-	 * for autoloading classes
-	 *
-	 * @param	String		$includePath
-	 */
-	public static function addIncludePath($includePath) {
-		if( !in_array($includePath, $GLOBALS['CONFIG']['AUTOLOAD']) ) {
-			$GLOBALS['CONFIG']['AUTOLOAD'][] = $includePath;
-		}
-	}
-
-
-
-	/**
 	 * Check if file path is in the path of the extension
 	 *
 	 * @param	String		$extKey
 	 * @param	String		$filePath
 	 * @return	Boolean
 	 */
-	public static function isPathInExtDir($extKey, $filePath) {
-		$path = realpath($filePath);
-
-		if( $path === false ) {
-			return false;
-		}
+	public static function isPathInExtDir($extKey, $path) {
+		$path = TodoyuFileManager::pathAbsolute($path);
 
 			// Extensio path
 		$extPath	= self::getExtPath($extKey);
@@ -208,7 +190,7 @@ class TodoyuExtensions {
 	public static function loadConfig($extKey, $type) {
 		global $CONFIG;
 
-		$filePath	= realpath(PATH_EXT . '/' . $extKey . '/config/' . $type . '.php');
+		$filePath	= realpath(PATH_EXT . DIRECTORY_SEPARATOR . $extKey . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . $type . '.php');
 
 		if( $filePath !== false && self::isPathInExtDir($extKey, $filePath) ) {
 			if( is_file($filePath) ) {
@@ -235,18 +217,6 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Load table config of an extension
-	 *
-	 * @param	String		$extKey
-	 * @return	Boolean
-	 */
-	public static function loadTables($extKey) {
-		return self::loadConfig($extKey, 'tables');
-	}
-
-
-
-	/**
 	 * Load filter config of an extension
 	 *
 	 * @param	String		$extKey
@@ -266,11 +236,11 @@ class TodoyuExtensions {
 	public static function loadAllConfig($extKey) {
 		$extPath	= self::getExtPath($extKey);
 
-		$configDir	= $extPath . '/config';
+		$configDir	= $extPath . DIRECTORY_SEPARATOR . 'config';
 		$configFiles= array_slice(scandir($configDir), 2);
 
 		foreach($configFiles as $file) {
-			include_once( $configDir . '/' . $file );
+			include_once( $configDir . DIRECTORY_SEPARATOR . $file );
 		}
 	}
 
@@ -307,16 +277,6 @@ class TodoyuExtensions {
 	 */
 	public static function loadAllRights() {
 		self::loadAllTypeConfig('rights');
-	}
-
-
-
-	/**
-	 * Load table config from all extensions
-	 *
-	 */
-	public static function loadAllTables() {
-		self::loadAllTypeConfig('tables');
 	}
 
 
@@ -389,6 +349,32 @@ class TodoyuExtensions {
 		global $CONFIG;
 
 		self::loadAllTypeConfig('panelwidgets');
+	}
+
+
+	public static function hasDependents($extKey) {
+		$dependents	= self::getDependents($extKey);
+
+		return sizeof($dependents) > 0;
+	}
+
+	public static function getDependents($extKeyToCheck) {
+		self::loadAllExtinfo();
+
+		$dependents	= array();
+		$extKeys	= self::getInstalledExtKeys();
+
+		foreach($extKeys as $extKey) {
+			$dependInfo	= $GLOBALS['CONFIG']['EXT'][$extKey]['info']['constraints']['depends'];
+
+			if( is_array($dependInfo) ) {
+				if( array_key_exists($extKeyToCheck, $dependInfo) ) {
+					$dependents[] = $extKey;
+				}
+			}
+		}
+
+		return $dependents;
 	}
 
 }

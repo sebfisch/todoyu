@@ -119,7 +119,7 @@ require_once( PATH_LOCALCONF . '/extconf.php');
 
 
 	// Add form include path
-TodoyuExtensions::addIncludePath( PATH_CORE . '/form' );
+Todoyu::addIncludePath( PATH_CORE . '/form' );
 
 	// Set default timezone
 date_default_timezone_set($CONFIG['LOCALE']['defaultTimezone']);

@@ -25,8 +25,8 @@ $installedExtensions	= TodoyuExtensions::getInstalledExtKeys();
 foreach($installedExtensions as $extKey) {
 	$extDir	= TodoyuExtensions::getExtPath($extKey);
 
-	TodoyuExtensions::addIncludePath($extDir . '/model');
-	TodoyuExtensions::addIncludePath($extDir . '/controller');
+	Todoyu::addIncludePath($extDir . '/model');
+	Todoyu::addIncludePath($extDir . '/controller');
 }
 
 	// Load all ext.php files to init the extensions

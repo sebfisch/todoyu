@@ -223,6 +223,20 @@ class Todoyu {
 
 
 	/**
+	 * Add a path to the global include path
+	 * for autoloading classes
+	 *
+	 * @param	String		$includePath
+	 */
+	public static function addIncludePath($includePath) {
+		if( !in_array($includePath, $GLOBALS['CONFIG']['AUTOLOAD']) ) {
+			$GLOBALS['CONFIG']['AUTOLOAD'][] = $includePath;
+		}
+	}
+
+
+
+	/**
 	 * Autoload classes. Check all configured directories
 	 *
 	 * @param	String		$className
