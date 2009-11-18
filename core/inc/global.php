@@ -131,6 +131,7 @@ Todoyu::init();
 
 	// Register core localization file
 TodoyuLocale::register('core', PATH_CORE . '/locale/core.xml');
+TodoyuLocale::register('date', PATH_CORE . '/locale/date.xml');
 TodoyuLocale::register('dateformat', PATH_CORE . '/config/dateformat.xml');
 
 	// Register static_... tables' localization files
