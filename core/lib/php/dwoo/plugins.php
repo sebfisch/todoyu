@@ -461,7 +461,7 @@ function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '') {
  * @return	String
  */
 function Dwoo_Plugin_Title_compile(Dwoo_Compiler $compiler, $title) {
-	return '\'<div class="title">\' . htmlentities(' . $title . ') . \'</div>\'';
+	return '\'<div class="title">\' . htmlentities(TodoyuDiv::getLabel(' . $title . ') ) . \'</div>\'';
 }
 
 
