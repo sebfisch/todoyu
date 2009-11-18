@@ -20,6 +20,13 @@
 		<label index="weekday.friday">Friday</label>
 		<label index="weekday.saturday">Saturday</label>
 		<label index="weekday.sunday">Sunday</label>
+		<label index="weekday.mon">Mon</label>
+		<label index="weekday.tue">Tue</label>
+		<label index="weekday.wed">Wed</label>
+		<label index="weekday.thu">Thu</label>
+		<label index="weekday.fri">Fri</label>
+		<label index="weekday.sat">Sat</label>
+		<label index="weekday.sun">Sun</label>
 		<label index="time.second">Second</label>
 		<label index="time.seconds">Seconds</label>
 		<label index="time.minute">Minute</label>
@@ -35,39 +42,5 @@
 		<label index="date.year">Year</label>
 		<label index="date.years">Years</label>
 	</labels>
-	<labels lang="de">
-		<label index="month.january">Januar</label>
-		<label index="month.february">Februar</label>
-		<label index="month.march">März</label>
-		<label index="month.april">April</label>
-		<label index="month.may">Mai</label>
-		<label index="month.june">Juni</label>
-		<label index="month.july">July</label>
-		<label index="month.august">August</label>
-		<label index="month.september">September</label>
-		<label index="month.october">Oktober</label>
-		<label index="month.november">November</label>
-		<label index="month.december">Dezember</label>
-		<label index="weekday.monday">Montag</label>
-		<label index="weekday.tuesday">Dienstag</label>
-		<label index="weekday.wednesday">Mittwoch</label>
-		<label index="weekday.thursday">Donnerstag</label>
-		<label index="weekday.friday">Freitag</label>
-		<label index="weekday.saturday">Samstag</label>
-		<label index="weekday.sunday">Sonntag</label>
-		<label index="time.second">Sekunde</label>
-		<label index="time.seconds">Sekunden</label>
-		<label index="time.minute">Minute</label>
-		<label index="time.minutes">Minuten</label>
-		<label index="time.hour">Stunde</label>
-		<label index="time.hours">Stunden</label>
-		<label index="date.day">Tag</label>
-		<label index="date.days">Tage</label>
-		<label index="date.week">Woche</label>
-		<label index="date.weeks">Wochen</label>
-		<label index="date.month">Monat</label>
-		<label index="date.months">Monate</label>
-		<label index="date.year">Jahr</label>
-		<label index="date.years">Jahre</label>
-	</labels>
+	<labels lang="de"></labels>
 </locallang>

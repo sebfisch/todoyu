@@ -40,42 +40,5 @@
 		<label index="tab.todoyu.label">Todoyu</label>
 		<label index="search">Suche</label>
 	</labels>
-	<labels lang="de">
-		<label index="yes">Ja</label>
-		<label index="no">Nein</label>
-		<label index="loading">laden</label>
-		<label index="hrs"> Std.</label>
-		<label index="expandall">Alle aufklappen</label>
-		<label index="author">Autor</label>
-		<label index="time">Zeitpunkt</label>
-		<label index="pleaseChoose">Bitte wählen</label>
-		<label index="year">Jahr</label>
-		<label index="edit">Editieren</label>
-		<label index="title">Titel</label>
-		<label index="description">Beschreibung</label>
-		<label index="date">Datum</label>
-		<label index="dateFormat">d.m.Y</label>
-		<label index="load">Laden</label>
-		<label index="save">Speichern</label>
-		<label index="cancel">Abbruch</label>
-		<label index="back">Zurück</label>
-		<label index="delete">Löschen</label>
-		<label index="description">Beschreibung</label>
-		<label index="visibleForCustomer">Sichtbar für Kunden</label>
-		<label index="type">Typ</label>
-		<label index="what">Was</label>
-		<label index="where">Wo</label>
-		<label index="when">Wann</label>
-		<label index="private">Privat</label>
-		<label index="until">bis</label>
-		<label index="project">Projekt</label>
-		<label index="task">Task</label>
-		<label index="update">Aktualisieren</label>
-		<label index="components">Komponenten</label>
-		<label index="start">Start</label>
-		<label index="end">Ende</label>
-		<label index="beginning">Beginn</label>
-		<label index="deadline">Deadline</label>
-		<label index="closeWindow">Fenster schliessen</label>
-	</labels>
+	<labels lang="de"></labels>
 </locallang>

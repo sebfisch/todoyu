@@ -328,6 +328,5 @@
 		<label index="SRD.subname">cent</label>
 		<label index="TRY.subname">new kuruş</label>
 	</labels>
-	<labels lang="de">
-	</labels>
+	<labels lang="de"></labels>
 </locallang>

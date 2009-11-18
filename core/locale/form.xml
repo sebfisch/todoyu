@@ -11,15 +11,5 @@
 		<label index="icon.edit">EDIT RECORD</label>
 		<label index="databaserelation.nolabel">[New entry]</label>
 	</labels>
-	<labels lang="de">
-		<label index="select.pleaseSelect">Bitte auswählen</label>
-		<label index="field.isrequired">Dieses Feld muss ausgefüllt werden</label>
-		<label index="field.hasError">Dieses Feld hat einen Fehler</label>
-		<label index="field.save">Speichern</label>
-		<label index="field.cancel">Abbrechen</label>
-		<label index="icon.add">Eintrag hinzufügen</label>
-		<label index="icon.remove">Eintrag löschen</label>
-		<label index="icon.edit">Eintrag bearbeiten</label>
-		<label index="databaserelation.nolabel">[Neuer Eintrag]</label>
-	</labels>
+	<labels lang="de"></labels>
 </locallang>
