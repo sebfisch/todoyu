@@ -19,13 +19,14 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-	// ***********************************************************************
-	// DON'T EDIT THIS FILE. ALL CHANGES WILL BE REMOVED ON NEXT CONFIG UPDATE
-	// ***********************************************************************
-
+	// ****************************************************************************
+	// ATTENTION - TODOYU MANAGED FILE
+	// THIS FILE IS AUTOMATICLY UPDATED BY TODOYU
+	//
+	// EVERYTHING EXCEPT THE 'installed' KEY WILL BE REMOVED ON NEXT CONFIG UPDATE
+	// ****************************************************************************
 
 	// Installed extensions
-$CONFIG['EXT']['installed'] = 'admin,sysmanager,user,loginpage,portal,project,dev,calendar,comment,timetracking,assets,daytracks,search,bookmark,contact';
-
+$CONFIG['EXT']['installed'] = array('admin','user','project','sysmanager','loginpage','portal','calendar','timetracking','assets','daytracks','search','bookmark','contact','comment');
 
 ?>
