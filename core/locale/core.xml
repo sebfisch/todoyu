@@ -35,10 +35,6 @@
 		<label index="when">When</label>
 		<label index="until">until</label>
 		<label index="private">Private</label>
-		<label index="project">Project</label>
-		<label index="projects">Projects</label>
-		<label index="tasks">Tasks</label>
-		<label index="task">Task</label>
 		<label index="start">Start</label>
 		<label index="end">End</label>
 		<label index="beginning">Beginning</label>
