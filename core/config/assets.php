@@ -82,6 +82,10 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 26
 		),
 		array(
+			'file'		=> 'core/lib/js/scal/scal.js',
+			'position'	=> 27
+		),
+		array(
 			'file'		=> 'core/assets/js/Todoyu.js',
 			'position'	=> 50
 		),
