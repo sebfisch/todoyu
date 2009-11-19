@@ -6,7 +6,6 @@
 		<label index="loading">loading</label>
 		<label index="expandall">Expand all</label>
 		<label index="author">Author</label>
-		<label index="pleaseChoose">Please chose</label>
 		<label index="title">Title</label>
 		<label index="description">Description</label>
 		<label index="date">Date</label>

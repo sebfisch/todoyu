@@ -2,6 +2,7 @@
 <locallang>
 	<labels lang="en">
 		<label index="select.pleaseSelect">Please select</label>
+		<label index="select.pleaseChoose">Please choose</label>
 		<label index="field.isrequired">This field is required</label>
 		<label index="field.hasError">This field has an error</label>
 		<label index="field.save">Save</label>
