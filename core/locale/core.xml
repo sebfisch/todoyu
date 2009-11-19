@@ -45,6 +45,7 @@
 		<label index="deadline">Deadline</label>
 		<label index="closeWindow">close window</label>
 		<label index="tab.todoyu.label">Todoyu</label>
+		<label index="noAccess.errorMessage">You have no access to the requested data</label>
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

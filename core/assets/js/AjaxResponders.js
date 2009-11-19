@@ -56,7 +56,7 @@ Todoyu.AjaxResponders = {
 			if( state == 'Complete' && response.hasNoAccess() )	{
 					// Delete onComplete handler to prevent processing an empty respone			
 				delete response.request.options.onComplete;
-				Todoyu.notifyError('You have no access to the requested data');
+				Todoyu.notifyError('[LLL:core.noAccess.errorMessage]');
 			}
 			oldRespondToReadyState.call(response.request, readyState);
 		};
