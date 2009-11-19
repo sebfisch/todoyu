@@ -16,6 +16,7 @@
 		<label index="save">Save</label>
 		<label index="cancel">Cancel</label>
 		<label index="delete">Delete</label>
+		<label index="show">Show</label>
 		<label index="hide">Hide</label>
 		<label index="unhide">Unhide</label>
 		<label index="rename">Rename</label>
@@ -24,6 +25,7 @@
 		<label index="search">Suche</label>
 		<label index="back">Back</label>		
 		<label index="visibleForCustomer">Visible for customer</label>
+		<label index="filter">Filter</label>
 		<label index="type">Type</label>
 		<label index="record">Record</label>
 		<label index="records">Records</label>
