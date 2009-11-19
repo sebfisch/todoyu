@@ -509,10 +509,10 @@ class TodoyuDiv {
 		if( is_null($labels) ) {
 			if( $noLabel === false ) {
 				$labels = array(
-					'gb'	=> Label('assets.filesize.gb'),
-					'mb'	=> Label('assets.filesize.mb'),
-					'kb'	=> Label('assets.filesize.kb'),
-					'b'		=> Label('assets.filesize.b')
+					'gb'	=> Label('file.size.gb'),
+					'mb'	=> Label('file.size.mb'),
+					'kb'	=> Label('file.size.kb'),
+					'b'		=> Label('file.size.b')
 				);
 			} else {
 				$labels	= array();

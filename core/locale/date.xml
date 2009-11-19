@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
+		<label index="time">Time</label>^
+		<label index="year">Year</label>
+		<label index="hrs">h</label>
 		<label index="month.january">January</label>
 		<label index="month.february">February</label>
 		<label index="month.march">March</label>
