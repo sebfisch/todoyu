@@ -61,8 +61,7 @@ class TodoyuFormManager {
 		$idRecord	= intval($idRecord);
 
 			// Make form object
-		$form 	= new TodoyuForm($xmlPath);
-		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $index);
+		$form 	= self::getForm($xmlPath, $index);
 
 			// Load (/preset) form data
 		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $index);

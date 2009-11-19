@@ -97,7 +97,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var	Integer
 	 */
-	private $idRecord = 0;
+	private $idRecord = null;
 
 
 	/**
@@ -267,8 +267,8 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	String
 	 */
 	public function getRecordID() {
-		if( $this->idRecord > 0 ) {
-			return intval($this->idRecord);
+		if( ! is_null($this->idRecord) ) {
+			return $this->idRecord;
 		} elseif( isset($this->formdata['id']) ) {
 			return intval($this->formdata['id']);
 		} else {
@@ -448,7 +448,7 @@ class TodoyuForm implements ArrayAccess {
 	 */
 	public function addElementsFromXML($xmlPath, $position = null) {
 		$xmlPath	= TodoyuFileManager::pathAbsolute($xmlPath);
-		$form		= new TodoyuForm($xmlPath);
+		$form		= TodoyuFormManager::getForm($xmlPath);
 
 			// Get fieldsets of the other form
 		$fieldsets	= $form->getFieldsets();

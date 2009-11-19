@@ -194,6 +194,16 @@ class TodoyuHeader {
 
 
 	/**
+	 * Send a no access header to inform the script that the request has been canceled
+	 *
+	 */
+	public static function sendNoAccessHeader() {
+		self::sendTodoyuHeader('noAccess', 1);
+	}
+
+
+
+	/**
 	 * Send custom header
 	 *
 	 * @param	String		$name

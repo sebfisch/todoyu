@@ -147,7 +147,17 @@ function allowed($extKey, $right) {
  * @param	String		$right
  */
 function restrict($extKey, $right) {
-	allowed($extKey, $right) or die('No access');
+	if( ! allowed($extKey, $right) ) {
+		if( TodoyuRequest::isAjaxRequest() ) {
+			TodoyuHeader::sendNoAccessHeader();
+		} else {
+			ob_end_clean();
+			echo "No Access";
+		}
+
+		Todoyu::log('Access denied (' . $extKey . '/' . $right . ')', LOG_LEVEL_SECURITY);
+		exit();
+	}
 }
 
 

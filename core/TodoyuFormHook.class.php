@@ -119,7 +119,7 @@ class TodoyuFormHook {
 	 * @param	Integer		$idRecord		Record ID
 	 * @return	Array
 	 */
-	public static function callLoadData($xmlPath, array $data, $idRecord) {
+	public static function callLoadData($xmlPath, array $data, $idRecord = 0) {
 		$idRecord	= intval($idRecord);
 		$hooks		= self::getHooks('loadData', $xmlPath);
 

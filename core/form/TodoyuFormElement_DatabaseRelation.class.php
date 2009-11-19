@@ -137,14 +137,15 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	protected function renderRecordForm($index)	{
 		$xmlPath = $this->getRecordsFormXml();
 
-			// Construct form object
-		$recordForm	= new TodoyuForm($xmlPath);
+
 
 			// Load form data
 		$recordData	= $this->getRecord($index);
 		$idRecord	= intval($recordData['id']);
 
-		$recordForm	= TodoyuFormHook::callBuildForm($xmlPath, $recordForm, $idRecord);
+			// Construct form object
+		$recordForm	= TodoyuFormManager::getForm($xmlPath, $idRecord);
+
 		$recordData	= TodoyuFormHook::callLoadData($xmlPath, $recordData, $idRecord);
 
 		$formName	= $this->getForm()->getName() . '[' . $this->getName() . '][' . $index . ']';

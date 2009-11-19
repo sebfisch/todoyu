@@ -18,12 +18,14 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Todoyu specific Ajax.Responders to prototype ajax handling
+ * This responders are called for every ajax request of prototype
+ */
 Todoyu.AjaxResponders = {
-
-
-
+	
 	/**
-	 *	Please enter Description here...
+	 *	Register the used ajax responders
 	 *
 	 */
 	register: function() {
@@ -36,47 +38,56 @@ Todoyu.AjaxResponders = {
 
 
 	/**
-	 *	Please enter Description here...
-	 *
+	 * Extend the prototype 'respondToReadyState' handler
+	 * Delete the onComplete handler if no access flag is set in header
+	 * 
+	 * @param	Ajax.Request	request
 	 */
-	onCreate: function() {
+	onCreate: function(request) {
 		Todoyu.Ui.ajaxLoader(true);
 		Todoyu.Ui.setLinkCursor(true);
-	},
 
+		var oldRespondToReadyState = request.respondToReadyState;
+		request.respondToReadyState = function(readyState) {
+			var state	= Ajax.Request.Events[readyState];
+			var response= new Ajax.Response(this);
+					
+				// Only process if request completed and has access error	
+			if( state == 'Complete' && response.hasNoAccess() )	{
+					// Delete onComplete handler to prevent processing an empty respone			
+				delete response.request.options.onComplete;
+				Todoyu.notifyError('You have no access to the requested data');
+			}
+			oldRespondToReadyState.call(response.request, readyState);
+		};
+	},
+	
 
 
 	/**
-	 *	Please enter Description here...
+	 *	Handler when a request is completed
 	 *
-	 *	@param	unknown_type	response
+	 *	@param	Ajax.Response		response
 	 */
 	onComplete: function(response) {
 		this.goToHash(response);
-		this.checkNoAccessError(response);
-		
-		if( Ajax.activeRequestCount === 0 ) {
+				
+		if( Ajax.activeRequestCount < 1 ) {
 			Todoyu.Ui.ajaxLoader(false);
 			Todoyu.Ui.setLinkCursor(false);
 		}
 	},
-	
-	checkNoAccessError: function(response) {
-		if( response.getHeader('Todoyu-noAccess') == 1 ) {
-			Todoyu.notifyError('No access');
-		}
-	},
 
 
 
 	/**
-	 *	Please enter Description here...
+	 *	Check if a hash header has been sent and scroll to it
 	 *
-	 *	@param	unknown_type	response
+	 *	@param	Ajax.Response		response
 	 */
 	goToHash: function(response) {
-		var hash = response.getHeader('Todoyu-Hash');
-		
+		var hash = response.getHeader('Todoyu-Hash'); // Do not use getTodoyuHeader(), it fails...
+
 		if( hash !== null && Todoyu.exists(hash) ) {
 			$(hash).scrollToElement();
 		}

@@ -42,11 +42,11 @@ class TodoyuPanelWidgetManager {
 		$widgets	= $GLOBALS['CONFIG']['EXT'][$ext]['panelWidgets'];
 
 		if( is_array($widgets) ) {
-			$widgets = TodoyuArray::sortByLabel($widgets);
+			$widgets = TodoyuArray::sortByLabel($widgets, 'position');
 		} else {
 			$widgets = array();
 		}
-		
+
 		return $widgets;
 	}
 
@@ -227,9 +227,9 @@ class TodoyuPanelWidgetManager {
 	public static function loadCollapsedStatus($idExt, $idWidget)	{
 		$idExt	= TodoyuExtensions::getExtID($idExt);
 		$widget	= 'pwidget-' . strtolower($idWidget);
-		
+
 		$collapsed	= TodoyuPreferenceManager::getPreference($idExt, $widget);
-		
+
 		return intval($collapsed) === 1;
 	}
 }

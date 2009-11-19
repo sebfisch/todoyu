@@ -127,8 +127,8 @@ class TodoyuPanelWidgetRenderer {
 					$widget	= new $widgetClass($config, $params, $idArea);
 					$content .= $widget->render();
 				} else {
-					// Widget not allowed
-					//TodoyuDebug::printInFirebug('PanelWidget ' . $widgetClass . ' is not allowed');
+						// Widget not allowed
+//					TodoyuDebug::printInFirebug('PanelWidget ' . $widgetClass . ' is not allowed');
 				}
 			} else {
 				$debug	= 'Can\'t find requested panel widget: "' . $widgetClass . '"';
