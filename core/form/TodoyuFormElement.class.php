@@ -375,14 +375,14 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			if( $isValid === false ) {
 				$this->setErrorTrue();
 
-				TodoyuDebug::printInFirebug($validatorName, 'Validation failed');
+//				TodoyuDebug::printInFirebug($validatorName, 'Validation failed');
 
 					// If error message not already set by function, check config or use default
 				if( $this->errorMessage === '' ) {
 					if( isset($validatorConfig['@attributes']['msg']) ) {
 						$this->setErrorMessage( TodoyuDiv::getLabel($validatorConfig['@attributes']['msg']) );
 					} else {
-						$this->setErrorMessage( Label('form.field.hasError') );
+						$this->setErrorMessage('LLL:form.field.hasError');
 					}
 				}
 
@@ -395,9 +395,12 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		if( sizeof($validations) === 0 && $this->isRequired() ) {
 			if( ! $this->validateRequired() ) {
 				$this->setErrorTrue();
-				$this->setErrorMessage( Label('form.field.isrequired') );
 
-				TodoyuDebug::printInFirebug($this->getValue(), 'required validation failed');
+				if( ! empty($this->config['required']['@attributes']['label']) ) {
+					$this->setErrorMessage($this->config['required']['@attributes']['label']);
+				} else {
+					$this->setErrorMessage('LLL:form.field.isrequired');
+				}
 
 				return false;
 			}
