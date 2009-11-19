@@ -28,6 +28,7 @@
 		<label index="record">Record</label>
 		<label index="records">Records</label>
 		<label index="components">Components</label>
+		<label index="status">Status</label>
 		<label index="what">What</label>
 		<label index="where">Where</label>
 		<label index="when">When</label>
