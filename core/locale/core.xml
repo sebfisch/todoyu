@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
+		<label index="tab.todoyu.label">Todoyu</label>
 		<label index="yes">Yes</label>
 		<label index="no">No</label>
 		<label index="loading">loading</label>
@@ -10,6 +11,7 @@
 		<label index="description">Description</label>
 		<label index="date">Date</label>
 		<label index="dateFormat">y.n.j</label>
+		<label index="createNew">Create new</label>
 		<label index="edit">Edit</label>
 		<label index="load">Load</label>
 		<label index="save">Save</label>
@@ -36,11 +38,11 @@
 		<label index="until">until</label>
 		<label index="private">Private</label>
 		<label index="start">Start</label>
+		<label index="stop">Stop</label>
 		<label index="end">End</label>
 		<label index="beginning">Beginning</label>
 		<label index="deadline">Deadline</label>
 		<label index="closeWindow">close window</label>
-		<label index="tab.todoyu.label">Todoyu</label>
 		<label index="noAccess.errorMessage">You have no access to the requested data</label>
 	</labels>
 	<labels lang="de"></labels>
