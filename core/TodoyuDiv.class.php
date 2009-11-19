@@ -62,7 +62,7 @@ class TodoyuDiv {
 			$characters = array_merge($characters, $characters);
 		}
 
-			// Shuffle array
+		// Shuffle array
 		shuffle($characters);
 		$password = substr(implode('', $characters), 0, $length);
 
@@ -186,11 +186,11 @@ class TodoyuDiv {
 	 */
 	function percent($percent, $value)	{
 		return $percent * ($value / 100.0);
-    }
+	}
 
 
 
-    /**
+	/**
 	 *	Calculate fraction (how many percent is the given value of the given total?)
 	 *	@param	Integer	$fraction
 	 *	@param	Integer	$total
@@ -291,23 +291,23 @@ class TodoyuDiv {
 	 * @todo	Move it to a database class or something else
 	 */
 	function getAutocompleteValues($searchWords, $table, $searchInFields, $numKeywords = 10) {
-			// Get database result
+		// Get database result
 		$elements	= $this->searchTable($table, $searchInFields, $searchWords, $searchInFields, '', '', '', '', 0, $numKeywords*5);
 
-			// Make a big string
+		// Make a big string
 		$allWords	= '';
 		foreach($elements as $element) {
 			$allWords .= implode(' ', $element);
 		}
 
-			// Replace all whitespaces by single space
+		// Replace all whitespaces by single space
 		$allWords = strtolower(preg_replace('|\W|', ' ', $allWords));
 
-			// Search matching words
+		// Search matching words
 		$pattern	= '/([^ ]*' . $searchWords . '[^ ]*)/i';
 		preg_match_all($pattern, $allWords, $matches);
 
-			// Clean up
+		// Clean up
 		$keywords	= array_map('trim', $matches[0]);
 		$keywords	= array_unique($keywords);
 
@@ -335,11 +335,11 @@ class TodoyuDiv {
 	public static function searchTable($table, array $searchInFields, array $searchWords, $fieldsInResult = '*', array $extraTables = array(), $extraWhere = '', $groupBy = '', $orderBy = '', $limitOffset = 0, $limitRows = 200) {
 
 		// Compile selected fields
-			// Prepend table name, if all fields are requested
+		// Prepend table name, if all fields are requested
 		if( $fieldsInResult === '*' ) {
 			$fieldsInResult = $table . '.*';
 		} else {
-				// Split fields and prepend table if not done yet
+			// Split fields and prepend table if not done yet
 			$fields = TodoyuDiv::trimExplode(',', $fieldsInResult, true);
 			foreach($fields as $key => $field) {
 				if( strstr($field, '.') === false ) {
@@ -588,10 +588,10 @@ class TodoyuDiv {
 		$disallowedPaths	= $GLOBALS['CONFIG']['sendFile']['disallow'];
 		$allowedPaths		= $GLOBALS['CONFIG']['sendFile']['allow'];
 
-			// If file exists
+		// If file exists
 		if( $absoluteFilePath !== false ) {
 
-				// Check if file is in an explicitly disallowed path
+			// Check if file is in an explicitly disallowed path
 			if( is_array($disallowedPaths) ) {
 				foreach($disallowedPaths as $disallowedPath) {
 					if( strpos($absoluteFilePath, $disallowedPath) !== false ) {
@@ -600,7 +600,7 @@ class TodoyuDiv {
 					}
 				}
 			}
-				// Check if file is in an allowed path
+			// Check if file is in an allowed path
 			if( is_array($allowedPaths) ) {
 				foreach($allowedPaths as $allowedPath) {
 					if( strpos($absoluteFilePath, $allowedPath) !== false ) {
@@ -612,7 +612,7 @@ class TodoyuDiv {
 
 
 
-			// If file not found, or no allowing config available, disallow download
+		// If file not found, or no allowing config available, disallow download
 		return false;
 	}
 
@@ -759,12 +759,12 @@ class TodoyuDiv {
 	 * @return	Integer
 	 */
 	public static function getIntVersion($version) {
-	    if (!preg_match('/^(\d+)\.(\d+)\.(\d+)(?:(?:\.|-(rc|dev|beta|alpha))(\d+)?)?$/', $version, $matches)) {
-	        return false;
-	    }
+		if (!preg_match('/^(\d+)\.(\d+)\.(\d+)(?:(?:\.|-(rc|dev|beta|alpha))(\d+)?)?$/', $version, $matches)) {
+			return false;
+		}
 
-	    	// Increase value for subversions
-	    if( ! empty($matches[4]) ) {
+		// Increase value for subversions
+		if( ! empty($matches[4]) ) {
 			switch ($matches[4]) {
 				case 'rc':
 					$added = 30;
@@ -785,15 +785,15 @@ class TodoyuDiv {
 					$added = 0;
 					break;
 			}
-	    } else {
-	    	$added = 50; // for final
-	    }
-	    	// Add version of subversion (ex: alpha3 = +3)
-	    if( ! empty($matches[5]) ) {
-	        $added = $added + $matches[5];
-	    }
+		} else {
+			$added = 50; // for final
+		}
+		// Add version of subversion (ex: alpha3 = +3)
+		if( ! empty($matches[5]) ) {
+			$added = $added + $matches[5];
+		}
 
-	    return $matches[1] * 1000000 + $matches[2] * 10000 + $matches[3] * 100 + $added;
+		return $matches[1] * 1000000 + $matches[2] * 10000 + $matches[3] * 100 + $added;
 	}
 
 
@@ -859,15 +859,15 @@ class TodoyuDiv {
 		$query		= PATH_WEB . (PATH_WEB === '/' ? '?' : '/?');
 		$queryParts	= array();
 
-			// Add all parameters encoded
+		// Add all parameters encoded
 		foreach($params as $name => $value) {
 			$queryParts[] = $name . '=' . urlencode($value);
 		}
 
-			// Concatinate
+		// Concatinate
 		$query .= implode('&', $queryParts);
 
-			// Add hash
+		// Add hash
 		if( ! empty($hash) ) {
 			$query .= '#' . $hash;
 		}
@@ -887,17 +887,17 @@ class TodoyuDiv {
 	 */
 	private static function initMcrypt() {
 		if( is_null(self::$mcrypt) ) {
-				// Open module
+			// Open module
 			self::$mcrypt = mcrypt_module_open('tripledes', '', 'ecb', '');
-				// Random seed
+			// Random seed
 			$random = 596328;
-				// Generate initialisation vector
+			// Generate initialisation vector
 			$vector	= mcrypt_create_iv(mcrypt_enc_get_iv_size(self::$mcrypt), $random);
-				// Get the expected key size based on mode and cipher
+			// Get the expected key size based on mode and cipher
 			$expectedKeySize = mcrypt_enc_get_key_size(self::$mcrypt);
-				// Get a key in the needed length (use typo3 key)
+			// Get a key in the needed length (use typo3 key)
 			$key = substr($GLOBALS['CONFIG']['SYSTEM']['encryptionKey'], 0, $expectedKeySize);
-				// Initialize mcrypt library with mode/cipher, encryption key, and random initialization vector
+			// Initialize mcrypt library with mode/cipher, encryption key, and random initialization vector
 			mcrypt_generic_init(self::$mcrypt, $key, $vector);
 		}
 	}
@@ -938,8 +938,43 @@ class TodoyuDiv {
 
 
 
+	/**
+	 * Split a string by camelcase.
+	 * Every uppercase letter followed by a lowercase will be threaded as subpart
+	 *
+	 * @param	String		$string
+	 * @return	Array
+	 */
 	public static function splitCamelCase($string) {
 		return preg_split('/([A-Z][^A-Z]*)/', $string, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+	}
+
+
+
+	/**
+	 * Analyze a version string and
+	 *
+	 * @param	String		$versionString
+	 * @return	Array		[major,minor,revision,status]
+	 */
+	public static function getVersionInfo($versionString) {
+		$info			= array();
+
+		if( strpos($versionString, '-') !== false ) {
+			$temp	= explode('-', $versionString);
+			$version= explode('.', $temp[0]);
+			$status	= $temp[1];
+		} else {
+			$version= explode('.', $versionString);
+			$status	= 'stable';
+		}
+
+		$info['major']		= intval($version[0]);
+		$info['minor']		= intval($version[1]);
+		$info['revision']	= intval($version[2]);
+		$info['status']		= $status;
+
+		return $info;
 	}
 
 }

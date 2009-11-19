@@ -40,7 +40,7 @@ Todoyu.Notification = {
 	 * Add new notification
 	 * @param	String		type
 	 * @param	String		message
-	 * @param	Integer		countdown
+	 * @param	Integer		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	add: function(type, message, countdown) {
 		this.init();
@@ -52,13 +52,17 @@ Todoyu.Notification = {
 			'id': id,
 			'type': type,
 			'message': message,
-			'countdown': countdown			
+			'countdown': countdown == 0 ? '' : countdown		
 		};
 		
 		var note	= this.template.evaluate(data);
 		
 		this.appendNote(id, note);
-		this.countDown.bind(this).delay(1, id);
+		
+			// Only start countdown if not sticky
+		if( countdown != 0 ) {
+			this.countDown.bind(this).delay(1, id);
+		}		
 	},
 	
 	addInfo: function(message, countdown) {
@@ -102,7 +106,8 @@ Todoyu.Notification = {
 	 */
 	init: function() {
 		if( this.template === null ) {
-			this.template = new Template( '<div class="note #{type}" id="notification-note-#{id}"><div class="icon"></div><div class="message">#{message}</div><div class="countdown">#{countdown}</div><div class="close" onclick="Todoyu.Notification.close(this)"></div></div>');
+			//this.template = new Template( '<div class="note #{type}" id="notification-note-#{id}"><div class="icon"></div><div class="message">#{message}</div><div class="countdown">#{countdown}</div><div class="close" onclick="Todoyu.Notification.close(this)"></div></div><br clear="all" />');
+			this.template = new Template( '<div class="note #{type}" id="notification-note-#{id}"><table><tr><td class="icon">&nbsp;</td><td class="message">#{message}</td><td class="countdown" align="center">#{countdown}</td><td class="close" onclick="Todoyu.Notification.close(this)">&nbsp;</td></tr></table></div>');
 		}
 	},
 	

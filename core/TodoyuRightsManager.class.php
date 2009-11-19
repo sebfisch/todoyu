@@ -85,8 +85,6 @@ class TodoyuRightsManager {
 	 */
 	public static function isAllowed($extKey, $right) {
 			// Rights check disabled at the moment
-		return true;
-
 		if( TodoyuAuth::isAdmin() ) {
 			return true;
 		}

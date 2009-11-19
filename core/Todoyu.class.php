@@ -64,22 +64,22 @@ class Todoyu {
 	 *
 	 */
 	public static function init() {
-			// Database
+		// Database
 		self::$db		= TodoyuDatabase::getInstance($GLOBALS['CONFIG']['DB']);
 
-			// Template (Dwoo)
+		// Template (Dwoo)
 		self::initTemplate();
 
-			// User
+		// User
 		self::$user = TodoyuAuth::getUser();
 
-			// Log
+		// Log
 		self::$logger = TodoyuLogger::getInstance($GLOBALS['CONFIG']['LOG']['active'], $GLOBALS['CONFIG']['LOG']['level']);
 
-			// Init Locale for locallang files
+		// Init Locale for locallang files
 		TodoyuLocale::setLocale(self::getLang());
 
-			// Set php locale
+		// Set php locale
 		setlocale(LC_ALL, $GLOBALS['CONFIG']['SYSTEM']['locale']);
 	}
 
@@ -90,13 +90,13 @@ class Todoyu {
 	 *
 	 */
 	private static function initTemplate() {
-			// Make needed folders
+		// Make needed folders
 		TodoyuFileManager::makeDirDeep($GLOBALS['CONFIG']['TEMPLATE']['compile']);
 		TodoyuFileManager::makeDirDeep($GLOBALS['CONFIG']['TEMPLATE']['cache']);
 
 		self::$template = new Dwoo($GLOBALS['CONFIG']['TEMPLATE']['compile'], $GLOBALS['CONFIG']['TEMPLATE']['cache']);
 
-		self::addDwooPluginDir('core/lib/php/dwoo');
+//		self::addDwooPluginDir('core/lib/php/dwoo');
 	}
 
 
@@ -250,7 +250,7 @@ class Todoyu {
 				break;
 			}
 		}
-//		TodoyuLoggerFile::log('Autoload: ' . $className, LOG_LEVEL_DEBUG, '', '', '');
+		//		TodoyuLoggerFile::log('Autoload: ' . $className, LOG_LEVEL_DEBUG, '', '', '');
 	}
 
 }

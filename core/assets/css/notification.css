@@ -13,54 +13,38 @@
 }
 
 #notifications div.note {
-	height:12px;
-	text-align:left;
 	margin-left:283px;
 	width:658px;
 	padding:10px;
 	border:1px solid #AAA;
 	background-color:#FFF;
 	margin-bottom:2px;
-	opacity:0.95;
+	opacity:0.94;
 }
 
-#notifications div.note div {
-	display:block;
-	float:left;
-	clear:none;
+#notifications div.note td.icon {
+	width:25px;
 }
 
-#notifications div.note div.icon {
-	width:16px;
-	height:16px;
-	margin-right:15px;
-	margin-top:-2px;
-}
-
-#notifications div.note div.message {
+#notifications div.note td.message {
 	font-weight:bold;
 	color:#333;
 	width:560px;
-	margin-right:20px;
+	padding-right:20px;
+	text-align:center;
 }
 
-#notifications div.note div.countdown {
-	width:16px;
-	height:16px;
-	text-align:right;
-	margin-right:10px;
+#notifications div.note td.countdown {
+	width:25px;
+	text-align:center;
+	padding-right:10px;
 	color:#666;
 }
 
-#notifications div.note div.close {
-	width:16px;
-	height:16px;
+#notifications div.note td.close {
+	width:20px;
 	background:url(../img/notify/cancel.png) 0 0 no-repeat;
 	cursor:pointer;
-}
-
-#notifications div.note div.clear {
-	clear:both;
 }
 
 
@@ -73,7 +57,7 @@
 	background-color:#00ff00;
 }
 
-#notifications div.success div.icon {
+#notifications div.success td.icon {
 	background:url(../img/notify/accept.png) 0 0 no-repeat;
 }
 
@@ -87,7 +71,7 @@
 	background-color:#ff8800;
 }
 
-#notifications div.error div.icon {
+#notifications div.error td.icon {
 	background:url(../img/notify/error.png) 0 0 no-repeat;
 }
 
@@ -100,6 +84,6 @@
 	background-color:#EFEFEF;
 }
 
-#notifications div.info div.icon {
+#notifications div.info td.icon {
 	background:url(../img/notify/information.png) 0 0 no-repeat;
 }

@@ -140,6 +140,19 @@ function allowed($extKey, $right) {
 
 
 /**
+ * Restrict current request to users who have the right
+ * Stop script if right is not set
+ *
+ * @param	String		$extKey
+ * @param	String		$right
+ */
+function restrict($extKey, $right) {
+	allowed($extKey, $right) or die('No access');
+}
+
+
+
+/**
  * Add IE custom scripts to the browser (if its an IE)
  *
  */

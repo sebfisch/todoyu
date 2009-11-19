@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuExtensions {
 
 	private static $extIDs = array();
@@ -352,12 +351,28 @@ class TodoyuExtensions {
 	}
 
 
+
+	/**
+	 * Check if an extension has dependents
+	 * Dependents need the current extension to work properly
+	 *
+	 * @param	String		$extKey
+	 * @return	Bool
+	 */
 	public static function hasDependents($extKey) {
 		$dependents	= self::getDependents($extKey);
 
 		return sizeof($dependents) > 0;
 	}
 
+
+
+	/**
+	 * Get all dependents of an extensions
+	 *
+	 * @param	String		$extKeyToCheck
+	 * @return	Array
+	 */
 	public static function getDependents($extKeyToCheck) {
 		self::loadAllExtinfo();
 
@@ -375,6 +390,46 @@ class TodoyuExtensions {
 		}
 
 		return $dependents;
+	}
+
+
+
+	/**
+	 * Check if an extension has the system flag (should not be uninstalled)
+	 *
+	 * @param	String		$extKey
+	 * @return	Bool
+	 */
+	public static function isSystemExtension($extKey) {
+		self::loadConfig($extKey, 'extinfo');
+
+		return $GLOBALS['CONFIG']['EXT'][$extKey]['info']['constraints']['system'] === true;
+	}
+
+
+
+	public static function hasConflicts($extKey) {
+		return sizeof(self::getConflicts($extKey)) > 0;
+	}
+
+
+	public static function getConflicts($extKey) {
+		self::loadAllExtinfo();
+
+		$conflicts	= array();
+		$extKeys	= self::getInstalledExtKeys();
+
+		foreach($extKeys as $extKey) {
+			$conflictInfo	= $GLOBALS['CONFIG']['EXT'][$extKey]['info']['constraints']['conflict'];
+
+			if( is_array($conflictInfo) ) {
+				if( array_key_exists($extKeyToCheck, $conflictInfo) ) {
+					$conflicts[] = $extKey;
+				}
+			}
+		}
+
+		return $conflicts;
 	}
 
 }
