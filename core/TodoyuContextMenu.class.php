@@ -52,7 +52,6 @@ class TodoyuContextMenu {
 
 
 
-
 	/**
 	 * Initialize context menu with id of the processed element
 	 *
@@ -65,6 +64,7 @@ class TodoyuContextMenu {
 
 		$this->init();
 	}
+
 
 
 	/**
@@ -85,8 +85,6 @@ class TodoyuContextMenu {
 			}
 		}
 
-//		TodoyuDebug::printInFirebug($this->elements);
-
 			// Sort items
 		$this->elements = TodoyuArray::sortByLabel($this->elements, 'position');
 			// Parse labels and jsActions
@@ -98,7 +96,7 @@ class TodoyuContextMenu {
 	/**
 	 * Parse elements (label and jsAction)
 	 *
-	 * @param	Array		$elements
+	 * @param	Array	$elements
 	 * @return	Array
 	 */
 	private function parseElements(array $elements) {
