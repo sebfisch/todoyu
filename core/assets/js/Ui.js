@@ -32,9 +32,11 @@ Todoyu.Ui = {
 
 		if( ! Todoyu.exists(container) ) {
 			console.log('You tried to update "' + container + '" which is not part of the DOM!');
+		} else {
+			return new Ajax.Updater(container, url, options);
 		}
 
-		return new Ajax.Updater(container, url, options);
+
 	},
 
 
@@ -51,9 +53,9 @@ Todoyu.Ui = {
 
 		if( ! Todoyu.exists(container) ) {
 			console.log('You tried to replace "' + container + '" which is not part of the DOM!');
+		} else {
+			return new Ajax.Replacer(container, url, options);
 		}
-
-		return new Ajax.Replacer(container, url, options);
 	},
 
 
@@ -183,18 +185,18 @@ Todoyu.Ui = {
 	updateContent: function(url, options) {
 		return this.update('content', url, options);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Update content with new html
-	 * 
+	 *
 	 * @param	String		content
 	 */
 	setContent: function(content) {
 		$('content').update(content);
 	},
-	
+
 
 
 	/**
@@ -321,17 +323,17 @@ Todoyu.Ui = {
 		if( location.hash !== '') {
 
 			var name	= location.hash.substr(1);
-			
+
 			this.scrollToAnchor(name);
 		}
 	},
-	
+
 	scrollToAnchor: function(name) {
 		var element	= $(document.getElementsByName(name)[0]);
-			
+
 		if(element) {
 			this.scrollToElement(element);
-		}		
+		}
 	},
 
 
@@ -344,7 +346,7 @@ Todoyu.Ui = {
 	scrollToElement: function(element) {
 		element = $(element);
 		element.scrollTo();
-	
+
 		if( Todoyu.exists('header') ) {
 			var headerHeight = $('header').getHeight();
 			window.setTimeout(window.scrollBy, 10, 0, -headerHeight);
@@ -406,7 +408,7 @@ Todoyu.Ui = {
 
 	/**
 	 *	Show time picker
-	 * 
+	 *
 	 *	@param	Integer	idElement
 	 *	@param	Array	config
 	 *	@return	TimePicker
@@ -416,7 +418,7 @@ Todoyu.Ui = {
 			'rangeHour': [0,23],
 			'rangeMinute': [0,55]
 		}).merge(config).toObject();
-				
+
 		return new TimePicker(idElement, config);
 	},
 
@@ -429,12 +431,12 @@ Todoyu.Ui = {
 	 * 	@return	TimePicker
 	 */
 	showDurationPicker: function(idElement, config) {
-		config = config || {}; 
+		config = config || {};
 		config = $H({
 			'rangeHour': [0,99],
 			'rangeMinute': [0,55]
 		}).merge(config).toObject();
-		
+
 		return new TimePicker(idElement);
 	}
 
