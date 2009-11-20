@@ -421,6 +421,12 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	}
 
 
+
+	/**
+	 * Get field error message (can be an empty if no error occured)
+	 *
+	 * @return	String
+	 */
 	public function getErrorMessage() {
 		return $this->errorMessage;
 	}
