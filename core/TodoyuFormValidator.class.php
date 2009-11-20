@@ -369,18 +369,19 @@ class TodoyuFormValidator {
 	 * @return	Bool
 	 */
 	public static function unique($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
-		$table	= trim($validatorConfig['table']);
-		$field	= $formElement->getName();
+		$table		= trim($validatorConfig['table']);
+		$field		= $formElement->getName();
+		$idRecord	= intval($formData['id']);
 
 		if( $table === '') {
 			Todoyu::log('Missing tablename in unique form validation for field ' . $formElement->getName(), LOG_LEVEL_ERROR);
-
 			return false;
 		}
 
-			// Check if a record with this fieldvalue already exists
+			// Check if a record with this fieldvalue already exists (current record is ignored)
 		$fields	= $field;
-		$where	= Todoyu::db()->backtick($field) . ' = ' . Todoyu::db()->quote($value, true);
+		$where	= Todoyu::db()->backtick($field) . ' = ' . Todoyu::db()->quote($value, true) . ' AND
+					id != ' . $idRecord;
 
 		$exists	= Todoyu::db()->hasResult($fields, $table, $where);
 

@@ -143,6 +143,8 @@ class TodoyuActionDispatcher {
 	private static function errorControllerNotFound($ext, $controller) {
 		ob_clean();
 
+		Todoyu::log('Request controller not found ' . $ext . '/' . $controller, LOG_LEVEL_FATAL);
+
 		TodoyuHeader::sendHeaderPlain();
 
 		echo "Request controller not found!\n";

@@ -45,8 +45,6 @@ set_include_path(get_include_path() . PATH_SEPARATOR . PATH_PEAR);
 
 
 	// Load basic classes
-require_once( PATH_LIB . '/php/cssmin.php' );
-require_once( PATH_LIB . '/php/jsmin.php' );
 require_once( PATH_CORE . '/Todoyu.class.php' );
 require_once( PATH_CORE . '/TodoyuDatabase.class.php' );
 require_once( PATH_CORE . '/TodoyuAuth.class.php' );
@@ -84,12 +82,17 @@ require_once( PATH_LIB . '/php/FirePHP/FirePHP.class.php' );
 	// Load dwoo
 require_once( PATH_LIB . '/php/dwoo/dwooAutoload.php' );
 
+	// Load CSS and JS minimizer
+require_once( PATH_LIB . '/php/cssmin.php' );
+require_once( PATH_LIB . '/php/jsmin.php' );
+
 
 	// Register autoloader
 spl_autoload_register( array('Todoyu', 'autoloader') );
 
 
 	// Load global functions
+require_once( PATH_CORE . '/inc/version.php' );
 require_once( PATH_CORE . '/inc/functions.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/plugins.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrict.php' );

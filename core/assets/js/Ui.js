@@ -183,7 +183,18 @@ Todoyu.Ui = {
 	updateContent: function(url, options) {
 		return this.update('content', url, options);
 	},
-
+	
+	
+	
+	/**
+	 * Update content with new html
+	 * 
+	 * @param	String		content
+	 */
+	setContent: function(content) {
+		$('content').update(content);
+	},
+	
 
 
 	/**
