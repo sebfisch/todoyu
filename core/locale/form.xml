@@ -11,6 +11,7 @@
 		<label index="icon.remove">REMOVE RECORD</label>
 		<label index="icon.edit">EDIT RECORD</label>
 		<label index="databaserelation.nolabel">[New entry]</label>
+		<label index="error.notUnique">This field has to be unique</label>
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

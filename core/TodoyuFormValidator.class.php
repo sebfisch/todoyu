@@ -101,7 +101,7 @@ class TodoyuFormValidator {
 			return intval($value) > 0;
 		} else {
 			return TodoyuValidator::isNotZerotime($value);
-		}		
+		}
 	}
 
 
@@ -345,8 +345,6 @@ class TodoyuFormValidator {
 			$checks		= $GLOBALS['CONFIG']['EXT']['user']['isGoodPassword'];
 			$validator	= new TodoyuPasswordValidator($checks);
 
-//			TodoyuDebug::printInFirebug($checks);
-
 			if( $validator->validate($pass) === false ) {
 				$errors	= $validator->getErrors();
 
@@ -357,6 +355,41 @@ class TodoyuFormValidator {
 		}
 
 		return true;
+	}
+
+
+
+	/**
+	 * Validate a field to be unique in the table
+	 *
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement 	$formElement
+	 * @param	Array				$formData
+	 * @return	Bool
+	 */
+	public static function unique($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+		$table	= trim($validatorConfig['table']);
+		$field	= $formElement->getName();
+
+		if( $table === '') {
+			Todoyu::log('Missing tablename in unique form validation for field ' . $formElement->getName(), LOG_LEVEL_ERROR);
+
+			return false;
+		}
+
+			// Check if a record with this fieldvalue already exists
+		$fields	= $field;
+		$where	= Todoyu::db()->backtick($field) . ' = ' . Todoyu::db()->quote($value, true);
+
+		$exists	= Todoyu::db()->hasResult($fields, $table, $where);
+
+		if( $exists ) {
+			$formElement->setErrorMessage('form.error.notUnique');
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 }

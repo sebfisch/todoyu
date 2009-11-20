@@ -390,9 +390,8 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			}
 		}
 
-			// If there are no validations registered, but a required flag is set, check
-			// if there is a required checking function and call it
-		if( sizeof($validations) === 0 && $this->isRequired() ) {
+			// Check for required
+		if( $this->isRequired() ) {
 			if( ! $this->validateRequired() ) {
 				$this->setErrorTrue();
 
