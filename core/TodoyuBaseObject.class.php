@@ -173,7 +173,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	 * Get user of a specific type (create, update, assigned, etc)
 	 *
 	 * @param	String		$type
-	 * @return	User
+	 * @return	TodoyuUser
 	 */
 	public function getUser($type) {
 		$idUser = $this->getUserID($type);
