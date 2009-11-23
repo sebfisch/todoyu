@@ -56,7 +56,8 @@ Todoyu.AjaxResponders = {
 			if( state == 'Complete' && response.hasNoAccess() )	{
 					// Delete onComplete handler to prevent processing an empty respone			
 				delete response.request.options.onComplete;
-				Todoyu.notifyError('[LLL:core.noAccess.errorMessage]');
+				var missingRight = response.getTodoyuHeader('noAccess-right');
+				Todoyu.notifyError('[LLL:core.noAccess.errorMessage] (' + missingRight + ')');
 			}
 			oldRespondToReadyState.call(response.request, readyState);
 		};

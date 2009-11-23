@@ -230,6 +230,7 @@ class TodoyuRightsManager {
 		if( ! allowed($extKey, $right) ) {
 			if( TodoyuRequest::isAjaxRequest() ) {
 				TodoyuHeader::sendNoAccessHeader();
+				TodoyuHeader::sendTodoyuHeader('noAccess-right', $extKey . '/' . $right);
 			} else {
 				$tmpl	= 'core/view/noaccess.tmpl';
 				$data	= array(
