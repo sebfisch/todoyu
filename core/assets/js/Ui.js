@@ -28,15 +28,13 @@ Todoyu.Ui = {
 	 *	@param	unknown_type	options
 	 */
 	update: function(container, url, options) {
-		options = this._setDefaultOptions(options);
+		options = this._getDefaultOptions(options);
 
-		if( ! Todoyu.exists(container) ) {
-			console.log('You tried to update "' + container + '" which is not part of the DOM!');
-		} else {
+		if( Todoyu.exists(container) ) {
 			return new Ajax.Updater(container, url, options);
+		} else {
+			console.log('You tried to update "' + container + '" which is not part of the DOM!');
 		}
-
-
 	},
 
 
@@ -49,12 +47,12 @@ Todoyu.Ui = {
 	 *	@param	unknown_type	options
 	 */
 	replace: function(container, url, options) {
-		options = this._setDefaultOptions(options);
+		options = this._getDefaultOptions(options);
 
-		if( ! Todoyu.exists(container) ) {
-			console.log('You tried to replace "' + container + '" which is not part of the DOM!');
-		} else {
+		if( Todoyu.exists(container) ) {
 			return new Ajax.Replacer(container, url, options);
+		} else {
+			console.log('You tried to replace "' + container + '" which is not part of the DOM!');
 		}
 	},
 
@@ -68,7 +66,7 @@ Todoyu.Ui = {
 	 *	@param	unknown_type	options
 	 */
 	append: function(container, url, options) {
-		options = this._setDefaultOptions(options);
+		options = this._getDefaultOptions(options);
 		options.insertion = 'after';
 
 		return this.update(container, url, options);
@@ -84,7 +82,7 @@ Todoyu.Ui = {
 	 *	@param	unknown_type	options
 	 */
 	insert: function(container, url, options)	{
-		options = this._setDefaultOptions(options);
+		options = this._getDefaultOptions(options);
 		options.insertion = 'bottom';
 
 		return this.update(container, url, options);
@@ -97,7 +95,7 @@ Todoyu.Ui = {
 	 *
 	 *	@param	unknown_type	options
 	 */
-	_setDefaultOptions: function(options) {
+	_getDefaultOptions: function(options) {
 		if( Object.isUndefined(options) ) {
 			options = {};
 		}

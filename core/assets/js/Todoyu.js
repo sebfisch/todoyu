@@ -18,16 +18,20 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Todoyu main container. All other JS containers are (sub-)nodes
+ * of this container
+ */
 var Todoyu = {
 
 	name: 		'Todoyu',
 
 	copyright: 	'Snowflake Productions, Zürich Switzerland',
 
+	/**
+	 * Container for extensions
+	 */
 	Ext: 		{},
-
-	Ui:			{},
-
 
 	/**
 	 *	Enter Description here...
@@ -41,34 +45,7 @@ var Todoyu = {
 
 
 	/**
-	 *	Enter Description here...
-	 *
-	 *	@param	unknown_type	extKey
-	 *	@param	unknown_type	version
-	 *	@param	unknown_type	build
-	 */
-	register: function(extKey, version, build) {
-		this.extReg[extKey] = {
-			'version':	version,
-			'build':	build
-		};
-	},
-
-
-
-	/**
-	 *	Enter Description here...
-	 *
-	 *	@param	unknown_type	extKey
-	 */
-	isInstalled: function(extKey) {
-		return typeof this.extReg[extKey] !== 'undefined';
-	},
-
-
-
-	/**
-	 *	Enter Description here...
+	 *	Basic
 	 *
 	 *	@param	unknown_type	ext
 	 *	@param	unknown_type	controller
@@ -116,7 +93,7 @@ var Todoyu = {
 	 *	@param	unknown_type	options
 	 */
 	send: function(url, options) {
-		options = Todoyu.Ui._setDefaultOptions(options);
+		options = Todoyu.Ui._getDefaultOptions(options);
 
 		return new Ajax.Request(url, options);
 	},
@@ -129,7 +106,7 @@ var Todoyu = {
 	 *	@param	unknown_type	element
 	 */
 	exists: function(element) {
-		if (typeof element === 'object') {
+		if( typeof element === 'object' ) {
 			element = element.id;
 		}
 

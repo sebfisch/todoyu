@@ -58,9 +58,11 @@ class TodoyuCookieLogin {
 							TodoyuAuth::login($idUser);
 							self::setRemainLoginCookie($idUser);
 
+							Todoyu::log('Logged in with cookie, proceed request');
+
 								// Do the same request again
-							TodoyuHeader::reload();
-							exit();
+//							TodoyuHeader::reload();
+//							exit();
 						} else {
 							Todoyu::log('Cookie login failed (username/password)', LOG_LEVEL_SECURITY);
 							self::removeRemainLoginCookie();

@@ -53,8 +53,12 @@ class TodoyuPage {
 	public static function init($template) {
 		self::setTemplate($template);
 
-		// Add assets
+			// Load all page configuration provided by extensions
+		self::loadExtPageConfig();
+
+			// Add core assets
 		self::addCoreAssets();
+			// All all default extension assets
 		self::addDefaultAssets();
 
 		self::addMetatag('Content-Type', $GLOBALS['CONFIG']['FE']['ContentType']);
@@ -93,6 +97,11 @@ class TodoyuPage {
 		foreach($cssFiles as $cssFile) {
 			self::addStylesheet($cssFile['file'], $cssFile['media'], $cssFile['position'], $cssFile['compress'], $cssFile['merge']);
 		}
+	}
+
+
+	private static function loadExtPageConfig() {
+		TodoyuExtensions::loadAllPage();
 	}
 
 

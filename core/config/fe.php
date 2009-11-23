@@ -34,9 +34,5 @@ $CONFIG['FE'] = array(
 	'ContentType'	=> 'text/html; charset=utf-8'
 );
 
-if( TodoyuAuth::isLoggedIn() ) {
-	TodoyuFrontend::addMenuEntry('todoyu', 'LLL:core.tab.todoyu.label', 'javascript:void(0)', 300);
-}
-
 
 ?>

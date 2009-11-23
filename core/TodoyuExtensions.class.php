@@ -256,6 +256,12 @@ class TodoyuExtensions {
 		foreach($extKeys as $extKey) {
 			self::loadConfig($extKey, $type);
 		}
+
+			// Check if a config in core is available
+		$coreConf	= PATH_CONFIG . '/' . $type . '.php';
+		if( is_file($coreConf) ) {
+			require_once($coreConf);
+		}
 	}
 
 
@@ -348,6 +354,18 @@ class TodoyuExtensions {
 		global $CONFIG;
 
 		self::loadAllTypeConfig('panelwidgets');
+	}
+
+
+
+	/**
+	 * Load all page config (tabs, etc)
+	 *
+	 */
+	public static function loadAllPage() {
+		global $CONFIG;
+
+		self::loadAllTypeConfig('page');
 	}
 
 
