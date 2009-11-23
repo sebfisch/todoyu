@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{Label core.noAccess.pageTitle}</title>
+<style type="text/css">
+body {
+	font-family:Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+
+<body>
+<h1>{Label core.noAccess.pageTitle}</h1>
+<p>{Label core.noAccess.errorMessage}</p>
+<p><a href="javascript:history.back()">{Label core.noAccess.goBackToLastPage}</a></p>
+<br />
+<br />
+<p>{Label core.noAccess.contactAdmin}</p>
+<table width="500" border="0" cellspacing="0" cellpadding="5">
+  <tr>
+    <td width="120"><strong>{Label core.noAccess.requestURL}:</strong></td>
+    <td width="360">{htmlentities $requestURL}</td>
+  </tr>
+  <tr>
+    <td><strong>{Label core.noAccess.missingRight}:</strong></td>
+    <td>{$extKey} / {$right}</td>
+  </tr>
+</table>
+</body>
+</html>

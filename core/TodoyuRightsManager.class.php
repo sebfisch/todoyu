@@ -217,6 +217,36 @@ class TodoyuRightsManager {
 		return $groupRights;
 	}
 
+
+
+	/**
+	 * Restrict access
+	 * If user has no the right, display error message (or send error header for ajax requests)
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$right
+	 */
+	public static function restrict($extKey, $right) {
+		if( ! allowed($extKey, $right) ) {
+			if( TodoyuRequest::isAjaxRequest() ) {
+				TodoyuHeader::sendNoAccessHeader();
+			} else {
+				$tmpl	= 'core/view/noaccess.tmpl';
+				$data	= array(
+					'requestURL'	=> $_SERVER['REQUEST_URI'],
+					'extKey'		=> $extKey,
+					'right'			=> $right
+				);
+
+				ob_end_clean();
+				echo render($tmpl, $data);
+			}
+
+			Todoyu::log('Access denied (' . $extKey . '/' . $right . ')', LOG_LEVEL_SECURITY);
+			exit();
+		}
+	}
+
 }
 
 

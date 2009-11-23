@@ -24,7 +24,7 @@
 		<label index="reset">Reset</label>
 		<label index="update">Update</label>
 		<label index="search">Suche</label>
-		<label index="back">Back</label>		
+		<label index="back">Back</label>
 		<label index="visibleForCustomer">Visible for customer</label>
 		<label index="filter">Filter</label>
 		<label index="type">Type</label>
@@ -44,6 +44,12 @@
 		<label index="deadline">Deadline</label>
 		<label index="closeWindow">close window</label>
 		<label index="noAccess.errorMessage">You have no access to the requested data</label>
+<!--  ......................................... added after 20091122 -->
+		<label index="noAccess.pageTitle">No Access</label>
+		<label index="noAccess.goBackToLastPage">Go back to last page</label>
+		<label index="noAccess.contactAdmin">If you think should have access, report the following data to your todoyu administrator:</label>
+		<label index="noAccess.requestURL">Request URL</label>
+		<label index="noAccess.missingRight">Missing right</label>
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
