@@ -98,11 +98,11 @@ class TodoyuAuth {
 	 */
 	public static function login($idUser) {
 			// Log successful login
-		Todoyu::log('Login', LOG_LEVEL_NOTICE, $idUser);
+		Todoyu::log('Login user (' . $idUser . ')', LOG_LEVEL_NOTICE, $idUser);
 			// Generate a new session id for the logged in user
-		session_regenerate_id(true);
+		$x = session_regenerate_id(true);
 			// Set current user id
-		TodoyuSessionManager::set('userid', intval($idUser) );
+		TodoyuSessionManager::set('userid', intval($idUser));
 			// Reload rights
 		TodoyuRightsManager::reloadRights();
 	}

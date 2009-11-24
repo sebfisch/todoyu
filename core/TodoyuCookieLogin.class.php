@@ -48,6 +48,8 @@ class TodoyuCookieLogin {
 					// Decrypt cookie data
 				$cookieData	= TodoyuDiv::decrypt($cookieValue);
 
+				Todoyu::log('Try to login with cookie, is cookie data valid?');
+
 					// If
 				if( is_array($cookieData) ) {
 					$userAgendHash	= self::getUserAgentShortHash();
@@ -60,9 +62,7 @@ class TodoyuCookieLogin {
 
 							Todoyu::log('Logged in with cookie, proceed request');
 
-								// Do the same request again
-//							TodoyuHeader::reload();
-//							exit();
+							// Proceed with the request, because we're logged in and it's all ok
 						} else {
 							Todoyu::log('Cookie login failed (username/password)', LOG_LEVEL_SECURITY);
 							self::removeRemainLoginCookie();

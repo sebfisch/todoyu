@@ -55,15 +55,14 @@ class TodoyuRightsManager {
 			self::$rights = TodoyuSessionManager::get('rights');
 		} else {
 			$userGroupIDs	= TodoyuAuth::getUser()->getGroupIDs();
-//			$userGroupIDs[]	= TodoyuAuth::getUser()->getType();
-			if(sizeof($userGroupIDs) > 0)	{
-				$fields	= '	ext,
-						`right`';
-				$tables	= self::TABLE;
+
+			if( sizeof($userGroupIDs) > 0 )	{
+				$fields	= '	ext, `right`';
+				$table	= self::TABLE;
 
 				$where	= '	id_group IN(' . implode(',', $userGroupIDs) . ')';
 
-				$rights	= Todoyu::db()->getArray($fields, $tables, $where);
+				$rights	= Todoyu::db()->getArray($fields, $table, $where);
 
 				foreach($rights as $right) {
 					self::$rights[$right['ext']][$right['right']] = 1;
@@ -84,14 +83,17 @@ class TodoyuRightsManager {
 	 * @return	Boolean
 	 */
 	public static function isAllowed($extKey, $right) {
-			// Rights check disabled at the moment
+			// Allow all for admin
 		if( TodoyuAuth::isAdmin() ) {
 			return true;
 		}
+
+			// Load rights if not stored in object
 		if( is_null(self::$rights) ) {
 			self::loadRights();
 		}
 
+			// Get ID of the extension to access to right
 		$extID = TodoyuExtensions::getExtID($extKey);
 
 		return intval(self::$rights[$extID][$right]) === 1;
@@ -108,9 +110,11 @@ class TodoyuRightsManager {
 	 * @return	Integer
 	 */
 	public static function setRight($extID, $idGroup, $right) {
-		$data	= array('ext'		=> abs($extID),
-						'right'		=> $right,
-						'id_group'	=> abs($idGroup));
+		$data	= array(
+			'ext'		=> abs($extID),
+			'right'		=> $right,
+			'id_group'	=> abs($idGroup)
+		);
 
 		return Todoyu::db()->doInsert(self::TABLE, $data);
 	}

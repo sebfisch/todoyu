@@ -350,6 +350,15 @@ Todoyu.Ui = {
 			window.setTimeout(window.scrollBy, 10, 0, -headerHeight);
 		}
 	},
+	
+	
+	
+	/**
+	 * Scroll to top of the page
+	 */
+	scrollToTop: function() {
+		window.scroll(0,0);
+	},
 
 
 
