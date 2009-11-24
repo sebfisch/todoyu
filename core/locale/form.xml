@@ -12,6 +12,7 @@
 		<label index="icon.edit">EDIT RECORD</label>
 		<label index="databaserelation.nolabel">[New entry]</label>
 		<label index="error.notUnique">This field has to be unique</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

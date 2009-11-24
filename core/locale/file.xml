@@ -9,6 +9,7 @@
 		<label index="size.b">B</label>
 		<label index="filename">Filename</label>
 		<label index="filesize">Filesize</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>

@@ -51,6 +51,7 @@
 		<label index="monthly">Monthly</label>
 		<label index="yearly">Yearly</label>
 		<label index="today">Today</label>
+<!--  ......................................... added after 20091122 -->
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
