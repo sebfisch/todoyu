@@ -105,17 +105,17 @@ Todoyu.Time = {
 	 *	@todo	comment
 	 */		
 	getShiftedTime: function(baseTime, step, direction) {
-		var factor	= direction === 'up' ? 1 : -1 ;
+		var factor	= (direction === 'up' ? 1 : -1);
 		var baseTime= this.getDayStart(baseTime);
-		var date	= new Date(baseTime*1000);
+		var date	= new Date(baseTime * 1000);
 
 		if( step === 'month' ) {
 			if( direction === 'up' && date.getMonth() == 11 ) {
+				date.setYear(date.getFullYear() + 1);
 				date.setMonth(0);
-				date.setYear(date.getYear + 1);
 			} else if( direction === 'down' && date.getMonth() == 0 ) {
-				date.setMonth(11);
-				date.setYear(date.getYear - 1);
+				date.setYear(date.getFullYear() - 1);
+				date.setMonth(11);		
 			} else {
 				date.setMonth(date.getMonth() + factor);
 			}
