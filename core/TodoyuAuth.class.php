@@ -100,11 +100,13 @@ class TodoyuAuth {
 			// Log successful login
 		Todoyu::log('Login user (' . $idUser . ')', LOG_LEVEL_NOTICE, $idUser);
 			// Generate a new session id for the logged in user
-		$x = session_regenerate_id(true);
+		session_regenerate_id(true);
 			// Set current user id
 		TodoyuSessionManager::set('userid', intval($idUser));
 			// Reload rights
 		TodoyuRightsManager::reloadRights();
+			// Set new user in Todoyu object
+		Todoyu::resetUser();
 	}
 
 

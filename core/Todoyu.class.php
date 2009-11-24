@@ -159,6 +159,16 @@ class Todoyu {
 
 
 	/**
+	 * Reset user object if a new user is logged in
+	 *
+	 */
+	public static function resetUser() {
+		self::$user = TodoyuAuth::getUser();
+	}
+
+
+
+	/**
 	 * Get system language
 	 * If user is logged in, its preference language
 	 * If not logged in but the browser provides a language, use browser language
