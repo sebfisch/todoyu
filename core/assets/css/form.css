@@ -81,7 +81,7 @@ label {
 
 	label span.required {}
 
-	
+
 /* -----------------
 	HTML building
    -----------------*/
@@ -173,7 +173,7 @@ div.fElement {
 		}
 
 		.typeDatabaseRelation .foreignRecordsActionControll a.add {
-			background:transparent url(../img/bg_button_sprite.png) no-repeat scroll 0px -874px;
+			background:url(../img/icons.png) no-repeat 0 -569px;
 		}
 
 		.typeDatabaseRelation .databaseRelation {
@@ -187,7 +187,7 @@ div.fElement {
 			float:right;
 		}
 		.typeDatabaseRelation .databaseRelation span.additionalStuff a.remove {
-			background:transparent url(../img/bg_button_sprite.png) no-repeat scroll 0px -842px;
+			background:url(../img/icons.png) no-repeat 0 -539px;
 		}
 
 

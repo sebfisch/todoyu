@@ -6,6 +6,9 @@ button {
 	border:0px none !important;
 	color:#000;
 }
+button .icon {
+	background-repeat:no-repeat;
+}
 
 *+html button {
 	position:relative;
@@ -67,25 +70,28 @@ html>/**/body button span.rgt { /* IE8 */
 	margin:0px;
 }
 
+/*
 	button span.hasIcon {
 		background-image: url('../img/bg_button_sprite.png');
 	}
 
+
 	button span.iconSave {
 		background-position:8px 0;
 	}
+*/
 
 	form fieldset.buttons button.buttonSave {
 		margin-left:260px;
 	}
 
 
-	button span.iconCancel {
-		background-position:8px -60px;
+	button.cancel .icon {
+		background:url(../img/icons.png) no-repeat -330px;
 	}
 
-	button span.iconDelete {
-		background-position:8px -930px;
+	button.delete .icon {
+		background:url(../img/icons.png) no-repeat -360px;
 	}
 
 /* spezial button */

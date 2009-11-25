@@ -125,8 +125,6 @@ Todoyu.Ui = {
 	hide: function(idElement) {
 		if( Todoyu.exists(idElement) ) {
 			$(idElement).hide();
-		} else {
-			console.log('not: ' + idElement);
 		}
 	},
 
@@ -350,9 +348,9 @@ Todoyu.Ui = {
 			window.setTimeout(window.scrollBy, 10, 0, -headerHeight);
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Scroll to top of the page
 	 */
