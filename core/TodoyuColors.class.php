@@ -224,7 +224,7 @@ class TodoyuColors {
 
 		$numOfColors = count($GLOBALS['CONFIG']['COLORS']);
 
-		if($position > $numOfColors-1)	{
+		if( $position > $numOfColors-1 )	{
 			$position = $position - ($position - ($position % ($numOfColors)));
 		}
 

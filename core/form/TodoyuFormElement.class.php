@@ -524,7 +524,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Array
 	 */
 	public function getWizardConfiguration()	{
-		if($this->hasAttribute('wizard'))	{
+		if( $this->hasAttribute('wizard') )	{
 			$wizardConf = array(
 				'hasWizard'		=> true,
 				'wizardConf'	=> $this->getAttribute('wizard')
@@ -532,7 +532,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 			$wizardConf['wizardConf']['idRecord']	= intval($this->getForm()->getRecordID());
 
-			if($wizardConf['wizardConf']['displayCondition'])	{
+			if( $wizardConf['wizardConf']['displayCondition'] )	{
 				$wizardConf['hasWizard'] = TodoyuDiv::callUserFunctionArray($wizardConf['wizardConf']['displayCondition'], $wizardConf);
 			}
 		}

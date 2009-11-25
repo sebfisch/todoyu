@@ -46,7 +46,7 @@ class TodoyuHtmlFilter {
 	 * @return	String
 	 */
 	public static function clean($inputHTML) {
-		if($inputHTML === null)	{
+		if( $inputHTML === null )	{
 			return '';
 		}
 		$badTags	= self::getBadTags();

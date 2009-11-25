@@ -315,7 +315,7 @@ class TodoyuForm implements ArrayAccess {
 				$field->setValue($value);
 			}
 
-//			if($this->getValidateForm())	{
+//			if( $this->getValidateForm() )	{
 //				$this->validateField($field);
 //			}
 		}
@@ -350,8 +350,8 @@ class TodoyuForm implements ArrayAccess {
 	 * @param Obj $field
 	 */
 	protected function checkRequiredFields($field)	{
-		if($field->hasAttribute('required'))	{
-			if(! TodoyuValidator::isNotEmpty($this->formdata[$field->getName()]))	{
+		if( $field->hasAttribute('required') )	{
+			if( ! TodoyuValidator::isNotEmpty($this->formdata[$field->getName()]) )	{
 				$this->invalidFields[$field->getName()] = true;
 				$field->setAttribute('errorLabel', 'LLL:form.field.isrequired');
 				$field->setAttribute('hasError', true);

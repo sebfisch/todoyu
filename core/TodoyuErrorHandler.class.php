@@ -51,7 +51,7 @@ class TodoyuErrorHandler {
 
 			if( TodoyuRequest::isAjaxRequest() || $type === 'PLAIN' ) {
 				echo $exception->getErrorAsPlain();
-			} elseif($type === 'JSON' ) {
+			} elseif( $type === 'JSON' ) {
 				echo $exception->getErrorAsJson();
 			} else {
 				echo $exception->getErrorAsHtml(true);

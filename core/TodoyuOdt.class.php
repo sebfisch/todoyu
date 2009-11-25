@@ -208,7 +208,7 @@ class TodoyuOdt {
 			// take all what's not AFTER the header-rows
 		$approach = mb_substr($approach, mb_strpos($approach, '</table:table-header-rows>') + mb_strlen('</table:table-header-rows>'));
 
-		if($which > 1)	{	// drop all whats behind the end of the table's row
+		if( $which > 1 )	{	// drop all whats behind the end of the table's row
 			for($i = 1; $i < $which; $i++)	{	//here we kill first all unused rows which are before the needed one.
 				$tmpApproach	=	mb_substr($approach, 0, mb_strpos($approach, '</table:table-row>')+mb_strlen('</table:table-row>'));
 				$approach		=	str_replace($tmpApproach, '', $approach);
@@ -266,7 +266,7 @@ class TodoyuOdt {
 
 		$this->compressToZip($this->tmpOdtFile, $this->tmpOdtDir);
 
-		if($odtPath) {
+		if( $odtPath ) {
 			$command = 'cp '.$this->tmpOdtFile.' '.$odtPath;
 			$this->exec($command);
 		}
