@@ -465,7 +465,7 @@ class TodoyuArray {
 	 *	@return	Array
 	 */
 	public static function unsetEntryByValue($value, array $array)	{
-		if(in_array($value, $array))	{
+		if( in_array($value, $array) )	{
 			unset($array[array_search($value, $array)]);
 		}
 
@@ -522,6 +522,28 @@ class TodoyuArray {
 
 
 	/**
+	 * Flatten array
+	 *
+	 *	@param	Array	$array
+	 *	@return	Array
+	 */
+	public static function flatten(array $array){ //flattens multi-dim arrays (distroys keys)
+		$flattened = array();
+
+		foreach($array as $value){
+			if( is_array($value) ){
+				$flattened = array_merge($flattened, self::flatten($value));
+			}else{
+				array_push($flattened, $value);
+			}
+		}
+
+		return $flattened;
+	}
+
+
+
+	/**
 	 * Remove array entries by their value
 	 *
 	 * @param	Array		$array
@@ -548,7 +570,7 @@ class TodoyuArray {
 	 * @param	String	$key
 	 * @return	Array
 	 */
-	public static function removeDuplicates($array, $key) {
+	public static function removeDuplicates(array $array, $key) {
 		$vals	 		= array();
 		$cleanedArray	= array();
 
@@ -556,7 +578,7 @@ class TodoyuArray {
 		foreach($array as $entryID => $entryData) {
 			$value		= $entryData[ $key ];
 
-			if (! in_array($value, $vals)) {
+			if ( ! in_array($value, $vals) ) {
 				$cleanedArray[ $entryID ]	= $entryData;
 			}
 
