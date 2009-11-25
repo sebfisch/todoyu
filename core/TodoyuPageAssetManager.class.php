@@ -125,7 +125,7 @@ class TodoyuPageAssetManager {
 			// Add javascripts
 		$jsFiles	= self::getJavascripts();
 
-			// Add all js files
+			// Add all JS files
 		foreach($jsFiles as $jsFile) {
 			TodoyuPage::add('jsFiles', array(
 				'file' => $jsFile
@@ -135,7 +135,7 @@ class TodoyuPageAssetManager {
 			// Add stylesheets
 		$cssFiles	= self::getStylesheets();
 
-			// Add all css files
+			// Add all CSS files
 		foreach($cssFiles as $cssFile) {
 			TodoyuPage::add('cssFiles', array(
 				'file' 	=> $cssFile['file'],
@@ -440,7 +440,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Get single css files (non-merge)
+	 * Get single CSS files (non-merge)
 	 *
 	 * @param	Array		$fileConfigs
 	 * @return	Array		List of file paths with media type attribute
@@ -487,7 +487,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Get path to cached css file
+	 * Get path to cached CSS file
 	 *
 	 * @param	String		$pathToFile			Path to uncached file
 	 * @param	Boolean		$compressed			Compress content with cssmin?
@@ -509,7 +509,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Get merged css files (one for each media type)
+	 * Get merged CSS files (one for each media type)
 	 *
 	 * @param	Array		$fileConfigs
 	 * @return	Array
@@ -568,7 +568,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Compress css code
+	 * Compress CSS code
 	 *
 	 * @param	String		$cssCode
 	 * @return	String
@@ -580,7 +580,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 *  Rewrite relative css paths in files
+	 *  Rewrite relative CSS paths in files
 	 *
 	 * @param	String		$cssCode
 	 * @param	String		$pathToUncompressedFile
@@ -607,7 +607,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Callback for make a nicer and shorter path in the css file url attributes
+	 * Callback for make a nicer and shorter path in the CSS file url attributes
 	 *
 	 * @param	Array		$match		Matching data array
 	 * @return	String

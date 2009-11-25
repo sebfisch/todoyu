@@ -82,7 +82,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Add js and css files which are used by the core
+	 * Add JS and CSS files which are used by the core
 	 *
 	 */
 	private static function addCoreAssets() {
@@ -251,7 +251,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Load extension css files
+	 * Load extension CSS files
 	 *
 	 * @param	String		$ext
 	 * @param	String		$type
@@ -357,7 +357,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Add js functions which shall be called on dom loaded
+	 * Add JS functions which shall be called on dom loaded
 	 *
 	 * @param	String		$function
 	 */

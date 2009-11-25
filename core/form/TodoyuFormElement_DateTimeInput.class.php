@@ -44,7 +44,7 @@ class TodoyuFormElement_DateTimeInput extends TodoyuFormElement {
 
 
 	/**
-	 * Get field data. Convert timestamps into text dates and generate js code
+	 * Get field data. Convert timestamps into text dates and generate JS code
 	 *
 	 * @return	Array
 	 */

@@ -125,7 +125,7 @@ abstract class TodoyuPanelWidget {
 
 
 	/**
-	 * Add a css class
+	 * Add a CSS class
 	 *
 	 * @param	String		$class
 	 */
