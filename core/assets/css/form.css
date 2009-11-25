@@ -1,4 +1,4 @@
-	/* New css */
+	/* New CSS */
 
 form {
 	margin:0;
@@ -8,43 +8,43 @@ form {
 
 	fieldset {
 		float:left; /* is a bugfix */
-		width: 100%;
+		width:100%;
 		margin:0;
 		padding:0;
-		border: none;
+		border:none;
 	}
 
 	* html fieldset {height:1%} /* IE6 */
 
-		/* buttons, footerline */
+			/* buttons, footerline */
 		fieldset.buttons {
 			margin:0 0 0.5em 0;
 			padding:0.2em 0;
 		}
 
 	legend {
-		display: none;
+		display:none;
 	}
 
 input,
 textarea,
 select {
-	position: relative;
-	width: 100%;
-	border: 1px solid #000;
+	position:relative;
+	width:100%;
+	border:1px solid #000;
 }
 
 input {}
 
 	input.checkbox,
 	input.radio {
-		border: none;
-		width: auto;
+		border:none;
+		width:auto;
 	}
 
 	input.button {
-		border: none;
-		width: auto;
+		border:none;
+		width:auto;
 	}
 
 	input.datetime {
@@ -68,11 +68,11 @@ select {}
 	select.datetime   {width:150px;}
 
 	select optgroup {
-		padding-top: 5px;
+		padding-top:5px;
 	}
 
 	select optgroup option {
-		background: #fff;
+		background:#fff;
 	}
 
 label {
@@ -87,20 +87,20 @@ label {
    -----------------*/
 
 div.fElement {
-	position: relative;
+	position:relative;
 	margin:0;
 	padding:3px 2px 3px 2px;
-	height: auto !important;
-	height: 1%;
+	height:auto !important;
+	height:1%;
 }
 
 	/* label */
 	div.fElement .fLabel {
-		display: inline;
-		float: left;
-		text-align: right;
-		width: 39%;
-		padding-right: 1%;
+		display:inline;
+		float:left;
+		text-align:right;
+		width:39%;
+		padding-right:1%;
 	}
 	div.fElement .fLabel label {}
 
@@ -109,9 +109,9 @@ div.fElement {
 
 		/* input */
 	div.fElement .fField {
-		display: inline;
-		float: right;
-		width: 59%;
+		display:inline;
+		float:right;
+		width:59%;
 		padding-right:3px;
 	}
 
@@ -119,7 +119,7 @@ div.fElement {
 	}
 
 	div.fElement .fClear {
-		clear: both;
+		clear:both;
 	}
 
 		/* Types */
@@ -153,7 +153,7 @@ div.fElement {
 			text-align:left;
 		}
 			/* checkbox in a fField element. */
-			/* example: Address in Ext Contact */
+			/* example:Address in Ext Contact */
 			.fField div.typeCheckbox .fLabel {
 				width:54%;
 			}
@@ -181,7 +181,7 @@ div.fElement {
 		}
 		.typeDatabaseRelation .databaseRelation span.label {
 			float:left;
-			cursor: pointer;
+			cursor:pointer;
 		}
 		.typeDatabaseRelation .databaseRelation span.additionalStuff {
 			float:right;
@@ -201,11 +201,11 @@ div.fElement {
    -----------------*/
 
 input, textarea, select {
-	border-color: #848484 #e8e5de #e8e5de #848484;
+	border-color:#848484 #e8e5de #e8e5de #848484;
 }
 
 fieldset div.odd {
-	background-color: #f3f3f3;
+	background-color:#f3f3f3;
 }
 
 fieldset div.even {}
@@ -214,7 +214,7 @@ fieldset.buttons,
 fieldset.buttons div.odd,
 fieldset.buttons div.even,
 fieldset.buttons button span.rgt {
-	background-color: #e2e2e2;
+	background-color:#e2e2e2;
 }
 
 
@@ -243,227 +243,228 @@ span.selectScrollbarHide {display:block;}
 	}
 
 .commentElement {
-	position: relative;
-	height: auto !important;
-	height: 1px;
+	position:relative;
+	height:auto !important;
+	height:1px;
 }
 
 .floatingElement .formContainer,
 .floatingElement .formElement,
 .floatingElement .commentElement {
-	float: left;
+	float:left;
 }
 
 .floatingElement .formContainer .formContainer,
 .floatingElement .formContainer .formElement,
 .floatingElement .formContainer .commentElement {
-	float: none;
+	float:none;
 }
 
 .formElement .checkbox,
 .formElement .radio,
 .formElement .button {
-	width: auto !important;
+	width:auto !important;
 }
 
 	/* --- right aligned Label --- */
 	/* Float Rendering */
 .floatingElement {
-	float: left;
-	width: 49%;
+	float:left;
+	width:49%;
 }
 
 	/* none floating Input */
 .noneFloatingInput .formElement {
-	width: 100%;
+	width:100%;
 }
 
 .noneFloatingInput .formElement .formLabel,
 .noneFloatingInput .formElement .formField {
-	width: 100%;
+	width:100%;
 }
 
 .noneFloatingInput .formElement .formLabel {
-	display: block;
-	float: none;
-	text-align: left;
+	display:block;
+	float:none;
+	text-align:left;
 }
 
 .noneFloatingInput .formElement .formField {
-	display: block;
-	float: none;
+	display:block;
+	float:none;
 }
 
 .noneFloatingInput .formElement input,
 .noneFloatingInput .formElement textarea,
 .noneFloatingInput .formElement select,
 .noneFloatingInput .formElement fieldset {
-	width: 100%;
+	width:100%;
 }
 
-/* --- required element after --- */
+	/* --- required element after --- */
 .requiredElement span {
-	position: static;
+	position:static;
 }
 
-/* --- right floating Input --- */
+	/* --- right floating Input --- */
 .formElement .formLabel {
-	padding-right: 2%;
-	width: 39%;
+	padding-right:2%;
+	width:39%;
 }
 
 .formElement .formField {
-	width: 58%;
+	width:58%;
 }
 
 .formElement .formLabel {
-	display: inline;
-	float: left;
+	display:inline;
+	float:left;
 }
 
 .formElement .formField {
-	display: inline;
-	float: right;
+	display:inline;
+	float:right;
 }
 
 .formElement input,
 .formElement textarea,
 .formElement select {
-	width: 100%;
+	width:100%;
 }
 
 .formElement textarea {
-	height: 100px;
+	height:100px;
 }
 
 .dateElement input {
-	width: 73px !important;
-	width: 77px;
-	margin-right: 10px;
-	float: left;
+	width:73px !important;
+	width:77px;
+	margin-right:10px;
+	float:left;
 }
 
-/* --- left floating radio --- */
+	/* --- left floating radio --- */
 .formElement fieldset input {
-	clear: left;
-	float: left;
-	height: 18px;
+	clear:left;
+	float:left;
+	height:18px;
 }
 
 .formElement fieldset label {
-	float: left;
-	width: 88% !important;
-	width: 83%;
-	line-height: 18px;
+	float:left;
+	width:88% !important;
+	width:83%;
+	line-height:18px;
 }
 
 *+html .formElement fieldset label {
-	width: 83% !important;
+	width:83% !important;
 }
 
-/* formFieldRowDiv [+] and [-] elements */
+	/* formFieldRowDiv [+] and [-] elements */
 .formFieldRowDiv {
-	display: block;
-	padding: 5px 10px;
-	background: #d5dee5;
+	display:block;
+	padding:5px 10px;
+	background:#d5dee5;
 }
 
 .formFieldRowDiv_link {
-	display: block;
-	padding: 5px 10px;
-	background: #E5E5E5;
+	display:block;
+	padding:5px 10px;
+	background:#E5E5E5;
 	margin:0 0 4px 0;
 }
 
 .formLabel .fieldHasError label{
-	color: red;
+	color:red;
 }
 
-.formLabel .errorMessage {
-	color: red;
-	font-style: italic;
+.formLabel .errorMessage, .fField span.errorMessage {
+	color:red;
+	font-style:italic;
+	white-space:nowrap;
 }
 
 
-/* autocomplete list*/
+	/* autocomplete list*/
 .div-autocompletion	{
-		z-index: 100;
+		z-index:100;
 	}
 
 	.div-autocompletion li{
-		background: #F0F0EE;
-		border: 0px solid #CCCCCC;
-		border-width: 0 1px 1px 1px;
-		padding: 2px 0 2px 3px;
+		background:#F0F0EE;
+		border:0px solid #CCCCCC;
+		border-width:0 1px 1px 1px;
+		padding:2px 0 2px 3px;
 	}
 
 
 	.div-autocompletion li.selected {
-		background: #d5dee5;
+		background:#d5dee5;
 	}
 
 	.div-autocompletion .empty{
-		background: none;
-		border: none;
-		border-width: 0 0 0 0;
-		padding: 0 0 0 0;
+		background:none;
+		border:none;
+		border-width:0 0 0 0;
+		padding:0 0 0 0;
 	}
-
 
 input.narrowInput {
 	width:22px;
 }
+
 label.narrowInput {
 	margin:0 8px 0 0;
 }
 
 .formElement.fieldname-save {
-	margin: 12px 0 0 0;
-	background-color: #E5EFF8;
+	margin:12px 0 0 0;
+	background-color:#E5EFF8;
 }
 
 .formElement .databaseRelation {
-	margin-top: 5px;
+	margin-top:5px;
 }
 
 .formElement .databaseRelation .formtrigger {
-	padding: 5px 0 5px 19px;
+	padding:5px 0 5px 19px;
 }
 
 .formElement .databaseRelation .formtrigger a.remove {
-	background: transparent url(../img/icons_dev.png) no-repeat 0 -1610px;
-	height: 16px;
-	width: 16px;
-	position: absolute;
-	right: 5px;
+	background:transparent url(../img/icons_dev.png) no-repeat 0 -1610px;
+	height:16px;
+	width:16px;
+	position:absolute;
+	right:5px;
 }
 
 .formElement .databaseRelation .closed {
-	background: #e5eff8 url(../img/toggle_plus.png) no-repeat 5px 8px;
+	background:#e5eff8 url(../img/toggle_plus.png) no-repeat 5px 8px;
 }
 
 .formElement .databaseRelation .open {
-	background: #e5eff8 url(../img/toggle_minus.png) no-repeat 5px 8px;
+	background:#e5eff8 url(../img/toggle_minus.png) no-repeat 5px 8px;
 }
 
 .formElement .foreignRecordsActionControll {
-	height: 30px;
-	background-color: #a8c7de
+	height:30px;
+	background-color:#a8c7de
 }
 
 .formElement .foreignRecordsActionControll a {
-	background: transparent url(../img/icons_dev.png) no-repeat -2px -292px;
-	height: 16px;
-	width: 17px;
-	position: absolute;
-	top: 7px;
-	right: 7px;
+	background:transparent url(../img/icons_dev.png) no-repeat -2px -292px;
+	height:16px;
+	width:17px;
+	position:absolute;
+	top:7px;
+	right:7px;
 }
 
 .fField span.wizardIcon  {
-	height: 16px;
-	width: 16px;
-	display: block;
-	float: right;
-	background: transparent url(../img/icons_dev.png) no-repeat 0 -2100px;
+	height:16px;
+	width:16px;
+	display:block;
+	float:right;
+	background:transparent url(../img/icons_dev.png) no-repeat 0 -2100px;
 }
