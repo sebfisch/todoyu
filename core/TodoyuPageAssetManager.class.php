@@ -170,7 +170,7 @@ class TodoyuPageAssetManager {
 		$modTimes	= '';
 
 		foreach($files as $file) {
-			if(is_file($file))	{
+			if( is_file($file) )	{
 				$modTimes .= filemtime($file);
 			}
 		}
@@ -533,7 +533,7 @@ class TodoyuPageAssetManager {
 				$mergeCode	= '';
 
 				foreach($mediaFileConfigs as $fileConfig) {
-					if(is_file($fileConfig['file']))	{
+					if( is_file($fileConfig['file']) )	{
 							// Load file content
 						$fileCode	= file_get_contents($fileConfig['file']);
 							// Rewrite external media paths (url())

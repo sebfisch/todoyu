@@ -311,7 +311,7 @@ class TodoyuOdt {
 	 * @param	String	$source
 	 */
 	protected function compressToZip($destination, $source)	{
-		if(is_dir($source))	{
+		if( is_dir($source) )	{
 			$command = 'cd \''. $source . '\' && zip -r \''. $destination . '\' *';
 			$this->exec($command);
 		}
@@ -326,7 +326,7 @@ class TodoyuOdt {
 	 * @param	String	$source
 	 */
 	protected function extractFromZip($destination, $source)	{
-		if(is_file($source) && is_dir($destination))	{
+		if( is_file($source) && is_dir($destination) )	{
 			$command = 'unzip \'' . $source . '\' -d \'' . $destination. '\'';
 			$this->exec($command);
 		}

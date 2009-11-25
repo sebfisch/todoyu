@@ -318,7 +318,7 @@ class TodoyuFormValidator {
 	public static function minLengthIfNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData)	{
 		$minLength	= $validatorConfig['field'];
 
-		if(strlen($value) == 0)	{
+		if( strlen($value) == 0 )	{
 			return true;
 		}
 

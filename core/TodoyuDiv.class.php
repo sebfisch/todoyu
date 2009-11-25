@@ -216,7 +216,7 @@ class TodoyuDiv {
 	 */
 	public static function validEmail($email)	{
 		$email = trim ($email);
-		if(strstr($email,' ')) {
+		if( strstr($email,' ') ) {
 			return false;
 		}
 
