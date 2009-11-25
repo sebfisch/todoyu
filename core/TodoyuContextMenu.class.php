@@ -87,6 +87,7 @@ class TodoyuContextMenu {
 
 			// Sort items
 		$this->elements = TodoyuArray::sortByLabel($this->elements, 'position');
+
 			// Parse labels and jsActions
 		$this->elements	= $this->parseElements($this->elements);
 	}
