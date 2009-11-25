@@ -83,6 +83,10 @@ class TodoyuRightsManager {
 	 * @return	Boolean
 	 */
 	public static function isAllowed($extKey, $right) {
+			// Not logged in user have no rights at all
+		if( ! TodoyuAuth::isLoggedIn() ) {
+			return false;
+		}
 			// Allow all for admin
 		if( TodoyuAuth::isAdmin() ) {
 			return true;
