@@ -51,6 +51,7 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 			$this->setType('button');
 		}
 
+		$this->setAttribute('noIcon', $this->hasAttribute('noIcon'));
 		$this->setAttribute('noStorage', true);
 	}
 
@@ -84,7 +85,7 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 	 * @return	Array
 	 */
 	protected function getData() {
-		$this->setAttribute('text', TodoyuDiv::getLabel($this->getAttribute('text')));
+//		$this->setAttribute('text', TodoyuDiv::getLabel($this->getAttribute('text')));
 
 		if( $this->hasAttribute('onclick') ) {
 			$this->setAttribute('onclick', $this->getForm()->parseWithFormData($this->getAttribute('onclick')));
@@ -95,7 +96,7 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 			$this->setAttribute('title', $this->getForm()->parseWithFormData( $title ) );
 		}
 
-		return parent::getData();;
+		return parent::getData();
 	}
 
 
@@ -109,6 +110,8 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 		$tmpl	= $this->getTemplate();
 		$data	= $this->getData();
 		$data['odd'] = $odd;
+
+//		TodoyuDebug::printHtml($tmpl);
 
 		return render($tmpl, $data);
 	}

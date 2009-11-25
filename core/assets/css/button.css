@@ -81,18 +81,7 @@ html>/**/body button span.rgt { /* IE8 */
 	}
 */
 
-	form fieldset.buttons button.buttonSave {
-		margin-left:260px;
-	}
 
-
-	button.cancel .icon {
-		background:url(../img/icons.png) no-repeat -330px;
-	}
-
-	button.delete .icon {
-		background:url(../img/icons.png) no-repeat -360px;
-	}
 
 /* spezial button */
 /*
@@ -114,15 +103,30 @@ button.button span {
 }
 */
 
+/*
+button.save {
+	margin-left:260px;
+}
+*/
 
-
-button.createDateButton {
-	margin-left:202px !important;
-	padding-right: 12px !important;
-	padding-left: 20px !important;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -391px;
+button.save .icon {
+	background:url(../img/icons.png) no-repeat 0 -209px;
 }
 
+div.fField button.save {
+	margin-left:180px;
+}
+
+button.cancel .icon {
+	background:url(../img/icons.png) no-repeat 0 -328px;
+}
+
+button.delete .icon {
+	background:url(../img/icons.png) no-repeat 0 -360px;
+}
+
+
+/*
 button.save span {
 	padding-right: 20px;
 	padding-left: 30px;
@@ -164,7 +168,7 @@ button.exportPdf span {
 	padding-left: 30px;
 	background: url(../img/sprite-button_icons.png) no-repeat 0 -64px;
 }
-
+*/
 /* spezial input.buttons */
 input.button {
 	padding: 2px 0 1px;

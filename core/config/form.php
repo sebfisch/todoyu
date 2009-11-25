@@ -75,6 +75,16 @@ $CONFIG['FORM']['TYPES']['button'] = array(
 	'template'	=> 'core/view/form/FormElement_Button.tmpl'
 );
 
+$CONFIG['FORM']['TYPES']['saveButton'] = array(
+	'class'		=> 'TodoyuFormElement_SaveButton',
+	'template'	=> 'core/view/form/FormElement_Button.tmpl'
+);
+
+$CONFIG['FORM']['TYPES']['cancelButton'] = array(
+	'class'		=> 'TodoyuFormElement_CancelButton',
+	'template'	=> 'core/view/form/FormElement_Button.tmpl'
+);
+
 $CONFIG['FORM']['TYPES']['timeinput'] = array(
 	'class'		=> 'TodoyuFormElement_Timeinput',
 	'template'	=> 'core/view/form/FormElement_Timeinput.tmpl'

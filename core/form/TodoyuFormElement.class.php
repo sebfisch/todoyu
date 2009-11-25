@@ -398,7 +398,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 				if( ! empty($this->config['required']['@attributes']['label']) ) {
 					$this->setErrorMessage($this->config['required']['@attributes']['label']);
 				} else {
-					$this->setErrorMessage('LLL:form.field.isrequired');
+					$this->setErrorMessage('form.field.isrequired');
 				}
 
 				return false;

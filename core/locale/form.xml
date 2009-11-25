@@ -13,6 +13,7 @@
 		<label index="databaserelation.nolabel">[New entry]</label>
 		<label index="error.notUnique">This field has to be unique</label>
 <!--  ......................................... added after 20091122 -->
+		<label index="error.endDateNotBeforeStart">The enddate should not be before the startdate</label>
 	</labels>
 	<labels lang="de"></labels>
 </locallang>
