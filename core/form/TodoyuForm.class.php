@@ -1003,9 +1003,11 @@ class TodoyuForm implements ArrayAccess {
 		$template	= $GLOBALS['CONFIG']['FORM']['templates']['hidden'];
 
 		foreach( $this->hiddenFields as $name => $config ) {
-			$data	= array('htmlId'	=> self::makeID($name),
-							'htmlName'	=> self::makeName($name),
-							'value'		=> htmlspecialchars($config['value']));
+			$data	= array(
+				'htmlId'	=> self::makeID($name),
+				'htmlName'	=> self::makeName($name),
+				'value'		=> htmlspecialchars($config['value'])
+			);
 
 			$content .= render($template, $data);
 		}
