@@ -205,7 +205,7 @@ class TodoyuInstaller {
 		$conn	= @mysql_connect($data['server'], $data['username'], $data['password']);
 
 		if( $conn === false ) {
-			throw new Exception('Cannot connect to the database server "' . $data['server'] . '"');
+			throw new Exception('Cannot connect to the database server "' . $data['server'] . '" ('.mysql_error().')');
 		}
 
 		return true;
