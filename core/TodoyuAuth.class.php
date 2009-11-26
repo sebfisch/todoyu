@@ -52,7 +52,7 @@ class TodoyuAuth {
 	/**
 	 * Get user object of current user
 	 *
-	 * @return	User
+	 * @return	TodoyuUser
 	 */
 	public static function getUser() {
 		if( is_null(self::$user) ) {

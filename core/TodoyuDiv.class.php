@@ -873,7 +873,7 @@ class TodoyuDiv {
 		}
 
 		if( $absolute ) {
-			$query = SERVER_URL . $query;
+			$query = SERVER_URL . substr($query, 1);
 		}
 
 		return $query;

@@ -113,7 +113,7 @@ class TodoyuDatabase {
 			// Decide how to connect to mysql server
 		$mysqlFunc	= $this->config['persistent'] ? 'mysql_pconnect' : 'mysql_connect';
 
-			// Connect to mysql server		
+			// Connect to mysql server
 		$this->link	= @call_user_func($mysqlFunc, $this->config['server'], $this->config['username'], $this->config['password']);
 
 			// Check if connection to server has failed
