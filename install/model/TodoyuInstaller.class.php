@@ -60,41 +60,41 @@ class TodoyuInstaller {
 	 * Display output for current step
 	 *
 	 */
-	public static function displayStep() {
+	public static function displayStep($error) {
 		$stepNr	= self::getStep();
 		$step	= self::$steps[$stepNr];
 
 		switch($step) {
 			case 'welcome';
-				self::displayWelcome();
+				self::displayWelcome($error);
 				break;
 
 			case 'servercheck':
-				self::displayServercheck();
+				self::displayServercheck($error);
 				break;
 
 			case 'dbconnection':
-				self::displayDbConnection();
+				self::displayDbConnection($error);
 				break;
 
 			case 'dbselect':
-				self::displayDbSelect();
+				self::displayDbSelect($error);
 				break;
 
 			case 'importstatic':
-				self::displayImportStatic();
+				self::displayImportStatic($error);
 				break;
 
 			case 'config':
-				self::displayConfig();
+				self::displayConfig($error);
 				break;
 
 			case 'setadminpassword':
-				self::displayAdminPassword();
+				self::displayAdminPassword($error);
 				break;
 
 			case 'finish':
-				self::displayFinish();
+				self::displayFinish($error);
 				break;
 		}
 
@@ -125,6 +125,7 @@ class TodoyuInstaller {
 					self::checkDbConnection($data);
 					self::setStep(3);
 				} catch(Exception $e) {
+					$error = $e->getMessage();
 				}
 				break;
 
@@ -134,7 +135,7 @@ class TodoyuInstaller {
 					self::setStep(4);
 					self::saveDbConfigInFile();
 				} catch(Exception $e)	{
-					self::displayDbSelect($e->getMessage());
+					$error = $e->getMessage();
 				}
 				break;
 
@@ -144,16 +145,22 @@ class TodoyuInstaller {
 				break;
 
 			case 'config':
-				self::updateConfig($data);
-				self::setStep(6);
+				try {
+					self::updateConfig($data);
+					self::setStep(6);
+				} catch (Exception $e)	{
+					$error = $e->getMessage();
+				}
+				break;
+
 				break;
 
 			case 'setadminpassword':
 				try {
-					self::updateAdminPassword($data['password']);
+					self::updateAdminPassword($data['password'], $data['password_confirm']);
 					self::setStep(7);
 				} catch(Exception $e)	{
-					self::displayAdminPassword($e->getMessage());
+					$error = $e->getMessage();
 				}
 				break;
 
@@ -163,6 +170,7 @@ class TodoyuInstaller {
 				break;
 		}
 
+		return $error;
 	}
 
 
@@ -239,6 +247,10 @@ class TodoyuInstaller {
 
 
 	private static function updateConfig($data) {
+		if(!(strlen($data['email']) > 0 && strlen($data['systemname']) > 0))	{
+			throw new Exception("Please set an email address and a system name");
+		}
+
 		$data	= array(
 			'config'		=> $data,
 			'encryptionKey'	=> self::makeEncryptionKey()
@@ -269,7 +281,11 @@ class TodoyuInstaller {
 	 *
 	 * @param	String		$newPassword
 	 */
-	private static function updateAdminPassword($newPassword) {
+	private static function updateAdminPassword($newPassword, $newPasswordConfirm) {
+		if(!($newPassword == $newPasswordConfirm))	{
+			throw new Exception("Password confirmation was wrong!");
+		}
+
 		if(strlen($newPassword) < 5)	{
 			throw new Exception("Password needs at least 5 signs!");
 		}
@@ -309,10 +325,10 @@ class TodoyuInstaller {
 	 * Display welcome screen
 	 *
 	 */
-	private static function displayWelcome() {
+	private static function displayWelcome($error = '') {
 		$data	= array(
 			'title'	=> 'Welcome to the Todoyu installer',
-			'textclass'	=> 'text infoText',
+			'textclass'	=> 'text textInfo',
 			'text'	=> 'This installer checks the server compatibility, sets up the database connection, imports static data, sets a new admin password and disables the installer when finished'
 		);
 		$tmpl	= 'install/view/welcome.tmpl';
@@ -326,7 +342,7 @@ class TodoyuInstaller {
 	 * Display server check screen
 	 *
 	 */
-	private static function displayServercheck() {
+	private static function displayServercheck($error = '') {
 		$next			= true;
 
 		if( version_compare(PHP_VERSION, '5.2.0', '>=') ) {
@@ -364,7 +380,7 @@ class TodoyuInstaller {
 	 * Display database connection screen
 	 *
 	 */
-	private static function displayDbConnection() {
+	private static function displayDbConnection($error = '') {
 		$dbData	= $_SESSION['todoyuinstaller']['db'];
 
 		$data	= array(
@@ -426,7 +442,7 @@ class TodoyuInstaller {
 	 *
 	 * @return	Array
 	 */
-	private static function getAvailableDatabases()	{
+	private static function getAvailableDatabases($error = '')	{
 		$dbData		= $_SESSION['todoyuinstaller']['db'];
 		$databases	= array(0 => 'Please choose a database');
 
@@ -447,8 +463,7 @@ class TodoyuInstaller {
 	 * Enter description here...
 	 *
 	 */
-	private static function addDatabase()	{
-	//	die(print_r($_POST, true));
+	private static function addDatabase($error = '')	{
 		if(strlen($_POST['database_new']) > 0)	{
 			$dbData		= $_SESSION['todoyuinstaller']['db'];
 			$conn = mysql_connect($dbData['server'], $dbData['username'], $dbData['password']);
@@ -470,7 +485,7 @@ class TodoyuInstaller {
 	 * Display import static screen
 	 *
 	 */
-	private static function displayImportStatic() {
+	private static function displayImportStatic($error = '') {
 		$data	= array(
 			'title'	=> 'Import static data'
 		);
@@ -485,10 +500,13 @@ class TodoyuInstaller {
 	 * Enter description here...
 	 *
 	 */
-	private static function displayConfig() {
+	private static function displayConfig($error = '') {
 		$data	= array(
-			'title'	=> 'System config'
+			'title'	=> 'System config',
+			'text'	=> $error ? $error : '',
+			'textClass'	=> $error ? 'text textError' : '',
 		);
+
 		$tmpl	= 'install/view/config.tmpl';
 
 		echo render($tmpl, $data);

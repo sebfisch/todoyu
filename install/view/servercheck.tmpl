@@ -20,7 +20,10 @@
 
 	{if $next}
 	<form method="post">
-		<input type="submit" value="Configure database">
+		<button type="submit">
+			<span class="label">Configure database</span>
+			<span class="rgt"></span>
+		</button>
 		<input type="hidden" name="action" value="servercheck">
 	</form>
 	{/if}

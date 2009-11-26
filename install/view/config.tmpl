@@ -3,7 +3,9 @@
 {block name="box"}
 <h1><span class="title">{$title}</span><span class="rgt"></span></h1>
 <div class="blockcontent">
-	<p  class="{$textclass}">{$text}</p>
+	{if $text}
+		<p  class="{$textClass}">{$text}</p>
+	{/if}
 	<form method="post">
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 	      <tr>
@@ -23,7 +25,10 @@
 	        </td>
 	      </tr>
 	    </table>
-	<input type="submit" value="Save configuration">
+		<button type="submit">
+			<span class="label">Save configuration</span>
+			<span class="rgt"></span>
+		</button>
 		<input type="hidden" name="action" value="config">
 	</form>
 </div>

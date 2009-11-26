@@ -37,11 +37,11 @@ if( $_GET['restart'] == 1 ) {
 
 	// If data has been submitted, process it
 if( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
-	TodoyuInstaller::processStep($_POST);
+	$error = TodoyuInstaller::processStep($_POST);
 }
 
 	// Display step output
-TodoyuInstaller::displayStep();
+TodoyuInstaller::displayStep($error);
 
 ob_end_flush();
 
