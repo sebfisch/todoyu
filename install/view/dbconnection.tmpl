@@ -1,28 +1,26 @@
 {extends main.tmpl}
 
 {block name="box"}
-<h1>{$title}</h1>
-<p>{$text}</p>
-<form method="post">
-	<table width="500" border="0" cellspacing="0" cellpadding="3">
-      <tr>
-        <td width="109">Server</td>
-        <td width="379"><input name="server" type="text" id="server" value="{$fields.server}" /></td>
-      </tr>
-      <tr>
-        <td>Username</td>
-        <td><input type="text" name="username" id="username" value="{$fields.username}" /></td>
-      </tr>
-      <tr>
-        <td>Password</td>
-        <td><input type="password" name="password" id="password" value="{$fields.password}" /></td>
-      </tr>
-      <tr>
-        <td>Database</td>
-        <td><input type="text" name="database" id="database" value="{$fields.database}" /></td>
-      </tr>
-    </table>
-<input type="submit" value="Save connection data">
-	<input type="hidden" name="action" value="dbconnection">
-</form>
+<h1><span class="title">{$title}</span><span class="rgt"></span></h1>
+<div class="blockcontent">
+	<p class="{$textclass}">{$text}</p>
+	<form method="post">
+		<table width="500" border="0" cellspacing="0" cellpadding="3">
+	      <tr>
+	        <td width="109">Server</td>
+	        <td width="379"><input name="server" type="text" id="server" value="{$fields.server}" /></td>
+	      </tr>
+	      <tr>
+	        <td>Username</td>
+	        <td><input type="text" name="username" id="username" value="{$fields.username}" /></td>
+	      </tr>
+	      <tr>
+	        <td>Password</td>
+	        <td><input type="password" name="password" id="password" value="{$fields.password}" /></td>
+	      </tr>
+	    </table>
+	<input type="submit" value="Save connection data">
+		<input type="hidden" name="action" value="dbconnection">
+	</form>
+<div class="blockcontent">
 {/block}

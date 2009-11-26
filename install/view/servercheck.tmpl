@@ -1,27 +1,28 @@
 {extends main.tmpl}
 
 {block name="box"}
-<h1>{$title}</h1>
-<table width="500" border="0" cellspacing="0" cellpadding="3">
-  <tr>
-    <td width="148">PHP version &gt;= 5.2</td>
-    <td width="340">{$phpversion}</td>
-  </tr>
-  <tr>
-    <td valign="top">Folder/files writable</td>
-    <td>
-    {foreach $writable file status}
-    	- /{$file}: <strong>{if $status}writable{else}NOT WRITABLE{/if}</strong><br>
-    {/foreach}    
-    </td>
-  </tr>
-</table>
+<h1><span class="title">{$title}</span><span class="rgt"></span></h1>
+<div class="blockcontent">
+	<table width="500" border="0" cellspacing="0" cellpadding="3">
+	  <tr>
+	    <td width="148">PHP version &gt;= 5.2</td>
+	    <td width="340">{$phpversion}</td>
+	  </tr>
+	  <tr>
+	    <td valign="top">Folder/files writable</td>
+	    <td>
+	    {foreach $writable file status}
+	    	- /{$file}: <strong>{if $status}writable{else}NOT WRITABLE{/if}</strong><br>
+	    {/foreach}
+	    </td>
+	  </tr>
+	</table>
 
-{if $next}
-<form method="post">
-	<input type="submit" value="Configure database">
-	<input type="hidden" name="action" value="servercheck">
-</form>
-{/if}
-
+	{if $next}
+	<form method="post">
+		<input type="submit" value="Configure database">
+		<input type="hidden" name="action" value="servercheck">
+	</form>
+	{/if}
+</div>
 {/block}

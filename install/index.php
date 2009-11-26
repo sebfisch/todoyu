@@ -12,8 +12,11 @@ ob_start();
 
 	// Include global include file
 require_once('core/inc/global.php');
+
+
 	// Load default init script
 require_once( PATH_CORE . '/inc/init.php');
+require_once( PATH_CORE .'/inc/version.php');
 
 
 require_once('install/model/TodoyuInstaller.class.php');

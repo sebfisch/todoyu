@@ -1,0 +1,28 @@
+{extends main.tmpl}
+
+{block name="box"}
+<h1><span class="title">{$title}</span><span class="rgt"></span></h1>
+<div class="blockcontent">
+	<p class="{$textclass}">{$text}</p>
+	<form method="post">
+		<table width="500" border="0" cellspacing="0" cellpadding="3">
+	      <tr>
+	        <td width="109">Select a Database</td>
+	        <td width="379">
+	        	<select name="database" type="text" id="database" value="{$fields.server}" onchange="disableTextBox(this);" >
+	        		{foreach $options key option}
+	        			<option value="{$key}">{$option}</option>
+	        		{/foreach}
+	        	</select>
+
+	        	or create new:
+
+	        	<input type="text" id="database_new" name="database_new" />
+	       	</td>
+	      </tr>
+	    </table>
+	<input type="submit" value="Select Database">
+		<input type="hidden" name="action" value="dbselect">
+	</form>
+<div class="blockcontent">
+{/block}

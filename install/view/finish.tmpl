@@ -1,10 +1,12 @@
 {extends main.tmpl}
 
 {block name="box"}
-<h1>{$title}</h1>
-<p>Installation finished</p>
-<form method="post">
-	<input type="submit" value="Disable installer and go to login">
-	<input type="hidden" name="action" value="finish">
-</form>
+<h1><span class="title">{$title}</span><span class="rgt"></span></h1>
+<div class="blockcontent">
+	<p  class="text textSuccess">Installation finished</p>
+	<form method="post">
+		<input type="submit" value="Disable installer and go to login">
+		<input type="hidden" name="action" value="finish">
+	</form>
+</div>
 {/block}
