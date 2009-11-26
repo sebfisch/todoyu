@@ -25,13 +25,28 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuTime {
 
+	/**
+	 * Seconds per minute
+	 */
 	const SECONDS_MIN	= 60;
+
+	/**
+	 * Seconds per hour
+	 */
 	const SECONDS_HOUR	= 3600;
+
+	/**
+	 * Seconds per day
+	 */
 	const SECONDS_DAY	= 86400;
+
+	/**
+	 * Seconds per week
+	 */
 	const SECONDS_WEEK	= 604800;
+
 
 
 
