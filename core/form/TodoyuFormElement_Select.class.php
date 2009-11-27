@@ -163,7 +163,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	protected function initSourceList(array $source) {
 		if( is_array($source['option']) ) {
 			foreach($source['option'] as $option) {
-				$this->addOption($option['value'], $option['label'], $option['selected'], $option['disabled']);
+				$this->addOption($option['value'], Label($option['label']), $option['selected'], $option['disabled']);
 			}
 		}
 	}
