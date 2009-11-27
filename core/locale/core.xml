@@ -45,6 +45,7 @@
 		<label index="closeWindow">close window</label>
 		<label index="noAccess.errorMessage">You have no access to the requested data</label>
 <!--  ......................................... added after 20091122 -->
+		<label index="close">Close</label>
 		<label index="noAccess.pageTitle">No Access</label>
 		<label index="noAccess.goBackToLastPage">Go back to last page</label>
 		<label index="noAccess.contactAdmin">If you think should have access, report the following data to your todoyu administrator:</label>
