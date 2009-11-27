@@ -107,6 +107,21 @@ class TodoyuFormValidator {
 
 
 	/**
+	 *	Validate value not being zero
+	 *
+	 *	@param	String				$value
+	 *	@param	Array				$validatorConfig
+	 *	@param	TodoyuFormElement	$formElement
+	 *	@param	Array				$formData
+	 *	@return	Boolean
+	 */
+	private static function isNotZero($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+		return intval($value) > 0;
+	}
+
+
+
+	/**
 	 *	Validate value not having at least giben minimum length
 	 *
 	 *	@param	unknown_type		$value
