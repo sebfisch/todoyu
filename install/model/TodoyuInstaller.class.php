@@ -426,6 +426,10 @@ class TodoyuInstaller {
 
 		$data	= array(
 			'title'		=> 'Setup Database',
+			'version'	=> array(
+					'versionnumber'	=> TODOYU_VERSION,
+					'versiondate'	=> TODOYU_UPDATE
+			)
 		);
 
 		if( is_array($dbData) ) {
