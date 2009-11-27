@@ -62,27 +62,28 @@ body {
 	padding: 10px;
 }
 
-.content .boxContent .blockcontent p.text{
+.text{
 	padding: 5px;
 	border: 1px solid #000;
 	margin: 5px;
 }
 
-.content .boxContent .blockcontent p.textError{
+.textError{
 	border-color: red;
 	background-color: #FDC5C5;
 }
 
-.content .boxContent .blockcontent p.textInfo{
+.textInfo{
 	border-color: #FFA800;
 	background-color: #FDEEC3;
 }
 
-.content .boxContent .blockcontent p.textSuccess{
+.textSuccess{
 	border-color: #048E01;
 	background-color: #96F384;
 }
 
+#licence,
 #panel {
 	clear: both;
 	float: left;
@@ -94,6 +95,7 @@ body {
 	background-color:#fff;
 }
 
+#licence .panelFooter,
 #panel .panelFooter {
 	height:51px;
 	margin-top:-2px;
@@ -173,3 +175,14 @@ button {
 		position: relative;
 		width: 10px;
 	}
+
+.servercheckicon {
+	height: 16px;
+	width: 16px;
+	display: block;
+	background: transparent url('img/servercheck.png') no-repeat 0 0;	
+}
+
+.servercheckicon.ok {
+	background-position: 0 -28px;	
+} 

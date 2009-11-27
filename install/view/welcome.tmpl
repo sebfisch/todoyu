@@ -3,7 +3,14 @@
 {block name="box"}
 <h1><span class="title">{$title}</span><span class="rgt"></span></h1>
 <div class="blockcontent">
-	<p class="{$textclass}">{$text}</p>
+	<div class="{$textclass}">Installation steps:
+		<ul>
+			<li>Checks the server compatibility</li>
+			<li>Sets up the database connection</li>
+			<li>Imports static data</li>
+			<li>Sets a new admin password</li>
+		</ul> 
+	</div>
 	<form method="post">
 		<button type="submit">
 			<span class="label">Check server compatibility</span>

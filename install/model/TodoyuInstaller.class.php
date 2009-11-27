@@ -329,7 +329,10 @@ class TodoyuInstaller {
 		$data	= array(
 			'title'	=> 'Welcome to the Todoyu installer',
 			'textclass'	=> 'text textInfo',
-			'text'	=> 'This installer checks the server compatibility, sets up the database connection, imports static data, sets a new admin password and disables the installer when finished'
+			'version'	=> array(
+					'versionnumber'	=> TODOYU_VERSION,
+					'versiondate'	=> TODOYU_UPDATE
+			)
 		);
 		$tmpl	= 'install/view/welcome.tmpl';
 
@@ -364,10 +367,15 @@ class TodoyuInstaller {
 		}
 
 		$data	= array(
-			'title'		=> 'Server check',
-			'phpversion'=> $versionStatus . ' (Your version: ' . PHP_VERSION . ')',
-			'writable'	=> $writableStatus,
-			'next'		=> $next
+			'title'				=> 'Server check',
+			'phpversionStatus'	=> $versionStatus,
+			'phpversion'		=> '(Your version: ' . PHP_VERSION . ')',
+			'writable'			=> $writableStatus,
+			'next'				=> $next,
+			'version'			=> array(
+						'versionnumber'	=> TODOYU_VERSION,
+						'versiondate'	=> TODOYU_UPDATE
+			)
 		);
 		$tmpl	= 'install/view/servercheck.tmpl';
 
@@ -385,7 +393,11 @@ class TodoyuInstaller {
 
 		$data	= array(
 			'title'		=> 'Setup Database Server Connection',
-			'fields'	=> $dbData
+			'fields'	=> $dbData,
+			'version'	=> array(
+					'versionnumber'	=> TODOYU_VERSION,
+					'versiondate'	=> TODOYU_UPDATE
+			)
 		);
 
 		if( is_array($dbData) ) {
@@ -467,12 +479,11 @@ class TodoyuInstaller {
 		if(strlen($_POST['database_new']) > 0)	{
 			$dbData		= $_SESSION['todoyuinstaller']['db'];
 			$conn = mysql_connect($dbData['server'], $dbData['username'], $dbData['password']);
-			if(@mysql_query("CREATE DATABASE ".trim($_POST['database_new'])."", $conn) == false)	{
+			if(@mysql_query("CREATE DATABASE `".trim($_POST['database_new'])."`", $conn) == false)	{
 				throw new Exception("Can not create database ".$_POST['database_new'].": (".mysql_error().")");
 			}
-
 			$_SESSION['todoyuinstaller']['db']['database'] = $_POST['database_new'];
-		} else if(strlen($_POST['database']) != 0)	{
+		} elseif($_POST['database'] != 0)	{
 			$_SESSION['todoyuinstaller']['db']['database'] = $_POST['database'];
 		} else {
 			throw new Exception("Please select a database or enter a name");
@@ -487,7 +498,11 @@ class TodoyuInstaller {
 	 */
 	private static function displayImportStatic($error = '') {
 		$data	= array(
-			'title'	=> 'Import static data'
+			'title'	=> 'Import static data',
+			'version'	=> array(
+					'versionnumber'	=> TODOYU_VERSION,
+					'versiondate'	=> TODOYU_UPDATE
+			)
 		);
 		$tmpl	= 'install/view/importstatic.tmpl';
 
@@ -505,6 +520,10 @@ class TodoyuInstaller {
 			'title'	=> 'System config',
 			'text'	=> $error ? $error : '',
 			'textClass'	=> $error ? 'text textError' : '',
+			'version'	=> array(
+					'versionnumber'	=> TODOYU_VERSION,
+					'versiondate'	=> TODOYU_UPDATE
+			)
 		);
 
 		$tmpl	= 'install/view/config.tmpl';
@@ -520,9 +539,13 @@ class TodoyuInstaller {
 	 */
 	private static function displayAdminPassword($error = '') {
 		$data	= array(
-			'title'	=> 'Change admin password',
-			'text'	=> strlen($error) > 0 ? $error : 'Change admin password for your security!',
-			'textClass'	=> strlen($error) > 0 ?  'text textError' : 'text textInfo'
+			'title'		=> 'Change admin password',
+			'text'		=> strlen($error) > 0 ? $error : 'Change admin password for your security!',
+			'textClass'	=> strlen($error) > 0 ?  'text textError' : 'text textInfo',
+			'version'	=> array(
+					'versionnumber'	=> TODOYU_VERSION,
+					'versiondate'	=> TODOYU_UPDATE
+			)
 		);
 
 		$tmpl	= 'install/view/adminpassword.tmpl';
@@ -539,6 +562,10 @@ class TodoyuInstaller {
 	private static function displayFinish() {
 		$data	= array(
 			'title'	=> 'Installation finished',
+			'version'	=> array(
+					'versionnumber'	=> TODOYU_VERSION,
+					'versiondate'	=> TODOYU_UPDATE
+			)
 		);
 		$tmpl	= 'install/view/finish.tmpl';
 
