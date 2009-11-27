@@ -312,7 +312,11 @@ class TodoyuInstaller {
 		$new	= PATH . '/install/_ENABLE';
 
 		rename($old, $new);
-
+		
+		if(file_exists(PATH . '/index.html'))	{
+			unlink(PATH . '/index.html');
+		}
+		
 		self::setStep(0);
 
 		header("Location: " . dirname(SERVER_URL));
