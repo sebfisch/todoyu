@@ -483,7 +483,7 @@ class TodoyuInstaller {
 				throw new Exception("Can not create database ".$_POST['database_new'].": (".mysql_error().")");
 			}
 			$_SESSION['todoyuinstaller']['db']['database'] = $_POST['database_new'];
-		} elseif($_POST['database'] != 0)	{
+		} else if($_POST['database'] != '0')	{
 			$_SESSION['todoyuinstaller']['db']['database'] = $_POST['database'];
 		} else {
 			throw new Exception("Please select a database or enter a name");
