@@ -1,6 +1,7 @@
-Attention
-=========
+﻿For your information
+====================
 
-This is an alpha preview version. Not for productive use!
-A lot of code in this preview may be different in the beta release.
-You're welcome to take a look, but you should not rely on any function, classname or behaviour!
+This is an beta version. Not for productive use!
+Most of the bugs should be fixed, be we still need a lot of testing.
+You're welcome to take a look, but you should not rely on any function,
+classname or behaviour at this moment!

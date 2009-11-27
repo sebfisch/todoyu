@@ -82,8 +82,9 @@ class TodoyuHeadletManager {
 	public static function getAreaHeadlets($type, $areaKey) {
 		$headlets	= array();
 		$type		= strtoupper(trim($type));
+		$types		= TodoyuArray::assure($GLOBALS['CONFIG']['HEADLETS'][$type]);
 
-		foreach($GLOBALS['CONFIG']['HEADLETS'][$type] as $className => $headlet) {
+		foreach($types as $className => $headlet) {
 			if( sizeof($headlet['areas']) === 0 || in_array($areaKey, $headlet['areas']) ) {
 				$headlets[$className] = $headlet;
 			}

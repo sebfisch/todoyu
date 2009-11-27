@@ -19,6 +19,6 @@ FileETag none
 
 # compress text/ html/ xml/ javascript / json output:
 AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript application/json
-Header append Vary Accept-Encoding
+# Header append Vary Accept-Encoding
 
 DirectoryIndex index.html index.php
