@@ -2,14 +2,22 @@
 <locallang>
 	<labels lang="en">
 		<label index="download">Download</label>
-		<label index="upload">Upload</label>		
+		<label index="upload">Upload</label>
 		<label index="size.gb">GB</label>
 		<label index="size.mb">MB</label>
 		<label index="size.kb">KB</label>
 		<label index="size.b">B</label>
-		<label index="filename">Filename</label>
-		<label index="filesize">Filesize</label>
-<!--  ......................................... added after 20091122 -->
+		<label index="filename">File Name</label>
+		<label index="filesize">File Size</label>
 	</labels>
-	<labels lang="de"></labels>
+	<labels lang="de">
+		<label index="download">Herunterladen</label>
+		<label index="upload">Hinaufladen</label>
+		<label index="size.gb">GB</label>
+		<label index="size.mb">MB</label>
+		<label index="size.kb">KB</label>
+		<label index="size.b">B</label>
+		<label index="filename">Dateiname</label>
+		<label index="filesize">Dateigrösse</label>
+	</labels>
 </locallang>

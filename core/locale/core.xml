@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="tab.todoyu.label">Todoyu</label>
+		<label index="tab.todoyu.label">todoyu</label>
 		<label index="yes">Yes</label>
 		<label index="no">No</label>
-		<label index="loading">loading</label>
+		<label index="loading">Loading</label>
 		<label index="expandall">Expand all</label>
 		<label index="author">Author</label>
 		<label index="title">Title</label>
@@ -23,9 +23,9 @@
 		<label index="rename">Rename</label>
 		<label index="reset">Reset</label>
 		<label index="update">Update</label>
-		<label index="search">Suche</label>
+		<label index="search">Search</label>
 		<label index="back">Back</label>
-		<label index="visibleForCustomer">Visible for customer</label>
+		<label index="visibleForCustomer">Visible for Customer</label>
 		<label index="filter">Filter</label>
 		<label index="type">Type</label>
 		<label index="record">Record</label>
@@ -35,16 +35,15 @@
 		<label index="what">What</label>
 		<label index="where">Where</label>
 		<label index="when">When</label>
-		<label index="until">until</label>
+		<label index="until">Until</label>
 		<label index="private">Private</label>
 		<label index="start">Start</label>
 		<label index="stop">Stop</label>
 		<label index="end">End</label>
 		<label index="beginning">Beginning</label>
 		<label index="deadline">Deadline</label>
-		<label index="closeWindow">close window</label>
+		<label index="closeWindow">Close Window</label>
 		<label index="noAccess.errorMessage">You have no access to the requested data</label>
-<!--  ......................................... added after 20091122 -->
 		<label index="close">Close</label>
 		<label index="noAccess.pageTitle">No Access</label>
 		<label index="noAccess.goBackToLastPage">Go back to last page</label>
@@ -52,5 +51,55 @@
 		<label index="noAccess.requestURL">Request URL</label>
 		<label index="noAccess.missingRight">Missing right</label>
 	</labels>
-	<labels lang="de"></labels>
+	<labels lang="de">		
+		<label index="tab.todoyu.label">todoyu</label>
+		<label index="yes">Ja</label>
+		<label index="no">Nein</label>
+		<label index="loading">Daten werden geladen</label>
+		<label index="expandall">Alles vergrössern</label>
+		<label index="author">Autor</label>
+		<label index="title">Titel</label>
+		<label index="description">Beschreibung</label>
+		<label index="date">Datum</label>
+		<label index="dateFormat">j.n.j</label>
+		<label index="createNew">Daten anfügen</label>
+		<label index="edit">Bearbeiten</label>
+		<label index="load">Daten laden</label>
+		<label index="save">Speichern</label>
+		<label index="cancel">Abbrechen</label>
+		<label index="delete">Löschen</label>
+		<label index="show">Zeigen</label>
+		<label index="hide">Verstecken</label>
+		<label index="unhide">Sichtbar machen</label>
+		<label index="rename">Umbenennen</label>
+		<label index="reset">Zurücksetzen</label>
+		<label index="update">Aktualisieren</label>
+		<label index="search">Suche</label>
+		<label index="back">Zurück</label>		
+		<label index="visibleForCustomer">Für Kunde sichtbar</label>
+		<label index="filter">Auswahl</label>
+		<label index="type">Typ</label>
+		<label index="record">Datensatz</label>
+		<label index="records">Datensätze</label>
+		<label index="components">Komponenten</label>
+		<label index="status">Status</label>
+		<label index="what">Was</label>
+		<label index="where">Wo</label>
+		<label index="when">Wann</label>
+		<label index="until">Bis</label>
+		<label index="private">Privat</label>
+		<label index="start">Start</label>
+		<label index="stop">Stopp</label>
+		<label index="end">Ende</label>
+		<label index="beginning">Anfang</label>
+		<label index="deadline">Frist</label>
+		<label index="closeWindow">Fenster schliessen</label>
+		<label index="noAccess.errorMessage">Sie haben keinen Zugriff auf die verlangten Daten</label>
+		<label index="close">Schliessen</label>
+		<label index="noAccess.pageTitle">Kein Zugriff</label>
+		<label index="noAccess.goBackToLastPage">Zurück zur letzten Seite</label>
+		<label index="noAccess.contactAdmin">Wenn Sie Zugriffsrechte benötigen, teilen Sie Ihrem Administrator folgende Daten mit:</label>
+		<label index="noAccess.requestURL">Request URL</label>
+		<label index="noAccess.missingRight">Fehlendes Recht</label>
+	</labels>
 </locallang>

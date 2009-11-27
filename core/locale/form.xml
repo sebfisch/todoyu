@@ -3,17 +3,27 @@
 	<labels lang="en">
 		<label index="select.pleaseSelect">Please select</label>
 		<label index="select.pleaseChoose">Please choose</label>
-		<label index="field.isrequired">This field is required</label>
-		<label index="field.hasError">This field has an error</label>
+		<label index="field.isrequired">This is a required field</label>
+		<label index="field.hasError">The value entered is not valid</label>
 		<label index="field.save">Save</label>
 		<label index="field.cancel">Cancel</label>
-		<label index="icon.add">ADD RECORD</label>
-		<label index="icon.remove">REMOVE RECORD</label>
-		<label index="icon.edit">EDIT RECORD</label>
+		<label index="icon.add">Add Record</label>
+		<label index="icon.remove">Remove Record</label>
+		<label index="icon.edit">Edit Record</label>
 		<label index="databaserelation.nolabel">[New entry]</label>
-		<label index="error.notUnique">This field has to be unique</label>
-<!--  ......................................... added after 20091122 -->
-		<label index="error.endDateNotBeforeStart">The enddate should not be before the startdate</label>
+		<label index="error.notUnique">This entry already exists</label>
 	</labels>
-	<labels lang="de"></labels>
+	<labels lang="de">
+		<label index="select.pleaseSelect">Bitte wählen</label>
+		<label index="select.pleaseChoose">Bitte wählen</label>
+		<label index="field.isrequired">Dieses Feld muss ausgefüllt werden</label>
+		<label index="field.hasError">Diese Eingabe ist ungültig</label>
+		<label index="field.save">Speichern</label>
+		<label index="field.cancel">Abbrechen</label>
+		<label index="icon.add">Datensatz anfügen</label>
+		<label index="icon.remove">Datensatz entfernen</label>
+		<label index="icon.edit">Datensatz bearbeiten</label>
+		<label index="databaserelation.nolabel">[Neuer Eintrag]</label>
+		<label index="error.notUnique">Dieser Eintrag existiert schon</label>
+	</labels>
 </locallang>
