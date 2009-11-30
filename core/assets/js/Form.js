@@ -129,25 +129,16 @@ Todoyu.Form = {
 		}
 	},
 
-
-
-	/**
-	 *	Expand all foreign records in a form
-	 *
-	 *	@param	unknown_type	buttonID
-	 */
-	expandAllForeignRecords: function(buttonID) {
-		var recordID    		= buttonID.split('-field-expandall')[0].split('-')[1];
-		var parentRecordName	= buttonID.replace( '-' + recordID + '-field-expandall', '');
-
-			// Hit (toggle) all closed triggers
-		$$('.formtrigger.closed').each(function(trigger) {
-			var triggerID	= trigger.id;
-			if (triggerID.indexOf('foreign-record-') != -1) {
-				Todoyu.Form.toggleSubform( trigger );
-			}
+	
+	expandForeignRecords: function(fieldNames) {
+		fieldNames = fieldNames || [];
+				
+		fieldNames.each(function(fieldName){
+			var parentField = $$('form div.fieldname' + fieldName.capitalize()).first();
+			var subForms	= parentField.select('div.databaseRelation div.databaseRelationFormhtml');
+			
+			subForms.invoke('show');
 		});
-
 	},
 
 
@@ -157,11 +148,11 @@ Todoyu.Form = {
 	 *
 	 *	@param	unknown_type	buttonID
 	 */
-	openWizard: function(idRecord, idField, extension, controller, command, height, width, title)	{
+	openWizard: function(idRecord, idField, extension, controller, action, height, width, title)	{
 		var url		= Todoyu.getUrl(extension,	controller);
 		var options	= {
 			'parameters': {
-				'action': command,
+				'action': action,
 				'idRecord': idRecord,
 				'idField': idField
 			}
@@ -171,7 +162,7 @@ Todoyu.Form = {
 		var width	= width > 0 ? width : 480;
 		var height	= height > 0 ? height: 300;
 
-		Todoyu.Popup.openWindow(idPopup, title, width, height, url, options);
+		return Todoyu.Popup.openWindow(idPopup, title, width, height, url, options);
 	}
 
 };

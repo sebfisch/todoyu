@@ -36,16 +36,6 @@ Todoyu.Popup = {
 
 	timeoutID:	null,
 
-	config: {
-		'overlayShowEffectOptions': {
-			'duration': 0.2
-		},
-		'overlayHideEffectOptions': {
-			'duration': 0.1
-		}
-	},
-
-
 	
 	/**
 	 * Get popup reference
@@ -85,10 +75,6 @@ Todoyu.Popup = {
 	 */
 	openWindow: function(idPopup, title, winWidth, winHeight, contentUrl, requestOptions) {
 
-			// Set overlay show/ hide options
-		Windows.overlayShowEffectOptions = this.config.overlayShowEffectOptions;
-		Windows.overlayHideEffectOptions = this.config.overlayHideEffectOptions;
-
 			// Construct popup
 		this.popup[idPopup] = new Window({
 			id:					idPopup,
@@ -109,8 +95,10 @@ Todoyu.Popup = {
 			destroyOnClose:		true,
 			recenterAuto:		false,
 
-			showEffectOptions:	{},
-			hideEffectOptions:	{},
+			'hideEffect': 		Element.hide,
+			'showEffect': 		Element.show,
+			//showEffectOptions:	{},
+			//hideEffectOptions:	{},
 			effectOptions:		null,
 			parent:				document.getElementsByTagName("body").item(0)
 		});

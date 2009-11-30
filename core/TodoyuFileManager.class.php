@@ -182,8 +182,9 @@ class TodoyuFileManager {
 	 * The path will be a directory (don't give a file path as parameter!)
 	 *
 	 * @param	String		$directoryPath		Directory path to create
+	 * @param	Integer		$mode				Access rights mode
 	 */
-	public static function makeDirDeep($directoryPath) {
+	public static function makeDirDeep($directoryPath, $mode = null) {
 		$directoryPath	= self::pathAbsolute($directoryPath);
 
 			// Check if directory already exists
@@ -195,6 +196,7 @@ class TodoyuFileManager {
 		$directoryPath	= str_replace(PATH, '', $directoryPath);
 		$pathParts		= array_slice(explode(DIRECTORY_SEPARATOR, $directoryPath), 1);
 		$basePath		= PATH;
+		$chmod			= is_null($mode) ? $GLOBALS['CONFIG']['CHMOD']['folder'] : $mode;
 
 			// Create each level of the subfolder
 		foreach( $pathParts as $pathPart ) {
@@ -202,7 +204,7 @@ class TodoyuFileManager {
 
 			if( ! is_dir($currentPath) ) {
 				mkdir($currentPath);
-				chmod($currentPath, 0775);
+				chmod($currentPath, $chmod);
 			}
 
 			$basePath = $currentPath;
@@ -247,7 +249,52 @@ class TodoyuFileManager {
 		return file_put_contents($savePath, $content) !== false;
 	}
 
-}
 
+
+	/**
+	 * Set default access rights to folder or file
+	 *
+	 * @param	String		$path
+	 * @return	Bool
+	 */
+	public static function setDefaultAccessRights($path) {
+		$path	= self::pathAbsolute($path);
+
+		if( is_file($path) ) {
+			return self::setDefaultFileAccess($path);
+		} elseif( is_dir($path) ) {
+			return self::setDefaultFolderAccess($path);
+		}
+	}
+
+
+
+	/**
+	 * Set default file access
+	 *
+	 * @param	String		$pathToFile
+	 * @return	Bool
+	 */
+	public static function setDefaultFileAccess($pathToFile) {
+		$pathToFile	= self::pathAbsolute($pathToFile);
+
+		return chmod($pathToFile, $GLOBALS['CONFIG']['CHMOD']['file']);
+	}
+
+
+
+	/**
+	 * Set default file access
+	 *
+	 * @param	String		$pathToFolder
+	 * @return	Bool
+	 */
+	public static function setDefaultFolderAccess($pathToFolder) {
+		$pathToFolder	= self::pathAbsolute($pathToFolder);
+
+		return chmod($pathToFolder, $GLOBALS['CONFIG']['CHMOD']['folder']);
+	}
+
+}
 
 ?>

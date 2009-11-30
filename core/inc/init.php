@@ -53,7 +53,6 @@ TodoyuLocale::register('static_territory', PATH_CORE . '/locale/static_territory
 require( PATH_CORE . '/inc/load_extensions.php' );
 
 	// Custom config overrides
-require_once( PATH_CONFIG . '/override.php');
 require_once( PATH_LOCALCONF . '/override.php');
 
 ?>

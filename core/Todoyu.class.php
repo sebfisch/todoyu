@@ -94,7 +94,13 @@ class Todoyu {
 		TodoyuFileManager::makeDirDeep($GLOBALS['CONFIG']['TEMPLATE']['compile']);
 		TodoyuFileManager::makeDirDeep($GLOBALS['CONFIG']['TEMPLATE']['cache']);
 
-		self::$template = new Dwoo($GLOBALS['CONFIG']['TEMPLATE']['compile'], $GLOBALS['CONFIG']['TEMPLATE']['cache']);
+			// Initialize Dwoo
+		try {
+			self::$template = new Dwoo($GLOBALS['CONFIG']['TEMPLATE']['compile'], $GLOBALS['CONFIG']['TEMPLATE']['cache']);
+		} catch(Dwoo_Exception $e) {
+			TodoyuDebug::printHtml($e->getMessage(), 'Template error (Dwoo_Exception)');
+		}
+
 
 //		self::addDwooPluginDir('core/lib/php/dwoo');
 	}

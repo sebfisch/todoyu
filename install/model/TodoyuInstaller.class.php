@@ -312,11 +312,11 @@ class TodoyuInstaller {
 		$new	= PATH . '/install/_ENABLE';
 
 		rename($old, $new);
-		
+
 		if(file_exists(PATH . '/index.html'))	{
 			unlink(PATH . '/index.html');
 		}
-		
+
 		self::setStep(0);
 
 		header("Location: " . dirname(SERVER_URL));
@@ -359,11 +359,15 @@ class TodoyuInstaller {
 			$next			= false;
 		}
 
-		$writable		= array('files', 'config', 'config/db.php');
+		$writable		= array('files', 'config', 'cache/tmpl/compile', 'config/db.php', 'config/extensions.php', 'config/extconf.php');
 		$writableStatus	= array();
 
 		foreach($writable as $path) {
-			$writableStatus[$path]	= is_writable(PATH . '/' . $path);
+			$absPath	= PATH . '/' . $path;
+
+			TodoyuFileManager::setDefaultAccessRights($absPath);
+
+			$writableStatus[$path]	= is_writable($absPath);
 
 			if( $writableStatus[$path] === false ) {
 				$next = false;
@@ -375,11 +379,7 @@ class TodoyuInstaller {
 			'phpversionStatus'	=> $versionStatus,
 			'phpversion'		=> '(Your version: ' . PHP_VERSION . ')',
 			'writable'			=> $writableStatus,
-			'next'				=> $next,
-			'version'			=> array(
-						'versionnumber'	=> TODOYU_VERSION,
-						'versiondate'	=> TODOYU_UPDATE
-			)
+			'next'				=> $next
 		);
 		$tmpl	= 'install/view/servercheck.tmpl';
 

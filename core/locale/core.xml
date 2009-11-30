@@ -17,6 +17,7 @@
 		<label index="save">Save</label>
 		<label index="cancel">Cancel</label>
 		<label index="delete">Delete</label>
+		<label index="deleteRecord">Delete record</label>
 		<label index="show">Show</label>
 		<label index="hide">Hide</label>
 		<label index="unhide">Unhide</label>
@@ -51,12 +52,12 @@
 		<label index="noAccess.requestURL">Request URL</label>
 		<label index="noAccess.missingRight">Missing right</label>
 	</labels>
-	<labels lang="de">		
+	<labels lang="de">
 		<label index="tab.todoyu.label">todoyu</label>
 		<label index="yes">Ja</label>
 		<label index="no">Nein</label>
 		<label index="loading">Daten werden geladen</label>
-		<label index="expandall">Alles vergrössern</label>
+		<label index="expandall">Alles anzeigen</label>
 		<label index="author">Autor</label>
 		<label index="title">Titel</label>
 		<label index="description">Beschreibung</label>
@@ -68,6 +69,7 @@
 		<label index="save">Speichern</label>
 		<label index="cancel">Abbrechen</label>
 		<label index="delete">Löschen</label>
+		<label index="deleteRecord">Eintrage löschen</label>
 		<label index="show">Zeigen</label>
 		<label index="hide">Verstecken</label>
 		<label index="unhide">Sichtbar machen</label>
@@ -75,7 +77,7 @@
 		<label index="reset">Zurücksetzen</label>
 		<label index="update">Aktualisieren</label>
 		<label index="search">Suche</label>
-		<label index="back">Zurück</label>		
+		<label index="back">Zurück</label>
 		<label index="visibleForCustomer">Für Kunde sichtbar</label>
 		<label index="filter">Auswahl</label>
 		<label index="type">Typ</label>

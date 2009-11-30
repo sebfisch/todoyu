@@ -410,22 +410,19 @@ class TodoyuArray {
 
 
 	/**
-	 *	Implode array wrap all entries into single quotes
+	 * Implode array and wrap all entries into single/double quotes
 	 *
-	 *	@param	Array	$array
-	 *	@param	String	$delimiter
-	 *	@return	Array
+	 * @param	Array		$array				Items
+	 * @param	String		$delimiter			Implode delimiter
+	 * @param	Bool		$useDoubleQuotes	Use double quotes (") instead of single quotes (')
+	 * @return	Array
 	 */
-	public static function implodeQuoted($array = array(), $delimiter = ',') {
+	public static function implodeQuoted($array = array(), $delimiter = ',', $useDoubleQuotes = false) {
 		$items	= array();
+		$quote	= $useDoubleQuotes ? '"' : "'";
 
 		foreach($array as $item) {
-			if ( $item[0] != '\'' && substr($item, -1, 1) != '\'' ) {
-					// not single quoted yet, do it now
-				$items[]	= '\'' . $item . '\'';
-			} else {
-				$items[] = $item;
-			}
+			$items[] = $quote . trim($item, $quote) . $quote;
 		}
 
 		return implode($delimiter, $items);

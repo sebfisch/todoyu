@@ -6,7 +6,7 @@
 			<a href="javascript:void(0)" id="foreignrecord-{$idRecord}-{$fieldname}-{$record._index}-remove" class="icon remove removeForeignRecord remove-{$fieldname}" onclick="Todoyu.Form.removeRecord({$idRecord}, '{$fieldname}', {$record._index})" title="{Label form.icon.remove}"><span class="hidden">{Label form.icon.remove}</span></a>
 		</span>
 	</div>
-	<div id="foreignrecord-{$idRecord}-{$fieldname}-{$record._index}-formhtml" {if $error != true}style="display:none"{/if}>
+	<div id="foreignrecord-{$idRecord}-{$fieldname}-{$record._index}-formhtml" class="databaseRelationFormhtml" {if $error != true}style="display:none"{/if}>
 		{$record._formHTML}
 	</div>
 	<div class="clear"><!-- --></div>

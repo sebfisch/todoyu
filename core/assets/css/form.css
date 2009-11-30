@@ -172,7 +172,7 @@ div.fElement {
 			display:block;
 		}
 
-		.typeDatabaseRelation .foreignRecordsActionControll a.add {
+		.typeDatabaseRelation a.addForeignRecord {
 			background:url(../img/icons.png) no-repeat 0 -569px;
 		}
 
@@ -192,8 +192,14 @@ div.fElement {
 
 
 	fieldset.buttons div,
-	fieldset.buttons div.fElement .fField {float:left;width:auto;}
-	fieldset.buttons div.fElement .fLabel {display:none;width:auto;}
+	fieldset.buttons div.fElement .fField {
+		float:left;
+		width:auto;
+	}
+	fieldset.buttons div.fElement .fLabel {
+		display:none;
+		width:auto;
+	}
 
 
 /* -----------------

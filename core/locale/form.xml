@@ -11,6 +11,7 @@
 		<label index="icon.remove">Remove Record</label>
 		<label index="icon.edit">Edit Record</label>
 		<label index="databaserelation.nolabel">[New entry]</label>
+		<label index="databaserelation.showAllRecords">Show all records</label>
 		<label index="error.notUnique">This entry already exists</label>
 	</labels>
 	<labels lang="de">
@@ -24,6 +25,7 @@
 		<label index="icon.remove">Datensatz entfernen</label>
 		<label index="icon.edit">Datensatz bearbeiten</label>
 		<label index="databaserelation.nolabel">[Neuer Eintrag]</label>
+		<label index="databaserelation.showAllRecords">Alle Datensätze anzeigen</label>
 		<label index="error.notUnique">Dieser Eintrag existiert schon</label>
 	</labels>
 </locallang>

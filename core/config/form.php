@@ -19,9 +19,23 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Core config for page rendering
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+
+	// Register form locale
 TodoyuLocale::register('form', PATH_CORE . '/locale/form.xml');
 
 
+
+	/**
+	 * Add basic form type configuration
+	 * - template
+	 * - class
+	 */
 
 $CONFIG['FORM']['templates'] = array(
 	'form'		=> 'core/view/form/Form.tmpl',
@@ -82,6 +96,11 @@ $CONFIG['FORM']['TYPES']['saveButton'] = array(
 
 $CONFIG['FORM']['TYPES']['cancelButton'] = array(
 	'class'		=> 'TodoyuFormElement_CancelButton',
+	'template'	=> 'core/view/form/FormElement_Button.tmpl'
+);
+
+$CONFIG['FORM']['TYPES']['expandAllButton'] = array(
+	'class'		=> 'TodoyuFormElement_ExpandAllButton',
 	'template'	=> 'core/view/form/FormElement_Button.tmpl'
 );
 

@@ -43,7 +43,7 @@
 
 #notifications div.note td.close {
 	width:20px;
-	background:url(../img/notify/cancel.png) 0 0 no-repeat;
+	background:url(../img/notify/cancel.png) 0 -1px no-repeat;
 	cursor:pointer;
 }
 
@@ -58,7 +58,7 @@
 }
 
 #notifications div.success td.icon {
-	background:url(../img/notify/accept.png) 0 0 no-repeat;
+	background:url(../img/notify/accept.png) 0 -1px no-repeat;
 }
 
 

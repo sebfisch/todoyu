@@ -125,6 +125,11 @@ button.delete .icon {
 	background:url(../img/icons.png) no-repeat 0 -360px;
 }
 
+button.expandAll .icon {
+	background:url(../img/icons.png) no-repeat 0 -600px;
+	width:25px;
+}
+
 
 /*
 button.save span {

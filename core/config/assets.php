@@ -19,6 +19,13 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Core asset configuration
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+
 $CONFIG['FE']['PAGE']['assets'] = array(
 	'js' => array(
 		array(
@@ -156,41 +163,6 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 	),
 
 	'css' => array(
-//		array(
-//			'file'		=> 'core/assets/css/old/contentstyle.css',
-//			'media'		=> 'all',
-//			'position'	=> 1
-//		),
-//		array(
-//			'file'		=> 'core/assets/css/old/staticcontentstyle.css',
-//			'media'		=> 'all',
-//			'position'	=> 1
-//		),
-//		array(
-//			'file'		=> 'core/assets/css/old/staticstyle.css',
-//			'media'		=> 'all',
-//			'position'	=> 1
-//		),
-//		array(
-//			'file'		=> 'core/assets/css/old/style.css',
-//			'media'		=> 'all',
-//			'position'	=> 1
-//		),
-//		array(
-//			'file'		=> 'core/assets/css/old/formstyle.css',
-//			'media'		=> 'all',
-//			'position'	=> 1
-//		),
-//		array(
-//			'file'		=> 'core/assets/css/old/resourceplanning.css',
-//			'media'		=> 'all',
-//			'position'	=> 1
-//		),
-//		array(
-//			'file'		=> 'core/assets/css/old/staticformstyle.css',
-//			'media'		=> 'all',
-//			'position'	=> 1
-//		),
 		array(
 			'file'		=> 'core/assets/css/base.css',
 			'media'		=> 'all',
@@ -261,21 +233,6 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'media'		=> 'all',
 			'position'	=> 10
 		)
-//		array(
-//			'file'		=> 'lib/js/jscal2/css/jscal2.css',
-//			'media'		=> 'all',
-//			'position'	=> 10
-//		),
-//		array(
-//			'file'		=> 'lib/js/jscal2/css/border-radius.css',
-//			'media'		=> 'all',
-//			'position'	=> 11
-//		),
-//		array(
-//			'file'		=> 'lib/js/jscal2/css/steel/steel.css',
-//			'media'		=> 'all',
-//			'position'	=> 12
-//		)
 	)
 );
 
