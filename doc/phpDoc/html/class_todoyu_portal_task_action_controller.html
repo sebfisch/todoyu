@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuPortalTaskActionController Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuPortalTaskActionController Klassenreferenz</h1><!-- doxytag: class="TodoyuPortalTaskActionController" --><!-- doxytag: inherits="TodoyuActionController" --><div class="dynheader">
+Klassendiagramm für TodoyuPortalTaskActionController:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_portal_task_action_controller.gif" usemap="#TodoyuPortalTaskActionController_map" alt=""/>
+  <map id="TodoyuPortalTaskActionController_map" name="TodoyuPortalTaskActionController_map">
+<area href="class_todoyu_action_controller.html" alt="TodoyuActionController" shape="rect" coords="0,0,205,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_portal_task_action_controller.html#ae6ac5c59bf629d11a6892f63b01b0709">getAction</a> (array $params)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_portal_task_action_controller.html#aef059b513c4602be21c88e28afa63126">editAction</a> (array $params)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_portal_task_action_controller.html#ab2a16b2e185ea56c263d48e5a0c7f596">getTasklistAction</a> (array $params)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_portal_task_action_controller_8class_8php_source.html#l00022">22</a> der Datei <a class="el" href="_todoyu_portal_task_action_controller_8class_8php_source.html">TodoyuPortalTaskActionController.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="aef059b513c4602be21c88e28afa63126"></a><!-- doxytag: member="TodoyuPortalTaskActionController::editAction" ref="aef059b513c4602be21c88e28afa63126" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">editAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_portal_task_action_controller_8class_8php_source.html#l00030">30</a> der Datei <a class="el" href="_todoyu_portal_task_action_controller_8class_8php_source.html">TodoyuPortalTaskActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00030"></a>00030                                               {
+<a name="l00031"></a>00031         $idTask = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;task&apos;</span>]);
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033         echo <a class="code" href="class_todoyu_task_renderer.html#a0c7246745d2f619ccaf4383ec21e9c66">TodoyuTaskRenderer::renderTaskEditForm</a>($idTask);
+<a name="l00034"></a>00034     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="ae6ac5c59bf629d11a6892f63b01b0709"></a><!-- doxytag: member="TodoyuPortalTaskActionController::getAction" ref="ae6ac5c59bf629d11a6892f63b01b0709" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">getAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_portal_task_action_controller_8class_8php_source.html#l00024">24</a> der Datei <a class="el" href="_todoyu_portal_task_action_controller_8class_8php_source.html">TodoyuPortalTaskActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00024"></a>00024                                              {
+<a name="l00025"></a>00025         $idTask = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;task&apos;</span>]);
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_portal_renderer.html#a65d613c47ce20df9e1edb6b04d140119">TodoyuPortalRenderer::renderTask</a>($idTask);
+<a name="l00028"></a>00028     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="ab2a16b2e185ea56c263d48e5a0c7f596"></a><!-- doxytag: member="TodoyuPortalTaskActionController::getTasklistAction" ref="ab2a16b2e185ea56c263d48e5a0c7f596" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">getTasklistAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_portal_task_action_controller_8class_8php_source.html#l00036">36</a> der Datei <a class="el" href="_todoyu_portal_task_action_controller_8class_8php_source.html">TodoyuPortalTaskActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00036"></a>00036                                                      {
+<a name="l00037"></a>00037         $prefName   = <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;storePrefs&apos;</span>];
+<a name="l00038"></a>00038         $storePrefs = <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[$prefName];
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040         <span class="keywordflow">if</span>( $storePrefs ) {
+<a name="l00041"></a>00041                 <span class="comment">// Store prefs (active tab)</span>
+<a name="l00042"></a>00042             $activeTabID    = trim(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;tab&apos;</span>]);
+<a name="l00043"></a>00043             $activeTabID    = (substr($activeTab, 0, 4) == <span class="stringliteral">&apos;tab_&apos;</span>) ? substr($activeTabID, 4) : $activeTabID;
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045             <a class="code" href="class_todoyu_portal_preferences.html#a58c9514f385574e966f0ea1d9bb9e691">TodoyuPortalPreferences::saveActiveTab</a>($activeTabID);
+<a name="l00046"></a>00046         } <span class="keywordflow">else</span> {
+<a name="l00047"></a>00047                 <span class="comment">// Fetch prefs (active tab, filters)</span>
+<a name="l00048"></a>00048             $activeTabID    = <a class="code" href="class_todoyu_portal_preferences.html#aac3c34795e443b3f91d47b83a284c887">TodoyuPortalPreferences::getActiveTab</a>();
+<a name="l00049"></a>00049         }
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_portal_renderer.html#a8935848b99b0fa74d1ae4b72cfd1c422">TodoyuPortalRenderer::renderTabContent</a>($activeTabID);
+<a name="l00052"></a>00052     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/portal/controller/<a class="el" href="_todoyu_portal_task_action_controller_8class_8php_source.html">TodoyuPortalTaskActionController.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:47 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

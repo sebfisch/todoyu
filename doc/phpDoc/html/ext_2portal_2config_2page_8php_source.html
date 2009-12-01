@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/portal/config/page.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/portal/config/page.php</h1><a href="ext_2portal_2config_2page_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 
+<a name="l00003"></a>00003     <span class="comment">// Add menu entries</span>
+<a name="l00004"></a>00004 <span class="keywordflow">if</span>( <a class="code" href="functions_8php.html#a5abbc1bd9b2b7ed593eb4091f9e59391">allowed</a>(<span class="stringliteral">&apos;portal&apos;</span>, <span class="stringliteral">&apos;use&apos;</span>) ) {
+<a name="l00005"></a>00005     <a class="code" href="class_todoyu_frontend.html#a96d0b81a98ed37f41b28e11579830c13">TodoyuFrontend::setDefaultTab</a>(<span class="stringliteral">&apos;portal&apos;</span>);
+<a name="l00006"></a>00006     <a class="code" href="class_todoyu_frontend.html#ae44cba5eab0a7a8c037929f81e056115">TodoyuFrontend::addMenuEntry</a>(<span class="stringliteral">&apos;portal&apos;</span>, <span class="stringliteral">&apos;LLL:portal.tab&apos;</span>, <span class="stringliteral">&apos;?ext=portal&apos;</span>, 10);
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008     $portalTabs = <a class="code" href="class_todoyu_portal_manager.html#a86b607f21245ea32d52f32f9266033f1">TodoyuPortalManager::getTabs</a>();
+<a name="l00009"></a>00009     <span class="keywordflow">foreach</span>($portalTabs as $idTab =&gt; $tabData) {
+<a name="l00010"></a>00010         <a class="code" href="class_todoyu_frontend.html#a5579235e84f492a5c8895e2473fd4bc7">TodoyuFrontend::addSubmenuEntry</a>(<span class="stringliteral">&apos;portal&apos;</span>, <span class="stringliteral">&apos;portal&apos;</span>, $tabData[<span class="stringliteral">&apos;title&apos;</span>], <span class="stringliteral">&apos;?ext=portal&amp;tab=&apos;</span> . $idTab, 50 + $idTab, $idTab);
+<a name="l00011"></a>00011     }
+<a name="l00012"></a>00012 }
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:31 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

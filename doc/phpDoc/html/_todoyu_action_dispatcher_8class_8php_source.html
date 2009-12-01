@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/TodoyuActionDispatcher.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/TodoyuActionDispatcher.class.php</h1><a href="_todoyu_action_dispatcher_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00029"></a><a class="code" href="class_todoyu_action_dispatcher.html">00029</a> <span class="keyword">class </span><a class="code" href="class_todoyu_action_dispatcher.html">TodoyuActionDispatcher</a> {
+<a name="l00030"></a>00030 
+<a name="l00037"></a>00037     <span class="keyword">private</span> <span class="keyword">static</span> function getExtension() {
+<a name="l00038"></a>00038         $ext    = <a class="code" href="class_todoyu_request.html#a80f5ba4a84b9537869538c3d0f5b226a">TodoyuRequest::getExt</a>();
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040         <span class="keywordflow">if</span>( ! is_string($ext) ) {
+<a name="l00041"></a>00041             $ext    = <a class="code" href="class_todoyu_preference_manager.html#ace9fe38cc9fd1f1b1c304faedd505f70">TodoyuPreferenceManager::getLastExt</a>();
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043             <span class="keywordflow">if</span>( $ext === <span class="keyword">false</span> ) {
+<a name="l00044"></a>00044                 $ext = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;FE&apos;</span>][<span class="stringliteral">&apos;DEFAULT&apos;</span>][<span class="stringliteral">&apos;ext&apos;</span>];
+<a name="l00045"></a>00045             }
+<a name="l00046"></a>00046         }
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048         <span class="keywordflow">return</span> $ext;
+<a name="l00049"></a>00049     }
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 
+<a name="l00059"></a>00059     <span class="keyword">private</span> <span class="keyword">static</span> function getController() {
+<a name="l00060"></a>00060         $ctrl   = <a class="code" href="class_todoyu_request.html#a0c5216068060ca9253dbad31e5895a2b">TodoyuRequest::getController</a>();
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062         <span class="keywordflow">if</span>( ! is_string($ctrl) ) {
+<a name="l00063"></a>00063             $ctrl = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;FE&apos;</span>][<span class="stringliteral">&apos;DEFAULT&apos;</span>][<span class="stringliteral">&apos;controller&apos;</span>];
+<a name="l00064"></a>00064         }
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066         <span class="keywordflow">return</span> $ctrl;
+<a name="l00067"></a>00067     }
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 
+<a name="l00076"></a>00076     <span class="keyword">private</span> <span class="keyword">static</span> function getAction() {
+<a name="l00077"></a>00077         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_request.html#af8b331d3ac442a1071aa9f7db3b60637">TodoyuRequest::getAction</a>();
+<a name="l00078"></a>00078     }
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 
+<a name="l00086"></a><a class="code" href="class_todoyu_action_dispatcher.html#a9db80663131dad4a801b9607109e83ab">00086</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_action_dispatcher.html#a9db80663131dad4a801b9607109e83ab">dispatch</a>() {
+<a name="l00087"></a>00087         self::callExtOnRequestHandler(<a class="code" href="index_8php.html#a7d9eb3f7bddc0bf1d960295e2a559c99">EXT</a>);
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089         <span class="keywordflow">if</span>( self::isController(<a class="code" href="index_8php.html#a7d9eb3f7bddc0bf1d960295e2a559c99">EXT</a>, <a class="code" href="index_8php.html#a4f507060bd39024b0a181c0abe34cbd7">CONTROLLER</a>) ) {
+<a name="l00090"></a>00090             $params     = <a class="code" href="class_todoyu_request.html#aca7ae46d923aa798f1e29657bb767a22">TodoyuRequest::getAll</a>();
+<a name="l00091"></a>00091             $controller = <a class="code" href="class_todoyu_action_dispatcher.html#ae52fd999678c3beb63f55a5d1e78b8aa">self::getControllerObject</a>(<a class="code" href="index_8php.html#a7d9eb3f7bddc0bf1d960295e2a559c99">EXT</a>, <a class="code" href="index_8php.html#a4f507060bd39024b0a181c0abe34cbd7">CONTROLLER</a>, $params);
+<a name="l00092"></a>00092         } <span class="keywordflow">else</span> {
+<a name="l00093"></a>00093             self::errorControllerNotFound(<a class="code" href="index_8php.html#a7d9eb3f7bddc0bf1d960295e2a559c99">EXT</a>, <a class="code" href="index_8php.html#a4f507060bd39024b0a181c0abe34cbd7">CONTROLLER</a>);
+<a name="l00094"></a>00094             exit();
+<a name="l00095"></a>00095         }
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097             <span class="comment">// Execute action</span>
+<a name="l00098"></a>00098         <span class="keywordflow">try</span> {
+<a name="l00099"></a>00099             echo $controller-&gt;runAction(<a class="code" href="index_8php.html#ae3a6b7e1199f276d75597e986e42c1a3">ACTION</a>);
+<a name="l00100"></a>00100         } <span class="keywordflow">catch</span>(<a class="code" href="class_todoyu_controller_exception.html">TodoyuControllerException</a> $e) {
+<a name="l00101"></a>00101             $e-&gt;<a class="code" href="class_todoyu_controller_exception.html#a4700bd0fafed169a180370a1f15452a9">printError</a>();
+<a name="l00102"></a>00102         } <span class="keywordflow">catch</span>(Exception $e) {
+<a name="l00103"></a>00103             die(<span class="stringliteral">&quot;Error: &quot;</span> . $e-&gt;getMessage());
+<a name="l00104"></a>00104         }
+<a name="l00105"></a>00105     }
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 
+<a name="l00114"></a>00114     <span class="keyword">private</span> <span class="keyword">static</span> function callExtOnRequestHandler($ext) {
+<a name="l00115"></a>00115         $handler    = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT_REQUEST_HANDLER&apos;</span>][$ext];
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117         <span class="keywordflow">if</span>( ! empty($handler) &amp;&amp; <a class="code" href="class_todoyu_div.html#a2dbf9fd5046506735124e644c99d2f96">TodoyuDiv::isFunctionReference</a>($handler) ) {
+<a name="l00118"></a>00118             <a class="code" href="class_todoyu_div.html#afcc9d79cf22888569ba5f634bb686d1c">TodoyuDiv::callUserFunction</a>($handler);
+<a name="l00119"></a>00119         }
+<a name="l00120"></a>00120     }
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123 
+<a name="l00131"></a><a class="code" href="class_todoyu_action_dispatcher.html#af08da60f997b173a6beaeb649013ad4b">00131</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_action_dispatcher.html#af08da60f997b173a6beaeb649013ad4b">registerRequestHandler</a>($ext, $function) {
+<a name="l00132"></a>00132         <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT_REQUEST_HANDLER&apos;</span>][$ext] = $function;
+<a name="l00133"></a>00133     }
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136 
+<a name="l00143"></a>00143     <span class="keyword">private</span> <span class="keyword">static</span> function errorControllerNotFound($ext, $controller) {
+<a name="l00144"></a>00144         ob_clean();
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146         <a class="code" href="class_todoyu.html#ac43531f7e0c334e68104bb1942eee286">Todoyu::log</a>(<span class="stringliteral">&apos;Request controller not found &apos;</span> . $ext . <span class="charliteral">&apos;/&apos;</span> . $controller, <a class="code" href="core_2config_2constants_8php.html#a75466e1a4bcac01197663a70a30c306f">LOG_LEVEL_FATAL</a>);
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148         <a class="code" href="class_todoyu_header.html#af424ca6ec62d0b19c48f2bedcdd3bb8b">TodoyuHeader::sendHeaderPlain</a>();
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150         echo <span class="stringliteral">&quot;Request controller not found!\n&quot;</span>;
+<a name="l00151"></a>00151         echo <span class="stringliteral">&quot;Extension: &quot;</span> . $ext . <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00152"></a>00152         echo <span class="stringliteral">&quot;Controller: &quot;</span> . $controller . <span class="stringliteral">&quot;\n\n&quot;</span>;
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154         $params = <a class="code" href="class_todoyu_request.html#aca7ae46d923aa798f1e29657bb767a22">TodoyuRequest::getAll</a>();
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156         print_r($params);
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158         exit();
+<a name="l00159"></a>00159     }
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162 
+<a name="l00171"></a>00171     <span class="keyword">private</span> <span class="keyword">static</span> function getControllerClassName($ext, $controller) {
+<a name="l00172"></a>00172         <span class="keywordflow">return</span> <span class="stringliteral">&apos;Todoyu&apos;</span> . ucfirst(trim($ext)) . ucfirst(trim($controller)) . <span class="stringliteral">&apos;ActionController&apos;</span>;
+<a name="l00173"></a>00173     }
+<a name="l00174"></a>00174 
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176 
+<a name="l00183"></a><a class="code" href="class_todoyu_action_dispatcher.html#ae52fd999678c3beb63f55a5d1e78b8aa">00183</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_action_dispatcher.html#ae52fd999678c3beb63f55a5d1e78b8aa">getControllerObject</a>($ext, $controller, array $params = array()) {
+<a name="l00184"></a>00184         $controllerClassName    = self::getControllerClassName($ext, $controller);
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186         <span class="keywordflow">return</span> <span class="keyword">new</span> $controllerClassName($params);
+<a name="l00187"></a>00187     }
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190 
+<a name="l00198"></a><a class="code" href="class_todoyu_action_dispatcher.html#aaf8842a5b97400b6094aa592cda291d0">00198</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_action_dispatcher.html#aaf8842a5b97400b6094aa592cda291d0">isController</a>($ext, $controller) {
+<a name="l00199"></a>00199         $controllerClassName = self::getControllerClassName($ext, $controller);
+<a name="l00200"></a>00200 
+<a name="l00201"></a>00201         <span class="keywordflow">return</span> class_exists($controllerClassName, <span class="keyword">true</span>);
+<a name="l00202"></a>00202     }
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204 }
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:31 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

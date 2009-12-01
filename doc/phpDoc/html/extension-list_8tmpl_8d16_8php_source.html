@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/cache/tmpl/compile/ext/sysmanager/view/extension-list.tmpl.d16.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/cache/tmpl/compile/ext/sysmanager/view/extension-list.tmpl.d16.php</h1><a href="extension-list_8tmpl_8d16_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&apos;Dwoo_Plugin_include&apos;</span>)===<span class="keyword">false</span>)
+<a name="l00003"></a>00003     $this-&gt;getLoader()-&gt;loadPlugin(<span class="stringliteral">&apos;include&apos;</span>);
+<a name="l00004"></a>00004 <span class="keywordflow">if</span> (class_exists(<span class="stringliteral">&apos;Dwoo_Plugin_cycle&apos;</span>, <span class="keyword">false</span>)===<span class="keyword">false</span>)
+<a name="l00005"></a>00005     $this-&gt;getLoader()-&gt;loadPlugin(<span class="stringliteral">&apos;cycle&apos;</span>);
+<a name="l00006"></a>00006 ob_start(); <span class="comment">/* template body */</span> ;
+<a name="l00007"></a>00007 echo $this-&gt;scope[<span class="stringliteral">&quot;tabs&quot;</span>];?&gt;
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 &lt;?php echo <span class="stringliteral">&apos;&lt;div class=&quot;title&quot;&gt;&apos;</span> . htmlentities(<a class="code" href="class_todoyu_div.html#a71fad5548fe188ea7853db0d5337e43b">TodoyuDiv::getLabel</a>(<span class="stringliteral">&quot;LLL:sysmanager.installedExtensions&quot;</span>) ) . <span class="stringliteral">&apos;&lt;/div&gt;&apos;</span>;?&gt;
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 &lt;table <span class="keyword">class</span>=<span class="stringliteral">&quot;list extlist&quot;</span>&gt;
+<a name="l00014"></a>00014   &lt;?php echo Dwoo_Plugin_include($this, <span class="stringliteral">&quot;extension-list-header.tmpl&quot;</span>, null, null, null, <span class="stringliteral">&apos;_root&apos;</span>, null);?&gt;
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 &lt;?php 
+<a name="l00018"></a><a class="code" href="extension-list_8tmpl_8d16_8php.html#a07f02c83748ab366f75f99db373868b3">00018</a> <a class="code" href="extension-list_8tmpl_8d16_8php.html#a07f02c83748ab366f75f99db373868b3">$_fh1_data</a> = (isset($this-&gt;scope[<span class="stringliteral">&quot;extensions&quot;</span>]) ? $this-&gt;scope[<span class="stringliteral">&quot;extensions&quot;</span>] : null);
+<a name="l00019"></a>00019 <span class="keywordflow">if</span> ($this-&gt;isArray(<a class="code" href="extension-list_8tmpl_8d16_8php.html#a07f02c83748ab366f75f99db373868b3">$_fh1_data</a>) === <span class="keyword">true</span>)
+<a name="l00020"></a>00020 {
+<a name="l00021"></a>00021     <span class="keywordflow">foreach</span> (<a class="code" href="extension-list_8tmpl_8d16_8php.html#a07f02c83748ab366f75f99db373868b3">$_fh1_data</a> as $this-&gt;scope[<span class="stringliteral">&apos;extKey&apos;</span>]=&gt;$this-&gt;scope[<span class="stringliteral">&apos;extInfo&apos;</span>])
+<a name="l00022"></a>00022     {
+<a name="l00023"></a>00023 <span class="comment">/* -- foreach start output */</span>
+<a name="l00024"></a>00024 ?&gt;
+<a name="l00025"></a>00025   &lt;tr <span class="keyword">class</span>=<span class="stringliteral">&quot;&lt;?php echo $this-&gt;classCall(&apos;cycle&apos;, array(&apos;default&apos;, &quot;</span>odd,even<span class="stringliteral">&quot;, true, true, &apos;,&apos;, null, false));?&gt;&quot;</span>&gt;
+<a name="l00026"></a>00026     &lt;td <span class="keyword">class</span>=<span class="stringliteral">&quot;icon&quot;</span>&gt;&lt;a href=<span class="stringliteral">&quot;javascript:void(0)&quot;</span> onclick=<span class="stringliteral">&quot;Todoyu.Ext.sysmanager.Extensions.showTab(&apos;&lt;?php echo $this-&gt;scope[&quot;</span>extKey<span class="stringliteral">&quot;];?&gt;&apos;, &apos;info&apos;)&quot;</span>&gt;&lt;?php echo <span class="stringliteral">&apos;&lt;img src=&quot;ext/&apos;</span> . (isset($this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>]) ? $this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>] : null) . <span class="stringliteral">&apos;/assets/img/exticon.png&quot; width=&quot;16&quot; height=&quot;16&quot; /&gt;&apos;</span>;?&gt;&lt;/a&gt;&lt;/td&gt;
+<a name="l00027"></a>00027     &lt;td <span class="keyword">class</span>=<span class="stringliteral">&quot;extkey&quot;</span>&gt;&lt;?php echo $this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>];?&gt;&lt;/td&gt;
+<a name="l00028"></a>00028     &lt;td <span class="keyword">class</span>=<span class="stringliteral">&quot;title&quot;</span>&gt;&lt;?php echo htmlentities(<a class="code" href="functions_8php.html#aea96bc12865f8da92f528dd440817853">findLabel</a>(((isset($this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>]) ? $this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>] : null)).(<span class="stringliteral">&apos;.ext.title&apos;</span>), <span class="keyword">false</span>, null), ENT_QUOTES, <span class="stringliteral">&apos;UTF-8&apos;</span>);?&gt;&lt;/td&gt;
+<a name="l00029"></a>00029     &lt;td <span class="keyword">class</span>=<span class="stringliteral">&quot;edit&quot;</span>&gt;
+<a name="l00030"></a>00030         &lt;?php <span class="keywordflow">if</span>(<a class="code" href="class_todoyu_rights_manager.html#a30ab9e248f115a03ff70f2ac97d10380">TodoyuRightsManager::isAllowed</a>(<span class="stringliteral">&apos;sysmanager&apos;</span>,<span class="stringliteral">&apos;extensions.uninstall&apos;</span>)) {?&gt;
+<a name="l00031"></a>00031         &lt;a href=<span class="stringliteral">&quot;javascript:void(0)&quot;</span> onclick=<span class="stringliteral">&quot;Todoyu.Ext.sysmanager.Extensions.uninstall(&apos;&lt;?php echo $this-&gt;scope[&quot;</span>extKey<span class="stringliteral">&quot;];?&gt;&apos;)&quot;</span> title=<span class="stringliteral">&quot;&lt;?php echo findLabel(&apos;sysmanager.extension.uninstallExtension&apos;, false, null);?&gt;&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;uninstall&quot;</span>&gt;
+<a name="l00032"></a>00032             &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;hidden&quot;</span>&gt;&lt;?php echo <a class="code" href="functions_8php.html#aea96bc12865f8da92f528dd440817853">findLabel</a>(<span class="stringliteral">&apos;core.uninstall&apos;</span>, <span class="keyword">false</span>, null);?&gt;&lt;span&gt;
+<a name="l00033"></a>00033         &lt;/a&gt;
+<a name="l00034"></a>00034         &lt;?php }
+<a name="l00035"></a>00035 <span class="keywordflow">else</span> {
+<a name="l00036"></a>00036 ?&gt;
+<a name="l00037"></a>00037         &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;icon&quot;</span>&gt;&amp;nbsp;&lt;/span&gt;
+<a name="l00038"></a>00038         &lt;?php 
+<a name="l00039"></a>00039 }?&gt;
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042         &lt;a href=<span class="stringliteral">&quot;javascript:void(0)&quot;</span> title=<span class="stringliteral">&quot;&lt;?php echo findLabel(&apos;sysmanager.extension.showInfo&apos;, false, null);?&gt;&quot;</span>
+<a name="l00043"></a>00043             &lt;?php <span class="keywordflow">if</span> (<a class="code" href="class_todoyu_ext_manager.html#abef71e30db9f1d04422476ab7ef281f1">TodoyuExtManager::getExtInfos</a>((isset($this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>]) ? $this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>] : null)) !== <span class="keyword">false</span>) {
+<a name="l00044"></a>00044 ?&gt;
+<a name="l00045"></a>00045                 onclick=<span class="stringliteral">&quot;Todoyu.Ext.sysmanager.Extensions.showTab(&apos;&lt;?php echo $this-&gt;scope[&quot;</span>extKey<span class="stringliteral">&quot;];?&gt;&apos;, &apos;info&apos;)&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;info&quot;</span>&gt;
+<a name="l00046"></a>00046             &lt;?php 
+<a name="l00047"></a>00047 }
+<a name="l00048"></a>00048 <span class="keywordflow">else</span> {
+<a name="l00049"></a>00049 ?&gt;
+<a name="l00050"></a>00050                 <span class="keyword">class</span>=<span class="stringliteral">&quot;info disabled&quot;</span>&gt;
+<a name="l00051"></a>00051             &lt;?php 
+<a name="l00052"></a>00052 }?&gt;
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054             &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;hidden&quot;</span>&gt;info&lt;span&gt;
+<a name="l00055"></a>00055         &lt;/a&gt;
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057         &lt;a href=<span class="stringliteral">&quot;javascript:void(0)&quot;</span> title=<span class="stringliteral">&quot;config&quot;</span>
+<a name="l00058"></a>00058             &lt;?php <span class="keywordflow">if</span> (<a class="code" href="class_todoyu_ext_manager.html#a7b52b0eccc0199bf214c7f5e9421ae88">TodoyuExtManager::extensionHasConfig</a>((isset($this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>]) ? $this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>] : null)) &amp;&amp; <a class="code" href="class_todoyu_rights_manager.html#a30ab9e248f115a03ff70f2ac97d10380">TodoyuRightsManager::isAllowed</a>(<span class="stringliteral">&apos;sysmanager&apos;</span>,<span class="stringliteral">&apos;extensions.editConfig&apos;</span>)) {
+<a name="l00059"></a>00059 ?&gt;
+<a name="l00060"></a>00060                 onclick=<span class="stringliteral">&quot;Todoyu.Ext.sysmanager.Extensions.showTab(&apos;&lt;?php echo $this-&gt;scope[&quot;</span>extKey<span class="stringliteral">&quot;];?&gt;&apos;, &apos;config&apos;)&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;config&quot;</span>&gt;
+<a name="l00061"></a>00061             &lt;?php 
+<a name="l00062"></a>00062 }
+<a name="l00063"></a>00063 <span class="keywordflow">else</span> {
+<a name="l00064"></a>00064 ?&gt;
+<a name="l00065"></a>00065                 <span class="keyword">class</span>=<span class="stringliteral">&quot;config disabled&quot;</span>&gt;
+<a name="l00066"></a>00066             &lt;?php 
+<a name="l00067"></a>00067 }?&gt;
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069             &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;hidden&quot;</span>&gt;config&lt;span&gt;
+<a name="l00070"></a>00070         &lt;/a&gt;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072         &lt;a href=<span class="stringliteral">&quot;javascript:void(0)&quot;</span> title=<span class="stringliteral">&quot;&lt;?php echo findLabel(&apos;sysmanager.extension.rights&apos;, false, null);?&gt;&quot;</span>
+<a name="l00073"></a>00073             &lt;?php <span class="keywordflow">if</span> (<a class="code" href="class_todoyu_rights_editor_manager.html#a14074c7530002feac3e1fa1cd5df5b60">TodoyuRightsEditorManager::hasRightsConfig</a>((isset($this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>]) ? $this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>] : null)) &amp;&amp; <a class="code" href="class_todoyu_rights_manager.html#a30ab9e248f115a03ff70f2ac97d10380">TodoyuRightsManager::isAllowed</a>(<span class="stringliteral">&apos;sysmanager&apos;</span>,<span class="stringliteral">&apos;extensions.editRights&apos;</span>)) {
+<a name="l00074"></a>00074 ?&gt;
+<a name="l00075"></a>00075                 onclick=<span class="stringliteral">&quot;Todoyu.Ext.sysmanager.Extensions.showTab(&apos;&lt;?php echo $this-&gt;scope[&quot;</span>extKey<span class="stringliteral">&quot;];?&gt;&apos;, &apos;rights&apos;)&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;rights&quot;</span>&gt;
+<a name="l00076"></a>00076             &lt;?php 
+<a name="l00077"></a>00077 }
+<a name="l00078"></a>00078 <span class="keywordflow">else</span> {
+<a name="l00079"></a>00079 ?&gt;
+<a name="l00080"></a>00080                 <span class="keyword">class</span>=<span class="stringliteral">&quot;rights disabled&quot;</span>&gt;
+<a name="l00081"></a>00081             &lt;?php 
+<a name="l00082"></a>00082 }?&gt;
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084             &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;hidden&quot;</span>&gt;rights&lt;span&gt;
+<a name="l00085"></a>00085         &lt;/a&gt;
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087         &lt;a href=<span class="stringliteral">&quot;javascript:void(0)&quot;</span> title=<span class="stringliteral">&quot;records&quot;</span>
+<a name="l00088"></a>00088             &lt;?php <span class="keywordflow">if</span> (<span class="keyword">sizeof</span>(<a class="code" href="class_todoyu_ext_manager.html#a3153297e975df2fa0783c95f3e39466b">TodoyuExtManager::getRecordTypes</a>((isset($this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>]) ? $this-&gt;scope[<span class="stringliteral">&quot;extKey&quot;</span>] : null))) &gt; 0 &amp;&amp; <a class="code" href="class_todoyu_rights_manager.html#a30ab9e248f115a03ff70f2ac97d10380">TodoyuRightsManager::isAllowed</a>(<span class="stringliteral">&apos;sysmanager&apos;</span>,<span class="stringliteral">&apos;extensions.editRecords&apos;</span>)) {
+<a name="l00089"></a>00089 ?&gt;
+<a name="l00090"></a>00090                 onclick=<span class="stringliteral">&quot;Todoyu.Ext.sysmanager.Extensions.showTab(&apos;&lt;?php echo $this-&gt;scope[&quot;</span>extKey<span class="stringliteral">&quot;];?&gt;&apos;, &apos;records&apos;)&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;records&quot;</span>&gt;
+<a name="l00091"></a>00091             &lt;?php 
+<a name="l00092"></a>00092 }
+<a name="l00093"></a>00093 <span class="keywordflow">else</span> {
+<a name="l00094"></a>00094 ?&gt;
+<a name="l00095"></a>00095                 <span class="keyword">class</span>=<span class="stringliteral">&quot;records disabled&quot;</span>&gt;
+<a name="l00096"></a>00096             &lt;?php 
+<a name="l00097"></a>00097 }?&gt;
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099             &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;hidden&quot;</span>&gt;records&lt;span&gt;
+<a name="l00100"></a>00100         &lt;/a&gt;
+<a name="l00101"></a>00101     &lt;/td&gt;
+<a name="l00102"></a>00102     &lt;td <span class="keyword">class</span>=<span class="stringliteral">&quot;version&quot;</span>&gt;&lt;?php echo $this-&gt;scope[<span class="stringliteral">&quot;extInfo&quot;</span>][<span class="stringliteral">&quot;version&quot;</span>];?&gt;&lt;/td&gt;
+<a name="l00103"></a>00103     &lt;td <span class="keyword">class</span>=<span class="stringliteral">&quot;download&quot;</span>&gt;
+<a name="l00104"></a>00104         &lt;?php <span class="keywordflow">if</span>(<a class="code" href="class_todoyu_rights_manager.html#a30ab9e248f115a03ff70f2ac97d10380">TodoyuRightsManager::isAllowed</a>(<span class="stringliteral">&apos;sysmanager&apos;</span>,<span class="stringliteral">&apos;extensions.download&apos;</span>)) {?&gt;
+<a name="l00105"></a>00105         &lt;a title=<span class="stringliteral">&quot;&lt;?php echo findLabel(&apos;sysmanager.extension.download&apos;, false, null);?&gt;&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;icon download&quot;</span> href=<span class="stringliteral">&quot;javascript:void(0)&quot;</span> onclick=<span class="stringliteral">&quot;Todoyu.Ext.sysmanager.Extensions.download(&apos;&lt;?php echo $this-&gt;scope[&quot;</span>extKey<span class="stringliteral">&quot;];?&gt;&apos;)&quot;</span>&gt;
+<a name="l00106"></a>00106             &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;hidden&quot;</span>&gt;&lt;?php echo <a class="code" href="functions_8php.html#aea96bc12865f8da92f528dd440817853">findLabel</a>(<span class="stringliteral">&apos;file.download&apos;</span>, <span class="keyword">false</span>, null);?&gt;&lt;/span&gt;
+<a name="l00107"></a>00107         &lt;/a&gt;
+<a name="l00108"></a>00108         &lt;?php }?&gt;
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110     &lt;/td&gt;
+<a name="l00111"></a>00111     &lt;td <span class="keyword">class</span>=<span class="stringliteral">&quot;doc&quot;</span>&gt;
+<a name="l00112"></a>00112         &lt;a title=<span class="stringliteral">&quot;&lt;?php echo findLabel(&apos;sysmanager.documentation&apos;, false, null);?&gt;&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;icon doc&quot;</span> href=<span class="stringliteral">&quot;javascript:void(0)&quot;</span>&gt;
+<a name="l00113"></a>00113             &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;hidden&quot;</span>&gt;&lt;?php echo <a class="code" href="functions_8php.html#aea96bc12865f8da92f528dd440817853">findLabel</a>(<span class="stringliteral">&apos;sysmanager.documentation&apos;</span>, <span class="keyword">false</span>, null);?&gt;&lt;/span&gt;
+<a name="l00114"></a>00114         &lt;/a&gt;
+<a name="l00115"></a>00115     &lt;/td&gt;
+<a name="l00116"></a>00116     &lt;td <span class="keyword">class</span>=<span class="stringliteral">&quot;state&quot;</span>&gt;&lt;?php echo $this-&gt;scope[<span class="stringliteral">&quot;extInfo&quot;</span>][<span class="stringliteral">&quot;state&quot;</span>];?&gt;&lt;/td&gt;
+<a name="l00117"></a>00117   &lt;/tr&gt;
+<a name="l00118"></a>00118 &lt;?php 
+<a name="l00119"></a>00119 <span class="comment">/* -- foreach end output */</span>
+<a name="l00120"></a>00120     }
+<a name="l00121"></a>00121 }?&gt;
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 &lt;/table&gt;&lt;?php  <span class="comment">/* end template body */</span>
+<a name="l00125"></a>00125 <span class="keywordflow">return</span> $this-&gt;buffer . ob_get_clean();
+<a name="l00126"></a>00126 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:30 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

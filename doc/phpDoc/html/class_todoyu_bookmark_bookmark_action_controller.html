@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuBookmarkBookmarkActionController Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuBookmarkBookmarkActionController Klassenreferenz</h1><!-- doxytag: class="TodoyuBookmarkBookmarkActionController" --><!-- doxytag: inherits="TodoyuActionController" --><div class="dynheader">
+Klassendiagramm für TodoyuBookmarkBookmarkActionController:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_bookmark_bookmark_action_controller.gif" usemap="#TodoyuBookmarkBookmarkActionController_map" alt=""/>
+  <map id="TodoyuBookmarkBookmarkActionController_map" name="TodoyuBookmarkBookmarkActionController_map">
+<area href="class_todoyu_action_controller.html" alt="TodoyuActionController" shape="rect" coords="0,0,256,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_bookmark_bookmark_action_controller.html#a5f728b67fb88a39ff03d55a7e307f8f4">addAction</a> (array $params)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_bookmark_bookmark_action_controller.html#a770cac888a23eaf05e521014f362e2e4">removeAction</a> (array $params)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_bookmark_bookmark_action_controller_8class_8php_source.html#l00003">3</a> der Datei <a class="el" href="_todoyu_bookmark_bookmark_action_controller_8class_8php_source.html">TodoyuBookmarkBookmarkActionController.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a5f728b67fb88a39ff03d55a7e307f8f4"></a><!-- doxytag: member="TodoyuBookmarkBookmarkActionController::addAction" ref="a5f728b67fb88a39ff03d55a7e307f8f4" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">addAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_bookmark_bookmark_action_controller_8class_8php_source.html#l00005">5</a> der Datei <a class="el" href="_todoyu_bookmark_bookmark_action_controller_8class_8php_source.html">TodoyuBookmarkBookmarkActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00005"></a>00005                                              {
+<a name="l00006"></a>00006         <a class="code" href="functions_8php.html#a03db0af59194955f1175851dd02f695e">restrict</a>(<span class="stringliteral">&apos;bookmark&apos;</span>, <span class="stringliteral">&apos;use&apos;</span>);
+<a name="l00007"></a>00007         <a class="code" href="functions_8php.html#a03db0af59194955f1175851dd02f695e">restrict</a>(<span class="stringliteral">&apos;bookmark&apos;</span>, <span class="stringliteral">&apos;add&apos;</span>);
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009         $idItem = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;item&apos;</span>]);
+<a name="l00010"></a>00010         $typeKey= <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;type&apos;</span>];
+<a name="l00011"></a>00011         $type   = <a class="code" href="class_todoyu_bookmark_manager.html#add9a10f1a139e900d85d932f06ccdfb0">TodoyuBookmarkManager::getTypeIndex</a>($typeKey);
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013         <a class="code" href="class_todoyu_bookmark_manager.html#a5428a45e61f686c2845637e27ead0ee3">TodoyuBookmarkManager::addItemToBookmarks</a>($type, $idItem);
+<a name="l00014"></a>00014     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a770cac888a23eaf05e521014f362e2e4"></a><!-- doxytag: member="TodoyuBookmarkBookmarkActionController::removeAction" ref="a770cac888a23eaf05e521014f362e2e4" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">removeAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_bookmark_bookmark_action_controller_8class_8php_source.html#l00016">16</a> der Datei <a class="el" href="_todoyu_bookmark_bookmark_action_controller_8class_8php_source.html">TodoyuBookmarkBookmarkActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00016"></a>00016                                                 {
+<a name="l00017"></a>00017         <a class="code" href="functions_8php.html#a03db0af59194955f1175851dd02f695e">restrict</a>(<span class="stringliteral">&apos;bookmark&apos;</span>, <span class="stringliteral">&apos;use&apos;</span>);
+<a name="l00018"></a>00018         <a class="code" href="functions_8php.html#a03db0af59194955f1175851dd02f695e">restrict</a>(<span class="stringliteral">&apos;bookmark&apos;</span>, <span class="stringliteral">&apos;remove&apos;</span>);
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020         $idItem = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;item&apos;</span>]);
+<a name="l00021"></a>00021         $typeKey= <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;type&apos;</span>];
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023         <a class="code" href="class_todoyu_bookmark_manager.html#ad53112907f15a7232e16f824ed02b7b1">TodoyuBookmarkManager::removeItemFromBooksmarks</a>($typeKey, $idItem);
+<a name="l00024"></a>00024     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/bookmark/controller/<a class="el" href="_todoyu_bookmark_bookmark_action_controller_8class_8php_source.html">TodoyuBookmarkBookmarkActionController.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:43 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

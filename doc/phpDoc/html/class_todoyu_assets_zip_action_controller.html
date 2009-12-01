@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuAssetsZipActionController Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuAssetsZipActionController Klassenreferenz</h1><!-- doxytag: class="TodoyuAssetsZipActionController" --><!-- doxytag: inherits="TodoyuActionController" --><div class="dynheader">
+Klassendiagramm für TodoyuAssetsZipActionController:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_assets_zip_action_controller.gif" usemap="#TodoyuAssetsZipActionController_map" alt=""/>
+  <map id="TodoyuAssetsZipActionController_map" name="TodoyuAssetsZipActionController_map">
+<area href="class_todoyu_action_controller.html" alt="TodoyuActionController" shape="rect" coords="0,0,202,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_assets_zip_action_controller.html#a5853b52bbe299f1bd9f10b2e6cd1e677">downloadAction</a> (array $params)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_assets_zip_action_controller_8class_8php_source.html#l00003">3</a> der Datei <a class="el" href="_todoyu_assets_zip_action_controller_8class_8php_source.html">TodoyuAssetsZipActionController.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a5853b52bbe299f1bd9f10b2e6cd1e677"></a><!-- doxytag: member="TodoyuAssetsZipActionController::downloadAction" ref="a5853b52bbe299f1bd9f10b2e6cd1e677" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">downloadAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_assets_zip_action_controller_8class_8php_source.html#l00005">5</a> der Datei <a class="el" href="_todoyu_assets_zip_action_controller_8class_8php_source.html">TodoyuAssetsZipActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00005"></a>00005                                                   {
+<a name="l00006"></a>00006         $idTask     = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;task&apos;</span>]);
+<a name="l00007"></a>00007         $assetIDs   = <a class="code" href="class_todoyu_div.html#ab32ced65de1bdf013bc8809a9887d50b">TodoyuDiv::intExplode</a>(<span class="charliteral">&apos;,&apos;</span>, <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;assets&apos;</span>], <span class="keyword">true</span>, <span class="keyword">true</span>);
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009         <span class="keywordflow">if</span>( <span class="keyword">sizeof</span>($assetIDs) &gt; 0 ) {
+<a name="l00010"></a>00010             <a class="code" href="class_todoyu_asset_manager.html#aa93073a31c7a789877a7041f4f5a25ff">TodoyuAssetManager::downloadAssetsZipped</a>($idTask, $assetIDs);
+<a name="l00011"></a>00011         } <span class="keywordflow">else</span> {
+<a name="l00012"></a>00012             die(<span class="stringliteral">&quot;NO ASSETS SELECTED&quot;</span>);
+<a name="l00013"></a>00013         }
+<a name="l00014"></a>00014     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/assets/controller/<a class="el" href="_todoyu_assets_zip_action_controller_8class_8php_source.html">TodoyuAssetsZipActionController.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:43 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

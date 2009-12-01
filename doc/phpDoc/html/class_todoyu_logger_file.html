@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuLoggerFile Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuLoggerFile Klassenreferenz</h1><!-- doxytag: class="TodoyuLoggerFile" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_logger_file.html#a03e7a9426bbaea0301c1c3fb2ab11f2b">log</a> ($message, $level, $data, $info, $requestKey)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_logger_file_8class_8php_source.html#l00029">29</a> der Datei <a class="el" href="_todoyu_logger_file_8class_8php_source.html">TodoyuLoggerFile.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a03e7a9426bbaea0301c1c3fb2ab11f2b"></a><!-- doxytag: member="TodoyuLoggerFile::log" ref="a03e7a9426bbaea0301c1c3fb2ab11f2b" args="($message, $level, $data, $info, $requestKey)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static log </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>requestKey</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Write log message in the logfile</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$message </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$level </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Mixed</em>&nbsp;</td><td>$data </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$callerInfo </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_logger_file_8class_8php_source.html#l00048">48</a> der Datei <a class="el" href="_todoyu_logger_file_8class_8php_source.html">TodoyuLoggerFile.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00048"></a>00048                                                                             {
+<a name="l00049"></a>00049             <span class="comment">// If file is not opened yet</span>
+<a name="l00050"></a>00050         <span class="keywordflow">if</span>( is_null(self::$file) ) {
+<a name="l00051"></a>00051                 <span class="comment">// Get path from config</span>
+<a name="l00052"></a>00052             $logFilePath    = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;LOG&apos;</span>][<span class="stringliteral">&apos;MODES&apos;</span>][<span class="stringliteral">&apos;FILE&apos;</span>][<span class="stringliteral">&apos;file&apos;</span>];
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054                 <span class="comment">// If path is defined as string</span>
+<a name="l00055"></a>00055             <span class="keywordflow">if</span>( is_string($logFilePath) ) {
+<a name="l00056"></a>00056                     <span class="comment">// If file doesn&apos;t exist, create it</span>
+<a name="l00057"></a>00057                 <span class="keywordflow">if</span>( ! is_file($logFilePath) ) {
+<a name="l00058"></a>00058                     <a class="code" href="class_todoyu_file_manager.html#a155d32d6f435887bd11757d976278edc">TodoyuFileManager::makeDirDeep</a>(dirname($logFilePath));
+<a name="l00059"></a>00059                     touch($logFilePath);
+<a name="l00060"></a>00060                 }
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062                     <span class="comment">// Open file</span>
+<a name="l00063"></a>00063                 self::$file = fopen($logFilePath, <span class="charliteral">&apos;a&apos;</span>);
+<a name="l00064"></a>00064             }
+<a name="l00065"></a>00065         }
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067             <span class="comment">// If the file is open, write log in it</span>
+<a name="l00068"></a>00068         <span class="keywordflow">if</span>( ! is_null(self::$file) ) {
+<a name="l00069"></a>00069             $logMessage = $requestKey . <span class="stringliteral">&apos; :: &apos;</span> . date(<span class="stringliteral">&apos;Y-m-d H:i:s&apos;</span>) . <span class="stringliteral">&apos; - L:&apos;</span> . $level . <span class="stringliteral">&apos; [&apos;</span> . $info[<span class="stringliteral">&apos;fileshort&apos;</span>] . <span class="charliteral">&apos;:&apos;</span> . $info[<span class="stringliteral">&apos;line&apos;</span>] . <span class="stringliteral">&apos;] :: &apos;</span> . $message . <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071             fwrite(self::$file, $logMessage);
+<a name="l00072"></a>00072         }
+<a name="l00073"></a>00073     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/core/<a class="el" href="_todoyu_logger_file_8class_8php_source.html">TodoyuLoggerFile.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:46 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

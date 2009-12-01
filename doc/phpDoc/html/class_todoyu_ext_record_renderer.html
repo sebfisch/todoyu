@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuExtRecordRenderer Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuExtRecordRenderer Klassenreferenz</h1><!-- doxytag: class="TodoyuExtRecordRenderer" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_ext_record_renderer.html#ab5f7b256041ac1296eae5e04591c203a">renderRecords</a> ($extKey, array $params=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_ext_record_renderer.html#aa63554f0dd8b74cfe78a9cd1f3c93c98">renderTypeList</a> ($extKey)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_ext_record_renderer.html#aeab395ed50e3989179e94b4e62439b2b">renderRecordList</a> ($extKey, $type)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_ext_record_renderer_8class_8php_source.html#l00028">28</a> der Datei <a class="el" href="_todoyu_ext_record_renderer_8class_8php_source.html">TodoyuExtRecordRenderer.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="aeab395ed50e3989179e94b4e62439b2b"></a><!-- doxytag: member="TodoyuExtRecordRenderer::renderRecordList" ref="aeab395ed50e3989179e94b4e62439b2b" args="($extKey, $type)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderRecordList </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>extKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>type</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render record list</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$extKey </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_ext_record_renderer_8class_8php_source.html#l00083">83</a> der Datei <a class="el" href="_todoyu_ext_record_renderer_8class_8php_source.html">TodoyuExtRecordRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00083"></a>00083                                                             {
+<a name="l00084"></a>00084         $typeConfigs = <a class="code" href="class_todoyu_ext_manager.html#aaae7f2354e669e08253ae2939efdc10c">TodoyuExtManager::getRecordTypeConfig</a>($extKey, $type);
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086         <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_div.html#a2dbf9fd5046506735124e644c99d2f96">TodoyuDiv::isFunctionReference</a>($typeConfigs[<span class="stringliteral">&apos;list&apos;</span>]) )  {
+<a name="l00087"></a>00087             $records = <a class="code" href="class_todoyu_div.html#afcc9d79cf22888569ba5f634bb686d1c">TodoyuDiv::callUserFunction</a>($typeConfigs[<span class="stringliteral">&apos;list&apos;</span>]);
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089             $tmpl = <span class="stringliteral">&apos;ext/sysmanager/view/records-recordlist.tmpl&apos;</span>;
+<a name="l00090"></a>00090             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a> = array(
+<a name="l00091"></a>00091                 <span class="stringliteral">&apos;records&apos;</span>   =&gt; $records,
+<a name="l00092"></a>00092                 <span class="stringliteral">&apos;extKey&apos;</span>    =&gt; $extKey,
+<a name="l00093"></a>00093                 <span class="stringliteral">&apos;type&apos;</span>      =&gt; $type,
+<a name="l00094"></a>00094                 <span class="stringliteral">&apos;labels&apos;</span>    =&gt; array(
+<a name="l00095"></a>00095                     <span class="stringliteral">&apos;typeLabel&apos;</span> =&gt; $typeConfigs[<span class="stringliteral">&apos;label&apos;</span>]
+<a name="l00096"></a>00096                 )
+<a name="l00097"></a>00097             );
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099             <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00100"></a>00100         } <span class="keywordflow">else</span> {
+<a name="l00101"></a>00101             <span class="keywordflow">return</span> <span class="stringliteral">&apos;NO VALID LIST FUNCTION FOR RECORD TYPE: &apos;</span> . $type . <span class="stringliteral">&apos; IN MODULE &apos;</span> . $extKey . <span class="stringliteral">&apos;(ERROR occurs in &lt;strong&gt;&apos;</span> . __METHOD__ . <span class="stringliteral">&apos;&lt;/strong&gt; on line: &apos;</span> . __LINE__ . <span class="charliteral">&apos;)&apos;</span>;
+<a name="l00102"></a>00102         }
+<a name="l00103"></a>00103     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="ab5f7b256041ac1296eae5e04591c203a"></a><!-- doxytag: member="TodoyuExtRecordRenderer::renderRecords" ref="ab5f7b256041ac1296eae5e04591c203a" args="($extKey, array $params=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderRecords </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>extKey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em> = <code>array()</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render extension records If parameter type is set, render type records, else render a list of record types</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$extKey </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$params </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_ext_record_renderer_8class_8php_source.html#l00038">38</a> der Datei <a class="el" href="_todoyu_ext_record_renderer_8class_8php_source.html">TodoyuExtRecordRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00038"></a>00038                                                                            {
+<a name="l00039"></a>00039         <span class="keywordflow">if</span>( isset($params[<span class="stringliteral">&apos;type&apos;</span>]) ) {
+<a name="l00040"></a>00040             <span class="keywordflow">return</span> <a class="code" href="class_todoyu_ext_record_renderer.html#aeab395ed50e3989179e94b4e62439b2b">self::renderRecordList</a>($extKey, $params[<span class="stringliteral">&apos;type&apos;</span>]);
+<a name="l00041"></a>00041         } <span class="keywordflow">else</span> {
+<a name="l00042"></a>00042             <span class="keywordflow">return</span> <a class="code" href="class_todoyu_ext_record_renderer.html#aa63554f0dd8b74cfe78a9cd1f3c93c98">self::renderTypeList</a>($extKey);
+<a name="l00043"></a>00043         }
+<a name="l00044"></a>00044     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="aa63554f0dd8b74cfe78a9cd1f3c93c98"></a><!-- doxytag: member="TodoyuExtRecordRenderer::renderTypeList" ref="aa63554f0dd8b74cfe78a9cd1f3c93c98" args="($extKey)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderTypeList </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>extKey</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render type list</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$extKey </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String HTML </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_ext_record_renderer_8class_8php_source.html#l00054">54</a> der Datei <a class="el" href="_todoyu_ext_record_renderer_8class_8php_source.html">TodoyuExtRecordRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00054"></a>00054                                                    {
+<a name="l00055"></a>00055         $tmpl   = <span class="stringliteral">&apos;ext/sysmanager/view/records-typelist.tmpl&apos;</span>;
+<a name="l00056"></a>00056         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00057"></a>00057             <span class="stringliteral">&apos;extKey&apos;</span>    =&gt; $extKey,
+<a name="l00058"></a>00058             <span class="stringliteral">&apos;types&apos;</span>     =&gt; array()
+<a name="l00059"></a>00059         );
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061         $typeConfigs    = <a class="code" href="class_todoyu_ext_manager.html#a379f58e9bc08d249fa875b3b10288729">TodoyuExtManager::getRecordConfigs</a>($extKey);
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063         <span class="keywordflow">foreach</span>($typeConfigs as $type =&gt; $config) {
+<a name="l00064"></a>00064             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;types&apos;</span>][$type] = array(
+<a name="l00065"></a>00065                 <span class="stringliteral">&apos;type&apos;</span>  =&gt; $type,
+<a name="l00066"></a>00066                 <span class="stringliteral">&apos;label&apos;</span> =&gt; <a class="code" href="functions_8php.html#a7c072b45376ab4eab800bc4788a4e22f">Label</a>($config[<span class="stringliteral">&apos;label&apos;</span>]),
+<a name="l00067"></a>00067                 <span class="stringliteral">&apos;count&apos;</span> =&gt; <a class="code" href="class_todoyu_ext_record_manager.html#adfc7c6da739dbc3b78e0e7525d69490a">TodoyuExtRecordManager::getRecordCount</a>($config[<span class="stringliteral">&apos;table&apos;</span>])
+<a name="l00068"></a>00068             );
+<a name="l00069"></a>00069         }
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00072"></a>00072     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/sysmanager/model/<a class="el" href="_todoyu_ext_record_renderer_8class_8php_source.html">TodoyuExtRecordRenderer.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:45 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

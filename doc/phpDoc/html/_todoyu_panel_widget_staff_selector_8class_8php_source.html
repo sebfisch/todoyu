@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/user/model/TodoyuPanelWidgetStaffSelector.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/user/model/TodoyuPanelWidgetStaffSelector.class.php</h1><a href="_todoyu_panel_widget_staff_selector_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00028"></a><a class="code" href="class_todoyu_panel_widget_staff_selector.html">00028</a> <span class="keyword">class </span><a class="code" href="class_todoyu_panel_widget_staff_selector.html">TodoyuPanelWidgetStaffSelector</a> <span class="keyword">extends</span> <a class="code" href="class_todoyu_panel_widget.html">TodoyuPanelWidget</a> implements <a class="code" href="interface_todoyu_panel_widget_if.html">TodoyuPanelWidgetIf</a> {
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030     <span class="keyword">private</span> <span class="keyword">static</span> $prefs;
+<a name="l00031"></a>00031 
+<a name="l00040"></a><a class="code" href="class_todoyu_panel_widget_staff_selector.html#a53943756fc09fbf7954fd784647d0543">00040</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget_staff_selector.html#a53943756fc09fbf7954fd784647d0543">__construct</a>(array <a class="code" href="class_todoyu_panel_widget.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>, array <a class="code" href="class_todoyu_panel_widget.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a> = array(), <a class="code" href="class_todoyu_panel_widget.html#aa3b4f377cf05246c01c5bf10ad5f844f">$idArea</a> = 0) {
+<a name="l00041"></a>00041             <span class="comment">// construct PanelWidget (init basic configuration)</span>
+<a name="l00042"></a>00042         <a class="code" href="class_todoyu_panel_widget_staff_selector.html#a53943756fc09fbf7954fd784647d0543">parent::__construct</a>(
+<a name="l00043"></a>00043             <span class="stringliteral">&apos;user&apos;</span>,                                 <span class="comment">// ext key</span>
+<a name="l00044"></a>00044             <span class="stringliteral">&apos;staffselector&apos;</span>,                        <span class="comment">// panel widget ID</span>
+<a name="l00045"></a>00045             <span class="stringliteral">&apos;LLL:panelwidget-staffselector.title&apos;</span>,  <span class="comment">// widget title text</span>
+<a name="l00046"></a>00046             $config,                                <span class="comment">// widget config array</span>
+<a name="l00047"></a>00047             <a class="code" href="class_todoyu_panel_widget.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>,                                <span class="comment">// widget params</span>
+<a name="l00048"></a>00048             <a class="code" href="class_todoyu_panel_widget.html#aa3b4f377cf05246c01c5bf10ad5f844f">$idArea</a>                                 <span class="comment">// area ID</span>
+<a name="l00049"></a>00049         );
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051                 <span class="comment">// have public ext. and widget specific assets added</span>
+<a name="l00052"></a>00052         <a class="code" href="class_todoyu_page.html#a60f870fc7513a20d414915f771b98b5c">TodoyuPage::addExtAssets</a>(<span class="stringliteral">&apos;user&apos;</span>, <span class="stringliteral">&apos;public&apos;</span>);
+<a name="l00053"></a>00053         <a class="code" href="class_todoyu_page.html#a60f870fc7513a20d414915f771b98b5c">TodoyuPage::addExtAssets</a>(<span class="stringliteral">&apos;user&apos;</span>, <span class="stringliteral">&apos;panelwidget-staffselector&apos;</span>);
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055         $this-&gt;prefs = <a class="code" href="class_todoyu_user_preferences.html#a35bfebd026cf11d14a3d25bd0927e5af">TodoyuUserPreferences::getStaffSelectorPrefs</a>();
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057             <span class="comment">// Add classes</span>
+<a name="l00058"></a>00058         <a class="code" href="class_todoyu_panel_widget.html#a2c1c02500e636a8832a6df96a9812b4e">parent::addHasIconClass</a>();
+<a name="l00059"></a>00059         <a class="code" href="class_todoyu_panel_widget.html#af297b685c862e9957c775f11d30367a4">parent::addClass</a>(<span class="stringliteral">&apos;user&apos;</span>);
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061             <span class="comment">// Get jobtype &lt;&gt; user mapping</span>
+<a name="l00062"></a>00062         $jobTypes2UserJSON  = $this-&gt;getJobTypes2UserJSON();
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064             <span class="comment">// init widget JS (observers)</span>
+<a name="l00065"></a>00065         <a class="code" href="class_todoyu_page.html#a999590070b3ebce0ef29993c33aeee60">TodoyuPage::addJsOnloadedFunction</a>(<span class="stringliteral">&apos;Todoyu.Ext.user.PanelWidget.StaffSelector.init.bind(Todoyu.Ext.user.PanelWidget.StaffSelector, &apos;</span> . $jobTypes2UserJSON . <span class="charliteral">&apos;)&apos;</span>);
+<a name="l00066"></a>00066     }
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 
+<a name="l00075"></a>00075     <span class="keyword">private</span> function getJobTypes2UserJSON() {
+<a name="l00076"></a>00076         <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>      = <a class="code" href="class_todoyu_user_manager.html#a544857c92ffed4e776147099a74257a6">TodoyuUserManager::getInternalUsers</a>();
+<a name="l00077"></a>00077         $mapping    = array();
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079         <span class="keywordflow">foreach</span>(<a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a> as $user) {
+<a name="l00080"></a>00080             $mapping[intval($user[<span class="stringliteral">&apos;id_jobtype&apos;</span>])][] = intval($user[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00081"></a>00081         }
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083         <span class="keywordflow">return</span> json_encode($mapping);
+<a name="l00084"></a>00084     }
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 
+<a name="l00093"></a>00093     <span class="keyword">private</span> function getInternalUsersWithJobtype() {
+<a name="l00094"></a>00094         $internalUsers  = <a class="code" href="class_todoyu_user_manager.html#a544857c92ffed4e776147099a74257a6">TodoyuUserManager::getInternalUsers</a>();
+<a name="l00095"></a>00095         $jobTypes       = <a class="code" href="class_todoyu_jobtype_manager.html#aca43244a635c42dcbca4c0a38e98ffd5">TodoyuJobtypeManager::getJobtypes</a>();
+<a name="l00096"></a>00096         $jobTypes       = <a class="code" href="class_todoyu_div.html#a56b3698d12180c3bd6d66059468f13c8">TodoyuDiv::useFieldAsIndex</a>($jobTypes, <span class="stringliteral">&apos;id&apos;</span>);
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098         <span class="keywordflow">foreach</span>($internalUsers as $index =&gt; $user) {
+<a name="l00099"></a>00099             $internalUsers[$index][<span class="stringliteral">&apos;jobtype&apos;</span>]   = $user[<span class="stringliteral">&apos;id_jobtype&apos;</span>] != 0 ? $jobTypes[$user[<span class="stringliteral">&apos;id_jobtype&apos;</span>]][<span class="stringliteral">&apos;title&apos;</span>] : $internalUsers[$index][<span class="stringliteral">&apos;jobtype&apos;</span>]    = <span class="stringliteral">&apos;LLL:user.noJobDefined&apos;</span>;
+<a name="l00100"></a>00100         }
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102         <span class="keywordflow">return</span> $internalUsers;
+<a name="l00103"></a>00103     }
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 
+<a name="l00113"></a>00113     <span class="keyword">private</span> function extractJobtypeInfos(array <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>) {
+<a name="l00114"></a>00114         $jobTypes   = array();
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116         <span class="keywordflow">foreach</span>($users as $user) {
+<a name="l00117"></a>00117             $idJobtype  = intval($user[<span class="stringliteral">&apos;id_jobtype&apos;</span>]);
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119             <span class="keywordflow">if</span>( ! array_key_exists($idJobtype, $jobTypes) ) {
+<a name="l00120"></a>00120                 $jobTypes[$idJobtype] = array(
+<a name="l00121"></a>00121                     <span class="stringliteral">&apos;title&apos;</span> =&gt; $user[<span class="stringliteral">&apos;jobtype&apos;</span>],
+<a name="l00122"></a>00122                     <span class="stringliteral">&apos;users&apos;</span> =&gt; array()
+<a name="l00123"></a>00123                 );
+<a name="l00124"></a>00124             }
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126             $jobTypes[$idJobtype][<span class="stringliteral">&apos;users&apos;</span>][] = $user[<span class="stringliteral">&apos;id&apos;</span>];
+<a name="l00127"></a>00127         }
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129         <span class="keywordflow">return</span> $jobTypes;
+<a name="l00130"></a>00130     }
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133 
+<a name="l00140"></a>00140     <span class="keyword">private</span> function getUserListSize($numUsers) {
+<a name="l00141"></a>00141         <a class="code" href="class_todoyu_extensions.html#a9a6969496e40db9847f2f25ea4b43b61">TodoyuExtensions::loadConfig</a>(<span class="stringliteral">&apos;user&apos;</span>, <span class="stringliteral">&apos;panelwidgets&apos;</span>);
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143         $numUsers       = intval($numUsers);
+<a name="l00144"></a>00144         $usersListSize  = intval(<a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;user&apos;</span>][<span class="stringliteral">&apos;panelWidgetStaffSelector&apos;</span>][<span class="stringliteral">&apos;usersListSize&apos;</span>]);
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146         <span class="keywordflow">if</span>( $usersListSize === 0 )  {
+<a name="l00147"></a>00147             $usersListSize = 15;
+<a name="l00148"></a>00148         }
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150         <span class="keywordflow">if</span>( $numUsers &lt; $usersListSize )    {
+<a name="l00151"></a>00151             $usersListSize = $numUsers;
+<a name="l00152"></a>00152         }
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154         <span class="keywordflow">return</span> $usersListSize;
+<a name="l00155"></a>00155     }
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158 
+<a name="l00164"></a><a class="code" href="class_todoyu_panel_widget_staff_selector.html#a0d304720b71e3fabb0b602754043e1b6">00164</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget_staff_selector.html#a0d304720b71e3fabb0b602754043e1b6">renderContent</a>() {
+<a name="l00165"></a>00165             <span class="comment">// Render (if not existing) colors.css and colors.png (CSS sprite)</span>
+<a name="l00166"></a>00166         <a class="code" href="class_todoyu_colors.html#a7fc2009b850fca7383bccf1e0867d76d">TodoyuColors::generateColorsCSS</a>();
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168         $prefs  = <a class="code" href="class_todoyu_panel_widget_staff_selector.html#a4513c6666bae796b968b36b0bf07d67f">self::getPrefs</a>();
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170             <span class="comment">// Get staff users with their job functions</span>
+<a name="l00171"></a>00171         $users      = $this-&gt;getInternalUsersWithJobtype();
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173         $jobTypes   = $this-&gt;extractJobtypeInfos($users);
+<a name="l00174"></a>00174         ksort($jobTypes);
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176         $userListSize   = $this-&gt;getUserListSize(<span class="keyword">sizeof</span>($users));
+<a name="l00177"></a>00177 
+<a name="l00178"></a>00178         $tmpl   = <span class="stringliteral">&apos;ext/user/view/panelwidget-staffselector.tmpl&apos;</span>;
+<a name="l00179"></a>00179         <a class="code" href="class_todoyu_panel_widget.html#a6efc15b5a2314dd4b5aaa556a375c6d6">$data</a>   = array(
+<a name="l00180"></a>00180             <span class="stringliteral">&apos;id&apos;</span>                =&gt; $this-&gt;<a class="code" href="class_todoyu_panel_widget.html#a30dd7fff4fec7a39f9be9d27d4b22a59">getID</a>(),
+<a name="l00181"></a>00181             <span class="stringliteral">&apos;numColors&apos;</span>         =&gt; <span class="keyword">sizeof</span>(<a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;COLORS&apos;</span>]),
+<a name="l00182"></a>00182             <span class="stringliteral">&apos;colorizeOptions&apos;</span>   =&gt; $this-&gt;config[<span class="stringliteral">&apos;colorizePersonOptions&apos;</span>],
+<a name="l00183"></a>00183             <span class="stringliteral">&apos;jobTypes&apos;</span>          =&gt; $jobTypes,
+<a name="l00184"></a>00184             <span class="stringliteral">&apos;jobTypeMultiple&apos;</span>   =&gt; $prefs[<span class="stringliteral">&apos;multiple&apos;</span>],
+<a name="l00185"></a>00185             <span class="stringliteral">&apos;selectedJobTypes&apos;</span>  =&gt; is_array($prefs[<span class="stringliteral">&apos;jobtypes&apos;</span>]) ? $prefs[<span class="stringliteral">&apos;jobtypes&apos;</span>] : array(),
+<a name="l00186"></a>00186             <span class="stringliteral">&apos;selectedUsers&apos;</span>     =&gt; is_array($prefs[<span class="stringliteral">&apos;users&apos;</span>]) ? $prefs[<span class="stringliteral">&apos;users&apos;</span>] : array(),
+<a name="l00187"></a>00187             <span class="stringliteral">&apos;users&apos;</span>             =&gt; $users,
+<a name="l00188"></a>00188             <span class="stringliteral">&apos;userListSize&apos;</span>      =&gt; $userListSize,
+<a name="l00189"></a>00189         );
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191         $content    = <a class="code" href="class_todoyu_panel_widget_staff_selector.html#afde88292c44dc59faf017738dae6dffb">render</a>($tmpl, <a class="code" href="class_todoyu_panel_widget.html#a6efc15b5a2314dd4b5aaa556a375c6d6">$data</a>);
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193         $this-&gt;<a class="code" href="class_todoyu_panel_widget.html#a04a5eddb7c3abc7bf31fa25b58f046bf">setContent</a>($content);
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195         <span class="keywordflow">return</span> $content;
+<a name="l00196"></a>00196     }
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199 
+<a name="l00205"></a><a class="code" href="class_todoyu_panel_widget_staff_selector.html#afde88292c44dc59faf017738dae6dffb">00205</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget_staff_selector.html#afde88292c44dc59faf017738dae6dffb">render</a>() {
+<a name="l00206"></a>00206         $this-&gt;<a class="code" href="class_todoyu_panel_widget_staff_selector.html#a0d304720b71e3fabb0b602754043e1b6">renderContent</a>();
+<a name="l00207"></a>00207 
+<a name="l00208"></a>00208         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_panel_widget_staff_selector.html#afde88292c44dc59faf017738dae6dffb">parent::render</a>();
+<a name="l00209"></a>00209     }
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211 
+<a name="l00212"></a>00212 
+<a name="l00218"></a><a class="code" href="class_todoyu_panel_widget_staff_selector.html#a26c577449fa17954a1d124590e57645e">00218</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_panel_widget_staff_selector.html#a26c577449fa17954a1d124590e57645e">getSelectedUsers</a>() {
+<a name="l00219"></a>00219         $prefs  = <a class="code" href="class_todoyu_panel_widget_staff_selector.html#a4513c6666bae796b968b36b0bf07d67f">self::getPrefs</a>();
+<a name="l00220"></a>00220 
+<a name="l00221"></a>00221         <span class="keywordflow">return</span> is_array($prefs[<span class="stringliteral">&apos;users&apos;</span>]) ? $prefs[<span class="stringliteral">&apos;users&apos;</span>] : array();
+<a name="l00222"></a>00222     }
+<a name="l00223"></a>00223 
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225 
+<a name="l00226"></a><a class="code" href="class_todoyu_panel_widget_staff_selector.html#a4513c6666bae796b968b36b0bf07d67f">00226</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_panel_widget_staff_selector.html#a4513c6666bae796b968b36b0bf07d67f">getPrefs</a>() {
+<a name="l00227"></a>00227         <span class="keywordflow">if</span>( is_null(self::$prefs) ) {
+<a name="l00228"></a>00228             self::$prefs = <a class="code" href="class_todoyu_user_preferences.html#a35bfebd026cf11d14a3d25bd0927e5af">TodoyuUserPreferences::getStaffSelectorPrefs</a>();
+<a name="l00229"></a>00229         }
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231         <span class="keywordflow">return</span> self::$prefs;
+<a name="l00232"></a>00232     }
+<a name="l00233"></a>00233 
+<a name="l00234"></a>00234 }
+<a name="l00235"></a>00235 
+<a name="l00236"></a>00236 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:37 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

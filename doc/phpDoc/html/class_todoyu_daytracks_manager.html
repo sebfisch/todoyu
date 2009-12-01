@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuDaytracksManager Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuDaytracksManager Klassenreferenz</h1><!-- doxytag: class="TodoyuDaytracksManager" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_daytracks_manager.html#a5b627db2bffdc87acbce8caced87c9cb">getTodayTrackedTasks</a> ()</td></tr>
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_daytracks_manager.html#a3e6729a9540082ef6c806b1a6604a937">getPanelWidgetContextMenuItems</a> ($idTask, array $items)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_daytracks_manager.html#a43301972f85bbf19bc12f9af2e6c75cb">isTaskTrackedToday</a> ($idTask)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_daytracks_manager.html#a9c18688a798a48df5280c8cb97ad42b6">getCurrentTrackedUnsavedTask</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_manager_8class_8php_source.html#l00028">28</a> der Datei <a class="el" href="_todoyu_daytracks_manager_8class_8php_source.html">TodoyuDaytracksManager.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a9c18688a798a48df5280c8cb97ad42b6"></a><!-- doxytag: member="TodoyuDaytracksManager::getCurrentTrackedUnsavedTask" ref="a9c18688a798a48df5280c8cb97ad42b6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getCurrentTrackedUnsavedTask </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get information array about the current tracked task if its not saved already</p>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Array Or false if no tracking is running or track is already saved </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_manager_8class_8php_source.html#l00116">116</a> der Datei <a class="el" href="_todoyu_daytracks_manager_8class_8php_source.html">TodoyuDaytracksManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00116"></a>00116                                                           {
+<a name="l00117"></a>00117         $idTask = <a class="code" href="class_todoyu_timetracking.html#a35dde256888ea3a81f1f911df3643d19">TodoyuTimetracking::getTaskID</a>();
+<a name="l00118"></a>00118         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = <span class="keyword">false</span>;
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120         <span class="keywordflow">if</span>( $idTask &gt; 0 ) {
+<a name="l00121"></a>00121             <span class="keywordflow">if</span>( ! self::isTaskTrackedToday($idTask) ) {
+<a name="l00122"></a>00122                 <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos; t.id,</span>
+<a name="l00123"></a>00123 <span class="stringliteral">                            t.title,</span>
+<a name="l00124"></a>00124 <span class="stringliteral">                            t.status,</span>
+<a name="l00125"></a>00125 <span class="stringliteral">                            t.tasknumber,</span>
+<a name="l00126"></a>00126 <span class="stringliteral">                            p.id as id_project,</span>
+<a name="l00127"></a>00127 <span class="stringliteral">                            p.title as project,</span>
+<a name="l00128"></a>00128 <span class="stringliteral">                            c.shortname as customer&apos;</span>;
+<a name="l00129"></a>00129                 $tables = <span class="stringliteral">&apos; ext_project_task t,</span>
+<a name="l00130"></a>00130 <span class="stringliteral">                            ext_project_project p,</span>
+<a name="l00131"></a>00131 <span class="stringliteral">                            ext_user_customer c&apos;</span>;
+<a name="l00132"></a>00132                 <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos; t.id            = &apos;</span> . $idTask . <span class="stringliteral">&apos; AND</span>
+<a name="l00133"></a>00133 <span class="stringliteral">                            t.id_project    = p.id AND</span>
+<a name="l00134"></a>00134 <span class="stringliteral">                            p.id_customer   = c.id&apos;</span>;
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136                 <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getRecordByQuery(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, $tables, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138                 <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;time&apos;</span>] = <a class="code" href="class_todoyu_timetracking.html#abe29cccbcee1d71085799d6613927e48">TodoyuTimetracking::getTrackedTime</a>();
+<a name="l00139"></a>00139             }
+<a name="l00140"></a>00140         }
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142         <span class="keywordflow">return</span> <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>;
+<a name="l00143"></a>00143     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a3e6729a9540082ef6c806b1a6604a937"></a><!-- doxytag: member="TodoyuDaytracksManager::getPanelWidgetContextMenuItems" ref="a3e6729a9540082ef6c806b1a6604a937" args="($idTask, array $items)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getPanelWidgetContextMenuItems </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>items</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get context menu items for daytrack list panel widget</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask Task ID </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$items Current items </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Array </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_manager_8class_8php_source.html#l00037">37</a> der Datei <a class="el" href="_todoyu_daytracks_manager_8class_8php_source.html">TodoyuDaytracksManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00037"></a>00037                                                                                  {
+<a name="l00038"></a>00038         $ownItems   = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;daytracks&apos;</span>][<span class="stringliteral">&apos;ContextMenu&apos;</span>][<span class="stringliteral">&apos;PanelWidget&apos;</span>];
+<a name="l00039"></a>00039         $items      = array_merge_recursive($items, $ownItems);
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041         <span class="keywordflow">return</span> $items;
+<a name="l00042"></a>00042     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a5b627db2bffdc87acbce8caced87c9cb"></a><!-- doxytag: member="TodoyuDaytracksManager::getTodayTrackedTasks" ref="a5b627db2bffdc87acbce8caced87c9cb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">getTodayTrackedTasks </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get information about all tasks which have been tracked today The following information is provided in the array keys: [id] Task ID [title] Task title [tasknumber] Task number [status] Task status key (integer) [id_project] Project ID [project] Project title [customer] Customer shortname [time] Tracked time today</p>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Array </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_manager_8class_8php_source.html#l00060">60</a> der Datei <a class="el" href="_todoyu_daytracks_manager_8class_8php_source.html">TodoyuDaytracksManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00060"></a>00060                                            {
+<a name="l00061"></a>00061         $range  = <a class="code" href="class_todoyu_time.html#a36e69cd8bdd6fa3fd46f483445730852">TodoyuTime::getDayRange</a>(<a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>);
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos; t.id,</span>
+<a name="l00064"></a>00064 <span class="stringliteral">                    t.title,</span>
+<a name="l00065"></a>00065 <span class="stringliteral">                    t.status,</span>
+<a name="l00066"></a>00066 <span class="stringliteral">                    t.tasknumber,</span>
+<a name="l00067"></a>00067 <span class="stringliteral">                    p.id as id_project,</span>
+<a name="l00068"></a>00068 <span class="stringliteral">                    p.title as project,</span>
+<a name="l00069"></a>00069 <span class="stringliteral">                    c.shortname as customer,</span>
+<a name="l00070"></a>00070 <span class="stringliteral">                    tr.workload_tracked as `time`&apos;</span>;
+<a name="l00071"></a>00071         $tables = <span class="stringliteral">&apos; ext_project_task t,</span>
+<a name="l00072"></a>00072 <span class="stringliteral">                    ext_timetracking_track tr,</span>
+<a name="l00073"></a>00073 <span class="stringliteral">                    ext_project_project p,</span>
+<a name="l00074"></a>00074 <span class="stringliteral">                    ext_user_customer c&apos;</span>;
+<a name="l00075"></a>00075         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos; t.id            = tr.id_task AND</span>
+<a name="l00076"></a>00076 <span class="stringliteral">                    tr.date_update BETWEEN &apos;</span> . $range[<span class="stringliteral">&apos;start&apos;</span>] . <span class="stringliteral">&apos; AND &apos;</span> . $range[<span class="stringliteral">&apos;end&apos;</span>] . <span class="stringliteral">&apos; AND</span>
+<a name="l00077"></a>00077 <span class="stringliteral">                    tr.id_user      = &apos;</span> . <a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>() . <span class="stringliteral">&apos; AND</span>
+<a name="l00078"></a>00078 <span class="stringliteral">                    t.id_project    = p.id AND</span>
+<a name="l00079"></a>00079 <span class="stringliteral">                    p.id_customer   = c.id&apos;</span>;
+<a name="l00080"></a>00080         $group  = <span class="stringliteral">&apos;t.id&apos;</span>;
+<a name="l00081"></a>00081         $order  = <span class="stringliteral">&apos;tr.date_create&apos;</span>;
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, $tables, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, $group, $order);
+<a name="l00084"></a>00084     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a43301972f85bbf19bc12f9af2e6c75cb"></a><!-- doxytag: member="TodoyuDaytracksManager::isTaskTrackedToday" ref="a43301972f85bbf19bc12f9af2e6c75cb" args="($idTask)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static isTaskTrackedToday </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Check if a task has already been tracked today (has a record in the database)</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Boolean </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_manager_8class_8php_source.html#l00095">95</a> der Datei <a class="el" href="_todoyu_daytracks_manager_8class_8php_source.html">TodoyuDaytracksManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00095"></a>00095                                                        {
+<a name="l00096"></a>00096         $idTask = intval($idTask);
+<a name="l00097"></a>00097         $range  = <a class="code" href="class_todoyu_time.html#a36e69cd8bdd6fa3fd46f483445730852">TodoyuTime::getDayRange</a>(<a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>);
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos;id&apos;</span>;
+<a name="l00100"></a>00100         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = <a class="code" href="class_todoyu_timetracking.html#adf62e2b172196282218b1ece3d200fa1">TodoyuTimetracking::TABLE</a>;
+<a name="l00101"></a>00101         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos; id_task = &apos;</span> . $idTask . <span class="stringliteral">&apos; AND</span>
+<a name="l00102"></a>00102 <span class="stringliteral">                    date_update BETWEEN &apos;</span> . $range[<span class="stringliteral">&apos;start&apos;</span>] . <span class="stringliteral">&apos; AND &apos;</span> . $range[<span class="stringliteral">&apos;end&apos;</span>] . <span class="stringliteral">&apos; AND</span>
+<a name="l00103"></a>00103 <span class="stringliteral">                    id_user     = &apos;</span> . <a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>();
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;hasResult(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00106"></a>00106     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/daytracks/model/<a class="el" href="_todoyu_daytracks_manager_8class_8php_source.html">TodoyuDaytracksManager.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:44 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

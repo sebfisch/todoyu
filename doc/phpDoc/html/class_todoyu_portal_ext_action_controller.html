@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuPortalExtActionController Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuPortalExtActionController Klassenreferenz</h1><!-- doxytag: class="TodoyuPortalExtActionController" --><!-- doxytag: inherits="TodoyuActionController" --><div class="dynheader">
+Klassendiagramm für TodoyuPortalExtActionController:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_portal_ext_action_controller.gif" usemap="#TodoyuPortalExtActionController_map" alt=""/>
+  <map id="TodoyuPortalExtActionController_map" name="TodoyuPortalExtActionController_map">
+<area href="class_todoyu_action_controller.html" alt="TodoyuActionController" shape="rect" coords="0,0,196,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_portal_ext_action_controller.html#a178ea6bf91dabc8e0a94712a4517744b">defaultAction</a> (array $params)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_portal_ext_action_controller_8class_8php_source.html#l00022">22</a> der Datei <a class="el" href="_todoyu_portal_ext_action_controller_8class_8php_source.html">TodoyuPortalExtActionController.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a178ea6bf91dabc8e0a94712a4517744b"></a><!-- doxytag: member="TodoyuPortalExtActionController::defaultAction" ref="a178ea6bf91dabc8e0a94712a4517744b" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">defaultAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_portal_ext_action_controller_8class_8php_source.html#l00024">24</a> der Datei <a class="el" href="_todoyu_portal_ext_action_controller_8class_8php_source.html">TodoyuPortalExtActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00024"></a>00024                                                  {
+<a name="l00025"></a>00025         <a class="code" href="functions_8php.html#a03db0af59194955f1175851dd02f695e">restrict</a>(<span class="stringliteral">&apos;portal&apos;</span>, <span class="stringliteral">&apos;use&apos;</span>);
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027             <span class="comment">// Activate FE tab</span>
+<a name="l00028"></a>00028         <a class="code" href="class_todoyu_frontend.html#a2d4e32e2eca7f2a293aa15c4bb2af7d0">TodoyuFrontend::setActiveTab</a>(<span class="stringliteral">&apos;portal&apos;</span>);
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030             <span class="comment">// Add assets</span>
+<a name="l00031"></a>00031         <a class="code" href="class_todoyu_page.html#a60f870fc7513a20d414915f771b98b5c">TodoyuPage::addExtAssets</a>(<span class="stringliteral">&apos;portal&apos;</span>, <span class="stringliteral">&apos;public&apos;</span>);
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033             <span class="comment">// Setup page to be rendered</span>
+<a name="l00034"></a>00034         <a class="code" href="class_todoyu_action_controller.html#a7d8b575549d659cc58610c461c95a20f">TodoyuPage::init</a>(<span class="stringliteral">&apos;ext/portal/view/ext.tmpl&apos;</span>);
+<a name="l00035"></a>00035         <a class="code" href="class_todoyu_page.html#ac1811274b4a27b9b2fdde17a1801437d">TodoyuPage::setTitle</a>(<span class="stringliteral">&apos;LLL:portal.page.title&apos;</span>);
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037             <span class="comment">// Get active tab</span>
+<a name="l00038"></a>00038         $activeTab  = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;tab&apos;</span>]);
+<a name="l00039"></a>00039         <span class="keywordflow">if</span>( $activeTab === 0 ) {
+<a name="l00040"></a>00040             $activeTab = <a class="code" href="class_todoyu_portal_preferences.html#aac3c34795e443b3f91d47b83a284c887">TodoyuPortalPreferences::getActiveTab</a>();
+<a name="l00041"></a>00041         } <span class="keywordflow">else</span> {
+<a name="l00042"></a>00042             <a class="code" href="class_todoyu_portal_preferences.html#a58c9514f385574e966f0ea1d9bb9e691">TodoyuPortalPreferences::saveActiveTab</a>($activeTab);
+<a name="l00043"></a>00043         }
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045             <span class="comment">// Panel widgets</span>
+<a name="l00046"></a>00046         $panelWidgets   = <a class="code" href="class_todoyu_portal_renderer.html#ad6fc557becde1f0908b79ed162149435">TodoyuPortalRenderer::renderPanelWidgets</a>();
+<a name="l00047"></a>00047         <a class="code" href="class_todoyu_page.html#a8ffaa417357ae854ab1ae9c5f70c6fbf">TodoyuPage::set</a>(<span class="stringliteral">&apos;panelWidgets&apos;</span>, $panelWidgets);
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050             <span class="comment">// Tabheads</span>
+<a name="l00051"></a>00051         $portalTabs     = <a class="code" href="class_todoyu_portal_renderer.html#a8040968ab61013997057b5beee5c655c">TodoyuPortalRenderer::renderTabHeads</a>();
+<a name="l00052"></a>00052         $tabContainers  = <a class="code" href="class_todoyu_portal_renderer.html#a34654d56992f8fbe1b7d05e0928a4910">TodoyuPortalRenderer::renderEmptyTabContainers</a>();
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054         <a class="code" href="class_todoyu_page.html#a8ffaa417357ae854ab1ae9c5f70c6fbf">TodoyuPage::set</a>(<span class="stringliteral">&apos;portalTabs&apos;</span>,   $portalTabs);
+<a name="l00055"></a>00055         <a class="code" href="class_todoyu_page.html#a8ffaa417357ae854ab1ae9c5f70c6fbf">TodoyuPage::set</a>(<span class="stringliteral">&apos;tabContainers&apos;</span>, $tabContainers);
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057         <span class="comment">// Render active tab, tab content</span>
+<a name="l00058"></a>00058         $tab            = <a class="code" href="class_todoyu_portal_manager.html#a3941fc071117814ded7e696a34cac23a">TodoyuPortalManager::getTab</a>($activeTab);
+<a name="l00059"></a>00059         $tabContent     = <a class="code" href="class_todoyu_portal_renderer.html#a8935848b99b0fa74d1ae4b72cfd1c422">TodoyuPortalRenderer::renderTabContent</a>($activeTab);
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061         <a class="code" href="class_todoyu_page.html#a8ffaa417357ae854ab1ae9c5f70c6fbf">TodoyuPage::set</a>(<span class="stringliteral">&apos;tab&apos;</span>,          $tab);
+<a name="l00062"></a>00062         <a class="code" href="class_todoyu_page.html#a8ffaa417357ae854ab1ae9c5f70c6fbf">TodoyuPage::set</a>(<span class="stringliteral">&apos;tabContent&apos;</span>,   $tabContent);
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064             <span class="comment">// Add assets</span>
+<a name="l00065"></a>00065         <a class="code" href="class_todoyu_page.html#a60f870fc7513a20d414915f771b98b5c">TodoyuPage::addExtAssets</a>(<span class="stringliteral">&apos;project&apos;</span>);
+<a name="l00066"></a>00066         <a class="code" href="class_todoyu_page.html#a60f870fc7513a20d414915f771b98b5c">TodoyuPage::addExtAssets</a>(<span class="stringliteral">&apos;portal&apos;</span>);
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068             <span class="comment">// Context menu</span>
+<a name="l00069"></a>00069         <a class="code" href="class_todoyu_page.html#a999590070b3ebce0ef29993c33aeee60">TodoyuPage::addJsOnloadedFunction</a>(<span class="stringliteral">&apos;Todoyu.Ext.project.ContextMenuTask.attach.bind(Todoyu.Ext.project.ContextMenuTask)&apos;</span>);
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071             <span class="comment">// Display output</span>
+<a name="l00072"></a>00072         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">TodoyuPage::render</a>();
+<a name="l00073"></a>00073     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/portal/controller/<a class="el" href="_todoyu_portal_ext_action_controller_8class_8php_source.html">TodoyuPortalExtActionController.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:47 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

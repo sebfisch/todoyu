@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/user/model/TodoyuUsergroupManager.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/user/model/TodoyuUsergroupManager.class.php</h1><a href="_todoyu_usergroup_manager_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00029"></a><a class="code" href="class_todoyu_usergroup_manager.html">00029</a> <span class="keyword">class </span><a class="code" href="class_todoyu_usergroup_manager.html">TodoyuUsergroupManager</a> {
+<a name="l00030"></a>00030 
+<a name="l00031"></a><a class="code" href="class_todoyu_usergroup_manager.html#adf62e2b172196282218b1ece3d200fa1">00031</a>     <span class="keyword">const</span> <a class="code" href="class_todoyu_usergroup_manager.html#adf62e2b172196282218b1ece3d200fa1">TABLE</a> = <span class="stringliteral">&apos;ext_user_group&apos;</span>;
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 
+<a name="l00041"></a><a class="code" href="class_todoyu_usergroup_manager.html#a153d7eae1ad07637b6adbe5657a449d2">00041</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#a153d7eae1ad07637b6adbe5657a449d2">getUsergroup</a>($idUsergroup) {
+<a name="l00042"></a>00042         $idUsergroup    = intval($idUsergroup);
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_cache.html#ac4ee8343209de75d7fc2392648f4072b">TodoyuCache::getRecord</a>(<span class="stringliteral">&apos;TodoyuUsergroup&apos;</span>, $idUsergroup);
+<a name="l00045"></a>00045     }
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 
+<a name="l00055"></a><a class="code" href="class_todoyu_usergroup_manager.html#aeec6a824df5cc0538dd844574b463154">00055</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#aeec6a824df5cc0538dd844574b463154">getUsergroupArray</a>($idUsergroup) {
+<a name="l00056"></a>00056         $idUsergroup    = intval($idUsergroup);
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getRecord(self::TABLE, $idUsergroup);
+<a name="l00059"></a>00059     }
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 
+<a name="l00068"></a><a class="code" href="class_todoyu_usergroup_manager.html#a72c416b1434d325355df14756a2bd4f1">00068</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#a72c416b1434d325355df14756a2bd4f1">getAllUsergroups</a>() {
+<a name="l00069"></a>00069         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="charliteral">&apos;*&apos;</span>;
+<a name="l00070"></a>00070         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = self::TABLE;
+<a name="l00071"></a>00071         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos;deleted = 0&apos;</span>;
+<a name="l00072"></a>00072         $order  = <span class="stringliteral">&apos;is_active, title&apos;</span>;
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, <span class="stringliteral">&apos;&apos;</span>, $order);
+<a name="l00075"></a>00075     }
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 
+<a name="l00084"></a><a class="code" href="class_todoyu_usergroup_manager.html#a150c547e5ae2dc236630ebb94650a6e7">00084</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#a150c547e5ae2dc236630ebb94650a6e7">getFixedUserGroups</a>() {
+<a name="l00085"></a>00085         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos;id,`key`,title&apos;</span>;
+<a name="l00086"></a>00086         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = self::TABLE;
+<a name="l00087"></a>00087         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos;is_active = 1 AND deleted = 0&apos;</span>;
+<a name="l00088"></a>00088         $order  = <span class="stringliteral">&apos;id&apos;</span>;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, <span class="stringliteral">&apos;&apos;</span>, $order);
+<a name="l00091"></a>00091     }
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
+<a name="l00102"></a><a class="code" href="class_todoyu_usergroup_manager.html#ae226ad45538809de3b75db313b069644">00102</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#ae226ad45538809de3b75db313b069644">saveUsergroup</a>($idUsergroup, array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>) {
+<a name="l00103"></a>00103         $idUsergroup= intval($idUsergroup);
+<a name="l00104"></a>00104         <a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>    = <span class="stringliteral">&apos;ext/user/config/form/usergroup.xml&apos;</span>;
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106             <span class="comment">// If new usergroup, create empty container to work with the ID</span>
+<a name="l00107"></a>00107         <span class="keywordflow">if</span>( $idUsergroup === 0 ) {
+<a name="l00108"></a>00108             $idUsergroup = <a class="code" href="class_todoyu_usergroup_manager.html#a0fa692791c449a9b46f770f849a5e39b">self::addUsergroup</a>();
+<a name="l00109"></a>00109         }
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111         $data   = <a class="code" href="class_todoyu_usergroup_manager.html#a6ba92e32a84db400a203593cd085ae02">self::saveUsergroupForeignRecords</a>($data, $idUsergroup);
+<a name="l00112"></a>00112         $data   = <a class="code" href="class_todoyu_form_hook.html#a661781c57898f2b71c3c241515510324">TodoyuFormHook::callSaveData</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>, $data, $idUsergroup);
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         <a class="code" href="class_todoyu_usergroup_manager.html#ad48b5b83e90245499e33b515e557b0c7">self::updateUsergroup</a>($idUsergroup, $data);
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116         <span class="keywordflow">return</span> $idUsergroup;
+<a name="l00117"></a>00117     }
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 
+<a name="l00128"></a><a class="code" href="class_todoyu_usergroup_manager.html#a6ba92e32a84db400a203593cd085ae02">00128</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#a6ba92e32a84db400a203593cd085ae02">saveUsergroupForeignRecords</a>(array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>, $idUsergroup) {
+<a name="l00129"></a>00129         $idUsergroup = intval($idUsergroup);
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131             <span class="comment">// Save user links</span>
+<a name="l00132"></a>00132         <span class="keywordflow">if</span>( ! empty($data[<span class="stringliteral">&apos;users&apos;</span>]) ) {
+<a name="l00133"></a>00133             <a class="code" href="user_8php.html#a307cce3be8d8dbb46d0c949fddbf6bd0">$userIDs</a> = <a class="code" href="class_todoyu_array.html#ad2c7a0fa47bdfe76e832d0145aecbc20">TodoyuArray::getColumn</a>($data[<span class="stringliteral">&apos;users&apos;</span>], <span class="stringliteral">&apos;id&apos;</span>);
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135             <a class="code" href="class_todoyu_usergroup_manager.html#ab108d1b32a4964d53b1212cda9e3e82c">self::addUsersToGroup</a>($idUsergroup, <a class="code" href="user_8php.html#a307cce3be8d8dbb46d0c949fddbf6bd0">$userIDs</a>);
+<a name="l00136"></a>00136         }
+<a name="l00137"></a>00137         unset($data[<span class="stringliteral">&apos;users&apos;</span>]);
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139         <span class="keywordflow">return</span> $data;
+<a name="l00140"></a>00140     }
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 
+<a name="l00150"></a><a class="code" href="class_todoyu_usergroup_manager.html#a33a07f85095871efda7e6c5dca2f37c5">00150</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#a33a07f85095871efda7e6c5dca2f37c5">addUserToGroup</a>($idUsergroup, $idUser) {
+<a name="l00151"></a>00151         $idUsergroup= intval($idUsergroup);
+<a name="l00152"></a>00152         $idUser     = intval($idUser);
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154         <a class="code" href="class_todoyu_db_helper.html#aa6a21a39f8d2aa8d7a1c20b5cc178b9a">TodoyuDbHelper::removeMMrelation</a>(<span class="stringliteral">&apos;ext_user_mm_user_group&apos;</span>, <span class="stringliteral">&apos;id_group&apos;</span>, <span class="stringliteral">&apos;id_user&apos;</span>, $idUsergroup, $idUser);
+<a name="l00155"></a>00155         <a class="code" href="class_todoyu_db_helper.html#a1f8f447becb263fa6ad95ae56362dc70">TodoyuDbHelper::addMMrelation</a>(<span class="stringliteral">&apos;ext_user_mm_user_group&apos;</span>, <span class="stringliteral">&apos;id_group&apos;</span>, <span class="stringliteral">&apos;id_user&apos;</span>, $idUsergroup, $idUser);
+<a name="l00156"></a>00156     }
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159 
+<a name="l00166"></a><a class="code" href="class_todoyu_usergroup_manager.html#ab108d1b32a4964d53b1212cda9e3e82c">00166</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#ab108d1b32a4964d53b1212cda9e3e82c">addUsersToGroup</a>($idUsergroup, array <a class="code" href="user_8php.html#a307cce3be8d8dbb46d0c949fddbf6bd0">$userIDs</a>) {
+<a name="l00167"></a>00167         $idUsergroup= intval($idUsergroup);
+<a name="l00168"></a>00168         $userIDs    = <a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>($userIDs, <span class="keyword">true</span>, <span class="keyword">true</span>);
+<a name="l00169"></a>00169         $userIDs    = array_unique($userIDs);
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171         <a class="code" href="class_todoyu_db_helper.html#a18b61d6a0c4349de2adda6f0d96b3e7d">TodoyuDbHelper::saveMMrelations</a>(<span class="stringliteral">&apos;ext_user_mm_user_group&apos;</span>, <span class="stringliteral">&apos;id_group&apos;</span>, <span class="stringliteral">&apos;id_user&apos;</span>, $idUsergroup, $userIDs, <span class="keyword">true</span>);
+<a name="l00172"></a>00172     }
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174 
+<a name="l00175"></a>00175 
+<a name="l00182"></a><a class="code" href="class_todoyu_usergroup_manager.html#a874439931d8460f7db2e380371370b99">00182</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#a874439931d8460f7db2e380371370b99">addUserToGroups</a>($idUser, array $groupIDs) {
+<a name="l00183"></a>00183         $idUser     = intval($idUser);
+<a name="l00184"></a>00184         $groupIDs   = array_unique(<a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>($groupIDs, <span class="keyword">true</span>, <span class="keyword">true</span>));
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186         <a class="code" href="class_todoyu_db_helper.html#a18b61d6a0c4349de2adda6f0d96b3e7d">TodoyuDbHelper::saveMMrelations</a>(<span class="stringliteral">&apos;ext_user_mm_user_group&apos;</span>, <span class="stringliteral">&apos;id_user&apos;</span>, <span class="stringliteral">&apos;id_group&apos;</span>, $idUser, $groupIDs, <span class="keyword">true</span>);
+<a name="l00187"></a>00187     }
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190 
+<a name="l00197"></a><a class="code" href="class_todoyu_usergroup_manager.html#a0fa692791c449a9b46f770f849a5e39b">00197</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#a0fa692791c449a9b46f770f849a5e39b">addUsergroup</a>(array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a> = array()) {
+<a name="l00198"></a>00198         unset(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;date_create&apos;</span>]    = <a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>;
+<a name="l00201"></a>00201         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;id_user_create&apos;</span>] = <a class="code" href="class_todoyu_auth.html#a038ac7a8e7c043635e04f4f71ae69690">TodoyuAuth::getUserID</a>();
+<a name="l00202"></a>00202 
+<a name="l00203"></a>00203         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;addRecord(self::TABLE, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00204"></a>00204     }
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206 
+<a name="l00207"></a>00207 
+<a name="l00215"></a><a class="code" href="class_todoyu_usergroup_manager.html#ad48b5b83e90245499e33b515e557b0c7">00215</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#ad48b5b83e90245499e33b515e557b0c7">updateUsergroup</a>($idUsergroup, array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>) {
+<a name="l00216"></a>00216         unset($data[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00217"></a>00217         $idUsergroup    = intval($idUsergroup);
+<a name="l00218"></a>00218 
+<a name="l00219"></a>00219         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;updateRecord(self::TABLE, $idUsergroup, $data);
+<a name="l00220"></a>00220     }
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222 
+<a name="l00223"></a>00223 
+<a name="l00229"></a><a class="code" href="class_todoyu_usergroup_manager.html#a78b6e0a3851ed6765f999d5f0fc04576">00229</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#a78b6e0a3851ed6765f999d5f0fc04576">deleteUsergroup</a>($idUsergroup)    {
+<a name="l00230"></a>00230         $idUsergroup = intval($idUsergroup);
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232         $update = array(
+<a name="l00233"></a>00233             <span class="stringliteral">&apos;date_update&apos;</span>    =&gt; <a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>,
+<a name="l00234"></a>00234             <span class="stringliteral">&apos;deleted&apos;</span>       =&gt; 1
+<a name="l00235"></a>00235         );
+<a name="l00236"></a>00236 
+<a name="l00237"></a>00237         <a class="code" href="class_todoyu_usergroup_manager.html#ad48b5b83e90245499e33b515e557b0c7">self::updateUsergroup</a>($idUsergroup, $update);
+<a name="l00238"></a>00238     }
+<a name="l00239"></a>00239 
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241 
+<a name="l00248"></a><a class="code" href="class_todoyu_usergroup_manager.html#a7605c9b685a88075b39ffa40b42fc2ad">00248</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#a7605c9b685a88075b39ffa40b42fc2ad">getGroupUserIDs</a>($idUsergroup) {
+<a name="l00249"></a>00249         $idUsergroup    = intval($idUsergroup);
+<a name="l00250"></a>00250 
+<a name="l00251"></a>00251         <a class="code" href="acknowledged__tasks_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>  = <span class="stringliteral">&apos;id_user&apos;</span>;
+<a name="l00252"></a>00252         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = <span class="stringliteral">&apos;ext_user_mm_user_group&apos;</span>;
+<a name="l00253"></a>00253         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos;id_group = &apos;</span> . $idUsergroup;
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getColumn(<a class="code" href="acknowledged__tasks_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>, <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00256"></a>00256     }
+<a name="l00257"></a>00257 
+<a name="l00258"></a>00258 
+<a name="l00259"></a>00259 
+<a name="l00266"></a><a class="code" href="class_todoyu_usergroup_manager.html#a642fe85008413b5bd227342e907a00bf">00266</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#a642fe85008413b5bd227342e907a00bf">getNumUsers</a>($idUsergroup) {
+<a name="l00267"></a>00267         $idUsergroup= intval($idUsergroup);
+<a name="l00268"></a>00268         <a class="code" href="user_8php.html#a307cce3be8d8dbb46d0c949fddbf6bd0">$userIDs</a>    = <a class="code" href="class_todoyu_usergroup_manager.html#a7605c9b685a88075b39ffa40b42fc2ad">self::getGroupUserIDs</a>($idUsergroup);
+<a name="l00269"></a>00269 
+<a name="l00270"></a>00270         <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(<a class="code" href="user_8php.html#a307cce3be8d8dbb46d0c949fddbf6bd0">$userIDs</a>);
+<a name="l00271"></a>00271     }
+<a name="l00272"></a>00272 
+<a name="l00273"></a>00273 
+<a name="l00274"></a>00274 
+<a name="l00281"></a><a class="code" href="class_todoyu_usergroup_manager.html#afc2d427f5293d0448cd8db76004e4bfb">00281</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_usergroup_manager.html#afc2d427f5293d0448cd8db76004e4bfb">getGroupUsers</a>($idUsergroup) {
+<a name="l00282"></a>00282         $idUsergroup    = intval($idUsergroup);
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos;u.*&apos;</span>;
+<a name="l00285"></a>00285         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = <span class="stringliteral">&apos;ext_user_user u,</span>
+<a name="l00286"></a>00286 <span class="stringliteral">                    ext_user_mm_user_group mm&apos;</span>;
+<a name="l00287"></a>00287         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos;mm.id_group = &apos;</span> . $idUsergroup . <span class="stringliteral">&apos; AND</span>
+<a name="l00288"></a>00288 <span class="stringliteral">                    mm.id_user = u.id&apos;</span>;
+<a name="l00289"></a>00289 
+<a name="l00290"></a>00290         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00291"></a>00291     }
+<a name="l00292"></a>00292 }
+<a name="l00293"></a>00293 
+<a name="l00294"></a>00294 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:37 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

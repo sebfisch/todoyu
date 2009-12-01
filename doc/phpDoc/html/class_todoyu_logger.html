@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuLogger Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuLogger Klassenreferenz</h1><!-- doxytag: class="TodoyuLogger" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_logger.html#a421831a265621325e1fdd19aace0c758">__destruct</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_logger.html#af633a81f8b5a9239aba784d3dc7006b5">log</a> ($message, $level=0, $data=null)</td></tr>
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_logger.html#a0bb4b1cbaa4cf113e6e2c524baf171e7">getInstance</a> (array $modes, $level=0)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_logger_8class_8php_source.html#l00029">29</a> der Datei <a class="el" href="_todoyu_logger_8class_8php_source.html">TodoyuLogger.class.php</a>.</p>
+<hr/><h2>Beschreibung der Konstruktoren und Destruktoren</h2>
+<a class="anchor" id="a421831a265621325e1fdd19aace0c758"></a><!-- doxytag: member="TodoyuLogger::__destruct" ref="a421831a265621325e1fdd19aace0c758" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__destruct </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cleanup actions </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_logger_8class_8php_source.html#l00105">105</a> der Datei <a class="el" href="_todoyu_logger_8class_8php_source.html">TodoyuLogger.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00105"></a>00105                                  {
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a0bb4b1cbaa4cf113e6e2c524baf171e7"></a><!-- doxytag: member="TodoyuLogger::getInstance" ref="a0bb4b1cbaa4cf113e6e2c524baf171e7" args="(array $modes, $level=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getInstance </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>modes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>level</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get the only instance. Singleton</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$modes Active modes </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$level Log level limit </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Log </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_logger_8class_8php_source.html#l00077">77</a> der Datei <a class="el" href="_todoyu_logger_8class_8php_source.html">TodoyuLogger.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00077"></a>00077                                                                  {
+<a name="l00078"></a>00078         <span class="keywordflow">if</span>( is_null(self::$instance) ) {
+<a name="l00079"></a>00079             self::$instance = <span class="keyword">new</span> <span class="keyword">self</span>($modes, $level);
+<a name="l00080"></a>00080         }
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         <span class="keywordflow">return</span> self::$instance;
+<a name="l00083"></a>00083     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="af633a81f8b5a9239aba784d3dc7006b5"></a><!-- doxytag: member="TodoyuLogger::log" ref="af633a81f8b5a9239aba784d3dc7006b5" args="($message, $level=0, $data=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">log </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>level</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>data</em> = <code>null</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Log a message. The message will be processed by all log modes</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$message Log message </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$level Log level of current message </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Mixed</em>&nbsp;</td><td>$data An additional data container (for debugging) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_logger_8class_8php_source.html#l00118">118</a> der Datei <a class="el" href="_todoyu_logger_8class_8php_source.html">TodoyuLogger.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00118"></a>00118                                                             {
+<a name="l00119"></a>00119         $backtrace  = debug_backtrace();
+<a name="l00120"></a>00120         $info       = $backtrace[1];
+<a name="l00121"></a>00121         $level      = intval($level);
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123         $info[<span class="stringliteral">&apos;fileshort&apos;</span>]  = <a class="code" href="class_todoyu_file_manager.html#afb2212b547536d5752dc1757b8de4092">TodoyuFileManager::pathWeb</a>($info[<span class="stringliteral">&apos;file&apos;</span>]);
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125         <span class="keywordflow">if</span>( $level &gt;= $this-&gt;level ) {
+<a name="l00126"></a>00126             <span class="keywordflow">foreach</span>($this-&gt;modes as $mode) {
+<a name="l00127"></a>00127                 $funcRef = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;LOG&apos;</span>][<span class="stringliteral">&apos;MODES&apos;</span>][$mode][<span class="stringliteral">&apos;funcRef&apos;</span>];
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129                 <a class="code" href="class_todoyu_div.html#afcc9d79cf22888569ba5f634bb686d1c">TodoyuDiv::callUserFunction</a>($funcRef, $message, $level, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>, $info, $this-&gt;requestKey);
+<a name="l00130"></a>00130             }
+<a name="l00131"></a>00131         }
+<a name="l00132"></a>00132     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/core/<a class="el" href="_todoyu_logger_8class_8php_source.html">TodoyuLogger.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:46 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

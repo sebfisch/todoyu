@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/form/TodoyuFormElement_RTE.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/form/TodoyuFormElement_RTE.class.php</h1><a href="_todoyu_form_element___r_t_e_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00031"></a><a class="code" href="class_todoyu_form_element___r_t_e.html">00031</a> <span class="keyword">class </span><a class="code" href="class_todoyu_form_element___r_t_e.html">TodoyuFormElement_RTE</a> <span class="keyword">extends</span> <a class="code" href="class_todoyu_form_element___textarea.html">TodoyuFormElement_Textarea</a> {
+<a name="l00032"></a>00032 
+<a name="l00040"></a><a class="code" href="class_todoyu_form_element___r_t_e.html#aa986ef8b9dfa1afb42657621d7e3c18a">00040</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_form_element___r_t_e.html#aa986ef8b9dfa1afb42657621d7e3c18a">__construct</a>(<a class="code" href="class_todoyu_form_element.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a>, <a class="code" href="class_todoyu_fieldset.html">TodoyuFieldset</a> <a class="code" href="class_todoyu_form_element.html#ab15059ce6bfbf3ac01b4d114975f3320">$fieldset</a>, array <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a> = array()) {
+<a name="l00041"></a>00041         <a class="code" href="class_todoyu_form_element___r_t_e.html#aa986ef8b9dfa1afb42657621d7e3c18a">TodoyuFormElement::__construct</a>(<span class="stringliteral">&apos;RTE&apos;</span>, <a class="code" href="class_todoyu_form_element.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a>, $fieldset, <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>);
+<a name="l00042"></a>00042     }
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 
+<a name="l00052"></a>00052     <span class="keyword">private</span> function buildRTEjs() {
+<a name="l00053"></a>00053         $options    = array(
+<a name="l00054"></a>00054             <span class="stringliteral">&apos;mode&apos;</span>      =&gt; <span class="stringliteral">&apos;exact&apos;</span>,
+<a name="l00055"></a>00055             <span class="stringliteral">&apos;elements&apos;</span>  =&gt; $this-&gt;<a class="code" href="class_todoyu_form_element.html#a97820e394793558f146f8b9ebe54ec78">getHtmlID</a>(),
+<a name="l00056"></a>00056             <span class="stringliteral">&apos;theme&apos;</span>     =&gt; <span class="stringliteral">&apos;simple&apos;</span>);
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058             <span class="comment">// Load config</span>
+<a name="l00059"></a>00059         <span class="keywordflow">if</span>( is_array($this-&gt;config[<span class="stringliteral">&apos;tinymce&apos;</span>]) ) {
+<a name="l00060"></a>00060             <span class="keywordflow">foreach</span>($this-&gt;config[<span class="stringliteral">&apos;tinymce&apos;</span>] as <a class="code" href="class_todoyu_form_element.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a> =&gt; $value) {
+<a name="l00061"></a>00061                 $options[<a class="code" href="class_todoyu_form_element.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a>] = $value;
+<a name="l00062"></a>00062             }
+<a name="l00063"></a>00063         }
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065             <span class="comment">// Generate config code</span>
+<a name="l00066"></a>00066         $jsCode = <span class="stringliteral">&quot;tinyMCE.init({\n&quot;</span>;
+<a name="l00067"></a>00067         $tmpOpt = array();
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069         <span class="keywordflow">foreach</span>($options as <a class="code" href="class_todoyu_form_element.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a> =&gt; $value) {
+<a name="l00070"></a>00070             $tmpOpt[] = <a class="code" href="class_todoyu_form_element.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a> . <span class="stringliteral">&apos; : &quot;&apos;</span> . $value . <span class="charliteral">&apos;&quot;&apos;</span>;
+<a name="l00071"></a>00071         }
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073         $jsCode .= implode(<span class="stringliteral">&quot;,\n&quot;</span>, $tmpOpt);
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075         $jsCode .= <span class="stringliteral">&quot;\n});\n&quot;</span>;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077         <span class="keywordflow">return</span> $jsCode;
+<a name="l00078"></a>00078     }
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 
+<a name="l00088"></a>00088     <span class="keyword">private</span> function getRTEconfig(<a class="code" href="class_todoyu_form_element.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a>) {
+<a name="l00089"></a>00089         $defaults   = array(<span class="stringliteral">&apos;theme&apos;</span> =&gt; <span class="stringliteral">&apos;simple&apos;</span>);
+<a name="l00090"></a>00090         <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>     = <span class="keyword">false</span>;
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092         <span class="keywordflow">if</span>( isset($this-&gt;config[<span class="stringliteral">&apos;tinymce&apos;</span>][<span class="stringliteral">&apos;theme&apos;</span>]) ) {
+<a name="l00093"></a>00093             <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a> = $this-&gt;config[<span class="stringliteral">&apos;tinymce&apos;</span>][<span class="stringliteral">&apos;theme&apos;</span>];
+<a name="l00094"></a>00094         } elseif( array_key_exists(<a class="code" href="class_todoyu_form_element.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a>, $defaults) ) {
+<a name="l00095"></a>00095             <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a> = $defaults[<a class="code" href="class_todoyu_form_element.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a>];
+<a name="l00096"></a>00096         }
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>;
+<a name="l00099"></a>00099     }
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 
+<a name="l00108"></a><a class="code" href="class_todoyu_form_element___r_t_e.html#aab9cd20216bbcddca903cb599e5a19d9">00108</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_form_element___r_t_e.html#aab9cd20216bbcddca903cb599e5a19d9">getStorageData</a>() {
+<a name="l00109"></a>00109         $value  = <a class="code" href="javascript_8js.html#a653ea8da4d112c6bce1135d086cb38c9">str_replace</a>(<span class="stringliteral">&quot;\n&quot;</span>, <span class="stringliteral">&apos;&apos;</span>, $this-&gt;<a class="code" href="class_todoyu_form_element.html#ac0bc18784b182c89fcfd276625aef435">getValue</a>());
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111         $this-&gt;<a class="code" href="class_todoyu_form_element___textarea.html#a7494441b6ed08a391704971873f31432">setValue</a>($value);
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_form_element___r_t_e.html#aab9cd20216bbcddca903cb599e5a19d9">parent::getStorageData</a>();
+<a name="l00114"></a>00114     }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 
+<a name="l00123"></a><a class="code" href="class_todoyu_form_element___r_t_e.html#a81a67162a6288d78fc4c55283325f0b4">00123</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_form_element___r_t_e.html#a81a67162a6288d78fc4c55283325f0b4">getData</a>() {
+<a name="l00124"></a>00124         $this-&gt;config[<span class="stringliteral">&apos;rteJs&apos;</span>] = $this-&gt;buildRTEjs();
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_form_element___r_t_e.html#a81a67162a6288d78fc4c55283325f0b4">parent::getData</a>();
+<a name="l00127"></a>00127     }
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130 
+<a name="l00136"></a><a class="code" href="class_todoyu_form_element___r_t_e.html#a36716582b10d240d112d4089f05fc5a1">00136</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_form_element___r_t_e.html#a36716582b10d240d112d4089f05fc5a1">validateRequired</a>() {
+<a name="l00137"></a>00137         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_validator.html#ab0197908a6a06ef87646492de3a03838">TodoyuValidator::isNotEmpty</a>($this-&gt;<a class="code" href="class_todoyu_form_element.html#ac0bc18784b182c89fcfd276625aef435">getValue</a>());
+<a name="l00138"></a>00138     }
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 }
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:31 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

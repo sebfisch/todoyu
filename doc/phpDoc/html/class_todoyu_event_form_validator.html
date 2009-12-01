@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuEventFormValidator Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuEventFormValidator Klassenreferenz</h1><!-- doxytag: class="TodoyuEventFormValidator" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_form_validator.html#afc4600525fa851a3e299c721ffae05ae">eventIsAssignableToCurrentUserOnly</a> ($value, array $config=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_form_validator.html#a5f25933c7db9634d711e033f7fe66be4">starttimeAfterEndtime</a> ($value, array $config=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_form_validator.html#a8e2f6974ae2b7fa0d3142879dac04a92">checkTimeFormat</a> ($value, array $config=array())</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_form_validator_8class_8php_source.html#l00030">30</a> der Datei <a class="el" href="_todoyu_event_form_validator_8class_8php_source.html">TodoyuEventFormValidator.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a8e2f6974ae2b7fa0d3142879dac04a92"></a><!-- doxytag: member="TodoyuEventFormValidator::checkTimeFormat" ref="a8e2f6974ae2b7fa0d3142879dac04a92" args="($value, array $config=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static checkTimeFormat </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>config</em> = <code>array&nbsp;()</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Check wheter the time format is correct</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$value Assigned users </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$config Field config array </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Bool </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_form_validator_8class_8php_source.html#l00089">89</a> der Datei <a class="el" href="_todoyu_event_form_validator_8class_8php_source.html">TodoyuEventFormValidator.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00089"></a>00089                                                                               {
+<a name="l00090"></a>00090             <span class="comment">// Build regular expression</span>
+<a name="l00091"></a>00091         $regexp = <span class="stringliteral">&apos;(\d{1,2}(\:|\s)\d{1,2})&apos;</span>;
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093             <span class="comment">// Check starttime format with regular expression</span>
+<a name="l00094"></a>00094         <span class="keywordflow">if</span>( ! preg_match( $regexp, $config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;starttime&apos;</span>] ) ) {
+<a name="l00095"></a>00095             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00096"></a>00096         } elseif ( ! preg_match( $regexp, $config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;endtime&apos;</span>] ) ) {
+<a name="l00097"></a>00097             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00098"></a>00098         }
+<a name="l00099"></a>00099     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="afc4600525fa851a3e299c721ffae05ae"></a><!-- doxytag: member="TodoyuEventFormValidator::eventIsAssignableToCurrentUserOnly" ref="afc4600525fa851a3e299c721ffae05ae" args="($value, array $config=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static eventIsAssignableToCurrentUserOnly </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>config</em> = <code>array&nbsp;()</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Check if the event is only assigned to the current user if the event is private defined in the $config array</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$value Assigned users </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$config Field config array </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Bool </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_form_validator_8class_8php_source.html#l00040">40</a> der Datei <a class="el" href="_todoyu_event_form_validator_8class_8php_source.html">TodoyuEventFormValidator.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00040"></a>00040                                                                                                 {
+<a name="l00041"></a>00041             <span class="comment">// If the flag is_private is set, the event is only allowed to be assigned to the current user</span>
+<a name="l00042"></a>00042         <span class="keywordflow">if</span>( $config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;is_private&apos;</span>] == 1 &amp;&amp;
+<a name="l00043"></a>00043             (count($config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;user&apos;</span>]) &gt; 1 || $config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;user&apos;</span>][<span class="charliteral">&apos;0&apos;</span>][<span class="stringliteral">&apos;id&apos;</span>] != <a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>() ) ){
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00046"></a>00046         }
+<a name="l00047"></a>00047     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a5f25933c7db9634d711e033f7fe66be4"></a><!-- doxytag: member="TodoyuEventFormValidator::starttimeAfterEndtime" ref="a5f25933c7db9634d711e033f7fe66be4" args="($value, array $config=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static starttimeAfterEndtime </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>config</em> = <code>array&nbsp;()</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Check if the event starttime is befor endtime</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$value Assigned users </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$config Field config array </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Bool </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_form_validator_8class_8php_source.html#l00058">58</a> der Datei <a class="el" href="_todoyu_event_form_validator_8class_8php_source.html">TodoyuEventFormValidator.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00058"></a>00058                                                                                    {
+<a name="l00059"></a>00059             <span class="comment">// Only check this if it is not a fulldayevent</span>
+<a name="l00060"></a>00060         <span class="keywordflow">if</span> ( $config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;is_dayevent&apos;</span>] == 0) {
+<a name="l00061"></a>00061                 <span class="comment">// Convert dates and times to timestamps</span>
+<a name="l00062"></a>00062             $starttime  = strtotime( $config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;startdate&apos;</span>] . <span class="charliteral">&apos; &apos;</span> . $config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;starttime&apos;</span>] );
+<a name="l00063"></a>00063             $endtime    = strtotime( $config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;enddate&apos;</span>] . <span class="charliteral">&apos; &apos;</span> . $config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;endtime&apos;</span>] );
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065                 <span class="comment">// Starttime must be before the endtime</span>
+<a name="l00066"></a>00066             <span class="keywordflow">if</span>( $endtime &lt;= $starttime ) {
+<a name="l00067"></a>00067                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00068"></a>00068             }
+<a name="l00069"></a>00069         } <span class="keywordflow">else</span> {
+<a name="l00070"></a>00070                 <span class="comment">// Convert dates to timestamps</span>
+<a name="l00071"></a>00071             $startdate  = strtotime( $config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;startdate&apos;</span>] );
+<a name="l00072"></a>00072             $enddate    = strtotime( $config[<span class="stringliteral">&apos;formdata&apos;</span>][<span class="stringliteral">&apos;enddate&apos;</span>] );
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074             <span class="keywordflow">if</span>( $startdate &gt; $enddate ) {
+<a name="l00075"></a>00075                 <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00076"></a>00076             }
+<a name="l00077"></a>00077         }
+<a name="l00078"></a>00078     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/calendar/model/<a class="el" href="_todoyu_event_form_validator_8class_8php_source.html">TodoyuEventFormValidator.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:44 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

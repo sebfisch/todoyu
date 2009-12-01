@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/TodoyuContextMenu.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/TodoyuContextMenu.class.php</h1><a href="_todoyu_context_menu_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00030"></a><a class="code" href="class_todoyu_context_menu.html">00030</a> <span class="keyword">class </span><a class="code" href="class_todoyu_context_menu.html">TodoyuContextMenu</a> {
+<a name="l00031"></a>00031 
+<a name="l00037"></a>00037     <span class="keyword">private</span> $type = <span class="stringliteral">&apos;&apos;</span>;
+<a name="l00038"></a>00038 
+<a name="l00044"></a>00044     <span class="keyword">private</span> $idElement = 0;
+<a name="l00045"></a>00045 
+<a name="l00051"></a>00051     <span class="keyword">private</span> $elements = array();
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 
+<a name="l00061"></a><a class="code" href="class_todoyu_context_menu.html#a6de9e97728a144a810c809e7c2e11c35">00061</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_context_menu.html#a6de9e97728a144a810c809e7c2e11c35">__construct</a>($type, $idElement) {
+<a name="l00062"></a>00062         $this-&gt;type         = $type;
+<a name="l00063"></a>00063         $this-&gt;idElement    = intval($idElement);
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065         $this-&gt;init();
+<a name="l00066"></a>00066     }
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 
+<a name="l00074"></a>00074     <span class="keyword">private</span> function init() {
+<a name="l00075"></a>00075         <a class="code" href="class_todoyu_extensions.html#a5f34027f4f565b2011d2eb5318a2511a">TodoyuExtensions::loadAllContextMenus</a>();
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077         $funcRefs   = <a class="code" href="class_todoyu_context_menu_manager.html#ad4ec77be1d534f34d2e8b49d26574ec3">TodoyuContextMenuManager::getTypeFunctions</a>($this-&gt;type);
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079             <span class="comment">// Get items from all functions</span>
+<a name="l00080"></a>00080         <span class="keywordflow">foreach</span>($funcRefs as $funcRef) {
+<a name="l00081"></a>00081             $modified   =  <a class="code" href="class_todoyu_div.html#afcc9d79cf22888569ba5f634bb686d1c">TodoyuDiv::callUserFunction</a>($funcRef[<span class="stringliteral">&apos;function&apos;</span>], $this-&gt;idElement, $this-&gt;elements);
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083             <span class="keywordflow">if</span>( is_array($modified) ) {
+<a name="l00084"></a>00084                 $this-&gt;elements = $modified;
+<a name="l00085"></a>00085             }
+<a name="l00086"></a>00086         }
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088             <span class="comment">// Sort items</span>
+<a name="l00089"></a>00089         $this-&gt;elements = <a class="code" href="class_todoyu_array.html#a4692603963eaa46b9a337bb6a81f7d6f">TodoyuArray::sortByLabel</a>($this-&gt;elements, <span class="stringliteral">&apos;position&apos;</span>);
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091             <span class="comment">// Parse labels and jsActions</span>
+<a name="l00092"></a>00092         $this-&gt;elements = $this-&gt;parseElements($this-&gt;elements);
+<a name="l00093"></a>00093     }
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 
+<a name="l00103"></a>00103     <span class="keyword">private</span> function parseElements(array $elements) {
+<a name="l00104"></a>00104         <span class="keywordflow">foreach</span>($elements as $index =&gt; $element) {
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106                 <span class="comment">// Parse jsAction and label</span>
+<a name="l00107"></a>00107             $elements[$index][<span class="stringliteral">&apos;jsAction&apos;</span>]   = $this-&gt;renderJsAction($element[<span class="stringliteral">&apos;jsAction&apos;</span>]);
+<a name="l00108"></a>00108             $elements[$index][<span class="stringliteral">&apos;label&apos;</span>]      = $this-&gt;renderLabel($element[<span class="stringliteral">&apos;label&apos;</span>]);
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110                 <span class="comment">// Parse recursive for submenus</span>
+<a name="l00111"></a>00111             <span class="keywordflow">if</span>( array_key_exists(<span class="stringliteral">&apos;submenu&apos;</span>, $element) ) {
+<a name="l00112"></a>00112                 $elements[$index][<span class="stringliteral">&apos;submenu&apos;</span>] = $this-&gt;parseElements($element[<span class="stringliteral">&apos;submenu&apos;</span>]);
+<a name="l00113"></a>00113             }
+<a name="l00114"></a>00114         }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116         <span class="keywordflow">return</span> $elements;
+<a name="l00117"></a>00117     }
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 
+<a name="l00126"></a><a class="code" href="class_todoyu_context_menu.html#a97a3a3e912139aa222a7ca13fdb27d33">00126</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_context_menu.html#a97a3a3e912139aa222a7ca13fdb27d33">getElements</a>() {
+<a name="l00127"></a>00127         <span class="keywordflow">return</span> $this-&gt;elements;
+<a name="l00128"></a>00128     }
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130 
+<a name="l00136"></a><a class="code" href="class_todoyu_context_menu.html#a9d884d237da6c676af88b9c5bfbdc142">00136</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_context_menu.html#a9d884d237da6c676af88b9c5bfbdc142">getJSON</a>() {
+<a name="l00137"></a>00137         <span class="keywordflow">return</span> json_encode($this-&gt;<a class="code" href="class_todoyu_context_menu.html#a97a3a3e912139aa222a7ca13fdb27d33">getElements</a>());
+<a name="l00138"></a>00138     }
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141 
+<a name="l00146"></a><a class="code" href="class_todoyu_context_menu.html#a6b937b7dad2e8684f2b07e58a96255e1">00146</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_context_menu.html#a6b937b7dad2e8684f2b07e58a96255e1">printJSON</a>() {
+<a name="l00147"></a>00147         <a class="code" href="class_todoyu_header.html#a944b69dbf182b7808937a8f18e1c7121">TodoyuHeader::sendHeaderJSON</a>();
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149         echo $this-&gt;<a class="code" href="class_todoyu_context_menu.html#a9d884d237da6c676af88b9c5bfbdc142">getJSON</a>();
+<a name="l00150"></a>00150     }
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152 
+<a name="l00159"></a>00159     <span class="keyword">private</span> function renderJsAction($jsAction) {
+<a name="l00160"></a>00160         <span class="keywordflow">return</span> <a class="code" href="javascript_8js.html#a653ea8da4d112c6bce1135d086cb38c9">str_replace</a>(<span class="stringliteral">&apos;#ID#&apos;</span>, $this-&gt;idElement, $jsAction);
+<a name="l00161"></a>00161     }
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163 
+<a name="l00164"></a>00164 
+<a name="l00171"></a>00171     <span class="keyword">private</span> function renderLabel($label) {
+<a name="l00172"></a>00172             <span class="comment">// Check if there is a function reference in the label</span>
+<a name="l00173"></a>00173         <span class="keywordflow">if</span>( strstr($label, <span class="stringliteral">&apos;::&apos;</span>) ) {
+<a name="l00174"></a>00174             $label = <a class="code" href="class_todoyu_div.html#afcc9d79cf22888569ba5f634bb686d1c">TodoyuDiv::callUserFunction</a>($label, $this-&gt;idElement);
+<a name="l00175"></a>00175         }
+<a name="l00176"></a>00176 
+<a name="l00177"></a>00177             <span class="comment">// Parse locallang reference</span>
+<a name="l00178"></a>00178         $label = <a class="code" href="class_todoyu_div.html#a71fad5548fe188ea7853db0d5337e43b">TodoyuDiv::getLabel</a>($label);
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180         <span class="keywordflow">return</span> $label;
+<a name="l00181"></a>00181     }
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183 }
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:31 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

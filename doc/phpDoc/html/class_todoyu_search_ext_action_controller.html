@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuSearchExtActionController Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuSearchExtActionController Klassenreferenz</h1><!-- doxytag: class="TodoyuSearchExtActionController" --><!-- doxytag: inherits="TodoyuActionController" --><div class="dynheader">
+Klassendiagramm für TodoyuSearchExtActionController:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_search_ext_action_controller.gif" usemap="#TodoyuSearchExtActionController_map" alt=""/>
+  <map id="TodoyuSearchExtActionController_map" name="TodoyuSearchExtActionController_map">
+<area href="class_todoyu_action_controller.html" alt="TodoyuActionController" shape="rect" coords="0,0,204,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_search_ext_action_controller.html#a178ea6bf91dabc8e0a94712a4517744b">defaultAction</a> (array $params)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_search_ext_action_controller_8class_8php_source.html#l00022">22</a> der Datei <a class="el" href="_todoyu_search_ext_action_controller_8class_8php_source.html">TodoyuSearchExtActionController.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a178ea6bf91dabc8e0a94712a4517744b"></a><!-- doxytag: member="TodoyuSearchExtActionController::defaultAction" ref="a178ea6bf91dabc8e0a94712a4517744b" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">defaultAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_search_ext_action_controller_8class_8php_source.html#l00024">24</a> der Datei <a class="el" href="_todoyu_search_ext_action_controller_8class_8php_source.html">TodoyuSearchExtActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00024"></a>00024                                                  {
+<a name="l00025"></a>00025         <a class="code" href="class_todoyu_frontend.html#a2d4e32e2eca7f2a293aa15c4bb2af7d0">TodoyuFrontend::setActiveTab</a>(<span class="stringliteral">&apos;search&apos;</span>);
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027         <a class="code" href="class_todoyu_action_controller.html#a7d8b575549d659cc58610c461c95a20f">TodoyuPage::init</a>(<span class="stringliteral">&apos;ext/search/view/ext.tmpl&apos;</span>);
+<a name="l00028"></a>00028         <a class="code" href="class_todoyu_page.html#ac1811274b4a27b9b2fdde17a1801437d">TodoyuPage::setTitle</a>(<span class="stringliteral">&apos;LLL:search.page.title&apos;</span>);
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030         $activeTab  = <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;tab&apos;</span>];
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032         <span class="keywordflow">if</span>( ! empty($activeTab) ) {     <span class="comment">// If tab is set manualy</span>
+<a name="l00033"></a>00033             $filters    = isset(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;filters&apos;</span>]) ? json_decode(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;filters&apos;</span>], <span class="keyword">true</span>) : array();
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035             $idFilterset= 0;
+<a name="l00036"></a>00036             $conditions = <a class="code" href="class_todoyu_search_manager.html#a252567d233191563b7517fc63373cf44">TodoyuSearchManager::convertSimpleToFilterConditionArray</a>($filters);
+<a name="l00037"></a>00037         } <span class="keywordflow">else</span> {    <span class="comment">// Normal preferences rendering</span>
+<a name="l00038"></a>00038             $activeTab  = <a class="code" href="class_todoyu_search_preferences.html#aac3c34795e443b3f91d47b83a284c887">TodoyuSearchPreferences::getActiveTab</a>();
+<a name="l00039"></a>00039             $idFilterset= <a class="code" href="class_todoyu_search_preferences.html#a3b760eef76cefe12067420329fbf7a17">TodoyuSearchPreferences::getActiveFilterset</a>($activeTab);
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041             <span class="keywordflow">if</span>( $idFilterset !== 0 ) {
+<a name="l00042"></a>00042                 $conditions = <a class="code" href="class_todoyu_filter_condition_manager.html#a9db029a751b2137c4c4318123e63fd57">TodoyuFilterConditionManager::getFiltersetConditions</a>($idFilterset);
+<a name="l00043"></a>00043             } <span class="keywordflow">else</span> {
+<a name="l00044"></a>00044                 $conditions = array();
+<a name="l00045"></a>00045             }
+<a name="l00046"></a>00046         }
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048             <span class="comment">// panel widgets</span>
+<a name="l00049"></a>00049         $panelWidgets = <a class="code" href="class_todoyu_search_renderer.html#ad6fc557becde1f0908b79ed162149435">TodoyuSearchRenderer::renderPanelWidgets</a>();
+<a name="l00050"></a>00050         <a class="code" href="class_todoyu_page.html#a8ffaa417357ae854ab1ae9c5f70c6fbf">TodoyuPage::set</a>(<span class="stringliteral">&apos;panelWidgets&apos;</span>, $panelWidgets);
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052             <span class="comment">// Filter area</span>
+<a name="l00053"></a>00053         $filterArea = <a class="code" href="class_todoyu_filter_area_renderer.html#a14095a2f19190c80bb4b26fa23a2abe9">TodoyuFilterAreaRenderer::renderFilterArea</a>($activeTab, $idFilterset, $conditions, <span class="keyword">false</span>);
+<a name="l00054"></a>00054         <a class="code" href="class_todoyu_page.html#a8ffaa417357ae854ab1ae9c5f70c6fbf">TodoyuPage::set</a>(<span class="stringliteral">&apos;filterArea&apos;</span>, $filterArea);
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056             <span class="comment">// Add JS init command</span>
+<a name="l00057"></a>00057         <a class="code" href="class_todoyu_page.html#a999590070b3ebce0ef29993c33aeee60">TodoyuPage::addJsOnloadedFunction</a>(<span class="stringliteral">&apos;Todoyu.Ext.search.Filter.init.bind(Todoyu.Ext.search.Filter, \&apos;&apos;</span> . $activeTab . <span class="charliteral">&apos;\&apos;</span>, \<span class="stringliteral">&apos;&apos;</span> . $idFilterset . <span class="charliteral">&apos;\&apos;</span>, <span class="stringliteral">&apos; . json_encode($conditions) . &apos;</span>)<span class="stringliteral">&apos;);</span>
+<a name="l00058"></a>00058 <span class="stringliteral"></span>
+<a name="l00059"></a>00059 <span class="stringliteral">        return TodoyuPage::render();</span>
+<a name="l00060"></a>00060 <span class="stringliteral">    }</span>
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/search/controller/<a class="el" href="_todoyu_search_ext_action_controller_8class_8php_source.html">TodoyuSearchExtActionController.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:48 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

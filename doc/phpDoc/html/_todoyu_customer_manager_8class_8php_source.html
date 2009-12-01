@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/user/model/TodoyuCustomerManager.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/user/model/TodoyuCustomerManager.class.php</h1><a href="_todoyu_customer_manager_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00029"></a><a class="code" href="class_todoyu_customer_manager.html">00029</a> <span class="keyword">class </span><a class="code" href="class_todoyu_customer_manager.html">TodoyuCustomerManager</a> {
+<a name="l00030"></a>00030 
+<a name="l00031"></a><a class="code" href="class_todoyu_customer_manager.html#adf62e2b172196282218b1ece3d200fa1">00031</a>     <span class="keyword">const</span> <a class="code" href="class_todoyu_customer_manager.html#adf62e2b172196282218b1ece3d200fa1">TABLE</a> = <span class="stringliteral">&apos;ext_user_customer&apos;</span>;
+<a name="l00032"></a>00032 
+<a name="l00039"></a><a class="code" href="class_todoyu_customer_manager.html#a4d422d903a603ca375b7f68599d1b5a8">00039</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a4d422d903a603ca375b7f68599d1b5a8">getCustomer</a>($idCustomer) {
+<a name="l00040"></a>00040         $idCustomer = intval($idCustomer);
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_cache.html#ac4ee8343209de75d7fc2392648f4072b">TodoyuCache::getRecord</a>(<span class="stringliteral">&apos;TodoyuCustomer&apos;</span>, $idCustomer);
+<a name="l00043"></a>00043     }
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 
+<a name="l00053"></a><a class="code" href="class_todoyu_customer_manager.html#a19a953547564fd9a87dbb06afe0b035e">00053</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a19a953547564fd9a87dbb06afe0b035e">getCustomerArray</a>($idCustomer) {
+<a name="l00054"></a>00054         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getRecord(self::TABLE, $idCustomer);
+<a name="l00055"></a>00055     }
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="class_todoyu_customer_manager.html#a22b247cba0a509993f3fc16082cb277a">00058</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a22b247cba0a509993f3fc16082cb277a">getAllCustomers</a>(array <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = array(), <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> = <span class="stringliteral">&apos;&apos;</span>) {
+<a name="l00059"></a>00059         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="keyword">sizeof</span>(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>) === 0 ? <span class="charliteral">&apos;*&apos;</span> : implode(<span class="charliteral">&apos;,&apos;</span>, <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;escapeArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>));
+<a name="l00060"></a>00060         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = self::TABLE;
+<a name="l00061"></a>00061         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = (<a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> === <span class="stringliteral">&apos;&apos;</span> ? <span class="stringliteral">&apos;&apos;</span> : <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> . <span class="stringliteral">&apos; AND &apos;</span>) . <span class="stringliteral">&apos;deleted = 0&apos;</span>;
+<a name="l00062"></a>00062         $order  = <span class="stringliteral">&apos;title&apos;</span>;
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, <span class="stringliteral">&apos;&apos;</span>, $order);
+<a name="l00065"></a>00065     }
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 
+<a name="l00071"></a><a class="code" href="class_todoyu_customer_manager.html#a4b9eafb3d532b372129fb2468205ba91">00071</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a4b9eafb3d532b372129fb2468205ba91">saveCustomer</a>(array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>) {
+<a name="l00072"></a>00072         $idCustomer = intval($data[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074         <span class="keywordflow">if</span>( $idCustomer === 0 ) {
+<a name="l00075"></a>00075             $idCustomer = <a class="code" href="class_todoyu_customer_manager.html#aee4ff12f31642902a6cc89ac0b9f81d9">self::addCustomer</a>();
+<a name="l00076"></a>00076         }
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078         <a class="code" href="class_todoyu_customer_manager.html#a1236afe948ab90bd0c29f2f5279037f5">self::updateCustomer</a>($idCustomer, $data);
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080         <span class="keywordflow">return</span> $idCustomer;
+<a name="l00081"></a>00081     }
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 
+<a name="l00085"></a><a class="code" href="class_todoyu_customer_manager.html#aee4ff12f31642902a6cc89ac0b9f81d9">00085</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#aee4ff12f31642902a6cc89ac0b9f81d9">addCustomer</a>(array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a> = array()) {
+<a name="l00086"></a>00086         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;date_create&apos;</span>]    = <a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>;
+<a name="l00087"></a>00087         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;id_user_create&apos;</span>] = <a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>();
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089         unset(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;addRecord(self::TABLE, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00092"></a>00092     }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
+<a name="l00095"></a><a class="code" href="class_todoyu_customer_manager.html#a1236afe948ab90bd0c29f2f5279037f5">00095</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a1236afe948ab90bd0c29f2f5279037f5">updateCustomer</a>($idCustomer, array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>) {
+<a name="l00096"></a>00096         $idCustomer         = intval($idCustomer);
+<a name="l00097"></a>00097         $data[<span class="stringliteral">&apos;date_update&apos;</span>]= <a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>;
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099         unset($data[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;updateRecord(self::TABLE, $idCustomer, $data);
+<a name="l00102"></a>00102     }
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 
+<a name="l00115"></a><a class="code" href="class_todoyu_customer_manager.html#a6908377661c13c45cbf42bff5df65b29">00115</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a6908377661c13c45cbf42bff5df65b29">addUserToCustomer</a>($idCustomer, $idUser, $idWorkadress = 0, $idJobtype = 0) {
+<a name="l00116"></a>00116         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00117"></a>00117             <span class="stringliteral">&apos;id_customer&apos;</span>   =&gt; intval($idCustomer) ,
+<a name="l00118"></a>00118             <span class="stringliteral">&apos;id_user&apos;</span>       =&gt; intval($idUser),
+<a name="l00119"></a>00119             <span class="stringliteral">&apos;id_workaddress&apos;</span>=&gt; intval($idWorkadress),
+<a name="l00120"></a>00120             <span class="stringliteral">&apos;id_jobtype&apos;</span>    =&gt; intval($idJobtype)
+<a name="l00121"></a>00121         );
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123         <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;addRecord(<span class="stringliteral">&apos;ext_user_mm_customer_user&apos;</span>, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00124"></a>00124     }
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127 
+<a name="l00134"></a><a class="code" href="class_todoyu_customer_manager.html#a202c63005d569fdd1af02c93d91d6346">00134</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a202c63005d569fdd1af02c93d91d6346">removeUserFromCustomer</a>($idCustomer, $idUser) {
+<a name="l00135"></a>00135         $idCustomer = intval($idCustomer);
+<a name="l00136"></a>00136         $idUser     = intval($idUser);
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>      = <span class="stringliteral">&apos; id_customer = &apos;</span> . $idCustomer . <span class="stringliteral">&apos; AND</span>
+<a name="l00139"></a>00139 <span class="stringliteral">                        id_user     = &apos;</span> . $idUser;
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141         <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;deleteRecord(<span class="stringliteral">&apos;ext_user_mm_customer_user&apos;</span>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00142"></a>00142     }
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145 
+<a name="l00152"></a><a class="code" href="class_todoyu_customer_manager.html#a343e42a3f044b9b1cd3f634c20d76c8e">00152</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a343e42a3f044b9b1cd3f634c20d76c8e">removeAllUsers</a>($idCustomer) {
+<a name="l00153"></a>00153         $idCustomer = intval($idCustomer);
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_customer_manager.html#ac486596af2a644e8808bb513ca056874">self::deleteMMRelations</a>($idCustomer, <span class="stringliteral">&apos;ext_user_mm_customer_user&apos;</span>);
+<a name="l00156"></a>00156     }
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159 
+<a name="l00167"></a><a class="code" href="class_todoyu_customer_manager.html#af1e4ff33e486f3df78a6d1766c635ec2">00167</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#af1e4ff33e486f3df78a6d1766c635ec2">removeAllContactinfo</a>($idCustomer) {
+<a name="l00168"></a>00168         $idCustomer = intval($idCustomer);
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_customer_manager.html#ac486596af2a644e8808bb513ca056874">self::deleteMMRelations</a>($idCustomer, <span class="stringliteral">&apos;ext_user_mm_customer_contactinfo&apos;</span>);
+<a name="l00171"></a>00171     }
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174 
+<a name="l00181"></a><a class="code" href="class_todoyu_customer_manager.html#ab90b07221c08930541c2b61676c3e42b">00181</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#ab90b07221c08930541c2b61676c3e42b">removeAllAddresses</a>($idCustomer) {
+<a name="l00182"></a>00182         $idCustomer = intval($idCustomer);
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_customer_manager.html#ac486596af2a644e8808bb513ca056874">self::deleteMMRelations</a>($idCustomer, <span class="stringliteral">&apos;ext_user_mm_customer_address&apos;</span>);
+<a name="l00185"></a>00185     }
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191 
+<a name="l00198"></a><a class="code" href="class_todoyu_customer_manager.html#a17622dc5c80041927374f7094b7e7e85">00198</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a17622dc5c80041927374f7094b7e7e85">getLabel</a>($idCustomer) {
+<a name="l00199"></a>00199         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_customer_manager.html#a4d422d903a603ca375b7f68599d1b5a8">self::getCustomer</a>($idCustomer)-&gt;getLabel();
+<a name="l00200"></a>00200     }
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202 
+<a name="l00203"></a>00203 
+<a name="l00211"></a><a class="code" href="class_todoyu_customer_manager.html#a36a87bed460f5939d28f9846a8023512">00211</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a36a87bed460f5939d28f9846a8023512">searchCustomers</a>($sword, array $searchFields = null)  {
+<a name="l00212"></a>00212         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="charliteral">&apos;*&apos;</span>;
+<a name="l00213"></a>00213         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = self::TABLE;
+<a name="l00214"></a>00214         $order  = <span class="stringliteral">&apos;title&apos;</span>;
+<a name="l00215"></a>00215         $swords = <a class="code" href="class_todoyu_div.html#a9a39fab5d30dc7598391cde6f1d49585">TodoyuDiv::trimExplode</a>(<span class="charliteral">&apos; &apos;</span>, $sword);
+<a name="l00216"></a>00216 
+<a name="l00217"></a>00217         $searchFields   = is_null($searchFields) ? array(<span class="stringliteral">&apos;title&apos;</span>, <span class="stringliteral">&apos;shortname&apos;</span>) : $searchFields;
+<a name="l00218"></a>00218 
+<a name="l00219"></a>00219         <span class="keywordflow">if</span>( <span class="keyword">sizeof</span>($swords) ) {
+<a name="l00220"></a>00220             <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;buildLikeQuery($swords, $searchFields);
+<a name="l00221"></a>00221         } <span class="keywordflow">else</span> {
+<a name="l00222"></a>00222             <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> = <span class="charliteral">&apos;1&apos;</span>;
+<a name="l00223"></a>00223         }
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> .= <span class="stringliteral">&apos; AND deleted = 0&apos;</span>;
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, <span class="stringliteral">&apos;&apos;</span>, $order);
+<a name="l00228"></a>00228     }
+<a name="l00229"></a>00229 
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 
+<a name="l00237"></a><a class="code" href="class_todoyu_customer_manager.html#a485b61c299038d54636adfd15572c30b">00237</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a485b61c299038d54636adfd15572c30b">deleteCustomer</a>($idCustomer) {
+<a name="l00238"></a>00238         $idCustomer = intval($idCustomer);
+<a name="l00239"></a>00239 
+<a name="l00240"></a>00240         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(<span class="stringliteral">&apos;deleted&apos;</span>       =&gt; 1,
+<a name="l00241"></a>00241                         <span class="stringliteral">&apos;date_update&apos;</span>   =&gt; <a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>);
+<a name="l00242"></a>00242 
+<a name="l00243"></a>00243         <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doUpdate(<span class="stringliteral">&apos;ext_user_customer&apos;</span>, <span class="stringliteral">&apos;id = &apos;</span>.$idCustomer, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00244"></a>00244     }
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246 
+<a name="l00247"></a>00247 
+<a name="l00256"></a><a class="code" href="class_todoyu_customer_manager.html#a8248ef2a3194870977e66d7af6ecfbba">00256</a>     <span class="keyword">protected</span> function <a class="code" href="class_todoyu_customer_manager.html#a8248ef2a3194870977e66d7af6ecfbba">saveMMRelations</a>($customerID, array $foreignRecordIDs, $mmTable, $foreignIDfield) {
+<a name="l00257"></a>00257         $customerID         = intval($customerID);
+<a name="l00258"></a>00258         $foreignRecordIDs   = <a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>($foreignRecordIDs);
+<a name="l00259"></a>00259 
+<a name="l00260"></a>00260         <span class="keywordflow">foreach</span>($foreignRecordIDs as $id)   {
+<a name="l00261"></a>00261             $insertArray = array(
+<a name="l00262"></a>00262                 <span class="stringliteral">&apos;id_customer&apos;</span>       =&gt; $customerID,
+<a name="l00263"></a>00263                 $foreignIDfield     =&gt; $id
+<a name="l00264"></a>00264             );
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266             <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doInsert($mmTable, $insertArray);
+<a name="l00267"></a>00267         }
+<a name="l00268"></a>00268     }
+<a name="l00269"></a>00269 
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271 
+<a name="l00279"></a><a class="code" href="class_todoyu_customer_manager.html#ac486596af2a644e8808bb513ca056874">00279</a>     <span class="keyword">protected</span> function <a class="code" href="class_todoyu_customer_manager.html#ac486596af2a644e8808bb513ca056874">deleteMMRelations</a>($idCustomer, $mmTable) {
+<a name="l00280"></a>00280         $idCustomer = intval($idCustomer);
+<a name="l00281"></a>00281 
+<a name="l00282"></a>00282         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> = <span class="stringliteral">&apos;id_customer = &apos;</span> . $idCustomer;
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doDelete($mmTable, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00285"></a>00285     }
+<a name="l00286"></a>00286 
+<a name="l00287"></a>00287 
+<a name="l00288"></a>00288 
+<a name="l00294"></a><a class="code" href="class_todoyu_customer_manager.html#a6d154ae5773d9ab594fac83598b4f403">00294</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a6d154ae5773d9ab594fac83598b4f403">removeFromCache</a>($idCustomer) {
+<a name="l00295"></a>00295         $idCustomer = intval($idCustomer);
+<a name="l00296"></a>00296 
+<a name="l00297"></a>00297         <a class="code" href="class_todoyu_cache.html#ac7002e8c3a9e9ebe38be4a316bfda43e">TodoyuCache::removeRecord</a>(<span class="stringliteral">&apos;Customer&apos;</span>, $idCustomer);
+<a name="l00298"></a>00298         <a class="code" href="class_todoyu_cache.html#ab6211daed6f7b5048721aa9e2611a8e3">TodoyuCache::removeRecordQuery</a>(self::TABLE, $idCustomer);
+<a name="l00299"></a>00299     }
+<a name="l00300"></a>00300 
+<a name="l00301"></a>00301 
+<a name="l00302"></a><a class="code" href="class_todoyu_customer_manager.html#a6f054ef38d89c0c517add1f13461d520">00302</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a6f054ef38d89c0c517add1f13461d520">getCustomerUserRecords</a>($idCustomer) {
+<a name="l00303"></a>00303         $idCustomer = intval($idCustomer);
+<a name="l00304"></a>00304 
+<a name="l00305"></a>00305         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos; mm.*,</span>
+<a name="l00306"></a>00306 <span class="stringliteral">                    u.*&apos;</span>;
+<a name="l00307"></a>00307         $tables = <span class="stringliteral">&apos; ext_user_user u,</span>
+<a name="l00308"></a>00308 <span class="stringliteral">                    ext_user_mm_customer_user mm&apos;</span>;
+<a name="l00309"></a>00309         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos; mm.id_user      = u.id AND</span>
+<a name="l00310"></a>00310 <span class="stringliteral">                    mm.id_customer  = &apos;</span> . $idCustomer;
+<a name="l00311"></a>00311 
+<a name="l00312"></a>00312         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, $tables, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00313"></a>00313     }
+<a name="l00314"></a>00314 
+<a name="l00315"></a>00315 
+<a name="l00316"></a>00316 
+<a name="l00317"></a><a class="code" href="class_todoyu_customer_manager.html#aed79786bf9a316e529aa2960b3c0c5d9">00317</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#aed79786bf9a316e529aa2960b3c0c5d9">getCustomerContactinfoRecords</a>($idCustomer) {
+<a name="l00318"></a>00318         $idCustomer = intval($idCustomer);
+<a name="l00319"></a>00319 
+<a name="l00320"></a>00320         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos; c.*&apos;</span>;
+<a name="l00321"></a>00321         $tables = <span class="stringliteral">&apos; ext_user_contactinfo c,</span>
+<a name="l00322"></a>00322 <span class="stringliteral">                    ext_user_mm_customer_contactinfo mm&apos;</span>;
+<a name="l00323"></a>00323         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos; mm.id_contactinfo   = c.id AND</span>
+<a name="l00324"></a>00324 <span class="stringliteral">                    mm.id_customer      = &apos;</span> . $idCustomer;
+<a name="l00325"></a>00325 
+<a name="l00326"></a>00326         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, $tables, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00327"></a>00327     }
+<a name="l00328"></a>00328 
+<a name="l00329"></a><a class="code" href="class_todoyu_customer_manager.html#aea0f374cfc9339f2de43523d2a0089b8">00329</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#aea0f374cfc9339f2de43523d2a0089b8">getCustomerAddressRecords</a>($idCustomer) {
+<a name="l00330"></a>00330         $idCustomer = intval($idCustomer);
+<a name="l00331"></a>00331 
+<a name="l00332"></a>00332         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos; a.*&apos;</span>;
+<a name="l00333"></a>00333         $tables = <span class="stringliteral">&apos; ext_user_address a,</span>
+<a name="l00334"></a>00334 <span class="stringliteral">                    ext_user_mm_customer_address mm&apos;</span>;
+<a name="l00335"></a>00335         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos; mm.id_address   = a.id AND</span>
+<a name="l00336"></a>00336 <span class="stringliteral">                    mm.id_customer  = &apos;</span> . $idCustomer;
+<a name="l00337"></a>00337         $order  = <span class="stringliteral">&apos; a.is_preferred DESC&apos;</span>;
+<a name="l00338"></a>00338 
+<a name="l00339"></a>00339         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, $tables, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, <span class="stringliteral">&apos;&apos;</span>, $order);
+<a name="l00340"></a>00340     }
+<a name="l00341"></a>00341 
+<a name="l00342"></a>00342 
+<a name="l00343"></a><a class="code" href="class_todoyu_customer_manager.html#af4585334c7a3265913635442b483c84a">00343</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#af4585334c7a3265913635442b483c84a">getNumUsers</a>($idCustomer) {
+<a name="l00344"></a>00344         $idCustomer = intval($idCustomer);
+<a name="l00345"></a>00345 
+<a name="l00346"></a>00346         <a class="code" href="acknowledged__tasks_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>  = <span class="stringliteral">&apos;id_user&apos;</span>;
+<a name="l00347"></a>00347         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = <span class="stringliteral">&apos;ext_user_mm_customer_user&apos;</span>;
+<a name="l00348"></a>00348         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos;id_customer = &apos;</span> . $idCustomer;
+<a name="l00349"></a>00349 
+<a name="l00350"></a>00350         <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>  = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="acknowledged__tasks_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>, <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00351"></a>00351 
+<a name="l00352"></a>00352         <span class="keywordflow">return</span> <span class="keyword">sizeof</span>(<a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>);
+<a name="l00353"></a>00353     }
+<a name="l00354"></a>00354 
+<a name="l00355"></a>00355 
+<a name="l00356"></a><a class="code" href="class_todoyu_customer_manager.html#a3c37756416fa0b664d3fcec496b612bc">00356</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_customer_manager.html#a3c37756416fa0b664d3fcec496b612bc">getCustomerAddress</a>($idCustomer) {
+<a name="l00357"></a>00357         $addresses  = <a class="code" href="class_todoyu_customer_manager.html#aea0f374cfc9339f2de43523d2a0089b8">self::getCustomerAddressRecords</a>($idCustomer);
+<a name="l00358"></a>00358         $address= null;
+<a name="l00359"></a>00359         $label      = <span class="stringliteral">&apos;&apos;</span>;
+<a name="l00360"></a>00360 
+<a name="l00361"></a>00361         <span class="keywordflow">if</span>( <span class="keyword">sizeof</span>($addresses) &gt; 0 ) {
+<a name="l00362"></a>00362             $address = $addresses[0];
+<a name="l00363"></a>00363 
+<a name="l00364"></a>00364             $label  = $address[<span class="stringliteral">&apos;street&apos;</span>] . <span class="stringliteral">&apos;, &apos;</span> . $address[<span class="stringliteral">&apos;zip&apos;</span>] . <span class="charliteral">&apos; &apos;</span> . $address[<span class="stringliteral">&apos;city&apos;</span>];
+<a name="l00365"></a>00365         }
+<a name="l00366"></a>00366 
+<a name="l00367"></a>00367         <span class="keywordflow">return</span> $label;
+<a name="l00368"></a>00368     }
+<a name="l00369"></a>00369 
+<a name="l00370"></a>00370 }
+<a name="l00371"></a>00371 
+<a name="l00372"></a>00372 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:37 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

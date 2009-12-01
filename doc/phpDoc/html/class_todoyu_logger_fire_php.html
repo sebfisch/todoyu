@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuLoggerFirePhp Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuLoggerFirePhp Klassenreferenz</h1><!-- doxytag: class="TodoyuLoggerFirePhp" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_logger_fire_php.html#a03e7a9426bbaea0301c1c3fb2ab11f2b">log</a> ($message, $level, $data, $info, $requestKey)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_logger_fire_php_8class_8php_source.html#l00029">29</a> der Datei <a class="el" href="_todoyu_logger_fire_php_8class_8php_source.html">TodoyuLoggerFirePhp.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a03e7a9426bbaea0301c1c3fb2ab11f2b"></a><!-- doxytag: member="TodoyuLoggerFirePhp::log" ref="a03e7a9426bbaea0301c1c3fb2ab11f2b" args="($message, $level, $data, $info, $requestKey)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static log </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>requestKey</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Write log message in firebug</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$message </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$level </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Mixed</em>&nbsp;</td><td>$data </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$info </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$requestKey </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_logger_fire_php_8class_8php_source.html#l00040">40</a> der Datei <a class="el" href="_todoyu_logger_fire_php_8class_8php_source.html">TodoyuLoggerFirePhp.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00040"></a>00040                                                                             {
+<a name="l00041"></a>00041         $title  = <span class="charliteral">&apos;[&apos;</span> . $info[<span class="stringliteral">&apos;fileshort&apos;</span>] . <span class="charliteral">&apos;:&apos;</span> . $info[<span class="stringliteral">&apos;line&apos;</span>] . <span class="charliteral">&apos;]&apos;</span>;
+<a name="l00042"></a>00042         $text   = $message . <span class="stringliteral">&apos;  [&apos;</span> . $level . <span class="charliteral">&apos;]&apos;</span>;
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044         <span class="keywordflow">switch</span>($level) {
+<a name="l00045"></a>00045             <span class="keywordflow">case</span> <a class="code" href="core_2config_2constants_8php.html#a75466e1a4bcac01197663a70a30c306f">LOG_LEVEL_FATAL</a>:
+<a name="l00046"></a>00046             <span class="keywordflow">case</span> <a class="code" href="core_2config_2constants_8php.html#a7d581a5aa617c727cb7ba8f18d1a7faa">LOG_LEVEL_ERROR</a>:
+<a name="l00047"></a>00047                 <a class="code" href="class_todoyu_debug.html#a5666882a1432079e2f3b805f7f316e81">TodoyuDebug::firePhp</a>()-&gt;error($text, $title);
+<a name="l00048"></a>00048                 <span class="keywordflow">break</span>;
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051             <span class="keywordflow">case</span> <a class="code" href="core_2config_2constants_8php.html#accd74311a7a86c9dd9ec5ed2338072eb">LOG_LEVEL_SECURITY</a>:
+<a name="l00052"></a>00052                 <a class="code" href="class_todoyu_debug.html#a5666882a1432079e2f3b805f7f316e81">TodoyuDebug::firePhp</a>()-&gt;warn($text, $title);
+<a name="l00053"></a>00053                 <span class="keywordflow">break</span>;
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056             <span class="keywordflow">case</span> <a class="code" href="core_2config_2constants_8php.html#a3d85602ba6769bee9d94a624cb7e2f79">LOG_LEVEL_NOTICE</a>:
+<a name="l00057"></a>00057                 <a class="code" href="class_todoyu_debug.html#a5666882a1432079e2f3b805f7f316e81">TodoyuDebug::firePhp</a>()-&gt;info($text, $title);
+<a name="l00058"></a>00058                 <span class="keywordflow">break</span>;
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061             <span class="keywordflow">case</span> <a class="code" href="core_2config_2constants_8php.html#a253c27ed03a4e0c5d1ae14217e0e3297">LOG_LEVEL_DEBUG</a>:
+<a name="l00062"></a>00062             <span class="keywordflow">default</span>:
+<a name="l00063"></a>00063                 <a class="code" href="class_todoyu_debug.html#a5666882a1432079e2f3b805f7f316e81">TodoyuDebug::firePhp</a>()-&gt;log($text, $title);
+<a name="l00064"></a>00064                 <span class="keywordflow">break</span>;
+<a name="l00065"></a>00065         }
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="keywordflow">if</span>( ! empty(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>) ) {
+<a name="l00068"></a>00068             <a class="code" href="class_todoyu_debug.html#a5666882a1432079e2f3b805f7f316e81">TodoyuDebug::firePhp</a>()-&gt;log(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>, <span class="charliteral">&apos;#&apos;</span>);
+<a name="l00069"></a>00069         }
+<a name="l00070"></a>00070     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/core/<a class="el" href="_todoyu_logger_fire_php_8class_8php_source.html">TodoyuLoggerFirePhp.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:46 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

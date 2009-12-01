@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuTaskRenderer Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuTaskRenderer Klassenreferenz</h1><!-- doxytag: class="TodoyuTaskRenderer" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_task_renderer.html#aa6d2d35b075fec5d8fa84f17127ddc12">renderTaskDetail</a> ($idTask, $activeTab=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_task_renderer.html#a9c437629e1fb24b300dba5fd8b420daf">renderTaskData</a> ($idTask)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_task_renderer.html#a0c7246745d2f619ccaf4383ec21e9c66">renderTaskEditForm</a> ($idTask)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_task_renderer.html#a3db304e614ba7103d8fb5296d2f537f6">renderNewTaskEditForm</a> ($idProject, $idParentTask=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_task_renderer.html#a35c1c6ead766b7331bc72b730787ee61">renderTabs</a> ($idTask, $activeTab=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_task_renderer.html#a54da8251f2e07c6449c6c756c43f392f">renderTabHeads</a> ($idTask, $activeTab=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_task_renderer.html#a1d1b11b8a974bc2cb3da911f39c3ae5b">renderTabContent</a> ($idTask, $activeTab=null)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_task_renderer_8class_8php_source.html#l00029">29</a> der Datei <a class="el" href="_todoyu_task_renderer_8class_8php_source.html">TodoyuTaskRenderer.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a3db304e614ba7103d8fb5296d2f537f6"></a><!-- doxytag: member="TodoyuTaskRenderer::renderNewTaskEditForm" ref="a3db304e614ba7103d8fb5296d2f537f6" args="($idProject, $idParentTask=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderNewTaskEditForm </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idProject</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idParentTask</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render edit form to edit a new task. This form is wraped by the "detail" and "data" div as used in detail view</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idProject </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idParentTask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_task_renderer_8class_8php_source.html#l00120">120</a> der Datei <a class="el" href="_todoyu_task_renderer_8class_8php_source.html">TodoyuTaskRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00120"></a>00120                                                                                 {
+<a name="l00121"></a>00121         $idTask         = 0;
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123             <span class="comment">// Render form for new empty task</span>
+<a name="l00124"></a>00124         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>   = <a class="code" href="class_todoyu_task_renderer.html#a0c7246745d2f619ccaf4383ec21e9c66">self::renderTaskEditForm</a>($idTask);
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126             <span class="comment">// Render form into detail wrapper</span>
+<a name="l00127"></a>00127         $tmpl   = <span class="stringliteral">&apos;ext/project/view/task-detail-data-wrap.tmpl&apos;</span>;
+<a name="l00128"></a>00128         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00129"></a>00129             <span class="stringliteral">&apos;idTask&apos;</span>    =&gt; $idTask,
+<a name="l00130"></a>00130             <span class="stringliteral">&apos;task&apos;</span>  =&gt; array(
+<a name="l00131"></a>00131                 <span class="stringliteral">&apos;status&apos;</span>    =&gt; <a class="code" href="ext_2project_2config_2constants_8php.html#a9020c67299847dff9c12ecee7b1ae8d5">STATUS_OPEN</a>
+<a name="l00132"></a>00132             ),
+<a name="l00133"></a>00133             <span class="stringliteral">&apos;taskdata&apos;</span>  =&gt; <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>
+<a name="l00134"></a>00134         );
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00137"></a>00137     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a1d1b11b8a974bc2cb3da911f39c3ae5b"></a><!-- doxytag: member="TodoyuTaskRenderer::renderTabContent" ref="a1d1b11b8a974bc2cb3da911f39c3ae5b" args="($idTask, $activeTab=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderTabContent </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>activeTab</em> = <code>null</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render the active tab content of a task</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$activeTab </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_task_renderer_8class_8php_source.html#l00192">192</a> der Datei <a class="el" href="_todoyu_task_renderer_8class_8php_source.html">TodoyuTaskRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00192"></a>00192                                                                         {
+<a name="l00193"></a>00193         $idTask     = intval($idTask);
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195         $tabsConfig = <a class="code" href="class_todoyu_task_manager.html#aa09e29fa1d7c615186c550c55d0a73db">TodoyuTaskManager::getTabs</a>($idTask);
+<a name="l00196"></a>00196         $tabContent = <span class="stringliteral">&apos;&apos;</span>;
+<a name="l00197"></a>00197         $activeTab  = is_null($activeTab) ? <a class="code" href="class_todoyu_project_preferences.html#a3b32b738bd2abffd71cb23cea90693dd">TodoyuProjectPreferences::getActiveTaskTab</a>($idTask) : $activeTab;
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199             <span class="comment">// Only render active tab</span>
+<a name="l00200"></a>00200         <span class="keywordflow">foreach</span>($tabsConfig as $tabConfig) {
+<a name="l00201"></a>00201             <span class="keywordflow">if</span>( $tabConfig[<span class="stringliteral">&apos;id&apos;</span>] == $activeTab ) {
+<a name="l00202"></a>00202                 $tabContent = <a class="code" href="class_todoyu_div.html#afcc9d79cf22888569ba5f634bb686d1c">TodoyuDiv::callUserFunction</a>($tabConfig[<span class="stringliteral">&apos;content&apos;</span>], $idTask);
+<a name="l00203"></a>00203                 <span class="keywordflow">break</span>;
+<a name="l00204"></a>00204             }
+<a name="l00205"></a>00205         }
+<a name="l00206"></a>00206 
+<a name="l00207"></a>00207         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00208"></a>00208             <span class="stringliteral">&apos;tabHtml&apos;</span>   =&gt; $tabContent,
+<a name="l00209"></a>00209             <span class="stringliteral">&apos;tabKey&apos;</span>    =&gt; $activeTab,
+<a name="l00210"></a>00210             <span class="stringliteral">&apos;idTask&apos;</span>    =&gt; $idTask
+<a name="l00211"></a>00211         );
+<a name="l00212"></a>00212         $tmpl   = <span class="stringliteral">&apos;ext/project/view/task-tabs.tmpl&apos;</span>;
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00215"></a>00215     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a54da8251f2e07c6449c6c756c43f392f"></a><!-- doxytag: member="TodoyuTaskRenderer::renderTabHeads" ref="a54da8251f2e07c6449c6c756c43f392f" args="($idTask, $activeTab=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderTabHeads </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>activeTab</em> = <code>null</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render the heads of all tabs</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$activeTab </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_task_renderer_8class_8php_source.html#l00166">166</a> der Datei <a class="el" href="_todoyu_task_renderer_8class_8php_source.html">TodoyuTaskRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00166"></a>00166                                                                       {
+<a name="l00167"></a>00167         $idTask     = intval($idTask);
+<a name="l00168"></a>00168         $listID     = <span class="stringliteral">&apos;task-&apos;</span> . $idTask . <span class="stringliteral">&apos;-tabheads&apos;</span>;
+<a name="l00169"></a>00169         $class      = <span class="stringliteral">&apos;tabs taskTabheads&apos;</span>;
+<a name="l00170"></a>00170         $jsHandler  = <span class="stringliteral">&apos;Todoyu.Ext.project.Task.Tab.onSelect.bind(Todoyu.Ext.project.Task.Tab)&apos;</span>;
+<a name="l00171"></a>00171         <a class="code" href="view_8php.html#ab6ac9b33076d715d3f1376b426e25da0">$tabs</a>       = <a class="code" href="class_todoyu_task_manager.html#aa09e29fa1d7c615186c550c55d0a73db">TodoyuTaskManager::getTabs</a>($idTask);
+<a name="l00172"></a>00172         $activeTab  = is_null($activeTab) ? <a class="code" href="class_todoyu_project_preferences.html#a3b32b738bd2abffd71cb23cea90693dd">TodoyuProjectPreferences::getActiveTaskTab</a>($idTask) : $activeTab;
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174             <span class="comment">// Add special fields for task tabs</span>
+<a name="l00175"></a>00175         <span class="keywordflow">foreach</span>(<a class="code" href="view_8php.html#ab6ac9b33076d715d3f1376b426e25da0">$tabs</a> as $index =&gt; $tab) {
+<a name="l00176"></a>00176             <a class="code" href="view_8php.html#ab6ac9b33076d715d3f1376b426e25da0">$tabs</a>[$index][<span class="stringliteral">&apos;htmlId&apos;</span>]     = <span class="stringliteral">&apos;task-&apos;</span> . $idTask . <span class="stringliteral">&apos;-tabhead-&apos;</span> . $tab[<span class="stringliteral">&apos;id&apos;</span>];
+<a name="l00177"></a>00177             <a class="code" href="view_8php.html#ab6ac9b33076d715d3f1376b426e25da0">$tabs</a>[$index][<span class="stringliteral">&apos;classKey&apos;</span>]   = $tab[<span class="stringliteral">&apos;id&apos;</span>] . <span class="charliteral">&apos;-&apos;</span> . $idTask;
+<a name="l00178"></a>00178         }
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_task_renderer.html#a35c1c6ead766b7331bc72b730787ee61">TodoyuTabheadRenderer::renderTabs</a>($listID, $class, $jsHandler, <a class="code" href="view_8php.html#ab6ac9b33076d715d3f1376b426e25da0">$tabs</a>, $activeTab);
+<a name="l00181"></a>00181     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a35c1c6ead766b7331bc72b730787ee61"></a><!-- doxytag: member="TodoyuTaskRenderer::renderTabs" ref="a35c1c6ead766b7331bc72b730787ee61" args="($idTask, $activeTab=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderTabs </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>activeTab</em> = <code>null</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render all task tabs (only detail of the active tab)</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_task_renderer_8class_8php_source.html#l00147">147</a> der Datei <a class="el" href="_todoyu_task_renderer_8class_8php_source.html">TodoyuTaskRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00147"></a>00147                                                                   {
+<a name="l00148"></a>00148         $idTask     = intval($idTask);
+<a name="l00149"></a>00149         $activeTab  = is_null($activeTab) ? <a class="code" href="class_todoyu_project_preferences.html#a3b32b738bd2abffd71cb23cea90693dd">TodoyuProjectPreferences::getActiveTaskTab</a>($idTask) : $activeTab ;
+<a name="l00150"></a>00150 
+<a name="l00151"></a>00151         $tabHeads       = <a class="code" href="class_todoyu_task_renderer.html#a54da8251f2e07c6449c6c756c43f392f">self::renderTabHeads</a>($idTask, $activeTab);
+<a name="l00152"></a>00152         $tabContents    = <a class="code" href="class_todoyu_task_renderer.html#a1d1b11b8a974bc2cb3da911f39c3ae5b">self::renderTabContent</a>($idTask, $activeTab);
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154         <span class="keywordflow">return</span> $tabHeads . $tabContents;
+<a name="l00155"></a>00155     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a9c437629e1fb24b300dba5fd8b420daf"></a><!-- doxytag: member="TodoyuTaskRenderer::renderTaskData" ref="a9c437629e1fb24b300dba5fd8b420daf" args="($idTask)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderTaskData </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render the task data</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_task_renderer_8class_8php_source.html#l00065">65</a> der Datei <a class="el" href="_todoyu_task_renderer_8class_8php_source.html">TodoyuTaskRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00065"></a>00065                                                    {
+<a name="l00066"></a>00066         $idTask = intval($idTask);
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068             <span class="comment">// Get task object</span>
+<a name="l00069"></a>00069         $task   = <a class="code" href="class_todoyu_task_manager.html#a45a02f4c2aa0c43bb73bdb39a9cd5e85">TodoyuTaskManager::getTask</a>($idTask);
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071             <span class="comment">// Get task template data</span>
+<a name="l00072"></a>00072         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>           = $task-&gt;getTemplateData(0);
+<a name="l00073"></a>00073         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;data&apos;</span>]   = <a class="code" href="class_todoyu_task_manager.html#ab9cd7f2c8c63b3fdad79b35ef33852f2">TodoyuTaskManager::getTaskDataArray</a>($idTask);
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>(<span class="stringliteral">&apos;ext/project/view/task-data.tmpl&apos;</span>, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00076"></a>00076     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="aa6d2d35b075fec5d8fa84f17127ddc12"></a><!-- doxytag: member="TodoyuTaskRenderer::renderTaskDetail" ref="aa6d2d35b075fec5d8fa84f17127ddc12" args="($idTask, $activeTab=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderTaskDetail </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>activeTab</em> = <code>null</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render a task detail</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$activeTab </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_task_renderer_8class_8php_source.html#l00038">38</a> der Datei <a class="el" href="_todoyu_task_renderer_8class_8php_source.html">TodoyuTaskRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00038"></a>00038                                                                         {
+<a name="l00039"></a>00039         $idTask = intval($idTask);
+<a name="l00040"></a>00040         $task   = <a class="code" href="class_todoyu_task_manager.html#a45a02f4c2aa0c43bb73bdb39a9cd5e85">TodoyuTaskManager::getTask</a>($idTask);
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042         $tmpl   = <span class="stringliteral">&apos;ext/project/view/task-details.tmpl&apos;</span>;
+<a name="l00043"></a>00043         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00044"></a>00044             <span class="stringliteral">&apos;task&apos;</span>      =&gt; $task,
+<a name="l00045"></a>00045             <span class="stringliteral">&apos;idTask&apos;</span>    =&gt; $idTask,
+<a name="l00046"></a>00046             <span class="stringliteral">&apos;taskData&apos;</span>  =&gt; self::renderTaskData($idTask)
+<a name="l00047"></a>00047         );
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049             <span class="comment">// Only add tabs if its a normal task (not container)</span>
+<a name="l00050"></a>00050         <span class="keywordflow">if</span>( $task-&gt;isTask() ) {
+<a name="l00051"></a>00051             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;tabs&apos;</span>] = <a class="code" href="class_todoyu_task_renderer.html#a35c1c6ead766b7331bc72b730787ee61">self::renderTabs</a>($idTask, $activeTab);
+<a name="l00052"></a>00052         }
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00055"></a>00055     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a0c7246745d2f619ccaf4383ec21e9c66"></a><!-- doxytag: member="TodoyuTaskRenderer::renderTaskEditForm" ref="a0c7246745d2f619ccaf4383ec21e9c66" args="($idTask)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderTaskEditForm </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render the task edit form</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_task_renderer_8class_8php_source.html#l00086">86</a> der Datei <a class="el" href="_todoyu_task_renderer_8class_8php_source.html">TodoyuTaskRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00086"></a>00086                                                        {
+<a name="l00087"></a>00087         $idTask     = intval($idTask);
+<a name="l00088"></a>00088         $task       = <a class="code" href="class_todoyu_task_manager.html#a45a02f4c2aa0c43bb73bdb39a9cd5e85">TodoyuTaskManager::getTask</a>($idTask);
+<a name="l00089"></a>00089         <a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>    = <span class="stringliteral">&apos;ext/project/config/form/task.xml&apos;</span>;
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091             <span class="comment">// Construct form object</span>
+<a name="l00092"></a>00092         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>       = <a class="code" href="class_todoyu_form_manager.html#a1ebecd4703d082171a8682cd8fd3626c">TodoyuFormManager::getForm</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>, $idTask);
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094             <span class="comment">// Load form data</span>
+<a name="l00095"></a>00095         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = $task-&gt;getTemplateData(0);
+<a name="l00096"></a>00096         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = <a class="code" href="class_todoyu_form_hook.html#ab552e7ce23a0c9e2c9ff10029d9a53b7">TodoyuFormHook::callLoadData</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>, $idTask);
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098             <span class="comment">// Set form data</span>
+<a name="l00099"></a>00099         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;setFormData(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101             <span class="comment">// Render</span>
+<a name="l00102"></a>00102         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00103"></a>00103             <span class="stringliteral">&apos;idTask&apos;</span>    =&gt; $idTask,
+<a name="l00104"></a>00104             <span class="stringliteral">&apos;formhtml&apos;</span>  =&gt; <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;render()
+<a name="l00105"></a>00105         );
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>(<span class="stringliteral">&apos;ext/project/view/task-edit.tmpl&apos;</span>, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00108"></a>00108     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/project/model/<a class="el" href="_todoyu_task_renderer_8class_8php_source.html">TodoyuTaskRenderer.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:49 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

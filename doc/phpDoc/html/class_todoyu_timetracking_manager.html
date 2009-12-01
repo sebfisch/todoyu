@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuTimetrackingManager Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuTimetrackingManager Klassenreferenz</h1><!-- doxytag: class="TodoyuTimetrackingManager" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_timetracking_manager.html#a4ac169a6244f5dc76074c487d31225c1">addTimetrackingInfosToTask</a> (array $taskData, $idTask, $infoLevel=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_timetracking_manager.html#a011bae73bc15cff7c7bc60bd22880f06">calculateTrackedTimeFromString</a> ($string)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_timetracking_manager.html#a993175214af50c681fbc894bb66b3c5b">saveWorkloadRecord</a> (array $data)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_timetracking_manager.html#a2fd9f319241913fb1910e5f48d0b554a">XXXaddTrackedWorkloadToTask</a> ($date, $idTask, $workloadTracked, $workloadChargeable=0, $<a class="el" href="comment_2assets_2js_2_ext_8js.html#aaf1f1ff3f3502a2ccd2d01a438d927ef">comment</a>= '', $idUser=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_timetracking_manager.html#a79799c6cb2462fcb3bea1b1a8ee622b9">getProjectTaskInfoIcons</a> ($idTask)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_timetracking_manager.html#afd48e2ebdc3bc34c5a9ef04c2a5d844e">isTaskOvertimed</a> ($idTask)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_timetracking_manager.html#a6ac896a5b61a62b100cfca33140c7f95">getEstimatedTaskWorkload</a> ($idTask=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_timetracking_manager.html#a775bd9b30f85dbc2ce24fa9b1abcc0a7">addTimetrackingJsInitToPage</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_timetracking_manager.html#a51f4f013c7a0c2a40347bd9ad923b8d2">calculateBillableTime</a> ($trackedWorkload)</td></tr>
+<tr><td colspan="2"><h2>Datenfelder</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_timetracking_manager.html#adf62e2b172196282218b1ece3d200fa1">TABLE</a> = 'ext_timetracking_track'</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html#l00029">29</a> der Datei <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a4ac169a6244f5dc76074c487d31225c1"></a><!-- doxytag: member="TodoyuTimetrackingManager::addTimetrackingInfosToTask" ref="a4ac169a6244f5dc76074c487d31225c1" args="(array $taskData, $idTask, $infoLevel=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static addTimetrackingInfosToTask </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>taskData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>infoLevel</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Add timetracking specific information to task array</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$taskData Task data array </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask Task ID </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$infoLevel Task infolevel </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html#l00046">46</a> der Datei <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00046"></a>00046                                                                                                 {
+<a name="l00047"></a>00047         $idTask     = intval($idTask);
+<a name="l00048"></a>00048         $infoLevel  = intval($infoLevel);
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050         <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_timetracking.html#ab22c421daf25695d196b956550678800">TodoyuTimetracking::isTaskRunning</a>($idTask) ) {
+<a name="l00051"></a>00051             $taskData[<span class="stringliteral">&apos;class&apos;</span>] .= <span class="stringliteral">&apos; running&apos;</span>;
+<a name="l00052"></a>00052         }
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054         <span class="keywordflow">if</span>( $infoLevel &gt;= 3 ) {
+<a name="l00055"></a>00055             $task   = <a class="code" href="class_todoyu_task_manager.html#a45a02f4c2aa0c43bb73bdb39a9cd5e85">TodoyuTaskManager::getTask</a>($idTask);
+<a name="l00056"></a>00056             $taskData[<span class="stringliteral">&apos;tracked_time&apos;</span>]   = <a class="code" href="class_todoyu_timetracking.html#af4b077d918cac23f8852ef1561861d10">TodoyuTimetracking::getTrackedTaskTime</a>($task-&gt;getID(), $task-&gt;getStartDate(), $task-&gt;getEndDate());
+<a name="l00057"></a>00057             $taskData[<span class="stringliteral">&apos;billable_time&apos;</span>]  = <a class="code" href="class_todoyu_timetracking.html#af4b077d918cac23f8852ef1561861d10">TodoyuTimetracking::getTrackedTaskTime</a>($task-&gt;getID(), $task-&gt;getStartDate(), $task-&gt;getEndDate(), <span class="keyword">true</span>);
+<a name="l00058"></a>00058         }
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <span class="keywordflow">return</span> $taskData;
+<a name="l00061"></a>00061     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a775bd9b30f85dbc2ce24fa9b1abcc0a7"></a><!-- doxytag: member="TodoyuTimetrackingManager::addTimetrackingJsInitToPage" ref="a775bd9b30f85dbc2ce24fa9b1abcc0a7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static addTimetrackingJsInitToPage </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Add timetracking JS init to page </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html#l00187">187</a> der Datei <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00187"></a>00187                                                          {
+<a name="l00188"></a>00188         <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_timetracking.html#a45f98086f3f926044190bbec6ade94f3">TodoyuTimetracking::isTrackingActive</a>() &amp;&amp; ! <a class="code" href="class_todoyu_request.html#ad29992b5c09cbad51dc5978f09903b28">TodoyuRequest::isAjaxRequest</a>() ) {
+<a name="l00189"></a>00189             $idTask = <a class="code" href="class_todoyu_timetracking.html#a35dde256888ea3a81f1f911df3643d19">TodoyuTimetracking::getTaskID</a>();
+<a name="l00190"></a>00190             $time   = <a class="code" href="class_todoyu_timetracking.html#abe29cccbcee1d71085799d6613927e48">TodoyuTimetracking::getTrackedTime</a>();
+<a name="l00191"></a>00191             $estWork= <a class="code" href="class_todoyu_timetracking_manager.html#a6ac896a5b61a62b100cfca33140c7f95">self::getEstimatedTaskWorkload</a>($idTask);
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193             $init   = <span class="stringliteral">&apos;Todoyu.Ext.timetracking.initWithTask.bind(Todoyu.Ext.timetracking, &apos;</span> . $idTask . <span class="stringliteral">&apos;, &apos;</span> . $time . <span class="stringliteral">&apos;, &apos;</span> . $estWork . <span class="charliteral">&apos;)&apos;</span>;
+<a name="l00194"></a>00194         } <span class="keywordflow">else</span> {
+<a name="l00195"></a>00195             $init   = <span class="stringliteral">&apos;Todoyu.Ext.timetracking.init.bind(Todoyu.Ext.timetracking)&apos;</span>;
+<a name="l00196"></a>00196         }
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198         <a class="code" href="class_todoyu_page.html#a999590070b3ebce0ef29993c33aeee60">TodoyuPage::addJsOnloadedFunction</a>($init);
+<a name="l00199"></a>00199     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a51f4f013c7a0c2a40347bd9ad923b8d2"></a><!-- doxytag: member="TodoyuTimetrackingManager::calculateBillableTime" ref="a51f4f013c7a0c2a40347bd9ad923b8d2" args="($trackedWorkload)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static calculateBillableTime </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>trackedWorkload</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Calculates the billable time from the tracked time</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000019">Noch zu erledigen:</a></b></dt><dd>RIGHT PLACE FOR THIS FUNCTION? </dd></dl>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$trackedWorkload </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html#l00209">209</a> der Datei <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00209"></a>00209                                                                     {
+<a name="l00210"></a>00210         $trackedWorkload            =intval($trackedWorkload);
+<a name="l00211"></a>00211         $fifteenMinutesInSeconds    = 900;
+<a name="l00212"></a>00212 
+<a name="l00213"></a>00213         <span class="keywordflow">return</span> ceil( $trackedWorkload / $fifteenMinutesInSeconds) * $fifteenMinutesInSeconds;
+<a name="l00214"></a>00214     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a011bae73bc15cff7c7bc60bd22880f06"></a><!-- doxytag: member="TodoyuTimetrackingManager::calculateTrackedTimeFromString" ref="a011bae73bc15cff7c7bc60bd22880f06" args="($string)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static calculateTrackedTimeFromString </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>string</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>calculates the string given in format hh:mm:ss (hh:mm) in seconds</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Integer </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html#l00071">71</a> der Datei <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00071"></a>00071                                                                     {
+<a name="l00072"></a>00072         $timeArray = explode(<span class="charliteral">&apos;:&apos;</span>, $string);
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074         $time   = is_array($timeArray) ? ($timeArray[0] * 3600 + $timeArray[1] * 60 + $timeArray[2]) : 0;
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076         <span class="keywordflow">return</span> $time;
+<a name="l00077"></a>00077     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a6ac896a5b61a62b100cfca33140c7f95"></a><!-- doxytag: member="TodoyuTimetrackingManager::getEstimatedTaskWorkload" ref="a6ac896a5b61a62b100cfca33140c7f95" args="($idTask=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getEstimatedTaskWorkload </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em> = <code>0</code></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get Estimate</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>unknown_type</em>&nbsp;</td><td>$idTask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>unknown </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html#l00165">165</a> der Datei <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00165"></a>00165                                                                  {
+<a name="l00166"></a>00166         $idTask     = intval($idTask);
+<a name="l00167"></a>00167         $workload   = 0;
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169         <span class="keywordflow">if</span>( $idTask === 0 &amp;&amp; <a class="code" href="class_todoyu_timetracking.html#a45f98086f3f926044190bbec6ade94f3">TodoyuTimetracking::isTrackingActive</a>() ) {
+<a name="l00170"></a>00170             $idTask = <a class="code" href="class_todoyu_timetracking.html#a35dde256888ea3a81f1f911df3643d19">TodoyuTimetracking::getTaskID</a>();
+<a name="l00171"></a>00171         }
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173         <span class="keywordflow">if</span>( $idTask !== 0 ) {
+<a name="l00174"></a>00174             $task       = <a class="code" href="class_todoyu_task_manager.html#a45a02f4c2aa0c43bb73bdb39a9cd5e85">TodoyuTaskManager::getTask</a>($idTask);
+<a name="l00175"></a>00175             $workload   = intval($task-&gt;get(<span class="stringliteral">&apos;estimated_workload&apos;</span>));
+<a name="l00176"></a>00176         }
+<a name="l00177"></a>00177 
+<a name="l00178"></a>00178         <span class="keywordflow">return</span> $workload;
+<a name="l00179"></a>00179     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a79799c6cb2462fcb3bea1b1a8ee622b9"></a><!-- doxytag: member="TodoyuTimetrackingManager::getProjectTaskInfoIcons" ref="a79799c6cb2462fcb3bea1b1a8ee622b9" args="($idTask)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getProjectTaskInfoIcons </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get project task info icons</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Array </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html#l00125">125</a> der Datei <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00125"></a>00125                                                             {
+<a name="l00126"></a>00126         $idTask = intval($idTask);
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128         $icons  = array();
+<a name="l00129"></a>00129         <span class="keywordflow">if</span>( self::isTaskOvertimed($idTask) ) {
+<a name="l00130"></a>00130             $icons[] = array(
+<a name="l00131"></a>00131                 <span class="stringliteral">&apos;id&apos;</span>        =&gt; <span class="stringliteral">&apos;task-&apos;</span> . $idTask . <span class="stringliteral">&apos;-overtimed&apos;</span>,
+<a name="l00132"></a>00132                 <span class="stringliteral">&apos;class&apos;</span>     =&gt; <span class="stringliteral">&apos;overtimed&apos;</span>,
+<a name="l00133"></a>00133                 <span class="stringliteral">&apos;label&apos;</span>     =&gt; <span class="stringliteral">&apos;LLL:task.attr.overtimed&apos;</span>
+<a name="l00134"></a>00134             );
+<a name="l00135"></a>00135         }
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137         <span class="keywordflow">return</span> $icons;
+<a name="l00138"></a>00138     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="afd48e2ebdc3bc34c5a9ef04c2a5d844e"></a><!-- doxytag: member="TodoyuTimetrackingManager::isTaskOvertimed" ref="afd48e2ebdc3bc34c5a9ef04c2a5d844e" args="($idTask)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static isTaskOvertimed </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Check whether task is overtimed</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Boolean </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html#l00148">148</a> der Datei <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00148"></a>00148                                                     {
+<a name="l00149"></a>00149         $idTask     = intval($idTask);
+<a name="l00150"></a>00150 
+<a name="l00151"></a>00151         $trackedTime= <a class="code" href="class_todoyu_timetracking.html#ae64600efcd921f708f221d3b8771acc9">TodoyuTimetracking::getTrackedTaskTimeTotal</a>($idTask);
+<a name="l00152"></a>00152         $task       = <a class="code" href="class_todoyu_task_manager.html#a45a02f4c2aa0c43bb73bdb39a9cd5e85">TodoyuTaskManager::getTask</a>($idTask);
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154         <span class="keywordflow">return</span> $trackedTime &gt; intval($task-&gt;get(<span class="stringliteral">&apos;estimated_workload&apos;</span>));
+<a name="l00155"></a>00155     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a993175214af50c681fbc894bb66b3c5b"></a><!-- doxytag: member="TodoyuTimetrackingManager::saveWorkloadRecord" ref="a993175214af50c681fbc894bb66b3c5b" args="(array $data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static saveWorkloadRecord </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>data</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Save workload record</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html#l00086">86</a> der Datei <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00086"></a>00086                                                             {
+<a name="l00087"></a>00087         <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doInsert(self::TABLE, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00088"></a>00088     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a2fd9f319241913fb1910e5f48d0b554a"></a><!-- doxytag: member="TodoyuTimetrackingManager::XXXaddTrackedWorkloadToTask" ref="a2fd9f319241913fb1910e5f48d0b554a" args="($date, $idTask, $workloadTracked, $workloadChargeable=0, $comment= '', $idUser=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static XXXaddTrackedWorkloadToTask </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>date</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>workloadTracked</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>workloadChargeable</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>comment</em> = <code>''</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idUser</em> = <code>0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html#l00091">91</a> der Datei <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00091"></a>00091                                                                                                                                               {
+<a name="l00092"></a>00092         $date               = intval($date);
+<a name="l00093"></a>00093         $idTask             = intval($idTask);
+<a name="l00094"></a>00094         $workloadTracked    = intval($workloadTracked);
+<a name="l00095"></a>00095         $workloadChargeable = intval($workloadChargeable);
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097         $trackedTime        = <a class="code" href="class_todoyu_timetracking.html#aa4118cc67ca723db4edc0edc3d942c6c">TodoyuTimetracking::getTrackedTaskTimeOfDay</a>($idTask, $date, $idUser);
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099         <span class="keywordflow">if</span>( $trackedTime === 0 ) {
+<a name="l00100"></a>00100             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00101"></a>00101                 <span class="stringliteral">&apos;date_update&apos;</span>       =&gt; <a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>,
+<a name="l00102"></a>00102                 <span class="stringliteral">&apos;date_create&apos;</span>       =&gt; <a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>,
+<a name="l00103"></a>00103                 <span class="stringliteral">&apos;id_user&apos;</span>           =&gt; <a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>($idUser),
+<a name="l00104"></a>00104                 <span class="stringliteral">&apos;id_task&apos;</span>           =&gt; $idTask,
+<a name="l00105"></a>00105                 <span class="stringliteral">&apos;workload_tracked&apos;</span>  =&gt; $workloadTracked,
+<a name="l00106"></a>00106                 <span class="stringliteral">&apos;workload_chargeable&apos;</span>=&gt;$workloadChargeable,
+<a name="l00107"></a>00107                 <span class="stringliteral">&apos;comment&apos;</span>           =&gt; $comment
+<a name="l00108"></a>00108             );
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110             <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;addRecord(self::TABLE, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00111"></a>00111         } <span class="keywordflow">else</span> {
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113         }
+<a name="l00114"></a>00114     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/><h2>Dokumentation der Datenelemente</h2>
+<a class="anchor" id="adf62e2b172196282218b1ece3d200fa1"></a><!-- doxytag: member="TodoyuTimetrackingManager::TABLE" ref="adf62e2b172196282218b1ece3d200fa1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_todoyu_timetracking_manager.html#adf62e2b172196282218b1ece3d200fa1">TABLE</a> = 'ext_timetracking_track'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Working table </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html#l00035">35</a> der Datei <a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a>.</p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/timetracking/model/<a class="el" href="_todoyu_timetracking_manager_8class_8php_source.html">TodoyuTimetrackingManager.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:49 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

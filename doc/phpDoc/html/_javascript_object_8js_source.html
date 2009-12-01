@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/doc/CodeStyle/JavascriptObject.js Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/doc/CodeStyle/JavascriptObject.js</h1><a href="_javascript_object_8js.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00009"></a><a class="code" href="_javascript_object_8js.html#a6f5431fe35b0f802731adbb6fac236b6">00009</a> <a class="code" href="class_todoyu.html">Todoyu</a>.Ext.project.Task = {
+<a name="l00010"></a>00010     
+<a name="l00015"></a>00015     init: function() {
+<a name="l00016"></a>00016         this.installObservers();
+<a name="l00017"></a>00017     },
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 
+<a name="l00025"></a>00025     installObservers: function() {
+<a name="l00026"></a>00026             <span class="comment">// Don&apos;t forget to bind the handler to the current object</span>
+<a name="l00027"></a>00027         $(<span class="stringliteral">&apos;an-element-id&apos;</span>).<a class="code" href="javascript_8js.html#ab57ad05e5f69b0a634c7451019283887">observe</a>(<span class="stringliteral">&apos;change&apos;</span>, this.onSomeElementChange.bindAsEventListener(<span class="keyword">this</span>));
+<a name="l00028"></a>00028     },
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 
+<a name="l00036"></a>00036     onSomeElementChange: function(event) {
+<a name="l00037"></a>00037         
+<a name="l00038"></a>00038     }
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 }; <span class="comment">// Don&apos;t forget the closing semicolon. IE hates that!</span>
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:32 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

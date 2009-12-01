@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/TodoyuPanelWidget.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/TodoyuPanelWidget.class.php</h1><a href="_todoyu_panel_widget_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00029"></a><a class="code" href="class_todoyu_panel_widget.html">00029</a> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_todoyu_panel_widget.html">TodoyuPanelWidget</a> {
+<a name="l00030"></a>00030 
+<a name="l00036"></a><a class="code" href="class_todoyu_panel_widget.html#a6efc15b5a2314dd4b5aaa556a375c6d6">00036</a>     <span class="keyword">protected</span> <a class="code" href="class_todoyu_panel_widget.html#a6efc15b5a2314dd4b5aaa556a375c6d6">$data</a>     = array();
+<a name="l00037"></a>00037 
+<a name="l00043"></a><a class="code" href="class_todoyu_panel_widget.html#a49c7011be9c979d9174c52a8b83e5d8e">00043</a>     <span class="keyword">protected</span> <a class="code" href="class_todoyu_panel_widget.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>;
+<a name="l00044"></a>00044 
+<a name="l00050"></a><a class="code" href="class_todoyu_panel_widget.html#afe68e6fbe7acfbffc0af0c84a1996466">00050</a>     <span class="keyword">protected</span> <a class="code" href="class_todoyu_panel_widget.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>;
+<a name="l00051"></a>00051 
+<a name="l00057"></a><a class="code" href="class_todoyu_panel_widget.html#aa3b4f377cf05246c01c5bf10ad5f844f">00057</a>     <span class="keyword">protected</span> <a class="code" href="class_todoyu_panel_widget.html#aa3b4f377cf05246c01c5bf10ad5f844f">$idArea</a> = 0;
+<a name="l00058"></a>00058 
+<a name="l00064"></a><a class="code" href="class_todoyu_panel_widget.html#a1f80ff7b555d99d7f7a59753cae7ec32">00064</a>     <span class="keyword">protected</span> <a class="code" href="class_todoyu_panel_widget.html#a1f80ff7b555d99d7f7a59753cae7ec32">$collapsed</a> = <span class="keyword">false</span>;
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 
+<a name="l00078"></a><a class="code" href="class_todoyu_panel_widget.html#ad33c908712f2af6a57c86a04ffa2b099">00078</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#ad33c908712f2af6a57c86a04ffa2b099">__construct</a>($ext, $id, $title, array <a class="code" href="class_todoyu_panel_widget.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a> = array(), array <a class="code" href="class_todoyu_panel_widget.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a> = array(), <a class="code" href="class_todoyu_panel_widget.html#aa3b4f377cf05246c01c5bf10ad5f844f">$idArea</a> = 0) {
+<a name="l00079"></a>00079         $this-&gt;<span class="keyword">set</span>(<span class="stringliteral">&apos;ext&apos;</span>, $ext);
+<a name="l00080"></a>00080         $this-&gt;<span class="keyword">set</span>(<span class="stringliteral">&apos;id&apos;</span>, $id);
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         $this-&gt;<a class="code" href="class_todoyu_panel_widget.html#a884ba9bb0d54bde7839e798db7964476">setTitle</a>($title);
+<a name="l00083"></a>00083         $this-&gt;<a class="code" href="class_todoyu_panel_widget.html#a8d2c9f07514863c12756f00354c96f67">setClass</a>($id);
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085         $this-&gt;config   = <a class="code" href="class_todoyu_panel_widget.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>;
+<a name="l00086"></a>00086         $this-&gt;params   = <a class="code" href="class_todoyu_panel_widget.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>;
+<a name="l00087"></a>00087         $this-&gt;idArea   = intval(<a class="code" href="class_todoyu_panel_widget.html#aa3b4f377cf05246c01c5bf10ad5f844f">$idArea</a>);
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089         $this-&gt;<a class="code" href="class_todoyu_panel_widget.html#a5671339203372b85e17f951d70f2d0b0">setCollapsed</a>();
+<a name="l00090"></a>00090     }
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 
+<a name="l00100"></a><a class="code" href="class_todoyu_panel_widget.html#aab787bd83f84f4215dceb35f7c305eee">00100</a>     <span class="keyword">public</span> function <span class="keyword">set</span>($key, $value) {
+<a name="l00101"></a>00101         $this-&gt;data[$key] = $value;
+<a name="l00102"></a>00102     }
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 
+<a name="l00111"></a><a class="code" href="class_todoyu_panel_widget.html#a884ba9bb0d54bde7839e798db7964476">00111</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#a884ba9bb0d54bde7839e798db7964476">setTitle</a>($title) {
+<a name="l00112"></a>00112         $this-&gt;<span class="keyword">set</span>(<span class="stringliteral">&apos;title&apos;</span>, <a class="code" href="class_todoyu_div.html#a71fad5548fe188ea7853db0d5337e43b">TodoyuDiv::getLabel</a>($title));
+<a name="l00113"></a>00113     }
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 
+<a name="l00122"></a><a class="code" href="class_todoyu_panel_widget.html#a8d2c9f07514863c12756f00354c96f67">00122</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#a8d2c9f07514863c12756f00354c96f67">setClass</a>($class) {
+<a name="l00123"></a>00123         $this-&gt;<span class="keyword">set</span>(<span class="stringliteral">&apos;class&apos;</span>, $class);
+<a name="l00124"></a>00124     }
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 
+<a name="l00132"></a><a class="code" href="class_todoyu_panel_widget.html#af297b685c862e9957c775f11d30367a4">00132</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#af297b685c862e9957c775f11d30367a4">addClass</a>($class) {
+<a name="l00133"></a>00133         $classes    = explode(<span class="charliteral">&apos; &apos;</span>, $this-&gt;<a class="code" href="class_todoyu_panel_widget.html#a23ecbde357f7f6bde5a50f876334a74d">getClass</a>());
+<a name="l00134"></a>00134         $classes[]  = $class;
+<a name="l00135"></a>00135         $classes    = implode(<span class="charliteral">&apos; &apos;</span>, array_unique($classes));
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137         $this-&gt;<a class="code" href="class_todoyu_panel_widget.html#a8d2c9f07514863c12756f00354c96f67">setClass</a>($classes);
+<a name="l00138"></a>00138     }
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141 
+<a name="l00146"></a><a class="code" href="class_todoyu_panel_widget.html#a2c1c02500e636a8832a6df96a9812b4e">00146</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#a2c1c02500e636a8832a6df96a9812b4e">addHasIconClass</a>() {
+<a name="l00147"></a>00147         $this-&gt;<a class="code" href="class_todoyu_panel_widget.html#af297b685c862e9957c775f11d30367a4">addClass</a>(<span class="stringliteral">&apos;hasIcon&apos;</span>);
+<a name="l00148"></a>00148     }
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150 
+<a name="l00151"></a>00151 
+<a name="l00156"></a><a class="code" href="class_todoyu_panel_widget.html#a5671339203372b85e17f951d70f2d0b0">00156</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#a5671339203372b85e17f951d70f2d0b0">setCollapsed</a>()  {
+<a name="l00157"></a>00157         $this-&gt;<span class="keyword">set</span>(<span class="stringliteral">&apos;collapsed&apos;</span>, <a class="code" href="class_todoyu_panel_widget_manager.html#afdeb7670be98020de8623664f31af54c">TodoyuPanelWidgetManager::loadCollapsedStatus</a>($this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;ext&apos;</span>), $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;id&apos;</span>)));
+<a name="l00158"></a>00158     }
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160 
+<a name="l00167"></a><a class="code" href="class_todoyu_panel_widget.html#a24a9bf83a1002d46ece83a93d14bd921">00167</a>     <span class="keyword">public</span> function <span class="keyword">get</span>($key) {
+<a name="l00168"></a>00168         <span class="keywordflow">return</span> $this-&gt;data[$key];
+<a name="l00169"></a>00169     }
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172 
+<a name="l00178"></a><a class="code" href="class_todoyu_panel_widget.html#a30dd7fff4fec7a39f9be9d27d4b22a59">00178</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#a30dd7fff4fec7a39f9be9d27d4b22a59">getID</a>() {
+<a name="l00179"></a>00179         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;id&apos;</span>);
+<a name="l00180"></a>00180     }
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183 
+<a name="l00189"></a><a class="code" href="class_todoyu_panel_widget.html#a23ecbde357f7f6bde5a50f876334a74d">00189</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#a23ecbde357f7f6bde5a50f876334a74d">getClass</a>() {
+<a name="l00190"></a>00190         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;class&apos;</span>);
+<a name="l00191"></a>00191     }
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194 
+<a name="l00200"></a><a class="code" href="class_todoyu_panel_widget.html#a95e859a4588a39a1824b717378a84c29">00200</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#a95e859a4588a39a1824b717378a84c29">getTitle</a>() {
+<a name="l00201"></a>00201         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;title&apos;</span>);
+<a name="l00202"></a>00202     }
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204 
+<a name="l00205"></a>00205 
+<a name="l00212"></a><a class="code" href="class_todoyu_panel_widget.html#ad9197900a71e3544fe1b2729f939bf3c">00212</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#ad9197900a71e3544fe1b2729f939bf3c">getArea</a>() {
+<a name="l00213"></a>00213         <span class="keywordflow">return</span> $this-&gt;idArea;
+<a name="l00214"></a>00214     }
+<a name="l00215"></a>00215 
+<a name="l00216"></a>00216 
+<a name="l00217"></a>00217 
+<a name="l00224"></a><a class="code" href="class_todoyu_panel_widget.html#ae3062c141c23af606736a71adf30cce7">00224</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#ae3062c141c23af606736a71adf30cce7">isCollapsed</a>() {
+<a name="l00225"></a>00225         <span class="keywordflow">return</span> $this-&gt;collapsed === <span class="keyword">true</span>;
+<a name="l00226"></a>00226     }
+<a name="l00227"></a>00227 
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229 
+<a name="l00235"></a><a class="code" href="class_todoyu_panel_widget.html#a04a5eddb7c3abc7bf31fa25b58f046bf">00235</a>     <span class="keyword">protected</span> function <a class="code" href="class_todoyu_panel_widget.html#a04a5eddb7c3abc7bf31fa25b58f046bf">setContent</a>($content) {
+<a name="l00236"></a>00236         $this-&gt;<span class="keyword">set</span>(<span class="stringliteral">&apos;content&apos;</span>, $content);
+<a name="l00237"></a>00237     }
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239 
+<a name="l00240"></a>00240 
+<a name="l00246"></a><a class="code" href="class_todoyu_panel_widget.html#a58e43f09a06ce4e29b192c4e17ce7915">00246</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#a58e43f09a06ce4e29b192c4e17ce7915">getContent</a>() {
+<a name="l00247"></a>00247         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;content&apos;</span>);
+<a name="l00248"></a>00248     }
+<a name="l00249"></a>00249 
+<a name="l00250"></a>00250 
+<a name="l00251"></a>00251 
+<a name="l00257"></a><a class="code" href="class_todoyu_panel_widget.html#afde88292c44dc59faf017738dae6dffb">00257</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget.html#afde88292c44dc59faf017738dae6dffb">render</a>() {
+<a name="l00258"></a>00258         $tmpl   = <span class="stringliteral">&apos;core/view/panelwidget.tmpl&apos;</span>;
+<a name="l00259"></a>00259 
+<a name="l00260"></a>00260         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_panel_widget.html#afde88292c44dc59faf017738dae6dffb">render</a>($tmpl, $this-&gt;data);
+<a name="l00261"></a>00261     }
+<a name="l00262"></a>00262 
+<a name="l00263"></a>00263 
+<a name="l00264"></a>00264 
+<a name="l00270"></a><a class="code" href="class_todoyu_panel_widget.html#a4fc595a2f4837cf48712be2d50bdd514">00270</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_panel_widget.html#a4fc595a2f4837cf48712be2d50bdd514">isAllowed</a>()  {
+<a name="l00271"></a>00271         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00272"></a>00272     }
+<a name="l00273"></a>00273 
+<a name="l00274"></a>00274 }
+<a name="l00275"></a>00275 
+<a name="l00276"></a>00276 
+<a name="l00277"></a>00277 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:32 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

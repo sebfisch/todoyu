@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuCacheManager Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuCacheManager Klassenreferenz</h1><!-- doxytag: class="TodoyuCacheManager" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_cache_manager.html#aa81abd64b916e42583e324537a0249e1">clearAllCache</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_cache_manager.html#ae3a29c1d4dfdff99b3ebf2f37441b2e1">clearAssetCache</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_cache_manager.html#ab48a834092ce761f1a980eacab925bc3">clearLocaleCache</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_cache_manager.html#a2a076cf923a8d5826c89bc2faddac4af">clearTemplateCache</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_cache_manager_8class_8php_source.html#l00030">30</a> der Datei <a class="el" href="_todoyu_cache_manager_8class_8php_source.html">TodoyuCacheManager.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="aa81abd64b916e42583e324537a0249e1"></a><!-- doxytag: member="TodoyuCacheManager::clearAllCache" ref="aa81abd64b916e42583e324537a0249e1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static clearAllCache </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Clear all cache Call all registered clearCache hooks </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_cache_manager_8class_8php_source.html#l00037">37</a> der Datei <a class="el" href="_todoyu_cache_manager_8class_8php_source.html">TodoyuCacheManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00037"></a>00037                                            {
+<a name="l00038"></a>00038         <a class="code" href="class_todoyu_hook_manager.html#a3a96f5ba07d260657f2b4939b2a33ee4">TodoyuHookManager::callHook</a>(<span class="stringliteral">&apos;core&apos;</span>, <span class="stringliteral">&apos;clearCache&apos;</span>);
+<a name="l00039"></a>00039     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="ae3a29c1d4dfdff99b3ebf2f37441b2e1"></a><!-- doxytag: member="TodoyuCacheManager::clearAssetCache" ref="ae3a29c1d4dfdff99b3ebf2f37441b2e1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static clearAssetCache </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Clear asset cache (js+css) </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_cache_manager_8class_8php_source.html#l00047">47</a> der Datei <a class="el" href="_todoyu_cache_manager_8class_8php_source.html">TodoyuCacheManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00047"></a>00047                                              {
+<a name="l00048"></a>00048         self::clearCacheFolder(<span class="stringliteral">&apos;js&apos;</span>);
+<a name="l00049"></a>00049         self::clearCacheFolder(<span class="stringliteral">&apos;css&apos;</span>);
+<a name="l00050"></a>00050     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="ab48a834092ce761f1a980eacab925bc3"></a><!-- doxytag: member="TodoyuCacheManager::clearLocaleCache" ref="ab48a834092ce761f1a980eacab925bc3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static clearLocaleCache </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Clear locale cache (compiled locale files) </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_cache_manager_8class_8php_source.html#l00058">58</a> der Datei <a class="el" href="_todoyu_cache_manager_8class_8php_source.html">TodoyuCacheManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00058"></a>00058                                               {
+<a name="l00059"></a>00059         self::clearCacheFolder(<span class="stringliteral">&apos;locale&apos;</span>);
+<a name="l00060"></a>00060     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a2a076cf923a8d5826c89bc2faddac4af"></a><!-- doxytag: member="TodoyuCacheManager::clearTemplateCache" ref="a2a076cf923a8d5826c89bc2faddac4af" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static clearTemplateCache </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Clear template cache </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_cache_manager_8class_8php_source.html#l00068">68</a> der Datei <a class="el" href="_todoyu_cache_manager_8class_8php_source.html">TodoyuCacheManager.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00068"></a>00068                                                 {
+<a name="l00069"></a>00069         self::clearCacheFolder(<span class="stringliteral">&apos;tmpl/cache&apos;</span>);
+<a name="l00070"></a>00070         self::clearCacheFolder(<span class="stringliteral">&apos;tmpl/compile&apos;</span>);
+<a name="l00071"></a>00071     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/core/<a class="el" href="_todoyu_cache_manager_8class_8php_source.html">TodoyuCacheManager.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:43 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

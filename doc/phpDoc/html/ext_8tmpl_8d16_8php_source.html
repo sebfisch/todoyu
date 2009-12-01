@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/cache/tmpl/compile/ext/admin/view/ext.tmpl.d16.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/cache/tmpl/compile/ext/admin/view/ext.tmpl.d16.php</h1><a href="ext_8tmpl_8d16_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="keywordflow">if</span> (function_exists(<span class="stringliteral">&apos;Dwoo_Plugin_include&apos;</span>)===<span class="keyword">false</span>)
+<a name="l00003"></a>00003     $this-&gt;getLoader()-&gt;loadPlugin(<span class="stringliteral">&apos;include&apos;</span>);
+<a name="l00004"></a>00004 ob_start(); <span class="comment">/* template body */</span> ;
+<a name="l00005"></a>00005 <span class="stringliteral">&apos;&apos;</span>;<span class="comment">// checking for modification in file:core/view/base.tmpl</span>
+<a name="l00006"></a><a class="code" href="ext_8tmpl_8d16_8php.html#a0f4e092e8ee65885c1816822e9f53bbf">00006</a> <span class="keywordflow">if</span> (!(<span class="stringliteral">&quot;1258639551&quot;</span> == filemtime(<span class="stringliteral">&apos;core/view/base.tmpl&apos;</span>))) { ob_end_clean(); <span class="keywordflow">return</span> <span class="keyword">false</span>; };
+<a name="l00007"></a>00007 echo Dwoo_Plugin_include($this, <span class="stringliteral">&quot;core/view/pageheader.tmpl&quot;</span>, null, null, null, <span class="stringliteral">&apos;_root&apos;</span>, null);?&gt;
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 &lt;body <span class="keywordtype">id</span>=<span class="stringliteral">&quot;todoyu-&lt;?php echo $this-&gt;scope[&quot;</span>bodyID<span class="stringliteral">&quot;];?&gt;&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;todoyu-&lt;?php echo $this-&gt;scope[&quot;</span>bodyID<span class="stringliteral">&quot;];?&gt;&quot;</span> &lt;?php 
+<a name="l00011"></a><a class="code" href="ext_8tmpl_8d16_8php.html#a7a388efbb2a621ef703bbbf0d6191867">00011</a> <a class="code" href="ext_8tmpl_8d16_8php.html#a7a388efbb2a621ef703bbbf0d6191867">$_fh6_data</a> = (isset($this-&gt;scope[<span class="stringliteral">&quot;bodyAttributes&quot;</span>]) ? $this-&gt;scope[<span class="stringliteral">&quot;bodyAttributes&quot;</span>] : null);
+<a name="l00012"></a>00012 <span class="keywordflow">if</span> ($this-&gt;isArray(<a class="code" href="ext_8tmpl_8d16_8php.html#a7a388efbb2a621ef703bbbf0d6191867">$_fh6_data</a>) === <span class="keyword">true</span>)
+<a name="l00013"></a>00013 {
+<a name="l00014"></a>00014     <span class="keywordflow">foreach</span> (<a class="code" href="ext_8tmpl_8d16_8php.html#a7a388efbb2a621ef703bbbf0d6191867">$_fh6_data</a> as $this-&gt;scope[<span class="stringliteral">&apos;attribut&apos;</span>])
+<a name="l00015"></a>00015     {
+<a name="l00016"></a>00016 <span class="comment">/* -- foreach start output */</span>
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018 echo $this-&gt;scope[<span class="stringliteral">&quot;attribute&quot;</span>][<span class="stringliteral">&quot;name&quot;</span>];?&gt;=<span class="stringliteral">&quot;&lt;?php echo $this-&gt;scope[&quot;</span>attribute<span class="stringliteral">&quot;][&quot;</span>value<span class="stringliteral">&quot;];?&gt;&quot;</span> &lt;?php 
+<a name="l00019"></a>00019 <span class="comment">/* -- foreach end output */</span>
+<a name="l00020"></a>00020     }
+<a name="l00021"></a>00021 }?&gt;&gt;
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 &lt;?php 
+<a name="l00024"></a><a class="code" href="ext_8tmpl_8d16_8php.html#ac8aa0e616fd04ce3c97642723e3cabc0">00024</a> <a class="code" href="ext_8tmpl_8d16_8php.html#ac8aa0e616fd04ce3c97642723e3cabc0">$_fh7_data</a> = (isset($this-&gt;scope[<span class="stringliteral">&quot;bodyElements&quot;</span>]) ? $this-&gt;scope[<span class="stringliteral">&quot;bodyElements&quot;</span>] : null);
+<a name="l00025"></a>00025 <span class="keywordflow">if</span> ($this-&gt;isArray(<a class="code" href="ext_8tmpl_8d16_8php.html#ac8aa0e616fd04ce3c97642723e3cabc0">$_fh7_data</a>) === <span class="keyword">true</span>)
+<a name="l00026"></a>00026 {
+<a name="l00027"></a>00027     <span class="keywordflow">foreach</span> (<a class="code" href="ext_8tmpl_8d16_8php.html#ac8aa0e616fd04ce3c97642723e3cabc0">$_fh7_data</a> as $this-&gt;scope[<span class="stringliteral">&apos;bodyElement&apos;</span>])
+<a name="l00028"></a>00028     {
+<a name="l00029"></a>00029 <span class="comment">/* -- foreach start output */</span>
+<a name="l00030"></a>00030 ?&gt;
+<a name="l00031"></a>00031 &lt;?php echo $this-&gt;scope[<span class="stringliteral">&quot;bodyElement&quot;</span>];?&gt;
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 &lt;?php 
+<a name="l00034"></a>00034 <span class="comment">/* -- foreach end output */</span>
+<a name="l00035"></a>00035     }
+<a name="l00036"></a>00036 }?&gt;
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;header&quot;</span>&gt;
+<a name="l00040"></a>00040     &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;inner bclFF&quot;</span>&gt;
+<a name="l00041"></a>00041         &lt;?php echo Dwoo_Plugin_include($this, <span class="stringliteral">&quot;core/view/toppanel.tmpl&quot;</span>, null, null, null, <span class="stringliteral">&apos;_root&apos;</span>, null);?&gt;
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         &lt;?php echo $this-&gt;scope[<span class="stringliteral">&quot;navigation&quot;</span>];?&gt;
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045     &lt;/div&gt;
+<a name="l00046"></a>00046 &lt;/div&gt;
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;notifications&quot;</span>&gt;
+<a name="l00049"></a>00049     &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;notes&quot;</span> <span class="keywordtype">id</span>=<span class="stringliteral">&quot;notes&quot;</span>&gt;&lt;/div&gt;
+<a name="l00050"></a>00050 &lt;/div&gt;
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;box&quot;</span>&gt;
+<a name="l00053"></a>00053     &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;contentBox&quot;</span>&gt;
+<a name="l00054"></a>00054         &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;main&quot;</span>&gt;
+<a name="l00055"></a>00055             &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;panel&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;panel&quot;</span>&gt;
+<a name="l00056"></a>00056                 &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;panelHeader&quot;</span>&gt;&lt;!-- panel header --&gt;&lt;/div&gt;
+<a name="l00057"></a>00057                 &lt;?php echo $this-&gt;scope[<span class="stringliteral">&quot;panelWidgets&quot;</span>];?&gt;
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059                 &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;panelFooter&quot;</span>&gt;&lt;!-- panel footer --&gt;&lt;/div&gt;
+<a name="l00060"></a>00060             &lt;/div&gt;
+<a name="l00061"></a>00061             &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;right&quot;</span> <span class="keyword">class</span>=<span class="stringliteral">&quot;content bclFF&quot;</span>&gt;
+<a name="l00062"></a>00062                 &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;lt&quot;</span>&gt;&lt;!-- left / top --&gt;&lt;/span&gt;
+<a name="l00063"></a>00063                 &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;rt&quot;</span>&gt;&lt;!-- right / top --&gt;&lt;/span&gt;
+<a name="l00064"></a>00064                 &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;lb&quot;</span>&gt;&lt;!-- left / bottom --&gt;&lt;/span&gt;
+<a name="l00065"></a>00065                 &lt;span <span class="keyword">class</span>=<span class="stringliteral">&quot;rb&quot;</span>&gt;&lt;!-- right / bottom --&gt;&lt;/span&gt;
+<a name="l00066"></a>00066                 &lt;div <span class="keywordtype">id</span>=<span class="stringliteral">&quot;content&quot;</span>&gt;
+<a name="l00067"></a>00067                         &lt;?php echo $this-&gt;scope[<span class="stringliteral">&quot;content&quot;</span>];?&gt;
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069                 &lt;/div&gt;&lt;!-- /inner --&gt;
+<a name="l00070"></a>00070             &lt;/div&gt;
+<a name="l00071"></a>00071             &lt;div <span class="keyword">class</span>=<span class="stringliteral">&quot;clear&quot;</span>&gt;&lt;!-- --&gt;&lt;/div&gt;
+<a name="l00072"></a>00072         &lt;/div&gt;
+<a name="l00073"></a>00073     &lt;/div&gt;
+<a name="l00074"></a>00074 &lt;/div&gt;
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 &lt;?php echo Dwoo_Plugin_include($this, <span class="stringliteral">&quot;core/view/footer.tmpl&quot;</span>, null, null, null, <span class="stringliteral">&apos;_root&apos;</span>, null);?&gt;
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 &lt;ul <span class="keywordtype">id</span>=<span class="stringliteral">&quot;contextmenu&quot;</span>&gt;&lt;/ul&gt;
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 &lt;?php <span class="keywordflow">if</span> ((isset($this-&gt;scope[<span class="stringliteral">&quot;jsInlines&quot;</span>]) ? $this-&gt;scope[<span class="stringliteral">&quot;jsInlines&quot;</span>] : null)) {
+<a name="l00082"></a>00082 ?&gt;
+<a name="l00083"></a>00083 &lt;script type=<span class="stringliteral">&quot;text/javascript&quot;</span>&gt;
+<a name="l00084"></a>00084 <span class="comment">/*&lt;![CDATA[*/</span>
+<a name="l00085"></a>00085 &lt;?php 
+<a name="l00086"></a>00086 $_fh8_data = (isset($this-&gt;scope[<span class="stringliteral">&quot;jsInlines&quot;</span>]) ? $this-&gt;scope[<span class="stringliteral">&quot;jsInlines&quot;</span>] : null);
+<a name="l00087"></a>00087 <span class="keywordflow">if</span> ($this-&gt;isArray($_fh8_data) === <span class="keyword">true</span>)
+<a name="l00088"></a>00088 {
+<a name="l00089"></a>00089     <span class="keywordflow">foreach</span> ($_fh8_data as $this-&gt;scope[<span class="stringliteral">&apos;jsInline&apos;</span>])
+<a name="l00090"></a>00090     {
+<a name="l00091"></a>00091 <span class="comment">/* -- foreach start output */</span>
+<a name="l00092"></a>00092 ?&gt;
+<a name="l00093"></a>00093 &lt;?php echo $this-&gt;scope[<span class="stringliteral">&quot;jsInline&quot;</span>];?&gt;
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 &lt;?php 
+<a name="l00096"></a>00096 <span class="comment">/* -- foreach end output */</span>
+<a name="l00097"></a>00097     }
+<a name="l00098"></a>00098 }?&gt;
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="comment">/*]]&gt;*/</span>
+<a name="l00101"></a>00101 &lt;/script&gt;
+<a name="l00102"></a>00102 &lt;?php 
+<a name="l00103"></a>00103 }?&gt;
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 &lt;/body&gt;
+<a name="l00107"></a>00107 &lt;/html&gt;&lt;?php  <span class="comment">/* end template body */</span>
+<a name="l00108"></a>00108 <span class="keywordflow">return</span> $this-&gt;buffer . ob_get_clean();
+<a name="l00109"></a>00109 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:30 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

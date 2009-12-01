@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/portal/assets/js/Ext.js Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/portal/assets/js/Ext.js</h1><a href="portal_2assets_2js_2_ext_8js.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***************************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">*  Copyright notice</span>
+<a name="l00003"></a>00003 <span class="comment">*</span>
+<a name="l00004"></a>00004 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00005"></a>00005 <span class="comment">*  All rights reserved</span>
+<a name="l00006"></a>00006 <span class="comment">*</span>
+<a name="l00007"></a>00007 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00008"></a>00008 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00009"></a>00009 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00010"></a>00010 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00011"></a>00011 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00012"></a>00012 <span class="comment">*</span>
+<a name="l00013"></a>00013 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00014"></a>00014 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00015"></a>00015 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00016"></a>00016 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00017"></a>00017 <span class="comment">*</span>
+<a name="l00018"></a>00018 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00019"></a>00019 <span class="comment">***************************************************************/</span>
+<a name="l00020"></a>00020 
+<a name="l00025"></a><a class="code" href="portal_2assets_2js_2_ext_8js.html#ac14d6b72af41a1e21b8e838381b50de4">00025</a> <a class="code" href="class_todoyu.html">Todoyu</a>.Ext.portal = {
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028     <a class="code" href="_panel_widget_8js.html#aaf922d81d18165e1efe3dbc5a8f0da20">PanelWidget</a>: {},
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030     Headlet: {},
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 
+<a name="l00041"></a>00041     showTask: function(idTask, idProject) {
+<a name="l00042"></a>00042         var task    = <span class="stringliteral">&apos;task-&apos;</span> + idTask;
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044         <span class="keywordflow">if</span>( <a class="code" href="class_todoyu.html">Todoyu</a>.Ui.isVisible(task) ) {
+<a name="l00045"></a>00045             $(task).scrollToElement();
+<a name="l00046"></a>00046             <a class="code" href="class_todoyu.html">Todoyu</a>.Ui.twinkle(task);
+<a name="l00047"></a>00047         } <span class="keywordflow">else</span> {
+<a name="l00048"></a>00048             <a class="code" href="class_todoyu.html">Todoyu</a>.Ext.project.goToTaskInProject(idTask, idProject);
+<a name="l00049"></a>00049         }
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051         <span class="comment">/*</span>
+<a name="l00052"></a>00052 <span class="comment"></span>
+<a name="l00053"></a>00053 <span class="comment"></span>
+<a name="l00054"></a>00054 <span class="comment">            // Task already within current view (e.g &apos;portal&apos;)</span>
+<a name="l00055"></a>00055 <span class="comment">        if( Todoyu.exists(&apos;task-&apos; + idTask) ) {</span>
+<a name="l00056"></a>00056 <span class="comment"></span>
+<a name="l00057"></a>00057 <span class="comment">                // Scroll to task, open task container</span>
+<a name="l00058"></a>00058 <span class="comment">            this.expandSubtaskContainers( idTask );</span>
+<a name="l00059"></a>00059 <span class="comment">//          location.hash = &apos;task-&apos; + idTask;</span>
+<a name="l00060"></a>00060 <span class="comment">            Todoyu.Ui.scrollToElement( $(&apos;task-3524&apos;) );</span>
+<a name="l00061"></a>00061 <span class="comment">            Todoyu.Ui.twinkle( $(&apos;task-3524&apos;) );</span>
+<a name="l00062"></a>00062 <span class="comment"></span>
+<a name="l00063"></a>00063 <span class="comment">        } else {</span>
+<a name="l00064"></a>00064 <span class="comment">                // task was not in view, jump to &apos;project&apos; view and show the task</span>
+<a name="l00065"></a>00065 <span class="comment">            Todoyu.Ext.project.goToTaskInProject(idTask, idProject);</span>
+<a name="l00066"></a>00066 <span class="comment">        }</span>
+<a name="l00067"></a>00067 <span class="comment">        */</span>
+<a name="l00068"></a>00068     },
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 
+<a name="l00077"></a>00077     expandSubtaskContainers: function(idTask) {
+<a name="l00078"></a>00078         var task        = $(<span class="stringliteral">&apos;task-&apos;</span> + idTask);
+<a name="l00079"></a>00079         var container   = task.up(<span class="stringliteral">&apos;.subtasks&apos;</span>);
+<a name="l00080"></a>00080         var idParts, idCTask;
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         <span class="keywordflow">while</span>( container ) {
+<a name="l00083"></a>00083             idParts = container.id.split(<span class="charliteral">&apos;-&apos;</span>);
+<a name="l00084"></a>00084             idCTask = idParts[1];
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086             <a class="code" href="class_todoyu.html">Todoyu</a>.Ext.project.TaskTree.openSubtasks(idCTask);
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088             container = $(<span class="stringliteral">&apos;task-&apos;</span> + idCTask).up(<span class="stringliteral">&apos;.subtasks&apos;</span>);
+<a name="l00089"></a>00089         }
+<a name="l00090"></a>00090     },
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 
+<a name="l00101"></a>00101     savePref: function(action, value, idItem, onComplete) {
+<a name="l00102"></a>00102         <a class="code" href="class_todoyu.html">Todoyu</a>.Pref.save(<span class="stringliteral">&apos;portal&apos;</span>, action, value, idItem, onComplete);
+<a name="l00103"></a>00103     }
+<a name="l00104"></a>00104 };
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:32 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

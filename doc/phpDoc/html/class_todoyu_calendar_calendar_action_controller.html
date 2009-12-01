@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuCalendarCalendarActionController Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuCalendarCalendarActionController Klassenreferenz</h1><!-- doxytag: class="TodoyuCalendarCalendarActionController" --><!-- doxytag: inherits="TodoyuActionController" --><div class="dynheader">
+Klassendiagramm für TodoyuCalendarCalendarActionController:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_calendar_calendar_action_controller.gif" usemap="#TodoyuCalendarCalendarActionController_map" alt=""/>
+  <map id="TodoyuCalendarCalendarActionController_map" name="TodoyuCalendarCalendarActionController_map">
+<area href="class_todoyu_action_controller.html" alt="TodoyuActionController" shape="rect" coords="0,0,250,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_calendar_calendar_action_controller.html#aba97155fb83a1b49874f6e907e749576">updateAction</a> (array $params)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_calendar_calendar_action_controller_8class_8php_source.html#l00028">28</a> der Datei <a class="el" href="_todoyu_calendar_calendar_action_controller_8class_8php_source.html">TodoyuCalendarCalendarActionController.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="aba97155fb83a1b49874f6e907e749576"></a><!-- doxytag: member="TodoyuCalendarCalendarActionController::updateAction" ref="aba97155fb83a1b49874f6e907e749576" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">updateAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Calendar update action method: Saves date and active tab and rerenders the calendar</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$params </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_calendar_calendar_action_controller_8class_8php_source.html#l00036">36</a> der Datei <a class="el" href="_todoyu_calendar_calendar_action_controller_8class_8php_source.html">TodoyuCalendarCalendarActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00036"></a>00036                                                 {
+<a name="l00037"></a>00037         $time   = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;time&apos;</span>]);
+<a name="l00038"></a>00038         $tab    = <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;tab&apos;</span>];
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040         <a class="code" href="class_todoyu_panel_widget_calendar.html#a1802a717f3848ea96428462fea6b45dd">TodoyuPanelWidgetCalendar::saveDate</a>($time);
+<a name="l00041"></a>00041         <a class="code" href="class_todoyu_calendar_preferences.html#a806a95d2aa10cd95df8de3e51fb27024">TodoyuCalendarPreferences::saveActiveTab</a>($tab);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         $calendar = <a class="code" href="class_todoyu_calendar_renderer.html#a058f73a37dd15c63c61e055f9846a7c3">TodoyuCalendarRenderer::renderCalendar</a>($time, $tab);
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045         <span class="keywordflow">return</span> $calendar;
+<a name="l00046"></a>00046     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/calendar/controller/<a class="el" href="_todoyu_calendar_calendar_action_controller_8class_8php_source.html">TodoyuCalendarCalendarActionController.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:43 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

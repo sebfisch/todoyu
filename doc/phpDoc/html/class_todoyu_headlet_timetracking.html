@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuHeadletTimetracking Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuHeadletTimetracking Klassenreferenz</h1><!-- doxytag: class="TodoyuHeadletTimetracking" --><!-- doxytag: inherits="TodoyuHeadlet" --><div class="dynheader">
+Klassendiagramm für TodoyuHeadletTimetracking:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_headlet_timetracking.gif" usemap="#TodoyuHeadletTimetracking_map" alt=""/>
+  <map id="TodoyuHeadletTimetracking_map" name="TodoyuHeadletTimetracking_map">
+<area href="class_todoyu_headlet.html" alt="TodoyuHeadlet" shape="rect" coords="0,56,168,80"/>
+<area href="interface_todoyu_headlet_interface.html" alt="TodoyuHeadletInterface" shape="rect" coords="0,0,168,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_headlet_timetracking.html#afde88292c44dc59faf017738dae6dffb">render</a> ()</td></tr>
+<tr><td colspan="2"><h2>Geschützte Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_headlet_timetracking.html#a4be4055f3361d4800e16bc2e2e38cda6">init</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_headlet_timetracking_8class_8php_source.html#l00029">29</a> der Datei <a class="el" href="_todoyu_headlet_timetracking_8class_8php_source.html">TodoyuHeadletTimetracking.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a4be4055f3361d4800e16bc2e2e38cda6"></a><!-- doxytag: member="TodoyuHeadletTimetracking::init" ref="a4be4055f3361d4800e16bc2e2e38cda6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">init </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Initialize headlet </p>
+
+<p>Erneute Implementation von <a class="el" href="class_todoyu_headlet.html#a4be4055f3361d4800e16bc2e2e38cda6">TodoyuHeadlet</a>.</p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_headlet_timetracking_8class_8php_source.html#l00035">35</a> der Datei <a class="el" href="_todoyu_headlet_timetracking_8class_8php_source.html">TodoyuHeadletTimetracking.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00035"></a>00035                               {
+<a name="l00036"></a>00036         $this-&gt;<a class="code" href="class_todoyu_headlet.html#a73aeb9f2e3ab69962bbd64ea9ee2c840">setTemplate</a>(<span class="stringliteral">&apos;ext/timetracking/view/headlet-timetracking.tmpl&apos;</span>);
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038         <a class="code" href="class_todoyu_page.html#a60f870fc7513a20d414915f771b98b5c">TodoyuPage::addExtAssets</a>(<span class="stringliteral">&apos;timetracking&apos;</span>, <span class="stringliteral">&apos;headlet-timetracking&apos;</span>);
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040         <a class="code" href="class_todoyu_page.html#a999590070b3ebce0ef29993c33aeee60">TodoyuPage::addJsOnloadedFunction</a>(<span class="stringliteral">&apos;Todoyu.Ext.timetracking.Headlet.Timetracking.init.bind(Todoyu.Ext.timetracking.Headlet.Timetracking)&apos;</span>);
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042         $this-&gt;setupData();
+<a name="l00043"></a>00043     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="afde88292c44dc59faf017738dae6dffb"></a><!-- doxytag: member="TodoyuHeadletTimetracking::render" ref="afde88292c44dc59faf017738dae6dffb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">render </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render headlet</p>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Erneute Implementation von <a class="el" href="class_todoyu_headlet.html#afde88292c44dc59faf017738dae6dffb">TodoyuHeadlet</a>.</p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_headlet_timetracking_8class_8php_source.html#l00090">90</a> der Datei <a class="el" href="_todoyu_headlet_timetracking_8class_8php_source.html">TodoyuHeadletTimetracking.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00090"></a>00090                              {
+<a name="l00091"></a>00091         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_headlet_timetracking.html#afde88292c44dc59faf017738dae6dffb">parent::render</a>();
+<a name="l00092"></a>00092     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/timetracking/model/<a class="el" href="_todoyu_headlet_timetracking_8class_8php_source.html">TodoyuHeadletTimetracking.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:46 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

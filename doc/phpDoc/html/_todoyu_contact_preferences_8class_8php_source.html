@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/contact/model/TodoyuContactPreferences.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/contact/model/TodoyuContactPreferences.class.php</h1><a href="_todoyu_contact_preferences_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00028"></a><a class="code" href="class_todoyu_contact_preferences.html">00028</a> <span class="keyword">class </span><a class="code" href="class_todoyu_contact_preferences.html">TodoyuContactPreferences</a> {
+<a name="l00029"></a>00029 
+<a name="l00030"></a><a class="code" href="class_todoyu_contact_preferences.html#a6b10e674be7f9a816bfa59f227e732f9">00030</a>     <span class="keyword">static</span> <a class="code" href="class_todoyu_contact_preferences.html#a6b10e674be7f9a816bfa59f227e732f9">$contactType</a> = <span class="stringliteral">&apos;&apos;</span>;
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 
+<a name="l00043"></a><a class="code" href="class_todoyu_contact_preferences.html#a0d81a0421646092122095f0cd97eb94c">00043</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_contact_preferences.html#a0d81a0421646092122095f0cd97eb94c">savePref</a>($preference, $value, $idItem = 0, $unique = <span class="keyword">false</span>, $idArea = 0, $idUser = 0) {
+<a name="l00044"></a>00044         <a class="code" href="class_todoyu_preference_manager.html#ac20792dd6405fe4397ec7feff5bd51bb">TodoyuPreferenceManager::savePreference</a>(<a class="code" href="contact_2ext_8php.html#aa9edea6a3a162fd6c29e8279c2a37efd">EXTID_CONTACT</a>, $preference, $value, $idItem, $unique, $idArea, $idUser);
+<a name="l00045"></a>00045     }
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 
+<a name="l00057"></a><a class="code" href="class_todoyu_contact_preferences.html#ae674da8d56bec828af76bceff12fee77">00057</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_contact_preferences.html#ae674da8d56bec828af76bceff12fee77">getPref</a>($preference, $idItem = 0, $idArea = 0, $unserialize = <span class="keyword">false</span>, $idUser = 0) {
+<a name="l00058"></a>00058         $idItem = intval($idItem);
+<a name="l00059"></a>00059         $idUser = intval($idUser);
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_preference_manager.html#a110b9e8a10b1327abf520f455c7e498d">TodoyuPreferenceManager::getPreference</a>(<a class="code" href="contact_2ext_8php.html#aa9edea6a3a162fd6c29e8279c2a37efd">EXTID_CONTACT</a>, $preference, $idItem, $idArea, $unserialize, $idUser);
+<a name="l00062"></a>00062     }
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 
+<a name="l00075"></a><a class="code" href="class_todoyu_contact_preferences.html#a61b10cdd88dcb2fe7f817d1c526638ba">00075</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_contact_preferences.html#a61b10cdd88dcb2fe7f817d1c526638ba">getPrefs</a>($preference, $idItem = 0, $idArea = 0, $idUser = 0) {
+<a name="l00076"></a>00076         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_preference_manager.html#aa044ae92f5a90a41da585089230d8fb8">TodoyuPreferenceManager::getPreferences</a>(<a class="code" href="contact_2ext_8php.html#aa9edea6a3a162fd6c29e8279c2a37efd">EXTID_CONTACT</a>, $preference, $idItem, $idArea, $idUser);
+<a name="l00077"></a>00077     }
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 
+<a name="l00090"></a><a class="code" href="class_todoyu_contact_preferences.html#a67723b5304ed996d4dd3476b33f72192">00090</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_contact_preferences.html#a67723b5304ed996d4dd3476b33f72192">deletePref</a>($preference, $value = null, $idItem = 0, $idArea = 0, $idUser = 0) {
+<a name="l00091"></a>00091         <a class="code" href="class_todoyu_preference_manager.html#aa526b406590f08076b1bae7e3d669b0d">TodoyuPreferenceManager::deletePreference</a>(<a class="code" href="contact_2ext_8php.html#aa9edea6a3a162fd6c29e8279c2a37efd">EXTID_CONTACT</a>, $preference, $value, $idItem, $idArea, $idUser);
+<a name="l00092"></a>00092     }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 
+<a name="l00101"></a><a class="code" href="class_todoyu_contact_preferences.html#aac3c34795e443b3f91d47b83a284c887">00101</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_contact_preferences.html#aac3c34795e443b3f91d47b83a284c887">getActiveTab</a>() {
+<a name="l00102"></a>00102         $tab    = <a class="code" href="class_todoyu_contact_preferences.html#ae674da8d56bec828af76bceff12fee77">self::getPref</a>(<span class="stringliteral">&apos;tab&apos;</span>);
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104         <span class="keywordflow">if</span>( $tab === <span class="keyword">false</span> ) {
+<a name="l00105"></a>00105             $tab = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;contact&apos;</span>][<span class="stringliteral">&apos;defaultTypeTab&apos;</span>];
+<a name="l00106"></a>00106             <a class="code" href="class_todoyu_contact_preferences.html#a27e68fe5979068346a8dbe93d42c6b0d">self::saveActiveTab</a>($tab);
+<a name="l00107"></a>00107         }
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109         <span class="keywordflow">return</span> $tab;
+<a name="l00110"></a>00110     }
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 
+<a name="l00119"></a><a class="code" href="class_todoyu_contact_preferences.html#a27e68fe5979068346a8dbe93d42c6b0d">00119</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_contact_preferences.html#a27e68fe5979068346a8dbe93d42c6b0d">saveActiveTab</a>($tab) {
+<a name="l00120"></a>00120         <a class="code" href="class_todoyu_contact_preferences.html#a0d81a0421646092122095f0cd97eb94c">self::savePref</a>(<span class="stringliteral">&apos;tab&apos;</span>, $tab, 0, <span class="keyword">true</span>);
+<a name="l00121"></a>00121     }
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 
+<a name="l00132"></a><a class="code" href="class_todoyu_contact_preferences.html#a5c7800cb9248e1ca980048f835e73ff5">00132</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_contact_preferences.html#a5c7800cb9248e1ca980048f835e73ff5">saveEditId</a>($idRecord)    {
+<a name="l00133"></a>00133         $idRecord   = intval($idRecord);
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135         <a class="code" href="class_todoyu_contact_preferences.html#a0d81a0421646092122095f0cd97eb94c">self::savePref</a>(<span class="stringliteral">&apos;last_edit_id&apos;</span>, $idRecord, 0, <span class="keyword">true</span>);
+<a name="l00136"></a>00136     }
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141 
+<a name="l00147"></a><a class="code" href="class_todoyu_contact_preferences.html#a3857e00e2e0195a41852888e2a093484">00147</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_contact_preferences.html#a3857e00e2e0195a41852888e2a093484">saveShowAll</a>()    {
+<a name="l00148"></a>00148         <span class="keywordflow">if</span>( self::getShowAll() )    {
+<a name="l00149"></a>00149             <a class="code" href="class_todoyu_contact_preferences.html#a98c94c2f628469bd13c2cf5266d8ecf6">self::removeShowAll</a>();
+<a name="l00150"></a>00150         } <span class="keywordflow">else</span> {
+<a name="l00151"></a>00151             $showAllArray = <a class="code" href="class_todoyu_contact_preferences.html#a6aed5b7c3d5f36996ee806e730bf0b6c">self::getShowAllArray</a>();
+<a name="l00152"></a>00152             array_push($showAllArray, self::getActiveTab());
+<a name="l00153"></a>00153         }
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155         $value  = serialize($showAllArray);
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157         <a class="code" href="class_todoyu_contact_preferences.html#a0d81a0421646092122095f0cd97eb94c">self::savePref</a>(<span class="stringliteral">&apos;showAll&apos;</span>, $value, 0, <span class="keyword">true</span>);
+<a name="l00158"></a>00158     }
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161 
+<a name="l00167"></a><a class="code" href="class_todoyu_contact_preferences.html#a2899d1557e3809e21a37f7002fe27664">00167</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_contact_preferences.html#a2899d1557e3809e21a37f7002fe27664">getShowAll</a>() {
+<a name="l00168"></a>00168         $showAllArray = <a class="code" href="class_todoyu_contact_preferences.html#a6aed5b7c3d5f36996ee806e730bf0b6c">self::getShowAllArray</a>();
+<a name="l00169"></a>00169         <span class="keywordflow">return</span>  $showAllArray ? in_array(self::getActiveTab(), $showAllArray) : <span class="keyword">false</span>;
+<a name="l00170"></a>00170     }
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173 
+<a name="l00177"></a><a class="code" href="class_todoyu_contact_preferences.html#a98c94c2f628469bd13c2cf5266d8ecf6">00177</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_contact_preferences.html#a98c94c2f628469bd13c2cf5266d8ecf6">removeShowAll</a>()  {
+<a name="l00178"></a>00178         <a class="code" href="class_todoyu_contact_preferences.html#a6b10e674be7f9a816bfa59f227e732f9">$contactType</a> = <a class="code" href="class_todoyu_contact_preferences.html#aac3c34795e443b3f91d47b83a284c887">self::getActiveTab</a>();
+<a name="l00179"></a>00179         $showAllArray = <a class="code" href="class_todoyu_contact_preferences.html#a6aed5b7c3d5f36996ee806e730bf0b6c">self::getShowAllArray</a>();
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181         $showAllArray = <a class="code" href="class_todoyu_array.html#a98fe2d400c845ecc34084dfd6c0f59e4">TodoyuArray::unsetEntryByValue</a>(<a class="code" href="class_todoyu_contact_preferences.html#a6b10e674be7f9a816bfa59f227e732f9">$contactType</a>, $showAllArray);
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183         $value  = serialize($showAllArray);
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185         <a class="code" href="class_todoyu_contact_preferences.html#a0d81a0421646092122095f0cd97eb94c">self::savePref</a>(<span class="stringliteral">&apos;showAll&apos;</span>, $value, 0, <span class="keyword">true</span>);
+<a name="l00186"></a>00186     }
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189 
+<a name="l00196"></a><a class="code" href="class_todoyu_contact_preferences.html#a6aed5b7c3d5f36996ee806e730bf0b6c">00196</a>     <span class="keyword">protected</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_contact_preferences.html#a6aed5b7c3d5f36996ee806e730bf0b6c">getShowAllArray</a>() {
+<a name="l00197"></a>00197         $showAllArray   = <a class="code" href="class_todoyu_contact_preferences.html#ae674da8d56bec828af76bceff12fee77">self::getPref</a>(<span class="stringliteral">&apos;showAll&apos;</span>, 0, 0, <span class="keyword">true</span>);
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199         <span class="keywordflow">return</span> $showAllArray ? $showAllArray : array();
+<a name="l00200"></a>00200     }
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202 }
+<a name="l00203"></a>00203 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:34 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

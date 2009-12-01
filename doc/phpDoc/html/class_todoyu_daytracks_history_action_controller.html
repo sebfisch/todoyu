@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuDaytracksHistoryActionController Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuDaytracksHistoryActionController Klassenreferenz</h1><!-- doxytag: class="TodoyuDaytracksHistoryActionController" --><!-- doxytag: inherits="TodoyuActionController" --><div class="dynheader">
+Klassendiagramm für TodoyuDaytracksHistoryActionController:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_daytracks_history_action_controller.gif" usemap="#TodoyuDaytracksHistoryActionController_map" alt=""/>
+  <map id="TodoyuDaytracksHistoryActionController_map" name="TodoyuDaytracksHistoryActionController_map">
+<area href="class_todoyu_action_controller.html" alt="TodoyuActionController" shape="rect" coords="0,0,243,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_daytracks_history_action_controller.html#a8ea4328a71a4b68e004982fcc266bb10">historyAction</a> (array $params)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_history_action_controller_8class_8php_source.html#l00028">28</a> der Datei <a class="el" href="_todoyu_daytracks_history_action_controller_8class_8php_source.html">TodoyuDaytracksHistoryActionController.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a8ea4328a71a4b68e004982fcc266bb10"></a><!-- doxytag: member="TodoyuDaytracksHistoryActionController::historyAction" ref="a8ea4328a71a4b68e004982fcc266bb10" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">historyAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Update tracks history popup</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$params </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_history_action_controller_8class_8php_source.html#l00036">36</a> der Datei <a class="el" href="_todoyu_daytracks_history_action_controller_8class_8php_source.html">TodoyuDaytracksHistoryActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00036"></a>00036                                                  {
+<a name="l00037"></a>00037         $year   = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;year&apos;</span>]);
+<a name="l00038"></a>00038         $month  = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;month&apos;</span>]);
+<a name="l00039"></a>00039         $details= intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;details&apos;</span>]) === 1;
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_daytracks_history_renderer.html#aed8e677a30123571b5c6dd3c2950c892">TodoyuDaytracksHistoryRenderer::renderHistory</a>($year, $month, $details);
+<a name="l00042"></a>00042     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/daytracks/controller/<a class="el" href="_todoyu_daytracks_history_action_controller_8class_8php_source.html">TodoyuDaytracksHistoryActionController.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:44 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

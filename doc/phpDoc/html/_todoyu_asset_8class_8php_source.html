@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/assets/model/TodoyuAsset.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/assets/model/TodoyuAsset.class.php</h1><a href="_todoyu_asset_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00029"></a><a class="code" href="class_todoyu_asset.html">00029</a> <span class="keyword">class </span><a class="code" href="class_todoyu_asset.html">TodoyuAsset</a> <span class="keyword">extends</span> <a class="code" href="class_todoyu_base_object.html">TodoyuBaseObject</a> {
+<a name="l00030"></a>00030 
+<a name="l00036"></a><a class="code" href="class_todoyu_asset.html#a22902fa97d1a3b9ba18f1db375892807">00036</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_asset.html#a22902fa97d1a3b9ba18f1db375892807">__construct</a>($idAsset) {
+<a name="l00037"></a>00037         <a class="code" href="class_todoyu_asset.html#a22902fa97d1a3b9ba18f1db375892807">parent::__construct</a>($idAsset, <span class="stringliteral">&apos;ext_assets_asset&apos;</span>);
+<a name="l00038"></a>00038     }
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 
+<a name="l00047"></a><a class="code" href="class_todoyu_asset.html#ae3a92cbe0d915d0fdacaeb317139b174">00047</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_asset.html#ae3a92cbe0d915d0fdacaeb317139b174">getParentType</a>() {
+<a name="l00048"></a>00048         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;parenttype&apos;</span>);
+<a name="l00049"></a>00049     }
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 
+<a name="l00058"></a><a class="code" href="class_todoyu_asset.html#aab3735dbb06a0da9d88841c26966b44a">00058</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_asset.html#aab3735dbb06a0da9d88841c26966b44a">getParentID</a>() {
+<a name="l00059"></a>00059         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;id_parent&apos;</span>);
+<a name="l00060"></a>00060     }
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 
+<a name="l00069"></a><a class="code" href="class_todoyu_asset.html#a0aa76e950df1e9828e758d74d2461d90">00069</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_asset.html#a0aa76e950df1e9828e758d74d2461d90">getUserID</a>() {
+<a name="l00070"></a>00070         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_asset.html#a0aa76e950df1e9828e758d74d2461d90">parent::getUserID</a>(<span class="stringliteral">&apos;create&apos;</span>);
+<a name="l00071"></a>00071     }
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074 
+<a name="l00080"></a><a class="code" href="class_todoyu_asset.html#ae81b7186fb97a7c6457edcc68c9aa2ef">00080</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_asset.html#ae81b7186fb97a7c6457edcc68c9aa2ef">getUser</a>() {
+<a name="l00081"></a>00081         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_asset.html#ae81b7186fb97a7c6457edcc68c9aa2ef">parent::getUser</a>(<span class="stringliteral">&apos;create&apos;</span>);
+<a name="l00082"></a>00082     }
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085 
+<a name="l00091"></a><a class="code" href="class_todoyu_asset.html#ad78a906cca4f29719a1ba44712fb0247">00091</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_asset.html#ad78a906cca4f29719a1ba44712fb0247">getFileStoragePath</a>() {
+<a name="l00092"></a>00092         $basePath   = <a class="code" href="class_todoyu_asset_manager.html#a00abafd2ddfb7b09140a6c80cf762c47">TodoyuAssetManager::getStorageBasePath</a>();
+<a name="l00093"></a>00093         $filePath   = $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;file_storage&apos;</span>);
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_file_manager.html#aa39c49d884a7e1f0b7fcd7fa7d5638a3">TodoyuFileManager::pathAbsolute</a>($basePath . DIRECTORY_SEPARATOR . $filePath);
+<a name="l00096"></a>00096     }
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 
+<a name="l00105"></a><a class="code" href="class_todoyu_asset.html#a036da79f1754a9c9a683f8b9eb61a2bb">00105</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_asset.html#a036da79f1754a9c9a683f8b9eb61a2bb">getFilesize</a>() {
+<a name="l00106"></a>00106         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;file_size&apos;</span>);
+<a name="l00107"></a>00107     }
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 
+<a name="l00116"></a><a class="code" href="class_todoyu_asset.html#ac06e9f7b10fca30eb41e41d4dc108b1c">00116</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_asset.html#ac06e9f7b10fca30eb41e41d4dc108b1c">getMimeType</a>() {
+<a name="l00117"></a>00117         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;file_type&apos;</span>) . <span class="charliteral">&apos;/&apos;</span> . $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;file_subtype&apos;</span>);
+<a name="l00118"></a>00118     }
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 
+<a name="l00127"></a><a class="code" href="class_todoyu_asset.html#a2982abe8d7b767602a1485dfb4cf653d">00127</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_asset.html#a2982abe8d7b767602a1485dfb4cf653d">getFilename</a>() {
+<a name="l00128"></a>00128         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;file_name&apos;</span>);
+<a name="l00129"></a>00129     }
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 }
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:33 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

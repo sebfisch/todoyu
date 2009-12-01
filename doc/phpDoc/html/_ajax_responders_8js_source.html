@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/assets/js/AjaxResponders.js Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/assets/js/AjaxResponders.js</h1><a href="_ajax_responders_8js.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***************************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">*  Copyright notice</span>
+<a name="l00003"></a>00003 <span class="comment">*</span>
+<a name="l00004"></a>00004 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00005"></a>00005 <span class="comment">*  All rights reserved</span>
+<a name="l00006"></a>00006 <span class="comment">*</span>
+<a name="l00007"></a>00007 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00008"></a>00008 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00009"></a>00009 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00010"></a>00010 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00011"></a>00011 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00012"></a>00012 <span class="comment">*</span>
+<a name="l00013"></a>00013 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00014"></a>00014 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00015"></a>00015 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00016"></a>00016 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00017"></a>00017 <span class="comment">*</span>
+<a name="l00018"></a>00018 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00019"></a>00019 <span class="comment">***************************************************************/</span>
+<a name="l00020"></a>00020 
+<a name="l00025"></a><a class="code" href="_ajax_responders_8js.html#ae1974ab60107f6efb075987dc116993d">00025</a> <a class="code" href="class_todoyu.html">Todoyu</a>.AjaxResponders = {
+<a name="l00026"></a>00026     
+<a name="l00031"></a>00031     <span class="keyword">register</span>: function() {
+<a name="l00032"></a>00032         Ajax.Responders.register({
+<a name="l00033"></a>00033             <span class="stringliteral">&apos;onCreate&apos;</span>: this.onCreate.bind(<span class="keyword">this</span>),
+<a name="l00034"></a>00034             <span class="stringliteral">&apos;onComplete&apos;</span>: this.onComplete.bind(<span class="keyword">this</span>)
+<a name="l00035"></a>00035         });
+<a name="l00036"></a>00036     },
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 
+<a name="l00046"></a>00046     onCreate: function(request) {
+<a name="l00047"></a>00047         <a class="code" href="class_todoyu.html">Todoyu</a>.Ui.ajaxLoader(<span class="keyword">true</span>);
+<a name="l00048"></a>00048         <a class="code" href="class_todoyu.html">Todoyu</a>.Ui.setLinkCursor(<span class="keyword">true</span>);
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050         var oldRespondToReadyState = request.respondToReadyState;
+<a name="l00051"></a>00051         request.respondToReadyState = function(readyState) {
+<a name="l00052"></a>00052             var state   = Ajax.Request.Events[readyState];
+<a name="l00053"></a>00053             var response= <span class="keyword">new</span> Ajax.Response(<span class="keyword">this</span>);
+<a name="l00054"></a>00054                     
+<a name="l00055"></a>00055                 <span class="comment">// Only process if request completed and has access error   </span>
+<a name="l00056"></a>00056             <span class="keywordflow">if</span>( state == <span class="stringliteral">&apos;Complete&apos;</span> &amp;&amp; response.hasNoAccess() ) {
+<a name="l00057"></a>00057                     <span class="comment">// Delete onComplete handler to prevent processing an empty respone         </span>
+<a name="l00058"></a>00058                 <span class="keyword">delete</span> response.request.options.onComplete;
+<a name="l00059"></a>00059                 var missingRight = response.getTodoyuHeader(<span class="stringliteral">&apos;noAccess-right&apos;</span>);
+<a name="l00060"></a>00060                 <a class="code" href="class_todoyu.html">Todoyu</a>.notifyError(<span class="stringliteral">&apos;[LLL:core.noAccess.errorMessage] (&apos;</span> + missingRight + <span class="charliteral">&apos;)&apos;</span>);
+<a name="l00061"></a>00061             }
+<a name="l00062"></a>00062             oldRespondToReadyState.call(response.request, readyState);
+<a name="l00063"></a>00063         };
+<a name="l00064"></a>00064     },
+<a name="l00065"></a>00065     
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 
+<a name="l00073"></a>00073     onComplete: function(response) {
+<a name="l00074"></a>00074         this.goToHash(response);
+<a name="l00075"></a>00075                 
+<a name="l00076"></a>00076         <span class="keywordflow">if</span>( Ajax.activeRequestCount &lt; 1 ) {
+<a name="l00077"></a>00077             <a class="code" href="class_todoyu.html">Todoyu</a>.Ui.ajaxLoader(<span class="keyword">false</span>);
+<a name="l00078"></a>00078             <a class="code" href="class_todoyu.html">Todoyu</a>.Ui.setLinkCursor(<span class="keyword">false</span>);
+<a name="l00079"></a>00079         }
+<a name="l00080"></a>00080     },
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 
+<a name="l00089"></a>00089     goToHash: function(response) {
+<a name="l00090"></a>00090         var hash = response.getHeader(<span class="stringliteral">&apos;Todoyu-Hash&apos;</span>); <span class="comment">// Do not use getTodoyuHeader(), it fails...</span>
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092         <span class="keywordflow">if</span>( hash !== null &amp;&amp; <a class="code" href="class_todoyu.html">Todoyu</a>.exists(hash) ) {
+<a name="l00093"></a>00093             $(hash).scrollToElement();
+<a name="l00094"></a>00094         }
+<a name="l00095"></a>00095     }
+<a name="l00096"></a>00096 };
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:30 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/assets/js/Notification.js Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/assets/js/Notification.js</h1><a href="_notification_8js.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***************************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">*  Copyright notice</span>
+<a name="l00003"></a>00003 <span class="comment">*</span>
+<a name="l00004"></a>00004 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00005"></a>00005 <span class="comment">*  All rights reserved</span>
+<a name="l00006"></a>00006 <span class="comment">*</span>
+<a name="l00007"></a>00007 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00008"></a>00008 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00009"></a>00009 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00010"></a>00010 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00011"></a>00011 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00012"></a>00012 <span class="comment">*</span>
+<a name="l00013"></a>00013 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00014"></a>00014 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00015"></a>00015 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00016"></a>00016 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00017"></a>00017 <span class="comment">*</span>
+<a name="l00018"></a>00018 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00019"></a>00019 <span class="comment">***************************************************************/</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="_notification_8js.html#a0c1f2d3aaa66f4811c7fffcacf192272">00021</a> <a class="code" href="class_todoyu.html">Todoyu</a>.Notification = {
+<a name="l00022"></a>00022     
+<a name="l00026"></a>00026     defaultCountdown: 3,
+<a name="l00027"></a>00027     
+<a name="l00031"></a>00031     <span class="keyword">template</span>: null,
+<a name="l00032"></a>00032     
+<a name="l00036"></a>00036     <span class="keywordtype">id</span>: 1,
+<a name="l00037"></a>00037     
+<a name="l00038"></a>00038     
+<a name="l00045"></a>00045     <a class="code" href="hooks_8js.html#a1cc40456175ac3df1bad6cf8615942bf">add</a>: function(type, message, countdown) {
+<a name="l00046"></a>00046         this.init();
+<a name="l00047"></a>00047         
+<a name="l00048"></a>00048         countdown   = Object.isUndefined(countdown) ? this.defaultCountdown : countdown;
+<a name="l00049"></a>00049         var <span class="keywordtype">id</span>      = this.<span class="keywordtype">id</span>++;
+<a name="l00050"></a>00050         
+<a name="l00051"></a>00051         var data    = {
+<a name="l00052"></a>00052             <span class="stringliteral">&apos;id&apos;</span>: id,
+<a name="l00053"></a>00053             <span class="stringliteral">&apos;type&apos;</span>: type,
+<a name="l00054"></a>00054             <span class="stringliteral">&apos;message&apos;</span>: message,
+<a name="l00055"></a>00055             <span class="stringliteral">&apos;countdown&apos;</span>: countdown == 0 ? <span class="stringliteral">&apos;&apos;</span> : countdown        
+<a name="l00056"></a>00056         };
+<a name="l00057"></a>00057         
+<a name="l00058"></a>00058         var note    = this.<span class="keyword">template</span>.evaluate(data);
+<a name="l00059"></a>00059         
+<a name="l00060"></a>00060         this.appendNote(<span class="keywordtype">id</span>, note);
+<a name="l00061"></a>00061         
+<a name="l00062"></a>00062             <span class="comment">// Only start countdown if not sticky</span>
+<a name="l00063"></a>00063         <span class="keywordflow">if</span>( countdown != 0 ) {
+<a name="l00064"></a>00064             this.countDown.bind(<span class="keyword">this</span>).delay(1, <span class="keywordtype">id</span>);
+<a name="l00065"></a>00065         }       
+<a name="l00066"></a>00066     },
+<a name="l00067"></a>00067     
+<a name="l00068"></a>00068     addInfo: function(message, countdown) {
+<a name="l00069"></a>00069         this.<a class="code" href="hooks_8js.html#a1cc40456175ac3df1bad6cf8615942bf">add</a>(<span class="stringliteral">&apos;info&apos;</span>, message, countdown);
+<a name="l00070"></a>00070     },
+<a name="l00071"></a>00071     
+<a name="l00072"></a>00072     addError: function(message, countdown) {
+<a name="l00073"></a>00073         this.<a class="code" href="hooks_8js.html#a1cc40456175ac3df1bad6cf8615942bf">add</a>(<span class="stringliteral">&apos;error&apos;</span>, message, countdown);
+<a name="l00074"></a>00074     },
+<a name="l00075"></a>00075     
+<a name="l00076"></a>00076     addSuccess: function(message, countdown) {
+<a name="l00077"></a>00077         this.<a class="code" href="hooks_8js.html#a1cc40456175ac3df1bad6cf8615942bf">add</a>(<span class="stringliteral">&apos;success&apos;</span>, message, countdown);
+<a name="l00078"></a>00078     },
+<a name="l00079"></a>00079     
+<a name="l00084"></a>00084     close: function(closeButton) {
+<a name="l00085"></a>00085         var idNote = $(closeButton).up(<span class="stringliteral">&apos;div.note&apos;</span>).id.split(<span class="charliteral">&apos;-&apos;</span>).last();
+<a name="l00086"></a>00086         
+<a name="l00087"></a>00087         this.closeNote(idNote);
+<a name="l00088"></a>00088     },
+<a name="l00089"></a>00089     
+<a name="l00090"></a>00090     
+<a name="l00091"></a>00091     
+<a name="l00096"></a>00096     closeNote: function(<span class="keywordtype">id</span>) {
+<a name="l00097"></a>00097         $(<span class="stringliteral">&apos;notification-note-&apos;</span> + id).fade({
+<a name="l00098"></a>00098             <span class="stringliteral">&apos;duration&apos;</span>: 0.7
+<a name="l00099"></a>00099         });
+<a name="l00100"></a>00100     },
+<a name="l00101"></a>00101     
+<a name="l00102"></a>00102     
+<a name="l00103"></a>00103     
+<a name="l00107"></a>00107     init: function() {
+<a name="l00108"></a>00108         <span class="keywordflow">if</span>( this.<span class="keyword">template</span> === null ) {
+<a name="l00109"></a>00109             <span class="comment">//this.template = new Template( &apos;&lt;div class=&quot;note #{type}&quot; id=&quot;notification-note-#{id}&quot;&gt;&lt;div class=&quot;icon&quot;&gt;&lt;/div&gt;&lt;div class=&quot;message&quot;&gt;#{message}&lt;/div&gt;&lt;div class=&quot;countdown&quot;&gt;#{countdown}&lt;/div&gt;&lt;div class=&quot;close&quot; onclick=&quot;Todoyu.Notification.close(this)&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;br clear=&quot;all&quot; /&gt;&apos;);</span>
+<a name="l00110"></a>00110             this.<span class="keyword">template</span> = <span class="keyword">new</span> <a class="code" href="_context_menu_template_8js.html#a78cac5e2074344e6db2a9d8549a994b7">Template</a>( <span class="stringliteral">&apos;&lt;div class=&quot;note #{type}&quot; id=&quot;notification-note-#{id}&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;icon&quot;&gt;&amp;nbsp;&lt;/td&gt;&lt;td class=&quot;message&quot;&gt;#{message}&lt;/td&gt;&lt;td class=&quot;countdown&quot; align=&quot;center&quot;&gt;#{countdown}&lt;/td&gt;&lt;td class=&quot;close&quot; onclick=&quot;Todoyu.Notification.close(this)&quot;&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&apos;</span>);
+<a name="l00111"></a>00111         }
+<a name="l00112"></a>00112     },
+<a name="l00113"></a>00113     
+<a name="l00114"></a>00114     
+<a name="l00115"></a>00115     
+<a name="l00121"></a>00121     appendNote: function(<span class="keywordtype">id</span>, code) {
+<a name="l00122"></a>00122         $(<span class="stringliteral">&apos;notes&apos;</span>).insert({<span class="stringliteral">&apos;top&apos;</span>:code});
+<a name="l00123"></a>00123     },
+<a name="l00124"></a>00124     
+<a name="l00125"></a>00125     
+<a name="l00126"></a>00126     
+<a name="l00131"></a>00131     countDown: function(<span class="keywordtype">id</span>) {       
+<a name="l00132"></a>00132         var countBox= $(<span class="stringliteral">&apos;notification-note-&apos;</span> + id).down(<span class="stringliteral">&apos;.countdown&apos;</span>);  
+<a name="l00133"></a>00133         var current = parseInt(countBox.innerHTML, 10);
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135         <span class="keywordflow">if</span>( current === 0 ) {
+<a name="l00136"></a>00136             this.closeNote(<span class="keywordtype">id</span>);
+<a name="l00137"></a>00137         } <span class="keywordflow">else</span> {
+<a name="l00138"></a>00138             countBox.update(current-1);
+<a name="l00139"></a>00139             this.countDown.bind(<span class="keyword">this</span>).delay(1, <span class="keywordtype">id</span>);
+<a name="l00140"></a>00140         }
+<a name="l00141"></a>00141     },
+<a name="l00142"></a>00142     
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144     
+<a name="l00145"></a>00145     
+<a name="l00146"></a>00146     
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148     idElement: <span class="stringliteral">&apos;notification&apos;</span>,
+<a name="l00149"></a>00149 
+<a name="l00156"></a>00156     notify: function(notificationHTML, elementToAddAfter) {
+<a name="l00157"></a>00157         var notification = <span class="stringliteral">&apos;notification&apos;</span>;
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159         <span class="keywordflow">if</span>( <a class="code" href="class_todoyu.html">Todoyu</a>.exists(<span class="keyword">this</span>.idElement) ) {
+<a name="l00160"></a>00160             $(this.idElement).<span class="keyword">remove</span>();
+<a name="l00161"></a>00161         }
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163         $(elementToAddAfter).insert({<span class="stringliteral">&apos;after&apos;</span>: notificationHTML});
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165         Effect.Appear(this.idElement);
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167         <span class="comment">//this.hideNotification.bind(this).delay(0.85);</span>
+<a name="l00168"></a>00168     },
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171 
+<a name="l00176"></a>00176     hideNotification: function() {
+<a name="l00177"></a>00177         Effect.Fade(this.idElement);
+<a name="l00178"></a>00178     }
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180 };
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:30 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

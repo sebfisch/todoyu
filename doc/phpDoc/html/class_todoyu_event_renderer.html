@@ -1,0 +1,582 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuEventRenderer Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuEventRenderer Klassenreferenz</h1><!-- doxytag: class="TodoyuEventRenderer" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_renderer.html#ad27140655f61e29c3728bb481658f4a7">renderPortalTabEventsList</a> (array $events, array $holidays, array $birthdays)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_renderer.html#ab52878e70504d7dabdca70e69826f8c4">renderCreateQuickEvent</a> ($time, $isDayEvent=false)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_renderer.html#a62f295a947c7dc09c59d8a3f44f48d92">prepareEventRenderData</a> ($calendarMode= 'month', array $data, array $selectedUserIDs=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_renderer.html#a5b6583e24f3665a5b7da93f60a8033fe">renderEvent</a> (array $event, $calendarMode= 'month', array $selectedUserIDs=array(), $selectedUserColors=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_renderer.html#aded9605cfc9a197c26df100331f69ae0">renderFulldayEvent</a> ($calendarMode= 'day', array $data=array(), array $selectedUserIDs)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_renderer.html#a9eadcc6cd3d5cd1128c0809536ee52d7">getTimeCoordinate</a> ($dateStart)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_renderer.html#abcbe74cffddec00c072b3560948032c1">getEventHeight</a> ($dateView, $dateStart, $dateEnd)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_renderer.html#a1f8cffbe7d88145a3eb75800e6c81697">renderEventViewTabs</a> ($idEvent)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_event_renderer.html#acf233c632f86e472129a783ec1a1871f">renderEventView</a> ($idEvent)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_renderer_8class_8php_source.html#l00029">29</a> der Datei <a class="el" href="_todoyu_event_renderer_8class_8php_source.html">TodoyuEventRenderer.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="abcbe74cffddec00c072b3560948032c1"></a><!-- doxytag: member="TodoyuEventRenderer::getEventHeight" ref="abcbe74cffddec00c072b3560948032c1" args="($dateView, $dateStart, $dateEnd)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getEventHeight </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>dateView</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>dateStart</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>dateEnd</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get height of an event entry</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>topCoordinate top coordinate (y) of the event entry </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$endtime Endtime of the event </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Integer Height of the event </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_renderer_8class_8php_source.html#l00237">237</a> der Datei <a class="el" href="_todoyu_event_renderer_8class_8php_source.html">TodoyuEventRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00237"></a>00237                                                                            {
+<a name="l00238"></a>00238         $dateView   = intval($dateView);
+<a name="l00239"></a>00239         $dateStart  = intval($dateStart);
+<a name="l00240"></a>00240         $dateEnd    = intval($dateEnd);
+<a name="l00241"></a>00241         $viewRange  = <a class="code" href="class_todoyu_time.html#a36e69cd8bdd6fa3fd46f483445730852">TodoyuTime::getDayRange</a>($dateView);
+<a name="l00242"></a>00242 
+<a name="l00243"></a>00243         $dateStart  = <a class="code" href="class_todoyu_div.html#a54662513802f01f2e5cfd7ee936f0bab">TodoyuDiv::intInRange</a>($dateStart, $viewRange[<span class="stringliteral">&apos;start&apos;</span>], $viewRange[<span class="stringliteral">&apos;end&apos;</span>]);
+<a name="l00244"></a>00244         $dateEnd    = <a class="code" href="class_todoyu_div.html#a54662513802f01f2e5cfd7ee936f0bab">TodoyuDiv::intInRange</a>($dateEnd, $viewRange[<span class="stringliteral">&apos;start&apos;</span>], $viewRange[<span class="stringliteral">&apos;end&apos;</span>]);
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246         $timeDiffHour   = ($dateEnd - $dateStart)/<a class="code" href="class_todoyu_time.html#a3bf6be29fcc9b44952d18887e8f21313">TodoyuTime::SECONDS_HOUR</a>;
+<a name="l00247"></a>00247 
+<a name="l00248"></a>00248         <span class="keywordflow">return</span> ceil($timeDiffHour * <a class="code" href="ext_2calendar_2config_2constants_8php.html#a44128fcdd1869112c34d628547ebfb0f">CALENDAR_HEIGHT_HOUR</a>);
+<a name="l00249"></a>00249     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a9eadcc6cd3d5cd1128c0809536ee52d7"></a><!-- doxytag: member="TodoyuEventRenderer::getTimeCoordinate" ref="a9eadcc6cd3d5cd1128c0809536ee52d7" args="($dateStart)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getTimeCoordinate </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>dateStart</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get height of starting hour</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$dateStart UNIX Timestamp of the starttime or endtime </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Integer Top-Y of starting hour </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_renderer_8class_8php_source.html#l00220">220</a> der Datei <a class="el" href="_todoyu_event_renderer_8class_8php_source.html">TodoyuEventRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00220"></a>00220                                                          {
+<a name="l00221"></a>00221         $dateStart      = intval($dateStart);
+<a name="l00222"></a>00222         $heightHour     = date(<span class="charliteral">&apos;G&apos;</span>, $dateStart) * <a class="code" href="ext_2calendar_2config_2constants_8php.html#a44128fcdd1869112c34d628547ebfb0f">CALENDAR_HEIGHT_HOUR</a>;
+<a name="l00223"></a>00223         $heightMinute   = intval(date(<span class="charliteral">&apos;i&apos;</span>, $dateStart )) * <a class="code" href="ext_2calendar_2config_2constants_8php.html#ac926e838c832dec9c98548479d9f11b9">CALENDAR_HEIGHT_MINUTE</a>;
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225         <span class="keywordflow">return</span> ceil($heightHour + $heightMinute);
+<a name="l00226"></a>00226     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a62f295a947c7dc09c59d8a3f44f48d92"></a><!-- doxytag: member="TodoyuEventRenderer::prepareEventRenderData" ref="a62f295a947c7dc09c59d8a3f44f48d92" args="($calendarMode= 'month', array $data, array $selectedUserIDs=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static prepareEventRenderData </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>calendarMode</em> = <code>'month'</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>selectedUserIDs</em> = <code>array()</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Prepare event rendering data array</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$calendarMode day / week / month </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$data event parameters </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$selectedUserIDs </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Array </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_renderer_8class_8php_source.html#l00107">107</a> der Datei <a class="el" href="_todoyu_event_renderer_8class_8php_source.html">TodoyuEventRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00107"></a>00107                                                                                                                           {
+<a name="l00108"></a>00108         $selectedUserIDs    = <a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>($selectedUserIDs);
+<a name="l00109"></a>00109         $assignedUsers      = <a class="code" href="class_todoyu_event_manager.html#a615da0a7fd33b1348dfbb779b7b6bfc9">TodoyuEventManager::getAssignedUsersOfEvent</a>( <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;id&apos;</span>] , <span class="keyword">true</span> );
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111         $idCurrentUser      = <a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>();
+<a name="l00112"></a>00112 <span class="comment">//      $groupsCurrentUser  = TodoyuAuth::getGroupIDs();</span>
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         $idAssignedUser     = count($assignedUsers) == 1 ? $assignedUsers[0][<span class="stringliteral">&apos;id_user&apos;</span>] : 0;
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116         $color = self::getEventColorData($idAssignedUser);
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118             <span class="comment">// Build event render data</span>
+<a name="l00119"></a>00119         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array_merge(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>, array(
+<a name="l00120"></a>00120             <span class="stringliteral">&apos;calendarMode&apos;</span>          =&gt; $calendarMode,
+<a name="l00121"></a>00121             <span class="stringliteral">&apos;current_user&apos;</span>          =&gt; $idCurrentUser,
+<a name="l00122"></a>00122             <span class="stringliteral">&apos;assignedUsers&apos;</span>         =&gt; $assignedUsers,
+<a name="l00123"></a>00123             <span class="stringliteral">&apos;updateAllowed&apos;</span>         =&gt;      <a class="code" href="class_todoyu_auth.html#a9902ea1bf23e60c6ca1482e9dcd2185b">TodoyuAuth::isAdmin</a>()
+<a name="l00124"></a>00124                                         ||  <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;id_user_create&apos;</span>] == $idCurrentUser
+<a name="l00125"></a>00125                                         ||  in_array($idCurrentUser, $assignedUsers) ? 1 : 0,
+<a name="l00126"></a>00126             <span class="stringliteral">&apos;colors&apos;</span>                =&gt; $color[$idAssignedUser],
+<a name="l00127"></a>00127         ));
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129         <span class="keywordflow">if</span> ($calendarMode == <span class="stringliteral">&apos;week&apos;</span>) {
+<a name="l00130"></a>00130             $shownStartingDayNum    = <a class="code" href="class_todoyu_event_manager.html#a1445e395445bab108247259638a84905">TodoyuEventManager::calcEventStartingDayNumInWeek</a>(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;date_start&apos;</span>], <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;tstamp_firstDay&apos;</span>]);
+<a name="l00131"></a>00131             $shownEndingDayNum      = <a class="code" href="class_todoyu_event_manager.html#a2b934e4640a3bca9a5f2393360590686">TodoyuEventManager::calcEventEndingDayNumInWeek</a>(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;date_end&apos;</span>], <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;tstamp_lastDay&apos;</span>]);
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;shownStartingDayNum&apos;</span>]    = $shownStartingDayNum;
+<a name="l00134"></a>00134             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;shownEndingDayNum&apos;</span>]      = $shownEndingDayNum;
+<a name="l00135"></a>00135             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;shownDaysDuration&apos;</span>]      = $shownEndingDayNum - $shownStartingDayNum;
+<a name="l00136"></a>00136         }
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138         <span class="keywordflow">return</span> <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>;
+<a name="l00139"></a>00139     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="ab52878e70504d7dabdca70e69826f8c4"></a><!-- doxytag: member="TodoyuEventRenderer::renderCreateQuickEvent" ref="ab52878e70504d7dabdca70e69826f8c4" args="($time, $isDayEvent=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderCreateQuickEvent </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>isDayEvent</em> = <code>false</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render create event form popup</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String Form </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_renderer_8class_8php_source.html#l00066">66</a> der Datei <a class="el" href="_todoyu_event_renderer_8class_8php_source.html">TodoyuEventRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00066"></a>00066                                                                               {
+<a name="l00067"></a>00067         $time       = intval($time);
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069         <a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>    = <span class="stringliteral">&apos;ext/calendar/config/form/quickevent.xml&apos;</span>;
+<a name="l00070"></a>00070         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>       = <a class="code" href="class_todoyu_form_manager.html#a1ebecd4703d082171a8682cd8fd3626c">TodoyuFormManager::getForm</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>);
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072         $dayRange   = <a class="code" href="class_todoyu_time.html#a36e69cd8bdd6fa3fd46f483445730852">TodoyuTime::getDayRange</a>($time);
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074         <span class="keywordflow">if</span>( $isDayEvent ) {
+<a name="l00075"></a>00075             $timeStart  = $dayRange[<span class="stringliteral">&apos;start&apos;</span>];
+<a name="l00076"></a>00076             $timeEnd    = $dayRange[<span class="stringliteral">&apos;end&apos;</span>];
+<a name="l00077"></a>00077         } <span class="keywordflow">else</span> {
+<a name="l00078"></a>00078             $timeStart  = $time;
+<a name="l00079"></a>00079             $timeEnd    = $timeStart + 900;
+<a name="l00080"></a>00080         }
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         $user   = <a class="code" href="class_todoyu_auth.html#aeeb9b927f96ebe9c88760d70afa39abe">TodoyuAuth::getUser</a>()-&gt;getTemplateData();
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084         <a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a>   = array(
+<a name="l00085"></a>00085             <span class="stringliteral">&apos;date_start&apos;</span>    =&gt; $timeStart,
+<a name="l00086"></a>00086             <span class="stringliteral">&apos;date_end&apos;</span>      =&gt; $timeEnd,
+<a name="l00087"></a>00087             <span class="stringliteral">&apos;is_dayevent&apos;</span>   =&gt; $isDayEvent,
+<a name="l00088"></a>00088             <span class="stringliteral">&apos;user&apos;</span>          =&gt; array($user)
+<a name="l00089"></a>00089         );
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;setFormData(<a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a>);
+<a name="l00092"></a>00092         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;setUseRecordID(<span class="keyword">false</span>);
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094         <span class="keywordflow">return</span> <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;render();
+<a name="l00095"></a>00095     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a5b6583e24f3665a5b7da93f60a8033fe"></a><!-- doxytag: member="TodoyuEventRenderer::renderEvent" ref="a5b6583e24f3665a5b7da93f60a8033fe" args="(array $event, $calendarMode= 'month', array $selectedUserIDs=array(), $selectedUserColors=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderEvent </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>calendarMode</em> = <code>'month'</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>selectedUserIDs</em> = <code>array()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>selectedUserColors</em> = <code>array()</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render event entry</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$data Event details </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$calendarMode 'month' / 'week' / 'day' </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$selectedUserIDs </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String Div of the event </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_renderer_8class_8php_source.html#l00151">151</a> der Datei <a class="el" href="_todoyu_event_renderer_8class_8php_source.html">TodoyuEventRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00151"></a>00151                                                                                                                                                 {
+<a name="l00152"></a>00152         $selectedUserIDs= <a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>($selectedUserIDs);
+<a name="l00153"></a>00153         $event          = <a class="code" href="class_todoyu_event_renderer.html#a62f295a947c7dc09c59d8a3f44f48d92">self::prepareEventRenderData</a>($calendarMode, $event, $selectedUserIDs, $selectedUserColors);
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155         <span class="keywordflow">if</span>( $calendarMode === <span class="stringliteral">&apos;list&apos;</span> )  {
+<a name="l00156"></a>00156             $color = self::getEventColorData(<a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>());
+<a name="l00157"></a>00157             $event[<span class="stringliteral">&apos;colors&apos;</span>]        = $color[<a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>()];
+<a name="l00158"></a>00158             $event[<span class="stringliteral">&apos;currentUser&apos;</span>]   = <a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>();
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160             $tmpl   = <span class="stringliteral">&apos;ext/calendar/view/event-listmode.tmpl&apos;</span>;
+<a name="l00161"></a>00161         } <span class="keywordflow">else</span> {
+<a name="l00162"></a>00162             $tmpl   = <span class="stringliteral">&apos;ext/calendar/view/event.tmpl&apos;</span>;
+<a name="l00163"></a>00163         }
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, $event);
+<a name="l00166"></a>00166     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="acf233c632f86e472129a783ec1a1871f"></a><!-- doxytag: member="TodoyuEventRenderer::renderEventView" ref="acf233c632f86e472129a783ec1a1871f" args="($idEvent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderEventView </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idEvent</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render event view</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idEvent </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_renderer_8class_8php_source.html#l00285">285</a> der Datei <a class="el" href="_todoyu_event_renderer_8class_8php_source.html">TodoyuEventRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00285"></a>00285                                                      {
+<a name="l00286"></a>00286         $idEvent    = intval($idEvent);
+<a name="l00287"></a>00287         $event      = <a class="code" href="class_todoyu_event_manager.html#a8a23179af6d7f3a48565c9cd8a00b402">TodoyuEventManager::getEvent</a>($idEvent);
+<a name="l00288"></a>00288 
+<a name="l00289"></a>00289         $tmpl       = <span class="stringliteral">&apos;ext/calendar/view/event-view.tmpl&apos;</span>;
+<a name="l00290"></a>00290         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>       = array(
+<a name="l00291"></a>00291             <span class="stringliteral">&apos;event&apos;</span>         =&gt; $event-&gt;getTemplateData(),
+<a name="l00292"></a>00292             <span class="stringliteral">&apos;attendees&apos;</span>     =&gt; <a class="code" href="class_todoyu_event_manager.html#a615da0a7fd33b1348dfbb779b7b6bfc9">TodoyuEventManager::getAssignedUsersOfEvent</a>($idEvent, <span class="keyword">true</span>),
+<a name="l00293"></a>00293             <span class="stringliteral">&apos;user_create&apos;</span>   =&gt; <a class="code" href="class_todoyu_user_manager.html#a83676b6b5bc43a6f1077a7b5544194f1">TodoyuUserManager::getUserArray</a>($event[<span class="stringliteral">&apos;id_user_create&apos;</span>]),
+<a name="l00294"></a>00294             <span class="stringliteral">&apos;tabs&apos;</span>          =&gt; <a class="code" href="class_todoyu_event_renderer.html#a1f8cffbe7d88145a3eb75800e6c81697">self::renderEventViewTabs</a>($idEvent)
+<a name="l00295"></a>00295         );
+<a name="l00296"></a>00296 
+<a name="l00297"></a>00297         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00298"></a>00298     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a1f8cffbe7d88145a3eb75800e6c81697"></a><!-- doxytag: member="TodoyuEventRenderer::renderEventViewTabs" ref="a1f8cffbe7d88145a3eb75800e6c81697" args="($idEvent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderEventViewTabs </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idEvent</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_renderer_8class_8php_source.html#l00252">252</a> der Datei <a class="el" href="_todoyu_event_renderer_8class_8php_source.html">TodoyuEventRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00252"></a>00252                                                          {
+<a name="l00253"></a>00253         $idEvent    = intval($idEvent);
+<a name="l00254"></a>00254         $activeTab  = <span class="stringliteral">&apos;detail&apos;</span>;
+<a name="l00255"></a>00255         $tabsID     = <span class="stringliteral">&apos;calendar-tabs&apos;</span>;
+<a name="l00256"></a>00256         $class      = <span class="stringliteral">&apos;tabs&apos;</span>;
+<a name="l00257"></a>00257         $jsHandler  = <span class="stringliteral">&apos;Todoyu.Ext.calendar.Tabs.onSelect.bind(Todoyu.Ext.calendar.Tabs)&apos;</span>;
+<a name="l00258"></a>00258         <a class="code" href="view_8php.html#ab6ac9b33076d715d3f1376b426e25da0">$tabs</a>       = <a class="code" href="class_todoyu_calendar_manager.html#ad96ba5d1b4d267ce859b0a2820b63d8d">TodoyuCalendarManager::getCalendarTabsConfig</a>();
+<a name="l00259"></a>00259 
+<a name="l00260"></a>00260         $event      = <a class="code" href="class_todoyu_event_manager.html#a8a23179af6d7f3a48565c9cd8a00b402">TodoyuEventManager::getEvent</a>($idEvent);
+<a name="l00261"></a>00261 
+<a name="l00262"></a>00262         $detailTab  = array(
+<a name="l00263"></a>00263             <span class="stringliteral">&apos;id&apos;</span>        =&gt; <span class="stringliteral">&apos;detail&apos;</span>,
+<a name="l00264"></a>00264             <span class="stringliteral">&apos;class&apos;</span>     =&gt; <span class="stringliteral">&apos;detail&apos;</span>,
+<a name="l00265"></a>00265             <span class="stringliteral">&apos;hasIcon&apos;</span>   =&gt; 0,
+<a name="l00266"></a>00266             <span class="stringliteral">&apos;label&apos;</span>     =&gt; <span class="stringliteral">&apos;Detail: &apos;</span> . $event-&gt;getTitle(),
+<a name="l00267"></a>00267             <span class="stringliteral">&apos;htmlId&apos;</span>    =&gt; <span class="stringliteral">&apos;calendar-tabhead-detail&apos;</span>,
+<a name="l00268"></a>00268             <span class="stringliteral">&apos;key&apos;</span>       =&gt; <span class="stringliteral">&apos;detail&apos;</span>,
+<a name="l00269"></a>00269             <span class="stringliteral">&apos;classKey&apos;</span>  =&gt; <span class="stringliteral">&apos;detail&apos;</span>
+<a name="l00270"></a>00270         );
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272         array_unshift(<a class="code" href="view_8php.html#ab6ac9b33076d715d3f1376b426e25da0">$tabs</a>, $detailTab);
+<a name="l00273"></a>00273 
+<a name="l00274"></a>00274         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_tabhead_renderer.html#abfbf54eb123a5182baf1f8771b594093">TodoyuTabheadRenderer::renderTabs</a>($tabsID, $class, $jsHandler, <a class="code" href="view_8php.html#ab6ac9b33076d715d3f1376b426e25da0">$tabs</a>, $activeTab);
+<a name="l00275"></a>00275     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="aded9605cfc9a197c26df100331f69ae0"></a><!-- doxytag: member="TodoyuEventRenderer::renderFulldayEvent" ref="aded9605cfc9a197c26df100331f69ae0" args="($calendarMode= 'day', array $data=array(), array $selectedUserIDs)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderFulldayEvent </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>calendarMode</em> = <code>'day'</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>data</em> = <code>array()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>selectedUserIDs</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render day event (events that span a whole day or more than that)</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$data Event details </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String Div of the day-event </dd></dl>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$selectedUserIDs </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$selectedUserColors </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_renderer_8class_8php_source.html#l00179">179</a> der Datei <a class="el" href="_todoyu_event_renderer_8class_8php_source.html">TodoyuEventRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00179"></a>00179                                                                                                                     {
+<a name="l00180"></a>00180         $selectedUserIDs    = <a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>($selectedUserIDs);
+<a name="l00181"></a>00181         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>               = <a class="code" href="class_todoyu_event_renderer.html#a62f295a947c7dc09c59d8a3f44f48d92">self::prepareEventRenderData</a>($calendarMode, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>, $selectedUserIDs );
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>(<span class="stringliteral">&apos;ext/calendar/view/event-fullday.tmpl&apos;</span>, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00184"></a>00184     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="ad27140655f61e29c3728bb481658f4a7"></a><!-- doxytag: member="TodoyuEventRenderer::renderPortalTabEventsList" ref="ad27140655f61e29c3728bb481658f4a7" args="(array $events, array $holidays, array $birthdays)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderPortalTabEventsList </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>events</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>holidays</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>birthdays</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render list of events to be displayed in events tab of portal</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$events </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$holidays </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$birthdays </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_event_renderer_8class_8php_source.html#l00040">40</a> der Datei <a class="el" href="_todoyu_event_renderer_8class_8php_source.html">TodoyuEventRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00040"></a>00040                                                                                                         {
+<a name="l00041"></a>00041         $color = self::getEventColorData(<a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>());
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         $tmpl   = <span class="stringliteral">&apos;ext/calendar/view/tab-portal-eventslist.tmpl&apos;</span>;
+<a name="l00044"></a>00044         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00045"></a>00045             <span class="stringliteral">&apos;events&apos;</span>                        =&gt; $events,
+<a name="l00046"></a>00046             <span class="stringliteral">&apos;showHolidays&apos;</span>                  =&gt; <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;portal&apos;</span>][<span class="stringliteral">&apos;tabcontentconfig&apos;</span>][<span class="stringliteral">&apos;calendar&apos;</span>][<span class="stringliteral">&apos;showHolidays&apos;</span>],
+<a name="l00047"></a>00047             <span class="stringliteral">&apos;holidaysLookAheadWeeksAmount&apos;</span>  =&gt; <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;portal&apos;</span>][<span class="stringliteral">&apos;tabcontentconfig&apos;</span>][<span class="stringliteral">&apos;calendar&apos;</span>][<span class="stringliteral">&apos;holidaysLookAheadWeeks&apos;</span>],
+<a name="l00048"></a>00048             <span class="stringliteral">&apos;holidays&apos;</span>                      =&gt; $holidays,
+<a name="l00049"></a>00049             <span class="stringliteral">&apos;showBirthdays&apos;</span>                 =&gt; <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;portal&apos;</span>][<span class="stringliteral">&apos;tabcontentconfig&apos;</span>][<span class="stringliteral">&apos;calendar&apos;</span>][<span class="stringliteral">&apos;showBirthdays&apos;</span>],
+<a name="l00050"></a>00050             <span class="stringliteral">&apos;birthdaysLookAheadWeeksAmount&apos;</span> =&gt; <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;portal&apos;</span>][<span class="stringliteral">&apos;tabcontentconfig&apos;</span>][<span class="stringliteral">&apos;calendar&apos;</span>][<span class="stringliteral">&apos;birthdaysLookAheadWeeks&apos;</span>],
+<a name="l00051"></a>00051             <span class="stringliteral">&apos;birthdays&apos;</span>                     =&gt; $birthdays,
+<a name="l00052"></a>00052             <span class="stringliteral">&apos;color&apos;</span>                         =&gt; $color[<a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>()]
+<a name="l00053"></a>00053         );
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00056"></a>00056     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/calendar/model/<a class="el" href="_todoyu_event_renderer_8class_8php_source.html">TodoyuEventRenderer.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:45 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

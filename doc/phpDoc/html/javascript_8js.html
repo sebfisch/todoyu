@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/doc/guideline/javascript.js-Dateireferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>C:/Programme/xampp/htdocs/todoyu2/doc/guideline/javascript.js-Dateireferenz</h1>
+<p><a href="javascript_8js_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Funktionen</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">function&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="javascript_8js.html#a653ea8da4d112c6bce1135d086cb38c9">str_replace</a> (<a class="el" href="search_2assets_2js_2_ext_8js.html#a38090deb158ccc6f0d577f72dc1fe73a">search</a>, replace, subject)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">function&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="javascript_8js.html#ad16de932e58d4f00f2b853b5bab107a0">replacePRECode</a> (str)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">document&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="javascript_8js.html#ab57ad05e5f69b0a634c7451019283887">observe</a> ('dom:loaded', function(){$$('pre.htmlcode').each(function(pre){$t=$(pre).innerHTML;$t=replacePRECode($t);$t=str_replace(&quot;class&quot;,&quot;&lt;span style='color:#800080;'&gt;class&lt;/span&gt;&quot;, $t);$(pre).update($t);});$$('pre.xmlcode').each(function(pre){$t=$(pre).innerHTML;$t=replacePRECode($t);$(pre).update($t);});})</td></tr>
+</table>
+<hr/><h2>Dokumentation der Funktionen</h2>
+<a class="anchor" id="ab57ad05e5f69b0a634c7451019283887"></a><!-- doxytag: member="javascript.js::observe" ref="ab57ad05e5f69b0a634c7451019283887" args="('dom:loaded', function(){$$('pre.htmlcode').each(function(pre){$t=$(pre).innerHTML;$t=replacePRECode($t);$t=str_replace(&quot;class&quot;,&quot;&lt;span style='color:#800080;'&gt;class&lt;/span&gt;&quot;, $t);$(pre).update($t);});$$('pre.xmlcode').each(function(pre){$t=$(pre).innerHTML;$t=replacePRECode($t);$(pre).update($t);});})" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">document observe </td>
+          <td>(</td>
+          <td class="paramtype">'dom:loaded'&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad16de932e58d4f00f2b853b5bab107a0"></a><!-- doxytag: member="javascript.js::replacePRECode" ref="ad16de932e58d4f00f2b853b5bab107a0" args="(str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">function replacePRECode </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>str</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="javascript_8js_source.html#l00005">5</a> der Datei <a class="el" href="javascript_8js_source.html">javascript.js</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00005"></a>00005                              {
+<a name="l00006"></a>00006     str = <a class="code" href="javascript_8js.html#a653ea8da4d112c6bce1135d086cb38c9">str_replace</a>(<span class="stringliteral">&quot;&lt;&quot;</span>, <span class="stringliteral">&quot;&amp;lt;&quot;</span>,str);
+<a name="l00007"></a>00007     str = <a class="code" href="javascript_8js.html#a653ea8da4d112c6bce1135d086cb38c9">str_replace</a>(<span class="stringliteral">&quot;&gt;&quot;</span>, <span class="stringliteral">&quot;&amp;gt;&quot;</span>,str);
+<a name="l00008"></a>00008     str = <a class="code" href="javascript_8js.html#a653ea8da4d112c6bce1135d086cb38c9">str_replace</a>(<span class="stringliteral">&quot;[[green]]&quot;</span>, <span class="stringliteral">&quot;&lt;span style=&apos;color:green;&apos;&gt;&quot;</span>,str);
+<a name="l00009"></a>00009     str = <a class="code" href="javascript_8js.html#a653ea8da4d112c6bce1135d086cb38c9">str_replace</a>(<span class="stringliteral">&quot;[[/green]]&quot;</span>, <span class="stringliteral">&quot;&lt;/span&gt;&quot;</span>,str);
+<a name="l00010"></a>00010     <span class="keywordflow">return</span> str;
+<a name="l00011"></a>00011 }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a653ea8da4d112c6bce1135d086cb38c9"></a><!-- doxytag: member="javascript.js::str_replace" ref="a653ea8da4d112c6bce1135d086cb38c9" args="(search, replace, subject)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">function str_replace </td>
+          <td>(</td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>search</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>replace</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>subject</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="javascript_8js_source.html#l00001">1</a> der Datei <a class="el" href="javascript_8js_source.html">javascript.js</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001                                                {
+<a name="l00002"></a>00002     <span class="keywordflow">return</span> subject.split(<a class="code" href="search_2assets_2js_2_ext_8js.html#a38090deb158ccc6f0d577f72dc1fe73a">search</a>).join(replace);
+<a name="l00003"></a>00003 }
+</pre></div></p>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:39 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

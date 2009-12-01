@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuCommentMailer Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuCommentMailer Klassenreferenz</h1><!-- doxytag: class="TodoyuCommentMailer" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_comment_mailer.html#ad64e4adca7ded6fa5a470872f5599afb">sendEmails</a> ($idComment, array $userIDs)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_comment_mailer_8class_8php_source.html#l00031">31</a> der Datei <a class="el" href="_todoyu_comment_mailer_8class_8php_source.html">TodoyuCommentMailer.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="ad64e4adca7ded6fa5a470872f5599afb"></a><!-- doxytag: member="TodoyuCommentMailer::sendEmails" ref="ad64e4adca7ded6fa5a470872f5599afb" args="($idComment, array $userIDs)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static sendEmails </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idComment</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>userIDs</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Send comment information email to the users</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idComment </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$userIDs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_comment_mailer_8class_8php_source.html#l00039">39</a> der Datei <a class="el" href="_todoyu_comment_mailer_8class_8php_source.html">TodoyuCommentMailer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00039"></a>00039                                                                   {
+<a name="l00040"></a>00040         <a class="code" href="user_8php.html#a307cce3be8d8dbb46d0c949fddbf6bd0">$userIDs</a>    = <a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>(<a class="code" href="user_8php.html#a307cce3be8d8dbb46d0c949fddbf6bd0">$userIDs</a>, <span class="keyword">true</span>, <span class="keyword">true</span>);
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042         <span class="keywordflow">foreach</span>(<a class="code" href="user_8php.html#a307cce3be8d8dbb46d0c949fddbf6bd0">$userIDs</a> as $idUser) {
+<a name="l00043"></a>00043             $result = self::sendCommentEmail($idComment, $idUser);
+<a name="l00044"></a>00044         }
+<a name="l00045"></a>00045     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/comment/model/<a class="el" href="_todoyu_comment_mailer_8class_8php_source.html">TodoyuCommentMailer.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:43 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

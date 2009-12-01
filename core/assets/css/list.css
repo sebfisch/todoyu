@@ -3,7 +3,7 @@ table.list {
 	margin-top:5px;
 }
 
-table.list .header {
+table.list tr.header {
 	height:28px;
 	background:url('../img/bg_headerline.png') no-repeat 0% 0%;
 	text-align:left;

@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/comment/model/TodoyuCommentRenderer.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/comment/model/TodoyuCommentRenderer.class.php</h1><a href="_todoyu_comment_renderer_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00029"></a><a class="code" href="class_todoyu_comment_renderer.html">00029</a> <span class="keyword">class </span><a class="code" href="class_todoyu_comment_renderer.html">TodoyuCommentRenderer</a> {
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 
+<a name="l00038"></a><a class="code" href="class_todoyu_comment_renderer.html#a257b440c7f85c5fdf4a899d390bf2c81">00038</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_comment_renderer.html#a257b440c7f85c5fdf4a899d390bf2c81">renderComment</a>($idComment) {
+<a name="l00039"></a>00039         $idComment  = intval($idComment);
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041         $comment    = <a class="code" href="class_todoyu_comment_manager.html#a21a5b324dbec60db9eb72799e089ae79">TodoyuCommentManager::getComment</a>($idComment);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>       = $comment-&gt;getTemplateData(<span class="keyword">true</span>);
+<a name="l00044"></a>00044         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;isInternal&apos;</span>] =  <a class="code" href="user_2assets_2js_2_ext_8js.html#a7b29ab97c31faa20f8296f86090d174b">Todoyu::user</a>()-&gt;isInternal();
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>(<span class="stringliteral">&apos;ext/comment/view/comment.tmpl&apos;</span>, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00047"></a>00047     }
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 
+<a name="l00058"></a><a class="code" href="class_todoyu_comment_renderer.html#aa97a8327fc2d4a76eb487cbbc88cfd22">00058</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_comment_renderer.html#aa97a8327fc2d4a76eb487cbbc88cfd22">renderCommentList</a>($idTask, $desc = <span class="keyword">false</span>) {
+<a name="l00059"></a>00059         $idTask     = intval($idTask);
+<a name="l00060"></a>00060         $desc       = $desc ? <span class="keyword">true</span> : <span class="keyword">false</span>;
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00063"></a>00063             <span class="stringliteral">&apos;idTask&apos;</span>    =&gt; $idTask,
+<a name="l00064"></a>00064             <span class="stringliteral">&apos;desc&apos;</span>      =&gt; $desc,
+<a name="l00065"></a>00065             <span class="stringliteral">&apos;descClass&apos;</span> =&gt; $desc ? <span class="stringliteral">&apos;desc&apos;</span> : <span class="stringliteral">&apos;asc&apos;</span>,
+<a name="l00066"></a>00066             <span class="stringliteral">&apos;comments&apos;</span>  =&gt; <span class="stringliteral">&apos;&apos;</span>
+<a name="l00067"></a>00067         );
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069         $commentIDs = <a class="code" href="class_todoyu_comment_manager.html#abb3d551d2c8f991c99c5778e0013ff00">TodoyuCommentManager::getTaskCommentIDs</a>($idTask, $desc);
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071         <span class="keywordflow">foreach</span>($commentIDs as $idComment) {
+<a name="l00072"></a>00072             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;comments&apos;</span>] .= <a class="code" href="class_todoyu_comment_renderer.html#a257b440c7f85c5fdf4a899d390bf2c81">self::renderComment</a>($idComment);
+<a name="l00073"></a>00073         }
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>(<span class="stringliteral">&apos;ext/comment/view/list.tmpl&apos;</span>, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00076"></a>00076     }
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 
+<a name="l00087"></a><a class="code" href="class_todoyu_comment_renderer.html#aabbb72d7c120b757e9d43c36f4bb0b91">00087</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_comment_renderer.html#aabbb72d7c120b757e9d43c36f4bb0b91">renderEdit</a>($idTask, $idComment = 0) {
+<a name="l00088"></a>00088         $idTask     = intval($idTask);
+<a name="l00089"></a>00089         $idComment  = intval($idComment);
+<a name="l00090"></a>00090         <a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>    = <span class="stringliteral">&apos;ext/comment/config/form/comment.xml&apos;</span>;
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>       = <a class="code" href="class_todoyu_form_manager.html#a1ebecd4703d082171a8682cd8fd3626c">TodoyuFormManager::getForm</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>, $idComment);
+<a name="l00093"></a>00093         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>       = array();
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095         <span class="keywordflow">if</span>( $idComment !== 0 ) {
+<a name="l00096"></a>00096             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>       = <a class="code" href="class_todoyu_comment_manager.html#a21a5b324dbec60db9eb72799e089ae79">TodoyuCommentManager::getComment</a>($idComment)-&gt;getTemplateData();
+<a name="l00097"></a>00097         } <span class="keywordflow">else</span> {
+<a name="l00098"></a>00098             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;id_task&apos;</span>]= $idTask;
+<a name="l00099"></a>00099             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;id&apos;</span>]     = $idComment;
+<a name="l00100"></a>00100         }
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;setFormData(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00103"></a>00103         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;setRecordID($idTask . <span class="charliteral">&apos;-&apos;</span> . $idComment);
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105             <span class="comment">// Render (edit-form wrapped inside the edit-template)</span>
+<a name="l00106"></a>00106         $tmpl   = <span class="stringliteral">&apos;ext/comment/view/edit.tmpl&apos;</span>;
+<a name="l00107"></a>00107         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00108"></a>00108             <span class="stringliteral">&apos;idTask&apos;</span>    =&gt; $idTask,
+<a name="l00109"></a>00109             <span class="stringliteral">&apos;idComment&apos;</span> =&gt; $idComment,
+<a name="l00110"></a>00110             <span class="stringliteral">&apos;formhtml&apos;</span>  =&gt; <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;render()
+<a name="l00111"></a>00111         );
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00114"></a>00114     }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 
+<a name="l00124"></a><a class="code" href="class_todoyu_comment_renderer.html#a4e5c4f9483ea5748009b8d44a9c4b961">00124</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_comment_renderer.html#a4e5c4f9483ea5748009b8d44a9c4b961">renderEmailBox</a>($idTask, $idComment) {
+<a name="l00125"></a>00125         $idTask     = intval($idTask);
+<a name="l00126"></a>00126         $idComment  = intval($idComment);
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128         <a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>    = <span class="stringliteral">&apos;ext/comment/config/form/comment.xml&apos;</span>;
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130             <span class="comment">// Construct form object</span>
+<a name="l00131"></a>00131         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>       = <a class="code" href="class_todoyu_form_manager.html#a1ebecd4703d082171a8682cd8fd3626c">TodoyuFormManager::getForm</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>, $idComment);
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133             <span class="comment">// Prepare/ Load (preset e.g) form data</span>
+<a name="l00134"></a>00134         <a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a>   = array(
+<a name="l00135"></a>00135             <span class="stringliteral">&apos;id_task&apos;</span> =&gt; $idTask
+<a name="l00136"></a>00136         );
+<a name="l00137"></a>00137         <a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a>   = <a class="code" href="class_todoyu_form_hook.html#ab552e7ce23a0c9e2c9ff10029d9a53b7">TodoyuFormHook::callLoadData</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>, <a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a>, $idComment);
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139             <span class="comment">// Set form data</span>
+<a name="l00140"></a>00140         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;setFormData( <a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a> );
+<a name="l00141"></a>00141         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;setRecordID( $idTask . <span class="charliteral">&apos;-&apos;</span> . $idComment );
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143             <span class="comment">// Render</span>
+<a name="l00144"></a>00144         <span class="keywordflow">return</span> <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;getField(<span class="stringliteral">&apos;emailinfo&apos;</span>)-&gt;render();
+<a name="l00145"></a>00145     }
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147 }
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:34 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

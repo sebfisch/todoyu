@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/TodoyuDebug.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/TodoyuDebug.class.php</h1><a href="_todoyu_debug_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00031"></a><a class="code" href="class_todoyu_debug.html">00031</a> <span class="keyword">class </span><a class="code" href="class_todoyu_debug.html">TodoyuDebug</a> {
+<a name="l00032"></a>00032 
+<a name="l00038"></a>00038     <span class="keyword">private</span> <span class="keyword">static</span> function getCaller() {
+<a name="l00039"></a>00039         $backtrace = debug_backtrace();
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041         $backtrace[1][<span class="stringliteral">&apos;fileshort&apos;</span>] = <a class="code" href="javascript_8js.html#a653ea8da4d112c6bce1135d086cb38c9">str_replace</a>(<a class="code" href="core_2config_2constants_8php.html#a98e6ec34047e8d89ccc3884beede053a">PATH</a>, <span class="stringliteral">&apos;&apos;</span>, $backtrace[1][<span class="stringliteral">&apos;file&apos;</span>]);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         <span class="keywordflow">return</span> $backtrace[1];
+<a name="l00044"></a>00044     }
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 
+<a name="l00054"></a>00054     <span class="keyword">private</span> <span class="keyword">static</span> function isCurrentUser($usernames) {
+<a name="l00055"></a>00055         $currentUsername    = <a class="code" href="user_2assets_2js_2_ext_8js.html#a7b29ab97c31faa20f8296f86090d174b">Todoyu::user</a>()-&gt;getUsername();
+<a name="l00056"></a>00056         $checkUsernames     = explode(<span class="charliteral">&apos;,&apos;</span>, $usernames);
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058         <span class="keywordflow">return</span> in_array($currentUsername, $checkUsernames);
+<a name="l00059"></a>00059     }
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 
+<a name="l00070"></a><a class="code" href="class_todoyu_debug.html#abe5d493a35ffbdb1789833cdd47cafa0">00070</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_debug.html#abe5d493a35ffbdb1789833cdd47cafa0">printPlain</a>(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>, $title = <span class="stringliteral">&apos;&apos;</span>, $usernames = null) {
+<a name="l00071"></a>00071         <span class="keywordflow">if</span>( ! is_null($usernames) &amp;&amp; !self::isCurrentUser($usernames) ) {
+<a name="l00072"></a>00072             <span class="keywordflow">return</span>;
+<a name="l00073"></a>00073         }
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075         <a class="code" href="class_todoyu_header.html#af424ca6ec62d0b19c48f2bedcdd3bb8b">TodoyuHeader::sendHeaderPlain</a>();
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077         $caller = self::getCaller();
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079         $output = <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00080"></a>00080         <span class="keywordflow">if</span>( $title != <span class="stringliteral">&apos;&apos;</span> ) {
+<a name="l00081"></a>00081             $output .= <span class="stringliteral">&apos;DEBUG: &apos;</span> . $title . <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00082"></a>00082         }
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084         $output .= str_repeat(<span class="charliteral">&apos;=&apos;</span>, 70) . <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00085"></a>00085         $output .= $caller[<span class="stringliteral">&apos;file&apos;</span>] . <span class="stringliteral">&apos; : &apos;</span> . $caller[<span class="stringliteral">&apos;line&apos;</span>] . <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00086"></a>00086         $output .= str_repeat(<span class="charliteral">&apos;=&apos;</span>, 70) . <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00087"></a>00087         $output .= print_r(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>, <span class="keyword">true</span>);
+<a name="l00088"></a>00088         $output .= <span class="stringliteral">&quot;\n\n&quot;</span>;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090         echo $output;
+<a name="l00091"></a>00091     }
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 
+<a name="l00101"></a><a class="code" href="class_todoyu_debug.html#a7a5d0dd4f323a284503b7c60d38997de">00101</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_debug.html#a7a5d0dd4f323a284503b7c60d38997de">printHtml</a>(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>, $title = <span class="stringliteral">&apos;&apos;</span>, $usernames = null, $backtrace = <span class="keyword">false</span>) {
+<a name="l00102"></a>00102         <span class="keywordflow">if</span>( ! is_null($usernames) &amp;&amp; !self::isCurrentUser($usernames) ) {
+<a name="l00103"></a>00103             <span class="keywordflow">return</span>;
+<a name="l00104"></a>00104         }
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106         <span class="keywordflow">if</span>( <a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a> === <span class="keyword">false</span> || <a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a> === <span class="keyword">true</span> || <a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a> === <span class="stringliteral">&apos;&apos;</span> ) {
+<a name="l00107"></a>00107             ob_start();
+<a name="l00108"></a>00108             var_dump(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>);
+<a name="l00109"></a>00109             $debug = ob_get_flush();
+<a name="l00110"></a>00110         } <span class="keywordflow">else</span> {
+<a name="l00111"></a>00111             $debug = print_r(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>, <span class="keyword">true</span>);
+<a name="l00112"></a>00112         }
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         $tmpl   = <span class="stringliteral">&apos;core/view/debug_html.tmpl&apos;</span>;
+<a name="l00115"></a>00115         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00116"></a>00116             <span class="stringliteral">&apos;title&apos;</span>     =&gt; $title,
+<a name="l00117"></a>00117             <span class="stringliteral">&apos;debug&apos;</span>     =&gt; $debug,
+<a name="l00118"></a>00118             <span class="stringliteral">&apos;backtrace&apos;</span> =&gt; $backtrace ? print_r( debug_backtrace(), <span class="keyword">true</span> ) : <span class="stringliteral">&apos;&apos;</span>,
+<a name="l00119"></a>00119             <span class="stringliteral">&apos;caller&apos;</span>    =&gt; self::getCaller()
+<a name="l00120"></a>00120         );
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122         echo <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00123"></a>00123     }
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 
+<a name="l00134"></a><a class="code" href="class_todoyu_debug.html#ac9651feeeb651c2c95753582d5d044bb">00134</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_debug.html#ac9651feeeb651c2c95753582d5d044bb">printJson</a>(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>, $title, $usernames = null) {
+<a name="l00135"></a>00135         echo <span class="stringliteral">&quot;NO JSON DEBUG AT THE MOMENT&quot;</span>;
+<a name="l00136"></a>00136     }
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 
+<a name="l00147"></a><a class="code" href="class_todoyu_debug.html#adc1d20befc0f0af3f20834265b0f81ac">00147</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_debug.html#adc1d20befc0f0af3f20834265b0f81ac">printInFirebug</a>(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>, $title = <span class="stringliteral">&apos;&apos;</span>, $usernames = null) {
+<a name="l00148"></a>00148         <span class="keywordflow">if</span>( ! is_null($usernames) &amp;&amp; !self::isCurrentUser($usernames) ) {
+<a name="l00149"></a>00149             <span class="keywordflow">return</span>;
+<a name="l00150"></a>00150         }
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152         <a class="code" href="class_todoyu_debug.html#a5666882a1432079e2f3b805f7f316e81">self::firePhp</a>()-&gt;log(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>, $title);
+<a name="l00153"></a>00153     }
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156 
+<a name="l00162"></a><a class="code" href="class_todoyu_debug.html#a79fa73806eca3e2829a78671f54c48f8">00162</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_debug.html#a79fa73806eca3e2829a78671f54c48f8">printLastQueryInFirebug</a>($ident = null) {
+<a name="l00163"></a>00163         $title  = <span class="stringliteral">&apos;Last Query&apos;</span>;
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165         <span class="keywordflow">if</span>( ! is_null($ident) ) {
+<a name="l00166"></a>00166             $title .= <span class="stringliteral">&apos; (&apos;</span> . $ident . <span class="charliteral">&apos;)&apos;</span>;
+<a name="l00167"></a>00167         }
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169         <a class="code" href="class_todoyu_debug.html#adc1d20befc0f0af3f20834265b0f81ac">self::printInFirebug</a>(<a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getLastQuery(), $title);
+<a name="l00170"></a>00170     }
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173 
+<a name="l00179"></a><a class="code" href="class_todoyu_debug.html#a5666882a1432079e2f3b805f7f316e81">00179</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_debug.html#a5666882a1432079e2f3b805f7f316e81">firePhp</a>() {
+<a name="l00180"></a>00180         <span class="keywordflow">return</span> FirePHP::getInstance(<span class="keyword">true</span>);
+<a name="l00181"></a>00181     }
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184 
+<a name="l00189"></a><a class="code" href="class_todoyu_debug.html#a190c7a8c42f07994d49374900775fd05">00189</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_debug.html#a190c7a8c42f07994d49374900775fd05">printBacktrace</a>() {
+<a name="l00190"></a>00190         $backtrace  = debug_backtrace();
+<a name="l00191"></a>00191         array_shift($backtrace);
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193         <a class="code" href="class_todoyu_debug.html#a7a5d0dd4f323a284503b7c60d38997de">self::printHtml</a>($backtrace, <span class="stringliteral">&apos;Backtrace&apos;</span>);
+<a name="l00194"></a>00194     }
+<a name="l00195"></a>00195 
+<a name="l00196"></a>00196 }
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:31 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

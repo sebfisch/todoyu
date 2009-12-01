@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/doc/CodeStyle/config.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/doc/CodeStyle/config.php</h1><a href="doc_2_code_style_2config_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002  
+<a name="l00012"></a>00012     <span class="comment">// Set a config variable for project extension</span>
+<a name="l00013"></a><a class="code" href="doc_2_code_style_2config_8php.html#a159e00096fe54439462c4948ac568f9c">00013</a> <a class="code" href="config_2config_8php.html#a91089e6394dd56b78f8dcba5c86c9c8b">$CONFIG</a>[<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;project&apos;</span>][<span class="stringliteral">&apos;somevar&apos;</span>] = 345;
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015     <span class="comment">// Register a form hook (if you have a lot of form hooks, register them in your special config file hooks.php)</span>
+<a name="l00016"></a>00016 <a class="code" href="class_todoyu_form_hook.html#adf797c28bc0cd7fe9854213d383a0e9b">TodoyuFormHook::registerBuildForm</a>(<span class="stringliteral">&apos;path/to/the/form/file.xml&apos;</span>, <span class="stringliteral">&apos;SomeClass::myHandlerFunction&apos;</span>, 120);
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018     <span class="comment">// Constants should be defined in constants.php</span>
+<a name="l00019"></a>00019     <span class="comment">// Format: TC_EXTKEY_WHAT_EVER          (TC = Todoyu constant)</span>
+<a name="l00020"></a><a class="code" href="doc_2_code_style_2config_8php.html#a9ab334d21a6f218102a234b0b5744a22">00020</a> define(<span class="stringliteral">&apos;TC_PROJECT_STATUS_PLANNING&apos;</span>, 1);
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022     <span class="comment">// Rootlevel key UPPERCASE, everything else lowercase</span>
+<a name="l00023"></a>00023     <span class="comment">// Array keys start on a new line and are indented by one tab, =&gt; is indented by tabs, value by a space.</span>
+<a name="l00024"></a><a class="code" href="doc_2_code_style_2config_8php.html#a2143f4139e4d0db87d63c2fef03f9616">00024</a> <a class="code" href="config_2config_8php.html#a91089e6394dd56b78f8dcba5c86c9c8b">$CONFIG</a>[<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;project&apos;</span>][<span class="stringliteral">&apos;status&apos;</span>][<span class="stringliteral">&apos;task&apos;</span>] = array(
+<a name="l00025"></a>00025     <span class="stringliteral">&apos;key1&apos;</span>  =&gt; <span class="stringliteral">&apos;planning&apos;</span>,
+<a name="l00026"></a>00026     <span class="stringliteral">&apos;key2&apos;</span>  =&gt; <span class="stringliteral">&apos;open&apos;</span>,
+<a name="l00027"></a>00027     <span class="stringliteral">&apos;key3&apos;</span>  =&gt; <span class="stringliteral">&apos;progress&apos;</span>,
+<a name="l00028"></a>00028     ...
+<a name="l00029"></a>00029 );
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:30 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

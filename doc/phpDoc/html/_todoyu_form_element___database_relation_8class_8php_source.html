@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/form/TodoyuFormElement_DatabaseRelation.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/form/TodoyuFormElement_DatabaseRelation.class.php</h1><a href="_todoyu_form_element___database_relation_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00028"></a><a class="code" href="class_todoyu_form_element___database_relation.html">00028</a> <span class="keyword">class </span><a class="code" href="class_todoyu_form_element___database_relation.html">TodoyuFormElement_DatabaseRelation</a> <span class="keyword">extends</span> <a class="code" href="class_todoyu_form_element.html">TodoyuFormElement</a> {
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 
+<a name="l00038"></a><a class="code" href="class_todoyu_form_element___database_relation.html#aa986ef8b9dfa1afb42657621d7e3c18a">00038</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#aa986ef8b9dfa1afb42657621d7e3c18a">__construct</a>(<a class="code" href="class_todoyu_form_element.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a>, <a class="code" href="class_todoyu_fieldset.html">TodoyuFieldset</a> <a class="code" href="class_todoyu_form_element.html#ab15059ce6bfbf3ac01b4d114975f3320">$fieldset</a>, array <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>  = array())  {
+<a name="l00039"></a>00039         <a class="code" href="class_todoyu_form_element___database_relation.html#aa986ef8b9dfa1afb42657621d7e3c18a">parent::__construct</a>(<span class="stringliteral">&apos;databaseRelation&apos;</span>, <a class="code" href="class_todoyu_form_element.html#ab2fc40d43824ea3e1ce5d86dee0d763b">$name</a>, $fieldset, <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>);
+<a name="l00040"></a>00040     }
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 
+<a name="l00049"></a><a class="code" href="class_todoyu_form_element___database_relation.html#a7494441b6ed08a391704971873f31432">00049</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#a7494441b6ed08a391704971873f31432">setValue</a>($value) {
+<a name="l00050"></a>00050         $records    = <a class="code" href="class_todoyu_array.html#ab24a32057fab61d0e5ba98a2e07f912d">TodoyuArray::assure</a>($value);
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         <a class="code" href="class_todoyu_form_element___database_relation.html#a7494441b6ed08a391704971873f31432">parent::setValue</a>($records);
+<a name="l00053"></a>00053     }
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 
+<a name="l00063"></a><a class="code" href="class_todoyu_form_element___database_relation.html#ab2f2d9c68e2442ecd0590da490c67342">00063</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#ab2f2d9c68e2442ecd0590da490c67342">getRecord</a>($index) {
+<a name="l00064"></a>00064         $index  = intval($index);
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066         <span class="keywordflow">if</span>( ! is_array($this-&gt;config[<span class="stringliteral">&apos;default&apos;</span>][$index]) ) {
+<a name="l00067"></a>00067             $this-&gt;config[<span class="stringliteral">&apos;default&apos;</span>][$index] = array();
+<a name="l00068"></a>00068         }
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070         <span class="keywordflow">return</span> $this-&gt;config[<span class="stringliteral">&apos;default&apos;</span>][$index];
+<a name="l00071"></a>00071     }
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074 
+<a name="l00080"></a><a class="code" href="class_todoyu_form_element___database_relation.html#a81a67162a6288d78fc4c55283325f0b4">00080</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#a81a67162a6288d78fc4c55283325f0b4">getData</a>() {
+<a name="l00081"></a>00081         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a> = <a class="code" href="class_todoyu_form_element___database_relation.html#a81a67162a6288d78fc4c55283325f0b4">parent::getData</a>();
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083             <span class="comment">// Records template data</span>
+<a name="l00084"></a>00084         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;records&apos;</span>]    = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#a6b671fbc893c04ae6f6530363e24ffc8">getRecordsTemplateData</a>();
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086             <span class="comment">// Records general information</span>
+<a name="l00087"></a>00087         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;fieldname&apos;</span>]  = $this-&gt;<a class="code" href="class_todoyu_form_element.html#a3d0963e68bb313b163a73f2803c64600">getName</a>();
+<a name="l00088"></a>00088         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;formname&apos;</span>]   = $this-&gt;<a class="code" href="class_todoyu_form_element.html#a6aed11d79758a2d06062c8cd94bab221">getForm</a>()-&gt;getName();
+<a name="l00089"></a>00089         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;idRecord&apos;</span>]   = $this-&gt;<a class="code" href="class_todoyu_form_element.html#a6aed11d79758a2d06062c8cd94bab221">getForm</a>()-&gt;getRecordID();
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091         <span class="keywordflow">return</span> <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>;
+<a name="l00092"></a>00092     }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 
+<a name="l00102"></a><a class="code" href="class_todoyu_form_element___database_relation.html#ab837ed9617f064488f1f4f57db576726">00102</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#ab837ed9617f064488f1f4f57db576726">render</a>($odd = <span class="keyword">false</span>) {
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_form_element___database_relation.html#ab837ed9617f064488f1f4f57db576726">parent::render</a>($odd);
+<a name="l00105"></a>00105     }
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 
+<a name="l00115"></a><a class="code" href="class_todoyu_form_element___database_relation.html#a9be592f2e6e9a5b69f99df68f71689c6">00115</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#a9be592f2e6e9a5b69f99df68f71689c6">renderNewRecord</a>($index = 0) {
+<a name="l00116"></a>00116         $tmpl   = <span class="stringliteral">&apos;core/view/form/FormElement_DatabaseRelation_Record.tmpl&apos;</span>;
+<a name="l00117"></a>00117         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array();
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119             <span class="comment">// Get record data</span>
+<a name="l00120"></a>00120         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;record&apos;</span>]     = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#ac551de970ad586e285d7392c03825a3f">getRecordTemplateData</a>($index);
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122             <span class="comment">// Records general information</span>
+<a name="l00123"></a>00123         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;fieldname&apos;</span>]  = $this-&gt;<a class="code" href="class_todoyu_form_element.html#a3d0963e68bb313b163a73f2803c64600">getName</a>();
+<a name="l00124"></a>00124         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;idRecord&apos;</span>]   = $this-&gt;<a class="code" href="class_todoyu_form_element.html#a6aed11d79758a2d06062c8cd94bab221">getForm</a>()-&gt;getRecordID();
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_form_element___database_relation.html#ab837ed9617f064488f1f4f57db576726">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00127"></a>00127     }
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130 
+<a name="l00137"></a><a class="code" href="class_todoyu_form_element___database_relation.html#af92b4194bf81ec23fa20570083f1e6d1">00137</a>     <span class="keyword">protected</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#af92b4194bf81ec23fa20570083f1e6d1">renderRecordForm</a>($index) {
+<a name="l00138"></a>00138         <a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a> = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#ab497a9565921db2cfbf0a827f0c13721">getRecordsFormXml</a>();
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142             <span class="comment">// Load form data</span>
+<a name="l00143"></a>00143         $recordData = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#ab2f2d9c68e2442ecd0590da490c67342">getRecord</a>($index);
+<a name="l00144"></a>00144         $idRecord   = intval($recordData[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146             <span class="comment">// Construct form object</span>
+<a name="l00147"></a>00147         $recordForm = <a class="code" href="class_todoyu_form_element.html#a6aed11d79758a2d06062c8cd94bab221">TodoyuFormManager::getForm</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>, $idRecord);
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149         $recordData = <a class="code" href="class_todoyu_form_hook.html#ab552e7ce23a0c9e2c9ff10029d9a53b7">TodoyuFormHook::callLoadData</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>, $recordData, $idRecord);
+<a name="l00150"></a>00150 
+<a name="l00151"></a>00151         $formName   = $this-&gt;<a class="code" href="class_todoyu_form_element.html#a6aed11d79758a2d06062c8cd94bab221">getForm</a>()-&gt;getName() . <span class="charliteral">&apos;[&apos;</span> . $this-&gt;<a class="code" href="class_todoyu_form_element.html#a3d0963e68bb313b163a73f2803c64600">getName</a>() . <span class="stringliteral">&apos;][&apos;</span> . $index . <span class="charliteral">&apos;]&apos;</span>;
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153             <span class="comment">// Set form data</span>
+<a name="l00154"></a>00154         $recordForm-&gt;setFormData($recordData);
+<a name="l00155"></a>00155         $recordForm-&gt;setVars(array(<span class="stringliteral">&apos;parent&apos;</span> =&gt; $this-&gt;<a class="code" href="class_todoyu_form_element.html#a6aed11d79758a2d06062c8cd94bab221">getForm</a>()-&gt;getRecordID()));
+<a name="l00156"></a>00156         $recordForm-&gt;setUseRecordID(<span class="keyword">false</span>);
+<a name="l00157"></a>00157         $recordForm-&gt;setAttribute(<span class="stringliteral">&apos;noFormTag&apos;</span>, <span class="keyword">true</span>);
+<a name="l00158"></a>00158         $recordForm-&gt;setName($formName);
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160             <span class="comment">// Evoke assigned validators</span>
+<a name="l00161"></a>00161         <span class="keywordflow">if</span>( $this-&gt;<a class="code" href="class_todoyu_form_element.html#a6aed11d79758a2d06062c8cd94bab221">getForm</a>()-&gt;getValidateForm() )   {
+<a name="l00162"></a>00162             $recordForm-&gt;isValid();
+<a name="l00163"></a>00163 <span class="comment">//          if( ! $form-&gt;isValid() )    {</span>
+<a name="l00164"></a>00164 <span class="comment">//              $this-&gt;setErrorMessage( Label(&apos;form.field.hasError&apos;) );</span>
+<a name="l00165"></a>00165 <span class="comment">//              $this-&gt;setErrorTrue();</span>
+<a name="l00166"></a>00166 <span class="comment">//          }</span>
+<a name="l00167"></a>00167         }
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169             <span class="comment">// Render</span>
+<a name="l00170"></a>00170         <span class="keywordflow">return</span> $recordForm-&gt;render();
+<a name="l00171"></a>00171     }
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174 
+<a name="l00180"></a><a class="code" href="class_todoyu_form_element___database_relation.html#a62de84e1bea4a55ac96f54d4c4ea6cb7">00180</a>     <span class="keyword">protected</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#a62de84e1bea4a55ac96f54d4c4ea6cb7">getRecordsConfig</a>() {
+<a name="l00181"></a>00181         <span class="keywordflow">return</span> $this-&gt;<a class="code" href="class_todoyu_form_element.html#ae954da422d40fc286691e54679e44c6f">getAttribute</a>(<span class="stringliteral">&apos;foreignRecordConf&apos;</span>);
+<a name="l00182"></a>00182     }
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185 
+<a name="l00192"></a><a class="code" href="class_todoyu_form_element___database_relation.html#ac3cf5a88085580b7a687ee3ed9f3b605">00192</a>     <span class="keyword">protected</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#ac3cf5a88085580b7a687ee3ed9f3b605">getRecords</a>() {
+<a name="l00193"></a>00193         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_array.html#ab24a32057fab61d0e5ba98a2e07f912d">TodoyuArray::assure</a>($this-&gt;<a class="code" href="class_todoyu_form_element.html#ac0bc18784b182c89fcfd276625aef435">getValue</a>());
+<a name="l00194"></a>00194     }
+<a name="l00195"></a>00195 
+<a name="l00196"></a>00196 
+<a name="l00197"></a>00197 
+<a name="l00203"></a><a class="code" href="class_todoyu_form_element___database_relation.html#a6b671fbc893c04ae6f6530363e24ffc8">00203</a>     <span class="keyword">protected</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#a6b671fbc893c04ae6f6530363e24ffc8">getRecordsTemplateData</a>() {
+<a name="l00204"></a>00204         $records    = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#ac3cf5a88085580b7a687ee3ed9f3b605">getRecords</a>();
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206         <span class="keywordflow">foreach</span>($records as $index =&gt; $record) {
+<a name="l00207"></a>00207             $records[$index] = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#ac551de970ad586e285d7392c03825a3f">getRecordTemplateData</a>($index);
+<a name="l00208"></a>00208         }
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210         <span class="keywordflow">return</span> $records;
+<a name="l00211"></a>00211     }
+<a name="l00212"></a>00212 
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214 
+<a name="l00220"></a><a class="code" href="class_todoyu_form_element___database_relation.html#ab497a9565921db2cfbf0a827f0c13721">00220</a>     <span class="keyword">protected</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#ab497a9565921db2cfbf0a827f0c13721">getRecordsFormXml</a>() {
+<a name="l00221"></a>00221         $recordConfig = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#a62de84e1bea4a55ac96f54d4c4ea6cb7">getRecordsConfig</a>();
+<a name="l00222"></a>00222 
+<a name="l00223"></a>00223         <span class="keywordflow">return</span> $recordConfig[<span class="stringliteral">&apos;foreignformxml&apos;</span>];
+<a name="l00224"></a>00224     }
+<a name="l00225"></a>00225 
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227 
+<a name="l00234"></a><a class="code" href="class_todoyu_form_element___database_relation.html#a194e68a0adf71d71f7de1b8b7548ad8f">00234</a>     <span class="keyword">protected</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#a194e68a0adf71d71f7de1b8b7548ad8f">getRecordLabel</a>($index) {
+<a name="l00235"></a>00235         <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a> = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#a62de84e1bea4a55ac96f54d4c4ea6cb7">getRecordsConfig</a>();
+<a name="l00236"></a>00236         $record = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#ab2f2d9c68e2442ecd0590da490c67342">getRecord</a>($index);
+<a name="l00237"></a>00237         $label  = <span class="stringliteral">&apos;&apos;</span>;
+<a name="l00238"></a>00238         <a class="code" href="class_todoyu_form_element.html#a9a4a6fba2208984cabb3afacadf33919">$type</a>   = <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>[<span class="stringliteral">&apos;label&apos;</span>][<span class="stringliteral">&apos;@attributes&apos;</span>][<span class="stringliteral">&apos;type&apos;</span>];
+<a name="l00239"></a>00239 
+<a name="l00240"></a>00240             <span class="comment">// Get label by type</span>
+<a name="l00241"></a>00241         <span class="keywordflow">switch</span>( <a class="code" href="class_todoyu_form_element.html#a9a4a6fba2208984cabb3afacadf33919">$type</a> ) {
+<a name="l00242"></a>00242             <span class="keywordflow">case</span> <span class="stringliteral">&apos;function&apos;</span>:
+<a name="l00243"></a>00243                 $function   = <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>[<span class="stringliteral">&apos;label&apos;</span>][<span class="stringliteral">&apos;function&apos;</span>];
+<a name="l00244"></a>00244 
+<a name="l00245"></a>00245                 <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_div.html#a2dbf9fd5046506735124e644c99d2f96">TodoyuDiv::isFunctionReference</a>($function) ) {
+<a name="l00246"></a>00246                     $label = <a class="code" href="class_todoyu_div.html#afcc9d79cf22888569ba5f634bb686d1c">TodoyuDiv::callUserFunction</a>($function, $this, $record);
+<a name="l00247"></a>00247                 }
+<a name="l00248"></a>00248                 <span class="keywordflow">break</span>;
+<a name="l00249"></a>00249 
+<a name="l00250"></a>00250             <span class="keywordflow">case</span> <span class="stringliteral">&apos;field&apos;</span>:
+<a name="l00251"></a>00251                 <a class="code" href="acknowledged__tasks_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>  = <a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>[<span class="stringliteral">&apos;label&apos;</span>][<span class="stringliteral">&apos;field&apos;</span>];
+<a name="l00252"></a>00252                 $label  = trim($record[<a class="code" href="acknowledged__tasks_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>]);
+<a name="l00253"></a>00253                 <span class="keywordflow">break</span>;
+<a name="l00254"></a>00254         }
+<a name="l00255"></a>00255 
+<a name="l00256"></a>00256             <span class="comment">// If no label found, check if there is a noLabel tag</span>
+<a name="l00257"></a>00257         <span class="keywordflow">if</span>( empty($label) &amp;&amp; ! empty(<a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>[<span class="stringliteral">&apos;label&apos;</span>][<span class="stringliteral">&apos;noLabel&apos;</span>]) ) {
+<a name="l00258"></a>00258             $label  = <a class="code" href="class_todoyu_form_element.html#a14c4e7420d903d3e40342266333d2ecf">TodoyuDiv::getLabel</a>(<a class="code" href="class_todoyu_form_element.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>[<span class="stringliteral">&apos;label&apos;</span>][<span class="stringliteral">&apos;noLabel&apos;</span>]);
+<a name="l00259"></a>00259         }
+<a name="l00260"></a>00260 
+<a name="l00261"></a>00261             <span class="comment">// If still no label found, get default &quot;no label&quot; tag</span>
+<a name="l00262"></a>00262         <span class="keywordflow">if</span>( empty($label) ) {
+<a name="l00263"></a>00263             $label = <a class="code" href="class_todoyu_form_element.html#a14c4e7420d903d3e40342266333d2ecf">TodoyuLocale::getLabel</a>(<span class="stringliteral">&apos;form.databaserelation.nolabel&apos;</span>);
+<a name="l00264"></a>00264         }
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266         <span class="keywordflow">return</span> $label;
+<a name="l00267"></a>00267     }
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269 
+<a name="l00270"></a>00270 
+<a name="l00277"></a><a class="code" href="class_todoyu_form_element___database_relation.html#ac551de970ad586e285d7392c03825a3f">00277</a>     <span class="keyword">protected</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#ac551de970ad586e285d7392c03825a3f">getRecordTemplateData</a>($index) {
+<a name="l00278"></a>00278         $record = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#ab2f2d9c68e2442ecd0590da490c67342">getRecord</a>($index);
+<a name="l00279"></a>00279 
+<a name="l00280"></a>00280         $record[<span class="stringliteral">&apos;_index&apos;</span>]   = $index;
+<a name="l00281"></a>00281         $record[<span class="stringliteral">&apos;_label&apos;</span>]   = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#a194e68a0adf71d71f7de1b8b7548ad8f">getRecordLabel</a>($index);
+<a name="l00282"></a>00282         $record[<span class="stringliteral">&apos;_formHTML&apos;</span>]= $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#af92b4194bf81ec23fa20570083f1e6d1">renderRecordForm</a>($index);
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284         <span class="keywordflow">return</span> $record;
+<a name="l00285"></a>00285     }
+<a name="l00286"></a>00286 
+<a name="l00287"></a>00287 
+<a name="l00288"></a>00288 
+<a name="l00297"></a><a class="code" href="class_todoyu_form_element___database_relation.html#a36716582b10d240d112d4089f05fc5a1">00297</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_form_element___database_relation.html#a36716582b10d240d112d4089f05fc5a1">validateRequired</a>() {
+<a name="l00298"></a>00298         $customValidator    = $this-&gt;config[<span class="stringliteral">&apos;foreignRecordConf&apos;</span>][<span class="stringliteral">&apos;validateRequired&apos;</span>];
+<a name="l00299"></a>00299 
+<a name="l00300"></a>00300         <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_div.html#a2dbf9fd5046506735124e644c99d2f96">TodoyuDiv::isFunctionReference</a>($customValidator) ) {
+<a name="l00301"></a>00301             $records    = $this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#ac3cf5a88085580b7a687ee3ed9f3b605">getRecords</a>();
+<a name="l00302"></a>00302             $valid      = <span class="keyword">true</span>;
+<a name="l00303"></a>00303 
+<a name="l00304"></a>00304             <span class="keywordflow">foreach</span>($records as $record) {
+<a name="l00305"></a>00305                 <span class="keywordflow">if</span>( ! <a class="code" href="class_todoyu_div.html#afcc9d79cf22888569ba5f634bb686d1c">TodoyuDiv::callUserFunction</a>($customValidator, $this, $record) ) {
+<a name="l00306"></a>00306                     $valid = <span class="keyword">false</span>;
+<a name="l00307"></a>00307                     <span class="keywordflow">break</span>;
+<a name="l00308"></a>00308                 }
+<a name="l00309"></a>00309             }
+<a name="l00310"></a>00310         } <span class="keywordflow">else</span> {
+<a name="l00311"></a>00311             $valid = <span class="keyword">sizeof</span>($this-&gt;<a class="code" href="class_todoyu_form_element___database_relation.html#ac3cf5a88085580b7a687ee3ed9f3b605">getRecords</a>()) &gt; 0;
+<a name="l00312"></a>00312         }
+<a name="l00313"></a>00313 
+<a name="l00314"></a>00314         <span class="keywordflow">return</span> $valid;
+<a name="l00315"></a>00315     }
+<a name="l00316"></a>00316 
+<a name="l00317"></a>00317 }
+<a name="l00318"></a>00318 
+<a name="l00319"></a>00319 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:31 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

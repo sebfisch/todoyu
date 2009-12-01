@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/user/model/TodoyuCustomer.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/user/model/TodoyuCustomer.class.php</h1><a href="_todoyu_customer_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00029"></a><a class="code" href="class_todoyu_customer.html">00029</a> <span class="keyword">class </span><a class="code" href="class_todoyu_customer.html">TodoyuCustomer</a> <span class="keyword">extends</span> <a class="code" href="class_todoyu_base_object.html">TodoyuBaseObject</a> {
+<a name="l00030"></a>00030 
+<a name="l00036"></a><a class="code" href="class_todoyu_customer.html#a157c64c41a807fc2041b5352ff299e17">00036</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_customer.html#a157c64c41a807fc2041b5352ff299e17">__construct</a>($idCustomer) {
+<a name="l00037"></a>00037         <a class="code" href="class_todoyu_customer.html#a157c64c41a807fc2041b5352ff299e17">parent::__construct</a>($idCustomer, <span class="stringliteral">&apos;ext_user_customer&apos;</span>);
+<a name="l00038"></a>00038     }
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 
+<a name="l00046"></a><a class="code" href="class_todoyu_customer.html#a3d0963e68bb313b163a73f2803c64600">00046</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_customer.html#a3d0963e68bb313b163a73f2803c64600">getName</a>() {
+<a name="l00047"></a>00047         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;title&apos;</span>);
+<a name="l00048"></a>00048     }
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 
+<a name="l00056"></a><a class="code" href="class_todoyu_customer.html#ac1fb8203daa35a343a1ad0fc00b8d6cb">00056</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_customer.html#ac1fb8203daa35a343a1ad0fc00b8d6cb">getShortname</a>() {
+<a name="l00057"></a>00057         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;shortname&apos;</span>);
+<a name="l00058"></a>00058     }
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 
+<a name="l00066"></a><a class="code" href="class_todoyu_customer.html#a14c4e7420d903d3e40342266333d2ecf">00066</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_customer.html#a14c4e7420d903d3e40342266333d2ecf">getLabel</a>()  {
+<a name="l00067"></a>00067         <span class="keywordflow">return</span> $this-&gt;<span class="keyword">get</span>(<span class="stringliteral">&apos;title&apos;</span>);
+<a name="l00068"></a>00068     }
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 
+<a name="l00077"></a><a class="code" href="class_todoyu_customer.html#afd1060fc7be012a4b62923c47b5f7267">00077</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_customer.html#afd1060fc7be012a4b62923c47b5f7267">getCustomerArray</a>() {
+<a name="l00078"></a>00078         <span class="keywordflow">return</span> $this-&gt;data;
+<a name="l00079"></a>00079     }
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 
+<a name="l00086"></a><a class="code" href="class_todoyu_customer.html#a84bb48c3ea1dfe9046b51670ca3d8b5c">00086</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_customer.html#a84bb48c3ea1dfe9046b51670ca3d8b5c">loadCountryNames</a>() {
+<a name="l00087"></a>00087         <span class="keywordflow">foreach</span>($this-&gt;data[<span class="stringliteral">&apos;address&apos;</span>] as $num =&gt; $addressRecord) {
+<a name="l00088"></a>00088             $this-&gt;data[<span class="stringliteral">&apos;address&apos;</span>][$num][<span class="stringliteral">&apos;label_country&apos;</span>] = <a class="code" href="class_todoyu_datasource.html#a7592b1d46f262c5f754df9afbc8b2bca">TodoyuDatasource::getCountryLabel</a>($addressRecord[<span class="stringliteral">&apos;id_country&apos;</span>]);
+<a name="l00089"></a>00089         }
+<a name="l00090"></a>00090     }
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 
+<a name="l00098"></a><a class="code" href="class_todoyu_customer.html#a21981c56a56ab61802b14de3e69c7973">00098</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_customer.html#a21981c56a56ab61802b14de3e69c7973">loadForeignData</a>()   {
+<a name="l00099"></a>00099         $this-&gt;data[<span class="stringliteral">&apos;user&apos;</span>]         = <a class="code" href="class_todoyu_customer_manager.html#a6f054ef38d89c0c517add1f13461d520">TodoyuCustomerManager::getCustomerUserRecords</a>($this-&gt;<span class="keywordtype">id</span>);
+<a name="l00100"></a>00100         $this-&gt;data[<span class="stringliteral">&apos;contactinfo&apos;</span>]  = <a class="code" href="class_todoyu_customer_manager.html#aed79786bf9a316e529aa2960b3c0c5d9">TodoyuCustomerManager::getCustomerContactinfoRecords</a>($this-&gt;<span class="keywordtype">id</span>);
+<a name="l00101"></a>00101         $this-&gt;data[<span class="stringliteral">&apos;address&apos;</span>]      = <a class="code" href="class_todoyu_customer_manager.html#aea0f374cfc9339f2de43523d2a0089b8">TodoyuCustomerManager::getCustomerAddressRecords</a>($this-&gt;<span class="keywordtype">id</span>);
+<a name="l00102"></a>00102     }
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104 
+<a name="l00105"></a><a class="code" href="class_todoyu_customer.html#a6b53481b32efeae58b93dbf0c930a142">00105</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_customer.html#a6b53481b32efeae58b93dbf0c930a142">getTemplateData</a>($loadForeignData = <span class="keyword">false</span>) {
+<a name="l00106"></a>00106         <span class="keywordflow">if</span>( $loadForeignData ) {
+<a name="l00107"></a>00107             $this-&gt;<a class="code" href="class_todoyu_customer.html#a21981c56a56ab61802b14de3e69c7973">loadForeignData</a>();
+<a name="l00108"></a>00108         }
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_base_object.html#a7f9640b2c58f895e0a72e75b9ffcb832">parent::getTemplateData</a>();
+<a name="l00111"></a>00111     }
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:37 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuCommentTask Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuCommentTask Klassenreferenz</h1><!-- doxytag: class="TodoyuCommentTask" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_comment_task.html#abe9e54d8679c45af1808631d633430d8">getLabel</a> ($idTask)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_comment_task.html#a94a84f1b824f7fbd31777f7dd1cdab95">getContent</a> ($idTask)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_comment_task_8class_8php_source.html#l00028">28</a> der Datei <a class="el" href="_todoyu_comment_task_8class_8php_source.html">TodoyuCommentTask.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a94a84f1b824f7fbd31777f7dd1cdab95"></a><!-- doxytag: member="TodoyuCommentTask::getContent" ref="a94a84f1b824f7fbd31777f7dd1cdab95" args="($idTask)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getContent </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get tab content for a task</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_comment_task_8class_8php_source.html#l00060">60</a> der Datei <a class="el" href="_todoyu_comment_task_8class_8php_source.html">TodoyuCommentTask.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00060"></a>00060                                                {
+<a name="l00061"></a>00061         $idTask     = intval($idTask);
+<a name="l00062"></a>00062         $numComments= <a class="code" href="class_todoyu_comment_manager.html#a009efc46f4491b8e78c628cdb7f8571d">TodoyuCommentManager::getNumberOfTaskComments</a>($idTask);
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064         <span class="keywordflow">if</span>( $numComments === 0 ) {
+<a name="l00065"></a>00065             <span class="keywordflow">return</span> <a class="code" href="class_todoyu_comment_renderer.html#aabbb72d7c120b757e9d43c36f4bb0b91">TodoyuCommentRenderer::renderEdit</a>($idTask, 0);
+<a name="l00066"></a>00066         } <span class="keywordflow">else</span> {
+<a name="l00067"></a>00067             <span class="keywordflow">return</span> <a class="code" href="class_todoyu_comment_renderer.html#aa97a8327fc2d4a76eb487cbbc88cfd22">TodoyuCommentRenderer::renderCommentList</a>($idTask);
+<a name="l00068"></a>00068         }
+<a name="l00069"></a>00069     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="abe9e54d8679c45af1808631d633430d8"></a><!-- doxytag: member="TodoyuCommentTask::getLabel" ref="abe9e54d8679c45af1808631d633430d8" args="($idTask)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getLabel </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>idTask</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get label for comment tab in the task</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$idTask </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_comment_task_8class_8php_source.html#l00036">36</a> der Datei <a class="el" href="_todoyu_comment_task_8class_8php_source.html">TodoyuCommentTask.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00036"></a>00036                                              {
+<a name="l00037"></a>00037         $idTask = intval($idTask);
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039         $numComments = <a class="code" href="class_todoyu_comment_manager.html#a009efc46f4491b8e78c628cdb7f8571d">TodoyuCommentManager::getNumberOfTaskComments</a>($idTask);
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041         <a class="code" href="class_todoyu_page.html#a60f870fc7513a20d414915f771b98b5c">TodoyuPage::addExtAssets</a>(<span class="stringliteral">&apos;comment&apos;</span>);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         <span class="keywordflow">if</span>( $numComments === 0 ) {
+<a name="l00044"></a>00044             <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#a7c072b45376ab4eab800bc4788a4e22f">Label</a>(<span class="stringliteral">&apos;comment.tab.noComments&apos;</span>);
+<a name="l00045"></a>00045         } elseif( $numComments === 1 ) {
+<a name="l00046"></a>00046             <span class="keywordflow">return</span> <span class="stringliteral">&apos;1 &apos;</span> . <a class="code" href="functions_8php.html#a7c072b45376ab4eab800bc4788a4e22f">Label</a>(<span class="stringliteral">&apos;comment.tab.comment&apos;</span>);
+<a name="l00047"></a>00047         } <span class="keywordflow">else</span> {
+<a name="l00048"></a>00048             <span class="keywordflow">return</span> $numComments . <span class="charliteral">&apos; &apos;</span> . <a class="code" href="functions_8php.html#a7c072b45376ab4eab800bc4788a4e22f">Label</a>(<span class="stringliteral">&apos;comment.tab.comments&apos;</span>);
+<a name="l00049"></a>00049         }
+<a name="l00050"></a>00050     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/comment/model/<a class="el" href="_todoyu_comment_task_8class_8php_source.html">TodoyuCommentTask.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:43 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

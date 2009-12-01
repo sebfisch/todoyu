@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuSearchEngineIf Schnittstellenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuSearchEngineIf Schnittstellenreferenz</h1><!-- doxytag: class="TodoyuSearchEngineIf" --><div class="dynheader">
+Klassendiagramm für TodoyuSearchEngineIf:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="interface_todoyu_search_engine_if.gif" usemap="#TodoyuSearchEngineIf_map" alt=""/>
+  <map id="TodoyuSearchEngineIf_map" name="TodoyuSearchEngineIf_map">
+<area href="class_todoyu_comment_search.html" alt="TodoyuCommentSearch" shape="rect" coords="0,56,146,80"/>
+<area href="class_todoyu_event_search.html" alt="TodoyuEventSearch" shape="rect" coords="156,56,302,80"/>
+<area href="class_todoyu_project_search.html" alt="TodoyuProjectSearch" shape="rect" coords="312,56,458,80"/>
+<area href="class_todoyu_task_search.html" alt="TodoyuTaskSearch" shape="rect" coords="468,56,614,80"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_todoyu_search_engine_if.html#aab9060e0da2fedcea1eec3a3c79d96d8">getResults</a> (array $find, array $ignore=array(), $limit=5)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_todoyu_search_engine_if.html#af1b6a6cdb5b9a8ec44009617387cc67a">getSuggestions</a> (array $find, array $ignore=array(), $limit=20)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_search_engine_if_8class_8php_source.html#l00022">22</a> der Datei <a class="el" href="_todoyu_search_engine_if_8class_8php_source.html">TodoyuSearchEngineIf.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="aab9060e0da2fedcea1eec3a3c79d96d8"></a><!-- doxytag: member="TodoyuSearchEngineIf::getResults" ref="aab9060e0da2fedcea1eec3a3c79d96d8" args="(array $find, array $ignore=array(), $limit=5)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getResults </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>find</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>ignore</em> = <code>array()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>limit</em> = <code>5</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get search results</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$find </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$ignore </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$limit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementiert in <a class="el" href="class_todoyu_event_search.html#ae88b97ffed993281044683d052ab3e82">TodoyuEventSearch</a>, <a class="el" href="class_todoyu_comment_search.html#a9fb8a31092b5037ad98de2cedb7d7504">TodoyuCommentSearch</a>, <a class="el" href="class_todoyu_project_search.html#a9fb8a31092b5037ad98de2cedb7d7504">TodoyuProjectSearch</a> und <a class="el" href="class_todoyu_task_search.html#a9fb8a31092b5037ad98de2cedb7d7504">TodoyuTaskSearch</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af1b6a6cdb5b9a8ec44009617387cc67a"></a><!-- doxytag: member="TodoyuSearchEngineIf::getSuggestions" ref="af1b6a6cdb5b9a8ec44009617387cc67a" args="(array $find, array $ignore=array(), $limit=20)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getSuggestions </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>find</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>ignore</em> = <code>array()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>limit</em> = <code>20</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get search (autocompletion) suggestions</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$find </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$ignore </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$limit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implementiert in <a class="el" href="class_todoyu_event_search.html#a52f4ce724668e12d620e16874b23794e">TodoyuEventSearch</a>, <a class="el" href="class_todoyu_comment_search.html#a52f4ce724668e12d620e16874b23794e">TodoyuCommentSearch</a>, <a class="el" href="class_todoyu_project_search.html#a52f4ce724668e12d620e16874b23794e">TodoyuProjectSearch</a> und <a class="el" href="class_todoyu_task_search.html#a52f4ce724668e12d620e16874b23794e">TodoyuTaskSearch</a>.</p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Schnittstelle wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/search/model/<a class="el" href="_todoyu_search_engine_if_8class_8php_source.html">TodoyuSearchEngineIf.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:48 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

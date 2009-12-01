@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuFormXmlParser Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuFormXmlParser Klassenreferenz</h1><!-- doxytag: class="TodoyuFormXmlParser" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_form_xml_parser.html#aba79dd0d19d45c6b8da006af8f604cda">parse</a> ($form, $xmlFile)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_form_xml_parser_8class_8php_source.html#l00029">29</a> der Datei <a class="el" href="_todoyu_form_xml_parser_8class_8php_source.html">TodoyuFormXmlParser.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="aba79dd0d19d45c6b8da006af8f604cda"></a><!-- doxytag: member="TodoyuFormXmlParser::parse" ref="aba79dd0d19d45c6b8da006af8f604cda" args="($form, $xmlFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static parse </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>form</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>xmlFile</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Parse form definition into a form object</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="class_todoyu_form.html">TodoyuForm</a></em>&nbsp;</td><td>$form </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$xmlFile </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Boolean </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_form_xml_parser_8class_8php_source.html#l00061">61</a> der Datei <a class="el" href="_todoyu_form_xml_parser_8class_8php_source.html">TodoyuFormXmlParser.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00061"></a>00061                                                   {
+<a name="l00062"></a>00062         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">self::$form</a>     = $form;
+<a name="l00063"></a>00063         self::$xmlFile  = <a class="code" href="class_todoyu_file_manager.html#aa39c49d884a7e1f0b7fcd7fa7d5638a3">TodoyuFileManager::pathAbsolute</a>($xmlFile);
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065         <span class="keywordflow">if</span>( ! is_file($xmlFile) ) {
+<a name="l00066"></a>00066             <a class="code" href="class_todoyu.html#ac43531f7e0c334e68104bb1942eee286">Todoyu::log</a>(<span class="stringliteral">&apos;Form XML file not found (\&apos;&apos;</span> . self::$xmlFile . <span class="charliteral">&apos;\&apos;</span>)<span class="stringliteral">&apos;, LOG_LEVEL_CRITICAL);</span>
+<a name="l00067"></a>00067 <span class="stringliteral">            return false;</span>
+<a name="l00068"></a>00068 <span class="stringliteral">        }</span>
+<a name="l00069"></a>00069 <span class="stringliteral"></span>
+<a name="l00070"></a>00070 <span class="stringliteral">            // Load xml file as simple xml object</span>
+<a name="l00071"></a>00071 <span class="stringliteral">        self::$xml  = simplexml_load_file($xmlFile, null, LIBXML_NOCDATA);</span>
+<a name="l00072"></a>00072 <span class="stringliteral"></span>
+<a name="l00073"></a>00073 <span class="stringliteral">            // Parse form attributes</span>
+<a name="l00074"></a>00074 <span class="stringliteral">        self::parseAttributes();</span>
+<a name="l00075"></a>00075 <span class="stringliteral">            // Parse hidden fields</span>
+<a name="l00076"></a>00076 <span class="stringliteral">        self::parseHiddenFields();</span>
+<a name="l00077"></a>00077 <span class="stringliteral">            // Parse main fieldsets</span>
+<a name="l00078"></a>00078 <span class="stringliteral">        self::parseTopFieldsets();</span>
+<a name="l00079"></a>00079 <span class="stringliteral"></span>
+<a name="l00080"></a>00080 <span class="stringliteral">        return true;</span>
+<a name="l00081"></a>00081 <span class="stringliteral">    }</span>
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/core/form/<a class="el" href="_todoyu_form_xml_parser_8class_8php_source.html">TodoyuFormXmlParser.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:46 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

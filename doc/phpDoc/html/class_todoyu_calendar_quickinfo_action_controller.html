@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuCalendarQuickinfoActionController Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuCalendarQuickinfoActionController Klassenreferenz</h1><!-- doxytag: class="TodoyuCalendarQuickinfoActionController" --><!-- doxytag: inherits="TodoyuActionController" --><div class="dynheader">
+Klassendiagramm für TodoyuCalendarQuickinfoActionController:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_calendar_quickinfo_action_controller.gif" usemap="#TodoyuCalendarQuickinfoActionController_map" alt=""/>
+  <map id="TodoyuCalendarQuickinfoActionController_map" name="TodoyuCalendarQuickinfoActionController_map">
+<area href="class_todoyu_action_controller.html" alt="TodoyuActionController" shape="rect" coords="0,0,252,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_calendar_quickinfo_action_controller.html#a4be4055f3361d4800e16bc2e2e38cda6">init</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_calendar_quickinfo_action_controller.html#aa0469a9199f7e4b6021f08a50b54781a">eventAction</a> (array $params)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_calendar_quickinfo_action_controller.html#aa1281a138b17fbb029356a73bf9c5ccd">holidayAction</a> (array $params)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_calendar_quickinfo_action_controller_8class_8php_source.html#l00028">28</a> der Datei <a class="el" href="_todoyu_calendar_quickinfo_action_controller_8class_8php_source.html">TodoyuCalendarQuickinfoActionController.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="aa0469a9199f7e4b6021f08a50b54781a"></a><!-- doxytag: member="TodoyuCalendarQuickinfoActionController::eventAction" ref="aa0469a9199f7e4b6021f08a50b54781a" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">eventAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get quickinfo for an event</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$params </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_calendar_quickinfo_action_controller_8class_8php_source.html#l00040">40</a> der Datei <a class="el" href="_todoyu_calendar_quickinfo_action_controller_8class_8php_source.html">TodoyuCalendarQuickinfoActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00040"></a>00040                                                {
+<a name="l00041"></a>00041         $idEvent    = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;key&apos;</span>]);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         $tmpl   = <span class="stringliteral">&apos;ext/calendar/view/quickinfo-event.tmpl&apos;</span>;
+<a name="l00044"></a>00044         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = <a class="code" href="class_todoyu_event_manager.html#a172b4c12b2fc7eaef97c18bd3fd6010b">TodoyuEventManager::getEventRecord</a>($idEvent);
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;assignedUsers&apos;</span>]  = <a class="code" href="class_todoyu_event_manager.html#a615da0a7fd33b1348dfbb779b7b6bfc9">TodoyuEventManager::getAssignedUsersOfEvent</a>($idEvent);
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00049"></a>00049     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="aa1281a138b17fbb029356a73bf9c5ccd"></a><!-- doxytag: member="TodoyuCalendarQuickinfoActionController::holidayAction" ref="aa1281a138b17fbb029356a73bf9c5ccd" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">holidayAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get quickinfo for a holiday</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$params </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_calendar_quickinfo_action_controller_8class_8php_source.html#l00058">58</a> der Datei <a class="el" href="_todoyu_calendar_quickinfo_action_controller_8class_8php_source.html">TodoyuCalendarQuickinfoActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00058"></a>00058                                                  {
+<a name="l00059"></a>00059         $timestamp  = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;key&apos;</span>]);
+<a name="l00060"></a>00060         $holidays   = <a class="code" href="class_todoyu_calendar_manager.html#af58606f2066ef7365f11ecb33b7a2c70">TodoyuCalendarManager::getHolidaysForDay</a>($timestamp);
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062         $tmpl   = <span class="stringliteral">&apos;ext/calendar/view/quickinfo-holiday.tmpl&apos;</span>;
+<a name="l00063"></a>00063         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00064"></a>00064             <span class="stringliteral">&apos;timestamp&apos;</span> =&gt; $timestamp,
+<a name="l00065"></a>00065             <span class="stringliteral">&apos;holidays&apos;</span>  =&gt; $holidays,
+<a name="l00066"></a>00066         );
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068         echo <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00069"></a>00069     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a4be4055f3361d4800e16bc2e2e38cda6"></a><!-- doxytag: member="TodoyuCalendarQuickinfoActionController::init" ref="a4be4055f3361d4800e16bc2e2e38cda6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">init </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_calendar_quickinfo_action_controller_8class_8php_source.html#l00030">30</a> der Datei <a class="el" href="_todoyu_calendar_quickinfo_action_controller_8class_8php_source.html">TodoyuCalendarQuickinfoActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00030"></a>00030                            {
+<a name="l00031"></a>00031         <a class="code" href="functions_8php.html#a03db0af59194955f1175851dd02f695e">restrict</a>(<span class="stringliteral">&apos;calendar&apos;</span>, <span class="stringliteral">&apos;event:quickinfo&apos;</span>);
+<a name="l00032"></a>00032     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/calendar/controller/<a class="el" href="_todoyu_calendar_quickinfo_action_controller_8class_8php_source.html">TodoyuCalendarQuickinfoActionController.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:43 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

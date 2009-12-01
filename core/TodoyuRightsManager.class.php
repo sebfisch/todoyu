@@ -89,7 +89,7 @@ class TodoyuRightsManager {
 		}
 
 			// In Beta 1, everything is allowed if you're logged in
-		return true;
+//		return true;
 
 			// Allow all for admin
 		if( TodoyuAuth::isAdmin() ) {

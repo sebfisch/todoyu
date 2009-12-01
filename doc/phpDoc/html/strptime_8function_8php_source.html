@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/inc/strptime.function.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/inc/strptime.function.php</h1><a href="strptime_8function_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 
+<a name="l00018"></a><a class="code" href="strptime_8function_8php.html#a4c559fa2cb359b514c284cbf3178e532">00018</a> function <a class="code" href="strptime_8function_8php.html#a4c559fa2cb359b514c284cbf3178e532">strptime</a>($date, $format) {
+<a name="l00019"></a>00019     <span class="keywordflow">if</span>( !($date = <a class="code" href="strptime_8function_8php.html#a327e5e179bd2c72433235ed394b9e134">strptime_strToDate</a>($date, $format)) )
+<a name="l00020"></a>00020         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022     $dateTime = array(
+<a name="l00023"></a>00023         <span class="stringliteral">&apos;tm_sec&apos;</span>    =&gt; 0,
+<a name="l00024"></a>00024         <span class="stringliteral">&apos;tm_min&apos;</span>    =&gt; 0,
+<a name="l00025"></a>00025         <span class="stringliteral">&apos;tm_hour&apos;</span>   =&gt; 0,
+<a name="l00026"></a>00026         <span class="stringliteral">&apos;tm_mday&apos;</span>   =&gt; 1,
+<a name="l00027"></a>00027         <span class="stringliteral">&apos;tm_mon&apos;</span>    =&gt; 1,
+<a name="l00028"></a>00028         <span class="stringliteral">&apos;tm_year&apos;</span>   =&gt; date(<span class="charliteral">&apos;Y&apos;</span>)
+<a name="l00029"></a>00029     ); <span class="comment">//array(&apos;sec&apos; =&gt; 0, &apos;min&apos; =&gt; 0, &apos;hour&apos; =&gt; 0, &apos;day&apos; =&gt; 0, &apos;mon&apos; =&gt; 0, &apos;year&apos; =&gt; 0, &apos;timestamp&apos; =&gt; 0);</span>
+<a name="l00030"></a>00030     <span class="keywordflow">foreach</span>($date as $key =&gt; $val) {
+<a name="l00031"></a>00031         <span class="keywordflow">switch</span>($key) {
+<a name="l00032"></a>00032             <span class="keywordflow">case</span> <span class="charliteral">&apos;d&apos;</span>:
+<a name="l00033"></a>00033             <span class="keywordflow">case</span> <span class="charliteral">&apos;j&apos;</span>: $dateTime[<span class="stringliteral">&apos;tm_mday&apos;</span>] = intval($val); <span class="keywordflow">break</span>;
+<a name="l00034"></a>00034             <span class="keywordflow">case</span> <span class="charliteral">&apos;D&apos;</span>: $dateTime[<span class="stringliteral">&apos;tm_mday&apos;</span>] = intval(date(<span class="charliteral">&apos;j&apos;</span>, $val)); <span class="keywordflow">break</span>;
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036             <span class="keywordflow">case</span> <span class="charliteral">&apos;m&apos;</span>:
+<a name="l00037"></a>00037             <span class="keywordflow">case</span> <span class="charliteral">&apos;n&apos;</span>: $dateTime[<span class="stringliteral">&apos;tm_mon&apos;</span>] = intval($val); <span class="keywordflow">break</span>;
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040             <span class="keywordflow">case</span> <span class="charliteral">&apos;Y&apos;</span>: $dateTime[<span class="stringliteral">&apos;tm_year&apos;</span>] = intval($val); <span class="keywordflow">break</span>;
+<a name="l00041"></a>00041             <span class="keywordflow">case</span> <span class="charliteral">&apos;y&apos;</span>: $dateTime[<span class="stringliteral">&apos;tm_year&apos;</span>] = intval($val)+2000; <span class="keywordflow">break</span>;
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043             <span class="keywordflow">case</span> <span class="charliteral">&apos;G&apos;</span>:
+<a name="l00044"></a>00044             <span class="keywordflow">case</span> <span class="charliteral">&apos;g&apos;</span>:
+<a name="l00045"></a>00045             <span class="keywordflow">case</span> <span class="charliteral">&apos;H&apos;</span>:
+<a name="l00046"></a>00046             <span class="keywordflow">case</span> <span class="charliteral">&apos;h&apos;</span>: $dateTime[<span class="stringliteral">&apos;tm_hour&apos;</span>] = intval($val); <span class="keywordflow">break</span>;
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048             <span class="keywordflow">case</span> <span class="charliteral">&apos;M&apos;</span>:
+<a name="l00049"></a>00049             <span class="keywordflow">case</span> <span class="charliteral">&apos;i&apos;</span>: $dateTime[<span class="stringliteral">&apos;tm_min&apos;</span>] = intval($val); <span class="keywordflow">break</span>;
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051             <span class="keywordflow">case</span> <span class="charliteral">&apos;s&apos;</span>: $dateTime[<span class="stringliteral">&apos;tm_sec&apos;</span>] = intval($val); <span class="keywordflow">break</span>;
+<a name="l00052"></a>00052         }
+<a name="l00053"></a>00053     }
+<a name="l00054"></a>00054     $dateTime[<span class="stringliteral">&apos;timestamp&apos;</span>] = mktime($dateTime[<span class="stringliteral">&apos;tm_hour&apos;</span>], $dateTime[<span class="stringliteral">&apos;tm_min&apos;</span>], $dateTime[<span class="stringliteral">&apos;tm_sec&apos;</span>], $dateTime[<span class="stringliteral">&apos;tm_mon&apos;</span>], $dateTime[<span class="stringliteral">&apos;tm_mday&apos;</span>], $dateTime[<span class="stringliteral">&apos;tm_year&apos;</span>]);
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056     <span class="comment">/*echo &apos;&lt;pre&gt;&apos;;</span>
+<a name="l00057"></a>00057 <span class="comment">    print_r($dateTime);</span>
+<a name="l00058"></a>00058 <span class="comment">    echo &apos;&lt;/pre&gt;&apos;;*/</span>
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060     <span class="keywordflow">return</span> $dateTime;
+<a name="l00061"></a>00061 };
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 
+<a name="l00072"></a><a class="code" href="strptime_8function_8php.html#a327e5e179bd2c72433235ed394b9e134">00072</a> function <a class="code" href="strptime_8function_8php.html#a327e5e179bd2c72433235ed394b9e134">strptime_strToDate</a>($date, $format) {
+<a name="l00073"></a>00073     $search = array(<span class="stringliteral">&apos;%d&apos;</span>, <span class="stringliteral">&apos;%D&apos;</span>, <span class="stringliteral">&apos;%j&apos;</span>, <span class="comment">// day</span>
+<a name="l00074"></a>00074                     <span class="stringliteral">&apos;%m&apos;</span>, <span class="stringliteral">&apos;%M&apos;</span>, <span class="stringliteral">&apos;%n&apos;</span>, <span class="comment">// month</span>
+<a name="l00075"></a>00075                     <span class="stringliteral">&apos;%Y&apos;</span>, <span class="stringliteral">&apos;%y&apos;</span>, <span class="comment">// year</span>
+<a name="l00076"></a>00076                     <span class="stringliteral">&apos;%G&apos;</span>, <span class="stringliteral">&apos;%g&apos;</span>, <span class="stringliteral">&apos;%H&apos;</span>, <span class="stringliteral">&apos;%h&apos;</span>, <span class="comment">// hour</span>
+<a name="l00077"></a>00077                     <span class="stringliteral">&apos;%i&apos;</span>, <span class="stringliteral">&apos;%s&apos;</span>);
+<a name="l00078"></a>00078     $replace = array(<span class="stringliteral">&apos;(\d{2})&apos;</span>, <span class="stringliteral">&apos;(\w{3})&apos;</span>, <span class="stringliteral">&apos;(\d{1,2})&apos;</span>, <span class="comment">//day</span>
+<a name="l00079"></a>00079                      <span class="stringliteral">&apos;(\d{2})&apos;</span>, <span class="stringliteral">&apos;(\d{2})&apos;</span>, <span class="stringliteral">&apos;(\d{1,2})&apos;</span>, <span class="comment">// month</span>
+<a name="l00080"></a>00080                      <span class="stringliteral">&apos;(\d{4})&apos;</span>, <span class="stringliteral">&apos;(\d{2})&apos;</span>, <span class="comment">// year</span>
+<a name="l00081"></a>00081                      <span class="stringliteral">&apos;(\d{1,2})&apos;</span>, <span class="stringliteral">&apos;(\d{1,2})&apos;</span>, <span class="stringliteral">&apos;(\d{1,2})&apos;</span>, <span class="stringliteral">&apos;\d{2}&apos;</span>, <span class="comment">// hour</span>
+<a name="l00082"></a>00082                      <span class="stringliteral">&apos;(\d{2})&apos;</span>, <span class="stringliteral">&apos;(\d{2})&apos;</span>);
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084     $pattern = <a class="code" href="javascript_8js.html#a653ea8da4d112c6bce1135d086cb38c9">str_replace</a>($search, $replace, $format);
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086     <span class="keywordflow">if</span>(!preg_match(<span class="stringliteral">&quot;#$pattern#&quot;</span>, $date, $matches)) {
+<a name="l00087"></a>00087         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00088"></a>00088     }
+<a name="l00089"></a>00089     $dp = $matches;
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091     <span class="keywordflow">if</span>(!preg_match_all(<span class="stringliteral">&apos;#%(\w)#&apos;</span>, $format, $matches)) {
+<a name="l00092"></a>00092         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00093"></a>00093     }
+<a name="l00094"></a>00094     $id = $matches[<span class="charliteral">&apos;1&apos;</span>];
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096     <span class="keywordflow">if</span>(count($dp) != count($id)+1) {
+<a name="l00097"></a>00097         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00098"></a>00098     }
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100     $ret = array();
+<a name="l00101"></a>00101     <span class="keywordflow">for</span>($i=0, $j=count($id); $i&lt;$j; $i++) {
+<a name="l00102"></a>00102         $ret[$id[$i]] = $dp[$i+1];
+<a name="l00103"></a>00103     }
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105     <span class="comment">//echo &apos;&lt;pre&gt;&apos;;</span>
+<a name="l00106"></a>00106     <span class="comment">//print_r($ret);</span>
+<a name="l00107"></a>00107     <span class="comment">//echo &apos;&lt;/pre&gt;&apos;;</span>
+<a name="l00108"></a>00108     <span class="keywordflow">return</span> $ret;
+<a name="l00109"></a>00109 }
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:31 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

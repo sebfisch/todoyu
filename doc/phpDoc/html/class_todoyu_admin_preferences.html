@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuAdminPreferences Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuAdminPreferences Klassenreferenz</h1><!-- doxytag: class="TodoyuAdminPreferences" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_admin_preferences.html#a37a93a918196a184f13587c39c9d1864">saveActiveModule</a> ($module)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_admin_preferences.html#a4028114b78c39b363895b994f5dafea4">getActiveModule</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_admin_preferences_8class_8php_source.html#l00022">22</a> der Datei <a class="el" href="_todoyu_admin_preferences_8class_8php_source.html">TodoyuAdminPreferences.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a4028114b78c39b363895b994f5dafea4"></a><!-- doxytag: member="TodoyuAdminPreferences::getActiveModule" ref="a4028114b78c39b363895b994f5dafea4" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getActiveModule </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get previously active admin area module</p>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_admin_preferences_8class_8php_source.html#l00086">86</a> der Datei <a class="el" href="_todoyu_admin_preferences_8class_8php_source.html">TodoyuAdminPreferences.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00086"></a>00086                                              {
+<a name="l00087"></a>00087         <span class="keywordflow">return</span> self::getPref(<span class="stringliteral">&apos;module&apos;</span>);
+<a name="l00088"></a>00088     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a37a93a918196a184f13587c39c9d1864"></a><!-- doxytag: member="TodoyuAdminPreferences::saveActiveModule" ref="a37a93a918196a184f13587c39c9d1864" args="($module)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static saveActiveModule </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>module</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Save currently active admin area module</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$module </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_admin_preferences_8class_8php_source.html#l00075">75</a> der Datei <a class="el" href="_todoyu_admin_preferences_8class_8php_source.html">TodoyuAdminPreferences.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00075"></a>00075                                                      {
+<a name="l00076"></a>00076         self::save(<span class="stringliteral">&apos;module&apos;</span>, $module, 0, <span class="keyword">true</span>);
+<a name="l00077"></a>00077     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/admin/model/<a class="el" href="_todoyu_admin_preferences_8class_8php_source.html">TodoyuAdminPreferences.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:42 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

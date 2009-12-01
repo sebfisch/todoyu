@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/portal/model/dwoo-plugins.php-Dateireferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/portal/model/dwoo-plugins.php-Dateireferenz</h1>
+<p><a href="dwoo-plugins_8php_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Namensbereiche</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_todoyu.html">Todoyu</a></td></tr>
+<tr><td colspan="2"><h2>Funktionen</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="dwoo-plugins_8php.html#a1b5c4acac85d00d03e5d38be573bb21f">Dwoo_Plugin_hour_format</a> (Dwoo $dwoo, $seconds, $roundUp=false)</td></tr>
+</table>
+<hr/><h2>Dokumentation der Funktionen</h2>
+<a class="anchor" id="a1b5c4acac85d00d03e5d38be573bb21f"></a><!-- doxytag: member="dwoo&#45;plugins.php::Dwoo_Plugin_hour_format" ref="a1b5c4acac85d00d03e5d38be573bb21f" args="(Dwoo $dwoo, $seconds, $roundUp=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dwoo_Plugin_hour_format </td>
+          <td>(</td>
+          <td class="paramtype">Dwoo $&nbsp;</td>
+          <td class="paramname"> <em>dwoo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>roundUp</em> = <code>false</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="dwoo-plugins_8php_source.html#l00040">40</a> der Datei <a class="el" href="dwoo-plugins_8php_source.html">dwoo-plugins.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00040"></a>00040                                                                          {
+<a name="l00041"></a>00041     <span class="keywordflow">if</span>( $roundUp == <span class="keyword">true</span> )  {
+<a name="l00042"></a>00042         $seconds = <a class="code" href="class_todoyu_timetracking_manager.html#a51f4f013c7a0c2a40347bd9ad923b8d2">TodoyuTimetrackingManager::calculateBillableTime</a>( $seconds );
+<a name="l00043"></a>00043     }
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045     <span class="keywordflow">return</span> <a class="code" href="core_2lib_2php_2dwoo_2plugins_8php.html#a457274db4ea6d2dea75462741778350d">Dwoo_Plugin_Workload</a>($dwoo, $seconds);
+<a name="l00046"></a>00046 }
+</pre></div></p>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:40 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

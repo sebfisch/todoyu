@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/TodoyuDbHelper.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/TodoyuDbHelper.class.php</h1><a href="_todoyu_db_helper_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00030"></a><a class="code" href="class_todoyu_db_helper.html">00030</a> <span class="keyword">class </span><a class="code" href="class_todoyu_db_helper.html">TodoyuDbHelper</a> {
+<a name="l00031"></a>00031 
+<a name="l00042"></a><a class="code" href="class_todoyu_db_helper.html#a18b61d6a0c4349de2adda6f0d96b3e7d">00042</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_db_helper.html#a18b61d6a0c4349de2adda6f0d96b3e7d">saveMMrelations</a>($mmTable, $localField, $foreignField, $idRecord, array $foreignRecordIDs, $removeCurrent = <span class="keyword">true</span>) {
+<a name="l00043"></a>00043         $idRecord           = intval($idRecord);
+<a name="l00044"></a>00044         $foreignRecordIDs   = <a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>($foreignRecordIDs, <span class="keyword">true</span>, <span class="keyword">true</span>);
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046         <span class="keywordflow">if</span>( $removeCurrent ) {
+<a name="l00047"></a>00047             <a class="code" href="class_todoyu_db_helper.html#a7f7e8b72681f08b8247a09747d20fcfe">self::removeMMrelations</a>($mmTable, $localField, $idRecord);
+<a name="l00048"></a>00048         }
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050         <span class="keywordflow">foreach</span>($foreignRecordIDs as $idForeignRecord) {
+<a name="l00051"></a>00051             <a class="code" href="class_todoyu_db_helper.html#a1f8f447becb263fa6ad95ae56362dc70">self::addMMrelation</a>($mmTable, $localField, $foreignField, $idRecord, $idForeignRecord);
+<a name="l00052"></a>00052         }
+<a name="l00053"></a>00053     }
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 
+<a name="l00056"></a><a class="code" href="class_todoyu_db_helper.html#a4f0d427cb0008ca2af9364b2a79d5609">00056</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_db_helper.html#a4f0d427cb0008ca2af9364b2a79d5609">saveExtendedMMrelation</a>($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord, array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>) {
+<a name="l00057"></a>00057         $idLocalRecord  = intval($idLocalRecord);
+<a name="l00058"></a>00058         $idForeignRecord= intval($idLocalRecord);
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <a class="code" href="class_todoyu_db_helper.html#aa6a21a39f8d2aa8d7a1c20b5cc178b9a">self::removeMMrelation</a>($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord);
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;addRecord($mmTable, $data);
+<a name="l00063"></a>00063     }
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 
+<a name="l00076"></a><a class="code" href="class_todoyu_db_helper.html#a1f8f447becb263fa6ad95ae56362dc70">00076</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_db_helper.html#a1f8f447becb263fa6ad95ae56362dc70">addMMrelation</a>($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord) {
+<a name="l00077"></a>00077         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00078"></a>00078             $localField     =&gt; intval($idLocalRecord),
+<a name="l00079"></a>00079             $foreignField   =&gt; intval($idForeignRecord)
+<a name="l00080"></a>00080         );
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;addRecord($mmTable, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00083"></a>00083     }
+<a name="l00084"></a>00084 
+<a name="l00085"></a><a class="code" href="class_todoyu_db_helper.html#aa6a21a39f8d2aa8d7a1c20b5cc178b9a">00085</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_db_helper.html#aa6a21a39f8d2aa8d7a1c20b5cc178b9a">removeMMrelation</a>($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord) {
+<a name="l00086"></a>00086         $idLocalRecord  = intval($idLocalRecord);
+<a name="l00087"></a>00087         $idForeignRecord= intval($idForeignRecord);
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  =   <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;backtick($localField) . <span class="stringliteral">&apos; = &apos;</span> . $idLocalRecord . <span class="stringliteral">&apos; AND &apos;</span> .
+<a name="l00090"></a>00090                     <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;backtick($foreignField) . <span class="stringliteral">&apos; = &apos;</span> . $idForeignRecord;
+<a name="l00091"></a>00091         $limit  = 1;
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doDelete($mmTable, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, $limit);
+<a name="l00094"></a>00094     }
+<a name="l00095"></a>00095 
+<a name="l00096"></a><a class="code" href="class_todoyu_db_helper.html#a7f7e8b72681f08b8247a09747d20fcfe">00096</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_db_helper.html#a7f7e8b72681f08b8247a09747d20fcfe">removeMMrelations</a>($mmTable, <a class="code" href="acknowledged__tasks_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>, $idRecord) {
+<a name="l00097"></a>00097         $idRecord   = intval($idRecord);
+<a name="l00098"></a>00098         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>      = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;backtick(<a class="code" href="acknowledged__tasks_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>) . <span class="stringliteral">&apos; = &apos;</span> . $idRecord;
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100         <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doDelete($mmTable, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00101"></a>00101     }
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103 }
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:31 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

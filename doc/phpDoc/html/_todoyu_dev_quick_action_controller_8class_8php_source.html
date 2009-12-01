@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/dev/controller/TodoyuDevQuickActionController.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/dev/controller/TodoyuDevQuickActionController.class.php</h1><a href="_todoyu_dev_quick_action_controller_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 
+<a name="l00003"></a>00003 
+<a name="l00004"></a><a class="code" href="class_todoyu_dev_quick_action_controller.html">00004</a> <span class="keyword">class </span><a class="code" href="class_todoyu_dev_quick_action_controller.html">TodoyuDevQuickActionController</a> <span class="keyword">extends</span> <a class="code" href="class_todoyu_action_controller.html">TodoyuActionController</a> {
+<a name="l00005"></a>00005 
+<a name="l00006"></a><a class="code" href="class_todoyu_dev_quick_action_controller.html#a178ea6bf91dabc8e0a94712a4517744b">00006</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_dev_quick_action_controller.html#a178ea6bf91dabc8e0a94712a4517744b">defaultAction</a>(array <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>) {
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008         <a class="code" href="erni_8php.html#a0a4baf0b22973c07685c3981f0d17fc4">$path</a>   = <span class="stringliteral">&apos;C:\Programme\xampp\htdocs\todoyu\files/assets/task/9&apos;</span>;
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010         <a class="code" href="class_todoyu_debug.html#a7a5d0dd4f323a284503b7c60d38997de">TodoyuDebug::printHtml</a>(<a class="code" href="erni_8php.html#a0a4baf0b22973c07685c3981f0d17fc4">$path</a>);
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012         <a class="code" href="class_todoyu_file_manager.html#a155d32d6f435887bd11757d976278edc">TodoyuFileManager::makeDirDeep</a>(<a class="code" href="erni_8php.html#a0a4baf0b22973c07685c3981f0d17fc4">$path</a>);
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015     }
+<a name="l00016"></a>00016 
+<a name="l00017"></a><a class="code" href="class_todoyu_dev_quick_action_controller.html#ab23d6c3eea388e242ff5967e74b0c776">00017</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_dev_quick_action_controller.html#ab23d6c3eea388e242ff5967e74b0c776">arrayAction</a>(array <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>) {
+<a name="l00018"></a>00018         $array = array(
+<a name="l00019"></a>00019             <span class="stringliteral">&apos;das&apos;</span>       =&gt; 1,
+<a name="l00020"></a>00020             <span class="stringliteral">&apos;ist&apos;</span>       =&gt; 2,
+<a name="l00021"></a>00021             <span class="stringliteral">&apos;meine&apos;</span>     =&gt; 3,
+<a name="l00022"></a>00022             <span class="stringliteral">&apos;insert&apos;</span>    =&gt; 4,
+<a name="l00023"></a>00023             <span class="stringliteral">&apos;funktion&apos;</span>  =&gt; 5
+<a name="l00024"></a>00024         );
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026         $new = <a class="code" href="class_todoyu_array.html#a2541ba934a1c9574ff1eb656af137b23">TodoyuArray::insertElement</a>($array, <span class="stringliteral">&apos;das&apos;</span>, 99);
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028         <a class="code" href="class_todoyu_debug.html#a7a5d0dd4f323a284503b7c60d38997de">TodoyuDebug::printHtml</a>($new);
+<a name="l00029"></a>00029     }
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 
+<a name="l00032"></a><a class="code" href="class_todoyu_dev_quick_action_controller.html#a8a579f210e8af02767ebb624351a115c">00032</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_dev_quick_action_controller.html#a8a579f210e8af02767ebb624351a115c">localeAction</a>(array <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>) {
+<a name="l00033"></a>00033         <a class="code" href="class_todoyu_header.html#af424ca6ec62d0b19c48f2bedcdd3bb8b">TodoyuHeader::sendHeaderPlain</a>();
+<a name="l00034"></a>00034         echo <a class="code" href="functions_8php.html#a7c072b45376ab4eab800bc4788a4e22f">Label</a>(<span class="stringliteral">&apos;dev.funStuff&apos;</span>);
+<a name="l00035"></a>00035     }
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="class_todoyu_dev_quick_action_controller.html#abe4582dc3859ed67e5f01ccfe7ffa78e">00037</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_dev_quick_action_controller.html#abe4582dc3859ed67e5f01ccfe7ffa78e">dateAction</a>(array <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>) {
+<a name="l00038"></a>00038         echo <span class="stringliteral">&quot;&lt;script&gt;var d = new Date(); d.setDate(1); console.log(d);&lt;/script&gt;&quot;</span>;
+<a name="l00039"></a>00039     }
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 }
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:34 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

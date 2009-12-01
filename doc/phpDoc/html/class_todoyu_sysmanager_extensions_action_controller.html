@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuSysmanagerExtensionsActionController Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuSysmanagerExtensionsActionController Klassenreferenz</h1><!-- doxytag: class="TodoyuSysmanagerExtensionsActionController" --><!-- doxytag: inherits="TodoyuActionController" --><div class="dynheader">
+Klassendiagramm für TodoyuSysmanagerExtensionsActionController:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_sysmanager_extensions_action_controller.gif" usemap="#TodoyuSysmanagerExtensionsActionController_map" alt=""/>
+  <map id="TodoyuSysmanagerExtensionsActionController_map" name="TodoyuSysmanagerExtensionsActionController_map">
+<area href="class_todoyu_action_controller.html" alt="TodoyuActionController" shape="rect" coords="0,0,276,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_sysmanager_extensions_action_controller.html#af3d0d8ea6c992943e492a449f8c4bc55">tabviewAction</a> (array $params)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_sysmanager_extensions_action_controller.html#ae47e0928862bedb4dcbd404dc7e4fd57">installAction</a> (array $params)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_sysmanager_extensions_action_controller.html#a8130942420952ed3de203adf50bfb6a4">uninstallAction</a> (array $params)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_sysmanager_extensions_action_controller.html#a5853b52bbe299f1bd9f10b2e6cd1e677">downloadAction</a> (array $params)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_sysmanager_extensions_action_controller_8class_8php_source.html#l00022">22</a> der Datei <a class="el" href="_todoyu_sysmanager_extensions_action_controller_8class_8php_source.html">TodoyuSysmanagerExtensionsActionController.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a5853b52bbe299f1bd9f10b2e6cd1e677"></a><!-- doxytag: member="TodoyuSysmanagerExtensionsActionController::downloadAction" ref="a5853b52bbe299f1bd9f10b2e6cd1e677" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">downloadAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_sysmanager_extensions_action_controller_8class_8php_source.html#l00068">68</a> der Datei <a class="el" href="_todoyu_sysmanager_extensions_action_controller_8class_8php_source.html">TodoyuSysmanagerExtensionsActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00068"></a>00068                                                   {
+<a name="l00069"></a>00069         $extKey = <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;extension&apos;</span>];
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071         <a class="code" href="class_todoyu_ext_installer.html#aaacb1636a05406ab14c0c729f122294e">TodoyuExtInstaller::downloadExtension</a>($extKey);
+<a name="l00072"></a>00072     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="ae47e0928862bedb4dcbd404dc7e4fd57"></a><!-- doxytag: member="TodoyuSysmanagerExtensionsActionController::installAction" ref="ae47e0928862bedb4dcbd404dc7e4fd57" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">installAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_sysmanager_extensions_action_controller_8class_8php_source.html#l00038">38</a> der Datei <a class="el" href="_todoyu_sysmanager_extensions_action_controller_8class_8php_source.html">TodoyuSysmanagerExtensionsActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00038"></a>00038                                                  {
+<a name="l00039"></a>00039         $extKey = <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;extension&apos;</span>];
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041         <a class="code" href="class_todoyu_ext_installer.html#a0bafad617896b86f12e678fa048e68fa">TodoyuExtInstaller::install</a>($extKey);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         $infos  = <a class="code" href="class_todoyu_ext_manager.html#abef71e30db9f1d04422476ab7ef281f1">TodoyuExtManager::getExtInfos</a>($extKey);
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045         <span class="keywordflow">return</span> $infos[<span class="stringliteral">&apos;title&apos;</span>];
+<a name="l00046"></a>00046     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="af3d0d8ea6c992943e492a449f8c4bc55"></a><!-- doxytag: member="TodoyuSysmanagerExtensionsActionController::tabviewAction" ref="af3d0d8ea6c992943e492a449f8c4bc55" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tabviewAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Default request to load a tab in the extension manager</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$params </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_sysmanager_extensions_action_controller_8class_8php_source.html#l00030">30</a> der Datei <a class="el" href="_todoyu_sysmanager_extensions_action_controller_8class_8php_source.html">TodoyuSysmanagerExtensionsActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00030"></a>00030                                                  {
+<a name="l00031"></a>00031         $extKey = <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;extension&apos;</span>];
+<a name="l00032"></a>00032         $tab    = <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;tab&apos;</span>];
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_ext_manager_renderer.html#aaddf09bfdaccc67ca5776b2c77ba71ec">TodoyuExtManagerRenderer::renderTabView</a>($extKey, $tab, <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>);
+<a name="l00035"></a>00035     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a8130942420952ed3de203adf50bfb6a4"></a><!-- doxytag: member="TodoyuSysmanagerExtensionsActionController::uninstallAction" ref="a8130942420952ed3de203adf50bfb6a4" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uninstallAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_sysmanager_extensions_action_controller_8class_8php_source.html#l00049">49</a> der Datei <a class="el" href="_todoyu_sysmanager_extensions_action_controller_8class_8php_source.html">TodoyuSysmanagerExtensionsActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00049"></a>00049                                                    {
+<a name="l00050"></a>00050         $extKey = <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;extension&apos;</span>];
+<a name="l00051"></a>00051         $message= <span class="stringliteral">&apos;&apos;</span>;
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054         <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_ext_installer.html#a46c2c432700d8506649c87baf2f6fdfe">TodoyuExtInstaller::canUninstall</a>($extKey) ) {
+<a name="l00055"></a>00055             <a class="code" href="class_todoyu_ext_installer.html#a32bb91b8159fb26025af7dbe52a9a230">TodoyuExtInstaller::uninstall</a>($extKey);
+<a name="l00056"></a>00056             $extInfos   = <a class="code" href="class_todoyu_ext_manager.html#abef71e30db9f1d04422476ab7ef281f1">TodoyuExtManager::getExtInfos</a>($extKey);
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058             $message= <span class="stringliteral">&apos;Extension &quot;&apos;</span> . htmlentities($extInfos[<span class="stringliteral">&apos;title&apos;</span>]) . <span class="stringliteral">&apos;&quot; sucessfully uninstalled&apos;</span>;
+<a name="l00059"></a>00059         } <span class="keywordflow">else</span> {
+<a name="l00060"></a>00060             $message    = <a class="code" href="class_todoyu_ext_installer.html#a608f96cb18d20e8c1e0c8044c041dab6">TodoyuExtInstaller::getUninstallFailReason</a>($extKey);
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062             <a class="code" href="class_todoyu_header.html#a586ab08156a2e5009c4e66e1b6ceee5b">TodoyuHeader::sendTodoyuErrorHeader</a>();
+<a name="l00063"></a>00063         }
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065         <span class="keywordflow">return</span> $message;
+<a name="l00066"></a>00066     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/sysmanager/controller/<a class="el" href="_todoyu_sysmanager_extensions_action_controller_8class_8php_source.html">TodoyuSysmanagerExtensionsActionController.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:48 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

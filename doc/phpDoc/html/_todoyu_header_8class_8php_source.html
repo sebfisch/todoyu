@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/TodoyuHeader.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/TodoyuHeader.class.php</h1><a href="_todoyu_header_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00028"></a><a class="code" href="class_todoyu_header.html">00028</a> <span class="keyword">class </span><a class="code" href="class_todoyu_header.html">TodoyuHeader</a> {
+<a name="l00029"></a>00029 
+<a name="l00035"></a>00035     <span class="keyword">private</span> <span class="keyword">static</span> $type = <span class="stringliteral">&apos;HTML&apos;</span>;
+<a name="l00036"></a>00036 
+<a name="l00042"></a>00042     <span class="keyword">private</span> <span class="keyword">static</span> $sent = <span class="keyword">false</span>;
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 
+<a name="l00050"></a><a class="code" href="class_todoyu_header.html#a7e762bc529dd35c18164c03fc665742d">00050</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a7e762bc529dd35c18164c03fc665742d">setSent</a>() {
+<a name="l00051"></a>00051         self::$sent = <span class="keyword">true</span>;
+<a name="l00052"></a>00052     }
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 
+<a name="l00061"></a><a class="code" href="class_todoyu_header.html#a2f473dd8647862ede3e72aac082776d6">00061</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a2f473dd8647862ede3e72aac082776d6">isSent</a>() {
+<a name="l00062"></a>00062         <span class="keywordflow">return</span> self::$sent;
+<a name="l00063"></a>00063     }
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 
+<a name="l00072"></a><a class="code" href="class_todoyu_header.html#a684af092c6cde57924eea23cfb831a38">00072</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a684af092c6cde57924eea23cfb831a38">setType</a>($type) {
+<a name="l00073"></a>00073         self::$type = $type;
+<a name="l00074"></a>00074     }
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 
+<a name="l00083"></a><a class="code" href="class_todoyu_header.html#a3dadfbfaa3d8e3b5fe01a60e28640ddb">00083</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a3dadfbfaa3d8e3b5fe01a60e28640ddb">getType</a>() {
+<a name="l00084"></a>00084         <span class="keywordflow">return</span> self::$type;
+<a name="l00085"></a>00085     }
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 
+<a name="l00093"></a><a class="code" href="class_todoyu_header.html#a3347a9da22aece670b6a0e1229da52df">00093</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a3347a9da22aece670b6a0e1229da52df">sendHeaderHTML</a>() {
+<a name="l00094"></a>00094         <a class="code" href="class_todoyu_header.html#a684af092c6cde57924eea23cfb831a38">self::setType</a>(<span class="stringliteral">&apos;HTML&apos;</span>);
+<a name="l00095"></a>00095         <a class="code" href="class_todoyu_header.html#a639f4902fb425763629db3a112753b13">self::sendContentType</a>(<span class="stringliteral">&apos;text/html&apos;</span>);
+<a name="l00096"></a>00096     }
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099 
+<a name="l00104"></a><a class="code" href="class_todoyu_header.html#a944b69dbf182b7808937a8f18e1c7121">00104</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a944b69dbf182b7808937a8f18e1c7121">sendHeaderJSON</a>() {
+<a name="l00105"></a>00105         <a class="code" href="class_todoyu_header.html#a684af092c6cde57924eea23cfb831a38">self::setType</a>(<span class="stringliteral">&apos;JSON&apos;</span>);
+<a name="l00106"></a>00106         <a class="code" href="class_todoyu_header.html#a639f4902fb425763629db3a112753b13">self::sendContentType</a>(<span class="stringliteral">&apos;application/json&apos;</span>);
+<a name="l00107"></a>00107     }
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110 
+<a name="l00115"></a><a class="code" href="class_todoyu_header.html#ab5540bc3e73028dab5a57cb2298d358c">00115</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#ab5540bc3e73028dab5a57cb2298d358c">sendHeaderXML</a>() {
+<a name="l00116"></a>00116         <a class="code" href="class_todoyu_header.html#a684af092c6cde57924eea23cfb831a38">self::setType</a>(<span class="stringliteral">&apos;XML&apos;</span>);
+<a name="l00117"></a>00117         <a class="code" href="class_todoyu_header.html#a639f4902fb425763629db3a112753b13">self::sendContentType</a>(<span class="stringliteral">&apos;text/xml&apos;</span>);
+<a name="l00118"></a>00118     }
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 
+<a name="l00126"></a><a class="code" href="class_todoyu_header.html#af424ca6ec62d0b19c48f2bedcdd3bb8b">00126</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#af424ca6ec62d0b19c48f2bedcdd3bb8b">sendHeaderPlain</a>() {
+<a name="l00127"></a>00127         <a class="code" href="class_todoyu_header.html#a684af092c6cde57924eea23cfb831a38">self::setType</a>(<span class="stringliteral">&apos;PLAIN&apos;</span>);
+<a name="l00128"></a>00128         <a class="code" href="class_todoyu_header.html#a639f4902fb425763629db3a112753b13">self::sendContentType</a>(<span class="stringliteral">&apos;text/plain&apos;</span>);
+<a name="l00129"></a>00129     }
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132 
+<a name="l00139"></a><a class="code" href="class_todoyu_header.html#a639f4902fb425763629db3a112753b13">00139</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a639f4902fb425763629db3a112753b13">sendContentType</a>($type, $charset = <span class="stringliteral">&apos;utf-8&apos;</span>) {
+<a name="l00140"></a>00140         <a class="code" href="class_todoyu_header.html#a45aa7b5c1f33df225aaef60cda9ac64a">self::sendHeader</a>(<span class="stringliteral">&apos;Content-type&apos;</span>, <span class="stringliteral">&quot;$type;charset=$charset&quot;</span>);
+<a name="l00141"></a>00141     }
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 
+<a name="l00149"></a><a class="code" href="class_todoyu_header.html#ae82696419c476e63c25ce58a257ad7de">00149</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#ae82696419c476e63c25ce58a257ad7de">sendNoCacheHeaders</a>() {
+<a name="l00150"></a>00150         <a class="code" href="class_todoyu_header.html#a45aa7b5c1f33df225aaef60cda9ac64a">self::sendHeader</a>(<span class="stringliteral">&apos;Cache-Control&apos;</span>, <span class="stringliteral">&apos;no-cache, must-revalidate&apos;</span>);
+<a name="l00151"></a>00151         <a class="code" href="class_todoyu_header.html#a45aa7b5c1f33df225aaef60cda9ac64a">self::sendHeader</a>(<span class="stringliteral">&apos;Expires&apos;</span>, date(<span class="charliteral">&apos;r&apos;</span>, 0));
+<a name="l00152"></a>00152         <a class="code" href="class_todoyu_header.html#a45aa7b5c1f33df225aaef60cda9ac64a">self::sendHeader</a>(<span class="stringliteral">&apos;Pragma&apos;</span>, <span class="stringliteral">&apos;no-cache&apos;</span>);
+<a name="l00153"></a>00153     }
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156 
+<a name="l00162"></a><a class="code" href="class_todoyu_header.html#a105c90c4da642847b214bdda0bb1acc2">00162</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a105c90c4da642847b214bdda0bb1acc2">sendHashHeader</a>($hash) {
+<a name="l00163"></a>00163         <a class="code" href="class_todoyu_header.html#aa0c1ef71a92947cca4b28cb31bc9edd1">self::sendTodoyuHeader</a>(<span class="stringliteral">&apos;Hash&apos;</span>, $hash);
+<a name="l00164"></a>00164     }
+<a name="l00165"></a>00165 
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167 
+<a name="l00174"></a><a class="code" href="class_todoyu_header.html#aa0c1ef71a92947cca4b28cb31bc9edd1">00174</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#aa0c1ef71a92947cca4b28cb31bc9edd1">sendTodoyuHeader</a>($name, $value, $utf8Entities = <span class="keyword">false</span>) {
+<a name="l00175"></a>00175         <span class="keywordflow">if</span>( $utf8Entities ) {
+<a name="l00176"></a>00176             $value = htmlentities($value, ENT_COMPAT, <span class="stringliteral">&apos;UTF-8&apos;</span>);
+<a name="l00177"></a>00177         }
+<a name="l00178"></a>00178         <a class="code" href="class_todoyu_header.html#a45aa7b5c1f33df225aaef60cda9ac64a">self::sendHeader</a>(<span class="stringliteral">&apos;Todoyu-&apos;</span> . $name, $value);
+<a name="l00179"></a>00179     }
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182 
+<a name="l00190"></a><a class="code" href="class_todoyu_header.html#a586ab08156a2e5009c4e66e1b6ceee5b">00190</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a586ab08156a2e5009c4e66e1b6ceee5b">sendTodoyuErrorHeader</a>() {
+<a name="l00191"></a>00191         <a class="code" href="class_todoyu_header.html#aa0c1ef71a92947cca4b28cb31bc9edd1">self::sendTodoyuHeader</a>(<span class="stringliteral">&apos;error&apos;</span>, 1);
+<a name="l00192"></a>00192     }
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195 
+<a name="l00200"></a><a class="code" href="class_todoyu_header.html#a48a7b18deef51e67d65dbfbda48e26d6">00200</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a48a7b18deef51e67d65dbfbda48e26d6">sendNoAccessHeader</a>() {
+<a name="l00201"></a>00201         <a class="code" href="class_todoyu_header.html#aa0c1ef71a92947cca4b28cb31bc9edd1">self::sendTodoyuHeader</a>(<span class="stringliteral">&apos;noAccess&apos;</span>, 1);
+<a name="l00202"></a>00202     }
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204 
+<a name="l00205"></a>00205 
+<a name="l00212"></a><a class="code" href="class_todoyu_header.html#a45aa7b5c1f33df225aaef60cda9ac64a">00212</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a45aa7b5c1f33df225aaef60cda9ac64a">sendHeader</a>($name, $value) {
+<a name="l00213"></a>00213         header($name . <span class="stringliteral">&apos;: &apos;</span> . $value);
+<a name="l00214"></a>00214     }
+<a name="l00215"></a>00215 
+<a name="l00216"></a>00216 
+<a name="l00217"></a>00217 
+<a name="l00225"></a><a class="code" href="class_todoyu_header.html#a9aa16d89215b56b5630bc98b53dee83d">00225</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a9aa16d89215b56b5630bc98b53dee83d">redirect</a>($ext, $controller = <span class="stringliteral">&apos;ext&apos;</span>, array $addParams = array()) {
+<a name="l00226"></a>00226         $params     = array(
+<a name="l00227"></a>00227             <span class="stringliteral">&apos;ext&apos;</span>       =&gt; $ext,
+<a name="l00228"></a>00228             <span class="stringliteral">&apos;controller&apos;</span>=&gt; $controller
+<a name="l00229"></a>00229         );
+<a name="l00230"></a>00230         $params = array_merge($params, $addParams);
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232         $url    = <a class="code" href="class_todoyu_div.html#a77aa1b7374b241b7349345489a6a579f">TodoyuDiv::buildUrl</a>($params);
+<a name="l00233"></a>00233 
+<a name="l00234"></a>00234         <a class="code" href="class_todoyu_header.html#a45aa7b5c1f33df225aaef60cda9ac64a">self::sendHeader</a>(<span class="stringliteral">&apos;Location&apos;</span>, $url);
+<a name="l00235"></a>00235         exit();
+<a name="l00236"></a>00236     }
+<a name="l00237"></a>00237 
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239 
+<a name="l00245"></a><a class="code" href="class_todoyu_header.html#a2f25f9936f05f0b14c376883c31497a3">00245</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_header.html#a2f25f9936f05f0b14c376883c31497a3">reload</a>() {
+<a name="l00246"></a>00246         $remove         = array(<span class="stringliteral">&apos;ext&apos;</span>, <span class="stringliteral">&apos;controller&apos;</span>);
+<a name="l00247"></a>00247         $requestParams  = <a class="code" href="class_todoyu_request.html#aca7ae46d923aa798f1e29657bb767a22">TodoyuRequest::getAll</a>();
+<a name="l00248"></a>00248         $redirectParams = array_diff($requestParams, $remove);
+<a name="l00249"></a>00249 
+<a name="l00250"></a>00250         <span class="keywordflow">if</span>( empty($requestParams[<span class="stringliteral">&apos;ext&apos;</span>]) ) {
+<a name="l00251"></a>00251             $requestParams[<span class="stringliteral">&apos;ext&apos;</span>] = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;FE&apos;</span>][<span class="stringliteral">&apos;DEFAULT&apos;</span>][<span class="stringliteral">&apos;ext&apos;</span>];
+<a name="l00252"></a>00252         }
+<a name="l00253"></a>00253         <span class="keywordflow">if</span>( empty($requestParams[<span class="stringliteral">&apos;controller&apos;</span>]) ) {
+<a name="l00254"></a>00254             $requestParams[<span class="stringliteral">&apos;controller&apos;</span>] = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;FE&apos;</span>][<span class="stringliteral">&apos;DEFAULT&apos;</span>][<span class="stringliteral">&apos;controller&apos;</span>];
+<a name="l00255"></a>00255         }
+<a name="l00256"></a>00256 
+<a name="l00257"></a>00257         <a class="code" href="class_todoyu_header.html#a9aa16d89215b56b5630bc98b53dee83d">self::redirect</a>($requestParams[<span class="stringliteral">&apos;ext&apos;</span>], $requestParams[<span class="stringliteral">&apos;controller&apos;</span>], $redirectParams);
+<a name="l00258"></a>00258     }
+<a name="l00259"></a>00259 
+<a name="l00260"></a>00260 }
+<a name="l00261"></a>00261 
+<a name="l00262"></a>00262 
+<a name="l00263"></a>00263 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:32 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuDebug Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuDebug Klassenreferenz</h1><!-- doxytag: class="TodoyuDebug" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_debug.html#abe5d493a35ffbdb1789833cdd47cafa0">printPlain</a> ($item, $title= '', $usernames=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_debug.html#a7a5d0dd4f323a284503b7c60d38997de">printHtml</a> ($item, $title= '', $usernames=null, $backtrace=false)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_debug.html#ac9651feeeb651c2c95753582d5d044bb">printJson</a> ($item, $title, $usernames=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_debug.html#adc1d20befc0f0af3f20834265b0f81ac">printInFirebug</a> ($item, $title= '', $usernames=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_debug.html#a79fa73806eca3e2829a78671f54c48f8">printLastQueryInFirebug</a> ($ident=null)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_debug.html#a5666882a1432079e2f3b805f7f316e81">firePhp</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_debug.html#a190c7a8c42f07994d49374900775fd05">printBacktrace</a> ()</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_debug_8class_8php_source.html#l00031">31</a> der Datei <a class="el" href="_todoyu_debug_8class_8php_source.html">TodoyuDebug.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a5666882a1432079e2f3b805f7f316e81"></a><!-- doxytag: member="TodoyuDebug::firePhp" ref="a5666882a1432079e2f3b805f7f316e81" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static firePhp </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get firePhp Instance</p>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>FirePhp </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_debug_8class_8php_source.html#l00179">179</a> der Datei <a class="el" href="_todoyu_debug_8class_8php_source.html">TodoyuDebug.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00179"></a>00179                                      {
+<a name="l00180"></a>00180         <span class="keywordflow">return</span> FirePHP::getInstance(<span class="keyword">true</span>);
+<a name="l00181"></a>00181     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a190c7a8c42f07994d49374900775fd05"></a><!-- doxytag: member="TodoyuDebug::printBacktrace" ref="a190c7a8c42f07994d49374900775fd05" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static printBacktrace </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Print function backtrace debug </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_debug_8class_8php_source.html#l00189">189</a> der Datei <a class="el" href="_todoyu_debug_8class_8php_source.html">TodoyuDebug.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00189"></a>00189                                             {
+<a name="l00190"></a>00190         $backtrace  = debug_backtrace();
+<a name="l00191"></a>00191         array_shift($backtrace);
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193         <a class="code" href="class_todoyu_debug.html#a7a5d0dd4f323a284503b7c60d38997de">self::printHtml</a>($backtrace, <span class="stringliteral">&apos;Backtrace&apos;</span>);
+<a name="l00194"></a>00194     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a7a5d0dd4f323a284503b7c60d38997de"></a><!-- doxytag: member="TodoyuDebug::printHtml" ref="a7a5d0dd4f323a284503b7c60d38997de" args="($item, $title= '', $usernames=null, $backtrace=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static printHtml </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>title</em> = <code>''</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>usernames</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>backtrace</em> = <code>false</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Print debug message as HTML</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Mixed</em>&nbsp;</td><td>$item Item to debug </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$title Title for debug output </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$usernames Only this listed users shall see the debug output </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_debug_8class_8php_source.html#l00101">101</a> der Datei <a class="el" href="_todoyu_debug_8class_8php_source.html">TodoyuDebug.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00101"></a>00101                                                                                                 {
+<a name="l00102"></a>00102         <span class="keywordflow">if</span>( ! is_null($usernames) &amp;&amp; !self::isCurrentUser($usernames) ) {
+<a name="l00103"></a>00103             <span class="keywordflow">return</span>;
+<a name="l00104"></a>00104         }
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106         <span class="keywordflow">if</span>( <a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a> === <span class="keyword">false</span> || <a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a> === <span class="keyword">true</span> || <a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a> === <span class="stringliteral">&apos;&apos;</span> ) {
+<a name="l00107"></a>00107             ob_start();
+<a name="l00108"></a>00108             var_dump(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>);
+<a name="l00109"></a>00109             $debug = ob_get_flush();
+<a name="l00110"></a>00110         } <span class="keywordflow">else</span> {
+<a name="l00111"></a>00111             $debug = print_r(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>, <span class="keyword">true</span>);
+<a name="l00112"></a>00112         }
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         $tmpl   = <span class="stringliteral">&apos;core/view/debug_html.tmpl&apos;</span>;
+<a name="l00115"></a>00115         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00116"></a>00116             <span class="stringliteral">&apos;title&apos;</span>     =&gt; $title,
+<a name="l00117"></a>00117             <span class="stringliteral">&apos;debug&apos;</span>     =&gt; $debug,
+<a name="l00118"></a>00118             <span class="stringliteral">&apos;backtrace&apos;</span> =&gt; $backtrace ? print_r( debug_backtrace(), <span class="keyword">true</span> ) : <span class="stringliteral">&apos;&apos;</span>,
+<a name="l00119"></a>00119             <span class="stringliteral">&apos;caller&apos;</span>    =&gt; self::getCaller()
+<a name="l00120"></a>00120         );
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122         echo <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00123"></a>00123     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="adc1d20befc0f0af3f20834265b0f81ac"></a><!-- doxytag: member="TodoyuDebug::printInFirebug" ref="adc1d20befc0f0af3f20834265b0f81ac" args="($item, $title= '', $usernames=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static printInFirebug </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>title</em> = <code>''</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>usernames</em> = <code>null</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Print debug message in firebug</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Mixed</em>&nbsp;</td><td>$item </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$title </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$usernames </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_debug_8class_8php_source.html#l00147">147</a> der Datei <a class="el" href="_todoyu_debug_8class_8php_source.html">TodoyuDebug.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00147"></a>00147                                                                                  {
+<a name="l00148"></a>00148         <span class="keywordflow">if</span>( ! is_null($usernames) &amp;&amp; !self::isCurrentUser($usernames) ) {
+<a name="l00149"></a>00149             <span class="keywordflow">return</span>;
+<a name="l00150"></a>00150         }
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152         <a class="code" href="class_todoyu_debug.html#a5666882a1432079e2f3b805f7f316e81">self::firePhp</a>()-&gt;log(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>, $title);
+<a name="l00153"></a>00153     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="ac9651feeeb651c2c95753582d5d044bb"></a><!-- doxytag: member="TodoyuDebug::printJson" ref="ac9651feeeb651c2c95753582d5d044bb" args="($item, $title, $usernames=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static printJson </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>usernames</em> = <code>null</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Print debug message as JSON</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Mixed</em>&nbsp;</td><td>$item Item to debug </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$title Title for debug output </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$usernames Only this listed users shall see the debug output </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_debug_8class_8php_source.html#l00134">134</a> der Datei <a class="el" href="_todoyu_debug_8class_8php_source.html">TodoyuDebug.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00134"></a>00134                                                                        {
+<a name="l00135"></a>00135         echo <span class="stringliteral">&quot;NO JSON DEBUG AT THE MOMENT&quot;</span>;
+<a name="l00136"></a>00136     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a79fa73806eca3e2829a78671f54c48f8"></a><!-- doxytag: member="TodoyuDebug::printLastQueryInFirebug" ref="a79fa73806eca3e2829a78671f54c48f8" args="($ident=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static printLastQueryInFirebug </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>ident</em> = <code>null</code></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Print the last executed query in firebug</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$ident Special identifier </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_debug_8class_8php_source.html#l00162">162</a> der Datei <a class="el" href="_todoyu_debug_8class_8php_source.html">TodoyuDebug.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00162"></a>00162                                                                   {
+<a name="l00163"></a>00163         $title  = <span class="stringliteral">&apos;Last Query&apos;</span>;
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165         <span class="keywordflow">if</span>( ! is_null($ident) ) {
+<a name="l00166"></a>00166             $title .= <span class="stringliteral">&apos; (&apos;</span> . $ident . <span class="charliteral">&apos;)&apos;</span>;
+<a name="l00167"></a>00167         }
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169         <a class="code" href="class_todoyu_debug.html#adc1d20befc0f0af3f20834265b0f81ac">self::printInFirebug</a>(<a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getLastQuery(), $title);
+<a name="l00170"></a>00170     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="abe5d493a35ffbdb1789833cdd47cafa0"></a><!-- doxytag: member="TodoyuDebug::printPlain" ref="abe5d493a35ffbdb1789833cdd47cafa0" args="($item, $title= '', $usernames=null)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static printPlain </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>title</em> = <code>''</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>usernames</em> = <code>null</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Print debug message in plain text</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Mixed</em>&nbsp;</td><td>$item Item to debug </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$title Title for debug output </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$usernames Only this listed users shall see the debug output </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_debug_8class_8php_source.html#l00070">70</a> der Datei <a class="el" href="_todoyu_debug_8class_8php_source.html">TodoyuDebug.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00070"></a>00070                                                                              {
+<a name="l00071"></a>00071         <span class="keywordflow">if</span>( ! is_null($usernames) &amp;&amp; !self::isCurrentUser($usernames) ) {
+<a name="l00072"></a>00072             <span class="keywordflow">return</span>;
+<a name="l00073"></a>00073         }
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075         <a class="code" href="class_todoyu_header.html#af424ca6ec62d0b19c48f2bedcdd3bb8b">TodoyuHeader::sendHeaderPlain</a>();
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077         $caller = self::getCaller();
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079         $output = <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00080"></a>00080         <span class="keywordflow">if</span>( $title != <span class="stringliteral">&apos;&apos;</span> ) {
+<a name="l00081"></a>00081             $output .= <span class="stringliteral">&apos;DEBUG: &apos;</span> . $title . <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00082"></a>00082         }
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084         $output .= str_repeat(<span class="charliteral">&apos;=&apos;</span>, 70) . <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00085"></a>00085         $output .= $caller[<span class="stringliteral">&apos;file&apos;</span>] . <span class="stringliteral">&apos; : &apos;</span> . $caller[<span class="stringliteral">&apos;line&apos;</span>] . <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00086"></a>00086         $output .= str_repeat(<span class="charliteral">&apos;=&apos;</span>, 70) . <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00087"></a>00087         $output .= print_r(<a class="code" href="validator_8php.html#aa61b415cee119a7511e05c405ecd0b32">$item</a>, <span class="keyword">true</span>);
+<a name="l00088"></a>00088         $output .= <span class="stringliteral">&quot;\n\n&quot;</span>;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090         echo $output;
+<a name="l00091"></a>00091     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/core/<a class="el" href="_todoyu_debug_8class_8php_source.html">TodoyuDebug.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:44 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

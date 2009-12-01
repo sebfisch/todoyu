@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuProjectExtActionController Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuProjectExtActionController Klassenreferenz</h1><!-- doxytag: class="TodoyuProjectExtActionController" --><!-- doxytag: inherits="TodoyuActionController" --><div class="dynheader">
+Klassendiagramm für TodoyuProjectExtActionController:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_project_ext_action_controller.gif" usemap="#TodoyuProjectExtActionController_map" alt=""/>
+  <map id="TodoyuProjectExtActionController_map" name="TodoyuProjectExtActionController_map">
+<area href="class_todoyu_action_controller.html" alt="TodoyuActionController" shape="rect" coords="0,0,203,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_project_ext_action_controller.html#a178ea6bf91dabc8e0a94712a4517744b">defaultAction</a> (array $params)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_project_ext_action_controller_8class_8php_source.html#l00028">28</a> der Datei <a class="el" href="_todoyu_project_ext_action_controller_8class_8php_source.html">TodoyuProjectExtActionController.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a178ea6bf91dabc8e0a94712a4517744b"></a><!-- doxytag: member="TodoyuProjectExtActionController::defaultAction" ref="a178ea6bf91dabc8e0a94712a4517744b" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">defaultAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Default action</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$params </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_project_ext_action_controller_8class_8php_source.html#l00036">36</a> der Datei <a class="el" href="_todoyu_project_ext_action_controller_8class_8php_source.html">TodoyuProjectExtActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00036"></a>00036                                                  {
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038             <span class="comment">// Set project tab</span>
+<a name="l00039"></a>00039         <a class="code" href="class_todoyu_frontend.html#a2d4e32e2eca7f2a293aa15c4bb2af7d0">TodoyuFrontend::setActiveTab</a>(<span class="stringliteral">&apos;project&apos;</span>);
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042             <span class="comment">// Get deeplink parameters</span>
+<a name="l00043"></a>00043         $idProject  = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;project&apos;</span>]);
+<a name="l00044"></a>00044         $idTask     = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;task&apos;</span>]);
+<a name="l00045"></a>00045         $taskTab    = <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;tab&apos;</span>];
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047             <span class="comment">// Find project if only the task is given as parameter</span>
+<a name="l00048"></a>00048         <span class="keywordflow">if</span>( $idTask !== 0 &amp;&amp; $idProject === 0 ) {
+<a name="l00049"></a>00049             $idProject = <a class="code" href="class_todoyu_task_manager.html#a2626a9e89bbabc06a4e92beb9177d5c8">TodoyuTaskManager::getProjectID</a>($idTask);
+<a name="l00050"></a>00050         }
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052             <span class="comment">// Get project if not set by parameter or save the given one in preferences</span>
+<a name="l00053"></a>00053         <span class="keywordflow">if</span>( $idProject === 0 ) {
+<a name="l00054"></a>00054             $idProject = <a class="code" href="class_todoyu_project_manager.html#a141d7139339e4b60958ac72c5f055210">TodoyuProjectManager::getActiveProjectID</a>();
+<a name="l00055"></a>00055         } <span class="keywordflow">else</span> {
+<a name="l00056"></a>00056             <a class="code" href="class_todoyu_project_preferences.html#adda275bb60e696821f627e22a2c61de4">TodoyuProjectPreferences::saveCurrentProject</a>($idProject);
+<a name="l00057"></a>00057         }
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061             <span class="comment">// Init page</span>
+<a name="l00062"></a>00062         <a class="code" href="class_todoyu_action_controller.html#a7d8b575549d659cc58610c461c95a20f">TodoyuPage::init</a>(<span class="stringliteral">&apos;ext/project/view/ext.tmpl&apos;</span>);
+<a name="l00063"></a>00063             <span class="comment">// Add project assets</span>
+<a name="l00064"></a>00064         <a class="code" href="class_todoyu_page.html#a60f870fc7513a20d414915f771b98b5c">TodoyuPage::addExtAssets</a>(<span class="stringliteral">&apos;project&apos;</span>, <span class="stringliteral">&apos;public&apos;</span>);
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067             <span class="comment">// If a project is displayed</span>
+<a name="l00068"></a>00068         <span class="keywordflow">if</span>( $idProject !== 0 ) {
+<a name="l00069"></a>00069                 <span class="comment">// Prepend current project to list</span>
+<a name="l00070"></a>00070             <a class="code" href="class_todoyu_project_preferences.html#a1a510ff51ced30eb198e71bda9b42eba">TodoyuProjectPreferences::addNewOpenProjectTab</a>($idProject);
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072             $project= <a class="code" href="class_todoyu_project_manager.html#acdcbf9f0c3d02c6c9b331ff21aaae9f0">TodoyuProjectManager::getProject</a>($idProject);
+<a name="l00073"></a>00073             $title  = <a class="code" href="class_todoyu_locale.html#afa2458115d584f5391182198718c3d12">TodoyuLocale::getLabel</a>(<span class="stringliteral">&apos;project.page.title&apos;</span>) . <span class="stringliteral">&apos; - &apos;</span> . $project-&gt;getTitle();
+<a name="l00074"></a>00074         } <span class="keywordflow">else</span> {
+<a name="l00075"></a>00075             $title  = <a class="code" href="class_todoyu_locale.html#afa2458115d584f5391182198718c3d12">TodoyuLocale::getLabel</a>(<span class="stringliteral">&apos;project.page.title.noSelected&apos;</span>);
+<a name="l00076"></a>00076         }
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078         <a class="code" href="class_todoyu_page.html#ac1811274b4a27b9b2fdde17a1801437d">TodoyuPage::setTitle</a>($title);
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081             <span class="comment">// Render panel widgets and content</span>
+<a name="l00082"></a>00082         $panelWidgets       = <a class="code" href="class_todoyu_project_renderer.html#a3697ba78c6ed31a3c56a140f4ea0ddcf">TodoyuProjectRenderer::renderPanelWidgets</a>($idProject, $idTask);
+<a name="l00083"></a>00083         $projectTaskTree    = <a class="code" href="class_todoyu_project_renderer.html#acfbb37bf54bbdb7e03ed3fedcd87c189">TodoyuProjectRenderer::renderProjectView</a>($idProject, $idTask, $taskTab);
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085         <a class="code" href="class_todoyu_page.html#a8ffaa417357ae854ab1ae9c5f70c6fbf">TodoyuPage::set</a>(<span class="stringliteral">&apos;panelWidgets&apos;</span>, $panelWidgets);
+<a name="l00086"></a>00086         <a class="code" href="class_todoyu_page.html#a8ffaa417357ae854ab1ae9c5f70c6fbf">TodoyuPage::set</a>(<span class="stringliteral">&apos;taskTree&apos;</span>, $projectTaskTree);
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088             <span class="comment">// Add JS onload functions</span>
+<a name="l00089"></a>00089         <a class="code" href="class_todoyu_page.html#a999590070b3ebce0ef29993c33aeee60">TodoyuPage::addJsOnloadedFunction</a>(<span class="stringliteral">&apos;Todoyu.Ext.project.ContextMenuTask.attach.bind(Todoyu.Ext.project.ContextMenuTask)&apos;</span>);
+<a name="l00090"></a>00090         <a class="code" href="class_todoyu_page.html#a999590070b3ebce0ef29993c33aeee60">TodoyuPage::addJsOnloadedFunction</a>(<span class="stringliteral">&apos;Todoyu.Ext.project.ContextMenuProject.attach.bind(Todoyu.Ext.project.ContextMenuProject)&apos;</span>);
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">TodoyuPage::render</a>();
+<a name="l00093"></a>00093     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/project/controller/<a class="el" href="_todoyu_project_ext_action_controller_8class_8php_source.html">TodoyuProjectExtActionController.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:47 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

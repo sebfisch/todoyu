@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/admin/model/TodoyuAdminManager.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/admin/model/TodoyuAdminManager.class.php</h1><a href="_todoyu_admin_manager_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 
+<a name="l00030"></a><a class="code" href="class_todoyu_admin_manager.html">00030</a> <span class="keyword">class </span><a class="code" href="class_todoyu_admin_manager.html">TodoyuAdminManager</a> {
+<a name="l00031"></a>00031 
+<a name="l00040"></a><a class="code" href="class_todoyu_admin_manager.html#a69e01c175a68a7b8955bb17139ee8025">00040</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_admin_manager.html#a69e01c175a68a7b8955bb17139ee8025">addModule</a>($module, $label, $renderFunction, $position = 100, array $assetConf = array()) {
+<a name="l00041"></a>00041         $position   = intval($position);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;admin&apos;</span>][<span class="stringliteral">&apos;modules&apos;</span>][$module] = array(
+<a name="l00044"></a>00044             <span class="stringliteral">&apos;key&apos;</span>       =&gt; $module,
+<a name="l00045"></a>00045             <span class="stringliteral">&apos;label&apos;</span>     =&gt; <a class="code" href="class_todoyu_div.html#a71fad5548fe188ea7853db0d5337e43b">TodoyuDiv::getLabel</a>($label),
+<a name="l00046"></a>00046             <span class="stringliteral">&apos;funcRef&apos;</span>   =&gt; $renderFunction,
+<a name="l00047"></a>00047             <span class="stringliteral">&apos;position&apos;</span>  =&gt; $position,
+<a name="l00048"></a>00048             <span class="stringliteral">&apos;assetConf&apos;</span> =&gt; $assetConf
+<a name="l00049"></a>00049         );
+<a name="l00050"></a>00050     }
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 
+<a name="l00053"></a><a class="code" href="class_todoyu_admin_manager.html#a4028114b78c39b363895b994f5dafea4">00053</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_admin_manager.html#a4028114b78c39b363895b994f5dafea4">getActiveModule</a>() {
+<a name="l00054"></a>00054         $module = <a class="code" href="class_todoyu_admin_manager.html#a4028114b78c39b363895b994f5dafea4">TodoyuAdminPreferences::getActiveModule</a>();
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056         <span class="keywordflow">if</span>( $module === <span class="keyword">false</span> ) {
+<a name="l00057"></a>00057             $module = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;admin&apos;</span>][<span class="stringliteral">&apos;defaultModule&apos;</span>];
+<a name="l00058"></a>00058         }
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <span class="keywordflow">return</span> $module;
+<a name="l00061"></a>00061     }
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 
+<a name="l00070"></a><a class="code" href="class_todoyu_admin_manager.html#aee7541640ed5d4721816ee5452672240">00070</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_admin_manager.html#aee7541640ed5d4721816ee5452672240">getModules</a>() {
+<a name="l00071"></a>00071         <span class="keywordflow">if</span>( is_array( <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;admin&apos;</span>][<span class="stringliteral">&apos;modules&apos;</span>] ) ) {
+<a name="l00072"></a>00072             <span class="keywordflow">return</span> <a class="code" href="class_todoyu_array.html#a4692603963eaa46b9a337bb6a81f7d6f">TodoyuArray::sortByLabel</a>( <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;admin&apos;</span>][<span class="stringliteral">&apos;modules&apos;</span>] );
+<a name="l00073"></a>00073         } <span class="keywordflow">else</span> {
+<a name="l00074"></a>00074             <span class="keywordflow">return</span> array();
+<a name="l00075"></a>00075         }
+<a name="l00076"></a>00076     }
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 
+<a name="l00086"></a><a class="code" href="class_todoyu_admin_manager.html#a364bc6dec38956f75a3d75522e5334bd">00086</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_admin_manager.html#a364bc6dec38956f75a3d75522e5334bd">getModuleRenderFunction</a>($module) {
+<a name="l00087"></a>00087         <span class="keywordflow">return</span> <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;admin&apos;</span>][<span class="stringliteral">&apos;modules&apos;</span>][$module][<span class="stringliteral">&apos;funcRef&apos;</span>];
+<a name="l00088"></a>00088     }
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 
+<a name="l00098"></a><a class="code" href="class_todoyu_admin_manager.html#ae13d7f5449410fea21096a1e9d88c544">00098</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_admin_manager.html#ae13d7f5449410fea21096a1e9d88c544">isModule</a>($module) {
+<a name="l00099"></a>00099         <span class="keywordflow">return</span> is_array(<a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;admin&apos;</span>][<span class="stringliteral">&apos;modules&apos;</span>][$module]);
+<a name="l00100"></a>00100     }
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103 
+<a name="l00109"></a><a class="code" href="class_todoyu_admin_manager.html#a286af82405566e46fbb9f183b9fd1ebe">00109</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_admin_manager.html#a286af82405566e46fbb9f183b9fd1ebe">onAdminExtRequest</a>() {
+<a name="l00110"></a>00110         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00111"></a>00111         <span class="keywordflow">if</span>( ! <a class="code" href="functions_8php.html#a5abbc1bd9b2b7ed593eb4091f9e59391">allowed</a>(<span class="stringliteral">&apos;admin&apos;</span>, <span class="stringliteral">&apos;use&apos;</span>) ) {
+<a name="l00112"></a>00112             die(<span class="stringliteral">&quot;YOU HAVE NO ADMIN RIGHTS!&quot;</span>);
+<a name="l00113"></a>00113             exit();
+<a name="l00114"></a>00114         }
+<a name="l00115"></a>00115     }
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 }
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:33 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

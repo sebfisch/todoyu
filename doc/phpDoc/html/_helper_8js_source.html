@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/core/assets/js/Helper.js Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/core/assets/js/Helper.js</h1><a href="_helper_8js.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***************************************************************</span>
+<a name="l00002"></a>00002 <span class="comment">*  Copyright notice</span>
+<a name="l00003"></a>00003 <span class="comment">*</span>
+<a name="l00004"></a>00004 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00005"></a>00005 <span class="comment">*  All rights reserved</span>
+<a name="l00006"></a>00006 <span class="comment">*</span>
+<a name="l00007"></a>00007 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00008"></a>00008 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00009"></a>00009 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00010"></a>00010 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00011"></a>00011 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00012"></a>00012 <span class="comment">*</span>
+<a name="l00013"></a>00013 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00014"></a>00014 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00015"></a>00015 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00016"></a>00016 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00017"></a>00017 <span class="comment">*</span>
+<a name="l00018"></a>00018 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00019"></a>00019 <span class="comment">***************************************************************/</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="_helper_8js.html#af12f40d843f8fe3c4f3ae561eeb0f35e">00021</a> <a class="code" href="class_todoyu.html">Todoyu</a>.Helper = {
+<a name="l00022"></a>00022 
+<a name="l00028"></a>00028     intval: function(mixedvar) {
+<a name="l00029"></a>00029         var type = typeof( mixedvar );
+<a name="l00030"></a>00030         var temp;
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032         <span class="keywordflow">switch</span>(type) {
+<a name="l00033"></a>00033             <span class="keywordflow">case</span> <span class="stringliteral">&apos;boolean&apos;</span>:
+<a name="l00034"></a>00034                 <span class="keywordflow">return</span> mixedvar ? 1 : 0;
+<a name="l00035"></a>00035                 <span class="keywordflow">break</span>;
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038             <span class="keywordflow">case</span> <span class="stringliteral">&apos;string&apos;</span>:
+<a name="l00039"></a>00039                 temp = parseInt(mixedvar, 10);
+<a name="l00040"></a>00040                 <span class="keywordflow">return</span> isNaN(temp) ? 0 : temp;
+<a name="l00041"></a>00041                 <span class="keywordflow">break</span>;
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044             <span class="keywordflow">case</span> <span class="stringliteral">&apos;number&apos;</span>:
+<a name="l00045"></a>00045                 <span class="keywordflow">return</span> Math.floor(mixedvar);
+<a name="l00046"></a>00046                 <span class="keywordflow">break</span>;
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048             <span class="keywordflow">default</span>:
+<a name="l00049"></a>00049                 <span class="keywordflow">return</span> 0;
+<a name="l00050"></a>00050         }
+<a name="l00051"></a>00051     },
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 
+<a name="l00060"></a>00060     twoDigit: function(number) {
+<a name="l00061"></a>00061         number = parseInt(number, 10);
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063         <span class="keywordflow">if</span>( number &lt; 10 ) {
+<a name="l00064"></a>00064             number = <span class="charliteral">&apos;0&apos;</span> + number;
+<a name="l00065"></a>00065         }
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="keywordflow">return</span> number;
+<a name="l00068"></a>00068     },
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 
+<a name="l00079"></a>00079     toggleImage: function(idImage, src1, src2) {
+<a name="l00080"></a>00080         var image = $(idImage);
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         <span class="keywordflow">if</span>( image.src.indexOf(src1) === -1 ) {
+<a name="l00083"></a>00083             image.src = src1;
+<a name="l00084"></a>00084         } <span class="keywordflow">else</span> {
+<a name="l00085"></a>00085             image.src = src2;
+<a name="l00086"></a>00086         }
+<a name="l00087"></a>00087     },
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 
+<a name="l00097"></a>00097     round: function(value, precision) {
+<a name="l00098"></a>00098         value       = parseFloat(value);
+<a name="l00099"></a>00099         precision   = this.intval(precision);
+<a name="l00100"></a>00100         var factor  = Math.pow(10, precision);
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102         <span class="keywordflow">return</span> Math.round((value*factor))/factor;
+<a name="l00103"></a>00103     },
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 
+<a name="l00112"></a>00112     isset: function(objToTest) {
+<a name="l00113"></a>00113         <span class="keywordflow">if</span> (null === objToTest || <span class="stringliteral">&apos;undefined&apos;</span> == typeof(objToTest)) {
+<a name="l00114"></a>00114             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00115"></a>00115         }
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00118"></a>00118     },
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 
+<a name="l00128"></a>00128     fireEvent: function(element, event){
+<a name="l00129"></a>00129         <span class="keywordflow">if</span> (document.createEventObject){
+<a name="l00130"></a>00130                 <span class="comment">// dispatch for IE</span>
+<a name="l00131"></a>00131             var evt = document.createEventObject();
+<a name="l00132"></a>00132             <span class="keywordflow">return</span> element.fireEvent(<span class="stringliteral">&apos;on&apos;</span>+event,evt)
+<a name="l00133"></a>00133         } <span class="keywordflow">else</span> {
+<a name="l00134"></a>00134                 <span class="comment">// dispatch for firefox + others</span>
+<a name="l00135"></a>00135             var evt = document.createEvent(<span class="stringliteral">&quot;HTMLEvents&quot;</span>);
+<a name="l00136"></a>00136             evt.initEvent(event, <span class="keyword">true</span>, <span class="keyword">true</span> ); <span class="comment">// event type,bubbling,cancelable</span>
+<a name="l00137"></a>00137             <span class="keywordflow">return</span> !element.dispatchEvent(evt);
+<a name="l00138"></a>00138         }
+<a name="l00139"></a>00139     }
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142 };
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:30 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/bookmark/model/TodoyuPanelWidgetTaskBookmarks.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/bookmark/model/TodoyuPanelWidgetTaskBookmarks.class.php</h1><a href="_todoyu_panel_widget_task_bookmarks_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00029"></a><a class="code" href="class_todoyu_panel_widget_task_bookmarks.html">00029</a> <span class="keyword">class </span><a class="code" href="class_todoyu_panel_widget_task_bookmarks.html">TodoyuPanelWidgetTaskBookmarks</a> <span class="keyword">extends</span> <a class="code" href="class_todoyu_panel_widget.html">TodoyuPanelWidget</a> implements <a class="code" href="interface_todoyu_panel_widget_if.html">TodoyuPanelWidgetIf</a> {
+<a name="l00030"></a>00030 
+<a name="l00039"></a><a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#a53943756fc09fbf7954fd784647d0543">00039</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#a53943756fc09fbf7954fd784647d0543">__construct</a>(array <a class="code" href="class_todoyu_panel_widget.html#a49c7011be9c979d9174c52a8b83e5d8e">$config</a>, array <a class="code" href="class_todoyu_panel_widget.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a> = array(), <a class="code" href="class_todoyu_panel_widget.html#aa3b4f377cf05246c01c5bf10ad5f844f">$idArea</a> = 0) {
+<a name="l00040"></a>00040         <a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#a53943756fc09fbf7954fd784647d0543">parent::__construct</a>(
+<a name="l00041"></a>00041             <span class="stringliteral">&apos;bookmark&apos;</span>,                             <span class="comment">// ext key</span>
+<a name="l00042"></a>00042             <span class="stringliteral">&apos;taskbookmarks&apos;</span>,                        <span class="comment">// panel widget ID</span>
+<a name="l00043"></a>00043             <span class="stringliteral">&apos;LLL:bookmark.title&apos;</span>,                   <span class="comment">// widget title text</span>
+<a name="l00044"></a>00044             $config,                                <span class="comment">// widget config array</span>
+<a name="l00045"></a>00045             <a class="code" href="class_todoyu_panel_widget.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>,                                <span class="comment">// widget params</span>
+<a name="l00046"></a>00046             <a class="code" href="class_todoyu_panel_widget.html#aa3b4f377cf05246c01c5bf10ad5f844f">$idArea</a>                                 <span class="comment">// area ID</span>
+<a name="l00047"></a>00047         );
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049         $this-&gt;<a class="code" href="class_todoyu_panel_widget.html#a2c1c02500e636a8832a6df96a9812b4e">addHasIconClass</a>();
+<a name="l00050"></a>00050     }
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053 
+<a name="l00059"></a>00059     <span class="keyword">private</span> function getTaskBookmarks() {
+<a name="l00060"></a>00060         $idUser = <a class="code" href="class_todoyu_auth.html#a038ac7a8e7c043635e04f4f71ae69690">TodoyuAuth::getUserID</a>();
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062             <span class="comment">// Get bookmarked tasks</span>
+<a name="l00063"></a>00063         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos; t.*,</span>
+<a name="l00064"></a>00064 <span class="stringliteral">                    b.date_create as date_create_bookmark,</span>
+<a name="l00065"></a>00065 <span class="stringliteral">                    p.title as projecttitle&apos;</span>;
+<a name="l00066"></a>00066         $tables = <span class="stringliteral">&apos; ext_project_task t,</span>
+<a name="l00067"></a>00067 <span class="stringliteral">                    ext_project_project p,</span>
+<a name="l00068"></a>00068 <span class="stringliteral">                    ext_bookmark_bookmark b&apos;</span>;
+<a name="l00069"></a>00069         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos; b.id_item   = t.id AND</span>
+<a name="l00070"></a>00070 <span class="stringliteral">                    t.id_project= p.id AND</span>
+<a name="l00071"></a>00071 <span class="stringliteral">                    b.deleted   = 0 AND</span>
+<a name="l00072"></a>00072 <span class="stringliteral">                    b.type      = &apos;</span> . <a class="code" href="ext_2bookmark_2config_2constants_8php.html#af32ee575e180fc81f11a7c5bc11567c7">BOOKMARK_TYPE_TASK</a> . <span class="stringliteral">&apos; AND</span>
+<a name="l00073"></a>00073 <span class="stringliteral">                    b.id_user_create = &apos;</span> . $idUser;
+<a name="l00074"></a>00074         $order  = <span class="stringliteral">&apos; b.date_create&apos;</span>;
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076         $taskBooksmarks = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, $tables, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, <span class="stringliteral">&apos;&apos;</span>, $order);
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078             <span class="comment">// Prepare for rendering</span>
+<a name="l00079"></a>00079         <span class="keywordflow">foreach</span>($taskBooksmarks as $index =&gt; $task) {
+<a name="l00080"></a>00080             $taskBooksmarks[$index][<span class="stringliteral">&apos;isTrackable&apos;</span>]  = <a class="code" href="class_todoyu_timetracking.html#a6363468833c1e094a79e00f45f0173a1">TodoyuTimetracking::isTrackable</a>($task[<span class="stringliteral">&apos;type&apos;</span>], $task[<span class="stringliteral">&apos;status&apos;</span>]);
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083             <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_timetracking.html#ab22c421daf25695d196b956550678800">TodoyuTimetracking::isTaskRunning</a>($task[<span class="stringliteral">&apos;id&apos;</span>]) ) {
+<a name="l00084"></a>00084                 $taskBooksmarks[$index][<span class="stringliteral">&apos;isRunning&apos;</span>]    = <span class="keyword">true</span>;
+<a name="l00085"></a>00085                 $taskBooksmarks[$index][<span class="stringliteral">&apos;btnClass&apos;</span>]     = <span class="stringliteral">&apos;stopButton&apos;</span>;
+<a name="l00086"></a>00086                 $taskBooksmarks[$index][<span class="stringliteral">&apos;jsFunction&apos;</span>]   = <span class="stringliteral">&apos;stopTask&apos;</span>;
+<a name="l00087"></a>00087             } <span class="keywordflow">else</span> {
+<a name="l00088"></a>00088                 $taskBooksmarks[$index][<span class="stringliteral">&apos;isRunning&apos;</span>]    = <span class="keyword">false</span>;
+<a name="l00089"></a>00089                 $taskBooksmarks[$index][<span class="stringliteral">&apos;btnClass&apos;</span>]     = <span class="stringliteral">&apos;playButton&apos;</span>;
+<a name="l00090"></a>00090                 $taskBooksmarks[$index][<span class="stringliteral">&apos;jsFunction&apos;</span>]   = <span class="stringliteral">&apos;startTask&apos;</span>;
+<a name="l00091"></a>00091             }
+<a name="l00092"></a>00092         }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094         <span class="keywordflow">return</span> $taskBooksmarks;
+<a name="l00095"></a>00095     }
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 
+<a name="l00104"></a><a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#a0d304720b71e3fabb0b602754043e1b6">00104</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#a0d304720b71e3fabb0b602754043e1b6">renderContent</a>() {
+<a name="l00105"></a>00105         $tmpl   = <span class="stringliteral">&apos;ext/bookmark/view/panelwidget-taskbookmarks.tmpl&apos;</span>;
+<a name="l00106"></a>00106         <a class="code" href="class_todoyu_panel_widget.html#a6efc15b5a2314dd4b5aaa556a375c6d6">$data</a>   = array(
+<a name="l00107"></a>00107             <span class="stringliteral">&apos;id&apos;</span>        =&gt; $this-&gt;<a class="code" href="class_todoyu_panel_widget.html#a30dd7fff4fec7a39f9be9d27d4b22a59">getID</a>(),
+<a name="l00108"></a>00108             <span class="stringliteral">&apos;bookmarks&apos;</span> =&gt; $this-&gt;getTaskBookmarks() <span class="comment">// TodoyuBookmarkManager::prepareBookmarksForPanel()</span>
+<a name="l00109"></a>00109         );
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111         $content= <a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#afde88292c44dc59faf017738dae6dffb">render</a>($tmpl, <a class="code" href="class_todoyu_panel_widget.html#a6efc15b5a2314dd4b5aaa556a375c6d6">$data</a>);
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113         $this-&gt;<a class="code" href="class_todoyu_panel_widget.html#a04a5eddb7c3abc7bf31fa25b58f046bf">setContent</a>($content);
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115         <span class="keywordflow">return</span> $content;
+<a name="l00116"></a>00116     }
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 
+<a name="l00125"></a><a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#afde88292c44dc59faf017738dae6dffb">00125</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#afde88292c44dc59faf017738dae6dffb">render</a>() {
+<a name="l00126"></a>00126         $this-&gt;<a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#a0d304720b71e3fabb0b602754043e1b6">renderContent</a>();
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128             <span class="comment">// add assets, page inline JS</span>
+<a name="l00129"></a>00129         <a class="code" href="class_todoyu_page.html#a60f870fc7513a20d414915f771b98b5c">TodoyuPage::addExtAssets</a>(<span class="stringliteral">&apos;bookmark&apos;</span>, <span class="stringliteral">&apos;public&apos;</span>);
+<a name="l00130"></a>00130         <a class="code" href="class_todoyu_page.html#a60f870fc7513a20d414915f771b98b5c">TodoyuPage::addExtAssets</a>(<span class="stringliteral">&apos;bookmark&apos;</span>, <span class="stringliteral">&apos;panelwidget-taskbookmarks&apos;</span>);
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132         <a class="code" href="class_todoyu_page.html#a999590070b3ebce0ef29993c33aeee60">TodoyuPage::addJsOnloadedFunction</a>(<span class="stringliteral">&apos;Todoyu.Ext.bookmark.PanelWidget.TaskBookmarks.init.bind(Todoyu.Ext.bookmark.PanelWidget.TaskBookmarks)&apos;</span>);
+<a name="l00133"></a>00133 
+<a name="l00134"></a>00134         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#afde88292c44dc59faf017738dae6dffb">parent::render</a>();
+<a name="l00135"></a>00135     }
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138 
+<a name="l00145"></a><a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#adc460de753495055000fb29213f5d186">00145</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#adc460de753495055000fb29213f5d186">getContextMenuItems</a>($idTask, array $items) {
+<a name="l00146"></a>00146         $idTask = intval($idTask);
+<a name="l00147"></a>00147         $task   = <a class="code" href="class_todoyu_task_manager.html#a45a02f4c2aa0c43bb73bdb39a9cd5e85">TodoyuTaskManager::getTask</a>($idTask);
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149         $ownItems   = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;bookmark&apos;</span>][<span class="stringliteral">&apos;ContextMenu&apos;</span>][<span class="stringliteral">&apos;PanelWidget&apos;</span>];
+<a name="l00150"></a>00150         $allowed    = array();
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152             <span class="comment">// Show in project</span>
+<a name="l00153"></a>00153         $allowed[<span class="stringliteral">&apos;showinproject&apos;</span>]   = $ownItems[<span class="stringliteral">&apos;showinproject&apos;</span>];
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155             <span class="comment">// Remove bookmark</span>
+<a name="l00156"></a>00156         <span class="keywordflow">if</span>( <a class="code" href="functions_8php.html#a5abbc1bd9b2b7ed593eb4091f9e59391">allowed</a>(<span class="stringliteral">&apos;bookmark&apos;</span>, <span class="stringliteral">&apos;task:remove&apos;</span>) ) {
+<a name="l00157"></a>00157             $allowed[<span class="stringliteral">&apos;removebookmark&apos;</span>] = $ownItems[<span class="stringliteral">&apos;removebookmark&apos;</span>];
+<a name="l00158"></a>00158         }
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160             <span class="comment">// Change status</span>
+<a name="l00161"></a>00161         $taskItems = <a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#adc460de753495055000fb29213f5d186">TodoyuTaskManager::getContextMenuItems</a>($idTask, array());
+<a name="l00162"></a>00162         <span class="keywordflow">if</span>( array_key_exists(<span class="stringliteral">&apos;status&apos;</span>, $taskItems) ) {
+<a name="l00163"></a>00163             $status = $taskItems[<span class="stringliteral">&apos;status&apos;</span>];
+<a name="l00164"></a>00164             <span class="keywordflow">foreach</span>($status[<span class="stringliteral">&apos;submenu&apos;</span>] as $key =&gt; $config) {
+<a name="l00165"></a>00165                 $status[<span class="stringliteral">&apos;submenu&apos;</span>][$key][<span class="stringliteral">&apos;jsAction&apos;</span>] = <a class="code" href="javascript_8js.html#a653ea8da4d112c6bce1135d086cb38c9">str_replace</a>(<span class="stringliteral">&apos;Todoyu.Ext.project.Task.updateStatus&apos;</span>, <span class="stringliteral">&apos;Todoyu.Ext.bookmark.PanelWidget.TaskBookmarks.updateTaskStatus&apos;</span>, $config[<span class="stringliteral">&apos;jsAction&apos;</span>]);
+<a name="l00166"></a>00166             }
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168             $allowed[<span class="stringliteral">&apos;status&apos;</span>] = $status;
+<a name="l00169"></a>00169         }
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171             <span class="comment">// Check if timetrack extension is installed</span>
+<a name="l00172"></a>00172         <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_extensions.html#aeabbfe4b2bcc9b918de6a3fd4bade527">TodoyuExtensions::isInstalled</a>(<span class="stringliteral">&apos;timetracking&apos;</span>) ) {
+<a name="l00173"></a>00173                 <span class="comment">// Check if task has a trackable status</span>
+<a name="l00174"></a>00174             <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_timetracking.html#a6363468833c1e094a79e00f45f0173a1">TodoyuTimetracking::isTrackable</a>($task-&gt;getType(), $task-&gt;getStatus()) &amp;&amp; <a class="code" href="functions_8php.html#a5abbc1bd9b2b7ed593eb4091f9e59391">allowed</a>(<span class="stringliteral">&apos;timetracking&apos;</span>, <span class="stringliteral">&apos;track&apos;</span>) ) {
+<a name="l00175"></a>00175                     <span class="comment">// Add stop or start button</span>
+<a name="l00176"></a>00176                 <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_timetracking.html#ab22c421daf25695d196b956550678800">TodoyuTimetracking::isTaskRunning</a>($idTask) ) {
+<a name="l00177"></a>00177                     $allowed[<span class="stringliteral">&apos;timetrackstop&apos;</span>] = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;timetracking&apos;</span>][<span class="stringliteral">&apos;ContextMenu&apos;</span>][<span class="stringliteral">&apos;Task&apos;</span>][<span class="stringliteral">&apos;timetrackstop&apos;</span>];
+<a name="l00178"></a>00178                 } <span class="keywordflow">else</span> {
+<a name="l00179"></a>00179                     $allowed[<span class="stringliteral">&apos;timetrackstart&apos;</span>] = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;timetracking&apos;</span>][<span class="stringliteral">&apos;ContextMenu&apos;</span>][<span class="stringliteral">&apos;Task&apos;</span>][<span class="stringliteral">&apos;timetrackstart&apos;</span>];
+<a name="l00180"></a>00180                 }
+<a name="l00181"></a>00181             }
+<a name="l00182"></a>00182         }
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184         <span class="keywordflow">return</span> array_merge_recursive($items, $allowed);
+<a name="l00185"></a>00185     }
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188 
+<a name="l00194"></a><a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#a4fc595a2f4837cf48712be2d50bdd514">00194</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_panel_widget_task_bookmarks.html#a4fc595a2f4837cf48712be2d50bdd514">isAllowed</a>() {
+<a name="l00195"></a>00195         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#a5abbc1bd9b2b7ed593eb4091f9e59391">allowed</a>(<span class="stringliteral">&apos;bookmark&apos;</span>, <span class="stringliteral">&apos;panelwidget:taskbookmarks&apos;</span>);
+<a name="l00196"></a>00196     }
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198 }
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:33 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

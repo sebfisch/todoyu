@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/sysmanager/model/TodoyuExtRecordManager.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/sysmanager/model/TodoyuExtRecordManager.class.php</h1><a href="_todoyu_ext_record_manager_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00028"></a><a class="code" href="class_todoyu_ext_record_manager.html">00028</a> <span class="keyword">class </span><a class="code" href="class_todoyu_ext_record_manager.html">TodoyuExtRecordManager</a> {
+<a name="l00029"></a>00029 
+<a name="l00038"></a><a class="code" href="class_todoyu_ext_record_manager.html#a94f7b5e8d252035e1d5d19b94450377b">00038</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_ext_record_manager.html#a94f7b5e8d252035e1d5d19b94450377b">getRecordForm</a>($ext, $type, $idRecord) {
+<a name="l00039"></a>00039         $idRecord   = intval($idRecord);
+<a name="l00040"></a>00040         $config     = <a class="code" href="class_todoyu_ext_manager.html#aaae7f2354e669e08253ae2939efdc10c">TodoyuExtManager::getRecordTypeConfig</a>($ext, $type);
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042             <span class="comment">// Record form</span>
+<a name="l00043"></a>00043         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>       = <a class="code" href="class_todoyu_form_manager.html#a1ebecd4703d082171a8682cd8fd3626c">TodoyuFormManager::getForm</a>($config[<span class="stringliteral">&apos;form&apos;</span>], $idRecord);
+<a name="l00044"></a>00044         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;setAttribute(<span class="stringliteral">&apos;onsubmit&apos;</span>, <span class="stringliteral">&quot;return Todoyu.Ext.sysmanager.Extensions.Records.save(this, &apos;&quot;</span> . $ext . <span class="stringliteral">&quot;&apos;, &apos;&quot;</span> . $type . <span class="stringliteral">&quot;&apos;)&quot;</span>);
+<a name="l00045"></a>00045         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;setAction(<span class="stringliteral">&apos;?ext=sysmanager&amp;amp;controller=records&apos;</span>);
+<a name="l00046"></a>00046         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;setName(<span class="stringliteral">&apos;record&apos;</span>);
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048             <span class="comment">// Save buttons form</span>
+<a name="l00049"></a>00049         <a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>    = <span class="stringliteral">&apos;ext/sysmanager/config/form/record-save.xml&apos;</span>;
+<a name="l00050"></a>00050         $saveForm   = <a class="code" href="class_todoyu_form_manager.html#a1ebecd4703d082171a8682cd8fd3626c">TodoyuFormManager::getForm</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>);
+<a name="l00051"></a>00051         $saveButtons= $saveForm-&gt;getFieldset(<span class="stringliteral">&apos;save&apos;</span>);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053             <span class="comment">// Add save buttons</span>
+<a name="l00054"></a>00054         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;addFieldset(<span class="stringliteral">&apos;save&apos;</span>, $saveButtons);
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056             <span class="comment">// Load record data</span>
+<a name="l00057"></a>00057         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array();
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059         <span class="keywordflow">if</span>( $idRecord !== 0 ) {
+<a name="l00060"></a>00060             <span class="keywordflow">if</span>( ! empty($config[<span class="stringliteral">&apos;object&apos;</span>]) )    {
+<a name="l00061"></a>00061                 $className  = $config[<span class="stringliteral">&apos;object&apos;</span>];
+<a name="l00062"></a>00062                 $record     = <span class="keyword">new</span> $className($idRecord);
+<a name="l00063"></a>00063             } elseif( ! empty($config[<span class="stringliteral">&apos;table&apos;</span>]) )   {
+<a name="l00064"></a>00064                 $record = <span class="keyword">new</span> <a class="code" href="class_todoyu_base_object.html">TodoyuBaseObject</a>($idRecord, $config[<span class="stringliteral">&apos;table&apos;</span>]);
+<a name="l00065"></a>00065             }
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067                 <span class="comment">// If record object created, get data</span>
+<a name="l00068"></a>00068             <span class="keywordflow">if</span>( is_object($record) ) {
+<a name="l00069"></a>00069                 <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = $record-&gt;getTemplateData(<span class="keyword">true</span>);
+<a name="l00070"></a>00070             }
+<a name="l00071"></a>00071         }
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = <a class="code" href="class_todoyu_form_hook.html#ab552e7ce23a0c9e2c9ff10029d9a53b7">TodoyuFormHook::callLoadData</a>($config[<span class="stringliteral">&apos;form&apos;</span>], <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>, $idRecord);
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;record-extkey&apos;</span>]  = $ext;
+<a name="l00076"></a>00076         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;record-type&apos;</span>]    = $type;
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078         <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>-&gt;setFormData(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080         <span class="keywordflow">return</span> <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>;
+<a name="l00081"></a>00081     }
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 
+<a name="l00093"></a><a class="code" href="class_todoyu_ext_record_manager.html#a98b1b2213256f6eb716fdf2d34257a5e">00093</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_ext_record_manager.html#a98b1b2213256f6eb716fdf2d34257a5e">saveRecord</a>($ext, $type, array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>) {
+<a name="l00094"></a>00094         $config     = <a class="code" href="class_todoyu_ext_manager.html#aaae7f2354e669e08253ae2939efdc10c">TodoyuExtManager::getRecordTypeConfig</a>($ext, $type);
+<a name="l00095"></a>00095         $idRecord   = intval($data[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097         <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_div.html#a2dbf9fd5046506735124e644c99d2f96">TodoyuDiv::isFunctionReference</a>($config[<span class="stringliteral">&apos;save&apos;</span>]) ) {
+<a name="l00098"></a>00098             $idRecord = <a class="code" href="class_todoyu_div.html#afcc9d79cf22888569ba5f634bb686d1c">TodoyuDiv::callUserFunction</a>($config[<span class="stringliteral">&apos;save&apos;</span>], $data);
+<a name="l00099"></a>00099         } <span class="keywordflow">else</span> {
+<a name="l00100"></a>00100             <a class="code" href="class_todoyu.html#ac43531f7e0c334e68104bb1942eee286">Todoyu::log</a>(<span class="stringliteral">&apos;Save function for record &apos;</span> . $ext . <span class="charliteral">&apos;/&apos;</span> . $type . <span class="stringliteral">&apos; is missing&apos;</span>, <a class="code" href="core_2config_2constants_8php.html#a7d581a5aa617c727cb7ba8f18d1a7faa">LOG_LEVEL_ERROR</a>);
+<a name="l00101"></a>00101         }
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103         <span class="keywordflow">return</span> $idRecord;
+<a name="l00104"></a>00104     }
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 
+<a name="l00116"></a><a class="code" href="class_todoyu_ext_record_manager.html#a000c7e2b818cc171d12b677262b4b349">00116</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_ext_record_manager.html#a000c7e2b818cc171d12b677262b4b349">deleteRecord</a>($ext, $type, $idRecord) {
+<a name="l00117"></a>00117         $config     = <a class="code" href="class_todoyu_ext_manager.html#aaae7f2354e669e08253ae2939efdc10c">TodoyuExtManager::getRecordTypeConfig</a>($ext, $type);
+<a name="l00118"></a>00118         $idRecord   = intval($idRecord);
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120         <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_div.html#a2dbf9fd5046506735124e644c99d2f96">TodoyuDiv::isFunctionReference</a>($config[<span class="stringliteral">&apos;delete&apos;</span>]) ) {
+<a name="l00121"></a>00121             <a class="code" href="class_todoyu_div.html#afcc9d79cf22888569ba5f634bb686d1c">TodoyuDiv::callUserFunction</a>($config[<span class="stringliteral">&apos;delete&apos;</span>], $idRecord);
+<a name="l00122"></a>00122         } <span class="keywordflow">else</span> {
+<a name="l00123"></a>00123             <a class="code" href="class_todoyu.html#ac43531f7e0c334e68104bb1942eee286">Todoyu::log</a>(<span class="stringliteral">&apos;Delete function for record &apos;</span> . $ext . <span class="charliteral">&apos;/&apos;</span> . $type . <span class="stringliteral">&apos; is missing&apos;</span>, <a class="code" href="core_2config_2constants_8php.html#a7d581a5aa617c727cb7ba8f18d1a7faa">LOG_LEVEL_ERROR</a>);
+<a name="l00124"></a>00124         }
+<a name="l00125"></a>00125     }
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127 
+<a name="l00128"></a><a class="code" href="class_todoyu_ext_record_manager.html#adfc7c6da739dbc3b78e0e7525d69490a">00128</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_ext_record_manager.html#adfc7c6da739dbc3b78e0e7525d69490a">getRecordCount</a>(<a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>) {
+<a name="l00129"></a>00129         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos;COUNT(*) as total&apos;</span>;
+<a name="l00130"></a>00130         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos;deleted = 0&apos;</span>;
+<a name="l00131"></a>00131         $group  = <span class="stringliteral">&apos;id&apos;</span>;
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133         $res    = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doSelect(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, $group);
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getNumRows($res);
+<a name="l00136"></a>00136     }
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138 }
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:36 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

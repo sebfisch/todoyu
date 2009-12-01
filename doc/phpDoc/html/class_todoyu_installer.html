@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuInstaller Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuInstaller Klassenreferenz</h1><!-- doxytag: class="TodoyuInstaller" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_installer.html#a6a63cf0eb774d6508391ab12e80b08ae">getStep</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_installer.html#ab89bdce4116c266fa33b73b13e5a09cb">setStep</a> ($step)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_installer.html#a02eb89317041c9b9bc75f83d1ee50192">displayStep</a> ($error)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_installer.html#a84b3f1b540f0f7ebb197de372bd3545f">processStep</a> ($data)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_installer_8class_8php_source.html#l00028">28</a> der Datei <a class="el" href="_todoyu_installer_8class_8php_source.html">TodoyuInstaller.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a02eb89317041c9b9bc75f83d1ee50192"></a><!-- doxytag: member="TodoyuInstaller::displayStep" ref="a02eb89317041c9b9bc75f83d1ee50192" args="($error)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static displayStep </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>error</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Display output for current step </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_installer_8class_8php_source.html#l00063">63</a> der Datei <a class="el" href="_todoyu_installer_8class_8php_source.html">TodoyuInstaller.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00063"></a>00063                                                {
+<a name="l00064"></a>00064         $stepNr = <a class="code" href="class_todoyu_installer.html#a6a63cf0eb774d6508391ab12e80b08ae">self::getStep</a>();
+<a name="l00065"></a>00065         $step   = self::$steps[$stepNr];
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="keywordflow">switch</span>($step) {
+<a name="l00068"></a>00068             <span class="keywordflow">case</span> <span class="stringliteral">&apos;welcome&apos;</span>;
+<a name="l00069"></a>00069                 self::displayWelcome($error);
+<a name="l00070"></a>00070                 <span class="keywordflow">break</span>;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072             <span class="keywordflow">case</span> <span class="stringliteral">&apos;servercheck&apos;</span>:
+<a name="l00073"></a>00073                 self::displayServercheck($error);
+<a name="l00074"></a>00074                 <span class="keywordflow">break</span>;
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076             <span class="keywordflow">case</span> <span class="stringliteral">&apos;dbconnection&apos;</span>:
+<a name="l00077"></a>00077                 self::displayDbConnection($error);
+<a name="l00078"></a>00078                 <span class="keywordflow">break</span>;
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080             <span class="keywordflow">case</span> <span class="stringliteral">&apos;dbselect&apos;</span>:
+<a name="l00081"></a>00081                 self::displayDbSelect($error);
+<a name="l00082"></a>00082                 <span class="keywordflow">break</span>;
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084             <span class="keywordflow">case</span> <span class="stringliteral">&apos;importstatic&apos;</span>:
+<a name="l00085"></a>00085                 self::displayImportStatic($error);
+<a name="l00086"></a>00086                 <span class="keywordflow">break</span>;
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088             <span class="keywordflow">case</span> <span class="stringliteral">&apos;config&apos;</span>:
+<a name="l00089"></a>00089                 self::displayConfig($error);
+<a name="l00090"></a>00090                 <span class="keywordflow">break</span>;
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092             <span class="keywordflow">case</span> <span class="stringliteral">&apos;setadminpassword&apos;</span>:
+<a name="l00093"></a>00093                 self::displayAdminPassword($error);
+<a name="l00094"></a>00094                 <span class="keywordflow">break</span>;
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096             <span class="keywordflow">case</span> <span class="stringliteral">&apos;finish&apos;</span>:
+<a name="l00097"></a>00097                 self::displayFinish($error);
+<a name="l00098"></a>00098                 <span class="keywordflow">break</span>;
+<a name="l00099"></a>00099         }
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a6a63cf0eb774d6508391ab12e80b08ae"></a><!-- doxytag: member="TodoyuInstaller::getStep" ref="a6a63cf0eb774d6508391ab12e80b08ae" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getStep </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get current step</p>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Integer </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_installer_8class_8php_source.html#l00042">42</a> der Datei <a class="el" href="_todoyu_installer_8class_8php_source.html">TodoyuInstaller.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00042"></a>00042                                      {
+<a name="l00043"></a>00043         <span class="keywordflow">return</span> intval($_SESSION[<span class="stringliteral">&apos;todoyuinstaller&apos;</span>][<span class="stringliteral">&apos;step&apos;</span>]);
+<a name="l00044"></a>00044     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a84b3f1b540f0f7ebb197de372bd3545f"></a><!-- doxytag: member="TodoyuInstaller::processStep" ref="a84b3f1b540f0f7ebb197de372bd3545f" args="($data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static processStep </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>data</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Process current step data</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_installer_8class_8php_source.html#l00110">110</a> der Datei <a class="el" href="_todoyu_installer_8class_8php_source.html">TodoyuInstaller.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00110"></a>00110                                               {
+<a name="l00111"></a>00111         $action = <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;action&apos;</span>];
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113         <span class="keywordflow">switch</span>($action) {
+<a name="l00114"></a>00114             <span class="keywordflow">case</span> <span class="stringliteral">&apos;start&apos;</span>:
+<a name="l00115"></a>00115                 <a class="code" href="class_todoyu_installer.html#ab89bdce4116c266fa33b73b13e5a09cb">self::setStep</a>(1);
+<a name="l00116"></a>00116                 <span class="keywordflow">break</span>;
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118             <span class="keywordflow">case</span> <span class="stringliteral">&apos;servercheck&apos;</span>:
+<a name="l00119"></a>00119                 <a class="code" href="class_todoyu_installer.html#ab89bdce4116c266fa33b73b13e5a09cb">self::setStep</a>(2);
+<a name="l00120"></a>00120                 <span class="keywordflow">break</span>;
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122             <span class="keywordflow">case</span> <span class="stringliteral">&apos;dbconnection&apos;</span>:
+<a name="l00123"></a>00123                 $_SESSION[<span class="stringliteral">&apos;todoyuinstaller&apos;</span>][<span class="stringliteral">&apos;db&apos;</span>] = <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>;
+<a name="l00124"></a>00124                 <span class="keywordflow">try</span> {
+<a name="l00125"></a>00125                     self::checkDbConnection(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00126"></a>00126                     <a class="code" href="class_todoyu_installer.html#ab89bdce4116c266fa33b73b13e5a09cb">self::setStep</a>(3);
+<a name="l00127"></a>00127                 } <span class="keywordflow">catch</span>(Exception $e) {
+<a name="l00128"></a>00128                     $error = $e-&gt;getMessage();
+<a name="l00129"></a>00129                 }
+<a name="l00130"></a>00130                 <span class="keywordflow">break</span>;
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132             <span class="keywordflow">case</span> <span class="stringliteral">&apos;dbselect&apos;</span>:
+<a name="l00133"></a>00133                 <span class="keywordflow">try</span> {
+<a name="l00134"></a>00134                     self::addDatabase();
+<a name="l00135"></a>00135                     <a class="code" href="class_todoyu_installer.html#ab89bdce4116c266fa33b73b13e5a09cb">self::setStep</a>(4);
+<a name="l00136"></a>00136                     self::saveDbConfigInFile();
+<a name="l00137"></a>00137                 } <span class="keywordflow">catch</span>(Exception $e)   {
+<a name="l00138"></a>00138                     $error = $e-&gt;getMessage();
+<a name="l00139"></a>00139                 }
+<a name="l00140"></a>00140                 <span class="keywordflow">break</span>;
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142             <span class="keywordflow">case</span> <span class="stringliteral">&apos;importstatic&apos;</span>:
+<a name="l00143"></a>00143                 self::importStaticData();
+<a name="l00144"></a>00144                 <a class="code" href="class_todoyu_installer.html#ab89bdce4116c266fa33b73b13e5a09cb">self::setStep</a>(5);
+<a name="l00145"></a>00145                 <span class="keywordflow">break</span>;
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147             <span class="keywordflow">case</span> <span class="stringliteral">&apos;config&apos;</span>:
+<a name="l00148"></a>00148                 <span class="keywordflow">try</span> {
+<a name="l00149"></a>00149                     self::updateConfig(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00150"></a>00150                     <a class="code" href="class_todoyu_installer.html#ab89bdce4116c266fa33b73b13e5a09cb">self::setStep</a>(6);
+<a name="l00151"></a>00151                 } <span class="keywordflow">catch</span> (Exception $e)  {
+<a name="l00152"></a>00152                     $error = $e-&gt;getMessage();
+<a name="l00153"></a>00153                 }
+<a name="l00154"></a>00154                 <span class="keywordflow">break</span>;
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156                 <span class="keywordflow">break</span>;
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158             <span class="keywordflow">case</span> <span class="stringliteral">&apos;setadminpassword&apos;</span>:
+<a name="l00159"></a>00159                 <span class="keywordflow">try</span> {
+<a name="l00160"></a>00160                     self::updateAdminPassword(<a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;password&apos;</span>], <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[<span class="stringliteral">&apos;password_confirm&apos;</span>]);
+<a name="l00161"></a>00161                     <a class="code" href="class_todoyu_installer.html#ab89bdce4116c266fa33b73b13e5a09cb">self::setStep</a>(7);
+<a name="l00162"></a>00162                 } <span class="keywordflow">catch</span>(Exception $e)   {
+<a name="l00163"></a>00163                     $error = $e-&gt;getMessage();
+<a name="l00164"></a>00164                 }
+<a name="l00165"></a>00165                 <span class="keywordflow">break</span>;
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167             <span class="keywordflow">case</span> <span class="stringliteral">&apos;finish&apos;</span>:
+<a name="l00168"></a>00168                 self::finish();
+<a name="l00169"></a>00169                 <a class="code" href="class_todoyu_installer.html#ab89bdce4116c266fa33b73b13e5a09cb">self::setStep</a>(0);
+<a name="l00170"></a>00170                 <span class="keywordflow">break</span>;
+<a name="l00171"></a>00171         }
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173         <span class="keywordflow">return</span> $error;
+<a name="l00174"></a>00174     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="ab89bdce4116c266fa33b73b13e5a09cb"></a><!-- doxytag: member="TodoyuInstaller::setStep" ref="ab89bdce4116c266fa33b73b13e5a09cb" args="($step)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static setStep </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>step</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Set current step</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$step </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_installer_8class_8php_source.html#l00053">53</a> der Datei <a class="el" href="_todoyu_installer_8class_8php_source.html">TodoyuInstaller.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00053"></a>00053                                           {
+<a name="l00054"></a>00054         $_SESSION[<span class="stringliteral">&apos;todoyuinstaller&apos;</span>][<span class="stringliteral">&apos;step&apos;</span>] = intval($step);
+<a name="l00055"></a>00055     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/install/model/<a class="el" href="_todoyu_installer_8class_8php_source.html">TodoyuInstaller.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:46 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

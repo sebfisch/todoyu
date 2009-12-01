@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuAdminRenderer Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuAdminRenderer Klassenreferenz</h1><!-- doxytag: class="TodoyuAdminRenderer" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_admin_renderer.html#a7067f38bc98cf7e6015406d673173177">renderModule</a> ($module)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_admin_renderer.html#ad6fc557becde1f0908b79ed162149435">renderPanelWidgets</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_admin_renderer.html#a4764637a5ceb56148720727de58ca6bc">addAllModAssets</a> ()</td></tr>
+<tr><td colspan="2"><h2>Datenfelder</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_admin_renderer.html#aff4700fa836274c3f200511cb4c57457">EXTKEY</a> = '<a class="el" href="admin_2assets_2js_2_ext_8js.html#af08a7a21ad56d43866df46f2488a5a21">admin</a>'</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_admin_renderer_8class_8php_source.html#l00030">30</a> der Datei <a class="el" href="_todoyu_admin_renderer_8class_8php_source.html">TodoyuAdminRenderer.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a4764637a5ceb56148720727de58ca6bc"></a><!-- doxytag: member="TodoyuAdminRenderer::addAllModAssets" ref="a4764637a5ceb56148720727de58ca6bc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static addAllModAssets </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Add all configured assets of registered admin modules </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_admin_renderer_8class_8php_source.html#l00069">69</a> der Datei <a class="el" href="_todoyu_admin_renderer_8class_8php_source.html">TodoyuAdminRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00069"></a>00069                                              {
+<a name="l00070"></a>00070         <span class="keywordflow">if</span>( is_array(<a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;admin&apos;</span>][<span class="stringliteral">&apos;modules&apos;</span>]) ) {
+<a name="l00071"></a>00071             <span class="keywordflow">foreach</span>(<a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;admin&apos;</span>][<span class="stringliteral">&apos;modules&apos;</span>] as $module) {
+<a name="l00072"></a>00072                 <span class="keywordflow">if</span>( is_array($module[<span class="stringliteral">&apos;assetConf&apos;</span>]) &amp;&amp; <span class="keyword">sizeof</span>($module[<span class="stringliteral">&apos;assetConf&apos;</span>]) === 2 ) {
+<a name="l00073"></a>00073                     <a class="code" href="class_todoyu_page.html#a60f870fc7513a20d414915f771b98b5c">TodoyuPage::addExtAssets</a>($module[<span class="stringliteral">&apos;assetConf&apos;</span>][0], $module[<span class="stringliteral">&apos;assetConf&apos;</span>][1]);
+<a name="l00074"></a>00074                 }
+<a name="l00075"></a>00075             }
+<a name="l00076"></a>00076         }
+<a name="l00077"></a>00077     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a7067f38bc98cf7e6015406d673173177"></a><!-- doxytag: member="TodoyuAdminRenderer::renderModule" ref="a7067f38bc98cf7e6015406d673173177" args="($module)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderModule </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>module</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render module</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$module </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_admin_renderer_8class_8php_source.html#l00043">43</a> der Datei <a class="el" href="_todoyu_admin_renderer_8class_8php_source.html">TodoyuAdminRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00043"></a>00043                                                  {
+<a name="l00044"></a>00044         $renderFunc = <a class="code" href="class_todoyu_admin_manager.html#a364bc6dec38956f75a3d75522e5334bd">TodoyuAdminManager::getModuleRenderFunction</a>($module);
+<a name="l00045"></a>00045         $params     = <a class="code" href="class_todoyu_request.html#aca7ae46d923aa798f1e29657bb767a22">TodoyuRequest::getAll</a>();
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_div.html#afcc9d79cf22888569ba5f634bb686d1c">TodoyuDiv::callUserFunction</a>($renderFunc, $params);
+<a name="l00048"></a>00048     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="ad6fc557becde1f0908b79ed162149435"></a><!-- doxytag: member="TodoyuAdminRenderer::renderPanelWidgets" ref="ad6fc557becde1f0908b79ed162149435" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderPanelWidgets </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render panel widgets</p>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_admin_renderer_8class_8php_source.html#l00057">57</a> der Datei <a class="el" href="_todoyu_admin_renderer_8class_8php_source.html">TodoyuAdminRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00057"></a>00057                                                 {
+<a name="l00058"></a>00058         $params = array();
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_admin_renderer.html#ad6fc557becde1f0908b79ed162149435">TodoyuPanelWidgetRenderer::renderPanelWidgets</a>(<span class="stringliteral">&apos;admin&apos;</span>, $params);
+<a name="l00061"></a>00061     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/><h2>Dokumentation der Datenelemente</h2>
+<a class="anchor" id="aff4700fa836274c3f200511cb4c57457"></a><!-- doxytag: member="TodoyuAdminRenderer::EXTKEY" ref="aff4700fa836274c3f200511cb4c57457" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_todoyu_admin_renderer.html#aff4700fa836274c3f200511cb4c57457">EXTKEY</a> = '<a class="el" href="admin_2assets_2js_2_ext_8js.html#af08a7a21ad56d43866df46f2488a5a21">admin</a>'</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Extension key </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_admin_renderer_8class_8php_source.html#l00035">35</a> der Datei <a class="el" href="_todoyu_admin_renderer_8class_8php_source.html">TodoyuAdminRenderer.class.php</a>.</p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/admin/model/<a class="el" href="_todoyu_admin_renderer_8class_8php_source.html">TodoyuAdminRenderer.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:42 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

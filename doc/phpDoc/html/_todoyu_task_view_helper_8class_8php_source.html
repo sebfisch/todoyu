@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/project/model/TodoyuTaskViewHelper.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/project/model/TodoyuTaskViewHelper.class.php</h1><a href="_todoyu_task_view_helper_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 
+<a name="l00003"></a>00003 
+<a name="l00004"></a><a class="code" href="class_todoyu_task_view_helper.html">00004</a> <span class="keyword">class </span><a class="code" href="class_todoyu_task_view_helper.html">TodoyuTaskViewHelper</a> {
+<a name="l00005"></a>00005 
+<a name="l00012"></a><a class="code" href="class_todoyu_task_view_helper.html#aa25fafb3f6e196d3853a8eb87628d685">00012</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_task_view_helper.html#aa25fafb3f6e196d3853a8eb87628d685">getTaskAssignUserOptions</a>(<a class="code" href="class_todoyu_form_element.html">TodoyuFormElement</a> <a class="code" href="acknowledged__tasks_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>) {
+<a name="l00013"></a>00013         <a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a>   = $field-&gt;<a class="code" href="class_todoyu_form_element.html#a6aed11d79758a2d06062c8cd94bab221">getForm</a>()-&gt;getFormData();
+<a name="l00014"></a>00014         $idProject  = intval(<a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a>[<span class="stringliteral">&apos;id_project&apos;</span>]);
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016         <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>  = <a class="code" href="class_todoyu_project_manager.html#a73eb7d8ab3d31e7bb3680abe26966a61">TodoyuProjectManager::getProjectUsers</a>($idProject);
+<a name="l00017"></a>00017         $options= array(
+<a name="l00018"></a>00018             0   =&gt; array(
+<a name="l00019"></a>00019                 <span class="stringliteral">&apos;disabled&apos;</span>  =&gt; <span class="keyword">true</span>,
+<a name="l00020"></a>00020                 <span class="stringliteral">&apos;label&apos;</span>     =&gt; <span class="stringliteral">&apos;LLL:form.select.pleaseSelect&apos;</span>,
+<a name="l00021"></a>00021                 <span class="stringliteral">&apos;value&apos;</span>     =&gt; 0,
+<a name="l00022"></a>00022             )
+<a name="l00023"></a>00023         );
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025         <span class="keywordflow">foreach</span>(<a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a> as $user) {
+<a name="l00026"></a>00026             $options[] = array(
+<a name="l00027"></a>00027                 <span class="stringliteral">&apos;label&apos;</span> =&gt; $user[<span class="stringliteral">&apos;lastname&apos;</span>] . <span class="charliteral">&apos; &apos;</span> . $user[<span class="stringliteral">&apos;firstname&apos;</span>] . <span class="stringliteral">&apos; [&apos;</span> . <a class="code" href="class_todoyu_locale.html#afa2458115d584f5391182198718c3d12">TodoyuLocale::getLabel</a>($user[<span class="stringliteral">&apos;rolelabel&apos;</span>]) . <span class="charliteral">&apos;]&apos;</span>,
+<a name="l00028"></a>00028                 <span class="stringliteral">&apos;value&apos;</span> =&gt; $user[<span class="stringliteral">&apos;id&apos;</span>]
+<a name="l00029"></a>00029             );
+<a name="l00030"></a>00030         }
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032         <span class="keywordflow">return</span> $options;
+<a name="l00033"></a>00033     }
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 
+<a name="l00043"></a><a class="code" href="class_todoyu_task_view_helper.html#a858ff31f275d6436c780655d22ca3197">00043</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_task_view_helper.html#a858ff31f275d6436c780655d22ca3197">getTaskWorktypeOptions</a>(<a class="code" href="class_todoyu_form_element.html">TodoyuFormElement</a> <a class="code" href="acknowledged__tasks_8php.html#a83e4d6721f3491a4fd780dbd3ce1a3c0">$field</a>) {
+<a name="l00044"></a>00044         $options= array(
+<a name="l00045"></a>00045             0   =&gt; array(
+<a name="l00046"></a>00046                 <span class="stringliteral">&apos;disabled&apos;</span>  =&gt; <span class="keyword">true</span>,
+<a name="l00047"></a>00047                 <span class="stringliteral">&apos;label&apos;</span>     =&gt; <span class="stringliteral">&apos;LLL:form.select.pleaseSelect&apos;</span>,
+<a name="l00048"></a>00048                 <span class="stringliteral">&apos;value&apos;</span>     =&gt; 0,
+<a name="l00049"></a>00049             )
+<a name="l00050"></a>00050         );
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         $worktypes  = <a class="code" href="class_todoyu_worktype_manager.html#acd348526a17ed102811c3aeae8b25c39">TodoyuWorktypeManager::getAllWorktypes</a>();
+<a name="l00053"></a>00053         <span class="keywordflow">foreach</span>($worktypes as $num =&gt; $type) {
+<a name="l00054"></a>00054             <span class="keywordflow">if</span> ($type[<span class="stringliteral">&apos;deleted&apos;</span>] == 0) {
+<a name="l00055"></a>00055                 $options[] = array(
+<a name="l00056"></a>00056                     <span class="stringliteral">&apos;label&apos;</span> =&gt; $type[<span class="stringliteral">&apos;title&apos;</span>],
+<a name="l00057"></a>00057                     <span class="stringliteral">&apos;value&apos;</span> =&gt; $type[<span class="stringliteral">&apos;id&apos;</span>]
+<a name="l00058"></a>00058                 );
+<a name="l00059"></a>00059             }
+<a name="l00060"></a>00060         }
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062         <span class="keywordflow">return</span> $options;
+<a name="l00063"></a>00063     }
+<a name="l00064"></a>00064 }
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:35 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuUserFilterDataSource Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuUserFilterDataSource Klassenreferenz</h1><!-- doxytag: class="TodoyuUserFilterDataSource" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_user_filter_data_source.html#a8c7e8e9ab15097355c00fda29c66cd10">autocompleteUsers</a> ($<a class="el" href="search_2assets_2js_2_ext_8js.html#a38090deb158ccc6f0d577f72dc1fe73a">search</a>, array $conf=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_user_filter_data_source.html#a015b117b9d86e791dce9b1fcb18ae72e">getLabel</a> ($definitions)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_user_filter_data_source.html#ac139b9aa5fb9d628cd56e2368465253b">autocompleteCustomers</a> ($<a class="el" href="search_2assets_2js_2_ext_8js.html#a38090deb158ccc6f0d577f72dc1fe73a">search</a>, array $conf=array())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_user_filter_data_source.html#a5d63c6f5ed12cc1e147e917f642d7088">getCustomerLabel</a> ($definitions)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+<p>User filter data source </p>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_user_filter_data_source_8class_8php_source.html#l00026">26</a> der Datei <a class="el" href="_todoyu_user_filter_data_source_8class_8php_source.html">TodoyuUserFilterDataSource.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="ac139b9aa5fb9d628cd56e2368465253b"></a><!-- doxytag: member="TodoyuUserFilterDataSource::autocompleteCustomers" ref="ac139b9aa5fb9d628cd56e2368465253b" args="($search, array $conf=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static autocompleteCustomers </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>search</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>conf</em> = <code>array()</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get customers autocompletion data</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$search </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$conf </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Array </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_user_filter_data_source_8class_8php_source.html#l00078">78</a> der Datei <a class="el" href="_todoyu_user_filter_data_source_8class_8php_source.html">TodoyuUserFilterDataSource.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00078"></a>00078                                                                                     {
+<a name="l00079"></a>00079         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a> = array();
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081         $foundCustomers = <a class="code" href="class_todoyu_customer_manager.html#a36a87bed460f5939d28f9846a8023512">TodoyuCustomerManager::searchCustomers</a>($search);
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084         <span class="keywordflow">foreach</span>($foundCustomers as $foundCustomer)  {
+<a name="l00085"></a>00085             $customer   = <a class="code" href="class_todoyu_customer_manager.html#a4d422d903a603ca375b7f68599d1b5a8">TodoyuCustomerManager::getCustomer</a>($foundCustomer[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00086"></a>00086             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[$foundCustomer[<span class="stringliteral">&apos;id&apos;</span>]] = $customer-&gt;getName();
+<a name="l00087"></a>00087         }
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089         <span class="keywordflow">return</span> <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>;
+<a name="l00090"></a>00090     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a8c7e8e9ab15097355c00fda29c66cd10"></a><!-- doxytag: member="TodoyuUserFilterDataSource::autocompleteUsers" ref="a8c7e8e9ab15097355c00fda29c66cd10" args="($search, array $conf=array())" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static autocompleteUsers </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>search</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>conf</em> = <code>array()</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get users autocompletion data</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>String</em>&nbsp;</td><td>$search </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$conf </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Array </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_user_filter_data_source_8class_8php_source.html#l00037">37</a> der Datei <a class="el" href="_todoyu_user_filter_data_source_8class_8php_source.html">TodoyuUserFilterDataSource.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00037"></a>00037                                                                                 {
+<a name="l00038"></a>00038         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a> = array();
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040         $fieldsToSearchIn = array(
+<a name="l00041"></a>00041             <span class="stringliteral">&apos;firstname&apos;</span>,
+<a name="l00042"></a>00042             <span class="stringliteral">&apos;lastname&apos;</span>,
+<a name="l00043"></a>00043             <span class="stringliteral">&apos;shortname&apos;</span>
+<a name="l00044"></a>00044         );
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046         <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a> = <a class="code" href="class_todoyu_user_manager.html#a0b0c486e86068f68906a8a97522630b5">TodoyuUserManager::searchUsers</a>($search, $fieldsToSearchIn);
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048         <span class="keywordflow">foreach</span>(<a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a> as $user) {
+<a name="l00049"></a>00049             <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>[$user[<span class="stringliteral">&apos;id&apos;</span>]] = $user[<span class="stringliteral">&apos;lastname&apos;</span>] . <span class="charliteral">&apos; &apos;</span> . $user[<span class="stringliteral">&apos;firstname&apos;</span>];
+<a name="l00050"></a>00050         }
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052         <span class="keywordflow">return</span> <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>;
+<a name="l00053"></a>00053     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a5d63c6f5ed12cc1e147e917f642d7088"></a><!-- doxytag: member="TodoyuUserFilterDataSource::getCustomerLabel" ref="a5d63c6f5ed12cc1e147e917f642d7088" args="($definitions)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getCustomerLabel </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>definitions</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get customer label</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$definitions </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Array </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_user_filter_data_source_8class_8php_source.html#l00100">100</a> der Datei <a class="el" href="_todoyu_user_filter_data_source_8class_8php_source.html">TodoyuUserFilterDataSource.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00100"></a>00100                                                             {
+<a name="l00101"></a>00101         $customer = <span class="keyword">new</span> Customer($definitions[<span class="stringliteral">&apos;value&apos;</span>]);
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103         $definitions[<span class="stringliteral">&apos;value_label&apos;</span>] = $customer-&gt;getName();
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105         <span class="keywordflow">return</span> $definitions;
+<a name="l00106"></a>00106     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a015b117b9d86e791dce9b1fcb18ae72e"></a><!-- doxytag: member="TodoyuUserFilterDataSource::getLabel" ref="a015b117b9d86e791dce9b1fcb18ae72e" args="($definitions)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static getLabel </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>definitions</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get user filter definition label</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Array</em>&nbsp;</td><td>$definitions </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>Array </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_user_filter_data_source_8class_8php_source.html#l00063">63</a> der Datei <a class="el" href="_todoyu_user_filter_data_source_8class_8php_source.html">TodoyuUserFilterDataSource.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00063"></a>00063                                                     {
+<a name="l00064"></a>00064         $definitions[<span class="stringliteral">&apos;value_label&apos;</span>] = <a class="code" href="class_todoyu_user_filter_data_source.html#a015b117b9d86e791dce9b1fcb18ae72e">TodoyuUserManager::getLabel</a>($definitions[<span class="stringliteral">&apos;value&apos;</span>]);
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066         <span class="keywordflow">return</span> $definitions;
+<a name="l00067"></a>00067     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/user/model/<a class="el" href="_todoyu_user_filter_data_source_8class_8php_source.html">TodoyuUserFilterDataSource.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:49 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

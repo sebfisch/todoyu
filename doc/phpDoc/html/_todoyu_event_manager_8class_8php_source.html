@@ -1,0 +1,640 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/calendar/model/TodoyuEventManager.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/calendar/model/TodoyuEventManager.class.php</h1><a href="_todoyu_event_manager_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00029"></a><a class="code" href="class_todoyu_event_manager.html">00029</a> <span class="keyword">class </span><a class="code" href="class_todoyu_event_manager.html">TodoyuEventManager</a> {
+<a name="l00030"></a>00030 
+<a name="l00031"></a><a class="code" href="class_todoyu_event_manager.html#adf62e2b172196282218b1ece3d200fa1">00031</a>     <span class="keyword">const</span> <a class="code" href="class_todoyu_event_manager.html#adf62e2b172196282218b1ece3d200fa1">TABLE</a> = <span class="stringliteral">&apos;ext_calendar_event&apos;</span>;
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 
+<a name="l00040"></a><a class="code" href="class_todoyu_event_manager.html#a8a23179af6d7f3a48565c9cd8a00b402">00040</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a8a23179af6d7f3a48565c9cd8a00b402">getEvent</a>($idEvent) {
+<a name="l00041"></a>00041         $idEvent = intval($idEvent);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_cache.html#ac4ee8343209de75d7fc2392648f4072b">TodoyuCache::getRecord</a>(<span class="stringliteral">&apos;TodoyuEvent&apos;</span>, $idEvent);
+<a name="l00044"></a>00044     }
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 
+<a name="l00054"></a><a class="code" href="class_todoyu_event_manager.html#a172b4c12b2fc7eaef97c18bd3fd6010b">00054</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a172b4c12b2fc7eaef97c18bd3fd6010b">getEventRecord</a>($idEvent) {
+<a name="l00055"></a>00055         $idEvent = intval($idEvent);
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getRecord(self::TABLE, $idEvent);
+<a name="l00058"></a>00058     }
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 
+<a name="l00073"></a><a class="code" href="class_todoyu_event_manager.html#aacc79b5c4b97448002940cf14d0f62a8">00073</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#aacc79b5c4b97448002940cf14d0f62a8">getEventsInTimespan</a>($dateStart, $dateEnd, array <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a> = array(), array $eventTypes = array(), $dayEvents = null, $indexField = <span class="stringliteral">&apos;id&apos;</span>) {
+<a name="l00074"></a>00074         $dateStart  = intval($dateStart);
+<a name="l00075"></a>00075         $dateEnd    = intval($dateEnd);
+<a name="l00076"></a>00076         <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>      = <a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>(<a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>, <span class="keyword">true</span>, <span class="keyword">true</span>);
+<a name="l00077"></a>00077         $eventTypes = <a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>($eventTypes, <span class="keyword">true</span>, <span class="keyword">true</span>);
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079         <span class="keywordflow">if</span>( <span class="keyword">sizeof</span>(<a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>) === 0 ) {
+<a name="l00080"></a>00080             <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>  = array(<a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>());
+<a name="l00081"></a>00081         }
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos; e.*,</span>
+<a name="l00084"></a>00084 <span class="stringliteral">                    mmeu.id_user,</span>
+<a name="l00085"></a>00085 <span class="stringliteral">                    mmeu.is_acknowledged&apos;</span>;
+<a name="l00086"></a>00086         $tables =   self::TABLE  . <span class="stringliteral">&apos; e,</span>
+<a name="l00087"></a>00087 <span class="stringliteral">                    ext_calendar_mm_event_user mmeu&apos;</span>;
+<a name="l00088"></a>00088         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos; e.id        = mmeu.id_event AND</span>
+<a name="l00089"></a>00089 <span class="stringliteral">                    e.deleted   = 0 AND</span>
+<a name="l00090"></a>00090 <span class="stringliteral">                    (   e.date_start BETWEEN &apos;</span> . $dateStart . <span class="stringliteral">&apos; AND &apos;</span> . $dateEnd . <span class="stringliteral">&apos; OR</span>
+<a name="l00091"></a>00091 <span class="stringliteral">                        e.date_end BETWEEN &apos;</span> . $dateStart . <span class="stringliteral">&apos; AND &apos;</span> . $dateEnd . <span class="stringliteral">&apos; OR</span>
+<a name="l00092"></a>00092 <span class="stringliteral">                        (e.date_start &lt; &apos;</span> . $dateStart . <span class="stringliteral">&apos; AND e.date_end &gt; &apos;</span> . $dateEnd . <span class="stringliteral">&apos;)</span>
+<a name="l00093"></a>00093 <span class="stringliteral">                    )&apos;</span>;
+<a name="l00094"></a>00094         $group  = <span class="stringliteral">&apos;&apos;</span>;
+<a name="l00095"></a>00095         $order  = <span class="stringliteral">&apos;e.date_start&apos;</span>;
+<a name="l00096"></a>00096         $limit  = <span class="stringliteral">&apos;&apos;</span>;
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098             <span class="comment">// DayEvents: null = both, true = only, false = without</span>
+<a name="l00099"></a>00099         <span class="keywordflow">if</span>( $dayEvents === <span class="keyword">true</span> ) {
+<a name="l00100"></a>00100             <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> .= <span class="stringliteral">&apos; AND e.is_dayevent = 1&apos;</span>;
+<a name="l00101"></a>00101         } elseif( $dayEvents === <span class="keyword">false</span> ) {
+<a name="l00102"></a>00102             <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> .= <span class="stringliteral">&apos; AND e.is_dayevent = 0&apos;</span>;
+<a name="l00103"></a>00103         }
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105             <span class="comment">// Users</span>
+<a name="l00106"></a>00106         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  .= <span class="stringliteral">&apos; AND mmeu.id_user IN(&apos;</span> . implode(<span class="charliteral">&apos;,&apos;</span>, <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>) . <span class="charliteral">&apos;)&apos;</span>;
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108             <span class="comment">// Event types</span>
+<a name="l00109"></a>00109         <span class="keywordflow">if</span>( <span class="keyword">sizeof</span>($eventTypes) ) {
+<a name="l00110"></a>00110             <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> .= <span class="stringliteral">&apos; AND e.eventtype IN(&apos;</span> . implode(<span class="charliteral">&apos;,&apos;</span>, $eventTypes) . <span class="charliteral">&apos;)&apos;</span>;
+<a name="l00111"></a>00111         }
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, $tables, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, $group, $order, $limit, $indexField);
+<a name="l00114"></a>00114     }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 
+<a name="l00127"></a><a class="code" href="class_todoyu_event_manager.html#a74cb25bd470ea33f0df5d492471b1eb4">00127</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a74cb25bd470ea33f0df5d492471b1eb4">groupEventsByDay</a>(array $events, $dateStart, $dateEnd) {
+<a name="l00128"></a>00128         $dateStart      = <a class="code" href="class_todoyu_time.html#a7a1884c9388ce7eec592af5191304392">TodoyuTime::getStartOfDay</a>($dateStart);
+<a name="l00129"></a>00129         $dateEnd        = intval($dateEnd);
+<a name="l00130"></a>00130         $groupedEvents  = array();
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132         <span class="keywordflow">for</span>($date = $dateStart; $date &lt;= $dateEnd; $date += <a class="code" href="class_todoyu_time.html#afe23bed72c8a071ebd9221d9cda99dc8">TodoyuTime::SECONDS_DAY</a> ) {
+<a name="l00133"></a>00133             $dayKey     = date(<span class="stringliteral">&apos;Ymd&apos;</span>, $date);
+<a name="l00134"></a>00134             $dayRange   = <a class="code" href="class_todoyu_time.html#a36e69cd8bdd6fa3fd46f483445730852">TodoyuTime::getDayRange</a>($date);
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136             $groupedEvents[$dayKey] = array();
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138             <span class="keywordflow">foreach</span>($events as $event) {
+<a name="l00139"></a>00139                 <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_time.html#a41f6762dc5677d4e1e2f8686c7ddc93d">TodoyuTime::rangeOverlaps</a>($dayRange[<span class="stringliteral">&apos;start&apos;</span>], $dayRange[<span class="stringliteral">&apos;end&apos;</span>], $event[<span class="stringliteral">&apos;date_start&apos;</span>], $event[<span class="stringliteral">&apos;date_end&apos;</span>]) ) {
+<a name="l00140"></a>00140                     $groupedEvents[$dayKey][] = $event;
+<a name="l00141"></a>00141                 }
+<a name="l00142"></a>00142             }
+<a name="l00143"></a>00143         }
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145         <span class="keywordflow">return</span> $groupedEvents;
+<a name="l00146"></a>00146     }
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149 
+<a name="l00156"></a><a class="code" href="class_todoyu_event_manager.html#a944e7ca3a41a7e873ccf69e22f7cabc8">00156</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a944e7ca3a41a7e873ccf69e22f7cabc8">addOverlapInformationToEvents</a>(array $eventsByDay) {
+<a name="l00157"></a>00157             <span class="comment">// Add overlap key to each event</span>
+<a name="l00158"></a>00158         <span class="keywordflow">foreach</span>($eventsByDay as $dayKey =&gt; $eventsOfDay) {
+<a name="l00159"></a>00159             <span class="keywordflow">foreach</span>($eventsOfDay as $index =&gt; $event) {
+<a name="l00160"></a>00160                 $eventsByDay[$dayKey][$index][<span class="stringliteral">&apos;_overlap&apos;</span>] = array();
+<a name="l00161"></a>00161             }
+<a name="l00162"></a>00162         }
+<a name="l00163"></a>00163 
+<a name="l00164"></a>00164             <span class="comment">// Loop through all days to check the events of the day</span>
+<a name="l00165"></a>00165         <span class="keywordflow">foreach</span>($eventsByDay as $dayKey =&gt; $eventsOfDay) {
+<a name="l00166"></a>00166                 <span class="comment">// Find overlapings between events</span>
+<a name="l00167"></a>00167             <span class="keywordflow">foreach</span>($eventsOfDay as $index =&gt; $event) {
+<a name="l00168"></a>00168                     <span class="comment">// Compare each to all other events</span>
+<a name="l00169"></a>00169                 <span class="keywordflow">foreach</span>($eventsOfDay as $compareIndex =&gt; $compareEvent) {
+<a name="l00170"></a>00170                         <span class="comment">// Don&apos;t check overlaping with itself</span>
+<a name="l00171"></a>00171                     <span class="keywordflow">if</span>( $compareIndex != $index ) {
+<a name="l00172"></a>00172                         <span class="keywordflow">if</span>( self::areEventsOverlaping($event, $compareEvent) ) {
+<a name="l00173"></a>00173                                 <span class="comment">// Set own in own _overlap</span>
+<a name="l00174"></a>00174                             <span class="keywordflow">if</span>( ! in_array($index, $eventsByDay[$dayKey][$index][<span class="stringliteral">&apos;_overlap&apos;</span>]) ) {
+<a name="l00175"></a>00175                                 $eventsByDay[$dayKey][$index][<span class="stringliteral">&apos;_overlap&apos;</span>][] = $index;
+<a name="l00176"></a>00176                             }
+<a name="l00177"></a>00177                                 <span class="comment">// Set compare in own _overlap</span>
+<a name="l00178"></a>00178                             <span class="keywordflow">if</span>( ! in_array($compareIndex, $eventsByDay[$dayKey][$index][<span class="stringliteral">&apos;_overlap&apos;</span>]) ) {
+<a name="l00179"></a>00179                                 $eventsByDay[$dayKey][$index][<span class="stringliteral">&apos;_overlap&apos;</span>][] = $compareIndex;
+<a name="l00180"></a>00180                             }
+<a name="l00181"></a>00181                                 <span class="comment">// Set own in compare _overlap</span>
+<a name="l00182"></a>00182                             <span class="keywordflow">if</span>( ! in_array($index, $eventsByDay[$dayKey][$compareIndex][<span class="stringliteral">&apos;_overlap&apos;</span>]) ) {
+<a name="l00183"></a>00183                                 $eventsByDay[$dayKey][$compareIndex][<span class="stringliteral">&apos;_overlap&apos;</span>][]  = $index;
+<a name="l00184"></a>00184                             }
+<a name="l00185"></a>00185                                 <span class="comment">// Set compare in compare _overlap</span>
+<a name="l00186"></a>00186                             <span class="keywordflow">if</span>( ! in_array($compareIndex, $eventsByDay[$dayKey][$compareIndex][<span class="stringliteral">&apos;_overlap&apos;</span>]) ) {
+<a name="l00187"></a>00187                                 $eventsByDay[$dayKey][$compareIndex][<span class="stringliteral">&apos;_overlap&apos;</span>][]  = $compareIndex;
+<a name="l00188"></a>00188                             }
+<a name="l00189"></a>00189                         }
+<a name="l00190"></a>00190                     }
+<a name="l00191"></a>00191                 }
+<a name="l00192"></a>00192             }
+<a name="l00193"></a>00193         }
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195             <span class="comment">// Find intersection(s amount and) index (basis for later left-positioning) of each event</span>
+<a name="l00196"></a>00196         <span class="keywordflow">foreach</span>($eventsByDay as $dayKey =&gt; $eventsOfDay) {
+<a name="l00197"></a>00197             <span class="keywordflow">foreach</span>($eventsOfDay as $index =&gt; $event) {
+<a name="l00198"></a>00198                 $eventsByDay[$dayKey][$index][<span class="stringliteral">&apos;_overlapNum&apos;</span>]    = <span class="keyword">sizeof</span>($event[<span class="stringliteral">&apos;_overlap&apos;</span>]);
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200                 <span class="keywordflow">if</span>( $eventsByDay[$dayKey][$index][<span class="stringliteral">&apos;_overlapNum&apos;</span>] &gt; 0 ) {
+<a name="l00201"></a>00201                     $overlapIndexes = array_flip($event[<span class="stringliteral">&apos;_overlap&apos;</span>]);
+<a name="l00202"></a>00202                     $eventsByDay[$dayKey][$index][<span class="stringliteral">&apos;_overlapIndex&apos;</span>] = $overlapIndexes[$index];
+<a name="l00203"></a>00203                 }
+<a name="l00204"></a>00204             }
+<a name="l00205"></a>00205         }
+<a name="l00206"></a>00206 
+<a name="l00207"></a>00207         <span class="keywordflow">return</span> $eventsByDay;
+<a name="l00208"></a>00208     }
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211 
+<a name="l00219"></a><a class="code" href="class_todoyu_event_manager.html#a652209d44414fee944e41fa4dc47052c">00219</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a652209d44414fee944e41fa4dc47052c">areEventsOverlaping</a>(array $event1, array $event2) {
+<a name="l00220"></a>00220         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_time.html#a41f6762dc5677d4e1e2f8686c7ddc93d">TodoyuTime::rangeOverlaps</a>($event1[<span class="stringliteral">&apos;date_start&apos;</span>], $event1[<span class="stringliteral">&apos;date_end&apos;</span>], $event2[<span class="stringliteral">&apos;date_start&apos;</span>], $event2[<span class="stringliteral">&apos;date_end&apos;</span>]);
+<a name="l00221"></a>00221     }
+<a name="l00222"></a>00222 
+<a name="l00223"></a>00223 
+<a name="l00224"></a>00224 
+<a name="l00231"></a><a class="code" href="class_todoyu_event_manager.html#ac65a7e2b3309e07d254370d69e60812d">00231</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#ac65a7e2b3309e07d254370d69e60812d">fixEventOverlap</a>(array $events) {
+<a name="l00232"></a>00232 
+<a name="l00233"></a>00233         <span class="keywordflow">return</span> $events;
+<a name="l00234"></a>00234     }
+<a name="l00235"></a>00235 
+<a name="l00236"></a>00236 
+<a name="l00237"></a>00237 
+<a name="l00245"></a><a class="code" href="class_todoyu_event_manager.html#a615da0a7fd33b1348dfbb779b7b6bfc9">00245</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a615da0a7fd33b1348dfbb779b7b6bfc9">getAssignedUsersOfEvent</a>( $idEvent, $getUsersData = <span class="keyword">false</span> ) {
+<a name="l00246"></a>00246         <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a> = array();
+<a name="l00247"></a>00247 
+<a name="l00248"></a>00248         $idEvent    = intval( $idEvent );
+<a name="l00249"></a>00249 
+<a name="l00250"></a>00250         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos;id_user, is_acknowledged&apos;</span>;
+<a name="l00251"></a>00251         $tables = <span class="stringliteral">&apos;ext_calendar_mm_event_user&apos;</span>;
+<a name="l00252"></a>00252         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos;id_event = &apos;</span> . intval( $idEvent );
+<a name="l00253"></a>00253         $group  = <span class="stringliteral">&apos;id_user&apos;</span>;
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255         $result = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doSelect( <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, $tables, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, $group, <span class="stringliteral">&apos;&apos;</span>, <span class="stringliteral">&apos;&apos;</span>, <span class="stringliteral">&apos;id_user&apos;</span>);
+<a name="l00256"></a>00256 
+<a name="l00257"></a>00257         <span class="keywordflow">while</span>($row = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;fetchAssoc($result)) {
+<a name="l00258"></a>00258             $user = $row;
+<a name="l00259"></a>00259 
+<a name="l00260"></a>00260             <span class="keywordflow">if</span> ($getUsersData) {
+<a name="l00261"></a>00261                 $userArray = <a class="code" href="class_todoyu_user_manager.html#a83676b6b5bc43a6f1077a7b5544194f1">TodoyuUserManager::getUserArray</a>($user[<span class="stringliteral">&apos;id_user&apos;</span>]);
+<a name="l00262"></a>00262                 <span class="keywordflow">if</span> (is_array($userArray)) {
+<a name="l00263"></a>00263                     $user = array_merge($user, $userArray);
+<a name="l00264"></a>00264                 }
+<a name="l00265"></a>00265             }
+<a name="l00266"></a>00266 
+<a name="l00267"></a>00267             <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>[]    = $user;
+<a name="l00268"></a>00268         }
+<a name="l00269"></a>00269 
+<a name="l00270"></a>00270         <span class="keywordflow">return</span> <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>;
+<a name="l00271"></a>00271     }
+<a name="l00272"></a>00272 
+<a name="l00273"></a>00273 
+<a name="l00274"></a>00274 
+<a name="l00281"></a><a class="code" href="class_todoyu_event_manager.html#ae7651609183a7a6a362e231a440bda6a">00281</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#ae7651609183a7a6a362e231a440bda6a">getAssignedUsersOfEvents</a>(array $eventIDs ) {
+<a name="l00282"></a>00282         $eventIDs   = array_unique( <a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>($eventIDs) );
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos;id_event, id_user&apos;</span>;
+<a name="l00285"></a>00285         $tables = <span class="stringliteral">&apos;ext_calendar_mm_event_user&apos;</span>;
+<a name="l00286"></a>00286         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos;id_event IN (&apos;</span> . <a class="code" href="class_todoyu_array.html#a094b056f2ce0bf18e6d28bc8010d4151">TodoyuArray::intImplode</a>( $eventIDs ) . <span class="stringliteral">&apos;) &apos;</span>;
+<a name="l00287"></a>00287 
+<a name="l00288"></a>00288         $res    = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray( <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, $tables, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, <span class="stringliteral">&apos;&apos;</span>, <span class="stringliteral">&apos;id_event&apos;</span>, <span class="stringliteral">&apos;&apos;</span> );
+<a name="l00289"></a>00289 
+<a name="l00290"></a>00290         $eventUsers = array();
+<a name="l00291"></a>00291         <span class="keywordflow">foreach</span>($res as $vals) {
+<a name="l00292"></a>00292             $eventUsers[ $vals[<span class="stringliteral">&apos;id_event&apos;</span>] ][] = $vals[<span class="stringliteral">&apos;id_user&apos;</span>];
+<a name="l00293"></a>00293         }
+<a name="l00294"></a>00294 
+<a name="l00295"></a>00295         <span class="keywordflow">return</span> $eventUsers;
+<a name="l00296"></a>00296     }
+<a name="l00297"></a>00297 
+<a name="l00298"></a>00298 
+<a name="l00299"></a>00299 
+<a name="l00305"></a><a class="code" href="class_todoyu_event_manager.html#a754e8bcb95c6115a587af903fda66829">00305</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a754e8bcb95c6115a587af903fda66829">deleteEvent</a>($idEvent) {
+<a name="l00306"></a>00306         $idEvent    = intval($idEvent);
+<a name="l00307"></a>00307 
+<a name="l00308"></a>00308             <span class="comment">// Delete event</span>
+<a name="l00309"></a>00309         <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;deleteRecord(self::TABLE , $idEvent);
+<a name="l00310"></a>00310 
+<a name="l00311"></a>00311             <span class="comment">// Remove assigned users</span>
+<a name="l00312"></a>00312         <a class="code" href="class_todoyu_event_manager.html#a1e0f70192078e5287ba67709909277af">self::removeAssignedEventUsers</a>($idEvent);
+<a name="l00313"></a>00313     }
+<a name="l00314"></a>00314 
+<a name="l00315"></a>00315 
+<a name="l00316"></a>00316 
+<a name="l00324"></a><a class="code" href="class_todoyu_event_manager.html#a445cae88bc781d138d4cdf26e9cb03c7">00324</a>      <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a445cae88bc781d138d4cdf26e9cb03c7">getEventTypes</a>($parseLabels = <span class="keyword">false</span>) {
+<a name="l00325"></a>00325         $types      = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;calendar&apos;</span>][<span class="stringliteral">&apos;EVENTTYPE&apos;</span>];
+<a name="l00326"></a>00326         $eventTypes = array();
+<a name="l00327"></a>00327 
+<a name="l00328"></a>00328         <span class="keywordflow">foreach</span>($types as $index =&gt; $key) {
+<a name="l00329"></a>00329             $eventType = array(
+<a name="l00330"></a>00330                 <span class="stringliteral">&apos;index&apos;</span> =&gt; $index,
+<a name="l00331"></a>00331                 <span class="stringliteral">&apos;key&apos;</span>   =&gt; $key
+<a name="l00332"></a>00332             );
+<a name="l00333"></a>00333 
+<a name="l00334"></a>00334             <span class="keywordflow">if</span>( $parseLabels ) {
+<a name="l00335"></a>00335                 $eventType[<span class="stringliteral">&apos;label&apos;</span>] = <a class="code" href="functions_8php.html#a7c072b45376ab4eab800bc4788a4e22f">Label</a>(<span class="stringliteral">&apos;event.eventtype.&apos;</span> . $key);
+<a name="l00336"></a>00336             }
+<a name="l00337"></a>00337 
+<a name="l00338"></a>00338             $eventTypes[$index] = $eventType;
+<a name="l00339"></a>00339         }
+<a name="l00340"></a>00340 
+<a name="l00341"></a>00341         <span class="keywordflow">return</span> $eventTypes;
+<a name="l00342"></a>00342     }
+<a name="l00343"></a>00343 
+<a name="l00344"></a>00344 
+<a name="l00345"></a>00345 
+<a name="l00353"></a><a class="code" href="class_todoyu_event_manager.html#af0312779813b1459337cea0c4f38f1bb">00353</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#af0312779813b1459337cea0c4f38f1bb">saveEvent</a>(array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>) {
+<a name="l00354"></a>00354         <a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>= <span class="stringliteral">&apos;ext/calendar/config/form/event.xml&apos;</span>;
+<a name="l00355"></a>00355 
+<a name="l00356"></a>00356         $idEvent= intval($data[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00357"></a>00357         <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>  = $data[<span class="stringliteral">&apos;user&apos;</span>];
+<a name="l00358"></a>00358 
+<a name="l00359"></a>00359         unset($data[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00360"></a>00360         unset($data[<span class="stringliteral">&apos;user&apos;</span>]);
+<a name="l00361"></a>00361 
+<a name="l00362"></a>00362             <span class="comment">// Add empty event</span>
+<a name="l00363"></a>00363         <span class="keywordflow">if</span>( $idEvent === 0 )    {
+<a name="l00364"></a>00364             $idEvent = <a class="code" href="class_todoyu_event_manager.html#acc23d6c1e5731b75d8acc522a392298e">self::addEvent</a>(array());
+<a name="l00365"></a>00365         }
+<a name="l00366"></a>00366 
+<a name="l00367"></a>00367             <span class="comment">// Call save data hooks</span>
+<a name="l00368"></a>00368         $data   = <a class="code" href="class_todoyu_form_hook.html#a661781c57898f2b71c3c241515510324">TodoyuFormHook::callSaveData</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>, $data, $idEvent);
+<a name="l00369"></a>00369 
+<a name="l00370"></a>00370             <span class="comment">// Update the event with the definitive data</span>
+<a name="l00371"></a>00371         <a class="code" href="class_todoyu_event_manager.html#aab0958c8a4d2c546bfd78d7c2bcccfec">self::updateEvent</a>($idEvent, $data);
+<a name="l00372"></a>00372             <span class="comment">// Remove already assigned users</span>
+<a name="l00373"></a>00373         <a class="code" href="class_todoyu_event_manager.html#a1e0f70192078e5287ba67709909277af">self::removeAssignedEventUsers</a>($idEvent);
+<a name="l00374"></a>00374 
+<a name="l00375"></a>00375             <span class="comment">// Add users</span>
+<a name="l00376"></a>00376         <span class="keywordflow">if</span>( is_array(<a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>) ) {
+<a name="l00377"></a>00377             <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>  = <a class="code" href="class_todoyu_array.html#ad2c7a0fa47bdfe76e832d0145aecbc20">TodoyuArray::getColumn</a>(<a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>, <span class="stringliteral">&apos;id&apos;</span>);
+<a name="l00378"></a>00378             <a class="code" href="class_todoyu_event_manager.html#a65b9ae9124255c20de3b0f88982c6cb0">self::assignUsersToEvent</a>($idEvent, <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>);
+<a name="l00379"></a>00379         }
+<a name="l00380"></a>00380 
+<a name="l00381"></a>00381             <span class="comment">// Remove record and query from cache</span>
+<a name="l00382"></a>00382         <a class="code" href="class_todoyu_event_manager.html#a0019ac2e5cddcebb98bd5a52c7ec06cf">self::removeEventFromCache</a>($idEvent);
+<a name="l00383"></a>00383 
+<a name="l00384"></a>00384         <span class="keywordflow">return</span> $idEvent;
+<a name="l00385"></a>00385     }
+<a name="l00386"></a>00386 
+<a name="l00387"></a>00387 
+<a name="l00394"></a><a class="code" href="class_todoyu_event_manager.html#ae68e5068b40f7268ce4a472c74f593b4">00394</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#ae68e5068b40f7268ce4a472c74f593b4">saveQuickEvent</a>(array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>) {
+<a name="l00395"></a>00395         <a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>    = <span class="stringliteral">&apos;ext/calendar/config/form/quickevent.xml&apos;</span>;
+<a name="l00396"></a>00396 
+<a name="l00397"></a>00397         $idEvent    = <a class="code" href="class_todoyu_event_manager.html#acc23d6c1e5731b75d8acc522a392298e">self::addEvent</a>(array());
+<a name="l00398"></a>00398 
+<a name="l00399"></a>00399             <span class="comment">// Add users</span>
+<a name="l00400"></a>00400         <span class="keywordflow">if</span>( is_array($data[<span class="stringliteral">&apos;user&apos;</span>]) ) {
+<a name="l00401"></a>00401             <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>  = <a class="code" href="class_todoyu_array.html#ad2c7a0fa47bdfe76e832d0145aecbc20">TodoyuArray::getColumn</a>($data[<span class="stringliteral">&apos;user&apos;</span>], <span class="stringliteral">&apos;id&apos;</span>);
+<a name="l00402"></a>00402             <a class="code" href="class_todoyu_event_manager.html#a65b9ae9124255c20de3b0f88982c6cb0">self::assignUsersToEvent</a>($idEvent, <a class="code" href="user_8php.html#a28005d22fa7ef2dfe215ad886b497d9c">$users</a>);
+<a name="l00403"></a>00403             unset($data[<span class="stringliteral">&apos;user&apos;</span>]);
+<a name="l00404"></a>00404         }
+<a name="l00405"></a>00405 
+<a name="l00406"></a>00406         $data   = <a class="code" href="class_todoyu_form_hook.html#a661781c57898f2b71c3c241515510324">TodoyuFormHook::callSaveData</a>(<a class="code" href="ext_2dev_2controller_2form_8php.html#aec7b9eb932d6a244586d33c16797dc4a">$xmlPath</a>, $data, $idEvent);
+<a name="l00407"></a>00407 
+<a name="l00408"></a>00408             <span class="comment">// Update the event with the definitive data</span>
+<a name="l00409"></a>00409         <a class="code" href="class_todoyu_event_manager.html#aab0958c8a4d2c546bfd78d7c2bcccfec">self::updateEvent</a>($idEvent, $data);
+<a name="l00410"></a>00410 
+<a name="l00411"></a>00411             <span class="comment">// Remove record and query from cache</span>
+<a name="l00412"></a>00412         <a class="code" href="class_todoyu_event_manager.html#a0019ac2e5cddcebb98bd5a52c7ec06cf">self::removeEventFromCache</a>($idEvent);
+<a name="l00413"></a>00413 
+<a name="l00414"></a>00414         <span class="keywordflow">return</span> $idEvent;
+<a name="l00415"></a>00415     }
+<a name="l00416"></a>00416 
+<a name="l00417"></a>00417 
+<a name="l00418"></a>00418 
+<a name="l00425"></a><a class="code" href="class_todoyu_event_manager.html#acc23d6c1e5731b75d8acc522a392298e">00425</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#acc23d6c1e5731b75d8acc522a392298e">addEvent</a>(array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>) {
+<a name="l00426"></a>00426         unset($data[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00427"></a>00427 
+<a name="l00428"></a>00428         $data[<span class="stringliteral">&apos;date_create&apos;</span>]    = <a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>;
+<a name="l00429"></a>00429         $data[<span class="stringliteral">&apos;id_user_create&apos;</span>] = <a class="code" href="class_todoyu_auth.html#a038ac7a8e7c043635e04f4f71ae69690">TodoyuAuth::getUserID</a>();
+<a name="l00430"></a>00430 
+<a name="l00431"></a>00431         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;addRecord(<span class="stringliteral">&apos;ext_calendar_event&apos;</span>, $data);
+<a name="l00432"></a>00432     }
+<a name="l00433"></a>00433 
+<a name="l00434"></a>00434 
+<a name="l00435"></a>00435 
+<a name="l00443"></a><a class="code" href="class_todoyu_event_manager.html#aab0958c8a4d2c546bfd78d7c2bcccfec">00443</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#aab0958c8a4d2c546bfd78d7c2bcccfec">updateEvent</a>($idEvent, array <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>) {
+<a name="l00444"></a>00444         $idEvent    = intval($idEvent);
+<a name="l00445"></a>00445         unset($data[<span class="stringliteral">&apos;id&apos;</span>]);
+<a name="l00446"></a>00446 
+<a name="l00447"></a>00447         $data[<span class="stringliteral">&apos;date_update&apos;</span>]    = <a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>;
+<a name="l00448"></a>00448 
+<a name="l00449"></a>00449         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;updateRecord(<span class="stringliteral">&apos;ext_calendar_event&apos;</span>, $idEvent, $data) === 1;
+<a name="l00450"></a>00450     }
+<a name="l00451"></a>00451 
+<a name="l00452"></a>00452 
+<a name="l00453"></a>00453 
+<a name="l00460"></a><a class="code" href="class_todoyu_event_manager.html#a65b9ae9124255c20de3b0f88982c6cb0">00460</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a65b9ae9124255c20de3b0f88982c6cb0">assignUsersToEvent</a>($idEvent, array <a class="code" href="user_8php.html#a307cce3be8d8dbb46d0c949fddbf6bd0">$userIDs</a>) {
+<a name="l00461"></a>00461         $idEvent    = intval($idEvent);
+<a name="l00462"></a>00462         $userIDs    = <a class="code" href="class_todoyu_array.html#abc24cb3709e3777abbc097959ca0498a">TodoyuArray::intval</a>($userIDs, <span class="keyword">true</span>, <span class="keyword">true</span>);
+<a name="l00463"></a>00463 
+<a name="l00464"></a>00464         <span class="keywordflow">foreach</span>($userIDs as $idUser) {
+<a name="l00465"></a>00465             <a class="code" href="class_todoyu_event_manager.html#aa0613104d2ac43bcb376e17d341980c0">self::assignUserToEvent</a>($idEvent, $idUser);
+<a name="l00466"></a>00466         }
+<a name="l00467"></a>00467     }
+<a name="l00468"></a>00468 
+<a name="l00469"></a>00469 
+<a name="l00470"></a>00470 
+<a name="l00477"></a><a class="code" href="class_todoyu_event_manager.html#aa0613104d2ac43bcb376e17d341980c0">00477</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#aa0613104d2ac43bcb376e17d341980c0">assignUserToEvent</a>($idEvent, $idUser) {
+<a name="l00478"></a>00478         $idEvent= intval($idEvent);
+<a name="l00479"></a>00479         $idUser = intval($idUser);
+<a name="l00480"></a>00480 
+<a name="l00481"></a>00481         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = <span class="stringliteral">&apos;ext_calendar_mm_event_user&apos;</span>;
+<a name="l00482"></a>00482         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   = array(
+<a name="l00483"></a>00483             <span class="stringliteral">&apos;id_event&apos;</span>  =&gt; $idEvent,
+<a name="l00484"></a>00484             <span class="stringliteral">&apos;id_user&apos;</span>   =&gt; $idUser
+<a name="l00485"></a>00485         );
+<a name="l00486"></a>00486 
+<a name="l00487"></a>00487         <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;addRecord(<a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00488"></a>00488     }
+<a name="l00489"></a>00489 
+<a name="l00490"></a>00490 
+<a name="l00491"></a>00491 
+<a name="l00497"></a><a class="code" href="class_todoyu_event_manager.html#a1e0f70192078e5287ba67709909277af">00497</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a1e0f70192078e5287ba67709909277af">removeAssignedEventUsers</a>($idEvent) {
+<a name="l00498"></a>00498         $idEvent= intval($idEvent);
+<a name="l00499"></a>00499         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = <span class="stringliteral">&apos;ext_calendar_mm_event_user&apos;</span>;
+<a name="l00500"></a>00500         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos;id_event = &apos;</span> . $idEvent;
+<a name="l00501"></a>00501 
+<a name="l00502"></a>00502         <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doDelete(<a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00503"></a>00503     }
+<a name="l00504"></a>00504 
+<a name="l00505"></a>00505 
+<a name="l00506"></a>00506 
+<a name="l00513"></a><a class="code" href="class_todoyu_event_manager.html#ae9aae038b57d673bf1600457d8b4b56e">00513</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#ae9aae038b57d673bf1600457d8b4b56e">removeAssignedEventUser</a>($idEvent, $idUser) {
+<a name="l00514"></a>00514         $idEvent    = intval($idEvent);
+<a name="l00515"></a>00515         $idUser     = intval($idUser);
+<a name="l00516"></a>00516 
+<a name="l00517"></a>00517         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>      = self::TABLE;
+<a name="l00518"></a>00518         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>      = <span class="stringliteral">&apos; id_event    = &apos;</span> . $idEvent . <span class="stringliteral">&apos; AND</span>
+<a name="l00519"></a>00519 <span class="stringliteral">                        id_user     = &apos;</span> . $idUser;
+<a name="l00520"></a>00520 
+<a name="l00521"></a>00521         <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doDelete(<a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00522"></a>00522     }
+<a name="l00523"></a>00523 
+<a name="l00524"></a>00524 
+<a name="l00525"></a>00525 
+<a name="l00531"></a><a class="code" href="class_todoyu_event_manager.html#adf8b18e961546742ac0ce2a22b746d64">00531</a>     <span class="keyword">protected</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#adf8b18e961546742ac0ce2a22b746d64">createNewEvent</a>()  {
+<a name="l00532"></a>00532         $insertArray    = array(
+<a name="l00533"></a>00533             <span class="stringliteral">&apos;date_create&apos;</span>       =&gt; <a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a>,
+<a name="l00534"></a>00534             <span class="stringliteral">&apos;id_user_create&apos;</span>    =&gt; <a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>(),
+<a name="l00535"></a>00535             <span class="stringliteral">&apos;deleted&apos;</span>           =&gt; 0
+<a name="l00536"></a>00536         );
+<a name="l00537"></a>00537 
+<a name="l00538"></a>00538         <span class="keywordflow">return</span> <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doInsert( self::TABLE , $insertArray );
+<a name="l00539"></a>00539     }
+<a name="l00540"></a>00540 
+<a name="l00541"></a>00541 
+<a name="l00542"></a>00542 
+<a name="l00552"></a><a class="code" href="class_todoyu_event_manager.html#a1445e395445bab108247259638a84905">00552</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_event_manager.html#a1445e395445bab108247259638a84905">calcEventStartingDayNumInWeek</a>($tstampStart, $tstampFirstShownDay) {
+<a name="l00553"></a>00553         <span class="keywordflow">if</span> ($tstampStart &lt; $tstampFirstShownDay) {
+<a name="l00554"></a>00554             $dayNum = 0;
+<a name="l00555"></a>00555         } <span class="keywordflow">else</span> {
+<a name="l00556"></a>00556             $dayNum = <a class="code" href="class_todoyu_time.html#afd4f6f941344e5fbbae7793aaa298e2f">TodoyuTime::getWeekdayNum</a>($tstampStart, <span class="keyword">true</span>);
+<a name="l00557"></a>00557         }
+<a name="l00558"></a>00558 
+<a name="l00559"></a>00559         <span class="keywordflow">return</span> $dayNum;
+<a name="l00560"></a>00560     }
+<a name="l00561"></a>00561 
+<a name="l00562"></a>00562 
+<a name="l00563"></a>00563 
+<a name="l00573"></a><a class="code" href="class_todoyu_event_manager.html#a2b934e4640a3bca9a5f2393360590686">00573</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_event_manager.html#a2b934e4640a3bca9a5f2393360590686">calcEventEndingDayNumInWeek</a>($tstampEnd, $tstampLastShownDay) {
+<a name="l00574"></a>00574         <span class="keywordflow">if</span> ($tstampEnd &gt; $tstampLastShownDay) {
+<a name="l00575"></a>00575             $dayNum = 7;
+<a name="l00576"></a>00576         } <span class="keywordflow">else</span> {
+<a name="l00577"></a>00577             $dayNum = <a class="code" href="class_todoyu_time.html#afd4f6f941344e5fbbae7793aaa298e2f">TodoyuTime::getWeekdayNum</a>($tstampEnd, <span class="keyword">true</span>);
+<a name="l00578"></a>00578         }
+<a name="l00579"></a>00579 
+<a name="l00580"></a>00580         <span class="keywordflow">return</span> $dayNum;
+<a name="l00581"></a>00581     }
+<a name="l00582"></a>00582 
+<a name="l00583"></a>00583 
+<a name="l00584"></a>00584 
+<a name="l00591"></a><a class="code" href="class_todoyu_event_manager.html#ad257ea27193dc452aa9911d3915efcdc">00591</a>     <span class="keyword">protected</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#ad257ea27193dc452aa9911d3915efcdc">manipulateFormData</a>(array <a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a>)   {
+<a name="l00592"></a>00592         $formData[<span class="stringliteral">&apos;title&apos;</span>]          = trim($formData[<span class="stringliteral">&apos;title&apos;</span>]);
+<a name="l00593"></a>00593         $formData[<span class="stringliteral">&apos;date_start&apos;</span>]     = <a class="code" href="class_todoyu_time.html#a6ef7a66bf3ea388df2b592142bf9db8f">TodoyuTime::parseDateString</a>($formData[<span class="stringliteral">&apos;date_start&apos;</span>]);
+<a name="l00594"></a>00594         $formData[<span class="stringliteral">&apos;date_end&apos;</span>]       = <a class="code" href="class_todoyu_time.html#a6ef7a66bf3ea388df2b592142bf9db8f">TodoyuTime::parseDateString</a>($formData[<span class="stringliteral">&apos;date_end&apos;</span>]);
+<a name="l00595"></a>00595         $formData[<span class="stringliteral">&apos;is_private&apos;</span>]     = intval($formData[<span class="stringliteral">&apos;is_private&apos;</span>]);
+<a name="l00596"></a>00596         $formData[<span class="stringliteral">&apos;is_public&apos;</span>]      = intval($formData[<span class="stringliteral">&apos;is_public&apos;</span>]);
+<a name="l00597"></a>00597         $formData[<span class="stringliteral">&apos;is_dayevent&apos;</span>]    = intval($formData[<span class="stringliteral">&apos;is_dayevent&apos;</span>]);
+<a name="l00598"></a>00598         $formData[<span class="stringliteral">&apos;eventtype&apos;</span>]      = intval($formData[<span class="stringliteral">&apos;eventtype&apos;</span>]);
+<a name="l00599"></a>00599 
+<a name="l00600"></a>00600         <span class="keywordflow">if</span>( $formData[<span class="stringliteral">&apos;starttime&apos;</span>] )    {
+<a name="l00601"></a>00601             $formData[<span class="stringliteral">&apos;date_start&apos;</span>] =   mktime(0, 0, 0, date(<span class="charliteral">&apos;n&apos;</span>, $formData[<span class="stringliteral">&apos;date_start&apos;</span>]), date(<span class="charliteral">&apos;j&apos;</span>, $formData[<span class="stringliteral">&apos;date_start&apos;</span>]), date(<span class="charliteral">&apos;Y&apos;</span>, $formData[<span class="stringliteral">&apos;date_start&apos;</span>])) + <a class="code" href="class_todoyu_time.html#a249f85693702895db6d540b71ec5e9ab">TodoyuTime::parseTime</a>($formData[<span class="stringliteral">&apos;starttime&apos;</span>]);
+<a name="l00602"></a>00602             unset($formData[<span class="stringliteral">&apos;starttime&apos;</span>]);
+<a name="l00603"></a>00603         }
+<a name="l00604"></a>00604 
+<a name="l00605"></a>00605         <span class="keywordflow">if</span>( $formData[<span class="stringliteral">&apos;endtime&apos;</span>] )  {
+<a name="l00606"></a>00606             $formData[<span class="stringliteral">&apos;date_end&apos;</span>]   =   mktime(0, 0, 0, date(<span class="charliteral">&apos;n&apos;</span>, $formData[<span class="stringliteral">&apos;date_end&apos;</span>]), date(<span class="charliteral">&apos;j&apos;</span>, $formData[<span class="stringliteral">&apos;date_end&apos;</span>]), date(<span class="charliteral">&apos;Y&apos;</span>, $formData[<span class="stringliteral">&apos;date_end&apos;</span>])) + <a class="code" href="class_todoyu_time.html#a249f85693702895db6d540b71ec5e9ab">TodoyuTime::parseTime</a>($formData[<span class="stringliteral">&apos;endtime&apos;</span>]);
+<a name="l00607"></a>00607             unset($formData[<span class="stringliteral">&apos;endtime&apos;</span>]);
+<a name="l00608"></a>00608         }
+<a name="l00609"></a>00609 
+<a name="l00610"></a>00610         <span class="keywordflow">return</span> $formData;
+<a name="l00611"></a>00611     }
+<a name="l00612"></a>00612 
+<a name="l00613"></a>00613 
+<a name="l00614"></a>00614 
+<a name="l00620"></a><a class="code" href="class_todoyu_event_manager.html#a0019ac2e5cddcebb98bd5a52c7ec06cf">00620</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a0019ac2e5cddcebb98bd5a52c7ec06cf">removeEventFromCache</a>($idEvent) {
+<a name="l00621"></a>00621         $idEvent = intval($idEvent);
+<a name="l00622"></a>00622 
+<a name="l00623"></a>00623         <a class="code" href="class_todoyu_cache.html#ac7002e8c3a9e9ebe38be4a316bfda43e">TodoyuCache::removeRecord</a>(<span class="stringliteral">&apos;Event&apos;</span>, $idEvent);
+<a name="l00624"></a>00624         <a class="code" href="class_todoyu_cache.html#ab6211daed6f7b5048721aa9e2611a8e3">TodoyuCache::removeRecordQuery</a>(self::TABLE, $idEvent);
+<a name="l00625"></a>00625     }
+<a name="l00626"></a>00626 
+<a name="l00627"></a>00627 
+<a name="l00628"></a>00628 
+<a name="l00635"></a><a class="code" href="class_todoyu_event_manager.html#a8b27c991f7ef531a7885a4232323a0cf">00635</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a8b27c991f7ef531a7885a4232323a0cf">addAssignedEventUsersAndSendMail</a>($idEvent, array <a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a>) {
+<a name="l00636"></a>00636         $idEvent    = intval($idEvent);
+<a name="l00637"></a>00637 
+<a name="l00638"></a>00638         <span class="keywordflow">if</span>(array_key_exists(<span class="stringliteral">&apos;user&apos;</span>, $formData)) {
+<a name="l00639"></a>00639             <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a> = <span class="stringliteral">&apos;ext_calendar_mm_event_user&apos;</span>;
+<a name="l00640"></a>00640 
+<a name="l00641"></a>00641             <span class="keywordflow">foreach</span>($formData[<span class="stringliteral">&apos;user&apos;</span>] as $userArray)    {
+<a name="l00642"></a>00642                 $idUser = $userArray[<span class="stringliteral">&apos;id&apos;</span>];
+<a name="l00643"></a>00643                 <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> =   array(
+<a name="l00644"></a>00644                     <span class="stringliteral">&apos;id_event&apos;</span>          =&gt; $idEvent,
+<a name="l00645"></a>00645                     <span class="stringliteral">&apos;id_user&apos;</span>           =&gt; $idUser,
+<a name="l00646"></a>00646                     <span class="stringliteral">&apos;is_acknowledged&apos;</span>   =&gt; 0,
+<a name="l00647"></a>00647                 );
+<a name="l00648"></a>00648 
+<a name="l00649"></a>00649                 <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doInsert(<a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>);
+<a name="l00650"></a>00650 
+<a name="l00651"></a>00651                 <span class="keywordflow">if</span>( $formData[<span class="stringliteral">&apos;send_notification&apos;</span>] === 1 )  {
+<a name="l00652"></a>00652                     <a class="code" href="class_todoyu_calendar_mailer.html#af84c5436bc0a2a5842b401f02a7af87c">TodoyuCalendarMailer::sendEventNotification</a>($idEvent, $idUser);
+<a name="l00653"></a>00653                 }
+<a name="l00654"></a>00654             }
+<a name="l00655"></a>00655 
+<a name="l00656"></a>00656             unset($formData[<span class="stringliteral">&apos;user&apos;</span>]);
+<a name="l00657"></a>00657             unset($formData[<span class="stringliteral">&apos;send_notification&apos;</span>]);
+<a name="l00658"></a>00658         }
+<a name="l00659"></a>00659 
+<a name="l00660"></a>00660         <span class="keywordflow">return</span> $formData;
+<a name="l00661"></a>00661     }
+<a name="l00662"></a>00662 
+<a name="l00663"></a>00663 
+<a name="l00664"></a>00664 
+<a name="l00672"></a><a class="code" href="class_todoyu_event_manager.html#a08c940aa2938ab45edae2e778b0a6393">00672</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a08c940aa2938ab45edae2e778b0a6393">removeFieldByType</a>(<a class="code" href="class_todoyu_form.html">TodoyuForm</a> <a class="code" href="ext_2dev_2controller_2form_8php.html#a1a4fda4c28a9ee5f91102c023b9501f4">$form</a>, $idEvent) {
+<a name="l00673"></a>00673         <a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a>   = $form-&gt;<a class="code" href="class_todoyu_form.html#a8fb3befda17ddc4317b8d2c344fa7e0e">getFormData</a>();
+<a name="l00674"></a>00674         $type       = intval(<a class="code" href="ext_2dev_2controller_2form_8php.html#ab052ac8d8bf958ae51cb1965ca42695d">$formData</a>[<span class="stringliteral">&apos;event_type&apos;</span>]);
+<a name="l00675"></a>00675 
+<a name="l00676"></a>00676         <span class="keywordflow">switch</span>($type) {
+<a name="l00677"></a>00677 
+<a name="l00678"></a>00678             <span class="keywordflow">case</span> <a class="code" href="ext_2calendar_2config_2constants_8php.html#ad1fcba7c0622883b1c0cda3e2bd3b9d3">EVENTTYPE_BIRTHDAY</a>:
+<a name="l00679"></a>00679                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;is_dayevent&apos;</span>, <span class="keyword">true</span>);
+<a name="l00680"></a>00680                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;is_public&apos;</span>, <span class="keyword">true</span>);
+<a name="l00681"></a>00681                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;date_end&apos;</span>, <span class="keyword">true</span>);
+<a name="l00682"></a>00682                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;place&apos;</span>, <span class="keyword">true</span>);
+<a name="l00683"></a>00683                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;user&apos;</span>, <span class="keyword">true</span>);
+<a name="l00684"></a>00684                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;id_project&apos;</span>, <span class="keyword">true</span>);
+<a name="l00685"></a>00685                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;id_task&apos;</span>, <span class="keyword">true</span>);
+<a name="l00686"></a>00686             <span class="keywordflow">break</span>;
+<a name="l00687"></a>00687 
+<a name="l00688"></a>00688             <span class="keywordflow">case</span> <a class="code" href="ext_2calendar_2config_2constants_8php.html#a402c50cc8712e6e53eb83efcfdd956b9">EVENTTYPE_VACATION</a>:
+<a name="l00689"></a>00689                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;is_dayevent&apos;</span>, <span class="keyword">true</span>);
+<a name="l00690"></a>00690                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;is_private&apos;</span>, <span class="keyword">true</span>);
+<a name="l00691"></a>00691                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;id_project&apos;</span>, <span class="keyword">true</span>);
+<a name="l00692"></a>00692                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;id_task&apos;</span>, <span class="keyword">true</span>);
+<a name="l00693"></a>00693             <span class="keywordflow">break</span>;
+<a name="l00694"></a>00694 
+<a name="l00695"></a>00695             <span class="keywordflow">case</span> <a class="code" href="ext_2calendar_2config_2constants_8php.html#af30e62e2dd1ae6706522a270d3445e59">EVENTTYPE_REMINDER</a>:
+<a name="l00696"></a>00696                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;is_dayevent&apos;</span>, <span class="keyword">true</span>);
+<a name="l00697"></a>00697                 $form-&gt;<a class="code" href="class_todoyu_form.html#a6592f31ff829eb7e8978796850ded599">removeField</a>(<span class="stringliteral">&apos;date_end&apos;</span>, <span class="keyword">true</span>);
+<a name="l00698"></a>00698             <span class="keywordflow">break</span>;
+<a name="l00699"></a>00699 
+<a name="l00700"></a>00700         }
+<a name="l00701"></a>00701 
+<a name="l00702"></a>00702         <span class="keywordflow">return</span> $form;
+<a name="l00703"></a>00703     }
+<a name="l00704"></a>00704 
+<a name="l00705"></a>00705 
+<a name="l00706"></a>00706 
+<a name="l00713"></a><a class="code" href="class_todoyu_event_manager.html#a558a90bd6cc722ef19e0f8652d855657">00713</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a558a90bd6cc722ef19e0f8652d855657">acknowledgeEvent</a>($idEvent, $idUser)  {
+<a name="l00714"></a>00714         $updateArray = array(<span class="stringliteral">&apos;is_acknowledged&apos;</span> =&gt; 1);
+<a name="l00715"></a>00715 
+<a name="l00716"></a>00716         <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> = <span class="stringliteral">&apos;id_event = &apos;</span>.intval($idEvent). <span class="stringliteral">&apos; AND id_user = &apos;</span>.intval($idUser);
+<a name="l00717"></a>00717 
+<a name="l00718"></a>00718         <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;doUpdate(<span class="stringliteral">&apos;ext_calendar_mm_event_user&apos;</span>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, $updateArray);
+<a name="l00719"></a>00719     }
+<a name="l00720"></a>00720 
+<a name="l00721"></a>00721 
+<a name="l00722"></a>00722 
+<a name="l00728"></a><a class="code" href="class_todoyu_event_manager.html#a385c9173b585357ee1037a11cb24c4e1">00728</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a385c9173b585357ee1037a11cb24c4e1">createNewEventWithDefaultsInCache</a>($date) {
+<a name="l00729"></a>00729         $date       = intval($date);
+<a name="l00730"></a>00730 
+<a name="l00731"></a>00731         $defaultData= <a class="code" href="class_todoyu_event_manager.html#a717b5b05d45d3046cf02cf22b5839bd2">self::getEventDefaultData</a>($date);
+<a name="l00732"></a>00732 
+<a name="l00733"></a>00733         $idCache    = <a class="code" href="class_todoyu_cache.html#a0295c77b868896a6127fe34241fa92ee">TodoyuCache::makeClassKey</a>(<span class="stringliteral">&apos;TodoyuEvent&apos;</span>, 0);
+<a name="l00734"></a>00734         $event      = <a class="code" href="class_todoyu_event_manager.html#a8a23179af6d7f3a48565c9cd8a00b402">self::getEvent</a>(0);
+<a name="l00735"></a>00735         $event-&gt;injectData($defaultData);
+<a name="l00736"></a>00736         <a class="code" href="class_todoyu_cache.html#aaa83698e63dd0c924b95b2f9d30b961b">TodoyuCache::set</a>($idCache, $event);
+<a name="l00737"></a>00737     }
+<a name="l00738"></a>00738 
+<a name="l00739"></a>00739 
+<a name="l00740"></a>00740 
+<a name="l00747"></a><a class="code" href="class_todoyu_event_manager.html#a717b5b05d45d3046cf02cf22b5839bd2">00747</a>     <span class="keyword">protected</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#a717b5b05d45d3046cf02cf22b5839bd2">getEventDefaultData</a>($timeStamp)   {
+<a name="l00748"></a>00748         $timeStamp  = $timeStamp == 0 ? <a class="code" href="core_2config_2constants_8php.html#ac3e8c0a2b7a9fc38c4f9b5c6b69231f2">NOW</a> : intval($timeStamp);
+<a name="l00749"></a>00749 
+<a name="l00750"></a>00750         <span class="keywordflow">if</span>( date(<span class="stringliteral">&apos;Hi&apos;</span>, $timeStamp) === <span class="stringliteral">&apos;0000&apos;</span> ) {
+<a name="l00751"></a>00751             $dateStart  = $timeStamp + intval(<a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;calendar&apos;</span>][<span class="stringliteral">&apos;default&apos;</span>][<span class="stringliteral">&apos;timeStart&apos;</span>]);
+<a name="l00752"></a>00752         } <span class="keywordflow">else</span> {
+<a name="l00753"></a>00753             $dateStart  = $timeStamp;
+<a name="l00754"></a>00754         }
+<a name="l00755"></a>00755 
+<a name="l00756"></a>00756         $dateEnd = $dateStart + intval(<a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;calendar&apos;</span>][<span class="stringliteral">&apos;default&apos;</span>][<span class="stringliteral">&apos;eventDuration&apos;</span>]);
+<a name="l00757"></a>00757 
+<a name="l00758"></a>00758         $defaultData = array(
+<a name="l00759"></a>00759             <span class="stringliteral">&apos;id&apos;</span>            =&gt;  0,
+<a name="l00760"></a>00760             <span class="stringliteral">&apos;date_start&apos;</span>    =&gt;  $dateStart,
+<a name="l00761"></a>00761             <span class="stringliteral">&apos;date_end&apos;</span>      =&gt;  $dateEnd,
+<a name="l00762"></a>00762             <span class="stringliteral">&apos;user&apos;</span> =&gt; array(
+<a name="l00763"></a>00763                 0 =&gt; <a class="code" href="class_todoyu_user_manager.html#a781fc7372acdae4fa54609f7893f7b7a">TodoyuUserManager::getUser</a>(<a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>())-&gt;getTemplateData()
+<a name="l00764"></a>00764             )
+<a name="l00765"></a>00765         );
+<a name="l00766"></a>00766 
+<a name="l00767"></a>00767         <span class="keywordflow">return</span> $defaultData;
+<a name="l00768"></a>00768     }
+<a name="l00769"></a>00769 
+<a name="l00770"></a>00770 
+<a name="l00771"></a>00771 
+<a name="l00779"></a><a class="code" href="class_todoyu_event_manager.html#ab32d779e98df8278ca270a4961804e7a">00779</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_event_manager.html#ab32d779e98df8278ca270a4961804e7a">getContextMenuItems</a>($idEvent, array $items) {
+<a name="l00780"></a>00780         $idEvent= intval($idEvent);
+<a name="l00781"></a>00781         $allowed= array();
+<a name="l00782"></a>00782         $own    = <a class="code" href="filterwidgetconf_8php.html#a5256d5171498a1b9833f7a1fc459aa2f">$GLOBALS</a>[<span class="stringliteral">&apos;CONFIG&apos;</span>][<span class="stringliteral">&apos;EXT&apos;</span>][<span class="stringliteral">&apos;calendar&apos;</span>][<span class="stringliteral">&apos;ContextMenu&apos;</span>][<span class="stringliteral">&apos;Event&apos;</span>];
+<a name="l00783"></a>00783 
+<a name="l00784"></a>00784         $allowed[]  = $own[<span class="stringliteral">&apos;header&apos;</span>];
+<a name="l00785"></a>00785 
+<a name="l00786"></a>00786         <span class="keywordflow">if</span>( <a class="code" href="functions_8php.html#a5abbc1bd9b2b7ed593eb4091f9e59391">allowed</a>(<span class="stringliteral">&apos;calendar&apos;</span>, <span class="stringliteral">&apos;event:see&apos;</span>) ) {
+<a name="l00787"></a>00787             $allowed[<span class="stringliteral">&apos;show&apos;</span>] = $own[<span class="stringliteral">&apos;show&apos;</span>];
+<a name="l00788"></a>00788         }
+<a name="l00789"></a>00789 
+<a name="l00790"></a>00790         <span class="keywordflow">if</span>( <a class="code" href="functions_8php.html#a5abbc1bd9b2b7ed593eb4091f9e59391">allowed</a>(<span class="stringliteral">&apos;calendar&apos;</span>, <span class="stringliteral">&apos;event:edit&apos;</span>) ) {
+<a name="l00791"></a>00791             $allowed[<span class="stringliteral">&apos;edit&apos;</span>] = $own[<span class="stringliteral">&apos;edit&apos;</span>];
+<a name="l00792"></a>00792         }
+<a name="l00793"></a>00793 
+<a name="l00794"></a>00794         <span class="keywordflow">if</span>( <a class="code" href="functions_8php.html#a5abbc1bd9b2b7ed593eb4091f9e59391">allowed</a>(<span class="stringliteral">&apos;calendar&apos;</span>, <span class="stringliteral">&apos;event:delete&apos;</span>) ) {
+<a name="l00795"></a>00795             $allowed[<span class="stringliteral">&apos;delete&apos;</span>] = $own[<span class="stringliteral">&apos;remove&apos;</span>];
+<a name="l00796"></a>00796         } elseif( <a class="code" href="functions_8php.html#a5abbc1bd9b2b7ed593eb4091f9e59391">allowed</a>(<span class="stringliteral">&apos;calendar&apos;</span>, <span class="stringliteral">&apos;event:deleteOwn&apos;</span>) ) {
+<a name="l00797"></a>00797             $event  = <a class="code" href="class_todoyu_event_manager.html#a8a23179af6d7f3a48565c9cd8a00b402">TodoyuEventManager::getEvent</a>($idEvent);
+<a name="l00798"></a>00798             <span class="keywordflow">if</span>( $event-&gt;get(<span class="stringliteral">&apos;id_user_create&apos;</span>) == <a class="code" href="functions_8php.html#acd1b461c014cc991f4890c41b9e9375b">userid</a>() ) {
+<a name="l00799"></a>00799                 $allowed[<span class="stringliteral">&apos;delete&apos;</span>] = $own[<span class="stringliteral">&apos;remove&apos;</span>];
+<a name="l00800"></a>00800             }
+<a name="l00801"></a>00801         }
+<a name="l00802"></a>00802 
+<a name="l00803"></a>00803         $items = array_merge_recursive($items, $allowed);
+<a name="l00804"></a>00804 
+<a name="l00805"></a>00805         <span class="keywordflow">return</span> $items;
+<a name="l00806"></a>00806     }
+<a name="l00807"></a>00807 
+<a name="l00808"></a>00808 }
+<a name="l00809"></a>00809 
+<a name="l00810"></a>00810 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:34 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

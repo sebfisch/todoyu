@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/project/model/TodoyuTaskSearch.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/project/model/TodoyuTaskSearch.class.php</h1><a href="_todoyu_task_search_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 <span class="comment">/***************************************************************</span>
+<a name="l00003"></a>00003 <span class="comment">*  Copyright notice</span>
+<a name="l00004"></a>00004 <span class="comment">*</span>
+<a name="l00005"></a>00005 <span class="comment">*  (c) 2009 snowflake productions gmbh</span>
+<a name="l00006"></a>00006 <span class="comment">*  All rights reserved</span>
+<a name="l00007"></a>00007 <span class="comment">*</span>
+<a name="l00008"></a>00008 <span class="comment">*  This script is part of the todoyu project.</span>
+<a name="l00009"></a>00009 <span class="comment">*  The todoyu project is free software; you can redistribute it and/or modify</span>
+<a name="l00010"></a>00010 <span class="comment">*  it under the terms of the GNU General Public License, version 2,</span>
+<a name="l00011"></a>00011 <span class="comment">*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by</span>
+<a name="l00012"></a>00012 <span class="comment">*  the Free Software Foundation;</span>
+<a name="l00013"></a>00013 <span class="comment">*</span>
+<a name="l00014"></a>00014 <span class="comment">*  This script is distributed in the hope that it will be useful,</span>
+<a name="l00015"></a>00015 <span class="comment">*  but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<a name="l00016"></a>00016 <span class="comment">*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the</span>
+<a name="l00017"></a>00017 <span class="comment">*  GNU General Public License for more details.</span>
+<a name="l00018"></a>00018 <span class="comment">*</span>
+<a name="l00019"></a>00019 <span class="comment">*  This copyright notice MUST APPEAR in all copies of the script!</span>
+<a name="l00020"></a>00020 <span class="comment">***************************************************************/</span>
+<a name="l00021"></a>00021 
+<a name="l00030"></a><a class="code" href="class_todoyu_task_search.html">00030</a> <span class="keyword">class </span><a class="code" href="class_todoyu_task_search.html">TodoyuTaskSearch</a> <span class="keyword">implements</span> <a class="code" href="interface_todoyu_search_engine_if.html">TodoyuSearchEngineIf</a> {
+<a name="l00031"></a>00031 
+<a name="l00040"></a><a class="code" href="class_todoyu_task_search.html#a1c06435634e4b8bd65f1fcaa5a258439">00040</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_task_search.html#a1c06435634e4b8bd65f1fcaa5a258439">searchTasks</a>(array $find, array $ignore = array(), $limit = 200) {
+<a name="l00041"></a>00041         $limit  = intval($limit);
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043             <span class="comment">// If keyword is a tasknumber, directly get the task</span>
+<a name="l00044"></a>00044         <span class="keywordflow">if</span>( <span class="keyword">sizeof</span>($find) === 1 ) {
+<a name="l00045"></a>00045             <span class="keywordflow">if</span>( <a class="code" href="class_todoyu_task_manager.html#a442dd6ad5e328e281114f04b9eabfbf7">TodoyuTaskManager::isTasknumber</a>($find[0], <span class="keyword">true</span>) ) {
+<a name="l00046"></a>00046                 $idTask = <a class="code" href="class_todoyu_task_manager.html#a47c7dbd479b24888123445a8d8dd3be3">TodoyuTaskManager::getTaskIDByTaskNumber</a>($find[0]);
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048                 <span class="keywordflow">return</span> array($idTask);
+<a name="l00049"></a>00049             }
+<a name="l00050"></a>00050         }
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 <span class="comment">//</span>
+<a name="l00053"></a>00053 <span class="comment">//          // Handle task number</span>
+<a name="l00054"></a>00054 <span class="comment">//      foreach($find as $index =&gt; $keyword) {</span>
+<a name="l00055"></a>00055 <span class="comment">//              // if there is a point in the keyword, it could be a tasknumber</span>
+<a name="l00056"></a>00056 <span class="comment">//          if( strpos($keyword, &apos;.&apos;) !== false ) {</span>
+<a name="l00057"></a>00057 <span class="comment">//                  // Remove the concatinated value</span>
+<a name="l00058"></a>00058 <span class="comment">//              unset($find[$index]);</span>
+<a name="l00059"></a>00059 <span class="comment">//                  // Split the parts and add them to the find array</span>
+<a name="l00060"></a>00060 <span class="comment">//              $parts = explode(&apos;.&apos;, $keyword);</span>
+<a name="l00061"></a>00061 <span class="comment">//              foreach($parts as $part) {</span>
+<a name="l00062"></a>00062 <span class="comment">//                  $find[] = $part;</span>
+<a name="l00063"></a>00063 <span class="comment">//              }</span>
+<a name="l00064"></a>00064 <span class="comment">//          }</span>
+<a name="l00065"></a>00065 <span class="comment">//      }</span>
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = <span class="stringliteral">&apos;ext_project_task&apos;</span>;
+<a name="l00068"></a>00068         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = array(<span class="stringliteral">&apos;id_project&apos;</span>, <span class="stringliteral">&apos;tasknumber&apos;</span>, <span class="stringliteral">&apos;description&apos;</span>, <span class="stringliteral">&apos;title&apos;</span>);
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070         <span class="keywordflow">return</span> <a class="code" href="class_todoyu_search.html#a9d4b15a766b43c7c7638232146093b38">TodoyuSearch::searchTable</a>(<a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, $find, $ignore, $limit);
+<a name="l00071"></a>00071     }
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074 
+<a name="l00083"></a><a class="code" href="class_todoyu_task_search.html#a52f4ce724668e12d620e16874b23794e">00083</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_task_search.html#a52f4ce724668e12d620e16874b23794e">getSuggestions</a>(array $find, array $ignore = array(), $limit = 5) {
+<a name="l00084"></a>00084         $limit      = intval($limit);
+<a name="l00085"></a>00085         $suggestions= array();
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087             <span class="comment">// Search matching projects</span>
+<a name="l00088"></a>00088         $taskIDs    = <a class="code" href="class_todoyu_task_search.html#a1c06435634e4b8bd65f1fcaa5a258439">self::searchTasks</a>($find, $ignore, $limit);
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090         <span class="keywordflow">if</span>( <span class="keyword">sizeof</span>($taskIDs) &gt; 0 ) {
+<a name="l00091"></a>00091             <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = <span class="stringliteral">&apos; t.id,</span>
+<a name="l00092"></a>00092 <span class="stringliteral">                        t.id_project,</span>
+<a name="l00093"></a>00093 <span class="stringliteral">                        t.tasknumber,</span>
+<a name="l00094"></a>00094 <span class="stringliteral">                        t.title,</span>
+<a name="l00095"></a>00095 <span class="stringliteral">                        p.title as project,</span>
+<a name="l00096"></a>00096 <span class="stringliteral">                        c.shortname as customer&apos;</span>;
+<a name="l00097"></a>00097             <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = <span class="stringliteral">&apos; ext_project_task t,</span>
+<a name="l00098"></a>00098 <span class="stringliteral">                        ext_project_project p,</span>
+<a name="l00099"></a>00099 <span class="stringliteral">                        ext_user_customer c&apos;</span>;
+<a name="l00100"></a>00100             <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>  = <span class="stringliteral">&apos; t.id_project = p.id AND</span>
+<a name="l00101"></a>00101 <span class="stringliteral">                        p.id_customer= c.id AND</span>
+<a name="l00102"></a>00102 <span class="stringliteral">                        t.id IN(&apos;</span> . implode(<span class="charliteral">&apos;,&apos;</span>, $taskIDs) . <span class="charliteral">&apos;)&apos;</span>;
+<a name="l00103"></a>00103             $order  = <span class="stringliteral">&apos; t.date_create DESC&apos;</span>;
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105             $tasks  = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(<a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>, <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>, <span class="stringliteral">&apos;&apos;</span>, $order);
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107             <span class="keywordflow">foreach</span>($tasks as $task) {
+<a name="l00108"></a>00108                 $suggestions[] = array(
+<a name="l00109"></a>00109                     <span class="stringliteral">&apos;labelTitle&apos;</span>=&gt; $task[<span class="stringliteral">&apos;id_project&apos;</span>] . <span class="charliteral">&apos;.&apos;</span> . $task[<span class="stringliteral">&apos;tasknumber&apos;</span>] . <span class="stringliteral">&apos;: &apos;</span> . $task[<span class="stringliteral">&apos;title&apos;</span>],
+<a name="l00110"></a>00110                     <span class="stringliteral">&apos;labelInfo&apos;</span> =&gt; $task[<span class="stringliteral">&apos;project&apos;</span>] . <span class="stringliteral">&apos;, &apos;</span> . $task[<span class="stringliteral">&apos;customer&apos;</span>],
+<a name="l00111"></a>00111                     <span class="stringliteral">&apos;title&apos;</span>     =&gt; $task[<span class="stringliteral">&apos;id_project&apos;</span>] . <span class="charliteral">&apos;.&apos;</span> . $task[<span class="stringliteral">&apos;tasknumber&apos;</span>] . <span class="stringliteral">&apos;: &apos;</span> . $task[<span class="stringliteral">&apos;title&apos;</span>],
+<a name="l00112"></a>00112                     <span class="stringliteral">&apos;onclick&apos;</span>   =&gt; <span class="stringliteral">&apos;location.href=\&apos;?ext=project&amp;amp;project=&apos;</span> . $task[<span class="stringliteral">&apos;id_project&apos;</span>] . <span class="stringliteral">&apos;&amp;amp;task=&apos;</span> . $task[<span class="stringliteral">&apos;id&apos;</span>] . <span class="stringliteral">&apos;#task-&apos;</span> . $task[<span class="stringliteral">&apos;id&apos;</span>] . <span class="charliteral">&apos;\&apos;&apos;</span>);
+<a name="l00113"></a>00113             }
+<a name="l00114"></a>00114         }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116         <span class="keywordflow">return</span> $suggestions;
+<a name="l00117"></a>00117     }
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 
+<a name="l00128"></a><a class="code" href="class_todoyu_task_search.html#a9fb8a31092b5037ad98de2cedb7d7504">00128</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_task_search.html#a9fb8a31092b5037ad98de2cedb7d7504">getResults</a>(array $find, array $ignore = array(), $limit = 20) {
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130     }
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133 
+<a name="l00144"></a><a class="code" href="class_todoyu_task_search.html#ad274080682c48403fee530ccb7ed42c1">00144</a>     <span class="keyword">public</span> <span class="keyword">static</span> function <a class="code" href="class_todoyu_task_search.html#ad274080682c48403fee530ccb7ed42c1">searchTask</a>($sword)   {
+<a name="l00145"></a>00145         <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a> = array(<span class="stringliteral">&apos;id&apos;</span>, <span class="stringliteral">&apos;title&apos;</span>, <span class="stringliteral">&apos;description&apos;</span>, <span class="stringliteral">&apos;id_project&apos;</span>, <span class="stringliteral">&apos;tasknumber&apos;</span>);
+<a name="l00146"></a>00146         <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>  = <span class="stringliteral">&apos;ext_project_task&apos;</span>;
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148         <span class="keywordflow">if</span>( strstr($sword, <span class="charliteral">&apos;.&apos;</span>) )   {
+<a name="l00149"></a>00149             list($project, $taskNumber) = explode(<span class="charliteral">&apos;.&apos;</span>, $sword);
+<a name="l00150"></a>00150             <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> = <span class="stringliteral">&apos;id_project = &apos;</span>.intval($project).<span class="stringliteral">&apos; AND tasknumber = &apos;</span>.intval($taskNumber);
+<a name="l00151"></a>00151         } <span class="keywordflow">else</span> {
+<a name="l00152"></a>00152             $searchWords = <a class="code" href="class_todoyu_div.html#a9a39fab5d30dc7598391cde6f1d49585">TodoyuDiv::trimExplode</a>(<span class="charliteral">&apos; &apos;</span>, $sword, <span class="keyword">true</span>);
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154             <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;buildLikeQuery($searchWords, <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>);
+<a name="l00155"></a>00155         }
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157         <span class="keywordflow">if</span>( <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a> )    {
+<a name="l00158"></a>00158             <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>.= <span class="stringliteral">&apos; AND deleted = 0&apos;</span>;
+<a name="l00159"></a>00159         }
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161         $tasks = <a class="code" href="class_todoyu.html#abf2dfcff06cad1e6c249ddc4df4d0866">Todoyu::db</a>()-&gt;getArray(implode(<span class="charliteral">&apos;,&apos;</span>, <a class="code" href="daily__workload_8php.html#ab2303c817e3b402b77b7f99627b9c319">$fields</a>), <a class="code" href="acknowledged__after_8php.html#ae8876a14058f368335baccf35af4a22b">$table</a>, <a class="code" href="acknowledged__after_8php.html#aa2080b85972946a82a6ec215a34f7d69">$where</a>);
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163         <span class="keywordflow">return</span> $tasks;
+<a name="l00164"></a>00164     }
+<a name="l00165"></a>00165 }
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:35 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

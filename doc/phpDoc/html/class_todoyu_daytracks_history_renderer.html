@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuDaytracksHistoryRenderer Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuDaytracksHistoryRenderer Klassenreferenz</h1><!-- doxytag: class="TodoyuDaytracksHistoryRenderer" --><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche, statische Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_daytracks_history_renderer.html#aed8e677a30123571b5c6dd3c2950c892">renderHistory</a> ($year=0, $month=0, $details=false)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_history_renderer_8class_8php_source.html#l00028">28</a> der Datei <a class="el" href="_todoyu_daytracks_history_renderer_8class_8php_source.html">TodoyuDaytracksHistoryRenderer.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="aed8e677a30123571b5c6dd3c2950c892"></a><!-- doxytag: member="TodoyuDaytracksHistoryRenderer::renderHistory" ref="aed8e677a30123571b5c6dd3c2950c892" args="($year=0, $month=0, $details=false)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static renderHistory </td>
+          <td>(</td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>year</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>month</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">$&nbsp;</td>
+          <td class="paramname"> <em>details</em> = <code>false</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Render the history in the popup</p>
+<dl><dt><b>Parameter:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$year </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Integer</em>&nbsp;</td><td>$month </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Bool</em>&nbsp;</td><td>$details </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Rückgabe:</b></dt><dd>String </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_history_renderer_8class_8php_source.html#l00038">38</a> der Datei <a class="el" href="_todoyu_daytracks_history_renderer_8class_8php_source.html">TodoyuDaytracksHistoryRenderer.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00038"></a>00038                                                                                   {
+<a name="l00039"></a>00039         $year   = intval($year);
+<a name="l00040"></a>00040         $month  = intval($month);
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042             <span class="comment">// use current date if not set</span>
+<a name="l00043"></a>00043         $year   = $year === 0 ? date(<span class="charliteral">&apos;Y&apos;</span>) : $year ;
+<a name="l00044"></a>00044         $month  = $month === 0 ? date(<span class="charliteral">&apos;n&apos;</span>) : $month ;
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046         $tmpl   = <span class="stringliteral">&apos;ext/daytracks/view/history.tmpl&apos;</span>;
+<a name="l00047"></a>00047         <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>   =   array(
+<a name="l00048"></a>00048             <span class="stringliteral">&apos;id&apos;</span>        =&gt; <span class="stringliteral">&apos;daytracks-history&apos;</span>,
+<a name="l00049"></a>00049             <span class="stringliteral">&apos;curYear&apos;</span>   =&gt; $year,
+<a name="l00050"></a>00050             <span class="stringliteral">&apos;curMonth&apos;</span>  =&gt; $month,
+<a name="l00051"></a>00051             <span class="stringliteral">&apos;details&apos;</span>   =&gt; $details,
+<a name="l00052"></a>00052             <span class="stringliteral">&apos;tracking&apos;</span>  =&gt; <a class="code" href="class_todoyu_daytracks_history_manager.html#a12ba5363cc50485248385f241293ee7e">TodoyuDaytracksHistoryManager::getRangeTracks</a>($year, $month, $details), <span class="comment">//$timetracks-&gt;getLoadedTrackedTime(),</span>
+<a name="l00053"></a>00053             <span class="stringliteral">&apos;ranges&apos;</span>    =&gt; <a class="code" href="class_todoyu_daytracks_history_manager.html#ac46722daa417cd5ca2b8498bba719592">TodoyuDaytracksHistoryManager::getMonthSelectorOptions</a>()
+<a name="l00054"></a>00054         );
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056         <span class="keywordflow">return</span> <a class="code" href="functions_8php.html#ac86a234398aa64745aabeb8b5215ae43">render</a>($tmpl, <a class="code" href="projectrole_8php.html#a52040912826b490efa3dd0e7f42e1c3f">$data</a>);
+<a name="l00057"></a>00057     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/daytracks/model/<a class="el" href="_todoyu_daytracks_history_renderer_8class_8php_source.html">TodoyuDaytracksHistoryRenderer.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:44 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

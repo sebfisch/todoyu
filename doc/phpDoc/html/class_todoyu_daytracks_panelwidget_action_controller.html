@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: TodoyuDaytracksPanelwidgetActionController Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li><a href="hierarchy.html"><span>Klassenhierarchie</span></a></li>
+      <li><a href="functions.html"><span>Datenstruktur-Elemente</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>TodoyuDaytracksPanelwidgetActionController Klassenreferenz</h1><!-- doxytag: class="TodoyuDaytracksPanelwidgetActionController" --><!-- doxytag: inherits="TodoyuActionController" --><div class="dynheader">
+Klassendiagramm für TodoyuDaytracksPanelwidgetActionController:</div>
+<div class="dynsection">
+ <div class="center">
+  <img src="class_todoyu_daytracks_panelwidget_action_controller.gif" usemap="#TodoyuDaytracksPanelwidgetActionController_map" alt=""/>
+  <map id="TodoyuDaytracksPanelwidgetActionController_map" name="TodoyuDaytracksPanelwidgetActionController_map">
+<area href="class_todoyu_action_controller.html" alt="TodoyuActionController" shape="rect" coords="0,0,271,24"/>
+</map>
+ </div>
+</div>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Öffentliche Methoden</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_daytracks_panelwidget_action_controller.html#aba97155fb83a1b49874f6e907e749576">updateAction</a> (array $params)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todoyu_daytracks_panelwidget_action_controller.html#a7a02d4cd536aea9c5c41702e3ca1f38f">contextmenuAction</a> (array $params)</td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Ausführliche Beschreibung</h2>
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_panelwidget_action_controller_8class_8php_source.html#l00028">28</a> der Datei <a class="el" href="_todoyu_daytracks_panelwidget_action_controller_8class_8php_source.html">TodoyuDaytracksPanelwidgetActionController.class.php</a>.</p>
+<hr/><h2>Dokumentation der Elementfunktionen</h2>
+<a class="anchor" id="a7a02d4cd536aea9c5c41702e3ca1f38f"></a><!-- doxytag: member="TodoyuDaytracksPanelwidgetActionController::contextmenuAction" ref="a7a02d4cd536aea9c5c41702e3ca1f38f" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">contextmenuAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_panelwidget_action_controller_8class_8php_source.html#l00037">37</a> der Datei <a class="el" href="_todoyu_daytracks_panelwidget_action_controller_8class_8php_source.html">TodoyuDaytracksPanelwidgetActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00037"></a>00037                                                      {
+<a name="l00038"></a>00038         <a class="code" href="class_todoyu_header.html#a944b69dbf182b7808937a8f18e1c7121">TodoyuHeader::sendHeaderJSON</a>();
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040         $idTask     = intval(<a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>[<span class="stringliteral">&apos;task&apos;</span>]);
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042         $contextMenu= <span class="keyword">new</span> <a class="code" href="class_todoyu_context_menu.html">TodoyuContextMenu</a>(<span class="stringliteral">&apos;DaytracksPanelwidget&apos;</span>, $idTask);
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044         <span class="keywordflow">return</span> $contextMenu-&gt;getJSON();
+<a name="l00045"></a>00045     }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="aba97155fb83a1b49874f6e907e749576"></a><!-- doxytag: member="TodoyuDaytracksPanelwidgetActionController::updateAction" ref="aba97155fb83a1b49874f6e907e749576" args="(array $params)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">updateAction </td>
+          <td>(</td>
+          <td class="paramtype">array $&nbsp;</td>
+          <td class="paramname"> <em>params</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definiert in Zeile <a class="el" href="_todoyu_daytracks_panelwidget_action_controller_8class_8php_source.html#l00030">30</a> der Datei <a class="el" href="_todoyu_daytracks_panelwidget_action_controller_8class_8php_source.html">TodoyuDaytracksPanelwidgetActionController.class.php</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00030"></a>00030                                                 {
+<a name="l00031"></a>00031         $panelWidget = <a class="code" href="class_todoyu_panel_widget_manager.html#a08348a309f8e09bd145b629058281b64">TodoyuPanelWidgetManager::getPanelWidget</a>(<span class="stringliteral">&apos;Daytracks&apos;</span>);
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033         <span class="keywordflow">return</span> $panelWidget-&gt;getContent();
+<a name="l00034"></a>00034     }
+</pre></div></p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Datei:<ul>
+<li>C:/Programme/xampp/htdocs/todoyu2/ext/daytracks/controller/<a class="el" href="_todoyu_daytracks_panelwidget_action_controller_8class_8php_source.html">TodoyuDaytracksPanelwidgetActionController.class.php</a></li>
+</ul>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:44 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

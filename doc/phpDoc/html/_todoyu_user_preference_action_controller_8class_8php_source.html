@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Todoyu: C:/Programme/xampp/htdocs/todoyu2/ext/user/controller/TodoyuUserPreferenceActionController.class.php Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Erzeugt von Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Hauptseite</span></a></li>
+      <li><a href="pages.html"><span>Zusätzliche&nbsp;Informationen</span></a></li>
+      <li><a href="namespaces.html"><span>Namensbereiche</span></a></li>
+      <li><a href="annotated.html"><span>Datenstrukturen</span></a></li>
+      <li class="current"><a href="files.html"><span>Dateien</span></a></li>
+      <li><a href="examples.html"><span>Beispiele</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Auflistung&nbsp;der&nbsp;Dateien</span></a></li>
+      <li><a href="globals.html"><span>Datei-Elemente</span></a></li>
+    </ul>
+  </div>
+<h1>C:/Programme/xampp/htdocs/todoyu2/ext/user/controller/TodoyuUserPreferenceActionController.class.php</h1><a href="_todoyu_user_preference_action_controller_8class_8php.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 &lt;?php
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="class_todoyu_user_preference_action_controller.html">00003</a> <span class="keyword">class </span><a class="code" href="class_todoyu_user_preference_action_controller.html">TodoyuUserPreferenceActionController</a> <span class="keyword">extends</span> <a class="code" href="class_todoyu_action_controller.html">TodoyuActionController</a> {
+<a name="l00004"></a>00004 
+<a name="l00005"></a><a class="code" href="class_todoyu_user_preference_action_controller.html#a3cc11d5a03cc9f8d83931caa8de6909a">00005</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_user_preference_action_controller.html#a3cc11d5a03cc9f8d83931caa8de6909a">panelwidgetstaffselectorAction</a>(array <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>) {
+<a name="l00006"></a>00006         $prefs  = json_decode($params[<span class="stringliteral">&apos;value&apos;</span>], <span class="keyword">true</span>);
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008         <a class="code" href="class_todoyu_user_preferences.html#a551e20f3020da4990c6335eba5327c6c">TodoyuUserPreferences::saveStaffSelectorPrefs</a>($prefs);
+<a name="l00009"></a>00009     }
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 
+<a name="l00018"></a><a class="code" href="class_todoyu_user_preference_action_controller.html#a3b6a74b7376a746f6b1aecfeaf84d304">00018</a>     <span class="keyword">public</span> function <a class="code" href="class_todoyu_user_preference_action_controller.html#a3b6a74b7376a746f6b1aecfeaf84d304">pwidgetAction</a>(array <a class="code" href="class_todoyu_action_controller.html#afe68e6fbe7acfbffc0af0c84a1996466">$params</a>) {
+<a name="l00019"></a>00019         $idWidget   = $params[<span class="stringliteral">&apos;item&apos;</span>];
+<a name="l00020"></a>00020         $value      = $params[<span class="stringliteral">&apos;value&apos;</span>];
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022         <a class="code" href="class_todoyu_panel_widget_manager.html#a564d4e7c4fa442a86102fd0cd8db5b98">TodoyuPanelWidgetManager::saveCollapsedStatus</a>(<a class="code" href="user_2ext_8php.html#a25f072973257487dfb0df3128618bcf6">EXTID_USER</a>, $idWidget, $value);
+<a name="l00023"></a>00023     }
+<a name="l00024"></a>00024 }
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 ?&gt;
+</pre></div></div>
+<hr size="1"/><address style="text-align: right;"><small>Erzeugt am Tue Dec 1 18:32:36 2009 für Todoyu von&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>
