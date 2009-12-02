@@ -55,7 +55,7 @@ require( PATH_CORE. '/inc/finish.php' );
 
 	// Query debugging
 if( $_GET['qh'] == 1 ) {
-	Debug::printHtml(Todoyu::db()->getQueryHistory());
+	TodoyuDebug::printHtml(Todoyu::db()->getQueryHistory());
 }
 
 	// Send output

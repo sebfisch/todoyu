@@ -113,6 +113,17 @@ class TodoyuSession {
 		$_SESSION[self::key()] = null;
 	}
 
+
+
+	/**
+	 * Get all session data
+	 *
+	 * @return	Array
+	 */
+	public static function getAll() {
+		return $_SESSION[self::key()];
+	}
+
 }
 
 ?>
