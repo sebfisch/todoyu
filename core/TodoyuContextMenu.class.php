@@ -107,7 +107,7 @@ class TodoyuContextMenu {
 			$elements[$index]['label']		= $this->renderLabel($element['label']);
 
 				// Parse recursive for submenus
-			if( array_key_exists('submenu', $element) ) {
+			if( is_array($element['submenu']) ) {
 				$elements[$index]['submenu'] = $this->parseElements($element['submenu']);
 			}
 		}

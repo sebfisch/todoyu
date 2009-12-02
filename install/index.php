@@ -26,6 +26,11 @@ require_once('install/model/TodoyuInstaller.class.php');
 
 	// Check if ENABLE file is available. If not, stop here
 if( ! is_file(PATH . '/install/ENABLE') ) {
+//	@unlink(PATH . '/index.html');
+//	echo SERVER_URL . '/index.php';
+//	exit();
+//	header("Location: ../index.php");
+//	exit();
 	die("File 'install/ENABLE' not found. Create it to access the installer");
 }
 

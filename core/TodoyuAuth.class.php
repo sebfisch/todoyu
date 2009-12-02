@@ -86,7 +86,7 @@ class TodoyuAuth {
 	 * @return	Integer
 	 */
 	public static function getUserID() {
-		return intval(TodoyuSessionManager::get('userid'));
+		return intval(TodoyuSession::get('userid'));
 	}
 
 
@@ -102,7 +102,7 @@ class TodoyuAuth {
 			// Generate a new session id for the logged in user
 		session_regenerate_id(true);
 			// Set current user id
-		TodoyuSessionManager::set('userid', intval($idUser));
+		TodoyuSession::set('userid', intval($idUser));
 			// Reload rights
 		TodoyuRightsManager::reloadRights();
 			// Set new user in Todoyu object
@@ -117,7 +117,7 @@ class TodoyuAuth {
 	 */
 	public static function logout() {
 			// Clear session
-		TodoyuSessionManager::clearSession();
+		TodoyuSession::clear();
 
 			// Delete relogin cookie
 		TodoyuCookieLogin::removeRemainLoginCookie();

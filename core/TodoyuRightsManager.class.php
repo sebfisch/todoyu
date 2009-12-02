@@ -51,8 +51,8 @@ class TodoyuRightsManager {
 	 * following requests will use the data in the session
 	 */
 	public static function loadRights() {
-		if( TodoyuSessionManager::isIn('rights') ) {
-			self::$rights = TodoyuSessionManager::get('rights');
+		if( TodoyuSession::isIn('rights') ) {
+			self::$rights = TodoyuSession::get('rights');
 		} else {
 			$userGroupIDs	= TodoyuAuth::getUser()->getGroupIDs();
 
@@ -68,7 +68,7 @@ class TodoyuRightsManager {
 					self::$rights[$right['ext']][$right['right']] = 1;
 				}
 
-				TodoyuSessionManager::set('rights', self::$rights);
+				TodoyuSession::set('rights', self::$rights);
 			}
 		}
 	}
@@ -183,7 +183,7 @@ class TodoyuRightsManager {
 	 */
 	public static function flushRights() {
 		self::$rights = null;
-		TodoyuSessionManager::remove('rights');
+		TodoyuSession::remove('rights');
 	}
 
 
@@ -258,6 +258,17 @@ class TodoyuRightsManager {
 			Todoyu::log('Access denied (' . $extKey . '/' . $right . ')', LOG_LEVEL_SECURITY);
 			exit();
 		}
+	}
+
+
+
+	/**
+	 * Get the currently cached rights config
+	 *
+	 * @return	Array
+	 */
+	public static function getCachedRights() {
+		return self::$rights;
 	}
 
 }

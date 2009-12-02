@@ -50,7 +50,7 @@ require_once( PATH_CORE . '/TodoyuDatabase.class.php' );
 require_once( PATH_CORE . '/TodoyuAuth.class.php' );
 require_once( PATH_CORE . '/TodoyuBaseObject.class.php' );
 require_once( PATH_CORE . '/TodoyuExtensions.class.php' );
-require_once( PATH_CORE . '/TodoyuSessionManager.class.php' );
+require_once( PATH_CORE . '/TodoyuSession.class.php' );
 require_once( PATH_CORE . '/TodoyuLocale.class.php' );
 require_once( PATH_CORE . '/TodoyuCache.class.php' );
 require_once( PATH_CORE . '/TodoyuLogger.class.php' );
