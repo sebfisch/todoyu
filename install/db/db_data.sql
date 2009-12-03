@@ -300,6 +300,11 @@ INSERT INTO `ext_timetracking_track` (`id`, `date_update`, `id_user`, `date_crea
 -- Data for table `ext_user_contactinfo`
 --
 
+INSERT INTO `ext_user_contactinfo` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `id_contactinfotype`, `info`, `preferred`) VALUES
+(1, 1259848722, 1, 1259845750, 0, '11', 'http://www.snowflake.ch/', 1),
+(2, 1259848722, 1, 1259845750, 0, '4', '+41 44 455 80 80', 1),
+(3, 1259848722, 1, 1259845750, 0, '1', 'info@snowflake.ch', 1),
+(4, 1259848722, 1, 1259845750, 0, '8', '+41 44 455 80 87', 1);
 
 --
 -- Data for table `ext_user_contactinfotype`
@@ -359,6 +364,13 @@ INSERT INTO `ext_user_customerrole` (`id`, `deleted`, `title`) VALUES
 --
 -- Data for table `ext_user_mm_customer_contactinfo`
 --
+
+INSERT INTO `ext_user_mm_customer_contactinfo` (`id`, `id_customer`, `id_contactinfo`) VALUES
+(1, 5, 1),
+(2, 5, 2),
+(3, 5, 3),
+(4, 5, 4);
+
 
 
 --
