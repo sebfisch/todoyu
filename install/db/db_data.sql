@@ -10,77 +10,129 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Datenbank: `todoyu2alpha`
+-- Database: `todoyu`
 --
 
 --
--- Daten für Tabelle `ext_assets_asset`
---
-
-
---
--- Daten für Tabelle `ext_billing_currency`
+-- Data for table `ext_assets_asset`
 --
 
 
 --
--- Daten für Tabelle `ext_billing_invoicereminder`
+-- Data for table `ext_billing_currency`
 --
 
 
 --
--- Daten für Tabelle `ext_bookmark_bookmark`
+-- Data for table `ext_billing_invoicereminder`
 --
 
-INSERT INTO `ext_bookmark_bookmark` (`id`, `id_user_create`, `date_create`, `type`, `deleted`, `id_item`) VALUES
+
+--
+-- Data for table `ext_bookmark_bookmark`
+--
+
+INSERT INTO `ext_bookmark_bookmark` (`id`, `id_user_create`, `date_create`, `type`, `deleted`, `id_item`) VALUES 
 (1, 1, 1254233035, 1, 0, 2);
 
 --
--- Daten für Tabelle `ext_calendar_event`
+-- Data for table `ext_calendar_event`
 --
 
 
 --
--- Daten für Tabelle `ext_calendar_holiday`
+-- Data for table `ext_calendar_holiday`
+--
+
+INSERT INTO `ext_calendar_holiday` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `date`, `title`, `description`, `workinghours`) VALUES
+(39, 1220364646, 381, 1220364646, 0, 1230764400, 'Neujahr', '', '0'),
+(40, 1220364684, 381, 1220364684, 0, 1230850800, 'Berchtoldstag', '', '0'),
+(41, 1220364734, 381, 1220364734, 0, 1239314400, 'Karfreitag', '', '0'),
+(42, 1220364777, 381, 1220364777, 0, 1239573600, 'Ostermontag', '', '0'),
+(43, 1220364960, 381, 1220364960, 0, 1240178400, 'Sechseläuten', 'In Zürich Mittag frei', '240'),
+(44, 1220366196, 381, 1220366196, 0, 1241128800, 'Tag der Arbeit', '', '0'),
+(45, 1220366245, 381, 1220366245, 0, 1243807200, 'Pfingstmontag', '', '0'),
+(46, 1220366291, 381, 1220366291, 0, 1249077600, 'Nationalfeiertag', '', '0'),
+(47, 1220366366, 381, 1220366366, 0, 1252879200, 'Knabenschiessen', 'In Zürich am Mittag frei', '240'),
+(48, 1220366417, 381, 1220366417, 0, 1261609200, 'Heiligabend', 'ab Mittag frei', '240'),
+(49, 1220366454, 381, 1220366454, 0, 1261695600, 'Weihnachten', '', '0'),
+(51, 1220366523, 381, 1220366523, 0, 1261782000, 'Stephanstag', '', '0'),
+(52, 1220366574, 381, 1220366574, 0, 1262214000, 'Silvester', 'Ab Mittag frei', '240'),
+(54, 1229503133, 381, 1229502530, 0, 1258930800, 'Zibelemärit ', 'Mittag frei - nur Bern', '240'),
+(62, 1244472469, 381, 1244472469, 0, 1242856800, 'Auffahrt', '', '0');
+
+
+--
+-- Data for table `ext_calendar_holidayset`
+--
+
+INSERT INTO `ext_calendar_holidayset` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `description`) VALUES
+(1, 1244290547, 0, 0, 0, 'Zürich', ''),
+(2, 1244290548, 0, 0, 0, 'Bern', '');
+
+--
+-- Data for table `ext_calendar_mm_holiday_holidayset`
+--
+
+INSERT INTO `ext_calendar_mm_holiday_holidayset` (`id`, `id_holiday`, `id_holidayset`) VALUES
+(360, 62, 2),
+(376, 62, 1),
+(375, 51, 1),
+(374, 44, 1),
+(373, 45, 1),
+(372, 46, 1),
+(371, 48, 1),
+(359, 51, 2),
+(370, 52, 1),
+(369, 42, 1),
+(358, 54, 2),
+(368, 41, 1),
+(357, 52, 2),
+(367, 49, 1),
+(356, 39, 2),
+(355, 41, 2),
+(354, 40, 2),
+(366, 53, 1),
+(353, 53, 2),
+(352, 42, 2),
+(351, 50, 2),
+(365, 39, 1),
+(350, 44, 2),
+(364, 40, 1),
+(349, 45, 2),
+(363, 47, 1),
+(348, 46, 2),
+(347, 48, 2),
+(362, 43, 1),
+(346, 49, 2),
+(361, 50, 1);
+
+--
+-- Data for table `ext_calendar_mm_event_user`
 --
 
 
 --
--- Daten für Tabelle `ext_calendar_holidayset`
+-- Data for table `ext_calendar_series`
 --
 
 
 --
--- Daten für Tabelle `ext_calendar_mm_event_user`
---
-
-
---
--- Daten für Tabelle `ext_calendar_mm_holiday_holidayset`
---
-
-
---
--- Daten für Tabelle `ext_calendar_series`
---
-
-
---
--- Daten für Tabelle `ext_comment_comment`
+-- Data for table `ext_comment_comment`
 --
 
 INSERT INTO `ext_comment_comment` (`id`, `date_update`, `date_create`, `deleted`, `id_user_create`, `id_task`, `comment`, `is_public`) VALUES
 (1, 1254233694, 1254233694, 0, 1, 7, '<p>Hallo, schau dir das bitte mal an, wenn moeglich noch Heute</p>', 0);
 
 --
--- Daten für Tabelle `ext_comment_feedback`
+-- Data for table `ext_comment_feedback`
 --
 
 INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_user_create`, `id_user_feedback`, `id_comment`, `is_seen`) VALUES
 (1, 1254233694, 0, 1, 2, 1, 0);
 
 --
--- Daten für Tabelle `ext_filter_condition`
+-- Data for table `ext_filter_condition`
 --
 
 INSERT INTO `ext_filter_condition` (`id`, `date_update`, `date_create`, `id_user_create`, `deleted`, `id_set`, `filter`, `value`, `negate`) VALUES
@@ -93,7 +145,7 @@ INSERT INTO `ext_filter_condition` (`id`, `date_update`, `date_create`, `id_user
 (260, 1254233948, 1254233948, 1, 0, 4, 'currentUserIsAssigned', '', 0);
 
 --
--- Daten für Tabelle `ext_filter_set`
+-- Data for table `ext_filter_set`
 --
 
 INSERT INTO `ext_filter_set` (`id`, `date_update`, `date_create`, `deleted`, `sorting`, `is_hidden`, `id_user`, `usergroups`, `type`, `title`, `conjunction`) VALUES
@@ -103,17 +155,17 @@ INSERT INTO `ext_filter_set` (`id`, `date_update`, `date_create`, `deleted`, `so
 (4, 1254233948, 1254233928, 0, 0, 0, 1, '', 'task', 'Noch offene Tasks', 'AND');
 
 --
--- Daten für Tabelle `ext_fixed_project`
+-- Data for table `ext_fixed_project`
 --
 
 
 --
--- Daten für Tabelle `ext_fixed_task`
+-- Data for table `ext_fixed_task`
 --
 
 
 --
--- Daten für Tabelle `ext_portal_mm_tab_filterset`
+-- Data for table `ext_portal_mm_tab_filterset`
 --
 
 INSERT INTO `ext_portal_mm_tab_filterset` (`id`, `id_tab`, `id_filterset`) VALUES
@@ -122,7 +174,7 @@ INSERT INTO `ext_portal_mm_tab_filterset` (`id`, `id_tab`, `id_filterset`) VALUE
 (3, 2, 3);
 
 --
--- Daten für Tabelle `ext_portal_tab`
+-- Data for table `ext_portal_tab`
 --
 
 INSERT INTO `ext_portal_tab` (`id`, `deleted`, `type`, `id_user`, `usergroups`, `class`, `title`, `is_or`, `sorting`) VALUES
@@ -131,57 +183,57 @@ INSERT INTO `ext_portal_tab` (`id`, `deleted`, `type`, `id_user`, `usergroups`, 
 (3, 0, 'calendar', 0, '0', 'appointments', 'LLL:portal.tab.appointments', 0, 0);
 
 --
--- Daten für Tabelle `ext_projectbilling_invoice`
+-- Data for table `ext_projectbilling_invoice`
 --
 
 
 --
--- Daten für Tabelle `ext_projectbilling_invoiceapproval`
+-- Data for table `ext_projectbilling_invoiceapproval`
 --
 
 
 --
--- Daten für Tabelle `ext_projectbilling_invoiceitem`
+-- Data for table `ext_projectbilling_invoiceitem`
 --
 
 
 --
--- Daten für Tabelle `ext_projectbilling_prepayment`
+-- Data for table `ext_projectbilling_prepayment`
 --
 
 
 --
--- Daten für Tabelle `ext_projectbilling_rate`
+-- Data for table `ext_projectbilling_rate`
 --
 
 
 --
--- Daten für Tabelle `ext_projectbilling_rateset`
+-- Data for table `ext_projectbilling_rateset`
 --
 
 
 --
--- Daten für Tabelle `ext_projectbilling_reduction`
+-- Data for table `ext_projectbilling_reduction`
 --
 
 
 --
--- Daten für Tabelle `ext_projectbilling_reminder`
+-- Data for table `ext_projectbilling_reminder`
 --
 
 
 --
--- Daten für Tabelle `ext_projectbilling_settlement`
+-- Data for table `ext_projectbilling_settlement`
 --
 
 
 --
--- Daten für Tabelle `ext_projectbilling_type`
+-- Data for table `ext_projectbilling_type`
 --
 
 
 --
--- Daten für Tabelle `ext_project_mm_project_user`
+-- Data for table `ext_project_mm_project_user`
 --
 
 INSERT INTO `ext_project_mm_project_user` (`id`, `id_project`, `id_user`, `id_userrole`, `comment`) VALUES
@@ -190,7 +242,7 @@ INSERT INTO `ext_project_mm_project_user` (`id`, `id_project`, `id_user`, `id_us
 (6, 2, 1, 1, '');
 
 --
--- Daten für Tabelle `ext_project_project`
+-- Data for table `ext_project_project`
 --
 
 INSERT INTO `ext_project_project` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `description`, `is_fixed`, `id_fixedproject`, `status`, `ext_hosting_hoster`, `id_rateset`, `id_customer`, `ext_hosting_domain`, `ext_projectbilling_settlementinterval`, `date_start`, `date_end`, `date_deadline`, `fixedcosts`, `is_fixedcosts_paid`, `date_finish`, `ext_projectbilling_reduction`) VALUES
@@ -198,20 +250,20 @@ INSERT INTO `ext_project_project` (`id`, `date_update`, `id_user_create`, `date_
 (2, 1254233593, 1, 1254213566, 0, 'Example Project', '<p>This is the project description. This text should contain the relevant data for your project.</p>', 0, 0, 3, 0, 0, 5, '', 0, 1254175200, 1262214000, 1262905200, 0, 0, 0, 0);
 
 --
--- Daten für Tabelle `ext_project_task`
+-- Data for table `ext_project_task`
 --
 
 INSERT INTO `ext_project_task` (`id`, `date_update`, `id_project`, `date_create`, `deleted`, `id_user_create`, `tasknumber`, `description`, `status`, `estimated_workload`, `is_estimatedworkload_public`, `date_deadline`, `date_start`, `date_end`, `ext_fixed_isfixed`, `ext_fixed_idtask`, `id_user_assigned`, `is_acknowledged`, `ext_projectbilling_offeredprice`, `offered_accesslevel`, `is_offered`, `clearance_state`, `id_parenttask`, `title`, `id_worktype`, `type`, `date_finish`, `ext_projectbilling_type`, `is_private`, `is_public`, `is_onblock`, `id_user_owner`) VALUES
 (1, 1246985220, 1, 1246983025, 0, 1, 1, '<p>Projectmanagement</p>', 2, 3600, 0, 1264719600, 1246917600, 1264719600, 0, 0, 1, 1, 0, 0, 0, 0, 0, 'Projectmanagement', 0, 1, 0, 0, 0, 0, 0, 1),
 (2, 1254233016, 2, 1254232560, 0, 1, 1, '<p>Some random description in the task. Here you should write useful informations about this project</p>', 2, 3600, 0, 1256306040, 1254175200, 1256133240, 0, 0, 3, 1, 0, 0, 0, 0, 0, 'Sampletask', 1, 1, 0, 0, 0, 0, 0, 1),
-(3, 1254233504, 2, 1254233504, 0, 1, 2, '<ul><li>Welche Module müssen fehlerfrei laufen</li><li>Welche Module kommen als Debugversion in den Release</li><li>Updatezyklen für Beta Bugfixes festlegen</li></ul>', 2, 10800, 0, 1254233040, 1254175200, 1254233040, 0, 0, 3, 0, 0, 0, 0, 0, 0, 'Betarelease planen', 1, 2, 0, 0, 0, 0, 0, 3),
+(3, 1254233504, 2, 1254233504, 0, 1, 2, '<ul><li>Welche Module mÃ¼ssen fehlerfrei laufen</li><li>Welche Module kommen als Debugversion in den Release</li><li>Updatezyklen fÃ¼r Beta Bugfixes festlegen</li></ul>', 2, 10800, 0, 1254233040, 1254175200, 1254233040, 0, 0, 3, 0, 0, 0, 0, 0, 0, 'Betarelease planen', 1, 2, 0, 0, 0, 0, 0, 3),
 (4, 1254233729, 2, 1254233534, 0, 1, 3, '<p>askfdl asldfjalsdfjalksdjfasdf adfa sdf asdfasdf</p>', 3, 3600, 0, 1256220660, 1254175200, 1254233460, 0, 0, 3, 1, 0, 0, 0, 0, 0, 'Random Task', 1, 1, 0, 0, 0, 0, 0, 1),
-(5, 1254233577, 2, 1254233577, 0, 1, 4, '<p>Das ist ein Subtask im Container</p><p>Verschachtelung beliebig tief möglich</p>', 2, 3600, 0, 1254233520, 1254175200, 1254233520, 0, 0, 3, 0, 0, 0, 0, 0, 3, 'Subtask', 1, 1, 0, 0, 0, 0, 0, 1),
+(5, 1254233577, 2, 1254233577, 0, 1, 4, '<p>Das ist ein Subtask im Container</p><p>Verschachtelung beliebig tief mÃ¶glich</p>', 2, 3600, 0, 1254233520, 1254175200, 1254233520, 0, 0, 3, 0, 0, 0, 0, 0, 3, 'Subtask', 1, 1, 0, 0, 0, 0, 0, 1),
 (6, 1254233620, 2, 1254233620, 0, 1, 5, '<p>salkdfj adlsdjfalksdjfasjdfasdf asdfa sdfa sf</p>', 2, 3600, 0, 1257001980, 1254175200, 1256742780, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Noch ein Task', 1, 1, 0, 0, 0, 0, 0, 3),
 (7, 1254233877, 2, 1254233652, 0, 1, 6, '<p>Das ist sehr wichtig</p>', 3, 19200, 0, 1254233580, 1254175200, 1254233580, 0, 0, 2, 0, 0, 0, 0, 0, 3, 'Unbedingt schnell erledigen', 1, 1, 0, 0, 0, 0, 0, 1);
 
 --
--- Daten für Tabelle `ext_project_userrole`
+-- Data for table `ext_project_userrole`
 --
 
 INSERT INTO `ext_project_userrole` (`id`, `rolekey`, `title`, `deleted`) VALUES
@@ -222,7 +274,7 @@ INSERT INTO `ext_project_userrole` (`id`, `rolekey`, `title`, `deleted`) VALUES
 (5, 'customer_contact', 'Ansprechpartner Kunde', 0);
 
 --
--- Daten für Tabelle `ext_project_worktype`
+-- Data for table `ext_project_worktype`
 --
 
 INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `type`) VALUES
@@ -232,7 +284,7 @@ INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_user_create`, `date
 (4, 1254232876, 1, 1254232876, 0, 'Testing', 0);
 
 --
--- Daten für Tabelle `ext_timetracking_track`
+-- Data for table `ext_timetracking_track`
 --
 
 INSERT INTO `ext_timetracking_track` (`id`, `date_update`, `id_user`, `date_create`, `id_task`, `workload_tracked`, `workload_chargeable`, `comment`) VALUES
@@ -240,17 +292,17 @@ INSERT INTO `ext_timetracking_track` (`id`, `date_update`, `id_user`, `date_crea
 (2, 1254233883, 1, 1254233883, 7, 6, 0, '');
 
 --
--- Daten für Tabelle `ext_user_address`
+-- Data for table `ext_user_address`
 --
 
 
 --
--- Daten für Tabelle `ext_user_contactinfo`
+-- Data for table `ext_user_contactinfo`
 --
 
 
 --
--- Daten für Tabelle `ext_user_contactinfotype`
+-- Data for table `ext_user_contactinfotype`
 --
 
 INSERT INTO `ext_user_contactinfotype` (`id`, `deleted`, `key`, `title`) VALUES
@@ -268,7 +320,7 @@ INSERT INTO `ext_user_contactinfotype` (`id`, `deleted`, `key`, `title`) VALUES
 (12, 0, 'skype', 'user.contactinfo.skype');
 
 --
--- Daten für Tabelle `ext_user_customer`
+-- Data for table `ext_user_customer`
 --
 
 INSERT INTO `ext_user_customer` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `ext_projectbilling_reduction`) VALUES
@@ -278,39 +330,39 @@ INSERT INTO `ext_user_customer` (`id`, `date_update`, `id_user_create`, `date_cr
 (6, 1254213723, 1, 1254213723, 0, 'OneStepLeft Movie Factory', 'Movie Factory', 0, 1189548000, 0, 0);
 
 --
--- Daten für Tabelle `ext_user_customerrole`
+-- Data for table `ext_user_customerrole`
 --
 
 INSERT INTO `ext_user_customerrole` (`id`, `deleted`, `title`) VALUES
 (1, 0, 'Client');
 
 --
--- Daten für Tabelle `ext_user_group`
+-- Data for table `ext_user_group`
 --
 
 
 --
--- Daten für Tabelle `ext_user_holiday`
+-- Data for table `ext_user_holiday`
 --
 
 
 --
--- Daten für Tabelle `ext_user_jobtype`
+-- Data for table `ext_user_jobtype`
 --
 
 
 --
--- Daten für Tabelle `ext_user_mm_customer_address`
+-- Data for table `ext_user_mm_customer_address`
 --
 
 
 --
--- Daten für Tabelle `ext_user_mm_customer_contactinfo`
+-- Data for table `ext_user_mm_customer_contactinfo`
 --
 
 
 --
--- Daten für Tabelle `ext_user_mm_customer_user`
+-- Data for table `ext_user_mm_customer_user`
 --
 
 INSERT INTO `ext_user_mm_customer_user` (`id`, `id_customer`, `id_user`, `id_workaddress`, `id_jobtype`, `ext_resources_efficiency`, `ext_resources_wl_mon_am`, `ext_resources_wl_mon_pm`, `ext_resources_wl_tue_am`, `ext_resources_wl_tue_pm`, `ext_resources_wl_wed_am`, `ext_resources_wl_wed_pm`, `ext_resources_wl_thu_am`, `ext_resources_wl_thu_pm`, `ext_resources_wl_fri_am`, `ext_resources_wl_fri_pm`, `ext_resources_wl_sat_am`, `ext_resources_wl_sat_pm`, `ext_resources_wl_sun_am`, `ext_resources_wl_sun_pm`) VALUES
@@ -320,27 +372,27 @@ INSERT INTO `ext_user_mm_customer_user` (`id`, `id_customer`, `id_user`, `id_wor
 
 
 --
--- Daten für Tabelle `ext_user_mm_user_address`
+-- Data for table `ext_user_mm_user_address`
 --
 
 
 --
--- Daten für Tabelle `ext_user_mm_user_contactinfo`
+-- Data for table `ext_user_mm_user_contactinfo`
 --
 
 
 --
--- Daten für Tabelle `ext_user_mm_user_group`
+-- Data for table `ext_user_mm_user_group`
 --
 
 
 --
--- Daten für Tabelle `ext_user_panelwidget`
+-- Data for table `ext_user_panelwidget`
 --
 
 
 --
--- Daten für Tabelle `ext_user_preference`
+-- Data for table `ext_user_preference`
 --
 
 INSERT INTO `ext_user_preference` (`id_user`, `ext`, `area`, `preference`, `item`, `value`) VALUES
@@ -359,12 +411,12 @@ INSERT INTO `ext_user_preference` (`id_user`, `ext`, `area`, `preference`, `item
 (1, 111, 0, 'tab', 0, '0');
 
 --
--- Daten für Tabelle `ext_user_right`
+-- Data for table `ext_user_right`
 --
 
 
 --
--- Daten für Tabelle `ext_user_user`
+-- Data for table `ext_user_user`
 --
 
   INSERT INTO `ext_user_user` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `username`, `password`, `email`, `type`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
@@ -373,17 +425,17 @@ INSERT INTO `ext_user_preference` (`id_user`, `ext`, `area`, `preference`, `item
 (3, 0, 1, 1254213483, 0, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 1, 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20');
 
 --
--- Daten für Tabelle `history`
+-- Data for table `history`
 --
 
 
 --
--- Daten für Tabelle `log`
+-- Data for table `log`
 --
 
 
 --
--- Daten für Tabelle `static_country`
+-- Data for table `static_country`
 --
 
 INSERT INTO `static_country` (`id`, `iso_alpha2`, `iso_alpha3`, `iso_num`, `iso_num_currency`, `phone`) VALUES
@@ -627,7 +679,7 @@ INSERT INTO `static_country` (`id`, `iso_alpha2`, `iso_alpha3`, `iso_num`, `iso_
 (241, 'HM', 'HMD', 334, '0', 0);
 
 --
--- Daten für Tabelle `static_country_zone`
+-- Data for table `static_country_zone`
 --
 
 INSERT INTO `static_country_zone` (`id`, `iso_alpha2_country`, `iso_alpha3_country`, `iso_num_country`, `code`) VALUES
@@ -1114,14 +1166,14 @@ INSERT INTO `static_country_zone` (`id`, `iso_alpha2_country`, `iso_alpha3_count
 (482, 'BR', 'BRA', 76, 'TO');
 
 --
--- Daten für Tabelle `static_currency`
+-- Data for table `static_currency`
 --
 
 INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `symbol_right`, `thousands_point`, `decimal_point`, `decimal_digits`, `sub_divisor`, `sub_symbol_left`, `sub_symbol_right`) VALUES
 (2, 'AED', 784, 'Dhs.', '', '.', ',', 2, 100, '', ''),
 (4, 'ALL', 8, 'L', '', '.', ',', 2, 100, '', ''),
 (5, 'AMD', 51, 'Dram', '', '.', ',', 2, 100, '', ''),
-(6, 'ANG', 532, 'NAƒ', '', '.', ',', 2, 100, '', ''),
+(6, 'ANG', 532, 'NAÆ’', '', '.', ',', 2, 100, '', ''),
 (7, 'AOA', 973, 'Kz', '', '.', ',', 2, 100, '', ''),
 (8, 'ARS', 32, '$', '', '.', ',', 2, 100, '', ''),
 (9, 'AUD', 36, '$A', '', '.', ',', 2, 100, '', ''),
@@ -1142,17 +1194,17 @@ INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `sym
 (26, 'BWP', 72, 'P', '', '.', ',', 2, 100, '', ''),
 (27, 'BYR', 974, 'Br', '', '.', ',', 2, 100, '', ''),
 (28, 'BZD', 84, 'BZ', '', '.', ',', 2, 100, '', ''),
-(29, 'CAD', 124, '$', '', '.', ',', 2, 100, '', '¢'),
+(29, 'CAD', 124, '$', '', '.', ',', 2, 100, '', 'Â¢'),
 (30, 'CDF', 976, 'FC', '', '.', ',', 2, 100, '', ''),
 (31, 'CHF', 756, 'SFr.', '', '.', ',', 2, 100, '', ''),
 (33, 'CLP', 152, '$', '', '.', '', 0, 1, '', ''),
-(34, 'CNY', 156, 'Ұ', '', '.', ',', 2, 100, '', ''),
+(34, 'CNY', 156, 'Ò°', '', '.', ',', 2, 100, '', ''),
 (35, 'COP', 170, '$', '', '.', ',', 2, 100, '', ''),
-(36, 'CRC', 188, '₡', '', '.', ',', 2, 100, '', ''),
+(36, 'CRC', 188, 'â‚¡', '', '.', ',', 2, 100, '', ''),
 (37, 'CUP', 192, 'Cub$', '', '.', ',', 2, 100, '', ''),
 (38, 'CVE', 132, 'CVEsc.', '', '.', ',', 2, 100, '', ''),
-(39, 'CYP', 196, 'C£', '', '.', ',', 2, 100, '', ''),
-(40, 'CZK', 203, '', 'Kč', '.', ',', 2, 100, '', ''),
+(39, 'CYP', 196, 'CÂ£', '', '.', ',', 2, 100, '', ''),
+(40, 'CZK', 203, '', 'KÄ�', '.', ',', 2, 100, '', ''),
 (41, 'DJF', 262, 'FD', '', '.', '', 0, 1, '', ''),
 (42, 'DKK', 208, 'kr.', '', '.', ',', 2, 100, '', ''),
 (43, 'DOP', 214, 'RD$', '', '.', ',', 2, 100, '', ''),
@@ -1161,13 +1213,13 @@ INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `sym
 (46, 'EGP', 818, 'LE', '', '.', ',', 2, 100, '', ''),
 (47, 'ERN', 232, 'Nfa', '', '.', ',', 2, 100, '', ''),
 (48, 'ETB', 230, 'Br', '', '.', ',', 2, 100, '', ''),
-(49, 'EUR', 978, '€', '', '.', ',', 2, 100, '¢', ''),
+(49, 'EUR', 978, 'â‚¬', '', '.', ',', 2, 100, 'Â¢', ''),
 (50, 'FJD', 242, 'FJ$', '', '.', ',', 2, 100, '', ''),
-(51, 'FKP', 238, 'Fl£', '', '.', ',', 2, 100, '', ''),
-(52, 'GBP', 826, '£', '', ',', '.', 2, 100, '', 'p'),
+(51, 'FKP', 238, 'FlÂ£', '', '.', ',', 2, 100, '', ''),
+(52, 'GBP', 826, 'Â£', '', ',', '.', 2, 100, '', 'p'),
 (53, 'GEL', 981, '', 'lari', '.', ',', 2, 100, '', ''),
 (54, 'GHC', 288, '', '', '.', ',', 2, 100, '', ''),
-(55, 'GIP', 292, '£', '', '.', ',', 2, 100, '', ''),
+(55, 'GIP', 292, 'Â£', '', '.', ',', 2, 100, '', ''),
 (56, 'GMD', 270, 'D', '', '.', ',', 2, 100, '', ''),
 (57, 'GNF', 324, 'GF', '', '.', '', 0, 1, '', ''),
 (58, 'GTQ', 320, 'Q.', '', '.', ',', 2, 100, '', ''),
@@ -1186,17 +1238,17 @@ INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `sym
 (71, 'ISK', 352, '', 'ikr', '.', ',', 2, 100, '', ''),
 (72, 'JMD', 388, 'J$', '', '.', ',', 2, 100, '', ''),
 (73, 'JOD', 400, 'JD', '', '.', ',', 2, 100, '', ''),
-(74, 'JPY', 392, '¥', '', '.', '', 2, 100, '', ''),
+(74, 'JPY', 392, 'Â¥', '', '.', '', 2, 100, '', ''),
 (75, 'KES', 404, 'Kshs.', '', '.', ',', 2, 100, '', ''),
 (76, 'KGS', 417, 'K.S.', '', '.', ',', 2, 100, '', ''),
 (77, 'KHR', 116, 'CR', '', '.', ',', 2, 100, '', ''),
 (78, 'KMF', 174, 'CF', '', '.', '', 0, 1, '', ''),
-(79, 'KPW', 408, '₩n', '', '.', ',', 2, 100, '', ''),
-(80, 'KRW', 410, '￦', '', '.', '', 2, 100, '', ''),
+(79, 'KPW', 408, 'â‚©n', '', '.', ',', 2, 100, '', ''),
+(80, 'KRW', 410, 'ï¿¦', '', '.', '', 2, 100, '', ''),
 (81, 'KWD', 414, 'KD', '', '.', ',', 3, 1000, '', ''),
 (82, 'KYD', 136, '$', '', '.', ',', 2, 100, '', ''),
 (83, 'KZT', 398, 'T', '', '.', ',', 2, 100, '', ''),
-(84, 'LAK', 418, '₭', '', '.', ',', 2, 100, '', ''),
+(84, 'LAK', 418, 'â‚­', '', '.', ',', 2, 100, '', ''),
 (85, 'LBP', 422, '', 'LL', '.', ',', 2, 100, '', ''),
 (86, 'LKR', 144, 'Re', '', '.', ',', 2, 100, '', ''),
 (87, 'LRD', 430, 'Lib$', '', '.', ',', 2, 100, '', ''),
@@ -1208,7 +1260,7 @@ INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `sym
 (93, 'MDL', 498, '', '', '.', ',', 2, 100, '', ''),
 (95, 'MKD', 807, 'Den', '', '.', ',', 2, 100, '', ''),
 (96, 'MMK', 104, 'K', '', '.', ',', 2, 100, '', ''),
-(97, 'MNT', 496, '₮', '', '.', ',', 2, 100, '', ''),
+(97, 'MNT', 496, 'â‚®', '', '.', ',', 2, 100, '', ''),
 (98, 'MOP', 446, 'Pat.', '', '.', ',', 2, 100, '', ''),
 (99, 'MRO', 478, 'UM', '', '.', ',', 2, 100, '', ''),
 (100, 'MTL', 470, 'Lm', '', '.', ',', 2, 100, '', ''),
@@ -1219,7 +1271,7 @@ INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `sym
 (106, 'MYR', 458, 'RM', '', '.', ',', 2, 100, '', ''),
 (107, 'MZM', 508, '', 'Mt', '.', ',', 2, 100, '', ''),
 (108, 'NAD', 516, 'N$', '', '.', ',', 2, 100, '', ''),
-(109, 'NGN', 566, '₦', '', '.', ',', 2, 100, '', ''),
+(109, 'NGN', 566, 'â‚¦', '', '.', ',', 2, 100, '', ''),
 (110, 'NIO', 558, 'C$', '', '.', ',', 2, 100, '', ''),
 (111, 'NOK', 578, 'kr', '', '.', ',', 2, 100, '', ''),
 (112, 'NPR', 524, 'Rs.', '', '.', ',', 2, 100, '', ''),
@@ -1230,7 +1282,7 @@ INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `sym
 (117, 'PGK', 598, 'K', '', '.', ',', 2, 100, '', ''),
 (118, 'PHP', 608, 'P', '', '.', ',', 2, 100, '', ''),
 (119, 'PKR', 586, 'Rs.', '', '.', ',', 2, 100, '', ''),
-(120, 'PLN', 985, '', 'zł', '.', ',', 2, 100, '', ''),
+(120, 'PLN', 985, '', 'zÅ‚', '.', ',', 2, 100, '', ''),
 (121, 'PYG', 600, 'G', '', '.', '', 2, 100, '', ''),
 (122, 'QAR', 634, 'QR', '', '.', ',', 2, 100, '', ''),
 (123, 'ROL', 642, '', 'l', '.', ',', 2, 100, '', ''),
@@ -1242,14 +1294,14 @@ INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `sym
 (130, 'SDD', 736, 'sD', '', '.', ',', 0, 1, '', ''),
 (131, 'SEK', 752, '', 'kr', '.', ',', 2, 100, '', ''),
 (132, 'SGD', 702, '$', '', '.', ',', 2, 100, '', ''),
-(133, 'SHP', 654, '£', '', '.', ',', 2, 100, '', ''),
+(133, 'SHP', 654, 'Â£', '', '.', ',', 2, 100, '', ''),
 (134, 'SIT', 705, 'SIT', '', '.', ',', 2, 100, '', ''),
 (135, 'SKK', 703, '', 'Sk', '.', ',', 2, 100, '', 'h'),
 (136, 'SLL', 694, 'Le', '', '.', ',', 2, 100, '', ''),
 (137, 'SOS', 706, 'So.', '', '.', ',', 2, 100, '', ''),
 (139, 'STD', 678, 'Db', '', '.', ',', 2, 100, '', ''),
-(140, 'SVC', 222, '₡', '', '.', ',', 2, 100, '', ''),
-(141, 'SYP', 760, '£S', '', '.', ',', 2, 100, '', ''),
+(140, 'SVC', 222, 'â‚¡', '', '.', ',', 2, 100, '', ''),
+(141, 'SYP', 760, 'Â£S', '', '.', ',', 2, 100, '', ''),
 (142, 'SZL', 748, '', '', '.', ',', 2, 100, '', ''),
 (143, 'THB', 764, '', 'Bt', '.', ',', 2, 100, '', ''),
 (144, 'TJS', 972, '', '', '.', ',', 2, 100, '', ''),
@@ -1261,11 +1313,11 @@ INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `sym
 (152, 'TZS', 834, 'TSh', '', '.', ',', 2, 100, '', ''),
 (153, 'UAH', 980, 'hrn', '', '.', ',', 2, 100, '', ''),
 (154, 'UGX', 800, 'USh', '', '.', ',', 2, 100, '', ''),
-(155, 'USD', 840, '$', '', ',', '.', 2, 100, '', '¢'),
+(155, 'USD', 840, '$', '', ',', '.', 2, 100, '', 'Â¢'),
 (156, 'UYU', 858, 'UR$', '', '.', ',', 2, 100, '', ''),
 (157, 'UZS', 860, 'U.S.', '', '.', ',', 2, 100, '', ''),
 (158, 'VEB', 862, 'Bs.', '', '.', ',', 2, 100, '', ''),
-(159, 'VND', 704, '', '₫', '.', ',', 2, 100, '', ''),
+(159, 'VND', 704, '', 'â‚«', '.', ',', 2, 100, '', ''),
 (160, 'VUV', 548, '', 'VT', '.', '', 0, 1, '', ''),
 (161, 'WST', 882, 'WS$', '', '.', ',', 2, 100, '', ''),
 (162, 'XAF', 950, 'CFAF', '', '.', '', 0, 1, '', ''),
@@ -1283,7 +1335,7 @@ INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `sym
 (175, 'TRY', 949, 'YTL', '', '.', ',', 2, 100, '', '');
 
 --
--- Daten für Tabelle `static_territory`
+-- Data for table `static_territory`
 --
 
 INSERT INTO `static_territory` (`id`, `iso_num`, `parent_iso_num`) VALUES

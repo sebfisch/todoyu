@@ -10,13 +10,13 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Datenbank: `dev_todoyu2`
+-- Database: `todoyu`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_assets_asset`
+-- Table structure for table `ext_assets_asset`
 --
 
 DROP TABLE IF EXISTS `ext_assets_asset`;
@@ -43,7 +43,7 @@ CREATE TABLE `ext_assets_asset` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_billing_currency`
+-- Table structure for table `ext_billing_currency`
 --
 
 DROP TABLE IF EXISTS `ext_billing_currency`;
@@ -60,7 +60,7 @@ CREATE TABLE `ext_billing_currency` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_billing_invoicereminder`
+-- Table structure for table `ext_billing_invoicereminder`
 --
 
 DROP TABLE IF EXISTS `ext_billing_invoicereminder`;
@@ -80,7 +80,7 @@ CREATE TABLE `ext_billing_invoicereminder` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_bookmark_bookmark`
+-- Table structure for table `ext_bookmark_bookmark`
 --
 
 DROP TABLE IF EXISTS `ext_bookmark_bookmark`;
@@ -97,7 +97,7 @@ CREATE TABLE `ext_bookmark_bookmark` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_event`
+-- Table structure for table `ext_calendar_event`
 --
 
 DROP TABLE IF EXISTS `ext_calendar_event`;
@@ -126,7 +126,7 @@ CREATE TABLE `ext_calendar_event` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_holiday`
+-- Table structure for table `ext_calendar_holiday`
 --
 
 DROP TABLE IF EXISTS `ext_calendar_holiday`;
@@ -146,7 +146,7 @@ CREATE TABLE `ext_calendar_holiday` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_holidayset`
+-- Table structure for table `ext_calendar_holidayset`
 --
 
 DROP TABLE IF EXISTS `ext_calendar_holidayset`;
@@ -164,7 +164,7 @@ CREATE TABLE `ext_calendar_holidayset` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_mm_event_user`
+-- Table structure for table `ext_calendar_mm_event_user`
 --
 
 DROP TABLE IF EXISTS `ext_calendar_mm_event_user`;
@@ -181,7 +181,7 @@ CREATE TABLE `ext_calendar_mm_event_user` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_mm_holiday_holidayset`
+-- Table structure for table `ext_calendar_mm_holiday_holidayset`
 --
 
 DROP TABLE IF EXISTS `ext_calendar_mm_holiday_holidayset`;
@@ -197,7 +197,7 @@ CREATE TABLE `ext_calendar_mm_holiday_holidayset` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_series`
+-- Table structure for table `ext_calendar_series`
 --
 
 DROP TABLE IF EXISTS `ext_calendar_series`;
@@ -231,7 +231,7 @@ CREATE TABLE `ext_calendar_series` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_comment_comment`
+-- Table structure for table `ext_comment_comment`
 --
 
 DROP TABLE IF EXISTS `ext_comment_comment`;
@@ -251,7 +251,7 @@ CREATE TABLE `ext_comment_comment` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_comment_feedback`
+-- Table structure for table `ext_comment_feedback`
 --
 
 DROP TABLE IF EXISTS `ext_comment_feedback`;
@@ -269,7 +269,7 @@ CREATE TABLE `ext_comment_feedback` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_filter_condition`
+-- Table structure for table `ext_filter_condition`
 --
 
 DROP TABLE IF EXISTS `ext_filter_condition`;
@@ -289,7 +289,7 @@ CREATE TABLE `ext_filter_condition` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_filter_set`
+-- Table structure for table `ext_filter_set`
 --
 
 DROP TABLE IF EXISTS `ext_filter_set`;
@@ -311,7 +311,7 @@ CREATE TABLE `ext_filter_set` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_fixed_project`
+-- Table structure for table `ext_fixed_project`
 --
 
 DROP TABLE IF EXISTS `ext_fixed_project`;
@@ -343,7 +343,7 @@ CREATE TABLE `ext_fixed_project` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_fixed_task`
+-- Table structure for table `ext_fixed_task`
 --
 
 DROP TABLE IF EXISTS `ext_fixed_task`;
@@ -373,7 +373,7 @@ CREATE TABLE `ext_fixed_task` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_portal_mm_tab_filterset`
+-- Table structure for table `ext_portal_mm_tab_filterset`
 --
 
 DROP TABLE IF EXISTS `ext_portal_mm_tab_filterset`;
@@ -387,7 +387,7 @@ CREATE TABLE `ext_portal_mm_tab_filterset` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_portal_tab`
+-- Table structure for table `ext_portal_tab`
 --
 
 DROP TABLE IF EXISTS `ext_portal_tab`;
@@ -407,7 +407,7 @@ CREATE TABLE `ext_portal_tab` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_projectbilling_invoice`
+-- Table structure for table `ext_projectbilling_invoice`
 --
 
 DROP TABLE IF EXISTS `ext_projectbilling_invoice`;
@@ -436,7 +436,7 @@ CREATE TABLE `ext_projectbilling_invoice` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_projectbilling_invoiceapproval`
+-- Table structure for table `ext_projectbilling_invoiceapproval`
 --
 
 DROP TABLE IF EXISTS `ext_projectbilling_invoiceapproval`;
@@ -457,7 +457,7 @@ CREATE TABLE `ext_projectbilling_invoiceapproval` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_projectbilling_invoiceitem`
+-- Table structure for table `ext_projectbilling_invoiceitem`
 --
 
 DROP TABLE IF EXISTS `ext_projectbilling_invoiceitem`;
@@ -483,7 +483,7 @@ CREATE TABLE `ext_projectbilling_invoiceitem` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_projectbilling_prepayment`
+-- Table structure for table `ext_projectbilling_prepayment`
 --
 
 DROP TABLE IF EXISTS `ext_projectbilling_prepayment`;
@@ -506,7 +506,7 @@ CREATE TABLE `ext_projectbilling_prepayment` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_projectbilling_rate`
+-- Table structure for table `ext_projectbilling_rate`
 --
 
 DROP TABLE IF EXISTS `ext_projectbilling_rate`;
@@ -525,7 +525,7 @@ CREATE TABLE `ext_projectbilling_rate` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_projectbilling_rateset`
+-- Table structure for table `ext_projectbilling_rateset`
 --
 
 DROP TABLE IF EXISTS `ext_projectbilling_rateset`;
@@ -545,7 +545,7 @@ CREATE TABLE `ext_projectbilling_rateset` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_projectbilling_reduction`
+-- Table structure for table `ext_projectbilling_reduction`
 --
 
 DROP TABLE IF EXISTS `ext_projectbilling_reduction`;
@@ -565,7 +565,7 @@ CREATE TABLE `ext_projectbilling_reduction` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_projectbilling_reminder`
+-- Table structure for table `ext_projectbilling_reminder`
 --
 
 DROP TABLE IF EXISTS `ext_projectbilling_reminder`;
@@ -587,7 +587,7 @@ CREATE TABLE `ext_projectbilling_reminder` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_projectbilling_settlement`
+-- Table structure for table `ext_projectbilling_settlement`
 --
 
 DROP TABLE IF EXISTS `ext_projectbilling_settlement`;
@@ -604,7 +604,7 @@ CREATE TABLE `ext_projectbilling_settlement` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_projectbilling_type`
+-- Table structure for table `ext_projectbilling_type`
 --
 
 DROP TABLE IF EXISTS `ext_projectbilling_type`;
@@ -619,7 +619,7 @@ CREATE TABLE `ext_projectbilling_type` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_mm_project_user`
+-- Table structure for table `ext_project_mm_project_user`
 --
 
 DROP TABLE IF EXISTS `ext_project_mm_project_user`;
@@ -637,7 +637,7 @@ CREATE TABLE `ext_project_mm_project_user` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_project`
+-- Table structure for table `ext_project_project`
 --
 
 DROP TABLE IF EXISTS `ext_project_project`;
@@ -672,7 +672,7 @@ CREATE TABLE `ext_project_project` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_task`
+-- Table structure for table `ext_project_task`
 --
 
 DROP TABLE IF EXISTS `ext_project_task`;
@@ -720,7 +720,7 @@ CREATE TABLE `ext_project_task` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_userrole`
+-- Table structure for table `ext_project_userrole`
 --
 
 DROP TABLE IF EXISTS `ext_project_userrole`;
@@ -738,7 +738,7 @@ CREATE TABLE `ext_project_userrole` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_worktype`
+-- Table structure for table `ext_project_worktype`
 --
 
 DROP TABLE IF EXISTS `ext_project_worktype`;
@@ -756,7 +756,7 @@ CREATE TABLE `ext_project_worktype` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_timetracking_track`
+-- Table structure for table `ext_timetracking_track`
 --
 
 DROP TABLE IF EXISTS `ext_timetracking_track`;
@@ -776,7 +776,7 @@ CREATE TABLE `ext_timetracking_track` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_address`
+-- Table structure for table `ext_user_address`
 --
 
 DROP TABLE IF EXISTS `ext_user_address`;
@@ -802,7 +802,7 @@ CREATE TABLE `ext_user_address` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_contactinfo`
+-- Table structure for table `ext_user_contactinfo`
 --
 
 DROP TABLE IF EXISTS `ext_user_contactinfo`;
@@ -821,7 +821,7 @@ CREATE TABLE `ext_user_contactinfo` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_contactinfotype`
+-- Table structure for table `ext_user_contactinfotype`
 --
 
 DROP TABLE IF EXISTS `ext_user_contactinfotype`;
@@ -836,7 +836,7 @@ CREATE TABLE `ext_user_contactinfotype` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_customer`
+-- Table structure for table `ext_user_customer`
 --
 
 DROP TABLE IF EXISTS `ext_user_customer`;
@@ -858,7 +858,7 @@ CREATE TABLE `ext_user_customer` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_customerrole`
+-- Table structure for table `ext_user_customerrole`
 --
 
 DROP TABLE IF EXISTS `ext_user_customerrole`;
@@ -872,7 +872,7 @@ CREATE TABLE `ext_user_customerrole` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_group`
+-- Table structure for table `ext_user_group`
 --
 
 DROP TABLE IF EXISTS `ext_user_group`;
@@ -891,7 +891,7 @@ CREATE TABLE `ext_user_group` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_holiday`
+-- Table structure for table `ext_user_holiday`
 --
 
 DROP TABLE IF EXISTS `ext_user_holiday`;
@@ -912,7 +912,7 @@ CREATE TABLE `ext_user_holiday` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_jobtype`
+-- Table structure for table `ext_user_jobtype`
 --
 
 DROP TABLE IF EXISTS `ext_user_jobtype`;
@@ -926,7 +926,7 @@ CREATE TABLE `ext_user_jobtype` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_customer_address`
+-- Table structure for table `ext_user_mm_customer_address`
 --
 
 DROP TABLE IF EXISTS `ext_user_mm_customer_address`;
@@ -940,7 +940,7 @@ CREATE TABLE `ext_user_mm_customer_address` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_customer_contactinfo`
+-- Table structure for table `ext_user_mm_customer_contactinfo`
 --
 
 DROP TABLE IF EXISTS `ext_user_mm_customer_contactinfo`;
@@ -954,7 +954,7 @@ CREATE TABLE `ext_user_mm_customer_contactinfo` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_customer_user`
+-- Table structure for table `ext_user_mm_customer_user`
 --
 
 DROP TABLE IF EXISTS `ext_user_mm_customer_user`;
@@ -987,7 +987,7 @@ CREATE TABLE `ext_user_mm_customer_user` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_user_address`
+-- Table structure for table `ext_user_mm_user_address`
 --
 
 DROP TABLE IF EXISTS `ext_user_mm_user_address`;
@@ -1001,7 +1001,7 @@ CREATE TABLE `ext_user_mm_user_address` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_user_contactinfo`
+-- Table structure for table `ext_user_mm_user_contactinfo`
 --
 
 DROP TABLE IF EXISTS `ext_user_mm_user_contactinfo`;
@@ -1015,7 +1015,7 @@ CREATE TABLE `ext_user_mm_user_contactinfo` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_user_group`
+-- Table structure for table `ext_user_mm_user_group`
 --
 
 DROP TABLE IF EXISTS `ext_user_mm_user_group`;
@@ -1029,7 +1029,7 @@ CREATE TABLE `ext_user_mm_user_group` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_panelwidget`
+-- Table structure for table `ext_user_panelwidget`
 --
 
 DROP TABLE IF EXISTS `ext_user_panelwidget`;
@@ -1046,7 +1046,7 @@ CREATE TABLE `ext_user_panelwidget` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_preference`
+-- Table structure for table `ext_user_preference`
 --
 
 DROP TABLE IF EXISTS `ext_user_preference`;
@@ -1063,7 +1063,7 @@ CREATE TABLE `ext_user_preference` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_right`
+-- Table structure for table `ext_user_right`
 --
 
 DROP TABLE IF EXISTS `ext_user_right`;
@@ -1077,7 +1077,7 @@ CREATE TABLE `ext_user_right` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_user`
+-- Table structure for table `ext_user_user`
 --
 
 DROP TABLE IF EXISTS `ext_user_user`;
@@ -1105,7 +1105,7 @@ CREATE TABLE `ext_user_user` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `history`
+-- Table structure for table `history`
 --
 
 DROP TABLE IF EXISTS `history`;
@@ -1123,7 +1123,7 @@ CREATE TABLE `history` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `log`
+-- Table structure for table `log`
 --
 
 DROP TABLE IF EXISTS `log`;
@@ -1143,7 +1143,7 @@ CREATE TABLE `log` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `static_country`
+-- Table structure for table `static_country`
 --
 
 DROP TABLE IF EXISTS `static_country`;
@@ -1161,7 +1161,7 @@ CREATE TABLE `static_country` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `static_country_zone`
+-- Table structure for table `static_country_zone`
 --
 
 DROP TABLE IF EXISTS `static_country_zone`;
@@ -1178,7 +1178,7 @@ CREATE TABLE `static_country_zone` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `static_currency`
+-- Table structure for table `static_currency`
 --
 
 DROP TABLE IF EXISTS `static_currency`;
@@ -1201,7 +1201,7 @@ CREATE TABLE `static_currency` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `static_territory`
+-- Table structure for table `static_territory`
 --
 
 DROP TABLE IF EXISTS `static_territory`;

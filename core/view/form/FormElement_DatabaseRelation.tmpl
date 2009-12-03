@@ -4,7 +4,9 @@
 
 <div id="foreignrecords-{$idRecord}-{$fieldname}" class="foreignRecords" >
 	<div class="foreignRecordsActionControll overflow">
-		<a onclick="Todoyu.Form.addRecord({$idRecord}, '{$formname}', '{$fieldname}', '{$foreignRecordConf.addSubformConfig.ext}', '{$foreignRecordConf.addSubformConfig.controller}')" class="icon addForeignRecord" href="javascript:void(0)" title="{Label form.icon.add}"><span class="hidden">{Label form.icon.add}</span></a>
+		<a onclick="Todoyu.Form.addRecord({$idRecord}, '{$formname}', '{$fieldname}', '{$foreignRecordConf.addSubformConfig.ext}', '{$foreignRecordConf.addSubformConfig.controller}')" class="icon addForeignRecord" href="javascript:void(0)" title="{Label form.icon.add}">
+			<span class="hidden">{Label form.icon.add}</span>
+		</a>
 	</div>
 	{foreach $records index record}
 		{include "core/view/form/FormElement_DatabaseRelation_Record.tmpl"}
