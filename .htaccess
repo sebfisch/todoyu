@@ -27,7 +27,7 @@ DirectoryIndex index.html index.php
 RewriteEngine on
 
 # Disallow any .svn directory browsing
-RedirectMatch 404 /\\.svn(/|$)
+RedirectMatch 403 /\\.svn(/|$)
 
 # Disallow any log file viewing from web
-RedirectMatch 404 (.*)\.log$
+RedirectMatch 403 (.*)\.log$
