@@ -13,7 +13,7 @@ div.icon {
 }
 
 .contentMessage {
-	padding: 0 0 12px 8px;
+	padding:0 0 12px 8px;
 }
 
 
@@ -55,7 +55,7 @@ div.infoBox div.content {
    -----------------*/
 
 h1 {
-	position: relative;
+	position:relative;
 	overflow:hidden;
 }
 
@@ -90,14 +90,14 @@ h1 {
 	display:block;
 	margin:0;
 	padding:0;
-	background: #fff url('../img/bg_headerline.png') no-repeat 100% 0%;
+	background:#fff url('../img/bg_headerline.png') no-repeat 100% 0%;
 	width:10px;
 	height:28px;
 }
 
 .headerLine th.last,
 .headerLine td.last {
-	background: #fff url('../img/bg_headerline.png') no-repeat 100% 0%;
+	background:#fff url('../img/bg_headerline.png') no-repeat 100% 0%;
 }
 
 .headerLine th, .headerOptLine th {
@@ -107,7 +107,7 @@ h1 {
 	white-space:nowrap;
 }
 
-.headerLine input { margin-right: 10px; }
+.headerLine input { margin-right:10px; }
 
 .headerOptLine {
 	position:relative;
@@ -124,36 +124,36 @@ h1 {
 	display:block;
 	margin:0;
 	padding:0;
-	background: #fff url('../img/bg_headerline.png') no-repeat 100% -46px;
+	background:#fff url('../img/bg_headerline.png') no-repeat 100% -46px;
 	width:10px;
 	height:28px;
 }
 
 .headerOptLine th.last,
 .headerOptLine td.last {
-	background: #fff url('../img/bg_headerline.png') no-repeat 100% -46px;
+	background:#fff url('../img/bg_headerline.png') no-repeat 100% -46px;
 }
 
 
-/* Title */
+	/* Title */
 div.title {
-	font-size: 18px;
-	font-weight: bold;
+	font-size:18px;
+	font-weight:bold;
 	color:#333;
-	display: inline-block;
-	border-bottom: 1px solid #000;
-	margin: 15px 0 10px 0;
-	padding-left: 10px;
-	width: 97%;
+	display:inline-block;
+	border-bottom:1px solid #000;
+	margin:15px 0 10px 0;
+	padding-left:10px;
+	width:97%;
 }
 
 
 
 	/* h3 */
 .headLabel span {
-	display: block;
-	float: left;
-	overflow: hidden;
+	display:block;
+	float:left;
+	overflow:hidden;
 }
 
 span.infoIcon {

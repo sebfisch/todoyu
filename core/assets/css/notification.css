@@ -16,8 +16,8 @@
 	margin-left:283px;
 	width:658px;
 	padding:10px;
-	border:1px solid #AAA;
-	background-color:#FFF;
+	border:1px solid #b6bca5;
+	background-color:#fff;
 	margin-bottom:2px;
 	opacity:0.94;
 }
@@ -54,7 +54,7 @@
    ------------------- */
 
 #notifications div.success {
-	background-color:#00ff00;
+	background-color:#eff6bf;
 }
 
 #notifications div.success td.icon {
@@ -81,7 +81,7 @@
 	Info
    ------------------- */
 #notifications div.info {
-	background-color:#EFEFEF;
+	background-color:#efefef;
 }
 
 #notifications div.info td.icon {

@@ -1,10 +1,10 @@
 #toppanel {
-	position: absolute;
-	top: 0;
-	/*right: 0;*/
-	width: 100%;
-	height: 70px;
-	background: transparent;
+	position:absolute;
+	top:0;
+	/*right:0;*/
+	width:100%;
+	height:70px;
+	background:transparent;
 }
 
 #companyLogo, #headletsLeft, #headletsRight {
@@ -44,41 +44,41 @@
 }
 
 #headletajaxloader {
-	left: 20px;
-	top: 5px;
+	left:20px;
+	top:5px;
 	width:25px;
-	z-index: 1011;
+	z-index:1011;
 }
 
 #ajax-loader {
 	display:block;
-	width: 16px;
-	height: 16px;
+	width:16px;
+	height:16px;
 	padding:3px;
 }
 
 #headletmetamenu {
-	left: 90px;
-	top: 25px;
+	left:90px;
+	top:25px;
 	height:20px;
 	width:150px;
-	z-index: 1011;
+	z-index:1011;
 }
 
-	ul.metamenu {
-		float:right;
-	}
+ul.metamenu {
+	float:right;
+}
 
 	ul.metamenu li {
-		float: left;
-		padding: 0 5px 0 8px;
+		float:left;
+		padding:0 5px 0 8px;
 		background:url('../img/bg_metamenu_li.png') no-repeat 0 50%;
 	}
 
-	ul.metamenu li.first {
-		background:none;
-	}
-
-	ul.metamenu li a {
-		float: left;
-	}
+		ul.metamenu li.first {
+			background:none;
+		}
+	
+		ul.metamenu li a {
+			float:left;
+		}

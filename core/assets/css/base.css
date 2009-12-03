@@ -3,17 +3,17 @@
 ----------------------------------------------- */
 
 * {
-	color: #000;
-	font-size: 11px;
-	font-family: Arial, Verdana, Helvetica, sans-serif;
-	margin: 0;
-	padding: 0;
-	background-repeat: no-repeat;
+	color:#000;
+	font-size:11px;
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	margin:0;
+	padding:0;
+	background-repeat:no-repeat;
 }
 
 html, body {
-	height: 101%;
-	text-align: center;
+	height:101%;
+	text-align:center;
 }
 
 
@@ -23,11 +23,11 @@ html, body {
    -------------------------- */
 
 img {
-	border: 0;
+	border:0;
 }
 
 a {
-	text-decoration: none;
+	text-decoration:none;
 }
 
 a:focus{
@@ -35,28 +35,28 @@ a:focus{
 }
 
 caption {
-	display: none;
+	display:none;
 }
 
 table {
-	border-collapse: collapse;
+	border-collapse:collapse;
 }
 
 table.fixedTable {
-	table-layout: fixed;
+	table-layout:fixed;
 }
 
 th {
-	text-align: left;
-	vertical-align: top;
+	text-align:left;
+	vertical-align:top;
 }
 
 td {
-	vertical-align: top;
+	vertical-align:top;
 }
 
 ul {
-	list-style: none;
+	list-style:none;
 }
 
 
@@ -75,32 +75,32 @@ h1 span {
 }
 
 h1, h1 * {
-	font-size: 10px;
-	font-weight: normal;
-	text-transform: uppercase;
-	white-space: nowrap;
+	font-size:10px;
+	font-weight:normal;
+	text-transform:uppercase;
+	white-space:nowrap;
 }
 
 h2 {}
 
 h3 {
-	height: 12px;
-	padding: 5px 0 7px 12px;
-	background-color: #D5DEE5;
+	height:12px;
+	padding:5px 0 7px 12px;
+	background-color:#D5DEE5;
 	/*margin:0 0 8px 0;*/
-	font-weight: normal;
-	/*text-transform: uppercase;*/
-	white-space: nowrap;
+	font-weight:normal;
+	/*text-transform:uppercase;*/
+	white-space:nowrap;
 }
 
 h4 {
-		height: 12px;
-		padding: 5px 0 7px 12px;
-		background-color: #fff;
-		border-bottom: 1px solid #e1e1e1;
-		font-weight: normal;
-		text-transform: uppercase;
-		white-space: nowrap;
+		height:12px;
+		padding:5px 0 7px 12px;
+		background-color:#fff;
+		border-bottom:1px solid #e1e1e1;
+		font-weight:normal;
+		text-transform:uppercase;
+		white-space:nowrap;
 	}
 
 
@@ -114,95 +114,95 @@ h4 {
 }
 
 .clear {
-	clear: both;
+	clear:both;
 }
 
 .clearNone {
-	clear: none;
+	clear:none;
 }
 .floatLeft {
-	float: left;
+	float:left;
 }
 
 .floatRight {
-	float: right;
-	padding-right: 1px;
+	float:right;
+	padding-right:1px;
 }
 
 .overflow {
-	overflow: auto !important;
-	overflow: inherit;
-	height: auto !important;
-	height: 100%;
+	overflow:auto !important;
+	overflow:inherit;
+	height:auto !important;
+	height:100%;
 	/* ie7 needs this sometimes */
-	min-height: 100%;
-	padding-bottom: 1px;
+	min-height:100%;
+	padding-bottom:1px;
 }
 
 .overflowHidden {
-	overflow: hidden;
+	overflow:hidden;
 }
 
 .marginNone {
-	margin: 0 !important;
+	margin:0 !important;
 }
 
 .backgroundNone {
-	background: none !important;
+	background:none !important;
 }
 
 .backgroundColorTransparent {
-	background-color: transparent;
+	background-color:transparent;
 }
 
 .borderNone {
-	border: none;
+	border:none;
 }
 
 .fontWeightNormal {
-	font-weight: normal;
+	font-weight:normal;
 }
 
 .fontWeightBold {
-	font-weight: bold;
+	font-weight:bold;
 }
 .textTransformUppercase {
-	text-transform: uppercase;
+	text-transform:uppercase;
 }
 .displayInline {
-	display: inline;
+	display:inline;
 }
 .displayBlock {
-	display: block;
+	display:block;
 }
 .hide,
 .displayNone,
 .hidden {
-	display: none;
+	display:none;
 }
 .error {
-	color: red;
+	color:red;
 }
 
 .pointerCursor {
-	cursor: pointer;
+	cursor:pointer;
 }
 
 .textIndent {
-	text-indent: -9999px;
+	text-indent:-9999px;
 }
 
 #box {
-	text-align: left;
+	text-align:left;
 }
 
 #notification {
-	margin: 0 0 0 18px;
-	padding: 6px 8px 12px 8px;
-	background-color: #F6F8F0;
-	border: 1px solid #aaa;
+	margin:0 0 0 18px;
+	padding:6px 8px 12px 8px;
+	background-color:#F6F8F0;
+	border:1px solid #aaa;
 }
 
 .red {
-	color: #ad5050;
+	color:#ad5050;
 }

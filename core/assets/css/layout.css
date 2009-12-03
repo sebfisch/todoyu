@@ -13,7 +13,7 @@ body {
 }
 
 	#header .inner {
-		height: 100px;
+		height:100px;
 		text-align:left;
 		width:978px;
 		margin:0 auto;
@@ -24,33 +24,33 @@ body {
 	}
 
 #box {
-	position: relative;
-	width: 978px;
+	position:relative;
+	width:978px;
 	padding-top:100px;
-	margin: 0 auto;
+	margin:0 auto;
 }
 
 #contentBox {
-	position: relative;
-	width: 973px !important;
-	width: 978px;
-	min-height: 415px;
-	height: auto !important;
-	height: 415px;
-	padding: 1px 2px 0 3px;
+	position:relative;
+	width:973px !important;
+	width:978px;
+	min-height:415px;
+	height:auto !important;
+	height:415px;
+	padding:1px 2px 0 3px;
 }
 
 #contentBoxTop {
-	position: absolute;
-	height: 85px;
-	width: 978px;
-	margin: -1px -2px 0 -3px;
+	position:absolute;
+	height:85px;
+	width:978px;
+	margin:-1px -2px 0 -3px;
 }
 
 #main {
-	position: relative;
-	clear: both;
-	padding: 0 0 80px 0;
+	position:relative;
+	clear:both;
+	padding:0 0 80px 0;
 }
 
 
@@ -59,7 +59,7 @@ body {
    --------------*/
 
 	#panel {
-		position: relative;
+		position:relative;
 		top:20px;
 		float:left;
 		clear:both;
@@ -90,26 +90,26 @@ body {
 		}
 
 #panel.collapsed {
-	width: 0px;
-	margin-right: 0;
+	width:0px;
+	margin-right:0;
 }
 
 #left-col-trigger {
-	display: block;
-	position: absolute;
-	left: -15px;
-	top: 0;
-	height: 33px;
-	width: 13px;
-	cursor: pointer;
+	display:block;
+	position:absolute;
+	left:-15px;
+	top:0;
+	height:33px;
+	width:13px;
+	cursor:pointer;
 }
 
 #left-col-trigger.close {
-	background: url(../img/sprite-left_col-portal.png) no-repeat 0 -128px;
+	background:url(../img/sprite-left_col-portal.png) no-repeat 0 -128px;
 }
 
 #left-col-trigger.open {
-	background: url(../img/sprite-left_col-portal.png) no-repeat -32px -128px;
+	background:url(../img/sprite-left_col-portal.png) no-repeat -32px -128px;
 }
 
 
@@ -119,10 +119,10 @@ body {
    -------------------*/
 
 #right {
-	position: relative;
+	position:relative;
 	top:46px;
-	float: left;
-	width: 680px;
+	float:left;
+	width:680px;
 }
 
 	.content span.lt,
@@ -156,7 +156,7 @@ body {
 
 
 #right.expanded {
-	width: 938px;
+	width:938px;
 }
 
 
@@ -168,7 +168,7 @@ body {
 #footer {
 	display:block;
 	clear:both;
-	position: relative;
+	position:relative;
 	width:100%;
 	height:70px;
 	text-align:left;
@@ -200,12 +200,12 @@ body {
 
 #footer-line {
 	display:block;
-	position: absolute;
+	position:absolute;
 	top:0px;
 	left:0;
 	width:100%;
 	height:5px;
-	background: #B0D026 url('../img/bg_footer.jpg') repeat-y 0 top;
+	background:#B0D026 url('../img/bg_footer.jpg') repeat-y 0 top;
 }
 
 
@@ -213,8 +213,8 @@ body {
 
 
 #footerX * {
-	font-size: 11px;
-	text-transform: lowercase;
+	font-size:11px;
+	text-transform:lowercase;
 }
 
 #footerX .address {
@@ -223,18 +223,18 @@ body {
 }
 
 #footerX .address .logo {
-	position: relative;
-	left: -45px;
+	position:relative;
+	left:-45px;
 }
 
 #footerX .line {
 	display:block;
-	position: absolute;
+	position:absolute;
 	bottom:10px;
 	left:0;
 	width:100%;
 	height:5px;
-	background: #B0D026 url('../img/bg_footer.jpg') repeat-y 0 top;
+	background:#B0D026 url('../img/bg_footer.jpg') repeat-y 0 top;
 }
 
 #footerX .line hr {display:none;}
@@ -245,19 +245,19 @@ body {
 	Panel
    ----------------- */
 #panel * {
-	font-size: 10px;
+	font-size:10px;
 }
 
 .panelWidget {
-	position: relative;
-	margin-bottom: 8px;
+	position:relative;
+	margin-bottom:8px;
 	padding-bottom:3px;
-	background: url(../img/content/hr_hor.png) repeat-x scroll 0 bottom;
+	background:url(../img/content/hr_hor.png) repeat-x scroll 0 bottom;
 }
 
 .panelWidget h1 {
 	height:26px;
-	background-image: url('../img/bg_headers.png');
+	background-image:url('../img/bg_headers.png');
 	background-repeat:no-repeat;
 	background-position:0 -60px; /* allowedOpen open  */
 	margin:0;
@@ -291,8 +291,8 @@ body {
 	.panelWidget.hasIcon span.title {
 		padding-left:27px;
 		background-image:url('../img/icons.png');
-		background-repeat: no-repeat;
-		background-position: 1000px 50%;
+		background-repeat:no-repeat;
+		background-position:1000px 50%;
 	}
 
 	.panelWidget h1 span.toggle {
@@ -316,13 +316,13 @@ body {
 
 	.panelWidget .content select option {
 		padding:2px;
-		background-color: #fff;
+		background-color:#fff;
 		border-bottom:1px dotted #848484;
 		color:#333;
 	}
 
 	.panelWidget .content select option.odd {
-		background-color: #f3f3f3;
+		background-color:#f3f3f3;
 	}
 
 	.panelWidget .content select.filter option {
@@ -330,7 +330,7 @@ body {
 	}
 
 	.panelWidget .content select.filter option.selected {
-		background-color: #adb989; /* bcl04 */
+		background-color:#adb989; /* bcl04 */
 		color:#000;
 	}
 
@@ -341,10 +341,10 @@ body {
    --------------------------------------------------------*/
 
 #devstamp {
-	position: absolute;
-	left: 4px;
-	top: 4px;
-	z-index: 100;
+	position:absolute;
+	left:4px;
+	top:4px;
+	z-index:100;
 }
 
 
@@ -354,12 +354,12 @@ body {
    ---------------------------- */
 
 .popup {
-	position: absolute;
-	z-index: 2000;
-	display: block;
-	background-color: #FFF;
-	border: 1px solid #E3EACE;
-	border-width: 0 1px 1px 1px;
+	position:absolute;
+	z-index:2000;
+	display:block;
+	background-color:#FFF;
+	border:1px solid #E3EACE;
+	border-width:0 1px 1px 1px;
 }
 
 .popup h1 {
@@ -371,8 +371,8 @@ body {
 
 .popup h1 span {
 	float:left;
-	color: #000;
-	font-size: 12px;
+	color:#000;
+	font-size:12px;
 	margin:0 0 0 5px;
 	line-height:28px;
 }
@@ -388,8 +388,8 @@ body {
 	right:0;
 	width:25px;
 	height:25px;
-	cursor: pointer;
-	background: url(../img/buttons/titlebutton_close.png) no-repeat 0 0px;
+	cursor:pointer;
+	background:url(../img/buttons/titlebutton_close.png) no-repeat 0 0px;
 }
 
 .popup h1 span.rgt {
@@ -398,7 +398,7 @@ body {
 	display:block;
 	margin:0;
 	padding:0;
-	background: #fff url('../img/bg_headerline.png') no-repeat 100% 0%;
+	background:#fff url('../img/bg_headerline.png') no-repeat 100% 0%;
 	width:10px;
 	height:28px;
 }
@@ -419,21 +419,21 @@ body {
    ------------------------------- */
 
 div.toggled {
-	background-color:#adb989;font-weight: bold;
+	background-color:#adb989;font-weight:bold;
 }
 
 li.odd,
 div.odd {
-	background-color: #f3f3f3;
+	background-color:#f3f3f3;
 }
 
 li.even,
 div.even {
-	background-color: transparent;
+	background-color:transparent;
 }
 
 div.error {
-	border: 1px solid #ff0000;
+	border:1px solid #ff0000;
 	margin-bottom:1px !important;
 }
 
@@ -488,35 +488,35 @@ div.error {
 }
 
 /*
-		div.bookmarkStatusPlanning { background-color: #7f007f; }
-		div.bookmarkStatusCustomer { background-color: pink; }
-		div.bookmarkStatusOpen { background-color: #f00; }
-		div.bookmarkStatusFeedback { background-color: purple; }
-		div.bookmarkStatusInprogress { background-color: #ffac00; }
-		div.bookmarkStatusConfirmation { background-color: #fffc00; }
-		div.bookmarkStatusDone { background-color: #77dc00; }
-		div.bookmarkStatusAccepted { background-color: green; }
-		div.bookmarkStatusRejected { background-color: #a60000; }
-		div.bookmarkStatusQuicktask { background-color: #00aeff; }
-		div.bookmarkStatusCleared { background-color: grey; }
-		div.bookmarkStatusDate { background-color: #85c1fc; }
-		div.bookmarkStatusContainer { background-color: #fbfbf4; }
-		div.bookmarkStatusWarranty { background-color: #2335e0; }
+		div.bookmarkStatusPlanning { background-color:#7f007f; }
+		div.bookmarkStatusCustomer { background-color:pink; }
+		div.bookmarkStatusOpen { background-color:#f00; }
+		div.bookmarkStatusFeedback { background-color:purple; }
+		div.bookmarkStatusInprogress { background-color:#ffac00; }
+		div.bookmarkStatusConfirmation { background-color:#fffc00; }
+		div.bookmarkStatusDone { background-color:#77dc00; }
+		div.bookmarkStatusAccepted { background-color:green; }
+		div.bookmarkStatusRejected { background-color:#a60000; }
+		div.bookmarkStatusQuicktask { background-color:#00aeff; }
+		div.bookmarkStatusCleared { background-color:grey; }
+		div.bookmarkStatusDate { background-color:#85c1fc; }
+		div.bookmarkStatusContainer { background-color:#fbfbf4; }
+		div.bookmarkStatusWarranty { background-color:#2335e0; }
 
 	#panelwidget-daytracks ul li.status-open { border-left-color:#FF0000; }
 	#panelwidget-daytracks ul li.status-progress { border-left-color:#FFAC00; }
 	#panelwidget-daytracks ul li.status-confirm { border-left-color:#FFFC00; }
 	#panelwidget-daytracks ul li.status-done { border-left-color:#77DC00; }
-	#panelwidget-daytracks ul li.status-accepted { border-left-color: green; }
+	#panelwidget-daytracks ul li.status-accepted { border-left-color:green; }
 	#panelwidget-daytracks ul li.status-rejected { border-left-color:#A60000; }
 */
 
 input.toggleSelect {
-	display: none;
+	display:none;
 }
 
 label.toggleSelect {
-	padding: 0 22px 18px 0;
+	padding:0 22px 18px 0;
 	cursor:pointer;
 }
 
@@ -595,7 +595,7 @@ div.indexLetters a {
 div.indexLetters a.inactive {
 	opacity:0.3;
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-	filter: alpha(opacity=30);
+	filter:alpha(opacity=30);
 	cursor:default;
 }
 

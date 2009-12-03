@@ -1,25 +1,25 @@
 #contextmenu {
-	display: none;
-	position: absolute;
-	width: 150px;
-	z-index: 100000;
+	display:none;
+	position:absolute;
+	width:150px;
+	z-index:100000;
 	background-color:#f1f1f1;
 }
 
 #contextmenu li {
-	border: 1px solid #d5dee5;
-	margin-bottom: -1px;
+	border:1px solid #d5dee5;
+	margin-bottom:-1px;
 }
 
 #contextmenu li a,
 #contextmenu li span {
-	display: block;
-	padding: 0 10px 0 29px;
-	line-height: 20px;
-	background-color: #F8F8F8;
-	cursor: pointer;
+	display:block;
+	padding:0 10px 0 29px;
+	line-height:20px;
+	background-color:#F8F8F8;
+	cursor:pointer;
 	background-repeat:no-repeat;
-	text-align: left;
+	text-align:left;
 }
 
 #contextmenu li a:hover,
@@ -29,9 +29,9 @@
 
 #contextmenu li ul {
 	display:none;
-	position: absolute;
-	z-index: 100001;
-	width: 150px;
+	position:absolute;
+	z-index:100001;
+	width:150px;
 }
 
 #contextmenu li.header a {

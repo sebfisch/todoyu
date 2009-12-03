@@ -1,7 +1,7 @@
 button {
 	position:relative;
-	background: url('../img/bg_button.png') no-repeat 0 50%;
-	cursor: pointer;
+	background:url('../img/bg_button.png') no-repeat 0 50%;
+	cursor:pointer;
 	padding:0;
 	border:0px none !important;
 	color:#000;
@@ -19,10 +19,10 @@ button span {
 	float:left;
 	margin:0;
 	padding:0 0 0 13px;
-	color: #000;
-	font-size: 11px;
+	color:#000;
+	font-size:11px;
 	line-height:23px;
-	white-space: nowrap;
+	white-space:nowrap;
 }
 
 button span.hasIcon {
@@ -49,7 +49,7 @@ button span.rgt {
 	left:3px;
 	margin:0;
 	padding:0;
-	background: #fff url('../img/bg_button.png') no-repeat 100% 50%;
+	background:#fff url('../img/bg_button.png') no-repeat 100% 50%;
 	width:10px;
 	height:23px;
 }
@@ -72,7 +72,7 @@ html>/**/body button span.rgt { /* IE8 */
 
 /*
 	button span.hasIcon {
-		background-image: url('../img/bg_button_sprite.png');
+		background-image:url('../img/bg_button_sprite.png');
 	}
 
 
@@ -86,20 +86,20 @@ html>/**/body button span.rgt { /* IE8 */
 /* spezial button */
 /*
 button.button {
-	border: 0;
-	border: 1px solid #fff !important;
-	background: url(../img/sprite-content.png) repeat-x 0 0px;
-	cursor: pointer;
+	border:0;
+	border:1px solid #fff !important;
+	background:url(../img/sprite-content.png) repeat-x 0 0px;
+	cursor:pointer;
 }
 
 button.button span {
-	display: block;
-	margin: 0 -2px;
-	padding: 2px 0 1px;
-	color: #fff;
-	font-size: 10px;
-	text-transform: uppercase;
-	white-space: nowrap;
+	display:block;
+	margin:0 -2px;
+	padding:2px 0 1px;
+	color:#fff;
+	font-size:10px;
+	text-transform:uppercase;
+	white-space:nowrap;
 }
 */
 
@@ -133,136 +133,136 @@ button.expandAll .icon {
 
 /*
 button.save span {
-	padding-right: 20px;
-	padding-left: 30px;
-	background: url(../img/sprite-button_icons.png) no-repeat 0 -160px;
+	padding-right:20px;
+	padding-left:30px;
+	background:url(../img/sprite-button_icons.png) no-repeat 0 -160px;
 }
 
 button.saveAndClose span {
-	padding-right: 20px;
-	padding-left: 30px;
-	background: url(../img/sprite-button_icons.png) no-repeat 0 -344px;
+	padding-right:20px;
+	padding-left:30px;
+	background:url(../img/sprite-button_icons.png) no-repeat 0 -344px;
 }
 
 button.saveAndNew span {
-	padding-right: 20px;
-	padding-left: 30px;
-	background: url(../img/sprite-button_icons.png) no-repeat 0 -377px;
+	padding-right:20px;
+	padding-left:30px;
+	background:url(../img/sprite-button_icons.png) no-repeat 0 -377px;
 }
 
 button.cancel span {
-	padding-right: 20px;
-	padding-left: 30px;
-	background: url(../img/sprite-button_icons.png) no-repeat 0 -224px;
+	padding-right:20px;
+	padding-left:30px;
+	background:url(../img/sprite-button_icons.png) no-repeat 0 -224px;
 }
 
 button.datasheet span {
-	padding-right: 20px;
-	padding-left: 30px;
-	background: url(../img/sprite-button_icons.png) no-repeat 0 -192px;
+	padding-right:20px;
+	padding-left:30px;
+	background:url(../img/sprite-button_icons.png) no-repeat 0 -192px;
 }
 
 button.exportOdt span {
-	padding-right: 20px;
-	padding-left: 30px;
-	background: url(../img/sprite-button_icons.png) no-repeat 0 -128px;
+	padding-right:20px;
+	padding-left:30px;
+	background:url(../img/sprite-button_icons.png) no-repeat 0 -128px;
 }
 
 button.exportPdf span {
-	padding-right: 20px;
-	padding-left: 30px;
-	background: url(../img/sprite-button_icons.png) no-repeat 0 -64px;
+	padding-right:20px;
+	padding-left:30px;
+	background:url(../img/sprite-button_icons.png) no-repeat 0 -64px;
 }
 */
 /* spezial input.buttons */
 input.button {
-	padding: 2px 0 1px;
-	border: 0;
-	color: #fff;
-	font-size: 10px;
-	text-transform: uppercase;
-	background: url(../img/sprite-content.png) repeat-x 0 0px;
-	cursor: pointer;
+	padding:2px 0 1px;
+	border:0;
+	color:#fff;
+	font-size:10px;
+	text-transform:uppercase;
+	background:url(../img/sprite-content.png) repeat-x 0 0px;
+	cursor:pointer;
 }
 
 input.buttonCreate {
-	padding: 2px 11px 2px 25px;
-	background: url(../img/buttons/button_create_bg.png) no-repeat 0 0;
+	padding:2px 11px 2px 25px;
+	background:url(../img/buttons/button_create_bg.png) no-repeat 0 0;
 }
 
 input.buttonSaveReload {
-	padding: 2px 11px 1px 36px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -633px;
+	padding:2px 11px 1px 36px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -633px;
 }
 
 input.buttonSearch {
-	padding: 2px 11px 1px 25px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -144px;
+	padding:2px 11px 1px 25px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -144px;
 }
 
 input.buttonPreset {
-	padding: 2px 11px 1px 25px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -416px;
+	padding:2px 11px 1px 25px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -416px;
 }
 
 input.buttonGraph {
-	padding: 2px 11px 1px 25px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -441px;
+	padding:2px 11px 1px 25px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -441px;
 }
 
 input.buttonPrint {
-	padding: 2px 11px 1px 35px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -585px;
+	padding:2px 11px 1px 35px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -585px;
 }
 
 input.buttonRefresh {
-	padding: 2px 11px 1px 22px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -609px;
+	padding:2px 11px 1px 22px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -609px;
 }
 
 input.buttonShowAll {
-	padding: 2px 11px 1px 25px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -144px;
+	padding:2px 11px 1px 25px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -144px;
 }
 
 #panel input.playButton,
 #panel input.stopButton {
-	position: absolute;
-	right: 8px;
-	top: 2px;
-	height: 18px;
-	width: 19px;
-	text-indent: -9999px;
+	position:absolute;
+	right:8px;
+	top:2px;
+	height:18px;
+	width:19px;
+	text-indent:-9999px;
 }
 
 input.manageBookmarkButton {
 	margin:4px 0 6px 0;
-	padding: 2px 11px 1px 25px;
-	background: url(../img/sprite-left_col-portal.png) no-repeat 0 -232px;
+	padding:2px 11px 1px 25px;
+	background:url(../img/sprite-left_col-portal.png) no-repeat 0 -232px;
 }
 
 input.addCommentButton, button.addCommentButton {
 	margin:4px 0 4px 0;
-	padding: 2px 11px 1px 25px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -72px;
+	padding:2px 11px 1px 25px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -72px;
 }
 
 input.toggleOrder, button.toggleOrder {
 	margin:4px 0 4px 0;
-	padding: 2px 11px 1px 25px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -316px;
+	padding:2px 11px 1px 25px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -316px;
 }
 
 input.sortChronoDesc, button.sortChronoDesc {
 	margin:4px 0 4px 0;
-	padding: 2px 11px 1px 25px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -341px;
+	padding:2px 11px 1px 25px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -341px;
 }
 
 input.sortChronoAsc, button.sortChronoAsc {
 	margin:4px 0 4px 0;
-	padding: 2px 11px 1px 25px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -366px;
+	padding:2px 11px 1px 25px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -366px;
 }
 
 .todoyurendertask_addcommentbutton {
@@ -270,52 +270,52 @@ input.sortChronoAsc, button.sortChronoAsc {
 }
 
 input.exportButton {
-	padding: 2px 11px 1px 31px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -264px;
+	padding:2px 11px 1px 31px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -264px;
 }
 
 	/* asset buttons */
 input.uploadSingleButton {
-	padding: 2px 10px 1px 22px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -561px;
+	padding:2px 10px 1px 22px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -561px;
 }
 
 input.downloadArchiveButton {
-	padding: 2px 10px 1px 22px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -512px;
+	padding:2px 10px 1px 22px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -512px;
 }
 
 input.deleteAssetButton {
-	padding: 2px 10px 1px 24px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -537px;
+	padding:2px 10px 1px 24px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -537px;
 }
 
 input.emailSendButton {
-	padding: 2px 10px 1px 22px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -240px;
+	padding:2px 10px 1px 22px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -240px;
 }
 
 input.cancelButtonSmall, input.inlinetaskform_cancelButton {
-	padding: 2px 17px 1px 22px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -48px;
+	padding:2px 17px 1px 22px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -48px;
 }
 
 input.buttonToggleCustSel {
-	padding: 2px 4px 1px 22px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -216px;
+	padding:2px 4px 1px 22px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -216px;
 }
 
 input.buttonToggleCustSel {
-	padding: 2px 4px 1px 22px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -216px;
+	padding:2px 4px 1px 22px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -216px;
 }
 
 input.buttonAddQuicktask {
-	padding: 2px 4px 1px 22px;
-	background: url(../img/sprite-button_bgs.png) no-repeat 0 -657px;
+	padding:2px 4px 1px 22px;
+	background:url(../img/sprite-button_bgs.png) no-repeat 0 -657px;
 }
 
 span.uploadFileIcon {
 	padding:0 0 0 20px;
-	background: url(../img/sprite-icons.png) no-repeat 8px -1265px;
+	background:url(../img/sprite-icons.png) no-repeat 8px -1265px;
 }
