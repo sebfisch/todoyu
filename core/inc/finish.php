@@ -6,4 +6,6 @@
 //TodoyuDebug::printHtml($_SESSION['TODOYU'], '$_SESSION');
 //TodoyuDebug::printHtml($_COOKIE, '$_COOKIE');
 
+//TodoyuDebug::printInFirebug(TodoyuSession::get('CLIPBOARD'));
+
 ?>

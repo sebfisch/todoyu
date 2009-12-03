@@ -21,17 +21,12 @@ require_once( PATH_CORE .'/inc/version.php');
 
 require_once('install/model/TodoyuInstaller.class.php');
 
-//ob_clean();
 
-
-	// Check if ENABLE file is available. If not, stop here
-if( ! is_file(PATH . '/install/ENABLE') ) {
-//	@unlink(PATH . '/index.html');
-//	echo SERVER_URL . '/index.php';
-//	exit();
-//	header("Location: ../index.php");
-//	exit();
-	die("File 'install/ENABLE' not found. Create it to access the installer");
+	// Check if _ENABLE file is available (installer has finished). Redirect to login
+if( is_file(PATH . '/install/_ENABLE') ) {
+	@unlink(PATH . '/index.html');
+	header("Location: ../index.php");
+	exit();
 }
 
 if( $_GET['restart'] == 1 ) {
