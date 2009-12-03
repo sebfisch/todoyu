@@ -22,3 +22,12 @@ AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application
 # Header append Vary Accept-Encoding
 
 DirectoryIndex index.html index.php
+
+# Enable mod rewrite
+RewriteEngine on
+
+# Disallow any .svn directory browsing
+RedirectMatch 404 /\\.svn(/|$)
+
+# Disallow any log file viewing from web
+RedirectMatch 404 (.*)\.log$
