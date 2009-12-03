@@ -99,7 +99,8 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 
 	/**
 	 * Set field value
-	 * Can be timestamp or date
+	 * Can be timestamp, date or mysql date format
+	 * Formats: 1262214000, 31.12.2009 (locale), 2009-12-31
 	 *
 	 * @param	Mixed		$value
 	 */
@@ -109,6 +110,24 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 		}
 
 		parent::setValue($value);
+	}
+
+
+
+	/**
+	 * Get storage data
+	 * Format as MYSQL-date if flag 'storeAsDate' is set in form
+	 *
+	 * @return	Mixed		Integer or string
+	 */
+	public function getStorageData() {
+		$storageData	= parent::getStorageData();
+
+		if( $storageData !== false && $this->hasAttribute('storeAsDate') ) {
+			$storageData = date('Y-m-d', $this->getValue());
+		}
+
+		return $storageData;
 	}
 
 }

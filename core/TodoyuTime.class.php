@@ -324,8 +324,11 @@ class TodoyuTime {
 	public static function parseDate($dateString) {
 		$dateString	= trim($dateString);
 		$time		= 0;
+		$parsedTime	= strtotime($dateString);
 
-		if( $dateString !== '' ) {
+		if( $parsedTime !== false ) {
+			$time = $parsedTime;
+		} elseif( $dateString !== '' ) {
 			$format		= self::getFormat('date');
 			$dateParts	= strptime($dateString, $format);
 
