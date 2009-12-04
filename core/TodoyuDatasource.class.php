@@ -317,8 +317,8 @@ class TodoyuDatasource {
 		$idCountry = intval($idCountry);
 
 		$res = Todoyu::db()->getRecord('static_country', $idCountry );
-		$country	= Label('static_country.' . $res['iso_alpha3'] . '.name');
-
+		$country	= Label('static_country.' . $res['iso_alpha3'] );
+		
 		return $country;
 	}
 
