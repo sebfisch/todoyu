@@ -677,3 +677,7 @@ div.indexLetters a.inactive {
 .indexLetterZ {
 	background:url('../img/indexletters.png') no-repeat 0 -699px;
 }
+
+a.defaultCursor {
+	cursor:default;
+}
