@@ -3,17 +3,17 @@
 {foreach $navigation entry name=navimain}
 		<li class="item item{$entry.key} bcl01{if $entry.active} active bcl02{/if}{if $entry.submenu} hasSub{/if}{if $dwoo.foreach.navimain.first} first{/if}{if $dwoo.foreach.navimain.last} last{/if}">
 			<a href="{$entry.href}" title="{$entry.desc}"{if $entry.active} class="active"{/if}><span class="lt"><!-- --></span>{$entry.label}</a>
-	{if $entry.submenu}
+			{if $entry.submenu}
 			<ul id="navi-main-list-{$entry.key}" class="navilist">
-		{foreach $entry.submenu sub name=navimainsub}
-				<li class="item item{$sub.key}{if $sub.active} active{/if}{if $dwoo.foreach.navimainsub.first} first{/if} bcl02">
-					<a href="{$sub.href}" title="{if $sub.desc}{$sub.desc}{else}{$sub.label}{/if}" class="link{$entry.key}{$sub.type}{if $sub.active} active{/if}">{cropText $sub.label 23 false}</a>
-				</li>
-		{/foreach}
+				{foreach $entry.submenu sub name=navimainsub}
+					<li class="item item{ucfirst $sub.key}{if $sub.active} active{/if}{if $dwoo.foreach.navimainsub.first} first{/if} bcl02">
+						<a href="{$sub.href}" title="{if $sub.desc}{$sub.desc}{else}{$sub.label}{/if}" class="link{$entry.key}{$sub.type}{if $sub.active} active{/if}">{cropText $sub.label 23 false}</a>
+					</li>
+				{/foreach}
 				<li class="item last bcl02"> </li>
 			</ul>
-	{/if}
+			{/if}
 		</li>
-{/foreach}
+		{/foreach}
 	</ul>
 </div>

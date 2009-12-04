@@ -33,9 +33,9 @@ var Todoyu = {
 	 */
 	Ext: 		{},
 
+	
 	/**
-	 *	Enter Description here...
-	 *
+	 * Initialize todoyu object
 	 */
 	init: function() {
 		this.AjaxResponders.register();
@@ -43,15 +43,15 @@ var Todoyu = {
 	},
 
 
-
+	
 	/**
-	 *	Basic
-	 *
-	 *	@param	unknown_type	ext
-	 *	@param	unknown_type	controller
+	 * Build request url with extension and controller
+	 * 
+	 * @param	String		ext
+	 * @param	String		controller
 	 */
 	getUrl: function(ext, controller) {
-		var url = '?ext='+ext;
+		var url = 'index.php?ext='+ext;
 
 		if(controller)	{
 			url = url + '&controller='+controller;
@@ -61,14 +61,14 @@ var Todoyu = {
 	},
 
 
-
+	
 	/**
-	 *	Enter Description here...
-	 *
-	 *	@param	unknown_type	ext
-	 *	@param	unknown_type	controller
-	 *	@param	unknown_type	params
-	 *	@param	unknown_type	hash
+	 * Redirect to an onther page
+	 * 
+	 * @param	String	ext
+	 * @param	String	controller
+	 * @param	Hash	params
+	 * @param	String	hash
 	 */
 	goTo: function(ext, controller, params, hash) {
 		var url =  this.getUrl(ext, controller);
@@ -87,10 +87,10 @@ var Todoyu = {
 
 
 	/**
-	 *	Enter Description here...
-	 *
-	 *	@param	unknown_type	url
-	 *	@param	unknown_type	options
+	 * Send ajax request
+	 * 
+	 * @param	String		url
+	 * @param	Hash		options
 	 */
 	send: function(url, options) {
 		options = Todoyu.Ui._getDefaultOptions(options);
@@ -101,9 +101,9 @@ var Todoyu = {
 
 
 	/**
-	 *	Enter Description here...
-	 *
-	 *	@param	unknown_type	element
+	 * Check if an element exists
+	 * 
+	 * @param	DomElement,String		element		Element or its ID
 	 */
 	exists: function(element) {
 		if( typeof element === 'object' ) {
@@ -116,13 +116,10 @@ var Todoyu = {
 
 
 	/**
-	 *	Get current viewed area (get-param 'ext' during last page load)
-	 *
+	 * Get current area
 	 */
 	getArea: function() {
-		var queryParams = document.location.href.toQueryParams();
-
-		return (queryParams.ext);
+		return document.body.id.split('-').last();
 	},
 	
 	notify: function(type, message, countdown) {
