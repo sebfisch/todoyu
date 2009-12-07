@@ -48,7 +48,10 @@ define('LOG_LEVEL_ERROR', 	2);
 define('LOG_LEVEL_SECURITY',3);
 define('LOG_LEVEL_FATAL', 	4);
 
-	// Server information
+/**
+ * Public URL of the server (use to build absolute links)
+ *
+ */
 define('SERVER_URL', 'http://' . $_SERVER['HTTP_HOST'] . PATH_WEB);
 
 ?>

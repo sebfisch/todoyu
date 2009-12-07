@@ -977,6 +977,23 @@ class TodoyuDiv {
 		return $info;
 	}
 
+
+
+	/**
+	 * Convert a html snippet into plain text. Keep as much format information as possible
+	 *
+	 * @param	String		$html		HTML snippet
+	 * @return	String		Text version
+	 */
+	public static function html2text($html) {
+		require_once( PATH_LIB . '/php/html2text/class.html2text.php' );
+
+		$html2text = new html2text($html);
+		$html2text->set_base_url(SERVER_URL);
+
+		return $html2text->get_text();
+	}
+
 }
 
 ?>

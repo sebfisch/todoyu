@@ -506,6 +506,19 @@ function Dwoo_Plugin_allowed_compile(Dwoo_Compiler $compiler, $ext, $right) {
 
 
 /**
+ * Convert html code to text, keep as much format as possible
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String			$html
+ * @return	String			Text version
+ */
+function Dwoo_Plugin_html2text_compile(Dwoo_Compiler $compiler, $html) {
+	return 'TodoyuDiv::html2text(' . $html . ')';
+}
+
+
+
+/**
  * NOT READY YET!
  *
  * @param Dwoo $dwoo
