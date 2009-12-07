@@ -118,7 +118,7 @@ class TodoyuTime {
 	public static function getMonthRange($timestamp) {
 		$timestamp	= intval($timestamp);
 		$start		= self::getMonthStart($timestamp);
-		$end		= mktime(0, 0, 0, date('n', $start) + 1, date('t', $start), date('Y', $start)) - 1;
+		$end		= mktime(0, 0, 0, date('n', $start) + 1, 1, date('Y', $start)) - 1;
 
 		return array(
 			'start'	=> $start,
