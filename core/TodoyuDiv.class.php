@@ -856,7 +856,7 @@ class TodoyuDiv {
 	 * @return	String
 	 */
 	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {
-		$query		= PATH_WEB . (PATH_WEB === '/' ? '?' : '/?');
+		$query		= PATH_WEB . (PATH_WEB === '/' ? 'index.php?' : '/index.php?');
 		$queryParts	= array();
 
 		// Add all parameters encoded

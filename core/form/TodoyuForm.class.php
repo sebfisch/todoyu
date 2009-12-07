@@ -311,9 +311,9 @@ class TodoyuForm implements ArrayAccess {
 		// Update fields
 		foreach( $this->fields as $name => $field ) {
 			$value = $this->formdata[$name];
-		 	if( ! is_null($value)) {
+		 	//if( ! is_null($value)) {
 				$field->setValue($value);
-			}
+			//}
 
 //			if( $this->getValidateForm() )	{
 //				$this->validateField($field);

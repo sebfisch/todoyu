@@ -59,19 +59,43 @@ class TodoyuFormElement_Checkbox extends TodoyuFormElement {
 
 		return parent::getData();
 	}
-	
-	
+
+
+
+	/**
+	 * Set checked status
+	 *
+	 * @param	Bool		$checked
+	 */
 	public function setChecked($checked = true) {
 		$value	= $checked ? 1 : 0;
-		
+
 		$this->setValue($value);
 	}
-	
+
+
+	public function setValue($value) {
+		parent::setValue($value);
+	}
+
+
+
+	/**
+	 * Check if checkbox is checked
+	 *
+	 * @return	Bool
+	 */
 	public function isChecked() {
 		return $this->getValue() == 1;
 	}
-	
-	
+
+
+	/**
+	 * Get storage data:
+	 * 1: checked; 0: not checked
+	 *
+	 * @return	Integer
+	 */
 	public function getStorageData() {
 		return $this->isChecked() ? 1 : 0;
 	}

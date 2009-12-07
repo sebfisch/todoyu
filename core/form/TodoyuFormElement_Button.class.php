@@ -111,8 +111,6 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 		$data	= $this->getData();
 		$data['odd'] = $odd;
 
-//		TodoyuDebug::printHtml($tmpl);
-
 		return render($tmpl, $data);
 	}
 
