@@ -146,8 +146,9 @@ Todoyu.Tabs = {
 	setLabel: function(element, label) {
 		$(element).down('span.labeltext').update(label);
 	},
-	
-	
+
+
+
 
 	/**
 	 *	Enter Description here...

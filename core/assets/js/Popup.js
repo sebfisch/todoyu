@@ -26,7 +26,7 @@
 
 
 Todoyu.Popup = {
-	
+
 	/**
 	 * Popup object reference
 	 */
@@ -36,7 +36,8 @@ Todoyu.Popup = {
 
 	timeoutID:	null,
 
-	
+
+
 	/**
 	 * Get popup reference
 	 * @param	String		idPopup
@@ -44,7 +45,12 @@ Todoyu.Popup = {
 	getPopup: function(idPopup) {
 		return this.popup[idPopup];
 	},
-	
+
+
+
+	/**
+	 * @todo	comment
+	 */
 	getLastPopup: function() {
 		return this.last;
 	},
@@ -74,7 +80,6 @@ Todoyu.Popup = {
 	 *	@param	unknown_type	requestOptions
 	 */
 	openWindow: function(idPopup, title, winWidth, winHeight, contentUrl, requestOptions) {
-
 			// Construct popup
 		this.popup[idPopup] = new Window({
 			id:					idPopup,
@@ -135,6 +140,7 @@ Todoyu.Popup = {
 
 		//this.getPopup(idPopup).setCloseCallback(this.onWindowClose.bindAsEventListener(this, idPopup));
 	},
+
 
 
 	/**
@@ -206,8 +212,8 @@ Todoyu.Popup = {
 	/**
 	 *	Update popup content
 	 *
-	 *	@param	unknown_type	contentUrl
-	 *	@param	unknown_type	requestOptions
+	 *	@param	String	contentUrl
+	 *	@param	Object	requestOptions
 	 */
 	updateContent: function(idPopup, contentUrl, requestOptions) {		
 		this.getPopup(idPopup).setAjaxContent(contentUrl, requestOptions, false, false);
@@ -218,18 +224,22 @@ Todoyu.Popup = {
 	},
 
 
+
 	/**
 	 *	Refresh popup
 	 *
+	 *	@param	String	idPopup
 	 */
 	refresh: function(idPopup) {
 		this.getPopup(idPopup).refresh();
 	},
 
 
+
 	/**
 	 *	Close popup
 	 *
+	 *	@param	idPopup
 	 */
 	close: function(idPopup) {
 		this.getPopup(idPopup).close();

@@ -187,7 +187,7 @@ Todoyu.Ui = {
 	/**
 	 * Update content with new html
 	 *
-	 * @param	String		content
+	 *	@param	String		content
 	 */
 	setContent: function(content) {
 		$('content').update(content);
@@ -312,7 +312,6 @@ Todoyu.Ui = {
 
 	/**
 	 *	Fix element anchor position
-	 *
 	 */
 	fixAnchorPosition: function() {
 
@@ -324,6 +323,11 @@ Todoyu.Ui = {
 		}
 	},
 
+
+
+	/**
+	 * @todo	comment
+	 */
 	scrollToAnchor: function(name) {
 		var element	= $(document.getElementsByName(name)[0]);
 
@@ -337,7 +341,7 @@ Todoyu.Ui = {
 	/**
 	 *	Scroll to given element
 	 *
-	 *	@param	unknown_type	element
+	 *	@param	Element		element
 	 */
 	scrollToElement: function(element) {
 		element = $(element);
@@ -387,7 +391,7 @@ Todoyu.Ui = {
 	/**
 	 *	Evoke twinkeling effect upon given element
 	 *
-	 *	@param	unknown_type	element
+	 *	@param	Element		element
 	 */
 	twinkle: function(element) {
 		Todoyu.Ui.hide( element );
@@ -397,9 +401,10 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Enter Description here...
-	 *
-	 *	@param	unknown_type	element
+	 *	Check whether given element is currently visible
+	 * 
+	 *	@param	Element	element
+	 * 	@return	Boolean
 	 */
 	isVisible: function(element) {
 		if( Todoyu.exists(element) ) {
@@ -432,7 +437,7 @@ Todoyu.Ui = {
 	/**
 	 *	Enter Description here...
 	 *
-	 * 	@param	unknown_type	idElement
+	 * 	@param	String	idElement
 	 * 	@return	TimePicker
 	 */
 	showDurationPicker: function(idElement, config) {

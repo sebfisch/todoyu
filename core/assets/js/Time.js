@@ -21,12 +21,13 @@
 Todoyu.Time = {
 
 	seconds: {
-		minute: 60,
-		hour: 3600,
-		day: 86400,
-		week: 604800,
-		month: 2592000
+		minute:	60,
+		hour:	3600,
+		day:	86400,
+		week:	604800,
+		month:	2592000
 	},
+
 
 
 	/**
@@ -126,8 +127,8 @@ Todoyu.Time = {
 		return parseInt(date.getTime() / 1000, 10);
 	},
 
-	
-	
+
+
 	/**
 	 *	Get timestamp at start of day
 	 *
@@ -182,9 +183,9 @@ Todoyu.Time = {
 
 		return date.getTime();
 	},
-	
-	
-	
+
+
+
 	/**
 	 *	Get amount of days in month
 	 *

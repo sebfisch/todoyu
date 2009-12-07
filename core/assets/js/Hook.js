@@ -13,11 +13,12 @@ Todoyu.Hook = {
 	 * Hooks container
 	 */
 	hooks: {},
-	
-	
-	
+
+
+
 	/**
 	 * Add a new hook function
+	 * 
 	 * @param	String		name
 	 * @param	Function	callback
 	 */
@@ -28,9 +29,9 @@ Todoyu.Hook = {
 		
 		this.hooks[name].push(callback);		
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Get registered functions
 	 * 
@@ -41,47 +42,48 @@ Todoyu.Hook = {
 		if( typeof this.hooks[name] !== 'object' ) {
 			this.hooks[name] = [];
 		}
-		
+
 		return this.hooks[name];
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Clear named hook (remove functions)
+	 *
 	 * @param	String		name
 	 */
 	clear: function(name) {
 		this.hooks[name] = [];
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Clear all hooks
 	 */
 	clearAll: function() {
 		this.hooks = {};
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Call all registered functions for a named hook
 	 * All arguments passed after the hookname will be
 	 * passed in this order to the callback
 	 * Ex: Todoyu.Hook.exec('taskopen', idTask, myFlag1, option2); => myTaskCallback(idTask, myFlag1, option2);
+	 * 
 	 * @param	String		name
 	 */
 	exec: function(name) {
 		var params = $A(arguments).slice(1);
-				
+
 		if( typeof this.hooks[name] === 'object' ) {
 			this.hooks[name].each(function(item){
 				item.apply(item, params);
 			});
 		}
 	}
-	
-};
 
+};

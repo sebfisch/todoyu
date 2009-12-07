@@ -3,21 +3,23 @@ var TimePicker = Class.create({
 	/**
 	 * Selected hour and minute
 	 */
-	hour: 0,
-	minute: 0,
-	
+	hour:	0,
+	minute:	0,
+
 	/**
 	 * Input element
 	 */
 	element: null,
-	
+
 	/**
 	 * Picker divs. Container, hour, minute
 	 */
-	picker: null,
-	divHour: null,
-	divMinute: null,
-	
+	picker:		null,
+	divHour:	null,
+	divMinute:	null,
+
+
+
 	/**
 	 * Configuration
 	 */
@@ -28,7 +30,9 @@ var TimePicker = Class.create({
 		rangeMinute: [0,55],
 		stepMinute: 5
 	},
-		
+
+
+
 	/**
 	 * Constructor
 	 * @param	String		idElement
@@ -36,9 +40,9 @@ var TimePicker = Class.create({
 	initialize: function(idElement, config) {		
 		this.element= $(idElement);
 		this.config	= $H(this.config).merge(config || {}).toObject();
-		
+
 		var dur = this._readDuration();
-		
+
 		if( dur.min % 5 !== 0 ) {
 			this.config.stepMinute = 1;
 			this.config.rangeMinute = [0,59];
@@ -46,17 +50,19 @@ var TimePicker = Class.create({
 			this.config.stepMinute = 5;
 			this.config.rangeMinute = [0,55];
 		}
-		
+
 		this._build();
 		this._observePicker();
 				
 		this.setHour(dur.hour);
 		this.setMinute(dur.min);
-		
+
 		this.updateElement();
-		
+
 		this.show();
 	},
+
+
 
 	/**
 	 * Show picker near the element
@@ -66,14 +72,18 @@ var TimePicker = Class.create({
 		
 		this.picker.show();
 	},
-	
+
+
+
 	/**
 	 * Hide the picker
 	 */
 	hide: function() {
 		this.picker.hide();
 	},
-	
+
+
+
 	/**
 	 * Set hour and update scroll
 	 * @param	Integer		hour
@@ -83,7 +93,9 @@ var TimePicker = Class.create({
 		
 		this.updateScroll();
 	},
-	
+
+
+
 	/**
 	 * Set minute and update scroll
 	 * @param	Integer		minute
@@ -93,7 +105,9 @@ var TimePicker = Class.create({
 				
 		this.updateScroll();
 	},
-	
+
+
+
 	/**
 	 * Update scroll of minute and hour
 	 */
@@ -104,7 +118,7 @@ var TimePicker = Class.create({
 			'mode': 'absolute',
 			'duration': 0.3
 		});
-		
+
 		var newMinPos = (this.minute/this.config.stepMinute) * this.config.height * -1 + 2 * this.config.height - (2 * this.config.height);
 				
 		new Effect.Move(this.divMinute, {
@@ -116,14 +130,18 @@ var TimePicker = Class.create({
 		
 		this.updateElement.bind(this).delay(0.2);
 	},
-	
+
+
+
 	/**
 	 * Update current selection in element
 	 */
 	updateElement: function() {
 		this.element.value = this.hour + ':' + Todoyu.Helper.twoDigit(this.minute);
 	},
-	
+
+
+
 	/**
 	 * Set picker position near the element
 	 */
@@ -140,7 +158,9 @@ var TimePicker = Class.create({
 			'top': top + 'px'
 		});
 	},
-	
+
+
+
 	/**
 	 * Make element id, prefixed with element id
 	 * @param	String		name
@@ -154,38 +174,40 @@ var TimePicker = Class.create({
 	 */
 	_build: function() {
 		this._remove();
-		
+
 		this.picker = new Element('div', {
 			'id': this._makeID('durationpicker'),
 			'class': 'dpPicker',
 		});
-		
+
 		this.divHour = new Element('div', {
 			'id': this._makeID('durationpicker-hour'),
 			'class': 'dpHour dpCol'
 		});
-		
+
 		this.divMinute = new Element('div', {
 			'id': this._makeID('durationpicker-minute'),
 			'class': 'dpMinute dpCol'
 		});
-		
+
 		this.picker.insert(new Element('div', {
 			'id': this._makeID('durationpicker-mask'),
 			'class': 'dpMask'
 		}));
-		
+
 		this._insertHours();
 		this._insertMinute();
-		
+
 		this.picker.insert(this.divHour);
 		this.picker.insert(this.divMinute);
-		
+
 		this.hide();
-		
+
 		$(document.body).insert(this.picker);
 	},
-	
+
+
+
 	/**
 	 * Insert hour elements
 	 */
@@ -194,7 +216,9 @@ var TimePicker = Class.create({
 			this.divHour.insert(new Element('div').update(i));
 		}
 	},
-	
+
+
+
 	/**
 	 * Insert minute elements
 	 */
@@ -203,7 +227,9 @@ var TimePicker = Class.create({
 			this.divMinute.insert(new Element('div').update(Todoyu.Helper.twoDigit(i)));
 		}
 	},
-	
+
+
+
 	/**
 	 * Remove picker from document
 	 */
@@ -214,7 +240,9 @@ var TimePicker = Class.create({
 			$(idPicker).remove();
 		};
 	},
-	
+
+
+
 	/**
 	 * Observe picker for click and wheel turning
 	 * Observe element for clicks
@@ -228,7 +256,9 @@ var TimePicker = Class.create({
 		
 		this.element.observe('click', this._onElementClick.bindAsEventListener(this));
 	},
-	
+
+
+
 	/**
 	 * Event handler for picker click
 	 * @param	Event		event
@@ -253,7 +283,9 @@ var TimePicker = Class.create({
 		this.updateElement.bind(this).delay(delay);
 		this.hide.bind(this).delay(delay);
 	},
-	
+
+
+
 	/**
 	 * Event handler for element click
 	 * @param	Event		event
@@ -261,7 +293,9 @@ var TimePicker = Class.create({
 	_onElementClick: function(event) {
 		this.hide();
 	},
-	
+
+
+
 	/**
 	 * Event handler for hour scroll
 	 * @param	Event		event
@@ -273,7 +307,9 @@ var TimePicker = Class.create({
 		
 		this.setHour(hour);
 	},
-	
+
+
+
 	/**
 	 * Event handler for minute scroll
 	 * @param	Event		event
@@ -285,7 +321,9 @@ var TimePicker = Class.create({
 		
 		this.setMinute(minute);
 	},
-	
+
+
+
 	/**
 	 * Make sure the value stays in the range.
 	 * @param	Integer		value
@@ -302,6 +340,8 @@ var TimePicker = Class.create({
 		
 		return value;
 	},
+
+
 
 	/**
 	 * Read duration from element
@@ -328,5 +368,5 @@ var TimePicker = Class.create({
 		
 		return dur;	
 	}
-	
+
 });

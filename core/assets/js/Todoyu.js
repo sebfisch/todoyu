@@ -61,7 +61,7 @@ var Todoyu = {
 	},
 
 
-	
+
 	/**
 	 * Redirect to an onther page
 	 * 
@@ -87,7 +87,7 @@ var Todoyu = {
 
 
 	/**
-	 * Send ajax request
+	 * Send AJAX request
 	 * 
 	 * @param	String		url
 	 * @param	Hash		options
@@ -121,23 +121,33 @@ var Todoyu = {
 	getArea: function() {
 		return document.body.id.split('-').last();
 	},
-	
+
+
+
 	notify: function(type, message, countdown) {
 		Todoyu.Notification.add(type, message, countdown);
 	},
-	
+
+
+
 	notifyError: function(message, countdown) {
 		this.notify('error', message, countdown);
 	},
-	
+
+
+
 	notifyInfo: function(message, countdown) {
 		this.notify('info', message, countdown);
 	},
-	
+
+
+
 	notifySuccess: function(message, countdown) {
 		this.notify('success', message, countdown);
 	},
-	
+
+
+
 	callUserFunction: function(functionName, context /*, args */) {
 		var args = Array.prototype.slice.call(arguments).splice(2);
 		var namespaces = functionName.split(".");

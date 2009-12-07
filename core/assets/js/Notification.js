@@ -24,30 +24,32 @@ Todoyu.Notification = {
 	 * Default countdown if non set
 	 */
 	defaultCountdown: 3,
-	
+
 	/**
 	 * Template object
 	 */	
 	template: null,
-	
+
 	/**
 	 * Current id for note, incremented
 	 */
 	id: 1,
-	
-	
+
+
+
 	/**
 	 * Add new notification
+	 * 
 	 * @param	String		type
 	 * @param	String		message
 	 * @param	Integer		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	add: function(type, message, countdown) {
 		this.init();
-		
+
 		countdown	= Object.isUndefined(countdown) ? this.defaultCountdown : countdown;
 		var id		= this.id++;
-		
+
 		var data	= {
 			'id': id,
 			'type': type,
@@ -64,43 +66,62 @@ Todoyu.Notification = {
 			this.countDown.bind(this).delay(1, id);
 		}		
 	},
-	
+
+
+
+	/**
+	 * @todo	comment
+	 */
 	addInfo: function(message, countdown) {
 		this.add('info', message, countdown);
 	},
-	
+
+
+
+	/**
+	 * @todo	comment
+	 */
 	addError: function(message, countdown) {
 		this.add('error', message, countdown);
 	},
-	
+
+
+
+	/**
+	 * @todo	comment
+	 */
 	addSuccess: function(message, countdown) {
 		this.add('success', message, countdown);
 	},
-	
+
+
+
 	/**
 	 * Close when clicking in the close button
-	 * @param	DomElement		closeButton
+	 * 
+	 *	@param	DomElement		closeButton
 	 */
 	close: function(closeButton) {
 		var idNote = $(closeButton).up('div.note').id.split('-').last();
 		
 		this.closeNote(idNote);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Close note by ID
-	 * @param	Integer		id
+	 * 
+	 *	@param	Integer		id
 	 */
 	closeNote: function(id) {
 		$('notification-note-' + id).fade({
 			'duration': 0.7
 		});
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Init template
 	 */
@@ -110,23 +131,24 @@ Todoyu.Notification = {
 			this.template = new Template( '<div class="note #{type}" id="notification-note-#{id}"><table><tr><td class="icon">&nbsp;</td><td class="message">#{message}</td><td class="countdown" align="center">#{countdown}</td><td class="close" onclick="Todoyu.Notification.close(this)">&nbsp;</td></tr></table></div>');
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Append new note
-	 * @param	Integer		id
-	 * @param	String		code
+	 * 
+	 *	@param	Integer		id
+	 *	@param	String		code
 	 */
 	appendNote: function(id, code) {
 		$('notes').insert({'top':code});
 	},
-	
-	
-	
+
+
+
 	/**
 	 * 
-	 * @param	Integer		id
+	 *	@param	Integer		id
 	 */
 	countDown: function(id) {		
 		var countBox= $('notification-note-' + id).down('.countdown');	
@@ -139,11 +161,11 @@ Todoyu.Notification = {
 			this.countDown.bind(this).delay(1, id);
 		}
 	},
-	
 
-	
-	
-	
+
+
+
+
 
 	idElement: 'notification',
 
@@ -171,7 +193,6 @@ Todoyu.Notification = {
 
 	/**
 	 *	Hide notification
-	 *
 	 */
 	hideNotification: function() {
 		Effect.Fade(this.idElement);

@@ -26,28 +26,28 @@ Todoyu.Helper = {
 	 *	@param	Mixed	mixedvar
 	 */
 	intval: function(mixedvar) {
-	    var type = typeof( mixedvar );
-	    var temp;
+		var type = typeof( mixedvar );
+		var temp;
 
-	    switch(type) {
-	    	case 'boolean':
-	    		return mixedvar ? 1 : 0;
-	    		break;
-
-
-	    	case 'string':
-	    		temp = parseInt(mixedvar, 10);
-	    		return isNaN(temp) ? 0 : temp;
-	    		break;
+		switch(type) {
+			case 'boolean':
+				return mixedvar ? 1 : 0;
+				break;
 
 
-	    	case 'number':
-	    		return Math.floor(mixedvar);
-	    		break;
+			case 'string':
+				temp = parseInt(mixedvar, 10);
+				return isNaN(temp) ? 0 : temp;
+				break;
 
-	    	default:
-	    		return 0;
-	    }
+
+			case 'number':
+				return Math.floor(mixedvar);
+				break;
+
+			default:
+				return 0;
+		}
 	},
 
 
@@ -137,6 +137,5 @@ Todoyu.Helper = {
 			return !element.dispatchEvent(evt);
 		}
 	}
-
 
 };
