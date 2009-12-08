@@ -328,8 +328,8 @@ function Dwoo_Plugin_UserQuicklink(Dwoo $dwoo, $idUser) {
  * @param 	Integer		$maxLen
  */
 
-function Dwoo_Plugin_cropText(Dwoo $dwoo, $string, $maxLen, $dontSplitWords = true) {
-	return TodoyuDiv::cropText($string, $maxLen, '...', $dontSplitWords);
+function Dwoo_Plugin_cropText_compile(Dwoo_Compiler $compiler, $string, $maxLen, $dontSplitWords = true) {
+	return 'TodoyuDiv::cropText(' . $string . ', ' . $maxLen . ', \'...\', ' . $dontSplitWords . ')';
 }
 
 

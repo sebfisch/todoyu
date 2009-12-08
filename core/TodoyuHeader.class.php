@@ -171,10 +171,7 @@ class TodoyuHeader {
 	 * @param	String		$name
 	 * @param	String		$value
 	 */
-	public static function sendTodoyuHeader($name, $value, $utf8Entities = false) {
-		if( $utf8Entities ) {
-			$value = htmlentities($value, ENT_COMPAT, 'UTF-8');
-		}
+	public static function sendTodoyuHeader($name, $value) {
 		self::sendHeader('Todoyu-' . $name, $value);
 	}
 
@@ -209,7 +206,10 @@ class TodoyuHeader {
 	 * @param	String		$name
 	 * @param	String		$value
 	 */
-	public static function sendHeader($name, $value) {
+	public static function sendHeader($name, $value, $isUTF8 = true) {
+		if( $isUTF8 ) {
+			$value = utf8_decode($value);
+		}
 		header($name . ': ' . $value);
 	}
 

@@ -29,6 +29,7 @@ require_once('core/inc/init.php');
 
 	// Send "no cache" header
 TodoyuHeader::sendNoCacheHeaders();
+TodoyuHeader::sendHeaderHTML();
 
 
 	// Start output buffering

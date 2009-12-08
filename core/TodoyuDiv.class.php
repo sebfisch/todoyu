@@ -423,18 +423,16 @@ class TodoyuDiv {
 	 * @return	String
 	 */
 	public static function cropText($text, $length, $postfix = '...', $dontSplitWords = true) {
-		$textIn	= trim($text);
-		$text	= html_entity_decode($textIn);
-		$entity	= $textIn !== $text;
 		$length	= intval($length);
+		$text	= utf8_decode($text);
 
-		if( mb_strlen($text) > $length ) {
-			$cropped	= mb_substr($text, 0, $length);
-			$nextChar	= mb_substr($text, $length, 1);
+		if( strlen($text) > $length ) {
+			$cropped	= substr($text, 0, $length);
+			$nextChar	= substr($text, $length, 1);
 
 			if( $dontSplitWords === true && $nextChar !== ' ' ) {
-				$spacePos	= mb_strpos($cropped, ' ');
-				$cropped	= mb_substr($cropped, 0, $spacePos);
+				$spacePos	= strpos($cropped, ' ');
+				$cropped	= substr($cropped, 0, $spacePos);
 			}
 
 			$cropped .= $postfix;
@@ -442,10 +440,7 @@ class TodoyuDiv {
 			$cropped = $text;
 		}
 
-			// If entities have been decoded, encode them again
-		if( $entity ) {
-			$cropped = htmlentities($cropped);
-		}
+		$cropped = utf8_encode($cropped);
 
 		return $cropped;
 	}
@@ -461,7 +456,6 @@ class TodoyuDiv {
 	 * @param	Boolean		$unique
 	 * @return	String
 	 */
-
 	public static function addToList($list, $value, $separator = ',', $unique = false) {
 		$items	= explode($separator, $list);
 		$items[]= $value;
@@ -481,7 +475,6 @@ class TodoyuDiv {
 	 * @param	String		$path
 	 * @return	Boolean
 	 */
-
 	public static function isFile($path) {
 		return is_file( TodoyuFileManager::pathAbsolute($path) );
 	}
@@ -494,7 +487,6 @@ class TodoyuDiv {
 	 * @param	String		$dirtyFilename		Filename (not path!)
 	 * @return	String
 	 */
-
 	public static function makeCleanFilename($dirtyFilename) {
 		return TodoyuFileManager::makeCleanFilename($dirtyFilename, '_');
 	}
@@ -553,7 +545,6 @@ class TodoyuDiv {
 	 * @param	String		$absoluteFilePath
 	 * @return	Boolean		File was allowed to download and sent to browser
 	 */
-
 	public static function sendFile($absoluteFilePath) {
 		$absoluteFilePath	= realpath($absoluteFilePath);
 
@@ -623,6 +614,7 @@ class TodoyuDiv {
 	}
 
 
+
 	/**
 	 * Wrap into JS tag
 	 *
@@ -632,6 +624,7 @@ class TodoyuDiv {
 	public static function wrapScript($jsCode) {
 		return '<script language="javascript" type="text/javascript">' . $jsCode . '</script>';
 	}
+
 
 
 	/**
