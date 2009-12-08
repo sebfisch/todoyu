@@ -412,7 +412,14 @@ class TodoyuTime {
 		$timestamp	= intval($timestamp);
 		$format		= self::getFormat($formatName);
 
-		return strftime($format, $timestamp);
+		$string		= strftime($format, $timestamp);
+
+			// If server locale file is not yet utf8, convert the string
+		if( ! TodoyuDiv::isUTF8($string) ) {
+			$string = utf8_encode($string);
+		}
+
+		return $string;
 	}
 
 

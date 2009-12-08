@@ -393,23 +393,24 @@ span.selectScrollbarHide {display:block;}
 
 
 	/* autocomplete list*/
-.div-autocompletion	{
+.acResultContainer	{
 		z-index:100;
 	}
 
-	.div-autocompletion li{
+	.acResultContainer li{
 		background:#F0F0EE;
 		border:0px solid #CCCCCC;
 		border-width:0 1px 1px 1px;
 		padding:2px 0 2px 3px;
+		cursor:pointer;
 	}
 
 
-	.div-autocompletion li.selected {
+	.acResultContainer li.selected {
 		background:#d5dee5;
 	}
 
-	.div-autocompletion .empty{
+	.acResultContainer .empty{
 		background:none;
 		border:none;
 		border-width:0 0 0 0;
