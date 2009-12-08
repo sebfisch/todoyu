@@ -8,6 +8,7 @@
 		<label index="D2MshortY4">%b %d %y</label>
 		<label index="D2MshortY2">%b %d %Y</label>
 		<label index="D2Mshort">%b %d</label>
+		<label index="D2MshortTime">%b %d %H:%M</label>
 		<label index="DshortD2M2">%a %d %m</label>
 		<label index="D2MlongY4">%B %d %Y</label>
 		<label index="MlongD2">%B %d</label>
@@ -30,6 +31,7 @@
 		<label index="D2MshortY4">%d. %b %y</label>
 		<label index="D2MshortY2">%d. %b %Y</label>
 		<label index="D2Mshort">%d. %b</label>
+		<label index="D2MshortTime">%d. %b %H:%M</label>
 		<label index="DshortD2M2">%a %d.%m.</label>
 		<label index="D2MlongY4">%d. %B %Y</label>
 		<label index="Mlong">%B</label>
