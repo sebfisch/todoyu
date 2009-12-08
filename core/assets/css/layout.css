@@ -82,6 +82,12 @@ body {
 			margin:0 0 2px;
 			padding:5px 7px 6px;
 		}
+		
+			#panel .panelWidget .notification {
+				text-align:left;
+				padding:4px 0 2px 20px;
+				background:url('../img/notify/info_small.png') no-repeat 2px 4px;
+			}
 
 		#panel .panelFooter {
 			height:51px;
