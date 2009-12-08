@@ -65,6 +65,16 @@ class TodoyuFormElement_Textinput extends TodoyuFormElement {
 	}
 
 
+
+	/**
+	 * Get field storage data
+	 *
+	 * @return	String
+	 */
+	public function getStorageData() {
+		return $this->getValue();
+	}
+
 }
 
 ?>
