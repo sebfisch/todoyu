@@ -134,6 +134,10 @@ h4 {
 	padding-right:1px;
 }
 
+.centered {
+	text-align:center;
+}
+
 .overflow {
 	overflow:auto !important;
 	overflow:inherit;
