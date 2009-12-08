@@ -422,9 +422,10 @@ class TodoyuDiv {
 	 * @param	Boolean		$dontSplitWords
 	 * @return	String
 	 */
-
 	public static function cropText($text, $length, $postfix = '...', $dontSplitWords = true) {
-		$text	= trim($text);
+		$textIn	= trim($text);
+		$text	= html_entity_decode($textIn);
+		$entity	= $textIn !== $text;
 		$length	= intval($length);
 
 		if( mb_strlen($text) > $length ) {
@@ -439,6 +440,11 @@ class TodoyuDiv {
 			$cropped .= $postfix;
 		} else {
 			$cropped = $text;
+		}
+
+			// If entities have been decoded, encode them again
+		if( $entity ) {
+			$cropped = htmlentities($cropped);
 		}
 
 		return $cropped;
