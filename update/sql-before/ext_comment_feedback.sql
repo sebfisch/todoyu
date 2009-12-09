@@ -1,9 +1,0 @@
-CREATE TABLE `ext_comment_feedback` (
-`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-`date_create` INT UNSIGNED NOT NULL ,
-`date_update` INT UNSIGNED NOT NULL ,
-`id_user_create` MEDIUMINT UNSIGNED NOT NULL ,
-`id_user_feedback` MEDIUMINT UNSIGNED NOT NULL ,
-`id_comment` INT UNSIGNED NOT NULL ,
-`is_seen` TINYINT( 1 ) UNSIGNED NOT NULL
-) ENGINE = MYISAM ;
