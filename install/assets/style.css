@@ -1,29 +1,29 @@
 body {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
-	color:#000000;
-	background-color:#E3EACE;
+	color:#000;
+	background-color:#e3eace;
 }
 
 #box {
-	position: relative;
-	clear: both;
-	padding: 0 0 80px;
-	height: auto !important;
-	min-height: 415px;
-	padding: 1px 2px 0 3px;
-	width: 973px !important;
-	background-color: #E3EACE;
-	margin: 0 auto;
+	position:relative;
+	clear:both;
+	padding:0 0 80px;
+	height:auto !important;
+	min-height:415px;
+	padding:1px 2px 0 3px;
+	width:973px !important;
+	background-color:#e3eace;
+	margin:0 auto;
 
 }
 
 #contentBox {
-	top: 20px;
-	float: left;
-	position: relative;
-	width: 680px;
-	background-color: #fff;
+	top:20px;
+	float:left;
+	position:relative;
+	width:680px;
+	background-color:#fff;
 }
 
 		#contentBox span.lt,
@@ -50,48 +50,48 @@ body {
 		.content span.rb, #contentBox span.rb {bottom:0;right:0;background-position:100% 100%;}
 
 .content {
-	margin: 8px;
-	padding: 1px;
+	margin:8px;
+	padding:1px;
 }
 
 .content .boxContent {
-	background-color: #E3EACE;
+	background-color:#e3eace;
 }
 
 .content .boxContent .blockcontent {
-	padding: 10px;
+	padding:10px;
 }
 
 .text{
-	padding: 5px;
-	border: 1px solid #000;
-	margin: 5px;
+	padding:5px;
+	border:1px solid #000;
+	margin:5px;
 }
 
 .textError{
-	border-color: red;
-	background-color: #FDC5C5;
+	border-color:red;
+	background-color:#fdc5c5;
 }
 
 .textInfo{
-	border-color: #FFA800;
-	background-color: #FDEEC3;
+	border-color:#ffa800;
+	background-color:#fdeec3;
 }
 
 .textSuccess{
-	border-color: #048E01;
-	background-color: #96F384;
+	border-color:#048e01;
+	background-color:#96f384;
 }
 
 #licence,
 #panel {
-	clear: both;
-	float: left;
-	margin: 0 10px 0 0;
-	padding: 0;
-	position: relative;
-	top: 20px;
-	width: 270px;
+	clear:both;
+	float:left;
+	margin:0 10px 0 0;
+	padding:0;
+	position:relative;
+	top:20px;
+	width:270px;
 	background-color:#fff;
 }
 
@@ -99,90 +99,94 @@ body {
 #panel .panelFooter {
 	height:51px;
 	margin-top:-2px;
-	background:#E3EACE url('img/panel_footer.png') no-repeat 0 0;
+	background:#e3eace url('img/panel_footer.png') no-repeat 0 0;
 }
 
 #footer {
-	border:1px solid #D3DABB;
-	background-color:#EDF1E0;
+	border:1px solid #d3dabb;
+	background-color:#edf1e0;
 	clear:both;
-	margin: 20px 8px 10px 8px;
+	margin:20px 8px 10px 8px;
 	padding:15px;
 }
 
 h1 {
-	background: transparent url('img/bg_headerline.png') no-repeat 0 0;
-	height: 28px;
-	margin-top: 5px;
-	position: relative;
-	text-align: left;
-	width: 100%;
+	background:transparent url('img/bg_headerline.png') no-repeat 0 0;
+	height:28px;
+	margin-top:5px;
+	position:relative;
+	text-align:left;
+	width:100%;
 }
 
 h1 span.title {
-	float: left;
-	line-height: 28px;
-	margin: 0 0 0 5px;
+	float:left;
+	line-height:28px;
+	margin:0 0 0 5px;
 	text-transform:uppercase;
 	font-size:10px;
 	letter-spacing:0.3px;
 }
 
 h1 span.rgt {
-	background: #fff url('img/bg_headerline.png') no-repeat scroll 100% 0;
-	height: 28px;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	right: 0;
-	width: 10px;
+	background:#fff url('img/bg_headerline.png') no-repeat scroll 100% 0;
+	height:28px;
+	margin:0;
+	padding:0;
+	position:absolute;
+	right:0;
+	width:10px;
+}
+
+a, a:link {
+	color:#414e1c;
 }
 
 button {
-	background: url('img/bg_button.png') no-repeat 0 50%;
-	border: 0 none !important;
-	color: #000;
-	cursor: pointer;
-	padding: 0;
-	position: relative;
+	background:url('img/bg_button.png') no-repeat 0 50%;
+	border:0 none !important;
+	color:#000;
+	cursor:pointer;
+	padding:0;
+	position:relative;
 }
 	button span {
-		color: #000;
-		float: left;
-		font-size: 11px;
-		line-height: 23px;
-		margin: 0;
-		padding: 0 0 0 13px;
-		white-space: nowrap;
+		color:#000;
+		float:left;
+		font-size:11px;
+		line-height:23px;
+		margin:0;
+		padding:0 0 0 13px;
+		white-space:nowrap;
 	}
 
 	button span.label {
-		margin-left: 10px;
-		margin-right: 3px;
-		padding: 0;
-		white-space: nowrap;
+		margin-left:10px;
+		margin-right:3px;
+		padding:0;
+		white-space:nowrap;
 		text-transform:uppercase;
 	}
 
 	button span.rgt {
-		background-color: #d3dabb;
-		background: #E3EACE url('img/bg_button.png') no-repeat 100% 50%;
-		display: block;
-		height: 23px;
-		left: 3px;
-		margin: 0;
-		padding: 0;
-		position: relative;
-		width: 10px;
+		background-color:#d3dabb;
+		background:#e3eace url('img/bg_button.png') no-repeat 100% 50%;
+		display:block;
+		height:23px;
+		left:3px;
+		margin:0;
+		padding:0;
+		position:relative;
+		width:10px;
 	}
 
 .servercheckicon {
-	height: 16px;
-	width: 16px;
-	display: block;
-	background: transparent url('img/servercheck.png') no-repeat 0 0;	
+	height:16px;
+	width:16px;
+	display:block;
+	background:transparent url('img/servercheck.png') no-repeat 0 0;	
 }
 
 .servercheckicon.ok {
-	background-position: 0 -28px;	
+	background-position:0 -28px;	
 } 
