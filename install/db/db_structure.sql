@@ -321,24 +321,24 @@ CREATE TABLE `ext_fixed_project` (
   `id_user_create` smallint(5) unsigned NOT NULL,
   `date_create` int(10) unsigned NOT NULL default '0',
   `deleted` tinyint(1) unsigned NOT NULL default '0',
-  `title` varchar(256) character set utf8 NOT NULL,
+  `title` varchar(256) NOT NULL,
   `creation_period` int(10) unsigned NOT NULL default '0',
   `id_customer` int(10) unsigned NOT NULL default '0',
-  `description` mediumtext character set utf8 NOT NULL,
+  `description` mediumtext NOT NULL,
   `add_supporttask` int(10) unsigned NOT NULL default '0',
   `status` tinyint(2) unsigned NOT NULL,
   `status_finish` tinyint(2) unsigned NOT NULL,
   `fixedcosts` int(10) unsigned NOT NULL,
   `is_fixedcosts_paid` tinyint(1) NOT NULL default '0',
   `id_customer_hoster` int(11) NOT NULL default '0',
-  `domain` varchar(64) character set utf8 NOT NULL,
+  `domain` varchar(64) NOT NULL,
   `id_rateset` int(10) unsigned NOT NULL default '0',
   `ext_projectbilling_settlementinterval` int(10) unsigned NOT NULL,
   `id_user_manager` int(10) unsigned NOT NULL default '0',
   `id_user_supervisor` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
   KEY `customer` (`id_customer`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -354,7 +354,7 @@ CREATE TABLE `ext_fixed_task` (
   `date_create` int(11) unsigned NOT NULL default '0',
   `deleted` tinyint(1) unsigned NOT NULL default '0',
   `active` tinyint(1) unsigned NOT NULL default '0',
-  `title` varchar(256) character set utf8 NOT NULL,
+  `title` varchar(256) NOT NULL,
   `creation_period` tinyint(3) unsigned NOT NULL default '0',
   `id_usergroup` mediumint(8) unsigned NOT NULL default '0',
   `id_usergroup_secondary` mediumint(11) unsigned NOT NULL default '0',
@@ -362,49 +362,14 @@ CREATE TABLE `ext_fixed_task` (
   `status_finish` tinyint(2) unsigned NOT NULL default '0',
   `id_fixedproject` int(11) unsigned NOT NULL default '0',
   `id_worktype` smallint(5) unsigned NOT NULL default '0',
-  `description` mediumtext character set utf8 NOT NULL,
+  `description` mediumtext NOT NULL,
   `estimated_workload_static` smallint(5) unsigned NOT NULL default '0',
   `workload_generic` smallint(5) unsigned NOT NULL default '0',
   `billingtype` tinyint(3) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`),
-  KEY `title` (`title`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ext_portal_mm_tab_filterset`
---
-
-DROP TABLE IF EXISTS `ext_portal_mm_tab_filterset`;
-CREATE TABLE `ext_portal_mm_tab_filterset` (
-  `id` mediumint(8) unsigned NOT NULL auto_increment,
-  `id_tab` smallint(5) unsigned NOT NULL,
-  `id_filterset` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`id`)
+  KEY `title` (`title`(10))
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `ext_portal_tab`
---
-
-DROP TABLE IF EXISTS `ext_portal_tab`;
-CREATE TABLE `ext_portal_tab` (
-  `id` smallint(5) unsigned NOT NULL auto_increment,
-  `deleted` tinyint(2) NOT NULL default '0',
-  `type` varchar(20) NOT NULL,
-  `id_user` smallint(5) unsigned NOT NULL,
-  `usergroups` varchar(16) NOT NULL,
-  `class` varchar(32) NOT NULL,
-  `title` varchar(64) NOT NULL,
-  `is_or` tinyint(1) NOT NULL default '1',
-  `sorting` smallint(6) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `ext_projectbilling_invoice`
