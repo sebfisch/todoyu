@@ -197,95 +197,27 @@ class TodoyuInstallerDbHelper {
 	 */
 	public static function isDBstructureUptodate() {
 			// Get 'table.sql' definitions from extensions having them
-		$extTablesSqls	= self::getInstalledExtTablesSqls();
+		$extTablesSql	= TodoyuInstallerSqlParser::getInstalledExtTablesSqls();
 
 			// Get all table names being declared
-		$extTableNames	= self::extractTableNamesFromSqls($extTablesSqls);
+		$extTablesNames	= TodoyuInstallerSqlParser::extractTableNames($extTablesSql);
 
 			// Find missing tables
-		$missingDbTables	=	self::getMissingDbTables($extTableNames);
+		$missingDbTables	=	self::getMissingDbTables($extTablesNames);
 
 			// Collect all columns declarations of all tables
-//		$extTablesStructures	= self::getAllTableStructures($extTableNames);
+		$extTablesStructures	= TodoyuInstallerSqlParser::getAllTableStructures($extTablesNames, $extTablesSql);
 
 			// Find tables with incomplete columns
 
 
 
-//		$extTableStructuresInDB	= self::getExtTableStructuresFromDB($tablesToBeChecked);
-
-
-
-//		TodoyuDebug::printHtml($extTablesSqls);
-//		TodoyuDebug::printHtml($extTableNames);
-//		TodoyuDebug::printHtml($missingDbTables);
+//		TodoyuDebug::printHtml($extTablesStructures, 'declared in tables.sql');
+//		TodoyuDebug::printHtml($extTablesSqls, 'all extensions sql');
+//		TodoyuDebug::printHtml($extTablesNames, 'all ext db table names');
+//		TodoyuDebug::printHtml($missingDbTables, 'missing db tables);
 
 		return true;
-	}
-
-
-
-	/**
-	 * Get 'tables.sql' contents of all installed extensions
-	 *
-	 * 	@return	Array
-	 */
-	private static function getInstalledExtTablesSqls() {
-		$tableSqls	= array();
-
-		$extKeys	= TodoyuExtensions::getInstalledExtKeys();
-
-		foreach($extKeys as $extKey) {
-			$structure	= self::getExtTablesSql($extKey);
-
-			if ( ! $structure === false ) {
-				$tableSqls[$extKey]	= $structure;
-			}
-		}
-
-		return $tableSqls;
-	}
-
-
-
-	/**
-	 * Get 'tables.sql' contents of given extension
-	 *
-	 *	@param	String	$extKey
-	 */
-	private static function getExtTablesSql($extKey) {
-		$extPath	= TodoyuExtensions::getExtPath($extKey);
-		$sqlPath	= $extPath . '/config/db/tables.sql';
-
-		if ( file_exists( $sqlPath ) ) {
-				// 'tables.sql' found
-			$sql	= file_get_contents($sqlPath);
-			$sql	= TodoyuInstallerSqlParser::cleanSql($sql);
-		} else {
-				// 'tables.sql' missing
-			$sql	= false;
-		}
-
-		return $sql;
-	}
-
-
-
-	/**
-	 * Extract table names from all given 'tables.sql' contents'
-	 *
-	 *	@param	Array	$extTableStructuresConf
-	 *	@return	Array
-	 */
-	private static function extractTableNamesFromSqls(array $extTableStructuresConf) {
-		$allTables	= array();
-
-		foreach($extTableStructuresConf as $extKey => $sql) {
-			$tables		= TodoyuInstallerSqlParser::extractTableNames($sql);
-			$allTables	= array_merge($allTables, $tables);
-		}
-
-		return $allTables;
 	}
 
 

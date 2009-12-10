@@ -78,11 +78,11 @@ class TodoyuInstaller {
 		$step	= self::$steps[$stepNr];
 
 		switch($step) {
-			case 'dbstructurecheck';
+			case 'dbstructurecheck':
 				echo TodoyuInstallerRenderer::renderDBstructureCheck($error);
 				break;
 
-			case 'welcome';
+			case 'welcome':
 				echo TodoyuInstallerRenderer::renderWelcome($error);
 				break;
 
