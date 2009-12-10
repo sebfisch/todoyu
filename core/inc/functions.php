@@ -70,7 +70,7 @@ function userid($idUser = 0) {
 /**
  * Shortcut to current user object
  *
- * @return	User
+ * @return	TodoyuUser
  */
 function user() {
 	return TodoyuAuth::getUser();
@@ -111,30 +111,56 @@ function render($template, $data = array(), $compiler = null, $output = false) {
 
 
 /**
- * Render notification
+ * Check if a right is set (=allowed)
  *
- * @param	String	$text
- * @return	String	notification HTML
+ * @param	String		$extKey		Extension key
+ * @param	String		$right		Right name
+ * @return	Boolean
  */
-function renderNotification($text) {
-	$config	= array(
-		'text'		=> $text
-	);
-
-	return render('core/view/notification.tmpl', $config);
+function allowed($extKey, $right) {
+	return TodoyuRightsManager::isAllowed($extKey, $right);
 }
 
 
 
 /**
- * Check if a right is set (=allowed)
+ * Check if ALL given rights of an extension are allowed
  *
- * @param	String		$extID
- * @param	String		$right
- * @return	Boolean
+ * @param	String		$extKey			Extension key
+ * @param	String		$rightsList		Comma seperated names of rights
+ * @return	Bool
  */
-function allowed($extKey, $right) {
-	return TodoyuRightsManager::isAllowed($extKey, $right);
+function allowedAll($extKey, $rightsList) {
+	$rights	= explode(',', $rightsList);
+
+	foreach($rights as $right) {
+		if( ! allowed($extKey, $right) ) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+
+
+/**
+ * Check if ANY of the given rights of an extension is allowed
+ *
+ * @param	String		$extKey			Extension key
+ * @param	String		$rightsList		Comma seperated names of rights
+ * @return	Bool
+ */
+function allowedAny($extKey, $rightsList) {
+	$rights	= explode(',', $rightsList);
+
+	foreach($rights as $right) {
+		if( allowed($extKey, $right) ) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 
@@ -148,6 +174,42 @@ function allowed($extKey, $right) {
  */
 function restrict($extKey, $right) {
 	TodoyuRightsManager::restrict($extKey, $right);
+}
+
+
+
+/**
+ * Restrict (deny) access if none if the rights is allowed
+ * If one right is allowed, do nothing
+ *
+ * @param	String		$extKey			Extension key
+ * @param	String		$rightsList		Comma seperated names of rights
+ */
+function restrictIfNone($extKey, $rightsList) {
+	$rights		= explode(',', $rightsList);
+	$denyRight	= '';
+
+	foreach($rights as $right) {
+		if( allowed($extKey, $right) ) {
+			return;
+		} else {
+			$denyRight = $right;
+		}
+	}
+
+	deny($extKey, $denyRight);
+}
+
+
+
+/**
+ * Deny access because of a missing right
+ *
+ * @param	String		$extKey
+ * @param	String		$right
+ */
+function deny($extKey, $right) {
+	TodoyuRightsManager::deny($extKey, $right);
 }
 
 

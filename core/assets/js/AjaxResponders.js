@@ -51,7 +51,7 @@ Todoyu.AjaxResponders = {
 		request.respondToReadyState = function(readyState) {
 			var state	= Ajax.Request.Events[readyState];
 			var response= new Ajax.Response(this);
-					
+								
 				// Only process if request completed and has access error	
 			if( state == 'Complete' && response.hasNoAccess() )	{
 					// Delete onComplete handler to prevent processing an empty respone			

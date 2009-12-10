@@ -34,6 +34,7 @@ Ajax.Response.addMethods({
 		return this.getTodoyuHeader('error') == 1;
 	},
 	hasNoAccess: function() {
+		//console.log('test');
 		return this.getTodoyuHeader('noAccess') == 1;
 	}
 });

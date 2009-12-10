@@ -136,27 +136,6 @@ function Dwoo_Plugin_inArray(Dwoo $dwoo, $value, $array) {
 
 
 /**
- * checks if $value is an array-key of $array
- *
- * @package Todoyu
- * @subpackage Template
- *
- * @param	Dwoo 	$dwoo
- * @param	Mixed	$value
- * @param 	Array	$array
- * @return	Boolean
- */
-function Dwoo_Plugin_arrayKeyExists(Dwoo $dwoo, $value, $array)	{
-	if(!is_array($array))	{
-		return false;
-	}
-
-	return array_key_exists($value, $array);
-}
-
-
-
-/**
  * Encode string for html output
  *
  * @package		Todoyu
@@ -186,21 +165,6 @@ function Dwoo_Plugin_HourMinSec(Dwoo $dwoo, $seconds) {
 
 
 /**
- * Get Day.month.Year hours:minutes from given unix timestamp (seconds)
- *
- * @param 	Dwoo 		$dwoo
- * @param	Integer		$timestamp
- * @return	String
- */
-function Dwoo_Plugin_date_dmyHi(Dwoo $dwoo, $timestamp) {
-
-	return date('d.m.y H.i', $timestamp);
-}
-
-
-
-
-/**
  * Format an integer to hours:minutes:seconds
  *
  * @param 	Dwoo 		$dwoo
@@ -220,15 +184,13 @@ function Dwoo_Plugin_HourMin(Dwoo $dwoo, $seconds) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo 		$dwoo
- * @param	Integer		$idUser
+ * @param	Dwoo_Compiler 	$dwoo
+ * @param	Integer			$idUser
  * @return	Boolean
  */
 
-function Dwoo_Plugin_isUserID(Dwoo $dwoo, $idUser) {
-	$idUser	= intval($idUser);
-
-	return $idUser > 0 && userid() === $idUser;
+function Dwoo_Plugin_isUserID_compile(Dwoo_Compiler $dwoo, $idUser) {
+	return 'userid() === ' . $idUser;
 }
 
 
@@ -240,7 +202,6 @@ function Dwoo_Plugin_isUserID(Dwoo $dwoo, $idUser) {
  *
  */
 function Dwoo_Plugin_UserID(Dwoo $dwoo) {
-
 	return userid();
 }
 
@@ -259,9 +220,8 @@ function Dwoo_Plugin_UserID(Dwoo $dwoo) {
 
 function Dwoo_Plugin_UserName(Dwoo $dwoo, $idUser) {
 	$idUser	= intval($idUser);
-	$user	= TodoyuUserManager::getUser($idUser);
 
-	return $user->getFullName(true);
+	return TodoyuUserManager::getUser($idUser)->getFullName(true);
 }
 
 
@@ -275,9 +235,8 @@ function Dwoo_Plugin_UserName(Dwoo $dwoo, $idUser) {
  */
 function Dwoo_Plugin_UserShortname(Dwoo $dwoo, $idUser) {
 	$idUser	= intval( $idUser );
-	$user	= TodoyuUserManager::getUser($idUser);
 
-	return $user->getShortname();
+	return TodoyuUserManager::getUser($idUser)->getShortname();
 }
 
 
@@ -498,9 +457,63 @@ function Dwoo_Plugin_IndexLetters(Dwoo $dwoo, array $records, $field, $indexName
 }
 
 
-
+/**
+ * Check if right is allowed
+ * Get function string to check this
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String			$ext
+ * @param	String			$right
+ * @return	String
+ */
 function Dwoo_Plugin_allowed_compile(Dwoo_Compiler $compiler, $ext, $right) {
 	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ')';
+}
+
+
+
+/**
+ * Check if all given rights are allowed
+ * Get function string to check this
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String			$ext
+ * @param	String			$rightsList
+ * @return	String
+ */
+function Dwoo_Plugin_allowedAll_compile(Dwoo_Compiler $compiler, $ext, $rightsList) {
+	return 'allowedAll(' . $ext . ',' . $rightsList . ')';
+}
+
+
+
+/**
+ * Check if any given rights are allowed
+ * Get function string to check this
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String			$ext
+ * @param	String			$rightsList
+ * @return	String
+ */
+function Dwoo_Plugin_allowedAny_compile(Dwoo_Compiler $compiler, $ext, $rightsList) {
+	return 'allowedAny(' . $ext . ',' . $rightsList . ')';
+}
+
+
+
+/**
+ * Check if user has right, or given user ID is the current users ID
+ * Get function string to check this
+ *
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	String			$ext
+ * @param	String			$right
+ * @param	Integer			$idUser
+ * @return	String
+ */
+function Dwoo_Plugin_allowedOrOwn_compile(Dwoo_Compiler $compiler, $ext, $right, $idUser) {
+	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ') || userid()==' . $idUser;
 }
 
 

@@ -240,24 +240,36 @@ class TodoyuRightsManager {
 	 */
 	public static function restrict($extKey, $right) {
 		if( ! allowed($extKey, $right) ) {
-			if( TodoyuRequest::isAjaxRequest() ) {
-				TodoyuHeader::sendNoAccessHeader();
-				TodoyuHeader::sendTodoyuHeader('noAccess-right', $extKey . '/' . $right);
-			} else {
-				$tmpl	= 'core/view/noaccess.tmpl';
-				$data	= array(
-					'requestURL'	=> $_SERVER['REQUEST_URI'],
-					'extKey'		=> $extKey,
-					'right'			=> $right
-				);
-
-				ob_end_clean();
-				echo render($tmpl, $data);
-			}
-
-			Todoyu::log('Access denied (' . $extKey . '/' . $right . ')', LOG_LEVEL_SECURITY);
-			exit();
+			self::deny($extKey, $right);
 		}
+	}
+
+
+
+	/**
+	 * Deny access and send no-access info
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$right
+	 */
+	public static function deny($extKey, $right) {
+		if( TodoyuRequest::isAjaxRequest() ) {
+			TodoyuHeader::sendNoAccessHeader();
+			TodoyuHeader::sendTodoyuHeader('noAccess-right', $extKey . '/' . $right);
+		} else {
+			$tmpl	= 'core/view/noaccess.tmpl';
+			$data	= array(
+				'requestURL'	=> $_SERVER['REQUEST_URI'],
+				'extKey'		=> $extKey,
+				'right'			=> $right
+			);
+
+			ob_end_clean();
+			echo render($tmpl, $data);
+		}
+
+		Todoyu::log('Access denied (' . $extKey . '/' . $right . ')', LOG_LEVEL_SECURITY);
+		exit();
 	}
 
 
