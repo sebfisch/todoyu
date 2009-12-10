@@ -32,7 +32,17 @@ class TodoyuInstaller {
 	 *
 	 * @var	Array
 	 */
-	private static $steps = array('welcome', 'servercheck', 'dbconnection', 'dbselect', 'importstatic', 'config', 'setadminpassword', 'finish');
+	private static $steps = array(
+		'dbstructurecheck',
+		'welcome',
+		'servercheck',
+		'dbconnection',
+		'dbselect',
+		'importstatic',
+		'config',
+		'setadminpassword',
+		'finish'
+	);
 
 
 
@@ -68,36 +78,40 @@ class TodoyuInstaller {
 		$step	= self::$steps[$stepNr];
 
 		switch($step) {
+			case 'dbstructurecheck';
+				echo TodoyuInstallerRenderer::renderDBstructureCheck($error);
+				break;
+
 			case 'welcome';
-				self::displayWelcome($error);
+				echo TodoyuInstallerRenderer::renderWelcome($error);
 				break;
 
 			case 'servercheck':
-				self::displayServercheck($error);
+				echo TodoyuInstallerRenderer::renderServercheck($error);
 				break;
 
 			case 'dbconnection':
-				self::displayDbConnection($error);
+				echo TodoyuInstallerRenderer::renderDbConnection($error);
 				break;
 
 			case 'dbselect':
-				self::displayDbSelect($error);
+				echo TodoyuInstallerRenderer::renderDbSelect($error);
 				break;
 
 			case 'importstatic':
-				self::displayImportStatic($error);
+				echo TodoyuInstallerRenderer::renderImportStatic($error);
 				break;
 
 			case 'config':
-				self::displayConfig($error);
+				echo TodoyuInstallerRenderer::renderConfig($error);
 				break;
 
 			case 'setadminpassword':
-				self::displayAdminPassword($error);
+				echo TodoyuInstallerRenderer::renderAdminPassword($error);
 				break;
 
 			case 'finish':
-				self::displayFinish($error);
+				echo TodoyuInstallerRenderer::renderFinish($error);
 				break;
 		}
 	}
@@ -125,7 +139,7 @@ class TodoyuInstaller {
 			case 'dbconnection':
 				$_SESSION['todoyuinstaller']['db'] = $data;
 				try {
-					self::checkDbConnection($data);
+					TodoyuInstallerDbHelper::checkDbConnection($data);
 					self::setStep(3);
 				} catch(Exception $e) {
 					$error = $e->getMessage();
@@ -134,16 +148,16 @@ class TodoyuInstaller {
 
 			case 'dbselect':
 				try {
-					self::addDatabase();
+					TodoyuInstallerDbHelper::addDatabase();
 					self::setStep(4);
-					self::saveDbConfigInFile();
+					TodoyuInstallerDbHelper::saveDbConfigInFile();
 				} catch(Exception $e)	{
 					$error = $e->getMessage();
 				}
 				break;
 
 			case 'importstatic':
-				self::importStaticData();
+				TodoyuInstallerDbHelper::importStaticData();
 				self::setStep(5);
 				break;
 
@@ -160,7 +174,7 @@ class TodoyuInstaller {
 
 			case 'setadminpassword':
 				try {
-					self::updateAdminPassword($data['password'], $data['password_confirm']);
+					TodoyuInstallerDbHelper::updateAdminPassword($data['password'], $data['password_confirm']);
 					self::setStep(7);
 				} catch(Exception $e)	{
 					$error = $e->getMessage();
@@ -174,74 +188,6 @@ class TodoyuInstaller {
 		}
 
 		return $error;
-	}
-
-
-
-	/**
-	 * Save database configuration file with submitted data
-	 */
-	private static function saveDbConfigInFile() {
-		$data	= array('db'	=> $_SESSION['todoyuinstaller']['db']);
-		$tmpl	= 'install/view/db.php.tmpl';
-
-		$config	= render($tmpl, $data);
-		$code	= '<?php' . $config . '?>';
-		$file	= PATH . '/config/db.php';
-
-		file_put_contents($file, $code);
-	}
-
-
-
-	/**
-	 * Check if database connection data is valid
-	 *
-	 * @param	Array		$data
-	 * @return	Boolean
-	 * @throws	Exception
-	 */
-	private static function checkDbConnection($data) {
-		$conn	= @mysql_connect($data['server'], $data['username'], $data['password']);
-
-		if( $conn === false ) {
-			throw new Exception('Cannot connect to the database server "' . $data['server'] . '" ('.mysql_error().')');
-		}
-
-		return true;
-	}
-
-
-
-	/**
-	 * Import static data SQL files
-	 */
-	private static function importStaticData() {
-			// Structure
-		$fileStructure	= PATH . '/install/db/db_structure.sql';
-		$structure		= file_get_contents($fileStructure);
-		$structureParts	= explode(';', $structure);
-
-		foreach($structureParts as $structurePart) {
-			if( trim($structurePart) !== '' ) {
-				Todoyu::db()->query($structurePart);
-			}
-		}
-
-			// Data
-		$fileData		= PATH . '/install/db/db_data.sql';
-		$data			= file_get_contents($fileData);
-//		$splitPattern	= "/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*[^'|^\\\']$)/";
-//		$dataParts		= preg_split($splitPattern, $data);
-		$dataParts		= explode(';', $data);
-
-		// preg_split causes fatal error on windows systems. Bug?
-
-		foreach($dataParts as $dataPart) {
-			if( trim($dataPart) !== '' ) {
-				Todoyu::db()->query($dataPart);
-			}
-		}
 	}
 
 
@@ -283,32 +229,6 @@ class TodoyuInstaller {
 
 
 	/**
-	 * Update the admin password
-	 *
-	 * @param	String		$newPassword
-	 */
-	private static function updateAdminPassword($newPassword, $newPasswordConfirm) {
-		if( ! ($newPassword == $newPasswordConfirm) )	{
-			throw new Exception('Password confirmation was wrong!');
-		}
-
-		if( strlen($newPassword) < 5 )	{
-			throw new Exception('Password needs at least 5 characters!');
-		}
-
-		$pass	= md5($newPassword);
-		$table	= 'ext_user_user';
-		$where	= 'username = \'admin\'';
-		$fields	= array(
-			'password'	=> $pass
-		);
-
-		Todoyu::db()->doUpdate($table, $where, $fields);
-	}
-
-
-
-	/**
 	 * Finish installer steps
 	 * Rename ENABLE file to disable the installer
 	 */
@@ -326,269 +246,6 @@ class TodoyuInstaller {
 
 		header('Location: ' . dirname(SERVER_URL));
 		exit();
-	}
-
-
-
-	/**
-	 * Display welcome screen
-	 *
-	 * @param	String	$error
-	 */
-	private static function displayWelcome($error = '') {
-		$data	= array(
-			'title'		=> 'Welcome to the Todoyu installer',
-			'textclass'	=> 'text textInfo',
-			'version'	=> array(
-					'versionnumber'	=> TODOYU_VERSION,
-					'versiondate'	=> TODOYU_UPDATE
-			)
-		);
-		$tmpl	= 'install/view/welcome.tmpl';
-
-		render($tmpl, $data, null, true);
-	}
-
-
-
-	/**
-	 * Display server check screen
-	 *
-	 * @param	String	$error
-	 */
-	private static function displayServercheck($error = '') {
-		$next			= true;
-
-		if( version_compare(PHP_VERSION, '5.2.0', '>=') ) {
-			$versionStatus	= 'OK';
-		} else {
-			$versionStatus	= 'PROBLEM';
-			$next			= false;
-		}
-
-		$writable		= array('files', 'config', 'cache/tmpl/compile', 'config/db.php', 'config/extensions.php', 'config/extconf.php');
-		$writableStatus	= array();
-
-		foreach($writable as $path) {
-			$absPath	= PATH . '/' . $path;
-
-			TodoyuFileManager::setDefaultAccessRights($absPath);
-
-			$writableStatus[$path]	= is_writable($absPath);
-
-			if( $writableStatus[$path] === false ) {
-				$next = false;
-			}
-		}
-
-		$data	= array(
-			'title'				=> 'Server check',
-			'phpversionStatus'	=> $versionStatus,
-			'phpversion'		=> '(Your version: ' . PHP_VERSION . ')',
-			'writable'			=> $writableStatus,
-			'next'				=> $next
-		);
-		$tmpl	= 'install/view/servercheck.tmpl';
-
-		render($tmpl, $data, null, true);
-	}
-
-
-
-	/**
-	 * Display database connection screen
-	 *
-	 * @param	String	$error
-	 */
-	private static function displayDbConnection($error = '') {
-		$dbData	= $_SESSION['todoyuinstaller']['db'];
-
-		$data	= array(
-			'title'		=> 'Setup Database Server Connection',
-			'fields'	=> $dbData,
-			'version'	=> array(
-					'versionnumber'	=> TODOYU_VERSION,
-					'versiondate'	=> TODOYU_UPDATE
-			)
-		);
-
-		if( is_array($dbData) ) {
-			try {
-				self::checkDbConnection($dbData);
-			} catch(Exception $e) {
-				$data['textclass']	= 'text textError';
-				$data['text']		= 'Error: ' . $e->getMessage();
-			}
-		}
-
-		$tmpl	= 'install/view/dbconnection.tmpl';
-
-		render($tmpl, $data, null, true);
-	}
-
-
-
-	/**
-	 * Display DB select
-	 *
-	 * @param	String	$error
-	 */
-	private static function displayDbSelect($error = '')	{
-		$dbData	= $_SESSION['todoyuinstaller']['db'];
-
-		$data	= array(
-			'title'		=> 'Setup Database',
-			'version'	=> array(
-					'versionnumber'	=> TODOYU_VERSION,
-					'versiondate'	=> TODOYU_UPDATE
-			)
-		);
-
-		if( is_array($dbData) ) {
-			try {
-				$data['options'] = self::getAvailableDatabases();
-			} catch(Exception $e) {
-				$data['textclass'] = 'text textError';
-				$data['text'] = 'Error: ' . $e->getMessage();
-			}
-
-			if( strlen($error) > 0 )	{
-				$data['textclass'] = 'text textError';
-				$data['text'] = 'Error: ' . $error;
-			}
-		}
-
-		$tmpl	= 'install/view/dbselect.tmpl';
-
-		render($tmpl, $data, null, true);
-	}
-
-
-
-	/**
-	 * Get available databases
-	 *
-	 * @return	Array
-	 */
-	private static function getAvailableDatabases($error = '')	{
-		$dbData		= $_SESSION['todoyuinstaller']['db'];
-		$databases	= array(0 => 'Please choose a database');
-
-		$conn = mysql_connect($dbData['server'], $dbData['username'], $dbData['password']);
-
-		$source = mysql_list_dbs($conn);
-
-		while($row = mysql_fetch_object($source))	{
-			$databases[$row->Database] = $row->Database;
-		}
-
-		return $databases;
-	}
-
-
-
-	/**
-	 * Add database
-	 *
-	 * @param	String	$error
-	 */
-	private static function addDatabase($error = '')	{
-		if( strlen($_POST['database_new']) > 0 )	{
-			$dbData		= $_SESSION['todoyuinstaller']['db'];
-			$conn = mysql_connect($dbData['server'], $dbData['username'], $dbData['password']);
-			if(@mysql_query('CREATE DATABASE `' . trim($_POST['database_new']) . '`', $conn) == false)	{
-				throw new Exception('Can not create database ' . $_POST['database_new'] . ': (' . mysql_error() . ')');
-			}
-			$_SESSION['todoyuinstaller']['db']['database'] = $_POST['database_new'];
-		} else if( $_POST['database'] != '0' )	{
-			$_SESSION['todoyuinstaller']['db']['database'] = $_POST['database'];
-		} else {
-			throw new Exception('Please select a database or enter a name');
-		}
-	}
-
-
-
-	/**
-	 * Display import static screen
-	 *
-	 * @param	String	$error
-	 */
-	private static function displayImportStatic($error = '') {
-		$data	= array(
-			'title'		=> 'Import static data',
-			'version'	=> array(
-					'versionnumber'	=> TODOYU_VERSION,
-					'versiondate'	=> TODOYU_UPDATE
-			)
-		);
-		$tmpl	= 'install/view/importstatic.tmpl';
-
-		render($tmpl, $data, null, true);
-	}
-
-
-
-	/**
-	 * Display config
-	 *
-	 * @param	String	$error
-	 */
-	private static function displayConfig($error = '') {
-		$data	= array(
-			'title'		=> 'System config',
-			'text'		=> $error ? $error : '',
-			'textClass'	=> $error ? 'text textError' : '',
-			'version'	=> array(
-					'versionnumber'	=> TODOYU_VERSION,
-					'versiondate'	=> TODOYU_UPDATE
-			)
-		);
-
-		$tmpl	= 'install/view/config.tmpl';
-
-		render($tmpl, $data, null, true);
-	}
-
-
-
-	/**
-	 * Display admin password change screen
-	 *
-	 * @param	String	$error
-	 */
-	private static function displayAdminPassword($error = '') {
-		$data	= array(
-			'title'		=> 'Change admin password',
-			'text'		=> strlen($error) > 0 ? $error : 'Change admin password for your security!',
-			'textClass'	=> strlen($error) > 0 ?  'text textError' : 'text textInfo',
-			'version'	=> array(
-					'versionnumber'	=> TODOYU_VERSION,
-					'versiondate'	=> TODOYU_UPDATE
-			)
-		);
-
-		$tmpl	= 'install/view/adminpassword.tmpl';
-
-		render($tmpl, $data, null, true);
-	}
-
-
-
-	/**
-	 * Display finishing screen
-	 */
-	private static function displayFinish() {
-		$data	= array(
-			'title'		=> 'Installation finished',
-			'version'	=> array(
-					'versionnumber'	=> TODOYU_VERSION,
-					'versiondate'	=> TODOYU_UPDATE
-			)
-		);
-		$tmpl	= 'install/view/finish.tmpl';
-
-		render($tmpl, $data, null, true);
 	}
 
 }
