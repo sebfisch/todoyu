@@ -78,7 +78,7 @@
 		<label index="weekday.mon">Mo</label>
 		<label index="weekday.tue">Di</label>
 		<label index="weekday.wed">Mi</label>
-		<label index="weekday.thu">Do/label>
+		<label index="weekday.thu">Do</label>
 		<label index="weekday.fri">Fr</label>
 		<label index="weekday.sat">Sa</label>
 		<label index="weekday.sun">So</label>
