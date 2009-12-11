@@ -190,3 +190,12 @@ button {
 .servercheckicon.ok {
 	background-position:0 -28px;	
 } 
+
+.sqlQuery {
+	width:620px;
+	height:380px;
+	overflow-x:scroll;
+	margin:12px 0;
+	border:1px dotted #ffa800;
+	background-color:#f9f3e8;
+}

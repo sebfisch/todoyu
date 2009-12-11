@@ -125,10 +125,27 @@ class TodoyuInstallerSqlParser {
 	 *	@param	String	$tableSql
 	 *	@return	String
 	 */
-	private static function extractSingleTableName($tableSql) {
-		$tableName	= self::extractTableNames($tableSql);
+	private static function extractSingleTableName($sql) {
+		$tableName	= self::extractTableNames($sql);
 
 		return $tableName[0];
+	}
+
+
+
+	/**
+	 * Extract table keys from SQL
+	 *
+	 *	@param	String	$tableSql
+	 *	@return	Array
+	 */
+	private static function extractTableKeys($sql) {
+		$sql	= trim($sql);
+
+		$pattern= '/KEY\\s`[a-z]*`\\s\\(`[a-z_]*`\\)/';
+		preg_match_all($pattern, $sql, $keys);
+
+		return $keys[0];
 	}
 
 
@@ -271,6 +288,8 @@ class TodoyuInstallerSqlParser {
 
 					// Append columns to table structure data
 				$structures[$tableName]['columns']	= array_merge($structures[$tableName]['columns'], $tableColumns);
+
+				$structures[$tableName]['keys']		= self::extractTableKeys($tableSql);
 			}
 		}
 
@@ -367,7 +386,9 @@ class TodoyuInstallerSqlParser {
 	 *	@param	Array	$sqlStructures
 	 *	@param	Array	$dbStructures
 	 */
-	public static function getStructureDifferences(array $sqlStructures, array $dbStructures) {
+	public static function getStructureDifferences($newTables, array $sqlStructures, array $dbStructures) {
+		$sqlStructuresBak	= $sqlStructures;
+
 			// Compare each table, column from DB with declaration in 'tables.sql', filter out differing ones
 		foreach($dbStructures as $tableName => $tableStructure) {
 			foreach($tableStructure['columns'] as $columnName => $columnStructure) {
@@ -377,7 +398,7 @@ class TodoyuInstallerSqlParser {
 				$sqlColumn	= $sqlStructures[$tableName]['columns'][$columnName];
 
 				if ( is_array($sqlColumn) ) {
-					$colDiff	= array_diff_assoc($dbColumn, $sqlColumn);
+					$colDiff	= array_diff_assoc($sqlColumn, $dbColumn);
 					if ( count($colDiff) === 0 ) {
 							// Remove identic defined
 						unset($sqlStructures[$tableName]['columns'][$columnName]);
@@ -385,21 +406,135 @@ class TodoyuInstallerSqlParser {
 							// Add lookups
 						$sqlStructures[$tableName]['columns'][$columnName . '_SQL']	= $sqlColumn;
 						$sqlStructures[$tableName]['columns'][$columnName . '_DB']	= $dbColumn;
-						$sqlStructures[$tableName]['columns'][$columnName . '_diff']= $colDiff;
+						$sqlStructures[$tableName]['columns'][$columnName . '_DIFF']= $colDiff;
 					}
 				}
 			}
 		}
 
-			// Remove all tables that have been emptied completely
+			// Cleanup
 		foreach($sqlStructures as $tableName => $tableStructure) {
+				// Remove all tables that have been emptied completely
 			if ( count($tableStructure['columns']) === 0 ) {
 				unset($sqlStructures[$tableName]);
+			} else {
+
+					// Parse diff result, add updating queries
+				foreach($sqlStructures[$tableName]['columns'] as $colName => $colStructure) {
+					if ( strstr($colName, '_SQL') === false && strstr($colName, '_DB') === false && strstr($colName, '_DIFF') === false ) {
+						$action	= '';
+
+						if (array_key_exists($tableName, $newTables) ) {
+							if ( $colName === 'id' ) {
+									// Query to create table with id-field
+								$action	= 'CREATE';
+							}
+						} else {
+								// No Diff? column is to be added new
+							if ( ! array_key_exists($colName . '_DIFF', $sqlStructures[$tableName]['columns']) ) {
+								$action	= 'ADD';
+								$sqlStructures[$tableName]['columns'][$colName]['action']	= $action;
+							} else {
+									// Diff exists, column is to be altered
+								$action	= 'ALTER';
+								$sqlStructures[$tableName]['columns'][$colName]	= $sqlStructures[$tableName]['columns'][$colName . '_SQL'];
+								$sqlStructures[$tableName]['columns'][$colName]['action']	= $action;
+								unset($sqlStructures[$tableName]['columns'][$colName . '_DB']);
+								unset($sqlStructures[$tableName]['columns'][$colName . '_SQL']);
+							}
+						}
+
+						if ( $action !== '' ) {
+								// Get query
+							$sqlStructures[$tableName]['columns'][$colName]['query']	= self::getUpdatingQuery($action, $tableName, $colName, $sqlStructures[$tableName]['columns'][$colName], $sqlStructuresBak);
+						}
+					}
+				}
 			}
 		}
 
 		return $sqlStructures;
 	}
+
+
+
+	/**
+	 * Render query to carry out DB updates
+	 *
+	 *	@param	String	$action
+	 *	@param	String	$tableName
+	 *	@param	String	$colName
+	 *	@param	Array	$colStructure
+	 *	@return	String
+	 */
+	private static function getUpdatingQuery($action, $tableName, $colName, array $colStructure, $allTablesStructure = array()) {
+		switch($action)	{
+				// Create table
+			case 'CREATE':
+				$tableColumnsSql	= self::getMultipleColumnsQueryPart($allTablesStructure[$tableName]['columns']);
+				$keys				= self::getKeysQueryPart($allTablesStructure[$tableName]['keys']);
+
+				$query	= 'CREATE TABLE `' . $tableName . '` ( '	. "\n"
+						. $tableColumnsSql . ', '					. "\n"
+						. 'PRIMARY KEY  (`id`)'
+						. ($keys !== '' ? ', '. "\n" : '')
+						. $keys						 				. "\n"
+						. ') ENGINE=MyISAM  DEFAULT CHARSET=utf8 ; ' . "\n";
+				break;
+
+				// Add column
+			case 'ADD':
+				$query	= 'ALTER TABLE `' . $tableName . '` ADD '	. "\n"
+						. self::getFieldColumnsQueryPart($colStructure)
+						. ';';
+				break;
+
+				// Alter column
+			case 'ALTER':
+				$query	= 'ALTER TABLE `' . $tableName . '` CHANGE ' . "\n"
+						. self::getFieldColumnsQueryPart($colStructure)
+						. ';';
+				break;
+		}
+
+		return $query;
+	}
+
+
+
+
+	private static function getFieldColumnsQueryPart(array $colStructure) {
+		$query	= $colStructure['field'] . ' '
+				. $colStructure['type'] . ' '
+				. $colStructure['attributes'] . ' '
+				. $colStructure['null'] . ' '
+				. $colStructure['default'] . ' '
+				. $colStructure['extra'] . ' ';
+
+		return str_replace('  ', ' ', $query);;
+	}
+
+
+
+
+	private static function getMultipleColumnsQueryPart($columnsStructure) {
+		$queryParts	= array();
+		foreach($columnsStructure as $colName => $colProps) {
+			$queryParts	[]= self::getFieldColumnsQueryPart($colProps);
+		}
+		$query	= implode(', ' . "\n", $queryParts);
+
+		return $query;
+	}
+
+
+
+	private static function getKeysQueryPart(array $keysArr) {
+		$query	= implode(', ' . "\n", $keysArr);
+
+		return trim($query);
+	}
+
 }
 
 ?>

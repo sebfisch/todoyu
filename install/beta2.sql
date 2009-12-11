@@ -3,6 +3,7 @@
 --
 
 ALTER TABLE `ext_project_task` ADD `sorting` SMALLINT UNSIGNED NOT NULL;
+
 UPDATE `ext_project_task` SET `sorting` = `tasknumber`;
 
 --

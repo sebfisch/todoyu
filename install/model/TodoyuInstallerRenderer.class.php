@@ -47,14 +47,17 @@ class TodoyuInstallerRenderer {
 	 * @param	String	$error
 	 */
 	public static function renderDBstructureCheck($error = '') {
-		if (! TodoyuInstallerDbHelper::isDBstructureUptodate() ) {
+		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
+
+		if ( count($dbDiff) > 0  ) {
 				// DB structure is NOT up-to-date! offer updating
 			$data	= array(
 				'title'		=> 'Welcome to the Todoyu installer',
 				'textclass'	=> 'text textInfo',
-				'version'	=> self::getVersionData()
+				'version'	=> self::getVersionData(),
+				'diffs'		=> $dbDiff
 			);
-			$tmpl	= 'install/view/welcome.tmpl';
+			$tmpl	= 'install/view/dbchanges.tmpl';
 
 			return render($tmpl, $data);
 		} else {

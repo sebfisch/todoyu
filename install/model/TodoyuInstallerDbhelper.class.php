@@ -113,7 +113,7 @@ class TodoyuInstallerDbHelper {
 			unset($missingTables[ $row['TABLE_NAME'] ]);
 		}
 
-		return array_flip($missingTables);
+		return $missingTables;
 	}
 
 
@@ -255,18 +255,16 @@ class TodoyuInstallerDbHelper {
 
 
 	/**
+	 *	Find all differences between 'tables.sql' files and DB of installed extensions
 	 *
-	 *	@return	Boolean
+	 *	@return	Array
 	 */
-	public static function isDBstructureUptodate() {
+	public static function getDBstructureDiff() {
 			// Get 'table.sql' definitions from extensions having them
 		$extTablesSql	= TodoyuInstallerSqlParser::getInstalledExtTablesSqls();
 
 			// Get all table names being declared
 		$extTablesNames	= TodoyuInstallerSqlParser::extractTableNames($extTablesSql);
-
-			// Find missing tables
-		$missingDbTables	=	self::getMissingDbTables($extTablesNames);
 
 			// Collect all columns declarations of all tables
 		$extTablesStructures	= TodoyuInstallerSqlParser::getAllTableStructures($extTablesNames, $extTablesSql);
@@ -274,21 +272,11 @@ class TodoyuInstallerDbHelper {
 			// Collect all tables' comparisom columns declarations as setup in DB
 		$extTablesStructuresInDB	= self::getStoredAndDeclaredDbTablesStructures($extTablesNames);
 
-			// Compare: Find tables with incomplete columns
-		$diff	= TodoyuInstallerSqlParser::getStructureDifferences($extTablesStructures, $extTablesStructuresInDB);
+			// Compare: Find missing tables and tables with incomplete columns
+		$newTables	= self::getMissingDbTables($extTablesNames);
+		$diff	= TodoyuInstallerSqlParser::getStructureDifferences($newTables, $extTablesStructures, $extTablesStructuresInDB);
 
-
-
-//		TodoyuDebug::printHtml($diff, 'differences');
-
-//		TodoyuDebug::printHtml($extTablesStructures, 'declared in tables.sql');
-//		TodoyuDebug::printHtml($extTablesStructuresInDB, 'declared in DB');
-
-//		TodoyuDebug::printHtml($extTablesSqls, 'all extensions sql');
-//		TodoyuDebug::printHtml($extTablesNames, 'all ext db table names');
-//		TodoyuDebug::printHtml($missingDbTables, 'missing db tables);
-
-		return true;
+		return $diff;
 	}
 
 
