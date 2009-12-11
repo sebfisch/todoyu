@@ -178,7 +178,7 @@ class TodoyuInstallerSqlParser {
 
 		$attributes	= trim($matches[0]);
 
-		return $attributes !== 'NOT' ? $attributes : '';
+		return ! in_array($attributes, array('NOT', 'DEFAULT')) ? $attributes : '';
 	}
 
 
@@ -201,12 +201,19 @@ class TodoyuInstallerSqlParser {
 
 
 
+	/**
+	 * Extract column dfault declaration
+	 *
+	 *	@param	String	$sql
+	 *	@return	String
+	 */
 	private static function extractColumnDefault($sql) {
 		$sql	= trim($sql);
 		$pattern= '/(DEFAULT|default)\\s\'[0-9a-zA-Z_]\'/';
 		preg_match($pattern, $sql, $matches);
 
 		$default	= $matches[0];
+		$default	= str_replace('default ', 'DEFAULT ', $default);
 
 		return $default;
 	}
@@ -223,9 +230,10 @@ class TodoyuInstallerSqlParser {
 	private static function extractColumnExtra($sql, array $partsToRemove) {
 		foreach($partsToRemove as $remove) {
 			$sql	= str_replace($remove, '', $sql);
+			$sql	= str_replace(strtolower($remove), '', $sql);
 		}
 		$sql	= trim($sql);
-		$sql	= str_replace(' ', '', $sql);
+		$sql	= strtoupper($sql);
 
 		return $sql;
 	}
@@ -373,6 +381,11 @@ class TodoyuInstallerSqlParser {
 					if ( count($colDiff) === 0 ) {
 							// Remove identic defined
 						unset($sqlStructures[$tableName]['columns'][$columnName]);
+					} else {
+							// Add lookups
+						$sqlStructures[$tableName]['columns'][$columnName . '_SQL']	= $sqlColumn;
+						$sqlStructures[$tableName]['columns'][$columnName . '_DB']	= $dbColumn;
+						$sqlStructures[$tableName]['columns'][$columnName . '_diff']= $colDiff;
 					}
 				}
 			}

@@ -156,6 +156,9 @@ class TodoyuInstallerDbHelper {
 				$attributes	= '';
 			}
 
+				// null
+			$null	= $row['IS_NULLABLE'] == 'YES' ? '' : 'NOT NULL';
+
 				// default
 			$default = strlen($row['COLUMN_DEFAULT']) > 0 ? 'DEFAULT \'' . $row['COLUMN_DEFAULT'] . '\'' : '';
 
@@ -167,7 +170,7 @@ class TodoyuInstallerDbHelper {
 			$structure[$tableName]['columns'][$columnName]['type']			= $type;
 //			$structure[$tableName]['columns'][$columnName]['collation']	= '';
 			$structure[$tableName]['columns'][$columnName]['attributes']	= $attributes;
-			$structure[$tableName]['columns'][$columnName]['null']			= $row['IS_NULLABLE'] == 'YES' ? 'NULL' : 'NOT NULL';
+			$structure[$tableName]['columns'][$columnName]['null']			= $null;
 			$structure[$tableName]['columns'][$columnName]['default']		= $default;
 			$structure[$tableName]['columns'][$columnName]['extra']			= $extra;
 		}
@@ -276,7 +279,7 @@ class TodoyuInstallerDbHelper {
 
 
 
-		TodoyuDebug::printHtml($diff, 'differences');
+//		TodoyuDebug::printHtml($diff, 'differences');
 
 //		TodoyuDebug::printHtml($extTablesStructures, 'declared in tables.sql');
 //		TodoyuDebug::printHtml($extTablesStructuresInDB, 'declared in DB');
