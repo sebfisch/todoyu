@@ -203,7 +203,7 @@ class TodoyuInstallerSqlParser {
 
 	private static function extractColumnDefault($sql) {
 		$sql	= trim($sql);
-		$pattern= '/DEFAULT\\s\'[0-9a-zA-Z_]\'/';
+		$pattern= '/(DEFAULT|default)\\s\'[0-9a-zA-Z_]\'/';
 		preg_match($pattern, $sql, $matches);
 
 		$default	= $matches[0];
@@ -365,8 +365,16 @@ class TodoyuInstallerSqlParser {
 			foreach($tableStructure['columns'] as $columnName => $columnStructure) {
 					// Check if column is declared identic in DB and tables.sql
 
-					// Remove identic defined
-				unset($sqlStructures[$tableName]['columns'][$columnName]);
+				$dbColumn	= $columnStructure;
+				$sqlColumn	= $sqlStructures[$tableName]['columns'][$columnName];
+
+				if ( is_array($sqlColumn) ) {
+					$colDiff	= array_diff_assoc($dbColumn, $sqlColumn);
+					if ( count($colDiff) === 0 ) {
+							// Remove identic defined
+						unset($sqlStructures[$tableName]['columns'][$columnName]);
+					}
+				}
 			}
 		}
 

@@ -142,6 +142,10 @@ class TodoyuInstallerDbHelper {
 			$tableName	= $row['TABLE_NAME'];
 			$columnName	= $row['COLUMN_NAME'];
 
+				// field
+			$field	= '`' . $columnName . '`';
+
+				// type, attributes
 			$type	= trim(strtolower($row['COLUMN_TYPE']));
 
 			if ( strstr($type, ' ') !== false) {
@@ -152,13 +156,20 @@ class TodoyuInstallerDbHelper {
 				$attributes	= '';
 			}
 
-			$structure[$tableName]['columns'][$columnName]['field']			= '`' . $columnName . '`';
+				// default
+			$default = strlen($row['COLUMN_DEFAULT']) > 0 ? 'DEFAULT \'' . $row['COLUMN_DEFAULT'] . '\'' : '';
+
+				// extra
+			$extra	= strtoupper($row['EXTRA']);
+
+				// Collect column structe data
+			$structure[$tableName]['columns'][$columnName]['field']			= $field;
 			$structure[$tableName]['columns'][$columnName]['type']			= $type;
 //			$structure[$tableName]['columns'][$columnName]['collation']	= '';
 			$structure[$tableName]['columns'][$columnName]['attributes']	= $attributes;
 			$structure[$tableName]['columns'][$columnName]['null']			= $row['IS_NULLABLE'] == 'YES' ? 'NULL' : 'NOT NULL';
-			$structure[$tableName]['columns'][$columnName]['default']		= strlen($row['COLUMN_DEFAULT']) > 0 ? '`' . $row['COLUMN_DEFAULT'] . '`' : '';
-			$structure[$tableName]['columns'][$columnName]['extra']		= $row['EXTRA'];
+			$structure[$tableName]['columns'][$columnName]['default']		= $default;
+			$structure[$tableName]['columns'][$columnName]['extra']			= $extra;
 		}
 
 		return $structure;
@@ -265,9 +276,11 @@ class TodoyuInstallerDbHelper {
 
 
 
-//		TodoyuDebug::printHtml($diff, 'differences');
+		TodoyuDebug::printHtml($diff, 'differences');
+
 //		TodoyuDebug::printHtml($extTablesStructures, 'declared in tables.sql');
 //		TodoyuDebug::printHtml($extTablesStructuresInDB, 'declared in DB');
+
 //		TodoyuDebug::printHtml($extTablesSqls, 'all extensions sql');
 //		TodoyuDebug::printHtml($extTablesNames, 'all ext db table names');
 //		TodoyuDebug::printHtml($missingDbTables, 'missing db tables);
