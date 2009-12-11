@@ -75,6 +75,7 @@ class TodoyuRecordManager {
 		unset($data['id']);
 
 		$data['date_create']	= NOW;
+		$data['date_update']	= NOW;
 		$data['id_user_create']	= userid();
 
 		return Todoyu::db()->addRecord($table, $data);
