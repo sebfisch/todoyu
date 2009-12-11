@@ -450,6 +450,53 @@ class TodoyuExtensions {
 		return $conflicts;
 	}
 
+	/**
+	 * Get 'tables.sql' contents of all installed extensions
+	 *
+	 * 	@return	String
+	 */
+	public static function getInstalledExtTablesSqls() {
+		$tableSqls	= array();
+
+		$extKeys	= self::getInstalledExtKeys();
+
+		foreach($extKeys as $extKey) {
+			$structure	= self::getExtTablesSql($extKey);
+
+			if ( ! $structure === false ) {
+				$tableSqls	.= "\n" . $structure;
+			}
+		}
+
+		return $tableSqls;
+	}
+
+
+
+	/**
+	 * Get 'tables.sql' contents of given extension
+	 *
+	 *	@param	String	$extKey
+	 */
+	private static function getExtTablesSql($extKey, $clean = true) {
+		$extPath	= self::getExtPath($extKey);
+		$sqlPath	= $extPath . '/config/db/tables.sql';
+
+		if ( file_exists( $sqlPath ) ) {
+				// 'tables.sql' found
+			$sql	= file_get_contents($sqlPath);
+
+			if ( $clean === true) {
+				$sql	= TodoyuSqlParser::cleanSql($sql);
+			}
+		} else {
+				// 'tables.sql' missing
+			$sql	= false;
+		}
+
+		return $sql;
+	}
+
 }
 
 ?>

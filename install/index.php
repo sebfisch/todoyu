@@ -7,23 +7,12 @@ chdir(dirname(dirname(__FILE__)));
 
 ob_start();
 
-	// Preinclude constants
-
-
 	// Include global include file
 require_once('core/inc/global.php');
-
 
 	// Load default init script
 require_once( PATH_CORE . '/inc/init.php');
 require_once( PATH_CORE .'/inc/version.php');
-
-
-require_once('install/model/TodoyuInstaller.class.php');
-require_once('install/model/TodoyuInstallerRenderer.class.php');
-require_once('install/model/TodoyuInstallerDbHelper.class.php');
-require_once('install/model/TodoyuInstallerSqlParser.class.php');
-
 
 	// Check if _ENABLE file is available (installer has finished). Redirect to login
 if( is_file(PATH . '/install/_ENABLE') ) {
