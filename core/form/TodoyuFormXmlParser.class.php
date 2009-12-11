@@ -174,6 +174,11 @@ class TodoyuFormXmlParser {
 
 		$config	= TodoyuArray::fromSimpleXML($fieldXmlObj);
 
+			// Check if field has restrictions and if they match
+		if( ! self::isAllowed($config) ) {
+			return false;
+		}
+
 		$field	= TodoyuFormFactory::createField($type, $name, $fieldset, $config);
 
 		if( $field instanceof TodoyuFormElement ) {
@@ -184,6 +189,18 @@ class TodoyuFormXmlParser {
 			return false;
 		}
 
+	}
+
+
+	private static function isAllowed(array $config) {
+//		if( array_key_exists('restrict', $config) ) {
+//			$restrict =& $config['restrict'];
+//			$conjunction	= trim($restrict['@attributes']['conjunction']
+//
+//			TodoyuDebug::printHtml($config, 'config');
+//		}
+
+		return true;
 	}
 
 }

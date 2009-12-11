@@ -99,7 +99,7 @@ require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrict.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrictIfNone.php' );
 
 	// Include strptime function if not defined on windows
-if(!function_exists('strptime')) {
+if( ! function_exists('strptime') ) {
 	require_once( PATH_CORE . '/inc/strptime.function.php' );
 }
 

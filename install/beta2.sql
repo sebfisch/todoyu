@@ -16,3 +16,10 @@ DROP TABLE `ext_portal_tab`;
 -- Rename id_user to id_user_create in timetracking
 --
 ALTER TABLE `ext_timetracking_track` CHANGE `id_user` `id_user_create` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0'
+
+
+--
+-- Add date_track to timetracking and set values of date_create
+--
+ALTER TABLE `ext_timetracking_track` ADD `date_track` INT( 10 ) NOT NULL DEFAULT '0' AFTER `date_create` ;
+UPDATE `ext_timetracking_track` SET `date_track` = `date_create`;

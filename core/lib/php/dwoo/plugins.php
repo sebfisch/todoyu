@@ -190,7 +190,7 @@ function Dwoo_Plugin_HourMin(Dwoo $dwoo, $seconds) {
  */
 
 function Dwoo_Plugin_isUserID_compile(Dwoo_Compiler $dwoo, $idUser) {
-	return 'userid() === ' . $idUser;
+	return 'userid() === intval(' . $idUser . ')';
 }
 
 

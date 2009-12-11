@@ -313,6 +313,17 @@ class TodoyuBaseObject implements ArrayAccess {
 		return $this->get($name);
 	}
 
+
+
+	/**
+	 * Check if current user is creator of the record
+	 *
+	 * @return	Bool
+	 */
+	public function isCurrentUserCreator() {
+		return intval($this->get('id_user_create')) === userid();
+	}
+
 }
 
 ?>
