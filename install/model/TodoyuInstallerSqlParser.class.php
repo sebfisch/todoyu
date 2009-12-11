@@ -264,7 +264,6 @@ class TodoyuInstallerSqlParser {
 					// Append columns to table structure data
 				$structures[$tableName]['columns']	= array_merge($structures[$tableName]['columns'], $tableColumns);
 			}
-
 		}
 
 		return $structures;
@@ -350,6 +349,35 @@ class TodoyuInstallerSqlParser {
 		}
 
 		return $sql;
+	}
+
+
+
+	/**
+	 * Find differences between tables' column structures in 'tables.sql' files and DB
+	 *
+	 *	@param	Array	$sqlStructures
+	 *	@param	Array	$dbStructures
+	 */
+	public static function getStructureDifferences(array $sqlStructures, array $dbStructures) {
+			// Compare each table, column from DB with declaration in 'tables.sql', filter out differing ones
+		foreach($dbStructures as $tableName => $tableStructure) {
+			foreach($tableStructure['columns'] as $columnName => $columnStructure) {
+					// Check if column is declared identic in DB and tables.sql
+
+					// Remove identic defined
+				unset($sqlStructures[$tableName]['columns'][$columnName]);
+			}
+		}
+
+			// Remove all tables that have been emptied completely
+		foreach($sqlStructures as $tableName => $tableStructure) {
+			if ( count($tableStructure['columns']) === 0 ) {
+				unset($sqlStructures[$tableName]);
+			}
+		}
+
+		return $sqlStructures;
 	}
 }
 

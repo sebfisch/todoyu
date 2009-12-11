@@ -101,8 +101,10 @@ class TodoyuInstallerDbHelper {
 		$tablesAmount	= count($tableNames) - 1;
 
 		$query	= '	SELECT TABLE_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME IN (';
+		$count	= 0;
 		foreach($tableNames as $num => $tableName) {
-			$query	.= '\'' . $tableName . '\'' . ($num < $tablesAmount ? ', ' : '');
+			$query	.= '\'' . $tableName . '\'' . ($count < $tablesAmount ? ', ' : '');
+			$count++;
 		}
 		$query	.= ')';
 
@@ -114,6 +116,53 @@ class TodoyuInstallerDbHelper {
 		return array_flip($missingTables);
 	}
 
+
+
+	/**
+	 * Collect all tables' comparisom columns declarations as setup in DB
+	 *
+	 *	@param	Array	$extTablesName
+	 *	@return Array
+	 */
+	private static function getStoredAndDeclaredDbTablesStructures(array $tablesNames) {
+		$tablesAmount	= count($tablesNames) - 1;
+		$query	= '	SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME IN (';
+
+		$count	= 0;
+		foreach($tablesNames as $tableName) {
+			$query	.= '\'' . $tableName . '\'' . ($count < $tablesAmount ? ', ' : '');
+			$count++;
+		}
+		$query	.= ')';
+
+		$structure	= array();
+
+		$res	= Todoyu::db()->query($query);
+		while($row = Todoyu::db()->fetchAssoc($res))	{
+			$tableName	= $row['TABLE_NAME'];
+			$columnName	= $row['COLUMN_NAME'];
+
+			$type	= trim(strtolower($row['COLUMN_TYPE']));
+
+			if ( strstr($type, ' ') !== false) {
+				$typeParts	= explode(' ', $type);
+				$type		= $typeParts[0];
+				$attributes	= $typeParts[1];
+			} else {
+				$attributes	= '';
+			}
+
+			$structure[$tableName]['columns'][$columnName]['field']			= '`' . $columnName . '`';
+			$structure[$tableName]['columns'][$columnName]['type']			= $type;
+//			$structure[$tableName]['columns'][$columnName]['collation']	= '';
+			$structure[$tableName]['columns'][$columnName]['attributes']	= $attributes;
+			$structure[$tableName]['columns'][$columnName]['null']			= $row['IS_NULLABLE'] == 'YES' ? 'NULL' : 'NOT NULL';
+			$structure[$tableName]['columns'][$columnName]['default']		= strlen($row['COLUMN_DEFAULT']) > 0 ? '`' . $row['COLUMN_DEFAULT'] . '`' : '';
+			$structure[$tableName]['columns'][$columnName]['extra']		= $row['EXTRA'];
+		}
+
+		return $structure;
+	}
 
 
 	/**
@@ -208,11 +257,17 @@ class TodoyuInstallerDbHelper {
 			// Collect all columns declarations of all tables
 		$extTablesStructures	= TodoyuInstallerSqlParser::getAllTableStructures($extTablesNames, $extTablesSql);
 
-			// Find tables with incomplete columns
+			// Collect all tables' comparisom columns declarations as setup in DB
+		$extTablesStructuresInDB	= self::getStoredAndDeclaredDbTablesStructures($extTablesNames);
+
+			// Compare: Find tables with incomplete columns
+		$diff	= TodoyuInstallerSqlParser::getStructureDifferences($extTablesStructures, $extTablesStructuresInDB);
 
 
 
+//		TodoyuDebug::printHtml($diff, 'differences');
 //		TodoyuDebug::printHtml($extTablesStructures, 'declared in tables.sql');
+//		TodoyuDebug::printHtml($extTablesStructuresInDB, 'declared in DB');
 //		TodoyuDebug::printHtml($extTablesSqls, 'all extensions sql');
 //		TodoyuDebug::printHtml($extTablesNames, 'all ext db table names');
 //		TodoyuDebug::printHtml($missingDbTables, 'missing db tables);
