@@ -192,14 +192,50 @@ class TodoyuFormXmlParser {
 	}
 
 
-	private static function isAllowed(array $config) {
-//		if( array_key_exists('restrict', $config) ) {
-//			$restrict =& $config['restrict'];
-//			$conjunction	= trim($restrict['@attributes']['conjunction']
-//
-//			TodoyuDebug::printHtml($config, 'config');
-//		}
 
+	/**
+	 * Check if a field has requirements
+	 *
+	 * @param	Array		$config			Field config
+	 * @return	Bool
+	 */
+	private static function isAllowed(array $config) {
+		if( array_key_exists('restrict', $config) ) {
+			$restrict 	=& $config['restrict'];
+			$and		= strtoupper(trim($restrict['@attributes']['conjunction'])) === 'AND';
+			$rights		= TodoyuArray::assure($restrict['allow']);
+
+				// SimpleXML handles the elements different if there is only one.
+				// If only one element, pack it into an array, so behaviour is the same
+			if( sizeof($rights) === 1 ) {
+				$rights = array($rights);
+			}
+
+				// Check each right
+			foreach($rights as $right) {
+					// Check if the ext and right keys are available
+				if( isset($right['@attributes']['ext']) && isset($right['@attributes']['right']) ) {
+						// Check if right is allowed
+					if( allowed($right['@attributes']['ext'], $right['@attributes']['right']) ) {
+							// If right allowed and conjunction is OR, field is allowed
+						if( ! $and ) {
+							return true;
+						}
+					} else {
+							// If right is disallowed and conjunction is AND, field is disallowed
+						if( $and ) {
+							return false;
+						}
+					}
+				}
+			}
+
+				// If all rights processed without a return
+				// AND = allowed, all rights passed   OR = disallowed, no right matched
+			return $and;
+		}
+
+			// If no requirements found for the filed, allow it
 		return true;
 	}
 
