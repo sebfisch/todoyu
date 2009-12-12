@@ -32,7 +32,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Data for table `ext_bookmark_bookmark`
 --
 
-INSERT INTO `ext_bookmark_bookmark` (`id`, `id_user_create`, `date_create`, `type`, `deleted`, `id_item`) VALUES 
+INSERT INTO `ext_bookmark_bookmark` (`id`, `id_user_create`, `date_create`, `type`, `deleted`, `id_item`) VALUES
 (1, 1, 1254233035, 1, 0, 2);
 
 --
@@ -164,23 +164,6 @@ INSERT INTO `ext_filter_set` (`id`, `date_update`, `date_create`, `deleted`, `so
 --
 
 
---
--- Data for table `ext_portal_mm_tab_filterset`
---
-
-INSERT INTO `ext_portal_mm_tab_filterset` (`id`, `id_tab`, `id_filterset`) VALUES
-(1, 1, 1),
-(2, 10, 2),
-(3, 2, 3);
-
---
--- Data for table `ext_portal_tab`
---
-
-INSERT INTO `ext_portal_tab` (`id`, `deleted`, `type`, `id_user`, `usergroups`, `class`, `title`, `is_or`, `sorting`) VALUES
-(1, 0, 'task', 0, '0', 'todos', 'LLL:portal.tab.todos', 1, 0),
-(2, 0, 'task', 0, '0', 'feedback', 'LLL:portal.tab.feedbacks', 0, 0),
-(3, 0, 'calendar', 0, '0', 'appointments', 'LLL:portal.tab.appointments', 0, 0);
 
 --
 -- Data for table `ext_projectbilling_invoice`

@@ -60,10 +60,11 @@ class TodoyuInstallerRenderer {
 			$tmpl	= 'install/view/dbchanges.tmpl';
 
 			return render($tmpl, $data);
-		} else {
-				// DB structure is up-to-date, proceed
-			return self::renderWelcome();
 		}
+//		 else {
+//				// DB structure is up-to-date, proceed
+//			return self::renderWelcome();
+//		}
 	}
 
 
@@ -146,7 +147,7 @@ class TodoyuInstallerRenderer {
 
 		if( is_array($dbData) ) {
 			try {
-				TodoyuInstallerDbHelper::checkDbConnection($dbData);
+				TodoyuDbAnalyzer::checkDbConnection($dbData);
 			} catch(Exception $e) {
 				$data['textclass']	= 'text textError';
 				$data['text']		= 'Error: ' . $e->getMessage();

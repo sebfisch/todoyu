@@ -33,7 +33,7 @@ class TodoyuInstaller {
 	 * @var	Array
 	 */
 	private static $steps = array(
-		'dbstructurecheck',
+//		'dbstructurecheck',
 		'welcome',
 		'servercheck',
 		'dbconnection',
@@ -78,10 +78,6 @@ class TodoyuInstaller {
 		$step	= self::$steps[$stepNr];
 
 		switch($step) {
-			case 'dbstructurecheck':
-				echo TodoyuInstallerRenderer::renderDBstructureCheck($error);
-				break;
-
 			case 'welcome':
 				echo TodoyuInstallerRenderer::renderWelcome($error);
 				break;
@@ -112,6 +108,10 @@ class TodoyuInstaller {
 
 			case 'finish':
 				echo TodoyuInstallerRenderer::renderFinish($error);
+				break;
+
+			case 'dbstructurecheck':
+				echo TodoyuInstallerRenderer::renderDBstructureCheck($error);
 				break;
 		}
 	}

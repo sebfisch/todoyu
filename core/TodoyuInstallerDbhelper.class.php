@@ -68,7 +68,7 @@ class TodoyuInstallerDbHelper {
 	/**
 	 * Import static data SQL files
 	 */
-	private static function importStaticData() {
+	public static function importStaticData() {
 			// Structure
 		$fileStructure	= PATH . '/install/db/db_structure.sql';
 		$structure		= file_get_contents($fileStructure);

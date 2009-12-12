@@ -9,3 +9,7 @@ function disableTextBox(selector)	{
 		textbox.disabled = true;
 	}
 }
+
+function skipDataImport() {
+	document.getElementById('action').value = 'config';
+}
