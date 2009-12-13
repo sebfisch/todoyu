@@ -269,11 +269,11 @@ CREATE TABLE `ext_comment_feedback` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ext_filter_condition`
+-- Table structure for table `ext_search_filtercondition`
 --
 
-DROP TABLE IF EXISTS `ext_filter_condition`;
-CREATE TABLE `ext_filter_condition` (
+DROP TABLE IF EXISTS `ext_search_filtercondition`;
+CREATE TABLE `ext_search_filtercondition` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `date_update` int(10) unsigned NOT NULL,
   `date_create` int(10) unsigned NOT NULL default '0',
@@ -289,11 +289,11 @@ CREATE TABLE `ext_filter_condition` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ext_filter_set`
+-- Table structure for table `ext_search_filterset`
 --
 
-DROP TABLE IF EXISTS `ext_filter_set`;
-CREATE TABLE `ext_filter_set` (
+DROP TABLE IF EXISTS `ext_search_filterset`;
+CREATE TABLE `ext_search_filterset` (
   `id` smallint(5) unsigned NOT NULL auto_increment,
   `date_update` int(10) unsigned NOT NULL,
   `date_create` int(10) unsigned NOT NULL default '0',

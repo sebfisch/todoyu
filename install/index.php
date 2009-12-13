@@ -19,11 +19,13 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+	// Activate error reporting
 error_reporting(E_ALL ^ E_NOTICE);
 
 	// Change current work directory to main directory to prevent path problems
 chdir(dirname(dirname(__FILE__)));
 
+	// Turn on output buffering
 ob_start();
 
 	// Include global include file
@@ -40,7 +42,7 @@ if( is_file(PATH . '/install/_ENABLE') ) {
 	exit();
 }
 
-	// Restart
+	// Restart?
 if( $_GET['restart'] == 1 ) {
 	TodoyuInstaller::setStep(0);
 	header('Location: ' . $_SERVER['SCRIPT_NAME']);
@@ -55,6 +57,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 	// Display step output
 TodoyuInstaller::displayStep($error);
 
+	// Flush output buffer
 ob_end_flush();
 
 ?>

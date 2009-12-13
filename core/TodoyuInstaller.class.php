@@ -33,7 +33,6 @@ class TodoyuInstaller {
 	 * @var	Array
 	 */
 	private static $steps = array(
-//		'dbstructurecheck',
 		'welcome',
 		'servercheck',
 		'dbconnection',
@@ -41,7 +40,10 @@ class TodoyuInstaller {
 		'importstatic',
 		'config',
 		'setadminpassword',
-		'finish'
+		'finish',
+
+		'void',
+		'dbstructurecheck',
 	);
 
 
@@ -52,7 +54,17 @@ class TodoyuInstaller {
 	 * @return	Integer
 	 */
 	public static function getStep() {
-		return intval($_SESSION['todoyuinstaller']['step']);
+		$step	= intval($_SESSION['todoyuinstaller']['step']);
+
+			// Initial step?
+		if ($step == 0) {
+				// Check whether installation has been carried out before, do DB upgrade check than
+			if ( ! file_exists(PATH . '/index.html') ) {
+				$step	= 9;
+			}
+		}
+
+		return $step;
 	}
 
 
