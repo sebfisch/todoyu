@@ -144,6 +144,7 @@ class TodoyuInstallerDbHelper {
 
 			// Compare: Find missing tables and tables with incomplete columns
 		$newTables	= TodoyuDbAnalyzer::getMissingTables($extTablesNames);
+
 		$diff	= self::getDBStructureDifferences($newTables, $extTablesStructures, $extTablesStructuresInDB);
 
 		return $diff;
@@ -157,7 +158,7 @@ class TodoyuInstallerDbHelper {
 	 *	@param	Array	$sqlStructures
 	 *	@param	Array	$dbStructures
 	 */
-	private static function getDBStructureDifferences($newTables, array $sqlStructures, array $dbStructures) {
+	private static function getDBStructureDifferences(array $newTables, array $sqlStructures, array $dbStructures) {
 		$sqlStructuresBak	= $sqlStructures;
 
 			// Compare each table, column from DB with declaration in 'tables.sql', filter out differing ones

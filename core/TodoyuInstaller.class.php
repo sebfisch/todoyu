@@ -330,7 +330,6 @@ class TodoyuInstaller {
 				}
 			}
 
-
 			$query	= TodoyuSqlParser::cleanSql($query);
 			$query	= str_replace("\n", ' ', $query);
 			$queries	= explode(';', $query);

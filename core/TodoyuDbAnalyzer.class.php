@@ -132,13 +132,13 @@ class TodoyuDbAnalyzer {
 	 *	@param	Array	$extTableNames
 	 *	@return	Array
 	 */
-	public static function getMissingTables(array $tableNames) {
-		$missingTables	= array_flip($tableNames);
-		$tablesAmount	= count($tableNames) - 1;
+	public static function getMissingTables(array $tablesNames) {
+		$missingTables	= array_flip($tablesNames);
+		$tablesAmount	= count($tablesNames) - 1;
 
 		$query	= '	SELECT TABLE_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME IN (';
 		$count	= 0;
-		foreach($tableNames as $num => $tableName) {
+		foreach($tablesNames as $num => $tableName) {
 			$query	.= '\'' . $tableName . '\'' . ($count < $tablesAmount ? ', ' : '');
 			$count++;
 		}

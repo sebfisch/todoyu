@@ -314,7 +314,9 @@ class TodoyuSqlParser {
 					// Append columns to table structure data
 				$structures[$tableName]['columns']	= array_merge($structures[$tableName]['columns'], $tableColumns);
 
-				$structures[$tableName]['keys']		= self::extractTableKeys($tableSql);
+				if (! array_key_exists('keys', $structures[$tableName]) ) {
+					$structures[$tableName]['keys']		= self::extractTableKeys($tableSql);
+				}
 			}
 		}
 
@@ -335,6 +337,7 @@ class TodoyuSqlParser {
 
 			// Extract code for all columns
 		$pattern	= '/(?<=\\(\\s).*(?=.PRIMARY)/';
+//		$pattern	= '/(?<=\\(\\s)(.|\\s)*(?=\\).)/';
 		preg_match($pattern, $sql, $matches);
 
 		if ( count($matches) > 0 ) {
@@ -342,16 +345,20 @@ class TodoyuSqlParser {
 				// Split into columns
 			$colsSqlArr	= explode(',', $allColumnsSql);
 			foreach($colsSqlArr as $columnSql) {
-				$columnName	= self::extractColumnName($columnSql);
-				if ( strlen($columnName) > 0 ) {
-					$columns[$columnName]['field']		= '`' . $columnName . '`';
-					$columns[$columnName]['type']		= self::extractColumnType($columnSql);
-	//				$columns[$columnName]['collation']	= '';
-					$columns[$columnName]['attributes']	= self::extractColumnAttributes($columnSql);
-					$columns[$columnName]['null']		= self::extractColumnNull($columnSql);
-					$columns[$columnName]['default']	= self::extractColumnDefault($columnSql);
+				$columnSql	= trim($columnSql);
+				if ( strstr($columnSql, 'PRIMARY KEY') === false ) {
+					$columnName	= self::extractColumnName($columnSql);
 
-					$columns[$columnName]['extra']		= self::extractColumnExtra($columnSql, $columns[$columnName]);
+					if ( strlen($columnName) > 0 ) {
+						$columns[$columnName]['field']		= '`' . $columnName . '`';
+						$columns[$columnName]['type']		= self::extractColumnType($columnSql);
+		//				$columns[$columnName]['collation']	= '';
+						$columns[$columnName]['attributes']	= self::extractColumnAttributes($columnSql);
+						$columns[$columnName]['null']		= self::extractColumnNull($columnSql);
+						$columns[$columnName]['default']	= self::extractColumnDefault($columnSql);
+
+						$columns[$columnName]['extra']		= self::extractColumnExtra($columnSql, $columns[$columnName]);
+					}
 				}
 			}
 		}
