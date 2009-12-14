@@ -473,6 +473,9 @@ class TodoyuPage {
 	 * @return	String
 	 */
 	public static function render() {
+			// Call hook just before page is rendered
+		TodoyuHookManager::callHook('core', 'renderPage');
+
 			// Add headlets
 		self::renderHeadlets();
 

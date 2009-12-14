@@ -35,6 +35,6 @@ $CONFIG['CACHE']['JS']['compress']	= false;
 $CONFIG['CACHE']['CSS']['merge']	= false;
 $CONFIG['CACHE']['CSS']['compress']	= false;
 
-
+TodoyuRightsManager::flushRights();
 
 ?>

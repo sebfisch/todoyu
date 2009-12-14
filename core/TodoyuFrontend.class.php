@@ -154,6 +154,17 @@ class TodoyuFrontend {
 
 
 	/**
+	 * Remove a menu entry
+	 *
+	 * @param	String		$key		Entry key
+	 */
+	public static function removeMenuEntry($key) {
+		unset($GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]);
+	}
+
+
+
+	/**
 	 * Get submenu tabs
 	 *
 	 * @param	String		$parentKey

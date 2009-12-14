@@ -196,7 +196,7 @@ class TodoyuArray {
 	 *	@param	Integer		$sortingFlag			Flag for normal (not natural) sorting. Use constants: SORT_NUMERIC, SORT_STRING, SORT_LOCALE_STRING
 	 *	@return	Array		Sorted array
 	 */
-	public static function sortByLabel($unsortedArray, $sortByLabel = 'position', $reversed = false, $caseSensitive = false, $useNaturalSorting = true, $sortingFlag = SORT_REGULAR, $avoidDuplicateFieldKey = '') {
+	public static function sortByLabel(array $unsortedArray, $sortByLabel = 'position', $reversed = false, $caseSensitive = false, $useNaturalSorting = true, $sortingFlag = SORT_REGULAR, $avoidDuplicateFieldKey = '') {
 			// Use the labels as key
 			// Prevent overwriting double labels
 		$labelKeyArray		= array();

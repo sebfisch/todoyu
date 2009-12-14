@@ -27,6 +27,6 @@
 	// ****************************************************************************
 
 	// Installed extensions
-$CONFIG['EXT']['installed'] = array('admin','user','project','sysmanager','loginpage','portal','calendar','timetracking','assets','daytracks','search','bookmark','contact','comment');
+$CONFIG['EXT']['installed'] = array('admin','user','search','sysmanager','project','comment','bugtracker','loginpage');
 
 ?>
