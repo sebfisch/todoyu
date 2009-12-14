@@ -329,7 +329,19 @@ class TodoyuInstaller {
 					$query .= $columnProps['query'] . "\n";
 				}
 			}
-			Todoyu::db()->query( $query );
+
+
+			$query	= TodoyuSqlParser::cleanSql($query);
+			$query	= str_replace("\n", ' ', $query);
+			$queries	= explode(';', $query);
+
+			foreach($queries as $query) {
+				$query	= trim($query);
+				if ( $query !== '' ) {
+					Todoyu::db()->query( $query . ';' );
+				}
+			}
+
 		}
 
 		self::setStep(12);
