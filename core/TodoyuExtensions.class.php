@@ -371,6 +371,18 @@ class TodoyuExtensions {
 
 
 	/**
+	 * Load all search config
+	 *
+	 */
+	public static function loadAllSearch() {
+		global $CONFIG;
+
+		self::loadAllTypeConfig('search');
+	}
+
+
+
+	/**
 	 * Check if an extension has dependents
 	 * Dependents need the current extension to work properly
 	 *
