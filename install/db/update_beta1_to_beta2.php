@@ -32,13 +32,19 @@ $query	= '	SELECT * FROM INFORMATION_SCHEMA.COLUMNS
 $hasRes	= Todoyu::db()->queryHasResult($query);
 
 	// If not done yet
-if ($hasRes) {
+if ($hasRes || 1) {
 		// Do updates now
 	$query	= file_get_contents( PATH . '/install/db/update_beta1_to_beta2.sql');
+	$query	= TodoyuSqlParser::cleanSql($query);
+	$query	= str_replace("\n", ' ', $query);
 
 	$queries	= explode(';', $query);
+
 	foreach($queries as $query) {
-		Todoyu::db()->query( $query );
+		$query	= trim($query);
+		if ( $query !== '' ) {
+			Todoyu::db()->query( $query . ';' );
+		}
 	}
 }
 
