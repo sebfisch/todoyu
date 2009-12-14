@@ -34,4 +34,4 @@ RENAME TABLE `ext_filter_set` TO `ext_search_filterset`;
 --
 -- Rename id_user to id_user_create in filterset
 --
-ALTER TABLE `ext_search_filterset` CHANGE `id_user` `id_user_create` SMALLINT( 5 ) UNSIGNED NOT NULL
+ALTER TABLE `ext_search_filterset` CHANGE `id_user` `id_user_create` SMALLINT( 5 ) UNSIGNED NOT NULL;

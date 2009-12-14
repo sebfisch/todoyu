@@ -208,6 +208,14 @@ class TodoyuFrontend {
 		return $tabs;
 	}
 
+
+	public static function setDefaultView($ext, $controller) {
+		$GLOBALS['CONFIG']['FE']['DEFAULT'] = array(
+			'ext'		=> $ext,
+			'controller'=> $controller
+		);
+	}
+
 }
 
 
