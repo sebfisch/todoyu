@@ -46,41 +46,13 @@ class TodoyuInstallerRenderer {
 	 *
 	 * @param	String	$error
 	 */
-	public static function renderDBstructureCheck($error = '') {
-		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
-
-		if ( count($dbDiff) > 0  ) {
-				// DB structure is NOT up-to-date! offer updating
-			$data	= array(
-				'title'		=> 'Welcome to the Todoyu installer',
-				'textclass'	=> 'text textInfo',
-				'version'	=> self::getVersionData(),
-				'diffs'		=> $dbDiff
-			);
-			$tmpl	= 'install/view/dbchanges.tmpl';
-
-			return render($tmpl, $data);
-		}
-//		 else {
-//				// DB structure is up-to-date, proceed
-//			return self::renderWelcome();
-//		}
-	}
-
-
-
-	/**
-	 * Render welcome screen
-	 *
-	 * @param	String	$error
-	 */
 	public static function renderWelcome($error = '') {
 		$data	= array(
 			'title'		=> 'Welcome to the Todoyu installer',
 			'textclass'	=> 'text textInfo',
 			'version'	=> self::getVersionData()
 		);
-		$tmpl	= 'install/view/welcome.tmpl';
+		$tmpl	= 'install/view/01_welcome.tmpl';
 
 		return render($tmpl, $data);
 	}
@@ -102,7 +74,14 @@ class TodoyuInstallerRenderer {
 			$next			= false;
 		}
 
-		$writable		= array('files', 'config', 'cache/tmpl/compile', 'config/db.php', 'config/extensions.php', 'config/extconf.php');
+		$writable		= array(
+			'files',
+			'config',
+			'cache/tmpl/compile',
+			'config/db.php',
+			'config/extensions.php',
+			'config/extconf.php'
+		);
 		$writableStatus	= array();
 
 		foreach($writable as $path) {
@@ -124,7 +103,7 @@ class TodoyuInstallerRenderer {
 			'writable'			=> $writableStatus,
 			'next'				=> $next
 		);
-		$tmpl	= 'install/view/servercheck.tmpl';
+		$tmpl	= 'install/view/02_servercheck.tmpl';
 
 		return render($tmpl, $data);
 	}
@@ -154,7 +133,7 @@ class TodoyuInstallerRenderer {
 			}
 		}
 
-		$tmpl	= 'install/view/dbconnection.tmpl';
+		$tmpl	= 'install/view/03_dbconnection.tmpl';
 
 		return render($tmpl, $data);
 	}
@@ -188,7 +167,7 @@ class TodoyuInstallerRenderer {
 			}
 		}
 
-		$tmpl	= 'install/view/dbselect.tmpl';
+		$tmpl	= 'install/view/04_dbselect.tmpl';
 
 		return render($tmpl, $data);
 	}
@@ -205,7 +184,7 @@ class TodoyuInstallerRenderer {
 			'title'		=> 'Import static data',
 			'version'	=> self::getVersionData()
 		);
-		$tmpl	= 'install/view/importstatic.tmpl';
+		$tmpl	= 'install/view/05_importstatic.tmpl';
 
 		return render($tmpl, $data);
 	}
@@ -225,7 +204,7 @@ class TodoyuInstallerRenderer {
 			'version'	=> self::getVersionData()
 		);
 
-		$tmpl	= 'install/view/config.tmpl';
+		$tmpl	= 'install/view/06_config.tmpl';
 
 		return render($tmpl, $data);
 	}
@@ -245,7 +224,7 @@ class TodoyuInstallerRenderer {
 			'version'	=> self::getVersionData()
 		);
 
-		$tmpl	= 'install/view/adminpassword.tmpl';
+		$tmpl	= 'install/view/07_adminpassword.tmpl';
 
 		return render($tmpl, $data);
 	}
@@ -260,8 +239,61 @@ class TodoyuInstallerRenderer {
 			'title'		=> 'Installation finished',
 			'version'	=> self::getVersionData()
 		);
-		$tmpl	= 'install/view/finish.tmpl';
+		$tmpl	= 'install/view/08_finish.tmpl';
 
+		return render($tmpl, $data);
+	}
+
+
+
+
+	public static function renderWelcomeToUpdate($error = '') {
+		$data	= array(
+			'title'		=> 'Welcome to todoyu datebase update',
+			'version'	=> self::getVersionData()
+		);
+
+		$tmpl	= 'install/view/09_welcometoupdate.tmpl';
+
+		return render($tmpl, $data);
+	}
+
+
+
+	/**
+	 * Render welcome screen
+	 *
+	 * @param	String	$error
+	 */
+	public static function renderDBstructureCheck($error = '') {
+		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
+
+			// DB structure is NOT up-to-date! offer updating
+		$data	= array(
+			'title'		=> 'Welcome to the Todoyu installer',
+			'textclass'	=> 'text textInfo',
+			'version'	=> self::getVersionData(),
+			'diffs'		=> $dbDiff
+		);
+		$tmpl	= 'install/view/10_dbchanges.tmpl';
+
+		return render($tmpl, $data);
+	}
+
+
+
+   /**
+ 	* Render update finished screen
+ 	*
+ 	*	@param	String	$error
+ 	*/
+	public static function renderUpdateFinished($error = '') {
+		$data	= array(
+			'title'		=> 'Update finished',
+			'version'	=> self::getVersionData()
+		);
+
+		$tmpl	= 'install/view/11_finishupdate.tmpl';
 		return render($tmpl, $data);
 	}
 

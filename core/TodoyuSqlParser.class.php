@@ -128,7 +128,7 @@ class TodoyuSqlParser {
 	private static function extractSingleTableName($sql) {
 		$tableName	= self::extractTableNames($sql);
 
-		return $tableName[0];
+		return isset($tableName[0]) ? $tableName[0] : false;
 	}
 
 
@@ -143,9 +143,15 @@ class TodoyuSqlParser {
 		$sql	= trim($sql);
 
 		$pattern= '/KEY\\s`[a-z]*`\\s\\(`[a-z_]*`\\)/';
-		preg_match_all($pattern, $sql, $keys);
+		preg_match_all($pattern, $sql, $matches);
 
-		return $keys[0];
+		if ( count($matches) > 0 ) {
+			$keys	= $matches[0];
+		} else {
+			$keys	= false;
+		}
+
+		return $keys;
 	}
 
 
@@ -161,7 +167,13 @@ class TodoyuSqlParser {
 		$pattern= '/(?<=`).*(?=`)/';
 		preg_match($pattern, $sql, $matches);
 
-		return $matches[0];
+		if ( count($matches) > 0 ) {
+			$name	= $matches[0];
+		} else {
+			$name	= false;
+		}
+
+		return $name;
 	}
 
 
@@ -193,9 +205,14 @@ class TodoyuSqlParser {
 		$pattern= '/(?<=\\)\\s)[a-zA-Z]*/';
 		preg_match($pattern, $sql, $matches);
 
-		$attributes	= trim($matches[0]);
+		if ( count($matches) > 0 ) {
+			$attributes	= trim($matches[0]);
+			$attributes	= ! in_array($attributes, array('NOT', 'DEFAULT')) ? $attributes : '';
+		} else {
+			$attributes	= false;
+		}
 
-		return ! in_array($attributes, array('NOT', 'DEFAULT')) ? $attributes : '';
+		return $attributes;
 	}
 
 
@@ -210,10 +227,14 @@ class TodoyuSqlParser {
 		$sql	= trim($sql);
 		$pattern= '/(NOT NULL|NULL)/';
 		preg_match($pattern, $sql, $matches);
-		$sql	= $matches[0];
 
+		if ( count($matches) > 0) {
+			$null	= $matches[0];
+		} else {
+			$null	= false;
+		}
 
-		return $matches[0];
+		return $null;
 	}
 
 
@@ -229,8 +250,12 @@ class TodoyuSqlParser {
 		$pattern= '/(DEFAULT|default)\\s\'[0-9a-zA-Z_]\'/';
 		preg_match($pattern, $sql, $matches);
 
-		$default	= $matches[0];
-		$default	= str_replace('default ', 'DEFAULT ', $default);
+		if ( count($matches) > 0 ) {
+			$default	= $matches[0];
+			$default	= str_replace('default ', 'DEFAULT ', $default);
+		} else {
+			$default = false;
+		}
 
 		return $default;
 	}
@@ -311,21 +336,23 @@ class TodoyuSqlParser {
 			// Extract code for all columns
 		$pattern	= '/(?<=\\(\\s).*(?=.PRIMARY)/';
 		preg_match($pattern, $sql, $matches);
-		$allColumnsSql	= $matches[0];
 
-			// Split into columns
-		$colsSqlArr	= explode(',', $allColumnsSql);
-		foreach($colsSqlArr as $columnSql) {
-			$columnName	= self::extractColumnName($columnSql);
-			if ( strlen($columnName) > 0 ) {
-				$columns[$columnName]['field']		= '`' . $columnName . '`';
-				$columns[$columnName]['type']		= self::extractColumnType($columnSql);
-//				$columns[$columnName]['collation']	= '';
-				$columns[$columnName]['attributes']	= self::extractColumnAttributes($columnSql);
-				$columns[$columnName]['null']		= self::extractColumnNull($columnSql);
-				$columns[$columnName]['default']	= self::extractColumnDefault($columnSql);
+		if ( count($matches) > 0 ) {
+			$allColumnsSql	= $matches[0];
+				// Split into columns
+			$colsSqlArr	= explode(',', $allColumnsSql);
+			foreach($colsSqlArr as $columnSql) {
+				$columnName	= self::extractColumnName($columnSql);
+				if ( strlen($columnName) > 0 ) {
+					$columns[$columnName]['field']		= '`' . $columnName . '`';
+					$columns[$columnName]['type']		= self::extractColumnType($columnSql);
+	//				$columns[$columnName]['collation']	= '';
+					$columns[$columnName]['attributes']	= self::extractColumnAttributes($columnSql);
+					$columns[$columnName]['null']		= self::extractColumnNull($columnSql);
+					$columns[$columnName]['default']	= self::extractColumnDefault($columnSql);
 
-				$columns[$columnName]['extra']		= self::extractColumnExtra($columnSql, $columns[$columnName]);
+					$columns[$columnName]['extra']		= self::extractColumnExtra($columnSql, $columns[$columnName]);
+				}
 			}
 		}
 

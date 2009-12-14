@@ -166,18 +166,19 @@ class TodoyuInstallerDbHelper {
 					// Check if column is declared identic in DB and tables.sql
 
 				$dbColumn	= $columnStructure;
-				$sqlColumn	= $sqlStructures[$tableName]['columns'][$columnName];
-
-				if ( is_array($sqlColumn) ) {
-					$colDiff	= array_diff_assoc($sqlColumn, $dbColumn);
-					if ( count($colDiff) === 0 ) {
-							// Remove identic defined
-						unset($sqlStructures[$tableName]['columns'][$columnName]);
-					} else {
-							// Add lookups
-						$sqlStructures[$tableName]['columns'][$columnName . '_SQL']	= $sqlColumn;
-						$sqlStructures[$tableName]['columns'][$columnName . '_DB']	= $dbColumn;
-						$sqlStructures[$tableName]['columns'][$columnName . '_DIFF']= $colDiff;
+				if ( array_key_exists($columnName, $sqlStructures[$tableName]['columns']) ) {
+					$sqlColumn	= $sqlStructures[$tableName]['columns'][$columnName];
+					if ( is_array($sqlColumn) ) {
+						$colDiff	= array_diff_assoc($sqlColumn, $dbColumn);
+						if ( count($colDiff) === 0 ) {
+								// Remove identic defined
+							unset($sqlStructures[$tableName]['columns'][$columnName]);
+						} else {
+								// Add lookups
+							$sqlStructures[$tableName]['columns'][$columnName . '_SQL']	= $sqlColumn;
+							$sqlStructures[$tableName]['columns'][$columnName . '_DB']	= $dbColumn;
+							$sqlStructures[$tableName]['columns'][$columnName . '_DIFF']= $colDiff;
+						}
 					}
 				}
 			}

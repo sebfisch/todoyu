@@ -61,6 +61,7 @@ class TodoyuInstallerQueryRenderer {
 				// Alter column
 			case 'ALTER':
 				$query	= 'ALTER TABLE `' . $tableName . '` CHANGE ' . "\n"
+						. $colStructure['field'] . ' '
 						. self::getFieldColumnsQueryPart($colStructure)
 						. ';';
 				break;

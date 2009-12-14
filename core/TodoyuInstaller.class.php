@@ -27,12 +27,15 @@
  */
 class TodoyuInstaller {
 
+
 	/**
 	 * Available steps
 	 *
 	 * @var	Array
 	 */
 	private static $steps = array(
+		'void',
+
 		'welcome',
 		'servercheck',
 		'dbconnection',
@@ -42,8 +45,10 @@ class TodoyuInstaller {
 		'setadminpassword',
 		'finish',
 
-		'void',
+		'welcometoupdate',
+		'updatebeta1tobeta2',
 		'dbstructurecheck',
+		'finishupdate',
 	);
 
 
@@ -58,13 +63,29 @@ class TodoyuInstaller {
 
 			// Initial step?
 		if ($step == 0) {
-				// Check whether installation has been carried out before, do DB upgrade check than
-			if ( ! file_exists(PATH . '/index.html') ) {
-				$step	= 9;
+				// Check whether installation has been carried out before
+			if ( self::hasBeenInstalledBefore() ) {
+				$step	= 9;	// 'welcometoupdate'
 			}
 		}
 
 		return $step;
+	}
+
+
+
+	/**
+	 * Check whether the installation has been carried out before
+	 *
+	 * 	@return	Boolean
+	 */
+	private static function hasBeenInstalledBefore() {
+		$query	= '	SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+					WHERE TABLE_NAME IN (\'ext_project_project\', \'ext_project_task\')';
+
+		$hasRes	= Todoyu::db()->queryHasResult($query);
+
+		return $hasRes;
 	}
 
 
@@ -81,57 +102,7 @@ class TodoyuInstaller {
 
 
 	/**
-	 * Display output for current step
-	 *
-	 *	@param	String	$error
-	 */
-	public static function displayStep($error) {
-		$stepNr	= self::getStep();
-		$step	= self::$steps[$stepNr];
-
-		switch($step) {
-			case 'welcome':
-				echo TodoyuInstallerRenderer::renderWelcome($error);
-				break;
-
-			case 'servercheck':
-				echo TodoyuInstallerRenderer::renderServercheck($error);
-				break;
-
-			case 'dbconnection':
-				echo TodoyuInstallerRenderer::renderDbConnection($error);
-				break;
-
-			case 'dbselect':
-				echo TodoyuInstallerRenderer::renderDbSelect($error);
-				break;
-
-			case 'importstatic':
-				echo TodoyuInstallerRenderer::renderImportStatic($error);
-				break;
-
-			case 'config':
-				echo TodoyuInstallerRenderer::renderConfig($error);
-				break;
-
-			case 'setadminpassword':
-				echo TodoyuInstallerRenderer::renderAdminPassword($error);
-				break;
-
-			case 'finish':
-				echo TodoyuInstallerRenderer::renderFinish($error);
-				break;
-
-			case 'dbstructurecheck':
-				echo TodoyuInstallerRenderer::renderDBstructureCheck($error);
-				break;
-		}
-	}
-
-
-
-	/**
-	 * Process current step data
+	 * Process current step data (order of evocation is: process, display)
 	 *
 	 *	@param	Array		$data
 	 *	@return	String
@@ -140,6 +111,7 @@ class TodoyuInstaller {
 		$action	= $data['action'];
 
 		switch($action) {
+				// Install
 			case 'start':
 				self::setStep(1);
 				break;
@@ -197,9 +169,91 @@ class TodoyuInstaller {
 				self::finish();
 				self::setStep(0);
 				break;
+
+
+
+				// Update
+			case 'welcometoupdate':
+				break;
+
+			case 'updatebeta1tobeta2':
+					// have mandatory updates be carried out
+				include( PATH . '/install/db/update_beta1_to_beta2.php');
+				self::setStep(10);
+
+				break;
+
+			case 'finishupdate':
+				self::finishUpdate();
+
+				break;
+
 		}
 
 		return $error;
+	}
+
+
+
+	/**
+	 * Display output for current step (order of evocation is: process, display)
+	 *
+	 *	@param	String	$error
+	 */
+	public static function displayStep($error) {
+		$stepNr	= self::getStep();
+		$step	= self::$steps[$stepNr];
+//echo $step;
+		switch($step) {
+				// Install
+			case 'welcome':
+				echo TodoyuInstallerRenderer::renderWelcome($error);
+				break;
+
+			case 'servercheck':
+				echo TodoyuInstallerRenderer::renderServercheck($error);
+				break;
+
+			case 'dbconnection':
+				echo TodoyuInstallerRenderer::renderDbConnection($error);
+				break;
+
+			case 'dbselect':
+				echo TodoyuInstallerRenderer::renderDbSelect($error);
+				break;
+
+			case 'importstatic':
+				echo TodoyuInstallerRenderer::renderImportStatic($error);
+				break;
+
+			case 'config':
+				echo TodoyuInstallerRenderer::renderConfig($error);
+				break;
+
+			case 'setadminpassword':
+				echo TodoyuInstallerRenderer::renderAdminPassword($error);
+				break;
+
+			case 'finish':
+				echo TodoyuInstallerRenderer::renderFinish($error);
+				break;
+
+
+				// Update
+			case 'welcometoupdate':
+				echo TodoyuInstallerRenderer::renderWelcomeToUpdate($error);
+				break;
+
+			case 'updatebeta1tobeta2':
+			case 'dbstructurecheck':
+					// check for changes in 'tables.sql' files against DB
+				echo TodoyuInstallerRenderer::renderDBstructureCheck($error);
+				break;
+
+			case 'finishupdate':
+				echo TodoyuInstallerRenderer::renderUpdateFinished($error);
+				break;
+		}
 	}
 
 
@@ -258,6 +312,27 @@ class TodoyuInstaller {
 	 */
 	private static function makeEncryptionKey() {
 		return str_replace('=', '', base64_encode(md5(NOW . serialize($_SERVER) . session_id() . rand(1000, 30000))));
+	}
+
+
+
+	/**
+	 * Gather and perform queries, forward to next step (update finished)
+	 */
+	private static function finishUpdate() {
+		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
+
+		if ( count($dbDiff) > 0  ) {
+			$query	= '';
+			foreach($dbDiff as $table => $tableData) {
+				foreach ($tableData['columns'] as $columnName => $columnProps) {
+					$query .= $columnProps['query'] . "\n";
+				}
+			}
+			Todoyu::db()->query( $query );
+		}
+
+		self::setStep(12);
 	}
 
 }

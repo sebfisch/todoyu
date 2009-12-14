@@ -1,4 +1,14 @@
 --
+-- Rename ext_filter_.. tables to ext_search...
+--
+
+RENAME TABLE `ext_filter_set` TO `ext_search_filterset`;
+
+RENAME TABLE `ext_filter_condition` TO `ext_search_filtercondition`;
+
+ALTER TABLE `ext_search_filterset` CHANGE `id_user` `id_user_create` SMALLINT( 5 ) UNSIGNED NOT NULL;
+
+--
 -- Add sorting column to task
 --
 

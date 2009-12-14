@@ -16,14 +16,15 @@
 					</li>
 				{/foreach}
 			</ul>
+			{if count($diffs) == 0}Congratulations! your database is up to date.{/if}
 		</div> 
 	</div>
 	<form method="post">
 		<button type="submit">
-			<span class="label">Perform Database updates</span>
+			<span class="label">Finish update</span>
 			<span class="rgt"></span>
 		</button>
-		<input type="hidden" name="action" value="start">
+		<input type="hidden" name="action" value="finishupdate">
 	</form>
 </div>
 {/block}

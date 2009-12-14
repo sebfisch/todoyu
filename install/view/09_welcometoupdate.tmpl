@@ -1,0 +1,21 @@
+{extends main.tmpl}
+
+{block name="box"}
+<h1><span class="title">{$title}</span><span class="rgt"></span></h1>
+<div class="blockcontent">
+
+	<div class="{$textclass}">Update steps:
+		<ul>
+			<li>Changes to DB structures since beta 1</li>
+			<li>Check for extensions' newly added DB tables and columns</li>
+		</ul> 
+	</div>
+	<form method="post">
+		<button type="submit">
+			<span class="label">Perform DB updates</span>
+			<span class="rgt"></span>
+		</button>
+		<input type="hidden" name="action" value="updatebeta1tobeta2">
+	</form>
+</div>
+{/block}
