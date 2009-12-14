@@ -24,8 +24,10 @@
  *
  */
 
+$dbName	= $GLOBALS['CONFIG']['DB']['database'];
 $query	= '	SELECT * FROM INFORMATION_SCHEMA.COLUMNS
-			WHERE TABLE_NAME IN (\'ext_filter_set\', \'ext_filter_condition\')';
+			WHERE TABLE_SCHEMA = \'' . $dbName . '\'
+			AND TABLE_NAME IN (\'ext_filter_set\', \'ext_filter_condition\')';
 
 $hasRes	= Todoyu::db()->queryHasResult($query);
 
