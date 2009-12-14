@@ -33,7 +33,11 @@ $hasRes	= Todoyu::db()->queryHasResult($query);
 if ($hasRes) {
 		// Do updates now
 	$query	= file_get_contents( PATH . '/install/db/update_beta1_to_beta2.sql');
-	Todoyu::db()->query( $query );
+
+	$queries	= explode(';', $query);
+	foreach($queries as $query) {
+		Todoyu::db()->query( $query );
+	}
 }
 
 ?>
