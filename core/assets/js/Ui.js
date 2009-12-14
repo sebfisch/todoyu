@@ -21,11 +21,11 @@
 Todoyu.Ui = {
 
 	/**
-	 *	Update element
+	 * Update element
 	 *
-	 *	@param	unknown_type	container
-	 *	@param	unknown_type	url
-	 *	@param	unknown_type	options
+	 *	@param	String	container
+	 *	@param	String	url
+	 *	@param	Object	options
 	 */
 	update: function(container, url, options) {
 		options = this._getDefaultOptions(options);
@@ -40,11 +40,11 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Replace element
+	 * Replace element
 	 *
-	 *	@param	unknown_type	container
-	 *	@param	unknown_type	url
-	 *	@param	unknown_type	options
+	 *	@param	String	container
+	 *	@param	String	url
+	 *	@param	Object	options
 	 */
 	replace: function(container, url, options) {
 		options = this._getDefaultOptions(options);
@@ -59,11 +59,11 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Append to element
+	 * Append to element
 	 *
-	 *	@param	unknown_type	container
-	 *	@param	unknown_type	url
-	 *	@param	unknown_type	options
+	 *	@param	String	container
+	 *	@param	String	url
+	 *	@param	Object	options
 	 */
 	append: function(container, url, options) {
 		options = this._getDefaultOptions(options);
@@ -75,11 +75,11 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Insert after element
+	 * Insert after element
 	 *
-	 *	@param	unknown_type	container
-	 *	@param	unknown_type	url
-	 *	@param	unknown_type	options
+	 *	@param	String	container
+	 *	@param	String	url
+	 *	@param	Object	options
 	 */
 	insert: function(container, url, options)	{
 		options = this._getDefaultOptions(options);
@@ -91,9 +91,10 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Set default options
+	 * Set default options
 	 *
-	 *	@param	unknown_type	options
+	 *	@param	Object	options
+	 *	@return	Object
 	 */
 	_getDefaultOptions: function(options) {
 		if( Object.isUndefined(options) ) {
@@ -118,9 +119,9 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Hide element
+	 * Hide element
 	 *
-	 *	@param	unknown_type	idElement
+	 *	@param	String	idElement
 	 */
 	hide: function(idElement) {
 		if( Todoyu.exists(idElement) ) {
@@ -131,9 +132,9 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Show element
+	 * Show element
 	 *
-	 *	@param	unknown_type	idElement
+	 *	@param	String	idElement
 	 */
 	show: function(idElement) {
 		if( Todoyu.exists(idElement) ) {
@@ -144,9 +145,9 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Toggle element visibility
+	 * Toggle element visibility
 	 *
-	 *	@param	unknown_type	idElement
+	 *	@param	String	idElement
 	 */
 	toggle: function(idElement) {
 		if( Todoyu.exists(idElement) ) {
@@ -157,10 +158,10 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Update toggler icon
+	 * Update toggler icon
 	 *
-	 *	@param	unknown_type	elementPrefix
-	 *	@param	unknown_type	idElement
+	 *	@param	String	elementPrefix
+	 *	@param	String	idElement
 	 */
 	updateToggleIcon: function(elementPrefix, idElement) {
 		if( $(elementPrefix + idElement + '-details').visible() ) {
@@ -173,10 +174,10 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Update element content
+	 * Update element content
 	 *
-	 *	@param	unknown_type	url
-	 *	@param	unknown_type	options
+	 *	@param	String	url
+	 *	@param	Object	options
 	 */
 	updateContent: function(url, options) {
 		return this.update('content', url, options);
@@ -196,10 +197,10 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Update panel
+	 * Update (left column) panel
 	 *
-	 *	@param	unknown_type	url
-	 *	@param	unknown_type	options
+	 *	@param	String	url
+	 *	@param	Object	options
 	 */
 	updatePanel: function(url, options) {
 		return this.update('leftCol', url, options);
@@ -208,10 +209,10 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Update context menu
+	 * Update context menu
 	 *
-	 *	@param	unknown_type	url
-	 *	@param	unknown_type	options
+	 *	@param	String	url
+	 *	@param	Object	options
 	 */
 	updateContextMenu: function(url, options) {
 		return this.update('contextmenu', url, options);
@@ -220,10 +221,10 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Update page
+	 * Update page
 	 *
 	 *	@param	String	ext
-	 *	@param	unknown_type	controller
+	 *	@param	String	controller
 	 */
 	updatePage: function(ext, controller) {
 		var url = {ext: ext};
@@ -240,7 +241,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	AJAX loader
+	 * AJAX loader
 	 *
 	 *	@param	Boolean	show
 	 */
@@ -262,7 +263,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Set cursor of link
+	 * Set cursor of link
 	 *
 	 *	@param	Boolean	wait
 	 */
@@ -281,9 +282,9 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Add hover effect to element
+	 * Add hover effect to element
 	 *
-	 *	@param	unknown_type	idElement
+	 *	@param	String	idElement
 	 */
 	addHoverEffect: function(idElement) {
 		var elt = $(idElement);
@@ -294,11 +295,11 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Hover effect handler (handles both mouseOver/ Out)
+	 * Hover effect handler (handles both mouseOver/ Out)
 	 *
-	 *	@param	unknown_type	event
-	 *	@param	unknown_type	over
-	 *	@param	unknown_type	element
+	 *	@param	Object	event
+	 *	@param	Boolean	over
+	 *	@param	Element	element
 	 */
 	hoverEffect: function(event, over, element) {
 		if( over ) {
@@ -311,7 +312,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Fix element anchor position
+	 * Fix element anchor position
 	 */
 	fixAnchorPosition: function() {
 
@@ -327,6 +328,8 @@ Todoyu.Ui = {
 
 	/**
 	 * @todo	comment
+	 * 
+	 *	@param	String	name
 	 */
 	scrollToAnchor: function(name) {
 		var element	= $(document.getElementsByName(name)[0]);
@@ -339,7 +342,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Scroll to given element
+	 * Scroll to given element
 	 *
 	 *	@param	Element		element
 	 */
@@ -365,7 +368,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Collapse / expand element
+	 * Collapse / expand element
 	 *
 	 *	@param	Integer	idElement
 	 *	@param	Element	toggle
@@ -389,7 +392,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Evoke twinkeling effect upon given element
+	 * Evoke twinkeling effect upon given element
 	 *
 	 *	@param	Element		element
 	 */
@@ -401,7 +404,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Check whether given element is currently visible
+	 * Check whether given element is currently visible
 	 * 
 	 *	@param	Element	element
 	 * 	@return	Boolean
@@ -417,7 +420,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Show time picker
+	 * Show time picker
 	 *
 	 *	@param	Integer	idElement
 	 *	@param	Array	config
@@ -425,8 +428,8 @@ Todoyu.Ui = {
 	 */
 	showTimePicker: function(idElement, config) {
 		config = $H({
-			'rangeHour': [0,23],
-			'rangeMinute': [0,55]
+			'rangeHour':	[0,23],
+			'rangeMinute':	[0,55]
 		}).merge(config).toObject();
 
 		return new TimePicker(idElement, config);
@@ -435,7 +438,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 *	Enter Description here...
+	 * Show duration picker
 	 *
 	 * 	@param	String	idElement
 	 * 	@return	TimePicker
@@ -443,8 +446,8 @@ Todoyu.Ui = {
 	showDurationPicker: function(idElement, config) {
 		config = config || {};
 		config = $H({
-			'rangeHour': [0,99],
-			'rangeMinute': [0,55]
+			'rangeHour':	[0,99],
+			'rangeMinute':	[0,55]
 		}).merge(config).toObject();
 
 		return new TimePicker(idElement);

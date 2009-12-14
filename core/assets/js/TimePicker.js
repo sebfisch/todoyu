@@ -35,6 +35,7 @@ var TimePicker = Class.create({
 
 	/**
 	 * Constructor
+	 *
 	 * @param	String		idElement
 	 */
 	initialize: function(idElement, config) {		
@@ -86,7 +87,8 @@ var TimePicker = Class.create({
 
 	/**
 	 * Set hour and update scroll
-	 * @param	Integer		hour
+	 * 
+	 *	@param	Integer		hour
 	 */
 	setHour: function(hour) {
 		this.hour = this._keepInRange(hour, this.config.rangeHour);
@@ -98,7 +100,8 @@ var TimePicker = Class.create({
 
 	/**
 	 * Set minute and update scroll
-	 * @param	Integer		minute
+	 * 
+	 *	@param	Integer		minute
 	 */
 	setMinute: function(minute) {		
 		this.minute = this._keepInRange(minute, this.config.rangeMinute);
@@ -163,12 +166,15 @@ var TimePicker = Class.create({
 
 	/**
 	 * Make element id, prefixed with element id
-	 * @param	String		name
+	 * 
+	 *	@param	String		name
 	 */
 	_makeID: function(name) {
 		return this.element.id + '-' + name;
 	},
-	
+
+
+
 	/**
 	 * Build picker html
 	 */
@@ -261,7 +267,8 @@ var TimePicker = Class.create({
 
 	/**
 	 * Event handler for picker click
-	 * @param	Event		event
+	 * 
+	 *	@param	Event		event
 	 */
 	_onSelection: function(event) {
 		var column	= event.findElement('div.dpCol');
@@ -288,7 +295,8 @@ var TimePicker = Class.create({
 
 	/**
 	 * Event handler for element click
-	 * @param	Event		event
+	 * 
+	 *	@param	Event		event
 	 */
 	_onElementClick: function(event) {
 		this.hide();
@@ -298,7 +306,8 @@ var TimePicker = Class.create({
 
 	/**
 	 * Event handler for hour scroll
-	 * @param	Event		event
+	 * 
+	 *	@param	Event		event
 	 */
 	_onHourScroll: function(e) {
 		Event.stop(e);
@@ -312,7 +321,8 @@ var TimePicker = Class.create({
 
 	/**
 	 * Event handler for minute scroll
-	 * @param	Event		event
+	 * 
+	 *	@param	Event		event
 	 */
 	_onMinuteScroll: function(e) {
 		Event.stop(e);
@@ -326,8 +336,9 @@ var TimePicker = Class.create({
 
 	/**
 	 * Make sure the value stays in the range.
-	 * @param	Integer		value
-	 * @param	Array		range		Bottom and top range
+	 * 
+	 *	@param	Integer		value
+	 *	@param	Array		range		Bottom and top range
 	 */
 	_keepInRange: function(value, range) {
 		if( value < range[0] ) {

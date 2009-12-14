@@ -23,14 +23,13 @@ Todoyu.Autocomplete = {
 	
 	
 	/**
-	 *	Initialize autocompleter ('inputAC')
-	 *
+	 * Initialize autocompleter ('inputAC')
 	 */
 	
 	/**
 	 * Initialize autocompleter
-	 * @param	Integer		idElement		ID of the element whichs value will be set by autocomplete
-	 * @param	Object		config			Custom config
+	 *	@param	Integer		idElement		ID of the element whichs value will be set by autocomplete
+	 *	@param	Object		config			Custom config
 	 */
 	install: function(idElement, config)	{
 		var inputField		= idElement + '-fulltext';
@@ -63,8 +62,9 @@ Todoyu.Autocomplete = {
 	
 	/**
 	 * Callback which builds the request url
-	 * @param	Integer		idElement
-	 * @param	String		acParam
+	 *
+	 *	@param	Integer		idElement
+	 *	@param	String		acParam
 	 */
 	beforeRequestCallback: function(idElement, acParam) {
 		var form	= $(idElement).up('form');
@@ -78,7 +78,8 @@ Todoyu.Autocomplete = {
 	
 	/**
 	 * Called if input field has changed (blur)
-	 * @param	Event		event
+	 * 
+	 *	@param	Event	event
 	 */
 	onInputChange: function(event) {
 			// If the change was called by a valid select, revert flag and do nothing
@@ -96,7 +97,8 @@ Todoyu.Autocomplete = {
 	
 	/**
 	 * On keypress. If its not the return key, the current value is invalid (until autocompleted)
-	 * @param	Event	event
+	 * 
+	 *	@param	Event	event
 	 */
 	onKeydown: function(event) {
 		if( event.keyCode !== Event.KEY_RETURN && event.keyCode !== Event.KEY_TAB ) {
@@ -107,8 +109,9 @@ Todoyu.Autocomplete = {
 		
 	/**
 	 * When autocomplete value is selected
-	 * @param	DomElement	inputField
-	 * @param	DomElement	selectedListElement
+	 * 
+	 *	@param	DomElement	inputField
+	 *	@param	DomElement	selectedListElement
 	 */
 	onElementSelected: function(inputField, selectedListElement) {
 		var baseID			= inputField.id.split('-').without('fulltext').join('-');
@@ -123,7 +126,8 @@ Todoyu.Autocomplete = {
 	
 	/**
 	 * Clear fields because of invalid input
-	 * @param	DomElement		element
+	 * 
+	 *	@param	DomElement		element
 	 */
 	clear: function(element) {
 		var idElement = $(element).id;

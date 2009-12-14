@@ -54,8 +54,8 @@ class TodoyuContextMenu {
 	/**
 	 * Initialize context menu with id of the processed element
 	 *
-	 * @param	Integer		$idElement
-	 * @param	Array		$funcRefs		Array with references ('Classname::method') to functions which generate menu items
+	 * @param	String		$type
+	 * @param	Insteger	$idElement
 	 */
 	public function __construct($type, $idElement) {
 		$this->type			= $type;
@@ -68,7 +68,6 @@ class TodoyuContextMenu {
 
 	/**
 	 * Initialize contextmenu with elements
-	 *
 	 */
 	private function init() {
 		TodoyuExtensions::loadAllContextMenus();
@@ -101,7 +100,6 @@ class TodoyuContextMenu {
 	 */
 	private function parseElements(array $elements) {
 		foreach($elements as $index => $element) {
-
 				// Parse jsAction and label
 			$elements[$index]['jsAction']	= $this->renderJsAction($element['jsAction']);
 			$elements[$index]['label']		= $this->renderLabel($element['label']);
@@ -152,11 +150,13 @@ class TodoyuContextMenu {
 	/**
 	 * Replace the #ID# placeholder with the current element ID
 	 *
-	 * @param	String		$jsAction		Javascript link
+	 * @param	String		$jsAction		JavaScript link
 	 * @return	String
 	 */
 	private function renderJsAction($jsAction) {
-		return str_replace('#ID#', $this->idElement, $jsAction);
+		$jsAction	= str_replace('#ID#', $this->idElement,	$jsAction);
+
+		return $jsAction;
 	}
 
 

@@ -40,9 +40,9 @@ Todoyu.Notification = {
 	/**
 	 * Add new notification
 	 * 
-	 * @param	String		type
-	 * @param	String		message
-	 * @param	Integer		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 *	@param	String		type
+	 *	@param	String		message
+	 *	@param	Integer		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	add: function(type, message, countdown) {
 		this.init();
@@ -170,7 +170,7 @@ Todoyu.Notification = {
 	idElement: 'notification',
 
 	/**
-	 *	Show notification
+	 * Show notification
 	 *
 	 *	@param	unknown_type	notificationHTML
 	 *	@param	unknown_type	elementToAddAfter

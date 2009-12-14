@@ -25,7 +25,7 @@ Todoyu.Tabs = {
 
 
 	/**
-	 *	Enter Description here...
+	 * Enter Description here...
 	 *
 	 *	@param	unknown_type	list
 	 *	@param	unknown_type	handlerFunction
@@ -47,7 +47,7 @@ Todoyu.Tabs = {
 
 
 	/**
-	 *	Enter Description here...
+	 * Enter Description here...
 	 *
 	 *	@param	unknown_type	list
 	 *	@param	unknown_type	handlerFunction
@@ -64,7 +64,7 @@ Todoyu.Tabs = {
 
 
 	/**
-	 *	Enter Description here...
+	 * Enter Description here...
 	 *
 	 *	@param	unknown_type	idList
 	 */
@@ -75,7 +75,7 @@ Todoyu.Tabs = {
 
 
 	/**
-	 *	Enter Description here...
+	 * Enter Description here...
 	 *
 	 *	@param	unknown_type	e
 	 *	@param	unknown_type	handlerFunction
@@ -106,7 +106,7 @@ Todoyu.Tabs = {
 
 
 	/**
-	 *	Set active element in a list
+	 * Set active element in a list
 	 *
 	 *	@param	String		element		Tab element or its ID
 	 */
@@ -120,7 +120,7 @@ Todoyu.Tabs = {
 	/**
 	 * Get currently active tab in a list
 	 *
-	 * @param	String		list		List element or its ID
+	 *	@param	String		list		List element or its ID
 	 */
 	getActive: function(list) {
 		return $(list).down('li.active');
@@ -130,7 +130,8 @@ Todoyu.Tabs = {
 	
 	/**
 	 * Get key of the active tab of the list
-	 * @param	String		list		List or its ID
+	 * 
+	 *	@param	String		list		List or its ID
 	 */
 	getActiveKey: function(list) {
 		return this.getActive(list).getAttribute('id').split('-').last();
@@ -140,8 +141,9 @@ Todoyu.Tabs = {
 
 	/**
 	 * Set labeltext of a tab
-	 * @param	String		element		Tab element or its ID
-	 * @param	String		label		Labeltext
+	 * 
+	 *	@param	String		element		Tab element or its ID
+	 *	@param	String		label		Labeltext
 	 */
 	setLabel: function(element, label) {
 		$(element).down('span.labeltext').update(label);
@@ -151,7 +153,7 @@ Todoyu.Tabs = {
 
 
 	/**
-	 *	Enter Description here...
+	 * Enter Description here...
 	 *
 	 *	@param	unknown_type	idTab
 	 *	@param	unknown_type	tabClass
@@ -194,7 +196,7 @@ Todoyu.Tabs = {
 
 
 	/**
-	 *	Enter Description here...
+	 * Enter Description here...
 	 *
 	 *	@param	unknown_type	e
 	 *	@param	unknown_type	over

@@ -25,13 +25,12 @@
 Todoyu.AjaxResponders = {
 	
 	/**
-	 *	Register the used ajax responders
-	 *
+	 * Register the used ajax responders
 	 */
 	register: function() {
 		Ajax.Responders.register({
-			'onCreate': this.onCreate.bind(this),
-			'onComplete': this.onComplete.bind(this)
+			'onCreate':		this.onCreate.bind(this),
+			'onComplete':	this.onComplete.bind(this)
 		});
 	},
 
@@ -41,7 +40,7 @@ Todoyu.AjaxResponders = {
 	 * Extend the prototype 'respondToReadyState' handler
 	 * Delete the onComplete handler if no access flag is set in header
 	 * 
-	 * @param	Ajax.Request	request
+	 *	@param	Ajax.Request	request
 	 */
 	onCreate: function(request) {
 		Todoyu.Ui.ajaxLoader(true);
@@ -62,7 +61,7 @@ Todoyu.AjaxResponders = {
 			oldRespondToReadyState.call(response.request, readyState);
 		};
 	},
-	
+
 
 
 	/**
@@ -82,7 +81,7 @@ Todoyu.AjaxResponders = {
 
 
 	/**
-	 *	Check if a hash header has been sent and scroll to it
+	 * Check whether hash header has been sent and scroll to it
 	 *
 	 *	@param	Ajax.Response		response
 	 */

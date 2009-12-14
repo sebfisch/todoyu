@@ -23,7 +23,7 @@ Todoyu.PanelWidget = {
 	observerCallbacks: {},
 
 	/**
-	 *	Toggle panel widget expanded/ collapsed, evoke storing of expand status
+	 * Toggle panel widget expanded/ collapsed, evoke storing of expand status
 	 *
 	 *	@param	unknown_type	ext
 	 *	@param	unknown_type	widgetName
@@ -53,7 +53,7 @@ Todoyu.PanelWidget = {
 
 
 	/**
-	 *	Save widget expand status
+	 * Save widget expand status
 	 *
 	 *	@param	unknown_type	ext
 	 *	@param	unknown_type	widgetName
@@ -70,7 +70,7 @@ Todoyu.PanelWidget = {
 
 
 	/**
-	 *	Please enter Description here...
+	 * Please enter Description here...
 	 *
 	 *	@param	String	widget
 	 *	@param	unknown_type	callbackFunction
@@ -86,7 +86,7 @@ Todoyu.PanelWidget = {
 
 
 	/**
-	 *	Please enter Description here...
+	 * Please enter Description here...
 	 *
 	 *	@param	String	widget
 	 *	@param	unknown_type	callbackFunction
@@ -104,7 +104,7 @@ Todoyu.PanelWidget = {
 
 
 	/**
-	 *	Please enter Description here...
+	 * Please enter Description here...
 	 *
 	 *	@param	String	widget
 	 *	@param	unknown_type	callbackFunction
@@ -120,7 +120,7 @@ Todoyu.PanelWidget = {
 
 
 	/**
-	 *	Please enter Description here...
+	 * Please enter Description here...
 	 *
 	 *	@param	unknown_type	extKey
 	 *	@param	unknown_type	widgetName

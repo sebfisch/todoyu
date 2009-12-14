@@ -27,7 +27,7 @@ Todoyu.Pref = {
 
 
 	/**
-	 *	Save user preference (AJAX)
+	 * Save user preference (AJAX)
 	 *
 	 *	@param	unknown_type	ext
 	 *	@param	unknown_type	action
@@ -39,7 +39,7 @@ Todoyu.Pref = {
 		var url		= Todoyu.getUrl(ext, 'preference');
 		var options	= {
 			'parameters': {
-				'action':		action,
+				'action':	action,
 				'value':	value,
 				'item':		idItem,
 				'area':		Todoyu.getArea()
@@ -56,10 +56,10 @@ Todoyu.Pref = {
 
 
 	/**
-	 *	Get user preference (AJAX)
+	 * Get user preference (AJAX)
 	 *
-	 *	@param	unknown_type	ext
-	 *	@param	unknown_type	preference
+	 *	@param	String	ext
+	 *	@param	String	preference
 	 */
 	get: function(ext, preference) {
 		var currentCount = this.count++;
@@ -68,7 +68,7 @@ Todoyu.Pref = {
 		var url		= Todoyu.getUrl(ext, 'preference');
 		var options	= {
 			'parameters': {
-				'action':			'get',
+				'action':		'get',
 				'preference':	preference
 			},
 			'asynchronous':		false,

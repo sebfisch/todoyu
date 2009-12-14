@@ -31,7 +31,7 @@ Todoyu.Time = {
 
 
 	/**
-	 *	Format given time, to e.g. '13:50:20'
+	 * Format given time, to e.g. '13:50:20'
 	 *
 	 *	@param	unknown_type	hours
 	 *	@param	unknown_type	minutes
@@ -50,7 +50,7 @@ Todoyu.Time = {
 
 
 	/**
-	 *	Format given time
+	 * Format given time
 	 *
 	 *	@param	unknown_type	time
 	 *	@param	unknown_type	separator
@@ -65,7 +65,7 @@ Todoyu.Time = {
 
 
 	/**
-	 *	Parse given time string to seconds
+	 * Parse given time string to seconds
 	 *
 	 *	@param	String	timeString
 	 *	@return	String
@@ -79,7 +79,7 @@ Todoyu.Time = {
 
 
 	/**
-	 *	Get time parts of given (timestamp) time
+	 * Get time parts of given (timestamp) time
 	 *
 	 *	@param	unknown_type	time
 	 *	@return	Array
@@ -101,7 +101,7 @@ Todoyu.Time = {
 
 
 	/**
-	 *	Get shifted time
+	 * Get shifted time
 	 *
 	 *	@todo	comment
 	 */		
@@ -130,7 +130,7 @@ Todoyu.Time = {
 
 
 	/**
-	 *	Get timestamp at start of day
+	 * Get timestamp at start of day
 	 *
 	 *	@param	Integer	time
 	 *	@return	Integer
@@ -148,7 +148,7 @@ Todoyu.Time = {
 
 
 	/**
-	 *	Get timestamp at start of week
+	 * Get timestamp at start of week
 	 *
 	 *	@param	Integer	time
 	 *	@return	Integer
@@ -187,7 +187,7 @@ Todoyu.Time = {
 
 
 	/**
-	 *	Get amount of days in month
+	 * Get amount of days in month
 	 *
 	 *	@param	Integer	time
 	 *	@return	Integer

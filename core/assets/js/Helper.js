@@ -21,7 +21,7 @@
 Todoyu.Helper = {
 
 	/**
-	 *	Convert value to Integer
+	 * Convert value to Integer
 	 *
 	 *	@param	Mixed	mixedvar
 	 */
@@ -53,9 +53,10 @@ Todoyu.Helper = {
 
 
 	/**
-	 *	Convert to 2-digit value (possibly add leading zero)
+	 * Convert to 2-digit value (possibly add leading zero)
 	 *
 	 *	@param	Mixed	number
+	 *	@return	Integer
 	 */
 	twoDigit: function(number) {
 		number = parseInt(number, 10);
@@ -70,11 +71,11 @@ Todoyu.Helper = {
 
 
 	/**
-	 *	Toggle source of image
+	 * Toggle source of image
 	 *
-	 *	@param	unknown_type	idImage
-	 *	@param	unknown_type	src1
-	 *	@param	unknown_type	src2
+	 *	@param	String	idImage
+	 *	@param	Source	src1
+	 *	@param	Source	src2
 	 */
 	toggleImage: function(idImage, src1, src2) {
 		var image = $(idImage);
@@ -91,8 +92,9 @@ Todoyu.Helper = {
 	/**
 	 *	Round with given precision
 	 *
-	 *	@param	unknown_type	value
-	 *	@param	unknown_type	precision
+	 *	@param	Float	value
+	 *	@param	Integer	precision
+	 *	@return	Float
 	 */
 	round: function(value, precision) {
 		value		= parseFloat(value);
@@ -107,7 +109,8 @@ Todoyu.Helper = {
 	/**
 	 *	Check whether given obj. is set
 	 *
-	 *	@param	unknown_type	objToTest
+	 *	@param	Mixed	objToTest
+	 *	@return	Boolean
 	 */
 	isset: function(objToTest) {
 		if (null === objToTest || 'undefined' == typeof(objToTest)) {
@@ -124,17 +127,20 @@ Todoyu.Helper = {
 	 *
 	 *	@param	Element		element
 	 *	@param	String		event e.g. 'click'
+	 *	@return	Mixed
 	 */
 	fireEvent: function(element, event){
 		if (document.createEventObject){
 				// dispatch for IE
 			var evt = document.createEventObject();
-			return element.fireEvent('on'+event,evt)
+
+			return element.fireEvent('on' + event, evt)
 		} else {
 				// dispatch for firefox + others
-			var evt = document.createEvent("HTMLEvents");
-			evt.initEvent(event, true, true ); // event type,bubbling,cancelable
-			return !element.dispatchEvent(evt);
+			var evt = document.createEvent('HTMLEvents');
+			evt.initEvent(event, true, true ); // event type, bubbling, cancelable
+
+			return ! element.dispatchEvent(evt);
 		}
 	}
 
