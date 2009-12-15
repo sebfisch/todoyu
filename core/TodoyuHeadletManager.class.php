@@ -69,8 +69,18 @@ class TodoyuHeadletManager {
 			'position'	=> intval($position),
 			'areas'		=> $areas
 		);
-
 	}
+
+
+
+	/**
+	 * Remove all registered headlets
+	 *
+	 */
+	public static function removeAllHeadlets() {
+		$GLOBALS['CONFIG']['HEADLETS'] = array();
+	}
+
 
 
 	/**

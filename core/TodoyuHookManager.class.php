@@ -44,14 +44,14 @@ class TodoyuHookManager {
 		if( ! is_array($hooks) ) {
 			$hooks = array();
 		}
-		
+
 		$hooks	= TodoyuArray::sortByLabel($hooks, 'position');
 
-		return TodoyuArray::getColumn($hooks, 'function');	
+		return TodoyuArray::getColumn($hooks, 'function');
 	}
 
-	
-	
+
+
 	/**
 	 * Call all registered hooks for an event
 	 *
@@ -63,7 +63,7 @@ class TodoyuHookManager {
 	public static function callHook($ext, $name, array $params = array()) {
 		$hookFuncRefs	= self::getHooks($ext, $name);
 		$returnValues	= array();
-		
+
 		foreach($hookFuncRefs as $hookFuncRef) {
 			$returnValues[] = TodoyuDiv::callUserFunctionArray($hookFuncRef, $params);
 		}
@@ -72,7 +72,7 @@ class TodoyuHookManager {
 	}
 
 
-	
+
 	/**
 	 * Call hooks which modify a data variable (ex: an array)
 	 *
@@ -87,7 +87,7 @@ class TodoyuHookManager {
 		$hookParams		= $additionalParams;
 			// Prepend data var
 		array_unshift($hookParams, $dataVar);
-		
+
 		foreach($hookFuncRefs as $hookFuncRef) {
 			$hookParams[0] = TodoyuDiv::callUserFunctionArray($hookFuncRef, $hookParams);
 		}
