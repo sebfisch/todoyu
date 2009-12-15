@@ -62,7 +62,7 @@ class TodoyuRightsManager {
 
 				$where	= '	id_group IN(' . implode(',', $userGroupIDs) . ')';
 
-				$rights	= Todoyu::db()->getArray($fields, $table, $where);
+				$rights = Todoyu::db()->getArray($fields, $table, $where);
 
 				foreach($rights as $right) {
 					self::$rights[$right['ext']][$right['right']] = 1;
@@ -87,9 +87,6 @@ class TodoyuRightsManager {
 		if( ! TodoyuAuth::isLoggedIn() ) {
 			return false;
 		}
-
-			// In Beta 1, everything is allowed if you're logged in
-//		return true;
 
 			// Allow all for admin
 		if( TodoyuAuth::isAdmin() ) {
@@ -265,6 +262,7 @@ class TodoyuRightsManager {
 			);
 
 			ob_end_clean();
+
 			echo render($tmpl, $data);
 		}
 

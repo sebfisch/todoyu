@@ -169,7 +169,7 @@ class Todoyu {
 	 *
 	 */
 	public static function resetUser() {
-		self::$user = TodoyuAuth::getUser();
+		self::$user = TodoyuAuth::getUser(true);
 	}
 
 

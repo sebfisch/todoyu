@@ -52,10 +52,11 @@ class TodoyuAuth {
 	/**
 	 * Get user object of current user
 	 *
+	 * @param	Bool		$reload		Force to reinit user from current session value
 	 * @return	TodoyuUser
 	 */
-	public static function getUser() {
-		if( is_null(self::$user) ) {
+	public static function getUser($reload = false) {
+		if( is_null(self::$user) || $reload ) {
 			if( self::getUserID() !== 0 ) {
 				self::$user = TodoyuUserManager::getUser(self::getUserID());
 			} else {
