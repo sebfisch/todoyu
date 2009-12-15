@@ -31,7 +31,6 @@ require_once('core/inc/init.php');
 TodoyuHeader::sendNoCacheHeaders();
 TodoyuHeader::sendHeaderHTML();
 
-
 	// Start output buffering
 ob_start();
 

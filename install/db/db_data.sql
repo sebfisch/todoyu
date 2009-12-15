@@ -19,16 +19,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 --
--- Data for table `ext_billing_currency`
---
-
-
---
--- Data for table `ext_billing_invoicereminder`
---
-
-
---
 -- Data for table `ext_bookmark_bookmark`
 --
 
@@ -132,10 +122,10 @@ INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_user
 (1, 1254233694, 0, 1, 2, 1, 0);
 
 --
--- Data for table `ext_filter_condition`
+-- Data for table `ext_search_filtercondition`
 --
 
-INSERT INTO `ext_filter_condition` (`id`, `date_update`, `date_create`, `id_user_create`, `deleted`, `id_set`, `filter`, `value`, `negate`) VALUES
+INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `id_user_create`, `deleted`, `id_set`, `filter`, `value`, `negate`) VALUES
 (7, 0, 0, 0, 0, 1, 'currentUserIsAssigned', '1', 0),
 (8, 0, 0, 0, 0, 1, 'status', '2,3', 0),
 (10, 0, 0, 0, 0, 2, 'currentUserIsOwner', '1', 0),
@@ -145,10 +135,10 @@ INSERT INTO `ext_filter_condition` (`id`, `date_update`, `date_create`, `id_user
 (260, 1254233948, 1254233948, 1, 0, 4, 'currentUserIsAssigned', '', 0);
 
 --
--- Data for table `ext_filter_set`
+-- Data for table `ext_search_filterset`
 --
 
-INSERT INTO `ext_filter_set` (`id`, `date_update`, `date_create`, `deleted`, `sorting`, `is_hidden`, `id_user`, `usergroups`, `type`, `title`, `conjunction`) VALUES
+INSERT INTO `ext_search_filterset` (`id`, `date_update`, `date_create`, `deleted`, `sorting`, `is_hidden`, `id_user_create`, `usergroups`, `type`, `title`, `conjunction`) VALUES
 (1, 0, 0, 0, 0, 1, 0, '', 'task', 'Meine Tasks: offen/ in Bearbeitung', 'AND'),
 (2, 0, 0, 0, 0, 1, 0, '0', 'task', 'Meine Todos', 'AND'),
 (3, 1246637647, 1246547545, 0, 0, 1, 474, '', 'task', 'Feedback erwartet', 'AND'),
@@ -161,57 +151,6 @@ INSERT INTO `ext_filter_set` (`id`, `date_update`, `date_create`, `deleted`, `so
 
 --
 -- Data for table `ext_fixed_task`
---
-
-
-
---
--- Data for table `ext_projectbilling_invoice`
---
-
-
---
--- Data for table `ext_projectbilling_invoiceapproval`
---
-
-
---
--- Data for table `ext_projectbilling_invoiceitem`
---
-
-
---
--- Data for table `ext_projectbilling_prepayment`
---
-
-
---
--- Data for table `ext_projectbilling_rate`
---
-
-
---
--- Data for table `ext_projectbilling_rateset`
---
-
-
---
--- Data for table `ext_projectbilling_reduction`
---
-
-
---
--- Data for table `ext_projectbilling_reminder`
---
-
-
---
--- Data for table `ext_projectbilling_settlement`
---
-
-
---
--- Data for table `ext_projectbilling_type`
 --
 
 
@@ -236,14 +175,14 @@ INSERT INTO `ext_project_project` (`id`, `date_update`, `id_user_create`, `date_
 -- Data for table `ext_project_task`
 --
 
-INSERT INTO `ext_project_task` (`id`, `date_update`, `id_project`, `date_create`, `deleted`, `id_user_create`, `tasknumber`, `description`, `status`, `estimated_workload`, `is_estimatedworkload_public`, `date_deadline`, `date_start`, `date_end`, `ext_fixed_isfixed`, `ext_fixed_idtask`, `id_user_assigned`, `is_acknowledged`, `ext_projectbilling_offeredprice`, `offered_accesslevel`, `is_offered`, `clearance_state`, `id_parenttask`, `title`, `id_worktype`, `type`, `date_finish`, `ext_projectbilling_type`, `is_private`, `is_public`, `is_onblock`, `id_user_owner`) VALUES
-(1, 1246985220, 1, 1246983025, 0, 1, 1, '<p>Projectmanagement</p>', 2, 3600, 0, 1264719600, 1246917600, 1264719600, 0, 0, 1, 1, 0, 0, 0, 0, 0, 'Projectmanagement', 0, 1, 0, 0, 0, 0, 0, 1),
-(2, 1254233016, 2, 1254232560, 0, 1, 1, '<p>Some random description in the task. Here you should write useful informations about this project</p>', 2, 3600, 0, 1256306040, 1254175200, 1256133240, 0, 0, 3, 1, 0, 0, 0, 0, 0, 'Sampletask', 1, 1, 0, 0, 0, 0, 0, 1),
-(3, 1254233504, 2, 1254233504, 0, 1, 2, '<ul><li>Welche Module mÃ¼ssen fehlerfrei laufen</li><li>Welche Module kommen als Debugversion in den Release</li><li>Updatezyklen fÃ¼r Beta Bugfixes festlegen</li></ul>', 2, 10800, 0, 1254233040, 1254175200, 1254233040, 0, 0, 3, 0, 0, 0, 0, 0, 0, 'Betarelease planen', 1, 2, 0, 0, 0, 0, 0, 3),
-(4, 1254233729, 2, 1254233534, 0, 1, 3, '<p>askfdl asldfjalsdfjalksdjfasdf adfa sdf asdfasdf</p>', 3, 3600, 0, 1256220660, 1254175200, 1254233460, 0, 0, 3, 1, 0, 0, 0, 0, 0, 'Random Task', 1, 1, 0, 0, 0, 0, 0, 1),
-(5, 1254233577, 2, 1254233577, 0, 1, 4, '<p>Das ist ein Subtask im Container</p><p>Verschachtelung beliebig tief mÃ¶glich</p>', 2, 3600, 0, 1254233520, 1254175200, 1254233520, 0, 0, 3, 0, 0, 0, 0, 0, 3, 'Subtask', 1, 1, 0, 0, 0, 0, 0, 1),
-(6, 1254233620, 2, 1254233620, 0, 1, 5, '<p>salkdfj adlsdjfalksdjfasjdfasdf asdfa sdfa sf</p>', 2, 3600, 0, 1257001980, 1254175200, 1256742780, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Noch ein Task', 1, 1, 0, 0, 0, 0, 0, 3),
-(7, 1254233877, 2, 1254233652, 0, 1, 6, '<p>Das ist sehr wichtig</p>', 3, 19200, 0, 1254233580, 1254175200, 1254233580, 0, 0, 2, 0, 0, 0, 0, 0, 3, 'Unbedingt schnell erledigen', 1, 1, 0, 0, 0, 0, 0, 1);
+INSERT INTO `ext_project_task` (`id`, `date_update`, `id_project`, `date_create`, `deleted`, `id_user_create`, `tasknumber`, `description`, `status`, `estimated_workload`, `is_estimatedworkload_public`, `date_deadline`, `date_start`, `date_end`, `ext_fixed_isfixed`, `ext_fixed_idtask`, `id_user_assigned`, `is_acknowledged`, `ext_projectbilling_offeredprice`, `offered_accesslevel`, `is_offered`, `clearance_state`, `id_parenttask`, `title`, `id_worktype`, `type`, `date_finish`, `ext_projectbilling_type`, `is_private`, `is_public`, `is_onblock`, `id_user_owner`, `sorting`) VALUES
+(1, 1246985220, 1, 1246983025, 0, 1, 1, '<p>Projectmanagement</p>', 2, 3600, 0, 1264719600, 1246917600, 1264719600, 0, 0, 1, 1, 0, 0, 0, 0, 0, 'Projectmanagement', 0, 1, 0, 0, 0, 0, 0, 1, 1),
+(2, 1254233016, 2, 1254232560, 0, 1, 1, '<p>Some random description in the task. Here you should write useful informations about this project</p>', 2, 3600, 0, 1256306040, 1254175200, 1256133240, 0, 0, 3, 1, 0, 0, 0, 0, 0, 'Sampletask', 1, 1, 0, 0, 0, 0, 0, 1, 2),
+(3, 1254233504, 2, 1254233504, 0, 1, 2, '<ul><li>Welche Module mÃ¼ssen fehlerfrei laufen</li><li>Welche Module kommen als Debugversion in den Release</li><li>Updatezyklen fÃ¼r Beta Bugfixes festlegen</li></ul>', 2, 10800, 0, 1254233040, 1254175200, 1254233040, 0, 0, 3, 0, 0, 0, 0, 0, 0, 'Betarelease planen', 1, 2, 0, 0, 0, 0, 0, 3, 3),
+(4, 1254233729, 2, 1254233534, 0, 1, 3, '<p>askfdl asldfjalsdfjalksdjfasdf adfa sdf asdfasdf</p>', 3, 3600, 0, 1256220660, 1254175200, 1254233460, 0, 0, 3, 1, 0, 0, 0, 0, 0, 'Random Task', 1, 1, 0, 0, 0, 0, 0, 1, 4),
+(5, 1254233577, 2, 1254233577, 0, 1, 4, '<p>Das ist ein Subtask im Container</p><p>Verschachtelung beliebig tief mÃ¶glich</p>', 2, 3600, 0, 1254233520, 1254175200, 1254233520, 0, 0, 3, 0, 0, 0, 0, 0, 3, 'Subtask', 1, 1, 0, 0, 0, 0, 0, 1, 5),
+(6, 1254233620, 2, 1254233620, 0, 1, 5, '<p>salkdfj adlsdjfalksdjfasjdfasdf asdfa sdfa sf</p>', 2, 3600, 0, 1257001980, 1254175200, 1256742780, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Noch ein Task', 1, 1, 0, 0, 0, 0, 0, 3, 6),
+(7, 1254233877, 2, 1254233652, 0, 1, 6, '<p>Das ist sehr wichtig</p>', 3, 19200, 0, 1254233580, 1254175200, 1254233580, 0, 0, 2, 0, 0, 0, 0, 0, 3, 'Unbedingt schnell erledigen', 1, 1, 0, 0, 0, 0, 0, 1, 7);
 
 --
 -- Data for table `ext_project_userrole`
@@ -270,9 +209,9 @@ INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_user_create`, `date
 -- Data for table `ext_timetracking_track`
 --
 
-INSERT INTO `ext_timetracking_track` (`id`, `date_update`, `id_user`, `date_create`, `id_task`, `workload_tracked`, `workload_chargeable`, `comment`) VALUES
-(1, 1254233739, 1, 1254233726, 4, 16, 0, ''),
-(2, 1254233883, 1, 1254233883, 7, 6, 0, '');
+INSERT INTO `ext_timetracking_track` (`id`, `date_update`, `id_user_create`, `date_create`, `date_track`, `id_task`, `workload_tracked`, `workload_chargeable`, `comment`) VALUES
+(1, 1254233739, 1, 1254233726, 1254233726, 4, 16, 0, ''),
+(2, 1254233883, 1, 1254233883, 1254233883, 7, 6, 0, '');
 
 --
 -- Data for table `ext_user_address`

@@ -38,13 +38,13 @@ require_once( PATH_CORE .'/inc/version.php');
 	// Check if _ENABLE file is available (installer has finished). Redirect to login
 if( is_file(PATH . '/install/_ENABLE') ) {
 	@unlink(PATH . '/index.html');
-	header("Location: ../index.php");
+	header('Location: ../index.php');
 	exit();
 }
 
 	// Restart?
 if( $_GET['restart'] == 1 ) {
-	TodoyuInstaller::setStep(0);
+	TodoyuInstaller::setStepNum(0);
 	header('Location: ' . $_SERVER['SCRIPT_NAME']);
 	exit();
 }

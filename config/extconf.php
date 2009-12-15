@@ -29,10 +29,16 @@
 	// Extension config
 $CONFIG['EXT']['admin']['extConf'] = unserialize(stripslashes('a:0:{}'));
 $CONFIG['EXT']['user']['extConf'] = unserialize(stripslashes('a:0:{}'));
-$CONFIG['EXT']['search']['extConf'] = unserialize(stripslashes('a:0:{}'));
-$CONFIG['EXT']['sysmanager']['extConf'] = unserialize(stripslashes('a:0:{}'));
 $CONFIG['EXT']['project']['extConf'] = unserialize(stripslashes('a:0:{}'));
+$CONFIG['EXT']['sysmanager']['extConf'] = unserialize(stripslashes('a:0:{}'));
+$CONFIG['EXT']['loginpage']['extConf'] = unserialize(stripslashes('a:0:{}'));
+$CONFIG['EXT']['portal']['extConf'] = unserialize(stripslashes('a:0:{}'));
+$CONFIG['EXT']['calendar']['extConf'] = unserialize(stripslashes('a:0:{}'));
+$CONFIG['EXT']['timetracking']['extConf'] = unserialize(stripslashes('a:0:{}'));
+$CONFIG['EXT']['assets']['extConf'] = unserialize(stripslashes('a:0:{}'));
+$CONFIG['EXT']['daytracks']['extConf'] = unserialize(stripslashes('a:0:{}'));
+$CONFIG['EXT']['search']['extConf'] = unserialize(stripslashes('a:0:{}'));
+$CONFIG['EXT']['bookmark']['extConf'] = unserialize(stripslashes('a:0:{}'));
+$CONFIG['EXT']['contact']['extConf'] = unserialize(stripslashes('a:0:{}'));
 $CONFIG['EXT']['comment']['extConf'] = unserialize(stripslashes('a:0:{}'));
-$CONFIG['EXT']['bugtracker']['extConf'] = unserialize(stripslashes('a:3:{s:6:\"enable\";i:1;s:4:\"user\";s:2:\"18\";s:7:\"project\";s:1:\"5\";}'));
-
 ?>

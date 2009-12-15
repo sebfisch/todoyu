@@ -34,8 +34,6 @@ class TodoyuInstaller {
 	 * @var	Array
 	 */
 	private static $steps = array(
-		'void',
-
 		'welcome',
 		'servercheck',
 		'dbconnection',
@@ -58,14 +56,14 @@ class TodoyuInstaller {
 	 *
 	 * @return	Integer
 	 */
-	public static function getStep() {
+	public static function getStepNum() {
 		$step	= intval($_SESSION['todoyuinstaller']['step']);
 
 			// Initial step?
 		if ($step == 0) {
 				// Check whether installation has been carried out before
 			if ( self::hasBeenInstalledBefore() ) {
-				$step	= 9;	// 'welcometoupdate'
+				$step	= 8;	// 'welcometoupdate'
 			}
 		}
 
@@ -80,12 +78,14 @@ class TodoyuInstaller {
 	 * 	@return	Boolean
 	 */
 	private static function hasBeenInstalledBefore() {
-		$query	= '	SELECT * FROM INFORMATION_SCHEMA.COLUMNS
-					WHERE TABLE_NAME IN (\'ext_project_project\', \'ext_project_task\')';
+		return ( $GLOBALS['CONFIG']['DB']['autoconnect'] === true );
 
-		$hasRes	= Todoyu::db()->queryHasResult($query);
-
-		return $hasRes;
+//		$query	= '	SELECT * FROM INFORMATION_SCHEMA.COLUMNS
+//					WHERE TABLE_NAME IN (\'ext_project_project\', \'ext_project_task\')';
+//
+//		$hasRes	= Todoyu::db()->queryHasResult($query);
+//
+//		return $hasRes;
 	}
 
 
@@ -95,7 +95,7 @@ class TodoyuInstaller {
 	 *
 	 * @param	Integer		$step
 	 */
-	public static function setStep($step) {
+	public static function setStepNum($step) {
 		$_SESSION['todoyuinstaller']['step'] = intval($step);
 	}
 
@@ -113,18 +113,18 @@ class TodoyuInstaller {
 		switch($action) {
 				// Install
 			case 'start':
-				self::setStep(1);
+				self::setStepNum(1);
 				break;
 
 			case 'servercheck':
-				self::setStep(2);
+				self::setStepNum(2);
 				break;
 
 			case 'dbconnection':
 				$_SESSION['todoyuinstaller']['db'] = $data;
 				try {
 					TodoyuDbAnalyzer::checkDbConnection($data);
-					self::setStep(3);
+					self::setStepNum(3);
 				} catch(Exception $e) {
 					$error = $e->getMessage();
 				}
@@ -133,7 +133,7 @@ class TodoyuInstaller {
 			case 'dbselect':
 				try {
 					TodoyuInstallerDbHelper::addDatabase();
-					self::setStep(4);
+					self::setStepNum(4);
 					TodoyuInstallerDbHelper::saveDbConfigInFile();
 				} catch(Exception $e)	{
 					$error = $e->getMessage();
@@ -142,13 +142,13 @@ class TodoyuInstaller {
 
 			case 'importstatic':
 				TodoyuInstallerDbHelper::importStaticData();
-				self::setStep(5);
+				self::setStepNum(5);
 				break;
 
 			case 'config':
 				try {
 					self::updateConfig($data);
-					self::setStep(6);
+					self::setStepNum(6);
 				} catch (Exception $e)	{
 					$error = $e->getMessage();
 				}
@@ -159,7 +159,7 @@ class TodoyuInstaller {
 			case 'setadminpassword':
 				try {
 					TodoyuInstallerDbHelper::updateAdminPassword($data['password'], $data['password_confirm']);
-					self::setStep(7);
+					self::setStepNum(7);
 				} catch(Exception $e)	{
 					$error = $e->getMessage();
 				}
@@ -167,7 +167,7 @@ class TodoyuInstaller {
 
 			case 'finish':
 				self::finish();
-				self::setStep(0);
+				self::setStepNum(0);
 				break;
 
 
@@ -179,7 +179,7 @@ class TodoyuInstaller {
 			case 'updatebeta1tobeta2':
 					// have mandatory updates be carried out
 				include( PATH . '/install/db/update_beta1_to_beta2.php');
-				self::setStep(10);
+				self::setStepNum(9);
 
 				break;
 
@@ -201,10 +201,10 @@ class TodoyuInstaller {
 	 *	@param	String	$error
 	 */
 	public static function displayStep($error) {
-		$stepNr	= self::getStep();
-		$step	= self::$steps[$stepNr];
-//echo $step;
-		switch($step) {
+		$stepNr		= self::getStepNum();
+		$stepName	= self::$steps[$stepNr];
+
+		switch($stepName) {
 				// Install
 			case 'welcome':
 				echo TodoyuInstallerRenderer::renderWelcome($error);
@@ -297,7 +297,7 @@ class TodoyuInstaller {
 			unlink(PATH . '/index.html');
 		}
 
-		self::setStep(0);
+		self::setStepNum(0);
 
 		header('Location: ' . dirname(SERVER_URL));
 		exit();
@@ -343,7 +343,7 @@ class TodoyuInstaller {
 
 		}
 
-		self::setStep(12);
+		self::setStepNum(11);
 	}
 
 }

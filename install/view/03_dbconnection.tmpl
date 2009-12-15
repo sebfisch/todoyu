@@ -8,11 +8,13 @@
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 	      <tr>
 	        <td width="109">Server</td>
-	        <td width="379"><input name="server" type="text" id="server" value="{$fields.server}" /></td>
+	        <td width="379">
+	        	<input name="server" type="text" id="server" value="{$fields.server|default:'localhost'}" />
+	        </td>
 	      </tr>
 	      <tr>
 	        <td>Username</td>
-	        <td><input type="text" name="username" id="username" value="{$fields.username}" /></td>
+	        <td><input type="text" name="username" id="username" value="{$fields.username|default:'root'}" /></td>
 	      </tr>
 	      <tr>
 	        <td>Password</td>
