@@ -1,1 +1,6 @@
-Changelog will be started after the first beta release. And this is now!
+2009-12-16	Todoyu Core Team <team@todoyu.com>
+	* Bugfix: Fixed most of the known bugs
+	* Added: Copy&Paste functions for task in contextmenu
+	* ???
+	* Info: Mostly all code is commented now
+	* Added: Doxygen documentation

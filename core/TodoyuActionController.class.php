@@ -146,6 +146,30 @@ abstract class TodoyuActionController {
 
 
 	/**
+	 * Forward the request to anonther action controller
+	 *
+	 * @param	String		$ext
+	 * @param	String		$controller
+	 * @param	String		$action
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function forward($ext, $controller, $action, array $params = array()) {
+		$controllerObject	= TodoyuActionDispatcher::getControllerObject($ext, $controller, $params);
+
+				// Execute action
+		try {
+			return $controller->runAction($action);
+		} catch(TodoyuControllerException $e) {
+			$e->printError();
+		} catch(Exception $e) {
+			die("Error: " . $e->getMessage());
+		}
+	}
+
+
+
+	/**
 	 * Dummy default action
 	 * If controller is called without an action and defaultAction is not defined in
 	 * extended object, print error

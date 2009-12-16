@@ -13,7 +13,15 @@ div.icon {
 }
 
 .contentMessage {
-	padding:0 0 12px 8px;
+	clear:both;
+	margin:10px;
+	padding:10px 10px 10px 50px;
+	background-color:#E3EACE;
+	border:2px dashed #D3DACE;	
+	font-weight:bold;
+	background-image:url(../img/icons.png);
+	background-position:15px -620px;
+	background-repeat:no-repeat;
 }
 
 
