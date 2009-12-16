@@ -36,7 +36,7 @@ classname or behaviour at this moment!
 2. How to install todoyu beta2
 ------------------------------
 * Copy all the files of the beta2 package to your webserver
-* When loading todoyu in the browser for the first time, the todoyu installer will start automaticly
+* When loading todoyu in the browser for the first time, the todoyu installer will start automatically
 
 
 3. How to upgrade a existing beta1 installation of todoyu to beta2
@@ -46,4 +46,4 @@ classname or behaviour at this moment!
 	* "config/system.php"
 * Overwrite all files of your beta1 installation with the beta2 files
 * Make sure the file "install/ENABLE" exists, remove the file "install/_ENABLE"
-* When loading todoyu in your browser, the upgrade tool of the installer will start automaticly
+* When loading todoyu in your browser, the upgrade tool of the installer will start automatically
