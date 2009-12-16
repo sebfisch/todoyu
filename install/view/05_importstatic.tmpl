@@ -4,15 +4,39 @@
 <h1><span class="title">{$title}</span><span class="rgt"></span></h1>
 <div class="blockcontent">
 	<p  class="text textSuccess">DB connection is stored, import static data now.</p>
+	
+	<div class="{$textclass}">
+		<div class="sqlQuery">
+			<br/>&nbsp;<strong>TODOYU CORE DATABASE TABLES:</strong><br/>
+			<ul>				
+				{foreach $coreStructure dbTable columns}
+					<li>
+						<strong>{$dbTable}:</strong>
+						{foreach $columns.columns columnName columnProps}
+							<pre>{$columnProps.query}</pre>
+						{/foreach}					
+					</li>
+				{/foreach}
+			</ul>
+			<br/>&nbsp;<strong>TODOYU EXTENSIONS DATABASE TABLES:</strong><br/>
+			<ul>
+				{foreach $extStructure dbTable columns}
+					<li>
+						<strong>{$dbTable}:</strong>
+						{foreach $columns.columns columnName columnProps}
+							<pre>{$columnProps.query}</pre>
+						{/foreach}					
+					</li>
+				{/foreach}
+			</ul>
+		</div> 
+	</div>
+	
 	<form method="post">
 		<button type="submit">
 			<span class="label">Import static database data</span>
 			<span class="rgt"></span>
 		</button>
-		<!--<button type="submit" onmousedown="skipDataImport();">
-			<span class="label">Skip data import, i am updating</span>
-			<span class="rgt"></span>
-		</button>-->
 		<input type="hidden" name="action" value="importstatic">
 	</form>
 </div>

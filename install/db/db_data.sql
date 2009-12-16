@@ -167,9 +167,9 @@ INSERT INTO `ext_project_mm_project_user` (`id`, `id_project`, `id_user`, `id_us
 -- Data for table `ext_project_project`
 --
 
-INSERT INTO `ext_project_project` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `description`, `is_fixed`, `id_fixedproject`, `status`, `ext_hosting_hoster`, `id_rateset`, `id_customer`, `ext_hosting_domain`, `ext_projectbilling_settlementinterval`, `date_start`, `date_end`, `date_deadline`, `fixedcosts`, `is_fixedcosts_paid`, `date_finish`, `ext_projectbilling_reduction`) VALUES
-(1, 1246982959, 1, 1246982959, 0, 'My First Project', '<p>This is the first todoyu project.</p>', 0, 0, 3, 0, 0, 4, '', 0, 1246917600, 1264719600, 1264719600, 0, 0, 0, 0),
-(2, 1254233593, 1, 1254213566, 0, 'Example Project', '<p>This is the project description. This text should contain the relevant data for your project.</p>', 0, 0, 3, 0, 0, 5, '', 0, 1254175200, 1262214000, 1262905200, 0, 0, 0, 0);
+INSERT INTO `ext_project_project` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `description`, `is_fixed`, `id_fixedproject`, `status`, `ext_hosting_hoster`, `id_rateset`, `id_customer`, `ext_hosting_domain`, `ext_projectbilling_settlementinterval`, `date_start`, `date_end`, `date_deadline`, `fixedcosts`, `is_fixedcosts_paid`, `date_finish`) VALUES
+(1, 1246982959, 1, 1246982959, 0, 'My First Project', '<p>This is the first todoyu project.</p>', 0, 0, 3, 0, 0, 4, '', 0, 1246917600, 1264719600, 1264719600, 0, 0, 0),
+(2, 1254233593, 1, 1254213566, 0, 'Example Project', '<p>This is the project description. This text should contain the relevant data for your project.</p>', 0, 0, 3, 0, 0, 5, '', 0, 1254175200, 1262214000, 1262905200, 0, 0, 0);
 
 --
 -- Data for table `ext_project_task`

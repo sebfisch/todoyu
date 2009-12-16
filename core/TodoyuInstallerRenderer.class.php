@@ -182,7 +182,9 @@ class TodoyuInstallerRenderer {
 	public static function renderImportStatic($error = '') {
 		$data	= array(
 			'title'		=> 'Import static data',
-			'version'	=> self::getVersionData()
+			'version'	=> self::getVersionData(),
+			'coreStructure'	=> TodoyuInstallerDbHelper::getCoreDBstructures(),
+			'extStructure'	=> TodoyuInstallerDbHelper::getExtDBstructures()
 		);
 		$tmpl	= 'install/view/05_importstatic.tmpl';
 

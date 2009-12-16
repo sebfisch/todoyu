@@ -462,13 +462,34 @@ class TodoyuExtensions {
 		return $conflicts;
 	}
 
+
+
+	/**
+	 * Get 'tables.sql' contents of todoyu core
+	 *
+	 * 	@return	String
+	 */
+	public static function getCoreTablesSqls() {
+		$tableSqls	= '';
+
+		$structure	= file_get_contents( PATH . '/core/config/db/tables.sql');
+
+		if ( ! $structure === false ) {
+			$tableSqls	.= "\n" . $structure;
+		}
+
+		return $tableSqls;
+	}
+
+
+
 	/**
 	 * Get 'tables.sql' contents of all installed extensions
 	 *
 	 * 	@return	String
 	 */
 	public static function getInstalledExtTablesSqls() {
-		$tableSqls	= array();
+		$tableSqls	= '';
 
 		$extKeys	= self::getInstalledExtKeys();
 

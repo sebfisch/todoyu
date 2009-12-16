@@ -69,26 +69,32 @@ class TodoyuInstallerDbHelper {
 	 * Import static data SQL files
 	 */
 	public static function importStaticData() {
-			// Structure
-		$fileStructure	= PATH . '/install/db/db_structure.sql';
-		$structure		= file_get_contents($fileStructure);
-		$structureParts	= explode(';', $structure);
+			// Structure (from core and extensions 'tables.sql' files)
+		$coreStructure	= TodoyuInstallerDbHelper::getCoreDBstructures();
+		$extStructure	= TodoyuInstallerDbHelper::getExtDBstructures();
 
-		foreach($structureParts as $structurePart) {
-			if( trim($structurePart) !== '' ) {
-				Todoyu::db()->query($structurePart);
-			}
+		if ( count($coreStructure) > 0 ) {
+			TodoyuInstallerDbHelper::compileAndRunInstallerQueries($coreStructure);
 		}
+		if ( count($extStructure) > 0  ) {
+			TodoyuInstallerDbHelper::compileAndRunInstallerQueries($extStructure);
+		}
+
+//		$fileStructure	= PATH . '/install/db/db_structure.sql';
+//		$structure		= file_get_contents($fileStructure);
+//		$structureParts	= explode(';', $structure);
+//
+//		foreach($structureParts as $structurePart) {
+//			if( trim($structurePart) !== '' ) {
+//				Todoyu::db()->query($structurePart);
+//			}
+//		}
 
 			// Data
 		$fileData		= PATH . '/install/db/db_data.sql';
 		$data			= file_get_contents($fileData);
-//		$splitPattern	= "/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*[^'|^\\\']$)/";
-//		$dataParts		= preg_split($splitPattern, $data);
+
 		$dataParts		= explode(';', $data);
-
-		// preg_split causes fatal error on windows systems. Bug?
-
 		foreach($dataParts as $dataPart) {
 			if( trim($dataPart) !== '' ) {
 				Todoyu::db()->query($dataPart);
@@ -120,6 +126,62 @@ class TodoyuInstallerDbHelper {
 		);
 
 		Todoyu::db()->doUpdate($table, $where, $fields);
+	}
+
+
+
+	/**
+	 *	Get all core DB tables' structures for fresh install from 'tables.sql'
+	 *
+	 *	@return	Array
+	 */
+	public static function getCoreDBstructures() {
+			// Get 'table.sql' definitions from extensions having them
+		$tablesSql	= TodoyuExtensions::getCoreTablesSqls();
+
+			// Get all table names being declared
+		$tablesNames	= TodoyuSqlParser::extractTableNames($tablesSql);
+
+			// Collect all columns declarations of all tables
+		$tablesStructures	= TodoyuSqlParser::getAllTableStructures($tablesNames, $tablesSql);
+
+			// Collect all tables' comparisom columns declarations as setup in DB
+		$tablesStructuresInDB	= array();
+
+			// During a fresh install all tables are new ;)
+		$newTables	=  array_flip($tablesNames);
+
+		$structures	= self::getDBStructureDifferences($newTables, $tablesStructures, $tablesStructuresInDB);
+
+		return $structures;
+	}
+
+
+
+	/**
+	 *	Get all extensions DB tables' structures for fresh install from 'tables.sql'
+	 *
+	 *	@return	Array
+	 */
+	public static function getExtDBstructures() {
+			// Get 'table.sql' definitions from extensions having them
+		$tablesSql	= TodoyuExtensions::getInstalledExtTablesSqls();
+
+			// Get all table names being declared
+		$tablesNames	= TodoyuSqlParser::extractTableNames($tablesSql);
+
+			// Collect all columns declarations of all tables
+		$tablesStructures	= TodoyuSqlParser::getAllTableStructures($tablesNames, $tablesSql);
+
+			// Collect all tables' comparisom columns declarations as setup in DB
+		$tablesStructuresInDB	= array();
+
+			// During a fresh install all tables are new ;)
+		$newTables	=  array_flip($tablesNames);
+
+		$structures	= self::getDBStructureDifferences($newTables, $tablesStructures, $tablesStructuresInDB);
+
+		return $structures;
 	}
 
 
@@ -227,6 +289,34 @@ class TodoyuInstallerDbHelper {
 		}
 
 		return $sqlStructures;
+	}
+
+
+
+	/**
+	 * Compile, clean, separate and run all queries included in given structural analysis results array
+	 *
+	 *	@param	Array	$dbDiff
+	 */
+	public static function compileAndRunInstallerQueries(array $dbStructures) {
+		$query	= '';
+
+		foreach($dbStructures as $table => $tableData) {
+			foreach ($tableData['columns'] as $columnName => $columnProps) {
+				$query .= $columnProps['query'] . "\n";
+			}
+		}
+
+		$query	= TodoyuSqlParser::cleanSql($query);
+		$query	= str_replace("\n", ' ', $query);
+		$queries	= explode(';', $query);
+
+		foreach($queries as $query) {
+			$query	= trim($query);
+			if ( $query !== '' ) {
+				Todoyu::db()->query( $query . ';' );
+			}
+		}
 	}
 
 

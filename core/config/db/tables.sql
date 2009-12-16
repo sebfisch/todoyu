@@ -65,16 +65,16 @@ CREATE TABLE `static_country_zone` (
 
 CREATE TABLE `static_currency` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `iso_alpha` char(3) DEFAULT NULL,
+  `iso_alpha` char(3) DEFAULT '' NULL,
   `iso_num` int(11) unsigned DEFAULT '0',
-  `symbol_left` varchar(12) DEFAULT NULL,
-  `symbol_right` varchar(12) DEFAULT NULL,
-  `thousands_point` char(1) DEFAULT NULL,
-  `decimal_point` char(1) DEFAULT NULL,
+  `symbol_left` varchar(12) DEFAULT '' NULL,
+  `symbol_right` varchar(12) DEFAULT '' NULL,
+  `thousands_point` char(1) DEFAULT '' NULL,
+  `decimal_point` char(1) DEFAULT '' NULL,
   `decimal_digits` tinyint(3) unsigned DEFAULT '0',
   `sub_divisor` int(11) DEFAULT '1',
-  `sub_symbol_left` varchar(12) DEFAULT NULL,
-  `sub_symbol_right` varchar(12) DEFAULT NULL,
+  `sub_symbol_left` varchar(12) DEFAULT '' NULL,
+  `sub_symbol_right` varchar(12) DEFAULT '' NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uid` (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

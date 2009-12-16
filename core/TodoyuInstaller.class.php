@@ -323,24 +323,7 @@ class TodoyuInstaller {
 		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
 
 		if ( count($dbDiff) > 0  ) {
-			$query	= '';
-			foreach($dbDiff as $table => $tableData) {
-				foreach ($tableData['columns'] as $columnName => $columnProps) {
-					$query .= $columnProps['query'] . "\n";
-				}
-			}
-
-			$query	= TodoyuSqlParser::cleanSql($query);
-			$query	= str_replace("\n", ' ', $query);
-			$queries	= explode(';', $query);
-
-			foreach($queries as $query) {
-				$query	= trim($query);
-				if ( $query !== '' ) {
-					Todoyu::db()->query( $query . ';' );
-				}
-			}
-
+			TodoyuInstallerDbHelper::compileAndRunInstallerQueries($dbDiff);
 		}
 
 		self::setStepNum(11);
