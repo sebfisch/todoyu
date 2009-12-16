@@ -30,12 +30,12 @@ Contents
 This is an beta version. Not for productive use!
 Most of the bugs should be fixed, be we still need a lot of testing.
 You're welcome to take a look, but you should not rely on any function,
-classname or behaviour at this moment!
+class name or behaviour at this moment!
 
 
 2. How to install todoyu beta2
 ------------------------------
-* Copy all the files of the beta2 package to your webserver
+* Copy all the files of the beta2 package to your web server
 * When loading todoyu in the browser, the todoyu installer will start automatically
 * Follow the instructions of the installer
 
@@ -43,8 +43,8 @@ classname or behaviour at this moment!
 3. How to upgrade an existing beta1 installation of todoyu to beta2
 ------------------------------------------------------------------
 * Remove the following beta2 files to keep your stored configuration:
-	* "config/db.php"
-	* "config/system.php"
+    * "config/db.php"
+    * "config/system.php"
 * Delete all files and folders inside the "cache/" folder
 * Overwrite all files of your beta1 installation with the beta2 files
 * Make sure the file "install/ENABLE" exists, remove the file "install/_ENABLE"
