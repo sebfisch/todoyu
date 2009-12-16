@@ -45,7 +45,7 @@ class name or behaviour at this moment!
 * Remove the following beta2 files to keep your stored configuration:
     * "config/db.php"
     * "config/system.php"
-* Delete all files and folders inside the "cache/" folder
+* Delete all files and folders inside the beta1 "cache/" folder
 * Overwrite all files of your beta1 installation with the beta2 files
 * Make sure the file "install/ENABLE" exists, remove the file "install/_ENABLE"
 * When loading todoyu in your browser, the upgrade tool of the installer will start automatically
