@@ -40,7 +40,7 @@ classname or behaviour at this moment!
 * Follow the instructions of the installer
 
 
-3. How to upgrade a existing beta1 installation of todoyu to beta2
+3. How to upgrade an existing beta1 installation of todoyu to beta2
 ------------------------------------------------------------------
 * Remove the following beta2 files to keep your stored configuration:
 	* "config/db.php"
