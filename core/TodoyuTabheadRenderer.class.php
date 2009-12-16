@@ -76,7 +76,7 @@ class TodoyuTabheadRenderer {
 			'active'	=> $active,
 			'tabs'		=> $tabs,
 		);
-		
+
 		return render('core/view/tabheads.tmpl', $data);
 	}
 
