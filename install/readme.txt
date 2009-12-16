@@ -19,7 +19,6 @@
 ***************************************************************
 
 
-
 TODOYU INSTALLER README.TXT	- Steps to take when...
 ---------------------------------------------------
 
@@ -27,14 +26,17 @@ TODOYU INSTALLER README.TXT	- Steps to take when...
 	* Make sure the file "ENABLE" exists (rename or remove "_ENABLE")
 	* See 3.
 
+
 2. You updated an installation and need to run the database updater feature:
 	* See 1.
 	* See 3.
 
+
 3. The installer URL is:
 	http://localhost/todoyu/install/index.php
 	(make sure you change http://localhost/todoyu/ to your hostname and todoyu path)
-	
+
+
 4. The URL to manually restart the installer is:
 	http://localhost/todoyu/install/index.php?restart=1
 	(make sure you change http://localhost/todoyu/ to your hostname and todoyu path)
