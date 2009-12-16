@@ -26,7 +26,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 chdir(dirname(dirname(__FILE__)));
 
 	// Declare PATH constants
-require_once('/core/config/constants.php');
+require_once( dirname(__FILE__) . '/../core/config/constants.php');
 
 	// Check if _ENABLE file is available (installer has finished). Redirect to login
 if( is_file(PATH . '/install/_ENABLE') ) {
