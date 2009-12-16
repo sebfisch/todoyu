@@ -51,6 +51,17 @@
 		<label index="noAccess.contactAdmin">If you think should have access, report the following data to your todoyu administrator:</label>
 		<label index="noAccess.requestURL">Request URL</label>
 		<label index="noAccess.missingRight">Missing right</label>
+		<label index="footer.version">Version</label>
+		<label index="footer.bugreport">Report a bug</label>
+		<label index="footer.bugreport.title">Use the todoyu bugtracker to add a bugreport</label>
+		<label index="footer.forum">Discuss in the forum</label>
+		<label index="footer.forum.title">Find help or share your ideas</label>
+		<label index="footer.usermanual">Manual</label>
+		<label index="footer.usermanual.title">Frontend User Manual</label>
+		<label index="footer.api">API</label>
+		<label index="footer.api.title">Doxygen API Documentation</label>
+		<label index="footer.devmanual">Dev</label>
+		<label index="footer.devmanual.title">Manual for developers and other smart people</label>
 	</labels>
 	<labels lang="de">
 		<label index="tab.todoyu.label">todoyu</label>
@@ -103,5 +114,16 @@
 		<label index="noAccess.contactAdmin">Wenn Sie Zugriffsrechte benötigen, teilen Sie Ihrem Administrator folgende Daten mit:</label>
 		<label index="noAccess.requestURL">Request URL</label>
 		<label index="noAccess.missingRight">Fehlendes Recht</label>
+		<label index="footer.version">Version</label>
+		<label index="footer.bugreport">Fehler melden</label>
+		<label index="footer.bugreport.title">Nutze den todoyu Bugtracker um einen Fehlerbericht einzutragen</label>
+		<label index="footer.forum">Diskutiere im Forum</label>
+		<label index="footer.forum.title">Finde Hilfe oder teile deine Ideen mit Anderen</label>
+		<label index="footer.usermanual">Handbuch</label>
+		<label index="footer.usermanual.title">Benutzerhandbuch für Anwender</label>
+		<label index="footer.api">API</label>
+		<label index="footer.api.title">Doxygen API Dokumentation</label>
+		<label index="footer.devmanual">Dev</label>
+		<label index="footer.devmanual.title">Anleitungen für Entwickler und andere kluge Leute</label>
 	</labels>
 </locallang>
