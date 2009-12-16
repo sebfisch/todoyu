@@ -168,8 +168,8 @@ INSERT INTO `ext_project_mm_project_user` (`id`, `id_project`, `id_user`, `id_us
 --
 
 INSERT INTO `ext_project_project` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `description`, `is_fixed`, `id_fixedproject`, `status`, `id_rateset`, `id_customer`, `date_start`, `date_end`, `date_deadline`, `fixedcosts`, `is_fixedcosts_paid`, `date_finish`) VALUES
-(1, 1246982959, 1, 1246982959, 0, 'My First Project', '<p>This is the first todoyu project.</p>', 0, 0, 3, 4, 1246917600, 1264719600, 1264719600, 0, 0, 0),
-(2, 1254233593, 1, 1254213566, 0, 'Example Project', '<p>This is the project description. This text should contain the relevant data for your project.</p>', 0, 0, 3, 5, 1254175200, 1262214000, 1262905200, 0, 0, 0);
+(1, 1246982959, 1, 1246982959, 0, 'My First Project', '<p>This is the first todoyu project.</p>', 0, 0, 3, 0, 4, 1246917600, 1264719600, 1264719600, 0, 0, 0),
+(2, 1254233593, 1, 1254213566, 0, 'Example Project', '<p>This is the project description. This text should contain the relevant data for your project.</p>', 0, 0, 3, 0, 5, 1254175200, 1262214000, 1262905200, 0, 0, 0);
 
 --
 -- Data for table `ext_project_task`
@@ -264,16 +264,6 @@ INSERT INTO `ext_user_customerrole` (`id`, `deleted`, `title`) VALUES
 (1, 0, 'Client');
 
 --
--- Data for table `ext_user_group`
---
-
-
---
--- Data for table `ext_user_holiday`
---
-
-
---
 -- Data for table `ext_user_jobtype`
 --
 
@@ -299,10 +289,10 @@ INSERT INTO `ext_user_mm_customer_contactinfo` (`id`, `id_customer`, `id_contact
 -- Data for table `ext_user_mm_customer_user`
 --
 
-INSERT INTO `ext_user_mm_customer_user` (`id`, `id_customer`, `id_user`, `id_workaddress`, `id_jobtype`, `ext_resources_efficiency`, `ext_resources_wl_mon_am`, `ext_resources_wl_mon_pm`, `ext_resources_wl_tue_am`, `ext_resources_wl_tue_pm`, `ext_resources_wl_wed_am`, `ext_resources_wl_wed_pm`, `ext_resources_wl_thu_am`, `ext_resources_wl_thu_pm`, `ext_resources_wl_fri_am`, `ext_resources_wl_fri_pm`, `ext_resources_wl_sat_am`, `ext_resources_wl_sat_pm`, `ext_resources_wl_sun_am`, `ext_resources_wl_sun_pm`) VALUES
-(1, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 6, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(3, 5, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `ext_user_mm_customer_user` (`id`, `id_customer`, `id_user`, `id_workaddress`, `id_jobtype`) VALUES
+(1, 5, 1, 0, 0),
+(2, 6, 2, 0, 0),
+(3, 5, 3, 0, 0);
 
 
 --

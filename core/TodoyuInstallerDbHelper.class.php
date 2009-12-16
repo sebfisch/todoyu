@@ -249,6 +249,7 @@ class TodoyuInstallerDbHelper {
 
 			// Cleanup
 		foreach($sqlStructures as $tableName => $tableStructure) {
+
 				// Remove all tables that have been emptied completely
 			if ( count($tableStructure['columns']) === 0 ) {
 				unset($sqlStructures[$tableName]);
@@ -256,6 +257,7 @@ class TodoyuInstallerDbHelper {
 
 					// Parse diff result, add updating queries
 				foreach($sqlStructures[$tableName]['columns'] as $colName => $colStructure) {
+
 					if ( strstr($colName, '_SQL') === false && strstr($colName, '_DB') === false && strstr($colName, '_DIFF') === false ) {
 						$action	= '';
 

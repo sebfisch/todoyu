@@ -114,7 +114,9 @@ class TodoyuSqlParser {
 			}
 		}
 
-		return array_unique($tableNames);
+		$tableNames	= array_unique($tableNames);
+
+		return $tableNames;
 	}
 
 
@@ -358,6 +360,12 @@ class TodoyuSqlParser {
 						$columns[$columnName]['default']	= self::extractColumnDefault($columnSql);
 
 						$columns[$columnName]['extra']		= self::extractColumnExtra($columnSql, $columns[$columnName]);
+							// 'extra' and 'attributes' confused? swop them!
+							//	@todo fix extraction regex to prevent this
+						if ( strstr($columns[$columnName]['extra'], 'SIGNED') !== false && $columns[$columnName]['attributes'] == '' ) {
+							$columns[$columnName]['attributes']	= strtolower($columns[$columnName]['extra']);
+							$columns[$columnName]['extra']	= '';
+						}
 					}
 				}
 			}
