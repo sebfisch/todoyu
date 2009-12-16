@@ -25,15 +25,8 @@ error_reporting(E_ALL ^ E_NOTICE);
 	// Change current work directory to main directory to prevent path problems
 chdir(dirname(dirname(__FILE__)));
 
-	// Turn on output buffering
-ob_start();
-
-	// Include global include file
-require_once('core/inc/global.php');
-
-	// Load default init script
-require_once( PATH_CORE . '/inc/init.php');
-require_once( PATH_CORE .'/inc/version.php');
+	// Declare PATH constants
+require_once('/core/config/constants.php');
 
 	// Check if _ENABLE file is available (installer has finished). Redirect to login
 if( is_file(PATH . '/install/_ENABLE') ) {
@@ -41,6 +34,19 @@ if( is_file(PATH . '/install/_ENABLE') ) {
 	header('Location: ../index.php');
 	exit();
 }
+
+	// Turn on output buffering
+ob_start();
+
+	// Include global include file
+require_once(PATH_CORE . '/inc/global.php');
+
+	// Make sure the user is logged out
+TodoyuAuth::logout();
+
+	// Load default init script
+require_once( PATH_CORE . '/inc/init.php');
+require_once( PATH_CORE .'/inc/version.php');
 
 	// Restart?
 if( $_GET['restart'] == 1 ) {
