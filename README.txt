@@ -45,5 +45,5 @@ classname or behaviour at this moment!
 	* "config/db.php"
 	* "config/system.php"
 * Overwrite all files of your beta1 installation with the beta2 files
-* Make sure the file "install/ENABLE" exists (rename or remove "_ENABLE")
+* Make sure the file "install/ENABLE" exists, remove the file "install/_ENABLE"
 * When loading todoyu in your browser, the upgrade tool of the installer will start automaticly
