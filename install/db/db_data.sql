@@ -167,22 +167,22 @@ INSERT INTO `ext_project_mm_project_user` (`id`, `id_project`, `id_user`, `id_us
 -- Data for table `ext_project_project`
 --
 
-INSERT INTO `ext_project_project` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `description`, `is_fixed`, `id_fixedproject`, `status`, `ext_hosting_hoster`, `id_rateset`, `id_customer`, `ext_hosting_domain`, `ext_projectbilling_settlementinterval`, `date_start`, `date_end`, `date_deadline`, `fixedcosts`, `is_fixedcosts_paid`, `date_finish`) VALUES
-(1, 1246982959, 1, 1246982959, 0, 'My First Project', '<p>This is the first todoyu project.</p>', 0, 0, 3, 0, 0, 4, '', 0, 1246917600, 1264719600, 1264719600, 0, 0, 0),
-(2, 1254233593, 1, 1254213566, 0, 'Example Project', '<p>This is the project description. This text should contain the relevant data for your project.</p>', 0, 0, 3, 0, 0, 5, '', 0, 1254175200, 1262214000, 1262905200, 0, 0, 0);
+INSERT INTO `ext_project_project` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `description`, `is_fixed`, `id_fixedproject`, `status`, `id_rateset`, `id_customer`, `date_start`, `date_end`, `date_deadline`, `fixedcosts`, `is_fixedcosts_paid`, `date_finish`) VALUES
+(1, 1246982959, 1, 1246982959, 0, 'My First Project', '<p>This is the first todoyu project.</p>', 0, 0, 3, 4, 1246917600, 1264719600, 1264719600, 0, 0, 0),
+(2, 1254233593, 1, 1254213566, 0, 'Example Project', '<p>This is the project description. This text should contain the relevant data for your project.</p>', 0, 0, 3, 5, 1254175200, 1262214000, 1262905200, 0, 0, 0);
 
 --
 -- Data for table `ext_project_task`
 --
 
-INSERT INTO `ext_project_task` (`id`, `date_update`, `id_project`, `date_create`, `deleted`, `id_user_create`, `tasknumber`, `description`, `status`, `estimated_workload`, `is_estimatedworkload_public`, `date_deadline`, `date_start`, `date_end`, `ext_fixed_isfixed`, `ext_fixed_idtask`, `id_user_assigned`, `is_acknowledged`, `ext_projectbilling_offeredprice`, `offered_accesslevel`, `is_offered`, `clearance_state`, `id_parenttask`, `title`, `id_worktype`, `type`, `date_finish`, `ext_projectbilling_type`, `is_private`, `is_public`, `is_onblock`, `id_user_owner`, `sorting`) VALUES
-(1, 1246985220, 1, 1246983025, 0, 1, 1, '<p>Projectmanagement</p>', 2, 3600, 0, 1264719600, 1246917600, 1264719600, 0, 0, 1, 1, 0, 0, 0, 0, 0, 'Projectmanagement', 0, 1, 0, 0, 0, 0, 0, 1, 1),
-(2, 1254233016, 2, 1254232560, 0, 1, 1, '<p>Some random description in the task. Here you should write useful informations about this project</p>', 2, 3600, 0, 1256306040, 1254175200, 1256133240, 0, 0, 3, 1, 0, 0, 0, 0, 0, 'Sampletask', 1, 1, 0, 0, 0, 0, 0, 1, 2),
-(3, 1254233504, 2, 1254233504, 0, 1, 2, '<ul><li>Welche Module mÃ¼ssen fehlerfrei laufen</li><li>Welche Module kommen als Debugversion in den Release</li><li>Updatezyklen fÃ¼r Beta Bugfixes festlegen</li></ul>', 2, 10800, 0, 1254233040, 1254175200, 1254233040, 0, 0, 3, 0, 0, 0, 0, 0, 0, 'Betarelease planen', 1, 2, 0, 0, 0, 0, 0, 3, 3),
-(4, 1254233729, 2, 1254233534, 0, 1, 3, '<p>askfdl asldfjalsdfjalksdjfasdf adfa sdf asdfasdf</p>', 3, 3600, 0, 1256220660, 1254175200, 1254233460, 0, 0, 3, 1, 0, 0, 0, 0, 0, 'Random Task', 1, 1, 0, 0, 0, 0, 0, 1, 4),
-(5, 1254233577, 2, 1254233577, 0, 1, 4, '<p>Das ist ein Subtask im Container</p><p>Verschachtelung beliebig tief mÃ¶glich</p>', 2, 3600, 0, 1254233520, 1254175200, 1254233520, 0, 0, 3, 0, 0, 0, 0, 0, 3, 'Subtask', 1, 1, 0, 0, 0, 0, 0, 1, 5),
-(6, 1254233620, 2, 1254233620, 0, 1, 5, '<p>salkdfj adlsdjfalksdjfasjdfasdf asdfa sdfa sf</p>', 2, 3600, 0, 1257001980, 1254175200, 1256742780, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'Noch ein Task', 1, 1, 0, 0, 0, 0, 0, 3, 6),
-(7, 1254233877, 2, 1254233652, 0, 1, 6, '<p>Das ist sehr wichtig</p>', 3, 19200, 0, 1254233580, 1254175200, 1254233580, 0, 0, 2, 0, 0, 0, 0, 0, 3, 'Unbedingt schnell erledigen', 1, 1, 0, 0, 0, 0, 0, 1, 7);
+INSERT INTO `ext_project_task` (`id`, `date_update`, `id_project`, `date_create`, `deleted`, `id_user_create`, `tasknumber`, `description`, `status`, `estimated_workload`, `is_estimatedworkload_public`, `date_deadline`, `date_start`, `date_end`, `id_user_assigned`, `is_acknowledged`, `offered_accesslevel`, `is_offered`, `clearance_state`, `id_parenttask`, `title`, `id_worktype`, `type`, `date_finish`, `is_private`, `is_public`, `id_user_owner`, `sorting`) VALUES
+(1, 1246985220, 1, 1246983025, 0, 1, 1, '<p>Projectmanagement</p>', 2, 3600, 0, 1264719600, 1246917600, 1264719600, 1, 1, 0, 0, 0, 0, 'Projectmanagement', 0, 1, 0, 0, 0, 1, 1),
+(2, 1254233016, 2, 1254232560, 0, 1, 1, '<p>Some random description in the task. Here you should write useful informations about this project</p>', 2, 3600, 0, 1256306040, 1254175200, 1256133240, 3, 1, 0, 0, 0, 0, 'Sampletask', 1, 1, 0, 0, 0, 1, 2),
+(3, 1254233504, 2, 1254233504, 0, 1, 2, '<ul><li>Welche Module mÃ¼ssen fehlerfrei laufen</li><li>Welche Module kommen als Debugversion in den Release</li><li>Updatezyklen fÃ¼r Beta Bugfixes festlegen</li></ul>', 2, 10800, 0, 1254233040, 1254175200, 1254233040, 3, 0, 0, 0, 0, 0, 'Betarelease planen', 1, 2, 0, 0, 0, 3, 3),
+(4, 1254233729, 2, 1254233534, 0, 1, 3, '<p>askfdl asldfjalsdfjalksdjfasdf adfa sdf asdfasdf</p>', 3, 3600, 0, 1256220660, 1254175200, 1254233460, 3, 1, 0, 0, 0, 0, 'Random Task', 1, 1, 0, 0, 0, 1, 4),
+(5, 1254233577, 2, 1254233577, 0, 1, 4, '<p>Das ist ein Subtask im Container</p><p>Verschachtelung beliebig tief mÃ¶glich</p>', 2, 3600, 0, 1254233520, 1254175200, 1254233520, 3, 0, 0, 0, 0, 3, 'Subtask', 1, 1, 0, 0, 0, 1, 5),
+(6, 1254233620, 2, 1254233620, 0, 1, 5, '<p>salkdfj adlsdjfalksdjfasjdfasdf asdfa sdfa sf</p>', 2, 3600, 0, 1257001980, 1254175200, 1256742780, 1, 0, 0, 0, 0, 0, 'Noch ein Task', 1, 1, 0, 0, 0, 3, 6),
+(7, 1254233877, 2, 1254233652, 0, 1, 6, '<p>Das ist sehr wichtig</p>', 3, 19200, 0, 1254233580, 1254175200, 1254233580, 2, 0, 0, 0, 0, 3, 'Unbedingt schnell erledigen', 1, 1, 0, 0, 0, 1, 7);
 
 --
 -- Data for table `ext_project_userrole`
