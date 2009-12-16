@@ -1,21 +1,24 @@
 --
--- Add 'id' column, preset it (unique and) incremental, make it primary key
+-- Add 'id' column, preset it (unique and) incremental, make it primary key and auto_increment
 --
 
 ALTER TABLE `ext_user_panelwidget` ADD `id` int(11) NOT NULL ;
-SET @rownum = 0;
+SET @rownum = 1;
 UPDATE `ext_user_panelwidget` SET `id` =  ( @rownum:=@rownum+1 );
 ALTER TABLE `ext_user_panelwidget` ADD PRIMARY KEY(`id`) ;
+ALTER TABLE `ext_user_panelwidget` CHANGE `id` `id` INT( 11 ) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `ext_user_preference` ADD `id` int(11) NOT NULL ;
-SET @rownum = 0;
+SET @rownum = 1;
 UPDATE `ext_user_preference` SET `id` =  ( @rownum:=@rownum+1 );
 ALTER TABLE `ext_user_preference` ADD PRIMARY KEY(`id`) ;
+ALTER TABLE `ext_user_preference` CHANGE `id` `id` INT( 11 ) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `ext_user_right` ADD `id` int(11) NOT NULL ;
-SET @rownum = 0;
+SET @rownum = 1;
 UPDATE `ext_user_right` SET `id` =  ( @rownum:=@rownum+1 );
 ALTER TABLE `ext_user_right` ADD PRIMARY KEY(`id`) ;
+ALTER TABLE `ext_user_right` CHANGE `id` `id` INT( 11 ) NOT NULL AUTO_INCREMENT;
 
 --
 -- Rename ext_filter_.. tables to ext_search...
