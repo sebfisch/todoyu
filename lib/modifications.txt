@@ -1,0 +1,8 @@
+Files in the lib/ folder should NOT be modificated!
+They may be replaced by an update of a library.
+But sometimes it's necessary:
+
+The following changes have been made:
+
+# lib/js/scriptaculous/scriptaculous.js : 64
+Commented out 'Scriptaculous.load();' All needed libraries are already loaded in the merge file

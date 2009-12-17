@@ -38,9 +38,44 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'lib/js/scriptaculous/scriptaculous.js',
 			'position'	=> 2,
-			'merge'		=> false,
+			'merge'		=> true,
 			'localize'	=> false,
-			'compress'	=> false
+			'compress'	=> true
+		),
+		array(
+			'file'		=> 'lib/js/scriptaculous/builder.js',
+			'position'	=> 3,
+			'merge'		=> true,
+			'localize'	=> false,
+			'compress'	=> true
+		),
+		array(
+			'file'		=> 'lib/js/scriptaculous/effects.js',
+			'position'	=> 3,
+			'merge'		=> true,
+			'localize'	=> false,
+			'compress'	=> true
+		),
+		array(
+			'file'		=> 'lib/js/scriptaculous/controls.js',
+			'position'	=> 4,
+			'merge'		=> true,
+			'localize'	=> false,
+			'compress'	=> true
+		),
+		array(
+			'file'		=> 'lib/js/scriptaculous/dragdrop.js',
+			'position'	=> 4,
+			'merge'		=> true,
+			'localize'	=> false,
+			'compress'	=> true
+		),
+		array(
+			'file'		=> 'lib/js/scriptaculous/slider.js',
+			'position'	=> 4,
+			'merge'		=> true,
+			'localize'	=> false,
+			'compress'	=> true
 		),
 		array(
 			'file'		=> 'lib/js/tiny_mce/tiny_mce.js',

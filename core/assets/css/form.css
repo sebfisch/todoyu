@@ -475,3 +475,17 @@ label.narrowInput {
 	float:right;
 	background:transparent url(../img/icons_dev.png) no-repeat 0 -2100px;
 }
+
+
+
+
+
+
+
+
+
+div.typeCancelButton button span.rgt,
+div.typeSaveButton button span.rgt {
+	background-color:#E7E7E7 !important;
+}
+
