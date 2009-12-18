@@ -194,6 +194,10 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/js/TimePicker.js',
 			'position'	=> 66
+		),
+		array(
+			'file'		=> 'core/assets/js/Paging.js',
+			'position'	=> 67
 		)
 	),
 
@@ -265,6 +269,11 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/assets/css/list.css',
+			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/paging.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		)

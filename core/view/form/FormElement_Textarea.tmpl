@@ -1,5 +1,5 @@
 {extends "core/view/form/FormElement.tmpl"}
 
 {block name="field"}
-<textarea name="{$htmlName}" id="{$htmlId}" cols="{$cols}" rows="{$rows}" class="{$inputClass} {$class}" {if $style}style="{$style}"{/if}>{cleanHtml $default}</textarea>
+<textarea name="{$htmlName}" id="{$htmlId}" cols="{$cols}" rows="{$rows}" class="{$inputClass} {$class}" {if $style}style="{$style}"{/if}>{cleanHtml $valueTemplate}</textarea>
 {/block}

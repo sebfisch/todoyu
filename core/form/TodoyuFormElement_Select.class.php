@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_Select extends TodoyuFormElement {
 
 

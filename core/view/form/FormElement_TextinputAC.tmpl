@@ -2,7 +2,7 @@
 
 {block name="field"}
 	<input type="text" id="{$htmlId}-fulltext" value="{$displayLabel}" class="{$inputClass} {$class}" {if $disabled}disabled="disabled"{/if} {$extraAttributes} />
-	<input type="hidden" name="{$htmlName}" id="{$htmlId}" value="{$default}" />
+	<input type="hidden" name="{$htmlName}" id="{$htmlId}" value="{$valueTemplate}" />
 	<div id="{$htmlId}-suggest" class="acResultContainer"></div>
 	<script type="text/javascript">
 		Todoyu.Autocomplete.install('{$htmlId}', {$acConfigJson});

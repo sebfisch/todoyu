@@ -22,10 +22,11 @@
 /**
  * FormElement: Comment
  *
+ * Comment without a form element, just text
+ *
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_Comment extends TodoyuFormElement {
 
 	/**

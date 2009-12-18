@@ -101,7 +101,11 @@ class TodoyuDiv {
 	 * @return	Boolean
 	 */
 	public static function isUTF8($stringToCheck) {
-		return mb_detect_encoding($stringToCheck, 'UTF-8, ISO-8859-1') === 'UTF-8';
+		if( function_exists('mb_detect_encoding') ) {
+			return mb_detect_encoding($stringToCheck, 'UTF-8, ISO-8859-15, ISO-8859-1') === 'UTF-8';
+		} else {
+			return true; // Assume it's already utf8 as it should be. We cannot tell it anyway without this function
+		}
 	}
 
 

@@ -1,7 +1,7 @@
 {extends "core/view/form/FormElement.tmpl"}
 
 {block name="field"}
-<input type="text" name="{$htmlName}" id="{$htmlId}" value="{$default}" {if $disabled}disabled="disabled"{/if} class="{$inputClass} {$class}" {$extraAttributes} />
+<input type="text" name="{$htmlName}" id="{$htmlId}" value="{$valueTemplate}" {if $disabled}disabled="disabled"{/if} class="{$inputClass} {$class}" {$extraAttributes} />
 <div class="icon link calendaricon" id="{$htmlId}-calicon"></div>
 {$jsSetup}
 {/block}

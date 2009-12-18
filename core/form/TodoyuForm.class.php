@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuForm implements ArrayAccess {
 
 
@@ -306,18 +305,11 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 */
 	protected function updateFieldValues() {
-//		$dataBaseRelations = array();
-
 		// Update fields
 		foreach( $this->fields as $name => $field ) {
 			$value = $this->formdata[$name];
-		 	//if( ! is_null($value)) {
-				$field->setValue($value);
-			//}
 
-//			if( $this->getValidateForm() )	{
-//				$this->validateField($field);
-//			}
+			$field->setValue($value);
 		}
 
 			// Update hidden fields

@@ -20,14 +20,13 @@
 ***************************************************************/
 
 /**
- * FormElement: Textinput
+ * FormElement: Duration selector
  *
- * Single line textinput, <input type="text">
+ * Input field to select a duration 00:00 - 99:59 (hour:minute)
  *
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_Duration extends TodoyuFormElement_Timeinput {
 
 	/**

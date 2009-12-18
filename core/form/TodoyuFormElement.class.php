@@ -20,12 +20,11 @@
 ***************************************************************/
 
 /**
- * Base class Todoyufor all form elements
+ * Base class for all form elements
  *
  * @package		Todoyu
  * @subpackage	Form
  */
-
 abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 	/**
@@ -91,6 +90,11 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$this->setAttribute('htmlId', $this->getForm()->makeID($this->name));
 
 		$this->init();
+
+			// If default value is set in form xml, register it in form
+		if( $this->hasAttribute('value') ) {
+			$this->updateFormdata($this->getValue());
+		}
 	}
 
 
@@ -177,6 +181,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$this->config['hasErrorClass']	= $this->hasAttribute('hasError') ? 'fieldHasError':'';
 		$this->config['hasIconClass']	= $this->hasAttribute('hasIcon') ? 'hasIcon icon' . ucfirst($this->name):'';
 		$this->config['wizard']			= $this->getWizardConfiguration();
+		$this->config['valueTemplate']	= $this->getValueForTemplate();
 
 		return $this->config;
 	}
@@ -282,7 +287,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Mixed
 	 */
 	public function getValue() {
-		return $this->getAttribute('default');
+		return $this->getAttribute('value');
 	}
 
 
@@ -293,9 +298,21 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @param	Mixed		$value
 	 */
 	public function setValue($value) {
-		$this->setAttribute('default', $value);
+		$this->setAttribute('value', $value);
 
 		$this->updateFormData($value);
+	}
+
+
+
+	/**
+	 * Get value for template display
+	 * Override this function in custom fieldtype if special rendering necessary
+	 *
+	 * @return	String
+	 */
+	public function getValueForTemplate() {
+		return $this->getValue();
 	}
 
 

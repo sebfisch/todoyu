@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 
 

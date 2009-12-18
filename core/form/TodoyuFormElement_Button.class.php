@@ -27,7 +27,6 @@
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_Button extends TodoyuFormElement {
 
 	/**

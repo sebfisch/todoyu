@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFieldset implements ArrayAccess {
 
 	/**

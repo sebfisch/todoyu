@@ -63,11 +63,11 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	public function getRecord($index) {
 		$index	= intval($index);
 
-		if( ! is_array($this->config['default'][$index]) ) {
-			$this->config['default'][$index] = array();
+		if( ! is_array($this->config['value'][$index]) ) {
+			$this->config['value'][$index] = array();
 		}
 
-		return $this->config['default'][$index];
+		return $this->config['value'][$index];
 	}
 
 

@@ -19,6 +19,14 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * FormElement: Textinput Autocomplete
+ *
+ * Single line textinput, <input type="text"> with autocomplete function
+ *
+ * @package		Todoyu
+ * @subpackage	Form
+ */
 class TodoyuFormElement_TextinputAC extends TodoyuFormElement {
 
 	/**

@@ -27,7 +27,6 @@
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_Timeinput extends TodoyuFormElement_Textinput {
 
 	/**
@@ -67,39 +66,28 @@ class TodoyuFormElement_Timeinput extends TodoyuFormElement_Textinput {
 
 		parent::setValue($value);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get value of the timeinput field (as numeric seconds value)
 	 * @return	Integer		Seconds
 	 */
 	public function getValue() {
-		$value = parent::getValue();
-		
-		if( ! is_numeric($value) ) {
-			$value = TodoyuTime::parseTime($value, false);
-			$this->setValue($value);
-		}
-		
-		return $value;
+		return intval(parent::getValue());
 	}
 
 
 
 	/**
-	 * Get data
+	 * Get formatted value for template
 	 *
-	 * @return	Array
+	 * @return	String
 	 */
-	protected function getData() {
-			// Format seconds into timestring
-		$timeString	= TodoyuTime::formatTime($this->getValue(), false);
+	public function getValueForTemplate() {
+		$value = $this->getValue();
 
-			// Use parent setValue to set a string value
-		parent::setValue($timeString);
-
-		return parent::getData();
+		return $value === 0 ? '' : TodoyuTime::formatTime($value);
 	}
 
 

@@ -22,12 +22,11 @@
 /**
  * FormElement: Dateselector
  *
- * Single line textinput, <input type="text"> <dateselector>
+ * Input field with calendar popup to select date and time
  *
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_DateTimeInput extends TodoyuFormElement {
 
 	/**
@@ -49,16 +48,7 @@ class TodoyuFormElement_DateTimeInput extends TodoyuFormElement {
 	 * @return	Array
 	 */
 	public function getData() {
-		$value	= $this->getValue();
 		$data	= parent::getData();
-
-		if( is_numeric($value) ) {
-			if( $value == 0 ) {
-				$data['default'] = '';
-			} else {
-				$data['default'] = TodoyuTime::format($value, 'datetime');
-			}
-		}
 
 		$data['jsSetup'] = $this->getJsSetup();
 
@@ -95,21 +85,6 @@ class TodoyuFormElement_DateTimeInput extends TodoyuFormElement {
 		$script	= '<script>Calendar.setup({' . implode(',', $jsConf) . '});</script>';
 
 		return $script;
-
-
-
-
-//
-//		return '<script>
-//				Calendar.setup({
-//				 inputField : "' . $this->getHtmlID() . '", // id of the input field
-//				 range : [1990, 2020], // allowed years
-//				 ifFormat : "' . TodoyuTime::getFormat('datetime') . '", // format of the input field
-//				 align: "br",
-//				 button : "' . $this->getHtmlID() . '-calicon", // trigger for the calendar (button ID)
-//				 firstDay : 1,
-//				 showsTime: true
-//				 });</script>';
 	}
 
 
@@ -126,6 +101,30 @@ class TodoyuFormElement_DateTimeInput extends TodoyuFormElement {
 		}
 
 		parent::setValue($value);
+	}
+
+
+
+	/**
+	 * Get value (timestamp)
+	 *
+	 * @return	Integer
+	 */
+	public function getValue() {
+		return intval(parent::getValue());
+	}
+
+
+
+	/**
+	 * Get formatted template value (datetime)
+	 *
+	 * @return	String
+	 */
+	public function getValueForTemplate() {
+		$value	= $this->getValue();
+
+		return $value === 0 ? '' : TodoyuTime::format($value, 'datetime');
 	}
 
 

@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormFactory {
 
 	/**

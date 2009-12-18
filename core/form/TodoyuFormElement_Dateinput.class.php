@@ -22,12 +22,11 @@
 /**
  * FormElement: Dateselector
  *
- * Single line textinput, <input type="text"> <dateselector>
+ * Input field with calendar popup to select date
  *
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 
 	/**
@@ -50,13 +49,6 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 	 */
 	public function getData() {
 		$data	= parent::getData();
-		$value	= $this->getValue();
-
-		if( $value == 0 ) {
-			$data['default']	= '';
-		} else {
-			$data['default']	= TodoyuTime::format($value, 'date');
-		}
 
 		$data['jsSetup'] = $this->getJsSetup();
 
@@ -93,6 +85,19 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 		$script	= '<script>Calendar.setup({' . implode(',', $jsConf) . '});</script>';
 
 		return $script;
+	}
+
+
+
+	/**
+	 * Get formatted value for template (date)
+	 *
+	 * @return	String
+	 */
+	public function getValueTemplate() {
+		$value	= $this->getValue();
+
+		return $value == 0 ? '' : TodoyuTime::format($value, 'date');
 	}
 
 

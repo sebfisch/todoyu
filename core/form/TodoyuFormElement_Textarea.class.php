@@ -27,7 +27,6 @@
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_Textarea extends TodoyuFormElement {
 
 	/**

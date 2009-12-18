@@ -20,14 +20,13 @@
 ***************************************************************/
 
 /**
- * FormElement: Button
+ * FormElement: Expand all
  *
- * Button element, <button type="[button,cancel,submit]">
+ * Button which expands all configured external records
  *
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_ExpandAllButton extends TodoyuFormElement_Button {
 
 	/**

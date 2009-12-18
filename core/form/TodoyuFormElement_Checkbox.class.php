@@ -22,12 +22,11 @@
 /**
  * FormElement: Textinput
  *
- * Single line textinput, <input type="text">
+ * Checkbox input
  *
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_Checkbox extends TodoyuFormElement {
 
 	/**

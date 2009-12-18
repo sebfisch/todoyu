@@ -1052,6 +1052,16 @@ class TodoyuDatabase {
 	}
 
 
+	public function getTotalFoundRows() {
+		$query	= 'SELECT FOUND_ROWS() as rows';
+
+		$result	= $this->query($query);
+		$row	= $this->fetchAssoc($result);
+
+		return intval($row['rows']);
+	}
+
+
 
 	/**
 	 * Get tables of the database

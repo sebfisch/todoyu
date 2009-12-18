@@ -20,14 +20,13 @@
 ***************************************************************/
 
 /**
- * FormElement: Textinput
+ * FormElement: RichTextEditor (tinyMCE)
  *
- * Single line textinput, <input type="text">
+ * Richtext editor
  *
  * @package		Todoyu
  * @subpackage	Form
  */
-
 class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 
 	/**
@@ -121,9 +120,11 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 	 * @return	Array
 	 */
 	public function getData() {
-		$this->config['rteJs'] = $this->buildRTEjs();
+		$data	= parent::getData();
 
-		return parent::getData();
+		$data['rteJs'] = $this->buildRTEjs();
+
+		return $data;
 	}
 
 
