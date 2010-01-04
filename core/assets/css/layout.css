@@ -82,7 +82,7 @@ body {
 			margin:0 0 2px;
 			padding:5px 7px 6px;
 		}
-		
+
 			#panel .panelWidget .notification {
 				text-align:left;
 				padding:4px 0 2px 20px;
@@ -340,7 +340,7 @@ body {
 		color:#000;
 	}
 
-	
+
 
 /* --------------------------------------------------------
 	Dev stamp (marking certain areas as 'in development')
@@ -493,29 +493,6 @@ div.error {
 	border-color:pink;
 }
 
-/*
-		div.bookmarkStatusPlanning { background-color:#7f007f; }
-		div.bookmarkStatusCustomer { background-color:pink; }
-		div.bookmarkStatusOpen { background-color:#f00; }
-		div.bookmarkStatusFeedback { background-color:purple; }
-		div.bookmarkStatusInprogress { background-color:#ffac00; }
-		div.bookmarkStatusConfirmation { background-color:#fffc00; }
-		div.bookmarkStatusDone { background-color:#77dc00; }
-		div.bookmarkStatusAccepted { background-color:green; }
-		div.bookmarkStatusRejected { background-color:#a60000; }
-		div.bookmarkStatusQuicktask { background-color:#00aeff; }
-		div.bookmarkStatusCleared { background-color:grey; }
-		div.bookmarkStatusDate { background-color:#85c1fc; }
-		div.bookmarkStatusContainer { background-color:#fbfbf4; }
-		div.bookmarkStatusWarranty { background-color:#2335e0; }
-
-	#panelwidget-daytracks ul li.status-open { border-left-color:#FF0000; }
-	#panelwidget-daytracks ul li.status-progress { border-left-color:#FFAC00; }
-	#panelwidget-daytracks ul li.status-confirm { border-left-color:#FFFC00; }
-	#panelwidget-daytracks ul li.status-done { border-left-color:#77DC00; }
-	#panelwidget-daytracks ul li.status-accepted { border-left-color:green; }
-	#panelwidget-daytracks ul li.status-rejected { border-left-color:#A60000; }
-*/
 
 input.toggleSelect {
 	display:none;
@@ -587,7 +564,7 @@ div.indexLetters {
 	padding:0px;
 	height:20px;
 	width:500px;
-	border-bottom:1px dashed #CCC;	
+	border-bottom:1px dashed #CCC;
 }
 
 div.indexLetters a {

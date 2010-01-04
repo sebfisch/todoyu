@@ -171,10 +171,12 @@ class TodoyuContextMenu {
 			// Check if there is a function reference in the label
 		if( strstr($label, '::') ) {
 			$label = TodoyuDiv::callUserFunction($label, $this->idElement);
+		} else {
+			$label	= TodoyuLocale::getLabel($label);
 		}
 
 			// Parse locallang reference
-		$label = TodoyuDiv::getLabel($label);
+//		$label = TodoyuDiv::getLabel($label);
 
 		return $label;
 	}

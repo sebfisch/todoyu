@@ -37,6 +37,7 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 	 * @param	Array $config
 	 */
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
+		TodoyuDebug::printInFirebug('dateinput', $name);
 		parent::__construct('dateinput', $name, $fieldset, $config);
 	}
 
@@ -115,6 +116,19 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 		}
 
 		parent::setValue($value);
+	}
+
+
+
+	/**
+	 * Get formatted template value (datetime)
+	 *
+	 * @return	String
+	 */
+	public function getValueForTemplate() {
+		$value	= $this->getValue();
+
+		return $value === 0 ? '' : TodoyuTime::format($value, 'date');
 	}
 
 

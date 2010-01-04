@@ -90,7 +90,7 @@ class Todoyu {
 	 *
 	 */
 	private static function initTemplate() {
-		// Make needed folders
+			// Make needed folders
 		TodoyuFileManager::makeDirDeep($GLOBALS['CONFIG']['TEMPLATE']['compile']);
 		TodoyuFileManager::makeDirDeep($GLOBALS['CONFIG']['TEMPLATE']['cache']);
 

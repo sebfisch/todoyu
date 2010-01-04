@@ -167,7 +167,7 @@ INSERT INTO `ext_project_mm_project_user` (`id`, `id_project`, `id_user`, `id_us
 -- Data for table `ext_project_project`
 --
 
-INSERT INTO `ext_project_project` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `description`, `is_fixed`, `id_fixedproject`, `status`, `id_rateset`, `id_customer`, `date_start`, `date_end`, `date_deadline`, `fixedcosts`, `is_fixedcosts_paid`, `date_finish`) VALUES
+INSERT INTO `ext_project_project` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `description`, `is_fixed`, `id_fixedproject`, `status`, `id_rateset`, `id_company`, `date_start`, `date_end`, `date_deadline`, `fixedcosts`, `is_fixedcosts_paid`, `date_finish`) VALUES
 (1, 1246982959, 1, 1246982959, 0, 'My First Project', '<p>This is the first todoyu project.</p>', 0, 0, 3, 0, 4, 1246917600, 1264719600, 1264719600, 0, 0, 0),
 (2, 1254233593, 1, 1254213566, 0, 'Example Project', '<p>This is the project description. This text should contain the relevant data for your project.</p>', 0, 0, 3, 0, 5, 1254175200, 1262214000, 1262905200, 0, 0, 0);
 
@@ -247,21 +247,15 @@ INSERT INTO `ext_user_contactinfotype` (`id`, `deleted`, `key`, `title`) VALUES
 (12, 0, 'skype', 'user.contactinfo.skype');
 
 --
--- Data for table `ext_user_customer`
+-- Data for table `ext_user_company`
 --
 
-INSERT INTO `ext_user_customer` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `ext_projectbilling_reduction`) VALUES
+INSERT INTO `ext_user_company` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `ext_projectbilling_reduction`) VALUES
 (1, 1246888595, 1, 1246886240, 0, 'Demo Customer', 'Demo', 0, 101, 0, 0),
 (3, 1246888856, 1, 1246888856, 0, 'Random Company', 'Rand', 0, 607, 0, 0),
 (5, 1254213233, 1, 1254213151, 0, 'Snowflake Productions', 'Snowflake', 0, 1136156400, 0, 0),
 (6, 1254213723, 1, 1254213723, 0, 'OneStepLeft Movie Factory', 'Movie Factory', 0, 1189548000, 0, 0);
 
---
--- Data for table `ext_user_customerrole`
---
-
-INSERT INTO `ext_user_customerrole` (`id`, `deleted`, `title`) VALUES
-(1, 0, 'Client');
 
 --
 -- Data for table `ext_user_jobtype`
@@ -269,15 +263,15 @@ INSERT INTO `ext_user_customerrole` (`id`, `deleted`, `title`) VALUES
 
 
 --
--- Data for table `ext_user_mm_customer_address`
+-- Data for table `ext_user_mm_company_address`
 --
 
 
 --
--- Data for table `ext_user_mm_customer_contactinfo`
+-- Data for table `ext_user_mm_company_contactinfo`
 --
 
-INSERT INTO `ext_user_mm_customer_contactinfo` (`id`, `id_customer`, `id_contactinfo`) VALUES
+INSERT INTO `ext_user_mm_company_contactinfo` (`id`, `id_company`, `id_contactinfo`) VALUES
 (1, 5, 1),
 (2, 5, 2),
 (3, 5, 3),
@@ -286,10 +280,10 @@ INSERT INTO `ext_user_mm_customer_contactinfo` (`id`, `id_customer`, `id_contact
 
 
 --
--- Data for table `ext_user_mm_customer_user`
+-- Data for table `ext_user_mm_company_user`
 --
 
-INSERT INTO `ext_user_mm_customer_user` (`id`, `id_customer`, `id_user`, `id_workaddress`, `id_jobtype`) VALUES
+INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_user`, `id_workaddress`, `id_jobtype`) VALUES
 (1, 5, 1, 0, 0),
 (2, 6, 2, 0, 0),
 (3, 5, 3, 0, 0);

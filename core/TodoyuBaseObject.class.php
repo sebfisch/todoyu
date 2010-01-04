@@ -135,6 +135,28 @@ class TodoyuBaseObject implements ArrayAccess {
 
 
 	/**
+	 * Check if current user is creator of the record
+	 *
+	 * @return	Bool
+	 */
+	public function isCurrentUserCreator() {
+		return intval($this->get('id_user_create')) === userid();
+	}
+
+
+
+	/**
+	 * Get data array
+	 *
+	 * @return	Array
+	 */
+	public function getData() {
+		return $this->data;
+	}
+
+
+
+	/**
 	 * Get user ID of a specific type (create, update, assigned, etc)
 	 *
 	 * @param	String		$type
@@ -237,6 +259,7 @@ class TodoyuBaseObject implements ArrayAccess {
 
 
 
+
 	### MAGIC FUNCTIONS (DON'T CALL THEM DIRECTLY!) ###
 
 
@@ -311,17 +334,6 @@ class TodoyuBaseObject implements ArrayAccess {
 	 */
 	public function offsetGet($name) {
 		return $this->get($name);
-	}
-
-
-
-	/**
-	 * Check if current user is creator of the record
-	 *
-	 * @return	Bool
-	 */
-	public function isCurrentUserCreator() {
-		return intval($this->get('id_user_create')) === userid();
 	}
 
 }

@@ -315,9 +315,7 @@ Todoyu.Ui = {
 	 * Fix element anchor position
 	 */
 	fixAnchorPosition: function() {
-
 		if( location.hash !== '') {
-
 			var name	= location.hash.substr(1);
 
 			this.scrollToAnchor(name);
@@ -332,7 +330,7 @@ Todoyu.Ui = {
 	 *	@param	String	name
 	 */
 	scrollToAnchor: function(name) {
-		var element	= $(document.getElementsByName(name)[0]);
+		var element	= $(document.getElementsByName(name).first());
 
 		if(element) {
 			this.scrollToElement(element);
@@ -451,6 +449,9 @@ Todoyu.Ui = {
 		}).merge(config).toObject();
 
 		return new TimePicker(idElement);
+	},
+	
+	setTitle: function(title) {
+		document.title = 'todoyu: ' + title;
 	}
-
 };

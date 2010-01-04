@@ -26,7 +26,6 @@
 		<label index="update">Update</label>
 		<label index="search">Search</label>
 		<label index="back">Back</label>
-		<label index="visibleForCustomer">Visible for Customer</label>
 		<label index="filter">Filter</label>
 		<label index="type">Type</label>
 		<label index="record">Record</label>
@@ -89,7 +88,6 @@
 		<label index="update">Aktualisieren</label>
 		<label index="search">Suche</label>
 		<label index="back">Zurück</label>
-		<label index="visibleForCustomer">Für Kunde sichtbar</label>
 		<label index="filter">Auswahl</label>
 		<label index="type">Typ</label>
 		<label index="record">Datensatz</label>
