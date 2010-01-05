@@ -46,8 +46,8 @@ Todoyu.Hook = {
 
 		return this.hooks[name];
 	},
-
-
+	
+	
 
 	/**
 	 * Clear named hook (remove functions)

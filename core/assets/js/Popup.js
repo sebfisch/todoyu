@@ -112,9 +112,15 @@ Todoyu.Popup = {
 			// Show popup and activate content overlay
 		this.getPopup(idPopup).showCenter(true);
 
-			// Load & set inner content, install general click (== update seize) observer
+			// Wrap onComplete with own onComplete to handle popup
 		requestOptions = requestOptions || {};
-		requestOptions.onComplete = this.onContentLoaded.bind(this, idPopup);
+		if( typeof requestOptions.onComplete !== 'function' ) {
+			requestOptions.onComplete = Prototype.emptyFunction
+		}
+		requestOptions.onComplete.wrap(function(idPopup, callOriginal, response){
+			this.onContentLoaded.bind(this, idPopup);
+			callOriginal(response);
+		}.bind(this, idPopup));
 
 		this.getPopup(idPopup).setAjaxContent(contentUrl, requestOptions, false, false);
 		

@@ -52,6 +52,10 @@ input {}
 		width:95px;
 		margin-right:5px;
 	}
+	
+	input.textinputAC {
+		background:url(../img/icons.png) no-repeat right -718px;
+	}
 
 
 textarea {
@@ -493,8 +497,5 @@ div.typeSaveButton button span.rgt {
 
 
 
-.calendaricon {
-	background:url('../img/icons.png') no-repeat 0 -690px;
-}
 
 

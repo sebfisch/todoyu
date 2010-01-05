@@ -37,7 +37,6 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 	 * @param	Array $config
 	 */
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
-		TodoyuDebug::printInFirebug('dateinput', $name);
 		parent::__construct('dateinput', $name, $fieldset, $config);
 	}
 

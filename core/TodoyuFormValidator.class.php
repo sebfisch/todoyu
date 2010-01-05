@@ -252,10 +252,10 @@ class TodoyuFormValidator {
 		$secondFieldName	= $validatorConfig['field'];
 		$secondFieldValue	= $formData[$secondFieldName];
 
-		$fieldDate		= intval($value);
-		$secondFieldDate= intval($secondFieldValue);
+		$fieldDate			= intval($value);
+		$secondFieldDate	= intval($secondFieldValue);
 
-		return $fieldDate < $secondFieldDate;
+		return $fieldDate < $secondFieldDate || $fieldDate === 0 || $secondFieldDate === 0;
 	}
 
 
@@ -268,6 +268,16 @@ class TodoyuFormValidator {
 	 * @return	Boolean
 	 */
 	public static function dateTimeNotBefore($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+		$secondFieldName	= $validatorConfig['field'];
+		$secondFieldValue	= $formData[$secondFieldName];
+
+		$fieldDate			= intval($value);
+		$secondFieldDate	= intval($secondFieldValue);
+
+		if( $fieldDate === 0 || $secondFieldDate === 0) {
+			return true;
+		}
+
 		return self::dateTimeBefore($value, $validatorConfig, $formElement, $formData) === false;
 	}
 

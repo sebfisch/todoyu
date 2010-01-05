@@ -13,6 +13,7 @@
 		<label index="databaserelation.nolabel">[New entry]</label>
 		<label index="databaserelation.showAllRecords">Show all records</label>
 		<label index="error.notUnique">This entry already exists</label>
+		<label index="ac.noResults">Autocompleter: No Results found</label>
 	</labels>
 	<labels lang="de">
 		<label index="select.pleaseSelect">Bitte wählen</label>
@@ -27,5 +28,6 @@
 		<label index="databaserelation.nolabel">[Neuer Eintrag]</label>
 		<label index="databaserelation.showAllRecords">Alle Datensätze anzeigen</label>
 		<label index="error.notUnique">Dieser Eintrag existiert schon</label>
+		<label index="ac.noResults">Autovervollständigung: Keine Resultate gefunden</label>
 	</labels>
 </locallang>

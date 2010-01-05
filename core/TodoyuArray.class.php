@@ -35,7 +35,7 @@ class TodoyuArray {
 	 *	@param	String		$columnName
 	 *	@return	Array
 	 */
-	public static function getColumn(&$array, $columnName) {
+	public static function getColumn(array &$array, $columnName) {
 		$column = array();
 
 		foreach($array as $subArray) {
