@@ -40,7 +40,7 @@ button span.rgt {
 	width:10px;
 	height:23px;
 	line-height:23px;
-	background:#FFF url(../img/bg_button.png) no-repeat 100% 50% !important;
+	background:#fff url(../img/bg_button.png) no-repeat 100% 50% !important;
 	position:relative;
 	left:3px;
 }
