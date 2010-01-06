@@ -98,7 +98,7 @@ require_once( PATH_CORE . '/lib/php/dwoo/plugins.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrict.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrictIfNone.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrictOrOwn.php' );
-require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_paging.php' );
+require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_listing.php' );
 
 	// Include strptime function if not defined on windows
 if( ! function_exists('strptime') ) {

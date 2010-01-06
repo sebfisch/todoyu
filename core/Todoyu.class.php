@@ -101,8 +101,7 @@ class Todoyu {
 			TodoyuDebug::printHtml($e->getMessage(), 'Template error (Dwoo_Exception)');
 		}
 
-
-//		self::addDwooPluginDir('core/lib/php/dwoo');
+		self::addDwooPluginDir('core/lib/php/dwoo');
 	}
 
 
@@ -135,6 +134,8 @@ class Todoyu {
 	 * @param	String		$directory
 	 */
 	public static function addDwooPluginDir($directory) {
+		$directory	= TodoyuFileManager::pathAbsolute($directory);
+
 		self::$template->getLoader()->addDirectory($directory);
 	}
 

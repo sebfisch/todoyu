@@ -61,6 +61,7 @@
 		<label index="footer.api.title">Doxygen API Documentation</label>
 		<label index="footer.devmanual">Dev</label>
 		<label index="footer.devmanual.title">Manual for developers and other smart people</label>
+		<label index="paging.page">Page</label>
 	</labels>
 	<labels lang="de">
 		<label index="tab.todoyu.label">todoyu</label>
@@ -123,5 +124,6 @@
 		<label index="footer.api.title">Doxygen API Dokumentation</label>
 		<label index="footer.devmanual">Dev</label>
 		<label index="footer.devmanual.title">Anleitungen für Entwickler und andere kluge Leute</label>
+		<label index="paging.page">Seite</label>
 	</labels>
 </locallang>

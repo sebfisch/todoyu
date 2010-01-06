@@ -1,18 +1,20 @@
 .paging {
+	display:block;
 	background-color:#F00;
 }
 
 .paging div {
+	display:block;
 	float:left;
 	clear:none;
-	font-size:16px;
+	font-size:12px;
 	font-weight:bold;
 	text-align:center;
+	
 }
 
 .paging div.view {
-	width:50px;
-	padding:5px;
+	padding-right:10px;
 }
 
 .paging div.pages {
@@ -20,11 +22,16 @@
 }
 
 .paging div.pages div.page {
+	padding:0 5px;
 	width:30px;
-	padding:5px;
 	cursor:pointer;
-	background-color:#FF0;
+	background-color:#EDF1E0;
 	margin-right:1px;
+}
+
+.paging div.pages div.page.active {
+	background-color:#E3EACE;
+	cursor:default;
 }
 
 .paging div.nav {
@@ -33,7 +40,10 @@
 }
 
 .paging div.nav div {
-	padding:2px 10px;
+	padding:0 5px;
+	margin:0 1px;
+	width:20px;
 	cursor:pointer;
-	font-size:20px;
+	font-size:12px;
+	background-color:#E3EACE;
 }

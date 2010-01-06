@@ -948,7 +948,7 @@ class TodoyuDatabase {
 	 * @param	String		$groupBy
 	 * @param	String		$orderBy
 	 * @param	String		$limit
-	 * @param	String		$resultFieldName		If $field isn't the fieldname in the resultset (possibily with table prefix...), set the name here
+	 * @param	String		$resultFieldName		If field isn't the fieldname in the resultset (possibily with table prefix...), set the name here
 	 * @return	String
 	 */
 	public function getFieldValue($field, $table, $where = null, $groupBy = null, $orderBy = null, $limit = null, $resultFieldName = null) {

@@ -2,12 +2,14 @@ Todoyu.Paging = {
 	
 	config: {},
 	
-	init: function(name, offset, url) {
-		url	= url.split('/');
+	init: function(name, update, size, offset, total) {
+		var url	= update.split('/');
 		
 		this.config[name] = {
 			'name':		name,
+			'size':		size,
 			'offset':	offset,
+			'total':	total,
 			'url': {
 				'ext':			url[0],
 				'controller': 	url[1],
@@ -26,12 +28,27 @@ Todoyu.Paging = {
 			},
 			'onComplete': this.onUpdated.bind(this, name, offset)
 		};
+		var target	= 'paging-' + name;
 		
-		Todoyu.Ui.updateContent(url, options);
+		Todoyu.Ui.replace(target, url, options);
 	},
 	
 	onUpdated: function(name, offset, response) {
 		
+	},
+	
+	foreward: function(name) {
+		var newOffset = this.config[name].offset + this.config[name].size;
+		if( newOffset < this.config[name].total ) {
+			this.update(name, newOffset);
+		}
+	},
+	
+	backward: function(name) {
+		var newOffset = this.config[name].offset - this.config[name].size;
+		if( newOffset >= 0 ) {
+			this.update(name, newOffset);
+		}
 	}
 	
 };
