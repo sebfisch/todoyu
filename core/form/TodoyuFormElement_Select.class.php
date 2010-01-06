@@ -182,7 +182,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 			case 2:
 				$options	= call_user_func($funcRef, $this);
 				foreach($options as $option) {
-					$this->addOption($option['value'], $option['label']);
+					$this->addOption($option['value'], $option['label'], $option['selected'], $option['disabled'], $option['class'], $option['disabled']);
 				}
 				break;
 				// funcRef is built like class::function::param, param is e.g the field ID
@@ -192,7 +192,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 				array_pop($funcRef);
 				$options	= call_user_func($funcRef, $this, $funcParam);
 				foreach($options as $option) {
-					$this->addOption($option['value'], $option['label'], $option['selected'], $option['disabled'], $option['class']);
+					$this->addOption($option['value'], $option['label'], $option['selected'], $option['disabled'], $option['class'], $option['disabled']);
 				}
 				break;
 		}
@@ -242,7 +242,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 		$this->config['options'][] = array(
 			'value'		=> $value,
 			'label'		=> TodoyuDiv::getLabel($label),
-			'disabled'	=> $disabled,
+			'disabled'	=> $disabled !== true ? false : 'disabled',
 		);
 
 		if( $selected ) {
@@ -253,7 +253,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 
 
 	/**
-	 * Set an option. The (first) option with the same value will be replace.
+	 * Set an option. The (first) option with the same value will be replaced.
 	 * If no option with this value exists, a new options will be added
 	 *
 	 * @param	String		$value
