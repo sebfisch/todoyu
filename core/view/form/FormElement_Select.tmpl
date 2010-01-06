@@ -1,7 +1,7 @@
 {extends "core/view/form/FormElement.tmpl"}
 
 {block name="field"}
-<select name="{$htmlName}" id="{$htmlId}" class="{$inputClass} {$class}" size="{$size}" {if $multiple}multiple="multiple"{/if} {$extraAttributes}>
+<select name="{$htmlName}" id="{$htmlId}" class="{$inputClass} {$class}" size="{$size}" {if $multiple}multiple="multiple"{/if} {if $disabled}disabled="disabled"{/if} {$extraAttributes}>
 {foreach $options option}
 	<option value="{$option.value}" {if in_array($option.value, $value)}selected="selected"{/if} {if $option.disabled}disabled="disabled"{/if}>{$option.label}</option>
 {/foreach}
