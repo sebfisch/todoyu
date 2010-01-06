@@ -28,4 +28,4 @@ ALTER TABLE `ext_user_company` ADD `is_internal` TINYINT( 1 ) UNSIGNED NOT NULL 
 --
 -- Change eventtype to text
 --
-ALTER TABLE `ext_calendar_event` CHANGE `eventtype` `eventtype` VARCHAR( 20 ) NOT NULL
+ALTER TABLE `ext_calendar_event` CHANGE `eventtype` `eventtype` VARCHAR( 20 ) NOT NULL;
