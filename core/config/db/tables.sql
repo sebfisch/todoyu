@@ -1,5 +1,5 @@
 --
--- Tabellenstruktur für Tabelle `history`
+-- Tabellenstruktur fï¿½r Tabelle `history`
 --
 
 CREATE TABLE `history` (
@@ -14,7 +14,7 @@ CREATE TABLE `history` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Tabellenstruktur für Tabelle `log`
+-- Tabellenstruktur fï¿½r Tabelle `log`
 --
 
 CREATE TABLE `log` (
@@ -31,7 +31,7 @@ CREATE TABLE `log` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Tabellenstruktur für Tabelle `static_country`
+-- Tabellenstruktur fï¿½r Tabelle `static_country`
 --
 
 CREATE TABLE `static_country` (
@@ -46,7 +46,7 @@ CREATE TABLE `static_country` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Tabellenstruktur für Tabelle `static_country_zone`
+-- Tabellenstruktur fï¿½r Tabelle `static_country_zone`
 --
 
 CREATE TABLE `static_country_zone` (
@@ -60,7 +60,7 @@ CREATE TABLE `static_country_zone` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Tabellenstruktur für Tabelle `static_currency`
+-- Tabellenstruktur fï¿½r Tabelle `static_currency`
 --
 
 CREATE TABLE `static_currency` (
@@ -80,7 +80,7 @@ CREATE TABLE `static_currency` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Tabellenstruktur für Tabelle `static_territory`
+-- Tabellenstruktur fÃ¼r Tabelle `static_territory`
 --
 
 CREATE TABLE `static_territory` (
@@ -91,3 +91,14 @@ CREATE TABLE `static_territory` (
   UNIQUE KEY `uid` (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+--
+-- Tabellenstruktur fÃ¼r Tabelle `static_language`
+--
+
+CREATE TABLE `static_language` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `iso_alpha2` char(2) CHARACTER SET utf8 NOT NULL,
+  `iso_alpha3` char(3) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `alpha2` (`iso_alpha2`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

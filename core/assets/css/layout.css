@@ -28,6 +28,7 @@ body {
 	width:978px;
 	padding-top:100px;
 	margin:0 auto;
+	text-align:left;
 }
 
 #contentBox {
@@ -54,69 +55,14 @@ body {
 }
 
 
-/* --------------
-	Panel
-   --------------*/
-
-	#panel {
-		position:relative;
-		top:20px;
-		float:left;
-		clear:both;
-		width:270px;
-		padding:0;
-		margin:0 10px 50px 0;
-	}
-
-		#panel .inner {
-			padding:5px;
-		}
-
-		#panel .panelHeader {
-			height:8px;
-			background:url('../img/panel_header.png') no-repeat 0 0;
-		}
-
-		#panel .panelWidget {
-			background:#fff;
-			margin:0 0 2px;
-			padding:5px 7px 6px;
-		}
-
-			#panel .panelWidget .notification {
-				text-align:left;
-				padding:4px 0 2px 20px;
-				background:url('../img/notify/info_small.png') no-repeat 2px 4px;
-			}
-
-		#panel .panelFooter {
-			height:51px;
-			margin-top:-2px;
-			background:url('../img/panel_footer.png') no-repeat 0 0;
-		}
-
-#panel.collapsed {
-	width:0px;
-	margin-right:0;
+#notification {
+	margin:0 0 0 18px;
+	padding:6px 8px 12px 8px;
+	background-color:#F6F8F0;
+	border:1px solid #aaa;
 }
 
-#left-col-trigger {
-	display:block;
-	position:absolute;
-	left:-15px;
-	top:0;
-	height:33px;
-	width:13px;
-	cursor:pointer;
-}
 
-#left-col-trigger.close {
-	background:url(../img/sprite-left_col-portal.png) no-repeat 0 -128px;
-}
-
-#left-col-trigger.open {
-	background:url(../img/sprite-left_col-portal.png) no-repeat -32px -128px;
-}
 
 
 

@@ -276,6 +276,11 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'file'		=> 'core/assets/css/paging.css',
 			'media'		=> 'all',
 			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/panel.css',
+			'media'		=> 'all',
+			'position'	=> 10
 		)
 	)
 );

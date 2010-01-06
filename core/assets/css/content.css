@@ -31,11 +31,22 @@ div.icon {
    -----------------*/
 
 ul.ulList {}
-ul.ulList li.listItem {overflow:hidden;line-height:18px;}
-* html ul.ulList li.listItem {overflow:visible;height:1%;}
-ul.ulList li.listItem span {display:block;float:left;}
+ul.ulList li.listItem {
+	overflow:hidden;
+	line-height:18px;
+}
+* html ul.ulList li.listItem {
+	overflow:visible;
+	height:1%;
+}
+ul.ulList li.listItem span {
+	display:block;
+	float:left;
+}
 ul.ulList li.listItemHeader {}
-ul.ulList li.listItemHeader span {font-weight:bold;}
+ul.ulList li.listItemHeader span {
+	font-weight:bold;
+}
 
 
 

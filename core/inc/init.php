@@ -48,6 +48,7 @@ TodoyuLocale::register('static_country', PATH_CORE . '/locale/static_country.xml
 TodoyuLocale::register('static_country_zone', PATH_CORE . '/locale/static_country_zone.xml');
 TodoyuLocale::register('static_currency', PATH_CORE . '/locale/static_currency.xml');
 TodoyuLocale::register('static_territory', PATH_CORE . '/locale/static_territory.xml');
+TodoyuLocale::register('static_language', PATH_CORE . '/locale/static_language.xml');
 
 	// Load extensions
 require( PATH_CORE . '/inc/load_extensions.php' );

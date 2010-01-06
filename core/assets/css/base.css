@@ -201,17 +201,6 @@ h4 {
 	text-indent:-9999px;
 }
 
-#box {
-	text-align:left;
-}
-
-#notification {
-	margin:0 0 0 18px;
-	padding:6px 8px 12px 8px;
-	background-color:#F6F8F0;
-	border:1px solid #aaa;
-}
-
 .red {
 	color:#ad5050;
 }
