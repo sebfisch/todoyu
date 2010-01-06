@@ -78,15 +78,19 @@ class TodoyuDbAnalyzer {
 	 *	@return Array
 	 */
 	public static function getTablesStructures(array $tablesNames) {
-		$tablesAmount	= count($tablesNames) - 1;
-		$query	= '	SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME IN (';
 
+			// build where-clause
+		$tablesAmount	= count($tablesNames) - 1;
+		$where	= ' TABLE_NAME IN (';
 		$count	= 0;
 		foreach($tablesNames as $tableName) {
-			$query	.= '\'' . $tableName . '\'' . ($count < $tablesAmount ? ', ' : '');
+			$where	.= '\'' . $tableName . '\'' . ($count < $tablesAmount ? ', ' : '');
 			$count++;
 		}
-		$query	.= ')';
+		$where	.= ')';
+
+			// build query
+		$query	= Todoyu::db()->buildSELECTinformationSchemaColumnsQuery('*', $where);
 
 		$structure	= array();
 

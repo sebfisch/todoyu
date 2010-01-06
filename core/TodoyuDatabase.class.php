@@ -272,7 +272,7 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Build a select quiery
+	 * Build a select query
 	 *
 	 * @param	String		$fields
 	 * @param	String		$table
@@ -369,6 +369,28 @@ class TodoyuDatabase {
 						(' . $fieldNames . ')
 					VALUES (
 						' . $fieldValues . ')';
+
+		return $query;
+	}
+
+
+
+	/**
+	 * Build a select from INFORMATION_SCHEMA.COLUMNS query
+	 *
+	 * @param	String		$fields
+	 * @param	String		$where
+	 * @return	String
+	 */
+	public function buildSELECTinformationSchemaColumnsQuery($fields, $where = '') {
+		$dbName	= $GLOBALS['CONFIG']['DB']['database'];
+
+		$query	 = 'SELECT ' . $fields . ' FROM INFORMATION_SCHEMA.COLUMNS ';
+		$query	.= ' WHERE TABLE_SCHEMA = \'' . $dbName . '\' ';
+
+		if( $where != '' ) {
+			$query .= ' AND ' . $where;
+		}
 
 		return $query;
 	}

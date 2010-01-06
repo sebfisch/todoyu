@@ -178,6 +178,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 		$funcRef	= explode('::', $source['function']);
 
 		switch( sizeof($funcRef) ) {
+
 				// funcRef is built like class::function
 			case 2:
 				$options	= call_user_func($funcRef, $this);
@@ -185,6 +186,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 					$this->addOption($option['value'], $option['label'], $option['selected'], $option['disabled'], $option['class'], $option['disabled']);
 				}
 				break;
+
 				// funcRef is built like class::function::param, param is e.g the field ID
 			case 3:
 				Todoyu::log('Non standard 3 parts select source function: ' . $source['function'], LOG_LEVEL_NOTICE);

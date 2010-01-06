@@ -24,11 +24,8 @@
  *
  */
 
-$dbName	= $GLOBALS['CONFIG']['DB']['database'];
-$query	= '	SELECT * FROM INFORMATION_SCHEMA.COLUMNS
-			WHERE TABLE_SCHEMA = \'' . $dbName . '\'
-			AND TABLE_NAME IN (\'ext_filter_set\', \'ext_filter_condition\')';
-
+$where	= ' TABLE_NAME IN (\'ext_filter_set\', \'ext_filter_condition\')';
+$query	= Todoyu::db()->buildSELECTinformationSchemaColumnsQuery('*', $where);
 $hasRes	= Todoyu::db()->queryHasResult($query);
 
 	// If not done yet

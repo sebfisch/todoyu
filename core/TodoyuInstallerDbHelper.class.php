@@ -198,7 +198,7 @@ class TodoyuInstallerDbHelper {
 			// Get all table names being declared
 		$extTablesNames	= TodoyuSqlParser::extractTableNames($extTablesSql);
 
-			// Collect all columns declarations of all tables
+			// Collect all columns declarations of all tables (from tables.sql files)
 		$extTablesStructures	= TodoyuSqlParser::getAllTableStructures($extTablesNames, $extTablesSql);
 
 			// Collect all tables' comparisom columns declarations as setup in DB
@@ -225,6 +225,7 @@ class TodoyuInstallerDbHelper {
 
 			// Compare each table, column from DB with declaration in 'tables.sql', filter out differing ones
 		foreach($dbStructures as $tableName => $tableStructure) {
+
 			foreach($tableStructure['columns'] as $columnName => $columnStructure) {
 					// Check if column is declared identic in DB and tables.sql
 
