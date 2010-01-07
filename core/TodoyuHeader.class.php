@@ -45,7 +45,6 @@ class TodoyuHeader {
 
 	/**
 	 * Set sent status
-	 *
 	 */
 	public static function setSent() {
 		self::$sent = true;
@@ -88,7 +87,6 @@ class TodoyuHeader {
 
 	/**
 	 * Send HTML header
-	 *
 	 */
 	public static function sendHeaderHTML() {
 		self::setType('HTML');
@@ -99,7 +97,6 @@ class TodoyuHeader {
 
 	/**
 	 * Send JSON header
-	 *
 	 */
 	public static function sendHeaderJSON() {
 		self::setType('JSON');
@@ -110,7 +107,6 @@ class TodoyuHeader {
 
 	/**
 	 * Send XML header
-	 *
 	 */
 	public static function sendHeaderXML() {
 		self::setType('XML');
@@ -121,7 +117,6 @@ class TodoyuHeader {
 
 	/**
 	 * Send plaintext header
-	 *
 	 */
 	public static function sendHeaderPlain() {
 		self::setType('PLAIN');
@@ -258,6 +253,5 @@ class TodoyuHeader {
 	}
 
 }
-
 
 ?>

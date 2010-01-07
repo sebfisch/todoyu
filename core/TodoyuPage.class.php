@@ -103,7 +103,6 @@ class TodoyuPage {
 
 	/**
 	 * Load all page configuration of the extensions
-	 *
 	 */
 	private static function loadExtPageConfig() {
 		TodoyuExtensions::loadAllPage();
