@@ -121,6 +121,8 @@ div.fElement {
 
 	div.fElement .fField input {
 	}
+	
+	
 
 	div.fElement .fClear {
 		clear:both;
@@ -194,7 +196,16 @@ div.fElement {
 			background:url(../img/icons.png) no-repeat 0 -539px;
 		}
 
-
+	
+	.fElement .fField.hasWizard input{
+		width: 80%;
+		float: left;
+	}
+	
+	.fElement .fField.hasWizard .wizardIcon{
+		cursor: pointer;
+	}
+	
 	fieldset.buttons div,
 	fieldset.buttons div.fElement .fField {
 		float:left;
