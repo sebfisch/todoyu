@@ -61,7 +61,7 @@ class TodoyuValidator {
 	 * Check if value is a number
 	 *
 	 * @param	String		$value
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isNumber($value ) {
 		return is_numeric($value);
@@ -73,7 +73,7 @@ class TodoyuValidator {
 	 * Check if value is decimal
 	 *
 	 * @param	String		$value
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isDecimal($value) {
 		return trim(floatval($value)) === trim($value);
@@ -99,8 +99,8 @@ class TodoyuValidator {
 	 * @param	Float		$value
 	 * @param	Float		$bottom
 	 * @param	Float		$top
-	 * @param	Bool		$allowRanges
-	 * @return	Bool
+	 * @param	Boolean		$allowRanges
+	 * @return	Boolean
 	 */
 	public static function isInRange($value, $bottom, $top, $allowRanges = true) {
 		$value	= floatval($value);
@@ -161,8 +161,6 @@ class TodoyuValidator {
 
 
 
-
-
 	/**
 	 * Validate string not containing given illegal characters
 	 *
@@ -183,9 +181,6 @@ class TodoyuValidator {
 
 		return true;
 	}
-
-
-
 
 }
 

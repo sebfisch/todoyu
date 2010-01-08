@@ -89,7 +89,7 @@ class TodoyuRecordManager {
 	 * @param	String		$table
 	 * @param	Integer		$idRecord
 	 * @param	Array		$data
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function updateRecord($table, $idRecord, array $data) {
 		$idRecord	= intval($idRecord);
@@ -124,7 +124,7 @@ class TodoyuRecordManager {
 	 *
 	 * @param	String		$table
 	 * @param	Integer		$idRecord
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isRecord($table, $idRecord) {
 		$idRecord	= intval($idRecord);

@@ -560,9 +560,10 @@ class TodoyuDatabase {
 	 *
 	 * @param	Array		$searchWords			Words to search for
 	 * @param	Array		$searchInFields			Fields which have to match the $searchWords
+	 * @param	Boolean		$negate
 	 * @return	String		Where part condition
 	 */
-	public function buildLikeQuery(array $searchWords, array $searchInFields) {
+	public function buildLikeQuery(array $searchWords, array $searchInFields, $negate = false) {
 		$searchWords= $this->escapeArray($searchWords);
 		$fieldWheres= array();
 
@@ -572,7 +573,7 @@ class TodoyuDatabase {
 
 				// Build an OR-group for all searchfields
 			foreach($searchInFields as $fieldName) {
-				$fieldParts[] = $fieldName . ' LIKE \'%' . $searchWord . '%\'';
+				$fieldParts[] = $fieldName . ($negate ? ' NOT ' : '') . ' LIKE \'%' . $searchWord . '%\'';
 			}
 
 				// Concat field wheres with each words inside

@@ -387,7 +387,7 @@ class TodoyuExtensions {
 	 * Dependents need the current extension to work properly
 	 *
 	 * @param	String		$extKey
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function hasDependents($extKey) {
 		$dependents	= self::getDependents($extKey);
@@ -428,7 +428,7 @@ class TodoyuExtensions {
 	 * Check if an extension has the system flag (should not be uninstalled)
 	 *
 	 * @param	String		$extKey
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isSystemExtension($extKey) {
 		self::loadConfig($extKey, 'extinfo');

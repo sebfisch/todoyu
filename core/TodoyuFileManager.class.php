@@ -217,7 +217,7 @@ class TodoyuFileManager {
 	 * Check if file exists. Also relative path from PATH
 	 *
 	 * @param	String		$path
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isFile($path) {
 		$path	= self::pathAbsolute($path);
@@ -233,7 +233,7 @@ class TodoyuFileManager {
 	 * @param	String		$savePath		Path where the file is saved
 	 * @param	String		$tmpl			Path to the template file
 	 * @param	Array		$data			Template data
-	 * @param	Bool		$wrapAsPhp		Wrap content with PHP start and end tags
+	 * @param	Boolean		$wrapAsPhp		Wrap content with PHP start and end tags
 	 */
 	public static function saveTemplatedFile($savePath, $tmpl, array $data = array(), $wrapAsPhp = true) {
 		$savePath	= self::pathAbsolute($savePath);
@@ -255,7 +255,7 @@ class TodoyuFileManager {
 	 * Set default access rights to folder or file
 	 *
 	 * @param	String		$path
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function setDefaultAccessRights($path) {
 		$path	= self::pathAbsolute($path);
@@ -273,7 +273,7 @@ class TodoyuFileManager {
 	 * Set default file access
 	 *
 	 * @param	String		$pathToFile
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function setDefaultFileAccess($pathToFile) {
 		$pathToFile	= self::pathAbsolute($pathToFile);
@@ -287,7 +287,7 @@ class TodoyuFileManager {
 	 * Set default file access
 	 *
 	 * @param	String		$pathToFolder
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function setDefaultFolderAccess($pathToFolder) {
 		$pathToFolder	= self::pathAbsolute($pathToFolder);

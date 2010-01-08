@@ -36,7 +36,7 @@ class TodoyuDbHelper {
 	 * @param	String		$foreignField		Foreign field name for the other records
 	 * @param	Integer		$idRecord			The linking record
 	 * @param	Array		$foreignRecordIDs	The other linked records
-	 * @param	Bool		$removeCurrent		Remove all current links of the record
+	 * @param	Boolean		$removeCurrent		Remove all current links of the record
 	 */
 	public static function saveMMrelations($mmTable, $localField, $foreignField, $idRecord, array $foreignRecordIDs, $removeCurrent = true) {
 		$idRecord			= intval($idRecord);

@@ -406,7 +406,7 @@ class TodoyuDiv {
 	 * Check if path is inside to todoyu path (prevent actions outside of todoyu)
 	 *
 	 * @param	String		$path
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isAllowedTodoyuPath($path) {
 		$path	= TodoyuFileManager::pathAbsolute($path);
@@ -855,7 +855,7 @@ class TodoyuDiv {
 	 *
 	 * @param	Array		$params		Parameters as key=>value
 	 * @param	String		$hash		Hash (#hash)
-	 * @param	Bool		$absolute	Absolute URL with host server
+	 * @param	Boolean		$absolute	Absolute URL with host server
 	 * @return	String
 	 */
 	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {

@@ -162,7 +162,7 @@ class TodoyuTime {
 	 * Get weekday of a timestamp. With $mondayFirst monday will be 0 and sunday 6
 	 *
 	 * @param	Integer		$timestamp
-	 * @param	Bool		$mondayFirst
+	 * @param	Boolean		$mondayFirst
 	 * @return	Integer		0 = monday, 6 = sunday
 	 */
 	public static function getWeekday($timestamp, $mondayFirst = true) {
@@ -578,7 +578,7 @@ class TodoyuTime {
 	 * @param	Integer		$dateEnd1
 	 * @param	Integer		$dateStart2
 	 * @param	Integer		$dateEnd2
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function rangeOverlaps($dateStart1, $dateEnd1, $dateStart2, $dateEnd2) {
 		$dateStart1	= intval($dateStart1);

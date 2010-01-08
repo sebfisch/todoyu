@@ -36,7 +36,7 @@ class TodoyuFormValidator {
 	 * @param	Array				$validatorConfig
 	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function validate($validatorName, $fieldValue, array $validatorConfig, TodoyuFormElement $formElement, array $formData = array()) {
 		if( method_exists('TodoyuFormValidator', $validatorName) ) {
@@ -359,7 +359,7 @@ class TodoyuFormValidator {
 	 * @param 	TodoyuFormElement 	$validatorConfig
 	 * @param	Array				$formElement
 	 * @param 	Array				$formData
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function goodPassword($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		$idUser	= intval($formData['id']);
@@ -391,7 +391,7 @@ class TodoyuFormValidator {
 	 * @param	Array				$validatorConfig
 	 * @param	TodoyuFormElement 	$formElement
 	 * @param	Array				$formData
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function unique($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		$table		= trim($validatorConfig['table']);
