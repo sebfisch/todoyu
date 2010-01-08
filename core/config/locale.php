@@ -28,5 +28,4 @@ $CONFIG['LOCALE']['defaultTimezone']= 'System/Localtime';
 	// predefine array of JS required labels
 $CONFIG['JS-LOCALE']	= array();
 
-
 ?>

@@ -34,5 +34,4 @@ $CONFIG['FE'] = array(
 	'ContentType'	=> 'text/html; charset=utf-8'
 );
 
-
 ?>

@@ -31,9 +31,9 @@ Todoyu.Form = {
 	/**
 	 * Toggle sub form
 	 *
-	 *	@param	unknown_type	idRecord
-	 *	@param	unknown_type	fieldName
-	 *	@param	unknown_type	index
+	 * @param	Integer		idRecord
+	 * @param	String		fieldName
+	 * @param	Integer		index
 	 */
 	toggleRecordForm: function(idRecord, fieldName, index)	{
 		var idForm = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml';
@@ -48,9 +48,9 @@ Todoyu.Form = {
 	/**
 	 * Remove sub form
 	 *
-	 *	@param	unknown_type	idRecord
-	 *	@param	unknown_type	fieldName
-	 *	@param	unknown_type	index
+	 * @param	Integer		idRecord
+	 * @param	String		fieldName
+	 * @param	Integer		index
 	 */
 	removeRecord: function(idRecord, fieldName, index) {
 		var idElement	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
@@ -79,11 +79,11 @@ Todoyu.Form = {
 	/**
 	 * Add a new record
 	 * 
-	 *	@param	Integer		idRecord
-	 *	@param	String		formName
-	 *	@param	Stirng		fieldName
-	 *	@param	String		updateExt
-	 *	@param	String		updateController
+	 * @param	Integer		idRecord
+	 * @param	String		formName
+	 * @param	Stirng		fieldName
+	 * @param	String		updateExt
+	 * @param	String		updateController
 	 */
 	addRecord: function(idRecord, formName, fieldName, updateExt, updateController) {
 		var container	= $('foreignrecords-' + idRecord + '-' + fieldName);
@@ -109,11 +109,11 @@ Todoyu.Form = {
 	/**
 	 * Callback when new record added
 	 *
-	 *	@param	Integer		idRecord
-	 *	@param	String		formName
-	 *	@param	String		fieldName
-	 *	@param	String		index
-	 *	@param	String		response
+	 * @param	Integer		idRecord
+	 * @param	String		formName
+	 * @param	String		fieldName
+	 * @param	String		index
+	 * @param	String		response
 	 */
 	onRecordAdded: function(idRecord, formName, fieldName, index, response) {
 		this.toggleRecordForm(idRecord, fieldName, index);
@@ -125,9 +125,9 @@ Todoyu.Form = {
 	/**
 	 * Focus first record field
 	 * 
-	 *	@param	Integer		idRecord
-	 *	@param	String		fieldName
-	 *	@param	Integer		index
+	 * @param	Integer		idRecord
+	 * @param	String		fieldName
+	 * @param	Integer		index
 	 */
 	focusFirstRecordField: function(idRecord, fieldName, index) {
 		var formHTML= $('foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml');
@@ -142,16 +142,18 @@ Todoyu.Form = {
 
 	/**
 	 * 
-	 *	@param	Array	fieldNames 
+	 * @param	Array	fieldNames 
 	 */
 	expandForeignRecords: function(fieldNames) {
 		fieldNames = fieldNames || [];
 				
 		fieldNames.each(function(fieldName){
 			var parentField = $$('form div.fieldname' + fieldName.capitalize()).first();
-			var subForms	= parentField.select('div.databaseRelation div.databaseRelationFormhtml');
-			
-			subForms.invoke('show');
+			if ( parentField ) {
+				var subForms	= parentField.select('div.databaseRelation div.databaseRelationFormhtml');
+
+				subForms.invoke('show');
+			}
 		});
 	},
 
@@ -160,14 +162,15 @@ Todoyu.Form = {
 	/**
 	 * Expand all foreign records in a form
 	 *
-	 *	@param	unknown_type	idRecord
-	 *	@param	unknown_type	idField
-	 *	@param	unknown_type	extension
-	 *	@param	unknown_type	controller
-	 *	@param	unknown_type	action
-	 *	@param	unknown_type	height
-	 *	@param	unknown_type	width
-	 *	@param	unknown_type	title
+	 * @param	Integer		idRecord
+	 * @param	Integer		idField
+	 * @param	String		extension
+	 * @param	String		controller
+	 * @param	String		action
+	 * @param	Integer		height
+	 * @param	Integer		width
+	 * @param	String		title
+	 * @return	String
 	 */
 	openWizard: function(idRecord, idField, extension, controller, action, height, width, title)	{
 		var url		= Todoyu.getUrl(extension,	controller);
