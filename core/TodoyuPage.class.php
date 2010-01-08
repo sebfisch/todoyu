@@ -261,7 +261,7 @@ class TodoyuPage {
 	 * @param	String	$type
 	 * @return	String
 	 */
-	public static function getInlineJavascriptAdd($ext, $type = 'public')	{
+	public static function getExtJSinline($ext, $type = 'public')	{
 		TodoyuExtensions::loadAllAssets();
 		
 		$files	= $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['js'];
@@ -284,7 +284,7 @@ class TodoyuPage {
 	 * @param	String	$type
 	 * @return	String
 	 */
-	public static function getInlineCSSAdd($ext, $type = 'public')	{
+	public static function getExtCSSinline($ext, $type = 'public')	{
 		TodoyuExtensions::loadAllAssets();
 		
 		$files	= $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['css'];
