@@ -19,13 +19,12 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['SYSTEM']['name'] 		= 'Fear Lokal';
-$CONFIG['SYSTEM']['email']		= 'ferni@snowflake.ch';
-$CONFIG['SYSTEM']['language']	= 'de';
-$CONFIG['SYSTEM']['locale']		= 'de_DE.utf8';
+$CONFIG['SYSTEM']['name'] 		= 'todoyu';
+$CONFIG['SYSTEM']['email']		= 'nkarrer@snowflake.ch';
+$CONFIG['SYSTEM']['language']	= 'en';
+$CONFIG['SYSTEM']['locale']		= 'en_EN.utf8';
 
-$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
+//$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
 
-$CONFIG['SYSTEM']['encryptionKey']	= 'ea049b6654f0a182dfd9bab073ef41d9';
-
+$CONFIG['SYSTEM']['encryptionKey']	= 'OWZmMDU0MmI5MTZkMTA4YTJkMGE2MWI5ODkxZDIxZmY';
 ?>

@@ -451,8 +451,56 @@ Todoyu.Ui = {
 		return new TimePicker(idElement);
 	},
 
+	
+	
+	/**
+	 * 
+	 */
 	setTitle: function(title) {
 		document.title = 'todoyu: ' + title;
+	},
+	
+	
+	
+	/**
+	 * Creates a js filereference and appends it to head
+	 * 
+	 * @param	String	filename
+	 */
+	loadJSFile: function(filename)	{
+		var fileref=document.createElement( 'script' );
+		fileref.setAttribute( "type" , "text/javascript" );
+		fileref.setAttribute( "src" , filename );
+		
+		Todoyu.Ui.appendAssetToHead(fileref);
+	},
+	
+	
+	
+	/**
+	 * Creates a css filereference and appends it to head
+	 * 
+	 * @param	String	filename
+	 */
+	loadCSSFile: function(filename)	{
+		var fileref=document.createElement( "link" );
+		fileref.setAttribute( "rel" , "stylesheet" );
+		fileref.setAttribute( "type" , "text/css" );
+		fileref.setAttribute( "href" , filename );
+		
+		Todoyu.Ui.appendAssetToHead(fileref);
+	},
+	
+	
+	
+	/**
+	 * Appends given filereference to html head
+	 * 
+	 * @param	fileref
+	 */
+	appendAssetToHead: function(fileref)	{
+		if (typeof fileref!="undefined")	{
+			 document.getElementsByTagName( "head" )[0].appendChild( fileref );
+		}
 	}
-
 };
