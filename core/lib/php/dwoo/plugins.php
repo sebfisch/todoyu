@@ -136,7 +136,7 @@ function Dwoo_Plugin_inArray(Dwoo $dwoo, $value, $array) {
 
 
 /**
- * Encode string for html output
+ * Encode string for HTML output
  *
  * @package		Todoyu
  * @subpackage	Template
@@ -519,7 +519,7 @@ function Dwoo_Plugin_allowedOrOwn_compile(Dwoo_Compiler $compiler, $ext, $right,
 
 
 /**
- * Convert html code to text, keep as much format as possible
+ * Convert HTML code to text, keep as much format as possible
  *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$html

@@ -20,7 +20,7 @@
 ***************************************************************/
 
 /**
- * HTML filter to escape bad html code
+ * HTML filter to escape bad HTML code
  *
  * @package		Todoyu
  * @subpackage	Core
@@ -29,7 +29,7 @@
 class TodoyuHtmlFilter {
 
 	/**
-	 * Get bad html tags config array
+	 * Get bad HTML tags config array
 	 *
 	 * @return	Array
 	 */

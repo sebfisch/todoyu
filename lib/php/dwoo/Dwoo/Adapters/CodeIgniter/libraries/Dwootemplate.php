@@ -71,9 +71,9 @@ class Dwootemplate extends Dwoo {
 
 
     /**
-     * Add Css stylesheets to template
+     * Add CSS stylesheets to template
      *
-     * @param string $css
+     * @param	String	$css
      */
     public function add_css($css) {
         $current   = $this->dwoo_data->css_files;

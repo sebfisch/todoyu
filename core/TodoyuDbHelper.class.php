@@ -52,6 +52,18 @@ class TodoyuDbHelper {
 	}
 
 
+
+	/**
+	 * Save MM relation with extended (more than the commonly two) data columns
+	 *
+	 * @param	String		$mmTable
+	 * @param	String		$localField
+	 * @param	String		$foreignField
+	 * @param	Integer		$idLocalRecord
+	 * @param	Integer		$idForeignRecord
+	 * @param	Array		$data
+	 * @return	Integer		New ID of the record
+	 */
 	public static function saveExtendedMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord, array $data) {
 		$idLocalRecord	= intval($idLocalRecord);
 		$idForeignRecord= intval($idLocalRecord);
@@ -71,6 +83,7 @@ class TodoyuDbHelper {
 	 * @param	String		$foreignField		Foreign field name for the other records
 	 * @param	Integer		$idLocalRecord
 	 * @param	Integer		$idForeignRecord
+	 * @return	Integer		id of new record
 	 */
 	public static function addMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord) {
 		$data	= array(
@@ -78,9 +91,21 @@ class TodoyuDbHelper {
 			$foreignField	=> intval($idForeignRecord)
 		);
 
-		Todoyu::db()->addRecord($mmTable, $data);
+		return Todoyu::db()->addRecord($mmTable, $data);
 	}
 
+
+
+	/**
+	 * Delete given MM relation
+	 *
+	 * @param	String	$mmTable
+	 * @param	String	$localField
+	 * @param	String	$foreignField
+	 * @param	Integer	$idLocalRecord
+	 * @param	Integer	$idForeignRecord
+	 * @return	Integer		Num affected (deleted) rows
+	 */
 	public static function removeMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord) {
 		$idLocalRecord	= intval($idLocalRecord);
 		$idForeignRecord= intval($idForeignRecord);
@@ -92,14 +117,22 @@ class TodoyuDbHelper {
 		return Todoyu::db()->doDelete($mmTable, $where, $limit);
 	}
 
+
+
+	/**
+	 * Remove given MM relation records
+	 *
+	 * @param	String		$mmTable
+	 * @param	String		$field
+	 * @param	Integer		$idRecord
+	 * @return	Integer		Num affected (deleted) rows
+	 */
 	public static function removeMMrelations($mmTable, $field, $idRecord) {
 		$idRecord	= intval($idRecord);
 		$where		= Todoyu::db()->backtick($field) . ' = ' . $idRecord;
 
-		Todoyu::db()->doDelete($mmTable, $where);
+		return Todoyu::db()->doDelete($mmTable, $where);
 	}
 
 }
-
-
 ?>

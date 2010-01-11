@@ -802,7 +802,7 @@ class TodoyuDiv {
 
 
 	/**
-	 * wraps string with given html tags
+	 * wraps string with given HTML tags
 	 *
 	 * <tag>|</tag>
 	 *
@@ -983,7 +983,7 @@ class TodoyuDiv {
 
 
 	/**
-	 * Convert a html snippet into plain text. Keep as much format information as possible
+	 * Convert an HTML snippet into plain text. Keep as much format information as possible
 	 *
 	 * @param	String		$html		HTML snippet
 	 * @return	String		Text version

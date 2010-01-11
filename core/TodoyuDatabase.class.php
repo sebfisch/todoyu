@@ -541,7 +541,7 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Build a FIND_IN_SET sql statement so search in a comma seperated field
+	 * Build a FIND_IN_SET SQL statement so search in a comma seperated field
 	 *
 	 * @param	String		$itemToFind
 	 * @param	String		$fieldname
@@ -607,7 +607,7 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Build a boolean invert sql command
+	 * Build a boolean invert SQL command
 	 *
 	 * @param	String		$table
 	 * @param	String		$fieldname
@@ -859,7 +859,7 @@ class TodoyuDatabase {
 	 * @param	String		$groupBy					Group
 	 * @param	String		$orderBy					Order
 	 * @param	String		$limit						Limit
-	 * @param	String		$resultFieldName			Fieldname which will be in the sql result. (ex: "id as idTask"). Not needed if identical with $field
+	 * @param	String		$resultFieldName			Fieldname which will be in the SQL result. (ex: "id as idTask"). Not needed if identical with $field
 	 * @param	String		$indexField					Field to use as index instead of automaticaly generated numeric indexes
 	 * @return	Array
 	 */

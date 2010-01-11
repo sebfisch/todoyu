@@ -30,8 +30,8 @@ class TodoyuSqlParser {
 	/**
 	 * Cleans given SQL from whitespace, comments, etc.
 	 *
-	 *	@param	String	$sql
-	 *	@return	String
+	 * @param	String	$sql
+	 * @return	String
 	 */
 	public static function cleanSql($sql) {
 		$sql	= self::trimLines($sql, true);
@@ -45,8 +45,8 @@ class TodoyuSqlParser {
 	/**
 	 * Removes whitespace from lines' start, optionally remove all-whitespaced lines
 	 *
-	 *	@param	String	$sql
-	 *	@return	String
+	 * @param	String	$sql
+	 * @return	String
 	 */
 	private static function trimLines($sql, $dropWhitespaceLines = true) {
 		$lines	= explode("\n", $sql);
@@ -64,11 +64,12 @@ class TodoyuSqlParser {
 	}
 
 
+
 	/**
 	 * Remove comments from within SQL
 	 *
-	 *	@param	String	$sql
-	 *	@return	String
+	 * @param	String	$sql
+	 * @return	String
 	 */
 	private static function removeSqlComments($sql) {
 		$cleanSQL	= array();
@@ -90,8 +91,8 @@ class TodoyuSqlParser {
 	/**
 	 * Extract all table names from SQL
 	 *
-	 *	@param	String	$sql
-	 *	@return	Array
+	 * @param	String	$sql
+	 * @return	Array
 	 */
 	public static function extractTableNames($sql) {
 		$tableNames	= array();
@@ -124,8 +125,8 @@ class TodoyuSqlParser {
 	/**
 	 * Extract one table name from SQL
 	 *
-	 *	@param	String	$tableSql
-	 *	@return	String
+	 * @param	String	$tableSql
+	 * @return	String
 	 */
 	private static function extractSingleTableName($sql) {
 		$tableName	= self::extractTableNames($sql);
@@ -138,8 +139,8 @@ class TodoyuSqlParser {
 	/**
 	 * Extract table keys from SQL
 	 *
-	 *	@param	String	$tableSql
-	 *	@return	Array
+	 * @param	String	$tableSql
+	 * @return	Array
 	 */
 	private static function extractTableKeys($sql) {
 		$sql	= trim($sql);
@@ -161,8 +162,8 @@ class TodoyuSqlParser {
 	/**
 	 * Extract column name from SQL
 	 *
-	 *	@param	String	$sql
-	 *	@return	String
+	 * @param	String	$sql
+	 * @return	String
 	 */
 	private static function extractColumnName($sql) {
 		$sql	= trim($sql);
@@ -183,8 +184,8 @@ class TodoyuSqlParser {
 	/**
 	 * Extract column type declaration
 	 *
-	 *	@param	String	$sql
-	 *	@return	String
+	 * @param	String	$sql
+	 * @return	String
 	 */
 	private static function extractColumnType($sql) {
 		$sql	= trim($sql);
@@ -199,8 +200,8 @@ class TodoyuSqlParser {
 	/**
 	 * Extract column attributes declaration
 	 *
-	 *	@param	String	$sql
-	 *	@return	String
+	 * @param	String	$sql
+	 * @return	String
 	 */
 	private static function extractColumnAttributes($sql) {
 		$sql	= trim($sql);
@@ -222,8 +223,8 @@ class TodoyuSqlParser {
 	/**
 	 * Extract column null declaration
 	 *
-	 *	@param	String	$sql
-	 *	@return	String
+	 * @param	String	$sql
+	 * @return	String
 	 */
 	private static function extractColumnNull($sql) {
 		$sql	= trim($sql);
@@ -244,8 +245,8 @@ class TodoyuSqlParser {
 	/**
 	 * Extract column dfault declaration
 	 *
-	 *	@param	String	$sql
-	 *	@return	String
+	 * @param	String	$sql
+	 * @return	String
 	 */
 	private static function extractColumnDefault($sql) {
 		$sql	= trim($sql);
@@ -265,11 +266,11 @@ class TodoyuSqlParser {
 
 
 	/**
-	 * Extract extra from Sql column declaration
+	 * Extract extra from SQL column declaration
 	 *
-	 *	@param	Stringt	$sql
-	 *	@param	Array	$partsToRemove
-	 *	@return	String
+	 * @param	Stringt	$sql
+	 * @param	Array	$partsToRemove
+	 * @return	String
 	 */
 	private static function extractColumnExtra($sql, array $partsToRemove) {
 		foreach($partsToRemove as $remove) {
@@ -287,8 +288,8 @@ class TodoyuSqlParser {
 	/**
 	 *	Get structural declarations of all tables' columns from SQL
 	 *
-	 *	@param	Array	$tableNames
-	 *	@param	String	$tablesSql
+	 * @param	Array	$tableNames
+	 * @param	String	$tablesSql
 	 */
 	public function getAllTableStructures(array $tableNames, $tablesSql = '') {
 		if ($tablesSql == '') {
@@ -330,8 +331,8 @@ class TodoyuSqlParser {
 	/**
 	 *	Extract table structure definition from SQL	(separated into table and columns definition)
 	 *
-	 *	@param	String	$tableSql
-	 *	@return	Array
+	 * @param	String	$tableSql
+	 * @return	Array
 	 */
 	private static function extractColumns($sql) {
 		$sql		=	str_replace("\n", ' ', $sql);
@@ -383,8 +384,8 @@ class TodoyuSqlParser {
 	/**
 	 * Find differences between tables' column structures in 'tables.sql' files and DB
 	 *
-	 *	@param	Array	$sqlStructures
-	 *	@param	Array	$dbStructures
+	 * @param	Array	$sqlStructures
+	 * @param	Array	$dbStructures
 	 */
 	public static function getStructureDifferences($newTables, array $sqlStructures, array $dbStructures) {
 		$sqlStructuresBak	= $sqlStructures;
@@ -461,11 +462,11 @@ class TodoyuSqlParser {
 	/**
 	 * Render query to carry out DB updates
 	 *
-	 *	@param	String	$action
-	 *	@param	String	$tableName
-	 *	@param	String	$colName
-	 *	@param	Array	$colStructure
-	 *	@return	String
+	 * @param	String	$action
+	 * @param	String	$tableName
+	 * @param	String	$colName
+	 * @param	Array	$colStructure
+	 * @return	String
 	 */
 	private static function getUpdatingQuery($action, $tableName, $colName, array $colStructure, $allTablesStructure = array()) {
 		switch($action)	{
