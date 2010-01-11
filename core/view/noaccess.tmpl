@@ -3,29 +3,92 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>{Label core.noAccess.pageTitle}</title>
+<link type="text/css" rel="stylesheet" media="all" href="core/assets/css/base.css" />
+<link type="text/css" rel="stylesheet" media="all" href="core/assets/css/layout.css" />
+<link type="text/css" rel="stylesheet" media="all" href="core/assets/css/content.css" />
+<link type="text/css" rel="stylesheet" media="all" href="core/assets/css/tab.css" />
 <style type="text/css">
-body {
-	font-family:Arial, Helvetica, sans-serif;
+#box {
+	padding-top:10px;
+}
+.message {
+	float:left;
+	clear:both;
+	padding:10px;
+	margin-top:-10px;
+}
+
+.message p,
+.message a,
+.message td {
+	font-size:14px;
+}
+
+.message p,
+.message td {
+	padding:5px;
+}
+
+.message a {
+	font-weight:bold;
+	color:#990000;
+	text-decoration:underline;
 }
 </style>
 </head>
-
 <body>
-<h1>{Label core.noAccess.pageTitle}</h1>
-<p>{Label core.noAccess.errorMessage}</p>
-<p><a href="javascript:history.back()">{Label core.noAccess.goBackToLastPage}</a></p>
-<br />
-<br />
-<p>{Label core.noAccess.contactAdmin}</p>
-<table width="500" border="0" cellspacing="0" cellpadding="5">
-  <tr>
-    <td width="120"><strong>{Label core.noAccess.requestURL}:</strong></td>
-    <td width="360">{htmlentities $requestURL}</td>
-  </tr>
-  <tr>
-    <td><strong>{Label core.noAccess.missingRight}:</strong></td>
-    <td>{$extKey} / {$right}</td>
-  </tr>
-</table>
+
+<div id="box">
+  <div id="contentBox">
+    <div id="main">
+      <div class="content bclFF" id="right">
+       <span class="lt">
+        <!-- left / top -->
+        </span> <span class="rt">
+        <!-- right / top -->
+        </span> <span class="lb">
+        <!-- left / bottom -->
+        </span> <span class="rb">
+        <!-- right / bottom -->
+        </span>
+        <div id="content">
+          <ul id="contact-tabs" class="tabslist tabs">
+            <li class="item bcg05 tabkey-person person person  active" id="contact-tabhead-person">
+              <p class="label" id="contact-tabhead-person-label"> <span class="lt">
+                <!-- -->
+                </span> <span class="icon">
+                <!-- icon -->
+                </span> <span class="labeltext">{Label core.noAccess.pageTitle}</span> </p>
+            </li>
+          </ul>
+          <div class="message">              
+            <p>{Label core.noAccess.errorMessage}</p>
+            <p><a href="javascript:history.back()">{Label core.noAccess.goBackToLastPage}</a></p>
+            <p>{Label core.noAccess.contactAdmin}</p>
+            <table width="500" border="0" cellspacing="0" cellpadding="5">
+              <tr>
+                <td width="120"><strong>{Label core.noAccess.requestURL}:</strong></td>
+                <td width="360">{htmlentities $requestURL}</td>
+              </tr>
+              <tr>
+                <td><strong>{Label core.noAccess.missingRight}:</strong></td>
+                <td>{$extKey} / {$right}</td>
+              </tr>
+            </table>
+                
+            </div>  
+        </div>
+        <!-- /inner -->
+      </div>
+      <div class="clear">
+        <!-- -->
+      </div>
+    </div>
+    <div class="clear">
+      <!-- -->
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

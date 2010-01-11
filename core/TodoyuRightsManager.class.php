@@ -250,6 +250,8 @@ class TodoyuRightsManager {
 	 * @param	String		$right
 	 */
 	public static function deny($extKey, $right) {
+		$output	= '';
+
 		if( TodoyuRequest::isAjaxRequest() ) {
 			TodoyuHeader::sendNoAccessHeader();
 			TodoyuHeader::sendTodoyuHeader('noAccess-right', $extKey . '/' . $right);
@@ -263,11 +265,12 @@ class TodoyuRightsManager {
 
 			ob_end_clean();
 
-			echo render($tmpl, $data);
+			$output = render($tmpl, $data);
 		}
 
 		Todoyu::log('Access denied (' . $extKey . '/' . $right . ')', LOG_LEVEL_SECURITY);
-		exit();
+
+		die($output);
 	}
 
 

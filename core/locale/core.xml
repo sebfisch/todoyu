@@ -112,7 +112,7 @@
 		<label index="noAccess.pageTitle">Kein Zugriff</label>
 		<label index="noAccess.goBackToLastPage">Zurück zur letzten Seite</label>
 		<label index="noAccess.contactAdmin">Wenn Sie Zugriffsrechte benötigen, teilen Sie Ihrem Administrator folgende Daten mit:</label>
-		<label index="noAccess.requestURL">Request URL</label>
+		<label index="noAccess.requestURL">Aufgerufene URL</label>
 		<label index="noAccess.missingRight">Fehlendes Recht</label>
 		<label index="footer.version">Version</label>
 		<label index="footer.bugreport">Fehler melden</label>
