@@ -54,7 +54,7 @@ function findLabel($label, $plain = false, $locale = null) {
 
 
 /**
- * Get user id. If parameter is not set or 0, get the current users id
+ * Get user ID. If parameter is not set or 0, get the current users ID
  *
  * @param	Integer		$idUser
  * @return	Integer
