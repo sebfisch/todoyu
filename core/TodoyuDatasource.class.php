@@ -31,7 +31,7 @@ class TodoyuDatasource {
 
 
 	/**
-	 * Fetch records from 'static_....' table
+	 * Get records from 'static_....' table
 	 *
 	 * @param	String	$type		table postfix (will be prefixed with 'static_')
 	 * @param	String	$where		optional WHERE-clause
@@ -44,22 +44,41 @@ class TodoyuDatasource {
 	}
 
 
-	public static function getStaticRecordOptions($type, $keyValue, $keyLabel, $localize = true) {
-		$records	= self::getStaticRecords($type);
 
-		if( $localize ) {
-			foreach($records as $index => $record) {
-				$records[$index]['label']		= self::getStaticLabel($type, $record[$keyLabel]);
-			}
-			$keyLabel = 'label';
+	/**
+	 * Get options based on a static table
+	 *
+	 * @param	String		$type			Record type (language, country, etc)
+	 * @param	String		$fieldValue		Field for value
+	 * @param	String		$fieldLabel		Field for label (use value if null)
+	 * @param	String		$where			Optional where clause
+	 * @param	Bool		$localize		Localize record label
+	 * @return	Array
+	 */
+	public static function getStaticRecordOptions($type, $fieldValue, $fieldLabel = null, $where = '', $localize = true) {
+		$records	= self::getStaticRecords($type, $where);
+
+			// Label field is value field if not set
+		if( is_null($fieldLabel) ) {
+			$fieldLabel = $fieldValue;
 		}
 
-		$reform	= array(
-			$keyValue	=> 'value',
-			$keyLabel	=> 'label'
-		);
+			// Localize record
+		if( $localize ) {
+			foreach($records as $index => $record) {
+				$records[$index]['label'] = self::getStaticLabel($type, $record[$fieldLabel]);
+			}
+			$fieldLabel = 'label';
+		}
 
+			// Reform the array to work as options source
+		$reform	= array(
+			$fieldValue	=> 'value',
+			$fieldLabel	=> 'label'
+		);
 		$options= TodoyuArray::reform($records, $reform, true);
+
+			// Sort array by label
 		$options= TodoyuArray::sortByLabel($options, 'label');
 
 		return $options;
@@ -220,7 +239,12 @@ class TodoyuDatasource {
 
 
 	public static function getCountryOptions() {
-		return self::getStaticRecordOptions('country', 'id', 'iso_alpha3', true);
+		return self::getStaticRecordOptions('country', 'id', 'iso_alpha3');
+	}
+
+
+	public static function getLanguageOptions($where = '') {
+		return self::getStaticRecordOptions('language', 'iso_alpha2', null, $where);
 	}
 
 
@@ -318,7 +342,7 @@ class TodoyuDatasource {
 
 		$res = Todoyu::db()->getRecord('static_country', $idCountry );
 		$country	= Label('static_country.' . $res['iso_alpha3'] );
-		
+
 		return $country;
 	}
 

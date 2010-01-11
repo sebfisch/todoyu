@@ -65,6 +65,7 @@ class TodoyuFormValidator {
 		if( TodoyuDiv::isFunctionReference($function) ) {
 			return TodoyuDiv::callUserFunction($function, $value, $validatorConfig, $formElement, $formData);
 		} else  {
+			TodoyuDebug::printInFirebug('xxx');
 			return false;
 		}
 	}
@@ -153,6 +154,17 @@ class TodoyuFormValidator {
 		return TodoyuValidator::hasMaxLength($value, $maxLength);
 	}
 
+
+
+	/**
+	 * Check if value is decimal
+	 *
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param 	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
+	 * @return	Bool
+	 */
 	private static function isDecimal($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		return TodoyuValidator::isDecimal($value);
 	}
@@ -316,18 +328,35 @@ class TodoyuFormValidator {
 
 
 	/**
-	 * checks if current fieldvalue equals the value of the given second field
+	 * Check if a field has the same value as another field
 	 *
-	 * @param	mixed	$value
-	 * @param	array	$config
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig		field = other fieldname
+	 * @param	TodoyuFormElement 	$formElement
+	 * @param	Array		$formData
 	 * @return	Boolean
 	 */
-	public static function fieldEqualsField($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData)	{
+	public static function fieldEqualsField($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		$secondFieldName	= $validatorConfig['field'];
 		$secondFieldValue	= $formData[$secondFieldName];
 
-
 		return $secondFieldValue == $value;
+	}
+
+
+
+	/**
+	 * Alias for fieldEqualsField
+	 *
+	 * @see		TodoyuFormValidator::fieldEqualsField()
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig		field = other fieldname
+	 * @param	TodoyuFormElement 	$formElement
+	 * @param	Array		$formData
+	 * @return	Boolean
+	 */
+	public static function equals($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+		return self::fieldEqualsField($value, $validatorConfig, $formElement, $formData);
 	}
 
 
@@ -372,6 +401,8 @@ class TodoyuFormValidator {
 
 			if( $validator->validate($pass) === false ) {
 				$errors	= $validator->getErrors();
+
+				TodoyuDebug::printInFirebug($errors, 'errors');
 
 				$formElement->setErrorMessage($errors[0]);
 
