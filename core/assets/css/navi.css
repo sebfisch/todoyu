@@ -12,25 +12,25 @@ ul#navi-main-list {
 }
 
 ul#navi-main-list li {
-	float: left;
+	float:left;
 	background-image:url('../img/colF_r13.png');
 	background-position:100% 0;
 	margin-right:3px;
 }
 
 ul#navi-main-list li a {
-	display: block;
-	width: auto !important;
-	width: 1px;
-	height: auto !important;
-	height: 1px;
-	line-height: 30px;
+	display:block;
+	width:auto !important;
+	width:1px;
+	height:auto !important;
+	height:1px;
+	line-height:30px;
 	padding:0 14px 0 0;
-	font-size: 13px;
+	font-size:13px;
 	font-weight:bold;
 	text-transform:uppercase;
-	letter-spacing: 1px;
-	white-space: nowrap;
+	letter-spacing:1px;
+	white-space:nowrap;
 	background-image:url('../img/shadow01.png');
 	background-position:50% 100%;
 
@@ -50,11 +50,11 @@ ul#navi-main-list li a.active {
 }
 
 ul#navi-main-list li.active {
-	background-color: #e3eace; /* bcl02 */
+	background-color:#e3eace; /* bcl02 */
 }
 
 ul#navi-main-list li:hover {
-	background-color: #d3dabb; /* bcl03 */
+	background-color:#d3dabb; /* bcl03 */
 }
 
 
@@ -64,51 +64,51 @@ ul#navi-main-list li:hover {
    ------------------- */
 
 ul#navi-main-list li:hover ul {
-	left: auto;
+	left:auto;
 }
 
 ul#navi-main-list li ul {
-	position: absolute;
-	top: 29px;
-	left: -9999px;
-	width: 200px !important;
+	position:absolute;
+	top:29px;
+	left:-9999px;
+	width:200px !important;
 	margin-top:1px;
-	margin-left: -30px;
-	padding: 0 30px 30px 30px;
+	margin-left:-30px;
+	padding:0 30px 30px 30px;
 	text-transform:none;
 }
 
 ul#navi-main-list li ul li {
 	width:100%;
 	background-image:none;
-	background-color: #d3dabb; /* bcl03 */
+	background-color:#d3dabb; /* bcl03 */
 	text-align:left;
-	padding-left: 1px;
-	padding-right: 1px;
-	border-left: 1px solid #CDCEC8;
-	border-right: 1px solid #CDCEC8;
+	padding-left:1px;
+	padding-right:1px;
+	border-left:1px solid #cdcec8;
+	border-right:1px solid #cdcec8;
 }
 
 ul#navi-main-list li ul li.first {
-		padding-top: 1px;
-		border-top: 1px solid #B9BCAE;
+		padding-top:1px;
+		border-top:1px solid #b9bcae;
 }
 
 ul#navi-main-list li ul li.last {
-	padding-bottom: 1px;
-	border-bottom: 1px solid #CDCEC8;
+	padding-bottom:1px;
+	border-bottom:1px solid #cdcec8;
 }
 
 ul#navi-main-list li ul li a {
-	padding: 2px 10px 2px 30px;
-	line-height: 20px;
+	padding:2px 10px 2px 30px;
+	line-height:20px;
 	font-size:10px;
 	font-weight:normal;
 	/*background-image:none;*/
 }
 
 ul#navi-main-list li ul li a:hover {
-	background-color:#EFF3E5; /* bcl04 */
+	background-color:#eff3e5; /* bcl04 */
 }
 
 

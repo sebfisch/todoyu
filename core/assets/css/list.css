@@ -14,7 +14,7 @@ table.list .header th {
 }
 
 table.list .header th.last {
-	background: #fff url(../img/bg_headerline.png) no-repeat 100% 0%;
+	background:#fff url(../img/bg_headerline.png) no-repeat 100% 0%;
 }
 
 table.list th,

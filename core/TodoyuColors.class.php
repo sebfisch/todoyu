@@ -53,20 +53,20 @@ class TodoyuColors {
 				$inverse	= self::invert($rgb);
 				$fade		= self::fade($rgb, 65);
 
-				$css	.= '.enumColBG' . $num . ' { background-color: ' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColBGFade' . $num . ' { background-color: ' . $fade . ' !important; }' . chr(10);
-				$css	.= '.enumColFont' . $num . ' { color: ' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColFontFade' . $num . ' { color: ' . $fade . ' !important; }' . chr(10);
-				$css	.= '.enumColBgFg' . $num . ' { background-color: ' . $rgb . ' !important; color: ' . $inverse . ' !important; }' . chr(10);
-				$css	.= '.enumColFgBg' . $num . ' { background-color: ' . $inverse . ' !important; color: ' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColFgBg' . $num . ' { background-color: ' . $inverse . ' !important; color: ' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColBor' . $num . ' { border-color: '. $rgb .' !important; }' . chr(10);
-				$css	.= '.enumColBorFade' . $num . ' { border-color: '. $fade .' !important; }' . chr(10);
-				$css	.= '.enumColBorLef' . $num . ' { border-left-color: '.$rgb.' !important; }' . chr(10);
-				$css	.= '.enumColBorRig' . $num . ' { border-right-color: '.$rgb.' !important; }' . chr(10);
-				$css	.= '.enumColBorTop' . $num . ' { border-top-color: '.$rgb.' !important; }' . chr(10);
-				$css	.= '.enumColBorBot' . $num . ' { border-bottom-color: '.$rgb.' !important; }' . chr(10);
-				$css	.= 'option.enumColOptionLeftIcon' . $num . ' { background: url(\'../img/' . $spriteFilename . '\') no-repeat -8px -' . ($num * 16) . 'px !important; padding: 0 0 0 12px; }' . chr(10);
+				$css	.= '.enumColBG' . $num . ' { background-color:' . $rgb . ' !important; }' . chr(10);
+				$css	.= '.enumColBGFade' . $num . ' { background-color:' . $fade . ' !important; }' . chr(10);
+				$css	.= '.enumColFont' . $num . ' { color:' . $rgb . ' !important; }' . chr(10);
+				$css	.= '.enumColFontFade' . $num . ' { color:' . $fade . ' !important; }' . chr(10);
+				$css	.= '.enumColBgFg' . $num . ' { background-color:' . $rgb . ' !important; color:' . $inverse . ' !important; }' . chr(10);
+				$css	.= '.enumColFgBg' . $num . ' { background-color:' . $inverse . ' !important; color:' . $rgb . ' !important; }' . chr(10);
+				$css	.= '.enumColFgBg' . $num . ' { background-color:' . $inverse . ' !important; color:' . $rgb . ' !important; }' . chr(10);
+				$css	.= '.enumColBor' . $num . ' { border-color:' . $rgb . ' !important; }' . chr(10);
+				$css	.= '.enumColBorFade' . $num . ' { border-color:' . $fade . ' !important; }' . chr(10);
+				$css	.= '.enumColBorLef' . $num . ' { border-left-color:' . $rgb . ' !important; }' . chr(10);
+				$css	.= '.enumColBorRig' . $num . ' { border-right-color:' . $rgb . ' !important; }' . chr(10);
+				$css	.= '.enumColBorTop' . $num . ' { border-top-color:' . $rgb . ' !important; }' . chr(10);
+				$css	.= '.enumColBorBot' . $num . ' { border-bottom-color:' . $rgb . ' !important; }' . chr(10);
+				$css	.= 'option.enumColOptionLeftIcon' . $num . ' { background:url(\'../img/' . $spriteFilename . '\') no-repeat -8px -' . ($num * 16) . 'px !important; padding:0 0 0 12px; }' . chr(10);
 				$css	.= chr(10);
 			}
 
