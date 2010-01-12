@@ -32,7 +32,7 @@ class TodoyuErrorHandler {
 	 *
 	 * @var	Boolean
 	 */
-	private static $callPhpErrorHandler = false;
+	private static $ignoreErros = array(E_NOTICE, E_STRICT);
 
 
 
@@ -67,6 +67,7 @@ class TodoyuErrorHandler {
 	/**
 	 * Handle normal php errors. Disabled at the moment!
 	 *
+	 * @todo	Decide which errors are reported to the log
 	 * @param	Integer		$errorno
 	 * @param	String		$errorstr
 	 * @param	String		$file
@@ -76,44 +77,18 @@ class TodoyuErrorHandler {
 	 */
 	public static function handleError($errorno, $errorstr, $file, $line, $context) {
 
-		switch($errorno) {
-			case E_ERROR:
-			case E_WARNING:
-			case E_PARSE:
-			case E_COMPILE_ERROR:
-			case E_COMPILE_WARNING:
-				echo "CRITICAL ERROR: " . $errorstr;
-				break;
-
-
-
-			case E_STRICT:
-				echo "PHP4 to 5 ERROR: " . $errorstr;
-				break;
-
-
-
-			case E_NOTICE:
-				//echo "NOTICE";
-				// Ignore notices
-				break;
-
-
-
-			case E_CORE_ERROR:
-			case E_CORE_WARNING:
-				echo "CORE ERROR: " . $errorstr;
-				break;
-
-
-
-			case E_USER_ERROR:
-			case E_USER_WARNING:
-				echo "USER ERROR: " . $errorstr;
-				break;
+			// If not a notice, log it
+		if( ! in_array($errorno, self::$ignoreErros) ) {
+			Todoyu::log('PHP ERROR: [' . $errorno . '] ' . $errorstr, LOG_LEVEL_ERROR);
+			TodoyuHeader::sendHeader('Todoyu-Php-Error', $message);
 		}
 
-		return ! self::$callPhpErrorHandler;
+			// If debugging, call normal error handler to display the error
+		if( $GLOBALS['CONFIG']['DEBUG'] ) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 

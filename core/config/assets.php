@@ -152,6 +152,10 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 56
 		),
 		array(
+			'file'		=> 'core/assets/js/Ajax.js',
+			'position'	=> 56
+		),
+		array(
 			'file'		=> 'core/assets/js/Helper.js',
 			'position'	=> 57
 		),

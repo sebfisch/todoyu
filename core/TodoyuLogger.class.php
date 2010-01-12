@@ -65,6 +65,14 @@ class TodoyuLogger {
 	private $requestKey;
 
 
+	private $ignoreFiles = array(
+		'TodoyuLogger.class.php',
+		'TodoyuErrorHandler.class.php',
+		'TodoyuDebug.class.php',
+		'Todoyu.class.php'
+	);
+
+
 
 	/**
 	 * Get the only instance. Singleton
@@ -116,8 +124,16 @@ class TodoyuLogger {
 	 */
 	public function log($message, $level = 0, $data = null) {
 		$backtrace	= debug_backtrace();
-		$info		= $backtrace[1];
+		$info		= $backtrace[0];
 		$level		= intval($level);
+
+			// Find file in backtrace which is not on ignore list
+		foreach($backtrace as $btElement) {
+			if( ! in_array(basename($btElement['file']), $this->ignoreFiles) ) {
+				$info = $btElement;
+				break;
+			}
+		}
 
 		$info['fileshort'] 	= TodoyuFileManager::pathWeb($info['file']);
 

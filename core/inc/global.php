@@ -67,6 +67,7 @@ require_once( PATH_CORE . '/TodoyuHeader.class.php' );
 require_once( PATH_CORE . '/TodoyuMetaMenuManager.class.php' );
 require_once( PATH_CORE . '/TodoyuPanelWidgetManager.class.php' );
 require_once( PATH_CORE . '/TodoyuContextMenuManager.class.php' );
+require_once( PATH_CORE . '/TodoyuErrorHandler.class.php' );
 
 	// Include basic user classes
 require_once( PATH_EXT .  '/user/model/TodoyuUser.class.php' );
@@ -89,6 +90,8 @@ require_once( PATH_LIB . '/php/jsmin.php' );
 
 	// Register autoloader
 spl_autoload_register( array('Todoyu', 'autoloader') );
+
+set_error_handler(array('TodoyuErrorHandler', 'handleError'));
 
 
 	// Load global functions

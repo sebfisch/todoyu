@@ -36,6 +36,12 @@ Ajax.Response.addMethods({
 	hasNoAccess: function() {
 		//console.log('test');
 		return this.getTodoyuHeader('noAccess') == 1;
+	},
+	hasPhpError: function() {
+		return this.getPhpError() !== null;
+	},
+	getPhpError: function() {
+		return this.getTodoyuHeader('Php-Error');
 	}
 });
 
@@ -45,7 +51,7 @@ Ajax.Response.addMethods({
  * prototype extension by "Frank Monnerjahn" <themonnie@gmail.com>
  */
 Object.extend(Event, {
-	wheel:function (event){
+	wheel: function (event){
 		var delta = 0;
 		if (!event) event = window.event;
 		if (event.wheelDelta) {

@@ -25,13 +25,49 @@
 Todoyu.AjaxResponders = {
 	
 	/**
+	 * Hooks called when request is completed
+	 */
+	completeHooks: [],
+	
+	
+	
+	/**
 	 * Register the used ajax responders
 	 */
-	register: function() {
+	init: function() {
 		Ajax.Responders.register({
 			'onCreate':		this.onCreate.bind(this),
-			'onComplete':	this.onComplete.bind(this)
+			'onComplete':	this.onComplete.bind(this),
+			'onException':	this.onException.bind(this)
 		});
+		
+		this.addOnCompleteHook(Todoyu.Ajax.checkNoAccessHeader);
+		this.addOnCompleteHook(Todoyu.Ajax.checkPhpErrorHeader);
+	},
+	
+	
+	
+	/**
+	 * Add a new hook function which will be called when request is completed
+	 * 
+	 * @param	Function	hook
+	 */
+	addOnCompleteHook: function(hook) {
+		this.completeHooks.push(hook);
+	},
+	
+	
+	
+	/**
+	 * Call all registered hook functions
+	 * They receive the response object as only parameter
+	 * 
+	 * @param	Ajax.Response	response
+	 */
+	callOnCompleteHooks: function(response) {
+		this.completeHooks.each(function(response, func){
+			func(response);
+		}.bind(this, response));
 	},
 
 
@@ -50,14 +86,12 @@ Todoyu.AjaxResponders = {
 		request.respondToReadyState = function(readyState) {
 			var state	= Ajax.Request.Events[readyState];
 			var response= new Ajax.Response(this);
-								
-				// Only process if request completed and has access error	
-			if( state == 'Complete' && response.hasNoAccess() )	{
-					// Delete onComplete handler to prevent processing an empty respone			
-				delete response.request.options.onComplete;
-				var missingRight = response.getTodoyuHeader('noAccess-right');
-				Todoyu.notifyError('[LLL:core.noAccess.errorMessage] (' + missingRight + ')');
+			
+				// Call onComplete hooks
+			if( state == 'Complete' ) {
+				Todoyu.AjaxResponders.callOnCompleteHooks(response);
 			}
+			
 			oldRespondToReadyState.call(response.request, readyState);
 		};
 	},
@@ -70,14 +104,29 @@ Todoyu.AjaxResponders = {
 	 *	@param	Ajax.Response		response
 	 */
 	onComplete: function(response) {
-		this.goToHash(response);
+			// Check for hash header and scroll to element
+		this.scrollToElement(response);
 				
+			// If no more requests are running, stop spinner
 		if( Ajax.activeRequestCount < 1 ) {
 			Todoyu.Ui.ajaxLoader(false);
 			Todoyu.Ui.setLinkCursor(false);
 		}
 	},
-
+	
+	
+	
+	/**
+	 * Handler when connection to server fails
+	 * 
+	 * @param	Ajax.Response	response
+	 * @param	Exception		exception
+	 */
+	onException: function(response, exception) {
+		//Todoyu.notifyError('[LLL:core.ajax.requestFailed]', 0);
+		alert('[LLL:core.ajax.requestFailed]');
+	},
+	
 
 
 	/**
@@ -85,7 +134,7 @@ Todoyu.AjaxResponders = {
 	 *
 	 *	@param	Ajax.Response		response
 	 */
-	goToHash: function(response) {
+	scrollToElement: function(response) {
 		var hash = response.getHeader('Todoyu-Hash'); // Do not use getTodoyuHeader(), it fails...
 
 		if( hash !== null && Todoyu.exists(hash) ) {

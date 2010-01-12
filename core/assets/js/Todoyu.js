@@ -38,7 +38,7 @@ var Todoyu = {
 	 * Initialize todoyu object
 	 */
 	init: function() {
-		this.AjaxResponders.register();
+		this.AjaxResponders.init();
 		this.Ui.fixAnchorPosition();
 	},
 

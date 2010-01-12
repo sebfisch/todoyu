@@ -33,7 +33,7 @@ Todoyu.Ui = {
 		if( Todoyu.exists(container) ) {
 			return new Ajax.Updater(container, url, options);
 		} else {
-			console.log('You tried to update "' + container + '" which is not part of the DOM!');
+			console.log('You tried to update "' + container + '" which is not part of the DOM! (No request sent)');
 		}
 	},
 

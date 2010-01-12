@@ -19,11 +19,11 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['LOCALE']['cacheDir'] 	= PATH_CACHE . '/locale';
-$CONFIG['LOCALE']['l10nDir'] 	= PATH . '/l10n';
+$CONFIG['LOCALE']['cacheDir'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'locale';
+$CONFIG['LOCALE']['l10nDir'] 	= PATH . DIRECTORY_SEPARATOR . 'l10n';
 $CONFIG['LOCALE']['cacheExt'] 	= 'locale';
 
-$CONFIG['LOCALE']['defaultTimezone']= 'System/Localtime';
+$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
 
 	// predefine array of JS required labels
 $CONFIG['JS-LOCALE']	= array();

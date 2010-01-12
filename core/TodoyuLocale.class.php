@@ -184,6 +184,8 @@ class TodoyuLocale {
 	public static function register($identifier, $absPathToFile) {
 		$absPathToFile = TodoyuFileManager::pathAbsolute($absPathToFile);
 
+//		TodoyuDebug::printInFirebug($absPathToFile, '$absPathToFile');
+
 		if( !is_file($absPathToFile) ) {
 			TodoyuDebug::printHtml($absPathToFile, 'Locale file not found!', null, true);
 		}
@@ -271,11 +273,13 @@ class TodoyuLocale {
 			$extFile	= self::getExternalFileName($fileKey, $locale);
 			$extFileEn	= self::getExternalFileName($fileKey, 'en');
 
+//			TodoyuDebug::printInFirebug($extFile, '$extFile');
+
 				// Get file modification times
-			$mTimeOrig	= intval(@filemtime($origFile));
-			$mTimeCache	= intval(@filemtime($cacheFile));
-			$mTimeExt	= intval(@filemtime($extFile));
-			$mTimeExtEn	= intval(@filemtime($extFileEn));
+			$mTimeOrig	= is_file($origFile) ? filemtime($origFile) : 0;
+			$mTimeCache	= is_file($cacheFile) ? filemtime($cacheFile) : 0;
+			$mTimeExt	= is_file($extFile) ? filemtime($extFile) : 0;
+			$mTimeExtEn	= is_file($extFileEn) ? filemtime($extFileEn) : 0;
 
 				// If a file is newer than the cache, regenerate the cache from locallang XML files
 			if( $mTimeCache < $mTimeOrig || $mTimeCache < $mTimeExt || $mTimeCache < $mTimeExtEn ) {
@@ -429,7 +433,7 @@ class TodoyuLocale {
 	 * @return	String
 	 */
 	private static function getCacheFileName($fileKey, $locale) {
-		return $GLOBALS['CONFIG']['LOCALE']['cacheDir'] . '/' . $fileKey . '-' . $locale . '.' . $GLOBALS['CONFIG']['LOCALE']['cacheExt'];
+		return TodoyuFileManager::pathAbsolute($GLOBALS['CONFIG']['LOCALE']['cacheDir'] . DIRECTORY_SEPARATOR . $fileKey . '-' . $locale . '.' . $GLOBALS['CONFIG']['LOCALE']['cacheExt']);
 	}
 
 
@@ -443,10 +447,10 @@ class TodoyuLocale {
 	 */
 	private static function getExternalFileName($fileKey, $locale) {
 		$absPath	= self::$files[$fileKey];
-		$intPath	= str_replace(PATH . '/', '', $absPath);
-		$filename	= str_replace('/', '-', $intPath);
+		$intPath	= str_replace(PATH . DIRECTORY_SEPARATOR, '', $absPath);
+		$filename	= str_replace(DIRECTORY_SEPARATOR, '-', $intPath);
 
-		return $GLOBALS['CONFIG']['LOCALE']['l10nDir'] . '/' . $locale . '/' . $filename;
+		return $GLOBALS['CONFIG']['LOCALE']['l10nDir'] . DIRECTORY_SEPARATOR . $locale . DIRECTORY_SEPARATOR . $filename;
 	}
 
 

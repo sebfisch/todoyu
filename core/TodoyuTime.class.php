@@ -556,7 +556,7 @@ class TodoyuTime {
 	 * @param	Integer	$end2		UNIX timestamp end of span2
 	 * @return	Boolean
 	 */
-	public function spansIntersect($start1, $end1, $start2, $end2) {
+	public static function spansIntersect($start1, $end1, $start2, $end2) {
 		$intersect = false;
 
 		if (	// span2 ends within span1 OR span2 lays within span1 OR span2 starts within span 1 OR span2 wraps span1
