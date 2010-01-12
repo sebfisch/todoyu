@@ -10,7 +10,7 @@ table.list tr.header {
 }
 
 table.list .header th {
-	border-bottom:1px dotted #AAAAAA;
+	border-bottom:1px dotted #aaa;
 }
 
 table.list .header th.last {
@@ -23,5 +23,35 @@ table.list td {
 }
 
 table.list td {
-	border-bottom:1px dotted #AAAAAA;
+	border-bottom:1px dotted #aaa;
+}
+
+
+
+/* -----------------------------
+	Hover
+   ----------------------------- */
+   
+table.list tr:hover,
+table.list tr:hover .odd,
+table.list tr:hover .even,
+li:hover .odd,
+li:hover .even {
+	background-color:#f2f2d2 !important;
+}
+
+
+
+/* -----------------------------
+	Odd and even alternation
+   ----------------------------- */
+   
+table.list tr.odd,
+li.odd {
+	background-color:#fff;
+}
+
+table.list tr.even,
+li.even {
+	background-color:#f3f3f3;
 }
