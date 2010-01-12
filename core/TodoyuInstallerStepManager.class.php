@@ -37,6 +37,17 @@ class TodoyuInstallerStepManager {
 	}
 
 
+
+	private static function setNextStepNumFromAction($action = '') {
+		$stepNum	= self::getNextStepNumToAction($action);
+
+		if ( $stepNum != false ) {
+			self::setStepNum($stepNum);
+		}
+	}
+
+
+
 	/**
 	 * Reinit step num
 	 */
@@ -63,6 +74,20 @@ class TodoyuInstallerStepManager {
 		}
 
 		return $step;
+	}
+
+
+
+	private static function getNextStepNumToAction($action = '') {
+		$steps	= $GLOBALS['CONFIG']['INSTALLER']['steps'];
+
+		foreach($steps as $num => $step) {
+			if ( $step['processAction'] == $action ) {
+				$stepNum	= $step['nextStepNum'];
+			}
+		}
+
+		return $stepNum;
 	}
 
 
@@ -123,15 +148,16 @@ class TodoyuInstallerStepManager {
 	public static function processStep($data) {
 		$action	= $data['action'];
 
+			// set current step num from current action
+		self::setNextStepNumFromAction($action);
+
 		switch($action) {
 				// Install
 			case 'start':
-				self::setStepNum(1);
 				break;
 
 				// Check server
 			case 'servercheck':
-				self::setStepNum(2);
 				break;
 
 				// Check DB connection
@@ -139,7 +165,6 @@ class TodoyuInstallerStepManager {
 				$_SESSION['todoyuinstaller']['db'] = $data;
 				try {
 					TodoyuDbAnalyzer::checkDbConnection($data);
-					self::setStepNum(3);
 				} catch(Exception $e) {
 					$error = $e->getMessage();
 				}
@@ -149,7 +174,6 @@ class TodoyuInstallerStepManager {
 			case 'dbselect':
 				try {
 					TodoyuInstallerDbHelper::addDatabase();
-					self::setStepNum(4);
 					TodoyuInstallerDbHelper::saveDbConfigInFile();
 				} catch(Exception $e)	{
 					$error = $e->getMessage();
@@ -159,14 +183,12 @@ class TodoyuInstallerStepManager {
 				// Import static DB data
 			case 'importstatic':
 				TodoyuInstallerDbHelper::importStaticData();
-				self::setStepNum(5);
 				break;
 
 				// Update system config file (/config/system.php)
 			case 'config':
 				try {
-					self::updateConfig($data);
-					self::setStepNum(6);
+					TodoyuInstaller::updateConfig($data);
 				} catch (Exception $e)	{
 					$error = $e->getMessage();
 				}
@@ -178,7 +200,6 @@ class TodoyuInstallerStepManager {
 			case 'setadminpassword':
 				try {
 					TodoyuInstallerDbHelper::updateAdminPassword($data['password'], $data['password_confirm']);
-					self::setStepNum(7);
 				} catch(Exception $e)	{
 					$error = $e->getMessage();
 				}
@@ -199,13 +220,11 @@ class TodoyuInstallerStepManager {
 			case 'updatebeta1tobeta2':
 					// have mandatory updates be carried out
 				include( PATH . '/install/config/db/update_beta1_to_beta2.php');
-				self::setStepNum(9);
 				break;
 
 			case 'finishupdate':
 				TodoyuInstaller::finishUpdate();
 				break;
-
 		}
 
 		return $error;
