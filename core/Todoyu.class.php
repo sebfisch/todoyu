@@ -98,6 +98,7 @@ class Todoyu {
 		try {
 			self::$template = new Dwoo($GLOBALS['CONFIG']['TEMPLATE']['compile'], $GLOBALS['CONFIG']['TEMPLATE']['cache']);
 		} catch(Dwoo_Exception $e) {
+			Todoyu::log('Dwoo Exception on init: ' . $e->getMessage(), LOG_LEVEL_FATAL);
 			TodoyuDebug::printHtml($e->getMessage(), 'Template error (Dwoo_Exception)');
 		}
 
