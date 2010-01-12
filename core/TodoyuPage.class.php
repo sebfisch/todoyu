@@ -251,55 +251,55 @@ class TodoyuPage {
 	public static function addJavascript($pathToFile, $position = 100, $compress = true, $merge = true, $localize = true) {
 		TodoyuPageAssetManager::addJavascript($pathToFile, $position, $compress, $merge, $localize);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Adds js inline
-	 * 
+	 *
 	 * @param	String	$ext
 	 * @param	String	$type
 	 * @return	String
 	 */
 	public static function getExtJSinline($ext, $type = 'public')	{
 		TodoyuExtensions::loadAllAssets();
-		
+
 		$files	= $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['js'];
-		
+
 		if( is_array($files) ) {
 			foreach($files as $file) {
 				$content.= 'Todoyu.Ui.loadJSFile(\''.$file['file'].'\');';
 			}
 		}
-		
+
 		return '<script type="text/javascript">'.$content.'</script>';
 	}
 
 
-	
+
 	/**
 	 * Adds css inline
-	 * 
+	 *
 	 * @param	String	$ext
 	 * @param	String	$type
 	 * @return	String
 	 */
 	public static function getExtCSSinline($ext, $type = 'public')	{
 		TodoyuExtensions::loadAllAssets();
-		
+
 		$files	= $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['css'];
-		
+
 		if( is_array($files) ) {
 			foreach($files as $file) {
 				$content.= 'Todoyu.Ui.loadCSSFile(\''.$file['file'].'\');';
 			}
 		}
-		
+
 		return '<script type="text/javascript">'.$content.'</script>';
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Load extension CSS files
 	 *

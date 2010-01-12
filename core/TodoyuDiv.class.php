@@ -859,24 +859,30 @@ class TodoyuDiv {
 	 * @return	String
 	 */
 	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {
-		$query		= PATH_WEB . (PATH_WEB === '/' ? 'index.php?' : '/index.php?');
+		$query		= rtrim(PATH_WEB, '/') . '/index.php';
 		$queryParts	= array();
 
-		// Add all parameters encoded
+			// Add question mark if there are query parameters
+		if( sizeof($params) > 0 ) {
+			$query .= '?';
+		}
+
+			// Add all parameters encoded
 		foreach($params as $name => $value) {
 			$queryParts[] = $name . '=' . urlencode($value);
 		}
 
-		// Concatinate
+			// Concatinate
 		$query .= implode('&', $queryParts);
 
-		// Add hash
+			// Add hash
 		if( ! empty($hash) ) {
 			$query .= '#' . $hash;
 		}
 
+			// Add absolute server url
 		if( $absolute ) {
-			$query = SERVER_URL . substr($query, 1);
+			$query = SERVER_URL . $query;
 		}
 
 		return $query;
@@ -994,7 +1000,7 @@ class TodoyuDiv {
 		require_once( PATH_LIB . '/php/html2text/class.html2text.php' );
 
 		$html2text = new html2text($html);
-		$html2text->set_base_url(SERVER_URL);
+		$html2text->set_base_url(TODOYU_URL);
 
 		return $html2text->get_text();
 		*/

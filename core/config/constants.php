@@ -52,6 +52,7 @@ define('LOG_LEVEL_FATAL', 	4);
  * Public URL of the server (use to build absolute links)
  *
  */
-define('SERVER_URL', 'http://' . $_SERVER['HTTP_HOST'] . PATH_WEB);
+define('SERVER_URL', 'http://' . $_SERVER['HTTP_HOST']);
+define('TODOYU_URL', SERVER_URL . PATH_WEB);
 
 ?>

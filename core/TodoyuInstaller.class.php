@@ -299,7 +299,7 @@ class TodoyuInstaller {
 
 		self::setStepNum(0);
 
-		header('Location: ' . dirname(SERVER_URL));
+		header('Location: ' . dirname(TODOYU_URL));
 		exit();
 	}
 

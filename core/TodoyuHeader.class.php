@@ -224,10 +224,25 @@ class TodoyuHeader {
 		);
 		$params	= array_merge($params, $addParams);
 
-		$url	= TodoyuDiv::buildUrl($params);
+		$url	= TodoyuDiv::buildUrl($params, '', true);
 
+		self::location($url);
+	}
+
+
+
+	/**
+	 * Send new location header to browser
+	 *
+	 * @param	String		$url
+	 * @param	Bool		$exit
+	 */
+	public static function location($url, $exit = true) {
 		self::sendHeader('Location', $url);
-		exit();
+
+		if( $exit ) {
+			exit();
+		}
 	}
 
 
