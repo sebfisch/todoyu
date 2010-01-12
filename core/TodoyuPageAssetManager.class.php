@@ -362,7 +362,14 @@ class TodoyuPageAssetManager {
 	 * @return	String
 	 */
 	private static function compressJavascript($javascriptCode) {
-		return JSMin::minify($javascriptCode);
+		try {
+			return JSMin::minify($javascriptCode);
+		} catch(JSMinException $e) {
+			ob_end_clean();
+//			TodoyuDebug::printHtml($e->getTrace(), $e->getMessage());
+			TodoyuDebug::printHtml($javascriptCode, 'JSMin Error: ' . $e->getMessage());
+			exit();
+		}
 	}
 
 
@@ -386,7 +393,7 @@ class TodoyuPageAssetManager {
 	 * @return	String
 	 */
 	private static function localizeJavascriptCallback(array $match) {
-		return TodoyuLocale::getLabel($match[1]);
+		return str_replace('\'', '\\\'', TodoyuLocale::getLabel($match[1]));
 	}
 
 
