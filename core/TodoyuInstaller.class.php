@@ -158,7 +158,7 @@ class TodoyuInstaller {
 	/**
 	 * Finish the installer, go to todoyu login page
 	 */
-	private static function finish() {
+	public static function finish() {
 		self::deactivate();
 		TodoyuInstallerStepManager::reinitStepNum();
 		self::gotoLogin();
@@ -169,7 +169,7 @@ class TodoyuInstaller {
 	/**
 	 * Gather and perform queries, forward to next step (update finished)
 	 */
-	private static function finishUpdate() {
+	public static function finishUpdate() {
 		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
 
 		if ( count($dbDiff) > 0  ) {

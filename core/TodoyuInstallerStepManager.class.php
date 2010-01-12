@@ -40,7 +40,7 @@ class TodoyuInstallerStepManager {
 	/**
 	 * Reinit step num
 	 */
-	private static function reinitStepNum() {
+	public static function reinitStepNum() {
 		self::setStepNum(0);
 	}
 
@@ -116,6 +116,7 @@ class TodoyuInstallerStepManager {
 	/**
 	 * Process current step data (order of evocation is: process, display)
 	 *
+	 *	@todo	change hardcoded steps into variably configurable ones
 	 *	@param	Array		$data
 	 *	@return	String
 	 */
@@ -185,7 +186,7 @@ class TodoyuInstallerStepManager {
 
 				// Finish installer: deactivate, reinit step, go to todoyu login page
 			case 'finish':
-				self::finish();
+				TodoyuInstaller::finish();
 				break;
 
 				// --------------- Update -----------------
@@ -197,14 +198,12 @@ class TodoyuInstallerStepManager {
 				// Update beta1 to beta2
 			case 'updatebeta1tobeta2':
 					// have mandatory updates be carried out
-				include( PATH . '/install/db/update_beta1_to_beta2.php');
+				include( PATH . '/install/config/db/update_beta1_to_beta2.php');
 				self::setStepNum(9);
-
 				break;
 
 			case 'finishupdate':
-				self::finishUpdate();
-
+				TodoyuInstaller::finishUpdate();
 				break;
 
 		}
