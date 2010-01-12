@@ -177,6 +177,20 @@ class Todoyu {
 
 
 	/**
+	 * Get version details for views' data array
+	 *
+	 * 	@return Array
+	 */
+	public static function getVersionData() {
+		return	array(
+			'versionnumber'	=> TODOYU_VERSION,
+			'versiondate'	=> TODOYU_UPDATE
+		);
+	}
+
+
+
+	/**
 	 * Get system language
 	 * If user is logged in, its preference language
 	 * If not logged in but the browser provides a language, use browser language

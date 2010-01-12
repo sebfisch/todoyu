@@ -20,29 +20,26 @@
 ***************************************************************/
 
 /**
- * Database updates from beta1 to beta2
+ * Init todoyu installer
  *
+ * @package		Todoyu
+ * @subpackage	Installer
  */
 
-$where	= ' TABLE_NAME IN (\'ext_filter_set\', \'ext_filter_condition\')';
-$query	= Todoyu::db()->buildSELECTinformationSchemaColumnsQuery('*', $where);
-$hasRes	= Todoyu::db()->queryHasResult($query);
+	// Activate error reporting
+error_reporting(E_ALL ^ E_NOTICE);
 
-	// If not done yet
-if ( $hasRes ) {
-		// Do updates now
-	$query	= file_get_contents( PATH . '/install/db/update_beta1_to_beta2.sql');
-	$query	= TodoyuSqlParser::cleanSql($query);
-	$query	= str_replace("\n", ' ', $query);
+	// Change current work directory to main directory to prevent path problems
+chdir(dirname(dirname(__FILE__)) . '/..');
 
-	$queries	= explode(';', $query);
+	// Declare PATH constants
+require_once( dirname(__FILE__) . '/../../core/config/constants.php');
 
-	foreach($queries as $query) {
-		$query	= trim($query);
-		if ( $query !== '' ) {
-			Todoyu::db()->query( $query . ';' );
-		}
-	}
+	// Check if _ENABLE file is available (installer has finished). Redirect to login
+if( is_file(PATH . '/install/_ENABLE') ) {
+	@unlink(PATH . '/index.html');
+	header('Location: ../index.php');
+	exit();
 }
 
 ?>

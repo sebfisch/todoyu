@@ -25,6 +25,12 @@ ALTER TABLE `ext_project_project` CHANGE `id_customer` `id_company` SMALLINT( 5 
 --
 ALTER TABLE `ext_user_company` ADD `is_internal` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT '0';
 
+--
+-- Change eventtype to text
+--
+ALTER TABLE `ext_calendar_event` CHANGE `eventtype` `eventtype` VARCHAR( 20 ) NOT NULL;
+
+
 
 CREATE TABLE `static_language` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,

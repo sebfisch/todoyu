@@ -39,7 +39,7 @@ body {
 			width:13px;
 			height:13px;
 			background-color:transparent;
-			background-image:url('img/col3_r13.png');
+			background-image:url('../img/col3_r13.png');
 			background-repeat:no-repeat;
 			background-position:0 0;
 		}
@@ -99,7 +99,7 @@ body {
 #panel .panelFooter {
 	height:51px;
 	margin-top:-2px;
-	background:#e3eace url('img/panel_footer.png') no-repeat 0 0;
+	background:#e3eace url('../img/panel_footer.png') no-repeat 0 0;
 }
 
 #footer {
@@ -111,7 +111,7 @@ body {
 }
 
 h1 {
-	background:transparent url('img/bg_headerline.png') no-repeat 0 0;
+	background:transparent url('../img/bg_headerline.png') no-repeat 0 0;
 	height:28px;
 	margin-top:5px;
 	position:relative;
@@ -129,7 +129,7 @@ h1 span.title {
 }
 
 h1 span.rgt {
-	background:#fff url('img/bg_headerline.png') no-repeat scroll 100% 0;
+	background:#fff url('../img/bg_headerline.png') no-repeat scroll 100% 0;
 	height:28px;
 	margin:0;
 	padding:0;
@@ -143,7 +143,7 @@ a, a:link {
 }
 
 button {
-	background:url('img/bg_button.png') no-repeat 0 50%;
+	background:url('../img/bg_button.png') no-repeat 0 50%;
 	border:0 none !important;
 	color:#000;
 	cursor:pointer;
@@ -170,7 +170,7 @@ button {
 
 	button span.rgt {
 		background-color:#d3dabb;
-		background:#e3eace url('img/bg_button.png') no-repeat 100% 50%;
+		background:#e3eace url('../img/bg_button.png') no-repeat 100% 50%;
 		display:block;
 		height:23px;
 		left:3px;
@@ -184,15 +184,24 @@ button {
 	height:16px;
 	width:16px;
 	display:block;
-	background:transparent url('img/servercheck.png') no-repeat 0 0;	
+	background:transparent url('../img/icons.png') no-repeat 0 0;	
 }
 
 .servercheckicon.ok {
 	background-position:0 -28px;	
 } 
 
+.toggler {
+	height:16px;
+	padding:0 0 0 16px;
+	background:transparent url('../img/icons.png') no-repeat 4px -56px;
+}
+.toggler.expanded {
+	background:transparent url('../img/icons.png') no-repeat 4px -85px;
+}
+
 .sqlQuery {
-	width:620px;
+	width:600px;
 	height:380px;
 	overflow-x:scroll;
 	margin:12px 0;

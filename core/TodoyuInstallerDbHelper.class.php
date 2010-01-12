@@ -80,7 +80,7 @@ class TodoyuInstallerDbHelper {
 			TodoyuInstallerDbHelper::compileAndRunInstallerQueries($extStructure);
 		}
 
-//		$fileStructure	= PATH . '/install/db/db_structure.sql';
+//		$fileStructure	= PATH . '/install/config/db/db_structure.sql';
 //		$structure		= file_get_contents($fileStructure);
 //		$structureParts	= explode(';', $structure);
 //
@@ -91,7 +91,7 @@ class TodoyuInstallerDbHelper {
 //		}
 
 			// Data
-		$fileData		= PATH . '/install/db/db_data.sql';
+		$fileData		= PATH . '/install/config/db/db_data.sql';
 		$data			= file_get_contents($fileData);
 
 		$dataParts		= explode(';', $data);
@@ -107,17 +107,18 @@ class TodoyuInstallerDbHelper {
 	/**
 	 * Update the admin password
 	 *
-	 * @param	String		$newPassword
+	 * @param	String	$newPassword
 	 */
 	public static function updateAdminPassword($newPassword, $newPasswordConfirm) {
+			// Validate
 		if( ! ($newPassword == $newPasswordConfirm) )	{
 			throw new Exception('Password confirmation was wrong!');
 		}
-
 		if( strlen($newPassword) < 5 )	{
 			throw new Exception('Password needs at least 5 characters!');
 		}
 
+			// Store admin user in DB
 		$pass	= md5($newPassword);
 		$table	= 'ext_user_user';
 		$where	= 'username = \'admin\'';

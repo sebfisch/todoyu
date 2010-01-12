@@ -6,7 +6,17 @@
 
 	<div class="{$textclass}">Update steps:
 		<ul>
-			<li>Changes to DB structures since beta 1</li>
+			<li>Changes to DB structures since your currently installed version
+				(<a id="toggler" href="javascript:void(0)" class="toggler" onclick="TodoyuInstaller.toggle('toggler', 'sqlUpdateQueries')">View SQL</a>)<br />
+				<div id="sqlUpdateQueries" style="display:none;">
+					{foreach $includedSqlUpdates sqlUpdate}
+						<br />{$sqlUpdate.title}:
+						<div class="sqlQuery">
+							<pre>{include file=$sqlUpdate.file}</pre>
+						</div>
+					{/foreach}					
+				</div>
+			</li>
 			<li>Check for extensions' newly added DB tables and columns</li>
 		</ul> 
 	</div>

@@ -9,7 +9,7 @@
 	      <tr>
 	        <td width="109">Select a Database</td>
 	        <td width="379">
-	        	<select name="database" type="text" id="database" value="{$fields.server}" onchange="disableTextBox(this);" >
+	        	<select name="database" type="text" id="database" value="{$fields.server}" onchange="TodoyuInstaller.disableTextBox(this);" >
 	        		{foreach $options key option}
 	        			<option value="{$key}">{$option}</option>
 	        		{/foreach}
