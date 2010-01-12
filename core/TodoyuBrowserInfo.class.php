@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuBrowserInfo {
 
 	/**
@@ -154,24 +153,24 @@ class TodoyuBrowserInfo {
 
 		return intval($vParts[0]);
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Get browser language
 	 *
 	 * @return	String		Or FALSE if not found
 	 */
 	public static function getBrowserLanguage() {
-		$language	= false;		
+		$language	= false;
 		$accepted	= explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-		
+
 		if( ! empty($accepted[0]) ) {
 			$langParts	= explode('-', $accepted[0]);
 			$language	= $langParts[0];
 		}
-		
-		return $language;		
+
+		return $language;
 	}
 
 }

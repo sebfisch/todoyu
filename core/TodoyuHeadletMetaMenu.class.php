@@ -19,6 +19,12 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Meta menu headlet
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
 class TodoyuHeadletMetaMenu extends TodoyuHeadlet {
 
 	/**

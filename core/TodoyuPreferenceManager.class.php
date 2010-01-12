@@ -26,7 +26,6 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuPreferenceManager {
 
 	/**
@@ -251,7 +250,7 @@ class TodoyuPreferenceManager {
 	}
 
 
-	
+
 	/**
 	 * Save extension for the page request
 	 *

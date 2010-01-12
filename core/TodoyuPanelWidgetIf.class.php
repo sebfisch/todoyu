@@ -19,8 +19,13 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Panelwidget interface
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
 interface TodoyuPanelWidgetIf {
-
 
 	/**
 	 * Constructor

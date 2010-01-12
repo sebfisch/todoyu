@@ -26,7 +26,6 @@
  * @subpackage	Core
  * @exception	TodoyuDbException
  */
-
 class TodoyuDatabase {
 
 	/**

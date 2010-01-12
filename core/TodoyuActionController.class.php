@@ -27,7 +27,6 @@
  * @subpackage	Core
  * @abstract
  */
-
 abstract class TodoyuActionController {
 	/**
 	 * Request parameters

@@ -20,10 +20,10 @@
 ***************************************************************/
 
 /**
- * Installer
+ * SQL parser
  *
  * @package		Todoyu
- * @subpackage	TodoyuSqlParser
+ * @subpackage	Installer
  */
 class TodoyuSqlParser {
 

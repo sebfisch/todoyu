@@ -26,7 +26,6 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuAuth {
 
 	/**

@@ -22,6 +22,9 @@
 /**
  * This class handles odt files
  *
+ * @package		Todoyu
+ * @subpackage	Core
+ * @todo		Rewrite without system commands. Should extend a general file generation class
  */
 class TodoyuOdt {
 

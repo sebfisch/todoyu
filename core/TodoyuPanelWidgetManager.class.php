@@ -25,9 +25,12 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuPanelWidgetManager {
 
+	/**
+	 * Data table
+	 *
+	 */
 	const TABLE = 'ext_user_panelwidget';
 
 

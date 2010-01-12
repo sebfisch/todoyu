@@ -25,17 +25,16 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuServer {
-	
+
 	public static function isLinux() {
 		return stripos(PHP_OS, 'Linux') !== false;
 	}
-	
+
 	public static function isWindows() {
 		return stripos(PHP_OS, 'Win') !== false;
-	}	
-	
+	}
+
 }
 
 ?>

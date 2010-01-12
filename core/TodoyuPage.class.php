@@ -25,9 +25,7 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuPage {
-
 
 	/**
 	 * Path to template file

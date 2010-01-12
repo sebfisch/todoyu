@@ -25,7 +25,6 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 interface TodoyuHeadletInterface {
 
 	/**

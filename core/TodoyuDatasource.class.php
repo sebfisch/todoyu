@@ -25,10 +25,7 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuDatasource {
-
-
 
 	/**
 	 * Get records from 'static_....' table

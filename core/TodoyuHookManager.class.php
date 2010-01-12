@@ -28,7 +28,6 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuHookManager {
 
 	/**

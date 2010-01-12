@@ -27,7 +27,6 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuDebug {
 
 	/**

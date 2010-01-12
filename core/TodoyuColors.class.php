@@ -26,7 +26,6 @@
  * @subpackage	Colors
  * @see 		config\colors.php
  */
-
 class TodoyuColors {
 
 	/**

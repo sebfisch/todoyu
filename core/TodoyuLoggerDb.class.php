@@ -25,9 +25,7 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuLoggerDb {
-
 
 	/**
 	 * Write log message in database
