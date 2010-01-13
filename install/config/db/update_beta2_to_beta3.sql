@@ -30,8 +30,14 @@ ALTER TABLE `ext_user_company` ADD `is_internal` TINYINT( 1 ) UNSIGNED NOT NULL 
 --
 ALTER TABLE `ext_calendar_event` CHANGE `eventtype` `eventtype` VARCHAR( 20 ) NOT NULL;
 
+--
+-- Drop id_old_version from assets
+--
+ALTER TABLE `ext_assets_asset` DROP `id_old_version`;
 
-
+--
+-- Add static_language
+--
 CREATE TABLE `static_language` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `iso_alpha2` char(2) CHARACTER SET utf8 NOT NULL,
@@ -40,7 +46,9 @@ CREATE TABLE `static_language` (
   UNIQUE KEY `alpha2` (`iso_alpha2`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-
+--
+-- Add data for static_language
+--
 INSERT INTO `static_language` (`id`, `iso_alpha2`, `iso_alpha3`) VALUES
 (1, 'aa', 'aar'),
 (2, 'ab', 'abk'),

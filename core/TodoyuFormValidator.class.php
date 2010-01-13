@@ -327,35 +327,23 @@ class TodoyuFormValidator {
 
 
 	/**
-	 * Check if a field has the same value as another field
+	 * Check if two fields are equal
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig		field = other fieldname
 	 * @param	TodoyuFormElement 	$formElement
-	 * @param	Array		$formData
-	 * @return	Boolean
-	 */
-	public static function fieldEqualsField($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
-		$secondFieldName	= $validatorConfig['field'];
-		$secondFieldValue	= $formData[$secondFieldName];
-
-		return $secondFieldValue == $value;
-	}
-
-
-
-	/**
-	 * Alias for fieldEqualsField
-	 *
-	 * @see		TodoyuFormValidator::fieldEqualsField()
-	 * @param	String				$value
-	 * @param	Array				$validatorConfig		field = other fieldname
-	 * @param	TodoyuFormElement 	$formElement
-	 * @param	Array		$formData
+	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
 	public static function equals($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
-		return self::fieldEqualsField($value, $validatorConfig, $formElement, $formData);
+		$secondFieldName	= $validatorConfig['field'];
+		$secondFieldValue	= $formData[$secondFieldName];
+		$allowEmpty			= isset($validatorConfig['allowEmpty']);
+
+		$equal		= $secondFieldValue === $value;
+		$notEmpty	= $allowEmpty ? true : $value !== '';
+
+		return $equal && $notEmpty;
 	}
 
 

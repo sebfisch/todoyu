@@ -116,3 +116,7 @@ ul#navi-main-list li ul li a:hover {
 #navi-main-list li.itemTodoyu {
 	float:right;
 }
+/* Todoyu submenu */
+#navi-main-list-todoyu {
+	margin-left:-146px !important;
+}
