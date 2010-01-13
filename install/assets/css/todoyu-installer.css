@@ -208,3 +208,7 @@ button {
 	border:1px dotted #ffa800;
 	background-color:#f9f3e8;
 }
+
+.redLabel {
+	color:#ff0000;
+}

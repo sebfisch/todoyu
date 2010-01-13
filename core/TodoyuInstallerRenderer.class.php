@@ -79,13 +79,36 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render DB connection: this step contains also connection store and test, repeats itself on failure
+	 * Render DB connection details form
 	 *
 	 * @param String	$nextStep
 	 * @param String	$error
 	 */
-	public static function renderDbConnection($nextStep, $error) {
+	public static function renderDbConnectionConfig($nextStep, $error) {
+		$data	= array(
+			'title'			=> 'Setup Database Server Connection',
+			'next'			=> true,
+			'buttonLabel'	=> 'Test connection',
+			'nextStep'		=> $nextStep,
+			'version'		=> Todoyu::getVersionData()
+		);
+
+		$tmpl	= 'install/view/03_dbconnection.tmpl';
+
+		return render($tmpl, $data);
+	}
+
+
+	/**
+	 * Check DB connection details. This step repeats itself on connection failure.
+	 *
+	 * @param String	$nextStep
+	 * @param String	$error
+	 */
+	public static function renderDbConnectionCheck($nextStep, $error) {
 		$dbData	= $_SESSION['todoyuinstaller']['db'];
+//		TodoyuDebug::printHtml($dbData);
+
 		$currentStepName	= TodoyuInstallerStepManager::getCurrentStepName();
 
 		$data	= array(
@@ -98,7 +121,7 @@ class TodoyuInstallerRenderer {
 		);
 
 			// Received connection data, test-connect
-		if( is_array($dbData) && array_key_exists('server', $data) ) {
+		if( is_array($dbData) && array_key_exists('server', $dbData) ) {
 			$connectionOk	= true;
 			try {
 				TodoyuDbAnalyzer::checkDbConnection($dbData);
@@ -106,23 +129,27 @@ class TodoyuInstallerRenderer {
 					// Connecting failed
 				$data['textClass']	= 'text textError';
 				$data['text']		= 'Error: ' . $e->getMessage();
+				$data['hasError']	= 1;
+				$data['buttonLabel']= 'Check connection data';
+				$data['nextStep']	= $currentStepName;
 
 				$connectionOk	= false;
 			}
 
 			if ( $connectionOk ) {
 				$data['buttonLabel']= 'Save connection data';
-			} else {
-				$data['hasError']	= 1;
-				$data['buttonLabel']= 'Check connection data';
-				$data['nextStep']	= $currentStepName;
 			}
 
 		}
-		$tmpl	= 'install/view/03b_dbconnectioncheck.tmpl';
+		$tmpl	= 'install/view/03_dbconnection.tmpl';
 
 		return render($tmpl, $data);
 	}
+
+
+
+
+
 
 	/**
 	 * Render DB select screen

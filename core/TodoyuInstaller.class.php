@@ -121,10 +121,11 @@ class TodoyuInstaller {
 		return ( $GLOBALS['CONFIG']['DB']['autoconnect'] === true );
 	}
 
-
-
 	public static function checkDbConnection($data) {
-		if ( array_key_exists('server', $data) && array_key_exists('username', $data) && array_key_exists('password', $data) ) {
+		if (	array_key_exists('server', $data)
+			&&	array_key_exists('username', $data)
+			&&	array_key_exists('password', $data)
+		) {
 			$_SESSION['todoyuinstaller']['db'] = $data;
 			try {
 				TodoyuDbAnalyzer::checkDbConnection($data);

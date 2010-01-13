@@ -40,7 +40,24 @@ TodoyuInstaller = {
 	},
 
 
-
+	/**
+	 * Ensure password and it's repetition are identical
+	 */
+	validatePasswordRepetition: function() {
+		var areIdentic	= ( $F('password') == $F('repeatpassword') );
+		
+		if ( areIdentic ) {
+			$('passwordLabel').removeClassName('redLabel');
+			$('repeatPasswordLabel').removeClassName('redLabel');
+			$('submit').show();
+		} else {
+			$('passwordLabel').addClassName('redLabel');
+			$('repeatPasswordLabel').addClassName('redLabel');
+			$('submit').hide();
+		}
+	},
+	 
+	 
 	/**
 	 *	Skip data import action (by altering action to next one) 
 	 */

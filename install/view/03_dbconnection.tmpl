@@ -1,6 +1,10 @@
 {extends main.tmpl}
 
 {block name="box"}
+		{if $hasError == 1}
+			<strong>Please correct the Database connection setup below:</strong>
+			<br /><br />
+		{/if}
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 			<tr>
 				<td width="109">Server</td>
@@ -13,8 +17,12 @@
 				<td><input type="text" name="username" id="username" value="{$fields.username|default:'root'}" /></td>
 			</tr>
 			<tr>
-				<td>Password</td>
-				<td><input type="password" name="password" id="password" value="{$fields.password}" /></td>
+				<td id="passwordLabel">Password</td>
+				<td><input onkeyup="TodoyuInstaller.validatePasswordRepetition()" type="password" name="password" id="password" value="{$fields.password}" /></td>
+			</tr>
+			<tr>
+				<td id="repeatPasswordLabel">Repeat Password</td>
+				<td><input onkeyup="TodoyuInstaller.validatePasswordRepetition()" type="password" name="repeatpassword" id="repeatpassword" value="{$fields.password}" /></td>
 			</tr>
 		</table>
 {/block}

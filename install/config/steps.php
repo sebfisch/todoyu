@@ -42,10 +42,18 @@ $CONFIG['INSTALLER']['steps'] = array(
 		'nextStepNum'	=> 2,
 	),
 	2 => array(
-		'name'			=> 'dbconnection',
-			// Configure DB connection and check, store to session if available
+		'name'			=> 'dbconnectionconfig',
+			// Configure DB connection details
+		'processFuncRef'=> false,
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnectionConfig',
+		'nextStepNum'	=> 21,
+	),
+
+	21 => array(
+		'name'			=> 'dbconnectioncheck',
+			// DB connection and check, store to session if connection OK, repeat on failure
 		'processFuncRef'=> 'TodoyuInstaller::checkDbConnection',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnection',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnectionCheck',
 			// If check failed: this step repeats itself
 		'nextStepNum'	=> 3,
 	),
