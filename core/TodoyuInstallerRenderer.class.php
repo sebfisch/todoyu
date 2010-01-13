@@ -84,10 +84,10 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderDbConnectionConfig($nextStep, $error) {
 		$data	= array(
-			'title'			=> 'Setup Database Server Connection',
-			'next'			=> true,
-			'buttonLabel'	=> 'Test connection',
-			'nextStep'		=> $nextStep
+			'title'				=> 'Setup Database Server Connection',
+			'next'				=> true,
+			'buttonLabel'		=> 'Test connection',
+			'nextStep'			=> $nextStep,
 		);
 
 		$tmpl	= 'install/view/03_dbconnection.tmpl';
@@ -134,8 +134,7 @@ class TodoyuInstallerRenderer {
 			}
 
 			if ( $connectionOk ) {
-				$data['nextStep']	= $nextStep;
-				$data['buttonLabel']= 'Save connection data and select database';
+				TodoyuInstallerStepManager::jumpToNextStep();
 			}
 
 		}
@@ -159,7 +158,7 @@ class TodoyuInstallerRenderer {
 			'title'			=> 'Setup Database',
 			'next'			=> true,
 			'nextStep'		=> $nextStep,
-			'buttonLabel'	=> 'Set Database'
+			'buttonLabel'	=> 'Save Database Setup'
 		);
 
 		if( is_array($dbData) ) {

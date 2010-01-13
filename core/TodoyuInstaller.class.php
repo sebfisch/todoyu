@@ -124,6 +124,8 @@ class TodoyuInstaller {
 		return $GLOBALS['CONFIG']['DB']['autoconnect'] === true;
 	}
 
+
+
 	public static function checkDbConnection($data) {
 		if (	array_key_exists('server', $data)
 			&&	array_key_exists('username', $data)
@@ -138,6 +140,20 @@ class TodoyuInstaller {
 		}
 
 		return $error;
+	}
+
+
+
+	public static function saveDbSelect($data) {
+		$error	= self::dbSelect($data);
+
+		if ( strlen($error) == 0 ) {
+			TodoyuInstallerStepManager::jumpToNextStep();
+		} else {
+			// Return to prev. step
+			// @todo implement
+//			TodoyuInstallerStepManager::jumpToPreviousStep();
+		}
 	}
 
 
@@ -220,7 +236,7 @@ class TodoyuInstaller {
 	/**
 	 * Reload the installer
 	 */
-	private static function reload() {
+	public static function reload() {
 		header('Location: ' . $_SERVER['SCRIPT_NAME']);
 		exit();
 	}

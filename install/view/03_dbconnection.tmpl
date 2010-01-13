@@ -1,35 +1,37 @@
 {extends main.tmpl}
 
 {block name="box"}
+	{$fieldsDisabled = 0}
 	{if $connectionHasBeenChecked}
 		{if $hasError == 1}
 			<strong>Please correct the Database connection setup below:</strong>
-			<br /><br />
 		{else}
-			<span style="padding:0 0 0 20px; width:300px;" class="servercheckicon ok">
-				Database Server Connection verified
+			<span style="padding:0 0 0 30px; width:300px;" class="servercheckicon ok">
+				<strong>Database server connection verified</strong>
+				{$fieldsDisabled = 1}
 			</span>
-			<br /><br />
 		{/if}
+	{else}
+		<strong>Please enter the database server connection details:</strong>
 	{/if}
-		<table width="500" border="0" cellspacing="0" cellpadding="3">
+		<table width="500" border="0" cellspacing="0" cellpadding="3" style="margin-top:18px;">
 			<tr>
 				<td width="109">Server</td>
 				<td width="379">
-				<input name="server" type="text" id="server" value="{$fields.server|default:'localhost'}" />
-			</td>
+					<input name="server" type="text" id="server" value="{$fields.server|default:'localhost'}" />
+				</td>
 			</tr>
 			<tr>
 				<td>Username</td>
-				<td><input type="text" name="username" id="username" value="{$fields.username|default:'root'}" /></td>
+				<td>
+					<input type="text" name="username" id="username" value="{$fields.username|default:'root'}" />
+				</td>
 			</tr>
 			<tr>
 				<td id="passwordLabel">Password</td>
-				<td><input onkeyup="TodoyuInstaller.validatePasswordRepetition()" type="password" name="password" id="password" value="{$fields.password}" /></td>
-			</tr>
-			<tr>
-				<td id="repeatPasswordLabel">Repeat Password</td>
-				<td><input onkeyup="TodoyuInstaller.validatePasswordRepetition()" type="password" name="repeatpassword" id="repeatpassword" value="{$fields.password}" /></td>
+				<td>
+					<input type="password" name="password" id="password" value="{$fields.password}" />
+				</td>
 			</tr>
 		</table>
 {/block}

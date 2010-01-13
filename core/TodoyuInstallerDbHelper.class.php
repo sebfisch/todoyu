@@ -53,7 +53,12 @@ class TodoyuInstallerDbHelper {
 	 * Save database configuration file with submitted data
 	 */
 	public static function saveDbConfigInFile() {
-		$data	= array('db'	=> $_SESSION['todoyuinstaller']['db']);
+//		echo '<pre>'.print_r($_SESSION['todoyuinstaller']['db'], true).'</pre>';
+//		die();
+
+		$data	= array(
+			'db'	=> $_SESSION['todoyuinstaller']['db']
+		);
 		$tmpl	= 'install/view/db.php.tmpl';
 
 		$config	= render($tmpl, $data);
@@ -79,16 +84,6 @@ class TodoyuInstallerDbHelper {
 		if ( count($extStructure) > 0  ) {
 			TodoyuInstallerDbHelper::compileAndRunInstallerQueries($extStructure);
 		}
-
-//		$fileStructure	= PATH . '/install/config/db/db_structure.sql';
-//		$structure		= file_get_contents($fileStructure);
-//		$structureParts	= explode(';', $structure);
-//
-//		foreach($structureParts as $structurePart) {
-//			if( trim($structurePart) !== '' ) {
-//				Todoyu::db()->query($structurePart);
-//			}
-//		}
 
 			// Data
 		$fileData		= PATH . '/install/config/db/db_data.sql';

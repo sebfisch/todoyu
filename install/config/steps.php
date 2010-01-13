@@ -55,6 +55,7 @@ $CONFIG['INSTALLER']['steps'] = array(
 		'processFuncRef'=> 'TodoyuInstaller::checkDbConnection',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnectionCheck',
 			// If check failed: this step repeats itself
+			// If check verified: save and autoforward to next step
 		'nextStepNum'	=> 3,
 	),
 
@@ -63,12 +64,21 @@ $CONFIG['INSTALLER']['steps'] = array(
 			// Save DB connection data.	Select DB
 		'processFuncRef'=> 'TodoyuInstaller::dbSelect',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbSelect',
-		'nextStepNum'	=> 4,
+		'nextStepNum'	=> 31,
 	),
+
+	31	=> array(
+			'name'			=> 'savedbselect',
+			'processFuncRef'=> 'TodoyuInstaller::saveDbSelect',
+			'renderFuncRef'	=> false,
+				// No output, processing forwards to next step automaticly
+			'nextStepNum'	=> 4,
+	),
+
 	4 => array(
 		'name'			=> 'importstatic',
-			// Import static DB data
-		'processFuncRef'=> 'TodoyuInstallerDbHelper::importStaticData',
+			// Save DB selection, Import static DB data
+		'processFuncRef'=> 'TodoyuInstaller::SaveDbAndimportStaticData',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderImportStatic',
 		'nextStepNum'	=> 5,
 	),
@@ -123,10 +133,11 @@ $CONFIG['INSTALLER']['steps'] = array(
 		'nextStepNum'	=> 7,
 	),
 
+		// ------------- Exit installer and go to todoyu login page -------------
 	100	=> array(
 		'name'			=> 'exit',
 		'processFuncRef'=> 'TodoyuInstaller::finish',
-		'renderFuncRef'	=> false, //'TodoyuInstallerRenderer::renderUpdateFinished',
+		'renderFuncRef'	=> false,
 		'nextStepNum'	=> 0,
 	)
 );

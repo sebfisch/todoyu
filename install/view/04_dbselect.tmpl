@@ -7,7 +7,7 @@
 				<td width="379">
 					<select name="database" type="text" id="database" value="{$fields.server}" onchange="TodoyuInstaller.disableTextBox(this);" >
 			{foreach $options key option}
-						<option value="{$key}">{$option}</option>
+						<option value="{$key}"{if $option.disabled} disabled="true"{/if}>{$option.text}</option>
 			{/foreach}
 					</select>	 
 				</td>

@@ -33,13 +33,31 @@ class TodoyuDbAnalyzer {
 	 * @return	Array
 	 */
 	public static function getAvailableDatabases($dbData, $error = '')	{
-		$databases	= array(0 => 'Please choose a database');
+		$databases	= array(
+			0 => array(
+				'text' 		=> 'Please choose a database',
+				'disabled'	=> true,
+//				'selected'	=> true
+			)
+		);
 
 		$conn = mysql_connect($dbData['server'], $dbData['username'], $dbData['password']);
 		$source = mysql_list_dbs($conn);
 
+		$ignoredDBs	= array(
+			'information_schema',
+			'mysql',
+			'phpmyadmin',
+		);
+
 		while($row = mysql_fetch_object($source))	{
-			$databases[$row->Database] = $row->Database;
+			if ( ! in_array($row->Database, $ignoredDBs) ) {
+				$databases[$row->Database] = array(
+					'text' 		=> $row->Database,
+//					'disabled'	=> false,
+//					'selected'	=> false
+				);
+			}
 		}
 
 		return $databases;

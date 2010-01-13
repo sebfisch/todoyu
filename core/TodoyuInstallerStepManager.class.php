@@ -206,5 +206,19 @@ class TodoyuInstallerStepManager {
 		}
 	}
 
+	/**
+	 * Jump to next step
+	 */
+	public static function jumpToNextStep()	{
+		$steps		= $GLOBALS['CONFIG']['INSTALLER']['steps'];
+
+		$curStep	=	self::getStepNum();
+		$nextStep	=	$steps[$curStep]['nextStepNum'];
+
+		self::setStepNum($nextStep);
+
+		TodoyuInstaller::reload();
+	}
+
 }
 ?>
