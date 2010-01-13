@@ -1,10 +1,17 @@
 {extends main.tmpl}
 
 {block name="box"}
+	{if $connectionHasBeenChecked}
 		{if $hasError == 1}
 			<strong>Please correct the Database connection setup below:</strong>
 			<br /><br />
+		{else}
+			<span style="padding:0 0 0 20px; width:300px;" class="servercheckicon ok">
+				Database Server Connection verified
+			</span>
+			<br /><br />
 		{/if}
+	{/if}
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 			<tr>
 				<td width="109">Server</td>

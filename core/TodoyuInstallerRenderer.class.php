@@ -122,6 +122,7 @@ class TodoyuInstallerRenderer {
 
 			// Received connection data, test-connect
 		if( is_array($dbData) && array_key_exists('server', $dbData) ) {
+			$data['connectionHasBeenChecked']	= true;
 			$connectionOk	= true;
 			try {
 				TodoyuDbAnalyzer::checkDbConnection($dbData);
@@ -137,7 +138,8 @@ class TodoyuInstallerRenderer {
 			}
 
 			if ( $connectionOk ) {
-				$data['buttonLabel']= 'Save connection data';
+				$data['nextStep']	= $nextStep;
+				$data['buttonLabel']= 'Save connection data and select database';
 			}
 
 		}
@@ -145,9 +147,6 @@ class TodoyuInstallerRenderer {
 
 		return render($tmpl, $data);
 	}
-
-
-
 
 
 
