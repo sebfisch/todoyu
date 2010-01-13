@@ -128,4 +128,8 @@ require_once( PATH_LOCALCONF . '/extensions.php');
 require_once( PATH_LOCALCONF . '/extconf.php');
 
 
+	// Load user extension (needed to initialize todoyu)
+require_once( PATH_EXT . '/user/ext.php' );
+
+
 ?>
