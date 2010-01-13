@@ -265,17 +265,6 @@ class TodoyuInstaller {
 
 
 	/**
-	 * Finish the installer, go to todoyu login page
-	 */
-	public static function finish($data) {
-		self::deactivate();
-		TodoyuInstallerStepManager::reinitStepNum();
-		self::gotoLogin();
-	}
-
-
-
-	/**
 	 * Execute sql files to update the database to the current version
 	 *
 	 * @param	Array		$data
@@ -373,7 +362,19 @@ class TodoyuInstaller {
 			TodoyuInstallerDbHelper::compileAndRunInstallerQueries($dbDiff);
 		}
 
-		TodoyuInstallerStepManager::setStepNum(11);
+		TodoyuInstallerStepManager::jumpToNextStep();
+	}
+
+
+
+	/**
+	 * Finish the installer, go to todoyu login page
+	 */
+	public static function finish($data) {
+		self::deactivate();
+		TodoyuInstallerStepManager::reinitStepNum();
+
+		self::gotoLogin();
 	}
 
 }

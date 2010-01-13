@@ -129,7 +129,8 @@ $CONFIG['INSTALLER']['steps'] = array(
 	11 => array(
 		'name'			=> 'finishupdate',
 		'processFuncRef'=> 'TodoyuInstaller::finishUpdate',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderUpdateFinished',
+			// processing autoforwards to next step
+		'renderFuncRef'	=> false, //'TodoyuInstallerRenderer::renderUpdateFinished',
 		'nextStepNum'	=> 7,
 	),
 
