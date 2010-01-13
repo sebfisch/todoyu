@@ -41,7 +41,6 @@ class TodoyuInstaller {
 		if( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 			$error = TodoyuInstallerStepManager::processStep($_POST);
 		}
-
 			// Display step output
 		TodoyuInstallerStepManager::displayStep($error);
 	}
@@ -82,6 +81,56 @@ class TodoyuInstaller {
 	 */
 	public static function hasBeenInstalledBefore() {
 		return ( $GLOBALS['CONFIG']['DB']['autoconnect'] === true );
+	}
+
+
+
+	public static function checkDbConnection($data) {
+		$_SESSION['todoyuinstaller']['db'] = $data;
+		try {
+			TodoyuDbAnalyzer::checkDbConnection($data);
+		} catch(Exception $e) {
+			$error = $e->getMessage();
+		}
+
+		return $error;
+	}
+
+
+
+	public static function dbSelect($data) {
+		try {
+			TodoyuInstallerDbHelper::addDatabase();
+			TodoyuInstallerDbHelper::saveDbConfigInFile();
+		} catch(Exception $e)	{
+			$error = $e->getMessage();
+		}
+
+		return $error;
+	}
+
+
+
+	public static function tryUpdateConfig($data) {
+		try {
+			TodoyuInstaller::updateConfig($data);
+		} catch (Exception $e)	{
+			$error = $e->getMessage();
+		}
+
+		return $error;
+	}
+
+
+
+	public static function setAdminPassword($data) {
+		try {
+			TodoyuInstallerDbHelper::updateAdminPassword($data['password'], $data['password_confirm']);
+		} catch(Exception $e)	{
+			$error = $e->getMessage();
+		}
+
+		return $error;
 	}
 
 
@@ -158,7 +207,7 @@ class TodoyuInstaller {
 	/**
 	 * Finish the installer, go to todoyu login page
 	 */
-	public static function finish() {
+	public static function finish($data) {
 		self::deactivate();
 		TodoyuInstallerStepManager::reinitStepNum();
 		self::gotoLogin();
@@ -166,10 +215,16 @@ class TodoyuInstaller {
 
 
 
+	public static function updatebeta1tobeta2($data) {
+		include( PATH . '/install/config/db/update_beta1_to_beta2.php');
+	}
+
+
+
 	/**
 	 * Gather and perform queries, forward to next step (update finished)
 	 */
-	public static function finishUpdate() {
+	public static function finishUpdate($data) {
 		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
 
 		if ( count($dbDiff) > 0  ) {

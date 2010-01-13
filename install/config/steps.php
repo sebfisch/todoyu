@@ -29,78 +29,107 @@
 $CONFIG['INSTALLER']['steps'] = array(
 	0 => array(
 		'name'			=> 'welcome',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcome',
 		'processAction'	=> 'start',
+		'processFuncRef'=> false,
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcome',
 		'nextStepNum'	=> 1,
 	),
 	1 => array(
 		'name'			=> 'servercheck',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderServercheck',
 		'processAction'	=> 'servercheck',
+			// Check server
+		'processFuncRef'=> false,
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderServercheck',
 		'nextStepNum'	=> 2,
 	),
 	2 => array(
 		'name'			=> 'dbconnection',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnection',
 		'processAction'	=> 'dbconnection',
+			// Check DB connection
+		'processFuncRef'=> 'TodoyuInstaller::checkDbConnection',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnection',
 		'nextStepNum'	=> 3,
 	),
 	3 => array(
 		'name'			=> 'dbselect',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbSelect',
 		'processAction'	=> 'dbselect',
+			// Add DB, save DB config
+		'processFuncRef'=> 'TodoyuInstaller::dbSelect',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbSelect',
 		'nextStepNum'	=> 4,
 	),
 	4 => array(
 		'name'			=> 'importstatic',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderImportStatic',
 		'processAction'	=> 'importstatic',
+			// Import static DB data
+		'processFuncRef'=> 'TodoyuInstallerDbHelper::importStaticData',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderImportStatic',
 		'nextStepNum'	=> 5,
 	),
 	5 => array(
 		'name'			=> 'config',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderConfig',
 		'processAction'	=> 'config',
+			// Update system config file (/config/system.php)
+		'processFuncRef'=> 'TodoyuInstaller::tryUpdateConfig',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderConfig',
 		'nextStepNum'	=> 6,
 	),
 	6 => array(
 		'name'			=> 'setadminpassword',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderAdminPassword',
 		'processAction'	=> 'setadminpassword',
+			// Validate password, store admin user and password in DB (table 'ext_user_user')
+		'processFuncRef'=> 'TodoyuInstaller::setAdminPassword',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderAdminPassword',
 		'nextStepNum'	=> 7,
 	),
 	7 => array(
 		'name'			=> 'finish',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderFinish',
 		'processAction'	=> 'finish',
-		'nextStepNum'	=> false,
+			// Finish installer: deactivate, reinit step, go to todoyu login page
+		'processFuncRef'=> false, //'TodoyuInstaller::finish',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderFinish',
+		'nextStepNum'	=> 100,
 	),
 
 		// Update steps
 	8 => array(
 		'name'			=> 'welcometoupdate',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcomeToUpdate',
 		'processAction'	=> 'welcometoupdate',
+			// Welcome to version updates screen
+		'processFuncRef'=> false,
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcomeToUpdate',
 		'nextStepNum'	=> false,
 	),
 	9 => array(
 		'name'			=> 'updatebeta1tobeta2',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
 		'processAction'	=> 'updatebeta1tobeta2',
-		'nextStepNum'	=> 9,
+			// Update beta1 to beta2, have mandatory updates be carried out
+		'processFuncRef'=> 'TodoyuInstaller::updatebeta1tobeta2',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
+		'nextStepNum'	=> 10,
 	),
 	10 => array(
 		'name'			=> 'dbstructurecheck',
-			// check for changes in 'tables.sql' files against DB
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
 		'processAction'	=> 'dbstructurecheck',
-		'nextStepNum'	=> false,
+		'processFuncRef'	=> '',
+			// Check for changes in 'tables.sql' files against DB
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
+		'nextStepNum'	=> 11,
 	),
 	11 => array(
 		'name'			=> 'finishupdate',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderUpdateFinished',
 		'processAction'	=> 'finishupdate',
-		'nextStepNum'	=> false,
+		'processFuncRef'=> 'TodoyuInstaller::finishUpdate',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderUpdateFinished',
+		'nextStepNum'	=> 7,
+	),
+
+	100	=> array(
+		'name'			=> 'exit',
+		'processAction'	=> 'exit',
+		'processFuncRef'=> 'TodoyuInstaller::finish',
+		'renderFuncRef'	=> false, //'TodoyuInstallerRenderer::renderUpdateFinished',
+		'nextStepNum'	=> 0,
 	)
 );
 
