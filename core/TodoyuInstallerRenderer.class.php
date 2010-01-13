@@ -31,12 +31,16 @@ class TodoyuInstallerRenderer {
 	 * Render welcome screen
 	 *
 	 * @param	String	$error
+	 * @return	String
 	 */
-	public static function renderWelcome($error = '') {
+	public static function renderWelcome($nextStep, $error = '') {
 		$data	= array(
-			'title'		=> 'Welcome to the Todoyu installer',
-			'textclass'	=> 'text textInfo',
-			'version'	=> Todoyu::getVersionData()
+			'title'			=> 'Welcome to the Todoyu installer',
+			'textclass'		=> 'text textInfo',
+			'buttonLabel'	=> 'Check server compatibility',
+			'next'			=> true,
+			'nextStep'		=> $nextStep,
+			'version'		=> Todoyu::getVersionData()
 		);
 		$tmpl	= 'install/view/01_welcome.tmpl';
 
@@ -46,48 +50,26 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render server check screen
+	 * Render server check (correct PHP version and writable files, folders) screen
 	 *
 	 * @param	String	$error
+	 * @return	String
 	 */
-	public static function renderServercheck($error = '') {
-		$next			= true;
+	public static function renderServercheck($nextStep, $error = '') {
+		$versionStatus	= TodoyuInstaller::getPhpVersionStatus();
+		$next			= 	$versionStatus == 'OK' ? true : false;
 
-		if( version_compare(PHP_VERSION, '5.2.0', '>=') ) {
-			$versionStatus	= 'OK';
-		} else {
-			$versionStatus	= 'PROBLEM';
-			$next			= false;
-		}
-
-		$writable		= array(
-			'files',
-			'config',
-			'cache/tmpl/compile',
-			'config/db.php',
-			'config/extensions.php',
-			'config/extconf.php'
-		);
-		$writableStatus	= array();
-
-		foreach($writable as $path) {
-			$absPath	= PATH . '/' . $path;
-
-			TodoyuFileManager::setDefaultAccessRights($absPath);
-
-			$writableStatus[$path]	= is_writable($absPath);
-
-			if( $writableStatus[$path] === false ) {
-				$next = false;
-			}
-		}
+		list($writableStatuses, $writablePathsOk)	= TodoyuInstaller::getWritableStatuses();
+		$next	= ( $writablePathsOK	== true ) ? $next : false;
 
 		$data	= array(
 			'title'				=> 'Server check',
 			'phpversionStatus'	=> $versionStatus,
 			'phpversion'		=> '(Your version: ' . PHP_VERSION . ')',
-			'writable'			=> $writableStatus,
-			'next'				=> $next
+			'writable'			=> $writableStatuses,
+			'next'				=> $next,
+			'buttonLabel'		=> 'Configure database',
+			'nextStep'			=> $nextStep,
 		);
 		$tmpl	= 'install/view/02_servercheck.tmpl';
 
@@ -100,14 +82,18 @@ class TodoyuInstallerRenderer {
 	 * Render database connection screen
 	 *
 	 * @param	String	$error
+	 * @return	String
 	 */
-	public static function renderDbConnection($error = '') {
+	public static function renderDbConnection($nextStep, $error = '') {
 		$dbData	= $_SESSION['todoyuinstaller']['db'];
 
 		$data	= array(
-			'title'		=> 'Setup Database Server Connection',
-			'fields'	=> $dbData,
-			'version'	=> self::getVersionData()
+			'title'			=> 'Setup Database Server Connection',
+			'fields'		=> $dbData,
+			'next'			=> true,
+			'buttonLabel'	=>'Save connection data',
+			'nextStep'		=> $nextStep,
+			'version'		=> self::getVersionData()
 		);
 
 		if( is_array($dbData) ) {
@@ -130,13 +116,17 @@ class TodoyuInstallerRenderer {
 	 * Render DB select screen
 	 *
 	 * @param	String	$error
+	 * @return	String
 	 */
-	public static function renderDbSelect($error = '')	{
+	public static function renderDbSelect($nextStep, $error = '')	{
 		$dbData	= $_SESSION['todoyuinstaller']['db'];
 
 		$data	= array(
-			'title'		=> 'Setup Database',
-			'version'	=> Todoyu::getVersionData()
+			'title'			=> 'Setup Database',
+			'next'			=> true,
+			'nextStep'		=> $nextStep,
+			'buttonLabel'	=> 'Set Database',
+			'version'		=> Todoyu::getVersionData()
 		);
 
 		if( is_array($dbData) ) {
@@ -161,16 +151,22 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render import static screen
+	 * Render import static DB data screen
 	 *
 	 * @param	String	$error
+	 * @return	String
 	 */
-	public static function renderImportStatic($error = '') {
+	public static function renderImportStatic($nextStep, $error = '') {
 		$data	= array(
-			'title'		=> 'Import static data',
-			'version'	=> Todoyu::getVersionData(),
+			'title'			=> 'Import static data',
+			'text'			=> 'DB connection is stored, import static data now.',
+			'textClass'		=> 'text textSuccess',
 			'coreStructure'	=> TodoyuInstallerDbHelper::getCoreDBstructures(),
-			'extStructure'	=> TodoyuInstallerDbHelper::getExtDBstructures()
+			'extStructure'	=> TodoyuInstallerDbHelper::getExtDBstructures(),
+			'buttonLabel'	=> 'Import static database data',
+			'next'			=> true,
+			'nextStep'		=> $nextStep,
+			'version'		=> Todoyu::getVersionData(),
 		);
 		$tmpl	= 'install/view/05_importstatic.tmpl';
 
@@ -183,13 +179,17 @@ class TodoyuInstallerRenderer {
 	 * Render config screen
 	 *
 	 * @param	String	$error
+	 * @return	String
 	 */
-	public static function renderConfig($error = '') {
+	public static function renderConfig($nextStep, $error = '') {
 		$data	= array(
-			'title'		=> 'System config',
-			'text'		=> $error ? $error : '',
-			'textClass'	=> $error ? 'text textError' : '',
-			'version'	=> Todoyu::getVersionData()
+			'title'			=> 'System config',
+			'text'			=> $error ? $error : '',
+			'textClass'		=> $error ? 'text textError' : '',
+			'nextStep'		=> $nextStep,
+			'next'			=> true,
+			'buttonLabel'	=> 'Save configuration',
+			'version'		=> Todoyu::getVersionData()
 		);
 
 		$tmpl	= 'install/view/06_config.tmpl';
@@ -203,13 +203,17 @@ class TodoyuInstallerRenderer {
 	 * Render admin password change screen
 	 *
 	 * @param	String	$error
+	 * @return	String
 	 */
-	public static function renderAdminPassword($error = '') {
+	public static function renderAdminPassword($nextStep, $error = '') {
 		$data	= array(
-			'title'		=> 'Change admin password',
-			'text'		=> strlen($error) > 0 ? $error : 'Change admin password for your security!',
-			'textClass'	=> strlen($error) > 0 ?  'text textError' : 'text textInfo',
-			'version'	=> Todoyu::getVersionData()
+			'title'			=> 'Change admin password',
+			'text'			=> strlen($error) > 0 ? $error : 'Change admin password for your security!',
+			'textClass'		=> strlen($error) > 0 ?  'text textError' : 'text textInfo',
+			'nextStep'		=> $nextStep,
+			'next'			=> true,
+			'buttonLabel'	=> 'Change admin password',
+			'version'		=> Todoyu::getVersionData()
 		);
 
 		$tmpl	= 'install/view/07_adminpassword.tmpl';
@@ -221,11 +225,19 @@ class TodoyuInstallerRenderer {
 
 	/**
 	 * Render finishing screen
+	 *
+	 * @param	String	$error
+	 * @return	String
 	 */
-	public static function renderFinish($error = '') {
+	public static function renderFinish($nextStep, $error = '') {
 		$data	= array(
-			'title'		=> 'Installation finished',
-			'version'	=> Todoyu::getVersionData()
+			'title'			=> 'Installation finished',
+			'text'			=> 'Installation finished',
+			'textClass'		=> 'text textSuccess',
+			'nextStep'		=> $nextStep,
+			'next'			=> true,
+			'buttonLabel'	=> 'Disable installer and go to login',
+			'version'		=> Todoyu::getVersionData()
 		);
 		$tmpl	= 'install/view/08_finish.tmpl';
 
@@ -240,13 +252,17 @@ class TodoyuInstallerRenderer {
 	 * @param 	String	$error
 	 * @return	String
 	 */
-	public static function renderWelcomeToUpdate($error = '') {
+	public static function renderWelcomeToUpdate($nextStep, $error = '') {
 		$currentVersion	= Todoyu::getVersionData();
 
 		$data	= array(
-			'title'				=> 'Welcome to todoyu datebase update',
-			'version'			=> $currentVersion,
+			'title'				=> 'Welcome to datebase update',
 			'includedSqlUpdates'=> TodoyuInstaller::getRequiredVersionUpdates($currentVersion),
+			'nextStep'			=> $nextStep,
+			'next'				=> true,
+			'buttonLabel'		=> 'Perform DB updates',
+			'version'			=> $currentVersion,
+
 		);
 
 		$tmpl	= 'install/view/09_welcometoupdate.tmpl';
@@ -260,16 +276,21 @@ class TodoyuInstallerRenderer {
 	 * Render welcome screen
 	 *
 	 * @param	String	$error
+	 * @return	String
 	 */
-	public static function renderDBstructureCheck($error = '') {
-		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
+	public static function renderDBstructureCheck($nextStep, $error = '') {
+		$versionData	= Todoyu::getVersionData();
 
 			// DB structure is NOT up-to-date! offer updating
 		$data	= array(
-			'title'		=> 'Welcome to the Todoyu installer',
-			'textclass'	=> 'text textInfo',
-			'version'	=> Todoyu::getVersionData(),
-			'diffs'		=> $dbDiff
+			'title'					=> 'Database update check',
+			'textclass'				=> 'text textInfo',
+			'diffs'					=> TodoyuInstallerDbHelper::getDBstructureDiff(),
+			'nextStep'				=> $nextStep,
+			'next'					=> true,
+			'buttonLabel'			=> 'Finish update',
+			'version'				=> $versionData,
+			'includedSqlUpdates'	=> TodoyuInstaller::getRequiredVersionUpdates($versionData)
 		);
 		$tmpl	= 'install/view/10_dbchanges.tmpl';
 
@@ -281,12 +302,18 @@ class TodoyuInstallerRenderer {
    /**
  	* Render update finished screen
  	*
- 	*	@param	String	$error
+ 	* @param	String	$error
+ 	* @return	String
  	*/
-	public static function renderUpdateFinished($error = '') {
+	public static function renderUpdateFinished($nextStep, $error = '') {
 		$data	= array(
-			'title'		=> 'Update finished',
-			'version'	=> Todoyu::getVersionData()
+			'title'			=> 'Update finished',
+			'text'			=> 'Update finished',
+			'textClass'		=> 'text textSuccess',
+			'nextStep'		=> $nextStep,
+			'next'			=> true,
+			'buttonLabel'	=> 'Disable installer and go to login',
+			'version'		=> Todoyu::getVersionData()
 		);
 
 		$tmpl	= 'install/view/11_finishupdate.tmpl';

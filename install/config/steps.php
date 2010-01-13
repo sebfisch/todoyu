@@ -29,14 +29,14 @@
 $CONFIG['INSTALLER']['steps'] = array(
 	0 => array(
 		'name'			=> 'welcome',
-		'processAction'	=> 'start',
+//		'processAction'	=> 'start',
 		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcome',
 		'nextStepNum'	=> 1,
 	),
 	1 => array(
 		'name'			=> 'servercheck',
-		'processAction'	=> 'servercheck',
+//		'processAction'	=> 'servercheck',
 			// Check server
 		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderServercheck',
@@ -44,7 +44,7 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	2 => array(
 		'name'			=> 'dbconnection',
-		'processAction'	=> 'dbconnection',
+//		'processAction'	=> 'dbconnection',
 			// Check DB connection
 		'processFuncRef'=> 'TodoyuInstaller::checkDbConnection',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnection',
@@ -52,7 +52,7 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	3 => array(
 		'name'			=> 'dbselect',
-		'processAction'	=> 'dbselect',
+//		'processAction'	=> 'dbselect',
 			// Add DB, save DB config
 		'processFuncRef'=> 'TodoyuInstaller::dbSelect',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbSelect',
@@ -60,7 +60,7 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	4 => array(
 		'name'			=> 'importstatic',
-		'processAction'	=> 'importstatic',
+//		'processAction'	=> 'importstatic',
 			// Import static DB data
 		'processFuncRef'=> 'TodoyuInstallerDbHelper::importStaticData',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderImportStatic',
@@ -68,7 +68,7 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	5 => array(
 		'name'			=> 'config',
-		'processAction'	=> 'config',
+//		'processAction'	=> 'config',
 			// Update system config file (/config/system.php)
 		'processFuncRef'=> 'TodoyuInstaller::tryUpdateConfig',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderConfig',
@@ -76,7 +76,7 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	6 => array(
 		'name'			=> 'setadminpassword',
-		'processAction'	=> 'setadminpassword',
+//		'processAction'	=> 'setadminpassword',
 			// Validate password, store admin user and password in DB (table 'ext_user_user')
 		'processFuncRef'=> 'TodoyuInstaller::setAdminPassword',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderAdminPassword',
@@ -84,7 +84,7 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	7 => array(
 		'name'			=> 'finish',
-		'processAction'	=> 'finish',
+//		'processAction'	=> 'finish',
 			// Finish installer: deactivate, reinit step, go to todoyu login page
 		'processFuncRef'=> false, //'TodoyuInstaller::finish',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderFinish',
@@ -94,15 +94,15 @@ $CONFIG['INSTALLER']['steps'] = array(
 		// Update steps
 	8 => array(
 		'name'			=> 'welcometoupdate',
-		'processAction'	=> 'welcometoupdate',
+//		'processAction'	=> 'welcometoupdate',
 			// Welcome to version updates screen
 		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcomeToUpdate',
-		'nextStepNum'	=> false,
+		'nextStepNum'	=> 9,
 	),
 	9 => array(
 		'name'			=> 'updatebeta1tobeta2',
-		'processAction'	=> 'updatebeta1tobeta2',
+//		'processAction'	=> 'updatebeta1tobeta2',
 			// Update beta1 to beta2, have mandatory updates be carried out
 		'processFuncRef'=> 'TodoyuInstaller::updatebeta1tobeta2',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
@@ -110,7 +110,7 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	10 => array(
 		'name'			=> 'dbstructurecheck',
-		'processAction'	=> 'dbstructurecheck',
+//		'processAction'	=> 'dbstructurecheck',
 		'processFuncRef'	=> '',
 			// Check for changes in 'tables.sql' files against DB
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
@@ -118,7 +118,7 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	11 => array(
 		'name'			=> 'finishupdate',
-		'processAction'	=> 'finishupdate',
+//		'processAction'	=> 'finishupdate',
 		'processFuncRef'=> 'TodoyuInstaller::finishUpdate',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderUpdateFinished',
 		'nextStepNum'	=> 7,
@@ -126,7 +126,7 @@ $CONFIG['INSTALLER']['steps'] = array(
 
 	100	=> array(
 		'name'			=> 'exit',
-		'processAction'	=> 'exit',
+//		'processAction'	=> 'exit',
 		'processFuncRef'=> 'TodoyuInstaller::finish',
 		'renderFuncRef'	=> false, //'TodoyuInstallerRenderer::renderUpdateFinished',
 		'nextStepNum'	=> 0,

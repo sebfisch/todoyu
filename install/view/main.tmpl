@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Todoyu Installer</title>		
+	<title>Todoyu Installer - {$title}</title>		
 	<link href="assets/css/todoyu-installer.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="../favicon.ico" />
 	<script language="javascript" type="text/javascript" src="../lib/js/prototype.js"></script>
@@ -21,7 +21,23 @@
 				<span class="rb"></span>
 				<div class="content">
 					<div class="boxContent">
-						{block name="box"}{/block}
+						<h1>
+							<span class="title">Todoyu Installer - {$title}</span>
+							<span class="rgt"></span>
+						</h1>
+						{if $text}<p  class="{$textClass}">{$text}</p>{/if}
+						<form style="padding-left:12px;" method="post">
+							{* ------------ content ---------------------- *}
+							<div class="blockcontent">{block name="box"}{/block}</div>
+							{* ----------- submit: goto next step -------- *}
+							{if $next}
+								<button type="submit">
+									<span class="label">{$buttonLabel}</span>
+									<span class="rgt"></span>
+								</button>
+								<input type="hidden" name="action" value="{$nextStep}">
+							{/if}
+						</form><br />
 					</div>
 				</div>
 				<div id="footer">

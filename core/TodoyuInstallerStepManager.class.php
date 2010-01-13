@@ -77,12 +77,18 @@ class TodoyuInstallerStepManager {
 	}
 
 
+	private static function getNextStepName($stepNum = 0) {
+		$steps	= $GLOBALS['CONFIG']['INSTALLER']['steps'];
+
+		return $steps[$stepNum]['name'];
+	}
 
 	private static function getNextStepNumToAction($action = '') {
 		$steps	= $GLOBALS['CONFIG']['INSTALLER']['steps'];
 
 		foreach($steps as $num => $step) {
-			if ( $step['processAction'] == $action ) {
+//			if ( $step['processAction'] == $action ) {
+			if ( $step['name'] == $action ) {
 				$stepNum	= $step['nextStepNum'];
 			}
 		}
@@ -129,11 +135,12 @@ class TodoyuInstallerStepManager {
 	 */
 	public static function displayStep($error) {
 		$stepNum	= self::getStepNum();
-		$stepName	= self::getStepName($stepNum);
 		$renderFunc	= self::getStepFunc($stepNum, 'render');
 
 		if( method_exists($renderFunc[0], $renderFunc[1]) ) {
-			echo call_user_func($renderFunc, $error);
+			$nextStepName	= self::getNextStepName($stepNum);
+
+			echo call_user_func($renderFunc, $nextStepName, $error);
 		}
 	}
 

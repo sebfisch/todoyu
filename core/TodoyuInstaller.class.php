@@ -47,13 +47,51 @@ class TodoyuInstaller {
 
 
 
+	public static function getPhpVersionStatus() {
+		if( version_compare(PHP_VERSION, '5.2.0', '>=') ) {
+			$versionStatus	= 'OK';
+		} else {
+			$versionStatus	= 'PROBLEM';
+		}
+
+		return $versionStatus;
+	}
+
+
+	public static function getWritableStatuses() {
+		$writableStatus	= array();
+		$next			= true;
+		$writablePaths	= array(
+			'files',
+			'config',
+			'cache/tmpl/compile',
+			'config/db.php',
+			'config/extensions.php',
+			'config/extconf.php'
+		);
+
+		foreach($writablePaths as $path) {
+			$absPath	= PATH . '/' . $path;
+
+			TodoyuFileManager::setDefaultAccessRights($absPath);
+
+			$writableStatus[$path]	= is_writable($absPath);
+
+			if( $writableStatus[$path] === false ) {
+				$next = false;
+			}
+		}
+
+		return array($writableStatus, $next);
+	}
+
 	/**
 	 * Get configuration to required version to version database update scripts
 	 *
 	 * @param	Array	$versionData
 	 * @return	Array
 	 */
-	public static function getRequiredVersionUpdates(array $versionData = array()) {
+	public static function getRequiredVersionUpdates($versionData = array()) {
 		if ( count($versionData) == 0 ) {
 			$versionData	= Todoyu::getVersionData();
 		}

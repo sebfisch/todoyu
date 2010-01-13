@@ -1,30 +1,19 @@
 {extends main.tmpl}
 
 {block name="box"}
-<h1><span class="title">{$title}</span><span class="rgt"></span></h1>
-<div class="blockcontent">
-
 	<div class="{$textclass}">Version {$version.versionnumber} includes the following database updates:
 		<div class="sqlQuery">
 			<ul>
-				{foreach $diffs dbTable columns}
-					<li>
-						<strong>{$dbTable}:</strong>
-						{foreach $columns.columns columnName columnProps}
-							<pre>{$columnProps.query}</pre>
-						{/foreach}					
-					</li>
-				{/foreach}
+			{foreach $diffs dbTable columns}
+				<li>
+					<strong>{$dbTable}:</strong>
+				{foreach $columns.columns columnName columnProps}
+						<pre>{$columnProps.query}</pre>
+				{/foreach}					
+				</li>
+			{/foreach}
 			</ul>
 			{if count($diffs) == 0}Congratulations! your database is up to date.{/if}
 		</div> 
 	</div>
-	<form method="post">
-		<button type="submit">
-			<span class="label">Finish update</span>
-			<span class="rgt"></span>
-		</button>
-		<input type="hidden" name="action" value="finishupdate">
-	</form>
-</div>
 {/block}

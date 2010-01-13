@@ -28,8 +28,6 @@
 
 
 
-
-
 /**
  * Dwoo plugin function for label translation
  *
@@ -377,14 +375,15 @@ function Dwoo_Plugin_cleanHtml_compile(Dwoo_Compiler $compiler, $html) {
  * @param	Integer		$id			HTML id
  * @return	String
  */
-function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '', $title = '') {
+function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '', $title = '', $type = '') {
 	$tmpl	= 'core/view/button.tmpl';
 	$data	= array(
 		'label'		=> $label,
 		'onclick'	=> $onclick,
 		'class'		=> $class,
 		'id'		=> $id,
-		'title'		=> $title
+		'title'		=> $title,
+		'type'		=> $type
 	);
 
 	return render($tmpl, $data);

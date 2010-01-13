@@ -1,9 +1,6 @@
 {extends main.tmpl}
 
 {block name="box"}
-<h1><span class="title">{$title}</span><span class="rgt"></span></h1>
-<div class="blockcontent">
-
 	<div class="{$textclass}">Installation steps:
 		<ul>
 			<li>Checks the server compatibility</li>
@@ -12,13 +9,4 @@
 			<li>Sets a new admin password</li>
 		</ul> 
 	</div>
-	<form method="post">
-		<button type="submit">
-			<span class="label">Check server compatibility</span>
-			<span class="rgt"></span>
-		</button>
-		<input type="hidden" name="action" value="start">
-	</form>
-	
-</div>
 {/block}

@@ -1,10 +1,6 @@
 {extends main.tmpl}
 
 {block name="box"}
-<h1><span class="title">{$title}</span><span class="rgt"></span></h1>
-<div class="blockcontent">
-	<p class="{$textclass}">{$text}</p>
-	<form method="post">
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 	      <tr>
 	        <td width="109">Select a Database</td>
@@ -21,11 +17,4 @@
 	      	<td><input type="text" id="database_new" name="database_new" /></td>
 	      </tr>
 	    </table>
-		<button type="submit">
-			<span class="label">Set Database</span>
-			<span class="rgt"></span>
-		</button>
-		<input type="hidden" name="action" value="dbselect">
-	</form>
-</div>
 {/block}
