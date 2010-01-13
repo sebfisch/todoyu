@@ -76,12 +76,19 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 
 	4 => array(
-		'name'			=> 'importstatic',
-			// Save DB selection, Import static DB data
-		'processFuncRef'=> 'TodoyuInstaller::SaveDbAndimportStaticData',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderImportStatic',
-		'nextStepNum'	=> 5,
+		'name'			=> 'showstaticdata',
+		'processFuncRef'=> 'false',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderPreviewImportStatic',
+		'nextStepNum'	=> 41,
 	),
+
+	41 => array(
+		'name'			=> 'importstaticdata',
+			// No output, processing forwards to next step automaticly
+		'processFuncRef'=> 'TodoyuInstaller::importStaticData',
+		'nextStepNum'	=> 5
+	),
+
 	5 => array(
 		'name'			=> 'config',
 			// Update system config file (/config/system.php)

@@ -47,6 +47,9 @@ class TodoyuInstaller {
 
 
 
+	/**
+	 *
+	 */
 	public static function getPhpVersionStatus() {
 		if( version_compare(PHP_VERSION, '5.2.0', '>=') ) {
 			$versionStatus	= 'OK';
@@ -58,6 +61,10 @@ class TodoyuInstaller {
 	}
 
 
+
+	/**
+	 *
+	 */
 	public static function getWritableStatuses() {
 		$writableStatus	= array();
 		$next			= true;
@@ -126,6 +133,10 @@ class TodoyuInstaller {
 
 
 
+	/**
+	 *
+	 *	@param unknown_type $data
+	 */
 	public static function checkDbConnection($data) {
 		if (	array_key_exists('server', $data)
 			&&	array_key_exists('username', $data)
@@ -144,6 +155,10 @@ class TodoyuInstaller {
 
 
 
+	/**
+	 *
+	 *	@param unknown_type $data
+	 */
 	public static function saveDbSelect($data) {
 		$error	= self::dbSelect($data);
 
@@ -157,7 +172,17 @@ class TodoyuInstaller {
 	}
 
 
+	public static function importStaticData($data) {
+		TodoyuInstallerDbHelper::importStaticData();
 
+		TodoyuInstallerStepManager::jumpToNextStep();
+	}
+
+
+	/**
+	 *
+	 *	@param unknown_type $data
+	 */
 	public static function dbSelect($data) {
 		try {
 			TodoyuInstallerDbHelper::addDatabase();
@@ -171,6 +196,10 @@ class TodoyuInstaller {
 
 
 
+	/**
+	 *
+	 *	@param unknown_type $data
+	 */
 	public static function tryUpdateConfig($data) {
 		try {
 			TodoyuInstaller::updateConfig($data);
@@ -183,6 +212,10 @@ class TodoyuInstaller {
 
 
 
+	/**
+	 *
+	 *	@param unknown_type $data
+	 */
 	public static function setAdminPassword($data) {
 		try {
 			TodoyuInstallerDbHelper::updateAdminPassword($data['password'], $data['password_confirm']);
@@ -285,7 +318,6 @@ class TodoyuInstaller {
 
 	/**
 	 * Update the database from beta1 to beta2
-	 *
 	 */
 	private static function updateBeta1ToBeta2() {
 		$updateFile	= 'install/config/db/update_beta1_to_beta2.sql';
@@ -297,7 +329,6 @@ class TodoyuInstaller {
 
 	/**
 	 * Update the database from beta2 to beta3
-	 *
 	 */
 	private static function updateBeta2ToBeta3() {
 		$updateFile	= 'install/config/db/update_beta2_to_beta3.sql';

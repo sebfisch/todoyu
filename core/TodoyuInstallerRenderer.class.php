@@ -188,7 +188,7 @@ class TodoyuInstallerRenderer {
 	 * @param	String	$error
 	 * @return	String
 	 */
-	public static function renderImportStatic($nextStep, $error = '') {
+	public static function renderPreviewImportStatic($nextStep, $error = '') {
 		$data	= array(
 			'title'			=> 'Import static data',
 			'text'			=> 'DB connection is stored, import static data now.',
