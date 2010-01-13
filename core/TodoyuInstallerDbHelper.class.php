@@ -59,7 +59,7 @@ class TodoyuInstallerDbHelper {
 		$data	= array(
 			'db'	=> $_SESSION['todoyuinstaller']['db']
 		);
-		$tmpl	= 'install/view/db.php.tmpl';
+		$tmpl	= 'install/view/configs/db.php.tmpl';
 
 		$config	= render($tmpl, $data);
 		$code	= '<?php' . $config . '?>';

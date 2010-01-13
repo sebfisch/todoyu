@@ -209,7 +209,7 @@ class TodoyuInstaller {
 			'config'		=> $data,
 			'encryptionKey'	=> TodoyuInstaller::makeEncryptionKey()
 		);
-		$tmpl	= 'install/view/system.php.tmpl';
+		$tmpl	= 'install/view/configs/system.php.tmpl';
 
 		$config	= render($tmpl, $data);
 		$code	= '<?php' . $config . '?>';

@@ -40,19 +40,20 @@ TodoyuInstaller = {
 	},
 
 
+
 	/**
 	 * Ensure password and it's repetition are identical
 	 */
 	validatePasswordRepetition: function() {
-		var areIdentic	= ( $F('password') == $F('repeatpassword') );
+		var areIdentic	= ( $F('password') == $F('password_confirm') );
 
 		if ( areIdentic ) {
 			$('passwordLabel').removeClassName('redLabel');
-			$('repeatPasswordLabel').removeClassName('redLabel');
+			$('passwordConfirmLabel').removeClassName('redLabel');
 			$('submit').show();
 		} else {
 			$('passwordLabel').addClassName('redLabel');
-			$('repeatPasswordLabel').addClassName('redLabel');
+			$('passwordConfirmLabel').addClassName('redLabel');
 			$('submit').hide();
 		}
 	},

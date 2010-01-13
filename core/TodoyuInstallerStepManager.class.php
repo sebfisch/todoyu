@@ -32,7 +32,7 @@ class TodoyuInstallerStepManager {
 	 *
 	 * @return	Integer
 	 */
-	public static function getStepNum() {
+	public static function getCurrentStepNum() {
 		$step	= intval($_SESSION['todoyuinstaller']['step']);
 
 			// Initial step? Check whether installation has been carried out before -> proceed with update
@@ -48,7 +48,7 @@ class TodoyuInstallerStepManager {
 
 
 	public static function getCurrentStepName() {
-		$stepNum	= self::getStepNum();
+		$stepNum	= self::getCurrentStepNum();
 
 		return	self::getStepName($stepNum);
 	}
@@ -66,7 +66,21 @@ class TodoyuInstallerStepManager {
 
 
 
-	private static function setStepNumFromAction($action = '') {
+	/**
+	 * Reinit step num
+	 */
+	public static function reinitStepNum() {
+		self::setStepNum(0);
+	}
+
+
+
+	/**
+	 * Set step num via given step's name
+	 *
+	 * @param	String	$action
+	 */
+	private static function setStepNumFromName($action = '') {
 		$stepNum	= self::getStepNumFromName($action);
 
 		if ( $stepNum !== false ) {
@@ -76,22 +90,13 @@ class TodoyuInstallerStepManager {
 
 
 
-	private static function setNextStepNumFromAction($action = '') {
-		$nextStepNum	= self::getNextStepNumFromName($action);
-
-		if ( $nextStepNum !== false ) {
-			self::setStepNum($nextStepNum);
-		}
-	}
-
-
-
-	/**
-	 * Reinit step num
-	 */
-	public static function reinitStepNum() {
-		self::setStepNum(0);
-	}
+//	private static function setNextStepNumFromName($action = '') {
+//		$nextStepNum	= self::getNextStepNumFromName($action);
+//
+//		if ( $nextStepNum !== false ) {
+//			self::setStepNum($nextStepNum);
+//		}
+//	}
 
 
 
@@ -110,6 +115,12 @@ class TodoyuInstallerStepManager {
 
 
 
+	/**
+	 * Get name of next step
+	 *
+	 * @param	Integer	$stepNum
+	 * @return	String
+	 */
 	private static function getNextStepName($stepNum = 0) {
 		$steps		= $GLOBALS['CONFIG']['INSTALLER']['steps'];
 		$nextStepNum= $steps[$stepNum]['nextStepNum'];
@@ -119,6 +130,11 @@ class TodoyuInstallerStepManager {
 
 
 
+	/**
+	 * Get num of current step via current step's name
+	 *
+	 * @param unknown_type $action
+	 */
 	private static function getStepNumFromName($action = '') {
 		$steps	= $GLOBALS['CONFIG']['INSTALLER']['steps'];
 
@@ -133,6 +149,12 @@ class TodoyuInstallerStepManager {
 
 
 
+	/**
+	 * Get num of next step via current step's name
+	 *
+	 * @param	String	$action
+	 * @return	Integer
+	 */
 	private static function getNextStepNumFromName($action = '') {
 		$steps	= $GLOBALS['CONFIG']['INSTALLER']['steps'];
 
@@ -148,11 +170,11 @@ class TodoyuInstallerStepManager {
 
 
 	/**
-	 * Get render function reference of current step
+	 * Get render or processing function reference of current step
 	 *
-	 *	@param	Integer	$stepnum
-	 *	@param	String	$type
-	 *  @return	Array
+	 * @param	Integer	$stepnum
+	 * @param	String	$type
+	 * @return	Array
 	 */
 	public static function getStepFunc($stepNum, $type = 'render') {
 		$stepNum= intval($stepNum);
@@ -166,17 +188,16 @@ class TodoyuInstallerStepManager {
 	/**
 	 * Process current step data (order of evocation is: process, display)
 	 *
-	 *	@todo	change hardcoded steps into variably configurable ones
-	 *	@param	Array		$data
-	 *	@return	String
+	 * @param	Array		$data
+	 * @return	String
 	 */
 	public static function processStep($data) {
 		$action	= $data['action'];
 
 			// Set next step num from current action
-		self::setStepNumFromAction($action);
+		self::setStepNumFromName($action);
 
-		$stepNum		= self::getStepNum();
+		$stepNum		= self::getCurrentStepNum();
 		$processFunc	= self::getStepFunc($stepNum, 'process');
 
 		if ($processFunc !== false ) {
@@ -193,10 +214,10 @@ class TodoyuInstallerStepManager {
 	/**
 	 * Display output for current step (order of evocation is: process, display)
 	 *
-	 *	@param	String	$error
+	 * @param	String	$error
 	 */
 	public static function displayStep($error) {
-		$stepNum	= self::getStepNum();
+		$stepNum	= self::getCurrentStepNum();
 		$renderFunc	= self::getStepFunc($stepNum, 'render');
 
 		if( method_exists($renderFunc[0], $renderFunc[1]) ) {
@@ -206,16 +227,18 @@ class TodoyuInstallerStepManager {
 		}
 	}
 
+
+
 	/**
 	 * Jump to next step
 	 */
 	public static function jumpToNextStep()	{
 		$steps		= $GLOBALS['CONFIG']['INSTALLER']['steps'];
 
-		$curStep	=	self::getStepNum();
-		$nextStep	=	$steps[$curStep]['nextStepNum'];
+		$curStep	=	self::getCurrentStepNum();
+		$nextStepNum=	$steps[$curStep]['nextStepNum'];
 
-		self::setStepNum($nextStep);
+		self::setStepNum($nextStepNum);
 
 		TodoyuInstaller::reload();
 	}
