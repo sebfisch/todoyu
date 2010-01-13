@@ -986,6 +986,14 @@ class TodoyuDiv {
 	}
 
 
+	public static function appendToFilename($filename, $append) {
+		$pathinfo	= pathinfo($filename);
+		$dir		= $pathinfo['dirname'] == '.' ? '' : $pathinfo['dirname'] . '/';
+
+		return $dir . $pathinfo['filename'] . $append . '.' . $pathinfo['extension'];
+	}
+
+
 
 	/**
 	 * Convert an HTML snippet into plain text. Keep as much format information as possible
