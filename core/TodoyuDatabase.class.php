@@ -1091,21 +1091,14 @@ class TodoyuDatabase {
 	 * @return	Array
 	 */
 	public function getTables() {
-		$resource	= mysql_list_tables($this->config['database'], $this->link);
+		$dbName	= $this->config['database'];
 
-		try {
-			if( $this->hasErrorState() ) {
-				throw new TodoyuDbException($this->getError(), $this->getErrorNo(), "mysql_list_tables({$this->config['database']})");
-			}
-		} catch( TodoyuDbException $e ) {
-			TodoyuErrorHandler::handleTodoyuDbException($e);
-		}
+		$query	= 'SHOW TABLES FROM ' . $dbName;
+		$result	= $this->query($query);
 
-		$tables = array();
+		$rows	= $this->resourceToArray($result);
 
-		while( $row = $this->fetchRow($resource) ) {
-			$tables[] = $row[0];
-		}
+		$tables	= TodoyuArray::getColumn($rows, 'Tables_in_' . $dbName);
 
 		return $tables;
 	}

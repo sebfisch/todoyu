@@ -536,6 +536,31 @@ class TodoyuSqlParser {
 		return trim($query);
 	}
 
+
+
+	/**
+	 * Extract queries from a file. Get a list of the single queries
+	 *
+	 * @param	String		$file
+	 * @return	Array		List of queries in file
+	 */
+	public static function getQueriesFromFile($file) {
+		$file	= TodoyuFileManager::pathAbsolute($file);
+		$content= file_get_contents($file);
+		$query	= self::cleanSql($content);
+		$query	= str_replace("\n", ' ', $query);
+
+		$queries= explode(';', $query);
+
+		foreach($queries as $index => $query) {
+			if( trim($query) === '' ) {
+				unset($queries[$index]);
+			}
+		}
+
+		return $queries;
+	}
+
 }
 
 ?>

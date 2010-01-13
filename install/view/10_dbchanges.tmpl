@@ -1,7 +1,7 @@
 {extends main.tmpl}
 
 {block name="box"}
-	<div class="{$textclass}">Version {$version.versionnumber} includes the following database updates:
+	<div class="{$textclass}">Version {constant(TODOYU_VERSION)} includes the following database updates:
 		<div class="sqlQuery">
 			<ul>
 			{foreach $diffs dbTable columns}
@@ -9,11 +9,11 @@
 					<strong>{$dbTable}:</strong>
 				{foreach $columns.columns columnName columnProps}
 						<pre>{$columnProps.query}</pre>
-				{/foreach}					
+				{/foreach}
 				</li>
 			{/foreach}
 			</ul>
 			{if count($diffs) == 0}Congratulations! your database is up to date.{/if}
-		</div> 
+		</div>
 	</div>
 {/block}

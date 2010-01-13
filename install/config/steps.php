@@ -103,9 +103,9 @@ $CONFIG['INSTALLER']['steps'] = array(
 		'nextStepNum'	=> 9,
 	),
 	9 => array(
-		'name'			=> 'updatebeta1tobeta2',
+		'name'			=> 'updatetocurrentversion',
 			// Update beta1 to beta2, have mandatory updates be carried out
-		'processFuncRef'=> 'TodoyuInstaller::updatebeta1tobeta2',
+		'processFuncRef'=> 'TodoyuInstaller::updateToCurrentVersion',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
 		'nextStepNum'	=> 10,
 	),

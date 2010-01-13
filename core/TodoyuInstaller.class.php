@@ -85,29 +85,32 @@ class TodoyuInstaller {
 		return array($writableStatus, $next);
 	}
 
+
+
 	/**
-	 * Get configuration to required version to version database update scripts
+	 * Get files which will be executed on an update
 	 *
-	 * @param	Array	$versionData
-	 * @return	Array
+	 * @return Array
 	 */
-	public static function getRequiredVersionUpdates($versionData = array()) {
-		if ( count($versionData) == 0 ) {
-			$versionData	= Todoyu::getVersionData();
+	public static function getRequiredVersionUpdates() {
+		$dbVersion	= self::getDBVersion();
+		$updates	= array();
+
+		switch($dbVersion) {
+			case 'beta1':
+				$updates[] = array(
+					'title'	=> 'Updates from beta1 to beta2',
+					'file'	=> 'install/config/db/update_beta1_to_beta2.sql'
+				);
+
+			case 'beta2':
+				$updates[] = array(
+					'title'	=> 'Updates from beta2 to beta3',
+					'file'	=> 'install/config/db/update_beta2_to_beta3.sql'
+				);
 		}
 
-		$updatesConf	= array(
-			array(
-				'title'	=> 'Updates from beta1 to beta2',
-				'file'	=> '../config/db/update_beta1_to_beta2.sql'
-			),
-			array(
-				'title'	=> 'Updates from beta2 to beta3',
-				'file'	=> '../config/db/update_beta2_to_beta3.sql'
-			)
-		);
-
-		return $updatesConf;
+		return $updates;
 	}
 
 
@@ -117,8 +120,8 @@ class TodoyuInstaller {
 	 *
 	 * 	@return	Boolean
 	 */
-	public static function hasBeenInstalledBefore() {
-		return ( $GLOBALS['CONFIG']['DB']['autoconnect'] === true );
+	public static function isDatabaseConfigured() {
+		return $GLOBALS['CONFIG']['DB']['autoconnect'] === true;
 	}
 
 	public static function checkDbConnection($data) {
@@ -256,8 +259,90 @@ class TodoyuInstaller {
 
 
 
-	public static function updatebeta1tobeta2($data) {
-		include( PATH . '/install/config/db/update_beta1_to_beta2.php');
+	/**
+	 * Execute sql files to update the database to the current version
+	 *
+	 * @param	Array		$data
+	 */
+	public static function updateToCurrentVersion(array $data) {
+		$dbVersion	= self::getDBVersion();
+
+		switch($dbVersion) {
+			case 'beta1':
+				self::updateBeta1ToBeta2();
+
+			case 'beta2':
+				self::updateBeta2ToBeta3();
+		}
+	}
+
+
+
+	/**
+	 * Update the database from beta1 to beta2
+	 *
+	 */
+	private static function updateBeta1ToBeta2() {
+		$updateFile	= 'install/config/db/update_beta1_to_beta2.sql';
+
+		$numQueries	= self::executeQueriesFromFile($updateFile);
+	}
+
+
+
+	/**
+	 * Update the database from beta2 to beta3
+	 *
+	 */
+	private static function updateBeta2ToBeta3() {
+		$updateFile	= 'install/config/db/update_beta2_to_beta3.sql';
+
+		$numQueries	= self::executeQueriesFromFile($updateFile);
+	}
+
+
+
+	/**
+	 * Execute the queries in the version update file
+	 *
+	 * @param	String		$updateFile			Path to update file
+	 * @return	Integer		Number of executed queries
+	 */
+	private static function executeQueriesFromFile($updateFile) {
+		$updateFile	= TodoyuFileManager::pathAbsolute($updateFile);
+		$queries	= TodoyuSqlParser::getQueriesFromFile($updateFile);
+		$count		= 0;
+
+		foreach($queries as $query) {
+			$query	= trim($query);
+			if( $query !== '' ) {
+				Todoyu::db()->query($query);
+				$count++;
+			}
+		}
+
+		return $count;
+	}
+
+
+
+	/**
+	 * Get current version of the database
+	 *
+	 * @return	String
+	 */
+	public static function getDBVersion() {
+		$tables	= Todoyu::db()->getTables();
+
+		if( in_array('ext_portal_tab', $tables) ) {
+			return 'beta1';
+		}
+
+		if( in_array('ext_user_customerrole', $tables) ) {
+			return 'beta2';
+		}
+
+		return 'beta3';
 	}
 
 
