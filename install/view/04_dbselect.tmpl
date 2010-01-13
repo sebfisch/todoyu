@@ -2,19 +2,19 @@
 
 {block name="box"}
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
-	      <tr>
-	        <td width="109">Select a Database</td>
-	        <td width="379">
-	        	<select name="database" type="text" id="database" value="{$fields.server}" onchange="TodoyuInstaller.disableTextBox(this);" >
-	        		{foreach $options key option}
-	        			<option value="{$key}">{$option}</option>
-	        		{/foreach}
-	        	</select>	 
-	       	</td>
-	      </tr>
-	      <tr>
-	      	<td>or create new:</td>
-	      	<td><input type="text" id="database_new" name="database_new" /></td>
-	      </tr>
-	    </table>
+			<tr>
+				<td width="109">Select a Database</td>
+				<td width="379">
+					<select name="database" type="text" id="database" value="{$fields.server}" onchange="TodoyuInstaller.disableTextBox(this);" >
+			{foreach $options key option}
+						<option value="{$key}">{$option}</option>
+			{/foreach}
+					</select>	 
+				</td>
+			</tr>
+			<tr>
+				<td>or create new:</td>
+				<td><input type="text" id="database_new" name="database_new" /></td>
+			</tr>
+		</table>
 {/block}

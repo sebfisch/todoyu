@@ -35,7 +35,7 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderWelcome($nextStep, $error = '') {
 		$data	= array(
-			'title'			=> 'Welcome to the Todoyu installer',
+			'title'			=> 'Welcome',
 			'textclass'		=> 'text textInfo',
 			'buttonLabel'	=> 'Check server compatibility',
 			'next'			=> true,
@@ -60,7 +60,7 @@ class TodoyuInstallerRenderer {
 		$next			= 	$versionStatus == 'OK' ? true : false;
 
 		list($writableStatuses, $writablePathsOk)	= TodoyuInstaller::getWritableStatuses();
-		$next	= ( $writablePathsOK	== true ) ? $next : false;
+		$next	= ( $writablePathsOk	== true ) ? $next : false;
 
 		$data	= array(
 			'title'				=> 'Server check',
@@ -70,6 +70,7 @@ class TodoyuInstallerRenderer {
 			'next'				=> $next,
 			'buttonLabel'		=> 'Configure database',
 			'nextStep'			=> $nextStep,
+			'version'			=> Todoyu::getVersionData()
 		);
 		$tmpl	= 'install/view/02_servercheck.tmpl';
 
@@ -77,40 +78,51 @@ class TodoyuInstallerRenderer {
 	}
 
 
-
 	/**
-	 * Render database connection screen
+	 * Render DB connection: this step contains also connection store and test, repeats itself on failure
 	 *
-	 * @param	String	$error
-	 * @return	String
+	 * @param String	$nextStep
+	 * @param String	$error
 	 */
-	public static function renderDbConnection($nextStep, $error = '') {
+	public static function renderDbConnection($nextStep, $error) {
 		$dbData	= $_SESSION['todoyuinstaller']['db'];
+		$currentStepName	= TodoyuInstallerStepManager::getCurrentStepName();
 
 		$data	= array(
 			'title'			=> 'Setup Database Server Connection',
 			'fields'		=> $dbData,
 			'next'			=> true,
-			'buttonLabel'	=>'Save connection data',
-			'nextStep'		=> $nextStep,
-			'version'		=> self::getVersionData()
+			'buttonLabel'	=> 'Test connection',
+			'nextStep'		=> $currentStepName,
+			'version'		=> Todoyu::getVersionData()
 		);
 
-		if( is_array($dbData) ) {
+			// Received connection data, test-connect
+		if( is_array($dbData) && array_key_exists('server', $data) ) {
+			$connectionOk	= true;
 			try {
 				TodoyuDbAnalyzer::checkDbConnection($dbData);
 			} catch(Exception $e) {
-				$data['textclass']	= 'text textError';
+					// Connecting failed
+				$data['textClass']	= 'text textError';
 				$data['text']		= 'Error: ' . $e->getMessage();
-			}
-		}
 
-		$tmpl	= 'install/view/03_dbconnection.tmpl';
+				$connectionOk	= false;
+			}
+
+			if ( $connectionOk ) {
+				$data['buttonLabel']= 'Save connection data';
+			} else {
+				$data['hasError']	= 1;
+				$data['buttonLabel']= 'Check connection data';
+				$data['nextStep']	= $currentStepName;
+			}
+
+		}
+		$tmpl	= 'install/view/03b_dbconnectioncheck.tmpl';
 
 		return render($tmpl, $data);
 	}
-
-
 
 	/**
 	 * Render DB select screen

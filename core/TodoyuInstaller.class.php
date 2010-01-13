@@ -124,11 +124,13 @@ class TodoyuInstaller {
 
 
 	public static function checkDbConnection($data) {
-		$_SESSION['todoyuinstaller']['db'] = $data;
-		try {
-			TodoyuDbAnalyzer::checkDbConnection($data);
-		} catch(Exception $e) {
-			$error = $e->getMessage();
+		if ( array_key_exists('server', $data) && array_key_exists('username', $data) && array_key_exists('password', $data) ) {
+			$_SESSION['todoyuinstaller']['db'] = $data;
+			try {
+				TodoyuDbAnalyzer::checkDbConnection($data);
+			} catch(Exception $e) {
+				$error = $e->getMessage();
+			}
 		}
 
 		return $error;

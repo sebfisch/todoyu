@@ -28,6 +28,34 @@
 class TodoyuInstallerStepManager {
 
 	/**
+	 * Get current step num
+	 *
+	 * @return	Integer
+	 */
+	public static function getStepNum() {
+		$step	= intval($_SESSION['todoyuinstaller']['step']);
+
+			// Initial step? Check whether installation has been carried out before -> proceed with update
+		if ( $step == 0 ) {
+			if ( TodoyuInstaller::hasBeenInstalledBefore() ) {
+				$step	= 8;	// 'welcometoupdate'
+			}
+		}
+
+		return $step;
+	}
+
+
+
+	public static function getCurrentStepName() {
+		$stepNum	= self::getStepNum();
+
+		return	self::getStepName($stepNum);
+	}
+
+
+
+	/**
 	 * Set current step
 	 *
 	 * @param	Integer		$step
@@ -38,11 +66,21 @@ class TodoyuInstallerStepManager {
 
 
 
-	private static function setNextStepNumFromAction($action = '') {
-		$stepNum	= self::getNextStepNumToAction($action);
+	private static function setStepNumFromAction($action = '') {
+		$stepNum	= self::getStepNumFromName($action);
 
 		if ( $stepNum !== false ) {
 			self::setStepNum($stepNum);
+		}
+	}
+
+
+
+	private static function setNextStepNumFromAction($action = '') {
+		$nextStepNum	= self::getNextStepNumFromName($action);
+
+		if ( $nextStepNum !== false ) {
+			self::setStepNum($nextStepNum);
 		}
 	}
 
@@ -53,47 +91,6 @@ class TodoyuInstallerStepManager {
 	 */
 	public static function reinitStepNum() {
 		self::setStepNum(0);
-	}
-
-
-
-	/**
-	 * Get current step
-	 *
-	 * @return	Integer
-	 */
-	public static function getStepNum() {
-		$step	= intval($_SESSION['todoyuinstaller']['step']);
-
-			// Initial step?
-		if ($step == 0) {
-				// Check whether installation has been carried out before
-			if ( TodoyuInstaller::hasBeenInstalledBefore() ) {
-				$step	= 8;	// 'welcometoupdate'
-			}
-		}
-
-		return $step;
-	}
-
-
-	private static function getNextStepName($stepNum = 0) {
-		$steps	= $GLOBALS['CONFIG']['INSTALLER']['steps'];
-
-		return $steps[$stepNum]['name'];
-	}
-
-	private static function getNextStepNumToAction($action = '') {
-		$steps	= $GLOBALS['CONFIG']['INSTALLER']['steps'];
-
-		foreach($steps as $num => $step) {
-//			if ( $step['processAction'] == $action ) {
-			if ( $step['name'] == $action ) {
-				$stepNum	= $step['nextStepNum'];
-			}
-		}
-
-		return $stepNum;
 	}
 
 
@@ -113,6 +110,43 @@ class TodoyuInstallerStepManager {
 
 
 
+	private static function getNextStepName($stepNum = 0) {
+		$steps		= $GLOBALS['CONFIG']['INSTALLER']['steps'];
+		$nextStepNum= $steps[$stepNum]['nextStepNum'];
+
+		return $steps[$nextStepNum]['name'];
+	}
+
+
+
+	private static function getStepNumFromName($action = '') {
+		$steps	= $GLOBALS['CONFIG']['INSTALLER']['steps'];
+
+		foreach($steps as $num => $step) {
+			if ( $step['name'] == $action ) {
+				$stepNum	= $num;
+			}
+		}
+
+		return $stepNum;
+	}
+
+
+
+	private static function getNextStepNumFromName($action = '') {
+		$steps	= $GLOBALS['CONFIG']['INSTALLER']['steps'];
+
+		foreach($steps as $num => $step) {
+			if ( $step['name'] == $action ) {
+				$stepNum	= $step['nextStepNum'];
+			}
+		}
+
+		return $stepNum;
+	}
+
+
+
 	/**
 	 * Get render function reference of current step
 	 *
@@ -126,6 +160,34 @@ class TodoyuInstallerStepManager {
 
 		return explode('::', $step[$type . 'FuncRef']);
 	}
+
+
+
+	/**
+	 * Process current step data (order of evocation is: process, display)
+	 *
+	 *	@todo	change hardcoded steps into variably configurable ones
+	 *	@param	Array		$data
+	 *	@return	String
+	 */
+	public static function processStep($data) {
+		$action	= $data['action'];
+
+			// Set next step num from current action
+		self::setStepNumFromAction($action);
+
+		$stepNum		= self::getStepNum();
+		$processFunc	= self::getStepFunc($stepNum, 'process');
+
+		if ($processFunc !== false ) {
+			if( method_exists($processFunc[0], $processFunc[1]) ) {
+				$error	= call_user_func($processFunc, $data);
+			}
+		}
+
+		return $error;
+	}
+
 
 
 	/**
@@ -142,33 +204,6 @@ class TodoyuInstallerStepManager {
 
 			echo call_user_func($renderFunc, $nextStepName, $error);
 		}
-	}
-
-
-
-	/**
-	 * Process current step data (order of evocation is: process, display)
-	 *
-	 *	@todo	change hardcoded steps into variably configurable ones
-	 *	@param	Array		$data
-	 *	@return	String
-	 */
-	public static function processStep($data) {
-		$action	= $data['action'];
-
-			// Set next step num from current action
-		self::setNextStepNumFromAction($action);
-
-		$stepNum		= self::getStepNum();
-		$processFunc	= self::getStepFunc($stepNum, 'process');
-
-		if ($processFunc !== false ) {
-			if( method_exists($processFunc[0], $processFunc[1]) ) {
-				$error	= call_user_func($processFunc, $data);
-			}
-		}
-
-		return $error;
 	}
 
 }

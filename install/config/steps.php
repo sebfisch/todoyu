@@ -27,40 +27,38 @@
  */
 
 $CONFIG['INSTALLER']['steps'] = array(
+		// ------------- Installer steps -------------
 	0 => array(
 		'name'			=> 'welcome',
-//		'processAction'	=> 'start',
 		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcome',
 		'nextStepNum'	=> 1,
 	),
 	1 => array(
 		'name'			=> 'servercheck',
-//		'processAction'	=> 'servercheck',
 			// Check server
-		'processFuncRef'=> false,
+		'processFuncRef'=> 'false',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderServercheck',
 		'nextStepNum'	=> 2,
 	),
 	2 => array(
 		'name'			=> 'dbconnection',
-//		'processAction'	=> 'dbconnection',
-			// Check DB connection
+			// Configure DB connection and check, store to session if available
 		'processFuncRef'=> 'TodoyuInstaller::checkDbConnection',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnection',
+			// If check failed: this step repeats itself
 		'nextStepNum'	=> 3,
 	),
+
 	3 => array(
 		'name'			=> 'dbselect',
-//		'processAction'	=> 'dbselect',
-			// Add DB, save DB config
+			// Save DB connection data.	Select DB
 		'processFuncRef'=> 'TodoyuInstaller::dbSelect',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbSelect',
 		'nextStepNum'	=> 4,
 	),
 	4 => array(
 		'name'			=> 'importstatic',
-//		'processAction'	=> 'importstatic',
 			// Import static DB data
 		'processFuncRef'=> 'TodoyuInstallerDbHelper::importStaticData',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderImportStatic',
@@ -68,7 +66,6 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	5 => array(
 		'name'			=> 'config',
-//		'processAction'	=> 'config',
 			// Update system config file (/config/system.php)
 		'processFuncRef'=> 'TodoyuInstaller::tryUpdateConfig',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderConfig',
@@ -76,7 +73,6 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	6 => array(
 		'name'			=> 'setadminpassword',
-//		'processAction'	=> 'setadminpassword',
 			// Validate password, store admin user and password in DB (table 'ext_user_user')
 		'processFuncRef'=> 'TodoyuInstaller::setAdminPassword',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderAdminPassword',
@@ -84,17 +80,15 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	7 => array(
 		'name'			=> 'finish',
-//		'processAction'	=> 'finish',
 			// Finish installer: deactivate, reinit step, go to todoyu login page
 		'processFuncRef'=> false, //'TodoyuInstaller::finish',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderFinish',
 		'nextStepNum'	=> 100,
 	),
 
-		// Update steps
+		// ------------- Update steps -------------
 	8 => array(
 		'name'			=> 'welcometoupdate',
-//		'processAction'	=> 'welcometoupdate',
 			// Welcome to version updates screen
 		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcomeToUpdate',
@@ -102,7 +96,6 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	9 => array(
 		'name'			=> 'updatebeta1tobeta2',
-//		'processAction'	=> 'updatebeta1tobeta2',
 			// Update beta1 to beta2, have mandatory updates be carried out
 		'processFuncRef'=> 'TodoyuInstaller::updatebeta1tobeta2',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
@@ -110,7 +103,6 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	10 => array(
 		'name'			=> 'dbstructurecheck',
-//		'processAction'	=> 'dbstructurecheck',
 		'processFuncRef'	=> '',
 			// Check for changes in 'tables.sql' files against DB
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
@@ -118,7 +110,6 @@ $CONFIG['INSTALLER']['steps'] = array(
 	),
 	11 => array(
 		'name'			=> 'finishupdate',
-//		'processAction'	=> 'finishupdate',
 		'processFuncRef'=> 'TodoyuInstaller::finishUpdate',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderUpdateFinished',
 		'nextStepNum'	=> 7,
@@ -126,7 +117,6 @@ $CONFIG['INSTALLER']['steps'] = array(
 
 	100	=> array(
 		'name'			=> 'exit',
-//		'processAction'	=> 'exit',
 		'processFuncRef'=> 'TodoyuInstaller::finish',
 		'renderFuncRef'	=> false, //'TodoyuInstallerRenderer::renderUpdateFinished',
 		'nextStepNum'	=> 0,
