@@ -12,7 +12,7 @@
 			<td valign="top">Folders / files writable</td>
 	{foreach $writable file status iteration}
 		{if $.foreach.iteration.first}
-			 <td>&bull; /{$file}: </td>
+			<td><strong class="bullet">&bull;</strong>/{$file}: </td>
 			<td><strong>{if $status}writable{else}NOT WRITABLE{/if}</strong></td>
 			<td>{if $status == 'OK'}
 				<span class="servercheckicon ok"></span>{else}
@@ -23,7 +23,7 @@
 		{else}
 		<tr>
 			<td></td>
-			<td>&bull; /{$file}:</td>
+			<td><strong class="bullet">&bull;</strong>/{$file}:</td>
 			<td><strong>{if $status}writable{else}NOT WRITABLE{/if}</strong></td>
 			<td>{if $status == 'OK'}<span class="servercheckicon ok"></span>{else}<span class="servercheckicon problem"></span>{/if}</td>
 		</tr>

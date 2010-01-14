@@ -3,17 +3,7 @@
 {block name="box"}
 	<div class="{$textclass}">Update steps:
 		<ul>
-			<li>General update: Changes to DB structures since your currently installed version ({constant(TODOYU_VERSION)})
-				(<a id="toggler" href="javascript:void(0)" class="toggler" onclick="TodoyuInstaller.toggle('toggler', 'sqlUpdateQueries')">View SQL</a>)<br />
-				<div id="sqlUpdateQueries" style="display:none">
-					{foreach $sqlUpdates sqlUpdate}
-						<br />{$sqlUpdate.title}:
-						<div class="sqlQuery">
-							<pre>{include file=$sqlUpdate.file}</pre>
-						</div>
-					{/foreach}
-				</div>
-			</li>
+			<li>General update: Changes to DB structures since your currently installed version ({constant(TODOYU_VERSION)})</li>
 			<li>DB-Analyzer: Check for extensions' newly added DB tables and columns</li>
 		</ul>
 	</div>

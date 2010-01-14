@@ -97,8 +97,8 @@ CREATE TABLE `static_territory` (
 
 CREATE TABLE `static_language` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `iso_alpha2` char(2) CHARACTER SET utf8 NOT NULL,
-  `iso_alpha3` char(3) CHARACTER SET utf8 NOT NULL,
+  `iso_alpha2` char(2) unsigned NOT NULL,
+  `iso_alpha3` char(3) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `alpha2` (`iso_alpha2`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

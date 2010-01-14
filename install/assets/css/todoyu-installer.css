@@ -15,7 +15,6 @@ body {
 	width:973px !important;
 	background-color:#e3eace;
 	margin:0 auto;
-
 }
 
 #contentBox {
@@ -44,10 +43,25 @@ body {
 			background-position:0 0;
 		}
 
-		.content span.lt, #contentBox span.lt {top:0;left:0;}
-		.content span.rt, #contentBox span.rt {top:0;right:0;background-position:100% 0;}
-		.content span.lb, #contentBox span.lb {bottom:0;left:0;background-position:0 100%;}
-		.content span.rb, #contentBox span.rb {bottom:0;right:0;background-position:100% 100%;}
+		.content span.lt, #contentBox span.lt {
+			top:0;
+			left:0;
+		}
+		.content span.rt, #contentBox span.rt {
+			top:0;
+			right:0;
+			background-position:100% 0;
+		}
+		.content span.lb, #contentBox span.lb {
+			bottom:0;
+			left:0;
+			background-position:0 100%;
+		}
+		.content span.rb, #contentBox span.rb {
+			bottom:0;
+			right:0;
+			background-position:100% 100%;
+		}
 
 .content {
 	margin:8px;
@@ -81,6 +95,11 @@ body {
 .textSuccess{
 	border-color:#048e01;
 	background-color:#96f384;
+}
+
+.bullet {
+	font-size:16px;
+	padding-right:8px;
 }
 
 #licence,
