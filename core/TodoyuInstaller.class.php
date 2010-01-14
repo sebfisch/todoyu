@@ -216,16 +216,24 @@ class TodoyuInstaller {
 	 *
 	 *	@param unknown_type $data
 	 */
-	public static function setAdminPassword($data) {
+	public static function saveAdminPassword($data) {
+		$ok	= true;
+
 		try {
 			TodoyuInstallerDbHelper::updateAdminPassword($data['password'], $data['password_confirm']);
 		} catch(Exception $e)	{
 			$error = $e->getMessage();
+
+			$ok	= false;
+			TodoyuInstaller::reload();
+		}
+
+		if ($ok) {
+			TodoyuInstallerStepManager::jumpToNextStep();
 		}
 
 		return $error;
 	}
-
 
 
 	/**

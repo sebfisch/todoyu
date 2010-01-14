@@ -57,8 +57,9 @@ TodoyuInstaller = {
 	 */
 	validatePasswordRepetition: function() {
 		var areIdentic	= ( $F('password') == $F('password_confirm') );
+		var longEnough	= $F('password').length >= 5;
 
-		if ( areIdentic ) {
+		if ( areIdentic && longEnough ) {
 			$('passwordLabel').removeClassName('redLabel');
 			$('passwordConfirmLabel').removeClassName('redLabel');
 			$('submit').show();

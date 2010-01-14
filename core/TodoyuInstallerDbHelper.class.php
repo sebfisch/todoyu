@@ -100,9 +100,10 @@ class TodoyuInstallerDbHelper {
 
 
 	/**
-	 * Update the admin password
+	 * Validate and update the admin password
 	 *
 	 * @param	String	$newPassword
+	 * @param	String	$newPasswordConfirm
 	 */
 	public static function updateAdminPassword($newPassword, $newPasswordConfirm) {
 			// Validate

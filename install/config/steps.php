@@ -96,13 +96,22 @@ $CONFIG['INSTALLER']['steps'] = array(
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderConfig',
 		'nextStepNum'	=> 6,
 	),
+
 	6 => array(
 		'name'			=> 'setadminpassword',
 			// Validate password, store admin user and password in DB (table 'ext_user_user')
-		'processFuncRef'=> 'TodoyuInstaller::setAdminPassword',
+		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderAdminPassword',
-		'nextStepNum'	=> 7,
+		'nextStepNum'	=> 61,
 	),
+
+	61 => array(
+		'name'			=> 'saveadminpassword',
+			// No output, processing forwards to next step automaticly or repeats the previous on error
+		'processFuncRef'=> 'TodoyuInstaller::saveadminpassword',
+		'nextStepNum'	=> 7
+	),
+
 	7 => array(
 		'name'			=> 'finish',
 			// Finish installer: deactivate, reinit step, go to todoyu login page
