@@ -325,8 +325,7 @@ INSERT INTO `ext_user_preference` (`id_user`, `ext`, `area`, `preference`, `item
 (1, 111, 0, 'task-exp', 0, '4'),
 (1, 112, 0, 'tasktree-task-exp', 0, '4'),
 (1, 115, 0, 'filterset-task', 0, '4'),
-(1, 111, 0, 'filtersets', 0, '4'),
-(1, 111, 0, 'tab', 0, '0');
+(1, 111, 0, 'filtersets', 0, '4');
 
 --
 -- Data for table `ext_user_right`
