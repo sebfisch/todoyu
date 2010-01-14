@@ -26,8 +26,12 @@
  * @subpackage	Installer
  */
 
-include_once( dirname(__FILE__) . '/config/init.php');
-include_once( dirname(__FILE__) . '/config/steps.php');
+ 	// Change current work directory to main directory to prevent path problems
+chdir( dirname(dirname(__FILE__)) );
+//	echo getcwd();
+
+include_once( '/config/init.php');
+include_once( '/config/steps.php');
 
 
 
@@ -42,7 +46,7 @@ TodoyuAuth::logout();
 
 	// Load default init script
 require_once( PATH_CORE . '/inc/init.php');
-require_once( PATH_CORE .'/inc/version.php');
+require_once( PATH_CORE . '/inc/version.php');
 
 	// Run the actual installer
 TodoyuInstaller::run();

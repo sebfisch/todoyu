@@ -64,22 +64,22 @@ class Todoyu {
 	 *
 	 */
 	public static function init() {
-		// Database
+			// Database
 		self::$db		= TodoyuDatabase::getInstance($GLOBALS['CONFIG']['DB']);
 
-		// Template (Dwoo)
+			// Template (Dwoo)
 		self::initTemplate();
 
-		// User
+			// User
 		self::$user = TodoyuAuth::getUser();
 
-		// Log
+			// Log
 		self::$logger = TodoyuLogger::getInstance($GLOBALS['CONFIG']['LOG']['active'], $GLOBALS['CONFIG']['LOG']['level']);
 
-		// Init Locale for locallang files
+			// Init Locale for locallang files
 		TodoyuLocale::setLocale(self::getLang());
 
-		// Set php locale
+			// Set php locale
 		setlocale(LC_ALL, $GLOBALS['CONFIG']['SYSTEM']['locale']);
 	}
 
@@ -102,7 +102,7 @@ class Todoyu {
 			TodoyuDebug::printHtml($e->getMessage(), 'Template error (Dwoo_Exception)');
 		}
 
-		self::addDwooPluginDir('core/lib/php/dwoo');
+//		self::addDwooPluginDir('core/lib/php/dwoo');
 	}
 
 
