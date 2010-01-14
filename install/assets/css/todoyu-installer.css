@@ -5,6 +5,12 @@ body {
 	background-color:#e3eace;
 }
 
+
+
+/* ---------------------------------
+	General content boxes, styles
+   --------------------------------- */
+
 #box {
 	position:relative;
 	clear:both;
@@ -76,6 +82,12 @@ body {
 	padding:10px;
 }
 
+
+
+/* -----------------------
+	Text
+   ----------------------- */
+
 .text{
 	padding:5px;
 	border:1px solid #000;
@@ -102,6 +114,16 @@ body {
 	padding-right:8px;
 }
 
+.redLabel {
+	color:#ff0000;
+}
+
+
+
+/* -----------------------
+	Panel
+   ----------------------- */
+
 #licence,
 #panel {
 	clear:both;
@@ -120,6 +142,36 @@ body {
 	margin-top:-2px;
 	background:#e3eace url('../img/panel_footer.png') no-repeat 0 0;
 }
+
+
+
+/* --------------------------
+	License agreement
+   --------------------------- */
+
+#licenseagreement {
+    background-color:#fbfff0;
+    padding:20px 0 28px 24px;
+}
+    #licenseagreement textarea {
+        width:580px;
+        height:270px;
+        font-size:12px;
+        letter-spacing:0.5px;
+        margin:8px 0 12px 0;
+    }
+	#licenseagreement h2 {
+    	font-weight:normal;
+	    font-size:11px;
+	    text-transform:uppercase;
+	    letter-spacing:1px;
+	}
+
+
+
+/* --------------------------
+	Headers, footers
+   --------------------------- */
 
 #footer {
 	border:1px solid #d3dabb;
@@ -156,6 +208,12 @@ h1 span.rgt {
 	right:0;
 	width:10px;
 }
+
+
+
+/* -----------------------------
+	Hyperlinks, buttons, labels, etc.
+   ----------------------------- */
 
 a, a:link {
 	color:#414e1c;
@@ -198,6 +256,16 @@ button {
 		position:relative;
 		width:10px;
 	}
+	
+label {
+	cursor:pointer;
+}
+
+
+
+/* ----------------------------
+	Icons, decorations
+   ---------------------------- */
 
 .servercheckicon {
 	height:16px;
@@ -226,8 +294,4 @@ button {
 	margin:12px 0;
 	border:1px dotted #ffa800;
 	background-color:#f9f3e8;
-}
-
-.redLabel {
-	color:#ff0000;
 }

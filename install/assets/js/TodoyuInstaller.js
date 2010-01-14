@@ -1,6 +1,17 @@
 TodoyuInstaller = {
 	
 	/**
+	 * User has agreed to license agreement: hide agreement and show installation dialog
+	 */
+	agreedToLicense: function() {
+		$('licenseagreement').hide();
+		$('installation-steps').show();	
+		$('submit').show();	
+	},
+
+
+
+	/**
 	 * Disable given text box if selected value == 0
 	 * 
 	 * @param	Element	selector 

@@ -35,11 +35,12 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderWelcome($nextStep, $error = '') {
 		$data	= array(
-			'title'			=> 'Welcome',
-			'textclass'		=> 'text textInfo',
-			'buttonLabel'	=> 'Check server compatibility',
-			'next'			=> true,
-			'nextStep'		=> $nextStep
+			'title'				=> 'Welcome',
+			'textclass'			=> 'text textInfo',
+			'hideSubmitInitial'	=> true,
+			'buttonLabel'		=> 'Check server compatibility',
+			'next'				=> true,
+			'nextStep'			=> $nextStep
 		);
 		$tmpl	= 'install/view/01_welcome.tmpl';
 

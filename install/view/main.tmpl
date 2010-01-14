@@ -10,17 +10,15 @@
 </head>
 	<body>
 		<div id="box">
-			<div id="panel">
+			<div id="panel">{* ------------ Panel -------------- *}
 				{include "licence.tmpl"}
-				{* ------------ Panel -------------- *}
 				<div class="content">
 					<span class="lt"></span><span class="rt"></span>
 					<h1><span class="title">Todoyu 2.0</span><span class="rgt"></span></h1>
 					<img src="assets/img/banner.jpg">
 				</div>
 				<div class="panelFooter"></div>
-				{* ----------- Panel end ------------- *}
-			</div>
+			</div>{* ------------------- Panel end ------------- *}
 			<div id="contentBox">
 				<span class="lt"></span>
 				<span class="rt"></span>
@@ -34,11 +32,11 @@
 						</h1>
 						{if $text}<p  class="{$textClass}">{$text}</p>{/if}
 						<form style="padding-left:12px;" method="post">
-							{* ------------ content ---------------------- *}
+							{* ------------ Content ---------------------- *}
 							<div class="blockcontent">{block name="box"}{/block}</div>
-							{* ----------- submit: goto next step -------- *}
+							{* ----------- Submit: goto next step -------- *}
 							{if $next}
-								<button id="submit" type="submit">
+								<button id="submit" type="submit"{if $hideSubmitInitial} style="display:none;"{/if}>
 									<span class="label">{$buttonLabel}</span>
 									<span class="rgt"></span>
 								</button>
@@ -49,14 +47,12 @@
 				</div>
 				{* ------------------- Footer ----------------- *}
 				<div id="footer">
-					<div class="todoyuInfo" id="todoyu-info">
-						<p>
-							<strong>todoyu.</strong> Copyright &copy; 2006-{date_format constant(TODOYU_UPDATE) "%Y"} Snowflake Productions, Z&uuml;rich<br />
-							Extensions are copyright of their respective owners. Go to <a href="http://www.todoyu.com" target="_blank" style="text-decoration:underline">todoyu.com</a> for details. todoyu comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.<br />
-							Obstructing the appearance of this notice is prohibited by law.<br>
-							Installed version: {constant(TODOYU_VERSION)} ({constant(TODOYU_UPDATE)})
-						</p>
-					</div>
+					<p>
+						<strong>todoyu.</strong> Copyright &copy; 2006-{date_format constant(TODOYU_UPDATE) "%Y"} Snowflake Productions, Z&uuml;rich<br />
+						Extensions are copyright of their respective owners. Go to <a href="http://www.todoyu.com" target="_blank">todoyu.com</a> for details. todoyu comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.<br />
+						Obstructing the appearance of this notice is prohibited by law.<br />
+						Installed version: {constant(TODOYU_VERSION)} ({constant(TODOYU_UPDATE)})
+					</p>
 				</div>
 			</div>
 		</div>

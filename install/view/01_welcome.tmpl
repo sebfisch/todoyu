@@ -1,8 +1,22 @@
 {extends main.tmpl}
 
 {block name="box"}
-	<div class="{$textclass}">Installation steps:
+	<div id="licenseagreement">
+		<h2>End user license agreement for todoyu beta3</h2>
+		<textarea>{include "../../LICENSE.txt"}</textarea>
+		<br />		
+		<button style="" id="agree" onclick="TodoyuInstaller.agreedToLicense(); return false;">
+			<span class="label">I accept the terms in the license agreement</span>
+			<span class="rgt"/>
+		</button>
+	</div>
+
+	<div id="installation-steps" class="{$textclass}" style="display:none;">Installation steps:
 		<ul>
+			<li style="width:200px; margin:0 0 8px 0;">
+				<span>License&nbsp;agreement</span>
+				<span style="display:block !important; float:right; margin-top:-4px;" class="servercheckicon ok"/>
+			</li>
 			<li>Check server compatibility</li>
 			<li>Database connection setup</li>
 			<li>Import static data</li>
