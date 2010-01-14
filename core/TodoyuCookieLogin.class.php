@@ -69,6 +69,8 @@ class TodoyuCookieLogin {
 					} else {
 						Todoyu::log('Cookie login failed (useragent)', LOG_LEVEL_SECURITY);
 					}
+				} else {
+					Todoyu::log('Decrypted cookie date is not an array', LOG_LEVEL_ERROR, $cookieData);
 				}
 			}
 		}

@@ -605,7 +605,7 @@ class TodoyuPageAssetManager {
 
 			// Make a real path
 		$search		= '|url\((.*?)\)|';
-		$cssCode	= preg_replace_callback($search, array(self,'callbackRealpath'), $cssCode);
+		$cssCode	= preg_replace_callback($search, array('TodoyuPageAssetManager','callbackRealpath'), $cssCode);
 
 		return $cssCode;
 	}
