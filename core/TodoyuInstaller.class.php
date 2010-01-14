@@ -132,6 +132,18 @@ class TodoyuInstaller {
 	}
 
 
+	public static function hasDoubleEnableFile() {
+		$file1	= TodoyuFileManager::pathAbsolute(PATH . '/install/ENABLE');
+		$file2	= TodoyuFileManager::pathAbsolute(PATH . '/install/_ENABLE');
+
+		return is_file($file1) && is_file($file2);
+	}
+
+	public static function isUpdate() {
+		return self::isDatabaseConfigured() || self::hasDoubleEnableFile();
+	}
+
+
 
 	/**
 	 *

@@ -37,7 +37,7 @@ class TodoyuInstallerStepManager {
 
 			// Initial step? Check whether installation has been carried out before -> proceed with update
 		if ( $step == 0 ) {
-			if ( TodoyuInstaller::isDatabaseConfigured() ) {
+			if ( TodoyuInstaller::isUpdate() ) {
 				$step	= 8;	// 'welcometoupdate'
 			}
 		}

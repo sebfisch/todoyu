@@ -28,10 +28,10 @@
 
  	// Change current work directory to main directory to prevent path problems
 chdir( dirname(dirname(__FILE__)) );
-//	echo getcwd();
 
-include_once( '/config/init.php');
-include_once( '/config/steps.php');
+include_once('/config/steps.php');
+include_once('/config/init.php');
+
 
 
 
