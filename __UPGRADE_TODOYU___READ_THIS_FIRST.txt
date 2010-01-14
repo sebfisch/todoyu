@@ -25,3 +25,7 @@ INSTRUCTIONS TO UPGRADE AN EXISTING todoyu VERSION
 	1. Make a backup of all files in /config/ (db.php, extensions.php, etc)
 	2. Replace the existing files with to new ones in THIS archive
 	3. Delete ALL files in /cache/tmpl/compile/*
+	4. Make sure the file /install/ENABLE exists
+	5. Make sure the file /install/_ENABLE does NOT exist
+	6. Copy back your backuped config files. Replace the existing default ones
+	7. Run installer /install/index.php
