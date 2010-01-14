@@ -33,8 +33,8 @@ $CONFIG['SESSION']		= array(
 
 	// Template (dwoo) path config
 $CONFIG['TEMPLATE']		= array(
-	'compile'	=> PATH_CACHE . '/tmpl/compile',
-	'cache'		=> PATH_CACHE . '/tmpl/cache'
+	'compile'	=> PATH_CACHE . DIRECTORY_SEPARATOR . 'tmpl' . DIRECTORY_SEPARATOR . 'compile',
+	'cache'		=> PATH_CACHE . DIRECTORY_SEPARATOR . 'tmpl' . DIRECTORY_SEPARATOR . 'cache',
 );
 
 	// Bad tags which are encoded by the HtmlFilter
