@@ -19,10 +19,12 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['SYSTEM']['name'] 		= 'todoyu';
-$CONFIG['SYSTEM']['email']		= 'nkarrer@snowflake.ch';
-$CONFIG['SYSTEM']['language']	= 'en';
-$CONFIG['SYSTEM']['locale']		= 'en_EN.utf8';
+
+$CONFIG['SYSTEM']['name'] 		= 'Todoyu';
+$CONFIG['SYSTEM']['email']		= 'install@todoyu.com';
+$CONFIG['SYSTEM']['language']	= 'de';
+$CONFIG['SYSTEM']['locale']		= 'de_DE.utf8';
+
 
 //$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
 

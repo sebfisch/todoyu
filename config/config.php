@@ -22,19 +22,19 @@
 ini_set('eaccelerator.enable',0);
 
 	// Debuging
-$CONFIG['DEBUG'] = true;
+$CONFIG['DEBUG'] = false;
 
 	// Error logging
 $CONFIG['LOG']['active'] = array('FILE', 'FIREPHP');
 
 	// Asset caching
-$CONFIG['CACHE']['JS']['localize']	= false;
-$CONFIG['CACHE']['JS']['merge']		= false;
-$CONFIG['CACHE']['JS']['compress']	= false;
+$CONFIG['CACHE']['JS']['localize']	= true;
+$CONFIG['CACHE']['JS']['merge']		= true;
+$CONFIG['CACHE']['JS']['compress']	= true;
 
-$CONFIG['CACHE']['CSS']['merge']	= false;
-$CONFIG['CACHE']['CSS']['compress']	= false;
+$CONFIG['CACHE']['CSS']['merge']	= true;
+$CONFIG['CACHE']['CSS']['compress']	= true;
 
-TodoyuRightsManager::flushRights();
+//TodoyuRightsManager::flushRights();
 
 ?>

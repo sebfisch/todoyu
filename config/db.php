@@ -24,9 +24,9 @@ $CONFIG['DB'] = array(
 	'username'		=> 'todoyu',
 	'password'		=> 'todoyu',
 	'database'		=> 'todoyu',
-	'autoconnect'	=> true,
+	'autoconnect'	=> false,
 	'persistent'	=> true,
-	'debug'			=> true,
-	'queryHistory'	=> true
+	'debug'			=> false,
+	'queryHistory'	=> false
 );
 ?>
