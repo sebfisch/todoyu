@@ -48,7 +48,9 @@ class TodoyuInstaller {
 
 
 	/**
+	 * Check if installed php version is at least 5.2
 	 *
+	 * @return	String
 	 */
 	public static function getPhpVersionStatus() {
 		if( version_compare(PHP_VERSION, '5.2.0', '>=') ) {
@@ -63,7 +65,9 @@ class TodoyuInstaller {
 
 
 	/**
+	 * Check writable status of important files
 	 *
+	 * @return	Array
 	 */
 	public static function getWritableStatuses() {
 		$writableStatus	= array();
@@ -97,7 +101,7 @@ class TodoyuInstaller {
 	/**
 	 * Get files which will be executed on an update
 	 *
-	 * @return Array
+	 * @return	Array
 	 */
 	public static function getRequiredVersionUpdates() {
 		$dbVersion	= self::getDBVersion();
@@ -132,6 +136,12 @@ class TodoyuInstaller {
 	}
 
 
+
+	/**
+	 * Check if two enable files are existing
+	 *
+	 * @return	Bool
+	 */
 	public static function hasDoubleEnableFile() {
 		$file1	= TodoyuFileManager::pathAbsolute(PATH . '/install/ENABLE');
 		$file2	= TodoyuFileManager::pathAbsolute(PATH . '/install/_ENABLE');
@@ -139,6 +149,13 @@ class TodoyuInstaller {
 		return is_file($file1) && is_file($file2);
 	}
 
+
+
+	/**
+	 * Check if system is already set up, and this is an update call
+	 *
+	 * @return	Bool
+	 */
 	public static function isUpdate() {
 		return self::isDatabaseConfigured() || self::hasDoubleEnableFile();
 	}
@@ -146,10 +163,12 @@ class TodoyuInstaller {
 
 
 	/**
+	 * Check if connection data is valid
 	 *
-	 *	@param unknown_type $data
+	 * @param	Array		$data
+	 * @return	String
 	 */
-	public static function checkDbConnection($data) {
+	public static function checkDbConnection(array $data) {
 		if (	array_key_exists('server', $data)
 			&&	array_key_exists('username', $data)
 			&&	array_key_exists('password', $data)
@@ -168,10 +187,11 @@ class TodoyuInstaller {
 
 
 	/**
+	 * Save database selection
 	 *
-	 *	@param unknown_type $data
+	 * @param	Array		$data
 	 */
-	public static function saveDbSelect($data) {
+	public static function saveDbSelect(array $data) {
 		$error	= self::dbSelect($data);
 
 		if ( strlen($error) == 0 ) {
