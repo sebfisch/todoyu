@@ -155,23 +155,10 @@ class TodoyuDbAnalyzer {
 	 *	@return	Array
 	 */
 	public static function getMissingTables(array $tablesNames) {
-		$missingTables	= array_flip($tablesNames);
-		$tablesAmount	= count($tablesNames) - 1;
+		$dbTables	= Todoyu::db()->getTables();
+		$missingTables	= array_diff($tablesNames, $dbTables);
 
-		$query	= '	SELECT TABLE_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME IN (';
-		$count	= 0;
-		foreach($tablesNames as $num => $tableName) {
-			$query	.= '\'' . $tableName . '\'' . ($count < $tablesAmount ? ', ' : '');
-			$count++;
-		}
-		$query	.= ')';
-
-		$res	= Todoyu::db()->query($query);
-		while(count($missingTables) > 0 && $row = Todoyu::db()->fetchAssoc($res))	{
-			unset($missingTables[ $row['TABLE_NAME'] ]);
-		}
-
-		return $missingTables;
+		return array_flip($missingTables);
 	}
 
 
