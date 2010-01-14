@@ -165,9 +165,7 @@ class TodoyuInstaller {
 		if ( strlen($error) == 0 ) {
 			TodoyuInstallerStepManager::jumpToNextStep();
 		} else {
-			// Return to prev. step
-			// @todo implement
-//			TodoyuInstallerStepManager::jumpToPreviousStep();
+			// DB select failed - have renderFunc be executed, it'll ask for correct credentials
 		}
 	}
 

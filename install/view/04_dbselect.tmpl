@@ -1,6 +1,10 @@
 {extends main.tmpl}
 
 {block name="box"}
+		{if $hasError == 1}
+			<strong>Database creation / select failed please correct the setup</strong>
+			<br /><br />
+		{/if}
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 			<tr>
 				<td width="109">Select a Database</td>

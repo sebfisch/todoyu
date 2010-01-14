@@ -149,10 +149,12 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render DB select screen
 	 *
+	 * @param	String	$nextStep
 	 * @param	String	$error
+	 * @param	Array	$additionalData
 	 * @return	String
 	 */
-	public static function renderDbSelect($nextStep, $error = '')	{
+	public static function renderDbSelect($nextStep, $error = '', $additionalData = array())	{
 		$dbData	= $_SESSION['todoyuinstaller']['db'];
 
 		$data	= array(
@@ -161,6 +163,8 @@ class TodoyuInstallerRenderer {
 			'nextStep'		=> $nextStep,
 			'buttonLabel'	=> 'Save Database Setup'
 		);
+
+		$data	= array_merge($data, $additionalData);
 
 		if( is_array($dbData) ) {
 			try {
@@ -179,6 +183,16 @@ class TodoyuInstallerRenderer {
 		$tmpl	= 'install/view/04_dbselect.tmpl';
 
 		return render($tmpl, $data);
+	}
+
+
+
+	public static function renderDbSelectAgain($nextStep, $error = '') {
+		$data	= array(
+			'hasError'	=> 1
+		);
+
+		return self::renderDbSelect($nextStep, $error, $data);
 	}
 
 

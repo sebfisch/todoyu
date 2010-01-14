@@ -69,9 +69,10 @@ $CONFIG['INSTALLER']['steps'] = array(
 
 	31	=> array(
 			'name'			=> 'savedbselect',
+				// processing forwards to next step automaticly on success
 			'processFuncRef'=> 'TodoyuInstaller::saveDbSelect',
-			'renderFuncRef'	=> false,
-				// No output, processing forwards to next step automaticly
+				// render func is only called failure
+			'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbSelectAgain',
 			'nextStepNum'	=> 4,
 	),
 
