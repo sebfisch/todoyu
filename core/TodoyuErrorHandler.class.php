@@ -46,6 +46,9 @@ class TodoyuErrorHandler {
 		if( $GLOBALS['CONFIG']['DEBUG'] ) {
 			ob_end_clean();
 
+				// Send error header
+			self::sendPhpErrorHeader('Database error: ' . $exception->getMessage());
+
 			$type = TodoyuHeader::getType();
 
 			if( TodoyuRequest::isAjaxRequest() || $type === 'PLAIN' ) {
@@ -80,7 +83,7 @@ class TodoyuErrorHandler {
 			// If not a notice, log it
 		if( ! in_array($errorno, self::$ignoreErros) ) {
 			Todoyu::log('PHP ERROR: [' . $errorno . '] ' . $errorstr, LOG_LEVEL_ERROR);
-			TodoyuHeader::sendHeader('Todoyu-Php-Error', $message);
+			self::sendPhpErrorHeader($message);
 		}
 
 			// If debugging, call normal error handler to display the error
@@ -122,6 +125,11 @@ class TodoyuErrorHandler {
 		);
 
 		return render($tmpl, $data);
+	}
+
+
+	public static function sendPhpErrorHeader($errorMessage) {
+		TodoyuHeader::sendHeader('Todoyu-Php-Error', $errorMessage);
 	}
 
 }

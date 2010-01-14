@@ -1,6 +1,40 @@
-2009-12-16	Todoyu Core Team <team@todoyu.com>
+2.0.0-beta3 - 2010-01-14
+	* Changed: Installer can upgrade from any version
+	* Changed: CSS cleanup
+	* Feature: Copy and Paste for containers
+	* Changed: Redesigned timetracking headlet
+	* Changed: Renamed customer to company for clearer naming
+	* Feature: Switched to dynamic eventtypes, list can be extended now
+	* Changed: Added error message if autocomplete list is empty
+	* Bugfix: Wrong function calls in contact for person and company
+	* Bugfix: Added negation flag for all available filters to work properly
+	* Added: Disabled options for select form elements
+	* Feature: Paging functionality for records list over config
+	* Feature: Added profile extension to basic to change language and password
+	* Added: Automail comment to task owner for configured groups
+	* Added: Language table and translation (nearly all known languages available)
+	* Changed: Cleaned up all tables.sql, so every extension handles its own fields
+	* Changed: Cleaned up task header and task data list
+	* Feature: Added overbooking check for users on event creation
+	* Changed: Visial change of filter negation in search
+	* Added: Comment action history (request, respond, email)
+	* Changed: Rights are now accessed over the section
+	* Changed: Fullpage no access error message styled
+	* Added: Defined constant TODOYU_URL which is the absolute server url to todoyu (SERVER_URL is only the host)
+	* Feature: Show php fatal errors as error notification
+	* Added: Licence agreement for installer
+	* Changed: Remove deprecated mysql_list_tables() with up-to-date sql command for getTables() function
+	* Changed: Moved timetracking fields in quicktask to timetracking extension. added by hook now. Refresh list after added
+	* Changed: Added more options to sql parser to handle all queries
+	* Bugfix: Renamed default to value in form. Works now
+	* Bugfix: Form error messages are parsed correctly
+	* Feature: New record wizard (for users)
+	* Changed: Improved visual style of autocompleter (to be recognized)
+	* Bugfix: Added checked attribute to form element checkbox
+	* Bugfix: Installer works now with multiple databases
+
+2.0.0-beta2 - 2009-12-16
 	* Bugfix: Fixed most of the known bugs
 	* Added: Copy&Paste functions for task in contextmenu
-	* ???
 	* Info: Mostly all code is commented now
 	* Added: Doxygen documentation
