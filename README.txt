@@ -21,8 +21,8 @@
 Contents
 --------
 1. Beta disclaimer
-2. How to install todoyu beta2
-3. How to upgrade from beta1 of todoyu to beta2 with the automatic database upgrader
+2. How to install todoyu beta3
+3. How to upgrade from betaX of todoyu to beta3 with the automatic database upgrader
 
 
 1. Beta disclaimer
