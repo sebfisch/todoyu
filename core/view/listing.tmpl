@@ -36,7 +36,7 @@
 		{foreach $rows index row}
 			<tr class="{cycle values="odd,even"}">
 			  	{foreach $config.columns colName label}
-			  		<td class="{$colName}">{$row[$colName]}</td>
+			  		<td class="{$colName}">{cleanHtml $row[$colName]}</td>
 			    {/foreach}
 			</tr>
 		{/foreach}
