@@ -29,8 +29,8 @@ $CONFIG['LOG']['active'] = array('FILE', 'FIREPHP');
 
 	// Asset caching
 $CONFIG['CACHE']['JS']['localize']	= true;
-$CONFIG['CACHE']['JS']['merge']		= true;
-$CONFIG['CACHE']['JS']['compress']	= true;
+$CONFIG['CACHE']['JS']['merge']		= false;
+$CONFIG['CACHE']['JS']['compress']	= false;
 
 $CONFIG['CACHE']['CSS']['merge']	= true;
 $CONFIG['CACHE']['CSS']['compress']	= true;
