@@ -250,10 +250,10 @@ INSERT INTO `ext_user_contactinfotype` (`id`, `deleted`, `key`, `title`) VALUES
 -- Data for table `ext_user_company`
 --
 
-INSERT INTO `ext_user_company` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `ext_projectbilling_reduction`) VALUES
+INSERT INTO `ext_user_company` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `is_internal`) VALUES
 (1, 1246888595, 1, 1246886240, 0, 'Demo Customer', 'Demo', 0, 101, 0, 0),
 (3, 1246888856, 1, 1246888856, 0, 'Random Company', 'Rand', 0, 607, 0, 0),
-(5, 1254213233, 1, 1254213151, 0, 'Snowflake Productions', 'Snowflake', 0, 1136156400, 0, 0),
+(5, 1254213233, 1, 1254213151, 0, 'Snowflake Productions', 'Snowflake', 0, 1136156400, 0, 1),
 (6, 1254213723, 1, 1254213723, 0, 'OneStepLeft Movie Factory', 'Movie Factory', 0, 1189548000, 0, 0);
 
 
@@ -286,7 +286,9 @@ INSERT INTO `ext_user_mm_company_contactinfo` (`id`, `id_company`, `id_contactin
 INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_user`, `id_workaddress`, `id_jobtype`) VALUES
 (1, 5, 1, 0, 0),
 (2, 6, 2, 0, 0),
-(3, 5, 3, 0, 0);
+(3, 6, 1, 0, 0),
+(4, 5, 2, 0, 0),
+(5, 5, 3, 0, 0);
 
 
 --
