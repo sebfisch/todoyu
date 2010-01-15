@@ -24,6 +24,7 @@ ALTER TABLE `ext_project_project` CHANGE `id_customer` `id_company` SMALLINT( 5 
 -- Add internal flag to company
 --
 ALTER TABLE `ext_user_company` ADD `is_internal` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT '0';
+UPDATE `ext_user_company` SET `is_internal` = 1;
 
 --
 -- Change eventtype to text
@@ -34,6 +35,8 @@ ALTER TABLE `ext_calendar_event` CHANGE `eventtype` `eventtype` VARCHAR( 20 ) NO
 -- Drop id_old_version from assets
 --
 ALTER TABLE `ext_assets_asset` DROP `id_old_version`;
+
+
 
 --
 -- Add static_language
