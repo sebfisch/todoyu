@@ -110,10 +110,13 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 	 * @param	Mixed		$value
 	 */
 	public function setValue($value) {
-		if( ! is_numeric($value) ) {
+		
+		if( trim($value) == '' || trim($value) == '0000-00-00')	 {
+			$value = false;
+		} else if( ! is_numeric($value) ) {
 			$value	= TodoyuTime::parseDate($value);
 		}
-
+		
 		parent::setValue($value);
 	}
 
@@ -127,7 +130,7 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 	public function getValueForTemplate() {
 		$value	= $this->getValue();
 
-		return $value === 0 ? '' : TodoyuTime::format($value, 'date');
+		return $value === false ? '' : TodoyuTime::format($value, 'date');
 	}
 
 
@@ -140,9 +143,13 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 	 */
 	public function getStorageData() {
 		$storageData	= parent::getStorageData();
-
+		
 		if( $storageData !== false && $this->hasAttribute('storeAsDate') ) {
-			$storageData = date('Y-m-d', $this->getValue());
+			if($this->getValue() === false)	{
+				$storageData = '0000-00-00';
+			} else {
+				$storageData = date('Y-m-d', $this->getValue());
+			}
 		}
 
 		return $storageData;
