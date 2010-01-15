@@ -29,8 +29,10 @@
  	// Change current work directory to main directory to prevent path problems
 chdir( dirname(dirname(__FILE__)) );
 
-include_once('/config/steps.php');
-include_once('/config/init.php');
+define('PATH_INSTALL', dirname(__FILE__));
+
+include_once(PATH_INSTALL . '/config/steps.php');
+include_once(PATH_INSTALL . '/config/init.php');
 
 
 

@@ -628,9 +628,20 @@ EXCLUDE_SYMLINKS       = NO
 # against the file with absolute path, so to exclude all test directories 
 # for example use the pattern */test/*
 
-EXCLUDE_PATTERNS       = lib/* \
-                         cache/* \
-                         .svn/*
+EXCLUDE_PATTERNS       = */lib/* \
+                         */cache/* \
+                         */.svn/* \
+                         */ext/resources/* \
+                         */ext/billing/* \
+                         */ext/projectbilling/* \
+                         */ext/hosting/* \
+                         */ext/dev/* \
+                         */ext/bugtracker/* \
+                         */ext/fixed/* \
+                         */ext/snowflake/* \
+                         */ext/statistic/* \
+                         */ext/translation/* \
+                         */ext/unittest/*
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol names 
 # (namespaces, classes, functions, etc.) that should be excluded from the 
@@ -711,7 +722,7 @@ INLINE_SOURCES         = NO
 # doxygen to hide any special comment blocks from generated source code 
 # fragments. Normal C and C++ comments will always remain visible.
 
-STRIP_CODE_COMMENTS    = YES
+STRIP_CODE_COMMENTS    = NO
 
 # If the REFERENCED_BY_RELATION tag is set to YES 
 # then for each documented function all documented 
