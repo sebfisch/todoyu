@@ -65,6 +65,11 @@ class TodoyuLogger {
 	private $requestKey;
 
 
+	/**
+	 * Ignore this files when detecting file where logging was executed
+	 *
+	 * @var	Array
+	 */
 	private $ignoreFiles = array(
 		'TodoyuLogger.class.php',
 		'TodoyuErrorHandler.class.php',

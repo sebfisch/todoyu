@@ -184,9 +184,7 @@ class TodoyuLocale {
 	public static function register($identifier, $absPathToFile) {
 		$absPathToFile = TodoyuFileManager::pathAbsolute($absPathToFile);
 
-//		TodoyuDebug::printInFirebug($absPathToFile, '$absPathToFile');
-
-		if( !is_file($absPathToFile) ) {
+		if( ! is_file($absPathToFile) ) {
 			TodoyuDebug::printHtml($absPathToFile, 'Locale file not found!', null, true);
 		}
 

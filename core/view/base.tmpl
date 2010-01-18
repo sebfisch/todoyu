@@ -33,9 +33,13 @@
 				<span class="lb"><!-- left / bottom --></span>
 				<span class="rb"><!-- right / bottom --></span>
 				<div id="content">
-					{block "content"}
-						Main content area
-					{/block}
+					<div id="content-tabs">
+						{block "contentTabs"}{/block}
+					</div>
+					<div id="content-body">
+						{block "contentBody"}{/block}
+					</div>
+					{block "content"}{/block}
 				</div><!-- /inner -->
 			</div>
 			<div class="clear"><!-- --></div>

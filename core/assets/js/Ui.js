@@ -193,6 +193,41 @@ Todoyu.Ui = {
 	setContent: function(content) {
 		$('content').update(content);
 	},
+	
+	
+	
+	/**
+	 * Update content tabs div
+	 * 
+	 * @param	String		tabs
+	 */
+	setContentTabs: function(tabs) {
+		$('content-tabs').update(tabs);
+	},
+	
+	
+	
+	/**
+	 * Update content body div
+	 * 
+	 * @param	String		body
+	 */
+	setContentBody: function(body) {
+		$('content-body').update(body);
+	},
+	
+	
+	
+	
+	/**
+	 * Update content body with request
+	 * 
+	 * @param	String		url
+	 * @param	Hash		options
+	 */
+	updateContentBody: function(url, options) {
+		return this.update('content-body', url, options);
+	},
 
 
 

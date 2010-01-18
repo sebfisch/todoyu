@@ -67,14 +67,16 @@ class Todoyu {
 			// Database
 		self::$db		= TodoyuDatabase::getInstance($GLOBALS['CONFIG']['DB']);
 
+			// Log
+		self::$logger = TodoyuLogger::getInstance($GLOBALS['CONFIG']['LOG']['active'], $GLOBALS['CONFIG']['LOG']['level']);
+
 			// Template (Dwoo)
 		self::initTemplate();
 
 			// User
 		self::$user = TodoyuAuth::getUser();
 
-			// Log
-		self::$logger = TodoyuLogger::getInstance($GLOBALS['CONFIG']['LOG']['active'], $GLOBALS['CONFIG']['LOG']['level']);
+
 
 			// Init Locale for locallang files
 		TodoyuLocale::setLocale(self::getLang());
@@ -98,8 +100,8 @@ class Todoyu {
 		try {
 			self::$template = new Dwoo($GLOBALS['CONFIG']['TEMPLATE']['compile'], $GLOBALS['CONFIG']['TEMPLATE']['cache']);
 		} catch(Dwoo_Exception $e) {
-			Todoyu::log('Dwoo Exception on init: ' . $e->getMessage(), LOG_LEVEL_FATAL);
 			TodoyuDebug::printHtml($e->getMessage(), 'Template error (Dwoo_Exception)');
+			Todoyu::log('Dwoo Exception on init: ' . $e->getMessage(), LOG_LEVEL_FATAL);
 		}
 
 //		self::addDwooPluginDir('core/lib/php/dwoo');
@@ -247,7 +249,9 @@ class Todoyu {
 	 * @param	String		$includePath
 	 */
 	public static function addIncludePath($includePath) {
-		if( !in_array($includePath, $GLOBALS['CONFIG']['AUTOLOAD']) ) {
+		$includePath	= TodoyuFileManager::pathAbsolute($includePath);
+
+		if( ! in_array($includePath, $GLOBALS['CONFIG']['AUTOLOAD']) ) {
 			$GLOBALS['CONFIG']['AUTOLOAD'][] = $includePath;
 		}
 	}
@@ -263,8 +267,8 @@ class Todoyu {
 		$classFile = $className . '.class.php';
 
 		foreach($GLOBALS['CONFIG']['AUTOLOAD'] as $includePath) {
-			if( is_file($includePath . '/' . $classFile) ) {
-				include_once($includePath . '/' . $classFile);
+			if( is_file($includePath . DIRECTORY_SEPARATOR . $classFile) ) {
+				include_once($includePath . DIRECTORY_SEPARATOR . $classFile);
 				break;
 			}
 		}

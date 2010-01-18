@@ -48,7 +48,7 @@ class TodoyuLoggerFile {
 			// If file is not opened yet
 		if( is_null(self::$file) ) {
 				// Get path from config
-			$logFilePath	= $GLOBALS['CONFIG']['LOG']['MODES']['FILE']['file'];
+			$logFilePath	= TodoyuFileManager::pathAbsolute($GLOBALS['CONFIG']['LOG']['MODES']['FILE']['file']);
 
 				// If path is defined as string
 			if( is_string($logFilePath) ) {
