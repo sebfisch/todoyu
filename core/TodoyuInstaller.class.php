@@ -154,10 +154,9 @@ class TodoyuInstaller {
 	 */
 	public static function processStep($step, $data) {
 		$processFunc	= self::getStepFunc($step, 'process');
-		if ($processFunc !== false ) {
-			if( method_exists($processFunc[0], $processFunc[1]) ) {
+
+		if( method_exists($processFunc[0], $processFunc[1]) ) {
 				$result	= call_user_func($processFunc, $data);
-			}
 		} else {
 			$result	= array('error' => false);
 		}

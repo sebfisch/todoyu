@@ -4,7 +4,12 @@
 	<div id="licenseagreement">
 		<h2>{Label installer.title.license}</h2>
 		<div class="enduserlicense"><pre>{include "../../LICENSE.txt"}</pre></div>
-		<br />		
+		<h2>{Label installer.lgplThirdPartyLibsLicenses}</h2>
+		<ul class="thirdPartyLibs">
+			<li>TinyMCE</li>
+			<li>phpMail</li>
+			<li>jsCalendar</li>
+		</ul>		
 		<button style="" id="agree" onclick="TodoyuInstaller.agreedToLicense(); return false;">
 			<span class="label">{Label installer.button.iAcceptLicense}</span>
 			<span class="rgt"/>

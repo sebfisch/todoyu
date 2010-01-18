@@ -30,7 +30,7 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render welcome screen
 	 *
-	 * @param	String	$error
+	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -53,7 +53,7 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render server check (correct PHP version and writable files, folders) screen
 	 *
-	 * @param	String	$error
+	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -77,7 +77,7 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Check DB connection details. This step repeats itself on connection failure.
 	 *
-	 * @param	String	$error
+	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -111,7 +111,7 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render DB select screen
 	 *
-	 * @param	String	$error
+	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -144,7 +144,7 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render import static DB data screen
 	 *
-	 * @param	String	$error
+	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -169,7 +169,7 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render system config setup (name, email, primary language)
 	 *
-	 * @param	String	$error
+	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -193,7 +193,7 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render admin password change screen
 	 *
-	 * @param	String	$error
+	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -217,7 +217,7 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render finishing screen
 	 *
-	 * @param	String	$error
+	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -240,7 +240,7 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render updater welcome screen
 	 *
-	 * @param	String	$error
+	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -263,7 +263,7 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render welcome screen
 	 *
-	 * @param	String	$error
+	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -287,9 +287,9 @@ class TodoyuInstallerRenderer {
    /**
  	* Render update finished screen
  	*
- 	* @param	String	$error
-	 * @param	Array	$result
-	 * @return	String
+ 	* @param	String	$nextStep
+	* @param	Array	$result
+	* @return	String
  	*/
 	public static function renderUpdateFinished($nextStep, array $result) {
 		$data	= array(

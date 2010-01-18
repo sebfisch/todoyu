@@ -162,7 +162,7 @@ body {
 		font-family:Courier;
 		font-size:12px;
 		letter-spacing:0.3px;
-		margin:8px 0 12px 0;
+		margin:8px 0 28px 0;
 	}
 	#licenseagreement h2 {
 		font-weight:normal;
@@ -171,6 +171,13 @@ body {
 		letter-spacing:1px;
 	}
 
+	ul.thirdPartyLibs {
+		padding:4px 0 6px 20px;
+		width:520px;
+		border:1px solid #D6D6D6;
+		background-color:#fff;
+		margin-bottom:26px;
+	}
 
 
 /* --------------------------

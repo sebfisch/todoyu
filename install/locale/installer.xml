@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
+		<label index="lgplThirdPartyLibsLicenses">The following third party libraries are licensed under LGPL v2.1:</label>
 		<label index="installationSteps">Installation steps</label>
 		<label index="yourVersion">Your Version:</label>
 		<label index="dbConnectionStored">DB connection is stored.</label>
