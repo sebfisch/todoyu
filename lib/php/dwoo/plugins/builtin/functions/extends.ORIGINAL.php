@@ -106,7 +106,7 @@ class Dwoo_Plugin_extends extends Dwoo_Plugin implements Dwoo_ICompilable
 		$compiler->recompile();
 	}
 
-	protected static function replaceBlockORIGINAL(array $matches)
+	protected static function replaceBlock(array $matches)
 	{
 		if (preg_match('/'.self::$l.'block (["\']?)'.preg_quote($matches[2],'/').'\1'.self::$r.'(?:\r?\n?)(.*?)(?:\r?\n?)'.self::$l.'\/block'.self::$r.'/is', self::$childSource, $override)) {
 			$l = stripslashes(self::$l);
@@ -125,32 +125,4 @@ class Dwoo_Plugin_extends extends Dwoo_Plugin implements Dwoo_ICompilable
 			}
 		}
 	}
-
-
-
-	protected static function replaceBlock(array $matches)
-	{
-	    $l = stripslashes(self::$l);
-	    $r = stripslashes(self::$r);
-
-	    $needle_sq = $l . 'block \'' . $matches[2] . '\'' . $r;
-	    $needle_dq = $l . 'block "' . $matches[2] . '"' . $r;
-
-	    if(($pos = strpos(self::$childSource, $needle_sq)) !== false || ($pos = strpos(self::$childSource, $needle_dq)) !== false) {
-	        $text = substr(self::$childSource, $pos + strlen($needle_sq), strpos(self::$childSource, $l . "/block" . $r, $pos) - $pos - strlen($needle_sq));
-
-	        if (self::$lastReplacement) {
-	            return preg_replace('/'.self::$l.'\$dwoo\.parent'.self::$r.'/is', $matches[3], $text);
-	        } else {
-	            return $l.'block '.$matches[1].$matches[2].$matches[1].$r.preg_replace('/'.self::$l.'\$dwoo\.parent'.self::$r.'/is', $matches[3], $text).$l.'/block'.$r;
-	        }
-	    } else {
-	        if (self::$lastReplacement) {
-	            return $matches[3];
-	        } else {
-	            return $matches[0];
-	        }
-	    }
-	}
-
 }

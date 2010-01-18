@@ -6,3 +6,8 @@ The following changes have been made:
 
 # lib/js/scriptaculous/scriptaculous.js : 64
 Commented out 'Scriptaculous.load();' All needed libraries are already loaded in the merge file
+
+# lib/php/dwoo/plugins/builtin/functions/extends.php : 109
+Replace replaceBlock() function with patched one
+See: http://forum.dwoo.org/viewtopic.php?id=197
+See: http://bugs.php.net/bug.php?id=37793
