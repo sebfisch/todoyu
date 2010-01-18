@@ -87,7 +87,7 @@ class TodoyuDatabase {
 	private function __construct($config) {
 		$this->config = $config;
 
-		if( $config['autoconnect'] !== false ) {
+		if( $this->config['autoconnect'] !== false ) {
 			$this->connect();
 		}
 	}

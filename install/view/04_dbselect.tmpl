@@ -3,13 +3,17 @@
 {block name="box"}
 		{if $hasError == 1}
 			<strong>Database creation / select failed please correct the setup</strong>
-			<br /><br />
+		{else}
+			 <span style="padding:0 0 0 30px; width:300px;" class="servercheckicon ok">
+				Database server connection validated.
+			</span> 
 		{/if}
+		<br /><br />
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 			<tr>
 				<td width="109">Select a Database</td>
 				<td width="379">
-					<select name="database" type="text" id="database" value="{$fields.server}" onchange="TodoyuInstaller.disableTextBox(this);" >
+					<select name="database" type="text" id="database" value="{$fields.server}">
 			{foreach $options key option}
 						<option value="{$key}"{if $option.disabled} disabled="true"{/if}>{$option.text}</option>
 			{/foreach}
@@ -18,7 +22,7 @@
 			</tr>
 			<tr>
 				<td>or create new:</td>
-				<td><input type="text" id="database_new" name="database_new" /></td>
+				<td><input onkeyup="TodoyuInstaller.checkDbSelect()" type="text" id="database_new" name="database_new" /></td>
 			</tr>
 		</table>
 {/block}

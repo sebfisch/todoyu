@@ -29,13 +29,8 @@
  	// Change current work directory to main directory to prevent path problems
 chdir( dirname(dirname(__FILE__)) );
 
-define('PATH_INSTALL', dirname(__FILE__));
-
-include_once(PATH_INSTALL . '/config/steps.php');
-include_once(PATH_INSTALL . '/config/init.php');
-
-
-
+include_once('/config/steps.php');
+include_once('/config/init.php');
 
 	// Turn on output buffering
 ob_start();
@@ -49,6 +44,10 @@ TodoyuAuth::logout();
 	// Load default init script
 require_once( PATH_CORE . '/inc/init.php');
 require_once( PATH_CORE . '/inc/version.php');
+
+	// Register installer locales
+define('PATH_INSTALLER', PATH. '/install');
+TodoyuLocale::register('installer', PATH_INSTALLER . '/locale/installer.xml');
 
 	// Run the actual installer
 TodoyuInstaller::run();

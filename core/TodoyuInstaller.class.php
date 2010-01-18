@@ -28,21 +28,386 @@
 class TodoyuInstaller {
 
 	/**
-	 * Run Installer
+	 * Proccess and display current step of installer
 	 */
 	public static function run() {
+		$step	= self::getCurrentStep();
+
+			// Process, receive resulting values or errors
+		$result	= self::processStep($step, $_POST);
+
+			// Display
+		self::displayStep($step, $result);
+	}
+
+
+
+	/**
+	 * Get current step
+	 *
+	 * @return	Integer
+	 */
+	public static function getCurrentStep() {
 			// Restart?
 		if( intval($_GET['restart']) == 1 ) {
-			TodoyuInstallerStepManager::reinitStepNum();
-			self::reload();
+			$step	= 'welcome';
+		} else {
+			// Regular step handling
+		$step	= $_POST['action'];
+			if ( $step == '' ) {
+					// Check whether installation has been carried out before -> proceed with update
+				if ( self::isUpdate() ) {
+					$step	= 'welcometoupdate';
+				} else {
+					$step	= 'welcome';
+				}
+			}
 		}
 
-			// If data has been submitted, have it processed
-		if( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
-			$error = TodoyuInstallerStepManager::processStep($_POST);
+		return $step;
+	}
+
+
+
+	/**
+	 * Get name of next step
+	 *
+	 * @param	String	$step
+	 * @return	String
+	 */
+	public static function getNextStep($currentStep = '') {
+		$steps= $GLOBALS['CONFIG']['INSTALLER']['steps'];
+
+		if ( array_key_exists($currentStep, $steps) ) {
+		foreach($steps as $name => $conf) {
+			if ( $name == $currentStep ) {
+				$nextStep	= $conf['nextStep'];
+			}
 		}
-			// Display step output
-		TodoyuInstallerStepManager::displayStep($error);
+		} else {
+			$nextStep	= 'welcome';
+		}
+
+		return $nextStep;
+	}
+
+
+
+	/**
+	 * Get render or processing function reference of current step
+	 *
+	 * @param	String	$step
+	 * @param	String	$type
+	 * @return	Array
+	 */
+	public static function getStepFunc($step, $type = 'render') {
+		$step	= $GLOBALS['CONFIG']['INSTALLER']['steps'][$step];
+
+		return explode('::', $step[$type . 'FuncRef']);
+	}
+
+
+
+	/**
+	 * Set given step's render or processing function reference to given one
+	 *
+	 * @param	String	$step
+	 * @param	String	$type
+	 * @return	Array
+	 */
+	public static function setStepFunc($step, $funcRef = '', $type = 'render') {
+		if ( is_array($funcRef) ) {
+			$funcRef	= implode('::', $funcRef);
+		}
+
+		$GLOBALS['CONFIG']['INSTALLER']['steps'][$step][$type . 'FuncRef']	= $funcRef;
+	}
+
+
+
+	/**
+	 * Set current step's render function reference to that of the next step
+	 *
+	 * @param	Boolean		$stepStep
+	 */
+	public static function setCurrentRenderFuncFromNextStep($setStep = false) {
+		$currentStep	= self::getCurrentStep();
+		$nextStep		= self::getNextStep($currentStep);
+		$nextRenderFunc	= self::getStepFunc($nextStep, 'render');
+
+		self::setStepFunc($currentStep, $nextRenderFunc, 'render');
+
+		if ( $setStep == true ) {
+			$secondNextStep	= $GLOBALS['CONFIG']['INSTALLER']['steps'][$nextStep]['nextStep'];
+			$GLOBALS['CONFIG']['INSTALLER']['steps'][$currentStep]['nextStep'] = $secondNextStep;
+		}
+	}
+
+
+
+	/**
+	 * Process current step data (order of evocation is: process, display)
+	 *
+	 * @param	String		$step
+	 * @param	Array		$data
+	 * @return	String
+	 */
+	public static function processStep($step, $data) {
+		$processFunc	= self::getStepFunc($step, 'process');
+		if ($processFunc !== false ) {
+			if( method_exists($processFunc[0], $processFunc[1]) ) {
+				$result	= call_user_func($processFunc, $data);
+			}
+		} else {
+			$result	= array('error' => false);
+		}
+
+		return $result;
+	}
+
+
+
+	/**
+	 * Render and display output for current step
+	 *
+	 * @param	String	$step
+	 * @param	String	$error
+	 */
+	public static function displayStep($step, $result) {
+		$renderFunc	= self::getStepFunc($step, 'render');
+
+		if( method_exists($renderFunc[0], $renderFunc[1]) ) {
+				// Get next step for button 'action',
+				// repeating current step or being next one is set in validation of processing func
+			$nextStepName	= self::getNextStep($step);
+
+			echo call_user_func($renderFunc, $nextStepName, $result);
+		}
+	}
+
+
+
+	/**
+	 * Check server compatibility with todoyu
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+	public static function checkServerCompatibility(array $data) {
+		$result	= array('error'	=> false);
+
+			// Check PHP version compatibility
+		$result['versionStatus']	= self::getPhpVersionStatus();
+		if ( $result['versionStatus']	!== 'OK' ) {
+			$result['error']= 'Wrong PHP Version. ';
+		}
+
+			// Check files and folders being writable
+		list($result['writableStatuses'], $result['writablePathsOk'])	= self::getWritableStatuses();
+		if ( $result['writablePathsOk']	!== true ) {
+			$result['error']	.= 'Make sure all required files and folders are writable.';
+		}
+
+		return $result;
+	}
+
+
+
+	/**
+	 * Check if connection data is valid
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+	public static function checkDbConnection(array $data) {
+		$result	= array(
+			'error' 	=> false,
+			'nextStep'	=> self::getCurrentStep()
+		);
+
+		$server		= trim($data['server']);
+		$username	= $data['username'];
+		$password	= $data['password'];
+
+			// Received DB server connection data?
+		if ( strlen($server . $username . $password ) > 6 ) {
+			$result['db'] = array(
+				'server'		=> $server,
+				'username'		=> $username,
+				'password'		=> $password,
+			);
+
+			$_SESSION['todoyuinstaller']['db']	= $result['db'];
+
+			try {
+				$connectionValid	= TodoyuDbAnalyzer::checkDbConnection($server, $username, $password);
+			} catch(Exception $e) {
+				$result['error'] = $e->getMessage();
+			}
+
+			if ( $result['error'] === false ) {
+					// Pass-on DB data to next step via session, evoke next step's rendering
+				self::setCurrentRenderFuncFromNextStep();
+			}
+		}
+
+		return $result;
+	}
+
+
+	/**
+	 * Try saving DB server connection data
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+	public static function storeDbConfig(array $data) {
+		$result	= array(
+			'error' 	=> false,
+			'nextStep'	=> self::getCurrentStep()
+		);
+
+		$server		= $_SESSION['todoyuinstaller']['db']['server'];
+		$username	= $_SESSION['todoyuinstaller']['db']['username'];
+		$password	= $_SESSION['todoyuinstaller']['db']['password'];
+
+		$database	= trim($data['database']);
+		$newDatabase= trim($data['database_new']);
+
+		try {
+			TodoyuInstallerDbHelper::addDatabase($newDatabase, $database, $server, $username, $password);
+			if( strlen($newDatabase) > 0 )	{
+				$database	= $newDatabase;
+			}
+			TodoyuInstallerDbHelper::saveDbConfigInFile($server, $username, $password, $database);
+		} catch(Exception $e)	{
+			$result['error'] = $e->getMessage();
+		}
+
+		if ( $result['error'] === false ) {
+			self::setCurrentRenderFuncFromNextStep();
+		}
+
+		return $result;
+	}
+
+
+
+	/**
+	 * Have static DB data imported
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+	public static function importStaticData($data) {
+		$result	= array('error' 	=> false);
+
+		try {
+			TodoyuInstallerDbHelper::importStaticData();
+		} catch(Exception $e)	{
+			$result['error'] = $e->getMessage();
+		}
+
+		if ( $result['error'] == false ) {
+			self::setCurrentRenderFuncFromNextStep(true);
+		}
+
+		return $result;
+	}
+
+
+
+	/**
+	 * Save system config file 'config/system.php' (data: name, email, primary language)
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+	public static function updateSytemConfig($data) {
+		$result	= array('error' 	=> false);
+
+		if( ! (strlen($data['email']) > 0 && strlen($data['systemname']) > 0) )	{
+			$result['error']	= 'Please set an email address and a system name';
+		} else {
+			$data	= array(
+				'config'		=> $data,
+				'encryptionKey'	=> self::makeEncryptionKey()
+			);
+			$tmpl	= 'install/view/configs/system.php.tmpl';
+
+			$config	= render($tmpl, $data);
+			$code	= '<?php' . $config . '?>';
+			$file	= PATH . '/config/system.php';
+
+			file_put_contents($file, $code);
+		}
+
+		return $result;
+	}
+
+
+
+	/**
+	 * Update admin-user password (and username)
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+	public static function saveAdminPassword($data) {
+		$result	= array('error' 	=> false);
+
+		try {
+			TodoyuInstallerDbHelper::updateAdminPassword($data['password'], $data['password_confirm']);
+		} catch(Exception $e)	{
+			$result['error'] = $e->getMessage();
+		}
+
+		return $result;
+	}
+
+
+
+	/**
+	 * Execute sql files to update the database to the current version
+	 *
+	 * @param	Array		$data
+	 */
+	public static function updateToCurrentVersion(array $data) {
+		$dbVersion	= self::getDBVersion();
+
+		switch($dbVersion) {
+			case 'beta1':
+				self::updateBeta1ToBeta2();
+
+			case 'beta2':
+				self::updateBeta2ToBeta3();
+		}
+	}
+
+
+
+	/**
+	 * Gather and perform queries, forward to next step (update finished)
+	 */
+	public static function finishUpdate($data) {
+		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
+
+		if ( count($dbDiff) > 0  ) {
+			TodoyuInstallerDbHelper::compileAndRunInstallerQueries($dbDiff);
+		}
+
+//		self::jumpToNextStep();
+	}
+
+
+
+	/**
+	 * Finish the installer, go to todoyu login page
+	 */
+	public static function finish($data) {
+		self::deactivate();
+
+		self::gotoLogin();
 	}
 
 
@@ -127,20 +492,9 @@ class TodoyuInstaller {
 
 
 	/**
-	 * Check whether the installation has been carried out before
-	 *
-	 * 	@return	Boolean
-	 */
-	public static function isDatabaseConfigured() {
-		return $GLOBALS['CONFIG']['DB']['autoconnect'] === true;
-	}
-
-
-
-	/**
 	 * Check if two enable files are existing
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function hasDoubleEnableFile() {
 		$file1	= TodoyuFileManager::pathAbsolute(PATH . '/install/ENABLE');
@@ -154,139 +508,10 @@ class TodoyuInstaller {
 	/**
 	 * Check if system is already set up, and this is an update call
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isUpdate() {
-		return self::isDatabaseConfigured() || self::hasDoubleEnableFile();
-	}
-
-
-
-	/**
-	 * Check if connection data is valid
-	 *
-	 * @param	Array		$data
-	 * @return	String
-	 */
-	public static function checkDbConnection(array $data) {
-		if (	array_key_exists('server', $data)
-			&&	array_key_exists('username', $data)
-			&&	array_key_exists('password', $data)
-		) {
-			$_SESSION['todoyuinstaller']['db'] = $data;
-			try {
-				TodoyuDbAnalyzer::checkDbConnection($data);
-			} catch(Exception $e) {
-				$error = $e->getMessage();
-			}
-		}
-
-		return $error;
-	}
-
-
-
-	/**
-	 * Save database selection
-	 *
-	 * @param	Array		$data
-	 */
-	public static function saveDbSelect(array $data) {
-		$error	= self::dbSelect($data);
-
-		if ( strlen($error) == 0 ) {
-			TodoyuInstallerStepManager::jumpToNextStep();
-		} else {
-			// DB select failed - have renderFunc be executed, it'll ask for correct credentials
-		}
-	}
-
-
-	public static function importStaticData($data) {
-		TodoyuInstallerDbHelper::importStaticData();
-
-		TodoyuInstallerStepManager::jumpToNextStep();
-	}
-
-
-	/**
-	 *
-	 *	@param unknown_type $data
-	 */
-	public static function dbSelect($data) {
-		try {
-			TodoyuInstallerDbHelper::addDatabase();
-			TodoyuInstallerDbHelper::saveDbConfigInFile();
-		} catch(Exception $e)	{
-			$error = $e->getMessage();
-		}
-
-		return $error;
-	}
-
-
-
-	/**
-	 *
-	 *	@param unknown_type $data
-	 */
-	public static function tryUpdateConfig($data) {
-		try {
-			TodoyuInstaller::updateConfig($data);
-		} catch (Exception $e)	{
-			$error = $e->getMessage();
-		}
-
-		return $error;
-	}
-
-
-
-	/**
-	 *
-	 *	@param unknown_type $data
-	 */
-	public static function saveAdminPassword($data) {
-		$ok	= true;
-
-		try {
-			TodoyuInstallerDbHelper::updateAdminPassword($data['password'], $data['password_confirm']);
-		} catch(Exception $e)	{
-			$error = $e->getMessage();
-
-			$ok	= false;
-			TodoyuInstaller::reload();
-		}
-
-		if ($ok) {
-			TodoyuInstallerStepManager::jumpToNextStep();
-		}
-
-		return $error;
-	}
-
-
-	/**
-	 * Update config
-	 *
-	 *	@param	Array	$data
-	 */
-	private static function updateConfig($data) {
-		if( ! (strlen($data['email']) > 0 && strlen($data['systemname']) > 0) )	{
-			throw new Exception('Please set an email address and a system name');
-		}
-
-		$data	= array(
-			'config'		=> $data,
-			'encryptionKey'	=> TodoyuInstaller::makeEncryptionKey()
-		);
-		$tmpl	= 'install/view/configs/system.php.tmpl';
-
-		$config	= render($tmpl, $data);
-		$code	= '<?php' . $config . '?>';
-		$file	= PATH . '/config/system.php';
-
-		file_put_contents($file, $code);
+		return TodoyuInstallerDbHelper::isDatabaseConfigured() || self::hasDoubleEnableFile();
 	}
 
 
@@ -305,7 +530,7 @@ class TodoyuInstaller {
 
 
 	/**
-	 * Reload the installer
+	 * Reload the current script
 	 */
 	public static function reload() {
 		header('Location: ' . $_SERVER['SCRIPT_NAME']);
@@ -336,31 +561,12 @@ class TodoyuInstaller {
 
 
 	/**
-	 * Execute sql files to update the database to the current version
-	 *
-	 * @param	Array		$data
-	 */
-	public static function updateToCurrentVersion(array $data) {
-		$dbVersion	= self::getDBVersion();
-
-		switch($dbVersion) {
-			case 'beta1':
-				self::updateBeta1ToBeta2();
-
-			case 'beta2':
-				self::updateBeta2ToBeta3();
-		}
-	}
-
-
-
-	/**
 	 * Update the database from beta1 to beta2
 	 */
 	private static function updateBeta1ToBeta2() {
 		$updateFile	= 'install/config/db/update_beta1_to_beta2.sql';
 
-		$numQueries	= self::executeQueriesFromFile($updateFile);
+		$numQueries	= TodoyuInstallerDbHelper::executeQueriesFromFile($updateFile);
 	}
 
 
@@ -371,31 +577,7 @@ class TodoyuInstaller {
 	private static function updateBeta2ToBeta3() {
 		$updateFile	= 'install/config/db/update_beta2_to_beta3.sql';
 
-		$numQueries	= self::executeQueriesFromFile($updateFile);
-	}
-
-
-
-	/**
-	 * Execute the queries in the version update file
-	 *
-	 * @param	String		$updateFile			Path to update file
-	 * @return	Integer		Number of executed queries
-	 */
-	private static function executeQueriesFromFile($updateFile) {
-		$updateFile	= TodoyuFileManager::pathAbsolute($updateFile);
-		$queries	= TodoyuSqlParser::getQueriesFromFile($updateFile);
-		$count		= 0;
-
-		foreach($queries as $query) {
-			$query	= trim($query);
-			if( $query !== '' ) {
-				Todoyu::db()->query($query);
-				$count++;
-			}
-		}
-
-		return $count;
+		$numQueries	= TodoyuInstallerDbHelper::executeQueriesFromFile($updateFile);
 	}
 
 
@@ -406,44 +588,16 @@ class TodoyuInstaller {
 	 * @return	String
 	 */
 	public static function getDBVersion() {
-		$tables	= Todoyu::db()->getTables();
+		$dbVersion	= 'beta3';
+		$tables		= Todoyu::db()->getTables();
 
 		if( in_array('ext_portal_tab', $tables) ) {
-			return 'beta1';
+			$version	= 'beta1';
+		} elseif( in_array('ext_user_customerrole', $tables) ) {
+			$version	= 'beta2';
 		}
 
-		if( in_array('ext_user_customerrole', $tables) ) {
-			return 'beta2';
-		}
-
-		return 'beta3';
-	}
-
-
-
-	/**
-	 * Gather and perform queries, forward to next step (update finished)
-	 */
-	public static function finishUpdate($data) {
-		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
-
-		if ( count($dbDiff) > 0  ) {
-			TodoyuInstallerDbHelper::compileAndRunInstallerQueries($dbDiff);
-		}
-
-		TodoyuInstallerStepManager::jumpToNextStep();
-	}
-
-
-
-	/**
-	 * Finish the installer, go to todoyu login page
-	 */
-	public static function finish($data) {
-		self::deactivate();
-		TodoyuInstallerStepManager::reinitStepNum();
-
-		self::gotoLogin();
+		return $version;
 	}
 
 }

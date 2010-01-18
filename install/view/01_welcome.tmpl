@@ -2,25 +2,26 @@
 
 {block name="box"}
 	<div id="licenseagreement">
-		<h2>End user license agreement for todoyu beta3</h2>
+		<h2>{Label installer.title.license}</h2>
 		<div class="enduserlicense"><pre>{include "../../LICENSE.txt"}</pre></div>
 		<br />		
 		<button style="" id="agree" onclick="TodoyuInstaller.agreedToLicense(); return false;">
-			<span class="label">I accept the terms in the license agreement</span>
+			<span class="label">{Label installer.button.iAcceptLicense}</span>
 			<span class="rgt"/>
 		</button>
 	</div>
 
-	<div id="installation-steps" class="{$textclass}" style="display:none;">Installation steps:
+	<div id="installation-steps" class="{$textclass}" style="display:none;">{Label installer.installationSteps}:
 		<ul>
 			<li style="width:200px; margin:0 0 8px 0;">
-				<span>License&nbsp;agreement</span>
+				<span>{Label installer.step.licenseAgreement}</span>
 				<span style="display:block !important; float:right; margin-top:-4px;" class="servercheckicon ok"/>
 			</li>
-			<li>Check server compatibility</li>
-			<li>Database connection setup</li>
-			<li>Import static data</li>
-			<li>Set administrator password</li>
+			<li>{Label installer.step.checkServerCompatibility}</li>
+			<li>{Label installer.step.databaseConnectionSetup}</li>
+			<li>{Label installer.step.importStaticData}</li>
+			<li>{Label installer.step.setAdminPassword}</li>
 		</ul> 
 	</div>
+	<input type="hidden" name="restart" value="0" />
 {/block}

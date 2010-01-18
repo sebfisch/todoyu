@@ -31,14 +31,15 @@ class TodoyuInstallerRenderer {
 	 * Render welcome screen
 	 *
 	 * @param	String	$error
+	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderWelcome($nextStep, $error = '') {
+	public static function renderWelcome($nextStep, array $result) {
 		$data	= array(
-			'title'				=> 'Welcome',
+			'title'				=> Label('LLL:installer.title.welcome'),
 			'textclass'			=> 'text textInfo',
 			'hideSubmitInitial'	=> true,
-			'buttonLabel'		=> 'Check server compatibility',
+			'buttonLabel'		=> Label('LLL:installer.button.checkServerCompatibility'),
 			'next'				=> true,
 			'nextStep'			=> $nextStep
 		);
@@ -53,22 +54,17 @@ class TodoyuInstallerRenderer {
 	 * Render server check (correct PHP version and writable files, folders) screen
 	 *
 	 * @param	String	$error
+	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderServercheck($nextStep, $error = '') {
-		$versionStatus	= TodoyuInstaller::getPhpVersionStatus();
-		$next			= 	$versionStatus == 'OK' ? true : false;
-
-		list($writableStatuses, $writablePathsOk)	= TodoyuInstaller::getWritableStatuses();
-		$next	= ( $writablePathsOk	== true ) ? $next : false;
-
+	public static function renderServercheck($nextStep, array $result) {
 		$data	= array(
-			'title'				=> 'Server check',
-			'phpversionStatus'	=> $versionStatus,
-			'phpversion'		=> '(Your version: ' . PHP_VERSION . ')',
-			'writable'			=> $writableStatuses,
-			'next'				=> $next,
-			'buttonLabel'		=> 'Configure database',
+			'title'				=> Label('LLL:installer.title.serverCheck'),
+			'phpversionStatus'	=> $result['versionStatus'],
+			'phpversion'		=> '(' . Label('LLL:installer.yourVersion') . PHP_VERSION . ')',
+			'writable'			=> $result['writableStatuses'],
+			'next'				=> $result['error'] === false,
+			'buttonLabel'		=> Label('LLL:installer.button.configureDatabase'),
 			'nextStep'			=> $nextStep
 		);
 		$tmpl	= 'install/view/02_servercheck.tmpl';
@@ -77,68 +73,34 @@ class TodoyuInstallerRenderer {
 	}
 
 
-	/**
-	 * Render DB connection details form
-	 *
-	 * @param String	$nextStep
-	 * @param String	$error
-	 */
-	public static function renderDbConnectionConfig($nextStep, $error) {
-		$data	= array(
-			'title'				=> 'Setup Database Server Connection',
-			'next'				=> true,
-			'buttonLabel'		=> 'Test connection',
-			'nextStep'			=> $nextStep,
-		);
-
-		$tmpl	= 'install/view/03_dbconnection.tmpl';
-
-		return render($tmpl, $data);
-	}
-
 
 	/**
 	 * Check DB connection details. This step repeats itself on connection failure.
 	 *
-	 * @param String	$nextStep
-	 * @param String	$error
+	 * @param	String	$error
+	 * @param	Array	$result
+	 * @return	String
 	 */
-	public static function renderDbConnectionCheck($nextStep, $error) {
-		$dbData	= $_SESSION['todoyuinstaller']['db'];
-//		TodoyuDebug::printHtml($dbData);
+	public static function renderDbConnection($nextStep, array $result) {
+		$error	= $result['error'];
 
-		$currentStepName	= TodoyuInstallerStepManager::getCurrentStepName();
-
+			// Render connection data form
 		$data	= array(
-			'title'			=> 'Setup Database Server Connection',
-			'fields'		=> $dbData,
+			'title'			=> Label('LLL:installer.title.setupDatabaseServerConnection'),
+			'fields'		=> $result['db'],
 			'next'			=> true,
-			'buttonLabel'	=> 'Test connection',
-			'nextStep'		=> $currentStepName
+			'nextStep'		=> $result['nextStep'],
+			'buttonLabel'	=> Label('LLL:installer.button.testConnection'),
 		);
 
-			// Received connection data, test-connect
-		if( is_array($dbData) && array_key_exists('server', $dbData) ) {
-			$data['connectionHasBeenChecked']	= true;
-			$connectionOk	= true;
-			try {
-				TodoyuDbAnalyzer::checkDbConnection($dbData);
-			} catch(Exception $e) {
-					// Connecting failed
-				$data['textClass']	= 'text textError';
-				$data['text']		= 'Error: ' . $e->getMessage();
-				$data['hasError']	= 1;
-				$data['buttonLabel']= 'Check connection data';
-				$data['nextStep']	= $currentStepName;
-
-				$connectionOk	= false;
-			}
-
-			if ( $connectionOk ) {
-				TodoyuInstallerStepManager::jumpToNextStep();
-			}
-
+			// Prosseccing received connection data, did it succeed?
+		if( is_array($result['db']) && $error !== false ) {
+			$data['textClass']	= 'text textError';
+			$data['hasError']	= 1;
+			$data['text']		= Label('LLL:installer.error') . ': ' . $error;
+			$data['buttonLabel']= Label('LLL:installer.button.checkConnectionData');
 		}
+
 		$tmpl	= 'install/view/03_dbconnection.tmpl';
 
 		return render($tmpl, $data);
@@ -149,34 +111,26 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render DB select screen
 	 *
-	 * @param	String	$nextStep
 	 * @param	String	$error
-	 * @param	Array	$additionalData
+	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderDbSelect($nextStep, $error = '', $additionalData = array())	{
-		$dbData	= $_SESSION['todoyuinstaller']['db'];
+	public static function renderDbSelect($nextStep, array $result)	{
+		$dbConfig	= $_SESSION['todoyuinstaller']['db'];
 
 		$data	= array(
-			'title'			=> 'Setup Database',
+			'title'			=> Label('LLL:installer.title.setupDatabase'),
 			'next'			=> true,
 			'nextStep'		=> $nextStep,
-			'buttonLabel'	=> 'Save Database Setup'
+			'buttonLabel'	=> Label('LLL:installer.button.saveDatabaseSetup')
 		);
 
-		$data	= array_merge($data, $additionalData);
-
-		if( is_array($dbData) ) {
+		if( is_array($dbConfig) ) {
 			try {
-				$data['options'] = TodoyuDbAnalyzer::getAvailableDatabases($dbData);
+				$data['options'] = TodoyuDbAnalyzer::getAvailableDatabases($dbConfig);
 			} catch(Exception $e) {
-				$data['textclass'] = 'text textError';
-				$data['text'] = 'Error: ' . $e->getMessage();
-			}
-
-			if( strlen($error) > 0 )	{
-				$data['textclass'] = 'text textError';
-				$data['text'] = 'Error: ' . $error;
+				$data['textclass']	= 'text textError';
+				$data['text']		= Label('LLL:installer.error') . ': ' . $error;
 			}
 		}
 
@@ -187,30 +141,21 @@ class TodoyuInstallerRenderer {
 
 
 
-	public static function renderDbSelectAgain($nextStep, $error = '') {
-		$data	= array(
-			'hasError'	=> 1
-		);
-
-		return self::renderDbSelect($nextStep, $error, $data);
-	}
-
-
-
 	/**
 	 * Render import static DB data screen
 	 *
 	 * @param	String	$error
+	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderPreviewImportStatic($nextStep, $error = '') {
+	public static function renderImportStaticData($nextStep, array $result) {
 		$data	= array(
-			'title'			=> 'Import static data',
-			'text'			=> 'DB connection is stored, import static data now.',
+			'title'			=> Label('LLL:installer.title.importStaticData'),
+			'text'			=> Label('LLL:installer.dbConnectionStored') . ' ' . Label('LLL:installer.importStaticData'),
 			'textClass'		=> 'text textSuccess',
 			'coreStructure'	=> TodoyuInstallerDbHelper::getCoreDBstructures(),
 			'extStructure'	=> TodoyuInstallerDbHelper::getExtDBstructures(),
-			'buttonLabel'	=> 'Import static database data',
+			'buttonLabel'	=> Label('LLL:installer.button.importStaticData'),
 			'next'			=> true,
 			'nextStep'		=> $nextStep
 		);
@@ -222,19 +167,20 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render config screen
+	 * Render system config setup (name, email, primary language)
 	 *
 	 * @param	String	$error
+	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderConfig($nextStep, $error = '') {
+	public static function renderSytemConfig($nextStep, array $result) {
 		$data	= array(
-			'title'			=> 'System config',
+			'title'			=> Label('LLL:installer.title.systemConfig'),
 			'text'			=> $error ? $error : '',
 			'textClass'		=> $error ? 'text textError' : '',
 			'nextStep'		=> $nextStep,
 			'next'			=> true,
-			'buttonLabel'	=> 'Save configuration'
+			'buttonLabel'	=> Label('LLL:installer.button.saveConfiguration'),
 		);
 
 		$tmpl	= 'install/view/06_config.tmpl';
@@ -248,16 +194,17 @@ class TodoyuInstallerRenderer {
 	 * Render admin password change screen
 	 *
 	 * @param	String	$error
+	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderAdminPassword($nextStep, $error = '') {
+	public static function renderAdminPassword($nextStep, array $result) {
 		$data	= array(
-			'title'			=> 'Change admin password',
-			'text'			=> strlen($error) > 0 ? $error : 'Change admin password for your security!',
+			'title'			=> Label('LLL:installer.changeAdminPassword'),
+			'text'			=> strlen($error) > 0 ? $error : Label('LLL:installer.error.changeAdminPassword'),
 			'textClass'		=> strlen($error) > 0 ?  'text textError' : 'text textInfo',
 			'nextStep'		=> $nextStep,
 			'next'			=> true,
-			'buttonLabel'	=> 'Change admin password'
+			'buttonLabel'	=> Label('LLL:installer.button.changeAdminPassword'),
 		);
 
 		$tmpl	= 'install/view/07_adminpassword.tmpl';
@@ -271,16 +218,17 @@ class TodoyuInstallerRenderer {
 	 * Render finishing screen
 	 *
 	 * @param	String	$error
+	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderFinish($nextStep, $error = '') {
+	public static function renderFinish($nextStep, array $result) {
 		$data	= array(
-			'title'			=> 'Installation finished',
-			'text'			=> 'Installation finished',
+			'title'			=> Label('LLL:installer.title.finished'),
+			'text'			=> Label('LLL:installer.title.finished'),
 			'textClass'		=> 'text textSuccess',
 			'nextStep'		=> $nextStep,
 			'next'			=> true,
-			'buttonLabel'	=> 'Disable installer and go to login'
+			'buttonLabel'	=> Label('LLL:installer.button.disableAndLogIn')
 		);
 		$tmpl	= 'install/view/08_finish.tmpl';
 
@@ -292,16 +240,17 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render updater welcome screen
 	 *
-	 * @param 	String	$error
+	 * @param	String	$error
+	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderWelcomeToUpdate($nextStep, $error = '') {
+	public static function renderWelcomeToUpdate($nextStep, array $result) {
 		$data	= array(
-			'title'			=> 'Welcome to datebase update',
+			'title'			=> Label('LLL:installer.title.welcomeToUpdate'),
 			'sqlUpdates'	=> TodoyuInstaller::getRequiredVersionUpdates(),
 			'nextStep'		=> $nextStep,
 			'next'			=> true,
-			'buttonLabel'	=> 'Perform DB updates'
+			'buttonLabel'	=> Label('LLL:installer.button.dbUpdate')
 		);
 
 		$tmpl	= 'install/view/09_welcometoupdate.tmpl';
@@ -315,17 +264,18 @@ class TodoyuInstallerRenderer {
 	 * Render welcome screen
 	 *
 	 * @param	String	$error
+	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderDBstructureCheck($nextStep, $error = '') {
+	public static function renderDBstructureCheck($nextStep, array $result) {
 			// DB structure is NOT up-to-date! offer updating
 		$data	= array(
-			'title'			=> 'Database update check',
+			'title'			=> Label('LLL:installer.title.dbUpdateCheck'),
 			'textclass'		=> 'text textInfo',
 			'diffs'			=> TodoyuInstallerDbHelper::getDBstructureDiff(),
 			'nextStep'		=> $nextStep,
 			'next'			=> true,
-			'buttonLabel'	=> 'Finish update'
+			'buttonLabel'	=> Label('LLL:installer.button.finishUpdate')
 		);
 		$tmpl	= 'install/view/10_dbchanges.tmpl';
 
@@ -338,16 +288,17 @@ class TodoyuInstallerRenderer {
  	* Render update finished screen
  	*
  	* @param	String	$error
- 	* @return	String
+	 * @param	Array	$result
+	 * @return	String
  	*/
-	public static function renderUpdateFinished($nextStep, $error = '') {
+	public static function renderUpdateFinished($nextStep, array $result) {
 		$data	= array(
-			'title'			=> 'Update finished',
-			'text'			=> 'Update finished',
+			'title'			=> Label('LLL:installer.title.updateFinished'),
+			'text'			=> Label('LLL:installer.title.updateFinished'),
 			'textClass'		=> 'text textSuccess',
 			'nextStep'		=> $nextStep,
 			'next'			=> true,
-			'buttonLabel'	=> 'Disable installer and go to login'
+			'buttonLabel'	=> Label('LLL:installer.button.disableAndLogIn')
 		);
 
 		$tmpl	= 'install/view/11_finishupdate.tmpl';

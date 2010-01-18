@@ -35,9 +35,8 @@ class TodoyuDbAnalyzer {
 	public static function getAvailableDatabases($dbData, $error = '')	{
 		$databases	= array(
 			0 => array(
-				'text' 		=> 'Please choose a database',
+				'text' 		=> 'Please choose a Database',
 				'disabled'	=> true,
-//				'selected'	=> true
 			)
 		);
 
@@ -52,11 +51,7 @@ class TodoyuDbAnalyzer {
 
 		while($row = mysql_fetch_object($source))	{
 			if ( ! in_array($row->Database, $ignoredDBs) ) {
-				$databases[$row->Database] = array(
-					'text' 		=> $row->Database,
-//					'disabled'	=> false,
-//					'selected'	=> false
-				);
+				$databases[$row->Database] = array('text' => $row->Database);
 			}
 		}
 
@@ -72,21 +67,22 @@ class TodoyuDbAnalyzer {
 	 * @return	Boolean
 	 * @throws	Exception
 	 */
-	public static function checkDbConnection(array $data = array()) {
-		if ( array_key_exists('server', $data) && array_key_exists('username', $data) && array_key_exists('password', $data) ) {
-			$conn	= @mysql_connect($data['server'], $data['username'], $data['password']);
+	public static function checkDbConnection($server = '', $username = '', $password = '') {
+		$valid	= true;
 
+		if ( $server !== '' && $username !== '' && $password !== '' ) {
+			$conn	= @mysql_connect($server, $username, $password);
 			if( $conn === false ) {
-				throw new Exception('Cannot connect to the database server "' . $data['server'] . '" ('.mysql_error().')');
+				$valid	= true;
+				throw new Exception('Cannot connect to the database server "' . $server . '" ('.mysql_error().')');
 			}
-
-			$valid	= true;
 		} else {
 			$valid	= false;
 		}
 
 		return $valid;
 	}
+
 
 
 	/**
@@ -160,7 +156,6 @@ class TodoyuDbAnalyzer {
 
 		return array_flip($missingTables);
 	}
-
 
 }
 

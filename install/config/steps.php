@@ -27,136 +27,82 @@
  */
 
 $CONFIG['INSTALLER']['steps'] = array(
-		// ------------- Installer steps -------------
-	0 => array(
-		'name'			=> 'welcome',
+		// -------------------------- Installer steps --------------------------
+	'welcome' => array(
+			// Welcome to installer
 		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcome',
-		'nextStepNum'	=> 1,
+		'nextStep'		=> 'servercheck',
 	),
-	1 => array(
-		'name'			=> 'servercheck',
-			// Check server
-		'processFuncRef'=> 'false',
+	'servercheck' => array(
+			// Check server compatibility
+		'processFuncRef'=> 'TodoyuInstaller::checkServerCompatibility',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderServercheck',
-		'nextStepNum'	=> 2,
+		'nextStep'		=> 'dbconnection',
 	),
-	2 => array(
-		'name'			=> 'dbconnectionconfig',
+	'dbconnection' => array(
 			// Configure DB connection details
-		'processFuncRef'=> false,
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnectionConfig',
-		'nextStepNum'	=> 21,
-	),
-
-	21 => array(
-		'name'			=> 'dbconnectioncheck',
-			// DB connection and check, store to session if connection OK, repeat on failure
 		'processFuncRef'=> 'TodoyuInstaller::checkDbConnection',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnectionCheck',
-			// If check failed: this step repeats itself
-			// If check verified: save and autoforward to next step
-		'nextStepNum'	=> 3,
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnection',
+		'nextStep'		=> 'dbselect',
 	),
-
-	3 => array(
-		'name'			=> 'dbselect',
-			// Save DB connection data.	Select DB
-		'processFuncRef'=> 'TodoyuInstaller::dbSelect',
+	'dbselect' => array(
+			// Configure to select existing or create new DB. Save DB connection data
+		'processFuncRef'=> 'TodoyuInstaller::storeDbConfig',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbSelect',
-		'nextStepNum'	=> 31,
+		'nextStep'		=> 'staticdata',
 	),
-
-	31	=> array(
-			'name'			=> 'savedbselect',
-				// processing forwards to next step automaticly on success
-			'processFuncRef'=> 'TodoyuInstaller::saveDbSelect',
-				// render func is only called failure
-			'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbSelectAgain',
-			'nextStepNum'	=> 4,
-	),
-
-	4 => array(
-		'name'			=> 'showstaticdata',
-		'processFuncRef'=> 'false',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderPreviewImportStatic',
-		'nextStepNum'	=> 41,
-	),
-
-	41 => array(
-		'name'			=> 'importstaticdata',
-			// No output, processing forwards to next step automaticly
+	'staticdata' => array(
+			// Preview static data, than import it
 		'processFuncRef'=> 'TodoyuInstaller::importStaticData',
-		'nextStepNum'	=> 5
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderImportStaticData',
+		'nextStep'		=> 'systemconfig',
 	),
-
-	5 => array(
-		'name'			=> 'config',
+	'systemconfig' => array(
 			// Update system config file (/config/system.php)
-		'processFuncRef'=> 'TodoyuInstaller::tryUpdateConfig',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderConfig',
-		'nextStepNum'	=> 6,
+		'processFuncRef'=> 'TodoyuInstaller::updateSytemConfig',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderSytemConfig',
+		'nextStep'		=> 'setadminpassword',
 	),
-
-	6 => array(
-		'name'			=> 'setadminpassword',
-			// Validate password, store admin user and password in DB (table 'ext_user_user')
+	'setadminpassword' => array(
 		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderAdminPassword',
-		'nextStepNum'	=> 61,
+		'nextStep'		=> 'saveadminpassword',
 	),
-
-	61 => array(
-		'name'			=> 'saveadminpassword',
-			// No output, processing forwards to next step automaticly or repeats the previous on error
+	'saveadminpassword' => array(
 		'processFuncRef'=> 'TodoyuInstaller::saveadminpassword',
-		'nextStepNum'	=> 7
-	),
-
-	7 => array(
-		'name'			=> 'finish',
-			// Finish installer: deactivate, reinit step, go to todoyu login page
-		'processFuncRef'=> false, //'TodoyuInstaller::finish',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderFinish',
-		'nextStepNum'	=> 100,
+		'nextStep'		=> 'exit'
 	),
-
-		// ------------- Update steps -------------
-	8 => array(
-		'name'			=> 'welcometoupdate',
-			// Welcome to version updates screen
+		// -------------------------- Update steps --------------------------
+	'welcometoupdate' => array(
 		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcomeToUpdate',
-		'nextStepNum'	=> 9,
+		'nextStep'		=> 'updatetocurrentversion',
 	),
-	9 => array(
-		'name'			=> 'updatetocurrentversion',
-			// Update beta1 to beta2, have mandatory updates be carried out
+	'updatetocurrentversion' => array(
 		'processFuncRef'=> 'TodoyuInstaller::updateToCurrentVersion',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
-		'nextStepNum'	=> 10,
+		'nextStep'		=> 'dbstructurecheck',
 	),
-	10 => array(
-		'name'			=> 'dbstructurecheck',
+	'dbstructurecheck' => array(
 		'processFuncRef'	=> '',
 			// Check for changes in 'tables.sql' files against DB
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
-		'nextStepNum'	=> 11,
+		'renderFuncRef'		=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
+		'nextStep'			=> 'finishupdate',
 	),
-	11 => array(
-		'name'			=> 'finishupdate',
+	'finishupdate' => array(
 		'processFuncRef'=> 'TodoyuInstaller::finishUpdate',
 			// processing autoforwards to next step
 		'renderFuncRef'	=> false, //'TodoyuInstallerRenderer::renderUpdateFinished',
-		'nextStepNum'	=> 7,
+		'nextStep'		=> 'finish',
 	),
 
 		// ------------- Exit installer and go to todoyu login page -------------
-	100	=> array(
-		'name'			=> 'exit',
+	'exit'	=> array(
 		'processFuncRef'=> 'TodoyuInstaller::finish',
 		'renderFuncRef'	=> false,
-		'nextStepNum'	=> 0,
+		'nextStep'		=> 0,
 	)
 );
 

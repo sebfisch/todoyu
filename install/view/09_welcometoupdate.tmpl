@@ -1,10 +1,12 @@
 {extends main.tmpl}
 
 {block name="box"}
-	<div class="{$textclass}">Update steps:
+	<div class="{$textclass}">
+		{Label installer.title.welcomeToTodoyuUpdate}<br />
+		{Label installer.updateSteps}:
 		<ul>
-			<li>General update: Changes to DB structures since your currently installed version ({constant(TODOYU_VERSION)})</li>
-			<li>DB-Analyzer: Check for extensions' newly added DB tables and columns</li>
+			<li>{Label installer.generalUpdate}: {Label installer.updateDbChanges} ({constant(TODOYU_VERSION)})</li>
+			<li>{Label installer.dbAnalyzer}: {Label installer.analyzerInfo}</li>
 		</ul>
 	</div>
 {/block}

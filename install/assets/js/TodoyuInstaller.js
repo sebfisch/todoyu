@@ -25,6 +25,17 @@ TodoyuInstaller = {
 			textbox.disabled = true;
 		}
 	},
+	
+	
+	
+	checkDbSelect: function() {
+		if ( $F('database_new') !== '' ) {
+			$('database').selectedIndex	= 0;
+			$('database').disabled	= true;
+		} else {
+			$('database').disabled	= false;
+		}
+	},
 
 
 

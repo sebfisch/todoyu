@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locallang>
+	<labels lang="en">
+		<label index="installationSteps">Installation steps</label>
+		<label index="yourVersion">Your Version:</label>
+		<label index="dbConnectionStored">DB connection is stored.</label>
+		<label index="importStaticData">Import static data now.</label>
+		<label index="foldersFilesWritable">Folders / files writable</label>
+		<label index="writable">writable</label>
+		<label index="notWritable">NOT WRITABLE</label>
+		<label index="server">Server</label>
+		<label index="username">Username</label>
+		<label index="password">Password</label>
+		<label index="repeatPassword">Repeat Password</label>
+		<label index="systemName">System Name</label>
+		<label index="systemEmail">System Email</label>
+		<label index="language">Language</label>
+		<label index="updateSteps">Update steps</label>
+		<label index="generalUpdate">General update</label>
+		<label index="dbAnalyzer">DB-Analyzer</label>
+		<label index="updateDbChanges">Changes to DB structures since your currently installed version</label>
+		<label index="analyzerInfo">Check for extensions newly added DB tables and columns</label>
+		<label index="error">Error</label>
+		<label index="error.changeAdminPassword">Change admin password for your security!</label>
+		<label index="error.incorrectDbConnectionSetup">Please correct the Database connection setup below:</label>
+		<label index="affirm.dbServerConnectionOk">Database server connection verified</label>
+		<label index="affirm.dbIsUptodate">Congratulations! your database is up to date.</label>
+		<label index="instruction.enterDbConnectionDetails">Please enter the database server connection details:</label>
+		<label index="title.license">End user license agreement for todoyu beta3</label>
+		<label index="title.welcome">Welcome</label>
+		<label index="title.serverCheck">Server Check</label>
+		<label index="title.setupDatabaseServerConnection">Setup Database Server Connection</label>
+		<label index="title.setupDatabase">Setup Database</label>
+		<label index="title.importStaticData">Import Static Data</label>
+		<label index="title.systemConfig">System config</label>
+		<label index="title.changeAdminPassword">Change admin password</label>
+		<label index="title.finished">Installation finished</label>
+		<label index="title.welcomeToTodoyuUpdate">Welcome to todoyu update!</label>
+		<label index="title.welcomeToUpdate">Welcome to datebase update</label>
+		<label index="title.dbUpdateCheck">Database update check</label>
+		<label index="title.updateFinished">Update finished</label>
+		<label index="step.licenseAgreement">License agreement</label>
+		<label index="step.checkServerCompatibility">Check server compatibility</label>
+		<label index="step.databaseConnectionSetup">Database connection setup</label>
+		<label index="step.importStaticData">Import static data</label>
+		<label index="step.setAdminPassword">Set administrator password</label>
+		<label index="button.iAcceptLicense">I accept the terms in the license agreement</label>
+		<label index="button.checkServerCompatibility">Check server compatibility</label>
+		<label index="button.configureDatabase">Configure database</label>
+		<label index="button.testConnection">Test connection</label>
+		<label index="button.checkConnectionData">Check connection data</label>
+		<label index="button.saveDatabaseSetup">Save Database Setup</label>
+		<label index="button.importStaticData">Import static database data</label>
+		<label index="button.saveConfiguration">Save configuration</label>
+		<label index="button.changeAdminPassword">Change admin password</label>
+		<label index="button.disableAndLogIn">Disable installer and go to login</label>
+		<label index="button.dbUpdate">Perform DB updates</label>
+		<label index="button.finishUpdate">Finish update</label>
+		<label index="panel.title.licenseInformation">License information</label>
+	</labels>
+	<labels lang="de">
+	</labels>
+</locallang>

@@ -30,19 +30,24 @@ class TodoyuInstallerDbHelper {
 	/**
 	 * Add database
 	 *
-	 * @param	String	$error
+	 * @param	String	$newDatabase
+	 * @param	String	$database
+	 * @param	String	$server
+	 * @param	String	$username
+	 * @param	String	$password
 	 */
-	public static function addDatabase($error = '')	{
-		if( strlen($_POST['database_new']) > 0 )	{
-			$dbData		= $_SESSION['todoyuinstaller']['db'];
-			$conn = mysql_connect($dbData['server'], $dbData['username'], $dbData['password']);
-			if(@mysql_query('CREATE DATABASE `' . trim($_POST['database_new']) . '`', $conn) == false)	{
-				throw new Exception('Can not create database ' . $_POST['database_new'] . ': (' . mysql_error() . ')');
+	public static function addDatabase($newDatabase, $database, $server, $username, $password)	{
+			// Create new DB?
+		if( strlen($newDatabase) > 0 )	{
+			$conn	= mysql_connect($server, $username, $password);
+			$query	= 'CREATE DATABASE `' . $newDatabase . '`';
+
+			if( @mysql_query($query, $conn) == false )	{
+				throw new Exception('Can not create database ' . $newDatabase . ': (' . mysql_error() . ')');
 			}
-			$_SESSION['todoyuinstaller']['db']['database'] = $_POST['database_new'];
-		} else if( $_POST['database'] != '0' )	{
-			$_SESSION['todoyuinstaller']['db']['database'] = $_POST['database'];
-		} else {
+			$_SESSION['todoyuinstaller']['db']['database'] = $newDatabase;
+		} else if( $database == '0' )	{
+				// No DB name given or selected?
 			throw new Exception('Please select a database or enter a name');
 		}
 	}
@@ -50,14 +55,19 @@ class TodoyuInstallerDbHelper {
 
 
 	/**
-	 * Save database configuration file with submitted data
+	 * Save DB configuration file 'config/db.php' with submitted data
+	 *
+	 * @param	String	$server
+	 * @param	String	$username
+	 * @param	String	$password
+	 * @return	Integer	number of bytes written or false on failure
 	 */
-	public static function saveDbConfigInFile() {
-//		echo '<pre>'.print_r($_SESSION['todoyuinstaller']['db'], true).'</pre>';
-//		die();
-
+	public static function saveDbConfigInFile($server, $username, $password, $database) {
 		$data	= array(
-			'db'	=> $_SESSION['todoyuinstaller']['db']
+			'server'	=> $server,
+			'username'	=> $username,
+			'password'	=> $password,
+			'database'	=> $database
 		);
 		$tmpl	= 'install/view/configs/db.php.tmpl';
 
@@ -65,13 +75,13 @@ class TodoyuInstallerDbHelper {
 		$code	= '<?php' . $config . '?>';
 		$file	= PATH . '/config/db.php';
 
-		file_put_contents($file, $code);
+		return	file_put_contents($file, $code);
 	}
 
 
 
 	/**
-	 * Import static data SQL files
+	 * Import static data from SQL files
 	 */
 	public static function importStaticData() {
 			// Structure (from core and extensions 'tables.sql' files)
@@ -128,9 +138,9 @@ class TodoyuInstallerDbHelper {
 
 
 	/**
-	 *	Get all core DB tables' structures for fresh install from 'tables.sql'
+	 * Get all core DB tables' structures for fresh install from 'tables.sql'
 	 *
-	 *	@return	Array
+	 * @return	Array
 	 */
 	public static function getCoreDBstructures() {
 			// Get 'table.sql' definitions from extensions having them
@@ -156,9 +166,9 @@ class TodoyuInstallerDbHelper {
 
 
 	/**
-	 *	Get all extensions DB tables' structures for fresh install from 'tables.sql'
+	 * Get all extensions DB tables' structures for fresh install from 'tables.sql'
 	 *
-	 *	@return	Array
+	 * @return	Array
 	 */
 	public static function getExtDBstructures() {
 			// Get 'table.sql' definitions from extensions having them
@@ -184,9 +194,9 @@ class TodoyuInstallerDbHelper {
 
 
 	/**
-	 *	Find all differences between 'tables.sql' files and DB of installed extensions
+	 * Find all differences between 'tables.sql' files and DB of installed extensions
 	 *
-	 *	@return	Array
+	 * @return	Array
 	 */
 	public static function getDBstructureDiff() {
 			// Get 'table.sql' definitions from extensions having them
@@ -214,8 +224,8 @@ class TodoyuInstallerDbHelper {
 	/**
 	 * Find differences between tables' column structures in 'tables.sql' files and DB
 	 *
-	 *	@param	Array	$sqlStructures
-	 *	@param	Array	$dbStructures
+	 * @param	Array	$sqlStructures
+	 * @param	Array	$dbStructures
 	 */
 	private static function getDBStructureDifferences(array $newTables, array $sqlStructures, array $dbStructures) {
 		$sqlStructuresBak	= $sqlStructures;
@@ -294,9 +304,24 @@ class TodoyuInstallerDbHelper {
 
 
 	/**
+	 * Check whether the installation has been carried out before
+	 *
+	 * @return	Boolean
+	 */
+	public static function isDatabaseConfigured() {
+		return (	$GLOBALS['CONFIG']['DB']['autoconnect'] === true
+				&&	$GLOBALS['CONFIG']['DB']['server'] !== ''
+				&&	$GLOBALS['CONFIG']['DB']['username'] !== ''
+				&&	$GLOBALS['CONFIG']['DB']['password'] !== ''
+				&&	$GLOBALS['CONFIG']['DB']['database'] !== '');
+	}
+
+
+
+	/**
 	 * Compile, clean, separate and run all queries included in given structural analysis results array
 	 *
-	 *	@param	Array	$dbDiff
+	 * @param	Array	$dbDiff
 	 */
 	public static function compileAndRunInstallerQueries(array $dbStructures) {
 		$query	= '';
@@ -309,6 +334,7 @@ class TodoyuInstallerDbHelper {
 
 		$query	= TodoyuSqlParser::cleanSql($query);
 		$query	= str_replace("\n", ' ', $query);
+
 		$queries	= explode(';', $query);
 
 		foreach($queries as $query) {
@@ -319,6 +345,29 @@ class TodoyuInstallerDbHelper {
 		}
 	}
 
+
+
+	/**
+	 * Execute the queries in the version update file
+	 *
+	 * @param	String		$updateFile			Path to update file
+	 * @return	Integer		Number of executed queries
+	 */
+	private static function executeQueriesFromFile($updateFile) {
+		$updateFile	= TodoyuFileManager::pathAbsolute($updateFile);
+		$queries	= TodoyuSqlParser::getQueriesFromFile($updateFile);
+		$count		= 0;
+
+		foreach($queries as $query) {
+			$query	= trim($query);
+			if( $query !== '' ) {
+				Todoyu::db()->query($query);
+				$count++;
+			}
+		}
+
+		return $count;
+	}
 
 }
 ?>

@@ -3,13 +3,15 @@
 {block name="box"}
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 			<tr>
-				<td width="109">System Name *</td>
-				<td width="379"><input name="systemname" type="text" id="systemname" value="{if $fields.server}{$fields.server}{else}Todoyu{/if}" /></td>
+				<td width="109">{Label installer.systemName} *</td>
+				<td width="379">
+					<input name="systemname" type="text" id="systemname" value="{if $fields.server}{$fields.server}{else}Todoyu{/if}" />
+				</td>
 			</tr><tr>
-				<td>System Email *</td>
+				<td>{Label installer.systemEmail} *</td>
 				<td><input type="text" name="email" id="email" value="{$fields.username}" /></td>
 			</tr><tr>
-				<td>Language</td>
+				<td>{Label installer.language}</td>
 				<td>
 					<select name="language" id="language">
 						<option value="de">German (deutsch)</option>

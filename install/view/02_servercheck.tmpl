@@ -9,11 +9,11 @@
 			<td>{if $phpversionStatus == 'OK'}<span class="servercheckicon ok"></span>{else}<span class="servercheckicon problem"></span>{/if}</td>
 		</tr>
 		<tr>
-			<td valign="top">Folders / files writable</td>
+			<td valign="top">{Label installer.foldersFilesWritable}</td>
 	{foreach $writable file status iteration}
 		{if $.foreach.iteration.first}
 			<td><strong class="bullet">&bull;</strong>/{$file}: </td>
-			<td><strong>{if $status}writable{else}NOT WRITABLE{/if}</strong></td>
+			<td><strong>{if $status}{Label installer.writable}{else}{Label installer.notWritable}{/if}</strong></td>
 			<td>{if $status == 'OK'}
 				<span class="servercheckicon ok"></span>{else}
 				<span class="servercheckicon problem"></span>
@@ -24,7 +24,7 @@
 		<tr>
 			<td></td>
 			<td><strong class="bullet">&bull;</strong>/{$file}:</td>
-			<td><strong>{if $status}writable{else}NOT WRITABLE{/if}</strong></td>
+			<td><strong>{if $status}{Label installer.writable}{else}{Label installer.notWritable}{/if}</strong></td>
 			<td>{if $status == 'OK'}<span class="servercheckicon ok"></span>{else}<span class="servercheckicon problem"></span>{/if}</td>
 		</tr>
 		{/if}
