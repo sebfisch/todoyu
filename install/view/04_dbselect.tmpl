@@ -22,7 +22,10 @@
 			</tr>
 			<tr>
 				<td>or create new:</td>
-				<td><input onkeyup="TodoyuInstaller.checkDbSelect()" type="text" id="database_new" name="database_new" /></td>
+				<td>
+					<input onkeyup="TodoyuInstaller.checkDbSelect()" type="text" id="database_new" name="database_new" />
+					<span id="error-newnameTaken" style="display:none;" class="error">This name is already taken!</span>
+				</td>
 			</tr>
 		</table>
 {/block}

@@ -94,6 +94,10 @@ body {
 	margin:5px;
 }
 
+.error {
+	color:red;
+}
+
 .textError{
 	border-color:red !important;
 	background-color:#fdc5c5;

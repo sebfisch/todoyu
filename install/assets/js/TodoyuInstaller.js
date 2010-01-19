@@ -18,9 +18,22 @@ TodoyuInstaller = {
 	
 	
 	checkDbSelect: function() {
-		if ( $F('database_new') !== '' ) {
+		var newDbName	= $F('database_new');
+		
+		if ( newDbName !== '' ) {
+				// New DB name specified? deactivate selector
 			$('database').selectedIndex	= 0;
 			$('database').disabled	= true;
+			
+				// Make sure there's no existing DB with that name
+			$('error-newnameTaken').hide();
+			$('submit').show();
+			$$('#database option').each(function(dbOption){
+				if ( dbOption.value == newDbName) {
+					$('error-newnameTaken').show();
+					$('submit').hide();
+				}
+			});		
 		} else {
 			$('database').disabled	= false;
 		}
