@@ -110,13 +110,13 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 	 * @param	Mixed		$value
 	 */
 	public function setValue($value) {
-		
-		if( trim($value) == '' || trim($value) == '0000-00-00')	 {
+			// Check for "no-data" values
+		if( $value === false || trim($value) == '' || trim($value) == '0000-00-00')	 {
 			$value = false;
-		} else if( ! is_numeric($value) ) {
+		} elseif( ! is_numeric($value) ) {
 			$value	= TodoyuTime::parseDate($value);
 		}
-		
+
 		parent::setValue($value);
 	}
 
@@ -139,16 +139,26 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 	 * Get storage data
 	 * Format as MYSQL-date if flag 'storeAsDate' is set in form
 	 *
-	 * @return	Mixed		Integer or string
+	 * @return	Mixed		Integer or String
 	 */
 	public function getStorageData() {
-		$storageData	= parent::getStorageData();
-		
-		if( $storageData !== false && $this->hasAttribute('storeAsDate') ) {
-			if($this->getValue() === false)	{
-				$storageData = '0000-00-00';
+			// Check for no storage flag
+		if( $this->isNoStorageField() ) {
+			return false;
+		} else {
+			$storageData= $this->getValue();
+
+				// If storeAsDate, format in mysql date format
+			if( $this->hasAttribute('storeAsDate') ) {
+					// Set to zero if no data entered
+				if( $storageData === false ) {
+					$storageData = '0000-00-00';
+				} else {
+					$storageData = date('Y-m-d', $storageData);
+				}
 			} else {
-				$storageData = date('Y-m-d', $this->getValue());
+					// Get normal timestamp
+				$storageData = intval(0);
 			}
 		}
 

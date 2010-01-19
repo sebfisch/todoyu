@@ -158,7 +158,7 @@ abstract class TodoyuActionController {
 
 				// Execute action
 		try {
-			return $controller->runAction($action);
+			return $controllerObject->runAction($action);
 		} catch(TodoyuControllerException $e) {
 			$e->printError();
 		} catch(Exception $e) {

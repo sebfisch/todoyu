@@ -29,6 +29,15 @@
 	// Add "TODOYU" tab
 if( TodoyuAuth::isLoggedIn() ) {
 	TodoyuFrontend::addMenuEntry('todoyu', 'LLL:core.tab.todoyu.label', 'javascript:void(0)', 300);
+
+		// Register ajax loader headlet which indicated acitve ajax requests
+	TodoyuHeadletManager::registerRight('TodoyuHeadletAjaxLoader', 150);
+		// Register meta menu headlet
+	//TodoyuHeadletManager::registerRight('TodoyuHeadletMetaMenu', 80);
+
+		// Generate colors css and sprite
+	TodoyuColors::generate();
 }
+
 
 ?>

@@ -272,7 +272,6 @@ class Todoyu {
 				break;
 			}
 		}
-		//		TodoyuLoggerFile::log('Autoload: ' . $className, LOG_LEVEL_DEBUG, '', '', '');
 	}
 
 }

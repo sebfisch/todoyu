@@ -91,6 +91,7 @@ require_once( PATH_LIB . '/php/jsmin.php' );
 	// Register autoloader
 spl_autoload_register( array('Todoyu', 'autoloader') );
 
+	// Register error handler
 set_error_handler(array('TodoyuErrorHandler', 'handleError'));
 
 

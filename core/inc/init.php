@@ -24,9 +24,6 @@
  * @todo	Use hook functions to allow others to hook in here
  */
 
-initIEcustomScripts();
-
-
 	// Add form include path
 Todoyu::addIncludePath( PATH_CORE . '/form' );
 

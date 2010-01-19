@@ -50,10 +50,7 @@ $CONFIG['MetaMenu']	= array();
 $CONFIG['sendFile']['allow']	= array(PATH_FILES);
 $CONFIG['sendFile']['disallow']	= array();
 
-	// Register ajax loader headlet which indicated acitve ajax requests
-TodoyuHeadletManager::registerRight('TodoyuHeadletAjaxLoader', 150);
-	// Register meta menu headlet
-TodoyuHeadletManager::registerRight('TodoyuHeadletMetaMenu', 80);
+
 
 $CONFIG['AUTH']['loginCookieName']	= 'todoyulogin';
 
@@ -66,6 +63,8 @@ $CONFIG['CHMOD'] = array(
 	'folder'=> 0775
 );
 
+	// Add IE scripts hook to page
+$CONFIG['FE']['PAGE']['finish'][] = 'TodoyuPageAssetManager::addInternetExplorerAssets';
 
 
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuRequest::setDefaultRequestVarsHook', 10);

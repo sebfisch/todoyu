@@ -164,17 +164,8 @@ class TodoyuPageAssetManager {
 	 * @return	String
 	 */
 	private static function buildMergefileName(array $fileConfigs, $fileExt) {
-		$fileConfigs= TodoyuArray::sortByLabel($fileConfigs, 'position');
 		$files		= TodoyuArray::getColumn($fileConfigs, 'file');
-		$modTimes	= '';
-
-		foreach($files as $file) {
-			if( is_file($file) )	{
-				$modTimes .= filemtime($file);
-			}
-		}
-
-		$md5hash	= md5(json_encode($fileConfigs) . $modTimes);
+		$md5hash	= md5(implode('', $files));
 
 		return $md5hash . '.' . $fileExt;
 	}
@@ -247,7 +238,7 @@ class TodoyuPageAssetManager {
 	 */
 	private static function getMergedJavascriptFile(array $fileConfigs) {
 		$mergeFileName	= self::buildMergefileName($fileConfigs, 'js');
-		$mergeFilePath	= PATH_CACHE . '/js/' . $mergeFileName;
+		$mergeFilePath	= PATH_CACHE . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . $mergeFileName;
 
 			// If merge file doesn't exist yet, create it
 		if( ! is_file($mergeFilePath) ) {
@@ -274,6 +265,7 @@ class TodoyuPageAssetManager {
 				$mergeCode .= $fileCode;
 			}
 
+			TodoyuFileManager::makeDirDeep( dirname($mergeFilePath) );
 			file_put_contents($mergeFilePath, $mergeCode);
 		}
 
@@ -343,11 +335,10 @@ class TodoyuPageAssetManager {
 		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
 		$dirHash	= TodoyuDiv::md5short(dirname($pathToFile));
 		$pathInfo	= pathinfo($pathToFile);
-		$basename	= basename($pathToFile, '.' . $pathInfo['extension']);
 
 		$postfix	= ($compressed?'-min':'') . ($localized?'-'.TodoyuLocale::getLocale():'');
 
-		$storagePath= PATH_CACHE . '/js/' . $dirHash . '.' . $basename . $postfix . '.' . $pathInfo['extension'];
+		$storagePath= PATH_CACHE . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . $dirHash . '.' . $pathInfo['filename'] . $postfix . '.' . $pathInfo['extension'];
 
 		return $storagePath;
 	}
@@ -432,7 +423,7 @@ class TodoyuPageAssetManager {
 
 			// Process non-merge files
 		if( sizeof($single) ) {
-			$files = array_merge($files, self::getSingleCssFiles($single));
+			$files = self::getSingleCssFiles($single);
 		}
 
 			// Process merge files
@@ -458,21 +449,21 @@ class TodoyuPageAssetManager {
 
 		foreach($fileConfigs as $fileConfig) {
 			if( $doCompress && $fileConfig['compress'] ) {
-				$compressed	= false;
-
-					// Load file content
-				$fileCode	= file_get_contents($fileConfig['file']);
-
-				if( $doCompress && $fileConfig['compress'] ) {
-					$fileCode	= self::compressStylesheet($fileCode);
-					$compressed	= true;
-				}
+				$compressed	= $doCompress && $fileConfig['compress'];
 
 					// Get file path (absolute)
-				$filePath	= self::getSingleStylesheetPath($fileConfig['file'], $compressed, $fileConfig['media']);
+				$filePath	= self::getSingleStylesheetPath($fileConfig['file'], $compressed);
 
-					// Rewrite external media paths (url())
-				$fileCode	= self::rewriteRelativPaths($fileCode, $fileConfig['file'], $filePath);
+				if( ! is_file($filePath) ) {
+					$fileCode	= file_get_contents($fileConfig['file']);
+
+					if( $compressed ) {
+						$fileCode	= self::compressStylesheet($fileCode);
+					}
+
+						// Rewrite external media paths (url())
+					$fileCode	= self::rewriteRelativPaths($fileCode, $fileConfig['file'], $filePath);
+				}
 
 					// Save content in this file
 				TodoyuFileManager::makeDirDeep( dirname($filePath) );
@@ -503,11 +494,10 @@ class TodoyuPageAssetManager {
 		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
 		$dirHash	= TodoyuDiv::md5short(dirname($pathToFile));
 		$pathInfo	= pathinfo($pathToFile);
-		$basename	= basename($pathToFile, '.' . $pathInfo['extension']);
 
 		$postfix	= $compressed ? '-min' : '' ;
 
-		$storagePath= PATH_CACHE . '/css/' . $basename . '-' . $dirHash . $postfix . '.' . $pathInfo['extension'];
+		$storagePath= PATH_CACHE . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR. $dirHash . '.' . $pathInfo['filename'] . $postfix . '.' . $pathInfo['extension'];
 
 		return $storagePath;
 	}
@@ -532,7 +522,8 @@ class TodoyuPageAssetManager {
 
 			// Process all files of a media type
 		foreach($media as $mediaType => $mediaFileConfigs) {
-			$mergeFilePath = PATH_CACHE . '/css/' . self::buildMergefileName($mediaFileConfigs, 'css');
+			$mergeFileName	= self::buildMergefileName($mediaFileConfigs, 'css');
+			$mergeFilePath	= PATH_CACHE . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR .$mergeFileName;
 
 				// If merge file doesn't exist yet, create it
 			if( ! is_file($mergeFilePath) ) {
@@ -559,6 +550,7 @@ class TodoyuPageAssetManager {
 				}
 
 					// Write content into file
+				TodoyuFileManager::makeDirDeep( dirname($mergeFilePath) );
 				file_put_contents($mergeFilePath, $mergeCode);
 			}
 
@@ -628,6 +620,30 @@ class TodoyuPageAssetManager {
 		}
 
 		return 'url(' . $realpath . ')';
+	}
+
+
+
+	/**
+ 	 * Add IE custom scripts to the browser (if its an IE)
+	 *
+	 */
+	function addInternetExplorerAssets() {
+		if( TodoyuBrowserInfo::isIE() ) {
+			$browserVersion	= TodoyuBrowserInfo::getMajorVersion();
+
+			if( $browserVersion < 7 ) {
+				$GLOBALS['CONFIG']['FE']['PAGE']['assets']['js'][] = array(
+					'file'		=> 'core/assets/js/IEbelow7.js',
+					'position'	=> 1000
+				);
+
+				$GLOBALS['CONFIG']['FE']['PAGE']['assets']['css'][] = array(
+					'file'		=> 'core/assets/css/iebelow7.css',
+					'position'	=> 1000
+				);
+			}
+		}
 	}
 
 }

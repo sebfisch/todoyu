@@ -29,55 +29,64 @@
 class TodoyuColors {
 
 	/**
+	 * Generate css and img file for user colors
+	 *
+	 */
+	public static function generate() {
+		$fileCSS	= PATH_CACHE . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'colors.css';
+		$fileIMG	= PATH_CACHE . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'colors.png';
+
+			// Generate css file if it not exists
+		if( ! is_file($fileCSS) ) {
+			self::generateCSS($fileCSS);
+		}
+
+			// Generate png file if it not exists
+		if( ! is_file($fileIMG) ) {
+			self::generateIMG($fileIMG);
+		}
+	}
+
+
+
+	/**
 	 * Render Color CSS. If not stored up-to-date yet: save and have CSS-sprite be generated as well
 	 *
 	 */
-	public static function generateColorsCSS() {
-		$cssFilename	= 'colors.css';
-		$spriteFilename	= 'colors.png';
-
-			// Make sure folders exists
-		TodoyuFileManager::makeDirDeep( PATH_CACHE . '/css/');
-		TodoyuFileManager::makeDirDeep( PATH_CACHE . '/img/');
-
-
-			// Does CSS file not exist or is it not up-to-date?
-		$neddSprite = false;
-		if ( ! file_exists( PATH_CACHE . '/css/' . $cssFilename) || ! file_exists( PATH_CACHE . '/img/' .  $spriteFilename ) ) {
-
+	private static function generateCSS($fileCSS) {
+			// Get configured colors
+		$colors	= TodoyuArray::assure($GLOBALS['CONFIG']['COLORS']);
 			// Render CSS file content
-			$css	 = '/* colors.css - Enumerated colors to be used for visual differenciation of elements */' . chr(10) . chr(10);
+		$css	= '/* colors.css - Enumerated colors to be used for visual differenciation of elements */' . "\n";
 
-			foreach( $GLOBALS['CONFIG']['COLORS'] as $num => $rgb) {
-				$inverse	= self::invert($rgb);
-				$fade		= self::fade($rgb, 65);
+		foreach($colors as $num => $rgb) {
+			$inverse	= self::invert($rgb);
+			$fade		= self::fade($rgb, 65);
 
-				$css	.= '.enumColBG' . $num . ' { background-color:' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColBGFade' . $num . ' { background-color:' . $fade . ' !important; }' . chr(10);
-				$css	.= '.enumColFont' . $num . ' { color:' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColFontFade' . $num . ' { color:' . $fade . ' !important; }' . chr(10);
-				$css	.= '.enumColBgFg' . $num . ' { background-color:' . $rgb . ' !important; color:' . $inverse . ' !important; }' . chr(10);
-				$css	.= '.enumColFgBg' . $num . ' { background-color:' . $inverse . ' !important; color:' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColFgBg' . $num . ' { background-color:' . $inverse . ' !important; color:' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColBor' . $num . ' { border-color:' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColBorFade' . $num . ' { border-color:' . $fade . ' !important; }' . chr(10);
-				$css	.= '.enumColBorLef' . $num . ' { border-left-color:' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColBorRig' . $num . ' { border-right-color:' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColBorTop' . $num . ' { border-top-color:' . $rgb . ' !important; }' . chr(10);
-				$css	.= '.enumColBorBot' . $num . ' { border-bottom-color:' . $rgb . ' !important; }' . chr(10);
-				$css	.= 'option.enumColOptionLeftIcon' . $num . ' { background:url(\'../img/' . $spriteFilename . '\') no-repeat -8px -' . ($num * 16) . 'px !important; padding:0 0 0 12px; }' . chr(10);
-				$css	.= chr(10);
-			}
-
-				// Save CSS file
-			file_put_contents( PATH_CACHE . '/css/' . $cssFilename, $css );
-
-					// Generate CSS sprite (png)
-			self::generateColorsCSSsprite( PATH_CACHE . '/img/' .  $spriteFilename );
+			$css	.= '.enumColBG' . $num . ' { background-color:' . $rgb . ' !important; }' . "\n";
+			$css	.= '.enumColBGFade' . $num . ' { background-color:' . $fade . ' !important; }' . "\n";
+			$css	.= '.enumColFont' . $num . ' { color:' . $rgb . ' !important; }' . "\n";
+			$css	.= '.enumColFontFade' . $num . ' { color:' . $fade . ' !important; }' . "\n";
+			$css	.= '.enumColBgFg' . $num . ' { background-color:' . $rgb . ' !important; color:' . $inverse . ' !important; }' . "\n";
+			$css	.= '.enumColFgBg' . $num . ' { background-color:' . $inverse . ' !important; color:' . $rgb . ' !important; }' . "\n";
+			$css	.= '.enumColFgBg' . $num . ' { background-color:' . $inverse . ' !important; color:' . $rgb . ' !important; }' . "\n";
+			$css	.= '.enumColBor' . $num . ' { border-color:' . $rgb . ' !important; }' . "\n";
+			$css	.= '.enumColBorFade' . $num . ' { border-color:' . $fade . ' !important; }' . "\n";
+			$css	.= '.enumColBorLef' . $num . ' { border-left-color:' . $rgb . ' !important; }' . "\n";
+			$css	.= '.enumColBorRig' . $num . ' { border-right-color:' . $rgb . ' !important; }' . "\n";
+			$css	.= '.enumColBorTop' . $num . ' { border-top-color:' . $rgb . ' !important; }' . "\n";
+			$css	.= '.enumColBorBot' . $num . ' { border-bottom-color:' . $rgb . ' !important; }' . "\n";
+			$css	.= 'option.enumColOptionLeftIcon' . $num . ' { background:url(\'../img/' . basename($fileIMG) . '\') no-repeat -8px -' . ($num * 16) . 'px !important; padding:0 0 0 12px; }' . "\n";
 		}
 
+			// Save CSS file
+		TodoyuFileManager::makeDirDeep(dirname($fileCSS));
+		file_put_contents($fileCSS, $css);
+
+		$pathWeb	= TodoyuFileManager::pathWeb($fileCSS);
+
 			// Register 'colors.css' to page
-		TodoyuPage::addStylesheet('cache/css/' . $cssFilename, 'all', 200, true, false);
+		TodoyuPage::addStylesheet($pathWeb, 'all', 200, false, false);
 	}
 
 
@@ -86,20 +95,21 @@ class TodoyuColors {
 	 * Render CSS sprite of colors declared in $GLOBALS['CONFIG']['COLORS'], 16 x 16 each
 	 *
 	 */
-	public static function generateColorsCSSsprite( $imgFilename ) {
-		$img	= imagecreate(16, count($GLOBALS['CONFIG']['COLORS']) * 16 );
+	private static function generateIMG($fileIMG) {
+		$colors	= TodoyuArray::assure($GLOBALS['CONFIG']['COLORS']);
+		$img	= imagecreate(16, sizeof($colors)*16);
 
-		foreach( $GLOBALS['CONFIG']['COLORS'] as $num => $rgb) {
+		foreach($colors as $num => $rgb) {
 			$red	= hexdec( substr($rgb, 1, 2) );
 			$green	= hexdec( substr($rgb, 3, 2) );
 			$blue	= hexdec( substr($rgb, 5, 2) );
 
-			$color = ImageColorAllocate ($img, $red, $green, $blue);
+			$color = ImageColorAllocate($img, $red, $green, $blue);
 
 			imagefilledrectangle($img, 0, $num * 16, 16, $num * 16 + 16, $color);
 		}
 
-		imagepng($img, $imgFilename);
+		imagepng($img, $fileIMG);
 	}
 
 
@@ -113,7 +123,7 @@ class TodoyuColors {
 	 *
 	 * @author	Thomas Imboden <timboden@snowflake.ch>
 	 */
-	public static function fade($color, $percentage) {
+	private static function fade($color, $percentage) {
 		$percentage = 100 - $percentage;
 		$rgbValues = array_map( 'hexDec', str_split( ltrim($color, '#'), 2 ) );
 
@@ -133,7 +143,7 @@ class TodoyuColors {
 	 * @return	String
 	 *
 	 */
-	public static function invert($color) {
+	private static function invert($color) {
 		$color = str_replace('#', '', $color);
 	    if (strlen($color) != 6){
 	    		return '#000000';
@@ -158,7 +168,7 @@ class TodoyuColors {
 	 * @return	String
 	 * @author	Thomas Imboden <thimboden@snowflake.ch>
 	 */
-	public static function getBestReadableContrastTextColor($color) {
+	private static function getBestReadableContrastTextColor($color) {
 		$color 	= trim( str_replace('#', '', $color) );
 
 		$c_r	= hexdec(substr($color, 0, 2));
@@ -187,8 +197,8 @@ class TodoyuColors {
 		$color = array(
 			'id'		=> $idColor,
 			'border'	=> $rgb,
-			'text'		=> TodoyuColors::getBestReadableContrastTextColor( $rgb ),
-			'faded'		=> TodoyuColors::fade($rgb, 65),
+			'text'		=> self::getBestReadableContrastTextColor( $rgb ),
+			'faded'		=> self::fade($rgb, 65),
 		);
 
 		return $color;
@@ -202,7 +212,7 @@ class TodoyuColors {
 	 * @param	Integer	$position
 	 * @return	Integer
 	 */
-	public static function getColorRGB($position)	{
+	private static function getColorRGB($position)	{
 		$position = intval($position);
 
 		$rgb	= $GLOBALS['CONFIG']['COLORS'][	$position ];
@@ -218,7 +228,7 @@ class TodoyuColors {
 	 * @param	Integer	$position
 	 * @return	Integer
 	 */
-	public static function getColorID($position)	{
+	private static function getColorID($position)	{
 		$position = intval($position);
 
 		$numOfColors = count($GLOBALS['CONFIG']['COLORS']);
