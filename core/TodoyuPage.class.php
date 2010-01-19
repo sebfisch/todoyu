@@ -491,24 +491,6 @@ class TodoyuPage {
 	}
 
 
-
-	/**
-	 * Add JS localizable labels
-	 *
-	 */
-	private static function addJSlocale() {
-		$GLOBALS['CONFIG']['JS-LOCALE'] = array_unique( $GLOBALS['CONFIG']['JS-LOCALE'] );
-
-		$labels	= array();
-		foreach($GLOBALS['CONFIG']['JS-LOCALE'] as $key) {
-			$labels[]	= chr(9) . '"' . $key . '": \'' . Label( $key ) . '\'';
-		}
-
-		self::$data['jsInlines'][] = chr(10) . 'var Locale = {' . chr(10) .  implode(',' . chr(10), $labels) . chr(10) . '};';
-	}
-
-
-
 	/**
 	 * Render page with template
 	 *

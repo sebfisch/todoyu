@@ -76,13 +76,11 @@ class Todoyu {
 			// User
 		self::$user = TodoyuAuth::getUser();
 
-
-
 			// Init Locale for locallang files
 		TodoyuLocale::setLocale(self::getLang());
 
-			// Set php locale
-		setlocale(LC_ALL, $GLOBALS['CONFIG']['SYSTEM']['locale']);
+			// Set system locale with setlocale
+		self::initSystemLocale();
 	}
 
 
@@ -105,6 +103,20 @@ class Todoyu {
 		}
 
 //		self::addDwooPluginDir('core/lib/php/dwoo');
+	}
+
+
+	public static function initSystemLocale() {
+		$lang	= self::getLang();
+		$locales= TodoyuArray::assure($GLOBALS['CONFIG']['LOCALES']);
+
+			// If selected language is no registered, use english as default
+		if( ! array_key_exists($lang, $locales) ) {
+			$lang = 'en';
+		}
+
+			// Set php locale
+		setlocale(LC_ALL, $locales[$lang]);
 	}
 
 

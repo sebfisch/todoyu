@@ -1,5 +1,5 @@
 --
--- Tabellenstruktur f�r Tabelle `history`
+-- Tabellenstruktur für Tabelle `history`
 --
 
 CREATE TABLE `history` (
@@ -14,7 +14,7 @@ CREATE TABLE `history` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Tabellenstruktur f�r Tabelle `log`
+-- Tabellenstruktur für Tabelle `log`
 --
 
 CREATE TABLE `log` (
@@ -31,7 +31,7 @@ CREATE TABLE `log` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Tabellenstruktur f�r Tabelle `static_country`
+-- Tabellenstruktur für Tabelle `static_country`
 --
 
 CREATE TABLE `static_country` (
@@ -46,7 +46,7 @@ CREATE TABLE `static_country` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Tabellenstruktur f�r Tabelle `static_country_zone`
+-- Tabellenstruktur für Tabelle `static_country_zone`
 --
 
 CREATE TABLE `static_country_zone` (
@@ -60,7 +60,7 @@ CREATE TABLE `static_country_zone` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Tabellenstruktur f�r Tabelle `static_currency`
+-- Tabellenstruktur für Tabelle `static_currency`
 --
 
 CREATE TABLE `static_currency` (

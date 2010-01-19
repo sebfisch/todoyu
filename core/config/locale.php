@@ -23,9 +23,8 @@ $CONFIG['LOCALE']['cacheDir'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'locale';
 $CONFIG['LOCALE']['l10nDir'] 	= PATH . DIRECTORY_SEPARATOR . 'l10n';
 $CONFIG['LOCALE']['cacheExt'] 	= 'locale';
 
-$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
+$CONFIG['SYSTEM']['language']	= 'en';
 
-	// predefine array of JS required labels
-$CONFIG['JS-LOCALE']	= array();
+$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
 
 ?>

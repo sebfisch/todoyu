@@ -1,5 +1,4 @@
-
-
+<?php
 /***************************************************************
 *  Copyright notice
 *
@@ -20,10 +19,16 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['SYSTEM']['name'] 		= '{$config.systemname}';
-$CONFIG['SYSTEM']['email']		= '{$config.email}';
-$CONFIG['SYSTEM']['language']	= '{$config.language}';
+/**
+ * Locales which match to the selected language.
+ * setlocale() tries all locales in the list, uses the first which matches
+ * locales are different on the systems (WIN,LINUX,MAC, etc)
+ */
+$CONFIG['LOCALES'] = array(
+	'en'	=> array('en_US.utf8', 'en_GB.utf8', 'en_US', 'en_GB', 'en', 'English_US', 'English_United States.1252'),
+	'de'	=> array('de_CH.utf8', 'de_AT.utf8', 'de_DE.utf8', 'de_CH', 'de_AT', 'de_DE', 'de', 'de_DE@euro', 'deu_deu', 'German_Switzerland.1252', 'German_Germany.1252'),
+	'fr'	=> array('fr_CH.utf8', 'fr_FR.utf8', 'fr'),
+	'it'	=> array('it_CH.utf8', 'it_IT.utf8', 'it')
+);
 
-//$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
-
-$CONFIG['SYSTEM']['encryptionKey']	= '{$encryptionKey}';
+?>

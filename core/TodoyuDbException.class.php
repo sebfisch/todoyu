@@ -98,9 +98,11 @@ class TodoyuDbException extends Exception {
 		$content= render($tmpl, $data);
 
 		if( $fullDoc ) {
-			$data	= array('content'	=> $content,
-							'title'		=> 'Database Error!');
 			$tmpl	= 'core/view/htmldoc.tmpl';
+			$data	= array(
+				'title'		=> 'Database Error!',
+				'content'	=> $content
+			);
 			$content= render($tmpl, $data);
 		}
 

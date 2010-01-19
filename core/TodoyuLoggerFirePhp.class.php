@@ -40,31 +40,36 @@ class TodoyuLoggerFirePhp {
 		$title	= '[' . $info['fileshort'] . ':' . $info['line'] . ']';
 		$text	= $message . '  [' . $level . ']';
 
-		switch($level) {
-			case LOG_LEVEL_FATAL:
-			case LOG_LEVEL_ERROR:
-				TodoyuDebug::firePhp()->error($text, $title);
-				break;
+		try {
+
+			switch($level) {
+				case LOG_LEVEL_FATAL:
+				case LOG_LEVEL_ERROR:
+					TodoyuDebug::firePhp()->error($text, $title);
+					break;
 
 
-			case LOG_LEVEL_SECURITY:
-				TodoyuDebug::firePhp()->warn($text, $title);
-				break;
+				case LOG_LEVEL_SECURITY:
+					TodoyuDebug::firePhp()->warn($text, $title);
+					break;
 
 
-			case LOG_LEVEL_NOTICE:
-				TodoyuDebug::firePhp()->info($text, $title);
-				break;
+				case LOG_LEVEL_NOTICE:
+					TodoyuDebug::firePhp()->info($text, $title);
+					break;
 
 
-			case LOG_LEVEL_DEBUG:
-			default:
-				TodoyuDebug::firePhp()->log($text, $title);
-				break;
-		}
+				case LOG_LEVEL_DEBUG:
+				default:
+					TodoyuDebug::firePhp()->log($text, $title);
+					break;
+			}
 
-		if( ! empty($data) ) {
-			TodoyuDebug::firePhp()->log($data, '#');
+			if( ! empty($data) ) {
+				TodoyuDebug::firePhp()->log($data, '#');
+			}
+		} catch (Exception $e) {
+			echo '<u>PROBLEM WITH FIREBUG</u><br />' . $e->getMessage();
 		}
 	}
 

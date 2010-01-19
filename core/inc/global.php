@@ -113,6 +113,7 @@ if( ! function_exists('strptime') ) {
 
 	// Load basic core config
 require_once( PATH_CONFIG . '/config.php');
+require_once( PATH_CONFIG . '/locales.php');
 require_once( PATH_CONFIG . '/locale.php');
 require_once( PATH_CONFIG . '/fe.php');
 require_once( PATH_CONFIG . '/assets.php');
