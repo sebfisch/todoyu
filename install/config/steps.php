@@ -20,16 +20,15 @@
 ***************************************************************/
 
 /**
- * Setup installer steps order
+ * Setup installer steps (installation, updating) order
  *
  * @package		Todoyu
  * @subpackage	Installer
  */
 
 $CONFIG['INSTALLER']['steps'] = array(
-		// -------------------------- Installer steps --------------------------
+		// Installation steps
 	'welcome' => array(
-			// Welcome to installer
 		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcome',
 		'nextStep'		=> 'servercheck',
@@ -70,11 +69,21 @@ $CONFIG['INSTALLER']['steps'] = array(
 		'nextStep'		=> 'saveadminpassword',
 	),
 	'saveadminpassword' => array(
-		'processFuncRef'=> 'TodoyuInstaller::saveadminpassword',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderFinish',
-		'nextStep'		=> 'exit'
+		'processFuncRef'	=> 'TodoyuInstaller::saveadminpassword',
+		'renderFuncRef'		=> 'TodoyuInstallerRenderer::renderFinish',
+		'nextStep'			=> 'exit',
+		'dontListProgress'	=> true
 	),
-		// -------------------------- Update steps --------------------------
+	'exit'	=> array(
+		'processFuncRef'	=> 'TodoyuInstaller::finish',
+		'renderFuncRef'		=> false,
+		'nextStep'			=> '',
+		'dontListProgress'	=> true
+	),
+
+
+
+		// ------------------------ Update steps ---------------------
 	'welcometoupdate' => array(
 		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcomeToUpdate',
@@ -94,15 +103,14 @@ $CONFIG['INSTALLER']['steps'] = array(
 	'finishupdate' => array(
 		'processFuncRef'=> 'TodoyuInstaller::finishUpdate',
 			// processing autoforwards to next step
-		'renderFuncRef'	=> false, //'TodoyuInstallerRenderer::renderUpdateFinished',
-		'nextStep'		=> 'finish',
+		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderUpdateFinished',
+		'nextStep'		=> 'exitUpdate',
 	),
-
-		// ------------- Exit installer and go to todoyu login page -------------
-	'exit'	=> array(
-		'processFuncRef'=> 'TodoyuInstaller::finish',
-		'renderFuncRef'	=> false,
-		'nextStep'		=> 0,
+	'exitUpdate'	=> array(
+		'processFuncRef'	=> 'TodoyuInstaller::finish',
+		'renderFuncRef'		=> false,
+		'nextStep'			=> '',
+		'dontListProgress'	=> true
 	)
 );
 

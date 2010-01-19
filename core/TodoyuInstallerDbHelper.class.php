@@ -310,10 +310,10 @@ class TodoyuInstallerDbHelper {
 	 */
 	public static function isDatabaseConfigured() {
 		return (	$GLOBALS['CONFIG']['DB']['autoconnect'] === true
-				&&	$GLOBALS['CONFIG']['DB']['server'] !== ''
-				&&	$GLOBALS['CONFIG']['DB']['username'] !== ''
-				&&	$GLOBALS['CONFIG']['DB']['password'] !== ''
-				&&	$GLOBALS['CONFIG']['DB']['database'] !== '');
+				&&	$GLOBALS['CONFIG']['DB']['server']		!== ''
+				&&	$GLOBALS['CONFIG']['DB']['username']	!== ''
+				&&	$GLOBALS['CONFIG']['DB']['password']	!== ''
+				&&	$GLOBALS['CONFIG']['DB']['database']	!== '');
 	}
 
 

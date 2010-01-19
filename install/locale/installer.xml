@@ -3,6 +3,7 @@
 	<labels lang="en">
 		<label index="lgplThirdPartyLibsLicenses">The following third party libraries are licensed under LGPL v2.1:</label>
 		<label index="installationSteps">Installation steps</label>
+		<label index="servercheckResults">Results of server check:</label>
 		<label index="yourVersion">Your Version:</label>
 		<label index="dbConnectionStored">DB connection is stored.</label>
 		<label index="importStaticData">Import static data now.</label>
@@ -47,7 +48,7 @@
 		<label index="step.setAdminPassword">Set administrator password</label>
 		<label index="button.iAcceptLicense">I accept the terms in the license agreement</label>
 		<label index="button.checkServerCompatibility">Check server compatibility</label>
-		<label index="button.configureDatabase">Configure database</label>
+		<label index="button.configureDatabase">Server Check succeeded, configure database now</label>
 		<label index="button.testConnection">Test connection</label>
 		<label index="button.checkConnectionData">Check connection data</label>
 		<label index="button.saveDatabaseSetup">Save Database Setup</label>
@@ -58,6 +59,20 @@
 		<label index="button.dbUpdate">Perform DB updates</label>
 		<label index="button.finishUpdate">Finish update</label>
 		<label index="panel.title.licenseInformation">License information</label>
+
+		<label index="progress.label.welcome">License Agreement</label>
+		<label index="progress.label.servercheck">Check Server Compatibility</label>
+		<label index="progress.label.dbconnection">Databse Server Configuration</label>
+		<label index="progress.label.dbselect">Select / Create todoyu Database</label>
+		<label index="progress.label.staticdata">Import Static Data</label>
+		<label index="progress.label.systemconfig">General System Configuration</label>
+		<label index="progress.label.setadminpassword">Set Admin Password</label>
+		<!--  <label index="progress.label.saveadminpassword">Save Administrator Password</label>  -->
+		<label index="progress.label.welcometoupdate">Detect installed Version</label>
+		<label index="progress.label.updatetocurrentversion">Update core Database</label>
+		<label index="progress.label.dbstructurecheck">Detect extension modifications</label>
+		<label index="progress.label.finishupdate">Update extension DB tables</label>
+		<!-- <label index="progress.label.exit">Start todoyu</label>  -->
 	</labels>
 	<labels lang="de">
 	</labels>

@@ -28,7 +28,47 @@
 class TodoyuInstallerRenderer {
 
 	/**
-	 * Render welcome screen
+	 * Get render array of installation steps being under execution
+	 *
+	 * @return	Array
+	 */
+	public static function getProgressRenderData($nextStep, $curRenderStep) {
+			// Get only seqment (install / update) of installer steps containing the current step
+		list($installerMode, $steps)	= TodoyuInstaller::getStepsSegment($curRenderStep);
+
+		$progress 	= array(
+			'steps'			=> array(),
+			'installerMode'	=> $installerMode
+		);
+
+			// Render steps progression data
+		$isPast			= 1;
+		foreach($steps as $stepName => $stepData) {
+			if ( $stepData['dontListProgress'] === true ) {
+				break;
+			}
+
+			$isCurrent	= 0;
+			if ( $curRenderStep === $stepName ) {
+				$isCurrent	= 1;
+				$isPast		= 0;
+			}
+
+			$progress['steps'][$stepName]	= array(
+				'installerMode'	=> $installerMode,
+				'label'			=> Label('LLL:installer.progress.label.' . $stepName),
+				'curr'			=> $isCurrent,
+				'past'			=> ($isPast && ! $isCurrent) ? 1 : 0,
+			);
+		}
+
+		return $progress;
+	}
+
+
+
+	/**
+	 * Render welcome screen (license agreement)
 	 *
 	 * @param	String	$nextStep
 	 * @param	Array	$result
@@ -38,12 +78,12 @@ class TodoyuInstallerRenderer {
 		$data	= array(
 			'title'				=> Label('LLL:installer.title.welcome'),
 			'textclass'			=> 'text textInfo',
-			'hideSubmitInitial'	=> true,
-			'buttonLabel'		=> Label('LLL:installer.button.checkServerCompatibility'),
+			'buttonLabel'		=> Label('LLL:installer.button.iAcceptLicense'),
 			'next'				=> true,
+			'progress'			=> self::getProgressRenderData($nextStep, 'welcome'),
 			'nextStep'			=> $nextStep
 		);
-		$tmpl	= 'install/view/01_welcome.tmpl';
+		$tmpl	= 'install/view/01_license.tmpl';
 
 		return render($tmpl, $data);
 	}
@@ -65,6 +105,7 @@ class TodoyuInstallerRenderer {
 			'writable'			=> $result['writableStatuses'],
 			'next'				=> $result['error'] === false,
 			'buttonLabel'		=> Label('LLL:installer.button.configureDatabase'),
+			'progress'			=> self::getProgressRenderData($nextStep, 'servercheck'),
 			'nextStep'			=> $nextStep
 		);
 		$tmpl	= 'install/view/02_servercheck.tmpl';
@@ -90,6 +131,7 @@ class TodoyuInstallerRenderer {
 			'fields'		=> $result['db'],
 			'next'			=> true,
 			'nextStep'		=> $result['nextStep'],
+			'progress'		=> self::getProgressRenderData($nextStep, 'dbconnection'),
 			'buttonLabel'	=> Label('LLL:installer.button.testConnection'),
 		);
 
@@ -122,6 +164,7 @@ class TodoyuInstallerRenderer {
 			'title'			=> Label('LLL:installer.title.setupDatabase'),
 			'next'			=> true,
 			'nextStep'		=> $nextStep,
+			'progress'			=> self::getProgressRenderData($nextStep, 'dbselect'),
 			'buttonLabel'	=> Label('LLL:installer.button.saveDatabaseSetup')
 		);
 
@@ -157,7 +200,8 @@ class TodoyuInstallerRenderer {
 			'extStructure'	=> TodoyuInstallerDbHelper::getExtDBstructures(),
 			'buttonLabel'	=> Label('LLL:installer.button.importStaticData'),
 			'next'			=> true,
-			'nextStep'		=> $nextStep
+			'nextStep'		=> $nextStep,
+			'progress'			=> self::getProgressRenderData($nextStep, 'staticdata'),
 		);
 		$tmpl	= 'install/view/05_importstatic.tmpl';
 
@@ -179,6 +223,7 @@ class TodoyuInstallerRenderer {
 			'text'			=> $error ? $error : '',
 			'textClass'		=> $error ? 'text textError' : '',
 			'nextStep'		=> $nextStep,
+			'progress'		=> self::getProgressRenderData($nextStep, 'systemconfig'),
 			'next'			=> true,
 			'buttonLabel'	=> Label('LLL:installer.button.saveConfiguration'),
 		);
@@ -203,6 +248,7 @@ class TodoyuInstallerRenderer {
 			'text'			=> strlen($error) > 0 ? $error : Label('LLL:installer.error.changeAdminPassword'),
 			'textClass'		=> strlen($error) > 0 ?  'text textError' : 'text textInfo',
 			'nextStep'		=> $nextStep,
+			'progress'		=> self::getProgressRenderData($nextStep, 'setadminpassword'),
 			'next'			=> true,
 			'buttonLabel'	=> Label('LLL:installer.button.changeAdminPassword'),
 		);
@@ -227,6 +273,7 @@ class TodoyuInstallerRenderer {
 			'text'			=> Label('LLL:installer.title.finished'),
 			'textClass'		=> 'text textSuccess',
 			'nextStep'		=> $nextStep,
+			'progress'		=> self::getProgressRenderData($nextStep, 'exit'),
 			'next'			=> true,
 			'buttonLabel'	=> Label('LLL:installer.button.disableAndLogIn')
 		);
@@ -249,6 +296,7 @@ class TodoyuInstallerRenderer {
 			'title'			=> Label('LLL:installer.title.welcomeToUpdate'),
 			'sqlUpdates'	=> TodoyuInstaller::getRequiredVersionUpdates(),
 			'nextStep'		=> $nextStep,
+			'progress'		=> self::getProgressRenderData($nextStep, 'welcometoupdate'),
 			'next'			=> true,
 			'buttonLabel'	=> Label('LLL:installer.button.dbUpdate')
 		);
@@ -274,6 +322,7 @@ class TodoyuInstallerRenderer {
 			'textclass'		=> 'text textInfo',
 			'diffs'			=> TodoyuInstallerDbHelper::getDBstructureDiff(),
 			'nextStep'		=> $nextStep,
+			'progress'		=> self::getProgressRenderData($nextStep, 'updatetocurrentversion'),
 			'next'			=> true,
 			'buttonLabel'	=> Label('LLL:installer.button.finishUpdate')
 		);
@@ -297,6 +346,7 @@ class TodoyuInstallerRenderer {
 			'text'			=> Label('LLL:installer.title.updateFinished'),
 			'textClass'		=> 'text textSuccess',
 			'nextStep'		=> $nextStep,
+			'progress'		=> self::getProgressRenderData($nextStep, 'finishupdate'),
 			'next'			=> true,
 			'buttonLabel'	=> Label('LLL:installer.button.disableAndLogIn')
 		);

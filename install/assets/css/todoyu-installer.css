@@ -287,7 +287,7 @@ label {
 
 .servercheckicon.ok {
 	background-position:0 -28px;	
-} 
+}
 
 .toggler {
 	height:16px;
@@ -305,4 +305,30 @@ label {
 	margin:12px 0;
 	border:1px dotted #ffa800;
 	background-color:#f9f3e8;
+}
+
+
+
+/* -----------------------------------
+	Panel: steps of installation
+   ----------------------------------- */
+#installation-steps {
+	padding: 8px 0 4px 12px;
+}
+#installation-steps ul {
+	padding:8px 6px 16px 8px;
+}
+#installation-steps ul li span {
+	float:left;
+}
+#installation-steps ul li {
+	clear:both;
+	line-height:22px;
+	color:#999;
+}
+#installation-steps ul li span.pastOrCurrent {
+	color:#000;
+}
+#installation-steps ul li span.servercheckicon.ok {
+	float: right;
 }
