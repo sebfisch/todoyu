@@ -336,7 +336,7 @@ class TodoyuPageAssetManager {
 		$dirHash	= TodoyuDiv::md5short(dirname($pathToFile));
 		$pathInfo	= pathinfo($pathToFile);
 
-		$postfix	= ($compressed?'-min':'') . ($localized?'-'.TodoyuLocale::getLocale():'');
+		$postfix	= ($compressed?'-min':'') . ($localized?'-'.TodoyuLanguage::getLocale():'');
 
 		$storagePath= PATH_CACHE . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . $dirHash . '.' . $pathInfo['filename'] . $postfix . '.' . $pathInfo['extension'];
 
@@ -383,7 +383,7 @@ class TodoyuPageAssetManager {
 	 * @return	String
 	 */
 	private static function localizeJavascriptCallback(array $match) {
-		return str_replace('\'', '\\\'', TodoyuLocale::getLabel($match[1]));
+		return str_replace('\'', '\\\'', TodoyuLanguage::getLabel($match[1]));
 	}
 
 

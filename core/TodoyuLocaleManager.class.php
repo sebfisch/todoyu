@@ -1,5 +1,4 @@
-
-
+<?php
 /***************************************************************
 *  Copyright notice
 *
@@ -20,11 +19,18 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['SYSTEM']['name'] 		= '{$config.systemname}';
-$CONFIG['SYSTEM']['email']		= '{$config.email}';
-$CONFIG['SYSTEM']['language']	= '{$config.language}';
-$CONFIG['SYSTEM']['locale']		= '{$config.locale}';
+/**
+ * Manager for locales
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+class TodoyuLocaleManager {
 
-//$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
 
-$CONFIG['SYSTEM']['encryptionKey']	= '{$encryptionKey}';
+
+
+
+}
+
+?>

@@ -380,7 +380,7 @@ class TodoyuDiv {
 			return '';
 		} elseif( strncmp('LLL:', $label, 4) === 0 ) {
 			$labelKey = substr($label, 4);
-			return TodoyuLocale::getLabel($labelKey, $locale);
+			return TodoyuLanguage::getLabel($labelKey, $locale);
 		} else {
 			return $label;
 		}

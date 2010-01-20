@@ -20,12 +20,12 @@
 ***************************************************************/
 
 /**
- * Locale language management for todoyu
+ * Language management for todoyu
  *
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuLocale {
+class TodoyuLanguage {
 
 	/**
 	 * Current locale key. Default is english
@@ -431,7 +431,7 @@ class TodoyuLocale {
 	 * @return	String
 	 */
 	private static function getCacheFileName($fileKey, $locale) {
-		return TodoyuFileManager::pathAbsolute($GLOBALS['CONFIG']['LOCALE']['cacheDir'] . DIRECTORY_SEPARATOR . $fileKey . '-' . $locale . '.' . $GLOBALS['CONFIG']['LOCALE']['cacheExt']);
+		return TodoyuFileManager::pathAbsolute($GLOBALS['CONFIG']['LANGUAGE']['cacheDir'] . DIRECTORY_SEPARATOR . $fileKey . '-' . $locale . '.' . $GLOBALS['CONFIG']['LANGUAGE']['cacheExt']);
 	}
 
 
@@ -448,7 +448,7 @@ class TodoyuLocale {
 		$intPath	= str_replace(PATH . DIRECTORY_SEPARATOR, '', $absPath);
 		$filename	= str_replace(DIRECTORY_SEPARATOR, '-', $intPath);
 
-		return $GLOBALS['CONFIG']['LOCALE']['l10nDir'] . DIRECTORY_SEPARATOR . $locale . DIRECTORY_SEPARATOR . $filename;
+		return $GLOBALS['CONFIG']['LANGUAGE']['l10nDir'] . DIRECTORY_SEPARATOR . $locale . DIRECTORY_SEPARATOR . $filename;
 	}
 
 

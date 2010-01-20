@@ -27,7 +27,7 @@
  */
 
 	// Register form locale
-TodoyuLocale::register('form', PATH_CORE . '/locale/form.xml');
+TodoyuLanguage::register('form', PATH_CORE . '/locale/form.xml');
 
 
 

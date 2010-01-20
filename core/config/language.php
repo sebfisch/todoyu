@@ -19,12 +19,8 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['LOCALE']['cacheDir'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'locale';
-$CONFIG['LOCALE']['l10nDir'] 	= PATH . DIRECTORY_SEPARATOR . 'l10n';
-$CONFIG['LOCALE']['cacheExt'] 	= 'locale';
-
-$CONFIG['SYSTEM']['language']	= 'en';
-
-$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
+$CONFIG['LANGUAGE']['cacheDir'] = PATH_CACHE . DIRECTORY_SEPARATOR . 'language';
+$CONFIG['LANGUAGE']['l10nDir'] 	= PATH . DIRECTORY_SEPARATOR . 'l10n';
+$CONFIG['LANGUAGE']['cacheExt'] = 'lang';
 
 ?>

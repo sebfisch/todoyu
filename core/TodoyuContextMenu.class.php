@@ -172,7 +172,7 @@ class TodoyuContextMenu {
 		if( strstr($label, '::') ) {
 			$label = TodoyuDiv::callUserFunction($label, $this->idElement);
 		} else {
-			$label	= TodoyuLocale::getLabel($label);
+			$label	= TodoyuLanguage::getLabel($label);
 		}
 
 			// Parse locallang reference

@@ -51,7 +51,7 @@ require_once( PATH_CORE . '/TodoyuAuth.class.php' );
 require_once( PATH_CORE . '/TodoyuBaseObject.class.php' );
 require_once( PATH_CORE . '/TodoyuExtensions.class.php' );
 require_once( PATH_CORE . '/TodoyuSession.class.php' );
-require_once( PATH_CORE . '/TodoyuLocale.class.php' );
+require_once( PATH_CORE . '/TodoyuLanguage.class.php' );
 require_once( PATH_CORE . '/TodoyuCache.class.php' );
 require_once( PATH_CORE . '/TodoyuLogger.class.php' );
 require_once( PATH_CORE . '/TodoyuRequest.class.php' );
@@ -114,7 +114,7 @@ if( ! function_exists('strptime') ) {
 	// Load basic core config
 require_once( PATH_CONFIG . '/config.php');
 require_once( PATH_CONFIG . '/locales.php');
-require_once( PATH_CONFIG . '/locale.php');
+require_once( PATH_CONFIG . '/language.php');
 require_once( PATH_CONFIG . '/fe.php');
 require_once( PATH_CONFIG . '/assets.php');
 require_once( PATH_CONFIG . '/cache.php');

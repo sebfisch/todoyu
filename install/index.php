@@ -48,7 +48,7 @@ require_once( PATH_CORE . '/inc/init.php');
 require_once( PATH_CORE . '/inc/version.php');
 
 	// Register installer locales
-TodoyuLocale::register('installer', PATH_INSTALLER . '/locale/installer.xml');
+TodoyuLanguage::register('installer', PATH_INSTALLER . '/locale/installer.xml');
 
 	// Run the actual installer
 TodoyuInstaller::run();

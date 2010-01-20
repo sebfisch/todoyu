@@ -19,7 +19,8 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-/** Abstract headlet base class
+/**
+ * Abstract headlet base class
  *
  * @package		Todoyu
  * @subpackage	Core

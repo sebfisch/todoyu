@@ -112,7 +112,7 @@ class TodoyuDatasource {
 	public static function getStaticLabel($type, $key) {
 		$labelKey	= 'static_' . $type . '.' . $key;
 
-		return TodoyuLocale::getLabel($labelKey);
+		return TodoyuLanguage::getLabel($labelKey);
 	}
 
 

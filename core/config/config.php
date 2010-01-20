@@ -54,8 +54,6 @@ $CONFIG['sendFile']['disallow']	= array();
 
 $CONFIG['AUTH']['loginCookieName']	= 'todoyulogin';
 
-$CONFIG['SYSTEM']['language']	= 'en';
-
 $CONFIG['EXT_REQUEST_HANDLER'] = array();
 
 $CONFIG['CHMOD'] = array(
@@ -65,6 +63,12 @@ $CONFIG['CHMOD'] = array(
 
 	// Add IE scripts hook to page
 $CONFIG['FE']['PAGE']['finish'][] = 'TodoyuPageAssetManager::addInternetExplorerAssets';
+
+	// Localization defaults
+$CONFIG['SYSTEM']['language']	= 'en';
+$CONFIG['SYSTEM']['locale']		= 'en_US';
+	// Default timezone
+$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
 
 
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuRequest::setDefaultRequestVarsHook', 10);
