@@ -90,19 +90,19 @@ $CONFIG['INSTALLER']['steps'] = array(
 		'nextStep'		=> 'updatetocurrentversion',
 	),
 	'updatetocurrentversion' => array(
-		'processFuncRef'=> 'TodoyuInstaller::updateToCurrentVersion',
+			// Mandatory version updates
+		'processFuncRef'=> 'TodoyuInstaller::mandatoryVersionUpdates',
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
-		'nextStep'		=> 'dbstructurecheck',
+		'nextStep'		=> 'autoupdatedbdiffs',
 	),
-	'dbstructurecheck' => array(
-		'processFuncRef'	=> '',
-			// Check for changes in 'tables.sql' files against DB
+	'autoupdatedbdiffs' => array(
+			// Detect, perform changes as found in 'tables.sql' files compared against DB
+		'processFuncRef'	=> 'TodoyuInstaller::autoUpdateTablesSqlDifferences',
 		'renderFuncRef'		=> 'TodoyuInstallerRenderer::renderDBstructureCheck',
 		'nextStep'			=> 'finishupdate',
 	),
 	'finishupdate' => array(
-		'processFuncRef'=> 'TodoyuInstaller::finishUpdate',
-			// processing autoforwards to next step
+		'processFuncRef'=> false,
 		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderUpdateFinished',
 		'nextStep'		=> 'exitUpdate',
 	),

@@ -376,7 +376,7 @@ class TodoyuInstaller {
 	 * @return	Array
 	 */
 	public static function saveAdminPassword($data) {
-		$result	= array('error' 	=> false);
+		$result	= array('error' => false);
 
 		try {
 			TodoyuInstallerDbHelper::updateAdminPassword($data['password'], $data['password_confirm']);
@@ -394,29 +394,49 @@ class TodoyuInstaller {
 	 *
 	 * @param	Array		$data
 	 */
-	public static function updateToCurrentVersion(array $data) {
-		$dbVersion	= self::getDBVersion();
+	public static function mandatoryVersionUpdates(array $data) {
+		$result	= array('error' => false);
 
+		$dbVersion	= self::getDBVersion();
 		switch($dbVersion) {
 			case 'beta1':
-				self::updateBeta1ToBeta2();
-
+				try {
+					self::updateBeta1ToBeta2();
+				} catch(Exception $e)	{
+					$result['error'] = $e->getMessage();
+				}
 			case 'beta2':
-				self::updateBeta2ToBeta3();
+				try {
+					self::updateBeta2ToBeta3();
+				} catch(Exception $e)	{
+					$result['error'] = $e->getMessage();
+				}
 		}
+
+		return $result;
 	}
 
 
 
 	/**
-	 * Gather and perform queries, forward to next step (update finished)
+	 * Detect, perform changes as found in 'tables.sql' files compared against DB
+	 *
+	 * @param	Array	$data
+	 * @return	Array
 	 */
-	public static function finishUpdate($data) {
-		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
+	public static function autoUpdateTablesSqlDifferences($data) {
+		$result	= array('error' => false);
 
+		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
 		if ( count($dbDiff) > 0  ) {
-			TodoyuInstallerDbHelper::compileAndRunInstallerQueries($dbDiff);
+			try {
+				TodoyuInstallerDbHelper::compileAndRunInstallerQueries($dbDiff);
+			} catch(Exception $e)	{
+				$result['error'] = $e->getMessage();
+			}
 		}
+
+		return $result;
 	}
 
 
@@ -612,12 +632,12 @@ class TodoyuInstaller {
 		$tables		= Todoyu::db()->getTables();
 
 		if( in_array('ext_portal_tab', $tables) ) {
-			$version	= 'beta1';
+			$dbVersion	= 'beta1';
 		} elseif( in_array('ext_user_customerrole', $tables) ) {
-			$version	= 'beta2';
+			$dbVersion	= 'beta2';
 		}
 
-		return $version;
+		return $dbVersion;
 	}
 
 }

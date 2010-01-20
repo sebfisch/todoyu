@@ -33,7 +33,7 @@ TodoyuInstaller = {
 					$('error-newnameTaken').show();
 					$('submit').hide();
 				}
-			});		
+			});
 		} else {
 			$('database').disabled	= false;
 		}

@@ -1,7 +1,8 @@
 {extends main.tmpl}
 
 {block name="box"}
-	<div class="{$textclass}">Version {constant(TODOYU_VERSION)} includes the following database updates:
+	<div class="{$textclass}">
+		<span class="title">{Label installer.title.detectedUpdateCoreChanges}</span>
 		<div class="sqlQuery">
 			<ul>
 			{foreach $diffs dbTable columns}

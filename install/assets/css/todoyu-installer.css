@@ -79,7 +79,7 @@ body {
 }
 
 .content .boxContent .blockcontent {
-	padding:10px;
+	padding:0 10px 10px 10px;
 }
 
 
@@ -94,11 +94,22 @@ body {
 	margin:5px;
 }
 
+
+.blockcontent span.title {
+	background-color: #EDF1E0;
+	border:1px solid #fff;
+	padding:8px 0 8px 12px;
+	display:block;
+	margin-bottom:12px;
+}
+
 .error {
 	color:red;
 }
 
 .textError{
+	margin:0 0 8px 12px;
+	padding:8px 0 8px 12px;
 	border-color:red !important;
 	background-color:#fdc5c5;
 }

@@ -353,7 +353,7 @@ class TodoyuInstallerDbHelper {
 	 * @param	String		$updateFile			Path to update file
 	 * @return	Integer		Number of executed queries
 	 */
-	private static function executeQueriesFromFile($updateFile) {
+	public static function executeQueriesFromFile($updateFile) {
 		$updateFile	= TodoyuFileManager::pathAbsolute($updateFile);
 		$queries	= TodoyuSqlParser::getQueriesFromFile($updateFile);
 		$count		= 0;

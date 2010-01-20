@@ -324,7 +324,7 @@ class TodoyuInstallerRenderer {
 			'nextStep'		=> $nextStep,
 			'progress'		=> self::getProgressRenderData($nextStep, 'updatetocurrentversion'),
 			'next'			=> true,
-			'buttonLabel'	=> Label('LLL:installer.button.finishUpdate')
+			'buttonLabel'	=> Label('LLL:installer.button.checkExtensions')
 		);
 		$tmpl	= 'install/view/10_dbchanges.tmpl';
 

@@ -11,9 +11,9 @@
 				{$fieldsDisabled = 1}
 			</span>
 		{/if}
-	{else}
-		<strong>{Label installer.instruction.enterDbConnectionDetails}</strong>
-	{/if}
+	{else}{if $hasError != 1}
+		<span class="title">{Label installer.instruction.enterDbConnectionDetails}</span>
+	{/if}{/if}
 		<table width="500" border="0" cellspacing="0" cellpadding="3" style="margin-top:18px;">
 			<tr>
 				<td width="109">{Label installer.server}</td>

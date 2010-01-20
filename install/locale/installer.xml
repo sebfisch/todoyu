@@ -29,6 +29,7 @@
 		<label index="affirm.dbIsUptodate">Congratulations! your database is up to date.</label>
 		<label index="instruction.enterDbConnectionDetails">Please enter the database server connection details:</label>
 		<label index="title.license">End user license agreement for todoyu beta3</label>
+		<label index="title.welcomeToInstaller">Welcome to the todoyu installer!</label>
 		<label index="title.welcome">Welcome</label>
 		<label index="title.serverCheck">Server Check</label>
 		<label index="title.setupDatabaseServerConnection">Setup Database Server Connection</label>
@@ -39,6 +40,7 @@
 		<label index="title.finished">Installation finished</label>
 		<label index="title.welcomeToTodoyuUpdate">Welcome to todoyu update!</label>
 		<label index="title.welcomeToUpdate">Welcome to datebase update</label>
+		<label index="title.detectedUpdateCoreChanges">The following database updates have been detected:</label>
 		<label index="title.dbUpdateCheck">Database update check</label>
 		<label index="title.updateFinished">Update finished</label>
 		<label index="step.licenseAgreement">License agreement</label>
@@ -52,26 +54,26 @@
 		<label index="button.testConnection">Test connection</label>
 		<label index="button.checkConnectionData">Check connection data</label>
 		<label index="button.saveDatabaseSetup">Save Database Setup</label>
+		<label index="button.checkExtensions">Perform Updates, scan for extensions updates</label>
 		<label index="button.importStaticData">Import static database data</label>
 		<label index="button.saveConfiguration">Save configuration</label>
 		<label index="button.changeAdminPassword">Change admin password</label>
 		<label index="button.disableAndLogIn">Disable installer and go to login</label>
-		<label index="button.dbUpdate">Perform DB updates</label>
+		<label index="button.dbUpdate">Start todoyu update: Check database</label>
 		<label index="button.finishUpdate">Finish update</label>
 		<label index="panel.title.licenseInformation">License information</label>
-
-		<label index="progress.label.welcome">License Agreement</label>
-		<label index="progress.label.servercheck">Check Server Compatibility</label>
-		<label index="progress.label.dbconnection">Databse Server Configuration</label>
-		<label index="progress.label.dbselect">Select / Create todoyu Database</label>
-		<label index="progress.label.staticdata">Import Static Data</label>
-		<label index="progress.label.systemconfig">General System Configuration</label>
-		<label index="progress.label.setadminpassword">Set Admin Password</label>
+		<label index="progress.label.welcome">License agreement</label>
+		<label index="progress.label.servercheck">Check server compatibility</label>
+		<label index="progress.label.dbconnection">Databse server configuration</label>
+		<label index="progress.label.dbselect">Select / create todoyu database</label>
+		<label index="progress.label.staticdata">Import static data</label>
+		<label index="progress.label.systemconfig">General system configuration</label>
+		<label index="progress.label.setadminpassword">Set admin password</label>
 		<!--  <label index="progress.label.saveadminpassword">Save Administrator Password</label>  -->
-		<label index="progress.label.welcometoupdate">Detect installed Version</label>
-		<label index="progress.label.updatetocurrentversion">Update core Database</label>
-		<label index="progress.label.dbstructurecheck">Detect extension modifications</label>
-		<label index="progress.label.finishupdate">Update extension DB tables</label>
+		<label index="progress.label.welcometoupdate">Check installed version, database</label>
+		<label index="progress.label.updatetocurrentversion">Perform database updates</label>
+		<label index="progress.label.dbstructurecheck">Update extensions</label>
+		<label index="progress.label.finishupdate">Update extensions DB tables</label>
 		<!-- <label index="progress.label.exit">Start todoyu</label>  -->
 	</labels>
 	<labels lang="de">
