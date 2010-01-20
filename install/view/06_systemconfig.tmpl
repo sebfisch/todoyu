@@ -8,15 +8,27 @@
 				<td width="379">
 					<input name="systemname" type="text" id="systemname" value="{if $fields.server}{$fields.server}{else}Todoyu{/if}" />
 				</td>
-			</tr><tr>
+			</tr>
+			<tr>
 				<td>{Label installer.systemEmail} *</td>
 				<td><input type="text" name="email" id="email" value="{$fields.username}" /></td>
-			</tr><tr>
+			</tr>
+			<tr>
 				<td>{Label installer.language}</td>
 				<td>
 					<select name="language" id="language">
 						<option value="de">German (deutsch)</option>
 						<option value="en">English (english)</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>{Label installer.locale}</td>
+				<td>
+					<select name="locale" id="locale">
+					{foreach $locales locale}
+						<option value="{$locale.value}">{$locale.label}</option>
+					{/foreach}
 					</select>
 				</td>
 			</tr>

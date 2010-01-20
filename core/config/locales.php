@@ -36,4 +36,6 @@ $CONFIG['LOCALES'] = array(
 	'it_CH'	=> array('it_CH.utf8', 'it_CH', 'it')
 );
 
+$CONFIG['defaultLocale'] = 'en_US';
+
 ?>

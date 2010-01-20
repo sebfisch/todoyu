@@ -32,7 +32,7 @@ class TodoyuLanguage {
 	 *
 	 * @var	String
 	 */
-	private static $locale = 'en';
+	private static $language = 'en';
 
 	/**
 	 * Locallang labels cache
@@ -54,10 +54,10 @@ class TodoyuLanguage {
 	 * Set locale. All request for labels without a locale will use this locale.
 	 * Default locale is en (english)
 	 *
-	 * @param	String		$locale
+	 * @param	String		$language
 	 */
-	public static function setLocale($locale) {
-		self::$locale = $locale;
+	public static function setLanguage($language) {
+		self::$language = $language;
 	}
 
 
@@ -67,8 +67,8 @@ class TodoyuLanguage {
 	 *
 	 * @return	String
 	 */
-	public static function getLocale() {
-		return self::$locale;
+	public static function getLanguage() {
+		return self::$language;
 	}
 
 
@@ -77,11 +77,11 @@ class TodoyuLanguage {
 	 * Get translated label
 	 *
 	 * @param	String		$labelKey		Key to label. First part is the fileKey
-	 * @param	String		$locale			Force locale. If not set, us defined locale
+	 * @param	String		$language		Force language. If not set, us defined language
 	 * @return	String		Translated label
 	 */
-	public static function getLabel($labelKey, $locale = null) {
-		$label	= self::getLabelInternal($labelKey, $locale);
+	public static function getLabel($labelKey, $language = null) {
+		$label	= self::getLabelInternal($labelKey, $language);
 
 		if( $label === '' && $GLOBALS['CONFIG']['DEBUG'] ) {
 			Todoyu::log($label, LOG_LEVEL_NOTICE);
@@ -98,11 +98,11 @@ class TodoyuLanguage {
 	 *
 	 * @param	String		$labelKey
 	 * @param	Array		$wildcards
-	 * @param	String		$locale
+	 * @param	String		$language
 	 * @return	String
 	 */
-	public static function getFormatLabel($labelKey, array $wildcards = array(), $locale = null) {
-		$label	= self::getLabel($labelKey, $locale);
+	public static function getFormatLabel($labelKey, array $wildcards = array(), $language = null) {
+		$label	= self::getLabel($labelKey, $language);
 
 		return vsprintf($label, $wildcards);
 	}
@@ -113,11 +113,11 @@ class TodoyuLanguage {
 	 * Get label if it exists. If not existing, get empty string
 	 *
 	 * @param	String		$labelKey
-	 * @param	String		$locale
+	 * @param	String		$language
 	 * @return	String
 	 */
-	public static function getLabelIfExists($labelKey, $locale = null) {
-		return trim(self::getLabelInternal($labelKey, $locale));
+	public static function getLabelIfExists($labelKey, $language = null) {
+		return trim(self::getLabelInternal($labelKey, $language));
 	}
 
 
@@ -126,18 +126,18 @@ class TodoyuLanguage {
 	 * Get label or null if not existing
 	 *
 	 * @param	String		$labelKey
-	 * @param	String		$locale
+	 * @param	String		$language
 	 * @return	String		Or NULL
 	 */
-	private static function getLabelInternal($labelKey, $locale = null) {
-		$locale	= is_null($locale) ? self::$locale : $locale ;
+	private static function getLabelInternal($labelKey, $language = null) {
+		$language	= is_null($language) ? self::$language : $language ;
 
 			// Split path parts into fileKey and label index
 		$keyParts	= explode('.', $labelKey, 2);
 		$fileKey	=  substr($keyParts[0], 0, 4) == 'LLL:' ? substr($keyParts[0], 4) : $keyParts[0];
 		$labelIndex	= $keyParts[1];
 
-		return self::getCachedLabel($fileKey, $labelIndex, $locale);
+		return self::getCachedLabel($fileKey, $labelIndex, $language);
 	}
 
 
@@ -146,11 +146,11 @@ class TodoyuLanguage {
 	 * Checks if requested lable exists
 	 *
 	 * @param	String	$labelKey
-	 * @param	String	$locale
+	 * @param	String	$language
 	 * @return	String
 	 */
-	public static function labelExists($labelKey, $locale = null)	{
-		$label	= self::getLabelInternal($labelKey, $locale);
+	public static function labelExists($labelKey, $language = null)	{
+		$label	= self::getLabelInternal($labelKey, $language);
 
 		return !is_null($label);
 	}
@@ -161,15 +161,15 @@ class TodoyuLanguage {
 	 * Get all file labels
 	 *
 	 * @param	String		$fileKey
-	 * @param	String		$locale
+	 * @param	String		$language
 	 * @return	Array
 	 */
-	public static function getFileLabels($fileKey, $locale = null) {
-		$locale	= is_null($locale) ? self::$locale : $locale ;
+	public static function getFileLabels($fileKey, $language = null) {
+		$language	= is_null($language) ? self::$language : $language ;
 
-		self::loadFileLabels($fileKey, $locale);
+		self::loadFileLabels($fileKey, $language);
 
-		return self::getFileCache($fileKey, $locale);
+		return self::getFileCache($fileKey, $language);
 	}
 
 
@@ -185,7 +185,7 @@ class TodoyuLanguage {
 		$absPathToFile = TodoyuFileManager::pathAbsolute($absPathToFile);
 
 		if( ! is_file($absPathToFile) ) {
-			TodoyuDebug::printHtml($absPathToFile, 'Locale file not found!', null, true);
+			TodoyuDebug::printHtml($absPathToFile, 'Language file not found!', null, true);
 		}
 
 		self::$files[$identifier] = $absPathToFile;
@@ -197,11 +197,11 @@ class TodoyuLanguage {
 	 * Add translation of a file to the internal cache
 	 *
 	 * @param	String		$fileKey			Key of the file
-	 * @param 	String		$locale				Locale of the translation
+	 * @param 	String		$language			Language of the translation
 	 * @param	Array		$locallangArray		Translated labels
 	 */
-	private static function setFileCache($fileKey, $locale, array $locallangArray) {
-		self::$cache[$fileKey][$locale] = $locallangArray;
+	private static function setFileCache($fileKey, $language, array $locallangArray) {
+		self::$cache[$fileKey][$language] = $locallangArray;
 	}
 
 
@@ -210,11 +210,11 @@ class TodoyuLanguage {
 	 * Get translated labels from internal cache if available
 	 *
 	 * @param	String		$fileKey
-	 * @param	String		$locale
+	 * @param	String		$language
 	 * @return	Array
 	 */
-	private static function getFileCache($fileKey, $locale) {
-		return !empty(self::$cache[$fileKey][$locale]) ? self::$cache[$fileKey][$locale] : array();
+	private static function getFileCache($fileKey, $language) {
+		return !empty(self::$cache[$fileKey][$language]) ? self::$cache[$fileKey][$language] : array();
 	}
 
 
@@ -224,15 +224,15 @@ class TodoyuLanguage {
 	 *
 	 * @param	String		$fileKey		Filekey
 	 * @param	String		$index			Index of the label in the file
-	 * @param	String		$locale			Locale to load the label
-	 * @return	String		The label with the key $index for $locale
+	 * @param	String		$language		Language to load the label
+	 * @return	String		The label with the key $index for $language
 	 */
-	private static function getCachedLabel($fileKey, $index, $locale = 'en') {
-		if( is_null(self::$cache[$fileKey][$locale][$index]) ) {
-			self::loadFileLabels($fileKey, $locale);
+	private static function getCachedLabel($fileKey, $index, $language = 'en') {
+		if( is_null(self::$cache[$fileKey][$language][$index]) ) {
+			self::loadFileLabels($fileKey, $language);
 		}
 
-		return self::$cache[$fileKey][$locale][$index];
+		return self::$cache[$fileKey][$language][$index];
 	}
 
 
@@ -250,25 +250,25 @@ class TodoyuLanguage {
 
 
 	/**
-	 * Load labels of a file for $locale
+	 * Load labels of a file for $language
 	 * Load translated labels into internal cache.
 	 * If necessary create a new uptodate cache file.
 	 * The following files are checked (by their modification times)
 	 * - Registered locallang file (english and the locale)
 	 * - External locallang file in english
-	 * - External locallang file in locale
+	 * - External locallang file in language
 	 *
 	 * @param	String		$fileKey		Filekey
-	 * @param	String		$locale			Requested locale
+	 * @param	String		$language		Requested language
 	 */
-	private static function loadFileLabels($fileKey, $locale = null) {
-		$locale = is_null($locale) ? self::getLocale() : $locale;
+	private static function loadFileLabels($fileKey, $language = null) {
+		$language = is_null($language) ? self::$language : $language;
 
-		if( empty(self::$cache[$fileKey][$locale]) ) {
+		if( empty(self::$cache[$fileKey][$language]) ) {
 				// Get file paths (files don't need to exist!)
 			$origFile	= self::getFilePath($fileKey);
-			$cacheFile	= self::getCacheFileName($fileKey, $locale);
-			$extFile	= self::getExternalFileName($fileKey, $locale);
+			$cacheFile	= self::getCacheFileName($fileKey, $language);
+			$extFile	= self::getExternalFileName($fileKey, $language);
 			$extFileEn	= self::getExternalFileName($fileKey, 'en');
 
 //			TodoyuDebug::printInFirebug($extFile, '$extFile');
@@ -285,16 +285,16 @@ class TodoyuLanguage {
 				$labelsExt	= self::readLocallangFile($extFile);
 				$labelsExtEn= self::readLocallangFile($extFileEn);
 
-					// Load english labels with custom changes from ext file and override it with current locale
+					// Load english labels with custom changes from ext file and override it with current language
 				$baseLabelsEn	= self::mergeLabelArray($labelsOrig['en'], $labelsExtEn['en']);
-				$baseLabels		= self::mergeLabelArray($baseLabelsEn, $labelsOrig[$locale]);
-				$finalLabels	= self::mergeLabelArray($baseLabels, $labelsExt[$locale]);
+				$baseLabels		= self::mergeLabelArray($baseLabelsEn, $labelsOrig[$language]);
+				$finalLabels	= self::mergeLabelArray($baseLabels, $labelsExt[$language]);
 
-				self::cacheStore($fileKey, $finalLabels, $locale);
-				self::setFileCache($fileKey, $locale, $finalLabels);
+				self::cacheStore($fileKey, $finalLabels, $language);
+				self::setFileCache($fileKey, $language, $finalLabels);
 			} else {
 				$cachedLabels = self::cacheLoad($cacheFile);
-				self::setFileCache($fileKey, $locale, $cachedLabels);
+				self::setFileCache($fileKey, $language, $cachedLabels);
 			}
 		}
 	}
@@ -335,14 +335,14 @@ class TodoyuLanguage {
 	/**
 	 * Read external locallang file.
 	 * External files are overriding changes on the original files stored in /l10n/
-	 * under to specific locale
+	 * under to specific langauge
 	 *
 	 * @param	String		$absPathToLocallangFile
-	 * @param	String		$locale
+	 * @param	String		$language
 	 * @return	Array
 	 */
-	private static function readExternalLocallangFile($absPathToLocallangFile, $locale) {
-		$extFile	= self::getExternalFileName($absPathToLocallangFile, $locale);
+	private static function readExternalLocallangFile($absPathToLocallangFile, $language) {
+		$extFile	= self::getExternalFileName($absPathToLocallangFile, $language);
 
 		return self::readLocallangFile($extFile);
 	}
@@ -394,9 +394,9 @@ class TodoyuLanguage {
 	 * @param	Array		$locallangArray
 	 * @return	Boolean
 	 */
-	private static function cacheStore($fileKey, array $locallangArray, $locale) {
+	private static function cacheStore($fileKey, array $locallangArray, $language) {
 		$cacheData	= serialize($locallangArray);
-		$cacheFile	= self::getCacheFileName($fileKey, $locale);
+		$cacheFile	= self::getCacheFileName($fileKey, $language);
 
 		TodoyuFileManager::makeDirDeep(dirname($cacheFile));
 
@@ -430,8 +430,8 @@ class TodoyuLanguage {
 	 * @param	String		$absPathToLocallangFile
 	 * @return	String
 	 */
-	private static function getCacheFileName($fileKey, $locale) {
-		return TodoyuFileManager::pathAbsolute($GLOBALS['CONFIG']['LANGUAGE']['cacheDir'] . DIRECTORY_SEPARATOR . $fileKey . '-' . $locale . '.' . $GLOBALS['CONFIG']['LANGUAGE']['cacheExt']);
+	private static function getCacheFileName($fileKey, $language) {
+		return TodoyuFileManager::pathAbsolute($GLOBALS['CONFIG']['LANGUAGE']['cacheDir'] . DIRECTORY_SEPARATOR . $fileKey . '-' . $language . '.' . $GLOBALS['CONFIG']['LANGUAGE']['cacheExt']);
 	}
 
 
@@ -440,15 +440,15 @@ class TodoyuLanguage {
 	 * Make the external file name. The external file doesn't need to exist
 	 *
 	 * @param	String		$fileKey
-	 * @param	String		$locale
+	 * @param	String		$language
 	 * @return	String
 	 */
-	private static function getExternalFileName($fileKey, $locale) {
+	private static function getExternalFileName($fileKey, $language) {
 		$absPath	= self::$files[$fileKey];
 		$intPath	= str_replace(PATH . DIRECTORY_SEPARATOR, '', $absPath);
 		$filename	= str_replace(DIRECTORY_SEPARATOR, '-', $intPath);
 
-		return $GLOBALS['CONFIG']['LANGUAGE']['l10nDir'] . DIRECTORY_SEPARATOR . $locale . DIRECTORY_SEPARATOR . $filename;
+		return $GLOBALS['CONFIG']['LANGUAGE']['l10nDir'] . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . $filename;
 	}
 
 

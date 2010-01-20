@@ -77,7 +77,7 @@ class Todoyu {
 		self::$user = TodoyuAuth::getUser();
 
 			// Init Locale for locallang files
-		TodoyuLanguage::setLocale(self::getLang());
+		TodoyuLanguage::setLanguage(self::getLang());
 
 			// Set system locale with setlocale
 		self::setSystemLocale();
@@ -113,15 +113,14 @@ class Todoyu {
 	 */
 	public static function setSystemLocale() {
 		$locale	= self::getLocale();
-		$locales= TodoyuArray::assure($GLOBALS['CONFIG']['LOCALES']);
 
-			// If selected language is no registered, use english as default
-		if( ! array_key_exists($locale, $locales) ) {
-			$locale = 'en_US';
+			// Check if locale exists
+		if( ! TodoyuLocaleManager::hasLocale($locale) ) {
+			$locale	= TodoyuLocaleManager::getDefaultLocale();
 		}
 
-			// Set php locale
-		$status = setlocale(LC_ALL, $locales[$locale]);
+			// Set locale
+		$status	= TodoyuLocaleManager::setLocale($locale);
 
 			// Log if operation fails
 		if( $status === false ) {

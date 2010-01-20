@@ -38,6 +38,7 @@ TodoyuLanguage::register('core', PATH_CORE . '/locale/core.xml');
 TodoyuLanguage::register('date', PATH_CORE . '/locale/date.xml');
 TodoyuLanguage::register('file', PATH_CORE . '/locale/file.xml');
 TodoyuLanguage::register('form', PATH_CORE . '/locale/form.xml');
+TodoyuLanguage::register('locale', PATH_CORE . '/locale/locale.xml');
 TodoyuLanguage::register('dateformat', PATH_CORE . '/config/dateformat.xml');
 
 	// Register static_... tables' localization files

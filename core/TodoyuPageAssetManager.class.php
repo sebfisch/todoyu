@@ -336,7 +336,7 @@ class TodoyuPageAssetManager {
 		$dirHash	= TodoyuDiv::md5short(dirname($pathToFile));
 		$pathInfo	= pathinfo($pathToFile);
 
-		$postfix	= ($compressed?'-min':'') . ($localized?'-'.TodoyuLanguage::getLocale():'');
+		$postfix	= ($compressed ? '-min' : '') . ($localized ? '-' . TodoyuLanguage::getLanguage() : '');
 
 		$storagePath= PATH_CACHE . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . $dirHash . '.' . $pathInfo['filename'] . $postfix . '.' . $pathInfo['extension'];
 
