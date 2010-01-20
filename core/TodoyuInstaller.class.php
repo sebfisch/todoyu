@@ -322,7 +322,7 @@ class TodoyuInstaller {
 	 * @return	Array
 	 */
 	public static function importStaticData($data) {
-		$result	= array('error' 	=> false);
+		$result	= array('error' => false);
 
 		try {
 			TodoyuInstallerDbHelper::importStaticData();
@@ -346,7 +346,7 @@ class TodoyuInstaller {
 	 * @return	Array
 	 */
 	public static function updateSytemConfig($data) {
-		$result	= array('error' 	=> false);
+		$result	= array('error' => false);
 
 		if( ! (strlen($data['email']) > 0 && strlen($data['systemname']) > 0) )	{
 			$result['error']	= 'Please set an email address and a system name';

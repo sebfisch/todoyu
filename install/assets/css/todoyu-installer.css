@@ -120,6 +120,8 @@ body {
 }
 
 .textSuccess{
+	margin:0 0 8px 12px;
+	padding:8px 0 8px 12px;
 	border-color:#048e01;
 	background-color:#96f384;
 }

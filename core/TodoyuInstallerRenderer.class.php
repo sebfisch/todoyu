@@ -225,10 +225,10 @@ class TodoyuInstallerRenderer {
 			'nextStep'		=> $nextStep,
 			'progress'		=> self::getProgressRenderData($nextStep, 'systemconfig'),
 			'next'			=> true,
-			'buttonLabel'	=> Label('LLL:installer.button.saveConfiguration'),
+			'buttonLabel'	=> Label('LLL:installer.button.saveSystemConfiguration'),
 		);
 
-		$tmpl	= 'install/view/06_config.tmpl';
+		$tmpl	= 'install/view/06_systemconfig.tmpl';
 
 		return render($tmpl, $data);
 	}
@@ -309,13 +309,13 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render welcome screen
+	 * Render detected and conducted mandatory version DB updates
 	 *
 	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderDBstructureCheck($nextStep, array $result) {
+	public static function renderVersionUpdates($nextStep, array $result) {
 			// DB structure is NOT up-to-date! offer updating
 		$data	= array(
 			'title'			=> Label('LLL:installer.title.dbUpdateCheck'),
@@ -324,34 +324,35 @@ class TodoyuInstallerRenderer {
 			'nextStep'		=> $nextStep,
 			'progress'		=> self::getProgressRenderData($nextStep, 'updatetocurrentversion'),
 			'next'			=> true,
-			'buttonLabel'	=> Label('LLL:installer.button.checkExtensions')
+			'buttonLabel'	=> Label('LLL:installer.button.genericUpdate')
 		);
-		$tmpl	= 'install/view/10_dbchanges.tmpl';
+		$tmpl	= 'install/view/10_versionupdates.tmpl';
 
 		return render($tmpl, $data);
 	}
 
 
 
-   /**
- 	* Render update finished screen
- 	*
- 	* @param	String	$nextStep
-	* @param	Array	$result
-	* @return	String
- 	*/
-	public static function renderUpdateFinished($nextStep, array $result) {
+	/**
+	 * Render detected and conducted generic database updates
+	 *
+	 * @param	String	$nextStep
+	 * @param	Array	$result
+	 * @return	String
+	 */
+	public static function renderGenericDBupdates($nextStep, array $result) {
+			// DB structure is NOT up-to-date! offer updating
 		$data	= array(
-			'title'			=> Label('LLL:installer.title.updateFinished'),
-			'text'			=> Label('LLL:installer.title.updateFinished'),
-			'textClass'		=> 'text textSuccess',
+			'title'			=> Label('LLL:installer.title.dbUpdateCheck'),
+			'textclass'		=> 'text textInfo',
+			'diffs'			=> TodoyuInstallerDbHelper::getDBstructureDiff(),
 			'nextStep'		=> $nextStep,
-			'progress'		=> self::getProgressRenderData($nextStep, 'finishupdate'),
+			'progress'		=> self::getProgressRenderData($nextStep, 'updatetocurrentversion'),
 			'next'			=> true,
 			'buttonLabel'	=> Label('LLL:installer.button.disableAndLogIn')
 		);
+		$tmpl	= 'install/view/11_genericupdates.tmpl';
 
-		$tmpl	= 'install/view/11_finishupdate.tmpl';
 		return render($tmpl, $data);
 	}
 
