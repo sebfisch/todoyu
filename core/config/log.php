@@ -27,7 +27,7 @@ $CONFIG['LOG'] = array(
 
 $CONFIG['LOG']['MODES']['DB'] = array(
 	'funcRef'	=> 'TodoyuLoggerDb::log',
-	'table'		=> 'log'
+	'table'		=> 'system_errorlog'
 );
 
 $CONFIG['LOG']['MODES']['FILE'] = array(

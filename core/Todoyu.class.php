@@ -80,7 +80,7 @@ class Todoyu {
 		TodoyuLocale::setLocale(self::getLang());
 
 			// Set system locale with setlocale
-		self::initSystemLocale();
+		self::setSystemLocale();
 	}
 
 
@@ -106,7 +106,12 @@ class Todoyu {
 	}
 
 
-	public static function initSystemLocale() {
+
+	/**
+	 * Set system locale with setlocale() based on the currently selected language
+	 *
+	 */
+	public static function setSystemLocale() {
 		$lang	= self::getLang();
 		$locales= TodoyuArray::assure($GLOBALS['CONFIG']['LOCALES']);
 
@@ -116,7 +121,12 @@ class Todoyu {
 		}
 
 			// Set php locale
-		setlocale(LC_ALL, $locales[$lang]);
+		$status = setlocale(LC_ALL, $locales[$lang]);
+
+			// Log if operation fails
+		if( $status === false ) {
+			self::log('Can\'t set locale for language "' . $lang . '". Locales: ' . implode(',', $locales[$lang]), LOG_LEVEL_ERROR);
+		}
 	}
 
 
