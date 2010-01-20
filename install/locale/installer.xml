@@ -19,6 +19,7 @@
 		<label index="systemName">System Name</label>
 		<label index="systemEmail">System Email</label>
 		<label index="language">Language</label>
+		<label index="locale">Locale</label>
 		<label index="updateSteps">Update steps</label>
 		<label index="generalUpdate">General update</label>
 		<label index="dbAnalyzer">DB-Analyzer</label>
