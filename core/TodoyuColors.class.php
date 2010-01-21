@@ -45,6 +45,8 @@ class TodoyuColors {
 		if( ! is_file($fileIMG) ) {
 			self::generateIMG($fileIMG);
 		}
+
+		TodoyuPage::addStylesheet($fileCSS);
 	}
 
 
