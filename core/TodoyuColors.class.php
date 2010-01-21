@@ -46,7 +46,7 @@ class TodoyuColors {
 			self::generateIMG($fileIMG);
 		}
 
-		TodoyuPage::addStylesheet($fileCSS);
+		TodoyuPage::addStylesheet($fileCSS, 'all', 1, false, false);
 	}
 
 
