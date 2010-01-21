@@ -38,7 +38,7 @@ class TodoyuColors {
 
 			// Generate css file if it not exists
 		if( ! is_file($fileCSS) ) {
-			self::generateCSS($fileCSS);
+			self::generateCSS($fileCSS, $fileIMG);
 		}
 
 			// Generate png file if it not exists
@@ -55,7 +55,7 @@ class TodoyuColors {
 	 * Render Color CSS. If not stored up-to-date yet: save and have CSS-sprite be generated as well
 	 *
 	 */
-	private static function generateCSS($fileCSS) {
+	private static function generateCSS($fileCSS, $fileIMG) {
 			// Get configured colors
 		$colors	= TodoyuArray::assure($GLOBALS['CONFIG']['COLORS']);
 			// Render CSS file content
