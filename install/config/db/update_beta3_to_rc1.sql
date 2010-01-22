@@ -12,3 +12,9 @@ ALTER TABLE `system_log`
 DROP `table` ,
 DROP `id_record` ,
 DROP `rowdata` ;
+
+--
+--Rename working hours to workingtime in ext_calendar_holiday
+--
+
+ALTER TABLE `ext_calendar_holiday` CHANGE `workinghours` `workingtime` INT( 11 ) NOT NULL 

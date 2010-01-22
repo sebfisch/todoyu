@@ -156,9 +156,6 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 				} else {
 					$storageData = date('Y-m-d', $storageData);
 				}
-			} else {
-					// Get normal timestamp
-				$storageData = intval(0);
 			}
 		}
 
