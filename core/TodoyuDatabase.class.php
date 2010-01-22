@@ -1062,7 +1062,7 @@ class TodoyuDatabase {
 	public function resourceToArray($resource, $indexField = false) {
 		$array	= array();
 
-		while( $row = $this->fetchAssoc($resource) ) {
+		while( $row = self::fetchAssoc($resource) ) {
 			if( $indexField !== false ) {
 				$array[$row[$indexField]] = $row;
 			} else {
@@ -1153,6 +1153,11 @@ class TodoyuDatabase {
 		}
 
 		return $keys;
+	}
+
+
+	public function getConfig($key) {
+		return $this->config[$key];
 	}
 
 

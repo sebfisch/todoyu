@@ -147,6 +147,10 @@ class Todoyu {
 	 * @return	Dwoo
 	 */
 	public static function tmpl() {
+		if( is_null(self::$template) ) {
+			print_r(debug_backtrace());
+			die("TEMPLATE NOT LOADED YET");
+		}
 		return self::$template;
 	}
 
@@ -173,7 +177,12 @@ class Todoyu {
 	 * @param	Mixed		$data			Additional data to save with the log message
 	 */
 	public static function log($message, $level = 0, $data = null) {
-		self::$logger->log($message, $level, $data);
+		if( is_null(self::$logger) ) {
+			echo "LOGGER NOT LOADED YET\n";
+			echo $message . "\n\n";
+		} else {
+			self::$logger->log($message, $level, $data);
+		}
 	}
 
 
