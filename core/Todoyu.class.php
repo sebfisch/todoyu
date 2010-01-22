@@ -124,7 +124,7 @@ class Todoyu {
 
 			// Log if operation fails
 		if( $status === false ) {
-			self::log('Can\'t set locale for language "' . $locale . '". Locales: ' . implode(',', $locales[$locale]), LOG_LEVEL_ERROR);
+			self::log('Can\'t set locale for language "' . $locale . '"', LOG_LEVEL_ERROR);
 		}
 	}
 
