@@ -81,7 +81,7 @@ class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 
 
 	/**
-	 * Add a new option at the end of the list
+	 * Add new option at the end of the list
 	 *
 	 * @param	String		$value
 	 * @param	String		$label
@@ -93,11 +93,10 @@ class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 			'disabled'	=> $disabled
 		);
 
-		if( $selected ) {
+		if( $selected === true ) {
 			$this->addSelectedValue($value);
 		}
 	}
-
 
 }
 
