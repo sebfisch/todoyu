@@ -118,6 +118,10 @@ Todoyu.Autocomplete = {
 		var selectedValue	= selectedListElement.id;
 		
 		this.selectedFromList = true;
+
+		if(this.acRefs[baseID].options.onElementSelectedCustom)	{
+			 Todoyu.callUserFunction(this.acRefs[baseID].options.onElementSelectedCustom, window, inputField, selectedListElement, baseID, selectedValue, this.selectedFromList, this);
+		}
 		
 		$(baseID).setValue(selectedValue);
 	},

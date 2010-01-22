@@ -243,7 +243,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	public function addOption($value, $label, $disabled = false) {
 		$this->config['options'][] = array(
 			'value'		=> $value,
-			'label'		=> TodoyuDiv::getLabel($label),
+			'label'		=> $label,
 			'disabled'	=> $disabled !== true ? false : 'disabled',
 		);
 
