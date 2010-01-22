@@ -259,7 +259,7 @@ class TodoyuPageAssetManager {
 
 					// If not compressed, add file information at the top of the code
 				if( $doCompress === false ) {
-					$fileCode = "\n\n// " . TodoyuFileManager::pathWeb($fileConfig['file']) . "\n//" . str_repeat('=', 50) . "\n" . $fileCode;
+					$fileCode = "\n\n/* " . TodoyuFileManager::pathWeb($fileConfig['file']) . "\n" . str_repeat('=', 50) . "*/\n" . $fileCode;
 				}
 
 				$mergeCode .= $fileCode;
