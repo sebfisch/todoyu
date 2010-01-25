@@ -37,8 +37,8 @@ Todoyu.AjaxResponders = {
 	init: function() {
 		Ajax.Responders.register({
 			'onCreate':		this.onCreate.bind(this),
-			'onComplete':	this.onComplete.bind(this),
-			'onException':	this.onException.bind(this)
+			'onComplete':	this.onComplete.bind(this)
+			//'onException':	this.onException.bind(this)
 		});
 		
 		this.addOnCompleteHook(Todoyu.Ajax.checkNoAccessHeader);

@@ -271,8 +271,6 @@ class TodoyuLanguage {
 			$extFile	= self::getExternalFileName($fileKey, $language);
 			$extFileEn	= self::getExternalFileName($fileKey, 'en');
 
-//			TodoyuDebug::printInFirebug($extFile, '$extFile');
-
 				// Get file modification times
 			$mTimeOrig	= is_file($origFile) ? filemtime($origFile) : 0;
 			$mTimeCache	= is_file($cacheFile) ? filemtime($cacheFile) : 0;

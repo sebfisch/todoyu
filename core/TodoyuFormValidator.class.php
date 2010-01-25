@@ -64,7 +64,7 @@ class TodoyuFormValidator {
 		if( TodoyuDiv::isFunctionReference($function) ) {
 			return TodoyuDiv::callUserFunction($function, $value, $validatorConfig, $formElement, $formData);
 		} else  {
-			TodoyuDebug::printInFirebug('xxx');
+			Todoyu::log('Formvalidator function not found: ' . $function, LOG_LEVEL_FATAL);
 			return false;
 		}
 	}
@@ -378,24 +378,26 @@ class TodoyuFormValidator {
 	 * @return	Boolean
 	 */
 	public static function goodPassword($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
-		$idUser	= intval($formData['id']);
-		$pass	= trim($value);
+		$idUser		= intval($formData['id']);
+		$pass		= trim($value);
+		$allowEmpty	= isset($validatorConfig['allowEmpty']);
 
-			// Only validate for new users or if a new password has been typed in
-		if( $idUser === 0 || $pass !== '' ) {
-			$checks		= $GLOBALS['CONFIG']['EXT']['user']['isGoodPassword'];
-			$validator	= new TodoyuPasswordValidator($checks);
-
-			if( $validator->validate($pass) === false ) {
-				$errors	= $validator->getErrors();
-
-				TodoyuDebug::printInFirebug($errors, 'errors');
-
-				$formElement->setErrorMessage($errors[0]);
-
-				return false;
-			}
+			// If empty allowed, validate as true if empty
+		if( $allowEmpty && $pass === '' ) {
+			return true;
 		}
+
+		$checks		= $GLOBALS['CONFIG']['EXT']['user']['isGoodPassword'];
+		$validator	= new TodoyuPasswordValidator($checks);
+
+		if( $validator->validate($pass) === false ) {
+			$errors	= $validator->getErrors();
+
+			$formElement->setErrorMessage($errors[0]);
+
+			return false;
+		}
+
 
 		return true;
 	}
