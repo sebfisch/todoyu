@@ -22,7 +22,6 @@
 	// Define constant, so we can prevent direct script call
 define('TODOYU', true);
 
-
 	// Path
 define( 'PATH', 			dirname(dirname(dirname(__FILE__))) );
 define( 'PATH_WEB',			dirname($_SERVER['SCRIPT_NAME']) );

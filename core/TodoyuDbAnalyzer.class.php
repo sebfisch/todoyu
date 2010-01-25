@@ -32,28 +32,19 @@ class TodoyuDbAnalyzer {
 	 *
 	 * @return	Array
 	 */
-	public static function getAvailableDatabases($dbData, $error = '')	{
-		$databases	= array(
-			0 => array(
-				'text' 		=> 'Please choose a Database',
-				'disabled'	=> true,
-			)
-		);
-
-		$conn = mysql_connect($dbData['server'], $dbData['username'], $dbData['password']);
-		$source = mysql_list_dbs($conn);
-
-		$ignoredDBs	= array(
+	public static function getDatabasesOnServer(array $dbConfig)	{
+		$ignore = array(
 			'information_schema',
 			'mysql',
-			'phpmyadmin',
+			'phpmyadmin'
 		);
 
-		while($row = mysql_fetch_object($source))	{
-			if ( ! in_array($row->Database, $ignoredDBs) ) {
-				$databases[$row->Database] = array('text' => $row->Database);
-			}
-		}
+		$link		= mysql_connect($dbConfig['server'], $dbConfig['username'], $dbConfig['password']);
+		$resource	= mysql_list_dbs($link);
+
+		$rows		= TodoyuDatabase::resourceToArray($resource);
+		$databases	= TodoyuArray::getColumn($rows, 'Database');
+		$databases	= array_diff($databases, $ignore);
 
 		return $databases;
 	}
@@ -67,20 +58,18 @@ class TodoyuDbAnalyzer {
 	 * @return	Boolean
 	 * @throws	Exception
 	 */
-	public static function checkDbConnection($server = '', $username = '', $password = '') {
-		$valid	= true;
+	public static function checkDbConnection($server, $username, $password) {
+		$status	= @mysql_connect($server, $username, $password);
+		$info	= array(
+			'status'	=> true
+		);
 
-		if ( $server !== '' && $username !== '' && $password !== '' ) {
-			$conn	= @mysql_connect($server, $username, $password);
-			if( $conn === false ) {
-				$valid	= true;
-				throw new Exception('Cannot connect to the database server "' . $server . '" ('.mysql_error().')');
-			}
-		} else {
-			$valid	= false;
+		if( $status === false ) {
+			$info['status']	= false;
+			$info['error']	= mysql_error();
 		}
 
-		return $valid;
+		return $info;
 	}
 
 
@@ -91,52 +80,58 @@ class TodoyuDbAnalyzer {
 	 *	@param	Array	$tablesNames
 	 *	@return Array
 	 */
-	public static function getTablesStructures(array $tablesNames) {
+	public static function getTableStructures() {
+		$fields	= '	TABLE_NAME,
+					COLUMN_NAME,
+					COLUMN_DEFAULT,
+					IS_NULLABLE,
+					DATA_TYPE,
+					CHARACTER_MAXIMUM_LENGTH,
+					CHARACTER_SET_NAME,
+					COLUMN_TYPE,
+					EXTRA';
+		$table	= 'INFORMATION_SCHEMA.COLUMNS';
+		$where	= '	`TABLE_SCHEMA` = ' . Todoyu::db()->quote(Todoyu::db()->getConfig('database')) . ' AND
+					(`TABLE_NAME` LIKE \'system_%\' OR `TABLE_NAME` LIKE \'ext_%\' OR `TABLE_NAME` LIKE \'static_%\')';
+		$order	= 'TABLE_NAME';
 
-			// build where-clause
-		$tablesAmount	= count($tablesNames) - 1;
-		$where	= ' TABLE_NAME IN (';
-		$count	= 0;
-		foreach($tablesNames as $tableName) {
-			$where	.= '\'' . $tableName . '\'' . ($count < $tablesAmount ? ', ' : '');
-			$count++;
-		}
-		$where	.= ')';
-
-			// build query
-		$query	= Todoyu::db()->buildSELECTinformationSchemaColumnsQuery('*', $where);
+		$columns= Todoyu::db()->getArray($fields, $table, $where, '', $order);
 
 		$structure	= array();
 
-		$res	= Todoyu::db()->query($query);
-		while($row = Todoyu::db()->fetchAssoc($res))	{
-			$tableName	= $row['TABLE_NAME'];
-			$columnName	= $row['COLUMN_NAME'];
+		foreach($columns as $column) {
+			$tableName	= $column['TABLE_NAME'];
+			$columnName	= $column['COLUMN_NAME'];
 
-				// Get field, type, attributes, null, default, extra
-			$field		= '`' . $columnName . '`';
-			$type		= trim(strtolower($row['COLUMN_TYPE']));
+				// If table not yet registered, add table information
+			if( ! array_key_exists($tableName, $structure) ) {
+				$structure[$tableName] = array(
+					'table'		=> $tableName,
+					'columns'	=> array(),
+					'extra'		=> '',
+					'keys'		=> array()
+				);
 
-			if ( strstr($type, ' ') !== false) {
-				$typeParts	= explode(' ', $type);
-				$type		= $typeParts[0];
-				$attributes	= $typeParts[1];
-			} else {
-				$attributes	= '';
+					// Find keys in database
+				$tableKeys	= self::getTableKeys($tableName);
+
+				foreach($tableKeys as $tableKey) {
+					$structure[$tableName]['keys'][] = array(
+						'type'	=> $tableKey['name'] === 'PRIMARY' ? $tableKey['type'] : $tableKey['type'] . ' KEY',
+						'name'	=> $tableKey['name'] === 'PRIMARY' ? '' : $tableKey['name'],
+						'fields'=> $tableKey['field']
+					);
+				}
 			}
 
-			$null		= $row['IS_NULLABLE'] == 'YES' ? '' : 'NOT NULL';
-			$default	= strlen($row['COLUMN_DEFAULT']) > 0 ? 'DEFAULT \'' . $row['COLUMN_DEFAULT'] . '\'' : '';
-			$extra		= strtoupper($row['EXTRA']);
-
-				// Collect column structe data
-			$structure[$tableName]['columns'][$columnName]['field']			= $field;
-			$structure[$tableName]['columns'][$columnName]['type']			= $type;
-//			$structure[$tableName]['columns'][$columnName]['collation']	= '';
-			$structure[$tableName]['columns'][$columnName]['attributes']	= $attributes;
-			$structure[$tableName]['columns'][$columnName]['null']			= $null;
-			$structure[$tableName]['columns'][$columnName]['default']		= $default;
-			$structure[$tableName]['columns'][$columnName]['extra']			= $extra;
+			$structure[$tableName]['columns'][$columnName] = array(
+				'field'		=> $columnName,
+				'type'		=> $column['COLUMN_TYPE'],
+				'attributes'=> '',
+				'null'		=> $column['IS_NULLABLE'] === 'YES' ? '' : 'NOT NULL',
+				'default'	=> 'DEFAULT \'' . $column['COLUMN_DEFAULT'] . '\'',
+				'extra'		=> strtoupper($column['EXTRA'])
+			);
 		}
 
 		return $structure;
@@ -144,17 +139,42 @@ class TodoyuDbAnalyzer {
 
 
 
-	/**
-	 * Check DB for existence of given tables, return missing ones
-	 *
-	 *	@param	Array	$extTableNames
-	 *	@return	Array
-	 */
-	public static function getMissingTables(array $tablesNames) {
-		$dbTables	= Todoyu::db()->getTables();
-		$missingTables	= array_diff($tablesNames, $dbTables);
+	public static function getTableKeys($tableName) {
+		$fields	= ' tc.CONSTRAINT_TYPE as type,
+					tc.CONSTRAINT_NAME as name,
+					kcu.COLUMN_NAME as field';
+		$table	= ' INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc,
+					INFORMATION_SCHEMA.KEY_COLUMN_USAGE kcu';
+		$where	= ' tc.TABLE_SCHEMA 	= \'' . Todoyu::db()->getConfig('database') . '\' AND
+					tc.TABLE_NAME 		= \'' . $tableName . '\' AND
+					tc.CONSTRAINT_NAME	= kcu.CONSTRAINT_NAME AND
+					kcu.TABLE_SCHEMA	= \'' . Todoyu::db()->getConfig('database') . '\' AND
+					kcu.TABLE_NAME		= \'' . $tableName . '\'';
 
-		return array_flip($missingTables);
+		return Todoyu::db()->getArray($fields, $table, $where);
+
+	}
+
+
+
+
+
+	/**
+	 * Get current version of the database
+	 *
+	 * @return	String
+	 */
+	public static function getDBVersion() {
+		$dbVersion	= 'beta3';
+		$tables		= Todoyu::db()->getTables();
+
+		if( in_array('ext_portal_tab', $tables) ) {
+			$dbVersion	= 'beta1';
+		} elseif( in_array('ext_user_customerrole', $tables) ) {
+			$dbVersion	= 'beta2';
+		}
+
+		return $dbVersion;
 	}
 
 }

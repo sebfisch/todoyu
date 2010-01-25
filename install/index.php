@@ -29,31 +29,29 @@
  	// Change current work directory to main directory to prevent path problems
 chdir( dirname(dirname(__FILE__)) );
 
-define('PATH_INSTALLER', dirname(__FILE__));
+	// Load normal global.php file
+require_once('core/inc/global.php');
+	// Load installer config
+include_once('install/config/steps.php');
+include_once('install/config/config.php');
 
-include_once(PATH_INSTALLER . '/config/steps.php');
-include_once(PATH_INSTALLER . '/config/init.php');
 
-	// Turn on output buffering
-ob_start();
 
-	// Include global include file
-require_once(PATH_CORE . '/inc/global.php');
+
+	// Check if _ENABLE file is available (installer has finished). Redirect to login
+if( ! TodoyuInstaller::isEnabled() ) {
+	TodoyuInstallerManager::finishInstallerAndJumpToLogin();
+	exit();
+}
 
 	// Make sure the user is logged out
-TodoyuAuth::logout();
+TodoyuSession::remove('userid');
 
 	// Load default init script
-require_once( PATH_CORE . '/inc/init.php');
-require_once( PATH_CORE . '/inc/version.php');
+require_once('core/inc/init.php');
 
-	// Register installer locales
-TodoyuLanguage::register('installer', PATH_INSTALLER . '/locale/installer.xml');
-
-	// Run the actual installer
+	// Run the installer
 TodoyuInstaller::run();
 
-	// Flush output buffer
-ob_end_flush();
 
 ?>

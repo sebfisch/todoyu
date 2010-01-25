@@ -1,0 +1,9 @@
+{extends main.tmpl}
+
+{block name="box"}
+	<div class="{$textclass}">
+		<span class="title">{Label installer.title.welcomeToTodoyuUpdate}</span>
+		<p>{Label installer.update.info}</p>
+	</div>
+	<input type="hidden" name="start" value="1" />
+{/block}

@@ -1,37 +1,24 @@
 {extends main.tmpl}
 
 {block name="box"}
-	{$fieldsDisabled = 0}
-	{if $connectionHasBeenChecked}
-		{if $hasError == 1}
-			<strong>{Label installer.error.incorrectDbConnectionSetup}</strong>
-		{else}
-			<span style="padding:0 0 0 30px; width:300px;" class="servercheckicon ok">
-				<strong>{Label installer.affirm.dbServerConnectionOk}</strong>
-				{$fieldsDisabled = 1}
-			</span>
-		{/if}
-	{else}{if $hasError != 1}
-		<span class="title">{Label installer.instruction.enterDbConnectionDetails}</span>
-	{/if}{/if}
-		<table width="500" border="0" cellspacing="0" cellpadding="3" style="margin-top:18px;">
-			<tr>
-				<td width="109">{Label installer.server}</td>
-				<td width="379">
-					<input name="server" type="text" id="server" value="{$fields.server|default:'localhost'}" />
-				</td>
-			</tr>
-			<tr>
-				<td>{Label installer.username}</td>
-				<td>
-					<input type="text" name="username" id="username" value="{$fields.username|default:'root'}" />
-				</td>
-			</tr>
-			<tr>
-				<td id="passwordLabel">{Label installer.password}</td>
-				<td>
-					<input type="password" name="password" id="password" value="{$fields.password}" />
-				</td>
-			</tr>
-		</table>
+	<table width="500" border="0" cellspacing="0" cellpadding="3" style="margin-top:18px;">
+		<tr>
+			<td width="109">{Label installer.dbconnection.server}</td>
+			<td width="379">
+				<input name="server" type="text" id="server" value="{$fields.server|default:'localhost'}" />
+			</td>
+		</tr>
+		<tr>
+			<td>{Label installer.dbconnection.username}</td>
+			<td>
+				<input type="text" name="username" id="username" value="{$fields.username|default:'root'}" />
+			</td>
+		</tr>
+		<tr>
+			<td id="passwordLabel">{Label installer.dbconnection.password}</td>
+			<td>
+				<input type="password" name="password" id="password" value="{$fields.password}" />
+			</td>
+		</tr>
+	</table>
 {/block}

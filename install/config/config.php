@@ -29,14 +29,7 @@
 	// Activate error reporting
 error_reporting(E_ALL ^ E_NOTICE);
 
-	// Declare PATH constants
-require_once( dirname(__FILE__) . '/../../core/config/constants.php');
-
-	// Check if _ENABLE file is available (installer has finished). Redirect to login
-if( ! is_file(PATH . '/install/ENABLE') ) {
-	@unlink(PATH . '/index.html');
-	header('Location: ../index.php');
-	exit();
-}
+	// Register installer locales
+TodoyuLanguage::register('installer', PATH . '/install/locale/installer.xml');
 
 ?>

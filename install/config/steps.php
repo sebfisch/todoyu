@@ -26,86 +26,101 @@
  * @subpackage	Installer
  */
 
+
+$CONFIG['INSTALLER']['install'] = array(
+	'welcome',
+	'servercheck',
+	'dbconnection',
+	'dbselect',
+	'importtables',
+	'systemconfig',
+	'setadminpassword',
+	'saveadminpassword',
+	'exit'
+);
+
+$CONFIG['INSTALLER']['update'] = array(
+	'welcometoupdate',
+	'updatetocurrentversion',
+	'autoupdatedbdiffs',
+	'exitUpdate'
+);
+
+
 $CONFIG['INSTALLER']['steps'] = array(
 		// Installation steps
-	'welcome' => array(
-		'processFuncRef'=> false,
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcome',
-		'nextStep'		=> 'servercheck',
+	'install' => array(
+		'process'	=> 'TodoyuInstallerManager::processInstall',
+		'render'	=> 'TodoyuInstallerRenderer::renderInstall',
+		'tmpl'		=> '01_install.tmpl'
 	),
 	'servercheck' => array(
 			// Check server compatibility
-		'processFuncRef'=> 'TodoyuInstaller::checkServerCompatibility',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderServercheck',
-		'nextStep'		=> 'dbconnection',
+		'process'	=> 'TodoyuInstallerManager::processServercheck',
+		'render'	=> 'TodoyuInstallerRenderer::renderServercheck',
+		'tmpl'		=> '02_servercheck.tmpl',
+		'fileCheck'	=> array(
+			'files',
+			'config',
+			'cache/tmpl/compile',
+			'config/db.php',
+			'config/extensions.php',
+			'config/extconf.php'
+		)
 	),
 	'dbconnection' => array(
 			// Configure DB connection details
-		'processFuncRef'=> 'TodoyuInstaller::checkDbConnection',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbConnection',
-		'nextStep'		=> 'dbselect',
+		'process'	=> 'TodoyuInstallerManager::processDbconnection',
+		'render'	=> 'TodoyuInstallerRenderer::renderDbConnection',
+		'tmpl'		=> '03_dbconnection.tmpl'
 	),
 	'dbselect' => array(
 			// Configure to select existing or create new DB. Save DB connection data
-		'processFuncRef'=> 'TodoyuInstaller::storeDbConfig',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderDbSelect',
-		'nextStep'		=> 'staticdata',
+		'process'	=> 'TodoyuInstallerManager::processDbSelect',
+		'render'	=> 'TodoyuInstallerRenderer::renderDbSelect',
+		'tmpl'		=> '04_dbselect.tmpl'
 	),
-	'staticdata' => array(
+	'importtables' => array(
 			// Preview static data, than import it
-		'processFuncRef'=> 'TodoyuInstaller::importStaticData',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderImportStaticData',
-		'nextStep'		=> 'systemconfig',
+		'process'	=> 'TodoyuInstallerManager::proccessImportTables',
+		'render'	=> 'TodoyuInstallerRenderer::renderImportTables',
+		'tmpl'		=> '05_importtables.tmpl'
 	),
 	'systemconfig' => array(
 			// Update system config file (/config/system.php)
-		'processFuncRef'=> 'TodoyuInstaller::updateSytemConfig',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderSytemConfig',
-		'nextStep'		=> 'setadminpassword',
+		'process'	=> 'TodoyuInstallerManager::procesSystemConfig',
+		'render'	=> 'TodoyuInstallerRenderer::renderSytemConfig',
+		'tmpl'		=> '06_systemconfig.tmpl'
 	),
 	'setadminpassword' => array(
-		'processFuncRef'=> false,
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderAdminPassword',
-		'nextStep'		=> 'saveadminpassword',
+		'process'	=> 'TodoyuInstallerManager::processSetAdminPassword',
+		'render'	=> 'TodoyuInstallerRenderer::renderAdminPassword',
+		'tmpl'		=> '07_adminpassword.tmpl'
 	),
-	'saveadminpassword' => array(
-		'processFuncRef'	=> 'TodoyuInstaller::saveadminpassword',
-		'renderFuncRef'		=> 'TodoyuInstallerRenderer::renderFinish',
-		'nextStep'			=> 'exit',
-		'dontListProgress'	=> true
-	),
-	'exit'	=> array(
-		'processFuncRef'	=> 'TodoyuInstaller::finish',
-		'renderFuncRef'		=> false,
-		'nextStep'			=> '',
-		'dontListProgress'	=> true
+	'finish' => array(
+		'process'	=> 'TodoyuInstallerManager::processFinish',
+		'render'	=> 'TodoyuInstallerRenderer::renderFinish',
+		'tmpl'		=> '08_finish.tmpl'
 	),
 
 
 
 		// ------------------------ Update steps ---------------------
-	'welcometoupdate' => array(
-		'processFuncRef'=> false,
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderWelcomeToUpdate',
-		'nextStep'		=> 'updatetocurrentversion',
+	'update' => array(
+		'process'	=> 'TodoyuInstallerManager::processUpdate',
+		'render'	=> 'TodoyuInstallerRenderer::renderUpdate',
+		'tmpl'		=> '09_update.tmpl'
 	),
 	'updatetocurrentversion' => array(
 			// Mandatory version updates
-		'processFuncRef'=> 'TodoyuInstaller::mandatoryVersionUpdates',
-		'renderFuncRef'	=> 'TodoyuInstallerRenderer::renderVersionUpdates',
-		'nextStep'		=> 'autoupdatedbdiffs',
+		'process'	=> 'TodoyuInstallerManager::processUpdateToCurrentVersion',
+		'render'	=> 'TodoyuInstallerRenderer::renderUpdateToCurrentVersion',
+		'tmpl'		=> '10_updatetocurrentversion.tmpl',
 	),
-	'autoupdatedbdiffs' => array(
-			// Detect, perform changes as found in 'tables.sql' files compared against DB
-		'processFuncRef'	=> 'TodoyuInstaller::autoUpdateTablesSqlDifferences',
-		'renderFuncRef'		=> 'TodoyuInstallerRenderer::renderGenericDBupdates',
-		'nextStep'			=> 'exitUpdate',
-	),
-	'exitUpdate'	=> array(
-		'processFuncRef'	=> 'TodoyuInstaller::finish',
-		'renderFuncRef'		=> false,
-		'nextStep'			=> '',
-		'dontListProgress'	=> true
+	'finishUpdate' => array(
+		'process'	=> 'TodoyuInstallerManager::processFinishUpdate',
+		'render'	=> 'TodoyuInstallerRenderer::renderFinishUpdate',
+		'tmpl'		=> '12_finishupdate.tmpl'
 	)
 );
 

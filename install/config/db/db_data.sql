@@ -34,7 +34,7 @@ INSERT INTO `ext_bookmark_bookmark` (`id`, `id_user_create`, `date_create`, `typ
 -- Data for table `ext_calendar_holiday`
 --
 
-INSERT INTO `ext_calendar_holiday` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `date`, `title`, `description`, `workinghours`) VALUES
+INSERT INTO `ext_calendar_holiday` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `date`, `title`, `description`, `workingtime`) VALUES
 (39, 1220364646, 381, 1220364646, 0, 1230764400, 'Neujahr', '', '0'),
 (40, 1220364684, 381, 1220364684, 0, 1230850800, 'Berchtoldstag', '', '0'),
 (41, 1220364734, 381, 1220364734, 0, 1239314400, 'Karfreitag', '', '0'),

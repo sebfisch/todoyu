@@ -142,19 +142,47 @@ class TodoyuSqlParser {
 	 * @param	String	$tableSql
 	 * @return	Array
 	 */
-	private static function extractTableKeys($sql) {
-		$sql	= trim($sql);
+	private static function extractTableKeys($keySQL) {
+		$keySQL	= trim($keySQL);
+		$keys	= array();
 
-		$pattern= '/KEY\\s`[a-z]*`\\s\\(`[a-z_]*`\\)/';
-		preg_match_all($pattern, $sql, $matches);
+		if( $keySQL !== '' ) {
+			$keysSQL= explode(', ', $keySQL);
+			$pattern= '/([A-Za-z]*(?:\s*)KEY) (?:`(\w+)`)*(?:\s*)\((.*)\)/';
 
-		if ( count($matches) > 0 ) {
-			$keys	= $matches[0];
-		} else {
-			$keys	= false;
+
+			foreach($keysSQL as $keySQL) {
+				preg_match($pattern, $keySQL, $match);
+
+				$keys[] = array(
+					'type'	=> $match[1],
+					'name'	=> $match[2],
+					'fields'=> explode(',', str_replace('`', '', $match[3]))
+				);
+			}
 		}
 
 		return $keys;
+
+//		TodoyuDebug::printHtml($keys);
+
+//		TodoyuDebug::printHtml($keySQL);
+
+//		$pattern	= '/([A-Za-z0-9 ]*(\s*)KEY) (`(\w+)` )* \((.*)\)/';
+//		$pattern	= '/([A-Za-z]*(?:\s*)KEY) (`(\w+)`)*(?:\s*)\((.*)\)/';
+//		preg_match_all($pattern, $keySQL, $matches);
+//
+//		TodoyuDebug::printHtml($matches);
+
+		if( sizeof($match) > 0 ) {
+			return array(
+				'type'	=> $match[1],
+				'name'	=> $match[3],
+				'fields'=> $match[4]
+			);
+		} else {
+			return false;
+		}
 	}
 
 
@@ -187,12 +215,24 @@ class TodoyuSqlParser {
 	 * @param	String	$sql
 	 * @return	String
 	 */
-	private static function extractColumnType($sql) {
-		$sql	= trim($sql);
-		$pattern= '/(?<=`\\s)[a-z\\(\\)0-9]*/';
-		preg_match($pattern, $sql, $matches);
+	private static function extractColumnType($columnSQL) {
+		$remove	= array(
+			'NOT NULL',
+			'NULL',
+			'AUTO_INCREMENT'
+		);
 
-		return $matches[0];
+		$default	= self::extractColumnDefault($columnSQL);
+		if( $default !== '' ) {
+			$remove[] = $default;
+		}
+
+		$pattern	= '/`\w+`(.*)/';
+		preg_match($pattern, $columnSQL, $matches);
+
+		$type		= trim(str_ireplace($remove, '', $matches[1]));
+
+		return $type;
 	}
 
 
@@ -204,6 +244,7 @@ class TodoyuSqlParser {
 	 * @return	String
 	 */
 	private static function extractColumnAttributes($sql) {
+		return '';
 		$sql	= trim($sql);
 		$pattern= '/(?<=\\)\\s)[a-zA-Z]*/';
 		preg_match($pattern, $sql, $matches);
@@ -248,19 +289,26 @@ class TodoyuSqlParser {
 	 * @param	String	$sql
 	 * @return	String
 	 */
-	private static function extractColumnDefault($sql) {
-		$sql	= trim($sql);
-		$pattern= '/(DEFAULT|default)\\s\'[0-9a-zA-Z_]\'/';
-		preg_match($pattern, $sql, $matches);
+	private static function extractColumnDefault($columnSQL) {
+		$columnSQL	= str_replace('default ', 'DEFAULT ', $columnSQL);
+		$pattern	= '/(DEFAULT \'[\w]?\')/';
+		preg_match($pattern, $columnSQL, $match);
 
-		if ( count($matches) > 0 ) {
-			$default	= $matches[0];
-			$default	= str_replace('default ', 'DEFAULT ', $default);
-		} else {
-			$default = false;
-		}
+		return sizeof($match) > 0 ? $match[1] : '';
 
-		return $default;
+//
+//		$columnSQL	= trim($columnSQL);
+//		$pattern= '/(DEFAULT|default)\\s\'[0-9a-zA-Z_]+\'/';
+//		preg_match($pattern, $columnSQL, $matches);
+//
+//		if ( count($matches) > 0 ) {
+//			$default	= $matches[0];
+//			$default	= str_replace('default ', 'DEFAULT ', $default);
+//		} else {
+//			$default = false;
+//		}
+//
+//		return $default;
 	}
 
 
@@ -272,15 +320,24 @@ class TodoyuSqlParser {
 	 * @param	Array	$partsToRemove
 	 * @return	String
 	 */
-	private static function extractColumnExtra($sql, array $partsToRemove) {
-		foreach($partsToRemove as $remove) {
-			$sql	= str_replace($remove, '', $sql);
-			$sql	= str_replace(strtolower($remove), '', $sql);
-		}
-		$sql	= trim($sql);
-		$sql	= strtoupper($sql);
+	private static function extractColumnExtra($columnSQL) {
+		$extra	= '';
 
-		return $sql;
+		if( stristr($columnSQL, 'AUTO_INCREMENT') ) {
+			$extra = 'AUTO_INCREMENT';
+		}
+
+		return $extra;
+
+
+//		foreach($partsToRemove as $remove) {
+//			$sql	= str_replace($remove, '', $sql);
+//			$sql	= str_replace(strtolower($remove), '', $sql);
+//		}
+//		$sql	= trim($sql);
+//		$sql	= strtoupper($sql);
+//
+//		return $sql;
 	}
 
 
@@ -296,7 +353,7 @@ class TodoyuSqlParser {
 			$tablesSql	= self::getInstalledExtTablesSqls();
 		}
 		if ( count($tableNames) == 0 ) {
-			$tableNames	= TodoyuInstallerSqlParser::extractTableNames($tablesSql);
+			$tableNames	= TodoyuSqlParser::extractTableNames($tablesSql);
 		}
 
 			// Init structural definition data array
@@ -387,7 +444,7 @@ class TodoyuSqlParser {
 	 * @param	Array	$sqlStructures
 	 * @param	Array	$dbStructures
 	 */
-	public static function getStructureDifferences($newTables, array $sqlStructures, array $dbStructures) {
+	public static function getStructureDifferencesX($newTables, array $sqlStructures, array $dbStructures) {
 		$sqlStructuresBak	= $sqlStructures;
 
 			// Compare each table, column from DB with declaration in 'tables.sql', filter out differing ones
@@ -538,28 +595,70 @@ class TodoyuSqlParser {
 
 
 
-	/**
-	 * Extract queries from a file. Get a list of the single queries
-	 *
-	 * @param	String		$file
-	 * @return	Array		List of queries in file
-	 */
-	public static function getQueriesFromFile($file) {
-		$file	= TodoyuFileManager::pathAbsolute($file);
-		$content= file_get_contents($file);
-		$query	= self::cleanSql($content);
+	public static function parseCreateQuery($query) {
 		$query	= str_replace("\n", ' ', $query);
+		$info	= array(
+			'table'		=> '',
+			'columns'	=> array()
+		);
 
-		$queries= explode(';', $query);
+		$pattern1	= '/CREATE TABLE ([A-Za-z ]*)`(\w+)` \((.*)\)(.*)/';
+		preg_match_all($pattern1, $query, $matches);
 
-		foreach($queries as $index => $query) {
-			if( trim($query) === '' ) {
-				unset($queries[$index]);
-			}
+		$columnsKeySQL	= self::splitColumnKeySQL($matches[3][0]);
+		$columnsSQL		= explode(',', $columnsKeySQL['columns']);
+
+		$info['table']	= $matches[2][0];
+		$info['extra']	= $matches[4][0];
+		$info['keys']	= self::extractTableKeys($columnsKeySQL['keys']);
+
+			// Parse columns
+		foreach($columnsSQL as $columnSQL) {
+				// Parse normal column
+			$columnName	= self::extractColumnName($columnSQL);
+
+			$info['columns'][$columnName] = array(
+				'field'		=> $columnName,
+				'type'		=> self::extractColumnType($columnSQL),
+				'attributes'=> self::extractColumnAttributes($columnSQL),
+				'null'		=> self::extractColumnNull($columnSQL),
+				'default'	=> self::extractColumnDefault($columnSQL),
+				'extra'		=> self::extractColumnExtra($columnSQL)
+			);
 		}
 
-		return $queries;
+//		TodoyuDebug::printHtml($info, '$info');
+
+		return $info;
 	}
+
+
+	private static function splitColumnKeySQL($SQL) {
+		$strPosPrimary	= stripos($SQL, 'PRIMARY KEY ');
+		$strPosUnique	= stripos($SQL, 'UNIQUE KEY ');
+		$strPosFulltext	= stripos($SQL, 'FULLTEXT KEY ');
+		$strPosKey		= stripos($SQL, 'KEY ');
+		$info			= array(
+			'columns'	=> $SQL
+		);
+		$keyPositions	= array();
+
+		if( $strPosPrimary !== false ) 	$keyPositions[] = $strPosPrimary;
+		if( $strPosUnique !== false ) 	$keyPositions[] = $strPosUnique;
+		if( $strPosFulltext !== false ) $keyPositions[] = $strPosFulltext;
+		if( $strPosKey !== false ) 		$keyPositions[] = $strPosKey;
+
+		if( sizeof($keyPositions) > 0 ) {
+			$pos	= min($keyPositions);
+
+			$info['columns']= trim(substr($SQL, 0, $pos-1), ',');
+			$info['keys']	= substr($SQL, $pos);
+		}
+
+		return $info;
+	}
+
+
 
 }
 

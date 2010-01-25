@@ -4,18 +4,18 @@
 	<span class="rgt"></span>
 </h1>
 	<div id="installation-steps" class="text textInfo">
-{if $progress.installerMode == 'install'}
-		Steps of installation:
-{else}
-		Steps to update todoyu:
-{/if}
+	{if $progress.installerMode == 'install'}
+			Steps of installation:
+	{else}
+			Steps to update todoyu:
+	{/if}
 		<ul>
-{foreach $progress.steps progressStepName progressStep}
-			<li>
-				<span id="progressStep-{$progressStepName}" {if $progressStep.past==1 || $progressStep.curr==1} class="pastOrCurrent"{/if}>{$progressStep.label}</span>
-				{if $progressStep.past==1}<span class="servercheckicon ok"></span>{/if}	
-			</li>
-{/foreach}
+		{foreach $progress.steps progressStepName progressStep}
+					<li>
+						<span id="progressStep-{$progressStepName}" {if $progressStep.past==1 || $progressStep.curr==1} class="pastOrCurrent"{/if}>{$progressStep.label}</span>
+						{if $progressStep.past==1}<span class="servercheckicon ok"></span>{/if}
+					</li>
+		{/foreach}
 		</ul>
 	</div>
 </div>

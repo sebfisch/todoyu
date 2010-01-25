@@ -2,8 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Todoyu Installer - {$title}</title>		
-	<link href="assets/css/todoyu-installer.css" rel="stylesheet" type="text/css" />
+	<title>Todoyu Installer - {Label $title}</title>
+
+	<link href="../core/assets/css/base.css" rel="stylesheet" type="text/css" />
+	<link href="../core/assets/css/layout.css" rel="stylesheet" type="text/css" />
+	<link href="../core/assets/css/button.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/installer.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="../favicon.ico" />
 	<script language="javascript" type="text/javascript" src="../lib/js/prototype.js"></script>
 	<script language="javascript" type="text/javascript" src="assets/js/TodoyuInstaller.js"></script>
@@ -27,22 +31,24 @@
 				<div class="content">
 					<div class="boxContent">
 						<h1>
-							<span class="title">Todoyu Installer - {$title}</span>
+							<span class="title">Todoyu Installer - {Label $title}</span>
 							<span class="rgt"></span>
 						</h1>
-						{if $text}<p  class="{$textClass}">{$text}</p>{/if}
+
+						{if $text}
+							<p  class="installMessage {$textClass}">{$text}</p>
+						{/if}
+
 						<form method="post" action="index.php" style="padding-left:12px;" >
 							{* ------------ Content ---------------------- *}
 							<div class="blockcontent">{block name="box"}{/block}</div>
 							{* ----------- Submit: goto next step -------- *}
-							{if $next}
-								<button id="submit" type="submit"{if $hideSubmitInitial} style="display:none;"{/if}>
-									<span class="label">{$buttonLabel}</span>
-									<span class="rgt"></span>
-								</button>
-								<input type="hidden" name="action" value="{$nextStep}">
+
+							{if $stop !== true }
+								{Button label=$button type="submit"}
 							{/if}
-						</form><br />
+						</form>
+						<br />
 					</div>
 				</div>
 				{* ------------------- Footer ----------------- *}

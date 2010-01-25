@@ -1,0 +1,19 @@
+{extends main.tmpl}
+
+{block name="box"}
+	<div id="licenseagreement">
+
+		<h2>{Label installer.install.eula}</h2>
+		<div class="enduserlicense">
+			<pre>{include "../../LICENSE.txt"}</pre>
+		</div>
+
+		<h2>{Label installer.install.lgpl}</h2>
+		<ul class="thirdPartyLibs">
+			<li>TinyMCE</li>
+			<li>phpMail</li>
+			<li>jsCalendar</li>
+		</ul>
+
+	</div>
+{/block}

@@ -1,30 +1,20 @@
 {extends main.tmpl}
 
 {block name="box"}
-		{if $hasError == 1}
-			<strong>{Label installer.error.dbServerConnectionFailed}</strong>
-		{else}
-			<span class="title">
-				<span style="padding:0 0 0 30px; width:300px;" class="servercheckicon ok">
-					{Label installer.title.dbServerConnectionValidated}
-				</span>
-			</span> 
-		{/if}
-		<br />
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 			<tr>
 				<td width="109">{Label installer.selectDB}</td>
 				<td width="379">
 					<select name="database" type="text" id="database" value="{$fields.server}">
-			{foreach $options key option}
-						<option value="{$key}"{if $option.disabled} disabled="true"{/if}>{$option.text}</option>
-			{/foreach}
-					</select>	 
+						{foreach $databases database}
+							<option value="{$database}">{$database}</option>
+						{/foreach}
+					</select>
 				</td>
 			</tr><tr>
 				<td>{Label installer.orCreateDB}</td>
 				<td>
-					<input onkeyup="TodoyuInstaller.checkDbSelect()" type="text" id="database_new" name="database_new" />
+					<input onkeyup="TodoyuInstaller.checkDbSelect()" type="text" id="database_new" name="database_new" value="{$fields.database_new}" />
 					<span id="error-newnameTaken" style="display:none;" class="error">{Label installer.error.nameTaken}</span>
 				</td>
 			</tr>

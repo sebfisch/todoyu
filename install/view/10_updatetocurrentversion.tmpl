@@ -1,0 +1,59 @@
+{extends main.tmpl}
+
+{block name="box"}
+{if $noUpdates !== true}
+	<div class="sqlQuery">
+
+		<p>Updates</p>
+
+		{if sizeof($diff.missingTables) > 0}
+			<p>Fehlende Tabellen</p>
+			<ul>
+			{foreach $diff.missingTables missingTable}
+				<li>
+					{$missingTable.table}
+					<ul>
+						{foreach $missingTable.columns column}
+							<li>{$column.field}</li>
+						{/foreach}
+					</ul>
+				</li>
+			{/foreach}
+			</ul>
+		{/if}
+
+		{if sizeof($diff.missingColumns) > 0}
+			<p>Zusätzliche Spalten in vorhanden Tabellen</p>
+			<ul>
+			{foreach $diff.missingColumns tableName missingTableColumns}
+				<li>
+					{$tableName}
+					<ul>
+					{foreach $missingTableColumns column}
+						<li>{$column.field}</li>
+					{/foreach}
+					</ul>
+				</li>
+			{/foreach}
+			</ul>
+		{/if}
+
+		{if sizeof($diff.changedColumns) > 0}
+			<p>Veränderte Spalten in vorhanden Tabellen</p>
+			<ul>
+			{foreach $diff.changedColumns tableName changedTableColumns}
+				<li>
+					{$tableName}
+					<ul>
+					{foreach $changedTableColumns column}
+						<li>{$column.field}</li>
+					{/foreach}
+					</ul>
+				</li>
+			{/foreach}
+			</ul>
+		{/if}
+	</div>
+{/if}
+	<input type="hidden" name="update" value="1" />
+{/block}

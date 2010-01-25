@@ -1,33 +1,33 @@
 {extends main.tmpl}
 
 {block name="box"}
-		<span class="title">{Label installer.title.systemConfig}</span>
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 			<tr>
-				<td width="109">{Label installer.systemName} *</td>
+				<td width="109">{Label installer.systemconfig.systemName} *</td>
 				<td width="379">
 					<input name="systemname" type="text" id="systemname" value="{if $fields.server}{$fields.server}{else}Todoyu{/if}" />
 				</td>
 			</tr>
 			<tr>
-				<td>{Label installer.systemEmail} *</td>
+				<td>{Label installer.systemconfig.systemEmail} *</td>
 				<td><input type="text" name="email" id="email" value="{$fields.username}" /></td>
 			</tr>
 			<tr>
-				<td>{Label installer.language}</td>
+				<td>{Label installer.systemconfig.language}</td>
 				<td>
 					<select name="language" id="language">
-						<option value="de">German (deutsch)</option>
-						<option value="en">English (english)</option>
+						{foreach $languages language}
+							<option value="{$language.value}" {if $language.value==$userLanguage}selected="selected"{/if}>{$language.label}</option>
+						{/foreach}
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td>{Label installer.locale}</td>
+				<td>{Label installer.systemconfig.locale}</td>
 				<td>
 					<select name="locale" id="locale">
 					{foreach $locales locale}
-						<option value="{$locale.value}">{$locale.label}</option>
+						<option value="{$locale.value}" {if $locale.value==$userLocale}selected="selected"{/if}>{$locale.label}</option>
 					{/foreach}
 					</select>
 				</td>

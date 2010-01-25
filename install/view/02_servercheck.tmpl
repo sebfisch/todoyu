@@ -1,34 +1,53 @@
 {extends main.tmpl}
 
 {block name="box"}
-	<span class="title">{Label installer.servercheckResults}</span>
 	<table width="500" border="0" cellspacing="0" cellpadding="5">
 		<tr>
-			<td width="148">PHP version &gt;= 5.2</td>
-			<td width="200">{$phpversion}</td>
-			<td width="150"><strong>{$phpversionStatus}</strong></td>
-			<td>{if $phpversionStatus == 'OK'}<span class="servercheckicon ok"></span>{else}<span class="servercheckicon problem"></span>{/if}</td>
-		</tr>
-		<tr>
-			<td valign="top">{Label installer.foldersFilesWritable}</td>
-	{foreach $writable file status iteration}
-		{if $.foreach.iteration.first}
-			<td><strong class="bullet">&bull;</strong>/{$file}: </td>
-			<td><strong>{if $status}{Label installer.writable}{else}{Label installer.notWritable}{/if}</strong></td>
-			<td>{if $status == 'OK'}
-				<span class="servercheckicon ok"></span>{else}
-				<span class="servercheckicon problem"></span>
+			<td width="148">
+				PHP version &gt;= 5.2
+			</td>
+			<td width="200">
+				{Label installer.servercheck.yourphpversion}: {constant(PHP_VERSION)}
+			</td>
+			<td width="150">
+				<strong>
+				{if $phpversion}
+					{Label installer.servercheck.yourphpversion.ok}
+				{else}
+					{Label installer.servercheck.yourphpversion.error}
 				{/if}
+				</strong>
+			</td>
+			<td>
+				<span class="servercheckicon {if $phpversion}ok{else}problem{/if}"></span>
 			</td>
 		</tr>
-		{else}
+		{foreach $files file status writable}
 		<tr>
-			<td></td>
-			<td><strong class="bullet">&bull;</strong>/{$file}:</td>
-			<td><strong>{if $status}{Label installer.writable}{else}{Label installer.notWritable}{/if}</strong></td>
-			<td>{if $status == 'OK'}<span class="servercheckicon ok"></span>{else}<span class="servercheckicon problem"></span>{/if}</td>
+			<td>
+				{if $.foreach.writable.first}
+					{Label installer.servercheck.writableCheck}
+				{else}
+					&nbsp;
+				{/if}
+			</td>
+			<td>
+				<strong class="bullet">&bull;</strong>/{$file}:
+			</td>
+			<td>
+				<strong>
+				{if $status}
+					{Label installer.servercheck.writable}
+				{else}
+					{Label installer.servercheck.notWritable}
+				{/if}
+				</strong>
+			</td>
+			<td>
+				<span class="servercheckicon {if $status}ok{else}problem{/if}"></span>
+			</td>
 		</tr>
-		{/if}
-	{/foreach}
+		{/foreach}
 	</table>
+	<input type="hidden" name="checked" value="1" />
 {/block}

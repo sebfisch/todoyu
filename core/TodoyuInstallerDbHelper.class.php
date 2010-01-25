@@ -36,20 +36,29 @@ class TodoyuInstallerDbHelper {
 	 * @param	String	$username
 	 * @param	String	$password
 	 */
-	public static function addDatabase($newDatabase, $database, $server, $username, $password)	{
-			// Create new DB?
-		if( strlen($newDatabase) > 0 )	{
-			$conn	= mysql_connect($server, $username, $password);
-			$query	= 'CREATE DATABASE `' . $newDatabase . '`';
+	public static function addDatabase($databaseName, array $dbConfig)	{
+		$link	= mysql_connect($dbConfig['server'], $dbConfig['username'], $dbConfig['password']);
+		$query	= 'CREATE DATABASE `' . $databaseName . '`';
 
-			if( @mysql_query($query, $conn) == false )	{
-				throw new Exception('Can not create database ' . $newDatabase . ': (' . mysql_error() . ')');
-			}
-			$_SESSION['todoyuinstaller']['db']['database'] = $newDatabase;
-		} else if( $database == '0' )	{
-				// No DB name given or selected?
-			throw new Exception('Please select a database or enter a name');
-		}
+		return @mysql_query($query, $link) !== false;
+
+
+
+//
+//
+//			// Create new DB?
+//		if( strlen($newDatabase) > 0 )	{
+//			$conn	= mysql_connect($server, $username, $password);
+//			$query	= 'CREATE DATABASE `' . $newDatabase . '`';
+//
+//			if( @mysql_query($query, $conn) == false )	{
+//				throw new Exception('Can not create database ' . $newDatabase . ': (' . mysql_error() . ')');
+//			}
+//			$_SESSION['todoyuinstaller']['db']['database'] = $newDatabase;
+//		} else if( $database == '0' )	{
+//				// No DB name given or selected?
+//			throw new Exception('Please select a database or enter a name');
+//		}
 	}
 
 
@@ -62,20 +71,11 @@ class TodoyuInstallerDbHelper {
 	 * @param	String	$password
 	 * @return	Integer	number of bytes written or false on failure
 	 */
-	public static function saveDbConfigInFile($server, $username, $password, $database) {
-		$data	= array(
-			'server'	=> $server,
-			'username'	=> $username,
-			'password'	=> $password,
-			'database'	=> $database
-		);
+	public static function saveDbConfigInFile(array $dbConfig) {
 		$tmpl	= 'install/view/configs/db.php.tmpl';
-
-		$config	= render($tmpl, $data);
-		$code	= '<?php' . $config . '?>';
 		$file	= PATH . '/config/db.php';
 
-		return	file_put_contents($file, $code);
+		return TodoyuFileManager::saveTemplatedFile($file, $tmpl, $dbConfig, true);
 	}
 
 
@@ -83,29 +83,49 @@ class TodoyuInstallerDbHelper {
 	/**
 	 * Import static data from SQL files
 	 */
-	public static function importStaticData() {
-			// Structure (from core and extensions 'tables.sql' files)
-		$coreStructure	= TodoyuInstallerDbHelper::getCoreDBstructures();
-		$extStructure	= TodoyuInstallerDbHelper::getExtDBstructures();
+	public static function importAllTables() {
+			// Get table structure from core tables.sql
+		$fileCoreStructure	= TodoyuSQLManager::getCoreTablesFromFile();
+			// Get table structure from all ext tables.sql
+		$fileExtStructure	= TodoyuSQLManager::getExtTablesFromFile();
+			// Merge the core and all ext table structures
+		$fileTableStructure	= TodoyuSQLManager::mergeCoreAndExtTables($fileCoreStructure, $fileExtStructure);
+			// Get table structure from database
+		$dbTableStructure	= TodoyuDbAnalyzer::getTableStructures();
+		$structureDifferences	= TodoyuSqlParser::getStructureDifferences($fileTableStructure, $dbTableStructure);
+
+
+
+
+
+
+		$updateQueries	= TodoyuSQLManager::getStructureUpdateQueriesFromDifferences($structureDifferences);
+
+
+		TodoyuDebug::printHtml($updateQueries, '$updateQueries');
+
+
+
+
+		TodoyuDebug::printHtml($allTablesDb, '$allTablesDb');
+		TodoyuDebug::printHtml($coreTablesFile, '$coreTablesFile');
+//		TodoyuDebug::printHtml($extStructure);
+
+		exit();
+
+
+		return ;
 
 		if ( count($coreStructure) > 0 ) {
-			TodoyuInstallerDbHelper::compileAndRunInstallerQueries($coreStructure);
+			self::compileAndRunInstallerQueries($coreStructure);
 		}
 		if ( count($extStructure) > 0  ) {
-			TodoyuInstallerDbHelper::compileAndRunInstallerQueries($extStructure);
-		}
-
-			// Data
-		$fileData		= PATH . '/install/config/db/db_data.sql';
-		$data			= file_get_contents($fileData);
-
-		$dataParts		= explode(';', $data);
-		foreach($dataParts as $dataPart) {
-			if( trim($dataPart) !== '' ) {
-				Todoyu::db()->query($dataPart);
-			}
+			self::compileAndRunInstallerQueries($extStructure);
 		}
 	}
+
+
+
 
 
 
@@ -137,59 +157,10 @@ class TodoyuInstallerDbHelper {
 
 
 
-	/**
-	 * Get all core DB tables' structures for fresh install from 'tables.sql'
-	 *
-	 * @return	Array
-	 */
-	public static function getCoreDBstructures() {
-			// Get 'table.sql' definitions from extensions having them
-		$tablesSql	= TodoyuExtensions::getCoreTablesSqls();
-
-			// Get all table names being declared
-		$tablesNames	= TodoyuSqlParser::extractTableNames($tablesSql);
-
-			// Collect all columns declarations of all tables
-		$tablesStructures	= TodoyuSqlParser::getAllTableStructures($tablesNames, $tablesSql);
-
-			// Collect all tables' comparisom columns declarations as setup in DB
-		$tablesStructuresInDB	= array();
-
-			// During a fresh install all tables are new ;)
-		$newTables	=  array_flip($tablesNames);
-
-		$structures	= self::getDBStructureDifferences($newTables, $tablesStructures, $tablesStructuresInDB);
-
-		return $structures;
-	}
 
 
 
-	/**
-	 * Get all extensions DB tables' structures for fresh install from 'tables.sql'
-	 *
-	 * @return	Array
-	 */
-	public static function getExtDBstructures() {
-			// Get 'table.sql' definitions from extensions having them
-		$tablesSql	= TodoyuExtensions::getInstalledExtTablesSqls();
 
-			// Get all table names being declared
-		$tablesNames	= TodoyuSqlParser::extractTableNames($tablesSql);
-
-			// Collect all columns declarations of all tables
-		$tablesStructures	= TodoyuSqlParser::getAllTableStructures($tablesNames, $tablesSql);
-
-			// Collect all tables' comparisom columns declarations as setup in DB
-		$tablesStructuresInDB	= array();
-
-			// During a fresh install all tables are new ;)
-		$newTables	=  array_flip($tablesNames);
-
-		$structures	= self::getDBStructureDifferences($newTables, $tablesStructures, $tablesStructuresInDB);
-
-		return $structures;
-	}
 
 
 
@@ -212,7 +183,7 @@ class TodoyuInstallerDbHelper {
 		$extTablesStructuresInDB	= TodoyuDbAnalyzer::getTablesStructures($extTablesNames);
 
 			// Compare: Find missing tables and tables with incomplete columns
-		$newTables	= TodoyuDbAnalyzer::getMissingTables($extTablesNames);
+		$newTables	= TodoyuSQLManager::getMissingTables($extTablesNames);
 
 		$diff	= self::getDBStructureDifferences($newTables, $extTablesStructures, $extTablesStructuresInDB);
 
@@ -347,27 +318,6 @@ class TodoyuInstallerDbHelper {
 
 
 
-	/**
-	 * Execute the queries in the version update file
-	 *
-	 * @param	String		$updateFile			Path to update file
-	 * @return	Integer		Number of executed queries
-	 */
-	public static function executeQueriesFromFile($updateFile) {
-		$updateFile	= TodoyuFileManager::pathAbsolute($updateFile);
-		$queries	= TodoyuSqlParser::getQueriesFromFile($updateFile);
-		$count		= 0;
-
-		foreach($queries as $query) {
-			$query	= trim($query);
-			if( $query !== '' ) {
-				Todoyu::db()->query($query);
-				$count++;
-			}
-		}
-
-		return $count;
-	}
 
 }
 ?>

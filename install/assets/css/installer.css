@@ -1,3 +1,77 @@
+#contentBox {
+	top:20px;
+	float:left;
+	width:680px !important;
+	background-color:#fff;
+}
+
+button span.rgt {
+	background-color:#E3EACE !important;
+}
+
+
+p.installMessage {
+	padding:10px;
+	margin:10px;
+	border:2px solid #FFF;
+	background-color:#EDF1E0;
+	font-weight:bold;
+	color:#000;
+	padding-left:40px;
+	background-image:url(../img/icons.png);
+	background-position:0 1000px;
+}
+
+p.installMessage.success {
+	border-color:#008000;
+	color:#008000;
+	background-position:10px -20px;
+}
+
+p.installMessage.error {
+	border-color:#F00;
+	color:#F00;
+	background-position:10px 10px;
+}
+
+p.installMessage.info {
+	
+}
+
+#footer {
+	width:auto !important;
+	border:1px solid #d3dabb;
+	background-color:#edf1e0;
+	clear:both;
+	margin:20px 8px 10px 8px;
+	padding:15px;
+}
+
+
+
+
+.sqlQuery {
+	width:600px;
+	height:380px;
+	overflow-x:scroll;
+	margin:12px 0;
+	border:1px dotted #ffa800;
+	background-color:#f9f3e8;
+}
+
+.sqlQuery ul li {
+	margin-left:20px;
+}
+
+
+
+
+
+
+
+
+
+
 body {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
@@ -23,13 +97,7 @@ body {
 	margin:0 auto;
 }
 
-#contentBox {
-	top:20px;
-	float:left;
-	position:relative;
-	width:680px;
-	background-color:#fff;
-}
+
 
 		#contentBox span.lt,
 		#contentBox span.rt,
@@ -88,11 +156,6 @@ body {
 	Text
    ----------------------- */
 
-.text{
-	padding:5px;
-	border:1px solid #000;
-	margin:5px;
-}
 
 
 .blockcontent span.title {
@@ -201,13 +264,7 @@ body {
 	Headers, footers
    --------------------------- */
 
-#footer {
-	border:1px solid #d3dabb;
-	background-color:#edf1e0;
-	clear:both;
-	margin:20px 8px 10px 8px;
-	padding:15px;
-}
+
 
 h1 {
 	background:transparent url('../img/bg_headerline.png') no-repeat 0 0;
@@ -284,7 +341,7 @@ button {
 		position:relative;
 		width:10px;
 	}
-	
+
 label {
 	cursor:pointer;
 }
@@ -299,11 +356,11 @@ label {
 	height:16px;
 	width:16px;
 	display:block;
-	background:transparent url('../img/icons.png') no-repeat 0 0;	
+	background:transparent url('../img/icons.png') no-repeat 0 0;
 }
 
 .servercheckicon.ok {
-	background-position:0 -28px;	
+	background-position:0 -28px;
 }
 
 .toggler {
@@ -315,14 +372,7 @@ label {
 	background:transparent url('../img/icons.png') no-repeat 4px -85px;
 }
 
-.sqlQuery {
-	width:600px;
-	height:380px;
-	overflow-x:scroll;
-	margin:12px 0;
-	border:1px dotted #ffa800;
-	background-color:#f9f3e8;
-}
+
 
 
 
