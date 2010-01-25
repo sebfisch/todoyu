@@ -793,10 +793,11 @@ class TodoyuDatabase {
 	 * @param	String		$table
 	 * @param	String		$where
 	 * @param	String		$groupBy
+	 * @param	String		$order
 	 * @return	Array		Or false
 	 */
-	public function getRecordByQuery($fields, $table, $where = '', $groupBy = '') {
-		$rows	= $this->getArray($fields, $table, $where, $groupBy, '', '1');
+	public function getRecordByQuery($fields, $table, $where = '', $groupBy = '', $order = '') {
+		$rows	= $this->getArray($fields, $table, $where, $groupBy, $order, '1');
 
 		return sizeof($rows) === 1 ? $rows[0] : false;
 	}

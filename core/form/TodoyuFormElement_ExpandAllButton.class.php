@@ -53,7 +53,7 @@ class TodoyuFormElement_ExpandAllButton extends TodoyuFormElement_Button {
 			$this->setAttribute('class', 'expandAll');
 		}
 
-		$fields	= TodoyuDiv::trimExplode(',', $this->getAttribute('fields'), true);
+		$fields	= TodoyuArray::trimExplode(',', $this->getAttribute('fields'), true);
 		$list	= TodoyuArray::implodeQuoted($fields, ',');
 
 		$this->setAttribute('onclick', 'Todoyu.Form.expandForeignRecords([' . $list . '])');

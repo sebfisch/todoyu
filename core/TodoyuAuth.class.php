@@ -116,6 +116,7 @@ class TodoyuAuth {
 	 *
 	 */
 	public static function logout() {
+		TodoyuHookManager::callHook('core', 'logout');
 			// Clear session
 		TodoyuSession::clear();
 

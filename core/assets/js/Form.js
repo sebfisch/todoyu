@@ -66,7 +66,7 @@ Todoyu.Form = {
 		, {
 			'scaleMode': 'contents',
 			'afterFinish': function(){
-				console.log('remove');
+				Todoyu.log('remove');
 				//$(idElement).remove()
 			}
 		});
@@ -78,7 +78,7 @@ Todoyu.Form = {
 
 	/**
 	 * Add a new record
-	 * 
+	 *
 	 * @param	Integer		idRecord
 	 * @param	String		formName
 	 * @param	Stirng		fieldName
@@ -124,7 +124,7 @@ Todoyu.Form = {
 
 	/**
 	 * Focus first record field
-	 * 
+	 *
 	 * @param	Integer		idRecord
 	 * @param	String		fieldName
 	 * @param	Integer		index
@@ -141,12 +141,12 @@ Todoyu.Form = {
 
 
 	/**
-	 * 
-	 * @param	Array	fieldNames 
+	 *
+	 * @param	Array	fieldNames
 	 */
 	expandForeignRecords: function(fieldNames) {
 		fieldNames = fieldNames || [];
-				
+
 		fieldNames.each(function(fieldName){
 			var parentField = $$('form div.fieldname' + fieldName.capitalize()).first();
 			if ( parentField ) {

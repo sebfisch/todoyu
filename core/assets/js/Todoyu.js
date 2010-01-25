@@ -33,7 +33,7 @@ var Todoyu = {
 	 */
 	Ext: 		{},
 
-	
+
 	/**
 	 * Initialize todoyu object
 	 */
@@ -43,10 +43,10 @@ var Todoyu = {
 	},
 
 
-	
+
 	/**
 	 * Build request url with extension and controller
-	 * 
+	 *
 	 *	@param	String		ext
 	 *	@param	String		controller
 	 */
@@ -64,7 +64,7 @@ var Todoyu = {
 
 	/**
 	 * Redirect to an onther page
-	 * 
+	 *
 	 *	@param	String	ext
 	 *	@param	String	controller
 	 *	@param	Hash	params
@@ -80,7 +80,7 @@ var Todoyu = {
 		if( Object.isString(hash) ) {
 			url += '#' + hash;
 		}
-		
+
 		document.location.href = url;
 	},
 
@@ -88,7 +88,7 @@ var Todoyu = {
 
 	/**
 	 * Send AJAX request
-	 * 
+	 *
 	 *	@param	String		url
 	 *	@param	Hash		options
 	 */
@@ -102,7 +102,7 @@ var Todoyu = {
 
 	/**
 	 * Check if an element exists
-	 * 
+	 *
 	 *	@param	DomElement,String		element		Element or its ID
 	 */
 	exists: function(element) {
@@ -156,6 +156,12 @@ var Todoyu = {
 			context = context[namespaces[i]];
 		}
 		return context[func].apply(this, args);
-	}	
+	},
+
+	log: function(element) {
+		if( typeof(console) !== 'undefined' ) {
+			console.log(element);
+		}
+	}
 
 };

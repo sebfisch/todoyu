@@ -229,48 +229,6 @@ class TodoyuDiv {
 
 
 	/**
-	 * Explode a list of integers
-	 *
-	 * @param	String		$delimiter			Character to split the list
-	 * @param	String		$string				The list
-	 * @param	Boolean		$onlyPositive		Set negative values zero
-	 * @param	Boolean		$removeZeros		Remove all zero values
-	 * @param	Boolean		$parseConstants		Parse constants?
-	 * @return	Array
-	 */
-	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false, $parseConstants = false) {
-		$parts	= explode($delimiter, $string);
-
-		return TodoyuArray::intval($parts, $onlyPositive, $removeZeros, $parseConstants);
-	}
-
-
-
-	/**
-	 * Explode a list and remove whitespaces around the values
-	 *
-	 * @param	String		$delimiter				Character to split the list
-	 * @param	String		$string					The list
-	 * @param	Boolean		$removeEmptyValues		Remove values which are empty afer trim()
-	 * @return	Array
-	 */
-	public static function trimExplode($delimiter, $string, $removeEmptyValues = false) {
-		$parts	= explode($delimiter, $string);
-		$array	= array();
-
-		foreach($parts as $value) {
-			$value = trim($value);
-			if( $value !== '' || $removeEmptyValues === false ) {
-				$array[] = $value;
-			}
-		}
-
-		return $array;
-	}
-
-
-
-	/**
 	 * Remove absolute site path from a path
 	 *
 	 * @param	String		$path
@@ -343,7 +301,7 @@ class TodoyuDiv {
 			$fieldsInResult = $table . '.*';
 		} else {
 			// Split fields and prepend table if not done yet
-			$fields = TodoyuDiv::trimExplode(',', $fieldsInResult, true);
+			$fields = TodoyuArray::trimExplode(',', $fieldsInResult, true);
 			foreach($fields as $key => $field) {
 				if( strstr($field, '.') === false ) {
 					$fields[$key] = $table . '.' . $field;

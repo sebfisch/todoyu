@@ -33,7 +33,7 @@ Todoyu.Ui = {
 		if( Todoyu.exists(container) ) {
 			return new Ajax.Updater(container, url, options);
 		} else {
-			console.log('You tried to update "' + container + '" which is not part of the DOM! (No request sent)');
+			Todoyu.log('You tried to update "' + container + '" which is not part of the DOM! (No request sent)');
 		}
 	},
 
@@ -52,7 +52,7 @@ Todoyu.Ui = {
 		if( Todoyu.exists(container) ) {
 			return new Ajax.Replacer(container, url, options);
 		} else {
-			console.log('You tried to replace "' + container + '" which is not part of the DOM!');
+			Todoyu.log('You tried to replace "' + container + '" which is not part of the DOM!');
 		}
 	},
 
@@ -193,35 +193,35 @@ Todoyu.Ui = {
 	setContent: function(content) {
 		$('content').update(content);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Update content tabs div
-	 * 
+	 *
 	 * @param	String		tabs
 	 */
 	setContentTabs: function(tabs) {
 		$('content-tabs').update(tabs);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Update content body div
-	 * 
+	 *
 	 * @param	String		body
 	 */
 	setContentBody: function(body) {
 		$('content-body').update(body);
 	},
-	
-	
-	
-	
+
+
+
+
 	/**
 	 * Update content body with request
-	 * 
+	 *
 	 * @param	String		url
 	 * @param	Hash		options
 	 */
@@ -361,7 +361,7 @@ Todoyu.Ui = {
 
 	/**
 	 * @todo	comment
-	 * 
+	 *
 	 * @param	String	name
 	 */
 	scrollToAnchor: function(name) {
@@ -438,7 +438,7 @@ Todoyu.Ui = {
 
 	/**
 	 * Check whether given element is currently visible
-	 * 
+	 *
 	 * @param	Element	element
 	 * @return	Boolean
 	 */
@@ -486,35 +486,35 @@ Todoyu.Ui = {
 		return new TimePicker(idElement);
 	},
 
-	
-	
+
+
 	/**
-	 * 
+	 *
 	 */
 	setTitle: function(title) {
 		document.title = 'todoyu: ' + title;
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Creates a js filereference and appends it to head
-	 * 
+	 *
 	 * @param	String	filename
 	 */
 	loadJSFile: function(filename)	{
 		var fileref=document.createElement( 'script' );
 		fileref.setAttribute( "type" , "text/javascript" );
 		fileref.setAttribute( "src" , filename );
-		
+
 		Todoyu.Ui.appendAssetToHead(fileref);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Creates a css filereference and appends it to head
-	 * 
+	 *
 	 * @param	String	filename
 	 */
 	loadCSSFile: function(filename)	{
@@ -522,15 +522,15 @@ Todoyu.Ui = {
 		fileref.setAttribute( "rel" , "stylesheet" );
 		fileref.setAttribute( "type" , "text/css" );
 		fileref.setAttribute( "href" , filename );
-		
+
 		Todoyu.Ui.appendAssetToHead(fileref);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Appends given filereference to html head
-	 * 
+	 *
 	 * @param	fileref
 	 */
 	appendAssetToHead: function(fileref)	{

@@ -290,6 +290,18 @@ INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_user`, `id_worka
 
 
 --
+-- Data for table `ext_user_group`
+--
+
+INSERT INTO `ext_user_group` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `is_active`, `description`) VALUES
+(1, 1264439956, 0, 1, 0, 'Company Management', 1, 'The Bosses'),
+(2, 1264439984, 0, 1, 0, 'Head of department', 1, 'Area managers'),
+(3, 1264440030, 0, 1, 0, 'Accounting', 1, 'Normal emplyee'),
+(4, 1264440047, 0, 1, 0, 'Customers', 1, '');
+
+
+
+--
 -- Data for table `ext_user_mm_user_address`
 --
 
@@ -302,6 +314,11 @@ INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_user`, `id_worka
 --
 -- Data for table `ext_user_mm_user_group`
 --
+INSERT INTO `ext_user_mm_user_group` (`id`, `id_user`, `id_group`) VALUES
+(1, 4, 4),
+(2, 1, 1),
+(3, 1, 2),
+(4, 2, 3);
 
 
 --
@@ -336,10 +353,11 @@ INSERT INTO `ext_user_preference` (`id_user`, `ext`, `area`, `preference`, `item
 -- Data for table `ext_user_user`
 --
 
-  INSERT INTO `ext_user_user` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
-(1, 1246615200, 0, 1246615200, 0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'demo@todoyu.com', 1, 1, 'Bob', 'Thingummy', 'BOTH', 'm', '', '1966-10-05'),
-(2, 0, 1, 1254213351, 0, 'alfred', 'a55e28b5514b1b1292a9018549edc271', 'alfred345KJHFSD', 1, 1, 'Alfred', 'Hitchcock', 'ALHI', 'm', '', '1899-08-13'),
-(3, 0, 1, 1254213483, 0, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20');
+INSERT INTO `ext_user_user` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
+(1, 1246615200, 1264440227, 0, 0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'demo@todoyu.com', 1, 1, 'Bob', 'Thingummy', 'BOTH', 'm', '', '1966-10-05'),
+(2, 1254213351, 0, 1, 0, 'alfred', 'a55e28b5514b1b1292a9018549edc271', 'alfred345KJHFSD', 1, 1, 'Alfred', 'Hitchcock', 'ALHI', 'm', '', '1899-08-13'),
+(3, 1254213483, 0, 1, 0, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20'),
+(4, 1264439703, 1264440209, 1, 0, 'customer', '91ec1f9324753048c0096d036a694f86', 'customer@todoyu.com', 0, 1, 'Customer', 'Customer', 'KUKU', 'm', '', '0000-00-00');
 
 --
 -- Data for table `history`

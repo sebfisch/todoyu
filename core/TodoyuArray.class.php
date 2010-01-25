@@ -600,6 +600,61 @@ class TodoyuArray {
 		return $cleanedArray;
 	}
 
+
+
+	/**
+	 * Explode a list of integers
+	 *
+	 * @param	String		$delimiter			Character to split the list
+	 * @param	String		$string				The list
+	 * @param	Boolean		$onlyPositive		Set negative values zero
+	 * @param	Boolean		$removeZeros		Remove all zero values
+	 * @param	Boolean		$parseConstants		Parse constants?
+	 * @return	Array
+	 */
+	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false, $parseConstants = false) {
+		$parts	= explode($delimiter, $string);
+
+		return self::intval($parts, $onlyPositive, $removeZeros, $parseConstants);
+	}
+
+
+
+	/**
+	 * Explode a list and remove whitespaces around the values
+	 *
+	 * @param	String		$delimiter				Character to split the list
+	 * @param	String		$string					The list
+	 * @param	Boolean		$removeEmptyValues		Remove values which are empty afer trim()
+	 * @return	Array
+	 */
+	public static function trimExplode($delimiter, $string, $removeEmptyValues = false) {
+		$parts	= explode($delimiter, $string);
+		$array	= array();
+
+		foreach($parts as $value) {
+			$value = trim($value);
+			if( $value !== '' || $removeEmptyValues === false ) {
+				$array[] = $value;
+			}
+		}
+
+		return $array;
+	}
+
+
+
+	/**
+	 * Trim all elements of an array. The elements have to be strings
+	 *
+	 * @param	Array		$array
+	 */
+	public static function trim(array $array) {
+		foreach($array as $index => $value) {
+			$array[$index] = trim($value);
+		}
+	}
+
 }
 
 ?>
