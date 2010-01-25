@@ -463,18 +463,6 @@ class TodoyuPage {
 
 
 	/**
-	 * Call finishing functions which can modify the page just before the final rendering
-	 *
-	 */
-	private static function callFinishingFunctions() {
-		foreach($GLOBALS['CONFIG']['FE']['PAGE']['finish'] as $callback) {
-			TodoyuDiv::callUserFunction($callback);
-		}
-	}
-
-
-
-	/**
 	 * Render all registered headlets
 	 *
 	 */
@@ -506,9 +494,6 @@ class TodoyuPage {
 
 			// Add main navigation
 		self::set('navigation', TodoyuRenderer::renderNavigation());
-
-			// Call finishing functions
-		self::callFinishingFunctions();
 
 			// Add javascripts and stylesheet to page
 		self::addJavascriptAndStylesheetsToPage();

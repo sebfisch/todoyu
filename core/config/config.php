@@ -62,7 +62,7 @@ $CONFIG['CHMOD'] = array(
 );
 
 	// Add IE scripts hook to page
-$CONFIG['FE']['PAGE']['finish'][] = 'TodoyuPageAssetManager::addInternetExplorerAssets';
+TodoyuHookManager::registerHook('core', 'renderPage', 'TodoyuPageAssetManager::addInternetExplorerAssets');
 
 	// Localization defaults
 $CONFIG['SYSTEM']['language']	= 'en';
