@@ -632,6 +632,15 @@ class TodoyuPageAssetManager {
 		if( TodoyuBrowserInfo::isIE() ) {
 			$browserVersion	= TodoyuBrowserInfo::getMajorVersion();
 
+			$GLOBALS['CONFIG']['FE']['PAGE']['assets']['js'][] = array(
+				'file'		=> 'core/assets/js/IE.js',
+				'position'	=> 1000
+			);
+			$GLOBALS['CONFIG']['FE']['PAGE']['assets']['css'][] = array(
+				'file'		=> 'core/assets/css/ie.css',
+				'position'	=> 1000
+			);
+
 			if( $browserVersion < 7 ) {
 				$GLOBALS['CONFIG']['FE']['PAGE']['assets']['js'][] = array(
 					'file'		=> 'core/assets/js/IEbelow7.js',
