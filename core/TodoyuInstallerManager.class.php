@@ -317,10 +317,15 @@ class TodoyuInstallerManager {
 		$fileNew	= TodoyuFileManager::pathAbsolute('install/_ENABLE');
 		$fileIndex	= TodoyuFileManager::pathAbsolute('index.html');
 
-		rename($fileOld, $fileNew);
+		if( is_file($fileOld) ) {
+			if( is_file($fileNew) ) {
+				unlink($fileOld);
+			} else {
+				rename($fileOld, $fileNew);
+			}
+		}
 
 		if( is_file($fileIndex) ) {
-			die($fileIndex);
 			unlink($fileIndex);
 		}
 	}
@@ -338,7 +343,7 @@ class TodoyuInstallerManager {
 		$file	= TodoyuFileManager::pathAbsolute('index.html');
 
 		if( is_file($file) ) {
-			@unlink($file);
+			unlink($file);
 		}
 	}
 
