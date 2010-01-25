@@ -64,12 +64,26 @@ textarea {
 
 select {}
 
-	select.auto       {width:auto;}
-	select.day        {width:40px;margin-right:2px;}
-	select.month      {width:40px;margin-right:2px;}
-	select.monthnames {margin-left:2px;}
-	select.year       {width:60px;}
-	select.datetime   {width:150px;}
+	select.auto	{
+		width:auto;
+	}
+	select.day {
+		width:40px;
+		margin-right:2px;
+	}
+	select.month {
+		width:40px;
+		margin-right:2px;
+	}
+	select.monthnames {
+		margin-left:2px;
+	}
+	select.year {
+		width:60px;
+	}
+	select.datetime {
+		width:150px;
+	}
 
 	select optgroup {
 		padding-top:5px;
@@ -78,10 +92,13 @@ select {}
 	select optgroup option {
 		background:#fff;
 	}
+	
+	select option.error,
+	selectgrouped option.error {
+		color:#991010; 
+	}
 
-label {
-
-}
+label {}
 
 	label span.required {}
 

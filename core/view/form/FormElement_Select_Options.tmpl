@@ -1,3 +1,3 @@
 {foreach $options option}
-	<option value="{$option.value}" {if in_array($option.value, $value)}selected="selected"{/if} {if $option.disabled}disabled="disabled"{/if}>{Label $option.label true}</option>
+	<option value="{$option.value}" {if $option.classname != ''}class="{$option.classname}" {/if}{if in_array($option.value, $value)}selected="selected"{/if} {if $option.disabled}disabled="disabled"{/if}>{Label $option.label true}</option>
 {/foreach}

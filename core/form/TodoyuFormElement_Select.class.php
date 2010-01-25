@@ -31,9 +31,9 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	/**
 	 * Initialize
 	 *
-	 * @param	String		$name
+	 * @param	String			$name
 	 * @param	TodoyuFieldset	$fieldset
-	 * @param	Array		$config
+	 * @param	Array			$config
 	 */
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
 		parent::__construct('select', $name, $fieldset, $config);
@@ -49,7 +49,6 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 
 	/**
 	 * Init
-	 *
 	 */
 	protected function init() {
 
@@ -63,14 +62,13 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 * @return	Boolean
 	 */
 	protected function isLazyInit() {
-		return isset($this->config['source']['lazyInit']);
+		return isset( $this->config['source']['lazyInit'] );
 	}
 
 
 
 	/**
 	 * Initalize config with dynamic data
-	 *
 	 */
 	protected function initSource() {
 			// Load options (type defined how)
@@ -183,7 +181,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 			case 2:
 				$options	= call_user_func($funcRef, $this);
 				foreach($options as $option) {
-					$this->addOption($option['value'], $option['label'], $option['disabled']);
+					$this->addOption($option['value'], $option['label'], $option['disabled'], $option['classname']);
 				}
 				break;
 
@@ -239,12 +237,16 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 *
 	 * @param	String		$value
 	 * @param	String		$label
+	 * @param	String		$label
+	 * @param	Boolean		$disabled
+	 * @param	String		$classname
 	 */
-	public function addOption($value, $label, $disabled = false) {
+	public function addOption($value, $label, $disabled = false, $classname = '') {
 		$this->config['options'][] = array(
 			'value'		=> $value,
 			'label'		=> $label,
 			'disabled'	=> $disabled !== true ? false : 'disabled',
+			'classname'	=> $classname
 		);
 
 		if( $selected ) {
@@ -260,17 +262,23 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 *
 	 * @param	String		$value
 	 * @param	String		$label
+	 * @param	Boolean		$selected
+	 * @param	Boolean		$disabled
+	 * @param	String		$classname
 	 */
-	public function setOption($value, $label, $selected = false, $disabled = false) {
+	public function setOption($value, $label, $selected = false, $disabled = false, $classname = '') {
 		$index = $this->getOptionIndexByValue($value);
 
 		if( $index === false ) {
 			$this->addOption($value);
 		} else {
-			$this->config['options'][$index] =  array(	'value'		=> $value,
-														'label'		=> $label,
-														'selected'	=> $selected,
-														'disabled'	=> $disabled);
+			$this->config['options'][$index] =  array(
+				'value'		=> $value,
+				'label'		=> $label,
+				'selected'	=> $selected,
+				'disabled'	=> $disabled,
+				'classname'	=> $classname
+			);
 		}
 	}
 
@@ -341,7 +349,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 
 
 	/**
-	 * Storage data. Comma seperated list if multiple values are selected
+	 * Get storage data as comma seperated list (if multiple values are selected)
 	 *
 	 * @return	String
 	 */

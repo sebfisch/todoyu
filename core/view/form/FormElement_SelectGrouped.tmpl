@@ -3,15 +3,11 @@
 {block name="field"}
 <select name="{$htmlName}" id="{$htmlId}" class="{$inputClass} {$class}" size="{$size}" {if $multiple}multiple="multiple"{/if} {if $fieldClass}class="{$fieldClass}"{/if}>
 {foreach $options label group}
-	{if $label != "none"}
-		<optgroup label="{$label}">
-	{/if}
+	{if $label != "none"}<optgroup label="{$label}">{/if}
 	{foreach $group option}
-		<option value="{$option.value}" {if inArray($option.value, $selected)}selected="selected"{/if} {if $option.disabled}disabled="disabled"{/if}>{$option.label}</option>
+		<option value="{$option.value}"{if $option.classname != ""} class="{$option.classname}" {/if}{if inArray($option.value, $selected)} selected="selected"{/if}{if $option.disabled} disabled="disabled"{/if}>{$option.label}</option>
 	{/foreach}
-	{if $label != "none"}
-		</optgroup>
-	{/if}
+	{if $label != "none"}</optgroup>{/if}
 {/foreach}
 </select>
 {/block}
