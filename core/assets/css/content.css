@@ -48,6 +48,19 @@ ul.ulList li.listItemHeader span {
 	font-weight:bold;
 }
 
+/* -----------------------------
+	Editable / linked items
+   ----------------------------- */
+li.listItem .editableItem span,
+li.listItem a .editableItem span {
+    padding-left:20px;
+    background:#fff url('../img/sprite-icons.png') no-repeat -58px -360px !important;
+}
+
+li.listItem a:hover span {
+	background-color:#f2f2d2 !important;
+}
+
 
 
 /* -----------------
