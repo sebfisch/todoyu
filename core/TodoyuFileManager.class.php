@@ -305,8 +305,8 @@ class TodoyuFileManager {
 	public static function getFileContent($path) {
 		$path	= self::pathAbsolute($path);
 
-		if( is_file($path) && is_readable($file) ) {
-			return file_get_contents($file);
+		if( is_file($path) && is_readable($path) ) {
+			return file_get_contents($path);
 		} else {
 			Todoyu::log('Can\'t open file! File: ' . $file, LOG_LEVEL_ERROR);
 			return '';
