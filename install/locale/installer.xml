@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
+		<label index="type.install">todoyu Installation</label>
+		<label index="type.update">todoyu Update</label>
 		<label index="install.eula">End user license agreement for todoyu</label>
 		<label index="install.lgpl">The following third party libraries are licensed under LGPL v2.1:</label>
 		<label index="install.title">todoyu installer</label>
 		<label index="install.button">I accept, install todoyu</label>
 		<label index="install.text">Welcome to the todoyu installer!</label>
+		<label index="install.step">todoyu licence</label>
 		<label index="servercheck.title">Server Check</label>
 		<label index="servercheck.button">Setup Database Configuration</label>
 		<label index="servercheck.yourphpversion">Your version</label>
@@ -16,21 +19,25 @@
 		<label index="servercheck.notWritable">NOT WRITABLE</label>
 		<label index="servercheck.ready">Server is ready for todoyu 2.0</label>
 		<label index="servercheck.notReady">Server is NOT ready for todoyu 2.0</label>
+		<label index="servercheck.step">Check server</label>
 		<label index="dbconnection.title">Setup Database Server Connection</label>
 		<label index="dbconnection.button">Update database configuration</label>
 		<label index="dbconnection.server">Server</label>
 		<label index="dbconnection.username">Username</label>
 		<label index="dbconnection.password">Password</label>
 		<label index="dbconnection.text">Enter your database connection data</label>
+		<label index="dbconnection.step">Setup DB connection</label>
 		<label index="dbselect.title">Select database</label>
 		<label index="dbselect.button">Save Database Setup</label>
 		<label index="dbselect.text.saved">Database connection saved</label>
 		<label index="dbselect.text.notCreated">Cannot create new database on server</label>
 		<label index="dbselect.text.dbNameExists">A database with this name already exists</label>
+		<label index="dbselect.step">Select database</label>
 		<label index="importtables.title">Import tables and data</label>
 		<label index="importtables.button">Import tables and data</label>
 		<label index="importtables.coretables">TODOYU CORE DATABASE TABLES</label>
 		<label index="importtables.exttables">TODOYU EXTENSIONS DATABASE TABLES</label>
+		<label index="importtables.step">Import database tables</label>
 		<label index="systemconfig.title">todoyu system settings</label>
 		<label index="systemconfig.button">Save system configuration</label>
 		<label index="systemconfig.systemName">System Name</label>
@@ -39,25 +46,31 @@
 		<label index="systemconfig.locale">Locale</label>
 		<label index="systemconfig.text">Select your todoyu system settings</label>
 		<label index="systemconfig.text.error">Please enter a system name and email</label>
+		<label index="systemconfig.step">Configure system</label>
 		<label index="adminpassword.title">Change admin password</label>
 		<label index="adminpassword.button">Change admin password</label>
 		<label index="adminpassword.username">Username</label>
 		<label index="adminpassword.password">Password</label>
 		<label index="adminpassword.repeatPassword">Repeat Password</label>
 		<label index="adminpassword.passwordHint">at least 5 characters</label>
+		<label index="adminpassword.step">Set admin password</label>
 		<label index="finish.title">Installation finished</label>
 		<label index="finish.button">Disable installer and go to login</label>
 		<label index="finish.text">Installation finished</label>
+		<label index="finish.step">Finish installation</label>
 		<label index="update.title">Welcome to datebase update</label>
 		<label index="update.button">Update system database</label>
 		<label index="update.info">Apply database changes for your current version and compare current columns with file configuration</label>
+		<label index="update.step">Update todoyu installation</label>
 		<label index="updatetocurrentversion.title">Update database</label>
 		<label index="updatetocurrentversion.button">Apply database changes</label>
 		<label index="updatetocurrentversion.noupdates">Your database is up-to-date. No updates necessary</label>
 		<label index="updatetocurrentversion.noupdates">Your database is up-to-date. No updates necessary</label>
+		<label index="updatetocurrentversion.step">Update database structure</label>
 		<label index="finishupdate.title">Finish update</label>
 		<label index="finishupdate.button">Disable installer and go to login</label>
 		<label index="finishupdate.text">Installer has updated your todoyu version</label>
+		<label index="finishupdate.step">Finish installation</label>
 
 
 

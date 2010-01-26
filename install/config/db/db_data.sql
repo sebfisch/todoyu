@@ -134,13 +134,7 @@ INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `i
 (259, 1254233948, 1254233948, 1, 0, 4, 'status', '2', 0),
 (260, 1254233948, 1254233948, 1, 0, 4, 'currentUserIsAssigned', '', 0);
 
---
--- Data for table `ext_search_filterset`
---
 
-INSERT INTO `ext_search_filterset` (`id`, `date_update`, `date_create`, `deleted`, `sorting`, `is_hidden`, `id_user_create`, `usergroups`, `type`, `title`, `conjunction`) VALUES
-(1, 1246637647, 1246547545, 0, 0, 1, 474, '', 'task', 'Feedback erwartet', 'AND'),
-(2, 1254233948, 1254233928, 0, 0, 0, 1, '', 'task', 'Noch offene Tasks', 'AND');
 
 --
 -- Data for table `ext_fixed_project`

@@ -69,6 +69,19 @@ class TodoyuInstallerRenderer {
 	}
 
 
+	public static function renderProgressWidget($step) {
+		$tmpl	= 'install/view/panelwidget-progress.tmpl';
+		$data	= array(
+			'steps'	=> TodoyuInstaller::getRunTypesWithLabels(),
+			'step'	=> TodoyuInstaller::getStep(),
+			'title'	=> TodoyuInstaller::isUpdate() ? Label('installer.type.update') : Label('installer.type.install')
+		);
+
+//		TodoyuDebug::printHtml($data);
+
+		return render($tmpl, $data);
+	}
+
 
 	/**
 	 * Render welcome screen (license agreement)

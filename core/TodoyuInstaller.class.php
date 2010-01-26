@@ -126,9 +126,40 @@ class TodoyuInstaller {
 			$data	= array();
 		}
 
-		$data['progress'] = TodoyuInstallerRenderer::getProgressRenderData();
+		$data['progress'] = TodoyuInstallerRenderer::renderProgressWidget($step); //getProgressRenderData();
 
 		return render($tmpl, $data);
+	}
+
+
+	public static function isUpdateStep($step) {
+		return in_array($step, $GLOBALS['CONFIG']['INSTALLER']['update']);
+	}
+
+
+	public static function getRunType() {
+		return self::isUpdate() ? 'update' : 'install';
+	}
+
+	public static function getRunTypeSteps() {
+		$type	= self::getRunType();
+
+		return self::getTypeSteps($type);
+	}
+
+	public static function getRunTypesWithLabels() {
+		$steps		= self::getRunTypeSteps();
+		$withLabels	= array();
+
+		foreach($steps as $step) {
+			$withLabels[$step] = Label('installer.' . $step . '.step');
+		}
+
+		return $withLabels;
+	}
+
+	public static function getTypeSteps($type) {
+		return $GLOBALS['CONFIG']['INSTALLER'][$type];
 	}
 
 

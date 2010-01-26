@@ -6,6 +6,7 @@
 
 	<link href="../core/assets/css/base.css" rel="stylesheet" type="text/css" />
 	<link href="../core/assets/css/layout.css" rel="stylesheet" type="text/css" />
+	<link href="../core/assets/css/panel.css" rel="stylesheet" type="text/css" />
 	<link href="../core/assets/css/button.css" rel="stylesheet" type="text/css" />
 	<link href="assets/css/installer.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="../favicon.ico" />
@@ -14,15 +15,19 @@
 </head>
 	<body>
 		<div id="box">
-			<div id="panel">{* ------------ Panel -------------- *}
-				{include "progress.tmpl"}
-				<div class="content">
-					<span class="lt"></span><span class="rt"></span>
+			<div id="panel">
+				{* ------------ Panel -------------- *}
+				<div class="panelHeader"><!-- panel header --></div>
+
+				{$progress}
+
+				<div class="panelWidget">
 					<h1><span class="title">Todoyu 2.0</span><span class="rgt"></span></h1>
 					<img src="assets/img/banner.jpg">
 				</div>
-				<div class="panelFooter"></div>
-			</div>{* ------------------- Panel end ------------- *}
+			</div>
+			{* ------------------- Panel end ------------- *}
+
 			<div id="contentBox">
 				<span class="lt"></span>
 				<span class="rt"></span>

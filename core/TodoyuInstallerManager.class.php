@@ -199,7 +199,7 @@ class TodoyuInstallerManager {
 			if( trim($data['email']) !== '' && trim($data['systemname']) !== '' ) {
 				self::saveSystemConfig($data);
 
-				TodoyuInstaller::setStep('setadminpassword');
+				TodoyuInstaller::setStep('adminpassword');
 			} else {
 				$result['error'] = true;
 			}
@@ -209,7 +209,7 @@ class TodoyuInstallerManager {
 	}
 
 
-	public static function processSetAdminPassword(array $data) {
+	public static function processAdminPassword(array $data) {
 		$result	= array();
 
 		if( isset($data['password']) ) {
@@ -269,7 +269,7 @@ class TodoyuInstallerManager {
 
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
 
-			TodoyuInstaller::setStep('finishUpdate');
+			TodoyuInstaller::setStep('finishupdate');
 		}
 
 		return $result;

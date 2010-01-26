@@ -64,20 +64,59 @@ p.installMessage.info {
 }
 
 
-
-
-
-
-
-
-
-
-body {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
-	color:#000;
-	background-color:#e3eace;
+.blockcontent span.title {
+	background-color: #EDF1E0;
+	border:1px solid #fff;
+	padding:8px 0 8px 12px;
+	display:block;
+	margin-bottom:12px;
+	font-size:14px;
+	font-weight:bold;
 }
+
+
+
+
+/* -----------------------------------
+	Panel: steps of installation
+   ----------------------------------- */
+#panelwidget-installprogress h6 {
+  	font-size:14px;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+#panelwidget-installprogress .content {
+	
+}
+#panelwidget-installprogress ul {
+	
+}
+#panelwidget-installprogress ul li {
+	font-size:12px;
+	padding:8px;
+	padding-left:30px;
+	color:#CCC;
+}
+#panelwidget-installprogress ul li.done {
+	color:#000;
+	background:url(../img/icons.png) no-repeat 0 -20px;
+}
+#panelwidget-installprogress ul li.current {
+	color:#F00;
+	font-weight:bold;
+	background:none;	
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -86,15 +125,7 @@ body {
    --------------------------------- */
 
 #box {
-	position:relative;
-	clear:both;
-	padding:0 0 80px;
-	height:auto !important;
-	min-height:415px;
 	padding:1px 2px 0 3px;
-	width:973px !important;
-	background-color:#e3eace;
-	margin:0 auto;
 }
 
 
@@ -158,13 +189,7 @@ body {
 
 
 
-.blockcontent span.title {
-	background-color: #EDF1E0;
-	border:1px solid #fff;
-	padding:8px 0 8px 12px;
-	display:block;
-	margin-bottom:12px;
-}
+
 
 .error {
 	color:red;
@@ -205,7 +230,7 @@ body {
    ----------------------- */
 
 #licence,
-#panel {
+#panelx {
 	clear:both;
 	float:left;
 	margin:0 10px 0 0;
@@ -217,7 +242,7 @@ body {
 }
 
 #licence .panelFooter,
-#panel .panelFooter {
+#panelx .panelFooter {
 	height:51px;
 	margin-top:-2px;
 	background:#e3eace url('../img/panel_footer.png') no-repeat 0 0;
@@ -376,26 +401,3 @@ label {
 
 
 
-/* -----------------------------------
-	Panel: steps of installation
-   ----------------------------------- */
-#installation-steps {
-	padding: 8px 0 4px 12px;
-}
-#installation-steps ul {
-	padding:8px 6px 16px 8px;
-}
-#installation-steps ul li span {
-	float:left;
-}
-#installation-steps ul li {
-	clear:both;
-	line-height:22px;
-	color:#999;
-}
-#installation-steps ul li span.pastOrCurrent {
-	color:#000;
-}
-#installation-steps ul li span.servercheckicon.ok {
-	float: right;
-}

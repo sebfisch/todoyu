@@ -28,22 +28,20 @@
 
 
 $CONFIG['INSTALLER']['install'] = array(
-	'welcome',
+	'install',
 	'servercheck',
 	'dbconnection',
 	'dbselect',
 	'importtables',
 	'systemconfig',
-	'setadminpassword',
-	'saveadminpassword',
-	'exit'
+	'adminpassword',
+	'finish'
 );
 
 $CONFIG['INSTALLER']['update'] = array(
-	'welcometoupdate',
+	'update',
 	'updatetocurrentversion',
-	'autoupdatedbdiffs',
-	'exitUpdate'
+	'finishupdate'
 );
 
 
@@ -92,8 +90,8 @@ $CONFIG['INSTALLER']['steps'] = array(
 		'render'	=> 'TodoyuInstallerRenderer::renderSytemConfig',
 		'tmpl'		=> '06_systemconfig.tmpl'
 	),
-	'setadminpassword' => array(
-		'process'	=> 'TodoyuInstallerManager::processSetAdminPassword',
+	'adminpassword' => array(
+		'process'	=> 'TodoyuInstallerManager::processAdminPassword',
 		'render'	=> 'TodoyuInstallerRenderer::renderAdminPassword',
 		'tmpl'		=> '07_adminpassword.tmpl'
 	),
@@ -117,7 +115,7 @@ $CONFIG['INSTALLER']['steps'] = array(
 		'render'	=> 'TodoyuInstallerRenderer::renderUpdateToCurrentVersion',
 		'tmpl'		=> '10_updatetocurrentversion.tmpl',
 	),
-	'finishUpdate' => array(
+	'finishupdate' => array(
 		'process'	=> 'TodoyuInstallerManager::processFinishUpdate',
 		'render'	=> 'TodoyuInstallerRenderer::renderFinishUpdate',
 		'tmpl'		=> '12_finishupdate.tmpl'
