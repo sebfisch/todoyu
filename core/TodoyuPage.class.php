@@ -44,7 +44,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Initialize page object with
+	 * Initialize page object with given template
 	 *
 	 * @param	String		$template		Path to template
 	 */
