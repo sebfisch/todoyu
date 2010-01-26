@@ -131,7 +131,7 @@ class TodoyuInstallerManager {
 			if( $useDatabase !== false ) {
 					// Create a new database
 				if( $createDb ) {
-					$status	= TodoyuInstallerDbHelper::addDatabase($useDatabase, $dbConf);
+					$status	= TodoyuInstallerManager::addDatabase($useDatabase, $dbConf);
 
 					if( $status === true ) {
 						$dbConf['database']	= $useDatabase;
@@ -150,7 +150,7 @@ class TodoyuInstallerManager {
 			$result['fields']= $data;
 
 			if( $success ) {
-				TodoyuInstallerDbHelper::saveDbConfigInFile($dbConf);
+				TodoyuInstallerManager::saveDbConfigInFile($dbConf);
 				TodoyuInstaller::setStep('importtables');
 			}
 		}
@@ -161,7 +161,7 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Have static DB data imported
+	 * Import table structure
 	 *
 	 * @param	Array		$data
 	 * @return	Array
@@ -246,6 +246,12 @@ class TodoyuInstallerManager {
 
 
 
+	/**
+	 * Process update start screen
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
 	public static function processUpdate(array $data) {
 		if( intval($data['start']) === 1 ) {
 			TodoyuInstaller::setStep('updatetocurrentversion');
@@ -273,6 +279,9 @@ class TodoyuInstallerManager {
 
 				case 'beta2':
 					self::updateBeta2ToBeta3();
+
+				case 'beta3':
+					self::updateBeta3ToRc1();
 			}
 
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
@@ -285,6 +294,13 @@ class TodoyuInstallerManager {
 
 
 
+	/**
+	 * Process update finishing
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+
 	public static function processFinishUpdate(array $data) {
 		if( intval($data['finish']) === 1 ) {
 			self::finishInstallerAndJumpToLogin();
@@ -295,10 +311,10 @@ class TodoyuInstallerManager {
 
 
 
-
-
-
-
+	/**
+	 * Disable the installer, remove redirector files, clear session and go to login
+	 *
+	 */
 	public static function finishInstallerAndJumpToLogin() {
 		self::disableInstaller();
 		self::removeIndexRedirecter();
@@ -312,18 +328,13 @@ class TodoyuInstallerManager {
 
 
 
-
-
-
-
-
 	/**
-	 * Deactivate the installer
+	 * Disbale the installer
+	 *
 	 */
 	public static function disableInstaller() {
 		$fileOld	= TodoyuFileManager::pathAbsolute('install/ENABLE');
 		$fileNew	= TodoyuFileManager::pathAbsolute('install/_ENABLE');
-		$fileIndex	= TodoyuFileManager::pathAbsolute('index.html');
 
 		if( is_file($fileOld) ) {
 			if( is_file($fileNew) ) {
@@ -332,21 +343,24 @@ class TodoyuInstallerManager {
 				rename($fileOld, $fileNew);
 			}
 		}
-
-		if( is_file($fileIndex) ) {
-			unlink($fileIndex);
-		}
 	}
 
 
+
 	/**
-	 *	Forward to todoyu login
+	 * Jump to loginpage
+	 *
 	 */
 	public static function goToLoginPage() {
 		TodoyuHeader::location(dirname(TODOYU_URL), true);
 	}
 
 
+
+	/**
+	 * Remove index.html redirect
+	 *
+	 */
 	public static function removeIndexRedirecter() {
 		$file	= TodoyuFileManager::pathAbsolute('index.html');
 
@@ -357,16 +371,9 @@ class TodoyuInstallerManager {
 
 
 
-
-
-
-
-
-
-
-
 	/**
 	 * Update the database from beta1 to beta2
+	 *
 	 */
 	private static function updateBeta1ToBeta2() {
 		$updateFile	= 'install/config/db/update_beta1_to_beta2.sql';
@@ -378,9 +385,22 @@ class TodoyuInstallerManager {
 
 	/**
 	 * Update the database from beta2 to beta3
+	 *
 	 */
 	private static function updateBeta2ToBeta3() {
 		$updateFile	= 'install/config/db/update_beta2_to_beta3.sql';
+
+		$numQueries	= TodoyuSQLManager::executeQueriesFromFile($updateFile);
+	}
+
+
+
+	/**
+	 * Update the database from beta3 to rc1
+	 *
+	 */
+	private static function updateBeta3ToRc1() {
+		$updateFile	= 'install/config/db/update_beta3_to_rc1.sql';
 
 		$numQueries	= TodoyuSQLManager::executeQueriesFromFile($updateFile);
 	}
@@ -405,10 +425,11 @@ class TodoyuInstallerManager {
 
 
 
-
-
-
-
+	/**
+	 * Save system configuration
+	 *
+	 * @param 	Array		$config
+	 */
 	private static function saveSystemConfig(array $config) {
 		$config['encryptionKey'] = self::makeEncryptionKey();
 		$tmpl	= TodoyuFileManager::pathAbsolute('install/view/configs/system.php.tmpl');
@@ -419,21 +440,10 @@ class TodoyuInstallerManager {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	/**
+	 * Import static data
+	 *
+	 */
 	private static function importBasicStaticData() {
 		$file	= TodoyuFileManager::pathAbsolute('install/config/db/db_data.sql');
 		$queries= TodoyuSQLManager::getQueriesFromFile($file);
@@ -456,19 +466,7 @@ class TodoyuInstallerManager {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-		/**
+	/**
 	 * Check if installed php version is at least 5.2
 	 *
 	 * @return	String
@@ -503,6 +501,12 @@ class TodoyuInstallerManager {
 	}
 
 
+
+	/**
+	 * Check server requirements
+	 *
+	 * @return	Array
+	 */
 	public static function checkServer() {
 		$result	= array(
 			'stop'		=> false,
@@ -535,16 +539,66 @@ class TodoyuInstallerManager {
 	 * @return	String
 	 */
 	public static function getDBVersion() {
-		$dbVersion	= 'beta3';
+		$dbVersion	= 'rc1';
 		$tables		= Todoyu::db()->getTables();
 
 		if( in_array('ext_portal_tab', $tables) ) {
 			$dbVersion	= 'beta1';
 		} elseif( in_array('ext_user_customerrole', $tables) ) {
 			$dbVersion	= 'beta2';
+		} elseif( in_array('history', $tables) ) {
+			$dbVersion	= 'beta3';
 		}
 
 		return $dbVersion;
+	}
+
+
+
+	/**
+	 * Check whether the installation has been carried out before
+	 *
+	 * @return	Boolean
+	 */
+	public static function isDatabaseConfigured() {
+		$dbConfig	= TodoyuArray::assure($GLOBALS['CONFIG']['DB']);
+
+		return (	$dbConfig['autoconnect'] === true
+				&&	$$dbConfig['server']	!== ''
+				&&	$dbConfig['username']	!== ''
+				&&	$dbConfig['password']	!== ''
+				&&	$dbConfig['database']	!== '');
+	}
+
+
+
+	/**
+	 * Add a new database to the server
+	 *
+	 * @param	String		$databaseName
+	 * @param	Array		$dbConfig
+	 * @return	Bool
+	 */
+	public static function addDatabase($databaseName, array $dbConfig)	{
+		$link	= mysql_connect($dbConfig['server'], $dbConfig['username'], $dbConfig['password']);
+		$query	= 'CREATE DATABASE `' . $databaseName . '`';
+
+		return @mysql_query($query, $link) !== false;
+	}
+
+
+
+	/**
+	 * Save database configuration in the local config file
+	 *
+	 * @param	Array		$dbConfig
+	 * @return	Integer
+	 */
+	public static function saveDbConfigInFile(array $dbConfig) {
+		$tmpl	= 'install/view/configs/db.php.tmpl';
+		$file	= PATH . '/config/db.php';
+
+		return TodoyuFileManager::saveTemplatedFile($file, $tmpl, $dbConfig, true);
 	}
 
 }

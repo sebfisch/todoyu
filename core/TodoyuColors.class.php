@@ -101,6 +101,9 @@ class TodoyuColors {
 		$colors	= TodoyuArray::assure($GLOBALS['CONFIG']['COLORS']);
 		$img	= imagecreate(16, sizeof($colors)*16);
 
+			// Create image folder in cache
+		TodoyuFileManager::makeDirDeep(dirname($fileIMG));
+
 		foreach($colors as $num => $rgb) {
 			$red	= hexdec( substr($rgb, 1, 2) );
 			$green	= hexdec( substr($rgb, 3, 2) );
