@@ -4,54 +4,76 @@
 {if $noUpdates !== true}
 	<div class="sqlQuery">
 
-		<p>Updates</p>
-
+		<p>{Label installer.updatetocurrentversion.updates}</p>
+				
 		{if sizeof($diff.missingTables) > 0}
-			<p>Fehlende Tabellen</p>
-			<ul>
-			{foreach $diff.missingTables missingTable}
-				<li>
-					{$missingTable.table}
-					<ul>
-						{foreach $missingTable.columns column}
-							<li>{$column.field}</li>
-						{/foreach}
-					</ul>
-				</li>
-			{/foreach}
-			</ul>
+			<p class="section">{Label installer.updatetocurrentversion.newTables}</p>
+			<table class="dbstruct">
+				<tr>
+					<th class="table">Table</th>
+					<th class="column">Column</th>
+					<th class="type">type</th>								
+				</tr>
+				{foreach $diff.missingTables table}
+					{foreach $table.columns index column tables}
+					<tr>
+						<td class="table">
+							{if $dwoo.foreach.tables.first}
+								{$table.table}
+							{else}
+								&nbsp;
+							{/if}	
+						</td>
+						<td class="field">{$column.field}</td>
+						<td class="type">{$column.type}</td>
+					</tr>
+					{/foreach}
+				{/foreach}
+			</table>
 		{/if}
 
 		{if sizeof($diff.missingColumns) > 0}
-			<p>Zusätzliche Spalten in vorhanden Tabellen</p>
-			<ul>
-			{foreach $diff.missingColumns tableName missingTableColumns}
-				<li>
-					{$tableName}
-					<ul>
-					{foreach $missingTableColumns column}
-						<li>{$column.field}</li>
+			<p class="section">{Label installer.updatetocurrentversion.newColumns}</p>
+			<table class="dbstruct">
+				<tr>
+					<th class="table">Table</th>
+					<th class="column">Column</th>
+					<th class="type">type</th>								
+				</tr>
+				{foreach $diff.missingColumns tableName columns}
+					{foreach $columns columnName column tables}
+					<tr>
+						<td class="table">
+							{$tableName}
+						</td>
+						<td class="field">{$column.field}</td>
+						<td class="type">{$column.type}</td>
+					</tr>
 					{/foreach}
-					</ul>
-				</li>
-			{/foreach}
-			</ul>
+				{/foreach}
+			</table>
 		{/if}
 
 		{if sizeof($diff.changedColumns) > 0}
-			<p>Veränderte Spalten in vorhanden Tabellen</p>
-			<ul>
-			{foreach $diff.changedColumns tableName changedTableColumns}
-				<li>
-					{$tableName}
-					<ul>
-					{foreach $changedTableColumns column}
-						<li>{$column.field}</li>
+			<p class="section">{Label installer.updatetocurrentversion.changedColumns}</p>
+			<table class="dbstruct">
+				<tr>
+					<th class="table">Table</th>
+					<th class="column">Column</th>
+					<th class="type">type</th>								
+				</tr>
+				{foreach $diff.changedColumns tableName columns}
+					{foreach $columns columnName column}
+					<tr>
+						<td class="table">
+							{$tableName}
+						</td>
+						<td class="field">{$column.field}</td>
+						<td class="type">{$column.type}</td>
+					</tr>
 					{/foreach}
-					</ul>
-				</li>
-			{/foreach}
-			</ul>
+				{/foreach}
+			</table>
 		{/if}
 	</div>
 {/if}

@@ -23,64 +23,27 @@
  * Installer
  *
  * @package		Todoyu
- * @subpackage	InstallerRenderer
+ * @subpackage	Installer
  */
 class TodoyuInstallerRenderer {
 
 	/**
-	 * Get render array of installation steps being under execution
+	 * Render progress panel widget
 	 *
-	 * @return	Array
+	 * @param	String		$step
+	 * @return	String
 	 */
-	public static function getProgressRenderData() {
-		$step	= TodoyuInstaller::getStep();
-
-
-			// Get only seqment (install / update) of installer steps containing the current step
-		list($installerMode, $steps)	= TodoyuInstaller::getStepsSegment($curRenderStep);
-
-		$progress 	= array(
-			'steps'			=> array(),
-			'installerMode'	=> $installerMode
-		);
-
-			// Render steps progression data
-		$isPast			= 1;
-		foreach($steps as $stepName => $stepData) {
-			if ( $stepData['dontListProgress'] === true ) {
-				break;
-			}
-
-			$isCurrent	= 0;
-			if ( $curRenderStep === $stepName ) {
-				$isCurrent	= 1;
-				$isPast		= 0;
-			}
-
-			$progress['steps'][$stepName]	= array(
-				'installerMode'	=> $installerMode,
-				'label'			=> Label('LLL:installer.progress.label.' . $stepName),
-				'curr'			=> $isCurrent,
-				'past'			=> ($isPast && ! $isCurrent) ? 1 : 0,
-			);
-		}
-
-		return $progress;
-	}
-
-
 	public static function renderProgressWidget($step) {
 		$tmpl	= 'install/view/panelwidget-progress.tmpl';
 		$data	= array(
-			'steps'	=> TodoyuInstaller::getRunTypesWithLabels(),
+			'steps'	=> TodoyuInstaller::getStepsWithLabels(),
 			'step'	=> TodoyuInstaller::getStep(),
-			'title'	=> TodoyuInstaller::isUpdateStep($step) ? Label('installer.type.update') : Label('installer.type.install')
+			'title'	=> Label('installer.type.' . TodoyuInstaller::getMode())
 		);
-
-//		TodoyuDebug::printHtml($data);
 
 		return render($tmpl, $data);
 	}
+
 
 
 	/**
@@ -304,8 +267,10 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderUpdate(array $result) {
 		$data	= array(
-			'title'	=> 'installer.update.title',
-			'button'=> 'installer.update.button'
+			'title'		=> 'installer.update.title',
+			'button'	=> 'installer.update.button',
+			'text'		=> Label('installer.update.title'),
+			'textClass'	=> 'info'
 		);
 
 		return $data;
@@ -316,7 +281,6 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render detected and conducted mandatory version DB updates
 	 *
-	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -338,6 +302,13 @@ class TodoyuInstallerRenderer {
 
 
 
+	/**
+	 * Render update finish screen
+	 *
+	 * @param	Array		$result
+	 * @return	Array
+	 */
+
 	public static function renderFinishUpdate(array $result) {
 		$data	= array(
 			'title'		=> 'installer.finishupdate.title',
@@ -348,28 +319,5 @@ class TodoyuInstallerRenderer {
 
 		return $data;
 	}
-
-
-
-	/**
-	 * Render detected and conducted generic database updates
-	 *
-	 * @param	String	$nextStep
-	 * @param	Array	$result
-	 * @return	String
-	 */
-	public static function renderGenericDBupdates($nextStep, array $result) {
-			// DB structure is NOT up-to-date! offer updating
-		$data	= array(
-			'title'			=> Label('LLL:installer.title.dbUpdateCheck'),
-			'textclass'		=> 'text textInfo',
-			'diffs'			=> TodoyuInstallerDbHelper::getDBstructureDiff(),
-			'buttonLabel'	=> Label('LLL:installer.button.disableAndLogIn')
-		);
-		$tmpl	= 'install/view/11_genericupdates.tmpl';
-
-		return render($tmpl, $data);
-	}
-
 }
 ?>

@@ -57,6 +57,7 @@ p.installMessage.info {
 	margin:12px 0;
 	border:1px dotted #ffa800;
 	background-color:#f9f3e8;
+	padding:5px;
 }
 
 .sqlQuery ul li {
@@ -106,6 +107,67 @@ p.installMessage.info {
 	font-weight:bold;
 	background:none;	
 }
+
+
+
+
+
+
+
+
+
+table.dbstruct {
+	
+}
+
+table.dbstruct th,
+table.dbstruct td {
+	padding:5px;
+}
+
+table.dbstruct th {
+	text-align:left;
+	background-color:#FFA800;
+	border-bottom: 2px dashed #000;
+}
+
+table.dbstruct th.table,
+table.dbstruct th.column {
+	width:200px;
+}
+
+
+table.dbstruct th.type {
+	width:150px;
+}
+table.dbstruct td {
+	border-left:1px solid #FFA800;
+}
+
+table.dbstruct td.table {
+	font-weight:bold;
+}
+
+p.section {
+	font-weight:bold;
+	font-size:14px;
+	margin:10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

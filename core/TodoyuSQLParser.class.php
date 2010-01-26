@@ -25,66 +25,11 @@
  * @package		Todoyu
  * @subpackage	Installer
  */
-class TodoyuSqlParser {
-
-	/**
-	 * Cleans given SQL from whitespace, comments, etc.
-	 *
-	 * @param	String	$sql
-	 * @return	String
-	 */
-	public static function cleanSql($sql) {
-		$sql	= self::trimLines($sql, true);
-		$sql	= self::removeSqlComments($sql);
-
-		return $sql;
-	}
+class TodoyuSQLParser {
 
 
 
-	/**
-	 * Removes whitespace from lines' start, optionally remove all-whitespaced lines
-	 *
-	 * @param	String	$sql
-	 * @return	String
-	 */
-	private static function trimLines($sql, $dropWhitespaceLines = true) {
-		$lines	= explode("\n", $sql);
-		$clean	= array();
 
-		foreach($lines as $line) {
-			$line	= trim($line);
-
-			if ( strlen($line) > 0 || $dropWhitespaceLines !== true) {
-				$clean[]	= $line;
-			}
-		}
-
-		return implode("\n", $clean);
-	}
-
-
-
-	/**
-	 * Remove comments from within SQL
-	 *
-	 * @param	String	$sql
-	 * @return	String
-	 */
-	private static function removeSqlComments($sql) {
-		$cleanSQL	= array();
-		$lines		= explode("\n", $sql);
-
-		foreach($lines as $line) {
-			$line	= trim($line);
-				// Line is not a comment?
-			if ( substr($line, 0, 2) !== '--' && $line[0] !== '#' ) {
-				$cleanSql[]	= $line;
-			}
-		}
-
-		return implode("\n", $cleanSql);
-	}
 
 
 
@@ -353,7 +298,7 @@ class TodoyuSqlParser {
 			$tablesSql	= self::getInstalledExtTablesSqls();
 		}
 		if ( count($tableNames) == 0 ) {
-			$tableNames	= TodoyuSqlParser::extractTableNames($tablesSql);
+			$tableNames	= TodoyuSQLParser::extractTableNames($tablesSql);
 		}
 
 			// Init structural definition data array

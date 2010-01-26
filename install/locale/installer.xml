@@ -58,21 +58,25 @@
 		<label index="finish.button">Disable installer and go to login</label>
 		<label index="finish.text">Installation finished</label>
 		<label index="finish.step">Finish installation</label>
-		<label index="update.title">Welcome to datebase update</label>
-		<label index="update.button">Update system database</label>
+		<label index="update.title">todoyu version update</label>
+		<label index="update.button">Update system databases</label>
 		<label index="update.info">Apply database changes for your current version and compare current columns with file configuration</label>
 		<label index="update.step">Update todoyu installation</label>
 		<label index="updatetocurrentversion.title">Update database</label>
 		<label index="updatetocurrentversion.button">Apply database changes</label>
 		<label index="updatetocurrentversion.noupdates">Your database is up-to-date. No updates necessary</label>
 		<label index="updatetocurrentversion.noupdates">Your database is up-to-date. No updates necessary</label>
+		<label index="updatetocurrentversion.updates">Update database structure</label>
+		<label index="updatetocurrentversion.newTables">New tables</label>
+		<label index="updatetocurrentversion.newColumns">New columns</label>
+		<label index="updatetocurrentversion.changedColumns">Modified columns</label>
 		<label index="updatetocurrentversion.step">Update database structure</label>
 		<label index="finishupdate.title">Finish update</label>
 		<label index="finishupdate.button">Disable installer and go to login</label>
 		<label index="finishupdate.text">Installer has updated your todoyu version</label>
 		<label index="finishupdate.step">Finish installation</label>
 
-
+<!--
 
 
 		<label index="installationSteps">Installation steps</label>
@@ -144,12 +148,12 @@
 		<label index="progress.label.staticdata">Import static data</label>
 		<label index="progress.label.systemconfig">General system configuration</label>
 		<label index="progress.label.setadminpassword">Set admin password</label>
-		<!--  <label index="progress.label.saveadminpassword">Save Administrator Password</label>  -->
+		<label index="progress.label.saveadminpassword">Save Administrator Password</label>
 		<label index="progress.label.welcometoupdate">System database version updates</label>
 		<label index="progress.label.updatetocurrentversion">Extensions database updates</label>
 		<label index="progress.label.dbstructurecheck">Update extensions</label>
 		<label index="progress.label.finishupdate">Update extensions DB tables</label>
-		<!-- <label index="progress.label.exit">Start todoyu</label>  -->
+		<label index="progress.label.exit">Start todoyu</label>  -->
 	</labels>
 	<labels lang="de">
 	</labels>

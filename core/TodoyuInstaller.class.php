@@ -43,7 +43,8 @@ class TodoyuInstaller {
 		$step	= self::getStep();
 
 		if( self::hasData() ) {
-			$result	= self::process($step, $_POST);
+			$params	= TodoyuRequest::getAll();
+			$result	= self::process($step, $params);
 		} else {
 			$result	= array();
 		}
@@ -57,30 +58,67 @@ class TodoyuInstaller {
 	}
 
 
+
+	/**
+	 * Set installation step (session)
+	 *
+	 * @param	String		$step
+	 */
 	public static function setStep($step) {
 		TodoyuSession::set('installer/step', $step);
 	}
 
 
+
+	/**
+	 * Get current installation step
+	 *
+	 * @return	String
+	 */
 	public static function getStep() {
 		return TodoyuSession::get('installer/step');
 	}
 
 
+
+	/**
+	 * Check if a step is set
+	 *
+	 * @return	Bool
+	 */
 	private static function hasStep() {
 		return TodoyuSession::isIn('installer/step');
 	}
 
 
+
+	/**
+	 * Check if restart flag is set
+	 *
+	 * @return	Bool
+	 */
 	private static function isRestart() {
 		return intval($_GET['restart']) === 1;
 	}
 
 
+
+	/**
+	 * Check if data is submitted
+	 *
+	 * @return	Bool
+	 */
 	private static function hasData() {
 		return $_SERVER['REQUEST_METHOD'] === 'POST';
 	}
 
+
+
+	/**
+	 * Check if ENABLE file is available
+	 *
+	 * @return	Bool
+	 */
 	public static function isEnabled() {
 		$file	= TodoyuFileManager::pathAbsolute('install/ENABLE');
 
@@ -88,23 +126,66 @@ class TodoyuInstaller {
 	}
 
 
+
+	/**
+	 * Initialize first step. Install or update?
+	 * Save mode in session
+	 *
+	 */
 	private static function initStep() {
 		if( self::isUpdate() ) {
 			self::setStep('update');
-			TodoyuSession::set('installer/mode', 'update');
+			self::setMode('update');
 		} else {
 			self::setStep('install');
-			TodoyuSession::set('installer/mode', 'install');
+			self::setMode('install');
 		}
 	}
 
 
-	public static function getStepConfig($step) {
-		return $GLOBALS['CONFIG']['INSTALLER']['steps'][$step];
+
+	/**
+	 * Set run mode (install or update)
+	 *
+	 * @param	String		$mode
+	 */
+	private static function setMode($mode) {
+		TodoyuSession::set('installer/mode', $mode);
 	}
 
 
 
+
+	/**
+	 * Get run mode
+	 *
+	 * @return	String
+	 */
+	public static function getMode() {
+		return TodoyuSession::get('installer/mode');
+	}
+
+
+
+	/**
+	 * Get configuration array for a step
+	 *
+	 * @param	String		$step
+	 * @return	Array
+	 */
+	public static function getStepConfig($step) {
+		return TodoyuArray::assure($GLOBALS['CONFIG']['INSTALLER']['steps'][$step]);
+	}
+
+
+
+	/**
+	 * Process submitted data for a step. Call processing function
+	 *
+	 * @param	String		$step
+	 * @param	Array		$data
+	 * @return	Array
+	 */
 	private static function process($step, array $data = array()) {
 		$stepConfig	= self::getStepConfig($step);
 
@@ -116,6 +197,14 @@ class TodoyuInstaller {
 	}
 
 
+
+	/**
+	 * Display step
+	 *
+	 * @param	String		$step
+	 * @param	Array		$result
+	 * @return	String
+	 */
 	private static function display($step, array $result = array()) {
 		$stepConfig	= self::getStepConfig($step);
 		$tmpl		= 'install/view/' . $stepConfig['tmpl'];
@@ -132,23 +221,39 @@ class TodoyuInstaller {
 	}
 
 
+
+	/**
+	 * Check if step if part of the update run
+	 *
+	 * @param	String		$step
+	 * @return	Bool
+	 */
 	public static function isUpdateStep($step) {
 		return in_array($step, $GLOBALS['CONFIG']['INSTALLER']['update']);
 	}
 
 
-	public static function getRunType() {
-		return self::isUpdate() ? 'update' : 'install';
+
+	/**
+	 * Get steps of the current mode
+	 *
+	 * @return	Array
+	 */
+	public static function getModeSteps() {
+		$type	= self::getMode();
+
+		return TodoyuArray::assure($GLOBALS['CONFIG']['INSTALLER'][$type]);
 	}
 
-	public static function getRunTypeSteps() {
-		$type	= self::getRunType();
 
-		return self::getTypeSteps($type);
-	}
 
-	public static function getRunTypesWithLabels() {
-		$steps		= self::getRunTypeSteps();
+	/**
+	 * Get mode steps (update or install) with labels
+	 *
+	 * @return	Array
+	 */
+	public static function getStepsWithLabels() {
+		$steps		= self::getModeSteps();
 		$withLabels	= array();
 
 		foreach($steps as $step) {
@@ -156,277 +261,6 @@ class TodoyuInstaller {
 		}
 
 		return $withLabels;
-	}
-
-	public static function getTypeSteps($type) {
-		return $GLOBALS['CONFIG']['INSTALLER'][$type];
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/**
-	 * Get current step
-	 *
-	 * @return	Integer
-	 */
-	public static function getCurrentStep() {
-		if( intval($_GET['restart']) != 1 ) {
-				// Regular step handling
-			$step	= $_POST['action'];
-			if ( $step == '') {
-					// Reinit step to restart installation / update
-				$step	= self::isUpdate() === false ? 'welcome' : 'welcometoupdate';
-			}
-		} else {
-				// Restart
-			$step	= 'welcome';
-		}
-
-		return $step;
-	}
-
-
-
-	/**
-	 * Get name of next step
-	 *
-	 * @param	String	$step
-	 * @return	String
-	 */
-	public static function getNextStep($currentStep = '') {
-		$steps			= $GLOBALS['CONFIG']['INSTALLER']['steps'];
-
-		if ( array_key_exists($currentStep, $steps) ) {
-		foreach($steps as $name => $conf) {
-			if ( $name == $currentStep ) {
-				$nextStep	= $conf['nextStep'];
-			}
-		}
-		} else {
-			$nextStep	= 'welcome';
-		}
-
-		return $nextStep;
-	}
-
-
-
-	/**
-	 * Get render or processing function reference of current step
-	 *
-	 * @param	String	$step
-	 * @param	String	$type
-	 * @return	Array
-	 */
-	public static function getStepFunc($step, $type = 'render') {
-		$stepData	= $GLOBALS['CONFIG']['INSTALLER']['steps'][$step];
-
-		return explode('::', $stepData[$type . 'FuncRef']);
-	}
-
-
-
-	/**
-	 * Set given step's render or processing function reference to given one
-	 *
-	 * @param	String	$step
-	 * @param	String	$type
-	 * @return	Array
-	 */
-	public static function setStepFunc($step, $funcRef = '', $type = 'render') {
-		if ( is_array($funcRef) ) {
-			$funcRef	= implode('::', $funcRef);
-		}
-
-		$GLOBALS['CONFIG']['INSTALLER']['steps'][$step][$type . 'FuncRef']	= $funcRef;
-	}
-
-
-
-	/**
-	 * Set current step's render function reference to that of the next step
-	 *
-	 * @param	Boolean		$stepStep
-	 */
-	public static function setCurrentRenderFuncFromNextStep($setStep = false) {
-		$currentStep	= self::getCurrentStep();
-		$nextStep		= self::getNextStep($currentStep);
-		$nextRenderFunc	= self::getStepFunc($nextStep, 'render');
-
-		self::setStepFunc($currentStep, $nextRenderFunc, 'render');
-
-		if ( $setStep == true ) {
-			$secondNextStep	= $GLOBALS['CONFIG']['INSTALLER']['steps'][$nextStep]['nextStep'];
-
-			$GLOBALS['CONFIG']['INSTALLER']['steps'][$currentStep]['nextStep'] = $secondNextStep;
-		}
-	}
-
-
-
-	/**
-	 * Process current step data (order of evocation is: process, display)
-	 *
-	 * @param	String		$step
-	 * @param	Array		$data
-	 * @return	String
-	 */
-	public static function processStep($step, $data) {
-		$processFunc	= self::getStepFunc($step, 'process');
-
-		if( method_exists($processFunc[0], $processFunc[1]) ) {
-				$result	= call_user_func($processFunc, $data);
-		} else {
-			$result	= array('error' => false);
-		}
-
-		return $result;
-	}
-
-
-
-	/**
-	 * Render and display output for current step
-	 *
-	 * @param	String	$step
-	 * @param	String	$error
-	 */
-	public static function displayStep($step, $result) {
-		$renderFunc	= self::getStepFunc($step, 'render');
-
-		if( method_exists($renderFunc[0], $renderFunc[1]) ) {
-				// Get next step for button 'action',
-				// repeating current step or being next one is set in validation of processing func
-			$nextStepName	= self::getNextStep($step);
-			$result['isUpdate']	= self::isUpdate();
-
-			echo call_user_func($renderFunc, $nextStepName, $result);
-		}
-	}
-
-
-
-	/**
-	 * Get only steps of installation or updating, depending on where given step belongs to
-	 *
-	 * @param String $curRenderStep
-	 */
-	public static function getStepsSegment($curRenderStep) {
-		$allSteps	=	$GLOBALS['CONFIG']['INSTALLER']['steps'];
-
-		$curStepOffset		= TodoyuArray::getKeyOffset($allSteps, $curRenderStep);
-		$updateStepsStart	= TodoyuArray::getKeyOffset($allSteps, 'welcometoupdate');
-
-		if ( $curStepOffset >= $updateStepsStart ) {
-			$mode	= 'update';
-			$steps	= array_slice($allSteps, $updateStepsStart);
-		} else {
-			$mode	= 'installation';
-			$steps	= array_slice($allSteps, 0, $updateStepsStart);
-		}
-
-		return array($mode, $steps);
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/**
-	 * Detect, perform changes as found in 'tables.sql' files compared against DB
-	 *
-	 * @param	Array	$data
-	 * @return	Array
-	 */
-	public static function autoUpdateTablesSqlDifferences($data) {
-		$result	= array('error' => false);
-
-		$dbDiff	= TodoyuInstallerDbHelper::getDBstructureDiff();
-		if ( count($dbDiff) > 0  ) {
-			try {
-				TodoyuInstallerDbHelper::compileAndRunInstallerQueries($dbDiff);
-			} catch(Exception $e)	{
-				$result['error'] = $e->getMessage();
-			}
-		}
-
-		return $result;
-	}
-
-
-
-
-
-
-
-	/**
-	 * Get files which will be executed on an update
-	 *
-	 * @return	Array
-	 */
-	public static function getRequiredVersionUpdates() {
-		$dbVersion	= TodoyuDbAnalyzer::getDBVersion();
-		$updates	= array();
-
-		switch($dbVersion) {
-			case 'beta1':
-				$updates[] = array(
-					'title'	=> 'Updates from beta1 to beta2',
-					'file'	=> 'install/config/db/update_beta1_to_beta2.sql'
-				);
-
-			case 'beta2':
-				$updates[] = array(
-					'title'	=> 'Updates from beta2 to beta3',
-					'file'	=> 'install/config/db/update_beta2_to_beta3.sql'
-				);
-		}
-
-		return $updates;
 	}
 
 
@@ -453,7 +287,6 @@ class TodoyuInstaller {
 	public static function isUpdate() {
 		return TodoyuInstallerDbHelper::isDatabaseConfigured() || self::hasDoubleEnableFile();
 	}
-
 
 }
 ?>

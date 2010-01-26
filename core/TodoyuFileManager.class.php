@@ -294,6 +294,25 @@ class TodoyuFileManager {
 		return chmod($pathToFolder, $GLOBALS['CONFIG']['CHMOD']['folder']);
 	}
 
+
+
+	/**
+	 * Get file content
+	 *
+	 * @param	String		$path
+	 * @return	String
+	 */
+	public static function getFileContent($path) {
+		$path	= self::pathAbsolute($path);
+
+		if( is_file($path) && is_readable($file) ) {
+			return file_get_contents($file);
+		} else {
+			Todoyu::log('Can\'t open file! File: ' . $file, LOG_LEVEL_ERROR);
+			return '';
+		}
+	}
+
 }
 
 ?>

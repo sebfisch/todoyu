@@ -28,10 +28,10 @@
 class TodoyuInstallerManager {
 
 	/**
-	 * Process welcome page
+	 * Process installation step (first)
 	 *
-	 * @param array $data
-	 * @return unknown
+	 * @param	Array		$data
+	 * @return	Array
 	 */
 	public static function processInstall(array $data) {
 		TodoyuInstaller::setStep('servercheck');
@@ -54,6 +54,7 @@ class TodoyuInstallerManager {
 
 		return array();
 	}
+
 
 
 	/**
@@ -95,9 +96,6 @@ class TodoyuInstallerManager {
 
 		return $result;
 	}
-
-
-
 
 
 
@@ -162,9 +160,6 @@ class TodoyuInstallerManager {
 
 
 
-
-
-
 	/**
 	 * Have static DB data imported
 	 *
@@ -181,8 +176,6 @@ class TodoyuInstallerManager {
 
 		return array();
 	}
-
-
 
 
 
@@ -209,6 +202,14 @@ class TodoyuInstallerManager {
 	}
 
 
+
+
+	/**
+	 * Process admin password update
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
 	public static function processAdminPassword(array $data) {
 		$result	= array();
 
@@ -227,6 +228,13 @@ class TodoyuInstallerManager {
 
 
 
+
+	/**
+	 * Process installation finish
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
 	public static function processFinish(array $data) {
 		if( intval($data['finish']) === 1 ) {
 			self::finishInstallerAndJumpToLogin();
@@ -519,6 +527,25 @@ class TodoyuInstallerManager {
 	}
 
 
+
+
+	/**
+	 * Get current version of the database
+	 *
+	 * @return	String
+	 */
+	public static function getDBVersion() {
+		$dbVersion	= 'beta3';
+		$tables		= Todoyu::db()->getTables();
+
+		if( in_array('ext_portal_tab', $tables) ) {
+			$dbVersion	= 'beta1';
+		} elseif( in_array('ext_user_customerrole', $tables) ) {
+			$dbVersion	= 'beta2';
+		}
+
+		return $dbVersion;
+	}
 
 }
 

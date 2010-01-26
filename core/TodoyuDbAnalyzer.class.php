@@ -23,13 +23,14 @@
  * Installer
  *
  * @package		Todoyu
- * @subpackage	TodoyuSqlParser
+ * @subpackage	Core
  */
 class TodoyuDbAnalyzer {
 
 	/**
-	 * Get available databases
+	 * Get available databases on server
 	 *
+	 * @param 	Array		$dbConfig		Connectio configuration [server,username,password]
 	 * @return	Array
 	 */
 	public static function getDatabasesOnServer(array $dbConfig)	{
@@ -75,10 +76,13 @@ class TodoyuDbAnalyzer {
 
 
 	/**
-	 * Get given tables' declarations as available in DB
+	 * Get table and column structure from database.
+	 * Only check for tables with the todoyu format:
+	 *  - ext_*
+	 *  - static_*
+	 *  - system_*
 	 *
-	 *	@param	Array	$tablesNames
-	 *	@return Array
+	 * @return	Array
 	 */
 	public static function getTableStructures() {
 		$fields	= '	TABLE_NAME,
@@ -139,6 +143,12 @@ class TodoyuDbAnalyzer {
 
 
 
+	/**
+	 * Get keys (indexes) for a table
+	 *
+	 * @param	String		$tableName
+	 * @return	Array
+	 */
 	public static function getTableKeys($tableName) {
 		$fields	= ' tc.CONSTRAINT_TYPE as type,
 					tc.CONSTRAINT_NAME as name,
@@ -152,29 +162,6 @@ class TodoyuDbAnalyzer {
 					kcu.TABLE_NAME		= \'' . $tableName . '\'';
 
 		return Todoyu::db()->getArray($fields, $table, $where);
-
-	}
-
-
-
-
-
-	/**
-	 * Get current version of the database
-	 *
-	 * @return	String
-	 */
-	public static function getDBVersion() {
-		$dbVersion	= 'beta3';
-		$tables		= Todoyu::db()->getTables();
-
-		if( in_array('ext_portal_tab', $tables) ) {
-			$dbVersion	= 'beta1';
-		} elseif( in_array('ext_user_customerrole', $tables) ) {
-			$dbVersion	= 'beta2';
-		}
-
-		return $dbVersion;
 	}
 
 }

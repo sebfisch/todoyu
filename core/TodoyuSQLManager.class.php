@@ -1,7 +1,31 @@
 <?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
 
+/**
+ * SQL manager. Functions to handle SQL queries and files
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
 class TodoyuSQLManager {
-
 
 	/**
 	 * Extract queries from a file. Get a list of the single queries
@@ -10,12 +34,9 @@ class TodoyuSQLManager {
 	 * @return	Array		List of queries in file
 	 */
 	public static function getQueriesFromFile($file) {
-		$file	= TodoyuFileManager::pathAbsolute($file);
-		$content= file_get_contents($file);
-		$query	= TodoyuSqlParser::cleanSql($content);
-//		$query	= str_replace("\n", ' ', $query);
-
-		$queries= explode(';', $query);
+		$content= TodoyuFileManager::getFileContent($file);
+		$content= TodoyuSQLManager::cleanSQL($content);
+		$queries= explode(';', $content);
 
 		foreach($queries as $index => $query) {
 			if( trim($query) === '' ) {
@@ -29,6 +50,12 @@ class TodoyuSQLManager {
 	}
 
 
+
+	/**
+	 * Get table queries of code tables.sql
+	 *
+	 * @return	Array
+	 */
 	public static function getCoreTableQueries() {
 		$file	= PATH . '/core/config/db/tables.sql';
 
@@ -36,8 +63,9 @@ class TodoyuSQLManager {
 	}
 
 
+
 	/**
-	 * Get all core DB tables' structures for fresh install from 'tables.sql'
+	 * Get core table structure from 'tables.sql'
 	 *
 	 * @return	Array
 	 */
@@ -47,7 +75,7 @@ class TodoyuSQLManager {
 		$tableStructures= array();
 
 		foreach($tableQueries as $tableQuery) {
-			$tableStructure = TodoyuSqlParser::parseCreateQuery($tableQuery);
+			$tableStructure = TodoyuSQLParser::parseCreateQuery($tableQuery);
 			$tableStructures[$tableStructure['table']]	= $tableStructure;
 		}
 
@@ -55,12 +83,20 @@ class TodoyuSQLManager {
 	}
 
 
+
+	/**
+	 * Get extensions table structure
+	 *
+	 * @return	Array
+	 */
 	public static function getExtTablesFromFile() {
+			// Get all extension queries
 		$tableQueries	= self::getExtTableQueries();
 		$tableStructures= array();
 
+			// Merge queries of all extensions
 		foreach($tableQueries as $tableQuery) {
-			$tableStructure = TodoyuSqlParser::parseCreateQuery($tableQuery);
+			$tableStructure = TodoyuSQLParser::parseCreateQuery($tableQuery);
 
 			if( array_key_exists($tableStructure['table'], $tableStructures) ) {
 				$tableStructures[$tableStructure['table']]	= self::mergeTableStructure($tableStructures[$tableStructure['table']], $tableStructure);
@@ -73,6 +109,16 @@ class TodoyuSQLManager {
 	}
 
 
+
+	/**
+	 * Merge two table structures.
+	 * Only missing columns are added. An existing structure is no updated
+	 * The Primary Key is only added once. Keys with the same name are ignored
+	 *
+	 * @param	Array		$structureOne
+	 * @param	Array		$structureTwo
+	 * @return	Array
+	 */
 	private static function mergeTableStructure(array $structureOne, array $structureTwo) {
 		$colDiff	= array_diff_assoc($structureTwo['columns'], $structureOne['columns']);
 
@@ -106,9 +152,19 @@ class TodoyuSQLManager {
 	}
 
 
+
+	/**
+	 * Merge core and extension table structure.
+	 * This results in a full table structure for the system
+	 *
+	 * @param	Array		$coreTables
+	 * @param	Array		$extTables
+	 * @return	Arra
+	 */
 	public static function mergeCoreAndExtTables(array $coreTables, array $extTables) {
 		$mergedTables	= $coreTables;
 
+			// Add tables and columns of each extension
 		foreach($extTables as $tableName => $tableStructure) {
 			if( array_key_exists($tableName, $mergedTables) ) {
 				$mergedTables[$tableName]	= self::mergeTableStructure($mergedTables[$tableName], $tableStructure);
@@ -123,7 +179,7 @@ class TodoyuSQLManager {
 
 
 	/**
-	 * Enter description here...
+	 * Get queries of all extensions from their tables.sql
 	 *
 	 * @return	Array
 	 */
@@ -146,67 +202,6 @@ class TodoyuSQLManager {
 
 
 
-
-
-
-
-
-	/**
-	 * Get 'tables.sql' contents of given extension
-	 *
-	 *	@param	String	$extKey
-	 */
-	private static function getExtTablesSqlAAA($extKey, $clean = true) {
-		$extPath	= self::getExtPath($extKey);
-		$sqlPath	= $extPath . '/config/db/tables.sql';
-
-		if ( file_exists( $sqlPath ) ) {
-				// 'tables.sql' found
-			$sql	= file_get_contents($sqlPath);
-
-			if ( $clean === true) {
-				$sql	= TodoyuSqlParser::cleanSql($sql);
-			}
-		} else {
-				// 'tables.sql' missing
-			$sql	= false;
-		}
-
-		return $sql;
-	}
-
-
-
-
-	/**
-	 * Get all extensions DB tables' structures for fresh install from 'tables.sql'
-	 *
-	 * @return	Array
-	 */
-	public static function getExtDBstructures() {
-			// Get 'table.sql' definitions from extensions having them
-		$tablesSql	= TodoyuExtensions::getInstalledExtTablesSqls();
-
-			// Get all table names being declared
-		$tablesNames	= TodoyuSqlParser::extractTableNames($tablesSql);
-
-			// Collect all columns declarations of all tables
-		$tablesStructures	= TodoyuSqlParser::getAllTableStructures($tablesNames, $tablesSql);
-
-			// Collect all tables' comparisom columns declarations as setup in DB
-		$tablesStructuresInDB	= array();
-
-			// During a fresh install all tables are new ;)
-		$newTables	=  array_flip($tablesNames);
-
-		$structures	= self::getDBStructureDifferences($newTables, $tablesStructures, $tablesStructuresInDB);
-
-		return $structures;
-	}
-
-
-
-
 	/**
 	 * Get queries which are needed to update the database on the base of the structure differences
 	 *
@@ -226,8 +221,10 @@ class TodoyuSQLManager {
 		}
 
 			// Build queries for missing columns
-		foreach($structureDifferences['missingColumns'] as $table => $columnStructure) {
-			$queries['add'][] = self::buildAddColumnQueriesFromStructure($table, $columnStructure);
+		foreach($structureDifferences['missingColumns'] as $table => $columnStructures) {
+			foreach($columnStructures as $columnName => $columnStructure) {
+				$queries['add'][] = self::buildAddColumnQueriesFromStructure($table, $columnStructure);
+			}
 		}
 
 			// Build queries for changed columns
@@ -239,6 +236,12 @@ class TodoyuSQLManager {
 	}
 
 
+
+	/**
+	 * Get queries which are necessary to update the database to the file structure
+	 *
+	 * @return	Array
+	 */
 	public static function getStructureUpdateQueries() {
 		$structureDiff	= self::getStructureDifferences();
 
@@ -249,6 +252,12 @@ class TodoyuSQLManager {
 	}
 
 
+
+	/**
+	 * Get structure differences between file configuration and active database
+	 *
+	 * @return	Array
+	 */
 	public static function getStructureDifferences() {
 			// Get table structure from files
 		$fileTableStructure	= self::getFileTableStructures();
@@ -303,11 +312,10 @@ class TodoyuSQLManager {
 	 * Build a query to add a column to a table
 	 *
 	 * @param	String		$table
-	 * @param	Array		$columnStructure
+	 * @param	Array		$columnStructures
 	 * @return	String
 	 */
 	private static function buildAddColumnQueriesFromStructure($table, array $columnStructure) {
-		$columnStructure= array_shift($columnStructure);
 		$columnSQL		= self::buildColumnSQL($columnStructure);
 
 		$query	= 'ALTER TABLE `' . $table . '` ADD ' . $columnSQL;
@@ -334,6 +342,7 @@ class TodoyuSQLManager {
 	}
 
 
+
 	/**
 	 * Build a column definition from stucture
 	 *
@@ -344,6 +353,13 @@ class TodoyuSQLManager {
 		return trim('`' . $columnStructure['field'] . '` ' . $columnStructure['type'] . ' ' . $columnStructure['null'] . ' ' . $columnStructure['default'] . ' ' . $columnStructure['extra']);
 	}
 
+
+
+	/**
+	 * Get table structure from all files
+	 *
+	 * @return	Array
+	 */
 	public static function getFileTableStructures() {
 			// Get table structure from core tables.sql
 		$fileCoreStructure	= self::getCoreTablesFromFile();
@@ -357,6 +373,10 @@ class TodoyuSQLManager {
 
 
 
+	/**
+	 * Update database to table structure defined in core and extension files
+	 *
+	 */
 	public static function updateDatabaseFromTableFiles() {
 			// Get update queries
 		$updateQueries	= self::getStructureUpdateQueries();
@@ -374,22 +394,13 @@ class TodoyuSQLManager {
 
 
 
-
 	/**
-	 * Check DB for existence of given tables, return missing ones
+	 * Get differences between file and database structure
 	 *
-	 *	@param	Array	$extTableNames
-	 *	@return	Array
+	 * @param	Array		$fileStructure
+	 * @param	Array		$dbStructure
+	 * @return	Array
 	 */
-	public static function getMissingTables(array $tablesNames) {
-		$dbTables	= Todoyu::db()->getTables();
-		$missingTables	= array_diff($tablesNames, $dbTables);
-
-		return array_flip($missingTables);
-	}
-
-
-
 	public static function getDifferencesFromStructures(array $fileStructure, array $dbStructure) {
 		$missingTables	= array();
 		$missingColumns	= array();
@@ -444,6 +455,57 @@ class TodoyuSQLManager {
 	}
 
 
+
+
+	/**
+	 * Cleans given SQL from whitespace, comments, etc.
+	 *
+	 * @param	String	$sql
+	 * @return	String
+	 */
+	public static function cleanSQL($SQLString) {
+		$SQLString	= self::removeSQLComments($SQLString);
+
+		return $SQLString;
+	}
+
+
+
+	/**
+	 * Remove comments from within SQL
+	 *
+	 * @param	String	$sql
+	 * @return	String
+	 */
+	private static function removeSQLComments($SQLString) {
+		$cleanSQL	= array();
+		$lines		= explode("\n", $SQLString);
+
+		foreach($lines as $line) {
+			$line	= trim($line);
+				// Line is not a comment?
+			if ( substr($line, 0, 2) !== '--' && substr($line, 0, 1) !== '#' ) {
+				$cleanSQL[]	= $line;
+			}
+		}
+
+		return implode("\n", $cleanSQL);
+	}
+
+
+
+	/**
+	 * Check DB for existence of given tables, return missing ones
+	 *
+	 *	@param	Array	$extTableNames
+	 *	@return	Array
+	 */
+	public static function getMissingTables(array $tablesNames) {
+		$dbTables	= Todoyu::db()->getTables();
+		$missingTables	= array_diff($tablesNames, $dbTables);
+
+		return array_flip($missingTables);
+	}
 
 }
 

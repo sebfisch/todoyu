@@ -92,7 +92,7 @@ class TodoyuInstallerDbHelper {
 		$fileTableStructure	= TodoyuSQLManager::mergeCoreAndExtTables($fileCoreStructure, $fileExtStructure);
 			// Get table structure from database
 		$dbTableStructure	= TodoyuDbAnalyzer::getTableStructures();
-		$structureDifferences	= TodoyuSqlParser::getStructureDifferences($fileTableStructure, $dbTableStructure);
+		$structureDifferences	= TodoyuSQLParser::getStructureDifferences($fileTableStructure, $dbTableStructure);
 
 
 
@@ -174,10 +174,10 @@ class TodoyuInstallerDbHelper {
 		$extTablesSql	= TodoyuExtensions::getInstalledExtTablesSqls();
 
 			// Get all table names being declared
-		$extTablesNames	= TodoyuSqlParser::extractTableNames($extTablesSql);
+		$extTablesNames	= TodoyuSQLParser::extractTableNames($extTablesSql);
 
 			// Collect all columns declarations of all tables (from tables.sql files)
-		$extTablesStructures	= TodoyuSqlParser::getAllTableStructures($extTablesNames, $extTablesSql);
+		$extTablesStructures	= TodoyuSQLParser::getAllTableStructures($extTablesNames, $extTablesSql);
 
 			// Collect all tables' comparisom columns declarations as setup in DB
 		$extTablesStructuresInDB	= TodoyuDbAnalyzer::getTablesStructures($extTablesNames);
@@ -303,7 +303,7 @@ class TodoyuInstallerDbHelper {
 			}
 		}
 
-		$query	= TodoyuSqlParser::cleanSql($query);
+		$query	= TodoyuSQLManager::cleanSQL($query);
 		$query	= str_replace("\n", ' ', $query);
 
 		$queries	= explode(';', $query);
