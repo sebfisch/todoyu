@@ -255,7 +255,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 			// If no label found, check if there is a noLabel tag
 		if( empty($label) && ! empty($config['label']['noLabel']) ) {
-			$label	= TodoyuDiv::getLabel($config['label']['noLabel']);
+			$label	= Label($config['label']['noLabel']);
 		}
 
 			// If still no label found, get default "no label" tag
