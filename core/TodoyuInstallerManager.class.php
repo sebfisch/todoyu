@@ -265,7 +265,7 @@ class TodoyuInstallerManager {
 		$result	= array();
 
 		if( intval($data['update']) === 1 ) {
-			$dbVersion	= TodoyuDbAnalyzer::getDBVersion();
+			$dbVersion	= self::getDBVersion();
 
 			switch($dbVersion) {
 				case 'beta1':
