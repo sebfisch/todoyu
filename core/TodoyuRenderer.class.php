@@ -100,6 +100,16 @@ class TodoyuRenderer {
 		return render($tmpl, $data);
 	}
 
+	public static function renderContent($body, $tabs) {
+		$tmpl	= 'core/view/content.tmpl';
+		$data	= array(
+			'tabs'	=> $tabs,
+			'body'	=> $body
+		);
+
+		return render($tmpl, $data);
+	}
+
 }
 
 ?>
