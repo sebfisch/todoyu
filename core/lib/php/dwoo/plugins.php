@@ -108,6 +108,26 @@ function Dwoo_Plugin_link(Dwoo $dwoo, $extension, $controller = 'ext', $params =
 
 
 /**
+ * Include given file's content with special- or all applicable characters converted to HTML character entities
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param 	Dwoo 		$dwoo
+ * @param 	String		$file
+ * @return	String
+ */
+function Dwoo_Plugin_includeEscaped(Dwoo $dwoo, $file, $convertSpecialCharsOnly = true) {
+	require_once( PATH . '/lib/php/dwoo/plugins/builtin/functions/include.php' );
+
+	$content	= Dwoo_Plugin_include($dwoo, $file);
+
+	return $convertSpecialCharsOnly == true ? htmlspecialchars($content) : htmlentities($content);
+}
+
+
+
+/**
  * Check if a value (or a list of) exists in an array
  *
  * @package		Todoyu

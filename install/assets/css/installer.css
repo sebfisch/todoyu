@@ -111,11 +111,6 @@ p.installMessage.info {
 
 
 
-
-
-
-
-
 table.dbstruct {
 	
 }
@@ -153,24 +148,6 @@ p.section {
 	font-size:14px;
 	margin:10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -326,11 +303,14 @@ p.section {
 		border:1px solid #D6D6D6;
 		overflow-y:scroll;
 		background-color:#fff;
-		font-family:Courier;
-		font-size:12px;
-		letter-spacing:0.3px;
 		margin:8px 0 28px 0;
+		padding:4px;
 	}
+	.enduserlicense pre {
+		font-family:monospace;
+		font-size:12px !important;
+	}	
+	
 	#licenseagreement h2 {
 		font-weight:normal;
 		font-size:11px;
@@ -343,8 +323,13 @@ p.section {
 		width:520px;
 		border:1px solid #D6D6D6;
 		background-color:#fff;
-		margin-bottom:26px;
+		margin:8px 0 26px 0;
 	}
+	
+		ul.thirdPartyLibs li {
+			list-style-type:disc;
+			padding:2px;
+		}
 
 
 /* --------------------------
@@ -463,3 +448,18 @@ label {
 
 
 
+td {
+	padding:4px 0 8px 0;
+}
+
+
+/* -----------------------------------
+	Form elements
+   ----------------------------------- */
+input#systemname,
+input#email,
+select#language,
+select#locale {
+	width:250px;
+}
+   
