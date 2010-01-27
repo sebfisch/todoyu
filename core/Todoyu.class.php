@@ -64,18 +64,6 @@ class Todoyu {
 	 *
 	 */
 	public static function init() {
-			// Database
-		self::$db		= TodoyuDatabase::getInstance($GLOBALS['CONFIG']['DB']);
-
-			// Log
-		self::$logger = TodoyuLogger::getInstance($GLOBALS['CONFIG']['LOG']['active'], $GLOBALS['CONFIG']['LOG']['level']);
-
-			// Template (Dwoo)
-		self::initTemplate();
-
-			// User
-		self::$user = TodoyuAuth::getUser();
-
 			// Init Locale for locallang files
 		TodoyuLanguage::setLanguage(self::getLang());
 
@@ -85,26 +73,6 @@ class Todoyu {
 
 
 
-	/**
-	 * Init Dwoo templating system.
-	 *
-	 */
-	private static function initTemplate() {
-			// Make needed folders
-		TodoyuFileManager::makeDirDeep($GLOBALS['CONFIG']['TEMPLATE']['compile']);
-		TodoyuFileManager::makeDirDeep($GLOBALS['CONFIG']['TEMPLATE']['cache']);
-
-			// Initialize Dwoo
-		try {
-			self::$template = new Dwoo($GLOBALS['CONFIG']['TEMPLATE']['compile'], $GLOBALS['CONFIG']['TEMPLATE']['cache']);
-		} catch(Dwoo_Exception $e) {
-			TodoyuDebug::printHtml($e->getMessage(), 'Template error (Dwoo_Exception)');
-			Todoyu::log('Dwoo Exception on init: ' . $e->getMessage(), LOG_LEVEL_FATAL);
-		}
-
-//		self::addDwooPluginDir('core/lib/php/dwoo');
-	}
-
 
 
 	/**
@@ -113,6 +81,7 @@ class Todoyu {
 	 */
 	public static function setSystemLocale() {
 		$locale	= self::getLocale();
+
 
 			// Check if locale exists
 		if( ! TodoyuLocaleManager::hasLocale($locale) ) {
@@ -136,6 +105,10 @@ class Todoyu {
 	 * @return	TodoyuDatabase
 	 */
 	public static function db() {
+		if( is_null(self::$db) ) {
+			self::$db = TodoyuDatabase::getInstance($GLOBALS['CONFIG']['DB']);
+		}
+
 		return self::$db;
 	}
 
@@ -148,9 +121,22 @@ class Todoyu {
 	 */
 	public static function tmpl() {
 		if( is_null(self::$template) ) {
-			print_r(debug_backtrace());
-			die("TEMPLATE NOT LOADED YET");
+			$config	= TodoyuArray::assure($GLOBALS['CONFIG']['TEMPLATE']);
+
+				// Make needed folders
+			TodoyuFileManager::makeDirDeep($config['compile']);
+			TodoyuFileManager::makeDirDeep($config['cache']);
+
+				// Initialize Dwoo
+			try {
+				self::$template = new Dwoo($config['compile'], $config['cache']);
+			} catch(Dwoo_Exception $e) {
+				$msg	= 'Can\'t initialize tempalate engine: ' . $e->getMessage();
+				Todoyu::log($msg, LOG_LEVEL_FATAL);
+				die($msg);
+			}
 		}
+
 		return self::$template;
 	}
 
@@ -178,11 +164,10 @@ class Todoyu {
 	 */
 	public static function log($message, $level = 0, $data = null) {
 		if( is_null(self::$logger) ) {
-			echo "LOGGER NOT LOADED YET\n";
-			echo $message . "\n\n";
-		} else {
-			self::$logger->log($message, $level, $data);
+			self::$logger = TodoyuLogger::getInstance($GLOBALS['CONFIG']['LOG']['active'], $GLOBALS['CONFIG']['LOG']['level']);
 		}
+
+		self::$logger->log($message, $level, $data);
 	}
 
 
@@ -193,6 +178,10 @@ class Todoyu {
 	 * @return	TodoyuUser
 	 */
 	public static function user() {
+		if( is_null(self::$user) ) {
+			self::$user = TodoyuAuth::getUser();
+		}
+
 		return self::$user;
 	}
 

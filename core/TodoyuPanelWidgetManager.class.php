@@ -168,7 +168,7 @@ class TodoyuPanelWidgetManager {
 	 * @param	String		$widgetClassName
 	 * @param	Integer		$area
 	 * @param	Array		$params
-	 * @return	PanelWidget
+	 * @return	TodoyuPanelWidget
 	 */
 	public static function getPanelWidget($widgetName, $idArea = 0, array $params = array()) {
 		$widgetClassName= 'TodoyuPanelWidget' . $widgetName;
