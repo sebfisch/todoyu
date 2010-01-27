@@ -55,8 +55,8 @@
 		<label index="adminpassword.passwordHint">at least 5 characters</label>
 		<label index="adminpassword.step">Set admin password</label>
 		<label index="finish.title">Installation finished</label>
-		<label index="finish.button">Disable installer and go to login</label>
 		<label index="finish.text">Installation finished</label>
+		<label index="finish.button">Disable installer and go to login</label>
 		<label index="finish.step">Finish installation</label>
 		<label index="update.title">todoyu version update</label>
 		<label index="update.button">Update system databases</label>
@@ -67,18 +67,16 @@
 		<label index="updatetocurrentversion.noupdates">Your database is up-to-date. No updates necessary</label>
 		<label index="updatetocurrentversion.noupdates">Your database is up-to-date. No updates necessary</label>
 		<label index="updatetocurrentversion.updates">Update database structure</label>
+		<label index="updatetocurrentversion.step">Update database structure</label>
 		<label index="updatetocurrentversion.newTables">New tables</label>
 		<label index="updatetocurrentversion.newColumns">New columns</label>
 		<label index="updatetocurrentversion.changedColumns">Modified columns</label>
-		<label index="updatetocurrentversion.step">Update database structure</label>
 		<label index="finishupdate.title">Finish update</label>
 		<label index="finishupdate.button">Disable installer and go to login</label>
-		<label index="finishupdate.text">Installer has updated your todoyu version</label>
+		<label index="finishupdate.text">Installer has updated your todoyu installation</label>
 		<label index="finishupdate.step">Finish installation</label>
 
 <!--
-
-
 		<label index="installationSteps">Installation steps</label>
 		<label index="servercheckResults">Results of server check:</label>
 		<label index="yourVersion">Your Version:</label>
@@ -86,12 +84,7 @@
 		<label index="orCreateDB">or create new:</label>
 		<label index="dbConnectionStored">DB connection is stored.</label>
 		<label index="importTablesAndData">Import database tables and basic table data</label>
-
-
-
 		<label index="repeatPassword">Repeat Password</label>
-
-
 		<label index="updateSteps">Update steps</label>
 		<label index="generalUpdate">General update</label>
 		<label index="dbAnalyzer">DB-Analyzer</label>
@@ -108,7 +101,6 @@
 		<label index="title.license"></label>
 		<label index="title.welcomeToInstaller">Welcome to the todoyu installer!</label>
 		<label index="title.welcome">Welcome</label>
-
 		<label index="title.setupDatabaseServerConnection">Setup Database Server Connection</label>
 		<label index="title.setupDatabase">Setup Database</label>
 		<label index="title.dbServerConnectionValidated">Database server connection validated.</label>
@@ -127,8 +119,6 @@
 		<label index="step.databaseConnectionSetup">Database connection setup</label>
 		<label index="step.importStaticData">Import static data</label>
 		<label index="step.setAdminPassword">Set administrator password</label>
-
-
 		<label index="button.updateDbConfig">Update database configuration</label>
 		<label index="button.checkConnectionData">Check connection data</label>
 		<label index="button.saveDatabaseSetup">Save Database Setup</label>
@@ -153,8 +143,83 @@
 		<label index="progress.label.updatetocurrentversion">Extensions database updates</label>
 		<label index="progress.label.dbstructurecheck">Update extensions</label>
 		<label index="progress.label.finishupdate">Update extensions DB tables</label>
-		<label index="progress.label.exit">Start todoyu</label>  -->
+		<label index="progress.label.exit">Start todoyu</label>
+-->
 	</labels>
 	<labels lang="de">
+		<label index="type.install">todoyu Installation</label>
+		<label index="type.update">todoyu Aktualisierung</label>
+		<label index="install.eula">Benutzer-Vereinbarung für todoyu</label>
+		<label index="install.lgpl">Folgende Dritt-Bibliotheken sind unter LGPL v2.1 lizensiert:</label>
+		<label index="install.title">todoyu Installer</label>
+		<label index="install.button">Ich stimme zu, todoyu jetzt Installieren</label>
+		<label index="install.text">Willkommen zum todoyu Installer!</label>
+		<label index="install.step">todoyu Benutzerlizens</label>
+		<label index="servercheck.title">Server-Überprüfung</label>
+		<label index="servercheck.button">Datenbankkonfiguration Einrichten</label>
+		<label index="servercheck.yourphpversion">Ihre Version</label>
+		<label index="servercheck.yourphpversion.ok">OK</label>
+		<label index="servercheck.yourphpversion.error">ZU NIEDRIG</label>
+		<label index="servercheck.writableCheck">Ordner / Dateien schreibbar</label>
+		<label index="servercheck.writable">schreibbar</label>
+		<label index="servercheck.notWritable">NICHT SCHREIBBAR</label>
+		<label index="servercheck.ready">Server ist bereit für todoyu 2.0</label>
+		<label index="servercheck.notReady">Server is NOT ready for todoyu 2.0</label>
+		<label index="servercheck.step">Server Prüfen</label>
+		<label index="dbconnection.title">Datenbank-Server Anbindung Einrichten</label>
+		<label index="dbconnection.button">Datenbankkonfiguration Aktualisieren</label>
+		<label index="dbconnection.server">Server</label>
+		<label index="dbconnection.username">Benutzername</label>
+		<label index="dbconnection.password">Passwort</label>
+		<label index="dbconnection.text">Datenbankverbindungsdaten Eingeben</label>
+		<label index="dbconnection.step">DB-Verbindung Einrichten</label>
+		<label index="dbselect.title">Datenbank auswählen</label>
+		<label index="dbselect.button">Datenbank-Einstellungen Speichern</label>
+		<label index="dbselect.text.saved">Datenbank-Verbindung gespeichert</label>
+		<label index="dbselect.text.notCreated">Neue Datenbank kann nicht erstellt werden</label>
+		<label index="dbselect.text.dbNameExists">Ein andere Datenbank dieses Namens existiert bereits</label>
+		<label index="dbselect.step">Datenbank wählen</label>
+		<label index="importtables.title">Tabellen und Daten Importieren</label>
+		<label index="importtables.button">Tabellen und Daten Importieren</label>
+		<label index="importtables.coretables">TODOYU CORE DATENBANKTABELLEN</label>
+		<label index="importtables.exttables">TODOYU EXTENSION DATENBANKTABELLEN</label>
+		<label index="importtables.step">Datenbank-Tabellen Importieren</label>
+		<label index="systemconfig.title">todoyu Systemeinstellungen</label>
+		<label index="systemconfig.button">Systemeinstellungen Speichern</label>
+		<label index="systemconfig.systemName">System-Name</label>
+		<label index="systemconfig.systemEmail">System-Email</label>
+		<label index="systemconfig.language">Sprache</label>
+		<label index="systemconfig.locale">Locale</label>
+		<label index="systemconfig.text">todoyu System-Einstellungen wählen</label>
+		<label index="systemconfig.text.error">Bitte System-Name und -Email angeben</label>
+		<label index="systemconfig.step">System Konfigurieren</label>
+		<label index="adminpassword.title">Administratoren-Password Ändern</label>
+		<label index="adminpassword.button">Administratoren-Password Ändern</label>
+		<label index="adminpassword.username">Benutzername</label>
+		<label index="adminpassword.password">Passwort</label>
+		<label index="adminpassword.repeatPassword">Passwort Wiederholen</label>
+		<label index="adminpassword.passwordHint">mindestestenz 5 Zeichen</label>
+		<label index="adminpassword.step">Administratoren-Passwort festlegen</label>
+		<label index="finish.title">Installation beendet</label>
+		<label index="finish.text">Installation beendet</label>
+		<label index="finish.button">Installer Deaktivieren und weiter zum Login</label>
+		<label index="finishupdate.button">Installer Deaktivieren und weiter zum Login</label>
+		<label index="finish.step">Installation abschliessen</label>
+		<label index="finishupdate.step">Installation abschliessen</label>
+		<label index="update.title">todoyu Versions-Aktualisierung</label>
+		<label index="update.button">Systemdatenbanken Aktualisieren</label>
+		<label index="update.info">Datenbank-Änderungen der vorliegenden Version durchführen und mit Datei-Konfiguration Vergleichen</label>
+		<label index="update.step">todoyu Installation Aktualisieren</label>
+		<label index="updatetocurrentversion.title">Datenbank Aktualisieren</label>
+		<label index="updatetocurrentversion.button">Datenbank-Änderungen Durchführen</label>
+		<label index="updatetocurrentversion.noupdates">Ihre Datenbank ist auf dem neuesten Stand. Aktualisierung ist nicht notwendig.</label>
+		<label index="updatetocurrentversion.noupdates">Ihre Datenbank ist auf dem neuesten Stand. Aktualisierung ist nicht notwendig.</label>
+		<label index="updatetocurrentversion.updates">Datenbankstruktur Aktualisieren</label>
+		<label index="updatetocurrentversion.newTables">Neue Tabellen</label>
+		<label index="updatetocurrentversion.newColumns">Neue Spalten</label>
+		<label index="updatetocurrentversion.changedColumns">Geänderte Spalten</label>
+		<label index="updatetocurrentversion.step">Datenbankstruktur Aktualisieren</label>
+		<label index="finishupdate.title">Aktualisieren beenden</label>
+		<label index="finishupdate.text">Der Installer hat Ihre todoyu Installation aktualisiert</label>
 	</labels>
 </locallang>
