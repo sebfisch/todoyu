@@ -40,8 +40,8 @@
 							<span class="rgt"></span>
 						</h1>
 
-						{if $result.text}
-							<p  class="installMessage {$result.textClass}">{$result.text}</p>
+						{if $result.text || $text}
+							<p  class="installMessage {$result.textClass|default:$textClass}">{$result.text|default:$text}</p>
 						{/if}
 
 						<form method="post" action="index.php" style="padding-left:12px;" >

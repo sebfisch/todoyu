@@ -56,23 +56,6 @@ class TodoyuInstallerManager {
 
 		if( intval($data['checked']) === 1 ) {
 			TodoyuInstaller::setStep('dbconnection');
-		} else {
-
-			$info	= TodoyuInstallerManager::checkServer();
-
-			$result	= array(
-				'phpversion'=> $info['phpversion'],
-				'files'		=> $info['files'],
-				'stop'		=> $info['stop']
-			);
-
-			if( $info['stop'] === false ) {
-				$result['text'] 		= Label('installer.servercheck.ready');
-				$result['textClass'] 	= 'success';
-			} else {
-				$result['text'] 		= Label('installer.servercheck.NotReady');
-				$result['textClass'] 	= 'error';
-			}
 		}
 
 		return $result;
@@ -105,9 +88,6 @@ class TodoyuInstallerManager {
 				$result['text']		= Label('installer.dbconnection.text');
 				$result['textClass']= 'error';
 			}
-		} else {
-			$result['text']		= Label('installer.dbconnection.text');
-			$result['textClass']= 'info';
 		}
 
 		return $result;
@@ -193,9 +173,6 @@ class TodoyuInstallerManager {
 			self::importBasicStaticData();
 
 			TodoyuInstaller::setStep('systemconfig');
-		} else {
-			$result['text']		= Label('installer.importtables.text');
-			$result['textClass']= 'info';
 		}
 
 		return $result;
@@ -221,9 +198,6 @@ class TodoyuInstallerManager {
 				$result['text']		= Label('installer.systemconfig.text.error');
 				$result['textClass']= 'error';
 			}
-		} else {
-			$result['text']		= Label('installer.systemconfig.text');
-			$result['textClass']= 'info';
 		}
 
 		return $result;
@@ -242,7 +216,7 @@ class TodoyuInstallerManager {
 		$result	= array();
 
 		if( isset($data['password']) ) {
-			if( trim($data['password']) !== '' && $data['password'] === $data['password_confirm'] ) {
+			if( strlen(trim($data['password'])) >= 5 && $data['password'] === $data['password_confirm'] ) {
 				self::saveAdminPassword($data['password']);
 
 				TodoyuInstaller::setStep('finish');
@@ -250,9 +224,6 @@ class TodoyuInstallerManager {
 				$result['text']		= Label('installer.adminpassword.text');
 				$result['textClass']= 'error';
 			}
-		} else {
-			$result['text']		= Label('installer.adminpassword.text');
-			$result['textClass']= 'info';
 		}
 
 		return $result;
@@ -272,9 +243,6 @@ class TodoyuInstallerManager {
 
 		if( intval($data['finish']) === 1 ) {
 			self::finishInstallerAndJumpToLogin();
-		} else {
-			$result['text']		= Label('installer.finish.text');
-			$result['textClass']= 'success';
 		}
 
 		return $result;

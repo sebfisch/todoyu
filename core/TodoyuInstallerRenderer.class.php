@@ -58,7 +58,7 @@ class TodoyuInstallerRenderer {
 			'title'		=> 'installer.install.title',
 			'button'	=> 'installer.install.button',
 			'text'		=> Label('installer.install.text'),
-			'textclass'	=> 'text textInfo'
+			'textClass'	=> 'text textInfo'
 		);
 
 		return $data;
@@ -78,8 +78,21 @@ class TodoyuInstallerRenderer {
 
 		$data	= array(
 			'title'		=> 'installer.servercheck.title',
-			'button'	=> 'installer.servercheck.button'
+			'button'	=> 'installer.servercheck.button',
+			'info'		=> array(
+				'phpversion'=> $info['phpversion'],
+				'files'		=> $info['files'],
+				'stop'		=> $info['stop']
+			)
 		);
+
+		if( $info['stop'] === false ) {
+			$data['text'] 		= Label('installer.servercheck.ready');
+			$data['textClass'] 	= 'success';
+		} else {
+			$data['text'] 		= Label('installer.servercheck.NotReady');
+			$data['textClass'] 	= 'error';
+		}
 
 		return $data;
 	}
@@ -96,7 +109,9 @@ class TodoyuInstallerRenderer {
 			// Render connection data form
 		$data	= array(
 			'title'		=> 'installer.dbconnection.title',
-			'button'	=> 'installer.dbconnection.button'
+			'button'	=> 'installer.dbconnection.button',
+			'text'		=> Label('installer.dbconnection.text'),
+			'textClass'	=> 'info'
 		);
 
 		return $data;
@@ -116,7 +131,9 @@ class TodoyuInstallerRenderer {
 		$data	= array(
 			'title'		=> 'installer.dbselect.title',
 			'button'	=> 'installer.dbselect.button',
-			'databases'	=> TodoyuDbAnalyzer::getDatabasesOnServer($dbConfig)
+			'databases'	=> TodoyuDbAnalyzer::getDatabasesOnServer($dbConfig),
+			'text'		=> Label('installer.dbselect.text'),
+			'textClass'	=> 'info'
 		);
 
 		return $data;
@@ -136,7 +153,9 @@ class TodoyuInstallerRenderer {
 			'title'			=> 'installer.importtables.title',
 			'button'		=> 'installer.importtables.button',
 			'coreStructure'	=> TodoyuSQLManager::getCoreTablesFromFile(),
-			'extStructure'	=> TodoyuSQLManager::getExtTablesFromFile()
+			'extStructure'	=> TodoyuSQLManager::getExtTablesFromFile(),
+			'text'			=> Label('installer.importtables.text'),
+			'textClass'		=> 'info'
 		);
 
 		return $data;
@@ -158,7 +177,9 @@ class TodoyuInstallerRenderer {
 			'languages'		=> TodoyuLanguageManager::getAvailableLanguages(),
 			'userLanguage'	=> TodoyuBrowserInfo::getBrowserLanguage(),
 			'locales'		=> TodoyuLocaleManager::getLocaleOptions(),
-			'userLocale'	=> TodoyuLocaleManager::getBrowserLocale()
+			'userLocale'	=> TodoyuLocaleManager::getBrowserLocale(),
+			'text'			=> Label('installer.systemconfig.text'),
+			'textClass'		=> 'info'
 		);
 
 		return $data;
@@ -177,6 +198,8 @@ class TodoyuInstallerRenderer {
 		$data	= array(
 			'title'		=> 'installer.adminpassword.title',
 			'button'	=> 'installer.adminpassword.button',
+			'text'		=> Label('installer.adminpassword.text'),
+			'textClass'	=> 'info'
 		);
 
 		return $data;
@@ -194,7 +217,9 @@ class TodoyuInstallerRenderer {
 	public static function renderFinish(array $result) {
 		$data	= array(
 			'title'		=> 'installer.finish.title',
-			'button'	=> 'installer.finish.button'
+			'button'	=> 'installer.finish.button',
+			'text'		=> Label('installer.finish.text'),
+			'textClass'	=> 'success'
 		);
 
 		return $data;
