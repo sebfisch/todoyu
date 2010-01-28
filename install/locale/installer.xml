@@ -194,12 +194,12 @@
 		<label index="systemconfig.name">System-Name</label>
 		<label index="systemconfig.email">System-Email</label>
 		<label index="systemconfig.language">Sprache</label>
-		<label index="systemconfig.locale">Locale</label>
+		<label index="systemconfig.locale">Region</label>
 		<label index="systemconfig.text">todoyu System-Einstellungen vornehmen</label>
 		<label index="systemconfig.text.error">Bitte System-Name und -Email angeben</label>
 		<label index="systemconfig.step">System konfigurieren</label>
-		<label index="adminpassword.title">Administratoren-Password ändern</label>
-		<label index="adminpassword.button">Administratoren-Password ändern</label>
+		<label index="adminpassword.title">Administratoren-Passwort ändern</label>
+		<label index="adminpassword.button">Administratoren-Passwort ändern</label>
 		<label index="adminpassword.username">Benutzername</label>
 		<label index="adminpassword.password">Passwort</label>
 		<label index="adminpassword.repeatPassword">Passwort wiederholen</label>
