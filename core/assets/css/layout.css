@@ -309,13 +309,11 @@ div.toggled {
 	background-color:#adb989;font-weight:bold;
 }
 
-li.odd,
-div.odd {
+.odd {
 	background-color:#f3f3f3;
 }
 
-li.even,
-div.even {
+.even {
 	background-color:transparent;
 }
 
