@@ -30,6 +30,7 @@
 		<label index="dbconnection.step">Setup DB connection</label>
 		<label index="dbselect.title">Select database</label>
 		<label index="dbselect.button">Save Database Setup</label>
+		<label index="dbselect.text">Please select a existing database or create a new one for todoyu</label>
 		<label index="dbselect.text.saved">Database connection saved</label>
 		<label index="dbselect.text.notCreated">Cannot create new database on server</label>
 		<label index="dbselect.text.dbNameExists">A database with this name already exists</label>
@@ -38,11 +39,12 @@
 		<label index="importtables.button">Import tables and data</label>
 		<label index="importtables.coretables">TODOYU CORE DATABASE TABLES</label>
 		<label index="importtables.exttables">TODOYU EXTENSIONS DATABASE TABLES</label>
+		<label index="importtables.text">Import basic todoyu tables</label>
 		<label index="importtables.step">Import database tables</label>
 		<label index="systemconfig.title">todoyu system settings</label>
 		<label index="systemconfig.button">Save system configuration</label>
-		<label index="systemconfig.systemName">System Name</label>
-		<label index="systemconfig.systemEmail">System Email</label>
+		<label index="systemconfig.name">System Name</label>
+		<label index="systemconfig.email">System Email</label>
 		<label index="systemconfig.language">Language</label>
 		<label index="systemconfig.locale">Locale</label>
 		<label index="systemconfig.text">Select your todoyu system settings</label>
@@ -54,6 +56,7 @@
 		<label index="adminpassword.password">Password</label>
 		<label index="adminpassword.repeatPassword">Repeat Password</label>
 		<label index="adminpassword.passwordHint">at least 5 characters</label>
+		<label index="adminpassword.text">Please enter the new admin password twice</label>
 		<label index="adminpassword.step">Set admin password</label>
 		<label index="finish.title">Installation finished</label>
 		<label index="finish.text">Installation finished</label>
@@ -66,8 +69,7 @@
 		<label index="updatetocurrentversion.title">Update database</label>
 		<label index="updatetocurrentversion.button">Apply database changes</label>
 		<label index="updatetocurrentversion.noupdates">Your database is up-to-date. No updates necessary</label>
-		<label index="updatetocurrentversion.noupdates">Your database is up-to-date. No updates necessary</label>
-		<label index="updatetocurrentversion.updates">Update database structure</label>
+		<label index="updatetocurrentversion.updates">Your database needs to be updated with the following changes</label>
 		<label index="updatetocurrentversion.step">Update database structure</label>
 		<label index="updatetocurrentversion.newTables">New tables</label>
 		<label index="updatetocurrentversion.newColumns">New columns</label>
@@ -176,6 +178,7 @@
 		<label index="dbconnection.step">DB-Verbindung einrichten</label>
 		<label index="dbselect.title">Datenbank auswählen</label>
 		<label index="dbselect.button">Datenbank-Einstellungen speichern</label>
+		<label index="dbselect.text">Bitte wählen Sie eine existierende Datenbank für todoyu, oder erstellen Sie eine neue</label>
 		<label index="dbselect.text.saved">Datenbankverbindung gespeichert</label>
 		<label index="dbselect.text.notCreated">Neue Datenbank kann nicht erstellt werden</label>
 		<label index="dbselect.text.dbNameExists">Ein andere Datenbank dieses Namens existiert bereits</label>
@@ -184,11 +187,12 @@
 		<label index="importtables.button">Tabellen und Daten importieren</label>
 		<label index="importtables.coretables">TODOYU CORE DATENBANKTABELLEN</label>
 		<label index="importtables.exttables">TODOYU EXTENSION DATENBANKTABELLEN</label>
+		<label index="importtables.text">Importiere todoyu Basistabellen</label>
 		<label index="importtables.step">Datenbanktabellen importieren</label>
 		<label index="systemconfig.title">todoyu Systemeinstellungen</label>
 		<label index="systemconfig.button">Systemeinstellungen speichern</label>
-		<label index="systemconfig.systemName">System-Name</label>
-		<label index="systemconfig.systemEmail">System-Email</label>
+		<label index="systemconfig.name">System-Name</label>
+		<label index="systemconfig.email">System-Email</label>
 		<label index="systemconfig.language">Sprache</label>
 		<label index="systemconfig.locale">Locale</label>
 		<label index="systemconfig.text">todoyu System-Einstellungen vornehmen</label>
@@ -200,6 +204,7 @@
 		<label index="adminpassword.password">Passwort</label>
 		<label index="adminpassword.repeatPassword">Passwort wiederholen</label>
 		<label index="adminpassword.passwordHint">mindestestenz 5 Zeichen</label>
+		<label index="adminpassword.text">Bitte geben Sie das neue Administratorpasswort doppelt ein</label>
 		<label index="adminpassword.step">Administratoren-Passwort festlegen</label>
 		<label index="finish.title">Installation beendet</label>
 		<label index="finish.text">Installation beendet</label>
@@ -214,8 +219,7 @@
 		<label index="updatetocurrentversion.title">Datenbank aktualisieren</label>
 		<label index="updatetocurrentversion.button">Datenbank-Änderungen durchführen</label>
 		<label index="updatetocurrentversion.noupdates">Ihre Datenbank ist auf dem neuesten Stand. Aktualisierung ist nicht notwendig.</label>
-		<label index="updatetocurrentversion.noupdates">Ihre Datenbank ist auf dem neuesten Stand. Aktualisierung ist nicht notwendig.</label>
-		<label index="updatetocurrentversion.updates">Datenbankstruktur aktualisieren</label>
+		<label index="updatetocurrentversion.updates">Ihre Datenbank muss mit den folgenden Änderungen aktualisiert werden.</label>
 		<label index="updatetocurrentversion.newTables">Neue Tabellen</label>
 		<label index="updatetocurrentversion.newColumns">Neue Spalten</label>
 		<label index="updatetocurrentversion.changedColumns">Geänderte Spalten</label>

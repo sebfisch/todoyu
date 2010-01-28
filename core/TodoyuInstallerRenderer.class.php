@@ -78,19 +78,8 @@ class TodoyuInstallerRenderer {
 
 		$data	= array(
 			'title'		=> 'installer.servercheck.title',
-			'button'	=> 'installer.servercheck.button',
-			'phpversion'=> $info['phpversion'],
-			'files'		=> $info['files'],
-			'stop'		=> $info['stop']
+			'button'	=> 'installer.servercheck.button'
 		);
-
-		if( $info['stop'] === false ) {
-			$data['text'] 		= Label('installer.servercheck.ready');
-			$data['textClass'] 	= 'success';
-		} else {
-			$data['text'] 		= Label('installer.servercheck.NotReady');
-			$data['textClass'] 	= 'error';
-		}
 
 		return $data;
 	}
@@ -104,21 +93,11 @@ class TodoyuInstallerRenderer {
 	 * @return	Array
 	 */
 	public static function renderDbConnection(array $result) {
-
 			// Render connection data form
 		$data	= array(
 			'title'		=> 'installer.dbconnection.title',
-			'button'	=> 'installer.dbconnection.button',
-			'fields'	=> $result['fields']
+			'button'	=> 'installer.dbconnection.button'
 		);
-
-		if( $result['error'] ) {
-			$data['text'] 		= $result['errorMessage'];
-			$data['textClass'] 	= 'error';
-		} else {
-			$data['text'] 		= Label('dbconnection.text');
-			$data['textClass'] 	= 'info';
-		}
 
 		return $data;
 	}
@@ -140,18 +119,6 @@ class TodoyuInstallerRenderer {
 			'databases'	=> TodoyuDbAnalyzer::getDatabasesOnServer($dbConfig)
 		);
 
-		if( is_array($result['fields']) ) {
-			$data['fields'] = $result['fields'];
-		}
-
-		if( $result['error'] === false ) {
-			$data['text']		= Label('installer.dbselect.text.saved');
-			$data['textClass']	= 'success';
-		} else {
-			$data['text']		= $result['errorMessage'];
-			$data['textClass']	= 'error';
-		}
-
 		return $data;
 	}
 
@@ -168,8 +135,6 @@ class TodoyuInstallerRenderer {
 		$data	= array(
 			'title'			=> 'installer.importtables.title',
 			'button'		=> 'installer.importtables.button',
-			'text'			=> Label('installer.importTablesAndData'),
-			'textClass'		=> 'info',
 			'coreStructure'	=> TodoyuSQLManager::getCoreTablesFromFile(),
 			'extStructure'	=> TodoyuSQLManager::getExtTablesFromFile()
 		);
@@ -193,15 +158,8 @@ class TodoyuInstallerRenderer {
 			'languages'		=> TodoyuLanguageManager::getAvailableLanguages(),
 			'userLanguage'	=> TodoyuBrowserInfo::getBrowserLanguage(),
 			'locales'		=> TodoyuLocaleManager::getLocaleOptions(),
-			'userLocale'	=> TodoyuLocaleManager::getBrowserLocale(),
-			'text'			=> Label('installer.systemconfig.text'),
-			'textClass'		=> 'info'
+			'userLocale'	=> TodoyuLocaleManager::getBrowserLocale()
 		);
-
-		if( $result['error'] === true ) {
-			$data['text']		= Label('installer.systemconfig.text.error');
-			$data['textClass']	= 'error';
-		}
 
 		return $data;
 	}
@@ -221,12 +179,6 @@ class TodoyuInstallerRenderer {
 			'button'	=> 'installer.adminpassword.button',
 		);
 
-		if( $result['error'] === true ) {
-			$data['text']		= Label('installer.adminpassword.error.changeAdminPassword');
-			$data['textClass']	= 'error';
-
-		}
-
 		return $data;
 	}
 
@@ -242,9 +194,7 @@ class TodoyuInstallerRenderer {
 	public static function renderFinish(array $result) {
 		$data	= array(
 			'title'		=> 'installer.finish.title',
-			'button'	=> 'installer.finish.button',
-			'text'		=> Label('installer.finish.text'),
-			'textClass'	=> 'success'
+			'button'	=> 'installer.finish.button'
 		);
 
 		return $data;
@@ -291,12 +241,6 @@ class TodoyuInstallerRenderer {
 			'diff'		=> TodoyuSQLManager::getStructureDifferences()
 		);
 
-		if( sizeof($data['diff']['missingTables']) === 0 && sizeof($data['diff']['missingColumns']) === 0 && sizeof($data['diff']['changedColumns']) === 0) {
-			$data['text']		= Label('installer.updatetocurrentversion.noupdates');
-			$data['textClass']	= 'success';
-			$data['noUpdates']	= true;
-		}
-
 		return $data;
 	}
 
@@ -312,9 +256,7 @@ class TodoyuInstallerRenderer {
 	public static function renderFinishUpdate(array $result) {
 		$data	= array(
 			'title'		=> 'installer.finishupdate.title',
-			'button'	=> 'installer.finishupdate.button',
-			'text'		=> Label('installer.finishupdate.text'),
-			'textClass'	=> 'success'
+			'button'	=> 'installer.finishupdate.button'
 		);
 
 		return $data;

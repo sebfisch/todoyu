@@ -39,7 +39,7 @@ class TodoyuValidator {
 			return false;
 		}
 
-		return ereg('^[A-Za-z0-9\._-]+[@][A-Za-z0-9\._-]+[\.].[A-Za-z0-9]+$', $value) ? true : false;
+		return preg_match('/^[A-Za-z0-9\._-]+[@][A-Za-z0-9\._-]{2,}\.[A-Za-z0-9]{2,}$/', $value) === 1;
 	}
 
 

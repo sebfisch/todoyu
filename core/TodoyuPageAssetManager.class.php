@@ -447,28 +447,30 @@ class TodoyuPageAssetManager {
 		$files		= array();
 		$doCompress	= $GLOBALS['CONFIG']['CACHE']['CSS']['compress'];
 
+			// Make sure css cache folder exists
+		if( $doCompress ) {
+			TodoyuFileManager::makeDirDeep( PATH_CACHE . DIRECTORY_SEPARATOR . 'css');
+		}
+
+			// Collect file paths and create compressed version if configured
 		foreach($fileConfigs as $fileConfig) {
 			if( $doCompress && $fileConfig['compress'] ) {
-				$compressed	= $doCompress && $fileConfig['compress'];
-
 					// Get file path (absolute)
-				$filePath	= self::getSingleStylesheetPath($fileConfig['file'], $compressed);
+				$filePath	= self::getSingleStylesheetPath($fileConfig['file'], true);
 
+					// If file doesn't exist, create a compressed version
 				if( ! is_file($filePath) ) {
+						// Get content
 					$fileCode	= file_get_contents($fileConfig['file']);
-
-					if( $compressed ) {
-						$fileCode	= self::compressStylesheet($fileCode);
-					}
-
+						// Compress
+					$fileCode	= self::compressStylesheet($fileCode);
 						// Rewrite external media paths (url())
 					$fileCode	= self::rewriteRelativPaths($fileCode, $fileConfig['file'], $filePath);
+						// Save content in this file
+					file_put_contents($filePath, $fileCode);
 				}
-
-					// Save content in this file
-				TodoyuFileManager::makeDirDeep( dirname($filePath) );
-				file_put_contents($filePath, $fileCode);
 			} else {
+					// No compression, get normal path
 				$filePath	= $fileConfig['file'];
 			}
 

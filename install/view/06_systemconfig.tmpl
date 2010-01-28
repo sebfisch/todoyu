@@ -3,14 +3,14 @@
 {block name="box"}
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 			<tr>
-				<td width="109">{Label installer.systemconfig.systemName} *</td>
+				<td width="109">{Label installer.systemconfig.name} *</td>
 				<td width="379">
-					<input name="systemname" type="text" id="systemname" value="{if $fields.server}{$fields.server}{else}Todoyu{/if}" />
+					<input name="name" type="text" id="name" value="{$postData.name|default:'Todoyu'}" />
 				</td>
 			</tr>
 			<tr>
-				<td>{Label installer.systemconfig.systemEmail} *</td>
-				<td><input type="text" name="email" id="email" value="{$fields.username}" /></td>
+				<td>{Label installer.systemconfig.email} *</td>
+				<td><input type="text" name="email" id="email" value="{$postData.email}" /></td>
 			</tr>
 			<tr>
 				<td>{Label installer.systemconfig.language}</td>

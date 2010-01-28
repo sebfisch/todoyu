@@ -34,8 +34,6 @@ class TodoyuInstaller {
 			// Start output buffer
 		ob_start();
 
-
-
 		if( ! self::hasStep() || self::isRestart() ) {
 			self::initStep();
 		}
@@ -43,15 +41,16 @@ class TodoyuInstaller {
 		$step	= self::getStep();
 
 		if( self::hasData() ) {
-			$params	= TodoyuRequest::getAll();
-			$result	= self::process($step, $params);
+			$postData	= TodoyuRequest::getAll();
 		} else {
-			$result	= array();
+			$postData	= array();
 		}
+
+		$result		= self::process($step, $postData);
 
 		$step	= self::getStep();
 
-		echo self::display($step, $result);
+		echo self::display($step, $result, $postData);
 
 			// Flush output buffer
 		ob_end_flush();
@@ -205,7 +204,7 @@ class TodoyuInstaller {
 	 * @param	Array		$result
 	 * @return	String
 	 */
-	private static function display($step, array $result = array()) {
+	private static function display($step, array $result = array(), array $postData = array()) {
 		$stepConfig	= self::getStepConfig($step);
 		$tmpl		= 'install/view/' . $stepConfig['tmpl'];
 
@@ -215,7 +214,9 @@ class TodoyuInstaller {
 			$data	= array();
 		}
 
-		$data['progress'] = TodoyuInstallerRenderer::renderProgressWidget($step); //getProgressRenderData();
+		$data['progress']	= TodoyuInstallerRenderer::renderProgressWidget($step);
+		$data['result']		= $result;
+		$data['postData']	= $postData;
 
 		return render($tmpl, $data);
 	}

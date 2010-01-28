@@ -1,18 +1,18 @@
 {extends main.tmpl}
 
 {block name="box"}
-{if $noUpdates !== true}
+{if $result.noUpdates !== true}
 	<div class="sqlQuery">
 
 		<p>{Label installer.updatetocurrentversion.updates}</p>
-				
+
 		{if sizeof($diff.missingTables) > 0}
 			<p class="section">{Label installer.updatetocurrentversion.newTables}</p>
 			<table class="dbstruct">
 				<tr>
 					<th class="table">Table</th>
 					<th class="column">Column</th>
-					<th class="type">type</th>								
+					<th class="type">type</th>
 				</tr>
 				{foreach $diff.missingTables table}
 					{foreach $table.columns index column tables}
@@ -22,7 +22,7 @@
 								{$table.table}
 							{else}
 								&nbsp;
-							{/if}	
+							{/if}
 						</td>
 						<td class="field">{$column.field}</td>
 						<td class="type">{$column.type}</td>
@@ -38,7 +38,7 @@
 				<tr>
 					<th class="table">Table</th>
 					<th class="column">Column</th>
-					<th class="type">type</th>								
+					<th class="type">type</th>
 				</tr>
 				{foreach $diff.missingColumns tableName columns}
 					{foreach $columns columnName column tables}
@@ -60,7 +60,7 @@
 				<tr>
 					<th class="table">Table</th>
 					<th class="column">Column</th>
-					<th class="type">type</th>								
+					<th class="type">type</th>
 				</tr>
 				{foreach $diff.changedColumns tableName columns}
 					{foreach $columns columnName column}

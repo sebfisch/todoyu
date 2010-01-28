@@ -34,9 +34,13 @@ class TodoyuInstallerManager {
 	 * @return	Array
 	 */
 	public static function processInstall(array $data) {
-		TodoyuInstaller::setStep('servercheck');
+		$result	= array();
 
-		return array();
+		if( intval($data['install']) === 1 ) {
+			TodoyuInstaller::setStep('servercheck');
+		}
+
+		return $result;
 	}
 
 
@@ -48,11 +52,30 @@ class TodoyuInstallerManager {
 	 * @return	Array
 	 */
 	public static function processServercheck(array $data) {
+		$result	= array();
+
 		if( intval($data['checked']) === 1 ) {
 			TodoyuInstaller::setStep('dbconnection');
+		} else {
+
+			$info	= TodoyuInstallerManager::checkServer();
+
+			$result	= array(
+				'phpversion'=> $info['phpversion'],
+				'files'		=> $info['files'],
+				'stop'		=> $info['stop']
+			);
+
+			if( $info['stop'] === false ) {
+				$result['text'] 		= Label('installer.servercheck.ready');
+				$result['textClass'] 	= 'success';
+			} else {
+				$result['text'] 		= Label('installer.servercheck.NotReady');
+				$result['textClass'] 	= 'error';
+			}
 		}
 
-		return array();
+		return $result;
 	}
 
 
@@ -64,34 +87,27 @@ class TodoyuInstallerManager {
 	 * @return	Array
 	 */
 	public static function processDbconnection(array $data) {
-		$result	= array(
-			'error'	=> false
-		);
+		$result	= array();
 
 		if( isset($data['server']) ) {
-			$server		= trim($data['server']);
-			$username	= trim($data['username']);
-			$password	= trim($data['password']);
-
-			$fields		= array(
-				'server'	=> $server,
-				'username'	=> $username,
-				'password'	=> $password
-			);
-
 				// Received DB server connection data?
-			if( strlen($server) > 0 && strlen($username) > 0 ) {
-				$info	= TodoyuDbAnalyzer::checkDbConnection($server, $username, $password);
+			if( strlen($data['server']) > 0 && strlen($data['username']) > 0 ) {
+				$info	= TodoyuDbAnalyzer::checkDbConnection($data['server'], $data['username'], $data['password']);
 
 				if( $info['status'] === true ) {
-					TodoyuSession::set('installer/db', $fields);
+					TodoyuSession::set('installer/db', $data);
 					TodoyuInstaller::setStep('dbselect');
 				} else {
-					$result['errorMessage']	= $info['error'];
-					$result['error']		= true;
-					$result['fields']		= $fields;
+					$result['text']		= $info['error'];
+					$result['textClass']= 'error';
 				}
+			} else {
+				$result['text']		= Label('installer.dbconnection.text');
+				$result['textClass']= 'error';
 			}
+		} else {
+			$result['text']		= Label('installer.dbconnection.text');
+			$result['textClass']= 'info';
 		}
 
 		return $result;
@@ -109,7 +125,6 @@ class TodoyuInstallerManager {
 		$result		= array();
 
 		if( isset($data['database']) || isset($data['database_new']) ) {
-
 			$dbConf		= TodoyuSession::get('installer/db');
 			$databases	= TodoyuDbAnalyzer::getDatabasesOnServer($dbConf);
 			$success	= false;
@@ -121,7 +136,8 @@ class TodoyuInstallerManager {
 					$useDatabase= $data['database_new'];
 					$createDb	= true;
 				} else {
-					$result['errorMessage'] = Label('installer.dbselect.text.dbNameExists');
+					$result['text'] 	= Label('installer.dbselect.text.dbNameExists');
+					$result['textClass']= 'error';
 				}
 			} else {
 				$useDatabase	= $data['database'];
@@ -146,13 +162,16 @@ class TodoyuInstallerManager {
 				}
 			}
 
-			$result['error'] = $success === false;
-			$result['fields']= $data;
-
 			if( $success ) {
 				TodoyuInstallerManager::saveDbConfigInFile($dbConf);
 				TodoyuInstaller::setStep('importtables');
+			} elseif( empty($result['text']) ) {
+				$data['text']		= $result['errorMessage'];
+				$data['textClass']	= 'error';
 			}
+		} else {
+			$result['text']		= Label('installer.dbselect.text');
+			$result['textClass']= 'info';
 		}
 
 		return $result;
@@ -167,14 +186,19 @@ class TodoyuInstallerManager {
 	 * @return	Array
 	 */
 	public static function proccessImportTables(array $data) {
+		$result	= array();
+
 		if( intval($data['import']) === 1 ) {
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
 			self::importBasicStaticData();
 
 			TodoyuInstaller::setStep('systemconfig');
+		} else {
+			$result['text']		= Label('installer.importtables.text');
+			$result['textClass']= 'info';
 		}
 
-		return array();
+		return $result;
 	}
 
 
@@ -188,14 +212,18 @@ class TodoyuInstallerManager {
 	public static function procesSystemConfig(array $data) {
 		$result	= array();
 
-		if( isset($data['systemname']) ) {
-			if( trim($data['email']) !== '' && trim($data['systemname']) !== '' ) {
+		if( isset($data['name']) ) {
+			if( TodoyuValidator::isEmail($data['email']) && trim($data['name']) !== '' ) {
 				self::saveSystemConfig($data);
 
 				TodoyuInstaller::setStep('adminpassword');
 			} else {
-				$result['error'] = true;
+				$result['text']		= Label('installer.systemconfig.text.error');
+				$result['textClass']= 'error';
 			}
+		} else {
+			$result['text']		= Label('installer.systemconfig.text');
+			$result['textClass']= 'info';
 		}
 
 		return $result;
@@ -219,8 +247,12 @@ class TodoyuInstallerManager {
 
 				TodoyuInstaller::setStep('finish');
 			} else {
-				$result['error'] = true;
+				$result['text']		= Label('installer.adminpassword.text');
+				$result['textClass']= 'error';
 			}
+		} else {
+			$result['text']		= Label('installer.adminpassword.text');
+			$result['textClass']= 'info';
 		}
 
 		return $result;
@@ -236,11 +268,16 @@ class TodoyuInstallerManager {
 	 * @return	Array
 	 */
 	public static function processFinish(array $data) {
+		$result	= array();
+
 		if( intval($data['finish']) === 1 ) {
 			self::finishInstallerAndJumpToLogin();
+		} else {
+			$result['text']		= Label('installer.finish.text');
+			$result['textClass']= 'success';
 		}
 
-		return array();
+		return $result;
 	}
 
 
@@ -253,11 +290,16 @@ class TodoyuInstallerManager {
 	 * @return	Array
 	 */
 	public static function processUpdate(array $data) {
+		$result	= array();
+
 		if( intval($data['start']) === 1 ) {
 			TodoyuInstaller::setStep('updatetocurrentversion');
+		} else {
+			$result['text']		= Label('installer.update.info');
+			$result['textClass']= 'info';
 		}
 
-		return array();
+		return $result;
 	}
 
 
@@ -271,6 +313,7 @@ class TodoyuInstallerManager {
 		$result	= array();
 
 		if( intval($data['update']) === 1 ) {
+				// Process db update
 			$dbVersion	= self::getDBVersion();
 
 			switch($dbVersion) {
@@ -287,6 +330,18 @@ class TodoyuInstallerManager {
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
 
 			TodoyuInstaller::setStep('finishupdate');
+		} else {
+				// Prepare message
+			$diff	= TodoyuSQLManager::getStructureDifferences();
+
+			if( sizeof($diff['missingTables']) === 0 && sizeof($diff['missingColumns']) === 0 && sizeof($diff['changedColumns']) === 0) {
+				$result['text']		= Label('installer.updatetocurrentversion.noupdates');
+				$result['textClass']= 'success';
+				$result['noUpdates']= true;
+			} else {
+				$result['text']		= Label('installer.updatetocurrentversion.updates');
+				$result['textClass']= 'info';
+			}
 		}
 
 		return $result;
@@ -302,11 +357,16 @@ class TodoyuInstallerManager {
 	 */
 
 	public static function processFinishUpdate(array $data) {
+		$result	= array();
+
 		if( intval($data['finish']) === 1 ) {
 			self::finishInstallerAndJumpToLogin();
+		} else {
+			$result['text']		= Label('installer.finishupdate.text');
+			$result['textClass']= 'success';
 		}
 
-		return array();
+		return $result;
 	}
 
 

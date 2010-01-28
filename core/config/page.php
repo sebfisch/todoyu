@@ -36,7 +36,8 @@ if( TodoyuAuth::isLoggedIn() ) {
 	//TodoyuHeadletManager::registerRight('TodoyuHeadletMetaMenu', 80);
 
 		// Generate colors css and sprite
-	TodoyuColors::generate();
+		// Moved to calendar ext controller
+	//TodoyuColors::generate();
 }
 
 

@@ -5,13 +5,13 @@
 		<tr>
 			<td width="109">{Label installer.dbconnection.server}</td>
 			<td width="379">
-				<input name="server" type="text" id="server" value="{$fields.server|default:'localhost'}" />
+				<input name="server" type="text" id="server" value="{$postData.server|default:'localhost'}" />
 			</td>
 		</tr>
 		<tr>
 			<td>{Label installer.dbconnection.username}</td>
 			<td>
-				<input type="text" name="username" id="username" value="{$fields.username|default:'root'}" />
+				<input type="text" name="username" id="username" value="{$postData.username|default:'root'}" />
 			</td>
 		</tr>
 		<tr>

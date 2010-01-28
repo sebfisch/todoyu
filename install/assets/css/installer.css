@@ -152,6 +152,38 @@ p.section {
 
 
 
+/* -----------------------------------
+	Form elements
+   ----------------------------------- */
+input#name,
+input#email,
+select#language,
+select#locale,
+select#database,
+input#database_new {
+	width:250px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -450,16 +482,5 @@ label {
 
 td {
 	padding:4px 0 8px 0;
-}
-
-
-/* -----------------------------------
-	Form elements
-   ----------------------------------- */
-input#systemname,
-input#email,
-select#language,
-select#locale {
-	width:250px;
 }
    

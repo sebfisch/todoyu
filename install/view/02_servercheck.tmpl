@@ -11,7 +11,7 @@
 			</td>
 			<td width="150">
 				<strong>
-				{if $phpversion}
+				{if $result.phpversion}
 					{Label installer.servercheck.yourphpversion.ok}
 				{else}
 					{Label installer.servercheck.yourphpversion.error}
@@ -19,10 +19,10 @@
 				</strong>
 			</td>
 			<td>
-				<span class="servercheckicon {if $phpversion}ok{else}problem{/if}"></span>
+				<span class="servercheckicon {if $result.phpversion}ok{else}problem{/if}"></span>
 			</td>
 		</tr>
-		{foreach $files file status writable}
+		{foreach $result.files file status writable}
 		<tr>
 			<td>
 				{if $.foreach.writable.first}
