@@ -43,7 +43,7 @@
 
 #notifications div.note td.close {
 	width:20px;
-	background:url(../img/notify/cancel.png) 0 -1px no-repeat;
+	background:url(../img/sprite-notify.png) 0 -47px no-repeat;
 	cursor:pointer;
 }
 
@@ -58,7 +58,7 @@
 }
 
 #notifications div.success td.icon {
-	background:url(../img/notify/accept.png) 0 -1px no-repeat;
+	background:url(../img/sprite-notify.png) 0 -1px no-repeat;
 }
 
 
@@ -72,7 +72,7 @@
 }
 
 #notifications div.error td.icon {
-	background:url(../img/notify/error.png) 0 0 no-repeat;
+	background:url(../img/sprite-notify.png) 0 -96px no-repeat;
 }
 
 
@@ -85,5 +85,5 @@
 }
 
 #notifications div.info td.icon {
-	background:url(../img/notify/information.png) 0 0 no-repeat;
+	background:url(../img/sprite-notify.png) 0 -189px no-repeat;
 }

@@ -32,7 +32,7 @@
 #panel div.panelWidget .notification {
 	text-align:left;
 	padding:4px 0 2px 20px;
-	background:url(../img/notify/info_small.png) no-repeat 2px 4px;
+	background:url(../img/sprite-notify.png) no-repeat 2px -144px;
 }
 
 

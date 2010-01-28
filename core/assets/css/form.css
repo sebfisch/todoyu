@@ -479,11 +479,11 @@ label.narrowInput {
 }
 
 .formElement .databaseRelation .closed {
-	background:#e5eff8 url(../img/toggle_plus.png) no-repeat 5px 8px;
+	background:#e5eff8 url(../img/sprite-toggle.png) no-repeat 37px 8px;
 }
 
 .formElement .databaseRelation .open {
-	background:#e5eff8 url(../img/toggle_minus.png) no-repeat 5px 8px;
+	background:#e5eff8 url(../img/sprite-toggle.png) no-repeat 5px 8px;
 }
 
 .formElement .foreignRecordsActionControll {

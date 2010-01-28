@@ -209,7 +209,7 @@
 		<label index="finishupdate.step">Installation abschliessen</label>
 		<label index="update.title">todoyu Versions-Aktualisierung</label>
 		<label index="update.button">Systemdatenbanken aktualisieren</label>
-		<label index="update.info">Änderungen der Datenbank der vorliegenden Version durchführen und mit Datei-Konfiguration vergleichen</label>
+		<label index="update.info">Änderungen der Datenbank der vorliegenden Version durchführen und mit Datei-Konfiguration abgleichen</label>
 		<label index="update.step">todoyu Installation aktualisieren</label>
 		<label index="updatetocurrentversion.title">Datenbank aktualisieren</label>
 		<label index="updatetocurrentversion.button">Datenbank-Änderungen durchführen</label>
