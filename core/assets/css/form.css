@@ -1,5 +1,3 @@
-	/* New CSS */
-
 form {
 	margin:0;
 	padding:0;
@@ -62,6 +60,12 @@ textarea {
 	font-size:0.9em;
 }
 
+.scrollbarHide select {
+	min-width:107%;
+	width:100% !important;
+	width:107%;
+}
+
 select {}
 
 	select.auto	{
@@ -96,11 +100,12 @@ select {}
 	select option.error,
 	selectgrouped option.error {
 		color:#991010; 
-	}
-
+	}	
+	
 label {}
 
 	label span.required {}
+
 
 
 /* -----------------
@@ -255,108 +260,15 @@ fieldset.buttons button span.rgt {
 	background-color:#e2e2e2;
 }
 
-
 	/* none floating fields */
 fieldset.noneFloatingInput div.fElement .fField,
 fieldset.noneFloatingInput div.fElement .fLabel {
 	float:none;
 }
 
-
-
-/* ---------------------------------------
-	Old CSS ... @todo Check and remove
-   ---------------------------------------*/
-
-.selectScrollbarHide {
-	overflow:hidden;
-}
-
-span.selectScrollbarHide {display:block;}
-
-	.selectScrollbarHide select {
-		min-width:107%;
-		width:100% !important;
-		width:107%;
-	}
-
-.commentElement {
-	position:relative;
-	height:auto !important;
-	height:1px;
-}
-
-.floatingElement .formContainer,
-.floatingElement .formElement,
-.floatingElement .commentElement {
-	float:left;
-}
-
-.floatingElement .formContainer .formContainer,
-.floatingElement .formContainer .formElement,
-.floatingElement .formContainer .commentElement {
-	float:none;
-}
-
-.formElement .checkbox,
-.formElement .radio,
-.formElement .button {
-	width:auto !important;
-}
-
-	/* --- right aligned Label --- */
-	/* Float Rendering */
-.floatingElement {
-	float:left;
-	width:49%;
-}
-
-	/* none floating Input */
-.noneFloatingInput .formElement {
-	width:100%;
-}
-
-.noneFloatingInput .formElement .formLabel,
-.noneFloatingInput .formElement .formField {
-	width:100%;
-}
-
-.noneFloatingInput .formElement .formLabel {
-	display:block;
-	float:none;
-	text-align:left;
-}
-
-.noneFloatingInput .formElement .formField {
-	display:block;
-	float:none;
-}
-
-.noneFloatingInput .formElement input,
-.noneFloatingInput .formElement textarea,
-.noneFloatingInput .formElement select,
-.noneFloatingInput .formElement fieldset {
-	width:100%;
-}
-
-	/* --- required element after --- */
-.requiredElement span {
-	position:static;
-}
-
 	/* --- right floating Input --- */
-.formElement .formLabel {
-	padding-right:2%;
-	width:39%;
-}
-
 .formElement .formField {
 	width:58%;
-}
-
-.formElement .formLabel {
-	display:inline;
-	float:left;
 }
 
 .formElement .formField {
@@ -399,20 +311,6 @@ span.selectScrollbarHide {display:block;}
 	width:83% !important;
 }
 
-	/* formFieldRowDiv [+] and [-] elements */
-.formFieldRowDiv {
-	display:block;
-	padding:5px 10px;
-	background:#d5dee5;
-}
-
-.formFieldRowDiv_link {
-	display:block;
-	padding:5px 10px;
-	background:#E5E5E5;
-	margin:0 0 4px 0;
-}
-
 .formLabel .fieldHasError label{
 	color:red;
 }
@@ -424,7 +322,10 @@ span.selectScrollbarHide {display:block;}
 }
 
 
-	/* autocomplete list*/
+
+/* -------------------------
+	Autocompleter list
+   ------------------------- */
 .acResultContainer	{
 		z-index:100;
 	}
@@ -437,10 +338,9 @@ span.selectScrollbarHide {display:block;}
 		cursor:pointer;
 	}
 
-
-	.acResultContainer li.selected {
-		background:#d5dee5;
-	}
+		.acResultContainer li.selected {
+			background:#d5dee5;
+		}
 
 	.acResultContainer .empty{
 		background:none;
@@ -449,19 +349,11 @@ span.selectScrollbarHide {display:block;}
 		padding:0 0 0 0;
 	}
 
-input.narrowInput {
-	width:22px;
-}
 
-label.narrowInput {
-	margin:0 8px 0 0;
-}
 
-.formElement.fieldname-save {
-	margin:12px 0 0 0;
-	background-color:#E5EFF8;
-}
-
+/* ----------------------------------
+	Formelement: databaseRelation
+   ---------------------------------- */
 .formElement .databaseRelation {
 	margin-top:5px;
 }
@@ -486,6 +378,11 @@ label.narrowInput {
 	background:#e5eff8 url(../img/sprite-toggle.png) no-repeat 5px 8px;
 }
 
+
+
+/* ----------------------------------------------
+	Formelement: foreignRecordsActionControll
+   ---------------------------------------------- */
 .formElement .foreignRecordsActionControll {
 	height:30px;
 	background-color:#a8c7de
@@ -500,30 +397,13 @@ label.narrowInput {
 	right:7px;
 }
 
+
+
+/* wizad icon */
 .fField span.wizardIcon  {
 	height:16px;
 	width:16px;
 	display:block;
 	float:right;
-	background:transparent url(../img/icons_dev.png) no-repeat 0 -2100px;
+	background:transparent url(../img/sprite-button_bgs.png) no-repeat 4px -54px;
 }
-
-
-
-
-
-
-
-
-
-div.typeCancelButton button span.rgt,
-div.typeSaveButton button span.rgt {
-	background-color:#E7E7E7 !important;
-}
-
-
-
-
-
-
-
