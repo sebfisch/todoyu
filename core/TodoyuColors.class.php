@@ -30,7 +30,6 @@ class TodoyuColors {
 
 	/**
 	 * Generate css and img file for user colors
-	 *
 	 */
 	public static function generate() {
 		$fileCSS	= PATH_CACHE . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'colors.css';
@@ -54,6 +53,8 @@ class TodoyuColors {
 	/**
 	 * Render Color CSS. If not stored up-to-date yet: save and have CSS-sprite be generated as well
 	 *
+	 * @param	String	$fileCSS
+	 * @param	String	$fileIMG
 	 */
 	private static function generateCSS($fileCSS, $fileIMG) {
 			// Get configured colors
@@ -96,6 +97,7 @@ class TodoyuColors {
 	/**
 	 * Render CSS sprite of colors declared in $GLOBALS['CONFIG']['COLORS'], 16 x 16 each
 	 *
+	 * @param	String	$fileIMG
 	 */
 	private static function generateIMG($fileIMG) {
 		$colors	= TodoyuArray::assure($GLOBALS['CONFIG']['COLORS']);
@@ -122,17 +124,15 @@ class TodoyuColors {
 	/**
 	 * Generates the faded color of an original
 	 *
-	 * @param      String      $color          Hexadecimal color value
-	 * @param      Integer     $percentage     Percentage to fade
-	 * @return     String      New hexadecimal color value
-	 *
-	 * @author	Thomas Imboden <timboden@snowflake.ch>
+	 * @param	String	$color			Hexadecimal color value
+	 * @param	Integer	$percentage		Percentage to fade
+	 * @return	String					New hexadecimal color value
 	 */
 	private static function fade($color, $percentage) {
 		$percentage = 100 - $percentage;
 		$rgbValues = array_map( 'hexDec', str_split( ltrim($color, '#'), 2 ) );
 
-		for ($i = 0, $len = count($rgbValues); $i < $len; $i++) {
+		for($i = 0, $len = count($rgbValues); $i < $len; $i++) {
 			$rgbValues[$i] = decHex( floor($rgbValues[$i] + (255 - $rgbValues[$i]) * ($percentage / 100) ) );
 		}
 
@@ -146,22 +146,21 @@ class TodoyuColors {
 	 *
 	 * @param	String	$color
 	 * @return	String
-	 *
 	 */
 	private static function invert($color) {
 		$color = str_replace('#', '', $color);
-	    if (strlen($color) != 6){
+	    if( strlen($color) != 6 ){
 	    		return '#000000';
 	   	}
 
 	    $rgb = '';
-	    for ($x = 0; $x < 3; $x++) {
-	        $c = 255 - hexdec( substr($color, (2 * $x), 2) );
-	        $c = ($c < 0) ? 0 : dechex( $c );
-	        $rgb .= ( strlen($c) < 2 ) ? '0' . $c : $c;
-	    }
+	    for($x = 0; $x < 3; $x++) {
+			$c = 255 - hexdec( substr($color, (2 * $x), 2) );
+			$c = ($c < 0) ? 0 : dechex( $c );
+			$rgb .= ( strlen($c) < 2 ) ? '0' . $c : $c;
+		}
 
-	    return '#' . $rgb;
+		return '#' . $rgb;
 	}
 
 
@@ -171,7 +170,6 @@ class TodoyuColors {
 	 *
 	 * @param 	String		$color: Color in hex
 	 * @return	String
-	 * @author	Thomas Imboden <thimboden@snowflake.ch>
 	 */
 	private static function getBestReadableContrastTextColor($color) {
 		$color 	= trim( str_replace('#', '', $color) );
@@ -238,7 +236,7 @@ class TodoyuColors {
 
 		$numOfColors = count($GLOBALS['CONFIG']['COLORS']);
 
-		if( $position > $numOfColors-1 )	{
+		if( $position > $numOfColors - 1 )	{
 			$position = $position - ($position - ($position % ($numOfColors)));
 		}
 

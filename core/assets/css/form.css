@@ -248,34 +248,38 @@ input, textarea, select {
 	border-color:#848484 #e8e5de #e8e5de #848484;
 }
 
-fieldset div.odd {
-	background-color:#f3f3f3;
-}
+fieldset {}
 
-fieldset div.even {}
+	fieldset div.odd {
+		background-color:#f3f3f3;
+	}
+	
+	fieldset div.even {}
+	
+	fieldset.buttons,
+	fieldset.buttons div.odd,
+	fieldset.buttons div.even,
+	fieldset.buttons button span.rgt {
+		background-color:#e2e2e2;
+	}
+	
+		/* none floating fields */
+	fieldset.noneFloatingInput div.fElement .fField,
+	fieldset.noneFloatingInput div.fElement .fLabel {
+		float:none;
+	}
+	
+		/* --- right floating Input --- */
+	.formElement .formField {
+		width:58%;
+	}
+	
+	.formElement .formField {
+		display:inline;
+		float:right;
+	}
 
-fieldset.buttons,
-fieldset.buttons div.odd,
-fieldset.buttons div.even,
-fieldset.buttons button span.rgt {
-	background-color:#e2e2e2;
-}
 
-	/* none floating fields */
-fieldset.noneFloatingInput div.fElement .fField,
-fieldset.noneFloatingInput div.fElement .fLabel {
-	float:none;
-}
-
-	/* --- right floating Input --- */
-.formElement .formField {
-	width:58%;
-}
-
-.formElement .formField {
-	display:inline;
-	float:right;
-}
 
 .formElement input,
 .formElement textarea,
@@ -286,6 +290,8 @@ fieldset.noneFloatingInput div.fElement .fLabel {
 .formElement textarea {
 	height:100px;
 }
+
+
 
 .dateElement input {
 	width:73px !important;

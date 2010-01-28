@@ -39,55 +39,54 @@
 <body>
 
 <div id="box">
-  <div id="contentBox">
-    <div id="main">
-      <div class="content bclFF" id="right">
-       <span class="lt">
-        <!-- left / top -->
-        </span> <span class="rt">
-        <!-- right / top -->
-        </span> <span class="lb">
-        <!-- left / bottom -->
-        </span> <span class="rb">
-        <!-- right / bottom -->
-        </span>
-        <div id="content">
-          <ul id="contact-tabs" class="tabslist tabs">
-            <li class="item bcg05 tabkey-person person person  active" id="contact-tabhead-person">
-              <p class="label" id="contact-tabhead-person-label"> <span class="lt">
-                <!-- -->
-                </span> <span class="icon">
-                <!-- icon -->
-                </span> <span class="labeltext">{Label core.noAccess.pageTitle}</span> </p>
-            </li>
-          </ul>
-          <div class="message">              
-            <p>{Label core.noAccess.errorMessage}</p>
-            <p><a href="javascript:history.back()">{Label core.noAccess.goBackToLastPage}</a></p>
-            <p>{Label core.noAccess.contactAdmin}</p>
-            <table width="500" border="0" cellspacing="0" cellpadding="5">
-              <tr>
-                <td width="120"><strong>{Label core.noAccess.requestURL}:</strong></td>
-                <td width="360">{htmlentities $requestURL}</td>
-              </tr>
-              <tr>
-                <td><strong>{Label core.noAccess.missingRight}:</strong></td>
-                <td>{$extKey} / {$right}</td>
-              </tr>
-            </table>
-                
-            </div>  
-        </div>
-        <!-- /inner -->
-      </div>
-      <div class="clear">
-        <!-- -->
-      </div>
-    </div>
-    <div class="clear">
-      <!-- -->
-    </div>
-  </div>
+	<div id="contentBox">
+		<div id="main">
+			<div class="content bclFF" id="right">
+				<span class="lt">
+					<!-- left / top -->
+				</span> <span class="rt">
+					<!-- right / top -->
+				</span> <span class="lb">
+					<!-- left / bottom -->
+				</span> <span class="rb">
+					<!-- right / bottom -->
+				</span>
+				<div id="content">
+					<ul id="contact-tabs" class="tabslist tabs">
+						<li class="item bcg05 tabkey-person person person  active" id="contact-tabhead-person">
+							<p class="label" id="contact-tabhead-person-label"> <span class="lt">
+								<!-- -->
+								</span> <span class="icon">
+									<!-- icon -->
+							</span> <span class="labeltext">{Label core.noAccess.pageTitle}</span> </p>
+					</li>
+					</ul>
+					<div class="message">
+						<p>{Label core.noAccess.errorMessage}</p>
+						<p><a href="javascript:history.back()">{Label core.noAccess.goBackToLastPage}</a></p>
+						<p>{Label core.noAccess.contactAdmin}</p>
+						<table width="500" border="0" cellspacing="0" cellpadding="5">
+							<tr>
+								<td width="120"><strong>{Label core.noAccess.requestURL}:</strong></td>
+								<td width="360">{htmlentities $requestURL}</td>
+							</tr>
+							<tr>
+								<td><strong>{Label core.noAccess.missingRight}:</strong></td>
+								<td>{$extKey} / {$right}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<!-- /inner -->
+			</div>
+			<div class="clear">
+				<!-- -->
+			</div>
+		</div>
+		<div class="clear">
+			<!-- -->
+		</div>
+	</div>
 </div>
 
 </body>

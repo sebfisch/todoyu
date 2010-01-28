@@ -9,7 +9,7 @@ body {
 	width:100%;
 	left:0;
 	background-color:#FFF;
-	border-bottom:2px solid #E3EACE;
+	border-bottom:2px solid #e3eace;
 }
 
 	#header .inner {
@@ -58,11 +58,9 @@ body {
 #notification {
 	margin:0 0 0 18px;
 	padding:6px 8px 12px 8px;
-	background-color:#F6F8F0;
+	background-color:#f6f8f0;
 	border:1px solid #aaa;
 }
-
-
 
 
 
@@ -162,37 +160,6 @@ body {
 
 
 
-
-
-#footerX * {
-	font-size:11px;
-	text-transform:lowercase;
-}
-
-#footerX .address {
-	width:978px;
-	margin:0 auto;
-}
-
-#footerX .address .logo {
-	position:relative;
-	left:-45px;
-}
-
-#footerX .line {
-	display:block;
-	position:absolute;
-	bottom:10px;
-	left:0;
-	width:100%;
-	height:5px;
-	background:#B0D026 url('../img/bg_footer.jpg') repeat-y 0 top;
-}
-
-#footerX .line hr {display:none;}
-
-
-
 /* -----------------
 	Panel
    ----------------- */
@@ -285,19 +252,6 @@ body {
 		background-color:#adb989; /* bcl04 */
 		color:#000;
 	}
-
-
-
-/* --------------------------------------------------------
-	Dev stamp (marking certain areas as 'in development')
-   --------------------------------------------------------*/
-
-#devstamp {
-	position:absolute;
-	left:4px;
-	top:4px;
-	z-index:100;
-}
 
 
 

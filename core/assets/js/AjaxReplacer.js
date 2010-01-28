@@ -32,27 +32,25 @@ Ajax.Replacer = Class.create(Ajax.Request, {
 	initialize: function($super, container, url, options) {
 		options = options || { };
 		options.onComplete = (options.onComplete || Prototype.emptyFunction).wrap(function(proceed, transport, json) {
-		    $(container).replace(transport.responseText);
+			$(container).replace(transport.responseText);
 			proceed(transport, json);
-		  });
+		});
 		$super(url, options);
 	}
 });
 
 
 
+
 /*
 Ajax.Replacer = Class.create(Ajax.Updater, {
-  initialize: function($super, container, url, options) {
-    options = options || { };
-    options.onComplete = (options.onComplete ||
-Prototype.emptyFunction)
-      .wrap(function(proceed, transport, json) {
-        $(container).replace(transport.responseText);
-        proceed(transport, json);
-      })
-    $super(container, url, options);
-  }
-
+	initialize: function($super, container, url, options) {
+		options = options || { };
+		options.onComplete = (options.onComplete || Prototype.emptyFunction).wrap(function(proceed, transport, json) {
+			$(container).replace(transport.responseText);
+			proceed(transport, json);
+		})
+		$super(container, url, options);
+	}
 })
 */

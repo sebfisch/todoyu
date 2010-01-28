@@ -1,5 +1,5 @@
 /**
- * @author ferni
+ * Autocompleter
  */
 Todoyu.Autocomplete = {
 	/**
