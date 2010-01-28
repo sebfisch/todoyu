@@ -35,7 +35,7 @@ class TodoyuColors {
 		$fileCSS	= PATH_CACHE . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'colors.css';
 		$fileIMG	= PATH_CACHE . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'colors.png';
 
-			// Generate css file if it not exists
+			// Generate CSS file if it not exists
 		if( ! is_file($fileCSS) ) {
 			self::generateCSS($fileCSS, $fileIMG);
 		}

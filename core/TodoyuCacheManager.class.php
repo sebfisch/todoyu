@@ -40,7 +40,7 @@ class TodoyuCacheManager {
 
 
 	/**
-	 * Clear asset cache (js+css)
+	 * Clear asset cache (JS + CSS)
 	 *
 	 */
 	public static function clearAssetCache() {

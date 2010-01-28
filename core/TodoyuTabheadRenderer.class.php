@@ -72,7 +72,12 @@ class TodoyuTabheadRenderer {
 	 */
 	public static function renderTabs($htmlID, $class, $jsHandler, array $tabs, $active = null) {
 		foreach($tabs as $tabKey => $tabData) {
-			$tabs[$tabKey]['label']	= TodoyuDiv::getLabel($tabs[$tabKey]['label']);
+			$allowed	= self::isAllowed($tabData['requiredRight']);
+			if ( $allowed === true ) {
+				$tabs[$tabKey]['label']	= TodoyuDiv::getLabel($tabs[$tabKey]['label']);
+			} else {
+				unset($tabs[$tabKey]);
+			}
 		}
 
 		$data	= array(
@@ -84,6 +89,24 @@ class TodoyuTabheadRenderer {
 		);
 
 		return render('core/view/tabheads.tmpl', $data);
+	}
+
+
+
+	/**
+	 * Check whether required rights for given tab are available
+	 *
+	 * @param	String	$right
+	 * @return	Boolean
+	 */
+	private static function isAllowed($right) {
+		if ( ! is_null($right) ) {
+			$allowed	= allowed('profile', $right);
+		} else {
+			$allowed	= true;
+		}
+
+		return $allowed;
 	}
 
 }

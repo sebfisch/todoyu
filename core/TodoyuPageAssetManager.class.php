@@ -113,7 +113,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Add processed assets (js+css) to the page
+	 * Add processed assets (JS + CSS) to the page
 	 *
 	 */
 	public static function addAssetsToPage() {
@@ -447,7 +447,7 @@ class TodoyuPageAssetManager {
 		$files		= array();
 		$doCompress	= $GLOBALS['CONFIG']['CACHE']['CSS']['compress'];
 
-			// Make sure css cache folder exists
+			// Make sure CSS cache folder exists
 		if( $doCompress ) {
 			TodoyuFileManager::makeDirDeep( PATH_CACHE . DIRECTORY_SEPARATOR . 'css');
 		}
@@ -489,8 +489,8 @@ class TodoyuPageAssetManager {
 	 * Get path to cached CSS file
 	 *
 	 * @param	String		$pathToFile			Path to uncached file
-	 * @param	Boolean		$compressed			Compress content with cssmin?
-	 * @return	String		Absolute path for the cache file
+	 * @param	Boolean		$compressed			Compress content with cssMin?
+	 * @return	String							Absolute path for the cache file
 	 */
 	private static function getSingleStylesheetPath($pathToFile, $compressed = false) {
 		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
