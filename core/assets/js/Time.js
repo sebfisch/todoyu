@@ -33,11 +33,11 @@ Todoyu.Time = {
 	/**
 	 * Format given time, to e.g. '13:50:20'
 	 *
-	 *	@param	unknown_type	hours
-	 *	@param	unknown_type	minutes
-	 *	@param	unknown_type	seconds
-	 *	@param	unknown_type	separator
-	 *	@return	String
+	 * @param	unknown_type	hours
+	 * @param	unknown_type	minutes
+	 * @param	unknown_type	seconds
+	 * @param	unknown_type	separator
+	 * @return	String
 	 */
 	timeFormat: function(hours, minutes, seconds, separator) {
 		if( Object.isUndefined(separator) ) {
@@ -52,9 +52,9 @@ Todoyu.Time = {
 	/**
 	 * Format given time
 	 *
-	 *	@param	unknown_type	time
-	 *	@param	unknown_type	separator
-	 *	@return	String
+	 * @param	String	time
+	 * @param	String	separator
+	 * @return	String
 	 */
 	timeFormatSeconds: function(time, separator) {
 		var timeParts = this.getTimeParts(time);
@@ -67,8 +67,8 @@ Todoyu.Time = {
 	/**
 	 * Parse given time string to seconds
 	 *
-	 *	@param	String	timeString
-	 *	@return	String
+	 * @param	String	timeString
+	 * @return	String
 	 */
 	parseTimeToSeconds: function(timeString) {
 		var parts	= timeString.stripTags().split(':');
@@ -81,8 +81,8 @@ Todoyu.Time = {
 	/**
 	 * Get time parts of given (timestamp) time
 	 *
-	 *	@param	unknown_type	time
-	 *	@return	Array
+	 * @param	Integer		time
+	 * @return	Array
 	 */
 	getTimeParts: function(time) {
 		time = Todoyu.Helper.intval(time);
@@ -103,7 +103,7 @@ Todoyu.Time = {
 	/**
 	 * Get shifted time
 	 *
-	 *	@todo	comment
+	 * @todo	comment
 	 */		
 	getShiftedTime: function(baseTime, step, direction) {
 		var factor	= (direction === 'up' ? 1 : -1);
@@ -132,8 +132,8 @@ Todoyu.Time = {
 	/**
 	 * Get timestamp at start of day
 	 *
-	 *	@param	Integer	time
-	 *	@return	Integer
+	 * @param	Integer	time
+	 * @return	Integer
 	 */
 	getDayStart: function(time) {
 		var date = new Date(time * 1000);
@@ -150,8 +150,8 @@ Todoyu.Time = {
 	/**
 	 * Get timestamp at start of week
 	 *
-	 *	@param	Integer	time
-	 *	@return	Integer
+	 * @param	Integer	time
+	 * @return	Integer
 	 */
 	getWeekStart: function(time) {
 		var date = new Date(time * 1000);
@@ -173,7 +173,7 @@ Todoyu.Time = {
 	/**
 	 * Get todays date
 	 *
-	 *	@return	Integer		microtime timestamp
+	 * @return	Integer		microtime timestamp
 	 */
 	getTodayDate: function() {
 		var date	= new Date();
@@ -189,8 +189,8 @@ Todoyu.Time = {
 	/**
 	 * Get amount of days in month
 	 *
-	 *	@param	Integer	time
-	 *	@return	Integer
+	 * @param	Integer	time
+	 * @return	Integer
 	 */
 	getDaysInMonth: function(time) {
 		var date	= new Date(time * 1000);
