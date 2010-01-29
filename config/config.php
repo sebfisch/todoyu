@@ -32,7 +32,7 @@ $CONFIG['CACHE']['JS']['localize']	= true;
 $CONFIG['CACHE']['JS']['merge']		= false;
 $CONFIG['CACHE']['JS']['compress']	= false;
 
-$CONFIG['CACHE']['CSS']['merge']	= true;
+$CONFIG['CACHE']['CSS']['merge']	= false;
 $CONFIG['CACHE']['CSS']['compress']	= true;
 
 //TodoyuRightsManager::flushRights();
