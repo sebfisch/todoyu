@@ -266,6 +266,16 @@ class TodoyuInstallerRenderer {
 			'diff'		=> TodoyuSQLManager::getStructureDifferences()
 		);
 
+		if( sizeof($data['diff']['missingTables']) === 0 && sizeof($data['diff']['missingColumns']) === 0 && sizeof($data['diff']['changedColumns']) === 0) {
+			$data['text']		= Label('installer.updatetocurrentversion.noupdates');
+			$data['textClass']	= 'success';
+			$data['button']		= 'installer.updatetocurrentversion.button.noupdates';
+			$data['noUpdates']	= true;
+		} else {
+			$data['text']		= Label('installer.updatetocurrentversion.updates');
+			$data['textClass']	= 'info';
+		}
+
 		return $data;
 	}
 
@@ -281,7 +291,9 @@ class TodoyuInstallerRenderer {
 	public static function renderFinishUpdate(array $result) {
 		$data	= array(
 			'title'		=> 'installer.finishupdate.title',
-			'button'	=> 'installer.finishupdate.button'
+			'button'	=> 'installer.finishupdate.button',
+			'text'		=> Label('installer.finishupdate.text'),
+			'textClass'	=> 'success'
 		);
 
 		return $data;

@@ -298,18 +298,6 @@ class TodoyuInstallerManager {
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
 
 			TodoyuInstaller::setStep('finishupdate');
-		} else {
-				// Prepare message
-			$diff	= TodoyuSQLManager::getStructureDifferences();
-
-			if( sizeof($diff['missingTables']) === 0 && sizeof($diff['missingColumns']) === 0 && sizeof($diff['changedColumns']) === 0) {
-				$result['text']		= Label('installer.updatetocurrentversion.noupdates');
-				$result['textClass']= 'success';
-				$result['noUpdates']= true;
-			} else {
-				$result['text']		= Label('installer.updatetocurrentversion.updates');
-				$result['textClass']= 'info';
-			}
 		}
 
 		return $result;
@@ -329,9 +317,6 @@ class TodoyuInstallerManager {
 
 		if( intval($data['finish']) === 1 ) {
 			self::finishInstallerAndJumpToLogin();
-		} else {
-			$result['text']		= Label('installer.finishupdate.text');
-			$result['textClass']= 'success';
 		}
 
 		return $result;
