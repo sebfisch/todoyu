@@ -26,8 +26,6 @@ table.list td {
 	border-bottom:1px dotted #aaa;
 }
 
-
-
 /* ------------
 	Hover
    ------------ */
@@ -35,23 +33,23 @@ table.list td {
 table.list tr:hover,
 table.list tr:hover .odd,
 table.list tr:hover .even,
-li:hover .odd,
-li:hover .even{
+ul.withMouseHover li.odd:hover,
+ul.withMouseHover li.even:hover {
 	background-color:#f2f2d2 !important;
 }
-
-
 
 /* -----------------------------
 	Odd and even alternation
    ----------------------------- */
-   
+
 table.list tr.odd,
+table.listsimple tr.odd,
 li.odd {
-	background-color:#fff;
+	background-color:#f3f3f3;
 }
 
 table.list tr.even,
+table.listsimple tr.even,
 li.even {
-	background-color:#f3f3f3;
+	background-color:#fff;
 }

@@ -17,7 +17,7 @@ div.icon {
 	margin:10px;
 	padding:10px 10px 10px 50px;
 	background-color:#E3EACE;
-	border:2px dashed #D3DACE;	
+	border:2px dashed #D3DACE;
 	font-weight:bold;
 	background-image:url(../img/icons.png);
 	background-position:15px -620px;
@@ -48,13 +48,16 @@ ul.ulList li.listItemHeader span {
 	font-weight:bold;
 }
 
+ul.ulListDotted li.listItem {
+	border-bottom:1px dotted #aaaaaa;
+}
 /* -----------------------------
 	Editable / linked items
    ----------------------------- */
 li.listItem .editableItem span,
 li.listItem a .editableItem span {
-    padding-left:20px;
-    background:#fff url('../img/sprite-icons.png') no-repeat -58px -360px !important;
+	padding-left:20px;
+	background:transparent url('../img/sprite-icons.png') no-repeat -58px -360px !important;
 }
 
 li.listItem a:hover span {
@@ -139,7 +142,9 @@ h1 {
 	white-space:nowrap;
 }
 
-.headerLine input { margin-right:10px; }
+.headerLine input {
+	margin-right:10px;
+}
 
 .headerOptLine {
 	position:relative;
@@ -180,7 +185,6 @@ div.title {
 }
 
 
-
 	/* h3 */
 .headLabel span {
 	display:block;
@@ -191,7 +195,6 @@ div.title {
 span.infoIcon {
 	background:url('../img/sprite-icons.png') no-repeat -60px -330px !important;
 }
-
 
 .calendaricon {
 	background:url('../img/icons.png') no-repeat 0 -690px;

@@ -52,10 +52,6 @@ button span.rgt {
 	background-color:#E7E7E7 !important;
 }
 
-html>/**/body button span.rgt { /* IE8 */
-	left /*\**/:0\9;
-}
-
 *+html button span {
 	margin-right:-15px;
 }
