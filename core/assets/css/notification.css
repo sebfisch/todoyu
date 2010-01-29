@@ -1,24 +1,22 @@
 #notifications {
 	position:fixed;
-	z-index:1000;
-	text-align:center;
+	z-index:5000;
 	width:100%;
 	left:0;
-	top:105px;
+	top:0;
 }
 
 #notifications div.notes {
-	width:978px;
+	width:100%;
 	margin:0 auto;
+	/*border-bottom:1px solid #E7E8E4;*/
 }
 
 #notifications div.note {
-	margin-left:283px;
-	width:658px;
-	padding:10px;
-	border:1px solid #b6bca5;
+	width:100%;
+	padding:6px;
+	border-bottom:1px solid #8c9080;
 	background-color:#fff;
-	margin-bottom:2px;
 	opacity:0.94;
 }
 
@@ -27,17 +25,16 @@
 }
 
 #notifications div.note td.message {
-	font-weight:bold;
-	color:#333;
-	width:560px;
-	padding-right:20px;
-	text-align:center;
+	width:90%;
+	font-size:14px;
+	color:#222;
+	text-align:left;
 }
 
 #notifications div.note td.countdown {
 	width:25px;
-	text-align:center;
-	padding-right:10px;
+	font-size:14px;
+	padding-right:4px;
 	color:#666;
 }
 
@@ -45,6 +42,7 @@
 	width:20px;
 	background:url(../img/sprite-notify.png) 0 -47px no-repeat;
 	cursor:pointer;
+	padding-right:12px;
 }
 
 
@@ -68,7 +66,7 @@
    ------------------- */
 
 #notifications div.error {
-	background-color:#ff8800;
+	background-color:#f6e0e0;
 }
 
 #notifications div.error td.icon {

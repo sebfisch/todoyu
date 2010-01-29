@@ -51,20 +51,29 @@ Todoyu.Notification = {
 		var id		= this.id++;
 
 		var data	= {
-			'id': id,
-			'type': type,
-			'message': message,
-			'countdown': countdown == 0 ? '' : countdown		
+			'id':			id,
+			'type':			type,
+			'message':		message,
+			'countdown':	countdown == 0 ? '' : countdown		
 		};
-		
+
 		var note	= this.template.evaluate(data);
-		
+
 		this.appendNote(id, note);
-		
+
 			// Only start countdown if not sticky
 		if( countdown != 0 ) {
 			this.countDown.bind(this).delay(1, id);
-		}		
+		}
+	},
+
+
+
+	/**
+	 * Remove note
+	 */
+	remove: function(id) {
+		$('ntification-note-' + id).remove();
 	},
 
 
@@ -103,7 +112,7 @@ Todoyu.Notification = {
 	 */
 	close: function(closeButton) {
 		var idNote = $(closeButton).up('div.note').id.split('-').last();
-		
+
 		this.closeNote(idNote);
 	},
 
@@ -111,13 +120,30 @@ Todoyu.Notification = {
 
 	/**
 	 * Close note by ID
+	 * @todo	watch out for a bugfix of scriptaculous' malfunctioning 'afterFinish' callback
 	 * 
 	 *	@param	Integer		id
 	 */
 	closeNote: function(id) {
-		$('notification-note-' + id).fade({
-			'duration': 0.7
+		var duration	= 0.3;
+
+		new Effect.Move('notification-note-' + id, {
+			'y':		-80,
+			'mode':		'absolute'
 		});
+
+		this.onNoteClosed.bind(this).delay(duration + 0.1, id);
+	},
+
+
+
+	/**
+	 * Handler being evoked when a note is closed (fade-out finished)
+	 * 
+	 * @param	Integer		id
+	 */
+	onNoteClosed: function(id) {
+		$('notification-note-' + id).remove();
 	},
 
 
@@ -127,8 +153,7 @@ Todoyu.Notification = {
 	 */
 	init: function() {
 		if( this.template === null ) {
-			//this.template = new Template( '<div class="note #{type}" id="notification-note-#{id}"><div class="icon"></div><div class="message">#{message}</div><div class="countdown">#{countdown}</div><div class="close" onclick="Todoyu.Notification.close(this)"></div></div><br clear="all" />');
-			this.template = new Template( '<div class="note #{type}" id="notification-note-#{id}"><table><tr><td class="icon">&nbsp;</td><td class="message">#{message}</td><td class="countdown" align="center">#{countdown}</td><td class="close" onclick="Todoyu.Notification.close(this)">&nbsp;</td></tr></table></div>');
+			this.template = new Template('<div class="note #{type}" id="notification-note-#{id}"><table width="100%"><tr><td class="icon">&nbsp;</td><td class="message">#{message}</td><td class="countdown" align="center">#{countdown}</td><td class="close" onclick="Todoyu.Notification.close(this)">&nbsp;</td></tr></table></div>');
 		}
 	},
 
@@ -142,6 +167,11 @@ Todoyu.Notification = {
 	 */
 	appendNote: function(id, code) {
 		$('notes').insert({'top':code});
+		
+		var id	= $$('.note').last().id;
+
+		$(id).hide();
+		$(id).appear({'duration': 0.5});
 	},
 
 
@@ -150,7 +180,7 @@ Todoyu.Notification = {
 	 * 
 	 *	@param	Integer		id
 	 */
-	countDown: function(id) {		
+	countDown: function(id) {
 		var countBox= $('notification-note-' + id).down('.countdown');	
 		var current	= parseInt(countBox.innerHTML, 10);
 
@@ -164,16 +194,13 @@ Todoyu.Notification = {
 
 
 
-
-
-
-	idElement: 'notification',
+	idElement:	'notification',
 
 	/**
 	 * Show notification
 	 *
-	 *	@param	unknown_type	notificationHTML
-	 *	@param	unknown_type	elementToAddAfter
+	 *	@param	String		notificationHTML
+	 *	@param	String		elementToAddAfter
 	 */
 	notify:	function(notificationHTML, elementToAddAfter) {
 		var notification = 'notification';
@@ -183,10 +210,7 @@ Todoyu.Notification = {
 		}
 
 		$(elementToAddAfter).insert({'after': notificationHTML});
-
 		Effect.Appear(this.idElement);
-
-		//this.hideNotification.bind(this).delay(0.85);
 	},
 
 
@@ -196,6 +220,17 @@ Todoyu.Notification = {
 	 */
 	hideNotification: function() {
 		Effect.Fade(this.idElement);
-	}
+	},
+
+
+
+	/**
+	 * Get amount of notes currently being shown
+	 * 
+	 * @return	Integer 
+	 */
+	getAmountOpenNotes: function() {
+		return $$('.note').length;
+	},
 
 };

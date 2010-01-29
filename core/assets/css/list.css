@@ -31,12 +31,12 @@ table.list td {
 /* ------------
 	Hover
    ------------ */
-   
+
 table.list tr:hover,
 table.list tr:hover .odd,
 table.list tr:hover .even,
 li:hover .odd,
-li:hover .even {
+li:hover .even{
 	background-color:#f2f2d2 !important;
 }
 
