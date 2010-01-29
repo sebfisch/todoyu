@@ -50,7 +50,7 @@ input {}
 		width:95px;
 		margin-right:5px;
 	}
-	
+
 	input.textinputAC {
 		background:url(../img/icons.png) no-repeat right -718px;
 	}
@@ -96,12 +96,12 @@ select {}
 	select optgroup option {
 		background:#fff;
 	}
-	
+
 	select option.error,
 	selectgrouped option.error {
-		color:#991010; 
-	}	
-	
+		color:#991010;
+	}
+
 label {}
 
 	label span.required {}
@@ -143,8 +143,8 @@ div.fElement {
 
 	div.fElement .fField input {
 	}
-	
-	
+
+
 
 	div.fElement .fClear {
 		clear:both;
@@ -218,7 +218,7 @@ div.fElement {
 			background:url(../img/icons.png) no-repeat 0 -539px;
 		}
 
-	
+
 	.fElement .fField.hasWizard input{
 		width: 80%;
 		float: left;
@@ -253,27 +253,27 @@ fieldset {}
 	fieldset div.odd {
 		background-color:#f3f3f3;
 	}
-	
+
 	fieldset div.even {}
-	
+
 	fieldset.buttons,
 	fieldset.buttons div.odd,
 	fieldset.buttons div.even,
 	fieldset.buttons button span.rgt {
 		background-color:#e2e2e2;
 	}
-	
+
 		/* none floating fields */
 	fieldset.noneFloatingInput div.fElement .fField,
 	fieldset.noneFloatingInput div.fElement .fLabel {
 		float:none;
 	}
-	
+
 		/* --- right floating Input --- */
 	.formElement .formField {
 		width:58%;
 	}
-	
+
 	.formElement .formField {
 		display:inline;
 		float:right;
@@ -412,5 +412,5 @@ fieldset {}
 	width:16px;
 	display:block;
 	float:right;
-	background:transparent url(../img/sprite-button_bgs.png) no-repeat 4px -54px;
+	background:transparent url(../img/icons.png) no-repeat 0 -90px;
 }
