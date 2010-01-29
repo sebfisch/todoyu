@@ -35,7 +35,10 @@ class TodoyuInstaller {
 		ob_start();
 
 		if( ! self::hasStep() || self::isRestart() ) {
+				// Initialize step in session
 			self::initStep();
+				// Clear all cache
+			TodoyuInstallerManager::clearCache();
 		}
 
 		$step	= self::getStep();

@@ -78,14 +78,10 @@ class TodoyuFileManager {
 		$elements		= scandir($pathToFolder);
 		$items			= array();
 
-		if( $showHidden === false ) {
-			foreach($elements as $element) {
-				if( substr($element, 0, 1) !== '.' ) {
-					$items[] = $element;
-				}
+		foreach($elements as $element) {
+			if( substr($element, 0, 1) !== '.' || $showHidden ) {
+				$items[] = $element;
 			}
-		} else {
-			$items = array_slice($elements, 2);
 		}
 
 		return $items;
@@ -144,10 +140,10 @@ class TodoyuFileManager {
 	 *
 	 * @param	String	$pathToFolder
 	 */
-	public static function deleteFolderContent($pathToFolder) {
-		$pathToFolder = self::pathAbsolute($pathToFolder);
-		$folders	= self::getFoldersInFolder($pathToFolder, true);
-		$files		= self::getFilesInFolder($pathToFolder);
+	public static function deleteFolderContent($pathToFolder, $deleteHidden = false) {
+		$pathToFolder 	= self::pathAbsolute($pathToFolder);
+		$folders		= self::getFoldersInFolder($pathToFolder, $deleteHidden);
+		$files			= self::getFilesInFolder($pathToFolder);
 
 		foreach($folders as $folder) {
 			self::deleteFolderContent($pathToFolder . '/' . $folder);

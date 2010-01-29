@@ -260,7 +260,7 @@ fieldset {}
 	fieldset.buttons div.odd,
 	fieldset.buttons div.even,
 	fieldset.buttons button span.rgt {
-		background-color:#e2e2e2;
+		background-color:#e2e2e2 !important;
 	}
 
 		/* none floating fields */

@@ -445,7 +445,7 @@ class TodoyuInstallerManager {
 	 */
 	private static function saveSystemConfig(array $config) {
 		$config['encryptionKey'] = self::makeEncryptionKey();
-		$tmpl	= TodoyuFileManager::pathAbsolute('install/view/configs/system.php.tmpl');
+		$tmpl	= 'install/view/configs/system.php.tmpl';
 		$file	= TodoyuFileManager::pathAbsolute('config/system.php');
 
 		TodoyuFileManager::saveTemplatedFile($file, $tmpl, $config, true);
@@ -613,6 +613,27 @@ class TodoyuInstallerManager {
 
 		return TodoyuFileManager::saveTemplatedFile($file, $tmpl, $dbConfig, true);
 	}
+
+
+
+	/**
+	 * Clear cached files
+	 *
+	 */
+	public static function clearCache() {
+		$paths	= array(
+			PATH_CACHE . '/css',
+			PATH_CACHE . '/js',
+			PATH_CACHE . '/img',
+			PATH_CACHE . '/language',
+			PATH_CACHE . '/tmpl/compile'
+		);
+
+		foreach($paths as $path) {
+			TodoyuFileManager::deleteFolderContent($path, false);
+		}
+	}
+
 
 }
 
