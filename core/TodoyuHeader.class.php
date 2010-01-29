@@ -225,7 +225,7 @@ class TodoyuHeader {
 
 		$url	= TodoyuDiv::buildUrl($params, '', true);
 
-		self::location($url);
+		self::location($url, true);
 	}
 
 
