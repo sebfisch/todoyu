@@ -1,227 +1,631 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 2.11.8.1deb5+lenny3
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 29. September 2009 um 16:23
--- Server Version: 5.1.37
--- PHP-Version: 5.3.0
+-- Erstellungszeit: 29. Januar 2010 um 18:38
+-- Server Version: 5.0.51
+-- PHP-Version: 5.2.6-1+lenny4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
---
--- Database: `todoyu`
---
 
 --
--- Data for table `ext_assets_asset`
+-- Daten für Tabelle `ext_assets_asset`
 --
 
+INSERT INTO `ext_assets_asset` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_parent`, `parenttype`, `is_public`, `file_ext`, `file_storage`, `file_name`, `file_size`, `file_mime`, `file_mime_sub`) VALUES
+(1, 1264699957, 1264699957, 17, 0, 60, 1, 0, 'jpg', 'task/60/1264699957_humor_cartoon_42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 'humor,cartoon-42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 31922, 'image', 'jpeg'),
+(2, 1264700333, 1264700333, 17, 0, 106, 1, 0, 'jpg', 'task/106/1264700333_humor_cartoon_42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 'humor,cartoon-42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 31922, 'image', 'jpeg'),
+(3, 1264777318, 1264777318, 18, 0, 60, 1, 1, 'jpg', 'task/60/1264777318_startsprung.jpg', 'startsprung.jpg', 2629, 'image', 'jpeg'),
+(4, 1264778177, 1264778177, 18, 0, 134, 1, 0, 'jpg', 'task/134/1264778177_gettodoyu.jpg', 'gettodoyu.jpg', 1222, 'image', 'jpeg');
 
 --
--- Data for table `ext_bookmark_bookmark`
+-- Daten für Tabelle `ext_bookmark_bookmark`
 --
 
-INSERT INTO `ext_bookmark_bookmark` (`id`, `id_user_create`, `date_create`, `type`, `deleted`, `id_item`) VALUES
-(1, 1, 1254233035, 1, 0, 2);
+INSERT INTO `ext_bookmark_bookmark` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `type`, `id_item`) VALUES
+(1, 1254233035, 0, 1, 0, 1, 2),
+(2, 1264768629, 0, 1, 0, 1, 115),
+(3, 1264779035, 0, 1, 0, 1, 60),
+(4, 1264779042, 0, 1, 0, 1, 59),
+(5, 1264779432, 0, 12, 0, 1, 145),
+(6, 1264779489, 0, 18, 0, 1, 133),
+(7, 1264779512, 0, 18, 1, 1, 146),
+(8, 1264779695, 0, 18, 1, 1, 136),
+(9, 1264779705, 0, 18, 1, 1, 136),
+(10, 1264779709, 0, 18, 1, 1, 136),
+(11, 1264779710, 0, 18, 0, 1, 60),
+(12, 1264779712, 0, 18, 0, 1, 135);
 
 --
--- Data for table `ext_calendar_event`
+-- Daten für Tabelle `ext_calendar_event`
 --
 
+INSERT INTO `ext_calendar_event` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_project`, `id_task`, `eventtype`, `title`, `description`, `place`, `date_start`, `date_end`, `is_private`, `is_dayevent`, `is_public`) VALUES
+(1, 1264697556, 1264697592, 1, 0, 0, 0, 1, 'My Reminder', '', '', 1264753800, 1264757400, 0, 0, 0),
+(2, 1264700473, 1264700482, 1, 0, 0, 0, 6, 'Meet and Greet', '', 'Long silver beach', 1266390000, 1266393600, 1, 1, 1),
+(3, 1264700497, 1264700497, 1, 0, 0, 0, 1, 'Another one', '', '', 1266390000, 1266393600, 0, 1, 0),
+(4, 1264778135, 1264778147, 17, 0, 0, 0, 4, 'Vacation', '02/08/10 - 02/12/10', '', 1265616000, 1265994000, 0, 0, 0),
+(5, 1264778302, 1264778302, 17, 0, 0, 0, 5, 'Office Cert', 'Certification Day', '', 1266658200, 1266661800, 0, 1, 0),
+(6, 1264778364, 1264778364, 17, 0, 0, 0, 6, 'Project Meeting', '', '', 1266418800, 1266433200, 0, 0, 0);
 
 --
--- Data for table `ext_calendar_holiday`
+-- Daten für Tabelle `ext_calendar_holiday`
 --
 
-INSERT INTO `ext_calendar_holiday` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `date`, `title`, `description`, `workingtime`) VALUES
-(39, 1220364646, 381, 1220364646, 0, 1230764400, 'Neujahr', '', '0'),
-(40, 1220364684, 381, 1220364684, 0, 1230850800, 'Berchtoldstag', '', '0'),
-(41, 1220364734, 381, 1220364734, 0, 1239314400, 'Karfreitag', '', '0'),
-(42, 1220364777, 381, 1220364777, 0, 1239573600, 'Ostermontag', '', '0'),
-(43, 1220364960, 381, 1220364960, 0, 1240178400, 'Sechseläuten', 'In Zürich Mittag frei', '240'),
-(44, 1220366196, 381, 1220366196, 0, 1241128800, 'Tag der Arbeit', '', '0'),
-(45, 1220366245, 381, 1220366245, 0, 1243807200, 'Pfingstmontag', '', '0'),
-(46, 1220366291, 381, 1220366291, 0, 1249077600, 'Nationalfeiertag', '', '0'),
-(47, 1220366366, 381, 1220366366, 0, 1252879200, 'Knabenschiessen', 'In Zürich am Mittag frei', '240'),
-(48, 1220366417, 381, 1220366417, 0, 1261609200, 'Heiligabend', 'ab Mittag frei', '240'),
-(49, 1220366454, 381, 1220366454, 0, 1261695600, 'Weihnachten', '', '0'),
-(51, 1220366523, 381, 1220366523, 0, 1261782000, 'Stephanstag', '', '0'),
-(52, 1220366574, 381, 1220366574, 0, 1262214000, 'Silvester', 'Ab Mittag frei', '240'),
-(54, 1229503133, 381, 1229502530, 0, 1258930800, 'Zibelemärit ', 'Mittag frei - nur Bern', '240'),
-(62, 1244472469, 381, 1244472469, 0, 1242856800, 'Auffahrt', '', '0');
-
-
---
--- Data for table `ext_calendar_holidayset`
---
-
-INSERT INTO `ext_calendar_holidayset` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `description`) VALUES
-(1, 1244290547, 0, 0, 0, 'Zürich', ''),
-(2, 1244290548, 0, 0, 0, 'Bern', '');
+INSERT INTO `ext_calendar_holiday` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `date`, `title`, `description`, `workingtime`) VALUES
+(39, 1220364646, 1220364646, 381, 0, 1230764400, 'Neujahr', '', 0),
+(40, 1220364684, 1220364684, 381, 0, 1230850800, 'Berchtoldstag', '', 0),
+(41, 1220364734, 1220364734, 381, 0, 1239314400, 'Karfreitag', '', 0),
+(42, 1220364777, 1220364777, 381, 0, 1239573600, 'Ostermontag', '', 0),
+(43, 1220364960, 1220364960, 381, 0, 1240178400, 'Sechseläuten', 'In Zürich Mittag frei', 240),
+(44, 1220366196, 1220366196, 381, 0, 1241128800, 'Tag der Arbeit', '', 0),
+(45, 1220366245, 1220366245, 381, 0, 1243807200, 'Pfingstmontag', '', 0),
+(46, 1220366291, 1220366291, 381, 0, 1249077600, 'Nationalfeiertag', '', 0),
+(47, 1220366366, 1220366366, 381, 0, 1252879200, 'Knabenschiessen', 'In Zürich am Mittag frei', 240),
+(48, 1220366417, 1220366417, 381, 0, 1261609200, 'Heiligabend', 'ab Mittag frei', 240),
+(49, 1220366454, 1220366454, 381, 0, 1261695600, 'Weihnachten', '', 0),
+(51, 1220366523, 1220366523, 381, 0, 1261782000, 'Stephanstag', '', 0),
+(52, 1220366574, 1220366574, 381, 0, 1262214000, 'Silvester', 'Ab Mittag frei', 240),
+(54, 1229502530, 1229503133, 381, 0, 1258930800, 'Zibelemärit ', 'Mittag frei - nur Bern', 240),
+(62, 1244472469, 1244472469, 381, 0, 1242856800, 'Auffahrt', '', 0);
 
 --
--- Data for table `ext_calendar_mm_holiday_holidayset`
+-- Daten für Tabelle `ext_calendar_holidayset`
+--
+
+INSERT INTO `ext_calendar_holidayset` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `description`) VALUES
+(1, 0, 1244290547, 0, 0, 'Zürich', 'Switzerland'),
+(2, 0, 1244290548, 0, 0, 'Bern', 'Switzerland'),
+(3, 0, 0, 0, 0, 'USA', 'United States'),
+(4, 0, 0, 0, 0, 'Japan', 'Japan');
+
+--
+-- Daten für Tabelle `ext_calendar_mm_event_user`
+--
+
+INSERT INTO `ext_calendar_mm_event_user` (`id`, `id_event`, `id_user`, `is_acknowledged`) VALUES
+(8, 1, 17, 0),
+(7, 1, 1, 1),
+(12, 2, 6, 0),
+(11, 2, 1, 1),
+(13, 3, 1, 1),
+(15, 4, 17, 1),
+(16, 5, 17, 1),
+(17, 6, 17, 1);
+
+--
+-- Daten für Tabelle `ext_calendar_mm_holiday_holidayset`
 --
 
 INSERT INTO `ext_calendar_mm_holiday_holidayset` (`id`, `id_holiday`, `id_holidayset`) VALUES
-(360, 62, 2),
-(376, 62, 1),
-(375, 51, 1),
-(374, 44, 1),
-(373, 45, 1),
-(372, 46, 1),
-(371, 48, 1),
-(359, 51, 2),
-(370, 52, 1),
-(369, 42, 1),
-(358, 54, 2),
-(368, 41, 1),
-(357, 52, 2),
-(367, 49, 1),
-(356, 39, 2),
-(355, 41, 2),
-(354, 40, 2),
-(366, 53, 1),
-(353, 53, 2),
-(352, 42, 2),
-(351, 50, 2),
-(365, 39, 1),
-(350, 44, 2),
-(364, 40, 1),
-(349, 45, 2),
-(363, 47, 1),
-(348, 46, 2),
-(347, 48, 2),
-(362, 43, 1),
-(346, 49, 2),
-(361, 50, 1);
+(418, 52, 1),
+(417, 51, 1),
+(416, 49, 1),
+(415, 48, 1),
+(414, 47, 1),
+(413, 46, 1),
+(404, 52, 2),
+(412, 45, 1),
+(403, 51, 2),
+(411, 62, 1),
+(402, 49, 2),
+(401, 48, 2),
+(400, 54, 2),
+(410, 44, 1),
+(399, 46, 2),
+(398, 45, 2),
+(397, 62, 2),
+(409, 43, 1),
+(396, 44, 2),
+(408, 42, 1),
+(395, 42, 2),
+(407, 41, 1),
+(394, 41, 2),
+(393, 40, 2),
+(406, 40, 1),
+(392, 39, 2),
+(405, 39, 1),
+(378, 48, 3),
+(379, 42, 3),
+(380, 40, 3),
+(381, 41, 3),
+(382, 52, 3),
+(383, 49, 3),
+(384, 42, 3),
+(385, 40, 4),
+(386, 48, 4),
+(387, 45, 4),
+(388, 52, 4),
+(389, 52, 4),
+(390, 42, 4),
+(391, 49, 4);
 
 --
--- Data for table `ext_calendar_mm_event_user`
---
-
-
---
--- Data for table `ext_calendar_series`
---
-
-
---
--- Data for table `ext_comment_comment`
+-- Daten für Tabelle `ext_comment_comment`
 --
 
 INSERT INTO `ext_comment_comment` (`id`, `date_update`, `date_create`, `deleted`, `id_user_create`, `id_task`, `comment`, `is_public`) VALUES
-(1, 1254233694, 1254233694, 0, 1, 7, '<p>Hallo, schau dir das bitte mal an, wenn moeglich noch Heute</p>', 0);
+(1, 1254233694, 1254233694, 0, 1, 7, '<p>Hallo, schau dir das bitte mal an, wenn moeglich noch Heute</p>', 0),
+(2, 1264692282, 1264692282, 0, 1, 61, '<p>hahah</p>', 0),
+(3, 1264699613, 1264699613, 0, 1, 35, '<p>Hi Bob</p><p>can you start with this taks a bit earlier?</p>', 0),
+(4, 1264699947, 1264699947, 0, 17, 60, '<p>Any questions concerning this one?</p>', 0),
+(5, 1264700306, 1264700028, 0, 17, 106, '<p>There seems to be a problem. Can you check the attachment to this task? And please send me a short feedback.</p>', 0),
+(6, 1264700390, 1264700385, 0, 17, 95, '<p>thanks for the good job. seems to be a good decision.</p>', 0),
+(7, 1264777276, 1264777276, 0, 18, 60, '<p>hey friedrich, please inform me when the task whereabouts have changed.</p>', 1),
+(8, 1264778321, 1264778217, 0, 18, 134, '<p>please see the attached image, does this meet the specs?</p>', 0),
+(9, 1264778497, 1264778497, 0, 18, 134, '<p>readme please.</p>', 0),
+(10, 1264778585, 1264778585, 0, 12, 134, '<p>Thanks for the image. It''s ok so</p><p>Are you ready for the next step</p>', 0),
+(11, 1264780345, 1264780345, 0, 1, 60, '<p>When can we start?</p>', 0),
+(12, 1264780389, 1264780389, 0, 12, 116, '<p>There may come up a problem with this task. We should have a meeting before you start it. Please organize a meeting with all involved persons</p>', 0),
+(13, 1264784917, 1264784917, 0, 1, 149, '<p>sssafd</p>', 0);
 
 --
--- Data for table `ext_comment_feedback`
+-- Daten für Tabelle `ext_comment_feedback`
 --
 
 INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_user_create`, `id_user_feedback`, `id_comment`, `is_seen`) VALUES
-(1, 1254233694, 0, 1, 2, 1, 0);
+(1, 1254233694, 0, 1, 2, 1, 0),
+(2, 1264699613, 0, 1, 1, 3, 0),
+(3, 1264699947, 0, 17, 14, 4, 0),
+(4, 1264699947, 1264777276, 17, 18, 4, 1),
+(5, 1264699947, 0, 17, 17, 4, 0),
+(6, 1264700306, 0, 17, 1, 5, 0),
+(7, 1264700390, 0, 17, 1, 6, 0),
+(8, 1264777276, 0, 18, 14, 7, 0),
+(9, 1264778217, 0, 18, 14, 8, 0),
+(10, 1264778217, 0, 18, 17, 8, 0),
+(11, 1264778313, 1264778497, 18, 18, 8, 1),
+(12, 1264778321, 0, 18, 14, 8, 0),
+(13, 1264778321, 0, 18, 17, 8, 0),
+(14, 1264778497, 1264778585, 18, 12, 9, 1),
+(15, 1264778585, 0, 12, 18, 10, 0);
 
 --
--- Data for table `ext_search_filtercondition`
---
-
-INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `id_user_create`, `deleted`, `id_set`, `filter`, `value`, `negate`) VALUES
-(7, 0, 0, 0, 0, 1, 'currentUserIsAssigned', '1', 0),
-(8, 0, 0, 0, 0, 1, 'status', '2,3', 0),
-(10, 0, 0, 0, 0, 2, 'currentUserIsOwner', '1', 0),
-(11, 0, 0, 0, 0, 2, 'status', '4', 0),
-(257, 1246637647, 1246637647, 474, 0, 3, 'unseenFeedbackCurrentUser', '', 0),
-(259, 1254233948, 1254233948, 1, 0, 4, 'status', '2', 0),
-(260, 1254233948, 1254233948, 1, 0, 4, 'currentUserIsAssigned', '', 0);
-
-
-
---
--- Data for table `ext_fixed_project`
---
-
-
---
--- Data for table `ext_fixed_task`
+-- Daten für Tabelle `ext_comment_mailed`
 --
 
 
 --
--- Data for table `ext_project_mm_project_user`
+-- Daten für Tabelle `ext_project_mm_project_user`
 --
 
 INSERT INTO `ext_project_mm_project_user` (`id`, `id_project`, `id_user`, `id_userrole`, `comment`) VALUES
 (5, 2, 2, 2, ''),
 (4, 2, 3, 1, ''),
-(6, 2, 1, 1, '');
+(6, 2, 1, 1, ''),
+(48, 4, 14, 1, ''),
+(52, 5, 5, 4, ''),
+(32, 6, 14, 1, ''),
+(29, 7, 4, 4, ''),
+(28, 7, 14, 1, ''),
+(47, 4, 13, 4, ''),
+(54, 8, 6, 4, ''),
+(53, 8, 14, 1, ''),
+(20, 9, 14, 1, ''),
+(21, 9, 10, 4, ''),
+(22, 10, 14, 1, ''),
+(23, 10, 8, 4, ''),
+(24, 11, 14, 1, ''),
+(25, 11, 12, 4, ''),
+(26, 12, 14, 1, ''),
+(27, 12, 11, 4, ''),
+(51, 5, 14, 1, ''),
+(33, 6, 9, 4, ''),
+(35, 13, 14, 1, ''),
+(36, 13, 7, 4, ''),
+(50, 5, 1, 2, 'Bob is a busy man...'),
+(44, 14, 12, 1, ''),
+(45, 14, 18, 3, ''),
+(46, 14, 15, 2, ''),
+(49, 4, 1, 1, '');
 
 --
--- Data for table `ext_project_project`
+-- Daten für Tabelle `ext_project_project`
 --
 
-INSERT INTO `ext_project_project` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `description`, `is_fixed`, `id_fixedproject`, `status`, `id_rateset`, `id_company`, `date_start`, `date_end`, `date_deadline`, `fixedcosts`, `is_fixedcosts_paid`, `date_finish`) VALUES
-(1, 1246982959, 1, 1246982959, 0, 'My First Project', '<p>This is the first todoyu project.</p>', 0, 0, 3, 0, 4, 1246917600, 1264719600, 1264719600, 0, 0, 0),
-(2, 1254233593, 1, 1254213566, 0, 'Example Project', '<p>This is the project description. This text should contain the relevant data for your project.</p>', 0, 0, 3, 0, 5, 1254175200, 1262214000, 1262905200, 0, 0, 0);
+INSERT INTO `ext_project_project` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `date_start`, `date_end`, `date_deadline`, `date_finish`, `title`, `description`, `status`, `id_company`, `fixedcosts`, `is_fixedcosts_paid`, `is_fixed`, `id_fixedproject`, `id_rateset`) VALUES
+(1, 1246982959, 1246982959, 1, 0, 1246917600, 1264719600, 1264719600, 0, 'My First Project', '<p>This is the first todoyu project.</p>', 3, 4, 0, 0, 0, 0, 0),
+(2, 1254213566, 1264501260, 1, 1, 1254175200, 1262214000, 1262905200, 0, 'Example Project', '<p>This is the project description. This text should contain the relevant data for your project.</p>', 3, 5, 0, 0, 0, 0, 0),
+(3, 1264516992, 1264580417, 1, 1, 1264460400, 1267052400, 1267052400, 0, 'Neues Projekt', '<p>sdfasf</p>', 1, 7, 0, 0, 0, 0, 0),
+(4, 1264668890, 1264779125, 1, 0, 1264633200, 1267225200, 1267484400, 0, 'Relaunch Website', '<p>Whole process of relaunching the website</p>', 1, 17, 0, 0, 0, 0, 0),
+(5, 1264675342, 1264779633, 1, 0, 1264633200, 1267225200, 1267225200, 0, 'Relaunch Website', '<p>Relaunch Website</p>', 5, 11, 0, 0, 0, 0, 0),
+(6, 1264675382, 1264681654, 1, 0, 1264633200, 1267225200, 1267225200, 0, 'Relaunch Website', '<p>Relaunch Website</p>', 1, 13, 0, 0, 0, 0, 0),
+(7, 1264675419, 1264681911, 1, 0, 1264633200, 1267225200, 1267225200, 0, 'Relaunch', '<p>Relaunch</p>', 3, 8, 0, 0, 0, 0, 0),
+(8, 1264678888, 1264780404, 1, 0, 1264633200, 1265324400, 1265324400, 0, 'Hosting', '<p>Hosting</p>', 3, 16, 0, 0, 0, 0, 0),
+(9, 1264679088, 1264681991, 1, 0, 1264719600, 1267225200, 1267225200, 0, 'Hosting', '<p>Hosting</p>', 5, 10, 0, 0, 0, 0, 0),
+(10, 1264679315, 1264681835, 1, 0, 1230764400, 1262214000, 1262214000, 0, 'Monthly support', '<p>Monthly support</p>', 9, 14, 0, 0, 0, 0, 0),
+(11, 1264679825, 1264681779, 1, 0, 1264633200, 1267225200, 1267225200, 0, 'Monthly support', '<p>Monthly support</p>', 8, 9, 0, 0, 0, 0, 0),
+(12, 1264680252, 1264681686, 1, 0, 1231110000, 1234479600, 1235084400, 0, 'Redesign', '<p>Redesign</p>', 8, 12, 0, 0, 0, 0, 0),
+(13, 1264680885, 1264681744, 1, 0, 1243461600, 1248645600, 1248645600, 0, 'Redesign', '<p>Redesign</p>', 9, 15, 0, 0, 0, 0, 0),
+(14, 1264777540, 1264777661, 12, 0, 1266793200, 1269558000, 1269558000, 0, 'New Opensource Server', '<p>Build a new server for opensource projects</p>', 1, 15, 0, 0, 0, 0, 0);
 
 --
--- Data for table `ext_project_task`
+-- Daten für Tabelle `ext_project_task`
 --
 
-INSERT INTO `ext_project_task` (`id`, `date_update`, `id_project`, `date_create`, `deleted`, `id_user_create`, `tasknumber`, `description`, `status`, `estimated_workload`, `is_estimatedworkload_public`, `date_deadline`, `date_start`, `date_end`, `id_user_assigned`, `is_acknowledged`, `offered_accesslevel`, `is_offered`, `clearance_state`, `id_parenttask`, `title`, `id_worktype`, `type`, `date_finish`, `is_private`, `is_public`, `id_user_owner`, `sorting`) VALUES
-(1, 1246985220, 1, 1246983025, 0, 1, 1, '<p>Projectmanagement</p>', 2, 3600, 0, 1264719600, 1246917600, 1264719600, 1, 1, 0, 0, 0, 0, 'Projectmanagement', 0, 1, 0, 0, 0, 1, 1),
-(2, 1254233016, 2, 1254232560, 0, 1, 1, '<p>Some random description in the task. Here you should write useful informations about this project</p>', 2, 3600, 0, 1256306040, 1254175200, 1256133240, 3, 1, 0, 0, 0, 0, 'Sampletask', 1, 1, 0, 0, 0, 1, 2),
-(3, 1254233504, 2, 1254233504, 0, 1, 2, '<ul><li>Welche Module mÃ¼ssen fehlerfrei laufen</li><li>Welche Module kommen als Debugversion in den Release</li><li>Updatezyklen fÃ¼r Beta Bugfixes festlegen</li></ul>', 2, 10800, 0, 1254233040, 1254175200, 1254233040, 3, 0, 0, 0, 0, 0, 'Betarelease planen', 1, 2, 0, 0, 0, 3, 3),
-(4, 1254233729, 2, 1254233534, 0, 1, 3, '<p>askfdl asldfjalsdfjalksdjfasdf adfa sdf asdfasdf</p>', 3, 3600, 0, 1256220660, 1254175200, 1254233460, 3, 1, 0, 0, 0, 0, 'Random Task', 1, 1, 0, 0, 0, 1, 4),
-(5, 1254233577, 2, 1254233577, 0, 1, 4, '<p>Das ist ein Subtask im Container</p><p>Verschachtelung beliebig tief mÃ¶glich</p>', 2, 3600, 0, 1254233520, 1254175200, 1254233520, 3, 0, 0, 0, 0, 3, 'Subtask', 1, 1, 0, 0, 0, 1, 5),
-(6, 1254233620, 2, 1254233620, 0, 1, 5, '<p>salkdfj adlsdjfalksdjfasjdfasdf asdfa sdfa sf</p>', 2, 3600, 0, 1257001980, 1254175200, 1256742780, 1, 0, 0, 0, 0, 0, 'Noch ein Task', 1, 1, 0, 0, 0, 3, 6),
-(7, 1254233877, 2, 1254233652, 0, 1, 6, '<p>Das ist sehr wichtig</p>', 3, 19200, 0, 1254233580, 1254175200, 1254233580, 2, 0, 0, 0, 0, 3, 'Unbedingt schnell erledigen', 1, 1, 0, 0, 0, 1, 7);
+INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `type`, `id_project`, `id_parenttask`, `title`, `description`, `id_user_assigned`, `id_user_owner`, `date_deadline`, `date_start`, `date_end`, `date_finish`, `tasknumber`, `status`, `id_worktype`, `estimated_workload`, `is_estimatedworkload_public`, `is_acknowledged`, `offered_accesslevel`, `is_offered`, `clearance_state`, `is_private`, `is_public`, `sorting`) VALUES
+(1, 1246983025, 1264498991, 1, 1, 1, 1, 0, 'Projectmanagement', '<p>Projectmanagement</p>', 1, 1, 1264719600, 1246917600, 1264719600, 0, 1, 2, 0, 3600, 0, 1, 0, 0, 0, 0, 0, 1),
+(2, 1254232560, 1264501260, 1, 1, 1, 2, 0, 'Sampletask', '<p>Some random description in the task. Here you should write useful informations about this project</p>', 3, 1, 1256306040, 1254175200, 1256133240, 0, 1, 2, 1, 3600, 0, 1, 0, 0, 0, 0, 0, 2),
+(3, 1254233504, 1264501260, 1, 1, 2, 2, 0, 'Betarelease planen', '<ul><li>Welche Module mÃ¼ssen fehlerfrei laufen</li><li>Welche Module kommen als Debugversion in den Release</li><li>Updatezyklen fÃ¼r Beta Bugfixes festlegen</li></ul>', 3, 3, 1254233040, 1254175200, 1254233040, 0, 2, 2, 1, 10800, 0, 0, 0, 0, 0, 0, 0, 3),
+(4, 1254233534, 1264501260, 1, 1, 1, 2, 0, 'Random Task', '<p>askfdl asldfjalsdfjalksdjfasdf adfa sdf asdfasdf</p>', 3, 1, 1256220660, 1254175200, 1254233460, 0, 3, 3, 1, 3600, 0, 1, 0, 0, 0, 0, 0, 4),
+(5, 1254233577, 1264501260, 1, 1, 1, 2, 3, 'Subtask', '<p>Das ist ein Subtask im Container</p><p>Verschachtelung beliebig tief mÃ¶glich</p>', 3, 1, 1254233520, 1254175200, 1254233520, 0, 4, 2, 1, 3600, 0, 0, 0, 0, 0, 0, 0, 5),
+(6, 1254233620, 1264501260, 1, 1, 1, 2, 0, 'Noch ein Task', '<p>salkdfj adlsdjfalksdjfasjdfasdf asdfa sdfa sf</p>', 1, 3, 1257001980, 1254175200, 1256742780, 0, 5, 2, 1, 3600, 0, 1, 0, 0, 0, 0, 0, 6),
+(7, 1254233652, 1264501260, 1, 1, 1, 2, 3, 'Unbedingt schnell erledigen', '<p>Das ist sehr wichtig</p>', 2, 1, 1254233580, 1254175200, 1254233580, 0, 6, 3, 1, 19200, 0, 0, 0, 0, 0, 0, 0, 7),
+(8, 1264669127, 1264682012, 1, 0, 2, 4, 0, 'Hosting-Move', '<p>Hosting-Move</p>', 0, 14, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0),
+(9, 1264669127, 1264669958, 1, 0, 2, 4, 0, 'Conception', '<p>Conception</p>', 0, 14, 0, 0, 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1),
+(10, 1264669127, 1264669965, 1, 0, 2, 4, 0, 'Design', '<p>Design</p>', 0, 14, 0, 0, 0, 0, 3, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2),
+(11, 1264669127, 1264672090, 1, 0, 2, 4, 0, 'Developpment', '<p>Developpment</p>', 0, 14, 0, 0, 0, 0, 4, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 3),
+(12, 1264669127, 1264669891, 1, 0, 2, 4, 0, 'Testing & Quality Managmenet', '<p>Testing And Quality Managmenet</p>', 0, 14, 0, 0, 0, 0, 5, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 3),
+(13, 1264669127, 1264669896, 1, 0, 2, 4, 0, 'Bugs', '<p>Bugs</p>', 0, 14, 0, 0, 0, 0, 6, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 4),
+(14, 1264669127, 1264669916, 1, 0, 2, 4, 0, 'Change Requests', '<p>Change Requests</p>', 0, 14, 0, 0, 0, 0, 7, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 5),
+(15, 1264669127, 1264669975, 1, 0, 2, 4, 0, 'Short documentations', '<p>Short documentations</p>', 0, 14, 0, 0, 0, 0, 8, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 6),
+(16, 1264669127, 1264670031, 1, 1, 2, 4, 0, 'Short documentations', '<p>Short documentations</p>', 0, 14, 0, 0, 0, 0, 9, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 7),
+(17, 1264670270, 1264697332, 1, 0, 1, 4, 8, 'Copy the website', '<p>https://www.domain.com</p><p>User: administrators</p><p>PW: ******</p>', 3, 3, 1265361420, 1264670220, 1265275020, 0, 10, 2, 1, 28800, 0, 1, 0, 0, 0, 0, 0, 0),
+(18, 1264670270, 1264670446, 1, 0, 1, 4, 8, 'Change DNS', '<p>Localisation of installation:</p><p>Domain name:</p>', 14, 14, 1265361420, 1265275020, 1265275020, 0, 11, 2, 1, 3600, 0, 1, 0, 0, 0, 0, 0, 1),
+(19, 1264670270, 1264670457, 1, 1, 1, 4, 8, 'Change DNS', '<p>Localisation of installation:</p><p>Domain name:</p>', 3, 3, 1265361420, 1264670220, 1265275020, 0, 12, 2, 1, 28800, 0, 1, 0, 0, 0, 0, 0, 2),
+(20, 1264670578, 1264670578, 1, 0, 1, 4, 8, 'Checking the new website / migrate adjustments', '<p>Checking the new website / migrate adjustments</p>', 3, 3, 1265361720, 1265016120, 1265361720, 0, 13, 2, 1, 14400, 0, 0, 0, 0, 0, 0, 0, 3),
+(21, 1264670728, 1264670737, 1, 0, 1, 4, 8, 'Documentation of adjustments', '<p>- moving again</p><p>- list with files, templates, sites, configs</p><p>- notice the necessary changes for working on our sever</p>', 3, 3, 1265361900, 1265361840, 1265361900, 0, 14, 2, 1, 3600, 0, 1, 0, 0, 0, 0, 0, 4),
+(22, 1264670849, 1264670849, 1, 0, 1, 4, 9, 'Analysis', '<p>analysis of the necessary menu points</p>', 14, 14, 1265621220, 1265621160, 1265621160, 0, 15, 2, 3, 21600, 0, 0, 0, 0, 0, 0, 0, 0),
+(23, 1264670952, 1264670952, 1, 0, 1, 4, 9, 'Technical Workshop', '<p>Basic is task 4.15</p><p>- specifications</p><p>- planing implementation</p>', 14, 14, 1265966880, 1265707680, 1265966880, 0, 16, 2, 3, 28800, 0, 0, 0, 0, 0, 0, 0, 1),
+(24, 1264671036, 1264671036, 1, 0, 1, 4, 9, 'Designing Workshop', '<p>- Navigation</p><p>- Target audiance</p><p>- Design</p>', 14, 14, 1265967000, 1265707800, 1265967000, 0, 17, 2, 3, 18000, 0, 0, 0, 0, 0, 0, 0, 2),
+(25, 1264671334, 1264672573, 1, 0, 1, 4, 10, 'Screendesign', '<p>- Two proposals</p><p>- Extensions</p><p>- Corrections</p>', 14, 14, 1266571860, 1265967060, 1266571860, 0, 18, 2, 3, 72000, 0, 1, 0, 0, 0, 0, 0, 0),
+(26, 1264672051, 1264672051, 1, 0, 1, 4, 10, 'Header Images', '<p>Chosse some fitting images for the header, one per section</p>', 14, 14, 1265968020, 1265622420, 1265968020, 0, 19, 2, 3, 7200, 0, 0, 0, 0, 0, 0, 0, 1),
+(27, 1264672156, 1264672253, 1, 1, 1, 4, 11, 'Teaserboxes (Home)', '<p>Teaserboxes (Home)</p>', 14, 14, 1266572880, 1266227280, 1266572880, 0, 20, 2, 3, 10800, 0, 1, 0, 0, 0, 0, 0, 0),
+(28, 1264672232, 1264672588, 1, 0, 1, 4, 11, 'Picture gallery', '<p>Installation of pic-gallery</p>', 14, 14, 1266573000, 1266227400, 1266573000, 0, 21, 2, 2, 14400, 0, 1, 0, 0, 0, 0, 0, 1),
+(29, 1264672492, 1264672583, 1, 0, 1, 4, 11, 'Calendar', '<p>iplementing the calendar</p>', 14, 14, 1266573240, 1266227640, 1266573240, 0, 22, 2, 2, 10800, 0, 1, 0, 0, 0, 0, 0, 2),
+(30, 1264672719, 1264672719, 1, 0, 1, 4, 11, 'Rootline', '<p>Installation of the rootline and adjusting to the design</p>', 14, 14, 1266573480, 1266227880, 1266573480, 0, 23, 2, 2, 1800, 0, 0, 0, 0, 0, 0, 0, 3),
+(31, 1264672812, 1264672812, 1, 0, 1, 4, 11, 'Multilingualism', '<p>- German</p><p>- French</p><p>- English</p><p>- Italian</p>', 14, 14, 1266573540, 1266227940, 1266573540, 0, 24, 2, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 4),
+(32, 1264672895, 1264672895, 1, 0, 1, 4, 11, 'Search', '<p>- Full search</p><p>- Indexed search</p>', 14, 14, 1266573660, 1266228060, 1266573660, 0, 25, 2, 2, 3600, 0, 0, 0, 0, 0, 0, 0, 5),
+(33, 1264673012, 1264699549, 1, 0, 1, 4, 12, 'Testing I', '<p>Testing I</p>', 1, 1, 1266919320, 1266832920, 1266919320, 0, 26, 2, 4, 18000, 0, 0, 0, 0, 0, 0, 0, 0),
+(34, 1264673012, 1264779932, 1, 0, 1, 4, 12, 'Testing II', '<p>Testing II</p>', 1, 1, 1266919320, 1266832920, 1266919320, 0, 27, 2, 4, 10800, 0, 1, 0, 0, 0, 0, 0, 1),
+(35, 1264673012, 1264699622, 1, 0, 1, 4, 12, 'Testing Design', '<p>Testing Design</p>', 1, 1, 1266919320, 1266832920, 1266919320, 0, 28, 2, 4, 10800, 0, 1, 0, 0, 0, 0, 0, 2),
+(36, 1264673156, 1264779902, 1, 0, 1, 4, 13, 'Bugfixing', '<p>Bugfixing</p>', 1, 1, 1267178700, 1267005900, 1267178700, 0, 29, 3, 4, 36000, 0, 1, 0, 0, 0, 0, 0, 0),
+(37, 1264675482, 1264675511, 1, 0, 2, 7, 0, 'Conception', '<p>Concpetion</p>', 0, 14, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0),
+(38, 1264675522, 1264676282, 1, 0, 2, 7, 0, 'Production', '<p>Production</p>', 0, 14, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1),
+(39, 1264675547, 1264678296, 1, 1, 2, 7, 0, 'Charges', '<p>Charges</p>', 0, 14, 0, 0, 0, 0, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2),
+(40, 1264675562, 1264678334, 1, 1, 2, 7, 0, 'Design (external)', '<p>Design (external)</p>', 0, 14, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3),
+(41, 1264675587, 1264678351, 1, 1, 2, 7, 0, 'Templates + Basic modules', '<p>Templates + Basic modules</p>', 0, 14, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4),
+(42, 1264675605, 1264678451, 1, 0, 2, 7, 0, 'Individual extensions', '<p>Individual extensions</p>', 0, 14, 0, 0, 0, 0, 6, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 5),
+(43, 1264675618, 1264678455, 1, 0, 2, 7, 0, 'Change Requests', '<p>Change Requests</p>', 0, 2, 0, 0, 0, 0, 7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 6),
+(44, 1264675632, 1264678551, 1, 0, 2, 7, 0, 'Bugs', '<p>Bugs</p>', 0, 14, 0, 0, 0, 0, 8, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 7),
+(45, 1264675644, 1264675644, 1, 0, 2, 7, 0, 'Coaching', '<p>Coaching</p>', 0, 14, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8),
+(46, 1264675660, 1264675660, 1, 0, 2, 7, 0, 'Hosting', '<p>Hosting</p>', 0, 14, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9),
+(47, 1264676172, 1264681920, 1, 0, 1, 7, 37, 'Workshop', '<p>Zurich, 01.02.2010</p>', 2, 2, 1265108100, 1265021760, 1265108100, 1264681920, 11, 5, 1, 16200, 0, 0, 0, 0, 0, 0, 0, 0),
+(48, 1264676261, 1264681923, 1, 0, 1, 7, 37, 'Conception', '<p>Conception</p>', 2, 2, 1265108220, 1264676220, 1265108220, 1264681923, 12, 5, 1, 14400, 0, 0, 0, 0, 0, 0, 0, 1),
+(49, 1264676411, 1264681929, 1, 0, 1, 7, 38, 'Production', '<p>Production</p>', 2, 2, 1266404280, 1265194680, 1266404280, 0, 13, 3, 2, 72000, 0, 0, 0, 0, 0, 0, 0, 0),
+(50, 1264676484, 1264676484, 1, 0, 1, 7, 38, 'Testing', '<p>Testing</p>', 14, 14, 1266577200, 1266404400, 1266577200, 0, 14, 2, 4, 18000, 0, 0, 0, 0, 0, 0, 0, 1),
+(51, 1264678450, 1264678450, 1, 0, 1, 7, 42, 'Search', '<p>Search functions</p>', 2, 2, 1266579180, 1266233580, 1266579180, 0, 15, 2, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 0),
+(52, 1264678488, 1264678488, 1, 0, 1, 7, 43, 'Reserver CR Template', '<p>Reserver CR Template</p>', 14, 14, 1266579240, 1266233640, 1266579240, 0, 16, 2, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 0),
+(53, 1264678541, 1264678541, 1, 0, 1, 7, 43, 'Reserver CR Extensions', '<p>Reserver CR Extensions</p>', 14, 14, 1266579300, 1266233700, 1266579300, 0, 17, 2, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 1),
+(54, 1264678591, 1264678591, 1, 0, 1, 7, 44, 'Template Bugs', '<p>Template Bugs</p>', 2, 2, 1267011360, 1266838560, 1267011360, 0, 18, 2, 4, 7200, 0, 0, 0, 0, 0, 0, 0, 0),
+(55, 1264678634, 1264678634, 1, 0, 1, 7, 44, 'Application Bugs', '<p>Application Bugs</p>', 14, 14, 1267011420, 1266838560, 1267011360, 0, 19, 2, 4, 7200, 0, 0, 0, 0, 0, 0, 0, 1),
+(56, 1264678685, 1264678685, 1, 0, 1, 7, 45, 'Coaching', '<p>Coaching</p>', 14, 14, 1267789020, 1267443420, 1267789020, 0, 20, 2, 1, 28800, 0, 0, 0, 0, 0, 0, 0, 0),
+(57, 1264678726, 1264678726, 1, 0, 1, 7, 46, 'Domain registration', '<p>Domain registration</p>', 14, 14, 1266579480, 1266579480, 1266579480, 0, 21, 2, 2, 1800, 0, 0, 0, 0, 0, 0, 0, 0),
+(58, 1264678766, 1264678783, 1, 0, 1, 7, 46, 'Transfer', '<p>Transfer</p>', 2, 2, 1266579540, 1266579540, 1266579540, 0, 22, 2, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 0),
+(59, 1264678939, 1264785499, 1, 0, 1, 8, 0, 'Domain Registration', '<p>Domain Registration</p>', 14, 14, 1265024460, 1265024460, 1265024460, 0, 1, 3, 2, 1800, 0, 1, 0, 0, 0, 0, 0, 0),
+(60, 1264678987, 1264780327, 1, 0, 1, 8, 0, 'Data transfer', '<p>Data transfer</p>', 14, 14, 1265370120, 1265110920, 1265197320, 0, 2, 3, 2, 14400, 0, 1, 0, 0, 0, 0, 0, 1),
+(61, 1264679429, 1264692273, 1, 0, 1, 10, 0, 'C&C 01/09', '<p>Communication and clarification</p>', 14, 14, 1233402600, 1230810600, 1233402600, 0, 1, 8, 1, 7200, 0, 1, 0, 0, 0, 0, 0, 0),
+(62, 1264679429, 1264681846, 1, 0, 1, 10, 0, 'C&C 02/09', '<p>Communication and clarification</p>', 14, 14, 1235821800, 1233575400, 1235821800, 0, 2, 8, 1, 7200, 0, 1, 0, 0, 0, 0, 0, 1),
+(63, 1264679429, 1264680711, 1, 1, 1, 10, 0, 'C&C 06/09', '<p>Communication and clarification</p>', 14, 14, 1246359000, 1243853400, 1246359000, 0, 3, 2, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 2),
+(64, 1264679429, 1264681850, 1, 0, 1, 10, 0, 'C&C 03/09', '<p>Communication and clarification</p>', 14, 14, 1238496600, 1235908200, 1238496600, 0, 4, 8, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 2),
+(65, 1264679429, 1264681855, 1, 0, 1, 10, 0, 'C&C 04/09', '<p>Communication and clarification</p>', 14, 14, 1241088600, 1238583000, 1241088600, 0, 5, 8, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 3),
+(66, 1264679429, 1264681859, 1, 0, 1, 10, 0, 'C&C 05/09', '<p>Communication and clarification</p>', 14, 14, 1243767000, 1241175000, 1243767000, 0, 6, 8, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 4),
+(67, 1264679429, 1264679692, 1, 1, 1, 10, 0, 'C&C 01/09', '<p>Communication and clarification</p>', 14, 14, 1262260200, 1230810600, 1262260200, 0, 7, 2, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 3),
+(68, 1264679429, 1264680718, 1, 1, 1, 10, 0, 'C&C 07/09', '<p>Communication and clarification</p>', 14, 14, 1249037400, 1246445400, 1249037400, 0, 8, 2, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 3),
+(69, 1264679429, 1264681864, 1, 0, 1, 10, 0, 'C&C 08/09', '<p>Communication and clarification</p>', 14, 14, 1251715800, 1249123800, 1251715800, 0, 9, 8, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 4),
+(70, 1264679429, 1264679678, 1, 1, 1, 10, 0, 'C&C 01/09', '<p>Communication and clarification</p>', 14, 14, 1262260200, 1230810600, 1262260200, 0, 10, 2, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 5),
+(71, 1264679429, 1264679682, 1, 1, 1, 10, 0, 'C&C 01/09', '<p>Communication and clarification</p>', 14, 14, 1262260200, 1230810600, 1262260200, 0, 11, 2, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 6),
+(72, 1264679429, 1264679688, 1, 1, 1, 10, 0, 'C&C 01/09', '<p>Communication and clarification</p>', 14, 14, 1262260200, 1230810600, 1262260200, 0, 12, 2, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 7),
+(73, 1264680349, 1264681691, 1, 0, 1, 12, 0, 'Proposal work out', '<p>Proposal work out</p>', 14, 14, 1232021100, 1231110000, 1232021100, 0, 1, 8, 3, 28800, 0, 1, 0, 0, 0, 0, 0, 0),
+(74, 1264680403, 1264681695, 1, 0, 1, 12, 0, 'Adjust template', '<p>adjusting</p>', 14, 14, 1233144360, 1232021160, 1233144360, 0, 2, 8, 3, 14400, 0, 0, 0, 0, 0, 0, 0, 1),
+(75, 1264680642, 1264680667, 1, 0, 2, 11, 0, 'Monthly support', '<p>Monthly support</p>', 0, 14, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0),
+(76, 1264679429, 1264681792, 1, 0, 1, 11, 75, 'C&C 01/09', '<p>Communication and clarification</p>', 14, 14, 1233402600, 1230810600, 1233402600, 0, 2, 8, 1, 7200, 0, 1, 0, 0, 0, 0, 0, 0),
+(77, 1264679429, 1264681795, 1, 0, 1, 11, 75, 'C&C 02/09', '<p>Communication and clarification</p>', 14, 14, 1235821800, 1233575400, 1235821800, 0, 3, 8, 1, 7200, 0, 1, 0, 0, 0, 0, 0, 1),
+(78, 1264679429, 1264681810, 1, 0, 1, 11, 75, 'C&C 03/09', '<p>Communication and clarification</p>', 14, 14, 1238496600, 1235908200, 1238496600, 0, 4, 8, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 2),
+(79, 1264679429, 1264681812, 1, 0, 1, 11, 75, 'C&C 04/09', '<p>Communication and clarification</p>', 14, 14, 1241088600, 1238583000, 1241088600, 0, 5, 8, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 3),
+(80, 1264679429, 1264681815, 1, 0, 1, 11, 75, 'C&C 05/09', '<p>Communication and clarification</p>', 14, 14, 1243767000, 1241175000, 1243767000, 0, 6, 8, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 4),
+(81, 1264679429, 1264681818, 1, 0, 1, 11, 75, 'C&C 08/09', '<p>Communication and clarification</p>', 14, 14, 1251715800, 1249123800, 1251715800, 0, 7, 8, 1, 7200, 0, 0, 0, 0, 0, 0, 0, 4),
+(82, 1264680947, 1264680947, 1, 0, 2, 13, 0, 'Redesign', '<p>Redesign</p>', 0, 14, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(83, 1264680349, 1264681749, 1, 0, 1, 13, 82, 'Proposal work out', '<p>Proposal work out</p>', 14, 14, 1232021100, 1231110000, 1232021100, 1264681749, 2, 6, 3, 28800, 0, 0, 0, 0, 0, 0, 0, 0),
+(84, 1264680403, 1264681754, 1, 0, 1, 13, 82, 'Adjust template', '<p>adjusting</p>', 14, 14, 1233144360, 1232021160, 1233144360, 1264681754, 3, 6, 3, 14400, 0, 0, 0, 0, 0, 0, 0, 1),
+(85, 1264680985, 1264680985, 1, 0, 2, 9, 0, 'Hosting', '<p>Hosting</p>', 0, 14, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+(86, 1264678939, 1264681988, 1, 0, 1, 9, 85, 'Domain Registration', '<p>Domain Registration</p>', 14, 14, 1265024460, 1265024460, 1265024460, 1264681988, 2, 5, 2, 1800, 0, 0, 0, 0, 0, 0, 0, 0),
+(87, 1264678987, 1264779863, 1, 0, 1, 9, 85, 'Data transfer', '<p>Data transfer</p>', 17, 17, 1265370120, 1265110920, 1265197320, 0, 3, 3, 2, 14400, 0, 1, 0, 0, 0, 0, 0, 1),
+(88, 1264681137, 1264681486, 1, 0, 2, 5, 0, 'Relaunch 2010', '<p>Relaunch 2010</p>', 0, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0),
+(89, 1264669127, 1264681395, 1, 0, 2, 5, 88, 'Hosting-Move', '<p>Hosting-Move</p>', 0, 14, 0, 0, 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0),
+(90, 1264670270, 1264697772, 1, 0, 1, 5, 89, 'Copy the website', '<p>https://www.domain.com</p><p>User: administrators</p><p>PW: ******</p>', 3, 3, 1265361420, 1264670220, 1265275020, 1264697772, 3, 5, 1, 28800, 0, 1, 0, 0, 0, 0, 0, 0),
+(91, 1264670270, 1264681459, 1, 0, 1, 5, 89, 'Change DNS', '<p>Localisation of installation:</p><p>Domain name:</p>', 14, 14, 1265361420, 1265275020, 1265275020, 1264681420, 4, 5, 1, 3600, 0, 1, 0, 0, 0, 0, 0, 1),
+(92, 1264670578, 1264681537, 1, 0, 1, 5, 89, 'Checking the new website / migrate adjustments', '<p>Checking the new website / migrate adjustments</p>', 3, 3, 1265361720, 1265016120, 1265361720, 1264681537, 5, 5, 1, 14400, 0, 1, 0, 0, 0, 0, 0, 3),
+(93, 1264670728, 1264681533, 1, 0, 1, 5, 89, 'Documentation of adjustments', '<p>- moving again</p><p>- list with files, templates, sites, configs</p><p>- notice the necessary changes for working on our sever</p>', 3, 3, 1265361900, 1265361840, 1265361900, 1264681533, 6, 5, 1, 3600, 0, 1, 0, 0, 0, 0, 0, 4),
+(94, 1264669127, 1264681171, 1, 0, 2, 5, 88, 'Conception', '<p>Conception</p>', 0, 14, 0, 0, 0, 0, 7, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1),
+(95, 1264670849, 1264778151, 1, 0, 1, 5, 94, 'Analysis', '<p>analysis of the necessary menu points</p>', 14, 14, 1265621220, 1265621160, 1265621160, 1264681506, 8, 5, 3, 21600, 0, 1, 0, 0, 0, 0, 0, 0),
+(96, 1264670952, 1264681510, 1, 0, 1, 5, 94, 'Technical Workshop', '<p>Basic is task 4.15</p><p>- specifications</p><p>- planing implementation</p>', 14, 14, 1265966880, 1265707680, 1265966880, 1264681510, 9, 5, 3, 28800, 0, 0, 0, 0, 0, 0, 0, 1),
+(97, 1264671036, 1264778299, 1, 0, 1, 5, 94, 'Designing Workshop', '<p>- Navigation</p><p>- Target audiance</p><p>- Design</p>', 14, 14, 1265967000, 1265707800, 1265967000, 1264681515, 10, 5, 3, 18000, 0, 1, 0, 0, 0, 0, 0, 2),
+(98, 1264669127, 1264681184, 1, 0, 2, 5, 88, 'Design', '<p>Design</p>', 0, 14, 0, 0, 0, 0, 11, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2),
+(99, 1264671334, 1264681524, 1, 0, 1, 5, 98, 'Screendesign', '<p>- Two proposals</p><p>- Extensions</p><p>- Corrections</p>', 14, 14, 1266571860, 1265967060, 1266571860, 1264681524, 12, 5, 3, 72000, 0, 1, 0, 0, 0, 0, 0, 0),
+(100, 1264672051, 1264681529, 1, 0, 1, 5, 98, 'Header Images', '<p>Chosse some fitting images for the header, one per section</p>', 14, 14, 1265968020, 1265622420, 1265968020, 1264681529, 13, 5, 3, 7200, 0, 0, 0, 0, 0, 0, 0, 1),
+(101, 1264669127, 1264681194, 1, 0, 2, 5, 88, 'Developpment', '<p>Developpment</p>', 0, 14, 0, 0, 0, 0, 14, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 3),
+(102, 1264672232, 1264681600, 1, 0, 1, 5, 101, 'Picture gallery', '<p>Installation of pic-gallery</p>', 14, 14, 1266573000, 1266227400, 1266573000, 1264681600, 15, 5, 2, 14400, 0, 1, 0, 0, 0, 0, 0, 1),
+(103, 1264672492, 1264778302, 1, 0, 1, 5, 101, 'Calendar', '<p>iplementing the calendar</p>', 17, 17, 1266573240, 1266227640, 1266573240, 1264778170, 16, 5, 2, 10800, 0, 1, 0, 0, 0, 0, 0, 2),
+(104, 1264672719, 1264681606, 1, 0, 1, 5, 101, 'Rootline', '<p>Installation of the rootline and adjusting to the design</p>', 14, 14, 1266573480, 1266227880, 1266573480, 1264681606, 17, 5, 2, 1800, 0, 0, 0, 0, 0, 0, 0, 3),
+(105, 1264672812, 1264681611, 1, 0, 1, 5, 101, 'Multilingualism', '<p>- German</p><p>- French</p><p>- English</p><p>- Italian</p>', 14, 14, 1266573540, 1266227940, 1266573540, 1264681611, 18, 5, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 4),
+(106, 1264672895, 1264780124, 1, 0, 1, 5, 101, 'Search', '<p>- Full search</p><p>- Indexed search</p>', 14, 14, 1266573660, 1266228060, 1266573660, 1264681614, 19, 5, 2, 3600, 0, 1, 0, 0, 0, 0, 0, 5),
+(107, 1264669127, 1264681215, 1, 0, 2, 5, 88, 'Testing & Quality Managmenet', '<p>Testing And Quality Managmenet</p>', 0, 14, 0, 0, 0, 0, 20, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 3),
+(108, 1264673012, 1264681620, 1, 0, 1, 5, 107, 'Testing I', '<p>Testing I</p>', 14, 14, 1266919320, 1266832920, 1266919320, 1264681620, 21, 5, 4, 18000, 0, 0, 0, 0, 0, 0, 0, 0),
+(109, 1264673012, 1264681624, 1, 0, 1, 5, 107, 'Testing II', '<p>Testing II</p>', 14, 14, 1266919320, 1266832920, 1266919320, 1264681624, 22, 5, 4, 10800, 0, 0, 0, 0, 0, 0, 0, 1),
+(110, 1264673012, 1264681630, 1, 0, 1, 5, 107, 'Testing Design', '<p>Testing Design</p>', 14, 14, 1266919320, 1266832920, 1266919320, 1264681630, 23, 5, 4, 10800, 0, 0, 0, 0, 0, 0, 0, 2),
+(111, 1264669127, 1264681229, 1, 0, 2, 5, 88, 'Bugs', '<p>Bugs</p>', 0, 14, 0, 0, 0, 0, 24, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 4),
+(112, 1264673156, 1264681634, 1, 0, 1, 5, 111, 'Bugfixing', '<p>Bugfixing</p>', 14, 14, 1267178700, 1267005900, 1267178700, 1264681634, 25, 5, 4, 36000, 0, 0, 0, 0, 0, 0, 0, 0),
+(113, 1264681255, 1264681255, 1, 0, 2, 6, 0, 'Relaunch 2010', '<p>Relaunch 2010</p>', 0, 14, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(114, 1264675482, 1264681277, 1, 0, 2, 6, 113, 'Conception', '<p>Concpetion</p>', 0, 14, 0, 0, 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0),
+(115, 1264676172, 1264768631, 1, 0, 1, 6, 114, 'Workshop', '<p>Zurich, 01.02.2010</p>', 2, 2, 1265108100, 1265021760, 1265108100, 0, 3, 3, 1, 16200, 0, 0, 0, 0, 0, 0, 0, 0),
+(116, 1264676261, 1264780320, 1, 0, 1, 6, 114, 'Conception', '<p>Conception</p>', 2, 2, 1265108220, 1264676220, 1265108220, 0, 4, 2, 1, 14400, 0, 1, 0, 0, 0, 0, 0, 1),
+(117, 1264675522, 1264681286, 1, 0, 2, 6, 113, 'Production', '<p>Production</p>', 0, 14, 0, 0, 0, 0, 5, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1),
+(118, 1264676411, 1264681286, 1, 0, 1, 6, 117, 'Production', '<p>Production</p>', 2, 2, 1266404280, 1265194680, 1266404280, 0, 6, 2, 2, 72000, 0, 0, 0, 0, 0, 0, 0, 0),
+(119, 1264676484, 1264681286, 1, 0, 1, 6, 117, 'Testing', '<p>Testing</p>', 14, 14, 1266577200, 1266404400, 1266577200, 0, 7, 2, 4, 18000, 0, 0, 0, 0, 0, 0, 0, 1),
+(120, 1264675605, 1264681296, 1, 0, 2, 6, 113, 'Individual extensions', '<p>Individual extensions</p>', 0, 14, 0, 0, 0, 0, 8, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 5),
+(121, 1264678450, 1264681296, 1, 0, 1, 6, 120, 'Search', '<p>Search functions</p>', 2, 2, 1266579180, 1266233580, 1266579180, 0, 9, 2, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 0),
+(122, 1264675618, 1264681310, 1, 0, 2, 6, 113, 'Change Requests', '<p>Change Requests</p>', 0, 2, 0, 0, 0, 0, 10, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 6),
+(123, 1264678488, 1264681310, 1, 0, 1, 6, 122, 'Reserver CR Template', '<p>Reserver CR Template</p>', 14, 14, 1266579240, 1266233640, 1266579240, 0, 11, 2, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 0),
+(124, 1264678541, 1264681310, 1, 0, 1, 6, 122, 'Reserver CR Extensions', '<p>Reserver CR Extensions</p>', 14, 14, 1266579300, 1266233700, 1266579300, 0, 12, 2, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 1),
+(125, 1264675632, 1264681324, 1, 0, 2, 6, 113, 'Bugs', '<p>Bugs</p>', 0, 14, 0, 0, 0, 0, 13, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 7),
+(126, 1264678591, 1264681324, 1, 0, 1, 6, 125, 'Template Bugs', '<p>Template Bugs</p>', 2, 2, 1267011360, 1266838560, 1267011360, 0, 14, 2, 4, 7200, 0, 0, 0, 0, 0, 0, 0, 0),
+(127, 1264678634, 1264681324, 1, 0, 1, 6, 125, 'Application Bugs', '<p>Application Bugs</p>', 14, 14, 1267011420, 1266838560, 1267011360, 0, 15, 2, 4, 7200, 0, 0, 0, 0, 0, 0, 0, 1),
+(128, 1264675644, 1264681337, 1, 0, 2, 6, 113, 'Coaching', '<p>Coaching</p>', 0, 14, 0, 0, 0, 0, 16, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8),
+(129, 1264678685, 1264681337, 1, 0, 1, 6, 128, 'Coaching', '<p>Coaching</p>', 14, 14, 1267789020, 1267443420, 1267789020, 0, 17, 2, 1, 28800, 0, 0, 0, 0, 0, 0, 0, 0),
+(130, 1264675660, 1264681348, 1, 0, 2, 6, 113, 'Hosting', '<p>Hosting</p>', 0, 14, 0, 0, 0, 0, 18, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9),
+(131, 1264678726, 1264681348, 1, 0, 1, 6, 130, 'Domain registration', '<p>Domain registration</p>', 14, 14, 1266579480, 1266579480, 1266579480, 0, 19, 2, 2, 1800, 0, 0, 0, 0, 0, 0, 0, 0),
+(132, 1264678766, 1264681348, 1, 0, 1, 6, 130, 'Transfer', '<p>Transfer</p>', 2, 2, 1266579540, 1266579540, 1266579540, 0, 20, 2, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 0),
+(133, 1264777846, 1264779482, 12, 0, 2, 14, 0, 'Todo before development', '<p>Things we have to check before we start writing any code</p>', 0, 14, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0),
+(134, 1264777926, 1264779814, 12, 0, 1, 14, 133, 'Check existing products', '<p>Try to find other solutions which may have a solution for the same problem</p>', 18, 14, 1267197060, 1266851460, 0, 0, 2, 3, 1, 25200, 0, 1, 0, 0, 0, 0, 0, 0),
+(135, 1264777926, 1264779846, 12, 0, 1, 14, 133, 'Analyse other solutions', '<p>Compare the pros and cons of the other products</p>', 18, 17, 1267715460, 1267456260, 0, 0, 3, 3, 1, 18900, 0, 1, 0, 0, 0, 0, 0, 1),
+(136, 1264777926, 1264779818, 12, 0, 1, 14, 133, 'Find valuable market segment', '<p>Who would buy this product?</p>', 18, 1, 1268061060, 1267456260, 0, 0, 4, 3, 1, 25200, 0, 1, 0, 0, 0, 0, 0, 2),
+(137, 1264778378, 1264779502, 12, 0, 2, 14, 0, 'Production', '<p>Coding</p>', 0, 12, 0, 0, 0, 0, 5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1),
+(138, 1264678987, 1264778482, 1, 0, 1, 9, 87, 'Data preparation for transfer', '<p>Data transfer preps</p><ol><li>Prepare</li><li>Check</li><li>Fix</li><li>Go!</li></ol>', 17, 17, 1265370120, 1265110920, 1265197320, 0, 4, 3, 2, 14400, 0, 1, 0, 0, 0, 0, 0, 1),
+(139, 1264675618, 1264778531, 1, 0, 2, 9, 0, 'Change Requests', '<p>Change Requests</p>', 0, 2, 0, 0, 0, 0, 5, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0),
+(140, 1264678488, 1264778531, 1, 0, 1, 9, 139, 'Reserver CR Template', '<p>Reserver CR Template</p>', 14, 14, 1266579240, 1266233640, 1266579240, 0, 6, 2, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 0),
+(141, 1264678541, 1264778531, 1, 0, 1, 9, 139, 'Reserver CR Extensions', '<p>Reserver CR Extensions</p>', 14, 14, 1266579300, 1266233700, 1266579300, 0, 7, 2, 2, 7200, 0, 0, 0, 0, 0, 0, 0, 1),
+(142, 1264778614, 1264778614, 17, 0, 1, 4, 15, 'Create Docu in wiki', '<p>Just do it...</p>', 3, 3, 1267197780, 1265037720, 1267197720, 0, 30, 2, 6, 8400, 0, 0, 0, 0, 0, 0, 0, 0),
+(143, 1264778792, 1264778792, 17, 0, 1, 4, 142, 'Another documentation for the customer', '<p>use OpenOffice</p>', 3, 3, 1275056760, 1269617160, 1272637560, 0, 31, 2, 6, 9000, 0, 0, 0, 0, 0, 0, 0, 0),
+(144, 1264779082, 1264779096, 12, 0, 1, 5, 0, 'This task was added realy quick', '<p>A very quick task</p>', 12, 12, 1265383882, 1264779082, 1265383882, 0, 26, 3, 7, 3600, 0, 1, 0, 0, 0, 0, 0, 1),
+(145, 1264779147, 1264779561, 12, 0, 1, 5, 0, 'Buy milk and bread', '<p>And some sugar</p>', 12, 12, 1265383947, 1264779147, 1265383947, 0, 27, 3, 3, 3600, 0, 1, 0, 0, 0, 0, 0, 2),
+(146, 1264779341, 1264779751, 12, 0, 1, 14, 137, 'Build Framework', '<p>Write framework code and structure</p>', 14, 14, 1270045200, 1268666400, 0, 0, 6, 3, 6, 7200, 0, 1, 0, 0, 0, 0, 0, 0),
+(147, 1264779341, 1264779595, 12, 0, 1, 5, 145, 'Build Framework', '<p>Write framework code and structure</p>', 14, 14, 1270045200, 1268666400, 0, 0, 28, 2, 6, 7200, 0, 0, 0, 0, 0, 0, 0, 1),
+(148, 1264779631, 1264779817, 18, 0, 1, 14, 0, 'Write enduser documentation', '<p>after finishing bugfixing the application, start planning the documentation roadmap and timeline</p>', 18, 18, 1265384431, 1264779631, 1265384431, 0, 7, 3, 7, 3600, 0, 1, 0, 0, 0, 0, 0, 2),
+(149, 1264780692, 1264780717, 1, 0, 1, 8, 0, 'What?', '<p>Whaaaaat</p>', 14, 14, 1264867080, 1263311820, 1264953420, 0, 3, 2, 1, 72000, 0, 1, 0, 0, 0, 0, 0, 2),
+(150, 1264780744, 1264785492, 1, 0, 1, 8, 149, 'Time estimated', '<p>Time estimated</p>', 14, 14, 1264953480, 1264780680, 1264953480, 0, 4, 2, 1, 38, 0, 1, 0, 0, 0, 0, 0, 0);
 
 --
--- Data for table `ext_project_userrole`
+-- Daten für Tabelle `ext_project_userrole`
 --
 
-INSERT INTO `ext_project_userrole` (`id`, `rolekey`, `title`, `deleted`) VALUES
-(1, 'projectleader', 'Projektleiter', 0),
-(2, 'developer', 'Entwickler', 0),
-(3, 'designer', 'Designer', 0),
-(4, 'external_projectleader', 'Externer Projektleiter', 0),
-(5, 'customer_contact', 'Ansprechpartner Kunde', 0);
+INSERT INTO `ext_project_userrole` (`id`, `date_create`, `id_user_create`, `date_update`, `rolekey`, `title`, `deleted`) VALUES
+(1, 0, 0, 1264696219, 'projectleader', 'Project manager', 0),
+(2, 0, 0, 1264696225, 'developer', 'Developer', 0),
+(3, 0, 0, 0, 'designer', 'Designer', 0),
+(4, 0, 0, 1264696237, 'external_projectleader', 'External project manager', 0),
+(5, 0, 0, 1264696246, 'customer_contact', 'Customer', 0);
 
 --
--- Data for table `ext_project_worktype`
+-- Daten für Tabelle `ext_project_worktype`
 --
 
 INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `type`) VALUES
 (1, 1254232852, 1, 1254232852, 0, 'Consulting', 0),
-(2, 1254232863, 1, 1254232863, 0, 'Entwicklung', 0),
+(2, 1254232863, 1, 1254232863, 0, 'Java-Development', 0),
 (3, 1254232867, 1, 1254232867, 0, 'Design', 0),
-(4, 1254232876, 1, 1254232876, 0, 'Testing', 0);
+(4, 1254232876, 1, 1254232876, 0, 'Testing', 0),
+(5, 0, 1, 1264696282, 0, 'Frontend Engineering', 0),
+(6, 0, 1, 1264696297, 0, 'Database Engineer', 0),
+(7, 0, 17, 1264778822, 0, 'Documentation', 0);
 
 --
--- Data for table `ext_timetracking_track`
+-- Daten für Tabelle `ext_search_filtercondition`
 --
 
-INSERT INTO `ext_timetracking_track` (`id`, `date_update`, `id_user_create`, `date_create`, `date_track`, `id_task`, `workload_tracked`, `workload_chargeable`, `comment`) VALUES
-(1, 1254233739, 1, 1254233726, 1254233726, 4, 16, 0, ''),
-(2, 1254233883, 1, 1254233883, 1254233883, 7, 6, 0, '');
+INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `id_user_create`, `deleted`, `id_set`, `filter`, `value`, `negate`) VALUES
+(7, 0, 0, 0, 0, 1, 'currentUserIsAssigned', '1', 0),
+(8, 0, 0, 0, 0, 1, 'status', '2,3', 0),
+(317, 1264779500, 1264779500, 1, 0, 3, 'owner', '17', 0),
+(263, 1264697139, 1264697139, 1, 0, 4, 'currentUserIsUserCreate', '', 0),
+(262, 1264697139, 1264697139, 1, 0, 4, 'status', '2,3', 0),
+(264, 1264697139, 1264697139, 1, 0, 4, 'deadlineDyn', 'nextweek', 0),
+(265, 1264697267, 1264697267, 1, 0, 5, 'currentUserIsAssigned', '', 0),
+(266, 1264697267, 1264697267, 1, 0, 5, 'creator', '17', 0),
+(267, 1264697267, 1264697267, 1, 0, 5, 'project', '5', 0),
+(285, 1264776776, 1264776776, 17, 0, 6, 'deadlineDyn', 'currentweek', 0),
+(284, 1264776776, 1264776776, 17, 0, 6, 'status', '2,3,7', 0),
+(299, 1264777478, 1264777478, 17, 0, 7, 'deadlineDyn', '', 0),
+(298, 1264777478, 1264777478, 17, 0, 7, 'status', '2,3,7', 0),
+(283, 1264776776, 1264776776, 17, 0, 6, 'currentUserIsAssigned', '', 0),
+(277, 1264776619, 1264776619, 17, 0, 8, 'projectleader', '15', 0),
+(278, 1264776619, 1264776619, 17, 0, 8, 'status', '2', 0),
+(286, 1264776776, 1264776776, 17, 0, 6, 'type', '1', 0),
+(300, 1264777478, 1264777478, 17, 0, 7, 'type', '1', 0),
+(297, 1264777478, 1264777478, 17, 0, 7, 'currentUserIsAssigned', '', 0),
+(306, 1264778981, 1264778981, 12, 0, 11, 'status', '2,3', 0),
+(303, 1264778957, 1264778957, 1, 0, 12, 'deadlineDyn', 'today', 0),
+(304, 1264778957, 1264778957, 1, 0, 12, 'status', '2,3', 0),
+(305, 1264778957, 1264778957, 1, 0, 12, 'currentUserIsAssigned', '', 0),
+(307, 1264778981, 1264778981, 12, 0, 11, 'type', '1', 0),
+(308, 1264778981, 1264778981, 12, 0, 11, 'currentUserIsAssigned', '', 0),
+(309, 1264779006, 1264779006, 12, 0, 13, 'status', '2,3', 0),
+(310, 1264779006, 1264779006, 12, 0, 13, 'type', '1', 0),
+(311, 1264779025, 1264779025, 1, 0, 14, 'status', '5,6,8', 0),
+(315, 1264779153, 1264779153, 1, 0, 15, 'projectleader', '1', 0),
+(314, 1264779153, 1264779153, 1, 0, 15, 'status', '8', 1),
+(318, 1264779500, 1264779500, 1, 0, 3, 'status', '2', 0);
 
 --
--- Data for table `ext_user_address`
+-- Daten für Tabelle `ext_search_filterset`
+--
+
+INSERT INTO `ext_search_filterset` (`id`, `date_update`, `date_create`, `id_user_create`, `deleted`, `sorting`, `is_hidden`, `usergroups`, `type`, `title`, `conjunction`) VALUES
+(1, 1246637647, 1246547545, 474, 0, 0, 1, '', 'task', 'Feedback erwartet', 'AND'),
+(3, 1264779500, 1264697040, 1, 0, 3, 0, '', 'task', 'Open Task', 'OR'),
+(4, 1264697272, 1264697139, 1, 0, 1, 0, '', 'task', 'Next things to do', 'AND'),
+(5, 1264697267, 1264697267, 1, 0, 2, 0, '', 'task', 'ABCT: Theodor assigned to me', 'AND'),
+(6, 1264776776, 1264776401, 17, 0, 1, 0, '', 'task', 'MyTasks this Week', 'AND'),
+(7, 1264777478, 1264776486, 17, 0, 0, 0, '', 'task', 'Tasks Today', 'AND'),
+(8, 1264777131, 1264776619, 17, 0, 0, 0, '', 'project', 'I am Projectleader', 'AND'),
+(12, 1264778957, 1264778957, 1, 0, 0, 0, '', 'task', 'Important (Deadline today)', 'AND'),
+(11, 1264778981, 1264778514, 12, 0, 0, 0, '', 'task', 'My Open Tasks', 'AND'),
+(13, 1264779006, 1264779006, 12, 0, 0, 0, '', 'task', 'All open/running tasks', 'AND'),
+(14, 1264779033, 1264779025, 1, 0, 4, 1, '', 'task', 'My Done Tasks (hidden on portal)', 'AND'),
+(15, 1264779157, 1264779095, 1, 0, 0, 0, '', 'project', 'To manage', 'AND');
+
+--
+-- Daten für Tabelle `ext_sysmanager_extension`
 --
 
 
 --
--- Data for table `ext_user_contactinfo`
+-- Daten für Tabelle `ext_timetracking_track`
 --
 
-INSERT INTO `ext_user_contactinfo` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `id_contactinfotype`, `info`, `preferred`) VALUES
-(1, 1259848722, 1, 1259845750, 0, '11', 'http://www.snowflake.ch/', 1),
-(2, 1259848722, 1, 1259845750, 0, '4', '+41 44 455 80 80', 1),
-(3, 1259848722, 1, 1259845750, 0, '1', 'info@snowflake.ch', 1),
-(4, 1259848722, 1, 1259845750, 0, '8', '+41 44 455 80 87', 1);
+INSERT INTO `ext_timetracking_track` (`id`, `date_create`, `date_update`, `id_user_create`, `date_track`, `id_task`, `workload_tracked`, `workload_chargeable`, `comment`) VALUES
+(1, 1254233726, 1254233739, 1, 1254233726, 4, 16, 0, ''),
+(2, 1254233883, 1254233883, 1, 1254233883, 7, 6, 0, ''),
+(3, 1264768637, 1264768637, 1, 1264768637, 115, 6, 0, ''),
+(4, 1264777333, 1264779849, 18, 1264779849, 60, 138, 0, ''),
+(5, 1264778773, 1264779814, 18, 1264779814, 134, 860, 0, ''),
+(6, 1264779082, 1264779098, 12, 1264779098, 144, 3611, 0, ''),
+(7, 1264779441, 1264779560, 12, 1264633200, 145, 9600, 0, ''),
+(8, 1264779442, 1264779820, 18, 1264779820, 136, 5, 0, ''),
+(9, 1264779447, 1264779847, 18, 1264779847, 135, 29, 0, ''),
+(10, 1264779532, 1264779752, 18, 1264779752, 146, 3, 0, ''),
+(11, 1264779566, 1264779566, 12, 1264779566, 145, 5, 0, ''),
+(12, 1264779631, 1264779818, 18, 1264779818, 148, 304, 0, ''),
+(13, 1264780868, 1264780868, 1, 1264780868, 87, 1005, 0, ''),
+(14, 1264784771, 1264784771, 1, 1264784771, 59, 348, 0, '');
 
 --
--- Data for table `ext_user_contactinfotype`
+-- Daten für Tabelle `ext_timetracking_tracking`
+--
+
+INSERT INTO `ext_timetracking_tracking` (`id`, `date_create`, `date_update`, `id_user_create`, `id_task`) VALUES
+(4, 1264778433, 1264778433, 17, 138);
+
+--
+-- Daten für Tabelle `ext_user_address`
+--
+
+INSERT INTO `ext_user_address` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_addresstype`, `street`, `postbox`, `city`, `region`, `zip`, `id_country`, `is_preferred`, `comment`, `id_holidayset`) VALUES
+(1, 1264581712, 1264581712, 1, 0, 1, 'Schneestrasse 23', '', 'Zürich', 'Zürich', '8000', 41, 0, '', 1),
+(2, 1264581965, 1264584253, 1, 0, 1, 'Winterthurerstrasse 112', '', 'Zürich', 'Zürich', '8052', 41, 0, '', 1),
+(3, 1264581965, 1264584253, 1, 0, 2, 'Winterthurerstrasse 110', '', 'Zürich', '', '8052', 41, 0, '', 1),
+(4, 1264581965, 1264584253, 1, 0, 3, 'Winterthurerstrasse 108', '', 'Zürich', 'Zürich', '8052', 41, 0, '', 1),
+(5, 1264582231, 1264694791, 1, 0, 2, '26-1 Sakuragaoka-cho ', '', 'Tokyo ', '0', '150-8512', 107, 1, '', 4),
+(6, 1264582333, 1264694342, 1, 0, 1, 'Lakeside View 22', 'PO Box189', 'Santa Rosa CA', '0', '29334', 74, 1, '', 1),
+(7, 1264582503, 1264582503, 1, 0, 1, 'Heimweg 18', '', 'Bern', '', '3001', 0, 0, '', 1),
+(8, 1264583324, 1264694440, 1, 0, 1, 'Hillside Park ', '', 'Streetalete', '0', '25886', 220, 1, '', 1),
+(9, 1264583514, 1264692917, 1, 0, 1, 'Swansea', '', 'Al aware', '0', 'MA 02777', 220, 0, '', 2),
+(10, 1264583707, 1264694209, 1, 0, 1, 'スノーフレイク株式会社', '', '幕張', '0', '階B2132', 107, 0, '', 1),
+(11, 1264583917, 1264583927, 1, 0, 1, 'Stadelhofferstrasse 30', '', 'Zug', 'Zug', '6341', 41, 0, '', 1),
+(12, 1264584243, 1264694660, 1, 0, 2, 'Many Hills, 10th Street NE', '', 'Bolter', '0', 'CO 85302', 220, 0, '', 2),
+(13, 1264587666, 1264780676, 1, 0, 2, 'Prince of Wales Passage', '', 'Camden', '', '12345', 74, 1, '', 0),
+(14, 1264587852, 1264778331, 1, 0, 1, 'Dreierstrasse 35', '', 'Zürich', '0', '8000', 41, 0, '', 1),
+(15, 1264696524, 1264696717, 1, 0, 2, 'Zweierstrasse 35', '', 'Zürich', 'Zürich', '8004', 41, 0, '', 1),
+(16, 1264780312, 1264780312, 18, 0, 1, 'Mike Myers Drive', '1234', 'Scarborough', '', '80042', 0, 1, 'find out and add the region', 0);
+
+--
+-- Daten für Tabelle `ext_user_company`
+--
+
+INSERT INTO `ext_user_company` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `is_internal`, `ext_projectbilling_reduction`) VALUES
+(1, 1246886240, 1264500976, 1, 1, 'Demo Customer', 'Demo', 0, 101, 0, 0, 0),
+(3, 1246888856, 1264500988, 1, 1, 'Random Company', 'Rand', 0, 607, 0, 0, 0),
+(5, 1254213151, 1264500991, 1, 1, 'Snowflake Productions', 'Snowflake', 0, 1136156400, 0, 1, 0),
+(6, 1254213723, 1264500981, 1, 1, 'OneStepLeft Movie Factory', 'Movie Factory', 0, 1189548000, 0, 0, 0),
+(7, 1264516981, 1264580466, 1, 1, 'Test', '', 0, 0, 0, 0, 0),
+(8, 1264581712, 1264581712, 1, 0, 'Eisberg GmbH', 'Eisberg', 0, 1262300400, 0, 0, 0),
+(9, 1264581965, 1264584253, 1, 0, 'Gripgrap Communications', 'Gripgrap', 0, 1262300400, 0, 0, 0),
+(10, 1264582231, 1264694791, 1, 0, 'Transmetric Co.', 'Tansmetric', 0, 1217541600, 0, 0, 0),
+(11, 1264582333, 1264694342, 1, 0, 'ABC-Tec', 'ABCT', 0, 1262300400, 0, 0, 0),
+(12, 1264582503, 1264582503, 1, 0, 'Flikflak', 'Flikflak', 0, 1262300400, 0, 0, 0),
+(13, 1264583324, 1264694440, 1, 0, 'Inovation Inc.', 'II', 0, 978303600, 0, 0, 0),
+(14, 1264583514, 1264692917, 1, 0, 'Goodmonth', 'Goodmonth', 0, 1262300400, 0, 0, 0),
+(15, 1264583707, 1264694209, 1, 0, 'Sugarion', 'sugarion', 0, 1262300400, 0, 0, 0),
+(16, 1264583917, 1264583927, 1, 0, 'Trava Line', 'Trava', 0, 1262300400, 0, 0, 0),
+(17, 1264584243, 1264694660, 1, 0, 'Greenflag Ltd.', 'GL', 0, 0, 0, 0, 0),
+(18, 1264587852, 1264778331, 1, 0, 'snowman production', 'smp', 0, 1262300400, 0, 1, 0),
+(19, 1264696524, 1264696717, 1, 0, 'todoyu', '', 0, 1259622000, 0, 1, 0);
+
+--
+-- Daten für Tabelle `ext_user_contactinfo`
+--
+
+INSERT INTO `ext_user_contactinfo` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_contactinfotype`, `info`, `preferred`) VALUES
+(1, 1259845750, 1259848722, 1, 0, '11', 'http://www.snowflake.ch/', 1),
+(2, 1259845750, 1259848722, 1, 0, '4', '+41 44 455 80 80', 1),
+(3, 1259845750, 1259848722, 1, 0, '1', 'info@snowflake.ch', 1),
+(4, 1259845750, 1259848722, 1, 0, '8', '+41 44 455 80 87', 1),
+(5, 1264581204, 1264584523, 1, 0, '4', '044 325 48 45', 0),
+(6, 1264581712, 1264581712, 1, 0, '1', 'info@eisberggmbh.ch', 0),
+(7, 1264581965, 1264584253, 1, 0, '1', 'info@gripgrap.com', 0),
+(8, 1264581965, 1264584253, 1, 0, '8', '044 400 12 12', 0),
+(9, 1264581965, 1264584253, 1, 0, '4', '044 400 11 11', 0),
+(10, 1264582231, 1264694791, 1, 0, '1', 'admin@transmetric.co.jp', 0),
+(11, 1264582231, 1264694791, 1, 0, '4', '123456789', 1),
+(12, 1264582231, 1264694791, 1, 0, '11', 'www.elfenflug.ch', 0),
+(13, 1264582333, 1264694342, 1, 0, '1', 'abc@abc-tec.com', 0),
+(14, 1264582333, 1264694342, 1, 0, '4', '890342332234', 1),
+(15, 1264582333, 1264694342, 1, 0, '11', 'abc-tec.com', 0),
+(16, 1264582503, 1264582503, 1, 0, '1', 'info@flikflak.com', 0),
+(17, 1264582503, 1264582503, 1, 0, '4', '031 414 85 21', 0),
+(18, 1264582503, 1264582503, 1, 0, '11', 'www.flikflak.com', 0),
+(19, 1264583324, 1264694440, 1, 0, '1', 'info@inoinc.com', 0),
+(20, 1264583324, 1264694440, 1, 0, '4', '+1 874.433.1980', 0),
+(21, 1264583514, 1264692917, 1, 0, '1', 'admin@goodmonth.com', 0),
+(22, 1264583514, 1264692917, 1, 0, '4', '3000063085', 1),
+(23, 1264583707, 1264583707, 1, 0, '1', 'sugarion@sugarino.ch', 0),
+(24, 1264583707, 1264694209, 1, 0, '4', '70982200', 0),
+(25, 1264583917, 1264583927, 1, 0, '1', 'trava@trava.com', 1),
+(26, 1264583917, 1264583927, 1, 0, '8', '041 211 01 46', 0),
+(27, 1264583917, 1264583927, 1, 0, '6', '079 211 01 45', 0),
+(28, 1264583917, 1264583927, 1, 0, '4', '041 211 01 45', 0),
+(29, 1264583917, 1264583927, 1, 0, '11', 'www.trava.com', 0),
+(30, 1264584243, 1264694660, 1, 0, '1', 'contact@www.greenflag-limited.com', 0),
+(31, 1264584243, 1264694660, 1, 0, '4', '9872154832322', 0),
+(32, 1264584243, 1264694660, 1, 0, '11', 'www.greenflag-limited.com', 0),
+(33, 1264584484, 1264585029, 1, 0, '4', '052 714 21 15', 0),
+(34, 1264584484, 1264585029, 1, 0, '12', 'marcel.gieger', 0),
+(35, 1264584484, 1264585029, 1, 0, '1', '', 0),
+(36, 1264584523, 1264584523, 1, 0, '12', 'vahsstefan', 0),
+(37, 1264584644, 1264696456, 1, 0, '4', ' 041 211 01 50', 0),
+(38, 1264584644, 1264696456, 1, 0, '12', 'seiesenring80', 0),
+(39, 1264584718, 1264694209, 1, 0, '1', 'sugarion@sugarion.jp', 1),
+(40, 1264584718, 1264694209, 1, 0, '11', 'www.sugarion.jp', 0),
+(41, 1264584779, 1264695082, 1, 0, '1', 'd.sander@sugarion.ch', 0),
+(42, 1264584779, 1264695082, 1, 0, '4', '044 455 77 25', 0),
+(43, 1264585014, 1264695058, 1, 0, '4', '061 284 45 80', 0),
+(44, 1264585014, 1264695058, 1, 0, '12', 'sfreud', 0),
+(45, 1264585252, 1264780160, 1, 0, '4', '987654321', 1),
+(46, 1264585252, 1264780160, 1, 0, '6', '1234567899', 0),
+(47, 1264585252, 1264780160, 1, 0, '12', 'alexanderzuger', 0),
+(48, 1264585252, 1264780160, 1, 0, '5', 'azuger@bluewin.ch', 1),
+(49, 1264585479, 1264695045, 1, 0, '8', '052 722 98 99', 0),
+(50, 1264585479, 1264695045, 1, 0, '5', 'timo.elfenflug@gmail.com', 0),
+(51, 1264585479, 1264695045, 1, 0, '7', '052 720 98 99', 0),
+(52, 1264585479, 1264695045, 1, 0, '6', '079 720 98 98', 0),
+(53, 1264585479, 1264695045, 1, 0, '9', '079 322 12 52', 0),
+(54, 1264585479, 1264695045, 1, 0, '12', 'timoeflenflug', 0),
+(55, 1264585479, 1264695045, 1, 0, '4', '052 722 98 98', 0),
+(56, 1264585479, 1264695045, 1, 0, '2', '052 720 98 98', 0),
+(57, 1264585573, 1264585573, 1, 0, '4', '031 414 85 21', 1),
+(58, 1264585673, 1264585673, 1, 0, '4', '044 400 12 14', 0),
+(59, 1264585840, 1264587354, 1, 0, '4', '032 454 11 45', 0),
+(60, 1264587666, 1264780676, 1, 0, '4', '044 455 00 12', 1),
+(61, 1264587852, 1264778331, 1, 0, '1', 'info@snowman.ch', 0),
+(62, 1264587852, 1264778331, 1, 0, '4', '044 455 00 00', 0),
+(63, 1264587852, 1264778331, 1, 0, '8', '044 455 00 01', 0),
+(64, 1264694923, 1264694954, 1, 0, '5', 'shiroko.kaori@gmail.com', 0),
+(65, 1264696524, 1264696717, 1, 0, '1', 'team@todoyu.com', 0);
+
+--
+-- Daten für Tabelle `ext_user_contactinfotype`
 --
 
 INSERT INTO `ext_user_contactinfotype` (`id`, `deleted`, `key`, `title`) VALUES
@@ -239,132 +643,655 @@ INSERT INTO `ext_user_contactinfotype` (`id`, `deleted`, `key`, `title`) VALUES
 (12, 0, 'skype', 'user.contactinfo.skype');
 
 --
--- Data for table `ext_user_company`
+-- Daten für Tabelle `ext_user_group`
 --
 
-INSERT INTO `ext_user_company` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `is_internal`) VALUES
-(1, 1246888595, 1, 1246886240, 0, 'Demo Customer', 'Demo', 0, 101, 0, 0),
-(3, 1246888856, 1, 1246888856, 0, 'Random Company', 'Rand', 0, 607, 0, 0),
-(5, 1254213233, 1, 1254213151, 0, 'Snowflake Productions', 'Snowflake', 0, 1136156400, 0, 1),
-(6, 1254213723, 1, 1254213723, 0, 'OneStepLeft Movie Factory', 'Movie Factory', 0, 1189548000, 0, 0);
-
-
---
--- Data for table `ext_user_jobtype`
---
-
+INSERT INTO `ext_user_group` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `is_active`, `description`) VALUES
+(1, 1264761659, 0, 1, 0, 'Customers', 1, 'Our customers with access to todoyu'),
+(2, 1264762106, 0, 1, 0, 'Management', 1, ''),
+(5, 1264762192, 0, 1, 0, 'todoyu support team', 1, ''),
+(3, 1264762124, 0, 1, 0, 'Marketing', 1, ''),
+(4, 1264762153, 0, 1, 0, 'Employee', 1, 'Our staff'),
+(6, 1264779985, 1264780028, 12, 1, 'ssssssssssss', 1, '');
 
 --
--- Data for table `ext_user_mm_company_address`
+-- Daten für Tabelle `ext_user_holiday`
 --
 
 
 --
--- Data for table `ext_user_mm_company_contactinfo`
+-- Daten für Tabelle `ext_user_jobtype`
+--
+
+INSERT INTO `ext_user_jobtype` (`id`, `deleted`, `title`) VALUES
+(1, 0, 'Project manager'),
+(2, 0, 'CEO'),
+(3, 0, 'Receptionist'),
+(4, 0, 'Developer'),
+(5, 0, 'IT-Manager');
+
+--
+-- Daten für Tabelle `ext_user_mm_company_address`
+--
+
+INSERT INTO `ext_user_mm_company_address` (`id`, `id_company`, `id_address`) VALUES
+(1, 8, 1),
+(16, 9, 4),
+(15, 9, 3),
+(14, 9, 2),
+(30, 10, 5),
+(27, 11, 6),
+(7, 12, 7),
+(28, 13, 8),
+(24, 14, 9),
+(26, 15, 10),
+(12, 16, 11),
+(29, 17, 12),
+(37, 18, 14),
+(35, 19, 15);
+
+--
+-- Daten für Tabelle `ext_user_mm_company_contactinfo`
 --
 
 INSERT INTO `ext_user_mm_company_contactinfo` (`id`, `id_company`, `id_contactinfo`) VALUES
 (1, 5, 1),
 (2, 5, 2),
 (3, 5, 3),
-(4, 5, 4);
-
-
+(4, 5, 4),
+(5, 8, 6),
+(39, 9, 9),
+(38, 9, 8),
+(37, 9, 7),
+(78, 10, 12),
+(77, 10, 11),
+(76, 10, 10),
+(70, 11, 15),
+(69, 11, 14),
+(68, 11, 13),
+(15, 12, 16),
+(16, 12, 17),
+(17, 12, 18),
+(72, 13, 20),
+(71, 13, 19),
+(61, 14, 21),
+(60, 14, 22),
+(67, 15, 39),
+(66, 15, 24),
+(33, 16, 29),
+(32, 16, 28),
+(31, 16, 27),
+(30, 16, 26),
+(29, 16, 25),
+(75, 17, 30),
+(74, 17, 31),
+(73, 17, 32),
+(65, 15, 40),
+(89, 18, 63),
+(88, 18, 62),
+(87, 18, 61),
+(83, 19, 65);
 
 --
--- Data for table `ext_user_mm_company_user`
+-- Daten für Tabelle `ext_user_mm_company_user`
 --
 
 INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_user`, `id_workaddress`, `id_jobtype`) VALUES
-(1, 5, 1, 0, 0),
+(73, 19, 18, 15, 4),
 (2, 6, 2, 0, 0),
-(3, 6, 1, 0, 0),
 (4, 5, 2, 0, 0),
-(5, 5, 3, 0, 0);
-
-
---
--- Data for table `ext_user_group`
---
-
-INSERT INTO `ext_user_group` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `is_active`, `description`) VALUES
-(1, 1264439956, 0, 1, 0, 'Company Management', 1, 'The Bosses'),
-(2, 1264439984, 0, 1, 0, 'Head of department', 1, 'Area managers'),
-(3, 1264440030, 0, 1, 0, 'Accounting', 1, 'Normal emplyee'),
-(4, 1264440047, 0, 1, 0, 'Customers', 1, '');
-
-
-
---
--- Data for table `ext_user_mm_user_address`
---
-
+(5, 5, 3, 0, 0),
+(11, 8, 4, 0, 0),
+(50, 16, 6, 11, 1),
+(32, 11, 5, 0, 0),
+(43, 15, 7, 10, 0),
+(41, 14, 8, 9, 0),
+(70, 13, 9, 0, 0),
+(37, 10, 16, 0, 0),
+(18, 12, 11, 0, 0),
+(19, 9, 12, 0, 0),
+(34, 17, 13, 0, 0),
+(46, 15, 15, 10, 0),
+(39, 12, 10, 7, 0),
+(67, 18, 12, 14, 2),
+(74, 18, 14, 14, 0),
+(55, 19, 17, 15, 1),
+(71, 19, 1, 15, 4);
 
 --
--- Data for table `ext_user_mm_user_contactinfo`
+-- Daten für Tabelle `ext_user_mm_user_address`
 --
 
+INSERT INTO `ext_user_mm_user_address` (`id`, `id_user`, `id_address`) VALUES
+(4, 14, 13),
+(3, 1, 16);
 
 --
--- Data for table `ext_user_mm_user_group`
+-- Daten für Tabelle `ext_user_mm_user_contactinfo`
 --
+
+INSERT INTO `ext_user_mm_user_contactinfo` (`id`, `id_user`, `id_contactinfo`) VALUES
+(5, 4, 5),
+(17, 5, 35),
+(16, 5, 34),
+(15, 5, 33),
+(6, 4, 36),
+(84, 6, 37),
+(83, 6, 38),
+(70, 7, 42),
+(69, 7, 41),
+(66, 8, 44),
+(65, 8, 43),
+(88, 9, 45),
+(87, 9, 46),
+(86, 9, 47),
+(85, 9, 48),
+(62, 10, 56),
+(61, 10, 55),
+(60, 10, 54),
+(59, 10, 53),
+(58, 10, 52),
+(57, 10, 51),
+(56, 10, 50),
+(55, 10, 49),
+(30, 11, 57),
+(31, 12, 58),
+(33, 13, 59),
+(89, 14, 60),
+(38, 16, 64);
+
+--
+-- Daten für Tabelle `ext_user_mm_user_group`
+--
+
 INSERT INTO `ext_user_mm_user_group` (`id`, `id_user`, `id_group`) VALUES
-(1, 4, 4),
-(2, 1, 1),
-(3, 1, 2),
-(4, 2, 3);
-
-
---
--- Data for table `ext_user_panelwidget`
---
-
+(3, 18, 4),
+(7, 17, 5),
+(6, 12, 2),
+(8, 1, 5),
+(12, 6, 1);
 
 --
--- Data for table `ext_user_preference`
---
-
-INSERT INTO `ext_user_preference` (`id_user`, `ext`, `area`, `preference`, `item`, `value`) VALUES
-(1, 0, 0, 'tab', 0, 'portal'),
-(1, 112, 0, 'projecttabs', 0, '2'),
-(1, 112, 0, 'project', 0, '2'),
-(1, 112, 0, 'tasktree-subtasks', 0, '3'),
-(1, 111, 0, 'task-exp', 0, '2'),
-(1, 112, 112, 'tasktree-subtasks', 0, '3'),
-(1, 112, 0, 'tasktree-task-exp', 0, '7'),
-(1, 112, 112, 'task-tab', 7, 'timetracking'),
-(1, 111, 0, 'task-exp', 0, '4'),
-(1, 112, 0, 'tasktree-task-exp', 0, '4'),
-(1, 115, 0, 'filterset-task', 0, '4'),
-(1, 111, 0, 'filtersets', 0, '4');
-
---
--- Data for table `ext_user_right`
+-- Daten für Tabelle `ext_user_panelwidget`
 --
 
 
 --
--- Data for table `ext_user_user`
+-- Daten für Tabelle `ext_user_preference`
+--
+
+INSERT INTO `ext_user_preference` (`id`, `id_user`, `ext`, `area`, `preference`, `item`, `value`) VALUES
+(2282, 1, 0, 0, 'tab', 0, 'portal'),
+(2204, 1, 112, 0, 'project', 0, '10'),
+(1806, 1, 106, 0, 'tab', 0, 'person'),
+(2283, 1, 111, 0, 'tab', 0, 'selection'),
+(26, 1, 112, 0, 'detailsexpanded', 3, '1'),
+(2228, 1, 112, 0, 'projecttabs', 0, '10,4,8'),
+(874, 1, 112, 0, 'tasktree-subtasks', 0, '12'),
+(114, 1, 112, 0, 'tasktree-subtasks', 0, '8'),
+(104, 1, 112, 0, 'tasktree-task-exp', 0, '19'),
+(121, 1, 112, 0, 'tasktree-subtasks', 0, '9'),
+(140, 1, 112, 0, 'tasktree-subtasks', 0, '10'),
+(89, 1, 112, 0, 'tasktree-task-exp', 0, '16'),
+(233, 1, 112, 0, 'tasktree-subtasks', 0, '43'),
+(150, 1, 112, 0, 'tasktree-subtasks', 0, '11'),
+(133, 1, 112, 0, 'tasktree-task-exp', 0, '27'),
+(370, 1, 112, 0, 'detailsexpanded', 7, '1'),
+(160, 1, 112, 0, 'tasktree-subtasks', 0, '13'),
+(595, 1, 112, 112, 'tasktree-subtasks', 0, '88'),
+(209, 1, 112, 0, 'tasktree-subtasks', 0, '37'),
+(215, 1, 112, 0, 'tasktree-subtasks', 0, '38'),
+(2281, 1, 0, 1, 'tabsubmenu_planning', 0, 'calendar'),
+(224, 1, 112, 0, 'tasktree-subtasks', 0, '42'),
+(2077, 18, 106, 0, 'tab', 0, 'person'),
+(2084, 12, 120, 0, 'admintab', 0, 'usergroup'),
+(238, 1, 112, 0, 'tasktree-subtasks', 0, '44'),
+(240, 1, 112, 0, 'tasktree-subtasks', 0, '45'),
+(321, 1, 112, 0, 'detailsexpanded', 6, '1'),
+(246, 1, 112, 0, 'tasktree-subtasks', 0, '46'),
+(376, 1, 112, 0, 'detailsexpanded', 9, '1'),
+(244, 1, 112, 0, 'tasktree-subtasks', 0, '57'),
+(2207, 1, 126, 0, 'tab-general', 0, 'password'),
+(2118, 12, 112, 112, 'panelwidget-projectlist-filter', 0, '[{"filter":"fulltext","value":"web"}]'),
+(385, 1, 112, 0, 'detailsexpanded', 11, '1'),
+(447, 1, 112, 112, 'tasktree-subtasks', 0, '82'),
+(438, 1, 112, 0, 'detailsexpanded', 13, '1'),
+(415, 1, 112, 112, 'tasktree-subtasks', 0, '75'),
+(452, 1, 112, 112, 'tasktree-subtasks', 0, '85'),
+(2030, 1, 112, 112, 'tasktree-subtasks', 0, '113'),
+(523, 1, 112, 112, 'tasktree-subtasks', 0, '89'),
+(503, 1, 112, 112, 'tasktree-subtasks', 0, '94'),
+(2160, 1, 100, 100, 'module', 0, 'extensions'),
+(510, 1, 112, 112, 'tasktree-subtasks', 0, '98'),
+(511, 1, 112, 112, 'tasktree-subtasks', 0, '101'),
+(512, 1, 112, 112, 'tasktree-subtasks', 0, '107'),
+(513, 1, 112, 112, 'tasktree-subtasks', 0, '111'),
+(2045, 12, 120, 100, 'panelwidget-userselector-filter', 0, ''),
+(2040, 1, 112, 112, 'tasktree-subtasks', 0, '142'),
+(570, 1, 112, 112, 'tasktree-subtasks', 0, '37'),
+(571, 1, 112, 112, 'tasktree-subtasks', 0, '38'),
+(2208, 1, 126, 0, 'module', 0, 'general'),
+(2129, 1, 120, 100, 'panelwidget-userselector-filter', 0, 'eisen'),
+(625, 1, 120, 0, 'language', 0, 'en'),
+(1740, 1, 120, 0, 'admintab', 0, 'user'),
+(631, 1, 112, 112, 'task-tab', 61, 'comment'),
+(1918, 1, 115, 0, 'filterset-task', 0, '3'),
+(2178, 1, 103, 0, 'pwidget-taskbookmarks', 0, '0'),
+(728, 1, 112, 112, 'task-tab', 60, 'comment'),
+(2278, 1, 104, 104, 'date', 0, '1266447600'),
+(2279, 1, 104, 0, 'tab', 0, 'month'),
+(2277, 1, 104, 104, 'panelwidget-holidaysetselector', 0, '4'),
+(1624, 17, 0, 0, 'tab', 0, 'portal'),
+(1606, 17, 112, 0, 'project', 0, '4'),
+(1607, 17, 112, 0, 'projecttabs', 0, '4,7,9'),
+(793, 17, 112, 112, 'panelwidget-projectlist-filter', 0, '[{"filter":"status","value":["1","3","5","8","9"]}]'),
+(794, 17, 112, 112, 'panelwidget-projectstatusfilter', 0, '1,3,5,8,9'),
+(1537, 17, 112, 112, 'panelwidget-taskstatusfilter', 0, '1,2,3,4,5,6,7,8'),
+(811, 1, 104, 0, 'portal-event-expanded', 1, '1'),
+(2211, 1, 104, 0, 'portal-event-expanded', 1, '0'),
+(1401, 17, 106, 0, 'tab', 0, 'person'),
+(1609, 17, 100, 100, 'module', 0, 'records'),
+(1049, 17, 120, 100, 'panelwidget-userselector-filter', 0, 'test'),
+(859, 17, 112, 112, 'tasktree-subtasks', 0, '13'),
+(860, 17, 112, 0, 'tasktree-subtasks', 0, '13'),
+(869, 1, 112, 112, 'tasktree-subtasks', 0, '12'),
+(2037, 1, 112, 112, 'tasktree-subtasks', 0, '15'),
+(2035, 1, 112, 112, 'tasktree-subtasks', 0, '13'),
+(879, 1, 112, 112, 'task-tab', 35, 'comment'),
+(884, 1, 112, 111, 'task-tab', 35, 'comment'),
+(904, 17, 112, 112, 'tasktree-subtasks', 0, '88'),
+(899, 17, 112, 112, 'task-tab', 60, 'assets'),
+(905, 17, 112, 112, 'tasktree-subtasks', 0, '94'),
+(906, 17, 112, 112, 'tasktree-subtasks', 0, '101'),
+(2122, 12, 0, 0, 'tab', 0, 'project'),
+(932, 17, 112, 112, 'task-tab', 106, 'assets'),
+(1051, 17, 120, 0, 'admintab', 0, 'user'),
+(935, 17, 112, 112, 'task-tab', 95, 'comment'),
+(983, 1, 112, 111, 'task-tab', 95, 'assets'),
+(1274, 17, 115, 0, 'filterset-task', 0, '7'),
+(1595, 17, 111, 0, 'tab', 0, 'todo'),
+(1591, 17, 111, 0, 'filtersets', 0, '6'),
+(1301, 17, 115, 0, 'tab', 0, 'task'),
+(1279, 17, 115, 0, 'filterset-project', 0, '8'),
+(2147, 18, 0, 0, 'tab', 0, 'contact'),
+(1974, 18, 120, 0, 'language', 0, 'en'),
+(1173, 18, 126, 0, 'pwidget-profilemodules', 0, '0'),
+(2075, 18, 111, 0, 'tab', 0, 'todo'),
+(1221, 18, 112, 111, 'task-tab', 60, 'assets'),
+(1366, 18, 112, 111, 'task-tab', 0, 'comment'),
+(2132, 12, 112, 0, 'project', 0, '6'),
+(1371, 12, 112, 0, 'tasktree-subtasks', 0, '133'),
+(1398, 17, 126, 0, 'tab-general', 0, 'password'),
+(1568, 17, 0, 17, 'tabsubmenu_planning', 0, 'calendar'),
+(1305, 12, 112, 0, 'detailsexpanded', 14, '1'),
+(1569, 17, 104, 104, 'date', 0, '1265616000'),
+(1563, 17, 104, 0, 'tab', 0, 'month'),
+(1978, 18, 112, 0, 'project', 0, '14'),
+(1852, 18, 112, 111, 'task-tab', 134, 'timetracking'),
+(1505, 17, 120, 104, 'panelwidget-staffselector', 0, '{"multiple":false,"jobtypes":["0"],"users":["14","18","17","1"]}'),
+(2042, 12, 100, 100, 'module', 0, 'user'),
+(1351, 17, 112, 111, 'task-tab', 60, 'comment'),
+(1378, 12, 106, 0, 'tab', 0, 'person'),
+(1362, 17, 112, 0, 'tasktree-subtasks', 0, '101'),
+(1363, 17, 112, 0, 'tasktree-task-exp', 0, '101'),
+(1399, 17, 126, 0, 'module', 0, 'general'),
+(1402, 17, 104, 104, 'panelwidget-holidaysetselector', 0, '2,4,3,1'),
+(1673, 12, 115, 0, 'filterset-task', 0, '13'),
+(1470, 17, 112, 112, 'tasktree-subtasks', 0, '87'),
+(1979, 18, 112, 0, 'projecttabs', 0, ''),
+(1420, 17, 112, 0, 'tasktree-subtasks', 0, '85'),
+(1421, 17, 112, 0, 'tasktree-task-exp', 0, '85'),
+(1683, 12, 111, 0, 'tab', 0, 'selection'),
+(1447, 17, 104, 0, 'fulldayview', 0, '0'),
+(1462, 17, 112, 0, 'tasktree-subtasks', 0, '87'),
+(1463, 17, 112, 0, 'tasktree-task-exp', 0, '87'),
+(1512, 17, 112, 112, 'tasktree-subtasks', 0, '43'),
+(1526, 12, 112, 111, 'task-tab', 134, 'assets'),
+(1529, 12, 112, 111, 'task-tab', 0, 'comment'),
+(1558, 17, 112, 0, 'tasktree-subtasks', 0, '15'),
+(1559, 17, 112, 0, 'tasktree-task-exp', 0, '15'),
+(1587, 17, 112, 0, 'tasktree-subtasks', 0, '142'),
+(1588, 17, 112, 0, 'tasktree-task-exp', 0, '142'),
+(1917, 6, 0, 6, 'tabsubmenu_planning', 0, 'calendar'),
+(1850, 18, 112, 111, 'task-tab', 135, 'timetracking'),
+(1851, 18, 112, 111, 'task-tab', 136, 'timetracking'),
+(1682, 12, 111, 0, 'filtersets', 0, '13'),
+(1692, 1, 112, 112, 'panelwidget-projectlist-filter', 0, '[{"filter":"fulltext","value":""},{"filter":"status","value":["3","5","8","9"]}]'),
+(1693, 1, 112, 112, 'panelwidget-projectstatusfilter', 0, '3,5,8,9'),
+(1698, 1, 112, 112, 'panelwidget-taskstatusfilter', 0, '1,2,3,4,5,6,7,8'),
+(2133, 12, 112, 0, 'projecttabs', 0, '6,4,12'),
+(1717, 12, 112, 0, 'tasktree-task-exp', 0, '144'),
+(1731, 1, 115, 0, 'filterset-project', 0, '15'),
+(2152, 6, 0, 0, 'tab', 0, 'project'),
+(1733, 1, 118, 0, 'ext', 0, 'bookmark'),
+(2250, 1, 120, 104, 'panelwidget-staffselector', 0, '{"multiple":false,"jobtypes":["-1"],"users":["12"]}'),
+(2268, 1, 104, 104, 'panelwidget-eventtypeselector', 0, '1,2,7,3,4,5,6,8,11,12,13'),
+(1855, 12, 112, 0, 'tasktree-subtasks', 0, '137'),
+(1856, 12, 112, 0, 'tasktree-task-exp', 0, '137'),
+(1921, 18, 112, 112, 'tasktree-subtasks', 0, '137'),
+(1944, 12, 112, 112, 'tasktree-subtasks', 0, '145'),
+(1942, 12, 112, 112, 'tasktree-subtasks', 0, '137'),
+(2100, 12, 112, 0, 'pwidget-projectlist', 0, '0'),
+(1963, 18, 112, 111, 'task-tab', 148, 'comment'),
+(2116, 12, 112, 0, 'pwidget-projectstatusfilter', 0, '1'),
+(2102, 12, 112, 0, 'pwidget-quickproject', 0, '0'),
+(2103, 12, 112, 0, 'pwidget-taskstatusfilter', 0, '0'),
+(2104, 12, 103, 0, 'pwidget-taskbookmarks', 0, '0'),
+(1991, 12, 107, 0, 'pwidget-daytracks', 0, '1'),
+(2001, 6, 115, 0, 'tab', 0, 'project'),
+(2097, 1, 112, 111, 'task-tab', 106, 'assets'),
+(2109, 12, 112, 112, 'panelwidget-projectstatusfilter', 0, '1,3,5'),
+(2134, 12, 112, 112, 'tasktree-subtasks', 0, '113'),
+(2135, 12, 112, 112, 'tasktree-subtasks', 0, '114'),
+(2138, 6, 111, 0, 'tab', 0, 'feedback'),
+(2137, 12, 112, 0, 'tasktree-task-exp', 0, '116'),
+(2151, 12, 112, 112, 'task-tab', 116, 'assets'),
+(2144, 18, 100, 100, 'module', 0, 'extensions'),
+(2154, 6, 112, 0, 'pwidget-quickproject', 0, '0'),
+(2199, 1, 112, 0, 'tasktree-subtasks', 0, '149'),
+(2170, 1, 112, 0, 'pwidget-projectstatusfilter', 0, '1'),
+(2173, 1, 112, 0, 'pwidget-quickproject', 0, '1'),
+(2174, 1, 112, 0, 'pwidget-taskstatusfilter', 0, '1'),
+(2176, 1, 112, 0, 'pwidget-projectlist', 0, '1'),
+(2285, 1, 107, 0, 'pwidget-daytracks', 0, '0'),
+(2183, 1, 112, 112, 'task-tab', 149, 'comment'),
+(2221, 1, 111, 0, 'filtersets', 0, '12,4,5,3'),
+(2200, 1, 112, 0, 'tasktree-task-exp', 0, '149');
+
+--
+-- Daten für Tabelle `ext_user_right`
+--
+
+INSERT INTO `ext_user_right` (`id`, `ext`, `right`, `id_group`) VALUES
+(920, 111, 'filterPresetList:manageFilters', 5),
+(917, 111, 'panelwidgets:quicktaskWizard', 4),
+(915, 111, 'general:use', 1),
+(916, 111, 'panelwidgets:quicktaskWizard', 5),
+(914, 111, 'general:use', 4),
+(535, 101, 'asset:seePublic', 1),
+(536, 101, 'asset:seeAll', 5),
+(22, 103, 'general:use', 4),
+(23, 103, 'task:add', 4),
+(24, 103, 'task:remove', 4),
+(25, 103, 'panelwidgets:taskbookmarks', 4),
+(556, 104, 'event:editAll', 1),
+(555, 104, 'event:editAssigned', 1),
+(554, 104, 'event:editAssigned', 4),
+(553, 104, 'event:seeAll', 1),
+(552, 104, 'event:seeAll', 4),
+(551, 104, 'general:view', 1),
+(550, 104, 'general:view', 4),
+(549, 104, 'general:use', 1),
+(548, 104, 'general:use', 4),
+(598, 105, 'task:makePublic', 4),
+(184, 106, 'person:use', 5),
+(183, 106, 'panelwidgets:quickContact', 5),
+(182, 106, 'panelwidgets:contactSearch', 4),
+(181, 106, 'panelwidgets:contactSearch', 5),
+(180, 106, 'general:use', 4),
+(179, 106, 'general:use', 5),
+(175, 107, 'panelwidgets:daytracks', 5),
+(174, 107, 'general:use', 4),
+(173, 107, 'general:use', 5),
+(842, 112, 'panelwidgets:projectTree', 5),
+(841, 112, 'projectstatus:warranty:changeto', 1),
+(840, 112, 'projectstatus:warranty:changeto', 5),
+(232, 126, 'account:setLanguage', 5),
+(231, 126, 'general:use', 4),
+(230, 126, 'general:use', 5),
+(873, 115, 'filtersets:hideAll', 4),
+(871, 115, 'filtersets:deleteAll', 4),
+(872, 115, 'filtersets:hideAll', 5),
+(223, 119, 'task:seeTaskTab', 5),
+(222, 119, 'task:track', 4),
+(221, 119, 'task:track', 5),
+(220, 119, 'general:use', 4),
+(219, 119, 'general:use', 5),
+(79, 120, 'general:use', 5),
+(80, 120, 'general:usermanager', 5),
+(81, 120, 'user:add', 5),
+(82, 120, 'user:edit', 5),
+(83, 120, 'user:delete', 5),
+(84, 120, 'user:assignGroups', 5),
+(85, 120, 'group:add', 5),
+(86, 120, 'group:edit', 5),
+(87, 120, 'group:delete', 5),
+(88, 120, 'group:assignUsers', 5),
+(839, 112, 'projectstatus:cleared:changeto', 1),
+(838, 112, 'projectstatus:cleared:changeto', 5),
+(836, 112, 'projectstatus:done:changeto', 5),
+(837, 112, 'projectstatus:done:changeto', 1),
+(835, 112, 'projectstatus:progress:changeto', 1),
+(834, 112, 'projectstatus:progress:changeto', 5),
+(833, 112, 'projectstatus:planning:changeto', 1),
+(832, 112, 'projectstatus:planning:changeto', 5),
+(831, 112, 'projectstatus:warranty:see', 1),
+(830, 112, 'projectstatus:warranty:see', 5),
+(829, 112, 'projectstatus:cleared:see', 1),
+(828, 112, 'projectstatus:cleared:see', 5),
+(827, 112, 'projectstatus:done:see', 1),
+(826, 112, 'projectstatus:done:see', 5),
+(825, 112, 'projectstatus:progress:see', 1),
+(824, 112, 'projectstatus:progress:see', 5),
+(823, 112, 'projectstatus:planning:see', 1),
+(822, 112, 'projectstatus:planning:see', 5),
+(821, 112, 'taskstatus:customer:changeto', 1),
+(820, 112, 'taskstatus:customer:changeto', 5),
+(819, 112, 'taskstatus:cleared:changeto', 1),
+(818, 112, 'taskstatus:cleared:changeto', 5),
+(817, 112, 'taskstatus:rejected:changeto', 1),
+(816, 112, 'taskstatus:rejected:changeto', 5),
+(815, 112, 'taskstatus:accepted:changeto', 1),
+(814, 112, 'taskstatus:accepted:changeto', 5),
+(813, 112, 'taskstatus:done:changeto', 1),
+(812, 112, 'taskstatus:done:changeto', 5),
+(811, 112, 'taskstatus:confirm:changeto', 1),
+(810, 112, 'taskstatus:confirm:changeto', 5),
+(809, 112, 'taskstatus:progress:changeto', 1),
+(808, 112, 'taskstatus:progress:changeto', 5),
+(807, 112, 'taskstatus:open:changeto', 1),
+(806, 112, 'taskstatus:open:changeto', 5),
+(805, 112, 'taskstatus:planning:changeto', 1),
+(918, 111, 'panelwidgets:filterPresetList', 5),
+(919, 111, 'panelwidgets:filterPresetList', 4),
+(159, 100, 'general:use', 5),
+(160, 100, 'panelwidgets:adminmodules', 5),
+(537, 101, 'asset:upload', 5),
+(534, 101, 'asset:seePublic', 4),
+(533, 101, 'asset:seePublic', 5),
+(532, 101, 'general:use', 1),
+(531, 101, 'general:use', 4),
+(530, 101, 'general:use', 5),
+(176, 107, 'panelwidgets:daytracks', 4),
+(177, 107, 'daytracks:showHistory', 5),
+(178, 107, 'daytracks:showHistory', 4),
+(185, 106, 'person:use', 4),
+(186, 106, 'person:edit', 5),
+(187, 106, 'person:edit', 4),
+(188, 106, 'person:create', 5),
+(189, 106, 'person:create', 4),
+(190, 106, 'person:delete', 5),
+(191, 106, 'company:use', 5),
+(192, 106, 'company:use', 4),
+(193, 106, 'company:edit', 5),
+(194, 106, 'company:edit', 4),
+(195, 106, 'company:create', 5),
+(196, 106, 'company:create', 4),
+(197, 106, 'company:delete', 5),
+(877, 115, 'panelwidgets:searchFilterList', 4),
+(876, 115, 'panelwidgets:searchFilterList', 5),
+(869, 115, 'filtersets:save', 4),
+(870, 115, 'filtersets:deleteAll', 5),
+(868, 115, 'filtersets:save', 5),
+(209, 118, 'general:extensions', 5),
+(210, 118, 'general:allrecords', 5),
+(211, 118, 'extensions:info', 5),
+(212, 118, 'extensions:config', 5),
+(213, 118, 'extensions:rights', 5),
+(214, 118, 'extensions:records', 5),
+(215, 118, 'extensions:install', 5),
+(216, 118, 'extensions:uninstall', 5),
+(217, 118, 'extensions:update', 5),
+(218, 118, 'extensions:download', 5),
+(224, 119, 'task:seeTaskTab', 4),
+(225, 119, 'task:seeTracks', 5),
+(226, 119, 'task:seeTracks', 4),
+(227, 119, 'task:editOwn', 5),
+(228, 119, 'task:editOwn', 4),
+(229, 119, 'task:editAll', 5),
+(233, 126, 'account:setLanguage', 4),
+(234, 126, 'account:setPassword', 5),
+(235, 126, 'panelwidgets:profilemodules', 5),
+(236, 126, 'panelwidgets:profilemodules', 4),
+(596, 105, 'task:requestFeedback', 1),
+(594, 105, 'task:requestFeedback', 5),
+(595, 105, 'task:requestFeedback', 4),
+(593, 105, 'task:add', 1),
+(592, 105, 'task:add', 4),
+(597, 105, 'task:makePublic', 5),
+(591, 105, 'task:add', 5),
+(804, 112, 'taskstatus:planning:changeto', 5),
+(803, 112, 'taskstatus:customer:see', 1),
+(802, 112, 'taskstatus:customer:see', 5),
+(801, 112, 'taskstatus:cleared:see', 1),
+(800, 112, 'taskstatus:cleared:see', 5),
+(799, 112, 'taskstatus:rejected:see', 1),
+(798, 112, 'taskstatus:rejected:see', 5),
+(797, 112, 'taskstatus:accepted:see', 1),
+(796, 112, 'taskstatus:accepted:see', 5),
+(795, 112, 'taskstatus:done:see', 1),
+(794, 112, 'taskstatus:done:see', 5),
+(793, 112, 'taskstatus:confirm:see', 1),
+(792, 112, 'taskstatus:confirm:see', 5),
+(791, 112, 'taskstatus:progress:see', 1),
+(790, 112, 'taskstatus:progress:see', 5),
+(789, 112, 'taskstatus:open:see', 1),
+(788, 112, 'taskstatus:open:see', 5),
+(787, 112, 'taskstatus:planning:see', 1),
+(786, 112, 'taskstatus:planning:see', 5),
+(785, 112, 'container:cut', 1),
+(784, 112, 'container:cut', 5),
+(783, 112, 'container:copy', 1),
+(782, 112, 'container:copy', 5),
+(781, 112, 'container:clone', 1),
+(780, 112, 'container:clone', 5),
+(779, 112, 'container:delete', 5),
+(875, 115, 'filtersets:renameAll', 4),
+(866, 115, 'general:headlet', 4),
+(867, 115, 'general:headlet', 1),
+(865, 115, 'general:headlet', 5),
+(538, 101, 'asset:upload', 4),
+(539, 101, 'asset:upload', 1),
+(540, 101, 'asset:download', 5),
+(541, 101, 'asset:download', 4),
+(542, 101, 'asset:download', 1),
+(543, 101, 'asset:delete', 5),
+(544, 101, 'asset:delete', 1),
+(545, 101, 'asset:makepublic', 5),
+(546, 101, 'asset:makepublic', 4),
+(547, 101, 'asset:makepublic', 1),
+(557, 104, 'event:deleteAssigned', 1),
+(558, 104, 'event:deleteAll', 1),
+(559, 104, 'event:add', 4),
+(560, 104, 'event:add', 1),
+(561, 104, 'event:assignOthers', 4),
+(562, 104, 'event:assignOthers', 1),
+(563, 104, 'panelwidgets:calendar', 4),
+(564, 104, 'panelwidgets:calendar', 1),
+(565, 104, 'panelwidgets:quickEvent', 4),
+(566, 104, 'panelwidgets:eventTypeSelector', 4),
+(567, 104, 'panelwidgets:eventTypeSelector', 1),
+(568, 104, 'panelwidgets:holidaySetSelector', 4),
+(599, 105, 'task:makePublic', 1),
+(590, 105, 'task:seeAll', 5),
+(589, 105, 'general:use', 1),
+(588, 105, 'general:use', 4),
+(587, 105, 'general:use', 5),
+(600, 105, 'task:sendAsEmail', 5),
+(601, 105, 'task:sendAsEmail', 1),
+(602, 105, 'task:deleteAll', 5),
+(603, 105, 'task:editAll', 5),
+(604, 105, 'task:viewHistory', 5),
+(921, 111, 'filterPresetList:manageFilters', 4),
+(911, 111, 'general:use', 5),
+(912, 111, 'general:use', 3),
+(913, 111, 'general:use', 2),
+(874, 115, 'filtersets:renameAll', 5),
+(863, 115, 'general:use', 4),
+(864, 115, 'general:use', 1),
+(862, 115, 'general:use', 5),
+(778, 112, 'container:addcontainer', 1),
+(777, 112, 'container:addcontainer', 5),
+(776, 112, 'container:addtask', 1),
+(775, 112, 'container:addtask', 5),
+(774, 112, 'container:edit', 1),
+(773, 112, 'container:edit', 5),
+(772, 112, 'task:cut', 1),
+(771, 112, 'task:cut', 5),
+(770, 112, 'task:copy', 1),
+(769, 112, 'task:copy', 5),
+(768, 112, 'task:clone', 1),
+(767, 112, 'task:clone', 5),
+(766, 112, 'task:delete', 5),
+(765, 112, 'task:status', 1),
+(764, 112, 'task:status', 4),
+(763, 112, 'task:status', 5),
+(762, 112, 'task:addcontainer', 1),
+(761, 112, 'task:addcontainer', 5),
+(760, 112, 'task:addtask', 1),
+(759, 112, 'task:addtask', 5),
+(758, 112, 'task:edit', 1),
+(757, 112, 'task:edit', 5),
+(756, 112, 'project:addcontainer', 1),
+(755, 112, 'project:addcontainer', 4),
+(754, 112, 'project:addcontainer', 5),
+(753, 112, 'project:addtask', 1),
+(752, 112, 'project:addtask', 4),
+(751, 112, 'project:addtask', 5),
+(750, 112, 'project:status', 5),
+(749, 112, 'project:delete', 5),
+(748, 112, 'project:add', 5),
+(747, 112, 'project:edit', 5),
+(746, 112, 'project:details', 1),
+(745, 112, 'project:details', 4),
+(744, 112, 'project:details', 5),
+(743, 112, 'general:use', 1),
+(742, 112, 'general:use', 4),
+(741, 112, 'general:use', 5),
+(843, 112, 'panelwidgets:projectTree', 1),
+(844, 112, 'panelwidgets:statusFilter', 5),
+(845, 112, 'panelwidgets:statusFilter', 1),
+(846, 112, 'panelwidgets:quickProject', 5),
+(847, 112, 'panelwidgets:quickProject', 1),
+(878, 115, 'panelwidgets:searchFilterList', 1);
+
+--
+-- Daten für Tabelle `ext_user_user`
 --
 
 INSERT INTO `ext_user_user` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
-(1, 1246615200, 1264440227, 0, 0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'demo@todoyu.com', 1, 1, 'Bob', 'Thingummy', 'BOTH', 'm', '', '1966-10-05'),
-(2, 1254213351, 0, 1, 0, 'alfred', 'a55e28b5514b1b1292a9018549edc271', 'alfred345KJHFSD', 1, 1, 'Alfred', 'Hitchcock', 'ALHI', 'm', '', '1899-08-13'),
-(3, 1254213483, 0, 1, 0, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20'),
-(4, 1264439703, 1264440209, 1, 0, 'customer', '91ec1f9324753048c0096d036a694f86', 'customer@todoyu.com', 0, 1, 'Customer', 'Customer', 'KUKU', 'm', '', '0000-00-00');
+(1, 1246615200, 1264780312, 0, 0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'demo@todoyu.com', 1, 1, 'Bob', 'Thingummy', 'BOTH', 'm', '', '1966-10-05'),
+(2, 1254213351, 1264500957, 1, 1, 'alfred', 'a55e28b5514b1b1292a9018549edc271', 'alfred345KJHFSD', 1, 1, 'Alfred', 'Hitchcock', 'ALHI', 'm', '', '1899-08-13'),
+(3, 1254213483, 1264500951, 1, 1, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20'),
+(4, 1264581204, 1264584523, 1, 0, '', '', 'svahs@eisberggmbh.ch', 0, 0, 'Stefan', 'Vahs', 'STVA', 'm', '', '1979-12-14'),
+(5, 1264584484, 1264585029, 1, 0, '', '', 'mgieger@abc.ch', 0, 0, 'Marcel', 'Gieger', 'MAGI', 'm', '', '1985-01-12'),
+(6, 1264584644, 1264779168, 1, 0, 'seisenring', 'ee7da12693805fd92a9bbca3519affb6', 'sybilleeisenring@trava.com', 0, 1, 'Sybille', 'Eisenring', 'SYEI', 'w', '', '1980-04-04'),
+(7, 1264584779, 1264695082, 1, 0, '', '', 'd.sander@sugarion.ch', 0, 0, 'David', 'Sander', 'DASA', 'm', '', '1982-05-14'),
+(8, 1264585014, 1264695058, 1, 0, '', '', 'sfreud@goodmonth.com', 0, 0, 'Stefanie', 'Freud', 'STFR', 'w', '', '1985-12-21'),
+(9, 1264585252, 1264780160, 1, 0, '', '', 'azuger@inoinc.com', 0, 0, 'Alexander', 'Zuger', 'ALZU', 'm', '', '1972-03-02'),
+(10, 1264585479, 1264695045, 1, 0, '', '', '', 0, 0, 'Timo', 'Elfenflug', 'TIEL', 'm', '', '1968-07-17'),
+(11, 1264585573, 1264585573, 1, 0, '', '', 'villiger@flikflak.com', 0, 0, 'René', 'Villiger', 'REVI', 'm', '', '1975-08-18'),
+(12, 1264585673, 1264777257, 1, 0, 'kurz', '5c941644113eebae030cad64bf8cc670', 'i.kurz@gripgrap.com', 1, 1, 'Ivan', 'Kurz', 'IVKU', 'm', '', '1984-02-25'),
+(13, 1264585840, 1264587354, 1, 0, '', '', 'r.pfoertner@kleinweich.ch', 0, 0, 'Raymond', 'Pförtner', 'RAPF', 'm', '', '1965-01-02'),
+(14, 1264587666, 1264780676, 1, 0, '', '', 'sfriedrich@snowman.ch', 0, 0, 'Samuel', 'Friedrich', 'SAFR', 'm', '', '1980-03-02'),
+(15, 1264694201, 1264695108, 1, 0, '', '', 's.suzika@sugarion.jp', 0, 0, 'Scott', 'Suzika', '', 'm', '', '1959-01-30'),
+(16, 1264694923, 1264694954, 1, 0, '', '', 's.kaori@transmetric.co.jp', 0, 0, 'Kaori', 'Shiroko', 'KASH', 'w', '', '1985-11-28'),
+(17, 1264696599, 1264697416, 1, 0, 'test', '098f6bcd4621d373cade4e832627b4f6', 'nomail@todoyu.com', 1, 1, 'Yusaki', 'Theodor', 'Thyu', 'm', '', '0000-00-00'),
+(18, 1264696672, 1264780436, 1, 0, 'schmittchen', '5f4dcc3b5aa765d61d8327deb882cf99', 'nomail@todoyu.com', 0, 1, 'Schleicher', 'Schmittchen', 'SchSch', 'm', '', '0000-00-00'),
+(19, 1264696709, 1264696709, 1, 0, '', '', 'nomail@todoyu.com', 0, 0, 'Pius', 'Pieitsch', 'Pipi', 'm', '', '0000-00-00');
 
 --
--- Data for table `history`
---
-
-
---
--- Data for table `log`
---
-
-
---
--- Data for table `static_country`
+-- Daten für Tabelle `static_country`
 --
 
 INSERT INTO `static_country` (`id`, `iso_alpha2`, `iso_alpha3`, `iso_num`, `iso_num_currency`, `phone`) VALUES
@@ -608,7 +1535,7 @@ INSERT INTO `static_country` (`id`, `iso_alpha2`, `iso_alpha3`, `iso_num`, `iso_
 (241, 'HM', 'HMD', 334, '0', 0);
 
 --
--- Data for table `static_country_zone`
+-- Daten für Tabelle `static_country_zone`
 --
 
 INSERT INTO `static_country_zone` (`id`, `iso_alpha2_country`, `iso_alpha3_country`, `iso_num_country`, `code`) VALUES
@@ -1095,7 +2022,7 @@ INSERT INTO `static_country_zone` (`id`, `iso_alpha2_country`, `iso_alpha3_count
 (482, 'BR', 'BRA', 76, 'TO');
 
 --
--- Data for table `static_currency`
+-- Daten für Tabelle `static_currency`
 --
 
 INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `symbol_right`, `thousands_point`, `decimal_point`, `decimal_digits`, `sub_divisor`, `sub_symbol_left`, `sub_symbol_right`) VALUES
@@ -1262,42 +2189,6 @@ INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `sym
 (173, 'MGA', 969, '', '', '.', ',', 1, 5, '', ''),
 (174, 'SRD', 968, '$', '', '.', ',', 2, 100, '', ''),
 (175, 'TRY', 949, 'YTL', '', '.', ',', 2, 100, '', '');
-
---
--- Data for table `static_territory`
---
-
-INSERT INTO `static_territory` (`id`, `iso_num`, `parent_iso_num`) VALUES
-(1, 2, 0),
-(2, 9, 0),
-(3, 19, 0),
-(4, 142, 0),
-(5, 150, 0),
-(6, 30, 142),
-(7, 35, 142),
-(8, 62, 142),
-(9, 145, 142),
-(10, 39, 150),
-(11, 151, 150),
-(12, 154, 150),
-(13, 155, 150),
-(14, 830, 154),
-(15, 833, 154),
-(16, 5, 419),
-(17, 13, 419),
-(18, 21, 3),
-(19, 29, 419),
-(20, 11, 2),
-(21, 14, 2),
-(22, 15, 2),
-(23, 17, 2),
-(24, 18, 2),
-(25, 53, 9),
-(26, 54, 9),
-(27, 57, 9),
-(28, 61, 9);
-
-
 
 --
 -- Daten für Tabelle `static_language`
@@ -1488,3 +2379,47 @@ INSERT INTO `static_language` (`id`, `iso_alpha2`, `iso_alpha3`) VALUES
 (182, 'za', 'zha'),
 (183, 'zh', 'chi'),
 (184, 'zu', 'zul');
+
+--
+-- Daten für Tabelle `static_territory`
+--
+
+INSERT INTO `static_territory` (`id`, `iso_num`, `parent_iso_num`) VALUES
+(1, 2, 0),
+(2, 9, 0),
+(3, 19, 0),
+(4, 142, 0),
+(5, 150, 0),
+(6, 30, 142),
+(7, 35, 142),
+(8, 62, 142),
+(9, 145, 142),
+(10, 39, 150),
+(11, 151, 150),
+(12, 154, 150),
+(13, 155, 150),
+(14, 830, 154),
+(15, 833, 154),
+(16, 5, 419),
+(17, 13, 419),
+(18, 21, 3),
+(19, 29, 419),
+(20, 11, 2),
+(21, 14, 2),
+(22, 15, 2),
+(23, 17, 2),
+(24, 18, 2),
+(25, 53, 9),
+(26, 54, 9),
+(27, 57, 9),
+(28, 61, 9);
+
+--
+-- Daten für Tabelle `system_errorlog`
+--
+
+
+--
+-- Daten für Tabelle `system_log`
+--
+
