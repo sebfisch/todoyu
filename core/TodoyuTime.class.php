@@ -401,6 +401,21 @@ class TodoyuTime {
 
 
 	/**
+	 * Parse duration
+	 * Format: 32:50
+	 *
+	 * @param	String		$timeString
+	 * @return	Integer
+	 */
+	public static function parseDuration($timeString) {
+		$parts	= explode(':', $timeString);
+
+		return intval($parts[0])*3600 + TodoyuDiv::intInRange($parts[1], 0, 60)*60;
+	}
+
+
+
+	/**
 	 * Format a timestamp with one of the default dateformats in todoyu
 	 *
 	 * @see		core/config/dateformat.xml

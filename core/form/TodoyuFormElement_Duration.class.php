@@ -40,6 +40,24 @@ class TodoyuFormElement_Duration extends TodoyuFormElement_Timeinput {
 		TodoyuFormElement::__construct('duration', $name, $fieldset, $config);
 	}
 
+
+
+	/**
+	 * Set field value (seconds)
+	 *
+	 * @param	Mixed		$value
+	 */
+	public function setValue($value) {
+		if( is_numeric($value) ) {
+			$value	= intval($value);
+		} else {
+			$value	= TodoyuTime::parseDuration($value);
+		}
+
+		parent::setValue($value);
+	}
+
+
 }
 
 ?>
