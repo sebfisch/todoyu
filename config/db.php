@@ -21,10 +21,10 @@
 
 $CONFIG['DB'] = array(
 	'server'		=> 'localhost',
-	'username'		=> 'root',
-	'password'		=> '',
-	'database'		=> 'todoyu2',
-	'autoconnect'	=> true,
+	'username'		=> 'todoyu',
+	'password'		=> 'todoyu',
+	'database'		=> 'todoyu',
+	'autoconnect'	=> false,
 	'persistent'	=> true,
 	'debug'			=> false,
 	'queryHistory'	=> false
