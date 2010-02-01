@@ -123,25 +123,49 @@ var Todoyu = {
 	},
 
 
-
+	/**
+	 * Show notification
+	 * 
+	 * @param	String		type		('info', 'error', 'success')
+	 * @param	String		message
+	 * @param	Integer		countdown
+	 */
 	notify: function(type, message, countdown) {
 		Todoyu.Notification.add(type, message, countdown);
 	},
 
 
 
+	/**
+	 * Show error notification
+	 * 
+	 * @param	String		message
+	 * @param	Integer		countdown
+	 */
 	notifyError: function(message, countdown) {
 		this.notify('error', message, countdown);
 	},
 
 
 
+	/**
+	 * Show info notification
+	 * 
+	 * @param	String		message
+	 * @param	Integer		countdown
+	 */
 	notifyInfo: function(message, countdown) {
 		this.notify('info', message, countdown);
 	},
 
 
 
+	/**
+	 * Show success notification
+	 * 
+	 * @param	String		message
+	 * @param	Integer		countdown
+	 */
 	notifySuccess: function(message, countdown) {
 		this.notify('success', message, countdown);
 	},
@@ -157,6 +181,8 @@ var Todoyu = {
 		}
 		return context[func].apply(this, args);
 	},
+
+
 
 	log: function(element) {
 		if( typeof(console) !== 'undefined' ) {

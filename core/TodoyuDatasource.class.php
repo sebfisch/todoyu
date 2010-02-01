@@ -116,15 +116,6 @@ class TodoyuDatasource {
 	}
 
 
-
-
-
-
-
-
-
-
-
 	/**
 	 * Localize given static records with given label
 	 *
@@ -194,16 +185,13 @@ class TodoyuDatasource {
 				$labelField	= 'iso_num';
 				break;
 
-
 			case 'currency':
 				$labelField	= 'iso_alpha';
 				break;
 
-
 			case 'country_zone':
 				$labelField	= array('iso_alpha3_country', 'code');
 				break;
-
 
 			case 'country': default:
 				$labelField	= 'iso_alpha3';
@@ -212,9 +200,6 @@ class TodoyuDatasource {
 
 		return $labelField;
 	}
-
-
-
 
 
 
@@ -284,21 +269,24 @@ class TodoyuDatasource {
 	/**
 	 * Get region values (to current country) to render autocompleter suggestion from
 	 *
-	 * @return Array
+	 * @param	String	$sword
+	 * @return	Array
 	 */
 	public static function autocompleteRegions( $sword ) {
-			// get id of region input element (should be something like 'company-address-0-0-field-region')
+			// Get ID of region input element (should be something like 'company-address-0-0-field-region')
 		$inputElementID = TodoyuRequest::getParam('acelementid');
 
-			// get index of address fieldset containing the region and country field
+			// Get index of address fieldset containing the region and country field
 		$addressIndex = explode('-', $inputElementID);
 		$addressIndex = $addressIndex[2];
 
-		$formData		= TodoyuRequest::getAll();
-		$countryID		= $formData['company']['address'][ $addressIndex ]['id_country'];
+		$formData	= TodoyuRequest::getAll();
+		$contactType= $formData['formName'];	// 'person' or 'company'
+		$countryID	= intval($formData[$contactType]['address'][ $addressIndex ]['id_country']);
+
 		$countryIsoNum	= Todoyu::db()->getFieldValue('iso_num', 'static_country', 'id =' . $countryID );
 
-			// get suggestion values (regions beginning with so far typed text of 'region' field)
+			// Get suggestion values (regions beginning with so far typed text of 'region' field)
 		$whereClause	= ' iso_num_country = ' . $countryIsoNum;
 		$values			= self::getStaticValsBeginningWith( 'country_zone', 'localname', $whereClause, $sword, 'id', true, true );
 

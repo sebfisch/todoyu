@@ -28,9 +28,9 @@ Todoyu.AjaxResponders = {
 	 * Hooks called when request is completed
 	 */
 	completeHooks: [],
-	
-	
-	
+
+
+
 	/**
 	 * Register the used ajax responders
 	 */
@@ -40,13 +40,13 @@ Todoyu.AjaxResponders = {
 			'onComplete':	this.onComplete.bind(this)
 			//'onException':	this.onException.bind(this)
 		});
-		
+
 		this.addOnCompleteHook(Todoyu.Ajax.checkNoAccessHeader);
 		this.addOnCompleteHook(Todoyu.Ajax.checkPhpErrorHeader);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Add a new hook function which will be called when request is completed
 	 * 
@@ -55,9 +55,9 @@ Todoyu.AjaxResponders = {
 	addOnCompleteHook: function(hook) {
 		this.completeHooks.push(hook);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Call all registered hook functions
 	 * They receive the response object as only parameter
@@ -113,9 +113,9 @@ Todoyu.AjaxResponders = {
 			Todoyu.Ui.setLinkCursor(false);
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler when connection to server fails
 	 * 
@@ -127,6 +127,7 @@ Todoyu.AjaxResponders = {
 		alert('[LLL:core.ajax.requestFailed]');
 	},
 	
+
 
 
 	/**

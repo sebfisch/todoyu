@@ -77,7 +77,7 @@ Todoyu.ContextMenu = {
 	},
 
 
-	
+
 	/**
 	 * Detach contextmenu which are triggered to the triggerClass
 	 * 
@@ -92,7 +92,7 @@ Todoyu.ContextMenu = {
 	},
 
 
-	
+
 	/**
 	 * Detach contextmenu from a specific element
 	 * 
@@ -104,7 +104,8 @@ Todoyu.ContextMenu = {
 		}
 	},
 
-	
+
+
 	/**
 	 * Set menu dimensions (display position) and show the menu
 	 * 
@@ -119,13 +120,13 @@ Todoyu.ContextMenu = {
 		var menuWidth	= parseInt(menu.clientWidth, 10);
 		var screenHeight= document.viewport.getHeight();
 		var screenWidth	= document.viewport.getWidth();
-		
+
 			// Bugfix for FF2
 		if( (top === 0 || top - window.scrollY === 0) && event.screenX ) {
 			top 	= event.screenY + window.scrollY;
 			left	= event.screenX + window.scrollX;
 		}
-		
+
 			// Render menu on top of the pointer if clicked to near of the page bottom
 		if( (event.clientY + menuHeight) > screenHeight ) {
 			top = top - menuHeight;

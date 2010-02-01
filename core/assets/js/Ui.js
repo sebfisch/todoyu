@@ -538,4 +538,5 @@ Todoyu.Ui = {
 			 document.getElementsByTagName( "head" )[0].appendChild( fileref );
 		}
 	}
+	
 };

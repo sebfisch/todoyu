@@ -137,6 +137,24 @@ Todoyu.Notification = {
 
 
 
+	fadeAllNotes: function() {
+		$$('.note').each(function(note){
+			Effect.Fade(note.id, {'duration': 0.3});	
+		}.bind(this));
+	},
+
+
+
+	closeFirstNote: function() {
+		var notes= $$('.note');
+		if ( notes.length > 0 ) {
+		var openNotificationID= $$('.note')[0].id.replace('notification-note-','');
+			this.closeNote( openNotificationID );
+		}
+	},
+
+
+
 	/**
 	 * Handler being evoked when a note is closed (fade-out finished)
 	 * 
