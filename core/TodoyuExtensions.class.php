@@ -137,8 +137,8 @@ class TodoyuExtensions {
 	 * @param	String		$extKey
 	 * @return	String		Or FALSE
 	 */
-	public static function getExtPath($extKey) {
-		return PATH_EXT . DIRECTORY_SEPARATOR . $extKey;
+	public static function getExtPath($extKey, $appendPath = '') {
+		return TodoyuFileManager::pathAbsolute(PATH_EXT . DIRECTORY_SEPARATOR . $extKey . DIRECTORY_SEPARATOR . trim($appendPath, '/\\'));
 	}
 
 

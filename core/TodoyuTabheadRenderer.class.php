@@ -75,6 +75,10 @@ class TodoyuTabheadRenderer {
 			$tabs[$index]['label'] = TodoyuDiv::getLabel($tab['label']);
 		}
 
+		if( is_null($active) ) {
+			$active = $tabs[0]['id'];
+		}
+
 		$tmpl	= 'core/view/tabheads.tmpl';
 		$data	= array(
 			'htmlId'	=> $htmlID,

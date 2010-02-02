@@ -1,6 +1,6 @@
 {include "core/view/pageheader.tmpl"}
 
-<body id="todoyu-{$bodyID}" class="todoyu-{$bodyID}" {foreach $bodyAttributes attribut}{$attribute.name}="{$attribute.value}" {/foreach}>
+<body id="todoyu-{$bodyID}" class="todoyu-{$bodyID} {$bodyClasses}" {foreach $bodyAttributes attribut}{$attribute.name}="{$attribute.value}" {/foreach}>
 
 {foreach $bodyElements bodyElement}
 {$bodyElement}

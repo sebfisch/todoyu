@@ -42,7 +42,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 			$this->initSource();
 		}
 
-		$this->setValue($this->getValue());
+		//$this->setValue($this->getValue());
 	}
 
 
@@ -51,7 +51,9 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 * Init
 	 */
 	protected function init() {
-
+		if( ! $this->hasAttribute('size') ) {
+			$this->setAttribute('size', 1);
+		}
 	}
 
 

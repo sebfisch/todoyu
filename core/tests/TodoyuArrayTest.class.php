@@ -19,12 +19,50 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-//require_once('simpletest/autorun.php');
+/**
+ * Test for: TodoyuArray
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
+
+	/**
+	 * Test getColumn()
+	 *
+	 */
+	public function testGetColumn() {
+		$array	= array(
+			array('id'	=> 32),
+			array('id'	=> 45),
+			array('id'	=> 12),
+			array('id'	=> 84),
+			array('id'	=> 15)
+		);
+
+		$idColumn	= TodoyuArray::getColumn($array, 'id');
+
+		$this->assertEquals(32, $idColumn[0]);
+	}
 
 
-class TestOfFirsttest extends UnitTestCase {
+
+	/**
+	 * Test getFirstKey()
+	 *
+	 */
+	public function testGetFirstKey() {
+		$array	= array(
+			'firstname'	=> 'Max',
+			'lastname'	=> 'Miller',
+			'street'	=> 'Franklin Street'
+		);
+
+		$firstKey	= TodoyuArray::getFirstKey($array);
+
+		$this->assertEquals('firstname', $firstKey);
+	}
 
 }
-
 
 ?>
