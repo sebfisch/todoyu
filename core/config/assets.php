@@ -200,7 +200,7 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 66
 		),
 		array(
-			'file'		=> 'core/assets/js/Paging.js',
+			'file'		=> 'core/assets/js/Listing.js',
 			'position'	=> 67
 		)
 	),
@@ -277,7 +277,7 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/paging.css',
+			'file'		=> 'core/assets/css/listing.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),

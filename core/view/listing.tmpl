@@ -1,49 +1,39 @@
+{if $noPaging || $page == 1 }
 <div class="paging-container" id="paging-{$config.name}">
-<table class="list {$config.name}Listing" id="paging-{$config.name}-table" >
-	<thead>
+{/if}
 
-		{*-------------- Column titles ---------------*}
-		<tr class="header">
-			{foreach $config.columns colName label}
-				<th scope="col" class="{$colName}">{Label $label}&nbsp;</th>
-			{/foreach}
-		</tr>
-
-		{*-------------- Paging elements ---------------*}
-		{if !$noPaging}
-		<tr>
-			<td colspan="6">
-				<div class="paging">
-					<div class="view">{Label core.paging.page}: {$page}/{$pages}</div>
-					<div class="pages">
-						{for i 0 $pages-1}
-							<div class="page {if $i*$config.size==$offset}active{/if}" onclick="Todoyu.Paging.update('{$name}', {$i*$config.size})">{$i+1}</div>
-						{/for}
-					</div>
-					<div class="nav">
-				 		<div class="back" onclick="Todoyu.Paging.backward('{$name}')">&lt;</div>
-				 		<div class="next" onclick="Todoyu.Paging.foreward('{$name}')">&gt;</div>
-					</div>
-				</div>
-			</td>
-		</tr>
-		{/if}
-
-	</thead>
-
-	{*-------------- Rows ---------------*}
-	<tbody>
-		{foreach $rows index row}
-			<tr class="{cycle values="odd,even"}">
-			  	{foreach $config.columns colName label}
-			  		<td class="{$colName}">{cleanHtml $row[$colName]}</td>
-			    {/foreach}
+	<table class="list {$config.name}Listing" id="paging-{$config.name}-table-{$page}" >
+	
+	{*-------------- Column titles ---------------*}
+		<thead>
+			<tr class="header">
+				{foreach $config.columns colName label}
+					<th scope="col" class="{$colName}">{Label $label}&nbsp;</th>
+				{/foreach}
 			</tr>
-		{/foreach}
-	</tbody>
+		</thead>
+		<tbody>
+	
+	{*-------------- Rows ---------------*}
+			{foreach $rows index row}
+				<tr class="{cycle values="odd,even"}">
+				  	{foreach $config.columns colName label}
+				  		<td class="{$colName}">{cleanHtml $row[$colName]}</td>
+				    {/foreach}
+				</tr>
+			{/foreach}			
+		</tbody>
+	</table>
+	
+	{*-------------- Listing show more entries option ---------------*}
+{if ! $noPaging && $page < $pages}
+	<div id="extendlisting">
+		<a href="#" onclick="Todoyu.Listing.more('{$name}',{$page})">Show more</a>
+	</div>
 
-</table>
-<script>
-Todoyu.Paging.init('{$config.name}', '{$config.update}', {$config.size}, {$offset}, {$total});
-</script>
+	<script>
+	Todoyu.Listing.init('{$config.name}', '{$config.update}', {$config.size}, {$offset}, {$total});
+	</script>
+{/if}
+
 </div>

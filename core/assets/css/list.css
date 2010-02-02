@@ -53,3 +53,13 @@ table.listsimple tr.even,
 li.even {
 	background-color:#fff;
 }
+
+
+
+#extendlisting {
+	margin:8px 0 8px 24px;
+}
+
+#extendlisting a {
+	font-weight:bold;
+}

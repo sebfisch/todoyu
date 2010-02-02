@@ -18,13 +18,24 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-Todoyu.Paging = {
+Todoyu.Listing = {
 	
 	config: {},
-	
+
+
+
+	/**
+	 * Initialize
+	 * 
+	 * @param	String		name
+	 * @param	unknown		update
+	 * @param	Integer		size
+	 * @param	Integer		offset
+	 * @param	Integer		total
+	 */
 	init: function(name, update, size, offset, total) {
 		var url	= update.split('/');
-		
+
 		this.config[name] = {
 			'name':		name,
 			'size':		size,
@@ -37,8 +48,32 @@ Todoyu.Paging = {
 			}
 		};
 	},
-	
-	update: function(name, offset) {
+
+
+
+	/**
+	 * Evoke getting more list results
+	 * 
+	 * @param	String		name
+	 * @param	Integer		pagenum
+	 */
+	more: function(name, pagenum) {
+		var newOffset = this.config[name].offset + this.config[name].size;
+		if( newOffset < this.config[name].total ) {
+			this.extend(name, newOffset, pagenum);
+		}
+	},
+
+
+
+	/**
+	 * Fetch more results and extend the amount of entries listed
+	 * 
+	 * @param	String		name
+	 * @param	Integer		offset
+	 * @param	Integer		pagenum
+	 */
+	extend: function(name, offset, pagenum) {
 		var url		= Todoyu.getUrl(this.config[name].url.ext, this.config[name].url.controller);
 		var options	= {
 			'parameters': {
@@ -46,29 +81,27 @@ Todoyu.Paging = {
 				'name':		name,
 				'offset':	offset
 			},
-			'onComplete': this.onUpdated.bind(this, name, offset)
+			'onComplete': this.onExtended.bind(this, name, offset)
 		};
-		var target	= 'paging-' + name;
-		
-		Todoyu.Ui.replace(target, url, options);
+
+		$('extendlisting').remove();
+	
+		var target	= 'paging-' + name + '-table-' + pagenum;
+
+		Todoyu.Ui.append(target, url, options);
 	},
 	
-	onUpdated: function(name, offset, response) {
-		
-	},
 	
-	foreward: function(name) {
-		var newOffset = this.config[name].offset + this.config[name].size;
-		if( newOffset < this.config[name].total ) {
-			this.update(name, newOffset);
-		}
-	},
 	
-	backward: function(name) {
-		var newOffset = this.config[name].offset - this.config[name].size;
-		if( newOffset >= 0 ) {
-			this.update(name, newOffset);
-		}
+	/**
+	 * Handler being evoked upon completion of extending displayed entries
+	 * 
+	 * @param	String		name
+	 * @param	Integer		offset
+	 * @param	Object		response
+	 */
+	onExtended: function(name, offset, response) {
+
 	}
 	
 };
