@@ -172,18 +172,6 @@ h1 {
 }
 
 
-	/* Title */
-div.title {
-	font-size:18px;
-	font-weight:bold;
-	color:#333;
-	display:inline-block;
-	border-bottom:1px solid #000;
-	margin:15px 0 10px 0;
-	padding-left:10px;
-	width:97%;
-}
-
 
 	/* h3 */
 .headLabel span {

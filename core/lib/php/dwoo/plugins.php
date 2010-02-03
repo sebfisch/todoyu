@@ -439,7 +439,7 @@ function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '') {
  * @return	String
  */
 function Dwoo_Plugin_Title_compile(Dwoo_Compiler $compiler, $title) {
-	return '\'<div class="title">\' . htmlentities(TodoyuDiv::getLabel(' . $title . ') ) . \'</div>\'';
+	return '\'<h5>\' . htmlentities(TodoyuDiv::getLabel(' . $title . ') ) . \'</h5>\'';
 }
 
 

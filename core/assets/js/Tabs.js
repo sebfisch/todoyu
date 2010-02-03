@@ -114,6 +114,12 @@ Todoyu.Tabs = {
 		$(element).up('ul').select('li').invoke('removeClassName', 'active');
 		$(element).addClassName('active');
 	},
+	
+	setActiveByKey: function(list, key) {
+		var item = $(list).down('li.' + key);
+		
+		this.setActive(item);
+	},
 
 
 
