@@ -98,10 +98,10 @@ Todoyu.Form = {
 				'record':	idRecord,
 				'index': 	index
 			},
-			'onComplete': this.onRecordAdded.bind(this, idRecord, formName, fieldName, index)
+			'onComplete': this.onRecordAdded.bind(this, container, idRecord, formName, fieldName, index)
 		};
-
-		Todoyu.Ui.insert(container, url, options);
+		
+		Todoyu.send(url, options);
 	},
 
 
@@ -115,7 +115,9 @@ Todoyu.Form = {
 	 * @param	String		index
 	 * @param	String		response
 	 */
-	onRecordAdded: function(idRecord, formName, fieldName, index, response) {
+	onRecordAdded: function(container, idRecord, formName, fieldName, index, response) {
+		$(container).insert({'top':response.responseText});
+		
 		this.toggleRecordForm(idRecord, fieldName, index);
 		this.focusFirstRecordField(idRecord, fieldName, index);
 	},

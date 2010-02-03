@@ -199,9 +199,9 @@ div.fElement {
 		.typeDatabaseRelation .foreignRecordsActionControll {
 			display:block;
 		}
-
-		.typeDatabaseRelation a.addForeignRecord {
-			background:url(../img/icons.png) no-repeat 0 -569px;
+		
+		.typeDatabaseRelation button.addForeignRecord .icon {
+			background:url(../img/icons.png) no-repeat 2px -568px;
 		}
 
 		.typeDatabaseRelation .databaseRelation {
@@ -280,7 +280,7 @@ fieldset {}
 	}
 
 
-
+/*
 .formElement input,
 .formElement textarea,
 .formElement select {
@@ -290,7 +290,7 @@ fieldset {}
 .formElement textarea {
 	height:100px;
 }
-
+*/
 
 
 .dateElement input {
@@ -301,6 +301,7 @@ fieldset {}
 }
 
 	/* --- left floating radio --- */
+/*
 .formElement fieldset input {
 	clear:left;
 	float:left;
@@ -328,7 +329,7 @@ fieldset {}
 	white-space:nowrap;
 }
 
-
+*/
 
 /* -------------------------
 	Autocompleter list
@@ -377,13 +378,7 @@ fieldset {}
 	right:5px;
 }
 
-.formElement .databaseRelation .closed {
-	background:#e5eff8 url(../img/sprite-toggle.png) no-repeat 37px 8px;
-}
 
-.formElement .databaseRelation .open {
-	background:#e5eff8 url(../img/sprite-toggle.png) no-repeat 5px 8px;
-}
 
 
 

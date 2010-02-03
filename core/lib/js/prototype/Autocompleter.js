@@ -21,29 +21,29 @@
 /**
  *	Todoyu autocompleter (extended prototype autocompleter)
  */
- 
+
 Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	/**
 	 * Hanlde completion of autocompleter suggestion retrieval
-	 * 
+	 *
 	 * @param	Object	response
 	 */
 	onComplete: function(response) {
 			// If a custom onComplete defined
 		if( this.options.onCompleteCustom ) {
-			var funResult = Todoyu.callUserFunction(this.options.onCompleteCustom, window, response, this);
+			var funResult = Todoyu.callUserFunction(this.options.onCompleteCustom, response, this);
 
 				// If the custom function returns an object, override response
 			if( typeof(funResult) === 'object' ) {
 				response = funResult;
 			}
 		}
-		
+
 		if( response.getTodoyuHeader('acElements') == 0 ) {
 			this.onEmptyResult(response);
 		}
-		
+
 			// Call default ac handler
 		this.updateChoices(response.responseText);
 	},
@@ -52,7 +52,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	/**
 	 * Hanlde receival of empty result (no suggestion found)
-	 * 
+	 *
 	 * @param	Object	response
 	 */
 	onEmptyResult: function(response) {

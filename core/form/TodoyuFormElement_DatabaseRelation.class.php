@@ -137,11 +137,13 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	protected function renderRecordForm($index)	{
 		$xmlPath = $this->getRecordsFormXml();
 
-
+//		TodoyuDebug::printInFirebug($xmlPath);
 
 			// Load form data
 		$recordData	= $this->getRecord($index);
 		$idRecord	= intval($recordData['id']);
+
+//		TodoyuDebug::printInFirebug($idRecord);
 
 			// Construct form object
 		$recordForm	= TodoyuFormManager::getForm($xmlPath, $idRecord);
@@ -154,6 +156,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$recordForm->setFormData($recordData);
 		$recordForm->setVars(array('parent' => $this->getForm()->getRecordID()));
 		$recordForm->setUseRecordID(false);
+		$recordForm->setRecordID($idRecord);
 		$recordForm->setAttribute('noFormTag', true);
 		$recordForm->setName($formName);
 

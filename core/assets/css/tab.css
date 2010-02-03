@@ -9,7 +9,7 @@
 }
 
 
-#content-tabs .tabs {
+#content .tabs {
 	z-index:2;
 	height:26px;
 	width:100%;
@@ -21,7 +21,7 @@
 	padding:0;
 }
 
-#content-tabs .tabs li {
+#content .tabs li {
 	float:left;
 	margin-right:3px;
 	background-image:url(../img/col3_r13.png);
@@ -30,7 +30,7 @@
 	cursor:pointer;
 }
 
-#content-tabs .tabs li p {
+#content .tabs li p {
 	display:block;
 	width:auto !important;
 	width:1px;
@@ -48,7 +48,7 @@
 	background-position:50% 100%;
 }
 
-#content-tabs .tabs li p span.lt {
+#content .tabs li p span.lt {
 	display:block;
 	position:relative;
 	float:left;
@@ -60,7 +60,7 @@
 	background-position:0 0;
 }
 
-#content-tabs .tabs li p span.icon {
+#content .tabs li p span.icon {
 	display:block;
 	float:left;
 	position:relative;
@@ -69,16 +69,16 @@
 	width:20px;
 }
 
-#content-tabs .tabs li:hover p,
-#content-tabs .tabs li.active p {
+#content .tabs li:hover p,
+#content .tabs li.active p {
 	background-image:none;
 }
 
-#content-tabs .tabs li.active {
+#content .tabs li.active {
 	background-color:#fff; /* bclFF */
 }
 
-#content-tabs .tabs li:hover {
+#content .tabs li:hover {
 	background-color:#fff; /* bclFF */
 }
 

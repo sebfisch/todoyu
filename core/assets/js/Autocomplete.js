@@ -45,10 +45,10 @@ Todoyu.Autocomplete = {
 	/**
 	 * Initialize autocompleter ('inputAC')
 	 */
-	
+
 	/**
 	 * Initialize autocompleter
-	 * 
+	 *
 	 * @param	Integer		idElement		ID of the element whichs value will be set by autocomplete
 	 * @param	Object		config			Custom config
 	 */
@@ -77,7 +77,7 @@ Todoyu.Autocomplete = {
 		$(inputField).observe('change', this.onInputChange.bindAsEventListener(this));
 			// Observe input for key down to clean up invalid input
 		$(inputField).observe('keydown', this.onKeydown.bindAsEventListener(this));
-	},	
+	},
 
 
 
@@ -97,10 +97,10 @@ Todoyu.Autocomplete = {
 
 
 
-	
+
 	/**
 	 * Called if input field has changed (blur)
-	 * 
+	 *
 	 * @param	Event	event
 	 */
 	onInputChange: function(event) {
@@ -119,7 +119,7 @@ Todoyu.Autocomplete = {
 
 	/**
 	 * On keypress. If its not the return key, the current value is invalid (until autocompleted)
-	 * 
+	 *
 	 * @param	Event	event
 	 */
 	onKeydown: function(event) {
@@ -132,18 +132,18 @@ Todoyu.Autocomplete = {
 
 	/**
 	 * When autocomplete value is selected
-	 * 
+	 *
 	 * @param	DomElement	inputField
 	 * @param	DomElement	selectedListElement
 	 */
 	onElementSelected: function(inputField, selectedListElement) {
 		var baseID			= inputField.id.split('-').without('fulltext').join('-');
 		var selectedValue	= selectedListElement.id;
-		
+
 		this.selectedFromList = true;
 
 		if(this.acRefs[baseID].options.onElementSelectedCustom)	{
-			 Todoyu.callUserFunction(this.acRefs[baseID].options.onElementSelectedCustom, window, inputField, selectedListElement, baseID, selectedValue, this.selectedFromList, this);
+			 Todoyu.callUserFunction(this.acRefs[baseID].options.onElementSelectedCustom, inputField, selectedListElement, baseID, selectedValue, this.selectedFromList, this);
 		}
 
 		$(baseID).setValue(selectedValue);
@@ -153,7 +153,7 @@ Todoyu.Autocomplete = {
 
 	/**
 	 * Clear fields because of invalid input
-	 * 
+	 *
 	 * @param	DomElement		element
 	 */
 	clear: function(element) {
