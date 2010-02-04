@@ -1,0 +1,1 @@
+ALTER TABLE `ext_user_company` DROP `is_ngo`;

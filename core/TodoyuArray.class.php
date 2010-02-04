@@ -64,8 +64,8 @@ class TodoyuArray {
 	/**
 	 * Get offset of given key in given array
 	 *
-	 * @param unknown_type $array
-	 * @param unknown_type $key
+	 * @param	Array		$array
+	 * @param	String		$key
 	 */
 	public static function getKeyOffset(array $array, $key) {
 		$keys	= array_keys($array);
@@ -267,9 +267,9 @@ class TodoyuArray {
 	 *
 	 * @example
 	 *
-	 * Only keep items which have a uid between 1 and 9 und have 352, 80, 440 or 240 pages
+	 * Only keep items which have a uid between 1 and 9 AND have 352, 80, 440 or 240 pages
 	 *
-	 * $products 	= $this->getArray('*', 'tx_sfpshop_products');
+	 * $products 	= $this->getArray('*', 'ext_shop_products');
 	 * $filter 		= array('uid' 	=> array(1,2,3,4,5,6,7,8,9),
 	 * 						'pages'	=> array(352,80,440,240));
 	 * $filteredProducts = tx_sfp::arrayFilter($prodcuts, $filter);

@@ -4,7 +4,9 @@
 
 <div class="foreignRecordsActionControll overflow">
 	{Button label="form.icon.add" class="addForeignRecord" id="add-record" onclick="Todoyu.Form.addRecord($idRecord, '$formname', '$fieldname', '$foreignRecordConf.addSubformConfig.ext', '$foreignRecordConf.addSubformConfig.controller')"}
-	{Button label="form.databaserelation.expandAllRecords" class="expandAll" id="expand-all" onclick="Todoyu.Form.expandForeignRecords(['$fieldname'])"}
+	{if sizeof($records)}
+		{Button label="form.databaserelation.expandAllRecords" class="expandAll" id="expand-all" onclick="Todoyu.Form.expandForeignRecords(['$fieldname'])"}
+	{/if}
 </div>
 <div id="foreignrecords-{$idRecord}-{$fieldname}" class="foreignRecords" >
 	{foreach $records index record}
