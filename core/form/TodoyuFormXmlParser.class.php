@@ -110,7 +110,7 @@ class TodoyuFormXmlParser {
 
 
 	/**
-	 * Parse fieldsets with their fields from xml
+	 * Parse fieldsets with their fields from XML
 	 *
 	 */
 	private static function parseTopFieldsets() {
