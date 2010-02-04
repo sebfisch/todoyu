@@ -70,6 +70,9 @@ $CONFIG['SYSTEM']['locale']		= 'en_US';
 	// Default timezone
 $CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
 
+	// List size for paging
+$CONFIG['LIST']['size']	= 30;
+
 
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuRequest::setDefaultRequestVarsHook', 10);
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuCookieLogin::tryCookieLogin', 20);
