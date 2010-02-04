@@ -163,29 +163,6 @@ class TodoyuDbAnalyzer {
 		return $structure;
 	}
 
-
-
-	/**
-	 * Get keys (indexes) for a table
-	 *
-	 * @param	String		$tableName
-	 * @return	Array
-	 */
-	public static function getTableKeys($tableName) {
-		$fields	= ' tc.CONSTRAINT_TYPE as type,
-					tc.CONSTRAINT_NAME as name,
-					kcu.COLUMN_NAME as field';
-		$table	= ' INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc,
-					INFORMATION_SCHEMA.KEY_COLUMN_USAGE kcu';
-		$where	= ' tc.TABLE_SCHEMA 	= \'' . Todoyu::db()->getConfig('database') . '\' AND
-					tc.TABLE_NAME 		= \'' . $tableName . '\' AND
-					tc.CONSTRAINT_NAME	= kcu.CONSTRAINT_NAME AND
-					kcu.TABLE_SCHEMA	= \'' . Todoyu::db()->getConfig('database') . '\' AND
-					kcu.TABLE_NAME		= \'' . $tableName . '\'';
-
-		return Todoyu::db()->getArray($fields, $table, $where);
-	}
-
 }
 
 ?>
