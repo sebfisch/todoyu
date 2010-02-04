@@ -565,16 +565,16 @@ function Dwoo_Plugin_html2text_compile(Dwoo_Compiler $compiler, $html) {
 /**
  * Render select element with options
  *
- * @param	Dwoo $dwoo
- * @param	String	$id		HTML id
- * @param	String	$name	HTML name
- * @param	String	$class
- * @param	Integer	$size
- * @param	Boolean	$multiple
- * @param	Boolean	$disabled
- * @param	String	$onchange
- * @param	Array	$options
- * @param	Array	$value		must be array to allow for multi selection
+ * @param	Dwoo 		$dwoo
+ * @param	String		$id		HTML id
+ * @param	String		$name	HTML name
+ * @param	String		$class
+ * @param	Integer		$size
+ * @param	Boolean		$multiple
+ * @param	Boolean		$disabled
+ * @param	String		$onchange
+ * @param	Array		$options
+ * @param	Array		$value		Array to allow for multi selection
  * @return	String
  */
 function Dwoo_Plugin_select(Dwoo $dwoo, $id = '', $name = '', $class = '', $size = 0, $multiple = false, $disabled = false, $onchange = '', array $options = array(), array $value = array()) {
@@ -588,7 +588,6 @@ function Dwoo_Plugin_select(Dwoo $dwoo, $id = '', $name = '', $class = '', $size
 		'disabled'	=> $disabled,
 		'onchange'	=> $onchange,
 		'value'		=> $value,
-
 		'options'	=> $options,
 	);
 
