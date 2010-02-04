@@ -826,7 +826,9 @@ class TodoyuForm implements ArrayAccess {
 	 */
 	public function removeField($name, $cleanup = false)	{
 		if( $cleanup ) {
-			$this->getField($name)->remove();
+			if( $this->getField($name) !== null ) {
+				$this->getField($name)->remove();
+			}
 		}
 
 		unset($this->fields[$name]);
