@@ -28,12 +28,14 @@ $CONFIG['DEBUG'] = false;
 $CONFIG['LOG']['active'] = array('FILE', 'FIREPHP');
 
 	// Asset caching
-$CONFIG['CACHE']['JS']['localize']	= true;
+$CONFIG['CACHE']['JS']['localize']	= false;
 $CONFIG['CACHE']['JS']['merge']		= false;
 $CONFIG['CACHE']['JS']['compress']	= false;
 
-$CONFIG['CACHE']['CSS']['merge']	= true;
-$CONFIG['CACHE']['CSS']['compress']	= true;
+$CONFIG['CACHE']['CSS']['merge']	= false;
+$CONFIG['CACHE']['CSS']['compress']	= false;
+
+$CONFIG['LIST']['size']	= 30;
 
 //TodoyuRightsManager::flushRights();
 
