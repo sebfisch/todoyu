@@ -288,7 +288,6 @@ function Dwoo_Plugin_filesize(Dwoo $dwoo, $filesize) {
  */
 
 function Dwoo_Plugin_UserQuicklink(Dwoo $dwoo, $idUser) {
-
 	return 'alert(\'Quicklink: \' + ' . $idUser . ')';
 }
 
@@ -334,14 +333,27 @@ function Dwoo_Plugin_twoDigits(Dwoo $dwoo, $value) {
  * @subpackage	Template
  *
  * @param 	Dwoo 		$dwoo
- * @param 	String		$extension
- * @param	String		$action
- * @param	String		$params
+ * @param 	Mixed		$variable
  * @return	String
  */
-
 function Dwoo_Plugin_debug(Dwoo $dwoo, $variable) {
 	return '<pre style="z-index:200; background-color:#fff;">' . print_r($variable, true) . '</pre>';
+}
+
+
+
+/**
+ * View some variable (from inside a Dwoo template) in firebug
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param 	Dwoo 		$dwoo
+ * @param 	Mixed		$variable
+ * @return	String
+ */
+function Dwoo_Plugin_firebug(Dwoo $dwoo, $variable) {
+	TodoyuDebug::printInFirebug($variable);
 }
 
 
@@ -551,30 +563,36 @@ function Dwoo_Plugin_html2text_compile(Dwoo_Compiler $compiler, $html) {
 
 
 /**
- * NOT READY YET!
+ * Render select element with options
  *
- * @param Dwoo $dwoo
- * @param unknown_type $id
- * @param unknown_type $name
- * @param unknown_type $onchange
- * @param unknown_type $class
- * @param unknown_type $style
- * @param array $options
- * @param unknown_type $selected
- * @return unknown
+ * @param	Dwoo $dwoo
+ * @param	String	$id		HTML id
+ * @param	String	$name	HTML name
+ * @param	String	$class
+ * @param	Integer	$size
+ * @param	Boolean	$multiple
+ * @param	Boolean	$disabled
+ * @param	String	$onchange
+ * @param	Array	$options
+ * @param	Array	$value		must be array to allow for multi selection
+ * @return	String
  */
-function Dwoo_Plugin_select(Dwoo $dwoo, $id = '', $name = '', $onchange = '', $class = '', $style = '', array $options = array(), $selected = -1) {
+function Dwoo_Plugin_select(Dwoo $dwoo, $id = '', $name = '', $class = '', $size = 0, $multiple = false, $disabled = false, $onchange = '', array $options = array(), array $value = array()) {
 	$tmpl	= 'core/view/select.tmpl';
 	$data	= array(
-		'id'		=> $id,
-		'name'		=> $name,
+		'htmlId'	=> $id,
+		'htmlName'	=> $name,
+		'class'		=> $class,
+		'size'		=> $size,
+		'multiple'	=> $multiple,
+		'disabled'	=> $disabled,
 		'onchange'	=> $onchange,
+		'value'		=> $value,
+
 		'options'	=> $options,
-		'selected'	=> $selected
 	);
 
 	return render($tmpl, $data);
 }
-
 
 ?>
