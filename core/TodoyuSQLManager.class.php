@@ -130,12 +130,12 @@ class TodoyuSQLManager {
 			// Get informations about existing keys
 		$keyNames	= TodoyuArray::getColumn($structureOne['keys'], 'name');
 		$keyTypes	= TodoyuArray::getColumn($structureOne['keys'], 'type');
-		$hasPrimary	= in_array('PRIMARY KEY', $keyTypes);
+		$hasPrimary	= in_array('PRIMARY', $keyTypes);
 
 			// Add missing keys
 		foreach($structureTwo['keys'] as $keyStructure) {
 				// Don't add a primary key if already one exists
-			if( $keyStructure['type'] === 'PRIMARY KEY' && $hasPrimary ) {
+			if( $keyStructure['type'] === 'PRIMARY' && $hasPrimary ) {
 				continue;
 			}
 
@@ -232,6 +232,12 @@ class TodoyuSQLManager {
 			$queries['change'][] = self::buildChangeColumnQueriesFromStructure($table, $columnStructure);
 		}
 
+		foreach($structureDifferences['missingKeys'] as $table => $keyStructures) {
+			foreach($keyStructures as $keyStructure) {
+				$queries['keys'][] = self::buildAddKeyQueriesFromStructure($table, $keyStructure);
+			}
+		}
+
 		return $queries;
 	}
 
@@ -288,10 +294,10 @@ class TodoyuSQLManager {
 
 			// Compile key definitions
 		foreach($tableStructure['keys'] as $keyStructure) {
-			$keysSQL[] = $keyStructure['type'] . ($keyStructure['name'] !== '' ? ' `' . $keyStructure['name'] . '`' : '') . ' (`' . implode('`,`', $keyStructure['fields']) . '`)';
+			$keysSQL[] = self::buildKeySQL($keyStructure);
 		}
 
-		$query	= '	CREATE TABLE IF NOT EXISTS `' . $tableStructure['table'] . '` (' . "\n";
+		$query	= '	CREATE TABLE `' . $tableStructure['table'] . '` (' . "\n";
 		$query	.= implode(",\n", $columnsSQL);
 
 			// If columns and keys exists, add seperating comma and keys
@@ -344,6 +350,24 @@ class TodoyuSQLManager {
 
 
 	/**
+	 * Build a query to add a new key to the table
+	 *
+	 * @param	String		$table
+	 * @param	Array		$keyStructure
+	 * @return	String
+	 */
+	private static function buildAddKeyQueriesFromStructure($table, array $keyStructure) {
+		$type	= $keyStructure['type'] === 'PRIMARY' ? 'PRIMARY KEY' : $keyStructure['type'];
+		$name	= $keyStructure['type'] === 'PRIMARY' ? '' : '`' . $keyStructure['name'] . '`';
+		$fields	= '`' . implode('`,`', $keyStructure['fields']) . '`';
+
+		return 'ALTER TABLE `' . $table . '` ADD ' . $type . ' ' . $name . ' (' . $fields . ')';
+
+	}
+
+
+
+	/**
 	 * Build a column definition from stucture
 	 *
 	 * @param	Array		$columnStructure
@@ -351,6 +375,20 @@ class TodoyuSQLManager {
 	 */
 	private static function buildColumnSQL(array $columnStructure) {
 		return trim('`' . $columnStructure['field'] . '` ' . $columnStructure['type'] . ' ' . $columnStructure['null'] . ' ' . $columnStructure['default'] . ' ' . $columnStructure['extra']);
+	}
+
+
+
+	/**
+	 * Build a key definiton from structure
+	 *
+	 * @param	Array		$keyStructure
+	 * @return	String
+	 */
+	private static function buildKeySQL(array $keyStructure) {
+		$sql	= '';
+
+		return ($keyStructure['type'] === 'INDEX' ? '' : $keyStructure['type']) . ' KEY ' . ($keyStructure['name'] !== 'PRIMARY' ? ' `' . $keyStructure['name'] . '`' : '') . ' (`' . implode('`,`', $keyStructure['fields']) . '`)';
 	}
 
 
@@ -390,6 +428,9 @@ class TodoyuSQLManager {
 		foreach($updateQueries['change'] as $changeQuery) {
 			Todoyu::db()->query($changeQuery);
 		}
+		foreach($updateQueries['keys'] as $keyQuery) {
+			Todoyu::db()->query($keyQuery);
+		}
 	}
 
 
@@ -405,6 +446,7 @@ class TodoyuSQLManager {
 		$missingTables	= array();
 		$missingColumns	= array();
 		$changedColumns	= array();
+		$missingKeys	= array();
 
 		foreach($fileStructure as $fileTableName => $fileTableConfig) {
 			if( array_key_exists($fileTableName, $dbStructure) ) {
@@ -424,6 +466,17 @@ class TodoyuSQLManager {
 						$missingColumns[$fileTableName][$fileColumnName] = $fileColumnConfig;
 					}
 				}
+
+					// Compare keys
+				$fileKeyNames		= TodoyuArray::getColumn($fileTableConfig['keys'], 'name');
+				$dbKeyNames			= TodoyuArray::getColumn($dbStructure[$fileTableName]['keys'], 'name');
+				$missingTableKeys	= array_diff($fileKeyNames, $dbKeyNames);
+
+				foreach($fileTableConfig['keys'] as $fileKey) {
+					if( in_array($fileKey['name'], $missingTableKeys) ) {
+						$missingKeys[$fileTableName][] = $fileKey;
+					}
+				}
 			} else {
 					// Table does not exist in the database
 				$missingTables[] = $fileTableConfig;
@@ -433,7 +486,8 @@ class TodoyuSQLManager {
 		return array(
 			'missingTables'	=> $missingTables,
 			'missingColumns'=> $missingColumns,
-			'changedColumns'=> $changedColumns
+			'changedColumns'=> $changedColumns,
+			'missingKeys'	=> $missingKeys
 		);
 	}
 

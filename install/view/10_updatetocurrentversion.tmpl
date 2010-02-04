@@ -75,6 +75,33 @@
 				{/foreach}
 			</table>
 		{/if}
+
+
+		{if sizeof($diff.missingKeys) > 0}
+			<p class="section">{Label installer.updatetocurrentversion.missingKeys}</p>
+			<table class="dbstruct">
+				<tr>
+					<th class="table">Table</th>
+					<th class="column">Name</th>
+					<th class="type">type</th>
+					<th class="fields">fields</th>
+				</tr>
+				{foreach $diff.missingKeys tableName keys}
+					{foreach $keys key}
+					<tr>
+						<td class="table">
+							{$tableName}
+						</td>
+						<td class="field">{$key.name}</td>
+						<td class="type">{$key.type}</td>
+						<td class="fields">{implode(',', $key.fields)}</td>
+					</tr>
+					{/foreach}
+				{/foreach}
+			</table>
+		{/if}
+
+
 	</div>
 {/if}
 	<input type="hidden" name="update" value="1" />

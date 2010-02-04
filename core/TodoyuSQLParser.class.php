@@ -28,11 +28,6 @@
 class TodoyuSQLParser {
 
 
-
-
-
-
-
 	/**
 	 * Extract all table names from SQL
 	 *
@@ -95,39 +90,18 @@ class TodoyuSQLParser {
 			$keysSQL= explode(', ', $keySQL);
 			$pattern= '/([A-Za-z]*(?:\s*)KEY) (?:`(\w+)`)*(?:\s*)\((.*)\)/';
 
-
 			foreach($keysSQL as $keySQL) {
 				preg_match($pattern, $keySQL, $match);
 
 				$keys[] = array(
-					'type'	=> $match[1],
-					'name'	=> $match[2],
+					'type'	=> $match[1] === 'PRIMARY KEY' ? 'PRIMARY' : ($match[1] === 'KEY' ? 'INDEX' : trim(str_ireplace('KEY', '', $match[1]))),
+					'name'	=> $match[1] === 'PRIMARY KEY' ? 'PRIMARY' : $match[2],
 					'fields'=> explode(',', str_replace('`', '', $match[3]))
 				);
 			}
 		}
 
 		return $keys;
-
-//		TodoyuDebug::printHtml($keys);
-
-//		TodoyuDebug::printHtml($keySQL);
-
-//		$pattern	= '/([A-Za-z0-9 ]*(\s*)KEY) (`(\w+)` )* \((.*)\)/';
-//		$pattern	= '/([A-Za-z]*(?:\s*)KEY) (`(\w+)`)*(?:\s*)\((.*)\)/';
-//		preg_match_all($pattern, $keySQL, $matches);
-//
-//		TodoyuDebug::printHtml($matches);
-
-		if( sizeof($match) > 0 ) {
-			return array(
-				'type'	=> $match[1],
-				'name'	=> $match[3],
-				'fields'=> $match[4]
-			);
-		} else {
-			return false;
-		}
 	}
 
 

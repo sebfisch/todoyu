@@ -117,17 +117,39 @@ class TodoyuDbAnalyzer {
 				);
 
 					// Find keys in database
-				$tableKeys	= self::getTableKeys($tableName);
+				$tableKeysRaw	= Todoyu::db()->getTableKeys($tableName);
+				$tableKeys		= array();
 
-				foreach($tableKeys as $tableKey) {
-					$structure[$tableName]['keys'][] = array(
-						'type'	=> $tableKey['name'] === 'PRIMARY' ? $tableKey['type'] : $tableKey['type'] . ' KEY',
-						'name'	=> $tableKey['name'] === 'PRIMARY' ? '' : $tableKey['name'],
-						'fields'=> $tableKey['field']
+					// Group keys by name (if keys are over more than one field, multiple rows are found)
+				foreach($tableKeysRaw as $tableKeyRaw) {
+					$tableKeys[$tableKeyRaw['Key_name']][] = $tableKeyRaw;
+				}
+
+					// Extract key informations (name, type, fields)
+				foreach($tableKeys as $keyName => $tableKey) {
+					$key	= array(
+						'name'	=> $tableKey[0]['Key_name']
 					);
+
+						// Find type
+					if( $keyName === 'PRIMARY' ) {
+						$key['type']	= 'PRIMARY';
+					} elseif( intval($tableKey[0]['Non_unique']) === 0 ) {
+						$key['type']	= 'UNIQUE';
+					} elseif( $tableKey[0]['Index_type'] === 'FULLTEXT' ) {
+						$key['type']	= 'FULLTEXT';
+					} else {
+						$key['type']	= 'INDEX';
+					}
+
+						// Get fields
+					$key['fields']	= TodoyuArray::getColumn($tableKey, 'Column_name');
+
+					$structure[$tableName]['keys'][] = $key;
 				}
 			}
 
+				// Process column
 			$structure[$tableName]['columns'][$columnName] = array(
 				'field'		=> $columnName,
 				'type'		=> $column['COLUMN_TYPE'],

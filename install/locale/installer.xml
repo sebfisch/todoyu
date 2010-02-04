@@ -75,6 +75,7 @@
 		<label index="updatetocurrentversion.newTables">New tables</label>
 		<label index="updatetocurrentversion.newColumns">New columns</label>
 		<label index="updatetocurrentversion.changedColumns">Modified columns</label>
+		<label index="updatetocurrentversion.missingKeys">Missing table keys (indexes)</label>
 		<label index="finishupdate.title">Finish update</label>
 		<label index="finishupdate.button">Disable installer and go to login</label>
 		<label index="finishupdate.text">Installer has updated your todoyu installation</label>
@@ -158,6 +159,7 @@
 		<label index="updatetocurrentversion.newTables">Neue Tabellen</label>
 		<label index="updatetocurrentversion.newColumns">Neue Spalten</label>
 		<label index="updatetocurrentversion.changedColumns">Geänderte Spalten</label>
+		<label index="updatetocurrentversion.missingKeys">Fehlene Tabellen-Indexe</label>
 		<label index="updatetocurrentversion.step">Datenbankstruktur aktualisieren</label>
 		<label index="finishupdate.title">Aktualisieren beenden</label>
 		<label index="finishupdate.text">Der Installer hat Ihre todoyu Installation aktualisiert</label>

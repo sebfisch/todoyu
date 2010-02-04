@@ -1139,8 +1139,8 @@ class TodoyuDatabase {
 	 * @param	Boolean		$onlyKeynames
 	 * @return	Array
 	 */
-	public function getKeys($table, $onlyKeynames = false) {
-		$query		= 'SHOW keys FROM ' . $table;
+	public function getTableKeys($table, $onlyKeynames = false) {
+		$query		= 'SHOW KEYS FROM ' . $table;
 		$resource	= $this->query($query);
 
 		$keys		= $this->resourceToArray($resource);
@@ -1157,8 +1157,15 @@ class TodoyuDatabase {
 	}
 
 
-	public function getConfig($key) {
-		return $this->config[$key];
+
+	/**
+	 * Get database connection config
+	 *
+	 * @param	String		$key		Config key name
+	 * @return	Mixed		Array or String
+	 */
+	public function getConfig($key = null) {
+		return is_null($key) ? $this->config : $this->config[$key];
 	}
 
 

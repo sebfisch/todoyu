@@ -9,8 +9,7 @@ CREATE TABLE `system_log` (
   `table` varchar(20) NOT NULL,
   `id_record` int(10) unsigned NOT NULL,
   `rowdata` mediumtext NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `test1` (`date_create`,`table`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
