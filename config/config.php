@@ -22,7 +22,7 @@
 ini_set('eaccelerator.enable',0);
 
 	// Debuging
-$CONFIG['DEBUG'] = false;
+$CONFIG['DEBUG'] = true;
 
 	// Error logging
 $CONFIG['LOG']['active'] = array('FILE', 'FIREPHP');

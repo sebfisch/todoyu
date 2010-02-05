@@ -59,7 +59,7 @@ class TodoyuListingRenderer {
 			'rows'		=> $listData['rows'],
 			'offset'	=> $offset,
 			'total'		=> $totalRows,
-			'page'		=> $offset === 0 ? 1 : ($offset/$size)+1,
+			'page'		=> $offset === 0 ? 1 : ($offset / $size) + 1,
 			'pages'		=> ceil($totalRows/$size),
 			'noPaging'	=> $searchWord !== ''
 		);
