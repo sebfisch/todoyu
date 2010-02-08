@@ -54,10 +54,8 @@ ul.ulListDotted li.listItem {
 /* -----------------------------
 	Editable / linked items
    ----------------------------- */
-li.listItem .editableItem span,
-li.listItem a .editableItem span {
-	padding-left:20px;
-	background:transparent url('../img/sprite-icons.png') no-repeat -58px -360px;
+li.listItem a.editableItem {
+	display:block;
 }
 
 /* -----------------

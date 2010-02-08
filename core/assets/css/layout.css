@@ -304,6 +304,14 @@ div.error {
 	background-image: none !important;
 }
 
+.hasIcon {
+	padding-left:20px;
+}
+
+.iconEdit {
+	background:url(../img/sprite-icons.png) no-repeat -58px -360px;
+}
+
 	/* planning */
 .bcStatus1 {
 	border-color:#7f007f;
@@ -372,6 +380,14 @@ label.toggleSelect.expand {
 	background:url('../img/ico_toggle_select.png') no-repeat -44px 0;
 }
 
+/* ---------------
+	default width for span width display block
+   --------------- */
+.dateWithTime {
+	width:98px;
+}
+
+
 
 
 /* ---------------
@@ -415,7 +431,7 @@ label.toggleSelect.expand {
    ------------------------------- */
 
 select.indexLetters option {
-    padding-left:16px !important;
+	padding-left:16px !important;
 }
 
 div.indexLetters {
