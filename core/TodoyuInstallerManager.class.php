@@ -630,10 +630,11 @@ class TodoyuInstallerManager {
 		);
 
 		foreach($paths as $path) {
-			TodoyuFileManager::deleteFolderContent($path, false);
+			if( is_dir($path) ) {
+				TodoyuFileManager::deleteFolderContent($path, false);
+			}
 		}
 	}
-
 
 }
 
