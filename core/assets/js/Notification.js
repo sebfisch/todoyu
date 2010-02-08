@@ -248,7 +248,7 @@ Todoyu.Notification = {
 	 * @return	Integer 
 	 */
 	getAmountOpenNotes: function() {
-		return $$('.note').length;
-	},
+		return $$('.note').size();
+	}
 
 };

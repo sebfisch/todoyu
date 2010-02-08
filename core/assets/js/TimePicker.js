@@ -203,7 +203,7 @@ var TimePicker = Class.create({
 
 		this.picker = new Element('div', {
 			'id': this._makeID('durationpicker'),
-			'class': 'dpPicker',
+			'class': 'dpPicker'
 		});
 
 		this.divHour = new Element('div', {

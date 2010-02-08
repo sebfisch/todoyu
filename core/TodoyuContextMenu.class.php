@@ -74,6 +74,8 @@ class TodoyuContextMenu {
 
 		$funcRefs	= TodoyuContextMenuManager::getTypeFunctions($this->type);
 
+		TodoyuDebug::printInFirebug($funcRefs, $this->type);
+
 			// Get items from all functions
 		foreach($funcRefs as $funcRef) {
 			$modified	=  TodoyuDiv::callUserFunction($funcRef['function'], $this->idElement, $this->elements);
@@ -174,9 +176,6 @@ class TodoyuContextMenu {
 		} else {
 			$label	= TodoyuLanguage::getLabel($label);
 		}
-
-			// Parse locallang reference
-//		$label = TodoyuDiv::getLabel($label);
 
 		return $label;
 	}
