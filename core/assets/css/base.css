@@ -145,6 +145,16 @@ h5 {
 	text-align:center;
 }
 
+.clearfix {
+	overflow:hidden;
+}
+
+* html .clearfix {
+	overflow:visible;
+	height:1%;
+}
+
+
 .overflow {
 	overflow:auto !important;
 	overflow:inherit;

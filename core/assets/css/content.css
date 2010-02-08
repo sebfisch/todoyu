@@ -178,4 +178,5 @@ span.infoIcon {
 
 .calendaricon {
 	background:url('../img/icons.png') no-repeat 0 -690px;
+	cursor:pointer;
 }
