@@ -212,7 +212,8 @@ class TodoyuSQLManager {
 		$queries	= array(
 			'create'=> array(),
 			'add'	=> array(),
-			'change'=> array()
+			'change'=> array(),
+			'keys'	=> array()
 		);
 
 			// Build queries for missing tables
