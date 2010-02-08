@@ -178,7 +178,9 @@ var Todoyu = {
 		
 		return func.apply(func, args);
 	},
-	
+
+
+
 	getFunctionFromString: function(functionName) {
 		var namespaces 	= functionName.split(".");
 		var func 		= namespaces.pop();
