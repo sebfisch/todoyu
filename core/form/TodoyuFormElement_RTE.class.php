@@ -52,7 +52,8 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 		$options	= array(
 			'mode'		=> 'exact',
 			'elements'	=> $this->getHtmlID(),
-			'theme'		=> 'simple');
+			'theme'		=> 'simple'
+		);
 
 			// Load config
 		if( is_array($this->config['tinymce']) ) {

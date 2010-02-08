@@ -58,7 +58,11 @@ class TodoyuBaseObject implements ArrayAccess {
 			$record		= Todoyu::db()->getRecord($table, $idRecord);
 			if( $record !== false ) {
 				$this->data = $record;
+			} else {
+				Todoyu::log('Record not found! ID: "' . $idRecord . '", TABLE: "' . $table . '"', LOG_LEVEL_ERROR);
 			}
+		} else {
+			Todoyu::log('Record with ID 0 created (new object or missing data?) Table: ' . $table, LOG_LEVEL_NOTICE);
 		}
 	}
 
@@ -80,7 +84,7 @@ class TodoyuBaseObject implements ArrayAccess {
 		if( substr($methodName, 0, 3) === 'get' && array_key_exists($dataKey, $this->data) ) {
 			return $this->get($dataKey);
 		} else {
-			Todoyu::log('Data "' . $dataKey . '" not found in ' . get_class($this), LOG_LEVEL_NOTICE, $this->data);
+			Todoyu::log('Data "' . $dataKey . '" not found in ' . get_class($this) . ' (ID:' . $this->data['id'] . ')', LOG_LEVEL_NOTICE, $this->data);
 			return '';
 		}
 	}

@@ -356,11 +356,30 @@ class TodoyuPage {
 	 * @param	String		$type
 	 */
 	public static function addExtAssets($ext, $type = 'public') {
+		TodoyuExtensions::loadAllAssets();
+
 		$types	= explode(',', $type);
 
 		foreach($types as $type) {
 			self::addExtJavascript($ext, $type);
 			self::addExtStylesheets($ext, $type);
+		}
+	}
+
+
+
+	/**
+	 * Load type assets of all extensions
+	 *
+	 * @param	String		$type
+	 */
+	public static function addAllExtAssets($type) {
+		TodoyuExtensions::loadAllAssets();
+
+		$extKeys	= TodoyuExtensions::getInstalledExtKeys();
+
+		foreach($extKeys as $extKey) {
+			self::addExtAssets($extKey, $type);
 		}
 	}
 

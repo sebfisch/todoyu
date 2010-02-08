@@ -127,9 +127,9 @@ class TodoyuArray {
 			// Remove zeros
 		if( $removeZeros ) {
 			$newArray = array();
-			foreach($array as $value) {
+			foreach($array as $index => $value) {
 				if( $value > 0 ) {
-					$newArray[] = $value;
+					$newArray[$index] = $value;
 				}
 			}
 			$array = $newArray;
@@ -613,9 +613,15 @@ class TodoyuArray {
 	 * @return	Array
 	 */
 	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false, $parseConstants = false) {
-		$parts	= explode($delimiter, $string);
+		$string	= trim($string);
 
-		return self::intval($parts, $onlyPositive, $removeZeros, $parseConstants);
+		if( $string === '' ) {
+			return array();
+		} else {
+			$parts	= explode($delimiter, $string);
+
+			return self::intval($parts, $onlyPositive, $removeZeros, $parseConstants);
+		}
 	}
 
 

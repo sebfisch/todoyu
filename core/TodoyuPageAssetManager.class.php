@@ -153,7 +153,6 @@ class TodoyuPageAssetManager {
 	### GLOBAL METHODS ###
 
 
-
 	/**
 	 * Build a unique mergefile name
 	 * The md5 hash is based on the content of the configuration and the

@@ -173,12 +173,16 @@ var Todoyu = {
 
 
 	callUserFunction: function(functionName /*, args */) {
-		var args 		= Array.prototype.splice.call(arguments, 1);
+		var args	= Array.prototype.splice.call(arguments, 1);
+		var func	= this.getFunctionFromString(functionName);
+		
+		return func.apply(this, args);
+	},
+	
+	getFunctionFromString: function(functionName) {
 		var namespaces 	= functionName.split(".");
 		var func 		= namespaces.pop();
 		var context		= window;
-		
-		console.log(args.size());
 		
 		for(var i = 0; i < namespaces.length; i++) {
 			context = context[namespaces[i]];
@@ -187,7 +191,7 @@ var Todoyu = {
 				alert("Function: " + functionName + " not found!");
 			}
 		}
-		return context[func].apply(this, args);
+		return context[func];
 	},
 
 
