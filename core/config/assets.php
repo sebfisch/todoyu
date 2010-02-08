@@ -144,64 +144,68 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 54
 		),
 		array(
-			'file'		=> 'core/assets/js/AjaxResponders.js',
+			'file'		=> 'core/assets/js/QuickInfo.js',
 			'position'	=> 55
 		),
 		array(
-			'file'		=> 'core/assets/js/AjaxReplacer.js',
+			'file'		=> 'core/assets/js/AjaxResponders.js',
 			'position'	=> 56
+		),
+		array(
+			'file'		=> 'core/assets/js/AjaxReplacer.js',
+			'position'	=> 57
 		),
 		array(
 			'file'		=> 'core/assets/js/Ajax.js',
-			'position'	=> 56
+			'position'	=> 57
 		),
 		array(
 			'file'		=> 'core/assets/js/Helper.js',
-			'position'	=> 57
-		),
-		array(
-			'file'		=> 'core/assets/js/Hook.js',
-			'position'	=> 57
-		),
-		array(
-			'file'		=> 'core/assets/js/Time.js',
 			'position'	=> 58
 		),
 		array(
-			'file'		=> 'core/assets/js/ContextMenu.js',
+			'file'		=> 'core/assets/js/Hook.js',
+			'position'	=> 58
+		),
+		array(
+			'file'		=> 'core/assets/js/Time.js',
 			'position'	=> 59
 		),
 		array(
-			'file'		=> 'core/assets/js/ContextMenuTemplate.js',
+			'file'		=> 'core/assets/js/ContextMenu.js',
 			'position'	=> 60
 		),
 		array(
-			'file'		=> 'core/assets/js/Tabs.js',
+			'file'		=> 'core/assets/js/ContextMenuTemplate.js',
 			'position'	=> 61
 		),
 		array(
-			'file'		=> 'core/assets/js/PanelWidget.js',
+			'file'		=> 'core/assets/js/Tabs.js',
 			'position'	=> 62
 		),
 		array(
-			'file'		=> 'core/assets/js/Pref.js',
+			'file'		=> 'core/assets/js/PanelWidget.js',
 			'position'	=> 63
+		),
+		array(
+			'file'		=> 'core/assets/js/Pref.js',
+			'position'	=> 64
 		)	,
 		array(
 			'file'		=> 'core/assets/js/Form.js',
-			'position'	=> 64
-		),
-		array(
-			'file'		=> 'core/assets/js/Autocomplete.js',
 			'position'	=> 65
 		),
 		array(
-			'file'		=> 'core/assets/js/TimePicker.js',
+			'file'		=> 'core/assets/js/Autocomplete.js',
 			'position'	=> 66
 		),
 		array(
-			'file'		=> 'core/assets/js/Listing.js',
+			'file'		=> 'core/assets/js/TimePicker.js',
 			'position'	=> 67
+		),
+		array(
+			'file'		=> 'core/assets/js/Listing.js',
+			'position'	=> 68
 		)
 	),
 

@@ -197,69 +197,6 @@ function Dwoo_Plugin_HourMin(Dwoo $dwoo, $seconds) {
 
 
 /**
- * Check if an ID belongs to the current user
- *
- * @package		Todoyu
- * @subpackage	Template
- *
- * @param	Dwoo_Compiler 	$dwoo
- * @param	Integer			$idUser
- * @return	Boolean
- */
-
-function Dwoo_Plugin_isUserID_compile(Dwoo_Compiler $dwoo, $idUser) {
-	return 'userid() === intval(' . $idUser . ')';
-}
-
-
-/**
- * Get the ID of the currently logged-in user
- *
- * @param 	Dwoo 		$dwoo
- * @return	String
- *
- */
-function Dwoo_Plugin_UserID(Dwoo $dwoo) {
-	return userid();
-}
-
-
-
-/**
- * Get the username to an user ID
- *
- * @package		Todoyu
- * @subpackage	Template
- *
- * @param 	Dwoo 		$dwoo
- * @param	Integer		$idUser
- * @return	String
- */
-
-function Dwoo_Plugin_UserName(Dwoo $dwoo, $idUser) {
-	$idUser	= intval($idUser);
-
-	return TodoyuUserManager::getUser($idUser)->getFullName(true);
-}
-
-
-
-/**
- * Get the shortname of the currently logged-in user
- *
- * @param 	Dwoo 		$dwoo
- * @return	String
- *
- */
-function Dwoo_Plugin_UserShortname(Dwoo $dwoo, $idUser) {
-	$idUser	= intval( $idUser );
-
-	return TodoyuUserManager::getUser($idUser)->getShortname();
-}
-
-
-
-/**
  * Get formatted filesize
  *
  * @package		Todoyu
@@ -369,7 +306,7 @@ function Dwoo_Plugin_firebug(Dwoo $dwoo, $variable) {
  * @return stringg
  */
 function Dwoo_Plugin_odd_even(Dwoo $dwoo, $index)	{
-	return $index%2 ? 'odd':'even';
+	return $index % 2 ? 'odd' : 'even';
 }
 
 
@@ -391,6 +328,13 @@ function Dwoo_Plugin_dateFormat_compile(Dwoo_Compiler $compiler, $timestamp, $fo
 
 
 
+/**
+ * Clean bad tags from HTML code
+ *
+ * @param	Dwoo_Compiler 	$compiler		Dwoo compiler
+ * @param	String			$html
+ * @return	String
+ */
 function Dwoo_Plugin_cleanHtml_compile(Dwoo_Compiler $compiler, $html) {
 	return 'TodoyuHtmlFilter::clean(' . $html . ')';
 }
@@ -486,6 +430,7 @@ function Dwoo_Plugin_IndexLetters(Dwoo $dwoo, array $records, $field, $indexName
 
 	return render($tmpl, $data);
 }
+
 
 
 /**
