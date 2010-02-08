@@ -57,14 +57,8 @@ ul.ulListDotted li.listItem {
 li.listItem .editableItem span,
 li.listItem a .editableItem span {
 	padding-left:20px;
-	background:transparent url('../img/sprite-icons.png') no-repeat -58px -360px !important;
+	background:transparent url('../img/sprite-icons.png') no-repeat -58px -360px;
 }
-
-li.listItem a:hover span {
-	background-color:#f2f2d2 !important;
-}
-
-
 
 /* -----------------
 	Box
