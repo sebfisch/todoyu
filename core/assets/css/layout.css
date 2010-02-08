@@ -299,6 +299,11 @@ div.error {
 	margin-bottom:1px !important;
 }
 
+.noIcon {
+	padding:0 !important;
+	background-image: none !important;
+}
+
 	/* planning */
 .bcStatus1 {
 	border-color:#7f007f;
