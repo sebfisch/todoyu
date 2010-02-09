@@ -30,17 +30,9 @@
 }
 
 #quickinfo dt.typeIcon {
-	background:url(../img/icons.png) no-repeat 4px -478px;
-}
-
-#quickinfo dt.dateIcon {
-	background:url(../img/icons.png) no-repeat 4px -568px;
+	background:url(../img/quickinfo.png) no-repeat 4px 2px;
 }
 
 #quickinfo dt.usersIcon {
-	background:url(../img/icons.png) no-repeat 4px -628px;
-}
-
-#quickinfo dt.placeIcon {
-	background:url(../img/icons.png) no-repeat 4px -538px;
+	background:url(../img/quickinfo.png) no-repeat 4px -30px;
 }
