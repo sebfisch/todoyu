@@ -72,7 +72,7 @@ ul.metamenu {
 	ul.metamenu li {
 		float:left;
 		padding:0 5px 0 8px;
-		background:url('../img/bg_metamenu_li.png') no-repeat 0 50%;
+		background:url('../img/bg-metamenu-li.png') no-repeat 0 50%;
 	}
 
 		ul.metamenu li.first {

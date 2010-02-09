@@ -14,13 +14,13 @@
 
 #panel div.panelHeader {
 	height:8px;
-	background:url(../img/panel_header.png) no-repeat 0 0;
+	background:url(../img/panel-header.png) no-repeat 0 0;
 }
 
 #panel div.panelFooter {
 	height:51px;
 	margin-top:-2px;
-	background:url(../img/panel_footer.png) no-repeat 0 0;
+	background:url(../img/panel-footer.png) no-repeat 0 0;
 }
 
 #panel div.panelWidget {

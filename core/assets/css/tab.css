@@ -24,7 +24,7 @@
 #content .tabs li {
 	float:left;
 	margin-right:3px;
-	background-image:url(../img/col3_r13.png);
+	background-image:url(../img/rounded-box02.png);
 	background-repeat:no-repeat;
 	background-position:100% 0;
 	cursor:pointer;
@@ -43,7 +43,7 @@
 	text-transform:uppercase;
 	letter-spacing:1px;
 	white-space:nowrap;
-	background-image:url(../img/shadow01.png);
+	background-image:url(../img/shadow.png);
 	background-repeat:no-repeat;
 	background-position:50% 100%;
 }
@@ -55,7 +55,7 @@
 	width:13px;
 	height:13px;
 	background-color:transparent;
-	background-image:url('../img/col3_r13.png');
+	background-image:url('../img/rounded-box02.png');
 	background-repeat:no-repeat;
 	background-position:0 0;
 }
@@ -84,11 +84,11 @@
 
 /*
 .tabs li.hover {
-	background-image:url(../img/tabs/left_hover.png);
+	background-image:url(../img/tabs/left-hover.png);
 }
 
 .tabs li.active {
-	background-image:url(../img/tabs/left_active.png);
+	background-image:url(../img/tabs/left-active.png);
 }
 
 .tabs li span.icon {
@@ -115,13 +115,13 @@
 
 
 .tabs li.active span.label {
-	background-image:url(../img/tabs/right_active.png) !important;
+	background-image:url(../img/tabs/right-active.png) !important;
 	font-weight:bold;
 	letter-spacing:0.1px;
 }
 
 .tabs li.hover span.label {
-	background-image:url(../img/tabs/right_hover.png);
+	background-image:url(../img/tabs/right-hover.png);
 }
 
 */

@@ -180,7 +180,7 @@ input#database_new {
 			width:13px;
 			height:13px;
 			background-color:transparent;
-			background-image:url('../img/col3_r13.png');
+			background-image:url('../img/rounded-box02.png');
 			background-repeat:no-repeat;
 			background-position:0 0;
 		}
@@ -276,7 +276,7 @@ input#database_new {
 #panelx .panelFooter {
 	height:51px;
 	margin-top:-2px;
-	background:#e3eace url('../img/panel_footer.png') no-repeat 0 0;
+	background:#e3eace url('../img/panel-footer.png') no-repeat 0 0;
 }
 
 
@@ -328,7 +328,7 @@ input#database_new {
 	Headers, footers
    --------------------------- */
 h1 {
-	background:transparent url('../img/bg_headerline.png') no-repeat 0 0;
+	background:transparent url('../img/bg-headerline.png') no-repeat 0 0;
 	height:28px;
 	margin-top:5px;
 	position:relative;
@@ -346,7 +346,7 @@ h1 span.title {
 }
 
 h1 span.rgt {
-	background:#fff url('../img/bg_headerline.png') no-repeat scroll 100% 0;
+	background:#fff url('../img/bg-headerline.png') no-repeat scroll 100% 0;
 	height:28px;
 	margin:0;
 	padding:0;
@@ -365,7 +365,7 @@ a, a:link {
 }
 
 button {
-	background:url('../img/bg_button.png') no-repeat 0 50%;
+	background:url('../img/bg-button.png') no-repeat 0 50%;
 	border:0 none !important;
 	color:#000;
 	cursor:pointer;
@@ -392,7 +392,7 @@ button {
 
 	button span.rgt {
 		background-color:#d3dabb;
-		background:#e3eace url('../img/bg_button.png') no-repeat 100% 50%;
+		background:#e3eace url('../img/bg-button.png') no-repeat 100% 50%;
 		display:block;
 		height:23px;
 		left:3px;

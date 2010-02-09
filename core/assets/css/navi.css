@@ -13,7 +13,7 @@ ul#navi-main-list {
 
 ul#navi-main-list li {
 	float:left;
-	background-image:url('../img/colF_r13.png');
+	background-image:url('../img/rounded-box01.png');
 	background-position:100% 0;
 	margin-right:3px;
 }
@@ -31,7 +31,7 @@ ul#navi-main-list li a {
 	text-transform:uppercase;
 	letter-spacing:1px;
 	white-space:nowrap;
-	background-image:url('../img/shadow01.png');
+	background-image:url('../img/shadow.png');
 	background-position:50% 100%;
 
 }
@@ -41,7 +41,7 @@ ul#navi-main-list li a span.lt {
 	float:left;
 	width:14px;
 	height:13px;
-	background-image:url('../img/colF_r13.png');
+	background-image:url('../img/rounded-box01.png');
 }
 
 ul#navi-main-list li:hover a,
