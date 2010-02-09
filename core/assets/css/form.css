@@ -90,7 +90,8 @@ select {}
 	}
 
 	select optgroup {
-		padding-top:5px;
+		padding-top:10px;
+		font-size:11px;
 	}
 
 	select optgroup option {

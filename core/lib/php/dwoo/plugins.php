@@ -83,8 +83,9 @@ function Dwoo_Plugin_LabelReplace(Dwoo $dwoo, $key, $locale = null, $needle, $re
  * @param	Integer		$workload
  * @return	String
  */
-function Dwoo_Plugin_Workload(Dwoo $dwoo, $workload) {
-	return TodoyuTime::sec2hour($workload);
+function Dwoo_Plugin_Workload_compile(Dwoo_Compiler $compiler, $workload) {
+	return 'TodoyuTime::sec2hour(' . $workload . ')';
+	//return TodoyuTime::sec2hour($workload);
 }
 
 
