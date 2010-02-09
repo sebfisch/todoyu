@@ -1,0 +1,46 @@
+#quickinfo {
+	display:block;
+	left:200px;
+	position:absolute;
+	top:200px;
+	width:152px;
+	border:1px solid #b9bcae;
+	background-color:#d3dabb;
+}
+
+#quickinfo dl {
+	
+}
+
+#quickinfo dl dt {
+	float:left;	
+	width:20px;
+	min-height:15px;
+	padding:2px;
+}
+
+#quickinfo dl dd {
+	float:left;	
+	width:120px;
+	min-height:15px;
+	padding:3px 4px;
+	background-color:#edf1e0;
+	text-align:left;
+	font-size:10px;
+}
+
+#quickinfo dt.typeIcon {
+	background:url(../img/icons.png) no-repeat 4px -478px;
+}
+
+#quickinfo dt.dateIcon {
+	background:url(../img/icons.png) no-repeat 4px -568px;
+}
+
+#quickinfo dt.usersIcon {
+	background:url(../img/icons.png) no-repeat 4px -628px;
+}
+
+#quickinfo dt.placeIcon {
+	background:url(../img/icons.png) no-repeat 4px -538px;
+}

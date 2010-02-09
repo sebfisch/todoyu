@@ -94,8 +94,14 @@ Todoyu.QuickInfo = {
 	showPopUp: function(x, y) {
 			// Check hide-flag (prevent lapse due to running request while mouseOut happened)
 		if ( ! this.hidden ) {
-			x += 16;
+			x += 8;
 			y -= 12;
+
+			var popupWidth	= $(this.popupID).getDimensions()['width'];
+					
+			if ( x + 20 > window.innerWidth - popupWidth) {
+				x = x - popupWidth - 20;
+			}
 
 			$(this.popupID).setStyle({
 				'top':	y + 'px',

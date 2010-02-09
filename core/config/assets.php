@@ -289,6 +289,11 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'file'		=> 'core/assets/css/panel.css',
 			'media'		=> 'all',
 			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/quickinfo.css',
+			'media'		=> 'all',
+			'position'	=> 10
 		)
 	)
 );

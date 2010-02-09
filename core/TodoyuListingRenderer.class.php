@@ -53,8 +53,8 @@ class TodoyuListingRenderer {
 
 		$tmpl	= 'core/view/listing.tmpl';
 		$data	= array(
-			'ext'		=>$ext,
-			'name'		=>$name,
+			'ext'		=> $ext,
+			'name'		=> $name,
 			'config'	=> $config,
 			'rows'		=> $listData['rows'],
 			'offset'	=> $offset,
