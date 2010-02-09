@@ -2,6 +2,7 @@
 <div class="paging-container" id="paging-{$config.name}">
 {/if}
 
+	<a id="{$offset}"></a>
 	<table class="list {$config.name}Listing" id="paging-{$config.name}-table-{$page}" >
 	
 	{*-------------- Column titles ---------------*}
@@ -28,7 +29,7 @@
 	{*-------------- Listing show more entries option ---------------*}
 {if ! $noPaging && $page < $pages}
 	<div id="extendlisting">
-		<a href="#" onclick="Todoyu.Listing.more('{$name}',{$page})">Show more</a>
+		<a href="#pos{$nextPos}" onclick="Todoyu.Listing.more('{$name}',{$page})">Show more</a>
 	</div>
 
 	<script>

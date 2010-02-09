@@ -6,15 +6,14 @@
 }
 
 button span.rgt {
-	background-color:#E3EACE !important;
+	background-color:#e3eace !important;
 }
-
 
 p.installMessage {
 	padding:10px;
 	margin:10px;
-	border:2px solid #FFF;
-	background-color:#EDF1E0;
+	border:2px solid #fff;
+	background-color:#edf1e0;
 	font-weight:bold;
 	color:#000;
 	padding-left:40px;
@@ -29,8 +28,8 @@ p.installMessage.success {
 }
 
 p.installMessage.error {
-	border-color:#F00;
-	color:#F00;
+	border-color:#f00;
+	color:#f00;
 	background-position:10px 10px;
 }
 
@@ -49,7 +48,6 @@ p.installMessage.info {
 
 
 
-
 .sqlQuery {
 	width:600px;
 	height:380px;
@@ -64,9 +62,8 @@ p.installMessage.info {
 	margin-left:20px;
 }
 
-
 .blockcontent span.title {
-	background-color: #EDF1E0;
+	background-color: #edf1e0;
 	border:1px solid #fff;
 	padding:8px 0 8px 12px;
 	display:block;
@@ -74,7 +71,6 @@ p.installMessage.info {
 	font-size:14px;
 	font-weight:bold;
 }
-
 
 
 
@@ -96,18 +92,17 @@ p.installMessage.info {
 	font-size:12px;
 	padding:8px;
 	padding-left:30px;
-	color:#CCC;
+	color:#ccc;
 }
 #panelwidget-installprogress ul li.done {
 	color:#000;
 	background:url(../img/icons.png) no-repeat 0 -20px;
 }
 #panelwidget-installprogress ul li.current {
-	color:#F00;
+	color:#C51C1C;
 	font-weight:bold;
-	background:none;	
+	background:none;
 }
-
 
 
 
@@ -122,7 +117,7 @@ table.dbstruct td {
 
 table.dbstruct th {
 	text-align:left;
-	background-color:#FFA800;
+	background-color:#ffa800;
 	border-bottom: 2px dashed #000;
 }
 
@@ -136,7 +131,7 @@ table.dbstruct th.type {
 	width:150px;
 }
 table.dbstruct td {
-	border-left:1px solid #FFA800;
+	border-left:1px solid #ffa800;
 }
 
 table.dbstruct td.table {
@@ -148,7 +143,6 @@ p.section {
 	font-size:14px;
 	margin:10px;
 }
-
 
 
 
@@ -166,40 +160,12 @@ input#database_new {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ---------------------------------
 	General content boxes, styles
    --------------------------------- */
-
 #box {
 	padding:1px 2px 0 3px;
 }
-
-
 
 		#contentBox span.lt,
 		#contentBox span.rt,
@@ -257,11 +223,6 @@ input#database_new {
 /* -----------------------
 	Text
    ----------------------- */
-
-
-
-
-
 .error {
 	color:red;
 }
@@ -299,7 +260,6 @@ input#database_new {
 /* -----------------------
 	Panel
    ----------------------- */
-
 #licence,
 #panelx {
 	clear:both;
@@ -324,7 +284,6 @@ input#database_new {
 /* --------------------------
 	License agreement
    --------------------------- */
-
 #licenseagreement {
 	background-color:#fbfff0;
 	padding:20px 0 28px 24px;
@@ -341,7 +300,7 @@ input#database_new {
 	.enduserlicense pre {
 		font-family:monospace;
 		font-size:12px !important;
-	}	
+	}
 	
 	#licenseagreement h2 {
 		font-weight:normal;
@@ -353,7 +312,7 @@ input#database_new {
 	ul.thirdPartyLibs {
 		padding:4px 0 6px 20px;
 		width:520px;
-		border:1px solid #D6D6D6;
+		border:1px solid #d6d6d6;
 		background-color:#fff;
 		margin:8px 0 26px 0;
 	}
@@ -364,12 +323,10 @@ input#database_new {
 		}
 
 
+
 /* --------------------------
 	Headers, footers
    --------------------------- */
-
-
-
 h1 {
 	background:transparent url('../img/bg_headerline.png') no-repeat 0 0;
 	height:28px;
@@ -403,7 +360,6 @@ h1 span.rgt {
 /* -----------------------------
 	Hyperlinks, buttons, labels, etc.
    ----------------------------- */
-
 a, a:link {
 	color:#414e1c;
 }
@@ -455,7 +411,6 @@ label {
 /* ----------------------------
 	Icons, decorations
    ---------------------------- */
-
 .servercheckicon {
 	height:16px;
 	width:16px;
@@ -478,9 +433,6 @@ label {
 
 
 
-
-
 td {
 	padding:4px 0 8px 0;
 }
-   

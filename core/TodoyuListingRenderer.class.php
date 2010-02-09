@@ -53,15 +53,17 @@ class TodoyuListingRenderer {
 
 		$tmpl	= 'core/view/listing.tmpl';
 		$data	= array(
-			'ext'		=> $ext,
-			'name'		=> $name,
+			'ext'		=>$ext,
+			'name'		=>$name,
 			'config'	=> $config,
 			'rows'		=> $listData['rows'],
 			'offset'	=> $offset,
 			'total'		=> $totalRows,
+			'size'		=> $size,
 			'page'		=> $offset === 0 ? 1 : ($offset / $size) + 1,
-			'pages'		=> ceil($totalRows/$size),
-			'noPaging'	=> $searchWord !== ''
+			'pages'		=> ceil($totalRows / $size),
+			'noPaging'	=> $searchWord !== '',
+			'nextPos'	=> $offset + $size,
 		);
 
 		return render($tmpl, $data);
