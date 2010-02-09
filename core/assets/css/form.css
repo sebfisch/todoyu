@@ -372,14 +372,12 @@ fieldset {}
 }
 
 .formElement .databaseRelation .formtrigger a.remove {
-	background:transparent url(../img/icons_dev.png) no-repeat 0 -1610px;
+	background:transparent url(../img/formelements.png) no-repeat 3px 3px;
 	height:16px;
 	width:16px;
 	position:absolute;
 	right:5px;
 }
-
-
 
 
 
@@ -392,7 +390,7 @@ fieldset {}
 }
 
 .formElement .foreignRecordsActionControll a {
-	background:transparent url(../img/icons_dev.png) no-repeat -2px -292px;
+	background:transparent url(../img/formelements.png) no-repeat 0 -30px;
 	height:16px;
 	width:17px;
 	position:absolute;

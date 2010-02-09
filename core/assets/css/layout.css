@@ -373,11 +373,11 @@ label.toggleSelect {
 }
 
 label.toggleSelect.collapse {
-	background:url('../img/ico_toggle_select.png') no-repeat 0 0;
+	background:url('../img/toggle.png') no-repeat 0 -150px;
 }
 
 label.toggleSelect.expand {
-	background:url('../img/ico_toggle_select.png') no-repeat -44px 0;
+	background:url('../img/toggle.png') no-repeat 0 -182px;
 }
 
 /* ---------------
