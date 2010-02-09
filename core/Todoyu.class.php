@@ -61,7 +61,6 @@ class Todoyu {
 
 	/**
 	 * Initialize static Todoyu class
-	 *
 	 */
 	public static function init() {
 			// Init Locale for locallang files
@@ -77,7 +76,6 @@ class Todoyu {
 
 	/**
 	 * Set system locale with setlocale() based on the currently selected language
-	 *
 	 */
 	public static function setSystemLocale() {
 		$locale	= self::getLocale();
@@ -189,7 +187,6 @@ class Todoyu {
 
 	/**
 	 * Reset user object if a new user is logged in
-	 *
 	 */
 	public static function resetUser() {
 		self::$user = TodoyuAuth::getUser(true);

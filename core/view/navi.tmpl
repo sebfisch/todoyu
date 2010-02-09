@@ -2,7 +2,7 @@
 	<ul id="navi-main-list" class="navilist">
 {foreach $navigation entry name=navimain}
 		<li class="item item{ucfirst $entry.key} bcl01{if $entry.active} active bcl02{/if}{if $entry.submenu} hasSub{/if}{if $dwoo.foreach.navimain.first} first{/if}{if $dwoo.foreach.navimain.last} last{/if}">
-			<a href="{$entry.href}" title="{$entry.desc}"{if $entry.active} class="active"{/if}><span class="lt"><!-- --></span>{$entry.label}</a>
+			<a href="{$entry.href}"{if $entry.target !== null} target="{$entry.target}"{/if} title="{$entry.desc}"{if $entry.active} class="active"{/if}><span class="lt"><!-- --></span>{$entry.label}</a>
 			{if $entry.submenu}
 			<ul id="navi-main-list-{$entry.key}" class="navilist">
 				{foreach $entry.submenu sub name=navimainsub}
