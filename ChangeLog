@@ -1,3 +1,29 @@
+2.0.0-rc2 - 2010-02-xx
+	*
+
+2.0.0-rc1 - 2010-01-29
+	* Changed: Remove direct mb_* use. Checks first if multibyte extension is available
+	* Changed: Clear and consistent content structure (splitted up tabs and content)
+	* Added: Support for locales. Used to change php locale to system supported locale. Base for billing extension
+	* Changed: Fixed calendar event display/listing
+	* Changed: Clean handling of task info icons
+	* Changed: Removed asynchronous ajax requests for faster UI
+	* Changed: Installer works properly, finds missing tables, missing columns, changed columns
+	* Added: Demo data
+	* Added: Project status filter panel widget
+	* Changed: Projectlist is now a simple and superfast list, remove tree support
+	* Changed: Completed translation for all (?) labels used in todoyu
+	* Changed: Moved notifications to the top of the page to prevent blocking the tabs
+	* Bugfix: Copy paste bug when pasting tasks into a container (lost status colors)
+	* Changed: Paste is now visible everwhere, but inactive except in project
+	* Changed: Remove all non used stylesheets, scripts and images from core
+	* Bugfix: Save and cancel buttons use now the same xml structure and css styles
+	* Bugfix: Task data display problem in search view
+	* Bugfix: Wrong preselection and list for assigned user and owner
+	* Bugfix: Duration selector extended time selector, so 24:00 was the max duration
+	* Bugfix: Comment feedback users list. Task and project users missing in the list
+	* Bugfix: Dayevent was not display the right way. Filled up the whole day instead only the header bar
+
 2.0.0-beta3 - 2010-01-14
 	* Changed: Installer can upgrade from any version
 	* Changed: CSS cleanup
