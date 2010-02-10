@@ -530,12 +530,12 @@ function Dwoo_Plugin_select(Dwoo $dwoo, $id = '', $name = '', $class = '', $size
 		'htmlId'	=> $id,
 		'htmlName'	=> $name,
 		'class'		=> $class,
-		'size'		=> $size,
+		'size'		=> $size === 0 ? sizeof($options) : $size,
 		'multiple'	=> $multiple,
 		'disabled'	=> $disabled,
 		'onchange'	=> $onchange,
 		'value'		=> $value,
-		'options'	=> $options,
+		'options'	=> $options
 	);
 
 	return render($tmpl, $data);
