@@ -489,6 +489,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_contactinfotype` (
   `date_create` int(11) NOT NULL,
   `date_update` int(11) NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `category` smallint(5) unsigned NOT NULL,
   `key` varchar(20) NOT NULL,
   `title` varchar(48) NOT NULL,
   PRIMARY KEY (`id`)

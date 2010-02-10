@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 29. Januar 2010 um 18:38
+-- Creation time: January 29. 2010 18:38
 -- Server Version: 5.0.51
 -- PHP-Version: 5.2.6-1+lenny4
 
@@ -11,7 +11,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 --
--- Daten für Tabelle `ext_assets_asset`
+-- Data for Table `ext_assets_asset`
 --
 
 INSERT INTO `ext_assets_asset` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_parent`, `parenttype`, `is_public`, `file_ext`, `file_storage`, `file_name`, `file_size`, `file_mime`, `file_mime_sub`) VALUES
@@ -21,7 +21,7 @@ INSERT INTO `ext_assets_asset` (`id`, `date_create`, `date_update`, `id_user_cre
 (4, 1264778177, 1264778177, 18, 0, 134, 1, 0, 'jpg', 'task/134/1264778177_gettodoyu.jpg', 'gettodoyu.jpg', 1222, 'image', 'jpeg');
 
 --
--- Daten für Tabelle `ext_bookmark_bookmark`
+-- Data for Table `ext_bookmark_bookmark`
 --
 
 INSERT INTO `ext_bookmark_bookmark` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `type`, `id_item`) VALUES
@@ -39,7 +39,7 @@ INSERT INTO `ext_bookmark_bookmark` (`id`, `date_create`, `date_update`, `id_use
 (12, 1264779712, 0, 18, 0, 1, 135);
 
 --
--- Daten für Tabelle `ext_calendar_event`
+-- Data for Table `ext_calendar_event`
 --
 
 INSERT INTO `ext_calendar_event` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_project`, `id_task`, `eventtype`, `title`, `description`, `place`, `date_start`, `date_end`, `is_private`, `is_dayevent`, `is_public`) VALUES
@@ -51,7 +51,7 @@ INSERT INTO `ext_calendar_event` (`id`, `date_create`, `date_update`, `id_user_c
 (6, 1264778364, 1264778364, 17, 0, 0, 0, 6, 'Project Meeting', '', '', 1266418800, 1266433200, 0, 0, 0);
 
 --
--- Daten für Tabelle `ext_calendar_holiday`
+-- Data for Table `ext_calendar_holiday`
 --
 
 INSERT INTO `ext_calendar_holiday` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `date`, `title`, `description`, `workingtime`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `ext_calendar_holiday` (`id`, `date_create`, `date_update`, `id_user
 (62, 1244472469, 1244472469, 381, 0, 1242856800, 'Auffahrt', '', 0);
 
 --
--- Daten für Tabelle `ext_calendar_holidayset`
+-- Data for Table `ext_calendar_holidayset`
 --
 
 INSERT INTO `ext_calendar_holidayset` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `description`) VALUES
@@ -82,7 +82,7 @@ INSERT INTO `ext_calendar_holidayset` (`id`, `date_create`, `date_update`, `id_u
 (4, 0, 0, 0, 0, 'Japan', 'Japan');
 
 --
--- Daten für Tabelle `ext_calendar_mm_event_user`
+-- Data for Table `ext_calendar_mm_event_user`
 --
 
 INSERT INTO `ext_calendar_mm_event_user` (`id`, `id_event`, `id_user`, `is_acknowledged`) VALUES
@@ -96,7 +96,7 @@ INSERT INTO `ext_calendar_mm_event_user` (`id`, `id_event`, `id_user`, `is_ackno
 (17, 6, 17, 1);
 
 --
--- Daten für Tabelle `ext_calendar_mm_holiday_holidayset`
+-- Data for Table `ext_calendar_mm_holiday_holidayset`
 --
 
 INSERT INTO `ext_calendar_mm_holiday_holidayset` (`id`, `id_holiday`, `id_holidayset`) VALUES
@@ -143,7 +143,7 @@ INSERT INTO `ext_calendar_mm_holiday_holidayset` (`id`, `id_holiday`, `id_holida
 (391, 49, 4);
 
 --
--- Daten für Tabelle `ext_comment_comment`
+-- Data for Table `ext_comment_comment`
 --
 
 INSERT INTO `ext_comment_comment` (`id`, `date_update`, `date_create`, `deleted`, `id_user_create`, `id_task`, `comment`, `is_public`) VALUES
@@ -162,7 +162,7 @@ INSERT INTO `ext_comment_comment` (`id`, `date_update`, `date_create`, `deleted`
 (13, 1264784917, 1264784917, 0, 1, 149, '<p>sssafd</p>', 0);
 
 --
--- Daten für Tabelle `ext_comment_feedback`
+-- Data for Table `ext_comment_feedback`
 --
 
 INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_user_create`, `id_user_feedback`, `id_comment`, `is_seen`) VALUES
@@ -183,12 +183,12 @@ INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_user
 (15, 1264778585, 0, 12, 18, 10, 0);
 
 --
--- Daten für Tabelle `ext_comment_mailed`
+-- Data for Table `ext_comment_mailed`
 --
 
 
 --
--- Daten für Tabelle `ext_project_mm_project_user`
+-- Data for Table `ext_project_mm_project_user`
 --
 
 INSERT INTO `ext_project_mm_project_user` (`id`, `id_project`, `id_user`, `id_userrole`, `comment`) VALUES
@@ -222,7 +222,7 @@ INSERT INTO `ext_project_mm_project_user` (`id`, `id_project`, `id_user`, `id_us
 (49, 4, 1, 1, '');
 
 --
--- Daten für Tabelle `ext_project_project`
+-- Data for Table `ext_project_project`
 --
 
 INSERT INTO `ext_project_project` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `date_start`, `date_end`, `date_deadline`, `date_finish`, `title`, `description`, `status`, `id_company`, `fixedcosts`, `is_fixedcosts_paid`, `is_fixed`, `id_fixedproject`, `id_rateset`) VALUES
@@ -242,7 +242,7 @@ INSERT INTO `ext_project_project` (`id`, `date_create`, `date_update`, `id_user_
 (14, 1264777540, 1264777661, 12, 0, 1266793200, 1269558000, 1269558000, 0, 'New Opensource Server', '<p>Build a new server for opensource projects</p>', 1, 15, 0, 0, 0, 0, 0);
 
 --
--- Daten für Tabelle `ext_project_task`
+-- Data for Table `ext_project_task`
 --
 
 INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `type`, `id_project`, `id_parenttask`, `title`, `description`, `id_user_assigned`, `id_user_owner`, `date_deadline`, `date_start`, `date_end`, `date_finish`, `tasknumber`, `status`, `id_worktype`, `estimated_workload`, `is_estimatedworkload_public`, `is_acknowledged`, `offered_accesslevel`, `is_offered`, `clearance_state`, `is_private`, `is_public`, `sorting`) VALUES
@@ -398,7 +398,7 @@ INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_user_cre
 (150, 1264780744, 1264785492, 1, 0, 1, 8, 149, 'Time estimated', '<p>Time estimated</p>', 14, 14, 1264953480, 1264780680, 1264953480, 0, 4, 2, 1, 38, 0, 1, 0, 0, 0, 0, 0, 0);
 
 --
--- Daten für Tabelle `ext_project_userrole`
+-- Data for Table `ext_project_userrole`
 --
 
 INSERT INTO `ext_project_userrole` (`id`, `date_create`, `id_user_create`, `date_update`, `rolekey`, `title`, `deleted`) VALUES
@@ -409,7 +409,7 @@ INSERT INTO `ext_project_userrole` (`id`, `date_create`, `id_user_create`, `date
 (5, 0, 0, 1264696246, 'customer_contact', 'Customer', 0);
 
 --
--- Daten für Tabelle `ext_project_worktype`
+-- Data for Table `ext_project_worktype`
 --
 
 INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `type`) VALUES
@@ -422,7 +422,7 @@ INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_user_create`, `date
 (7, 0, 17, 1264778822, 0, 'Documentation', 0);
 
 --
--- Daten für Tabelle `ext_search_filtercondition`
+-- Data for Table `ext_search_filtercondition`
 --
 
 INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `id_user_create`, `deleted`, `id_set`, `filter`, `value`, `negate`) VALUES
@@ -459,7 +459,7 @@ INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `i
 (318, 1264779500, 1264779500, 1, 0, 3, 'status', '2', 0);
 
 --
--- Daten für Tabelle `ext_search_filterset`
+-- Data for Table `ext_search_filterset`
 --
 
 INSERT INTO `ext_search_filterset` (`id`, `date_update`, `date_create`, `id_user_create`, `deleted`, `sorting`, `is_hidden`, `usergroups`, `type`, `title`, `conjunction`) VALUES
@@ -477,12 +477,12 @@ INSERT INTO `ext_search_filterset` (`id`, `date_update`, `date_create`, `id_user
 (15, 1264779157, 1264779095, 1, 0, 0, 0, '', 'project', 'To manage', 'AND');
 
 --
--- Daten für Tabelle `ext_sysmanager_extension`
+-- Data for Table `ext_sysmanager_extension`
 --
 
 
 --
--- Daten für Tabelle `ext_timetracking_track`
+-- Data for Table `ext_timetracking_track`
 --
 
 INSERT INTO `ext_timetracking_track` (`id`, `date_create`, `date_update`, `id_user_create`, `date_track`, `id_task`, `workload_tracked`, `workload_chargeable`, `comment`) VALUES
@@ -502,14 +502,14 @@ INSERT INTO `ext_timetracking_track` (`id`, `date_create`, `date_update`, `id_us
 (14, 1264784771, 1264784771, 1, 1264784771, 59, 348, 0, '');
 
 --
--- Daten für Tabelle `ext_timetracking_tracking`
+-- Data for Table `ext_timetracking_tracking`
 --
 
 INSERT INTO `ext_timetracking_tracking` (`id`, `date_create`, `date_update`, `id_user_create`, `id_task`) VALUES
 (4, 1264778433, 1264778433, 17, 138);
 
 --
--- Daten für Tabelle `ext_user_address`
+-- Data for Table `ext_user_address`
 --
 
 INSERT INTO `ext_user_address` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_addresstype`, `street`, `postbox`, `city`, `region`, `zip`, `id_country`, `is_preferred`, `comment`, `id_holidayset`) VALUES
@@ -531,7 +531,7 @@ INSERT INTO `ext_user_address` (`id`, `date_create`, `date_update`, `id_user_cre
 (16, 1264780312, 1264780312, 18, 0, 1, 'Mike Myers Drive', '1234', 'Scarborough', '', '80042', 0, 1, 'find out and add the region', 0);
 
 --
--- Daten für Tabelle `ext_user_company`
+-- Data for Table `ext_user_company`
 --
 
 INSERT INTO `ext_user_company` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `is_internal`, `ext_projectbilling_reduction`) VALUES
@@ -554,7 +554,7 @@ INSERT INTO `ext_user_company` (`id`, `date_create`, `date_update`, `id_user_cre
 (19, 1264696524, 1264696717, 1, 0, 'todoyu', '', 0, 1259622000, 0, 1, 0);
 
 --
--- Daten für Tabelle `ext_user_contactinfo`
+-- Data for Table `ext_user_contactinfo`
 --
 
 INSERT INTO `ext_user_contactinfo` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_contactinfotype`, `info`, `preferred`) VALUES
@@ -625,25 +625,25 @@ INSERT INTO `ext_user_contactinfo` (`id`, `date_create`, `date_update`, `id_user
 (65, 1264696524, 1264696717, 1, 0, '1', 'team@todoyu.com', 0);
 
 --
--- Daten für Tabelle `ext_user_contactinfotype`
+-- Data for Table `ext_user_contactinfotype`
 --
 
-INSERT INTO `ext_user_contactinfotype` (`id`, `deleted`, `key`, `title`) VALUES
-(1, 0, 'email_business', 'user.contactinfo.email_business'),
-(2, 0, 'tel_private', 'user.contactinfo.tel_private'),
-(3, 0, 'tel_exchange', 'user.contactinfo.tel_exchange'),
-(4, 0, 'tel_business', 'user.contactinfo.tel_business'),
-(5, 0, 'email_private', 'user.contactinfo.email_private'),
-(6, 0, 'mobile_business', 'user.contactinfo.mobile_business'),
-(7, 0, 'fax_private', 'user.contactinfo.fax_private'),
-(8, 0, 'fax_business', 'user.contactinfo.fax_business'),
-(9, 0, 'mobile_private', 'user.contactinfo.mobile_private'),
-(10, 0, 'fax_exchange', 'user.contactinfo.fax_exchange'),
-(11, 0, 'website', 'user.contactinfo.website'),
-(12, 0, 'skype', 'user.contactinfo.skype');
+INSERT INTO `ext_user_contactinfotype` (`id`, `deleted`, `category`, `key`, `title`) VALUES
+(1, 0, 1, 'email_business', 'LLL:user.contactinfo.email_business'),
+(2, 0, 2, 'tel_private', 'LLL:user.contactinfo.tel_private'),
+(3, 0, 2, 'tel_exchange', 'LLL:user.contactinfo.tel_exchange'),
+(4, 0, 2, 'tel_business', 'LLL:user.contactinfo.tel_business'),
+(5, 0, 1, 'email_private', 'LLL:user.contactinfo.email_private'),
+(6, 0, 2, 'mobile_business', 'LLL:user.contactinfo.mobile_business'),
+(7, 0, 2, 'fax_private', 'LLL:user.contactinfo.fax_private'),
+(8, 0, 2, 'fax_business', 'LLL:user.contactinfo.fax_business'),
+(9, 0, 2, 'mobile_private', 'LLL:user.contactinfo.mobile_private'),
+(10, 0, 2, 'fax_exchange', 'LLL:user.contactinfo.fax_exchange'),
+(11, 0, 3, 'website', 'LLL:user.contactinfo.website'),
+(12, 0, 3, 'skype', 'LLL:user.contactinfo.skype');
 
 --
--- Daten für Tabelle `ext_user_group`
+-- Data for Table `ext_user_group`
 --
 
 INSERT INTO `ext_user_group` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `is_active`, `description`) VALUES
@@ -655,12 +655,12 @@ INSERT INTO `ext_user_group` (`id`, `date_create`, `date_update`, `id_user_creat
 (6, 1264779985, 1264780028, 12, 1, 'ssssssssssss', 1, '');
 
 --
--- Daten für Tabelle `ext_user_holiday`
+-- Data for Table `ext_user_holiday`
 --
 
 
 --
--- Daten für Tabelle `ext_user_jobtype`
+-- Data for Table `ext_user_jobtype`
 --
 
 INSERT INTO `ext_user_jobtype` (`id`, `deleted`, `title`) VALUES
@@ -671,7 +671,7 @@ INSERT INTO `ext_user_jobtype` (`id`, `deleted`, `title`) VALUES
 (5, 0, 'IT-Manager');
 
 --
--- Daten für Tabelle `ext_user_mm_company_address`
+-- Data for Table `ext_user_mm_company_address`
 --
 
 INSERT INTO `ext_user_mm_company_address` (`id`, `id_company`, `id_address`) VALUES
@@ -691,7 +691,7 @@ INSERT INTO `ext_user_mm_company_address` (`id`, `id_company`, `id_address`) VAL
 (35, 19, 15);
 
 --
--- Daten für Tabelle `ext_user_mm_company_contactinfo`
+-- Data for Table `ext_user_mm_company_contactinfo`
 --
 
 INSERT INTO `ext_user_mm_company_contactinfo` (`id`, `id_company`, `id_contactinfo`) VALUES
@@ -733,7 +733,7 @@ INSERT INTO `ext_user_mm_company_contactinfo` (`id`, `id_company`, `id_contactin
 (83, 19, 65);
 
 --
--- Daten für Tabelle `ext_user_mm_company_user`
+-- Data for Table `ext_user_mm_company_user`
 --
 
 INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_user`, `id_workaddress`, `id_jobtype`) VALUES
@@ -759,7 +759,7 @@ INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_user`, `id_worka
 (71, 19, 1, 15, 4);
 
 --
--- Daten für Tabelle `ext_user_mm_user_address`
+-- Data for Table `ext_user_mm_user_address`
 --
 
 INSERT INTO `ext_user_mm_user_address` (`id`, `id_user`, `id_address`) VALUES
@@ -767,7 +767,7 @@ INSERT INTO `ext_user_mm_user_address` (`id`, `id_user`, `id_address`) VALUES
 (3, 1, 16);
 
 --
--- Daten für Tabelle `ext_user_mm_user_contactinfo`
+-- Data for Table `ext_user_mm_user_contactinfo`
 --
 
 INSERT INTO `ext_user_mm_user_contactinfo` (`id`, `id_user`, `id_contactinfo`) VALUES
@@ -801,7 +801,7 @@ INSERT INTO `ext_user_mm_user_contactinfo` (`id`, `id_user`, `id_contactinfo`) V
 (38, 16, 64);
 
 --
--- Daten für Tabelle `ext_user_mm_user_group`
+-- Data for Table `ext_user_mm_user_group`
 --
 
 INSERT INTO `ext_user_mm_user_group` (`id`, `id_user`, `id_group`) VALUES
@@ -812,12 +812,12 @@ INSERT INTO `ext_user_mm_user_group` (`id`, `id_user`, `id_group`) VALUES
 (12, 6, 1);
 
 --
--- Daten für Tabelle `ext_user_panelwidget`
+-- Data for Table `ext_user_panelwidget`
 --
 
 
 --
--- Daten für Tabelle `ext_user_preference`
+-- Data for Table `ext_user_preference`
 --
 
 INSERT INTO `ext_user_preference` (`id`, `id_user`, `ext`, `area`, `preference`, `item`, `value`) VALUES
@@ -999,7 +999,7 @@ INSERT INTO `ext_user_preference` (`id`, `id_user`, `ext`, `area`, `preference`,
 (2200, 1, 112, 0, 'tasktree-task-exp', 0, '149');
 
 --
--- Daten für Tabelle `ext_user_right`
+-- Data for Table `ext_user_right`
 --
 
 INSERT INTO `ext_user_right` (`id`, `ext`, `right`, `id_group`) VALUES
@@ -1266,7 +1266,7 @@ INSERT INTO `ext_user_right` (`id`, `ext`, `right`, `id_group`) VALUES
 (878, 115, 'panelwidgets:searchFilterList', 1);
 
 --
--- Daten für Tabelle `ext_user_user`
+-- Data for Table `ext_user_user`
 --
 
 INSERT INTO `ext_user_user` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
@@ -1291,7 +1291,7 @@ INSERT INTO `ext_user_user` (`id`, `date_create`, `date_update`, `id_user_create
 (19, 1264696709, 1264696709, 1, 0, '', '', 'nomail@todoyu.com', 0, 0, 'Pius', 'Pieitsch', 'Pipi', 'm', '', '0000-00-00');
 
 --
--- Daten für Tabelle `static_country`
+-- Data for Table `static_country`
 --
 
 INSERT INTO `static_country` (`id`, `iso_alpha2`, `iso_alpha3`, `iso_num`, `iso_num_currency`, `phone`) VALUES
@@ -1535,7 +1535,7 @@ INSERT INTO `static_country` (`id`, `iso_alpha2`, `iso_alpha3`, `iso_num`, `iso_
 (241, 'HM', 'HMD', 334, '0', 0);
 
 --
--- Daten für Tabelle `static_country_zone`
+-- Data for Table `static_country_zone`
 --
 
 INSERT INTO `static_country_zone` (`id`, `iso_alpha2_country`, `iso_alpha3_country`, `iso_num_country`, `code`) VALUES
@@ -2022,7 +2022,7 @@ INSERT INTO `static_country_zone` (`id`, `iso_alpha2_country`, `iso_alpha3_count
 (482, 'BR', 'BRA', 76, 'TO');
 
 --
--- Daten für Tabelle `static_currency`
+-- Data for Table `static_currency`
 --
 
 INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `symbol_right`, `thousands_point`, `decimal_point`, `decimal_digits`, `sub_divisor`, `sub_symbol_left`, `sub_symbol_right`) VALUES
@@ -2191,7 +2191,7 @@ INSERT INTO `static_currency` (`id`, `iso_alpha`, `iso_num`, `symbol_left`, `sym
 (175, 'TRY', 949, 'YTL', '', '.', ',', 2, 100, '', '');
 
 --
--- Daten für Tabelle `static_language`
+-- Data for Table `static_language`
 --
 
 INSERT INTO `static_language` (`id`, `iso_alpha2`, `iso_alpha3`) VALUES
@@ -2381,7 +2381,7 @@ INSERT INTO `static_language` (`id`, `iso_alpha2`, `iso_alpha3`) VALUES
 (184, 'zu', 'zul');
 
 --
--- Daten für Tabelle `static_territory`
+-- Data for Table `static_territory`
 --
 
 INSERT INTO `static_territory` (`id`, `iso_num`, `parent_iso_num`) VALUES
@@ -2415,11 +2415,11 @@ INSERT INTO `static_territory` (`id`, `iso_num`, `parent_iso_num`) VALUES
 (28, 61, 9);
 
 --
--- Daten für Tabelle `system_errorlog`
+-- Data for Table `system_errorlog`
 --
 
 
 --
--- Daten für Tabelle `system_log`
+-- Data for Table `system_log`
 --
 
