@@ -70,12 +70,12 @@ class TodoyuTabheadRenderer {
 	 * @param	String	$active
 	 * @return	String
 	 */
-	public static function renderTabs($htmlID, $class, $jsHandler, array $tabs, $active = null) {
+	public static function renderTabs($htmlID, $class, $jsHandler, array $tabs, $active = '') {
 		foreach($tabs as $index => $tab) {
 			$tabs[$index]['label'] = TodoyuDiv::getLabel($tab['label']);
 		}
 
-		if( is_null($active) ) {
+		if( $active === '' ) {
 			$active = $tabs[0]['id'];
 		}
 

@@ -56,22 +56,6 @@ Todoyu.Form = {
 		var idElement	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
 
 		$(idElement).remove();
-
-		/*
-		Effect.BlindUp(idElement);
-
-		$(idElement).remove.delay(1);
-
-
-		, {
-			'scaleMode': 'contents',
-			'afterFinish': function(){
-				Todoyu.log('remove');
-				//$(idElement).remove()
-			}
-		});
-		*/
-
 	},
 
 
@@ -100,7 +84,7 @@ Todoyu.Form = {
 			},
 			'onComplete': this.onRecordAdded.bind(this, container, idRecord, formName, fieldName, index)
 		};
-		
+
 		Todoyu.send(url, options);
 	},
 
@@ -117,7 +101,7 @@ Todoyu.Form = {
 	 */
 	onRecordAdded: function(container, idRecord, formName, fieldName, index, response) {
 		$(container).insert({'top':response.responseText});
-		
+
 		this.toggleRecordForm(idRecord, fieldName, index);
 		this.focusFirstRecordField(idRecord, fieldName, index);
 	},

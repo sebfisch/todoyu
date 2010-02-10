@@ -27,6 +27,8 @@ var Todoyu = {
 	name: 		'Todoyu',
 
 	copyright: 	'Snowflake Productions, Zürich Switzerland',
+	
+	logLevel:	0,
 
 	/**
 	 * Container for extensions
@@ -172,15 +174,46 @@ var Todoyu = {
 
 
 
+	/**
+	 * Call a user function in string format with given arguments
+	 * @example	Todoyu.calluserFunction('Todoyu.notifySuccess', 'This is a message', 5);
+	 * 
+	 * @param	String		functionName
+	 * @param	Mixed		args
+	 */
 	callUserFunction: function(functionName /*, args */) {
 		var args	= Array.prototype.splice.call(arguments, 1);
 		var func	= this.getFunctionFromString(functionName);
 		
 		return func.apply(func, args);
 	},
+	
+	
+	
+	/**
+	 * Call a functio reference, if it's one. Otherwise just ignore the call
+	 * 
+	 * @param {Object} functionReference
+	 * @param {Object}  args
+	 */
+	callIfExists: function(functionReference /*, args */) {
+		var args = Array.prototype.splice.call(arguments, 1);
+				
+		if( typeof functionReference === 'function' ) {
+			functionReference.apply(functionReference, args);
+		} else {
+			Todoyu.log('Todoyu.callIfExists() was executed with a non-function. This can be an error (not sure). Params: ' + Object.inspect(args), 1);
+		}
+	},
 
 
 
+	/**
+	 * Get a function reference from a function string
+	 * Ex: 'Todoyu.Ext.project.edit'
+	 * 
+	 * @param	String		functionName
+	 */
 	getFunctionFromString: function(functionName) {
 		var namespaces 	= functionName.split(".");
 		var func 		= namespaces.pop();
@@ -198,10 +231,22 @@ var Todoyu = {
 
 
 
-	log: function(element) {
-		if( typeof(console) !== 'undefined' ) {
-			console.log(element);
-		}
+	/**
+	 * Todoyu log. Check level and if console exists
+	 * 
+	 * @param	Object		element
+	 * @param	Integer		level
+	 * @param	String		title
+	 */
+	log: function(element, level, title) {
+		if( level === undefined || (Object.isNumber(level) && level >= this.logLevel) ) {
+			if( window.console !== undefined ) {
+				if( title !== undefined ) {
+					window.console.log('Log: ' + title);
+				}
+				window.console.log(element);
+			}
+		}		
 	}
 
 };
