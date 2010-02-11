@@ -1,7 +1,7 @@
 #contextmenu {
 	display:none;
 	position:absolute;
-	width:150px;
+	width:156px;
 	z-index:100000;
 	background-color:#f1f1f1;
 }
@@ -31,7 +31,7 @@
 			display:none;
 			position:absolute;
 			z-index:100001;
-			width:150px;
+			width:156px;
 		}
 
 		#contextmenu li.header a {
