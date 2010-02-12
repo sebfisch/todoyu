@@ -94,9 +94,9 @@ class TodoyuTime {
 
 
 	/**
-	 *	Get timestamps of start and of week that contains the given timestamp
+	 * Get timestamps of start and of week that contains the given timestamp
 	 *
-	 *	@param	Integer	$timestamp
+	 * @param	Integer	$timestamp
 	 */
 	public static function getWeekRange($timestamp) {
 		$timestamp	= intval($timestamp);
@@ -111,9 +111,9 @@ class TodoyuTime {
 
 
 	/**
-	 *	Get range (start and end timestamp) of month
+	 * Get range (start and end timestamp) of month
 	 *
-	 *	@param	Integer	$timestamp
+	 * @param	Integer	$timestamp
 	 */
 	public static function getMonthRange($timestamp) {
 		$timestamp	= intval($timestamp);
@@ -146,9 +146,9 @@ class TodoyuTime {
 
 
 	/**
-	 *	Get timestamp of first day of month
+	 * Get timestamp of first day of month
 	 *
-	 *	@param	Integer	$timestamp
+	 * @param	Integer	$timestamp
 	 */
 	public static function getMonthStart($timestamp) {
 		$timestamp	= intval($timestamp);
@@ -249,10 +249,10 @@ class TodoyuTime {
 
 
 	/**
-	 *	Get present amount of first hour of given amount of hours
+	 * Get present amount of first hour of given amount of hours
 	 *
-	 *	@param	Float $hours
-	 *	@return	Float
+	 * @param	Float $hours
+	 * @return	Float
 	 */
 	public static function firstHourLeftOver($hours) {
 		if ( $hours > 1.0 ) {
@@ -510,8 +510,8 @@ class TodoyuTime {
 	/**
 	 * Get seconds of day's time (seconds since 00:00:00 of day of given timestamp)
 	 *
-	 *	@param	Integer	$timestamp		UNIX timestamp
-	 *	@return	Integer
+	 * @param	Integer	$timestamp		UNIX timestamp
+	 * @return	Integer
 	 */
 	public function getSecondsOfDayTime($timestamp) {
 		$secondsOfHours		= date('G', $timestamp)	* 60 * 60;

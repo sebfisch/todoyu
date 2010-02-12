@@ -194,10 +194,11 @@ class TodoyuDiv {
 
 
 	/**
-	 *	Calculate fraction (how many percent is the given value of the given total?)
-	 *	@param	Integer	$fraction
-	 *	@param	Integer	$total
-	 *	@return Integer
+	 * Calculate fraction (how many percent is the given value of the given total?)
+	 *
+	 * @param	Integer	$fraction
+	 * @param	Integer	$total
+	 * @return Integer
 	 */
 	function fraction($fraction = 75, $total = 300) {
 		if ($total > 0) {

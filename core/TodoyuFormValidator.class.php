@@ -86,13 +86,13 @@ class TodoyuFormValidator {
 
 
 	/**
-	 *	Validate value not being empty
+	 * Validate value not being empty
 	 *
-	 *	@param	String				$value		Field value
-	 *	@param	Array				$validatorConfig
-	 *	@param	TodoyuFormElement	$formElement
-	 *	@param	Array				$formData
-	 *	@return	Boolean
+	 * @param	String				$value		Field value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
 	 */
 	private static function isNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		return TodoyuValidator::isNotEmpty($value);
@@ -101,14 +101,14 @@ class TodoyuFormValidator {
 
 
 	/**
-	 *	Validate value not being zero (time)
-	 *  Most time fields provide the value as numeric in seconds. String version separated by : is also valid
+	 * Validate value not being zero (time)
+	 * Most time fields provide the value as numeric in seconds. String version separated by : is also valid
 	 *
-	 *	@param	String				$value
-	 *	@param	Array				$validatorConfig
-	 *	@param	TodoyuFormElement	$formElement
-	 *	@param	Array				$formData
-	 *	@return	Boolean
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
 	 */
 	private static function isNotZeroTime($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		if( is_numeric($value) ) {
@@ -121,13 +121,13 @@ class TodoyuFormValidator {
 
 
 	/**
-	 *	Validate value not being zero
+	 * Validate value not being zero
 	 *
-	 *	@param	String				$value
-	 *	@param	Array				$validatorConfig
-	 *	@param	TodoyuFormElement	$formElement
-	 *	@param	Array				$formData
-	 *	@return	Boolean
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
 	 */
 	private static function isNotZero($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		return intval($value) > 0;
@@ -136,13 +136,13 @@ class TodoyuFormValidator {
 
 
 	/**
-	 *	Validate value not having at least giben minimum length
+	 * Validate value not having at least giben minimum length
 	 *
-	 *	@param	unknown_type		$value
-	 *	@param	Array				$validatorConfig
-	 *	@param	TodoyuFormElement	$formElement
-	 *	@param	Array				$formData
-	 *	@return	Boolean
+	 * @param	unknown_type		$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
 	 */
 	private static function minLength($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		$minLength	= intval($validatorConfig);
@@ -153,13 +153,13 @@ class TodoyuFormValidator {
 
 
 	/**
-	 *	Validate value not exceeding maximum length
+	 * Validate value not exceeding maximum length
 	 *
-	 *	@param	unknown_type		$value
-	 *	@param	Array				$validatorConfig
-	 *	@param	TodoyuFormElement	$formElement
-	 *	@param	Array				$formData
-	 *	@return	Boolean
+	 * @param	unknown_type		$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
 	 */
 	private static function maxLength($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		$maxLength	= intval($validatorConfig);
@@ -411,7 +411,6 @@ class TodoyuFormValidator {
 
 			return false;
 		}
-
 
 		return true;
 	}

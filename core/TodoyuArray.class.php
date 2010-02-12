@@ -22,11 +22,10 @@
 /**
  * Array helper functions
  *
- *	@package		Todoyu
- *	@subpackage	Core
+ * @package		Todoyu
+ * @subpackage	Core
  */
 class TodoyuArray {
-
 
 	/**
 	 * Extract a single field from a array
@@ -536,8 +535,8 @@ class TodoyuArray {
 	/**
 	 * Flatten array
 	 *
-	 *	@param	Array	$array
-	 *	@return	Array
+	 * @param	Array	$array
+	 * @return	Array
 	 */
 	public static function flatten(array $array){ //flattens multi-dim arrays (distroys keys)
 		$flattened = array();

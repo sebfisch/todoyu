@@ -131,11 +131,11 @@ class TodoyuOdt {
 
 
 	/**
-	 *	Replaces markers from markersarray
-	 * 	-> arraykey		=> markername
-	 * 	-> arrayvalue	=> markervalue
+	 * Replaces markers from given markers array
+	 * -> arraykey		=> markername
+	 * -> arrayvalue	=> markervalue
 	 *
-	 *	@param	Array	$markersArray
+	 * @param	Array	$markersArray
 	 */
 	public function	replaceMarkers(array $markersArray)	{
 		$content = file_get_contents($this->tmpOdtDir.'/content.xml');

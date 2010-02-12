@@ -552,8 +552,8 @@ class TodoyuSQLManager {
 	/**
 	 * Check DB for existence of given tables, return missing ones
 	 *
-	 *	@param	Array	$extTableNames
-	 *	@return	Array
+	 * @param	Array	$extTableNames
+	 * @return	Array
 	 */
 	public static function getMissingTables(array $tablesNames) {
 		$dbTables	= Todoyu::db()->getTables();

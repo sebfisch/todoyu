@@ -175,7 +175,6 @@ class TodoyuRightsManager {
 	/**
 	 * Flush all rights from session. The rights will automaticly be reloaded
 	 * on the next request on isAllowed. Use this function if you update the rights configuration
-	 *
 	 */
 	public static function flushRights() {
 		self::$rights = null;
