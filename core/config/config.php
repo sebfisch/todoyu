@@ -41,7 +41,16 @@ $CONFIG['TEMPLATE']		= array(
 $CONFIG['SECURITY']['badHtmlTags'] = array('script', 'iframe', 'input', 'textarea', 'select', 'form');
 
 	// Initialize headlet registration array
-$CONFIG['HEADLETS']	= array();
+$CONFIG['HEADLETS']	= array(
+	'RIGHT'	=> array(
+		'TodoyuHeadletQuickCreate'	=> array(
+			'class'		=> 'TodoyuHeadletQuickCreate',
+			'position'	=> 999,
+			'areas' 	=> array()
+		)
+	)
+);
+
 
 	// Initialize metamenu registration array
 $CONFIG['MetaMenu']	= array();

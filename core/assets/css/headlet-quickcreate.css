@@ -1,0 +1,52 @@
+#headletquickcreate {
+	left:20px;
+	top:6px;
+	height:30px;
+}
+
+#headletquickcreate-mode-btn {
+	float:left;
+	clear:none;
+	width:30px;
+	height:20px;
+	border:1px solid #b2b2b2;
+	border-right:none;
+	background:url('../img/headlet.png') no-repeat 0 0;
+	cursor:pointer;
+}
+
+#headletquickcreate-mode-icon {
+	float:left;
+	width:18px;
+	height:18px;
+	margin-top:2px;
+	margin-left:1px;
+	background-color:#f00;
+}
+
+#headletquickcreate-modes {
+	display:none;
+	position:fixed;
+	left:0px;
+	top:0px;
+	width:140px;
+	background-color:#f3f3f3;
+	border:1px solid #ddd;
+	z-index:1000;
+}
+
+	#headletquickcreate-modes li {
+		height:14px;
+		padding:3px 2px 3px 30px;
+		cursor:pointer;
+		text-align:left;
+		border-bottom:1px solid #ddd;
+	}
+	
+	#headletquickcreate-modes li:hover {
+ 	   background-color: #d0d8b3 !important;
+	}
+
+#headletquickcreate .createmode-default {
+	background:url(../img/headlet-quickcreate.png) no-repeat 2px 0px !important;
+}
