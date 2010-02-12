@@ -383,6 +383,18 @@ class TodoyuExtensions {
 
 
 	/**
+	 * Load all create config
+	 *
+	 */
+	public static function loadAllCreate() {
+		global $CONFIG;
+
+		self::loadAllTypeConfig('create');
+	}
+
+
+
+	/**
 	 * Check if an extension has dependents
 	 * Dependents need the current extension to work properly
 	 *

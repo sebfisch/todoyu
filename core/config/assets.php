@@ -148,6 +148,14 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 55
 		),
 		array(
+			'file'		=> 'core/assets/js/Headlet.js',
+			'position'	=> 55
+		),
+		array(
+			'file'		=> 'core/assets/js/HeadletQuickCreate.js',
+			'position'	=> 55
+		),
+		array(
 			'file'		=> 'core/assets/js/AjaxResponders.js',
 			'position'	=> 56
 		),

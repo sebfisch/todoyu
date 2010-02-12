@@ -1,4 +1,3 @@
-<?php
 /***************************************************************
 *  Copyright notice
 *
@@ -19,31 +18,6 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-class TodoyuHeadletQuickCreate extends TodoyuHeadlet {
-
-	/**
-	 * Initialize quick create headlet (set template, set initial data)
-	 */
-	protected function init() {
-		$this->setTemplate('core/view/headlet-quickcreate.tmpl');
-
-		$this->setData(array(
-//			'query'			=> $this->params['query'],
-			'createModes'	=> TodoyuCreateManager::getEngines()
-		));
-	}
-
-
-
-	/**
-	 * Render quick search headlet, have resp. JS being added
-	 *
-	 * @return	String
-	 */
-	public function render() {
-		return parent::render();
-	}
-
-}
-
-?>
+Todoyu.Headlet = {
+	
+};
