@@ -88,6 +88,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 * @param	Array		$data
 	 */
 	protected function setData(array $data) {
+
 		$this->data = $data;
 	}
 

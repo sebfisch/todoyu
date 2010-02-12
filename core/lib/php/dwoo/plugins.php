@@ -273,10 +273,19 @@ function Dwoo_Plugin_twoDigits(Dwoo $dwoo, $value) {
  *
  * @param 	Dwoo 		$dwoo
  * @param 	Mixed		$variable
+ * @param 	Boolean		$phpFormat
  * @return	String
  */
-function Dwoo_Plugin_debug(Dwoo $dwoo, $variable) {
-	return '<pre style="z-index:200; background-color:#fff;">' . print_r($variable, true) . '</pre>';
+function Dwoo_Plugin_debug(Dwoo $dwoo, $variable, $phpFormat = false) {
+	if ( $phpFormat ) {
+			// use PHP syntax formatting
+		TodoyuDebug::printPHP($variable);
+	} else {
+			// simple print_r
+		$debug	= '<pre style="z-index:200; background-color:#fff;">' . print_r($variable, true) . '</pre>';
+	}
+
+	return $debug;
 }
 
 

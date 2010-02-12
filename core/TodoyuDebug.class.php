@@ -60,6 +60,79 @@ class TodoyuDebug {
 
 
 	/**
+	 * Get PHP formated information about given variable
+	 *
+	 * @todo	check and improve for different var types
+	 *
+	 * @param	Mixed		$var
+	 * @param	Integer		$niv
+	 */
+	public static function phpFormat($var, $indent = '&nbsp;&nbsp;', $niv = 0) {
+		$str = '';
+
+		if ( is_array($var) ) {
+			$str .= 'array(<br />';
+
+			foreach($var as $k=>$v) {
+				for( $i = 0; $i < $niv; $i++) {
+					$str .= $indent;
+				}
+
+				$str .= $indent . '\'' . $k . '\' => &nbsp;';
+				$str .= self::phpFormat($v, $indent, $niv + 1);
+			}
+		} else if( is_object($var) ) {
+			$str .= '[object]-class = [' . get_class($var) . ']-method=[';
+
+			$arr = get_class_methods($var);
+
+			foreach ($arr as $method) {
+				$str .= $method . '(), ';
+			}
+
+			$str .= ']-';
+			$str .= self::phpFormat(get_object_vars($var), $indent, $niv + 1);
+		} else {
+			$str .= '\'' . $var . '\',<br />';
+		}
+
+		return($str);
+	}
+
+
+
+	/**
+	 * Print debug message in plain text
+	 *
+	 * @param	Mixed		$item		Item to debug
+	 * @param	String		$title		Title for debug output
+	 * @param	String		$usernames	Only this listed users shall see the debug output
+	 */
+	public static function printPHP($item, $title = '', $usernames = null, $return = false) {
+		if( ! is_null($usernames) && ! self::isCurrentUser($usernames) ) {
+			return;
+		}
+
+		$tmpl	= 'core/view/debug_php.tmpl';
+		$data	= array(
+			'title'		=> $title,
+			'debug'		=> self::phpFormat($item),
+			'backtrace'	=> $backtrace ? print_r( debug_backtrace(), true ) : '',
+			'caller'	=> self::getCaller()
+		);
+
+		$debug	= render($tmpl, $data);
+
+		if ( $return === true ) {
+			return $debug;
+		} else {
+			echo $debug;
+		}
+	}
+
+
+
+	/**
 	 * Print debug message in plain text
 	 *
 	 * @param	Mixed		$item		Item to debug
@@ -67,7 +140,7 @@ class TodoyuDebug {
 	 * @param	String		$usernames	Only this listed users shall see the debug output
 	 */
 	public static function printPlain($item, $title = '', $usernames = null) {
-		if( ! is_null($usernames) && !self::isCurrentUser($usernames) ) {
+		if( ! is_null($usernames) && ! self::isCurrentUser($usernames) ) {
 			return;
 		}
 
@@ -88,6 +161,7 @@ class TodoyuDebug {
 
 		echo $output;
 	}
+
 
 
 	/**
