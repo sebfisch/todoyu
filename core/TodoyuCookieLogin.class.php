@@ -55,7 +55,7 @@ class TodoyuCookieLogin {
 
 					if( $cookieData['useragentHash'] === $userAgendHash ) {
 						if( TodoyuAuth::isValidLogin($cookieData['username'], $cookieData['passhash']) ) {
-							$idUser = TodoyuUserManager::getUserIDbyUsername($cookieData['username']);
+							$idUser = TodoyuPersonManager::getUserIDbyUsername($cookieData['username']);
 							TodoyuAuth::login($idUser);
 							self::setRemainLoginCookie($idUser);
 
@@ -116,7 +116,7 @@ class TodoyuCookieLogin {
 	 */
 	public static function generateRemainLoginCode($idUser) {
 		$idUser	= intval($idUser);
-		$user	= TodoyuUserManager::getUser($idUser);
+		$user	= TodoyuPersonManager::getUser($idUser);
 		$data	= array(
 			'username'		=> $user->getUsername(),
 			'passhash'		=> $user->getPassword(),

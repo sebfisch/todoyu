@@ -509,10 +509,10 @@ INSERT INTO `ext_timetracking_tracking` (`id`, `date_create`, `date_update`, `id
 (4, 1264778433, 1264778433, 17, 138);
 
 --
--- Data for Table `ext_user_address`
+-- Data for Table `ext_contact_address`
 --
 
-INSERT INTO `ext_user_address` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_addresstype`, `street`, `postbox`, `city`, `region`, `zip`, `id_country`, `is_preferred`, `comment`, `id_holidayset`) VALUES
+INSERT INTO `ext_contact_address` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_addresstype`, `street`, `postbox`, `city`, `region`, `zip`, `id_country`, `is_preferred`, `comment`, `id_holidayset`) VALUES
 (1, 1264581712, 1264581712, 1, 0, 1, 'Schneestrasse 23', '', 'Zürich', 'Zürich', '8000', 41, 0, '', 1),
 (2, 1264581965, 1264584253, 1, 0, 1, 'Winterthurerstrasse 112', '', 'Zürich', 'Zürich', '8052', 41, 0, '', 1),
 (3, 1264581965, 1264584253, 1, 0, 2, 'Winterthurerstrasse 110', '', 'Zürich', '', '8052', 41, 0, '', 1),
@@ -531,10 +531,10 @@ INSERT INTO `ext_user_address` (`id`, `date_create`, `date_update`, `id_user_cre
 (16, 1264780312, 1264780312, 18, 0, 1, 'Mike Myers Drive', '1234', 'Scarborough', '', '80042', 0, 1, 'find out and add the region', 0);
 
 --
--- Data for Table `ext_user_company`
+-- Data for Table `ext_contact_company`
 --
 
-INSERT INTO `ext_user_company` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `is_internal`, `ext_projectbilling_reduction`) VALUES
+INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `is_internal`, `ext_projectbilling_reduction`) VALUES
 (1, 1246886240, 1264500976, 1, 1, 'Demo Customer', 'Demo', 0, 101, 0, 0, 0),
 (3, 1246888856, 1264500988, 1, 1, 'Random Company', 'Rand', 0, 607, 0, 0, 0),
 (5, 1254213151, 1264500991, 1, 1, 'Snowflake Productions', 'Snowflake', 0, 1136156400, 0, 1, 0),
@@ -554,10 +554,10 @@ INSERT INTO `ext_user_company` (`id`, `date_create`, `date_update`, `id_user_cre
 (19, 1264696524, 1264696717, 1, 0, 'todoyu', '', 0, 1259622000, 0, 1, 0);
 
 --
--- Data for Table `ext_user_contactinfo`
+-- Data for Table `ext_contact_contactinfo`
 --
 
-INSERT INTO `ext_user_contactinfo` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_contactinfotype`, `info`, `preferred`) VALUES
+INSERT INTO `ext_contact_contactinfo` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_contactinfotype`, `info`, `preferred`) VALUES
 (1, 1259845750, 1259848722, 1, 0, '11', 'http://www.snowflake.ch/', 1),
 (2, 1259845750, 1259848722, 1, 0, '4', '+41 44 455 80 80', 1),
 (3, 1259845750, 1259848722, 1, 0, '1', 'info@snowflake.ch', 1),
@@ -625,10 +625,10 @@ INSERT INTO `ext_user_contactinfo` (`id`, `date_create`, `date_update`, `id_user
 (65, 1264696524, 1264696717, 1, 0, '1', 'team@todoyu.com', 0);
 
 --
--- Data for Table `ext_user_contactinfotype`
+-- Data for Table `ext_contact_contactinfotype`
 --
 
-INSERT INTO `ext_user_contactinfotype` (`id`, `deleted`, `category`, `key`, `title`) VALUES
+INSERT INTO `ext_contact_contactinfotype` (`id`, `deleted`, `category`, `key`, `title`) VALUES
 (1, 0, 1, 'email_business', 'LLL:user.contactinfo.email_business'),
 (2, 0, 2, 'tel_private', 'LLL:user.contactinfo.tel_private'),
 (3, 0, 2, 'tel_exchange', 'LLL:user.contactinfo.tel_exchange'),
@@ -643,10 +643,10 @@ INSERT INTO `ext_user_contactinfotype` (`id`, `deleted`, `category`, `key`, `tit
 (12, 0, 3, 'skype', 'LLL:user.contactinfo.skype');
 
 --
--- Data for Table `ext_user_group`
+-- Data for Table `system_role`
 --
 
-INSERT INTO `ext_user_group` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `is_active`, `description`) VALUES
+INSERT INTO `system_role` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `is_active`, `description`) VALUES
 (1, 1264761659, 0, 1, 0, 'Customers', 1, 'Our customers with access to todoyu'),
 (2, 1264762106, 0, 1, 0, 'Management', 1, ''),
 (5, 1264762192, 0, 1, 0, 'todoyu support team', 1, ''),
@@ -660,10 +660,10 @@ INSERT INTO `ext_user_group` (`id`, `date_create`, `date_update`, `id_user_creat
 
 
 --
--- Data for Table `ext_user_jobtype`
+-- Data for Table `ext_contact_jobtype`
 --
 
-INSERT INTO `ext_user_jobtype` (`id`, `deleted`, `title`) VALUES
+INSERT INTO `ext_contact_jobtype` (`id`, `deleted`, `title`) VALUES
 (1, 0, 'Project manager'),
 (2, 0, 'CEO'),
 (3, 0, 'Receptionist'),

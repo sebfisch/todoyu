@@ -31,7 +31,7 @@ class TodoyuRightsManager {
 	 * Default working table
 	 *
 	 */
-	const TABLE = 'ext_user_right';
+	const TABLE = 'system_right';
 
 	/**
 	 * Rights array loaded from session

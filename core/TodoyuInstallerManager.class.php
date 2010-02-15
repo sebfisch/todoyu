@@ -427,7 +427,7 @@ class TodoyuInstallerManager {
 	 * @return	Array
 	 */
 	private static function saveAdminPassword($password) {
-		$table	= 'ext_user_user';
+		$table	= 'ext_contact_person';
 		$where	= 'username = \'admin\'';
 		$update	= array(
 			'password'	=> md5(trim($password))

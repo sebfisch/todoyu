@@ -31,7 +31,7 @@ class TodoyuPanelWidgetManager {
 	 * Data table
 	 *
 	 */
-	const TABLE = 'ext_user_panelwidget';
+	const TABLE = 'system_panelwidget';
 
 
 

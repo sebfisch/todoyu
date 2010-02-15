@@ -187,7 +187,7 @@ class TodoyuBaseObject implements ArrayAccess {
 		$idUser = $this->getUserID($type);
 
 		if( $idUser !== false ) {
-			return Todoyu::db()->getRecord('ext_user_user', $idUser);
+			return Todoyu::db()->getRecord('ext_contact_person', $idUser);
 		} else {
 			return false;
 		}

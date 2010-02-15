@@ -27,3 +27,23 @@ UPDATE `ext_user_contactinfotype` SET `category` = '2' WHERE `title` = 'LLL:user
 UPDATE `ext_user_contactinfotype` SET `category` = '2' WHERE `title` = 'LLL:user.contactinfo.fax_exchange' ;
 UPDATE `ext_user_contactinfotype` SET `category` = '3' WHERE `title` = 'LLL:user.contactinfo.website' ;
 UPDATE `ext_user_contactinfotype` SET `category` = '3' WHERE `title` = 'LLL:user.contactinfo.skype' ;
+
+--
+-- Rename user extension tables
+--
+RENAME TABLE `ext_user_address`  TO `ext_contact_address` ;
+RENAME TABLE `ext_user_company`  TO `ext_contact_company` ;
+RENAME TABLE `ext_user_contactinfo`  TO `ext_contact_contactinfo` ;
+RENAME TABLE `ext_user_contactinfotype`  TO `ext_contact_contactinfotype` ;
+RENAME TABLE `ext_user_jobtype`  TO `ext_contact_jobtype` ;
+RENAME TABLE `ext_user_group`  TO `system_role` ;
+RENAME TABLE `ext_user_mm_company_address`  TO `ext_contact_mm_company_address` ;
+RENAME TABLE `ext_user_mm_company_contactinfo`  TO `ext_contact_mm_company_contactinfo` ;
+RENAME TABLE `ext_user_mm_company_user`  TO `ext_contact_mm_company_person` ;
+RENAME TABLE `ext_user_mm_user_address`  TO `ext_contact_mm_person_address` ;
+RENAME TABLE `ext_user_panelwidget`  TO `system_panelwidget` ;
+RENAME TABLE `ext_user_mm_user_contactinfo`  TO `ext_contact_mm_person_contactinfo` ;
+RENAME TABLE `ext_user_mm_user_group`  TO `ext_contact_mm_person_role` ;
+RENAME TABLE `ext_user_preference`  TO `system_preference` ;
+RENAME TABLE `ext_user_right`  TO `system_right` ;
+RENAME TABLE `ext_user_user`  TO `ext_contact_person` ;

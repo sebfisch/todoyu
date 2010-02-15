@@ -415,10 +415,10 @@ CREATE TABLE IF NOT EXISTS `ext_timetracking_tracking` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_address`
+-- Tabellenstruktur für Tabelle `ext_contact_address`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_user_address` (
+CREATE TABLE IF NOT EXISTS `ext_contact_address` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL DEFAULT '0',
   `date_update` int(10) unsigned NOT NULL,
@@ -440,10 +440,10 @@ CREATE TABLE IF NOT EXISTS `ext_user_address` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_company`
+-- Tabellenstruktur für Tabelle `ext_contact_company`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_user_company` (
+CREATE TABLE IF NOT EXISTS `ext_contact_company` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL DEFAULT '0',
   `date_update` int(10) unsigned NOT NULL,
@@ -462,10 +462,10 @@ CREATE TABLE IF NOT EXISTS `ext_user_company` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_contactinfo`
+-- Tabellenstruktur für Tabelle `ext_contact_contactinfo`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_user_contactinfo` (
+CREATE TABLE IF NOT EXISTS `ext_contact_contactinfo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL DEFAULT '0',
   `date_update` int(10) unsigned NOT NULL,
@@ -480,10 +480,10 @@ CREATE TABLE IF NOT EXISTS `ext_user_contactinfo` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_contactinfotype`
+-- Tabellenstruktur für Tabelle `ext_contact_contactinfotype`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_user_contactinfotype` (
+CREATE TABLE IF NOT EXISTS `ext_contact_contactinfotype` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_user_create` int(11) NOT NULL,
   `date_create` int(11) NOT NULL,
@@ -498,10 +498,10 @@ CREATE TABLE IF NOT EXISTS `ext_user_contactinfotype` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_group`
+-- Tabellenstruktur für Tabelle `system_role`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_user_group` (
+CREATE TABLE IF NOT EXISTS `system_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL DEFAULT '0',
   `date_update` int(10) unsigned NOT NULL,
@@ -536,10 +536,10 @@ CREATE TABLE IF NOT EXISTS `ext_user_holiday` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_jobtype`
+-- Tabellenstruktur für Tabelle `ext_contact_jobtype`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_user_jobtype` (
+CREATE TABLE IF NOT EXISTS `ext_contact_jobtype` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `title` varchar(48) NOT NULL,

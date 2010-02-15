@@ -1,10 +1,10 @@
 {if $noPaging || $page == 1 }
-<div class="paging-container" id="paging-{$config.name}">
+	<div class="paging-container" id="paging-{$config.name}">
 {/if}
 
 	<a id="{$offset}"></a>
 	<table class="list {$config.name}Listing" id="paging-{$config.name}-table-{$page}" >
-	
+
 	{*-------------- Column titles ---------------*}
 		<thead>
 			<tr class="header">
@@ -14,18 +14,20 @@
 			</tr>
 		</thead>
 		<tbody>
-	
+
 	{*-------------- Rows ---------------*}
 			{foreach $rows index row}
 				<tr class="{cycle values="odd,even"}">
 				  	{foreach $config.columns colName label}
-				  		<td class="{$colName}">{cleanHtml $row[$colName]}</td>
+				  		{$fieldClass = cat($colName Class)}
+				  		<td class="{$colName} {$row[$fieldClass]}">{cleanHtml $row[$colName]}</td>
 				    {/foreach}
 				</tr>
-			{/foreach}			
+			{/foreach}
+
 		</tbody>
 	</table>
-	
+
 	{*-------------- Listing show more entries option ---------------*}
 {if ! $noPaging && $page < $pages}
 	<div id="extendlisting">
@@ -35,6 +37,7 @@
 	<script>
 	Todoyu.Listing.init('{$config.name}', '{$config.update}', {$config.size}, {$offset}, {$total});
 	</script>
+
+	</div>
 {/if}
 
-</div>

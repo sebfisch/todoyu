@@ -57,7 +57,7 @@ class TodoyuAuth {
 	public static function getUser($reload = false) {
 		if( is_null(self::$user) || $reload ) {
 			if( self::getUserID() !== 0 ) {
-				self::$user = TodoyuUserManager::getUser(self::getUserID());
+				self::$user = TodoyuPersonManager::getUser(self::getUserID());
 			} else {
 				self::$user = new TodoyuUser(0);
 			}
@@ -137,7 +137,7 @@ class TodoyuAuth {
 	 * @return	Boolean
 	 */
 	public static function isValidLogin($username, $passwordHash) {
-		return TodoyuUserManager::isValidLogin($username, $passwordHash);
+		return TodoyuPersonManager::isValidLogin($username, $passwordHash);
 	}
 
 
