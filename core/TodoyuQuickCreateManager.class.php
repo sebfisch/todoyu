@@ -24,7 +24,7 @@
  *
  */
 
-class TodoyuCreateManager {
+class TodoyuQuickCreateManager {
 
 	/**
 	 * Add a new create engine and register needed functions
@@ -47,7 +47,7 @@ class TodoyuCreateManager {
 
 
 	/**
-	 * Get all registered search engine in correct order
+	 * Get all registered create engines in correct order
 	 *
 	 * @return	Array
 	 */

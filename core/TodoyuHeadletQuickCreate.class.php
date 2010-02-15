@@ -29,7 +29,7 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadlet {
 
 		$this->setData(array(
 //			'query'			=> $this->params['query'],
-			'createModes'	=> TodoyuCreateManager::getEngines()
+			'createModes'	=> TodoyuQuickCreateManager::getEngines()
 		));
 	}
 
