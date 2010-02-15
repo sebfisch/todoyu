@@ -93,7 +93,7 @@ class TodoyuPanelWidgetManager {
 	 * @return	Array
 	 */
 	public static function getUserPanelWidgets($ext) {
-		$idUser		= TodoyuAuth::getUserID();
+		$idUser		= TodoyuAuth::getPersonID();
 		$extID 		= TodoyuExtensions::getExtID($ext);
 
 		$fields		= 'widget, position, config';
@@ -127,7 +127,7 @@ class TodoyuPanelWidgetManager {
 	 * @return	Integer
 	 */
 	public static function addUserPanelWidget($ext, $widget, $position = 100, array $config = array()) {
-		$idUser	= TodoyuAuth::getUserID();
+		$idUser	= TodoyuAuth::getPersonID();
 		$extID 	= TodoyuExtensions::getExtID($ext);
 		$sorting= intval($sorting);
 
@@ -215,7 +215,7 @@ class TodoyuPanelWidgetManager {
 
 		$collapsed	= trim($status) === 'collapse' ? 1 : 0;
 
-		TodoyuPreferenceManager::savePreference($idExt, $widget, $collapsed, 0, true, 0, userid());
+		TodoyuPreferenceManager::savePreference($idExt, $widget, $collapsed, 0, true, 0, personid());
 	}
 
 

@@ -53,7 +53,7 @@ class TodoyuRightsManager {
 		if( TodoyuSession::isIn('rights') ) {
 			self::$rights = TodoyuSession::get('rights');
 		} else {
-			$userGroupIDs	= TodoyuAuth::getUser()->getGroupIDs();
+			$userGroupIDs	= TodoyuAuth::getPerson()->getRoleIDs();
 
 			if( sizeof($userGroupIDs) > 0 )	{
 				$fields	= '	ext, `right`';

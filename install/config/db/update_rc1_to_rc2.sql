@@ -47,3 +47,30 @@ RENAME TABLE `ext_user_mm_user_group`  TO `ext_contact_mm_person_role` ;
 RENAME TABLE `ext_user_preference`  TO `system_preference` ;
 RENAME TABLE `ext_user_right`  TO `system_right` ;
 RENAME TABLE `ext_user_user`  TO `ext_contact_person` ;
+
+--
+-- Rename all id_user_create
+--
+ALTER TABLE `ext_assets_asset` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_bookmark_bookmark` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_calendar_event` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_calendar_holiday` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_calendar_holidayset` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_comment_comment` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_comment_feedback` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_comment_mailed` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_address` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_company` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_contactinfo` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_contactinfotype` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_person` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_project_project` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_project_task` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_project_userrole` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_project_worktype` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_search_filtercondition` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_search_filterset` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_timetracking_track` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_timetracking_tracking` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+
+

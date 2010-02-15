@@ -31,9 +31,9 @@ class TodoyuAuth {
 	/**
 	 * Instance of the logged in user
 	 *
-	 * @var	TodoyuUser
+	 * @var	TodoyuPerson
 	 */
-	private static $user = null;
+	private static $person = null;
 
 
 
@@ -43,27 +43,27 @@ class TodoyuAuth {
 	 * @return	Boolean
 	 */
 	public static function isLoggedIn() {
-		return self::getUserID() !== 0;
+		return self::getPersonID() !== 0;
 	}
 
 
 
 	/**
-	 * Get user object of current user
+	 * Get person object of current user
 	 *
-	 * @param	Bool		$reload		Force to reinit user from current session value
-	 * @return	TodoyuUser
+	 * @param	Bool		$reload		Force to reinit person from current session value
+	 * @return	TodoyuPerson
 	 */
-	public static function getUser($reload = false) {
-		if( is_null(self::$user) || $reload ) {
-			if( self::getUserID() !== 0 ) {
-				self::$user = TodoyuPersonManager::getUser(self::getUserID());
+	public static function getPerson($reload = false) {
+		if( is_null(self::$person) || $reload ) {
+			if( self::getPersonID() !== 0 ) {
+				self::$person = TodoyuPersonManager::getPerson(self::getPersonID());
 			} else {
-				self::$user = new TodoyuUser(0);
+				self::$person = TodoyuPersonManager::getPerson(0);
 			}
 		}
 
-		return self::$user;
+		return self::$person;
 	}
 
 
@@ -74,7 +74,7 @@ class TodoyuAuth {
 	 * @return	Array
 	 */
 	public static function getGroupIDs() {
-		return self::getUser()->getGroupIDs();
+		return self::getPerson()->getRoleIDs();
 	}
 
 
@@ -85,8 +85,19 @@ class TodoyuAuth {
 	 *
 	 * @return	Integer
 	 */
-	public static function getUserID() {
-		return intval(TodoyuSession::get('userid'));
+	public static function getPersonID() {
+		return intval(TodoyuSession::get('person'));
+	}
+
+
+
+	/**
+	 * Set ID of currently logged in person
+	 *
+	 * @param	Integer		$idPerson
+	 */
+	public static function setPersonID($idPerson) {
+		TodoyuSession::set('person', intval($idPerson));
 	}
 
 
@@ -96,13 +107,13 @@ class TodoyuAuth {
 	 *
 	 * @param	Integer		$idUser
 	 */
-	public static function login($idUser) {
+	public static function login($idPerson) {
 			// Log successful login
-		Todoyu::log('Login user (' . $idUser . ')', LOG_LEVEL_NOTICE, $idUser);
+		Todoyu::log('Login user (' . $idPerson . ')', LOG_LEVEL_NOTICE, $idPerson);
 			// Generate a new session id for the logged in user
 		session_regenerate_id(true);
 			// Set current user id
-		TodoyuSession::set('userid', intval($idUser));
+		self::setPersonID($idPerson);
 			// Reload rights
 		TodoyuRightsManager::reloadRights();
 			// Set new user in Todoyu object

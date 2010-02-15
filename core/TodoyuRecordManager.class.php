@@ -65,7 +65,7 @@ class TodoyuRecordManager {
 
 	/**
 	 * Add a record to database
-	 * Set date_create and id_user_create
+	 * Set date_create and id_person_create
 	 *
 	 * @param	String		$table
 	 * @param	Array		$data
@@ -74,9 +74,9 @@ class TodoyuRecordManager {
 	public static function addRecord($table, array $data) {
 		unset($data['id']);
 
-		$data['date_create']	= NOW;
-		$data['date_update']	= NOW;
-		$data['id_user_create']	= userid();
+		$data['date_create']		= NOW;
+		$data['date_update']		= NOW;
+		$data['id_person_create']	= personid();
 
 		return Todoyu::db()->addRecord($table, $data);
 	}

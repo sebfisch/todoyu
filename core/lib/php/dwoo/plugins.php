@@ -500,7 +500,7 @@ function Dwoo_Plugin_allowedAny_compile(Dwoo_Compiler $compiler, $ext, $rightsLi
  * @return	String
  */
 function Dwoo_Plugin_allowedOrOwn_compile(Dwoo_Compiler $compiler, $ext, $right, $idUser) {
-	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ') || userid()==' . $idUser;
+	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ') || personid()==' . $idUser;
 }
 
 

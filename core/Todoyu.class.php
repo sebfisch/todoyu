@@ -173,11 +173,11 @@ class Todoyu {
 	/**
 	 * Return current user object
 	 *
-	 * @return	TodoyuUser
+	 * @return	TodoyuPerson
 	 */
-	public static function user() {
+	public static function person() {
 		if( is_null(self::$user) ) {
-			self::$user = TodoyuAuth::getUser();
+			self::$user = TodoyuAuth::getPerson();
 		}
 
 		return self::$user;
@@ -189,7 +189,7 @@ class Todoyu {
 	 * Reset user object if a new user is logged in
 	 */
 	public static function resetUser() {
-		self::$user = TodoyuAuth::getUser(true);
+		self::$user = TodoyuAuth::getPerson(true);
 	}
 
 
@@ -206,7 +206,7 @@ class Todoyu {
 		$lang	= $GLOBALS['CONFIG']['SYSTEM']['language'];
 
 		if( TodoyuAuth::isLoggedIn() ) {
-			$lang = self::user()->getLanguage();
+			$lang = self::person()->getLanguage();
 		} else {
 			$browserLang = TodoyuBrowserInfo::getBrowserLanguage();
 

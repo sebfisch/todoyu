@@ -41,7 +41,7 @@ class TodoyuLoggerDb {
 
 		$data 	= array(
 			'date_create'	=> NOW,
-			'id_user'		=> userid(),
+			'id_user'		=> personid(),
 			'requestkey'	=> $requestKey,
 			'level'			=> intval($level),
 			'file'			=> $info['fileshort'],

@@ -229,8 +229,8 @@ class TodoyuRoleManager {
 	public static function addUsergroup(array $data = array()) {
 		unset($data['id']);
 
-		$data['date_create']	= NOW;
-		$data['id_user_create']	= TodoyuAuth::getUserID();
+		$data['date_create']		= NOW;
+		$data['id_person_create']	= TodoyuAuth::getPersonID();
 
 		return Todoyu::db()->addRecord(self::TABLE, $data);
 	}

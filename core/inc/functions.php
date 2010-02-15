@@ -59,10 +59,10 @@ function findLabel($label, $plain = false, $language = null) {
  * @param	Integer		$idUser
  * @return	Integer
  */
-function userid($idUser = 0) {
-	$idUser = intval($idUser);
+function personid($idPerson = 0) {
+	$idPerson = intval($idPerson);
 
-	return $idUser === 0 ? TodoyuAuth::getUserID() : $idUser;
+	return $idPerson === 0 ? TodoyuAuth::getPersonID() : $idPerson;
 }
 
 
@@ -70,10 +70,10 @@ function userid($idUser = 0) {
 /**
  * Shortcut to current user object
  *
- * @return	TodoyuUser
+ * @return	TodoyuPerson
  */
-function user() {
-	return TodoyuAuth::getUser();
+function person() {
+	return TodoyuAuth::getPerson();
 }
 
 

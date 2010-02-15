@@ -51,7 +51,7 @@ class TodoyuDebug {
 	 * @return	Boolean
 	 */
 	private static function isCurrentUser($usernames) {
-		$currentUsername	= Todoyu::user()->getUsername();
+		$currentUsername	= Todoyu::person()->getUsername();
 		$checkUsernames		= explode(',', $usernames);
 
 		return in_array($currentUsername, $checkUsernames);

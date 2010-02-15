@@ -69,10 +69,10 @@ require_once( PATH_CORE . '/TodoyuPanelWidgetManager.class.php' );
 require_once( PATH_CORE . '/TodoyuContextMenuManager.class.php' );
 require_once( PATH_CORE . '/TodoyuErrorHandler.class.php' );
 
-	// Include basic user classes
-require_once( PATH_EXT .  '/user/model/TodoyuUser.class.php' );
-require_once( PATH_EXT .  '/user/model/TodoyuUserManager.class.php' );
-require_once( PATH_EXT .  '/user/model/TodoyuUserPreferences.class.php' );
+	// Include basic person classes
+require_once( PATH_EXT .  '/contact/model/TodoyuPerson.class.php' );
+require_once( PATH_EXT .  '/contact/model/TodoyuPersonManager.class.php' );
+require_once( PATH_EXT .  '/contact/model/TodoyuContactPreferences.class.php' );
 
 
 	// Load development classes

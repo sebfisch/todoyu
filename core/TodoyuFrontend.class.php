@@ -80,7 +80,7 @@ class TodoyuFrontend {
 	 * @param	String		$parentTab
 	 */
 	public static function setActiveSubmenuTab($parentTab, $activeTab) {
-		$idUser = userid();
+		$idUser = personid();
 
 		TodoyuPreferenceManager::savePreference(0, 'tabSubmenu_' . $parentTab, $activeTab, 0, true, $idUser);
 	}

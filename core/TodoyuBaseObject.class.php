@@ -143,7 +143,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	 * @return	Bool
 	 */
 	public function isCurrentUserCreator() {
-		return intval($this->get('id_user_create')) === userid();
+		return intval($this->get('id_person_create')) === personid();
 	}
 
 
@@ -198,13 +198,13 @@ class TodoyuBaseObject implements ArrayAccess {
 	 * Get user of a specific type (create, update, assigned, etc)
 	 *
 	 * @param	String		$type
-	 * @return	TodoyuUser
+	 * @return	TodoyuPerson
 	 */
 	public function getUser($type) {
 		$idUser = $this->getUserID($type);
 
 		if( $idUser !== false ) {
-			return new TodoyuUser($idUser);
+			return new TodoyuPerson($idUser);
 		} else {
 			return false;
 		}
