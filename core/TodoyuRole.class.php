@@ -33,31 +33,30 @@ class TodoyuRole extends TodoyuBaseObject {
 	 *
 	 * @param	Integer	$idUsergroup
 	 */
-	public function __construct($idUsergroup) {
-		parent::__construct($idUsergroup, 'system_role');
+	public function __construct($idRole) {
+		parent::__construct($idRole, 'system_role');
 	}
 
 
 
 	/**
-	 * Get user IDs
-	 *
-	 * @todo Check
-	 *
-	 */
-	public function getUserIDs() {
-		return TodoyuRoleManager::getGroupUserIDs($this->id);
-	}
-
-
-
-	/**
-	 * Get group users
+	 * Get person IDs
 	 *
 	 * @return	Array
 	 */
-	public function getUsers() {
-		return TodoyuRoleManager::getGroupUsers($this->id);
+	public function getPersonIDs() {
+		return TodoyuRoleManager::getPersonIDs($this->id);
+	}
+
+
+
+	/**
+	 * Get persons with this role
+	 *
+	 * @return	Array
+	 */
+	public function getPersons() {
+		return TodoyuRoleManager::getPersonData($this->id);
 	}
 
 
@@ -67,8 +66,8 @@ class TodoyuRole extends TodoyuBaseObject {
 	 *
 	 * @return	Integer
 	 */
-	public function getNumUsers() {
-		return TodoyuRoleManager::getNumUsers($this->id);
+	public function getNumPersons() {
+		return TodoyuRoleManager::getNumPersons($this->id);
 	}
 
 
@@ -78,18 +77,18 @@ class TodoyuRole extends TodoyuBaseObject {
 	 *
 	 * @return	Bool
 	 */
-	public function hasUsers() {
-		return sizeof($this->getNumUsers()) > 0;
+	public function hasPersons() {
+		return sizeof($this->getNumPersons()) > 0;
 	}
 
 
 
 	/**
-	 * Load foreign group data
+	 * Load foreign role data
 	 *
 	 */
 	private function loadForeignData()  {
-		$this->data['users']	= TodoyuRoleManager::getGroupUsers($this->id);
+		$this->data['users']	= TodoyuRoleManager::getPersonData($this->id);
 	}
 
 

@@ -5,7 +5,7 @@
 CREATE TABLE `system_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL DEFAULT '0',
-  `id_user_create` int(10) unsigned NOT NULL,
+  `id_person_create` int(10) unsigned NOT NULL,
   `table` varchar(20) NOT NULL,
   `id_record` int(10) unsigned NOT NULL,
   `rowdata` mediumtext NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE `system_errorlog` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL,
   `requestkey` varchar(8) NOT NULL,
-  `id_user` smallint(5) unsigned NOT NULL,
+  `id_person` smallint(5) unsigned NOT NULL,
   `level` tinyint(1) unsigned NOT NULL,
   `file` varchar(100) NOT NULL,
   `line` smallint(5) unsigned NOT NULL,
@@ -107,7 +107,7 @@ CREATE TABLE `system_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL DEFAULT '0',
   `date_update` int(10) unsigned NOT NULL,
-  `id_user_create` smallint(5) unsigned NOT NULL,
+  `id_person_create` smallint(5) unsigned NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `title` varchar(32) NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT '0',
@@ -122,7 +122,7 @@ CREATE TABLE `system_role` (
 
 CREATE TABLE `system_panelwidget` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_user` smallint(5) unsigned NOT NULL,
+  `id_person` smallint(5) unsigned NOT NULL,
   `ext` smallint(5) unsigned NOT NULL,
   `widget` varchar(50) NOT NULL,
   `position` tinyint(4) NOT NULL,
@@ -138,14 +138,14 @@ CREATE TABLE `system_panelwidget` (
 
 CREATE TABLE `system_preference` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_user` smallint(5) unsigned NOT NULL,
+  `id_person` smallint(5) unsigned NOT NULL,
   `ext` smallint(5) unsigned NOT NULL,
   `area` smallint(5) unsigned NOT NULL,
   `preference` varchar(50) NOT NULL,
   `item` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `value` text NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fast` (`id_user`,`ext`,`preference`)
+  KEY `fast` (`id_person`,`ext`,`preference`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
@@ -157,7 +157,7 @@ CREATE TABLE `system_right` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ext` smallint(5) unsigned NOT NULL DEFAULT '0',
   `right` tinytext NOT NULL,
-  `id_group` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `id_role` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `ext` (`ext`,`id_group`)
+  KEY `ext` (`ext`,`id_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

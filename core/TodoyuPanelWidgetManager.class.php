@@ -98,7 +98,7 @@ class TodoyuPanelWidgetManager {
 
 		$fields		= 'widget, position, config';
 		$table		= self::TABLE;
-		$where		= '	id_user		= ' . $idUser . ' AND
+		$where		= '	id_person		= ' . $idUser . ' AND
 						ext			= ' . $extID;
 		$order		= 'position';
 
@@ -131,7 +131,7 @@ class TodoyuPanelWidgetManager {
 		$extID 	= TodoyuExtensions::getExtID($ext);
 		$sorting= intval($sorting);
 
-		$fields	= array('id_user'	=> $idUser,
+		$fields	= array('id_person'	=> $idUser,
 						'ext'		=> $extID,
 						'widget'	=> $widget,
 						'position'	=> $position,

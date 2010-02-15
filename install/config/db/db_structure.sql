@@ -120,10 +120,10 @@ CREATE TABLE IF NOT EXISTS `ext_calendar_holidayset` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_mm_event_user`
+-- Tabellenstruktur für Tabelle `ext_calendar_mm_event_person`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_calendar_mm_event_user` (
+CREATE TABLE IF NOT EXISTS `ext_calendar_mm_event_person` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_event` int(10) unsigned NOT NULL DEFAULT '0',
   `id_user` int(10) unsigned NOT NULL DEFAULT '0',
@@ -177,8 +177,8 @@ CREATE TABLE IF NOT EXISTS `ext_comment_feedback` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL,
   `date_update` int(10) unsigned NOT NULL,
-  `id_user_create` mediumint(8) unsigned NOT NULL,
-  `id_user_feedback` mediumint(8) unsigned NOT NULL,
+  `id_user_create` smallint(5) unsigned NOT NULL,
+  `id_person_feedback` smallint(5) unsigned NOT NULL,
   `id_comment` int(10) unsigned NOT NULL,
   `is_seen` tinyint(1) unsigned NOT NULL,
   PRIMARY KEY (`id`)
@@ -195,17 +195,17 @@ CREATE TABLE IF NOT EXISTS `ext_comment_mailed` (
   `date_create` int(10) unsigned NOT NULL,
   `id_user_create` mediumint(8) unsigned NOT NULL,
   `id_comment` int(10) unsigned NOT NULL,
-  `id_user_mailed` mediumint(8) unsigned NOT NULL,
+  `id_person_mailed` mediumint(8) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_mm_project_user`
+-- Tabellenstruktur für Tabelle `ext_project_mm_project_person`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_project_mm_project_user` (
+CREATE TABLE IF NOT EXISTS `ext_project_mm_project_person` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_project` int(10) unsigned NOT NULL DEFAULT '0',
   `id_user` int(10) unsigned NOT NULL DEFAULT '0',
@@ -291,10 +291,10 @@ CREATE TABLE IF NOT EXISTS `ext_project_task` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_userrole`
+-- Tabellenstruktur für Tabelle `ext_project_role`
 --
 
-CREATE TABLE IF NOT EXISTS `ext_project_userrole` (
+CREATE TABLE IF NOT EXISTS `ext_project_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_create` int(10) NOT NULL,
   `id_user_create` smallint(5) NOT NULL,

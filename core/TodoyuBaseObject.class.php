@@ -166,7 +166,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	 * @return	Integer
 	 */
 	public function getUserID($type) {
-		$dataKey = 'id_user_' . strtolower($type);
+		$dataKey = 'id_person_' . strtolower($type);
 
 		if( array_key_exists($dataKey, $this->data) ) {
 			return intval($this->data[$dataKey]);
@@ -282,7 +282,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	 * Array access function to check if an attribute
 	 * is set in the internal record storage
 	 *
-	 * Usage: $obj = new Obj(); isset($obj['id_user'])
+	 * Usage: $obj = new Obj(); isset($obj['id_person'])
 	 *
 	 * @magic
 	 * @param	String		$name
@@ -298,7 +298,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	 * Array access function to delete an attribute
 	 * in the internal record storage
 	 *
-	 * Usage: $obj = new Obj(); unset($obj['id_user'])
+	 * Usage: $obj = new Obj(); unset($obj['id_person'])
 	 *
 	 * @magic
 	 * @param	String		$name
@@ -313,7 +313,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	 * Array access function to set an attribute
 	 * in the internal record storage
 	 *
-	 * Usage: $obj = new Obj(); $obj['id_user'] = 53;
+	 * Usage: $obj = new Obj(); $obj['id_person'] = 53;
 	 *
 	 * @magic
 	 * @param	String		$name
@@ -329,7 +329,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	 * Array access function to get an attribute
 	 * from the internal record storage
 	 *
-	 * Usage: $obj = new Obj(); echo $obj['id_user'];
+	 * Usage: $obj = new Obj(); echo $obj['id_person'];
 	 *
 	 * @magic
 	 * @param	String		$name

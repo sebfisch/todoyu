@@ -21,7 +21,7 @@
 
 /**
  * Authentification class
- * Get acces to the current user, check rights and handle login
+ * Get acces to the current person, check rights and handle login
  *
  * @package		Todoyu
  * @subpackage	Core
@@ -29,7 +29,7 @@
 class TodoyuAuth {
 
 	/**
-	 * Instance of the logged in user
+	 * Instance of the logged in person
 	 *
 	 * @var	TodoyuPerson
 	 */
@@ -38,7 +38,7 @@ class TodoyuAuth {
 
 
 	/**
-	 * Check if current a user is logged in
+	 * Check if current person is logged in
 	 *
 	 * @return	Boolean
 	 */
@@ -49,7 +49,7 @@ class TodoyuAuth {
 
 
 	/**
-	 * Get person object of current user
+	 * Get person object of current person
 	 *
 	 * @param	Bool		$reload		Force to reinit person from current session value
 	 * @return	TodoyuPerson
@@ -69,11 +69,11 @@ class TodoyuAuth {
 
 
 	/**
-	 * Get group IDs of the current user
+	 * Get role IDs of the current person
 	 *
 	 * @return	Array
 	 */
-	public static function getGroupIDs() {
+	public static function getRoleIDs() {
 		return self::getPerson()->getRoleIDs();
 	}
 
@@ -172,7 +172,7 @@ class TodoyuAuth {
 	 * @return	Boolean
 	 */
 	public static function isAdmin() {
-		return self::getUser()->isAdmin();
+		return self::getPerson()->isAdmin();
 	}
 
 
@@ -205,7 +205,7 @@ class TodoyuAuth {
 
 
 	/**
-	 * Override request vars, if user is not logged in
+	 * Override request vars, if person is not logged in
 	 *
 	 * @param	Array		$requestVars
 	 * @param	Array		$originalRequestVars

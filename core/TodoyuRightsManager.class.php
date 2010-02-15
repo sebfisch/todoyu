@@ -53,13 +53,13 @@ class TodoyuRightsManager {
 		if( TodoyuSession::isIn('rights') ) {
 			self::$rights = TodoyuSession::get('rights');
 		} else {
-			$userGroupIDs	= TodoyuAuth::getPerson()->getRoleIDs();
+			$roleIDs	= TodoyuAuth::getPerson()->getRoleIDs();
 
-			if( sizeof($userGroupIDs) > 0 )	{
+			if( sizeof($roleIDs) > 0 )	{
 				$fields	= '	ext, `right`';
 				$table	= self::TABLE;
 
-				$where	= '	id_group IN(' . implode(',', $userGroupIDs) . ')';
+				$where	= '	id_role IN(' . implode(',', $roleIDs) . ')';
 
 				$rights = Todoyu::db()->getArray($fields, $table, $where);
 
@@ -117,7 +117,7 @@ class TodoyuRightsManager {
 		$data	= array(
 			'ext'		=> abs($extID),
 			'right'		=> $right,
-			'id_group'	=> abs($idGroup)
+			'id_role'	=> abs($idGroup)
 		);
 
 		return Todoyu::db()->doInsert(self::TABLE, $data);
@@ -135,7 +135,7 @@ class TodoyuRightsManager {
 	 */
 	public static function deleteRight($extID, $idGroup, $right) {
 		$where	= '	ext		= ' . abs($extID) . ' AND
-					id_group= ' . abs($idGroup) . ' AND
+					id_role= ' . abs($idGroup) . ' AND
 					right	= ' . abs($right);
 		$limit	= 1;
 
@@ -151,7 +151,7 @@ class TodoyuRightsManager {
 	 * @return	Integer		Number of deleted rights
 	 */
 	public static function deleteGroupRights($idGroup) {
-		$where	= 'id_group	= ' . abs($idGroup);
+		$where	= 'id_role	= ' . abs($idGroup);
 
 		return Todoyu::db()->doDelete(self::TABLE, $where);
 	}
@@ -205,12 +205,12 @@ class TodoyuRightsManager {
 		$extID	= TodoyuExtensions::getExtID($ext);
 		$groups	= TodoyuArray::intval($groups, true, true);
 
-		$fields	= '`right`, id_group';
+		$fields	= '`right`, id_role';
 		$table	= self::TABLE;
 		$where	= '	ext		= ' . $extID;
 
 		if( sizeof($groups) > 0 ) {
-			$where .= ' AND id_group IN(' . implode(',', $groups) . ')';
+			$where .= ' AND id_role IN(' . implode(',', $groups) . ')';
 		}
 
 		$rights	= Todoyu::db()->getArray($fields, $table, $where);
@@ -218,7 +218,7 @@ class TodoyuRightsManager {
 		$groupRights = array();
 
 		foreach($rights as $right) {
-			$groupRights[$right['id_group']][] = $right['right'];
+			$groupRights[$right['id_role']][] = $right['right'];
 		}
 
 		return $groupRights;

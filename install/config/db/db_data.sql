@@ -82,10 +82,10 @@ INSERT INTO `ext_calendar_holidayset` (`id`, `date_create`, `date_update`, `id_u
 (4, 0, 0, 0, 0, 'Japan', 'Japan');
 
 --
--- Data for Table `ext_calendar_mm_event_user`
+-- Data for Table `ext_calendar_mm_event_person`
 --
 
-INSERT INTO `ext_calendar_mm_event_user` (`id`, `id_event`, `id_user`, `is_acknowledged`) VALUES
+INSERT INTO `ext_calendar_mm_event_person` (`id`, `id_event`, `id_user`, `is_acknowledged`) VALUES
 (8, 1, 17, 0),
 (7, 1, 1, 1),
 (12, 2, 6, 0),
@@ -165,7 +165,7 @@ INSERT INTO `ext_comment_comment` (`id`, `date_update`, `date_create`, `deleted`
 -- Data for Table `ext_comment_feedback`
 --
 
-INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_user_create`, `id_user_feedback`, `id_comment`, `is_seen`) VALUES
+INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_user_create`, `id_person_feedback`, `id_comment`, `is_seen`) VALUES
 (1, 1254233694, 0, 1, 2, 1, 0),
 (2, 1264699613, 0, 1, 1, 3, 0),
 (3, 1264699947, 0, 17, 14, 4, 0),
@@ -188,10 +188,10 @@ INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_user
 
 
 --
--- Data for Table `ext_project_mm_project_user`
+-- Data for Table `ext_project_mm_project_person`
 --
 
-INSERT INTO `ext_project_mm_project_user` (`id`, `id_project`, `id_user`, `id_userrole`, `comment`) VALUES
+INSERT INTO `ext_project_mm_project_person` (`id`, `id_project`, `id_user`, `id_userrole`, `comment`) VALUES
 (5, 2, 2, 2, ''),
 (4, 2, 3, 1, ''),
 (6, 2, 1, 1, ''),
@@ -398,10 +398,10 @@ INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_user_cre
 (150, 1264780744, 1264785492, 1, 0, 1, 8, 149, 'Time estimated', '<p>Time estimated</p>', 14, 14, 1264953480, 1264780680, 1264953480, 0, 4, 2, 1, 38, 0, 1, 0, 0, 0, 0, 0, 0);
 
 --
--- Data for Table `ext_project_userrole`
+-- Data for Table `ext_project_role`
 --
 
-INSERT INTO `ext_project_userrole` (`id`, `date_create`, `id_user_create`, `date_update`, `rolekey`, `title`, `deleted`) VALUES
+INSERT INTO `ext_project_role` (`id`, `date_create`, `id_user_create`, `date_update`, `rolekey`, `title`, `deleted`) VALUES
 (1, 0, 0, 1264696219, 'projectleader', 'Project manager', 0),
 (2, 0, 0, 1264696225, 'developer', 'Developer', 0),
 (3, 0, 0, 0, 'designer', 'Designer', 0),

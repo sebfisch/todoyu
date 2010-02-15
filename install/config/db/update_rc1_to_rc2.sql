@@ -48,6 +48,15 @@ RENAME TABLE `ext_user_preference`  TO `system_preference` ;
 RENAME TABLE `ext_user_right`  TO `system_right` ;
 RENAME TABLE `ext_user_user`  TO `ext_contact_person` ;
 
+
+--
+-- Rename other tables with user or group in name
+--
+RENAME TABLE `ext_calendar_mm_event_user`  TO `ext_calendar_mm_event_person` ;
+RENAME TABLE `ext_project_mm_project_user`  TO `ext_project_mm_project_person` ;
+RENAME TABLE `ext_project_userrole`  TO `ext_project_role` ;
+
+
 --
 -- Rename all id_user_create
 --
@@ -72,5 +81,27 @@ ALTER TABLE `ext_search_filtercondition` CHANGE `id_user_create` `id_person_crea
 ALTER TABLE `ext_search_filterset` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_timetracking_track` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_timetracking_tracking` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `system_log` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `system_role` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 
 
+--
+-- Rename all id_user and id_group
+--
+ALTER TABLE `ext_calendar_mm_event_person` CHANGE `id_user` `id_person` INT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_comment_feedback` CHANGE `id_user_feedback` `id_person_feedback` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_comment_mailed` CHANGE `id_user_mailed` `id_person_mailed` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_mm_company_person` CHANGE `id_user` `id_person` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_mm_person_address` CHANGE `id_user` `id_person` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_mm_person_contactinfo` CHANGE `id_user` `id_person` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_mm_person_role` CHANGE `id_user` `id_person` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_mm_person_role` CHANGE `id_group` `id_role` TINYINT( 3 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_project_mm_project_person` CHANGE `id_user` `id_person` INT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_project_mm_project_person` CHANGE `id_userrole` `id_role` TINYINT( 3 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_search_filterset` CHANGE `usergroups` `roles` VARCHAR( 16 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+ALTER TABLE `system_errorlog` CHANGE `id_user` `id_person` SMALLINT( 5 ) UNSIGNED NOT NULL;
+ALTER TABLE `system_panelwidget` CHANGE `id_user` `id_person` SMALLINT( 5 ) UNSIGNED NOT NULL;
+ALTER TABLE `system_preference` CHANGE `id_user` `id_person` SMALLINT( 5 ) UNSIGNED NOT NULL;
+ALTER TABLE `system_right` CHANGE `id_group` `id_role` TINYINT( 3 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_project_task` CHANGE `id_user_assigned` `id_person_assigned` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_project_task` CHANGE `id_user_owner` `id_person_owner` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
