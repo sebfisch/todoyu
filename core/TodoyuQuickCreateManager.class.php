@@ -29,15 +29,17 @@ class TodoyuQuickCreateManager {
 	/**
 	 * Add a new create engine and register needed functions
 	 *
+	 * @param	String		$ext
 	 * @param	String		$type
 	 * @param	String		$labelMode
 	 * @param	Integer		$position
 	 */
-	public static function addEngine($type, $labelMode = '', $position = 100) {
+	public static function addEngine($ext, $type, $labelMode = '', $position = 100) {
 		$type		= strtolower(trim($type));
 		$position	= intval($position);
 
 		$GLOBALS['CONFIG']['create']['engines'][$type] = array(
+			'ext'			=> $ext,
 			'type'			=> $type,
 			'labelMode'		=> $labelMode,
 			'position'		=> $position

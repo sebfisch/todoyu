@@ -20,32 +20,88 @@
 
 Todoyu.Headlet.QuickCreate = {
 
+	popup:	null,
+
+
+
 	/**
-	 * Enter description here...
+	 * Initialize quick create headlet
 	 */
 	init: function() {
-//		this.createField = $('headletquickcreate-query');
 		this.Mode.init();
 	},
+
+
+
+	/**
+	 * Open creation wizard to add new record
+	 * 
+	 * @param	String		mode
+	 */
+	add: function(ext, mode) {
+		this.openWizard(ext, mode);
+	},
+
+
+
+	/**
+	 * Open creator wizard popup
+	 * 
+	 * @param	String		ext
+	 * @param	String		mode
+	 */
+	openWizard: function(ext, mode) {
+		var controller = 'quickcreate' + mode;
+		
+		var url		= Todoyu.getUrl(ext, controller);
+		var options	= {
+			'parameters': {
+				'action':	'popup',
+			},
+			'onComplete': this.onWizardOpened.bind(this, mode)
+		};
+		var idPopup	= 'quickcreate';
+		var title	= 'Create new';
+		var width	= 600;
+		var height	= 360;
+
+		this.popup = Todoyu.Popup.openWindow(idPopup, title, width, height, url, options);	
+	},
+
+
+
+	/**
+	 * Handler after popup opened: install change-observer
+	 * 
+	 * @param	Integer		time
+	 */
+	onWizardOpened: function(time) {
+		$('quickevent-field-eventtype').observe('change', this.onEventTypeChange.bindAsEventListener(this, time));
+	},
+
+
+
+	/**
+	 * Close wizard popup
+	 */
+	closeWizard: function() {
+		this.popup.close();
+	},
+
 
 
 /* ---------------------------------------------------------
 	Todoyu.Headlet.Quickcreate.Mode
 ------------------------------------------------------------ */
 
-	/**
-	 * Enter description here...
-	 */
 	Mode: {
+		
+		button: 	null,
 
-		mode: 0,
 
-		button: null,
 
 		/**
-		 * Enter description here...
-		 *
-		 * @param Integer idFilterset
+		 * Init quick create headlet
 		 */
 		init: function() {
 			this.button = $('headletquickcreate-mode-btn');
@@ -56,7 +112,7 @@ Todoyu.Headlet.QuickCreate = {
 
 
 		/**
-		 * Enter description here...
+		 * Install observer
 		 */
 		installObserver: function() {
 			this.button.observe('click', this.show.bindAsEventListener(this));
@@ -65,9 +121,9 @@ Todoyu.Headlet.QuickCreate = {
 
 
 		/**
-		 * Enter description here...
+		 * Show quick creation modes (record types) selector list
 		 *
-		 * @param	String	mode
+		 * @param	String		mode
 		 */
 		show: function(event) {
 			var btnOffset	= this.button.cumulativeOffset();
@@ -89,43 +145,25 @@ Todoyu.Headlet.QuickCreate = {
 
 
 		/**
-		 * Enter description here...
-		 *
-		 * @param	String	mode
-		 */
-		setMode: function(mode) {
-			$('headletquickcreate-mode').value = mode;
-			$('headletquickcreate-mode-icon').writeAttribute('class', 'createmode-' + mode);
-		},
-
-
-
-		/**
-		 * Enter description here...
-		 *
-		 * @return	String
-		 */
-		getMode: function() {
-			return $F('headletquickcreate-mode');
-		},
-
-
-
-		/**
-		 * Enter description here...
+		 * Evoked upon selecting of creation mode: hide modes list and open creator wizard
 		 *
 		 * @param	Object	event
 		 */
 		onSelect: function(event) {
-			var mode = event.findElement('li').readAttribute('mode');
+			var liElement	= event.findElement('li');
+			
+			var ext	= liElement.readAttribute('ext');
+			var mode= liElement.readAttribute('mode');
 
-			this.setMode(mode);
 			this.hide();
+			
+			Todoyu.Headlet.QuickCreate.add(ext, mode);
 		},
 
 
+
 		/**
-		 * Enter description here...
+		 * Click outside widget after having opened it: hide modes selector
 		 */
 		onBodyClick: function(event) {
 			this.hide();
@@ -135,7 +173,7 @@ Todoyu.Headlet.QuickCreate = {
 
 
 		/**
-		 * Enter description here...
+		 * Hide modes selector
 		 */
 		hide: function() {
 			$('headletquickcreate-modes').hide();

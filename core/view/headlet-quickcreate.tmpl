@@ -2,13 +2,10 @@
 
 {block "headlet"}
 	<form action="?" method="get" name="create" id="{$id}-form" onsubmit="return false">
-		<input type="hidden" name="ext" value="" />
-		<input type="hidden" name="controller" value="ext" />
-		<input type="hidden" name="mode" value="all" id="{$id}-mode" />
 		<div id="{$id}-mode-btn"><div id="{$id}-mode-icon" class="createmode-default"></div></div>
 	<ul id="{$id}-modes">
 {foreach $createModes createMode}
-		<li class="createmode-{$createMode.type}" mode="{$createMode.type}">{Label $createMode.labelMode}</li>
+		<li class="createmode-{$createMode.type}" ext="{$createMode.ext}" mode="{$createMode.type}">{Label $createMode.labelMode}</li>
 {/foreach}
 	</ul>
 	</form>

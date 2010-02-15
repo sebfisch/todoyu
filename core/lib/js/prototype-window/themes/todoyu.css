@@ -67,14 +67,17 @@
 	cursor:se-resize
 }
 
-.dialog_close,.dialog_minimize,.dialog_maximize {
+.dialog_close,
+.dialog_minimize,
+.dialog_maximize {
 	width:14px;
 	top:5px;
 	cursor:pointer;
 	z-index:2000
 }
 
-.dialog_close,.dialog_title {
+.dialog_close,
+.dialog_title {
 	height:14px
 }
 
@@ -83,22 +86,28 @@
 	right:3px
 }
 
-.dialog_close,.dialog_minimize,.dialog_maximize,.wired_frame,.dialog {
+.dialog_close,
+.dialog_minimize,
+.dialog_maximize,
+.wired_frame,.dialog {
 	position:absolute
 }
 
-.dialog_minimize,.dialog_maximize {
+.dialog_minimize,
+.dialog_maximize {
 	height:15px
 }
 
 .dialog_minimize {
 	background:transparent url(todoyu.png) no-repeat 0 -459px;
-	right:31px
+	right:17px	/* 31px */
 }
 
 .dialog_maximize {
-	background:transparent url(todoyu.png) no-repeat 0 -413px;
+	display:none;
+/*	background:transparent url(todoyu.png) no-repeat 0 -413px;
 	right:17px
+*/
 }
 
 .dialog_title {
@@ -148,7 +157,9 @@
 	margin:0
 }
 
-.dialog table.table_window,.dialog table.table_window th,.dialog table.table_window td {
+.dialog table.table_window,
+.dialog table.table_window th,
+.dialog table.table_window td {
 	padding:0
 }
 

@@ -49,14 +49,14 @@ var Todoyu = {
 	/**
 	 * Build request url with extension and controller
 	 *
-	 *	@param	String		ext
-	 *	@param	String		controller
+	 * @param	String		ext
+	 * @param	String		controller
 	 */
 	getUrl: function(ext, controller) {
-		var url = 'index.php?ext='+ext;
+		var url = 'index.php?ext=' + ext;
 
 		if(controller)	{
-			url = url + '&controller='+controller;
+			url = url + '&controller=' + controller;
 		}
 
 		return url;
@@ -67,10 +67,10 @@ var Todoyu = {
 	/**
 	 * Redirect to an onther page
 	 *
-	 *	@param	String	ext
-	 *	@param	String	controller
-	 *	@param	Hash	params
-	 *	@param	String	hash
+	 * @param	String	ext
+	 * @param	String	controller
+	 * @param	Hash	params
+	 * @param	String	hash
 	 */
 	goTo: function(ext, controller, params, hash) {
 		var url =  this.getUrl(ext, controller);
@@ -91,8 +91,8 @@ var Todoyu = {
 	/**
 	 * Send AJAX request
 	 *
-	 *	@param	String		url
-	 *	@param	Hash		options
+	 * @param	String		url
+	 * @param	Hash		options
 	 */
 	send: function(url, options) {
 		options = Todoyu.Ui._getDefaultOptions(options);
@@ -105,7 +105,7 @@ var Todoyu = {
 	/**
 	 * Check if an element exists
 	 *
-	 *	@param	DomElement,String		element		Element or its ID
+	 * @param	DomElement,String		element		Element or its ID
 	 */
 	exists: function(element) {
 		if( typeof element === 'object' ) {
