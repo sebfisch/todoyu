@@ -64,6 +64,8 @@
 		<label index="paging.page">Page</label>
 		<label index="input.autocompleter">Autocompleting input</label>
 		<label index="ajax.requestFailed">Cannot connect to server (your connection or server down?)</label>
+		<label index="roles">Roles</label>
+		<label index="role">Role</label>
 	</labels>
 	<labels lang="de">
 		<label index="tab.todoyu.label">todoyu</label>
@@ -129,5 +131,7 @@
 		<label index="paging.page">Seite</label>
 		<label index="input.autocompleter">Autovervollständigende Eingabe</label>
 		<label index="ajax.requestFailed">Keine Verbindung zum Server (Verbindungs- oder Serverprobleme?)</label>
+		<label index="roles">Rollen</label>
+		<label index="role">Rolle</label>
 	</labels>
 </locallang>

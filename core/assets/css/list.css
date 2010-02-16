@@ -26,6 +26,12 @@ table.list td {
 	border-bottom:1px dotted #aaa;
 }
 
+table.list td div.icon {
+	height:18px;
+	margin-top:-2px;
+	margin-bottom:-2px;
+}
+
 /* ------------
 	Hover
    ------------ */

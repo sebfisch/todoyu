@@ -181,7 +181,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @return	Array
 	 */
 	protected function getRecordsConfig() {
-		return $this->getAttribute('foreignRecordConf');
+		return $this->getAttribute('record');
 	}
 
 
@@ -223,7 +223,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	protected function getRecordsFormXml() {
 		$recordConfig = $this->getRecordsConfig();
 
-		return $recordConfig['foreignformxml'];
+		return $recordConfig['form'];
 	}
 
 
@@ -293,12 +293,12 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * Validate required option
 	 * If the field has no validators, but is required, we have to perfom an "required" check
 	 * Because a databaseRelation can contain any kind of data, a custom validator function is required.
-	 * The function has to be referenced in foreignRecordConf->validateRequired in the xml
+	 * The function has to be referenced in record->validateRequired in the xml
 	 *
 	 * @return	Bool
 	 */
 	public function validateRequired() {
-		$customValidator	= $this->config['foreignRecordConf']['validateRequired'];
+		$customValidator	= $this->config['record']['validateRequired'];
 
 		if( TodoyuDiv::isFunctionReference($customValidator) ) {
 			$records	= $this->getRecords();

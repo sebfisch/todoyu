@@ -1,4 +1,10 @@
-{if ! $noFormTag == 1 }<form name="{$name}" id="{$htmlId}" class="fForm{if $class} {$class}{/if}" method="{$method}" action="{$action}" {if $onsubmit}onsubmit="{$onsubmit}"{/if} {if $enctype}enctype="{$enctype}"{/if} {$extraAttributes}>{/if}
+{if ! $noFormTag }
+	<form name="{$name}" id="{$htmlId}" class="fForm form{ucfirst($name)} {$class}" method="{$method|default:'post'}" action="{$action}" onsubmit="{$onsubmit|default:'return false'}" {if $enctype}enctype="{$enctype}"{/if} {$extraAttributes}>
+{/if}
+
 {$hiddenFields}
 {$fieldsets}
-{if ! $noFormTag == 1 }</form>{/if}
+
+{if ! $noFormTag}
+	</form>
+{/if}
