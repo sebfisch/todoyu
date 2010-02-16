@@ -389,7 +389,7 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
 function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '') {
 	$tmpl	= 'core/view/headerLine.tmpl';
 	$data	= array(
-		'title'	=> Label($title),
+		'title'	=> TodoyuDiv::getLabel($title),
 		'class'	=> $class
 	);
 

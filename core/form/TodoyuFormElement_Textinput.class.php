@@ -74,6 +74,10 @@ class TodoyuFormElement_Textinput extends TodoyuFormElement {
 		return $this->getValue();
 	}
 
+	public function getValueForTemplate() {
+		return $this->getAttribute('type') === 'password' ? '' : parent::getValueForTemplate();
+	}
+
 }
 
 ?>

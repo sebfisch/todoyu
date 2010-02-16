@@ -70,7 +70,7 @@ class TodoyuTabheadRenderer {
 	 * @param	String	$active
 	 * @return	String
 	 */
-	public static function renderTabs($htmlID, $class, $jsHandler, array $tabs, $active = '') {
+	public static function renderTabs($name, array $tabs, $jsHandler, $active = '', $class = '') {
 		foreach($tabs as $index => $tab) {
 			$tabs[$index]['label'] = TodoyuDiv::getLabel($tab['label']);
 		}
@@ -81,6 +81,7 @@ class TodoyuTabheadRenderer {
 
 		$tmpl	= 'core/view/tabheads.tmpl';
 		$data	= array(
+			'name'		=> $name,
 			'htmlId'	=> $htmlID,
 			'class'		=> $class,
 			'jsHandler'	=> $jsHandler,

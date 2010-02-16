@@ -135,10 +135,23 @@ class TodoyuRoleManager {
 	 *
 	 * @param	Integer		$idGroup
 	 */
-	public static function removeAllPersons($idRole) {
+	public static function removePersons($idRole) {
 		$idRole= intval($idRole);
 
 		TodoyuDbHelper::removeMMrelations('ext_contact_mm_person_role', 'id_role', $idRole);
+	}
+
+
+
+	/**
+	 * Remove all roles for a person
+	 *
+	 * @param	Integer		$idPerson
+	 */
+	public static function removeRoles($idPerson) {
+		$idPerson= intval($idPerson);
+
+		TodoyuDbHelper::removeMMrelations('ext_contact_mm_person_role', 'id_person', $idPerson);
 	}
 
 

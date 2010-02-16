@@ -30,8 +30,8 @@ Todoyu.Tabs = {
 	 *	@param	unknown_type	list
 	 *	@param	unknown_type	handlerFunction
 	 */
-	create: function(list, handlerFunction) {
-		list = $(list);
+	create: function(name, handlerFunction) {
+		list = $(name + '-tabs');
 
 		this.bindCache[list.id] = {
 			'click': 	this._clickHandler.bindAsEventListener(this, handlerFunction),
@@ -100,7 +100,7 @@ Todoyu.Tabs = {
 
 		var list = Event.findElement(e, 'ul');
 
-		this.setActive(element);
+		this.setActiveByElement(element);
 	},
 
 
@@ -110,18 +110,17 @@ Todoyu.Tabs = {
 	 *
 	 *	@param	String		element		Tab element or its ID
 	 */
-	setActive: function(element) {
-		$(element).up('ul').select('li').invoke('removeClassName', 'active');
-		$(element).addClassName('active');
+	setActive: function(listname, tab) {
+		$(listname + '-tabs').select('li').invoke('removeClassName', 'active');
+		$(listname + '-tabs').down('li.tabkey-' + tab).addClassName('active');
 	},
 	
-	setActiveByKey: function(list, key) {
-		var item = $(list).down('li.' + key);
-		
-		this.setActive(item);
+	setActiveByElement: function(tabElement) {
+		var idParts	= $(tabElement).id.split('-tab-');
+		this.setActive(idParts.first(), idParts.last());
 	},
-
-
+	
+	
 
 	/**
 	 * Get currently active tab in a list
@@ -140,7 +139,7 @@ Todoyu.Tabs = {
 	 *	@param	String		list		List or its ID
 	 */
 	getActiveKey: function(list) {
-		return this.getActive(list).getAttribute('id').split('-').last();
+		return this.getActive(list).id.split('-').last();
 	},
 
 
@@ -151,8 +150,18 @@ Todoyu.Tabs = {
 	 *	@param	String		element		Tab element or its ID
 	 *	@param	String		label		Labeltext
 	 */
-	setLabel: function(element, label) {
-		$(element).down('span.labeltext').update(label);
+	setLabel: function(listname, tab, label) {
+		$(listname + '-tab-' + tab).down('span.labeltext').update(label);
+	},
+	
+	removeTab: function(listname, tabName) {
+		var tab = $(listname + '-tab-' + tabName);
+		
+		if( tab ) {
+			tab.remove();
+		}
+		
+		return tab;
 	},
 
 
@@ -166,14 +175,13 @@ Todoyu.Tabs = {
 	 *	@param	unknown_type	tabLabel
 	 *	@param	unknown_type	active
 	 */
-	build: function(idTab, tabClass, tabLabel, active) {
-		/* this is not the new html code ! ==> SHOULD WORK NOW */
+	build: function(listname, name, tabClass, tabLabel, active) {
 		var tab = new Element('li', {
-			'id': idTab,
+			'id': listname + '-tab-' + name,
 			'class': tabClass
 		});
 		var p = new Element('p', {
-			'id': idTab + '-label',
+			'id': listname + '-tab-' + name + '-label',
 			'class': 'label'
 		});
 		var lt = new Element('span', {

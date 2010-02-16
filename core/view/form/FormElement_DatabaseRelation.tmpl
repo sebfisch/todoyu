@@ -7,6 +7,7 @@
 	{if sizeof($records)}
 		{Button label="form.databaserelation.expandAllRecords" class="expandAll" id="expand-all" onclick="Todoyu.Form.expandForeignRecords(['$fieldname'])"}
 	{/if}
+	<input type="hidden" name="{$formname}[{$fieldname}]" value="0" />
 </div>
 <div id="foreignrecords-{$idRecord}-{$fieldname}" class="foreignRecords" >
 	{foreach $records index record}

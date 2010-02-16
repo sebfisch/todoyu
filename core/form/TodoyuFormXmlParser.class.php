@@ -131,6 +131,16 @@ class TodoyuFormXmlParser {
 	 * @param	SimpleXmlElement	$fieldsetXmlObj
 	 */
 	private static function addFieldset(&$parentElement, SimpleXmlElement $fieldsetXmlObj) {
+		if( $fieldsetXmlObj->restrict ) {
+			$config	= TodoyuArray::fromSimpleXML($fieldsetXmlObj);
+
+				// Check if fieldset has restrictions and if they match
+			if( ! self::isAllowed($config) ) {
+				TodoyuDebug::printInFirebug('denied');
+				return false;
+			}
+		}
+
 		$fieldset = $parentElement->addFieldset((string)$fieldsetXmlObj['name']);
 
 			// Set legend if available
@@ -221,11 +231,14 @@ class TodoyuFormXmlParser {
 							return true;
 						}
 					} else {
+
 							// If right is disallowed and conjunction is AND, field is disallowed
 						if( $and ) {
 							return false;
 						}
 					}
+				} else {
+					Todoyu::log('Misconfigured right in form', LOG_LEVEL_ERROR);
 				}
 			}
 

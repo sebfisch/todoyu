@@ -430,7 +430,14 @@ class TodoyuFormValidator {
 		$table		= trim($validatorConfig['table']);
 		$field		= $formElement->getName();
 		$idRecord	= intval($formData['id']);
+		$value		= trim($value);
 
+			// If empty is allowed, don't check
+		if( $value === '' && isset($validatorConfig['allowEmpty']) ) {
+			return true;
+		}
+
+			// If no table defined to check in
 		if( $table === '') {
 			Todoyu::log('Missing tablename in unique form validation for field ' . $formElement->getName(), LOG_LEVEL_ERROR);
 			return false;
@@ -449,6 +456,44 @@ class TodoyuFormValidator {
 		} else {
 			return true;
 		}
+	}
+
+
+
+	/**
+	 * Validate form field for email
+	 *
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement 	$formElement
+	 * @param	Array				$formData
+	 * @return	Bool
+	 */
+	public static function email($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+		$value	= trim($value);
+
+			// If empty is allowed, don't check
+		if( $value === '' && isset($validatorConfig['allowEmpty']) ) {
+			return true;
+		}
+
+		return TodoyuValidator::isEmail($value);
+	}
+
+
+	/**
+	 * Check another field in the form. If this field is not empty, the checked field needs a value too
+	 *
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement 	$formElement
+	 * @param	Array				$formData
+	 * @return	Bool
+	 */
+	public static function requiredIfNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+		$field	= $validatorConfig['field'];
+
+		return empty($formData[$field]) || $value !== '';
 	}
 
 }

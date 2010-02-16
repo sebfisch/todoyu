@@ -234,7 +234,7 @@ class TodoyuRightsManager {
 	 * @param	String		$right
 	 */
 	public static function restrict($extKey, $right) {
-		if( ! allowed($extKey, $right) ) {
+		if( ! self::isAllowed($extKey, $right) ) {
 			self::deny($extKey, $right);
 		}
 	}
