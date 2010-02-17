@@ -11,6 +11,8 @@
 		<label index="description">Description</label>
 		<label index="date">Date</label>
 		<label index="dateFormat">y.n.j</label>
+		<label index="quickcreate.title">Create new data</label>
+		<label index="quickcreate.alltypes.label">All data types:</label>
 		<label index="create">Create</label>
 		<label index="createNew">Create new</label>
 		<label index="edit">Edit</label>
@@ -78,6 +80,8 @@
 		<label index="title">Titel</label>
 		<label index="description">Beschreibung</label>
 		<label index="date">Datum</label>
+		<label index="quickcreate.title">Neue Daten Anlegen</label>
+		<label index="quickcreate.alltypes.label">Alle Datentypen:</label>
 		<label index="dateFormat">j.n.j</label>
 		<label index="createNew">Daten anfügen</label>
 		<label index="edit">Bearbeiten</label>

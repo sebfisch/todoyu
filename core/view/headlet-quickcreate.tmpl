@@ -2,10 +2,20 @@
 
 {block "headlet"}
 	<form action="?" method="get" name="create" id="{$id}-form" onsubmit="return false">
-		<div id="{$id}-mode-btn"><div id="{$id}-mode-icon" class="createmode-default"></div></div>
+		<div id="{$id}-mode-btn" title="{Label core.quickcreate.title}" >
+			<div id="{$id}-mode-icon" class="createmode-default"></div>
+		</div>
 	<ul id="{$id}-modes">
+{foreach $areaCreateModes createMode}
+		<li class="engine createmode-{$createMode.type}" ext="{$createMode.ext}" mode="{$createMode.type}">
+			{Label $createMode.labelMode}
+		</li>
+{/foreach}
+		<li class="grouplabel">{Label core.quickcreate.alltypes.label}</li>
 {foreach $createModes createMode}
-		<li class="createmode-{$createMode.type}" ext="{$createMode.ext}" mode="{$createMode.type}">{Label $createMode.labelMode}</li>
+		<li class="engine createmode-{$createMode.type}" ext="{$createMode.ext}" mode="{$createMode.type}">
+			{Label $createMode.labelMode}
+		</li>
 {/foreach}
 	</ul>
 	</form>

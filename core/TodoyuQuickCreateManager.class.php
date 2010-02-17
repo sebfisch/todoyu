@@ -27,6 +27,28 @@
 class TodoyuQuickCreateManager {
 
 	/**
+	 * Get creation engine configuration array
+	 *
+	 * @param	String		$ext
+	 * @param	String		$type
+	 * @param	String		$labelMode
+	 * @param	Integer		$position
+	 * @return	Array
+	 */
+	private static function getEngineConfig($ext, $type, $labelMode, $position = 100) {
+		$type		= strtolower(trim($type));
+		$position	= intval($position);
+		return array(
+			'ext'			=> $ext,
+			'type'			=> $type,
+			'labelMode'		=> $labelMode,
+			'position'		=> $position
+		);
+	}
+
+
+
+	/**
 	 * Add a new create engine and register needed functions
 	 *
 	 * @param	String		$ext
@@ -35,15 +57,33 @@ class TodoyuQuickCreateManager {
 	 * @param	Integer		$position
 	 */
 	public static function addEngine($ext, $type, $labelMode = '', $position = 100) {
-		$type		= strtolower(trim($type));
-		$position	= intval($position);
+		$engineConfig	= self::getEngineConfig($ext, $type, $labelMode, $position);
 
-		$GLOBALS['CONFIG']['create']['engines'][$type] = array(
-			'ext'			=> $ext,
-			'type'			=> $type,
-			'labelMode'		=> $labelMode,
-			'position'		=> $position
-		);
+		$GLOBALS['CONFIG']['create']['engines']['all'][$type] = $engineConfig;
+	}
+
+
+
+	/**
+	 * Add a new area related (primary listed) create engine and register needed functions
+	 *
+	 * @param	Integer		$idArea
+	 * @param	String		$ext
+	 * @param	String		$type
+	 * @param	String		$labelMode
+	 * @param	Integer		$position
+	 */
+	public static function addAreaEngine($idArea, $ext, $type, $labelMode = '', $position = 100) {
+			// @todo	check + fix to use AREA constant
+		$requestVars= TodoyuRequest::getCurrentRequestVars();
+		$area		= intval($requestVars['area']);
+
+//		if ( AREA === $idArea ) {
+		if ( $area === $idArea ) {
+			$engineConfig	= self::getEngineConfig($ext, $type, $labelMode, $position);
+
+			$GLOBALS['CONFIG']['create']['engines']['primary'][$type] = $engineConfig;
+		}
 	}
 
 
@@ -56,7 +96,26 @@ class TodoyuQuickCreateManager {
 	public static function getEngines() {
 		TodoyuExtensions::loadAllCreate();
 
-		$createEngines	= TodoyuArray::assure($GLOBALS['CONFIG']['create']['engines']);
+		$createEngines	= TodoyuArray::assure($GLOBALS['CONFIG']['create']['engines']['all']);
+
+		if( sizeof($createEngines) > 0 ) {
+			$createEngines = TodoyuArray::sortByLabel($createEngines, 'position');
+		}
+
+		return $createEngines;
+	}
+
+
+
+	/**
+	 * Get area related primary create engines in correct order
+	 *
+	 * @return	Array
+	 */
+	public static function getAreaEngines() {
+		TodoyuExtensions::loadAllCreate();
+
+		$createEngines	= TodoyuArray::assure($GLOBALS['CONFIG']['create']['engines']['primary']);
 
 		if( sizeof($createEngines) > 0 ) {
 			$createEngines = TodoyuArray::sortByLabel($createEngines, 'position');

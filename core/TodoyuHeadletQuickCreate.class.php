@@ -28,8 +28,8 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadlet {
 		$this->setTemplate('core/view/headlet-quickcreate.tmpl');
 
 		$this->setData(array(
-//			'query'			=> $this->params['query'],
-			'createModes'	=> TodoyuQuickCreateManager::getEngines()
+			'areaCreateModes'	=> TodoyuQuickCreateManager::getAreaEngines(),
+			'createModes'		=> TodoyuQuickCreateManager::getEngines()
 		));
 	}
 
