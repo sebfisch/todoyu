@@ -78,7 +78,7 @@ Todoyu.Headlet.QuickCreate = {
 	 */
 	onPopupOpened: function(mode) {
 		$('quickcreate').addClassName(mode);
-		
+
 		var modeClass	= 'Todoyu.Headlet.QuickCreate.' + Todoyu.Helper.ucwords(mode);
 		Todoyu.callUserFunction(modeClass + '.onPopupOpened');
 	},
@@ -167,12 +167,15 @@ Todoyu.Headlet.QuickCreate = {
 		 */
 		onSelect: function(event) {
 			var liElement	= event.findElement('li');
-			
-			var ext	= liElement.readAttribute('ext');
-			var mode= liElement.readAttribute('mode');
 
-			this.hide();
-			Todoyu.Headlet.QuickCreate.add(ext, mode);
+			var classnames	= $(liElement).getAttribute('class');
+			if ( classnames.indexOf('grouplabel') === -1 ) {
+				var ext	= liElement.readAttribute('ext');
+				var mode= liElement.readAttribute('mode');
+
+				this.hide();
+				Todoyu.Headlet.QuickCreate.add(ext, mode);
+			}
 		},
 
 
@@ -193,9 +196,9 @@ Todoyu.Headlet.QuickCreate = {
 		hide: function() {
 			$('headletquickcreate-modes').hide();
 		},
-		
-		
-		
+
+
+
 		/**
 		 * Get label of given mode
 		 * 
