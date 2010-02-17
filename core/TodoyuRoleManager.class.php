@@ -184,7 +184,7 @@ class TodoyuRoleManager {
 		$personIDs	= TodoyuArray::intval($personIDs, true, true);
 		$personIDs	= array_unique($personIDs);
 
-		TodoyuDbHelper::saveMMrelations('ext_contact_mm_person_role', 'id_role', 'id_person', $idRole, $personIDs, true);
+		TodoyuDbHelper::addMMLinks('ext_contact_mm_person_role', 'id_role', 'id_person', $idRole, $personIDs, true);
 	}
 
 
@@ -199,7 +199,7 @@ class TodoyuRoleManager {
 		$idPerson	= intval($idPerson);
 		$roleIDs	= array_unique(TodoyuArray::intval($roleIDs, true, true));
 
-		TodoyuDbHelper::saveMMrelations('ext_contact_mm_person_role', 'id_person', 'id_role', $idPerson, $roleIDs, true);
+		TodoyuDbHelper::addMMLinks('ext_contact_mm_person_role', 'id_person', 'id_role', $idPerson, $roleIDs, true);
 	}
 
 
