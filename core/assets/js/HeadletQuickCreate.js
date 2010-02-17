@@ -62,7 +62,7 @@ Todoyu.Headlet.QuickCreate = {
 			};
 			var idPopup	= 'quickcreate';
 			var title	= '[LLL:core.create]' + ': ' + this.Mode.getLabel(mode);
-			var width	= 600;
+			var width	= 700;
 			var height	= 360;
 
 			this.popup = Todoyu.Popup.openWindow(idPopup, title, width, url, options);
