@@ -67,7 +67,7 @@ Todoyu.Headlet.QuickCreate = {
 
 			this.popup = Todoyu.Popup.openWindow(idPopup, title, width, url, options);
 		}
-},
+	},
 
 
 
