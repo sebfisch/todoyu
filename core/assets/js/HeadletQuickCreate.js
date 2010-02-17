@@ -94,6 +94,18 @@ Todoyu.Headlet.QuickCreate = {
 
 
 
+	/**
+	 * Update quick create form
+	 *
+	 * @param	Integer	idTask
+	 * @param	String	formHTML
+	 */
+	updateFormDiv: function(formHTML) {
+		$('quickcreate_content').update(formHTML);
+	},
+
+
+
 /* ---------------------------------------------------------
 	Todoyu.Headlet.Quickcreate.Mode
 ------------------------------------------------------------ */

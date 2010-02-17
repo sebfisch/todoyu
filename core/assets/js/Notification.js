@@ -161,7 +161,9 @@ Todoyu.Notification = {
 	 * @param	Integer		id
 	 */
 	onNoteClosed: function(id) {
-		$('notification-note-' + id).remove();
+		if ( $('notification-note-' + id) ) {
+			$('notification-note-' + id).remove();
+		}
 	},
 
 
