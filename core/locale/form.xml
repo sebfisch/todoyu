@@ -14,6 +14,7 @@
 		<label index="databaserelation.expandAllRecords">Expand all records</label>
 		<label index="error.notUnique">This entry already exists</label>
 		<label index="ac.noResults">Autocompleter: No Results found</label>
+		<label index="is_preferred">Prefered</label>
 	</labels>
 	<labels lang="de">
 		<label index="select.pleaseSelect">Bitte wählen</label>
@@ -29,5 +30,6 @@
 		<label index="databaserelation.expandAllRecords">Öffne alle Datensätze</label>
 		<label index="error.notUnique">Dieser Eintrag existiert schon</label>
 		<label index="ac.noResults">Autovervollständigung: Keine Resultate gefunden</label>
+		<label index="is_preferred">Bevorzugt</label>
 	</labels>
 </locallang>

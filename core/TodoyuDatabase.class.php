@@ -466,7 +466,11 @@ class TodoyuDatabase {
 		$fields			= array();
 
 		foreach($fieldNameValues as $key => $quotedValue) {
-			$fields[] = $this->backtick($key) . ' = ' . $quotedValue;
+			if( in_array($key, $noQuoteFields) ) {
+				$fields[] = $key . ' = ' . $quotedValue;
+			} else {
+				$fields[] = $this->backtick($key) . ' = ' . $quotedValue;
+			}
 		}
 
 		$query = 'UPDATE ' . $table . ' SET ';

@@ -163,6 +163,10 @@ class TodoyuRequest {
 			$area = self::getParam('ext');
 		}
 
+		if( is_null($area) ) {
+			$area = TodoyuPreferenceManager::getLastExt();
+		}
+
 		return $area;
 	}
 

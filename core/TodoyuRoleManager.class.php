@@ -168,7 +168,7 @@ class TodoyuRoleManager {
 
 		self::removePerson($idRole, $idPerson);
 
-		TodoyuDbHelper::addMMrelation('ext_contact_mm_person_role', 'id_role', 'id_person', $idRole, $idPerson);
+		TodoyuDbHelper::addMMLink('ext_contact_mm_person_role', 'id_role', 'id_person', $idRole, $idPerson);
 	}
 
 

@@ -30,25 +30,44 @@ class TodoyuDbHelper {
 
 	/**
 	 * Save MM relations from 1 record to n others
+	 * @deprecated
 	 *
 	 * @param	String		$mmTable			Link table
-	 * @param	String		$localField			Locale field name (for the one record linked to the others)
-	 * @param	String		$foreignField		Foreign field name for the other records
-	 * @param	Integer		$idRecord			The linking record
+	 * @param	String		$fieldLocal			Locale field name (for the one record linked to the others)
+	 * @param	String		$fieldForeign		Foreign field name for the other records
+	 * @param	Integer		$idLocalRecord		The linking record
 	 * @param	Array		$foreignRecordIDs	The other linked records
-	 * @param	Boolean		$removeCurrent		Remove all current links of the record
 	 */
-	public static function saveMMrelations($mmTable, $localField, $foreignField, $idRecord, array $foreignRecordIDs, $removeCurrent = true) {
-		$idRecord			= intval($idRecord);
+	public static function addMMLinks($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, array $foreignRecordIDs) {
+		$idLocalRecord		= intval($idLocalRecord);
 		$foreignRecordIDs	= TodoyuArray::intval($foreignRecordIDs, true, true);
 
-		if( $removeCurrent ) {
-			self::removeMMrelations($mmTable, $localField, $idRecord);
-		}
+			// Get existing record IDs in link table
+		$currentForeignIDs	= self::getForeignIDs($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord);
 
+			// If record not allready linked, add link
 		foreach($foreignRecordIDs as $idForeignRecord) {
-			self::addMMrelation($mmTable, $localField, $foreignField, $idRecord, $idForeignRecord);
+			if( ! in_array($idForeignRecord, $currentForeignIDs) ) {
+				self::addMMLink($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $idForeignRecord);
+			}
 		}
+	}
+
+
+
+	/**
+	 * Get foreign record IDs of a mm table
+	 *
+	 * @param	String		$mmTable
+	 * @param	String		$fieldLocal
+	 * @param	String		$fieldForeign
+	 * @param	Integer		$idLocalRecord
+	 * @return	Array
+	 */
+	public static function getForeignIDs($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord) {
+		$where	= $fieldLocal . ' = ' . intval($idLocalRecord);
+
+		return Todoyu::db()->getColumn($fieldForeign, $mmTable, $fieldLocal);
 	}
 
 
@@ -64,13 +83,41 @@ class TodoyuDbHelper {
 	 * @param	Array		$data
 	 * @return	Integer		New ID of the record
 	 */
-	public static function saveExtendedMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord, array $data) {
-		$idLocalRecord	= intval($idLocalRecord);
-		$idForeignRecord= intval($idLocalRecord);
+	public static function saveExtendedMMLinks($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, array $linksData) {
+		$idLocalRecord		= intval($idLocalRecord);
+		$foreignRecordIDs	= self::getForeignIDs($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord);
 
-		self::removeMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord);
+		foreach($linksData as $linkData) {
+			if( in_array($linkData[$fieldForeign], $foreignRecordIDs) ) {
+				self::updateMMLink($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $linkData[$fieldForeign], $linkData);
+			} else {
+				self::addMMLink($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $linkData[$fieldForeign], $linkData);
+			}
 
-		return Todoyu::db()->addRecord($mmTable, $data);
+		}
+	}
+
+
+
+	/**
+	 * Update a mm link with extra data
+	 *
+	 * @param	String		$mmTable
+	 * @param	String		$fieldLocal
+	 * @param	String		$fieldForeign
+	 * @param	Integer		$idLocalRecord
+	 * @param	Integer		$idForeignRecord
+	 * @param	Array		$data
+	 */
+	public static function updateMMLink($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $idForeignRecord, array $data) {
+		$where	= 	$fieldLocal . ' = ' . $idLocalRecord . ' AND ' .
+					$fieldForeign . '	= ' . $idForeignRecord;
+
+		unset($data['id']);
+		unset($data[$fieldLocal]);
+		unset($data[$fieldForeign]);
+
+		Todoyu::db()->doUpdate($mmTable, $where, $data);
 	}
 
 
@@ -83,13 +130,19 @@ class TodoyuDbHelper {
 	 * @param	String		$foreignField		Foreign field name for the other records
 	 * @param	Integer		$idLocalRecord
 	 * @param	Integer		$idForeignRecord
-	 * @return	Integer		id of new record
+	 * @return	Integer		ID of new record
 	 */
-	public static function addMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord) {
+	public static function addMMLink($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $idForeignRecord, array $extraData = array()) {
 		$data	= array(
-			$localField		=> intval($idLocalRecord),
-			$foreignField	=> intval($idForeignRecord)
+			$fieldLocal		=> intval($idLocalRecord),
+			$fieldForeign	=> intval($idForeignRecord)
 		);
+
+		unset($extraData['id']);
+		unset($extraData[$fieldLocal]);
+		unset($extraData[$fieldForeign]);
+
+		$data	= array_merge($extraData, $data);
 
 		return Todoyu::db()->addRecord($mmTable, $data);
 	}
@@ -132,6 +185,71 @@ class TodoyuDbHelper {
 		$where		= Todoyu::db()->backtick($field) . ' = ' . $idRecord;
 
 		return Todoyu::db()->doDelete($mmTable, $where);
+	}
+
+
+
+	/**
+	 * Delete all records which are linked with another record and not in the ignore list
+	 * Inactive records will be marked as deleted, but stay in the link table for restore
+	 *
+	 * @param	String		$mmTable			Link table
+	 * @param	String		$recordTable		Record table
+	 * @param	Integer		$idLinkRecord		ID of the base record which is linked with the other records
+	 * @param	Array		$ignoreRecordIDs	IDs of records which shoudn't get deleted
+	 * @param	String		$fieldRecord		Field with the base record ID
+	 * @param	String		$fieldLink			Field with the linked record IDs
+	 * @return	Integer		Number of delete records
+	 */
+	public static function deleteOtherMmRecords($mmTable, $recordTable, $idLinkRecord, array $ignoreRecordIDs, $fieldRecord, $fieldLink) {
+		$idLinkRecord	= intval($idLinkRecord);
+		$ignoreRecordIDs= TodoyuArray::intval($ignoreRecordIDs, true, true);
+
+		$tables		= 	$recordTable . ' r,' .
+						$mmTable . ' mm';
+		$where		= '	mm.' . $fieldRecord . ' = ' . $idLinkRecord . ' AND
+						mm.' . $fieldLink . '	= r.id';
+
+		if( sizeof($ignoreRecordIDs) > 0 ) {
+			$where .= ' AND	r.id NOT IN(' . implode(',', $ignoreRecordIDs) . ')';
+		}
+
+
+		$update		= array(
+			'r.deleted'	=> 1
+		);
+		$noQuotes	= array(
+			'r.deleted'
+		);
+
+		return Todoyu::db()->doUpdate($tables, $where, $update, $noQuotes);
+	}
+
+
+
+	/**
+	 * Delete all links whichs foreign field ID is not in the ignore list
+	 * Deletes all inactive links. The row is deleted from the mm table
+	 *
+	 * @param	String		$mmTable
+	 * @param	String		$fieldLocal
+	 * @param	String		$fieldForeign
+	 * @param	Integer		$idLocalRecord
+	 * @param	Array		$ignoreForeignIDs
+	 */
+	public static function deleteOtherMmLinks($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, array $ignoreForeignIDs = array()) {
+		$ignoreForeignIDs	= TodoyuArray::intval($ignoreForeignIDs, true, true);
+		$idForeignRecord	= intval($idForeignRecord);
+		$idLocalRecord		= intval($idLocalRecord);
+
+		$where	= $fieldLocal . ' = ' . $idLocalRecord;
+
+			// If a list of IDs to ignore is given, add ignore clause
+		if( sizeof($ignoreForeignIDs) > 0 ) {
+			$where .= ' AND	' . $fieldForeign . ' NOT IN(' . implode(',', $ignoreForeignIDs) . ')';
+		}
+
+		Todoyu::db()->doDelete($mmTable, $where);
 	}
 
 }
