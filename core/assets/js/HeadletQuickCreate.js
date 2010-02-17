@@ -39,7 +39,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * @param	String		mode
 	 */
 	add: function(ext, mode) {
-		this.openWizard(ext, mode);
+		this.openPopup(ext, mode);
 	},
 
 
@@ -50,33 +50,37 @@ Todoyu.Headlet.QuickCreate = {
 	 * @param	String		ext
 	 * @param	String		mode
 	 */
-	openWizard: function(ext, mode) {
-		var controller = 'quickcreate' + mode;
-		
-		var url		= Todoyu.getUrl(ext, controller);
-		var options	= {
-			'parameters': {
-				'action':	'popup',
-			},
-			'onComplete': this.onWizardOpened.bind(this, mode)
-		};
-		var idPopup	= 'quickcreate';
-		var title	= 'Create new';
-		var width	= 600;
-		var height	= 360;
+	openPopup: function(ext, mode) {
+		if ( ! $('quickcreate') ) {
+			var controller = 'quickcreate' + mode;
+			var url		= Todoyu.getUrl(ext, controller);
+			var options	= {
+				'parameters': {
+					'action':	'popup',
+				},
+				'onComplete': this.onPopupOpened.bind(this, mode)
+			};
+			var idPopup	= 'quickcreate';
+			var title	= '[LLL:core.create]' + ': ' + this.Mode.getLabel(mode);
+			var width	= 600;
+			var height	= 360;
 
-		this.popup = Todoyu.Popup.openWindow(idPopup, title, width, height, url, options);	
-	},
+			this.popup = Todoyu.Popup.openWindow(idPopup, title, width, url, options);
+		}
+},
 
 
 
 	/**
-	 * Handler after popup opened: install change-observer
+	 * Handler after popup opened: call mode's onPopupOpened-handler
 	 * 
-	 * @param	Integer		time
+	 * @param	String	ext
 	 */
-	onWizardOpened: function(time) {
-		$('quickevent-field-eventtype').observe('change', this.onEventTypeChange.bindAsEventListener(this, time));
+	onPopupOpened: function(mode) {
+		$('quickcreate').addClassName(mode);
+		
+		var modeClass	= 'Todoyu.Headlet.QuickCreate.' + Todoyu.Helper.ucwords(mode);
+		Todoyu.callUserFunction(modeClass + '.onPopupOpened');
 	},
 
 
@@ -84,8 +88,8 @@ Todoyu.Headlet.QuickCreate = {
 	/**
 	 * Close wizard popup
 	 */
-	closeWizard: function() {
-		this.popup.close();
+	closePopup: function() {
+		Todoyu.Popup.close('quickcreate');
 	},
 
 
@@ -156,7 +160,6 @@ Todoyu.Headlet.QuickCreate = {
 			var mode= liElement.readAttribute('mode');
 
 			this.hide();
-			
 			Todoyu.Headlet.QuickCreate.add(ext, mode);
 		},
 
@@ -177,6 +180,17 @@ Todoyu.Headlet.QuickCreate = {
 		 */
 		hide: function() {
 			$('headletquickcreate-modes').hide();
+		},
+		
+		
+		
+		/**
+		 * Get label of given mode
+		 * 
+		 * @return	String
+		 */
+		getLabel: function(mode) {
+			return $$('#headletquickcreate-modes li.createmode-' + mode)[0].innerHTML;
 		}
 
 	}

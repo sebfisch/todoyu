@@ -123,6 +123,20 @@ Todoyu.Helper = {
 
 
 	/**
+	 * Uppercase the first character of every word in a string
+	 * 
+	 * @param	String	str
+	 * @return	String
+	 */
+	ucwords: function(str) {
+		return (str + '').replace(/^(.)|\s(.)/g, function ($1) {
+			return $1.toUpperCase();
+		});
+	},
+
+
+
+	/**
 	 * Fire event
 	 *
 	 * @param	Element		element

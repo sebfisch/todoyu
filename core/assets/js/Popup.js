@@ -41,7 +41,8 @@ Todoyu.Popup = {
 	/**
 	 * Get popup reference
 	 *
-	 *	@param	String		idPopup
+	 * @param	String			idPopup
+	 * @return	unknown_type
 	 */
 	getPopup: function(idPopup) {
 		return this.popup[idPopup];
@@ -51,6 +52,8 @@ Todoyu.Popup = {
 
 	/**
 	 * @todo	comment
+	 * 
+	 * @return	unknown_type
 	 */
 	getLastPopup: function() {
 		return this.last;
@@ -59,110 +62,99 @@ Todoyu.Popup = {
 
 
 	/**
-	 *	Get ID
-	 *
-	 */
-	getIDXXXX: function() {
-		return this.popup.getId();
-	},
-
-
-
-	/**
 	 * Open new popup window
 	 *
-	 *	@param	unknown_type	idPopup
-	 *	@param	unknown_type	titleTxt
-	 *	@param	unknown_type	winWidth
-	 *	@param	unknown_type	winHeight
-	 *	@param	unknown_type	posTop
-	 *	@param	unknown_type	posLeft
-	 *	@param	unknown_type	contentUrl
-	 *	@param	unknown_type	requestOptions
+	 * @param	String		idPopup
+	 * @param	String		titleTxt
+	 * @param	Integer		winWidth
+	 * @param	String		contentUrl
+	 * @param	Array		requestOptions
+	 * @return	Object
 	 */
-	openWindow: function(idPopup, title, winWidth, winHeight, contentUrl, requestOptions) {
-			// Construct popup
+	openWindow: function(idPopup, title, winWidth, contentUrl, requestOptions) {
+			// Construct
 		this.popup[idPopup] = new Window({
 			id:					idPopup,
 			className:			"dialog",
 			title:				title,
-			resizable:			true,
-			closable:			true,
-			minimizable:		true,
-			maximizable:		true,
-			draggable:			false,
+
+			parent:				document.getElementsByTagName("body").item(0),
 
 			minWidth:			100,
-			minHeight:			20,
+			minHeight:			220,
 			width:				winWidth,
-			height:				winHeight,
+			height:				240,
+
+			resizable:			true,
+			closable:			true,
+			minimizable:		false,
+			maximizable:		false,
+			draggable:			false,
 
 			zIndex:				2000,
-			destroyOnClose:		true,
 			recenterAuto:		false,
 
 			'hideEffect': 		Element.hide,
 			'showEffect': 		Element.show,
-			//showEffectOptions:	{},
-			//hideEffectOptions:	{},
 			effectOptions:		null,
-			parent:				document.getElementsByTagName("body").item(0)
+
+			destroyOnClose:		true
 		});
-		
+
 			// Show popup and activate content overlay
-		this.getPopup(idPopup).showCenter(true);
+		this.getPopup(idPopup).showCenter(true, 160);
 
 			// Wrap onComplete with own onComplete to handle popup
 		requestOptions = requestOptions || {};
 		if( typeof requestOptions.onComplete !== 'function' ) {
 			requestOptions.onComplete = Prototype.emptyFunction
 		}
+
 		requestOptions.onComplete.wrap(function(idPopup, callOriginal, response){
 			this.onContentLoaded.bind(this, idPopup);
 			callOriginal(response);
 		}.bind(this, idPopup));
 
 		this.getPopup(idPopup).setAjaxContent(contentUrl, requestOptions, false, false);
-		
+
 			// Save last opened popup
-		this.last = this.getPopup(idPopup);		
-		
+		this.last = this.getPopup(idPopup);
+
 		return this.getPopup(idPopup);
 	},
 
 
 
 	/**
-	 * 	Evoked after window content has been rendered.
-	 *	Installing observers:
-	 *	1. upon clicking:	(delayed) popup windwow updates its seize to fit its content
-	 *	2. upon closing:	the cick observer (1) is stopped
+	 * Evoked after window content has been rendered.
+	 * Installing observers:
+	 * 1. upon clicking:	(delayed) popup windwow updates its seize to fit its content
+	 * 2. upon closing:	the cick observer (1) is stopped
 	 *
-	 *	@param	String	idPopup
-	 * 	@param	Object	response
+	 * @param	String	idPopup
+	 * @param	Object	response
 	 */
 	onContentLoaded: function(idPopup, response) {
-		//this.getPopup(idPopup).updateHeight();
-		
-		
-		//this.getContentElement(idPopup).observe('mouseup', this.onMouseUp.bindAsEventListener(this, idPopup));
-
-		//this.getPopup(idPopup).setCloseCallback(this.onWindowClose.bindAsEventListener(this, idPopup));
+//		this.getPopup(idPopup).updateHeight();
+//
+//		this.getContentElement(idPopup).observe('mouseup', this.onMouseUp.bindAsEventListener(this, idPopup));
+//
+//		this.getPopup(idPopup).setCloseCallback(this.onWindowClose.bindAsEventListener(this, idPopup));
 	},
 
 
 
 	/**
-	 *	Enter Description here...
+	 * Enter Description here...
 	 *
-	 *	@param	Object	event
-	 *	@param	String	idPopup
+	 * @param	Object	event
+	 * @param	String	idPopup
 	 */
 	onWindowClose: function(event, idPopup) {
-		//this.getContentElement(idPopup).stopObserving('mouseup');
-		//this.clearTimeout();
-
-		//return true;
+//		this.getContentElement(idPopup).stopObserving('mouseup');
+//		this.clearTimeout();
+//
+//		return true;
 	},
 
 
@@ -170,11 +162,11 @@ Todoyu.Popup = {
 	/**
 	 * Enter Description here...
 	 *
-	 *	@param	Object	event
-	 *	@param	String	idPopup
+	 * @param	Object	event
+	 * @param	String	idPopup
 	 */
 	onMouseUp: function(event, idPopup) {
-		//this.timeoutID = this.updateHeight.bind(this).delay(0.3, idPopup, true);
+//		this.timeoutID = this.updateHeight.bind(this).delay(0.3, idPopup, true);
 	},
 
 
@@ -182,7 +174,7 @@ Todoyu.Popup = {
 	/**
 	 * Enter Description here...
 	 *
-	 *	@param	String	idPopup
+	 * @param	String	idPopup
 	 */
 	getContentElement: function(idPopup) {
 		return $(idPopup + '_content');
@@ -193,16 +185,15 @@ Todoyu.Popup = {
 	/**
 	 * Update seize of popup to fit its content without scrollbar
 	 *
-	 *	@param	String	idPopup
-	 *	@param	Boolean clearTimeout
+	 * @param	String	idPopup
+	 * @param	Boolean clearTimeout
 	 */
 	updateHeight: function(idPopup, clearTimeout) {
 		this.getPopup(idPopup).updateHeight();
-/*
-		if( clearTimeout ) {
-			this.clearTimeout();
-		}
-		*/
+//
+//		if( clearTimeout ) {
+//			this.clearTimeout();
+//		}
 	},
 
 
@@ -211,12 +202,10 @@ Todoyu.Popup = {
 	 * Clear timeout (if set)
 	 */
 	clearTimeout: function() {
-		/*
-		if( this.timeoutID !== null ) {
-			window.clearTimeout(this.timeoutID);
-			this.timeoutID = null;
-		}
-		*/
+//		if( this.timeoutID !== null ) {
+//			window.clearTimeout(this.timeoutID);
+//			this.timeoutID = null;
+//		}
 	},
 
 
@@ -224,8 +213,8 @@ Todoyu.Popup = {
 	/**
 	 * Update popup content
 	 *
-	 *	@param	String	contentUrl
-	 *	@param	Object	requestOptions
+	 * @param	String	contentUrl
+	 * @param	Object	requestOptions
 	 */
 	updateContent: function(idPopup, contentUrl, requestOptions) {		
 		this.getPopup(idPopup).setAjaxContent(contentUrl, requestOptions, false, false);
@@ -236,8 +225,8 @@ Todoyu.Popup = {
 	/**
 	 * Set content of given popup
 	 *
-	 *	@param	String	idPopup
-	 *	@param	String	content
+	 * @param	String	idPopup
+	 * @param	String	content
 	 */	
 	setContent: function(idPopup, content) {
 		this.getPopup(idPopup).setHTMLContent(content);		
@@ -248,7 +237,7 @@ Todoyu.Popup = {
 	/**
 	 * Refresh popup
 	 *
-	 *	@param	String	idPopup
+	 * @param	String	idPopup
 	 */
 	refresh: function(idPopup) {
 		this.getPopup(idPopup).refresh();
@@ -259,10 +248,21 @@ Todoyu.Popup = {
 	/**
 	 * Close popup
 	 *
-	 *	@param	idPopup
+	 * @param	idPopup
 	 */
 	close: function(idPopup) {
 		this.getPopup(idPopup).close();
-	}
+	},
+	
+	
+	
+	/**
+	 * Destroy popup
+	 * 
+	 * @param	idPopup
+	 */
+	destroy: function(idPopup) {
+		this.getPopup(idPopup).destroy();
+	},
 
 };

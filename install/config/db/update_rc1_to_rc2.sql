@@ -75,7 +75,7 @@ ALTER TABLE `ext_contact_contactinfotype` CHANGE `id_user_create` `id_person_cre
 ALTER TABLE `ext_contact_person` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_project_project` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_project_task` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
-ALTER TABLE `ext_project_userrole` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `ext_project_role` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_project_worktype` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_search_filtercondition` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_search_filterset` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';

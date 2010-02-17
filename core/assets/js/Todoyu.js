@@ -184,12 +184,12 @@ var Todoyu = {
 	callUserFunction: function(functionName /*, args */) {
 		var args	= Array.prototype.splice.call(arguments, 1);
 		var func	= this.getFunctionFromString(functionName);
-		
+
 		return func.apply(func, args);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Call a functio reference, if it's one. Otherwise just ignore the call
 	 * 
@@ -198,7 +198,7 @@ var Todoyu = {
 	 */
 	callIfExists: function(functionReference /*, args */) {
 		var args = Array.prototype.splice.call(arguments, 1);
-				
+
 		if( typeof functionReference === 'function' ) {
 			functionReference.apply(functionReference, args);
 		} else {
@@ -246,7 +246,7 @@ var Todoyu = {
 				}
 				window.console.log(element);
 			}
-		}		
+		}
 	}
 
 };

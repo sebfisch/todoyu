@@ -11,6 +11,7 @@
 		<label index="description">Description</label>
 		<label index="date">Date</label>
 		<label index="dateFormat">y.n.j</label>
+		<label index="create">Create</label>
 		<label index="createNew">Create new</label>
 		<label index="edit">Edit</label>
 		<label index="load">Load</label>

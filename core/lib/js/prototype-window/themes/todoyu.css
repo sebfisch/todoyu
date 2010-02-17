@@ -1,70 +1,70 @@
 .overlay_dialog,.overlay___invisible__ {
-	background:#666
+	background:#3e4036;
 }
 
 .overlay_dialog {
-	_filter:Alpha(opacity=60);
-	-moz-opacity:0.6;
-	opacity:0.6
+	_filter:Alpha(opacity=70);
+	-moz-opacity:0.7;
+	opacity:0.7;
 }
 
 .overlay___invisible__ {
 	_filter:Alpha(opacity=0);
 	-moz-opacity:0;
-	opacity:0
+	opacity:0;
 }
 
 .dialog_nw,.dialog_ne,.dialog_sw,.dialog_se,.dialog_sizer {
-	width:9px
+	width:9px;
 }
 
 .dialog_nw,.dialog_n,.dialog_ne {
-	height:23px
+	height:28px;
 }
 
 .dialog_nw {
-	background:transparent url(todoyu.png) no-repeat 0 -645px
+	background:transparent url(todoyu.png) no-repeat 0 -645px;
 }
 
 .dialog_n {
-	background:transparent url(todoyu.png) repeat-x 0 -700px
+	background:transparent url(todoyu.png) repeat-x 0 -700px;
 }
 
 .dialog_ne {
-	background:transparent url(todoyu.png) no-repeat 0 -755px
+	background:transparent url(todoyu.png) no-repeat -1px -750px;
 }
 
 .dialog_e,.dialog_w {
-	width:2px
+	width:2px;
 }
 
 .dialog_e {
-	background:transparent url(todoyurepeaty.png) repeat-y -41px 0
+	background:transparent url(todoyurepeaty.png) repeat-y -41px 0;
 }
 
 .dialog_w {
-	background:transparent url(todoyurepeaty.png) repeat-y 0 0
+	background:transparent url(todoyurepeaty.png) repeat-y 0 0;
 }
 
 .dialog_sw,.dialog_s,.dialog_se,.dialog_sizer {
-	height:19px
+	height:19px;
 }
 
 .dialog_sw {
-	background:transparent url(todoyu.png) no-repeat 0 0
+	background:transparent url(todoyu.png) no-repeat 0 0;
 }
 
 .dialog_s {
-	background:transparent url(todoyu.png) repeat-x 0 -51px
+	background:transparent url(todoyu.png) repeat-x 0 -51px;
 }
 
 .dialog_se {
-	background:transparent url(todoyu.png) no-repeat 0 -153px
+	background:transparent url(todoyu.png) no-repeat 0 -153px;
 }
 
 .dialog_sizer {
 	background:transparent url(todoyu.png) no-repeat 0 -594px;
-	cursor:se-resize
+	cursor:se-resize;
 }
 
 .dialog_close,
@@ -73,96 +73,94 @@
 	width:14px;
 	top:5px;
 	cursor:pointer;
-	z-index:2000
+	z-index:2000;
 }
 
 .dialog_close,
 .dialog_title {
-	height:14px
+	height:14px;
 }
 
 .dialog_close {
 	background:transparent url(todoyu.png) no-repeat 0 -320px;
-	right:3px
+	right:5px;
 }
 
 .dialog_close,
 .dialog_minimize,
 .dialog_maximize,
 .wired_frame,.dialog {
-	position:absolute
+	position:absolute;
 }
 
 .dialog_minimize,
 .dialog_maximize {
-	height:15px
+	height:14px;
 }
 
 .dialog_minimize {
 	background:transparent url(todoyu.png) no-repeat 0 -459px;
-	right:17px	/* 31px */
+	right:33px;
 }
 
 .dialog_maximize {
-	display:none;
-/*	background:transparent url(todoyu.png) no-repeat 0 -413px;
-	right:17px
-*/
+	background:transparent url(todoyu.png) no-repeat 0 -413px;
+	right:17px;
 }
 
 .dialog_title {
-	font:11px tahoma,arial,sans-serif;
+	font:11px arial,sans-serif;
 	float:left;
 	margin:5px 0 -5px 0;
 	letter-spacing:0.4px;
+	font-weight:bold;
 	text-align:left;
 	text-transform:uppercase;
-	color:#000
+	color:#151614;
 }
 
 .dialog_title,.dialog table.table_window {
-	width:100%
+	width:100%;
 }
 
 .dialog_content {
 	font:10px tahoma,arial,sans-serif;
 	background:#f6f8f1;
-	overflow:auto;
-	color:#ddd
+	color:#ddd;
 }
 
 .bottom_draggable,.top_draggable {
-	cursor:move
+	cursor:move;
 }
 
 .status_bar input,.status_bar {
-	font-size:12px
+	font-size:12px;
 }
 
 .wired_frame,.dialog {
-	display:block
+	display:block;
 }
 
 .wired_frame {
-	border:1px #000 dashed
+	border:1px #000 dashed;
 }
 
 .dialog {
-	z-index:1900
+	z-index:1900;
 }
 
 .dialog table.table_window {
 	border-collapse:collapse;
 	border-spacing:0;
-	margin:0
+	margin:0;
 }
 
 .dialog table.table_window,
 .dialog table.table_window th,
 .dialog table.table_window td {
-	padding:0
+	padding:0;
 }
 
 .dialog .title_window {
-	-moz-user-select:none
+	-moz-user-select:none;
 }
