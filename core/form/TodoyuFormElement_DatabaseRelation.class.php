@@ -83,6 +83,8 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 			// Records template data
 		$data['records']	= $this->getRecordsTemplateData();
 
+//		TodoyuDebug::printInFirebug($data, 'data');
+
 			// Records general information
 		$data['fieldname']	= $this->getName();
 		$data['formname']	= $this->getForm()->getName();
@@ -143,7 +145,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$recordData	= $this->getRecord($index);
 		$idRecord	= intval($recordData['id']);
 
-//		TodoyuDebug::printInFirebug($idRecord);
+//		TodoyuDebug::printInFirebug($recordData, '$recordData');
 
 			// Construct form object
 		$recordForm	= TodoyuFormManager::getForm($xmlPath, $idRecord);
