@@ -28,21 +28,3 @@
 	text-align:left;
 	font-size:10px;
 }
-
-#quickinfo dt.typeIcon {
-	background:url(../img/quickinfo.png) no-repeat 4px 2px;
-}
-
-/*
-#quickinfo dt.userIcon {
-	background:url(../img/quickinfo.png) no-repeat 4px -57px;
-}
-
-#quickinfo dt.usersIcon {
-	background:url(../img/quickinfo.png) no-repeat 4px -30px;
-}
-*/
-
-#quickinfo dt.emailIcon {
-	background:url(../img/quickinfo.png) no-repeat 4px -87px;
-}

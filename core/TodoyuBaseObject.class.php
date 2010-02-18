@@ -200,11 +200,11 @@ class TodoyuBaseObject implements ArrayAccess {
 	 * @param	String		$type
 	 * @return	TodoyuPerson
 	 */
-	public function getUser($type) {
-		$idUser = $this->getUserID($type);
+	public function getPerson($type) {
+		$idPerson = $this->getPersonID($type);
 
-		if( $idUser !== false ) {
-			return new TodoyuPerson($idUser);
+		if( $idPerson !== false ) {
+			return new TodoyuPerson($idPerson);
 		} else {
 			return false;
 		}

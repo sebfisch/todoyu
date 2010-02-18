@@ -401,7 +401,7 @@ class TodoyuFormValidator {
 			return true;
 		}
 
-		$checks		= $GLOBALS['CONFIG']['EXT']['user']['isGoodPassword'];
+		$checks		= $GLOBALS['CONFIG']['goodPassword'];
 		$validator	= new TodoyuPasswordValidator($checks);
 
 		if( $validator->validate($pass) === false ) {

@@ -54,9 +54,9 @@ function findLabel($label, $plain = false, $language = null) {
 
 
 /**
- * Get user ID. If parameter is not set or 0, get the current users ID
+ * Get person ID. If parameter is not set or 0, get the current person ID
  *
- * @param	Integer		$idUser
+ * @param	Integer		$idPerson
  * @return	Integer
  */
 function personid($idPerson = 0) {
@@ -68,7 +68,7 @@ function personid($idPerson = 0) {
 
 
 /**
- * Shortcut to current user object
+ * Shortcut to current person object
  *
  * @return	TodoyuPerson
  */
@@ -166,7 +166,7 @@ function allowedAny($extKey, $rightsList) {
 
 
 /**
- * Restrict current request to users who have the right
+ * Restrict current request to persons who have the right
  * Stop script if right is not set
  *
  * @param	String		$extKey

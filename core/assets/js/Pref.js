@@ -27,7 +27,7 @@ Todoyu.Pref = {
 
 
 	/**
-	 * Save user preference (AJAX)
+	 * Save preference (AJAX)
 	 *
 	 *	@param	unknown_type	ext
 	 *	@param	unknown_type	action
@@ -56,7 +56,7 @@ Todoyu.Pref = {
 
 
 	/**
-	 * Get user preference (AJAX)
+	 * Get preference (AJAX)
 	 *
 	 *	@param	String	ext
 	 *	@param	String	preference

@@ -25,50 +25,18 @@ Todoyu.QuickInfo = {
 	cache:		{},
 
 	template:	null,
-	
+
 	loading:	false,
-	
+
 	hidden:		false,
 
 
 
 	/**
-	 * Init user quickinfo: evoke insertion of quickinfo element
+	 * Init quickinfo
 	 */
-	init: function(subTypes, install) {
+	init: function() {
 		this.insertQuickInfoElement(this.popupID);
-
-		this.uninstallObservers(subTypes);
-
-		if( install === true ) {
-			this.installObservers(subTypes);
-		}
-	},
-
-
-
-	/**
-	 * Install element observers on: user elements.
-	 * 
-	 * @param	Array	subTypes
-	 */
-	installObservers: function(subTypes) {
-		subTypes.each(function(subType){
-			subType.installObservers();
-		});
-	},
-
-
-
-	/**
-	 * Uninstall quickinfo element observers
-	 * 
-	 * @param	Array	subTypes
-	 */
-	uninstallObservers: function(subTypes) {
-		subTypes.each(function(subType){
-			subType.uninstallObservers();
-		});
 	},
 
 
@@ -98,7 +66,7 @@ Todoyu.QuickInfo = {
 			y -= 12;
 
 			var popupWidth	= $(this.popupID).getDimensions()['width'];
-					
+
 			if ( x + 20 > window.innerWidth - popupWidth) {
 				x = x - popupWidth - 20;
 			}
@@ -114,9 +82,9 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Update quick info element style to given position and set it visible
-	 * 
+	 *
 	 * @param	String		extension
-	 * @param	String		type			'event', 'holiday', 'user' etc.
+	 * @param	String		type			'event', 'holiday', 'person' etc.
 	 * @param	String		key
 	 * @param	Integer		mouseX
 	 * @param	Integer		mouseY
@@ -132,7 +100,7 @@ Todoyu.QuickInfo = {
 		this.loading = true;
 
 		if( this.isCached(cacheID) ) {
-				// Show cached 
+				// Show cached
 			this.updatePopup(this.getFromCache(cacheID));
 			this.showPopUp(mouseX, mouseY);
 			this.loading = false;
@@ -146,11 +114,11 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Hide quick-info tooltip
-	 * 
+	 *
 	 * @param	Boolean		isHidden
 	 * @return	Boolean
 	 */
-	hide: function() {	
+	hide: function() {
 		if ( $(this.popupID) ) {
 			$(this.popupID).hide();
 
@@ -163,14 +131,14 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Evoke loading of quickinfo tooltip content
-	 * 
+	 *
 	 * @param	String	extension		todoyu extension to provide the controller
-	 * @param	String	type			'event' / 'holiday' / 'user', etc.
+	 * @param	String	type			'event' / 'holiday' / 'person', etc.
 	 * @param	String	key
 	 * @param	Integer	mouseX
 	 * @param	Integer	mouseY
 	 */
-	loadQuickInfo: function(extension, type, key, mouseX, mouseY) {		
+	loadQuickInfo: function(extension, type, key, mouseX, mouseY) {
 		var	url		= Todoyu.getUrl(extension, 'quickinfo');
 		var options	= {
 			'parameters': {
@@ -187,7 +155,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Evoked upon quickinfo having been loaded, shows the quickinfo tooltip
-	 * 
+	 *
 	 * @param	String	type
 	 * @param	String	key
 	 * @param	Integer	x
@@ -195,9 +163,9 @@ Todoyu.QuickInfo = {
 	 * @param	Object	response
 	 */
 	onQuickInfoLoaded: function(extension, type, key, x, y, response) {
-		this.loading = false;		
+		this.loading = false;
 		var quickInfo= this.buildQuickInfo(response.responseJSON);
-		
+
 		this.addToCache(type + key, quickInfo);
 
 		if ( ! this.hidden ) {
@@ -209,7 +177,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Build html code based on json data
-	 * 
+	 *
 	 * @param	JSON	json
 	 */
 	buildQuickInfo: function(json) {
@@ -225,9 +193,9 @@ Todoyu.QuickInfo = {
 
 		return '<dl>' + content + '</dl>';
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Update popup content
 	 *

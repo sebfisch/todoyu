@@ -87,4 +87,12 @@ TodoyuHookManager::registerHook('core', 'onload', 'TodoyuRequest::setDefaultRequ
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuCookieLogin::tryCookieLogin', 20);
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::checkLoginStatus', 1000);
 
+
+$CONFIG['goodPassword'] = array(
+	'minLength'		=> 8,
+	'hasNumbers'	=> true,
+	'hasLowerCase'	=> true,
+	'hasUpperCase'	=> true
+);
+
 ?>
