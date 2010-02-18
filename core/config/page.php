@@ -33,7 +33,7 @@ if( TodoyuAuth::isLoggedIn() ) {
 		// Register ajax loader headlet which indicated acitve ajax requests
 	TodoyuHeadletManager::registerRight('TodoyuHeadletAjaxLoader', 150);
 
-	TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.QuickCreate.init()');
+	TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.QuickCreate.init.bind(Todoyu.Headlet.QuickCreate)', 100);
 
 		// Register meta menu headlet
 	//TodoyuHeadletManager::registerRight('TodoyuHeadletMetaMenu', 80);

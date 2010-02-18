@@ -61,7 +61,7 @@ class TodoyuPage {
 
 		self::addMetatag('Content-Type', $GLOBALS['CONFIG']['FE']['ContentType']);
 
-		self::addJsOnloadedFunction('Todoyu.init.bind(Todoyu)');
+		self::addJsOnloadedFunction('Todoyu.init.bind(Todoyu)', 1);
 
 		self::setBodyID(EXT);
 	}
@@ -137,8 +137,12 @@ class TodoyuPage {
 	 * @param	Stirng		$name
 	 * @param	Mixed		$value
 	 */
-	public static function add($name, $value) {
-		self::$data[$name][] = $value;
+	public static function add($name, $value, $position = 100) {
+		while( is_array(self::$data[$name]) && array_key_exists($position, self::$data[$name]) ) {
+			$position++;
+		}
+
+		self::$data[$name][$position] = $value;
 	}
 
 
@@ -405,9 +409,10 @@ class TodoyuPage {
 	 * Add inline javascript code
 	 *
 	 * @param	String		$jsCode
+	 * @param	Integer		$position
 	 */
-	public static function addJsInlines($jsCode) {
-		self::add('jsInlines', $jsCode);
+	public static function addJsInlines($jsCode, $position = 100) {
+		self::add('jsInlines', $jsCode, $position);
 	}
 
 
@@ -427,9 +432,10 @@ class TodoyuPage {
 	 * Add JS functions which shall be called on dom loaded
 	 *
 	 * @param	String		$function
+	 * @param	Integer		$position
 	 */
-	public static function addJsOnloadedFunction($function) {
-		self::addJsInlines('document.observe("dom:loaded", ' . $function . ');');
+	public static function addJsOnloadedFunction($function, $position = 100) {
+		self::addJsInlines('document.observe("dom:loaded", ' . $function . ');', $position);
 	}
 
 
@@ -472,8 +478,16 @@ class TodoyuPage {
 
 
 	/**
+	 * Sort inline JavaScripts by position (key)
+	 */
+	public static function sortJSinlines() {
+		ksort(self::$data['jsInlines']);
+	}
+
+
+
+	/**
 	 * Add javascripts and stylesheets to the page object variables
-	 *
 	 */
 	private static function addJavascriptAndStylesheetsToPage() {
 		TodoyuPageAssetManager::addAssetsToPage();
@@ -516,6 +530,8 @@ class TodoyuPage {
 
 			// Add javascripts and stylesheet to page
 		self::addJavascriptAndStylesheetsToPage();
+
+		self::sortJSinlines();
 
 		return render(self::$template, self::$data);
 	}
