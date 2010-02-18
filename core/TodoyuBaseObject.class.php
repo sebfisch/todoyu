@@ -165,7 +165,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	 * @param	String		$type
 	 * @return	Integer
 	 */
-	public function getUserID($type) {
+	public function getPersonID($type) {
 		$dataKey = 'id_person_' . strtolower($type);
 
 		if( array_key_exists($dataKey, $this->data) ) {
@@ -183,11 +183,11 @@ class TodoyuBaseObject implements ArrayAccess {
 	 * @param	String		$type
 	 * @return	Array
 	 */
-	public function getUserArray($type) {
-		$idUser = $this->getUserID($type);
+	public function getPersonData($type) {
+		$idPerson = $this->getPersonID($type);
 
 		if( $idUser !== false ) {
-			return Todoyu::db()->getRecord('ext_contact_person', $idUser);
+			return TodoyuRecordManager::getRecordData('ext_contact_person', $idPerson);
 		} else {
 			return false;
 		}
