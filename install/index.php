@@ -36,8 +36,6 @@ include_once('install/config/steps.php');
 include_once('install/config/config.php');
 
 
-
-
 	// Check if _ENABLE file is available (installer has finished). Redirect to login
 if( ! TodoyuInstaller::isEnabled() ) {
 	TodoyuInstallerManager::finishInstallerAndJumpToLogin();
@@ -45,7 +43,10 @@ if( ! TodoyuInstaller::isEnabled() ) {
 }
 
 	// Make sure the user is logged out
-TodoyuSession::remove('userid');
+TodoyuSession::remove('person');
+unset($_COOKIE['todoyulogin']);
+TodoyuCookieLogin::removeRemainLoginCookie();
+
 
 	// Load default init script
 require_once('core/inc/init.php');

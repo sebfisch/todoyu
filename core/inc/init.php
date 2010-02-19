@@ -33,6 +33,7 @@ date_default_timezone_set($CONFIG['LOCALE']['defaultTimezone']);
 	// Init basic classes
 Todoyu::init();
 
+
 	// Register core localization file
 TodoyuLanguage::register('core', PATH_CORE . '/locale/core.xml');
 TodoyuLanguage::register('date', PATH_CORE . '/locale/date.xml');
@@ -48,9 +49,10 @@ TodoyuLanguage::register('static_currency', PATH_CORE . '/locale/static_currency
 TodoyuLanguage::register('static_territory', PATH_CORE . '/locale/static_territory.xml');
 TodoyuLanguage::register('static_language', PATH_CORE . '/locale/static_language.xml');
 
+
+
 	// Load extensions
 require( PATH_CORE . '/inc/load_extensions.php' );
-
 	// Custom config overrides
 require_once( PATH_LOCALCONF . '/override.php');
 

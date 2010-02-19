@@ -191,7 +191,7 @@ INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_pers
 -- Data for Table `ext_project_mm_project_person`
 --
 
-INSERT INTO `ext_project_mm_project_person` (`id`, `id_project`, `id_person`, `id_personrole`, `comment`) VALUES
+INSERT INTO `ext_project_mm_project_person` (`id`, `id_project`, `id_person`, `id_role`, `comment`) VALUES
 (5, 2, 2, 2, ''),
 (4, 2, 3, 1, ''),
 (6, 2, 1, 1, ''),
@@ -534,24 +534,24 @@ INSERT INTO `ext_contact_address` (`id`, `date_create`, `date_update`, `id_perso
 -- Data for Table `ext_contact_company`
 --
 
-INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `is_internal`, `ext_projectbilling_reduction`) VALUES
-(1, 1246886240, 1264500976, 1, 1, 'Demo Customer', 'Demo', 0, 101, 0, 0, 0),
-(3, 1246888856, 1264500988, 1, 1, 'Random Company', 'Rand', 0, 607, 0, 0, 0),
-(5, 1254213151, 1264500991, 1, 1, 'Snowflake Productions', 'Snowflake', 0, 1136156400, 0, 1, 0),
-(6, 1254213723, 1264500981, 1, 1, 'OneStepLeft Movie Factory', 'Movie Factory', 0, 1189548000, 0, 0, 0),
-(7, 1264516981, 1264580466, 1, 1, 'Test', '', 0, 0, 0, 0, 0),
-(8, 1264581712, 1264581712, 1, 0, 'Eisberg GmbH', 'Eisberg', 0, 1262300400, 0, 0, 0),
-(9, 1264581965, 1264584253, 1, 0, 'Gripgrap Communications', 'Gripgrap', 0, 1262300400, 0, 0, 0),
-(10, 1264582231, 1264694791, 1, 0, 'Transmetric Co.', 'Tansmetric', 0, 1217541600, 0, 0, 0),
-(11, 1264582333, 1264694342, 1, 0, 'ABC-Tec', 'ABCT', 0, 1262300400, 0, 0, 0),
-(12, 1264582503, 1264582503, 1, 0, 'Flikflak', 'Flikflak', 0, 1262300400, 0, 0, 0),
-(13, 1264583324, 1264694440, 1, 0, 'Inovation Inc.', 'II', 0, 978303600, 0, 0, 0),
-(14, 1264583514, 1264692917, 1, 0, 'Goodmonth', 'Goodmonth', 0, 1262300400, 0, 0, 0),
-(15, 1264583707, 1264694209, 1, 0, 'Sugarion', 'sugarion', 0, 1262300400, 0, 0, 0),
-(16, 1264583917, 1264583927, 1, 0, 'Trava Line', 'Trava', 0, 1262300400, 0, 0, 0),
-(17, 1264584243, 1264694660, 1, 0, 'Greenflag Ltd.', 'GL', 0, 0, 0, 0, 0),
-(18, 1264587852, 1264778331, 1, 0, 'snowman production', 'smp', 0, 1262300400, 0, 1, 0),
-(19, 1264696524, 1264696717, 1, 0, 'todoyu', '', 0, 1259622000, 0, 1, 0);
+INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_internal`) VALUES
+(1, 1246886240, 1264500976, 1, 1, 'Demo Customer', 'Demo', 0, 101, 0),
+(3, 1246888856, 1264500988, 1, 1, 'Random Company', 'Rand', 0, 607, 0),
+(5, 1254213151, 1264500991, 1, 1, 'Snowflake Productions', 'Snowflake', 0, 1136156400, 1),
+(6, 1254213723, 1264500981, 1, 1, 'OneStepLeft Movie Factory', 'Movie Factory', 0, 1189548000, 0),
+(7, 1264516981, 1264580466, 1, 1, 'Test', '', 0, 0, 0),
+(8, 1264581712, 1264581712, 1, 0, 'Eisberg GmbH', 'Eisberg', 0, 1262300400, 0),
+(9, 1264581965, 1264584253, 1, 0, 'Gripgrap Communications', 'Gripgrap', 0, 1262300400, 0),
+(10, 1264582231, 1264694791, 1, 0, 'Transmetric Co.', 'Tansmetric', 0, 1217541600, 0),
+(11, 1264582333, 1264694342, 1, 0, 'ABC-Tec', 'ABCT', 0, 1262300400, 0),
+(12, 1264582503, 1264582503, 1, 0, 'Flikflak', 'Flikflak', 0, 1262300400, 0),
+(13, 1264583324, 1264694440, 1, 0, 'Inovation Inc.', 'II', 0, 978303600, 0),
+(14, 1264583514, 1264692917, 1, 0, 'Goodmonth', 'Goodmonth', 0, 1262300400, 0),
+(15, 1264583707, 1264694209, 1, 0, 'Sugarion', 'sugarion', 0, 1262300400, 0),
+(16, 1264583917, 1264583927, 1, 0, 'Trava Line', 'Trava', 0, 1262300400, 0),
+(17, 1264584243, 1264694660, 1, 0, 'Greenflag Ltd.', 'GL', 0, 0, 0),
+(18, 1264587852, 1264778331, 1, 0, 'snowman production', 'smp', 0, 1262300400, 1),
+(19, 1264696524, 1264696717, 1, 0, 'todoyu', '', 0, 1259622000, 1);
 
 --
 -- Data for Table `ext_contact_contactinfo`
@@ -629,18 +629,18 @@ INSERT INTO `ext_contact_contactinfo` (`id`, `date_create`, `date_update`, `id_p
 --
 
 INSERT INTO `ext_contact_contactinfotype` (`id`, `deleted`, `category`, `key`, `title`) VALUES
-(1, 0, 1, 'email_business', 'LLL:user.contactinfo.email_business'),
-(2, 0, 2, 'tel_private', 'LLL:user.contactinfo.tel_private'),
-(3, 0, 2, 'tel_exchange', 'LLL:user.contactinfo.tel_exchange'),
-(4, 0, 2, 'tel_business', 'LLL:user.contactinfo.tel_business'),
-(5, 0, 1, 'email_private', 'LLL:user.contactinfo.email_private'),
-(6, 0, 2, 'mobile_business', 'LLL:user.contactinfo.mobile_business'),
-(7, 0, 2, 'fax_private', 'LLL:user.contactinfo.fax_private'),
-(8, 0, 2, 'fax_business', 'LLL:user.contactinfo.fax_business'),
-(9, 0, 2, 'mobile_private', 'LLL:user.contactinfo.mobile_private'),
-(10, 0, 2, 'fax_exchange', 'LLL:user.contactinfo.fax_exchange'),
-(11, 0, 3, 'website', 'LLL:user.contactinfo.website'),
-(12, 0, 3, 'skype', 'LLL:user.contactinfo.skype');
+(1, 0, 1, 'email_business', 'LLL:contact.contactinfo.type.email_business'),
+(2, 0, 2, 'tel_private', 'LLL:contact.contactinfo.type.tel_private'),
+(3, 0, 2, 'tel_exchange', 'LLL:contact.contactinfo.type.tel_exchange'),
+(4, 0, 2, 'tel_business', 'LLL:contact.contactinfo.type.tel_business'),
+(5, 0, 1, 'email_private', 'LLL:contact.contactinfo.type.email_private'),
+(6, 0, 2, 'mobile_business', 'LLL:contact.contactinfo.type.mobile_business'),
+(7, 0, 2, 'fax_private', 'LLL:contact.contactinfo.type.fax_private'),
+(8, 0, 2, 'fax_business', 'LLL:contact.contactinfo.type.fax_business'),
+(9, 0, 2, 'mobile_private', 'LLL:contact.contactinfo.type.mobile_private'),
+(10, 0, 2, 'fax_exchange', 'LLL:contact.contactinfo.type.fax_exchange'),
+(11, 0, 3, 'website', 'LLL:contact.contactinfo.type.website'),
+(12, 0, 3, 'skype', 'LLL:contact.contactinfo.type.skype');
 
 --
 -- Data for Table `system_role`
@@ -653,10 +653,6 @@ INSERT INTO `system_role` (`id`, `date_create`, `date_update`, `id_person_create
 (3, 1264762124, 0, 1, 0, 'Marketing', 1, ''),
 (4, 1264762153, 0, 1, 0, 'Employee', 1, 'Our staff'),
 (6, 1264779985, 1264780028, 12, 1, 'ssssssssssss', 1, '');
-
---
--- Data for Table `ext_user_holiday`
---
 
 
 --
@@ -671,10 +667,10 @@ INSERT INTO `ext_contact_jobtype` (`id`, `deleted`, `title`) VALUES
 (5, 0, 'IT-Manager');
 
 --
--- Data for Table `ext_user_mm_company_address`
+-- Data for Table `ext_contact_mm_company_address`
 --
 
-INSERT INTO `ext_user_mm_company_address` (`id`, `id_company`, `id_address`) VALUES
+INSERT INTO `ext_contact_mm_company_address` (`id`, `id_company`, `id_address`) VALUES
 (1, 8, 1),
 (16, 9, 4),
 (15, 9, 3),
@@ -691,10 +687,10 @@ INSERT INTO `ext_user_mm_company_address` (`id`, `id_company`, `id_address`) VAL
 (35, 19, 15);
 
 --
--- Data for Table `ext_user_mm_company_contactinfo`
+-- Data for Table `ext_contact_mm_company_contactinfo`
 --
 
-INSERT INTO `ext_user_mm_company_contactinfo` (`id`, `id_company`, `id_contactinfo`) VALUES
+INSERT INTO `ext_contact_mm_company_contactinfo` (`id`, `id_company`, `id_contactinfo`) VALUES
 (1, 5, 1),
 (2, 5, 2),
 (3, 5, 3),
@@ -733,10 +729,10 @@ INSERT INTO `ext_user_mm_company_contactinfo` (`id`, `id_company`, `id_contactin
 (83, 19, 65);
 
 --
--- Data for Table `ext_user_mm_company_user`
+-- Data for Table `ext_contact_mm_company_person`
 --
 
-INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_person`, `id_workaddress`, `id_jobtype`) VALUES
+INSERT INTO `ext_contact_mm_company_person` (`id`, `id_company`, `id_person`, `id_workaddress`, `id_jobtype`) VALUES
 (73, 19, 18, 15, 4),
 (2, 6, 2, 0, 0),
 (4, 5, 2, 0, 0),
@@ -759,18 +755,18 @@ INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_person`, `id_wor
 (71, 19, 1, 15, 4);
 
 --
--- Data for Table `ext_user_mm_user_address`
+-- Data for Table `ext_contact_mm_person_address`
 --
 
-INSERT INTO `ext_user_mm_user_address` (`id`, `id_person`, `id_address`) VALUES
+INSERT INTO `ext_contact_mm_person_address` (`id`, `id_person`, `id_address`) VALUES
 (4, 14, 13),
 (3, 1, 16);
 
 --
--- Data for Table `ext_user_mm_user_contactinfo`
+-- Data for Table `ext_contact_mm_person_contactinfo`
 --
 
-INSERT INTO `ext_user_mm_user_contactinfo` (`id`, `id_person`, `id_contactinfo`) VALUES
+INSERT INTO `ext_contact_mm_person_contactinfo` (`id`, `id_person`, `id_contactinfo`) VALUES
 (5, 4, 5),
 (17, 5, 35),
 (16, 5, 34),
@@ -801,10 +797,10 @@ INSERT INTO `ext_user_mm_user_contactinfo` (`id`, `id_person`, `id_contactinfo`)
 (38, 16, 64);
 
 --
--- Data for Table `ext_user_mm_user_group`
+-- Data for Table `ext_contact_mm_person_role`
 --
 
-INSERT INTO `ext_user_mm_user_group` (`id`, `id_person`, `id_group`) VALUES
+INSERT INTO `ext_contact_mm_person_role` (`id`, `id_person`, `id_role`) VALUES
 (3, 18, 4),
 (7, 17, 5),
 (6, 12, 2),
@@ -812,15 +808,15 @@ INSERT INTO `ext_user_mm_user_group` (`id`, `id_person`, `id_group`) VALUES
 (12, 6, 1);
 
 --
--- Data for Table `ext_user_panelwidget`
+-- Data for Table `system_panelwidget`
 --
 
 
 --
--- Data for Table `ext_user_preference`
+-- Data for Table `system_preference`
 --
 
-INSERT INTO `ext_user_preference` (`id`, `id_person`, `ext`, `area`, `preference`, `item`, `value`) VALUES
+INSERT INTO `system_preference` (`id`, `id_person`, `ext`, `area`, `preference`, `item`, `value`) VALUES
 (2282, 1, 0, 0, 'tab', 0, 'portal'),
 (2204, 1, 112, 0, 'project', 0, '10'),
 (1806, 1, 106, 0, 'tab', 0, 'person'),
@@ -999,10 +995,10 @@ INSERT INTO `ext_user_preference` (`id`, `id_person`, `ext`, `area`, `preference
 (2200, 1, 112, 0, 'tasktree-task-exp', 0, '149');
 
 --
--- Data for Table `ext_user_right`
+-- Data for Table `system_right`
 --
 
-INSERT INTO `ext_user_right` (`id`, `ext`, `right`, `id_group`) VALUES
+INSERT INTO `system_right` (`id`, `ext`, `right`, `id_role`) VALUES
 (920, 111, 'filterPresetList:manageFilters', 5),
 (917, 111, 'panelwidgets:quicktaskWizard', 4),
 (915, 111, 'general:use', 1),
@@ -1266,10 +1262,10 @@ INSERT INTO `ext_user_right` (`id`, `ext`, `right`, `id_group`) VALUES
 (878, 115, 'panelwidgets:searchFilterList', 1);
 
 --
--- Data for Table `ext_user_user`
+-- Data for Table `ext_contact_person`
 --
 
-INSERT INTO `ext_user_user` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
+INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
 (1, 1246615200, 1264780312, 0, 0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'demo@todoyu.com', 1, 1, 'Bob', 'Thingummy', 'BOTH', 'm', '', '1966-10-05'),
 (2, 1254213351, 1264500957, 1, 1, 'alfred', 'a55e28b5514b1b1292a9018549edc271', 'alfred345KJHFSD', 1, 1, 'Alfred', 'Hitchcock', 'ALHI', 'm', '', '1899-08-13'),
 (3, 1254213483, 1264500951, 1, 1, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20'),

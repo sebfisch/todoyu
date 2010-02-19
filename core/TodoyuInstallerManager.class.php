@@ -293,6 +293,9 @@ class TodoyuInstallerManager {
 
 				case 'beta3':
 					self::updateBeta3ToRc1();
+
+				case 'rc1':
+					self::updateRc1ToRc2();
 			}
 
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
@@ -414,6 +417,18 @@ class TodoyuInstallerManager {
 	 */
 	private static function updateBeta3ToRc1() {
 		$updateFile	= 'install/config/db/update_beta3_to_rc1.sql';
+
+		$numQueries	= TodoyuSQLManager::executeQueriesFromFile($updateFile);
+	}
+
+
+
+	/**
+	 * Update the database from beta3 to rc1
+	 *
+	 */
+	private static function updateRc1ToRc2() {
+		$updateFile	= 'install/config/db/update_rc1_to_rc2.sql';
 
 		$numQueries	= TodoyuSQLManager::executeQueriesFromFile($updateFile);
 	}

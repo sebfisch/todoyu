@@ -46,16 +46,16 @@ class Todoyu {
 	/**
 	 * Log object instance
 	 *
-	 * @var	Logger
+	 * @var	TodoyuLogger
 	 */
 	private static $logger;
 
 	/**
-	 * Currently logged in user
+	 * Currently logged in person
 	 *
-	 * @var	User
+	 * @var	TodoyuPerson
 	 */
-	private static $user;
+	private static $person;
 
 
 
@@ -176,11 +176,11 @@ class Todoyu {
 	 * @return	TodoyuPerson
 	 */
 	public static function person() {
-		if( is_null(self::$user) ) {
-			self::$user = TodoyuAuth::getPerson();
+		if( is_null(self::$person) ) {
+			self::$person = TodoyuAuth::getPerson();
 		}
 
-		return self::$user;
+		return self::$person;
 	}
 
 
