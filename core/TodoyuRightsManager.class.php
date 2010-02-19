@@ -201,27 +201,28 @@ class TodoyuRightsManager {
 	 * @param	Array	$groups
 	 * @return	Array
 	 */
-	public static function getExtGroupRights($ext, array $groups = array()) {
+	public static function getExtRoleRights($ext, array $roles = array()) {
 		$extID	= TodoyuExtensions::getExtID($ext);
-		$groups	= TodoyuArray::intval($groups, true, true);
+		$roles	= TodoyuArray::intval($roles, true, true);
 
-		$fields	= '`right`, id_role';
+		$fields	= '	`right`,
+					id_role';
 		$table	= self::TABLE;
 		$where	= '	ext		= ' . $extID;
 
-		if( sizeof($groups) > 0 ) {
-			$where .= ' AND id_role IN(' . implode(',', $groups) . ')';
+		if( sizeof($roles) > 0 ) {
+			$where .= ' AND id_role IN(' . implode(',', $roles) . ')';
 		}
 
 		$rights	= Todoyu::db()->getArray($fields, $table, $where);
 
-		$groupRights = array();
+		$roleRights = array();
 
 		foreach($rights as $right) {
-			$groupRights[$right['id_role']][] = $right['right'];
+			$roleRights[$right['id_role']][] = $right['right'];
 		}
 
-		return $groupRights;
+		return $roleRights;
 	}
 
 

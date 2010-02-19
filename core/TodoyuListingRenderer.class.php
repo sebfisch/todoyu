@@ -42,6 +42,11 @@ class TodoyuListingRenderer {
 		$size		= intval($config['size']);
 		$searchWord	= trim($searchWord);
 
+			// Get default size if not set
+		if( $size === 0 ) {
+			$size = $GLOBALS['CONFIG']['LIST']['size'];
+		}
+
 			// Disable paging if searching
 		if( $searchWord !== '' ) {
 			$size	= 100;

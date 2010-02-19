@@ -88,7 +88,7 @@ class TodoyuRole extends TodoyuBaseObject {
 	 *
 	 */
 	private function loadForeignData()  {
-		$this->data['users']	= TodoyuRoleManager::getPersonData($this->id);
+		$this->data['persons']	= TodoyuRoleManager::getPersonData($this->id);
 	}
 
 

@@ -14,7 +14,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Data for Table `ext_assets_asset`
 --
 
-INSERT INTO `ext_assets_asset` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_parent`, `parenttype`, `is_public`, `file_ext`, `file_storage`, `file_name`, `file_size`, `file_mime`, `file_mime_sub`) VALUES
+INSERT INTO `ext_assets_asset` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `id_parent`, `parenttype`, `is_public`, `file_ext`, `file_storage`, `file_name`, `file_size`, `file_mime`, `file_mime_sub`) VALUES
 (1, 1264699957, 1264699957, 17, 0, 60, 1, 0, 'jpg', 'task/60/1264699957_humor_cartoon_42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 'humor,cartoon-42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 31922, 'image', 'jpeg'),
 (2, 1264700333, 1264700333, 17, 0, 106, 1, 0, 'jpg', 'task/106/1264700333_humor_cartoon_42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 'humor,cartoon-42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 31922, 'image', 'jpeg'),
 (3, 1264777318, 1264777318, 18, 0, 60, 1, 1, 'jpg', 'task/60/1264777318_startsprung.jpg', 'startsprung.jpg', 2629, 'image', 'jpeg'),
@@ -24,7 +24,7 @@ INSERT INTO `ext_assets_asset` (`id`, `date_create`, `date_update`, `id_user_cre
 -- Data for Table `ext_bookmark_bookmark`
 --
 
-INSERT INTO `ext_bookmark_bookmark` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `type`, `id_item`) VALUES
+INSERT INTO `ext_bookmark_bookmark` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `type`, `id_item`) VALUES
 (1, 1254233035, 0, 1, 0, 1, 2),
 (2, 1264768629, 0, 1, 0, 1, 115),
 (3, 1264779035, 0, 1, 0, 1, 60),
@@ -42,7 +42,7 @@ INSERT INTO `ext_bookmark_bookmark` (`id`, `date_create`, `date_update`, `id_use
 -- Data for Table `ext_calendar_event`
 --
 
-INSERT INTO `ext_calendar_event` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_project`, `id_task`, `eventtype`, `title`, `description`, `place`, `date_start`, `date_end`, `is_private`, `is_dayevent`, `is_public`) VALUES
+INSERT INTO `ext_calendar_event` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `id_project`, `id_task`, `eventtype`, `title`, `description`, `place`, `date_start`, `date_end`, `is_private`, `is_dayevent`, `is_public`) VALUES
 (1, 1264697556, 1264697592, 1, 0, 0, 0, 1, 'My Reminder', '', '', 1264753800, 1264757400, 0, 0, 0),
 (2, 1264700473, 1264700482, 1, 0, 0, 0, 6, 'Meet and Greet', '', 'Long silver beach', 1266390000, 1266393600, 1, 1, 1),
 (3, 1264700497, 1264700497, 1, 0, 0, 0, 1, 'Another one', '', '', 1266390000, 1266393600, 0, 1, 0),
@@ -54,7 +54,7 @@ INSERT INTO `ext_calendar_event` (`id`, `date_create`, `date_update`, `id_user_c
 -- Data for Table `ext_calendar_holiday`
 --
 
-INSERT INTO `ext_calendar_holiday` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `date`, `title`, `description`, `workingtime`) VALUES
+INSERT INTO `ext_calendar_holiday` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `date`, `title`, `description`, `workingtime`) VALUES
 (39, 1220364646, 1220364646, 381, 0, 1230764400, 'Neujahr', '', 0),
 (40, 1220364684, 1220364684, 381, 0, 1230850800, 'Berchtoldstag', '', 0),
 (41, 1220364734, 1220364734, 381, 0, 1239314400, 'Karfreitag', '', 0),
@@ -75,7 +75,7 @@ INSERT INTO `ext_calendar_holiday` (`id`, `date_create`, `date_update`, `id_user
 -- Data for Table `ext_calendar_holidayset`
 --
 
-INSERT INTO `ext_calendar_holidayset` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `description`) VALUES
+INSERT INTO `ext_calendar_holidayset` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `description`) VALUES
 (1, 0, 1244290547, 0, 0, 'Zürich', 'Switzerland'),
 (2, 0, 1244290548, 0, 0, 'Bern', 'Switzerland'),
 (3, 0, 0, 0, 0, 'USA', 'United States'),
@@ -85,7 +85,7 @@ INSERT INTO `ext_calendar_holidayset` (`id`, `date_create`, `date_update`, `id_u
 -- Data for Table `ext_calendar_mm_event_person`
 --
 
-INSERT INTO `ext_calendar_mm_event_person` (`id`, `id_event`, `id_user`, `is_acknowledged`) VALUES
+INSERT INTO `ext_calendar_mm_event_person` (`id`, `id_event`, `id_person`, `is_acknowledged`) VALUES
 (8, 1, 17, 0),
 (7, 1, 1, 1),
 (12, 2, 6, 0),
@@ -146,7 +146,7 @@ INSERT INTO `ext_calendar_mm_holiday_holidayset` (`id`, `id_holiday`, `id_holida
 -- Data for Table `ext_comment_comment`
 --
 
-INSERT INTO `ext_comment_comment` (`id`, `date_update`, `date_create`, `deleted`, `id_user_create`, `id_task`, `comment`, `is_public`) VALUES
+INSERT INTO `ext_comment_comment` (`id`, `date_update`, `date_create`, `deleted`, `id_person_create`, `id_task`, `comment`, `is_public`) VALUES
 (1, 1254233694, 1254233694, 0, 1, 7, '<p>Hallo, schau dir das bitte mal an, wenn moeglich noch Heute</p>', 0),
 (2, 1264692282, 1264692282, 0, 1, 61, '<p>hahah</p>', 0),
 (3, 1264699613, 1264699613, 0, 1, 35, '<p>Hi Bob</p><p>can you start with this taks a bit earlier?</p>', 0),
@@ -165,7 +165,7 @@ INSERT INTO `ext_comment_comment` (`id`, `date_update`, `date_create`, `deleted`
 -- Data for Table `ext_comment_feedback`
 --
 
-INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_user_create`, `id_person_feedback`, `id_comment`, `is_seen`) VALUES
+INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_person_create`, `id_person_feedback`, `id_comment`, `is_seen`) VALUES
 (1, 1254233694, 0, 1, 2, 1, 0),
 (2, 1264699613, 0, 1, 1, 3, 0),
 (3, 1264699947, 0, 17, 14, 4, 0),
@@ -191,7 +191,7 @@ INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_user
 -- Data for Table `ext_project_mm_project_person`
 --
 
-INSERT INTO `ext_project_mm_project_person` (`id`, `id_project`, `id_user`, `id_userrole`, `comment`) VALUES
+INSERT INTO `ext_project_mm_project_person` (`id`, `id_project`, `id_person`, `id_personrole`, `comment`) VALUES
 (5, 2, 2, 2, ''),
 (4, 2, 3, 1, ''),
 (6, 2, 1, 1, ''),
@@ -225,7 +225,7 @@ INSERT INTO `ext_project_mm_project_person` (`id`, `id_project`, `id_user`, `id_
 -- Data for Table `ext_project_project`
 --
 
-INSERT INTO `ext_project_project` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `date_start`, `date_end`, `date_deadline`, `date_finish`, `title`, `description`, `status`, `id_company`, `fixedcosts`, `is_fixedcosts_paid`, `is_fixed`, `id_fixedproject`, `id_rateset`) VALUES
+INSERT INTO `ext_project_project` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `date_start`, `date_end`, `date_deadline`, `date_finish`, `title`, `description`, `status`, `id_company`, `fixedcosts`, `is_fixedcosts_paid`, `is_fixed`, `id_fixedproject`, `id_rateset`) VALUES
 (1, 1246982959, 1246982959, 1, 0, 1246917600, 1264719600, 1264719600, 0, 'My First Project', '<p>This is the first todoyu project.</p>', 3, 4, 0, 0, 0, 0, 0),
 (2, 1254213566, 1264501260, 1, 1, 1254175200, 1262214000, 1262905200, 0, 'Example Project', '<p>This is the project description. This text should contain the relevant data for your project.</p>', 3, 5, 0, 0, 0, 0, 0),
 (3, 1264516992, 1264580417, 1, 1, 1264460400, 1267052400, 1267052400, 0, 'Neues Projekt', '<p>sdfasf</p>', 1, 7, 0, 0, 0, 0, 0),
@@ -245,7 +245,7 @@ INSERT INTO `ext_project_project` (`id`, `date_create`, `date_update`, `id_user_
 -- Data for Table `ext_project_task`
 --
 
-INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `type`, `id_project`, `id_parenttask`, `title`, `description`, `id_user_assigned`, `id_user_owner`, `date_deadline`, `date_start`, `date_end`, `date_finish`, `tasknumber`, `status`, `id_worktype`, `estimated_workload`, `is_estimatedworkload_public`, `is_acknowledged`, `offered_accesslevel`, `is_offered`, `clearance_state`, `is_private`, `is_public`, `sorting`) VALUES
+INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `type`, `id_project`, `id_parenttask`, `title`, `description`, `id_person_assigned`, `id_person_owner`, `date_deadline`, `date_start`, `date_end`, `date_finish`, `tasknumber`, `status`, `id_worktype`, `estimated_workload`, `is_estimatedworkload_public`, `is_acknowledged`, `offered_accesslevel`, `is_offered`, `clearance_state`, `is_private`, `is_public`, `sorting`) VALUES
 (1, 1246983025, 1264498991, 1, 1, 1, 1, 0, 'Projectmanagement', '<p>Projectmanagement</p>', 1, 1, 1264719600, 1246917600, 1264719600, 0, 1, 2, 0, 3600, 0, 1, 0, 0, 0, 0, 0, 1),
 (2, 1254232560, 1264501260, 1, 1, 1, 2, 0, 'Sampletask', '<p>Some random description in the task. Here you should write useful informations about this project</p>', 3, 1, 1256306040, 1254175200, 1256133240, 0, 1, 2, 1, 3600, 0, 1, 0, 0, 0, 0, 0, 2),
 (3, 1254233504, 1264501260, 1, 1, 2, 2, 0, 'Betarelease planen', '<ul><li>Welche Module mÃ¼ssen fehlerfrei laufen</li><li>Welche Module kommen als Debugversion in den Release</li><li>Updatezyklen fÃ¼r Beta Bugfixes festlegen</li></ul>', 3, 3, 1254233040, 1254175200, 1254233040, 0, 2, 2, 1, 10800, 0, 0, 0, 0, 0, 0, 0, 3),
@@ -401,7 +401,7 @@ INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_user_cre
 -- Data for Table `ext_project_role`
 --
 
-INSERT INTO `ext_project_role` (`id`, `date_create`, `id_user_create`, `date_update`, `rolekey`, `title`, `deleted`) VALUES
+INSERT INTO `ext_project_role` (`id`, `date_create`, `id_person_create`, `date_update`, `rolekey`, `title`, `deleted`) VALUES
 (1, 0, 0, 1264696219, 'projectleader', 'Project manager', 0),
 (2, 0, 0, 1264696225, 'developer', 'Developer', 0),
 (3, 0, 0, 0, 'designer', 'Designer', 0),
@@ -412,7 +412,7 @@ INSERT INTO `ext_project_role` (`id`, `date_create`, `id_user_create`, `date_upd
 -- Data for Table `ext_project_worktype`
 --
 
-INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_user_create`, `date_create`, `deleted`, `title`, `type`) VALUES
+INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_person_create`, `date_create`, `deleted`, `title`, `type`) VALUES
 (1, 1254232852, 1, 1254232852, 0, 'Consulting', 0),
 (2, 1254232863, 1, 1254232863, 0, 'Java-Development', 0),
 (3, 1254232867, 1, 1254232867, 0, 'Design', 0),
@@ -425,32 +425,32 @@ INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_user_create`, `date
 -- Data for Table `ext_search_filtercondition`
 --
 
-INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `id_user_create`, `deleted`, `id_set`, `filter`, `value`, `negate`) VALUES
-(7, 0, 0, 0, 0, 1, 'currentUserIsAssigned', '1', 0),
+INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `id_person_create`, `deleted`, `id_set`, `filter`, `value`, `negate`) VALUES
+(7, 0, 0, 0, 0, 1, 'currentPersonAssigned', '1', 0),
 (8, 0, 0, 0, 0, 1, 'status', '2,3', 0),
 (317, 1264779500, 1264779500, 1, 0, 3, 'owner', '17', 0),
-(263, 1264697139, 1264697139, 1, 0, 4, 'currentUserIsUserCreate', '', 0),
+(263, 1264697139, 1264697139, 1, 0, 4, 'currentPersonIsCreator', '', 0),
 (262, 1264697139, 1264697139, 1, 0, 4, 'status', '2,3', 0),
 (264, 1264697139, 1264697139, 1, 0, 4, 'deadlineDyn', 'nextweek', 0),
-(265, 1264697267, 1264697267, 1, 0, 5, 'currentUserIsAssigned', '', 0),
+(265, 1264697267, 1264697267, 1, 0, 5, 'currentPersonAssigned', '', 0),
 (266, 1264697267, 1264697267, 1, 0, 5, 'creator', '17', 0),
 (267, 1264697267, 1264697267, 1, 0, 5, 'project', '5', 0),
 (285, 1264776776, 1264776776, 17, 0, 6, 'deadlineDyn', 'currentweek', 0),
 (284, 1264776776, 1264776776, 17, 0, 6, 'status', '2,3,7', 0),
 (299, 1264777478, 1264777478, 17, 0, 7, 'deadlineDyn', '', 0),
 (298, 1264777478, 1264777478, 17, 0, 7, 'status', '2,3,7', 0),
-(283, 1264776776, 1264776776, 17, 0, 6, 'currentUserIsAssigned', '', 0),
+(283, 1264776776, 1264776776, 17, 0, 6, 'currentPersonAssigned', '', 0),
 (277, 1264776619, 1264776619, 17, 0, 8, 'projectleader', '15', 0),
 (278, 1264776619, 1264776619, 17, 0, 8, 'status', '2', 0),
 (286, 1264776776, 1264776776, 17, 0, 6, 'type', '1', 0),
 (300, 1264777478, 1264777478, 17, 0, 7, 'type', '1', 0),
-(297, 1264777478, 1264777478, 17, 0, 7, 'currentUserIsAssigned', '', 0),
+(297, 1264777478, 1264777478, 17, 0, 7, 'currentPersonAssigned', '', 0),
 (306, 1264778981, 1264778981, 12, 0, 11, 'status', '2,3', 0),
 (303, 1264778957, 1264778957, 1, 0, 12, 'deadlineDyn', 'today', 0),
 (304, 1264778957, 1264778957, 1, 0, 12, 'status', '2,3', 0),
-(305, 1264778957, 1264778957, 1, 0, 12, 'currentUserIsAssigned', '', 0),
+(305, 1264778957, 1264778957, 1, 0, 12, 'currentPersonAssigned', '', 0),
 (307, 1264778981, 1264778981, 12, 0, 11, 'type', '1', 0),
-(308, 1264778981, 1264778981, 12, 0, 11, 'currentUserIsAssigned', '', 0),
+(308, 1264778981, 1264778981, 12, 0, 11, 'currentPersonAssigned', '', 0),
 (309, 1264779006, 1264779006, 12, 0, 13, 'status', '2,3', 0),
 (310, 1264779006, 1264779006, 12, 0, 13, 'type', '1', 0),
 (311, 1264779025, 1264779025, 1, 0, 14, 'status', '5,6,8', 0),
@@ -462,7 +462,7 @@ INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `i
 -- Data for Table `ext_search_filterset`
 --
 
-INSERT INTO `ext_search_filterset` (`id`, `date_update`, `date_create`, `id_user_create`, `deleted`, `sorting`, `is_hidden`, `usergroups`, `type`, `title`, `conjunction`) VALUES
+INSERT INTO `ext_search_filterset` (`id`, `date_update`, `date_create`, `id_person_create`, `deleted`, `sorting`, `is_hidden`, `roles`, `type`, `title`, `conjunction`) VALUES
 (1, 1246637647, 1246547545, 474, 0, 0, 1, '', 'task', 'Feedback erwartet', 'AND'),
 (3, 1264779500, 1264697040, 1, 0, 3, 0, '', 'task', 'Open Task', 'OR'),
 (4, 1264697272, 1264697139, 1, 0, 1, 0, '', 'task', 'Next things to do', 'AND'),
@@ -485,7 +485,7 @@ INSERT INTO `ext_search_filterset` (`id`, `date_update`, `date_create`, `id_user
 -- Data for Table `ext_timetracking_track`
 --
 
-INSERT INTO `ext_timetracking_track` (`id`, `date_create`, `date_update`, `id_user_create`, `date_track`, `id_task`, `workload_tracked`, `workload_chargeable`, `comment`) VALUES
+INSERT INTO `ext_timetracking_track` (`id`, `date_create`, `date_update`, `id_person_create`, `date_track`, `id_task`, `workload_tracked`, `workload_chargeable`, `comment`) VALUES
 (1, 1254233726, 1254233739, 1, 1254233726, 4, 16, 0, ''),
 (2, 1254233883, 1254233883, 1, 1254233883, 7, 6, 0, ''),
 (3, 1264768637, 1264768637, 1, 1264768637, 115, 6, 0, ''),
@@ -505,14 +505,14 @@ INSERT INTO `ext_timetracking_track` (`id`, `date_create`, `date_update`, `id_us
 -- Data for Table `ext_timetracking_tracking`
 --
 
-INSERT INTO `ext_timetracking_tracking` (`id`, `date_create`, `date_update`, `id_user_create`, `id_task`) VALUES
+INSERT INTO `ext_timetracking_tracking` (`id`, `date_create`, `date_update`, `id_person_create`, `id_task`) VALUES
 (4, 1264778433, 1264778433, 17, 138);
 
 --
 -- Data for Table `ext_contact_address`
 --
 
-INSERT INTO `ext_contact_address` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_addresstype`, `street`, `postbox`, `city`, `region`, `zip`, `id_country`, `is_preferred`, `comment`, `id_holidayset`) VALUES
+INSERT INTO `ext_contact_address` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `id_addresstype`, `street`, `postbox`, `city`, `region`, `zip`, `id_country`, `is_preferred`, `comment`, `id_holidayset`) VALUES
 (1, 1264581712, 1264581712, 1, 0, 1, 'Schneestrasse 23', '', 'Zürich', 'Zürich', '8000', 41, 0, '', 1),
 (2, 1264581965, 1264584253, 1, 0, 1, 'Winterthurerstrasse 112', '', 'Zürich', 'Zürich', '8052', 41, 0, '', 1),
 (3, 1264581965, 1264584253, 1, 0, 2, 'Winterthurerstrasse 110', '', 'Zürich', '', '8052', 41, 0, '', 1),
@@ -534,7 +534,7 @@ INSERT INTO `ext_contact_address` (`id`, `date_create`, `date_update`, `id_user_
 -- Data for Table `ext_contact_company`
 --
 
-INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `is_internal`, `ext_projectbilling_reduction`) VALUES
+INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_ngo`, `is_internal`, `ext_projectbilling_reduction`) VALUES
 (1, 1246886240, 1264500976, 1, 1, 'Demo Customer', 'Demo', 0, 101, 0, 0, 0),
 (3, 1246888856, 1264500988, 1, 1, 'Random Company', 'Rand', 0, 607, 0, 0, 0),
 (5, 1254213151, 1264500991, 1, 1, 'Snowflake Productions', 'Snowflake', 0, 1136156400, 0, 1, 0),
@@ -557,7 +557,7 @@ INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_user_
 -- Data for Table `ext_contact_contactinfo`
 --
 
-INSERT INTO `ext_contact_contactinfo` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `id_contactinfotype`, `info`, `preferred`) VALUES
+INSERT INTO `ext_contact_contactinfo` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `id_contactinfotype`, `info`, `preferred`) VALUES
 (1, 1259845750, 1259848722, 1, 0, '11', 'http://www.snowflake.ch/', 1),
 (2, 1259845750, 1259848722, 1, 0, '4', '+41 44 455 80 80', 1),
 (3, 1259845750, 1259848722, 1, 0, '1', 'info@snowflake.ch', 1),
@@ -646,7 +646,7 @@ INSERT INTO `ext_contact_contactinfotype` (`id`, `deleted`, `category`, `key`, `
 -- Data for Table `system_role`
 --
 
-INSERT INTO `system_role` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `title`, `is_active`, `description`) VALUES
+INSERT INTO `system_role` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `active`, `description`) VALUES
 (1, 1264761659, 0, 1, 0, 'Customers', 1, 'Our customers with access to todoyu'),
 (2, 1264762106, 0, 1, 0, 'Management', 1, ''),
 (5, 1264762192, 0, 1, 0, 'todoyu support team', 1, ''),
@@ -736,7 +736,7 @@ INSERT INTO `ext_user_mm_company_contactinfo` (`id`, `id_company`, `id_contactin
 -- Data for Table `ext_user_mm_company_user`
 --
 
-INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_user`, `id_workaddress`, `id_jobtype`) VALUES
+INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_person`, `id_workaddress`, `id_jobtype`) VALUES
 (73, 19, 18, 15, 4),
 (2, 6, 2, 0, 0),
 (4, 5, 2, 0, 0),
@@ -762,7 +762,7 @@ INSERT INTO `ext_user_mm_company_user` (`id`, `id_company`, `id_user`, `id_worka
 -- Data for Table `ext_user_mm_user_address`
 --
 
-INSERT INTO `ext_user_mm_user_address` (`id`, `id_user`, `id_address`) VALUES
+INSERT INTO `ext_user_mm_user_address` (`id`, `id_person`, `id_address`) VALUES
 (4, 14, 13),
 (3, 1, 16);
 
@@ -770,7 +770,7 @@ INSERT INTO `ext_user_mm_user_address` (`id`, `id_user`, `id_address`) VALUES
 -- Data for Table `ext_user_mm_user_contactinfo`
 --
 
-INSERT INTO `ext_user_mm_user_contactinfo` (`id`, `id_user`, `id_contactinfo`) VALUES
+INSERT INTO `ext_user_mm_user_contactinfo` (`id`, `id_person`, `id_contactinfo`) VALUES
 (5, 4, 5),
 (17, 5, 35),
 (16, 5, 34),
@@ -804,7 +804,7 @@ INSERT INTO `ext_user_mm_user_contactinfo` (`id`, `id_user`, `id_contactinfo`) V
 -- Data for Table `ext_user_mm_user_group`
 --
 
-INSERT INTO `ext_user_mm_user_group` (`id`, `id_user`, `id_group`) VALUES
+INSERT INTO `ext_user_mm_user_group` (`id`, `id_person`, `id_group`) VALUES
 (3, 18, 4),
 (7, 17, 5),
 (6, 12, 2),
@@ -820,7 +820,7 @@ INSERT INTO `ext_user_mm_user_group` (`id`, `id_user`, `id_group`) VALUES
 -- Data for Table `ext_user_preference`
 --
 
-INSERT INTO `ext_user_preference` (`id`, `id_user`, `ext`, `area`, `preference`, `item`, `value`) VALUES
+INSERT INTO `ext_user_preference` (`id`, `id_person`, `ext`, `area`, `preference`, `item`, `value`) VALUES
 (2282, 1, 0, 0, 'tab', 0, 'portal'),
 (2204, 1, 112, 0, 'project', 0, '10'),
 (1806, 1, 106, 0, 'tab', 0, 'person'),
@@ -1269,7 +1269,7 @@ INSERT INTO `ext_user_right` (`id`, `ext`, `right`, `id_group`) VALUES
 -- Data for Table `ext_user_user`
 --
 
-INSERT INTO `ext_user_user` (`id`, `date_create`, `date_update`, `id_user_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
+INSERT INTO `ext_user_user` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
 (1, 1246615200, 1264780312, 0, 0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'demo@todoyu.com', 1, 1, 'Bob', 'Thingummy', 'BOTH', 'm', '', '1966-10-05'),
 (2, 1254213351, 1264500957, 1, 1, 'alfred', 'a55e28b5514b1b1292a9018549edc271', 'alfred345KJHFSD', 1, 1, 'Alfred', 'Hitchcock', 'ALHI', 'm', '', '1899-08-13'),
 (3, 1254213483, 1264500951, 1, 1, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20'),

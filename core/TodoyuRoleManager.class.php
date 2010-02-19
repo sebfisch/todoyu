@@ -53,9 +53,9 @@ class TodoyuRoleManager {
 	public static function getAllRoles() {
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	deleted 	= 0 AND
-					is_active	= 1';
-		$order	= '	is_active,
+		$where	= '	deleted = 0 AND
+					active	= 1';
+		$order	= '	active,
 					title';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -64,15 +64,14 @@ class TodoyuRoleManager {
 
 
 	/**
-	 * Save usergroup (update or create)
+	 * Save role
 	 *
-	 * @param	Integer		$idUsergroup
 	 * @param	Array		$data
-	 * @return	Integer		Usergroup ID
+	 * @return	Integer		Role ID
 	 */
-	public static function saveRole($idRole, array $data) {
-		$idRole	= intval($idRole);
+	public static function saveRole(array $data) {
 		$xmlPath= 'ext/user/config/form/usergroup.xml';
+		$idRole	= intval($data['id']);
 
 			// If new usergroup, create empty container to work with the ID
 		if( $idRole === 0 ) {
@@ -99,16 +98,16 @@ class TodoyuRoleManager {
 	public static function saveRoleForeignRecords(array $data, $idRole) {
 		$idRole = intval($idRole);
 
-			// Remove all users first
-		self::removeAllPersons($idRole);
+			// Remove all persons
+		self::removePersons($idRole);
 
 			// Add users
-		if( ! empty($data['users']) ) {
-			$userIDs = TodoyuArray::getColumn($data['users'], 'id');
+		if( ! empty($data['persons']) ) {
+			$personIDs = TodoyuArray::getColumn($data['persons'], 'id');
 
-			self::addPersons($idRole, $userIDs);
+			self::addPersons($idRole, $personIDs);
 		}
-		unset($data['users']);
+		unset($data['persons']);
 
 		return $data;
 	}
@@ -282,14 +281,15 @@ class TodoyuRoleManager {
 	public static function getPersonData($idRole) {
 		$idRole	= intval($idRole);
 
-		$fields	= 'u.*';
-		$table	= 'ext_contact_person u,
+		$fields	= '	p.*';
+		$table	= '	ext_contact_person p,
 					ext_contact_mm_person_role mm';
-		$where	= 'mm.id_role = ' . $idRole . ' AND
-					mm.id_person = u.id';
+		$where	= '	mm.id_role = ' . $idRole . ' AND
+					mm.id_person = p.id';
 
 		return Todoyu::db()->getArray($fields, $table, $where);
 	}
+
 }
 
 ?>

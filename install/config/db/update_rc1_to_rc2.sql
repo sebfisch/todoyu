@@ -105,3 +105,9 @@ ALTER TABLE `system_preference` CHANGE `id_user` `id_person` SMALLINT( 5 ) UNSIG
 ALTER TABLE `system_right` CHANGE `id_group` `id_role` TINYINT( 3 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_project_task` CHANGE `id_user_assigned` `id_person_assigned` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_project_task` CHANGE `id_user_owner` `id_person_owner` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
+
+
+--
+-- Other changes
+--
+ALTER TABLE `system_role` CHANGE `is_active` `active` TINYINT( 1 ) NOT NULL DEFAULT '0'

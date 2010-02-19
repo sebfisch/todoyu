@@ -69,6 +69,8 @@
 		<label index="ajax.requestFailed">Cannot connect to server (your connection or server down?)</label>
 		<label index="roles">Roles</label>
 		<label index="role">Role</label>
+		<label index="role.attr.active">Active</label>
+		<label index="role.attr.persons">Role Members</label>
 	</labels>
 	<labels lang="de">
 		<label index="tab.todoyu.label">todoyu</label>
@@ -138,5 +140,7 @@
 		<label index="ajax.requestFailed">Keine Verbindung zum Server (Verbindungs- oder Serverprobleme?)</label>
 		<label index="roles">Rollen</label>
 		<label index="role">Rolle</label>
+		<label index="role.attr.active">Aktiv</label>
+		<label index="role.attr.persons">Rollenmitglieder</label>
 	</labels>
 </locallang>

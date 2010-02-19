@@ -30,6 +30,7 @@ table.list td div.icon {
 	height:18px;
 	margin-top:-2px;
 	margin-bottom:-2px;
+	cursor:pointer;
 }
 
 /* ------------

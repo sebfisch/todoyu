@@ -1,4 +1,4 @@
-{if ! $multiple}
+{if !isset($multiple) && !isset($noPleaseSelect)}
 	<option value="0">{Label form.select.pleaseSelect}</option>
 {/if}
 {foreach $options option}

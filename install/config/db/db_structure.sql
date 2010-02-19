@@ -508,7 +508,7 @@ CREATE TABLE IF NOT EXISTS `system_role` (
   `id_user_create` smallint(5) unsigned NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `title` varchar(32) NOT NULL,
-  `is_active` tinyint(1) NOT NULL DEFAULT '0',
+  `active` tinyint(1) NOT NULL DEFAULT '0',
   `description` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
