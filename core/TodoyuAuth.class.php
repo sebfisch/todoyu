@@ -80,8 +80,8 @@ class TodoyuAuth {
 
 
 	/**
-	 * Get user ID of the currently logged in user
-	 * 0 means there is no user logged in
+	 * Get ID of the currently logged in person
+	 * 0 means there is no person logged in
 	 *
 	 * @return	Integer
 	 */
@@ -103,27 +103,27 @@ class TodoyuAuth {
 
 
 	/**
-	 * Register user as logged in
+	 * Register person as logged in
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 */
 	public static function login($idPerson) {
 			// Log successful login
-		Todoyu::log('Login user (' . $idPerson . ')', LOG_LEVEL_NOTICE, $idPerson);
-			// Generate a new session id for the logged in user
+		Todoyu::log('Login person (' . $idPerson . ')', LOG_LEVEL_NOTICE, $idPerson);
+			// Generate a new session id for the logged in person
 		session_regenerate_id(true);
-			// Set current user id
+			// Set current person id
 		self::setPersonID($idPerson);
 			// Reload rights
 		TodoyuRightsManager::reloadRights();
-			// Set new user in Todoyu object
-		Todoyu::resetUser();
+			// Set new person in Todoyu object
+		Todoyu::resetPerson();
 	}
 
 
 
 	/**
-	 * Logout current user
+	 * Logout current person
 	 *
 	 */
 	public static function logout() {
@@ -134,7 +134,7 @@ class TodoyuAuth {
 			// Delete relogin cookie
 		TodoyuCookieLogin::removeRemainLoginCookie();
 
-			// Generate a new session id for the logged out user
+			// Generate a new session id for the logged out person
 		session_regenerate_id(true);
 	}
 
@@ -167,7 +167,7 @@ class TodoyuAuth {
 
 
 	/**
-	 * Check if current user is admin
+	 * Check if current person is admin
 	 *
 	 * @return	Boolean
 	 */

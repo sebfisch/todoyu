@@ -171,7 +171,7 @@ class Todoyu {
 
 
 	/**
-	 * Return current user object
+	 * Return current person object
 	 *
 	 * @return	TodoyuPerson
 	 */
@@ -186,17 +186,17 @@ class Todoyu {
 
 
 	/**
-	 * Reset user object if a new user is logged in
+	 * Reset person object if a new person is logged in
 	 */
-	public static function resetUser() {
-		self::$user = TodoyuAuth::getPerson(true);
+	public static function resetPerson() {
+		self::$person = TodoyuAuth::getPerson(true);
 	}
 
 
 
 	/**
 	 * Get system language
-	 * If user is logged in, its preference language
+	 * If person is logged in, its preference language
 	 * If not logged in but the browser provides a language, use browser language
 	 * Fallback is the language defined in config
 	 *
