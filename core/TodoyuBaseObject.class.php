@@ -142,7 +142,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	 *
 	 * @return	Bool
 	 */
-	public function isCurrentUserCreator() {
+	public function isCurrentPersonCreator() {
 		return intval($this->get('id_person_create')) === personid();
 	}
 

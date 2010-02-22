@@ -2,5 +2,5 @@
 	<option value="0">{Label form.select.pleaseSelect}</option>
 {/if}
 {foreach $options option}
-	<option value="{$option.value}" class="{if $option.classname != ''}{$option.classname}{/if} {cycle values="odd,even"}" {if in_array($option.value, $value)} selected="selected"{/if}{if $option.disabled} disabled="disabled"{/if}>{Label $option.label true}</option>
+	<option value="{$option.value}" class="{$option.class} {cycle values="odd,even"}" {if in_array($option.value, $value)} selected="selected"{/if}{if $option.disabled} disabled="disabled"{/if}>{Label $option.label true}</option>
 {/foreach}

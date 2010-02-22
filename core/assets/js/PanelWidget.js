@@ -109,11 +109,11 @@ Todoyu.PanelWidget = {
 	 *	@param	String	widget
 	 *	@param	unknown_type	callbackFunction
 	 */
-	inform: function(widget, params) {
+	fire: function(widget, params) {
 		if( ! Object.isUndefined(this.observerCallbacks[widget]) ) {
-			this.observerCallbacks[widget].each(function(callbackFunction) {
+			this.observerCallbacks[widget].each(function(widget, params, callbackFunction) {
 				callbackFunction(widget, params);
-			});
+			}.bind(this, widget, params));
 		}
 	},
 
