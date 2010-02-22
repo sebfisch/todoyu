@@ -296,6 +296,10 @@ class TodoyuInstallerManager {
 
 				case 'rc1':
 					self::updateRc1ToRc2();
+
+				case 'rc2':
+					// do nothing
+					break;
 			}
 
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
@@ -567,7 +571,7 @@ class TodoyuInstallerManager {
 	 * @return	String
 	 */
 	public static function getDBVersion() {
-		$dbVersion	= 'rc1';
+		$dbVersion	= 'rc2';
 		$tables		= Todoyu::db()->getTables();
 
 		if( in_array('ext_portal_tab', $tables) ) {
@@ -576,6 +580,8 @@ class TodoyuInstallerManager {
 			$dbVersion	= 'beta2';
 		} elseif( in_array('history', $tables) ) {
 			$dbVersion	= 'beta3';
+		} elseif( in_array('ext_user_user', $tables) ) {
+			$dbVersion	= 'rc1';
 		}
 
 		return $dbVersion;
@@ -591,11 +597,7 @@ class TodoyuInstallerManager {
 	public static function isDatabaseConfigured() {
 		$dbConfig	= TodoyuArray::assure($GLOBALS['CONFIG']['DB']);
 
-		return (	$dbConfig['autoconnect'] === true
-				&&	$$dbConfig['server']	!== ''
-				&&	$dbConfig['username']	!== ''
-				&&	$dbConfig['password']	!== ''
-				&&	$dbConfig['database']	!== '');
+		return $GLOBALS['CONFIG']['DB']['autoconnect'] === true;
 	}
 
 
