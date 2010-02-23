@@ -52,7 +52,7 @@ Todoyu.Headlet.QuickCreate = {
 	 */
 	openPopup: function(ext, mode) {
 		if ( ! $('quickcreate') ) {
-			var controller = 'quickcreate' + mode;
+			var controller = 'Quickcreate' + mode;
 			var url		= Todoyu.getUrl(ext, controller);
 			var options	= {
 				'parameters': {
