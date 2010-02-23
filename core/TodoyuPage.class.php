@@ -137,12 +137,8 @@ class TodoyuPage {
 	 * @param	Stirng		$name
 	 * @param	Mixed		$value
 	 */
-	public static function add($name, $value, $position = 100) {
-		while( is_array(self::$data[$name]) && array_key_exists($position, self::$data[$name]) ) {
-			$position++;
-		}
-
-		self::$data[$name][$position] = $value;
+	public static function add($name, $value) {
+		self::$data[$name][] = $value;
 	}
 
 
@@ -411,19 +407,13 @@ class TodoyuPage {
 	 * @param	String		$jsCode
 	 * @param	Integer		$position
 	 */
-	public static function addJsInlines($jsCode, $position = 100) {
-		self::add('jsInlines', $jsCode, $position);
-	}
-
-
-
-	/**
-	 * Prepend inline javascript code
-	 *
-	 * @param	String		$jsCode
-	 */
-	public static function prependJsInlines($jsCode) {
-		self::prepend('jsInlines', $jsCode);
+	public static function addJsInline($jsCode, $position = 100) {
+		self::add('jsInlines',
+			array(
+				'position'	=> $position,
+				'code'		=> $jsCode
+			)
+		);
 	}
 
 
@@ -435,7 +425,7 @@ class TodoyuPage {
 	 * @param	Integer		$position
 	 */
 	public static function addJsOnloadedFunction($function, $position = 100) {
-		self::addJsInlines('document.observe("dom:loaded", ' . $function . ');', $position);
+		self::addJsInline('document.observe("dom:loaded", ' . $function . ');', $position);
 	}
 
 
@@ -481,7 +471,7 @@ class TodoyuPage {
 	 * Sort inline JavaScripts by position (key)
 	 */
 	public static function sortJSinlines() {
-		ksort(self::$data['jsInlines']);
+		self::$data['jsInlines']	= TodoyuArray::sortByLabel(self::$data['jsInlines'], 'position');
 	}
 
 
