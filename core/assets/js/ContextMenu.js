@@ -23,8 +23,8 @@ Todoyu.ContextMenu = {
 	/**
 	 * Attach contextmenu to all elements with the triggerClass
 	 * 
-	 *	@param	String		triggerClass
-	 *	@param	Function	callbackFunction
+	 * @param	String		triggerClass
+	 * @param	Function	callbackFunction
 	 */
 	attachMenuToClass: function(triggerClass, callbackFunction) {
 		var triggerAreas = $$('.' + triggerClass);
@@ -39,8 +39,8 @@ Todoyu.ContextMenu = {
 	/**
 	 * Attach contextmenu to the elements in the list
 	 * 
-	 *	@param	Array		elementIDs
-	 *	@param	Function	callbackFunction
+	 * @param	Array		elementIDs
+	 * @param	Function	callbackFunction
 	 */
 	attachMenuToIDs: function(elementIDs, callbackFunction) {
 		elementIDs.each(function(element) {
@@ -53,8 +53,8 @@ Todoyu.ContextMenu = {
 	/**
 	 * Attach menu to the list of elements
 	 * 
-	 *	@param	Array		elements
-	 *	@param	Function	callbackFunction
+	 * @param	Array		elements
+	 * @param	Function	callbackFunction
 	 */
 	attachMenuToElements: function(elements, callbackFunction) {
 		elements.each(function(element) {
@@ -67,8 +67,8 @@ Todoyu.ContextMenu = {
 	/**
 	 * Attach menu to an element
 	 * 
-	 *	@param	DomElement	element
-	 *	@param	Function	callbackFunction
+	 * @param	DomElement	element
+	 * @param	Function	callbackFunction
 	 */
 	attachMenuToElement: function(element, callbackFunction) {
 		if( $(element) ) {
@@ -81,7 +81,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Detach contextmenu which are triggered to the triggerClass
 	 * 
-	 *	@param	String		triggerClass
+	 * @param	String		triggerClass
 	 */
 	detachAllMenus: function(triggerClass) {
 		var triggerAreas = $$('.'+triggerClass);
@@ -96,7 +96,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Detach contextmenu from a specific element
 	 * 
-	 *	@param	DomElement		element
+	 * @param	DomElement		element
 	 */
 	detachMenuFromElement: function(element) {
 		if($(element))	{
@@ -109,7 +109,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Set menu dimensions (display position) and show the menu
 	 * 
-	 *	@param	Event		event
+	 * @param	Event		event
 	 */
 	setMenuDimensions: function(event) {
 			// Fetch menu dimension data
@@ -139,10 +139,10 @@ Todoyu.ContextMenu = {
 
 			// Set position of the menu
 		menu.setStyle({
-			'position':'absolute',
-			'display': 'block',
-			'left': left + 'px',
-			'top': top + 'px'
+			'position':		'absolute',
+			'display':		'block',
+			'left':			left + 'px',
+			'top':			top + 'px'
 		});
 
 			// Observe outside clicks
@@ -156,7 +156,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 *	@param	unknown_type	menuJSON
+	 * @param	unknown_type	menuJSON
 	 */
 	buildMenuFromJSON: function(menuJSON) {
 		var menu = this.Template.render(menuJSON);
@@ -169,7 +169,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 *	@param	unknown_type	menuHTML
+	 * @param	unknown_type	menuHTML
 	 */
 	updateMenuContainer: function(menuHTML) {
 		$('contextmenu').update(menuHTML);
@@ -180,7 +180,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 *	@param	unknown_type	event
+	 * @param	unknown_type	event
 	 */
 	preventContextMenu: function(event) {
 		event.stop();
@@ -191,7 +191,6 @@ Todoyu.ContextMenu = {
 
 	/**
 	 * Please enter Description here...
-	 *
 	 */
 	hide: function() {
 			// Hide contextmenu
@@ -206,8 +205,8 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 *	@param	unknown_type	key
-	 *	@param	unknown_type	show
+	 * @param	unknown_type	key
+	 * @param	unknown_type	show
 	 */
 	submenu: function(key, show) {
 		var ctxMenuID	= 'contextmenu';
@@ -249,9 +248,9 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 *	@param	unknown_type	url
-	 *	@param	unknown_type	options
-	 *	@param	unknown_type	event
+	 * @param	unknown_type	url
+	 * @param	unknown_type	options
+	 * @param	unknown_type	event
 	 */
 	showMenu: function(url, options, event) {
 			// Stop click event to prevent browsers context menu
