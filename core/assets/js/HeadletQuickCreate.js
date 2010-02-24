@@ -56,7 +56,7 @@ Todoyu.Headlet.QuickCreate = {
 			var url		= Todoyu.getUrl(ext, controller);
 			var options	= {
 				'parameters': {
-					'action':	'popup',
+					'action':	'popup'
 				},
 				'onComplete': this.onPopupOpened.bind(this, mode)
 			};

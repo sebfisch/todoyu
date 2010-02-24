@@ -51,11 +51,10 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 	/**
 	 * Headlet constructor which calls the init function
-	 * if defined
-	 * @param	Array		$params		Request parameters
+	 *
 	 * @final
 	 */
-	public final function __construct(array $params = array()) {
+	public final function __construct() {
 		$this->init();
 	}
 

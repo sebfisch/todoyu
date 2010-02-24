@@ -489,15 +489,11 @@ class TodoyuPage {
 	 * Render all registered headlets
 	 *
 	 */
-	private static function renderHeadlets() {
+	private static function renderHead() {
 		if( TodoyuAuth::isLoggedIn() ) {
-			$areaKey		= Todoyu::getAreaKey();
-			$params			= TodoyuRequest::getAll();
-			$headletsLeft	= TodoyuHeadletRenderer::renderAreaHeadlets('LEFT', $areaKey, $params);
-			$headletsRight	= TodoyuHeadletRenderer::renderAreaHeadlets('RIGHT', $areaKey, $params);
+			$head	= TodoyuHeadManager::render();
 
-			self::set('headletsLeft', $headletsLeft);
-			self::set('headletsRight', $headletsRight);
+			self::set('head', $head);
 		}
 	}
 
@@ -513,7 +509,7 @@ class TodoyuPage {
 		TodoyuHookManager::callHook('core', 'renderPage');
 
 			// Add headlets
-		self::renderHeadlets();
+		self::renderHead();
 
 			// Add main navigation
 		self::set('navigation', TodoyuRenderer::renderNavigation());

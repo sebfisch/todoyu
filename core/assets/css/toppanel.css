@@ -7,11 +7,8 @@
 	background:transparent;
 }
 
-#companyLogo, #headletsLeft, #headletsRight {
-	/*
-	float:left;
-	clear:none;
-	*/
+#companyLogo,
+#head {
 	position:absolute;
 	height:60px;
 }
@@ -19,29 +16,33 @@
 #companyLogo {
 	left:0;
 	width:200px;
-	background:url('../../../config/img/company.png') no-repeat 5px 50%;
+	background:url(../../../config/img/company.png) no-repeat 5px 50%;
 }
 
-#headletsLeft {
+#head {
 	left:200px;
-	width:528px;
+	width:775px;
+	border:1px solid #ff8000;
 }
 
-#headletsRight {
-	left:728px;
-	width:235px;
-	padding-right:15px;
-}
-
-#headletsRight div.headlet {
+#headlets {
 	position:absolute;
+	right:0;
 }
 
-#headletsLeft div.headlet {
-	position:relative;
+#headlets > li {
 	float:left;
-	clear:none;
+	margin-left:1px;
+	height:25px;
+	width:30px;
 }
+ /* Dev */
+#headlets > li {
+	border:1px solid #F00;
+	margin:0 5px;
+}
+
+
 
 #headletajaxloader {
 	left:20px;

@@ -40,16 +40,7 @@ $CONFIG['TEMPLATE']		= array(
 	// Bad tags which are encoded by the HtmlFilter
 $CONFIG['SECURITY']['badHtmlTags'] = array('script', 'iframe', 'input', 'textarea', 'select', 'form');
 
-	// Initialize headlet registration array
-$CONFIG['HEADLETS']	= array(
-	'RIGHT'	=> array(
-		'TodoyuHeadletQuickCreate'	=> array(
-			'class'		=> 'TodoyuHeadletQuickCreate',
-			'position'	=> 999,
-			'areas' 	=> array()
-		)
-	)
-);
+TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickCreate');
 
 
 	// Initialize metamenu registration array

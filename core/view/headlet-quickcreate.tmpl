@@ -1,22 +1,20 @@
-{extends "core/view/headlet.tmpl"}
+<div id="{$id}-mode-btn" class="button" title="{Label core.quickcreate.title}" >
+	<div class="icon"></div>
+</div>
 
-{block "headlet"}
-	<form action="?" method="get" name="create" id="{$id}-form" onsubmit="return false">
-		<div id="{$id}-mode-btn" title="{Label core.quickcreate.title}" >
-			<div id="{$id}-mode-icon" class="createmode-default"></div>
-		</div>
-	<ul id="{$id}-modes">
-{foreach $areaCreateModes createMode}
+<ul id="{$id}-modes" class="modes">
+	
+	{foreach $areaCreateModes createMode}
 		<li class="engine createmode-{$createMode.type}" ext="{$createMode.ext}" mode="{$createMode.type}">
 			{Label $createMode.labelMode}
 		</li>
-{/foreach}
-		<li class="grouplabel">{Label core.quickcreate.alltypes.label}</li>
-{foreach $createModes createMode}
+	{/foreach}
+	
+	<li class="grouplabel">{Label core.quickcreate.alltypes.label}</li>
+	{foreach $createModes createMode}
 		<li class="engine createmode-{$createMode.type}" ext="{$createMode.ext}" mode="{$createMode.type}">
 			{Label $createMode.labelMode}
 		</li>
-{/foreach}
-	</ul>
-	</form>
-{/block}
+	{/foreach}
+	
+</ul>
