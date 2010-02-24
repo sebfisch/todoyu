@@ -93,11 +93,13 @@ class TodoyuQuickCreateManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getEngines() {
+	public static function getEngines($area	= 'all') {
+			// Load /config/type.php configfiles of all loaded extensions)
 		TodoyuExtensions::loadAllCreate();
 
-		$createEngines	= TodoyuArray::assure($GLOBALS['CONFIG']['create']['engines']['all']);
+		$createEngines	= TodoyuArray::assure($GLOBALS['CONFIG']['create']['engines'][$area]);
 
+			// Sort by position
 		if( sizeof($createEngines) > 0 ) {
 			$createEngines = TodoyuArray::sortByLabel($createEngines, 'position');
 		}
@@ -108,20 +110,12 @@ class TodoyuQuickCreateManager {
 
 
 	/**
-	 * Get area related primary create engines in correct order
+	 * Get area related (primary) create engines in correct order
 	 *
 	 * @return	Array
 	 */
 	public static function getAreaEngines() {
-		TodoyuExtensions::loadAllCreate();
-
-		$createEngines	= TodoyuArray::assure($GLOBALS['CONFIG']['create']['engines']['primary']);
-
-		if( sizeof($createEngines) > 0 ) {
-			$createEngines = TodoyuArray::sortByLabel($createEngines, 'position');
-		}
-
-		return $createEngines;
+		return self::getEngines('primary');
 	}
 
 }

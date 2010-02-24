@@ -246,7 +246,7 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Load config of a type from all extension
+	 * Load config of a type from all extension (require /config/type.php files of extensions)
 	 *
 	 * @param	String		$type
 	 */
@@ -371,8 +371,7 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Load all search config
-	 *
+	 * Load all search config (/config/search.php files of all loaded extensions)
 	 */
 	public static function loadAllSearch() {
 		global $CONFIG;
@@ -383,8 +382,7 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Load all create config
-	 *
+	 * Load all create configs (/config/create.php files of all loaded extensions)
 	 */
 	public static function loadAllCreate() {
 		global $CONFIG;
