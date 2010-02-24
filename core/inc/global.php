@@ -20,7 +20,7 @@
 ***************************************************************/
 
 	// Set session cookie HTTPonly
-ini_set('session.cookie_httponly', 1);
+@ini_set('session.cookie_httponly', 1);
 
 	// Start session
 session_start();
@@ -130,8 +130,7 @@ require_once( PATH_LOCALCONF . '/extensions.php');
 require_once( PATH_LOCALCONF . '/extconf.php');
 
 
-	// Load user extension (needed to initialize todoyu)
-require_once( PATH_EXT . '/user/ext.php' );
-
+	// Load contact extension (needed to initialize todoyu)
+require_once( PATH_EXT . '/contact/ext.php' );
 
 ?>

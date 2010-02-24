@@ -47,6 +47,7 @@ TodoyuSession::remove('person');
 unset($_COOKIE['todoyulogin']);
 TodoyuCookieLogin::removeRemainLoginCookie();
 
+$CONFIG['WITHOUT_EXTENSIONS'] = true;
 
 	// Load default init script
 require_once('core/inc/init.php');
