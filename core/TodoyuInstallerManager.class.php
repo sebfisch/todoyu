@@ -169,8 +169,9 @@ class TodoyuInstallerManager {
 		$result	= array();
 
 		if( intval($data['import']) === 1 ) {
+				// Create database structure from all table files
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
-			self::importBasicStaticData();
+			self::importStaticData();
 
 			TodoyuInstaller::setStep('systemconfig');
 		}
@@ -219,7 +220,7 @@ class TodoyuInstallerManager {
 			if( strlen(trim($data['password'])) >= 5 && $data['password'] === $data['password_confirm'] ) {
 				self::saveAdminPassword($data['password']);
 
-				TodoyuInstaller::setStep('finish');
+				TodoyuInstaller::setStep('demodata');
 			} else {
 				$result['text']		= Label('installer.adminpassword.text');
 				$result['textClass']= 'error';
@@ -227,6 +228,30 @@ class TodoyuInstallerManager {
 		}
 
 		return $result;
+	}
+
+
+
+	/**
+	 * Process demo data import
+	 *
+	 * @param	Array		$data
+	 * @return	Array
+	 */
+	public static function processDemoData(array $data) {
+		$result	= array();
+
+		if( isset($data['importdemodata']) ) {
+			$import	= intval($data['import']) === 1;
+
+			if( $import ) {
+				self::importDemoData();
+			}
+
+			TodoyuInstaller::setStep('finish');
+		}
+
+		return array();
 	}
 
 
@@ -283,25 +308,32 @@ class TodoyuInstallerManager {
 		if( intval($data['update']) === 1 ) {
 				// Process db update
 			$dbVersion	= self::getDBVersion();
+			$files		= array();
 
 			switch($dbVersion) {
 				case 'beta1':
-					self::updateBeta1ToBeta2();
+					$files[]	= 'install/db/update_beta1_to_beta2.sql';
 
 				case 'beta2':
-					self::updateBeta2ToBeta3();
+					$files[]	= 'install/db/update_beta2_to_beta3.sql';
 
 				case 'beta3':
-					self::updateBeta3ToRc1();
+					$files[]	= 'install/db/update_beta3_to_rc1.sql';
 
 				case 'rc1':
-					self::updateRc1ToRc2();
+					$files[]	= 'install/db/update_rc1_to_rc2.sql';
 
 				case 'rc2':
 					// do nothing
 					break;
 			}
 
+				// Apply version update files
+			foreach($files as $file) {
+				TodoyuSQLManager::executeQueriesFromFile($file);
+			}
+
+				// Apply structure updates from table files
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
 
 			TodoyuInstaller::setStep('finishupdate');
@@ -391,51 +423,6 @@ class TodoyuInstallerManager {
 
 
 
-	/**
-	 * Update the database from beta1 to beta2
-	 *
-	 */
-	private static function updateBeta1ToBeta2() {
-		$updateFile	= 'install/config/db/update_beta1_to_beta2.sql';
-
-		$numQueries	= TodoyuSQLManager::executeQueriesFromFile($updateFile);
-	}
-
-
-
-	/**
-	 * Update the database from beta2 to beta3
-	 *
-	 */
-	private static function updateBeta2ToBeta3() {
-		$updateFile	= 'install/config/db/update_beta2_to_beta3.sql';
-
-		$numQueries	= TodoyuSQLManager::executeQueriesFromFile($updateFile);
-	}
-
-
-
-	/**
-	 * Update the database from beta3 to rc1
-	 *
-	 */
-	private static function updateBeta3ToRc1() {
-		$updateFile	= 'install/config/db/update_beta3_to_rc1.sql';
-
-		$numQueries	= TodoyuSQLManager::executeQueriesFromFile($updateFile);
-	}
-
-
-
-	/**
-	 * Update the database from beta3 to rc1
-	 *
-	 */
-	private static function updateRc1ToRc2() {
-		$updateFile	= 'install/config/db/update_rc1_to_rc2.sql';
-
-		$numQueries	= TodoyuSQLManager::executeQueriesFromFile($updateFile);
-	}
 
 
 
@@ -476,8 +463,23 @@ class TodoyuInstallerManager {
 	 * Import static data
 	 *
 	 */
-	private static function importBasicStaticData() {
-		$file	= TodoyuFileManager::pathAbsolute('install/config/db/db_data.sql');
+	private static function importStaticData() {
+		$file	= TodoyuFileManager::pathAbsolute('install/db/static_data.sql');
+		$queries= TodoyuSQLManager::getQueriesFromFile($file);
+
+		foreach($queries as $query) {
+			Todoyu::db()->query($query);
+		}
+	}
+
+
+
+	/**
+	 * Import the demo data from sql file
+	 *
+	 */
+	private static function importDemoData() {
+		$file	= TodoyuFileManager::pathAbsolute('install/db/demo_data.sql');
 		$queries= TodoyuSQLManager::getQueriesFromFile($file);
 
 		foreach($queries as $query) {

@@ -1,0 +1,13 @@
+{extends main.tmpl}
+
+{block name="box"}
+	<div class="field">
+
+		<input type="checkbox" name="import" id="input" value="1" checked="checked">
+		<label for="import">{Label installer.demodata.checkboxlabel}</label>
+	</div>
+	<br>
+	<p>{Label installer.demodata.contains}</p>
+
+	<input type="hidden" name="importdemodata" value="1" />
+{/block}

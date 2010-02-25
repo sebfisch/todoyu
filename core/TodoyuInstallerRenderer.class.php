@@ -206,6 +206,18 @@ class TodoyuInstallerRenderer {
 	}
 
 
+	public static function renderDemoData(array $result) {
+		$data	= array(
+			'title'		=> 'installer.demodata.title',
+			'button'	=> 'installer.demodata.button',
+			'text'		=> Label('installer.demodata.text'),
+			'textClass'	=> 'info'
+		);
+
+		return $data;
+	}
+
+
 
 	/**
 	 * Render finishing screen

@@ -35,6 +35,7 @@ $CONFIG['INSTALLER']['install'] = array(
 	'importtables',
 	'systemconfig',
 	'adminpassword',
+	'demodata',
 	'finish'
 );
 
@@ -94,6 +95,11 @@ $CONFIG['INSTALLER']['steps'] = array(
 		'process'	=> 'TodoyuInstallerManager::processAdminPassword',
 		'render'	=> 'TodoyuInstallerRenderer::renderAdminPassword',
 		'tmpl'		=> '07_adminpassword.tmpl'
+	),
+	'demodata'		=> array(
+		'process'	=> 'TodoyuInstallerManager::processDemoData',
+		'render'	=> 'TodoyuInstallerRenderer::renderDemoData',
+		'tmpl'		=> 'xx_demodata.tmpl'
 	),
 	'finish' => array(
 		'process'	=> 'TodoyuInstallerManager::processFinish',

@@ -34,6 +34,8 @@
 		<label index="dbselect.text.saved">Database connection saved</label>
 		<label index="dbselect.text.notCreated">Cannot create new database on server</label>
 		<label index="dbselect.text.dbNameExists">A database with this name already exists</label>
+		<label index="dbselect.selectDB">Select a Database</label>
+		<label index="dbselect.orCreateDB">or create new:</label>
 		<label index="dbselect.step">Select database</label>
 		<label index="importtables.title">Import tables and data</label>
 		<label index="importtables.button">Import tables and data</label>
@@ -58,6 +60,12 @@
 		<label index="adminpassword.passwordHint">at least 5 characters</label>
 		<label index="adminpassword.text">Please enter the new admin password twice</label>
 		<label index="adminpassword.step">Set admin password</label>
+		<label index="demodata.title">Import demo data</label>
+		<label index="demodata.checkboxlabel">Import the demo data</label>
+		<label index="demodata.button">Next step</label>
+		<label index="demodata.text">You can import the demo data to start testing right after you logged in. Without the demo data, you have a clean installation you can customize for yourself</label>
+		<label index="demodata.contains">Contains: Projects, Tasks, Addresses, Companies, Comments, Feedbacks, Roles, Worktypes, Filters and more.</label>
+		<label index="demodata.step">Import demo data</label>
 		<label index="finish.title">Installation finished</label>
 		<label index="finish.text">Installation finished</label>
 		<label index="finish.button">Disable installer and go to login</label>
@@ -80,8 +88,6 @@
 		<label index="finishupdate.button">Disable installer and go to login</label>
 		<label index="finishupdate.text">Installer has updated your todoyu installation</label>
 		<label index="finishupdate.step">Finish installation</label>
-		<label index="selectDB">Select a Database</label>
-		<label index="orCreateDB">or create new:</label>
 	</labels>
 	<labels lang="de">
 		<label index="panelWidget.title.progress">Installationsschritte</label>
@@ -117,6 +123,8 @@
 		<label index="dbselect.text.saved">Datenbankverbindung gespeichert</label>
 		<label index="dbselect.text.notCreated">Neue Datenbank kann nicht erstellt werden</label>
 		<label index="dbselect.text.dbNameExists">Ein andere Datenbank dieses Namens existiert bereits</label>
+		<label index="dbselect.selectDB">Datenbank auswählen</label>
+		<label index="dbselect.orCreateDB">Oder neue erstellen:</label>
 		<label index="dbselect.step">Datenbank wählen</label>
 		<label index="importtables.title">Tabellen und Daten importieren</label>
 		<label index="importtables.button">Tabellen und Daten importieren</label>
@@ -141,6 +149,12 @@
 		<label index="adminpassword.passwordHint">mindestestenz 5 Zeichen</label>
 		<label index="adminpassword.text">Bitte geben Sie das neue Administratorpasswort doppelt ein</label>
 		<label index="adminpassword.step">Administratoren-Passwort festlegen</label>
+		<label index="demodata.title">Beispieldaten importieren</label>
+		<label index="demodata.checkboxlabel">Importiere die Beispieldaten </label>
+		<label index="demodata.button">Weiter</label>
+		<label index="demodata.text">Um gleich nach dem Anmelden mit dem Testen zu beginnen, können Sie die Beispieldaten importieren. Ohne die Beispieldaten haben Sie eine saubere (jedoch leere) Installation, die Sie selbst mit Daten füllen können.</label>
+		<label index="demodata.contains">Enthalten sind: Projekte, Aufgaben, Adressen, Firmen, Kommentare, Feedbacks, Systemrollen, Leistungsarten, Filter und noch weitere Daten.</label>
+		<label index="demodata.step">Beispieldaten importieren</label>
 		<label index="finish.title">Installation beendet</label>
 		<label index="finish.text">Installation beendet</label>
 		<label index="finish.button">Installer deaktivieren und weiter zum Login</label>
@@ -163,7 +177,5 @@
 		<label index="updatetocurrentversion.step">Datenbankstruktur aktualisieren</label>
 		<label index="finishupdate.title">Aktualisieren beenden</label>
 		<label index="finishupdate.text">Der Installer hat Ihre todoyu Installation aktualisiert</label>
-		<label index="selectDB">Datenbank auswählen</label>
-		<label index="orCreateDB">Oder neue erstellen:</label>
 	</labels>
 </locallang>
