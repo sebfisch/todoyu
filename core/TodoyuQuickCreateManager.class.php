@@ -55,34 +55,31 @@ class TodoyuQuickCreateManager {
 	 * @param	String		$type
 	 * @param	String		$labelMode
 	 * @param	Integer		$position
+	 * @param	Integer		$idArea			areas where to list this type as primary
+	 * @param	Boolean		$areaOnly		show type within resp. area only?
 	 */
-	public static function addEngine($ext, $type, $labelMode = '', $position = 100) {
-		$engineConfig	= self::getEngineConfig($ext, $type, $labelMode, $position);
+	public static function addEngine($ext, $type, $labelMode = '', $position = 100, $idArea = 0, $areaOnly = false) {
+		$idArea		= intval($idArea);
 
-		$GLOBALS['CONFIG']['create']['engines']['all'][$type] = $engineConfig;
-	}
-
-
-
-	/**
-	 * Add a new area related (primary listed) create engine and register needed functions
-	 *
-	 * @param	Integer		$idArea
-	 * @param	String		$ext
-	 * @param	String		$type
-	 * @param	String		$labelMode
-	 * @param	Integer		$position
-	 */
-	public static function addAreaEngine($idArea, $ext, $type, $labelMode = '', $position = 100) {
-			// @todo	check + fix to use AREA constant
 		$requestVars= TodoyuRequest::getCurrentRequestVars();
 		$area		= intval($requestVars['area']);
 
-//		if ( AREA === $idArea ) {
-		if ( $area === $idArea ) {
+			// Register creation type global in all areas or in general of current area if its the primary one
+		if ( ! $areaOnly || $area === $idArea ) {
 			$engineConfig	= self::getEngineConfig($ext, $type, $labelMode, $position);
+			$GLOBALS['CONFIG']['create']['engines']['all'][$type] = $engineConfig;
+		}
 
-			$GLOBALS['CONFIG']['create']['engines']['primary'][$type] = $engineConfig;
+			// Register as primary displayed creation type in resp. area
+		if ( $idArea !== 0 ) {
+	//		if ( AREA === $idArea ) {
+	// 		@todo	check + fix to use AREA constant
+
+			if ( $area === $idArea ) {
+				$engineConfig	= self::getEngineConfig($ext, $type, $labelMode, $position);
+
+				$GLOBALS['CONFIG']['create']['engines']['primary'][$type] = $engineConfig;
+			}
 		}
 	}
 
@@ -91,6 +88,7 @@ class TodoyuQuickCreateManager {
 	/**
 	 * Get all registered create engines in correct order
 	 *
+	 * @param	String	$area
 	 * @return	Array
 	 */
 	public static function getEngines($area	= 'all') {

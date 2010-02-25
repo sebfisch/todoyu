@@ -46,6 +46,29 @@ class TodoyuRoleManager {
 
 
 	/**
+	 * Get informations about the roles defined in $groupIDs
+	 *
+	 * @param	Array		$groupIDs		IDs of the groups to the get information from
+	 * @return	Array
+	 */
+	public static function getRoles(array $roleIDs) {
+		$roleIDs	= TodoyuArray::intval($roleIDs, true, true);
+
+		$fields	= 'id, title, is_active';
+		$table	= self::TABLE;
+		$where	= 'deleted = 0';
+		$order	= 'is_active DESC, title';
+
+		if( sizeof($roleIDs) > 0 ) {
+			$where .= ' AND id IN(' . implode(',', $roleIDs) . ')';
+		}
+
+		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
+	}
+
+
+
+	/**
 	 * Get all usergroups
 	 *
 	 * @return	Array
@@ -54,9 +77,8 @@ class TodoyuRoleManager {
 		$fields	= '*';
 		$table	= self::TABLE;
 		$where	= '	deleted = 0 AND
-					active	= 1';
-		$order	= '	active,
-					title';
+					is_active	= 1';
+		$order	= '	active, title';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
 	}
@@ -64,24 +86,122 @@ class TodoyuRoleManager {
 
 
 	/**
-	 * Save role
+	 * Add a new role
 	 *
 	 * @param	Array		$data
-	 * @return	Integer		Role ID
+	 * @return	Integer		New role ID
+	 */
+	public static function addRole(array $data = array()) {
+		unset($data['id']);
+
+		$data['date_create']		= NOW;
+		$data['id_person_create']	= TodoyuAuth::getPersonID();
+
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
+	}
+
+
+
+	/**
+	 * Update a usergrop
+	 *
+	 * @param	Integer		$idUsergroup
+	 * @param	Array		$data
+	 * @return	Bool
+	 */
+	public static function updateRole($idRole, array $data) {
+		$idRole	= intval($idRole);
+
+		return TodoyuRecordManager::updateRecord(self::TABLE, $idRole, $data);
+	}
+
+
+
+	/**
+	 * Assign multiple persons to an event
+	 *
+	 * @param	Integer		$idEvent
+	 * @param	Array		$personIDs
+	 */
+	public static function assignPersonsToRole($idRole, array $personIDs) {
+		$idRole		= intval($idRole);
+		$personIDs	= TodoyuArray::intval($personIDs, true, false);
+
+		foreach($personIDs as $idPerson) {
+			self::assignPersonToRole($idRole, $idPerson);
+		}
+	}
+
+
+
+	/**
+	 * Assign a single person to a role
+	 *
+	 * @param	Integer		$idRole
+	 * @param	Integer		$idPerson
+	 */
+	public static function assignPersonToRole($idRole, $idPerson) {
+		$idRole		= intval($idRole);
+		$idPerson	= intval($idPerson);
+
+		$table	= 'ext_contact_mm_person_role';
+		$data	= array(
+			'id_role'			=> $idRole,
+			'id_person'			=> $idPerson
+		);
+
+		Todoyu::db()->addRecord($table, $data);
+	}
+
+
+
+	/**
+	 * Remove role from cache
+	 *
+	 * @param	Integer	$idRole
+	 */
+	public static function removeRoleFromCache($idRole) {
+		$idRole = intval($idRole);
+
+		TodoyuCache::removeRecord('Role', $idRole);
+		TodoyuCache::removeRecordQuery(self::TABLE, $idRole);
+	}
+
+
+
+	/**
+	 * Save role
+	 *
+	 * @param	Array	$storageData
 	 */
 	public static function saveRole(array $data) {
-		$xmlPath= 'ext/user/config/form/usergroup.xml';
-		$idRole	= intval($data['id']);
+		$xmlPath= 'core/config/form/role.xml';
 
-			// If new usergroup, create empty container to work with the ID
-		if( $idRole === 0 ) {
-			$idRole = self::addRole();
+			// New created record?
+		$idRole	= intval($data['id']);
+		if ( $idRole == 0 ) {
+			$idRole	= self::addRole(array());
 		}
 
-		$data	= self::saveRoleForeignRecords($data, $idRole);
+			// Add person
+		$data['persons'] = TodoyuArray::getColumn(TodoyuArray::assure($data['person']), 'id');
+
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idRole);
 
+			// If no persons assigned, assign to person "0"
+		if( sizeof($data['persons']) === 0 ) {
+			$data['persons'][] = 0;
+		}
+
+		self::assignPersonsToRole($idRole, $data['persons']);
+
+		unset($data['persons']);
+
+			// Update the event with the definitive data
 		self::updateRole($idRole, $data);
+
+			// Remove record and query from cache
+		self::removeRoleFromCache($idRole);
 
 		return $idRole;
 	}
@@ -115,7 +235,7 @@ class TodoyuRoleManager {
 
 
 	/**
-	 * Remove an user from a group
+	 * Remove an user from a role
 	 *
 	 * @param	Integer		$idGroup
 	 * @param	Integer		$idUser
@@ -130,7 +250,7 @@ class TodoyuRoleManager {
 
 
 	/**
-	 * Remove all users from a group
+	 * Remove all users from a role
 	 *
 	 * @param	Integer		$idGroup
 	 */
@@ -204,31 +324,6 @@ class TodoyuRoleManager {
 
 
 	/**
-	 * Add a new usergroup
-	 *
-	 * @param	Array		$data
-	 * @return	Integer		New role ID
-	 */
-	public static function addRole(array $data = array()) {
-		return TodoyuRecordManager::addRecord(self::TABLE, $data);
-	}
-
-
-
-	/**
-	 * Update a usergrop
-	 *
-	 * @param	Integer		$idUsergroup
-	 * @param	Array		$data
-	 * @return	Bool
-	 */
-	public static function updateRole($idRole, array $data) {
-		return TodoyuRecordManager::updateRecord(self::TABLE, $idRole, $data);
-	}
-
-
-
-	/**
 	 * Delete Usergroup (set deleted flag to 1)
 	 *
 	 * @param	Integer		$idUsergroup
@@ -291,5 +386,4 @@ class TodoyuRoleManager {
 	}
 
 }
-
 ?>

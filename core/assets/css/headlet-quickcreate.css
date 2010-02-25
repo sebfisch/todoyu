@@ -25,8 +25,8 @@
 	left:0px;
 	top:0px;
 	width:140px;
-	background-color:#f3f3f3;
-	border:1px solid #ddd;
+	background-color:#d3dabb;
+	border:1px solid #b9bbad;
 	z-index:1000;
 }
 
@@ -35,17 +35,12 @@
 		padding:3px 2px 3px 40px;
 		cursor:pointer;
 		text-align:left;
-		border-bottom:1px solid #ddd;
 	}
+	
+		#headlet-QuickCreate .modes li.primary {
+			border-bottom:1px solid #b9bbad;
+		}
 	
 	#headlet-QuickCreate .modes li.engine:hover {
-		   background-color: #d0d8b3 !important;
+		background-color:#ecefde !important;
 	}
-	
-	#headlet-QuickCreate .modes li.grouplabel {
-		font-size:12px;
-		background-color:#d5dee5;
-		font-weight:bold;
-		padding:4px 2px 4px 6px;
-	}
-

@@ -5,12 +5,11 @@
 <ul id="{$id}-modes" class="modes">
 	
 	{foreach $areaCreateModes createMode}
-		<li class="engine createmode-{$createMode.type}" ext="{$createMode.ext}" mode="{$createMode.type}">
+		<li class="engine primary createmode-{$createMode.type}" ext="{$createMode.ext}" mode="{$createMode.type}">
 			{Label $createMode.labelMode}
 		</li>
 	{/foreach}
-	
-	<li class="grouplabel">{Label core.quickcreate.alltypes.label}</li>
+
 	{foreach $createModes createMode}
 		<li class="engine createmode-{$createMode.type}" ext="{$createMode.ext}" mode="{$createMode.type}">
 			{Label $createMode.labelMode}

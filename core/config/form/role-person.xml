@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldsets>
+		<fieldset name="main">
+			<legend>Role person data</legend>
+			<elements>
+				
+				<field type="select" name="id">
+					<label>contact.person</label>
+					<source type="function">
+						<function>TodoyuContactViewHelper::getPersonOptions</function>
+					</source>
+				</field>
+				
+			</elements>
+		</fieldset>
+	</fieldsets>
+</form>

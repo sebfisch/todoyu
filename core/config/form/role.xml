@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<attributes>
+		<attribute name="action">?ext=sysmanager&amp;controller=role</attribute>
+		<attribute name="name">role</attribute>
+	</attributes>
+	<hiddenFields>
+		<field name="id"></field>
+	</hiddenFields>
+	<fieldsets>
+		<fieldset name="main">
+			<legend>Main role data</legend>
+			<elements>
+
+				<field type="textinput" name="title">
+					<label>core.title</label>
+					<required>1</required>
+				</field>
+
+				<field type="textarea" name="description">
+					<label>core.description</label>
+				</field>
+
+				<field type="checkbox" name="is_active">
+					<label>core.role.attr.active</label>
+				</field>
+
+				<field type="databaseRelation" name="persons">
+					<label>core.role.attr.persons</label>
+					<record>
+						<form>ext/sysmanager/config/form/role-person.xml</form>
+						<url>
+							<ext>sysmanager</ext>
+							<controller>role</controller>
+						</url>
+						<label type="function">
+							<function>TodoyuContactViewHelper::getPersonLabel</function>
+							<noLabel>Neuer Benutzer</noLabel>
+						</label>
+					</record>
+				</field>
+
+			</elements>
+		</fieldset>
+
+		<fieldset name="buttons">
+			<legend>Action</legend>
+			<class>buttons</class>
+			<elements>
+				<field type="saveButton" name="save">
+					<onclick>Todoyu.Ext.sysmanager.Role.save(this.form)</onclick>
+				</field>
+				<field type="cancelButton" name="cancel">
+					<onclick>Todoyu.Ext.sysmanager.Role.showList()</onclick>
+				</field>
+			</elements>
+		</fieldset>
+
+	</fieldsets>
+</form>
