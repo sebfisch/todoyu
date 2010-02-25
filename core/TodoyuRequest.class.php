@@ -72,6 +72,20 @@ class TodoyuRequest {
 
 
 	/**
+	 * Get request parameter
+	 *
+	 * @param	String		$name
+	 * @return	Mixed		String, Array or Null
+	 */
+	public static function get($name) {
+		$all	= self::getAll();
+
+		return $all[$name];
+	}
+
+
+
+	/**
 	 * Get request header data
 	 *
 	 * @param	String		$name
