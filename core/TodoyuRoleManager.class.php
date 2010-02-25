@@ -170,7 +170,7 @@ class TodoyuRoleManager {
 
 
 	/**
-	 * Save role
+	 * Save role (add or update)
 	 *
 	 * @param	Array	$storageData
 	 */
@@ -183,19 +183,13 @@ class TodoyuRoleManager {
 			$idRole	= self::addRole(array());
 		}
 
-			// Add person
-		$data['persons'] = TodoyuArray::getColumn(TodoyuArray::assure($data['person']), 'id');
+			// Person assignments
+		$data['persons'] = TodoyuArray::getColumn(TodoyuArray::assure($data['persons']), 'id');
 
 		$data	= TodoyuFormHook::callSaveData($xmlPath, $data, $idRole);
 
-			// If no persons assigned, assign to person "0"
-		if( sizeof($data['persons']) === 0 ) {
-			$data['persons'][] = 0;
-		}
-
-		self::assignPersonsToRole($idRole, $data['persons']);
-
-		unset($data['persons']);
+			// Save foreign records (person assignments)
+		$data	= self::saveRoleForeignRecords($data, $idRole);
 
 			// Update the event with the definitive data
 		self::updateRole($idRole, $data);
@@ -212,7 +206,7 @@ class TodoyuRoleManager {
 	 * Save foreign records of a usergroup
 	 *
 	 * @param	Array		$data
-	 * @param	Integer		$idUsergroup
+	 * @param	Integer		$idRole
 	 * @return	Array
 	 */
 	public static function saveRoleForeignRecords(array $data, $idRole) {
@@ -224,7 +218,6 @@ class TodoyuRoleManager {
 			// Add users
 		if( ! empty($data['persons']) ) {
 			$personIDs = TodoyuArray::getColumn($data['persons'], 'id');
-
 			self::addPersons($idRole, $personIDs);
 		}
 		unset($data['persons']);
@@ -303,7 +296,9 @@ class TodoyuRoleManager {
 		$personIDs	= TodoyuArray::intval($personIDs, true, true);
 		$personIDs	= array_unique($personIDs);
 
-		TodoyuDbHelper::addMMLinks('ext_contact_mm_person_role', 'id_role', 'id_person', $idRole, $personIDs, true);
+		foreach($personIDs as $idPerson) {
+			self::addPerson($idRole, $idPerson);
+		}
 	}
 
 
