@@ -28,7 +28,7 @@
 				<field type="databaseRelation" name="persons">
 					<label>core.role.attr.persons</label>
 					<record>
-						<form>ext/sysmanager/config/form/role-person.xml</form>
+						<form>core/config/form/role-person.xml</form>
 						<url>
 							<ext>sysmanager</ext>
 							<controller>role</controller>
