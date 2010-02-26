@@ -1,5 +1,25 @@
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
+
 TodoyuInstaller = {
-	
+
 	/**
 	 * Disable given text box if selected value == 0
 	 * 
@@ -7,16 +27,19 @@ TodoyuInstaller = {
 	 */
 	disableTextBox: function(selector)	{
 		textbox = document.getElementById('database_new');
-	
+
 		if(selector.options[selector.selectedIndex].value == '0')	{
 			textbox.disabled = false;
 		} else {
 			textbox.disabled = true;
 		}
 	},
-	
-	
-	
+
+
+
+	/**
+	 * Check database selection / declaration of new database to be created
+	 */
 	checkDbSelect: function() {
 		var newDbName	= $F('database_new');
 		
@@ -71,15 +94,16 @@ TodoyuInstaller = {
 	validatePasswordRepetition: function() {
 		var areIdentic	= ( $F('password') == $F('password_confirm') );
 		var longEnough	= $F('password').length >= 5;
+		var submitButton	= $$('button')[0];
 
 		if ( areIdentic && longEnough ) {
 			$('passwordLabel').removeClassName('redLabel');
 			$('passwordConfirmLabel').removeClassName('redLabel');
-			$('submit').show();
+			submitButton.show();
 		} else {
 			$('passwordLabel').addClassName('redLabel');
 			$('passwordConfirmLabel').addClassName('redLabel');
-			$('submit').hide();
+			submitButton.hide();
 		}
 	},
 
