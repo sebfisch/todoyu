@@ -1266,7 +1266,6 @@ INSERT INTO `system_right` (`id`, `ext`, `right`, `id_role`) VALUES
 --
 
 INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
-(1, 1246615200, 1264780312, 0, 0, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'demo@todoyu.com', 1, 1, 'Bob', 'Thingummy', 'BOTH', 'm', '', '1966-10-05'),
 (2, 1254213351, 1264500957, 1, 1, 'alfred', 'a55e28b5514b1b1292a9018549edc271', 'alfred345KJHFSD', 1, 1, 'Alfred', 'Hitchcock', 'ALHI', 'm', '', '1899-08-13'),
 (3, 1254213483, 1264500951, 1, 1, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20'),
 (4, 1264581204, 1264584523, 1, 0, '', '', 'svahs@eisberggmbh.ch', 0, 0, 'Stefan', 'Vahs', 'STVA', 'm', '', '1979-12-14'),
