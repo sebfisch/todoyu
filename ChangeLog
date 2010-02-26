@@ -1,5 +1,25 @@
-2.0.0-rc2 - 2010-02-xx
-	*
+on the way to RC2 (available via SVN only) - 2010-02-26
+	* Changed: Renamed users to person in whole system
+	* Changed: Removed user extension. Split up in contact and core
+	* Changed: User administration is located in contact and is now a person administration
+	* Changed: Renamed usergroups to roles, are part of the core together with rights
+	* Changed: Removed all creation-panelwidgets and combined their functions into a creation-headlet (head area)
+	* Added: Persons and companies are now available in the search headlet results
+	* Changed: Contactinfotypes can be edited in admin records area
+	* Added: Categorization for contactinfotypes: Phone, Email, Other
+	* Added: Rights to use an area. You can allow using an extension, but deny access to its area
+	* Added: Unittest extension with UI in admin. Extensions can now provide phpUnit testcases which are listed and testable in this listing
+	* Changed: Replaced conventional per-page paging with an extendable list function (show more records)
+	* Added: Implemented all filter conditions from internal snowflake version (1.1) for todoyu 2.0
+	* Changed: Tasks and projects have now their own unique icons
+	* Changed: Cleaned up most of the sprite iconsets. No more duplicate icons. Every icon belongs to a specific extension
+	* Changed: Removed all unused graphics in core/asses/img
+	* Changed: Moved notifications to the top of the page to prevent them blocking the subtabs
+	* Added: The task header has now a dynamic part which is used by extensions. Currently timetracking adds the billable time there
+	* Added: Hovering a persons name shows a quickinfo like for events in the calendar
+	* Changed: Dev extension is no longer part of the basic package. Now available as "public". No useful functionality yet
+	* Changed: Bugtracker is available as public extension
+	* Bugfix: Tons of bugfixes and usability improvements (from internal testing and reported by the community)
 
 2.0.0-rc1 - 2010-01-29
 	* Changed: Remove direct mb_* use. Checks first if multibyte extension is available

@@ -507,7 +507,9 @@ class TodoyuArray {
 	 * @return	Array
 	 */
 	public static function mergeSubArrays(array $array) {
-		if( sizeof($array) === 1 ) {
+		if( sizeof($array) === 0 ) {
+			return array();
+		} elseif( sizeof($array) === 1 ) {
 			return array_shift($array);
 		} else {
 			return call_user_func_array('array_merge', $array);
@@ -523,7 +525,7 @@ class TodoyuArray {
 	 * @param	Array		Multiple array arguments like array_merge
 	 * @return	Array
 	 */
-	public static function mergeUnique() {
+	public static function mergeUnique(/*arrays*/) {
 		$funcArgs	= func_get_args();
 		$merged		= call_user_func_array('array_merge', $funcArgs);
 

@@ -21,6 +21,8 @@
 
 	// Set session cookie HTTPonly
 @ini_set('session.cookie_httponly', 1);
+	// Ignore errors of type notice
+error_reporting(E_ALL ^ E_NOTICE);
 
 	// Start session
 session_start();
