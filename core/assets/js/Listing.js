@@ -90,9 +90,9 @@ Todoyu.Listing = {
 
 		Todoyu.Ui.append(target, url, options);
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler being evoked upon completion of extending displayed entries
 	 * 
@@ -103,5 +103,5 @@ Todoyu.Listing = {
 	onExtended: function(name, offset, response) {
 
 	}
-	
+
 };

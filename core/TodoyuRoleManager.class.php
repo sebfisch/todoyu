@@ -71,14 +71,14 @@ class TodoyuRoleManager {
 	/**
 	 * Get all usergroups
 	 *
+	 * @param	Boolean		$onlyActive
 	 * @return	Array
 	 */
-	public static function getAllRoles() {
+	public static function getAllRoles($onlyActive = false) {
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	deleted = 0 AND
-					is_active	= 1';
-		$order	= '	active, title';
+		$where	= '	deleted = 0' . ($onlyActive ? ' AND is_active = 1' : '');
+		$order	= ' is_active, title';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
 	}
