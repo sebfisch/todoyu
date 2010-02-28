@@ -646,7 +646,7 @@ INSERT INTO `ext_contact_contactinfotype` (`id`, `deleted`, `category`, `key`, `
 -- Data for Table `system_role`
 --
 
-INSERT INTO `system_role` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `active`, `description`) VALUES
+INSERT INTO `system_role` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `is_active`, `description`) VALUES
 (1, 1264761659, 0, 1, 0, 'Customers', 1, 'Our customers with access to todoyu'),
 (2, 1264762106, 0, 1, 0, 'Management', 1, ''),
 (5, 1264762192, 0, 1, 0, 'todoyu support team', 1, ''),
