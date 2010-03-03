@@ -228,7 +228,7 @@ class TodoyuLanguage {
 	 * @return	String		The label with the key $index for $language
 	 */
 	private static function getCachedLabel($fileKey, $index, $language = 'en') {
-		if( is_null(self::$cache[$fileKey][$language][$index]) ) {
+		if( ! isset(self::$cache[$fileKey][$language][$index]) || is_null(self::$cache[$fileKey][$language][$index]) ) {
 			self::loadFileLabels($fileKey, $language);
 		}
 

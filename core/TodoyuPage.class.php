@@ -317,6 +317,12 @@ class TodoyuPage {
 				if( empty($file['position']) ) {
 					$file['position'] = 100;
 				}
+				if ( empty($file['compress']) ) {
+					$file['compress']	= false;
+				}
+				if ( empty($file['merge']) ) {
+					$file['merge']	= false;
+				}
 
 				self::addStylesheet($file['file'], $file['media'], $file['position'], $file['compress'], $file['merge']);
 			}
@@ -342,6 +348,16 @@ class TodoyuPage {
 
 		if( is_array($files) ) {
 			foreach($files as $file) {
+			if ( empty($file['compress']) ) {
+					$file['compress']	= false;
+				}
+				if ( empty($file['merge']) ) {
+					$file['merge']	= false;
+				}
+				if ( empty($file['localize']) ) {
+					$file['localize']	= false;
+				}
+
 				self::addJavascript($file['file'], $file['position'], $file['compress'], $file['merge'], $file['localize']);
 			}
 		}

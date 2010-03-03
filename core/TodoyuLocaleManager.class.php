@@ -106,7 +106,7 @@ class TodoyuLocaleManager {
 	 * @return	String
 	 */
 	public static function getDefaultLocale() {
-		return $CONFIG['defaultLocale'];
+		return $GLOBALS['CONFIG']['defaultLocale'];
 	}
 
 
