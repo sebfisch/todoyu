@@ -120,7 +120,7 @@ class TodoyuFrontend {
 	 * @param	String		$target
 	 */
 	public static function addMenuEntry($key, $label, $href, $position = 50, $target = '') {
-		if( ! is_array($GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]) ) {
+		if( ! isset($GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]) || ! is_array($GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]) ) {
 			$GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key] = array();
 		}
 

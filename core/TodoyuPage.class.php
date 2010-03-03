@@ -87,12 +87,27 @@ class TodoyuPage {
 		$jsFiles	= $GLOBALS['CONFIG']['FE']['PAGE']['assets']['js'];
 
 		foreach($jsFiles as $jsFile) {
+				if ( empty($jsFile['compress']) ) {
+					$jsFile['compress']	= false;
+				}
+				if ( empty($file['merge']) ) {
+					$jsFile['merge']	= false;
+				}
+				if ( empty($file['localize']) ) {
+					$jsFile['localize']	= false;
+				}
 			self::addJavascript($jsFile['file'], $jsFile['position'], $jsFile['compress'], $jsFile['merge'], $jsFile['localize']);
 		}
 
 		$cssFiles	= $GLOBALS['CONFIG']['FE']['PAGE']['assets']['css'];
 
 		foreach($cssFiles as $cssFile) {
+				if ( empty($cssFile['compress']) ) {
+					$cssFile['compress']	= false;
+				}
+				if ( empty($file['merge']) ) {
+					$cssFile['merge']	= false;
+				}
 			self::addStylesheet($cssFile['file'], $cssFile['media'], $cssFile['position'], $cssFile['compress'], $cssFile['merge']);
 		}
 	}
@@ -307,7 +322,7 @@ class TodoyuPage {
 	public static function addExtStylesheets($ext, $type = 'default') {
 		TodoyuExtensions::loadAllAssets();
 
-		$files	= $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['css'];
+		$files	= isset( $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['css'] ) ? $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['css'] : NULL;
 
 		if( is_array($files) ) {
 			foreach($files as $file) {
@@ -344,7 +359,7 @@ class TodoyuPage {
 	public static function addExtJavascript($ext, $type = 'default') {
 		TodoyuExtensions::loadAllAssets();
 
-		$files	= $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['js'];
+		$files	= isset( $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['js'] ) ? $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['js'] : NULL;
 
 		if( is_array($files) ) {
 			foreach($files as $file) {

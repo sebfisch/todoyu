@@ -217,7 +217,12 @@ class TodoyuArray {
 		$conflictCounter	= 0;
 
 		foreach($unsortedArray as $index => $item) {
-			$label	= $caseSensitive ? $item[$sortByLabel] : strtolower($item[$sortByLabel]);
+
+			$label	= isset( $item[$sortByLabel] ) ? $item[$sortByLabel] : NULL;
+			if ( $caseSensitive !== true ) {
+				$label	= 	strtolower($label);
+			}
+
 			$key 	= array_key_exists($label, $labelKeyArray) ? $label . '-' . $conflictCounter++ : $label;
 
 			$item['__key']	= $index;
