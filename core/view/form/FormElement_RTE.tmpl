@@ -1,7 +1,7 @@
 {extends "core/view/form/FormElement.tmpl"}
 
 {block name="field"}
-<textarea name="{$htmlName}" id="{$htmlId}" cols="{$cols}" rows="{$rows}" class="{$inputClass} {$class}">{htmlentities $valueTemplate}</textarea>
+<textarea name="{$htmlName}" id="{$htmlId}" cols="{$cols}" rows="{$rows}" class="{$inputClass} {$class}">{htmlentities $valueTemplate constant(ENT_COMPAT) 'UTF-8'}</textarea>
 <script type="text/javascript">
 {$rteJs}
 </script>
