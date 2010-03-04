@@ -62,8 +62,7 @@ class TodoyuPage {
 		self::addMetatag('Content-Type', $GLOBALS['CONFIG']['FE']['ContentType']);
 
 		self::addJsOnloadedFunction('Todoyu.init.bind(Todoyu)', 1);
-
-		self::setBodyID(EXT);
+		self::addJsOnloadedFunction('Todoyu.Headlet.init.bind(Todoyu.Headlet)', 10);
 	}
 
 
@@ -87,27 +86,27 @@ class TodoyuPage {
 		$jsFiles	= $GLOBALS['CONFIG']['FE']['PAGE']['assets']['js'];
 
 		foreach($jsFiles as $jsFile) {
-				if ( empty($jsFile['compress']) ) {
-					$jsFile['compress']	= false;
-				}
-				if ( empty($file['merge']) ) {
-					$jsFile['merge']	= false;
-				}
-				if ( empty($file['localize']) ) {
-					$jsFile['localize']	= false;
-				}
+//				if ( empty($jsFile['compress']) ) {
+//					$jsFile['compress']	= false;
+//				}
+//				if ( empty($file['merge']) ) {
+//					$jsFile['merge']	= false;
+//				}
+//				if ( empty($file['localize']) ) {
+//					$jsFile['localize']	= false;
+//				}
 			self::addJavascript($jsFile['file'], $jsFile['position'], $jsFile['compress'], $jsFile['merge'], $jsFile['localize']);
 		}
 
 		$cssFiles	= $GLOBALS['CONFIG']['FE']['PAGE']['assets']['css'];
 
 		foreach($cssFiles as $cssFile) {
-				if ( empty($cssFile['compress']) ) {
-					$cssFile['compress']	= false;
-				}
-				if ( empty($file['merge']) ) {
-					$cssFile['merge']	= false;
-				}
+//				if ( empty($cssFile['compress']) ) {
+//					$cssFile['compress']	= false;
+//				}
+//				if ( empty($file['merge']) ) {
+//					$cssFile['merge']	= false;
+//				}
 			self::addStylesheet($cssFile['file'], $cssFile['media'], $cssFile['position'], $cssFile['compress'], $cssFile['merge']);
 		}
 	}
@@ -359,22 +358,10 @@ class TodoyuPage {
 	public static function addExtJavascript($ext, $type = 'default') {
 		TodoyuExtensions::loadAllAssets();
 
-		$files	= isset( $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['js'] ) ? $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['js'] : NULL;
+		$files	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['js']);
 
-		if( is_array($files) ) {
-			foreach($files as $file) {
-			if ( empty($file['compress']) ) {
-					$file['compress']	= false;
-				}
-				if ( empty($file['merge']) ) {
-					$file['merge']	= false;
-				}
-				if ( empty($file['localize']) ) {
-					$file['localize']	= false;
-				}
-
-				self::addJavascript($file['file'], $file['position'], $file['compress'], $file['merge'], $file['localize']);
-			}
+		foreach($files as $file) {
+			self::addJavascript($file['file'], $file['position'], $file['compress'], $file['merge'], $file['localize']);
 		}
 	}
 
