@@ -191,10 +191,11 @@ var Todoyu = {
 
 
 	/**
-	 * Call a functio reference, if it's one. Otherwise just ignore the call
+	 * Call a function reference, if it's one. Otherwise just ignore the call
+	 * The first argument is the function, all other arguments will be handed down to this function
+	 * The debug output is just for deveopment
 	 * 
-	 * @param {Object} functionReference
-	 * @param {Object}  args
+	 * @param	Function	functionReference
 	 */
 	callIfExists: function(functionReference /*, args */) {
 		var args = Array.prototype.splice.call(arguments, 1);

@@ -27,14 +27,17 @@
  * @subpackage	Core
  */
 
-class TodoyuHeadletAjaxLoader extends TodoyuHeadlet {
+class TodoyuHeadletAjaxLoader extends TodoyuHeadletTypeButton {
 
 	/**
 	 * Initialize headlets
 	 *
 	 */
 	protected function init() {
-		$this->setTemplate('core/view/headlet-ajaxloader.tmpl');
+		$this->setJsHeadlet('Todoyu.Headlet.AjaxLoader');
+
+
+		$this->addButtonAttribute('style', 'display:none');
 	}
 
 

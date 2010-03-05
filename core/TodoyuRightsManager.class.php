@@ -50,24 +50,34 @@ class TodoyuRightsManager {
 	 * following requests will use the data in the session
 	 */
 	public static function loadRights() {
-		if( TodoyuSession::isIn('rights') ) {
-			self::$rights = TodoyuSession::get('rights');
-		} else {
-			$roleIDs	= TodoyuAuth::getPerson()->getRoleIDs();
+			// Check if rights are loaded (is array)
+		if( ! is_array(self::$rights) ) {
+				// Check if rights are stored in session
+			if( TodoyuSession::isIn('rights') ) {
+				self::$rights = TodoyuSession::get('rights');
+			} else {
+					// Get roles from db
+				$roleIDs	= TodoyuAuth::getPerson()->getRoleIDs();
 
-			if( sizeof($roleIDs) > 0 )	{
-				$fields	= '	ext, `right`';
-				$table	= self::TABLE;
+					// If person has roles, get rights for the roles and compile them
+				if( sizeof($roleIDs) > 0 )	{
+					$fields	= '	ext, `right`';
+					$table	= self::TABLE;
 
-				$where	= '	id_role IN(' . implode(',', $roleIDs) . ')';
+					$where	= '	id_role IN(' . implode(',', $roleIDs) . ')';
 
-				$rights = Todoyu::db()->getArray($fields, $table, $where);
+					$rights = Todoyu::db()->getArray($fields, $table, $where);
 
-				foreach($rights as $right) {
-					self::$rights[$right['ext']][$right['right']] = 1;
+					foreach($rights as $right) {
+						self::$rights[$right['ext']][$right['right']] = 1;
+					}
+
+						// Save compiled rights in session
+					TodoyuSession::set('rights', self::$rights);
+				} else {
+						// If no roles found, set an empty rights array to prevent loading again (nothing allowed)
+					self::$rights = array();
 				}
-
-				TodoyuSession::set('rights', self::$rights);
 			}
 		}
 	}
@@ -237,6 +247,18 @@ class TodoyuRightsManager {
 	public static function restrict($extKey, $right) {
 		if( ! self::isAllowed($extKey, $right) ) {
 			self::deny($extKey, $right);
+		}
+	}
+
+
+
+	/**
+	 * Restrict access to internal persons
+	 *
+	 */
+	public static function restrictInternal() {
+		if( ! Todoyu::person()->isInternal() ) {
+			self::deny('core', 'internal');
 		}
 	}
 

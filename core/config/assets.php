@@ -156,6 +156,10 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 55
 		),
 		array(
+			'file'		=> 'core/assets/js/HeadletAjaxLoader.js',
+			'position'	=> 55
+		),
+		array(
 			'file'		=> 'core/assets/js/AjaxResponders.js',
 			'position'	=> 56
 		),
@@ -300,6 +304,11 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/assets/css/quickinfo.css',
+			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/headlet-ajaxloader.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),

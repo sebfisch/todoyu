@@ -19,7 +19,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-class TodoyuHeadletQuickCreate extends TodoyuHeadlet {
+class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 
 	/**
 	 * Initialize quick create headlet (set template, set initial data)
@@ -31,6 +31,8 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadlet {
 			'areaCreateModes'	=> TodoyuQuickCreateManager::getAreaEngines(),
 			'createModes'		=> TodoyuQuickCreateManager::getEngines()
 		));
+
+
 	}
 
 

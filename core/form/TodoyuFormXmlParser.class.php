@@ -131,6 +131,12 @@ class TodoyuFormXmlParser {
 	 * @param	SimpleXmlElement	$fieldsetXmlObj
 	 */
 	private static function addFieldset(&$parentElement, SimpleXmlElement $fieldsetXmlObj) {
+			// If restricted to internal persons
+		if( $fieldsetXmlObj->restrictInternal ) {
+			return false;
+		}
+
+			// If restricted by rights
 		if( $fieldsetXmlObj->restrict ) {
 			$config	= TodoyuArray::fromSimpleXML($fieldsetXmlObj);
 
@@ -245,6 +251,9 @@ class TodoyuFormXmlParser {
 				// If all rights processed without a return
 				// AND = allowed, all rights passed   OR = disallowed, no right matched
 			return $and;
+		} elseif( array_key_exists('restrictInternal', $config) ) {
+				// Restricted to internal persons
+			return Todoyu::person()->isInternal();
 		}
 
 			// If no requirements found for the filed, allow it

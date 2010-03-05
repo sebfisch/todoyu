@@ -48,6 +48,13 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 */
 	protected $params	= array();
 
+	protected $buttonAttributes	= array();
+
+
+	protected $jsHeadlet= 'xxx';
+
+
+
 
 	/**
 	 * Headlet constructor which calls the init function
@@ -55,9 +62,26 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 * @final
 	 */
 	public final function __construct() {
+		$this->addButtonClass('button');
+
+		$this->initType();
 		$this->init();
 	}
 
+
+	protected final function setJsHeadlet($jsHeadlet) {
+		$this->jsHeadlet = $jsHeadlet;
+	}
+
+
+
+	/**
+	 * Init function for type
+	 *
+	 */
+	protected function initType() {
+		// Dummy, override in headlet type class
+	}
 
 
 	/**
@@ -65,7 +89,29 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 *
 	 */
 	protected function init() {
-		// Dummy, override in extended headlet
+		// Dummy, override in headlet class
+	}
+
+
+
+	/**
+	 * Get headlet name
+	 *
+	 * @return	String
+	 */
+	public function getName() {
+		return str_replace('TodoyuHeadlet', '', get_class($this));
+	}
+
+
+
+	/**
+	 * Get headlet ID (for HTML)
+	 *
+	 * @return	String
+	 */
+	public function getID() {
+		return 'headlet-' . strtolower($this->getName());
 	}
 
 
@@ -114,6 +160,38 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	}
 
 
+	/**
+	 * Add attribute for the button
+	 *
+	 * @param	String		$name
+	 * @param	String		$value
+	 */
+	protected function addButtonAttribute($name, $value) {
+		$this->buttonAttributes[$name][] = $value;
+	}
+
+
+	protected function addButtonClass($class) {
+		$this->addButtonAttribute('class', trim($class) . ' ');
+	}
+
+
+	/**
+	 * Get button attributes
+	 *
+	 * @return	Array
+	 */
+	protected function getButtonAttributes() {
+		$attributes	= array();
+
+		foreach($this->buttonAttributes as $name => $values) {
+			$attributes[$name] = implode('', $values);
+		}
+
+		return $attributes;
+	}
+
+
 
 	/**
 	 * Render headlet
@@ -121,7 +199,15 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 * @return	String
 	 */
 	public function render() {
-		$this->data['id'] = strtolower(str_replace('Todoyu','',get_class($this)));
+		$this->data['id'] = 'headlet-' . strtolower(str_replace('TodoyuHeadlet', '', get_class($this)));
+
+
+		$this->data['buttonAttributes']	= $this->getButtonAttributes();
+
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.add.bind(Todoyu.Headlet, \'' . $this->getName() . '\', ' . $this->jsHeadlet . ')');
+
+
+//		TodoyuDebug::printHtml($this->getButtonAttributes());
 
 		return render($this->template, $this->data);
 	}

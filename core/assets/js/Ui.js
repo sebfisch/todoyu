@@ -278,21 +278,10 @@ Todoyu.Ui = {
 	/**
 	 * AJAX loader
 	 *
-	 * @param	Boolean	show
+	 * @param	Boolean		showLoader
 	 */
-	ajaxLoader: function(show) {
-		if(show) {
-			Effect.Appear($('ajax-loader').down(), {
-				'duration': 0.2,
-				'from': 0.3,
-				'to': 1.0,
-				'transition': Effect.Transitions.spring
-			});
-		} else {
-			Effect.Fade.delay(0.5, $('ajax-loader').down(), {
-				'duration': 0.5
-			});
-		}
+	ajaxLoader: function(showLoader) {
+		Todoyu.Headlet.show(showLoader);	
 	},
 
 

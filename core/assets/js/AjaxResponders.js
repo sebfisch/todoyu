@@ -23,7 +23,7 @@
  * This responders are called for every ajax request of prototype
  */
 Todoyu.AjaxResponders = {
-	
+
 	/**
 	 * Hooks called when request is completed
 	 */
@@ -49,7 +49,7 @@ Todoyu.AjaxResponders = {
 
 	/**
 	 * Add a new hook function which will be called when request is completed
-	 * 
+	 *
 	 * @param	Function	hook
 	 */
 	addOnCompleteHook: function(hook) {
@@ -61,7 +61,7 @@ Todoyu.AjaxResponders = {
 	/**
 	 * Call all registered hook functions
 	 * They receive the response object as only parameter
-	 * 
+	 *
 	 * @param	Ajax.Response	response
 	 */
 	callOnCompleteHooks: function(response) {
@@ -75,23 +75,23 @@ Todoyu.AjaxResponders = {
 	/**
 	 * Extend the prototype 'respondToReadyState' handler
 	 * Delete the onComplete handler if no access flag is set in header
-	 * 
+	 *
 	 *	@param	Ajax.Request	request
 	 */
 	onCreate: function(request) {
-		Todoyu.Ui.ajaxLoader(true);
+		Todoyu.Headlet.AjaxLoader.show();
 		Todoyu.Ui.setLinkCursor(true);
 
 		var oldRespondToReadyState = request.respondToReadyState;
 		request.respondToReadyState = function(readyState) {
 			var state	= Ajax.Request.Events[readyState];
 			var response= new Ajax.Response(this);
-			
+
 				// Call onComplete hooks
 			if( state == 'Complete' ) {
 				Todoyu.AjaxResponders.callOnCompleteHooks(response);
 			}
-			
+
 			oldRespondToReadyState.call(response.request, readyState);
 		};
 	},
@@ -106,10 +106,10 @@ Todoyu.AjaxResponders = {
 	onComplete: function(response) {
 			// Check for hash header and scroll to element
 		this.scrollToElement(response);
-				
+
 			// If no more requests are running, stop spinner
 		if( Ajax.activeRequestCount < 1 ) {
-			Todoyu.Ui.ajaxLoader(false);
+			Todoyu.Headlet.AjaxLoader.hide();
 			Todoyu.Ui.setLinkCursor(false);
 		}
 	},
@@ -118,7 +118,7 @@ Todoyu.AjaxResponders = {
 
 	/**
 	 * Handler when connection to server fails
-	 * 
+	 *
 	 * @param	Ajax.Response	response
 	 * @param	Exception		exception
 	 */
@@ -126,7 +126,7 @@ Todoyu.AjaxResponders = {
 		//Todoyu.notifyError('[LLL:core.ajax.requestFailed]', 0);
 		alert('[LLL:core.ajax.requestFailed]');
 	},
-	
+
 
 
 

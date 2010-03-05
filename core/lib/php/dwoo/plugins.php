@@ -216,23 +216,6 @@ function Dwoo_Plugin_filesize(Dwoo $dwoo, $filesize) {
 
 
 /**
- * Quicklink to user information
- *
- * @package		Todoyu
- * @subpackage	Template
- *
- * @param	Dwoo 		$dwoo
- * @param	Integer		$idUser
- * @return	String
- */
-
-function Dwoo_Plugin_UserQuicklink(Dwoo $dwoo, $idUser) {
-	return 'alert(\'Quicklink: \' + ' . $idUser . ')';
-}
-
-
-
-/**
  * Limit string length to given length
  *
  * @package		Todoyu
@@ -496,11 +479,23 @@ function Dwoo_Plugin_allowedAny_compile(Dwoo_Compiler $compiler, $ext, $rightsLi
  * @param	Dwoo_Compiler 	$compiler
  * @param	String			$ext
  * @param	String			$right
- * @param	Integer			$idUser
+ * @param	Integer			$idPerson
  * @return	String
  */
-function Dwoo_Plugin_allowedOrOwn_compile(Dwoo_Compiler $compiler, $ext, $right, $idUser) {
-	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ') || personid()==' . $idUser;
+function Dwoo_Plugin_allowedOrOwn_compile(Dwoo_Compiler $compiler, $ext, $right, $idPerson) {
+	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ') || personid()==' . $idPerson;
+}
+
+
+
+/**
+ * Check if person is internal
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @return	String		(Bool)
+ */
+function Dwoo_Plugin_isInternal_compile(Dwoo_Compiler $compiler) {
+	return 'Todoyu::person()->isInternal()';
 }
 
 

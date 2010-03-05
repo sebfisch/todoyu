@@ -1,5 +1,6 @@
-<div class="headlet" id="{$id}" {$attributes}>
-	{block "headlet"}
-		Headlet content
-	{/block}
+<div id="{$id}-button" {foreach $buttonAttributes buttonAttributeName buttonAttributeValue}{$buttonAttributeName}="{$buttonAttributeValue}"{/foreach}>
+	<div id="{$id}-icon" class="icon"><!-- --></div>
+</div>
+<div id="{$id}-content" class="content" style="display:none">
+	{block "content"}{/block}
 </div>

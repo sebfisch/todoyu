@@ -65,7 +65,7 @@ class TodoyuHeadManager {
 
 		foreach($headlets as $headletConfig) {
 			$className	= $headletConfig['class'];
-			$name		= str_replace('TodoyuHeadlet', '', $className);
+			$name		= strtolower(str_replace('TodoyuHeadlet', '', $className));
 			$headlet	= new $className();
 
 			$data['headlets'][$name] = array(

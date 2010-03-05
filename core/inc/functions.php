@@ -179,6 +179,16 @@ function restrict($extKey, $right) {
 
 
 /**
+ * Restrict access to internal persons
+ *
+ */
+function restrictInternal() {
+	TodoyuRightsManager::restrictInternal();
+}
+
+
+
+/**
  * Restrict (deny) access if none if the rights is allowed
  * If one right is allowed, do nothing
  *

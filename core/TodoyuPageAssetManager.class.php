@@ -229,6 +229,7 @@ class TodoyuPageAssetManager {
 	}
 
 
+
 	/**
 	 * Get the javascript merge file
 	 *

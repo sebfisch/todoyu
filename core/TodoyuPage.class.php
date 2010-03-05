@@ -62,7 +62,7 @@ class TodoyuPage {
 		self::addMetatag('Content-Type', $GLOBALS['CONFIG']['FE']['ContentType']);
 
 		self::addJsOnloadedFunction('Todoyu.init.bind(Todoyu)', 1);
-//		self::addJsOnloadedFunction('Todoyu.Headlet.init.bind(Todoyu.Headlet)', 10);
+		self::addJsOnloadedFunction('Todoyu.Headlet.init.bind(Todoyu.Headlet)', 10);
 	}
 
 
