@@ -67,7 +67,7 @@ class TodoyuDbHelper {
 	public static function getForeignIDs($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord) {
 		$where	= $fieldLocal . ' = ' . intval($idLocalRecord);
 
-		return Todoyu::db()->getColumn($fieldForeign, $mmTable, $fieldLocal);
+		return Todoyu::db()->getColumn($fieldForeign, $mmTable, $where);
 	}
 
 
