@@ -185,13 +185,13 @@ Todoyu.Notification = {
 	 *	@param	Integer		id
 	 *	@param	String		code
 	 */
-	appendNote: function(id, code) {
+	appendNote: function(idNote, code) {
 		$('notes').insert({'top':code});
 		
-		var id	= $$('.note').last().id;
-
-		$(id).hide();
-		$(id).appear({'duration': 0.5});
+		var htmlID	= 'notification-note-' + idNote;
+		
+		$(htmlID).hide();
+		$(htmlID).appear({'duration': 0.5});
 	},
 
 

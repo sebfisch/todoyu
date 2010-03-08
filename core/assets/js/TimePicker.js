@@ -264,7 +264,7 @@ var TimePicker = Class.create({
 		
 		if( Todoyu.exists(idPicker) ) {
 			$(idPicker).remove();
-		};
+		}
 	},
 
 

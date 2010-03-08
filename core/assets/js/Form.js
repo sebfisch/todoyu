@@ -168,9 +168,10 @@ Todoyu.Form = {
 			}
 		};
 		var idPopup	= 'popup-' + idField;
-		var title	= title ? title : 'Form Wizard';
-		var width	= width > 0 ? width : 480;
-		var height	= height > 0 ? height : 300;
+		
+		title	= title ? title : 'Form Wizard';
+		width	= width > 0 ? width : 480;
+		height	= height > 0 ? height : 300;
 
 		return Todoyu.Popup.openWindow(idPopup, title, width, url, options);
 	}

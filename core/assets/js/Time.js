@@ -106,8 +106,9 @@ Todoyu.Time = {
 	 * @todo	comment
 	 */		
 	getShiftedTime: function(baseTime, step, direction) {
+		baseTime	= this.getDayStart(baseTime);
+		
 		var factor	= (direction === 'up' ? 1 : -1);
-		var baseTime= this.getDayStart(baseTime);
 		var date	= new Date(baseTime * 1000);
 
 		if( step === 'month' ) {
@@ -150,22 +151,22 @@ Todoyu.Time = {
 	/**
 	 * Get timestamp at start of week
 	 *
-	 * @param	Integer	time
+	 * @param	Integer		time
 	 * @return	Integer
 	 */
-	getWeekStart: function(time) {
-		var date = new Date(time * 1000);
+	getWeekStart: function(baseTime) {
+		var date = new Date(baseTime * 1000);
 
 		date.setHours(0);
 		date.setMinutes(0);
 		date.setSeconds(0);
 
-		var time = parseInt(date.getTime() / 1000, 10);
+		var newTime = parseInt(date.getTime() / 1000, 10);
 		var shift = (((date.getDay() % 7) - 1) * -1);
 
-		time += shift * this.seconds.day;
+		newTime += shift * this.seconds.day;
 
-		return time
+		return newTime;
 	},
 
 

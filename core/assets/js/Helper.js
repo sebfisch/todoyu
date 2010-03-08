@@ -32,19 +32,14 @@ Todoyu.Helper = {
 		switch(type) {
 			case 'boolean':
 				return mixedvar ? 1 : 0;
-				break;
-
 
 			case 'string':
 				temp = parseInt(mixedvar, 10);
 				return isNaN(temp) ? 0 : temp;
-				break;
-
 
 			case 'number':
 				return Math.floor(mixedvar);
-				break;
-
+				
 			default:
 				return 0;
 		}
@@ -144,14 +139,16 @@ Todoyu.Helper = {
 	 * @return	Mixed
 	 */
 	fireEvent: function(element, event){
+		var evt;
+		
 		if (document.createEventObject){
 				// dispatch for IE
-			var evt = document.createEventObject();
+			evt = document.createEventObject();
 
-			return element.fireEvent('on' + event, evt)
+			return element.fireEvent('on' + event, evt);
 		} else {
 				// dispatch for firefox + others
-			var evt = document.createEvent('HTMLEvents');
+			evt = document.createEvent('HTMLEvents');
 			evt.initEvent(event, true, true ); // event type, bubbling, cancelable
 
 			return ! element.dispatchEvent(evt);

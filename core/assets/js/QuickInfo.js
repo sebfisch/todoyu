@@ -65,7 +65,7 @@ Todoyu.QuickInfo = {
 			x += 8;
 			y -= 12;
 
-			var popupWidth	= $(this.popupID).getDimensions()['width'];
+			var popupWidth	= $(this.popupID).getDimensions().width;
 
 			if ( x + 20 > window.innerWidth - popupWidth) {
 				x = x - popupWidth - 20;
