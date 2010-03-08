@@ -187,7 +187,7 @@ body {
 	Panel
    ----------------- */
 #panel * {
-	font-size:10px;
+	font-size:11px;
 }
 
 .panelWidget {
@@ -226,7 +226,7 @@ body {
 		clear:none;
 		margin:0;
 		padding:0 0 0 10px;
-		letter-spacing:0.1em;
+		
 		line-height:26px;
 	}
 
