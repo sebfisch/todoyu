@@ -107,7 +107,7 @@ Todoyu.Popup = {
 			// Wrap onComplete with own onComplete to handle popup
 		requestOptions = requestOptions || {};
 		if( typeof requestOptions.onComplete !== 'function' ) {
-			requestOptions.onComplete = Prototype.emptyFunction
+			requestOptions.onComplete = Prototype.emptyFunction;
 		}
 
 		requestOptions.onComplete.wrap(function(idPopup, callOriginal, response){
@@ -263,6 +263,6 @@ Todoyu.Popup = {
 	 */
 	destroy: function(idPopup) {
 		this.getPopup(idPopup).destroy();
-	},
+	}
 
 };

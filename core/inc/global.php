@@ -29,7 +29,7 @@ session_start();
 
 
 	// Init config array
-if( ! is_array($CONFIG) ) {
+if( ! isset($CONFIG) ) {
 	$CONFIG = array();
 }
 

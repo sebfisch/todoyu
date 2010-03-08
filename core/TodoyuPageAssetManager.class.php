@@ -414,12 +414,14 @@ class TodoyuPageAssetManager {
 		$doMerging	= $GLOBALS['CONFIG']['CACHE']['CSS']['merge'];
 
 		foreach( $stylesheets as $fileConfig ) {
-			if( $doMerging && $fileConfig['merge'] ) {
+			if( $doMerging && $fileConfig['merge'] !== false ) {
 				$merge[]	= $fileConfig;
 			} else {
 				$single[]	= $fileConfig;
 			}
 		}
+
+
 
 			// Process non-merge files
 		if( sizeof($single) ) {
