@@ -28,7 +28,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * Initialize quick create headlet
 	 */
 	init: function() {
-		this.Mode.init();
+		//this.Mode.init();
 	},
 
 

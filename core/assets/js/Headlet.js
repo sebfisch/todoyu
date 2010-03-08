@@ -41,10 +41,12 @@ Todoyu.Headlet = {
 	 * Initialize headlet management (observation)
 	 */
 	init: function() {
+		/*
 			// Observe all headlet elements
 		$('headlets').select('li.headlet').invoke('observe', 'mouseover', this.onOverHeadlet.bindAsEventListener(this));
 			// Observe headlet container
 		$('headlets').observe('mouseover', this.onOverContainer.bindAsEventListener(this));
+		*/
 	},
 	
 		
@@ -57,7 +59,7 @@ Todoyu.Headlet = {
 	add: function(name, headletObject) {
 		this.headlets[name.toLowerCase()] = headletObject;
 		
-		headletObject.init();
+		Todoyu.callIfExists(headletObject.init);
 	},
 	
 	

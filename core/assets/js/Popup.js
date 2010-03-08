@@ -94,8 +94,8 @@ Todoyu.Popup = {
 			zIndex:				2000,
 			recenterAuto:		false,
 
-			'hideEffect': 		Element.hide,
-			'showEffect': 		Element.show,
+			'hideEffect':		Element.hide,
+			'showEffect':		Element.show,
 			effectOptions:		null,
 
 			destroyOnClose:		true
