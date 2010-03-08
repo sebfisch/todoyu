@@ -47,12 +47,15 @@
 			<legend>Action</legend>
 			<class>buttons</class>
 			<elements>
-				<field type="saveButton" name="save">
-					<onclick>Todoyu.Ext.sysmanager.Role.save(this.form)</onclick>
-				</field>
+
 				<field type="cancelButton" name="cancel">
 					<onclick>Todoyu.Ext.sysmanager.Role.showList()</onclick>
 				</field>
+
+				<field type="saveButton" name="save">
+					<onclick>Todoyu.Ext.sysmanager.Role.save(this.form)</onclick>
+				</field>
+
 			</elements>
 		</fieldset>
 

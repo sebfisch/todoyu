@@ -1,0 +1,49 @@
+/* IE6  only stuff */
+/* http://www.tjkdesign.com/articles/png-alpha-transparency_with-no-http-request.asp */
+/* for png images */
+* html img {
+	behavior: expression(
+		(this.runtimeStyle.behavior="none") && (this.src.toLowerCase().indexOf('.png')>-1) && (
+		this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='scale')",
+		this.runtimeStyle.paddingTop = this.height,
+		this.runtimeStyle.height = 0
+		)
+	);
+	overflow:hidden;
+}
+
+/* for backgorund png images add png fix to container */
+#companyLogo {
+	behavior: expression(
+		(this.runtimeStyle.behavior = "none") && (this.currentStyle.backgroundImage.toString().toLowerCase().indexOf('.png')>-1) && (
+		this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.currentStyle.backgroundImage.toString().replace('url("','').replace('")','') + "', sizingMethod='crop')",
+		this.runtimeStyle.zoom = 1,
+		this.runtimeStyle.backgroundImage = "none"
+		)
+	);
+}
+
+/* IE6 layout stuff */
+#header div.inner {
+	position:relative;
+}
+
+/* IE6 & IE7 button stuff */
+
+button {
+	height:22px;
+	clear:both;
+	padding:0 5px 0 5px;
+}
+
+*+html button span.icon {
+	margin:1px 0 0 6px;
+}
+
+button span.label {
+	position:relative;
+	top:-18px;
+	left:24px;
+	padding:0;
+	margin:0;
+}

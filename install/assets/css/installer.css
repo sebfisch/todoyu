@@ -5,10 +5,6 @@
 	background-color:#fff;
 }
 
-button span.rgt {
-	background-color:#e3eace !important;
-}
-
 p.installMessage {
 	padding:10px;
 	margin:10px;
@@ -364,49 +360,9 @@ a, a:link {
 	color:#414e1c;
 }
 
-button {
-	background:url('../img/bg-button.png') no-repeat 0 50%;
-	border:0 none !important;
-	color:#000;
-	cursor:pointer;
-	padding:0;
-	position:relative;
-}
-	button span {
-		color:#000;
-		float:left;
-		font-size:11px;
-		line-height:23px;
-		margin:0;
-		padding:0 0 0 13px;
-		white-space:nowrap;
-	}
-
-	button span.label {
-		margin-left:10px;
-		margin-right:3px;
-		padding:0;
-		white-space:nowrap;
-		text-transform:uppercase;
-	}
-
-	button span.rgt {
-		background-color:#d3dabb;
-		background:#e3eace url('../img/bg-button.png') no-repeat 100% 50%;
-		display:block;
-		height:23px;
-		left:3px;
-		margin:0;
-		padding:0;
-		position:relative;
-		width:10px;
-	}
-
 label {
 	cursor:pointer;
 }
-
-
 
 /* ----------------------------
 	Icons, decorations

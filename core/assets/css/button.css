@@ -1,6 +1,8 @@
 /* ---------------------------
 	Basic button styles
    ---------------------------*/
+
+/*
 button {
 	position:relative;
 	background:url('../img/bg-button.png') no-repeat 0 50%;
@@ -9,9 +11,18 @@ button {
 	border:0px none !important;
 	color:#000;
 }
+*/
 
-*+html button {
-	position:relative;
+button {
+	color:#000;
+	cursor:pointer;
+	padding:0;
+	background:#ffffff url('../img/bg-button-css3.png') repeat-x 0 50%;
+
+	border: 1px solid #bbbbbb;
+	-moz-border-radius: 13px;
+	-webkit-border-radius: 13px;
+	border-radius: 13px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
 }
 
 button span {
@@ -19,23 +30,23 @@ button span {
 	float:left;
 	clear:none;
 	margin:0;
-	line-height:23px;
+	padding:0;
+	line-height:20px;
+	height:20px;
+	border-width:0;
 }
 
 button span.icon {
-	margin:3px 2px 0 8px;
-	padding:0;
 	background-repeat:no-repeat;
+	margin:0 2px 0 2px;
 }
 
 button span.label {
-	white-space:nowrap;
-	margin-left:5px;
-	margin-right:3px;
-	padding:0;
+	margin-right:5px;
 	white-space:nowrap;
 }
 
+/*
 button span.rgt {
 	width:10px;
 	height:23px;
@@ -44,6 +55,11 @@ button span.rgt {
 	position:relative;
 	left:3px;
 }
+*/
+
+button span.rgt {
+	display:none;
+}
 
 .headerLine button span.rgt {
 	margin-top:2px;
@@ -51,20 +67,6 @@ button span.rgt {
 	position:relative;
 	background-color:#E7E7E7 !important;
 }
-
-*+html button span {
-	margin-right:-15px;
-}
-
-*+html button span.rgt {
-	position:absolute;
-	top:1px;
-	right:-10px;
-	left:auto;
-	margin:0px;
-}
-
-
 
 /* ---------------------------
 	Often used button icons
@@ -87,10 +89,10 @@ button.expandAll .icon {
 }
 
 
-
 /* ---------------------------
 	Center save buttons
    ---------------------------*/
-div.typeSaveButton div.fField {
-	padding-left:180px;
+div.typeSaveButton div.fField button {
+
 }
+

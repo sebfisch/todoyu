@@ -18,6 +18,8 @@ form {
 		fieldset.buttons {
 			margin:0 0 0.5em 0;
 			padding:0.2em 0;
+			text-align:right;
+			float:right;
 		}
 
 	legend {
@@ -68,7 +70,7 @@ textarea {
 
 select {}
 
-	select.auto	{
+	select.auto {
 		width:auto;
 	}
 	select.day {
@@ -106,8 +108,6 @@ select {}
 label {}
 
 	label span.required {}
-
-
 
 /* -----------------
 	HTML building
@@ -261,7 +261,11 @@ fieldset {}
 	fieldset.buttons div.odd,
 	fieldset.buttons div.even,
 	fieldset.buttons button span.rgt {
-		background-color:#e2e2e2 !important;
+		background-color:#e2e2e2;
+	}
+
+	fieldset.buttons div.fElement {
+		float:right;
 	}
 
 		/* none floating fields */
