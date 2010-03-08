@@ -84,13 +84,13 @@ h1 {
 	overflow:hidden;
 }
 
-.headerLine span, .headerOptLine span {
+.headerLine span, .headerLine span {
 	float:left;
 	margin:0 0 0 5px;
 	line-height:28px;
 }
 
-.headerLine span.first, .headerOptLine span.first {
+.headerLine span.first, .headerLine span.first {
 	padding:0 0 0 20px;
 }
 
