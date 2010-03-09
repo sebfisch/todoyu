@@ -265,6 +265,18 @@ class TodoyuRightsManager {
 
 
 	/**
+	 * Restrict access to admin
+	 *
+	 */
+	public static function restrictAdmin() {
+		if( ! TodoyuAuth::isAdmin() ) {
+			self::deny('core', 'admin');
+		}
+	}
+
+
+
+	/**
 	 * Deny access and send no-access info
 	 *
 	 * @param	String		$extKey
