@@ -95,7 +95,6 @@ class TodoyuQuickinfo {
 
 	/**
 	 * Print info struct json encoded
-	 *
 	 */
 	public function printInfoJSON() {
 		TodoyuHeader::sendHeaderJSON();
@@ -107,7 +106,6 @@ class TodoyuQuickinfo {
 
 	/**
 	 * Remove all infos
-	 *
 	 */
 	public function clear() {
 		$this->data = array();
