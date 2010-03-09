@@ -1,5 +1,12 @@
 ALTER TABLE `ext_user_company` DROP `is_ngo`;
-ALTER TABLE `ext_project_task` DROP `is_estimatedworkload_public`;
+
+ALTER TABLE `ext_project_task`
+DROP `offered_accesslevel` ,
+DROP `is_offered` ,
+DROP `clearance_state` ,
+DROP `is_private` ,
+DROP `is_estimatedworkload_public`;
+
 
 UPDATE `ext_user_contactinfotype` SET `title` = 'LLL:contact.contactinfo.type.email_business' WHERE `title` = 'user.contactinfo.email_business' ;
 UPDATE `ext_user_contactinfotype` SET `title` = 'LLL:contact.contactinfo.type.tel_private' WHERE `title` = 'user.contactinfo.tel_private' ;
