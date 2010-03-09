@@ -7,6 +7,8 @@ DROP `clearance_state` ,
 DROP `is_private` ,
 DROP `is_estimatedworkload_public`;
 
+ALTER TABLE `ext_calendar_event` DROP `is_public`;
+
 
 UPDATE `ext_user_contactinfotype` SET `title` = 'LLL:contact.contactinfo.type.email_business' WHERE `title` = 'user.contactinfo.email_business' ;
 UPDATE `ext_user_contactinfotype` SET `title` = 'LLL:contact.contactinfo.type.tel_private' WHERE `title` = 'user.contactinfo.tel_private' ;

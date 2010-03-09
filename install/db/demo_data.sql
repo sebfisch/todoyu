@@ -42,13 +42,13 @@ INSERT INTO `ext_bookmark_bookmark` (`id`, `date_create`, `date_update`, `id_per
 -- Data for Table `ext_calendar_event`
 --
 
-INSERT INTO `ext_calendar_event` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `id_project`, `id_task`, `eventtype`, `title`, `description`, `place`, `date_start`, `date_end`, `is_private`, `is_dayevent`, `is_public`) VALUES
-(1, 1264697556, 1264697592, 1, 0, 0, 0, 1, 'My Reminder', '', '', 1264753800, 1264757400, 0, 0, 0),
-(2, 1264700473, 1264700482, 1, 0, 0, 0, 6, 'Meet and Greet', '', 'Long silver beach', 1266390000, 1266393600, 1, 1, 1),
-(3, 1264700497, 1264700497, 1, 0, 0, 0, 1, 'Another one', '', '', 1266390000, 1266393600, 0, 1, 0),
-(4, 1264778135, 1264778147, 17, 0, 0, 0, 4, 'Vacation', '02/08/10 - 02/12/10', '', 1265616000, 1265994000, 0, 0, 0),
-(5, 1264778302, 1264778302, 17, 0, 0, 0, 5, 'Office Cert', 'Certification Day', '', 1266658200, 1266661800, 0, 1, 0),
-(6, 1264778364, 1264778364, 17, 0, 0, 0, 6, 'Project Meeting', '', '', 1266418800, 1266433200, 0, 0, 0);
+INSERT INTO `ext_calendar_event` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `id_project`, `id_task`, `eventtype`, `title`, `description`, `place`, `date_start`, `date_end`, `is_private`, `is_dayevent`) VALUES
+(1, 1264697556, 1264697592, 1, 0, 0, 0, 1, 'My Reminder', '', '', 1264753800, 1264757400, 0, 0),
+(2, 1264700473, 1264700482, 1, 0, 0, 0, 6, 'Meet and Greet', '', 'Long silver beach', 1266390000, 1266393600, 1, 1),
+(3, 1264700497, 1264700497, 1, 0, 0, 0, 1, 'Another one', '', '', 1266390000, 1266393600, 0, 1),
+(4, 1264778135, 1264778147, 17, 0, 0, 0, 4, 'Vacation', '02/08/10 - 02/12/10', '', 1265616000, 1265994000, 0, 0),
+(5, 1264778302, 1264778302, 17, 0, 0, 0, 5, 'Office Cert', 'Certification Day', '', 1266658200, 1266661800, 0, 1),
+(6, 1264778364, 1264778364, 17, 0, 0, 0, 6, 'Project Meeting', '', '', 1266418800, 1266433200, 0, 0);
 
 --
 -- Data for Table `ext_calendar_holiday`
