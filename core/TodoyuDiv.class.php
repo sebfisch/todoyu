@@ -245,7 +245,7 @@ class TodoyuDiv {
 	 * Get keywords for autocomplete from a table
 	 * Search all fields with like and key the full word parts
 	 *
-	 * @param	String		$searchWords		Space seperated keywords Ex: "snowflake productions zürich"
+	 * @param	String		$searchWords		Space seperated keywords Ex: "snowflake productions zurich"
 	 * @param	String		$table				Table name
 	 * @param	String		$searchInFields		Comma seperated list of fields to search in
 	 * @param	Integer		$numKeywords		Number of keywords in the result array

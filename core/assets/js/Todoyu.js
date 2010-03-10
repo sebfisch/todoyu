@@ -26,7 +26,7 @@ var Todoyu = {
 
 	name: 		'Todoyu',
 
-	copyright: 	'Snowflake Productions, Zürich Switzerland',
+	copyright: 	'snowflake productions GmbH, Zurich/Switzerland',
 	
 	logLevel:	0,
 
