@@ -109,7 +109,6 @@ class TodoyuCache {
 
 	/**
 	 * Flush the cache
-	 *
 	 */
 	public static function flush() {
 		self::$cache = array();
