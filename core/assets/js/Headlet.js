@@ -18,13 +18,6 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-xxx = {
-	init: function() {
-		console.log('dummy init');
-		
-	}
-};
-
 Todoyu.Headlet = {
 	
 	/**
@@ -36,17 +29,78 @@ Todoyu.Headlet = {
 	 * List of headlet js objects (to call the handlers)
 	 */
 	headlets: {},
+	
+	
+	
+	/**
+	 * Get the headlet element from an event
+	 * 
+	 * @param	Event		event
+	 * @return	Element
+	 */
+	_getHeadletFromEvent: function(event) {
+		return event.findElement('li.headlet');
+	},
+
+
+	
+	/**
+	 * Get the headlets name from an event
+	 * 
+	 * @param	Event		event
+	 * @return	String
+	 */
+	_getNameFromEvent: function(event) {
+		var h = this._getHeadletFromEvent(event);
+		return h.id.split('-').last().toLowerCase();
+	},
+	
+	
+	
+	/**
+	 * Check if event happend in the content div of an overlay headlet
+	 * 
+	 * @param	Event		event
+	 * @return	Bool
+	 */
+	_isContentEvent: function(event) {
+		return event.element().up('div.content') !== undefined;
+	},
+	
+	
+	
+	/**
+	 * Call the handler of a headlet if it has the specific function
+	 * Possible handlers: onButtonClick, onContentClick, onMouseOver, onMouseOut
+	 * 
+	 * @param	String		name		Name of the headlet
+	 * @param	String		type		Event type (handler name)
+	 * @param	Event		event		Event object
+	 */
+	_callHandler: function(name, eventType, event) {
+		var headlet	= this.headlets[name];
+		
+		if( typeof(headlet[eventType]) === 'function' ) {
+			x = 3;
+			headlet[eventType].call(headlet, event);
+		}
+	},
+		
+		
 		
 	/**
 	 * Initialize headlet management (observation)
 	 */
 	init: function() {
-		/*
+		var headlets	= $('headlets').select('li.headlet');
+			// Observe headlet clicks
+		headlets.invoke('observe', 'click', this.onClick.bindAsEventListener(this));
 			// Observe all headlet elements
-		$('headlets').select('li.headlet').invoke('observe', 'mouseover', this.onOverHeadlet.bindAsEventListener(this));
+		headlets.invoke('observe', 'mouseover', this.onOverHeadlet.bindAsEventListener(this));
 			// Observe headlet container
 		$('headlets').observe('mouseover', this.onOverContainer.bindAsEventListener(this));
-		*/
+			// Stop all click events in headlets
+		Todoyu.Ui.addBodyClickObserver(this.onBodyClick.bind(this));
 	},
 	
 		
@@ -59,7 +113,9 @@ Todoyu.Headlet = {
 	add: function(name, headletObject) {
 		this.headlets[name.toLowerCase()] = headletObject;
 		
-		Todoyu.callIfExists(headletObject.init);
+		headletObject.headlet = this;
+		
+		Todoyu.callIfExists(headletObject.init, headletObject);
 	},
 	
 	
@@ -110,60 +166,6 @@ Todoyu.Headlet = {
 		}
 	},
 
-	
-	
-	/**
-	 * Get the headlet element from an event
-	 * 
-	 * @param	Event		event
-	 * @return	Element
-	 */
-	_getHeadletFromEvent: function(event) {
-		return event.findElement('li.headlet');
-	},
-
-
-	
-	/**
-	 * Get the headlets name from an event
-	 * 
-	 * @param	Event		event
-	 * @return	String
-	 */
-	_getNameFromEvent: function(event) {
-		var h = this._getHeadletFromEvent(event);
-		return h.id.split('-').last().toLowerCase();
-	},
-	
-	
-	
-	/**
-	 * Check if event happend in the content div of an overlay headlet
-	 * 
-	 * @param	Event		event
-	 * @return	Bool
-	 */
-	_isContentEvent: function(event) {
-		return event.element().up('div.content') !== undefined;
-	},
-	
-	
-	
-	/**
-	 * Call the handler of a headlet if it has the specific function
-	 * Possible handlers: onButtonClick, onContentClick, onMouseOver, onMouseOut
-	 * 
-	 * @param	String		name		Name of the headlet
-	 * @param	String		type		Event type (handler name)
-	 * @param	Event		event		Event object
-	 */
-	_callHandler: function(name, type, event) {
-		var func	= this.headlets[name][type];
-		var args	= [func, event];
-				
-		Todoyu.callIfExists.apply(Todoyu, args);
-	},
-		
 		
 	
 	/**
@@ -198,6 +200,12 @@ Todoyu.Headlet = {
 	 */
 	exists: function(name) {
 		return Todoyu.exists('headlet-' + name);
+	},
+	
+	
+	
+	toggleContent: function(name, keepOthers) {
+		this.getContent(name).toggle();
 	},
 	
 	
@@ -287,15 +295,36 @@ Todoyu.Headlet = {
 	
 	
 	/**
-	 * Get headlet button element
-	 * @param {Object} name
+	 * Get button element of a headlet
+	 * 
+	 * @param	String		name
 	 */
 	getButton: function(name) {
 		return $('headlet-' + name + '-button');
 	},
 	
+	
+	/**
+	 * Get content element of a headlet
+	 * @param	String		name
+	 */
 	getContent: function(name) {
-		return $('headlet-' + name + '-content');
+		return $('headlet-' + name.toLowerCase() + '-content');
+	},
+	
+	
+	
+	/**
+	 * Handler when clicked on body
+	 * Fired by Todoyu.Ui.onBodyClick()
+	 * If clicked outside the headlets, hide all content boxes
+	 * 
+	 * @param	Event		event
+	 */
+	onBodyClick: function(event) {		
+		if( ! event.findElement('ul#headlets') ) {
+			this.hideAllContent();
+		}
 	}
 	
 };

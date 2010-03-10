@@ -29,6 +29,11 @@ Todoyu.Headlet.QuickCreate = {
 	 */
 	init: function() {
 		//this.Mode.init();
+		
+	},
+	
+	onButtonClick: function(event) {
+		this.headlet.showContent('quickcreate');
 	},
 
 

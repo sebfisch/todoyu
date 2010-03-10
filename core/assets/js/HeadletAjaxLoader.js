@@ -64,11 +64,11 @@ Todoyu.Headlet.AjaxLoader = {
 	},
 	
 	onMouseOver: function(event) {
-		console.log('over');
+		console.log('over ajax');
 	},
 	
 	onMouseOut: function(event) {
-		console.log('out');
+		console.log('out ajax');
 	}
 	
 };

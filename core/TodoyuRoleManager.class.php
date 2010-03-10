@@ -40,7 +40,7 @@ class TodoyuRoleManager {
 	public static function getRole($idRole) {
 		$idRole	= intval($idRole);
 
-		return TodoyuCache::getRecord('TodoyuRole', $idRole);
+		return TodoyuRecordManager::getRecord('TodoyuRole', $idRole);
 	}
 
 
@@ -163,7 +163,8 @@ class TodoyuRoleManager {
 	public static function removeRoleFromCache($idRole) {
 		$idRole = intval($idRole);
 
-		TodoyuCache::removeRecord('Role', $idRole);
+		TodoyuRecordManager::removeRecordCache('TodoyuRole', $idRole);
+
 		TodoyuCache::removeRecordQuery(self::TABLE, $idRole);
 	}
 

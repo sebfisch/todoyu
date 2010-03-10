@@ -34,10 +34,10 @@ class TodoyuHeadletAjaxLoader extends TodoyuHeadletTypeButton {
 	 *
 	 */
 	protected function init() {
+			// Set javascript object which handles events
 		$this->setJsHeadlet('Todoyu.Headlet.AjaxLoader');
 
-
-		$this->addButtonAttribute('style', 'display:none');
+		$this->addButtonAttribute('style', 'display:none;');
 	}
 
 

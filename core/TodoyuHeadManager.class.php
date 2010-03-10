@@ -61,7 +61,7 @@ class TodoyuHeadManager {
 			'headlets'	=> array()
 		);
 
-		$headlets	= TodoyuArray::sortByLabel(self::$headlets, 'position');
+		$headlets	= TodoyuArray::sortByLabel(self::$headlets, 'position', true);
 
 		foreach($headlets as $headletConfig) {
 			$className	= $headletConfig['class'];
@@ -71,7 +71,8 @@ class TodoyuHeadManager {
 			$data['headlets'][$name] = array(
 				'name'		=> $name,
 				'phpClass'	=> $className,
-				'content'	=> $headlet->render()
+				'content'	=> $headlet->render(),
+				'type'		=> $headlet->getType()
 			);
 		}
 

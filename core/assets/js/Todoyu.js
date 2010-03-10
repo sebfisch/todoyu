@@ -42,6 +42,7 @@ var Todoyu = {
 	init: function() {
 		this.AjaxResponders.init();
 		this.Ui.fixAnchorPosition();
+		this.Ui.observeBody();
 	},
 
 
@@ -195,13 +196,14 @@ var Todoyu = {
 	 * The first argument is the function, all other arguments will be handed down to this function
 	 * The debug output is just for deveopment
 	 * 
-	 * @param	Function	functionReference
+	 * @param	Function	functionReference	Function
+	 * @param	Object		context				Context which is this in function		
 	 */
-	callIfExists: function(functionReference /*, args */) {
+	callIfExists: function(functionReference, context /*, args */) {
 		var args = Array.prototype.splice.call(arguments, 1);
 
 		if( typeof functionReference === 'function' ) {
-			functionReference.apply(functionReference, args);
+			functionReference.apply(context, args);
 		} else {
 			Todoyu.log('Todoyu.callIfExists() was executed with a non-function. This can be an error (not sure). Params: ' + Object.inspect(args), 1);
 		}
@@ -249,5 +251,4 @@ var Todoyu = {
 			}
 		}
 	}
-
 };

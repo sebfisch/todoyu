@@ -22,98 +22,69 @@
 /**
  * Manager class for the quick create
  *
+ * @package		Todoyu
+ * @subpackage	Core
  */
-
 class TodoyuQuickCreateManager {
-
-	/**
-	 * Get creation engine configuration array
-	 *
-	 * @param	String		$ext
-	 * @param	String		$type
-	 * @param	String		$labelMode
-	 * @param	Integer		$position
-	 * @return	Array
-	 */
-	private static function getEngineConfig($ext, $type, $labelMode, $position = 100) {
-		$type		= strtolower(trim($type));
-		$position	= intval($position);
-		return array(
-			'ext'			=> $ext,
-			'type'			=> $type,
-			'labelMode'		=> $labelMode,
-			'position'		=> $position
-		);
-	}
-
-
 
 	/**
 	 * Add a new create engine and register needed functions
 	 *
 	 * @param	String		$ext
 	 * @param	String		$type
-	 * @param	String		$labelMode
+	 * @param	String		$label
 	 * @param	Integer		$position
-	 * @param	Integer		$idArea			areas where to list this type as primary
+	 * @param	Array		$primaryAreas	Areas where to list this type as primary
 	 * @param	Boolean		$areaOnly		show type within resp. area only?
 	 */
-	public static function addEngine($ext, $type, $labelMode = '', $position = 100, $idArea = 0, $areaOnly = false) {
-		$idArea		= intval($idArea);
-
-		$requestVars= TodoyuRequest::getCurrentRequestVars();
-		$area		= intval($requestVars['area']);
-
-			// Register creation type global in all areas or in general of current area if its the primary one
-		if ( ! $areaOnly || $area === $idArea ) {
-			$engineConfig	= self::getEngineConfig($ext, $type, $labelMode, $position);
-			$GLOBALS['CONFIG']['create']['engines']['all'][$type] = $engineConfig;
-		}
-
-			// Register as primary displayed creation type in resp. area
-		if ( $idArea !== 0 ) {
-	//		if ( AREA === $idArea ) {
-	// 		@todo	check + fix to use AREA constant
-
-			if ( $area === $idArea ) {
-				$engineConfig	= self::getEngineConfig($ext, $type, $labelMode, $position);
-
-				$GLOBALS['CONFIG']['create']['engines']['primary'][$type] = $engineConfig;
-			}
-		}
+	public static function addEngine($ext, $type, $label = '', $position = 100, array $primaryAreas = array(), $areaOnly = false) {
+		$GLOBALS['CONFIG']['CREATE']['engines'][] = array(
+			'ext'		=> $ext,
+			'type'		=> $type,
+			'label'		=> $label,
+			'position'	=> intval($position),
+			'primary'	=> $primaryAreas,
+			'areaOnly'	=> $areaOnly
+		);
 	}
 
 
 
 	/**
-	 * Get all registered create engines in correct order
+	 * Get registered engines
 	 *
-	 * @param	String	$area
 	 * @return	Array
 	 */
-	public static function getEngines($area	= 'all') {
-			// Load /config/type.php configfiles of all loaded extensions)
+	public static function getEngines() {
+			// Load /config/create.php configfiles of all loaded extensions)
 		TodoyuExtensions::loadAllCreate();
 
-		$createEngines	= TodoyuArray::assure($GLOBALS['CONFIG']['create']['engines'][$area]);
+		$engines= TodoyuArray::sortByLabel($GLOBALS['CONFIG']['CREATE']['engines'], 'position');
+		$area	= Todoyu::getAreaKey();
+		$data	= array(
+			'primary'	=> false,
+			'all'		=> array()
+		);
 
-			// Sort by position
-		if( sizeof($createEngines) > 0 ) {
-			$createEngines = TodoyuArray::sortByLabel($createEngines, 'position');
+		foreach($engines as $index => $engine) {
+				// If onlyArea flag is set and area is not in primary types, remove
+			if( $engine['areaOnly'] === true && ! in_array($area, $engine['primary']) ) {
+				unset($engines[$index]);
+				continue;
+			}
+
+				// Find primary type
+			if( in_array($area, $engine['primary']) ) {
+				$data['primary'] = $engine;
+				$data['primary']['isPrimary'] = true;
+				break;
+			}
 		}
 
-		return $createEngines;
-	}
+			// Add all not removed types
+		$data['all'] = $engines;
 
-
-
-	/**
-	 * Get area related (primary) create engines in correct order
-	 *
-	 * @return	Array
-	 */
-	public static function getAreaEngines() {
-		return self::getEngines('primary');
+		return $data;
 	}
 
 }

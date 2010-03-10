@@ -19,6 +19,8 @@
 ***************************************************************/
 
 Todoyu.Ui = {
+	
+	bodyClickObservers: [],
 
 	/**
 	 * Update element
@@ -490,6 +492,7 @@ Todoyu.Ui = {
 	 * Creates a js filereference and appends it to head
 	 *
 	 * @param	String	filename
+	 * @todo	NOT USED...
 	 */
 	loadJSFile: function(filename)	{
 		var fileref=document.createElement( 'script' );
@@ -505,6 +508,7 @@ Todoyu.Ui = {
 	 * Creates a css filereference and appends it to head
 	 *
 	 * @param	String	filename
+	 * @todo	NOT USED...
 	 */
 	loadCSSFile: function(filename)	{
 		var fileref=document.createElement( "link" );
@@ -526,6 +530,39 @@ Todoyu.Ui = {
 		if (typeof fileref!="undefined")	{
 			 document.getElementsByTagName( "head" )[0].appendChild( fileref );
 		}
+	},
+		
+	
+	
+	/**
+	 * Observe body for click events
+	 */
+	observeBody: function() {
+		$(document.body).observe('click', this.onBodyClick.bindAsEventListener(this));
+	},
+	
+	
+	
+	/**
+	 * Handler when clicked on the body
+	 * 
+	 * @param	Event	event
+	 */
+	onBodyClick: function(event) {
+		this.bodyClickObservers.each(function(event, func){
+			func(event);
+		}.bind(this, event));
+	},
+	
+	
+	
+	/**
+	 * Add an observer for the body
+	 * 
+	 * @param	Function	func
+	 */
+	addBodyClickObserver: function(func) {
+		this.bodyClickObservers.push(func);
 	}
 	
 };

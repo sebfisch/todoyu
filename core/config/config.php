@@ -40,8 +40,6 @@ $CONFIG['TEMPLATE']		= array(
 	// Bad tags which are encoded by the HtmlFilter
 $CONFIG['SECURITY']['badHtmlTags'] = array('script', 'iframe', 'input', 'textarea', 'select', 'form');
 
-//TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickCreate');
-
 
 	// Initialize metamenu registration array
 $CONFIG['MetaMenu']	= array();
@@ -84,6 +82,10 @@ $CONFIG['goodPassword'] = array(
 	'hasNumbers'	=> true,
 	'hasLowerCase'	=> true,
 	'hasUpperCase'	=> true
+);
+
+$CONFIG['CREATE'] = array(
+	'engines'	=> array()
 );
 
 ?>

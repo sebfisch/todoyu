@@ -32,7 +32,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 *
 	 * @var	String
 	 */
-	protected $template	= '';
+	protected $template	= 'core/view/headlet.tmpl';
 
 	/**
 	 * Headlet render data
@@ -50,8 +50,9 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 	protected $buttonAttributes	= array();
 
+	protected $jsHeadlet= null;
 
-	protected $jsHeadlet= 'xxx';
+	protected $type;
 
 
 
@@ -114,6 +115,10 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 		return 'headlet-' . strtolower($this->getName());
 	}
 
+	public function getType() {
+		return $this->type;
+	}
+
 
 
 	/**
@@ -133,7 +138,6 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 * @param	Array		$data
 	 */
 	protected function setData(array $data) {
-
 		$this->data = $data;
 	}
 
@@ -204,7 +208,9 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 		$this->data['buttonAttributes']	= $this->getButtonAttributes();
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.add.bind(Todoyu.Headlet, \'' . $this->getName() . '\', ' . $this->jsHeadlet . ')');
+		if( ! is_null($this->jsHeadlet) ) {
+			TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.add.bind(Todoyu.Headlet, \'' . $this->getName() . '\', ' . $this->jsHeadlet . ')');
+		}
 
 
 //		TodoyuDebug::printHtml($this->getButtonAttributes());

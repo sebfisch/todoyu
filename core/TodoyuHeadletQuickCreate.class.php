@@ -25,25 +25,59 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 	 * Initialize quick create headlet (set template, set initial data)
 	 */
 	protected function init() {
-		$this->setTemplate('core/view/headlet-quickcreate.tmpl');
-
-		$this->setData(array(
-			'areaCreateModes'	=> TodoyuQuickCreateManager::getAreaEngines(),
-			'createModes'		=> TodoyuQuickCreateManager::getEngines()
-		));
+		$this->setJsHeadlet('Todoyu.Headlet.QuickCreate');
 
 
+
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.QuickCreate.init.bind(Todoyu.Headlet.QuickCreate)', 100);
 	}
 
 
+	protected function getMenuItems() {
+		$engines= TodoyuQuickCreateManager::getEngines();
+		$items	= array();
 
-	/**
-	 * Render quick search headlet, have resp. JS being added
-	 *
-	 * @return	String
-	 */
-	public function render() {
-		return parent::render();
+		if( is_array($engines['primary']) ) {
+			array_unshift($engines['all'], $engines['primary']);
+		}
+
+		foreach($engines['all'] as $engine) {
+			$item	= array(
+				'id'	=> $engine['type'],
+				'label'	=> $engine['label']
+			);
+
+			if( $engine['isPrimary'] ) {
+				$item['class'] = 'primary';
+			}
+
+			$items[] = $item;
+		}
+
+
+		return $items;
+
+
+
+
+
+		TodoyuDebug::printHtml($engines['all']);
+
+//		$items	= array();
+//
+//		if( is_array($engines['primary']) ) {
+//			$engines['primary']['class'];
+//			$primary[]
+//			$items[] = array(
+//
+//
+//			);
+//		}
+//
+//		TodoyuDebug::printHtml($engineItems);
+
+
+		return array();
 	}
 
 }

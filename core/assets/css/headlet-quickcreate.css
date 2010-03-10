@@ -1,46 +1,20 @@
-#headlet-QuickCreate {
+#headlet-quickcreate {
 	
 }
-
-	#headlet-QuickCreate .button {
-		width:30px;
-		height:20px;
-		border:1px solid #b2b2b2;
-		border-right:none;
-		background:url(../img/headlet.png) no-repeat 0 0;
-		cursor:pointer;
-	}
 	
-	#headlet-QuickCreate .button .icon {
-		margin-top:2px;
-		margin-left:1px;
-		background:url(../img/headlet-quickcreate.png) no-repeat 2px 0;
-	}
+#headlet-quickcreate .button .icon {
+	background:url(../img/headlet-quickcreate.png) no-repeat 3px 2px;
+}
 
-
-
-#headlet-QuickCreate .modes {
-	display:none;
-	position:fixed;
-	left:0px;
-	top:0px;
+#headlet-quickcreate-content {
 	width:140px;
-	background-color:#d3dabb;
-	border:1px solid #b9bbad;
-	z-index:1000;
+	margin-left:-110px;
 }
 
-	#headlet-QuickCreate .modes li {
-		height:14px;
-		padding:3px 2px 3px 40px;
-		cursor:pointer;
-		text-align:left;
-	}
-	
-		#headlet-QuickCreate .modes li.primary {
-			border-bottom:1px solid #b9bbad;
-		}
-	
-	#headlet-QuickCreate .modes li.engine:hover {
-		background-color:#ecefde !important;
-	}
+#headlets ul#headlet-quickcreate-menu li.primary {
+	border-bottom:2px solid #b9bbad;
+}
+
+#headlets ul#headlet-quickcreate-menu li:hover {
+	background-color:#ecefde !important;
+}

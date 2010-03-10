@@ -750,11 +750,11 @@ class TodoyuDatabase {
 	 */
 	public function getRowByID($table, $idRow) {
 			// build cache id
-		$cacheID	= TodoyuCache::makeRecordQueryKey($table, $idRow);
+		$cacheKey	= TodoyuRecordManager::makeRecordQueryKey($table, $idRow);
 
 			// Check if row is already cached
-		if( TodoyuCache::isIn($cacheID) ) {
-			return TodoyuCache::get($cacheID);
+		if( TodoyuCache::isIn($cacheKey) ) {
+			return TodoyuCache::get($cacheKey);
 		} else {
 				// Fetch row from database, if not in cache
 			$where		= 'id = ' . abs($idRow);
@@ -766,7 +766,7 @@ class TodoyuDatabase {
 					// Remove resource form memory
 				$this->freeResult($resource);
 					// Add row to cache
-				TodoyuCache::set($cacheID, $row);
+				TodoyuCache::set($cacheKey, $row);
 			} else {
 				$row	= false;
 			}

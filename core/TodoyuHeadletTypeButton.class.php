@@ -2,8 +2,10 @@
 
 abstract class TodoyuHeadletTypeButton extends TodoyuHeadlet {
 
+	protected $type = 'button';
+
 	protected function initType() {
-		$this->setTemplate('core/view/headlet-type-button.tmpl');
+		//$this->setTemplate('core/view/headlet-type-button.tmpl');
 	}
 
 }

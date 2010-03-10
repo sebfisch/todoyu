@@ -268,6 +268,11 @@ $CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
+			'file'		=> 'core/assets/css/headlet.css',
+			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
 			'file'		=> 'core/assets/css/content.css',
 			'media'		=> 'all',
 			'position'	=> 10

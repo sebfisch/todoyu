@@ -33,13 +33,11 @@ if( TodoyuAuth::isLoggedIn() ) {
 	TodoyuPage::addJsOnloadedFunction('Todoyu.QuickInfo.init.bind(Todoyu.QuickInfo)', 10);
 
 		// Register ajax loader headlet which indicated acitve ajax requests
-	TodoyuHeadManager::addHeadlet('TodoyuHeadletAjaxLoader', 150);
-
-	TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.QuickCreate.init.bind(Todoyu.Headlet.QuickCreate)', 100);
-
+	TodoyuHeadManager::addHeadlet('TodoyuHeadletAjaxLoader', 0);
+	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickCreate', 50);
 
 		// Register meta menu headlet
-	//TodoyuHeadManager::addHeadlet('TodoyuHeadletMetaMenu', 80);
+//	TodoyuHeadManager::addHeadlet('TodoyuHeadletMetaMenu', 80);
 
 		// Generate colors css and sprite
 		// Moved to calendar ext controller

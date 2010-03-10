@@ -39,11 +39,77 @@ class TodoyuRecordManager {
 		$idRecord	= intval($idRecord);
 
 		if( class_exists($className, true) ) {
-			return TodoyuCache::getRecord($className, $idRecord);
+			$cacheKey	= self::makeClassKey($className, $idRecord);
+
+			if( TodoyuCache::isIn($cacheKey) ) {
+				$object = TodoyuCache::get($cacheKey);
+			} else {
+				$object = new $className($idRecord);
+				TodoyuCache::set($cacheKey, $object);
+			}
+
+			return $object;
 		} else {
 			Todoyu::log('Record class not found: ' . $className, LOG_LEVEL_ERROR);
 			return false;
 		}
+	}
+
+
+
+	/**
+	 * Remove a record from cache
+	 *
+	 * @param	String		$className
+	 * @param	Integer		$idRecord
+	 */
+	public static function removeRecordCache($className, $idRecord) {
+			$idRecord	= intval($idRecord);
+			$cacheKey	= self::makeClassKey($className, $idRecord);
+
+			TodoyuCache::remove($cacheKey);
+	}
+
+
+
+	/**
+	 * Remove a record query from the cache. This is necessary to force
+	 * a new created object to load the data again from the database
+	 *
+	 * @param	String		$table
+	 * @param	Integer		$idRecord
+	 */
+	public static function removeRecordQueryCache($table, $idRecord) {
+		$idRecord	= intval($idRecord);
+		$cacheKey	= self::makeRecordQueryKey($table, $idRecord);
+
+		TodoyuCache::remove($cacheKey);
+	}
+
+
+
+	/**
+	 * Make a cache key for a record query based on the table and the record ID
+	 *
+	 * @param	String		$table
+	 * @param	Integer		$idRecord
+	 * @return	String
+	 */
+	public static function makeRecordQueryKey($table, $idRecord) {
+		return $table . ':' . intval($idRecord);
+	}
+
+
+
+	/**
+	 * Make a cache key for a record class based on the classname and the record ID
+	 *
+	 * @param	String		$className
+	 * @param	Integer		$idRecord
+	 * @return	String		Cache key
+	 */
+	public static function makeClassKey($className, $idRecord) {
+		return $className . ':' . intval($idRecord);
 	}
 
 
