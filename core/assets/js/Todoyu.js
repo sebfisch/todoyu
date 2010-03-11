@@ -183,7 +183,7 @@ var Todoyu = {
 	 * @param	Mixed		args
 	 */
 	callUserFunction: function(functionName /*, args */) {
-		var args	= Array.prototype.splice.call(arguments, 1);
+		var args = $A(arguments).slice(1);
 		var func	= this.getFunctionFromString(functionName);
 
 		return func.apply(func, args);
@@ -200,8 +200,7 @@ var Todoyu = {
 	 * @param	Object		context				Context which is this in function		
 	 */
 	callIfExists: function(functionReference, context /*, args */) {
-		var args = Array.prototype.splice.call(arguments, 1);
-
+		var args = $A(arguments).slice(2);
 		if( typeof functionReference === 'function' ) {
 			functionReference.apply(context, args);
 		} else {
