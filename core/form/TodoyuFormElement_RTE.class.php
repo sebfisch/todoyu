@@ -50,9 +50,10 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 	 */
 	private function buildRTEjs() {
 		$options	= array(
-			'mode'		=> 'exact',
-			'elements'	=> $this->getHtmlID(),
-			'theme'		=> 'simple'
+			'mode'			=> 'exact',
+			'elements'		=> $this->getHtmlID(),
+			'theme'			=> 'simple',
+			'content_css'	=> 'core/assets/css/tinymce.css'
 		);
 
 			// Load config
