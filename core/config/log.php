@@ -19,24 +19,36 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['LOG'] = array(
-	'active'	=> array('FILE', 'DB', 'FIREBUG'),
-	'level'		=> 0,
-	'MODES'		=> array()
-);
-
-$CONFIG['LOG']['MODES']['DB'] = array(
-	'funcRef'	=> 'TodoyuLoggerDb::log',
-	'table'		=> 'system_errorlog'
-);
-
-$CONFIG['LOG']['MODES']['FILE'] = array(
-	'funcRef'	=> 'TodoyuLoggerFile::log',
-	'file'		=> PATH_CACHE . '/log/todoyu.log'
-);
-
-$CONFIG['LOG']['MODES']['FIREBUG'] = array(
-	'funcRef'	=> 'TodoyuLoggerFirePhp::log'
+	/**
+	 * Log settings: level of incidents to logged, function references and related paths
+	 *
+	 * There are 5 levels of logging:
+	 *		0) LOG_LEVEL_DEBUG:		logs all message levels
+	 *		1) LOG_LEVEL_NOTICE		logs notices and more serious levels
+	 *		2) LOG_LEVEL_ERROR		logs errors and more serious levels
+	 *		3) LOG_LEVEL_SECURITY	logs security critical incidents and more serious levels
+	 *		4) LOG_LEVEL_FATAL		logs fatal errors
+	 */
+$CONFIG['LOG'] 	= array(
+	'active'	=> array(
+		'FILE',
+		'DB',
+		'FIREBUG'
+	),
+	'level'		=> LOG_LEVEL_DEBUG,
+	'MODES'		=> array(
+		'DB'	=> array(
+			'funcRef'	=> 'TodoyuLoggerDb::log',
+			'table'		=> 'system_errorlog'
+		),
+		'FILE'		=> array(
+			'funcRef'	=> 'TodoyuLoggerFile::log',
+			'file'		=> PATH_CACHE . '/log/todoyu.log'
+		),
+		'FIREBUG'	=> array(
+			'funcRef'	=> 'TodoyuLoggerFirePhp::log'
+		)
+	)
 );
 
 ?>
