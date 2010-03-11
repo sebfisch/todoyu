@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
 	<labels lang="en">
-		<label index="select.pleaseSelect">Please select</label>
-		<label index="select.pleaseChoose">Please choose</label>
-		<label index="field.isrequired">This is a required field</label>
-		<label index="field.hasError">The value entered is not valid</label>
+		<label index="select.pleaseSelect">Please Select</label>
+		<label index="select.pleaseChoose">Please Choose</label>
+		<label index="field.isrequired">This Is A Required Field</label>
+		<label index="field.hasError">The Value Entered Is Not Valid</label>
 		<label index="field.save">Save</label>
 		<label index="field.cancel">Cancel</label>
 		<label index="icon.add">Add Record</label>
 		<label index="icon.remove">Remove Record</label>
 		<label index="icon.edit">Edit Record</label>
 		<label index="databaserelation.nolabel">[New entry]</label>
-		<label index="databaserelation.expandAllRecords">Expand all records</label>
-		<label index="error.notUnique">This entry already exists</label>
-		<label index="ac.noResults">Autocompleter: No Results found</label>
-		<label index="is_preferred">Prefered</label>
+		<label index="databaserelation.expandAllRecords">Expand All Records</label>
+		<label index="error.notUnique">This Entry Already Exists</label>
+		<label index="ac.noResults">Autocompleter: No Results Found</label>
+		<label index="is_preferred">Preferred</label>
 	</labels>
 	<labels lang="de">
 		<label index="select.pleaseSelect">Bitte wählen</label>
@@ -28,7 +28,7 @@
 		<label index="icon.edit">Datensatz bearbeiten</label>
 		<label index="databaserelation.nolabel">[Neuer Eintrag]</label>
 		<label index="databaserelation.expandAllRecords">Öffne alle Datensätze</label>
-		<label index="error.notUnique">Dieser Eintrag existiert schon</label>
+		<label index="error.notUnique">Dieser Eintrag existiert bereits</label>
 		<label index="ac.noResults">Autovervollständigung: Keine Resultate gefunden</label>
 		<label index="is_preferred">Bevorzugt</label>
 	</labels>

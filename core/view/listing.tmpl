@@ -20,7 +20,7 @@
 				<tr class="{cycle values="odd,even"}">
 				  	{foreach $config.columns colName label}
 				  		{$fieldClass = cat($colName Class)}
-				  		<td class="{$colName} {$row[$fieldClass]}">{cleanHtml $row[$colName]}</td>
+				  		<td class="{$colName} {$row[$fieldClass]}"><span class="{$colName}">{cleanHtml $row[$colName]}</span></td>
 				    {/foreach}
 				</tr>
 			{/foreach}

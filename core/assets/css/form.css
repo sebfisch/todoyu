@@ -68,7 +68,9 @@ textarea {
 	width:107%;
 }
 
-select {}
+select {
+	text-transform: none;
+}
 
 	select.auto {
 		width:auto;
@@ -90,6 +92,10 @@ select {}
 	select.datetime {
 		width:150px;
 	}
+
+	select option{
+	text-transform: none;
+}
 
 	select optgroup {
 		padding-top:10px;
