@@ -33,6 +33,12 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 	}
 
 
+
+	/**
+	 * Get menu items for headlet based on registered enginges
+	 *
+	 * @return	Array
+	 */
 	protected function getMenuItems() {
 		$engines= TodoyuQuickCreateManager::getEngines();
 		$items	= array();
@@ -43,12 +49,13 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 
 		foreach($engines['all'] as $engine) {
 			$item	= array(
-				'id'	=> $engine['type'],
+				'id'	=> $engine['ext'] . '-' . $engine['type'],
+				'class'	=> 'item' . ucfirst($engine['ext']) . ucfirst($engine['type']),
 				'label'	=> $engine['label']
 			);
 
 			if( $engine['isPrimary'] ) {
-				$item['class'] = 'primary';
+				$item['class'] .= ' primary';
 			}
 
 			$items[] = $item;

@@ -99,7 +99,7 @@ Todoyu.Headlet = {
 		headlets.invoke('observe', 'mouseover', this.onOverHeadlet.bindAsEventListener(this));
 			// Observe headlet container
 		$('headlets').observe('mouseover', this.onOverContainer.bindAsEventListener(this));
-			// Stop all click events in headlets
+			// Close headlets when clicked outside of the headlets (on body)
 		Todoyu.Ui.addBodyClickObserver(this.onBodyClick.bind(this));
 	},
 	
@@ -111,11 +111,20 @@ Todoyu.Headlet = {
 	 * @param	Object		headletObject
 	 */
 	add: function(name, headletObject) {
-		this.headlets[name.toLowerCase()] = headletObject;
+		name = name.toLowerCase();
 		
+			// Add to internal list
+		this.headlets[name] = headletObject;
+		
+			// Add back reference to headlet object
 		headletObject.headlet = this;
 		
+			// Call headlet init function if exists
 		Todoyu.callIfExists(headletObject.init, headletObject);
+		
+		if( Todoyu.exists('headlet-' + name + '-menu') ) {
+			$('headlet-' + name + '-menu').observe('click', this.onMenuClick.bindAsEventListener(this));
+		}
 	},
 	
 	
@@ -189,6 +198,25 @@ Todoyu.Headlet = {
 			
 			this._callHandler(name, type, event);
 		}
+	},
+	
+	
+	
+	/**
+	 * On menu click handler
+	 * Calls the onMenuClick handler on the headlet object
+	 * 
+	 * @param	Event		event
+	 */
+	onMenuClick: function(event) {
+		var li	= event.findElement('li');
+		if( li ) {
+			var name	= li.id.split('-')[1];
+			
+			this._callHandler(name, 'onMenuClick', event);
+		}
+		
+		event.stop();
 	},
 
 	

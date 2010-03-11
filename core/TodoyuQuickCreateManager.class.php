@@ -44,7 +44,7 @@ class TodoyuQuickCreateManager {
 			'label'		=> $label,
 			'position'	=> intval($position),
 			'primary'	=> $primaryAreas,
-			'areaOnly'	=> $areaOnly
+			'areaOnly'	=> $areaOnly ? true : false
 		);
 	}
 
@@ -74,10 +74,9 @@ class TodoyuQuickCreateManager {
 			}
 
 				// Find primary type
-			if( in_array($area, $engine['primary']) ) {
+			if( $data['primary'] === false && in_array($area, $engine['primary']) ) {
 				$data['primary'] = $engine;
 				$data['primary']['isPrimary'] = true;
-				break;
 			}
 		}
 

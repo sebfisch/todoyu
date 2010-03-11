@@ -36,6 +36,7 @@ if( TodoyuAuth::isLoggedIn() ) {
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletAjaxLoader', 0);
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickCreate', 50);
 
+
 		// Register meta menu headlet
 //	TodoyuHeadManager::addHeadlet('TodoyuHeadletMetaMenu', 80);
 

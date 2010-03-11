@@ -18,8 +18,17 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+/**
+ * Quickcreate headlet
+ * 
+ * @package		Todoyu
+ * @subpackage	Core
+ */
 Todoyu.Headlet.QuickCreate = {
 
+	/**
+	 * Popup reference
+	 */
 	popup:	null,
 
 
@@ -28,25 +37,34 @@ Todoyu.Headlet.QuickCreate = {
 	 * Initialize quick create headlet
 	 */
 	init: function() {
-		//this.Mode.init();
-		
+
 	},
 	
+	
+	
+	/**
+	 * Handler: When clicked on button
+	 * 
+	 * @param	Event		event
+	 */
 	onButtonClick: function(event) {
 		this.headlet.showContent('quickcreate');
 	},
-
-
-
+	
+	
 	/**
-	 * Open creation wizard to add new record
+	 * Handler: When clicked on menu entry
 	 * 
-	 * @param	String		mode
+	 * @param	Event		event
 	 */
-	add: function(ext, mode) {
-		this.openPopup(ext, mode);
+	onMenuClick: function(event) {
+		var idParts	= event.findElement('li').id.split('-');
+		var ext		= idParts[3];
+		var type	= idParts[4];
+		
+		this.openTypePopup(ext, type);
+		this.headlet.hideContent('quickcreate');
 	},
-
 
 
 	/**
@@ -55,18 +73,18 @@ Todoyu.Headlet.QuickCreate = {
 	 * @param	String		ext
 	 * @param	String		mode
 	 */
-	openPopup: function(ext, mode) {
+	openTypePopup: function(ext, type) {
 		if ( ! $('quickcreate') ) {
-			var controller = 'Quickcreate' + mode;
-			var url		= Todoyu.getUrl(ext, controller);
+			var ctrl 	= 'Quickcreate' + Todoyu.Helper.ucwords(type);
+			var url		= Todoyu.getUrl(ext, ctrl);
 			var options	= {
 				'parameters': {
 					'action':	'popup'
 				},
-				'onComplete': this.onPopupOpened.bind(this, mode)
+				'onComplete': this.onPopupOpened.bind(this, ext, type)
 			};
 			var idPopup	= 'quickcreate';
-			var title	= '[LLL:core.create]' + ': ' + this.Mode.getLabel(mode);
+			var title	= '[LLL:core.create]' + ': ' + this.getTypeLabel(ext, type);
 			var width	= 700;
 			var height	= 360;
 
@@ -81,11 +99,24 @@ Todoyu.Headlet.QuickCreate = {
 	 * 
 	 * @param	String	ext
 	 */
-	onPopupOpened: function(mode) {
-		$('quickcreate').addClassName(mode);
+	onPopupOpened: function(ext, type) {
+		$('quickcreate').addClassName(type);
 
-		var modeClass	= 'Todoyu.Headlet.QuickCreate.' + Todoyu.Helper.ucwords(mode);
-		Todoyu.callUserFunction(modeClass + '.onPopupOpened');
+		var quickCreateObject	= 'Todoyu.Ext.' + ext + '.QuickCreate' + Todoyu.Helper.ucwords(type);
+		
+		Todoyu.callUserFunction(quickCreateObject + '.onPopupOpened');
+	},
+	
+	
+	
+	/**
+	 * Get label of a type from menu entry
+	 * 
+	 * @param	String		ext
+	 * @param	String		type
+	 */
+	getTypeLabel: function(ext, type) {
+		return $('headlet-quickcreate-item-' + ext + '-' + type).innerHTML;
 	},
 
 
@@ -100,119 +131,12 @@ Todoyu.Headlet.QuickCreate = {
 
 
 	/**
-	 * Update quick create form
+	 * Update quick create popup content
 	 *
-	 * @param	Integer	idTask
-	 * @param	String	formHTML
+	 * @param	String		content
 	 */
-	updateFormDiv: function(formHTML) {
-		$('quickcreate_content').update(formHTML);
-	},
-
-
-
-/* ---------------------------------------------------------
-	Todoyu.Headlet.Quickcreate.Mode
------------------------------------------------------------- */
-
-	Mode: {
-		
-		button: 	null,
-
-
-
-		/**
-		 * Init quick create headlet
-		 */
-		init: function() {
-			this.button = $('headletquickcreate-mode-btn');
-
-			this.installObserver();
-		},
-
-
-
-		/**
-		 * Install observer
-		 */
-		installObserver: function() {
-			this.button.observe('click', this.show.bindAsEventListener(this));
-		},
-
-
-
-		/**
-		 * Show quick creation modes (record types) selector list
-		 *
-		 * @param	String		mode
-		 */
-		show: function(event) {
-			var btnOffset	= this.button.cumulativeOffset();
-			var btnHeight	= this.button.getHeight();
-
-			var top			= btnOffset.top + btnHeight;
-			var left		= btnOffset.left;
-
-			$('headletquickcreate-modes').setStyle({
-				'display':	'block',
-				'left':		left + 'px',
-				'top':		top + 1 + 'px'
-			});
-
-			$('headletquickcreate-modes').observe('click', this.onSelect.bindAsEventListener(this));
-			Event.observe.delay(0.1, document.body, 'click', this.onBodyClick.bindAsEventListener(this));
-		},
-
-
-
-		/**
-		 * Evoked upon selecting of creation mode: hide modes list and open creator wizard
-		 *
-		 * @param	Object	event
-		 */
-		onSelect: function(event) {
-			var liElement	= event.findElement('li');
-
-			var classnames	= $(liElement).getAttribute('class');
-			if ( classnames.indexOf('grouplabel') === -1 ) {
-				var ext	= liElement.readAttribute('ext');
-				var mode= liElement.readAttribute('mode');
-
-				this.hide();
-				Todoyu.Headlet.QuickCreate.add(ext, mode);
-			}
-		},
-
-
-
-		/**
-		 * Click outside widget after having opened it: hide modes selector
-		 */
-		onBodyClick: function(event) {
-			this.hide();
-			$(document.body).stopObserving('click');
-		},
-
-
-
-		/**
-		 * Hide modes selector
-		 */
-		hide: function() {
-			$('headletquickcreate-modes').hide();
-		},
-
-
-
-		/**
-		 * Get label of given mode
-		 * 
-		 * @return	String
-		 */
-		getLabel: function(mode) {
-			return $$('#headletquickcreate-modes li.createmode-' + mode)[0].innerHTML;
-		}
-
+	updatePopupContent: function(content) {
+		$('quickcreate_content').update(content);
 	}
 
 };
