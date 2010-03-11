@@ -130,9 +130,7 @@ class TodoyuInstaller {
 
 
 	/**
-	 * Initialize first step. Install or update?
-	 * Save mode in session
-	 *
+	 * Initialize first step. Install or update? Save mode in session
 	 */
 	private static function initStep() {
 		if( self::isUpdate() ) {
@@ -230,7 +228,7 @@ class TodoyuInstaller {
 	 * Check if step if part of the update run
 	 *
 	 * @param	String		$step
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isUpdateStep($step) {
 		return in_array($step, $GLOBALS['CONFIG']['INSTALLER']['update']);

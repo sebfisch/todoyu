@@ -81,6 +81,11 @@ class TodoyuBrowserInfo {
 	}
 
 
+	/**
+	 * Get identification (name) of browser
+	 *
+	 * @return	String
+	 */
 	public static function getBrowserIdent() {
 		$ident	= 'unknown';
 
@@ -112,27 +117,27 @@ class TodoyuBrowserInfo {
 
 		if( self::isFirefox() ) {
 			$pos	= strpos($userAgent, 'Firefox/');
-			$parts	= explode(' ', substr($userAgent, $pos+8));
+			$parts	= explode(' ', substr($userAgent, $pos + 8));
 
 			$version= trim($parts[0]);
 		} elseif( self::isIE() ) {
 			$pos	= strpos($userAgent, 'MSIE ');
-			$parts	= explode(' ', substr($userAgent, $pos+5));
+			$parts	= explode(' ', substr($userAgent, $pos + 5));
 
 			$version= trim(str_replace(';', '', $parts[0]));
 		} elseif( self::isChrome() ) {
 			$pos	= strpos($userAgent, 'Chrome/');
-			$parts	= explode(' ', substr($userAgent, $pos+7));
+			$parts	= explode(' ', substr($userAgent, $pos + 7));
 
 			$version= trim($parts[0]);
 		} elseif( self::isSafari() ) {
 			$pos	= strpos($userAgent, 'Version/');
-			$parts	= explode(' ', substr($userAgent, $pos+8));
+			$parts	= explode(' ', substr($userAgent, $pos + 8));
 
 			$version= trim($parts[0]);
 		} elseif( self::isOpera() ) {
 			$pos	= strpos($userAgent, 'Opera/');
-			$parts	= explode(' ', substr($userAgent, $pos+6));
+			$parts	= explode(' ', substr($userAgent, $pos + 6));
 
 			$version= trim($parts[0]);
 		}
@@ -174,6 +179,5 @@ class TodoyuBrowserInfo {
 	}
 
 }
-
 
 ?>

@@ -106,7 +106,6 @@ class TodoyuInstallerRenderer {
 	 * @return	Array
 	 */
 	public static function renderDbConnection(array $result) {
-			// Render connection data form
 		$data	= array(
 			'title'		=> 'installer.dbconnection.title',
 			'button'	=> 'installer.dbconnection.button',

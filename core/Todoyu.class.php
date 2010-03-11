@@ -72,14 +72,11 @@ class Todoyu {
 
 
 
-
-
 	/**
 	 * Set system locale with setlocale() based on the currently selected language
 	 */
 	public static function setSystemLocale() {
 		$locale	= self::getLocale();
-
 
 			// Check if locale exists
 		if( ! TodoyuLocaleManager::hasLocale($locale) ) {
@@ -221,12 +218,24 @@ class Todoyu {
 
 
 	/**
-	 * Get system locale
+	 * Get locale: if set get from person profile pref, otherwise from system config
 	 *
 	 * @return	String
 	 */
 	public static function getLocale() {
-		return $GLOBALS['CONFIG']['SYSTEM']['locale'];
+		$hasLocale	= false;
+		$language	= TodoyuContactPreferences::getLanguage();
+
+			// person profile contains language preference
+		if ( $language !== false ) {
+			$locale	= TodoyuLocaleManager::getLocaleFromLanguage($language);
+		}
+
+		if ( $locale === false  ) {
+			$locale	= $GLOBALS['CONFIG']['SYSTEM']['locale'];
+		}
+
+		return $locale;
 	}
 
 

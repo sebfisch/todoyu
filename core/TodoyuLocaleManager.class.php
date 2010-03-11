@@ -62,6 +62,24 @@ class TodoyuLocaleManager {
 
 
 	/**
+	 * Convert language to locale key
+	 *
+	 * @param	String	$language	e.g. 'de' / 'en'
+	 * @return	String
+	 */
+	public static function getLocaleFromLanguage($language) {
+		$locale = $language . '_' . strtoupper($language);
+
+		if ( TodoyuLocaleManager::hasLocale($locale) === false ) {
+			$locale	= false;
+		}
+			// Check locale existence
+		return $locale;
+	}
+
+
+
+	/**
 	 * Get all names of a locale which may exists on a system
 	 *
 	 * @param	String		$locale

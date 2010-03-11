@@ -324,6 +324,45 @@ class TodoyuTime {
 
 
 	/**
+	 * Format a timestamp with one of the default dateformats in todoyu
+	 *
+	 * @see		core/config/dateformat.xml
+	 * @param	Integer		$timestamp
+	 * @param	String		$formatName
+	 * @return	String		Formatted date
+	 */
+	public static function format($timestamp, $formatName = 'datetime') {
+		$timestamp	= intval($timestamp);
+		$format		= self::getFormat($formatName);
+
+		$string		= strftime($format, $timestamp);
+
+			// If server locale file is not yet utf8, convert the string
+		if( ! TodoyuDiv::isUTF8($string) ) {
+			$string = utf8_encode($string);
+		}
+
+		return $string;
+	}
+
+
+
+	/**
+	 * Get format config string
+	 *
+	 * @see		core/config/dateformat.xml
+	 * @param	String		$formatName
+	 * @return	String
+	 */
+	public static function getFormat($formatName) {
+		$localeKey	= 'dateformat.' . $formatName;
+
+		return TodoyuLanguage::getLabel($localeKey);
+	}
+
+
+
+	/**
 	 * Parse date string with check if its a dateString or a dateTimeString
 	 *
 	 * @param	String	$dateString
@@ -438,45 +477,6 @@ class TodoyuTime {
 		$parts	= explode(':', $timeString);
 
 		return intval($parts[0])*3600 + TodoyuDiv::intInRange($parts[1], 0, 60)*60;
-	}
-
-
-
-	/**
-	 * Format a timestamp with one of the default dateformats in todoyu
-	 *
-	 * @see		core/config/dateformat.xml
-	 * @param	Integer		$timestamp
-	 * @param	String		$formatName
-	 * @return	String		Formatted date
-	 */
-	public static function format($timestamp, $formatName = 'datetime') {
-		$timestamp	= intval($timestamp);
-		$format		= self::getFormat($formatName);
-
-		$string		= strftime($format, $timestamp);
-
-			// If server locale file is not yet utf8, convert the string
-		if( ! TodoyuDiv::isUTF8($string) ) {
-			$string = utf8_encode($string);
-		}
-
-		return $string;
-	}
-
-
-
-	/**
-	 * Get format config string
-	 *
-	 * @see		core/config/dateformat.xml
-	 * @param	String		$formatName
-	 * @return	String
-	 */
-	public static function getFormat($formatName) {
-		$localeKey	= 'dateformat.' . $formatName;
-
-		return TodoyuLanguage::getLabel($localeKey);
 	}
 
 

@@ -109,11 +109,20 @@ class TodoyuDatasource {
 	}
 
 
+
+	/**
+	 * Get label to static record of given type and key
+	 *
+	 * @param	String	$type
+	 * @param	String	$key
+	 * @return	String
+	 */
 	public static function getStaticLabel($type, $key) {
 		$labelKey	= 'static_' . $type . '.' . $key;
 
 		return TodoyuLanguage::getLabel($labelKey);
 	}
+
 
 
 	/**
@@ -210,25 +219,42 @@ class TodoyuDatasource {
 	 */
 	public static function getStaticCountryOptions() {
 
-		return self::getStaticOptions( 'country', 'name' );
+		return self::getStaticOptions('country', 'name');
 	}
 
 
 
+	/**
+	 * Get static DB records from 'sys_country'
+	 *
+	 * @return	Array
+	 */
 	public static function getCountries() {
 		return self::getStaticRecords('country');
 	}
 
 
+
+	/**
+	 * Get countries options config (iso alpha3 from static DB table 'sys_country')
+	 *
+	 * @return	Array
+	 */
 	public static function getCountryOptions() {
 		return self::getStaticRecordOptions('country', 'id', 'iso_alpha3');
 	}
 
 
+
+	/**
+	 * Get options config of available languages (iso alpha2 from static DB table 'sys_language')
+	 *
+	 * @param	String	$where
+	 * @return	Array
+	 */
 	public static function getLanguageOptions($where = '') {
 		return self::getStaticRecordOptions('language', 'iso_alpha2', null, $where);
 	}
-
 
 
 
@@ -266,6 +292,8 @@ class TodoyuDatasource {
 		return $entries;
 	}
 
+
+
 	/**
 	 * Get region values (to current country) to render autocompleter suggestion from
 	 *
@@ -300,7 +328,6 @@ class TodoyuDatasource {
 	 *
 	 * @param	Mixed	$idRegion	int: fetch from DB, string: return as-is
 	 * @return	String
-	 *
 	 */
 	public static function getRegionLabel( $idRegion ) {
 		if ( is_int( $idRegion ) ) {
@@ -320,7 +347,6 @@ class TodoyuDatasource {
 	 *
 	 * @param	Mixed	$idCountry	int: fetch from DB, string: return as-is
 	 * @return	String
-	 *
 	 */
 	public static function getCountryLabel( $idCountry ) {
 		$idCountry = intval($idCountry);
@@ -334,7 +360,7 @@ class TodoyuDatasource {
 
 
 	/**
-	 * returns the short label of given country
+	 * Return short label of given country
 	 *
 	 * @param	Integer	$idCountry
 	 * @return	String
@@ -347,10 +373,6 @@ class TodoyuDatasource {
 		return $res['iso_alpha2'];
 	}
 
-
-
-
 }
-
 
 ?>
