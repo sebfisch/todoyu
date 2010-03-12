@@ -40,7 +40,7 @@ class TodoyuSession {
 	/**
 	 * Get session value
 	 *
-	 * @param	Stirng		$path			Slash seperated path
+	 * @param	String		$path			Slash seperated path
 	 * @return	Mixed
 	 */
 	public static function get($path) {

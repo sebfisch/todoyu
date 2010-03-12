@@ -52,33 +52,97 @@ class TodoyuRightsManager {
 	public static function loadRights() {
 			// Check if rights are loaded (is array)
 		if( ! is_array(self::$rights) ) {
-				// Check if rights are stored in session
-			if( TodoyuSession::isIn('rights') ) {
+				// Check if rights are stored in session and are up-to-date
+			if( TodoyuSession::isIn('rights') && ! self::areRightsInSessionExpired() ) {
 				self::$rights = TodoyuSession::get('rights');
 			} else {
-					// Get roles from db
-				$roleIDs	= TodoyuAuth::getPerson()->getRoleIDs();
-
-					// If person has roles, get rights for the roles and compile them
-				if( sizeof($roleIDs) > 0 )	{
-					$fields	= '	ext, `right`';
-					$table	= self::TABLE;
-
-					$where	= '	id_role IN(' . implode(',', $roleIDs) . ')';
-
-					$rights = Todoyu::db()->getArray($fields, $table, $where);
-
-					foreach($rights as $right) {
-						self::$rights[$right['ext']][$right['right']] = 1;
-					}
-
-						// Save compiled rights in session
-					TodoyuSession::set('rights', self::$rights);
-				} else {
-						// If no roles found, set an empty rights array to prevent loading again (nothing allowed)
-					self::$rights = array();
-				}
+				self::saveCompiledRightsInSession();
 			}
+		}
+	}
+
+
+
+	/**
+	 * Get roles and resp. person's rights from DB, save rights compiled in session
+	 */
+	public static function saveCompiledRightsInSession() {
+			// Get roles from DB
+		$roleIDs	= TodoyuAuth::getPerson()->getRoleIDs();
+
+			// If person has roles, get rights for the roles and compile them
+		if( sizeof($roleIDs) > 0 )	{
+			$fields	= '	ext, `right`';
+			$table	= self::TABLE;
+			$where	= '	id_role IN(' . implode(',', $roleIDs) . ')';
+
+			$rights = Todoyu::db()->getArray($fields, $table, $where);
+
+			foreach($rights as $right) {
+				self::$rights[$right['ext']][$right['right']] = 1;
+			}
+
+				// Save compiled rights in session
+			TodoyuSession::set('rights', self::$rights);
+
+				// Update session modification timestamp
+			TodoyuSession::set('mtime', NOW);
+
+		} else {
+				// If no roles found, set an empty rights array to prevent loading again (nothing allowed)
+			self::$rights = array();
+		}
+	}
+
+
+
+	/**
+	 * Check whether rights stored in session haven't expired (rights definitions havent changed since)
+	 *
+	 * @return	Boolean
+	 */
+	public static function areRightsInSessionExpired() {
+		$timestampSession	= TodoyuSession::get('mtime');
+		$timestampRightsMod	= self::getLastChangeTime();
+
+		return ($timestampSession < $timestampRightsMod) ? true : false;
+	}
+
+
+
+	/**
+	 * Get timestamp of last change of systemwide rights settings
+	 *
+	 * @return	Integer
+	 */
+	public static function getLastChangeTime() {
+		$timestampFile	= PATH_CACHE . DIRECTORY_SEPARATOR . 'timeLastRightsChange';
+
+		if ( TodoyuFileManager::isFile($timestampFile) ) {
+				// Get modification time of file
+			$fileMtime	= filemtime($timestampFile);
+		} else {
+			$fileMtime	= 0;
+		}
+
+		return $fileMtime;
+	}
+
+
+
+	/**
+	 * Save timestamp of moment of system rights store / change
+	 */
+	public static function saveChangeTime() {
+		$timestampFile	= PATH_CACHE . DIRECTORY_SEPARATOR . 'timeLastRightsChange';
+
+		if ( ! TodoyuFileManager::isFile($timestampFile) ) {
+				// Create timestamp file
+			$handle	= fopen($timestampFile, 'w');
+			fclose($handle);
+		} else {
+				// Update file modification timestamp
+			TodoyuFileManager::setFileMtime($timestampFile, NOW);
 		}
 	}
 
@@ -318,6 +382,5 @@ class TodoyuRightsManager {
 	}
 
 }
-
 
 ?>

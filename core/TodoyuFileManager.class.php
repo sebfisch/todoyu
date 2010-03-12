@@ -226,6 +226,18 @@ class TodoyuFileManager {
 
 
 	/**
+	 * Set modification timestamp of file
+	 *
+	 * @param	String		$filePath
+	 * @param	Integer		$timestamp
+	 */
+	public static function setFileMtime($filePath, $timestamp = NOW) {
+		touch($filePath, $timestamp);
+	}
+
+
+
+	/**
 	 * Save file content based on a template
 	 *
 	 * @param	String		$savePath		Path where the file is saved

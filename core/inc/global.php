@@ -28,6 +28,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 
 
+
 	// Init config array
 if( ! isset($CONFIG) ) {
 	$CONFIG = array();
@@ -37,12 +38,15 @@ if( ! isset($CONFIG) ) {
 	// Define basic constants
 require_once( dirname(dirname(__FILE__)) . '/config/constants.php' );
 
+	// Store session modification timestamp
+if ( ! isset($_SESSION['mtime']) ) {
+	$_SESSION['mtime']	= NOW;
+}
 
 	// Add todoyu include path
 set_include_path(get_include_path() . PATH_SEPARATOR . PATH);
 	// Add PEAR to include path
 set_include_path(get_include_path() . PATH_SEPARATOR . PATH_PEAR);
-
 
 
 
@@ -63,7 +67,9 @@ require_once( PATH_CORE . '/TodoyuArray.class.php' );
 require_once( PATH_CORE . '/TodoyuDiv.class.php' );
 require_once( PATH_CORE . '/TodoyuPreferenceManager.class.php' );
 require_once( PATH_CORE . '/TodoyuFileManager.class.php' );
+
 require_once( PATH_CORE . '/TodoyuRightsManager.class.php' );
+
 require_once( PATH_CORE . '/TodoyuHookManager.class.php' );
 require_once( PATH_CORE . '/TodoyuHeader.class.php' );
 require_once( PATH_CORE . '/TodoyuMetaMenuManager.class.php' );
@@ -76,11 +82,9 @@ require_once( PATH_EXT .  '/contact/model/TodoyuPerson.class.php' );
 require_once( PATH_EXT .  '/contact/model/TodoyuPersonManager.class.php' );
 require_once( PATH_EXT .  '/contact/model/TodoyuContactPreferences.class.php' );
 
-
 	// Load development classes
 require_once( PATH_CORE . '/TodoyuDebug.class.php' );
 require_once( PATH_LIB . '/php/FirePHP/FirePHP.class.php' );
-
 
 	// Load dwoo
 require_once( PATH_LIB . '/php/dwoo/dwooAutoload.php' );
@@ -89,13 +93,11 @@ require_once( PATH_LIB . '/php/dwoo/dwooAutoload.php' );
 require_once( PATH_LIB . '/php/cssmin.php' );
 require_once( PATH_LIB . '/php/jsmin.php' );
 
-
 	// Register autoloader
 spl_autoload_register( array('Todoyu', 'autoloader') );
 
 	// Register error handler
 set_error_handler(array('TodoyuErrorHandler', 'handleError'));
-
 
 	// Load global functions
 require_once( PATH_CORE . '/inc/version.php' );

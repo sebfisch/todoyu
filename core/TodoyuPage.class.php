@@ -148,7 +148,7 @@ class TodoyuPage {
 	/**
 	 * Append data to an array attribute
 	 *
-	 * @param	Stirng		$name
+	 * @param	String		$name
 	 * @param	Mixed		$value
 	 */
 	public static function add($name, $value) {
@@ -160,7 +160,7 @@ class TodoyuPage {
 	/**
 	 * Prepend data to an array attribute
 	 *
-	 * @param	Stirng		$name
+	 * @param	String		$name
 	 * @param	Mixed		$value
 	 */
 	public static function prepend($name, $value) {
@@ -174,7 +174,7 @@ class TodoyuPage {
 	/**
 	 * Append a value to an string attribute
 	 *
-	 * @param	Stirng		$name
+	 * @param	String		$name
 	 * @param	Mixed		$value
 	 */
 	public static function append($name, $value) {
