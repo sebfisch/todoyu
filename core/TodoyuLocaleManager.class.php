@@ -53,7 +53,7 @@ class TodoyuLocaleManager {
 	 * Check if locale exists in list
 	 *
 	 * @param	String		$locale
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function hasLocale($locale) {
 		return array_key_exists($locale, self::getLocales());
@@ -96,8 +96,8 @@ class TodoyuLocaleManager {
 	/**
 	 * Set system locale
 	 *
-	 * @param	String			$locale
-	 * @return	Bool/String		FALSE or the new locale string
+	 * @param	String					$locale
+	 * @return	Boolean / String		FALSE or the new locale string
 	 */
 	public static function setLocale($locale) {
 		$localeNames	= self::getLocaleNames($locale);
