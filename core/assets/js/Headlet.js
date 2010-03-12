@@ -191,6 +191,7 @@ Todoyu.Headlet = {
 			var type	= '';
 			
 			this.hideAllContent(name);
+			this.setActive(name);
 						
 			if( this._isContentEvent(event) ) {
 				type	= 'onContentClick';
@@ -234,6 +235,17 @@ Todoyu.Headlet = {
 		return Todoyu.exists('headlet-' + name);
 	},
 	
+	
+	
+	/**
+	 * Set a headlet active
+	 * 
+	 * @param	String		name
+	 */
+	setActive: function(name) {
+		$('headlets').select('li.headlet').invoke('removeClassName', 'active');
+		$('headlet-' + name).addClassName('active');
+	},	
 	
 	
 	toggleContent: function(name, keepOthers) {

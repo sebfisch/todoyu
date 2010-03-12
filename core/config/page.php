@@ -26,19 +26,12 @@
  * @subpackage	Core
  */
 
-	// Add "TODOYU" tab
 if( TodoyuAuth::isLoggedIn() ) {
-	TodoyuFrontend::addMenuEntry('todoyu', 'LLL:core.tab.todoyu.label', 'javascript:void(0)', 300);
-
 	TodoyuPage::addJsOnloadedFunction('Todoyu.QuickInfo.init.bind(Todoyu.QuickInfo)', 10);
 
 		// Register ajax loader headlet which indicated acitve ajax requests
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletAjaxLoader', 0);
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickCreate', 50);
-
-
-		// Register meta menu headlet
-//	TodoyuHeadManager::addHeadlet('TodoyuHeadletMetaMenu', 80);
 
 		// Generate colors css and sprite
 		// Moved to calendar ext controller
