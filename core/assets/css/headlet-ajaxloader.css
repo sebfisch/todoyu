@@ -1,5 +1,11 @@
-#headlet-ajaxloader {
-	
+li#headlet-ajaxloader {
+	left:-200px;
+	position:absolute;
+	top:35px;
+}
+
+li#headlet-ajaxloader a {
+	border:none;
 }
 
 #headlets #headlet-ajaxloader-button {

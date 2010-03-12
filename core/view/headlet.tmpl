@@ -1,6 +1,7 @@
-<div id="{$id}-button" {foreach $buttonAttributes buttonAttributeName buttonAttributeValue}{$buttonAttributeName}="{$buttonAttributeValue}"{/foreach}>
-	<div id="{$id}-icon" class="icon"><!-- --></div>
-</div>
-<div id="{$id}-content" class="content" style="display:none">
+<a id="{$id}-button" {foreach $buttonAttributes buttonAttributeName buttonAttributeValue}{$buttonAttributeName}="{$buttonAttributeValue}"{/foreach}>&nbsp;</a>
+
+{if $content}
+<ul id="{$id}-content" class="content" style="display:none">
 	{$content}
-</div>
+</ul>
+{/if}

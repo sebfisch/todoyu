@@ -1,52 +1,80 @@
 #headlets {
 	position:absolute;
-	right:0;
-	background-color:#067;
-	padding-bottom:1px;
+	right:105px;
+	z-index:200;
 }
 
-#headlets li.headlet {
+#headlets li {
+	position:relative;
 	float:left;
-	margin-left:1px;
-	height:25px;
-	width:30px;
+	z-index:200;
 }
 
-#headlets li.headlet div.button {
-	width:100%;
-	height:100%;
-	background:url(../img/headlet.png) no-repeat 0 0;
+	#headlets li:hover {
+		z-index:202;
+	}
+
+#headlets li a {
+	display:block;
+	position:relative;
+	height:26px;
+	width:26px;
+	margin-left:-1px;
+	border:1px solid #d3d9ba;
+	border-width:0 1px;
 	cursor:pointer;
+	z-index:200;
 }
 
-#headlets li.headlet div.content {
-	border:1px solid #CCC;
-	background-color:#EEE;
-	z-index:100;
+	#headlets li:hover a {
+		border-color:#b9bbad;
+		background-color:#d7ddc1;
+		z-index:203;
+	}
+
+	#headlets li a.button {
+		background-image:url(../img/headlet-icons.png);
+		background-repeat:no-repeat;
+	}
+	#headlets li a#headlet-quicksearch-button { background-position:0 5px; }
+	#headlets li a#headlet-timetracking-button { background-position:0 -23px;}
+	#headlets li a#headlet-timetracking-button.active { background-position:-28px -23px;}
+	#headlets li a#headlet-timetracking-button.active { background-position:-28px -23px;}
+	#headlets li a#headlet-quicktask-button { background-position:0 5px; }
+	#headlets li a#headlet-quickcreate-button { background-position:0 -51px; }
+	#headlets li a#headlet-admin-button { background-position:0 -79px; }
+	#headlets li a#headlet-logout-button { background-position:0 -135px; }
+
+#headlets li ul {
+	position:absolute;
+	top:25px;
+	left:-1px;
+	background:#d7ddc1;
+	border:1px solid #b9bbad;
+	z-index:202;
 }
 
-/**
- * Menu headlet
- */
-#headlets li.headlet.menu div.content ul {
-	background-color:#F3F3F3;
-}
-#headlets li.headlet.menu div.content ul {
-	
+#headlets li li {
+	float:none;
+	margin:0;
+	border:none;
 }
 
-#headlets li.headlet.menu div.content ul li {
-	height:14px;
-	padding:4px 2px 4px 40px;
-	cursor:pointer;
-	border-bottom:1px solid #DDD;
+#headlets li li a {
+	width:auto;
+	height:auto;
+	margin:0;
+	padding:5px 30px 2px 30px;
+	border:none;
+	font-size: 10px;
+	white-space:nowrap;
 }
 
+	#headlets li li:hover a {
+		border:none;
+		background-color:#edf0df;
+	}
 
-
-
- /* Dev */
-#headlets li.headlet {
-	border:1px solid #F00;
-	margin:0 5px;
-}
+	#headlets li li a.primary {
+		border-bottom:1px solid #b9bbad;
+	}

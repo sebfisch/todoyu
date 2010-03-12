@@ -7,21 +7,18 @@
 	background:transparent;
 }
 
-#companyLogo,
-#head {
-	position:absolute;
-	height:60px;
-}
-
 #companyLogo {
+	position:absolute;
 	left:0;
 	width:200px;
+	height:60px;
 	background:url(../../../config/img/company.png) no-repeat 5px 50%;
 }
 
 #head {
-	left:200px;
-	width:775px;
-	border:1px solid #ff8000;
-	z-index:110;
+	position:absolute;
+	left:198px;
+	width:765px;
+	height:68px;
+	background:url(../img/bg-header.png) no-repeat 0 0;
 }
