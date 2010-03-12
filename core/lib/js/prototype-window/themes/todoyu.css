@@ -127,6 +127,7 @@
 	font:10px tahoma,arial,sans-serif;
 	background:#f6f8f1;
 	color:#ddd;
+	height: auto !important;
 }
 
 .bottom_draggable,.top_draggable {

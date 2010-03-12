@@ -183,7 +183,7 @@ Todoyu.Popup = {
 
 
 	/**
-	 * Update seize of popup to fit its content without scrollbar
+	 * Update size of popup to fit its content without scrollbar
 	 *
 	 * @param	String	idPopup
 	 * @param	Boolean clearTimeout
