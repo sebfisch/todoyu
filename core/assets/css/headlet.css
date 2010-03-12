@@ -26,6 +26,7 @@
 	z-index:200;
 }
 
+	#headlets li.active a,
 	#headlets li:hover a {
 		border-color:#b9bbad;
 		background-color:#d7ddc1;
@@ -33,16 +34,8 @@
 	}
 
 	#headlets li a.button {
-		background-image:url(../img/headlet-icons.png);
-		background-repeat:no-repeat;
+	
 	}
-	#headlets li a#headlet-quicksearch-button { background-position:0 5px; }
-	#headlets li a#headlet-timetracking-button { background-position:0 -23px;}
-	#headlets li a#headlet-timetracking-button.active { background-position:-28px -23px;}
-	#headlets li a#headlet-quicktask-button { background-position:0 -51px; }
-	#headlets li a#headlet-quickcreate-button { background-position:0 -79px; }
-	#headlets li a#headlet-admin-button { background-position:0 -135px; }
-	#headlets li a#headlet-logout-button { background-position:0 -163px; }
 
 #headlets li ul {
 	position:absolute;

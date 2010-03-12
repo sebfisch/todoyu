@@ -190,6 +190,8 @@ Todoyu.Headlet = {
 			var name	= this._getNameFromEvent(event);
 			var type	= '';
 			
+			this.hideAllContent(name);
+						
 			if( this._isContentEvent(event) ) {
 				type	= 'onContentClick';
 			} else {
@@ -259,7 +261,7 @@ Todoyu.Headlet = {
 	 */
 	showContent: function(name, keepOthers) {		
 		if( keepOthers === true ) {
-			this.hideAllContent();
+			this.hideAllContent(name);
 		}
 		
 		if( this.hasContent(name) ) {
@@ -297,7 +299,13 @@ Todoyu.Headlet = {
 	 * Hide all content elements
 	 */
 	hideAllContent: function(exceptName) {
-		$('headlets').select('ul.content').invoke('hide');
+		$('headlets').select('ul.content').each(function(name, headlet){
+			if( headlet.id.split('-')[1] !== name ) {
+				headlet.hide();
+			}
+		}.bind(this, exceptName));
+		
+		//$('headlets').select('ul.content').invoke('hide');
 	},
 	
 	

@@ -63,28 +63,17 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 
 
 		return $items;
+	}
 
 
 
-
-
-		TodoyuDebug::printHtml($engines['all']);
-
-//		$items	= array();
-//
-//		if( is_array($engines['primary']) ) {
-//			$engines['primary']['class'];
-//			$primary[]
-//			$items[] = array(
-//
-//
-//			);
-//		}
-//
-//		TodoyuDebug::printHtml($engineItems);
-
-
-		return array();
+	/**
+	 * Get headlet label
+	 *
+	 * @return	String
+	 */
+	public function getLabel() {
+		return 'Quick create records';
 	}
 
 }

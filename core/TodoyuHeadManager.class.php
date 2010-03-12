@@ -70,6 +70,7 @@ class TodoyuHeadManager {
 
 			$data['headlets'][$name] = array(
 				'name'		=> $name,
+				'label'		=> $headlet->getLabel(),
 				'phpClass'	=> $className,
 				'content'	=> $headlet->render(),
 				'type'		=> $headlet->getType()

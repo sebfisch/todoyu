@@ -70,6 +70,12 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	}
 
 
+
+	/**
+	 * Set reference to javascript headlet object
+	 *
+	 * @param	String		$jsHeadlet
+	 */
 	protected final function setJsHeadlet($jsHeadlet) {
 		$this->jsHeadlet = $jsHeadlet;
 	}
@@ -104,6 +110,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 		return str_replace('TodoyuHeadlet', '', get_class($this));
 	}
 
+	abstract public function getLabel();
 
 
 	/**
