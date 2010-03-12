@@ -356,7 +356,7 @@ Todoyu.Ui = {
 	 * @param	String	name
 	 */
 	scrollToAnchor: function(name) {
-		var element	= $(document.getElementsByName(name).first());
+		var element = document.getElementsByName(name)[0];
 
 		if(element) {
 			this.scrollToElement(element);
