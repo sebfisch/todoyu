@@ -69,7 +69,8 @@
 	white-space:nowrap;
 }
 
-	#headlets li li:hover a {
+	
+	#headlets li.headlet.menu li:hover a {
 		border:none;
 		background-color:#edf0df;
 	}

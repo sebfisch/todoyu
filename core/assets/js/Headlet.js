@@ -64,7 +64,7 @@ Todoyu.Headlet = {
 	 * @return	Bool
 	 */
 	_isContentEvent: function(event) {
-		return event.element().up('div.content') !== undefined;
+		return event.element().up('ul.content') !== undefined;
 	},
 	
 	
@@ -198,6 +198,8 @@ Todoyu.Headlet = {
 			
 			this._callHandler(name, type, event);
 		}
+		
+		event.stop();
 	},
 	
 	
@@ -273,7 +275,7 @@ Todoyu.Headlet = {
 	 * @param	String		name
 	 */
 	hideContent: function(name) {
-		if (this.hasContent(name)) {
+		if( this.hasContent(name) ) {
 			$('headlet-' + name + '-content').hide();
 		}
 	},
@@ -294,8 +296,8 @@ Todoyu.Headlet = {
 	/**
 	 * Hide all content elements
 	 */
-	hideAllContent: function() {
-		$('headlets').select('div.content').invoke('hide');
+	hideAllContent: function(exceptName) {
+		$('headlets').select('ul.content').invoke('hide');
 	},
 	
 	

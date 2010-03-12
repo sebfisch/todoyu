@@ -1,7 +1,6 @@
 li#headlet-ajaxloader {
-	left:-200px;
-	position:absolute;
-	top:35px;
+	width:27px;
+	height:26px;
 }
 
 li#headlet-ajaxloader a {
