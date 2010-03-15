@@ -87,7 +87,7 @@ class TodoyuFormElement_Timeinput extends TodoyuFormElement_Textinput {
 	public function getValueForTemplate() {
 		$value = $this->getValue();
 
-		return $value === 0 ? '' : TodoyuTime::formatTime($value);
+		return $value === 0 ? '00:00' : TodoyuTime::formatTime($value);
 	}
 
 

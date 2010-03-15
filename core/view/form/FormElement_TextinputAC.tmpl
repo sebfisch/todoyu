@@ -1,7 +1,7 @@
 {extends "core/view/form/FormElement.tmpl"}
 
 {block name="field"}
-	<input type="text" id="{$htmlId}-fulltext" value="{$displayLabel}" class="{$inputClass} {$class}" {if $disabled}disabled="disabled"{/if} {$extraAttributes} />
+	<input type="text" id="{$htmlId}-fulltext" value="{$displayLabel}" class="{$inputClass} {$class}" {if $disabled}disabled="disabled"{/if} {$extraAttributes} title="{Label form.autocompleteInfo}" />
 	<input type="hidden" name="{$htmlName}" id="{$htmlId}" value="{$valueTemplate}" />
 	<div id="{$htmlId}-suggest" class="acResultContainer"></div>
 	<script type="text/javascript">

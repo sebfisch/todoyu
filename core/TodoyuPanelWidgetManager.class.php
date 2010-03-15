@@ -131,15 +131,15 @@ class TodoyuPanelWidgetManager {
 		$extID 	= TodoyuExtensions::getExtID($ext);
 		$sorting= intval($sorting);
 
-		$fields	= array('id_person'	=> $idUser,
-						'ext'		=> $extID,
-						'widget'	=> $widget,
-						'position'	=> $position,
-						'config'	=> serialize($config)
-						);
-		$table	= self::TABLE;
+		$data	= array(
+			'id_person'	=> $idUser,
+			'ext'		=> $extID,
+			'widget'	=> $widget,
+			'position'	=> $position,
+			'config'	=> serialize($config)
+		);
 
-		return Todoyu::db()->addRecord($table, $fields);
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}
 
 

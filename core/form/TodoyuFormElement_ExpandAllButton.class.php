@@ -46,6 +46,8 @@ class TodoyuFormElement_ExpandAllButton extends TodoyuFormElement_Button {
 	 *
 	 */
 	protected function init() {
+		$this->setType('button');
+
 		if( ! $this->hasAttribute('text') ) {
 			$this->setAttribute('text', 'form.databaserelation.showAllRecords');
 		}

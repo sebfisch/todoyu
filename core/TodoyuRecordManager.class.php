@@ -135,16 +135,17 @@ class TodoyuRecordManager {
 	 *
 	 * @param	String		$table
 	 * @param	Array		$data
+	 * @param	Array		$noQuoteFields
 	 * @return	Integer
 	 */
-	public static function addRecord($table, array $data) {
+	public static function addRecord($table, array $data, array $noQuoteFields = array()) {
 		unset($data['id']);
 
 		$data['date_create']		= NOW;
 		$data['date_update']		= NOW;
 		$data['id_person_create']	= personid();
 
-		return Todoyu::db()->addRecord($table, $data);
+		return Todoyu::db()->addRecord($table, $data, $noQuoteFields);
 	}
 
 
@@ -155,15 +156,16 @@ class TodoyuRecordManager {
 	 * @param	String		$table
 	 * @param	Integer		$idRecord
 	 * @param	Array		$data
+	 * @param	Array		$noQuoteFields
 	 * @return	Boolean
 	 */
-	public static function updateRecord($table, $idRecord, array $data) {
+	public static function updateRecord($table, $idRecord, array $data, array $noQuoteFields = array()) {
 		$idRecord	= intval($idRecord);
 		unset($data['id']);
 
 		$data['date_update'] = NOW;
 
-		return Todoyu::db()->updateRecord($table, $idRecord, $data);
+		return Todoyu::db()->updateRecord($table, $idRecord, $data, $noQuoteFields);
 	}
 
 

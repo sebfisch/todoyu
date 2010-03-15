@@ -2,7 +2,7 @@
 
 {block name="field"}
 
-<button class="button {$inputClass} {$class}" type="{$type}" name="{$htmlName}" id="{$htmlId}" {if $onclick}onclick="{$onclick}"{/if} {if $title}title="{Label $title}"{/if}>
+<button class="button {$inputClass} {$class}" type="{$type|default:button}" name="{$htmlName}" id="{$htmlId}" {if $onclick}onclick="{$onclick}"{/if} title="{if $title}{Label $title}{else}{Label $text}{/if}">
 	{if ! $noIcon}
 		<span class="icon"></span>
 	{/if}

@@ -7,14 +7,16 @@
 		<label index="field.hasError">The Value Entered Is Not Valid</label>
 		<label index="field.save">Save</label>
 		<label index="field.cancel">Cancel</label>
-		<label index="icon.add">Add Record</label>
-		<label index="icon.remove">Remove Record</label>
-		<label index="icon.edit">Edit Record</label>
+		<label index="records.add">Add Record</label>
+		<label index="records.remove">Remove Record</label>
+		<label index="records.edit">Edit Record</label>
 		<label index="databaserelation.nolabel">[New entry]</label>
 		<label index="databaserelation.expandAllRecords">Expand All Records</label>
 		<label index="error.notUnique">This Entry Already Exists</label>
 		<label index="ac.noResults">Autocompleter: No Results Found</label>
 		<label index="is_preferred">Preferred</label>
+		<label index="dateselector.open">Open date selector to pick a date</label>
+		<label index="autocompleteInfo">This is an autocomplete field. Start typing to get suggestions</label>
 	</labels>
 	<labels lang="de">
 		<label index="select.pleaseSelect">Bitte wählen</label>
@@ -23,13 +25,15 @@
 		<label index="field.hasError">Diese Eingabe ist ungültig</label>
 		<label index="field.save">Speichern</label>
 		<label index="field.cancel">Abbrechen</label>
-		<label index="icon.add">Datensatz anfügen</label>
-		<label index="icon.remove">Datensatz entfernen</label>
-		<label index="icon.edit">Datensatz bearbeiten</label>
+		<label index="records.add">Datensatz anfügen</label>
+		<label index="records.remove">Datensatz entfernen</label>
+		<label index="records.edit">Datensatz bearbeiten</label>
 		<label index="databaserelation.nolabel">[Neuer Eintrag]</label>
 		<label index="databaserelation.expandAllRecords">Öffne alle Datensätze</label>
 		<label index="error.notUnique">Dieser Eintrag existiert bereits</label>
 		<label index="ac.noResults">Autovervollständigung: Keine Resultate gefunden</label>
 		<label index="is_preferred">Bevorzugt</label>
+		<label index="dateselector.open">Öffne Kalender um ein Datum auszuwählen</label>
+		<label index="autocompleteInfo">Dieses Feld wird automatisch vervollständigt. Fangen Sie an zu schreiben um die Vorschläge zu sehen</label>
 	</labels>
 </locallang>
