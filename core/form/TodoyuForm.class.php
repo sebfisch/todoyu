@@ -613,13 +613,16 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Set a hidden field
 	 *
-	 * @param	String		$name
-	 * @param	String		$value
+	 * @param	String		$name			Name of the field
+	 * @param	String		$value			Value of the field
+	 * @param	Bool		$noStorage		Don't save file in database
+	 * @param	Bool		$noWrap			Don't wrap fieldname with form name
 	 */
-	public function addHiddenField($name, $value, $noStorage = false) {
+	public function addHiddenField($name, $value, $noStorage = false, $noWrap = false) {
 		$this->hiddenFields[$name] = array(
 			'value'		=> $value,
-			'noStorage' => $noStorage
+			'noStorage' => $noStorage,
+			'noWrap'	=> $noWrap
 		);
 	}
 
@@ -1011,7 +1014,7 @@ class TodoyuForm implements ArrayAccess {
 		foreach( $this->hiddenFields as $name => $config ) {
 			$data	= array(
 				'htmlId'	=> self::makeID($name),
-				'htmlName'	=> self::makeName($name),
+				'htmlName'	=> $config['noWrap'] ? $name : self::makeName($name),
 				'value'		=> htmlspecialchars($config['value'])
 			);
 
