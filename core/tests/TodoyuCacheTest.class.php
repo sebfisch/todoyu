@@ -1,7 +1,30 @@
 <?php
-require_once 'PHPUnit/Framework.php';
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
 
-require_once 'C:\Programme\xampp\htdocs\todoyu\core\TodoyuCache.class.php';
+/**
+ * Test for: TodoyuCache
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
 
 /**
  * Test class for TodoyuCache.
@@ -9,161 +32,174 @@ require_once 'C:\Programme\xampp\htdocs\todoyu\core\TodoyuCache.class.php';
  */
 class TodoyuCacheTest extends PHPUnit_Framework_TestCase {
 
-
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
-    protected function setUp()
-    {
+    protected function setUp() {
 
     }
+
+
 
     /**
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
      */
-    protected function tearDown()
-    {
+    protected function tearDown() {
+
     }
+
+
 
     /**
      * @todo Implement testGet().
      */
-    public function testGet()
-    {
+    public function testGet() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
+
+
 
     /**
      * @todo Implement testSet().
      */
-    public function testSet()
-    {
+    public function testSet() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
+
+
 
     /**
      * @todo Implement testRemove().
      */
-    public function testRemove()
-    {
+    public function testRemove() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
+
+
 
     /**
      * @todo Implement testIsIn().
      */
-    public function testIsIn()
-    {
+    public function testIsIn() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
+
+
 
     /**
      * @todo Implement testDisable().
      */
-    public function testDisable()
-    {
+    public function testDisable() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
+
+
 
     /**
      * @todo Implement testEnable().
      */
-    public function testEnable()
-    {
+    public function testEnable() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
+
+
 
     /**
      * @todo Implement testFlush().
      */
-    public function testFlush()
-    {
+    public function testFlush() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
+
+
 
     /**
      * @todo Implement testGetRecord().
      */
-    public function testGetRecord()
-    {
+    public function testGetRecord() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
+
+
 
     /**
      * @todo Implement testRemoveRecord().
      */
-    public function testRemoveRecord()
-    {
+    public function testRemoveRecord() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
+
+
 
     /**
      * @todo Implement testAddRecord().
      */
-    public function testAddRecord()
-    {
+    public function testAddRecord() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
+
+
 
     /**
      * @todo Implement testRemoveRecordQuery().
      */
-    public function testRemoveRecordQuery()
-    {
+    public function testRemoveRecordQuery() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
+
+
 
     /**
      * @todo Implement testMakeClassKey().
      */
-    public function testMakeClassKey()
-    {
+    public function testMakeClassKey() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'
         );
     }
 
+
+
     /**
      * @todo Implement testMakeRecordQueryKey().
      */
-    public function testMakeRecordQueryKey()
-    {
+    public function testMakeRecordQueryKey() {
         // Remove the following lines when you implement this test.
         $this->markTestIncomplete(
           'This test has not been implemented yet.'

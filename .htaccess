@@ -31,3 +31,4 @@ RedirectMatch 403 /\\.svn(/|$)
 
 # Disallow any log file viewing from web
 RedirectMatch 403 (.*)\.log$
+

@@ -268,8 +268,7 @@ class Todoyu {
 
 
 	/**
-	 * Add a path to the global include path
-	 * for autoloading classes
+	 * Add a path to the global include path for autoloading classes
 	 *
 	 * @param	String		$includePath
 	 */
