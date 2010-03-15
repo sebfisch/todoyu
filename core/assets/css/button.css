@@ -71,6 +71,10 @@ button span.rgt {
 /* ---------------------------
 	Often used button icons
    ---------------------------*/
+button.edit .icon {
+	background:url(../img/icons.png) no-repeat 0 -746px;
+}
+
 button.save .icon {
 	background:url(../img/icons.png) no-repeat 0 -209px;
 }
