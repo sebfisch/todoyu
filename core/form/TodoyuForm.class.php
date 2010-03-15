@@ -352,6 +352,18 @@ class TodoyuForm implements ArrayAccess {
 	}
 
 
+	/**
+	 * Bubble error
+	 * Report a field error to its parent
+	 * Ignore, because form is already the most top element
+	 *
+	 * @param	TodoyuFormElement	$field
+	 */
+	public function bubbleError(TodoyuFormElement $field) {
+		TodoyuDebug::printInFirebug($field->getName(), 'Error bubbled');
+	}
+
+
 
 	/**
 	 * Get a fieldset (reference) in the form by name

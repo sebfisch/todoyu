@@ -359,5 +359,19 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 		return implode(',', $this->getValue());
 	}
 
+
+
+	/**
+	 * Validate required status
+	 * The first value shall not be 0 (means please select)
+	 *
+	 * @return	Bool
+	 */
+	public function validateRequired() {
+		$firstValue	= array_pop($this->getValue());
+
+		return $firstValue != 0;
+	}
+
 }
 ?>

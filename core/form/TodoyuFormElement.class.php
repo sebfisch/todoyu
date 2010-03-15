@@ -154,6 +154,18 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 	/**
+	 * Alias for parent fieldset element
+	 *
+	 * @see		getFieldset()
+	 * @return	TodoyuFieldset
+	 */
+	public final function getParent() {
+		return $this->getFieldset();
+	}
+
+
+
+	/**
 	 * Set parent fieldset. Only necessary when inserted into an other form
 	 *
 	 * @param	TodoyuFieldset		$fieldset
@@ -416,6 +428,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 			if( $isValid === false ) {
 				$this->setErrorTrue();
+				$this->bubbleError($this);
 
 					// If error message not already set by function, check config or use default
 				if( $this->errorMessage === '' ) {
@@ -434,6 +447,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		if( $this->isRequired() ) {
 			if( ! $this->validateRequired() ) {
 				$this->setErrorTrue();
+				$this->bubbleError($this);
 
 				if( ! empty($this->config['required']['@attributes']['label']) ) {
 					$this->setErrorMessage($this->config['required']['@attributes']['label']);
@@ -479,6 +493,21 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 */
 	protected function setErrorTrue() {
 		$this->error = true;
+	}
+
+
+
+	/**
+	 * Bubble error
+	 * Report a field error to its parent
+	 *
+	 * @param	TodoyuFormElement		$field
+	 */
+	public function bubbleError(TodoyuFormElement $field) {
+		TodoyuDebug::printInFirebug($field->getName(), 'FIELD=' . $this->getName());
+
+		$this->setErrorTrue();
+		$this->getFieldset()->bubbleError($field);
 	}
 
 
@@ -575,10 +604,10 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			if( $wizardConf['wizardConf']['displayCondition'] )	{
 				$wizardConf['hasWizard'] = TodoyuDiv::callUserFunctionArray($wizardConf['wizardConf']['displayCondition'], $wizardConf);
 			}
-			
+
 			if($wizardConf['wizardConf']['restrict'] && $wizardConf['hasWizard'])	{
 				$wizardConf['hasWizard'] = false;
-				
+
 				foreach($wizardConf['wizardConf']['restrict'] as $allowed)	{
 					if(allowed($allowed['@attributes']['ext'], $allowed['@attributes']['right']))	{
 						$wizardConf['hasWizard'] = true;

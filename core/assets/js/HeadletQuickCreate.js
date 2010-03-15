@@ -58,7 +58,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * @param	Event		event
 	 */
 	onMenuClick: function(event) {
-		var idParts	= event.findElement('li').id.split('-');
+		var idParts	= event.findElement('a').id.split('-');
 		var ext		= idParts[3];
 		var type	= idParts[4];
 		

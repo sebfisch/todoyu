@@ -242,6 +242,11 @@ class TodoyuFormValidator {
 		$secondFieldName	= $validatorConfig['field'];
 		$secondFieldValue	= $formData[$secondFieldName];
 
+		if( $value == 0 && array_key_exists('allowEmpty', $validatorConfig) ) {
+			return true;
+		}
+
+
 			// Convert dates to timestamps
 		$fieldDate		= intval($value);
 		$secondFieldDate= intval($secondFieldValue);

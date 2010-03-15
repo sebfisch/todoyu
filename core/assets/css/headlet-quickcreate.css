@@ -2,23 +2,6 @@
 	background:url(../img/headlet-icons.png) no-repeat 3px 5px;
 }
 
-
-
-#headlet-quickcreate .button .icon {
-	background:url(../img/headlet-quickcreate.png) no-repeat 3px 2px;
-}
-
-/*
-#headlet-quickcreate-content {
-	width:140px;
-	margin-left:-110px;
-}
-*/
-
-#headlets ul#headlet-quickcreate-menu li.primary {
-	border-bottom:2px solid #b9bbad;
-}
-
-#headlets ul#headlet-quickcreate-menu li:hover {
-	background-color:#ecefde !important;
+#headlet-quickcreate-content li.primary {
+	border-bottom:1px solid #b9bbad;
 }

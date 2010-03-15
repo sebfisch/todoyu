@@ -81,7 +81,6 @@ Todoyu.Headlet = {
 		var headlet	= this.headlets[name];
 		
 		if( typeof(headlet[eventType]) === 'function' ) {
-			x = 3;
 			headlet[eventType].call(headlet, event);
 		}
 	},
@@ -121,10 +120,6 @@ Todoyu.Headlet = {
 		
 			// Call headlet init function if exists
 		Todoyu.callIfExists(headletObject.init, headletObject);
-		
-		if( Todoyu.exists('headlet-' + name + '-menu') ) {
-			$('headlet-' + name + '-menu').observe('click', this.onMenuClick.bindAsEventListener(this));
-		}
 	},
 	
 	
@@ -195,6 +190,11 @@ Todoyu.Headlet = {
 						
 			if( this._isContentEvent(event) ) {
 				type	= 'onContentClick';
+				
+					// Check for menu click
+				if( headlet.down('a.button').hasClassName('headletTypeMenu') ) {
+					this._callHandler(name, 'onMenuClick', event);
+				}				
 			} else {
 				type	= 'onButtonClick';
 			}
