@@ -483,7 +483,16 @@ Todoyu.Ui = {
 	 *
 	 */
 	setTitle: function(title) {
-		document.title = 'todoyu: ' + title;
+		document.title = title + ' - todoyu';
+	},
+	
+	
+	getTitle: function(strip) {
+		if( strip === false ) {
+			return document.title;
+		} else {
+			return document.title.replace(/ - todoyu/, '');
+		}
 	},
 
 
