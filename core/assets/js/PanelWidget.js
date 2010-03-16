@@ -25,9 +25,9 @@ Todoyu.PanelWidget = {
 	/**
 	 * Toggle panel widget expanded/ collapsed, evoke storing of expand status
 	 *
-	 *	@param	unknown_type	ext
-	 *	@param	unknown_type	widgetName
-	 *	@param	unknown_type	idArea
+	 * @param	String			ext			e.g. 'project' / 'calendar' etc.
+	 * @param	String			widgetName
+	 * @param	Integer			idArea
 	 */
 	toggle: function(ext, widgetName, idArea) {
 		var h1	= $('panelwidget-' + widgetName + '-h1');
@@ -55,10 +55,10 @@ Todoyu.PanelWidget = {
 	/**
 	 * Save widget expand status
 	 *
-	 *	@param	unknown_type	ext
-	 *	@param	unknown_type	widgetName
-	 *	@param	unknown_type	expand
-	 *	@param	unknown_type	idArea
+	 * @param	String			ext			e.g. 'project' / 'calendar' etc.
+	 * @param	String			widgetName
+	 * @param	Boolean			expand
+	 * @param	Integer			idArea
 	 */
 	saveToggleStatus: function(ext, widgetName, expand, idArea) {
 		var action	= 'pwidget';
@@ -70,10 +70,10 @@ Todoyu.PanelWidget = {
 
 
 	/**
-	 * Please enter Description here...
+	 * Install observer on given widget, firing given callback function 
 	 *
-	 *	@param	String	widget
-	 *	@param	unknown_type	callbackFunction
+	 * @param	String			widget
+	 * @param	String			callbackFunction
 	 */
 	observe: function(widget, callbackFunction) {
 		if( Object.isUndefined(this.observerCallbacks[widget]) ) {
@@ -86,10 +86,10 @@ Todoyu.PanelWidget = {
 
 
 	/**
-	 * Please enter Description here...
+	 * Stop observation of given widget
 	 *
-	 *	@param	String	widget
-	 *	@param	unknown_type	callbackFunction
+	 * @param	String		widget
+	 * @param	String		callbackFunction
 	 */
 	stopObserving: function(widget, callbackFunction)	{
 		if( ! Object.isUndefined(this.observerCallbacks[widget]) ) {
@@ -104,10 +104,10 @@ Todoyu.PanelWidget = {
 
 
 	/**
-	 * Please enter Description here...
+	 * Fire registered callback functions of given widget
 	 *
-	 *	@param	String	widget
-	 *	@param	unknown_type	callbackFunction
+	 * @param	String	widget
+	 * @param	Array	params
 	 */
 	fire: function(widget, params) {
 		if( ! Object.isUndefined(this.observerCallbacks[widget]) ) {
@@ -120,10 +120,11 @@ Todoyu.PanelWidget = {
 
 
 	/**
-	 * Please enter Description here...
+	 * Check whether given panel widget is loaded
 	 *
-	 *	@param	unknown_type	extKey
-	 *	@param	unknown_type	widgetName
+	 * @param	String		extKey
+	 * @param	String		widgetName
+	 * @return	Boolean
 	 */
 	isLoaded: function(extKey, widgetName) {
 		return typeof(Todoyu.Ext[extKey].PanelWidget[widgetName]) === 'object';
