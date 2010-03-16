@@ -402,7 +402,7 @@ class TodoyuFormValidator {
 		$allowEmpty	= isset($validatorConfig['allowEmpty']);
 
 			// If empty allowed, validate as true if empty
-		if( $allowEmpty && $pass === '' ) {
+		if( $pass === ''  && $allowEmpty ) {
 			return true;
 		}
 
@@ -411,6 +411,8 @@ class TodoyuFormValidator {
 
 		if( $validator->validate($pass) === false ) {
 			$errors	= $validator->getErrors();
+
+			TodoyuDebug::printInFirebug($errors, 'errors');
 
 			$formElement->setErrorMessage($errors[0]);
 

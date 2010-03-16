@@ -126,7 +126,7 @@ class TodoyuPasswordValidator {
 		$length	= intval($config);
 
 		if ( strlen($value) < $length ) {
-			$errorMessage = str_replace('%s', $length, Label('LLL:user.form.error.minLengthIfNotEmpty'));
+			$errorMessage = str_replace('%s', $length, Label('LLL:contact.password.minLengthIfNotEmpty'));
 			$this->addError($errorMessage);
 		}
 	}
@@ -141,7 +141,7 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if ( ! $valid ) {
-			$this->addError('LLL:user.form.error.numbers');
+			$this->addError('LLL:contact.password.numbers');
 		}
 	}
 
@@ -155,7 +155,7 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if ( ! $valid ) {
-			$this->addError('LLL:user.form.error.lower');
+			$this->addError('LLL:contact.password.lower');
 		}
 	}
 
@@ -169,7 +169,7 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if ( ! $valid ) {
-			$this->addError('LLL:user.form.error.upper');
+			$this->addError('LLL:contact.password.upper');
 		}
 	}
 
@@ -183,7 +183,7 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if ( ! $valid ) {
-			$this->addError('LLL:user.form.error.special');
+			$this->addError('LLL:contact.password.special');
 		}
 	}
 
