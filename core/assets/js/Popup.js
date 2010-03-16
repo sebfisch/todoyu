@@ -58,6 +58,11 @@ Todoyu.Popup = {
 	getLastPopup: function() {
 		return this.last;
 	},
+	
+	
+	getNumPopups: function() {
+		return Object.keys(this.popup).size();
+	},
 
 
 
@@ -100,9 +105,9 @@ Todoyu.Popup = {
 
 			destroyOnClose:		true
 		});
-
+		
 			// Show popup and activate content overlay
-		this.getPopup(idPopup).showCenter(true, 160);
+		this.getPopup(idPopup).showCenter(true, 100);
 
 			// Wrap onComplete with own onComplete to handle popup
 		requestOptions = requestOptions || {};
