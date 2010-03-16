@@ -21,6 +21,15 @@
 Todoyu.Form = {
 
 	subFormIndex: 100,
+	
+	
+	onFormDisplay: function(formID) {
+		if( Todoyu.exists(formID) ) {
+			this.expandInvalidForeignRecords(formID);
+		}
+	},
+	
+	
 
 	getNextIndex: function() {
 		return this.subFormIndex++;
@@ -143,6 +152,22 @@ Todoyu.Form = {
 		});
 	},
 	
+	
+	
+	/**
+	 * Show formHTML of invalid form elements in foreign records
+	 * 
+	 * @param	String		formID
+	 */
+	expandInvalidForeignRecords: function(formID) {			
+		$(formID).select('div.error').each(function(errorField){
+			var formHTML = $(errorField).up('div.databaseRelationFormhtml');
+			if( formHTML ) {
+				formHTML.show();
+			}
+		});
+	},
+
 
 
 	/**

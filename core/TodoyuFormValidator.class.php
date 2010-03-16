@@ -503,6 +503,21 @@ class TodoyuFormValidator {
 		return empty($formData[$field]) || $value !== '';
 	}
 
+
+
+	/**
+	 * Validate database relation field
+	 *
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement 	$formElement
+	 * @param	Array				$formData
+	 * @return	Bool
+	 */
+	public static function validateSubRecords($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+		return $formElement->areAllRecordsValid();
+	}
+
 }
 
 ?>

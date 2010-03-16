@@ -42,6 +42,17 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 
 	/**
+	 * Initialize database relation field
+	 *
+	 */
+	protected function init() {
+			// Add a validator which checks the subrecords
+		$this->config['validate']['validateSubRecords'] = array();
+	}
+
+
+
+	/**
 	 * Set value
 	 *
 	 * @param	Array		$value
@@ -55,19 +66,40 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 
 	/**
+	 * Get value (records array)
+	 *
+	 * @return	Array
+	 */
+	public function getValue() {
+		return is_array($this->config['value']) ? $this->config['value'] : array();
+	}
+
+
+
+	/**
 	 * Get record data
 	 *
 	 * @param	Integer		$index
 	 * @return	Array
 	 */
 	public function getRecord($index) {
-		$index	= intval($index);
-
 		if( ! is_array($this->config['value'][$index]) ) {
 			$this->config['value'][$index] = array();
 		}
 
 		return $this->config['value'][$index];
+	}
+
+
+
+	/**
+	 * Get all indexes if the records
+	 * This are not the IDs, this are position indexes for editing
+	 *
+	 * @return	Array
+	 */
+	public function getRecordIndexes() {
+		return is_array($this->config['value']) ? array_keys($this->config['value']) : array();
 	}
 
 
@@ -82,8 +114,6 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 			// Records template data
 		$data['records']	= $this->getRecordsTemplateData();
-
-//		TodoyuDebug::printInFirebug($data, 'data');
 
 			// Records general information
 		$data['fieldname']	= $this->getName();
@@ -102,7 +132,6 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @return	String
 	 */
 	public function render($odd = false) {
-
 		return parent::render($odd);
 	}
 
@@ -137,30 +166,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @return	String
 	 */
 	protected function renderRecordForm($index)	{
-		$xmlPath = $this->getRecordsFormXml();
-
-//		TodoyuDebug::printInFirebug($xmlPath);
-
-			// Load form data
-		$recordData	= $this->getRecord($index);
-		$idRecord	= intval($recordData['id']);
-
-//		TodoyuDebug::printInFirebug($recordData, '$recordData');
-
-			// Construct form object
-		$recordForm	= TodoyuFormManager::getForm($xmlPath, $idRecord);
-
-		$recordData	= TodoyuFormHook::callLoadData($xmlPath, $recordData, $idRecord);
-
-		$formName	= $this->getForm()->getName() . '[' . $this->getName() . '][' . $index . ']';
-
-			// Set form data
-		$recordForm->setFormData($recordData);
-		$recordForm->setVars(array('parent' => $this->getForm()->getRecordID()));
-		$recordForm->setUseRecordID(false);
-		$recordForm->setRecordID($idRecord);
-		$recordForm->setAttribute('noFormTag', true);
-		$recordForm->setName($formName);
+		$recordForm	= $this->getRecordForm($index);
 
 			// Evoke assigned validators
 		if( $this->getForm()->getValidateForm() )	{
@@ -173,6 +179,41 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 			// Render
 		return $recordForm->render();
+	}
+
+
+
+	/**
+	 * Get form object for a record at a specific index
+	 *
+	 * @param	Integer		$index
+	 * @return	TodoyuForm
+	 */
+	public function getRecordForm($index) {
+		$xmlPath = $this->getRecordsFormXml();
+
+			// Load form data
+		$recordData	= $this->getRecord($index);
+		$idRecord	= intval($recordData['id']);
+
+			// Construct form object
+		$recordForm	= TodoyuFormManager::getForm($xmlPath, $idRecord);
+
+		$recordData	= TodoyuFormHook::callLoadData($xmlPath, $recordData, $idRecord);
+
+		$formName	= $this->getForm()->getName() . '[' . $this->getName() . '][' . $index . ']';
+
+			// Set form data
+		$recordForm->setFormData($recordData);
+		$recordForm->setVars(array(
+			'parent' => $this->getForm()->getRecordID())
+		);
+		$recordForm->setUseRecordID(false);
+		$recordForm->setRecordID($idRecord);
+		$recordForm->setAttribute('noFormTag', true);
+		$recordForm->setName($formName);
+
+		return $recordForm;
 	}
 
 
@@ -287,6 +328,28 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$record['_formHTML']= $this->renderRecordForm($index);
 
 		return $record;
+	}
+
+
+
+	/**
+	 * Check if all record forms are valid
+	 *
+	 * @return	Bool
+	 */
+	public function areAllRecordsValid() {
+		$indexes	= $this->getRecordIndexes();
+
+		foreach($indexes as $index) {
+			$form	= $this->getRecordForm($index);
+			$valid	= $form->isValid();
+
+			if( $valid === false ) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 
