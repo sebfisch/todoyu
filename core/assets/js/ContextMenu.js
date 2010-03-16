@@ -156,7 +156,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 * @param	unknown_type	menuJSON
+	 * @param	JSON		menuJSON
 	 */
 	buildMenuFromJSON: function(menuJSON) {
 		var menu = this.Template.render(menuJSON);
@@ -169,7 +169,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 * @param	unknown_type	menuHTML
+	 * @param	String		menuHTML
 	 */
 	updateMenuContainer: function(menuHTML) {
 		$('contextmenu').update(menuHTML);
@@ -180,7 +180,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 * @param	unknown_type	event
+	 * @param	Object		event
 	 */
 	preventContextMenu: function(event) {
 		event.stop();
@@ -205,8 +205,8 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 * @param	unknown_type	key
-	 * @param	unknown_type	show
+	 * @param	String		key
+	 * @param	Boolean		show
 	 */
 	submenu: function(key, show) {
 		var ctxMenuID	= 'contextmenu';
@@ -224,19 +224,16 @@ Todoyu.ContextMenu = {
 			var ctxMenu	= $(ctxMenuID);
 
 			var itemWidth	= item.getWidth();
-
-			//submenu.makePositioned();
 			var posCtxMenu	= ctxMenu.viewportOffset();
 			var posItem 	= item.viewportOffset();
-
 
 			var left	= itemWidth - 5;
 			var top		= posItem.top - posCtxMenu.top + 5;
 
 			submenu.setStyle({
-				'display': 'block',
-				'left': left + 'px',
-				'top': top + 'px'
+				'display':	'block',
+				'left':		left + 'px',
+				'top':		top + 'px'
 			});
 		} else {
 			submenu.hide();
@@ -248,9 +245,9 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 * @param	unknown_type	url
-	 * @param	unknown_type	options
-	 * @param	unknown_type	event
+	 * @param	String		url
+	 * @param	Array		options
+	 * @param	Object		event
 	 */
 	showMenu: function(url, options, event) {
 			// Stop click event to prevent browsers context menu

@@ -76,7 +76,7 @@ Todoyu.AjaxResponders = {
 	 * Extend the prototype 'respondToReadyState' handler
 	 * Delete the onComplete handler if no access flag is set in header
 	 *
-	 *	@param	Ajax.Request	request
+	 * @param	Ajax.Request	request
 	 */
 	onCreate: function(request) {
 		Todoyu.Headlet.AjaxLoader.show();
@@ -99,9 +99,9 @@ Todoyu.AjaxResponders = {
 
 
 	/**
-	 *	Handler when a request is completed
+	 * Handler when a request is completed
 	 *
-	 *	@param	Ajax.Response		response
+	 * @param	Ajax.Response		response
 	 */
 	onComplete: function(response) {
 			// Check for hash header and scroll to element
@@ -129,11 +129,10 @@ Todoyu.AjaxResponders = {
 
 
 
-
 	/**
 	 * Check whether hash header has been sent and scroll to it
 	 *
-	 *	@param	Ajax.Response		response
+	 * @param	Ajax.Response		response
 	 */
 	scrollToElement: function(response) {
 		var hash = response.getHeader('Todoyu-Hash'); // Do not use getTodoyuHeader(), it fails...

@@ -24,10 +24,10 @@ Ajax.Replacer = Class.create(Ajax.Request, {
 	/**
 	 * Initialize AJAX replacer
 	 *
-	 *	@param	unknown_type	$super
-	 *	@param	unknown_type	container
-	 *	@param	String	url
-	 *	@param	Object	options
+	 * @param	unknown_type	$super
+	 * @param	String			container
+	 * @param	String			url
+	 * @param	Object			options
 	 */
 	initialize: function($super, container, url, options) {
 		options = options || { };
@@ -37,20 +37,5 @@ Ajax.Replacer = Class.create(Ajax.Request, {
 		});
 		$super(url, options);
 	}
+
 });
-
-
-
-
-/*
-Ajax.Replacer = Class.create(Ajax.Updater, {
-	initialize: function($super, container, url, options) {
-		options = options || { };
-		options.onComplete = (options.onComplete || Prototype.emptyFunction).wrap(function(proceed, transport, json) {
-			$(container).replace(transport.responseText);
-			proceed(transport, json);
-		})
-		$super(container, url, options);
-	}
-})
-*/

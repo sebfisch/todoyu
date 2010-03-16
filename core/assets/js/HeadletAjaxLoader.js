@@ -26,12 +26,12 @@
  * @subpackage	Core
  */
 Todoyu.Headlet.AjaxLoader = {
-	
+
 	/**
 	 * ID of the element which is toggled visible
 	 */
 	buttonID: 'headlet-ajaxloader-button',
-	
+
 	/**
 	 * Show ajax loading icon
 	 */
@@ -43,9 +43,9 @@ Todoyu.Headlet.AjaxLoader = {
 			'transition': Effect.Transitions.spring
 		});		
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Hide ajax loading icon
 	 */
@@ -55,18 +55,38 @@ Todoyu.Headlet.AjaxLoader = {
 		});
 	},
 	
+	
+	
+	/**
+	 * 
+	 */
 	onButtonClick: function(event) {
 		console.log('ajax loader clicked');
 	},
-	
+
+
+
+	/**
+	 * 
+	 */
 	onContentClick: function(event) {
 		console.log('ajax loader content clicked');
 	},
-	
+
+
+
+	/**
+	 * 
+	 */
 	onMouseOver: function(event) {
 		console.log('over ajax');
 	},
-	
+
+
+
+	/**
+	 * 
+	 */
 	onMouseOut: function(event) {
 		console.log('out ajax');
 	}
