@@ -66,6 +66,65 @@ class TodoyuHtmlFilter {
 
 
 	/**
+	 * Split text into chunks of given max. length, preserving HTML entities
+	 *
+	 * @param	String	$string
+	 * @param	Integer	$maxLen
+	 * @return	String
+	 */
+	public static function entitySafeLimitWordsLen($string, $maxLen = 45) {
+		$string	= str_replace("\n", "\n ", $string);
+		$words	= explode(' ', $string);
+
+		$out	= '';
+		foreach ($words as $word) {
+//			$out .= chunk_split($word, $maxLen, ' ') .  ' ';
+			$out .= self::htmlSafeChunkSplit($word, $maxLen, ' ') .  ' ';
+		}
+
+		return $out;
+	}
+
+
+
+
+	/**
+	 * Split string into chunks of given size, keeping HTML tags and entities intact
+	 *
+	 * @param	String		$html
+	 * @param	Integer		$size
+	 * @param	String		$delim
+	 * @return	String
+	 */
+	public static function htmlSafeChunkSplit($html, $size, $delim) {
+		$pos	= 0;
+		$out	= '';
+
+		for($i = 0; $i < strlen($html); $i++) {
+			if($pos >= $size && ! $unsafe) {
+				$out	.= $delim;
+				$unsafe	= 0;
+				$pos	= 0;
+			}
+
+			$c	= substr($html, $i, 1);
+
+			if( strstr('&<', $c) !== false ) {
+				$unsafe	= 1;
+			} elseif( strstr(';>', $c) !== false ) {
+				$unsafe	= 0;
+			}
+
+			$out	.= $c;
+			$pos++;
+		}
+
+		return $out;
+	}
+
+
+
+	/**
 	 * Callback to escape bad HTML tags
 	 *
 	 * @param	Array		$match
