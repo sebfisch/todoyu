@@ -10,6 +10,7 @@
 	z-index:200;
 }
 
+	#headlets li.active,
 	#headlets li:hover {
 		z-index:202;
 	}
@@ -31,10 +32,6 @@
 		border-color:#b9bbad;
 		background-color:#d7ddc1;
 		z-index:203;
-	}
-
-	#headlets li a.button {
-	
 	}
 
 #headlets li ul {
@@ -62,7 +59,8 @@
 	white-space:nowrap;
 }
 
-	
+
+	#headlets li.headlet.menu li.active a,
 	#headlets li.headlet.menu li:hover a {
 		border:none;
 		background-color:#edf0df;
