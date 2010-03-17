@@ -28,19 +28,18 @@
 class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 	/**
-     * @var Array
-     */
+	 * @var Array
+	 */
 	private $array;
 
 
 
-
-    /**
-     * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
-     */
-    protected function setUp() {
-    	$this->array = array(
+	/**
+	 * Sets up the fixture, for example, opens a network connection.
+	 * This method is called before a test is executed.
+	 */
+	protected function setUp() {
+		$this->array = array(
 			array(
 				'id'		=> 32,
 				'firstname'	=> 'Max',
@@ -73,17 +72,17 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 			)
 		);
 
-    }
+	}
 
 
 
-    /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown() {
+	/**
+	 * Tears down the fixture, for example, closes a network connection.
+	 * This method is called after a test is executed.
+	 */
+	protected function tearDown() {
 
-    }
+	}
 
 
 
@@ -122,356 +121,356 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 
 
-    /**
-     * Test TodoyuArray::getLastKey
-     */
-    public function testGetLastKey() {
-    	$last	= TodoyuArray::getLastKey($this->array[0]);
+	/**
+	 * Test TodoyuArray::getLastKey
+	 */
+	public function testGetLastKey() {
+		$last	= TodoyuArray::getLastKey($this->array[0]);
 
-    	$this->assertEquals('street', $last);
-    }
-
-
-
-    /**
-     * TodoyuArray::intval
-     */
-    public function testIntval() {
-    	$ids	= TodoyuArray::getColumn($this->array, 'id');
-
-    	$ids	= TodoyuArray::intval($ids, true, true);
-    	$sum	= array_sum($ids);
-
-    	$this->assertEquals(388, $sum);
-
-    	$names	= TodoyuArray::getColumn($this->array, 'name');
-
-    	$names	= TodoyuArray::intval($names, true, true);
-    	$sum	= array_sum($names);
-
-    	$this->assertEquals(0, $sum);
-    }
+		$this->assertEquals('street', $last);
+	}
 
 
 
-    /**
-     * Test TodoyuArray::intImplode
-     */
-    public function testIntImplode() {
-    	$implode= TodoyuArray::intImplode($this->array[0], '.');
-    	$expect	= '32.0.0.0';
+	/**
+	 * TodoyuArray::intval
+	 */
+	public function testIntval() {
+		$ids	= TodoyuArray::getColumn($this->array, 'id');
 
-    	$this->assertEquals($expect, $implode);
+		$ids	= TodoyuArray::intval($ids, true, true);
+		$sum	= array_sum($ids);
 
-    	$ids	= TodoyuArray::getColumn($this->array, 'id');
-    	$implode= TodoyuArray::intImplode($ids, ',');
-    	$expect	= '32,45,12,284,15';
+		$this->assertEquals(388, $sum);
+
+		$names	= TodoyuArray::getColumn($this->array, 'name');
+
+		$names	= TodoyuArray::intval($names, true, true);
+		$sum	= array_sum($names);
+
+		$this->assertEquals(0, $sum);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::intImplode
+	 */
+	public function testIntImplode() {
+		$implode= TodoyuArray::intImplode($this->array[0], '.');
+		$expect	= '32.0.0.0';
 
 		$this->assertEquals($expect, $implode);
-    }
 
+		$ids	= TodoyuArray::getColumn($this->array, 'id');
+		$implode= TodoyuArray::intImplode($ids, ',');
+		$expect	= '32,45,12,284,15';
 
+		$this->assertEquals($expect, $implode);
+	}
 
-    /**
-     * Test TodoyuArray::reform
-     */
-    public function testReform() {
-    	$reform	= array(
-    		'id'		=> 'value',
-    		'firstname'	=> 'label'
-    	);
-    	$new	= TodoyuArray::reform($this->array, $reform);
 
-    	$this->assertType('array', $new);
-    	$this->assertTrue(array_key_exists('value', $new[0]));
-    	$this->assertEquals('Max', $new[0]['label']);
-    }
 
+	/**
+	 * Test TodoyuArray::reform
+	 */
+	public function testReform() {
+		$reform	= array(
+			'id'		=> 'value',
+			'firstname'	=> 'label'
+		);
+		$new	= TodoyuArray::reform($this->array, $reform);
 
+		$this->assertType('array', $new);
+		$this->assertTrue(array_key_exists('value', $new[0]));
+		$this->assertEquals('Max', $new[0]['label']);
+	}
 
-    /**
-     * Test TodoyuArray::stripslashes
-     */
-    public function testStripslashes() {
-    	$streets	= TodoyuArray::getColumn($this->array, 'street');
-    	$streets	= TodoyuArray::stripslashes($streets);
 
-    	$this->assertEquals('Star Freeway " Sub Galaxy', $streets[4]);
-    }
 
+	/**
+	 * Test TodoyuArray::stripslashes
+	 */
+	public function testStripslashes() {
+		$streets	= TodoyuArray::getColumn($this->array, 'street');
+		$streets	= TodoyuArray::stripslashes($streets);
 
+		$this->assertEquals('Star Freeway " Sub Galaxy', $streets[4]);
+	}
 
-    /**
-     * Test TodoyuArray::sortByLabel
-     */
-    public function testSortByLabel() {
-    	$sorted	= TodoyuArray::sortByLabel($this->array, 'firstname');
-    	$this->assertEquals('Luke', $sorted[2]['firstname']);
 
-    	$sorted	= TodoyuArray::sortByLabel($this->array, 'id');
-    	$this->assertEquals('Michael', $sorted[0]['firstname']);
 
-    	$sorted	= TodoyuArray::sortByLabel($this->array, 'lastname', true);
-    	$this->assertEquals('Luke', $sorted[0]['firstname']);
+	/**
+	 * Test TodoyuArray::sortByLabel
+	 */
+	public function testSortByLabel() {
+		$sorted	= TodoyuArray::sortByLabel($this->array, 'firstname');
+		$this->assertEquals('Luke', $sorted[2]['firstname']);
 
-    	$sorted	= TodoyuArray::sortByLabel($this->array, 'street', false, true, false);
-    	$this->assertEquals('Schumacher', $sorted[0]['lastname']);
+		$sorted	= TodoyuArray::sortByLabel($this->array, 'id');
+		$this->assertEquals('Michael', $sorted[0]['firstname']);
 
-    	$sorted	= TodoyuArray::sortByLabel($this->array, 'street', false, true, true);
-    	$this->assertEquals('Norris', $sorted[0]['lastname']);
-    }
+		$sorted	= TodoyuArray::sortByLabel($this->array, 'lastname', true);
+		$this->assertEquals('Luke', $sorted[0]['firstname']);
 
+		$sorted	= TodoyuArray::sortByLabel($this->array, 'street', false, true, false);
+		$this->assertEquals('Schumacher', $sorted[0]['lastname']);
 
+		$sorted	= TodoyuArray::sortByLabel($this->array, 'street', false, true, true);
+		$this->assertEquals('Norris', $sorted[0]['lastname']);
+	}
 
-    /**
-     * Test TodoyuArray::filter
-     */
-    public function testFilter() {
-    	$filter	= array(
-    		'id'	=> array(12,88)
-    	);
-    	$filtered = TodoyuArray::filter($this->array, $filter);
-    	$this->assertEquals(1, sizeof($filtered));
 
-    	$filter	= array(
-    		'id'		=> array(45,15),
-    		'firstname'	=> array('John', 'Michael')
-    	);
-    	$filtered = TodoyuArray::filter($this->array, $filter);
-    	$this->assertEquals('Doe', $filtered[0]['lastname']);
-    }
 
+	/**
+	 * Test TodoyuArray::filter
+	 */
+	public function testFilter() {
+		$filter	= array(
+			'id'	=> array(12,88)
+		);
+		$filtered = TodoyuArray::filter($this->array, $filter);
+		$this->assertEquals(1, sizeof($filtered));
 
+		$filter	= array(
+			'id'		=> array(45,15),
+			'firstname'	=> array('John', 'Michael')
+		);
+		$filtered = TodoyuArray::filter($this->array, $filter);
+		$this->assertEquals('Doe', $filtered[0]['lastname']);
+	}
 
-    /**
-     * Test TodoyuArray::prefix
-     */
-    public function testPrefix() {
-    	$names		= TodoyuArray::getColumn($this->array, 'firstname');
-    	$prefixed	= TodoyuArray::prefix($names, 'xxx');
 
-    	$this->assertEquals('xxxJohn', $prefixed[1]);
-    }
 
+	/**
+	 * Test TodoyuArray::prefix
+	 */
+	public function testPrefix() {
+		$names		= TodoyuArray::getColumn($this->array, 'firstname');
+		$prefixed	= TodoyuArray::prefix($names, 'xxx');
 
+		$this->assertEquals('xxxJohn', $prefixed[1]);
+	}
 
-    /**
-     * Test TodoyuArray::insertElement
-     */
-    public function testInsertElement() {
-    	$assoc	= array();
-    	foreach($this->array as $person) {
-    		$assoc[$person['lastname']] = $person;
-    	}
-    	$new	= array(
-    		'id'		=> 666,
-    		'firstname'	=> 'George',
-    		'lastname'	=> 'Bush',
-    		'street'	=> 'Ex Presents Alley'
-    	);
-
-    	$assoc = TodoyuArray::insertElement($assoc, 'georgy', $new, 'after', 'Doe');
-
-    	$pos	= TodoyuArray::getKeyOffset($assoc, 'georgy');
-
-    	$this->assertEquals(2, $pos);
-    }
-
-
-
-    /**
-     * Test TodoyuArray::fromSimpleXml
-     *
-     * @todo Implement testFromSimpleXml().
-     */
-    public function testFromSimpleXml() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::removeKey
-     *
-     * @todo Implement testRemoveKeys().
-     */
-    public function testRemoveKeys() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::implodeQuoted
-     *
-     * @todo Implement testImplodeQuoted().
-     */
-    public function testImplodeQuoted() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::assure
-     *
-     * @todo Implement testAssure().
-     */
-    public function testAssure() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::unserEntryByValue
-     *
-     * @todo Implement testUnsetEntryByValue().
-     */
-    public function testUnsetEntryByValue() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::intersectSubArrays
-     *
-     * @todo Implement testIntersectSubArrays().
-     */
-    public function testIntersectSubArrays() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::mergeSubArrays
-     *
-     * @todo Implement testMergeSubArrays().
-     */
-    public function testMergeSubArrays() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::mergeUnique
-     *
-     * @todo Implement testMergeUnique().
-     */
-    public function testMergeUnique() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::flatten
-     *
-     * @todo Implement testFlatten().
-     */
-    public function testFlatten() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::removeByValue
-     *
-     * @todo Implement testRemoveByValue().
-     */
-    public function testRemoveByValue() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::removeDuplicates
-     *
-     * @todo Implement testRemoveDuplicates().
-     */
-    public function testRemoveDuplicates() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::intExplode
-     *
-     * @todo Implement testIntExplode().
-     */
-    public function testIntExplode() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::trimExplode
-     *
-     * @todo Implement testTrimExplode().
-     */
-    public function testTrimExplode() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-
-
-    /**
-     * Test TodoyuArray::trim
-     *
-     * @todo Implement testTrim().
-     */
-    public function testTrim() {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
+
+
+	/**
+	 * Test TodoyuArray::insertElement
+	 */
+	public function testInsertElement() {
+		$assoc	= array();
+		foreach($this->array as $person) {
+			$assoc[$person['lastname']] = $person;
+		}
+		$new	= array(
+			'id'		=> 666,
+			'firstname'	=> 'George',
+			'lastname'	=> 'Bush',
+			'street'	=> 'Ex Presents Alley'
+		);
+
+		$assoc = TodoyuArray::insertElement($assoc, 'georgy', $new, 'after', 'Doe');
+
+		$pos	= TodoyuArray::getKeyOffset($assoc, 'georgy');
+
+		$this->assertEquals(2, $pos);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::fromSimpleXml
+	 *
+	 * @todo Implement testFromSimpleXml().
+	 */
+	public function testFromSimpleXml() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::removeKey
+	 *
+	 * @todo Implement testRemoveKeys().
+	 */
+	public function testRemoveKeys() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::implodeQuoted
+	 *
+	 * @todo Implement testImplodeQuoted().
+	 */
+	public function testImplodeQuoted() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::assure
+	 *
+	 * @todo Implement testAssure().
+	 */
+	public function testAssure() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::unserEntryByValue
+	 *
+	 * @todo Implement testUnsetEntryByValue().
+	 */
+	public function testUnsetEntryByValue() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::intersectSubArrays
+	 *
+	 * @todo Implement testIntersectSubArrays().
+	 */
+	public function testIntersectSubArrays() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::mergeSubArrays
+	 *
+	 * @todo Implement testMergeSubArrays().
+	 */
+	public function testMergeSubArrays() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::mergeUnique
+	 *
+	 * @todo Implement testMergeUnique().
+	 */
+	public function testMergeUnique() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::flatten
+	 *
+	 * @todo Implement testFlatten().
+	 */
+	public function testFlatten() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::removeByValue
+	 *
+	 * @todo Implement testRemoveByValue().
+	 */
+	public function testRemoveByValue() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::removeDuplicates
+	 *
+	 * @todo Implement testRemoveDuplicates().
+	 */
+	public function testRemoveDuplicates() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::intExplode
+	 *
+	 * @todo Implement testIntExplode().
+	 */
+	public function testIntExplode() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::trimExplode
+	 *
+	 * @todo Implement testTrimExplode().
+	 */
+	public function testTrimExplode() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuArray::trim
+	 *
+	 * @todo Implement testTrim().
+	 */
+	public function testTrim() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
 
 }
 

@@ -31,21 +31,21 @@ class TodoyuBrowserInfoTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
+	 * This method is called before a test is executed.
 	 */
 	protected function setUp() {
 		$this->array = array();
-    }
+	}
 
 
 
-    /**
-     * Tears down the fixture, for example, closes a network connection.
-     * This method is called after a test is executed.
-     */
-    protected function tearDown() {
+	/**
+	 * Tears down the fixture, for example, closes a network connection.
+	 * This method is called after a test is executed.
+	 */
+	protected function tearDown() {
 
-    }
+	}
 
 
 
@@ -55,9 +55,9 @@ class TodoyuBrowserInfoTest extends PHPUnit_Framework_TestCase {
 	public static function testIsIE() {
 
 		// Remove the following lines when you implement this test.
-        parent::markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		parent::markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -68,9 +68,9 @@ class TodoyuBrowserInfoTest extends PHPUnit_Framework_TestCase {
 	public function testIsFirefox() {
 
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -81,9 +81,9 @@ class TodoyuBrowserInfoTest extends PHPUnit_Framework_TestCase {
 	public function testIsSafari() {
 
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -94,9 +94,9 @@ class TodoyuBrowserInfoTest extends PHPUnit_Framework_TestCase {
 	public function testIsOpera() {
 
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -107,9 +107,9 @@ class TodoyuBrowserInfoTest extends PHPUnit_Framework_TestCase {
 	public function testIsChrome() {
 
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -120,9 +120,9 @@ class TodoyuBrowserInfoTest extends PHPUnit_Framework_TestCase {
 	public function testGetBrowserIdent() {
 
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -133,9 +133,9 @@ class TodoyuBrowserInfoTest extends PHPUnit_Framework_TestCase {
 	public function testGetVersion() {
 
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -146,9 +146,9 @@ class TodoyuBrowserInfoTest extends PHPUnit_Framework_TestCase {
 	public function testGetMajorVersion() {
 
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 
@@ -159,9 +159,9 @@ class TodoyuBrowserInfoTest extends PHPUnit_Framework_TestCase {
 	public function testGetBrowserLanguage() {
 
 		// Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
 	}
 
 }
