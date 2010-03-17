@@ -19,7 +19,11 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-ini_set('eaccelerator.enable',0);
+ini_set('eaccelerator.enable', 0);
+
+
+	// Activate extensions (deactivated during install)
+$CONFIG['WITHOUT_EXTENSIONS'] = false;
 
 	// Debuging
 $CONFIG['DEBUG'] = true;
@@ -28,7 +32,7 @@ $CONFIG['DEBUG'] = true;
 $CONFIG['LOG']['active'] = array('FILE', 'FIREPHP');
 
 	// Asset caching
-$CONFIG['CACHE']['JS']['localize']	= false;
+$CONFIG['CACHE']['JS']['localize']	= true;
 $CONFIG['CACHE']['JS']['merge']		= false;
 $CONFIG['CACHE']['JS']['compress']	= false;
 
