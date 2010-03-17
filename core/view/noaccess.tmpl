@@ -9,7 +9,16 @@
 <link type="text/css" rel="stylesheet" media="all" href="core/assets/css/tab.css" />
 <style type="text/css">
 #box {
+	width:680px;
 	padding-top:10px;
+}
+#contentBox {
+	width:680px !important;
+	width:680px;
+	padding:0;
+}
+#right span.lt {
+	display:block;
 }
 .message {
 	float:left;
@@ -18,15 +27,12 @@
 	margin-top:-10px;
 }
 
-.message p,
-.message a,
-.message td {
-	font-size:14px;
+.message p {
+	margin-bottom:10px;
 }
 
-.message p,
 .message td {
-	padding:5px;
+	padding:5px 0;
 }
 
 .message a {
@@ -52,16 +58,8 @@
 					<!-- right / bottom -->
 				</span>
 				<div id="content">
-					<ul id="contact-tabs" class="tabslist tabs">
-						<li class="item bcg05 tabkey-person person person  active" id="contact-tabhead-person">
-							<p class="label" id="contact-tabhead-person-label"> <span class="lt">
-								<!-- -->
-								</span> <span class="icon">
-									<!-- icon -->
-							</span> <span class="labeltext">{Label core.noAccess.pageTitle}</span> </p>
-					</li>
-					</ul>
 					<div class="message">
+						<p><strong>{Label core.noAccess.pageTitle}</strong></h2>
 						<p>{Label core.noAccess.errorMessage}</p>
 						<p><a href="javascript:history.back()">{Label core.noAccess.goBackToLastPage}</a></p>
 						<p>{Label core.noAccess.contactAdmin}</p>
@@ -75,7 +73,7 @@
 								<td>{$extKey} / {$right}</td>
 							</tr>
 							<tr>
-							<td><b>TIME</b></td>
+							<td><strong>TIME</strong></td>
 								<td>{date('r')}</td>
 							</tr>
 						</table>
