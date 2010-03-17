@@ -97,10 +97,22 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testIsValidEmail().
 	 */
 	public function testIsValidEmail() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
+		$emailValid		= 'testmann@snowflake.ch';
+
+		$invalid	= array(
+			'test.@ann@snowflake.ch',
+			'www.snowflake.ch',
+			'http://www.snowflake.ch/',
+			'h@ttp://www.snowflake.ch/',
+			'@snowflake.ch',
+			'www@snowflakech'
 		);
+
+		$this->assertEquals(true, TodoyuString::isValidEmail($emailValid) );
+
+		foreach($invalid as $emailInvalid) {
+			$this->assertNotEquals(true, TodoyuString::isValidEmail($emailInvalid), 'tested invalid email: ' . $emailInvalid );
+		}
 	}
 
 
