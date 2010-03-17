@@ -46,26 +46,8 @@ button span.label {
 	white-space:nowrap;
 }
 
-/*
-button span.rgt {
-	width:10px;
-	height:23px;
-	line-height:23px;
-	background:#fff url(../img/bg-button.png) no-repeat 100% 50% !important;
-	position:relative;
-	left:3px;
-}
-*/
-
 button span.rgt {
 	display:none;
-}
-
-.headerLine button span.rgt {
-	margin-top:2px;
-	height:23px;
-	position:relative;
-	background-color:#E7E7E7 !important;
 }
 
 /* ---------------------------

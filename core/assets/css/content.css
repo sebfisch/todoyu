@@ -109,17 +109,6 @@ h1 {
 	letter-spacing:0.3px;
 }
 
-.headerLine span.rgt {
-	position:absolute;
-	right:0;
-	display:block;
-	margin:0;
-	padding:0;
-	background:#fff url('../img/bg-headerline.png') no-repeat 100% 0%;
-	width:10px;
-	height:28px;
-}
-
 .headerLine th.last,
 .headerLine td.last {
 	background:#fff url('../img/bg-headerline.png') no-repeat 100% 0%;
@@ -161,7 +150,10 @@ h1 {
 	background:#fff url('../img/bg-headerline.png') no-repeat 100% -46px;
 }
 
-
+.headerLine button span {
+	line-height:20px;
+}
+}
 
 	/* h3 */
 .headLabel span {
