@@ -3,7 +3,7 @@
 	left:200px;
 	position:absolute;
 	top:200px;
-	width:152px;
+	width:182px;
 	border:1px solid #b9bcae;
 	background-color:#d3dabb;
 }
@@ -21,7 +21,7 @@
 
 #quickinfo dl dd {
 	float:left;	
-	width:120px;
+	width:150px;
 	min-height:15px;
 	padding:3px 4px;
 	background-color:#edf1e0;

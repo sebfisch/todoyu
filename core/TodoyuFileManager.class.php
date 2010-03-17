@@ -253,7 +253,7 @@ class TodoyuFileManager {
 
 		if( $wrapAsPhp ) {
 				// Add php start and end tag
-			$content= TodoyuDiv::wrapString($content, '<?php|?>');
+			$content= TodoyuString::wrap($content, '<?php|?>');
 		}
 
 		return file_put_contents($savePath, $content) !== false;

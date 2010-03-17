@@ -1,0 +1,152 @@
+<?php
+/***************************************************************
+*  Copyright notice
+*
+*  (c) 2009 snowflake productions gmbh
+*  All rights reserved
+*
+*  This script is part of the todoyu project.
+*  The todoyu project is free software; you can redistribute it and/or modify
+*  it under the terms of the GNU General Public License, version 2,
+*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
+*  the Free Software Foundation;
+*
+*  This script is distributed in the hope that it will be useful,
+*  but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*  GNU General Public License for more details.
+*
+*  This copyright notice MUST APPEAR in all copies of the script!
+***************************************************************/
+
+/**
+ * Mathematical helper functions
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+class TodoyuMath {
+
+	/**
+	 * Make sure an integer is in a range. If the integer is out of range,
+	 * set it to one of the boundaries
+	 *
+	 * @param	Integer		$integer
+	 * @param	Integer		$min
+	 * @param	Integer		$max
+	 * @return	Integer
+	 */
+	public static function intInRange($integer, $min = 0, $max = 2000000000)	{
+		$integer = intval($integer);
+
+		if( $integer < $min ) {
+			$integer = $min;
+		}
+
+		if( $integer > $max ) {
+			$integer = $max;
+		}
+
+		return $integer;
+	}
+
+
+
+	/**
+	 * Get the integer integer of a value
+	 *
+	 * @param	String		$value		A string or integer value
+	 * @return	Integer		Integer equal or greater than 0
+	 */
+	public static function intPositive($value) {
+		$integer = intval($value);
+
+		if( $integer < 0 ) {
+			$integer = 0;
+		}
+
+		return $integer;
+	}
+
+
+
+	/**
+	 * Get integer representation of version string
+	 * Borrowed from typo3
+	 *
+	 * @param	String		$version
+	 * @return	Integer
+	 */
+	public static function getIntVersion($version) {
+		if (!preg_match('/^(\d+)\.(\d+)\.(\d+)(?:(?:\.|-(rc|dev|beta|alpha))(\d+)?)?$/', $version, $matches)) {
+			return false;
+		}
+
+		// Increase value for subversions
+		if( ! empty($matches[4]) ) {
+			switch ($matches[4]) {
+				case 'rc':
+					$added = 30;
+					break;
+
+
+				case 'beta':
+					$added = 20;
+					break;
+
+
+				case 'alpha':
+					$added = 10;
+					break;
+
+
+				case 'dev':
+					$added = 0;
+					break;
+			}
+		} else {
+			$added = 50; // for final
+		}
+			// Add version of subversion (ex: alpha3 = +3)
+		if( ! empty($matches[5]) ) {
+			$added = $added + $matches[5];
+		}
+
+		return $matches[1] * 1000000 + $matches[2] * 10000 + $matches[3] * 100 + $added;
+	}
+
+
+
+	/**
+	 * Calculate percent
+	 *
+	 * @param	Integer	$numberOf
+	 * @param	Intger	$totalNumberOf
+	 * @return	Intger
+	 */
+	function percent($percent, $value)	{
+		return $percent * ($value / 100.0);
+	}
+
+
+
+	/**
+	 * Calculate fraction (how many percent is the given value of the given total?)
+	 *
+	 * @param	Integer	$fraction
+	 * @param	Integer	$total
+	 * @return Integer
+	 */
+	function fraction($fraction = 75, $total = 300) {
+		if ($total > 0) {
+			$rc = intval (($fraction/ $total) * 100);
+		} else {
+			TodoyuDebug::printHtml('error in fraction(...) - division by 0!');
+		}
+
+		return $rc;
+	}
+
+}
+
+?>

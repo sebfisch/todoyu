@@ -37,44 +37,6 @@ class TodoyuDiv {
 
 
 	/**
-	 * Generate a random password. Customizeable
-	 *
-	 * @param	Integer		$length
-	 * @param	Boolean		$useLowerCase
-	 * @param	Boolean		$useNumbers
-	 * @param	Boolean		$useSpecialChars
-	 * @param	Boolean		$useDoubleChars
-	 * @return	String
-	 */
-	public static function generatePassword($length = 8, $useLowerCase = false, $useNumbers = true, $useSpecialChars = false, $useDoubleChars = true) {
-		$length		= intval($length);
-		$characters	= array_merge(range('a', 'z'), range('A', 'Z'));
-
-		if( $useNumbers ) {
-			$characters = array_merge($characters, range('0', '9'));
-		}
-		if( $useSpecialChars ) {
-			$characters = array_merge($characters, array('#','&','@','$','_','%','?','+','-'));
-		}
-		if( $useDoubleChars ) {
-			shuffle($characters);
-			$characters = array_merge($characters, $characters);
-		}
-
-		// Shuffle array
-		shuffle($characters);
-		$password = substr(implode('', $characters), 0, $length);
-
-		if( $useLowerCase ) {
-			$password = strtolower($password);
-		}
-
-		return $password;
-	}
-
-
-
-	/**
 	 * Send php array (or any other data) JSON encoded to the client
 	 * The output is sent UTF8 encoded and script stops
 	 * after the output has been sent
@@ -90,141 +52,6 @@ class TodoyuDiv {
 		if( $stopScript ) {
 			exit();
 		}
-	}
-
-
-	/**
-	 * Check if a string is utf-8 encoded
-	 *
-	 * @param	String		$stringToCheck
-	 * @return	Boolean
-	 */
-	public static function isUTF8($stringToCheck) {
-		if( function_exists('mb_detect_encoding') ) {
-			return mb_detect_encoding($stringToCheck, 'UTF-8, ISO-8859-15, ISO-8859-1') === 'UTF-8';
-		} else {
-			return true; // Assume it's already utf8 as it should be. We cannot tell it anyway without this function
-		}
-	}
-
-
-
-	/**
-	 * Convert a string to UTF-8 if necessary
-	 *
-	 * @param	String		$stringToConvert
-	 * @return	String
-	 */
-	public static function convertToUTF8($stringToConvert) {
-		return self::isUTF8($stringToConvert) ? $stringToConvert : utf8_encode($stringToConvert);
-	}
-
-
-
-	/**
-	 * Convert each element of an array to utf-8
-	 *
-	 * @param	Array		$arrayToConvert
-	 * @return	Array
-	 */
-	public static function convertToUTF8Array(array $arrayToConvert) {
-		$convertedArray = array();
-
-		foreach( $arrayToConvert as $key => $value ) {
-			$convertedArray[$key] = self::convertToUTF8($value);
-		}
-
-		return $convertedArray;
-	}
-
-
-
-	/**
-	 * Make sure an integer is in a range. If the integer is out of range,
-	 * set it to one of the boundaries
-	 *
-	 * @param	Integer		$integer
-	 * @param	Integer		$min
-	 * @param	Integer		$max
-	 * @return	Integer
-	 */
-	public static function intInRange($integer, $min = 0, $max = 2000000000)	{
-		$integer = intval($integer);
-
-		if( $integer < $min ) {
-			$integer = $min;
-		}
-
-		if( $integer > $max ) {
-			$integer = $max;
-		}
-
-		return $integer;
-	}
-
-
-
-	/**
-	 * Get the integer integer of a value
-	 *
-	 * @param	String		$value		A string or integer value
-	 * @return	Integer		Integer equal or greater than 0
-	 */
-	public static function intPositive($value) {
-		$integer = intval($value);
-
-		if( $integer < 0 ) {
-			$integer = 0;
-		}
-
-		return $integer;
-	}
-
-	/**
-	 * Calculate percent
-	 *
-	 * @param	Integer	$numberOf
-	 * @param	Intger	$totalNumberOf
-	 * @return	Intger
-	 */
-	function percent($percent, $value)	{
-		return $percent * ($value / 100.0);
-	}
-
-
-
-	/**
-	 * Calculate fraction (how many percent is the given value of the given total?)
-	 *
-	 * @param	Integer	$fraction
-	 * @param	Integer	$total
-	 * @return Integer
-	 */
-	function fraction($fraction = 75, $total = 300) {
-		if ($total > 0) {
-			$rc = intval (($fraction/ $total) * 100);
-		} else {
-			TodoyuDebug::printHtml('error in fraction(...) - division by 0!');
-		}
-
-		return $rc;
-	}
-
-
-
-	/**
-	 * Checking syntax of input email address
-	 *
-	 * @param	String		Input string to evaluate
-	 * @return	Boolean		Returns true if the $email address (input string) is valid; Has a "@", domain name with at least one period and only allowed a-z characters.
-	 */
-	public static function validEmail($email)	{
-		$email = trim ($email);
-		if( strstr($email,' ') ) {
-			return false;
-		}
-
-		return ereg('^[A-Za-z0-9\._-]+[@][A-Za-z0-9\._-]+[\.].[A-Za-z0-9]+$', $email) ? true : false;
 	}
 
 
@@ -314,7 +141,7 @@ class TodoyuDiv {
 		$fields	= $fieldsInResult;
 		$tables	= implode(', ', array_unique(array_merge($extraTables, array($table))));
 		$where	= Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
-		$limit	= TodoyuDiv::intPositive($limitOffset) . ',' . TodoyuDiv::intPositive($limitRows);
+		$limit	= TodoyuMath::intPositive($limitOffset) . ',' . TodoyuMath::intPositive($limitRows);
 
 
 		if( $extraWhere != '' ) {
@@ -370,41 +197,6 @@ class TodoyuDiv {
 		$path	= TodoyuFileManager::pathAbsolute($path);
 
 		return stripos($path, PATH) === 0;
-	}
-
-
-
-	/**
-	 * Crop a text to a specific length. If text is cropped, a postfix will be added (default: ...)
-	 * Per default, words will not be splitted and the text will mostly be a little bit shorter
-	 *
-	 * @param	String		$text
-	 * @param	Integer		$length
-	 * @param	String		$postfix
-	 * @param	Boolean		$dontSplitWords
-	 * @return	String
-	 */
-	public static function cropText($text, $length, $postfix = '...', $dontSplitWords = true) {
-		$length	= intval($length);
-		$text	= utf8_decode($text);
-
-		if( strlen($text) > $length ) {
-			$cropped	= substr($text, 0, $length);
-			$nextChar	= substr($text, $length, 1);
-
-			if( $dontSplitWords === true && $nextChar !== ' ' ) {
-				$spacePos	= strpos($cropped, ' ');
-				$cropped	= substr($cropped, 0, $spacePos);
-			}
-
-			$cropped .= $postfix;
-		} else {
-			$cropped = $text;
-		}
-
-		$cropped = utf8_encode($cropped);
-
-		return $cropped;
 	}
 
 
@@ -569,9 +361,7 @@ class TodoyuDiv {
 			}
 		}
 
-
-
-		// If file not found, or no allowing config available, disallow download
+			// If file not found, or no allowing config available, disallow download
 		return false;
 	}
 
@@ -590,41 +380,13 @@ class TodoyuDiv {
 
 
 	/**
-	 * Short md5 hash of a string
+	 * Get short md5 hash of a string
 	 *
 	 * @param	String		$string
 	 * @return	String		10 characters md5 hash value of the string
 	 */
 	public static function md5short($string) {
 		return substr(md5($string), 0, 10);
-	}
-
-
-
-	/**
-	 * Get a substring around a keyword
-	 *
-	 * @param	String		$string			The whole text
-	 * @param	String		$keyword		Keyword to find in the text
-	 * @param	Integer		$charsBefore	Characters included before the keyword
-	 * @param	Integer		$charsAfter		Characters included after the keyword
-	 * @return	String		Substring with keyword surrounded by the original text
-	 */
-	public static function getSubstring($string, $keyword, $charsBefore = 20, $charsAfter = 20, $htmlEntities = true) {
-		$charsBefore= intval($charsBefore);
-		$charsAfter	= intval($charsAfter);
-		$keyLen		= strlen(trim($keyword));
-		$pos		= stripos($string, $keyword);
-		$start		= TodoyuDiv::intInRange($pos-$charsBefore, 0);
-		$subLen		= $charsBefore + $keyLen + $charsAfter;
-
-		if( $htmlEntities ) {
-			$string = htmlentities(substr(html_entity_decode($string), $start, $subLen));
-		} else {
-			$string = substr($string, $start, $subLen);
-		}
-
-		return $string;
 	}
 
 
@@ -713,102 +475,6 @@ class TodoyuDiv {
 
 
 	/**
-	 * Get integer representation of version string
-	 * Borrowed from typo3
-	 *
-	 * @param	String		$version
-	 * @return	Integer
-	 */
-	public static function getIntVersion($version) {
-		if (!preg_match('/^(\d+)\.(\d+)\.(\d+)(?:(?:\.|-(rc|dev|beta|alpha))(\d+)?)?$/', $version, $matches)) {
-			return false;
-		}
-
-		// Increase value for subversions
-		if( ! empty($matches[4]) ) {
-			switch ($matches[4]) {
-				case 'rc':
-					$added = 30;
-					break;
-
-
-				case 'beta':
-					$added = 20;
-					break;
-
-
-				case 'alpha':
-					$added = 10;
-					break;
-
-
-				case 'dev':
-					$added = 0;
-					break;
-			}
-		} else {
-			$added = 50; // for final
-		}
-		// Add version of subversion (ex: alpha3 = +3)
-		if( ! empty($matches[5]) ) {
-			$added = $added + $matches[5];
-		}
-
-		return $matches[1] * 1000000 + $matches[2] * 10000 + $matches[3] * 100 + $added;
-	}
-
-
-
-	/**
-	 * wraps string with given HTML tags
-	 *
-	 * <tag>|</tag>
-	 *
-	 * @param string $string
-	 * @param string $wrap
-	 * @return string
-	 */
-	public static function wrapString($string, $wrap)	{
-		return str_replace('|', $string, $wrap);
-	}
-
-
-
-	/**
-	 * Use a field value in an array as index of the array
-	 *
-	 * @param	Array		$array
-	 * @param	String		$fieldname
-	 * @return	Array
-	 */
-	public static function useFieldAsIndex(array $array, $fieldname) {
-		$new = array();
-
-		foreach($array as $index => $item) {
-			$item['_oldIndex'] = $index;
-			$new[$item[$fieldname]] = $item;
-		}
-
-		return $new;
-	}
-
-
-
-	/**
-	 * Explode a string in camel case format
-	 *
-	 * @param	String		$camelCaseString
-	 * @return	Array
-	 */
-	public static function explodeCamelCase($camelCaseString) {
-		$spaced	= preg_replace( '/([a-z0-9])([A-Z])/', "$1 $2", $camelCaseString);
-
-		return explode(' ', $spaced);
-	}
-
-
-
-	/**
 	 * Build an URL with given parameters prefixed with todoyu path
 	 *
 	 * @param	Array		$params		Parameters as key=>value
@@ -850,7 +516,6 @@ class TodoyuDiv {
 
 	/**
 	 * Initialize mcypt
-	 *
 	 */
 	private static function initMcrypt() {
 		if( is_null(self::$mcrypt) ) {
@@ -906,20 +571,7 @@ class TodoyuDiv {
 
 
 	/**
-	 * Split a string by camelcase.
-	 * Every uppercase letter followed by a lowercase will be threaded as subpart
-	 *
-	 * @param	String		$string
-	 * @return	Array
-	 */
-	public static function splitCamelCase($string) {
-		return preg_split('/([A-Z][^A-Z]*)/', $string, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
-	}
-
-
-
-	/**
-	 * Analyze a version string and
+	 * Analyze version string and return array of contained sub versions and attributes
 	 *
 	 * @param	String		$versionString
 	 * @return	Array		[major,minor,revision,status]
@@ -945,31 +597,19 @@ class TodoyuDiv {
 	}
 
 
-	public static function appendToFilename($filename, $append) {
-		$pathinfo	= pathinfo($filename);
-		$dir		= $pathinfo['dirname'] == '.' ? '' : $pathinfo['dirname'] . '/';
-
-		return $dir . $pathinfo['filename'] . $append . '.' . $pathinfo['extension'];
-	}
-
-
 
 	/**
-	 * Convert an HTML snippet into plain text. Keep as much format information as possible
+	 * Append string to filename, preserving path delimiter and file extension
 	 *
-	 * @param	String		$html		HTML snippet
-	 * @return	String		Text version
+	 * @param	String	$filename
+	 * @param	String	$append
+	 * @return	String
 	 */
-	public static function html2text($html) {
-		return strip_tags($html);
-		/*
-		require_once( PATH_LIB . '/php/html2text/class.html2text.php' );
+	public static function appendToFilename($filename, $append) {
+		$pathinfo	= pathinfo($filename);
+		$dir		= ( $pathinfo['dirname'] == '.' ) ? '' : $pathinfo['dirname'] . '/';
 
-		$html2text = new html2text($html);
-		$html2text->set_base_url(TODOYU_URL);
-
-		return $html2text->get_text();
-		*/
+		return $dir . $pathinfo['filename'] . $append . '.' . $pathinfo['extension'];
 	}
 
 }

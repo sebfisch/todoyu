@@ -43,6 +43,7 @@ class TodoyuQuickinfo {
 	}
 
 
+
 	/**
 	 * Add new info
 	 *

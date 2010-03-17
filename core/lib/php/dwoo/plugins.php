@@ -227,7 +227,7 @@ function Dwoo_Plugin_filesize(Dwoo $dwoo, $filesize) {
  */
 
 function Dwoo_Plugin_cropText_compile(Dwoo_Compiler $compiler, $string, $maxLen, $dontSplitWords = true) {
-	return 'TodoyuDiv::cropText(' . $string . ', ' . $maxLen . ', \'...\', ' . $dontSplitWords . ')';
+	return 'TodoyuString::crop(' . $string . ', ' . $maxLen . ', \'...\', ' . $dontSplitWords . ')';
 }
 
 
@@ -508,7 +508,7 @@ function Dwoo_Plugin_isInternal_compile(Dwoo_Compiler $compiler) {
  * @return	String			Text version
  */
 function Dwoo_Plugin_html2text_compile(Dwoo_Compiler $compiler, $html) {
-	return 'TodoyuDiv::html2text(' . $html . ')';
+	return 'TodoyuString::html2text(' . $html . ')';
 }
 
 

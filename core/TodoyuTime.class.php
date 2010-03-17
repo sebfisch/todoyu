@@ -233,7 +233,7 @@ class TodoyuTime {
 	 * @return	Array		[hours,minutes,seconds]
 	 */
 	public static function getTimeParts($seconds) {
-		$seconds	= TodoyuDiv::intPositive($seconds);
+		$seconds	= TodoyuMath::intPositive($seconds);
 		$hours		= floor($seconds / 3600);
 		$seconds	= $seconds - $hours * 3600;
 		$minutes	= floor($seconds / 60);
@@ -338,7 +338,7 @@ class TodoyuTime {
 		$string		= strftime($format, $timestamp);
 
 			// If server locale file is not yet utf8, convert the string
-		if( ! TodoyuDiv::isUTF8($string) ) {
+		if( ! TodoyuString::isUTF8($string) ) {
 			$string = utf8_encode($string);
 		}
 
@@ -476,7 +476,7 @@ class TodoyuTime {
 	public static function parseDuration($timeString) {
 		$parts	= explode(':', $timeString);
 
-		return intval($parts[0])*3600 + TodoyuDiv::intInRange($parts[1], 0, 60)*60;
+		return intval($parts[0])*3600 + TodoyuMath::intInRange($parts[1], 0, 60)*60;
 	}
 
 

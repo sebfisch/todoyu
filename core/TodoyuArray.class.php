@@ -465,6 +465,24 @@ class TodoyuArray {
 
 
 	/**
+	 * Convert each element of an array to utf-8
+	 *
+	 * @param	Array		$arrayToConvert
+	 * @return	Array
+	 */
+	public static function convertToUTF8Array(array $arrayToConvert) {
+		$convertedArray = array();
+
+		foreach( $arrayToConvert as $key => $value ) {
+			$convertedArray[$key] = TodoyuString::convertToUTF8($value);
+		}
+
+		return $convertedArray;
+	}
+
+
+
+	/**
 	 * Removes array entrie by its value
 	 *
 	 * @example
@@ -665,6 +683,26 @@ class TodoyuArray {
 		foreach($array as $index => $value) {
 			$array[$index] = trim($value);
 		}
+	}
+
+
+
+	/**
+	 * Use a field value in an array as index of the array
+	 *
+	 * @param	Array		$array
+	 * @param	String		$fieldname
+	 * @return	Array
+	 */
+	public static function useFieldAsIndex(array $array, $fieldname) {
+		$new = array();
+
+		foreach($array as $index => $item) {
+			$item['_oldIndex'] = $index;
+			$new[$item[$fieldname]] = $item;
+		}
+
+		return $new;
 	}
 
 }

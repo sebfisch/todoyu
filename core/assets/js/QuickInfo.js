@@ -57,7 +57,10 @@ Todoyu.QuickInfo = {
 
 
 	/**
-	 * Show popUp
+	 * Show quickinf tooltip
+	 * 
+	 * @param	Integer		x
+	 * @param	Integer		y
 	 */
 	showPopUp: function(x, y) {
 			// Check hide-flag (prevent lapse due to running request while mouseOut happened)
@@ -176,9 +179,10 @@ Todoyu.QuickInfo = {
 
 
 	/**
-	 * Build html code based on json data
+	 * Render quick info tooltip HTML from JSON data
 	 *
-	 * @param	JSON	json
+	 * @param	JSON		json
+	 * @return	String
 	 */
 	buildQuickInfo: function(json) {
 		if( this.template === null ) {
@@ -191,7 +195,7 @@ Todoyu.QuickInfo = {
 			content += this.template.evaluate(item);
 		}.bind(this));
 
-		return '<dl>' + content + '</dl>';
+		return '<dl>' + content.replace("\n", '<br />') + '</dl>';
 	},
 
 
