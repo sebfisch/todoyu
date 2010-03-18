@@ -93,7 +93,7 @@ class TodoyuHtmlFilterTest extends PHPUnit_Framework_TestCase {
 	public function testEntitySafeLimitWordsLen() {
 		// Remove the following lines when you implement this test.
 		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
+		 'This test has not been implemented yet.'
 		);
 	}
 
@@ -108,7 +108,7 @@ class TodoyuHtmlFilterTest extends PHPUnit_Framework_TestCase {
 	public function testHtmlSafeChunkSplit() {
 		// Remove the following lines when you implement this test.
 		$this->markTestIncomplete(
-		  'This test has not bhtmlSafeChunkSplitemented yet.'
+		  'This test has not been implemented yet.'
 		);
 	}
 
@@ -121,7 +121,7 @@ class TodoyuHtmlFilterTest extends PHPUnit_Framework_TestCase {
 	public function testEscapeBadTags() {
 		// Remove the following lines when you implement this test.
 		$this->markTestIncomplete(
-		  'This escapeBadTags not bhtmlSafeChunkSplitemented yet.'
+		  'This test has not been implemented yet.'
 		);
 	}
 
@@ -134,7 +134,7 @@ class TodoyuHtmlFilterTest extends PHPUnit_Framework_TestCase {
 	public function testEscapeBadTag() {
 		// Remove the following lines when you implement this test.
 		$this->markTestIncomplete(
-		  'This escapeBadTags not bhtmlSafeChunkSplitemented yet.'
+		  'This test has not been implemented yet.'
 		);
 	}
 
