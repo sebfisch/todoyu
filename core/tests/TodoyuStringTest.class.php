@@ -213,6 +213,34 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
+
+
+	/**
+	 * Test TodoyuString::isInList($item, $listString, $listSeperator = ',')
+	 *
+	 * @todo Implement testIsInList().
+	 */
+	public function testIsInList() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
+
+
+	/**
+	 * Test TodoyuString::formatSize($filesize, array $labels = null, $noLabel = false)
+	 *
+	 * @todo Implement testFormatSize().
+	 */
+	public function testFormatSize() {
+		// Remove the following lines when you implement this test.
+		$this->markTestIncomplete(
+		  'This test has not been implemented yet.'
+		);
+	}
+
 }
 
 ?>

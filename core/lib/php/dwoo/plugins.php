@@ -210,7 +210,7 @@ function Dwoo_Plugin_HourMin(Dwoo $dwoo, $seconds) {
  */
 
 function Dwoo_Plugin_filesize(Dwoo $dwoo, $filesize) {
-	return TodoyuDiv::formatSize($filesize);
+	return TodoyuString::formatSize($filesize);
 }
 
 

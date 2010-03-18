@@ -211,6 +211,22 @@ class TodoyuString {
 
 
 	/**
+	 * Check if an element is in a seperated list string (ex: comma seperated)
+	 *
+	 * @param	String		$item				Element to check for
+	 * @param	String		$listString			List with concatinated elements
+	 * @param	String		$listSeperator		List element seperating character
+	 * @return	Boolean
+	 */
+	public static function isInList($item, $listString, $listSeperator = ',')	{
+		$list	= explode($listSeperator, $listString);
+
+		return in_array($item, $list);
+	}
+
+
+
+	/**
 	 * Generate a random password. Customizeable
 	 *
 	 * @param	Integer		$length
@@ -244,6 +260,51 @@ class TodoyuString {
 		}
 
 		return $password;
+	}
+
+
+
+	/**
+	 * Format a filesize in the gb/mb/kb/b and add label
+	 *
+	 * @param	Integer		$filesize
+	 * @param	Array		$labels			Custom label array (overrides the default labels
+	 * @param	Boolean		$noLabel		Don't append label
+	 * @return	String
+	 */
+	public static function formatSize($filesize, array $labels = null, $noLabel = false) {
+		$filesize	= intval($filesize);
+
+		if( is_null($labels) ) {
+			if( $noLabel === false ) {
+				$labels = array(
+					'gb'	=> Label('file.size.gb'),
+					'mb'	=> Label('file.size.mb'),
+					'kb'	=> Label('file.size.kb'),
+					'b'		=> Label('file.size.b')
+				);
+			} else {
+				$labels	= array();
+			}
+		}
+
+		if( $filesize > 1000000000 ) { 		// GB
+			$size	= $filesize / (1024 * 1024 * 1024);
+			$label	= $labels['gb'];
+		} elseif( $filesize > 1000000 ) {
+			$size	= $filesize / (1024 * 1024);
+			$label	= $labels['mb'];
+		} elseif( $filesize > 1000 ) {
+			$size	= $filesize / 1024;
+			$label	= $labels['kb'];
+		} else {
+			$size	= $filesize;
+			$label	= $labels['b'];
+		}
+
+		$dez	= $size >= 10 ? 0 : 1;
+
+		return number_format($size, $dez, '.', '') . ( $noLabel ? '' : ' ' . $label);
 	}
 
 }

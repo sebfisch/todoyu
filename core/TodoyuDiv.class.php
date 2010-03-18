@@ -57,18 +57,6 @@ class TodoyuDiv {
 
 
 	/**
-	 * Remove absolute site path from a path
-	 *
-	 * @param	String		$path
-	 * @return	String
-	 */
-	public static function removeSitePath($path) {
-		return str_replace(PATH, '', $path);
-	}
-
-
-
-	/**
 	 * Get keywords for autocomplete from a table
 	 * Search all fields with like and key the full word parts
 	 *
@@ -122,13 +110,12 @@ class TodoyuDiv {
 	 * @todo	Move it to a database class or something else
 	 */
 	public static function searchTable($table, array $searchInFields, array $searchWords, $fieldsInResult = '*', array $extraTables = array(), $extraWhere = '', $groupBy = '', $orderBy = '', $limitOffset = 0, $limitRows = 200) {
-
-		// Compile selected fields
-		// Prepend table name, if all fields are requested
+			// Compile selected fields
+			// Prepend table name, if all fields are requested
 		if( $fieldsInResult === '*' ) {
 			$fieldsInResult = $table . '.*';
 		} else {
-			// Split fields and prepend table if not done yet
+				// Split fields and prepend table if not done yet
 			$fields = TodoyuArray::trimExplode(',', $fieldsInResult, true);
 			foreach($fields as $key => $field) {
 				if( strstr($field, '.') === false ) {
@@ -170,177 +157,6 @@ class TodoyuDiv {
 		} else {
 			return $label;
 		}
-	}
-
-
-
-	/**
-	 * Get web path of a file
-	 *
-	 * @param	String		$absolutePath
-	 * @return 	String
-	 */
-
-	public static function pathWeb($absolutePath) {
-		return TodoyuFileManager::pathWeb($absolutePath);
-	}
-
-
-
-	/**
-	 * Check if path is inside to todoyu path (prevent actions outside of todoyu)
-	 *
-	 * @param	String		$path
-	 * @return	Boolean
-	 */
-	public static function isAllowedTodoyuPath($path) {
-		$path	= TodoyuFileManager::pathAbsolute($path);
-
-		return stripos($path, PATH) === 0;
-	}
-
-
-
-	/**
-	 * Check if a file exists. Works also with not absolute paths
-	 *
-	 * @param	String		$path
-	 * @return	Boolean
-	 */
-	public static function isFile($path) {
-		return is_file( TodoyuFileManager::pathAbsolute($path) );
-	}
-
-
-
-	/**
-	 * Replace all not allowed characters of a filename by "_"
-	 *
-	 * @param	String		$dirtyFilename		Filename (not path!)
-	 * @return	String
-	 */
-	public static function makeCleanFilename($dirtyFilename) {
-		return TodoyuFileManager::makeCleanFilename($dirtyFilename, '_');
-	}
-
-
-
-	/**
-	 * Format a filesize in the gb/mb/kb/b and add label
-	 *
-	 * @param	Integer		$filesize
-	 * @param	Array		$labels			Custom label array (overrides the default labels
-	 * @param	Boolean		$noLabel		Don't append label
-	 * @return	String
-	 */
-	public static function formatSize($filesize, array $labels = null, $noLabel = false) {
-		$filesize	= intval($filesize);
-
-		if( is_null($labels) ) {
-			if( $noLabel === false ) {
-				$labels = array(
-					'gb'	=> Label('file.size.gb'),
-					'mb'	=> Label('file.size.mb'),
-					'kb'	=> Label('file.size.kb'),
-					'b'		=> Label('file.size.b')
-				);
-			} else {
-				$labels	= array();
-			}
-		}
-
-		if( $filesize > 1000000000 ) { 		// GB
-			$size	= $filesize / (1024 * 1024 * 1024);
-			$label	= $labels['gb'];
-		} elseif( $filesize > 1000000 ) {
-			$size	= $filesize / (1024 * 1024);
-			$label	= $labels['mb'];
-		} elseif( $filesize > 1000 ) {
-			$size	= $filesize / 1024;
-			$label	= $labels['kb'];
-		} else {
-			$size	= $filesize;
-			$label	= $labels['b'];
-		}
-
-		$dez	= $size >= 10 ? 0 : 1;
-
-		return number_format($size, $dez, '.', '') . ( $noLabel ? '' : ' ' . $label);
-	}
-
-
-
-	/**
-	 * Read a file from harddisk and send it to the browser (with echo)
-	 * Reads file in small parts (1024 B)
-	 *
-	 * @param	String		$absoluteFilePath
-	 * @return	Boolean		File was allowed to download and sent to browser
-	 */
-	public static function sendFile($absoluteFilePath) {
-		$absoluteFilePath	= realpath($absoluteFilePath);
-
-		if( $absoluteFilePath !== false ) {
-			if( is_readable($absoluteFilePath) ) {
-				if( self::isFileInAllowedDownloadPath($absoluteFilePath) ) {
-					$fp	= fopen($absoluteFilePath, 'rb');
-
-					while($data = fread($fp, 1024)) {
-						echo $data;
-					}
-
-					fclose($fp);
-
-					return true;
-				} else {
-					Todoyu::log('Tried to download a file from a not allowed path', LOG_LEVEL_SECURITY, $absoluteFilePath);
-				}
-			}
-		}
-
-		return false;
-	}
-
-
-
-	/**
-	 * Check if a file is in allowed download paths
-	 * By default, no download path is allowed (except PATH_FILES)
-	 * You can allow paths in $CONFIG['sendFile']['allow'] or disallow paths in $CONFIG['sendFile']['disallow']
-	 * Disallow tasks precedence before allow
-	 *
-	 * @param	String		$absoluteFilePath		Absolute path to file
-	 * @return	Boolean
-	 */
-	public static function isFileInAllowedDownloadPath($absoluteFilePath) {
-		$absoluteFilePath	= realpath($absoluteFilePath);
-		$disallowedPaths	= $GLOBALS['CONFIG']['sendFile']['disallow'];
-		$allowedPaths		= $GLOBALS['CONFIG']['sendFile']['allow'];
-
-		// If file exists
-		if( $absoluteFilePath !== false ) {
-
-			// Check if file is in an explicitly disallowed path
-			if( is_array($disallowedPaths) ) {
-				foreach($disallowedPaths as $disallowedPath) {
-					if( strpos($absoluteFilePath, $disallowedPath) !== false ) {
-
-						return false;
-					}
-				}
-			}
-			// Check if file is in an allowed path
-			if( is_array($allowedPaths) ) {
-				foreach($allowedPaths as $allowedPath) {
-					if( strpos($absoluteFilePath, $allowedPath) !== false ) {
-						return true;
-					}
-				}
-			}
-		}
-
-			// If file not found, or no allowing config available, disallow download
-		return false;
 	}
 
 
@@ -437,22 +253,6 @@ class TodoyuDiv {
 
 
 	/**
-	 * Check if an element is in a seperated list string (ex: comma seperated)
-	 *
-	 * @param	String		$item				Element to check for
-	 * @param	String		$listString			List with concatinated elements
-	 * @param	String		$listSeperator		List element seperating character
-	 * @return	Boolean
-	 */
-	public static function isInList($item, $listString, $listSeperator = ',')	{
-		$list	= explode($listSeperator, $listString);
-
-		return in_array($item, $list);
-	}
-
-
-
-	/**
 	 * Build an URL with given parameters prefixed with todoyu path
 	 *
 	 * @param	Array		$params		Parameters as key=>value
@@ -497,17 +297,17 @@ class TodoyuDiv {
 	 */
 	private static function initMcrypt() {
 		if( is_null(self::$mcrypt) ) {
-			// Open module
+				// Open module
 			self::$mcrypt = mcrypt_module_open('tripledes', '', 'ecb', '');
-			// Random seed
+				// Random seed
 			$random = 596328;
-			// Generate initialisation vector
+				// Generate initialisation vector
 			$vector	= mcrypt_create_iv(mcrypt_enc_get_iv_size(self::$mcrypt), $random);
-			// Get the expected key size based on mode and cipher
+				// Get the expected key size based on mode and cipher
 			$expectedKeySize = mcrypt_enc_get_key_size(self::$mcrypt);
-			// Get a key in the needed length (use typo3 key)
+				// Get a key in the needed length (use typo3 key)
 			$key = substr($GLOBALS['CONFIG']['SYSTEM']['encryptionKey'], 0, $expectedKeySize);
-			// Initialize mcrypt library with mode/cipher, encryption key, and random initialization vector
+				// Initialize mcrypt library with mode/cipher, encryption key, and random initialization vector
 			mcrypt_generic_init(self::$mcrypt, $key, $vector);
 		}
 	}
@@ -572,22 +372,6 @@ class TodoyuDiv {
 		$info['status']		= $status;
 
 		return $info;
-	}
-
-
-
-	/**
-	 * Append string to filename, preserving path delimiter and file extension
-	 *
-	 * @param	String	$filename
-	 * @param	String	$append
-	 * @return	String
-	 */
-	public static function appendToFilename($filename, $append) {
-		$pathinfo	= pathinfo($filename);
-		$dir		= ( $pathinfo['dirname'] == '.' ) ? '' : $pathinfo['dirname'] . '/';
-
-		return $dir . $pathinfo['filename'] . $append . '.' . $pathinfo['extension'];
 	}
 
 }

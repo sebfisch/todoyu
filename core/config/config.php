@@ -44,7 +44,7 @@ $CONFIG['SECURITY']['badHtmlTags'] = array('script', 'iframe', 'input', 'textare
 	// Initialize metamenu registration array
 $CONFIG['MetaMenu']	= array();
 
-	// Set (not) allowed paths for TodoyuDiv::sendFile()
+	// Set (not) allowed paths for TodoyuFileManager::sendFile()
 $CONFIG['sendFile']['allow']	= array(PATH_FILES);
 $CONFIG['sendFile']['disallow']	= array();
 

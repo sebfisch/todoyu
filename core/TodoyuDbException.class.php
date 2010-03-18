@@ -83,7 +83,7 @@ class TodoyuDbException extends Exception {
 			// Remove full site path
 		$trace	= $this->getTrace();
 		foreach($trace as $index => $step) {
-			$trace[$index]['file'] = TodoyuDiv::removeSitePath($trace[$index]['file']);
+			$trace[$index]['file'] = TodoyuFileManager::removeSitePath($trace[$index]['file']);
 		}
 
 		$data	= array('message'	=> $this->getMessage(),
@@ -131,7 +131,7 @@ class TodoyuDbException extends Exception {
 			// Remove full site path
 		$trace	= $this->getTrace();
 		foreach($trace as $index => $step) {
-			$trace[$index]['file'] = TodoyuDiv::removeSitePath($trace[$index]['file']);
+			$trace[$index]['file'] = TodoyuFileManager::removeSitePath($trace[$index]['file']);
 		}
 
 		$data	= array('message'	=> $this->getMessage(),

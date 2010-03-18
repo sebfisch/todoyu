@@ -28,6 +28,18 @@
 class TodoyuFileManager {
 
 	/**
+	 * Remove absolute site path from a path
+	 *
+	 * @param	String		$path
+	 * @return	String
+	 */
+	public static function removeSitePath($path) {
+		return str_replace(PATH, '', $path);
+	}
+
+
+
+	/**
 	 * Get absolute path
 	 *
 	 * @param	String	$path
@@ -322,6 +334,97 @@ class TodoyuFileManager {
 			Todoyu::log('Can\'t open file! File: ' . $file, LOG_LEVEL_ERROR);
 			return '';
 		}
+	}
+
+
+
+	/**
+	 * Check if a file is in allowed download paths
+	 * By default, no download path is allowed (except PATH_FILES)
+	 * You can allow paths in $CONFIG['sendFile']['allow'] or disallow paths in $CONFIG['sendFile']['disallow']
+	 * Disallow tasks precedence before allow
+	 *
+	 * @param	String		$absoluteFilePath		Absolute path to file
+	 * @return	Boolean
+	 */
+	public static function isFileInAllowedDownloadPath($absoluteFilePath) {
+		$absoluteFilePath	= realpath($absoluteFilePath);
+		$disallowedPaths	= $GLOBALS['CONFIG']['sendFile']['disallow'];
+		$allowedPaths		= $GLOBALS['CONFIG']['sendFile']['allow'];
+
+		// If file exists
+		if( $absoluteFilePath !== false ) {
+
+			// Check if file is in an explicitly disallowed path
+			if( is_array($disallowedPaths) ) {
+				foreach($disallowedPaths as $disallowedPath) {
+					if( strpos($absoluteFilePath, $disallowedPath) !== false ) {
+
+						return false;
+					}
+				}
+			}
+			// Check if file is in an allowed path
+			if( is_array($allowedPaths) ) {
+				foreach($allowedPaths as $allowedPath) {
+					if( strpos($absoluteFilePath, $allowedPath) !== false ) {
+						return true;
+					}
+				}
+			}
+		}
+
+			// If file not found, or no allowing config available, disallow download
+		return false;
+	}
+
+
+
+	/**
+	 * Read a file from harddisk and send it to the browser (with echo)
+	 * Reads file in small parts (1024 B)
+	 *
+	 * @param	String		$absoluteFilePath
+	 * @return	Boolean		File was allowed to download and sent to browser
+	 */
+	public static function sendFile($absoluteFilePath) {
+		$absoluteFilePath	= realpath($absoluteFilePath);
+
+		if( $absoluteFilePath !== false ) {
+			if( is_readable($absoluteFilePath) ) {
+				if( self::isFileInAllowedDownloadPath($absoluteFilePath) ) {
+					$fp	= fopen($absoluteFilePath, 'rb');
+
+					while($data = fread($fp, 1024)) {
+						echo $data;
+					}
+
+					fclose($fp);
+
+					return true;
+				} else {
+					Todoyu::log('Tried to download a file from a not allowed path', LOG_LEVEL_SECURITY, $absoluteFilePath);
+				}
+			}
+		}
+
+		return false;
+	}
+
+
+
+	/**
+	 * Append string to filename, preserving path delimiter and file extension
+	 *
+	 * @param	String	$filename
+	 * @param	String	$append
+	 * @return	String
+	 */
+	public static function appendToFilename($filename, $append) {
+		$pathinfo	= pathinfo($filename);
+		$dir		= ( $pathinfo['dirname'] == '.' ) ? '' : $pathinfo['dirname'] . '/';
+
+		return $dir . $pathinfo['filename'] . $append . '.' . $pathinfo['extension'];
 	}
 
 }
