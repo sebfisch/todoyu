@@ -22,9 +22,13 @@
 					{$fieldClass = cat($colName Class)}
 					<td class="{$colName} {$row[$fieldClass]}">
 						<span class="{$colName}">
-							{$maxLen = intval($config.truncate.$colName)}
-							{if $maxLen == 0}{$maxLen = 16}{/if}
-							{truncate cleanHtml($row[$colName]) $maxLen}
+							{if $colName != 'actions'}
+								{$maxLen = intval($config.truncate.$colName)}
+								{if $maxLen == 0}{$maxLen = 16}{/if}
+								{truncate cleanHtml($row[$colName]) $maxLen}
+							{else}
+								{cleanHtml $row[$colName]}
+							{/if}
 						</span>
 					</td>
 				{/foreach}
