@@ -16,14 +16,20 @@
 		<tbody>
 
 	{*-------------- Rows ---------------*}
-			{foreach $rows index row}
-				<tr class="{cycle values="odd,even"}">
-				  	{foreach $config.columns colName label}
-				  		{$fieldClass = cat($colName Class)}
-				  		<td class="{$colName} {$row[$fieldClass]}"><span class="{$colName}">{cleanHtml $row[$colName]}</span></td>
-				    {/foreach}
-				</tr>
-			{/foreach}
+		{foreach $rows index row}
+			<tr class="{cycle values="odd,even"}">
+				{foreach $config.columns colName label}
+					{$fieldClass = cat($colName Class)}
+					<td class="{$colName} {$row[$fieldClass]}">
+						<span class="{$colName}">
+							{$maxLen = intval($config.truncate.$colName)}
+							{if $maxLen == 0}{$maxLen = 16}{/if}
+							{truncate cleanHtml($row[$colName]) $maxLen}
+						</span>
+					</td>
+				{/foreach}
+			</tr>
+		{/foreach}
 
 		</tbody>
 	</table>
