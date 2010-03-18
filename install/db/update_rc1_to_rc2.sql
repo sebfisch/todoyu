@@ -120,4 +120,7 @@ ALTER TABLE `ext_project_task` CHANGE `id_user_owner` `id_person_owner` SMALLINT
 --
 -- Other changes
 --
-ALTER TABLE `system_role` CHANGE `is_active` `active` TINYINT( 1 ) NOT NULL DEFAULT '0'
+ALTER TABLE `system_role` CHANGE `is_active` `active` TINYINT( 1 ) NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_jobtype` ADD `date_create` int(10) unsigned NOT NULL DEFAULT '0';
+ALTER TABLE `ext_contact_jobtype` ADD `date_update` int(10) unsigned NOT NULL;
+ALTER TABLE `ext_contact_jobtype` ADD `id_person_create` smallint(5) unsigned NOT NULL;

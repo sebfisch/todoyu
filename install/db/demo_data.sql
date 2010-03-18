@@ -671,12 +671,12 @@ INSERT INTO `system_role` (`id`, `date_create`, `date_update`, `id_person_create
 -- Data for Table `ext_contact_jobtype`
 --
 
-INSERT INTO `ext_contact_jobtype` (`id`, `deleted`, `title`) VALUES
-(1, 0, 'Project manager'),
-(2, 0, 'CEO'),
-(3, 0, 'Receptionist'),
-(4, 0, 'Developer'),
-(5, 0, 'IT-Manager');
+INSERT INTO `ext_contact_jobtype` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`) VALUES
+(1, 1264761659, 0, 1, 0, 'Project manager'),
+(2, 1264761659, 0, 1, 0, 'CEO'),
+(3, 1264761659, 0, 1, 0, 'Receptionist'),
+(4, 1264761659, 0, 1, 0, 'Developer'),
+(5, 1264761659, 0, 1, 0, 'IT-Manager');
 
 --
 -- Data for Table `ext_contact_mm_company_address`
