@@ -47,7 +47,7 @@ class TodoyuFormElement_Timeinput extends TodoyuFormElement_Textinput {
 	 *
 	 */
 	protected function init() {
-		$this->setType('text');
+		$this->setInputType('text');
 	}
 
 

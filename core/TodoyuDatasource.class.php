@@ -297,26 +297,22 @@ class TodoyuDatasource {
 	/**
 	 * Get region values (to current country) to render autocompleter suggestion from
 	 *
-	 * @param	String	$sword
+	 * @param	String		$sword
+	 * @param	Integer		$idCountry
 	 * @return	Array
 	 */
-	public static function autocompleteRegions( $sword ) {
-			// Get ID of region input element (should be something like 'company-address-0-0-field-region')
-		$inputElementID = TodoyuRequest::getParam('acelementid');
+	public static function autocompleteRegions($sword, $idCountry) {
+		$idCountry	= intval($idCountry);
 
-			// Get index of address fieldset containing the region and country field
-		$addressIndex = explode('-', $inputElementID);
-		$addressIndex = $addressIndex[2];
+		$field	= 'iso_num';
+		$table	= 'static_country';
+		$where	= 'id =' . $idCountry;
 
-		$formData	= TodoyuRequest::getAll();
-		$contactType= $formData['formName'];	// 'person' or 'company'
-		$countryID	= intval($formData[$contactType]['address'][ $addressIndex ]['id_country']);
-
-		$countryIsoNum	= Todoyu::db()->getFieldValue('iso_num', 'static_country', 'id =' . $countryID );
+		$countryIsoNum	= Todoyu::db()->getFieldValue($field, $table, $where);
 
 			// Get suggestion values (regions beginning with so far typed text of 'region' field)
-		$whereClause	= ' iso_num_country = ' . $countryIsoNum;
-		$values			= self::getStaticValsBeginningWith( 'country_zone', 'localname', $whereClause, $sword, 'id', true, true );
+		$where	= 'iso_num_country = ' . $countryIsoNum;
+		$values	= self::getStaticValsBeginningWith('country_zone', 'localname', $where, $sword, 'id', true, true);
 
 		return $values;
 	}

@@ -310,7 +310,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	/**
 	 * Get type of form element
 	 *
-	 * @return unknown
+	 * @return	String
 	 */
 	public function getType()	{
 		return $this->type;
@@ -616,6 +616,28 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		}
 
 		return $wizardConf;
+	}
+
+
+
+	/**
+	 * Set text which appears before the field
+	 *
+	 * @param	String		$text
+	 */
+	public function setAfterFieldText($text) {
+		$this->setAttribute('textAfterField', $text);
+	}
+
+
+
+	/**
+	 * Set text which appears after the field
+	 *
+	 * @param	String		$text
+	 */
+	public function setBeforeFieldText($text) {
+		$this->setAttribute('textBeforeField', $text);
 	}
 }
 

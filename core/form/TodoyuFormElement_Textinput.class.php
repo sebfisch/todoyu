@@ -48,7 +48,18 @@ class TodoyuFormElement_Textinput extends TodoyuFormElement {
 	 */
 	protected function init() {
 		if( ! $this->hasAttribute('type') ) {
-			$this->setType('text');
+			$this->setInputType('text');
+		}
+
+			// Add password info
+		if( $this->getInputType() === 'password' ) {
+			if( isset($this->config['validate']['goodPassword']) ) {
+				$validator	= new TodoyuPasswordValidator();
+				$validator->validate('');
+				$text		= implode('<br />', $validator->getErrors());
+
+				$this->setAfterFieldText($text);
+			}
 		}
 	}
 
@@ -59,8 +70,13 @@ class TodoyuFormElement_Textinput extends TodoyuFormElement {
 	 *
 	 * @param	String		$type
 	 */
-	public function setType($type) {
+	public function setInputType($type) {
 		$this->setAttribute('type', $type);
+	}
+
+
+	public function getInputType() {
+		return $this->getAttribute('type');
 	}
 
 
@@ -74,6 +90,13 @@ class TodoyuFormElement_Textinput extends TodoyuFormElement {
 		return $this->getValue();
 	}
 
+
+
+	/**
+	 * Get value for template (hide password)
+	 *
+	 * @return	String
+	 */
 	public function getValueForTemplate() {
 		return $this->getAttribute('type') === 'password' ? '' : parent::getValueForTemplate();
 	}

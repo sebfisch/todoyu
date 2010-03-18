@@ -373,7 +373,7 @@ Todoyu.Ui = {
 	scrollToElement: function(element) {
 		element = $(element);
 		element.scrollTo();
-
+				
 		if( Todoyu.exists('header') ) {
 			var headerHeight = $('header').getHeight();
 			window.setTimeout(window.scrollBy, 10, 0, -headerHeight);
@@ -386,7 +386,9 @@ Todoyu.Ui = {
 	 * Scroll to top of the page
 	 */
 	scrollToTop: function() {
-		window.scroll(0,0);
+		Effect.ScrollTo('header', {
+			'duration': 0.3
+		});
 	},
 
 

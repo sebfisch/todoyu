@@ -50,8 +50,8 @@ Todoyu.Headlet.AjaxLoader = {
 	 * Hide ajax loading icon
 	 */
 	hide: function() {
-		Effect.Fade.delay(0.5, this.buttonID, {
-			'duration': 0.5
+		Effect.Fade.delay(0.2, this.buttonID, {
+			'duration': 0.3
 		});
 	},
 	

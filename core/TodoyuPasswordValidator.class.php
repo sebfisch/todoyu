@@ -42,10 +42,10 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Initialize validator with active checks
-	 * @param	Array	$checks
+	 *
 	 */
-	public function __construct(array $checks) {
-		$this->checks	= $checks;
+	public function __construct() {
+		$this->checks	= self::getChecks();
 	}
 
 
@@ -67,7 +67,7 @@ class TodoyuPasswordValidator {
 				if ( method_exists($this, $function) ) {
 					call_user_func(array($this, $function), $value, $this->checks[$function]);
 				} else {
-					TodoyuDebug::printInFirebug($function, 'Invalid password validator function');
+					Todoyu::log('Invalid password validator function: ' . $function, LOG_LEVEL_ERROR);
 				}
 			}
 		}
@@ -141,7 +141,7 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if ( ! $valid ) {
-			$this->addError('LLL:contact.password.numbers');
+			$this->addError(Label('contact.password.numbers'));
 		}
 	}
 
@@ -155,7 +155,7 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if ( ! $valid ) {
-			$this->addError('LLL:contact.password.lower');
+			$this->addError(Label('contact.password.lower'));
 		}
 	}
 
@@ -169,7 +169,7 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if ( ! $valid ) {
-			$this->addError('LLL:contact.password.upper');
+			$this->addError(Label('contact.password.upper'));
 		}
 	}
 
@@ -183,8 +183,19 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if ( ! $valid ) {
-			$this->addError('LLL:contact.password.special');
+			$this->addError(Label('contact.password.special'));
 		}
+	}
+
+
+
+	/**
+	 * Get check config
+	 *
+	 * @return	Array
+	 */
+	public static function getChecks() {
+		return TodoyuArray::assure($GLOBALS['CONFIG']['goodPassword']);
 	}
 
 }

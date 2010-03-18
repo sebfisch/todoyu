@@ -6,6 +6,7 @@
 	width:182px;
 	border:1px solid #b9bcae;
 	background-color:#d3dabb;
+	z-index:1000;
 }
 
 #quickinfo dl {
