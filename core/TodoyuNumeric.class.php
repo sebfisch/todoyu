@@ -20,12 +20,12 @@
 ***************************************************************/
 
 /**
- * Mathematical helper functions
+ * Numeric helper functions
  *
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuMath {
+class TodoyuNumeric {
 
 	/**
 	 * Make sure an integer is in a range. If the integer is out of range,
@@ -53,7 +53,7 @@ class TodoyuMath {
 
 
 	/**
-	 * Get the integer integer of a value
+	 * Get the positive integer of a value
 	 *
 	 * @param	String		$value		A string or integer value
 	 * @return	Integer		Integer equal or greater than 0

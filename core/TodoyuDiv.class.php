@@ -80,23 +80,23 @@ class TodoyuDiv {
 	 * @todo	Move it to a database class or something else
 	 */
 	function getAutocompleteValues($searchWords, $table, $searchInFields, $numKeywords = 10) {
-		// Get database result
+			// Get database result
 		$elements	= $this->searchTable($table, $searchInFields, $searchWords, $searchInFields, '', '', '', '', 0, $numKeywords*5);
 
-		// Make a big string
+			// Make a big string
 		$allWords	= '';
 		foreach($elements as $element) {
 			$allWords .= implode(' ', $element);
 		}
 
-		// Replace all whitespaces by single space
+			// Replace all whitespaces by single space
 		$allWords = strtolower(preg_replace('|\W|', ' ', $allWords));
 
-		// Search matching words
+			// Search matching words
 		$pattern	= '/([^ ]*' . $searchWords . '[^ ]*)/i';
 		preg_match_all($pattern, $allWords, $matches);
 
-		// Clean up
+			// Clean up
 		$keywords	= array_map('trim', $matches[0]);
 		$keywords	= array_unique($keywords);
 
@@ -141,7 +141,7 @@ class TodoyuDiv {
 		$fields	= $fieldsInResult;
 		$tables	= implode(', ', array_unique(array_merge($extraTables, array($table))));
 		$where	= Todoyu::db()->buildLikeQuery($searchWords, $searchInFields);
-		$limit	= TodoyuMath::intPositive($limitOffset) . ',' . TodoyuMath::intPositive($limitRows);
+		$limit	= TodoyuNumeric::intPositive($limitOffset) . ',' . TodoyuNumeric::intPositive($limitRows);
 
 
 		if( $extraWhere != '' ) {
@@ -197,28 +197,6 @@ class TodoyuDiv {
 		$path	= TodoyuFileManager::pathAbsolute($path);
 
 		return stripos($path, PATH) === 0;
-	}
-
-
-
-	/**
-	 * Add an element to a separated list (ex: coma separated)
-	 *
-	 * @param	String		$list
-	 * @param	String		$value
-	 * @param	String		$separator
-	 * @param	Boolean		$unique
-	 * @return	String
-	 */
-	public static function addToList($list, $value, $separator = ',', $unique = false) {
-		$items	= explode($separator, $list);
-		$items[]= $value;
-
-		if( $unique ) {
-			$items = array_unique($items);
-		}
-
-		return implode($separator, $items);
 	}
 
 

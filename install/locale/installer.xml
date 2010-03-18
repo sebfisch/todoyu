@@ -76,7 +76,7 @@
 		<label index="update.step">Update todoyu Installation</label>
 		<label index="updatetocurrentversion.title">Update Database</label>
 		<label index="updatetocurrentversion.button">Apply Database Changes</label>
-		<label index="updatetocurrentversion.button.noupdates">No Updates, next</label>
+		<label index="updatetocurrentversion.button.noupdates">No Updates, proceed</label>
 		<label index="updatetocurrentversion.noupdates">Congratulations, Your Database is up-to-date. No Updates Necessary</label>
 		<label index="updatetocurrentversion.updates">Your Database Needs to be Updated with the Following Changes</label>
 		<label index="updatetocurrentversion.step">Update Database Structure</label>

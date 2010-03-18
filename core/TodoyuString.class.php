@@ -174,7 +174,7 @@ class TodoyuString {
 		$charsAfter	= intval($charsAfter);
 		$keyLen		= strlen(trim($keyword));
 		$pos		= stripos($string, $keyword);
-		$start		= TodoyuMath::intInRange($pos-$charsBefore, 0);
+		$start		= TodoyuNumeric::intInRange($pos-$charsBefore, 0);
 		$subLen		= $charsBefore + $keyLen + $charsAfter;
 
 		if( $htmlEntities ) {
@@ -184,6 +184,28 @@ class TodoyuString {
 		}
 
 		return $string;
+	}
+
+
+
+	/**
+	 * Add an element to a separated list (ex: coma separated)
+	 *
+	 * @param	String		$list
+	 * @param	String		$value
+	 * @param	String		$separator
+	 * @param	Boolean		$unique
+	 * @return	String
+	 */
+	public static function addToList($list, $value, $separator = ',', $unique = false) {
+		$items	= explode($separator, $list);
+		$items[]= $value;
+
+		if( $unique ) {
+			$items = array_unique($items);
+		}
+
+		return implode($separator, $items);
 	}
 
 

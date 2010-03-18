@@ -271,7 +271,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 * @param	String		$value
 	 */
 	public function addCheckedValue($value) {
-		$this->setValue( TodoyuDiv::addToList($this->getValue(), $value, ',', true) );
+		$this->setValue( TodoyuString::addToList($this->getValue(), $value, ',', true) );
 	}
 
 
