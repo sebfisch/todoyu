@@ -206,7 +206,6 @@ class TodoyuInstallerManager {
 
 
 
-
 	/**
 	 * Process admin password update
 	 *
@@ -256,7 +255,6 @@ class TodoyuInstallerManager {
 
 
 
-
 	/**
 	 * Process installation finish
 	 *
@@ -272,7 +270,6 @@ class TodoyuInstallerManager {
 
 		return $result;
 	}
-
 
 
 
@@ -365,7 +362,6 @@ class TodoyuInstallerManager {
 
 	/**
 	 * Disable the installer, remove redirector files, clear session and go to login
-	 *
 	 */
 	public static function finishInstallerAndJumpToLogin() {
 		self::disableInstaller();
@@ -382,7 +378,6 @@ class TodoyuInstallerManager {
 
 	/**
 	 * Disbale the installer
-	 *
 	 */
 	public static function disableInstaller() {
 		$fileOld	= TodoyuFileManager::pathAbsolute('install/ENABLE');
@@ -401,7 +396,6 @@ class TodoyuInstallerManager {
 
 	/**
 	 * Jump to loginpage
-	 *
 	 */
 	public static function goToLoginPage() {
 		TodoyuHeader::location(dirname(TODOYU_URL), true);
@@ -410,19 +404,20 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Remove index.html redirect
+	 * Remove index.html file and its redirection to the installer
 	 *
+	 * @return	Boolean
 	 */
 	public static function removeIndexRedirecter() {
+		$success= false;
 		$file	= TodoyuFileManager::pathAbsolute('index.html');
 
 		if( is_file($file) ) {
-			unlink($file);
+			$success	= unlink($file);
 		}
+
+		return $success;
 	}
-
-
-
 
 
 

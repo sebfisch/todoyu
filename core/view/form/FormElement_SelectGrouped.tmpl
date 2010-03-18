@@ -10,7 +10,7 @@
 			<optgroup label="{$label}">
 		{/if}
 		{foreach $group option}
-			<option value="{$option.value}"{if $option.classname != ""} class="{$option.classname}" {/if}{if inArray($option.value, $value)} selected="selected"{/if}{if $option.disabled} disabled="disabled"{/if}>{$option.label}</option>
+			<option value="{htmlencode $option.value}"{if $option.classname != ""} class="{$option.classname}" {/if}{if inArray($option.value, $value)} selected="selected"{/if}{if $option.disabled} disabled="disabled"{/if}>{$option.label}</option>
 		{/foreach}
 		{if $label != "none"}
 			</optgroup>

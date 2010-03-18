@@ -1,8 +1,8 @@
 {extends "core/view/form/FormElement.tmpl"}
 
 {block name="field"}
-	<input type="text" id="{$htmlId}-fulltext" value="{$displayLabel}" class="{$inputClass} {$class}" {if $disabled}disabled="disabled"{/if} {$extraAttributes} title="{Label form.autocompleteInfo}" />
-	<input type="hidden" name="{$htmlName}" id="{$htmlId}" value="{$valueTemplate}" />
+	<input type="text" id="{$htmlId}-fulltext" value="{htmlencode $displayLabel}" class="{$inputClass} {$class}" {if $disabled}disabled="disabled"{/if} {$extraAttributes} title="{Label form.autocompleteInfo}" />
+	<input type="hidden" name="{$htmlName}" id="{$htmlId}" value="{htmlencode $valueTemplate}" />
 	<div id="{$htmlId}-suggest" class="acResultContainer"></div>
 	<script type="text/javascript">
 		Todoyu.Autocomplete.install('{$htmlId}', {$acConfigJson});

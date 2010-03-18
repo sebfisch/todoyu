@@ -483,7 +483,7 @@ class TodoyuDiv {
 	 * @return	String
 	 */
 	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {
-		$query		= rtrim(PATH_WEB, '/') . '/index.php';
+		$query		= rtrim(PATH_WEB, '/\\') . 'index.php';
 		$queryParts	= array();
 
 			// Add question mark if there are query parameters
