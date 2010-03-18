@@ -423,14 +423,11 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$validations 	= $this->getValidations();
 		$formData		= $this->getForm()->getFormData();
 
-//		TodoyuDebug::printInFirebug($this->getName(), 'VALIDATE');
-
 		foreach($validations as $validatorName => $validatorConfig) {
 			$isValid = TodoyuFormValidator::validate($validatorName, $this->getStorageData(), $validatorConfig, $this, $formData);
 
 			if( $isValid === false ) {
 				$this->setErrorTrue();
-				//$this->bubbleError($this);
 
 					// If error message not already set by function, check config or use default
 				if( $this->errorMessage === '' ) {
