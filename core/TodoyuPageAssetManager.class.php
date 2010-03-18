@@ -237,7 +237,8 @@ class TodoyuPageAssetManager {
 	 * @return	String		Web path to merge file in cache
 	 */
 	private static function getMergedJavascriptFile(array $fileConfigs) {
-		$mergeFileName	= self::buildMergefileName($fileConfigs, 'js');
+		$lang			= Todoyu::getLang();
+		$mergeFileName	= self::buildMergefileName($fileConfigs, $lang . '.js');
 		$mergeFilePath	= PATH_CACHE . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . $mergeFileName;
 
 			// If merge file doesn't exist yet, create it
@@ -351,7 +352,7 @@ class TodoyuPageAssetManager {
 	 * @param	String		$javascriptCode
 	 * @return	String
 	 */
-	private static function compressJavascript($javascriptCode) {
+	public static function compressJavascript($javascriptCode) {
 		try {
 			return JSMin::minify($javascriptCode);
 		} catch(JSMinException $e) {
@@ -370,7 +371,7 @@ class TodoyuPageAssetManager {
 	 * @param	String	$javascriptCode
 	 * @return	String
 	 */
-	private static function localizeJavascript($javascriptCode) {
+	public static function localizeJavascript($javascriptCode) {
 		return preg_replace_callback($GLOBALS['CONFIG']['CACHE']['JS']['localePattern'], array('TodoyuPageAssetManager', 'localizeJavascriptCallback'), $javascriptCode);
 	}
 

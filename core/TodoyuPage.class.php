@@ -56,8 +56,8 @@ class TodoyuPage {
 
 			// Add core assets
 		self::addCoreAssets();
-			// All all default extension assets
-		self::addDefaultAssets();
+			// Add all assets of allowed extensions
+		self::addExtAssets();
 
 		self::addMetatag('Content-Type', $GLOBALS['CONFIG']['FE']['ContentType']);
 
@@ -83,31 +83,68 @@ class TodoyuPage {
 	 *
 	 */
 	private static function addCoreAssets() {
-		$jsFiles	= $GLOBALS['CONFIG']['FE']['PAGE']['assets']['js'];
+		$jsFiles	= TodoyuArray::assure($GLOBALS['CONFIG']['FE']['PAGE']['assets']['js']);
+		$cssFiles	= TodoyuArray::assure($GLOBALS['CONFIG']['FE']['PAGE']['assets']['css']);
 
 		foreach($jsFiles as $jsFile) {
-//				if ( empty($jsFile['compress']) ) {
-//					$jsFile['compress']	= false;
-//				}
-//				if ( empty($file['merge']) ) {
-//					$jsFile['merge']	= false;
-//				}
-//				if ( empty($file['localize']) ) {
-//					$jsFile['localize']	= false;
-//				}
 			self::addJavascript($jsFile['file'], $jsFile['position'], $jsFile['compress'], $jsFile['merge'], $jsFile['localize']);
 		}
 
-		$cssFiles	= $GLOBALS['CONFIG']['FE']['PAGE']['assets']['css'];
-
 		foreach($cssFiles as $cssFile) {
-//				if ( empty($cssFile['compress']) ) {
-//					$cssFile['compress']	= false;
-//				}
-//				if ( empty($file['merge']) ) {
-//					$cssFile['merge']	= false;
-//				}
 			self::addStylesheet($cssFile['file'], $cssFile['media'], $cssFile['position'], $cssFile['compress'], $cssFile['merge']);
+		}
+	}
+
+
+	/**
+	 * Add all extension assets of allowed extension
+	 * If not logged in, don't check
+	 *
+	 */
+	private static function addExtAssets() {
+		TodoyuExtensions::loadAllAssets();
+
+		$extKeys	= TodoyuExtensions::getInstalledExtKeys();
+
+		foreach($extKeys as $ext) {
+			if( allowed($ext, 'general:use') || ! TodoyuAuth::isLoggedIn() ) {
+				self::addExtJavascript($ext);
+				self::addExtStylesheets($ext);
+			}
+		}
+	}
+
+
+
+	/**
+	 * Load extension CSS files
+	 *
+	 * @param	String		$ext
+	 */
+	private static function addExtStylesheets($ext) {
+		TodoyuExtensions::loadAllAssets();
+
+		$files	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT'][$ext]['assets']['css']);
+
+		foreach($files as $file) {
+			self::addStylesheet($file['file'], $file['media'], $file['position'], $file['compress'], $file['merge']);
+		}
+	}
+
+
+
+	/**
+	 * Load extension javascript files
+	 *
+	 * @param	String		$ext
+	 */
+	private static function addExtJavascript($ext) {
+
+
+		$files	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT'][$ext]['assets']['js']);
+
+		foreach($files as $file) {
+			self::addJavascript($file['file'], $file['position'], $file['compress'], $file['merge'], $file['localize']);
 		}
 	}
 
@@ -308,100 +345,6 @@ class TodoyuPage {
 		}
 
 		return '<script type="text/javascript">'.$content.'</script>';
-	}
-
-
-
-	/**
-	 * Load extension CSS files
-	 *
-	 * @param	String		$ext
-	 * @param	String		$type
-	 */
-	public static function addExtStylesheets($ext, $type = 'default') {
-		TodoyuExtensions::loadAllAssets();
-
-		$files	= $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['css'];
-
-		if( is_array($files) ) {
-			foreach($files as $file) {
-				self::addStylesheet($file['file'], $file['media'], $file['position'], $file['compress'], $file['merge']);
-			}
-
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-
-
-	/**
-	 * Load extension javascript files
-	 *
-	 * @param	String		$ext
-	 * @param	String		$type
-	 */
-	public static function addExtJavascript($ext, $type = 'default') {
-		TodoyuExtensions::loadAllAssets();
-
-		$files	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['js']);
-
-		foreach($files as $file) {
-			self::addJavascript($file['file'], $file['position'], $file['compress'], $file['merge'], $file['localize']);
-		}
-	}
-
-
-
-	/**
-	 * Load extension assets (javascript and css)
-	 *
-	 * @param	String		$ext
-	 * @param	String		$type
-	 */
-	public static function addExtAssets($ext, $type = 'public') {
-		TodoyuExtensions::loadAllAssets();
-
-		$types	= explode(',', $type);
-
-		foreach($types as $type) {
-			self::addExtJavascript($ext, $type);
-			self::addExtStylesheets($ext, $type);
-		}
-	}
-
-
-
-	/**
-	 * Load type assets of all extensions
-	 *
-	 * @param	String		$type
-	 */
-	public static function addAllExtAssets($type) {
-		TodoyuExtensions::loadAllAssets();
-
-		$extKeys	= TodoyuExtensions::getInstalledExtKeys();
-
-		foreach($extKeys as $extKey) {
-			self::addExtAssets($extKey, $type);
-		}
-	}
-
-
-
-	/**
-	 * Load all assets in the default keys of the extension config
-	 *
-	 */
-	private static function addDefaultAssets() {
-		TodoyuExtensions::loadAllAssets();
-
-		$extKeys	= TodoyuExtensions::getInstalledExtKeys();
-
-		foreach($extKeys as $extKey) {
-			self::addExtAssets($extKey, 'default');
-		}
 	}
 
 

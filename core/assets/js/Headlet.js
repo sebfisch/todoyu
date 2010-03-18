@@ -118,6 +118,13 @@ Todoyu.Headlet = {
 
 			// Add back reference to headlet object
 		headletObject.headlet = this;
+		
+			// Add functions to headlet
+		headletObject.hideOthers		= this.hideAllContent.bind(this, name);
+		headletObject.isContentVisible	= this.isContentVisible.bind(this, name);
+		headletObject.toggleContent		= this.toggleContent.bind(this, name);
+		headletObject.showContent		= this.showContent.bind(this, name);
+		headletObject.hideContent		= this.hideContent.bind(this, name);
 
 			// Call headlet init function if exists
 		Todoyu.callIfExists(headletObject.init, headletObject);
@@ -316,13 +323,19 @@ Todoyu.Headlet = {
 	 * @param	String	exceptName
 	 */
 	hideAllContent: function(exceptName) {
+			// Call hide function for all headlets
+		$H(this.headlets).each(function(exceptName, pair){
+			if( pair.key !== exceptName ) {
+				this._callHandler(pair.key, 'hide');
+			}
+		}.bind(this, exceptName));
+		
+			// Hide content
 		$('headlets').select('ul.content').each(function(name, headlet){
 			if( headlet.id.split('-')[1] !== name ) {
 				headlet.hide();
 			}
 		}.bind(this, exceptName));
-
-		//$('headlets').select('ul.content').invoke('hide');
 	},
 
 

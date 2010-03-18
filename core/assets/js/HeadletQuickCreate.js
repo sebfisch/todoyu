@@ -48,7 +48,12 @@ Todoyu.Headlet.QuickCreate = {
 	 * @param	Event		event
 	 */
 	onButtonClick: function(event) {
-		this.headlet.showContent('quickcreate');
+		if( this.isContentVisible() ) {
+			this.hide();
+		} else {
+			this.hideOthers();
+			this.showContent();
+		}
 	},
 	
 	
@@ -64,6 +69,10 @@ Todoyu.Headlet.QuickCreate = {
 		
 		this.openTypePopup(ext, type);
 		this.headlet.hideContent('quickcreate');
+	},
+	
+	hide: function() {
+		this.hideContent();
 	},
 
 
