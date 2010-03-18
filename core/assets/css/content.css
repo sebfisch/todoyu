@@ -84,6 +84,14 @@ h1 {
 	overflow:hidden;
 }
 
+h1.headerLine.hasIcon {
+	padding-left: 2px;	
+}
+
+h1.headerLine.hasIcon span.title {
+	padding-left: 27px;
+}
+
 .headerLine span, .headerLine span {
 	float:left;
 	margin:0 0 0 5px;
