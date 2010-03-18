@@ -80,7 +80,6 @@ class TodoyuPage {
 
 	/**
 	 * Add JS and CSS files which are used by the core
-	 *
 	 */
 	private static function addCoreAssets() {
 		$jsFiles	= TodoyuArray::assure($GLOBALS['CONFIG']['FE']['PAGE']['assets']['js']);
@@ -97,9 +96,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Add all extension assets of allowed extension
-	 * If not logged in, don't check
-	 *
+	 * Add all extension assets of allowed extension. If not logged in, don't check
 	 */
 	private static function addExtAssets() {
 		TodoyuExtensions::loadAllAssets();
@@ -329,8 +326,8 @@ class TodoyuPage {
 	/**
 	 * Adds css inline
 	 *
-	 * @param	String	$ext
-	 * @param	String	$type
+	 * @param	String		$ext
+	 * @param	String		$type
 	 * @return	String
 	 */
 	public static function getExtCSSinline($ext, $type = 'public')	{
@@ -444,6 +441,7 @@ class TodoyuPage {
 			self::set('head', $head);
 		}
 	}
+
 
 
 	/**
