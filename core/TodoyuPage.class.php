@@ -104,10 +104,10 @@ class TodoyuPage {
 		$extKeys	= TodoyuExtensions::getInstalledExtKeys();
 
 		foreach($extKeys as $ext) {
-			if( allowed($ext, 'general:use') || ! TodoyuAuth::isLoggedIn() ) {
+			//if( allowed($ext, 'general:use') || ! TodoyuAuth::isLoggedIn() ) {
 				self::addExtJavascript($ext);
 				self::addExtStylesheets($ext);
-			}
+			//}
 		}
 	}
 

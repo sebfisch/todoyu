@@ -311,6 +311,16 @@ fieldset {}
 	float:left;
 }
 
+
+form div.error .fLabel label,
+form div.error .fField span.errorMessage {
+	color:red;
+	font-style:italic;
+	white-space:nowrap;
+}
+
+
+
 	/* --- left floating radio --- */
 /*
 .formElement fieldset input {
@@ -334,11 +344,7 @@ fieldset {}
 	color:red;
 }
 
-.formLabel .errorMessage, .fField span.errorMessage {
-	color:red;
-	font-style:italic;
-	white-space:nowrap;
-}
+
 
 */
 
