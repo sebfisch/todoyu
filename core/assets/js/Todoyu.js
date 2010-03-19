@@ -43,6 +43,16 @@ var Todoyu = {
 		this.AjaxResponders.init();
 		this.Ui.fixAnchorPosition();
 		this.Ui.observeBody();
+		this.initExtensions();
+	},
+	
+	
+	initExtensions: function() {
+		$H(this.Ext).each(function(pair){
+			if( typeof(pair.value.init) === 'function' ) {
+				pair.value.init();
+			}
+		});
 	},
 
 
