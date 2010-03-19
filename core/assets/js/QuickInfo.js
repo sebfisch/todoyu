@@ -190,8 +190,11 @@ Todoyu.QuickInfo = {
 		}
 
 		var content	= '';
-
 		json.each(function(item){
+				// Ensure maxiumum word length not to break layout: add wordwrap
+			item.label	= Todoyu.Helper.wordwrap(item.label, 16, ' ', true);
+				
+				// Add template row with item
 			content += this.template.evaluate(item);
 		}.bind(this));
 

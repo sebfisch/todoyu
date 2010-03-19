@@ -132,6 +132,38 @@ Todoyu.Helper = {
 
 
 	/**
+	 * Wraps buffer to selected number of characters using string break char
+	 * 
+	 * Borrowed from phpjs	http://phpjs.org/functions/wordwrap
+	 * version: 909.322
+	 * 
+	 * @param	String		str
+	 * @param	Integer		int_width
+	 * @param	String		str_break
+	 * @param	Boolean		cut
+	 * @return	String
+	 */
+	wordwrap: function(str, int_width, str_break, cut) {
+		var m = ((arguments.length >= 2) ? arguments[1] : 75   );
+		var b = ((arguments.length >= 3) ? arguments[2] : "\n" );    var c = ((arguments.length >= 4) ? arguments[3] : false);
+	
+		var i, j, l, s, r;
+	
+		str += ''; 
+		if (m < 1) {
+			return str;
+		}
+		 for (i = -1, l = (r = str.split(/\r\n|\n|\r/)).length; ++i < l; r[i] += s) {
+			for (s = r[i], r[i] = ""; s.length > m; r[i] += s.slice(0, j) + ((s = s.slice(j)).length ? b : "")){
+				j = c == 2 || (j = s.slice(0, m + 1).match(/\S*(\s)?$/))[1] ? m : j.input.length - j[0].length || c == 1 && m || j.input.length + (j = s.slice(m).match(/^\S*/)).input.length;
+			}
+		}    
+		return r.join("\n");
+	},
+
+
+
+	/**
 	 * Fire event
 	 *
 	 * @param	Element		element
