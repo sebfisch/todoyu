@@ -180,7 +180,6 @@ function restrict($extKey, $right) {
 
 /**
  * Restrict access to internal persons
- *
  */
 function restrictInternal() {
 	TodoyuRightsManager::restrictInternal();
@@ -221,6 +220,5 @@ function restrictIfNone($extKey, $rightsList) {
 function deny($extKey, $right) {
 	TodoyuRightsManager::deny($extKey, $right);
 }
-
 
 ?>
