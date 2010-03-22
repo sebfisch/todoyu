@@ -11,7 +11,7 @@
 		<label index="description">Description</label>
 		<label index="date">Date</label>
 		<label index="dateFormat">y.n.j</label>
-		<label index="quickcreate.title">Create new data</label>
+		<label index="quickcreate.title">Quick create records</label>
 		<label index="quickcreate.alltypes.label">All data types:</label>
 		<label index="create">Create</label>
 		<label index="createNew">Create new</label>

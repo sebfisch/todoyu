@@ -51,7 +51,7 @@ class TodoyuQuickCreateManager {
 
 
 	/**
-	 * Get registered engines
+	 * Get registered creation engines
 	 *
 	 * @return	Array
 	 */

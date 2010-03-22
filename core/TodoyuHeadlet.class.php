@@ -50,7 +50,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 	protected $buttonAttributes	= array();
 
-	protected $jsHeadlet= null;
+	protected $jsHeadlet	= null;
 
 	protected $type;
 
@@ -91,6 +91,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	}
 
 
+
 	/**
 	 * Init function for panel widget, alternative for constructor
 	 *
@@ -110,7 +111,13 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 		return str_replace('TodoyuHeadlet', '', get_class($this));
 	}
 
+
+
+	/**
+	 * @todo	comment
+	 */
 	abstract public function getLabel();
+
 
 
 	/**
@@ -122,6 +129,12 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 		return 'headlet-' . strtolower($this->getName());
 	}
 
+
+
+	/**
+	 * @todo	comment
+	 * @return	unknown
+	 */
 	public function getType() {
 		return $this->type;
 	}
@@ -171,6 +184,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	}
 
 
+
 	/**
 	 * Add attribute for the button
 	 *
@@ -182,6 +196,11 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 * @param	String	$class
+	 */
 	protected function addButtonClass($class) {
 		$this->addButtonAttribute('class', trim($class) . ' ');
 	}
@@ -219,13 +238,8 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 			TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.add.bind(Todoyu.Headlet, \'' . $this->getName() . '\', ' . $this->jsHeadlet . ')');
 		}
 
-
-//		TodoyuDebug::printHtml($this->getButtonAttributes());
-
 		return render($this->template, $this->data);
 	}
 
 }
-
-
 ?>

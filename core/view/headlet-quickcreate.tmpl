@@ -1,13 +1,8 @@
-<a id="{$id}-mode-btn" title="{Label core.quickcreate.title}" >
+<a id="{$id}-mode-btn" title="{Label core.quickcreate.title}">
 	<div class="icon"></div>
 </a>
 
-<!-- <div id="{$id}-mode-btn" class="button" title="{Label core.quickcreate.title}" >
-	<div class="icon"></div>
-</div> -->
-
 <ul id="{$id}-modes" class="modes">
-
 	{foreach $areaCreateModes createMode}
 		<li class="engine primary createmode-{$createMode.type}" ext="{$createMode.ext}" mode="{$createMode.type}">
 			{Label $createMode.labelMode}
@@ -19,5 +14,4 @@
 			{Label $createMode.labelMode}
 		</li>
 	{/foreach}
-
 </ul>

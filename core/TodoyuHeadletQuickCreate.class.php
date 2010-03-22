@@ -27,8 +27,6 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 	protected function init() {
 		$this->setJsHeadlet('Todoyu.Headlet.QuickCreate');
 
-
-
 		TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.QuickCreate.init.bind(Todoyu.Headlet.QuickCreate)', 100);
 	}
 
@@ -41,8 +39,13 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 	 */
 	protected function getMenuItems() {
 		$engines= TodoyuQuickCreateManager::getEngines();
-		$items	= array();
 
+			// If there's only one engine: remove primary (no need of primary entry when there's only a single one)
+		if ( sizeof($engines['all']) === 1 ) {
+			unset($engines['primary']);
+		}
+
+		$items	= array();
 		if( is_array($engines['primary']) ) {
 			array_unshift($engines['all'], $engines['primary']);
 		}
@@ -61,7 +64,6 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 			$items[] = $item;
 		}
 
-
 		return $items;
 	}
 
@@ -73,7 +75,7 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 	 * @return	String
 	 */
 	public function getLabel() {
-		return 'Quick create records';
+		return Label('core.quickcreate.title');
 	}
 
 }
