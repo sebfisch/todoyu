@@ -233,8 +233,9 @@ Todoyu.Popup = {
 	 * @param	String	idPopup
 	 * @param	String	content
 	 */	
-	setContent: function(idPopup, content) {
-		this.getPopup(idPopup).setHTMLContent(content);		
+	setContent: function(idPopup, content) {	
+		this.getPopup(idPopup).setHTMLContent(content);
+		content.evalScripts();
 	},
 
 

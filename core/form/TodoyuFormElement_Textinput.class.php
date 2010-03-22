@@ -58,7 +58,7 @@ class TodoyuFormElement_Textinput extends TodoyuFormElement {
 				$validator->validate('');
 				$text		= implode('<br />', $validator->getErrors());
 
-				$this->setAfterFieldText($text);
+				$this->addAfterFieldText($text);
 			}
 		}
 	}

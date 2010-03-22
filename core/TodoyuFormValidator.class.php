@@ -411,8 +411,6 @@ class TodoyuFormValidator {
 		if( $validator->validate($pass) === false ) {
 			$errors	= $validator->getErrors();
 
-			TodoyuDebug::printInFirebug($errors, 'errors');
-
 			$formElement->setErrorMessage($errors[0]);
 
 			return false;

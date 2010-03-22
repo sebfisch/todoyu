@@ -89,6 +89,10 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$this->setAttribute('nodeAttributes', $this->getAttribute('@attributes'));
 		$this->setAttribute('htmlId', $this->getForm()->makeID($this->name));
 
+			// Parse labels of comment fields
+		$this->setAfterFieldText($this->getAfterFieldText());
+		$this->setBeforeFieldText($this->getBeforeFieldText());
+
 		$this->init();
 
 			// If default value is set in form xml, register it in form
@@ -621,23 +625,89 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 	/**
-	 * Set text which appears before the field
+	 * Set the 'after field' text
 	 *
 	 * @param	String		$text
 	 */
 	public function setAfterFieldText($text) {
+		$text		= TodoyuDiv::getLabel($text);
+
+//		TodoyuDebug::printInFirebug($text, 'set text');
+
 		$this->setAttribute('textAfterField', $text);
 	}
 
 
 
 	/**
-	 * Set text which appears after the field
+	 * Get the 'after field' text
+	 *
+	 * @return	String
+	 */
+	public function getAfterFieldText() {
+		return trim($this->getAttribute('textAfterField'));
+	}
+
+
+
+	/**
+	 * Add text to the 'after field' text
+	 *
+	 * @param	String		$text
+	 * @param	String		$glue
+	 */
+	public function addAfterFieldText($text, $glue = '<br />') {
+		$current	= $this->getAfterFieldText();
+		$text		= TodoyuDiv::getLabel($text);
+		TodoyuDebug::printInFirebug($current, 'current');
+
+		if( $current === '' ) {
+			$this->setAfterFieldText($text);
+		} else {
+			$this->setAfterFieldText($current . $glue . $text);
+		}
+	}
+
+
+
+	/**
+	 * Set the 'before field' text
 	 *
 	 * @param	String		$text
 	 */
 	public function setBeforeFieldText($text) {
+		$text		= TodoyuDiv::getLabel($text);
+
 		$this->setAttribute('textBeforeField', $text);
+	}
+
+
+
+	/**
+	 * Get the 'before field' text
+	 *
+	 * @return	String
+	 */
+	public function getBeforeFieldText() {
+		return trim($this->getAttribute('textBeforeField'));
+	}
+
+
+
+	/**
+	 * Add text to the 'before field' text
+	 *
+	 * @param	String		$text
+	 * @param	String		$glue
+	 */
+	public function addBeforeFieldText($text, $glue = '<br />') {
+		$current	= $this->getBeforeFieldText();
+
+		if( $current === '' ) {
+			$this->setBeforeFieldText($text);
+		} else {
+			$this->setBeforeFieldText($current . $glue . $text);
+		}
 	}
 }
 
