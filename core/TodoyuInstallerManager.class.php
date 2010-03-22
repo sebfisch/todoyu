@@ -172,6 +172,7 @@ class TodoyuInstallerManager {
 				// Create database structure from all table files
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
 			self::importStaticData();
+			self::importBasicData();
 
 			TodoyuInstaller::setStep('systemconfig');
 		}
@@ -455,11 +456,12 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Import static data
+	 * Import data from .sql file
 	 *
+	 * @param	String		$file
 	 */
-	private static function importStaticData() {
-		$file	= TodoyuFileManager::pathAbsolute('install/db/static_data.sql');
+	private static function importSqlFromFile($file) {
+		$file	= TodoyuFileManager::pathAbsolute($file);
 		$queries= TodoyuSQLManager::getQueriesFromFile($file);
 
 		foreach($queries as $query) {
@@ -470,16 +472,28 @@ class TodoyuInstallerManager {
 
 
 	/**
+	 * Import static data
+	 */
+	private static function importStaticData() {
+		self::importSqlFromFile('install/db/static_data.sql');
+	}
+
+
+
+	/**
+	 * Import basic data
+	 */
+	private static function importBasicData() {
+		self::importSqlFromFile('install/db/basic_data.sql');
+	}
+
+
+
+	/**
 	 * Import the demo data from sql file
-	 *
 	 */
 	private static function importDemoData() {
-		$file	= TodoyuFileManager::pathAbsolute('install/db/demo_data.sql');
-		$queries= TodoyuSQLManager::getQueriesFromFile($file);
-
-		foreach($queries as $query) {
-			Todoyu::db()->query($query);
-		}
+		self::importSqlFromFile('install/db/demo_data.sql');
 	}
 
 
@@ -604,7 +618,7 @@ class TodoyuInstallerManager {
 	 *
 	 * @param	String		$databaseName
 	 * @param	Array		$dbConfig
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function addDatabase($databaseName, array $dbConfig)	{
 		$link	= mysql_connect($dbConfig['server'], $dbConfig['username'], $dbConfig['password']);
@@ -632,7 +646,6 @@ class TodoyuInstallerManager {
 
 	/**
 	 * Clear cached files
-	 *
 	 */
 	public static function clearCache() {
 		$paths	= array(

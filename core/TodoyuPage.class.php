@@ -136,8 +136,6 @@ class TodoyuPage {
 	 * @param	String		$ext
 	 */
 	private static function addExtJavascript($ext) {
-
-
 		$files	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT'][$ext]['assets']['js']);
 
 		foreach($files as $file) {
@@ -472,7 +470,6 @@ class TodoyuPage {
 
 	/**
 	 * Render page and send output with ECHO
-	 *
 	 */
 	public static function display() {
 		echo self::render();
