@@ -134,20 +134,8 @@ var Todoyu = {
 	getArea: function() {
 		return document.body.id.split('-').last();
 	},
-
-
-	/**
-	 * Show notification
-	 * 
-	 * @param	String		type		('info', 'error', 'success')
-	 * @param	String		message
-	 * @param	Integer		countdown
-	 */
-	notify: function(type, message, countdown) {
-		Todoyu.Notification.add(type, message, countdown);
-	},
-
-
+	
+	
 
 	/**
 	 * Show error notification
@@ -156,7 +144,7 @@ var Todoyu = {
 	 * @param	Integer		countdown
 	 */
 	notifyError: function(message, countdown) {
-		this.notify('error', message, countdown);
+		Todoyu.Notification.notifyError(message, countdown);
 	},
 
 
@@ -168,7 +156,7 @@ var Todoyu = {
 	 * @param	Integer		countdown
 	 */
 	notifyInfo: function(message, countdown) {
-		this.notify('info', message, countdown);
+		Todoyu.Notification.notifyInfo(message, countdown);
 	},
 
 
@@ -180,7 +168,7 @@ var Todoyu = {
 	 * @param	Integer		countdown
 	 */
 	notifySuccess: function(message, countdown) {
-		this.notify('success', message, countdown);
+		Todoyu.Notification.notifySuccess(message, countdown);
 	},
 
 

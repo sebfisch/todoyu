@@ -30,6 +30,9 @@ Ajax.Response.addMethods({
 	getTodoyuHeader: function(name) {
 		return this.getHeader('Todoyu-' + name);
 	},
+	hasTodoyuHeader: function(name) {
+		return this.getTodoyuHeader(name) !== null;
+	},
 	hasTodoyuError: function() {
 		return this.getTodoyuHeader('error') == 1;
 	},

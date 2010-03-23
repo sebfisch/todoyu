@@ -41,8 +41,9 @@ Todoyu.AjaxResponders = {
 			//'onException':	this.onException.bind(this)
 		});
 
-		this.addOnCompleteHook(Todoyu.Ajax.checkNoAccessHeader);
-		this.addOnCompleteHook(Todoyu.Ajax.checkPhpErrorHeader);
+		this.addOnCompleteHook(Todoyu.Ajax.checkNoAccessHeader.bind(Todoyu.Ajax));
+		this.addOnCompleteHook(Todoyu.Ajax.checkPhpErrorHeader.bind(Todoyu.Ajax));
+		this.addOnCompleteHook(Todoyu.Notification.checkNoteHeader.bind(Todoyu.Notification));
 	},
 
 

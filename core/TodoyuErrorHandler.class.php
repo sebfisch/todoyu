@@ -128,8 +128,14 @@ class TodoyuErrorHandler {
 	}
 
 
+
+	/**
+	 * Send a php error header
+	 *
+	 * @param	String		$errorMessage
+	 */
 	public static function sendPhpErrorHeader($errorMessage) {
-		TodoyuHeader::sendHeader('Todoyu-Php-Error', $errorMessage);
+		TodoyuHeader::sendTodoyuHeader('Php-Error', $errorMessage);
 	}
 
 }
