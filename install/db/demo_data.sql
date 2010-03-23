@@ -979,7 +979,7 @@ INSERT INTO `system_preference` (`id`, `id_person`, `ext`, `area`, `preference`,
 -- Data for Table `ext_contact_person`
 --
 
-INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `gender`, `title`, `birthday`) VALUES
+INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `salutation`, `title`, `birthday`) VALUES
 (2, 1254213351, 1264500957, 1, 1, 'alfred', 'a55e28b5514b1b1292a9018549edc271', 'alfred345KJHFSD', 1, 1, 'Alfred', 'Hitchcock', 'ALHI', 'm', '', '1899-08-13'),
 (3, 1254213483, 1264500951, 1, 1, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20'),
 (4, 1264581204, 1264584523, 1, 0, '', '', 'svahs@eisberggmbh.ch', 0, 0, 'Stefan', 'Vahs', 'STVA', 'm', '', '1979-12-14'),
