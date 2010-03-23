@@ -89,10 +89,7 @@ INSERT INTO `system_right` (`id`, `ext`, `right`, `id_role`) VALUES
 (248, 105, 'comment:seeAll', 4),
 (192, 105, 'comment:sendAsEmail', 1),
 (194, 111, 'general:use', 1),
-(236, 103, 'panelwidgets:taskbookmarks', 1),
-(235, 103, 'task:remove', 1),
 (197, 115, 'general:use', 1),
-(234, 103, 'task:add', 1),
 (231, 101, 'general:use', 4),
 (230, 126, 'settings:password', 1),
 (229, 126, 'general:use', 1),
@@ -106,7 +103,6 @@ INSERT INTO `system_right` (`id`, `ext`, `right`, `id_role`) VALUES
 (226, 105, 'comment:requestFeedback', 1),
 (227, 105, 'comment:sendAsEmail', 1),
 (250, 105, 'comment:requestFeedback', 4),
-(233, 103, 'general:use', 1),
 (110, 103, 'panelwidgets:taskbookmarks', 4),
 (245, 104, 'event:assignOthers', 4),
 (244, 104, 'event:add', 4),
@@ -133,7 +129,6 @@ INSERT INTO `system_right` (`id`, `ext`, `right`, `id_role`) VALUES
 (257, 126, 'settings:password', 4),
 (258, 103, 'general:use', 2),
 (259, 103, 'general:use', 4),
-(260, 103, 'general:use', 1),
 (261, 103, 'task:add', 2),
 (262, 103, 'task:add', 4),
 (263, 103, 'task:remove', 2),
@@ -308,3 +303,4 @@ INSERT INTO `system_right` (`id`, `ext`, `right`, `id_role`) VALUES
 (432, 119, 'task:track', 4),
 (433, 119, 'task:editOwn', 2),
 (434, 119, 'task:editOwn', 4);
+
