@@ -221,11 +221,15 @@ class TodoyuRightsManager {
 	/**
 	 * Delete all group rights
 	 *
-	 * @param	Integer		$idGroup
+	 * @param	Integer		$extID			ID of the extension
+	 * @param	Integer		$idRole			ID of the role
 	 * @return	Integer		Number of deleted rights
 	 */
-	public static function deleteRoleRights($idGroup) {
-		$where	= 'id_role	= ' . abs($idGroup);
+	public static function deleteExtRoleRights($extID, $idRole) {
+		$extID	= intval($extID);
+		$idRole	= intval($idRole);
+		$where	= '	ext		= ' . $extID . ' AND
+					id_role	= ' . $idRole;
 
 		return Todoyu::db()->doDelete(self::TABLE, $where);
 	}
