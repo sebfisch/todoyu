@@ -11,7 +11,7 @@
 		<label index="records.remove">Remove Record</label>
 		<label index="records.edit">Edit Record</label>
 		<label index="databaserelation.nolabel">[New entry]</label>
-		<label index="databaserelation.expandAllRecords">Expand All Records</label>
+		<label index="databaserelation.expandAllRecords">Show Details</label>
 		<label index="error.notUnique">This Entry Already Exists</label>
 		<label index="ac.noResults">Autocompleter: No Results Found</label>
 		<label index="is_preferred">Preferred</label>
@@ -29,7 +29,7 @@
 		<label index="records.remove">Datensatz entfernen</label>
 		<label index="records.edit">Datensatz bearbeiten</label>
 		<label index="databaserelation.nolabel">[Neuer Eintrag]</label>
-		<label index="databaserelation.expandAllRecords">Öffne alle Datensätze</label>
+		<label index="databaserelation.expandAllRecords">Details anzeigen</label>
 		<label index="error.notUnique">Dieser Eintrag existiert bereits</label>
 		<label index="ac.noResults">Autovervollständigung: Keine Resultate gefunden</label>
 		<label index="is_preferred">Bevorzugt</label>

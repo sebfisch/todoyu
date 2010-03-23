@@ -28,8 +28,8 @@
 		<label index="DlongD2Mlong">%A, %d. %B</label>
 		<label index="D2M2Y2">%d.%m.%y</label>
 		<label index="D2M2Y4">%d.%m.%Y</label>
-		<label index="D2MshortY4">%d. %b %y</label>
-		<label index="D2MshortY2">%d. %b %Y</label>
+		<label index="D2MshortY4">%d. %b %Y</label>
+		<label index="D2MshortY2">%d. %b %y</label>
 		<label index="D2Mshort">%d. %b</label>
 		<label index="D2MshortTime">%d. %b %H:%M</label>
 		<label index="DshortD2M2">%a %d.%m.</label>
