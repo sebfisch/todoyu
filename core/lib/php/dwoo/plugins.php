@@ -356,8 +356,6 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
 		'type'		=> $type
 	);
 
-	TodoyuDebug::printInFirebug($label, 'label');
-
 	return render($tmpl, $data);
 }
 
