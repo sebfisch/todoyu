@@ -8,4 +8,6 @@
 
 //TodoyuDebug::printInFirebug(TodoyuSession::get('CLIPBOARD'));
 
+//TodoyuDebug::printInFirebug(Todoyu::db()->getQueryHistory(), 'ah');
+
 ?>

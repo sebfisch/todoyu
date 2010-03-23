@@ -659,7 +659,6 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	public function addAfterFieldText($text, $glue = '<br />') {
 		$current	= $this->getAfterFieldText();
 		$text		= TodoyuDiv::getLabel($text);
-		TodoyuDebug::printInFirebug($current, 'current');
 
 		if( $current === '' ) {
 			$this->setAfterFieldText($text);
