@@ -36,7 +36,7 @@ class TodoyuSQLManager {
 	public static function getQueriesFromFile($file) {
 		$content= TodoyuFileManager::getFileContent($file);
 		$content= TodoyuSQLManager::cleanSQL($content);
-		$queries= explode(';', $content);
+		$queries= explode(";\n", $content);
 
 		foreach($queries as $index => $query) {
 			if( trim($query) === '' ) {
