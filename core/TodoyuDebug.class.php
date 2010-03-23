@@ -176,7 +176,7 @@ class TodoyuDebug {
 			return;
 		}
 
-		if( $item === false || $item === true || $item === '' ) {
+		if( $item === false || $item === true || $item === '' || $item === null ) {
 			ob_start();
 			var_dump($item);
 			$debug = ob_get_flush();

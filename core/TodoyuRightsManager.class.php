@@ -224,7 +224,7 @@ class TodoyuRightsManager {
 	 * @param	Integer		$idGroup
 	 * @return	Integer		Number of deleted rights
 	 */
-	public static function deleteGroupRights($idGroup) {
+	public static function deleteRoleRights($idGroup) {
 		$where	= 'id_role	= ' . abs($idGroup);
 
 		return Todoyu::db()->doDelete(self::TABLE, $where);
@@ -239,7 +239,8 @@ class TodoyuRightsManager {
 	 * @return	Integer		Number of deleted rights
 	 */
 	public static function deleteExtensionRights($extID) {
-		$where	= 'ext	= ' . abs($extID);
+		$extID	= intval($extID);
+		$where	= 'ext	= ' . $extID;
 
 		return Todoyu::db()->doDelete(self::TABLE, $where);
 	}
