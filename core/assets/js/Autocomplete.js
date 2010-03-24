@@ -42,6 +42,7 @@ Todoyu.Autocomplete = {
 	selectedFromList: false,
 
 
+
 	/**
 	 * Initialize autocompleter ('inputAC')
 	 */

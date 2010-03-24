@@ -20,7 +20,6 @@
 
 Ajax.Replacer = Class.create(Ajax.Request, {
 
-
 	/**
 	 * Initialize AJAX replacer
 	 *

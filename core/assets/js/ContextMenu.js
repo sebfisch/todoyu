@@ -19,7 +19,7 @@
 ***************************************************************/
 
 Todoyu.ContextMenu = {
-	
+
 	/**
 	 * Attach contextmenu to all elements with the triggerClass
 	 * 
@@ -35,7 +35,7 @@ Todoyu.ContextMenu = {
 	},
 
 
-	
+
 	/**
 	 * Attach contextmenu to the elements in the list
 	 * 
@@ -243,7 +243,7 @@ Todoyu.ContextMenu = {
 
 
 	/**
-	 * Please enter Description here...
+	 * Request, render and display context menu
 	 *
 	 * @param	String		url
 	 * @param	Array		options
