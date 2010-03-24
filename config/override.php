@@ -4,7 +4,7 @@
 	// Here you can override any extension configuration with your own setting
 
 
-Todoyu::$CONFIG['EXT']['user']['isGoodPassword'] = array(
+Todoyu::$CONFIG['goodPassword'] = array(
 	'minLength'		=> 4,
 	'hasNumbers'	=> false,
 	'hasLowerCase'	=> false,
