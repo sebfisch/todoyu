@@ -85,21 +85,11 @@ h1 {
 }
 
 h1.headerLine.hasIcon {
-	padding-left: 2px;	
+	padding-left: 2px;
 }
 
 h1.headerLine.hasIcon span.title {
 	padding-left: 27px;
-}
-
-.headerLine span, .headerLine span {
-	float:left;
-	margin:0 0 0 5px;
-	line-height:28px;
-}
-
-.headerLine span.first, .headerLine span.first {
-	padding:0 0 0 20px;
 }
 
 .headerLine {
@@ -109,6 +99,27 @@ h1.headerLine.hasIcon span.title {
 	height:28px;
 	background:url('../img/bg-headerline.png') no-repeat 0% 0%;
 	text-align:left;
+}
+
+.headerLine span {
+	float:left;
+	margin:0 0 0 5px;
+	line-height:28px;
+}
+
+.headerLine span.first, .headerLine span.first {
+	padding:0 0 0 20px;
+}
+
+.headerLine span.rgt {
+	position:absolute;
+	right:0;
+	display:block;
+	margin:0;
+	padding:0;
+	background:#fff url('../img/bg-headerline.png') no-repeat 100% 0%;
+	width:10px;
+	height:28px;
 }
 
 .headerLine label {

@@ -9,7 +9,7 @@
 		<thead>
 			<tr class="header">
 				{foreach $config.columns colName label}
-					<th scope="col" class="{$colName}">{Label $label}&nbsp;</th>
+					<th scope="col" class="{$colName} {if $dwoo.foreach.default.last}last{/if}">{Label $label}&nbsp;</th>
 				{/foreach}
 			</tr>
 		</thead>
