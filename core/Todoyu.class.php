@@ -109,7 +109,7 @@ class Todoyu {
 	 */
 	public static function db() {
 		if( is_null(self::$db) ) {
-			self::$db = TodoyuDatabase::getInstance(Todoyu::$CONFIG['DB']);
+			self::$db = TodoyuDatabase::getInstance(self::$CONFIG['DB']);
 		}
 
 		return self::$db;
@@ -124,7 +124,7 @@ class Todoyu {
 	 */
 	public static function tmpl() {
 		if( is_null(self::$template) ) {
-			$config	= TodoyuArray::assure(Todoyu::$CONFIG['TEMPLATE']);
+			$config	= TodoyuArray::assure(self::$CONFIG['TEMPLATE']);
 
 				// Make needed folders
 			TodoyuFileManager::makeDirDeep($config['compile']);
@@ -167,7 +167,7 @@ class Todoyu {
 	 */
 	public static function log($message, $level = 0, $data = null) {
 		if( is_null(self::$logger) ) {
-			self::$logger = TodoyuLogger::getInstance(Todoyu::$CONFIG['LOG']['active'], Todoyu::$CONFIG['LOG']['level']);
+			self::$logger = TodoyuLogger::getInstance(self::$CONFIG['LOG']['active'], self::$CONFIG['LOG']['level']);
 		}
 
 		self::$logger->log($message, $level, $data);
@@ -208,7 +208,7 @@ class Todoyu {
 	 * @return	String
 	 */
 	public static function getLang() {
-		$lang	= Todoyu::$CONFIG['SYSTEM']['language'];
+		$lang	= self::$CONFIG['SYSTEM']['language'];
 
 		if( TodoyuAuth::isLoggedIn() ) {
 			$lang = self::person()->getLanguage();
@@ -240,7 +240,7 @@ class Todoyu {
 		}
 
 		if ( $locale === false  ) {
-			$locale	= Todoyu::$CONFIG['SYSTEM']['locale'];
+			$locale	= self::$CONFIG['SYSTEM']['locale'];
 		}
 
 		return $locale;
@@ -283,8 +283,8 @@ class Todoyu {
 	public static function addIncludePath($includePath) {
 		$includePath	= TodoyuFileManager::pathAbsolute($includePath);
 
-		if( ! in_array($includePath, Todoyu::$CONFIG['AUTOLOAD']) ) {
-			Todoyu::$CONFIG['AUTOLOAD'][] = $includePath;
+		if( ! in_array($includePath, self::$CONFIG['AUTOLOAD']) ) {
+			self::$CONFIG['AUTOLOAD'][] = $includePath;
 		}
 	}
 
@@ -298,7 +298,7 @@ class Todoyu {
 	public static function autoloader($className) {
 		$classFile = $className . '.class.php';
 
-		foreach(Todoyu::$CONFIG['AUTOLOAD'] as $includePath) {
+		foreach(self::$CONFIG['AUTOLOAD'] as $includePath) {
 			if( is_file($includePath . DIRECTORY_SEPARATOR . $classFile) ) {
 				include_once($includePath . DIRECTORY_SEPARATOR . $classFile);
 				break;
