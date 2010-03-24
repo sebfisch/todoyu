@@ -23,23 +23,23 @@ ini_set('eaccelerator.enable', 0);
 
 
 	// Activate extensions (deactivated during install)
-$CONFIG['WITHOUT_EXTENSIONS'] = false;
+Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] = false;
 
 	// Debuging
-$CONFIG['DEBUG'] = true;
+Todoyu::$CONFIG['DEBUG'] = true;
 
 	// Error logging
-$CONFIG['LOG']['active'] = array('FILE', 'FIREPHP');
+Todoyu::$CONFIG['LOG']['active'] = array('FILE', 'FIREPHP');
 
 	// Asset caching
-$CONFIG['CACHE']['JS']['localize']	= true;
-$CONFIG['CACHE']['JS']['merge']		= false;
-$CONFIG['CACHE']['JS']['compress']	= false;
+Todoyu::$CONFIG['CACHE']['JS']['localize']	= true;
+Todoyu::$CONFIG['CACHE']['JS']['merge']		= false;
+Todoyu::$CONFIG['CACHE']['JS']['compress']	= false;
 
-$CONFIG['CACHE']['CSS']['merge']	= false;
-$CONFIG['CACHE']['CSS']['compress']	= false;
+Todoyu::$CONFIG['CACHE']['CSS']['merge']	= false;
+Todoyu::$CONFIG['CACHE']['CSS']['compress']	= false;
 
-$CONFIG['LIST']['size']	= 30;
+Todoyu::$CONFIG['LIST']['size']	= 30;
 
 //TodoyuRightsManager::flushRights();
 

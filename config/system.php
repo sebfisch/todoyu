@@ -19,14 +19,13 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+Todoyu::$CONFIG['SYSTEM']['name'] 		= 'Todoyu';
+Todoyu::$CONFIG['SYSTEM']['email']		= 'install@todoyu.com';
+Todoyu::$CONFIG['SYSTEM']['language']	= 'en';
+Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_EN.utf8';
 
-$CONFIG['SYSTEM']['name'] 		= 'Todoyu';
-$CONFIG['SYSTEM']['email']		= 'install@todoyu.com';
-$CONFIG['SYSTEM']['language']	= 'en';
-$CONFIG['SYSTEM']['locale']		= 'en_EN.utf8';
+//Todoyu::$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
 
+Todoyu::$CONFIG['SYSTEM']['encryptionKey']	= 'N2Q1ZDA1ZTQ2NGZiNjRjODM4NGVjMzYyYmFlOTI3MDk';
 
-//$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
-
-$CONFIG['SYSTEM']['encryptionKey']	= 'OWZmMDU0MmI5MTZkMTA4YTJkMGE2MWI5ODkxZDIxZmY';
 ?>

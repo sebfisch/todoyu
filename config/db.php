@@ -19,14 +19,14 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['DB'] = array(
+Todoyu::$CONFIG['DB'] = array(
 	'server'		=> 'localhost',
 	'username'		=> 'todoyu',
 	'password'		=> 'todoyu',
 	'database'		=> 'todoyu',
 	'autoconnect'	=> false,
 	'persistent'	=> true,
-	'debug'			=> false,
 	'queryHistory'	=> false
 );
+
 ?>
