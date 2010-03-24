@@ -64,7 +64,8 @@ Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 			'cache/tmpl/compile',
 			'config/db.php',
 			'config/extensions.php',
-			'config/extconf.php'
+			'config/extconf.php',
+			'index.html'
 		)
 	),
 	'dbconnection' => array(

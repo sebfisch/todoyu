@@ -48,7 +48,7 @@ class TodoyuHeadletAjaxLoader extends TodoyuHeadletTypeButton {
 	 * @return	String
 	 */
 	public function getLabel() {
-		return 'Synchronize with server';
+		return Label('core.headlet.ajaxloader.label');
 	}
 
 }

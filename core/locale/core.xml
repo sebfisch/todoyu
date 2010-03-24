@@ -72,6 +72,7 @@
 		<label index="role.new">New Role</label>
 		<label index="role.attr.active">Active</label>
 		<label index="role.attr.persons">Role Members</label>
+		<label index="headlet.ajaxloader.label">Synchronizing data with webserver</label>
 	</labels>
 	<labels lang="de">
 		<label index="tab.todoyu.label">todoyu</label>
@@ -144,5 +145,6 @@
 		<label index="role.new">Neue Rolle</label>
 		<label index="role.attr.active">Aktiv</label>
 		<label index="role.attr.persons">Rollenmitglieder</label>
+		<label index="headlet.ajaxloader.label">Synchronisiere Daten mit dem Webserver</label>
 	</labels>
 </locallang>
