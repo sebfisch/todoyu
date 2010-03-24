@@ -78,6 +78,17 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 		return Label('core.quickcreate.title');
 	}
 
+
+
+	/**
+	 * Check if no items are available in the create menu
+	 *
+	 * @return	Bool
+	 */
+	public function isEmpty() {
+		return sizeof($this->getMenuItems()) === 0;
+	}
+
 }
 
 ?>

@@ -68,13 +68,15 @@ class TodoyuHeadManager {
 			$name		= strtolower(str_replace('TodoyuHeadlet', '', $className));
 			$headlet	= new $className();
 
-			$data['headlets'][$name] = array(
-				'name'		=> $name,
-				'label'		=> $headlet->getLabel(),
-				'phpClass'	=> $className,
-				'content'	=> $headlet->render(),
-				'type'		=> $headlet->getType()
-			);
+			if( ! $headlet->isEmpty() ) {
+				$data['headlets'][$name] = array(
+					'name'		=> $name,
+					'label'		=> $headlet->getLabel(),
+					'phpClass'	=> $className,
+					'content'	=> $headlet->render(),
+					'type'		=> $headlet->getType()
+				);
+			}
 		}
 
 		return render($tmpl, $data);

@@ -241,5 +241,18 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 		return render($this->template, $this->data);
 	}
 
+
+
+	/**
+	 * Check if headlet is empty and should not be displayed
+	 * A headlet can override this function and prevent to be rendered
+	 * Empty means, the headlet has no reason to be displayed
+	 *
+	 * @return	Bool
+	 */
+	public function isEmpty() {
+		return false;
+	}
+
 }
 ?>
