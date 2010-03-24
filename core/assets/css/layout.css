@@ -287,11 +287,11 @@ div.toggled {
 }
 
 .odd {
-	background-color:#fff;
+	/*background-color:#fff;*/
 }
 
 .even {
-	background-color:transparent;
+	/*background-color:transparent;*/
 }
 
 div.error {

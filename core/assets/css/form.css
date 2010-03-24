@@ -261,7 +261,7 @@ input, textarea, select {
 fieldset {}
 
 	fieldset div.odd {
-		background-color:#ffffff;
+		/*background-color:#ffffff;*/
 	}
 
 	fieldset div.even {}
