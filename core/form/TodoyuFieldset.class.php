@@ -252,6 +252,7 @@ class TodoyuFieldset implements ArrayAccess {
 	public function addField($name, TodoyuFormElement $field, $position = null) {
 			// Set the new parent fieldset
 		$field->setFieldset($this);
+		$field->setName($name);
 
 			// If no position given, append element
 		if( is_null($position) ) {

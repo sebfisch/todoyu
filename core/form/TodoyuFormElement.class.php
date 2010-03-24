@@ -347,6 +347,17 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 	/**
+	 * Set a new name for the field
+	 *
+	 * @param	String		$name
+	 */
+	public function setName($name) {
+		$this->name	= $name;
+	}
+
+
+
+	/**
 	 * Get value for template display
 	 * Override this function in custom fieldtype if special rendering necessary
 	 *
