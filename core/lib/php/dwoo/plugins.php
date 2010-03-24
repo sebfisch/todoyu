@@ -489,6 +489,22 @@ function Dwoo_Plugin_allowedOrOwn_compile(Dwoo_Compiler $compiler, $ext, $right,
 
 
 /**
+ * Check if user has right and given user ID is the current users ID
+ * Get function string to check this
+ *
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	String			$ext
+ * @param	String			$right
+ * @param	Integer			$idPerson
+ * @return	String
+ */
+function Dwoo_Plugin_allowedAndOwn_compile(Dwoo_Compiler $compiler, $ext, $right, $idPerson) {
+	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ') && personid()==' . $idPerson;
+}
+
+
+
+/**
  * Check if person is internal
  *
  * @param	Dwoo_Compiler	$compiler
