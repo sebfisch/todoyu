@@ -220,7 +220,6 @@ Todoyu.Ui = {
 
 
 
-
 	/**
 	 * Update content body with request
 	 *
@@ -323,9 +322,9 @@ Todoyu.Ui = {
 	/**
 	 * Hover effect handler (handles both mouseOver/ Out)
 	 *
-	 * @param	Object	event
-	 * @param	Boolean	over
-	 * @param	Element	element
+	 * @param	Object		event
+	 * @param	Boolean		over
+	 * @param	Element		element
 	 */
 	hoverEffect: function(event, over, element) {
 		if( over ) {
@@ -448,8 +447,8 @@ Todoyu.Ui = {
 	/**
 	 * Show time picker
 	 *
-	 * @param	Integer	idElement
-	 * @param	Array	config
+	 * @param	Integer		idElement
+	 * @param	Array		config
 	 * @return	TimePicker
 	 */
 	showTimePicker: function(idElement, config) {
@@ -466,7 +465,7 @@ Todoyu.Ui = {
 	/**
 	 * Show duration picker
 	 *
-	 * @param	String	idElement
+	 * @param	String		idElement
 	 * @return	TimePicker
 	 */
 	showDurationPicker: function(idElement, config) {
@@ -482,13 +481,21 @@ Todoyu.Ui = {
 
 
 	/**
-	 *
+	 * Set document title (shown in browser window title bar)
+	 * 
+	 * @param	String		title
 	 */
 	setTitle: function(title) {
 		document.title = title + ' - todoyu';
 	},
-	
-	
+
+
+
+	/**
+	 * Get document title, without the " - todoyu" postfix (shown in browser window title bar)
+	 * 
+	 * @return String
+	 */	
 	getTitle: function(strip) {
 		if( strip === false ) {
 			return document.title;
@@ -502,7 +509,7 @@ Todoyu.Ui = {
 	/**
 	 * Creates a js filereference and appends it to head
 	 *
-	 * @param	String	filename
+	 * @param	String		filename
 	 * @todo	NOT USED...
 	 */
 	loadJSFile: function(filename)	{
@@ -516,9 +523,9 @@ Todoyu.Ui = {
 
 
 	/**
-	 * Creates a css filereference and appends it to head
+	 * Creates a CSS filereference and appends it to head
 	 *
-	 * @param	String	filename
+	 * @param	String		filename
 	 * @todo	NOT USED...
 	 */
 	loadCSSFile: function(filename)	{
@@ -551,9 +558,9 @@ Todoyu.Ui = {
 	observeBody: function() {
 		$(document.body).observe('click', this.onBodyClick.bindAsEventListener(this));
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler when clicked on the body
 	 * 
@@ -564,9 +571,9 @@ Todoyu.Ui = {
 			func(event);
 		}.bind(this, event));
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Add an observer for the body
 	 * 
@@ -574,6 +581,25 @@ Todoyu.Ui = {
 	 */
 	addBodyClickObserver: function(func) {
 		this.bodyClickObservers.push(func);
+	},
+
+
+
+	/**
+	 * Stop event bubbling
+	 * Useful when handling onclick-events of nested elements
+	 * whose parents have onclick handlers which should be not fired than
+	 * 
+	 * @param	Event	event
+	 */
+	stopEventBubbling: function(event) {
+		if( window.event ){
+			event.returnValue = false;
+			event.cancelBubble = true;
+		} else{
+			event.preventDefault();
+			event.stopPropagation();
+		}	
 	}
-	
+
 };
