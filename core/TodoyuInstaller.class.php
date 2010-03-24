@@ -174,7 +174,7 @@ class TodoyuInstaller {
 	 * @return	Array
 	 */
 	public static function getStepConfig($step) {
-		return TodoyuArray::assure($GLOBALS['CONFIG']['INSTALLER']['steps'][$step]);
+		return TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['steps'][$step]);
 	}
 
 
@@ -231,7 +231,7 @@ class TodoyuInstaller {
 	 * @return	Boolean
 	 */
 	public static function isUpdateStep($step) {
-		return in_array($step, $GLOBALS['CONFIG']['INSTALLER']['update']);
+		return in_array($step, Todoyu::$CONFIG['INSTALLER']['update']);
 	}
 
 
@@ -244,7 +244,7 @@ class TodoyuInstaller {
 	public static function getModeSteps() {
 		$type	= self::getMode();
 
-		return TodoyuArray::assure($GLOBALS['CONFIG']['INSTALLER'][$type]);
+		return TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER'][$type]);
 	}
 
 

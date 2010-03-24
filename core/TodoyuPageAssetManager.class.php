@@ -195,7 +195,7 @@ class TodoyuPageAssetManager {
 		$libsMerge	= array();
 
 		$javascripts= TodoyuArray::sortByLabel(self::$javascripts, 'position');
-		$doMerging	= $GLOBALS['CONFIG']['CACHE']['JS']['merge'] === true;
+		$doMerging	= Todoyu::$CONFIG['CACHE']['JS']['merge'] === true;
 
 		foreach( $javascripts as $fileConfig ) {
 			if( $doMerging && $fileConfig['merge'] ) {
@@ -245,8 +245,8 @@ class TodoyuPageAssetManager {
 		if( ! is_file($mergeFilePath) ) {
 			$mergeCode	= '';
 
-			$doLocalize	= $GLOBALS['CONFIG']['CACHE']['JS']['localize'];
-			$doCompress	= $GLOBALS['CONFIG']['CACHE']['JS']['compress'];
+			$doLocalize	= Todoyu::$CONFIG['CACHE']['JS']['localize'];
+			$doCompress	= Todoyu::$CONFIG['CACHE']['JS']['compress'];
 
 			foreach($fileConfigs as $fileConfig) {
 				$fileCode	= file_get_contents($fileConfig['file']);
@@ -284,8 +284,8 @@ class TodoyuPageAssetManager {
 	private static function getSingleJavascriptFiles(array $fileConfigs) {
 		$fileConfigs= TodoyuArray::sortByLabel($fileConfigs);
 		$files		= array();
-		$doLocalize	= $GLOBALS['CONFIG']['CACHE']['JS']['localize'] === true;
-		$doCompress	= $GLOBALS['CONFIG']['CACHE']['JS']['compress'] === true;
+		$doLocalize	= Todoyu::$CONFIG['CACHE']['JS']['localize'] === true;
+		$doCompress	= Todoyu::$CONFIG['CACHE']['JS']['compress'] === true;
 
 		foreach($fileConfigs as $fileConfig) {
 			if( ($doLocalize && $fileConfig['localize']) || ($doCompress && $fileConfig['compress']) ) {
@@ -372,7 +372,7 @@ class TodoyuPageAssetManager {
 	 * @return	String
 	 */
 	public static function localizeJavascript($javascriptCode) {
-		return preg_replace_callback($GLOBALS['CONFIG']['CACHE']['JS']['localePattern'], array('TodoyuPageAssetManager', 'localizeJavascriptCallback'), $javascriptCode);
+		return preg_replace_callback(Todoyu::$CONFIG['CACHE']['JS']['localePattern'], array('TodoyuPageAssetManager', 'localizeJavascriptCallback'), $javascriptCode);
 	}
 
 
@@ -412,7 +412,7 @@ class TodoyuPageAssetManager {
 		$single	= array();
 
 		$stylesheets= TodoyuArray::sortByLabel(self::$stylesheets, 'position');
-		$doMerging	= $GLOBALS['CONFIG']['CACHE']['CSS']['merge'];
+		$doMerging	= Todoyu::$CONFIG['CACHE']['CSS']['merge'];
 
 		foreach( $stylesheets as $fileConfig ) {
 			if( $doMerging && $fileConfig['merge'] !== false ) {
@@ -448,7 +448,7 @@ class TodoyuPageAssetManager {
 	private static function getSingleCssFiles(array $fileConfigs) {
 		$fileConfigs= TodoyuArray::sortByLabel($fileConfigs, 'position');
 		$files		= array();
-		$doCompress	= $GLOBALS['CONFIG']['CACHE']['CSS']['compress'];
+		$doCompress	= Todoyu::$CONFIG['CACHE']['CSS']['compress'];
 
 			// Make sure CSS cache folder exists
 		if( $doCompress ) {
@@ -518,7 +518,7 @@ class TodoyuPageAssetManager {
 	private static function getMergedCssFiles(array $fileConfigs) {
 		$files		= array();
 		$media		= array();
-		$doCompress	= $GLOBALS['CONFIG']['CACHE']['CSS']['compress'];
+		$doCompress	= Todoyu::$CONFIG['CACHE']['CSS']['compress'];
 
 			// Split in to the different media types
 		foreach($fileConfigs as $fileConfig) {

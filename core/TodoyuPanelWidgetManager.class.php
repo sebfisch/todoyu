@@ -42,7 +42,7 @@ class TodoyuPanelWidgetManager {
 	 * @return	Array
 	 */
 	public static function getDefaultPanelWidgets($ext) {
-		$widgets	= $GLOBALS['CONFIG']['EXT'][$ext]['panelWidgets'];
+		$widgets	= Todoyu::$CONFIG['EXT'][$ext]['panelWidgets'];
 
 		if( is_array($widgets) ) {
 			$widgets = TodoyuArray::sortByLabel($widgets, 'position');
@@ -153,7 +153,7 @@ class TodoyuPanelWidgetManager {
 	 * @param	Array		$config
 	 */
 	public static function addDefaultPanelWidget($ext, $widget, $position = 100, array $config = array()) {
-		$GLOBALS['CONFIG']['EXT'][$ext]['panelWidgets'][] = array(
+		Todoyu::$CONFIG['EXT'][$ext]['panelWidgets'][] = array(
 			'widget'	=> $widget,
 			'position'	=> intval($position),
 			'config'	=> $config
@@ -186,18 +186,18 @@ class TodoyuPanelWidgetManager {
 	 * @return	String
 	 */
 	public static function getPanelWidgetExtension($widgetClass) {
-		return $GLOBALS['CONFIG']['PANELWIDGETS'][$widgetClass]['ext'];
+		return Todoyu::$CONFIG['PANELWIDGETS'][$widgetClass]['ext'];
 	}
 
 
 
 	/**
-	 * Get list of available panel widgets ($GLOBALS['CONFIG']['PANELWIDGETS'])
+	 * Get list of available panel widgets (Todoyu::$CONFIG['PANELWIDGETS'])
 	 *
 	 * @return unknown
 	 */
 	public static function getAvailablePanelWidgets() {
-		return $GLOBALS['CONFIG']['PANELWIDGETS'];
+		return Todoyu::$CONFIG['PANELWIDGETS'];
 	}
 
 

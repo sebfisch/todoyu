@@ -44,7 +44,7 @@ class TodoyuListingRenderer {
 
 			// Get default size if not set
 		if( $size === 0 ) {
-			$size			= $GLOBALS['CONFIG']['LIST']['size'];
+			$size			= Todoyu::$CONFIG['LIST']['size'];
 			$config['size']	= $size;
 		}
 

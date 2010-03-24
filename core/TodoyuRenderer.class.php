@@ -56,7 +56,7 @@ class TodoyuRenderer {
 	 */
 	public static function renderArea($extKey, $area = 'content', array $params = array()) {
 		$content 	= '';
-		$renderFuncs= $GLOBALS['CONFIG']['EXT'][$extKey]['renderer'][$area];
+		$renderFuncs= Todoyu::$CONFIG['EXT'][$extKey]['renderer'][$area];
 
 		if( is_array($renderFuncs) ) {
 			foreach( $renderFuncs as $renderFunc ) {
@@ -77,7 +77,7 @@ class TodoyuRenderer {
 	 * @param	String	$funcRef
 	 */
 	public static function addAreaRenderer($ext, $area, $funcRef) {
-		$GLOBALS['CONFIG']['EXT'][$ext]['renderer'][$area][] = $funcRef;
+		Todoyu::$CONFIG['EXT'][$ext]['renderer'][$area][] = $funcRef;
 	}
 
 

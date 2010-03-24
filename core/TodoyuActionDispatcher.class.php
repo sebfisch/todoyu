@@ -41,7 +41,7 @@ class TodoyuActionDispatcher {
 			$ext	= TodoyuPreferenceManager::getLastExt();
 
 			if( $ext === false ) {
-				$ext = $GLOBALS['CONFIG']['FE']['DEFAULT']['ext'];
+				$ext = Todoyu::$CONFIG['FE']['DEFAULT']['ext'];
 			}
 		}
 
@@ -60,7 +60,7 @@ class TodoyuActionDispatcher {
 		$ctrl	= TodoyuRequest::getController();
 
 		if( ! is_string($ctrl) ) {
-			$ctrl = $GLOBALS['CONFIG']['FE']['DEFAULT']['controller'];
+			$ctrl = Todoyu::$CONFIG['FE']['DEFAULT']['controller'];
 		}
 
 		return $ctrl;
@@ -112,7 +112,7 @@ class TodoyuActionDispatcher {
 	 * @param	String		$ext
 	 */
 	private static function callExtOnRequestHandler($ext) {
-		$handler	= isset( $GLOBALS['CONFIG']['EXT_REQUEST_HANDLER'][$ext] ) ? $GLOBALS['CONFIG']['EXT_REQUEST_HANDLER'][$ext] : NULL;
+		$handler	= isset( Todoyu::$CONFIG['EXT_REQUEST_HANDLER'][$ext] ) ? Todoyu::$CONFIG['EXT_REQUEST_HANDLER'][$ext] : NULL;
 
 		if( ! empty($handler) && TodoyuDiv::isFunctionReference($handler) ) {
 			TodoyuDiv::callUserFunction($handler);
@@ -129,7 +129,7 @@ class TodoyuActionDispatcher {
 	 * @param	String		$function
 	 */
 	public static function registerRequestHandler($ext, $function) {
-		$GLOBALS['CONFIG']['EXT_REQUEST_HANDLER'][$ext] = $function;
+		Todoyu::$CONFIG['EXT_REQUEST_HANDLER'][$ext] = $function;
 	}
 
 

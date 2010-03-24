@@ -40,7 +40,7 @@ class TodoyuExtensions {
 	 * @return	Array
 	 */
 	public static function getInstalledExtKeys() {
-		return $GLOBALS['CONFIG']['EXT']['installed'];
+		return Todoyu::$CONFIG['EXT']['installed'];
 	}
 
 
@@ -152,8 +152,8 @@ class TodoyuExtensions {
 	public static function getExtInfo($extKey) {
 		self::loadConfig($extKey, 'extinfo');
 
-		if( is_array($GLOBALS['CONFIG']['EXT'][$extKey]['info']) ) {
-			return $GLOBALS['CONFIG']['EXT'][$extKey]['info'];
+		if( is_array(Todoyu::$CONFIG['EXT'][$extKey]['info']) ) {
+			return Todoyu::$CONFIG['EXT'][$extKey]['info'];
 		} else {
 			return false;
 		}
@@ -187,8 +187,6 @@ class TodoyuExtensions {
 	 * @return	Boolean		Loading status
 	 */
 	public static function loadConfig($extKey, $type) {
-		global $CONFIG;
-
 		$filePath	= realpath(PATH_EXT . DIRECTORY_SEPARATOR . $extKey . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . $type . '.php');
 
 		if( $filePath !== false && self::isPathInExtDir($extKey, $filePath) ) {
@@ -301,8 +299,6 @@ class TodoyuExtensions {
 	 *
 	 */
 	public static function loadAllForm() {
-		global $CONFIG;
-
 		require_once( PATH_CONFIG . '/form.php');
 
 		self::loadAllTypeConfig('form');
@@ -315,8 +311,6 @@ class TodoyuExtensions {
 	 *
 	 */
 	public static function loadAllAssets() {
-		global $CONFIG;
-
 		self::loadAllTypeConfig('assets');
 	}
 
@@ -327,8 +321,6 @@ class TodoyuExtensions {
 	 *
 	 */
 	public static function loadAllAdmin() {
-		global $CONFIG;
-
 		self::loadAllTypeConfig('admin');
 	}
 
@@ -339,8 +331,6 @@ class TodoyuExtensions {
 	 *
 	 */
 	public static function loadAllExtinfo() {
-		global $CONFIG;
-
 		self::loadAllTypeConfig('extinfo');
 	}
 
@@ -351,8 +341,6 @@ class TodoyuExtensions {
 	 *
 	 */
 	public static function loadAllPanelWidget() {
-		global $CONFIG;
-
 		self::loadAllTypeConfig('panelwidgets');
 	}
 
@@ -363,8 +351,6 @@ class TodoyuExtensions {
 	 *
 	 */
 	public static function loadAllPage() {
-		global $CONFIG;
-
 		self::loadAllTypeConfig('page');
 	}
 
@@ -374,8 +360,6 @@ class TodoyuExtensions {
 	 * Load all search config (/config/search.php files of all loaded extensions)
 	 */
 	public static function loadAllSearch() {
-		global $CONFIG;
-
 		self::loadAllTypeConfig('search');
 	}
 
@@ -385,8 +369,6 @@ class TodoyuExtensions {
 	 * Load all create configs (/config/create.php files of all loaded extensions)
 	 */
 	public static function loadAllCreate() {
-		global $CONFIG;
-
 		self::loadAllTypeConfig('create');
 	}
 
@@ -420,7 +402,7 @@ class TodoyuExtensions {
 		$extKeys	= self::getInstalledExtKeys();
 
 		foreach($extKeys as $extKey) {
-			$dependInfo	= $GLOBALS['CONFIG']['EXT'][$extKey]['info']['constraints']['depends'];
+			$dependInfo	= Todoyu::$CONFIG['EXT'][$extKey]['info']['constraints']['depends'];
 
 			if( is_array($dependInfo) ) {
 				if( array_key_exists($extKeyToCheck, $dependInfo) ) {
@@ -443,7 +425,7 @@ class TodoyuExtensions {
 	public static function isSystemExtension($extKey) {
 		self::loadConfig($extKey, 'extinfo');
 
-		return $GLOBALS['CONFIG']['EXT'][$extKey]['info']['constraints']['system'] === true;
+		return Todoyu::$CONFIG['EXT'][$extKey]['info']['constraints']['system'] === true;
 	}
 
 
@@ -460,7 +442,7 @@ class TodoyuExtensions {
 		$extKeys	= self::getInstalledExtKeys();
 
 		foreach($extKeys as $extKey) {
-			$conflictInfo	= $GLOBALS['CONFIG']['EXT'][$extKey]['info']['constraints']['conflict'];
+			$conflictInfo	= Todoyu::$CONFIG['EXT'][$extKey]['info']['constraints']['conflict'];
 
 			if( is_array($conflictInfo) ) {
 				if( array_key_exists($extKeyToCheck, $conflictInfo) ) {

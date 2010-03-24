@@ -37,7 +37,7 @@ class TodoyuContextMenuManager {
 	public static function registerFunction($type, $function , $position = 100) {
 		$type	= strtoupper(trim($type));
 
-		$GLOBALS['CONFIG']['FE']['ContextMenu'][$type][] = array(
+		Todoyu::$CONFIG['FE']['ContextMenu'][$type][] = array(
 			'function'	=> $function,
 			'position'	=> intval($position)
 		);
@@ -53,7 +53,7 @@ class TodoyuContextMenuManager {
 	 */
 	public static function getTypeFunctions($type) {
 		$type		= strtoupper(trim($type));
-		$funcRefs	= $GLOBALS['CONFIG']['FE']['ContextMenu'][$type];
+		$funcRefs	= Todoyu::$CONFIG['FE']['ContextMenu'][$type];
 
 		if( ! is_array($funcRefs) ) {
 			$funcRefs	= array();

@@ -28,7 +28,7 @@
 Todoyu::addIncludePath( PATH_CORE . '/form' );
 
 	// Set default timezone
-date_default_timezone_set($GLOBALS['CONFIG']['LOCALE']['defaultTimezone']);
+date_default_timezone_set(Todoyu::$CONFIG['LOCALE']['defaultTimezone']);
 
 	// Init basic classes
 Todoyu::init();
@@ -50,7 +50,7 @@ TodoyuLanguage::register('static_territory', PATH_CORE . '/locale/static_territo
 TodoyuLanguage::register('static_language', PATH_CORE . '/locale/static_language.xml');
 
 	// Load extensions
-if( $GLOBALS['CONFIG']['WITHOUT_EXTENSIONS'] !== true ) {
+if( Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] !== true ) {
 	require( PATH_CORE . '/inc/load_extensions.php' );
 }
 

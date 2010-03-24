@@ -19,7 +19,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['CACHE'] = array(
+Todoyu::$CONFIG['CACHE'] = array(
 	'JS' => array(
 		'localePattern'	=> '/\[LLL:([a-zA-Z0-9\.-]+?)\]/',
 		'localize'		=> true,

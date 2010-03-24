@@ -26,7 +26,7 @@
  * @subpackage	Core
  */
 
-$CONFIG['FE']['PAGE']['assets'] = array(
+Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 	'js' => array(
 		array(
 			'file'		=> 'lib/js/prototype.js',

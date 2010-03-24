@@ -243,7 +243,7 @@ class TodoyuPreferenceManager {
 		$pref = self::getPreference(0, 'ext');
 
 		if( $pref === false ) {
-			$pref = $GLOBALS['CONFIG']['FE']['DEFAULT']['ext'];
+			$pref = Todoyu::$CONFIG['FE']['DEFAULT']['ext'];
 		}
 
 		return $pref;

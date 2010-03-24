@@ -33,7 +33,7 @@ class TodoyuSession {
 	 * @return	String
 	 */
 	private static function key() {
-		return $GLOBALS['CONFIG']['SESSION']['key'];
+		return Todoyu::$CONFIG['SESSION']['key'];
 	}
 
 

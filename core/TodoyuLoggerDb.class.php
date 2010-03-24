@@ -37,7 +37,7 @@ class TodoyuLoggerDb {
 	 * @param	String		$requestKey
 	 */
 	public static function log($message, $level, $data, $info, $requestKey) {
-		$table	= $GLOBALS['CONFIG']['LOG']['MODES']['DB']['table'];
+		$table	= Todoyu::$CONFIG['LOG']['MODES']['DB']['table'];
 
 		$data 	= array(
 			'date_create'	=> NOW,

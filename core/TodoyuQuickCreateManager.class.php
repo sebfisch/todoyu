@@ -38,7 +38,7 @@ class TodoyuQuickCreateManager {
 	 * @param	Boolean		$areaOnly		show type within resp. area only?
 	 */
 	public static function addEngine($ext, $type, $label = '', $position = 100, array $primaryAreas = array(), $areaOnly = false) {
-		$GLOBALS['CONFIG']['CREATE']['engines'][] = array(
+		Todoyu::$CONFIG['CREATE']['engines'][] = array(
 			'ext'		=> $ext,
 			'type'		=> $type,
 			'label'		=> $label,
@@ -59,7 +59,7 @@ class TodoyuQuickCreateManager {
 			// Load /config/create.php configfiles of all loaded extensions)
 		TodoyuExtensions::loadAllCreate();
 
-		$engines= TodoyuArray::sortByLabel($GLOBALS['CONFIG']['CREATE']['engines'], 'position');
+		$engines= TodoyuArray::sortByLabel(Todoyu::$CONFIG['CREATE']['engines'], 'position');
 		$area	= Todoyu::getAreaKey();
 		$data	= array(
 			'primary'	=> false,

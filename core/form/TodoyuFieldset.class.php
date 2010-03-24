@@ -421,7 +421,7 @@ class TodoyuFieldset implements ArrayAccess {
 	 * @return	String
 	 */
 	public function render() {
-		$template	= $GLOBALS['CONFIG']['FORM']['templates']['fieldset'];
+		$template	= Todoyu::$CONFIG['FORM']['templates']['fieldset'];
 		$data		= $this->getData();
 
 		$data['content'] =  $this->renderElements();;

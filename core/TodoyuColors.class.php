@@ -58,7 +58,7 @@ class TodoyuColors {
 	 */
 	private static function generateCSS($fileCSS, $fileIMG) {
 			// Get configured colors
-		$colors	= TodoyuArray::assure($GLOBALS['CONFIG']['COLORS']);
+		$colors	= TodoyuArray::assure(Todoyu::$CONFIG['COLORS']);
 			// Render CSS file content
 		$css	= '/* colors.css - Enumerated colors to be used for visual differenciation of elements */' . "\n";
 
@@ -95,12 +95,12 @@ class TodoyuColors {
 
 
 	/**
-	 * Render CSS sprite of colors declared in $GLOBALS['CONFIG']['COLORS'], 16 x 16 each
+	 * Render CSS sprite of colors declared in Todoyu::$CONFIG['COLORS'], 16 x 16 each
 	 *
 	 * @param	String	$fileIMG
 	 */
 	private static function generateIMG($fileIMG) {
-		$colors	= TodoyuArray::assure($GLOBALS['CONFIG']['COLORS']);
+		$colors	= TodoyuArray::assure(Todoyu::$CONFIG['COLORS']);
 		$img	= imagecreate(16, sizeof($colors)*16);
 
 			// Create image folder in cache
@@ -218,7 +218,7 @@ class TodoyuColors {
 	private static function getColorRGB($position)	{
 		$position = intval($position);
 
-		$rgb	= $GLOBALS['CONFIG']['COLORS'][	$position ];
+		$rgb	= Todoyu::$CONFIG['COLORS'][	$position ];
 
 		return $rgb;
 	}
@@ -234,7 +234,7 @@ class TodoyuColors {
 	private static function getColorID($position)	{
 		$position = intval($position);
 
-		$numOfColors = count($GLOBALS['CONFIG']['COLORS']);
+		$numOfColors = count(Todoyu::$CONFIG['COLORS']);
 
 		if( $position > $numOfColors - 1 )	{
 			$position = $position - ($position - ($position % ($numOfColors)));

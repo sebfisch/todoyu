@@ -206,7 +206,7 @@ class TodoyuFileManager {
 		$directoryPath	= str_replace(PATH, '', $directoryPath);
 		$pathParts		= array_slice(explode(DIRECTORY_SEPARATOR, $directoryPath), 1);
 		$basePath		= PATH;
-		$chmod			= is_null($mode) ? $GLOBALS['CONFIG']['CHMOD']['folder'] : $mode;
+		$chmod			= is_null($mode) ? Todoyu::$CONFIG['CHMOD']['folder'] : $mode;
 
 			// Create each level of the subfolder
 		foreach( $pathParts as $pathPart ) {
@@ -300,7 +300,7 @@ class TodoyuFileManager {
 	public static function setDefaultFileAccess($pathToFile) {
 		$pathToFile	= self::pathAbsolute($pathToFile);
 
-		return chmod($pathToFile, $GLOBALS['CONFIG']['CHMOD']['file']);
+		return chmod($pathToFile, Todoyu::$CONFIG['CHMOD']['file']);
 	}
 
 
@@ -314,7 +314,7 @@ class TodoyuFileManager {
 	public static function setDefaultFolderAccess($pathToFolder) {
 		$pathToFolder	= self::pathAbsolute($pathToFolder);
 
-		return chmod($pathToFolder, $GLOBALS['CONFIG']['CHMOD']['folder']);
+		return chmod($pathToFolder, Todoyu::$CONFIG['CHMOD']['folder']);
 	}
 
 
@@ -341,7 +341,7 @@ class TodoyuFileManager {
 	/**
 	 * Check if a file is in allowed download paths
 	 * By default, no download path is allowed (except PATH_FILES)
-	 * You can allow paths in $CONFIG['sendFile']['allow'] or disallow paths in $CONFIG['sendFile']['disallow']
+	 * You can allow paths in Todoyu::$CONFIG['sendFile']['allow'] or disallow paths in Todoyu::$CONFIG['sendFile']['disallow']
 	 * Disallow tasks precedence before allow
 	 *
 	 * @param	String		$absoluteFilePath		Absolute path to file
@@ -349,8 +349,8 @@ class TodoyuFileManager {
 	 */
 	public static function isFileInAllowedDownloadPath($absoluteFilePath) {
 		$absoluteFilePath	= realpath($absoluteFilePath);
-		$disallowedPaths	= $GLOBALS['CONFIG']['sendFile']['disallow'];
-		$allowedPaths		= $GLOBALS['CONFIG']['sendFile']['allow'];
+		$disallowedPaths	= Todoyu::$CONFIG['sendFile']['disallow'];
+		$allowedPaths		= Todoyu::$CONFIG['sendFile']['allow'];
 
 		// If file exists
 		if( $absoluteFilePath !== false ) {

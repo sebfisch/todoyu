@@ -27,7 +27,7 @@
  */
 
 
-$CONFIG['INSTALLER']['install'] = array(
+Todoyu::$CONFIG['INSTALLER']['install'] = array(
 	'install',
 	'servercheck',
 	'dbconnection',
@@ -39,14 +39,14 @@ $CONFIG['INSTALLER']['install'] = array(
 	'finish'
 );
 
-$CONFIG['INSTALLER']['update'] = array(
+Todoyu::$CONFIG['INSTALLER']['update'] = array(
 	'update',
 	'updatetocurrentversion',
 	'finishupdate'
 );
 
 
-$CONFIG['INSTALLER']['steps'] = array(
+Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 		// Installation steps
 	'install' => array(
 		'process'	=> 'TodoyuInstallerManager::processInstall',

@@ -33,7 +33,7 @@ class TodoyuLocaleManager {
 	 * @return	Array
 	 */
 	public static function getLocales() {
-		return TodoyuArray::assure($GLOBALS['CONFIG']['LOCALES']);
+		return TodoyuArray::assure(Todoyu::$CONFIG['LOCALES']);
 	}
 
 
@@ -124,7 +124,7 @@ class TodoyuLocaleManager {
 	 * @return	String
 	 */
 	public static function getDefaultLocale() {
-		return $GLOBALS['CONFIG']['defaultLocale'];
+		return Todoyu::$CONFIG['defaultLocale'];
 	}
 
 

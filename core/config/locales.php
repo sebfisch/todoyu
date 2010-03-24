@@ -24,7 +24,7 @@
  * setlocale() tries all locales in the list, uses the first which matches
  * locales are different on the systems (WIN,LINUX,MAC, etc)
  */
-$CONFIG['LOCALES'] = array(
+Todoyu::$CONFIG['LOCALES'] = array(
 	'en_US'	=> array('en_US.utf8', 'en_US', 'en', 'English_US', 'English_United States.1252'),
 	'en_GB' => array('en_US.utf8', 'en_GB', 'en', 'English_GB'),
 	'de_DE'	=> array('de_DE.utf8', 'de_DE', 'de', 'de_DE@euro', 'de_DE.utf8@euro', 'German_Germany.1252', 'deu_deu'),
@@ -36,6 +36,6 @@ $CONFIG['LOCALES'] = array(
 	'it_CH'	=> array('it_CH.utf8', 'it_CH', 'it')
 );
 
-$CONFIG['defaultLocale'] = 'en_US';
+Todoyu::$CONFIG['defaultLocale'] = 'en_US';
 
 ?>

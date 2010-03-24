@@ -40,7 +40,7 @@ class TodoyuCookieLogin {
 		if( ! TodoyuAuth::isLoggedIn() ) {
 
 				// Check for cookie login data
-			$cookieName	= $GLOBALS['CONFIG']['AUTH']['loginCookieName'];
+			$cookieName	= Todoyu::$CONFIG['AUTH']['loginCookieName'];
 			$cookieValue= $_COOKIE[$cookieName];
 
 			if( ! empty($cookieValue) ) {
@@ -86,7 +86,7 @@ class TodoyuCookieLogin {
 	 * @param	Integer		$idUser
 	 */
 	public static function setRemainLoginCookie($idUser) {
-		$cookieName	= $GLOBALS['CONFIG']['AUTH']['loginCookieName'];
+		$cookieName	= Todoyu::$CONFIG['AUTH']['loginCookieName'];
 		$value		= self::generateRemainLoginCode($idUser);
 		$expires	= NOW + TodoyuTime::SECONDS_WEEK;
 
@@ -100,7 +100,7 @@ class TodoyuCookieLogin {
 	 *
 	 */
 	public static function removeRemainLoginCookie() {
-		$cookieName	= $GLOBALS['CONFIG']['AUTH']['loginCookieName'];
+		$cookieName	= Todoyu::$CONFIG['AUTH']['loginCookieName'];
 		$expire		= NOW - 10000;
 
 		setcookie($cookieName, '', $expire, PATH_WEB, null, false, true);

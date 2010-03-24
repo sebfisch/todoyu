@@ -27,7 +27,7 @@ class TodoyuLanguageManager {
 	 * @return	Array
 	 */
 	public static function getAvailableLanguages() {
-		$languages	= TodoyuArray::assure($GLOBALS['CONFIG']['LANGUAGE']['available']);
+		$languages	= TodoyuArray::assure(Todoyu::$CONFIG['LANGUAGE']['available']);
 		$options	= array();
 
 		foreach($languages as $language) {

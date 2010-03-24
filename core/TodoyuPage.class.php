@@ -59,7 +59,7 @@ class TodoyuPage {
 			// Add all assets of allowed extensions
 		self::addExtAssets();
 
-		self::addMetatag('Content-Type', $GLOBALS['CONFIG']['FE']['ContentType']);
+		self::addMetatag('Content-Type', Todoyu::$CONFIG['FE']['ContentType']);
 
 		self::addJsOnloadedFunction('Todoyu.init.bind(Todoyu)', 1);
 		self::addJsOnloadedFunction('Todoyu.Headlet.init.bind(Todoyu.Headlet)', 10);
@@ -82,8 +82,8 @@ class TodoyuPage {
 	 * Add JS and CSS files which are used by the core
 	 */
 	private static function addCoreAssets() {
-		$jsFiles	= TodoyuArray::assure($GLOBALS['CONFIG']['FE']['PAGE']['assets']['js']);
-		$cssFiles	= TodoyuArray::assure($GLOBALS['CONFIG']['FE']['PAGE']['assets']['css']);
+		$jsFiles	= TodoyuArray::assure(Todoyu::$CONFIG['FE']['PAGE']['assets']['js']);
+		$cssFiles	= TodoyuArray::assure(Todoyu::$CONFIG['FE']['PAGE']['assets']['css']);
 
 		foreach($jsFiles as $jsFile) {
 			self::addJavascript($jsFile['file'], $jsFile['position'], $jsFile['compress'], $jsFile['merge'], $jsFile['localize']);
@@ -121,7 +121,7 @@ class TodoyuPage {
 	private static function addExtStylesheets($ext) {
 		TodoyuExtensions::loadAllAssets();
 
-		$files	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT'][$ext]['assets']['css']);
+		$files	= TodoyuArray::assure(Todoyu::$CONFIG['EXT'][$ext]['assets']['css']);
 
 		foreach($files as $file) {
 			self::addStylesheet($file['file'], $file['media'], $file['position'], $file['compress'], $file['merge']);
@@ -136,7 +136,7 @@ class TodoyuPage {
 	 * @param	String		$ext
 	 */
 	private static function addExtJavascript($ext) {
-		$files	= TodoyuArray::assure($GLOBALS['CONFIG']['EXT'][$ext]['assets']['js']);
+		$files	= TodoyuArray::assure(Todoyu::$CONFIG['EXT'][$ext]['assets']['js']);
 
 		foreach($files as $file) {
 			self::addJavascript($file['file'], $file['position'], $file['compress'], $file['merge'], $file['localize']);
@@ -308,7 +308,7 @@ class TodoyuPage {
 	public static function getExtJSinline($ext, $type = 'public')	{
 		TodoyuExtensions::loadAllAssets();
 
-		$files	= $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['js'];
+		$files	= Todoyu::$CONFIG['EXT'][$ext]['assets'][$type]['js'];
 
 		if( is_array($files) ) {
 			foreach($files as $file) {
@@ -331,7 +331,7 @@ class TodoyuPage {
 	public static function getExtCSSinline($ext, $type = 'public')	{
 		TodoyuExtensions::loadAllAssets();
 
-		$files	= $GLOBALS['CONFIG']['EXT'][$ext]['assets'][$type]['css'];
+		$files	= Todoyu::$CONFIG['EXT'][$ext]['assets'][$type]['css'];
 
 		if( is_array($files) ) {
 			foreach($files as $file) {

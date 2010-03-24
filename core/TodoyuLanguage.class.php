@@ -83,7 +83,7 @@ class TodoyuLanguage {
 	public static function getLabel($labelKey, $language = null) {
 		$label	= self::getLabelInternal($labelKey, $language);
 
-		if( $label === '' && $GLOBALS['CONFIG']['DEBUG'] ) {
+		if( $label === '' && Todoyu::$CONFIG['DEBUG'] ) {
 			Todoyu::log($label, LOG_LEVEL_NOTICE);
 			$label	= 'Label not found: #' .$labelKey . '#';
 		}
@@ -429,7 +429,7 @@ class TodoyuLanguage {
 	 * @return	String
 	 */
 	private static function getCacheFileName($fileKey, $language) {
-		return TodoyuFileManager::pathAbsolute($GLOBALS['CONFIG']['LANGUAGE']['cacheDir'] . DIRECTORY_SEPARATOR . $fileKey . '-' . $language . '.' . $GLOBALS['CONFIG']['LANGUAGE']['cacheExt']);
+		return TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['LANGUAGE']['cacheDir'] . DIRECTORY_SEPARATOR . $fileKey . '-' . $language . '.' . Todoyu::$CONFIG['LANGUAGE']['cacheExt']);
 	}
 
 
@@ -446,7 +446,7 @@ class TodoyuLanguage {
 		$intPath	= str_replace(PATH . DIRECTORY_SEPARATOR, '', $absPath);
 		$filename	= str_replace(DIRECTORY_SEPARATOR, '-', $intPath);
 
-		return $GLOBALS['CONFIG']['LANGUAGE']['l10nDir'] . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . $filename;
+		return Todoyu::$CONFIG['LANGUAGE']['l10nDir'] . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . $filename;
 	}
 
 

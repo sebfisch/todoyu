@@ -33,7 +33,7 @@ class TodoyuHtmlFilter {
 	 * @return	Array
 	 */
 	private static function getBadTags() {
-		return $GLOBALS['CONFIG']['SECURITY']['badHtmlTags'];
+		return Todoyu::$CONFIG['SECURITY']['badHtmlTags'];
 	}
 
 

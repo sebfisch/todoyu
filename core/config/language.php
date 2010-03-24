@@ -19,9 +19,9 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['LANGUAGE']['cacheDir'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'language';
-$CONFIG['LANGUAGE']['l10nDir'] 		= PATH . DIRECTORY_SEPARATOR . 'l10n';
-$CONFIG['LANGUAGE']['cacheExt'] 	= 'lang';
-$CONFIG['LANGUAGE']['available']	= array('en','de');
+Todoyu::$CONFIG['LANGUAGE']['cacheDir'] 	= PATH_CACHE . DIRECTORY_SEPARATOR . 'language';
+Todoyu::$CONFIG['LANGUAGE']['l10nDir'] 		= PATH . DIRECTORY_SEPARATOR . 'l10n';
+Todoyu::$CONFIG['LANGUAGE']['cacheExt'] 	= 'lang';
+Todoyu::$CONFIG['LANGUAGE']['available']	= array('en','de');
 
 ?>

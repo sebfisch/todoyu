@@ -29,7 +29,7 @@
 	 *		3) LOG_LEVEL_SECURITY	logs security critical incidents and more serious levels
 	 *		4) LOG_LEVEL_FATAL		logs fatal errors
 	 */
-$CONFIG['LOG'] 	= array(
+Todoyu::$CONFIG['LOG'] 	= array(
 	'active'	=> array(
 		'FILE',
 		'DB',

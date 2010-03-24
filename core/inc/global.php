@@ -28,13 +28,6 @@ error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 
 
-
-	// Init config array
-if( ! isset($CONFIG) ) {
-	$CONFIG = array();
-}
-
-
 	// Define basic constants
 require_once( dirname(dirname(__FILE__)) . '/config/constants.php' );
 

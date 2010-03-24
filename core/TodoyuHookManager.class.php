@@ -23,7 +23,7 @@
  * Hook Manager.
  * Call hooks in a predefined config structure.
  * Define your hooks in this structure:
- * $CONFIG['EXT'][EXTNAME]['hooks'][HOOKNAME][]
+ * Todoyu::$CONFIG['EXT'][EXTNAME]['hooks'][HOOKNAME][]
  *
  * @package		Todoyu
  * @subpackage	Core
@@ -38,7 +38,7 @@ class TodoyuHookManager {
 	 * @return	Array
 	 */
 	public static function getHooks($ext, $name) {
-		$hooks	= $GLOBALS['CONFIG']['HOOKS'][$ext][$name];
+		$hooks	= Todoyu::$CONFIG['HOOKS'][$ext][$name];
 
 		if( ! is_array($hooks) ) {
 			$hooks = array();
@@ -105,7 +105,7 @@ class TodoyuHookManager {
 	 * @param	Integer		$position		Position of the hook (order of calling)
 	 */
 	public static function registerHook($ext, $name, $function, $position = 100) {
-		$GLOBALS['CONFIG']['HOOKS'][$ext][$name][] = array(
+		Todoyu::$CONFIG['HOOKS'][$ext][$name][] = array(
 			'function'	=> $function,
 			'position'	=> intval($position)
 		);

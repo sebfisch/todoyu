@@ -606,9 +606,9 @@ class TodoyuInstallerManager {
 	 * @return	Boolean
 	 */
 	public static function isDatabaseConfigured() {
-		$dbConfig	= TodoyuArray::assure($GLOBALS['CONFIG']['DB']);
+		$dbConfig	= TodoyuArray::assure(Todoyu::$CONFIG['DB']);
 
-		return $GLOBALS['CONFIG']['DB']['autoconnect'] === true;
+		return Todoyu::$CONFIG['DB']['autoconnect'] === true;
 	}
 
 

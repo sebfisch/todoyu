@@ -195,7 +195,7 @@ class TodoyuPasswordValidator {
 	 * @return	Array
 	 */
 	public static function getChecks() {
-		return TodoyuArray::assure($GLOBALS['CONFIG']['goodPassword']);
+		return TodoyuArray::assure(Todoyu::$CONFIG['goodPassword']);
 	}
 
 }

@@ -31,7 +31,7 @@
  */
 
 
-$CONFIG['COLORS'] =	array(
+Todoyu::$CONFIG['COLORS'] =	array(
 		// based upon "tango"-palette
 	'#FCE94F',	// Butter 1
 	'#8AE234',	// Chameleon Green 1

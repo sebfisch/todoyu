@@ -382,7 +382,7 @@ class TodoyuDatabase {
 	 * @return	String
 	 */
 	public function buildSELECTinformationSchemaColumnsQuery($fields, $where = '') {
-		$dbName	= $GLOBALS['CONFIG']['DB']['database'];
+		$dbName	= Todoyu::$CONFIG['DB']['database'];
 
 		$query	 = 'SELECT ' . $fields . ' FROM INFORMATION_SCHEMA.COLUMNS ';
 		$query	.= ' WHERE TABLE_SCHEMA = \'' . $dbName . '\' ';

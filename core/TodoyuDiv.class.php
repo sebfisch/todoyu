@@ -306,7 +306,7 @@ class TodoyuDiv {
 				// Get the expected key size based on mode and cipher
 			$expectedKeySize = mcrypt_enc_get_key_size(self::$mcrypt);
 				// Get a key in the needed length (use typo3 key)
-			$key = substr($GLOBALS['CONFIG']['SYSTEM']['encryptionKey'], 0, $expectedKeySize);
+			$key = substr(Todoyu::$CONFIG['SYSTEM']['encryptionKey'], 0, $expectedKeySize);
 				// Initialize mcrypt library with mode/cipher, encryption key, and random initialization vector
 			mcrypt_generic_init(self::$mcrypt, $key, $vector);
 		}

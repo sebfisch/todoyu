@@ -116,7 +116,7 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
-	 * Globals vars
+	 * Global vars
 	 *
 	 * @var	Array
 	 */
@@ -1009,7 +1009,7 @@ class TodoyuForm implements ArrayAccess {
 	 */
 	public function renderHiddenFields() {
 		$content	= '';
-		$template	= $GLOBALS['CONFIG']['FORM']['templates']['hidden'];
+		$template	= Todoyu::$CONFIG['FORM']['templates']['hidden'];
 
 		foreach( $this->hiddenFields as $name => $config ) {
 			$data	= array(
@@ -1093,7 +1093,7 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	String
 	 */
 	public function render() {
-		$tmpl	= $GLOBALS['CONFIG']['FORM']['templates']['form'];
+		$tmpl	= Todoyu::$CONFIG['FORM']['templates']['form'];
 		$data	= $this->getData();
 
 		return render($tmpl, $data);

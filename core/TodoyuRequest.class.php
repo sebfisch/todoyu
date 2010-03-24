@@ -264,7 +264,7 @@ class TodoyuRequest {
 			}
 
 			if( $ext === false ) {
-				$ext = $GLOBALS['CONFIG']['FE']['DEFAULT']['ext'];
+				$ext = Todoyu::$CONFIG['FE']['DEFAULT']['ext'];
 			}
 
 			$requestVars['ext'] = $ext;
@@ -272,7 +272,7 @@ class TodoyuRequest {
 
 			// Check controller
 		if( empty($requestVars['ctrl']) ) {
-			$requestVars['ctrl'] = $GLOBALS['CONFIG']['FE']['DEFAULT']['controller'];
+			$requestVars['ctrl'] = Todoyu::$CONFIG['FE']['DEFAULT']['controller'];
 		}
 
 			// Check command

@@ -19,8 +19,8 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['DEBUG'] = false;
+Todoyu::$CONFIG['DEBUG'] = false;
 
-$CONFIG['LOG']['active'] = array();
+Todoyu::$CONFIG['LOG']['active'] = array();
 
 ?>

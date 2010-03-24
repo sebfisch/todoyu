@@ -27,6 +27,14 @@
  */
 class Todoyu {
 
+	/**
+	 * Todoyu configuration
+	 * All configuration of todoyu and all extensions gets into this static variable
+	 *
+	 * @var	Array
+	 */
+	public static $CONFIG	= array();
+
 
 	/**
 	 * Database object instance
@@ -101,7 +109,7 @@ class Todoyu {
 	 */
 	public static function db() {
 		if( is_null(self::$db) ) {
-			self::$db = TodoyuDatabase::getInstance($GLOBALS['CONFIG']['DB']);
+			self::$db = TodoyuDatabase::getInstance(Todoyu::$CONFIG['DB']);
 		}
 
 		return self::$db;
@@ -116,7 +124,7 @@ class Todoyu {
 	 */
 	public static function tmpl() {
 		if( is_null(self::$template) ) {
-			$config	= TodoyuArray::assure($GLOBALS['CONFIG']['TEMPLATE']);
+			$config	= TodoyuArray::assure(Todoyu::$CONFIG['TEMPLATE']);
 
 				// Make needed folders
 			TodoyuFileManager::makeDirDeep($config['compile']);
@@ -159,7 +167,7 @@ class Todoyu {
 	 */
 	public static function log($message, $level = 0, $data = null) {
 		if( is_null(self::$logger) ) {
-			self::$logger = TodoyuLogger::getInstance($GLOBALS['CONFIG']['LOG']['active'], $GLOBALS['CONFIG']['LOG']['level']);
+			self::$logger = TodoyuLogger::getInstance(Todoyu::$CONFIG['LOG']['active'], Todoyu::$CONFIG['LOG']['level']);
 		}
 
 		self::$logger->log($message, $level, $data);
@@ -200,7 +208,7 @@ class Todoyu {
 	 * @return	String
 	 */
 	public static function getLang() {
-		$lang	= $GLOBALS['CONFIG']['SYSTEM']['language'];
+		$lang	= Todoyu::$CONFIG['SYSTEM']['language'];
 
 		if( TodoyuAuth::isLoggedIn() ) {
 			$lang = self::person()->getLanguage();
@@ -232,7 +240,7 @@ class Todoyu {
 		}
 
 		if ( $locale === false  ) {
-			$locale	= $GLOBALS['CONFIG']['SYSTEM']['locale'];
+			$locale	= Todoyu::$CONFIG['SYSTEM']['locale'];
 		}
 
 		return $locale;
@@ -275,8 +283,8 @@ class Todoyu {
 	public static function addIncludePath($includePath) {
 		$includePath	= TodoyuFileManager::pathAbsolute($includePath);
 
-		if( ! in_array($includePath, $GLOBALS['CONFIG']['AUTOLOAD']) ) {
-			$GLOBALS['CONFIG']['AUTOLOAD'][] = $includePath;
+		if( ! in_array($includePath, Todoyu::$CONFIG['AUTOLOAD']) ) {
+			Todoyu::$CONFIG['AUTOLOAD'][] = $includePath;
 		}
 	}
 
@@ -290,7 +298,7 @@ class Todoyu {
 	public static function autoloader($className) {
 		$classFile = $className . '.class.php';
 
-		foreach($GLOBALS['CONFIG']['AUTOLOAD'] as $includePath) {
+		foreach(Todoyu::$CONFIG['AUTOLOAD'] as $includePath) {
 			if( is_file($includePath . DIRECTORY_SEPARATOR . $classFile) ) {
 				include_once($includePath . DIRECTORY_SEPARATOR . $classFile);
 				break;

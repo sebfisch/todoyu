@@ -144,7 +144,7 @@ class TodoyuLogger {
 
 		if( $level >= $this->level ) {
 			foreach($this->modes as $mode) {
-				$funcRef = $GLOBALS['CONFIG']['LOG']['MODES'][$mode]['funcRef'];
+				$funcRef = Todoyu::$CONFIG['LOG']['MODES'][$mode]['funcRef'];
 
 				TodoyuDiv::callUserFunction($funcRef, $message, $level, $data, $info, $this->requestKey);
 			}

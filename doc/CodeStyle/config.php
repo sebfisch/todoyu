@@ -10,7 +10,7 @@
 
 
 	// Set a config variable for project extension
-$CONFIG['EXT']['project']['somevar'] = 345;
+Todoyu::$CONFIG['EXT']['project']['somevar'] = 345;
 
 	// Register a form hook (if you have a lot of form hooks, register them in your special config file hooks.php)
 TodoyuFormHook::registerBuildForm('path/to/the/form/file.xml', 'SomeClass::myHandlerFunction', 120);
@@ -21,7 +21,7 @@ define('TC_PROJECT_STATUS_PLANNING', 1);
 
 	// Rootlevel key UPPERCASE, everything else lowercase
 	// Array keys start on a new line and are indented by one tab, => is indented by tabs, value by a space.
-$CONFIG['EXT']['project']['status']['task'] = array(
+Todoyu::$CONFIG['EXT']['project']['status']['task'] = array(
 	'key1'	=> 'planning',
 	'key2'	=> 'open',
 	'key3'	=> 'progress',

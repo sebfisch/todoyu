@@ -94,7 +94,7 @@ class TodoyuFrontend {
 	 * @return	String
 	 */
 	public static function getDefaultTab() {
-		return $GLOBALS['CONFIG']['FE']['TAB']['default'];
+		return Todoyu::$CONFIG['FE']['TAB']['default'];
 	}
 
 
@@ -105,7 +105,7 @@ class TodoyuFrontend {
 	 * @param	String		$defaultTab
 	 */
 	public static function setDefaultTab($defaultTab) {
-		$GLOBALS['CONFIG']['FE']['TAB']['default'] = $defaultTab;
+		Todoyu::$CONFIG['FE']['TAB']['default'] = $defaultTab;
 	}
 
 
@@ -120,20 +120,20 @@ class TodoyuFrontend {
 	 * @param	String		$target
 	 */
 	public static function addMenuEntry($key, $label, $href, $position = 50, $target = '') {
-		if( ! is_array($GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]) ) {
-			$GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key] = array();
+		if( ! is_array(Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]) ) {
+			Todoyu::$CONFIG['FE']['NAVI']['entries'][$key] = array();
 		}
 
-		$GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]['key']		= $key;
-		$GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]['label']		= $label;
-		$GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]['href']		= $href;
+		Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['key']		= $key;
+		Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['label']		= $label;
+		Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['href']		= $href;
 
-		if( ! isset($GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]['position']) ) {
-			$GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]['position']	= $position;
+		if( ! isset(Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['position']) ) {
+			Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['position']	= $position;
 		}
 
 		if( $target !== '' ) {
-			$GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]['target']	= $target;
+			Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['target']	= $target;
 		}
 	}
 
@@ -150,7 +150,7 @@ class TodoyuFrontend {
 	 * @param	String		$type
 	 */
 	public static function addSubmenuEntry($parentKey, $key, $label, $href, $position = 50, $type = '') {
-		$GLOBALS['CONFIG']['FE']['NAVI']['entries'][$parentKey]['submenu'][] = array(
+		Todoyu::$CONFIG['FE']['NAVI']['entries'][$parentKey]['submenu'][] = array(
 			'key'		=> $key,
 			'label'		=> TodoyuDiv::getLabel($label),
 			'href'		=> $href,
@@ -167,7 +167,7 @@ class TodoyuFrontend {
 	 * @param	String		$key		Entry key
 	 */
 	public static function removeMenuEntry($key) {
-		unset($GLOBALS['CONFIG']['FE']['NAVI']['entries'][$key]);
+		unset(Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]);
 	}
 
 
@@ -179,7 +179,7 @@ class TodoyuFrontend {
 	 * @return	Array
 	 */
 	public static function getSubmenuTabs($parentKey) {
-		$submenu	= $GLOBALS['CONFIG']['FE']['TAB']['tabs'][$parentKey]['submenu'];
+		$submenu	= Todoyu::$CONFIG['FE']['TAB']['tabs'][$parentKey]['submenu'];
 		$active		= self::getActiveSubmenuTab($parentKey);
 
 		if( is_array($submenu) ) {
@@ -204,7 +204,7 @@ class TodoyuFrontend {
 	 * @return	Array
 	 */
 	public static function getMenuEntries() {
-		$tabs	= $GLOBALS['CONFIG']['FE']['NAVI']['entries'];
+		$tabs	= Todoyu::$CONFIG['FE']['NAVI']['entries'];
 
 		$active	= self::getActiveTab();
 
@@ -229,7 +229,7 @@ class TodoyuFrontend {
 
 
 	public static function setDefaultView($ext, $controller) {
-		$GLOBALS['CONFIG']['FE']['DEFAULT'] = array(
+		Todoyu::$CONFIG['FE']['DEFAULT'] = array(
 			'ext'		=> $ext,
 			'controller'=> $controller
 		);

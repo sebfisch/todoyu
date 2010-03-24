@@ -19,7 +19,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-$CONFIG['FE'] = array(
+Todoyu::$CONFIG['FE'] = array(
 	'DEFAULT' => array(
 		'ext'		=> 'portal',
 		'controller'=> 'ext'

@@ -257,10 +257,10 @@ class TodoyuHeader {
 		$redirectParams	= array_diff($requestParams, $remove);
 
 		if( empty($requestParams['ext']) ) {
-			$requestParams['ext'] = $GLOBALS['CONFIG']['FE']['DEFAULT']['ext'];
+			$requestParams['ext'] = Todoyu::$CONFIG['FE']['DEFAULT']['ext'];
 		}
 		if( empty($requestParams['controller']) ) {
-			$requestParams['controller'] = $GLOBALS['CONFIG']['FE']['DEFAULT']['controller'];
+			$requestParams['controller'] = Todoyu::$CONFIG['FE']['DEFAULT']['controller'];
 		}
 
 		self::redirect($requestParams['ext'], $requestParams['controller'], $redirectParams);

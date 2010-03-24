@@ -43,7 +43,7 @@ class TodoyuErrorHandler {
 	 * @param	TodoyuDbException		$exception
 	 */
 	public static function handleTodoyuDbException(TodoyuDbException $exception) {
-		if( $GLOBALS['CONFIG']['DEBUG'] ) {
+		if( Todoyu::$CONFIG['DEBUG'] ) {
 			ob_end_clean();
 
 				// Send error header
@@ -87,7 +87,7 @@ class TodoyuErrorHandler {
 		}
 
 			// If debugging, call normal error handler to display the error
-		if( $GLOBALS['CONFIG']['DEBUG'] ) {
+		if( Todoyu::$CONFIG['DEBUG'] ) {
 			return false;
 		} else {
 			return true;

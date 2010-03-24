@@ -39,7 +39,7 @@ class TodoyuMetaMenuManager {
 	 * @param	String		$onMouseOut		onmouseout tag value
 	 */
 	public static function addEntry($key, $label, $position = 100, $href = '', $onClick = '', $onMouseOver = '', $onMouseOut = '') {
-		$GLOBALS['CONFIG']['MetaMenu'][$key] = array(
+		Todoyu::$CONFIG['MetaMenu'][$key] = array(
 			'key'			=> $key,
 			'label'			=> $label,
 			'position'		=> intval($position),
@@ -58,17 +58,17 @@ class TodoyuMetaMenuManager {
 	 * @return	Array
 	 */
 	public static function getEntries() {
-		if( ! is_array($GLOBALS['CONFIG']['MetaMenu']) ) {
-			$GLOBALS['CONFIG']['MetaMenu'] = array();
+		if( ! is_array(Todoyu::$CONFIG['MetaMenu']) ) {
+			Todoyu::$CONFIG['MetaMenu'] = array();
 		}
 
-		foreach($GLOBALS['CONFIG']['MetaMenu'] as $key => $entry) {
+		foreach(Todoyu::$CONFIG['MetaMenu'] as $key => $entry) {
 			if( $entry['href'] === '' ) {
-				$GLOBALS['CONFIG']['MetaMenu']['href'] = 'javascript:void(0)';
+				Todoyu::$CONFIG['MetaMenu']['href'] = 'javascript:void(0)';
 			}
 		}
 
-		return TodoyuArray::sortByLabel($GLOBALS['CONFIG']['MetaMenu'], 'position');
+		return TodoyuArray::sortByLabel(Todoyu::$CONFIG['MetaMenu'], 'position');
 	}
 
 }

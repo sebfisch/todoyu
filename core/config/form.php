@@ -37,104 +37,104 @@ TodoyuLanguage::register('form', PATH_CORE . '/locale/form.xml');
 	 * - class
 	 */
 
-$CONFIG['FORM']['templates'] = array(
+Todoyu::$CONFIG['FORM']['templates'] = array(
 	'form'		=> 'core/view/form/Form.tmpl',
 	'fieldset'	=> 'core/view/form/Fieldset.tmpl',
 	'formelement'=>'core/view/form/FormElement.tmpl',
 	'hidden'	=> 'core/view/form/HiddenField.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['textinput'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['textinput'] = array(
 	'class'		=> 'TodoyuFormElement_Textinput',
 	'template'	=> 'core/view/form/FormElement_Textinput.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['select'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['select'] = array(
 	'class'		=> 'TodoyuFormElement_Select',
 	'template'	=> 'core/view/form/FormElement_Select.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['radio'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['radio'] = array(
 	'class'		=> 'TodoyuFormElement_Radio',
 	'template'	=> 'core/view/form/FormElement_Radio.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['selectgrouped'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['selectgrouped'] = array(
 	'class'		=> 'TodoyuFormElement_SelectGrouped',
 	'template'	=> 'core/view/form/FormElement_SelectGrouped.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['textarea'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['textarea'] = array(
 	'class'		=> 'TodoyuFormElement_Textarea',
 	'template'	=> 'core/view/form/FormElement_Textarea.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['checkbox'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['checkbox'] = array(
 	'class'		=> 'TodoyuFormElement_Checkbox',
 	'template'	=> 'core/view/form/FormElement_Checkbox.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['dateinput'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['dateinput'] = array(
 	'class'		=> 'TodoyuFormElement_Dateinput',
 	'template'	=> 'core/view/form/FormElement_Dateinput.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['datetimeinput'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['datetimeinput'] = array(
 	'class'		=> 'TodoyuFormElement_DateTimeInput',
 	'template'	=> 'core/view/form/FormElement_Dateinput.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['button'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['button'] = array(
 	'class'		=> 'TodoyuFormElement_Button',
 	'template'	=> 'core/view/form/FormElement_Button.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['saveButton'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['saveButton'] = array(
 	'class'		=> 'TodoyuFormElement_SaveButton',
 	'template'	=> 'core/view/form/FormElement_Button.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['cancelButton'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['cancelButton'] = array(
 	'class'		=> 'TodoyuFormElement_CancelButton',
 	'template'	=> 'core/view/form/FormElement_Button.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['expandAllButton'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['expandAllButton'] = array(
 	'class'		=> 'TodoyuFormElement_ExpandAllButton',
 	'template'	=> 'core/view/form/FormElement_Button.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['timeinput'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['timeinput'] = array(
 	'class'		=> 'TodoyuFormElement_Timeinput',
 	'template'	=> 'core/view/form/FormElement_Timeinput.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['duration'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['duration'] = array(
 	'class'		=> 'TodoyuFormElement_Duration',
 	'template'	=> 'core/view/form/FormElement_Duration.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['RTE'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['RTE'] = array(
 	'class'		=> 'TodoyuFormElement_RTE',
 	'template'	=> 'core/view/form/FormElement_RTE.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['upload'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['upload'] = array(
 	'class'		=> 'TodoyuFormElement_Upload',
 	'template'	=> 'core/view/form/FormElement_Upload.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['textinputAC'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['textinputAC'] = array(
 	'class'		=> 'TodoyuFormElement_TextinputAC',
 	'template'	=> 'core/view/form/FormElement_TextinputAC.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['databaseRelation'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['databaseRelation'] = array(
 	'class'		=> 'TodoyuFormElement_DatabaseRelation',
 	'template'	=> 'core/view/form/FormElement_DatabaseRelation.tmpl'
 );
 
-$CONFIG['FORM']['TYPES']['comment'] = array(
+Todoyu::$CONFIG['FORM']['TYPES']['comment'] = array(
 	'class'		=> 'TodoyuFormElement_Comment',
 	'template'	=> 'core/view/form/FormElement_Comment.tmpl'
 );

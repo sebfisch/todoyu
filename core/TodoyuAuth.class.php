@@ -182,7 +182,7 @@ class TodoyuAuth {
 	 * (I know, this can be a security problem!)
 	 * This is for example used to verfiy login data by loginpage (which is an normal action)
 	 *
-	 * Extensions can add their own actions to the config array $CONFIG['AUTH']['noLoginRequired'][EXTNAME][] = ACTION
+	 * Extensions can add their own actions to the config array Todoyu::$CONFIG['AUTH']['noLoginRequired'][EXTNAME][] = ACTION
 	 *
 	 * @param	String		$extension
 	 * @param	String		$controller
@@ -193,8 +193,8 @@ class TodoyuAuth {
 		$controller	= strtolower($controller);
 
 			// Check if for this extension an array is defined
-		if( is_array($GLOBALS['CONFIG']['AUTH']['noLoginRequired'][$extension]) ) {
-			if( in_array($controller, $GLOBALS['CONFIG']['AUTH']['noLoginRequired'][$extension]) ) {
+		if( is_array(Todoyu::$CONFIG['AUTH']['noLoginRequired'][$extension]) ) {
+			if( in_array($controller, Todoyu::$CONFIG['AUTH']['noLoginRequired'][$extension]) ) {
 				return true;
 			}
 		}
@@ -213,8 +213,8 @@ class TodoyuAuth {
 	 */
 	public static function checkLoginStatus(array $requestVars, array $originalRequestVars) {
 		if( ! self::isLoggedIn() && ! self::isNoLoginRequired($requestVars['ext'], $requestVars['ctrl']) )  {
-			$requestVars['ext']	= $GLOBALS['CONFIG']['AUTH']['login']['ext'];
-			$requestVars['ctrl']= $GLOBALS['CONFIG']['AUTH']['login']['controller'];
+			$requestVars['ext']	= Todoyu::$CONFIG['AUTH']['login']['ext'];
+			$requestVars['ctrl']= Todoyu::$CONFIG['AUTH']['login']['controller'];
 		}
 
 		return $requestVars;

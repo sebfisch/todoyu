@@ -23,38 +23,38 @@
 error_reporting(E_ALL ^ E_NOTICE);
 
 	// Add core path to autoloader include paths
-$CONFIG['AUTOLOAD'] = array(PATH_CORE);
+Todoyu::$CONFIG['AUTOLOAD'] = array(PATH_CORE);
 
 
 	// Todoyu session config
-$CONFIG['SESSION']		= array(
+Todoyu::$CONFIG['SESSION']		= array(
 	'key'	=> 'TODOYU'
 );
 
 	// Template (dwoo) path config
-$CONFIG['TEMPLATE']		= array(
+Todoyu::$CONFIG['TEMPLATE']		= array(
 	'compile'	=> PATH_CACHE . DIRECTORY_SEPARATOR . 'tmpl' . DIRECTORY_SEPARATOR . 'compile',
 	'cache'		=> PATH_CACHE . DIRECTORY_SEPARATOR . 'tmpl' . DIRECTORY_SEPARATOR . 'cache',
 );
 
 	// Bad tags which are encoded by the HtmlFilter
-$CONFIG['SECURITY']['badHtmlTags'] = array('script', 'iframe', 'input', 'textarea', 'select', 'form');
+Todoyu::$CONFIG['SECURITY']['badHtmlTags'] = array('script', 'iframe', 'input', 'textarea', 'select', 'form');
 
 
 	// Initialize metamenu registration array
-$CONFIG['MetaMenu']	= array();
+Todoyu::$CONFIG['MetaMenu']	= array();
 
 	// Set (not) allowed paths for TodoyuFileManager::sendFile()
-$CONFIG['sendFile']['allow']	= array(PATH_FILES);
-$CONFIG['sendFile']['disallow']	= array();
+Todoyu::$CONFIG['sendFile']['allow']	= array(PATH_FILES);
+Todoyu::$CONFIG['sendFile']['disallow']	= array();
 
 
 
-$CONFIG['AUTH']['loginCookieName']	= 'todoyulogin';
+Todoyu::$CONFIG['AUTH']['loginCookieName']	= 'todoyulogin';
 
-$CONFIG['EXT_REQUEST_HANDLER'] = array();
+Todoyu::$CONFIG['EXT_REQUEST_HANDLER'] = array();
 
-$CONFIG['CHMOD'] = array(
+Todoyu::$CONFIG['CHMOD'] = array(
 	'file'	=> 0775,
 	'folder'=> 0775
 );
@@ -63,13 +63,13 @@ $CONFIG['CHMOD'] = array(
 TodoyuHookManager::registerHook('core', 'renderPage', 'TodoyuPageAssetManager::addInternetExplorerAssets');
 
 	// Localization defaults
-$CONFIG['SYSTEM']['language']	= 'en';
-$CONFIG['SYSTEM']['locale']		= 'en_US';
+Todoyu::$CONFIG['SYSTEM']['language']	= 'en';
+Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_US';
 	// Default timezone
-$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
+Todoyu::$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
 
 	// List size for paging
-$CONFIG['LIST']['size']	= 30;
+Todoyu::$CONFIG['LIST']['size']	= 30;
 
 
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuRequest::setDefaultRequestVarsHook', 10);
@@ -77,14 +77,14 @@ TodoyuHookManager::registerHook('core', 'onload', 'TodoyuCookieLogin::tryCookieL
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::checkLoginStatus', 1000);
 
 
-$CONFIG['goodPassword'] = array(
+Todoyu::$CONFIG['goodPassword'] = array(
 	'minLength'		=> 8,
 	'hasNumbers'	=> true,
 	'hasLowerCase'	=> true,
 	'hasUpperCase'	=> true
 );
 
-$CONFIG['CREATE'] = array(
+Todoyu::$CONFIG['CREATE'] = array(
 	'engines'	=> array()
 );
 
