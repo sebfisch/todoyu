@@ -135,9 +135,9 @@ class TodoyuFormValidator {
 
 
 	/**
-	 * Validate value not having at least giben minimum length
+	 * Validate value having at least given minimum amount of characters
 	 *
-	 * @param	unknown_type		$value
+	 * @param	String				$value
 	 * @param	Array				$validatorConfig
 	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
@@ -169,13 +169,13 @@ class TodoyuFormValidator {
 
 
 	/**
-	 * Check if value is decimal
+	 * Check whether value is decimal
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
 	 * @param 	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	private static function isDecimal($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		return TodoyuValidator::isDecimal($value);
@@ -184,8 +184,7 @@ class TodoyuFormValidator {
 
 
 	/**
-	 * Check if the checked value (date) is before an other date
-	 * defined in the $config array
+	 * Check if the checked value (date) is before an other date defined in the $config array
 	 *
 	 * @param	String		$value			Readable date format which works with strtotime()
 	 * @param	Array		$config			Field config array
@@ -210,8 +209,7 @@ class TodoyuFormValidator {
 
 
 	/**
-	 * Negate check of dateBefore
-	 * Check is valid if the date is after or the same time
+	 * Negate check of dateBefore. Check validity if the date is after or the same time
 	 *
 	 * @see 	dateBefore()
 	 * @param	String		$value			Readable date format which works with strtotime()
@@ -230,8 +228,7 @@ class TodoyuFormValidator {
 
 
 	/**
-	 * Check if the checked value (date) is after an other date
-	 * defined in the $config array
+	 * Check if the checked value (date) is after an other date defined in the $config array
 	 *
 	 * @param	String		$value			Readable date format which works with strtotime()
 	 * @param	Array		$config			Field config array
@@ -244,7 +241,6 @@ class TodoyuFormValidator {
 		if( $value == 0 && array_key_exists('allowEmpty', $validatorConfig) ) {
 			return true;
 		}
-
 
 			// Convert dates to timestamps
 		$fieldDate		= intval($value);
@@ -367,12 +363,13 @@ class TodoyuFormValidator {
 
 
 	/**
+	 * Validate value to have minimum length or be empty
 	 *
-	 * @param array $value
-	 * @param TodoyuFormElement $validatorConfig
-	 * @param array $formElement
-	 * @param $formData
-	 * @return unknown_type
+	 * @param	Array				$value
+	 * @param	TodoyuFormElement	$validatorConfig
+	 * @param	Array				$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
 	 */
 	public static function minLengthIfNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData)	{
 		$minLength	= $validatorConfig['field'];
@@ -470,7 +467,7 @@ class TodoyuFormValidator {
 	 * @param	Array				$validatorConfig
 	 * @param	TodoyuFormElement 	$formElement
 	 * @param	Array				$formData
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function email($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		$value	= trim($value);
@@ -491,7 +488,7 @@ class TodoyuFormValidator {
 	 * @param	Array				$validatorConfig
 	 * @param	TodoyuFormElement 	$formElement
 	 * @param	Array				$formData
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function requiredIfNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		$field	= $validatorConfig['field'];
@@ -504,11 +501,12 @@ class TodoyuFormValidator {
 	/**
 	 * Validate database relation field
 	 *
+	 * @uses	TodoyuFormElement_DatabaseRelation
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
 	 * @param	TodoyuFormElement 	$formElement
 	 * @param	Array				$formData
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function validateSubRecords($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 		return $formElement->areAllRecordsValid();
