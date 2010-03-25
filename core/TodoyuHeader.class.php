@@ -223,7 +223,7 @@ class TodoyuHeader {
 		);
 		$params	= array_merge($params, $addParams);
 
-		$url	= TodoyuDiv::buildUrl($params, '', true);
+		$url	= TodoyuString::buildUrl($params, '', true);
 
 		self::location($url, true);
 	}

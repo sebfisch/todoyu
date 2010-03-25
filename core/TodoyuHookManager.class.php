@@ -64,7 +64,7 @@ class TodoyuHookManager {
 		$returnValues	= array();
 
 		foreach($hookFuncRefs as $hookFuncRef) {
-			$returnValues[] = TodoyuDiv::callUserFunctionArray($hookFuncRef, $params);
+			$returnValues[] = TodoyuFunction::callUserFunctionArray($hookFuncRef, $params);
 		}
 
 		return $returnValues;
@@ -88,7 +88,7 @@ class TodoyuHookManager {
 		array_unshift($hookParams, $dataVar);
 
 		foreach($hookFuncRefs as $hookFuncRef) {
-			$hookParams[0] = TodoyuDiv::callUserFunctionArray($hookFuncRef, $hookParams);
+			$hookParams[0] = TodoyuFunction::callUserFunctionArray($hookFuncRef, $hookParams);
 		}
 
 		return $hookParams[0];

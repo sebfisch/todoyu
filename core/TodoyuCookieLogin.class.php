@@ -45,7 +45,7 @@ class TodoyuCookieLogin {
 
 			if( ! empty($cookieValue) ) {
 					// Decrypt cookie data
-				$cookieData	= TodoyuDiv::decrypt($cookieValue);
+				$cookieData	= TodoyuCrypto::decrypt($cookieValue);
 
 				Todoyu::log('Try to login with cookie, is cookie data valid?');
 
@@ -123,7 +123,7 @@ class TodoyuCookieLogin {
 			'useragentHash'	=> self::getUserAgentShortHash()
 		);
 
-		return TodoyuDiv::encrypt($data);
+		return TodoyuCrypto::encrypt($data);
 	}
 
 

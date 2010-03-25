@@ -108,7 +108,7 @@ abstract class TodoyuPanelWidget {
 	 * @param	String		$title
 	 */
 	public function setTitle($title) {
-		$this->set('title', TodoyuDiv::getLabel($title));
+		$this->set('title', TodoyuString::getLabel($title));
 	}
 
 

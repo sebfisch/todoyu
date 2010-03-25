@@ -288,8 +288,8 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 			case 'function':
 				$function	= $config['label']['function'];
 
-				if( TodoyuDiv::isFunctionReference($function) ) {
-					$label = TodoyuDiv::callUserFunction($function, $this, $record);
+				if( TodoyuFunction::isFunctionReference($function) ) {
+					$label = TodoyuFunction::callUserFunction($function, $this, $record);
 				}
 				break;
 
@@ -365,12 +365,12 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	public function validateRequired() {
 		$customValidator	= $this->config['record']['validateRequired'];
 
-		if( TodoyuDiv::isFunctionReference($customValidator) ) {
+		if( TodoyuFunction::isFunctionReference($customValidator) ) {
 			$records	= $this->getRecords();
 			$valid		= true;
 
 			foreach($records as $record) {
-				if( ! TodoyuDiv::callUserFunction($customValidator, $this, $record) ) {
+				if( ! TodoyuFunction::callUserFunction($customValidator, $this, $record) ) {
 					$valid = false;
 					break;
 				}

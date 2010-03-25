@@ -54,7 +54,7 @@ class TodoyuListingRenderer {
 			$offset	= 0;
 		}
 
-		$listData	= TodoyuDiv::callUserFunction($config['dataFunc'], $size, $offset, $searchWord);
+		$listData	= TodoyuFunction::callUserFunction($config['dataFunc'], $size, $offset, $searchWord);
 		$totalRows	= intval($listData['total']);
 
 		$tmpl	= 'core/view/listing.tmpl';

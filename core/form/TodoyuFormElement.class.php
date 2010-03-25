@@ -190,7 +190,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	protected function getData() {
 		$this->config['htmlId']			= $this->getForm()->makeID($this->name);
 		$this->config['htmlName']		= $this->getForm()->makeName($this->name, $this->config['multiple']);
-		$this->config['label']			= TodoyuDiv::getLabel($this->config['label']);
+		$this->config['label']			= TodoyuString::getLabel($this->config['label']);
 		$this->config['containerClass']	= 'type' . ucfirst($this->type) . ' fieldname' . ucfirst(str_replace('_', '', $this->name));
 		$this->config['inputClass']		= $this->type;
 		$this->config['required']		= $this->hasAttribute('required');
@@ -616,7 +616,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			$wizardConf['wizardConf']['idRecord']	= intval($this->getForm()->getRecordID());
 
 			if( $wizardConf['wizardConf']['displayCondition'] )	{
-				$wizardConf['hasWizard'] = TodoyuDiv::callUserFunctionArray($wizardConf['wizardConf']['displayCondition'], $wizardConf);
+				$wizardConf['hasWizard'] = TodoyuFunction::callUserFunctionArray($wizardConf['wizardConf']['displayCondition'], $wizardConf);
 			}
 
 			if($wizardConf['wizardConf']['restrict'] && $wizardConf['hasWizard'])	{
@@ -641,7 +641,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @param	String		$text
 	 */
 	public function setAfterFieldText($text) {
-		$text		= TodoyuDiv::getLabel($text);
+		$text		= TodoyuString::getLabel($text);
 
 //		TodoyuDebug::printInFirebug($text, 'set text');
 
@@ -669,7 +669,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 */
 	public function addAfterFieldText($text, $glue = '<br />') {
 		$current	= $this->getAfterFieldText();
-		$text		= TodoyuDiv::getLabel($text);
+		$text		= TodoyuString::getLabel($text);
 
 		if( $current === '' ) {
 			$this->setAfterFieldText($text);
@@ -686,7 +686,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @param	String		$text
 	 */
 	public function setBeforeFieldText($text) {
-		$text		= TodoyuDiv::getLabel($text);
+		$text		= TodoyuString::getLabel($text);
 
 		$this->setAttribute('textBeforeField', $text);
 	}

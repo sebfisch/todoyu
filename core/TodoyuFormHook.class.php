@@ -123,7 +123,7 @@ class TodoyuFormHook {
 		$hooks		= self::getHooks('loadData', $xmlPath);
 
 		foreach($hooks as $hook) {
-			$data	= TodoyuDiv::callUserFunction($hook['funcRef'], $data, $idRecord);
+			$data	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord);
 		}
 
 		return $data;
@@ -145,7 +145,7 @@ class TodoyuFormHook {
 		$hooks		= self::getHooks('saveData', $xmlPath);
 
 		foreach($hooks as $hook) {
-			$temp	= TodoyuDiv::callUserFunction($hook['funcRef'], $data, $idRecord);
+			$temp	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord);
 
 			if( is_array($temp) ) {
 				$data = $temp;

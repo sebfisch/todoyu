@@ -189,8 +189,8 @@ class TodoyuInstaller {
 	private static function process($step, array $data = array()) {
 		$stepConfig	= self::getStepConfig($step);
 
-		if( TodoyuDiv::isFunctionReference($stepConfig['process']) ) {
-			return TodoyuDiv::callUserFunction($stepConfig['process'], $data);
+		if( TodoyuFunction::isFunctionReference($stepConfig['process']) ) {
+			return TodoyuFunction::callUserFunction($stepConfig['process'], $data);
 		} else {
 			return array();
 		}
@@ -209,8 +209,8 @@ class TodoyuInstaller {
 		$stepConfig	= self::getStepConfig($step);
 		$tmpl		= 'install/view/' . $stepConfig['tmpl'];
 
-		if( TodoyuDiv::isFunctionReference($stepConfig['render']) ) {
-			$data	= TodoyuDiv::callUserFunction($stepConfig['render'], $result);
+		if( TodoyuFunction::isFunctionReference($stepConfig['render']) ) {
+			$data	= TodoyuFunction::callUserFunction($stepConfig['render'], $result);
 		} else {
 			$data	= array();
 		}

@@ -114,8 +114,8 @@ class TodoyuActionDispatcher {
 	private static function callExtOnRequestHandler($ext) {
 		$handler	= isset( Todoyu::$CONFIG['EXT_REQUEST_HANDLER'][$ext] ) ? Todoyu::$CONFIG['EXT_REQUEST_HANDLER'][$ext] : NULL;
 
-		if( ! empty($handler) && TodoyuDiv::isFunctionReference($handler) ) {
-			TodoyuDiv::callUserFunction($handler);
+		if( ! empty($handler) && TodoyuFunction::isFunctionReference($handler) ) {
+			TodoyuFunction::callUserFunction($handler);
 		}
 	}
 

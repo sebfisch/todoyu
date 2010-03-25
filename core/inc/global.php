@@ -57,7 +57,6 @@ require_once( PATH_CORE . '/TodoyuRequest.class.php' );
 require_once( PATH_CORE . '/TodoyuActionController.class.php' );
 require_once( PATH_CORE . '/TodoyuActionDispatcher.class.php' );
 require_once( PATH_CORE . '/TodoyuArray.class.php' );
-require_once( PATH_CORE . '/TodoyuDiv.class.php' );
 require_once( PATH_CORE . '/TodoyuPreferenceManager.class.php' );
 require_once( PATH_CORE . '/TodoyuFileManager.class.php' );
 

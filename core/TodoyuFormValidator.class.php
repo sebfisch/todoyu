@@ -72,8 +72,8 @@ class TodoyuFormValidator {
 				// Validate
 			$function	= $validatorConfig['function'];
 
-			if( TodoyuDiv::isFunctionReference($function) ) {
-				$result	= TodoyuDiv::callUserFunction($function, $value, $validatorConfig, $formElement, $formData);
+			if( TodoyuFunction::isFunctionReference($function) ) {
+				$result	= TodoyuFunction::callUserFunction($function, $value, $validatorConfig, $formElement, $formData);
 			} else  {
 				Todoyu::log('Formvalidator function not found: ' . $function, LOG_LEVEL_FATAL);
 				$result	= false;

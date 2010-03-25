@@ -27,8 +27,6 @@
  */
 class TodoyuString {
 
-
-
 	/**
 	 * Check if a string is utf-8 encoded
 	 *
@@ -305,6 +303,119 @@ class TodoyuString {
 		$dez	= $size >= 10 ? 0 : 1;
 
 		return number_format($size, $dez, '.', '') . ( $noLabel ? '' : ' ' . $label);
+	}
+
+
+
+	/**
+	 * Parse label if there is a label reference (LLL:)
+	 * Else, just return the label
+	 *
+	 * @param	String		$label		Label or label reference
+	 * @param	String		$locale		For output for this locale
+	 * @return	String		Real label
+	 */
+	public static function getLabel($label, $locale = null) {
+		if( ! is_string($label) ) {
+			return '';
+		} elseif( strncmp('LLL:', $label, 4) === 0 ) {
+			$labelKey = substr($label, 4);
+			return TodoyuLanguage::getLabel($labelKey, $locale);
+		} else {
+			return $label;
+		}
+	}
+
+
+
+	/**
+	 * Wrap into JS tag
+	 *
+	 * @param	String	$jsCode
+	 * @return	String
+	 */
+	public static function wrapScript($jsCode) {
+		return '<script language="javascript" type="text/javascript">' . $jsCode . '</script>';
+	}
+
+
+
+	/**
+	 * Build an URL with given parameters prefixed with todoyu path
+	 *
+	 * @param	Array		$params		Parameters as key=>value
+	 * @param	String		$hash		Hash (#hash)
+	 * @param	Boolean		$absolute	Absolute URL with host server
+	 * @return	String
+	 */
+	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {
+		$query		= rtrim(PATH_WEB, '/\\') . '/index.php';
+		$queryParts	= array();
+
+			// Add question mark if there are query parameters
+		if( sizeof($params) > 0 ) {
+			$query .= '?';
+		}
+
+			// Add all parameters encoded
+		foreach($params as $name => $value) {
+			$queryParts[] = $name . '=' . urlencode($value);
+		}
+
+			// Concatinate
+		$query .= implode('&', $queryParts);
+
+			// Add hash
+		if( ! empty($hash) ) {
+			$query .= '#' . $hash;
+		}
+
+			// Add absolute server url
+		if( $absolute ) {
+			$query = SERVER_URL . $query;
+		}
+
+		return $query;
+	}
+
+
+
+	/**
+	 * Get short md5 hash of a string
+	 *
+	 * @param	String		$string
+	 * @return	String		10 characters md5 hash value of the string
+	 */
+	public static function md5short($string) {
+		return substr(md5($string), 0, 10);
+	}
+
+
+
+	/**
+	 * Analyze version string and return array of contained sub versions and attributes
+	 *
+	 * @param	String		$versionString
+	 * @return	Array		[major,minor,revision,status]
+	 */
+	public static function getVersionInfo($versionString) {
+		$info			= array();
+
+		if( strpos($versionString, '-') !== false ) {
+			$temp	= explode('-', $versionString);
+			$version= explode('.', $temp[0]);
+			$status	= $temp[1];
+		} else {
+			$version= explode('.', $versionString);
+			$status	= 'stable';
+		}
+
+		$info['major']		= intval($version[0]);
+		$info['minor']		= intval($version[1]);
+		$info['revision']	= intval($version[2]);
+		$info['status']		= $status;
+
+		return $info;
 	}
 
 }

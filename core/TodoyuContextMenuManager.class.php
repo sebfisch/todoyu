@@ -64,7 +64,7 @@ class TodoyuContextMenuManager {
 
 			// Check that the registered functions exist
 		foreach($funcRefs as $index => $function) {
-			if( ! TodoyuDiv::isFunctionReference($function['function']) ) {
+			if( ! TodoyuFunction::isFunctionReference($function['function']) ) {
 				unset($funcRefs[$index]);
 			}
 		}

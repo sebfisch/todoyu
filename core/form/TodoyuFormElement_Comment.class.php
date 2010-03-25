@@ -60,7 +60,7 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 	 * @param	String		$value		Locallang reference or just a string
 	 */
 	public function setValue($value) {
-		$value	= TodoyuDiv::getLabel($value);
+		$value	= TodoyuString::getLabel($value);
 
 		parent::setValue($value);
 	}

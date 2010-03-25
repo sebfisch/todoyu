@@ -45,7 +45,7 @@ function Label($labelKey, $locale = null) {
  */
 function findLabel($label, $plain = false, $language = null) {
 	if( $plain ) {
-		return TodoyuDiv::getLabel($label, $language);
+		return TodoyuString::getLabel($label, $language);
 	} else {
 		return TodoyuLanguage::getLabel($label, $language);
 	}

@@ -76,7 +76,7 @@ class TodoyuContextMenu {
 
 			// Get items from all functions
 		foreach($funcRefs as $funcRef) {
-			$modified	=  TodoyuDiv::callUserFunction($funcRef['function'], $this->idElement, $this->elements);
+			$modified	=  TodoyuFunction::callUserFunction($funcRef['function'], $this->idElement, $this->elements);
 
 			if( is_array($modified) ) {
 				$this->elements	= $modified;
@@ -170,7 +170,7 @@ class TodoyuContextMenu {
 	private function renderLabel($label) {
 			// Check if there is a function reference in the label
 		if( strstr($label, '::') ) {
-			$label = TodoyuDiv::callUserFunction($label, $this->idElement);
+			$label = TodoyuFunction::callUserFunction($label, $this->idElement);
 		} else {
 			$label	= TodoyuLanguage::getLabel($label);
 		}

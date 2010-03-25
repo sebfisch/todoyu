@@ -146,7 +146,7 @@ class TodoyuLogger {
 			foreach($this->modes as $mode) {
 				$funcRef = Todoyu::$CONFIG['LOG']['MODES'][$mode]['funcRef'];
 
-				TodoyuDiv::callUserFunction($funcRef, $message, $level, $data, $info, $this->requestKey);
+				TodoyuFunction::callUserFunction($funcRef, $message, $level, $data, $info, $this->requestKey);
 			}
 		}
 	}

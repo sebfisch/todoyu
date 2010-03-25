@@ -334,7 +334,7 @@ class TodoyuPageAssetManager {
 	 */
 	private static function getSingleJavascriptPath($pathToFile, $compressed = false, $localized = false) {
 		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
-		$dirHash	= TodoyuDiv::md5short(dirname($pathToFile));
+		$dirHash	= TodoyuString::md5short(dirname($pathToFile));
 		$pathInfo	= pathinfo($pathToFile);
 
 		$postfix	= ($compressed ? '-min' : '') . ($localized ? '-' . TodoyuLanguage::getLanguage() : '');
@@ -497,7 +497,7 @@ class TodoyuPageAssetManager {
 	 */
 	private static function getSingleStylesheetPath($pathToFile, $compressed = false) {
 		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
-		$dirHash	= TodoyuDiv::md5short(dirname($pathToFile));
+		$dirHash	= TodoyuString::md5short(dirname($pathToFile));
 		$pathInfo	= pathinfo($pathToFile);
 
 		$postfix	= $compressed ? '-min' : '' ;
