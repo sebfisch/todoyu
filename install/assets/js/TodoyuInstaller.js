@@ -1,29 +1,28 @@
-/***************************************************************
-*  Copyright notice
+/****************************************************************************
+* todoyu is published under the BSD License:
+* http://www.opensource.org/licenses/bsd-license.php
 *
-*  (c) 2009 snowflake productions gmbh
-*  All rights reserved
+* Copyright (c) 2010, snowflake productions gmbh
+* All rights reserved.
 *
-*  This script is part of the todoyu project.
-*  The todoyu project is free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License, version 2,
-*  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) as published by
-*  the Free Software Foundation;
+* This script is part of the todoyu project.
+* The todoyu project is free software; you can redistribute it and/or modify
+* it under the terms of the BSC License.
 *
-*  This script is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-*  GNU General Public License for more details.
+* This script is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the BSD License
+* for more details.
 *
-*  This copyright notice MUST APPEAR in all copies of the script!
-***************************************************************/
+* This copyright notice MUST APPEAR in all copies of the script.
+*****************************************************************************/
 
-TodoyuInstaller = {
+var TodoyuInstaller = {
 
 	/**
 	 * Disable given text box if selected value == 0
-	 * 
-	 * @param	Element	selector 
+	 *
+	 * @param	Element	selector
 	 */
 	disableTextBox: function(selector)	{
 		textbox = document.getElementById('database_new');
@@ -42,12 +41,12 @@ TodoyuInstaller = {
 	 */
 	checkDbSelect: function() {
 		var newDbName	= $F('database_new');
-		
+
 		if ( newDbName !== '' ) {
 				// New DB name specified? deactivate selector
 			$('database').selectedIndex	= 0;
 			$('database').disabled	= true;
-			
+
 				// Make sure there's no existing DB with that name
 			$('error-newnameTaken').hide();
 			$('submit').show();
@@ -66,9 +65,9 @@ TodoyuInstaller = {
 
 	/**
 	 * Toggle display of SQL review
-	 * 
+	 *
 	 * @param	String	togglerID
-	 * @param	String	sqlElementID	 
+	 * @param	String	sqlElementID
 	 */
 	toggle: function(togglerID, sqlElementID) {
 		var toggler	= $(togglerID);
@@ -77,7 +76,7 @@ TodoyuInstaller = {
 				// Collapse toggler
 			toggler.innerHTML	= 'Hide SQL';
 			toggler.addClassName('expanded');
-			$(sqlElementID).show();						 			
+			$(sqlElementID).show();
 		} else {
 				// Expand toggler
 			toggler.innerHTML	= 'View SQL';
@@ -110,7 +109,7 @@ TodoyuInstaller = {
 
 
 	/**
-	 *	Skip data import action (by altering action to next one) 
+	 *	Skip data import action (by altering action to next one)
 	 */
 	skipDataImport: function() {
 		document.getElementById('action').value = 'config';
