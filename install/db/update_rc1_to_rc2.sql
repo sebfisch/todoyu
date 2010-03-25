@@ -125,3 +125,5 @@ ALTER TABLE `ext_contact_person` CHANGE `gender` `salutation` VARCHAR(1) NOT NUL
 ALTER TABLE `ext_contact_jobtype` ADD `date_create` int(10) unsigned NOT NULL DEFAULT '0';
 ALTER TABLE `ext_contact_jobtype` ADD `date_update` int(10) unsigned NOT NULL;
 ALTER TABLE `ext_contact_jobtype` ADD `id_person_create` smallint(5) unsigned NOT NULL;
+ALTER TABLE `ext_project_project` DROP `date_finish`;
+ALTER TABLE `ext_project_task` DROP `date_finish`;
