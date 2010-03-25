@@ -621,7 +621,7 @@ INSERT INTO `ext_contact_jobtype` (`id`, `date_create`, `date_update`, `id_perso
 (2, 1264761659, 0, 1, 0, 'CEO'),
 (3, 1264761659, 0, 1, 0, 'Receptionist'),
 (4, 1264761659, 0, 1, 0, 'Developer'),
-(5, 1264761659, 0, 1, 0, 'IT-Manager');
+(5, 1264761659, 0, 1, 0, 'IT-Manager'),
 (6, 1264761659, 0, 1, 0, 'Test Engineer');
 
 --
