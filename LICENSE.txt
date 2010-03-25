@@ -1,4 +1,4 @@
-todoyu 2.0 is published under the BSD License: 
+todoyu is published under the BSD License: 
 http://www.opensource.org/licenses/bsd-license.php
 
 Copyright (c) 2010, snowflake productions gmbh
