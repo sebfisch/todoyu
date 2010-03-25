@@ -50,7 +50,7 @@
 		<label index="close">Close</label>
 		<label index="noAccess.pageTitle">No Access</label>
 		<label index="noAccess.goBackToLastPage">Go back to last page</label>
-		<label index="noAccess.contactAdmin">If you think should have access, report the following data to your todoyu administrator:</label>
+		<label index="noAccess.contactAdmin">If you think you should have access, report the following data to your todoyu administrator:</label>
 		<label index="noAccess.requestURL">Request URL</label>
 		<label index="noAccess.missingRight">Missing Right</label>
 		<label index="footer.version">Version</label>
@@ -93,7 +93,7 @@
 		<label index="save">Speichern</label>
 		<label index="cancel">Abbrechen</label>
 		<label index="delete">Löschen</label>
-		<label index="deleteRecord">Eintrage löschen</label>
+		<label index="deleteRecord">Einträge löschen</label>
 		<label index="show">Zeigen</label>
 		<label index="hide">Verstecken</label>
 		<label index="unhide">Sichtbar machen</label>
