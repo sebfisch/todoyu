@@ -59,8 +59,29 @@ class TodoyuInstallerManager {
 
 		return $result;
 	}
-
-
+	
+	
+	
+	public static function processConfigFileCheck(array $data)	{
+		$files = array(
+			'db.php',
+			'config.php',
+			'extconf.php',
+			'extensions.php',
+			'override.php',
+			'system.php'
+		);
+		
+		foreach($files as $file)	{
+			$file = PATH_CONFIG.$file;
+			if(file_exists($file))	{
+				$content = file_get_contents($file);
+				$content = str_replace(chr(10).'$CONFIG', chr(10).'Todoyu::$CONFIG', $content);
+				file_put_contents($file, $content);
+			}
+		}
+	}
+	
 
 	/**
 	 * Check if connection data is valid
@@ -281,8 +302,9 @@ class TodoyuInstallerManager {
 	 */
 	public static function processUpdate(array $data) {
 		$result	= array();
-
+		
 		if( intval($data['start']) === 1 ) {
+			self::processConfigFileCheck($data);
 			TodoyuInstaller::setStep('updatetocurrentversion');
 		} else {
 			$result['text']		= Label('installer.update.info');
