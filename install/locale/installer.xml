@@ -74,6 +74,8 @@
 		<label index="update.button">Start Update</label>
 		<label index="update.info">Apply Database Changes for Your Current Version and Compare Current Columns with File Configuration</label>
 		<label index="update.step">Update todoyu Installation</label>
+		<label index="updateconfigfiles.title">Check Config files</label>
+		<label index="updateconfigfiles.info">Apply Database Changes for Your Current Version and Compare Current Columns with File Configuration</label>
 		<label index="updatetocurrentversion.title">Update Database</label>
 		<label index="updatetocurrentversion.button">Apply Database Changes</label>
 		<label index="updatetocurrentversion.button.noupdates">No Updates, proceed</label>

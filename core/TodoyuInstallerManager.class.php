@@ -85,6 +85,15 @@ class TodoyuInstallerManager {
 				file_put_contents($file, $content);
 			}
 		}
+		
+		TodoyuInstaller::setStep('updatetocurrentversion');
+		
+		$result = array(
+			'text'		=> Label('installer.updateconfigfiles.info'),
+			'textClass'	=> 'info'
+		);
+		
+		return $result;
 	}
 	
 	
@@ -310,8 +319,7 @@ class TodoyuInstallerManager {
 		$result	= array();
 		
 		if( intval($data['start']) === 1 ) {
-			self::processConfigFileCheck($data);
-			TodoyuInstaller::setStep('updatetocurrentversion');
+			TodoyuInstaller::setStep('updateconfigfiles');
 		} else {
 			$result['text']		= Label('installer.update.info');
 			$result['textClass']= 'info';
