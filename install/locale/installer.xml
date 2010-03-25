@@ -75,7 +75,9 @@
 		<label index="update.info">Apply Database Changes for Your Current Version and Compare Current Columns with File Configuration</label>
 		<label index="update.step">Update todoyu Installation</label>
 		<label index="updateconfigfiles.title">Check Config files</label>
-		<label index="updateconfigfiles.info">Apply Database Changes for Your Current Version and Compare Current Columns with File Configuration</label>
+		<label index="updateconfigfiles.step">Check Config files</label>
+		<label index="updateconfigfiles.info">Apply Database Changes for Your Current Version</label>
+		<label index="updateconfigfiles.button">Proceed With Database Updates</label>
 		<label index="updatetocurrentversion.title">Update Database</label>
 		<label index="updatetocurrentversion.button">Apply Database Changes</label>
 		<label index="updatetocurrentversion.button.noupdates">No Updates, proceed</label>
@@ -167,6 +169,10 @@
 		<label index="update.button">Aktualisierung starten</label>
 		<label index="update.info">Änderungen der Datenbank der vorliegenden Version durchführen und mit Datei-Konfiguration abgleichen</label>
 		<label index="update.step">todoyu Installation aktualisieren</label>
+		<label index="updateconfigfiles.title">Konfigurationsdateien überprüfen</label>
+		<label index="updateconfigfiles.step">Konfigurationsdateien überprüfen</label>
+		<label index="updateconfigfiles.info">Änderungen der Datenbank der vorliegenden Version durchführen</label>
+		<label index="updateconfigfiles.button">Weiter mit den Datenbankupdates</label>
 		<label index="updatetocurrentversion.title">Datenbank aktualisieren</label>
 		<label index="updatetocurrentversion.button">Datenbank-Änderungen durchführen</label>
 		<label index="updatetocurrentversion.button.noupdates">Keine Aktualisierung, weiter</label>
