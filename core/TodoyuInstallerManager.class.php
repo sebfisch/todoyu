@@ -62,6 +62,11 @@ class TodoyuInstallerManager {
 	
 	
 	
+	/**
+	 * Process special rc2 config-files update
+	 * 
+	 * @param	Array	$data
+	 */
 	public static function processConfigFileCheck(array $data)	{
 		$files = array(
 			'db.php',
@@ -76,11 +81,15 @@ class TodoyuInstallerManager {
 			$file = PATH_CONFIG.$file;
 			if(file_exists($file))	{
 				$content = file_get_contents($file);
+				TodoyuDebug::printInFirebug($file, 'file');
+				TodoyuDebug::printInFirebug($content, 'content before');
 				$content = str_replace(chr(10).'$CONFIG', chr(10).'Todoyu::$CONFIG', $content);
+				TodoyuDebug::printInFirebug($content, 'content after');
 				file_put_contents($file, $content);
 			}
 		}
 	}
+	
 	
 
 	/**
