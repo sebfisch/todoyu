@@ -56,8 +56,9 @@ input {}
 	input.textinputAC {
 		background-image:url(../img/icons.png);
 		background-repeat:no-repeat;
-		background-position:right -718px;
-		background-color:#ecfeff;
+		background-position: 5px -809px;
+		background-color: #e3eace;
+		text-indent: 25px;
 	}
 
 
