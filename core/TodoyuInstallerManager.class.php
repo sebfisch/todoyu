@@ -68,25 +68,28 @@ class TodoyuInstallerManager {
 	 * @param	Array	$data
 	 */
 	public static function processConfigFileCheck(array $data)	{
-		$files = array(
-			'db.php',
-			'config.php',
-			'extconf.php',
-			'extensions.php',
-			'override.php',
-			'system.php'
-		);
+		if(intval($data['update']) === 1)	{
+			TodoyuInstaller::setStep('updatetocurrentversion');
+		} else {
 		
-		foreach($files as $file)	{
-			$file = TodoyuFileManager::pathAbsolute('config/'.$file);
-			if(file_exists($file))	{
-				$content = file_get_contents($file);
-				$content = str_replace(chr(10).'$CONFIG', chr(10).'Todoyu::$CONFIG', $content);
-				file_put_contents($file, $content);
+			$files = array(
+				'db.php',
+				'config.php',
+				'extconf.php',
+				'extensions.php',
+				'override.php',
+				'system.php'
+			);
+		
+			foreach($files as $file)	{
+				$file = TodoyuFileManager::pathAbsolute('config/'.$file);
+				if(file_exists($file))	{
+					$content = file_get_contents($file);
+					$content = str_replace(chr(10).'$CONFIG', chr(10).'Todoyu::$CONFIG', $content);
+					file_put_contents($file, $content);
+				}
 			}
 		}
-		
-		TodoyuInstaller::setStep('updatetocurrentversion');
 		
 		$result = array(
 			'text'		=> Label('installer.updateconfigfiles.info'),
