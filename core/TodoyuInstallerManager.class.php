@@ -67,11 +67,8 @@ class TodoyuInstallerManager {
 	 * 
 	 * @param	Array	$data
 	 */
-	public static function processConfigFileCheck(array $data)	{
-		if(intval($data['update']) === 1)	{
-			TodoyuInstaller::setStep('updatetocurrentversion');
-		} else {
-		
+	public static function processConfigFileCheck(array $data, $realProceed = false)	{
+		if($realProceed)	{
 			$files = array(
 				'db.php',
 				'config.php',
@@ -89,6 +86,8 @@ class TodoyuInstallerManager {
 					file_put_contents($file, $content);
 				}
 			}
+		} else {
+			TodoyuInstaller::setStep('updatetocurrentversion');
 		}
 		
 		$result = array(
@@ -97,6 +96,7 @@ class TodoyuInstallerManager {
 		);
 		
 		return $result;
+		
 	}
 	
 	
@@ -322,6 +322,7 @@ class TodoyuInstallerManager {
 		$result	= array();
 		
 		if( intval($data['start']) === 1 ) {
+			self::processConfigFileCheck($data, true);
 			TodoyuInstaller::setStep('updateconfigfiles');
 		} else {
 			$result['text']		= Label('installer.update.info');
