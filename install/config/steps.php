@@ -118,8 +118,8 @@ Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 	),
 	'updateconfigfiles'	=> array(
 		'process'	=> 'TodoyuInstallerManager::processConfigFileCheck',
-		'render'	=> 'TodoyuInstallerRenderer::renderUpdate',
-		'tmpl'		=> '13_update.tmpl'
+		'render'	=> 'TodoyuInstallerRenderer::renderUpdateConfigFiles',
+		'tmpl'		=> '09_update.tmpl'
 	),
 	'updatetocurrentversion' => array(
 			// Mandatory version updates

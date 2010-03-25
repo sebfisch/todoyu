@@ -261,7 +261,24 @@ class TodoyuInstallerRenderer {
 		return $data;
 	}
 
+	
+	
+	/**
+	 * 
+	 * @param array $result
+	 */
+	public static function renderUpdateConfigFiles(array $result)	{
+		$data	= array(
+			'title'		=> 'installer.updateconfigfiles.title',
+			'button'	=> 'installer.updateconfigfiles.button',
+			'text'		=> Label('installer.updateconfigfiles.title'),
+			'textClass'	=> 'info'
+		);
 
+		return $data;
+	}
+
+	
 
 	/**
 	 * Render detected and conducted mandatory version DB updates
