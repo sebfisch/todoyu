@@ -126,7 +126,7 @@ label {}
 div.fElement {
 	position:relative;
 	margin:0;
-	padding:3px 2px 3px 2px;
+	padding:3px 0;
 	height:auto !important;
 	height:1%;
 }
@@ -148,7 +148,7 @@ div.fElement {
 	div.fElement .fField {
 		display:inline;
 		float:right;
-		width:59%;
+		width:58%;
 		padding-right:3px;
 	}
 
@@ -182,7 +182,11 @@ div.fElement {
 			width:30px;
 		}
 
-	.typeCheckbox {}
+	.typeCheckbox {
+		width: 56%;
+		float: right;
+		margin-right: 3px !important;
+	}
 
 		div.typeCheckbox .fLabel {
 			float:right;
@@ -202,7 +206,6 @@ div.fElement {
 			width:2%;
 			padding-right:0;
 			padding-left:0;
-			margin-left:41%;
 		}
 
 	.typeDatabaseRelation {}
