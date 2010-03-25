@@ -1,4 +1,43 @@
-on the way to RC2 (available via SVN only) - 2010-02-26
+2.0.0-rc2 - 2010-03-25
+	* Changed: No more (there was one left) global variables, $GLOBALS['config'] is now Todoyu::$GLOBALS
+	* Changed: Cleaned and revised installer (optional) demo data 
+	* Bugfix: Revised (discussed, tested, fixed) all rights conditions and roles presets in installer basic data
+	* Changed: Moved generally (also without demo data) useful data from demo data to new SQL data segment in installer: basic data (contains roles and resp. rights presets)
+	* Removed: Reduced roles in demo data (installer) to three main types: workers, project managers, customers
+	* Added: New core class: TodoyuFunction
+	* Changed: Removed differentiation of assets (default / public) for better API clarity and performance + memory optimization
+	* Added: Implemented quick creation (via creation types drop-down in headlet) for all record types
+	* Bugfix: Several bugfixes in: filters, calendar, headlet, forms, installer, quickcreate
+	* Added: Added HTML tags stripping before saving tinyMCE edited / created comments, stripping settings configurable in comments extension config
+	* Added: Extended search with finding of comments by comment ID (K-identifier numbers)
+	* Added: Added new classes: TodoyuString, TodoyuNumeric
+	* Changed: Relocated all methods from TodoyuDiv class to appripriate classes to clarify API
+	* Added: Extended task details rendering, when creator differs from owner person: both are shown now
+	* Added: Extended calendar appointments single view with edit button (UI)
+	* Added: Validation of forms sub records (foreign relations)
+	* Added: Implemented full rights conditions neccessary for general use
+	* Defined: Editing and Deletion allowance is ONE right, as editing can also lead to quasi deletion (setting data empty / invalid)
+	* Changed: Split task- and project- status definitions and handling for better code clarity
+	* Bugfix: Fixed context menu to work everywhere now
+	* Removed: Removed invoicing related fields from task table definition in project extension (invoicing not covered in basic scope)
+	* Removed: Removed user extension, moved all person related functions to person manager classes of contact extension
+	* Changed: Renamed usergroups to roles
+	* Changed: Removed useradmin from sysadmin, added user related person data administration to person section of contact area
+	* Changed: Removed all creation widgets, implemented globally available creation wizard (dropdown for type selection) headlet
+	* Added: New search headlet for person and company records
+	* Changed: Made contact types dynamic
+	* Added: Categorization of contact types (Categories: email, phone, others)
+	* Added: Rights for access of areas added by extensions (additionally to basic extension usage right)
+	* Added: (basic) bugtracker extension
+	* Added: Web 2.0 style paging via forward / back button instead of index links
+	* Added: Implemented all filterconditions of todoyu 1.1
+	* Changed: New icons for Project and Task
+	* Changed: Cleaned all CSS icon sprites
+	* Changed: Redesigned notification messages
+	* Added: Additional informations rendering in task header via registerable hooks
+	* Added: Global info tooltip on person labels
+	* Removed: company flag is_ngo not covered in public extensions 
+	* Published: Dev- and Bugtracker- Extensions are now publicly online in SVN
 	* Changed: Renamed users to person in whole system
 	* Changed: Removed user extension. Split up in contact and core
 	* Changed: User administration is located in contact and is now a person administration
