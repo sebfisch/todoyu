@@ -961,8 +961,6 @@ INSERT INTO `system_preference` (`id`, `id_person`, `ext`, `area`, `preference`,
 
 INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `salutation`, `title`, `birthday`) VALUES
 (1, 1246615200, 1269510278, 0, 0, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'todoyu@snowflake.ch', 1, 1, 'Adam', 'Admin', 'ALAD', 'm', '', '1966-10-05'),
-(2, 1254213351, 1264500957, 1, 1, 'alfred', 'a55e28b5514b1b1292a9018549edc271', 'alfred345KJHFSD', 1, 1, 'Alfred', 'Hitchcock', 'ALHI', 'm', '', '1899-08-13'),
-(3, 1254213483, 1264500951, 1, 1, 'kurt', '3b9ef5add002b05aa3a2fc7bc83dc017', 'kurt456SDF', 0, 1, 'Kurt', 'Cobain', 'KUCO', 'm', '', '1967-02-20'),
 (4, 1264581204, 1269513298, 1, 0, '', '', '', 0, 0, 'James', 'Brown', 'JABR', 'm', '', '1933-05-03'),
 (5, 1264584484, 1269513353, 1, 0, '', '', '', 0, 0, 'Ludwig', 'van Beethoven', 'LUVA', 'm', '', '1770-12-17'),
 (6, 1264584644, 1269510452, 1, 0, 'customer', '5f4dcc3b5aa765d61d8327deb882cf99', 'curt@trava.example.com', 0, 1, 'Curt', 'Customer', 'CUCU', 'm', '', '1980-04-04'),
