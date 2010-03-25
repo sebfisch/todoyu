@@ -439,14 +439,42 @@ class TodoyuArray {
 	 * @return	Array
 	 */
 	public static function implodeQuoted($array = array(), $delimiter = ',', $useDoubleQuotes = false) {
-		$items	= array();
 		$quote	= $useDoubleQuotes ? '"' : "'";
 
-		foreach($array as $item) {
-			$items[] = $quote . trim($item, $quote) . $quote;
+		$array	= self::wrapItems($array, $quote, $quote, 'addslashes');
+
+		return implode($delimiter, $array);
+	}
+
+
+
+	/**
+	 * Wrap all items of an array. Add a string before and after the value.
+	 * Only strings and numbers are wrapped, everything else will not be touched.
+	 * If $wrapAfter is false, $wrapBefore is used
+	 *
+	 * @param	Array		$array
+	 * @param	String		$wrapBefore
+	 * @param	String		$wrapAfter
+	 * @param	String		$callback		Optional callback function which is applied to all processed items before wrapped. Ex: addslashes
+	 * @return	Array
+	 */
+	public static function wrapItems(array $array, $wrapBefore, $wrapAfter = false, $callback = false) {
+		if( $wrapAfter === false ) {
+			$wrapAfter = $wrapBefore;
 		}
 
-		return implode($delimiter, $items);
+		foreach($array as $index => $item) {
+			if( is_string($item) || is_numeric($item) ) {
+				if( $callback !== false ) {
+					$item	= call_user_func($callback, $item);
+				}
+
+				$array[$index] = $wrapBefore . $item . $wrapAfter;
+			}
+		}
+
+		return $array;
 	}
 
 
