@@ -81,7 +81,6 @@ ALTER TABLE `ext_comment_mailed` CHANGE `id_user_create` `id_person_create` SMAL
 ALTER TABLE `ext_contact_address` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_contact_company` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_contact_contactinfo` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
-ALTER TABLE `ext_contact_contactinfotype` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_contact_person` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_project_project` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
 ALTER TABLE `ext_project_task` CHANGE `id_user_create` `id_person_create` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0';
