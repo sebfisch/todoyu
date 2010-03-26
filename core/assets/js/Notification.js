@@ -51,7 +51,7 @@ Todoyu.Notification = {
 	notify: function(type, message, countdown) {
 		this.loadTemplate();
 
-		countdown	= Object.isUndefined(countdown) ? this.defaultCountdown : Todoyu.Helper.intcal(countdown);
+		countdown	= Object.isUndefined(countdown) ? this.defaultCountdown : Todoyu.Helper.intval(countdown);
 		var id		= this.id++;
 
 		var data	= {
