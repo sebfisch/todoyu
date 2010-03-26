@@ -183,29 +183,38 @@ div.fElement {
 		}
 
 	.typeCheckbox {
-		width: 56%;
-		float: right;
-		margin-right: 3px !important;
 	}
 
 		div.typeCheckbox .fLabel {
 			float:right;
-			width:56%;
+			width:58%;
 			padding-right:0;
-			padding-left:0;
+			padding-left: 0;
 			text-align:left;
 		}
+		
+		div.typeCheckbox .fLabel label {
+			position: relative;
+			z-index: 2;
+			margin-left: 15px;
+		}
+		
 			/* checkbox in a fField element. */
 			/* example:Address in Ext Contact */
 			.fField div.typeCheckbox .fLabel {
-				width:54%;
 			}
 
 		div.typeCheckbox .fField {
-			float:left;
-			width:2%;
-			padding-right:0;
+			position: absolute;
+			z-index: 1;
+			right: 0;
+			width: 58%;
 			padding-left:0;
+			text-align: left;
+		}
+		
+		div.typeCheckbox .fField input.checkbox {
+			width: auto !important;
 		}
 
 	.typeDatabaseRelation {}
