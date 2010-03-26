@@ -117,7 +117,7 @@ class TodoyuFileManager {
 		$files			= array();
 
 		foreach($elements as $element) {
-			if( is_file($pathToFolder . '/' . $element) ) {
+			if( is_file($pathToFolder . DIRECTORY_SEPARATOR . $element) ) {
 					// No filters defined: add file to results array
 				if ( sizeof($filters) == 0) {
 					$files[] = $element;
@@ -151,7 +151,7 @@ class TodoyuFileManager {
 		$folders		= array();
 
 		foreach($elements as $element) {
-			if( is_dir($pathToFolder . '/' . $element) ) {
+			if( is_dir($pathToFolder . DIRECTORY_SEPARATOR . $element) ) {
 				$folders[] = $element;
 			}
 		}
@@ -171,13 +171,23 @@ class TodoyuFileManager {
 		$folders		= self::getFoldersInFolder($folderPath, $deleteHidden);
 		$files			= self::getFilesInFolder($folderPath);
 
-		foreach($folders as $folder) {
-			self::deleteFolderContent($folderPath . '/' . $folder);
-			rmdir($folderPath . '/' . $folder);
+			// Delete folders with contents
+		foreach($folders as $foldername) {
+			$pathFolder	= $folderPath . DIRECTORY_SEPARATOR . $foldername;
+
+			if( is_dir($pathFolder) ) {
+				self::deleteFolderContent($pathFolder);
+				rmdir($pathFolder);
+			}
 		}
 
-		foreach($files as $file) {
-			unlink($folderPath . '/' . $file);
+			// Delete files in folder
+		foreach($files as $filename) {
+			$pathFile	= $folderPath . DIRECTORY_SEPARATOR . $filename;
+
+			if( is_file($pathFile) ) {
+				unlink($pathFile);
+			}
 		}
 	}
 
@@ -186,14 +196,19 @@ class TodoyuFileManager {
 	/**
 	 * Delete folder including all files and folders contained in it
 	 *
-	 * @param	String	$folderPath
+	 * @param	String		$pathFolder
 	 * @return	Boolean
 	 */
-	public static function deleteFolder($folderPath) {
-		$folderPath	= self::pathAbsolute($folderPath);
+	public static function deleteFolder($pathFolder) {
+		$pathFolder	= self::pathAbsolute($pathFolder);
 
-		self::deleteFolderContent($folderPath, true);
-		return rmdir($folderPath);
+		if( is_dir($pathFolder) ) {
+			self::deleteFolderContent($pathFolder, true);
+
+			return rmdir($pathFolder);
+		} else {
+			return false;
+		}
 	}
 
 
@@ -466,7 +481,7 @@ class TodoyuFileManager {
 	 */
 	public static function appendToFilename($filename, $append) {
 		$pathinfo	= pathinfo($filename);
-		$dir		= ( $pathinfo['dirname'] == '.' ) ? '' : $pathinfo['dirname'] . '/';
+		$dir		= ( $pathinfo['dirname'] == '.' ) ? '' : $pathinfo['dirname'] . DIRECTORY_SEPARATOR;
 
 		return $dir . $pathinfo['filename'] . $append . '.' . $pathinfo['extension'];
 	}

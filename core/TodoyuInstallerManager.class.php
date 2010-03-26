@@ -723,13 +723,10 @@ class TodoyuInstallerManager {
 					$content = str_replace($currentString, $newString, $content);
 
 					file_put_contents($file, $content);
+
+					include($file);
 				}
 			}
-		}
-
-			// load old config variables into the new config array for the current request
-		if( is_array($GLOBALS['CONFIG']) ) {
-			Todoyu::$CONFIG = array_merge_recursive(Todoyu::$CONFIG, $GLOBALS['CONFIG']);
 		}
 	}
 }
