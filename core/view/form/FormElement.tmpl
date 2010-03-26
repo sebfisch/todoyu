@@ -5,14 +5,18 @@
 	</div>
 	<div id="formElement-{$htmlId}-inputbox" class="fField{if $wizard.hasWizard} hasWizard{/if}">
 
-		<span class="textBeforeField">{$textBeforeField}</span>
-
+		{if $textBeforeField}
+			<span class="textBeforeField">{$textBeforeField}</span>
+		{/if}
+		
 		{block name="field"}
 			This part should be replaced by your field template
 		{/block}
 
-		<span class="textAfterField">{$textAfterField}</span>
-
+		{if $textAfterField}
+			<span class="textAfterField">{$textAfterField}</span>
+		{/if}
+		
 		{if $error && $errorMessage}
 			<span class="errorMessage">{Label $errorMessage plain=true}</span>
 		{/if}
