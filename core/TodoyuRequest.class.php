@@ -71,7 +71,7 @@ class TodoyuRequest {
 		$get	= $_GET;
 		$post	= $_POST;
 
-		if( PHP_OS !== 'Linux' ) {
+		if( PHP_OS === 'Linux' ) {
 			$get	= TodoyuArray::stripslashes($get);
 			$post	= TodoyuArray::stripslashes($post);
 		}
