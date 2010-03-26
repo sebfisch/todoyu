@@ -63,33 +63,6 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Remove left-over and not in-use anymore files (and directories) from previous versions
-	 */
-	public static function removeOldFiles() {
-		$pathConfig		= TodoyuFileManager::pathAbsolute('install/config');
-		$oldFilesConfigs= TodoyuFileManager::getFilesInFolder($pathConfig, false, array('deletefiles_'));
-
-		foreach($oldFilesConfigs as $oldFilesConfig) {
-				// Get file path
-			$filePath	= TodoyuFileManager::pathAbsolute($pathConfig . '/' . $oldFilesConfig);
-				// Get list of needless directories and files
-			require_once($filePath);
-			foreach(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessDirs'] as $removeDir) {
-				if ( file_exists($removeDir) ) {
-					TodoyuFileManager::deleteFolderContent($removeDir);
-				}
-			}
-			foreach(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessFiles'] as $removeFile) {
-				if ( file_exists($removeFile) ) {
-					unlink($removeFile);
-				}
-			}
-		}
-	}
-
-
-
-	/**
 	 * Check if connection data is valid
 	 *
 	 * @param	Array		$data
@@ -685,6 +658,33 @@ class TodoyuInstallerManager {
 		foreach($paths as $path) {
 			if( is_dir($path) ) {
 				TodoyuFileManager::deleteFolderContent($path, false);
+			}
+		}
+	}
+
+
+
+	/**
+	 * Remove left-over and not in-use anymore files (and directories) from previous versions
+	 */
+	public static function removeOldFiles() {
+		$pathConfig		= TodoyuFileManager::pathAbsolute('install/config');
+		$oldFilesConfigs= TodoyuFileManager::getFilesInFolder($pathConfig, false, array('deletefiles_'));
+
+		foreach($oldFilesConfigs as $oldFilesConfig) {
+				// Get file path
+			$filePath	= TodoyuFileManager::pathAbsolute($pathConfig . '/' . $oldFilesConfig);
+				// Get list of needless directories and files
+			require_once($filePath);
+			foreach(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessDirs'] as $removeDir) {
+				if ( file_exists($removeDir) ) {
+					TodoyuFileManager::deleteFolderContent($removeDir);
+				}
+			}
+			foreach(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessFiles'] as $removeFile) {
+				if ( file_exists($removeFile) ) {
+					unlink($removeFile);
+				}
 			}
 		}
 	}
