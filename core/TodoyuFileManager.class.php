@@ -122,9 +122,9 @@ class TodoyuFileManager {
 		$files		= array();
 
 		foreach($elements as $element) {
-			if( is_file($pathToFolder . DIRECTORY_SEPARATOR . $element) ) {
+			if( is_file($pathFolder . DIRECTORY_SEPARATOR . $element) ) {
 					// No filters defined: add file to results array
-				if ( sizeof($filters) == 0) {
+				if ( sizeof($filters) === 0) {
 					$files[] = $element;
 				} else {
 						// Check string filters
