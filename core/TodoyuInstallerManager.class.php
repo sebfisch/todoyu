@@ -67,10 +67,10 @@ class TodoyuInstallerManager {
 	 *
 	 * @param	Array	$data
 	 */
-	public static function processConfigFileCheck(array $data, $realProceed = false)	{
+	public static function processConfigFileCheckXX(array $data, $realProceed = false)	{
 		if ( $realProceed )	{
 				// Erase left-over files from prev. versions not being used anymore
-			self::removeOldFiles();
+
 
 				// Fix older than RC2 config files compatibility
 			$files = array(
@@ -108,12 +108,14 @@ class TodoyuInstallerManager {
 	 * Remove left-over and not in-use anymore files (and directories) from previous versions
 	 */
 	public static function removeOldFiles() {
-		$configsPath	= PATH . DIRECTORY_SEPARATOR . 'install' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR;
-		$oldFilesConfs	= TodoyuFileManager::getFilesInFolder($configsPath, false, array('deletefiles_'));
+		$pathConfig		= TodoyuFileManager::pathAbsolute('install/config');
+		$oldFilesConfigs= TodoyuFileManager::getFilesInFolder($pathConfig, false, array('deletefiles_'));
 
-		foreach($oldFilesConfs as $oldFilesConf) {
+		foreach($oldFilesConfigs as $oldFilesConfig) {
+				// Get file path
+			$filePath	= TodoyuFileManager::pathAbsolute($pathConfig . '/' . $oldFilesConfig);
 				// Get list of needless directories and files
-			require_once($oldFilesConf);
+			require_once($filePath);
 			foreach(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessDirs'] as $removeDir) {
 				if ( file_exists($removeDir) ) {
 					TodoyuFileManager::deleteFolderContent($removeDir);
@@ -730,6 +732,40 @@ class TodoyuInstallerManager {
 		}
 	}
 
+
+	public static function updateConfigFileVariables() {
+		// Fix older than RC2 config files compatibility
+		$files = array(
+			'db.php',
+			'config.php',
+			'extconf.php',
+			'extensions.php',
+			'override.php',
+			'system.php'
+		);
+
+		$currentString	= '$CONFIG[';
+		$newString		= 'Todoyu::$CONFIG[';
+
+		foreach($files as $file)	{
+			$file	= TodoyuFileManager::pathAbsolute('config/' . $file);
+
+			if( is_file($file) )	{
+				$content	= file_get_contents($file);
+
+				if( ! strstr($content, $newString) ) {
+					$content = str_replace($currentString, $newString, $content);
+
+					file_put_contents($file, $content);
+				}
+			}
+		}
+
+			// load old config variables into the new config array for the current request
+		if( is_array($GLOBALS['CONFIG']) ) {
+			Todoyu::$CONFIG = array_merge_recursive(Todoyu::$CONFIG, $GLOBALS['CONFIG']);
+		}
+	}
 }
 
 

@@ -34,6 +34,8 @@ class TodoyuInstaller {
 		ob_start();
 
 		if( ! self::hasStep() || self::isRestart() ) {
+				// Cleanup before initializing
+			self::onInitCleanup();
 				// Initialize step in session
 			self::initStep();
 				// Clear all cache
@@ -56,6 +58,19 @@ class TodoyuInstaller {
 
 			// Flush output buffer
 		ob_end_flush();
+	}
+
+
+
+	/**
+	 * Cleanup installation before initializing
+	 *
+	 */
+	private static function onInitCleanup() {
+			// Remove files of old installations
+		TodoyuInstallerManager::removeOldFiles();
+			// Update config files if necessary
+		TodoyuInstallerManager::updateConfigFileVariables();
 	}
 
 

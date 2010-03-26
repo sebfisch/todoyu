@@ -40,7 +40,6 @@ Todoyu::$CONFIG['INSTALLER']['install'] = array(
 
 Todoyu::$CONFIG['INSTALLER']['update'] = array(
 	'update',
-	'updateconfigfiles',
 	'updatetocurrentversion',
 	'finishupdate'
 );
