@@ -87,6 +87,7 @@
 		<label index="quickcreate.title">Neue Daten Anlegen</label>
 		<label index="quickcreate.alltypes.label">Alle Datentypen:</label>
 		<label index="dateFormat">j.n.j</label>
+		<label index="create">Erstellen</label>
 		<label index="createNew">Daten anfügen</label>
 		<label index="edit">Bearbeiten</label>
 		<label index="load">Daten laden</label>
