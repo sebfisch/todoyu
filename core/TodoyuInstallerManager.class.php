@@ -706,12 +706,10 @@ class TodoyuInstallerManager {
 		$extContent	= TodoyuFileManager::getFileContent($filePath);
 
 		foreach($removeExts as $ext) {
-			$extContent	= str_replace(',' . $ext, '', $extContent);
+			$extContent	= str_replace(',\'' . $ext . '\'', '', $extContent);
 		}
 
 		TodoyuFileManager::saveFileContent($filePath, $extContent);
-
-
 
 			// Fix older than RC2 config files compatibility
 		$files = array(
