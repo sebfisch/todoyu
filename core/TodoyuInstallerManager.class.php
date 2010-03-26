@@ -59,16 +59,20 @@ class TodoyuInstallerManager {
 
 		return $result;
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Process special rc2 config-files update
-	 * 
+	 *
 	 * @param	Array	$data
 	 */
 	public static function processConfigFileCheck(array $data, $realProceed = false)	{
-		if($realProceed)	{
+		if ( $realProceed )	{
+				// Erase left-over files from prev. versions not being used anymore
+			self::removeOldFiles();
+
+				// Fix older than RC2 config files compatibility
 			$files = array(
 				'db.php',
 				'config.php',
@@ -77,29 +81,53 @@ class TodoyuInstallerManager {
 				'override.php',
 				'system.php'
 			);
-		
+
 			foreach($files as $file)	{
-				$file = TodoyuFileManager::pathAbsolute('config/'.$file);
+				$file	= TodoyuFileManager::pathAbsolute('config/' . $file);
 				if(file_exists($file))	{
-					$content = file_get_contents($file);
-					$content = str_replace(chr(10).'$CONFIG', chr(10).'Todoyu::$CONFIG', $content);
+					$content	= file_get_contents($file);
+					$content	= str_replace(chr(10) . '$CONFIG', chr(10) . 'Todoyu::$CONFIG', $content);
 					file_put_contents($file, $content);
 				}
 			}
 		} else {
 			TodoyuInstaller::setStep('updatetocurrentversion');
 		}
-		
+
 		$result = array(
 			'text'		=> Label('installer.updateconfigfiles.info'),
 			'textClass'	=> 'info'
 		);
-		
+
 		return $result;
-		
 	}
-	
-	
+
+
+
+	/**
+	 * Remove left-over and not in-use anymore files (and directories) from previous versions
+	 */
+	public static function removeOldFiles() {
+		$configsPath	= PATH . DIRECTORY_SEPARATOR . 'install' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR;
+		$oldFilesConfs	= TodoyuFileManager::getFilesInFolder($configsPath, false, array('deletefiles_'));
+
+		foreach($oldFilesConfs as $oldFilesConf) {
+				// Get list of needless directories and files
+			require_once($oldFilesConf);
+			foreach(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessDirs'] as $removeDir) {
+				if ( file_exists($removeDir) ) {
+					TodoyuFileManager::deleteFolderContent($removeDir);
+				}
+			}
+			foreach(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessFiles'] as $removeFile) {
+				if ( file_exists($removeFile) ) {
+					unlink($removeFile);
+				}
+			}
+		}
+	}
+
+
 
 	/**
 	 * Check if connection data is valid
@@ -320,7 +348,7 @@ class TodoyuInstallerManager {
 	 */
 	public static function processUpdate(array $data) {
 		$result	= array();
-		
+
 		if( intval($data['start']) === 1 ) {
 			self::processConfigFileCheck($data, true);
 			TodoyuInstaller::setStep('updateconfigfiles');

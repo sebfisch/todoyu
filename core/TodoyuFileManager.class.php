@@ -104,20 +104,32 @@ class TodoyuFileManager {
 
 
 	/**
-	 * Get listing of files in given folder
+	 * Get listing of files inside given folder
 	 *
-	 * @param	String	$pathToFolder
-	 * @param	Boolean	$showHidden
+	 * @param	String		$pathToFolder
+	 * @param	Boolean		$showHidden
+	 * @param	String		$filters			strings needed to be contained in files looking for
 	 * @return	Array
 	 */
-	public static function getFilesInFolder($pathToFolder, $showHidden = false) {
+	public static function getFilesInFolder($pathToFolder, $showHidden = false, $filters = array()) {
 		$pathToFolder	= self::pathAbsolute($pathToFolder);
 		$elements		= self::getFolderContent($pathToFolder, $showHidden);
 		$files			= array();
 
 		foreach($elements as $element) {
 			if( is_file($pathToFolder . '/' . $element) ) {
-				$files[] = $element;
+					// No filters defined: add file to results array
+				if ( sizeof($filters) == 0) {
+					$files[] = $element;
+				} else {
+						// Check string filters
+					foreach($filters as $filterString) {
+						if ( strpos($element, $filterString) !== false ) {
+							$files[] = $element;
+							break;
+						}
+					}
+				}
 			}
 		}
 
@@ -154,19 +166,32 @@ class TodoyuFileManager {
 	 *
 	 * @param	String	$pathToFolder
 	 */
-	public static function deleteFolderContent($pathToFolder, $deleteHidden = false) {
-		$pathToFolder 	= self::pathAbsolute($pathToFolder);
-		$folders		= self::getFoldersInFolder($pathToFolder, $deleteHidden);
-		$files			= self::getFilesInFolder($pathToFolder);
+	public static function deleteFolderContent($folderPath, $deleteHidden = false) {
+		$folderPath 	= self::pathAbsolute($folderPath);
+		$folders		= self::getFoldersInFolder($folderPath, $deleteHidden);
+		$files			= self::getFilesInFolder($folderPath);
 
 		foreach($folders as $folder) {
-			self::deleteFolderContent($pathToFolder . '/' . $folder);
-			rmdir($pathToFolder . '/' . $folder);
+			self::deleteFolderContent($folderPath . '/' . $folder);
+			rmdir($folderPath . '/' . $folder);
 		}
 
 		foreach($files as $file) {
-			unlink($pathToFolder . '/' . $file);
+			unlink($folderPath . '/' . $file);
 		}
+	}
+
+
+
+	/**
+	 * Delete folder including all files and folders contained in it
+	 *
+	 * @param	String	$folderPath
+	 * @return	Boolean
+	 */
+	public static function deleteFolder($folderPath) {
+		self::deleteFolderContent($folderPath, true);
+		return rmdir($folderPath);
 	}
 
 
