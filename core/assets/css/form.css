@@ -1,6 +1,6 @@
 form {
 	margin:0;
-	padding:0;
+	padding:0 0 0 0;
 }
 	* html form {height:1%}
 
@@ -16,7 +16,7 @@ form {
 
 			/* buttons, footerline */
 		fieldset.buttons {
-			margin:0 0 0.5em 0;
+			margin:10px 0 5px 0;
 			padding:0.2em 0;
 			text-align:right;
 			float:right;
@@ -486,9 +486,25 @@ form div.error .fField span.errorMessage {
 
 /* special styles for involved persons */
 
-#quickcreate.project .persons {
+form .databaseRelation {
+	margin-top: 5px;
+	padding-top: 5px;
+}
+
+.project .persons {
 	width: 43%;
 	float: right;
 	margin-top: 20px;
 	min-height: 200px;
+}
+
+form .fieldnamePerson .foreignRecordsActionControll,
+form .fieldnameContactinfo .foreignRecordsActionControll,
+form .fieldnameAddress .foreignRecordsActionControll,
+form .fieldnameCompany .foreignRecordsActionControll {
+	text-align: left;
+}
+
+form .formtrigger {
+	font-weight: bold;
 }
