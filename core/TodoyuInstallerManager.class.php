@@ -63,48 +63,6 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Process special rc2 config-files update
-	 *
-	 * @param	Array	$data
-	 */
-	public static function processConfigFileCheckXX(array $data, $realProceed = false)	{
-		if ( $realProceed )	{
-				// Erase left-over files from prev. versions not being used anymore
-
-
-				// Fix older than RC2 config files compatibility
-			$files = array(
-				'db.php',
-				'config.php',
-				'extconf.php',
-				'extensions.php',
-				'override.php',
-				'system.php'
-			);
-
-			foreach($files as $file)	{
-				$file	= TodoyuFileManager::pathAbsolute('config/' . $file);
-				if(file_exists($file))	{
-					$content	= file_get_contents($file);
-					$content	= str_replace(chr(10) . '$CONFIG', chr(10) . 'Todoyu::$CONFIG', $content);
-					file_put_contents($file, $content);
-				}
-			}
-		} else {
-			TodoyuInstaller::setStep('updatetocurrentversion');
-		}
-
-		$result = array(
-			'text'		=> Label('installer.updateconfigfiles.info'),
-			'textClass'	=> 'info'
-		);
-
-		return $result;
-	}
-
-
-
-	/**
 	 * Remove left-over and not in-use anymore files (and directories) from previous versions
 	 */
 	public static function removeOldFiles() {
@@ -352,8 +310,7 @@ class TodoyuInstallerManager {
 		$result	= array();
 
 		if( intval($data['start']) === 1 ) {
-			self::processConfigFileCheck($data, true);
-			TodoyuInstaller::setStep('updateconfigfiles');
+			TodoyuInstaller::setStep('updatetocurrentversion');
 		} else {
 			$result['text']		= Label('installer.update.info');
 			$result['textClass']= 'info';
@@ -733,6 +690,11 @@ class TodoyuInstallerManager {
 	}
 
 
+
+	/**
+	 * Update old style config variables if necessary
+	 *
+	 */
 	public static function updateConfigFileVariables() {
 		// Fix older than RC2 config files compatibility
 		$files = array(
