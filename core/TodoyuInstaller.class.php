@@ -169,7 +169,6 @@ class TodoyuInstaller {
 
 
 
-
 	/**
 	 * Get run mode
 	 *

@@ -19,10 +19,10 @@ button {
 	padding:0;
 	background:#ffffff url('../img/bg-button-css3.png') repeat-x 0 50%;
 
-	border: 1px solid #bbbbbb;
-	-moz-border-radius: 13px;
-	-webkit-border-radius: 13px;
-	border-radius: 13px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+	border:1px solid #bbbbbb;
+	-moz-border-radius:13px;
+	-webkit-border-radius:13px;
+	border-radius:13px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
 }
 
 button span {
@@ -81,4 +81,3 @@ button.expandAll .icon {
 div.typeSaveButton div.fField button {
 
 }
-

@@ -56,10 +56,14 @@ input {}
 	input.textinputAC {
 		background-image:url(../img/icons.png);
 		background-repeat:no-repeat;
-		background-position: 5px -809px;
-		background-color: #e3eace;
-		text-indent: 25px;
+		background-position:5px -809px;
+		background-color:#e3eace;
+		text-indent:25px;
 	}
+	
+.type-dateinput input {
+	width:60px;
+}
 
 
 textarea {
@@ -73,7 +77,7 @@ textarea {
 }
 
 select {
-	text-transform: none;
+	text-transform:none;
 }
 
 	select.auto {
@@ -98,7 +102,7 @@ select {
 	}
 
 	select option{
-	text-transform: none;
+	text-transform:none;
 }
 
 	select optgroup {
@@ -189,14 +193,14 @@ div.fElement {
 			float:right;
 			width:58%;
 			padding-right:0;
-			padding-left: 0;
+			padding-left:0;
 			text-align:left;
 		}
 		
 		div.typeCheckbox .fLabel label {
-			position: relative;
-			z-index: 2;
-			margin-left: 15px;
+			position:relative;
+			z-index:2;
+			margin-left:15px;
 		}
 		
 			/* checkbox in a fField element. */
@@ -205,16 +209,16 @@ div.fElement {
 			}
 
 		div.typeCheckbox .fField {
-			position: absolute;
-			z-index: 1;
-			right: 0;
-			width: 58%;
+			position:absolute;
+			z-index:1;
+			right:0;
+			width:58%;
 			padding-left:0;
-			text-align: left;
+			text-align:left;
 		}
 		
 		div.typeCheckbox .fField input.checkbox {
-			width: auto !important;
+			width:auto !important;
 		}
 
 	.typeDatabaseRelation {}
@@ -243,12 +247,12 @@ div.fElement {
 
 
 	.fElement .fField.hasWizard input{
-		width: 80%;
-		float: left;
+		width:80%;
+		float:left;
 	}
 
 	.fElement .fField.hasWizard .wizardIcon{
-		cursor: pointer;
+		cursor:pointer;
 	}
 
 	fieldset.buttons div,

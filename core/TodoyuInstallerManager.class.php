@@ -574,7 +574,6 @@ class TodoyuInstallerManager {
 
 
 
-
 	/**
 	 * Get current version of the database
 	 *
