@@ -68,10 +68,11 @@ class TodoyuRequest {
 	 * @return	Array
 	 */
 	public static function getAll() {
-		$get	= TodoyuArray::stripslashes($_GET);
-		$post	= TodoyuArray::stripslashes($_POST);
-
-		return array_merge($get, $post);
+//		$get	= TodoyuArray::stripslashes($_GET);
+//		$post	= TodoyuArray::stripslashes($_POST);
+//
+//		return array_merge($get, $post);
+		return array_merge($_GET, $_POST);
 	}
 
 
