@@ -498,7 +498,7 @@ form .databaseRelation {
 	min-height: 200px;
 }
 
-form .fieldnamePerson .foreignRecordsActionControll,
+form .fieldnamePersons .foreignRecordsActionControll,
 form .fieldnameContactinfo .foreignRecordsActionControll,
 form .fieldnameAddress .foreignRecordsActionControll,
 form .fieldnameCompany .foreignRecordsActionControll {
