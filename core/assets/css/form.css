@@ -454,7 +454,8 @@ form div.error .fField span.errorMessage {
 
 /* styles for lighbox creates */
 
-#quickcreate form {
+#quickcreate form,
+#quicktask form {
 	padding: 10px 5px 0 5px;
 }
 
