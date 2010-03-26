@@ -80,11 +80,11 @@ class TodoyuFileManager {
 	/**
 	 * Get folder contents
 	 *
-	 * @param	String	$pathToFolder
-	 * @param	Boolean	$showHidden
+	 * @param	String		$pathFolder
+	 * @param	Boolean		$showHidden
 	 * @return	Array
 	 */
-	public static function getFolderContent($pathToFolder, $showHidden = false) {
+	public static function getFolderContent($pathFolder, $showHidden = false) {
 		$pathFolder	= self::pathAbsolute($pathFolder);
 		$items			= array();
 
@@ -111,15 +111,15 @@ class TodoyuFileManager {
 	/**
 	 * Get listing of files inside given folder
 	 *
-	 * @param	String		$pathToFolder
+	 * @param	String		$pathFolder
 	 * @param	Boolean		$showHidden
 	 * @param	String		$filters			strings needed to be contained in files looking for
 	 * @return	Array
 	 */
-	public static function getFilesInFolder($pathToFolder, $showHidden = false, $filters = array()) {
-		$pathToFolder	= self::pathAbsolute($pathToFolder);
-		$elements		= self::getFolderContent($pathToFolder, $showHidden);
-		$files			= array();
+	public static function getFilesInFolder($pathFolder, $showHidden = false, $filters = array()) {
+		$pathFolder	= self::pathAbsolute($pathFolder);
+		$elements	= self::getFolderContent($pathFolder, $showHidden);
+		$files		= array();
 
 		foreach($elements as $element) {
 			if( is_file($pathToFolder . DIRECTORY_SEPARATOR . $element) ) {

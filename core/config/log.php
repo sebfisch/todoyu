@@ -31,7 +31,7 @@
 Todoyu::$CONFIG['LOG'] 	= array(
 	'active'	=> array(
 		'FILE',
-		'DB',
+//		'DB',
 		'FIREBUG'
 	),
 	'level'		=> LOG_LEVEL_DEBUG,
