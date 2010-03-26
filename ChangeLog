@@ -1,6 +1,6 @@
 2.0.0-rc2 - 2010-03-25
-	* Changed: No more (there was one left) global variables, $GLOBALS['config'] is now Todoyu::$GLOBALS
-	* Changed: Cleaned and revised installer (optional) demo data 
+	* Changed: No more (there was one left) global variables, $GLOBALS['config'] is now Todoyu::$CONFIG
+	* Changed: Cleaned and revised installer (optional) demo data
 	* Bugfix: Revised (discussed, tested, fixed) all rights conditions and roles presets in installer basic data
 	* Changed: Moved generally (also without demo data) useful data from demo data to new SQL data segment in installer: basic data (contains roles and resp. rights presets)
 	* Removed: Reduced roles in demo data (installer) to three main types: workers, project managers, customers
@@ -36,7 +36,7 @@
 	* Changed: Redesigned notification messages
 	* Added: Additional informations rendering in task header via registerable hooks
 	* Added: Global info tooltip on person labels
-	* Removed: company flag is_ngo not covered in public extensions 
+	* Removed: company flag is_ngo not covered in public extensions
 	* Published: Dev- and Bugtracker- Extensions are now publicly online in SVN
 	* Changed: Renamed users to person in whole system
 	* Changed: Removed user extension. Split up in contact and core
