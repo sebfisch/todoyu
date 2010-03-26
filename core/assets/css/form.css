@@ -206,6 +206,7 @@ div.fElement {
 			position: relative !important;
 			z-index: 2 !important;
 			left: 20px !important;
+			padding-right: 20px;
 		}
 		
 			/* checkbox in a fField element. */
