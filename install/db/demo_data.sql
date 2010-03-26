@@ -426,7 +426,7 @@ INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_person_create`, `da
 (3, 1254232867, 1, 1254232867, 0, 'Design', 0),
 (4, 1254232876, 1, 1254232876, 0, 'Testing', 0),
 (5, 0, 1, 1264696282, 0, 'Frontend Engineering', 0),
-(6, 0, 1, 1264696297, 0, 'Database Engineer', 0),
+(6, 0, 1, 1264696297, 0, 'Database Engineering', 0),
 (7, 0, 17, 1264778822, 0, 'Documentation', 0);
 
 --
