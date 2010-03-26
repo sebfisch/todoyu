@@ -85,13 +85,18 @@ class TodoyuFileManager {
 	 * @return	Array
 	 */
 	public static function getFolderContent($pathToFolder, $showHidden = false) {
-		$pathToFolder	= self::pathAbsolute($pathToFolder);
+		$pathFolder	= self::pathAbsolute($pathFolder);
 		$items			= array();
 
-		if( is_dir($pathToFolder) ) {
-			$elements		= scandir($pathToFolder);
+		if( is_dir($pathFolder) ) {
+			$elements		= scandir($pathFolder);
 
 			foreach($elements as $element) {
+				if( $element === '.' || $element === '..' ) {
+						// Ignore parent and self references
+					continue;
+				}
+					// Also get hidden folders (starting with a dot)?
 				if( substr($element, 0, 1) !== '.' || $showHidden ) {
 					$items[] = $element;
 				}
