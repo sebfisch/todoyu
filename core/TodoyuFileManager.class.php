@@ -394,7 +394,7 @@ class TodoyuFileManager {
 		$path	= self::pathAbsolute($path);
 
 		if( is_file($path) && is_writable($path) ) {
-			file_put_contents($path);
+			file_put_contents($path, $content);
 		} else {
 			Todoyu::log('Can\'t open file! File: ' . $file, LOG_LEVEL_ERROR);
 		}
