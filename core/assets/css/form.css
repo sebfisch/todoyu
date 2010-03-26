@@ -26,15 +26,18 @@ form {
 		display:none;
 	}
 
-input,
 textarea,
 select {
 	position:relative;
-	width:100%;
 	border:1px solid #000;
+	width: 100%;
 }
 
-input {}
+input {
+	position:relative;
+	border:1px solid #000;
+	width: 99%;
+}
 
 	input.checkbox,
 	input.radio {
@@ -56,14 +59,10 @@ input {}
 	input.textinputAC {
 		background-image:url(../img/icons.png);
 		background-repeat:no-repeat;
-		background-position:5px -809px;
-		background-color:#e3eace;
-		text-indent:25px;
+		background-position: 5px -809px;
+		background-color: #e3eace;
+		text-indent: 25px;
 	}
-	
-.type-dateinput input {
-	width:60px;
-}
 
 
 textarea {
@@ -77,7 +76,7 @@ textarea {
 }
 
 select {
-	text-transform:none;
+	text-transform: none;
 }
 
 	select.auto {
@@ -102,7 +101,7 @@ select {
 	}
 
 	select option{
-	text-transform:none;
+	text-transform: none;
 }
 
 	select optgroup {
@@ -140,9 +139,15 @@ div.fElement {
 		display:inline;
 		float:left;
 		text-align:right;
-		width:39%;
-		padding-right:1%;
+		width:40%;
+		position: relative;
+		right: 10px;
 	}
+	
+	.noneFloatingInput .fLabel {
+		position: static !important;
+	}
+	
 	div.fElement .fLabel label {}
 
 	div.fElement .required {}
@@ -152,8 +157,7 @@ div.fElement {
 	div.fElement .fField {
 		display:inline;
 		float:right;
-		width:58%;
-		padding-right:3px;
+		width:60%;
 	}
 
 	div.fElement .fField input {
@@ -190,17 +194,18 @@ div.fElement {
 	}
 
 		div.typeCheckbox .fLabel {
-			float:right;
-			width:58%;
-			padding-right:0;
-			padding-left:0;
-			text-align:left;
+			position: static !important;
+			float:right !important;
+			width:60%;
+			padding-right:0 !important;
+			padding-left: 0 !important;
+			text-align:left !important;
 		}
 		
 		div.typeCheckbox .fLabel label {
-			position:relative;
-			z-index:2;
-			margin-left:15px;
+			position: relative !important;
+			z-index: 2 !important;
+			left: 20px !important;
 		}
 		
 			/* checkbox in a fField element. */
@@ -209,16 +214,16 @@ div.fElement {
 			}
 
 		div.typeCheckbox .fField {
-			position:absolute;
-			z-index:1;
-			right:0;
-			width:58%;
-			padding-left:0;
-			text-align:left;
+			position: absolute !important;
+			z-index: 1!important;
+			right: 0!important;
+			width: 60%;
+			padding-left:0!important;
+			text-align: left!important;
 		}
 		
 		div.typeCheckbox .fField input.checkbox {
-			width:auto !important;
+			width: auto !important;
 		}
 
 	.typeDatabaseRelation {}
@@ -247,12 +252,12 @@ div.fElement {
 
 
 	.fElement .fField.hasWizard input{
-		width:80%;
-		float:left;
+		width: 80%;
+		float: left;
 	}
 
 	.fElement .fField.hasWizard .wizardIcon{
-		cursor:pointer;
+		cursor: pointer;
 	}
 
 	fieldset.buttons div,
@@ -444,4 +449,44 @@ form div.error .fField span.errorMessage {
 	display:block;
 	float:right;
 	background:transparent url(../img/icons.png) no-repeat 0 -90px;
+}
+
+
+/* styles for lighbox creates */
+
+#quickcreate form {
+	padding: 10px 5px 0 5px;
+}
+
+#quickcreate.task .left,
+#quickcreate.project .left {
+	float: left;
+	padding: 0 0 0 24px;
+	width: 330px;
+}
+
+#quickcreate.task .left .fLabel,
+#quickcreate.project .left .fLabel {
+	text-align: left;
+	width: 100%;
+	display: block;
+}
+
+#quickcreate.task .right,
+#quickcreate.project .right {
+	float: right;
+	width: 43%;
+}
+
+#quickcreate.project .basic {
+	position: absolute;
+}
+
+/* special styles for involved persons */
+
+#quickcreate.project .persons {
+	width: 43%;
+	float: right;
+	margin-top: 20px;
+	min-height: 200px;
 }
