@@ -60,3 +60,7 @@
 	display:inline-block;
 	padding-left:25px;
 }
+
+#panel div.panelWidget h2 {
+	padding-left: 2px;
+}
