@@ -63,7 +63,7 @@
 		<label index="demodata.title">Import Demo Data</label>
 		<label index="demodata.checkboxlabel">Import the Demo Data</label>
 		<label index="demodata.button">Next Step</label>
-		<label index="demodata.text">You can Import the Demo Data to Start Testing Right After you Logged in. Without the Demo Data, you Have a Clean Installation you can Customize to Your Needs</label>
+		<label index="demodata.text">You can import the demo data to start testing right after you logged in. Without the demo data, you have a clean installation which you can customize to your needs.</label>
 		<label index="demodata.contains">Contains: Projects, Tasks, Addresses, Companies, Comments, Feedbacks, Roles, Worktypes, Filters and More.</label>
 		<label index="demodata.step">Import Demo Data</label>
 		<label index="finish.title">Installation Finished</label>
@@ -77,8 +77,8 @@
 		<label index="updatetocurrentversion.title">Update Database</label>
 		<label index="updatetocurrentversion.button">Apply Database Changes</label>
 		<label index="updatetocurrentversion.button.noupdates">No Updates, proceed</label>
-		<label index="updatetocurrentversion.noupdates">Congratulations, Your Database is up-to-date. No Updates Necessary</label>
-		<label index="updatetocurrentversion.updates">Your Database Needs to be Updated with the Following Changes</label>
+		<label index="updatetocurrentversion.noupdates">Congratulations, your database is up-to-date. No updates are required.</label>
+		<label index="updatetocurrentversion.updates">Your database needs to be updated with the following changes</label>
 		<label index="updatetocurrentversion.step">Update Database Structure</label>
 		<label index="updatetocurrentversion.newTables">New Tables</label>
 		<label index="updatetocurrentversion.newColumns">New Columns</label>
