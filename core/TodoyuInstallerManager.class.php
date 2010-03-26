@@ -675,14 +675,19 @@ class TodoyuInstallerManager {
 			$filePath	= TodoyuFileManager::pathAbsolute($pathConfig . '/' . $oldFilesConfig);
 				// Get list of needless directories and files
 			require_once($filePath);
-			foreach(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessDirs'] as $removeDir) {
-				if ( file_exists($removeDir) ) {
-					TodoyuFileManager::deleteFolderContent($removeDir);
+
+			$needlessDirs	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessDirs']);
+			foreach($needlessDirs as $pathFolder) {
+				$pathFolder	= TodoyuFileManager::pathAbsolute($pathFolder);
+				if ( is_dir($pathFolder) ) {
+					$folderDeleted = TodoyuFileManager::deleteFolder($pathFolder);
 				}
 			}
-			foreach(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessFiles'] as $removeFile) {
-				if ( file_exists($removeFile) ) {
-					unlink($removeFile);
+			$needlessFiles	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessFiles']);
+			foreach($needlessFiles as $pathFile) {
+				$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);
+				if ( is_file($pathFile) ) {
+					$fileDeleted = unlink($pathFile);
 				}
 			}
 		}

@@ -190,6 +190,8 @@ class TodoyuFileManager {
 	 * @return	Boolean
 	 */
 	public static function deleteFolder($folderPath) {
+		$folderPath	= self::pathAbsolute($folderPath);
+
 		self::deleteFolderContent($folderPath, true);
 		return rmdir($folderPath);
 	}
@@ -357,6 +359,24 @@ class TodoyuFileManager {
 		} else {
 			Todoyu::log('Can\'t open file! File: ' . $file, LOG_LEVEL_ERROR);
 			return '';
+		}
+	}
+
+
+
+	/**
+	 * Save content in file
+	 *
+	 * @param	String		$path
+	 * @param	String		$content
+	 */
+	public static function saveFileContent($path, $content) {
+		$path	= self::pathAbsolute($path);
+
+		if( is_file($path) && is_writable($path) ) {
+			file_put_contents($path);
+		} else {
+			Todoyu::log('Can\'t open file! File: ' . $file, LOG_LEVEL_ERROR);
 		}
 	}
 
