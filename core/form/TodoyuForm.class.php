@@ -542,7 +542,7 @@ class TodoyuForm implements ArrayAccess {
 	 * Get validateForm property
 	 *
 	 * @todo	REMOVE
-	 * @return unknown
+	 * @return	Boolean
 	 */
 	public function getValidateForm() {
 		return $this->validateForm;

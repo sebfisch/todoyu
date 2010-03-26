@@ -23,15 +23,14 @@
  *	@see http://prototype-window.xilinus.com/documentation.html
  */
 
-
 Todoyu.Popup = {
 
 	/**
 	 * Popup object reference
 	 */
-	popup: {},
+	popup:		{},
 	
-	last: null,
+	last:		null,
 
 	timeoutID:	null,
 
@@ -41,7 +40,7 @@ Todoyu.Popup = {
 	 * Get popup reference
 	 *
 	 * @param	String			idPopup
-	 * @return	unknown_type
+	 * @return	Object
 	 */
 	getPopup: function(idPopup) {
 		return this.popup[idPopup];
@@ -50,15 +49,21 @@ Todoyu.Popup = {
 
 
 	/**
-	 * @todo	comment
+	 * Get last opened popup handle
 	 * 
-	 * @return	unknown_type
+	 * @return	Object
 	 */
 	getLastPopup: function() {
 		return this.last;
 	},
 	
 	
+
+	/**
+	 * Get amount of open popups
+	 * 
+	 * @return	Integer
+	 */	
 	getNumPopups: function() {
 		return Object.keys(this.popup).size();
 	},

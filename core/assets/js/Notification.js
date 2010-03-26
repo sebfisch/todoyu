@@ -93,7 +93,10 @@ Todoyu.Notification = {
 
 
 	/**
-	 * @todo	comment
+	 * Shortcut to show info notification
+	 * 
+	 * @param	String		message
+	 * @param	Integer		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	notifyInfo: function(message, countdown) {
 		this.notify(this.INFO, message, countdown);
@@ -102,7 +105,10 @@ Todoyu.Notification = {
 
 
 	/**
-	 * @todo	comment
+	 * Shortcut to show error notification
+	 * 
+	 * @param	String		message
+	 * @param	Integer		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	notifyError: function(message, countdown) {
 		this.notify(this.ERROR, message, countdown);
@@ -111,7 +117,10 @@ Todoyu.Notification = {
 
 
 	/**
-	 * @todo	comment
+	 * Shortcut to show success notification
+	 * 
+	 * @param	String		message
+	 * @param	Integer		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	notifySuccess: function(message, countdown) {
 		this.notify(this.SUCCESS, message, countdown);

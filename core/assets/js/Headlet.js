@@ -340,19 +340,6 @@ Todoyu.Headlet = {
 
 
 	/**
-	 * Set content position
-	 * 
-	 * @todo	used? implement or remove!
-	 * 
-	 * @param {Object} headlet
-	 */
-	setContentPosition: function(headlet) {
-		alert("Implement 'setContentPosition' of Todoyu.Headlet");
-	},
-
-
-
-	/**
 	 * Get headlet element
 	 * 
 	 * @param	String		name

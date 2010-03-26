@@ -32,10 +32,10 @@ Todoyu.Time = {
 	/**
 	 * Format given time, to e.g. '13:50:20'
 	 *
-	 * @param	unknown_type	hours
-	 * @param	unknown_type	minutes
-	 * @param	unknown_type	seconds
-	 * @param	unknown_type	separator
+	 * @param	Integer		hours
+	 * @param	Integer		minutes
+	 * @param	Integer		seconds
+	 * @param	String		separator
 	 * @return	String
 	 */
 	timeFormat: function(hours, minutes, seconds, separator) {
@@ -102,7 +102,10 @@ Todoyu.Time = {
 	/**
 	 * Get shifted time
 	 *
-	 * @todo	comment
+	 * @param	Integer		baseTime
+	 * @param	String		step		'month' / other		@todo change into boolean if there's no more values
+	 * @param	String		direction	'up' / 'down'
+	 * @return	Integer
 	 */		
 	getShiftedTime: function(baseTime, step, direction) {
 		baseTime	= this.getDayStart(baseTime);
@@ -196,7 +199,7 @@ Todoyu.Time = {
 		var date	= new Date(time * 1000);
 		var year	= date.getFullYear();
 		var month	= date.getMonth();
-		
+
 		return 32 - new Date(year, month, 32).getDate();
 	}
 

@@ -28,10 +28,10 @@ Todoyu.Pref = {
 	/**
 	 * Save preference (AJAX)
 	 *
-	 *	@param	unknown_type	ext
-	 *	@param	unknown_type	action
-	 *	@param	unknown_type	value
-	 *	@param	unknown_type	idItem
+	 *	@param	String		ext
+	 *	@param	String		action
+	 *	@param	String		value
+	 *	@param	Integer		idItem
 	 *	@param	unknown_type	onComplete
 	 */
 	save: function(ext, action, value, idItem, onComplete) {

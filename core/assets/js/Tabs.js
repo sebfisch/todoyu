@@ -76,7 +76,7 @@ Todoyu.Tabs = {
 	/**
 	 * Enter Description here...
 	 *
-	 *	@param	unknown_type	e
+	 *	@param	Event			e
 	 *	@param	unknown_type	handlerFunction
 	 */
 	_clickHandler: function(e, handlerFunction) {
@@ -113,13 +113,13 @@ Todoyu.Tabs = {
 		$(listname + '-tabs').select('li').invoke('removeClassName', 'active');
 		$(listname + '-tabs').down('li.tabkey-' + tab).addClassName('active');
 	},
-	
+
 	setActiveByElement: function(tabElement) {
 		var idParts	= $(tabElement).id.split('-tab-');
 		this.setActive(idParts.first(), idParts.last());
 	},
-	
-	
+
+
 
 	/**
 	 * Get currently active tab in a list
@@ -211,7 +211,7 @@ Todoyu.Tabs = {
 	/**
 	 * Enter Description here...
 	 *
-	 *	@param	unknown_type	e
+	 *	@param	Event			e
 	 *	@param	unknown_type	over
 	 */
 	_hoverHandler: function(e, over) {

@@ -131,7 +131,8 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 
 	/**
-	 * @todo	comment
+	 * Get headlet type
+	 *
 	 * @return	unknown
 	 */
 	public function getType() {
@@ -197,7 +198,8 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 
 	/**
-	 * @todo	comment
+	 * Add classname (CSS) attribute to button config
+	 *
 	 * @param	String	$class
 	 */
 	protected function addButtonClass($class) {
@@ -243,7 +245,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 
 	/**
-	 * Check if headlet is empty and should not be displayed
+	 * Check whether headlet is empty and should not be displayed
 	 * A headlet can override this function and prevent to be rendered
 	 * Empty means, the headlet has no reason to be displayed
 	 *

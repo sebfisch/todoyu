@@ -154,7 +154,7 @@ class TodoyuFormValidator {
 	/**
 	 * Validate value not exceeding maximum length
 	 *
-	 * @param	unknown_type		$value
+	 * @param	String				$value
 	 * @param	Array				$validatorConfig
 	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
