@@ -700,7 +700,20 @@ class TodoyuInstallerManager {
 	 *
 	 */
 	public static function updateConfigFileVariables() {
-		// Fix older than RC2 config files compatibility
+			// Remove deleted extensions
+		$removeExts	= array('dev', 'user');
+		$filePath	= 'config/extensions.php';
+		$extContent	= TodoyuFileManager::getFileContent($filePath);
+
+		foreach($removeExts as $ext) {
+			$extContent	= str_replace(',' . $ext, '', $extContent);
+		}
+
+		TodoyuFileManager::saveFileContent($filePath, $extContent);
+
+
+
+			// Fix older than RC2 config files compatibility
 		$files = array(
 			'db.php',
 			'config.php',
