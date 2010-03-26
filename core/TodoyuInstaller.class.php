@@ -67,6 +67,8 @@ class TodoyuInstaller {
 	 *
 	 */
 	private static function onInitCleanup() {
+			// Delete all cache
+		TodoyuFileManager::deleteFolderContent(PATH_CACHE);
 			// Remove files of old installations
 		TodoyuInstallerManager::removeOldFiles();
 			// Update config files if necessary
