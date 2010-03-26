@@ -508,3 +508,8 @@ form .fieldnameCompany .foreignRecordsActionControll {
 form .formtrigger {
 	font-weight: bold;
 }
+
+form.formGeneral {
+	padding: 10px 0 0 0;
+}
+
