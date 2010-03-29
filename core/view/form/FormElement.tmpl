@@ -16,14 +16,14 @@
 		{if $textAfterField}
 			<span class="textAfterField">{$textAfterField}</span>
 		{/if}
-		
-		{if $error && $errorMessage}
-			<span class="errorMessage">{Label $errorMessage plain=true}</span>
-		{/if}
 
 		{if $wizard.hasWizard}
 			<span title="{Label $wizard.wizardConf.title}" class="wizardIcon {$wizard.wizardConf.htmlClass}" onclick="Todoyu.Form.openWizard('{$wizard.wizardConf.idRecord}', '{$htmlId}', '{$wizard.wizardConf.ext}', '{$wizard.wizardConf.controller}', '{$wizard.wizardConf.action}', '{$wizard.wizardConf.height}', '{$wizard.wizardConf.width}', '{Label $wizard.wizardConf.title true}');"></span>
 			<div class="clear"></div>
+		{/if}
+		
+		{if $error && $errorMessage}
+			<span class="errorMessage">{Label $errorMessage plain=true}</span>
 		{/if}
 	</div>
 	<div class="fClear"><!-- --></div>

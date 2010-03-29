@@ -337,15 +337,11 @@ fieldset {}
 	float:left;
 }
 
-
-form div.error .fLabel label,
+form .fElement.error .fLabel label,
 form div.error .fField span.errorMessage {
 	color:red;
 	font-style:italic;
-	white-space:nowrap;
 }
-
-
 
 	/* --- left floating radio --- */
 /*
