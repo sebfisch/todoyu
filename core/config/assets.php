@@ -97,13 +97,9 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'localize'	=> false,
 			'compress'	=> true
 		),
-		array(
-			'file'		=> 'lib/js/jscalendar/lang/calendar-de.js',
-			'position'	=> 23,
-			'merge'		=> true,
-			'localize'	=> false,
-			'compress'	=> false
-		),
+/**
+ * Note: JSCalendar lang file is added at end of initialization
+ */
 		array(
 			'file'		=> 'lib/js/jscalendar/calendar-setup.js',
 			'position'	=> 24,
@@ -323,6 +319,5 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		)
 	)
 );
-
 
 ?>

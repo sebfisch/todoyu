@@ -56,4 +56,7 @@ if( Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] !== true ) {
 	// Custom config overrides
 require_once( PATH_LOCALCONF . '/override.php');
 
+	// Add JSCalendar language file suiting to system language
+TodoyuJSCalendar::addLangFile();
+
 ?>

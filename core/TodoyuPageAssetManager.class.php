@@ -43,7 +43,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Add a javascript file to the page (it will be processed as configured)
+	 * Add a JavaScript file to the page (it will be processed as configured)
 	 *
 	 * @param	String		$pathToFile			Path to original file
 	 * @param	Integer		$position			Position in filelist
