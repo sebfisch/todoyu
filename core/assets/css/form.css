@@ -481,18 +481,18 @@ form div.error .fField span.errorMessage {
 	position: absolute;
 }
 
+#quickcreate.project .persons {
+	width: 43%;
+	float: right;
+	margin-top: 20px;
+	min-height: 170px;
+}
+
 /* special styles for involved persons */
 
 form .databaseRelation {
 	margin-top: 5px;
 	padding-top: 5px;
-}
-
-.project .persons {
-	width: 43%;
-	float: right;
-	margin-top: 20px;
-	min-height: 200px;
 }
 
 form .fieldnamePersons .foreignRecordsActionControll,
