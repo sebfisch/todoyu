@@ -8,7 +8,7 @@
 *
 * This script is part of the todoyu project.
 * The todoyu project is free software; you can redistribute it and/or modify
-* it under the terms of the BSC License.
+* it under the terms of the BSD License.
 *
 * This script is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -74,7 +74,7 @@ class TodoyuRequest {
 		if( PHP_OS === 'Linux' ) {
 			$get	= TodoyuArray::stripslashes($get);
 			$post	= TodoyuArray::stripslashes($post);
-		}
+	}
 
 		return array_merge($get, $post);
 	}
