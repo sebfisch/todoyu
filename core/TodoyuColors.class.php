@@ -28,6 +28,15 @@
 class TodoyuColors {
 
 	/**
+	 * Dimensions of the color rectangles
+	 *
+	 */
+	const HEIGHT= 20;
+	const WIDTH	= 16;
+
+
+
+	/**
 	 * Generate css and img file for user colors
 	 */
 	public static function generate() {
@@ -78,7 +87,7 @@ class TodoyuColors {
 			$css	.= '.enumColBorRig' . $num . ' { border-right-color:' . $rgb . ' !important; }' . "\n";
 			$css	.= '.enumColBorTop' . $num . ' { border-top-color:' . $rgb . ' !important; }' . "\n";
 			$css	.= '.enumColBorBot' . $num . ' { border-bottom-color:' . $rgb . ' !important; }' . "\n";
-			$css	.= 'option.enumColOptionLeftIcon' . $num . ' { background:url(\'../img/' . basename($fileIMG) . '\') no-repeat -8px -' . ($num * 16) . 'px !important; padding:0 0 0 12px; }' . "\n";
+			$css	.= 'option.enumColOptionLeftIcon' . $num . ' { background:url(\'../img/' . basename($fileIMG) . '\') no-repeat -8px -' . ($num * self::HEIGHT) . 'px !important; padding:0 0 0 12px; }' . "\n";
 		}
 
 			// Save CSS file
@@ -94,13 +103,13 @@ class TodoyuColors {
 
 
 	/**
-	 * Render CSS sprite of colors declared in Todoyu::$CONFIG['COLORS'], 16 x 16 each
+	 * Render CSS sprite of colors declared in Todoyu::$CONFIG['COLORS'], see constants for dimensions
 	 *
 	 * @param	String	$fileIMG
 	 */
 	private static function generateIMG($fileIMG) {
 		$colors	= TodoyuArray::assure(Todoyu::$CONFIG['COLORS']);
-		$img	= imagecreate(16, sizeof($colors)*16);
+		$img	= imagecreate(self::WIDTH, sizeof($colors)*self::HEIGHT);
 
 			// Create image folder in cache
 		TodoyuFileManager::makeDirDeep(dirname($fileIMG));
@@ -112,7 +121,7 @@ class TodoyuColors {
 
 			$color = ImageColorAllocate($img, $red, $green, $blue);
 
-			imagefilledrectangle($img, 0, $num * 16, 16, $num * 16 + 16, $color);
+			imagefilledrectangle($img, 0, $num * self::HEIGHT, self::WIDTH, $num * self::HEIGHT + self::HEIGHT, $color);
 		}
 
 		imagepng($img, $fileIMG);
