@@ -1,130 +1,139 @@
-2.0.0-rc2 - 2010-03-29
-	* Bugfix: Several JS fixes and improvements: task cloning, event edit form, tab activation, contextmenus, and more 
-	* Added: JSCalendar lang file usage according to system language
-	* Bugfix: Diverse styling fixes: comments, errors messages, timetracking, labels, search widget, eventtypes, quicktask form, forms general, and more
-	* Added: Improved role presets and related rights checks
+todoyu Changelog
+
+todoyu 2.0.0-rc2 - released 2010-03-29	
+	* Feature: JSCalendar lang file usage according to system language
+	* Feature: Improved role presets and related rights checks
+	* Feature: New core class: TodoyuFunction
+	* Feature: Implemented quick creation (via creation types drop-down in headlet) for all record types
+	* Feature: Added HTML tags stripping before saving tinyMCE edited / created comments, stripping settings configurable in comments extension config
+	* Feature: Extended search with finding of comments by comment ID (K-identifier numbers)
+	* Feature: Added new classes: TodoyuString, TodoyuNumeric
+	* Feature: Extended task details rendering, when creator differs from owner person: both are shown now
+	* Feature: Extended calendar appointments single view with edit button (UI)
+	* Feature: Validation of forms sub records (foreign relations)
+	* Feature: Implemented full rights conditions neccessary for general use
+	* Feature: New search headlet for person and company records
+	* Feature: Categorization of contact types (Categories: email, phone, others)
+	* Feature: Rights for access of areas added by extensions (additionally to basic extension usage right)
+	* Feature: (basic) bugtracker extension
+	* Feature: Web 2.0 style paging via forward / back button instead of index links
+	* Feature: Additional informations rendering in task header via registerable hooks
+	* Feature: Global info tooltip on person labels
+	* Feature: Dev- and Bugtracker- Extensions are now publicly online in SVN
+	* Feature: Persons and companies are now available in the search headlet results
+	* Feature: Categorization for contactinfotypes: Phone, Email, Other
+	* Feature: Rights to use an area. You can allow using an extension, but deny access to its area
+	* Feature: Unittest extension with UI in admin. Extensions can now provide phpUnit testcases which are listed and testable in this listing
+	* Feature: Implemented all filter conditions from internal snowflake version (1.1) for todoyu 2.0
+	* Feature: The task header has now a dynamic part which is used by extensions. Currently timetracking adds the billable time there
+	* Feature: Hovering a persons name shows a quickinfo like for events in the calendar
+	* Changed: Dev extension is no longer part of the basic package. Now available as "public". No useful functionality yet
+	* Changed: Bugtracker is available as public extension	
 	* Changed: Changed license to BSD
-	* Changed: No more (there was one left) global variables, $GLOBALS['config'] is now Todoyu::$CONFIG
+	* Changed: No more (there was one left) global variables, $GLOBALS['config'] is now Todoyu::$GLOBALS
 	* Changed: Cleaned and revised installer (optional) demo data
-	* Bugfix: Revised (discussed, tested, fixed) all rights conditions and roles presets in installer basic data
 	* Changed: Moved generally (also without demo data) useful data from demo data to new SQL data segment in installer: basic data (contains roles and resp. rights presets)
-	* Removed: Reduced roles in demo data (installer) to three main types: workers, project managers, customers
-	* Added: New core class: TodoyuFunction
+	* Changed: Reduced roles in demo data (installer) to three main types: workers, project managers, customers
 	* Changed: Removed differentiation of assets (default / public) for better API clarity and performance + memory optimization
-	* Added: Implemented quick creation (via creation types drop-down in headlet) for all record types
-	* Bugfix: Several bugfixes in: filters, calendar, headlet, forms, installer, quickcreate
-	* Added: Added HTML tags stripping before saving tinyMCE edited / created comments, stripping settings configurable in comments extension config
-	* Added: Extended search with finding of comments by comment ID (K-identifier numbers)
-	* Added: Added new classes: TodoyuString, TodoyuNumeric
 	* Changed: Relocated all methods from TodoyuDiv class to appripriate classes to clarify API
-	* Added: Extended task details rendering, when creator differs from owner person: both are shown now
-	* Added: Extended calendar appointments single view with edit button (UI)
-	* Added: Validation of forms sub records (foreign relations)
-	* Added: Implemented full rights conditions neccessary for general use
-	* Defined: Editing and Deletion allowance is ONE right, as editing can also lead to quasi deletion (setting data empty / invalid)
+	* Changed: Editing and Deletion allowance is ONE right, as editing can also lead to quasi deletion (setting data empty / invalid)
 	* Changed: Split task- and project- status definitions and handling for better code clarity
-	* Bugfix: Fixed context menu to work everywhere now
-	* Removed: Removed invoicing related fields from task table definition in project extension (invoicing not covered in basic scope)
-	* Removed: Removed user extension, moved all person related functions to person manager classes of contact extension
+	* Changed: Removed invoicing related fields from task table definition in project extension (invoicing not covered in basic scope)
+	* Changed: Removed user extension, moved all person related functions to person manager classes of contact extension
 	* Changed: Renamed usergroups to roles
 	* Changed: Removed useradmin from sysadmin, added user related person data administration to person section of contact area
 	* Changed: Removed all creation widgets, implemented globally available creation wizard (dropdown for type selection) headlet
-	* Added: New search headlet for person and company records
 	* Changed: Made contact types dynamic
-	* Added: Categorization of contact types (Categories: email, phone, others)
-	* Added: Rights for access of areas added by extensions (additionally to basic extension usage right)
-	* Added: (basic) bugtracker extension
-	* Added: Web 2.0 style paging via forward / back button instead of index links
-	* Added: Implemented all filterconditions of todoyu 1.1
 	* Changed: New icons for Project and Task
 	* Changed: Cleaned all CSS icon sprites
 	* Changed: Redesigned notification messages
-	* Added: Additional informations rendering in task header via registerable hooks
-	* Added: Global info tooltip on person labels
-	* Removed: company flag is_ngo not covered in public extensions
-	* Published: Dev- and Bugtracker- Extensions are now publicly online in SVN
+	* Changed: company flag is_ngo not covered in public extensions
 	* Changed: Renamed users to person in whole system
 	* Changed: Removed user extension. Split up in contact and core
 	* Changed: User administration is located in contact and is now a person administration
 	* Changed: Renamed usergroups to roles, are part of the core together with rights
 	* Changed: Removed all creation-panelwidgets and combined their functions into a creation-headlet (head area)
-	* Added: Persons and companies are now available in the search headlet results
 	* Changed: Contactinfotypes can be edited in admin records area
-	* Added: Categorization for contactinfotypes: Phone, Email, Other
-	* Added: Rights to use an area. You can allow using an extension, but deny access to its area
-	* Added: Unittest extension with UI in admin. Extensions can now provide phpUnit testcases which are listed and testable in this listing
 	* Changed: Replaced conventional per-page paging with an extendable list function (show more records)
-	* Added: Implemented all filter conditions from internal snowflake version (1.1) for todoyu 2.0
 	* Changed: Tasks and projects have now their own unique icons
 	* Changed: Cleaned up most of the sprite iconsets. No more duplicate icons. Every icon belongs to a specific extension
 	* Changed: Removed all unused graphics in core/asses/img
 	* Changed: Moved notifications to the top of the page to prevent them blocking the subtabs
-	* Added: The task header has now a dynamic part which is used by extensions. Currently timetracking adds the billable time there
-	* Added: Hovering a persons name shows a quickinfo like for events in the calendar
-	* Changed: Dev extension is no longer part of the basic package. Now available as "public". No useful functionality yet
-	* Changed: Bugtracker is available as public extension
+	* Bugfix: Several JS fixes and improvements: task cloning, event edit form, tab activation, contextmenus, and more
+	* Bugfix: Diverse styling fixes: comments, errors messages, timetracking, labels, search widget, eventtypes, quicktask form, forms general, and more
+	* Bugfix: Revised (discussed, tested, fixed) all rights conditions and roles presets in installer basic data
+	* Bugfix: Several bugfixes in: filters, calendar, headlet, forms, installer, quickcreate
+	* Bugfix: Fixed context menu to work everywhere now
 	* Bugfix: Tons of bugfixes and usability improvements (from internal testing and reported by the community)
 
-2.0.0-rc1 - 2010-01-29
-	* Changed: Remove direct mb_* use. Checks first if multibyte extension is available
-	* Changed: Clear and consistent content structure (splitted up tabs and content)
-	* Added: Support for locales. Used to change php locale to system supported locale. Base for billing extension
-	* Changed: Fixed calendar event display/listing
-	* Changed: Clean handling of task info icons
-	* Changed: Removed asynchronous ajax requests for faster UI
-	* Changed: Installer works properly, finds missing tables, missing columns, changed columns
-	* Added: Demo data
-	* Added: Project status filter panel widget
-	* Changed: Projectlist is now a simple and superfast list, remove tree support
-	* Changed: Completed translation for all (?) labels used in todoyu
-	* Changed: Moved notifications to the top of the page to prevent blocking the tabs
-	* Bugfix: Copy paste bug when pasting tasks into a container (lost status colors)
-	* Changed: Paste is now visible everwhere, but inactive except in project
-	* Changed: Remove all non used stylesheets, scripts and images from core
+	
+	
+todoyu 2.0.0-rc1 - released 2010-01-29
+	* Feature: Demo data
+    * Feature: Project status filter panel widget
+	* Feature: Support for locales. Used to change php locale to system supported locale. Base for billing extension
+    * Changed: Remove direct mb_* use. Checks first if multibyte extension is available
+    * Changed: Clear and consistent content structure (splitted up tabs and content)
+    * Changed: Fixed calendar event display/listing
+    * Changed: Clean handling of task info icons
+    * Changed: Removed asynchronous ajax requests for faster UI
+    * Changed: Installer works properly, finds missing tables, missing columns, changed columns
+    * Changed: Projectlist is now a simple and superfast list, remove tree support
+    * Changed: Completed translation for all (?) labels used in todoyu
+    * Changed: Moved notifications to the top of the page to prevent blocking the tabs
+    * Changed: Paste is now visible everwhere, but inactive except in project
+    * Changed: Remove all non used stylesheets, scripts and images from core
+    * Bugfix: Copy paste bug when pasting tasks into a container (lost status colors)
 	* Bugfix: Save and cancel buttons use now the same xml structure and css styles
-	* Bugfix: Task data display problem in search view
-	* Bugfix: Wrong preselection and list for assigned user and owner
-	* Bugfix: Duration selector extended time selector, so 24:00 was the max duration
-	* Bugfix: Comment feedback users list. Task and project users missing in the list
-	* Bugfix: Dayevent was not display the right way. Filled up the whole day instead only the header bar
+    * Bugfix: Task data display problem in search view
+    * Bugfix: Wrong preselection and list for assigned user and owner
+    * Bugfix: Duration selector extended time selector, so 24:00 was the max duration
+    * Bugfix: Comment feedback users list. Task and project users missing in the list
+    * Bugfix: Dayevent was not display the right way. Filled up the whole day instead only the header bar
 
-2.0.0-beta3 - 2010-01-14
-	* Changed: Installer can upgrade from any version
-	* Changed: CSS cleanup
+
+	
+todoyu 2.0.0-beta3 - released 2010-01-14
 	* Feature: Copy and Paste for containers
-	* Changed: Redesigned timetracking headlet
-	* Changed: Renamed customer to company for clearer naming
 	* Feature: Switched to dynamic eventtypes, list can be extended now
-	* Changed: Added error message if autocomplete list is empty
-	* Bugfix: Wrong function calls in contact for person and company
-	* Bugfix: Added negation flag for all available filters to work properly
-	* Added: Disabled options for select form elements
+	* Feature: Disabled options for select form elements
 	* Feature: Paging functionality for records list over config
 	* Feature: Added profile extension to basic to change language and password
-	* Added: Automail comment to task owner for configured groups
-	* Added: Language table and translation (nearly all known languages available)
+	* Feature: Automail comment to task owner for configured groups
+	* Feature: Language table and translation (nearly all known languages available)
+	* Feature: Added overbooking check for users on event creation
+	* Feature: Comment action history (request, respond, email)
+	* Feature: Defined constant TODOYU_URL which is the absolute server url to todoyu (SERVER_URL is only the host)
+	* Feature: Show php fatal errors as error notification
+	* Feature: Licence agreement for installer
+	* Feature: New record wizard (for users)
+	* Changed: Installer can upgrade from any version
+	* Changed: CSS cleanup	
+	* Changed: Redesigned timetracking headlet
+	* Changed: Renamed customer to company for clearer naming
+	* Changed: Added error message if autocomplete list is empty
 	* Changed: Cleaned up all tables.sql, so every extension handles its own fields
 	* Changed: Cleaned up task header and task data list
-	* Feature: Added overbooking check for users on event creation
 	* Changed: Visial change of filter negation in search
-	* Added: Comment action history (request, respond, email)
 	* Changed: Rights are now accessed over the section
 	* Changed: Fullpage no access error message styled
-	* Added: Defined constant TODOYU_URL which is the absolute server url to todoyu (SERVER_URL is only the host)
-	* Feature: Show php fatal errors as error notification
-	* Added: Licence agreement for installer
 	* Changed: Remove deprecated mysql_list_tables() with up-to-date sql command for getTables() function
 	* Changed: Moved timetracking fields in quicktask to timetracking extension. added by hook now. Refresh list after added
 	* Changed: Added more options to sql parser to handle all queries
+	* Changed: Improved visual style of autocompleter (to be recognized)
+	* Bugfix: Wrong function calls in contact for person and company
+	* Bugfix: Added negation flag for all available filters to work properly
 	* Bugfix: Renamed default to value in form. Works now
 	* Bugfix: Form error messages are parsed correctly
-	* Feature: New record wizard (for users)
-	* Changed: Improved visual style of autocompleter (to be recognized)
 	* Bugfix: Added checked attribute to form element checkbox
 	* Bugfix: Installer works now with multiple databases
 
-2.0.0-beta2 - 2009-12-16
+
+
+todoyu 2.0.0-beta2 - released 2009-12-16
+	* Feature: Doxygen documentation
+	* Feature: Copy&Paste functions for task in contextmenu
+	* Feature: Mostly all code is commented now
 	* Bugfix: Fixed most of the known bugs
-	* Added: Copy&Paste functions for task in contextmenu
-	* Info: Mostly all code is commented now
-	* Added: Doxygen documentation
+	
+	
