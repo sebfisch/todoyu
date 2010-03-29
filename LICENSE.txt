@@ -1,3 +1,4 @@
+---------------------------------------------------------------------
 todoyu is published under the BSD License: 
 http://www.opensource.org/licenses/bsd-license.php
 
@@ -29,3 +30,12 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
 THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+---------------------------------------------------------------------
+
+todoyu contains the following unmodified software modules (LGPL):
+- tinyMCE
+- phpMailer
+- jsCalendar
+
+see also the licenses of these modules in the file-license-folders.
+---------------------------------------------------------------------
