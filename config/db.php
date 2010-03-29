@@ -25,7 +25,7 @@ Todoyu::$CONFIG['DB'] = array(
 	'database'		=> 'todoyu',
 	'autoconnect'	=> false,
 	'persistent'	=> true,
-	'queryHistory'	=> false
+	'queryHistory'	=> true
 );
 
 ?>
