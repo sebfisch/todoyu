@@ -300,8 +300,8 @@ class TodoyuInstallerRenderer {
 
 	public static function renderFinishUpdate(array $result) {
 		$data	= array(
-			'title'		=> 'installer.finishupdate.title',
-			'button'	=> 'installer.finishupdate.button',
+			'title'		=> 'installer.finish.title',
+			'button'	=> 'installer.finish.button',
 			'text'		=> Label('installer.finishupdate.text'),
 			'textClass'	=> 'success'
 		);
