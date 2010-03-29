@@ -68,7 +68,7 @@
 		<label index="demodata.step">Import Demo Data</label>
 		<label index="finish.title">Installation Finished</label>
 		<label index="finish.text">Installation Finished</label>
-		<label index="finish.button">Disable Installer and Switch to Login</label>
+		<label index="finish.button">Disable Installer and Go to Login</label>
 		<label index="finish.step">Finish Installation</label>
 		<label index="update.title">todoyu Version Update</label>
 		<label index="update.button">Start Update</label>
@@ -85,7 +85,6 @@
 		<label index="updatetocurrentversion.changedColumns">Modified Columns</label>
 		<label index="updatetocurrentversion.missingKeys">Missing Table Keys (Indexes)</label>
 		<label index="finishupdate.title">Finish Update</label>
-		<label index="finishupdate.button">Disable Installer and Switch to Login</label>
 		<label index="finishupdate.text">Installer has Updated Your todoyu Installation</label>
 		<label index="finishupdate.step">Finish Installation</label>
 	</labels>
@@ -158,7 +157,6 @@
 		<label index="finish.title">Installation beendet</label>
 		<label index="finish.text">Installation beendet</label>
 		<label index="finish.button">Installer deaktivieren und weiter zum Login</label>
-		<label index="finishupdate.button">Installer deaktivieren und weiter zum Login</label>
 		<label index="finish.step">Installation abschliessen</label>
 		<label index="finishupdate.step">Installation abschliessen</label>
 		<label index="update.title">todoyu Versions-Aktualisierung</label>
