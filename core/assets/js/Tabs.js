@@ -110,8 +110,14 @@ Todoyu.Tabs = {
 	 *	@param	String		element		Tab element or its ID
 	 */
 	setActive: function(listname, tab) {
-		$(listname + '-tabs').select('li').invoke('removeClassName', 'active');
-		$(listname + '-tabs').down('li.tabkey-' + tab).addClassName('active');
+		var tabID	= listname + '-tabs';
+		
+		if( Todoyu.exists(tabID) ) {
+			$(listname + '-tabs').select('li').invoke('removeClassName', 'active');
+			$(listname + '-tabs').down('li.tabkey-' + tab).addClassName('active');
+		} else {
+			Todoyu.log('Tab with name "' + listname + '" not found!');
+		}		
 	},
 
 	setActiveByElement: function(tabElement) {

@@ -185,6 +185,15 @@ function restrictInternal() {
 }
 
 
+/**
+ * Restrict access to admin
+ *
+ */
+function restrictAdmin() {
+	TodoyuRightsManager::restrictAdmin();
+}
+
+
 
 /**
  * Restrict (deny) access if none if the rights is allowed
