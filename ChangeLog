@@ -1,4 +1,9 @@
-2.0.0-rc2 - 2010-03-25
+2.0.0-rc2 - 2010-03-29
+	* Bugfix: Several JS fixes and improvements: task cloning, event edit form, tab activation, contextmenus, and more 
+	* Added: JSCalendar lang file usage according to system language
+	* Bugfix: Diverse styling fixes: comments, errors messages, timetracking, labels, search widget, eventtypes, quicktask form, forms general, and more
+	* Added: Improved role presets and related rights checks
+	* Changed: Changed license to BSD
 	* Changed: No more (there was one left) global variables, $GLOBALS['config'] is now Todoyu::$CONFIG
 	* Changed: Cleaned and revised installer (optional) demo data
 	* Bugfix: Revised (discussed, tested, fixed) all rights conditions and roles presets in installer basic data
