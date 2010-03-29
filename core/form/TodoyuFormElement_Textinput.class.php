@@ -92,6 +92,18 @@ class TodoyuFormElement_Textinput extends TodoyuFormElement {
 
 
 	/**
+	 * Validate if field is required
+	 * Textinput = not empty if spaces are removed
+	 *
+	 * @return	Bool
+	 */
+	public function validateRequired() {
+		return trim($this->getValue()) !== '';
+	}
+
+
+
+	/**
 	 * Get value for template (hide password)
 	 *
 	 * @return	String
