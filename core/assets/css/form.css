@@ -337,7 +337,8 @@ fieldset {}
 	float:left;
 }
 
-form .fElement.error .fLabel label,
+form .fElement.error,
+form .fElement.error .fLabel.error label,
 form div.error .fField span.errorMessage {
 	color:red;
 	font-style:italic;
