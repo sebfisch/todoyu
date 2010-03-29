@@ -28,7 +28,7 @@ Todoyu::$CONFIG['DEBUG'] = true;
 Todoyu::$CONFIG['LOG']['active'] = array('FILE', 'FIREPHP');
 
 	// Asset caching
-Todoyu::$CONFIG['CACHE']['JS']['localize']	= false;
+Todoyu::$CONFIG['CACHE']['JS']['localize']	= true;
 Todoyu::$CONFIG['CACHE']['JS']['merge']		= false;
 Todoyu::$CONFIG['CACHE']['JS']['compress']	= false;
 
