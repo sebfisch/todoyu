@@ -34,6 +34,8 @@ class TodoyuColors {
 	const HEIGHT= 20;
 	const WIDTH	= 16;
 
+	private static $numColors = null;
+
 
 
 	/**
@@ -196,11 +198,11 @@ class TodoyuColors {
 	/**
 	 * Returns color array by given color id
 	 *
-	 * @param	Integer	$idColor
+	 * @param	Integer		$index
 	 * @return	Array
 	 */
-	public static function getColorArray($idColor)	{
-		$idColor	= intval($idColor);
+	public static function getColorArray($index) {
+		$idColor	= self::getColorIndex($index);
 
 		$idColor	= self::getColorID( $idColor );
 		$rgb		= self::getColorRGB( $idColor );
@@ -249,6 +251,22 @@ class TodoyuColors {
 		}
 
 		return $position;
+	}
+
+
+
+	/**
+	 * Get an existing color index for the given value
+	 *
+	 * @param	Integer		$inputIndex
+	 * @return	Integer
+	 */
+	public static function getColorIndex($inputIndex) {
+		if( is_null(self::$numColors) ) {
+			self::$numColors	= sizeof(TodoyuArray::assure(Todoyu::$CONFIG['COLORS']));
+		}
+
+		return intval($inputIndex)%self::$numColors;
 	}
 }
 
