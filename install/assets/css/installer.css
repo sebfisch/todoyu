@@ -59,7 +59,7 @@ p.installMessage.info {
 }
 
 .blockcontent span.title {
-	background-color: #edf1e0;
+	background-color:#edf1e0;
 	border:1px solid #fff;
 	padding:8px 0 8px 12px;
 	display:block;
@@ -114,7 +114,7 @@ table.dbstruct td {
 table.dbstruct th {
 	text-align:left;
 	background-color:#ffa800;
-	border-bottom: 2px dashed #000;
+	border-bottom:2px dashed #000;
 }
 
 table.dbstruct th.table,

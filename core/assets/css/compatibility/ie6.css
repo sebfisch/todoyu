@@ -2,7 +2,7 @@
 /* http://www.tjkdesign.com/articles/png-alpha-transparency_with-no-http-request.asp */
 /* for png images */
 * html img {
-	behavior: expression(
+	behavior:expression(
 		(this.runtimeStyle.behavior="none") && (this.src.toLowerCase().indexOf('.png')>-1) && (
 		this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='scale')",
 		this.runtimeStyle.paddingTop = this.height,
@@ -14,7 +14,7 @@
 
 /* for backgorund png images add png fix to container */
 #companyLogo {
-	behavior: expression(
+	behavior:expression(
 		(this.runtimeStyle.behavior = "none") && (this.currentStyle.backgroundImage.toString().toLowerCase().indexOf('.png')>-1) && (
 		this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.currentStyle.backgroundImage.toString().replace('url("','').replace('")','') + "', sizingMethod='crop')",
 		this.runtimeStyle.zoom = 1,

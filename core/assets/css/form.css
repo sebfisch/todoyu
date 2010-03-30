@@ -30,13 +30,13 @@ textarea,
 select {
 	position:relative;
 	border:1px solid #000;
-	width: 100%;
+	width:100%;
 }
 
 input {
 	position:relative;
 	border:1px solid #000;
-	width: 99%;
+	width:99%;
 }
 
 	input.checkbox,
@@ -59,9 +59,9 @@ input {
 	input.textinputAC {
 		background-image:url(../img/icons.png);
 		background-repeat:no-repeat;
-		background-position: 5px -809px;
-		background-color: #e3eace;
-		text-indent: 25px;
+		background-position:5px -809px;
+		background-color:#e3eace;
+		text-indent:25px;
 	}
 
 
@@ -76,7 +76,7 @@ textarea {
 }
 
 select {
-	text-transform: none;
+	text-transform:none;
 }
 
 	select.auto {
@@ -101,7 +101,7 @@ select {
 	}
 
 	select option{
-	text-transform: none;
+	text-transform:none;
 }
 
 	select optgroup {
@@ -140,12 +140,12 @@ div.fElement {
 		float:left;
 		text-align:right;
 		width:40%;
-		position: relative;
-		right: 10px;
+		position:relative;
+		right:10px;
 	}
 	
 	.noneFloatingInput .fLabel {
-		position: static !important;
+		position:static !important;
 	}
 	
 	div.fElement .fLabel label {}
@@ -194,19 +194,19 @@ div.fElement {
 	}
 
 		div.typeCheckbox .fLabel {
-			position: static !important;
+			position:static !important;
 			float:right !important;
 			width:60%;
 			padding-right:0 !important;
-			padding-left: 0 !important;
+			padding-left:0 !important;
 			text-align:left !important;
 		}
 		
 		div.typeCheckbox .fLabel label {
-			position: relative !important;
-			z-index: 2 !important;
-			left: 20px !important;
-			padding-right: 20px;
+			position:relative !important;
+			z-index:2 !important;
+			left:20px !important;
+			padding-right:20px;
 		}
 		
 			/* checkbox in a fField element. */
@@ -215,16 +215,16 @@ div.fElement {
 			}
 
 		div.typeCheckbox .fField {
-			position: absolute !important;
-			z-index: 1!important;
-			right: 0!important;
-			width: 60%;
+			position:absolute !important;
+			z-index:1!important;
+			right:0!important;
+			width:60%;
 			padding-left:0!important;
-			text-align: left!important;
+			text-align:left!important;
 		}
 		
 		div.typeCheckbox .fField input.checkbox {
-			width: auto !important;
+			width:auto !important;
 		}
 
 	.typeDatabaseRelation {}
@@ -253,12 +253,12 @@ div.fElement {
 
 
 	.fElement .fField.hasWizard input{
-		width: 80%;
-		float: left;
+		width:80%;
+		float:left;
 	}
 
 	.fElement .fField.hasWizard .wizardIcon{
-		cursor: pointer;
+		cursor:pointer;
 	}
 
 	fieldset.buttons div,
@@ -422,7 +422,7 @@ form div.error .fField span.errorMessage {
 
 
 /* ----------------------------------------------
-	Formelement: foreignRecordsActionControll
+	Formelement:foreignRecordsActionControll
    ---------------------------------------------- */
 .formElement .foreignRecordsActionControll {
 	height:30px;
@@ -454,58 +454,58 @@ form div.error .fField span.errorMessage {
 
 #quickcreate form,
 #quicktask form {
-	padding: 10px 5px 0 5px;
+	padding:10px 5px 0 5px;
 }
 
 #quickcreate.task .left,
 #quickcreate.project .left {
-	float: left;
-	padding: 0 0 0 24px;
-	width: 330px;
+	float:left;
+	padding:0 0 0 24px;
+	width:330px;
 }
 
 #quickcreate.task .left .fLabel,
 #quickcreate.project .left .fLabel {
-	text-align: left;
-	width: 100%;
-	display: block;
+	text-align:left;
+	width:100%;
+	display:block;
 }
 
 #quickcreate.task .right,
 #quickcreate.project .right {
-	float: right;
-	width: 43%;
+	float:right;
+	width:43%;
 }
 
 #quickcreate.project .basic {
-	position: absolute;
+	position:absolute;
 }
 
 #quickcreate.project .persons {
-	width: 43%;
-	float: right;
-	margin-top: 20px;
-	min-height: 170px;
+	width:43%;
+	float:right;
+	margin-top:20px;
+	min-height:170px;
 }
 
 /* special styles for involved persons */
 
 form .databaseRelation {
-	margin-top: 5px;
-	padding-top: 5px;
+	margin-top:5px;
+	padding-top:5px;
 }
 
 form .fieldnamePersons .foreignRecordsActionControll,
 form .fieldnameContactinfo .foreignRecordsActionControll,
 form .fieldnameAddress .foreignRecordsActionControll,
 form .fieldnameCompany .foreignRecordsActionControll {
-	text-align: left;
+	text-align:left;
 }
 
 form .formtrigger {
-	font-weight: bold;
+	font-weight:bold;
 }
 
 form.formGeneral {
-	padding: 10px 0 0 0;
+	padding:10px 0 0 0;
 }
