@@ -22,7 +22,15 @@ INSTRUCTIONS TO UPGRADE AN EXISTING todoyu VERSION
 ==================================================
 
 	1. Make a backup of your local config files in /config/ (db.php, extensions.php, etc)
-	2. Delete all files in the todoyu folder (except the ones in /files/ if you wan't to keep your uploaded files)
-	3. Extract the todoyu-rc2 archive into your todoyu folder
-	4. Copy back your backuped config files to replace the existing ones
-	5. Run the installer /install/
+	2. Extract the todoyu-rc2 archive into your todoyu folder (override all existing files)
+	3. Copy back your backuped config files to replace the existing ones
+	4. Run the installer /install/
+	5. After update, clear your browser cache to see all the new stuff
+
+
+Attention:
+	We extended the installer to include basic data and optional demo data.
+	The basic data contains predefined user roles with the respective rights presets.
+	The optional demo data contains data like a project with some tasks and other
+	records	to demonstrate the various aspects of todoyu.
+	To install the basic and demo data you have to perform a fresh install of todoyu.
