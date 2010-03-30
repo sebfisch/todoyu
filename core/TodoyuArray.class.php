@@ -355,7 +355,7 @@ class TodoyuArray {
 		if( $exists === true && $replace === false && $newKeyName === $refKeyName ) {
 				// No action if element already exists and replacing is disabled
 			$newArray =& $array;
-			TodoyuDebug::printHtml($array);
+//			TodoyuDebug::printHtml($array);
 		} else {
 				// If no reference set and mode is before, insert as first element
 			if( $mode === 'before' && $refKeyName === null ) {

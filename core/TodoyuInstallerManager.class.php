@@ -679,7 +679,6 @@ class TodoyuInstallerManager {
 				// Delete folders
 			$needlessDirs	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessDirs']);
 			foreach($needlessDirs as $pathFolder) {
-				TodoyuDebug::printInFirebug($pathFolder, '$pathFolder');
 				$pathFolder	= TodoyuFileManager::pathAbsolute($pathFolder);
 				if ( is_dir($pathFolder) ) {
 					$folderDeleted = TodoyuFileManager::deleteFolder($pathFolder);
