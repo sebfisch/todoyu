@@ -13,8 +13,7 @@ ul#navi-main-list {
 
 ul#navi-main-list li {
 	float:left;
-	background-image:url('../img/rounded-box01.png');
-	background-position:100% 0;
+	background:url('../img/rounded-box01.png') 100% 0;
 	margin-right:3px;
 }
 

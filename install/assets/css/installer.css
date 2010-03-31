@@ -6,15 +6,12 @@
 }
 
 p.installMessage {
-	padding:10px;
+	padding:10px 10px 10px 40px;
 	margin:10px;
 	border:2px solid #fff;
-	background-color:#edf1e0;
+	background:#edf1e0 url(../img/icons.png) 0 1000px no-repeat;
 	font-weight:bold;
 	color:#000;
-	padding-left:40px;
-	background-image:url(../img/icons.png);
-	background-position:0 1000px;
 }
 
 p.installMessage.success {
@@ -86,8 +83,7 @@ p.installMessage.info {
 }
 #panelwidget-installprogress ul li {
 	font-size:12px;
-	padding:8px;
-	padding-left:30px;
+	padding:8px 8px 8px 30px;
 	color:#ccc;
 }
 #panelwidget-installprogress ul li.done {
@@ -175,10 +171,7 @@ input#database_new {
 			position:absolute;
 			width:13px;
 			height:13px;
-			background-color:transparent;
-			background-image:url('../img/rounded-box02.png');
-			background-repeat:no-repeat;
-			background-position:0 0;
+			background:transparent url('../img/rounded-box02.png') 0 0 no-repeat;
 		}
 
 		.content span.lt, #contentBox span.lt {

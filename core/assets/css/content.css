@@ -15,11 +15,8 @@ div.icon {
 .contentMessage {
 	clear:both;
 	padding:10px 10px 10px 50px;
-	background-color:#E3EACE;
+	background:#E3EACE url(../img/icons.png) 15px -620px no-repeat;
 	font-weight:bold;
-	background-image:url(../img/icons.png);
-	background-position:15px -620px;
-	background-repeat:no-repeat;
 }
 
 

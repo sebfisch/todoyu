@@ -54,7 +54,7 @@ class TodoyuContextMenu {
 	 * Initialize context menu with id of the processed element
 	 *
 	 * @param	String		$type
-	 * @param	Insteger	$idElement
+	 * @param	Integer		$idElement
 	 */
 	public function __construct($type, $idElement) {
 		$this->type			= $type;
