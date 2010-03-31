@@ -9,19 +9,19 @@ INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person
 -- Data for Table `ext_contact_contactinfotype`
 --
 
-INSERT INTO `ext_contact_contactinfotype` (`id`, `deleted`, `category`, `key`, `title`) VALUES
-(1, 0, 1, 'email_business', 'LLL:contact.contactinfo.type.email_business'),
-(2, 0, 2, 'tel_private', 'LLL:contact.contactinfo.type.tel_private'),
-(3, 0, 2, 'tel_exchange', 'LLL:contact.contactinfo.type.tel_exchange'),
-(4, 0, 2, 'tel_business', 'LLL:contact.contactinfo.type.tel_business'),
-(5, 0, 1, 'email_private', 'LLL:contact.contactinfo.type.email_private'),
-(6, 0, 2, 'mobile_business', 'LLL:contact.contactinfo.type.mobile_business'),
-(7, 0, 2, 'fax_private', 'LLL:contact.contactinfo.type.fax_private'),
-(8, 0, 2, 'fax_business', 'LLL:contact.contactinfo.type.fax_business'),
-(9, 0, 2, 'mobile_private', 'LLL:contact.contactinfo.type.mobile_private'),
-(10, 0, 2, 'fax_exchange', 'LLL:contact.contactinfo.type.fax_exchange'),
-(11, 0, 3, 'website', 'LLL:contact.contactinfo.type.website'),
-(12, 0, 3, 'skype', 'LLL:contact.contactinfo.type.skype');
+INSERT INTO `ext_contact_contactinfotype` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `category`, `key`, `title`) VALUES
+(1, 0, 0, 0, 0, 1, 'email_business', 'LLL:contact.contactinfo.type.email_business'),
+(2, 0, 0, 0, 0, 2, 'tel_private', 'LLL:contact.contactinfo.type.tel_private'),
+(3, 0, 0, 0, 0, 2, 'tel_exchange', 'LLL:contact.contactinfo.type.tel_exchange'),
+(4, 0, 0, 0, 0, 2, 'tel_business', 'LLL:contact.contactinfo.type.tel_business'),
+(5, 0, 0, 0, 0, 1, 'email_private', 'LLL:contact.contactinfo.type.email_private'),
+(6, 0, 0, 0, 0, 2, 'mobile_business', 'LLL:contact.contactinfo.type.mobile_business'),
+(7, 0, 0, 0, 0, 2, 'fax_private', 'LLL:contact.contactinfo.type.fax_private'),
+(8, 0, 0, 0, 0, 2, 'fax_business', 'LLL:contact.contactinfo.type.fax_business'),
+(9, 0, 0, 0, 0, 2, 'mobile_private', 'LLL:contact.contactinfo.type.mobile_private'),
+(10, 0, 0, 0, 0, 2, 'fax_exchange', 'LLL:contact.contactinfo.type.fax_exchange'),
+(11, 0, 0, 0, 0, 3, 'website', 'LLL:contact.contactinfo.type.website'),
+(12, 0, 0, 0, 0, 3, 'skype', 'LLL:contact.contactinfo.type.skype');
 
 --
 -- Data for Table `system_role`
