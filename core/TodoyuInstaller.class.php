@@ -107,7 +107,7 @@ class TodoyuInstaller {
 	/**
 	 * Check if a step is set
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	private static function hasStep() {
 		return TodoyuSession::isIn('installer/step');
@@ -118,7 +118,7 @@ class TodoyuInstaller {
 	/**
 	 * Check if restart flag is set
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	private static function isRestart() {
 		return intval($_GET['restart']) === 1;
@@ -140,7 +140,7 @@ class TodoyuInstaller {
 	/**
 	 * Check if ENABLE file is available
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isEnabled() {
 		$file	= TodoyuFileManager::pathAbsolute('install/ENABLE');

@@ -614,8 +614,8 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @param	String		$name			Name of the field
 	 * @param	String		$value			Value of the field
-	 * @param	Bool		$noStorage		Don't save file in database
-	 * @param	Bool		$noWrap			Don't wrap fieldname with form name
+	 * @param	Boolean		$noStorage		Don't save file in database
+	 * @param	Boolean		$noWrap			Don't wrap fieldname with form name
 	 */
 	public function addHiddenField($name, $value, $noStorage = false, $noWrap = false) {
 		$this->hiddenFields[$name] = array(
@@ -642,7 +642,7 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Get the hiddenfield array
 	 *
-	 * @param	Bool	$onlyStorage		Only get storage fields
+	 * @param	Boolean	$onlyStorage		Only get storage fields
 	 * @return	Array
 	 */
 	public function getHiddenFields($onlyStorage = false)	{
@@ -1026,7 +1026,7 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
-	 * Render all fieldsets and their childs to HTML code
+	 * Render all fieldsets and their children to HTML code
 	 *
 	 * @return	String
 	 */

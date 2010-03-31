@@ -120,8 +120,8 @@ class TodoyuNumeric {
 	 * Calculate percent
 	 *
 	 * @param	Integer	$numberOf
-	 * @param	Intger	$totalNumberOf
-	 * @return	Intger
+	 * @param	Integer	$totalNumberOf
+	 * @return	Integer
 	 */
 	function percent($percent, $value)	{
 		return $percent * ($value / 100.0);
@@ -134,7 +134,7 @@ class TodoyuNumeric {
 	 *
 	 * @param	Integer	$fraction
 	 * @param	Integer	$total
-	 * @return Integer
+	 * @return	Integer
 	 */
 	function fraction($fraction = 75, $total = 300) {
 		if ($total > 0) {

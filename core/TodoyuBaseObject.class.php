@@ -139,7 +139,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	/**
 	 * Check if current user is creator of the record
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isCurrentPersonCreator() {
 		return intval($this->get('id_person_create')) === personid();

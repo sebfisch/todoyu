@@ -596,7 +596,7 @@ class TodoyuDatabase {
 	 * @param	String		$table			Tablename
 	 * @param	Integer		$idRecord		ID of the record
 	 * @param	String		$fieldname		Fieldname to toggle
-	 * @return	Intger
+	 * @return	Integer
 	 */
 	public function doBooleanInvert($table, $idRecord, $fieldname) {
 		$where	= 'id = ' . intval($idRecord);
@@ -812,7 +812,7 @@ class TodoyuDatabase {
 	 *
 	 * @param	String		$table
 	 * @param	Integer		$idRecord
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function deleteRecord($table, $idRecord) {
 		$where	= 'id = ' . intval($idRecord);
@@ -841,7 +841,7 @@ class TodoyuDatabase {
 	 *
 	 * @param	String		$table
 	 * @param	Integer		$idRecord
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isRecord($table, $idRecord) {
 		$idRecord	= intval($idRecord);
@@ -977,7 +977,7 @@ class TodoyuDatabase {
 	 * @param	Integer		$idRecord			ID of the record
 	 * @param	Array		$fieldValues		Field names with values
 	 * @param	Array		$noQuoteFields		Fields which should not be quoted (because they are functions or something)
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function updateRecord($table, $idRecord, array $fieldValues, array $noQuoteFields = array()) {
 		$where = 'id = ' . intval($idRecord);
@@ -993,7 +993,7 @@ class TodoyuDatabase {
 	 * Check if a query would have a result
 	 *
 	 * @param	String		$query
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function queryHasResult($query) {
 		$resource = $this->query($query);

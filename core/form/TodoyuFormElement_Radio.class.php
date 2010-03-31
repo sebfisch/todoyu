@@ -212,6 +212,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 		$index = $this->getOptionIndexByValue($value);
 
 		if( $index === false ) {
+// @todo	check - missing $label param in addOption()
 			$this->addOption($value);
 		} else {
 			$this->config['options'][$index] =  array(	'value'		=> $value,

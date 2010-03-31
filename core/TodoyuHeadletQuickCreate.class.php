@@ -82,7 +82,7 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 	/**
 	 * Check if no items are available in the create menu
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isEmpty() {
 		return sizeof($this->getMenuItems()) === 0;

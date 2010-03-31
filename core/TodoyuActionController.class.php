@@ -138,7 +138,7 @@ abstract class TodoyuActionController {
 	 * Check if action exists (method is defined)
 	 *
 	 * @param	String		$action
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isAction($action) {
 		$funcName	= self::getActionMethodName($action);
