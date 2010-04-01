@@ -5,7 +5,7 @@
 		<attribute name="name">role</attribute>
 	</attributes>
 	<hiddenFields>
-		<field name="id"></field>
+		<field name="id" />
 	</hiddenFields>
 	<fieldsets>
 		<fieldset name="main">
