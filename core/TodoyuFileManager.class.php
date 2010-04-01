@@ -423,7 +423,6 @@ class TodoyuFileManager {
 
 			// If file exists
 		if( $absoluteFilePath !== false ) {
-
 				// Check if file is in an explicitly disallowed path
 			if( is_array($disallowedPaths) ) {
 				foreach($disallowedPaths as $disallowedPath) {
