@@ -73,7 +73,7 @@ Todoyu.Form = {
 	 *
 	 * @param	Integer		idRecord
 	 * @param	String		formName
-	 * @param	Stirng		fieldName
+	 * @param	String		fieldName
 	 * @param	String		updateExt
 	 * @param	String		updateController
 	 */

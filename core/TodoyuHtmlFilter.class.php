@@ -54,7 +54,7 @@ class TodoyuHtmlFilter {
 
 			$inputHTML	= preg_replace_callback($patternStandard, array(self,'escapeBadTags'), $inputHTML);
 
-			$patternSimple		= '|<(' . $badTag . ')([^>]*)>(.*?)|sum';
+			$patternSimple	= '|<(' . $badTag . ')([^>]*)>(.*?)|sum';
 
 			$inputHTML	= preg_replace_callback($patternSimple, array(self,'escapeBadTag'), $inputHTML);
 		}

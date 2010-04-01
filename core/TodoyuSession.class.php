@@ -96,7 +96,7 @@ class TodoyuSession {
 	/**
 	 * Delete session entry (set null)
 	 *
-	 * @param	Stirng		$path		Slash seperated path to value
+	 * @param	String		$path		Slash seperated path to value
 	 */
 	public static function remove($path) {
 		self::set($path, null);

@@ -234,7 +234,7 @@ class TodoyuFileManager {
 
 
 	/**
-	 * Create multiple subdirectories to create a path structure in the filesystem
+	 * Create multiple sub directories to create a path structure in the file system
 	 * The path will be a directory (don't give a file path as parameter!)
 	 *
 	 * @param	String		$directoryPath		Directory path to create
@@ -248,13 +248,13 @@ class TodoyuFileManager {
 			return true;
 		}
 
-			// Remove base PATH, we only create the subfolders. Split the parts
+			// Remove base PATH, we only create the sub folders. Split the parts
 		$directoryPath	= str_replace(PATH, '', $directoryPath);
 		$pathParts		= array_slice(explode(DIRECTORY_SEPARATOR, $directoryPath), 1);
 		$basePath		= PATH;
 		$chmod			= is_null($mode) ? Todoyu::$CONFIG['CHMOD']['folder'] : $mode;
 
-			// Create each level of the subfolder
+			// Create each level of the sub folder
 		foreach( $pathParts as $pathPart ) {
 			$currentPath = $basePath . DIRECTORY_SEPARATOR . $pathPart;
 
@@ -416,10 +416,10 @@ class TodoyuFileManager {
 		$disallowedPaths	= Todoyu::$CONFIG['sendFile']['disallow'];
 		$allowedPaths		= Todoyu::$CONFIG['sendFile']['allow'];
 
-		// If file exists
+			// If file exists
 		if( $absoluteFilePath !== false ) {
 
-			// Check if file is in an explicitly disallowed path
+				// Check if file is in an explicitly disallowed path
 			if( is_array($disallowedPaths) ) {
 				foreach($disallowedPaths as $disallowedPath) {
 					if( strpos($absoluteFilePath, $disallowedPath) !== false ) {
@@ -428,7 +428,7 @@ class TodoyuFileManager {
 					}
 				}
 			}
-			// Check if file is in an allowed path
+				// Check if file is in an allowed path
 			if( is_array($allowedPaths) ) {
 				foreach($allowedPaths as $allowedPath) {
 					if( strpos($absoluteFilePath, $allowedPath) !== false ) {
