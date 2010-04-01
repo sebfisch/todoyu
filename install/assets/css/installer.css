@@ -344,6 +344,10 @@ h1 span.rgt {
 	width:10px;
 }
 
+h1.deniedOpen span.rgt {
+	background:none;
+}
+
 
 
 /* -----------------------------
