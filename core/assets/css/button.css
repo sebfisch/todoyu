@@ -8,7 +8,7 @@ button {
 	background:url('../img/bg-button.png') no-repeat 0 50%;
 	cursor:pointer;
 	padding:0;
-	border:0px none !important;
+	border:0 none !important;
 	color:#000;
 }
 */
