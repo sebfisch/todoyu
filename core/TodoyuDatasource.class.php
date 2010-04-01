@@ -48,7 +48,7 @@ class TodoyuDatasource {
 	 * @param	String		$fieldValue		Field for value
 	 * @param	String		$fieldLabel		Field for label (use value if null)
 	 * @param	String		$where			Optional where clause
-	 * @param	Bool		$localize		Localize record label
+	 * @param	Boolean		$localize		Localize record label
 	 * @return	Array
 	 */
 	public static function getStaticRecordOptions($type, $fieldValue, $fieldLabel = null, $where = '', $localize = true) {

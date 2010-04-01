@@ -194,7 +194,7 @@ body {
 	position:relative;
 	margin-bottom:8px;
 	padding-bottom:3px;
-	background:url(../img/content/hr-hor.png) repeat-x scroll 0 bottom;
+	background:url(../../../core/assets/img/hr-hor.png) repeat-x scroll 0 bottom;
 }
 
 .panelWidget h1 {
@@ -253,7 +253,7 @@ body {
 	*+html .panelWidget div.content {height:1%;} /* IE7 */
 
 	.panelWidget .content select {
-		border:0px none;
+		border:0 none;
 	}
 
 	.panelWidget .content select option {
@@ -347,7 +347,7 @@ div.error {
 
 	/* cleared */
 .bcStatus8 {
-	border-color:grey;
+	border-color:#DBDBDB;
 }
 
 	/* warranty */
@@ -436,7 +436,7 @@ div.indexLetters {
 	display:block;
 	clear:both;
 	margin:10px 0 5px 5px;
-	padding:0px;
+	padding:0;
 	height:20px;
 	width:500px;
 	border-bottom:1px dashed #CCC;

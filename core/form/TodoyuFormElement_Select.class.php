@@ -365,7 +365,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 * Validate required status
 	 * The first value shall not be 0 (means please select)
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function validateRequired() {
 		$firstValue	= array_pop($this->getValue());

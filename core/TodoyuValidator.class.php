@@ -34,7 +34,7 @@ class TodoyuValidator {
 	 * @return	Boolean
 	 */
 	public static function isEmail($value) {
-		if( ! self::isNotEmpty($value, $validatorConfig) ) {
+		if( ! self::isNotEmpty($value) ) {
 			return false;
 		}
 

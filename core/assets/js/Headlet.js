@@ -60,7 +60,7 @@ Todoyu.Headlet = {
 	 * Check if event happend in the content div of an overlay headlet
 	 * 
 	 * @param	Event		event
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	_isContentEvent: function(event) {
 		return event.element().up('ul.content') !== undefined;

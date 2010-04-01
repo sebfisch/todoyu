@@ -359,7 +359,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * Because a databaseRelation can contain any kind of data, a custom validator function is required.
 	 * The function has to be referenced in record->validateRequired in the xml
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function validateRequired() {
 		$customValidator	= $this->config['record']['validateRequired'];

@@ -1,7 +1,7 @@
 .dpPicker {
 	position:absolute;
-	top:0px;
-	left:0px;
+	top:0;
+	left:0;
 	z-index:3000;
 	display:block;
 	width:50px;
@@ -19,7 +19,7 @@
 	padding-top:44px;
 	padding-bottom:44px;
 	top:44px;
-	left:0px;
+	left:0;
 	width:24px;
 	float:left;
 	clear:none;
@@ -49,7 +49,7 @@
 .dpMask {
 	position:absolute;
 	top:43px;
-	left:0px;
+	left:0;
 	z-index:9;
 	background-color:#E0E0E0;
 	width:50px;

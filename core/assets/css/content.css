@@ -94,7 +94,7 @@ h1.headerLine.hasIcon span.title {
 	margin-top:5px;
 	width:100%;
 	height:28px;
-	background:url('../img/bg-headerline.png') no-repeat 0% 0%;
+	background:url('../img/bg-headerline.png') no-repeat 0 0;
 	text-align:left;
 }
 
@@ -114,7 +114,7 @@ h1.headerLine.hasIcon span.title {
 	display:block;
 	margin:0;
 	padding:0;
-	background:#fff url('../img/bg-headerline.png') no-repeat 100% 0%;
+	background:#fff url('../img/bg-headerline.png') no-repeat 100% 0;
 	width:10px;
 	height:28px;
 }
@@ -127,7 +127,7 @@ h1.headerLine.hasIcon span.title {
 
 .headerLine th.last,
 .headerLine td.last {
-	background:#fff url('../img/bg-headerline.png') no-repeat 100% 0%;
+	background:#fff url('../img/bg-headerline.png') no-repeat 100% 0;
 }
 
 .headerLine th, .headerOptLine th {
@@ -146,7 +146,7 @@ h1.headerLine.hasIcon span.title {
 	margin-top:5px;
 	width:100%;
 	height:28px;
-	background:url('../img/bg-headerline.png') no-repeat 0% -46px;
+	background:url('../img/bg-headerline.png') no-repeat 0 -46px;
 	text-align:left;
 }
 

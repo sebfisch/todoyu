@@ -380,7 +380,7 @@ form div.error .fField span.errorMessage {
 
 	.acResultContainer li{
 		background:#F0F0EE;
-		border:0px solid #CCCCCC;
+		border:0 solid #ccc;
 		border-width:0 1px 1px 1px;
 		padding:2px 0 2px 3px;
 		cursor:pointer;

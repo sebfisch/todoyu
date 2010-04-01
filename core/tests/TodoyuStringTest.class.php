@@ -84,7 +84,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	public function testConvertToUTF8() {
 		$string	= 'häöllilu';
 
-		$uft8	= TodoyuString::convertToUTF8($string);
+		$utf8	= TodoyuString::convertToUTF8($string);
 		$this->assertEquals(true, TodoyuString::isUTF8($utf8) );
 	}
 

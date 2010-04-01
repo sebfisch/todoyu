@@ -52,7 +52,7 @@ class TodoyuPasswordValidator {
 	/**
 	 * Validate $value with registered checks
 	 * @param	Mixed	$value
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function validate($value) {
 		$this->resetErrors();
@@ -97,7 +97,7 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Check if errors are registered
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function hasErrors() {
 		return sizeof($this->errors) > 0;

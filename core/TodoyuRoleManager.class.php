@@ -106,7 +106,7 @@ class TodoyuRoleManager {
 	 *
 	 * @param	Integer		$idUsergroup
 	 * @param	Array		$data
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function updateRole($idRole, array $data) {
 		$idRole	= intval($idRole);
