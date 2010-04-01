@@ -213,7 +213,6 @@ class TodoyuDbHelper {
 			$where .= ' AND	r.id NOT IN(' . implode(',', $ignoreRecordIDs) . ')';
 		}
 
-
 		$update		= array(
 			'r.deleted'	=> 1
 		);

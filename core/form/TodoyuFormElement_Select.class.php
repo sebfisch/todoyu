@@ -272,7 +272,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 
 		if( $index === false ) {
 // @todo	check - missing $label param in addOption()
-			$this->addOption($value);
+			$this->addOption($value, $label);
 		} else {
 			$this->config['options'][$index] =  array(
 				'value'		=> $value,

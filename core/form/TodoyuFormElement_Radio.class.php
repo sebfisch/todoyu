@@ -202,7 +202,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 
 
 	/**
-	 * Set an option. The (first) option with the same value will be replace.
+	 * Set an option. The (first) option with the same value will be replaced.
 	 * If no option with this value exists, a new options will be added
 	 *
 	 * @param	String		$value
@@ -213,11 +213,13 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 
 		if( $index === false ) {
 // @todo	check - missing $label param in addOption()
-			$this->addOption($value);
+			$this->addOption($value, $label);
 		} else {
-			$this->config['options'][$index] =  array(	'value'		=> $value,
-														'label'		=> $label,
-														'checked'	=> $checked);
+			$this->config['options'][$index] =  array(
+				'value'		=> $value,
+				'label'		=> $label,
+				'checked'	=> $checked
+			);
 		}
 	}
 
