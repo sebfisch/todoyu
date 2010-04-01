@@ -216,14 +216,16 @@ Todoyu.Notification = {
 	 *	@param	Integer		id
 	 */
 	countDown: function(id) {
-		var countBox= $('notification-note-' + id).down('.countdown');	
-		var current	= parseInt(countBox.innerHTML, 10);
-
-		if( current === 0 ) {
-			this.closeNote(id);
-		} else {
-			countBox.update(current-1);
-			this.countDown.bind(this).delay(1, id);
+		if( $('notification-note-' + id) ) {
+			var countBox= $('notification-note-' + id).down('.countdown');	
+			var current	= parseInt(countBox.innerHTML, 10);
+	
+			if( current === 0 ) {
+				this.closeNote(id);
+			} else {
+				countBox.update(current-1);
+				this.countDown.bind(this).delay(1, id);
+			}
 		}
 	},
 	
