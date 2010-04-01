@@ -118,7 +118,6 @@ Todoyu.QuickInfo = {
 	 * Hide quick-info tooltip
 	 *
 	 * @param	Boolean		isHidden
-	 * @return	Boolean
 	 */
 	hide: function() {
 		if ( $(this.popupID) ) {
