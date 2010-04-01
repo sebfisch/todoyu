@@ -94,7 +94,7 @@ class Dwoo_Plugin_paging extends Dwoo_Block_Plugin implements Dwoo_ICompilable_B
 		$pre	.= "\t)\n";
 		$pre	.= ");\n";
 
-		// intval($params['offset']) === 0
+//		intval($params['offset']) === 0
 
 			// Make a shortcut to the config
 		$pre	.= '$_fh'.$cnt.'_glob =& $this->globals["foreach"]['.$name.'];' . "\n";
@@ -119,8 +119,8 @@ class Dwoo_Plugin_paging extends Dwoo_Block_Plugin implements Dwoo_ICompilable_B
 		$post 	.= "}";
 		$post	.= Dwoo_Compiler::PHP_CLOSE;
 
-			// Add javascript init
-		$post	.= '<script>Todoyu.Paging.init(' . $name . ', ' . Dwoo_Compiler::PHP_OPEN . ' echo ' . ($params['offset']) . '; ' . Dwoo_Compiler::PHP_CLOSE . ', ' . trim($params['update']) . ');</script>';
+			// Add javaScript init
+		$post	.= TodoyuString::wrapScript('Todoyu.Paging.init(' . $name . ', ' . Dwoo_Compiler::PHP_OPEN . ' echo ' . ($params['offset']) . '; ' . Dwoo_Compiler::PHP_CLOSE . ', ' . trim($params['update']) . ');');
 
 		return $pre . $content . $post;
 	}

@@ -230,7 +230,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Get the javascript merge file
+	 * Get the javaScript merge file
 	 *
 	 * @param	Array		$fileConfigs		Configs for all files which have merging enabled
 	 * @return	String		Web path to merge file in cache
@@ -254,7 +254,7 @@ class TodoyuPageAssetManager {
 					$fileCode = self::localizeJavascript($fileCode);
 				}
 				if( $doCompress && $fileConfig['compress'] ) {
-					$fileCode = self::compressJavascript($fileCode);
+					$fileCode = self::compressJavaScript($fileCode);
 				}
 
 					// If not compressed, add file information at the top of the code
@@ -275,7 +275,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Get paths to javascript files which are not merged (but possibly compressed and localized)
+	 * Get paths to javaScript files which are not merged (but possibly compressed and localized)
 	 *
 	 * @param	Array		$fileConfigs
 	 * @return	Array
@@ -303,7 +303,7 @@ class TodoyuPageAssetManager {
 						$localized	= true;
 					}
 					if( $compressed ) {
-						$fileCode	= self::compressJavascript($fileCode);
+						$fileCode	= self::compressJavaScript($fileCode);
 						$compressed	= true;
 					}
 
@@ -324,7 +324,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Path to single javascript file
+	 * Path to single javaScript file
 	 *
 	 * @param	String		$pathToFile
 	 * @param	Boolean		$compressed
@@ -346,18 +346,18 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Compress javascript code
+	 * Compress javaScript code
 	 *
-	 * @param	String		$javascriptCode
+	 * @param	String		$javaScriptCode
 	 * @return	String
 	 */
-	public static function compressJavascript($javascriptCode) {
+	public static function compressJavaScript($javaScriptCode) {
 		try {
-			return JSMin::minify($javascriptCode);
+			return JSMin::minify($javaScriptCode);
 		} catch(JSMinException $e) {
 			ob_end_clean();
 //			TodoyuDebug::printHtml($e->getTrace(), $e->getMessage());
-			TodoyuDebug::printHtml($javascriptCode, 'JSMin Error: ' . $e->getMessage());
+			TodoyuDebug::printHtml($javaScriptCode, 'JSMin Error: ' . $e->getMessage());
 			exit();
 		}
 	}
@@ -365,9 +365,9 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Localize a javascript
+	 * Localize a javaScript
 	 *
-	 * @param	String	$javascriptCode
+	 * @param	String	$javaScriptCode
 	 * @return	String
 	 */
 	public static function localizeJavascript($javascriptCode) {

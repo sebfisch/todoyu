@@ -339,7 +339,7 @@ function Dwoo_Plugin_cleanHtml_compile(Dwoo_Compiler $compiler, $html) {
  *
  * @param 	Dwoo		$dwoo
  * @param	String		$label		Button text
- * @param	String		$onclick	Onclick javascript handler
+ * @param	String		$onclick	onClick javaScript handler
  * @param	String		$class		CSS class
  * @param	Integer		$id			HTML id
  * @return	String

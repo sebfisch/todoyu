@@ -57,7 +57,7 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 
 
 	/**
-	 * Generate javascript code for calendar
+	 * Generate javaScript code for calendar
 	 *
 	 * @return	String
 	 */

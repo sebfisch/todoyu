@@ -81,7 +81,7 @@ class TodoyuFormElement_DateTimeInput extends TodoyuFormElement {
 			$jsConf[] = $key . ' : ' . $value;
 		}
 
-		$script	= '<script>Calendar.setup({' . implode(',', $jsConf) . '});</script>';
+		$script	= TodoyuString::wrapScript('Calendar.setup({' . implode(',', $jsConf) . '});');
 
 		return $script;
 	}
