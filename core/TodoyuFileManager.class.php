@@ -84,7 +84,7 @@ class TodoyuFileManager {
 	 * @param	Boolean		$showHidden
 	 * @return	Array
 	 */
-	public static function getFolderContent($pathFolder, $showHidden = false) {
+	public static function getFolderContents($pathFolder, $showHidden = false) {
 		$pathFolder	= self::pathAbsolute($pathFolder);
 		$items			= array();
 
@@ -118,7 +118,7 @@ class TodoyuFileManager {
 	 */
 	public static function getFilesInFolder($pathFolder, $showHidden = false, $filters = array()) {
 		$pathFolder	= self::pathAbsolute($pathFolder);
-		$elements	= self::getFolderContent($pathFolder, $showHidden);
+		$elements	= self::getFolderContents($pathFolder, $showHidden);
 		$files		= array();
 
 		foreach($elements as $element) {
@@ -152,7 +152,7 @@ class TodoyuFileManager {
 	 */
 	public static function getFoldersInFolder($pathToFolder, $showHidden = false) {
 		$pathToFolder	= self::pathAbsolute($pathToFolder);
-		$elements		= self::getFolderContent($pathToFolder, $showHidden);
+		$elements		= self::getFolderContents($pathToFolder, $showHidden);
 		$folders		= array();
 
 		foreach($elements as $element) {
@@ -171,7 +171,7 @@ class TodoyuFileManager {
 	 *
 	 * @param	String	$pathToFolder
 	 */
-	public static function deleteFolderContent($folderPath, $deleteHidden = false) {
+	public static function deleteFolderContents($folderPath, $deleteHidden = false) {
 		$folderPath 	= self::pathAbsolute($folderPath);
 		$folders		= self::getFoldersInFolder($folderPath, $deleteHidden);
 		$files			= self::getFilesInFolder($folderPath);
@@ -181,8 +181,8 @@ class TodoyuFileManager {
 			$pathFolder	= $folderPath . DIRECTORY_SEPARATOR . $foldername;
 
 			if( is_dir($pathFolder) ) {
-				self::deleteFolderContent($pathFolder);
-				rmdir($pathFolder);
+				self::deleteFolderContents($pathFolder);
+				self::deleteFolder($pathFolder);
 			}
 		}
 
@@ -199,21 +199,26 @@ class TodoyuFileManager {
 
 
 	/**
-	 * Delete folder including all files and folders contained in it
+	 * Delete given directory
 	 *
-	 * @param	String		$pathFolder
+	 * @param	String	$pathFolder
 	 * @return	Boolean
 	 */
 	public static function deleteFolder($pathFolder) {
 		$pathFolder	= self::pathAbsolute($pathFolder);
 
 		if( is_dir($pathFolder) ) {
-			self::deleteFolderContent($pathFolder, true);
+			self::deleteFolderContents($pathFolder, true);
 
-			return rmdir($pathFolder);
+			$result	= rmdir($pathFolder);
+			if ( $result === false ) {
+				Todoyu::log('Folder deletion failed: ' . $pathFolder, LOG_LEVEL_NOTICE);
+			}
 		} else {
-			return false;
+			$result	= false;
 		}
+
+		return $result;		
 	}
 
 

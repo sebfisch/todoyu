@@ -78,7 +78,7 @@ class TodoyuCacheManager {
 	private static function clearCacheFolder($cacheFolder) {
 		$pathToFolder	= TodoyuFileManager::pathAbsolute(PATH_CACHE . '/' . $cacheFolder);
 
-		TodoyuFileManager::deleteFolderContent($pathToFolder);
+		TodoyuFileManager::deleteFolderContents($pathToFolder);
 	}
 
 }

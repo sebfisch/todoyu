@@ -656,7 +656,7 @@ class TodoyuInstallerManager {
 
 		foreach($paths as $path) {
 			if( is_dir($path) ) {
-				TodoyuFileManager::deleteFolderContent($path, false);
+				TodoyuFileManager::deleteFolderContents($path, false);
 			}
 		}
 	}
@@ -664,33 +664,42 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Remove left-over and not in-use anymore files (and directories) from previous versions
+	 * Remove files and folders left-over from previous versions and not in-use anymore
 	 */
 	public static function removeOldFiles() {
 		$pathConfig		= TodoyuFileManager::pathAbsolute('install/config');
 		$oldFilesConfigs= TodoyuFileManager::getFilesInFolder($pathConfig, false, array('deletefiles_'));
 
 		foreach($oldFilesConfigs as $oldFilesConfig) {
-				// Get file path
+				// Get path to deletions config file
 			$filePath	= TodoyuFileManager::pathAbsolute($pathConfig . '/' . $oldFilesConfig);
-				// Get list of needless directories and files
+				// Get directories and files to be deleted
 			require_once($filePath);
 
-				// Delete folders
-			$needlessDirs	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessDirs']);
-			foreach($needlessDirs as $pathFolder) {
-				$pathFolder	= TodoyuFileManager::pathAbsolute($pathFolder);
-				if ( is_dir($pathFolder) ) {
-					$folderDeleted = TodoyuFileManager::deleteFolder($pathFolder);
-				}
-			}
-
 				// Delete files
-			$needlessFiles	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['needlessFiles']);
-			foreach($needlessFiles as $pathFile) {
+			$deletionFiles	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['deleteFiles']);
+			foreach($deletionFiles as $pathFile) {
 				$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);
 				if ( is_file($pathFile) ) {
 					$fileDeleted = unlink($pathFile);
+				}
+			}
+
+				// Delete folder contents
+			$deletionFolderContents	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['deleteFolderContents']);
+			foreach($deletionFolderContents as $pathFolder) {
+				$pathFolder	= TodoyuFileManager::pathAbsolute($pathFolder);
+				if ( is_dir($pathFolder) ) {
+					$folderContentsDeleted = TodoyuFileManager::deleteFolderContents($pathFolder);
+				}
+			}
+
+				// Delete folders
+			$deletionFolders	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['deleteFolders']);
+			foreach($deletionFolders as $pathFolder) {
+				$pathFolder	= TodoyuFileManager::pathAbsolute($pathFolder);
+				if ( is_dir($pathFolder) ) {
+					$folderDeleted = TodoyuFileManager::deleteFolder($pathFolder);
 				}
 			}
 		}
@@ -699,8 +708,7 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Update old style config variables if necessary
-	 *
+	 * Update old style config variables if necessary, remove old extensions (dev, user) from ext list
 	 */
 	public static function updateConfigFileVariables() {
 			// Remove deleted extensions

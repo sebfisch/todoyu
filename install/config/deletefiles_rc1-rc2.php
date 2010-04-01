@@ -36,21 +36,25 @@
 
 	Todoyu::$CONFIG['INSTALLER']['oldFiles']	= array(
 			// Folders to be deleted with all their contents
-		'needlessDirs'	=> array(
+		'deleteFolders'	=> array(
 			PATH_EXT . DIRECTORY_SEPARATOR . 'dev',
 			PATH_EXT . DIRECTORY_SEPARATOR . 'user',
+			PATH_CORE . DIRECTORY_SEPARATOR . $pathAssetsImg . 'content',
+			PATH_CORE . DIRECTORY_SEPARATOR . $pathAssetsImg . 'tabs',
+			PATH_CORE . DIRECTORY_SEPARATOR . $pathAssetsImg . 'tree',
+		),
+
+		'deleteFolderContents'	=> array(
 			PATH_CACHE . DIRECTORY_SEPARATOR . 'css',
 			PATH_CACHE . DIRECTORY_SEPARATOR . 'img',
 			PATH_CACHE . DIRECTORY_SEPARATOR . 'js',
 			PATH_CACHE . DIRECTORY_SEPARATOR . 'language',
 			PATH_CACHE . DIRECTORY_SEPARATOR . 'output',
 			PATH_CACHE . DIRECTORY_SEPARATOR . 'tmpl',
-			PATH_CORE . DIRECTORY_SEPARATOR . $pathAssetsImg . 'content',
-			PATH_CORE . DIRECTORY_SEPARATOR . $pathAssetsImg . 'tabs',
-			PATH_CORE . DIRECTORY_SEPARATOR . $pathAssetsImg . 'tree',
 		),
+
 			// Files to be deleted
-		'needlessFiles'	=> array(
+		'deleteFiles'	=> array(
 			PATH_CORE . DIRECTORY_SEPARATOR . 'TodoyuDiv.class.php',
 			PATH_CORE . DIRECTORY_SEPARATOR . 'TodoyuHeadletManager.class.php',
 			PATH_CORE . DIRECTORY_SEPARATOR . 'TodoyuHeadletMetaMenu.class.php',

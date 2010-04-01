@@ -68,7 +68,7 @@ class TodoyuInstaller {
 	 */
 	private static function onInitCleanup() {
 			// Delete all cache
-		TodoyuFileManager::deleteFolderContent(PATH_CACHE);
+		TodoyuFileManager::deleteFolderContents(PATH_CACHE);
 
 		/**
 		 * /Was only necessary for the RC2 release
