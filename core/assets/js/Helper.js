@@ -107,11 +107,7 @@ Todoyu.Helper = {
 	 * @return	Boolean
 	 */
 	isset: function(objToTest) {
-		if (null === objToTest || 'undefined' == typeof(objToTest)) {
-			return false;
-		}
-
-		return true;
+		return (null === objToTest || 'undefined' == typeof(objToTest));
 	},
 
 
