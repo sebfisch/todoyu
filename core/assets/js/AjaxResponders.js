@@ -18,8 +18,8 @@
 *****************************************************************************/
 
 /**
- * Todoyu specific Ajax.Responders to prototype ajax handling
- * This responders are called for every ajax request of prototype
+ * Todoyu specific Ajax.Responders to prototype AJAX handling
+ * This responders are called for every AJAX request of prototype
  */
 Todoyu.AjaxResponders = {
 
@@ -31,7 +31,7 @@ Todoyu.AjaxResponders = {
 
 
 	/**
-	 * Register the used ajax responders
+	 * Register the used AJAX responders
 	 */
 	init: function() {
 		Ajax.Responders.register({

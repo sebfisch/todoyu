@@ -19,7 +19,7 @@
 
 /**
  * Headlet: Ajax Loader
- * Icon which indicated ajax loading activity in head area
+ * Icon which indicated AJAX loading activity in head area
  * 
  * @package		Todoyu
  * @subpackage	Core
@@ -32,7 +32,7 @@ Todoyu.Headlet.AjaxLoader = {
 	buttonID: 'headlet-ajaxloader-button',
 
 	/**
-	 * Show ajax loading icon
+	 * Show AJAX loading icon
 	 */
 	show: function() {
 		Effect.Appear(this.buttonID, {
@@ -46,7 +46,7 @@ Todoyu.Headlet.AjaxLoader = {
 
 
 	/**
-	 * Hide ajax loading icon
+	 * Hide AJAX loading icon
 	 */
 	hide: function() {
 		Effect.Fade.delay(0.2, this.buttonID, {

@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Dynamic context menu loaded by ajax request
+ * Dynamic context menu loaded by AJAX request
  * Extensions can register menu items for menu types
  *
  * @package		Todoyu

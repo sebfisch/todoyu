@@ -18,7 +18,7 @@
 *****************************************************************************/
 
 /**
- * General ajax helper functions
+ * General AJAX helper functions
  *
  */
 Todoyu.Ajax = {

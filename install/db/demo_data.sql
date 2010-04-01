@@ -160,7 +160,7 @@ INSERT INTO `ext_calendar_mm_holiday_holidayset` (`id`, `id_holiday`, `id_holida
 INSERT INTO `ext_comment_comment` (`id`, `date_update`, `date_create`, `deleted`, `id_person_create`, `id_task`, `comment`, `is_public`) VALUES
 (1, 1254233694, 1254233694, 0, 1, 7, '<p>Hallo, schau dir das bitte mal an, wenn moeglich noch Heute</p>', 0),
 (2, 1264692282, 1264692282, 0, 1, 61, '<p>hahah</p>', 0),
-(3, 1264699613, 1264699613, 0, 1, 35, '<p>Hi Bob</p><p>can you start with this taks a bit earlier?</p>', 0),
+(3, 1264699613, 1264699613, 0, 1, 35, '<p>Hi Bob</p><p>can you start with this task a bit earlier?</p>', 0),
 (4, 1264699947, 1264699947, 0, 17, 60, '<p>Any questions concerning this one?</p>', 0),
 (5, 1264700306, 1264700028, 0, 17, 106, '<p>There seems to be a problem. Can you check the attachment to this task? And please send me a short feedback.</p>', 0),
 (6, 1264700390, 1264700385, 0, 17, 95, '<p>thanks for the good job. seems to be a good decision.</p>', 0),

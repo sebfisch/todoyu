@@ -208,7 +208,7 @@ class TodoyuRequest {
 
 
 	/**
-	 * Check header if this is an ajax requet
+	 * Check header if this is an AJAX request
 	 *
 	 * @return	Boolean
 	 */
@@ -219,7 +219,7 @@ class TodoyuRequest {
 
 
 	/**
-	 * Get the four basic request vars which are always neccessary
+	 * Get the four basic request vars which are always necessary
 	 *
 	 * @return	Array		[ext,ctrl,action,area]
 	 */

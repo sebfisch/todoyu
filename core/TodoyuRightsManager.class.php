@@ -307,7 +307,7 @@ class TodoyuRightsManager {
 
 	/**
 	 * Restrict access
-	 * If user has no the right, display error message (or send error header for ajax requests)
+	 * If user has no the right, display error message (or send error header for AJAX requests)
 	 *
 	 * @param	String		$extKey
 	 * @param	String		$right
