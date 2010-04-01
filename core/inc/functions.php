@@ -38,7 +38,7 @@ function Label($labelKey, $locale = null) {
  * Find label. If plain is true, check for LLL, because also plaintext is allowed
  *
  * @param	String		$label		Label reference or plain text
- * @param	Bool		$plain		If true, label has to start with LLL: or will be interpreted as plaintext
+ * @param	Boolean		$plain		If true, label has to start with LLL: or will be interpreted as plaintext
  * @param	String		$locale		Forced locale
  * @return	String
  */

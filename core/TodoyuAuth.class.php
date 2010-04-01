@@ -50,7 +50,7 @@ class TodoyuAuth {
 	/**
 	 * Get person object of current person
 	 *
-	 * @param	Bool		$reload		Force to reinit person from current session value
+	 * @param	Boolean		$reload		Force to reinit person from current session value
 	 * @return	TodoyuPerson
 	 */
 	public static function getPerson($reload = false) {

@@ -233,7 +233,7 @@ class TodoyuHeader {
 	 * Send new location header to browser
 	 *
 	 * @param	String		$url
-	 * @param	Bool		$exit
+	 * @param	Boolean		$exit
 	 */
 	public static function location($url, $exit = true) {
 		self::sendHeader('Location', $url);

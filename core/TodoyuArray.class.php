@@ -434,7 +434,7 @@ class TodoyuArray {
 	 *
 	 * @param	Array		$array				Items
 	 * @param	String		$delimiter			Implode delimiter
-	 * @param	Bool		$useDoubleQuotes	Use double quotes (") instead of single quotes (')
+	 * @param	Boolean		$useDoubleQuotes	Use double quotes (") instead of single quotes (')
 	 * @return	Array
 	 */
 	public static function implodeQuoted($array = array(), $delimiter = ',', $useDoubleQuotes = false) {
@@ -482,7 +482,7 @@ class TodoyuArray {
 	 * Make sure the variable is an array if it's not, there are two options: get an empty array or make the input the first element of the array
 	 *
 	 * @param	Mixed		$input
-	 * @param	Bool		$convert		Convert to array element or get an empty array
+	 * @param	Boolean		$convert		Convert to array element or get an empty array
 	 * @return	Array
 	 */
 	public static function assure($input, $convert = false) {

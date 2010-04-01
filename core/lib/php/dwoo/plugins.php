@@ -35,7 +35,7 @@
  *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$key		label-key
- * @param	Bool			$plain		If true, the label needs a LLL: prefix to be recognized as label. Used if labelkeys and plaintext is possible
+ * @param	Boolean			$plain		If true, the label needs a LLL: prefix to be recognized as label. Used if labelkeys and plaintext is possible
  * @param	String			$locale		locale (de,en,...)
  * @return	String
  */

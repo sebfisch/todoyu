@@ -63,7 +63,7 @@ class TodoyuFormElement_Checkbox extends TodoyuFormElement {
 	/**
 	 * Set checked status
 	 *
-	 * @param	Bool		$checked
+	 * @param	Boolean		$checked
 	 */
 	public function setChecked($checked = true) {
 		$value	= $checked ? 1 : 0;
