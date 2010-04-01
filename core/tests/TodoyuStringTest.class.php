@@ -60,18 +60,20 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 * Test TodoyuString::isUTF8
 	 */
 	public function testIsUTF8() {
-		$string	= 'häöllilu';
-		$integer= 6699;
-		$float	= 123.5;
+		$utf8		= 'hÃ¤Ã¶Ã¼llilu';
+		$nonUtf8	= 'hï¿½ï¿½llilu';
+		$integer	= 6699;
+		$float		= 123.5;
 
-		$nonUtf8	= $string;
-		$this->assertNotEquals(true, TodoyuString::isUTF8($nonUtf8) );
 
-		$utf8	= utf8_encode($string);
-		$this->assertEquals(true, TodoyuString::isUTF8($utf8) );
+		$this->assertFalse(TodoyuString::isUTF8($nonUtf8) );
 
-		$this->assertNotEquals(true, TodoyuString::isUTF8($integer) );
-		$this->assertNotEquals(true, TodoyuString::isUTF8($float) );
+		$toUtf8	= utf8_encode($nonUtf8);
+		$this->assertTrue(TodoyuString::isUTF8($toUtf8));
+		$this->assertTrue($utf8);
+
+		$this->assertFalse(TodoyuString::isUTF8($integer) );
+		$this->assertFalse(TodoyuString::isUTF8($float) );
 	}
 
 
@@ -82,7 +84,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testConvertToUTF8().
 	 */
 	public function testConvertToUTF8() {
-		$string	= 'häöllilu';
+		$string	= 'hï¿½ï¿½llilu';
 
 		$utf8	= TodoyuString::convertToUTF8($string);
 		$this->assertEquals(true, TodoyuString::isUTF8($utf8) );
@@ -110,7 +112,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(true, TodoyuString::isValidEmail($emailValid) );
 
 		foreach($invalid as $emailInvalid) {
-			$this->assertNotEquals(true, TodoyuString::isValidEmail($emailInvalid), 'tested invalid email: ' . $emailInvalid );
+			$this->assertFalse(TodoyuString::isValidEmail($emailInvalid), 'tested invalid email: ' . $emailInvalid );
 		}
 	}
 
