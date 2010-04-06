@@ -315,24 +315,45 @@ class TodoyuDatasource {
 
 		return $values;
 	}
-
-
-
+	
+	
+	
 	/**
-	 * Get region label
-	 *
-	 * @param	Mixed	$idRegion	int: fetch from DB, string: return as-is
-	 * @return	String
+	 * 
+	 * @param	Integer	$idCountry
+	 * @return	Array
 	 */
-	public static function getRegionLabel( $idRegion ) {
-		if ( is_int( $idRegion ) ) {
-			$res = Todoyu::db()->getRecord('static_country_zone', $countryID );
-			$region	= Label('static_country_zone.' . $res['iso_alpha3_country'] . '.' . $res['code'] . 'localname' );
-		} else {
-			$region	= $idRegion;
+	public static function getRegionOptions($idCountry)	{
+		$idCountry	= intval($idCountry);
+		$options	= array();
+
+		if( $idCompany !== 0 ) {
+			$field	= 'iso_num';
+			$table	= 'static_country';
+			$where	= 'id =' . $idCountry;
+
+			$countryIsoNum	= Todoyu::db()->getFieldValue($field, $table, $where);
+			
+			$regions = Todoyu::db()->getArray('id, iso_alpha3_country, code', 'static_country_zone', 'iso_num_country = ' . $countryIsoNum);
+			
+			if(count($regions) > 0)	{
+				foreach($regions as $region) {
+					$options[] = array(
+						'value'	=> $region['id'],
+						'label'	=> Label('static_country_zone.' . $region['iso_alpha3_country'] . '.' . $region['code'] . '.localname' )
+					);
+				}
+			} else {
+				$options[]	= array(
+					'value'		=> 'disabled',
+					'label'		=> 'LLL:contact.address.noRegion',
+					'disabled'	=> true,
+					'classname'	=> 'error'
+				);
+			}
 		}
 
-		return $region;
+		return $options;
 	}
 
 
