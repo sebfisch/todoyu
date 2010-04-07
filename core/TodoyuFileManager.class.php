@@ -182,7 +182,12 @@ class TodoyuFileManager {
 
 			if( is_dir($pathFolder) ) {
 				self::deleteFolderContents($pathFolder);
-				self::deleteFolder($pathFolder);
+
+				$elementsInFolder	= self::getFolderContents($pathFolder, true);
+
+				if( sizeof($elementsInFolder) === 0 ) {
+					self::deleteFolder($pathFolder);
+				}
 			}
 		}
 
@@ -218,7 +223,7 @@ class TodoyuFileManager {
 			$result	= false;
 		}
 
-		return $result;		
+		return $result;
 	}
 
 

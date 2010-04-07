@@ -1,7 +1,7 @@
 <a id="{$id}-button" {foreach $buttonAttributes buttonAttributeName buttonAttributeValue}{$buttonAttributeName}="{$buttonAttributeValue}"{/foreach}>&nbsp;</a>
 
 {if $content}
-<ul id="{$id}-content" class="content" style="display:none">
+<ul id="{$id}-content" class="content {if $visible}active{/if}" {if !$visible}style="display:none"{/if}>
 	{$content}
 </ul>
 {/if}

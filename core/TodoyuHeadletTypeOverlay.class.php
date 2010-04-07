@@ -27,16 +27,38 @@
  */
 abstract class TodoyuHeadletTypeOverlay extends TodoyuHeadlet {
 
+	/**
+	 * Type
+	 *
+	 * @var	String
+	 */
 	protected $type = 'overlay';
 
-	protected function initType() {
-		//$this->setTemplate('core/view/headlet-type-overlay.tmpl');
 
+
+	/**
+	 * Type initialization
+	 *
+	 */
+	protected function initType() {
 		$this->addButtonClass('headletTypeOverlay');
 	}
 
+
+
+	/**
+	 * Abstract function which must be implementented by headlets of type overlay
+	 *
+	 */
 	abstract protected function renderOverlayContent();
 
+
+
+	/**
+	 * Render headlet content
+	 *
+	 * @return	String
+	 */
 	public function render() {
 		$this->data['content'] = $this->renderOverlayContent();
 

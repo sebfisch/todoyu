@@ -164,6 +164,16 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 
 	/**
+	 * Set visible flag (visible on page load)
+	 *
+	 */
+	protected function setVisible() {
+		$this->data['visible'] = true;
+	}
+
+
+
+	/**
 	 * Get current area ID
 	 *
 	 * @return	Integer
@@ -236,7 +246,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 		$this->data['buttonAttributes']	= $this->getButtonAttributes();
 
 		if( ! is_null($this->jsHeadlet) ) {
-			TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.add.bind(Todoyu.Headlet, \'' . $this->getName() . '\', ' . $this->jsHeadlet . ')');
+			TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.add.bind(Todoyu.Headlet, \'' . $this->getName() . '\', ' . $this->jsHeadlet . ')', 150);
 		}
 
 		return render($this->template, $this->data);

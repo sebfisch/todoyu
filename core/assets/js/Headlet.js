@@ -28,6 +28,8 @@ Todoyu.Headlet = {
 	 * List of headlet js objects (to call the handlers)
 	 */
 	headlets: {},
+	
+	openStatus: {},
 
 
 
@@ -124,6 +126,8 @@ Todoyu.Headlet = {
 		headletObject.toggleContent		= this.toggleContent.bind(this, name);
 		headletObject.showContent		= this.showContent.bind(this, name);
 		headletObject.hideContent		= this.hideContent.bind(this, name);
+		headletObject.getButton			= this.getButton.bind(this, name);
+		headletObject.getContent		= this.getContent.bind(this, name);
 
 			// Call headlet init function if exists
 		Todoyu.callIfExists(headletObject.init, headletObject);
@@ -329,12 +333,14 @@ Todoyu.Headlet = {
 			}
 		}.bind(this, exceptName));
 		
+		/*		
 			// Hide content
 		$('headlets').select('ul.content').each(function(name, headlet){
 			if( headlet.id.split('-')[1] !== name ) {
 				headlet.hide();
 			}
 		}.bind(this, exceptName));
+		*/
 	},
 
 
@@ -379,10 +385,39 @@ Todoyu.Headlet = {
 	 * 
 	 * @param	Event		event
 	 */
-	onBodyClick: function(event) {		
+	onBodyClick: function(event) {
+		/*	
 		if( ! event.findElement('ul#headlets') ) {
 			this.hideAllContent();
 		}
+		*/
+	},
+	
+	
+	
+	/**
+	 * Save open status of a headlet
+	 * Only send a request, if status if different from last saved
+	 * 
+	 * @param	String		name
+	 * @param	String		ext
+	 * @param	String		controller
+	 * @param	Boolean		open
+	 */
+	saveOpenStatus: function(name, ext, controller, open) {
+		if( this.openStatus[name] !== open ) {
+			var url		= Todoyu.getUrl(ext, controller);
+			var options	= {
+				'parameters': {
+					'action': 	'headletOpen',
+					'open':		open ? 1 : 0,
+					'headlet':	name
+				}
+			};
+			
+			Todoyu.send(url, options);
+			this.openStatus[name] = open;
+		}		
 	}
 
 };
