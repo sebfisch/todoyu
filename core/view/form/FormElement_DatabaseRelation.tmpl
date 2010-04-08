@@ -2,7 +2,7 @@
 
 {block name="field"}
 
-<div class="foreignRecordsActionControll overflow">
+<div class="foreignRecordsActionControll">
 	{Button label=$addLabel alt="form.records.add" class="addForeignRecord" id="add-record" onclick="Todoyu.Form.addRecord($idRecord, '$formname', '$fieldname', '$record.url.ext', '$record.url.controller')"}
 	{if sizeof($records)}
 		{Button label="form.databaserelation.expandAllRecords" alt="form.databaserelation.expandAllRecords" class="expandAll" id="expand-all" onclick="Todoyu.Form.expandForeignRecords(['$fieldname'])"}

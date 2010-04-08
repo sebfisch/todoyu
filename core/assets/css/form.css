@@ -459,7 +459,8 @@ form div.error .fField span.errorMessage {
 /* styles for lighbox creates */
 
 #quickcreate form,
-#quicktask form {
+#quicktask form,
+.dialog form {
 	padding:10px 5px 0 5px;
 }
 
@@ -504,7 +505,9 @@ form .databaseRelation {
 form .fieldnamePersons .foreignRecordsActionControll,
 form .fieldnameContactinfo .foreignRecordsActionControll,
 form .fieldnameAddress .foreignRecordsActionControll,
-form .fieldnameCompany .foreignRecordsActionControll {
+form .fieldnameCompany .foreignRecordsActionControll,
+form .fieldnameRole .foreignRecordsActionControll,
+form .fieldnamePerson .foreignRecordsActionControll {
 	text-align:left;
 }
 
