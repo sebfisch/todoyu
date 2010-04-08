@@ -231,14 +231,14 @@ class Todoyu {
 	 */
 	public static function getLocale() {
 		$hasLocale	= false;
-		$language	= TodoyuContactPreferences::getLanguage();
+		$language	= self::getLang();
 
 			// person profile contains language preference
-		if ( $language !== false ) {
+		if( $language !== false ) {
 			$locale	= TodoyuLocaleManager::getLocaleFromLanguage($language);
 		}
 
-		if ( $locale === false  ) {
+		if( $locale === false  ) {
 			$locale	= self::$CONFIG['SYSTEM']['locale'];
 		}
 
