@@ -21,7 +21,9 @@ button {
 
 	border:1px solid #bbbbbb;
 	-moz-border-radius:13px;
+	-khtml-border-radius:13px;
 	-webkit-border-radius:13px;
+	-o-border-radius:13px;
 	border-radius:13px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
 }
 
