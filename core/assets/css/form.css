@@ -61,7 +61,14 @@ input {
 		background-repeat:no-repeat;
 		background-position:5px -809px;
 		background-color:#e3eace;
-		text-indent:25px;
+		padding-left: 25px;
+		width: 100%;
+		/* hack to fix input width */
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-khtml-box-sizing: border-box;
 	}
 
 
