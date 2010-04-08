@@ -45,11 +45,23 @@ Todoyu.Form = {
 	 * @param	Integer		index
 	 */
 	toggleRecordForm: function(idRecord, fieldName, index)	{
+		var baseName	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
+		var formHtml	= baseName + '-formhtml';
+		var trigger		= baseName + '-trigger';
+		
+		if( Todoyu.exists(trigger) ) {
+			$(formHtml).toggle();
+			
+			$(trigger).down('span')[$(formHtml).visible() ? 'addClassName' : 'removeClassName']('expanded');
+		}
+		
+		/*
 		var idForm = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml';
 
 		if( Todoyu.exists(idForm) ) {
 			$(idForm).toggle();
 		}
+		*/
 	},
 
 

@@ -512,7 +512,7 @@ form .fieldnamePerson .foreignRecordsActionControll {
 	text-align:left;
 }
 
-form .formtrigger {
+form div.typeDatabaseRelation div.formtrigger span.label.expanded {
 	font-weight:bold;
 }
 

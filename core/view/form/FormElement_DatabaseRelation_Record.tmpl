@@ -1,6 +1,6 @@
 <div id="foreignrecord-{$idRecord}-{$fieldname}-{$record._index}" class="databaseRelation">
 	<div id="foreignrecord-{$idRecord}-{$fieldname}-{$record._index}-trigger" onclick="Todoyu.Form.toggleRecordForm({$idRecord}, '{$fieldname}', {$record._index})" class="formtrigger">
-		<span class="label" title="{Label form.records.edit}">{$record._label}</span>
+		<span class="label {if $error}expanded{/if}" title="{Label form.records.edit}">{$record._label}</span>
 		<span class="additionalStuff">
 			<a href="javascript:void(0)" id="foreignrecord-{$idRecord}-{$fieldname}-{$record._index}-remove" class="icon remove removeForeignRecord remove-{$fieldname}" onclick="Todoyu.Form.removeRecord({$idRecord}, '{$fieldname}', {$record._index})" title="{Label form.records.remove}" alt="{Label form.records.remove}">
 				<span class="hidden">{Label form.records.remove}</span>
