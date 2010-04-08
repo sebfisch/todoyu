@@ -315,11 +315,11 @@ class TodoyuDatasource {
 
 		return $values;
 	}
-	
-	
-	
+
+
+
 	/**
-	 * 
+	 *
 	 * @param	Integer	$idCountry
 	 * @return	Array
 	 */
@@ -327,15 +327,21 @@ class TodoyuDatasource {
 		$idCountry	= intval($idCountry);
 		$options	= array();
 
-		if( $idCompany !== 0 ) {
+		if( $idCountry !== 0 ) {
 			$field	= 'iso_num';
 			$table	= 'static_country';
 			$where	= 'id =' . $idCountry;
 
 			$countryIsoNum	= Todoyu::db()->getFieldValue($field, $table, $where);
-			
-			$regions = Todoyu::db()->getArray('id, iso_alpha3_country, code', 'static_country_zone', 'iso_num_country = ' . $countryIsoNum);
-			
+
+			$fields	= '	id,
+						iso_alpha3_country,
+						code';
+			$table	= 'static_country_zone';
+			$where	= 'iso_num_country = ' . intval($countryIsoNum);
+
+			$regions = Todoyu::db()->getArray($fields, $table, $where);
+
 			if(count($regions) > 0)	{
 				foreach($regions as $region) {
 					$options[] = array(
