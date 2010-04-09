@@ -337,6 +337,17 @@ fieldset {}
 }
 */
 
+/* --- additional information after input field --- */
+form .textAfterField  {
+	display:block;
+	padding:10px;
+	margin: 1px 2px 0 0;
+	border:1px solid #CCC;
+	background-color:#EFEFEF;
+	font-size:10px;
+	color:#666;
+	text-align: left;
+}
 
 .dateElement input {
 	width:73px !important;
@@ -519,6 +530,7 @@ form div.typeDatabaseRelation div.formtrigger span.label.expanded {
 form.formGeneral,
 form.formPerson,
 form.formRecord,
-form.formRightseditor {
+form.formRightseditor,
+form.formConfig {
 	padding-top:10px;
 }

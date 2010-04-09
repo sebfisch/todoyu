@@ -21,13 +21,13 @@
 				{foreach $config.columns colName label}
 					{$fieldClass = cat($colName Class)}
 					<td class="{$colName} {$row[$fieldClass]}">
-						<span class="{$colName}" {if $colName != 'actions'}title="{$row[$colName]}"{/if} >
-							{if $colName != 'actions'}
+						<span class="{$colName}" {if $colName != 'actions'}title="{htmlencode($row[$colName])}"{/if}>
+							{if $colName == 'actions'}
+								{cleanHtml $row[$colName]}
+							{else}
 								{$maxLen = intval($config.truncate.$colName)}
 								{if $maxLen == 0}{$maxLen = 16}{/if}
-								{truncate cleanHtml($row[$colName]) $maxLen}
-							{else}
-								{cleanHtml $row[$colName]}
+								{truncate htmlencode($row[$colName]) $maxLen}
 							{/if}
 						</span>
 					</td>
