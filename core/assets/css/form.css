@@ -21,6 +21,10 @@ form {
 			text-align:right;
 			float:right;
 		}
+		
+		fieldset.buttons .fElement {
+			margin-right: 5px;
+		}
 
 	legend {
 		display:none;
