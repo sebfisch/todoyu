@@ -62,7 +62,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * @param	Event		event
 	 */
 	onMenuClick: function(event) {
-		var idParts	= event.findElement('a').id.split('-');
+		var idParts	= Event.findElement(event, 'a').className.split('-');
 		var ext		= idParts[3];
 		var type	= idParts[4];
 		
@@ -123,7 +123,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * @param	String		type
 	 */
 	getTypeLabel: function(ext, type) {
-		return $('headlet-quickcreate-item-' + ext + '-' + type).innerHTML;
+		return $$('#headlet-quickcreate-content a.headlet-quickcreate-item-' + ext + '-' + type)[0].innerHTML;
 	},
 
 
