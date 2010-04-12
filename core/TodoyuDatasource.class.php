@@ -384,7 +384,7 @@ class TodoyuDatasource {
 	/**
 	 * Return short label of given country
 	 *
-	 * @param	Integer	$idCountry
+	 * @param	Integer		$idCountry
 	 * @return	String
 	 */
 	public static function getCountryShort( $idCountry )	{
@@ -393,6 +393,27 @@ class TodoyuDatasource {
 		$res = Todoyu::db()->getRecord('static_country', $idCountry);
 
 		return $res['iso_alpha2'];
+	}
+
+
+
+	/**
+	 * Get timezone name
+	 *
+	 * @param	Integer		$idTimezone
+	 * @return	String
+	 */
+	public static function getTimezone($idTimezone) {
+		$idTimezone	= intval($idTimezone);
+
+		$row	= TodoyuRecordManager::getRecordData('static_timezone', $idTimezone);
+
+		return $row === false ? false : $row['timezone'];
+	}
+
+
+	public static function getTimezones() {
+		return self::getStaticRecords('timezone');
 	}
 
 }

@@ -85,6 +85,8 @@ class TodoyuInstallerRenderer {
 			)
 		);
 
+		TodoyuDebug::printInFirebug($data, 'data');
+
 		if( $info['stop'] === false ) {
 			$data['text'] 		= Label('installer.servercheck.ready');
 			$data['textClass'] 	= 'success';
@@ -123,13 +125,26 @@ class TodoyuInstallerRenderer {
 	 * @param	Array	$result
 	 * @return	Array
 	 */
-	public static function renderDbSelect(array $result)	{
+	public static function renderDbSelect(array $result) {
 		$dbConfig	= TodoyuSession::get('installer/db');
+		$databases	= TodoyuDbAnalyzer::getDatabasesOnServer($dbConfig);
+		$dbOptions	= array();
+		$dbConf		= $dbConfig;
+
+		foreach($databases as $database) {
+			$dbConf['database']	= $database;
+			$tables				= TodoyuDbAnalyzer::getDatabaseTables($dbConf);
+			$dbOptions[] = array(
+				'database'	=> $database,
+				'tables'	=> $tables,
+				'size'		=> sizeof($tables)
+			);
+		}
 
 		$data	= array(
 			'title'		=> 'installer.dbselect.title',
 			'button'	=> 'installer.dbselect.button',
-			'databases'	=> TodoyuDbAnalyzer::getDatabasesOnServer($dbConfig),
+			'databases'	=> $dbOptions,
 			'text'		=> Label('installer.dbselect.text'),
 			'textClass'	=> 'info'
 		);

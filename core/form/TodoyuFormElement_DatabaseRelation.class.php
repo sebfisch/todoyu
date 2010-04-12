@@ -196,7 +196,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$idRecord	= intval($recordData['id']);
 
 			// Construct form object
-		$recordForm	= TodoyuFormManager::getForm($xmlPath, $idRecord);
+		$recordForm	= TodoyuFormManager::getForm($xmlPath, $idRecord, array('field'=>$this));
 
 		$recordData	= TodoyuFormHook::callLoadData($xmlPath, $recordData, $idRecord);
 

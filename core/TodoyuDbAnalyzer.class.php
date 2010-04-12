@@ -52,6 +52,26 @@ class TodoyuDbAnalyzer {
 
 
 	/**
+	 * Get tables in a database
+	 * Create a new connection to get the tables
+	 *
+	 * @param	Array		$dbConfig		server,username,password,database
+	 * @return	Array
+	 */
+	public static function getDatabaseTables(array $dbConfig) {
+		$link		= mysql_connect($dbConfig['server'], $dbConfig['username'], $dbConfig['password']);
+		$query		= 'SHOW TABLES FROM ' . $dbConfig['database'];
+		$resource	= mysql_query($query, $link);
+
+		$rows		= TodoyuDatabase::resourceToArray($resource);
+		$databases	= TodoyuArray::getColumn($rows, 'Tables_in_' . $dbConfig['database']);
+
+		return $databases;
+	}
+
+
+
+	/**
 	 * Check if database connection data is valid
 	 *
 	 * @param	Array		$data

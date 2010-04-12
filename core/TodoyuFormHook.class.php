@@ -64,19 +64,20 @@ class TodoyuFormHook {
 	/**
 	 * Call hooks for form building (adding fields)
 	 *
-	 * @param	String		$xmlPath		Path to main XML form file
+	 * @param	String			$xmlPath		Path to main XML form file
 	 * @param	TodoyuForm		$form			Form object to modify
-	 * @param	Integer		$idRecord		ID of the main record
+	 * @param	Integer			$idRecord		ID of the main record
+	 * @param	Array			$params			Optional parameter for the hook
 	 * @return	TodoyuForm		Modified form object
 	 */
-	public static function callBuildForm($xmlPath, TodoyuForm $form, $idRecord) {
+	public static function callBuildForm($xmlPath, TodoyuForm $form, $idRecord, array $params = array()) {
 		$idRecord	= intval($idRecord);
 
 		$hooks		= self::getHooks('buildForm', $xmlPath);
 
 		foreach($hooks as $hook) {
 			$method	= explode('::', $hook['funcRef']);
-			$temp	= call_user_func($method, $form, $idRecord);
+			$temp	= call_user_func($method, $form, $idRecord, $params);
 
 			if( $temp instanceof Form ) {
 				$form = $temp;
@@ -115,6 +116,7 @@ class TodoyuFormHook {
 	 * @param	String		$xmlPath		Path to main XML form file
 	 * @param	Array		$data			Record data array
 	 * @param	Integer		$idRecord		Record ID
+	 * @param	Array		$params			Optional parameter for the hook
 	 * @return	Array
 	 */
 	public static function callLoadData($xmlPath, array $data, $idRecord = 0) {
@@ -122,7 +124,7 @@ class TodoyuFormHook {
 		$hooks		= self::getHooks('loadData', $xmlPath);
 
 		foreach($hooks as $hook) {
-			$data	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord);
+			$data	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord, $params);
 		}
 
 		return $data;
@@ -137,9 +139,10 @@ class TodoyuFormHook {
 	 * @param	String		$xmlPath		Path to the form XML file
 	 * @param	Array		$data			Record data array
 	 * @param	Integer		$idRecord		Record ID
+	 * @param	Array		$params			Optional parameter for the hook
 	 * @return	Array
 	 */
-	public static function callSaveData($xmlPath, array $data, $idRecord) {
+	public static function callSaveData($xmlPath, array $data, $idRecord, array $params = array()) {
 		$idRecord	= intval($idRecord);
 		$hooks		= self::getHooks('saveData', $xmlPath);
 

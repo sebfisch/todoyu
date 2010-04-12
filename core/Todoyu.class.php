@@ -75,6 +75,9 @@ class Todoyu {
 
 			// Set system locale with setlocale
 		self::setSystemLocale();
+
+			// Set system timezone
+		self::setTimezone();
 	}
 
 
@@ -97,6 +100,23 @@ class Todoyu {
 		if( $status === false ) {
 			self::log('Can\'t set locale for language "' . $locale . '"', LOG_LEVEL_ERROR);
 		}
+	}
+
+
+
+	/**
+	 * Set system timezone
+	 *
+	 */
+	public static function setTimezone() {
+		$timezone	= Todoyu::person()->getTimezone();
+
+		if( $timezone === false ) {
+			$timezone = Todoyu::$CONFIG['SYSETM']['timezone'];
+		}
+
+			// Set default timezone
+		date_default_timezone_set($timezone);
 	}
 
 

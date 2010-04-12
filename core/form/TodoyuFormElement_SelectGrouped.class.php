@@ -39,6 +39,7 @@ class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 
 		if( ! $this->isLazyInit() ) {
 			$this->init();
+			$this->initSource();
 		}
 	}
 

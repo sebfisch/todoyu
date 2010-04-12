@@ -161,3 +161,14 @@ CREATE TABLE `system_right` (
   PRIMARY KEY (`id`),
   KEY `ext` (`ext`,`id_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+--
+-- Tabellenstruktur für Tabelle `static_timezone`
+--
+
+CREATE TABLE `static_timezone` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `timezone` varchar(50) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

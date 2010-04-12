@@ -26,9 +26,6 @@
 	// Add form include path
 Todoyu::addIncludePath( PATH_CORE . '/form' );
 
-	// Set default timezone
-date_default_timezone_set(Todoyu::$CONFIG['LOCALE']['defaultTimezone']);
-
 	// Init basic classes
 Todoyu::init();
 

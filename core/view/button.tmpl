@@ -1,4 +1,4 @@
-<button type="{$type|default:button}" class="button {$class}" onclick="{$onclick}" title="{if $title}{Label $title}{else}{Label $label}{/if}">
+<button type="{$type|default:button}" {if $id}id="{$id}"{/if} class="button {$class}" onclick="{$onclick}" title="{if $title}{Label $title}{else}{Label $label}{/if}">
 	<span class="icon"></span>
 	<span class="label">{Label $label}</span>
 	<span class="rgt"></span>

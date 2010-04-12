@@ -536,7 +536,13 @@ class TodoyuInstallerManager {
 
 			TodoyuFileManager::setDefaultAccessRights($path);
 
-			$result['files'][$element] = is_writable($path);
+			$isWritable	= is_writable($path);
+
+			$result['files'][$element] = $isWritable;
+
+			if( ! $isWritable ) {
+				$result['error'] = true;
+			}
 		}
 
 		return $result;
@@ -568,6 +574,8 @@ class TodoyuInstallerManager {
 		if( $fileCheck['error'] === true ) {
 			$result['stop']	= true;
 		}
+
+		TodoyuDebug::printInFirebug($fileCheck, '$fileCheck');
 
 		return $result;
 	}

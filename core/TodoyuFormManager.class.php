@@ -31,14 +31,15 @@ class TodoyuFormManager {
 	 *
 	 * @param	String		$xmlPath
 	 * @param	Integer		$idRecord
+	 * @param	Array		$params			Optional parameters for the form hooks
 	 * @return	TodoyuForm
 	 */
-	public static function getForm($xmlPath, $idRecord = 0) {
+	public static function getForm($xmlPath, $idRecord = 0, array $params = array()) {
 		$form	= new TodoyuForm($xmlPath);
 
 		$form->setRecordID($idRecord);
 
-		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $idRecord);
+		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $idRecord, $params);
 
 		return $form;
 	}
