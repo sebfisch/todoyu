@@ -50,4 +50,9 @@
 		{/foreach}
 	</table>
 	<input type="hidden" name="checked" value="1" />
+	{if $info.stop}
+	<script type="text/javascript">
+		document.observe('dom:loaded', Todoyu.Installer.hideButton.bind(Todoyu.Installer));
+	</script>
+	{/if}
 {/block}

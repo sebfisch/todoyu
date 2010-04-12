@@ -36,6 +36,9 @@
 		<label index="dbselect.text.dbNameExists">A Database With This Name Already Exists</label>
 		<label index="dbselect.selectDB">Select a Database</label>
 		<label index="dbselect.orCreateDB">or Create new:</label>
+		<label index="dbselect.dbEmpty">Empty</label>
+		<label index="dbselect.dbNotEmpty">Not Empty</label>
+		<label index="dbselect.tables">tables</label>
 		<label index="dbselect.step">Select Database</label>
 		<label index="importtables.title">Import Tables and Data</label>
 		<label index="importtables.button">Import Tables and Data</label>
@@ -124,6 +127,9 @@
 		<label index="dbselect.text.dbNameExists">Ein andere Datenbank dieses Namens existiert bereits</label>
 		<label index="dbselect.selectDB">Datenbank auswählen</label>
 		<label index="dbselect.orCreateDB">Oder neue erstellen:</label>
+		<label index="dbselect.dbEmpty">Leer</label>
+		<label index="dbselect.dbNotEmpty">Nicht leer</label>
+		<label index="dbselect.tables">Tabellen</label>
 		<label index="dbselect.step">Datenbank wählen</label>
 		<label index="importtables.title">Tabellen und Daten importieren</label>
 		<label index="importtables.button">Tabellen und Daten importieren</label>

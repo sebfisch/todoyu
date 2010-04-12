@@ -17,7 +17,18 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-var TodoyuInstaller = {
+var Todoyu = {};
+
+Todoyu.Installer = {
+	
+	hideButton: function() {
+		$('next').hide();
+	},
+	
+	showButton: function() {
+		$('next').show();
+	},
+	
 
 	/**
 	 * Disable given text box if selected value == 0
@@ -26,7 +37,7 @@ var TodoyuInstaller = {
 	 */
 	disableTextBox: function(selector)	{
 		textbox = document.getElementById('database_new');
-		textbox.disabled = selector.options[selector.selectedIndex].value === '0'
+		textbox.disabled = selector.options[selector.selectedIndex].value === '0';
 	},
 
 
@@ -44,7 +55,7 @@ var TodoyuInstaller = {
 
 				// Make sure there's no existing DB with that name
 			$('error-newnameTaken').hide();
-			$('submit').show();
+			$$('button').first().show();
 			$$('#database option').each(function(dbOption){
 				if ( dbOption.value == newDbName) {
 					$('error-newnameTaken').show();
@@ -56,29 +67,6 @@ var TodoyuInstaller = {
 		}
 	},
 
-
-
-	/**
-	 * Toggle display of SQL review
-	 *
-	 * @param	String	togglerID
-	 * @param	String	sqlElementID
-	 */
-	toggle: function(togglerID, sqlElementID) {
-		var toggler	= $(togglerID);
-
-		if ( ! toggler.hasClassName('expanded') ) {
-				// Collapse toggler
-			toggler.innerHTML	= 'Hide SQL';
-			toggler.addClassName('expanded');
-			$(sqlElementID).show();
-		} else {
-				// Expand toggler
-			toggler.innerHTML	= 'View SQL';
-			toggler.removeClassName('expanded');
-			$(sqlElementID).hide();
-		}
-	},
 
 
 
@@ -99,15 +87,6 @@ var TodoyuInstaller = {
 			$('passwordConfirmLabel').addClassName('redLabel');
 			submitButton.hide();
 		}
-	},
-
-
-
-	/**
-	 *	Skip data import action (by altering action to next one)
-	 */
-	skipDataImport: function() {
-		document.getElementById('action').value = 'config';
 	}
 
 };

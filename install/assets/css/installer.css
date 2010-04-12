@@ -66,6 +66,10 @@ p.installMessage.info {
 }
 
 
+select#database option.disabled {
+	color:#CCC;
+}
+
 
 /* -----------------------------------
 	Panel: steps of installation

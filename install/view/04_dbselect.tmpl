@@ -7,14 +7,14 @@
 				<td width="379">
 					<select name="database" type="text" id="database">
 						{foreach $databases database}
-							<option value="{$database}">{$database}</option>
+							<option value="{$database.database}" {if $database.size>0}disabled="disabled" class="disabled"{/if}>{$database.database} {if $database.size>0}({Label installer.dbselect.dbNotEmpty}! {$database.size} {Label installer.dbselect.tables}){else}({Label installer.dbselect.dbEmpty}){/if}</option>
 						{/foreach}
 					</select>
 				</td>
 			</tr><tr>
 				<td>{Label installer.dbselect.orCreateDB}</td>
 				<td>
-					<input onkeyup="TodoyuInstaller.checkDbSelect()" type="text" id="database_new" name="database_new" value="{$postData.database_new}" />
+					<input onkeyup="Todoyu.Installer.checkDbSelect()" type="text" id="database_new" name="database_new" value="{$postData.database_new}" />
 					<span id="error-newnameTaken" style="display:none;" class="error">{Label installer.error.nameTaken}</span>
 				</td>
 			</tr>
