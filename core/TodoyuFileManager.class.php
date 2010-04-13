@@ -356,7 +356,7 @@ class TodoyuFileManager {
 	public static function setDefaultFileAccess($pathToFile) {
 		$pathToFile	= self::pathAbsolute($pathToFile);
 
-		return chmod($pathToFile, Todoyu::$CONFIG['CHMOD']['file']);
+		return @chmod($pathToFile, Todoyu::$CONFIG['CHMOD']['file']);
 	}
 
 
@@ -370,7 +370,7 @@ class TodoyuFileManager {
 	public static function setDefaultFolderAccess($pathToFolder) {
 		$pathToFolder	= self::pathAbsolute($pathToFolder);
 
-		return chmod($pathToFolder, Todoyu::$CONFIG['CHMOD']['folder']);
+		return @chmod($pathToFolder, Todoyu::$CONFIG['CHMOD']['folder']);
 	}
 
 
