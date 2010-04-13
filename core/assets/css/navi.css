@@ -73,9 +73,10 @@ ul#navi-main-list li ul {
 	left:-9999px;
 	width:200px !important;
 	margin-top:1px;
-	margin-left:-30px;
-	padding:0 30px 30px 30px;
 	text-transform:none;
+	-webkit-box-shadow: 5px 5px 7px #999;
+	-moz-box-shadow: 5px 5px 7px #999;
+	box-shadow: 5px 5px 7px #999;
 }
 
 ul#navi-main-list li ul li {

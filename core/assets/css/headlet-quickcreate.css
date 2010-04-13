@@ -3,11 +3,7 @@
 }
 
 #headlet-quickcreate-content li.primary {
-	border-bottom:1px solid #b9bbad;
-	background-color: white;
-}
-
-#headlet-quickcreate-content li {
+	border-bottom:1px dotted #b9bbad;
 	background-color: #edf0df;
 }
 
@@ -15,6 +11,6 @@
 	border-bottom: 1px solid white !important;
 }
 
-#headlet-quickcreate-content li a:hover {
+#headlet-quickcreate-content li.primary a:hover {
 	background-color: white !important;
 }
