@@ -66,7 +66,7 @@ input {
 		background-position:5px -809px;
 		background-color:#e3eace;
 		padding-left: 25px;
-		width: 100%;
+		width: 99.5%;
 		/* hack to fix input width */
 		box-sizing: border-box;
 		-moz-box-sizing: border-box;
