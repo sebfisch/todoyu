@@ -437,22 +437,26 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$validations 	= $this->getValidations();
 		$formData		= $this->getForm()->getFormData();
 
-		foreach($validations as $validatorName => $validatorConfig) {
-			$isValid = TodoyuFormValidator::validate($validatorName, $this->getStorageData(), $validatorConfig, $this, $formData);
+			// Loop over all validators
+		foreach($validations as $validatorName => $validatorConfigs) {
+				// If multiple validators with the same name are defined, they are
+				// stored in an array, loop over them
+			if( isset($validatorConfigs['0']) ) {
+					// Loop over all instances of a validator type
+				foreach($validatorConfigs as $validatorConfig) {
+					$result	= $this->runValidator($validatorName, $validatorConfig, $formData);
 
-			if( $isValid === false ) {
-				$this->setErrorTrue();
-
-					// If error message not already set by function, check config or use default
-				if( $this->errorMessage === '' ) {
-					if( isset($validatorConfig['@attributes']['msg']) ) {
-						$this->setErrorMessage( TodoyuLanguage::getLabel($validatorConfig['@attributes']['msg']) );
-					} else {
-						$this->setErrorMessage('LLL:form.field.hasError');
+					if( $result === false ) {
+						return false;
 					}
 				}
+			} else {
+					// A validator type was only used once for this field, run normal
+				$result	= $this->runValidator($validatorName, $validatorConfigs, $formData);
 
-				return false;
+				if( $result === false ) {
+					return false;
+				}
 			}
 		}
 
@@ -470,6 +474,30 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 				return false;
 			}
+		}
+
+		return true;
+	}
+
+
+
+	private final function runValidator($validatorName, array $validatorConfig) {
+		$isValid = TodoyuFormValidator::validate($validatorName, $this->getStorageData(), $validatorConfig, $this, $this->getForm()->getFormData());
+
+		if( $isValid === false ) {
+			$this->setErrorTrue();
+
+				// If error message not already set by function, check config or use default
+			if( empty($this->errorMessage) ) {
+
+				if( isset($validatorConfig['@attributes']['msg']) ) {
+					$this->setErrorMessage( TodoyuLanguage::getLabel($validatorConfig['@attributes']['msg']) );
+				} else {
+					$this->setErrorMessage('LLL:form.field.hasError');
+				}
+			}
+
+			return false;
 		}
 
 		return true;

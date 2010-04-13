@@ -201,6 +201,31 @@ Todoyu.Time = {
 		var month	= date.getMonth();
 
 		return 32 - new Date(year, month, 32).getDate();
+	},
+	
+	
+	
+	/**
+	 * Get date string in format YYYY-MM-DD
+	 * 
+	 * @param	Integer		time
+	 */
+	getDateString: function(time) {
+		var date = new Date(time*1000);
+		
+		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth()+1) + '-' + date.getDate();
+	},
+	
+	
+	/**
+	 * Get date string with time part in format YYYY-MM-DD HH:MM
+	 * 
+	 * @param	Integer		time
+	 */
+	getDateTimeString: function(time) {
+		var date = new Date(time*1000);
+		
+		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth()+1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes();
 	}
 
 };
