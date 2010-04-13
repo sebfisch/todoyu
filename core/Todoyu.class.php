@@ -115,8 +115,6 @@ class Todoyu {
 			$timezone = Todoyu::$CONFIG['SYSTEM']['timezone'];
 		}
 
-		TodoyuDebug::printInFirebug($timezone, 'tz');
-
 			// Set default timezone
 		date_default_timezone_set($timezone);
 	}
