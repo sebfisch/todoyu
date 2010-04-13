@@ -137,7 +137,7 @@ class Todoyu {
 
 
 	/**
-	 * Return templateing engine
+	 * Return template engine
 	 *
 	 * @return	Dwoo
 	 */
@@ -145,7 +145,7 @@ class Todoyu {
 		if( is_null(self::$template) ) {
 			$config	= TodoyuArray::assure(self::$CONFIG['TEMPLATE']);
 
-				// Make needed folders
+				// Create needed directories
 			TodoyuFileManager::makeDirDeep($config['compile']);
 			TodoyuFileManager::makeDirDeep($config['cache']);
 

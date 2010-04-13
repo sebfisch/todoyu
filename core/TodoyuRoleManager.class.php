@@ -217,8 +217,7 @@ class TodoyuRoleManager {
 
 			// Add users
 		if( ! empty($data['persons']) ) {
-			$personIDs = TodoyuArray::getColumn($data['persons'], 'id');
-			self::addPersons($idRole, $personIDs);
+			self::addPersons($idRole, $data['persons']);
 		}
 		unset($data['persons']);
 
