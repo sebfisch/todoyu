@@ -40,9 +40,6 @@ Todoyu::$CONFIG['TEMPLATE']		= array(
 Todoyu::$CONFIG['SECURITY']['badHtmlTags'] = array('script', 'iframe', 'input', 'textarea', 'select', 'form');
 
 
-	// Initialize metamenu registration array
-Todoyu::$CONFIG['MetaMenu']	= array();
-
 	// Set (not) allowed paths for TodoyuFileManager::sendFile()
 Todoyu::$CONFIG['sendFile']['allow']	= array(PATH_FILES);
 Todoyu::$CONFIG['sendFile']['disallow']	= array();
@@ -64,8 +61,7 @@ TodoyuHookManager::registerHook('core', 'renderPage', 'TodoyuPageAssetManager::a
 	// Localization defaults
 Todoyu::$CONFIG['SYSTEM']['language']	= 'en';
 Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_US';
-	// Default timezone
-Todoyu::$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
+Todoyu::$CONFIG['SYSTEM']['timezone']	= 'Europe/Zurich';
 
 	// List size for paging
 Todoyu::$CONFIG['LIST']['size']	= 30;

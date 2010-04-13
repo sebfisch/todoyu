@@ -63,7 +63,6 @@ require_once( PATH_CORE . '/TodoyuRightsManager.class.php' );
 
 require_once( PATH_CORE . '/TodoyuHookManager.class.php' );
 require_once( PATH_CORE . '/TodoyuHeader.class.php' );
-require_once( PATH_CORE . '/TodoyuMetaMenuManager.class.php' );
 require_once( PATH_CORE . '/TodoyuPanelWidgetManager.class.php' );
 require_once( PATH_CORE . '/TodoyuContextMenuManager.class.php' );
 require_once( PATH_CORE . '/TodoyuErrorHandler.class.php' );
