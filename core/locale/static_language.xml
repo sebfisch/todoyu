@@ -190,5 +190,12 @@
 		<!-- Only currently used languages are translated -->
 		<label index="de">Deutsch</label>
 		<label index="en">Englisch</label>
+		<label index="pt">Portugiesisch</label>
+	</labels>
+	<labels lang="pt">
+		<!-- Only currently used languages are translated -->
+		<label index="de">Alemão</label>
+		<label index="en">Inglês</label>
+		<label index="pt">Português</label>		
 	</labels>
 </locallang>

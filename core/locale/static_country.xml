@@ -480,4 +480,6 @@
 		<label index="SCG">Serbien und Montenegro</label>
 		<label index="HMD">Heard und McDonaldinseln</label>
 	</labels>
+	<labels lang="de"></labels>
+	<labels lang="pt"></labels>
 </locallang>
