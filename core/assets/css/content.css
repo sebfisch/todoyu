@@ -111,10 +111,11 @@ h1.headerLine.hasIcon span.title {
 .headerLine span.rgt {
 	position:absolute;
 	right:0;
+	top: 0;
 	display:block;
 	margin:0;
 	padding:0;
-	background:#fff url('../img/bg-headerline.png') no-repeat 100% 0;
+	background:transparent url('../img/bg-headerline.png') no-repeat 100% 0;
 	width:10px;
 	height:28px;
 }
