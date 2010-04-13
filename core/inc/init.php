@@ -27,7 +27,9 @@
 Todoyu::addIncludePath( PATH_CORE . '/form' );
 
 	// Init basic classes
-Todoyu::init();
+if( Todoyu::$CONFIG['NO_INIT'] !== true ) {
+	Todoyu::init();
+}
 
 
 	// Register core localization file

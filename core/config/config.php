@@ -87,4 +87,9 @@ Todoyu::$CONFIG['CREATE'] = array(
 	'engines'	=> array()
 );
 
+	// Flags to prevent normal initialisation
+Todoyu::$CONFIG['WITHOUT_EXTENSIONS']	= false;
+Todoyu::$CONFIG['NO_INIT']				= false;
+
+
 ?>
