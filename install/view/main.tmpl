@@ -59,7 +59,7 @@
 							<div class="blockcontent">{block name="box"}{/block}</div>
 							{* ----------- Submit: goto next step -------- *}
 
-							{if $stop !== true }
+							{if $stop != true && $button != false }
 								{Button label=$button type="submit" id="next"}
 							{/if}
 						</form>

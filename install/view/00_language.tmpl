@@ -1,0 +1,14 @@
+{extends main.tmpl}
+
+{block name="box"}
+    <ul class="installationLanguages">
+    {foreach $languages language}
+        <li onclick="$('language').value='{$language.value}'; $$('form')[0].submit()">
+            <a href="#" class="{if $language.value==$userLanguage}emphasized"{/if}">
+                {$language.label}
+            </a>
+        </li>
+    {/foreach}
+    </ul>
+    <input type="hidden" id="language" name="language" value="{$userLanguage}" />
+{/block}

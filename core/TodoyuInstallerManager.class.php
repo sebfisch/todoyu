@@ -27,7 +27,26 @@
 class TodoyuInstallerManager {
 
 	/**
-	 * Process first step of installation: license agreement accepted
+	 * Process first step of installation: language selection for installer and as preset for system language
+	 *
+	 * @param	Array	$data
+	 * @return	Array
+	 */
+	public static function processLanguage(array $data) {
+		$result	= array();
+
+		if( array_key_exists('language', $data) ) {
+			TodoyuSession::set('installer/language', $data['language']);
+			TodoyuInstaller::setStep('license');
+		}
+
+		return $result;
+	}
+
+
+
+	/**
+	 * Process installation step: license agreement accepted
 	 *
 	 * @param	Array		$data
 	 * @return	Array

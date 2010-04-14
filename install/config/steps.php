@@ -27,7 +27,8 @@
 
 
 Todoyu::$CONFIG['INSTALLER']['install'] = array(
-	'install',
+	'language',
+	'license',
 	'servercheck',
 	'dbconnection',
 	'dbselect',
@@ -44,10 +45,19 @@ Todoyu::$CONFIG['INSTALLER']['update'] = array(
 	'finishupdate'
 );
 
+// Installation steps
+define('INSTALLER_INITIALSTEP_INSTALL', 'language');
+define('INSTALLER_INITIALSTEP_UPDATE', 'update');
 
 Todoyu::$CONFIG['INSTALLER']['steps'] = array(
-		// Installation steps
-	'install' => array(
+		// Select language for installer and system preset
+	'language'	=> array(
+		'process'	=> 'TodoyuInstallerManager::processLanguage',
+		'render'	=> 'TodoyuInstallerRenderer::renderLanguage',
+		'tmpl'		=> '00_language.tmpl'		
+	),
+		// Accept end user license
+	'license' => array(
 		'process'	=> 'TodoyuInstallerManager::processLicense',
 		'render'	=> 'TodoyuInstallerRenderer::renderLicense',
 		'tmpl'		=> '01_license.tmpl'

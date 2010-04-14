@@ -339,6 +339,36 @@ input#email.adminaccount {
 
 
 
+/* ------------------------------------------
+    Installation Language Selection
+   ------------------------------------------ */
+ul.installationLanguages {
+	margin-top:20px;
+}
+
+	ul.installationLanguages li {
+		background-color:#F7F9ED;
+		margin:0 0 6px 0;
+		padding:6px 0 6px 18px;
+		width:60%;
+		-moz-border-radius:5px;
+		-khtml-border-radius:5px;
+		-webkit-border-radius:5px;
+	}
+
+		ul.installationLanguages li:hover {
+			background-color:#fff;
+			font-weight:bold;
+			cursor:pointer;
+		}
+
+		ul.installationLanguages li a {
+			font-size:14px;
+			color:#111;
+		}
+
+
+
 /* --------------------------
 	Headers, footers
    --------------------------- */

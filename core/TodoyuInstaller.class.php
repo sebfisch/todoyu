@@ -40,6 +40,9 @@ class TodoyuInstaller {
 			self::initStep();
 				// Clear all cache
 			TodoyuInstallerManager::clearCache();
+		} else {
+			$languageKey	= TodoyuSession::get('installer/language');
+			TodoyuLanguage::setLanguage($languageKey);
 		}
 
 		$step	= self::getStep();
@@ -50,7 +53,7 @@ class TodoyuInstaller {
 			$postData	= array();
 		}
 
-		$result		= self::process($step, $postData);
+		$result	= self::process($step, $postData);
 
 		$step	= self::getStep();
 
@@ -68,7 +71,7 @@ class TodoyuInstaller {
 	 */
 	private static function onInitCleanup() {
 			// Delete all cache
-		TodoyuFileManager::deleteFolderContents(PATH_CACHE);
+		TodoyuFileManager::deleteFolderContents(PATH_CACHE, false);
 
 		/**
 		 * /Was only necessary for the RC2 release
@@ -155,10 +158,10 @@ class TodoyuInstaller {
 	 */
 	private static function initStep() {
 		if( self::isUpdate() ) {
-			self::setStep('update');
+			self::setStep(INSTALLER_INITIALSTEP_UPDATE);
 			self::setMode('update');
 		} else {
-			self::setStep('install');
+			self::setStep(INSTALLER_INITIALSTEP_INSTALL);
 			self::setMode('install');
 		}
 	}
@@ -283,6 +286,24 @@ class TodoyuInstaller {
 		}
 
 		return $withLabels;
+	}
+
+
+	
+	/**
+	 * Get options rendering config array for language selector including custom option labels taken from locale files
+	 *
+	 * @return Array
+	 */
+	public static function getAvailableLanguageOptions() {
+		$languages	= TodoyuLanguageManager::getAvailableLanguages();
+		foreach($languages as $key => $language) {
+				/** @var $locale	String		'en', 'de', ...	*/
+			$locale	= $language['value'];
+			$languages[$key]['label']	= TodoyuLanguage::getLabel('installer.language.selectthislanguage', $locale);
+		}
+
+		return $languages;
 	}
 
 

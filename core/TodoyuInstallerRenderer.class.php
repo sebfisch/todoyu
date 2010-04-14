@@ -46,17 +46,38 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render installer stepp: todoyu License
+	 * Render installer step: select installer language (preset for system language)
 	 *
 	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
+	public static function renderLanguage(array $result) {
+		$data	= array(
+			'title'			=> 'installer.language.title',
+			'button'		=> false,
+			'text'			=> Label('installer.language.text'),
+			'textClass'		=> 'text textInfo',
+			'languages'		=> TodoyuInstaller::getAvailableLanguageOptions(),
+			'userLanguage'	=> TodoyuBrowserInfo::getBrowserLanguage(),
+		);
+
+		return $data;
+	}
+
+
+
+	/**
+	 * Render installer step: todoyu end user license agreement
+	 *
+	 * @param	Array	$result
+	 * @return	String
+	 */
 	public static function renderLicense(array $result) {
 		$data	= array(
-			'title'		=> 'installer.install.title',
-			'button'	=> 'installer.install.button',
-			'text'		=> Label('installer.install.text'),
+			'title'		=> 'installer.license.title',
+			'button'	=> 'installer.license.button',
+			'text'		=> Label('installer.license.text'),
 			'textClass'	=> 'text textInfo'
 		);
 
@@ -68,7 +89,6 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render installer step: Server Check (correct PHP version and writable files, folders)
 	 *
-	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -157,7 +177,6 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render installer step: Import Database Tables
 	 *
-	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -179,7 +198,6 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render installer step: System Configuration Setup (name, email, primary language)
 	 *
-	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -188,7 +206,7 @@ class TodoyuInstallerRenderer {
 			'title'			=> 'installer.systemconfig.title',
 			'button'		=> 'installer.systemconfig.button',
 			'languages'		=> TodoyuLanguageManager::getAvailableLanguages(),
-			'userLanguage'	=> TodoyuBrowserInfo::getBrowserLanguage(),
+			'userLanguage'	=> TodoyuSession::get('installer/language'),
 			'locales'		=> TodoyuLocaleManager::getLocaleOptions(),
 			'userLocale'	=> TodoyuLocaleManager::getBrowserLocale(),
 			'text'			=> Label('installer.systemconfig.text'),
@@ -203,7 +221,6 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render installer step: Create Administrator Account
 	 *
-	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -243,7 +260,6 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render installer step: Finish Installation
 	 *
-	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -275,10 +291,10 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderUpdate(array $result) {
 		$data	= array(
-			'title'		=> 'installer.update.title',
-			'button'	=> 'installer.update.button',
-			'text'		=> Label('installer.update.title'),
-			'textClass'	=> 'info'
+			'title'			=> 'installer.update.title',
+			'button'		=> 'installer.update.button',
+			'text'			=> Label('installer.update.title'),
+			'textClass'		=> 'info'
 		);
 
 		return $data;
