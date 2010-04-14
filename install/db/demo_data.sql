@@ -550,8 +550,7 @@ INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_perso
 (15, 1264583707, 1269509362, 1, 0, 'Sugarion', 'sugarion', 0, 1262300400, 0, 0),
 (16, 1264583917, 1269508153, 1, 0, 'Customers ACME', 'Customers', 0, 1262300400, 0, 0),
 (17, 1264584243, 1269508609, 1, 0, 'Rainbowflag Ltd.', 'RBF', 0, 0, 0, 0),
-(18, 1264587852, 1269509105, 1, 0, 'snowman production AG', 'smp', 0, 1262300400, 1, 0),
-(19, 1264696524, 1269509610, 1, 0, 'snowflake productions GmbH ', 'sfp', 0, 1259622000, 1, 0);
+(18, 1264587852, 1269509105, 1, 0, 'snowman production AG', 'smp', 0, 1262300400, 1, 0);
 
 --
 -- Data for Table `ext_contact_contactinfo`
@@ -643,8 +642,8 @@ INSERT INTO `ext_contact_mm_company_address` (`id`, `id_company`, `id_address`) 
 (28, 13, 8),
 (29, 17, 12),
 (30, 10, 5),
-(35, 19, 15),
-(37, 18, 14);
+(35, 18, 14),
+(36, 1, 15);
 
 --
 -- Data for Table `ext_contact_mm_company_contactinfo`
@@ -686,23 +685,23 @@ INSERT INTO `ext_contact_mm_company_contactinfo` (`id`, `id_company`, `id_contac
 (89, 18, 63),
 (88, 18, 62),
 (87, 18, 61),
-(83, 19, 65);
+(83, 1, 65);
 
 --
 -- Data for Table `ext_contact_mm_company_person`
 --
 
 INSERT INTO `ext_contact_mm_company_person` (`id`, `id_company`, `id_person`, `id_workaddress`, `id_jobtype`) VALUES
-(73, 19, 18, 15, 4),
 (2, 6, 2, 0, 0),
 (4, 5, 2, 0, 0),
 (5, 5, 3, 0, 0),
 (11, 8, 4, 0, 0),
-(50, 16, 6, 11, 1),
+(41, 14, 8, 9, 0),
 (32, 11, 5, 0, 0),
 (43, 15, 7, 10, 0),
-(41, 14, 8, 9, 0),
+(50, 16, 6, 11, 1),
 (70, 13, 9, 0, 0),
+(73, 1, 18, 15, 4),
 (37, 10, 16, 0, 0),
 (18, 12, 11, 0, 0),
 (19, 9, 12, 0, 0),
@@ -711,8 +710,8 @@ INSERT INTO `ext_contact_mm_company_person` (`id`, `id_company`, `id_person`, `i
 (39, 12, 10, 7, 0),
 (67, 18, 12, 14, 2),
 (74, 18, 14, 14, 0),
-(55, 19, 17, 15, 1),
-(71, 19, 1, 15, 4);
+(55, 1, 17, 15, 1),
+(71, 1, 1, 15, 4);
 
 --
 -- Data for Table `ext_contact_mm_person_address`
@@ -764,11 +763,6 @@ INSERT INTO `ext_contact_mm_person_role` (`id`, `id_person`, `id_role`) VALUES
 (3, 18, 4),
 (6, 12, 2),
 (12, 6, 1);
-
---
--- Data for Table `system_panelwidget`
---
-
 
 --
 -- Data for Table `system_preference`

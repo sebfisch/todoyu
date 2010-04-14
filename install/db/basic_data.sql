@@ -6,6 +6,20 @@ INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person
 (1, 1246615200, 1264780312, 0, 0, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'demo@todoyu.com', 1, 1, 'Adam', 'Admin', 'ALAD', 'm', '', '1966-10-05');
 
 --
+-- Data for Table `ext_contact_company`
+--
+
+INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_internal`, `ext_projectbilling_reduction`) VALUES
+(1, 1264696524, 1269509610, 1, 0, 'snowflake productions GmbH ', 'sfp', 0, 1259622000, 1, 0);
+
+--
+-- Data for Table `ext_contact_mm_company_person`
+--
+
+INSERT INTO `ext_contact_mm_company_person` (`id`, `id_company`, `id_person`, `id_workaddress`, `id_jobtype`) VALUES
+(1, 1, 1, 0, 0);
+
+--
 -- Data for Table `ext_contact_contactinfotype`
 --
 

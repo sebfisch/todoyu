@@ -33,8 +33,8 @@ Todoyu::$CONFIG['INSTALLER']['install'] = array(
 	'dbselect',
 	'importtables',
 	'systemconfig',
-	'adminpassword',
-	'demodata',
+	'adminaccount',
+	'importdemodata',
 	'finish'
 );
 
@@ -81,22 +81,22 @@ Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 	),
 	'importtables' => array(
 			// Preview static data, than import it
-		'process'	=> 'TodoyuInstallerManager::proccessImportDbTables',
+		'process'	=> 'TodoyuInstallerManager::processImportDbTables',
 		'render'	=> 'TodoyuInstallerRenderer::renderImportDbTables',
 		'tmpl'		=> '05_importtables.tmpl'
 	),
 	'systemconfig' => array(
 			// Update system config file (/config/system.php)
-		'process'	=> 'TodoyuInstallerManager::procesSystemConfig',
+		'process'	=> 'TodoyuInstallerManager::processSystemConfig',
 		'render'	=> 'TodoyuInstallerRenderer::renderSytemConfig',
 		'tmpl'		=> '06_systemconfig.tmpl'
 	),
-	'adminpassword' => array(
+	'adminaccount' => array(
 		'process'	=> 'TodoyuInstallerManager::processAdminAccount',
 		'render'	=> 'TodoyuInstallerRenderer::renderAdminAccount',
 		'tmpl'		=> '07_adminaccount.tmpl'
 	),
-	'demodata'		=> array(
+	'importdemodata'=> array(
 		'process'	=> 'TodoyuInstallerManager::processImportDemoData',
 		'render'	=> 'TodoyuInstallerRenderer::renderImportDemoData',
 		'tmpl'		=> '08_importdemodata.tmpl'

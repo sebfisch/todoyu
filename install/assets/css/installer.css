@@ -154,6 +154,10 @@ input#database_new {
 	width:250px;
 }
 
+input#email.adminaccount {
+	width:99%;
+}
+
 
 
 /* ---------------------------------

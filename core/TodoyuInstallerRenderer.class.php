@@ -207,11 +207,12 @@ class TodoyuInstallerRenderer {
 	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderAdminAccount(array $result) {
+	public static function renderAdminAccount(array $result) {		
 		$data	= array(
-			'title'		=> 'installer.adminpassword.title',
-			'button'	=> 'installer.adminpassword.button',
-			'text'		=> Label('installer.adminpassword.text'),
+			'title'		=> 'installer.adminaccount.title',
+			'button'	=> 'installer.adminaccount.button',
+			'email'		=> TodoyuSession::get('installer/systememail'),
+			'text'		=> Label('installer.adminaccount.text'),
 			'textClass'	=> 'info'
 		);
 
@@ -228,9 +229,9 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderImportDemoData(array $result) {
 		$data	= array(
-			'title'		=> 'installer.demodata.title',
-			'button'	=> 'installer.demodata.button',
-			'text'		=> Label('installer.demodata.text'),
+			'title'		=> 'installer.importdemodata.title',
+			'button'	=> 'installer.importdemodata.button',
+			'text'		=> Label('installer.importdemodata.text'),
 			'textClass'	=> 'info'
 		);
 

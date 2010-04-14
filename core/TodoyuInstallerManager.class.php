@@ -164,7 +164,7 @@ class TodoyuInstallerManager {
 	 * @param	Array		$data
 	 * @return	Array
 	 */
-	public static function proccessImportDbTables(array $data) {
+	public static function processImportDbTables(array $data) {
 		$result	= array();
 
 		if( intval($data['import']) === 1 ) {
@@ -187,14 +187,14 @@ class TodoyuInstallerManager {
 	 * @param	Array		$data
 	 * @return	Array
 	 */
-	public static function procesSystemConfig(array $data) {
+	public static function processSystemConfig(array $data) {
 		$result	= array();
 
 		if( isset($data['name']) ) {
 			if( TodoyuValidator::isEmail($data['email']) && trim($data['name']) !== '' ) {
 				self::saveSystemConfig($data);
-
-				TodoyuInstaller::setStep('adminpassword');
+				TodoyuSession::set('installer/systememail', $data['email']);
+				TodoyuInstaller::setStep('adminaccount');
 			} else {
 				$result['text']		= Label('installer.systemconfig.text.error');
 				$result['textClass']= 'error';
@@ -215,13 +215,23 @@ class TodoyuInstallerManager {
 	public static function processAdminAccount(array $data) {
 		$result	= array();
 
-		if( isset($data['password']) ) {
-			if( strlen(trim($data['password'])) >= 5 && $data['password'] === $data['password_confirm'] ) {
-				self::saveAdminPassword($data['password']);
+			// Verify account data
+		if( isset($data['password']) && isset($data['company']) && isset($data['firstname']) && isset($data['lastname']) ) {
+			$emailOk	= TodoyuString::isValidEmail(trim($data['email']));
+			$companyOk	= strlen(trim($data['company'])) >= 1;
+			$firstnameOk= strlen(trim($data['firstname'])) >= 1;
+			$lastnameOk	= strlen(trim($data['lastname'])) >= 1;			
+			$passwordOk	= strlen(trim($data['password'])) >= 5 && $data['password'] === $data['password_confirm'];
 
-				TodoyuInstaller::setStep('demodata');
+				// Verified. save account data
+			if( $emailOk && $companyOk && $firstnameOk && $lastnameOk && $passwordOk ) {
+				self::saveInternalCompanyName($data['company']);
+				self::saveAdminAccountData($data['email'], $data['password'], $data['firstname'], $data['lastname']);
+
+				TodoyuInstaller::setStep('importdemodata');
 			} else {
-				$result['text']		= Label('installer.adminpassword.text');
+					// Verification failed, display failure response
+				$result['text']		= Label('installer.adminaccount.error');
 				$result['textClass']= 'error';
 			}
 		}
@@ -365,11 +375,11 @@ class TodoyuInstallerManager {
 	 */
 	public static function finishInstallerAndJumpToLogin() {
 		self::disableInstaller();
-		self::removeIndexRedirecter();
+		self::removeIndexRedirector();
 
 		TodoyuSession::remove('installer');
 
-		self::goToLoginPage();
+		self::goToLogInPage();
 
 		exit();
 	}
@@ -377,7 +387,7 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Disbale the installer
+	 * Disable the installer
 	 */
 	public static function disableInstaller() {
 		$fileOld	= TodoyuFileManager::pathAbsolute('install/ENABLE');
@@ -395,9 +405,9 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Jump to loginpage
+	 * Jump to log-in page
 	 */
-	public static function goToLoginPage() {
+	public static function goToLogInPage() {
 		TodoyuHeader::location(dirname(TODOYU_URL), true);
 	}
 
@@ -408,7 +418,7 @@ class TodoyuInstallerManager {
 	 *
 	 * @return	Boolean
 	 */
-	public static function removeIndexRedirecter() {
+	public static function removeIndexRedirector() {
 		$success= false;
 		$file	= TodoyuFileManager::pathAbsolute('index.html');
 
@@ -422,16 +432,45 @@ class TodoyuInstallerManager {
 
 
 	/**
+	 * Update internal company DB record with given name
+	 *
+	 * @param	String		$name
+	 */
+	private static function saveInternalCompanyName($name) {
+		$table	= 'ext_contact_company';
+		$where	= 'id = 1';
+		$update	= array(
+			'title'		=> trim($name),
+			'shortname'	=> trim($name),
+			'date_enter'=> NOW
+		);
+
+		Todoyu::db()->doUpdate($table, $where, $update);
+	}
+
+
+	
+	/**
 	 * Update admin-user password (and username)
 	 *
-	 * @param	Array		$data
-	 * @return	Array
+	 * @param	String		$firstname
+	 * @param	String		$lastname
+	 * @param	String		$password
 	 */
-	private static function saveAdminPassword($password) {
+	private static function saveAdminAccountData($email, $password, $firstname, $lastname) {
+		$email		= trim($email);
+		$firstname	= trim($firstname);
+		$lastname	= trim($lastname);
+		$password	= trim($password);
+
 		$table	= 'ext_contact_person';
 		$where	= 'username = \'admin\'';
 		$update	= array(
-			'password'	=> md5(trim($password))
+			'email'			=> $email,
+			'firstname'		=> $firstname,
+			'lastname'		=> $lastname,
+			'shortname'		=> strtoupper(substr($firstname, 0, 2) . substr($lastname, 0, 2)),
+			'password'		=> md5($password)
 		);
 
 		Todoyu::db()->doUpdate($table, $where, $update);
