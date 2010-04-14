@@ -272,7 +272,25 @@ input#database_new {
 	background:#e3eace url('../img/panel-footer.png') no-repeat 0 0;
 }
 
+/* ----------------------------
+ 	Todoyu Panelwidget Slogan
+   ---------------------------- */
+.panelWidget .panelwidgetContent {
+	position: relative;
+}
 
+.panelWidget p.slogan {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 34px;
+	padding: 12px 10px;
+	text-transform: uppercase;
+	color: white;
+	font-size: 13px !important;
+	font-weight: bold;
+	text-align: right;
+}
 
 /* --------------------------
 	License agreement
