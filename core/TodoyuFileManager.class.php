@@ -48,15 +48,15 @@ class TodoyuFileManager {
 		$path	= trim($path);
 
 			// Replace directory seperatory with current system settings
-		$path = str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, $path);
+		$path = str_replace(array('\\', '/'), DIR_SEP, $path);
 
 			// If no absolute path
 		if( substr($path, 0, strlen(PATH)) !== PATH ) {
-			$path = PATH . DIRECTORY_SEPARATOR . $path;
+			$path = PATH . DIR_SEP . $path;
 		}
 
 			// Remove slash at the end
-		if( substr($path, -1, 1) === DIRECTORY_SEPARATOR ) {
+		if( substr($path, -1, 1) === DIR_SEP ) {
 			$path = substr($path, 0, -1);
 		}
 
@@ -72,7 +72,7 @@ class TodoyuFileManager {
 	 * @return 	String
 	 */
 	public static function pathWeb($absolutePath) {
-		return str_replace('\\', '/', str_replace(PATH . DIRECTORY_SEPARATOR, '', self::pathAbsolute($absolutePath)));
+		return str_replace('\\', '/', str_replace(PATH . DIR_SEP, '', self::pathAbsolute($absolutePath)));
 	}
 
 
@@ -122,7 +122,7 @@ class TodoyuFileManager {
 		$files		= array();
 
 		foreach($elements as $element) {
-			if( is_file($pathFolder . DIRECTORY_SEPARATOR . $element) ) {
+			if( is_file($pathFolder . DIR_SEP . $element) ) {
 					// No filters defined: add file to results array
 				if ( sizeof($filters) === 0) {
 					$files[] = $element;
@@ -156,7 +156,7 @@ class TodoyuFileManager {
 		$folders		= array();
 
 		foreach($elements as $element) {
-			if( is_dir($pathToFolder . DIRECTORY_SEPARATOR . $element) ) {
+			if( is_dir($pathToFolder . DIR_SEP . $element) ) {
 				$folders[] = $element;
 			}
 		}
@@ -178,7 +178,7 @@ class TodoyuFileManager {
 
 			// Delete folders with contents
 		foreach($folders as $foldername) {
-			$pathFolder	= $folderPath . DIRECTORY_SEPARATOR . $foldername;
+			$pathFolder	= $folderPath . DIR_SEP . $foldername;
 
 			if( is_dir($pathFolder) ) {
 				self::deleteFolderContents($pathFolder);
@@ -193,7 +193,7 @@ class TodoyuFileManager {
 
 			// Delete files in folder
 		foreach($files as $filename) {
-			$pathFile	= $folderPath . DIRECTORY_SEPARATOR . $filename;
+			$pathFile	= $folderPath . DIR_SEP . $filename;
 
 			if( is_file($pathFile) ) {
 				unlink($pathFile);
@@ -260,13 +260,13 @@ class TodoyuFileManager {
 
 			// Remove base PATH, we only create the sub folders. Split the parts
 		$directoryPath	= str_replace(PATH, '', $directoryPath);
-		$pathParts		= array_slice(explode(DIRECTORY_SEPARATOR, $directoryPath), 1);
+		$pathParts		= array_slice(explode(DIR_SEP, $directoryPath), 1);
 		$basePath		= PATH;
 		$chmod			= is_null($mode) ? Todoyu::$CONFIG['CHMOD']['folder'] : $mode;
 
 			// Create each level of the sub folder
 		foreach( $pathParts as $pathPart ) {
-			$currentPath = $basePath . DIRECTORY_SEPARATOR . $pathPart;
+			$currentPath = $basePath . DIR_SEP . $pathPart;
 
 			if( ! is_dir($currentPath) ) {
 				mkdir($currentPath);
@@ -495,7 +495,7 @@ class TodoyuFileManager {
 	 */
 	public static function appendToFilename($filename, $append) {
 		$pathinfo	= pathinfo($filename);
-		$dir		= ( $pathinfo['dirname'] == '.' ) ? '' : $pathinfo['dirname'] . DIRECTORY_SEPARATOR;
+		$dir		= ( $pathinfo['dirname'] == '.' ) ? '' : $pathinfo['dirname'] . DIR_SEP;
 
 		return $dir . $pathinfo['filename'] . $append . '.' . $pathinfo['extension'];
 	}

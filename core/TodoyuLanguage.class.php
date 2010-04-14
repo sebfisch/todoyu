@@ -428,7 +428,7 @@ class TodoyuLanguage {
 	 * @return	String
 	 */
 	private static function getCacheFileName($fileKey, $language) {
-		return TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['LANGUAGE']['cacheDir'] . DIRECTORY_SEPARATOR . $fileKey . '-' . $language . '.' . Todoyu::$CONFIG['LANGUAGE']['cacheExt']);
+		return TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['LANGUAGE']['cacheDir'] . DIR_SEP . $fileKey . '-' . $language . '.' . Todoyu::$CONFIG['LANGUAGE']['cacheExt']);
 	}
 
 
@@ -442,10 +442,10 @@ class TodoyuLanguage {
 	 */
 	private static function getExternalFileName($fileKey, $language) {
 		$absPath	= self::$files[$fileKey];
-		$intPath	= str_replace(PATH . DIRECTORY_SEPARATOR, '', $absPath);
-		$filename	= str_replace(DIRECTORY_SEPARATOR, '-', $intPath);
+		$intPath	= str_replace(PATH . DIR_SEP, '', $absPath);
+		$filename	= str_replace(DIR_SEP, '-', $intPath);
 
-		return Todoyu::$CONFIG['LANGUAGE']['l10nDir'] . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . $filename;
+		return Todoyu::$CONFIG['LANGUAGE']['l10nDir'] . DIR_SEP . $language . DIR_SEP . $filename;
 	}
 
 

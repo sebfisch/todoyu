@@ -21,18 +21,23 @@
 	// Define constant, so we can prevent direct script call
 define('TODOYU', true);
 
-	// Path
+	// Directory separator shorthand
+if ( ! defined('DIR_SEP') ) {
+	define('DIR_SEP', DIRECTORY_SEPARATOR);
+}
+
+	// Paths
 define( 'PATH', 			dirname(dirname(dirname(__FILE__))) );
 define( 'PATH_WEB',			dirname($_SERVER['SCRIPT_NAME']) );
-define( 'PATH_CACHE',		PATH . DIRECTORY_SEPARATOR . 'cache' );
-define( 'PATH_CORE',		PATH . DIRECTORY_SEPARATOR . 'core' );
-define( 'PATH_EXT',			PATH . DIRECTORY_SEPARATOR . 'ext' );
-define( 'PATH_CONFIG',		PATH_CORE . DIRECTORY_SEPARATOR . 'config' );
-define( 'PATH_LOCALCONF',	PATH . DIRECTORY_SEPARATOR . 'config' );
-define( 'PATH_LIB',			PATH . DIRECTORY_SEPARATOR . 'lib' );
-define( 'PATH_PEAR',		PATH_LIB . DIRECTORY_SEPARATOR . 'php' . DIRECTORY_SEPARATOR . 'PEAR' );
-define( 'PATH_TEMP',		PATH_CACHE . DIRECTORY_SEPARATOR . 'temp' );
-define( 'PATH_FILES',		PATH . DIRECTORY_SEPARATOR . 'files' );
+define( 'PATH_CACHE',		PATH . DIR_SEP . 'cache' );
+define( 'PATH_CORE',		PATH . DIR_SEP . 'core' );
+define( 'PATH_EXT',			PATH . DIR_SEP . 'ext' );
+define( 'PATH_CONFIG',		PATH_CORE . DIR_SEP . 'config' );
+define( 'PATH_LOCALCONF',	PATH . DIR_SEP . 'config' );
+define( 'PATH_LIB',			PATH . DIR_SEP . 'lib' );
+define( 'PATH_PEAR',		PATH_LIB . DIR_SEP . 'php' . DIR_SEP . 'PEAR' );
+define( 'PATH_TEMP',		PATH_CACHE . DIR_SEP . 'temp' );
+define( 'PATH_FILES',		PATH . DIR_SEP . 'files' );
 
 
 	// Constants

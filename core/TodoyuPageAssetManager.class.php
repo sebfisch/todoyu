@@ -238,7 +238,7 @@ class TodoyuPageAssetManager {
 	private static function getMergedJavascriptFile(array $fileConfigs) {
 		$lang			= Todoyu::getLang();
 		$mergeFileName	= self::buildMergefileName($fileConfigs, $lang . '.js');
-		$mergeFilePath	= PATH_CACHE . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . $mergeFileName;
+		$mergeFilePath	= PATH_CACHE . DIR_SEP . 'js' . DIR_SEP . $mergeFileName;
 
 			// If merge file doesn't exist yet, create it
 		if( ! is_file($mergeFilePath) ) {
@@ -338,7 +338,7 @@ class TodoyuPageAssetManager {
 
 		$postfix	= ($compressed ? '-min' : '') . ($localized ? '-' . TodoyuLanguage::getLanguage() : '');
 
-		$storagePath= PATH_CACHE . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . $dirHash . '.' . $pathInfo['filename'] . $postfix . '.' . $pathInfo['extension'];
+		$storagePath= PATH_CACHE . DIR_SEP . 'js' . DIR_SEP . $dirHash . '.' . $pathInfo['filename'] . $postfix . '.' . $pathInfo['extension'];
 
 		return $storagePath;
 	}
@@ -451,7 +451,7 @@ class TodoyuPageAssetManager {
 
 			// Make sure CSS cache folder exists
 		if( $doCompress ) {
-			TodoyuFileManager::makeDirDeep( PATH_CACHE . DIRECTORY_SEPARATOR . 'css');
+			TodoyuFileManager::makeDirDeep( PATH_CACHE . DIR_SEP . 'css');
 		}
 
 			// Collect file paths and create compressed version if configured
@@ -501,7 +501,7 @@ class TodoyuPageAssetManager {
 
 		$postfix	= $compressed ? '-min' : '' ;
 
-		$storagePath= PATH_CACHE . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR. $dirHash . '.' . $pathInfo['filename'] . $postfix . '.' . $pathInfo['extension'];
+		$storagePath= PATH_CACHE . DIR_SEP . 'css' . DIR_SEP. $dirHash . '.' . $pathInfo['filename'] . $postfix . '.' . $pathInfo['extension'];
 
 		return $storagePath;
 	}
@@ -527,7 +527,7 @@ class TodoyuPageAssetManager {
 			// Process all files of a media type
 		foreach($media as $mediaType => $mediaFileConfigs) {
 			$mergeFileName	= self::buildMergefileName($mediaFileConfigs, 'css');
-			$mergeFilePath	= PATH_CACHE . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR .$mergeFileName;
+			$mergeFilePath	= PATH_CACHE . DIR_SEP . 'css' . DIR_SEP .$mergeFileName;
 
 				// If merge file doesn't exist yet, create it
 			if( ! is_file($mergeFilePath) ) {

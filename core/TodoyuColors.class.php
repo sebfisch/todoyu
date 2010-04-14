@@ -42,8 +42,8 @@ class TodoyuColors {
 	 * Generate css and img file for user colors
 	 */
 	public static function generate() {
-		$fileCSS	= PATH_CACHE . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'colors.css';
-		$fileIMG	= PATH_CACHE . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'colors.png';
+		$fileCSS	= PATH_CACHE . DIR_SEP . 'css' . DIR_SEP . 'colors.css';
+		$fileIMG	= PATH_CACHE . DIR_SEP . 'img' . DIR_SEP . 'colors.png';
 
 			// Generate CSS file if it not exists
 		if( ! is_file($fileCSS) ) {

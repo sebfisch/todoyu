@@ -4,7 +4,7 @@
 		<label index="panelWidget.title.progress">Steps of Installation</label>
 		<label index="type.install">todoyu Installation</label>
 		<label index="type.update">todoyu Update</label>
-		<label index="install.eula">End Eser License Agreement for todoyu</label>
+		<label index="install.eula">End User License Agreement for todoyu</label>
 		<label index="install.lgpl">The Following Third Party Libraries are Licensed Under LGPL v2.1</label>
 		<label index="install.title">License Agreement</label>
 		<label index="install.button">I Accept, Install todoyu</label>

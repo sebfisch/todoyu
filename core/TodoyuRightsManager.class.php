@@ -115,7 +115,7 @@ class TodoyuRightsManager {
 	 * @return	Integer
 	 */
 	public static function getLastChangeTime() {
-		$timestampFile	= PATH_CACHE . DIRECTORY_SEPARATOR . 'timeLastRightsChange';
+		$timestampFile	= PATH_CACHE . DIR_SEP . 'timeLastRightsChange';
 
 		if ( TodoyuFileManager::isFile($timestampFile) ) {
 				// Get modification time of file
@@ -133,7 +133,7 @@ class TodoyuRightsManager {
 	 * Save timestamp of moment of system rights store / change
 	 */
 	public static function saveChangeTime() {
-		$timestampFile	= PATH_CACHE . DIRECTORY_SEPARATOR . 'timeLastRightsChange';
+		$timestampFile	= PATH_CACHE . DIR_SEP . 'timeLastRightsChange';
 
 		if ( ! TodoyuFileManager::isFile($timestampFile) ) {
 				// Create timestamp file

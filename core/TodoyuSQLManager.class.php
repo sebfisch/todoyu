@@ -188,7 +188,7 @@ class TodoyuSQLManager {
 
 		foreach($extKeys as $extKey) {
 			$extPath	= TodoyuExtensions::getExtPath($extKey);
-			$file		= $extPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'db' . DIRECTORY_SEPARATOR . 'tables.sql';
+			$file		= $extPath . DIR_SEP . 'config' . DIR_SEP . 'db' . DIR_SEP . 'tables.sql';
 
 			if( is_file($file) ) {
 				$fileQueries= self::getQueriesFromFile($file);

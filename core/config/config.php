@@ -32,8 +32,8 @@ Todoyu::$CONFIG['SESSION']		= array(
 
 	// Template (dwoo) path config
 Todoyu::$CONFIG['TEMPLATE']		= array(
-	'compile'	=> PATH_CACHE . DIRECTORY_SEPARATOR . 'tmpl' . DIRECTORY_SEPARATOR . 'compile',
-	'cache'		=> PATH_CACHE . DIRECTORY_SEPARATOR . 'tmpl' . DIRECTORY_SEPARATOR . 'cache',
+	'compile'	=> PATH_CACHE . DIR_SEP . 'tmpl' . DIR_SEP . 'compile',
+	'cache'		=> PATH_CACHE . DIR_SEP . 'tmpl' . DIR_SEP . 'cache',
 );
 
 	// Bad tags which are encoded by the HtmlFilter

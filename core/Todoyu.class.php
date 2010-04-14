@@ -318,8 +318,8 @@ class Todoyu {
 		$classFile = $className . '.class.php';
 
 		foreach(self::$CONFIG['AUTOLOAD'] as $includePath) {
-			if( is_file($includePath . DIRECTORY_SEPARATOR . $classFile) ) {
-				include_once($includePath . DIRECTORY_SEPARATOR . $classFile);
+			if( is_file($includePath . DIR_SEP . $classFile) ) {
+				include_once($includePath . DIR_SEP . $classFile);
 				break;
 			}
 		}

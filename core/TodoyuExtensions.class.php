@@ -137,7 +137,7 @@ class TodoyuExtensions {
 	 * @return	String		Or FALSE
 	 */
 	public static function getExtPath($extKey, $appendPath = '') {
-		return TodoyuFileManager::pathAbsolute(PATH_EXT . DIRECTORY_SEPARATOR . $extKey . DIRECTORY_SEPARATOR . trim($appendPath, '/\\'));
+		return TodoyuFileManager::pathAbsolute(PATH_EXT . DIR_SEP . $extKey . DIR_SEP . trim($appendPath, '/\\'));
 	}
 
 
@@ -186,7 +186,7 @@ class TodoyuExtensions {
 	 * @return	Boolean		Loading status
 	 */
 	public static function loadConfig($extKey, $type) {
-		$filePath	= realpath(PATH_EXT . DIRECTORY_SEPARATOR . $extKey . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . $type . '.php');
+		$filePath	= realpath(PATH_EXT . DIR_SEP . $extKey . DIR_SEP . 'config' . DIR_SEP . $type . '.php');
 
 		if( $filePath !== false && self::isPathInExtDir($extKey, $filePath) ) {
 			if( is_file($filePath) ) {
@@ -232,11 +232,11 @@ class TodoyuExtensions {
 	public static function loadAllConfig($extKey) {
 		$extPath	= self::getExtPath($extKey);
 
-		$configDir	= $extPath . DIRECTORY_SEPARATOR . 'config';
+		$configDir	= $extPath . DIR_SEP . 'config';
 		$configFiles= array_slice(scandir($configDir), 2);
 
 		foreach($configFiles as $file) {
-			include_once( $configDir . DIRECTORY_SEPARATOR . $file );
+			include_once( $configDir . DIR_SEP . $file );
 		}
 	}
 
