@@ -48,14 +48,14 @@ Todoyu::$CONFIG['INSTALLER']['update'] = array(
 Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 		// Installation steps
 	'install' => array(
-		'process'	=> 'TodoyuInstallerManager::processInstall',
-		'render'	=> 'TodoyuInstallerRenderer::renderInstall',
-		'tmpl'		=> '01_install.tmpl'
+		'process'	=> 'TodoyuInstallerManager::processLicense',
+		'render'	=> 'TodoyuInstallerRenderer::renderLicense',
+		'tmpl'		=> '01_license.tmpl'
 	),
 	'servercheck' => array(
 			// Check server compatibility
-		'process'	=> 'TodoyuInstallerManager::processServercheck',
-		'render'	=> 'TodoyuInstallerRenderer::renderServercheck',
+		'process'	=> 'TodoyuInstallerManager::processServerCheck',
+		'render'	=> 'TodoyuInstallerRenderer::renderServerCheck',
 		'tmpl'		=> '02_servercheck.tmpl',
 		'fileCheck'	=> array(
 			'files',
@@ -69,7 +69,7 @@ Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 	),
 	'dbconnection' => array(
 			// Configure DB connection details
-		'process'	=> 'TodoyuInstallerManager::processDbconnection',
+		'process'	=> 'TodoyuInstallerManager::processDbConnection',
 		'render'	=> 'TodoyuInstallerRenderer::renderDbConnection',
 		'tmpl'		=> '03_dbconnection.tmpl'
 	),
@@ -81,8 +81,8 @@ Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 	),
 	'importtables' => array(
 			// Preview static data, than import it
-		'process'	=> 'TodoyuInstallerManager::proccessImportTables',
-		'render'	=> 'TodoyuInstallerRenderer::renderImportTables',
+		'process'	=> 'TodoyuInstallerManager::proccessImportDbTables',
+		'render'	=> 'TodoyuInstallerRenderer::renderImportDbTables',
 		'tmpl'		=> '05_importtables.tmpl'
 	),
 	'systemconfig' => array(
@@ -92,19 +92,19 @@ Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 		'tmpl'		=> '06_systemconfig.tmpl'
 	),
 	'adminpassword' => array(
-		'process'	=> 'TodoyuInstallerManager::processAdminPassword',
-		'render'	=> 'TodoyuInstallerRenderer::renderAdminPassword',
-		'tmpl'		=> '07_adminpassword.tmpl'
+		'process'	=> 'TodoyuInstallerManager::processAdminAccount',
+		'render'	=> 'TodoyuInstallerRenderer::renderAdminAccount',
+		'tmpl'		=> '07_adminaccount.tmpl'
 	),
 	'demodata'		=> array(
-		'process'	=> 'TodoyuInstallerManager::processDemoData',
-		'render'	=> 'TodoyuInstallerRenderer::renderDemoData',
-		'tmpl'		=> 'xx_demodata.tmpl'
+		'process'	=> 'TodoyuInstallerManager::processImportDemoData',
+		'render'	=> 'TodoyuInstallerRenderer::renderImportDemoData',
+		'tmpl'		=> '08_importdemodata.tmpl'
 	),
 	'finish' => array(
 		'process'	=> 'TodoyuInstallerManager::processFinish',
 		'render'	=> 'TodoyuInstallerRenderer::renderFinish',
-		'tmpl'		=> '08_finish.tmpl'
+		'tmpl'		=> '09_finish.tmpl'
 	),
 
 
@@ -113,23 +113,23 @@ Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 	'update' => array(
 		'process'	=> 'TodoyuInstallerManager::processUpdate',
 		'render'	=> 'TodoyuInstallerRenderer::renderUpdate',
-		'tmpl'		=> '09_update.tmpl'
+		'tmpl'		=> '10_update.tmpl'
 	),
 	'updateconfigfiles'	=> array(
 		'process'	=> 'TodoyuInstallerManager::processConfigFileCheck',
 		'render'	=> 'TodoyuInstallerRenderer::renderUpdateConfigFiles',
-		'tmpl'		=> '13_updateconfigfiles.tmpl'
+		'tmpl'		=> '11_updateconfigfiles.tmpl'
 	),
 	'updatetocurrentversion' => array(
 			// Mandatory version updates
 		'process'	=> 'TodoyuInstallerManager::processUpdateToCurrentVersion',
 		'render'	=> 'TodoyuInstallerRenderer::renderUpdateToCurrentVersion',
-		'tmpl'		=> '10_updatetocurrentversion.tmpl',
+		'tmpl'		=> '12_updatetocurrentversion.tmpl',
 	),
 	'finishupdate' => array(
 		'process'	=> 'TodoyuInstallerManager::processFinishUpdate',
 		'render'	=> 'TodoyuInstallerRenderer::renderFinishUpdate',
-		'tmpl'		=> '12_finishupdate.tmpl'
+		'tmpl'		=> '13_finishupdate.tmpl'
 	)
 );
 

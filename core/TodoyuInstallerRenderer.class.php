@@ -27,7 +27,7 @@
 class TodoyuInstallerRenderer {
 
 	/**
-	 * Render progress panel widget
+	 * Render progress panel widget listing all steps of installation
 	 *
 	 * @param	String		$step
 	 * @return	String
@@ -46,13 +46,13 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render welcome screen (license agreement)
+	 * Render installer stepp: todoyu License
 	 *
 	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderInstall(array $result) {
+	public static function renderLicense(array $result) {
 		$data	= array(
 			'title'		=> 'installer.install.title',
 			'button'	=> 'installer.install.button',
@@ -66,13 +66,13 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render server check (correct PHP version and writable files, folders) screen
+	 * Render installer step: Server Check (correct PHP version and writable files, folders)
 	 *
 	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderServercheck(array $result) {
+	public static function renderServerCheck(array $result) {
 		$info	= TodoyuInstallerManager::checkServer();
 
 		$data	= array(
@@ -85,7 +85,7 @@ class TodoyuInstallerRenderer {
 			)
 		);
 
-		TodoyuDebug::printInFirebug($data, 'data');
+//		TodoyuDebug::printInFirebug($data, 'data');
 
 		if( $info['stop'] === false ) {
 			$data['text'] 		= Label('installer.servercheck.ready');
@@ -101,7 +101,7 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Check DB connection details. This step repeats itself on connection failure.
+	 * Render installer step: Setup Database Connection (check DB connection details, this step repeats itself on connection failure)
 	 *
 	 * @param	Array	$result
 	 * @return	Array
@@ -120,7 +120,7 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render DB select screen
+	 * Render installer step: Select Database
 	 *
 	 * @param	Array	$result
 	 * @return	Array
@@ -155,13 +155,13 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render import static DB data screen
+	 * Render installer step: Import Database Tables
 	 *
 	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderImportTables(array $result) {
+	public static function renderImportDbTables(array $result) {
 		$data	= array(
 			'title'			=> 'installer.importtables.title',
 			'button'		=> 'installer.importtables.button',
@@ -177,7 +177,7 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render system config setup (name, email, primary language)
+	 * Render installer step: System Configuration Setup (name, email, primary language)
 	 *
 	 * @param	String	$nextStep
 	 * @param	Array	$result
@@ -201,13 +201,13 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render admin password change screen
+	 * Render installer step: Create Administrator Account
 	 *
 	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderAdminPassword(array $result) {
+	public static function renderAdminAccount(array $result) {
 		$data	= array(
 			'title'		=> 'installer.adminpassword.title',
 			'button'	=> 'installer.adminpassword.button',
@@ -219,7 +219,14 @@ class TodoyuInstallerRenderer {
 	}
 
 
-	public static function renderDemoData(array $result) {
+
+	/**
+	 * Render installer step: Import Demo Data
+	 *
+	 * @param	Array	$result
+	 * @return	String
+	 */
+	public static function renderImportDemoData(array $result) {
 		$data	= array(
 			'title'		=> 'installer.demodata.title',
 			'button'	=> 'installer.demodata.button',
@@ -233,7 +240,7 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render finishing screen
+	 * Render installer step: Finish Installation
 	 *
 	 * @param	String	$nextStep
 	 * @param	Array	$result

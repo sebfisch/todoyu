@@ -73,20 +73,97 @@ Todoyu.Installer = {
 	/**
 	 * Ensure password and it's repetition are identical
 	 */
-	validatePasswordRepetition: function() {
-		var areIdentic	= ( $F('password') == $F('password_confirm') );
-		var longEnough	= $F('password').length >= 5;
-		var submitButton	= $$('button')[0];
+	validateAdminAccountData: function() {
+		var companyOk   = this.validateCompanyName();
+		var firstnameOk = this.validateFirstname();
+		var lastnameOk  = this.validateLastname();
+		var passwordOk  = this.validatePassword();
 
-		if ( areIdentic && longEnough ) {
-			$('passwordLabel').removeClassName('redLabel');
-			$('passwordConfirmLabel').removeClassName('redLabel');
+		var submitButton= $$('button')[0];
+		
+		if ( companyOk && firstnameOk && lastnameOk && passwordOk ) {
 			submitButton.show();
 		} else {
-			$('passwordLabel').addClassName('redLabel');
-			$('passwordConfirmLabel').addClassName('redLabel');
 			submitButton.hide();
 		}
+	},
+
+
+	/**
+	 * Set CSS class of field label red / default depending on given validation result
+	 *
+	 * @param   String      labelField
+	 * @param   Boolean     isOk
+	 */
+	updateLabelValidationClass: function(labelField, isOk) {
+		if ( isOk ) {
+			$(labelField).removeClassName('redLabel');
+			$(labelField).removeClassName('redLabel');
+		} else {
+			$(labelField).addClassName('redLabel');
+			$(labelField).addClassName('redLabel');
+		}
+	},
+
+
+
+	/**
+	 * Validate input for company name
+	 *
+	 * @return  Boolean
+	 */
+	validateCompanyName: function() {
+		var isOk    = $F('company').replace(' ', '').length > 0;
+		this.updateLabelValidationClass('labelCompany', isOk);
+
+		return isOk;
+	},
+
+
+
+	/**
+	 * Validate input for firstname
+	 *
+	 * @return  Boolean
+	 */
+	validateFirstname: function() {
+		var isOk    = $F('firstname').replace(' ', '').length > 0;
+		this.updateLabelValidationClass('labelFirstname', isOk);
+
+		return isOk;
+	},
+
+
+
+	/**
+	 * Validate input for lastname
+	 *
+	 * @return  Boolean
+	 */
+	validateLastname: function() {
+		var isOk    = $F('lastname').replace(' ', '').length > 0;
+		this.updateLabelValidationClass('labelLastname', isOk);
+
+		return isOk;
+	},
+
+
+
+	/**
+	 * Validate password to be long enough and both repetitions being identic
+	 *
+	 * @return  Boolean
+	 */
+	validatePassword: function() {
+		var areIdentic	= $F('password') == $F('password_confirm');
+		var longEnough	= $F('password').length >= 5;
+
+		var isOk    = areIdentic && longEnough;
+
+		this.updateLabelValidationClass('labelPassword',        isOk);
+		this.updateLabelValidationClass('labelPasswordConfirm', isOk);
+
+		return isOk;
 	}
 
 };

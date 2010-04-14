@@ -27,12 +27,12 @@
 class TodoyuInstallerManager {
 
 	/**
-	 * Process installation step (first)
+	 * Process first step of installation: license agreement accepted
 	 *
 	 * @param	Array		$data
 	 * @return	Array
 	 */
-	public static function processInstall(array $data) {
+	public static function processLicense(array $data) {
 		$result	= array();
 
 		if( intval($data['install']) === 1 ) {
@@ -50,7 +50,7 @@ class TodoyuInstallerManager {
 	 * @param	Array		$data
 	 * @return	Array
 	 */
-	public static function processServercheck(array $data) {
+	public static function processServerCheck(array $data) {
 		$result	= array();
 
 		if( intval($data['checked']) === 1 ) {
@@ -63,12 +63,12 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Check if connection data is valid
+	 * Check database connection data validity
 	 *
 	 * @param	Array		$data
 	 * @return	Array
 	 */
-	public static function processDbconnection(array $data) {
+	public static function processDbConnection(array $data) {
 		$result	= array();
 
 		if( isset($data['server']) ) {
@@ -164,7 +164,7 @@ class TodoyuInstallerManager {
 	 * @param	Array		$data
 	 * @return	Array
 	 */
-	public static function proccessImportTables(array $data) {
+	public static function proccessImportDbTables(array $data) {
 		$result	= array();
 
 		if( intval($data['import']) === 1 ) {
@@ -207,12 +207,12 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Process admin password update
+	 * Process administrator account data update: create internal company, update administrator person and user data
 	 *
 	 * @param	Array		$data
 	 * @return	Array
 	 */
-	public static function processAdminPassword(array $data) {
+	public static function processAdminAccount(array $data) {
 		$result	= array();
 
 		if( isset($data['password']) ) {
@@ -237,7 +237,7 @@ class TodoyuInstallerManager {
 	 * @param	Array		$data
 	 * @return	Array
 	 */
-	public static function processDemoData(array $data) {
+	public static function processImportDemoData(array $data) {
 		$result	= array();
 
 		if( isset($data['importdemodata']) ) {
