@@ -363,7 +363,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 */
 	public function validateRequired() {
 		$customValidator	= $this->config['record']['validateRequired'];
-
+		
 		if( TodoyuFunction::isFunctionReference($customValidator) ) {
 			$records	= $this->getRecords();
 			$valid		= true;
@@ -375,7 +375,15 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 				}
 			}
 		} else {
-			$valid = sizeof($this->getRecords()) > 0;
+			$records	= $this->getRecords();
+			$valid		= false;
+
+			foreach($records as $record) {
+				if( $record['id'] !== '0' ) {
+					$valid = true;
+					break;
+				}
+			}
 		}
 
 		return $valid;

@@ -461,7 +461,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		}
 
 			// Check for required
-		if( $this->isRequired() ) {
+		if( $this->isRequired() && ! $this->isRequiredNoCheck() ) {
 			if( ! $this->validateRequired() ) {
 				$this->setErrorTrue();
 				//$this->bubbleError($this);
@@ -484,6 +484,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	private final function runValidator($validatorName, array $validatorConfig) {
 		$isValid = TodoyuFormValidator::validate($validatorName, $this->getStorageData(), $validatorConfig, $this, $this->getForm()->getFormData());
 
+			// If validation failed, set error message
 		if( $isValid === false ) {
 			$this->setErrorTrue();
 
@@ -594,6 +595,15 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 */
 	public function isRequired() {
 		return $this->hasAttribute('required');
+	}
+	
+
+
+	/**
+	 * @return Check if field required has a noCheck option
+	 */
+	public function isRequiredNoCheck() {
+		return isset($this->config['required']['noCheck']);
 	}
 
 

@@ -684,11 +684,11 @@ class TodoyuFormValidator {
 		if ( $allow === true ) {
 			return true;
 		}
-
+		
 			// Validate
 		$field	= $validatorConfig['field'];
 
-		return empty($formData[$field]) || $value !== '';
+		return empty($formData[$field]) || $formElement->validateRequired();
 	}
 
 
