@@ -42,44 +42,7 @@ class TodoyuRenderer {
 		return render($tmpl, $data);
 	}
 
-
-
-	/**
-	 * Call all registered render functions for an area (content,panel,menu,etc)
-	 * The parameter will be passed to the render function in the same order as in the array
-	 *
-	 * @param	String		$extKey		Extension key
-	 * @param	String		$area		Area to render (where functions are registered to)
-	 * @param	Array		$params		Parameter to pass to the render function
-	 * @return	String		HTML for the are delivered by all render functions
-	 */
-	public static function renderArea($extKey, $area = 'content', array $params = array()) {
-		$content 	= '';
-		$renderFuncs= Todoyu::$CONFIG['EXT'][$extKey]['renderer'][$area];
-
-		if( is_array($renderFuncs) ) {
-			foreach( $renderFuncs as $renderFunc ) {
-				$funcRef	= explode('::', $renderFunc);
-				$content	.= call_user_func_array($funcRef, $params);
-			}
-		}
-
-		return $content;
-	}
-
-
-	/**
-	 * Add area renderer function reference
-	 *
-	 * @param	String	$ext
-	 * @param	String	$area
-	 * @param	String	$funcRef
-	 */
-	public static function addAreaRenderer($ext, $area, $funcRef) {
-		Todoyu::$CONFIG['EXT'][$ext]['renderer'][$area][] = $funcRef;
-	}
-
-
+	
 
 	/**
 	 * Render autocompletion results list
@@ -99,6 +62,16 @@ class TodoyuRenderer {
 		return render($tmpl, $data);
 	}
 
+
+
+	/**
+	 * Render content area
+	 * Contains tab and body area
+	 *
+	 * @param	String		$body
+	 * @param	String		$tabs
+	 * @return	String
+	 */
 	public static function renderContent($body, $tabs) {
 		$tmpl	= 'core/view/content.tmpl';
 		$data	= array(
