@@ -9,13 +9,13 @@
 			</td>
 		</tr>
 		<tr>
-			<td>{Label installer.dbconnection.username}</td>
+			<td><label for="username">{Label installer.dbconnection.username}</label></td>
 			<td>
 				<input type="text" name="username" id="username" value="{$postData.username|default:'root'}" />
 			</td>
 		</tr>
 		<tr>
-			<td id="passwordLabel">{Label installer.dbconnection.password}</td>
+			<td id="passwordLabel"><label for="password">{Label installer.dbconnection.password}</label></td>
 			<td>
 				<input type="password" name="password" id="password" value="{$fields.password}" />
 			</td>

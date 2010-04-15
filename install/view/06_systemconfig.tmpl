@@ -3,17 +3,17 @@
 {block name="box"}
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 			<tr>
-				<td width="109">{Label installer.systemconfig.name} *</td>
+				<td width="109"><label for="name">{Label installer.systemconfig.name} *</label></td>
 				<td width="379">
 					<input name="name" type="text" id="name" value="{$postData.name|default:'Todoyu'}" />
 				</td>
 			</tr>
 			<tr>
-				<td>{Label installer.systemconfig.email} *</td>
+				<td><label for="email">{Label installer.systemconfig.email} *</label></td>
 				<td><input type="text" name="email" id="email" value="{$postData.email}" /></td>
 			</tr>
 			<tr>
-				<td>{Label installer.systemconfig.language}</td>
+				<td><label for="language">{Label installer.systemconfig.language}</label></td>
 				<td>
 					<select name="language" id="language">
 						{foreach $languages language}
@@ -23,11 +23,21 @@
 				</td>
 			</tr>
 			<tr>
-				<td>{Label installer.systemconfig.locale}</td>
+				<td><label for="locale">{Label installer.systemconfig.locale}</label></td>
 				<td>
 					<select name="locale" id="locale">
 					{foreach $locales locale}
 						<option value="{$locale.value}" {if $locale.value==$userLocale}selected="selected"{/if}>{$locale.label}</option>
+					{/foreach}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="timezone">{Label installer.systemconfig.timezone}</label></td>
+				<td>
+					<select name="timezone" id="timezone">
+					{foreach $timezones timezone}
+						<option value="{$timezone.timezone}">{$timezone.timezone}</option>
 					{/foreach}
 					</select>
 				</td>

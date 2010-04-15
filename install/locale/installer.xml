@@ -56,6 +56,7 @@
 		<label index="systemconfig.email">System Email</label>
 		<label index="systemconfig.language">Language</label>
 		<label index="systemconfig.locale">Locale</label>
+		<label index="systemconfig.timezone">Timezone</label>
 		<label index="systemconfig.text">Select Your todoyu System Settings</label>
 		<label index="systemconfig.text.error">Please Enter a System Name and Email</label>
 		<label index="systemconfig.step">System Configuration</label>
@@ -156,6 +157,7 @@
 		<label index="systemconfig.email">System-Email</label>
 		<label index="systemconfig.language">Sprache</label>
 		<label index="systemconfig.locale">Region</label>
+		<label index="systemconfig.timezone">Zeitzone</label>
 		<label index="systemconfig.text">todoyu System-Einstellungen vornehmen</label>
 		<label index="systemconfig.text.error">Bitte System-Name und -Email angeben</label>
 		<label index="systemconfig.step">System konfigurieren</label>

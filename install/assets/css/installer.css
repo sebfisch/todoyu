@@ -149,6 +149,7 @@ input#name,
 input#email,
 select#language,
 select#locale,
+select#timezone,
 select#database,
 input#database_new {
 	width:250px;

@@ -105,8 +105,7 @@ class TodoyuInstallerRenderer {
 			)
 		);
 
-//		TodoyuDebug::printInFirebug($data, 'data');
-
+			// Get result of server check, set response display
 		if( $info['stop'] === false ) {
 			$data['text'] 		= Label('installer.servercheck.ready');
 			$data['textClass'] 	= 'success';
@@ -151,6 +150,7 @@ class TodoyuInstallerRenderer {
 		$dbOptions	= array();
 		$dbConf		= $dbConfig;
 
+			// Prerender database selection options 
 		foreach($databases as $database) {
 			$dbConf['database']	= $database;
 			$tables				= TodoyuDbAnalyzer::getDatabaseTables($dbConf);
@@ -160,7 +160,7 @@ class TodoyuInstallerRenderer {
 				'size'		=> sizeof($tables)
 			);
 		}
-
+			// Setup rendering data
 		$data	= array(
 			'title'		=> 'installer.dbselect.title',
 			'button'	=> 'installer.dbselect.button',
@@ -209,6 +209,7 @@ class TodoyuInstallerRenderer {
 			'userLanguage'	=> TodoyuSession::get('installer/language'),
 			'locales'		=> TodoyuLocaleManager::getLocaleOptions(),
 			'userLocale'	=> TodoyuLocaleManager::getBrowserLocale(),
+			'timezones'		=> TodoyuDatasource::getTimezones(),
 			'text'			=> Label('installer.systemconfig.text'),
 			'textClass'		=> 'info'
 		);

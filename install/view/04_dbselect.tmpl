@@ -3,16 +3,18 @@
 {block name="box"}
 		<table style="margin-top:18px" width="500" border="0" cellspacing="0" cellpadding="3">
 			<tr>
-				<td width="109">{Label installer.dbselect.selectDB}</td>
+				<td width="109"><label for="database">{Label installer.dbselect.selectDB}</label></td>
 				<td width="379">
 					<select name="database" type="text" id="database">
 						{foreach $databases database}
-							<option value="{$database.database}" {if $database.size>0}disabled="disabled" class="disabled"{/if}>{$database.database} {if $database.size>0}({Label installer.dbselect.dbNotEmpty}! {$database.size} {Label installer.dbselect.tables}){else}({Label installer.dbselect.dbEmpty}){/if}</option>
+							<option value="{$database.database}" {if $database.size>0}disabled="disabled" class="disabled"{/if}>
+								{$database.database} {if $database.size>0}({Label installer.dbselect.dbNotEmpty}! {$database.size} {Label installer.dbselect.tables}){else}({Label installer.dbselect.dbEmpty}){/if}
+							</option>
 						{/foreach}
 					</select>
 				</td>
 			</tr><tr>
-				<td>{Label installer.dbselect.orCreateDB}</td>
+				<td><label for="database_new">{Label installer.dbselect.orCreateDB}</label></td>
 				<td>
 					<input onkeyup="Todoyu.Installer.checkDbSelect()" type="text" id="database_new" name="database_new" value="{$postData.database_new}" />
 					<span id="error-newnameTaken" style="display:none;" class="error">{Label installer.error.nameTaken}</span>
