@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="date">Date</label>
 		<label index="time">Time</label>
 		<label index="hrs">h</label>
@@ -52,7 +52,7 @@
 		<label index="yearly">Yearly</label>
 		<label index="today">Today</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="date">Datum</label>
 		<label index="time">Zeit</label>
 		<label index="hrs">h</label>
@@ -104,7 +104,7 @@
 		<label index="yearly">Jährlich</label>
 		<label index="today">Heute</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="date">Data</label>
 		<label index="time">Hora</label>
 		<label index="hrs">h</label>

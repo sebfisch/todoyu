@@ -21,6 +21,6 @@
 Todoyu::$CONFIG['LANGUAGE']['cacheDir'] 	= PATH_CACHE . DIR_SEP . 'language';
 Todoyu::$CONFIG['LANGUAGE']['l10nDir'] 		= PATH . DIR_SEP . 'l10n';
 Todoyu::$CONFIG['LANGUAGE']['cacheExt'] 	= 'lang';
-Todoyu::$CONFIG['LANGUAGE']['available']	= array('en','de');
+Todoyu::$CONFIG['LANGUAGE']['available']	= array('en_GB','de_DE',('pt_BR'));
 
 ?>

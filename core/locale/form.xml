@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="select.pleaseSelect">Please Select</label>
 		<label index="select.pleaseChoose">Please Choose</label>
 		<label index="field.isrequired">This Is A Required Field</label>
@@ -18,7 +18,7 @@
 		<label index="dateselector.open">Open date selector to pick a date</label>
 		<label index="autocompleteInfo">This is an autocomplete field. Start typing to get suggestions</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="select.pleaseSelect">Bitte wählen</label>
 		<label index="select.pleaseChoose">Bitte wählen</label>
 		<label index="field.isrequired">Dieses Feld muss ausgefüllt werden</label>
@@ -36,7 +36,7 @@
 		<label index="dateselector.open">Öffne Kalender um ein Datum auszuwählen</label>
 		<label index="autocompleteInfo">Dieses Feld wird automatisch vervollständigt. Fangen Sie an zu schreiben um die Vorschläge zu sehen</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="select.pleaseSelect">Favor Selecionar</label>
 		<label index="select.pleaseChoose">Favor Escolher</label>
 		<label index="field.isrequired">Campo necessário</label>

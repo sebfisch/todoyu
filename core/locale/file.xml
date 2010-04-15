@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="download">Download</label>
 		<label index="upload">Upload</label>
 		<label index="size.gb">GB</label>
@@ -10,7 +10,7 @@
 		<label index="filename">File Name</label>
 		<label index="filesize">File Size</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="download">Herunterladen</label>
 		<label index="upload">Hinaufladen</label>
 		<label index="size.gb">GB</label>
@@ -20,7 +20,7 @@
 		<label index="filename">Dateiname</label>
 		<label index="filesize">Dateigrösse</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="download">Download</label>
 		<label index="upload">Upload</label>
 		<label index="size.gb">GB</label>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="tab.todoyu.label">todoyu</label>
 		<label index="yes">Yes</label>
 		<label index="no">No</label>
@@ -75,7 +75,7 @@
 		<label index="headlet.ajaxloader.label">Synchronizing data with webserver</label>
 		<label index="headlet.about.label">About todoyu</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="tab.todoyu.label">todoyu</label>
 		<label index="yes">Ja</label>
 		<label index="no">Nein</label>
@@ -150,7 +150,7 @@
 		<label index="headlet.ajaxloader.label">Synchronisiere Daten mit dem Webserver</label>
 		<label index="headlet.about.label">Über todoyu</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="tab.todoyu.label">todoyu</label>
 		<label index="yes">Sim</label>
 		<label index="no">Não</label>

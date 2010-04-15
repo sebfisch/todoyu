@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="aa">Afar</label>
 		<label index="ab">Abkhazian</label>
 		<label index="ae">Avestan</label>
@@ -186,13 +186,13 @@
 		<label index="zh">Chinese</label>
 		<label index="zu">Zulu</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<!-- Only currently used languages are translated -->
 		<label index="de">Deutsch</label>
 		<label index="en">Englisch</label>
 		<label index="pt">Portugiesisch</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<!-- Only currently used languages are translated -->
 		<label index="de">Alemão</label>
 		<label index="en">Inglês</label>

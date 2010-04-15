@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="num2.name">Africa</label>
 		<label index="num9.name">Oceania</label>
 		<label index="num19.name">Americas</label>
@@ -30,7 +30,7 @@
 		<label index="num57.name">Micronesian Region</label>
 		<label index="num61.name">Polynesia</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="num2.name">Afrika</label>
 		<label index="num9.name">Ozeanien</label>
 		<label index="num19.name">Nord-, Mittel- und Südamerika</label>
@@ -60,5 +60,5 @@
 		<label index="num57.name">Mikronesien</label>
 		<label index="num61.name">Polynesien</label>
 	</labels>
-	<labels lang="pt"></labels>
+	<labels lang="pt_BR"></labels>
 </locallang>

@@ -20,12 +20,12 @@
 
 Todoyu::$CONFIG['DB'] = array(
 	'server'		=> 'localhost',
-	'username'		=> 'todoyu',
-	'password'		=> 'todoyu',
-	'database'		=> 'todoyu',
-	'autoconnect'	=> false,
+	'username'		=> 'sfpdev',
+	'password'		=> 'sfpdev0',
+	'database'		=> 'dev_todoyu2',
+	'autoconnect'	=> true,
 	'persistent'	=> true,
-	'queryHistory'	=> true
+	'queryHistory'	=> false
 );
 
 ?>

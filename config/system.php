@@ -20,8 +20,8 @@
 
 Todoyu::$CONFIG['SYSTEM']['name'] 		= 'Todoyu';
 Todoyu::$CONFIG['SYSTEM']['email']		= 'install@todoyu.com';
-Todoyu::$CONFIG['SYSTEM']['language']	= 'en';
-Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_EN.utf8';
+Todoyu::$CONFIG['SYSTEM']['language']	= 'en_GB';
+Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_GB.utf8';
 
 //Todoyu::$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
 

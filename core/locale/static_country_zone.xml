@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="USA.AL.localname">Alabama</label>
 		<label index="USA.AK.localname">Alaska</label>
 		<label index="USA.AS.localname">American Samoa</label>
@@ -483,6 +483,6 @@
 		<label index="BRA.SP.localname">São Paulo</label>
 		<label index="BRA.TO.localname">Tocantins</label>
 	</labels>
-	<labels lang="de"></labels>
-	<labels lang="pt"></labels>
+	<labels lang="de_DE"></labels>
+	<labels lang="pt_BR"></labels>
 </locallang>

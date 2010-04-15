@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="sq_AL">Albanian (Albania)</label>
 	    <label index="ar_DZ">Arabic (Algeria)</label>
 	    <label index="ar_BH">Arabic (Bahrain)</label>
@@ -108,7 +108,7 @@
 	    <label index="uk_UA">Ukrainian (Ukraine)</label>
 	    <label index="vi_VN">Vietnamese (Vietnam)</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="sq_AL">Albanisch (Albanien)</label>
 	    <label index="ar_DZ">Arabisch (Algeria)</label>
 	    <label index="ar_BH">Arabisch (Bahrain)</label>
@@ -216,7 +216,7 @@
 	    <label index="uk_UA">Ukrainisch (Ukraine)</label>
 	    <label index="vi_VN">Vietnamesisch (Vietnam)</label>
 	</labels>
-	<labels lang="pt">
+	<labels lang="pt_BR">
 		<label index="sq_AL">Albanian (Albania)</label>
 	    <label index="ar_DZ">Arabic (Algeria)</label>
 	    <label index="ar_BH">Arabic (Bahrain)</label>

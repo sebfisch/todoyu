@@ -54,7 +54,8 @@ class TodoyuInstaller {
 
 			// Set installation language
 		$languageKey	= array_key_exists('language', $postData) ? $postData['language'] : TodoyuSession::get('installer/language');
-		if ( $languageKey != '' ) {
+
+        if ( $languageKey != '' ) {
 			TodoyuLanguage::setLanguage($languageKey);
 		}
 

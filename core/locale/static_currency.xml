@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="AED.name">United Arab Emirates dirham</label>
 		<label index="ALL.name">Albanian Lek</label>
 		<label index="AMD.name">Armenian Dram</label>
@@ -328,6 +328,6 @@
 		<label index="SRD.subname">cent</label>
 		<label index="TRY.subname">new kuruş</label>
 	</labels>
-	<labels lang="de"></labels>
-	<labels lang="pt"></labels>
+	<labels lang="de_DE"></labels>
+	<labels lang="pt_BR"></labels>
 </locallang>

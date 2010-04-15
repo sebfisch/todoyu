@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <locallang>
-	<labels lang="en">
+	<labels lang="en_GB">
 		<label index="AND">Andorra</label>
 		<label index="ARE">United Arab Emirates</label>
 		<label index="AFG">Afghanistan</label>
@@ -240,7 +240,7 @@
 		<label index="PSE">Palestinian Territory</label>
 		<label index="HMD">Heard Island and McDonald Islands</label>
 	</labels>
-	<labels lang="de">
+	<labels lang="de_DE">
 		<label index="AND">Andorra</label>
 		<label index="ARE">Vereinigte Arabische Emirate</label>
 		<label index="AFG">Afghanistan</label>
@@ -480,6 +480,6 @@
 		<label index="SCG">Serbien und Montenegro</label>
 		<label index="HMD">Heard und McDonaldinseln</label>
 	</labels>
-	<labels lang="de"></labels>
-	<labels lang="pt"></labels>
+	<labels lang="de_DE"></labels>
+	<labels lang="pt_BR"></labels>
 </locallang>

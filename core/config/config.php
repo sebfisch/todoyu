@@ -59,8 +59,8 @@ Todoyu::$CONFIG['CHMOD'] = array(
 TodoyuHookManager::registerHook('core', 'renderPage', 'TodoyuPageAssetManager::addInternetExplorerAssets');
 
 	// Localization defaults
-Todoyu::$CONFIG['SYSTEM']['language']	= 'en';
-Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_US';
+Todoyu::$CONFIG['SYSTEM']['language']	= 'en_GB';
+Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_GB';
 Todoyu::$CONFIG['SYSTEM']['timezone']	= 'Europe/Zurich';
 
 	// List size for paging
