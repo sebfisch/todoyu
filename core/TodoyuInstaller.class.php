@@ -33,6 +33,7 @@ class TodoyuInstaller {
 			// Start output buffer
 		ob_start();
 
+			// No installation step or restart? initialize installer
 		if( ! self::hasStep() || self::isRestart() ) {
 				// Cleanup before initializing
 			self::onInitCleanup();
@@ -40,19 +41,24 @@ class TodoyuInstaller {
 			self::initStep();
 				// Clear all cache
 			TodoyuInstallerManager::clearCache();
-		} else {
-			$languageKey	= TodoyuSession::get('installer/language');
-			TodoyuLanguage::setLanguage($languageKey);
 		}
 
 		$step	= self::getStep();
 
+			// Get post data
 		if( self::hasData() ) {
 			$postData	= TodoyuRequest::getAll();
 		} else {
 			$postData	= array();
 		}
 
+			// Set installation language
+		$languageKey	= array_key_exists('language', $postData) ? $postData['language'] : TodoyuSession::get('installer/language');
+		if ( $languageKey != '' ) {
+			TodoyuLanguage::setLanguage($languageKey);
+		}
+
+			// Process current step of installation
 		$result	= self::process($step, $postData);
 
 		$step	= self::getStep();
