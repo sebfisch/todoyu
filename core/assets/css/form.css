@@ -185,6 +185,11 @@ div.fElement {
 	.typeTextinput {}
 
 	.typeDateinput {}
+	
+	
+	.typeUpload {
+		padding-left: 5px !important;
+	}
 
 		div.typeDateinput .fField input {
 			float:left;
