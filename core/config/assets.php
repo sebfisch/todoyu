@@ -151,6 +151,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 55
 		),
 		array(
+			'file'		=> 'core/assets/js/HeadletAbout.js',
+			'position'	=> 55
+		),
+		array(
 			'file'		=> 'core/assets/js/HeadletAjaxLoader.js',
 			'position'	=> 55
 		),
@@ -314,6 +318,11 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/assets/css/headlet-quickcreate.css',
+			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/headlet-about.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		)

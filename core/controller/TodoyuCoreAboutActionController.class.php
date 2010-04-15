@@ -19,24 +19,27 @@
 *****************************************************************************/
 
 /**
- * Core config for page rendering
+ * Core Action Controller
+ * About
  *
  * @package		Todoyu
  * @subpackage	Core
  */
+class TodoyuCoreAboutActionController extends TodoyuActionController {
 
-if( TodoyuAuth::isLoggedIn() ) {
-	TodoyuPage::addJsOnloadedFunction('Todoyu.QuickInfo.init.bind(Todoyu.QuickInfo)', 10);
+	/**
+	 * Render about window
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
+	public function windowAction(array $params) {
+		$data	= array();
+		$tmpl	= 'core/view/about-window.tmpl';
 
-		// Register AJAX loader headlet which indicated acitve ajax requests
-	TodoyuHeadManager::addHeadlet('TodoyuHeadletAjaxLoader', 0);
-	TodoyuHeadManager::addHeadlet('TodoyuHeadletAbout', 10);
-	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickCreate', 50);
+		return render($tmpl, $data);
+	}
 
-		// Generate colors css and sprite
-		// Moved to calendar ext controller
-	//TodoyuColors::generate();
 }
-
 
 ?>

@@ -685,10 +685,27 @@ class TodoyuFormValidator {
 			return true;
 		}
 		
-			// Validate
-		$field	= $validatorConfig['field'];
+			// Check if all fields are empty
+		$fieldsToCheck	= explode(',', $validatorConfig['field']);
+		$needsOnlyOne	= isset($validatorConfig['one']);
+			// Set flag to opposite of $needsAll
+		$fieldsAreEmpty	= !$needsOnlyOne;
 
-		return empty($formData[$field]) || $formElement->validateRequired();
+		foreach($fieldsToCheck as $fieldToCheck) {
+			if( empty($formData[$fieldToCheck]) ) {
+				if( ! $needsOnlyOne ) {
+					$fieldsAreEmpty = false;
+					break;
+				}
+			} else {
+				if( $needsOnlyOne ) {
+					$fieldsAreEmpty = true;
+					break;
+				}
+			}
+		}
+
+		return $fieldsAreEmpty || $formElement->validateRequired();
 	}
 
 

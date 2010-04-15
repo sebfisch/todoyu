@@ -83,7 +83,7 @@ class TodoyuActionDispatcher {
 	 *
 	 */
 	public static function dispatch() {
-		self::callExtOnRequestHandler(EXT);
+		//self::callExtOnRequestHandler(EXT);
 
 		if( self::isController(EXT, CONTROLLER) ) {
 			$params		= TodoyuRequest::getAll();

@@ -1,0 +1,33 @@
+#headlet-about-button {
+	background:url(../img/headlet-icons.png) no-repeat 6px -24px;
+}
+
+#headlet-about-window {
+	position:fixed;
+	width:500px;
+	height:300px;
+	border:1px dotted #000;
+	padding:10px;
+	-moz-box-shadow:2px 2px 7px #999999;
+	background-color:#FFF;
+	left:0;
+	top:0;
+	z-index:3000;
+	opacity:0.95;
+}
+
+#headlet-about-window .logo {
+	height:80px;
+	background:url(../img/logo.png) no-repeat 50% 0;
+}
+
+#headlet-about-window .close {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	right: 0px;
+	top: 0px;
+	background:url(../img/icons.png) no-repeat 5px -350px;
+	cursor:pointer;
+}
+
