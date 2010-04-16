@@ -22,7 +22,7 @@
 				</field>
 
 				<field type="checkbox" name="is_active">
-					<label>core.role.attr.active</label>
+					<label>core.attr.is_active</label>
 				</field>
 
 				<field type="databaseRelation" name="persons">

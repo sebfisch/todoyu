@@ -67,10 +67,10 @@
 		<label index="paging.page">Page</label>
 		<label index="input.autocompleter">Autocompleting Input</label>
 		<label index="ajax.requestFailed">Cannot connect to server (your connection or server down?)</label>
+		<label index="attr.is_active">Active</label>
 		<label index="roles">Roles</label>
 		<label index="role">Role</label>
 		<label index="role.new">New Role</label>
-		<label index="role.attr.active">Active</label>
 		<label index="role.attr.persons">Role Members</label>
 		<label index="headlet.ajaxloader.label">Synchronizing data with webserver</label>
 		<label index="headlet.about.label">About todoyu</label>
@@ -142,10 +142,10 @@
 		<label index="paging.page">Seite</label>
 		<label index="input.autocompleter">Autovervollständigende Eingabe</label>
 		<label index="ajax.requestFailed">Keine Verbindung zum Server (Verbindungs- oder Serverprobleme?)</label>
+		<label index="attr.is_active">Aktiv</label>
 		<label index="roles">Rollen</label>
 		<label index="role">Rolle</label>
 		<label index="role.new">Neue Rolle</label>
-		<label index="role.attr.active">Aktiv</label>
 		<label index="role.attr.persons">Rollenmitglieder</label>
 		<label index="headlet.ajaxloader.label">Synchronisiere Daten mit dem Webserver</label>
 		<label index="headlet.about.label">Über todoyu</label>
@@ -217,10 +217,10 @@
 		<label index="paging.page">Pagina</label>
 		<label index="input.autocompleter">Autocompleting Input</label>
 		<label index="ajax.requestFailed">Cannot connect to server (your connection or server down?)</label>
+		<label index="attr.is_active">Active</label>
 		<label index="roles">Grupos</label>
 		<label index="role">Grupo</label>
 		<label index="role.new">Novo Grupo</label>
-		<label index="role.attr.active">Active</label>
 		<label index="role.attr.persons">Membros do Grupo</label>
 		<label index="headlet.ajaxloader.label">Synchronizing data with webserver</label>
 		<label index="headlet.about.label">Sobre todoyu</label>
