@@ -478,9 +478,13 @@ class TodoyuFileManager {
 				} else {
 					Todoyu::log('Tried to download a file from a not allowed path', LOG_LEVEL_SECURITY, $absoluteFilePath);
 				}
+			} else {
+				Todoyu::log('sendFile() failed because file was not readable', LOG_LEVEL_ERROR, $absoluteFilePath);
 			}
+		} else {
+			Todoyu::log('sendFile() failed because file was not found', LOG_LEVEL_ERROR, $absoluteFilePath);
 		}
-
+		
 		return false;
 	}
 
