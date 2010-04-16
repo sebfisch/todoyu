@@ -28,6 +28,7 @@ class TodoyuLanguage {
 
 	/**
 	 * Default locale key if non set
+	 * @todo	Try to get config from Todoyu::$CONFIG
 	 */
 	const FALLBACK = 'en_GB';
 

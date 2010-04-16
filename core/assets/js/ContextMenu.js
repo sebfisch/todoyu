@@ -19,6 +19,52 @@
 
 Todoyu.ContextMenu = {
 
+	attach: function(name, selector, callback) {
+		this.detach(selector);
+		
+		var elements	= $$(selector);
+
+		elements.each(function(name, callback, element){
+			element.observe('contextmenu', this.load.bindAsEventListener(this, name, callback, element));
+		}.bind(this, name, callback));
+	},
+
+	detach: function(selector) {
+		var elements	= $$(selector);
+
+		elements.each(function(element) {
+			element.stopObserving('contextmenu');
+		});
+	},
+	
+
+
+
+
+
+
+
+
+	load: function(event, name, callback, observedElement) {
+			// Stop click event to prevent browsers context menu
+		event.stop();
+
+		var url		= Todoyu.getUrl('core', 'contextmenu');
+		var options	= {
+			'parameters': {
+				'action': 		'get',
+				'contextmenu':	name,
+				'element':		callback(observedElement, event)
+			}
+		};
+
+		this.showMenu(url, options, event);
+
+		return false;
+	},
+
+
+
 	/**
 	 * Attach contextmenu to all elements with the triggerClass
 	 * 
@@ -28,9 +74,9 @@ Todoyu.ContextMenu = {
 	attachMenuToClass: function(triggerClass, callbackFunction) {
 		var triggerAreas = $$('.' + triggerClass);
 
-		triggerAreas.each(function(element) {
-			Todoyu.ContextMenu.attachMenuToElement(element, callbackFunction);
-		});
+		triggerAreas.each(function(callbackFunction, element) {
+			this.attachMenuToElement(element, callbackFunction);
+		}.bind(this, callbackFunction));
 	},
 
 
@@ -76,10 +122,9 @@ Todoyu.ContextMenu = {
 	},
 
 
-
 	/**
 	 * Detach contextmenu which are triggered to the triggerClass
-	 * 
+	 *
 	 * @param	String		triggerClass
 	 */
 	detachAllMenus: function(triggerClass) {
@@ -94,7 +139,7 @@ Todoyu.ContextMenu = {
 
 	/**
 	 * Detach contextmenu from a specific element
-	 * 
+	 *
 	 * @param	DomElement		element
 	 */
 	detachMenuFromElement: function(element) {
@@ -249,9 +294,6 @@ Todoyu.ContextMenu = {
 	 * @param	Object		event
 	 */
 	showMenu: function(url, options, event) {
-			// Stop click event to prevent browsers context menu
-		event.stop();
-				
 			// Wrap to onComplete function to call renderMenu right before the defined onComplete function
 		options.onComplete = (options.onComplete || Prototype.emptyFunction).wrap(function(event, proceed, transport, json) {
 				// Build menu html from json

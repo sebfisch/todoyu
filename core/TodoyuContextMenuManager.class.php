@@ -33,10 +33,10 @@ class TodoyuContextMenuManager {
 	 * @param	String		$function		Function reference
 	 * @param	Integer		$position		Position when the function is called to fill the item queue
 	 */
-	public static function registerFunction($type, $function , $position = 100) {
+	public static function addFunction($type, $function, $position = 100) {
 		$type	= strtoupper(trim($type));
 
-		Todoyu::$CONFIG['FE']['ContextMenu'][$type][] = array(
+		Todoyu::$CONFIG['ContextMenu'][$type][] = array(
 			'function'	=> $function,
 			'position'	=> intval($position)
 		);
@@ -52,23 +52,10 @@ class TodoyuContextMenuManager {
 	 */
 	public static function getTypeFunctions($type) {
 		$type		= strtoupper(trim($type));
-		$funcRefs	= Todoyu::$CONFIG['FE']['ContextMenu'][$type];
-
-		if( ! is_array($funcRefs) ) {
-			$funcRefs	= array();
-		}
+		$funcRefs	= TodoyuArray::assure(Todoyu::$CONFIG['ContextMenu'][$type]);
 
 			// Sort registered functions by position flag
-		$funcRefs = TodoyuArray::sortByLabel($funcRefs, 'position');
-
-			// Check that the registered functions exist
-		foreach($funcRefs as $index => $function) {
-			if( ! TodoyuFunction::isFunctionReference($function['function']) ) {
-				unset($funcRefs[$index]);
-			}
-		}
-
-		return $funcRefs;
+		return TodoyuArray::sortByLabel($funcRefs, 'position');
 	}
 
 }
