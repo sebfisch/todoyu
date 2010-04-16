@@ -28,6 +28,12 @@ Todoyu.Installer = {
 	showButton: function() {
 		$('next').show();
 	},
+
+
+	selectLocale: function(locale) {
+		$('locale').value = locale;
+		$$('form').first().submit()
+	},
 	
 
 	/**

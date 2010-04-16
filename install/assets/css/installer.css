@@ -341,13 +341,13 @@ input#email.adminaccount {
 
 
 /* ------------------------------------------
-    Installation Language Selection
+    Installation Locale Selection
    ------------------------------------------ */
-ul.installationLanguages {
+ul.installationLocales {
 	margin-top:20px;
 }
 
-	ul.installationLanguages li {
+	ul.installationLocales li {
 		background-color:#F7F9ED;
 		margin:0 0 6px 0;
 		padding:6px 0 6px 18px;
@@ -357,13 +357,13 @@ ul.installationLanguages {
 		-webkit-border-radius:5px;
 	}
 
-		ul.installationLanguages li:hover {
+		ul.installationLocales li:hover {
 			background-color:#fff;
 			font-weight:bold;
 			cursor:pointer;
 		}
 
-		ul.installationLanguages li a {
+		ul.installationLocales li a {
 			font-size:14px;
 			color:#111;
 		}

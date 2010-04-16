@@ -13,16 +13,6 @@
 				<td><input type="text" name="email" id="email" value="{$postData.email}" /></td>
 			</tr>
 			<tr>
-				<td><label for="language">{Label installer.systemconfig.language}</label></td>
-				<td>
-					<select name="language" id="language">
-						{foreach $languages language}
-							<option value="{$language.value}" {if $language.value==$userLanguage}selected="selected"{/if}>{$language.label}</option>
-						{/foreach}
-					</select>
-				</td>
-			</tr>
-			<tr>
 				<td><label for="locale">{Label installer.systemconfig.locale}</label></td>
 				<td>
 					<select name="locale" id="locale">
