@@ -236,8 +236,8 @@ class TodoyuPageAssetManager {
 	 * @return	String		Web path to merge file in cache
 	 */
 	private static function getMergedJavascriptFile(array $fileConfigs) {
-		$lang			= Todoyu::getLang();
-		$mergeFileName	= self::buildMergefileName($fileConfigs, $lang . '.js');
+		$locale			= Todoyu::getLocale();
+		$mergeFileName	= self::buildMergefileName($fileConfigs, $locale . '.js');
 		$mergeFilePath	= PATH_CACHE . DIR_SEP . 'js' . DIR_SEP . $mergeFileName;
 
 			// If merge file doesn't exist yet, create it
@@ -336,7 +336,7 @@ class TodoyuPageAssetManager {
 		$dirHash	= TodoyuString::md5short(dirname($pathToFile));
 		$pathInfo	= pathinfo($pathToFile);
 
-		$postfix	= ($compressed ? '-min' : '') . ($localized ? '-' . TodoyuLanguage::getLanguage() : '');
+		$postfix	= ($compressed ? '-min' : '') . ($localized ? '-' . TodoyuLanguage::getLocale() : '');
 
 		$storagePath= PATH_CACHE . DIR_SEP . 'js' . DIR_SEP . $dirHash . '.' . $pathInfo['filename'] . $postfix . '.' . $pathInfo['extension'];
 

@@ -161,20 +161,23 @@ class TodoyuBrowserInfo {
 
 
 	/**
-	 * Get browser language
+	 * Get browser locale
 	 *
 	 * @return	String		Or FALSE if not found
 	 */
-	public static function getBrowserLanguage() {
-		$language	= false;
+	public static function getBrowserLocale() {
+		$locale		= false;
 		$accepted	= explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-
-		if( ! empty($accepted[0]) ) {
-			$langParts	= explode('-', $accepted[0]);
-			$language	= $langParts[0];
+		
+		foreach($accepted as $localeString) {
+			if( strstr($localeString, '-') ) {
+				$localeParts= explode('-', $localeString);
+				$locale		= $localeParts[0] . '_' . strtoupper($localeParts[1]);
+				break;
+			}
 		}
-
-		return $language;
+		
+		return $locale;
 	}
 
 }

@@ -18,9 +18,33 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu::$CONFIG['LANGUAGE']['cacheDir'] 	= PATH_CACHE . DIR_SEP . 'language';
-Todoyu::$CONFIG['LANGUAGE']['l10nDir'] 		= PATH . DIR_SEP . 'l10n';
-Todoyu::$CONFIG['LANGUAGE']['cacheExt'] 	= 'lang';
+/**
+ * Manage headlets
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+class TodoyuHeadletManager {
 
+	public static function saveOpenStatus($headlet, $open = true) {
+		$pref	= 'headlet-open-' . strtolower(trim($headlet));
+
+		if( $open ) {
+			TodoyuPreferenceManager::savePreference(0, $pref, 1);
+		} else {
+			TodoyuPreferenceManager::deletePreference(0, $pref);
+		}
+	}
+
+
+	public static function isOpen($headlet) {
+		$pref	= 'headlet-open-' . strtolower(trim($headlet));
+
+		$open	= TodoyuPreferenceManager::getPreference(0, $pref);
+
+		return intval($open) === 1;
+	}
+
+}
 
 ?>

@@ -128,6 +128,7 @@ Todoyu.Headlet = {
 		headletObject.hideContent		= this.hideContent.bind(this, name);
 		headletObject.getButton			= this.getButton.bind(this, name);
 		headletObject.getContent		= this.getContent.bind(this, name);
+		headletObject.saveOpenStatus	= this.saveOpenStatus.bind(this, name);
 
 			// Call headlet init function if exists
 		Todoyu.callIfExists(headletObject.init, headletObject);
@@ -404,12 +405,12 @@ Todoyu.Headlet = {
 	 * @param	String		controller
 	 * @param	Boolean		open
 	 */
-	saveOpenStatus: function(name, ext, controller, open) {
+	saveOpenStatus: function(name, open) {
 		if( this.openStatus[name] !== open ) {
-			var url		= Todoyu.getUrl(ext, controller);
+			var url		= Todoyu.getUrl('core', 'headlet');
 			var options	= {
 				'parameters': {
-					'action': 	'headletOpen',
+					'action': 	'open',
 					'open':		open ? 1 : 0,
 					'headlet':	name
 				}

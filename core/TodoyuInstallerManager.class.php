@@ -27,16 +27,16 @@
 class TodoyuInstallerManager {
 
 	/**
-	 * Process first step of installation: language selection for installer and as preset for system language
+	 * Process first step of installation: locale selection for installer and as preset for system locale
 	 *
 	 * @param	Array	$data
 	 * @return	Array
 	 */
-	public static function processLanguage(array $data) {
+	public static function processLocale(array $data) {
 		$result	= array();
 
-		if( array_key_exists('language', $data) ) {
-			TodoyuSession::set('installer/language', $data['language']);
+		if( array_key_exists('locale', $data) ) {
+			TodoyuSession::set('installer/locale', $data['locale']);
 			TodoyuInstaller::setStep('license');
 		}
 

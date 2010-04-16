@@ -28,16 +28,15 @@ Todoyu.PanelWidget = {
 	 * @param	String			widgetName
 	 * @param	Integer			idArea
 	 */
-	toggle: function(ext, widgetName, idArea) {
-		var h1	= $('panelwidget-' + widgetName + '-h1');
-		var content	= $('panelwidget-' + widgetName + '-content');
-		var toggle	= $('panelwidget-' + widgetName + '-toggle');
-
+	toggle: function(widget) {
+		var h1		= $('panelwidget-' + widget + '-h1');
+		var content	= $('panelwidget-' + widget + '-content');
+		var toggle	= $('panelwidget-' + widget + '-toggle');
 		var options = {
 			'duration': 0.3
 		};
 
-		this.saveToggleStatus(ext, widgetName, !content.visible(), idArea);
+		this.saveToggleStatus(widget, !content.visible());
 
 		if( content.visible() ) {
 			Effect.SlideUp(content, options);
@@ -59,11 +58,17 @@ Todoyu.PanelWidget = {
 	 * @param	Boolean			expand
 	 * @param	Integer			idArea
 	 */
-	saveToggleStatus: function(ext, widgetName, expand, idArea) {
-		var action	= 'pwidget';
-		var pref= expand ? 'expand' : 'collapse';
+	saveToggleStatus: function(widget, expanded) {
+		var url		= Todoyu.getUrl('core', 'panelwidget');
+		var options	= {
+			'parameters': {
+				'action': 	'expanded',
+				'widget':	widget,
+				'expanded':	expanded ? 1 : 0
+			}
+		};
 
-		Todoyu.Pref.save(ext, action, pref, widgetName, idArea);
+		Todoyu.send(url, options);
 	},
 
 

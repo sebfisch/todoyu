@@ -84,7 +84,7 @@ abstract class TodoyuPanelWidget {
 		$this->params	= $params;
 		$this->idArea	= intval($idArea);
 
-		$this->setCollapsed();
+		$this->setCollapsedStatus();
 	}
 
 
@@ -148,11 +148,11 @@ abstract class TodoyuPanelWidget {
 
 
 	/**
-	 * set collapsed
+	 * Set collapsed status
 	 *
 	 */
-	public function setCollapsed()	{
-		$this->set('collapsed', TodoyuPanelWidgetManager::loadCollapsedStatus($this->get('ext'), $this->get('id')));
+	public function setCollapsedStatus()	{
+		$this->set('collapsed', TodoyuPanelWidgetManager::isCollapsed($this->get('id')));
 	}
 
 

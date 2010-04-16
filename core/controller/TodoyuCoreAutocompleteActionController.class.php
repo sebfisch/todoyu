@@ -18,9 +18,23 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu::$CONFIG['LANGUAGE']['cacheDir'] 	= PATH_CACHE . DIR_SEP . 'language';
-Todoyu::$CONFIG['LANGUAGE']['l10nDir'] 		= PATH . DIR_SEP . 'l10n';
-Todoyu::$CONFIG['LANGUAGE']['cacheExt'] 	= 'lang';
+/**
+ * Superglobal object to access important data and objects
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+class TodoyuCoreAutocompleteActionController extends TodoyuActionController {
 
+	public function updateAction(array $params) {
+		$name		= trim($params['autocompleter']);
+		$input		= trim($params['input']);
+		$form		= trim($params['form']);
+		$formData	= $params[$form];
+
+		return TodoyuAutocompleter::renderAutocompleteList($name, $input, $formData);
+	}
+
+}
 
 ?>

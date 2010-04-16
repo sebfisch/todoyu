@@ -193,7 +193,6 @@ class TodoyuPanelWidgetManager {
 	/**
 	 * Get list of available panel widgets (Todoyu::$CONFIG['PANELWIDGETS'])
 	 *
-	 * @return unknown
 	 */
 	public static function getAvailablePanelWidgets() {
 		return Todoyu::$CONFIG['PANELWIDGETS'];
@@ -204,35 +203,32 @@ class TodoyuPanelWidgetManager {
 	/**
 	 * Save collapsed status
 	 *
-	 * @param	Integer	$extID
-	 * @param	String	$widget
-	 * @param	String	$expaded
+	 * @param	String		$widget
+	 * @param	Bool		$expaded
 	 */
-	public static function saveCollapsedStatus($idExt, $idWidget, $status) {
-		$idExt	= intval($idExt);
-		$widget	= 'pwidget-'.strtolower($idWidget);
+	public static function saveCollapsedStatus($widget, $expanded = true) {
+		$preference	= 'pwidget-collapsed-' . strtolower($widget);
+		$collapsed	= $expanded === false;
 
-		$collapsed	= trim($status) === 'collapse' ? 1 : 0;
-
-		TodoyuPreferenceManager::savePreference($idExt, $widget, $collapsed, 0, true, 0, personid());
+		if( $expanded ) {
+			TodoyuPreferenceManager::deletePreference(0, $preference, null, 0, AREA);
+		} else {
+			TodoyuPreferenceManager::savePreference(0, $preference, 1, 0, false, AREA);
+		}
 	}
 
 
 
 	/**
-	 * Loads the collapsed status of a panelwidget
+	 * Check if a panelwidget is collapsed
 	 *
-	 * @param	Integer	$extID
-	 * @param	String	$widget
+	 * @param	String		$widget
 	 * @return	Boolean
 	 */
-	public static function loadCollapsedStatus($idExt, $idWidget)	{
-		$idExt	= TodoyuExtensions::getExtID($idExt);
-		$widget	= 'pwidget-' . strtolower($idWidget);
+	public static function isCollapsed($widget) {
+		$pref	= TodoyuPreferenceManager::getPreference(0, 'pwidget-collapsed-' . $widget, 0, AREA);
 
-		$collapsed	= TodoyuPreferenceManager::getPreference($idExt, $widget);
-
-		return intval($collapsed) === 1;
+		return intval($pref) === 1;
 	}
 }
 

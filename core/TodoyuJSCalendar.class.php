@@ -32,7 +32,7 @@ class TodoyuJSCalendar {
 	 * @return	String
 	 */
 	public static function getLangFile() {
-		$lang		= Todoyu::person()->getLanguage();
+		$lang		= Todoyu::person()->getLocale();
 		$fileCore	= TodoyuFileManager::pathAbsolute('core/lib/js/jscalendar/lang/calendar-' . $lang . '.js');
 		$fileLib	= TodoyuFileManager::pathAbsolute('lib/js/jscalendar/lang/calendar-' . $lang . '.js');
 		$fileEn		= TodoyuFileManager::pathAbsolute('lib/js/jscalendar/lang/calendar-en.js');

@@ -18,25 +18,25 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-class TodoyuLanguageManager {
+/**
+ * Core Action Controller
+ * Panelwidget
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+class TodoyuCorePanelwidgetActionController extends TodoyuActionController {
 
 	/**
-	 * Get options config array of available languages
+	 * Save expanded status of a panel widget
 	 *
-	 * @return	Array
+	 * @param	Array		$params
 	 */
-	public static function getAvailableLanguages() {
-		$languages	= TodoyuArray::assure(Todoyu::$CONFIG['LANGUAGE']['available']);
-		$options	= array();
+	public function expandedAction(array $params) {
+		$widget	= $params['widget'];
+		$expanded	= intval($params['expanded']) === 1;
 
-		foreach($languages as $language) {
-			$options[] = array(
-				'value'	=> $language,
-				'label'	=> Label('static_language.' . $language)
-			);
-		}
-
-		return $options;
+		TodoyuPanelWidgetManager::saveCollapsedStatus($widget, $expanded);
 	}
 
 }

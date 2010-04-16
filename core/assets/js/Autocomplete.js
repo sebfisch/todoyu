@@ -25,7 +25,7 @@ Todoyu.Autocomplete = {
 	 * Configuration for autocompleter object
 	 */
 	config: {
-		paramName: 'sword',
+		paramName: 'input',
 		minChars: 2
 	},
 
@@ -57,12 +57,12 @@ Todoyu.Autocomplete = {
 		var suggestDiv		= idElement + '-suggest';
 
 			// setup request
-		var url		= Todoyu.getUrl(config.acListener.ext, config.acListener.controller);
+		var url		= Todoyu.getUrl('core', 'autocomplete');
 		var options = {
-			paramName:	this.config.paramName,
-			minChars:	config.acListener.minChars || this.config.minChars,
+			paramName:	config.paramName || this.config.paramName,
+			minChars:	config.minChars || this.config.minChars,
 			callback:	this.beforeRequestCallback.bind(this),
-			parameters:	'&action=' + config.acListener.action	+ '&acelementid=' + idElement,
+			parameters:	'&action=update&autocompleter=' + config.acName + '&element=' + idElement,
 			afterUpdateElement:	this.onElementSelected.bind(this)
 		};
 
@@ -92,7 +92,7 @@ Todoyu.Autocomplete = {
 		var name	= form.readAttribute('name');
 		var data	= form.serialize();
 
-		return acParam + '&formName=' + name + '&' + data;
+		return acParam + '&form=' + name + '&' + data;
 	},
 
 

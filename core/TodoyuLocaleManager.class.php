@@ -32,7 +32,7 @@ class TodoyuLocaleManager {
 	 * @return	Array
 	 */
 	public static function getLocales() {
-		return TodoyuArray::assure(Todoyu::$CONFIG['LOCALES']);
+		return TodoyuArray::assure(Todoyu::$CONFIG['LOCALE']['LOCALES']);
 	}
 
 
@@ -61,22 +61,15 @@ class TodoyuLocaleManager {
 
 
 	/**
-	 * Convert language to locale key
+	 * Get options config array of available languages
 	 *
-	 * @param	String	$language	e.g. 'de' / 'en'
-	 * @return	String
+	 * @return	Array
 	 */
-	public static function getLocaleFromLanguage($language) {
-		$locale = $language . '_' . strtoupper($language);
-
-		if ( TodoyuLocaleManager::hasLocale($locale) === false ) {
-			$locale	= false;
-		}
-			// Check locale existence
-		return $locale;
+	public static function getAvailableLocales() {
+		return TodoyuArray::assure(Todoyu::$CONFIG['LOCALE']['available']);	
 	}
 
-
+	
 
 	/**
 	 * Get all names of a locale which may exists on a system
@@ -123,21 +116,7 @@ class TodoyuLocaleManager {
 	 * @return	String
 	 */
 	public static function getDefaultLocale() {
-		return Todoyu::$CONFIG['defaultLocale'];
-	}
-
-
-
-	/**
-	 * Get locale which is defined as default in browser
-	 *
-	 * @return	String
-	 */
-	public static function getBrowserLocale() {
-		$languages	= explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-		$mainLang	= explode('-', $languages[0]);
-
-		return strtolower($mainLang[0]) . '_' . strtoupper($mainLang[1]);
+		return Todoyu::$CONFIG['LOCALE']['default'];
 	}
 
 

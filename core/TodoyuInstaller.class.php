@@ -32,7 +32,7 @@ class TodoyuInstaller {
 	public static function run() {
 			// Start output buffer
 		ob_start();
-
+		
 			// No installation step or restart? initialize installer
 		if( ! self::hasStep() || self::isRestart() ) {
 				// Cleanup before initializing
@@ -52,11 +52,11 @@ class TodoyuInstaller {
 			$postData	= array();
 		}
 
-			// Set installation language
-		$languageKey	= array_key_exists('language', $postData) ? $postData['language'] : TodoyuSession::get('installer/language');
 
-        if ( $languageKey != '' ) {
-			TodoyuLanguage::setLanguage($languageKey);
+			// Set installation language
+		$locale	= TodoyuSession::get('installer/locale');
+        if( $locale != '' ) {
+			TodoyuLanguage::setLocale($locale);
 		}
 
 			// Process current step of installation
@@ -298,19 +298,22 @@ class TodoyuInstaller {
 
 	
 	/**
-	 * Get options rendering config array for language selector including custom option labels taken from locale files
+	 * Get locale options with localized labels
 	 *
 	 * @return Array
 	 */
-	public static function getAvailableLanguageOptions() {
-		$languages	= TodoyuLanguageManager::getAvailableLanguages();
-		foreach($languages as $key => $language) {
-				/** @var $locale	String		'en', 'de', ...	*/
-			$locale	= $language['value'];
-			$languages[$key]['label']	= TodoyuLanguage::getLabel('installer.language.selectthislanguage', $locale);
+	public static function getAvailableLocaleOptions() {
+		$locales	= TodoyuLocaleManager::getAvailableLocales();
+		$options	= array();
+
+		foreach($locales as $locale) {
+			$options[] = array(
+				'key'	=> $locale,
+				'label'	=> TodoyuLanguage::getLabel('installer.locale.selectthislocale', $locale)
+			);
 		}
 
-		return $languages;
+		return $options;
 	}
 
 

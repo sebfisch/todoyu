@@ -52,16 +52,16 @@ class TodoyuInstallerRenderer {
 	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderLanguage(array $result) {
+	public static function renderLocale(array $result) {
 		$data	= array(
-			'title'			=> 'installer.language.title',
+			'title'			=> 'installer.locale.title',
 			'button'		=> false,
-			'text'			=> Label('installer.language.text'),
+			'text'			=> Label('installer.locale.text'),
 			'textClass'		=> 'text textInfo',
-			'languages'		=> TodoyuInstaller::getAvailableLanguageOptions(),
-			'userLanguage'	=> TodoyuBrowserInfo::getBrowserLanguage(),
+			'locales'		=> TodoyuInstaller::getAvailableLocaleOptions(),
+			'userLocale'	=> TodoyuBrowserInfo::getBrowserLocale(),
 		);
-
+		
 		return $data;
 	}
 
@@ -201,14 +201,12 @@ class TodoyuInstallerRenderer {
 	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderSytemConfig(array $result) {
+	public static function renderSystemConfig(array $result) {
 		$data	= array(
 			'title'			=> 'installer.systemconfig.title',
 			'button'		=> 'installer.systemconfig.button',
-			'languages'		=> TodoyuLanguageManager::getAvailableLanguages(),
-			'userLanguage'	=> TodoyuSession::get('installer/language'),
+			'userLocale'	=> TodoyuSession::get('installer/locale'),
 			'locales'		=> TodoyuLocaleManager::getLocaleOptions(),
-			'userLocale'	=> TodoyuLocaleManager::getBrowserLocale(),
 			'timezones'		=> TodoyuDatasource::getTimezones(),
 			'text'			=> Label('installer.systemconfig.text'),
 			'textClass'		=> 'info'

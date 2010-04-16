@@ -66,6 +66,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 		$this->initType();
 		$this->init();
+		$this->setOpenStatus();
 	}
 
 
@@ -167,10 +168,14 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 * Set visible flag (visible on page load)
 	 *
 	 */
-	protected function setVisible() {
-		$this->data['visible'] = true;
-	}
+	protected function setOpenStatus() {
+		$open	= TodoyuHeadletManager::isOpen($this->getName());
 
+		if( $open ) {
+			$this->data['open']	= true;
+			$this->addButtonClass('active');
+		}
+	}
 
 
 	/**

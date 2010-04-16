@@ -71,7 +71,7 @@ class Todoyu {
 	 */
 	public static function init() {
 			// Init Locale for locallang files
-		TodoyuLanguage::setLanguage(self::getLang());
+		TodoyuLanguage::setLocale(self::getLocale());
 
 			// Set system locale with setlocale
 		self::setSystemLocale();
@@ -98,7 +98,7 @@ class Todoyu {
 
 			// Log if operation fails
 		if( $status === false ) {
-			self::log('Can\'t set locale for language "' . $locale . '"', LOG_LEVEL_ERROR);
+			self::log('Can\'t set locale "' . $locale . '"', LOG_LEVEL_ERROR);
 		}
 	}
 
@@ -216,33 +216,7 @@ class Todoyu {
 		self::$person = TodoyuAuth::getPerson(true);
 	}
 
-
-
-	/**
-	 * Get system language
-	 * If person is logged in, its preference language
-	 * If not logged in but the browser provides a language, use browser language
-	 * Fallback is the language defined in config
-	 *
-	 * @return	String
-	 */
-	public static function getLang() {
-		$lang	= self::$CONFIG['SYSTEM']['language'];
-
-		if( TodoyuAuth::isLoggedIn() ) {
-			$lang = self::person()->getLanguage();
-		} else {
-			$browserLang = TodoyuBrowserInfo::getBrowserLanguage();
-
-			if( $browserLang !== false ) {
-				$lang = $browserLang;
-			}
-		}
-
-		return $lang;
-	}
-
-
+	
 
 	/**
 	 * Get locale: if set get from person profile pref, otherwise from system config
@@ -250,16 +224,19 @@ class Todoyu {
 	 * @return	String
 	 */
 	public static function getLocale() {
-		$hasLocale	= false;
-		$language	= self::getLang();
+		$locale	= self::$CONFIG['SYSTEM']['locale'];
 
-			// person profile contains language preference
-		if( $language !== false ) {
-			$locale	= TodoyuLocaleManager::getLocaleFromLanguage($language);
-		}
+		if( TodoyuAuth::isLoggedIn() ) {
+			$personLocale	= self::person()->getLocale();
+			if( $personLocale !== false ) {
+				$locale = $personLocale;
+			}
+		} else {
+			$browserLocale = TodoyuBrowserInfo::getBrowserLocale();
 
-		if( $locale === false  ) {
-			$locale	= self::$CONFIG['SYSTEM']['locale'];
+			if( $browserLocale !== false ) {
+				$locale = $browserLocale;
+			}
 		}
 
 		return $locale;

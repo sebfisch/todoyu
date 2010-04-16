@@ -18,9 +18,27 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu::$CONFIG['LANGUAGE']['cacheDir'] 	= PATH_CACHE . DIR_SEP . 'language';
-Todoyu::$CONFIG['LANGUAGE']['l10nDir'] 		= PATH . DIR_SEP . 'l10n';
-Todoyu::$CONFIG['LANGUAGE']['cacheExt'] 	= 'lang';
+/**
+ * Core Action Controller
+ * Panelwidget
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+class TodoyuCoreHeadletActionController extends TodoyuActionController {
 
+	/**
+	 * Save expanded status of a panel widget
+	 *
+	 * @param	Array		$params
+	 */
+	public function openAction(array $params) {
+		$headlet	= trim($params['headlet']);
+		$open		= intval($params['open']) === 1;
+
+		TodoyuHeadletManager::saveOpenStatus($headlet, $open);
+	}
+
+}
 
 ?>

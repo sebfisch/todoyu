@@ -73,29 +73,13 @@ class TodoyuFormElement_TextinputAC extends TodoyuFormElement {
 		$data = parent::getData();
 
 			// Check label function
-		$labelFunc	= $this->config['config']['acLabelFunc'];
+		$labelFunc	= $this->config['config']['acLabel'];
 
 		if( TodoyuFunction::isFunctionReference($labelFunc) ) {
 			$data['displayLabel'] = TodoyuFunction::callUserFunction($labelFunc, $this->getValue());
 		}
 
 		return $data;
-	}
-
-
-
-	/**
-	 * Renders the autocompletion - suggestions
-	 *
-	 * parameter results:
-	 *
-	 * array(elementID => elementLabel)
-	 *
-	 * @param	Array	$results
-	 * @return	String
-	 */
-	public static function renderAutocompletion(array $results)	{
-		return TodoyuRenderer::renderAutocompleteList($results);
 	}
 
 }

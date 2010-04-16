@@ -33,7 +33,7 @@
 	z-index:200;
 }
 
-	#headlets li.active a,
+	#headlets li a.active,
 	#headlets li:hover a {
 		border-color:#b9bbad;
 		background-color: white;
