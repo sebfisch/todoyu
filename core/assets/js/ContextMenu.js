@@ -36,13 +36,6 @@ Todoyu.ContextMenu = {
 			element.stopObserving('contextmenu');
 		});
 	},
-	
-
-
-
-
-
-
 
 
 	load: function(event, name, callback, observedElement) {
@@ -81,31 +74,6 @@ Todoyu.ContextMenu = {
 
 
 
-	/**
-	 * Attach contextmenu to the elements in the list
-	 * 
-	 * @param	Array		elementIDs
-	 * @param	Function	callbackFunction
-	 */
-	attachMenuToIDs: function(elementIDs, callbackFunction) {
-		elementIDs.each(function(element) {
-			Todoyu.ContextMenu.attachMenuToElement($(element), callbackFunction);
-		});
-	},
-
-
-
-	/**
-	 * Attach menu to the list of elements
-	 * 
-	 * @param	Array		elements
-	 * @param	Function	callbackFunction
-	 */
-	attachMenuToElements: function(elements, callbackFunction) {
-		elements.each(function(element) {
-			Todoyu.ContextMenu.attachMenuToElement(element, callbackFunction);
-		});
-	},
 
 
 
