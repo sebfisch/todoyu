@@ -24,7 +24,6 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-
 class TodoyuRoleManager {
 
 	const TABLE = 'system_role';

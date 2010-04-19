@@ -51,7 +51,6 @@ class TodoyuHeadManager {
 
 	/**
 	 * Remove all registered headlets (empty header)
-	 * 
 	 */
 	public static function removeAll() {
 		self::$headlets = array();

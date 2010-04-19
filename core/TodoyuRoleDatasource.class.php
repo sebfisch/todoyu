@@ -23,7 +23,6 @@
  *
  * @package Todoyu
  */
-
 class TodoyuRoleDatasource {
 
 	const TABLE = 'system_role';

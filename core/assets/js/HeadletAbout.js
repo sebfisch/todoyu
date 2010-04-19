@@ -35,9 +35,13 @@ Todoyu.Headlet.About = {
 		this.showWindow();
 	},
 
+
+
 	hasWindow: function() {
 		return Todoyu.exists(this.idWindow);
 	},
+
+
 
 	createWindow: function() {
 		var window = new Element('div', {
@@ -48,6 +52,8 @@ Todoyu.Headlet.About = {
 
 		document.body.appendChild(window);
 	},
+
+
 
 	loadWindow: function() {
 		var url		= Todoyu.getUrl('core', 'about');
@@ -62,11 +68,15 @@ Todoyu.Headlet.About = {
 		Todoyu.Ui.update(target, url, options);
 	},
 
+
+
 	onWindowLoaded: function(response) {
 		$(this.idWindow).down('.close').observe('click', this.hideWindow.bindAsEventListener(this));
 		this.displayWindow(true);
 	},
 
+
+	
 	showWindow: function() {
 		if( this.hasWindow() ) {
 			this.displayWindow(true);
@@ -76,9 +86,13 @@ Todoyu.Headlet.About = {
 		}
 	},
 
+
+
 	hideWindow: function() {
 		this.displayWindow(false);
 	},
+
+
 
 	displayWindow: function(show) {
 		var window		= $(this.idWindow);
