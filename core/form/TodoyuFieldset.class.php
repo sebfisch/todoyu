@@ -60,7 +60,7 @@ class TodoyuFieldset implements ArrayAccess {
 	 * Initialize a new fieldset.
 	 *
 	 * @param	TodoyuFieldset	$parent		Reference to parent element (fieldset or the form)
-	 * @param	String		$name		Name of the fieldset to be accessed over $form->FIELDSETNAME->method()
+	 * @param	String			$name		Name of the fieldset to be accessed over $form->FIELDSETNAME->method()
 	 */
 	public function __construct($parent, $name) {
 		$this->parent	= $parent;

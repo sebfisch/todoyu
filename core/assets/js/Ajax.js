@@ -27,7 +27,7 @@ Todoyu.Ajax = {
 	 * Check if a no access header has been sent.
 	 * Cancel execution and show error message if so
 	 *
-	 * @param	Ajax.Response	response
+	 * @param	{Ajax.Response}	response
 	 */
 	checkNoAccessHeader: function(response) {
 		if( response.hasNoAccess() ) {
@@ -44,7 +44,7 @@ Todoyu.Ajax = {
 	 * Check if a php error header has been sent
 	 * Cancel execution and show error message if so
 	 *
-	 * @param	Ajax.Response		response
+	 * @param	{Ajax.Response}		response
 	 */
 	checkPhpErrorHeader: function(response) {
 		if( response.hasPhpError() ) {

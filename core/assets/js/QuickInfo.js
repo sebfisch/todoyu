@@ -19,14 +19,40 @@
 
 Todoyu.QuickInfo = {
 
+	/**
+	 * ID of the quickinfo popup
+	 */
 	popupID:	'quickinfo',
 
+	/**
+	 * Content cache with time info
+	 */
 	cache:		{},
 
+	/**
+	 * Default cache time for an element (seconds)
+	 */
+	defaultCacheTime:	60,
+
+	/**
+	 * Custom cache time per element
+	 * @see		this.setCacheTime()
+	 */
+	customCacheTime: {},
+
+	/**
+	 * Template object to convert JSON into HTML
+	 */
 	template:	null,
 
+	/**
+	 * Flag if loading is in progress (prevents multiple loading requests)
+	 */
 	loading:	false,
 
+	/**
+	 * Flag if quickinfo is currently hidden
+	 */
 	hidden:		false,
 
 
@@ -51,6 +77,31 @@ Todoyu.QuickInfo = {
 
 			$(document.body).insert(quickInfo);
 		}
+	},
+
+
+
+	/**
+	 * Set cache time for a type
+	 *
+	 * @param	String		extension
+	 * @param	String		type
+	 * @param	Integer		time		Cache time in seconds
+	 */
+	setCacheTime: function(extension, type, time) {
+		this.customCacheTime[extension + type] = time;
+	},
+
+
+
+	/**
+	 * Get cache time for an element type. Gets time until cache is valid
+	 *
+	 * @param	String		extension
+	 * @param	String		type
+	 */
+	getCacheTime: function(extension, type) {
+		return (new Date()).getTime() + (this.customCacheTime[extension + type] !== undefined ? parseInt(this.customCacheTime[extension + type]) : this.defaultCacheTime)*1000;
 	},
 
 
@@ -155,19 +206,23 @@ Todoyu.QuickInfo = {
 
 
 	/**
-	 * Evoked upon quickinfo having been loaded, shows the quickinfo tooltip
+	 * Show quickinfo after loaded by ajax. Add to cache with custom cache time
 	 *
-	 * @param	String	type
-	 * @param	String	key
-	 * @param	Integer	x
-	 * @param	Integer	y
-	 * @param	Object	response
+	 * @param	String			extension		Extension providing the element
+	 * @param	String			type			Type of element
+	 * @param	String			key				Key of element (mostly element ID)
+	 * @param	Integer			x				Mouse Pointer Position
+	 * @param	Integer			y				Mouse Pointer Position
+	 * @param	Ajax.Response	response
 	 */
 	onQuickInfoLoaded: function(extension, type, key, x, y, response) {
-		this.loading = false;
-		var quickInfo= this.buildQuickInfo(response.responseJSON);
+		var cacheKey= type + key;
+		var content	= this.buildQuickInfo(response.responseJSON);
+		var time	= this.getCacheTime(extension, type);
 
-		this.addToCache(type + key, quickInfo);
+		this.addToCache(cacheKey, content, time);
+
+		this.loading = false;
 
 		if ( ! this.hidden ) {
 			this.show(extension, type, key, x, y);
@@ -215,23 +270,27 @@ Todoyu.QuickInfo = {
 	/**
 	 * Add quickinfo content to cache
 	 *
-	 * @param	String		cacheID
-	 * @param	String		content
+	 * @param	String		cacheID		ID of the cached element
+	 * @param	String		content		cached content
+	 * @param	Integer		time		cache time
 	 */
-	addToCache: function(cacheID, content) {
-		this.cache[cacheID] = content;
+	addToCache: function(cacheID, content, time) {
+		this.cache[cacheID] = {
+			'time': 	time,
+			'content': 	content
+		};
 	},
 
 
 
 	/**
-	 * Get quickinfo from cache
+	 * Get quickinfo content from cache
 	 *
-	 * @param	String	cacheID
-	 * @return	String
+	 * @param	String		cacheID
+	 * @return	String		Or false
 	 */
 	getFromCache: function(cacheID) {
-		return this.cache[cacheID];
+		return this.isCached(cacheID) ? this.cache[cacheID].content : false;
 	},
 
 
@@ -255,7 +314,11 @@ Todoyu.QuickInfo = {
 	 * @return	Boolean
 	 */
 	isCached: function(cacheID) {
-		return typeof(this.cache[cacheID]) === 'string';
+		var o =typeof(this.cache[cacheID]);
+
+
+
+		return typeof(this.cache[cacheID]) === 'object' && this.cache[cacheID].time > (new Date()).getTime();
 	}
 
 };

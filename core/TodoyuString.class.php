@@ -409,6 +409,7 @@ class TodoyuString {
 			$status	= 'stable';
 		}
 
+		$info['full']		= $versionString;
 		$info['major']		= intval($version[0]);
 		$info['minor']		= intval($version[1]);
 		$info['revision']	= intval($version[2]);

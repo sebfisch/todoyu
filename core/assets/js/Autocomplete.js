@@ -49,8 +49,8 @@ Todoyu.Autocomplete = {
 	/**
 	 * Initialize autocompleter
 	 *
-	 * @param	Integer		idElement		ID of the element whichs value will be set by autocomplete
-	 * @param	Object		config			Custom config
+	 * @param	{Integer}		idElement		ID of the element whichs value will be set by autocomplete
+	 * @param	{Object}		config			Custom config
 	 */
 	install: function(idElement, config)	{
 		var inputField		= idElement + '-fulltext';
@@ -84,8 +84,8 @@ Todoyu.Autocomplete = {
 	/**
 	 * Callback which builds the request url
 	 *
-	 * @param	Integer		idElement
-	 * @param	String		acParam
+	 * @param	{Integer}		idElement
+	 * @param	{String}		acParam
 	 */
 	beforeRequestCallback: function(idElement, acParam) {
 		var form	= $(idElement).up('form');
@@ -133,8 +133,8 @@ Todoyu.Autocomplete = {
 	/**
 	 * When autocomplete value is selected
 	 *
-	 * @param	DomElement	inputField
-	 * @param	DomElement	selectedListElement
+	 * @param	{DomElement}	inputField
+	 * @param	{DomElement}	selectedListElement
 	 */
 	onElementSelected: function(inputField, selectedListElement) {
 		var baseID			= inputField.id.split('-').without('fulltext').join('-');

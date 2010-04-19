@@ -131,10 +131,11 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Get full path of the extension (or FALSE if extension is not installed)
+	 * Get full path of the extension
+	 * This is the path an extension would have. Doesn't mean the path exists or extension is installed
 	 *
 	 * @param	String		$extKey
-	 * @return	String		Or FALSE
+	 * @return	String		Absolute path to extension
 	 */
 	public static function getExtPath($extKey, $appendPath = '') {
 		return TodoyuFileManager::pathAbsolute(PATH_EXT . DIR_SEP . $extKey . DIR_SEP . trim($appendPath, '/\\'));

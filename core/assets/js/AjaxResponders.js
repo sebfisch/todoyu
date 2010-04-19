@@ -50,7 +50,7 @@ Todoyu.AjaxResponders = {
 	/**
 	 * Add a new hook function which will be called when request is completed
 	 *
-	 * @param	Function	hook
+	 * @param	{Function}	hook
 	 */
 	addOnCompleteHook: function(hook) {
 		this.completeHooks.push(hook);
@@ -62,7 +62,7 @@ Todoyu.AjaxResponders = {
 	 * Call all registered hook functions
 	 * They receive the response object as only parameter
 	 *
-	 * @param	Ajax.Response	response
+	 * @param	{Ajax.Response}	response
 	 */
 	callOnCompleteHooks: function(response) {
 		this.completeHooks.each(function(response, func){
@@ -76,7 +76,7 @@ Todoyu.AjaxResponders = {
 	 * Extend the prototype 'respondToReadyState' handler
 	 * Delete the onComplete handler if no access flag is set in header
 	 *
-	 * @param	Ajax.Request	request
+	 * @param	{Ajax.Request}	request
 	 */
 	onCreate: function(request) {
 		Todoyu.Headlet.AjaxLoader.show();
@@ -101,7 +101,7 @@ Todoyu.AjaxResponders = {
 	/**
 	 * Handler when a request is completed
 	 *
-	 * @param	Ajax.Response		response
+	 * @param	{Ajax.Response}		response
 	 */
 	onComplete: function(response) {
 			// Check for hash header and scroll to element
@@ -119,8 +119,8 @@ Todoyu.AjaxResponders = {
 	/**
 	 * Handler when connection to server fails
 	 *
-	 * @param	Ajax.Response	response
-	 * @param	Exception		exception
+	 * @param	{Ajax.Response}	response
+	 * @param	{Object}		exception
 	 */
 	onException: function(response, exception) {
 		//Todoyu.notifyError('[LLL:core.ajax.requestFailed]', 0);
@@ -132,7 +132,7 @@ Todoyu.AjaxResponders = {
 	/**
 	 * Check whether hash header has been sent and scroll to it
 	 *
-	 * @param	Ajax.Response		response
+	 * @param	{Ajax.Response}		response
 	 */
 	scrollToElement: function(response) {
 		var hash = response.getHeader('Todoyu-Hash'); // Do not use getTodoyuHeader(), it fails...

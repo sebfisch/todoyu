@@ -22,10 +22,10 @@ Ajax.Replacer = Class.create(Ajax.Request, {
 	/**
 	 * Initialize AJAX replacer
 	 *
-	 * @param	unknown_type	$super
-	 * @param	String			container
-	 * @param	String			url
-	 * @param	Object			options
+	 * @param	{Function}		$super
+	 * @param	{String}		container
+	 * @param	{String}		url
+	 * @param	{Object}		options
 	 */
 	initialize: function($super, container, url, options) {
 		options = options || { };

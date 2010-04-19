@@ -228,6 +228,58 @@ Todoyu.Form = {
 		height	= height > 0 ? height : 300;
 
 		return Todoyu.Popup.openWindow(idPopup, title, width, url, options);
+	},
+
+
+
+	/**
+	 * Add an iFrame to the document body
+	 *
+	 * @param	String		key			Identifier
+	 * @return	Element		IFrame element
+	 */
+	addIFrame: function(key) {
+		var idIFrame= 'upload-iframe-' + key;
+
+		if( ! Todoyu.exists(idIFrame) ) {
+			var iFrame	= new Element('iframe', {
+				'name':		'upload-iframe-' + key,
+				'id':		'upload-iframe-' + key,
+				'class':	'upload-iframe'
+			});
+
+			iFrame.hide();
+
+			$(document.body).insert(iFrame);
+		}
+
+		return $(idIFrame)
+	},
+
+
+
+	/**
+	 * Get a hidden iFrame
+	 *
+	 * @param	String		key
+	 */
+	getIFrame: function(key) {
+		return $('upload-iframe-' + key);
+	},
+
+
+
+	/**
+	 * Remove a hidden iFrame
+	 *
+	 * @param	String		key
+	 */
+	removeIFrame: function(key) {
+		var iFrame	= this.getIFrame(key);
+
+		if( iFrame ) {
+			iFrame.remove();
+		}
 	}
 
 };

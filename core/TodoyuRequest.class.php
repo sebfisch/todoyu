@@ -121,6 +121,32 @@ class TodoyuRequest {
 
 
 	/**
+	 * Get information for an uploaded file
+	 *
+	 * @param	String		$name
+	 * @param	String		$container
+	 * @return	Array		Or false if not found
+	 */
+	public static function getUploadFile($name, $container = false) {
+		$file	= false;
+		$info	= $container ? $_FILES[$container] : $_FILES;
+
+		if( is_array($info) ) {
+			$file	= array(
+				'name'		=> $info['name'][$name],
+				'type'		=> $info['type'][$name],
+				'tmp_name'	=> $info['tmp_name'][$name],
+				'error'		=> $info['error'][$name],
+				'size'		=> $info['size'][$name]
+			);
+		}
+
+		return $file;
+	}
+
+
+
+	/**
 	 * Check if request is a POST request
 	 *
 	 * @return	Boolean

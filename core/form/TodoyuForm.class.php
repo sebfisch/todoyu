@@ -306,9 +306,10 @@ class TodoyuForm implements ArrayAccess {
 	protected function updateFieldValues() {
 		// Update fields
 		foreach( $this->fields as $name => $field ) {
-			$value = $this->formdata[$name];
-
-			$field->setValue($value);
+			/**
+			 * @var	$field	TodoyuFormElement
+			 */
+			$field->setValue($this->formdata[$name]);
 		}
 
 			// Update hidden fields
@@ -1043,12 +1044,16 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
-	 * Get
+	 * Get form data
 	 *
-	 * @return unknown
+	 * @return	String
 	 */
 	private function getData() {
-		$data	=& $this->attributes;
+			// Add form attributes
+		$data	= array();
+		foreach($this->attributes as $attrName => $attrValue) {
+			$data[$attrName] = $this->parseWithFormData($attrValue);
+		}
 
 		$this->updateFieldValues();
 
@@ -1068,6 +1073,8 @@ class TodoyuForm implements ArrayAccess {
 		if( $this->hasAttribute('onsubmit') ) {
 			$this->setAttribute('onsubmit', $this->parseWithFormData($this->getAttribute('onsubmit')));
 		}
+		
+		
 
 		return $data;
 	}
