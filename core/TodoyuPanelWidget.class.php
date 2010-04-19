@@ -122,6 +122,7 @@ abstract class TodoyuPanelWidget {
 	}
 
 
+
 	/**
 	 * Add a CSS class
 	 *
@@ -139,7 +140,6 @@ abstract class TodoyuPanelWidget {
 
 	/**
 	 * Add a hasIcon class
-	 *
 	 */
 	public function addHasIconClass() {
 		$this->addClass('hasIcon');
@@ -149,11 +149,11 @@ abstract class TodoyuPanelWidget {
 
 	/**
 	 * Set collapsed status
-	 *
 	 */
 	public function setCollapsedStatus()	{
 		$this->set('collapsed', TodoyuPanelWidgetManager::isCollapsed($this->get('id')));
 	}
+
 
 
 	/**

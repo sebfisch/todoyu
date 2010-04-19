@@ -28,7 +28,6 @@ class TodoyuPanelWidgetManager {
 
 	/**
 	 * Data table
-	 *
 	 */
 	const TABLE = 'system_panelwidget';
 
@@ -192,7 +191,6 @@ class TodoyuPanelWidgetManager {
 
 	/**
 	 * Get list of available panel widgets (Todoyu::$CONFIG['PANELWIDGETS'])
-	 *
 	 */
 	public static function getAvailablePanelWidgets() {
 		return Todoyu::$CONFIG['PANELWIDGETS'];
@@ -231,6 +229,5 @@ class TodoyuPanelWidgetManager {
 		return intval($pref) === 1;
 	}
 }
-
 
 ?>

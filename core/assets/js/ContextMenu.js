@@ -26,9 +26,9 @@ Todoyu.ContextMenu = {
 	 * Attach contextmenu to a group of elements
 	 * Automatically prevents double context menus by removing registered ones before adding the new one
 	 *
-	 * @param	String		name		Name of the contextmenu type (php callbacks are registered for this type)
-	 * @param	String		selector	CSS selector expression
-	 * @param	Function	callback	Callback function to find element if on the observed DomElement
+	 * @param	{String}		name		Name of the contextmenu type (php callbacks are registered for this type)
+	 * @param	{String}		selector	CSS selector expression
+	 * @param	{Function}		callback	Callback function to find element if on the observed DomElement
 	 */
 	attach: function(name, selector, callback) {
 		this.detach(selector);
@@ -45,7 +45,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Detach context menu from all elements which match to the selector
 	 *
-	 * @param	String		selector		CSS Selector
+	 * @param	{String}	selector		CSS Selector
 	 */
 	detach: function(selector) {
 		var elements	= $$(selector);
@@ -60,10 +60,10 @@ Todoyu.ContextMenu = {
 	/**
 	 * Load contextmenu items (JSON) over AJAX
 	 *
-	 * @param	Event		event				Click event object
-	 * @param	String		name				Name of the contextmenu type
-	 * @param	Function	callback			Callback function to parse ID from element
-	 * @param	DomElement	observedElement		Observed element
+	 * @param	{Event}			event				Click event object
+	 * @param	{String}		name				Name of the contextmenu type
+	 * @param	{Function}		callback			Callback function to parse ID from element
+	 * @param	{DomElement}	observedElement		Observed element
 	 */
 	load: function(event, name, callback, observedElement) {
 			// Stop click event to prevent browsers context menu
@@ -88,9 +88,9 @@ Todoyu.ContextMenu = {
 	/**
 	 * Request, render and display context menu
 	 *
-	 * @param	String		url
-	 * @param	Array		options
-	 * @param	Object		event
+	 * @param	{String}		url
+	 * @param	{Array}			options
+	 * @param	{Object}		event
 	 */
 	showMenu: function(url, options, event) {
 			// Wrap to onComplete function to call renderMenu right before the defined onComplete function
@@ -111,7 +111,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 * @param	JSON		menuJSON
+	 * @param	{JSON}		menuJSON
 	 */
 	buildMenuFromJSON: function(menuJSON) {
 		var menu = this.Template.render(menuJSON);
@@ -124,7 +124,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Set menu dimensions (display position) and show the menu
 	 * 
-	 * @param	Event		event
+	 * @param	{Event}		event
 	 */
 	setMenuDimensions: function(event) {
 			// Fetch menu dimension data
@@ -172,7 +172,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 * @param	String		menuHTML
+	 * @param	{String}		menuHTML
 	 */
 	updateMenuContainer: function(menuHTML) {
 		$('contextmenu').update(menuHTML);
@@ -183,7 +183,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 * @param	Object		event
+	 * @param	{Object}		event
 	 */
 	preventContextMenu: function(event) {
 		event.stop();
@@ -196,7 +196,7 @@ Todoyu.ContextMenu = {
 	 * Please enter Description here...
 	 */
 	hide: function() {
-			// Hide contextmenu
+			// Hide context menu
 		$('contextmenu').hide();
 
 			// Stop observing body for click events (outside of the context menu)
@@ -208,8 +208,8 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 * @param	String		key
-	 * @param	Boolean		show
+	 * @param	{String}		key
+	 * @param	{Boolean}		show
 	 */
 	submenu: function(key, show) {
 		var ctxMenuID	= 'contextmenu';

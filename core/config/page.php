@@ -38,5 +38,4 @@ if( TodoyuAuth::isLoggedIn() ) {
 	//TodoyuColors::generate();
 }
 
-
 ?>

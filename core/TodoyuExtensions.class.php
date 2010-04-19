@@ -266,7 +266,6 @@ class TodoyuExtensions {
 
 	/**
 	 * Load filter config from all extensions
-	 *
 	 */
 	public static function loadAllFilters() {
 		self::loadAllTypeConfig('filters');
@@ -276,7 +275,6 @@ class TodoyuExtensions {
 
 	/**
 	 * Load rights config from all extensions
-	 *
 	 */
 	public static function loadAllRights() {
 		self::loadAllTypeConfig('rights');
@@ -286,7 +284,6 @@ class TodoyuExtensions {
 
 	/**
 	 * Load contextmenu config from all extensions
-	 *
 	 */
 	public static function loadAllContextMenus() {
 		self::loadAllTypeConfig('contextmenu');
@@ -296,7 +293,6 @@ class TodoyuExtensions {
 
 	/**
 	 * Load form config from all extensions
-	 *
 	 */
 	public static function loadAllForm() {
 		require_once( PATH_CONFIG . '/form.php');
@@ -308,7 +304,6 @@ class TodoyuExtensions {
 
 	/**
 	 * Load asset config for all extensions
-	 *
 	 */
 	public static function loadAllAssets() {
 		self::loadAllTypeConfig('assets');
@@ -318,7 +313,6 @@ class TodoyuExtensions {
 
 	/**
 	 * Load admin config for all extensions
-	 *
 	 */
 	public static function loadAllAdmin() {
 		self::loadAllTypeConfig('admin');
@@ -328,7 +322,6 @@ class TodoyuExtensions {
 
 	/**
 	 * Load extension informations for all extensions
-	 *
 	 */
 	public static function loadAllExtinfo() {
 		self::loadAllTypeConfig('extinfo');
@@ -338,7 +331,6 @@ class TodoyuExtensions {
 
 	/**
 	 * Load panelwidget config for all extensions
-	 *
 	 */
 	public static function loadAllPanelWidget() {
 		self::loadAllTypeConfig('panelwidgets');
@@ -348,7 +340,6 @@ class TodoyuExtensions {
 
 	/**
 	 * Load all page config (tabs, etc)
-	 *
 	 */
 	public static function loadAllPage() {
 		self::loadAllTypeConfig('page');
@@ -435,6 +426,12 @@ class TodoyuExtensions {
 	}
 
 
+
+	/**
+	 * @todo	comment
+	 * @param 	String		$extKey
+	 * @return	Array
+	 */
 	public static function getConflicts($extKey) {
 		self::loadAllExtinfo();
 

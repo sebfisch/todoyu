@@ -26,7 +26,6 @@
  */
 class TodoyuLogger {
 
-
 	/**
 	 * Log instance. Singleton
 	 *
@@ -109,9 +108,9 @@ class TodoyuLogger {
 	}
 
 
+
 	/**
 	 * Cleanup actions
-	 *
 	 */
 	public function __destruct() {
 
@@ -151,6 +150,5 @@ class TodoyuLogger {
 	}
 
 }
-
 
 ?>

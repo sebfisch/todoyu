@@ -364,7 +364,6 @@ class TodoyuFieldset implements ArrayAccess {
 
 	/**
 	 * Remove fieldset with all its elements
-	 *
 	 */
 	public function remove() {
 		$fieldNames	= $this->getFieldNames();

@@ -88,7 +88,6 @@ class TodoyuCache {
 
 	/**
 	 * Disable caching
-	 *
 	 */
 	public static function disable() {
 		self::$enabled = false;
@@ -98,7 +97,6 @@ class TodoyuCache {
 
 	/**
 	 * Enable caching
-	 *
 	 */
 	public static function enable() {
 		self::$enabled = true;

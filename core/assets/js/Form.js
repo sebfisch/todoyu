@@ -40,9 +40,9 @@ Todoyu.Form = {
 	/**
 	 * Toggle sub form
 	 *
-	 * @param	Integer		idRecord
-	 * @param	String		fieldName
-	 * @param	Integer		index
+	 * @param	{Integer}		idRecord
+	 * @param	{String}		fieldName
+	 * @param	{Integer}		index
 	 */
 	toggleRecordForm: function(idRecord, fieldName, index)	{
 		var baseName	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
@@ -69,9 +69,9 @@ Todoyu.Form = {
 	/**
 	 * Remove sub form
 	 *
-	 * @param	Integer		idRecord
-	 * @param	String		fieldName
-	 * @param	Integer		index
+	 * @param	{Integer}		idRecord
+	 * @param	{String}		fieldName
+	 * @param	{Integer}		index
 	 */
 	removeRecord: function(idRecord, fieldName, index) {
 		var idElement	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
@@ -84,11 +84,11 @@ Todoyu.Form = {
 	/**
 	 * Add a new record
 	 *
-	 * @param	Integer		idRecord
-	 * @param	String		formName
-	 * @param	String		fieldName
-	 * @param	String		updateExt
-	 * @param	String		updateController
+	 * @param	{Integer}		idRecord
+	 * @param	{String}		formName
+	 * @param	{String}		fieldName
+	 * @param	{String}		updateExt
+	 * @param	{String}		updateController
 	 */
 	addRecord: function(idRecord, formName, fieldName, updateExt, updateController) {
 		var container	= $('foreignrecords-' + idRecord + '-' + fieldName);
@@ -114,11 +114,11 @@ Todoyu.Form = {
 	/**
 	 * Callback when new record added
 	 *
-	 * @param	Integer		idRecord
-	 * @param	String		formName
-	 * @param	String		fieldName
-	 * @param	String		index
-	 * @param	String		response
+	 * @param	{Integer}		idRecord
+	 * @param	{String}		formName
+	 * @param	{String}		fieldName
+	 * @param	{String}		index
+	 * @param	{String}		response
 	 */
 	onRecordAdded: function(container, idRecord, formName, fieldName, index, response) {
 		$(container).insert({'top':response.responseText});
@@ -132,9 +132,9 @@ Todoyu.Form = {
 	/**
 	 * Focus first record field
 	 *
-	 * @param	Integer		idRecord
-	 * @param	String		fieldName
-	 * @param	Integer		index
+	 * @param	{Integer}		idRecord
+	 * @param	{String}		fieldName
+	 * @param	{Integer}		index
 	 */
 	focusFirstRecordField: function(idRecord, fieldName, index) {
 		var formHTML= $('foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml');
@@ -150,7 +150,7 @@ Todoyu.Form = {
 	/**
 	 * Focus first form field
 	 * 
-	 * @param	String	formID
+	 * @param	{String}	formID
 	 */
 	focusFirstFormField: function(formID)	{
 		if( $(formID) )	{
@@ -166,7 +166,7 @@ Todoyu.Form = {
 
 	/**
 	 *
-	 * @param	Array	fieldNames
+	 * @param	{Array}	fieldNames
 	 */
 	expandForeignRecords: function(fieldNames) {
 		fieldNames = fieldNames || [];
@@ -186,7 +186,7 @@ Todoyu.Form = {
 	/**
 	 * Show formHTML of invalid form elements in foreign records
 	 * 
-	 * @param	String		formID
+	 * @param	{String}		formID
 	 */
 	expandInvalidForeignRecords: function(formID) {			
 		$(formID).select('div.error').each(function(errorField){
@@ -202,15 +202,15 @@ Todoyu.Form = {
 	/**
 	 * Expand all foreign records in a form
 	 *
-	 * @param	Integer		idRecord
-	 * @param	Integer		idField
-	 * @param	String		extension
-	 * @param	String		controller
-	 * @param	String		action
-	 * @param	Integer		height
-	 * @param	Integer		width
-	 * @param	String		title
-	 * @return	String
+	 * @param	{Integer}		idRecord
+	 * @param	{Integer}		idField
+	 * @param	{String}		extension
+	 * @param	{String}		controller
+	 * @param	{String}		action
+	 * @param	{Integer}		height
+	 * @param	{Integer}		width
+	 * @param	{String}		title
+	 * @return	{String}
 	 */
 	openWizard: function(idRecord, idField, extension, controller, action, height, width, title)	{
 		var url		= Todoyu.getUrl(extension,	controller);
@@ -235,8 +235,8 @@ Todoyu.Form = {
 	/**
 	 * Add an iFrame to the document body
 	 *
-	 * @param	String		key			Identifier
-	 * @return	Element		IFrame element
+	 * @param	{String}		key			Identifier
+	 * @return	{Element}		IFrame element
 	 */
 	addIFrame: function(key) {
 		var idIFrame= 'upload-iframe-' + key;
@@ -261,7 +261,7 @@ Todoyu.Form = {
 	/**
 	 * Get a hidden iFrame
 	 *
-	 * @param	String		key
+	 * @param	{String}		key
 	 */
 	getIFrame: function(key) {
 		return $('upload-iframe-' + key);
@@ -272,7 +272,7 @@ Todoyu.Form = {
 	/**
 	 * Remove a hidden iFrame
 	 *
-	 * @param	String		key
+	 * @param	{String}		key
 	 */
 	removeIFrame: function(key) {
 		var iFrame	= this.getIFrame(key);

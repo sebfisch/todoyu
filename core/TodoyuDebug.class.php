@@ -256,7 +256,6 @@ class TodoyuDebug {
 
 	/**
 	 * Print function backtrace debug
-	 *
 	 */
 	public static function printBacktrace() {
 		$backtrace	= debug_backtrace();

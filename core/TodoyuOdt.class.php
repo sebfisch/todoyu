@@ -83,7 +83,6 @@ class TodoyuOdt {
 
 	/**
 	 * Initializes the class
-	 *
 	 */
 	protected function init()	{
 		if(!is_dir($this->tmpDir))	{
@@ -228,8 +227,7 @@ class TodoyuOdt {
 
 
 	/**
-	 * Downloads the current odt-file
-	 *
+	 * Downloads the current ODT file
 	 */
 	public function download()	{
 		header('Content-Type: application/vnd.oasis.opendocument.text');
@@ -243,6 +241,7 @@ class TodoyuOdt {
 
 		exit();
 	}
+
 
 
 	/**
@@ -292,8 +291,7 @@ class TodoyuOdt {
 
 
 	/**
-	 * removes the temporary added folders and files
-	 *
+	 * Remove temporary added folders and files
 	 */
 	protected function close()	{
 		$command = 'rm -R ' . $this->tmpOdtDir;
@@ -333,6 +331,7 @@ class TodoyuOdt {
 			$this->exec($command);
 		}
 	}
+
 
 
 	/**

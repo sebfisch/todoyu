@@ -45,8 +45,9 @@ class TodoyuFormManager {
 	}
 
 
+
 	/**
-	 * Render a subrecord of a database relation field
+	 * Render a sub record of a database relation field
 	 *
 	 * @param	String		$xmlPath
 	 * @param	String		$fieldName

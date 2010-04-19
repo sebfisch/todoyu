@@ -80,6 +80,7 @@ class TodoyuBrowserInfo {
 	}
 
 
+
 	/**
 	 * Get identification (name) of browser
 	 *

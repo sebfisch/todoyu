@@ -39,7 +39,6 @@ interface TodoyuPanelWidgetIf {
 
 	/**
 	 * Render panel widget
-	 *
 	 */
 	public function render();
 
@@ -47,7 +46,6 @@ interface TodoyuPanelWidgetIf {
 
 	/**
 	 * Render panel widget content
-	 *
 	 */
 	public function renderContent();
 

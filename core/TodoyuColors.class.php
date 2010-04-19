@@ -29,7 +29,6 @@ class TodoyuColors {
 
 	/**
 	 * Dimensions of the color rectangles
-	 *
 	 */
 	const HEIGHT= 20;
 	const WIDTH	= 16;

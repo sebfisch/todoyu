@@ -44,7 +44,7 @@ Todoyu.Headlet.QuickCreate = {
 	/**
 	 * Handler: When clicked on button
 	 * 
-	 * @param	Event		event
+	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
 		if( this.isContentVisible() ) {
@@ -59,7 +59,7 @@ Todoyu.Headlet.QuickCreate = {
 	/**
 	 * Handler: When clicked on menu entry
 	 * 
-	 * @param	Event		event
+	 * @param	{Event}		event
 	 */
 	onMenuClick: function(event) {
 		var idParts	= Event.findElement(event, 'a').className.split('-');
@@ -78,8 +78,8 @@ Todoyu.Headlet.QuickCreate = {
 	/**
 	 * Open creator wizard popup
 	 * 
-	 * @param	String		ext
-	 * @param	String		mode
+	 * @param	{String}		ext
+	 * @param	{String}		mode
 	 */
 	openTypePopup: function(ext, type) {
 		if ( ! $('quickcreate') ) {
@@ -104,7 +104,7 @@ Todoyu.Headlet.QuickCreate = {
 	/**
 	 * Handler after popup opened: call mode's onPopupOpened-handler
 	 * 
-	 * @param	String	ext
+	 * @param	{String}	ext
 	 */
 	onPopupOpened: function(ext, type) {
 		$('quickcreate').addClassName(type);
@@ -119,8 +119,8 @@ Todoyu.Headlet.QuickCreate = {
 	/**
 	 * Get label of a type from menu entry
 	 * 
-	 * @param	String		ext
-	 * @param	String		type
+	 * @param	{String}		ext
+	 * @param	{String}		type
 	 */
 	getTypeLabel: function(ext, type) {
 		return $$('#headlet-quickcreate-content a.headlet-quickcreate-item-' + ext + '-' + type)[0].innerHTML;
@@ -140,7 +140,7 @@ Todoyu.Headlet.QuickCreate = {
 	/**
 	 * Update quick create popup content
 	 *
-	 * @param	String		content
+	 * @param	{String}		content
 	 */
 	updatePopupContent: function(content) {
 		$('quickcreate_content').update(content);

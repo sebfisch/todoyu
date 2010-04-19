@@ -80,7 +80,6 @@ class TodoyuActionDispatcher {
 
 	/**
 	 * Dispatch request. Call selected controller
-	 *
 	 */
 	public static function dispatch() {
 		//self::callExtOnRequestHandler(EXT);

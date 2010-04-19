@@ -87,7 +87,6 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test TodoyuArray::getColumn
-	 *
 	 */
 	public function testGetColumn() {
 		$idColumn	= TodoyuArray::getColumn($this->array, 'id');
@@ -99,7 +98,6 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test TodoyuArray::getFirstKey
-	 *
 	 */
 	public function testGetFirstKey() {
 		$firstKey	= TodoyuArray::getFirstKey($this->array[0]);

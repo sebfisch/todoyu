@@ -32,11 +32,11 @@ Todoyu.Time = {
 	/**
 	 * Format given time, to e.g. '13:50:20'
 	 *
-	 * @param	Integer		hours
-	 * @param	Integer		minutes
-	 * @param	Integer		seconds
-	 * @param	String		separator
-	 * @return	String
+	 * @param	{Integer}		hours
+	 * @param	{Integer}		minutes
+	 * @param	{Integer}		seconds
+	 * @param	{String}		separator
+	 * @return	{String}
 	 */
 	timeFormat: function(hours, minutes, seconds, separator) {
 		if( Object.isUndefined(separator) ) {
@@ -51,9 +51,9 @@ Todoyu.Time = {
 	/**
 	 * Format given time
 	 *
-	 * @param	String	time
-	 * @param	String	separator
-	 * @return	String
+	 * @param	{String}	time
+	 * @param	{String}	separator
+	 * @return	{String}
 	 */
 	timeFormatSeconds: function(time, separator) {
 		var timeParts = this.getTimeParts(time);
@@ -66,8 +66,8 @@ Todoyu.Time = {
 	/**
 	 * Parse given time string to seconds
 	 *
-	 * @param	String	timeString
-	 * @return	String
+	 * @param	{String}	timeString
+	 * @return	{String}
 	 */
 	parseTimeToSeconds: function(timeString) {
 		var parts	= timeString.stripTags().split(':');
@@ -80,7 +80,7 @@ Todoyu.Time = {
 	/**
 	 * Get time parts of given (timestamp) time
 	 *
-	 * @param	Integer		time
+	 * @param	{Integer}		time
 	 * @return	Array
 	 */
 	getTimeParts: function(time) {
@@ -102,10 +102,10 @@ Todoyu.Time = {
 	/**
 	 * Get shifted time
 	 *
-	 * @param	Integer		baseTime
-	 * @param	String		step		'month' / other		@todo change into boolean if there's no more values
-	 * @param	String		direction	'up' / 'down'
-	 * @return	Integer
+	 * @param	{Integer}		baseTime
+	 * @param	{String}		step		'month' / other		@todo change into boolean if there's no more values
+	 * @param	{String}		direction	'up' / 'down'
+	 * @return	{Integer}
 	 */		
 	getShiftedTime: function(baseTime, step, direction) {
 		baseTime	= this.getDayStart(baseTime);
@@ -135,8 +135,8 @@ Todoyu.Time = {
 	/**
 	 * Get timestamp at start of day
 	 *
-	 * @param	Integer	time
-	 * @return	Integer
+	 * @param	{Integer}	time
+	 * @return	{Integer}
 	 */
 	getDayStart: function(time) {
 		var date = new Date(time * 1000);
@@ -153,8 +153,8 @@ Todoyu.Time = {
 	/**
 	 * Get timestamp at start of week
 	 *
-	 * @param	Integer		time
-	 * @return	Integer
+	 * @param	{Integer}		time
+	 * @return	{Integer}
 	 */
 	getWeekStart: function(baseTime) {
 		var date = new Date(baseTime * 1000);
@@ -176,7 +176,7 @@ Todoyu.Time = {
 	/**
 	 * Get todays date
 	 *
-	 * @return	Integer		microtime timestamp
+	 * @return	{Integer}		microtime timestamp
 	 */
 	getTodayDate: function() {
 		var date	= new Date();
@@ -192,8 +192,8 @@ Todoyu.Time = {
 	/**
 	 * Get amount of days in month
 	 *
-	 * @param	Integer	time
-	 * @return	Integer
+	 * @param	{Integer}	time
+	 * @return	{Integer}
 	 */
 	getDaysInMonth: function(time) {
 		var date	= new Date(time * 1000);
@@ -208,7 +208,7 @@ Todoyu.Time = {
 	/**
 	 * Get date string in format YYYY-MM-DD
 	 * 
-	 * @param	Integer		time
+	 * @param	{Integer}		time
 	 */
 	getDateString: function(time) {
 		var date = new Date(time*1000);
@@ -220,7 +220,7 @@ Todoyu.Time = {
 	/**
 	 * Get date string with time part in format YYYY-MM-DD HH:MM
 	 * 
-	 * @param	Integer		time
+	 * @param	{Integer}		time
 	 */
 	getDateTimeString: function(time) {
 		var date = new Date(time*1000);

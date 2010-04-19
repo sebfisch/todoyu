@@ -82,7 +82,6 @@ class TodoyuFormXmlParser {
 
 	/**
 	 * Parse form attributes from xml
-	 *
 	 */
 	private static function parseAttributes() {
 		if( self::$xml->attributes ) {
@@ -96,7 +95,6 @@ class TodoyuFormXmlParser {
 
 	/**
 	 * Parse hidden fields from xml
-	 *
 	 */
 	private static function parseHiddenFields() {
 		if( self::$xml->hiddenFields ) {
@@ -110,7 +108,6 @@ class TodoyuFormXmlParser {
 
 	/**
 	 * Parse fieldsets with their fields from XML
-	 *
 	 */
 	private static function parseTopFieldsets() {
 		$children	= self::$xml->fieldsets->children();
@@ -261,6 +258,5 @@ class TodoyuFormXmlParser {
 	}
 
 }
-
 
 ?>

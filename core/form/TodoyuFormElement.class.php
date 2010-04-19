@@ -105,7 +105,6 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	/**
 	 * Init after constructor
 	 * Can be overridden in extended types
-	 *
 	 */
 	protected function init() {
 
@@ -115,7 +114,6 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 	/**
 	 * Remove the field from the form
-	 *
 	 */
 	public function remove() {
 		$this->fieldset->removeField($this->getName(), true);
@@ -531,7 +529,6 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 	/**
 	 * Set error status of form element true
-	 *
 	 */
 	protected function setErrorTrue() {
 		$this->error = true;

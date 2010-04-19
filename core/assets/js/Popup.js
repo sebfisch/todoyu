@@ -39,7 +39,7 @@ Todoyu.Popup = {
 	/**
 	 * Get popup reference
 	 *
-	 * @param	String			idPopup
+	 * @param	{String}			idPopup
 	 * @return	Object
 	 */
 	getPopup: function(idPopup) {
@@ -62,7 +62,7 @@ Todoyu.Popup = {
 	/**
 	 * Get amount of open popups
 	 * 
-	 * @return	Integer
+	 * @return	{Integer}
 	 */	
 	getNumPopups: function() {
 		return Object.keys(this.popup).size();
@@ -73,11 +73,11 @@ Todoyu.Popup = {
 	/**
 	 * Open new popup window
 	 *
-	 * @param	String		idPopup
-	 * @param	String		titleTxt
-	 * @param	Integer		winWidth
-	 * @param	String		contentUrl
-	 * @param	Array		requestOptions
+	 * @param	{String}		idPopup
+	 * @param	{String}		titleTxt
+	 * @param	{Integer}		winWidth
+	 * @param	{String}		contentUrl
+	 * @param	{Array}		requestOptions
 	 * @return	Object
 	 */
 	openWindow: function(idPopup, title, winWidth, contentUrl, requestOptions) {
@@ -140,8 +140,8 @@ Todoyu.Popup = {
 	 * 1. upon clicking:	(delayed) popup windwow updates its seize to fit its content
 	 * 2. upon closing:	the cick observer (1) is stopped
 	 *
-	 * @param	String	idPopup
-	 * @param	Object	response
+	 * @param	{String}	idPopup
+	 * @param	{Object}	response
 	 */
 	onContentLoaded: function(idPopup, response) {
 //		this.getPopup(idPopup).updateHeight();
@@ -156,8 +156,8 @@ Todoyu.Popup = {
 	/**
 	 * Enter Description here...
 	 *
-	 * @param	Object	event
-	 * @param	String	idPopup
+	 * @param	{Object}	event
+	 * @param	{String}	idPopup
 	 */
 	onWindowClose: function(event, idPopup) {
 //		this.getContentElement(idPopup).stopObserving('mouseup');
@@ -171,8 +171,8 @@ Todoyu.Popup = {
 	/**
 	 * Enter Description here...
 	 *
-	 * @param	Object	event
-	 * @param	String	idPopup
+	 * @param	{Object}	event
+	 * @param	{String}	idPopup
 	 */
 	onMouseUp: function(event, idPopup) {
 //		this.timeoutID = this.updateHeight.bind(this).delay(0.3, idPopup, true);
@@ -183,7 +183,7 @@ Todoyu.Popup = {
 	/**
 	 * Enter Description here...
 	 *
-	 * @param	String	idPopup
+	 * @param	{String}	idPopup
 	 */
 	getContentElement: function(idPopup) {
 		return $(idPopup + '_content');
@@ -194,8 +194,8 @@ Todoyu.Popup = {
 	/**
 	 * Update size of popup to fit its content without scrollbar
 	 *
-	 * @param	String	idPopup
-	 * @param	Boolean clearTimeout
+	 * @param	{String}	idPopup
+	 * @param	{Boolean} clearTimeout
 	 */
 	updateHeight: function(idPopup, clearTimeout) {
 		this.getPopup(idPopup).updateHeight();
@@ -222,8 +222,8 @@ Todoyu.Popup = {
 	/**
 	 * Update popup content
 	 *
-	 * @param	String	contentUrl
-	 * @param	Object	requestOptions
+	 * @param	{String}	contentUrl
+	 * @param	{Object}	requestOptions
 	 */
 	updateContent: function(idPopup, contentUrl, requestOptions) {		
 		this.getPopup(idPopup).setAjaxContent(contentUrl, requestOptions, false, false);
@@ -234,8 +234,8 @@ Todoyu.Popup = {
 	/**
 	 * Set content of given popup
 	 *
-	 * @param	String	idPopup
-	 * @param	String	content
+	 * @param	{String}	idPopup
+	 * @param	{String}	content
 	 */	
 	setContent: function(idPopup, content) {	
 		this.getPopup(idPopup).setHTMLContent(content);
@@ -247,7 +247,7 @@ Todoyu.Popup = {
 	/**
 	 * Refresh popup
 	 *
-	 * @param	String	idPopup
+	 * @param	{String}	idPopup
 	 */
 	refresh: function(idPopup) {
 		this.getPopup(idPopup).refresh();

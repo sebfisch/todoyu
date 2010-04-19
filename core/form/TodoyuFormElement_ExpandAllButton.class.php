@@ -40,9 +40,9 @@ class TodoyuFormElement_ExpandAllButton extends TodoyuFormElement_Button {
 	}
 
 
+
 	/**
 	 * Init: Set default values for expandAll button
-	 *
 	 */
 	protected function init() {
 		$this->setType('button');

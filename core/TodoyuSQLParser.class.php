@@ -26,7 +26,6 @@
  */
 class TodoyuSQLParser {
 
-
 	/**
 	 * Extract all table names from SQL
 	 *

@@ -124,6 +124,7 @@ class TodoyuContextMenu {
 	}
 
 
+
 	/**
 	 * Get contextmenu elements as JSON encoded string
 	 *
@@ -137,13 +138,13 @@ class TodoyuContextMenu {
 
 	/**
 	 * Print json encoded contextmenu struct
-	 *
 	 */
 	public function printJSON() {
 		TodoyuHeader::sendHeaderJSON();
 
 		echo $this->getJSON();
 	}
+
 
 
 	/**
@@ -178,6 +179,5 @@ class TodoyuContextMenu {
 	}
 
 }
-
 
 ?>

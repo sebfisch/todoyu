@@ -28,13 +28,11 @@ interface TodoyuHeadletInterface {
 
 	/**
 	 * Constructor is called automaticly without parameters
-	 *
 	 */
 	public function __construct();
 
 	/**
 	 * Render functions is called automaticly by TodoyuHeadletRenderer
-	 *
 	 */
 	public function render();
 

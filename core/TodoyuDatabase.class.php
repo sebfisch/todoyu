@@ -95,7 +95,6 @@ class TodoyuDatabase {
 
 	/**
 	 * Prevent object cloning
-	 *
 	 */
 	private function __clone() {
 
@@ -105,7 +104,6 @@ class TodoyuDatabase {
 
 	/**
 	 * Connect to the database, using the configuration array
-	 *
 	 */
 	private function connect() {
 			// Decide how to connect to mysql server
@@ -206,6 +204,7 @@ class TodoyuDatabase {
 
 		return $array;
 	}
+
 
 
 	/**
@@ -1204,6 +1203,5 @@ class TodoyuDatabase {
 	}
 
 }
-
 
 ?>

@@ -95,7 +95,7 @@ class TodoyuControllerException extends Exception {
 	 *
 	 * @return	String
 	 */
-	public static function getAction() {
+	public function getAction() {
 		return $this->action;
 	}
 
@@ -103,7 +103,6 @@ class TodoyuControllerException extends Exception {
 
 	/**
 	 * Print exception with TodoyuDebug
-	 *
 	 */
 	public function printError() {
 		TodoyuDebug::printInFirebug($this->getMessage(), 'Controller Exception');

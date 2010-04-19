@@ -29,7 +29,6 @@ class TodoyuHeadletAjaxLoader extends TodoyuHeadletTypeButton {
 
 	/**
 	 * Initialize headlets
-	 *
 	 */
 	protected function init() {
 			// Set javascript object which handles events

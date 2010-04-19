@@ -669,6 +669,7 @@ class TodoyuFormValidator {
 	}
 
 
+
 	/**
 	 * Check another field in the form. If this field is not empty, the checked field needs a value too
 	 *

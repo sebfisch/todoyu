@@ -26,7 +26,6 @@
  */
 class TodoyuForm implements ArrayAccess {
 
-
 	/**
 	 * Path to the XML file
 	 *
@@ -301,7 +300,6 @@ class TodoyuForm implements ArrayAccess {
 
 	/**
 	 * Update field values from form data
-	 *
 	 */
 	protected function updateFieldValues() {
 		// Update fields
@@ -350,6 +348,7 @@ class TodoyuForm implements ArrayAccess {
 			}
 		}
 	}
+
 
 
 	/**
@@ -1002,6 +1001,7 @@ class TodoyuForm implements ArrayAccess {
 	}
 
 
+
 	/**
 	 * Render hidden fields to HTML code
 	 *
@@ -1105,6 +1105,5 @@ class TodoyuForm implements ArrayAccess {
 		return render($tmpl, $data);
 	}
 }
-
 
 ?>

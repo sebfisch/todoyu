@@ -26,7 +26,6 @@
  */
 class TodoyuFormElement_Select extends TodoyuFormElement {
 
-
 	/**
 	 * Initialize
 	 *

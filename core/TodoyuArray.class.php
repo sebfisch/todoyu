@@ -534,6 +534,7 @@ class TodoyuArray {
 	}
 
 
+
 	/**
 	 * Use logical AND conjunction upon (intersect) given sub arrays.
 	 *

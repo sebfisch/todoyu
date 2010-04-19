@@ -96,7 +96,6 @@ class TodoyuCookieLogin {
 
 	/**
 	 * Remove remain login cookie
-	 *
 	 */
 	public static function removeRemainLoginCookie() {
 		$cookieName	= Todoyu::$CONFIG['AUTH']['loginCookieName'];
@@ -137,6 +136,5 @@ class TodoyuCookieLogin {
 	}
 
 }
-
 
 ?>

@@ -28,7 +28,6 @@ class TodoyuRightsManager {
 
 	/**
 	 * Default working table
-	 *
 	 */
 	const TABLE = 'system_right';
 
@@ -263,7 +262,6 @@ class TodoyuRightsManager {
 
 	/**
 	 * Flush and reload all rights config
-	 *
 	 */
 	public static function reloadRights() {
 		self::flushRights();
@@ -322,7 +320,6 @@ class TodoyuRightsManager {
 
 	/**
 	 * Restrict access to internal persons
-	 *
 	 */
 	public static function restrictInternal() {
 		if( ! Todoyu::person()->isInternal() ) {
@@ -334,7 +331,6 @@ class TodoyuRightsManager {
 
 	/**
 	 * Restrict access to admin
-	 *
 	 */
 	public static function restrictAdmin() {
 		if( ! TodoyuAuth::isAdmin() ) {

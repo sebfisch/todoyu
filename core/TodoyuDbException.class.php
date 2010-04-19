@@ -61,6 +61,7 @@ class TodoyuDbException extends Exception {
 	}
 
 
+
 	/**
 	 * Get file without site path
 	 *
@@ -124,7 +125,6 @@ class TodoyuDbException extends Exception {
 
 	/**
 	 * Render database error in plain text
-	 *
 	 */
 	public function getErrorAsPlain() {
 			// Remove full site path
@@ -148,6 +148,5 @@ class TodoyuDbException extends Exception {
 		return $content;
 	}
 }
-
 
 ?>

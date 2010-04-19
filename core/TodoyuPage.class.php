@@ -94,6 +94,7 @@ class TodoyuPage {
 	}
 
 
+
 	/**
 	 * Add all extension assets of allowed extension. If not logged in, don't check
 	 */
@@ -429,7 +430,6 @@ class TodoyuPage {
 
 	/**
 	 * Render all registered headlets
-	 *
 	 */
 	private static function renderHead() {
 		if( TodoyuAuth::isLoggedIn() ) {

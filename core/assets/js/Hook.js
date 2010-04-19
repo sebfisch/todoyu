@@ -39,8 +39,8 @@ Todoyu.Hook = {
 	/**
 	 * Add a new hook function
 	 * 
-	 * @param	String		name
-	 * @param	Function	callback
+	 * @param	{String}		name
+	 * @param	{Function}	callback
 	 */
 	add: function(name, callback) {
 		if( typeof this.hooks[name] !== 'object' ) {
@@ -55,7 +55,7 @@ Todoyu.Hook = {
 	/**
 	 * Get registered functions
 	 * 
-	 * @param	String		name
+	 * @param	{String}		name
 	 * @return	Array
 	 */
 	get: function(name) {
@@ -71,7 +71,7 @@ Todoyu.Hook = {
 	/**
 	 * Clear named hook (remove functions)
 	 *
-	 * @param	String		name
+	 * @param	{String}		name
 	 */
 	clear: function(name) {
 		this.hooks[name] = [];
@@ -94,7 +94,7 @@ Todoyu.Hook = {
 	 * passed in this order to the callback
 	 * Ex: Todoyu.Hook.exec('taskopen', idTask, myFlag1, option2); => myTaskCallback(idTask, myFlag1, option2);
 	 * 
-	 * @param	String		name
+	 * @param	{String}		name
 	 */
 	exec: function(name) {
 		var params = $A(arguments).slice(1);

@@ -41,7 +41,6 @@ class TodoyuFormElement_CancelButton extends TodoyuFormElement_Button {
 
 	/**
 	 * Init: Set default values for save button
-	 *
 	 */
 	protected function init() {
 		if( ! $this->hasAttribute('text') ) {

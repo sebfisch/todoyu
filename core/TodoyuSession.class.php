@@ -36,6 +36,7 @@ class TodoyuSession {
 	}
 
 
+
 	/**
 	 * Get session value
 	 *
@@ -106,7 +107,6 @@ class TodoyuSession {
 
 	/**
 	 * Clear all todoyu session data
-	 *
 	 */
 	public static function clear() {
 		$_SESSION[self::key()] = null;

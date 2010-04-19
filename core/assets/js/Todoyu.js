@@ -59,8 +59,8 @@ var Todoyu = {
 	/**
 	 * Build request url with extension and controller
 	 *
-	 * @param	String		ext
-	 * @param	String		controller
+	 * @param	{String}		ext
+	 * @param	{String}		controller
 	 */
 	getUrl: function(ext, controller) {
 		var url = 'index.php?ext=' + ext;
@@ -77,10 +77,10 @@ var Todoyu = {
 	/**
 	 * Redirect to an onther page
 	 *
-	 * @param	String	ext
-	 * @param	String	controller
-	 * @param	Hash	params
-	 * @param	String	hash
+	 * @param	{String}	ext
+	 * @param	{String}	controller
+	 * @param	{Hash}		params
+	 * @param	{String}	hash
 	 */
 	goTo: function(ext, controller, params, hash) {
 		var url =  this.getUrl(ext, controller);
@@ -101,8 +101,8 @@ var Todoyu = {
 	/**
 	 * Send AJAX request
 	 *
-	 * @param	String		url
-	 * @param	Hash		options
+	 * @param	{String}		url
+	 * @param	{Hash}			options
 	 */
 	send: function(url, options) {
 		options = Todoyu.Ui._getDefaultOptions(options);
@@ -115,7 +115,7 @@ var Todoyu = {
 	/**
 	 * Check if an element exists
 	 *
-	 * @param	DomElement,String		element		Element or its ID
+	 * @param	{DomElement},{String}		element		Element or its ID
 	 */
 	exists: function(element) {
 		if( typeof element === 'object' ) {
@@ -139,8 +139,8 @@ var Todoyu = {
 	/**
 	 * Show error notification
 	 * 
-	 * @param	String		message
-	 * @param	Integer		countdown
+	 * @param	{String}		message
+	 * @param	{Integer}		countdown
 	 */
 	notifyError: function(message, countdown) {
 		Todoyu.Notification.notifyError(message, countdown);
@@ -151,8 +151,8 @@ var Todoyu = {
 	/**
 	 * Show info notification
 	 * 
-	 * @param	String		message
-	 * @param	Integer		countdown
+	 * @param	{String}		message
+	 * @param	{Integer}		countdown
 	 */
 	notifyInfo: function(message, countdown) {
 		Todoyu.Notification.notifyInfo(message, countdown);
@@ -163,8 +163,8 @@ var Todoyu = {
 	/**
 	 * Show success notification
 	 * 
-	 * @param	String		message
-	 * @param	Integer		countdown
+	 * @param	{String}		message
+	 * @param	{Integer}		countdown
 	 */
 	notifySuccess: function(message, countdown) {
 		Todoyu.Notification.notifySuccess(message, countdown);
@@ -176,8 +176,8 @@ var Todoyu = {
 	 * Call a user function in string format with given arguments
 	 * @example	Todoyu.calluserFunction('Todoyu.notifySuccess', 'This is a message', 5);
 	 * 
-	 * @param	String		functionName
-	 * @param	Mixed		args
+	 * @param	{String}		functionName
+	 * @param	{Mixed}		args
 	 */
 	callUserFunction: function(functionName /*, args */) {
 		var args 	= $A(arguments).slice(1);
@@ -194,8 +194,8 @@ var Todoyu = {
 	 * The first argument is the function, all other arguments will be handed down to this function
 	 * The debug output is just for deveopment
 	 * 
-	 * @param	Function	functionReference	Function
-	 * @param	Object		context				Context which is this in function		
+	 * @param	{Function}	functionReference	Function
+	 * @param	{Object}		context				Context which is this in function
 	 */
 	callIfExists: function(functionReference, context /*, args */) {
 		var args = $A(arguments).slice(2);
@@ -213,7 +213,7 @@ var Todoyu = {
 	 * Get a function reference from a function string
 	 * Ex: 'Todoyu.Ext.project.edit'
 	 * 
-	 * @param	String		functionName
+	 * @param	{String}		functionName
 	 */
 	getFunctionFromString: function(functionName) {
 		var namespaces 	= functionName.split(".");
@@ -235,9 +235,9 @@ var Todoyu = {
 	/**
 	 * Todoyu log. Check level and if console exists
 	 * 
-	 * @param	Object		element
-	 * @param	Integer		level
-	 * @param	String		title
+	 * @param	{Object}		element
+	 * @param	{Integer}		level
+	 * @param	{String}		title
 	 */
 	log: function(element, level, title) {
 		if( level === undefined || (Object.isNumber(level) && level >= this.logLevel) ) {

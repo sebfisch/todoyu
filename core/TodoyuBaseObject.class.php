@@ -89,6 +89,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	}
 
 
+
 	/**
 	 * Fallback for direct member access.
 	 * First it checks for a getter function, if not available try to find the data in $this->data
@@ -193,6 +194,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	}
 
 
+
 	/**
 	 * Get user of a specific type (create, update, assigned, etc)
 	 *
@@ -220,6 +222,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	protected function isInCache($key) {
 		return isset($this->cache[$key]);
 	}
+
 
 
 	/**
@@ -275,6 +278,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	public function __isset($memberName) {
 		return isset($this->data[$memberName]);
 	}
+
 
 
 	/**

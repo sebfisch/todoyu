@@ -113,7 +113,6 @@ class TodoyuPageAssetManager {
 
 	/**
 	 * Add processed assets (JS + CSS) to the page
-	 *
 	 */
 	public static function addAssetsToPage() {
 			// Make cache folders
@@ -630,7 +629,6 @@ class TodoyuPageAssetManager {
 
 	/**
  	 * Add IE custom scripts to the browser (if its an IE)
-	 *
 	 */
 	function addInternetExplorerAssets() {
 		if( TodoyuBrowserInfo::isIE() ) {
@@ -640,6 +638,5 @@ class TodoyuPageAssetManager {
 	}
 
 }
-
 
 ?>

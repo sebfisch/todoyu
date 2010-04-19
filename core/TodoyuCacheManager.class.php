@@ -28,9 +28,7 @@
 class TodoyuCacheManager {
 
 	/**
-	 * Clear all cache
-	 * Call all registered clearCache hooks
-	 *
+	 * Clear all cache: call all registered clearCache hooks
 	 */
 	public static function clearAllCache() {
 		TodoyuHookManager::callHook('core', 'clearCache');
@@ -40,7 +38,6 @@ class TodoyuCacheManager {
 
 	/**
 	 * Clear asset cache (JS + CSS)
-	 *
 	 */
 	public static function clearAssetCache() {
 		self::clearCacheFolder('js');
@@ -51,7 +48,6 @@ class TodoyuCacheManager {
 
 	/**
 	 * Clear locale cache (compiled locale files)
-	 *
 	 */
 	public static function clearLocaleCache() {
 		self::clearCacheFolder('locale');
@@ -61,7 +57,6 @@ class TodoyuCacheManager {
 
 	/**
 	 * Clear template cache
-	 *
 	 */
 	public static function clearTemplateCache() {
 		self::clearCacheFolder('tmpl/cache');
@@ -82,6 +77,5 @@ class TodoyuCacheManager {
 	}
 
 }
-
 
 ?>

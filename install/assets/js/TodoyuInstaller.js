@@ -39,7 +39,7 @@ Todoyu.Installer = {
 	/**
 	 * Disable given text box if selected value == 0
 	 *
-	 * @param	Element	selector
+	 * @param	{Element}	selector
 	 */
 	disableTextBox: function(selector)	{
 		textbox = document.getElementById('database_new');
@@ -98,8 +98,8 @@ Todoyu.Installer = {
 	/**
 	 * Set CSS class of field label red / default depending on given validation result
 	 *
-	 * @param   String      labelField
-	 * @param   Boolean     isOk
+	 * @param	{String}		labelField
+	 * @param	{Boolean}		isOk
 	 */
 	updateLabelValidationClass: function(labelField, isOk) {
 		if ( isOk ) {
@@ -116,7 +116,7 @@ Todoyu.Installer = {
 	/**
 	 * Validate input for company name
 	 *
-	 * @return  Boolean
+	 * @return	{Boolean}
 	 */
 	validateCompanyName: function() {
 		var isOk    = $F('company').replace(' ', '').length > 0;
@@ -130,7 +130,7 @@ Todoyu.Installer = {
 	/**
 	 * Validate input for firstname
 	 *
-	 * @return  Boolean
+	 * @return  {Boolean}
 	 */
 	validateFirstname: function() {
 		var isOk    = $F('firstname').replace(' ', '').length > 0;
@@ -144,7 +144,7 @@ Todoyu.Installer = {
 	/**
 	 * Validate input for lastname
 	 *
-	 * @return  Boolean
+	 * @return	{Boolean}
 	 */
 	validateLastname: function() {
 		var isOk    = $F('lastname').replace(' ', '').length > 0;
@@ -158,7 +158,7 @@ Todoyu.Installer = {
 	/**
 	 * Validate password to be long enough and both repetitions being identic
 	 *
-	 * @return  Boolean
+	 * @return	{Boolean}
 	 */
 	validatePassword: function() {
 		var areIdentic	= $F('password') == $F('password_confirm');

@@ -41,7 +41,6 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Initialize validator with active checks
-	 *
 	 */
 	public function __construct() {
 		$this->checks	= self::getChecks();
@@ -83,6 +82,7 @@ class TodoyuPasswordValidator {
 	private function resetErrors() {
 		$this->errors = array();
 	}
+
 
 
 	/**

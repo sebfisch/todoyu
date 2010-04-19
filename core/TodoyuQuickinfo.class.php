@@ -35,7 +35,6 @@ class TodoyuQuickinfo {
 
 	/**
 	 * Create a new quickinfo object
-	 *
 	 */
 	public function __construct() {
 

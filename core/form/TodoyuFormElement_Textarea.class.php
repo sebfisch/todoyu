@@ -43,7 +43,6 @@ class TodoyuFormElement_Textarea extends TodoyuFormElement {
 
 	/**
 	 * Initialize text area form element
-	 *
 	 */
 	protected function init() {
 		$this->setValue($this->getValue());

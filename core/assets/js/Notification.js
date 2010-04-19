@@ -44,9 +44,9 @@ Todoyu.Notification = {
 	/**
 	 * Add new notification
 	 * 
-	 *	@param	String		type
-	 *	@param	String		message
-	 *	@param	Integer		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 * @param	{String}		type
+	 * @param	{String}		message
+	 * @param	{Integer}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	notify: function(type, message, countdown) {
 		this.loadTemplate();
@@ -95,8 +95,8 @@ Todoyu.Notification = {
 	/**
 	 * Shortcut to show info notification
 	 * 
-	 * @param	String		message
-	 * @param	Integer		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 * @param	{String}		message
+	 * @param	{Integer}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	notifyInfo: function(message, countdown) {
 		this.notify(this.INFO, message, countdown);
@@ -107,8 +107,8 @@ Todoyu.Notification = {
 	/**
 	 * Shortcut to show error notification
 	 * 
-	 * @param	String		message
-	 * @param	Integer		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 * @param	{String}		message
+	 * @param	{Integer}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	notifyError: function(message, countdown) {
 		this.notify(this.ERROR, message, countdown);
@@ -119,8 +119,8 @@ Todoyu.Notification = {
 	/**
 	 * Shortcut to show success notification
 	 * 
-	 * @param	String		message
-	 * @param	Integer		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 * @param	{String}		message
+	 * @param	{Integer}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	notifySuccess: function(message, countdown) {
 		this.notify(this.SUCCESS, message, countdown);
@@ -131,7 +131,7 @@ Todoyu.Notification = {
 	/**
 	 * Close when clicking in the close button
 	 * 
-	 *	@param	DomElement		closeButton
+	 * @param	{DomElement}		closeButton
 	 */
 	close: function(closeButton) {
 		var idNote = $(closeButton).up('div.note').id.split('-').last();
@@ -145,7 +145,7 @@ Todoyu.Notification = {
 	 * Close note by ID
 	 * @todo	watch out for a bugfix of scriptaculous' malfunctioning 'afterFinish' callback
 	 * 
-	 *	@param	Integer		id
+	 * @param	{Integer}		id
 	 */
 	closeNote: function(id) {
 		var duration	= 0.3;
@@ -182,7 +182,7 @@ Todoyu.Notification = {
 	/**
 	 * Handler being evoked when a note is closed (fade-out finished)
 	 * 
-	 * @param	Integer		id
+	 * @param	{Integer}		id
 	 */
 	onNoteClosed: function(id) {
 		if( $('notification-note-' + id) ) {
@@ -195,8 +195,8 @@ Todoyu.Notification = {
 	/**
 	 * Append new note
 	 * 
-	 *	@param	Integer		id
-	 *	@param	String		code
+	 * @param	{Integer}		id
+	 * @param	{String}		code
 	 */
 	appendNote: function(idNote, code) {
 		$('notes').insert({'top':code});
@@ -213,7 +213,7 @@ Todoyu.Notification = {
 
 	/**
 	 * 
-	 *	@param	Integer		id
+	 * @param	{Integer}		id
 	 */
 	countDown: function(id) {
 		if( $('notification-note-' + id) ) {
@@ -234,7 +234,7 @@ Todoyu.Notification = {
 	/**
 	 * Check if the header of the response
 	 * 
-	 * @param	Ajax.Response		response
+	 * @param	{Ajax.Response}		response
 	 */
 	checkNoteHeader: function(response) {
 		if( response.hasTodoyuHeader('note') ) {

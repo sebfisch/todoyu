@@ -112,9 +112,9 @@ class TodoyuBrowserInfoTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
 	/**
 	 * @todo Implement testGetBrowserIdent().
-	 *
 	 */
 	public function testGetBrowserIdent() {
 

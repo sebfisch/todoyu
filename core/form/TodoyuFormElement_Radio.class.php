@@ -45,7 +45,6 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 
 	/**
 	 * Init
-	 *
 	 */
 	protected function init()	{
 		if( is_array($this->config['source']) ) {
@@ -254,6 +253,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	public function getValue() {
 		return $this->config['checked'];
 	}
+
 
 
 	/**

@@ -24,9 +24,9 @@ Todoyu.Ui = {
 	/**
 	 * Update element
 	 *
-	 * @param	String	container
-	 * @param	String	url
-	 * @param	Object	options
+	 * @param	{String}	container
+	 * @param	{String}	url
+	 * @param	{Object}	options
 	 */
 	update: function(container, url, options) {
 		options = this._getDefaultOptions(options);
@@ -43,9 +43,9 @@ Todoyu.Ui = {
 	/**
 	 * Replace element
 	 *
-	 * @param	String	container
-	 * @param	String	url
-	 * @param	Object	options
+	 * @param	{String}	container
+	 * @param	{String}	url
+	 * @param	{Object}	options
 	 */
 	replace: function(container, url, options) {
 		options = this._getDefaultOptions(options);
@@ -62,9 +62,9 @@ Todoyu.Ui = {
 	/**
 	 * Append to element
 	 *
-	 * @param	String	container
-	 * @param	String	url
-	 * @param	Object	options
+	 * @param	{String}	container
+	 * @param	{String}	url
+	 * @param	{Object}	options
 	 */
 	append: function(container, url, options) {
 		options = this._getDefaultOptions(options);
@@ -78,9 +78,9 @@ Todoyu.Ui = {
 	/**
 	 * Insert after element
 	 *
-	 * @param	String	container
-	 * @param	String	url
-	 * @param	Object	options
+	 * @param	{String}	container
+	 * @param	{String}	url
+	 * @param	{Object}	options
 	 */
 	insert: function(container, url, options)	{
 		options = this._getDefaultOptions(options);
@@ -94,7 +94,7 @@ Todoyu.Ui = {
 	/**
 	 * Set default options
 	 *
-	 * @param	Object	options
+	 * @param	{Object}	options
 	 * @return	Object
 	 */
 	_getDefaultOptions: function(options) {
@@ -122,7 +122,7 @@ Todoyu.Ui = {
 	/**
 	 * Hide element
 	 *
-	 * @param	String	idElement
+	 * @param	{String}	idElement
 	 */
 	hide: function(idElement) {
 		if( Todoyu.exists(idElement) ) {
@@ -135,7 +135,7 @@ Todoyu.Ui = {
 	/**
 	 * Show element
 	 *
-	 * @param	String	idElement
+	 * @param	{String}	idElement
 	 */
 	show: function(idElement) {
 		if( Todoyu.exists(idElement) ) {
@@ -148,7 +148,7 @@ Todoyu.Ui = {
 	/**
 	 * Toggle element visibility
 	 *
-	 * @param	String	idElement
+	 * @param	{String}	idElement
 	 */
 	toggle: function(idElement) {
 		if( Todoyu.exists(idElement) ) {
@@ -161,8 +161,8 @@ Todoyu.Ui = {
 	/**
 	 * Update toggler icon
 	 *
-	 * @param	String	elementPrefix
-	 * @param	String	idElement
+	 * @param	{String}	elementPrefix
+	 * @param	{String}	idElement
 	 */
 	updateToggleIcon: function(elementPrefix, idElement) {
 		if( $(elementPrefix + idElement + '-details').visible() ) {
@@ -177,8 +177,8 @@ Todoyu.Ui = {
 	/**
 	 * Update element content
 	 *
-	 * @param	String	url
-	 * @param	Object	options
+	 * @param	{String}	url
+	 * @param	{Object}	options
 	 */
 	updateContent: function(url, options) {
 		return this.update('content', url, options);
@@ -189,7 +189,7 @@ Todoyu.Ui = {
 	/**
 	 * Update content with new html
 	 *
-	 * @param	String		content
+	 * @param	{String}		content
 	 */
 	setContent: function(content) {
 		$('content').update(content);
@@ -200,7 +200,7 @@ Todoyu.Ui = {
 	/**
 	 * Update content tabs div
 	 *
-	 * @param	String		tabs
+	 * @param	{String}		tabs
 	 */
 	setContentTabs: function(tabs) {
 		$('content-tabs').update(tabs);
@@ -211,7 +211,7 @@ Todoyu.Ui = {
 	/**
 	 * Update content body div
 	 *
-	 * @param	String		body
+	 * @param	{String}		body
 	 */
 	setContentBody: function(body) {
 		$('content-body').update(body);
@@ -222,8 +222,8 @@ Todoyu.Ui = {
 	/**
 	 * Update content body with request
 	 *
-	 * @param	String		url
-	 * @param	Hash		options
+	 * @param	{String}		url
+	 * @param	{Hash}		options
 	 */
 	updateContentBody: function(url, options) {
 		return this.update('content-body', url, options);
@@ -234,8 +234,8 @@ Todoyu.Ui = {
 	/**
 	 * Update (left column) panel
 	 *
-	 * @param	String	url
-	 * @param	Object	options
+	 * @param	{String}	url
+	 * @param	{Object}	options
 	 */
 	updatePanel: function(url, options) {
 		return this.update('leftCol', url, options);
@@ -246,8 +246,8 @@ Todoyu.Ui = {
 	/**
 	 * Update context menu
 	 *
-	 * @param	String	url
-	 * @param	Object	options
+	 * @param	{String}	url
+	 * @param	{Object}	options
 	 */
 	updateContextMenu: function(url, options) {
 		return this.update('contextmenu', url, options);
@@ -258,8 +258,8 @@ Todoyu.Ui = {
 	/**
 	 * Update page
 	 *
-	 * @param	String	ext
-	 * @param	String	controller
+	 * @param	{String}	ext
+	 * @param	{String}	controller
 	 */
 	updatePage: function(ext, controller) {
 		var url = {ext: ext};
@@ -278,7 +278,7 @@ Todoyu.Ui = {
 	/**
 	 * AJAX loader
 	 *
-	 * @param	Boolean		showLoader
+	 * @param	{Boolean}		showLoader
 	 */
 	ajaxLoader: function(showLoader) {
 		Todoyu.Headlet.show(showLoader);	
@@ -289,7 +289,7 @@ Todoyu.Ui = {
 	/**
 	 * Set cursor of link
 	 *
-	 * @param	Boolean	wait
+	 * @param	{Boolean}	wait
 	 */
 	setLinkCursor: function(wait) {
 		$$('a').each(function(a) {
@@ -308,7 +308,7 @@ Todoyu.Ui = {
 	/**
 	 * Add hover effect to element
 	 *
-	 * @param	String	idElement
+	 * @param	{String}	idElement
 	 */
 	addHoverEffect: function(idElement) {
 		var elt = $(idElement);
@@ -321,9 +321,9 @@ Todoyu.Ui = {
 	/**
 	 * Hover effect handler (handles both mouseOver/ Out)
 	 *
-	 * @param	Object		event
-	 * @param	Boolean		over
-	 * @param	Element		element
+	 * @param	{Object}		event
+	 * @param	{Boolean}		over
+	 * @param	{Element}		element
 	 */
 	hoverEffect: function(event, over, element) {
 		if( over ) {
@@ -351,7 +351,7 @@ Todoyu.Ui = {
 	/**
 	 * @todo	comment
 	 *
-	 * @param	String	name
+	 * @param	{String}	name
 	 */
 	scrollToAnchor: function(name) {
 		var element = document.getElementsByName(name)[0];
@@ -366,7 +366,7 @@ Todoyu.Ui = {
 	/**
 	 * Scroll to given element
 	 *
-	 * @param	Element		element
+	 * @param	{Element}		element
 	 */
 	scrollToElement: function(element) {
 		element = $(element);
@@ -394,8 +394,8 @@ Todoyu.Ui = {
 	/**
 	 * Collapse / expand element
 	 *
-	 * @param	Integer	idElement
-	 * @param	Element	toggle
+	 * @param	{Integer}	idElement
+	 * @param	{Element}	toggle
 	 */
 	collapseExpandElement: function(idElement, toggle) {
 		var options = {
@@ -418,7 +418,7 @@ Todoyu.Ui = {
 	/**
 	 * Evoke twinkeling effect upon given element
 	 *
-	 * @param	Element		element
+	 * @param	{Element}		element
 	 */
 	twinkle: function(element) {
 		Todoyu.Ui.hide( element );
@@ -430,8 +430,8 @@ Todoyu.Ui = {
 	/**
 	 * Check whether given element is currently visible
 	 *
-	 * @param	Element	element
-	 * @return	Boolean
+	 * @param	{Element}	element
+	 * @return	{Boolean}
 	 */
 	isVisible: function(element) {
 		if( Todoyu.exists(element) ) {
@@ -446,8 +446,8 @@ Todoyu.Ui = {
 	/**
 	 * Show time picker
 	 *
-	 * @param	Integer		idElement
-	 * @param	Array		config
+	 * @param	{Integer}		idElement
+	 * @param	{Array}		config
 	 * @return	TimePicker
 	 */
 	showTimePicker: function(idElement, config) {
@@ -464,7 +464,7 @@ Todoyu.Ui = {
 	/**
 	 * Show duration picker
 	 *
-	 * @param	String		idElement
+	 * @param	{String}		idElement
 	 * @return	TimePicker
 	 */
 	showDurationPicker: function(idElement, config) {
@@ -482,7 +482,7 @@ Todoyu.Ui = {
 	/**
 	 * Set document title (shown in browser window title bar)
 	 * 
-	 * @param	String		title
+	 * @param	{String}		title
 	 */
 	setTitle: function(title) {
 		document.title = title + ' - todoyu';
@@ -508,7 +508,7 @@ Todoyu.Ui = {
 	/**
 	 * Creates a js filereference and appends it to head
 	 *
-	 * @param	String		filename
+	 * @param	{String}		filename
 	 * @todo	NOT USED...
 	 */
 	loadJSFile: function(filename)	{
@@ -524,7 +524,7 @@ Todoyu.Ui = {
 	/**
 	 * Creates a CSS filereference and appends it to head
 	 *
-	 * @param	String		filename
+	 * @param	{String}		filename
 	 * @todo	NOT USED...
 	 */
 	loadCSSFile: function(filename)	{
@@ -563,7 +563,7 @@ Todoyu.Ui = {
 	/**
 	 * Handler when clicked on the body
 	 * 
-	 * @param	Event	event
+	 * @param	{Event}	event
 	 */
 	onBodyClick: function(event) {
 		this.bodyClickObservers.each(function(event, func){
@@ -576,7 +576,7 @@ Todoyu.Ui = {
 	/**
 	 * Add an observer for the body
 	 * 
-	 * @param	Function	func
+	 * @param	{Function}	func
 	 */
 	addBodyClickObserver: function(func) {
 		this.bodyClickObservers.push(func);
@@ -589,7 +589,7 @@ Todoyu.Ui = {
 	 * Useful when handling onclick-events of nested elements
 	 * whose parents have onclick handlers which should be not fired than
 	 * 
-	 * @param	Event	event
+	 * @param	{Event}	event
 	 */
 	stopEventBubbling: function(event) {
 		if( window.event ){

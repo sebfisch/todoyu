@@ -123,7 +123,6 @@ class TodoyuAuth {
 
 	/**
 	 * Logout current person
-	 *
 	 */
 	public static function logout() {
 		TodoyuHookManager::callHook('core', 'logout');
@@ -221,6 +220,5 @@ class TodoyuAuth {
 
 
 }
-
 
 ?>

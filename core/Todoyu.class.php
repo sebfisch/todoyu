@@ -106,7 +106,6 @@ class Todoyu {
 
 	/**
 	 * Set system timezone
-	 *
 	 */
 	public static function setTimezone() {
 		$timezone	= Todoyu::person()->getTimezone();

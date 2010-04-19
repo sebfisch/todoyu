@@ -43,7 +43,6 @@ class TodoyuFormElement_Textinput extends TodoyuFormElement {
 
 	/**
 	 * Initialize form element
-	 *
 	 */
 	protected function init() {
 		if( ! $this->hasAttribute('type') ) {

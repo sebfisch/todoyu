@@ -26,7 +26,6 @@
  */
 class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 
-
 	/**
 	 * Initialize
 	 *

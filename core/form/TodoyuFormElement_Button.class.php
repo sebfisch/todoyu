@@ -40,9 +40,9 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 	}
 
 
+
 	/**
 	 * Initialize default button config
-	 *
 	 */
 	protected function init() {
 		if( ! $this->hasAttribute('type') ) {

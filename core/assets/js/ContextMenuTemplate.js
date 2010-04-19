@@ -52,7 +52,7 @@ Todoyu.ContextMenu.Template = {
 	/**
 	 * Render a json object into the context menu html code
 	 *
-	 * @param	Object	json
+	 * @param	{Object}	json
 	 */
 	render: function(json) {
 		this.init();
@@ -78,7 +78,7 @@ Todoyu.ContextMenu.Template = {
 	/**
 	 * Render submenu of an item
 	 *
-	 * @param	Object		parentItem
+	 * @param	{Object}		parentItem
 	 */
 	renderSubmenu: function(parentItem) {
 		var items = '';

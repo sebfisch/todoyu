@@ -74,7 +74,6 @@ class TodoyuInstaller {
 
 	/**
 	 * Cleanup installation before initializing
-	 *
 	 */
 	private static function onInitCleanup() {
 			// Delete all cache

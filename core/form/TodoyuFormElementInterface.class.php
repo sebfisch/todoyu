@@ -26,10 +26,8 @@
  */
 interface TodoyuFormElementInterface {
 
-
 	/**
 	 * Get form
-	 *
 	 */
 	public function getForm();
 
@@ -37,7 +35,6 @@ interface TodoyuFormElementInterface {
 
 	/**
 	 * Get form element's value
-	 *
 	 */
 	public function getValue();
 

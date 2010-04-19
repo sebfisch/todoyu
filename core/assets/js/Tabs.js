@@ -26,8 +26,8 @@ Todoyu.Tabs = {
 	/**
 	 * Enter Description here...
 	 *
-	 *	@param	unknown_type	list
-	 *	@param	unknown_type	handlerFunction
+	 * @param	unknown_type	list
+	 * @param	unknown_type	handlerFunction
 	 */
 	create: function(name, handlerFunction) {
 		list = $(name + '-tabs');
@@ -48,8 +48,8 @@ Todoyu.Tabs = {
 	/**
 	 * Enter Description here...
 	 *
-	 *	@param	unknown_type	list
-	 *	@param	unknown_type	handlerFunction
+	 * @param	unknown_type	list
+	 * @param	unknown_type	handlerFunction
 	 */
 	destroy: function(list, handlerFunction) {
 		list = $(list);
@@ -65,7 +65,7 @@ Todoyu.Tabs = {
 	/**
 	 * Enter Description here...
 	 *
-	 *	@param	unknown_type	idList
+	 * @param	unknown_type	idList
 	 */
 	isTabList: function(idList) {
 		return Object.isUndefined(this.bindCache[idList]) === false;
@@ -76,8 +76,8 @@ Todoyu.Tabs = {
 	/**
 	 * Enter Description here...
 	 *
-	 *	@param	Event			e
-	 *	@param	unknown_type	handlerFunction
+	 * @param	{Event}			e
+	 * @param	unknown_type	handlerFunction
 	 */
 	_clickHandler: function(e, handlerFunction) {
 		e.stop();
@@ -107,7 +107,7 @@ Todoyu.Tabs = {
 	/**
 	 * Set active element in a list
 	 *
-	 *	@param	String		element		Tab element or its ID
+	 * @param	{String}		element		Tab element or its ID
 	 */
 	setActive: function(listname, tab) {
 		var tabID	= listname + '-tabs';
@@ -130,7 +130,7 @@ Todoyu.Tabs = {
 	/**
 	 * Get currently active tab in a list
 	 *
-	 *	@param	String		list		List element or its ID
+	 * @param	{String}		list		List element or its ID
 	 */
 	getActive: function(list) {
 		return $(list).down('li.active');
@@ -141,7 +141,7 @@ Todoyu.Tabs = {
 	/**
 	 * Get key of the active tab of the list
 	 * 
-	 *	@param	String		list		List or its ID
+	 * @param	{String}		list		List or its ID
 	 */
 	getActiveKey: function(list) {
 		return this.getActive(list).id.split('-').last();
@@ -152,8 +152,8 @@ Todoyu.Tabs = {
 	/**
 	 * Set labeltext of a tab
 	 * 
-	 *	@param	String		element		Tab element or its ID
-	 *	@param	String		label		Labeltext
+	 * @param	{String}		element		Tab element or its ID
+	 * @param	{String}		label		Labeltext
 	 */
 	setLabel: function(listname, tab, label) {
 		$(listname + '-tab-' + tab).down('span.labeltext').update(label);
@@ -175,10 +175,10 @@ Todoyu.Tabs = {
 	/**
 	 * Enter Description here...
 	 *
-	 *	@param	unknown_type	idTab
-	 *	@param	unknown_type	tabClass
-	 *	@param	unknown_type	tabLabel
-	 *	@param	unknown_type	active
+	 * @param	unknown_type	idTab
+	 * @param	unknown_type	tabClass
+	 * @param	unknown_type	tabLabel
+	 * @param	unknown_type	active
 	 */
 	build: function(listname, name, tabClass, tabLabel, active) {
 		var tab = new Element('li', {
@@ -217,8 +217,8 @@ Todoyu.Tabs = {
 	/**
 	 * Enter Description here...
 	 *
-	 *	@param	Event			e
-	 *	@param	unknown_type	over
+	 * @param	{Event}			e
+	 * @param	unknown_type	over
 	 */
 	_hoverHandler: function(e, over) {
 		var li = Event.findElement(e, 'li');

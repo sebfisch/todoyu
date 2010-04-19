@@ -84,7 +84,6 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 	/**
 	 * Init function for type
-	 *
 	 */
 	protected function initType() {
 		// Dummy, override in headlet type class
@@ -94,7 +93,6 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 	/**
 	 * Init function for panel widget, alternative for constructor
-	 *
 	 */
 	protected function init() {
 		// Dummy, override in headlet class
@@ -166,7 +164,6 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 	/**
 	 * Set visible flag (visible on page load)
-	 *
 	 */
 	protected function setOpenStatus() {
 		$open	= TodoyuHeadletManager::isOpen($this->getName());
@@ -176,6 +173,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 			$this->addButtonClass('active');
 		}
 	}
+
 
 
 	/**
@@ -220,6 +218,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	protected function addButtonClass($class) {
 		$this->addButtonAttribute('class', trim($class) . ' ');
 	}
+
 
 
 	/**

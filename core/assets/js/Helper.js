@@ -22,7 +22,7 @@ Todoyu.Helper = {
 	/**
 	 * Convert value to Integer
 	 *
-	 * @param	Mixed	mixedvar
+	 * @param	{Mixed}		mixedvar
 	 */
 	intval: function(mixedvar) {
 		var type = typeof( mixedvar );
@@ -49,8 +49,8 @@ Todoyu.Helper = {
 	/**
 	 * Convert to 2-digit value (possibly add leading zero)
 	 *
-	 * @param	Mixed	number
-	 * @return	Integer
+	 * @param	{Mixed}		number
+	 * @return	{Integer}
 	 */
 	twoDigit: function(number) {
 		number = parseInt(number, 10);
@@ -67,9 +67,9 @@ Todoyu.Helper = {
 	/**
 	 * Toggle source of image
 	 *
-	 * @param	String	idImage
-	 * @param	Source	src1
-	 * @param	Source	src2
+	 * @param	{String}		idImage
+	 * @param	{Source}		src1
+	 * @param	{Source}		src2
 	 */
 	toggleImage: function(idImage, src1, src2) {
 		var image = $(idImage);
@@ -86,9 +86,9 @@ Todoyu.Helper = {
 	/**
 	 * Round with given precision
 	 *
-	 * @param	Float	value
-	 * @param	Integer	precision
-	 * @return	Float
+	 * @param	{Float}		value
+	 * @param	{Integer}	precision
+	 * @return	{Float}
 	 */
 	round: function(value, precision) {
 		value		= parseFloat(value);
@@ -103,8 +103,8 @@ Todoyu.Helper = {
 	/**
 	 * Check whether given obj. is set
 	 *
-	 * @param	Mixed	objToTest
-	 * @return	Boolean
+	 * @param	{Mixed}		objToTest
+	 * @return	{Boolean}
 	 */
 	isset: function(objToTest) {
 		return (null === objToTest || 'undefined' == typeof(objToTest));
@@ -115,8 +115,8 @@ Todoyu.Helper = {
 	/**
 	 * Uppercase the first character of every word in a string
 	 * 
-	 * @param	String	str
-	 * @return	String
+	 * @param	{String}	str
+	 * @return	{String}
 	 */
 	ucwords: function(str) {
 		return (str + '').replace(/^(.)|\s(.)/g, function ($1) {
@@ -132,11 +132,11 @@ Todoyu.Helper = {
 	 * Borrowed from phpjs	http://phpjs.org/functions/wordwrap
 	 * version: 909.322
 	 * 
-	 * @param	String		str
-	 * @param	Integer		int_width
-	 * @param	String		str_break
-	 * @param	Boolean		cut
-	 * @return	String
+	 * @param	{String}		str
+	 * @param	{Integer}		int_width
+	 * @param	{String}		str_break
+	 * @param	{Boolean}		cut
+	 * @return	{String}
 	 */
 	wordwrap: function(str, int_width, str_break, cut) {
 		var m = ((arguments.length >= 2) ? arguments[1] : 75   );
@@ -161,9 +161,9 @@ Todoyu.Helper = {
 	/**
 	 * Fire event
 	 *
-	 * @param	Element		element
-	 * @param	String		event e.g. 'click'
-	 * @return	Mixed
+	 * @param	{Element}		element
+	 * @param	{String}		event e.g. 'click'
+	 * @return	{Mixed}
 	 */
 	fireEvent: function(element, event){
 		var evt;

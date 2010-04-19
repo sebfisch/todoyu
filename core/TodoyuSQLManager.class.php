@@ -413,7 +413,6 @@ class TodoyuSQLManager {
 
 	/**
 	 * Update database to table structure defined in core and extension files
-	 *
 	 */
 	public static function updateDatabaseFromTableFiles() {
 			// Get update queries
@@ -562,6 +561,5 @@ class TodoyuSQLManager {
 	}
 
 }
-
 
 ?>

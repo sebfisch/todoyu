@@ -43,7 +43,6 @@ class TodoyuFormElement_TextinputAC extends TodoyuFormElement {
 
 	/**
 	 * Initialize form element
-	 *
 	 */
 	protected function init()	{
 		if( $this->hasAttribute('config') )	{

@@ -88,6 +88,7 @@ class TodoyuFormElement_Checkbox extends TodoyuFormElement {
 	}
 
 
+
 	/**
 	 * Get storage data:
 	 * 1: checked; 0: not checked

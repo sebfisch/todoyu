@@ -26,7 +26,6 @@
  */
 class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
-
 	/**
 	 * Constructor of the class
 	 *
@@ -42,10 +41,9 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 	/**
 	 * Initialize database relation field
-	 *
 	 */
 	protected function init() {
-			// Add a validator which checks the subrecords
+			// Add a validator which checks the sub records
 		$this->config['validate']['validateSubRecords'] = array();
 	}
 

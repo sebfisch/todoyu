@@ -52,7 +52,6 @@ abstract class TodoyuActionController {
 
 	/**
 	 * Destructor is unused at the moment
-	 *
 	 */
 	public function __destruct() {
 

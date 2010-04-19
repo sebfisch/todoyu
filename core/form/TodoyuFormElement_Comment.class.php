@@ -44,7 +44,6 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 	/**
 	 * Init comment
 	 * Parse value as locallang
-	 *
 	 */
 	protected function init() {
 		$this->setValue($this->getValue());

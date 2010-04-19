@@ -31,7 +31,7 @@ Todoyu.Ext.project.Task = {
 
 	/**
 	 * Prefix event handlers with "on", so we know it is one
-	 * @param	Event		event
+	 * @param	{Event}		event
 	 */
 	onSomeElementChange: function(event) {
 		

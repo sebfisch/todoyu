@@ -137,7 +137,6 @@ class TodoyuHeader {
 
 	/**
 	 * Send headers to prevent any caching
-	 *
 	 */
 	public static function sendNoCacheHeaders() {
 		self::sendHeader('Cache-Control', 'no-cache, must-revalidate');
@@ -185,7 +184,6 @@ class TodoyuHeader {
 
 	/**
 	 * Send a no access header to inform the script that the request has been canceled
-	 *
 	 */
 	public static function sendNoAccessHeader() {
 		self::sendTodoyuHeader('noAccess', 1);
@@ -248,7 +246,6 @@ class TodoyuHeader {
 	/**
 	 * Reload request with the same arguments
 	 * All arguments will be converted to GET arguments
-	 *
 	 */
 	public static function reload() {
 		$remove			= array('ext', 'controller');

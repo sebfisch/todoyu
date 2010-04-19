@@ -28,7 +28,6 @@ class TodoyuClipboard {
 
 	/**
 	 * Key in todoyu session
-	 *
 	 */
 	const KEY = 'CLIPBOARD';
 
@@ -94,6 +93,5 @@ class TodoyuClipboard {
 	}
 
 }
-
 
 ?>
