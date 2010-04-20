@@ -30,16 +30,16 @@ function Dwoo_Plugin_truncate(Dwoo $dwoo, $value, $length=80, $etc='...', $break
 	$etc = (string) $etc;
 	$length = (int) $length;
 
-	if (strlen($value) < $length) {
+	if (mb_strlen($value, 'utf-8') < $length) {
 		return $value;
 	}
 
 	$length = max($length - strlen($etc), 0);
 	if ($break === false && $middle === false) {
-		$value = preg_replace('#\s+(\S*)?$#', '', substr($value, 0, $length+1));
+		$value = preg_replace('#\s+(\S*)?$#', '', mb_substr($value, 0, $length+1, 'utf-8'));
 	}
 	if ($middle === false) {
-		return substr($value, 0, $length) . $etc;
+		return mb_substr($value, 0, $length, 'utf-8') . $etc;
 	}
-	return substr($value, 0, ceil($length/2)) . $etc . substr($value, -floor($length/2));
+	return mb_substr($value, 0, ceil($length/2), 'utf-8') . $etc . mb_substr($value, -floor($length/2), 'utf-8');
 }

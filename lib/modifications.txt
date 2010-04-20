@@ -6,3 +6,7 @@ The following changes have been made:
 
 # lib/js/scriptaculous/scriptaculous.js : 64
 Commented out 'Scriptaculous.load();' All needed libraries are already loaded in the merge file
+
+# lib/php/dwoo/plugins/builtin/functions/truncate.php
+Replaced substr() and strlen() with multibyte versions.
+Added utf-8 as encoding. Supports now truncating of asian (japanese) characters.
