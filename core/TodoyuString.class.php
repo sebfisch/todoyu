@@ -90,19 +90,15 @@ class TodoyuString {
 	public static function crop($text, $length, $postfix = '...', $dontSplitWords = true) {
 		$length	= intval($length);
 
-		if( strlen($text) > $length ) {
-			$text	= utf8_decode($text);
-
-			$cropped	= substr($text, 0, $length);
-			$nextChar	= substr($text, $length, 1);
+		if( mb_strlen($text, 'utf-8') > $length ) {
+			$cropped	= mb_substr($text, 0, $length, 'utf-8');
+			$nextChar	= mb_substr($text, $length, 1, 'utf-8');
 
 			if( $dontSplitWords === true && $nextChar !== ' ' ) {
-				$spacePos	= strpos($cropped, ' ');
-				$cropped	= substr($cropped, 0, $spacePos);
+				$spacePos	= mb_strpos($cropped, ' ', 0, 'utf-8');
+				$cropped	= mb_substr($cropped, 0, $spacePos, 'utf-8');
 			}
 			$cropped .= $postfix;
-
-			$cropped = utf8_encode($cropped);
 		} else {
 			$cropped = $text;
 		}
@@ -126,7 +122,7 @@ class TodoyuString {
 
 
 	/**
-	 * Split a camel case formated string into its words
+	 * Split a camel case formatted string into its words
 	 *
 	 * @param	String		$string
 	 * @return	Array
