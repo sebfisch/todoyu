@@ -246,7 +246,7 @@ class TodoyuFormXmlParser {
 			}
 
 				// If all rights processed without a return
-				// AND = allowed, all rights passed   OR = disallowed, no right matched
+				// AND = allowed, all rights passed		OR = disallowed, no right matched
 			return $and;
 		} elseif( array_key_exists('restrictInternal', $config) ) {
 				// Restricted to internal persons

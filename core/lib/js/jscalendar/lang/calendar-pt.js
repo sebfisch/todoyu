@@ -27,8 +27,8 @@ Calendar._DN = new Array
 // for exemplification on how one can customize the short day names, but if
 // they are simply the first N letters of the full name you can simply say:
 //
-//   Calendar._SDN_len = N; // short day name length
-//   Calendar._SMN_len = N; // short month name length
+//	Calendar._SDN_len = N; // short day name length
+//	Calendar._SMN_len = N; // short month name length
 //
 // If N = 3 then this is not needed either since we assume a value of 3 if not
 // present, to be compatible with translation files that were written before

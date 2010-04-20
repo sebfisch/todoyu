@@ -509,7 +509,6 @@ class TodoyuSQLManager {
 
 
 
-
 	/**
 	 * Cleans given SQL from whitespace, comments, etc.
 	 *

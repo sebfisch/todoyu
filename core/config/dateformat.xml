@@ -46,7 +46,7 @@
 		<label index="timesec">%H:%M:%S</label>
 		<label index="datetime">%d.%m.%Y %H:%M</label>
 	</labels>
-    <labels lang="pt_BR">
+	<labels lang="pt_BR">
 		<label index="D2M2">%d.%m.</label>
 		<label index="DlongD2Mlong">%A, %d. %B</label>
 		<label index="D2M2Y2">%d.%m.%y</label>

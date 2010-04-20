@@ -567,7 +567,6 @@ class TodoyuTime {
 
 
 
-
 	/**
 	 * Get amount of days in month (of timestamp, or in a "shifted" month before / after that, depending of "shiftMonthBy"-offset)
 	 *
@@ -584,7 +583,6 @@ class TodoyuTime {
 
 		return date( 't' , $timestamp );
 	}
-
 
 
 

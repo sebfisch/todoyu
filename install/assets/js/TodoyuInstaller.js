@@ -80,10 +80,10 @@ Todoyu.Installer = {
 	 * Ensure password and it's repetition are identical
 	 */
 	validateAdminAccountData: function() {
-		var companyOk   = this.validateCompanyName();
-		var firstnameOk = this.validateFirstname();
-		var lastnameOk  = this.validateLastname();
-		var passwordOk  = this.validatePassword();
+		var companyOk	= this.validateCompanyName();
+		var firstnameOk	= this.validateFirstname();
+		var lastnameOk	= this.validateLastname();
+		var passwordOk	= this.validatePassword();
 
 		var submitButton= $$('button')[0];
 		
@@ -119,7 +119,7 @@ Todoyu.Installer = {
 	 * @return	{Boolean}
 	 */
 	validateCompanyName: function() {
-		var isOk    = $F('company').replace(' ', '').length > 0;
+		var isOk	= $F('company').replace(' ', '').length > 0;
 		this.updateLabelValidationClass('labelCompany', isOk);
 
 		return isOk;
@@ -133,7 +133,7 @@ Todoyu.Installer = {
 	 * @return  {Boolean}
 	 */
 	validateFirstname: function() {
-		var isOk    = $F('firstname').replace(' ', '').length > 0;
+		var isOk	= $F('firstname').replace(' ', '').length > 0;
 		this.updateLabelValidationClass('labelFirstname', isOk);
 
 		return isOk;
@@ -147,7 +147,7 @@ Todoyu.Installer = {
 	 * @return	{Boolean}
 	 */
 	validateLastname: function() {
-		var isOk    = $F('lastname').replace(' ', '').length > 0;
+		var isOk	= $F('lastname').replace(' ', '').length > 0;
 		this.updateLabelValidationClass('labelLastname', isOk);
 
 		return isOk;
@@ -164,10 +164,10 @@ Todoyu.Installer = {
 		var areIdentic	= $F('password') == $F('password_confirm');
 		var longEnough	= $F('password').length >= 5;
 
-		var isOk    = areIdentic && longEnough;
+		var isOk	= areIdentic && longEnough;
 
-		this.updateLabelValidationClass('labelPassword',        isOk);
-		this.updateLabelValidationClass('labelPasswordConfirm', isOk);
+		this.updateLabelValidationClass('labelPassword',		isOk);
+		this.updateLabelValidationClass('labelPasswordConfirm',	isOk);
 
 		return isOk;
 	}

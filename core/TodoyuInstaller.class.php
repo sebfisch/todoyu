@@ -55,7 +55,7 @@ class TodoyuInstaller {
 
 			// Set installation language
 		$locale	= TodoyuSession::get('installer/locale');
-        if( $locale != '' ) {
+		if( $locale != '' ) {
 			TodoyuLanguage::setLocale($locale);
 		}
 

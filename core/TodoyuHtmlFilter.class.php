@@ -86,7 +86,6 @@ class TodoyuHtmlFilter {
 
 
 
-
 	/**
 	 * Split string into chunks of given size, keeping HTML tags and entities intact
 	 *

@@ -78,7 +78,6 @@ class TodoyuControllerException extends Exception {
 
 
 
-
 	/**
 	 * Get controller name
 	 *

@@ -584,7 +584,6 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 
-
 	/**
 	 * Check if field is required
 	 *
@@ -593,7 +592,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	public function isRequired() {
 		return $this->hasAttribute('required');
 	}
-	
+
 
 
 	/**

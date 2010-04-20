@@ -318,7 +318,6 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 
 
 
-
 	/**
 	 * Add value to selected-values list
 	 *

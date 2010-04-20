@@ -82,7 +82,6 @@ class TodoyuDatasource {
 
 
 
-
 	/**
 	 * Render options array (each containing 'value' and 'label') for select element from 'static_...' table
 	 *

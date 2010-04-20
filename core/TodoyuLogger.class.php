@@ -104,7 +104,7 @@ class TodoyuLogger {
 		$this->modes	= $modes;
 		$this->level	= intval($level);
 
-		$this->requestKey =   substr(md5(microtime(true) . session_id()), 0, 10);
+		$this->requestKey = substr(md5(microtime(true) . session_id()), 0, 10);
 	}
 
 

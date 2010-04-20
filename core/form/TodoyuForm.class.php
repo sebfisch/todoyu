@@ -550,7 +550,6 @@ class TodoyuForm implements ArrayAccess {
 
 
 
-
 	/**
 	 * Remove a fieldset
 	 *
