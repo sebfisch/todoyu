@@ -477,31 +477,29 @@ class TodoyuTime {
 
 		return intval($parts[0])*3600 + TodoyuNumeric::intInRange($parts[1], 0, 60)*60;
 	}
-
+	
 
 
 	/**
-	 * Round timestamp to next full or half an hour
+	 * Round minutes by given steps
 	 *
-	 * @param	Integer	$time		Timestamp
-	 * @return	Integer				rounded timestamp
+	 * @param	Integer		$time
+	 * @param	Integer		$steps
+	 * @return	Integer		Rounded time
 	 */
-	public static function roundToHalfHour( $timestamp ) {
-		$timestamp	= intval($timestamp);
-		$timestamp	= ceil( $timestamp / 600 ) * 600;
+	public static function getRoundedTime($time = 0, $steps = 15) {
+		$time	= intval($time);
+		$factor	= intval(60/$steps);
 
-		$roundedTime	= date('H:i', $timestamp);
-		switch( substr($roundedTime, - 2) ) {
-			case '10':	case '40':
-				$timestamp += 1200;
-				break;
-
-			case '20':	case '50':
-				$timestamp += 600;
-				break;
+		if( $time === 0 ) {
+			$time = NOW;
 		}
 
-		return $timestamp;
+		$currentMinutes	= intval(date('i', $time));
+		$roundedMinutes	= intval(round(($currentMinutes * $factor)/60, 0) * $steps);
+		$newTime		= $time + ($roundedMinutes - $currentMinutes) * 60;
+
+		return $newTime;
 	}
 
 

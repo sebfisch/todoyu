@@ -687,26 +687,47 @@ class TodoyuFormValidator {
 		}
 		
 			// Check if all fields are empty
-		$fieldsToCheck	= explode(',', $validatorConfig['field']);
-		$needsOnlyOne	= isset($validatorConfig['one']);
+		$fieldsToCheck	= explode(',', $validatorConfig['fields']);
+		$exceptFields	= isset($validatorConfig['except']) ? explode(',', $validatorConfig['except']) : false;
+		$needsAll		= !isset($validatorConfig['one']);
 			// Set flag to opposite of $needsAll
-		$fieldsAreEmpty	= !$needsOnlyOne;
+		$fieldsAreFilled= $needsAll;
 
-		foreach($fieldsToCheck as $fieldToCheck) {
-			if( empty($formData[$fieldToCheck]) ) {
-				if( ! $needsOnlyOne ) {
-					$fieldsAreEmpty = false;
+			// Check all fields
+		foreach($fieldsToCheck as $fieldName) {
+				// If a checked field is empty
+			if( empty($formData[$fieldName]) ) {
+					// If all fields are required, stop here
+				if( $needsAll ) {
+					$fieldsAreFilled = false;
 					break;
 				}
 			} else {
-				if( $needsOnlyOne ) {
-					$fieldsAreEmpty = true;
+					// If field is not empty
+					// If not all fields are required, one is enough. set true and stop here
+				if( ! $needsAll ) {
+					$fieldsAreFilled = true;
 					break;
 				}
 			}
 		}
 
-		return $fieldsAreEmpty || $formElement->validateRequired();
+			// If one of the except fields is filled, the field itself is not required
+		if( is_array($exceptFields) ) {
+			foreach($exceptFields as $exceptField) {
+				if( ! empty($formData[$exceptField]) ) {
+					return true;
+				}
+			}
+		}
+
+			// If fields are filled as required (one or all), we have to check to field itself
+		if( $fieldsAreFilled === true ) {
+			return $formElement->validateRequired();
+		} else {
+				// Field is not required, because the other fields are not filled out properly
+			return true;
+		}
 	}
 
 
