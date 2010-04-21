@@ -52,13 +52,12 @@ class TodoyuInstaller {
 			$postData	= array();
 		}
 
-
 			// Set installation language
 		$locale	= TodoyuSession::get('installer/locale');
 		if( $locale != '' ) {
-			TodoyuLanguage::setLocale($locale);
+			Todoyu::setLocale($locale);
 		}
-
+		
 			// Process current step of installation
 		$result	= self::process($step, $postData);
 

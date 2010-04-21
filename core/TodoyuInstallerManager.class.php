@@ -122,23 +122,26 @@ class TodoyuInstallerManager {
 	public static function processDbSelect(array $data) {
 		$result		= array();
 
-		if( isset($data['database']) || isset($data['database_new']) ) {
+		$database	= trim($data['database']);
+		$databaseNew= trim($data['database_new']);
+
+		if( !empty($database) || !empty($databaseNew) ) {
 			$dbConf		= TodoyuSession::get('installer/db');
 			$databases	= TodoyuDbAnalyzer::getDatabasesOnServer($dbConf);
 			$success	= false;
 			$useDatabase= false;
 			$createDb	= false;
 
-			if( ! empty($data['database_new']) ) {
-				if( ! in_array($data['database_new'], $databases) ) {
-					$useDatabase= $data['database_new'];
+			if( ! empty($databaseNew) ) {
+				if( ! in_array($databaseNew, $databases) ) {
+					$useDatabase= $databaseNew;
 					$createDb	= true;
 				} else {
 					$result['text'] 	= Label('installer.dbselect.text.dbNameExists');
 					$result['textClass']= 'error';
 				}
 			} else {
-				$useDatabase	= $data['database'];
+				$useDatabase	= $database;
 			}
 
 				// If a database to use was submitted and valid
@@ -167,6 +170,9 @@ class TodoyuInstallerManager {
 				$data['text']		= $result['errorMessage'];
 				$data['textClass']	= 'error';
 			}
+		} elseif( isset($data['database']) ) {
+			$result['text']		= Label('installer.dbselect.text.notCreated');
+			$result['textClass']= 'error';
 		} else {
 			$result['text']		= Label('installer.dbselect.text');
 			$result['textClass']= 'info';

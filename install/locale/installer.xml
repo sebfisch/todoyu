@@ -16,6 +16,7 @@
 		<label index="license.step">todoyu Licence</label>
 		<label index="servercheck.title">Server Check</label>
 		<label index="servercheck.button">Setup Database Configuration</label>
+		<label index="servercheck.buttonRecheck">Recheck Server Status</label>
 		<label index="servercheck.yourphpversion">Your Version</label>
 		<label index="servercheck.yourphpversion.ok">OK</label>
 		<label index="servercheck.yourphpversion.error">TOO LOW</label>
@@ -117,6 +118,7 @@
 		<label index="license.step">todoyu Benutzerlizenz</label>
 		<label index="servercheck.title">Server-Überprüfung</label>
 		<label index="servercheck.button">Datenbankkonfiguration vornehmen</label>
+		<label index="servercheck.buttonRecheck">Serverstatus erneut prüfen</label>
 		<label index="servercheck.yourphpversion">Ihre Version</label>
 		<label index="servercheck.yourphpversion.ok">OK</label>
 		<label index="servercheck.yourphpversion.error">ZU NIEDRIG</label>

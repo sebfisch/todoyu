@@ -6,6 +6,7 @@
 				<td width="109"><label for="database">{Label installer.dbselect.selectDB}</label></td>
 				<td width="379">
 					<select name="database" type="text" id="database">
+						<option value=""></option>
 						{foreach $databases database}
 							<option value="{$database.database}" {if $database.size>0}disabled="disabled" class="disabled"{/if}>
 								{$database.database} {if $database.size>0}({Label installer.dbselect.dbNotEmpty}! {$database.size} {Label installer.dbselect.tables}){else}({Label installer.dbselect.dbEmpty}){/if}

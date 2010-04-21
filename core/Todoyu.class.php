@@ -27,6 +27,14 @@
 class Todoyu {
 
 	/**
+	 * Current system locale
+	 *
+	 * @var	String
+	 */
+	private static $locale;
+	
+
+	/**
 	 * Todoyu configuration
 	 * All configuration of todoyu and all extensions gets into this static variable
 	 *
@@ -70,36 +78,11 @@ class Todoyu {
 	 * Initialize static Todoyu class
 	 */
 	public static function init() {
-			// Init Locale for locallang files
-		TodoyuLanguage::setLocale(self::getLocale());
-
 			// Set system locale with setlocale
-		self::setSystemLocale();
+		self::setLocale();
 
 			// Set system timezone
 		self::setTimezone();
-	}
-
-
-
-	/**
-	 * Set system locale with setlocale() based on the currently selected language
-	 */
-	public static function setSystemLocale() {
-		$locale	= self::getLocale();
-
-			// Check if locale exists
-		if( ! TodoyuLocaleManager::hasLocale($locale) ) {
-			$locale	= TodoyuLocaleManager::getDefaultLocale();
-		}
-
-			// Set locale
-		$status	= TodoyuLocaleManager::setLocale($locale);
-
-			// Log if operation fails
-		if( $status === false ) {
-			self::log('Can\'t set locale "' . $locale . '"', LOG_LEVEL_ERROR);
-		}
 	}
 
 
@@ -223,22 +206,56 @@ class Todoyu {
 	 * @return	String
 	 */
 	public static function getLocale() {
-		$locale	= self::$CONFIG['SYSTEM']['locale'];
+		if( is_null(self::$locale) ) {
+			self::$locale = self::$CONFIG['SYSTEM']['locale'];
 
-		if( TodoyuAuth::isLoggedIn() ) {
-			$personLocale	= self::person()->getLocale();
-			if( $personLocale !== false ) {
-				$locale = $personLocale;
-			}
-		} else {
-			$browserLocale = TodoyuBrowserInfo::getBrowserLocale();
-
-			if( $browserLocale !== false ) {
-				$locale = $browserLocale;
+			if( TodoyuAuth::isLoggedIn() ) {
+				$personLocale	= self::person()->getLocale();
+				if( $personLocale !== false ) {
+					self::$locale = $personLocale;
+				}
+			} else {
+				$browserLocale = TodoyuBrowserInfo::getBrowserLocale();
+	
+				if( $browserLocale !== false ) {
+					self::$locale = $browserLocale;
+				}
 			}
 		}
+		
+			// Check if locale exists
+		if( ! TodoyuLocaleManager::hasLocale(self::$locale) ) {
+			self::$locale	= TodoyuLocaleManager::getDefaultLocale();
+		}
 
-		return $locale;
+		return self::$locale;
+	}
+
+
+
+	/**
+	 * Set system locale with setlocale() based on the currently selected language
+	 *
+	 * @param	String		$locale			Force locale. If not set try to find the correct locale
+	 */
+	public static function setLocale($locale = false) {
+		if( $locale === false ) {
+			$locale	= self::getLocale();
+		}
+		
+			// Set internal locale
+		self::$locale = $locale;
+
+			// Set locale for system
+		$status	= TodoyuLocaleManager::setLocale($locale);
+
+			// Set locale for locallang files
+		TodoyuLanguage::setLocale($locale);
+
+			// Log if operation fails
+		if( $status === false ) {
+			self::log('Can\'t set locale "' . $locale . '"', LOG_LEVEL_ERROR);
+		}
 	}
 
 

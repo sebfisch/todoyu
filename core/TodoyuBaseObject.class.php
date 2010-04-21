@@ -61,7 +61,7 @@ class TodoyuBaseObject implements ArrayAccess {
 				Todoyu::log('Record not found! ID: "' . $idRecord . '", TABLE: "' . $table . '"', LOG_LEVEL_ERROR);
 			}
 		} else {
-			Todoyu::log('Record with ID 0 created (new object or missing data?) Table: ' . $table, LOG_LEVEL_NOTICE);
+			//Todoyu::log('Record with ID 0 created (new object or missing data?) Table: ' . $table, LOG_LEVEL_NOTICE);
 		}
 	}
 

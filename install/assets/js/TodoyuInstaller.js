@@ -17,19 +17,41 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-var Todoyu = {};
 
+if( ! Todoyu ) {
+	var Todoyu = {};
+}
+
+
+/**
+ * Todoyu installer namespace
+ *
+ */
 Todoyu.Installer = {
-	
+
+	/**
+	 * Hide the next button
+	 */
 	hideButton: function() {
 		$('next').hide();
 	},
-	
+
+
+
+	/**
+	 * Show the next button
+	 */
 	showButton: function() {
 		$('next').show();
 	},
 
 
+
+	/**
+	 * Submit locale selection
+	 *
+	 * @param	{String}	locale
+	 */
 	selectLocale: function(locale) {
 		$('locale').value = locale;
 		$$('form').first().submit()
@@ -52,9 +74,9 @@ Todoyu.Installer = {
 	 * Check database selection / declaration of new database to be created
 	 */
 	checkDbSelect: function() {
-		var newDbName	= $F('database_new');
+		var newDbName	= $F('database_new').trim();
 
-		if ( newDbName !== '' ) {
+		if( newDbName !== '' ) {
 				// New DB name specified? deactivate selector
 			$('database').selectedIndex	= 0;
 			$('database').disabled	= true;

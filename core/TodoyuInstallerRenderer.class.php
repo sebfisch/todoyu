@@ -149,7 +149,7 @@ class TodoyuInstallerRenderer {
 		$databases	= TodoyuDbAnalyzer::getDatabasesOnServer($dbConfig);
 		$dbOptions	= array();
 		$dbConf		= $dbConfig;
-
+		
 			// Prerender database selection options 
 		foreach($databases as $database) {
 			$dbConf['database']	= $database;
