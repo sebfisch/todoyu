@@ -4,8 +4,7 @@
 
 #headlet-about-window {
 	position:fixed;
-	width:500px;
-	height:300px;
+	width:350px;
 	border:1px dotted #000;
 	padding:10px;
 	-moz-box-shadow:2px 2px 7px #999999;
@@ -17,8 +16,8 @@
 }
 
 #headlet-about-window .logo {
-	height:80px;
-	background:url(../img/logo.png) no-repeat 50% 0;
+	height:120px;
+	background:url(../img/logo2.png) no-repeat 40% 0;
 }
 
 #headlet-about-window .close {
@@ -29,5 +28,46 @@
 	top: 0px;
 	background:url(../img/icons.png) no-repeat 5px -350px;
 	cursor:pointer;
+}
+
+#headlet-about-window p {
+	text-align:left;
+	margin-bottom:10px;
+}
+
+#headlet-about-window a {
+	text-decoration:underline;
+}
+
+#headlet-about-window .copyright {
+
+}
+
+#headlet-about-window .community {
+	font-weight:bold;
+}
+
+#headlet-about-window .thanks {
+	font-weight:bold;
+	margin-top:20px;
+}
+
+#headlet-about-window .names {
+	height:150px;
+	padding:5px;
+	border:1px dotted #CCC;
+	background-color:#FCFCFC;
+	position:relative;
+	overflow:hidden;
+}
+
+#headlet-about-window .names ul {
+	padding-top:50px;
+}
+
+#headlet-about-window .names ul li {
+	font-size:20px;
+	font-family:monospace;
+	padding:5px;
 }
 

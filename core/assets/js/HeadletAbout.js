@@ -29,6 +29,13 @@ Todoyu.Headlet.About = {
 	idWindow: 'headlet-about-window',
 
 	/**
+	 * Instance of the current effect
+	 * 
+	 * @param	{Effect.Move}
+	 */
+	nameEffect: null,
+
+	/**
 	 * 
 	 */
 	onButtonClick: function(event) {
@@ -90,6 +97,11 @@ Todoyu.Headlet.About = {
 
 	hideWindow: function() {
 		this.displayWindow(false);
+
+		if( this.nameEffect !== null ) {
+			this.nameEffect.options.afterFinish = null;
+			this.nameEffect.cancel();
+		}
 	},
 
 
@@ -121,7 +133,34 @@ Todoyu.Headlet.About = {
 			y: top,
 			x: left,
 			'mode': 'absolute',
-			'duration': 0.5
+			'duration': 0.5,
+			'afterFinish': show ? this.startNameScrolling.bind(this, true, true) : null
+		});
+	},
+
+
+	startNameScrolling: function(up, first) {
+		var box	= $('headlet-about-window').down('div.names');
+		var list= box.down('ul');
+		var newY= -list.getHeight()+(box.getHeight()/2);
+
+		if( up === false ) {
+			newY	= -newY;
+		}
+
+		if( first === true ) {
+			list.setStyle({
+				top: '0px'
+			});
+		}
+
+		this.nameEffect = new Effect.Move(list, {
+			x: 0,
+			y: newY,
+			mode: 'relative',
+			duration: list.select('li').size()*1.5,
+			transition: Effect.Transitions.linear,
+			afterFinish: this.startNameScrolling.bind(this, !up)
 		});
 	}
 	
