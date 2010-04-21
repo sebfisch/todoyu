@@ -1,4 +1,4 @@
-Files in the lib/ folder should NOT be modificated!
+Files in the lib/ folder should NOT be modified!
 They may be replaced by an update of a library.
 But sometimes it's necessary:
 
