@@ -125,7 +125,7 @@ class TodoyuFormValidator {
 		$fieldName		= $validatorConfig['field'];
 		$expectedValue	= $validatorConfig['value'];
 
-		$value	=	$formData[$fieldName];
+		$value	= $formData[$fieldName];
 
 		if ( is_array($value) && sizeof($value) === 1 ) {
 			$value	= array_pop($value);

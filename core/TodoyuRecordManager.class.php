@@ -114,6 +114,21 @@ class TodoyuRecordManager {
 
 
 	/**
+	 * Get all records of given type
+	 *
+	 * @param	String	$table
+	 * @param	String	$where
+	 * @param	String	$order
+	 * @return	Array
+	 */
+	public static function getAllRecords($table, $where = 'deleted = 0', $order = 'title') {
+		
+		return Todoyu::db()->getArray('*', $table, $where, '', $order);
+	}
+
+
+
+	/**
 	 * Get record data as array
 	 *
 	 * @param	String		$table

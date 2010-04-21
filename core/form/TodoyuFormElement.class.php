@@ -254,7 +254,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			$userValidator	= array('0'	=> $attributes);
 		}
 			// Add new validator
-		$userValidator[]=	$validatorConfig;
+		$userValidator[]= $validatorConfig;
 
 		$validator['user']	= $userValidator;
 		$this->setAttribute('validate', $validator);

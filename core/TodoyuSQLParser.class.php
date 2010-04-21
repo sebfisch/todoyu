@@ -309,7 +309,7 @@ class TodoyuSQLParser {
 	 * @return	Array
 	 */
 	private static function extractColumns($sql) {
-		$sql		=	str_replace("\n", ' ', $sql);
+		$sql		= str_replace("\n", ' ', $sql);
 		$columns	= array();
 
 			// Extract code for all columns

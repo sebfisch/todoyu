@@ -214,7 +214,7 @@ class TodoyuTime {
 			$weekdayNum	= self::getWeekday($timestamp);
 
 			if ( ! in_array($weekdayNum, $weekdays) ) {
-				$weekdays[]=	$weekdayNum;
+				$weekdays[]= $weekdayNum;
 			}
 
 			$timestamp+= 43200;
