@@ -825,6 +825,4 @@ class TodoyuInstallerManager {
 	}
 }
 
-
-
 ?>
