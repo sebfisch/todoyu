@@ -99,7 +99,7 @@ class TodoyuHtmlFilter {
 		$out	= '';
 
 		for($i = 0; $i < strlen($html); $i++) {
-			if($pos >= $size && ! $unsafe) {
+			if( $pos >= $size && ! $unsafe ) {
 				$out	.= $delim;
 				$unsafe	= 0;
 				$pos	= 0;

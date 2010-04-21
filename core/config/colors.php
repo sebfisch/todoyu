@@ -29,7 +29,6 @@
  * To evoke (re-)generation of 'cache/css/colors.css' and 'cache/img/colors.png' evoke: Install::generateColorsCSS();
  */
 
-
 Todoyu::$CONFIG['COLORS'] = array(
 		// based upon "tango"-palette
 	'#FCE94F',	// Butter 1

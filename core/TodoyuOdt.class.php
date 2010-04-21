@@ -30,7 +30,7 @@ class TodoyuOdt {
 
 
 	/**
-	 * Cache folder chache/odt/<given_ext_name>
+	 * Cache folder cache/odt/<given_ext_name>
 	 *
 	 * @var	String
 	 */
@@ -72,7 +72,7 @@ class TodoyuOdt {
 	 * @param	String	$newFileName
 	 */
 	public function __construct($ext = 'unknown', $newFileName = 'unknown.odt')	{
-		$this->tmpDir		= PATH_CACHE.'/odt';
+		$this->tmpDir		= PATH_CACHE . '/odt';
 		$this->ext			= $ext;
 		$this->newFileName 	= $newFileName;
 
@@ -85,15 +85,15 @@ class TodoyuOdt {
 	 * Initializes the class
 	 */
 	protected function init()	{
-		if(!is_dir($this->tmpDir))	{
+		if( ! is_dir($this->tmpDir) ) {
 			mkdir($this->tmpDir);
 		}
 
-		$this->exec('chmod -R 777 '.PATH_CACHE.'/odt/');
+		$this->exec('chmod -R 777 ' . PATH_CACHE . '/odt/');
 
-		$this->tmpDir	.= '/'.$this->ext;
+		$this->tmpDir	.= '/' . $this->ext;
 
-		if(!is_dir($this->tmpDir))	{
+		if( ! is_dir($this->tmpDir) ) {
 			mkdir($this->tmpDir);
 		}
 	}
@@ -101,28 +101,28 @@ class TodoyuOdt {
 
 
 	/**
-	 * Opens the given template file.
-	 * creates the unzipped folder in the cache of not exists
-	 *
-	 * @throws	Exception
+	 * Opens the given template file. Creates the unzipped folder in the cache of not exists
 	 *
 	 * @param	String		$templateFile
+	 * @throws	Exception
 	 */
 	public function openFromTemplate($templateFile)	{
-		if(! is_file($templateFile))	{
-			throw new Exception('Templatefile '.$templateFile.' not found!');
+		if( ! is_file($templateFile) )	{
+			throw new Exception('Templatefile ' . $templateFile . ' not found!');
 		}
 
-		$unzippedDir = $this->tmpDir.'/'.$this->getTemplateFileName($templateFile).'-unzipped';
+		$unzippedDir = $this->tmpDir . '/' . $this->getTemplateFileName($templateFile) . '-unzipped';
 
-		if(! is_dir($unzippedDir)	)	{
+		if( ! is_dir($unzippedDir) ) {
 			mkdir($unzippedDir);
 			$this->extractFromZip($unzippedDir, $templateFile);
 		}
 
-		if(! $this->tmpOdtDir)	$this->tmpOdtDir = $this->tmpDir.'/'.substr(md5(mt_rand().microtime()), 0, 15);
+		if( ! $this->tmpOdtDir ) {
+			$this->tmpOdtDir = $this->tmpDir . '/' . substr(md5(mt_rand() . microtime()), 0, 15);
+		}
 
-		$command = 'cp -R \''.$unzippedDir.'\' \''.$this->tmpOdtDir.'\'';
+		$command	= 'cp -R \'' . $unzippedDir . '\' \'' . $this->tmpOdtDir . '\'';
 		$this->exec($command);
 	}
 
@@ -136,17 +136,17 @@ class TodoyuOdt {
 	 * @param	Array	$markersArray
 	 */
 	public function	replaceMarkers(array $markersArray)	{
-		$content = file_get_contents($this->tmpOdtDir.'/content.xml');
+		$content = file_get_contents($this->tmpOdtDir . '/content.xml');
 
 		foreach($markersArray as $markerName => $valueToReplace)	{
 			$valueToReplace = nl2br($valueToReplace);
-			$valueToReplace = preg_replace('/[\n\s]*\<br \/\>[\n\s]*/',']]><text:line-break/><![CDATA[', trim($valueToReplace));
-			$valueToReplace = str_replace('&nbsp;',' ',$valueToReplace);
+			$valueToReplace = preg_replace('/[\n\s]*\<br \/\>[\n\s]*/', ']]><text:line-break/><![CDATA[', trim($valueToReplace));
+			$valueToReplace = str_replace('&nbsp;', ' ', $valueToReplace);
 
 			$content = $this->replaceMarker($markerName, $valueToReplace, $content);
 		}
 
-		file_put_contents($this->tmpOdtDir.'/content.xml', $content);
+		file_put_contents($this->tmpOdtDir . '/content.xml', $content);
 	}
 
 
@@ -160,7 +160,9 @@ class TodoyuOdt {
 	 * @return	String
 	 */
 	public function replaceMarker($markerName, $value, $content)	{
-		return str_replace( '<text:placeholder text:placeholder-type="text">&lt;'.$markerName.'&gt;</text:placeholder>' , '<![CDATA['.$value.']]>' , $content);
+		$search		= '<text:placeholder text:placeholder-type="text">&lt;' . $markerName . '&gt;</text:placeholder>';
+		$replace	= '<![CDATA[' . $value . ']]>';
+		return str_replace( $search , $replace, $content);
 	}
 
 
@@ -180,12 +182,12 @@ class TodoyuOdt {
 	protected function extractTableFromDocument($document, $number = 1, $keepContentBeforeTable = false) {
 		$approach = $document;
 
-		// Take everything whats after x table ($number)
+			// Take everything from after x table ($number)
 		for($i = 1; $i < $number; $i++)	{
 			$approach = mb_substr($approach, mb_strpos($approach, '</table:table>')+mb_strlen('</table:table>'));
 		}
 
-		// Remove everything whats before the requested table
+			// Remove everything before the requested table
 		$approach = ($keepContentBeforeTable) ? $approach:mb_substr($approach, mb_strpos($approach, '<table:table '));
 
 		return $approach;
@@ -197,16 +199,16 @@ class TodoyuOdt {
 	 *  Extract the Xth row from table. Default is 1 for the first row.
 	 * 	e.g. you need a template row which is not the first, set which to x.
 	 *
-	 * 	x - is allaways the number of the row.
+	 * 	x - is always the number of the row.
 	 *
-	 * @param	String	$table
-	 * @param 	Integer	$which
+	 * @param	String		$table
+	 * @param 	Integer		$which
 	 * @return	String
 	 */
 	protected function extractRowFromTable($table, $which = 1) {
 		$approach = $table;	// $approach always is the "approach" to the searched: the table row
 
-			// take all what's not AFTER the header-rows
+			// Take all what's not AFTER the header-rows
 		$approach = mb_substr($approach, mb_strpos($approach, '</table:table-header-rows>') + mb_strlen('</table:table-header-rows>'));
 
 		if( $which > 1 )	{	// drop all whats behind the end of the table's row
@@ -231,7 +233,7 @@ class TodoyuOdt {
 	 */
 	public function download()	{
 		header('Content-Type: application/vnd.oasis.opendocument.text');
-		header('Content-Disposition: attachment; filename='. $this->newFileName);
+		header('Content-Disposition: attachment; filename=' . $this->newFileName);
 		header('Pragma: no-cache');
 		header('Expires: 0');
 
@@ -245,14 +247,15 @@ class TodoyuOdt {
 
 
 	/**
-	 * Returns the file name of the template file
+	 * Extract file name of template file from path
 	 *
-	 * @param	String	$tmplFile
+	 * @param	String	$templateFile
 	 * @return	String
 	 */
-	protected function getTemplateFileName($tmplFile)	{
-		$tmplFileArr = explode('/', $tmplFile);
-		return array_pop($tmplFileArr);
+	protected function getTemplateFileName($templateFile)	{
+		$templateFilesArray = explode('/', $templateFile);
+
+		return array_pop($templateFilesArray);
 	}
 
 
@@ -262,13 +265,15 @@ class TodoyuOdt {
 	 *
 	 * @param	String	$odtPath
 	 */
-	protected function write($odtPath=null) {
-		if(! $this->tmpOdtFile) $this->tmpOdtFile = mb_substr($this->tmpOdtDir, 0, -1).'.odt';
+	protected function write($odtPath = null) {
+		if( ! $this->tmpOdtFile ) {
+			$this->tmpOdtFile = mb_substr($this->tmpOdtDir, 0, -1) . '.odt';
+		}
 
 		$this->compressToZip($this->tmpOdtFile, $this->tmpOdtDir);
 
 		if( $odtPath ) {
-			$command = 'cp '.$this->tmpOdtFile.' '.$odtPath;
+			$command = 'cp ' . $this->tmpOdtFile . ' ' . $odtPath;
 			$this->exec($command);
 		}
 	}
@@ -276,12 +281,12 @@ class TodoyuOdt {
 
 
 	/**
-	 * Returns the content of the generated odt-file
+	 * Returns the content of the generated ODT file
 	 *
 	 * @return	String
 	 */
 	protected function getContent()	{
-		if(! $this->tmpOdtFile)	{
+		if( ! $this->tmpOdtFile ) {
 			$this->write();
 		}
 
@@ -296,7 +301,7 @@ class TodoyuOdt {
 	protected function close()	{
 		$command = 'rm -R ' . $this->tmpOdtDir;
 		$this->exec($command);
-		$command = 'rm '. $this->tmpOdtFile;
+		$command = 'rm ' . $this->tmpOdtFile;
 		$this->exec($command);
 	}
 
@@ -306,13 +311,12 @@ class TodoyuOdt {
 	 *
 	 * Compresses files from source to destination
 	 *
-	 *
 	 * @param	String	$destination
 	 * @param	String	$source
 	 */
 	protected function compressToZip($destination, $source)	{
 		if( is_dir($source) )	{
-			$command = 'cd \''. $source . '\' && zip -r \''. $destination . '\' *';
+			$command = 'cd \'' . $source . '\' && zip -r \'' . $destination . '\' *';
 			$this->exec($command);
 		}
 	}
@@ -320,7 +324,7 @@ class TodoyuOdt {
 
 
 	/**
-	 * Extreacts source to destination-folder
+	 * Extract source to destination-folder
 	 *
 	 * @param	String	$destination
 	 * @param	String	$source

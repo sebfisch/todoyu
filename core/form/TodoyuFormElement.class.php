@@ -652,7 +652,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 				$wizardConf['hasWizard'] = TodoyuFunction::callUserFunctionArray($wizardConf['wizardConf']['displayCondition'], $wizardConf);
 			}
 
-			if($wizardConf['wizardConf']['restrict'] && $wizardConf['hasWizard'])	{
+			if( $wizardConf['wizardConf']['restrict'] && $wizardConf['hasWizard'] )	{
 				$wizardConf['hasWizard'] = false;
 
 				foreach($wizardConf['wizardConf']['restrict'] as $allowed)	{

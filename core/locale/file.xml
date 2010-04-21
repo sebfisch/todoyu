@@ -12,7 +12,7 @@
 	</labels>
 	<labels lang="de_DE">
 		<label index="download">Herunterladen</label>
-		<label index="upload">Hinaufladen</label>
+		<label index="upload">Hochladen</label>
 		<label index="size.gb">GB</label>
 		<label index="size.mb">MB</label>
 		<label index="size.kb">KB</label>

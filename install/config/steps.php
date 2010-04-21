@@ -25,7 +25,6 @@
  * @subpackage	Installer
  */
 
-
 Todoyu::$CONFIG['INSTALLER']['install'] = array(
 	'locale',
 	'license',
@@ -45,7 +44,7 @@ Todoyu::$CONFIG['INSTALLER']['update'] = array(
 	'finishupdate'
 );
 
-// Installation steps
+	// Installation steps
 define('INSTALLER_INITIALSTEP_INSTALL', 'locale');
 define('INSTALLER_INITIALSTEP_UPDATE', 'update');
 
