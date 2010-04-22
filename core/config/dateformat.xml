@@ -22,6 +22,7 @@
 		<label index="time">%H:%M</label>
 		<label index="timesec">%H:%M:%S</label>
 		<label index="datetime">%d/%m/%y %H:%M</label>
+		<label index="day">%d</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="D2M2">%d.%m.</label>
@@ -45,6 +46,7 @@
 		<label index="time">%H:%M</label>
 		<label index="timesec">%H:%M:%S</label>
 		<label index="datetime">%d.%m.%Y %H:%M</label>
+		<label index="day">%d.</label>
 	</labels>
 	<labels lang="pt_BR">
 		<label index="D2M2">%d.%m.</label>
@@ -68,5 +70,6 @@
 		<label index="time">%H:%M</label>
 		<label index="timesec">%H:%M:%S</label>
 		<label index="datetime">%d.%m.%Y %H:%M</label>
+		<label index="day">%d</label>
 	</labels>
 </locallang>

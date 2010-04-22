@@ -52,7 +52,7 @@ class TodoyuQuickinfo {
 	public function addInfo($key, $label, $position = 100) {
 		$this->data[$key] = array(
 			'key'		=> $key,
-			'label'		=> htmlentities($label, ENT_QUOTES, 'utf-8'),
+			'label'		=> str_replace("\n", '<br />', htmlentities($label, ENT_QUOTES, 'utf-8')),
 			'position'	=> intval($position)
 		);
 	}

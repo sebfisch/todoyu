@@ -619,7 +619,7 @@ class TodoyuForm implements ArrayAccess {
 	public function addHiddenField($name, $value, $noStorage = false, $noWrap = false) {
 		$this->hiddenFields[$name] = array(
 			'value'		=> $value,
-			'noStorage' => $noStorage,
+			'noStorage' => $noStorage || $noWrap,
 			'noWrap'	=> $noWrap
 		);
 	}
