@@ -368,8 +368,9 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	public function validateRequired() {
 		$firstValue	= array_pop($this->getValue());
 
-		return $firstValue != 0;
+		return ! empty($firstValue);
 	}
 
 }
+
 ?>

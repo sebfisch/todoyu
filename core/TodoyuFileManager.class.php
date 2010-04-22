@@ -472,7 +472,7 @@ class TodoyuFileManager {
 
 
 	/**
-	 * Read a file from harddisk and send it to the browser (with echo)
+	 * Read a file from hard disk and send it to the browser (with echo)
 	 * Reads file in small parts (1024 B)
 	 *
 	 * @param	String		$absoluteFilePath

@@ -82,6 +82,28 @@ class TodoyuHeader {
 	}
 
 
+	/**
+	 * Send headers for download
+	 *
+	 * @param	String		$mimeType
+	 * @param	String		$filename
+	 * @param	Integer		$fileSize
+	 * @param	Integer		$fileModTime
+	 */
+	public static function sendDownloadHeaders($mimeType, $filename, $fileSize, $fileModTime) {
+		$fileSize		= intval($fileSize);
+		$fileModTime	= intval($fileModTime);
+
+		self::sendHeader('Content-type', $mimeType);
+		self::sendHeader('Content-disposition', 'attachment; filename="' . $filename . '"');
+		self::sendHeader('Content-length', $fileSize);
+		self::sendHeader('Expires', date('r', NOW + 600));
+		self::sendHeader('Last-Modified', date('r', $fileModTime));
+		self::sendHeader('Cache-Control', 'no-cache, must-revalidate');
+		self::sendHeader('Pragma', 'no-cache');
+	}
+
+
 
 	/**
 	 * Send HTML header

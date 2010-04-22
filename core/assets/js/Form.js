@@ -20,17 +20,24 @@
 Todoyu.Form = {
 
 	subFormIndex: 100,
-	
-	
+
+	/**
+	 * Initialize form display: expand invalid foreign records, focus first field
+	 *
+	 * @param   String  formID
+	 */
 	onFormDisplay: function(formID) {
 		if( Todoyu.exists(formID) ) {
 			this.expandInvalidForeignRecords(formID);
 			this.focusFirstFormField(formID);
 		}
 	},
-	
-	
 
+
+
+	/**
+	 * @todo    comment
+	 */
 	getNextIndex: function() {
 		return this.subFormIndex++;
 	},
@@ -165,6 +172,7 @@ Todoyu.Form = {
 
 
 	/**
+	 * @todo    comment
 	 *
 	 * @param	{Array}	fieldNames
 	 */
