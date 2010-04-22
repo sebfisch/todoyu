@@ -34,6 +34,7 @@
 }
 
 	#headlets li a.active,
+	#headlets li.active a,
 	#headlets li:hover a {
 		border-color:#b9bbad;
 		background-color: white;

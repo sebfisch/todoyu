@@ -82,7 +82,8 @@ class TodoyuHeadManager {
 					'label'		=> $headlet->getLabel(),
 					'phpClass'	=> $className,
 					'content'	=> $headlet->render(),
-					'type'		=> $headlet->getType()
+					'type'		=> $headlet->getType(),
+					'class'		=> $headlet->getClass()
 				);
 			}
 		}

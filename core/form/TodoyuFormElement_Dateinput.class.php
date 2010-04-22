@@ -88,19 +88,6 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 
 
 	/**
-	 * Get formatted value for template (date)
-	 *
-	 * @return	String
-	 */
-	public function getValueTemplate() {
-		$value	= $this->getValue();
-
-		return $value == 0 ? '' : TodoyuTime::format($value, 'date');
-	}
-
-
-
-	/**
 	 * Set field value
 	 * Can be timestamp, date or mysql date format
 	 * Formats: 1262214000, 31.12.2009 (locale), 2009-12-31
@@ -109,7 +96,7 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 	 */
 	public function setValue($value) {
 			// Check for "no-data" values
-		if( $value === false || trim($value) == '' || trim($value) == '0000-00-00')	 {
+		if( $value === false || intval($value) === 0 || trim($value) == '' || trim($value) == '0000-00-00')	 {
 			$value = false;
 		} elseif( ! is_numeric($value) ) {
 			$value	= TodoyuTime::parseDate($value);
@@ -145,7 +132,7 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 			return false;
 		} else {
 			$storageData= $this->getValue();
-
+			
 				// If storeAsDate, format in mysql date format
 			if( $this->hasAttribute('storeAsDate') ) {
 					// Set to zero if no data entered
@@ -154,6 +141,8 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 				} else {
 					$storageData = date('Y-m-d', $storageData);
 				}
+			} else {
+				$storageData	= intval($storageData);
 			}
 		}
 

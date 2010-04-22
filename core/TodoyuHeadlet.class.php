@@ -53,6 +53,8 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 	protected $type;
 
+	protected $class	= '';
+
 
 
 
@@ -170,7 +172,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 		if( $open ) {
 			$this->data['open']	= true;
-			$this->addButtonClass('active');
+			$this->addClass('active');
 		}
 	}
 
@@ -239,6 +241,28 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 
 	/**
+	 * Add headlet class
+	 *
+	 * @param	String		$class
+	 */
+	public function addClass($class) {
+		$this->class = trim($this->class . ' ' . $class);
+	}
+
+
+
+	/**
+	 * Get headlet classes
+	 *
+	 * @return	String
+	 */
+	public function getClass() {
+		return trim($this->class);
+	}
+
+
+
+	/**
 	 * Render headlet
 	 *
 	 * @return	String
@@ -263,7 +287,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 * A headlet can override this function and prevent to be rendered
 	 * Empty means, the headlet has no reason to be displayed
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isEmpty() {
 		return false;

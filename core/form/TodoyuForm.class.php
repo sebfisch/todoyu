@@ -303,7 +303,7 @@ class TodoyuForm implements ArrayAccess {
 	 */
 	protected function updateFieldValues() {
 		// Update fields
-		foreach( $this->fields as $name => $field ) {
+		foreach($this->fields as $name => $field ) {
 			/**
 			 * @var	$field	TodoyuFormElement
 			 */
@@ -990,7 +990,11 @@ class TodoyuForm implements ArrayAccess {
 		$data	= $this->getHiddenFields(true);
 
 		foreach($this->fields as $name => $field) {
+			/**
+			 * @var	TodoyuFormElement	$field
+			 */
 			$value	= $field->getStorageData();
+
 			if( $value !== false ) {
 				$data[$name] = $value;
 			}

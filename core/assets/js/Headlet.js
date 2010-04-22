@@ -74,8 +74,8 @@ Todoyu.Headlet = {
 	 * Call the handler of a headlet if it has the specific function
 	 * Possible handlers: onButtonClick, onContentClick, onMouseOver, onMouseOut
 	 * 
-	 * @param	{String}		name		Name of the headlet
-	 * @param	{String}		type		Event type (handler name)
+	 * @param	{String}	name		Name of the headlet
+	 * @param	{String}	type		Event type (handler name)
 	 * @param	{Event}		event		Event object
 	 */
 	_callHandler: function(name, eventType, event) {
@@ -199,7 +199,12 @@ Todoyu.Headlet = {
 			var type	= '';
 
 			this.hideAllContent(name);
-			this.setActive(name);
+
+			if( this.isActive(name) ) {
+				this.setAllInactive();
+			} else {
+				this.setActive(name);
+			}			
 
 			if( this._isContentEvent(event) ) {
 				type	= 'onContentClick';
@@ -256,9 +261,17 @@ Todoyu.Headlet = {
 	 * @param	{String}		name
 	 */
 	setActive: function(name) {
-		$('headlets').select('li.headlet').invoke('removeClassName', 'active');
+		this.setAllInactive();
 		$('headlet-' + name).addClassName('active');
-	},	
+	},
+
+	setAllInactive: function() {
+		$('headlets').select('li.headlet').invoke('removeClassName', 'active');
+	},
+
+	isActive: function(name) {
+		return $('headlet-' + name).hasClassName('active');
+	},
 
 
 
