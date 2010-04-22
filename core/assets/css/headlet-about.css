@@ -6,12 +6,17 @@
 	position:fixed;
 	width:350px;
 	padding:10px;
-	-moz-box-shadow:2px 2px 7px #999999;
 	background-color:#FFF;
 	left:0;
 	top:0;
 	z-index:3000;
-	opacity:0.97;
+	filter: alpha(opacity=95);
+	-moz-opacity: 0.95;
+	-khtml-opacity: 0.95;
+	opacity: 0.95;
+	-webkit-box-shadow: 2px 2px 5px #999;
+	-moz-box-shadow: 2px 2px 5px #999;
+	box-shadow: 2px 2px 5px #999;
 }
 
 #headlet-about-window .logo {
@@ -54,8 +59,8 @@
 #headlet-about-window .names {
 	height:150px;
 	padding:5px;
-	border:1px dotted #CCC;
-	background-color:#FCFCFC;
+	border:1px dotted #ccc;
+	background-color: #f3f3f3;
 	position:relative;
 	overflow:hidden;
 }
@@ -65,8 +70,6 @@
 }
 
 #headlet-about-window .names ul li {
-	font-size:20px;
-	font-family:monospace;
 	padding:5px;
 }
 
