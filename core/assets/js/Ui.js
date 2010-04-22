@@ -60,6 +60,22 @@ Todoyu.Ui = {
 
 
 	/**
+	 * Prepend before element
+	 *
+	 * @param	{String}	container
+	 * @param	{String}	url
+	 * @param	{Object}	options
+	 */
+	prepend: function(container, url, options) {
+		options = this._getDefaultOptions(options);
+		options.insertion = 'before';
+
+		return this.update(container, url, options);
+	},
+
+
+
+	/**
 	 * Append to element
 	 *
 	 * @param	{String}	container

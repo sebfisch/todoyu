@@ -47,7 +47,7 @@ class TodoyuFileManager {
 	public static function pathAbsolute($path) {
 		$path	= trim($path);
 
-			// Replace directory seperatory with current system settings
+			// Replace directory separator according to current system settings
 		$path = str_replace(array('\\', '/'), DIR_SEP, $path);
 
 			// If no absolute path
@@ -234,7 +234,6 @@ class TodoyuFileManager {
 	 * @param	String		$dirtyFilename		Filename (not path!)
 	 * @return	String
 	 */
-
 	public static function makeCleanFilename($dirtyFilename, $replaceBy = '_') {
 		$pattern	= '|[^A-Za-z0-9\.-_\[\]()]|';
 
@@ -325,6 +324,25 @@ class TodoyuFileManager {
 		}
 
 		return file_put_contents($savePath, $content) !== false;
+	}
+
+
+
+	/**
+	 * Move a file to the folder structure
+	 *
+	 * @param	String		$path
+	 * @param	String		$sourceFile
+	 * @param	String		$uploadFileName
+	 * @return	Boolean
+	 */
+	public static function addFileToStorage($path, $sourceFile, $uploadFileName, $prependWithTimestamp = true) {
+		$fileName	= ( $prependWithTimestamp === true ? NOW . '_' . $fileName : '') . self::makeCleanFilename($uploadFileName);
+		$filePath	= $path . DIR_SEP . $fileName;
+
+		$fileMoved	= move_uploaded_file($sourceFile, $filePath);
+
+		return $fileMoved ? $filePath : false;
 	}
 
 
