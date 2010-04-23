@@ -542,7 +542,7 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Build a FIND_IN_SET SQL statement so search in a comma seperated field
+	 * Build a FIND_IN_SET SQL statement so search in a comma separated field
 	 *
 	 * @param	String		$itemToFind
 	 * @param	String		$fieldname

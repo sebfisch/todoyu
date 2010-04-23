@@ -349,7 +349,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 
 
 	/**
-	 * Get storage data as comma seperated list (if multiple values are selected)
+	 * Get storage data as comma separated list (if multiple values are selected)
 	 *
 	 * @return	String
 	 */

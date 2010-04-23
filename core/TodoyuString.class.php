@@ -204,15 +204,15 @@ class TodoyuString {
 
 
 	/**
-	 * Check if an element is in a seperated list string (ex: comma seperated)
+	 * Check if an element is in a separated list string (ex: comma separated)
 	 *
 	 * @param	String		$item				Element to check for
-	 * @param	String		$listString			List with concatinated elements
-	 * @param	String		$listSeperator		List element seperating character
+	 * @param	String		$listString			List with concatenated elements
+	 * @param	String		$listSeparator		List element separating character
 	 * @return	Boolean
 	 */
-	public static function isInList($item, $listString, $listSeperator = ',')	{
-		$list	= explode($listSeperator, $listString);
+	public static function isInList($item, $listString, $listSeparator = ',')	{
+		$list	= explode($listSeparator, $listString);
 
 		return in_array($item, $list);
 	}

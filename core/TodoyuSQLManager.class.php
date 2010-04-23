@@ -300,7 +300,7 @@ class TodoyuSQLManager {
 		$query	= '	CREATE TABLE `' . $tableStructure['table'] . '` (' . "\n";
 		$query	.= implode(",\n", $columnsSQL);
 
-			// If columns and keys exists, add seperating comma and keys
+			// If columns and keys exists, add separating comma and keys
 		if( sizeof($columnsSQL) > 0 && sizeof($keysSQL) > 0 ) {
 			$query .= ",\n";
 			$query .= implode(",\n", $keysSQL);

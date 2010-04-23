@@ -217,7 +217,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 
 	/**
-	 * Test TodoyuString::isInList($item, $listString, $listSeperator = ',')
+	 * Test TodoyuString::isInList($item, $listString, $listSeparator = ',')
 	 *
 	 * @todo Implement testIsInList().
 	 */

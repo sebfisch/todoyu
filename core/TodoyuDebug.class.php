@@ -46,7 +46,7 @@ class TodoyuDebug {
 	/**
 	 * Check if the current user is listed in the username list
 	 *
-	 * @param	String		$usernames		Comma seperated usernames
+	 * @param	String		$usernames		Comma separated usernames
 	 * @return	Boolean
 	 */
 	private static function isCurrentUser($usernames) {

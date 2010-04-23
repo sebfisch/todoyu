@@ -197,7 +197,7 @@ class TodoyuPageAssetManager {
 
 		foreach( $javascripts as $fileConfig ) {
 			if( $doMerging && $fileConfig['merge'] ) {
-					// If file is a thirdparty library, add to a seperate merge file
+					// If file is a thirdparty library, add to a separate merge file
 				if( $fileConfig['lib'] === true ) {
 					$libsMerge[]	= $fileConfig;
 				} else {

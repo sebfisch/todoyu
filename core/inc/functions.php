@@ -126,7 +126,7 @@ function allowed($extKey, $right) {
  * Check if ALL given rights of an extension are allowed
  *
  * @param	String		$extKey			Extension key
- * @param	String		$rightsList		Comma seperated names of rights
+ * @param	String		$rightsList		Comma separated names of rights
  * @return	Bool
  */
 function allowedAll($extKey, $rightsList) {
@@ -147,7 +147,7 @@ function allowedAll($extKey, $rightsList) {
  * Check if ANY of the given rights of an extension is allowed
  *
  * @param	String		$extKey			Extension key
- * @param	String		$rightsList		Comma seperated names of rights
+ * @param	String		$rightsList		Comma separated names of rights
  * @return	Bool
  */
 function allowedAny($extKey, $rightsList) {
@@ -200,7 +200,7 @@ function restrictAdmin() {
  * If one right is allowed, do nothing
  *
  * @param	String		$extKey			Extension key
- * @param	String		$rightsList		Comma seperated names of rights
+ * @param	String		$rightsList		Comma separated names of rights
  */
 function restrictIfNone($extKey, $rightsList) {
 	$rights		= explode(',', $rightsList);

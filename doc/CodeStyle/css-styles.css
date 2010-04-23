@@ -9,7 +9,7 @@ body {
 	font-weight:bold;
 }
 
-	/* IDs:lowercase, seperated by minus. Classnames:camelCase */
+	/* IDs:lowercase, separated by minus. Classnames:camelCase */
 #task-container .taskLabel {
 	color:#000;
 }

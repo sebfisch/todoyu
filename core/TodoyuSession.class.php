@@ -40,7 +40,7 @@ class TodoyuSession {
 	/**
 	 * Get session value
 	 *
-	 * @param	String		$path			Slash seperated path
+	 * @param	String		$path			Slash separated path
 	 * @return	Mixed
 	 */
 	public static function get($path) {
@@ -60,7 +60,7 @@ class TodoyuSession {
 	/**
 	 * Set a session value
 	 *
-	 * @param	String		$path		Slash seperated path to value
+	 * @param	String		$path		Slash separated path to value
 	 * @param	Mixed		$data
 	 */
 	public static function set($path, $data) {
@@ -80,7 +80,7 @@ class TodoyuSession {
 	/**
 	 * Check if a value is stored under the path
 	 *
-	 * @param	String		$path		Slash seperated path to value
+	 * @param	String		$path		Slash separated path to value
 	 * @return	Boolean
 	 */
 	public static function isIn($path) {
@@ -97,7 +97,7 @@ class TodoyuSession {
 	/**
 	 * Delete session entry (set null)
 	 *
-	 * @param	String		$path		Slash seperated path to value
+	 * @param	String		$path		Slash separated path to value
 	 */
 	public static function remove($path) {
 		self::set($path, null);
