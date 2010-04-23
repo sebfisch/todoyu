@@ -25,7 +25,7 @@ Todoyu.Headlet = {
 	current: null,
 
 	/**
-	 * List of headlet js objects (to call the handlers)
+	 * List of headlet JS objects (to call the handlers)
 	 */
 	headlets: {},
 	

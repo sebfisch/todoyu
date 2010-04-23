@@ -4,9 +4,9 @@
 	width:156px;
 	z-index:100000;
 	background-color:#f1f1f1;
-	-webkit-box-shadow: 2px 2px 7px #999;
-	-moz-box-shadow: 2px 2px 7px #999;
-	box-shadow: 2px 2px 7px #999;
+	-webkit-box-shadow:2px 2px 7px #999;
+	-moz-box-shadow:2px 2px 7px #999;
+	box-shadow:2px 2px 7px #999;
 }
 
 	#contextmenu li {
@@ -35,9 +35,9 @@
 			position:absolute;
 			z-index:100001;
 			width:156px;
-			-webkit-box-shadow: 2px 2px 7px #999;
-			-moz-box-shadow: 2px 2px 7px #999;
-			box-shadow: 2px 2px 7px #999;
+			-webkit-box-shadow:2px 2px 7px #999;
+			-moz-box-shadow:2px 2px 7px #999;
+			box-shadow:2px 2px 7px #999;
 		}
 
 		#contextmenu li.header a {

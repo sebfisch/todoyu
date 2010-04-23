@@ -95,7 +95,7 @@ Todoyu.ContextMenu = {
 	showMenu: function(url, options, event) {
 			// Wrap to onComplete function to call renderMenu right before the defined onComplete function
 		options.onComplete = (options.onComplete || Prototype.emptyFunction).wrap(function(event, proceed, transport, json) {
-				// Build menu html from json
+				// Build menu HTML from json
 			this.buildMenuFromJSON(transport.responseJSON);
 				// Set menu dimensions based on the event location and the items
 			this.setMenuDimensions(event);

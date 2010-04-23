@@ -38,7 +38,7 @@ class TodoyuColors {
 
 
 	/**
-	 * Generate css and img file for user colors
+	 * Generate CSS and image file for user colors
 	 */
 	public static function generate() {
 		$fileCSS	= PATH_CACHE . DIR_SEP . 'css' . DIR_SEP . 'colors.css';
@@ -49,7 +49,7 @@ class TodoyuColors {
 			self::generateCSS($fileCSS, $fileIMG);
 		}
 
-			// Generate png file if it not exists
+			// Generate PNG file if it not exists
 		if( ! is_file($fileIMG) ) {
 			self::generateIMG($fileIMG);
 		}

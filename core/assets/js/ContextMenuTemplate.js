@@ -19,7 +19,7 @@
 
 /**
  * Template class to render the context menu JSON object into
- * html with prototype template
+ * HTML with prototype template
  *
  */
 Todoyu.ContextMenu.Template = {
@@ -50,7 +50,7 @@ Todoyu.ContextMenu.Template = {
 
 
 	/**
-	 * Render a json object into the context menu html code
+	 * Render a json object into the context menu HTML code
 	 *
 	 * @param	{Object}	json
 	 */

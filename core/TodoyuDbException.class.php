@@ -74,7 +74,7 @@ class TodoyuDbException extends Exception {
 
 
 	/**
-	 * Render database error as html
+	 * Render database error as HTML
 	 *
 	 * @param 	Boolean		$fullDoc		Render full HTML document with (<html><body, etc)
 	 * @return	String		HTML view of error

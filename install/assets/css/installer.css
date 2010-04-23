@@ -281,20 +281,20 @@ input#email.adminaccount {
  	Todoyu Panelwidget Slogan
    ---------------------------- */
 .panelWidget .panelwidgetContent {
-	position: relative;
+	position:relative;
 }
 
 .panelWidget p.slogan {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	height: 34px;
-	padding: 12px 10px;
-	text-transform: uppercase;
-	color: white;
-	font-size: 13px !important;
-	font-weight: bold;
-	text-align: right;
+	position:absolute;
+	bottom:0;
+	right:0;
+	height:34px;
+	padding:12px 10px;
+	text-transform:uppercase;
+	color:white;
+	font-size:13px !important;
+	font-weight:bold;
+	text-align:right;
 }
 
 /* --------------------------

@@ -23,7 +23,7 @@ form {
 		}
 		
 		fieldset.buttons .fElement {
-			margin-right: 5px;
+			margin-right:5px;
 		}
 
 	legend {
@@ -65,14 +65,14 @@ input {
 		background-repeat:no-repeat;
 		background-position:5px -809px;
 		background-color:#e3eace;
-		padding-left: 25px;
-		width: 99.5%;
+		padding-left:25px;
+		width:99.5%;
 		/* hack to fix input width */
-		box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		-ms-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		-khtml-box-sizing: border-box;
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		-ms-box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+		-khtml-box-sizing:border-box;
 	}
 
 
@@ -113,7 +113,7 @@ select {
 
 	select option{
 	text-transform:none;
-	padding-left: 5px;
+	padding-left:5px;
 }
 
 	select optgroup {
@@ -188,7 +188,7 @@ div.fElement {
 	
 	
 	.typeUpload {
-		padding-left: 5px !important;
+		padding-left:5px !important;
 	}
 
 		div.typeDateinput .fField input {
@@ -350,12 +350,12 @@ fieldset {}
 form .textAfterField  {
 	display:block;
 	padding:10px;
-	margin: 1px 2px 0 0;
+	margin:1px 2px 0 0;
 	border:1px solid #CCC;
 	background-color:#EFEFEF;
 	font-size:10px;
 	color:#666;
-	text-align: left;
+	text-align:left;
 }
 
 .dateElement input {
@@ -428,7 +428,7 @@ form div.error .fField span.errorMessage {
 
 
 /* ----------------------------------
-	Formelement: databaseRelation
+	Formelement:databaseRelation
    ---------------------------------- */
 .formElement .databaseRelation {
 	margin-top:5px;

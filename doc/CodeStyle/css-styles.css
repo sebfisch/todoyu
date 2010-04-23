@@ -9,7 +9,7 @@ body {
 	font-weight:bold;
 }
 
-	/* IDs: lowercase, seperated by minus. Classnames: camelCase */
+	/* IDs:lowercase, seperated by minus. Classnames:camelCase */
 #task-container .taskLabel {
 	color:#000;
 }
@@ -17,7 +17,7 @@ body {
 
 
 /* -----------------------------------------------------
-	Section separator (blank lines: before: 3
+	Section separator (blank lines:before:3
    ----------------------------------------------------- */
 .project .title {
 	float:left;

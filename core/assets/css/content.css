@@ -111,7 +111,7 @@ h1.headerLine.hasIcon span.title {
 .headerLine span.rgt {
 	position:absolute;
 	right:0;
-	top: 0;
+	top:0;
 	display:block;
 	margin:0;
 	padding:0;

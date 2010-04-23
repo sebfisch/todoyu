@@ -18,7 +18,7 @@
 *****************************************************************************/
 
 /**
- * Hook implementation in js
+ * Hook implementation in JS
  * Add named hooks to a list. Call all registered
  * hook functions with custom parameters
  * 

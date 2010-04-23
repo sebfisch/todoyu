@@ -203,7 +203,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 * Update content with new html
+	 * Update content with new HTML
 	 *
 	 * @param	{String}		content
 	 */
@@ -214,7 +214,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 * Update content tabs div
+	 * Update content tabs DIV
 	 *
 	 * @param	{String}		tabs
 	 */
@@ -528,7 +528,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 * Creates a js filereference and appends it to head
+	 * Creates a JS file reference and appends it to head
 	 *
 	 * @param	{String}		filename
 	 * @todo	NOT USED...
@@ -561,7 +561,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 * Appends given filereference to html head
+	 * Appends given filereference to HTML head
 	 *
 	 * @param	fileref
 	 */

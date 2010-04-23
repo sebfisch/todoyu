@@ -74,14 +74,14 @@ ul#navi-main-list li ul {
 	position:absolute;
 	top:29px;
 	left:-9999px;
-	z-index: 1;
+	z-index:1;
 	width:200px !important;
 	margin-top:1px;
 	text-transform:none;
 	clip:rect(0px, 207px, 207px, -7px);
-	-webkit-box-shadow: 2px 2px 5px #999;
-	-moz-box-shadow: 2px 2px 5px #999;
-	box-shadow: 2px 2px 5px #999;
+	-webkit-box-shadow:2px 2px 5px #999;
+	-moz-box-shadow:2px 2px 5px #999;
+	box-shadow:2px 2px 5px #999;
 }
 
 ul#navi-main-list li ul li {

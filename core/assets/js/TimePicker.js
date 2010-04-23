@@ -195,7 +195,7 @@ var TimePicker = Class.create({
 
 
 	/**
-	 * Build picker html
+	 * Build picker HTML
 	 */
 	_build: function() {
 		this._remove();

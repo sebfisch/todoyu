@@ -100,7 +100,7 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 
 
 	/**
-	 * Render button to html
+	 * Render button to HTML
 	 *
 	 * @return	String
 	 */

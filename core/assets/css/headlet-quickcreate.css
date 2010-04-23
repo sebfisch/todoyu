@@ -4,13 +4,13 @@
 
 #headlet-quickcreate-content li.primary {
 	border-bottom:1px dotted #b9bbad;
-	background-color: #edf0df;
+	background-color:#edf0df;
 }
 
 #headlet-quickcreate-content li.primary a {
-	border-bottom: 1px solid white !important;
+	border-bottom:1px solid white !important;
 }
 
 #headlet-quickcreate-content li.primary a:hover {
-	background-color: white !important;
+	background-color:white !important;
 }

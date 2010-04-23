@@ -299,7 +299,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Adds js inline
+	 * Adds JS inline
 	 *
 	 * @param	String	$ext
 	 * @param	String	$type
@@ -374,7 +374,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Add additional header data. Can be any html code
+	 * Add additional header data. Can be any HTML code
 	 *
 	 * @param	String		$headerData
 	 */
@@ -400,7 +400,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Add a html element to the body
+	 * Add an HTML element to the body
 	 *
 	 * @param	String		$elementHtml
 	 */
@@ -444,7 +444,7 @@ class TodoyuPage {
 	/**
 	 * Render page with template
 	 *
-	 * @param	Boolean		$output		Print html code with echo
+	 * @param	Boolean		$output		Print HTML code with echo
 	 * @return	String
 	 */
 	public static function render() {
