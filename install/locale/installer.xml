@@ -82,7 +82,7 @@
 		<label index="importdemodata.step">Import Demo Data</label>
 		<label index="finish.title">Finish Installation</label>
 		<label index="finish.text">Finish Installation</label>
-		<label index="finish.button">Disable installer and go to login. This might take some time because we now prepare the localizations, cache the JS, CSS and do some more magic...</label>
+		<label index="finish.button">Disable installer and go to login.</label>
 		<label index="finish.step">Finish Installation</label>
 		<label index="update.title">todoyu Version Update</label>
 		<label index="update.button">Start Update</label>
