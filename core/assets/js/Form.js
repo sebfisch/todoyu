@@ -253,7 +253,7 @@ Todoyu.Form = {
 			var iFrame	= new Element('iframe', {
 				'name':		'upload-iframe-' + key,
 				'id':		'upload-iframe-' + key,
-				'class':	'upload-iframe'
+				'class':	'uploadIframe'
 			});
 
 			iFrame.hide();
