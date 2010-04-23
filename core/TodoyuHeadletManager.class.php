@@ -26,23 +26,17 @@
  */
 class TodoyuHeadletManager {
 
-	public static function saveOpenStatus($headlet, $open = true) {
-		$pref	= 'headlet-open-' . strtolower(trim($headlet));
+	private static $openPref	= 'headlet-open';
 
-		if( $open ) {
-			TodoyuPreferenceManager::savePreference(0, $pref, 1);
-		} else {
-			TodoyuPreferenceManager::deletePreference(0, $pref);
-		}
+	public static function saveOpenStatus($headlet) {
+		TodoyuPreferenceManager::savePreference(0, self::$openPref, strtolower($headlet), 0, true);
 	}
 
 
 	public static function isOpen($headlet) {
-		$pref	= 'headlet-open-' . strtolower(trim($headlet));
-
-		$open	= TodoyuPreferenceManager::getPreference(0, $pref);
-
-		return intval($open) === 1;
+		$openHeadlet	= TodoyuPreferenceManager::getPreference(0, self::$openPref);
+		
+		return strtolower($headlet) === $openHeadlet;
 	}
 
 }

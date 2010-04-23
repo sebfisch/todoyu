@@ -34,9 +34,8 @@ class TodoyuCoreHeadletActionController extends TodoyuActionController {
 	 */
 	public function openAction(array $params) {
 		$headlet	= trim($params['headlet']);
-		$open		= intval($params['open']) === 1;
 
-		TodoyuHeadletManager::saveOpenStatus($headlet, $open);
+		TodoyuHeadletManager::saveOpenStatus($headlet);
 	}
 
 }

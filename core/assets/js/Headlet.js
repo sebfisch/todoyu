@@ -29,7 +29,7 @@ Todoyu.Headlet = {
 	 */
 	headlets: {},
 	
-	openStatus: {},
+	openStatusTimeout: null,
 
 
 
@@ -129,6 +129,7 @@ Todoyu.Headlet = {
 		headletObject.getButton			= this.getButton.bind(this, name);
 		headletObject.getContent		= this.getContent.bind(this, name);
 		headletObject.saveOpenStatus	= this.saveOpenStatus.bind(this, name);
+		headletObject.isEventInOwnContent	= this.isEventInOwnContent.bind(this, name);
 
 			// Call headlet init function if exists
 		Todoyu.callIfExists(headletObject.init, headletObject);
@@ -265,6 +266,10 @@ Todoyu.Headlet = {
 		$('headlet-' + name).addClassName('active');
 	},
 
+	setInactive: function(name) {
+		$('headlet-' + name).removeClassName('active');
+	},
+
 	setAllInactive: function() {
 		$('headlets').select('li.headlet').invoke('removeClassName', 'active');
 	},
@@ -346,15 +351,6 @@ Todoyu.Headlet = {
 				this._callHandler(pair.key, 'hide');
 			}
 		}.bind(this, exceptName));
-		
-		/*		
-			// Hide content
-		$('headlets').select('ul.content').each(function(name, headlet){
-			if( headlet.id.split('-')[1] !== name ) {
-				headlet.hide();
-			}
-		}.bind(this, exceptName));
-		*/
 	},
 
 
@@ -400,38 +396,65 @@ Todoyu.Headlet = {
 	 * @param	{Event}		event
 	 */
 	onBodyClick: function(event) {
-		/*	
-		if( ! event.findElement('ul#headlets') ) {
-			this.hideAllContent();
-		}
-		*/
+		$H(this.headlets).each(function(pair){
+			this._callHandler(pair.key, 'onBodyClick', event);
+		}, this);
+	},
+
+
+
+	/**
+	 * Check if event occurred in own content element
+	 * @param	{String}	name
+	 * @param	{Event}		event
+	 */
+	isEventInOwnContent: function(name, event) {
+		return event.element().up('ul#headlet-' + name + '-content') !== undefined;
 	},
 	
 	
 	
 	/**
 	 * Save open status of a headlet
-	 * Only send a request, if status if different from last saved
+	 * Setup a timeout for the save function
 	 * 
 	 * @param	{String}		name
-	 * @param	{String}		ext
-	 * @param	{String}		controller
-	 * @param	{Boolean}		open
 	 */
-	saveOpenStatus: function(name, open) {
-		if( this.openStatus[name] !== open ) {
-			var url		= Todoyu.getUrl('core', 'headlet');
-			var options	= {
-				'parameters': {
-					'action': 	'open',
-					'open':		open ? 1 : 0,
-					'headlet':	name
-				}
-			};
-			
-			Todoyu.send(url, options);
-			this.openStatus[name] = open;
-		}		
+	saveOpenStatus: function(name) {
+		var headlet		= false;
+			// Find open headlet
+		var openOverlay	= $('headlets').select('li.overlay ul').detect(function(overlay){
+			return overlay.visible();
+		});
+
+			// Extract headlet name
+		if( openOverlay !== undefined ) {
+			headlet	= openOverlay.id.split('-')[1];
+		}
+
+			// Clear current timeout
+		window.clearTimeout(this.openStatusTimeout);
+			// Start new timeout
+		this.openStatusTimeout = this.submitOpenStatus.bind(this, headlet).delay(1);
+	},
+
+
+	/**
+	 * Submit the currently open headlet
+	 * False means, no headlet is open at the moment
+	 *
+	 * @param	{String|Boolean}	openHeadlet
+	 */
+	submitOpenStatus: function(openHeadlet) {
+		var url		= Todoyu.getUrl('core', 'headlet');
+		var options	= {
+			'parameters': {
+				'action': 	'open',
+				'headlet':	openHeadlet === false ? '' : openHeadlet
+			}
+		};
+
+		Todoyu.send(url, options);
 	}
 
 };

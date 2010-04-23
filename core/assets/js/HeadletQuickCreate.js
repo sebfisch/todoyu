@@ -67,12 +67,23 @@ Todoyu.Headlet.QuickCreate = {
 		var type	= idParts[4];
 		
 		this.openTypePopup(ext, type);
-		this.headlet.hideContent('quickcreate');
+		this.hide();
+	},
+
+
+	onBodyClick: function(event) {
+		this.hide();
+
+		if( this.isEventInOwnContent(event) ) {			
+			event.stop();
+		}
 	},
 	
 	hide: function() {
 		this.hideContent();
+		this.headlet.setInactive('quickcreate');
 	},
+
 
 
 	/**
