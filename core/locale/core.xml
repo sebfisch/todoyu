@@ -55,7 +55,7 @@
 		<label index="noAccess.missingRight">Missing Right</label>
 		<label index="footer.version">Version</label>
 		<label index="footer.bugreport">Report A Bug</label>
-		<label index="footer.bugreport.title">Use the todoyu bugtracker to add a bugreport</label>
+		<label index="footer.bugreport.title">Use the todoyu bugtracker at bugs.todoyu.com to add a bugreport</label>
 		<label index="footer.forum">Discuss in the forum</label>
 		<label index="footer.forum.title">Find help or share your ideas</label>
 		<label index="footer.usermanual">Manual</label>
@@ -66,7 +66,7 @@
 		<label index="footer.devmanual.title">Manual for developers and other smart people</label>
 		<label index="paging.page">Page</label>
 		<label index="input.autocompleter">Autocompleting Input</label>
-		<label index="ajax.requestFailed">Cannot connect to server (your connection or server down?)</label>
+		<label index="ajax.requestFailed">Cannot connect to server (connection or server down?)</label>
 		<label index="attr.is_active">Active</label>
 		<label index="roles">Roles</label>
 		<label index="role">Role</label>

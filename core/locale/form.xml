@@ -3,8 +3,8 @@
 	<labels lang="en_GB">
 		<label index="select.pleaseSelect">Please Select</label>
 		<label index="select.pleaseChoose">Please Choose</label>
-		<label index="field.isrequired">This Is A Required Field</label>
-		<label index="field.hasError">The Value Entered Is Not Valid</label>
+		<label index="field.isrequired">This is a required field</label>
+		<label index="field.hasError">The value entered is not valid</label>
 		<label index="field.save">Save</label>
 		<label index="field.cancel">Cancel</label>
 		<label index="records.add">Add Record</label>
@@ -12,8 +12,8 @@
 		<label index="records.edit">Edit Record</label>
 		<label index="databaserelation.nolabel">[New entry]</label>
 		<label index="databaserelation.expandAllRecords">Show Details</label>
-		<label index="error.notUnique">This Entry Already Exists</label>
-		<label index="ac.noResults">Autocompleter: No Results Found</label>
+		<label index="error.notUnique">This entry already exists</label>
+		<label index="ac.noResults">Autocompleter: No results found</label>
 		<label index="is_preferred">Preferred</label>
 		<label index="dateselector.open">Open date selector to pick a date</label>
 		<label index="autocompleteInfo">This is an autocomplete field. Start typing to get suggestions</label>
