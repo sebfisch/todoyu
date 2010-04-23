@@ -21,6 +21,8 @@
 	// Disable notices
 error_reporting(E_ALL ^ E_NOTICE);
 
+Todoyu::$CONFIG['DEBUG'] = false;
+
 	// Add core path to autoloader include paths
 Todoyu::$CONFIG['AUTOLOAD'] = array(PATH_CORE, PATH_CORE . DIR_SEP . 'controller');
 
@@ -86,5 +88,6 @@ Todoyu::$CONFIG['CREATE'] = array(
 Todoyu::$CONFIG['WITHOUT_EXTENSIONS']	= false;
 Todoyu::$CONFIG['NO_INIT']				= false;
 
+Todoyu::$CONFIG['CHECK_DENIED_RIGHTS']	= false;
 
 ?>

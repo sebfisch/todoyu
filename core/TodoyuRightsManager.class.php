@@ -39,6 +39,9 @@ class TodoyuRightsManager {
 	private static $rights = null;
 
 
+	private static $checkRightsCache = array();
+
+
 
 	/**
 	 * Load rights. If they are stored in session, use them, else load all
@@ -172,24 +175,75 @@ class TodoyuRightsManager {
 			// Get ID of the extension to access to right
 		$extID = TodoyuExtensions::getExtID($extKey);
 
-		return intval(self::$rights[$extID][$right]) === 1;
+		$allowed	= intval(self::$rights[$extID][$right]) === 1;
+
+			// If right was denied and checking is active, check if this right exists
+		if( $allowed === false && Todoyu::$CONFIG['CHECK_DENIED_RIGHTS'] === true ) {
+			self::checkIfRightExists($extKey, $right);
+		}
+
+		return $allowed;
 	}
 
 
 
 	/**
-	 * Add new right for a group
+	 * Check if a right exists in the rights XML file
+	 * 
+	 * @param	String		$extKey
+	 * @param	String		$right
+	 */
+	public static function checkIfRightExists($extKey, $right) {
+		if( ! is_array(self::$checkRightsCache[$extKey]) ) {
+			$xmlFile = TodoyuExtensions::getExtPath($extKey, '/config/rights.xml');
+			self::$checkRightsCache[$extKey] = TodoyuArray::fromSimpleXml(simplexml_load_file($xmlFile));
+		}
+
+		$rightParts		= explode(':', $right, 2);
+		$rightSection	= $rightParts[0];
+		$rightName		= $rightParts[1];
+
+		$found			= false;
+		
+		foreach(self::$checkRightsCache[$extKey] as $section) {
+			foreach($section as $sectionElements) {
+				if( $rightSection === $sectionElements['@attributes']['name'] ) {
+					if( sizeof($sectionElements['right']) === 1 ) {
+						$sectionRights	= array($sectionElements['right']);
+					} else {
+						$sectionRights	= $sectionElements['right'];
+					}
+					foreach($sectionRights as $rightNode) {
+						if( $rightNode['@attributes']['name'] === $rightName ) {
+							$found	= true;
+							break 3;
+						}
+					}
+				}
+			}
+		}
+
+			// If right doesn't exist, log it
+		if( $found !== true ) {
+			Todoyu::log('Right not found: ' . $extKey . '::' . $right, LOG_LEVEL_SECURITY);
+		}
+	}
+
+
+
+	/**
+	 * Add new right for a role
 	 *
 	 * @param	Integer		$extID
-	 * @param	Integer		$idGroup
+	 * @param	Integer		$idRole
 	 * @param	Integer		$right
 	 * @return	Integer
 	 */
-	public static function setRight($extID, $idGroup, $right) {
+	public static function setRight($extID, $idRole, $right) {
 		$data	= array(
 			'ext'		=> abs($extID),
 			'right'		=> $right,
-			'id_role'	=> abs($idGroup)
+			'id_role'	=> abs($idRole)
 		);
 
 		return Todoyu::db()->doInsert(self::TABLE, $data);
@@ -198,16 +252,16 @@ class TodoyuRightsManager {
 
 
 	/**
-	 * Delete a right for a group
+	 * Delete a right for a role
 	 *
 	 * @param	Integer		$extID
-	 * @param	Integer		$idGroup
+	 * @param	Integer		$idRole
 	 * @param	Integer		$right
 	 * @return	Boolean
 	 */
-	public static function deleteRight($extID, $idGroup, $right) {
+	public static function deleteRight($extID, $idRole, $right) {
 		$where	= '	ext		= ' . abs($extID) . ' AND
-					id_role= ' . abs($idGroup) . ' AND
+					id_role= ' . abs($idRole) . ' AND
 					right	= ' . abs($right);
 		$limit	= 1;
 
@@ -217,7 +271,7 @@ class TodoyuRightsManager {
 
 
 	/**
-	 * Delete all group rights
+	 * Delete all role rights
 	 *
 	 * @param	Integer		$extID			ID of the extension
 	 * @param	Integer		$idRole			ID of the role
@@ -271,10 +325,10 @@ class TodoyuRightsManager {
 
 
 	/**
-	 * Get extension user group rights
+	 * Get extension user role rights
 	 *
 	 * @param	String	$ext
-	 * @param	Array	$groups
+	 * @param	Array	$roles
 	 * @return	Array
 	 */
 	public static function getExtRoleRights($ext, array $roles = array()) {
