@@ -477,6 +477,38 @@ form div.error .fField span.errorMessage {
 }
 
 
+/* ----------------------------------------------
+	Formelement:iconSelector
+   ---------------------------------------------- */
+.fField .iconSelector {
+	width: auto;
+}
+
+.fField .iconSelector .selectorIcon {
+	display: block;
+	height: 25px;
+	width: 25px;
+	margin: 9px 0 0 9px;
+	text-indent: -9999px;
+}
+.fField .iconSelector li {
+	float: left;
+	cursor: pointer;
+	background-color: #f3f3f3;
+	border: 1px dotted #848484;
+}
+
+.fField .iconSelector li.selected {
+	border: 1px solid #848484;
+	background-color: #e3eace;
+}
+
+.fField .iconSelector li:hover {
+	background-color: #e3eace;
+}
+
+
+
 /* styles for lighbox creates */
 
 #quickcreate form,

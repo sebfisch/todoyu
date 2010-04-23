@@ -138,4 +138,9 @@ Todoyu::$CONFIG['FORM']['TYPES']['comment'] = array(
 	'template'	=> 'core/view/form/FormElement_Comment.tmpl'
 );
 
+Todoyu::$CONFIG['FORM']['TYPES']['selectIcon'] = array(
+	'class'		=> 'TodoyuFormElement_SelectIcon',
+	'template'	=> 'core/view/form/FormElement_SelectIcon.tmpl'
+);
+
 ?>

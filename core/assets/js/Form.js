@@ -288,6 +288,22 @@ Todoyu.Form = {
 		if( iFrame ) {
 			iFrame.remove();
 		}
-	}
+	},
+	
+	
+	
+	/**
+	 * Sets the value of the choosen icon to the hidden field
+	 */
+	setIconSelectorValue: function(value, baseID)	{
+		$(baseID).value = value;
+		
+		var selectedOld = $(baseID + '-selector').select('.selected').first();
 
+		if(selectedOld)	{
+			selectedOld.toggleClassName('selected');
+		}
+		
+		$(baseID + '-listItem-' + value).toggleClassName('selected');
+	}
 };
