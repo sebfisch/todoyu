@@ -248,6 +248,7 @@ class TodoyuFileManager {
 	 *
 	 * @param	String		$directoryPath		Directory path to create
 	 * @param	Integer		$mode				Access rights mode
+	 * @return	Boolean
 	 */
 	public static function makeDirDeep($directoryPath, $mode = null) {
 		$directoryPath	= self::pathAbsolute($directoryPath);
@@ -274,6 +275,8 @@ class TodoyuFileManager {
 
 			$basePath = $currentPath;
 		}
+
+		return true;
 	}
 
 
@@ -479,12 +482,12 @@ class TodoyuFileManager {
 	 * @return	Boolean		File was allowed to download and sent to browser
 	 */
 	public static function sendFile($absoluteFilePath) {
-		$absoluteFilePath	= realpath($absoluteFilePath);
+		$pathFile	= realpath($absoluteFilePath);
 
-		if( $absoluteFilePath !== false ) {
-			if( is_readable($absoluteFilePath) ) {
-				if( self::isFileInAllowedDownloadPath($absoluteFilePath) ) {
-					$fp	= fopen($absoluteFilePath, 'rb');
+		if( $pathFile !== false ) {
+			if( is_readable($pathFile) ) {
+				if( self::isFileInAllowedDownloadPath($pathFile) ) {
+					$fp	= fopen($pathFile, 'rb');
 
 					while($data = fread($fp, 1024)) {
 						echo $data;
@@ -494,15 +497,15 @@ class TodoyuFileManager {
 
 					return true;
 				} else {
-					Todoyu::log('Tried to download a file from a not allowed path', LOG_LEVEL_SECURITY, $absoluteFilePath);
+					Todoyu::log('Tried to download a file from a not allowed path: ' . $pathFile, LOG_LEVEL_SECURITY, $pathFile);
 				}
 			} else {
-				Todoyu::log('sendFile() failed because file was not readable', LOG_LEVEL_ERROR, $absoluteFilePath);
+				Todoyu::log('sendFile() failed because file was not readable: ' . $pathFile, LOG_LEVEL_ERROR, $pathFile);
 			}
 		} else {
-			Todoyu::log('sendFile() failed because file was not found', LOG_LEVEL_ERROR, $absoluteFilePath);
+			Todoyu::log('sendFile() failed because file was not found: ' . $pathFile, LOG_LEVEL_ERROR, $pathFile);
 		}
-		
+
 		return false;
 	}
 

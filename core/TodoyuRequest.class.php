@@ -136,8 +136,8 @@ class TodoyuRequest {
 				'name'		=> $info['name'][$name],
 				'type'		=> $info['type'][$name],
 				'tmp_name'	=> $info['tmp_name'][$name],
-				'error'		=> $info['error'][$name],
-				'size'		=> $info['size'][$name]
+				'error'		=> intval($info['error'][$name]),
+				'size'		=> intval($info['size'][$name])
 			);
 		}
 
