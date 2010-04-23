@@ -60,7 +60,7 @@ Todoyu.Headlet.AjaxLoader = {
 	 * 
 	 */
 	onButtonClick: function(event) {
-		console.log('ajax loader clicked');
+		Todoyu.log('ajax loader clicked');
 	},
 
 
@@ -69,7 +69,7 @@ Todoyu.Headlet.AjaxLoader = {
 	 * 
 	 */
 	onContentClick: function(event) {
-		console.log('ajax loader content clicked');
+		Todoyu.log('ajax loader content clicked');
 	},
 
 
@@ -78,7 +78,7 @@ Todoyu.Headlet.AjaxLoader = {
 	 * 
 	 */
 	onMouseOver: function(event) {
-		console.log('over ajax');
+		Todoyu.log('over ajax');
 	},
 
 
@@ -87,7 +87,7 @@ Todoyu.Headlet.AjaxLoader = {
 	 * 
 	 */
 	onMouseOut: function(event) {
-		console.log('out ajax');
+		Todoyu.log('out ajax');
 	}
 	
 };

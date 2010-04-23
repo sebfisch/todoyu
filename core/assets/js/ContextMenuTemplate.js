@@ -62,8 +62,8 @@ Todoyu.ContextMenu.Template = {
 				// If the item has a submenu, replace the key with the rendered code
 				// Prevent with negative array check that all the functions of an array are iterated
 			if( typeof item.submenu === 'object' && ! Object.isArray(item.submenu) ) {
-				//console.log(item.submenu.length);
-				//console.log(Object.isArray(item.submenu));
+				//Todoyu.log(item.submenu.length);
+				//Todoyu.log(Object.isArray(item.submenu));
 				item.submenu = this.renderSubmenu(item);
 			}
 				// Append rendered item

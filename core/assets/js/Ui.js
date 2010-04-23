@@ -390,7 +390,13 @@ Todoyu.Ui = {
 				
 		if( Todoyu.exists('header') ) {
 			var headerHeight = $('header').getHeight();
-			window.setTimeout(window.scrollBy, 10, 0, -headerHeight);
+			//alert(headerHeight);
+			//window.scrollBy.defer(0, -headerHeight);
+			headerHeight = 300;
+			//window.scrollBy(0, -headerHeight);
+			window.setTimeout('window.scrollBy(0, -' + headerHeight + ')', 1000);
+			window.setTimeout('alert("lala")', 1000);
+
 		}
 	},
 
