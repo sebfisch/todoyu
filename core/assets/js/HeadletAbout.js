@@ -80,6 +80,7 @@ Todoyu.Headlet.About = {
 	onWindowLoaded: function(response) {
 		$(this.idWindow).down('.close').observe('click', this.hideWindow.bindAsEventListener(this));
 		this.displayWindow(true);
+		this.initEE();
 	},
 
 
@@ -161,6 +162,38 @@ Todoyu.Headlet.About = {
 			duration: list.select('li').size()*1.5,
 			transition: Effect.Transitions.linear,
 			afterFinish: this.startNameScrolling.bind(this, !up)
+		});
+	},
+
+
+
+	/**
+	 * Initialize EE
+	 */
+	initEE: function() {
+		var names	= ['Erni', 'Stenschke', 'Karrer'];
+
+		$('scrollingnames').select('li').findAll(function(names, element){
+			var isCoder = names.any(function(itemName, coderName){
+				return itemName.indexOf(coderName) !== -1;
+			}.bind(this, element.innerHTML));
+
+			if( isCoder ) {
+				element.observe('click', this.EE.bindAsEventListener(this));
+			}
+		}.bind(this, names));
+	},
+
+
+
+	/**
+	 * Show EE
+	 *
+	 * @param	{Event}		event
+	 */
+	EE: function(event) {
+		$('headlet-about-window').down('div.logo').setStyle({
+			'background': 'url(core/assets/img/ggeretsae.gif) no-repeat scroll 40% 0'
 		});
 	}
 	

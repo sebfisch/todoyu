@@ -387,8 +387,6 @@ Todoyu.Ui = {
 	scrollToElement: function(element) {
 		element = $(element);
 		element.scrollTo();
-
-		console.log('scrollToElement');
 				
 		if( Todoyu.exists('header') ) {
 			var headerHeight	= $('header').getHeight();
