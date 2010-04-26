@@ -204,8 +204,10 @@ Todoyu.Headlet = {
 			if( this.isActive(name) ) {
 				this.setAllInactive();
 			} else {
-				this.setActive(name);
-			}			
+				if( this.getType(name) !== 'button' ) {
+					this.setActive(name);
+				}
+			}
 
 			if( this._isContentEvent(event) ) {
 				type	= 'onContentClick';
@@ -385,6 +387,22 @@ Todoyu.Headlet = {
 	 */
 	getContent: function(name) {
 		return $('headlet-' + name.toLowerCase() + '-content');
+	},
+
+
+
+	/**
+	 * Get headlet type
+	 *
+	 * @param	{String}		name
+	 */
+	getType: function(name) {
+		var classNames	= $w(this.getButton(name).className);
+		var typeClass	= classNames.detect(function(className){
+			return className.indexOf('headletType') !== -1;
+		});
+
+		return typeClass.replace('headletType', '').toLowerCase();
 	},
 
 

@@ -92,13 +92,13 @@ var Todoyu = {
 
 		if( typeof params === 'object' ) {
 			url += '&' + Object.toQueryString(params);
-		}
+		}	
 
 		if( Object.isString(hash) ) {
-			url += '#' + hash;
+			this.goToHashURL(url, hash);
+		} else {
+			location.href = url;
 		}
-
-		location.href = url;
 	},
 
 
@@ -111,11 +111,17 @@ var Todoyu = {
 	 * @param	{String}	hash
 	 */
 	goToHashURL: function(url, hash) {
-		if( location.search === url && Todoyu.exists(hash) ) {
-			$(hash).scrollToElement();
-		} else {
-			location.href =  url + '#' + hash;
+		var searchPart	= url.substr(url.indexOf('?'));
+		
+		if( location.search === searchPart && Todoyu.exists(hash) ) {
+			if( $(hash).getHeight() > 0 ) {
+				$(hash).scrollToElement();
+				return;
+			}			
 		}
+
+			// Fallback
+		location.href =  url + '#' + hash;
 	},
 
 
@@ -225,7 +231,7 @@ var Todoyu = {
 		if( typeof functionReference === 'function' ) {
 			functionReference.apply(context, args);
 		} else {
-			Todoyu.log('Todoyu.callIfExists() was executed with a non-function. This can be an error (not sure). Params: ' + Object.inspect(args), 1);
+			//Todoyu.log('Todoyu.callIfExists() was executed with a non-function. This can be an error (not sure). Params: ' + Object.inspect(args), 1);
 		}
 	},
 
