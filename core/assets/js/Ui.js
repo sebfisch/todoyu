@@ -387,17 +387,29 @@ Todoyu.Ui = {
 	scrollToElement: function(element) {
 		element = $(element);
 		element.scrollTo();
+
+		console.log('scrollToElement');
 				
 		if( Todoyu.exists('header') ) {
-			var headerHeight = $('header').getHeight();
-			//alert(headerHeight);
-			//window.scrollBy.defer(0, -headerHeight);
-			headerHeight = 300;
-			//window.scrollBy(0, -headerHeight);
-			window.setTimeout('window.scrollBy(0, -' + headerHeight + ')', 1000);
-			window.setTimeout('alert("lala")', 1000);
+			var headerHeight	= $('header').getHeight();
+			var scrollOffset	= element.cumulativeScrollOffset().top;
+			var elementOffset	= element.cumulativeOffset().top;
 
+			var scrollBy	= headerHeight;
+
+			if( scrollOffset > headerHeight ) {
+				if( scrollOffset !== elementOffset ) {
+					var scrollBy	= scrollOffset - (elementOffset - headerHeight);
+				}
+
+				this.scrollBy.delay(0.1, 0, -scrollBy);
+			}
 		}
+	},
+
+	scrollBy: function(x, y) {
+		//alert('scroll: ' + y);
+		window.scrollBy(x, y);
 	},
 
 

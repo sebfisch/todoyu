@@ -44,8 +44,13 @@ var Todoyu = {
 		this.Ui.observeBody();
 		this.initExtensions();
 	},
-	
-	
+
+
+
+	/**
+	 * Initialize all extensions
+	 * Call the init() function of all extensions in their main container if it exists
+	 */
 	initExtensions: function() {
 		$H(this.Ext).each(function(pair){
 			if( typeof(pair.value.init) === 'function' ) {
@@ -93,7 +98,24 @@ var Todoyu = {
 			url += '#' + hash;
 		}
 
-		document.location.href = url;
+		location.href = url;
+	},
+
+
+
+	/**
+	 * Go to an URL with a hash
+	 * If the URL itself is identical, just scroll to the element
+	 *
+	 * @param	{String}	url
+	 * @param	{String}	hash
+	 */
+	goToHashURL: function(url, hash) {
+		if( location.search === url && Todoyu.exists(hash) ) {
+			$(hash).scrollToElement();
+		} else {
+			location.href =  url + '#' + hash;
+		}
 	},
 
 
