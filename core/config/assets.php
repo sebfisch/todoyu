@@ -183,6 +183,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 59
 		),
 		array(
+			'file'		=> 'core/assets/js/DateField.js',
+			'position'	=> 59
+		),
+		array(
 			'file'		=> 'core/assets/js/ContextMenu.js',
 			'position'	=> 60
 		),
