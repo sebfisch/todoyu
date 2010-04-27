@@ -28,9 +28,9 @@ Todoyu.Listing = {
 	 * 
 	 * @param	{String}		name
 	 * @param	unknown		update
-	 * @param	{Integer}		size
-	 * @param	{Integer}		offset
-	 * @param	{Integer}		total
+	 * @param	{Number}		size
+	 * @param	{Number}		offset
+	 * @param	{Number}		total
 	 */
 	init: function(name, update, size, offset, total) {
 		var url	= update.split('/');
@@ -54,7 +54,7 @@ Todoyu.Listing = {
 	 * Evoke getting more list results
 	 * 
 	 * @param	{String}		name
-	 * @param	{Integer}		pagenum
+	 * @param	{Number}		pagenum
 	 */
 	more: function(name, pagenum) {
 		var newOffset = this.config[name].offset + this.config[name].size;
@@ -69,8 +69,8 @@ Todoyu.Listing = {
 	 * Fetch more results and extend the amount of entries listed
 	 * 
 	 * @param	{String}		name
-	 * @param	{Integer}		offset
-	 * @param	{Integer}		pagenum
+	 * @param	{Number}		offset
+	 * @param	{Number}		pagenum
 	 */
 	extend: function(name, offset, pagenum) {
 		var url		= Todoyu.getUrl(this.config[name].url.ext, this.config[name].url.controller);
@@ -96,7 +96,7 @@ Todoyu.Listing = {
 	 * Handler being evoked upon completion of extending displayed entries
 	 * 
 	 * @param	{String}		name
-	 * @param	{Integer}		offset
+	 * @param	{Number}		offset
 	 * @param	{Object}		response
 	 */
 	onExtended: function(name, offset, response) {

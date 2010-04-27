@@ -74,6 +74,7 @@
 		<label index="role.attr.persons">Role Members</label>
 		<label index="headlet.ajaxloader.label">Synchronizing data with webserver</label>
 		<label index="headlet.about.label">About todoyu</label>
+		<label index="unknown">n.A.</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="tab.todoyu.label">todoyu</label>
@@ -149,6 +150,7 @@
 		<label index="role.attr.persons">Rollenmitglieder</label>
 		<label index="headlet.ajaxloader.label">Synchronisiere Daten mit dem Webserver</label>
 		<label index="headlet.about.label">Über todoyu</label>
+		<label index="unknown">unbekannt</label>
 	</labels>
 	<labels lang="pt_BR">
 		<label index="tab.todoyu.label">todoyu</label>
@@ -224,5 +226,6 @@
 		<label index="role.attr.persons">Membros do Grupo</label>
 		<label index="headlet.ajaxloader.label">Synchronizing data with webserver</label>
 		<label index="headlet.about.label">Sobre todoyu</label>
+		<label index="unknown">n.d.</label>
 	</labels>
 </locallang>

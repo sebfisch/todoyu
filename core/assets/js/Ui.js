@@ -426,7 +426,7 @@ Todoyu.Ui = {
 	/**
 	 * Collapse / expand element
 	 *
-	 * @param	{Integer}	idElement
+	 * @param	{Number}	idElement
 	 * @param	{Element}	toggle
 	 */
 	collapseExpandElement: function(idElement, toggle) {
@@ -478,7 +478,7 @@ Todoyu.Ui = {
 	/**
 	 * Show time picker
 	 *
-	 * @param	{Integer}		idElement
+	 * @param	{Number}		idElement
 	 * @param	{Array}		config
 	 * @return	TimePicker
 	 */

@@ -50,7 +50,7 @@ Todoyu.Helper = {
 	 * Convert to 2-digit value (possibly add leading zero)
 	 *
 	 * @param	{Mixed}		number
-	 * @return	{Integer}
+	 * @return	{Number}
 	 */
 	twoDigit: function(number) {
 		number = parseInt(number, 10);
@@ -87,7 +87,7 @@ Todoyu.Helper = {
 	 * Round with given precision
 	 *
 	 * @param	{Float}		value
-	 * @param	{Integer}	precision
+	 * @param	{Number}	precision
 	 * @return	{Float}
 	 */
 	round: function(value, precision) {
@@ -133,7 +133,7 @@ Todoyu.Helper = {
 	 * version: 909.322
 	 * 
 	 * @param	{String}		str
-	 * @param	{Integer}		int_width
+	 * @param	{Number}		int_width
 	 * @param	{String}		str_break
 	 * @param	{Boolean}		cut
 	 * @return	{String}

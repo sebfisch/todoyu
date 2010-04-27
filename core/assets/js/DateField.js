@@ -59,8 +59,8 @@ Todoyu.DateField = {
 	 * Change time in a datetime field
 	 *
 	 * @param	{String|Element}	field
-	 * @param	{Integer}			hour
-	 * @param	{Integer}			minute
+	 * @param	{Number}			hour
+	 * @param	{Number}			minute
 	 */
 	setTime: function(field, hour, minute) {
 		var date	= this.getDate(field);

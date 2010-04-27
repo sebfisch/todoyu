@@ -168,7 +168,7 @@ var Todoyu = {
 	 * Show error notification
 	 * 
 	 * @param	{String}		message
-	 * @param	{Integer}		countdown
+	 * @param	{Number}		countdown
 	 */
 	notifyError: function(message, countdown) {
 		Todoyu.Notification.notifyError(message, countdown);
@@ -180,7 +180,7 @@ var Todoyu = {
 	 * Show info notification
 	 * 
 	 * @param	{String}		message
-	 * @param	{Integer}		countdown
+	 * @param	{Number}		countdown
 	 */
 	notifyInfo: function(message, countdown) {
 		Todoyu.Notification.notifyInfo(message, countdown);
@@ -192,7 +192,7 @@ var Todoyu = {
 	 * Show success notification
 	 * 
 	 * @param	{String}		message
-	 * @param	{Integer}		countdown
+	 * @param	{Number}		countdown
 	 */
 	notifySuccess: function(message, countdown) {
 		Todoyu.Notification.notifySuccess(message, countdown);
@@ -264,7 +264,7 @@ var Todoyu = {
 	 * Todoyu log. Check level and if console exists
 	 * 
 	 * @param	{Object}		element
-	 * @param	{Integer}		level
+	 * @param	{Number}		level
 	 * @param	{String}		title
 	 */
 	log: function(element, level, title) {

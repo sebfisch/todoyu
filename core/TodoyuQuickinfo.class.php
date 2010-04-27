@@ -27,17 +27,51 @@
 class TodoyuQuickinfo {
 
 	/**
+	 * Element key. Mostly a record ID
+	 */
+	private $element = 0;
+
+	/**
+	 * Quickinfo type
+	 */
+	private $type;
+
+	/**
 	 * Infos
 	 *
 	 * @var	Array
 	 */
-	private $data = array();
+	private $elements = array();
+
+
 
 	/**
 	 * Create a new quickinfo object
+	 * Call all registered functions to let them add items
 	 */
-	public function __construct() {
+	public function __construct($type, $element) {
+		$this->type		= $type;
+		$this->element	= $element;
 
+		$this->init();
+	}
+
+
+
+	/**
+	 * Initialize quickinfo
+	 * Load data from registered callback functions
+	 */
+	private function init() {
+		$funcRefs	= TodoyuQuickinfoManager::getTypeFunctions($this->type);
+
+			// Get items from all functions
+		foreach($funcRefs as $funcRef) {
+			TodoyuFunction::callUserFunction($funcRef['function'], $this, $this->element);
+		}
+
+			// Sort items
+		$this->elements = TodoyuArray::sortByLabel($this->elements, 'position');
 	}
 
 
@@ -50,7 +84,7 @@ class TodoyuQuickinfo {
 	 * @param	Integer		$position
 	 */
 	public function addInfo($key, $label, $position = 100) {
-		$this->data[$key] = array(
+		$this->elements[$key] = array(
 			'key'		=> $key,
 			'label'		=> str_replace("\n", '<br />', htmlentities($label, ENT_QUOTES, 'utf-8')),
 			'position'	=> intval($position)
@@ -65,7 +99,7 @@ class TodoyuQuickinfo {
 	 * @param	String		$key
 	 */
 	public function removeInfo($key) {
-		unset($this->data[$key]);
+		unset($this->elements[$key]);
 	}
 
 
@@ -76,7 +110,7 @@ class TodoyuQuickinfo {
 	 * @return	Array
 	 */
 	public function getInfos() {
-		return TodoyuArray::sortByLabel($this->data, 'position');
+		return TodoyuArray::sortByLabel($this->elements, 'position');
 	}
 
 
@@ -86,7 +120,7 @@ class TodoyuQuickinfo {
 	 *
 	 * @return	String
 	 */
-	public function getInfoJSON() {
+	public function getJSON() {
 		return json_encode($this->getInfos());
 	}
 
@@ -95,10 +129,10 @@ class TodoyuQuickinfo {
 	/**
 	 * Print info struct json encoded
 	 */
-	public function printInfoJSON() {
+	public function printJSON() {
 		TodoyuHeader::sendHeaderJSON();
 
-		echo $this->getInfoJSON();
+		echo $this->getJSON();
 	}
 
 
@@ -107,7 +141,7 @@ class TodoyuQuickinfo {
 	 * Remove all infos
 	 */
 	public function clear() {
-		$this->data = array();
+		$this->elements = array();
 	}
 
 }

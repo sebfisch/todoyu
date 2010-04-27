@@ -26,7 +26,7 @@ Todoyu.PanelWidget = {
 	 *
 	 * @param	{String}			ext			e.g. 'project' / 'calendar' etc.
 	 * @param	{String}			widgetName
-	 * @param	{Integer}			idArea
+	 * @param	{Number}			idArea
 	 */
 	toggle: function(widget) {
 		var h1		= $('panelwidget-' + widget + '-h1');
@@ -56,7 +56,7 @@ Todoyu.PanelWidget = {
 	 * @param	{String}			ext			e.g. 'project' / 'calendar' etc.
 	 * @param	{String}			widgetName
 	 * @param	{Boolean}			expand
-	 * @param	{Integer}			idArea
+	 * @param	{Number}			idArea
 	 */
 	saveToggleStatus: function(widget, expanded) {
 		var url		= Todoyu.getUrl('core', 'panelwidget');

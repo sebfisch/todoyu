@@ -49,7 +49,7 @@ Todoyu.Autocomplete = {
 	/**
 	 * Initialize autocompleter
 	 *
-	 * @param	{Integer}		idElement		ID of the element whichs value will be set by autocomplete
+	 * @param	{Number}		idElement		ID of the element whichs value will be set by autocomplete
 	 * @param	{Object}		config			Custom config
 	 */
 	install: function(idElement, config)	{
@@ -84,7 +84,7 @@ Todoyu.Autocomplete = {
 	/**
 	 * Callback which builds the request url
 	 *
-	 * @param	{Integer}		idElement
+	 * @param	{Number}		idElement
 	 * @param	{String}		acParam
 	 */
 	beforeRequestCallback: function(idElement, acParam) {

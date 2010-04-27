@@ -31,7 +31,7 @@ Todoyu.Pref = {
 	 * @param	{String}		ext
 	 * @param	{String}		action
 	 * @param	{String}		value
-	 * @param	{Integer}		idItem
+	 * @param	{Number}		idItem
 	 * @param	unknown_type	onComplete
 	 */
 	save: function(ext, action, value, idItem, onComplete) {

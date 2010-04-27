@@ -46,7 +46,7 @@ Todoyu.Notification = {
 	 * 
 	 * @param	{String}		type
 	 * @param	{String}		message
-	 * @param	{Integer}		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	notify: function(type, message, countdown) {
 		this.loadTemplate();
@@ -96,7 +96,7 @@ Todoyu.Notification = {
 	 * Shortcut to show info notification
 	 * 
 	 * @param	{String}		message
-	 * @param	{Integer}		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	notifyInfo: function(message, countdown) {
 		this.notify(this.INFO, message, countdown);
@@ -108,7 +108,7 @@ Todoyu.Notification = {
 	 * Shortcut to show error notification
 	 * 
 	 * @param	{String}		message
-	 * @param	{Integer}		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	notifyError: function(message, countdown) {
 		this.notify(this.ERROR, message, countdown);
@@ -120,7 +120,7 @@ Todoyu.Notification = {
 	 * Shortcut to show success notification
 	 * 
 	 * @param	{String}		message
-	 * @param	{Integer}		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
 	notifySuccess: function(message, countdown) {
 		this.notify(this.SUCCESS, message, countdown);
@@ -145,7 +145,7 @@ Todoyu.Notification = {
 	 * Close note by ID
 	 * @todo	watch out for a bugfix of scriptaculous' malfunctioning 'afterFinish' callback
 	 * 
-	 * @param	{Integer}		id
+	 * @param	{Number}		id
 	 */
 	closeNote: function(id) {
 		var duration	= 0.3;
@@ -182,7 +182,7 @@ Todoyu.Notification = {
 	/**
 	 * Handler being evoked when a note is closed (fade-out finished)
 	 * 
-	 * @param	{Integer}		id
+	 * @param	{Number}		id
 	 */
 	onNoteClosed: function(id) {
 		if( $('notification-note-' + id) ) {
@@ -195,7 +195,7 @@ Todoyu.Notification = {
 	/**
 	 * Append new note
 	 * 
-	 * @param	{Integer}		id
+	 * @param	{Number}		id
 	 * @param	{String}		code
 	 */
 	appendNote: function(idNote, code) {
@@ -213,7 +213,7 @@ Todoyu.Notification = {
 
 	/**
 	 * 
-	 * @param	{Integer}		id
+	 * @param	{Number}		id
 	 */
 	countDown: function(id) {
 		if( $('notification-note-' + id) ) {

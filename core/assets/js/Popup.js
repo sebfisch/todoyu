@@ -62,7 +62,7 @@ Todoyu.Popup = {
 	/**
 	 * Get amount of open popups
 	 * 
-	 * @return	{Integer}
+	 * @return	{Number}
 	 */	
 	getNumPopups: function() {
 		return Object.keys(this.popup).size();
@@ -75,7 +75,7 @@ Todoyu.Popup = {
 	 *
 	 * @param	{String}		idPopup
 	 * @param	{String}		titleTxt
-	 * @param	{Integer}		winWidth
+	 * @param	{Number}		winWidth
 	 * @param	{String}		contentUrl
 	 * @param	{Array}		requestOptions
 	 * @return	Object

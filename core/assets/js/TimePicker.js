@@ -107,7 +107,7 @@ var TimePicker = Class.create({
 	/**
 	 * Set hour and update scroll
 	 * 
-	 * @param	{Integer}		hour
+	 * @param	{Number}		hour
 	 */
 	setHour: function(hour) {
 		this.hour = this._keepInRange(hour, this.config.rangeHour);
@@ -120,7 +120,7 @@ var TimePicker = Class.create({
 	/**
 	 * Set minute and update scroll
 	 * 
-	 * @param	{Integer}		minute
+	 * @param	{Number}		minute
 	 */
 	setMinute: function(minute) {		
 		this.minute = this._keepInRange(minute, this.config.rangeMinute);
@@ -356,7 +356,7 @@ var TimePicker = Class.create({
 	/**
 	 * Make sure the value stays in the range.
 	 * 
-	 * @param	{Integer}		value
+	 * @param	{Number}		value
 	 * @param	{Array}		range		Bottom and top range
 	 */
 	_keepInRange: function(value, range) {

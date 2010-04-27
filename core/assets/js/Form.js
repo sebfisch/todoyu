@@ -47,9 +47,9 @@ Todoyu.Form = {
 	/**
 	 * Toggle sub form
 	 *
-	 * @param	{Integer}		idRecord
+	 * @param	{Number}		idRecord
 	 * @param	{String}		fieldName
-	 * @param	{Integer}		index
+	 * @param	{Number}		index
 	 */
 	toggleRecordForm: function(idRecord, fieldName, index)	{
 		var baseName	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
@@ -76,9 +76,9 @@ Todoyu.Form = {
 	/**
 	 * Remove sub form
 	 *
-	 * @param	{Integer}		idRecord
+	 * @param	{Number}		idRecord
 	 * @param	{String}		fieldName
-	 * @param	{Integer}		index
+	 * @param	{Number}		index
 	 */
 	removeRecord: function(idRecord, fieldName, index) {
 		var idElement	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
@@ -91,7 +91,7 @@ Todoyu.Form = {
 	/**
 	 * Add a new record
 	 *
-	 * @param	{Integer}		idRecord
+	 * @param	{Number}		idRecord
 	 * @param	{String}		formName
 	 * @param	{String}		fieldName
 	 * @param	{String}		updateExt
@@ -121,7 +121,7 @@ Todoyu.Form = {
 	/**
 	 * Callback when new record added
 	 *
-	 * @param	{Integer}		idRecord
+	 * @param	{Number}		idRecord
 	 * @param	{String}		formName
 	 * @param	{String}		fieldName
 	 * @param	{String}		index
@@ -139,9 +139,9 @@ Todoyu.Form = {
 	/**
 	 * Focus first record field
 	 *
-	 * @param	{Integer}		idRecord
+	 * @param	{Number}		idRecord
 	 * @param	{String}		fieldName
-	 * @param	{Integer}		index
+	 * @param	{Number}		index
 	 */
 	focusFirstRecordField: function(idRecord, fieldName, index) {
 		var formHTML= $('foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml');
@@ -210,13 +210,13 @@ Todoyu.Form = {
 	/**
 	 * Expand all foreign records in a form
 	 *
-	 * @param	{Integer}		idRecord
-	 * @param	{Integer}		idField
+	 * @param	{Number}		idRecord
+	 * @param	{Number}		idField
 	 * @param	{String}		extension
 	 * @param	{String}		controller
 	 * @param	{String}		action
-	 * @param	{Integer}		height
-	 * @param	{Integer}		width
+	 * @param	{Number}		height
+	 * @param	{Number}		width
 	 * @param	{String}		title
 	 * @return	{String}
 	 */
