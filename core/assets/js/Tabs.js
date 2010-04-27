@@ -131,6 +131,7 @@ Todoyu.Tabs = {
 	 * Get currently active tab in a list
 	 *
 	 * @param	{String}		list		List element or its ID
+	 * @return	{Element}
 	 */
 	getActive: function(list) {
 		return $(list).down('li.active');
@@ -142,9 +143,16 @@ Todoyu.Tabs = {
 	 * Get key of the active tab of the list
 	 * 
 	 * @param	{String}		list		List or its ID
+	 * @return	{Element}
 	 */
 	getActiveKey: function(list) {
-		return this.getActive(list).id.split('-').last();
+		var active = this.getActive(list);
+
+		if( active ) {
+			return active.id.split('-').last();
+		} else {
+			return null;
+		}		
 	},
 
 
