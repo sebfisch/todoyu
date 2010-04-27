@@ -586,12 +586,12 @@ class TodoyuArray {
 
 
 	/**
-	 * Flatten array
+	 * Flatten array: flattens multi-dim arrays (destroys keys)
 	 *
 	 * @param	Array	$array
 	 * @return	Array
 	 */
-	public static function flatten(array $array){ //flattens multi-dim arrays (destroys keys)
+	public static function flatten(array $array){
 		$flattened = array();
 
 		foreach($array as $value){

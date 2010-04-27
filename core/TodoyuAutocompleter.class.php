@@ -65,7 +65,7 @@ class TodoyuAutocompleter {
 	 *
 	 * @param	String		$name			Name of the autocompleter type
 	 * @param	String		$input			Text the user entered
-	 * @param	Array		$formData		All other formdata
+	 * @param	Array		$formData		All other form data
 	 * @return	Array
 	 */
 	public static function getResults($name, $input, array $formData = array()) {

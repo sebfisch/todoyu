@@ -235,13 +235,13 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
-	 * Update formdata for a field
+	 * Update form data for a field
 	 *
-	 * @param	String		$fieldname
+	 * @param	String		$fieldName
 	 * @param	Mixed		$value
 	 */
-	public function setFieldFormData($fieldname, $value) {
-		$this->formdata[$fieldname] = $value;
+	public function setFieldFormData($fieldName, $value) {
+		$this->formdata[$fieldName] = $value;
 	}
 
 

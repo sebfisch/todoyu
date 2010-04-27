@@ -44,7 +44,7 @@ class TodoyuDbHelper {
 			// Get existing record IDs in link table
 		$currentForeignIDs	= self::getForeignIDs($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord);
 
-			// If record not allready linked, add link
+			// If record not already linked, add link
 		foreach($foreignRecordIDs as $idForeignRecord) {
 			if( ! in_array($idForeignRecord, $currentForeignIDs) ) {
 				self::addMMLink($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $idForeignRecord);
