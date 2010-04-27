@@ -1,3 +1,5 @@
+-- --------------------------------------------------------
+
 --
 -- Table structure for table  `history`
 --
@@ -11,6 +13,8 @@ CREATE TABLE `system_log` (
   `rowdata` mediumtext NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table  `log`
@@ -29,6 +33,8 @@ CREATE TABLE `system_errorlog` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table  `static_country`
 --
@@ -43,6 +49,8 @@ CREATE TABLE `static_country` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table  `static_country_zone`
 --
@@ -55,6 +63,8 @@ CREATE TABLE `static_country_zone` (
   `code` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table  `static_currency`
@@ -75,6 +85,8 @@ CREATE TABLE `static_currency` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table  `static_territory`
 --
@@ -85,6 +97,8 @@ CREATE TABLE `static_territory` (
   `parent_iso_num` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table  `static_language`
@@ -98,6 +112,8 @@ CREATE TABLE `static_language` (
   UNIQUE KEY `alpha2` (`iso_alpha2`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `system_role`
@@ -116,6 +132,8 @@ CREATE TABLE `system_role` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `system_panelwidget`
 --
@@ -131,6 +149,8 @@ CREATE TABLE `system_panelwidget` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `system_preference`
@@ -149,6 +169,8 @@ CREATE TABLE `system_preference` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `system_right`
 --
@@ -162,6 +184,8 @@ CREATE TABLE `system_right` (
   KEY `ext` (`ext`,`id_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table  `static_timezone`
