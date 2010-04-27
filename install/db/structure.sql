@@ -10,13 +10,7 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Datenbank: `rc1`
---
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `ext_assets_asset`
+-- Table structure for table  `ext_assets_asset`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_assets_asset` (
@@ -41,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `ext_assets_asset` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_bookmark_bookmark`
+-- Table structure for table  `ext_bookmark_bookmark`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_bookmark_bookmark` (
@@ -58,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `ext_bookmark_bookmark` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_event`
+-- Table structure for table  `ext_calendar_event`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_calendar_event` (
@@ -84,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `ext_calendar_event` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_holiday`
+-- Table structure for table  `ext_calendar_holiday`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_calendar_holiday` (
@@ -103,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `ext_calendar_holiday` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_holidayset`
+-- Table structure for table  `ext_calendar_holidayset`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_calendar_holidayset` (
@@ -120,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `ext_calendar_holidayset` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_mm_event_person`
+-- Table structure for table  `ext_calendar_mm_event_person`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_calendar_mm_event_person` (
@@ -129,14 +123,14 @@ CREATE TABLE IF NOT EXISTS `ext_calendar_mm_event_person` (
   `id_user` int(10) unsigned NOT NULL DEFAULT '0',
   `is_acknowledged` tinyint(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `uid_local` (`id_event`),
-  KEY `uid_foreign` (`id_user`)
+  KEY `event` (`id_event`),
+  KEY `user` (`id_user`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_calendar_mm_holiday_holidayset`
+-- Table structure for table  `ext_calendar_mm_holiday_holidayset`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_calendar_mm_holiday_holidayset` (
@@ -151,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `ext_calendar_mm_holiday_holidayset` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_comment_comment`
+-- Table structure for table  `ext_comment_comment`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_comment_comment` (
@@ -170,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `ext_comment_comment` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_comment_feedback`
+-- Table structure for table  `ext_comment_feedback`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_comment_feedback` (
@@ -187,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `ext_comment_feedback` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_comment_mailed`
+-- Table structure for table  `ext_comment_mailed`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_comment_mailed` (
@@ -202,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `ext_comment_mailed` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_mm_project_person`
+-- Table structure for table  `ext_project_mm_project_person`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_project_mm_project_person` (
@@ -219,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `ext_project_mm_project_person` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_project`
+-- Table structure for table  `ext_project_project`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_project_project` (
@@ -247,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `ext_project_project` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_task`
+-- Table structure for table  `ext_project_task`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_project_task` (
@@ -289,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `ext_project_task` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_role`
+-- Table structure for table  `ext_project_role`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_project_role` (
@@ -306,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `ext_project_role` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_project_worktype`
+-- Table structure for table  `ext_project_worktype`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_project_worktype` (
@@ -323,7 +317,7 @@ CREATE TABLE IF NOT EXISTS `ext_project_worktype` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_search_filtercondition`
+-- Table structure for table  `ext_search_filtercondition`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_search_filtercondition` (
@@ -342,7 +336,7 @@ CREATE TABLE IF NOT EXISTS `ext_search_filtercondition` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_search_filterset`
+-- Table structure for table  `ext_search_filterset`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_search_filterset` (
@@ -363,7 +357,7 @@ CREATE TABLE IF NOT EXISTS `ext_search_filterset` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_sysmanager_extension`
+-- Table structure for table  `ext_sysmanager_extension`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_sysmanager_extension` (
@@ -378,7 +372,7 @@ CREATE TABLE IF NOT EXISTS `ext_sysmanager_extension` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_timetracking_track`
+-- Table structure for table  `ext_timetracking_track`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_timetracking_track` (
@@ -398,7 +392,7 @@ CREATE TABLE IF NOT EXISTS `ext_timetracking_track` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_timetracking_tracking`
+-- Table structure for table  `ext_timetracking_tracking`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_timetracking_tracking` (
@@ -413,7 +407,7 @@ CREATE TABLE IF NOT EXISTS `ext_timetracking_tracking` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_contact_address`
+-- Table structure for table  `ext_contact_address`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_contact_address` (
@@ -438,7 +432,7 @@ CREATE TABLE IF NOT EXISTS `ext_contact_address` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_contact_company`
+-- Table structure for table  `ext_contact_company`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_contact_company` (
@@ -460,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `ext_contact_company` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_contact_contactinfo`
+-- Table structure for table  `ext_contact_contactinfo`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_contact_contactinfo` (
@@ -478,7 +472,7 @@ CREATE TABLE IF NOT EXISTS `ext_contact_contactinfo` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_contact_contactinfotype`
+-- Table structure for table  `ext_contact_contactinfotype`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_contact_contactinfotype` (
@@ -496,7 +490,7 @@ CREATE TABLE IF NOT EXISTS `ext_contact_contactinfotype` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `system_role`
+-- Table structure for table  `system_role`
 --
 
 CREATE TABLE IF NOT EXISTS `system_role` (
@@ -514,7 +508,7 @@ CREATE TABLE IF NOT EXISTS `system_role` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_holiday`
+-- Table structure for table  `ext_user_holiday`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_user_holiday` (
@@ -534,7 +528,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_holiday` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_contact_jobtype`
+-- Table structure for table  `ext_contact_jobtype`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_contact_jobtype` (
@@ -547,7 +541,7 @@ CREATE TABLE IF NOT EXISTS `ext_contact_jobtype` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_company_address`
+-- Table structure for table  `ext_user_mm_company_address`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_user_mm_company_address` (
@@ -560,7 +554,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_mm_company_address` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_company_contactinfo`
+-- Table structure for table  `ext_user_mm_company_contactinfo`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_user_mm_company_contactinfo` (
@@ -573,7 +567,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_mm_company_contactinfo` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_company_user`
+-- Table structure for table  `ext_user_mm_company_user`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_user_mm_company_user` (
@@ -588,7 +582,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_mm_company_user` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_user_address`
+-- Table structure for table  `ext_user_mm_user_address`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_user_mm_user_address` (
@@ -601,7 +595,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_mm_user_address` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_user_contactinfo`
+-- Table structure for table  `ext_user_mm_user_contactinfo`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_user_mm_user_contactinfo` (
@@ -614,7 +608,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_mm_user_contactinfo` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_mm_user_group`
+-- Table structure for table  `ext_user_mm_user_group`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_user_mm_user_group` (
@@ -627,7 +621,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_mm_user_group` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_panelwidget`
+-- Table structure for table  `ext_user_panelwidget`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_user_panelwidget` (
@@ -645,7 +639,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_panelwidget` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_preference`
+-- Table structure for table  `ext_user_preference`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_user_preference` (
@@ -663,7 +657,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_preference` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_right`
+-- Table structure for table  `ext_user_right`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_user_right` (
@@ -678,7 +672,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_right` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ext_user_user`
+-- Table structure for table  `ext_user_user`
 --
 
 CREATE TABLE IF NOT EXISTS `ext_user_user` (
@@ -704,7 +698,7 @@ CREATE TABLE IF NOT EXISTS `ext_user_user` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `static_country`
+-- Table structure for table  `static_country`
 --
 
 CREATE TABLE IF NOT EXISTS `static_country` (
@@ -720,7 +714,7 @@ CREATE TABLE IF NOT EXISTS `static_country` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `static_country_zone`
+-- Table structure for table  `static_country_zone`
 --
 
 CREATE TABLE IF NOT EXISTS `static_country_zone` (
@@ -735,7 +729,7 @@ CREATE TABLE IF NOT EXISTS `static_country_zone` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `static_currency`
+-- Table structure for table  `static_currency`
 --
 
 CREATE TABLE IF NOT EXISTS `static_currency` (
@@ -756,7 +750,7 @@ CREATE TABLE IF NOT EXISTS `static_currency` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `static_language`
+-- Table structure for table  `static_language`
 --
 
 CREATE TABLE IF NOT EXISTS `static_language` (
@@ -770,7 +764,7 @@ CREATE TABLE IF NOT EXISTS `static_language` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `static_territory`
+-- Table structure for table  `static_territory`
 --
 
 CREATE TABLE IF NOT EXISTS `static_territory` (
@@ -783,7 +777,7 @@ CREATE TABLE IF NOT EXISTS `static_territory` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `system_errorlog`
+-- Table structure for table  `system_errorlog`
 --
 
 CREATE TABLE IF NOT EXISTS `system_errorlog` (
@@ -802,7 +796,7 @@ CREATE TABLE IF NOT EXISTS `system_errorlog` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `system_log`
+-- Table structure for table  `system_log`
 --
 
 CREATE TABLE IF NOT EXISTS `system_log` (

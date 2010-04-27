@@ -1,5 +1,5 @@
 --
--- Tabellenstruktur für Tabelle `history`
+-- Table structure for table  `history`
 --
 
 CREATE TABLE `system_log` (
@@ -13,7 +13,7 @@ CREATE TABLE `system_log` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
 
 --
--- Tabellenstruktur für Tabelle `log`
+-- Table structure for table  `log`
 --
 
 CREATE TABLE `system_errorlog` (
@@ -30,7 +30,7 @@ CREATE TABLE `system_errorlog` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
 
 --
--- Tabellenstruktur für Tabelle `static_country`
+-- Table structure for table  `static_country`
 --
 
 CREATE TABLE `static_country` (
@@ -44,7 +44,7 @@ CREATE TABLE `static_country` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
 --
--- Tabellenstruktur für Tabelle `static_country_zone`
+-- Table structure for table  `static_country_zone`
 --
 
 CREATE TABLE `static_country_zone` (
@@ -57,7 +57,7 @@ CREATE TABLE `static_country_zone` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
 --
--- Tabellenstruktur für Tabelle `static_currency`
+-- Table structure for table  `static_currency`
 --
 
 CREATE TABLE `static_currency` (
@@ -76,7 +76,7 @@ CREATE TABLE `static_currency` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
 --
--- Tabellenstruktur für Tabelle `static_territory`
+-- Table structure for table  `static_territory`
 --
 
 CREATE TABLE `static_territory` (
@@ -87,7 +87,7 @@ CREATE TABLE `static_territory` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
 --
--- Tabellenstruktur für Tabelle `static_language`
+-- Table structure for table  `static_language`
 --
 
 CREATE TABLE `static_language` (
@@ -164,7 +164,7 @@ CREATE TABLE `system_right` (
 
 
 --
--- Tabellenstruktur für Tabelle `static_timezone`
+-- Table structure for table  `static_timezone`
 --
 
 CREATE TABLE `static_timezone` (

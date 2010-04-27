@@ -457,7 +457,7 @@ class TodoyuPage {
 			// Add main navigation
 		self::set('navigation', TodoyuRenderer::renderNavigation());
 
-			// Add javascripts and stylesheet to page
+			// Add javaScripts and stylesheet to page
 		self::addJavascriptAndStylesheetsToPage();
 
 		self::sortJSinlines();
