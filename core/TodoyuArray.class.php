@@ -179,7 +179,7 @@ class TodoyuArray {
 
 
 	/**
-	 * Stripslashes on all array values and subarrays
+	 * Stripslashes on all array values and sub arrays
 	 *
 	 * @param	Array	$array
 	 * @return	Array
@@ -266,7 +266,7 @@ class TodoyuArray {
 
 
 	/**
-	 * Get a new array which contains only elements that match the filter. The fieldvalue has to be in the list of the filter item
+	 * Get a new array which contains only elements that match the filter. The field value has to be in the list of the filter item
 	 *
 	 * @example
 	 *
@@ -279,8 +279,8 @@ class TodoyuArray {
 	 *
 	 *
 	 * @param	Array		$dataArray			Array with the element which are checked against the filter
-	 * @param	Array		$filterArray		The filter. It's elements are the fieldnames with the allowed values
-	 * @param	Boolean		$matching			Normaly you'll get the matching elements. FALSE gives you the elements which don't match
+	 * @param	Array		$filterArray		The filter. It's elements are the field names with the allowed values
+	 * @param	Boolean		$matching			Normally you'll get the matching elements. FALSE gives you the elements which don't match
 	 * @param	Boolean		$preserveKeys		Keep the array keys. Else they will be replaced by numeric keys
 	 * @return	Array		The filtered array
 	 */
@@ -311,7 +311,7 @@ class TodoyuArray {
 
 
 	/**
-	 * Prefix array value with a string. Postfix is also available
+	 * Prefix array value with a string. PostFix is also available
 	 *
 	 * @param	Array		$array
 	 * @param	String		$prefix
@@ -335,7 +335,7 @@ class TodoyuArray {
 	 *
 	 * @param 	Array		$array			Base array to insert new item into
 	 * @param	Mixed		$newArrayItem	New array item
-	 * @param	String		$keyname		Keyname of the new array item
+	 * @param	String		$keyname		Key name of the new array item
 	 * @param	String		$beforeItem		Insert new item before this key. If no key specified, the new element will be appended
 	 * @param	Boolean		$replace		Replace an existing element
 	 * @return	Array		Array with new item inside
@@ -395,7 +395,7 @@ class TodoyuArray {
 	/**
 	 * Convert a SimpleXmlElement structure to an associative array. All objects are casted to array
 	 *
-	 * @param	SimpleXmlElement	$xml	XML object or array (which possibily contains XML objects)
+	 * @param	SimpleXmlElement	$xml	XML object or array (which possibility contains XML objects)
 	 * @return	Array
 	 */
 	public static function fromSimpleXml($xml) {
@@ -591,7 +591,7 @@ class TodoyuArray {
 	 * @param	Array	$array
 	 * @return	Array
 	 */
-	public static function flatten(array $array){ //flattens multi-dim arrays (distroys keys)
+	public static function flatten(array $array){ //flattens multi-dim arrays (destroys keys)
 		$flattened = array();
 
 		foreach($array as $value){
@@ -612,13 +612,13 @@ class TodoyuArray {
 	 *
 	 * @param	Array		$array
 	 * @param	Array		$valuesToRemove
-	 * @param	Boolean		$reindex
+	 * @param	Boolean		$reIndex
 	 * @return	Array
 	 */
-	public static function removeByValue(array $array, array $valuesToRemove, $reindex = true) {
+	public static function removeByValue(array $array, array $valuesToRemove, $reIndex = true) {
 		$array = array_diff($array, $valuesToRemove);
 
-		if( $reindex ) {
+		if( $reIndex ) {
 			$array = array_merge($array);
 		}
 
@@ -679,11 +679,11 @@ class TodoyuArray {
 
 
 	/**
-	 * Explode a list and remove whitespaces around the values
+	 * Explode a list and remove whitespace around the values
 	 *
 	 * @param	String		$delimiter				Character to split the list
 	 * @param	String		$string					The list
-	 * @param	Boolean		$removeEmptyValues		Remove values which are empty afer trim()
+	 * @param	Boolean		$removeEmptyValues		Remove values which are empty after trim()
 	 * @return	Array
 	 */
 	public static function trimExplode($delimiter, $string, $removeEmptyValues = false) {
@@ -719,15 +719,15 @@ class TodoyuArray {
 	 * Use a field value in an array as index of the array
 	 *
 	 * @param	Array		$array
-	 * @param	String		$fieldname
+	 * @param	String		$fieldName
 	 * @return	Array
 	 */
-	public static function useFieldAsIndex(array $array, $fieldname) {
+	public static function useFieldAsIndex(array $array, $fieldName) {
 		$new = array();
 
 		foreach($array as $index => $item) {
 			$item['_oldIndex'] = $index;
-			$new[$item[$fieldname]] = $item;
+			$new[$item[$fieldName]] = $item;
 		}
 
 		return $new;
