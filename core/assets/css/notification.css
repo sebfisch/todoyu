@@ -45,7 +45,11 @@
 	padding-right:12px;
 }
 
-
+.icon.iconNotifySmall {
+    background-image:url(../img/notify.png);
+	background-repeat:no-repeat;
+    background-position:0 -240px;
+}
 
 /* -------------------
 	Success
