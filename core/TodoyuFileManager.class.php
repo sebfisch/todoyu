@@ -217,7 +217,7 @@ class TodoyuFileManager {
 
 			$result	= rmdir($pathFolder);
 			if ( $result === false ) {
-				Todoyu::log('Folder deletion failed: ' . $pathFolder, LOG_LEVEL_NOTICE);
+				Todoyu::log('Folder deletion failed: ' . $pathFolder, TodoyuLogger::LEVEL_NOTICE);
 			}
 		} else {
 			$result	= false;
@@ -408,7 +408,7 @@ class TodoyuFileManager {
 		if( is_file($path) && is_readable($path) ) {
 			return file_get_contents($path);
 		} else {
-			Todoyu::log('Can\'t open file! File: ' . $file, LOG_LEVEL_ERROR);
+			Todoyu::log('Can\'t open file! File: ' . $file, TodoyuLogger::LEVEL_ERROR);
 			return '';
 		}
 	}
@@ -427,7 +427,7 @@ class TodoyuFileManager {
 		if( is_file($path) && is_writable($path) ) {
 			file_put_contents($path, $content);
 		} else {
-			Todoyu::log('Can\'t open file! File: ' . $file, LOG_LEVEL_ERROR);
+			Todoyu::log('Can\'t open file! File: ' . $file, TodoyuLogger::LEVEL_ERROR);
 		}
 	}
 
@@ -497,13 +497,13 @@ class TodoyuFileManager {
 
 					return true;
 				} else {
-					Todoyu::log('Tried to download a file from a not allowed path: ' . $pathFile, LOG_LEVEL_SECURITY, $pathFile);
+					Todoyu::log('Tried to download a file from a not allowed path: ' . $pathFile, TodoyuLogger::LEVEL_SECURITY, $pathFile);
 				}
 			} else {
-				Todoyu::log('sendFile() failed because file was not readable: ' . $pathFile, LOG_LEVEL_ERROR, $pathFile);
+				Todoyu::log('sendFile() failed because file was not readable: ' . $pathFile, TodoyuLogger::LEVEL_ERROR, $pathFile);
 			}
 		} else {
-			Todoyu::log('sendFile() failed because file was not found: ' . $pathFile, LOG_LEVEL_ERROR, $pathFile);
+			Todoyu::log('sendFile() failed because file was not found: ' . $pathFile, TodoyuLogger::LEVEL_ERROR, $pathFile);
 		}
 
 		return false;

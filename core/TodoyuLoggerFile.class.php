@@ -24,50 +24,66 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuLoggerFile {
+class TodoyuLoggerFile implements TodoyuLoggerIf {
 
 	/**
 	 * File pointer
 	 *
 	 * @var	String
 	 */
-	private static $file = null;
+	private $filePointer = null;
+
+
+	/**
+	 * Log file pattern
+	 */
+	private $pattern	= "%s :: %s - L:%d [%s:%d] :: %s\n";
+
+
+	public function __construct(array $config) {
+		$pathFile	= TodoyuFileManager::pathAbsolute($config['file']);
+
+			// Make folder and file if not exists
+		if( ! is_file($pathFile) ) {
+			TodoyuFileManager::makeDirDeep(dirname($pathFile));
+			touch($pathFile);
+		}
+
+			// Change pattern if given
+		if( isset($config['pattern']) ) {
+			$this->pattern = $config['pattern'];
+		}
+
+			// Open file
+		$this->filePointer = fopen($pathFile, 'a');
+	}
 
 
 
 	/**
-	 * Write log message in the logfile
+	 * Close file if opened
+	 *
+	 */
+	public function __destruct() {
+		if( ! is_null($this->filePointer) ) {
+			fclose($this->filePointer);
+		}
+	}
+
+
+
+	/**
+	 * Write log message in the log file
 	 *
 	 * @param	String		$message
 	 * @param	Integer		$level
 	 * @param	Mixed		$data
 	 * @param	Array		$callerInfo
 	 */
-	public static function log($message, $level, $data, $info, $requestKey) {
-			// If file is not opened yet
-		if( is_null(self::$file) ) {
-				// Get path from config
-			$logFilePath	= TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['LOG']['MODES']['FILE']['file']);
+	public function log($message, $level, $data, $info, $requestKey) {
+		$logLine	= sprintf($this->pattern, $requestKey, date('Y-m-d H:i:s'), $level, $info['fileshort'], $info['line'], $message);
 
-				// If path is defined as string
-			if( is_string($logFilePath) ) {
-					// If file doesn't exist, create it
-				if( ! is_file($logFilePath) ) {
-					TodoyuFileManager::makeDirDeep(dirname($logFilePath));
-					touch($logFilePath);
-				}
-
-					// Open file
-				self::$file = fopen($logFilePath, 'a');
-			}
-		}
-
-			// If the file is open, write log in it
-		if( ! is_null(self::$file) ) {
-			$logMessage = $requestKey . ' :: ' . date('Y-m-d H:i:s') . ' - L:' . $level . ' [' . $info['fileshort'] . ':' . $info['line'] . '] :: ' . $message . "\n";
-
-			fwrite(self::$file, $logMessage);
-		}
+		fwrite($this->filePointer, $logLine);
 	}
 
 }

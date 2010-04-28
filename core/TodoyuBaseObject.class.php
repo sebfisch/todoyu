@@ -58,10 +58,10 @@ class TodoyuBaseObject implements ArrayAccess {
 			if( $record !== false ) {
 				$this->data = $record;
 			} else {
-				Todoyu::log('Record not found! ID: "' . $idRecord . '", TABLE: "' . $table . '"', LOG_LEVEL_ERROR);
+				Todoyu::log('Record not found! ID: "' . $idRecord . '", TABLE: "' . $table . '"', TodoyuLogger::LEVEL_ERROR);
 			}
 		} else {
-			//Todoyu::log('Record with ID 0 created (new object or missing data?) Table: ' . $table, LOG_LEVEL_NOTICE);
+			//Todoyu::log('Record with ID 0 created (new object or missing data?) Table: ' . $table, TodoyuLogger::LEVEL_NOTICE);
 		}
 	}
 
@@ -83,7 +83,7 @@ class TodoyuBaseObject implements ArrayAccess {
 		if( substr($methodName, 0, 3) === 'get' && array_key_exists($dataKey, $this->data) ) {
 			return $this->get($dataKey);
 		} else {
-			Todoyu::log('Data "' . $dataKey . '" not found in ' . get_class($this) . ' (ID:' . $this->data['id'] . ')', LOG_LEVEL_NOTICE, $this->data);
+			Todoyu::log('Data "' . $dataKey . '" not found in ' . get_class($this) . ' (ID:' . $this->data['id'] . ')', TodoyuLogger::LEVEL_NOTICE, $this->data);
 			return '';
 		}
 	}
@@ -106,7 +106,7 @@ class TodoyuBaseObject implements ArrayAccess {
 		} elseif( array_key_exists($dataKey, $this->data) ) {
 			return $this->get($dataKey);
 		} else {
-			Todoyu::log('Data [' . $dataKey . '] not found in object [' . get_class($this) . ']', LOG_LEVEL_NOTICE);
+			Todoyu::log('Data [' . $dataKey . '] not found in object [' . get_class($this) . ']', TodoyuLogger::LEVEL_NOTICE);
 			return '';
 		}
 	}

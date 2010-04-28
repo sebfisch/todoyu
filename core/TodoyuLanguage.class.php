@@ -89,7 +89,7 @@ class TodoyuLanguage {
 		$label	= self::getLabelInternal($labelKey, $locale);
 
 		if( $label === '' && Todoyu::$CONFIG['DEBUG'] ) {
-			Todoyu::log($label, LOG_LEVEL_NOTICE);
+			Todoyu::log($label, TodoyuLogger::LEVEL_NOTICE);
 			$label	= 'Label not found: #' .$labelKey . '#';
 		}
 

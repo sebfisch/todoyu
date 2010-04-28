@@ -225,7 +225,7 @@ class TodoyuRightsManager {
 
 			// If right doesn't exist, log it
 		if( $found !== true ) {
-			Todoyu::log('Right not found: ' . $extKey . '::' . $right, LOG_LEVEL_SECURITY);
+			Todoyu::log('Right not found: ' . $extKey . '::' . $right, TodoyuLogger::LEVEL_SECURITY);
 		}
 	}
 
@@ -419,7 +419,7 @@ class TodoyuRightsManager {
 			$output = render($tmpl, $data);
 		}
 
-		Todoyu::log('Access denied (' . $extKey . '/' . $right . ')', LOG_LEVEL_SECURITY);
+		Todoyu::log('Access denied (' . $extKey . '/' . $right . ')', TodoyuLogger::LEVEL_SECURITY);
 
 		die($output);
 	}

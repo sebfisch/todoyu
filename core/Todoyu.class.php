@@ -136,7 +136,7 @@ class Todoyu {
 				self::$template = new Dwoo($config['compile'], $config['cache']);
 			} catch(Dwoo_Exception $e) {
 				$msg	= 'Can\'t initialize tempalate engine: ' . $e->getMessage();
-				Todoyu::log($msg, LOG_LEVEL_FATAL);
+				Todoyu::log($msg, TodoyuLogger::LEVEL_FATAL);
 				die($msg);
 			}
 		}
@@ -168,10 +168,24 @@ class Todoyu {
 	 */
 	public static function log($message, $level = 0, $data = null) {
 		if( is_null(self::$logger) ) {
-			self::$logger = TodoyuLogger::getInstance(self::$CONFIG['LOG']['active'], self::$CONFIG['LOG']['level']);
+			self::$logger = TodoyuLogger::getInstance(self::$CONFIG['LOG_LEVEL']);
 		}
 
-		self::$logger->log($message, $level, $data);
+		self::logger()->log($message, $level, $data);
+	}
+
+
+	/**
+	 * Get logger instance
+	 * 
+	 * @return		TodoyuLogger
+	 */
+	public static function logger() {
+		if( is_null(self::$logger) ) {
+			self::$logger = TodoyuLogger::getInstance();
+		}
+
+		return self::$logger;
 	}
 
 
@@ -254,7 +268,7 @@ class Todoyu {
 
 			// Log if operation fails
 		if( $status === false ) {
-			self::log('Can\'t set locale "' . $locale . '"', LOG_LEVEL_ERROR);
+			self::log('Can\'t set locale "' . $locale . '"', TodoyuLogger::LEVEL_ERROR);
 		}
 	}
 

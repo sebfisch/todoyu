@@ -61,7 +61,7 @@ class TodoyuFormXmlParser {
 		self::$xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
 
 		if( ! is_file($xmlFile) ) {
-			Todoyu::log('Form XML file not found (\'' . self::$xmlFile . '\')', LOG_LEVEL_CRITICAL);
+			Todoyu::log('Form XML file not found (\'' . self::$xmlFile . '\')', TodoyuLogger::LEVEL_CRITICAL);
 			return false;
 		}
 
@@ -197,7 +197,7 @@ class TodoyuFormXmlParser {
 			$fieldset->addField($name, $field);
 			return true;
 		} else {
-			Todoyu::log('Can\'t create field object. Invalid config?', LOG_LEVEL_ERROR, $config);
+			Todoyu::log('Can\'t create field object. Invalid config?', TodoyuLogger::LEVEL_ERROR, $config);
 			return false;
 		}
 
@@ -241,7 +241,7 @@ class TodoyuFormXmlParser {
 						}
 					}
 				} else {
-					Todoyu::log('Misconfigured right in form', LOG_LEVEL_ERROR);
+					Todoyu::log('Misconfigured right in form', TodoyuLogger::LEVEL_ERROR);
 				}
 			}
 

@@ -19,50 +19,33 @@
 *****************************************************************************/
 
 /**
- * Database logger
+ * Interface for logger classes
  *
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuLoggerDb implements TodoyuLoggerIf {
+interface TodoyuLoggerIf {
 
 	/**
-	 * 
+	 * Initialize logger with config
+	 *
+	 * @param	Array		$config
 	 */
-	private $table	= null;
-
-
-	public function __construct(array $config) {
-		$this->table = trim($config['table']);
-	}
+	public function __construct(array $config);
 
 
 
 	/**
-	 * Write log message in database
+	 * Log a message with the logger
 	 *
 	 * @param	String		$message
 	 * @param	Integer		$level
 	 * @param	Mixed		$data
-	 * @param	Array		$info
-	 * @param	String		$requestKey
+	 * @param  $info
+	 * @param  $requestKey
+	 * @return void
 	 */
-	public function log($message, $level, $data, $info, $requestKey) {
-		if( Todoyu::db()->hasLink() && !empty($this->table) ) {
-			$data 	= array(
-				'date_create'	=> NOW,
-				'id_person'		=> personid(),
-				'requestkey'	=> $requestKey,
-				'level'			=> intval($level),
-				'file'			=> $info['fileshort'],
-				'line'			=> $info['line'],
-				'message'		=> $message,
-				'data'			=> serialize($data)
-			);
-
-			Todoyu::db()->doInsert($this->table, $data);
-		}
-	}
+	public function log($message, $level, $data, $info, $requestKey);
 
 }
 

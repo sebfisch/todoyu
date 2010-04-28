@@ -49,7 +49,7 @@ class TodoyuRecordManager {
 
 			return $object;
 		} else {
-			Todoyu::log('Record class not found: ' . $className, LOG_LEVEL_ERROR);
+			Todoyu::log('Record class not found: ' . $className, TodoyuLogger::LEVEL_ERROR);
 			return false;
 		}
 	}

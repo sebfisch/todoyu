@@ -81,7 +81,7 @@ class TodoyuAutocompleter {
 		if( TodoyuFunction::isFunctionReference($autocompleter['function']) ) {
 			$result	= TodoyuFunction::callUserFunction($autocompleter['function'], $input, $formData, $name);
 		} else {
-			Todoyu::log('Invalid autocomplete function for name "' . $name . '": ' . $autocompleter['function'], LOG_LEVEL_ERROR);
+			Todoyu::log('Invalid autocomplete function for name "' . $name . '": ' . $autocompleter['function'], TodoyuLogger::LEVEL_ERROR);
 		}
 
 		return TodoyuArray::assure($result);

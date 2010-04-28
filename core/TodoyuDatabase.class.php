@@ -142,6 +142,17 @@ class TodoyuDatabase {
 
 
 	/**
+	 * Check whether the database is connected
+	 *
+	 * @return	Boolean
+	 */
+	public function hasLink() {
+		return !is_null($this->link);
+	}
+
+
+
+	/**
 	 * Get query history
 	 *
 	 * @return	Array

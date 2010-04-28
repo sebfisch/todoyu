@@ -27,6 +27,16 @@
 class TodoyuLogger {
 
 	/**
+	 * Log levels
+	 */
+	const LEVEL_DEBUG	= 0;
+	const LEVEL_NOTICE	= 1;
+	const LEVEL_ERROR	= 2;
+	const LEVEL_SECURITY= 3;
+	const LEVEL_FATAL	= 4;
+
+
+	/**
 	 * Log instance. Singleton
 	 *
 	 * @var	Log
@@ -34,15 +44,20 @@ class TodoyuLogger {
 	private static $instance = null;
 
 	/**
-	 * Logging modes. Modes need to be implemented in this log class
+	 * Classnames of registered loggers
 	 *
 	 * @var	Array
 	 */
-	private $modes	= array();
+	private $loggerNames	= array();
+
+	/**
+	 * Logger instances of the classes registered in $this->loggerNames
+	 */
+	private $loggerInstances = null;
 
 	/**
 	 * Log level. Only messages with minimum this level are logged
-	 * Levels are defined as constants LOG_LEVEL_*
+	 * Levels are defined as constants TodoyuLogger::LEVEL_*
 	 *
 	 * Levels:
 	 * 	0: Debug Message
@@ -62,13 +77,12 @@ class TodoyuLogger {
 	 */
 	private $requestKey;
 
-
 	/**
 	 * Ignore this files when detecting file where logging was executed
 	 *
 	 * @var	Array
 	 */
-	private $ignoreFiles = array(
+	private $fileIgnorePattern = array(
 		'TodoyuLogger.class.php',
 		'TodoyuErrorHandler.class.php',
 		'TodoyuDebug.class.php',
@@ -78,15 +92,14 @@ class TodoyuLogger {
 
 
 	/**
-	 * Get the only instance. Singleton
+	 * Get the logger instance. Singleton
 	 *
-	 * @param	Array		$modes		Active modes
 	 * @param	Integer		$level		Log level limit
 	 * @return	Log
 	 */
-	public static function getInstance(array $modes, $level = 0) {
+	public static function getInstance($level = 0) {
 		if( is_null(self::$instance) ) {
-			self::$instance = new self($modes, $level);
+			self::$instance = new self($level);
 		}
 
 		return self::$instance;
@@ -97,12 +110,10 @@ class TodoyuLogger {
 	/**
 	 * Called by getInstance for Singleton Pattern
 	 *
-	 * @param	Array		$modes
 	 * @param	Integer		$level
 	 */
-	private function __construct(array $modes, $level = 0) {
-		$this->modes	= $modes;
-		$this->level	= intval($level);
+	private function __construct($level = 0) {
+		$this->setLevel($level);
 
 		$this->requestKey = substr(md5(microtime(true) . session_id()), 0, 10);
 	}
@@ -110,16 +121,65 @@ class TodoyuLogger {
 
 
 	/**
-	 * Cleanup actions
+	 * Add a logger class. Class is just provided as string and will be
+	 * instantiated on the first use of the log
+	 *
+	 * @param	String		$className
+	 * @param	Array		$config
 	 */
-	public function __destruct() {
-
+	public function addLogger($className, array $config = array()) {
+		$this->loggerNames[] = array(
+			'class'	=> $className,
+			'config'=> $config
+		);
 	}
 
 
 
 	/**
-	 * Log a message. The message will be processed by all log modes
+	 * Change to log level
+	 *
+	 * @param	Integer		$level
+	 */
+	public function setLevel($level) {
+		$this->level = intval($level);
+	}
+
+
+
+	/**
+	 * Add a pattern which will be ignored while looking for the error
+	 * position in the backtrace
+	 *
+	 * @param	String		$pattern
+	 */
+	public function addFileIgnorePattern($pattern) {
+		$this->fileIgnorePattern[] = $pattern;
+	}
+
+
+
+	/**
+	 * Get instances of all loggers
+	 * The logger objects are not created until they are used
+	 *
+	 * @return	Array
+	 */
+	private function getLoggerInstances() {
+		if( is_null($this->loggerInstances) ) {
+			foreach($this->loggerNames as $logger) {
+				$className	= $logger['class'];
+				$this->loggerInstances[] = new $className($logger['config']);
+			}
+		}
+
+		return $this->loggerInstances;
+	}
+
+
+
+	/**
+	 * Log a message. The message will be processed by all loggers
 	 *
 	 * @param	String		$message		Log message
 	 * @param	Integer		$level			Log level of current message
@@ -132,7 +192,7 @@ class TodoyuLogger {
 
 			// Find file in backtrace which is not on ignore list
 		foreach($backtrace as $btElement) {
-			if( ! in_array(basename($btElement['file']), $this->ignoreFiles) ) {
+			if( ! in_array(basename($btElement['file']), $this->fileIgnorePattern) ) {
 				$info = $btElement;
 				break;
 			}
@@ -141,10 +201,13 @@ class TodoyuLogger {
 		$info['fileshort'] 	= TodoyuFileManager::pathWeb($info['file']);
 
 		if( $level >= $this->level ) {
-			foreach($this->modes as $mode) {
-				$funcRef = Todoyu::$CONFIG['LOG']['MODES'][$mode]['funcRef'];
-
-				TodoyuFunction::callUserFunction($funcRef, $message, $level, $data, $info, $this->requestKey);
+			$loggers	= $this->getLoggerInstances();
+			
+			foreach($loggers as $logger) {
+				/**
+				 * @var	TodoyuLoggerIf	$logger
+				 */
+				$logger->log($message, $level, $data, $info, $this->requestKey);
 			}
 		}
 	}

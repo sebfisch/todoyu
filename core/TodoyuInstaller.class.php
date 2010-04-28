@@ -287,10 +287,9 @@ class TodoyuInstaller {
 		$withLabels	= array();
 
 		foreach($steps as $step) {
-			$withLabels[$step] = Label('installer.' . $step . '.title');
+			$withLabels[$step] = Label('installer.' . $step . '.step');
 		}
 
-		return $withLabels;
 	}
 
 

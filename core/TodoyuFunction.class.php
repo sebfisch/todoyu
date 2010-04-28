@@ -66,7 +66,7 @@ class TodoyuFunction {
 
 			$result	= call_user_func_array($funcRefParts, $funcArgs);
 		} else {
-			Todoyu::log('Function not found: ' . $funcRefString, LOG_LEVEL_FATAL);
+			Todoyu::log('Function not found: ' . $funcRefString, TodoyuLogger::LEVEL_FATAL);
 			$result = false;
 		}
 

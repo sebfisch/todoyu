@@ -62,14 +62,14 @@ class TodoyuCookieLogin {
 
 							// Proceed with the request, because we're logged in and it's all ok
 						} else {
-							Todoyu::log('Cookie login failed (username/password)', LOG_LEVEL_SECURITY);
+							Todoyu::log('Cookie login failed (username/password)', TodoyuLogger::LEVEL_SECURITY);
 							self::removeRemainLoginCookie();
 						}
 					} else {
-						Todoyu::log('Cookie login failed (useragent)', LOG_LEVEL_SECURITY);
+						Todoyu::log('Cookie login failed (useragent)', TodoyuLogger::LEVEL_SECURITY);
 					}
 				} else {
-					Todoyu::log('Decrypted cookie date is not an array', LOG_LEVEL_ERROR, $cookieData);
+					Todoyu::log('Decrypted cookie date is not an array', TodoyuLogger::LEVEL_ERROR, $cookieData);
 				}
 			}
 		}

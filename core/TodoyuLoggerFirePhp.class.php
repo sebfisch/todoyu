@@ -24,7 +24,12 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuLoggerFirePhp {
+class TodoyuLoggerFirePhp implements TodoyuLoggerIf {
+
+	public function __construct(array $config) {
+
+	}
+
 
 	/**
 	 * Write log message in firebug
@@ -35,30 +40,30 @@ class TodoyuLoggerFirePhp {
 	 * @param	Array		$info
 	 * @param	String		$requestKey
 	 */
-	public static function log($message, $level, $data, $info, $requestKey) {
+	public function log($message, $level, $data, $info, $requestKey) {
 		$title	= '[' . $info['fileshort'] . ':' . $info['line'] . ']';
 		$text	= $message . '  [' . $level . ']';
 
 		try {
 
 			switch($level) {
-				case LOG_LEVEL_FATAL:
-				case LOG_LEVEL_ERROR:
+				case TodoyuLogger::LEVEL_FATAL:
+				case TodoyuLogger::LEVEL_ERROR:
 					TodoyuDebug::firePhp()->error($text, $title);
 					break;
 
 
-				case LOG_LEVEL_SECURITY:
+				case TodoyuLogger::LEVEL_SECURITY:
 					TodoyuDebug::firePhp()->warn($text, $title);
 					break;
 
 
-				case LOG_LEVEL_NOTICE:
+				case TodoyuLogger::LEVEL_NOTICE:
 					TodoyuDebug::firePhp()->info($text, $title);
 					break;
 
 
-				case LOG_LEVEL_DEBUG:
+				case TodoyuLogger::LEVEL_DEBUG:
 				default:
 					TodoyuDebug::firePhp()->log($text, $title);
 					break;
@@ -67,8 +72,8 @@ class TodoyuLoggerFirePhp {
 			if( ! empty($data) ) {
 				TodoyuDebug::firePhp()->log($data, '#');
 			}
-		} catch (Exception $e) {
-			echo '<u>PROBLEM WITH FIREBUG</u><br />' . $e->getMessage();
+		} catch(Exception $e) {
+			echo '<strong>PROBLEM WITH FIREBUG</strong><br />' . $e->getMessage();
 		}
 	}
 

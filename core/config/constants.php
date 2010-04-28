@@ -43,14 +43,6 @@ define( 'PATH_FILES',		PATH . DIR_SEP . 'files' );
 	// Constants
 define( 'NOW', time() );
 
-
-	// Log levels
-define('LOG_LEVEL_DEBUG', 	0);
-define('LOG_LEVEL_NOTICE', 	1);
-define('LOG_LEVEL_ERROR', 	2);
-define('LOG_LEVEL_SECURITY',3);
-define('LOG_LEVEL_FATAL', 	4);
-
 /**
  * Public URL of the server (use to build absolute links)
  */
