@@ -1,5 +1,5 @@
 /**
- * Javascript objects are all children or subelements of the global Todoyu object.
+ * Javascript objects are all children or sub elements of the global Todoyu object.
  * All extensions are located in Todoyu.Ext.* in their own namespace.
  * 
  * You should check all your scripts with http://www.jslint.com/
