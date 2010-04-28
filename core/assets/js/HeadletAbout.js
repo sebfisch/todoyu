@@ -26,6 +26,9 @@
  */
 Todoyu.Headlet.About = {
 
+	/**
+	 * Window HTML ID
+	 */
 	idWindow: 'headlet-about-window',
 
 	/**
@@ -35,8 +38,11 @@ Todoyu.Headlet.About = {
 	 */
 	nameEffect: null,
 
+
 	/**
-	 * 
+	 * Handler for button clicks
+	 *
+	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
 		this.showWindow();
@@ -44,12 +50,20 @@ Todoyu.Headlet.About = {
 
 
 
+	/**
+	 * Check whether window is already created
+	 *
+	 * @return	Boolean
+	 */
 	hasWindow: function() {
 		return Todoyu.exists(this.idWindow);
 	},
 
 
 
+	/**
+	 * Create a window element in the DOM
+	 */
 	createWindow: function() {
 		var window = new Element('div', {
 			'id':	this.idWindow
@@ -62,6 +76,9 @@ Todoyu.Headlet.About = {
 
 
 
+	/**
+	 * Load window content over AJAX
+	 */
 	loadWindow: function() {
 		var url		= Todoyu.getUrl('core', 'about');
 		var options	= {
@@ -69,7 +86,7 @@ Todoyu.Headlet.About = {
 				'action':	'window'
 			},
 			'onComplete': this.onWindowLoaded.bind(this)
-		}
+		};
 		var target	= this.idWindow;
 
 		Todoyu.Ui.update(target, url, options);
@@ -77,6 +94,11 @@ Todoyu.Headlet.About = {
 
 
 
+	/**
+	 * Handler when window content is loaded
+	 *
+	 * @param	{Ajax.Response}		response
+	 */
 	onWindowLoaded: function(response) {
 		$(this.idWindow).down('.close').observe('click', this.hideWindow.bindAsEventListener(this));
 		this.displayWindow(true);
@@ -84,7 +106,10 @@ Todoyu.Headlet.About = {
 	},
 
 
-	
+
+	/**
+	 * Show window. Load if necessary
+	 */
 	showWindow: function() {
 		if( this.hasWindow() ) {
 			this.displayWindow(true);
@@ -96,6 +121,9 @@ Todoyu.Headlet.About = {
 
 
 
+	/**
+	 * Hide window
+	 */
 	hideWindow: function() {
 		this.displayWindow(false);
 
@@ -107,6 +135,12 @@ Todoyu.Headlet.About = {
 
 
 
+	/**
+	 * Display the window on the screen with an animation.
+	 * Hide it if show is false
+	 *
+	 * @param	{Boolean}		show
+	 */
 	displayWindow: function(show) {
 		var window		= $(this.idWindow);
 		var screenDim	= document.viewport.getDimensions();
@@ -140,6 +174,13 @@ Todoyu.Headlet.About = {
 	},
 
 
+
+	/**
+	 * Start scrolling the names in the 'thank you' box
+	 *
+	 * @param	{Boolean}	up		Scroll up
+	 * @param	{Boolean}	first	Is the first scrolling, reset positions for start
+	 */
 	startNameScrolling: function(up, first) {
 		var box	= $('headlet-about-window').down('div.names');
 		var list= box.down('ul');

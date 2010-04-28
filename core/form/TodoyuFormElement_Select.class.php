@@ -49,9 +49,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 * Init
 	 */
 	protected function init() {
-		if( ! $this->hasAttribute('size') ) {
-			$this->setAttribute('size', 1);
-		}
+		
 	}
 
 
@@ -63,6 +61,17 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 */
 	protected function isLazyInit() {
 		return isset( $this->config['source']['lazyInit'] );
+	}
+
+
+
+	/**
+	 * Check whether multiple attribute is set
+	 *
+	 * @return	Boolean
+	 */
+	public function isMultiple() {
+		return $this->hasAttribute('multiple');
 	}
 
 
@@ -341,6 +350,18 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	protected function getData() {
 		if( $this->isLazyInit() ) {
 			$this->initSource();
+		}
+
+			// If size is not set, try to find a good size
+		if( ! $this->hasAttribute('size') ) {
+			$size	= 1;
+
+				// If multiple, use number of items, but maximal 5
+			if( $this->isMultiple() ) {
+				$size	= min(5, sizeof($this->config['options']));
+			}
+
+			$this->setAttribute('size', $size);
 		}
 
 		return parent::getData();

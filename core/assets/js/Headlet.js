@@ -75,7 +75,7 @@ Todoyu.Headlet = {
 	 * Possible handlers: onButtonClick, onContentClick, onMouseOver, onMouseOut
 	 * 
 	 * @param	{String}	name		Name of the headlet
-	 * @param	{String}	type		Event type (handler name)
+	 * @param	{String}	eventType	Event type (handler name)
 	 * @param	{Event}		event		Event object
 	 */
 	_callHandler: function(name, eventType, event) {

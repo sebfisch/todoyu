@@ -12,7 +12,7 @@ Element.addMethods({
   /**
    * Scroll to an element but consider the fixed header
    *
-   * @param	HtmlElement		element
+   * @param	{Element}	element
    */
   scrollToElement: function(element) {
   	Todoyu.Ui.scrollToElement(element);
@@ -24,7 +24,7 @@ Element.addMethods({
 
 /**
  * Get todoyu style http headers (prefixed by 'Todoyu-')
- * @param	String		name
+ * @param	{String}		name
  */
 Ajax.Response.addMethods({
 	getTodoyuHeader: function(name) {

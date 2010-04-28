@@ -63,7 +63,7 @@ Todoyu.ContextMenu = {
 	 * @param	{Event}			event				Click event object
 	 * @param	{String}		name				Name of the contextmenu type
 	 * @param	{Function}		callback			Callback function to parse ID from element
-	 * @param	{DomElement}	observedElement		Observed element
+	 * @param	{Element}		observedElement		Observed element
 	 */
 	load: function(event, name, callback, observedElement) {
 			// Stop click event to prevent browsers context menu

@@ -52,42 +52,6 @@ Todoyu.Headlet.AjaxLoader = {
 		Effect.Fade.delay(0.2, this.buttonID, {
 			'duration': 0.3
 		});
-	},
-	
-	
-	
-	/**
-	 * 
-	 */
-	onButtonClick: function(event) {
-		Todoyu.log('ajax loader clicked');
-	},
-
-
-
-	/**
-	 * 
-	 */
-	onContentClick: function(event) {
-		Todoyu.log('ajax loader content clicked');
-	},
-
-
-
-	/**
-	 * 
-	 */
-	onMouseOver: function(event) {
-		Todoyu.log('over ajax');
-	},
-
-
-
-	/**
-	 * 
-	 */
-	onMouseOut: function(event) {
-		Todoyu.log('out ajax');
 	}
 	
 };

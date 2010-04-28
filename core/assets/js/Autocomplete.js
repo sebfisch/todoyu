@@ -132,8 +132,8 @@ Todoyu.Autocomplete = {
 	/**
 	 * When autocomplete value is selected
 	 *
-	 * @param	{DomElement}	inputField
-	 * @param	{DomElement}	selectedListElement
+	 * @param	{Element}	inputField
+	 * @param	{Element}	selectedListElement
 	 */
 	onElementSelected: function(inputField, selectedListElement) {
 		var baseID			= inputField.id.split('-').without('fulltext').join('-');
@@ -153,7 +153,7 @@ Todoyu.Autocomplete = {
 	/**
 	 * Clear fields because of invalid input
 	 *
-	 * @param	{DomElement}		element
+	 * @param	{Element}		element
 	 */
 	clear: function(element) {
 		var idElement = $(element).id;

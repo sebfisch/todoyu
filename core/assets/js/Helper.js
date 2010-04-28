@@ -22,7 +22,7 @@ Todoyu.Helper = {
 	/**
 	 * Convert value to Integer
 	 *
-	 * @param	{Mixed}		mixedvar
+	 * @param	{String|Boolean|Number}		mixedvar
 	 */
 	intval: function(mixedvar) {
 		var type = typeof( mixedvar );
@@ -49,8 +49,8 @@ Todoyu.Helper = {
 	/**
 	 * Convert to 2-digit value (possibly add leading zero)
 	 *
-	 * @param	{Mixed}		number
-	 * @return	{Number}
+	 * @param	{String|Number}		number
+	 * @return	{String}
 	 */
 	twoDigit: function(number) {
 		number = parseInt(number, 10);
@@ -68,8 +68,8 @@ Todoyu.Helper = {
 	 * Toggle source of image
 	 *
 	 * @param	{String}		idImage
-	 * @param	{Source}		src1
-	 * @param	{Source}		src2
+	 * @param	{String}		src1
+	 * @param	{String}		src2
 	 */
 	toggleImage: function(idImage, src1, src2) {
 		var image = $(idImage);
@@ -86,9 +86,9 @@ Todoyu.Helper = {
 	/**
 	 * Round with given precision
 	 *
-	 * @param	{Float}		value
+	 * @param	{Number}		value
 	 * @param	{Number}	precision
-	 * @return	{Float}
+	 * @return	{Number}
 	 */
 	round: function(value, precision) {
 		value		= parseFloat(value);
@@ -98,19 +98,7 @@ Todoyu.Helper = {
 		return Math.round((value*factor))/factor;
 	},
 
-
-
-	/**
-	 * Check whether given obj. is set
-	 *
-	 * @param	{Mixed}		objToTest
-	 * @return	{Boolean}
-	 */
-	isset: function(objToTest) {
-		return (null === objToTest || 'undefined' == typeof(objToTest));
-	},
-
-
+	
 
 	/**
 	 * Uppercase the first character of every word in a string
@@ -164,7 +152,7 @@ Todoyu.Helper = {
 	 *
 	 * @param	{Element}		element
 	 * @param	{String}		event e.g. 'click'
-	 * @return	{Mixed}
+	 * @return	{String|Object}
 	 */
 	fireEvent: function(element, event){
 		var evt;

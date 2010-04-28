@@ -26,7 +26,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Hanlde completion of autocompleter suggestion retrieval
 	 *
-	 * @param	Object	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onComplete: function(response) {
 			// If a custom onComplete defined
@@ -52,7 +52,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Hanlde receival of empty result (no suggestion found)
 	 *
-	 * @param	Object	response
+	 * @param	{Ajax.Response}		response
 	 */
 	onEmptyResult: function(response) {
 		new Effect.Highlight(this.element, {

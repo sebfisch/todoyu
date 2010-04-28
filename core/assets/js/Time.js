@@ -153,7 +153,7 @@ Todoyu.Time = {
 	/**
 	 * Get timestamp at start of week
 	 *
-	 * @param	{Number}		time
+	 * @param	{Number}		baseTime
 	 * @return	{Number}
 	 */
 	getWeekStart: function(baseTime) {

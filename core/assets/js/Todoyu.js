@@ -143,7 +143,7 @@ var Todoyu = {
 	/**
 	 * Check if an element exists
 	 *
-	 * @param	{DomElement},{String}		element		Element or its ID
+	 * @param	{Element|String}		element		Element or its ID
 	 */
 	exists: function(element) {
 		if( typeof element === 'object' ) {
@@ -205,7 +205,7 @@ var Todoyu = {
 	 * @example	Todoyu.calluserFunction('Todoyu.notifySuccess', 'This is a message', 5);
 	 * 
 	 * @param	{String}		functionName
-	 * @param	{Mixed}		args
+	 * @param	{String}		args
 	 */
 	callUserFunction: function(functionName /*, args */) {
 		var args 	= $A(arguments).slice(1);

@@ -131,7 +131,7 @@ Todoyu.Notification = {
 	/**
 	 * Close when clicking in the close button
 	 * 
-	 * @param	{DomElement}		closeButton
+	 * @param	{Element}		closeButton
 	 */
 	close: function(closeButton) {
 		var idNote = $(closeButton).up('div.note').id.split('-').last();
@@ -195,7 +195,7 @@ Todoyu.Notification = {
 	/**
 	 * Append new note
 	 * 
-	 * @param	{Number}		id
+	 * @param	{Number}		idNote
 	 * @param	{String}		code
 	 */
 	appendNote: function(idNote, code) {

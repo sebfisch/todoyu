@@ -232,8 +232,8 @@ Todoyu.QuickInfo = {
 	 *
 	 * @param	{String}	name			'event' / 'holiday' / 'person', etc.
 	 * @param	{String}	elementKey
-	 * @param	{Number}	mouseX
-	 * @param	{Number}	mouseY
+	 * @param	{Function}	callback
+	 * @param	{Event}		event
 	 */
 	loadQuickInfo: function(name, elementKey, callback, event) {
 		var url		= Todoyu.getUrl('core', 'quickinfo');
@@ -254,11 +254,10 @@ Todoyu.QuickInfo = {
 	/**
 	 * Show quickinfo after loaded by ajax. Add to cache with custom cache time
 	 *
-	 * @param	{String}			extension		Extension providing the element
 	 * @param	{String}			name			Type of element
-	 * @param	{String}			element				Key of element (mostly element ID)
-	 * @param	{Number}			x				Mouse Pointer Position
-	 * @param	{Number}			y				Mouse Pointer Position
+	 * @param	{String}			elementKey		Key of element (mostly element ID)
+	 * @param	{Event}				event			Hover event
+	 * @param	{Ajax.Response}		response		Ajax response
 	 * @param	{Ajax.Response}	response
 	 */
 	onQuickInfoLoaded: function(name, elementKey, event, response) {
@@ -280,7 +279,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Render quick info tooltip HTML from JSON data
 	 *
-	 * @param	{JSON}		json
+	 * @param	{Object}		json
 	 * @return	{String}
 	 */
 	buildQuickInfo: function(json) {

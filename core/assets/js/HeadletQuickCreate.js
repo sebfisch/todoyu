@@ -90,7 +90,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * Open creator wizard popup
 	 * 
 	 * @param	{String}		ext
-	 * @param	{String}		mode
+	 * @param	{String}		type
 	 */
 	openTypePopup: function(ext, type) {
 		if ( ! $('quickcreate') ) {

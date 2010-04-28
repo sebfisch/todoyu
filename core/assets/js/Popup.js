@@ -74,11 +74,11 @@ Todoyu.Popup = {
 	 * Open new popup window
 	 *
 	 * @param	{String}		idPopup
-	 * @param	{String}		titleTxt
+	 * @param	{String}		title
 	 * @param	{Number}		winWidth
 	 * @param	{String}		contentUrl
 	 * @param	{Array}		requestOptions
-	 * @return	Object
+	 * @return	{Window}
 	 */
 	openWindow: function(idPopup, title, winWidth, contentUrl, requestOptions) {
 			// Construct

@@ -397,7 +397,7 @@ Todoyu.Ui = {
 
 			if( scrollOffset > headerHeight ) {
 				if( scrollOffset !== elementOffset ) {
-					var scrollBy	= scrollOffset - (elementOffset - headerHeight);
+					scrollBy	= scrollOffset - (elementOffset - headerHeight);
 				}
 
 				this.scrollBy.delay(0.1, 0, -scrollBy);
