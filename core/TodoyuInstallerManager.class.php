@@ -3,7 +3,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2010, snowflake productions gmbh
+* Copyright (c) 2010, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -38,6 +38,7 @@ class TodoyuInstallerManager {
 		if( array_key_exists('locale', $data) ) {
 			TodoyuSession::set('installer/locale', $data['locale']);
 			TodoyuInstaller::setStep('license');
+			TodoyuHeader::location('index.php');
 		}
 
 		return $result;
@@ -273,8 +274,6 @@ class TodoyuInstallerManager {
 	 * @return	Array
 	 */
 	public static function processImportDemoData(array $data) {
-		$result	= array();
-
 		if( isset($data['importdemodata']) ) {
 			$import	= intval($data['import']) === 1;
 
@@ -676,8 +675,6 @@ class TodoyuInstallerManager {
 	 * @return	Boolean
 	 */
 	public static function isDatabaseConfigured() {
-		$dbConfig	= TodoyuArray::assure(Todoyu::$CONFIG['DB']);
-
 		return Todoyu::$CONFIG['DB']['autoconnect'] === true;
 	}
 
@@ -753,7 +750,7 @@ class TodoyuInstallerManager {
 			foreach($deletionFiles as $pathFile) {
 				$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);
 				if ( is_file($pathFile) ) {
-					$fileDeleted = unlink($pathFile);
+					unlink($pathFile);
 				}
 			}
 
@@ -762,7 +759,7 @@ class TodoyuInstallerManager {
 			foreach($deletionFolderContents as $pathFolder) {
 				$pathFolder	= TodoyuFileManager::pathAbsolute($pathFolder);
 				if ( is_dir($pathFolder) ) {
-					$folderContentsDeleted = TodoyuFileManager::deleteFolderContents($pathFolder);
+					TodoyuFileManager::deleteFolderContents($pathFolder);
 				}
 			}
 
@@ -771,7 +768,7 @@ class TodoyuInstallerManager {
 			foreach($deletionFolders as $pathFolder) {
 				$pathFolder	= TodoyuFileManager::pathAbsolute($pathFolder);
 				if ( is_dir($pathFolder) ) {
-					$folderDeleted = TodoyuFileManager::deleteFolder($pathFolder);
+					TodoyuFileManager::deleteFolder($pathFolder);
 				}
 			}
 		}
