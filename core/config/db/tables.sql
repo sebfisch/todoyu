@@ -24,7 +24,7 @@ CREATE TABLE `system_errorlog` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL,
   `requestkey` varchar(8) NOT NULL,
-  `id_person` smallint(5) unsigned NOT NULL,
+  `id_person` int(5) unsigned NOT NULL,
   `level` tinyint(1) unsigned NOT NULL,
   `file` varchar(100) NOT NULL,
   `line` smallint(5) unsigned NOT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE `system_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_create` int(10) unsigned NOT NULL DEFAULT '0',
   `date_update` int(10) unsigned NOT NULL,
-  `id_person_create` smallint(5) unsigned NOT NULL,
+  `id_person_create` int(10) unsigned NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `title` varchar(32) NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT '0',
@@ -158,7 +158,7 @@ CREATE TABLE `system_panelwidget` (
 
 CREATE TABLE `system_preference` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_person` smallint(5) unsigned NOT NULL,
+  `id_person` int(10) unsigned NOT NULL,
   `ext` smallint(5) unsigned NOT NULL,
   `area` smallint(5) unsigned NOT NULL,
   `preference` varchar(50) NOT NULL,
