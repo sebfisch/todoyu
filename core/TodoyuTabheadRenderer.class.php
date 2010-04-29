@@ -78,6 +78,10 @@ class TodoyuTabheadRenderer {
 			$active = $tabs[0]['id'];
 		}
 
+		if( $class === '' ) {
+			$class = $name;
+		}
+
 		$tmpl	= 'core/view/tabheads.tmpl';
 		$data	= array(
 			'name'		=> $name,

@@ -51,7 +51,7 @@ class TodoyuFileManager {
 		$path = str_replace(array('\\', '/'), DIR_SEP, $path);
 
 			// If no absolute path
-		if( substr($path, 0, strlen(PATH)) !== PATH ) {
+		if( substr($path, 0, strlen(PATH)) !== PATH && substr($path, 1, 1) !== ':' ) {
 			$path = PATH . DIR_SEP . $path;
 		}
 
