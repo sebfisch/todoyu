@@ -237,13 +237,13 @@ div.calendar td.time .colon {
 }
 
 div.calendar td.time span.hilite {
-  border-color:#000;
-  background-color:#667;
-  color:#fff;
+	border-color:#000;
+	background-color:#667;
+	color:#fff;
 }
 
 div.calendar td.time span.active {
-  border-color:#f00;
-  background-color:#000;
-  color:#0f0;
+	border-color:#f00;
+	background-color:#000;
+	color:#0f0;
 }
