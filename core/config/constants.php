@@ -46,7 +46,7 @@ define( 'NOW', time() );
 /**
  * Public URL of the server (use to build absolute links)
  */
-define('SERVER_URL', 'http://' . $_SERVER['HTTP_HOST']);
+define('SERVER_URL', ($_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST']);
 
 /**
  * Public URL of the todoyu installation (server path and web path)
