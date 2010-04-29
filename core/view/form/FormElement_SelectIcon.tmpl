@@ -2,7 +2,7 @@
 
 {block name="field"} 
 <ul class="iconSelector {$htmlName}Selector" id="{$htmlId}-selector" style="background-color: #E3EACE; width: {$config.width*36}px" >
-{for iconIndex 1 $config.numOfIcons}	
+{for iconIndex 0 $config.numOfIcons-1}	
 		<li id="{$htmlId}-listItem-{$iconIndex}" {if $valueTemplate == $iconIndex}class="selected"{/if}>
 			<span onclick="Todoyu.Form.setIconSelectorValue({$iconIndex}, '{$htmlId}');" class="selectorIcon {$config.classNamePrefix}IconSelectorIcon iconBackground{$iconIndex}" /> 
 		</li>
