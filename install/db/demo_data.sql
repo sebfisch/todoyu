@@ -231,19 +231,19 @@ INSERT INTO `ext_project_mm_project_person` (`id`, `id_project`, `id_person`, `i
 -- Data for Table `ext_project_project`
 --
 
-INSERT INTO `ext_project_project` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `date_start`, `date_end`, `date_deadline`, `title`, `description`, `status`, `id_company`, `fixedcosts`, `is_fixedcosts_paid`, `is_fixed`, `id_fixedproject`, `id_rateset`) VALUES
-(1, 1246982959, 1246982959, 1, 0, 1246917600, 1264719600, 1264719600, 'My First Project', '<p>This is the first todoyu project.</p>', 3, 4, 0, 0, 0, 0, 0),
-(4, 1264668890, 1264779125, 1, 0, 1264633200, 1267225200, 1267484400, 'Relaunch Website', '<p>Whole process of relaunching the website</p>', 1, 17, 0, 0, 0, 0, 0),
-(5, 1264675342, 1264779633, 1, 0, 1264633200, 1267225200, 1267225200, 'Relaunch Website', '<p>Relaunch Website</p>', 5, 11, 0, 0, 0, 0, 0),
-(6, 1264675382, 1264681654, 1, 0, 1264633200, 1267225200, 1267225200, 'Relaunch Website', '<p>Relaunch Website</p>', 1, 13, 0, 0, 0, 0, 0),
-(7, 1264675419, 1264681911, 1, 0, 1264633200, 1267225200, 1267225200, 'Relaunch', '<p>Relaunch</p>', 3, 8, 0, 0, 0, 0, 0),
-(8, 1264678888, 1264780404, 1, 0, 1264633200, 1265324400, 1265324400, 'Hosting', '<p>Hosting</p>', 3, 16, 0, 0, 0, 0, 0),
-(9, 1264679088, 1264681991, 1, 0, 1264719600, 1267225200, 1267225200, 'Hosting', '<p>Hosting</p>', 5, 10, 0, 0, 0, 0, 0),
-(10, 1264679315, 1264681835, 1, 0, 1230764400, 1262214000, 1262214000, 'Monthly support', '<p>Monthly support</p>', 9, 14, 0, 0, 0, 0, 0),
-(11, 1264679825, 1264681779, 1, 0, 1264633200, 1267225200, 1267225200, 'Monthly support', '<p>Monthly support</p>', 8, 9, 0, 0, 0, 0, 0),
-(12, 1264680252, 1264681686, 1, 0, 1231110000, 1234479600, 1235084400, 'Redesign', '<p>Redesign</p>', 8, 12, 0, 0, 0, 0, 0),
-(13, 1264680885, 1264681744, 1, 0, 1243461600, 1248645600, 1248645600, 'Redesign', '<p>Redesign</p>', 9, 15, 0, 0, 0, 0, 0),
-(14, 1264777540, 1264777661, 12, 0, 1266793200, 1269558000, 1269558000, 'New Opensource Server', '<p>Build a new server for opensource projects</p>', 1, 15, 0, 0, 0, 0, 0);
+INSERT INTO `ext_project_project` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `date_start`, `date_end`, `date_deadline`, `title`, `description`, `status`, `id_company`) VALUES
+(1, 1246982959, 1246982959, 1, 0, 1246917600, 1264719600, 1264719600, 'My First Project', '<p>This is the first todoyu project.</p>', 3, 4),
+(4, 1264668890, 1264779125, 1, 0, 1264633200, 1267225200, 1267484400, 'Relaunch Website', '<p>Whole process of relaunching the website</p>', 1, 17),
+(5, 1264675342, 1264779633, 1, 0, 1264633200, 1267225200, 1267225200, 'Relaunch Website', '<p>Relaunch Website</p>', 5, 11),
+(6, 1264675382, 1264681654, 1, 0, 1264633200, 1267225200, 1267225200, 'Relaunch Website', '<p>Relaunch Website</p>', 1, 13),
+(7, 1264675419, 1264681911, 1, 0, 1264633200, 1267225200, 1267225200, 'Relaunch', '<p>Relaunch</p>', 3, 8),
+(8, 1264678888, 1264780404, 1, 0, 1264633200, 1265324400, 1265324400, 'Hosting', '<p>Hosting</p>', 3, 16),
+(9, 1264679088, 1264681991, 1, 0, 1264719600, 1267225200, 1267225200, 'Hosting', '<p>Hosting</p>', 5, 10),
+(10, 1264679315, 1264681835, 1, 0, 1230764400, 1262214000, 1262214000, 'Monthly support', '<p>Monthly support</p>', 9, 14),
+(11, 1264679825, 1264681779, 1, 0, 1264633200, 1267225200, 1267225200, 'Monthly support', '<p>Monthly support</p>', 8, 9),
+(12, 1264680252, 1264681686, 1, 0, 1231110000, 1234479600, 1235084400, 'Redesign', '<p>Redesign</p>', 8, 12),
+(13, 1264680885, 1264681744, 1, 0, 1243461600, 1248645600, 1248645600, 'Redesign', '<p>Redesign</p>', 9, 15),
+(14, 1264777540, 1264777661, 12, 0, 1266793200, 1269558000, 1269558000, 'New Opensource Server', '<p>Build a new server for opensource projects</p>', 1, 15);
 
 --
 -- Data for Table `ext_project_task`
