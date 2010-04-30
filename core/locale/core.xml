@@ -5,7 +5,7 @@
 		<label index="yes">Yes</label>
 		<label index="no">No</label>
 		<label index="loading">Loading</label>
-		<label index="expandall">Expand all</label>
+		<label index="expandall">Expand All</label>
 		<label index="author">Author</label>
 		<label index="title">Title</label>
 		<label index="description">Description</label>
@@ -50,12 +50,12 @@
 		<label index="close">Close</label>
 		<label index="noAccess.pageTitle">No Access</label>
 		<label index="noAccess.goBackToLastPage">Go back to last page</label>
-		<label index="noAccess.contactAdmin">If you think you should have access, report the following data to your todoyu administrator:</label>
+		<label index="noAccess.contactAdmin">Ups! If you think you should have access, report the following data to your todoyu administrator:</label>
 		<label index="noAccess.requestURL">Request URL</label>
 		<label index="noAccess.missingRight">Missing Right</label>
 		<label index="footer.version">Version</label>
-		<label index="footer.bugreport">Report A Bug</label>
-		<label index="footer.bugreport.title">Use the todoyu bugtracker at bugs.todoyu.com to add a bugreport</label>
+		<label index="footer.bugreport">Report a bug</label>
+		<label index="footer.bugreport.title">Use the todoyu bug tracker at bugs.todoyu.com to add a bug report</label>
 		<label index="footer.forum">Discuss in the forum</label>
 		<label index="footer.forum.title">Find help or share your ideas</label>
 		<label index="footer.usermanual">Manual</label>
@@ -65,14 +65,14 @@
 		<label index="footer.devmanual">Dev</label>
 		<label index="footer.devmanual.title">Manual for developers and other smart people</label>
 		<label index="paging.page">Page</label>
-		<label index="input.autocompleter">Autocompleting Input</label>
+		<label index="input.autocompleter">Autocomplete Input</label>
 		<label index="ajax.requestFailed">Cannot connect to server (connection or server down?)</label>
 		<label index="attr.is_active">Active</label>
 		<label index="roles">Roles</label>
 		<label index="role">Role</label>
 		<label index="role.new">New Role</label>
 		<label index="role.attr.persons">Role Members</label>
-		<label index="headlet.ajaxloader.label">Synchronizing data with webserver</label>
+		<label index="headlet.ajaxloader.label">Synchronizing data with web server</label>
 		<label index="headlet.about.label">About todoyu</label>
 		<label index="unknown">n.A.</label>
 	</labels>
