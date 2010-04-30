@@ -372,8 +372,8 @@ class TodoyuRoleManager {
 		$fields	= '	p.*';
 		$table	= '	ext_contact_person p,
 					ext_contact_mm_person_role mm';
-		$where	= '	mm.id_role = ' . $idRole . ' AND
-					mm.id_person = p.id';
+		$where	= '		mm.id_role = ' . $idRole .
+				  ' AND	mm.id_person = p.id';
 
 		return Todoyu::db()->getArray($fields, $table, $where);
 	}

@@ -260,9 +260,9 @@ class TodoyuRightsManager {
 	 * @return	Boolean
 	 */
 	public static function deleteRight($extID, $idRole, $right) {
-		$where	= '	ext		= ' . abs($extID) . ' AND
-					id_role= ' . abs($idRole) . ' AND
-					right	= ' . abs($right);
+		$where	= '		ext		= ' . abs($extID) .
+				  ' AND	id_role	= ' . abs($idRole) .
+				  ' AND	right	= ' . abs($right);
 		$limit	= 1;
 
 		return Todoyu::db()->doDelete(self::TABLE, $where, $limit) === 1;
@@ -280,8 +280,8 @@ class TodoyuRightsManager {
 	public static function deleteExtRoleRights($extID, $idRole) {
 		$extID	= intval($extID);
 		$idRole	= intval($idRole);
-		$where	= '	ext		= ' . $extID . ' AND
-					id_role	= ' . $idRole;
+		$where	= '		ext		= ' . $extID . 
+				  ' AND id_role	= ' . $idRole;
 
 		return Todoyu::db()->doDelete(self::TABLE, $where);
 	}

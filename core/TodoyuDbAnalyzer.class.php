@@ -114,8 +114,8 @@ class TodoyuDbAnalyzer {
 					COLUMN_TYPE,
 					EXTRA';
 		$table	= 'INFORMATION_SCHEMA.COLUMNS';
-		$where	= '	`TABLE_SCHEMA` = ' . Todoyu::db()->quote(Todoyu::db()->getConfig('database')) . ' AND
-					(`TABLE_NAME` LIKE \'system_%\' OR `TABLE_NAME` LIKE \'ext_%\' OR `TABLE_NAME` LIKE \'static_%\')';
+		$where	= '	`TABLE_SCHEMA` = ' . Todoyu::db()->quote(Todoyu::db()->getConfig('database')) .
+				  ' AND	(`TABLE_NAME` LIKE \'system_%\' OR `TABLE_NAME` LIKE \'ext_%\' OR `TABLE_NAME` LIKE \'static_%\')';
 		$order	= 'TABLE_NAME';
 
 		$columns= Todoyu::db()->getArray($fields, $table, $where, '', $order);

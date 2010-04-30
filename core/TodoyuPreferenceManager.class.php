@@ -91,11 +91,11 @@ class TodoyuPreferenceManager {
 		$idArea		= intval($idArea);
 
 		$table	= self::TABLE;
-		$where	= '	id_person		= ' . $idUser . ' AND
-					ext 		= ' . $extID . ' AND
-					area 		= ' . $idArea . ' AND
-					preference	= ' . Todoyu::db()->quote($preference, true) . ' AND
-					item		= ' . $idItem;;
+		$where	= '		id_person	= ' . $idUser .
+				  ' AND	ext 		= ' . $extID .
+				  ' AND	area 		= ' . $idArea .
+				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true) .
+				  ' AND	item		= ' . $idItem;;
 
 		if( ! is_null($value) ) {
 			$where .= ' AND value = ' . Todoyu::db()->quote($value, true);
@@ -131,11 +131,11 @@ class TodoyuPreferenceManager {
 
 		$field	= 'value';
 		$table	= self::TABLE;
-		$where	= '	id_person		= ' . $idUser . ' AND
-					ext 		= ' . $extID . ' AND
-					area		= ' . $idArea . ' AND
-					preference	= ' . Todoyu::db()->quote($preference, true) . ' AND
-					item		= ' . $idItem;
+		$where	= '		id_person	= ' . $idUser .
+				  ' AND	ext 		= ' . $extID .
+				  ' AND	area		= ' . $idArea .
+				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true) .
+				  ' AND	item		= ' . $idItem;
 
 		$value	= Todoyu::db()->getFieldValue($field, $table, $where);
 
@@ -168,10 +168,10 @@ class TodoyuPreferenceManager {
 
 		$field	= 'value';
 		$table	= self::TABLE;
-		$where	= '	id_person		= ' . $idUser . ' AND
-					ext 		= ' . $extID . ' AND
-					area		= ' . $idArea . ' AND
-					preference	= ' . Todoyu::db()->quote($preference, true);
+		$where	= '		id_person	= ' . $idUser .
+				  ' AND	ext 		= ' . $extID .
+				  ' AND	area		= ' . $idArea .
+				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true);
 
 		if( $idItem !== 0 ) {
 			$where .= ' AND item = ' . $idItem;
@@ -219,10 +219,10 @@ class TodoyuPreferenceManager {
 
 		$field	= 'id_person';
 		$table	= self::TABLE;
-		$where	= '	id_person		= ' . $idUser . ' AND
-					ext 		= ' . $extID . ' AND
-					area 		= ' . $idArea . ' AND
-					preference	= ' . Todoyu::db()->quote($preference, true);
+		$where	= '		id_person	= ' . $idUser .
+				  ' AND	ext 		= ' . $extID .
+				  ' AND	area 		= ' . $idArea .
+				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true);
 
 		if( ! is_null($value) ) {
 			$where .= ' AND value = ' . Todoyu::db()->quote($value, true);

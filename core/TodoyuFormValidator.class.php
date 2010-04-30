@@ -626,8 +626,7 @@ class TodoyuFormValidator {
 
 			// Check if a record with this fieldvalue already exists (current record is ignored)
 		$fields	= $field;
-		$where	= Todoyu::db()->backtick($field) . ' = ' . Todoyu::db()->quote($value, true) . ' AND
-					id != ' . $idRecord;
+		$where	= Todoyu::db()->backtick($field) . ' = ' . Todoyu::db()->quote($value, true) . ' AND id != ' . $idRecord;
 
 		$exists	= Todoyu::db()->hasResult($fields, $table, $where);
 

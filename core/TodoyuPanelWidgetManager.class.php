@@ -96,8 +96,8 @@ class TodoyuPanelWidgetManager {
 
 		$fields		= 'widget, position, config';
 		$table		= self::TABLE;
-		$where		= '	id_person		= ' . $idUser . ' AND
-						ext			= ' . $extID;
+		$where		= '		id_person	= ' . $idUser .
+					  ' AND	ext			= ' . $extID;
 		$order		= 'position';
 
 		$pWidgets	= Todoyu::db()->getArray($fields, $table, $where, '', $order);

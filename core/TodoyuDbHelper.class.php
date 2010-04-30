@@ -206,8 +206,8 @@ class TodoyuDbHelper {
 
 		$tables		= 	$recordTable . ' r,' .
 						$mmTable . ' mm';
-		$where		= '	mm.' . $fieldRecord . ' = ' . $idLinkRecord . ' AND
-						mm.' . $fieldLink . '	= r.id';
+		$where		= '		mm.' . $fieldRecord . ' = ' . $idLinkRecord .
+					  ' AND	mm.' . $fieldLink . '	= r.id';
 
 		if( sizeof($ignoreRecordIDs) > 0 ) {
 			$where .= ' AND	r.id NOT IN(' . implode(',', $ignoreRecordIDs) . ')';
