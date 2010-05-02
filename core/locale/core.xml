@@ -14,7 +14,7 @@
 		<label index="quickcreate.title">Create</label>
 		<label index="quickcreate.alltypes.label">All Data Types:</label>
 		<label index="create">Create</label>
-		<label index="createNew">Create new</label>
+		<label index="createNew">Create New</label>
 		<label index="edit">Edit</label>
 		<label index="load">Load</label>
 		<label index="save">Save</label>
@@ -54,7 +54,7 @@
 		<label index="noAccess.requestURL">Request URL</label>
 		<label index="noAccess.missingRight">Missing Right</label>
 		<label index="footer.version">Version</label>
-		<label index="footer.bugreport">Report a bug</label>
+		<label index="footer.bugreport">Report a Bug</label>
 		<label index="footer.bugreport.title">Use the todoyu bug tracker at bugs.todoyu.com to add a bug report</label>
 		<label index="footer.forum">Discuss in the forum</label>
 		<label index="footer.forum.title">Find help or share your ideas</label>
@@ -74,7 +74,7 @@
 		<label index="role.attr.persons">Role Members</label>
 		<label index="headlet.ajaxloader.label">Synchronizing data with web server</label>
 		<label index="headlet.about.label">About todoyu</label>
-		<label index="unknown">n.A.</label>
+		<label index="unknown">n/a</label>
 	</labels>
 	<labels lang="de_DE">
 		<label index="tab.todoyu.label">todoyu</label>

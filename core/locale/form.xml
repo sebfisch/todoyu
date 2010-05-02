@@ -10,10 +10,10 @@
 		<label index="records.add">Add Record</label>
 		<label index="records.remove">Remove Record</label>
 		<label index="records.edit">Edit Record</label>
-		<label index="databaserelation.nolabel">[New entry]</label>
+		<label index="databaserelation.nolabel">[New Entry]</label>
 		<label index="databaserelation.expandAllRecords">Show Details</label>
 		<label index="error.notUnique">This entry already exists</label>
-		<label index="ac.noResults">Autocompleter: No results found</label>
+		<label index="ac.noResults">Autocomplete: no results found</label>
 		<label index="is_preferred">Preferred</label>
 		<label index="dateselector.open">Open date selector to pick a date</label>
 		<label index="autocompleteInfo">This is an autocomplete field. Start typing to get suggestions</label>

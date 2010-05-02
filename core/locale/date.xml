@@ -45,7 +45,7 @@
 		<label index="year">Year</label>
 		<label index="years">Years</label>
 		<label index="weeknumber">Calendar Week</label>
-		<label index="weeknumberAbbr">CW</label>
+		<label index="weeknumberAbbr">Week</label>
 		<label index="daily">Daily</label>
 		<label index="weekly">Weekly</label>
 		<label index="monthly">Monthly</label>
