@@ -27,7 +27,7 @@
 class TodoyuClipboard {
 
 	/**
-	 * Key in todoyu session
+	 * @var string		Key in todoyu session
 	 */
 	const KEY = 'CLIPBOARD';
 

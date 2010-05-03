@@ -26,6 +26,9 @@
  */
 class TodoyuRoleManager {
 
+	/**
+	 * @var	String		Default Database table
+	 */
 	const TABLE = 'system_role';
 
 

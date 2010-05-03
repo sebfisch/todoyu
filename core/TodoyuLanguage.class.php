@@ -27,29 +27,23 @@
 class TodoyuLanguage {
 
 	/**
-	 * Default locale key if non set
-	 * @todo	Try to get config from Todoyu::$CONFIG
+	 * @var String		Default locale key if non set
+	 * @todo			Try to get config from Todoyu::$CONFIG
 	 */
 	const FALLBACK = 'en_GB';
 
 	/**
-	 * Current locale key
-	 *
-	 * @var	String
+	 * @var	String		Current locale key
 	 */
 	private static $locale = self::FALLBACK;
 
 	/**
-	 * Locallang labels cache
-	 *
-	 * @var	Array
+	 * @var	Array		Locallang labels cache
 	 */
 	public static $cache = array();
 
 	/**
-	 * Registered file references
-	 *
-	 * @var	Array
+	 * @var	Array		Registered file references 
 	 */
 	private static $files = array();
 
