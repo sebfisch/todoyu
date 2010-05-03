@@ -638,8 +638,6 @@ class TodoyuInstallerManager {
 			$result['stop']	= true;
 		}
 
-		TodoyuDebug::printInFirebug($fileCheck, '$fileCheck');
-
 		return $result;
 	}
 

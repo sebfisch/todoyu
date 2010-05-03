@@ -50,7 +50,6 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 		}
 
 		$this->setAttribute('noIcon', $this->hasAttribute('noIcon'));
-		$this->setAttribute('noStorage', true);
 	}
 
 
@@ -95,6 +94,16 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 		}
 
 		return parent::getData();
+	}
+
+
+	/**
+	 * Never save buttons
+	 *
+	 * @return	Boolean
+	 */
+	public function isNoStorageField() {
+		return true;
 	}
 
 

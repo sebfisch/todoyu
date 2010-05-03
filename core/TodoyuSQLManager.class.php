@@ -286,15 +286,6 @@ class TodoyuSQLManager {
 			// Find differences between
 		$structureDiff		= self::getDifferencesFromStructures($fileTableStructure, $dbTableStructure);
 
-		TodoyuDebug::printInFireBug($fileTableStructure['ext_abcd_test'], '$fileTableStructure');
-		
-		
-//		TodoyuDebug::printPlain($fileTableStructure, '$fileTableStructure');
-//		TodoyuDebug::printPlain($dbTableStructure, '$dbTableStructure');
-//		TodoyuDebug::printPlain($structureDiff, '$structureDiff');
-
-
-
 		return $structureDiff;
 	}
 
