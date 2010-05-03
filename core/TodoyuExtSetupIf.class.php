@@ -18,21 +18,20 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-$installedExtensions	= TodoyuExtensions::getInstalledExtKeys();
+/**
+ * Interface for extension setup classes
+ * 
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+interface TodoyuExtSetupIf {
 
-	// First add all include paths
-foreach($installedExtensions as $extKey) {
-	TodoyuExtensions::addExtAutoloadPaths($extKey);
-}
+	public static function install();
 
-	// Load all ext.php files to init the extensions
-foreach($installedExtensions as $extKey) {
-	$extDir	= TodoyuExtensions::getExtPath($extKey);
-	$extFile= $extDir . '/ext.php';
+	public static function update();
 
-	if( is_file($extFile) ) {
-		require_once($extFile);
-	}
+	public static function uninstall();
+	
 }
 
 ?>

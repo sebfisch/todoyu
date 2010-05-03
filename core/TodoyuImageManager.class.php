@@ -47,7 +47,8 @@ class TodoyuImageManager {
 			$typeSource	= $sourceInfo['mime'];
 		}
 
-		$image	= self::loadImage($pathSource, $typeSource);
+			// Load image based on filetype
+		$image	= self::loadImage($pathSource, $typeSource);		
 
 		if( $image !== false ) {
 			$newDimensions =	self::getDimensions($sourceInfo[0], $sourceInfo[1], $newMaxWidth, $newMaxHeight, $upscale);
@@ -76,13 +77,15 @@ class TodoyuImageManager {
 	public static function loadImage($pathFile, $type) {
 		$ext		= self::getExt($type);
 		$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);
-
+		
 		switch($ext) {
+			case 'x-png':
 			case 'png':
 				$image	= imagecreatefrompng($pathFile);
 				break;
 
-			case 'jpeg';
+			case 'pjpeg':
+			case 'jpeg':
 				$image	= imagecreatefromjpeg($pathFile);
 				break;
 

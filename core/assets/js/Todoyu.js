@@ -243,7 +243,7 @@ var Todoyu = {
 	 * 
 	 * @param	{String}		functionName
 	 */
-	getFunctionFromString: function(functionName) {
+	getFunctionFromString: function(functionName, bind) {
 		var namespaces 	= functionName.split(".");
 		var func 		= namespaces.pop();
 		var context		= window;
@@ -255,7 +255,14 @@ var Todoyu = {
 				alert("Function: " + functionName + " not found!");
 			}
 		}
-		return context[func];
+
+		var funcRef = context[func];
+
+		if( bind ) {
+			funcRef = funcRef.bind(context);
+		}
+
+		return funcRef;
 	},
 
 

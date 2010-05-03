@@ -63,6 +63,17 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 		parent::setValue($value);
 	}
 
+
+
+	/**
+	 * Comment fields are never stored in the database
+	 *
+	 * @return	Boolean
+	 */
+	public function isNoStorageField() {
+		return true;
+	}
+
 }
 
 ?>

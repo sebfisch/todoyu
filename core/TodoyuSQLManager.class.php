@@ -184,19 +184,33 @@ class TodoyuSQLManager {
 	 */
 	public static function getExtTableQueries() {
 		$extKeys	= TodoyuExtensions::getInstalledExtKeys();
-		$extQueries	= array();
+		$allQueries	= array();
 
 		foreach($extKeys as $extKey) {
-			$extPath	= TodoyuExtensions::getExtPath($extKey);
-			$file		= $extPath . DIR_SEP . 'config' . DIR_SEP . 'db' . DIR_SEP . 'tables.sql';
+			$extQueries	= self::getExtensionTableQueries($extKey);
 
-			if( is_file($file) ) {
-				$fileQueries= self::getQueriesFromFile($file);
-				$extQueries	= array_merge($extQueries, $fileQueries);
-			}
+			$allQueries	= array_merge($allQueries, $extQueries);
 		}
 
-		return $extQueries;
+		return $allQueries;
+	}
+
+
+
+	/**
+	 * Get
+	 * @param  $extKey
+	 * @return array
+	 */
+	public static function getExtensionTableQueries($extKey) {
+		$tablesFile	= TodoyuExtensions::getExtPath($extKey, 'config/db/tables.sql');
+		$queries	= array();
+
+		if( is_file($tablesFile) ) {
+			$queries	= self::getQueriesFromFile($tablesFile);
+		}
+
+		return $queries;
 	}
 
 
@@ -271,6 +285,15 @@ class TodoyuSQLManager {
 		$dbTableStructure	= TodoyuDbAnalyzer::getTableStructures();
 			// Find differences between
 		$structureDiff		= self::getDifferencesFromStructures($fileTableStructure, $dbTableStructure);
+
+		TodoyuDebug::printInFireBug($fileTableStructure['ext_abcd_test'], '$fileTableStructure');
+		
+		
+//		TodoyuDebug::printPlain($fileTableStructure, '$fileTableStructure');
+//		TodoyuDebug::printPlain($dbTableStructure, '$dbTableStructure');
+//		TodoyuDebug::printPlain($structureDiff, '$structureDiff');
+
+
 
 		return $structureDiff;
 	}

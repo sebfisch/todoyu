@@ -29,7 +29,7 @@ Todoyu.Form = {
 	onFormDisplay: function(formID) {
 		if( Todoyu.exists(formID) ) {
 			this.expandInvalidForeignRecords(formID);
-			this.focusFirstFormField(formID);
+			//this.focusFirstFormField(formID);
 		}
 	},
 
@@ -164,7 +164,9 @@ Todoyu.Form = {
 			var field = $(formID).select('input[type!=hidden]', 'select', 'textarea').first();
 			
 			if( field )	{
-				field.focus();
+				if( field.visible() ) {
+					field.focus();
+				}				
 			}
 		}
 	},

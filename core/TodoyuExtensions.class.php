@@ -366,6 +366,30 @@ class TodoyuExtensions {
 
 
 	/**
+	 * Add extension paths to the autoload config
+	 * Adds the default paths (model,controller) and custom paths from $extraPaths
+	 *
+	 * @param	String		$extKey
+	 * @param	Array		$extraPaths
+	 */
+	public static function addExtAutoloadPaths($extKey, array $extraPaths = array()) {
+		$extDir	= TodoyuExtensions::getExtPath($extKey);
+
+		Todoyu::addIncludePath($extDir . '/model');
+		Todoyu::addIncludePath($extDir . '/controller');
+
+		foreach($extraPaths as $extraPath) {
+			$path	= TodoyuFileManager::pathAbsolute($extDir . '/' . $extraPath);
+
+			if( is_dir($path) ) {
+				Todoyu::addIncludePath($path);
+			}
+		}		
+	}
+
+
+
+	/**
 	 * Check if an extension has dependents
 	 * Dependents need the current extension to work properly
 	 *
@@ -421,6 +445,12 @@ class TodoyuExtensions {
 
 
 
+	/**
+	 * Check whether the extension has conflicts
+	 *
+	 * @param	String		$extKey
+	 * @return	Boolean
+	 */
 	public static function hasConflicts($extKey) {
 		return sizeof(self::getConflicts($extKey)) > 0;
 	}
