@@ -46,21 +46,13 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 	 * Parse value as locallang
 	 */
 	protected function init() {
-		$this->setValue($this->getValue());
+
 	}
 
 
 
-	/**
-	 * Set value
-	 * Parse value as locallang
-	 *
-	 * @param	String		$value		Locallang reference or just a string
-	 */
-	public function setValue($value) {
-		$value	= TodoyuString::getLabel($value);
-
-		parent::setValue($value);
+	public function getValueForTemplate() {
+		return TodoyuLanguage::getLabel($this->config['comment']);
 	}
 
 
