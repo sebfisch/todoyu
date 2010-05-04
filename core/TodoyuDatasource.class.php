@@ -21,6 +21,9 @@
 /**
  * Various datasource methods
  *
+ * @deprecated
+ * @todo		Check if something useful is in here, then remove
+ * @see			TodoyuStaticRecords
  * @package		Todoyu
  * @subpackage	Core
  */
