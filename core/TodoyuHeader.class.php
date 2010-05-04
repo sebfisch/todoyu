@@ -181,12 +181,13 @@ class TodoyuHeader {
 
 	/**
 	 * Send a header prefixed with 'Todoyu-'
+	 * The value is automatically JSON encoded to make sure it's an ASCII string
 	 *
 	 * @param	String		$name
 	 * @param	String		$value
 	 */
 	public static function sendTodoyuHeader($name, $value) {
-		self::sendHeader('Todoyu-' . $name, $value);
+		self::sendHeader('Todoyu-' . $name, json_encode($value));
 	}
 
 

@@ -22,27 +22,52 @@ Element.addMethods({
 });
 
 
-/**
- * Get todoyu style http headers (prefixed by 'Todoyu-')
- * @param	{String}		name
- */
+
 Ajax.Response.addMethods({
+	/**
+	 * Get todoyu style http headers (prefixed by 'Todoyu-')
+	 *
+	 * @param	{String}		name
+	 */
 	getTodoyuHeader: function(name) {
-		return this.getHeader('Todoyu-' + name);
+		var header = this.getHeader('Todoyu-' + name);
+
+		return header === null ? header : header.isJSON() ? header.evalJSON() : header;
 	},
+
+	/**
+	 * Check whether a todoyu header was sent
+	 *
+	 * @param	{String}
+	 */
 	hasTodoyuHeader: function(name) {
 		return this.getTodoyuHeader(name) !== null;
 	},
+
+	/**
+	 * Check whether todoyu error was sent
+	 */
 	hasTodoyuError: function() {
 		return this.getTodoyuHeader('error') == 1;
 	},
+
+	/**
+	 * Check whether no access header was sent
+	 */
 	hasNoAccess: function() {
-		//Todoyu.log('test');
 		return this.getTodoyuHeader('noAccess') == 1;
 	},
+
+	/**
+	 * Check whether a php error header was sent
+	 */
 	hasPhpError: function() {
 		return this.getPhpError() !== null;
 	},
+
+	/**
+	 * Get the php error header
+	 */
 	getPhpError: function() {
 		return this.getTodoyuHeader('Php-Error');
 	}
