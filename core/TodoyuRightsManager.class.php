@@ -225,8 +225,28 @@ class TodoyuRightsManager {
 
 			// If right doesn't exist, log it
 		if( $found !== true ) {
-			Todoyu::log('Right not found: ' . $extKey . '::' . $right, TodoyuLogger::LEVEL_SECURITY);
+			$position	= self::getRightsCheckPosition();
+			$path		= TodoyuFileManager::pathWeb($position['file']);
+						
+			Todoyu::log('Right not found: ' . $extKey . '::' . $right . ' **' . $path . ':' . $position['line'] . '**', TodoyuLogger::LEVEL_SECURITY);
 		}
+	}
+	
+	
+	private static function getRightsCheckPosition() {
+		$backtrace	= debug_backtrace();
+		$functions	= array('allowed');
+
+		foreach($backtrace as $step) {
+			if( $step['class'] === 'TodoyuRightsManager' ) {
+				continue;
+			}
+			if( in_array($step['function'], $functions) ) {
+				return $step;
+			}
+		}
+
+		return false;
 	}
 
 
