@@ -223,6 +223,10 @@ Todoyu.Time = {
 	 * @param	{Number}		time
 	 */
 	getDateTimeString: function(time) {
+		if( ! Object.isNumber(time) ) {
+			return '';
+		}
+
 		var date = new Date(time*1000);
 		
 		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth()+1) + '-' + Todoyu.Helper.twoDigit(date.getDate()) + ' ' + Todoyu.Helper.twoDigit(date.getHours()) + ':' + Todoyu.Helper.twoDigit(date.getMinutes());
