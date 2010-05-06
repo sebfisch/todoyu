@@ -365,10 +365,18 @@ form .textAfterField  {
 	float:left;
 }
 
+
 form .fElement.error .fLabel.error label,
-form div.error .fField span.errorMessage {
+form div.error div.errorMessage {
 	color:red;
 	font-style:italic;
+}
+
+form .error.typeCheckbox {
+	height: 30px !important;
+}
+
+form .typeCheckbox div.errorMessage {
 }
 
 	/* --- left floating radio --- */
