@@ -549,13 +549,17 @@ function Dwoo_Plugin_select(Dwoo $dwoo, array $options, array $value, $id = '', 
 		'htmlId'	=> $id,
 		'htmlName'	=> $name,
 		'class'		=> $class,
-		'size'		=> $size === 0 ? sizeof($options) : $size,
+		'size'		=> $size == 0 ? sizeof($options) : $size,
 		'multiple'	=> $multiple,
 		'disabled'	=> $disabled,
 		'onchange'	=> $onchange,
 		'value'		=> $value,
 		'options'	=> $options
 	);
+
+	if( $multiple !== true ) {
+		$data['size'] = 1;
+	}
 
 	return render($tmpl, $data);
 }
