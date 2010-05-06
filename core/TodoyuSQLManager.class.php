@@ -264,7 +264,7 @@ class TodoyuSQLManager {
 	 */
 	public static function getStructureUpdateQueries() {
 		$structureDiff	= self::getStructureDifferences();
-		
+
 			// Generate modification queries based of the differences
 		$updateQueries	= self::getStructureUpdateQueriesFromDifferences($structureDiff);
 

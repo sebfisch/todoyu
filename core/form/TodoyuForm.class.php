@@ -471,10 +471,10 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @see		$this->addElementsFromXML()
 	 * @param	String		$xmlPath		Path to the xml file
-	 * @param	String		$name			Name of the field to insert the elements after
+	 * @param	String		$fieldName		Name of the field to insert the elements after
 	 */
-	public function addElementsFromXMLAfter($xmlPath, $name) {
-		$this->addElementsFromXML($xmlPath, 'after:' . $name);
+	public function addElementsFromXMLAfter($xmlPath, $fieldName) {
+		$this->addElementsFromXML($xmlPath, 'after:' . $fieldName);
 	}
 
 
@@ -484,10 +484,10 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @see		$this->addElementsFromXML()
 	 * @param	String		$xmlPath		Path to the xml file
-	 * @param	String		$name			Name of the field to insert the elements before
+	 * @param	String		$fieldName		Name of the field to insert the elements before
 	 */
-	public function addElementsFromXMLBefore($xmlPath, $name) {
-		$this->addElementsFromXML($xmlPath, 'before:' . $name);
+	public function addElementsFromXMLBefore($xmlPath, $fieldName) {
+		$this->addElementsFromXML($xmlPath, 'before:' . $fieldName);
 	}
 
 
@@ -505,7 +505,7 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
-	 * Check if a fieldset exists
+	 * Check whether a fieldset exists
 	 *
 	 * @param	String		$name
 	 * @return	Boolean

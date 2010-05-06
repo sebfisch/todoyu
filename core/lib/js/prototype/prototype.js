@@ -4,21 +4,21 @@
  */
 
 Element.addMethods({
-  replaceClassName: function(element, className, replacement){
-    if (!(element = $(element))) {return;}
-    return element.removeClassName(className).addClassName(replacement);
-  },
+	replaceClassName: function(element, className, replacement){
+		if (!(element = $(element))) {return;}
+		return element.removeClassName(className).addClassName(replacement);
+	},
 
-  /**
-   * Scroll to an element but consider the fixed header
-   *
-   * @param	{Element}	element
-   */
-  scrollToElement: function(element) {
-  	Todoyu.Ui.scrollToElement(element);
+	/**
+	 * Scroll to an element but consider the fixed header
+	 *
+	 * @param	{Element}	element
+	 */
+	scrollToElement: function(element) {
+		Todoyu.Ui.scrollToElement(element);
 
 	return element;
-  }
+	}
 });
 
 
@@ -34,6 +34,8 @@ Ajax.Response.addMethods({
 
 		return header === null ? header : header.isJSON() ? header.evalJSON() : header;
 	},
+
+
 
 	/**
 	 * Check whether a todoyu header was sent
@@ -51,6 +53,8 @@ Ajax.Response.addMethods({
 		return this.getTodoyuHeader('error') == 1;
 	},
 
+
+
 	/**
 	 * Check whether no access header was sent
 	 */
@@ -58,12 +62,16 @@ Ajax.Response.addMethods({
 		return this.getTodoyuHeader('noAccess') == 1;
 	},
 
+
+
 	/**
 	 * Check whether a php error header was sent
 	 */
 	hasPhpError: function() {
 		return this.getPhpError() !== null;
 	},
+
+
 
 	/**
 	 * Get the php error header
