@@ -74,6 +74,7 @@
 		<label index="finish.title">Installation Successful</label>
 		<label index="finish.text">The installation was successful</label>
 		<label index="finish.button">Go to login page</label>
+        <label index="finish.note">You now can login in. This next step might take a few seconds (dependant on your CPU) because the system is going to merge files, doing some caching, preparing data and do some other magic.</label>
 		<label index="update.title">Update todoyu Installation</label>
 		<label index="update.button">Start Update</label>
 		<label index="update.info">Apply database changes for your current version and compare current columns with file configuration</label>
@@ -95,7 +96,7 @@
 		<label index="panelWidget.title.progress">Installationsschritte</label>
 		<label index="type.install">todoyu Installation</label>
 		<label index="type.update">todoyu Aktualisierung</label>
-		<label index="locale.title">Installationssprache Wählen</label>
+		<label index="locale.title">Installationssprache wählen</label>
 		<label index="locale.selectthislocale">Installiere todoyu auf Deutsch </label><!-- name of the current locale language -->
 		<label index="locale.text">Bitte wählen Sie eine Sprache für den Installationsvorgang:</label>
 		<label index="license.eula">Benutzer-Vereinbarung für todoyu</label>
@@ -143,11 +144,11 @@
 		<label index="systemconfig.language">Sprache</label>
 		<label index="systemconfig.locale">Sprache (Land)</label>
 		<label index="systemconfig.timezone">Zeitzone</label>
-		<label index="systemconfig.text">todoyu System-Einstellungen vornehmen</label>
+		<label index="systemconfig.text">todoyu Systemeinstellungen vornehmen</label>
 		<label index="systemconfig.text.error">Bitte System-Name und -Email angeben</label>
-		<label index="adminaccount.title">Administrator-Account Anlegen</label>
+		<label index="adminaccount.title">Administrator-Account anlegen</label>
 		<label index="adminaccount.email">Administrator Email</label>
-		<label index="adminaccount.button">Administratoren-Account Anlegen</label>
+		<label index="adminaccount.button">Administratoren-Account anlegen</label>
 		<label index="adminaccount.username">Benutzername</label>
 		<label index="adminaccount.password">Passwort</label>
 		<label index="adminaccount.repeatPassword">Passwort wiederholen</label>
@@ -164,6 +165,7 @@
 		<label index="importdemodata.contains">Enthalten sind: Projekte, Aufgaben, Adressen, Firmen, Kommentare, Feedbacks, Systemrollen, Leistungsarten, Filter und noch weitere Daten.</label>
 		<label index="finish.title">Installation abschliessen</label>
 		<label index="finish.text">Installation beendet</label>
+        <label index="finish.note">Sie können nun einloggen. Der nächste Schritt dauert einige Sekunden (abhängig von Ihrer CPU), da das System Dateien zusammenführt, das Caching vorbereitet, Daten aufbereitet und weitere Vorbereitungen macht.</label>
 		<label index="finish.button">Installer deaktivieren und weiter zum Login</label>
 		<label index="update.title">todoyu aktualisieren</label>
 		<label index="update.button">Aktualisierung starten</label>
