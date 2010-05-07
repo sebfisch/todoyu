@@ -257,6 +257,8 @@ Todoyu.Headlet.About = {
 				})
 			});
 
+			$('scrollingnames').select('li').invoke('removeClassName', 'coder');
+
 			$('ee-img').observe('click', function(event){
 				Effect.Puff(event.element());
 			});
