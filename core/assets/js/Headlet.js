@@ -130,6 +130,7 @@ Todoyu.Headlet = {
 		headletObject.getContent		= this.getContent.bind(this, name);
 		headletObject.saveOpenStatus	= this.saveOpenStatus.bind(this, name);
 		headletObject.isEventInOwnContent	= this.isEventInOwnContent.bind(this, name);
+		headletObject.setActive			= this.setActive.bind(this, name);
 
 			// Call headlet init function if exists
 		Todoyu.callIfExists(headletObject.init, headletObject);
