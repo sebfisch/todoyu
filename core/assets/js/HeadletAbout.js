@@ -202,7 +202,7 @@ Todoyu.Headlet.About = {
 			x: 0,
 			y: newY,
 			mode: 'relative',
-			duration: list.select('li').size()*0.7,
+			duration: list.select('li').size()*0.4,
 			transition: Effect.Transitions.linear,
 			afterFinish: this.startNameScrolling.bind(this, !up)
 		});
@@ -251,8 +251,14 @@ Todoyu.Headlet.About = {
 		li.addClassName('coder');
 
 		if( $H(this.eeVisible).all(function(pair){ return pair.value === true; })) {
-			$('headlet-about-window').down('div.logo').setStyle({
-				'background': 'url(core/assets/img/ggeretsae.gif) no-repeat scroll 40% 0'
+			$('headlet-about-window').insert({
+				'bottom': new Element('div', {
+					'id': 'ee-img'
+				})
+			});
+
+			$('ee-img').observe('click', function(event){
+				Effect.Puff(event.element());
 			});
 		}
 

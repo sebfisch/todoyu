@@ -79,3 +79,12 @@
 	text-transform:uppercase;
 }
 
+#headlet-about-window #ee-img {
+	position:absolute;
+	left:-20px;
+	top:20px;
+	width:400px;
+	height:200px;
+	background:url(../img/ggeretsae.gif) no-repeat 0 0;
+}
+
