@@ -26,6 +26,8 @@
  */
 Todoyu.Headlet.About = {
 
+	eeVisible: {},
+
 	/**
 	 * Window HTML ID
 	 */
@@ -200,7 +202,7 @@ Todoyu.Headlet.About = {
 			x: 0,
 			y: newY,
 			mode: 'relative',
-			duration: list.select('li').size()*1.5,
+			duration: list.select('li').size()*1.5*0.4,
 			transition: Effect.Transitions.linear,
 			afterFinish: this.startNameScrolling.bind(this, !up)
 		});
@@ -214,13 +216,23 @@ Todoyu.Headlet.About = {
 	initEE: function() {
 		var names	= ['Erni', 'Stenschke', 'Karrer'];
 
+		names.each(function(name){
+			this.eeVisible[name] = false;
+		}, this);
+
 		$('scrollingnames').select('li').findAll(function(names, element){
+				// Check if list item is coder name
 			var isCoder = names.any(function(itemName, coderName){
 				return itemName.indexOf(coderName) !== -1;
 			}.bind(this, element.innerHTML));
 
 			if( isCoder ) {
-				element.observe('click', this.EE.bindAsEventListener(this));
+					//
+				var coderName = names.detect(function(itemName, coderName){
+					return itemName.indexOf(coderName) !== -1;
+				}.bind(this, element.innerHTML));
+
+				element.observe('click', this.EE.bindAsEventListener(this, coderName));
 			}
 		}.bind(this, names));
 	},
@@ -232,10 +244,19 @@ Todoyu.Headlet.About = {
 	 *
 	 * @param	{Event}		event
 	 */
-	EE: function(event) {
-		$('headlet-about-window').down('div.logo').setStyle({
-			'background': 'url(core/assets/img/ggeretsae.gif) no-repeat scroll 40% 0'
-		});
+	EE: function(event, coderName) {
+		var li = event.findElement('li');
+		this.eeVisible[coderName] = true;
+
+		li.addClassName('coder');
+
+		if( $H(this.eeVisible).all(function(pair){ return pair.value === true; })) {
+			$('headlet-about-window').down('div.logo').setStyle({
+				'background': 'url(core/assets/img/ggeretsae.gif) no-repeat scroll 40% 0'
+			});
+		}
+
+
 	}
 	
 };

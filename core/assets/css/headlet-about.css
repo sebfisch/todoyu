@@ -73,3 +73,9 @@
 	padding:5px;
 }
 
+#headlet-about-window .names ul li.coder {
+	font-weight:bold;
+	letter-spacing:2px;
+	text-transform:uppercase;
+}
+
