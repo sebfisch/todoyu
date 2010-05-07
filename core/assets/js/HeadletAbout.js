@@ -202,7 +202,7 @@ Todoyu.Headlet.About = {
 			x: 0,
 			y: newY,
 			mode: 'relative',
-			duration: list.select('li').size()*0.4,
+			duration: list.select('li').size()*0.8,
 			transition: Effect.Transitions.linear,
 			afterFinish: this.startNameScrolling.bind(this, !up)
 		});
