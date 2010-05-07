@@ -212,7 +212,9 @@ class TodoyuFormXmlParser {
 	 * @return	Bool
 	 */
 	private static function isAllowed(array $config) {
-		if( array_key_exists('restrict', $config) ) {
+		if( array_key_exists('restrictAdmin', $config) ) {
+			return TodoyuAuth::isAdmin();
+		} elseif( array_key_exists('restrict', $config) ) {
 			$restrict 	=& $config['restrict'];
 			$and		= strtoupper(trim($restrict['@attributes']['conjunction'])) === 'AND';
 			$rights		= TodoyuArray::assure($restrict['allow']);

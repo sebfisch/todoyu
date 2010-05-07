@@ -227,7 +227,9 @@ class TodoyuRightsManager {
 		if( $found !== true ) {
 			$position	= self::getRightsCheckPosition();
 			$path		= TodoyuFileManager::pathWeb($position['file']);
-						
+
+//			debug_print_backtrace();
+
 			Todoyu::log('Right not found: ' . $extKey . '::' . $right . ' **' . $path . ':' . $position['line'] . '**', TodoyuLogger::LEVEL_SECURITY);
 		}
 	}
