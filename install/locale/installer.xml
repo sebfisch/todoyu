@@ -165,7 +165,7 @@
 		<label index="importdemodata.contains">Enthalten sind: Projekte, Aufgaben, Adressen, Firmen, Kommentare, Feedbacks, Systemrollen, Leistungsarten, Filter und noch weitere Daten.</label>
 		<label index="finish.title">Installation abschliessen</label>
 		<label index="finish.text">Installation beendet</label>
-        <label index="finish.note">Sie können nun einloggen. Der nächste Schritt dauert einige Sekunden (abhängig von Ihrer CPU), da das System Dateien zusammenführt, das Caching vorbereitet, Daten aufbereitet und weitere Vorbereitungen macht.</label>
+		<label index="finish.note">Sie können nun einloggen. Der nächste Schritt dauert einige Sekunden (abhängig von Ihrer CPU), da das System Dateien zusammenführt, das Caching vorbereitet, Daten aufbereitet und weitere Vorbereitungen macht.</label>
 		<label index="finish.button">Installer deaktivieren und weiter zum Login</label>
 		<label index="update.title">todoyu aktualisieren</label>
 		<label index="update.button">Aktualisierung starten</label>
