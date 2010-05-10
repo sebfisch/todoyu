@@ -175,55 +175,7 @@ class TodoyuTime {
 		return $weekday;
 	}
 
-
-
-	/**
-	 * Get number of day of week of given timestamp (0 = sunday, 1 = monday... or 0 = monday, 1 = tuesday..)
-	 *
-	 * @todo	Check usage, replace by getWeekday and remove??
-	 * @param	Integer			$timestamp
-	 * @return	Integer
-	 */
-	public static function getWeekdayNum( $timestamp, $startWithMonday = false ) {
-		$dayNum = date('w', $timestamp);
-
-		if ($startWithMonday) {
-			$dayNum -= 1;
-			if ($dayNum == -1) {
-				$dayNum = 6;
-			}
-		}
-
-		return $dayNum;
-	}
-
-
-
-	/**
-	 * Get weekdays inside given timespan. (monday = 0 ... sunday = 6)
-	 *
-	 * @param	Integer		$start
-	 * @param	Integer		$end
-	 * @return	Array
-	 */
-	public static function getWeekdaysInTimespan($start, $end) {
-		$weekdays = array();
-
-		$timestamp	= $start;
-		while( $timestamp <= $end ) {
-			$weekdayNum	= self::getWeekday($timestamp);
-
-			if ( ! in_array($weekdayNum, $weekdays) ) {
-				$weekdays[]= $weekdayNum;
-			}
-
-			$timestamp+= 43200;
-		}
-
-		return $weekdays;
-	}
-
-
+	
 
 	/**
 	 * Get time parts (hours, minutes, seconds) from an integer which represents seconds
