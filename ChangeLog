@@ -8,7 +8,7 @@ todoyu 2.0.0 - released 2010-05-10
 	* Feature: Added about info splash screen
 	* Feature: Added utf-8 support to the todoyu header functions
 	* Feature: Automatically encode custom header data with JSON
-	* Featuer: Timetracking information in page title
+	* Feature: Timetracking information in page title
 	* Feature: Upload your own logo for todoyu
 	* Feature: Basic extension setup process. More features prepared
 	* Feature: Todoyu uses date parse and print functions of jscalendar to work with date input fields
@@ -24,10 +24,10 @@ todoyu 2.0.0 - released 2010-05-10
 	* Changed: Cleaned up database fields. Removed unused, unified type definitions
 	* Changed: Optimized headlet behaviour
 	* Changed: Removed direct console.log(), wrapped in Todoyu.log()
-	* Changed: Changed all javascript doc comment into the correct jsdoc syntax
+	* Changed: Changed all JavaScript doc comment into the correct JsDoc syntax
 	* Changed: Patched some dwoo functions (ex: truncate) to support utf-8
 	* Changed: Every event is at least 20px height to stay visible
-	* Changed: Cleaned up quickinfo and contextmenu handling in javascript. Removed nearly all redundant code
+	* Changed: Cleaned up quickinfo and contextmenu handling in JavaScript. Removed nearly all redundant code
 	* Changed: Removed functions which are not used anymore because of refactoring and cleanup
 	* Changed: Added more powerful time rounding function
 	* Changed: Allow more complex form validations (requirements, exceptions, etc)
@@ -36,7 +36,7 @@ todoyu 2.0.0 - released 2010-05-10
 	* Changed: Removed all HTML errors which caused browser compatibility problems
 	* Translation: Added brazilian portuguese (provided by the community member Max N Kanadani)
 	* Translation: Added missing labels for german and english. Corrected wordings
-	* Bugfix: Constant SERVER_URL supports now HTTPS
+	* Bugfix: Constant SERVER_URL supports now https://
 	* Bugfix: Absolute path on linux/windows system outside of the todoyu root
 	* Bugfix: Right position for error message for checkboxes
 	* Bugfix: Scroll to an element in the page (respecting the fixed header)
