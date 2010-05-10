@@ -43,8 +43,8 @@ INSERT INTO `ext_contact_contactinfotype` (`id`, `date_create`, `date_update`, `
 
 INSERT INTO `system_role` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `is_active`, `description`) VALUES
 (1, 1264761659, 0, 1, 0, 'Customers', 1, 'Customers with todoyu access'),
-(2, 1264762106, 0, 1, 0, 'Project managers', 1, ''),
-(4, 1264762153, 0, 1, 0, 'Workers', 1, 'Executive members of staff');
+(2, 1264762106, 0, 1, 0, 'Project Managers', 1, ''),
+(4, 1264762153, 0, 1, 0, 'Staff', 1, 'Executive members of staff');
 
 --
 -- Data for Table `system_right`

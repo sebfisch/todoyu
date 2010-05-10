@@ -412,10 +412,10 @@ INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_person_c
 --
 
 INSERT INTO `ext_project_role` (`id`, `date_create`, `id_person_create`, `date_update`, `rolekey`, `title`, `deleted`) VALUES
-(1, 0, 0, 1264696219, 'projectleader', 'Project manager', 0),
+(1, 0, 0, 1264696219, 'projectleader', 'Project Manager', 0),
 (2, 0, 0, 1264696225, 'developer', 'Developer', 0),
 (3, 0, 0, 0, 'designer', 'Designer', 0),
-(4, 0, 0, 1264696237, 'external_projectleader', 'External project manager', 0),
+(4, 0, 0, 1264696237, 'external_projectleader', 'External Project Manager', 0),
 (5, 0, 0, 1264696246, 'customer_contact', 'Customer', 0);
 
 --
@@ -970,5 +970,5 @@ INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person
 (15, 1264694201, 1269513308, 1, 0, '', '', '', 0, 0, 'Johann Sebastian', 'Bach', 'JOBA', 'm', '', '1685-03-21'),
 (16, 1264694923, 1269513285, 1, 0, '', '', '', 0, 0, 'Irino', 'Yoshirō', 'IRYO', 'm', '', '1921-11-13'),
 (17, 1264696599, 1269513378, 1, 0, '', '098f6bcd4621d373cade4e832627b4f6', '', 0, 0, 'Richard', 'Wagner', 'RIWA', 'm', '', '1813-05-22'),
-(18, 1264696672, 1269513070, 1, 0, 'worker', '5f4dcc3b5aa765d61d8327deb882cf99', 'williworker@todoyu.example.com', 0, 1, 'Willi', 'Worker', 'WiWo', 'm', '', '1970-01-09'),
+(18, 1264696672, 1269513070, 1, 0, 'staff', '5f4dcc3b5aa765d61d8327deb882cf99', 'williworker@todoyu.example.com', 0, 1, 'Willi', 'Worker', 'WiWo', 'm', '', '1970-01-09'),
 (19, 1264696709, 1269513322, 1, 0, '', '', '', 0, 0, 'Johannes', 'Brahms', 'JOBR2', 'm', '', '1833-05-07');
