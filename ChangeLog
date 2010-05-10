@@ -17,8 +17,6 @@ todoyu 2.0.0 - released 2010-05-10
 	* Feature: Multiple validators of the same type are now possible for a field
 	* Feature: Improved usability for a lot of user actions
 	* Feature: Todoyu is now completely covered with rights check
-
-
 	* Changed: All logging classes implement the TodoyuLoggerIf interface and are now implemented as clean objects which are added to a queue
 	* Changed: Changed the use of TodoyuDatasource. Moved clean versions of needed methods to TodoyuStaticRecords and removed TodoyuDatasource
 	* Changed: Language selection is now the first screen in the installer
@@ -36,11 +34,8 @@ todoyu 2.0.0 - released 2010-05-10
 	* Changed: Added shadows to main- and contextmenu (CSS3)
 	* Changed: Better styling for timetracking headlet. Stays active until closed
 	* Changed: Removed all HTML errors which caused browser compatibility problems
-
-
 	* Translation: Added brazilian portuguese (provided by the community member Max N Kanadani)
 	* Translation: Added missing labels for german and english. Corrected wordings
-
 	* Bugfix: Constant SERVER_URL supports now HTTPS
 	* Bugfix: Absolute path on linux/windows system outside of the todoyu root
 	* Bugfix: Right position for error message for checkboxes
@@ -52,8 +47,9 @@ todoyu 2.0.0 - released 2010-05-10
 	* Bugfix: Comment form field was not noStorage by default
 	* Bugfix: Reminder date corrections
 	* Bugfix: Clear handling of camel case class names (JobType)
-
-
+	* Bugfix: Default use of the main() function instead of sendmail to support more servers
+	* Bugfix: Prevent endless loops with parent
+	* This were only the most important changes. There are hundreds of other small changes and fixes
 
 
 todoyu 2.0.0-rc2 - released 2010-03-29	
