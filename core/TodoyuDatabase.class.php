@@ -1107,7 +1107,7 @@ class TodoyuDatabase {
 	public function getTables() {
 		$dbName	= $this->config['database'];
 
-		$query	= 'SHOW TABLES FROM ' . $dbName;
+		$query	= 'SHOW TABLES FROM ' . $this->quoteFieldname($dbName);
 		$result	= $this->query($query);
 
 		$rows	= $this->resourceToArray($result);
