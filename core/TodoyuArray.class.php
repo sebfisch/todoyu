@@ -293,7 +293,7 @@ class TodoyuArray {
 
 				// Check if all filters success. Stop if one fails
 			foreach($filterArray as $fieldname => $allowedValues) {
-				if( !in_array($itemArray[$fieldname], $allowedValues) ) {
+				if( ! in_array($itemArray[$fieldname], $allowedValues) ) {
 					$match = false;
 					break;
 				}

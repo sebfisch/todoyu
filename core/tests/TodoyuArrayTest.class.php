@@ -224,13 +224,13 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testFilter() {
 		$filter	= array(
-			'id'	=> array(12,88)
+			'id'	=> array(12, 88)
 		);
 		$filtered = TodoyuArray::filter($this->array, $filter);
 		$this->assertEquals(1, sizeof($filtered));
 
 		$filter	= array(
-			'id'		=> array(45,15),
+			'id'		=> array(45, 15),
 			'firstname'	=> array('John', 'Michael')
 		);
 		$filtered = TodoyuArray::filter($this->array, $filter);

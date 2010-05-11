@@ -120,7 +120,7 @@ class TodoyuPanelWidgetRenderer {
 			// Changed: if no array key exists expand the widget by default.
 
 			if( class_exists($widgetClass) ) {
-				// Check if panelWidget is allowed to be displayed
+					// Check whether panelWidget is allowed to be displayed
 				if( call_user_func(array($widgetClass, 'isAllowed') ) )	{
 					$widget	= new $widgetClass($config, $params, $idArea);
 					$content .= $widget->render();
