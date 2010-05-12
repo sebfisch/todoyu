@@ -182,7 +182,7 @@ class Todoyu {
 	 */
 	public static function logger() {
 		if( is_null(self::$logger) ) {
-			self::$logger = TodoyuLogger::getInstance();
+			self::$logger = TodoyuLogger::getInstance(self::$CONFIG['LOG_LEVEL']);
 		}
 
 		return self::$logger;

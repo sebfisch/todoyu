@@ -61,12 +61,11 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testIsUTF8() {
 		$utf8		= 'häöüllilu';
-		$nonUtf8	= 'h��llilu';
+		$nonUtf8	= 'Hallo';
 		$integer	= 6699;
 		$float		= 123.5;
 
-
-		$this->assertFalse(TodoyuString::isUTF8($nonUtf8) );
+		$this->assertFalse(TodoyuString::isUTF8($nonUtf8));
 
 		$toUtf8	= utf8_encode($nonUtf8);
 		$this->assertTrue(TodoyuString::isUTF8($toUtf8));

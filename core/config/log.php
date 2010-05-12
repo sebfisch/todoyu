@@ -29,6 +29,8 @@
 	 *		4) TodoyuLogger::LEVEL_FATAL		logs fatal errors
 	 */
 
+Todoyu::$CONFIG['LOG_LEVEL'] = TodoyuLogger::LEVEL_ERROR;
+
 	// File Logger
 Todoyu::logger()->addLogger('TodoyuLoggerFile', array(
 	'file'	=> PATH_CACHE . '/log/todoyu.log'

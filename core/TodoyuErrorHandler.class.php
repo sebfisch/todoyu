@@ -34,6 +34,13 @@ class TodoyuErrorHandler {
 	private static $ignoreErros = array(E_NOTICE, E_STRICT);
 
 
+	/**
+	 * Only handle error when true
+	 * Useful to suppress warnings. Be careful with this!
+	 */
+	private static $active	= true;
+
+
 
 	/**
 	 * Handler for TodoyuDbException. Print well formatted error information
@@ -78,6 +85,9 @@ class TodoyuErrorHandler {
 	 * @return	Boolean
 	 */
 	public static function handleError($errorno, $errorstr, $file, $line, $context) {
+		if( self::$active !== true ) {
+			return true;
+		}
 
 			// If not a notice, log it
 		if( ! in_array($errorno, self::$ignoreErros) ) {
@@ -135,6 +145,17 @@ class TodoyuErrorHandler {
 	 */
 	public static function sendPhpErrorHeader($errorMessage) {
 		TodoyuHeader::sendTodoyuHeader('Php-Error', $errorMessage);
+	}
+
+
+
+	/**
+	 * Enable/disable error handling. If disabled, all errors are ignored
+	 *
+	 * @param	Boolean		$active
+	 */
+	public static function setActive($active = true) {
+		self::$active = $active === true;
 	}
 
 }

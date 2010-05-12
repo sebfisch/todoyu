@@ -181,10 +181,12 @@ class TodoyuFileManager {
 			$pathFolder	= $folderPath . DIR_SEP . $foldername;
 
 			if( is_dir($pathFolder) ) {
-				self::deleteFolderContents($pathFolder);
+				self::deleteFolderContents($pathFolder, $deleteHidden);
 
+					// Check if there are still elements in the folder
 				$elementsInFolder	= self::getFolderContents($pathFolder, true);
 
+					// Only delete the folder if empty
 				if( sizeof($elementsInFolder) === 0 ) {
 					self::deleteFolder($pathFolder);
 				}

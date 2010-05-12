@@ -158,7 +158,8 @@ class TodoyuTime {
 
 
 	/**
-	 * Get weekday of a timestamp. With $mondayFirst monday will be 0 and sunday 6
+	 * Get weekday of a timestamp. Like date('w'), but starts with monday
+	 * With $mondayFirst monday will be 0 and sunday 6
 	 *
 	 * @param	Integer		$timestamp
 	 * @param	Boolean		$mondayFirst
@@ -202,6 +203,7 @@ class TodoyuTime {
 	/**
 	 * Get present amount of first hour of given amount of hours
 	 *
+	 * @todo	What does this function? Right place?
 	 * @param	Float $hours
 	 * @return	Float
 	 */
@@ -254,22 +256,23 @@ class TodoyuTime {
 	 *
 	 * @param	Integer		$seconds
 	 * @param	Boolean		$withSeconds
+	 * @param	Boolean		$round			Round or cut seconds
 	 * @return	String
 	 */
-	public static function formatTime($seconds, $withSeconds = false) {
+	public static function formatTime($seconds, $withSeconds = false, $round = true) {
 		$seconds	= intval($seconds);
 		$timeParts	= self::getTimeParts($seconds);
 
 		if( $withSeconds ) {
-			$formated	= sprintf('%02d:%02d:%02d', $timeParts['hours'], $timeParts['minutes'], $timeParts['seconds']);
+			$formatted	= sprintf('%02d:%02d:%02d', $timeParts['hours'], $timeParts['minutes'], $timeParts['seconds']);
 		} else {
-			if( $timeParts['seconds'] >= 30 ) {
+			if( $round && $timeParts['seconds'] >= 30 ) {
 				$timeParts['minutes'] += 1;
 			}
-			$formated	= sprintf('%02d:%02d', $timeParts['hours'], $timeParts['minutes']);
+			$formatted	= sprintf('%02d:%02d', $timeParts['hours'], $timeParts['minutes']);
 		}
 
-		return $formated;
+		return $formatted;
 	}
 
 
@@ -323,7 +326,7 @@ class TodoyuTime {
 		$time = self::parseDateTime($dateString);
 
 			// if parseDateTime did not work, try parseDate
-		if( $time === false ) {
+		if( $time === 0 ) {
 			$time = self::parseDate($dateString);
 		}
 
@@ -439,7 +442,7 @@ class TodoyuTime {
 	 * @param	Integer		$steps
 	 * @return	Integer		Rounded time
 	 */
-	public static function getRoundedTime($time = 0, $steps = 15) {
+	public static function getRoundedTime($time = 0, $steps = 5) {
 		$time	= intval($time);
 		$factor	= intval(60/$steps);
 
@@ -449,53 +452,13 @@ class TodoyuTime {
 
 		$currentMinutes	= intval(date('i', $time));
 		$roundedMinutes	= intval(round(($currentMinutes * $factor)/60, 0) * $steps);
-		$newTime		= $time + ($roundedMinutes - $currentMinutes) * 60;
+		$currentSeconds	= intval(date('s', $time));
+		$newTime		= $time + ($roundedMinutes - $currentMinutes) * 60 - $currentSeconds;
 
 		return $newTime;
 	}
 
-
-
-	/**
-	 * Get seconds of day's time (seconds since 00:00:00 of day of given timestamp)
-	 *
-	 * @param	Integer	$timestamp		UNIX timestamp
-	 * @return	Integer
-	 */
-	public function getSecondsOfDayTime($timestamp) {
-		$secondsOfHours		= date('G', $timestamp)	* 60 * 60;
-		$secondsOfMinutes	= date('i', $timestamp)	* 60;
-		$seconds			= date('s', $timestamp);
-
-		return $secondsOfHour + $secondsOfMinutes + $seconds;
-	}
-
-
-
-	/**
-	 * Get weeknumber (1-52) of year of given date
-	 *
-	 * @param 	Integer	$timestamp
-	 * @return	String	Number
-	 */
-	public static function getWeeknumber($timestamp) {
-
-		return date('W', $timestamp);
-	}
-
-
-
-	/**
-	 * Get number of week of month
-	 *
-	 * @param 	Integer $timestamp
-	 * @return	String	Date
-	 */
-	public static function getWeekOfMonth( $timestamp = NOW ) {
-		return ceil( date( 'j', $timestamp )/7 );
-	}
-
-
+	
 
 	/**
 	 * Get dates of the (days of) full week which the given date is in
@@ -534,31 +497,7 @@ class TodoyuTime {
 		return date( 't' , $timestamp );
 	}
 
-
-
-	/**
-	 * Finds whether the timespans within the given boundaries intersect
-	 *
-	 * @param	Integer	$start1		UNIX timestamp start of span1
-	 * @param	Integer	$end1		UNIX timestamp end of span1
-	 * @param	Integer	$start2		UNIX timestamp start of span2
-	 * @param	Integer	$end2		UNIX timestamp end of span2
-	 * @return	Boolean
-	 */
-	public static function spansIntersect($start1, $end1, $start2, $end2) {
-		$intersect = false;
-
-		if (	// span2 ends within span1 OR span2 lays within span1 OR span2 starts within span 1 OR span2 wraps span1
-			 ($end2 >= $start1 && $end2 <= $end1) || ($start2 >= $start1 && $end2 <= $end1) || ($start2 >= $start1 && $start2 <= $end1) ||	($start2 <= $start1 && $end2 >= $end1)
-			&& ! ($start2 == $end1 || $start1 == $end2)
-		) {
-			$intersect = true;
-		}
-
-		return $intersect;
-	}
-
-
+	
 
 	/**
 	 * Check if two time ranges overlap.

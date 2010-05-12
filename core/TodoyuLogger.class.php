@@ -189,18 +189,18 @@ class TodoyuLogger {
 		$backtrace	= debug_backtrace();
 		$info		= $backtrace[0];
 		$level		= intval($level);
-
-			// Find file in backtrace which is not on ignore list
-		foreach($backtrace as $btElement) {
-			if( ! in_array(basename($btElement['file']), $this->fileIgnorePattern) ) {
-				$info = $btElement;
-				break;
-			}
-		}
-
-		$info['fileshort'] 	= TodoyuFileManager::pathWeb($info['file']);
-
+		
 		if( $level >= $this->level ) {
+				// Find file in backtrace which is not on ignore list
+			foreach($backtrace as $btElement) {
+				if( ! in_array(basename($btElement['file']), $this->fileIgnorePattern) ) {
+					$info = $btElement;
+					break;
+				}
+			}
+
+			$info['fileshort'] 	= TodoyuFileManager::pathWeb($info['file']);
+
 			$loggers	= $this->getLoggerInstances();
 			
 			foreach($loggers as $logger) {
