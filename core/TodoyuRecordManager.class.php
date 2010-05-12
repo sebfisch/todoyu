@@ -150,7 +150,7 @@ class TodoyuRecordManager {
 	 * @param	String		$table
 	 * @param	Array		$data
 	 * @param	Array		$noQuoteFields
-	 * @return	Integer
+	 * @return	Integer		record ID
 	 */
 	public static function addRecord($table, array $data, array $noQuoteFields = array()) {
 		unset($data['id']);
