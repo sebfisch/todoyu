@@ -328,10 +328,10 @@ var TimePicker = Class.create({
 	 * 
 	 * @param	{Event}		event
 	 */
-	_onHourScroll: function(e) {
-		Event.stop(e);
+	_onHourScroll: function(event) {
+		Event.stop(event);
 		
-		var hour = this.hour - Event.wheel(e) * this.config.stepHour;
+		var hour = this.hour - Event.wheel(event) * this.config.stepHour;
 		
 		this.setHour(hour);
 	},
@@ -343,10 +343,10 @@ var TimePicker = Class.create({
 	 * 
 	 * @param	{Event}		event
 	 */
-	_onMinuteScroll: function(e) {
-		Event.stop(e);
+	_onMinuteScroll: function(event) {
+		Event.stop(event);
 		
-		var minute = this.minute - Event.wheel(e) * this.config.stepMinute;
+		var minute = this.minute - Event.wheel(event) * this.config.stepMinute;
 		
 		this.setMinute(minute);
 	},

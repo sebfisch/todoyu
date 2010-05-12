@@ -24,7 +24,7 @@ Todoyu.Form = {
 	/**
 	 * Initialize form display: expand invalid foreign records, focus first field
 	 *
-	 * @param   String  formID
+	 * @param   {String}  formID
 	 */
 	onFormDisplay: function(formID) {
 		if( Todoyu.exists(formID) ) {
@@ -36,7 +36,7 @@ Todoyu.Form = {
 
 
 	/**
-	 * @todo    comment
+	 * Get the next index for a sub form to prevent name collisions
 	 */
 	getNextIndex: function() {
 		return this.subFormIndex++;

@@ -27,7 +27,7 @@ Todoyu.Listing = {
 	 * Initialize
 	 * 
 	 * @param	{String}		name
-	 * @param	unknown		update
+	 * @param	{String}		update
 	 * @param	{Number}		size
 	 * @param	{Number}		offset
 	 * @param	{Number}		total

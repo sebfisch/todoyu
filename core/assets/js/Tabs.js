@@ -19,18 +19,22 @@
 
 Todoyu.Tabs = {
 
+	/**
+	 * References to all functions which are bound as event handlers
+	 *
+	 */
 	bindCache: {},
 
 
 
 	/**
-	 * Enter Description here...
+	 * Create tabs based on the <ul><li>
 	 *
-	 * @param	unknown_type	list
-	 * @param	unknown_type	handlerFunction
+	 * @param	{String}	name
+	 * @param	{Function}	handlerFunction
 	 */
 	create: function(name, handlerFunction) {
-		list = $(name + '-tabs');
+		var list = $(name + '-tabs');
 
 		this.bindCache[list.id] = {
 			'click': 	this._clickHandler.bindAsEventListener(this, handlerFunction),
@@ -46,13 +50,13 @@ Todoyu.Tabs = {
 
 
 	/**
-	 * Enter Description here...
+	 * Remove event listeners from a tab group
 	 *
-	 * @param	unknown_type	list
-	 * @param	unknown_type	handlerFunction
+	 * @param	{String}	list
 	 */
-	destroy: function(list, handlerFunction) {
+	destroy: function(list) {
 		list = $(list);
+
 		Event.stopObserving(list, 'click', this.bindCache[list.id].click);
 		Event.stopObserving(list, 'mouseover', this.bindCache[list.id].mouseover);
 		Event.stopObserving(list, 'mouseout', this.bindCache[list.id].mouseout);
@@ -63,26 +67,15 @@ Todoyu.Tabs = {
 
 
 	/**
-	 * Enter Description here...
+	 * Handler for click events on a tab
 	 *
-	 * @param	unknown_type	idList
+	 * @param	{Event}			event
+	 * @param	{Function}		handlerFunction
 	 */
-	isTabList: function(idList) {
-		return Object.isUndefined(this.bindCache[idList]) === false;
-	},
+	_clickHandler: function(event, handlerFunction) {
+		event.stop();
 
-
-
-	/**
-	 * Enter Description here...
-	 *
-	 * @param	{Event}			e
-	 * @param	unknown_type	handlerFunction
-	 */
-	_clickHandler: function(e, handlerFunction) {
-		e.stop();
-
-		var element	= Event.findElement(e, 'li');
+		var element	= event.findElement('li');
 
 		if( Object.isUndefined(element) ) {
 			return;
@@ -90,14 +83,14 @@ Todoyu.Tabs = {
 
 		var classes = element.className.split(' ');
 
-		classes.each(function(item){
+		classes.each(function(event, item){
 			if( item.substr(0,7) === 'tabkey-' ) {
-				handlerFunction(e, item.substr(7));
+				handlerFunction(event, item.substr(7));
 				return;
 			}
-		});
+		}.bind(this, event));
 
-		var list = Event.findElement(e, 'ul');
+		//var list = event.findElement('ul');
 
 		this.setActiveByElement(element);
 	},
@@ -105,9 +98,10 @@ Todoyu.Tabs = {
 
 
 	/**
-	 * Set active element in a list
+	 * Set a tab active in a group of tabs
 	 *
-	 * @param	{String}		element		Tab element or its ID
+	 * @param	{String}	listname
+	 * @param	{String}	tab
 	 */
 	setActive: function(listname, tab) {
 		var tabID	= listname + '-tabs';
@@ -158,35 +152,42 @@ Todoyu.Tabs = {
 
 
 	/**
-	 * Set labeltext of a tab
-	 * 
-	 * @param	{String}		element		Tab element or its ID
-	 * @param	{String}		label		Labeltext
+	 * Set the label text of a tab
+	 *
+	 * @param	{String}	listname
+	 * @param	{String}	tab
+	 * @param	{String}	label
 	 */
 	setLabel: function(listname, tab, label) {
 		$(listname + '-tab-' + tab).down('span.labeltext').update(label);
 	},
-	
-	removeTab: function(listname, tabName) {
-		var tab = $(listname + '-tab-' + tabName);
-		
-		if( tab ) {
-			tab.remove();
-		}
-		
-		return tab;
-	},
-
 
 
 
 	/**
-	 * Enter Description here...
+	 * Remove a tab from a tab group
 	 *
-	 * @param	unknown_type	idTab
-	 * @param	unknown_type	tabClass
-	 * @param	unknown_type	tabLabel
-	 * @param	unknown_type	active
+	 * @param	{String}	listname
+	 * @param	{String}	tab
+	 */
+	removeTab: function(listname, tab) {
+		var tabElement = $(listname + '-tab-' + tab);
+		
+		if( tabElement ) {
+			tabElement.remove();
+		}
+	},
+
+
+
+	/**
+	 * Build a tab
+	 *
+	 * @param	{String}	listname
+	 * @param	{String}	name
+	 * @param	{String}	tabClass
+	 * @param	{String}	tabLabel
+	 * @param	{Boolean}	active
 	 */
 	build: function(listname, name, tabClass, tabLabel, active) {
 		var tab = new Element('li', {
@@ -225,11 +226,11 @@ Todoyu.Tabs = {
 	/**
 	 * Enter Description here...
 	 *
-	 * @param	{Event}			e
-	 * @param	unknown_type	over
+	 * @param	{Event}		event
+	 * @param	{Boolean}	over
 	 */
-	_hoverHandler: function(e, over) {
-		var li = Event.findElement(e, 'li');
+	_hoverHandler: function(event, over) {
+		var li = event.findElement('li');
 
 		if( Object.isUndefined(li) ) {
 			return;

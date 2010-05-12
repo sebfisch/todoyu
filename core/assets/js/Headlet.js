@@ -283,7 +283,7 @@ Todoyu.Headlet = {
 
 
 
-	toggleContent: function(name, keepOthers) {
+	toggleContent: function(name) {
 		this.getContent(name).toggle();
 	},
 

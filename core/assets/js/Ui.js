@@ -138,7 +138,7 @@ Todoyu.Ui = {
 	/**
 	 * Hide element
 	 *
-	 * @param	{String}	idElement
+	 * @param	{String|Element}	idElement
 	 */
 	hide: function(idElement) {
 		if( Todoyu.exists(idElement) ) {

@@ -111,7 +111,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Please enter Description here...
 	 *
-	 * @param	{JSON}		menuJSON
+	 * @param	{Object}		menuJSON
 	 */
 	buildMenuFromJSON: function(menuJSON) {
 		var menu = this.Template.render(menuJSON);

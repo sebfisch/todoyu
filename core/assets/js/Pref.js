@@ -32,7 +32,7 @@ Todoyu.Pref = {
 	 * @param	{String}		action
 	 * @param	{String}		value
 	 * @param	{Number}		idItem
-	 * @param	unknown_type	onComplete
+	 * @param	{Function}		onComplete
 	 */
 	save: function(ext, action, value, idItem, onComplete) {
 		var url		= Todoyu.getUrl(ext, 'preference');

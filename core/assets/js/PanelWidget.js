@@ -22,11 +22,9 @@ Todoyu.PanelWidget = {
 	observerCallbacks: {},
 
 	/**
-	 * Toggle panel widget expanded/ collapsed, evoke storing of expand status
+	 * Toggle a panel widget
 	 *
-	 * @param	{String}			ext			e.g. 'project' / 'calendar' etc.
-	 * @param	{String}			widgetName
-	 * @param	{Number}			idArea
+	 * @param	{String}	widget
 	 */
 	toggle: function(widget) {
 		var h1		= $('panelwidget-' + widget + '-h1');
@@ -49,14 +47,12 @@ Todoyu.PanelWidget = {
 	},
 
 
-
+	
 	/**
-	 * Save widget expand status
+	 * Save toggle status (expanded or collapsed)
 	 *
-	 * @param	{String}			ext			e.g. 'project' / 'calendar' etc.
-	 * @param	{String}			widgetName
-	 * @param	{Boolean}			expand
-	 * @param	{Number}			idArea
+	 * @param	{String}	widget
+	 * @param	{Boolean}	expanded
 	 */
 	saveToggleStatus: function(widget, expanded) {
 		var url		= Todoyu.getUrl('core', 'panelwidget');

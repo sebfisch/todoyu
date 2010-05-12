@@ -205,7 +205,6 @@ var Todoyu = {
 	 * @example	Todoyu.calluserFunction('Todoyu.notifySuccess', 'This is a message', 5);
 	 * 
 	 * @param	{String}		functionName
-	 * @param	{String}		args
 	 */
 	callUserFunction: function(functionName /*, args */) {
 		var args 	= $A(arguments).slice(1);
