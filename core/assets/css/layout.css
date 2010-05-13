@@ -319,9 +319,17 @@ div.error {
 	border-color:#7f007f;
 }
 
+.bgStatus1 {
+	background-color:#7f007f;
+}
+
 	/* open */
 .bcStatus2 {
 	border-color:#FF0000;
+}
+
+.bgStatus2 {
+	background-color:#FF0000;
 }
 
 	/* progress */
@@ -329,9 +337,17 @@ div.error {
 	border-color:#FFAC00;
 }
 
+.bgStatus3 {
+	background-color:#FFAC00;
+}
+
 	/* confirm */
 .bcStatus4 {
 	border-color:#FFFC00;
+}
+
+.bgStatus4 {
+	background-color:#FFFC00;
 }
 
 	/* done */
@@ -339,9 +355,17 @@ div.error {
 	border-color:#77DC00;
 }
 
+.bgStatus5 {
+	background-color:#77DC00;
+}
+
 	/* accepted */
 .bcStatus6 {
 	border-color:green;
+}
+
+.bgStatus6 {
+	background-color:green;
 }
 
 	/* rejected */
@@ -349,9 +373,17 @@ div.error {
 	border-color:#A60000;
 }
 
+.bgStatus7 {
+	background-color:#A60000;
+}
+
 	/* cleared */
 .bcStatus8 {
 	border-color:#DBDBDB;
+}
+
+.bgStatus8 {
+	background-color:#DBDBDB;
 }
 
 	/* warranty */
@@ -359,11 +391,18 @@ div.error {
 	border-color:#6085DD;
 }
 
+.bgStatus9 {
+	background-color:#6085DD;
+}
+
 	/* customer */
 .bcStatus10 {
 	border-color:pink;
 }
 
+.bgStatus10 {
+	background-color:pink;
+}
 
 input.toggleSelect {
 	display:none;
