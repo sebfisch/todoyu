@@ -107,6 +107,7 @@ class TodoyuDbHelper {
 	 * @param	Integer		$idLocalRecord
 	 * @param	Integer		$idForeignRecord
 	 * @param	Array		$data
+	 * @return	Integer							Num affected rows
 	 */
 	public static function updateMMLink($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $idForeignRecord, array $data) {
 		$where	= 	$fieldLocal . ' = ' . $idLocalRecord . ' AND ' .
@@ -116,7 +117,7 @@ class TodoyuDbHelper {
 		unset($data[$fieldLocal]);
 		unset($data[$fieldForeign]);
 
-		Todoyu::db()->doUpdate($mmTable, $where, $data);
+		return Todoyu::db()->doUpdate($mmTable, $where, $data);
 	}
 
 
