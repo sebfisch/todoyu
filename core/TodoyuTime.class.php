@@ -543,6 +543,22 @@ class TodoyuTime {
 	}
 
 
+
+	/**
+	 * Rounds UP given time in seconds to the next step
+	 * returns the time in seconds
+	 * 
+	 * @static
+	 * @param	Integer		$seconds
+	 * @param	Integer		 $steps
+	 * @return	Integer
+	 */
+	public static function roundUpTime($seconds, $steps = 1)	{
+		$roundStepInSeconds	=	$steps * 60;
+		$newTime			=	ceil( intval($seconds) / $roundStepInSeconds ) * $roundStepInSeconds;
+
+		return $newTime;
+	}
 }
 
 ?>
