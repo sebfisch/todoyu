@@ -21,7 +21,7 @@
 	// Activate extensions (deactivated during install)
 Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] = false;
 
-	// Debuging
+	// Debugging
 Todoyu::$CONFIG['DEBUG'] = true;
 
 	// Error logging
