@@ -152,7 +152,7 @@
 		<label index="adminaccount.username">Benutzername</label>
 		<label index="adminaccount.password">Passwort</label>
 		<label index="adminaccount.repeatPassword">Passwort wiederholen</label>
-		<label index="adminaccount.passwordHint">mindestestenz 5 Zeichen</label>
+		<label index="adminaccount.passwordHint">mindestestens 5 Zeichen</label>
 		<label index="adminaccount.text">Bitte geben Sie die Daten für Ihren Administrator-Account ein</label>
 		<label index="adminaccount.companyname">Firmenname</label>
 		<label index="adminaccount.adminfirstname">Administrator Vorname</label>
