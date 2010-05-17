@@ -631,6 +631,23 @@ Todoyu.Ui = {
 			event.preventDefault();
 			event.stopPropagation();
 		}	
+	},
+
+
+
+	/**
+	 * Removes tinyMCE controls and save the editor
+	 * Prevents "ghost" objects which will break the save process
+	 *
+	 * @param	{Element}	area		Area to look for tinyMCE instances (Can be a form, the whole window or the element itself)
+	 */
+	closeRTE: function(area) {
+		tinyMCE.triggerSave();
+
+			// Remove controls for all editors in the range
+		$(area).select('textarea.RTE').each(function(textarea){
+			tinyMCE.execCommand('mceRemoveControl', false, textarea.id);
+		});
 	}
 
 };
