@@ -280,20 +280,52 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testParseTime().
 	 */
 	public function testParseTime() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
+		$time_1	= '23:59';
+		$sec_1	= 86340;
+		$time_2	= '23:59:30';
+		$sec_2	= 86370;
+		$time_3	= '0:00:01';
+		$sec_3	= 1;
+
+		$res_1	= TodoyuTime::parseTime($time_1);
+		$res_2	= TodoyuTime::parseTime($time_2);
+		$res_3	= TodoyuTime::parseTime($time_3);
+
+		$this->assertEquals($sec_1, $res_1);
+		$this->assertEquals($sec_2, $res_2);
+		$this->assertEquals($sec_3, $res_3);
 	}
 
 	/**
 	 * @todo Implement testParseDuration().
 	 */
 	public function testParseDuration() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
+		$dur_1	= '3:00';
+		$sec_1	= 10800;
+		$dur_2	= '0:00';
+		$sec_2	= 0;
+		$dur_3	= '1:';
+		$sec_3	= 3600;
+		$dur_4	= '100:00';
+		$sec_4	= 360000;
+		$dur_5	= ':59';
+		$sec_5	= 3540;
+		$dur_6	= '0:67';
+		$sec_6	= 4020; // 1:07
+
+		$res_1	= TodoyuTime::parseDuration($dur_1);
+		$res_2	= TodoyuTime::parseDuration($dur_2);
+		$res_3	= TodoyuTime::parseDuration($dur_3);
+		$res_4	= TodoyuTime::parseDuration($dur_4);
+		$res_5	= TodoyuTime::parseDuration($dur_5);
+		$res_6	= TodoyuTime::parseDuration($dur_6);
+
+		$this->assertEquals($sec_1, $res_1);
+		$this->assertEquals($sec_2, $res_2);
+		$this->assertEquals($sec_3, $res_3);
+		$this->assertEquals($sec_4, $res_4);
+		$this->assertEquals($sec_5, $res_5);
+		$this->assertEquals($sec_6, $res_6);
 	}
 
 	/**

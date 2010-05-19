@@ -295,10 +295,26 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testRemoveKeys().
 	 */
 	public function testRemoveKeys() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
+		$array	= array(
+			'switzerland'	=> 'berne',
+			'england'		=> 'london',
+			'france'		=> 'paris',
+			'italy'			=> 'rome',
+			'spain'			=> 'madrid'
 		);
+
+		$remove	= array(
+			'france',
+			'italy'
+		);
+
+		$result	= TodoyuArray::removeKeys($array, $remove);
+
+		$this->assertTrue(array_key_exists('switzerland', $result));
+		$this->assertTrue(array_key_exists('england', $result));
+		$this->assertTrue(array_key_exists('spain', $result));
+		$this->assertFalse(array_key_exists('france', $result));
+		$this->assertFalse(array_key_exists('italy', $result));
 	}
 
 
@@ -323,10 +339,27 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testAssure().
 	 */
 	public function testAssure() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$var_1	= array();
+		$var_2	= array(1,2,3);
+		$var_3	= 3;
+		$var_4	= 'string';
+		$var_5	= 4.234343;
+		$var_6	= null;
+		$var_7	= false;
+
+		$this->assertTrue(is_array(TodoyuArray::assure($var_1)));
+		$this->assertTrue(is_array(TodoyuArray::assure($var_2)));
+		$this->assertTrue(is_array(TodoyuArray::assure($var_3)));
+		$this->assertTrue(is_array(TodoyuArray::assure($var_4)));
+		$this->assertTrue(is_array(TodoyuArray::assure($var_5)));
+		$this->assertTrue(is_array(TodoyuArray::assure($var_6)));
+		$this->assertTrue(is_array(TodoyuArray::assure($var_7)));
+
+		$res_2	= TodoyuArray::assure($var_2);
+		$res_5	= TodoyuArray::assure($var_5, true);
+
+		$this->assertEquals($var_2, $res_2);
+		$this->assertEquals($var_5, $res_5[0]);
 	}
 
 

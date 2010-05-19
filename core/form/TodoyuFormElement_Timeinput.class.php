@@ -59,7 +59,7 @@ class TodoyuFormElement_Timeinput extends TodoyuFormElement_Textinput {
 		if( is_numeric($value) ) {
 			$value	= intval($value);
 		} else {
-			$value	= TodoyuTime::parseTime($value, false);
+			$value	= TodoyuTime::parseTime($value);
 		}
 
 		parent::setValue($value);

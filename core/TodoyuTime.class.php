@@ -403,14 +403,14 @@ class TodoyuTime {
 	 * Parse time string
 	 * Timeformat is based on the format time or timesec
 	 *
-	 * @param	String		$timeString		Time string: 23:59 or 23:59:59 (for the second you have to set $withSeconds)
-	 * @param	Boolean		$withSeconds	Timestring
+	 * @param	String		$timeString		Time string: 23:59 or 23:59:59 (function autodetects seconds part)
 	 * @return	Integer		Seconds
 	 */
-	public static function parseTime($timeString, $withSeconds = false) {
-		$format		= $withSeconds ? self::getFormat('timesec') : self::getFormat('time') ;
+	public static function parseTime($timeString) {
+		$colons		= substr_count($timeString, ':');
+		$format		= $colons === 2 ? self::getFormat('timesec') : self::getFormat('time') ;
 		$timeParts	= strptime($timeString, $format);
-
+				
 		$hours	= intval($timeParts['tm_hour']);
 		$minutes= intval($timeParts['tm_min']);
 		$seconds= intval($timeParts['tm_sec']);
@@ -430,7 +430,7 @@ class TodoyuTime {
 	public static function parseDuration($timeString) {
 		$parts	= explode(':', $timeString);
 
-		return intval($parts[0])*3600 + TodoyuNumeric::intInRange($parts[1], 0, 60)*60;
+		return intval($parts[0])*3600 + intval($parts[1])*60;
 	}
 	
 

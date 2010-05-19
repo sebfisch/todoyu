@@ -56,9 +56,7 @@ class TodoyuString {
 
 	/**
 	 * Checking syntax of input email address
-	 *
-	 * @todo	improve, validation isnt failsafe!
-	 *
+	 * 
 	 * @param	String		Input string to evaluate
 	 * @return	Boolean		Returns true if the $email address (input string) is valid; Has a "@", domain name with at least one period and only allowed a-z characters.
 	 */
@@ -68,11 +66,11 @@ class TodoyuString {
 			return false;
 		}
 
-//		@note	ereg is deprecated!
-//		$regexp	= '^[A-Za-z0-9\._-]+[@][A-Za-z0-9\._-]+[\.].[A-Za-z0-9]+$';
-//		return ereg($regexp, $email) ? true : false;
+		$regexp	= '#^[A-Za-z0-9\._-]+[@][A-Za-z0-9\._-]+[\.].[A-Za-z0-9]+$#';
 
-		return (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) ? true : false;
+		return preg_match($regexp, $email) === 1;
+
+//		return (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) ? true : false;
 	}
 
 

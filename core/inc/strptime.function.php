@@ -16,8 +16,10 @@
  * @return	Array		Parsed date
  */
 function strptime($date, $format) {
-	if( !($date = strptime_strToDate($date, $format)) )
+	if( !($date = strptime_strToDate($date, $format)) ) {
 		return false;
+	}
+
 
 	$dateTime = array(
 		'tm_sec'	=> 0,
@@ -29,26 +31,22 @@ function strptime($date, $format) {
 	); //array('sec' => 0, 'min' => 0, 'hour' => 0, 'day' => 0, 'mon' => 0, 'year' => 0, 'timestamp' => 0);
 	foreach($date as $key => $val) {
 		switch($key) {
+				// day
 			case 'd':
-			case 'j': $dateTime['tm_mday'] = intval($val); break;
-			case 'D': $dateTime['tm_mday'] = intval(date('j', $val)); break;
+			case 'e': $dateTime['tm_mday'] = intval($val); break;
 
-			case 'm':
-			case 'n': $dateTime['tm_mon'] = intval($val); break;
-
+				// month
+			case 'm': $dateTime['tm_mon'] = intval($val); break;
 
 			case 'Y': $dateTime['tm_year'] = intval($val); break;
 			case 'y': $dateTime['tm_year'] = intval($val)+2000; break;
 
-			case 'G':
-			case 'g':
 			case 'H':
-			case 'h': $dateTime['tm_hour'] = intval($val); break;
+			case 'I': $dateTime['tm_hour'] = intval($val); break;
 
-			case 'M':
-			case 'i': $dateTime['tm_min'] = intval($val); break;
+			case 'M': $dateTime['tm_min'] = intval($val); break;
 
-			case 's': $dateTime['tm_sec'] = intval($val); break;
+			case 'S': $dateTime['tm_sec'] = intval($val); break;
 		}
 	}
 	$dateTime['timestamp'] = mktime($dateTime['tm_hour'], $dateTime['tm_min'], $dateTime['tm_sec'], $dateTime['tm_mon'], $dateTime['tm_mday'], $dateTime['tm_year']);
@@ -70,19 +68,21 @@ function strptime($date, $format) {
  * @return	Array
  */
 function strptime_strToDate($date, $format) {
-	$search = array('%d', '%D', '%j', // day
-					'%m', '%M', '%n', // month
+	$search = array('%d', '%e', // day
+					'%m', // month
 					'%Y', '%y', // year
-					'%G', '%g', '%H', '%h', // hour
-					'%i', '%s');
-	$replace = array('(\d{2})', '(\w{3})', '(\d{1,2})', //day
-					 '(\d{2})', '(\d{2})', '(\d{1,2})', // month
+					'%H', '%I', // hour
+					'%M', // minutes
+					'%S'); // seconds
+	$replace = array('(\d{1,2})', '(\d{1,2})', //day
+					 '(\d{1,2})', // month
 					 '(\d{4})', '(\d{2})', // year
-					 '(\d{1,2})', '(\d{1,2})', '(\d{1,2})', '\d{2}', // hour
-					 '(\d{2})', '(\d{2})');
+					 '(\d{1,2})', '\d{1,2}', // hour
+					 '(\d{1,2})', // minutes
+					 '(\d{2})'); // seconds
 
 	$pattern = str_replace($search, $replace, $format);
-
+	
 	if(!preg_match("#$pattern#", $date, $matches)) {
 		return false;
 	}
