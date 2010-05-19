@@ -307,15 +307,15 @@ class TodoyuForm implements ArrayAccess {
 			/**
 			 * @var	$field	TodoyuFormElement
 			 */
-			$field->setValue($this->formdata[$name]);
+			if( ! is_null($this->formdata[$name]) ) {
+				$field->setValue($this->formdata[$name], false);
+			}
 		}
 
 			// Update hidden fields
 		foreach( $this->hiddenFields as $name => $value ) {
-			$newValue = $this->formdata[$name];
-
-			if( ! is_null($newValue) ) {
-				$this->hiddenFields[$name]['value'] = $newValue;
+			if( ! is_null($this->formdata[$name]) ) {
+				$this->hiddenFields[$name]['value'] = $this->formdata[$name];
 			}
 		}
 	}

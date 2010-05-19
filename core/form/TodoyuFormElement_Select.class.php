@@ -36,6 +36,8 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
 		parent::__construct('select', $name, $fieldset, $config);
 
+		$this->setValue(array());
+
 		if( ! $this->isLazyInit() ) {
 			$this->initSource();
 		}

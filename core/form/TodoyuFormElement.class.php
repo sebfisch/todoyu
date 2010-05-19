@@ -334,11 +334,14 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * Set field value ('attribute')
 	 *
 	 * @param	Mixed		$value
+	 * @param	Boolean		$updateForm		Update the form. Can be false if the form already has the value
 	 */
-	public function setValue($value) {
+	public function setValue($value, $updateForm = true) {
 		$this->setAttribute('value', $value);
-
-		$this->updateFormData($value);
+		
+		if( $updateForm ) {
+			$this->updateFormData($value);
+		}
 	}
 
 
@@ -372,7 +375,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @param	Mixed		$value
 	 */
 	protected function updateFormdata($value) {
-		$this->getForm()->setFieldFormData($this->name, $value);
+		$this->getForm()->setFieldFormData($this->getName(), $value);
 	}
 
 
