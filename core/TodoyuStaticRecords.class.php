@@ -213,6 +213,23 @@ class TodoyuStaticRecords {
 
 
 	/**
+	 * Get label (name) of given country
+	 *
+	 * @param	Integer		$idCountry
+	 * @return	String
+	 */
+	public static function getCountryLabel($idCountry) {
+		$idCountry	= intval($idCountry);
+
+		$record	= self::getCountry($idCountry);
+		$alpha2	= $record['iso_alpha3'];
+
+		return Label('static_country.' . $alpha2 );
+	}
+
+
+
+	/**
 	 * Get country zone records for a country
 	 *
 	 * @param	Integer		$idCountry
