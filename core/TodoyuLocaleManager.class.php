@@ -31,8 +31,8 @@ class TodoyuLocaleManager {
 	 *
 	 * @return	Array
 	 */
-	public static function getLocales() {
-		return TodoyuArray::assure(Todoyu::$CONFIG['LOCALE']['LOCALES']);
+	public static function getSystemLocales() {
+		return TodoyuArray::assure(Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES']);
 	}
 
 
@@ -43,7 +43,7 @@ class TodoyuLocaleManager {
 	 * @return	Array
 	 */
 	public static function getLocaleKeys() {
-		return array_keys(self::getLocales());
+		return array_keys(self::getSystemLocales());
 	}
 
 
@@ -55,7 +55,7 @@ class TodoyuLocaleManager {
 	 * @return	Boolean
 	 */
 	public static function hasLocale($locale) {
-		return array_key_exists($locale, self::getLocales());
+		return array_key_exists($locale, self::getSystemLocales());
 	}
 
 
@@ -77,8 +77,8 @@ class TodoyuLocaleManager {
 	 * @param	String		$locale
 	 * @return	Array
 	 */
-	public static function getLocaleNames($locale) {
-		$locales	= self::getLocales();
+	public static function getSystemLocaleNames($locale) {
+		$locales	= self::getSystemLocales();
 
 		return TodoyuArray::assure($locales[$locale]);
 	}
@@ -92,7 +92,7 @@ class TodoyuLocaleManager {
 	 * @return	Boolean / String		FALSE or the new locale string
 	 */
 	public static function setLocale($locale) {
-		$localeNames	= self::getLocaleNames($locale);
+		$localeNames	= self::getSystemLocaleNames($locale);
 
 		return setlocale(LC_ALL, $localeNames);
 	}

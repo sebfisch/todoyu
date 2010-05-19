@@ -222,9 +222,9 @@ class TodoyuStaticRecords {
 		$idCountry	= intval($idCountry);
 
 		$record	= self::getCountry($idCountry);
-		$alpha2	= $record['iso_alpha3'];
+		$alpha3	= $record['iso_alpha3'];
 
-		return Label('static_country.' . $alpha2 );
+		return Label('static_country.' . $alpha3);
 	}
 
 

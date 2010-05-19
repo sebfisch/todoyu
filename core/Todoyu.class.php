@@ -220,6 +220,7 @@ class Todoyu {
 	 * @return	String
 	 */
 	public static function getLocale() {
+		TodoyuDebug::printInFireBug($_SERVER['HTTP_ACCEPT_LANGUAGE']);
 		if( is_null(self::$locale) ) {
 			self::$locale = self::$CONFIG['SYSTEM']['locale'];
 

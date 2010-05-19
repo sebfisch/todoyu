@@ -60,9 +60,7 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 		$type	= ( is_array($this->config['comment']) ) ? $this->config['comment']['@attributes']['type'] : false;
 
 		if( $type === 'function' ) {
-			$funcRef= explode('::', $this->config['comment']['function']);
-
-			$value	= call_user_func($funcRef, $this);
+			$value	= TodoyuFunction::callUserFunction($this->config['comment']['function'], $this);
 		} else {
 			$value =	TodoyuLanguage::getLabel($this->config['comment']);
 		}

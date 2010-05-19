@@ -23,7 +23,7 @@
  * setlocale() tries all locales in the list, uses the first which matches
  * locales are different on the systems (WIN,LINUX,MAC, etc)
  */
-Todoyu::$CONFIG['LOCALE']['LOCALES'] = array(
+Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'en_GB' => array('en_GB.utf8', 'en_GB', 'en', 'English_GB'),
 	//'en_US'	=> array('en_US.utf8', 'en_US', 'en', 'English_US', 'English_United States.1252'),
 	'de_DE'	=> array('de_DE.utf8', 'de_DE', 'de', 'de_DE@euro', 'de_DE.utf8@euro', 'German_Germany.1252', 'deu_deu'),
@@ -33,10 +33,11 @@ Todoyu::$CONFIG['LOCALE']['LOCALES'] = array(
 	//'fr_CH' => array('fr_CH.utf8', 'fr_CH', 'fr'),
 	//'it_IT'	=> array('it_IT.utf8', 'it_IT', 'it'),
 	//'it_CH'	=> array('it_CH.utf8', 'it_CH', 'it'),
-	'pt_BR' => array('pt_BR.utf8', 'pt_BR', 'pt')
+	'pt_BR' => array('pt_BR.utf8', 'pt_BR', 'pt'),
+	'ru_RU' => array('ru_RU.utf8', 'ru_RU', 'ru')
 );
 
 Todoyu::$CONFIG['LOCALE']['default']	= 'en_GB';
-Todoyu::$CONFIG['LOCALE']['available']	= array('en_GB','de_DE','pt_BR');
+Todoyu::$CONFIG['LOCALE']['available']	= array('en_GB','de_DE','pt_BR','ru_RU');
 
 ?>
