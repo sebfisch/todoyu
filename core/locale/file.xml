@@ -40,4 +40,14 @@
 		<label index="filename">Имя файла</label>
 		<label index="filesize">Размер файла</label>
 	</labels>
+	<labels lang="fr_FR">
+		<label index="download">Téléchargement</label>
+		<label index="upload">Téléversement</label>
+		<label index="size.gb">Go</label>
+		<label index="size.mb">Mo</label>
+		<label index="size.kb">K</label>
+		<label index="size.b">B</label>
+		<label index="filename">Nom du fichier</label>
+		<label index="filesize">Taille</label>
+	</labels>
 </locallang>

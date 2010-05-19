@@ -324,7 +324,7 @@
 	    <label index="uk_UA">Ukrainian (Ukraine)</label>
 	    <label index="vi_VN">Vietnamese (Vietnam)</label>
 	</labels>
-		<labels lang="ru_RU">
+	<labels lang="ru_RU">
 		<label index="sq_AL">Албанский (Албания)</label>
 	    <label index="ar_DZ">Арабский (Алжир)</label>
 	    <label index="ar_BH">Арабский (Бахрейн)</label>

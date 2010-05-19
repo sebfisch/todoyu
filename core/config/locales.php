@@ -29,7 +29,7 @@ Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'de_DE'	=> array('de_DE.utf8', 'de_DE', 'de', 'de_DE@euro', 'de_DE.utf8@euro', 'German_Germany.1252', 'deu_deu'),
 	//'de_CH'	=> array('de_CH.utf8', 'de_CH', 'de', 'German_Switzerland.1252'),
 	//'de_AT'	=> array('de_AT.utf8', 'de_AT', 'de', 'de_AT@euro', 'de_AT.utf8@euro', 'German_Austria.1252'),
-	//'fr_FR'	=> array('fr_FR.utf8', 'fr_FR', 'fr'),
+	'fr_FR'	=> array('fr_FR.utf8', 'fr_FR', 'fr'),
 	//'fr_CH' => array('fr_CH.utf8', 'fr_CH', 'fr'),
 	//'it_IT'	=> array('it_IT.utf8', 'it_IT', 'it'),
 	//'it_CH'	=> array('it_CH.utf8', 'it_CH', 'it'),
@@ -38,6 +38,6 @@ Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 );
 
 Todoyu::$CONFIG['LOCALE']['default']	= 'en_GB';
-Todoyu::$CONFIG['LOCALE']['available']	= array('en_GB','de_DE','pt_BR','ru_RU');
+Todoyu::$CONFIG['LOCALE']['available']	= array('en_GB','de_DE','pt_BR','ru_RU','fr_FR');
 
 ?>
