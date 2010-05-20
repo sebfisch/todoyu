@@ -298,6 +298,18 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 	/**
+	 * Get absolute name of the field
+	 * Based on the position: fieldset-subfieldset-fieldname
+	 *
+	 * @return	String
+	 */
+	public function getAbsoluteName() {
+		return $this->getFieldset()->getAbsoluteName() . '-' . $this->name;
+	}
+
+
+
+	/**
 	 * Get form element label
 	 *
 	 * @return unknown

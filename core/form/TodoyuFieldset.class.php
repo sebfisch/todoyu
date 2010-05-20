@@ -114,6 +114,22 @@ class TodoyuFieldset implements ArrayAccess {
 
 
 	/**
+	 * Get the absolute name of the fieldset
+	 * Concatenate all parent fieldsets with a dash parent-sub-sub-...
+	 *
+	 * @return	String
+	 */
+	public function getAbsoluteName() {
+		if( $this->parent instanceof TodoyuForm ) {
+			return $this->name;
+		} else {
+			return $this->getParent()->getAbsoluteName() . '-' . $this->name;
+		}
+	}
+
+
+
+	/**
 	 * Get field from the form
 	 *
 	 * @param	String		$name
@@ -266,9 +282,9 @@ class TodoyuFieldset implements ArrayAccess {
 			$this->elements = TodoyuArray::insertElement($this->elements, $name, $field, $pos[0], $pos[1]);
 		}
 
-		$this->getForm()->registerField($name, $field);
+		$this->getForm()->registerField($field);
 
-		return $this->elements[$name];
+		return $field;
 	}
 
 
@@ -533,7 +549,7 @@ class TodoyuFieldset implements ArrayAccess {
 	public function setFieldsToForm(TodoyuForm $form)	{
 		foreach($this->elements as $element)	{
 			if( $element instanceof TodoyuFormElement )	{
-				$form->registerField($element->getName(), $element);
+				$form->registerField($element);
 			} else if( $element instanceof TodoyuFieldset )	{
 				$element->setFieldsToForm($form);
 			}

@@ -61,7 +61,7 @@ class TodoyuFormXmlParser {
 		self::$xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
 
 		if( ! is_file($xmlFile) ) {
-			Todoyu::log('Form XML file not found (\'' . self::$xmlFile . '\')', TodoyuLogger::LEVEL_CRITICAL);
+			Todoyu::log('Form XML file not found (\'' . self::$xmlFile . '\')', TodoyuLogger::LEVEL_FATAL);
 			return false;
 		}
 

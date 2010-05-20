@@ -68,7 +68,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @return	Array
 	 */
 	public function getValue() {
-		return is_array($this->config['value']) ? $this->config['value'] : array();
+		return TodoyuArray::assure($this->config['value']);
 	}
 
 
@@ -332,7 +332,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	/**
 	 * Check if all record forms are valid
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function areAllRecordsValid() {
 		$indexes	= $this->getRecordIndexes();
@@ -387,6 +387,24 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		return $valid;
 	}
 
+
+
+	/**
+	 * Get storage data of the sub records
+	 *
+	 * @return	Array
+	 */
+	public function getStorageData() {
+		$indexes	= $this->getRecordIndexes();
+		$storageData= array();
+
+		foreach($indexes as $index) {
+			$storageData[$index] = $this->getRecordForm($index)->getStorageData();
+		}
+
+		return $storageData;
+	}
+	
 }
 
 ?>

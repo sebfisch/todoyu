@@ -877,11 +877,10 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Register a field to be quickly accessable over getField()
 	 *
-	 * @param	Strubg			$name
 	 * @param	TodoyuFormElement		$field
 	 */
-	public function registerField($name, TodoyuFormElement $field) {
-		$this->fields[$name] = $field;
+	public function registerField(TodoyuFormElement $field) {
+		$this->fields[$field->getName()] = $field;
 	}
 
 
