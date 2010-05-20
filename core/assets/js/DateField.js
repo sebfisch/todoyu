@@ -54,7 +54,7 @@ Todoyu.DateField = {
 
 
 	/**
-	 * Change time in a datetime field
+	 * Set formatted time string in a dateTime field from given values
 	 *
 	 * @param	{String|Element}	field
 	 * @param	{Number}			hour
@@ -72,7 +72,7 @@ Todoyu.DateField = {
 
 
 	/**
-	 * Set a new date for a field
+	 * Set input field value to formatted string of given date values
 	 *
 	 * @param	{String|Element}	field
 	 * @param	{Number}			year
@@ -92,7 +92,7 @@ Todoyu.DateField = {
 
 	
 	/**
-	 * Set a new time for a field
+	 * Set input field value to formatted string of given date time values
 	 *
 	 * @param	{String|Element}	field
 	 * @param	{Number}			year
