@@ -34,6 +34,8 @@ var Todoyu = {
 	 */
 	Ext: 		{},
 
+	JsCalFormat: {},
+
 
 	/**
 	 * Initialize todoyu object

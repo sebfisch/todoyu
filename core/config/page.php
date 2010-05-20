@@ -33,7 +33,7 @@ if( TodoyuAuth::isLoggedIn() ) {
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletAbout', 10);
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickCreate', 50);
 
-	TodoyuPage::addJsOnloadedFunction('Todoyu.DateField.init.bind(Todoyu.DateField, \'' . TodoyuLanguage::getLabel('dateformat.datetime')	. '\')');
+//	TodoyuPage::addJsOnloadedFunction('Todoyu.DateField.init.bind(Todoyu.DateField, \'' . TodoyuLanguage::getLabel('dateformat.datetime')	. '\')');
 
 		// Generate colors css and sprite
 		// Moved to calendar ext controller
