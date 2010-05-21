@@ -43,24 +43,24 @@ class TodoyuPreferenceManager {
 	 * @param	Integer		$idItem
 	 * @param	Boolean		$unique
 	 * @param	Integer		$idArea
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 */
-	public static function savePreference($extID, $preference, $value, $idItem = 0, $unique = false, $idArea = 0, $idUser = 0) {
+	public static function savePreference($extID, $preference, $value, $idItem = 0, $unique = false, $idArea = 0, $idPerson = 0) {
 		$extID		= intval($extID);
 		$preference	= strtolower($preference);
 		$idItem		= intval($idItem);
 		$idArea		= intval($idArea);
-		$idUser		= personid($idUser);
+		$idPerson		= personid($idPerson);
 
 			// Delete existing preferences
 		if( $unique ) {
-			self::deletePreference($extID, $preference, null, $idItem, $idArea, $idUser);
+			self::deletePreference($extID, $preference, null, $idItem, $idArea, $idPerson);
 		} else {
-			self::deletePreference($extID, $preference, $value, $idItem, $idArea, $idUser);
+			self::deletePreference($extID, $preference, $value, $idItem, $idArea, $idPerson);
 		}
 
 		$table	= self::TABLE;
-		$data	= array('id_person'	=> $idUser,
+		$data	= array('id_person'	=> $idPerson,
 						'ext'		=> $extID,
 						'area'		=> $idArea,
 						'preference'=> $preference,
@@ -80,18 +80,18 @@ class TodoyuPreferenceManager {
 	 * @param	String		$value
 	 * @param	Integer		$idItem
 	 * @param	Integer		$idArea
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return	Boolean
 	 */
-	public static function deletePreference($extID, $preference, $value = null, $idItem = 0, $idArea = 0, $idUser = 0) {
+	public static function deletePreference($extID, $preference, $value = null, $idItem = 0, $idArea = 0, $idPerson = 0) {
 		$extID		= intval($extID);
 		$preference	= strtolower($preference);
-		$idUser		= personid($idUser);
+		$idPerson	= personid($idPerson);
 		$idItem		= intval($idItem);
 		$idArea		= intval($idArea);
 
 		$table	= self::TABLE;
-		$where	= '		id_person	= ' . $idUser .
+		$where	= '		id_person	= ' . $idPerson .
 				  ' AND	ext 		= ' . $extID .
 				  ' AND	area 		= ' . $idArea .
 				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true) .
@@ -114,24 +114,24 @@ class TodoyuPreferenceManager {
 	 * @param	Integer		$idItem
 	 * @param	Integer		$idArea
 	 * @param	Boolean		$unserialize
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return	String
 	 */
-	public static function getPreference($extID, $preference, $idItem = 0, $idArea = 0, $unserialize = false, $idUser = 0) {
+	public static function getPreference($extID, $preference, $idItem = 0, $idArea = 0, $unserialize = false, $idPerson = 0) {
 		$extID		= intval($extID);
 		$preference	= strtolower($preference);
 		$idItem		= intval($idItem);
 		$idArea		= intval($idArea);
-		$idUser		= personid($idUser);
+		$idPerson		= personid($idPerson);
 
 			// Don't check database if the user ID is 0
-		if( $idUser === 0 ) {
+		if( $idPerson === 0 ) {
 			return false;
 		}
 
 		$field	= 'value';
 		$table	= self::TABLE;
-		$where	= '		id_person	= ' . $idUser .
+		$where	= '		id_person	= ' . $idPerson .
 				  ' AND	ext 		= ' . $extID .
 				  ' AND	area		= ' . $idArea .
 				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true) .
@@ -156,19 +156,19 @@ class TodoyuPreferenceManager {
 	 * @param	String		$preference
 	 * @param	Integer		$idItem
 	 * @param	Integer		$idArea
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 * @return	Array
 	 */
-	public static function getPreferences($extID, $preference, $idItem = 0, $idArea = 0, $idUser = 0) {
+	public static function getPreferences($extID, $preference, $idItem = 0, $idArea = 0, $idPerson = 0) {
 		$extID		= intval($extID);
 		$preference	= strtolower($preference);
-		$idUser		= personid($idUser);
+		$idPerson		= personid($idPerson);
 		$idItem		= intval($idItem);
 		$idArea		= intval($idArea);
 
 		$field	= 'value';
 		$table	= self::TABLE;
-		$where	= '		id_person	= ' . $idUser .
+		$where	= '		id_person	= ' . $idPerson .
 				  ' AND	ext 		= ' . $extID .
 				  ' AND	area		= ' . $idArea .
 				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true);
@@ -185,13 +185,13 @@ class TodoyuPreferenceManager {
 	/**
 	 * Delete all preferences of a user
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 */
-	public static function deleteUserPreferences($idUser = 0) {
-		$idUser	= personid($idUser);
+	public static function deleteUserPreferences($idPerson = 0) {
+		$idPerson	= personid($idPerson);
 
 		$table	= self::TABLE;
-		$where	= 'id_person	= ' . $idUser;
+		$where	= 'id_person	= ' . $idPerson;
 
 		Todoyu::db()->doDelete($table, $where);
 	}
@@ -208,18 +208,18 @@ class TodoyuPreferenceManager {
 	 * @param	Integer		$idItem			ID of the item
 	 * @param	String		$value			Stored value
 	 * @param	Integer		$idArea			ID of the area
-	 * @param	Integer		$idUser			ID of the user
+	 * @param	Integer		$idPerson			ID of the user
 	 * @return	Boolean
 	 */
-	public static function isPreferenceSet($extID, $preference, $idItem = 0, $value = null, $idArea = 0, $idUser = 0) {
+	public static function isPreferenceSet($extID, $preference, $idItem = 0, $value = null, $idArea = 0, $idPerson = 0) {
 		$extID		= intval($extID);
 		$preference	= strtolower($preference);
-		$idUser		= personid($idUser);
+		$idPerson		= personid($idPerson);
 		$idArea		= intval($idArea);
 
 		$field	= 'id_person';
 		$table	= self::TABLE;
-		$where	= '		id_person	= ' . $idUser .
+		$where	= '		id_person	= ' . $idPerson .
 				  ' AND	ext 		= ' . $extID .
 				  ' AND	area 		= ' . $idArea .
 				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true);
@@ -271,7 +271,5 @@ class TodoyuPreferenceManager {
 	}
 
 }
-
-
 
 ?>

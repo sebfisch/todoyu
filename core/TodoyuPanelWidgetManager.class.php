@@ -91,12 +91,12 @@ class TodoyuPanelWidgetManager {
 	 * @return	Array
 	 */
 	public static function getUserPanelWidgets($ext) {
-		$idUser		= TodoyuAuth::getPersonID();
+		$idPerson		= TodoyuAuth::getPersonID();
 		$extID 		= TodoyuExtensions::getExtID($ext);
 
 		$fields		= 'widget, position, config';
 		$table		= self::TABLE;
-		$where		= '		id_person	= ' . $idUser .
+		$where		= '		id_person	= ' . $idPerson .
 					  ' AND	ext			= ' . $extID;
 		$order		= 'position';
 
@@ -125,12 +125,12 @@ class TodoyuPanelWidgetManager {
 	 * @return	Integer
 	 */
 	public static function addUserPanelWidget($ext, $widget, $position = 100, array $config = array()) {
-		$idUser	= TodoyuAuth::getPersonID();
-		$extID 	= TodoyuExtensions::getExtID($ext);
-		$sorting= intval($sorting);
+		$idPerson	= TodoyuAuth::getPersonID();
+		$extID		= TodoyuExtensions::getExtID($ext);
+		$sorting	= intval($sorting);
 
 		$data	= array(
-			'id_person'	=> $idUser,
+			'id_person'	=> $idPerson,
 			'ext'		=> $extID,
 			'widget'	=> $widget,
 			'position'	=> $position,

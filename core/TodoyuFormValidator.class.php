@@ -567,7 +567,7 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
-		$idUser		= intval($formData['id']);
+//		$idPerson	= intval($formData['id']);
 		$pass		= trim($value);
 		$allowEmpty	= isset($validatorConfig['allowEmpty']);
 

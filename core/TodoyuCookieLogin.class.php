@@ -54,9 +54,9 @@ class TodoyuCookieLogin {
 
 					if( $cookieData['useragentHash'] === $userAgendHash ) {
 						if( TodoyuAuth::isValidLogin($cookieData['username'], $cookieData['passhash']) ) {
-							$idUser = TodoyuPersonManager::getPersonIDByUsername($cookieData['username']);
-							TodoyuAuth::login($idUser);
-							self::setRemainLoginCookie($idUser);
+							$idPerson = TodoyuPersonManager::getPersonIDByUsername($cookieData['username']);
+							TodoyuAuth::login($idPerson);
+							self::setRemainLoginCookie($idPerson);
 
 							Todoyu::log('Logged in with cookie, proceed request');
 
@@ -82,11 +82,11 @@ class TodoyuCookieLogin {
 	/**
 	 * Set encrypted login cookie for direct login
 	 *
-	 * @param	Integer		$idUser
+	 * @param	Integer		$idPerson
 	 */
-	public static function setRemainLoginCookie($idUser) {
+	public static function setRemainLoginCookie($idPerson) {
 		$cookieName	= Todoyu::$CONFIG['AUTH']['loginCookieName'];
-		$value		= self::generateRemainLoginCode($idUser);
+		$value		= self::generateRemainLoginCode($idPerson);
 		$expires	= NOW + TodoyuTime::SECONDS_WEEK;
 
 		setcookie($cookieName, $value, $expires, PATH_WEB, null, false, true);
