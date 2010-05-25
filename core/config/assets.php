@@ -221,6 +221,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/js/Listing.js',
 			'position'	=> 68
+		),
+		array(
+			'file'		=> 'core/assets/js/PanelWidgetStatusSelector.js',
+			'position'	=> 68
 		)
 	),
 
