@@ -25,6 +25,8 @@
 
 	// Add form include path
 Todoyu::addIncludePath( PATH_CORE . '/form' );
+	// Add document include path
+Todoyu::addIncludePath( PATH_CORE . '/document');
 
 	// Init basic classes
 if( Todoyu::$CONFIG['NO_INIT'] !== true ) {
