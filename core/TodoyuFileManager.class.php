@@ -78,95 +78,6 @@ class TodoyuFileManager {
 
 
 	/**
-	 * Get folder contents
-	 *
-	 * @param	String		$pathFolder
-	 * @param	Boolean		$showHidden
-	 * @return	Array
-	 */
-	public static function getFolderContents($pathFolder, $showHidden = false) {
-		$pathFolder	= self::pathAbsolute($pathFolder);
-		$items			= array();
-
-		if( is_dir($pathFolder) ) {
-			$elements		= scandir($pathFolder);
-
-			foreach($elements as $element) {
-				if( $element === '.' || $element === '..' ) {
-						// Ignore parent and self references
-					continue;
-				}
-					// Also get hidden folders (starting with a dot)?
-				if( substr($element, 0, 1) !== '.' || $showHidden ) {
-					$items[] = $element;
-				}
-			}
-		}
-
-		return $items;
-	}
-
-
-
-	/**
-	 * Get listing of files inside given folder
-	 *
-	 * @param	String		$pathFolder
-	 * @param	Boolean		$showHidden
-	 * @param	String		$filters			strings needed to be contained in files looking for
-	 * @return	Array
-	 */
-	public static function getFilesInFolder($pathFolder, $showHidden = false, $filters = array()) {
-		$pathFolder	= self::pathAbsolute($pathFolder);
-		$elements	= self::getFolderContents($pathFolder, $showHidden);
-		$files		= array();
-
-		foreach($elements as $element) {
-			if( is_file($pathFolder . DIR_SEP . $element) ) {
-					// No filters defined: add file to results array
-				if ( sizeof($filters) === 0) {
-					$files[] = $element;
-				} else {
-						// Check string filters
-					foreach($filters as $filterString) {
-						if ( strpos($element, $filterString) !== false ) {
-							$files[] = $element;
-							break;
-						}
-					}
-				}
-			}
-		}
-
-		return $files;
-	}
-
-
-
-	/**
-	 * Get sub folders in given path
-	 *
-	 * @param	String	$pathToFolder
-	 * @param	Boolean	$showHidden
-	 * @return	Array
-	 */
-	public static function getFoldersInFolder($pathToFolder, $showHidden = false) {
-		$pathToFolder	= self::pathAbsolute($pathToFolder);
-		$elements		= self::getFolderContents($pathToFolder, $showHidden);
-		$folders		= array();
-
-		foreach($elements as $element) {
-			if( is_dir($pathToFolder . DIR_SEP . $element) ) {
-				$folders[] = $element;
-			}
-		}
-
-		return $folders;
-	}
-
-
-
-	/**
 	 * Delete all files inside given folder
 	 *
 	 * @param	String	$pathToFolder
@@ -399,25 +310,6 @@ class TodoyuFileManager {
 
 
 	/**
-	 * Get file content
-	 *
-	 * @param	String		$path
-	 * @return	String
-	 */
-	public static function getFileContent($path) {
-		$path	= self::pathAbsolute($path);
-
-		if( is_file($path) && is_readable($path) ) {
-			return file_get_contents($path);
-		} else {
-			Todoyu::log('Can\'t open file! File: ' . $file, TodoyuLogger::LEVEL_ERROR);
-			return '';
-		}
-	}
-
-
-
-	/**
 	 * Save content in file
 	 *
 	 * @param	String		$path
@@ -521,10 +413,132 @@ class TodoyuFileManager {
 	 * @return	String
 	 */
 	public static function appendToFilename($filename, $append) {
-		$pathinfo	= pathinfo($filename);
-		$dir		= ( $pathinfo['dirname'] == '.' ) ? '' : $pathinfo['dirname'] . DIR_SEP;
+		$pathInfo	= pathinfo($filename);
+		$dir		= ( $pathInfo['dirname'] == '.' ) ? '' : $pathInfo['dirname'] . DIR_SEP;
 
-		return $dir . $pathinfo['filename'] . $append . '.' . $pathinfo['extension'];
+		return $dir . $pathInfo['filename'] . $append . '.' . $pathInfo['extension'];
+	}
+
+
+
+	/**
+	 * Get folder contents
+	 *
+	 * @param	String		$pathFolder
+	 * @param	Boolean		$showHidden
+	 * @return	Array
+	 */
+	public static function getFolderContents($pathFolder, $showHidden = false) {
+		$pathFolder	= self::pathAbsolute($pathFolder);
+		$items			= array();
+
+		if( is_dir($pathFolder) ) {
+			$elements		= scandir($pathFolder);
+
+			foreach($elements as $element) {
+				if( $element === '.' || $element === '..' ) {
+						// Ignore parent and self references
+					continue;
+				}
+					// Also get hidden folders (starting with a dot)?
+				if( substr($element, 0, 1) !== '.' || $showHidden ) {
+					$items[] = $element;
+				}
+			}
+		}
+
+		return $items;
+	}
+
+
+
+	/**
+	 * Get listing of files inside given folder
+	 *
+	 * @param	String		$pathFolder
+	 * @param	Boolean		$showHidden
+	 * @param	String		$filters			strings needed to be contained in files looking for
+	 * @return	Array
+	 */
+	public static function getFilesInFolder($pathFolder, $showHidden = false, $filters = array()) {
+		$pathFolder	= self::pathAbsolute($pathFolder);
+		$elements	= self::getFolderContents($pathFolder, $showHidden);
+		$files		= array();
+
+		foreach($elements as $element) {
+			if( is_file($pathFolder . DIR_SEP . $element) ) {
+					// No filters defined: add file to results array
+				if ( sizeof($filters) === 0) {
+					$files[] = $element;
+				} else {
+						// Check string filters
+					foreach($filters as $filterString) {
+						if ( strpos($element, $filterString) !== false ) {
+							$files[] = $element;
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		return $files;
+	}
+
+
+
+	/**
+	 * Get sub folders in given path
+	 *
+	 * @param	String	$pathToFolder
+	 * @param	Boolean	$showHidden
+	 * @return	Array
+	 */
+	public static function getFoldersInFolder($pathToFolder, $showHidden = false) {
+		$pathToFolder	= self::pathAbsolute($pathToFolder);
+		$elements		= self::getFolderContents($pathToFolder, $showHidden);
+		$folders		= array();
+
+		foreach($elements as $element) {
+			if( is_dir($pathToFolder . DIR_SEP . $element) ) {
+				$folders[] = $element;
+			}
+		}
+
+		return $folders;
+	}
+
+
+
+	/**
+	 * Get file content
+	 *
+	 * @param	String		$path
+	 * @return	String
+	 */
+	public static function getFileContent($path) {
+		$path	= self::pathAbsolute($path);
+
+		if( is_file($path) && is_readable($path) ) {
+			return file_get_contents($path);
+		} else {
+			Todoyu::log('Can\'t open file! File: ' . $file, TodoyuLogger::LEVEL_ERROR);
+			return '';
+		}
+	}
+
+
+
+	/**
+	 * Get file extension
+	 *
+	 * @param	String	$filename
+	 * @return	String					file extension (without dot)
+	 */
+	public static function getFileExtension($filename) {
+		$pathInfo	= pathinfo($filename);
+
+		return strtolower($pathInfo['extension']);
 	}
 
 }
