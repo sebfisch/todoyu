@@ -1,0 +1,46 @@
+#loader-box {
+	position:fixed;
+	z-index:300;
+	background-color:#FFF;
+	border:1px dashed #CCC;
+	-moz-box-shadow:2px 2px 7px #999999;
+}
+
+#loader-box div,
+#loader-box img {
+	float:left;
+}
+
+#loader-box div.title {
+	clear:both;
+	width:282px;
+	padding:5px;
+	background-color:#EEE;
+	font-weight:bold;
+}
+
+#loader-box img.spinner {
+	clear:left;
+	padding:20px;
+	width:32px;
+	height:32px;
+}
+
+#loader-box div.message {
+	display:inline-block;
+	width:180px;
+	padding:20px;
+	text-align:left;
+	font-size:12px;
+}
+
+#loader-box-screen-block {
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background-color:#000;
+	z-index:250;
+	position:fixed;
+	opacity:0.5;
+}

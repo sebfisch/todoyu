@@ -1,7 +1,7 @@
 #contextmenu {
 	display:none;
 	position:absolute;
-	width:156px;
+	width:180px;
 	z-index:100000;
 	background-color:#f1f1f1;
 	-webkit-box-shadow:2px 2px 7px #999;

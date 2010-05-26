@@ -648,6 +648,29 @@ Todoyu.Ui = {
 		$(area).select('textarea.RTE').each(function(textarea){
 			tinyMCE.execCommand('mceRemoveControl', false, textarea.id);
 		});
+	},
+
+
+
+	/**
+	 * Center an element on the screen
+	 *
+	 * @param	{Element|String}	element
+	 */
+	centerElement: function(element) {
+		element			= $(element);
+		var elementDim	= element.getDimensions();
+		var screenDim	= document.viewport.getDimensions();
+
+		var left	= parseInt((screenDim.width-elementDim.width)/2);
+		var top		= parseInt((screenDim.height-elementDim.height)/2);
+
+		element.setStyle({
+			'top': top + 'px',
+			'left':left + 'px'
+		});
+
+		return element;
 	}
 
 };

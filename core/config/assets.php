@@ -224,7 +224,11 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/assets/js/PanelWidgetStatusSelector.js',
-			'position'	=> 68
+			'position'	=> 69
+		),
+		array(
+			'file'		=> 'core/assets/js/LoaderBox.js',
+			'position'	=> 70
 		)
 	),
 
@@ -331,6 +335,11 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/assets/css/headlet-about.css',
+			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/loader-box.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		)

@@ -144,16 +144,16 @@ Todoyu.Headlet.About = {
 	 * @param	{Boolean}		show
 	 */
 	displayWindow: function(show) {
-		var window		= $(this.idWindow);
+		var aboutWindow		= $(this.idWindow);
 		var screenDim	= document.viewport.getDimensions();
-		var windowDim	= window.getDimensions();
+		var windowDim	= aboutWindow.getDimensions();
 
 		var left	= parseInt((screenDim.width-windowDim.width)/2);
 		var topHide	= -windowDim.height - 30;
 		var top;
 
 		if( show ) {
-			window.setStyle({
+			aboutWindow.setStyle({
 				'left': left + 'px',
 				'top': topHide + 'px',
 				'display': 'block'
