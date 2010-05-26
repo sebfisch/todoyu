@@ -18,6 +18,9 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+
+require_once( PATH_CORE . '/TodoyuArray.class.php');
+
 /**
  * Test for: TodoyuArray
  *
