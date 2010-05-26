@@ -4,8 +4,6 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 		this.list = $(list);
 
 		this._observeList();
-
-		console.log('PanelWidgetStatusSelector initialize');
 	},
 
 	/**
