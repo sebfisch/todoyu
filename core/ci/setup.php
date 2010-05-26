@@ -2,9 +2,29 @@
 
 require_once(realpath(dirname(__FILE__) . '/../inc/global.php'));
 require_once(PATH_CORE . '/inc/init.php');
+require_once(PATH_CORE . '/ci/setup_config.php');
 
+
+	// Setup db connection
+TodoyuInstallerManager::saveDbConfigInFile($SETUPCONFIG['db']);
+
+	// Update database
+TodoyuSQLManager::updateDatabaseFromTableFiles();
+TodoyuInstallerManager::importStaticData();
+TodoyuInstallerManager::importBasicData();
+
+	// Save system config
+TodoyuInstallerManager::saveSystemConfig($SETUPCONFIG['system']);
+
+	// Import demo data
+TodoyuInstallerManager::importDemoData();
+
+	// Install unittest extension
 TodoyuExtInstaller::installExtension('unittest');
 
-echo "Unittest wurde installiert";
+
+
+
+echo "todoyu setup done";
 
 ?>

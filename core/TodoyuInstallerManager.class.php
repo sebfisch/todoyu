@@ -536,7 +536,7 @@ class TodoyuInstallerManager {
 	/**
 	 * Import static data
 	 */
-	private static function importStaticData() {
+	public static function importStaticData() {
 		self::importSqlFromFile('install/db/static_data.sql');
 	}
 
@@ -545,7 +545,7 @@ class TodoyuInstallerManager {
 	/**
 	 * Import basic data
 	 */
-	private static function importBasicData() {
+	public static function importBasicData() {
 		self::importSqlFromFile('install/db/basic_data.sql');
 	}
 
@@ -554,7 +554,7 @@ class TodoyuInstallerManager {
 	/**
 	 * Import the demo data from sql file
 	 */
-	private static function importDemoData() {
+	public static function importDemoData() {
 		self::importSqlFromFile('install/db/demo_data.sql');
 	}
 
