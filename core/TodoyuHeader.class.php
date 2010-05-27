@@ -90,7 +90,7 @@ class TodoyuHeader {
 	 * @param	Integer		$fileSize
 	 * @param	Integer		$fileModTime
 	 */
-	public static function sendDownloadHeaders($mimeType, $filename, $fileSize, $fileModTime) {
+	public static function sendDownloadHeaders($mimeType, $filename, $fileSize, $fileModTime = null) {
 		$fileSize		= intval($fileSize);
 		$fileModTime	= intval($fileModTime);
 
@@ -98,9 +98,12 @@ class TodoyuHeader {
 		self::sendHeader('Content-disposition', 'attachment; filename="' . $filename . '"');
 		self::sendHeader('Content-length', $fileSize);
 		self::sendHeader('Expires', date('r', NOW + 600));
-		self::sendHeader('Last-Modified', date('r', $fileModTime));
 		self::sendHeader('Cache-Control', 'no-cache, must-revalidate');
 		self::sendHeader('Pragma', 'no-cache');
+
+		if( ! is_null($fileModTime) ) {
+			self::sendHeader('Last-Modified', date('r', $fileModTime));
+		}
 	}
 
 

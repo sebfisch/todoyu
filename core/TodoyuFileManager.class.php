@@ -373,14 +373,23 @@ class TodoyuFileManager {
 	 * Reads file in small parts (1024 B)
 	 *
 	 * @param	String		$absoluteFilePath
+	 * @param	String		$mimeType			Mime type of the file
+	 * @param	String		$filename			Name of the downloaded file shown in the browser
 	 * @return	Boolean		File was allowed to download and sent to browser
 	 */
-	public static function sendFile($absoluteFilePath) {
+	public static function sendFile($absoluteFilePath, $mimeType = null, $filename = null) {
 		$pathFile	= realpath($absoluteFilePath);
 
 		if( $pathFile !== false ) {
 			if( is_readable($pathFile) ) {
 				if( self::isFileInAllowedDownloadPath($pathFile) ) {
+						// Send download headers
+					$filesize	= filesize($pathFile);
+					$filename	= is_null($filename) ? basename($pathFile) : $filename;
+					$filemodtime= filemtime($pathFile);
+					TodoyuHeader::sendDownloadHeaders($mimeType, $filename, $filesize, $filemodtime);
+
+						// Send file data					
 					$fp	= fopen($pathFile, 'rb');
 
 					while($data = fread($fp, 1024)) {

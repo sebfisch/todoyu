@@ -82,17 +82,12 @@ abstract class TodoyuTemplateDocumentAbstract {
 	 *
 	 * @param	String		$pathFile		Path to file on the server
 	 * @param	String		$filename		Filename in browser
-	 * @param	String		$contentType	Content-type of the file
+	 * @param	String		$mimeType		Content-type of the file
 	 */
-	protected function sendFile($pathFile, $filename, $contentType) {
+	protected function sendFile($pathFile, $filename, $mimeType) {
 		$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);
-		$filesize	= filesize($pathFile);
-
-		TodoyuHeader::sendHeader('Content-type', $contentType);
-		TodoyuHeader::sendHeader('Content-disposition', 'attachment; filename="' . $filename . '"');
-		TodoyuHeader::sendHeader('Content-length', $filesize);
 		
-		TodoyuFileManager::sendFile($pathFile);
+		TodoyuFileManager::sendFile($pathFile, $mimeType, $filename);
 	}
 
 }
