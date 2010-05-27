@@ -284,10 +284,14 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testFromSimpleXml().
 	 */
 	public function testFromSimpleXml() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$simpleXml	= simplexml_load_file(PATH_CORE . '/tests/files/xml.xml');
+		
+		$array		= TodoyuArray::fromSimpleXml($simpleXml);
+		
+
+		$this->assertEquals('John Resig', $array['book'][1]['author']);
+		$this->assertEquals('CHF 72.20', $array['book'][0]['price']);
+		$this->assertEquals('1-59059-727-3', $array['book'][1]['@attributes']['isbn']);
 	}
 
 
@@ -328,10 +332,12 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testImplodeQuoted().
 	 */
 	public function testImplodeQuoted() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$array	= array(1,'fun', 'test"with\'quotes', array());
+
+		$quoted	= TodoyuArray::implodeQuoted($array);
+		$expect	= "'1','fun','test\\\"with\\'quotes'";
+
+		$this->assertEquals($expect, $quoted);
 	}
 
 
@@ -366,45 +372,28 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	}
 
 
-
-	/**
-	 * Test TodoyuArray::unserEntryByValue
-	 *
-	 * @todo Implement testUnsetEntryByValue().
-	 */
-	public function testUnsetEntryByValue() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
-	}
-
-
-
-	/**
-	 * Test TodoyuArray::intersectSubArrays
-	 *
-	 * @todo Implement testIntersectSubArrays().
-	 */
-	public function testIntersectSubArrays() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
-	}
-
-
-
 	/**
 	 * Test TodoyuArray::mergeSubArrays
 	 *
 	 * @todo Implement testMergeSubArrays().
 	 */
 	public function testMergeSubArrays() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
+		$array = array(
+			array(1,2,3),
+			array(4,5,6)
 		);
+
+		$result	= TodoyuArray::mergeSubArrays($array);
+
+		$this->assertEquals(4, $result[3]);
+		$this->assertEquals(6, sizeof($result));
+
+		$array[] = array(6,7,8);
+
+		$result2= TodoyuArray::mergeSubArrays($array);
+
+		$this->assertEquals(9, sizeof($result2));
+		$this->assertEquals(6, $result2[6]);
 	}
 
 
@@ -415,10 +404,15 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testMergeUnique().
 	 */
 	public function testMergeUnique() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$array1 = array(1,2,3);
+		$array2 = array(4,5,6);
+		$array3 = array(6,2,7);
+	
+		$result	= TodoyuArray::mergeUnique($array1, $array2, $array3);
+
+		$this->assertTrue(is_array($result));
+		$this->assertEquals(7, sizeof($result));
+		$this->assertEquals(28, array_sum($result));
 	}
 
 
@@ -429,10 +423,19 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testFlatten().
 	 */
 	public function testFlatten() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
+		$array = array(
+			array(1,2,3),
+			array(4,5,6),
+			array(7,8,array(
+				9, 10, 11
+			))
 		);
+		
+		$result	= TodoyuArray::flatten($array);
+
+		$this->assertTrue(is_array($result));
+		$this->assertEquals(11, sizeof($result));
+		$this->assertEquals(11, $result[10]);
 	}
 
 
@@ -443,10 +446,13 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testRemoveByValue().
 	 */
 	public function testRemoveByValue() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$array	= array(1,2,3,4,5,6,7,8,9);
+		$remove	= array(3,4,6,10);
+
+		$result	= TodoyuArray::removeByValue($array, $remove);
+
+		$this->assertEquals(6, sizeof($result));
+		$this->assertEquals(7, $result[3]);
 	}
 
 
@@ -457,10 +463,16 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testRemoveDuplicates().
 	 */
 	public function testRemoveDuplicates() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
+		$array = array(
+			array('id'	=> 44),
+			array('id'	=> 45),
+			array('id'	=> 46),
+			array('id'	=> 46)
 		);
+		
+		$result	= TodoyuArray::removeDuplicates($array, 'id');
+
+		$this->assertEquals(3, sizeof($result));
 	}
 
 
@@ -471,10 +483,22 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testIntExplode().
 	 */
 	public function testIntExplode() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$string	= '1,2,3,4,a,,5,-7,';
+		$array1	= TodoyuArray::intExplode(',', $string);
+
+		$this->assertEquals(9, sizeof($array1));
+		$this->assertEquals(0, $array1[8]);
+		$this->assertEquals(-7, $array1[7]);
+
+		$array2	= TodoyuArray::intExplode(',', $string, true);
+
+		$this->assertEquals(9, sizeof($array2));
+		$this->assertEquals(0, $array2[7]);
+
+		$array3	= TodoyuArray::intExplode(',', $string, true, true);
+
+		$this->assertEquals(5, sizeof($array3));
+		$this->assertEquals(5, $array3[4]);
 	}
 
 
@@ -485,10 +509,14 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testTrimExplode().
 	 */
 	public function testTrimExplode() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$string	= ' test    ,   4,2, sdfasdfasdf asdfasdfasdfa            ,d,';
+		$array1	= TodoyuArray::trimExplode(',', $string);
+
+		$this->assertEquals('test', $array1[0]);
+
+		$array2	= TodoyuArray::trimExplode(',', $string, true);
+
+		$this->assertEquals(5, sizeof($array2));
 	}
 
 
@@ -499,10 +527,15 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testTrim().
 	 */
 	public function testTrim() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
+		$array	= array(
+			' asdf asdf   ',
+			'         ',
+			'test         ',
+			's s s s '
 		);
+		$result	= TodoyuArray::trim($array);
+
+		$this->assertEquals('test', $result[2]);
 	}
 
 
@@ -513,10 +546,26 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testUseFieldAsIndex().
 	 */
 	public function testUseFieldAsIndex() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
+		$array = array(
+			'a'	=> array(
+				'id'	=> 1,
+				'name'	=> 'Elvis'
+			),
+			'b'	=> array(
+				'id'	=> 50,
+				'name'	=> 'Jackson'
+			),
+			'c'	=> array(
+				'id'	=> 3,
+				'name'	=> 'Jagger'
+			)		
 		);
+		
+		$result	= TodoyuArray::useFieldAsIndex($array, 'id');
+		
+		$this->assertEquals('Jagger', $result[3]['name']);
+		$this->assertEquals(3, sizeof($result));
+		$this->assertEquals('a', $result[1]['_oldIndex']);
 	}
 
 }

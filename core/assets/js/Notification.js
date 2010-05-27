@@ -51,7 +51,7 @@ Todoyu.Notification = {
 	notify: function(type, message, countdown) {
 		this.loadTemplate();
 
-		countdown	= Object.isUndefined(countdown) ? this.defaultCountdown : Todoyu.Helper.intval(countdown);
+		countdown	= countdown === undefined ? this.defaultCountdown : Todoyu.Helper.intval(countdown);
 		var id		= this.id++;
 
 		var data	= {
@@ -77,7 +77,7 @@ Todoyu.Notification = {
 	 */
 	loadTemplate: function() {
 		if( this.template === null ) {
-			this.template = new Template('<div class="note #{type}" id="notification-note-#{id}"><table width="100%"><tr><td class="icon">&nbsp;</td><td class="message">#{message}</td><td class="countdown" align="center">#{countdown}</td><td class="close" onclick="Todoyu.Notification.close(this)">&nbsp;</td></tr></table></div>');
+			this.template = new Template('<div class="note #{type}" id="notification-note-#{id}"><table width="100%"><tr><td class="icon">&nbsp;</td><td class="message">#{message}</td><td class="countdown" align="center">#{countdown}</td></tr></table></div>');
 		}
 	},
 
@@ -199,14 +199,32 @@ Todoyu.Notification = {
 	 * @param	{String}		code
 	 */
 	appendNote: function(idNote, code) {
-		$('notes').insert({'top':code});
+		$('notes').insert({
+			'top':code
+		});
 		
 		var htmlID	= 'notification-note-' + idNote;
-		
+
+			// Observe mouse over of note
+		$(htmlID).observe('mouseover', this.onMouseOver.bindAsEventListener(this, idNote));
+			// Hide the note before appearing
 		$(htmlID).hide();
+			// Appear with effect
 		$(htmlID).appear({
 			'duration': 0.5
 		});
+	},
+
+
+
+	/**
+	 * Handler for note mouse over
+	 *
+	 * @param	{Event}		event
+	 * @param	{Number}	idNote
+	 */
+	onMouseOver: function(event, idNote) {
+		this.closeNote(idNote);
 	},
 
 

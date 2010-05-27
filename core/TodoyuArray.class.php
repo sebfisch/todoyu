@@ -133,7 +133,7 @@ class TodoyuArray {
 			$array = $newArray;
 		}
 
-		return $array;
+		return array_values($array);
 	}
 
 
@@ -470,6 +470,9 @@ class TodoyuArray {
 				}
 
 				$array[$index] = $wrapBefore . $item . $wrapAfter;
+			} else {
+				unset($array[$index]);
+				Todoyu::log('Item was not quoted because was not string or number', TodoyuLogger::LEVEL_NOTICE, $item);
 			}
 		}
 
@@ -510,49 +513,7 @@ class TodoyuArray {
 
 
 	/**
-	 * Removes array entrie by its value
-	 *
-	 * @example
-	 *
-	 * $array = array(0 => 'foo', 1 => 'bar')
-	 * $value = 'bar'
-	 *
-	 * $newArray = unsetArrayByValue($value, $array);
-	 *
-	 * $newArray -> array(0 => 'fo0')
-	 *
-	 * @param	Mixed $value
-	 * @param	Array $array
-	 * @return	Array
-	 */
-	public static function unsetEntryByValue($value, array $array)	{
-		if( in_array($value, $array) )	{
-			unset($array[array_search($value, $array)]);
-		}
-
-		return $array;
-	}
-
-
-
-	/**
-	 * Use logical AND conjunction upon (intersect) given sub arrays.
-	 *
-	 * @param	Array		$array
-	 * @return	Array
-	 */
-	public static function intersectSubArrays(array $array) {
-		if( sizeof($array) === 1 ) {
-			return array_shift($array);
-		} else {
-			return call_user_func_array('array_intersect', $array);
-		}
-	}
-
-
-
-	/**
-	 * Use logical OR conjunction upon (merge) given sub array.
+	 * Merge all sub arrays of the array to a single array
 	 *
 	 * @param	Array		$array
 	 * @return	Array
@@ -580,7 +541,7 @@ class TodoyuArray {
 		$funcArgs	= func_get_args();
 		$merged		= call_user_func_array('array_merge', $funcArgs);
 
-		return array_unique($merged);
+		return array_values(array_unique($merged));
 	}
 
 
@@ -631,25 +592,25 @@ class TodoyuArray {
 	 * Remove duplicate entries in given field of array
 	 *
 	 * @param	Array	$array
-	 * @param	String	$key
+	 * @param	String	$fieldname
 	 * @return	Array
 	 */
-	public static function removeDuplicates(array $array, $key) {
-		$vals	 		= array();
-		$cleanedArray	= array();
+	public static function removeDuplicates(array $array, $fieldname) {
+		$values	= array();
+		$clean	= array();
 
 			// iterate all ass. sub arrays
-		foreach($array as $entryID => $entryData) {
-			$value		= $entryData[ $key ];
+		foreach($array as $index => $item) {
+			$value	= $item[$fieldname];
 
-			if ( ! in_array($value, $vals) ) {
-				$cleanedArray[ $entryID ]	= $entryData;
+			if( ! in_array($value, $values) ) {
+				$clean[$index]	= $item;
 			}
 
-			$vals[]	= $value;
+			$values[] = $value;
 		}
 
-		return $cleanedArray;
+		return $clean;
 	}
 
 
@@ -711,6 +672,8 @@ class TodoyuArray {
 		foreach($array as $index => $value) {
 			$array[$index] = trim($value);
 		}
+
+		return $array;
 	}
 
 

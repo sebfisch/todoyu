@@ -36,7 +36,13 @@ class TodoyuCacheTest extends PHPUnit_Framework_TestCase {
 	 * This method is called before a test is executed.
 	 */
 	protected function setUp() {
+		TodoyuCache::set('star1', 'The Beatles');
+		TodoyuCache::set('star2', 'Elvis Presley');
+		TodoyuCache::set('star3', 'Michael Jackson');
+		TodoyuCache::set('star4', 'ABBA');
+		TodoyuCache::set('star5', 'Queen');
 
+		TodoyuCache::set('array', array(1,2,3,4,5,6));
 	}
 
 
@@ -55,10 +61,14 @@ class TodoyuCacheTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testGet().
 	 */
 	public function testGet() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$star1	= TodoyuCache::get('star1');
+		$star4	= TodoyuCache::get('star4');
+		$array	= TodoyuCache::get('array');
+
+		$this->assertEquals('The Beatles', $star1);
+		$this->assertEquals('ABBA', $star4);
+		$this->assertTrue(is_array($array));
+		$this->assertEquals(6, sizeof($array));
 	}
 
 
@@ -67,10 +77,17 @@ class TodoyuCacheTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testSet().
 	 */
 	public function testSet() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$string	= 'This is a little test';
+		$array	= array('a', 'b', 'c');
+		$person	= new TodoyuPerson(0);
+
+		TodoyuCache::set('string', $string);
+		TodoyuCache::set('array2', $array);
+		TodoyuCache::set('person', $person);
+
+		$this->assertEquals($string, TodoyuCache::get('string'));
+		$this->assertEquals($array, TodoyuCache::get('array2'));
+		$this->assertEquals($person, TodoyuCache::get('person'));
 	}
 
 
@@ -79,10 +96,9 @@ class TodoyuCacheTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testRemove().
 	 */
 	public function testRemove() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		TodoyuCache::remove('star2');
+
+		$this->assertFalse(TodoyuCache::isIn('star2'));
 	}
 
 
@@ -91,10 +107,16 @@ class TodoyuCacheTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testIsIn().
 	 */
 	public function testIsIn() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		TodoyuCache::set('isin1', 'yes');
+		TodoyuCache::set('isin2', 'no');
+
+		$this->assertTrue(TodoyuCache::isIn('isin1'));
+		$this->assertTrue(TodoyuCache::isIn('isin2'));
+		$this->assertFalse(TodoyuCache::isIn('isin3'));
+
+		TodoyuCache::remove('isin1');
+
+		$this->assertFalse(TodoyuCache::isIn('isin1'));
 	}
 
 
@@ -103,10 +125,13 @@ class TodoyuCacheTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testDisable().
 	 */
 	public function testDisable() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		TodoyuCache::disable();
+
+		TodoyuCache::set('dummy', 'should not get in the cache');
+
+		$this->assertFalse(TodoyuCache::isIn('dummy'));
+
+		TodoyuCache::enable();
 	}
 
 
@@ -115,10 +140,13 @@ class TodoyuCacheTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testEnable().
 	 */
 	public function testEnable() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		TodoyuCache::disable();
+
+		TodoyuCache::enable();
+
+		TodoyuCache::set('dummy', 'should get in the cache');
+
+		$this->assertTrue(TodoyuCache::isIn('dummy'));
 	}
 
 
@@ -127,82 +155,13 @@ class TodoyuCacheTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testFlush().
 	 */
 	public function testFlush() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
-	}
+		TodoyuCache::set('tester', 'Mr. Spock');
 
+		$this->assertTrue(TodoyuCache::isIn('tester'));
 
+		TodoyuCache::flush();
 
-	/**
-	 * @todo Implement testGetRecord().
-	 */
-	public function testGetRecord() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
-	}
-
-
-
-	/**
-	 * @todo Implement testRemoveRecord().
-	 */
-	public function testRemoveRecord() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
-	}
-
-
-
-	/**
-	 * @todo Implement testAddRecord().
-	 */
-	public function testAddRecord() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
-	}
-
-
-
-	/**
-	 * @todo Implement testRemoveRecordQuery().
-	 */
-	public function testRemoveRecordQuery() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
-	}
-
-
-
-	/**
-	 * @todo Implement testMakeClassKey().
-	 */
-	public function testMakeClassKey() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
-	}
-
-
-
-	/**
-	 * @todo Implement testMakeRecordQueryKey().
-	 */
-	public function testMakeRecordQueryKey() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$this->assertFalse(TodoyuCache::isIn('tester'));
 	}
 }
 ?>

@@ -52,11 +52,11 @@ class TodoyuHtmlFilter {
 		foreach($badTags as $badTag) {
 			$patternStandard	= '|<(' . $badTag . ')([^>]*)>(.*?)(</' . $badTag . '>)|sum';
 
-			$inputHTML	= preg_replace_callback($patternStandard, array(self,'escapeBadTags'), $inputHTML);
+			$inputHTML	= preg_replace_callback($patternStandard, array('TodoyuHtmlFilter','escapeBadTags'), $inputHTML);
 
 			$patternSimple	= '|<(' . $badTag . ')([^>]*)>(.*?)|sum';
 
-			$inputHTML	= preg_replace_callback($patternSimple, array(self,'escapeBadTag'), $inputHTML);
+			$inputHTML	= preg_replace_callback($patternSimple, array('TodoyuHtmlFilter','escapeBadTag'), $inputHTML);
 		}
 
 		return $inputHTML;
@@ -94,7 +94,7 @@ class TodoyuHtmlFilter {
 	 * @param	String		$delim
 	 * @return	String
 	 */
-	public static function htmlSafeChunkSplit($html, $size, $delim) {
+	private static function htmlSafeChunkSplit($html, $size, $delim) {
 		$pos	= 0;
 		$out	= '';
 

@@ -88,6 +88,8 @@ class TodoyuHeadManager {
 			}
 		}
 
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.init.bind(Todoyu.Headlet)', 10);
+
 		return render($tmpl, $data);
 	}
 

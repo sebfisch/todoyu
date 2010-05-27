@@ -279,4 +279,7 @@
 		<label index="slogan.line1">Спасибо за использование todoyu</label>
 		<label index="slogan.line2">Мы надеемся, что todoyu Вам нравится!</label>
 	</labels>
+	<labels lang="fr_FR">
+		<label index="locale.selectthislocale">Installer todoyu en français</label><!-- name of the current locale language -->
+	</labels>
 </locallang>

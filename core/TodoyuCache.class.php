@@ -33,7 +33,7 @@ class TodoyuCache {
 	 *
 	 * @var	Array
 	 */
-	public static $cache = array();
+	private static $cache = array();
 
 
 
