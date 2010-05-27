@@ -3,8 +3,8 @@
 $SETUPCONFIG['db'] = array(
 	'server'		=> 'localhost',
 	'username'		=> 'todoyu',
-	'password'		=> 'todoyu',
-	'database'		=> 'todoyuhudson'
+	'password'		=> '0kbcBbQPi',
+	'database'		=> 'todoyu'
 );
 
 $SETUPCONFIG['system'] = array(
