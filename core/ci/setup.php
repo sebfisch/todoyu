@@ -1,8 +1,12 @@
 <?php
 
 require_once(realpath(dirname(__FILE__) . '/../inc/global.php'));
-require_once(PATH_CORE . '/inc/init.php');
 require_once(PATH_CORE . '/ci/setup_config.php');
+
+Todoyu::$CONFIG['NO_INIT'] = true;
+
+require_once(PATH_CORE . '/inc/init.php');
+
 
 die(99999999999);
 
