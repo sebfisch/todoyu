@@ -8,27 +8,22 @@ Todoyu::$CONFIG['NO_INIT'] = true;
 require_once(PATH_CORE . '/inc/init.php');
 
 
-die(99999999999);
-
-
 	// Setup db connection
-//TodoyuInstallerManager::saveDbConfigInFile($SETUPCONFIG['db']);
-//
-//	// Update database
-//TodoyuSQLManager::updateDatabaseFromTableFiles();
-//TodoyuInstallerManager::importStaticData();
-//TodoyuInstallerManager::importBasicData();
-//
-//	// Save system config
-//TodoyuInstallerManager::saveSystemConfig($SETUPCONFIG['system']);
-//
-//	// Import demo data
-//TodoyuInstallerManager::importDemoData();
-//
-//	// Install unittest extension
-//TodoyuExtInstaller::installExtension('unittest');
+TodoyuInstallerManager::saveDbConfigInFile($SETUPCONFIG['db']);
 
+	// Update database
+TodoyuSQLManager::updateDatabaseFromTableFiles();
+TodoyuInstallerManager::importStaticData();
+TodoyuInstallerManager::importBasicData();
 
+	// Save system config
+TodoyuInstallerManager::saveSystemConfig($SETUPCONFIG['system']);
+
+	// Import demo data
+TodoyuInstallerManager::importDemoData();
+
+	// Install unittest extension
+TodoyuExtInstaller::installExtension('unittest');
 
 
 echo "todoyu setup done";
