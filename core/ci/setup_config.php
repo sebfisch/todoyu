@@ -4,7 +4,10 @@ $SETUPCONFIG['db'] = array(
 	'server'		=> 'localhost',
 	'username'		=> 'todoyu',
 	'password'		=> '0kbcBbQPi',
-	'database'		=> 'todoyu'
+	'database'		=> 'todoyu',
+	'autoconnect'	=> true,
+	'persistent'	=> true,
+	'queryHistory'	=> true
 );
 
 $SETUPCONFIG['system'] = array(
