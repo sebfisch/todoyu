@@ -480,7 +480,7 @@ Todoyu.Ui = {
 	 *
 	 * @param	{Number}		idElement
 	 * @param	{Array}		config
-	 * @return	TimePicker
+	 * @return	Todoyu.TimePicker
 	 */
 	showTimePicker: function(idElement, config) {
 		config = $H({
@@ -488,7 +488,7 @@ Todoyu.Ui = {
 			'rangeMinute':	[0,55]
 		}).merge(config).toObject();
 
-		return new TimePicker(idElement, config);
+		return new Todoyu.TimePicker(idElement, config);
 	},
 
 
@@ -497,7 +497,7 @@ Todoyu.Ui = {
 	 * Show duration picker
 	 *
 	 * @param	{String}		idElement
-	 * @return	TimePicker
+	 * @return	Todoyu.TimePicker
 	 */
 	showDurationPicker: function(idElement, config) {
 		config = config || {};
@@ -506,7 +506,7 @@ Todoyu.Ui = {
 			'rangeMinute':	[0,55]
 		}).merge(config).toObject();
 
-		return new TimePicker(idElement);
+		return new Todoyu.TimePicker(idElement);
 	},
 
 

@@ -17,7 +17,7 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-var TimePicker = Class.create({
+Todoyu.TimePicker = Class.create({
 	
 	/**
 	 * Selected hour and minute

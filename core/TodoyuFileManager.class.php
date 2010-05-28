@@ -389,16 +389,14 @@ class TodoyuFileManager {
 					$filemodtime= filemtime($pathFile);
 					TodoyuHeader::sendDownloadHeaders($mimeType, $filename, $filesize, $filemodtime);
 
-						// Send file data					
-					$fp	= fopen($pathFile, 'rb');
+						// Send file data
+					$status = readfile($pathFile);
 
-					while($data = fread($fp, 1024)) {
-						echo $data;
+					if( $status === false ) {
+						Todoyu::log('Reading the file failed for a unknown reason: ' . $pathFile, TodoyuLogger::LEVEL_ERROR, $pathFile);
 					}
 
-					fclose($fp);
-
-					return true;
+					return $status !== false && $status > 0;
 				} else {
 					Todoyu::log('Tried to download a file from a not allowed path: ' . $pathFile, TodoyuLogger::LEVEL_SECURITY, $pathFile);
 				}
