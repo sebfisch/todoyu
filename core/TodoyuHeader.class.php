@@ -139,7 +139,7 @@ class TodoyuHeader {
 
 
 	/**
-	 * Send plaintext header
+	 * Send plain text header
 	 */
 	public static function sendHeaderPlain() {
 		self::setType('PLAIN');
