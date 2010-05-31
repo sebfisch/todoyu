@@ -74,7 +74,7 @@
 		<label index="finish.title">Installation Successful</label>
 		<label index="finish.text">The installation was successful</label>
 		<label index="finish.button">Go to login page</label>
-        <label index="finish.note">You now can login in. This next step might take a few seconds (dependant on your CPU) because the system is going to merge files, doing some caching, preparing data and do some other magic.</label>
+        <label index="finish.note">You now can log in. This next step might take a few seconds (depending on your CPU) because the system is going to prepare data, merge and cache files and do some other magic.</label>
 		<label index="update.title">Update todoyu Installation</label>
 		<label index="update.button">Start Update</label>
 		<label index="update.info">Apply database changes for your current version and compare current columns with file configuration</label>
