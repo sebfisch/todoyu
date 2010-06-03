@@ -39,12 +39,21 @@ class TodoyuDbAnalyzer {
 			'phpmyadmin'
 		);
 
-		$link		= mysql_connect($dbConfig['server'], $dbConfig['username'], $dbConfig['password']);
-		$resource	= mysql_list_dbs($link);
+		$link	= mysql_connect($dbConfig['server'], $dbConfig['username'], $dbConfig['password']);
 
-		$rows		= TodoyuDatabase::resourceToArray($resource);
-		$databases	= TodoyuArray::getColumn($rows, 'Database');
-		$databases	= array_diff($databases, $ignore);
+		if( $link !== false ) {
+			$resource	= mysql_list_dbs($link);
+
+			if( $resource !== false ) {
+				$rows		= TodoyuDatabase::resourceToArray($resource);
+				$databases	= TodoyuArray::getColumn($rows, 'Database');
+				$databases	= array_diff($databases, $ignore);
+			} else {
+				Todoyu::log('Can\'t get list of databases on server: ' . mysql_error(), TodoyuLogger::LEVEL_ERROR);
+			}
+		} else {
+			Todoyu::log('Can\'t connect to the database: ' . mysql_error(), TodoyuLogger::LEVEL_ERROR);
+		}
 
 		return $databases;
 	}

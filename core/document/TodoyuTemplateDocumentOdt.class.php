@@ -278,6 +278,18 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		return $this->pathOdt;
 	}
 
+
+
+	/**
+	 * The the XML content of the document after it is prepared
+	 * This content will be rendered by Dwoo
+	 *
+	 * @return	String		XML content
+	 */
+	public function getPreparedXMLContent() {
+		return $this->xmlContent;
+	}
+
 }
 
 ?>

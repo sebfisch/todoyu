@@ -1020,7 +1020,7 @@ class TodoyuDatabase {
 	 * @param	Resource	$result
 	 * @return	Array
 	 */
-	public function fetchRow($result) {
+	public static function fetchRow($result) {
 		return mysql_fetch_row($result);
 	}
 
@@ -1033,7 +1033,7 @@ class TodoyuDatabase {
 	 * @param	Resource	$result
 	 * @return	Array
 	 */
-	public function fetchAssoc($result) {
+	public static function fetchAssoc($result) {
 		return mysql_fetch_assoc($result);
 	}
 
@@ -1048,7 +1048,7 @@ class TodoyuDatabase {
 	 * @param	Array		$classParams
 	 * @return	Object
 	 */
-	public function fetchObject($result, $className = null, array $classParams = null) {
+	public static function fetchObject($result, $className = null, array $classParams = null) {
 		return mysql_fetch_object($result, $className, $classParams);
 	}
 
@@ -1073,7 +1073,7 @@ class TodoyuDatabase {
 	 * @param	String		$indexField
 	 * @return	Array
 	 */
-	public function resourceToArray($resource, $indexField = false) {
+	public static function resourceToArray($resource, $indexField = false) {
 		$array	= array();
 
 		while( $row = self::fetchAssoc($resource) ) {
@@ -1088,6 +1088,13 @@ class TodoyuDatabase {
 	}
 
 
+
+	/**
+	 * Get total found rows of last result
+	 * The last query had to include SQL_CALC_FOUND_ROWS
+	 *
+	 * @return	Integer
+	 */
 	public function getTotalFoundRows() {
 		$query	= 'SELECT FOUND_ROWS() as rows';
 

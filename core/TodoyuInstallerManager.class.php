@@ -122,6 +122,8 @@ class TodoyuInstallerManager {
 	 */
 	public static function processDbSelect(array $data) {
 		$result		= array();
+		
+		TodoyuDebug::printInFireBug('processDbSelect');
 
 		$database	= trim($data['database']);
 		$databaseNew= trim($data['database_new']);
@@ -166,7 +168,7 @@ class TodoyuInstallerManager {
 
 			if( $success ) {
 				TodoyuInstallerManager::saveDbConfigInFile($dbConf);
-				TodoyuInstaller::setStep('importtables');
+//				TodoyuInstaller::setStep('importtables');
 			} elseif( empty($result['text']) ) {
 				$data['text']		= $result['errorMessage'];
 				$data['textClass']	= 'error';

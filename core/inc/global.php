@@ -30,11 +30,6 @@ session_start();
 	// Define basic constants
 require_once( dirname(dirname(__FILE__)) . '/config/constants.php' );
 
-	// Store session modification timestamp
-if ( ! isset($_SESSION['mtime']) ) {
-	$_SESSION['mtime']	= NOW;
-}
-
 	// Add todoyu include path
 set_include_path(get_include_path() . PATH_SEPARATOR . PATH);
 	// Add PEAR to include path
