@@ -105,8 +105,8 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'compress'	=> false
 		),
 		array(
-			'file'		=> 'lib/js/highcharts/js/highcharts.src.js',
-//			'file'		=> 'lib/js/highcharts/js/highcharts.js',
+//			'file'		=> 'lib/js/highcharts/js/highcharts.src.js',
+			'file'		=> 'lib/js/highcharts/js/highcharts.js',
 			'position'	=> 23,
 			'merge'		=> true,
 			'localize'	=> false,
