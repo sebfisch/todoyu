@@ -102,16 +102,16 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 23,
 			'merge'		=> true,
 			'localize'	=> false,
-			'compress'	=> true
+			'compress'	=> false
 		),
 		array(
-//			'file'		=> 'lib/js/highcharts/js/highcharts.src.js',
-			'file'		=> 'lib/js/highcharts/js/highcharts.js',
+			'file'		=> 'lib/js/highcharts/js/highcharts.src.js',
+//			'file'		=> 'lib/js/highcharts/js/highcharts.js',
 			'position'	=> 23,
 			'merge'		=> true,
 			'localize'	=> false,
-			'compress'	=> true
-		),
+			'compress'	=> false
+		),		
 
 /**
  * Note: JSCalendar lang file is added at end of initialization
