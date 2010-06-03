@@ -37,6 +37,7 @@ class TodoyuJSCalendar {
 		$lang		= strtolower($temp[0]);
 
 		$fileCore	= TodoyuFileManager::pathAbsolute('core/lib/js/jscalendar/lang/calendar-' . $lang . '.js');
+		$fileLibUtf8= TodoyuFileManager::pathAbsolute('lib/js/jscalendar/lang/calendar-' . $lang . '-utf8.js');
 		$fileLib	= TodoyuFileManager::pathAbsolute('lib/js/jscalendar/lang/calendar-' . $lang . '.js');
 		$fileEn		= TodoyuFileManager::pathAbsolute('lib/js/jscalendar/lang/calendar-en.js');
 
@@ -46,10 +47,12 @@ class TodoyuJSCalendar {
 			// 3. Use english translation if language is not available
 		if( is_file($fileCore) ) {
 			$file	= $fileCore;
-		} elseif( is_file($fileLib) ) {
+		} elseif( is_file($fileLibUtf8) ) {
+			$file	= $fileLibUtf8;
+		}  elseif( is_file($fileLib) ) {
 			$file	= $fileLib;
 		} else {
-			$file	= $fileEn;
+			$file	= false;
 		}
 
 		return $file;
@@ -61,9 +64,13 @@ class TodoyuJSCalendar {
 	 * Add JSCalendar language JavaScript file to the page
 	 */
 	public static function addLangFile() {
+		TodoyuPageAssetManager::addJavascript('lib/js/jscalendar/lang/calendar-en.js', 25);
+
 		$file	= self::getLangFile();
 
-		TodoyuPageAssetManager::addJavascript($file, 23);
+		if( $file !== false ) {
+			TodoyuPageAssetManager::addJavascript($file, 25);
+		}
 	}
 
 }

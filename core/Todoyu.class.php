@@ -260,11 +260,11 @@ class Todoyu {
 			// Set internal locale
 		self::$locale = $locale;
 
-			// Set locale for system
-		$status	= TodoyuLocaleManager::setLocale($locale);
-
 			// Set locale for locallang files
 		TodoyuLanguage::setLocale($locale);
+
+			// Set locale for system
+		$status	= TodoyuLocaleManager::setLocale($locale);		
 
 			// Log if operation fails
 		if( $status === false ) {
