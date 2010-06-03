@@ -18,7 +18,7 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu::$CONFIG['SYSTEM']['name'] 		= 'Todoyu';
+Todoyu::$CONFIG['SYSTEM']['name'] 		= 'todoyu';
 Todoyu::$CONFIG['SYSTEM']['email']		= 'install@todoyu.com';
 Todoyu::$CONFIG['SYSTEM']['language']	= 'en_GB';
 Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_GB.utf8';

@@ -152,7 +152,7 @@
 		<label index="headlet.ajaxloader.label">Synchronisiere Daten mit dem Webserver</label>
 		<label index="headlet.about.label">Über todoyu</label>
 		<label index="unknown">unbekannt</label>
-		<label index="loaderBox.title">Gleich gehts weiter</label>
+		<label index="loaderBox.title">Gleich geht's weiter</label>
 	</labels>
 	<labels lang="pt_BR">
 		<label index="tab.todoyu.label">todoyu</label>
