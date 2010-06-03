@@ -52,7 +52,10 @@ class TodoyuErrorHandler {
 		if( Todoyu::$CONFIG['DEBUG'] ) {
 			ob_end_clean();
 
-				// Send error header
+				// Send HTTP error header
+			TodoyuHeader::sendHTTPErrorHeader();
+
+				// Send own error header
 			self::sendPhpErrorHeader('Database error: ' . $exception->getMessage());
 
 			$type = TodoyuHeader::getType();
@@ -92,6 +95,9 @@ class TodoyuErrorHandler {
 			// If not a notice, log it
 		if( ! in_array($errorno, self::$ignoreErros) ) {
 			Todoyu::log('PHP ERROR: [' . $errorno . '] ' . $errorstr, TodoyuLogger::LEVEL_ERROR);
+				// Send HTTP error header
+			TodoyuHeader::sendHTTPErrorHeader();
+
 			self::sendPhpErrorHeader($errorstr);
 		}
 
@@ -112,6 +118,9 @@ class TodoyuErrorHandler {
 	 */
 	public static function endScriptClean($message) {
 		ob_clean();
+
+			// Send HTTP error header
+		TodoyuHeader::sendHTTPErrorHeader();
 
 		TodoyuHeader::sendHeaderPlain();
 		die('ERROR: ' . $message);

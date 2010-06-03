@@ -196,6 +196,27 @@ class TodoyuHeader {
 
 
 	/**
+	 * Send HTTP header
+	 *
+	 * @param	Integer		$code
+	 */
+	public static function sendHTTPHeader($code) {
+		header('HTTP/1.0 ' . $code);
+	}
+
+
+
+	/**
+	 * Send HTTP error header
+	 * 
+	 */
+	public static function sendHTTPErrorHeader() {
+		self::sendHTTPHeader(503);
+	}
+
+	
+
+	/**
 	 * Send Todoyu error header, which marks the current response as failed
 	 * This means mostly a submission (form value) was not valid and the form
 	 * has to be displayed again
