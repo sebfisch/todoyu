@@ -1066,7 +1066,7 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Fetch all rows in a resultset into an array
+	 * Fetch all rows in a result set into an array
 	 * Use getArray() if you need all rows of a result
 	 *
 	 * @param	Resource	$resource

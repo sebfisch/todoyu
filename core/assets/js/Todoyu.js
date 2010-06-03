@@ -82,7 +82,7 @@ var Todoyu = {
 
 
 	/**
-	 * Redirect to an onther page
+	 * Redirect to another page
 	 *
 	 * @param	{String}	ext
 	 * @param	{String}	controller
@@ -143,7 +143,7 @@ var Todoyu = {
 
 
 	/**
-	 * Check if an element exists
+	 * Check whether an element exists
 	 *
 	 * @param	{Element|String}		element		Element or its ID
 	 */
@@ -221,7 +221,7 @@ var Todoyu = {
 	/**
 	 * Call a function reference, if it's one. Otherwise just ignore the call
 	 * The first argument is the function, all other arguments will be handed down to this function
-	 * The debug output is just for deveopment
+	 * The debug output is just for development
 	 * 
 	 * @param	{Function}	functionReference	Function
 	 * @param	{Object}		context				Context which is this in function

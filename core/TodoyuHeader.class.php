@@ -200,7 +200,7 @@ class TodoyuHeader {
 	 * This means mostly a submission (form value) was not valid and the form
 	 * has to be displayed again
 	 *
-	 * Can automaticly be checked by js: var hasError = response.hasTodoyuError()
+	 * Can automatically be checked by js: var hasError = response.hasTodoyuError()
 	 */
 	public static function sendTodoyuErrorHeader() {
 		self::sendTodoyuHeader('error', 1);
