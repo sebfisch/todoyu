@@ -78,6 +78,9 @@ class TodoyuInstaller {
 			// Delete all cache
 		TodoyuFileManager::deleteFolderContents(PATH_CACHE, false);
 
+			// Update task assets file structure
+		TodoyuInstallerManager::changeFilesAssetStructure();
+
 		/**
 		 * /Was only necessary for the RC2 release
 		 */

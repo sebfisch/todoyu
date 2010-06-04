@@ -820,6 +820,73 @@ class TodoyuInstallerManager {
 			}
 		}
 	}
+
+
+
+	/**
+	 * Move task assets to a new and better structure
+	 * Move from tasks/TASKID/* to PROJECTID/TASKID/*
+	 * 
+	 */
+	public static function changeFilesAssetStructure() {
+		if( ! TodoyuInstaller::isUpdate() ) {
+			return false;
+		}
+
+			// Initialize todoyu to use all the functions
+		Todoyu::init();
+		require( PATH_CORE . '/inc/load_extensions.php' );
+
+			// Get base paths
+		$pathAssets		= TodoyuFileManager::pathAbsolute('files/assets');
+		$pathAssetTask	= TodoyuFileManager::pathAbsolute($pathAssets . '/task');
+
+			// If there is still an old task folder, process it
+		if( is_dir($pathAssetTask) ) {
+			$taskFolders	= TodoyuFileManager::getFoldersInFolder($pathAssetTask);
+
+				// All subfolders are task IDs, loop over them
+			foreach($taskFolders as $taskFolder) {
+				$idTask	= intval($taskFolder);
+
+					// If the folder is a (task-)number
+				if( $idTask > 0 ) {
+						// Find project ID
+					$idProject		= TodoyuTaskManager::getProjectID($idTask);
+						// New folder for task files
+					$pathTaskFiles	= TodoyuFileManager::pathAbsolute($pathAssets . '/' . $idProject . '/' . $idTask);
+						// Get all task files
+					$taskFiles		= TodoyuFileManager::getFilesInFolder($pathAssetTask . '/' . $taskFolder);
+						// Make new task folder
+					TodoyuFileManager::makeDirDeep($pathTaskFiles);
+
+						// Process all files of a task
+					foreach($taskFiles as $taskFile) {
+						$pathSource	= TodoyuFileManager::pathAbsolute($pathAssetTask . '/' . $taskFolder . '/' . $taskFile);
+						$pathDest	= TodoyuFileManager::pathAbsolute($pathTaskFiles . '/' . $taskFile);
+
+							// Rename file
+						rename($pathSource, $pathDest);
+
+							// Update database
+						$pathStorageOld	= str_replace($pathAssets . DIR_SEP, '', $pathSource);
+						$pathStorageNew	= str_replace($pathAssets . DIR_SEP, '', $pathDest);
+						$update	= array(
+							'file_storage'	=> $pathStorageNew
+						);
+						$where	= 'file_storage = ' . Todoyu::db()->quote($pathStorageOld, true);
+
+						Todoyu::db()->doUpdate('ext_assets_asset', $where, $update);
+					}
+				}
+			}
+
+				// Delete old task folder
+//			TodoyuFileManager::deleteFolder($pathAssetTask);
+		}
+
+	}
+
 }
 
 ?>
