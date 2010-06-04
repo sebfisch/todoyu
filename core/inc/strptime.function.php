@@ -20,7 +20,6 @@ function strptime($date, $format) {
 		return false;
 	}
 
-
 	$dateTime = array(
 		'tm_sec'	=> 0,
 		'tm_min'	=> 0,
@@ -68,6 +67,20 @@ function strptime($date, $format) {
  * @return	Array
  */
 function strptime_strToDate($date, $format) {
+		// Remove AM, not necessary
+	$date	= str_ireplace('am', '', $date);
+		// Remove AM/PM marker
+	$format	= trim(str_replace('%p', '', $format));
+	
+		// Check for PM, remove it and add 12 to the hour
+	if( stripos($date, 'pm') !== false ) {
+		if( preg_match('/.* ((\d{2}):(\d{2}) ?pm).*/i', $date, $matchesPM) === 1 ) {
+			$replace= (intval($matchesPM[2])+12) . ':' . $matchesPM[3];
+			$date	= str_replace($matchesPM[1], $replace, $date);
+		}
+	}
+
+		// Define replacements for strftime markers with regex patterns
 	$search = array('%d', '%e', // day
 					'%m', // month
 					'%Y', '%y', // year
@@ -77,17 +90,20 @@ function strptime_strToDate($date, $format) {
 	$replace = array('(\d{1,2})', '(\d{1,2})', //day
 					 '(\d{1,2})', // month
 					 '(\d{4})', '(\d{2})', // year
-					 '(\d{1,2})', '\d{1,2}', // hour
+					 '(\d{1,2})', '(\d{1,2})', // hour
 					 '(\d{1,2})', // minutes
-					 '(\d{2})'); // seconds
+					 '(\d{2})'); // seconds					 
 
+		// Replace markers
 	$pattern = str_replace($search, $replace, $format);
-	
+
+		// The to find a marker
 	if(!preg_match("#$pattern#", $date, $matches)) {
 		return false;
 	}
 	$dp = $matches;
 
+		// Find all markers
 	if(!preg_match_all('#%(\w)#', $format, $matches)) {
 		return false;
 	}
@@ -101,7 +117,7 @@ function strptime_strToDate($date, $format) {
 	for($i=0, $j=count($id); $i<$j; $i++) {
 		$ret[$id[$i]] = $dp[$i+1];
 	}
-
+	
 	//echo '<pre>';
 	//print_r($ret);
 	//echo '</pre>';
