@@ -119,10 +119,15 @@ class TodoyuFileManager {
 	/**
 	 * Delete given directory
 	 *
-	 * @param	String	$pathFolder
+	 * @param	String		$pathFolder
 	 * @return	Boolean
 	 */
 	public static function deleteFolder($pathFolder) {
+			// Prevent deleting whole todoyu if an empty variable is given
+		if( empty($pathFolder) || $pathFolder === PATH ) {
+			return false;
+		}
+
 		$pathFolder	= self::pathAbsolute($pathFolder);
 
 		if( is_dir($pathFolder) ) {

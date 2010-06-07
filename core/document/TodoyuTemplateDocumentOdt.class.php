@@ -66,7 +66,9 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 	 *
 	 */
 	public function __destruct() {
-		TodoyuFileManager::deleteFolder($this->tempDir);
+		if( is_dir($this->tempDir) ) {
+			TodoyuFileManager::deleteFolder($this->tempDir);
+		}		
 	}
 
 
@@ -93,10 +95,17 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 	 * Move sections markers where necessary
 	 */
 	private function prepareXML() {
+		TodoyuHeader::sendHeaderXML();
+//		echo $this->xmlContent;
+//		exit();
+
 		$this->prepareListXML();
 		$this->prepareRowXML();
 		$this->prepareConditionXML();
 		$this->preparePhpXML();
+
+//		TodoyuHeader::sendHeaderXML();
+//		die($this->xmlContent);
 	}
 
 
@@ -149,11 +158,19 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 	 * Free them from wrapping with text nodes
 	 */
 	private function prepareConditionXML() {
-		$pattern	= '#(<[^>]*?>)({[/]?(?:if|else).*?})(</[^>]*?>)#sm';
-		$replace	= '$2';
-		$replaces	= array();
+			// Condition in same line
+		$pattern	= '#(<text:p[^>]*?>)\s*?({if[^}]*?})(.*?)({/if})(</text:p>)#sm';
+		$replace	= '$2$1$3$5$4';
 
 		$this->xmlContent = preg_replace($pattern, $replace, $this->xmlContent);
+
+			// Condition in single line
+		$pattern	= '#(<text:p[^>]*?>)({[/]?(?:if|else)[^}]*?})(</text:p>)#sm';
+		$replace	= '$2';
+
+		$this->xmlContent = preg_replace($pattern, $replace, $this->xmlContent);
+
+
 	}
 
 

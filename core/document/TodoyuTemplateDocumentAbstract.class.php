@@ -49,7 +49,7 @@ abstract class TodoyuTemplateDocumentAbstract {
 	 * @param	String		$template
 	 * @param	Array		$config
 	 */
-	public function __construct(array $data, $template, array $config = array()) {
+	public final function __construct(array $data, $template, array $config = array()) {
 		$this->data		= $data;
 		$this->template	= TodoyuFileManager::pathAbsolute($template);
 		$this->config	= $config;

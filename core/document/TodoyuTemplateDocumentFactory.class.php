@@ -40,14 +40,19 @@ class TodoyuTemplateDocumentFactory {
 		$template	= $template === false ? false : TodoyuFileManager::pathAbsolute($template);
 		$document	= false;
 
+			// Check if template exists or template is false
+		if( $template !== false && ! is_file($template) ) {
+			throw new TodoyuTemplateDocumentException(null, 'Template file not found: ' . $template);
+		}
+
 		if( $typeClass !== false ) {
 			$document	= new $typeClass($data, $template, $config);
 
 			if( !($document instanceof TodoyuTemplateDocumentIf) ) {
-				Todoyu::log('Document class "' . $typeClass . '" doesn\'t implement TodoyuDocumentIf', TodoyuLogger::LEVEL_ERROR);
+				throw new TodoyuTemplateDocumentException($document, 'Document class "' . $typeClass . '" doesn\'t implement TodoyuDocumentIf');
 			}
 		} else {
-			Todoyu::log('Document class "' . $typeClass . '" not found', TodoyuLogger::LEVEL_ERROR);
+			throw new TodoyuTemplateDocumentException(null, 'Document class "' . $typeClass . '" not found');
 		}
 
 		return $document;
