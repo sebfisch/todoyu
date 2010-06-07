@@ -132,4 +132,7 @@
 	<labels lang="sr_RS">
 	    <label index="sr_RS">??? (???)</label>
 	</labels>
+	<labels lang="cs_CZ">
+	    <label index="cs_CZ">česky (Czech Republic)</label>
+	</labels>
 </locallang>

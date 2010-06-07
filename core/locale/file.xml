@@ -60,4 +60,14 @@
 		<label index="filename">Bestandsnaam</label>
 		<label index="filesize">Bestandsgrootte</label>
 	</labels>
+	<labels lang="cs_CZ">
+		<label index="download">Stáhnout</label>
+		<label index="upload">Nahrát</label>
+		<label index="size.gb">GB</label>
+		<label index="size.mb">MB</label>
+		<label index="size.kb">KB</label>
+		<label index="size.b">B</label>
+		<label index="filename">Jméno souboru</label>
+		<label index="filesize">Velikost</label>
+	</labels>
 </locallang>

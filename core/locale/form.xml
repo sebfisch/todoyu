@@ -108,4 +108,22 @@
 		<label index="dateselector.open">Kalender openen om een datum te kiezen</label>
 		<label index="autocompleteInfo">Dit is een veld met automatisch aanvullen. Begin te typen om suggesties te krijgen</label>
 	</labels>
+	<labels lang="cs_CZ">
+		<label index="select.pleaseSelect">Vyberte</label>
+		<label index="select.pleaseChoose">Zvolte</label>
+		<label index="field.isrequired">Toto je povinné pole</label>
+		<label index="field.hasError">Zadaná hodnota je neplatná</label>
+		<label index="field.save">Uložit</label>
+		<label index="field.cancel">Storno</label>
+		<label index="records.add">Přídat záznam</label>
+		<label index="records.remove">Odstranit záznam</label>
+		<label index="records.edit">Upravit záznam</label>
+		<label index="databaserelation.nolabel">[Nová položka]</label>
+		<label index="databaserelation.expandAllRecords">Zobrazit</label>
+		<label index="error.notUnique">Tento záznam již existuje</label>
+		<label index="ac.noResults">Autodoplňování: nenalezeno</label>
+		<label index="is_preferred">Upřednostnit</label>
+		<label index="dateselector.open">Otevřte kalendář a zvolte datum</label>
+		<label index="autocompleteInfo">Začněte psát a text se automaticky doplní</label>
+	</labels>
 </locallang>

@@ -29,14 +29,15 @@ Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'de_DE'	=> array('de_DE.utf8', 'de_DE', 'de', 'de_DE@euro', 'de_DE.utf8@euro', 'German_Germany.1252', 'deu_deu'), // German (Germany)
 	//'de_CH'	=> array('de_CH.utf8', 'de_CH', 'de', 'German_Switzerland.1252'),
 	//'de_AT'	=> array('de_AT.utf8', 'de_AT', 'de', 'de_AT@euro', 'de_AT.utf8@euro', 'German_Austria.1252'),
-	'fr_FR'	=> array('fr_FR.utf8', 'fr_FR', 'fr'),
+	'fr_FR'	=> array('fr_FR.utf8', 'fr_FR', 'fr'), // French
 	'pt_BR' => array('pt_BR.utf8', 'pt_BR', 'pt'), // Portuguese (Brasilia)
 	'ru_RU' => array('ru_RU.utf8', 'ru_RU', 'ru'), // Russian
-	'nl_NL' => array('nl_NL.utf8', 'nl_NL', 'nl'),
+	'nl_NL' => array('nl_NL.utf8', 'nl_NL', 'nl'), // Dutch
+	'cs_CZ' => array('cs_CZ.utf8', 'cs_CZ', 'cs'), // Czech
 	'hr_HR' => array('hr_HR.utf8', 'hr_HR', 'hr'), // Croatian
 	'sr_ME' => array('sr_ME.utf8', 'sr_ME', 'sr'), // Serbian (Montenegro)
 	'sr_RS' => array('sr_RS.utf8', 'sr_RS', 'sr') // Serbian (Serbia)
 );
 Todoyu::$CONFIG['LOCALE']['default']	= 'en_GB';
-Todoyu::$CONFIG['LOCALE']['available']	= array('en_GB','de_DE','pt_BR','ru_RU','fr_FR','nl_NL','hr_HR','sr_ME','sr_RS');
+Todoyu::$CONFIG['LOCALE']['available']	= array('en_GB','de_DE','pt_BR','ru_RU','fr_FR','nl_NL','cs_CZ'/*,'hr_HR','sr_ME','sr_RS'*/);
 ?>

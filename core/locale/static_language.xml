@@ -201,4 +201,7 @@
 	<labels lang="ru_RU">
 		<label index="ru">Русский</label>
 	</labels>
+	<labels lang="cs_CZ">
+		<label index="cs">česky</label>
+	</labels>
 </locallang>

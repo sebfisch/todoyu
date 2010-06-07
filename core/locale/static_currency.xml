@@ -330,4 +330,9 @@
 	</labels>
 	<labels lang="de_DE"></labels>
 	<labels lang="pt_BR"></labels>
+	<labels lang="cs_CZ">
+		<label index="CZK.name">česká koruna</label>
+		<label index="SKK.name">slovenská koruna</label>
+		<label index="USD.name">US dolar</label>
+	</labels>
 </locallang>
