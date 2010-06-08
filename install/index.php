@@ -46,7 +46,7 @@ TodoyuSession::remove('person');
 unset($_COOKIE['todoyulogin']);
 TodoyuCookieLogin::removeRemainLoginCookie();
 
-	// Deactive extensions during installation
+	// Deactivate extensions during installation
 Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] 	= true;
 Todoyu::$CONFIG['NO_INIT'] 				= true;
 
