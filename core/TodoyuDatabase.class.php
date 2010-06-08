@@ -126,6 +126,19 @@ class TodoyuDatabase {
 			$this->printSelectDbError(mysql_error(), mysql_errno());
 			exit();
 		}
+
+		$this->initConnection();
+	}
+
+	
+
+	/**
+	 * Initialize database connection
+	 * Use utf8 names and traditional mode
+	 */
+	private function initConnection() {
+		$this->query('SET sql_mode=\'traditional\'');
+		$this->query('SET NAMES utf8;');
 	}
 
 

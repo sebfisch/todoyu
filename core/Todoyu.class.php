@@ -227,7 +227,7 @@ class Todoyu {
 		if( is_null(self::$locale) ) {
 			self::$locale = self::$CONFIG['SYSTEM']['locale'];
 
-			if( TodoyuAuth::isLoggedIn() ) {
+			if( TodoyuAuth::isLoggedIn() && self::db()->isConnected() ) {
 				$personLocale	= self::person()->getLocale();
 				if( $personLocale !== false ) {
 					self::$locale = $personLocale;
