@@ -26,23 +26,24 @@
  * @package		Todoyu
  * @subpackage	Form
  */
-class TodoyuFormElement_Dateinput extends TodoyuFormElement {
+class TodoyuFormElement_Date extends TodoyuFormElement {
 
 	/**
 	 * Constructor
 	 *
-	 * @param	String		$name
+	 * @param	String			$name
 	 * @param	TodoyuFieldset	$fieldset
 	 * @param	Array $config
 	 */
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
-		parent::__construct('dateinput', $name, $fieldset, $config);
+		parent::__construct('date', $name, $fieldset, $config);
 	}
 
 
 
 	/**
-	 * Get field data. Convert timestamps into text dates and generate JS code
+	 * Get render data.
+	 * Add jsCalendar setup code
 	 *
 	 * @return	Array
 	 */
@@ -57,22 +58,14 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 
 
 	/**
-	 * Generate javaScript code for calendar
+	 * Generate jsCalendar setup code
 	 *
 	 * @return	String
 	 */
-	private function getJsSetup() {
-		$calConf	= array(
-			'inputField'	=> '"' . $this->getHtmlID() . '"',
-			'range'			=> '[1990,2020]',
-			'ifFormat'		=> '"' . TodoyuTime::getFormat('date') . '"',
-			'align'			=> '"br"',
-			'button'		=> '"' . $this->getHtmlID() . '-calicon"',
-			'firstDay'		=> 1
-		);
-
-		$custom	= is_array($this->config['calendar']) ? $this->config['calendar'] : array();
-		$config	= array_merge($calConf, $custom);
+	protected function getJsSetup() {
+		$defaultConfig	= $this->getDefaultSetupOptions();
+		$customConfig	= TodoyuArray::assure($this->config['calendar']);
+		$config			= array_merge($defaultConfig, $customConfig);
 
 		$jsConf	= array();
 
@@ -80,12 +73,64 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 			$jsConf[] = $key . ' : ' . $value;
 		}
 
-		$script	= TodoyuString::wrapScript('Calendar.setup({' . implode(',', $jsConf) . '});Todoyu.JsCalFormat["' . $this->getHtmlID() . '"] = "' . TodoyuTime::getFormat('date') . '";');
+		$jsCode	= 'Calendar.setup({' . implode(',', $jsConf) . '});';
+		$jsCode .='Todoyu.JsCalFormat["' . $this->getHtmlID() . '"] = "' . $this->getFormat() . '";';
 
-		return $script;
+		return TodoyuString::wrapScript($jsCode);
 	}
 
 
+
+	/**
+	 * Get default init options for calendar
+	 *
+	 * @return	Array
+	 */
+	protected function getDefaultSetupOptions() {
+		return array(
+			'inputField'	=> '"' . $this->getHtmlID() . '"',
+			'range'			=> '[1990,2020]',
+			'ifFormat'		=> '"' . $this->getFormat() . '"',
+			'align'			=> '"br"',
+			'button'		=> '"' . $this->getHtmlID() . '-calicon"',
+			'firstDay'		=> 1
+		);
+	}
+
+
+	/**
+	 * Get key to date format
+	 *
+	 * @return	String
+	 */
+	protected function getFormatKey() {
+		return 'date';
+	}
+
+
+
+	/**
+	 * Get date format (for strftime())
+	 *
+	 * @return	String
+	 */
+	protected function getFormat() {
+		return TodoyuTime::getFormat($this->getFormatKey());
+	}
+
+
+
+	/**
+	 * Parse the input value (date string)
+	 *
+	 * @param	String		$dateString
+	 * @return	Integer
+	 */
+	protected function parseDate($dateString) {
+		return TodoyuTime::parseDate($dateString);
+	}
+
+	
 
 	/**
 	 * Set field value
@@ -99,7 +144,7 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 		if( $value === false || intval($value) === 0 || trim($value) == '' || trim($value) == '0000-00-00')	 {
 			$value = false;
 		} elseif( ! is_numeric($value) ) {
-			$value	= TodoyuTime::parseDate($value);
+			$value	= $this->parseDate($value);
 		}
 
 		parent::setValue($value);
@@ -115,7 +160,7 @@ class TodoyuFormElement_Dateinput extends TodoyuFormElement {
 	public function getValueForTemplate() {
 		$value	= $this->getValue();
 
-		return $value === false ? '' : TodoyuTime::format($value, 'date');
+		return $value === false ? '' : TodoyuTime::format($value, $this->getFormatKey());
 	}
 
 

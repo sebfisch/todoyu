@@ -73,14 +73,14 @@ Todoyu::$CONFIG['FORM']['TYPES']['checkbox'] = array(
 	'template'	=> 'core/view/form/FormElement_Checkbox.tmpl'
 );
 
-Todoyu::$CONFIG['FORM']['TYPES']['dateinput'] = array(
-	'class'		=> 'TodoyuFormElement_Dateinput',
-	'template'	=> 'core/view/form/FormElement_Dateinput.tmpl'
+Todoyu::$CONFIG['FORM']['TYPES']['date'] = array(
+	'class'		=> 'TodoyuFormElement_Date',
+	'template'	=> 'core/view/form/FormElement_Date.tmpl'
 );
 
-Todoyu::$CONFIG['FORM']['TYPES']['datetimeinput'] = array(
-	'class'		=> 'TodoyuFormElement_DateTimeInput',
-	'template'	=> 'core/view/form/FormElement_Dateinput.tmpl'
+Todoyu::$CONFIG['FORM']['TYPES']['datetime'] = array(
+	'class'		=> 'TodoyuFormElement_DateTime',
+	'template'	=> 'core/view/form/FormElement_Date.tmpl'
 );
 
 Todoyu::$CONFIG['FORM']['TYPES']['button'] = array(

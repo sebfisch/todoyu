@@ -184,19 +184,19 @@ div.fElement {
 		/* Types */
 	.typeTextinput {}
 
-	.typeDateinput {}
+	.typeDate {}
 	
 	
 	.typeUpload {
 		padding-left:5px !important;
 	}
 
-		div.typeDateinput .fField input {
+		div.typeDate .fField input {
 			float:left;
 			width:70px;
 			margin-right:5px;
 		}
-		div.typeDatetimeinput .fField input {
+		div.typeDatetime .fField input {
 			float:left;
 			width:90px;
 			margin-right:5px;
