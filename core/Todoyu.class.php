@@ -90,11 +90,15 @@ class Todoyu {
 	/**
 	 * Set system timezone
 	 */
-	public static function setTimezone() {
-		$timezone	= Todoyu::person()->getTimezone();
+	public static function setTimezone() {		
+		if( self::db()->isConnected() ) {
+			$timezone	= self::person()->getTimezone();
+		} else {
+			$timezone	= false;
+		}
 
 		if( $timezone === false ) {
-			$timezone = Todoyu::$CONFIG['SYSTEM']['timezone'];
+			$timezone = self::$CONFIG['SYSTEM']['timezone'];
 		}
 
 			// Set default timezone

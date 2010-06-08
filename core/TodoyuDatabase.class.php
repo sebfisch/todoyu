@@ -129,6 +129,16 @@ class TodoyuDatabase {
 	}
 
 
+	/**
+	 * Check if todoyu is connected to the database
+	 *
+	 * @return	Boolean
+	 */
+	public function isConnected() {
+		return is_null($this->link) === false;
+	}
+
+
 
 	/**
 	 * Add a query to the query history
