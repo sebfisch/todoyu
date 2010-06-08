@@ -10,7 +10,6 @@
 		<label index="title">Title</label>
 		<label index="description">Description</label>
 		<label index="date">Date</label>
-		<label index="dateFormat">y.n.j</label>
 		<label index="quickcreate.title">Create</label>
 		<label index="quickcreate.alltypes.label">All Data Types:</label>
 		<label index="create">Create</label>
@@ -89,7 +88,6 @@
 		<label index="date">Datum</label>
 		<label index="quickcreate.title">Neue Daten anlegen</label>
 		<label index="quickcreate.alltypes.label">Alle Datentypen:</label>
-		<label index="dateFormat">j.n.j</label>
 		<label index="create">Erstellen</label>
 		<label index="createNew">Neuen Datensatz anlegen:</label>
 		<label index="edit">Bearbeiten</label>
@@ -164,7 +162,6 @@
 		<label index="title">Título</label>
 		<label index="description">Descrição</label>
 		<label index="date">Data</label>
-		<label index="dateFormat">D.M.y</label>
 		<label index="quickcreate.title">Novo</label>
 		<label index="quickcreate.alltypes.label">Todos os Tipos:</label>
 		<label index="create">Criar</label>
@@ -240,7 +237,6 @@
 		<label index="title">Название</label>
 		<label index="description">Описание</label>
 		<label index="date">Дата</label>
-		<label index="dateFormat">d.m.y</label>
 		<label index="quickcreate.title">Создать</label>
 		<label index="quickcreate.alltypes.label">Все типы данных:</label>
 		<label index="create">Создать</label>
@@ -316,7 +312,6 @@
 		<label index="title">Titre</label>
 		<label index="description">Description</label>
 		<label index="date">Date</label>
-		<label index="dateFormat">aa.mm.jj</label>
 		<label index="quickcreate.title">Créer</label>
 		<label index="quickcreate.alltypes.label">ATous les types:</label>
 		<label index="create">Créer</label>
@@ -390,7 +385,6 @@
 		<label index="title">Titel</label>
 		<label index="description">Beschrijving</label>
 		<label index="date">Datum</label>
-		<label index="dateFormat">d-m-j</label>
 		<label index="quickcreate.title">Aanmaken</label>
 		<label index="quickcreate.alltypes.label">Alle datatypes:</label>
 		<label index="create">Aanmaken</label>
@@ -466,7 +460,6 @@
 		<label index="title">Název</label>
 		<label index="description">Popis</label>
 		<label index="date">Datum</label>
-		<label index="dateFormat">y.n.j</label>
 		<label index="quickcreate.title">Vytvořit</label>
 		<label index="quickcreate.alltypes.label">Všechny datové typy:</label>
 		<label index="create">Vytvořit</label>
@@ -542,7 +535,6 @@
 		<label index="title">Наслов</label>
 		<label index="description">Опис</label>
 		<label index="date">Датум</label>
-		<label index="dateFormat">y.n.j</label>
 		<label index="quickcreate.title">Створити</label>
 		<label index="quickcreate.alltypes.label">Све врсте податка:</label>
 		<label index="create">Створити</label>

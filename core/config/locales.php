@@ -39,5 +39,5 @@ Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'sr_RS' => array('sr_RS.utf8', 'sr_RS', 'sr') // Serbian (Serbia)
 );
 Todoyu::$CONFIG['LOCALE']['default']	= 'en_GB';
-Todoyu::$CONFIG['LOCALE']['available']	= array('en_GB','de_DE','pt_BR','ru_RU','fr_FR','nl_NL','cs_CZ'/*,'hr_HR','sr_ME','sr_RS'*/);
+Todoyu::$CONFIG['LOCALE']['available']	= array('en_GB','de_DE','pt_BR','ru_RU','fr_FR','nl_NL','cs_CZ','sr_RS'/*,'hr_HR','sr_ME'*/);
 ?>
