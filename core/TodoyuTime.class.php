@@ -466,7 +466,7 @@ class TodoyuTime {
 	 * @param		Mixed		$time		Timestamp
 	 * @return 		Array		Dates of the week
 	 */
-	public static function getDayTimesOfWeek($time) {
+	public static function getTimestampsForWeekdays($time) {
 		$time		= intval($time);
 		$weekRange	= self::getWeekRange($time);
 		$dayTimes	= array();
@@ -481,20 +481,25 @@ class TodoyuTime {
 
 
 	/**
-	 * Get amount of days in month (of timestamp, or in a "shifted" month before / after that, depending of "shiftMonthBy"-offset)
+	 * Get days in month for the month of the timestamp
+	 * Use monthDelta to query an other month (ex: last = -1, next = 1, etc)
 	 *
-	 * @param 	Integer	$month	Month to be searched
-	 * @param 	Integer	$year	Year to be searched
-	 * @return	Integer	Days of last month as a number
+	 * @param	Integer		$timestamp
+	 * @param	Integer		$monthDelta
+	 * @return	Integer
 	 */
-	public static function getAmountOfDaysInMonth($timestamp, $shiftMonthBy = 0) {
-		$year	= date('Y', $timestamp);
-		$month	= date('n', $timestamp);
+	public static function getDaysInMonth($timestamp, $monthDelta = 0) {
+		$monthDelta	= intval($monthDelta);
 
-			// get timestamp of previous month
-		$timestamp	= mktime(0, 0, 0, ($month + $shiftMonthBy), 1, $year);
+		if( $monthDelta !== 0 ) {
+			$year	= date('Y', $timestamp);
+			$month	= date('n', $timestamp);
 
-		return date( 't' , $timestamp );
+				// get timestamp of previous month
+			$timestamp	= mktime(0, 0, 0, ($month + $monthDelta), 1, $year);
+		}
+
+		return date('t', $timestamp);
 	}
 
 	
@@ -519,27 +524,6 @@ class TodoyuTime {
 		}
 
 		return true;
-	}
-
-
-
-	/**
-	 * Returns the timestamps of the last cyle borders as ass. array
-	 *
-	 * Example:
-	 * 	param = 1	- start/end of last month
-	 *	param = 3	- start/end of last quarter
-	 *
-	 * @param	Integer	$monthsPerCycle
-	 * @return	Array
-	 */
-	public static function getCycleBorderDates($monthsPerCycle = 0)	{
-		$monthStart = mktime(0, 0, 0, date('n') - $monthsPerCycle, 1, date('Y'));
-
-		return array(
-			'start'	=> $monthStart,
-			'end'	=> mktime( 23, 59, 59, date('n') - $monthsPerCycle, date('t', $monthStart), date('Y') )
-		);
 	}
 
 

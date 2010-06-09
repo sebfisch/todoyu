@@ -268,7 +268,7 @@ class Todoyu {
 		TodoyuLanguage::setLocale($locale);
 
 			// Set locale for system
-		$status	= TodoyuLocaleManager::setLocale($locale);		
+		$status	= TodoyuLocaleManager::setSystemLocale($locale);		
 
 			// Log if operation fails
 		if( $status === false ) {

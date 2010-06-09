@@ -91,7 +91,7 @@ class TodoyuLocaleManager {
 	 * @param	String					$locale
 	 * @return	Boolean / String		FALSE or the new locale string
 	 */
-	public static function setLocale($locale) {
+	public static function setSystemLocale($locale) {
 		$localeNames	= self::getSystemLocaleNames($locale);
 
 		return setlocale(LC_ALL, $localeNames);

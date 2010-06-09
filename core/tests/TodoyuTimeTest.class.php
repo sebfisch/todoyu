@@ -21,9 +21,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	protected function tearDown() {
 	}
 
-	/**
-	 * @todo Implement testGetStartOfDay().
-	 */
 	public function testGetStartOfDay() {
 		$timeAfternoon	= mktime(14, 0, 0, 1, 1, 2010);
 		$timeDaystart	= mktime(0, 0, 0, 1, 1, 2010);
@@ -35,9 +32,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($result1, $result2);
 	}
 
-	/**
-	 * @todo Implement testGetEndOfDay().
-	 */
 	public function testGetEndOfDay() {
 		$time		= mktime(14, 0, 0, 1, 1, 2010);
 		$testDayend	= mktime(23, 59, 59, 1, 1, 2010);
@@ -49,9 +43,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testDayend, $timeEnd2);
 	}
 
-	/**
-	 * @todo Implement testGetDayRange().
-	 */
 	public function testGetDayRange() {
 		$time		= mktime(14, 33, 59, 8, 3, 2010);
 		$testStart	= mktime(0, 0, 0, 8, 3, 2010);
@@ -62,9 +53,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testEnd, $range['end']);
 	}
 
-	/**
-	 * @todo Implement testGetWeekRange().
-	 */
 	public function testGetWeekRange() {
 		$time		= mktime(14, 33, 59, 8, 3, 2010);
 		$testStart	= mktime(0, 0, 0, 8, 2, 2010);
@@ -75,9 +63,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testEnd, $range['end']);
 	}
 
-	/**
-	 * @todo Implement testGetMonthRange().
-	 */
 	public function testGetMonthRange() {
 		$time		= mktime(14, 33, 59, 8, 3, 2010);
 		$testStart	= mktime(0, 0, 0, 8, 1, 2010);
@@ -88,9 +73,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testEnd, $range['end']);
 	}
 
-	/**
-	 * @todo Implement testGetWeekStart().
-	 */
 	public function testGetWeekStart() {
 		$time		= mktime(14, 33, 59, 8, 3, 2010);
 		$testStart	= mktime(0, 0, 0, 8, 2, 2010);
@@ -99,9 +81,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testStart, $weekStart);		
 	}
 
-	/**
-	 * @todo Implement testGetMonthStart().
-	 */
 	public function testGetMonthStart() {
 		$time		= mktime(14, 33, 59, 8, 3, 2010);
 		$testStart	= mktime(0, 0, 0, 8, 1, 2010);
@@ -110,9 +89,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testStart, $monthStart);
 	}
 
-	/**
-	 * @todo Implement testGetWeekday().
-	 */
 	public function testGetWeekday() {
 		$time		= mktime(14, 33, 59, 8, 3, 2010);
 		$testWeekday= 1;
@@ -121,9 +97,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testWeekday, $weekday);
 	}
 
-	/**
-	 * @todo Implement testGetTimeParts().
-	 */
 	public function testGetTimeParts() {
 		$time		= (14*3600) + (33*60) + (59); // 14:33:59
 		$testHours	= 14;
@@ -137,9 +110,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testSeconds, $timeParts['seconds']);
 	}
 
-	/**
-	 * @todo Implement testFirstHourLeftOver().
-	 */
 	public function testFirstHourLeftOver() {
 		$testHours1	= 1.0;
 		$testHours2	= 0.0;
@@ -154,9 +124,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testHours3, $hours3);
 	}
 
-	/**
-	 * @todo Implement testSec2hour().
-	 */
 	public function testSec2hour() {
 		$seconds1	= (14*3600) + (33*60) + (29); // 14:33:29
 		$seconds2	= (14*3600) + (33*60) + (31); // 14:33:31
@@ -170,9 +137,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testString2, $timeString2);
 	}
 
-	/**
-	 * @todo Implement testSec2time().
-	 */
 	public function testSec2time() {
 		$seconds	= (14*3600) + (33*60) + (29); // 14:33:29
 		$testString	= '14:33:29';
@@ -182,9 +146,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testString, $timeString);
 	}
 
-	/**
-	 * @todo Implement testFormatTime().
-	 */
 	public function testFormatTime() {
 		$seconds	= 18*3600 + 24*60 + 35;
 		$testString1= '18:24:35';
@@ -200,29 +161,44 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testString3, $timeString3);
 	}
 
-	/**
-	 * @todo Implement testFormat().
-	 */
 	public function testFormat() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
+		$currentLocale	= Todoyu::getLocale();
+
+		Todoyu::setLocale('en_GB');
+
+		$time	= mktime(14, 36, 5, 3, 9, 1984);
+
+		$formattedEN= TodoyuTime::format($time, 'datetime');
+		$expectedEN	= '09/03/84 14:36';
+
+		$this->assertEquals($expectedEN, $formattedEN);
+
+
+		Todoyu::setLocale('de_DE');
+
+		$formattedDE= TodoyuTime::format($time, 'datetime');
+		$expectedDE	= '09.03.1984 14:36';
+
+		$this->assertEquals($expectedDE, $formattedDE);
+
+		Todoyu::setLocale($currentLocale);
 	}
 
-	/**
-	 * @todo Implement testGetFormat().
-	 */
 	public function testGetFormat() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
+		$currentLocale	= Todoyu::getLocale();
+
+		Todoyu::setLocale('de_DE');
+		
+		$format		= TodoyuTime::getFormat('DshortD2MlongY4');
+		$expected	= '%a, %d. %B %Y';
+		
+		$this->assertEquals($expected, $format);
+
+		$format		= TodoyuTime::getFormat('notavailableformatstring');
+
+		$this->assertNull($format);
 	}
 
-	/**
-	 * @todo Implement testParseDateString().
-	 */
 	public function testParseDateString() {
 		$time	= mktime(13, 46, 22, 4, 19, 2016);
 		$date1	= date('r', $time);
@@ -235,9 +211,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($time, $time2);
 	}
 
-	/**
-	 * @todo Implement testParseDate().
-	 */
 	public function testParseDate() {
 		$dateCompare	= strtotime('2010-03-22');
 		$dateString1	= '2010-03-22';
@@ -266,19 +239,20 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		TodoyuLanguage::setLocale($oldLocale);
 	}
 
-	/**
-	 * @todo Implement testParseDateTime().
-	 */
 	public function testParseDateTime() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
+		$dateCompare	= strtotime('2010-03-22 14:36');
+
+		$oldLocale		= TodoyuLanguage::getLocale();
+
+		Todoyu::setLocale('de_DE');
+		$dateStringDE	= '22.03.2010 14:36';
+		$timeDE			= TodoyuTime::parseDateTime($dateStringDE);
+
+		$this->assertEquals($dateCompare, $timeDE);
+
+		TodoyuLanguage::setLocale($oldLocale);
 	}
 
-	/**
-	 * @todo Implement testParseTime().
-	 */
 	public function testParseTime() {
 		$time_1	= '23:59';
 		$sec_1	= 86340;
@@ -296,9 +270,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($sec_3, $res_3);
 	}
 
-	/**
-	 * @todo Implement testParseDuration().
-	 */
 	public function testParseDuration() {
 		$dur_1	= '3:00';
 		$sec_1	= 10800;
@@ -328,9 +299,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($sec_6, $res_6);
 	}
 
-	/**
-	 * @todo Implement testGetRoundedTime().
-	 */
 	public function testGetRoundedTime() {
 		$time	= 10*3600 + 33*60 + 31; // 10:33:31
 		$test1	= 10*3600 + 35*60 + 0; // 10:35:00
@@ -358,32 +326,40 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($test5, $rounded8);
 	}
 
-
-
-	/**
-	 * @todo Implement testGetDayTimesOfWeek().
-	 */
-	public function testGetDayTimesOfWeek() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
+	public function testGetTimestampsForWeekdays() {
+		$expectedTimestamps = array(
+			1275861600,	// 07.06.2010 00:00
+			1275948000,	// 08.06.2010 00:00
+			1276034400,	// 09.06.2010 00:00
+			1276120800,	// 10.06.2010 00:00
+			1276207200,	// 11.06.2010 00:00
+			1276293600,	// 12.06.2010 00:00
+			1276380000	// 13.06.2010 00:00
 		);
+		$timestamps	= TodoyuTime::getTimestampsForWeekdays($expectedTimestamps[2]);
+
+		$this->assertEquals($expectedTimestamps, $timestamps);
 	}
 
-	/**
-	 * @todo Implement testGetAmountOfDaysInMonth().
-	 */
-	public function testGetAmountOfDaysInMonth() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
+	public function testGetDaysInMonth() {
+		$timeJune2010	= mktime(0, 0, 0, 6, 1, 2010);
+		$timeFeb2010	= mktime(0, 0, 0, 2, 1, 2010);
+
+		$resDaysJune2010	= TodoyuTime::getDaysInMonth($timeJune2010);
+		$resDaysFeb2010		= TodoyuTime::getDaysInMonth($timeFeb2010);
+		$resDaysJan2010		= TodoyuTime::getDaysInMonth($timeFeb2010, -1);
+		$resDaysMarch2010	= TodoyuTime::getDaysInMonth($timeFeb2010, 1);
+		$resDaysApril2010	= TodoyuTime::getDaysInMonth($timeFeb2010, 2);
+		$resDaysFeb2012		= TodoyuTime::getDaysInMonth($timeFeb2010, 24);
+
+		$this->assertEquals($resDaysJune2010, 30);
+		$this->assertEquals($resDaysFeb2010, 28);
+		$this->assertEquals($resDaysJan2010, 31);
+		$this->assertEquals($resDaysMarch2010, 31);
+		$this->assertEquals($resDaysApril2010, 30);
+		$this->assertEquals($resDaysFeb2012, 29);
 	}
 
-
-	/**
-	 * @todo Implement testRangeOverlaps().
-	 */
 	public function testRangeOverlaps() {
 		$date1	= strtotime('2010-01-01 08:00:00');
 		$date2	= strtotime('2010-01-01 10:00:00');
@@ -405,15 +381,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertFalse($overlaps5);
 	}
 
-	/**
-	 * @todo Implement testGetCycleBorderDates().
-	 */
-	public function testGetCycleBorderDates() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
-	}
 }
 
 ?>
