@@ -17,6 +17,9 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * @namespace	Todoyu.Ui
+ */
 Todoyu.Ui = {
 	
 	bodyClickObservers: [],
@@ -51,7 +54,7 @@ Todoyu.Ui = {
 		options = this._getDefaultOptions(options);
 
 		if( Todoyu.exists(container) ) {
-			return new Ajax.Replacer(container, url, options);
+			return new Todoyu.Ajax.Replacer(container, url, options);
 		} else {
 			Todoyu.log('You tried to replace "' + container + '" which is not part of the DOM!');
 		}

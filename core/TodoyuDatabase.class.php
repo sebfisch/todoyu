@@ -134,10 +134,10 @@ class TodoyuDatabase {
 
 	/**
 	 * Initialize database connection
-	 * Use utf8 names and traditional mode
+	 * Use utf8 names and clear sql_mode
 	 */
 	private function initConnection() {
-		$this->query('SET sql_mode=\'traditional\'');
+		$this->query("SET sql_mode='ANSI'");
 		$this->query('SET NAMES utf8;');
 	}
 

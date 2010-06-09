@@ -20,28 +20,38 @@
 /**
  * Todoyu main container. All other JS containers are (sub-)nodes
  * of this container
+ * @namespace	Todoyu
  */
 var Todoyu = {
 
+	/**
+	 * @variable	{String}	name		System name
+	 */
 	name: 		'Todoyu',
 
+	/**
+	 * @variable	{String}	copyright		Copyright owner
+	 */
 	copyright: 	'snowflake productions GmbH, Zurich/Switzerland',
-	
+
+	/**
+	 * @variable	{Number}	logLevel		Log level
+	 */
 	logLevel:	0,
 
 	/**
-	 * Container for extensions
+	 * @variable	{String[]}	JsCalFormat		Store the format of all available jsCalendars
 	 */
-	Ext: 		{},
-
 	JsCalFormat: {},
 
 
 	/**
 	 * Initialize todoyu object
+	 *
+	 * @function	init
 	 */
 	init: function() {
-		this.AjaxResponders.init();
+		this.Ajax.Responders.init();
 		this.Ui.fixAnchorPosition();
 		this.Ui.observeBody();
 		this.initExtensions();
@@ -52,6 +62,8 @@ var Todoyu = {
 	/**
 	 * Initialize all extensions
 	 * Call the init() function of all extensions in their main container if it exists
+	 *
+	 * @function	initExtensions
 	 */
 	initExtensions: function() {
 		$H(this.Ext).each(function(pair){
@@ -66,8 +78,10 @@ var Todoyu = {
 	/**
 	 * Build request url with extension and controller
 	 *
-	 * @param	{String}		ext
-	 * @param	{String}		controller
+	 * @function	getUrl
+	 * @param		{String}		ext
+	 * @param		{String}		controller
+	 * @return		{String}
 	 */
 	getUrl: function(ext, controller) {
 		var url = 'index.php?ext=' + ext;
@@ -84,10 +98,11 @@ var Todoyu = {
 	/**
 	 * Redirect to another page
 	 *
-	 * @param	{String}	ext
-	 * @param	{String}	controller
-	 * @param	{Hash}		params
-	 * @param	{String}	hash
+	 * @function	goTo
+	 * @param		{String}	ext
+	 * @param		{String}	controller
+	 * @param		{Hash}		params
+	 * @param		{String}	hash
 	 */
 	goTo: function(ext, controller, params, hash) {
 		var url =  this.getUrl(ext, controller);
@@ -109,8 +124,9 @@ var Todoyu = {
 	 * Go to an URL with a hash
 	 * If the URL itself is identical, just scroll to the element
 	 *
-	 * @param	{String}	url
-	 * @param	{String}	hash
+	 * @function	goToHashURL
+	 * @param		{String}	url
+	 * @param		{String}	hash
 	 */
 	goToHashURL: function(url, hash) {
 		var searchPart	= url.substr(url.indexOf('?'));
@@ -131,8 +147,9 @@ var Todoyu = {
 	/**
 	 * Send AJAX request
 	 *
-	 * @param	{String}		url
-	 * @param	{Hash}			options
+	 * @function	send
+	 * @param		{String}		url
+	 * @param		{Hash}			options
 	 */
 	send: function(url, options) {
 		options = Todoyu.Ui._getDefaultOptions(options);
@@ -145,7 +162,8 @@ var Todoyu = {
 	/**
 	 * Check whether an element exists
 	 *
-	 * @param	{Element|String}		element		Element or its ID
+	 * @function	exists
+	 * @param		{Element|String}		element		Element or its ID
 	 */
 	exists: function(element) {
 		if( typeof element === 'object' ) {
@@ -159,6 +177,9 @@ var Todoyu = {
 
 	/**
 	 * Get current area
+	 *
+	 * @function	getArea
+	 * @return		String
 	 */
 	getArea: function() {
 		return document.body.id.split('-').last();
@@ -168,9 +189,10 @@ var Todoyu = {
 
 	/**
 	 * Show error notification
-	 * 
-	 * @param	{String}		message
-	 * @param	{Number}		countdown
+	 *
+	 * @function	notifyError
+	 * @param		{String}		message
+	 * @param		{Number}		countdown
 	 */
 	notifyError: function(message, countdown) {
 		Todoyu.Notification.notifyError(message, countdown);
@@ -180,9 +202,10 @@ var Todoyu = {
 
 	/**
 	 * Show info notification
-	 * 
-	 * @param	{String}		message
-	 * @param	{Number}		countdown
+	 *
+	 * @function	notifyInfo
+	 * @param		{String}		message
+	 * @param		{Number}		countdown
 	 */
 	notifyInfo: function(message, countdown) {
 		Todoyu.Notification.notifyInfo(message, countdown);
@@ -192,9 +215,10 @@ var Todoyu = {
 
 	/**
 	 * Show success notification
-	 * 
-	 * @param	{String}		message
-	 * @param	{Number}		countdown
+	 *
+	 * @function	notifySuccess
+	 * @param		{String}		message
+	 * @param		{Number}		countdown
 	 */
 	notifySuccess: function(message, countdown) {
 		Todoyu.Notification.notifySuccess(message, countdown);
@@ -205,8 +229,9 @@ var Todoyu = {
 	/**
 	 * Call a user function in string format with given arguments
 	 * @example	Todoyu.calluserFunction('Todoyu.notifySuccess', 'This is a message', 5);
-	 * 
-	 * @param	{String}		functionName
+	 *
+	 * @function	callUserFunction
+	 * @param		{String}		functionName
 	 */
 	callUserFunction: function(functionName /*, args */) {
 		var args 	= $A(arguments).slice(1);
@@ -222,9 +247,10 @@ var Todoyu = {
 	 * Call a function reference, if it's one. Otherwise just ignore the call
 	 * The first argument is the function, all other arguments will be handed down to this function
 	 * The debug output is just for development
-	 * 
-	 * @param	{Function}	functionReference	Function
-	 * @param	{Object}		context				Context which is this in function
+	 *
+	 * @function	callIfExists
+	 * @param		{Function}	functionReference	Function
+	 * @param		{Object}		context				Context which is this in function
 	 */
 	callIfExists: function(functionReference, context /*, args */) {
 		var args = $A(arguments).slice(2);
@@ -241,8 +267,9 @@ var Todoyu = {
 	/**
 	 * Get a function reference from a function string
 	 * Ex: 'Todoyu.Ext.project.edit'
-	 * 
-	 * @param	{String}		functionName
+	 *
+	 * @function	getFunctionFromString
+	 * @param		{String}		functionName
 	 */
 	getFunctionFromString: function(functionName, bind) {
 		var namespaces 	= functionName.split(".");
@@ -270,10 +297,11 @@ var Todoyu = {
 
 	/**
 	 * Todoyu log. Check level and if console exists
-	 * 
-	 * @param	{Object}		element
-	 * @param	{Number}		level
-	 * @param	{String}		title
+	 *
+	 * @function	log
+	 * @param		{Object}		element
+	 * @param		{Number}		level
+	 * @param		{String}		title
 	 */
 	log: function(element, level, title) {
 		if( level === undefined || (Object.isNumber(level) && level >= this.logLevel) ) {

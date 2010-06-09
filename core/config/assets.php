@@ -139,6 +139,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 50
 		),
 		array(
+			'file'		=> 'core/assets/js/Ext.js',
+			'position'	=> 51
+		),
+		array(
 			'file'		=> 'core/lib/js/prototype/Autocompleter.js',
 			'position'	=> 51
 		),
@@ -175,17 +179,17 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 55
 		),
 		array(
-			'file'		=> 'core/assets/js/AjaxResponders.js',
+			'file'		=> 'core/assets/js/Ajax.js',
 			'position'	=> 56
+		),
+		array(
+			'file'		=> 'core/assets/js/AjaxResponders.js',
+			'position'	=> 57
 		),
 		array(
 			'file'		=> 'core/assets/js/AjaxReplacer.js',
 			'position'	=> 57
-		),
-		array(
-			'file'		=> 'core/assets/js/Ajax.js',
-			'position'	=> 57
-		),
+		),		
 		array(
 			'file'		=> 'core/assets/js/Helper.js',
 			'position'	=> 58

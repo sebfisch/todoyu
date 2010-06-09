@@ -17,15 +17,20 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Ajax.Replacer = Class.create(Ajax.Request, {
+/**
+ * Modification of Ajax.Updater which replaces the target element
+ * @namespace	Todoyu.Ajax.Replacer
+ */
+Todoyu.Ajax.Replacer = Class.create(Ajax.Request, {
 
 	/**
 	 * Initialize AJAX replacer
 	 *
-	 * @param	{Function}		$super
-	 * @param	{String}		container
-	 * @param	{String}		url
-	 * @param	{Object}		options
+	 * @constructor	initialize
+	 * @param		{Function}		$super
+	 * @param		{String}		container
+	 * @param		{String}		url
+	 * @param		{Object}		options
 	 */
 	initialize: function($super, container, url, options) {
 		options = options || { };
