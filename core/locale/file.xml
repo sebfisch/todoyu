@@ -70,4 +70,14 @@
 		<label index="filename">Jméno souboru</label>
 		<label index="filesize">Velikost</label>
 	</labels>
+	<labels lang="sr_RS">
+		<label index="download">Скидај</label>
+		<label index="upload">Учитавај</label>
+		<label index="size.gb">ГБ</label>
+		<label index="size.mb">МБ</label>
+		<label index="size.kb">КБ</label>
+		<label index="size.b">Б</label>
+		<label index="filename">Име фајл-а</label>
+		<label index="filesize">Величина фајл-а </label>
+	</labels>
 </locallang>

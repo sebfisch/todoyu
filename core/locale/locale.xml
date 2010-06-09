@@ -127,12 +127,12 @@
 	    <label index="hr_HR">Hrvatski (Hrvatska)</label>
 	</labels>
 	<labels lang="sr_ME">
-	    <label index="sr_ME">Српски (Србија)</label>
+	    <label index="sr_ME">Srpski (Crna gora)</label>
 	</labels>
 	<labels lang="sr_RS">
-	    <label index="sr_RS">??? (???)</label>
+	    <label index="sr_RS">Српски (Србија)</label>
 	</labels>
 	<labels lang="cs_CZ">
-	    <label index="cs_CZ">česky (Czech Republic)</label>
+	    <label index="cs_CZ">Česky (Czech Republic)</label>
 	</labels>
 </locallang>

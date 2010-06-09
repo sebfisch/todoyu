@@ -126,4 +126,22 @@
 		<label index="dateselector.open">Otevřte kalendář a zvolte datum</label>
 		<label index="autocompleteInfo">Začněte psát a text se automaticky doplní</label>
 	</labels>
+	<labels lang="sr_RS">
+		<label index="select.pleaseSelect">Молимо изаберите</label>
+		<label index="select.pleaseChoose">Молимо одаберите</label>
+		<label index="field.isrequired">Ово је обавезно поље</label>
+		<label index="field.hasError">Унето није изправно</label>
+		<label index="field.save">Сачувај</label>
+		<label index="field.cancel">Прекини</label>
+		<label index="records.add">Додај унос</label>
+		<label index="records.remove">Избриши унос</label>
+		<label index="records.edit">Преправи унос</label>
+		<label index="databaserelation.nolabel">[Нови унос]</label>
+		<label index="databaserelation.expandAllRecords">Покази детаље</label>
+		<label index="error.notUnique">Овај унос већ постоји</label>
+		<label index="ac.noResults">Аутоматско испуњавање: нема пронађеног резултата</label>
+		<label index="is_preferred">Омиљен</label>
+		<label index="dateselector.open">Отвори селектор датум-а да изаберете датум</label>
+		<label index="autocompleteInfo">Ово је је поље које се аутоматски комплетира. Починте са давањем савета.</label>
+	</labels>
 </locallang>
