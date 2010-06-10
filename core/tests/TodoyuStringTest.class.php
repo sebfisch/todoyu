@@ -38,9 +38,6 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 * This method is called before a test is executed.
 	 */
 	protected function setUp() {
-		$this->array = array(
-
-		);
 
 	}
 
@@ -60,10 +57,15 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 * Test TodoyuString::isUTF8
 	 */
 	public function testIsUTF8() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
+		$utf8		= 'スノーフレイクは、プレ';
+		$ascii		= 'This is ASCII text';
+		$iso8859_15	= 'Ich möchte Umlaute haben';
+
+		$this->assertTrue(TodoyuString::isUTF8($utf8));
+		$this->assertFalse(TodoyuString::isUTF8($ascii));
+		$this->assertFalse(TodoyuString::isUTF8($iso8859_15));
+
+
 
 //		$utf8		= 'häöüllilu';
 //		$nonUtf8	= 'Hallo';
@@ -88,10 +90,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testConvertToUTF8().
 	 */
 	public function testConvertToUTF8() {
-		$string	= 'h��llilu';
-
-		$utf8	= TodoyuString::convertToUTF8($string);
-		$this->assertEquals(true, TodoyuString::isUTF8($utf8) );
+//		$string	= 'h��llilu';
+//
+//		$utf8	= TodoyuString::convertToUTF8($string);
+//		$this->assertEquals(true, TodoyuString::isUTF8($utf8) );
 	}
 
 
@@ -125,13 +127,19 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test TodoyuString::crop
 	 *
-	 * @todo Implement testCrop().
 	 */
 	public function testCrop() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$text	= 'Open source is a development method for software that harnesses the power of distributed peer review and transparency of process. The promise of open source is better quality, higher reliability, more flexibility, lower cost, and an end to predatory vendor lock-in.';
+		$expect	= 'Open source is a:::';
+		$cropped= TodoyuString::crop($text, 20, ':::');
+
+		$this->assertEquals($expect, $cropped);
+
+		$text	= 'スノーフレイクは、プレミアム・オープンソース・ソフトウェア（※）の実装（※）を手がける情報通信  ソリュー';
+		$expect	= 'スノーフレイクは、プレミアム・オープンソ...';
+		$cropped= TodoyuString::crop($text, 20);
+
+		$this->assertEquals($expect, $cropped);
 	}
 
 
@@ -139,13 +147,14 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test TodoyuString::wrap
 	 *
-	 * @todo Implement testWrap().
 	 */
 	public function testWrap() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$text	= 'This is a Test';
+		$wrap	= '<strong>|</strong>';
+		$result	= TodoyuString::wrap($text, $wrap);
+		$expect	= '<strong>This is a Test</strong>';
+
+		$this->assertEquals($expect, $result);
 	}
 
 
@@ -156,10 +165,11 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testSplitCamelCase().
 	 */
 	public function testSplitCamelCase() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$camelCase	= 'TodoyuTaskAndProjectManagementSoftware';
+		$parts		= TodoyuString::splitCamelCase($camelCase);
+
+		$this->assertType('array', $parts);
+		$this->assertEquals(6, sizeof($parts));
 	}
 
 
@@ -184,10 +194,11 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testGetSubstring().
 	 */
 	public function testGetSubstring() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$text	= 'Open source is a development method for software that harnesses the power of distributed peer review and transparency of process. The promise of open source is better quality, higher reliability, more flexibility, lower cost, and an end to predatory vendor lock-in.';
+		$sub	= TodoyuString::getSubstring($text, 'power');
+		$expect	= 'that harnesses the power of distributed peer';
+
+		$this->assertEquals($expect, $sub);
 	}
 
 
@@ -198,10 +209,14 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testGeneratePassword().
 	 */
 	public function testGeneratePassword() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$password	= TodoyuString::generatePassword();
+
+		$this->assertEquals(8, strlen($password));
+
+		$password	= TodoyuString::generatePassword(10, true, false);
+
+		$this->assertEquals($password, strtolower($password));
+		$this->assertNotRegExp('/\d/', $password);
 	}
 
 
@@ -209,13 +224,13 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test TodoyuString::addToList
 	 *
-	 * @todo Implement testAddToList().
 	 */
 	public function testAddToList() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$list	= '1,2,3';
+
+		$newList	= TodoyuString::addToList($list, 4);
+
+		$this->assertEquals('1,2,3,4', $newList);		
 	}
 
 
@@ -223,13 +238,14 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test TodoyuString::isInList($item, $listString, $listSeparator = ',')
 	 *
-	 * @todo Implement testIsInList().
 	 */
 	public function testIsInList() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$list	= '3,test,345345.44,boarders,4,2,6,3';
+
+		$this->assertTrue(TodoyuString::isInList(3, $list));
+		$this->assertTrue(TodoyuString::isInList('test', $list));
+		$this->assertTrue(TodoyuString::isInList(345345.44, $list));
+		$this->assertFalse(TodoyuString::isInList(4444444, $list));
 	}
 
 
@@ -237,13 +253,33 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test TodoyuString::formatSize($filesize, array $labels = null, $noLabel = false)
 	 *
-	 * @todo Implement testFormatSize().
 	 */
 	public function testFormatSize() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$sizeB	= 756;			// 756 B
+		$sizeKB	= 38242;		// 38.2 KB
+		$sizeMB	= 34556789; 	// 34.5..MB
+		$sizeGB	= 2560593443;	// 2.5 GB
+
+		$expectB	= '756 B';
+		$expectKB	= '37 KB';
+		$expectMB	= '33 MB';
+		$expectGB	= '2.4 GB';
+
+		$formatB	= TodoyuString::formatSize($sizeB);
+		$formatKB	= TodoyuString::formatSize($sizeKB);
+		$formatMB	= TodoyuString::formatSize($sizeMB);
+		$formatGB	= TodoyuString::formatSize($sizeGB);
+
+		$this->assertEquals($expectB, $formatB);
+		$this->assertEquals($expectKB, $formatKB);
+		$this->assertEquals($expectMB, $formatMB);
+		$this->assertEquals($expectGB, $formatGB);
+
+
+		$noLabel	= TodoyuString::formatSize($sizeB, null, true);
+		$expectNoL	= '756';
+		
+		$this->assertEquals($expectNoL, $noLabel);
 	}
 
 }

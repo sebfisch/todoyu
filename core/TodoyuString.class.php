@@ -33,11 +33,7 @@ class TodoyuString {
 	 * @return	Boolean
 	 */
 	public static function isUTF8($stringToCheck) {
-		if( function_exists('mb_detect_encoding') ) {
-			return mb_detect_encoding($stringToCheck, 'UTF-8, ISO-8859-15, ISO-8859-1') === 'UTF-8';
-		} else {
-			return true; // Assume it's already utf8 as it should be. We cannot tell it anyway without this function
-		}
+		return mb_detect_encoding($stringToCheck, 'UTF-8, ASCII, ISO-8859-15, ISO-8859-1') === 'UTF-8';;
 	}
 
 
@@ -92,8 +88,9 @@ class TodoyuString {
 			$cropped	= mb_substr($text, 0, $length, 'utf-8');
 			$nextChar	= mb_substr($text, $length, 1, 'utf-8');
 
-			if( $dontSplitWords === true && $nextChar !== ' ' ) {
-				$spacePos	= mb_strpos($cropped, ' ', 0, 'utf-8');
+				// Go back to last word ending
+			if( $dontSplitWords === true && $nextChar !== ' ' && mb_stristr($cropped, ' ', null, 'utf-8') !== false ) {
+				$spacePos	= mb_strrpos($cropped, ' ', 0, 'utf-8');
 				$cropped	= mb_substr($cropped, 0, $spacePos, 'utf-8');
 			}
 			$cropped .= $postfix;
@@ -163,18 +160,22 @@ class TodoyuString {
 	public static function getSubstring($string, $keyword, $charsBefore = 20, $charsAfter = 20, $htmlEntities = true) {
 		$charsBefore= intval($charsBefore);
 		$charsAfter	= intval($charsAfter);
-		$keyLen		= strlen(trim($keyword));
-		$pos		= stripos($string, $keyword);
+		$keyLen		= mb_strlen(trim($keyword));
+		$pos		= mb_stripos($string, $keyword);
 		$start		= TodoyuNumeric::intInRange($pos-$charsBefore, 0);
 		$subLen		= $charsBefore + $keyLen + $charsAfter;
 
 		if( $htmlEntities ) {
-			$string = htmlentities(substr(html_entity_decode($string), $start, $subLen));
-		} else {
-			$string = substr($string, $start, $subLen);
+			$string	= html_entity_decode($string);
 		}
 
-		return $string;
+		$string = mb_substr($string, $start, $subLen);
+
+		if( $htmlEntities ) {
+			$string = htmlentities($string);
+		}
+
+		return trim($string);
 	}
 
 
@@ -264,7 +265,8 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function formatSize($filesize, array $labels = null, $noLabel = false) {
-		$filesize	= intval($filesize);
+			// Have to use floatval instead of intval because of the max range of integer supports only for up to 2,5GB..
+		$filesize	= round(floatval($filesize), 0);
 
 		if( is_null($labels) ) {
 			if( $noLabel === false ) {
@@ -279,21 +281,23 @@ class TodoyuString {
 			}
 		}
 
-		if( $filesize > 1000000000 ) { 		// GB
+		if( $filesize > 1073741824 ) { 		// GB
 			$size	= $filesize / (1024 * 1024 * 1024);
 			$label	= $labels['gb'];
-		} elseif( $filesize > 1000000 ) {
+		} elseif( $filesize > 1048576 ) {	// MB
 			$size	= $filesize / (1024 * 1024);
 			$label	= $labels['mb'];
-		} elseif( $filesize > 1000 ) {
+		} elseif( $filesize > 1024 ) {		// KB
 			$size	= $filesize / 1024;
 			$label	= $labels['kb'];
-		} else {
+		} else {							// B
 			$size	= $filesize;
 			$label	= $labels['b'];
 		}
 
+			// Show only a decimal when smaller then 10
 		$dez	= $size >= 10 ? 0 : 1;
+		$size	= round($size, $dez);
 
 		return number_format($size, $dez, '.', '') . ( $noLabel ? '' : ' ' . $label);
 	}

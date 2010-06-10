@@ -681,6 +681,37 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		return $wizardConf;
 	}
 
+	
+
+	/**
+	 * Enable a form field
+	 *
+	 */
+	public function enable() {
+		unset($this->config['disabled']);
+	}
+
+
+
+	/**
+	 * Disable a form field
+	 *
+	 */
+	public function disable() {
+		$this->config['disabled'] = true;
+	}
+
+
+
+	/**
+	 * Check if a form field is disabled
+	 *
+	 * @return	Boolean
+	 */
+	public function isDisabled() {
+		return !empty($this->config['disabled']);
+	}
+
 
 
 	/**
@@ -690,8 +721,6 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 */
 	public function setAfterFieldText($text) {
 		$text		= TodoyuString::getLabel($text);
-
-//		TodoyuDebug::printInFirebug($text, 'set text');
 
 		$this->setAttribute('textAfterField', $text);
 	}

@@ -122,9 +122,9 @@ Todoyu.Autocomplete = {
 	 * @param	{Event}	event
 	 */
 	onKeydown: function(event) {
-		if( event.keyCode !== Event.KEY_RETURN && event.keyCode !== Event.KEY_TAB ) {
-			this.selectedFromList = false;
-		}
+//		if( event.keyCode !== Event.KEY_RETURN && event.keyCode !== Event.KEY_TAB ) {
+//			this.selectedFromList = false;
+//		}
 	},
 
 
@@ -141,8 +141,8 @@ Todoyu.Autocomplete = {
 
 		this.selectedFromList = true;
 
-		if(this.acRefs[baseID].options.onElementSelectedCustom)	{
-			 Todoyu.callUserFunction(this.acRefs[baseID].options.onElementSelectedCustom, inputField, selectedListElement, baseID, selectedValue, this.selectedFromList, this);
+		if(this.acRefs[baseID].options.onSelectCustom)	{
+			 Todoyu.callUserFunction(this.acRefs[baseID].options.onSelectCustom, inputField, $(baseID), selectedValue, selectedListElement.innerHTML, this);
 		}
 
 		$(baseID).setValue(selectedValue);
@@ -159,6 +159,10 @@ Todoyu.Autocomplete = {
 		var idElement = $(element).id;
 		$(idElement).setValue('0');
 		$(idElement + '-fulltext').setValue('');
+	},
+
+	getOptions: function(idElement) {
+		return this.acRefs[idElement].options;
 	}
 
 };

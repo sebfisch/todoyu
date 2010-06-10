@@ -22,6 +22,8 @@
 @ini_set('session.cookie_httponly', 1);
 	// Ignore errors of type notice
 error_reporting(E_ALL ^ E_NOTICE);
+	// Set character encoding to utf-8
+//mb_internal_encoding("UTF-8");
 
 	// Start session
 session_start();
