@@ -123,8 +123,6 @@ class TodoyuInstallerManager {
 	public static function processDbSelect(array $data) {
 		$result		= array();
 		
-		TodoyuDebug::printInFireBug('processDbSelect');
-
 		$database	= trim($data['database']);
 		$databaseNew= trim($data['database_new']);
 
