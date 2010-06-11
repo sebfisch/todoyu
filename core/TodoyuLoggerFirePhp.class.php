@@ -73,7 +73,7 @@ class TodoyuLoggerFirePhp implements TodoyuLoggerIf {
 				TodoyuDebug::firePhp()->log($data, '#');
 			}
 		} catch(Exception $e) {
-			echo '<strong>PROBLEM WITH FIREBUG</strong><br />' . $e->getMessage();
+//			echo '<strong>PROBLEM WITH FIREBUG</strong><br />' . $e->getMessage();
 		}
 	}
 
