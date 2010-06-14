@@ -18,6 +18,11 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+
+/**
+ * Configuration for continuous integration setup
+ * Used to run unit tests and code analysis on hudson server
+ */
 $SETUPCONFIG['db'] = array(
 	'server'		=> 'localhost',
 	'username'		=> 'todoyu',

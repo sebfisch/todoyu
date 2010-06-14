@@ -18,6 +18,21 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+
+/**
+ * This file is called from command line by the continuous integration server Hudson
+ *
+ * Steps:
+ *  - Load configuration
+ *  - Update database connection file
+ *  - Load database connection file
+ *  - Update database with table configuration from core and extensions
+ *  - Import basic and demo data for testing
+ *  - Update system configuration
+ *  - Install the unittest extension to run unittests 
+ */
+
+
 require_once(realpath(dirname(__FILE__) . '/../inc/global.php'));
 require_once(PATH_CORE . '/ci/setup_config.php');
 
