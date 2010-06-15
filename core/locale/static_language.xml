@@ -204,4 +204,7 @@
 	<labels lang="cs_CZ">
 		<label index="cs">česky</label>
 	</labels>
+	<labels lang="ja_JP">
+		<label index="ja">日本語</label>
+	</labels>
 </locallang>

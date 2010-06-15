@@ -135,4 +135,7 @@
 	<labels lang="cs_CZ">
 	    <label index="cs_CZ">Česky (Czech Republic)</label>
 	</labels>
+	<labels lang="ja_JP">
+	   <label index="ja_JP">日本語 (日本)</label>
+	</labels>	
 </locallang>
