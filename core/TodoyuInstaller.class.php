@@ -35,12 +35,16 @@ class TodoyuInstaller {
 		
 			// No installation step or restart? initialize installer
 		if( ! self::hasStep() || self::isRestart() ) {
-				// Cleanup before initializing
-			self::onInitCleanup();
-				// Initialize step in session
-			self::initStep();
 				// Clear all cache
 			TodoyuInstallerManager::clearCache();
+
+				// Initialize step in session
+			self::initStep();
+
+				// Run update scripts and sql
+			if( self::isUpdate() ) {
+				TodoyuInstallerManager::runVersionUpdates();
+			}
 		}
 
 		$step	= self::getStep();
@@ -75,11 +79,12 @@ class TodoyuInstaller {
 	 * Cleanup installation before initializing
 	 */
 	private static function onInitCleanup() {
-			// Delete all cache
-		TodoyuFileManager::deleteFolderContents(PATH_CACHE, false);
 
-			// Update task assets file structure
-		TodoyuInstallerManager::changeFilesAssetStructure();
+
+
+
+
+
 
 		/**
 		 * /Was only necessary for the RC2 release
@@ -90,6 +95,7 @@ class TodoyuInstaller {
 			// Update config files if necessary
 //		TodoyuInstallerManager::updateConfigFileVariables();
 	}
+
 
 
 
