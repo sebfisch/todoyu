@@ -34,4 +34,3 @@ RedirectMatch 403 (.*)\.log$
 
 # Force php5 (instead 4)
 AddType application/x-httpd-php5 .php
-AddHandler application/x-httpd-php5 .php
