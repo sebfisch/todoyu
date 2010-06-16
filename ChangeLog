@@ -1,5 +1,43 @@
 todoyu Changelog
 
+todoyu 2.0.1 - released 2010-06-16
+	* Feature: Add task from clipboard from project context menu (if no tasks are available to be references)
+	* Feature: Define default values for tasks in the configuration
+	* Feature: First version of document templating. Generate ODT documents using Dwoo. Still alpha!
+	* Feature: If a request fails, send a HTTP error 503. todoyu can be observed by nagios and other server observation tools. Firebug show error status too
+	* Language: Russian
+	* Language: French
+	* Language: Dutch
+	* Language: Japanese
+	* Language: Czech
+	* Bugfix: Delete folder content, but not .svn
+	* Bugfix: Label corrections
+	* Bugfix: Use always mail() instead sendmail
+	* Bugfix: Undefined conditions in search
+	* Bugfix: PHP error in renderResults() because of unchecked parameters
+	* Bugfix: Use only one single function to prepare task defaults for saving
+	* Bugfix: Uninstall tinyMCE instances on ajax reload to prevent ghost instances
+	* Bugfix: getStorageData was not used for subforms. Works now recursive over all elements
+	* Bugfix: Check if an extension is available before using it (if not a dependency)
+	* Bugfix: UTF-8 problem in croatian calendar language file in javascript
+	* Bugfix: Correct handling of overlaping events in the calendar. Rewrote overlapping detection
+	* Bugfix: Filter 'last edited' caused sql error
+	* Bugfix: Correct overbooking check for non blocking events
+	* Change: Force traditional mysql mode to prevent problems with STRICT_TRANS_TABLES
+	* Change: Only use internal persons to autocomplete event users
+	* Change: Date for day events have now a better readable format
+	* Change: Cleaned up javascript code. Fixed all warings and errors
+	* Change: Better file structure for assets. Grouped by project now
+	* Changed: Added new tinyMCE version 3.6
+	* Change: Dayevent is not blocking the whole day anymore
+	* Changed: Use classes for status filter instead of injection. Easier extendable
+	* Changed: Better text if a user can't see any projects and can't add new ones by itself
+	* Changed: Language list has now an english translation per language. Each language is now also written in own language
+	* Added: robots.txt to prevent search engines to index loginpage
+	* Added: Loading box. Show loading screen with message if todoyu has a long request (ex: generating new cache files)
+	* Added: Added name of current user as tooltip on profile headlet icon
+	* Added: Clean button now removes tables
+
 
 todoyu 2.0.0 - released 2010-05-10
 	* Feature: Added styling support for IE8. Works pretty well in Google Chrome too
