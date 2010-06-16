@@ -1,4 +1,4 @@
-﻿/****************************************************************************
+/****************************************************************************
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
@@ -22,10 +22,10 @@ INSTRUCTIONS TO UPGRADE AN EXISTING todoyu VERSION
 ==================================================
 
 	1. Make a backup of your local config files in /config/ (db.php, extensions.php, etc)
-	2. Extract the todoyu-rc2 archive into your todoyu folder (override all existing files)
-	3. Copy back your backuped config files to replace the existing ones
-	4. Run the installer /install/
-	5. After update, clear your browser cache to see all the new stuff
+	2. Extract the new version of todoyu into your todoyu folder (override all existing files)
+	3. Copy back your backuped config files to replace the existing default ones
+	4. Open todoyu in your browser as normal, you will be redirected to the installer dialog
+	5. After update, clear your browser cache and enjoy the new features ;-)
 
 
 Attention:
@@ -33,4 +33,6 @@ Attention:
 	The basic data contains predefined user roles with the respective rights presets.
 	The optional demo data contains data like a project with some tasks and other
 	records	to demonstrate the various aspects of todoyu.
+
+	If your version is older than 2.0.0:
 	To install the basic and demo data you have to perform a fresh install of todoyu.
