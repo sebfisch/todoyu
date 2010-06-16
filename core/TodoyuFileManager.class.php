@@ -548,9 +548,7 @@ class TodoyuFileManager {
 	 * @return	String					file extension (without dot)
 	 */
 	public static function getFileExtension($filename) {
-		$pathInfo	= pathinfo($filename);
-
-		return strtolower($pathInfo['extension']);
+		return pathinfo($filename, PATHINFO_EXTENSION);
 	}
 
 }
