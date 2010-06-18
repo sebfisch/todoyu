@@ -78,18 +78,6 @@ class TodoyuFormElement_Textinput extends TodoyuFormElement {
 	}
 
 
-
-	/**
-	 * Get field storage data
-	 *
-	 * @return	String
-	 */
-	public function getStorageData() {
-		return $this->getValue();
-	}
-
-
-
 	/**
 	 * Validate if field is required
 	 * Textinput = not empty if spaces are removed
