@@ -95,17 +95,11 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 	 * Move sections markers where necessary
 	 */
 	private function prepareXML() {
-		TodoyuHeader::sendHeaderXML();
-//		echo $this->xmlContent;
-//		exit();
-
 		$this->prepareListXML();
 		$this->prepareRowXML();
 		$this->prepareConditionXML();
 		$this->preparePhpXML();
-
-//		TodoyuHeader::sendHeaderXML();
-//		die($this->xmlContent);
+		$this->prepareDwooTagSpans();
 	}
 
 
@@ -185,6 +179,16 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		);
 
 		$this->xmlContent = str_replace(array_keys($replace), array_values($replace), $this->xmlContent);
+	}
+
+
+
+	private function prepareDwooTagSpans() {
+		$pattern	= '/({)(<[^>]+?>)?(\$.*?)(<[^>]+?>)?(})/';
+		$replace	= '\2\1\3\5\4';
+
+		$this->xmlContent = preg_replace($pattern, $replace, $this->xmlContent);
+
 	}
 
 
