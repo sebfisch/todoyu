@@ -278,7 +278,7 @@ class TodoyuTime {
 
 
 	/**
-	 * Format a timestamp with one of the default dateformats in todoyu
+	 * Format a timestamp with one of todoyu's default date formats
 	 *
 	 * @see		core/config/dateformat.xml
 	 * @param	Integer		$timestamp
@@ -336,10 +336,10 @@ class TodoyuTime {
 
 
 	/**
-	 * Parse date string
+	 * Parse date string (formatted according to current locale) to UNIX timestamp
 	 *
 	 * @param	String 		$dateString
-	 * @return	Integer		Unix timestamp
+	 * @return	Integer		UNIX timestamp
 	 */
 	public static function parseDate($dateString) {
 		$dateString	= trim($dateString);
