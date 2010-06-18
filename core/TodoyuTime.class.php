@@ -543,6 +543,22 @@ class TodoyuTime {
 
 		return $newTime;
 	}
+
+
+
+	/**
+	 * Add days to date
+	 *
+	 * @param	Integer		$time
+	 * @param	Integer		$days
+	 * @return	Integer
+	 */
+	public static function addDays($time, $days) {
+		$time	= intval($time);
+		$days	= intval($days);
+		
+		return $time + $days * self::SECONDS_DAY;
+	}
 }
 
 ?>
