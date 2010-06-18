@@ -123,6 +123,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	}
 
 
+
 	/**
 	 * Get data from internal record storage
 	 *
