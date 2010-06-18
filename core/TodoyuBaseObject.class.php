@@ -114,6 +114,16 @@ class TodoyuBaseObject implements ArrayAccess {
 
 
 	/**
+	 * Get record ID
+	 *
+	 * @return	Integer
+	 */
+	public function getID() {
+		return intval($this->data['id']);
+	}
+
+
+	/**
 	 * Get data from internal record storage
 	 *
 	 * @param	String		$key
