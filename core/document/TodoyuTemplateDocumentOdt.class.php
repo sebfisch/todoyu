@@ -100,6 +100,9 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		$this->prepareConditionXML();
 		$this->preparePhpXML();
 		$this->prepareDwooTagSpans();
+//
+//		echo $this->xmlContent;
+//		exit();
 	}
 
 
@@ -134,6 +137,8 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 
 			// Find all rows
 		preg_match_all($patternRow, $this->xmlContent, $rowMatches);
+		
+//		TodoyuDebug::printInFireBug($rowMatches, 'rows');
 
 			// Check for the row syntax in the matched row parts and modify the row
 		foreach($rowMatches[0] as $rowXML) {
@@ -169,7 +174,10 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 
 
 
-	
+	/**
+	 * Prepare the XML to include php code
+	 *
+	 */
 	private function preparePhpXML() {
 		$replace	= array(
 			'[--PHP:'	=> '<?php',
@@ -183,11 +191,45 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 
 
 
+	/**
+	 * Prepare the XML for Dwoo tags in span
+	 * Between Dwoo braces, there may be <span> tags which add formatting information.
+	 * Move them out of the Dwoo tags
+	 *
+	 */
 	private function prepareDwooTagSpans() {
-		$pattern	= '/({)(<[^>]+?>)?(\$.*?)(<[^>]+?>)?(})/';
-		$replace	= '\2\1\3\5\4';
+		$pattern	= '/{.*?}/';
 
-		$this->xmlContent = preg_replace($pattern, $replace, $this->xmlContent);
+		$this->xmlContent = preg_replace_callback($pattern, array($this, 'replaceStyleTagsInDwooTags'), $this->xmlContent);
+	}
+
+	private function replaceStyleTagsInDwooTags(array $matchingElements) {
+		$dwooTag	= $matchingElements[0];
+
+			// Replace space tags
+		$dwooTag	= str_replace('<text:s/>', '', $dwooTag);
+
+			// Pattern for open and closing tags
+		$patternWrappings	= '/(<(.*?) ?[^>]*?>)(.*?)(<\/\2>)/';
+		$replaceWrappings	= '\3';
+
+		$dwooTag	= preg_replace($patternWrappings, $replaceWrappings, $dwooTag);
+
+
+			// Move single opening tags to the start of the string
+		$patternOpen	= '/({.*?)(<[^\/]*?:[^ ] ?[^>]*?>)(.*?})/';
+		$replaceOpen	= '\2\1\3';
+
+		$dwooTag	= preg_replace($patternOpen, $replaceOpen, $dwooTag);
+		
+
+			// Move single closign tags to the end of the string
+		$patternClose	= '/({.*?)(<\/.*?>)(.*?})/';
+		$replaceClose	= '\1\3\2';
+
+		$dwooTag	= preg_replace($patternClose, $replaceClose, $dwooTag);
+
+		return $dwooTag;
 
 	}
 
