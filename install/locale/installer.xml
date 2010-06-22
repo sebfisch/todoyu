@@ -74,7 +74,7 @@
 		<label index="finish.title">Installation Successful</label>
 		<label index="finish.text">The installation was successful</label>
 		<label index="finish.button">Go to login page</label>
-        <label index="finish.note">You now can log in. This next step might take a few seconds (depending on your CPU) because the system is going to prepare data, merge and cache files and do some other magic.</label>
+		<label index="finish.note">You now can log in. This next step might take a few seconds (depending on your CPU) because the system is going to prepare data, merge and cache files and do some other magic.</label>
 		<label index="update.title">Update todoyu Installation</label>
 		<label index="update.button">Start Update</label>
 		<label index="update.info">Apply database changes for your current version and compare current columns with file configuration</label>
@@ -165,7 +165,7 @@
 		<label index="importdemodata.contains">Enthalten sind: Projekte, Aufgaben, Adressen, Firmen, Kommentare, Feedbacks, Systemrollen, Leistungsarten, Filter und noch weitere Daten.</label>
 		<label index="finish.title">Installation abschliessen</label>
 		<label index="finish.text">Installation beendet</label>
-		<label index="finish.note">Sie können nun einloggen. Der nächste Schritt dauert einige Sekunden (abhängig von Ihrer CPU), da das System Dateien zusammenführt, das Caching vorbereitet, Daten aufbereitet und weitere Vorbereitungen macht.</label>
+		<label index="finish.note">Sie können sich nun einloggen. Der nächste Schritt dauert einige Sekunden (abhängig von Ihrer CPU), da das System Dateien zusammenführt, das Caching vorbereitet, Daten aufbereitet und weitere Vorbereitungen durchführt.</label>
 		<label index="finish.button">Installer deaktivieren und weiter zum Login</label>
 		<label index="update.title">todoyu aktualisieren</label>
 		<label index="update.button">Aktualisierung starten</label>
@@ -447,7 +447,7 @@
 		<label index="finish.title">Úspěšná instalace</label>
 		<label index="finish.text">Instalace proběhla úspěšně</label>
 		<label index="finish.button">Přejít na příhlašovací stránku</label>
-        <label index="finish.note">Nyní se můžete přihlásit. Následující krok může trvat delší dobu (v závislosti na vašem procesoru) protože systém musí provést sloučení souborů, kešování, přípravu dat a jiné kouzla.</label>
+		<label index="finish.note">Nyní se můžete přihlásit. Následující krok může trvat delší dobu (v závislosti na vašem procesoru) protože systém musí provést sloučení souborů, kešování, přípravu dat a jiné kouzla.</label>
 		<label index="update.title">Aktualizovat stávající todoyu</label>
 		<label index="update.button">Aktualizovat</label>
 		<label index="update.info">Aplikuje všechny databázové změny a porovná současné sloupce s konfogurací</label>
@@ -539,7 +539,7 @@
 		<label index="finish.title">インストール完了</label>
 		<label index="finish.text">インストールが完了しました</label>
 		<label index="finish.button">ログインページへ移動</label>
-        <label index="finish.note">現在、ログインできます。システムはファイルをマージし、キャッシュし、データを準備し、いくつかの魔法を唱えるため、次のステップへは (CPU の性能により) 数秒を要します。</label>
+		<label index="finish.note">現在、ログインできます。システムはファイルをマージし、キャッシュし、データを準備し、いくつかの魔法を唱えるため、次のステップへは (CPU の性能により) 数秒を要します。</label>
 		<label index="update.title">インストールされている todoyu のアップデート</label>
 		<label index="update.button">アップデートの実行</label>
 		<label index="update.info">現バージョンへのデータベースの更新とファイル構成の比較を適用します</label>

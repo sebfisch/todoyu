@@ -66,7 +66,7 @@ class TodoyuContextMenu {
 
 
 	/**
-	 * Initialize contextmenu with elements
+	 * Initialize context menu with elements
 	 */
 	private function init() {
 		TodoyuExtensions::loadAllContextMenus();
@@ -103,7 +103,7 @@ class TodoyuContextMenu {
 			$elements[$index]['jsAction']	= $this->renderJsAction($element['jsAction']);
 			$elements[$index]['label']		= $this->renderLabel($element['label']);
 
-				// Parse recursive for submenus
+				// Parse recursive for sub menus
 			if( is_array($element['submenu']) ) {
 				$elements[$index]['submenu'] = $this->parseElements($element['submenu']);
 			}
@@ -115,7 +115,7 @@ class TodoyuContextMenu {
 
 
 	/**
-	 * Get contextmenu elements array
+	 * Get context menu elements array
 	 *
 	 * @return	Array
 	 */
@@ -126,7 +126,7 @@ class TodoyuContextMenu {
 
 
 	/**
-	 * Get contextmenu elements as JSON encoded string
+	 * Get context menu elements as JSON encoded string
 	 *
 	 * @return	String
 	 */
@@ -137,7 +137,7 @@ class TodoyuContextMenu {
 
 
 	/**
-	 * Print json encoded contextmenu struct
+	 * Print json encoded context menu struct
 	 */
 	public function printJSON() {
 		TodoyuHeader::sendHeaderJSON();
