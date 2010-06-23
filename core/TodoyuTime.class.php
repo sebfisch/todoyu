@@ -529,19 +529,16 @@ class TodoyuTime {
 
 
 	/**
-	 * Rounds UP given time in seconds to the next step
-	 * returns the time in seconds
+	 * Rounds UP given time in seconds to given rounding minute
 	 * 
-	 * @static
-	 * @param	Integer		$seconds
-	 * @param	Integer		 $steps
-	 * @return	Integer
+	 * @param	Integer		$timestamp
+	 * @param	Integer		$roundingMinute
+	 * @return	Integer							rounded time in seconds
 	 */
-	public static function roundUpTime($seconds, $steps = 1)	{
-		$roundStepInSeconds	=	$steps * 60;
-		$newTime			=	ceil( intval($seconds) / $roundStepInSeconds ) * $roundStepInSeconds;
+	public static function roundUpTime($timestamp, $roundingMinute = 1)	{
+		$roundingSeconds	=	$roundingMinute * 60;
 
-		return $newTime;
+		return ceil( intval($timestamp) / $roundingSeconds ) * $roundingSeconds;
 	}
 
 
