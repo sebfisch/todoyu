@@ -1,5 +1,5 @@
 --
--- Tabellenstruktur für Tabelle `static_currency`
+-- Table structure for table `static_currency`
 --
 
 DROP TABLE IF EXISTS `static_currency`;
@@ -18,7 +18,7 @@ CREATE TABLE `static_currency` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
 --
--- Daten für Tabelle `static_currency`
+-- Data for table `static_currency`
 --
 
 INSERT INTO `static_currency` (`id`, `code`, `iso_country`, `symbol_left`, `symbol_right`, `sign_thousand`, `sign_decimal`, `decimal_digits`, `decimal_round`, `decimal_divisor`) VALUES
