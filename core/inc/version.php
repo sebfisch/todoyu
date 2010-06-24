@@ -22,7 +22,7 @@
  * Todoyu version
  *
  */
-define('TODOYU_VERSION', '2.0.1');
-define('TODOYU_UPDATE', '2010-06-16');
+define('TODOYU_VERSION', '2.0.2beta');
+define('TODOYU_UPDATE', '2010-06-24');
 
 ?>
