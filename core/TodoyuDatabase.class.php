@@ -396,10 +396,9 @@ class TodoyuDatabase {
 		$fieldNames		= implode(',', $this->backtickArray(array_keys($fieldNameValues)));
 		$fieldValues	= implode(',', $this->quoteArray(array_values($fieldNameValues), $noQuoteFields));
 
-		$query = '	INSERT INTO ' . $table . '
-						(' . $fieldNames . ')
-					VALUES (
-						' . $fieldValues . ')';
+		$query = '	INSERT INTO ' . $table
+			. ' (' . $fieldNames . ')'
+			. ' VALUES (' . $fieldValues . ')';
 
 		return $query;
 	}
