@@ -687,7 +687,7 @@ class TodoyuInstallerManager {
 	 */
 	public static function addDatabase($databaseName, array $dbConfig)	{
 		$link	= mysql_connect($dbConfig['server'], $dbConfig['username'], $dbConfig['password']);
-		$query	= 'CREATE DATABASE `' . $databaseName . '`';
+		$query	= 'CREATE DATABASE `' . $databaseName . '` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;';
 
 		return @mysql_query($query, $link) !== false;
 	}
