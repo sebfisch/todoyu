@@ -63,10 +63,10 @@ class TodoyuRecordManager {
 	 * @param	Integer		$idRecord
 	 */
 	public static function removeRecordCache($className, $idRecord) {
-			$idRecord	= intval($idRecord);
-			$cacheKey	= self::makeClassKey($className, $idRecord);
+		$idRecord	= intval($idRecord);
+		$cacheKey	= self::makeClassKey($className, $idRecord);
 
-			TodoyuCache::remove($cacheKey);
+		TodoyuCache::remove($cacheKey);
 	}
 
 
@@ -144,6 +144,29 @@ class TodoyuRecordManager {
 
 
 	/**
+	 * Save a record
+	 *
+	 * @param	String		$table
+	 * @param	Integer		$idRecord
+	 * @param	Array		$data
+	 * @param	Array		$noQuoteFields
+	 * @return	Integer
+	 */
+	public static function saveRecord($table, $idRecord, array $data, array $noQuoteFields = array()) {
+		$idRecord	= intval($idRecord);
+
+		if( $idRecord === 0 ) {
+			$idRecord	= self::addRecord($table, $data, $noQuoteFields);
+		} else {
+			self::updateRecord($table, $idRecord, $data, $noQuoteFields);
+		}
+
+		return $idRecord;		
+	}
+
+
+
+	/**
 	 * Add a record to database
 	 * Set date_create and id_person_create
 	 *
@@ -178,6 +201,9 @@ class TodoyuRecordManager {
 		unset($data['id']);
 
 		$data['date_update'] = NOW;
+
+			// Remove from cache
+		self::removeRecordQueryCache($table, $idRecord);
 
 		return Todoyu::db()->updateRecord($table, $idRecord, $data, $noQuoteFields);
 	}

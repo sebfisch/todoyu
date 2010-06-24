@@ -30,7 +30,11 @@ class TodoyuStaticRecords {
 		'country'	=> array(
 			'value'	=> 'id',
 			'label'	=> 'iso_alpha3'
-		)		
+		),
+		'currency'	=> array(
+			'value'	=> 'id',
+			'label'	=> 'code'
+		)
 	);
 
 
@@ -213,6 +217,24 @@ class TodoyuStaticRecords {
 
 
 	/**
+	 * Get a country record by ISO number
+	 *
+	 * @param	Integer		$countryIsoNumber
+	 * @return	Array
+	 */
+	public static function getCountryByISO($countryIsoNumber) {
+		$countryIsoNumber	= intval($countryIsoNumber);
+
+		$fields	= '*';
+		$table	= 'static_country';
+		$where	= '	iso_num	= ' . $countryIsoNumber;
+
+		return Todoyu::db()->getRecordByQuery($fields, $table, $where);		
+	}
+
+
+
+	/**
 	 * Get label (name) of given country
 	 *
 	 * @param	Integer		$idCountry
@@ -297,6 +319,11 @@ class TodoyuStaticRecords {
 		}
 
 		return $options;
+	}
+	
+	
+	public static function getCurrencyOptions() {
+		return self::getRecordOptions('currency');
 	}
 }
 
