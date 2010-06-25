@@ -10,6 +10,8 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_assets_asset`
 --
@@ -19,6 +21,8 @@ INSERT INTO `ext_assets_asset` (`id`, `date_create`, `date_update`, `id_person_c
 (2, 1264700333, 1264700333, 17, 0, 106, 1, 0, 'jpg', 'task/106/1264700333_humor_cartoon_42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 'humor,cartoon-42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 31922, 'image', 'jpeg'),
 (3, 1264777318, 1264777318, 18, 0, 60, 1, 1, 'jpg', 'task/60/1264777318_startsprung.jpg', 'startsprung.jpg', 2629, 'image', 'jpeg'),
 (4, 1264778177, 1264778177, 18, 0, 134, 1, 0, 'jpg', 'task/134/1264778177_gettodoyu.jpg', 'gettodoyu.jpg', 1222, 'image', 'jpeg');
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_bookmark_bookmark`
@@ -34,6 +38,8 @@ INSERT INTO `ext_bookmark_bookmark` (`id`, `date_create`, `date_update`, `id_per
 (11, 1264779710, 0, 18, 0, 1, 60),
 (12, 1264779712, 0, 18, 0, 1, 135);
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_calendar_event`
 --
@@ -45,6 +51,8 @@ INSERT INTO `ext_calendar_event` (`id`, `date_create`, `date_update`, `id_person
 (4, 1264778135, 1264778147, 17, 0, 0, 0, 4, 'Vacation', '02/08/10 - 02/12/10', '', 1265616000, 1265994000, 0, 0),
 (5, 1264778302, 1264778302, 17, 0, 0, 0, 5, 'Office Cert', 'Certification Day', '', 1266658200, 1266661800, 0, 1),
 (6, 1264778364, 1264778364, 17, 0, 0, 0, 6, 'Project Meeting', '', '', 1266418800, 1266433200, 0, 0);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_calendar_holiday`
@@ -80,6 +88,8 @@ INSERT INTO `ext_calendar_holiday` (`id`, `date_create`, `date_update`, `id_pers
 (74, 0, 0, 0, 0, 1273356000, 'Muttertag', '', 28800),
 (75, 0, 0, 0, 0, 1293750000, 'Silvester', '', 4);
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_calendar_holidayset`
 --
@@ -89,6 +99,8 @@ INSERT INTO `ext_calendar_holidayset` (`id`, `date_create`, `date_update`, `id_p
 (2, 0, 1244290548, 0, 0, 'Bern', 'Switzerland'),
 (3, 0, 0, 0, 0, 'USA', 'United States'),
 (4, 0, 0, 0, 0, 'Japan', 'Japan');
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_calendar_mm_event_person`
@@ -103,6 +115,8 @@ INSERT INTO `ext_calendar_mm_event_person` (`id`, `id_event`, `id_person`, `is_a
 (15, 4, 17, 1),
 (16, 5, 17, 1),
 (17, 6, 17, 1);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_calendar_mm_holiday_holidayset`
@@ -151,7 +165,7 @@ INSERT INTO `ext_calendar_mm_holiday_holidayset` (`id`, `id_holiday`, `id_holida
 (390, 42, 4),
 (391, 49, 4);
 
-
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_comment_comment`
@@ -171,6 +185,8 @@ INSERT INTO `ext_comment_comment` (`id`, `date_update`, `date_create`, `deleted`
 (11, 1264780345, 1264780345, 0, 1, 60, '<p>When can we start?</p>', 0),
 (12, 1264780389, 1264780389, 0, 12, 116, '<p>There may come up a problem with this task. We should have a meeting before you start it. Please organize a meeting with all involved persons</p>', 0),
 (13, 1264784917, 1264784917, 0, 1, 149, '<p>sssafd</p>', 0);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_comment_feedback`
@@ -192,6 +208,8 @@ INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_pers
 (13, 1264778321, 0, 18, 17, 8, 0),
 (14, 1264778497, 1264778585, 18, 12, 9, 1),
 (15, 1264778585, 0, 12, 18, 10, 0);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_project_mm_project_person`
@@ -227,6 +245,8 @@ INSERT INTO `ext_project_mm_project_person` (`id`, `id_project`, `id_person`, `i
 (46, 14, 15, 2, ''),
 (49, 4, 1, 1, '');
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_project_project`
 --
@@ -244,6 +264,8 @@ INSERT INTO `ext_project_project` (`id`, `date_create`, `date_update`, `id_perso
 (12, 1264680252, 1264681686, 1, 0, 1231110000, 1234479600, 1235084400, 'Redesign', '<p>Redesign</p>', 8, 12),
 (13, 1264680885, 1264681744, 1, 0, 1243461600, 1248645600, 1248645600, 'Redesign', '<p>Redesign</p>', 9, 15),
 (14, 1264777540, 1264777661, 12, 0, 1266793200, 1269558000, 1269558000, 'New Opensource Server', '<p>Build a new server for opensource projects</p>', 1, 15);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_project_task`
@@ -407,6 +429,8 @@ INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_person_c
 (175, 1264678939, 1269365339, 1, 0, 1, 8, 168, 'Demo task with status: "rejected"', '<p>no description further description</p>', 14, 14, 1265024460, 1265024460, 1265024460, 29, 6, 2, 1800, 1, 1, 7),
 (176, 1264678939, 1269365317, 1, 0, 1, 8, 168, 'Demo task with status: "cleared"', '<p>no description further description</p>', 14, 14, 1265024460, 1265024460, 1265024460, 30, 8, 2, 1800, 1, 1, 4);
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_project_role`
 --
@@ -417,6 +441,8 @@ INSERT INTO `ext_project_role` (`id`, `date_create`, `id_person_create`, `date_u
 (3, 0, 0, 0, 'designer', 'Designer', 0),
 (4, 0, 0, 1264696237, 'external_projectleader', 'External Project Manager', 0),
 (5, 0, 0, 1264696246, 'customer_contact', 'Customer', 0);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_project_worktype`
@@ -430,6 +456,8 @@ INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_person_create`, `da
 (5, 0, 1, 1264696282, 0, 'Frontend Engineering', 0),
 (6, 0, 1, 1264696297, 0, 'Database Engineering', 0),
 (7, 0, 17, 1264778822, 0, 'Documentation', 0);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_search_filtercondition`
@@ -468,6 +496,8 @@ INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `i
 (314, 1264779153, 1264779153, 1, 0, 15, 'status', '8', 1),
 (318, 1264779500, 1264779500, 1, 0, 3, 'status', '2', 0);
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_search_filterset`
 --
@@ -485,6 +515,8 @@ INSERT INTO `ext_search_filterset` (`id`, `date_update`, `date_create`, `id_pers
 (13, 1264779006, 1264779006, 12, 0, 0, 0, '', 'task', 'All open/running tasks', 'AND'),
 (14, 1264779033, 1264779025, 1, 0, 4, 1, '', 'task', 'My Done Tasks (hidden on portal)', 'AND'),
 (15, 1264779157, 1264779095, 1, 0, 0, 0, '', 'project', 'To manage', 'AND');
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_timetracking_track`
@@ -506,12 +538,16 @@ INSERT INTO `ext_timetracking_track` (`id`, `date_create`, `date_update`, `id_pe
 (13, 1264780868, 1264780868, 1, 1264780868, 87, 1005, 0, ''),
 (14, 1264784771, 1264784771, 1, 1264784771, 59, 348, 0, '');
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_timetracking_tracking`
 --
 
 INSERT INTO `ext_timetracking_tracking` (`id`, `date_create`, `date_update`, `id_person_create`, `id_task`) VALUES
 (4, 1264778433, 1264778433, 17, 138);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_contact_address`
@@ -535,6 +571,8 @@ INSERT INTO `ext_contact_address` (`id`, `date_create`, `date_update`, `id_perso
 (15, 1264696524, 1269509610, 1, 0, 2, 41, 1, 'Zweierstrasse 35', '', 'Zürich', 'Zürich', '8004', '', 0),
 (16, 1264780312, 1269510278, 18, 0, 1, 0, 0, 'Mullnetherland Drive', '1234', 'Scarborough', '', '80042', 'find out and add the region', 1);
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_contact_company`
 --
@@ -551,6 +589,8 @@ INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_perso
 (16, 1264583917, 1269508153, 1, 0, 'Customers ACME', 'Customers', 0, 1262300400, 0, 0),
 (17, 1264584243, 1269508609, 1, 0, 'Rainbowflag Ltd.', 'RBF', 0, 0, 0, 0),
 (18, 1264587852, 1269509105, 1, 0, 'snowman production AG', 'smp', 0, 1262300400, 1, 0);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_contact_contactinfo`
@@ -613,6 +653,8 @@ INSERT INTO `ext_contact_contactinfo` (`id`, `date_create`, `date_update`, `id_p
 (63, 1264587852, 1269509105, 1, 0, '8', '555 455 00 01', 0),
 (65, 1264696524, 1269509610, 1, 0, '1', 'team@todoyu.com', 0);
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_contact_jobtype`
 --
@@ -624,6 +666,8 @@ INSERT INTO `ext_contact_jobtype` (`id`, `date_create`, `date_update`, `id_perso
 (4, 1264761659, 0, 1, 0, 'Developer'),
 (5, 1264761659, 0, 1, 0, 'IT-Manager'),
 (6, 1264761659, 0, 1, 0, 'Test Engineer');
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_contact_mm_company_address`
@@ -644,6 +688,8 @@ INSERT INTO `ext_contact_mm_company_address` (`id`, `id_company`, `id_address`) 
 (30, 10, 5),
 (35, 18, 14),
 (36, 1, 15);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_contact_mm_company_contactinfo`
@@ -687,6 +733,8 @@ INSERT INTO `ext_contact_mm_company_contactinfo` (`id`, `id_company`, `id_contac
 (87, 18, 61),
 (83, 1, 65);
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_contact_mm_company_person`
 --
@@ -713,6 +761,8 @@ INSERT INTO `ext_contact_mm_company_person` (`id`, `id_company`, `id_person`, `i
 (55, 1, 17, 15, 1),
 (71, 1, 1, 15, 4);
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_contact_mm_person_address`
 --
@@ -720,6 +770,8 @@ INSERT INTO `ext_contact_mm_company_person` (`id`, `id_company`, `id_person`, `i
 INSERT INTO `ext_contact_mm_person_address` (`id`, `id_person`, `id_address`) VALUES
 (4, 14, 13),
 (3, 1, 16);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_contact_mm_person_contactinfo`
@@ -755,6 +807,8 @@ INSERT INTO `ext_contact_mm_person_contactinfo` (`id`, `id_person`, `id_contacti
 (89, 14, 60),
 (38, 16, 64);
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_contact_mm_person_role`
 --
@@ -763,6 +817,8 @@ INSERT INTO `ext_contact_mm_person_role` (`id`, `id_person`, `id_role`) VALUES
 (3, 18, 4),
 (6, 12, 2),
 (12, 6, 1);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `system_preference`
@@ -950,6 +1006,8 @@ INSERT INTO `system_preference` (`id`, `id_person`, `ext`, `area`, `preference`,
 (2290, 6, 112, 112, 'panelwidget-projectstatusfilter', 0, '3,5,8,9'),
 (2307, 6, 112, 0, 'tasktree-filters', 0, 'a:1:{s:6:"status";s:7:"1,5,6,8";}'),
 (2308, 6, 112, 112, 'panelwidget-taskstatusfilter', 0, '1,5,6,8');
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_contact_person`

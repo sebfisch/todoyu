@@ -5,6 +5,8 @@
 INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `salutation`, `title`, `birthday`) VALUES
 (1, 1246615200, 1264780312, 0, 0, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'demo@todoyu.com', 1, 1, 'Adam', 'Admin', 'ALAD', 'm', '', '0000-00-00');
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_contact_company`
 --
@@ -12,12 +14,16 @@ INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person
 INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_internal`, `ext_projectbilling_reduction`) VALUES
 (1, 1264696524, 1269509610, 1, 0, 'snowflake productions GmbH ', 'sfp', 0, 1259622000, 1, 0);
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `ext_contact_mm_company_person`
 --
 
 INSERT INTO `ext_contact_mm_company_person` (`id`, `id_company`, `id_person`, `id_workaddress`, `id_jobtype`) VALUES
 (1, 1, 1, 0, 0);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `ext_contact_contactinfotype`
@@ -37,6 +43,8 @@ INSERT INTO `ext_contact_contactinfotype` (`id`, `date_create`, `date_update`, `
 (11, 0, 0, 0, 0, 3, 'website', 'LLL:contact.contactinfo.type.website'),
 (12, 0, 0, 0, 0, 3, 'skype', 'LLL:contact.contactinfo.type.skype');
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `system_role`
 --
@@ -45,6 +53,8 @@ INSERT INTO `system_role` (`id`, `date_create`, `date_update`, `id_person_create
 (1, 1264761659, 0, 1, 0, 'Customers', 1, 'Customers with todoyu access'),
 (2, 1264762106, 0, 1, 0, 'Project Managers', 1, ''),
 (4, 1264762153, 0, 1, 0, 'Staff', 1, 'Executive members of staff');
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `system_right`
@@ -310,4 +320,3 @@ INSERT INTO `system_right` (`id`, `ext`, `right`, `id_role`) VALUES
 (599, 112, 'taskstatus:rejected:edit', 4),
 (600, 112, 'projectstatus:progress:see', 4),
 (601, 112, 'projectstatus:warranty:see', 4);
-

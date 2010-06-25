@@ -242,6 +242,8 @@ INSERT INTO `static_country` (`id`, `iso_alpha2`, `iso_alpha3`, `iso_num`, `iso_
 (239, 'CS', 'SCG', 891, '891', 0),
 (241, 'HM', 'HMD', 334, '0', 0);
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `static_country_zone`
 --
@@ -729,6 +731,8 @@ INSERT INTO `static_country_zone` (`id`, `iso_alpha2_country`, `iso_alpha3_count
 (481, 'BR', 'BRA', 76, 'SP'),
 (482, 'BR', 'BRA', 76, 'TO');
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `static_currency`
 --
@@ -897,6 +901,8 @@ INSERT INTO `static_currency` (`id`, `code`, `iso_country`, `symbol_left`, `symb
 (173, 'MGA', 969, '', '', '.', ',', 1, 1, 5),
 (174, 'SRD', 968, '$', '', '.', ',', 2, 1, 100),
 (175, 'TRY', 949, 'YTL', '', '.', ',', 2, 1, 100);
+
+-- --------------------------------------------------------
 
 --
 -- Data for Table `static_language`
@@ -1088,6 +1094,8 @@ INSERT INTO `static_language` (`id`, `iso_alpha2`, `iso_alpha3`) VALUES
 (183, 'zh', 'chi'),
 (184, 'zu', 'zul');
 
+-- --------------------------------------------------------
+
 --
 -- Data for Table `static_territory`
 --
@@ -1122,6 +1130,7 @@ INSERT INTO `static_territory` (`id`, `iso_num`, `parent_iso_num`) VALUES
 (27, 57, 9),
 (28, 61, 9);
 
+-- --------------------------------------------------------
 
 --
 -- Data for Table `static_timezone`

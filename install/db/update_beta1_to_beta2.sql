@@ -20,12 +20,16 @@ UPDATE `ext_user_right` SET `id` =  ( @rownum:=@rownum+1 );
 ALTER TABLE `ext_user_right` ADD PRIMARY KEY(`id`) ;
 ALTER TABLE `ext_user_right` CHANGE `id` `id` INT( 11 ) NOT NULL AUTO_INCREMENT;
 
+-- --------------------------------------------------------
+
 --
 -- Rename ext_filter_.. tables to ext_search...
 --
 
 RENAME TABLE `ext_filter_set` TO `ext_search_filterset` ;
 RENAME TABLE `ext_filter_condition` TO `ext_search_filtercondition` ;
+
+-- --------------------------------------------------------
 
 --
 -- Rename id_user to id_user_create in filterset
@@ -40,6 +44,8 @@ ALTER TABLE `ext_search_filterset` CHANGE `id_user` `id_user_create` SMALLINT( 5
 ALTER TABLE `ext_project_task` ADD `sorting` SMALLINT UNSIGNED NOT NULL ;
 UPDATE `ext_project_task` SET `sorting` = `tasknumber` ;
 
+-- --------------------------------------------------------
+
 --
 -- Drop portal tables
 --
@@ -52,6 +58,7 @@ DROP TABLE `ext_portal_tab` ;
 --
 ALTER TABLE `ext_timetracking_track` CHANGE `id_user` `id_user_create` INT( 10 ) UNSIGNED NOT NULL DEFAULT '0' ;
 
+-- --------------------------------------------------------
 
 --
 -- Add date_track to timetracking and set values of date_create
