@@ -73,7 +73,7 @@ CREATE TABLE `static_country_zone` (
 CREATE TABLE IF NOT EXISTS `static_currency` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `code` char(3) NOT NULL,
-  `iso_country` int(11) unsigned NOT NULL,
+  `iso_num` int(11) unsigned NOT NULL,
   `symbol_left` varchar(12) NOT NULL,
   `symbol_right` varchar(12) NOT NULL,
   `sign_thousand` char(1) NOT NULL,
