@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS `static_currency`;
 CREATE TABLE `static_currency` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `code` char(3) NOT NULL,
-  `iso_country` int(11) unsigned NOT NULL,
+  `iso_num` int(11) unsigned NOT NULL,
   `symbol_left` varchar(12) NOT NULL,
   `symbol_right` varchar(12) NOT NULL,
   `sign_thousand` char(1) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `static_currency` (
 -- Data for table `static_currency`
 --
 
-INSERT INTO `static_currency` (`id`, `code`, `iso_country`, `symbol_left`, `symbol_right`, `sign_thousand`, `sign_decimal`, `decimal_digits`, `decimal_round`, `decimal_divisor`) VALUES
+INSERT INTO `static_currency` (`id`, `code`, `iso_num`, `symbol_left`, `symbol_right`, `sign_thousand`, `sign_decimal`, `decimal_digits`, `decimal_round`, `decimal_divisor`) VALUES
 (2, 'AED', 784, 'Dhs.', '', '.', ',', 2, 1, 100),
 (4, 'ALL', 8, 'L', '', '.', ',', 2, 1, 100),
 (5, 'AMD', 51, 'Dram', '', '.', ',', 2, 1, 100),
