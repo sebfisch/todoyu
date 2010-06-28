@@ -90,6 +90,22 @@ class TodoyuFreeze {
 
 
 	/**
+	 * Freeze an object based on class an record ID
+	 * Object will be generated and immediately freezed
+	 *
+	 * @param	String		$class
+	 * @param	Integer		$idRecord
+	 * @return	TodoyuBaseObject
+	 */
+	public static function freezeObject($class, $idRecord) {
+		$object	= TodoyuRecordManager::getRecord($class, $idRecord);
+
+		return self::freeze($class, $idRecord, $object);
+	}
+
+
+
+	/**
 	 * Get a freeze by tye and ID
 	 *
 	 * @param	String			$table
