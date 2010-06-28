@@ -737,7 +737,7 @@ INSERT INTO `static_country_zone` (`id`, `iso_alpha2_country`, `iso_alpha3_count
 -- Data for Table `static_currency`
 --
 
-INSERT INTO `static_currency` (`id`, `code`, `iso_country`, `symbol_left`, `symbol_right`, `sign_thousand`, `sign_decimal`, `decimal_digits`, `decimal_round`, `decimal_divisor`) VALUES
+INSERT INTO `static_currency` (`id`, `code`, `iso_num`, `symbol_left`, `symbol_right`, `sign_thousand`, `sign_decimal`, `decimal_digits`, `decimal_round`, `decimal_divisor`) VALUES
 (2, 'AED', 784, 'Dhs.', '', '.', ',', 2, 1, 100),
 (4, 'ALL', 8, 'L', '', '.', ',', 2, 1, 100),
 (5, 'AMD', 51, 'Dram', '', '.', ',', 2, 1, 100),
