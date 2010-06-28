@@ -238,6 +238,37 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 	/**
+	 * Remove option with given value from options array of config (of <select> element)
+	 *
+	 * @param	Mixed	$value
+	 */
+	public function removeOptionByValue($value) {
+		$this->removeOptionsByValues(array($value));
+	}
+
+
+
+	/**
+	 * Remove options with any of the given values from options array of config (of <select> element)
+	 *
+	 * @param	Array	$values
+	 */
+	public function removeOptionsByValues(array $values) {
+		$options		= $this->config['options'];
+		$cleanOptions	= array();
+
+		foreach($options as $key => $option) {
+			if ( ! in_array($option['value'], $values) ) {
+				$cleanOptions[$key]	= $option;
+			}
+		}
+
+		$this->setAttribute('options', $cleanOptions);
+	}
+
+
+
+	/**
 	 * Add user validator to given form element (field)
 	 *
 	 * @param	Array		$validatorConfig
