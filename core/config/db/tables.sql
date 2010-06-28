@@ -195,3 +195,23 @@ CREATE TABLE `static_timezone` (
 	`timezone` varchar(50) NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `system_freeze`
+--
+
+CREATE TABLE IF NOT EXISTS `system_freeze` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date_create` int(11) NOT NULL,
+  `date_update` int(11) NOT NULL,
+  `id_person_create` int(11) NOT NULL,
+  `element_type` varchar(255) NOT NULL,
+  `element_id` int(11) NOT NULL,
+  `data` text NOT NULL,
+  `hash` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `original` (`element_type`,`element_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
