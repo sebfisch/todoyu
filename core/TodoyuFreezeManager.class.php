@@ -24,7 +24,7 @@
  * @package		Todoyu
  * @subpackage	[Subpackage]
  */
-class TodoyuFreeze {
+class TodoyuFreezeManager {
 
 	const TABLE = 'system_freeze';
 
