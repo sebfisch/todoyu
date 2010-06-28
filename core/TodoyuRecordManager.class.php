@@ -198,7 +198,10 @@ class TodoyuRecordManager {
 	 */
 	public static function updateRecord($table, $idRecord, array $data, array $noQuoteFields = array()) {
 		$idRecord	= intval($idRecord);
+		
 		unset($data['id']);
+		unset($data['date_create']);
+		unset($data['id_person_create']);
 
 		$data['date_update'] = NOW;
 
