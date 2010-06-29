@@ -80,6 +80,8 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 	protected function build() {
 			// Load the XML content from the template file
 		$this->loadXMLContent();
+			// Encode HTML entities
+		$this->encodeData();
 			// Prepare the XML content (move some markers)
 		$this->prepareXML();
 			// Render the XML into $xmlParsed
@@ -100,7 +102,9 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		$this->prepareConditionXML();
 		$this->preparePhpXML();
 		$this->prepareDwooTagSpans();
-//
+		$this->prepareForeach();
+
+//		TodoyuHeader::sendHeaderXML();
 //		echo $this->xmlContent;
 //		exit();
 	}
@@ -203,6 +207,13 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		$this->xmlContent = preg_replace_callback($pattern, array($this, 'replaceStyleTagsInDwooTags'), $this->xmlContent);
 	}
 
+
+	/**
+	 * Callback to replace office style tags in dwoo tags
+	 *
+	 * @param	Array	$matchingElements
+	 * @return	String
+	 */
 	private function replaceStyleTagsInDwooTags(array $matchingElements) {
 		$dwooTag	= $matchingElements[0];
 
@@ -230,7 +241,19 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		$dwooTag	= preg_replace($patternClose, $replaceClose, $dwooTag);
 
 		return $dwooTag;
+	}
 
+
+	private function prepareForeach() {
+		$pattern	= '/(<text:[^>]*?>)({[\/]?foreach[^\}]*?})(<\/text:[^>]*?>)/';
+		$replace	= '\2';
+
+		$this->xmlContent	= preg_replace($pattern, $replace, $this->xmlContent);
+
+		$pattern	= '/(<text:p [^>]*?>)({foreach[^}]*?})(.*?)(<\/text:p>)/';
+		$replace	= '\2\1\3\4';
+
+		$this->xmlContent	= preg_replace($pattern, $replace, $this->xmlContent);		
 	}
 
 
@@ -280,6 +303,17 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 
 
 	/**
+	 * Encode HTML special chars into their entities to generate valid XML
+	 * when the data is inserted
+	 *
+	 */
+	private function encodeData() {
+		$this->data	= TodoyuArray::htmlspecialchars($this->data);
+	}
+
+
+
+	/**
 	 * Build the archive/odt file
 	 */
 	private function buildArchive() {
@@ -290,6 +324,8 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		copy($this->template, $this->pathOdt);
 
 		$zip	= new PclZip($this->pathOdt);
+
+		$zip->delete(PCLZIP_OPT_BY_NAME, 'content.xml');				
 
 		$zip->add($this->pathXML, PCLZIP_OPT_REMOVE_ALL_PATH);
 	}

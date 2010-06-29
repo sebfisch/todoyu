@@ -696,6 +696,29 @@ class TodoyuArray {
 		return $new;
 	}
 
+	
+
+	/**
+	 * Apply htmlspecialchars() to all elements recursivly
+	 *
+	 * @param	Array		$array
+	 * @return	Array
+	 */
+	public static function htmlspecialchars(array $array) {
+		foreach($array as $key => $value) {
+			if( is_array($value) ) {
+				$array[$key] = self::htmlspecialchars($value);
+			} elseif( is_string($value) ) {
+				$array[$key] = htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+			} else {
+				// Do nothing
+				//$array[$key] = $value;
+			}
+		}
+
+		return $array;
+	}
+
 }
 
 ?>
