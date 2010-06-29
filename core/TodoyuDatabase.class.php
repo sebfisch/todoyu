@@ -193,7 +193,7 @@ class TodoyuDatabase {
 	 * @return	String
 	 */
 	public function escape($string) {
-		return mysql_real_escape_string($string, $this->link);
+		return is_float($string) ? str_replace(',', '.', (string)$string) : mysql_real_escape_string($string, $this->link);
 	}
 
 

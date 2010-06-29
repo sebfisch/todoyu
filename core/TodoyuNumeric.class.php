@@ -114,17 +114,25 @@ class TodoyuNumeric {
 		return $matches[1] * 1000000 + $matches[2] * 10000 + $matches[3] * 100 + $added;
 	}
 
-
+	
 
 	/**
-	 * Calculate percent
+	 * Get percent of a value
 	 *
-	 * @param	Integer	$numberOf
-	 * @param	Integer	$totalNumberOf
-	 * @return	Integer
+	 * @param	Float		$value				Base value
+	 * @param	Float		$percent			Percent: 25.0 or 0.25
+	 * @param	Boolean		$isFraction			Percent value is already a fraction (<0)
+	 * @return	Float
 	 */
-	function percent($percent, $value)	{
-		return $percent * ($value / 100.0);
+	public static function percent($value, $percent, $isFraction = false) {
+		$value		= floatval($value);
+		$percent	= floatval($percent);
+
+		if( $percent !== true ) {
+			$percent = floatval($percent/100);
+		}
+
+		return floatval($percent * $value);
 	}
 
 
@@ -136,7 +144,7 @@ class TodoyuNumeric {
 	 * @param	Integer	$total
 	 * @return	Integer
 	 */
-	function fraction($fraction = 75, $total = 300) {
+	public static function fraction($fraction = 75, $total = 300) {
 		if ($total > 0) {
 			$rc = intval (($fraction/ $total) * 100);
 		} else {
