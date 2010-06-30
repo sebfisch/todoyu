@@ -45,7 +45,7 @@ class TodoyuFormElement_Upload extends TodoyuFormElement {
 	 * Init
 	 */
 	protected function init() {
-		$this->getForm()->setAttribute('enytype', 'multipart/form-data');
+		$this->getForm()->setAttribute('enctype', 'multipart/form-data');
 		$this->getForm()->setAttribute('method', 'post');
 	}
 
