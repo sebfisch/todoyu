@@ -95,7 +95,7 @@ class TodoyuFreezeManager {
 	 *
 	 * @param	String		$class
 	 * @param	Integer		$idRecord
-	 * @return	TodoyuBaseObject
+	 * @return	Integer
 	 */
 	public static function freezeObject($class, $idRecord) {
 		$object	= TodoyuRecordManager::getRecord($class, $idRecord);
