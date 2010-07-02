@@ -215,3 +215,16 @@ CREATE TABLE IF NOT EXISTS `system_freeze` (
   PRIMARY KEY (`id`),
   KEY `original` (`element_type`,`element_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+--
+-- Tabellenstruktur für Tabelle `system_lock`
+--
+
+CREATE TABLE `system_lock` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ext` smallint(6) NOT NULL,
+  `table` varchar(60) NOT NULL,
+  `id_record` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
