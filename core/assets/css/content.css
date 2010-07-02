@@ -182,6 +182,14 @@ span.infoIcon {
 	background:url('../img/icons.png') no-repeat 0 -629px !important;
 }
 
+span.checkboxCheckedIcon {
+	background:url('../img/icons.png') no-repeat 0 -870px !important;
+}
+
+span.checkboxOpenIcon {
+	background:url('../img/icons.png') no-repeat 0 -900px !important;
+}
+
 .calendaricon {
 	background:url('../img/icons.png') no-repeat 0 -690px;
 	cursor:pointer;
