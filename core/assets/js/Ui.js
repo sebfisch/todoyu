@@ -647,6 +647,10 @@ Todoyu.Ui = {
 	closeRTE: function(area) {
 		tinyMCE.triggerSave();
 
+		if( ! Todoyu.exists(area) ) {
+			area = document;
+		}
+
 			// Remove controls for all editors in the range
 		$(area).select('textarea.RTE').each(function(textarea){
 			tinyMCE.execCommand('mceRemoveControl', false, textarea.id);
