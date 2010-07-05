@@ -648,9 +648,15 @@ class TodoyuArray {
 	 * @return	Array
 	 */
 	public static function trimExplode($delimiter, $string, $removeEmptyValues = false) {
-		$parts	= explode($delimiter, $string);
+		$string	= trim($string);
 		$array	= array();
 
+		if( $string === '' ) {
+			return $array;
+		}
+
+		$parts	= explode($delimiter, $string);
+		
 		foreach($parts as $value) {
 			$value = trim($value);
 			if( $value !== '' || $removeEmptyValues === false ) {

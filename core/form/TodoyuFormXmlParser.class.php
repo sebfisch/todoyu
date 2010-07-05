@@ -162,10 +162,14 @@ class TodoyuFormXmlParser {
 				switch( $nodeName ) {
 					case 'fieldset':
 						self::addFieldset($fieldset, $element);
-					break;
+						break;
 
 					case 'field':
 						self::addField($fieldset, $element);
+						break;
+
+					default:
+						Todoyu::log('Unknown field type (not field or fieldset)', TodoyuLogger::LEVEL_ERROR);
 				}
 			}
 		}
@@ -190,7 +194,7 @@ class TodoyuFormXmlParser {
 		if( ! self::isAllowed($config) ) {
 			return false;
 		}
-
+		
 		$field	= TodoyuFormFactory::createField($type, $name, $fieldset, $config);
 
 		if( $field instanceof TodoyuFormElement ) {

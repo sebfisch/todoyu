@@ -560,7 +560,7 @@ class TodoyuDatabase {
 	 * @return	Boolean
 	 */
 	public function hasResult($fields, $table, $where, $groupBy = '', $limit = '') {
-		$cacheID	= 'hasresult:' . md5(serialize(func_get_args()));
+		$cacheID	= 'hasresult:' . sha1(serialize(func_get_args()));
 
 		if( ! TodoyuCache::isIn($cacheID) ) {
 			$result	= $this->doSelect($fields, $table, $where, $groupBy, '', $limit);
@@ -937,7 +937,7 @@ class TodoyuDatabase {
 	 * @return	Array
 	 */
 	public function getArray($fields, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '', $indexField = false) {
-		$cacheID	= md5(serialize(func_get_args()));
+		$cacheID	= sha1(serialize(func_get_args()));
 
 		if( TodoyuCache::isIn($cacheID) ) {
 			return TodoyuCache::get($cacheID);
