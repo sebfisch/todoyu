@@ -68,8 +68,8 @@ class TodoyuTemplateDocumentFactory {
 	 * @return	String|Boolean
 	 */
 	private static function getTypeClass($type) {
-		$className	= 'TodoyuTemplateDocument' . trim($type);
-
+		$className	= 'TodoyuTemplateDocument' . ucfirst($type);
+		
 		return class_exists($className, true) ? $className : false;		
 	}
 
