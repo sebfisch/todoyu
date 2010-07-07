@@ -140,6 +140,34 @@ class TodoyuLocaleManager {
 		return $options;
 	}
 
+
+
+	/**
+	 * Set locale cookie for current user
+	 */
+	public static function setLocaleCookie() {
+		if( TodoyuAuth::isLoggedIn() ) {
+			$locale	= Todoyu::getLocale();
+
+			setcookie('locale', $locale, NOW + TodoyuTime::SECONDS_WEEK * 100, PATH_WEB);
+		}
+	}
+
+
+
+	/**
+	 * Get locale saved in cookie if available
+	 *
+	 * @return	String|Boolean		Locale or FALSE
+	 */
+	public static function getCookieLocale() {
+		if( isset($_COOKIE['locale']) ) {
+			return $_COOKIE['locale'];
+		} else {
+			return false;
+		}
+	}
+
 }
 
 ?>

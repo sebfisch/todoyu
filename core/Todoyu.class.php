@@ -212,8 +212,9 @@ class Todoyu {
 	/**
 	 * Reset person object if a new person is logged in
 	 */
-	public static function resetPerson() {
+	public static function reset() {
 		self::$person = TodoyuAuth::getPerson(true);
+		self::$locale = null;
 	}
 
 	
@@ -227,19 +228,22 @@ class Todoyu {
 		if( is_null(self::$locale) ) {
 			self::$locale = self::$CONFIG['SYSTEM']['locale'];
 
+			$cookieLocale	= TodoyuLocaleManager::getCookieLocale();
+			$browserLocale 	= TodoyuBrowserInfo::getBrowserLocale();
+
 			if( TodoyuAuth::isLoggedIn() && self::db()->isConnected() ) {
 				$personLocale	= self::person()->getLocale();
 				if( $personLocale !== false ) {
 					self::$locale = $personLocale;
 				}
-			} else {
-				$browserLocale = TodoyuBrowserInfo::getBrowserLocale();
-	
-				if( $browserLocale !== false ) {
-					self::$locale = $browserLocale;
-				}
+			} elseif( $cookieLocale !== false ) {
+				self::$locale	= $cookieLocale;
+			} elseif( $browserLocale !== false ) {
+				self::$locale = $browserLocale;
 			}
 		}
+		
+		TodoyuDebug::printInFireBug(self::$locale, 'locale');
 		
 			// Check if locale exists
 		if( ! TodoyuLocaleManager::hasLocale(self::$locale) ) {

@@ -116,7 +116,7 @@ class TodoyuAuth {
 			// Reload rights
 		TodoyuRightsManager::reloadRights();
 			// Set new person in Todoyu object
-		Todoyu::resetPerson();
+		Todoyu::reset();
 	}
 
 
