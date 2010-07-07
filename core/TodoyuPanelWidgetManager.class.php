@@ -91,9 +91,9 @@ class TodoyuPanelWidgetManager {
 	 * @return	Array
 	 */
 	public static function getUserPanelWidgets($ext) {
-		$idPerson		= TodoyuAuth::getPersonID();
+		$idPerson	= TodoyuAuth::getPersonID();
 		$extID 		= TodoyuExtensions::getExtID($ext);
-
+		
 		$fields		= 'widget, position, config';
 		$table		= self::TABLE;
 		$where		= '		id_person	= ' . $idPerson .
