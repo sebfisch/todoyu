@@ -19,24 +19,24 @@
 *****************************************************************************/
 
 /**
- * FormElement: Textinput
+ * FormElement: Text
  *
- * Single line textinput, <input type="text">
+ * Single line text, <input type="text">
  *
  * @package		Todoyu
  * @subpackage	Form
  */
-class TodoyuFormElement_Textinput extends TodoyuFormElement {
+class TodoyuFormElement_Text extends TodoyuFormElement {
 
 	/**
-	 * TodoyuFormElement textinput constructor
+	 * TodoyuFormElement text constructor
 	 *
 	 * @param	String		$name
 	 * @param 	TodoyuFieldset	$fieldset
 	 * @param	Array		$config
 	 */
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
-		parent::__construct('textinput', $name, $fieldset, $config);
+		parent::__construct('text', $name, $fieldset, $config);
 	}
 
 
@@ -80,9 +80,9 @@ class TodoyuFormElement_Textinput extends TodoyuFormElement {
 
 	/**
 	 * Validate if field is required
-	 * Textinput = not empty if spaces are removed
+	 * Text = not empty if spaces are removed
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function validateRequired() {
 		return trim($this->getValue()) !== '';

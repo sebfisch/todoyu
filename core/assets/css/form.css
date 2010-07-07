@@ -60,7 +60,7 @@ input {
 		margin-right:5px;
 	}
 
-	input.textinputAC {
+	input.textAC {
 		background-image:url(../img/icons.png);
 		background-repeat:no-repeat;
 		background-position:5px -809px;
@@ -187,7 +187,7 @@ div.fElement {
 	}
 
 		/* Types */
-	.typeTextinput {}
+	.typeText {}
 
 	.typeDate {}
 	
@@ -206,7 +206,7 @@ div.fElement {
 			width:90px;
 			margin-right:5px;
 		}
-		div.typeTimeinput .fField input,
+		div.typeTime .fField input,
 		div.typeDuration .fField input  {
 			float:left;
 			width:30px;

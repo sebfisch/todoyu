@@ -12,7 +12,7 @@
 			<legend>Main role data</legend>
 			<elements>
 
-				<field type="textinput" name="title">
+				<field type="text" name="title">
 					<label>core.title</label>
 					<required>1</required>
 				</field>

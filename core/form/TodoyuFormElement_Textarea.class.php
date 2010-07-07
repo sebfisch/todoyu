@@ -19,9 +19,9 @@
 *****************************************************************************/
 
 /**
- * FormElement: Textinput
+ * FormElement: Textarea
  *
- * Single line textinput, <input type="text">
+ * Multi line text, <textarea></textarea>
  *
  * @package		Todoyu
  * @subpackage	Form

@@ -19,14 +19,14 @@
 *****************************************************************************/
 
 /**
- * FormElement: Textinput Autocomplete
+ * FormElement: Text Autocomplete
  *
- * Single line textinput, <input type="text"> with autocomplete function
+ * Single line text, <input type="text"> with autocomplete function
  *
  * @package		Todoyu
  * @subpackage	Form
  */
-class TodoyuFormElement_TextinputAC extends TodoyuFormElement {
+class TodoyuFormElement_TextAC extends TodoyuFormElement {
 
 	/**
 	 * Constructor
@@ -36,7 +36,7 @@ class TodoyuFormElement_TextinputAC extends TodoyuFormElement {
 	 * @param	Array		$config
 	 */
 	function __construct($name, TodoyuFieldset $fieldset, array $config = array())	{
-		parent::__construct('textinputAC', $name, $fieldset, $config);
+		parent::__construct('textAC', $name, $fieldset, $config);
 	}
 
 

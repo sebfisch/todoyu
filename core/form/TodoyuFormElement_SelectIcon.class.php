@@ -19,9 +19,9 @@
 *****************************************************************************/
 
 /**
- * FormElement: Textinput
+ * FormElement: Selecticon
  *
- * Single line textinput, <input type="text">
+ * Icon selector
  *
  * @package		Todoyu
  * @subpackage	Form
@@ -29,7 +29,7 @@
 class TodoyuFormElement_SelectIcon extends TodoyuFormElement {
 
 	/**
-	 * TodoyuFormElement textinput constructor
+	 * Constructor
 	 *
 	 * @param	String		$name
 	 * @param 	TodoyuFieldset	$fieldset

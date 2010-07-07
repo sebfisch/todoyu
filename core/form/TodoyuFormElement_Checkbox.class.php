@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * FormElement: Textinput
+ * FormElement: Checkbox
  *
  * Checkbox input
  *

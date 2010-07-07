@@ -260,7 +260,7 @@ class Todoyu {
 		if( $locale === false ) {
 			$locale	= self::getLocale();
 		}
-		
+			
 			// Set internal locale
 		self::$locale = $locale;
 

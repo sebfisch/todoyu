@@ -19,14 +19,14 @@
 *****************************************************************************/
 
 /**
- * FormElement: Textinput
+ * FormElement: Time
  *
- * Single line textinput, <input type="text">
+ * Single line text, <input type="text"> for time valus
  *
  * @package		Todoyu
  * @subpackage	Form
  */
-class TodoyuFormElement_Timeinput extends TodoyuFormElement_Textinput {
+class TodoyuFormElement_Time extends TodoyuFormElement_Text {
 
 	/**
 	 * Initialize timeinput field
@@ -36,7 +36,7 @@ class TodoyuFormElement_Timeinput extends TodoyuFormElement_Textinput {
 	 * @param	Array		$config
 	 */
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
-		TodoyuFormElement::__construct('timeinput', $name, $fieldset, $config);
+		TodoyuFormElement::__construct('time', $name, $fieldset, $config);
 	}
 
 

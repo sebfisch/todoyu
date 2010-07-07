@@ -21,7 +21,7 @@
 /**
  * FormElement: Upload
  *
- * Single line textinput, <input type="text">
+ * Upload field
  *
  * @package		Todoyu
  * @subpackage	Form

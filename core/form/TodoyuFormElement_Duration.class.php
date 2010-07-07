@@ -26,10 +26,10 @@
  * @package		Todoyu
  * @subpackage	Form
  */
-class TodoyuFormElement_Duration extends TodoyuFormElement_Timeinput {
+class TodoyuFormElement_Duration extends TodoyuFormElement_Time {
 
 	/**
-	 * Initialize timeinput field
+	 * Initialize duration field
 	 *
 	 * @param	String		$name
 	 * @param 	TodoyuFieldset	$fieldset

@@ -43,9 +43,9 @@ Todoyu::$CONFIG['FORM']['templates'] = array(
 	'hidden'	=> 'core/view/form/HiddenField.tmpl'
 );
 
-Todoyu::$CONFIG['FORM']['TYPES']['textinput'] = array(
-	'class'		=> 'TodoyuFormElement_Textinput',
-	'template'	=> 'core/view/form/FormElement_Textinput.tmpl'
+Todoyu::$CONFIG['FORM']['TYPES']['text'] = array(
+	'class'		=> 'TodoyuFormElement_Text',
+	'template'	=> 'core/view/form/FormElement_Text.tmpl'
 );
 
 Todoyu::$CONFIG['FORM']['TYPES']['select'] = array(
@@ -103,9 +103,9 @@ Todoyu::$CONFIG['FORM']['TYPES']['expandAllButton'] = array(
 	'template'	=> 'core/view/form/FormElement_Button.tmpl'
 );
 
-Todoyu::$CONFIG['FORM']['TYPES']['timeinput'] = array(
-	'class'		=> 'TodoyuFormElement_Timeinput',
-	'template'	=> 'core/view/form/FormElement_Timeinput.tmpl'
+Todoyu::$CONFIG['FORM']['TYPES']['time'] = array(
+	'class'		=> 'TodoyuFormElement_Time',
+	'template'	=> 'core/view/form/FormElement_Time.tmpl'
 );
 
 Todoyu::$CONFIG['FORM']['TYPES']['duration'] = array(
@@ -123,9 +123,9 @@ Todoyu::$CONFIG['FORM']['TYPES']['upload'] = array(
 	'template'	=> 'core/view/form/FormElement_Upload.tmpl'
 );
 
-Todoyu::$CONFIG['FORM']['TYPES']['textinputAC'] = array(
-	'class'		=> 'TodoyuFormElement_TextinputAC',
-	'template'	=> 'core/view/form/FormElement_TextinputAC.tmpl'
+Todoyu::$CONFIG['FORM']['TYPES']['textAC'] = array(
+	'class'		=> 'TodoyuFormElement_TextAC',
+	'template'	=> 'core/view/form/FormElement_TextAC.tmpl'
 );
 
 Todoyu::$CONFIG['FORM']['TYPES']['databaseRelation'] = array(
