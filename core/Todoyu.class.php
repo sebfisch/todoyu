@@ -242,9 +242,7 @@ class Todoyu {
 				self::$locale = $browserLocale;
 			}
 		}
-		
-		TodoyuDebug::printInFireBug(self::$locale, 'locale');
-		
+				
 			// Check if locale exists
 		if( ! TodoyuLocaleManager::hasLocale(self::$locale) ) {
 			self::$locale	= TodoyuLocaleManager::getDefaultLocale();
