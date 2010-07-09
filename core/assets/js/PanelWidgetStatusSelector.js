@@ -1,5 +1,7 @@
 Todoyu.PanelWidgetStatusSelector = Class.create({
 
+	list: null,
+
 	initialize: function(list) {
 		this.list = $(list);
 

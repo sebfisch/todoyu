@@ -185,6 +185,15 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Array
 	 */
 	protected function getData() {
+			// Parse all attributes with form data
+		foreach($this->config as $key => $value) {
+			if( ! is_array($value) ) {
+				if( strpos($value, '#') !== false ) {
+					$this->config[$key] = $this->getForm()->parseWithFormData($value);
+				}				
+			}
+		}
+
 		$this->config['htmlId']			= $this->getForm()->makeID($this->name);
 		$this->config['htmlName']		= $this->getForm()->makeName($this->name, $this->config['multiple']);
 		$this->config['label']			= TodoyuString::getLabel($this->config['label']);
