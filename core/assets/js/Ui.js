@@ -34,6 +34,8 @@ Todoyu.Ui = {
 	update: function(container, url, options) {
 		options = this._getDefaultOptions(options);
 
+		this.closeRTE(container);
+
 		if( Todoyu.exists(container) ) {
 			return new Ajax.Updater(container, url, options);
 		} else {
@@ -52,6 +54,8 @@ Todoyu.Ui = {
 	 */
 	replace: function(container, url, options) {
 		options = this._getDefaultOptions(options);
+
+		this.closeRTE(container);
 
 		if( Todoyu.exists(container) ) {
 			return new Todoyu.Ajax.Replacer(container, url, options);
@@ -211,6 +215,8 @@ Todoyu.Ui = {
 	 * @param	{String}		content
 	 */
 	setContent: function(content) {
+		this.closeRTE('content');
+
 		$('content').update(content);
 	},
 
@@ -233,6 +239,8 @@ Todoyu.Ui = {
 	 * @param	{String}		body
 	 */
 	setContentBody: function(body) {
+		this.closeRTE('content-body');
+
 		$('content-body').update(body);
 	},
 
