@@ -33,11 +33,7 @@ class TodoyuString {
 	 * @return	Boolean
 	 */
 	public static function isUTF8($stringToCheck) {
-//		TodoyuDebug::printInFireBug(mb_detect_encoding($stringToCheck, 'UTF-16, UTF-8, ISO-8859-15, ISO-8859-1, ASCII'), $stringToCheck);
-//		TodoyuDebug::printInFireBug(mb_detect_encoding($stringToCheck, 'UTF-16, UTF-8, ISO-8859-15, ISO-8859-1, ASCII'), $stringToCheck);
 		return mb_detect_encoding($stringToCheck, 'UTF-16, UTF-8, ISO-8859-15, ISO-8859-1, ASCII') === 'UTF-8';
-//		return mb_detect_encoding($stringToCheck, 'UTF-32, UTF-16') !== false;
-//		return mb_detect_encoding($stringToCheck, 'UTF-8, ASCII, ISO-8859-15, ISO-8859-1') === 'UTF-8';;
 	}
 
 
@@ -50,10 +46,16 @@ class TodoyuString {
 	 */
 	public static function convertToUTF8($stringToConvert, $from = 'UTF-16') {
 		return iconv($from, 'UTF-8', $stringToConvert);
-//		return self::isUTF8($stringToConvert) ? $stringToConvert : utf8_encode($stringToConvert);
 	}
 
 
+
+	/**
+	 * Get string as UTF-8 if it's not already
+	 *
+	 * @param	String		$string
+	 * @return	String
+	 */
 	public static function getAsUtf8($string) {
 		return self::isUTF8($string) ? $string : self::convertToUTF8($string);		
 	}

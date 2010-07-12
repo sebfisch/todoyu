@@ -39,3 +39,14 @@ RedirectMatch 403 /files/*
 
 # Force php5 (instead 4)
 AddType application/x-httpd-php5 .php
+
+
+## Problems running todoyu. Comment in AddType and try one of this alternatives:
+# AddHandler application/x-httpd-php .php
+
+# AddHandler x-mapp-php5 .php
+# AddHandler x-httpd-php5 .php
+# AddHandler php-fastcgi .php
+# AddHandler php-cgi2 .php
+# AddHandler php5-cgi .php
+# AddHandler php-fastcgi5 .php

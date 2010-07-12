@@ -7,27 +7,27 @@
 					<label id="labelCompany" for="company">{Label installer.adminaccount.companyname}*</label>
 				</td>
 				<td>
-					<input onkeyup="Todoyu.Installer.validateAdminAccountData()" name="company" id="company" value="" />
+					<input onkeyup="Todoyu.Installer.validateAdminAccountData()" name="company" id="company" value="{htmlencode $postData.company}" />
 				 </td>
 			</tr>
 			<tr>
 				<td>
 					<label id="labelFirstname" for="firstname">{Label installer.adminaccount.adminfirstname}*</label>
 				</td>
-				<td><input onkeyup="Todoyu.Installer.validateAdminAccountData()"  name="firstname" id="firstname" value="" /></td>
+				<td><input onkeyup="Todoyu.Installer.validateAdminAccountData()"  name="firstname" id="firstname" value="{htmlencode $postData.firstname}" /></td>
 			</tr>
 			<tr>
 				<td>
 					<label id="labelLastname" onkeyup="Todoyu.Installer.validateAdminAccountData()" for="lastname">{Label installer.adminaccount.adminlastname}*</label>
 				</td><td>
-					<input name="lastname" id="lastname" value="" />
+					<input name="lastname" id="lastname" value="{htmlencode $postData.lastname}" />
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<label id="labelEmail" onkeyup="Todoyu.Installer.validateAdminAccountData()" for="email">{Label installer.adminaccount.email}*</label>
 				</td><td>
-					<input name="email" id="email" class="adminaccount" value="{$email}" />
+					<input name="email" id="email" class="adminaccount" value="{htmlencode $email|default:$postData.company}" />
 					<br /><br /><br />
 				</td>
 			</tr>
