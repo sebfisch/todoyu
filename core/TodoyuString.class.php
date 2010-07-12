@@ -34,6 +34,7 @@ class TodoyuString {
 	 */
 	public static function isUTF8($stringToCheck) {
 //		TodoyuDebug::printInFireBug(mb_detect_encoding($stringToCheck, 'UTF-16, UTF-8, ISO-8859-15, ISO-8859-1, ASCII'), $stringToCheck);
+//		TodoyuDebug::printInFireBug(mb_detect_encoding($stringToCheck, 'UTF-16, UTF-8, ISO-8859-15, ISO-8859-1, ASCII'), $stringToCheck);
 		return mb_detect_encoding($stringToCheck, 'UTF-16, UTF-8, ISO-8859-15, ISO-8859-1, ASCII') === 'UTF-8';
 //		return mb_detect_encoding($stringToCheck, 'UTF-32, UTF-16') !== false;
 //		return mb_detect_encoding($stringToCheck, 'UTF-8, ASCII, ISO-8859-15, ISO-8859-1') === 'UTF-8';;
@@ -181,7 +182,7 @@ class TodoyuString {
 		$string = mb_substr($string, $start, $subLen);
 
 		if( $htmlEntities ) {
-			$string = htmlentities($string);
+			$string = htmlentities($string, ENT_QUOTES, 'UTF-8');
 		}
 
 		return trim($string);

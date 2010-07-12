@@ -43,4 +43,6 @@
 	z-index:250;
 	position:fixed;
 	opacity:0.5;
+	filter: alpha(opacity = 50);
+
 }

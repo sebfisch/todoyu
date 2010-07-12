@@ -129,7 +129,7 @@ class TodoyuHtmlFilter {
 	 * @return	String
 	 */
 	private static function escapeBadTags(array $match) {
-		return '&lt;' . $match[1] . $match[2] . '&gt;' . nl2br(htmlentities($match[3])) . '&lt;' . $match[1] . '&gt;';
+		return '&lt;' . $match[1] . $match[2] . '&gt;' . nl2br(htmlentities($match[3], ENT_QUOTES, 'UTF-8')) . '&lt;' . $match[1] . '&gt;';
 	}
 
 
@@ -141,7 +141,7 @@ class TodoyuHtmlFilter {
 	 * @return	String
 	 */
 	private static function escapeBadTag(array $match)	{
-		return htmlentities($match[0]);
+		return htmlentities($match[0], ENT_QUOTES, 'UTF-8');
 	}
 }
 

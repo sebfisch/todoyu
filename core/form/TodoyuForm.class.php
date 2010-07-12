@@ -1017,7 +1017,7 @@ class TodoyuForm implements ArrayAccess {
 			$data	= array(
 				'htmlId'	=> self::makeID($name),
 				'htmlName'	=> $config['noWrap'] ? $name : self::makeName($name),
-				'value'		=> htmlspecialchars($config['value'])
+				'value'		=> htmlspecialchars($config['value'], ENT_QUOTES, 'UTF-8')
 			);
 
 			$content .= render($template, $data);
