@@ -27,8 +27,6 @@
  */
 class TodoyuOdt {
 
-
-
 	/**
 	 * Cache folder cache/odt/<given_ext_name>
 	 *
