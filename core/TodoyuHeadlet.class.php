@@ -74,7 +74,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 
 	/**
-	 * Set reference to javascript headlet object
+	 * Set reference to javaScript headlet object
 	 *
 	 * @param	String		$jsHeadlet
 	 */

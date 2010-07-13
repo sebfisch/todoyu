@@ -130,7 +130,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Load extension javascript files
+	 * Load extension javaScript files
 	 *
 	 * @param	String		$ext
 	 */
@@ -283,7 +283,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Add a javascript to the current page. The script will be managed (merged, compressed, localized)
+	 * Add javaScript to the current page. The script will be managed (merged, compressed, localized)
 	 *
 	 * @param	String		$pathToFile			Path to original file
 	 * @param	Integer		$position			File position in loading order
@@ -298,7 +298,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Adds JS inline
+	 * Get inline JS of given type from given extension 
 	 *
 	 * @param	String	$ext
 	 * @param	String	$type
@@ -306,22 +306,23 @@ class TodoyuPage {
 	 */
 	public static function getExtJSinline($ext, $type = 'public')	{
 		TodoyuExtensions::loadAllAssets();
-
+		$js		= '';
 		$files	= Todoyu::$CONFIG['EXT'][$ext]['assets'][$type]['js'];
 
 		if( is_array($files) ) {
 			foreach($files as $file) {
-				$content.= 'Todoyu.Ui.loadJSFile(\''.$file['file'].'\');';
+				$js	.= 'Todoyu.Ui.loadJSFile(\''.$file['file'].'\');';
 			}
+			$js	= TodoyuString::wrapScript($js);
 		}
 
-		return '<script type="text/javascript">'.$content.'</script>';
+		return $js;
 	}
 
 
 
 	/**
-	 * Adds css inline
+	 * Adds inline CSS of given type from given extension
 	 *
 	 * @param	String		$ext
 	 * @param	String		$type
@@ -331,20 +332,22 @@ class TodoyuPage {
 		TodoyuExtensions::loadAllAssets();
 
 		$files	= Todoyu::$CONFIG['EXT'][$ext]['assets'][$type]['css'];
+		$js		= '';
 
 		if( is_array($files) ) {
 			foreach($files as $file) {
-				$content.= 'Todoyu.Ui.loadCSSFile(\''.$file['file'].'\');';
+				$js	.= 'Todoyu.Ui.loadCSSFile(\'' . $file['file'] . '\');';
 			}
+			$js	= TodoyuString::wrapScript($js);
 		}
 
-		return '<script type="text/javascript">'.$content.'</script>';
+		return $js;
 	}
 
 
 
 	/**
-	 * Add inline javascript code
+	 * Add inline javaScript code
 	 *
 	 * @param	String		$jsCode
 	 * @param	Integer		$position
@@ -419,7 +422,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Add javascripts and stylesheets to the page object variables
+	 * Add javaScripts and stylesheets to the page object variables
 	 */
 	private static function addJavascriptAndStylesheetsToPage() {
 		TodoyuPageAssetManager::addAssetsToPage();

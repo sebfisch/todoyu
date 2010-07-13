@@ -85,17 +85,17 @@ class TodoyuRenderer {
 
 
 	/**
-	 * Render content for a iframe which needs a javascript call to finish the action
-	 * The javascript commands are automatically executed when iframe is loaded. This is the same like an ajax onComplete handler
+	 * Render content for a iFrame which needs a javaScript call to finish the action
+	 * The javaScript commands are automatically executed when iFrame is loaded. This is the same like an ajax onComplete handler
 	 *
-	 * @param	String		$javascriptCommands
+	 * @param	String		$javaScriptCommands
 	 * @return	String
 	 */
-	public static function renderUploadIFrameJsContent($javascriptCommands) {
+	public static function renderUploadIFrameJsContent($javaScriptCommands) {
 		$tmpl	= 'core/view/htmldoc.tmpl';
 		$data	= array(
 			'title'		=> 'Upload IFrame',
-			'content'	=> TodoyuString::wrapScript($javascriptCommands)
+			'content'	=> TodoyuString::wrapScript($javaScriptCommands)
 		);
 
 		return render($tmpl, $data);
