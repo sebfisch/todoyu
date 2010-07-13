@@ -72,7 +72,7 @@ Todoyu.Time = {
 	parseTimeToSeconds: function(timeString) {
 		var parts	= timeString.stripTags().split(':');
 
-		return Todoyu.Helper.intval(parts[0]) * 3600 + (Todoyu.Helper.intval(parts[1]) * 60) + Todoyu.Helper.intval(parts[2]);
+		return Todoyu.Helper.intval(parts[0]) * this.seconds.hour + (Todoyu.Helper.intval(parts[1]) * this.seconds.minute) + Todoyu.Helper.intval(parts[2]);
 	},
 
 
@@ -86,9 +86,9 @@ Todoyu.Time = {
 	getTimeParts: function(time) {
 		time = Todoyu.Helper.intval(time);
 
-		var hours	= Math.floor(time / 3600);
-		var minutes	= Math.floor((time - hours * 3600) / 60);
-		var seconds	= time - (hours * 3600) - (minutes * 60);
+		var hours	= Math.floor(time / this.seconds.hour);
+		var minutes	= Math.floor((time - hours * this.seconds.hour) / this.seconds.minute);
+		var seconds	= time - (hours * this.seconds.hour) - (minutes * this.seconds.minute);
 
 		return {
 			'hours':	hours,

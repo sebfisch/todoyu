@@ -260,7 +260,7 @@ class TodoyuSQLParser {
 
 
 	/**
-	 *	Get structural declarations of all tables' columns from SQL
+	 * Get structural declarations of all tables' columns from SQL
 	 *
 	 * @param	Array	$tableNames
 	 * @param	String	$tablesSql
@@ -303,7 +303,7 @@ class TodoyuSQLParser {
 
 
 	/**
-	 *	Extract table structure definition from SQL	(separated into table and columns definition)
+	 * Extract table structure definition from SQL (separated into table and columns definition)
 	 *
 	 * @param	String	$tableSql
 	 * @return	Array

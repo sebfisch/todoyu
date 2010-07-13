@@ -70,7 +70,7 @@ class Dwoo_Plugin_restrictIfNone extends Dwoo_Block_Plugin implements Dwoo_IComp
 		$pre	= Dwoo_Compiler::PHP_OPEN.'if(allowedAny(' . $params[0] . ',' . $params[1] . ")) {".Dwoo_Compiler::PHP_CLOSE;
 		$post	= Dwoo_Compiler::PHP_OPEN."}".Dwoo_Compiler::PHP_CLOSE;
 
-		if (isset($params['hasElse'])) {
+		if ( isset($params['hasElse']) ) {
 			$post .= $params['hasElse'];
 		}
 
