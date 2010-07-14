@@ -145,9 +145,11 @@ class TodoyuLocaleManager {
 	/**
 	 * Send a cookie with locale setting of current user
 	 */
-	public static function setLocaleCookie() {
+	public static function setLocaleCookie($locale = null) {
 		if( TodoyuAuth::isLoggedIn() ) {
-			$locale	= Todoyu::getLocale();
+			if ( is_null($locale)) {
+				$locale	= Todoyu::getLocale();
+			}
 
 			setcookie('locale', $locale, NOW + TodoyuTime::SECONDS_WEEK * 100, PATH_WEB);
 		}
