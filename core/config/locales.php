@@ -19,9 +19,14 @@
 *****************************************************************************/
 
 /**
- * Locales which match to the selected language.
- * setlocale() tries all locales in the list, uses the first which matches
- * locales are different on the systems (WIN,LINUX,MAC, etc)
+ * Locales which match the selected language.
+ * setlocale() tries all locales in the list, uses the first that matches.
+ * Locales are different on the systems (WIN,LINUX,MAC, etc).
+ *
+ * Make sure the locale to be used is installed on your web server:
+ * Use the locale program to list available locales; locale -a prints the locales your system supports.
+ * Linux and Solaris systems: you can find locale at /usr/bin/locale.
+ * Windows: locales are listed in the Regional Options section of the Control Panel. For using complex script and right-to-left languages or East Asian languages (e.g. japanese) install them in the "Languages" section of "Regional and Language Options" of the Control Panel.
  */
 Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'en_GB' => array('en_GB.utf8', 'en_GB', 'en', 'English_GB'), // English (United Kingdom)
