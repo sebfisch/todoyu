@@ -1,5 +1,48 @@
 todoyu Changelog
 
+todoyu 2.0.2 - released 2010-07-15
+	* Feature: Store / perceive cookie users selected language locale per cookie
+	* Feature: Personal Config headline displays logged-in person's name
+	* Feature: Implemented individual timezone preference, stored within company (employer) address
+	* Feature: SQL fields naming and queries- and PHP code cleanup and optimizations, increased commenting.
+	* Language: Improved several german labels clarity
+	* Language: Fixed tattered extension titles in japanese locale
+	* Bugfix: Installer resets form inputs of step "Create administrator account" upon failed verification
+	* Bugfix: Sysmanager link "Show extension config" (after extension installation) points to info instead of config
+	* Bugfix: List of email receivers is removed only after clicking outside the "send comment as email" checkbox
+	* Bugfix: In IE toggeling of the staff selector panelwidget's employment list collaped-state fails
+	* Bugfix: In IE the "add comment" and "add assets" tab contains a missing image resource when opening it for the first time
+	* Bugfix: In IE8 the "select all / none" option of the task assets listing fails
+	* Bugfix: Task filtersets missing in portal
+	* Bugfix: Deletion and saving of company employee
+	* Bugfix: Context menu of events in portal misses arrow at "show in calendar" sub menu
+	* Bugfix: PanelWidgetManager error due to rename of ProjectStatusFilter/StatusFilterProject
+	* Bugfix: RTE display contains pointed frame
+	* Bugfix: Configured task work default preset is ignored 
+	* Bugfix: Missing icon at "show in project" item of task context menu
+	* Bugfix: Several styling fixes (task header, task icons, etc.)
+	* Bugfix: TinyMCE leaves unclosed ghost instances in UI updates
+	* Bugfix: TinyMCE save fix for project 
+	* Bugfix: Type conversion bug in time rounding
+	* Bugfix: Floating point formatting problem with german locales (1.2 => 1,2)
+	* Bugfix: Document generation for UNIX system
+	* Bugfix: Calendar controller loses values
+	* Changed: TinyMCE update to version 3.3.8
+	* Changed: Simplified form field type names, improved inheritance, added unsetting of options by value 
+	* Changed: Fulltext filter for project only applies on not-empty string
+	* Changed: Database uses SHA1 instead of MD5 for hashing (32=>40)
+	* Changed: DB column rename 'static_currency.iso_country' => 'static_currency.iso_num' 
+	* Added: Htaccess options for different server config, blocked access to files folder
+	* Added: Create database with UTF8 force now 
+	* Added: Added records locking manager (TodoyuLockManager) to todoyu core, project extension and timetracking (no tracking on locked tasks)
+	* Added: TodoyuFreezemanager - table 'system_freeze', storing objects data 
+	* Added: Project freezing and locking (is_locked flag in project table)
+	* Added: Log error for unknown form element type
+	* Added: New public extension - Currency
+	* Added: More demo data
+
+
+
 todoyu 2.0.1 - released 2010-06-16
 	* Feature: Add task from clipboard from project context menu (if no tasks are available to be references)
 	* Feature: Define default values for tasks in the configuration
@@ -23,13 +66,13 @@ todoyu 2.0.1 - released 2010-06-16
 	* Bugfix: Correct handling of overlaping events in the calendar. Rewrote overlapping detection
 	* Bugfix: Filter 'last edited' caused sql error
 	* Bugfix: Correct overbooking check for non blocking events
-	* Change: Force traditional mysql mode to prevent problems with STRICT_TRANS_TABLES
-	* Change: Only use internal persons to autocomplete event users
-	* Change: Date for day events have now a better readable format
-	* Change: Cleaned up javascript code. Fixed all warings and errors
-	* Change: Better file structure for assets. Grouped by project now
+	* Changed: Force traditional mysql mode to prevent problems with STRICT_TRANS_TABLES
+	* Changed: Only use internal persons to autocomplete event users
+	* Changed: Date for day events have now a better readable format
+	* Changed: Cleaned up javascript code. Fixed all warings and errors
+	* Changed: Better file structure for assets. Grouped by project now
 	* Changed: Added new tinyMCE version 3.6
-	* Change: Dayevent is not blocking the whole day anymore
+	* Changed: Dayevent is not blocking the whole day anymore
 	* Changed: Use classes for status filter instead of injection. Easier extendable
 	* Changed: Better text if a user can't see any projects and can't add new ones by itself
 	* Changed: Language list has now an english translation per language. Each language is now also written in own language
@@ -37,6 +80,7 @@ todoyu 2.0.1 - released 2010-06-16
 	* Added: Loading box. Show loading screen with message if todoyu has a long request (ex: generating new cache files)
 	* Added: Added name of current user as tooltip on profile headlet icon
 	* Added: Clean button now removes tables
+
 
 
 todoyu 2.0.0 - released 2010-05-10
@@ -88,6 +132,7 @@ todoyu 2.0.0 - released 2010-05-10
 	* Bugfix: Default use of the main() function instead of sendmail to support more servers
 	* Bugfix: Prevent endless loops with parent
 	* This were only the most important changes. There are hundreds of other small changes and fixes
+
 
 
 todoyu 2.0.0-rc2 - released 2010-03-29	
@@ -160,29 +205,29 @@ todoyu 2.0.0-rc2 - released 2010-03-29
 	
 todoyu 2.0.0-rc1 - released 2010-01-29
 	* Feature: Demo data
-    * Feature: Project status filter panel widget
+	* Feature: Project status filter panel widget
 	* Feature: Support for locales. Used to change php locale to system supported locale. Base for billing extension
-    * Changed: Remove direct mb_* use. Checks first if multibyte extension is available
-    * Changed: Clear and consistent content structure (splitted up tabs and content)
-    * Changed: Fixed calendar event display/listing
-    * Changed: Clean handling of task info icons
-    * Changed: Removed asynchronous ajax requests for faster UI
-    * Changed: Installer works properly, finds missing tables, missing columns, changed columns
-    * Changed: Projectlist is now a simple and superfast list, remove tree support
-    * Changed: Completed translation for all (?) labels used in todoyu
-    * Changed: Moved notifications to the top of the page to prevent blocking the tabs
-    * Changed: Paste is now visible everwhere, but inactive except in project
-    * Changed: Remove all non used stylesheets, scripts and images from core
-    * Bugfix: Copy paste bug when pasting tasks into a container (lost status colors)
+	* Changed: Remove direct mb_* use. Checks first if multibyte extension is available
+	* Changed: Clear and consistent content structure (splitted up tabs and content)
+	* Changed: Fixed calendar event display/listing
+	* Changed: Clean handling of task info icons
+	* Changed: Removed asynchronous ajax requests for faster UI
+	* Changed: Installer works properly, finds missing tables, missing columns, changed columns
+	* Changed: Projectlist is now a simple and superfast list, remove tree support
+	* Changed: Completed translation for all (?) labels used in todoyu
+	* Changed: Moved notifications to the top of the page to prevent blocking the tabs
+	* Changed: Paste is now visible everwhere, but inactive except in project
+	* Changed: Remove all non used stylesheets, scripts and images from core
+	* Bugfix: Copy paste bug when pasting tasks into a container (lost status colors)
 	* Bugfix: Save and cancel buttons use now the same xml structure and css styles
-    * Bugfix: Task data display problem in search view
-    * Bugfix: Wrong preselection and list for assigned user and owner
-    * Bugfix: Duration selector extended time selector, so 24:00 was the max duration
-    * Bugfix: Comment feedback users list. Task and project users missing in the list
-    * Bugfix: Dayevent was not display the right way. Filled up the whole day instead only the header bar
+	* Bugfix: Task data display problem in search view
+	* Bugfix: Wrong preselection and list for assigned user and owner
+	* Bugfix: Duration selector extended time selector, so 24:00 was the max duration
+	* Bugfix: Comment feedback users list. Task and project users missing in the list
+	* Bugfix: Dayevent was not display the right way. Filled up the whole day instead only the header bar
 
 
-	
+
 todoyu 2.0.0-beta3 - released 2010-01-14
 	* Feature: Copy and Paste for containers
 	* Feature: Switched to dynamic eventtypes, list can be extended now
