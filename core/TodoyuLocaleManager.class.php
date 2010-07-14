@@ -143,7 +143,7 @@ class TodoyuLocaleManager {
 
 
 	/**
-	 * Set locale cookie for current user
+	 * Send a cookie with locale setting of current user
 	 */
 	public static function setLocaleCookie() {
 		if( TodoyuAuth::isLoggedIn() ) {
