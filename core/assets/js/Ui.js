@@ -656,7 +656,7 @@ Todoyu.Ui = {
 		tinyMCE.triggerSave();
 
 		if( ! Todoyu.exists(area) ) {
-			area = document;
+			area = document.body;
 		}
 
 			// Remove controls for all editors in the range
