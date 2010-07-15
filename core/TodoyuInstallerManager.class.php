@@ -219,6 +219,7 @@ class TodoyuInstallerManager {
 		if( isset($data['name']) ) {
 			if( TodoyuValidator::isEmail($data['email']) && trim($data['name']) !== '' ) {
 				self::saveSystemConfig($data);
+				TodoyuLocaleManager::setLocaleCookie($data['locale']);
 				TodoyuSession::set('installer/systememail', $data['email']);
 				TodoyuInstaller::setStep('adminaccount');
 			} else {
@@ -329,7 +330,7 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Execute sql files to update the database to the current version
+	 * Execute SQL files to update the database to the current version
 	 *
 	 * @param	Array		$data
 	 */
@@ -477,23 +478,23 @@ class TodoyuInstallerManager {
 	/**
 	 * Update admin-user password (and username)
 	 *
-	 * @param	String		$firstname
-	 * @param	String		$lastname
+	 * @param	String		$firstName
+	 * @param	String		$lastName
 	 * @param	String		$password
 	 */
-	private static function saveAdminAccountData($email, $password, $firstname, $lastname) {
+	private static function saveAdminAccountData($email, $password, $firstName, $lastName) {
 		$email		= trim($email);
-		$firstname	= trim($firstname);
-		$lastname	= trim($lastname);
+		$firstName	= trim($firstName);
+		$lastName	= trim($lastName);
 		$password	= trim($password);
 
 		$table	= 'ext_contact_person';
 		$where	= 'username = \'admin\'';
 		$update	= array(
 			'email'			=> $email,
-			'firstname'		=> $firstname,
-			'lastname'		=> $lastname,
-			'shortname'		=> strtoupper(substr($firstname, 0, 2) . substr($lastname, 0, 2)),
+			'firstname'		=> $firstName,
+			'lastname'		=> $lastName,
+			'shortname'		=> strtoupper(substr($firstName, 0, 2) . substr($lastName, 0, 2)),
 			'password'		=> md5($password)
 		);
 
@@ -552,7 +553,7 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Import the demo data from sql file
+	 * Import the demo data from SQL file
 	 */
 	public static function importDemoData() {
 		self::importSqlFromFile('install/db/demo_data.sql');
