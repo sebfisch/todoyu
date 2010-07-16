@@ -2,11 +2,18 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 
 	list: null,
 
+	/**
+	 * Initialize panel widget
+	 *
+	 * @param	{String}	list		element ID
+	 */
 	initialize: function(list) {
 		this.list = $(list);
 
 		this._observeList();
 	},
+
+
 
 	/**
 	 * Install (selection change) event observer for the PanelWidget
@@ -15,6 +22,13 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 		this.list.observe('change', this._onChange.bindAsEventListener(this));
 	},
 
+
+
+	/**
+	 * Handle list selection change
+	 *
+	 * @param	{Object}	event
+	 */
 	_onChange: function(event) {
 		var runDefault = true;
 
@@ -27,6 +41,13 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 		}
 	},
 
+
+
+	/**
+	 * Default selection change handler: select all if no option selected
+	 *
+	 * @param	{Object}	event
+	 */
 	_defaultOnChange: function(event) {
 		if( ! this.isAnyStatusSelected() ) {
 			this.selectAll();
@@ -34,15 +55,21 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 	},
 
 
+	/**
+	 * OnChange handler
+	 *
+	 * @param	{Object}	event
+	 * @return	{Boolean}
+	 */
 	onChange: function(event) {
 		return true;	
 	},
 	
 
 	/**
-	 * Get form value of the PanelWidget (selected statuses)
+	 * Get form value of the panel widget (selected statuses)
 	 *
-	 * @return	Array
+	 * @return	{Array}
 	 */
 	getValue: function() {
 		return this.getSelectedStatuses();
@@ -51,9 +78,9 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 
 
 	/**
-	 * Get selected statuses
+	 * Get selected statuses of panel widget
 	 *
-	 * @return	Array
+	 * @return	{Array}
 	 */
 	getSelectedStatuses: function() {
 		return $F(this.list);
@@ -62,7 +89,7 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 
 
 	/**
-	 * Get the number of selected statuses
+	 * Get amount of selected statuses
 	 *
 	 * @return	{Number}
 	 */
@@ -92,6 +119,13 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 		});
 	},
 
+
+
+	/**
+	 * Evoke update of given panel widget
+	 *
+	 * @param	{String}	key
+	 */
 	fireUpdate: function(key) {
 		Todoyu.PanelWidget.fire(key, this.getValue());
 	}
