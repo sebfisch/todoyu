@@ -153,7 +153,7 @@ class TodoyuStaticRecords {
 		$records	= self::getRecords($type, $conditions);
 		$keyLabel	= self::$localeConfig[$type]['label'];
 		$keyValue	= self::$localeConfig[$type]['value'];
-		
+
 			// Localize record
 		if( $localize === true ) {
 			foreach($records as $index => $record) {
@@ -320,11 +320,18 @@ class TodoyuStaticRecords {
 
 		return $options;
 	}
-	
-	
+
+
+
+	/**
+	 * Get options array for select form field element
+	 *
+	 * @return	Array
+	 */
 	public static function getCurrencyOptions() {
 		return self::getRecordOptions('currency');
 	}
+
 }
 
 ?>
