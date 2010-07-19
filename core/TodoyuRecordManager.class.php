@@ -65,8 +65,11 @@ class TodoyuRecordManager {
 	public static function removeRecordCache($className, $idRecord) {
 		$idRecord	= intval($idRecord);
 		$cacheKey	= self::makeClassKey($className, $idRecord);
-
+		
 		TodoyuCache::remove($cacheKey);
+
+			// Call cache cleanup hooks
+		TodoyuHookManager::callHook('core', 'removeCacheRecord', array($className, $idRecord, $cacheKey));
 	}
 
 
@@ -83,6 +86,9 @@ class TodoyuRecordManager {
 		$cacheKey	= self::makeRecordQueryKey($table, $idRecord);
 
 		TodoyuCache::remove($cacheKey);
+
+			// Call cache cleanup hooks
+		TodoyuHookManager::callHook('core', 'removeCacheQuery', array($table, $idRecord, $cacheKey));
 	}
 
 
