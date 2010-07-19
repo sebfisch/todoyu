@@ -37,6 +37,20 @@ RedirectMatch 403 (.*)\.log$
 # Disallow any file download from web
 RedirectMatch 403 /files/*
 
+# Disallow file download from cache
+RedirectMatch 403 /cache/language/*
+RedirectMatch 403 /cache/tmpl/*
+
+# Disallow any direct file access (in extensions)
+RedirectMatch 403 /config/*
+RedirectMatch 403 /controller/*
+RedirectMatch 403 /model/*
+RedirectMatch 403 /dwoo/*
+RedirectMatch 403 /locale/*
+RedirectMatch 403 /tests/*
+RedirectMatch 403 /view/*
+
+
 # Force php5 (instead 4)
 AddType application/x-httpd-php5 .php
 
