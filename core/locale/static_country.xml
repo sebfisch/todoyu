@@ -184,7 +184,6 @@
 		<label index="RUS">Russia</label>
 		<label index="RWA">Rwanda</label>
 		<label index="SAU">Saudi Arabia</label>
-		<label index="SCG">Serbia And Montenegro</label>
 		<label index="SLB">Solomon Islands</label>
 		<label index="SYC">Seychelles</label>
 		<label index="SDN">Sudan</label>
@@ -477,10 +476,8 @@
 		<label index="ZMB">Sambia</label>
 		<label index="ZWE">Simbabwe</label>
 		<label index="PSE">Palästinensische Territorien</label>
-		<label index="SCG">Serbien und Montenegro</label>
 		<label index="HMD">Heard und McDonaldinseln</label>
 	</labels>
-	<labels lang="de_DE"></labels>
 	<labels lang="pt_BR"></labels>
 	<labels lang="ru_RU">
 		<label index="AND">Андора</label>
@@ -666,7 +663,6 @@
 		<label index="RUS">Россия</label>
 		<label index="RWA">Руанда</label>
 		<label index="SAU">Сайдовская Аравия</label>
-		<label index="SCG">Сербия и Монтенегра</label>
 		<label index="SLB">Соломоновы острова</label>
 		<label index="SYC">Сейшелы</label>
 		<label index="SDN">Судан</label>
@@ -906,7 +902,6 @@
 		<label index="RUS">Rusland</label>
 		<label index="RWA">Rwanda</label>
 		<label index="SAU">Saoedië-Arabië</label>
-		<label index="SCG">Servië en Montenegro</label>
 		<label index="SLB">Salomonseilanden</label>
 		<label index="SYC">Seychellen</label>
 		<label index="SDN">Sudan</label>
@@ -1199,7 +1194,6 @@
 		<label index="ZMB">Sambia</label>
 		<label index="ZWE">Simbabwe</label>
 		<label index="PSE">Palästinensische Territorien</label>
-		<label index="SCG">Serbien und Montenegro</label>
 		<label index="HMD">Heard und McDonaldinseln</label>
 	</labels>
 	<labels lang="ja_JP">
@@ -1386,7 +1380,6 @@
 		<label index="RUS">ロシア</label>
 		<label index="RWA">ルワンダ</label>
 		<label index="SAU">サウジアラビア</label>
-		<label index="SCG">セルビア・モンテネグロ</label>
 		<label index="SLB">ソロモン諸島</label>
 		<label index="SYC">セイシェル</label>
 		<label index="SDN">スーダン</label>
