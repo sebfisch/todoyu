@@ -115,6 +115,47 @@ class TodoyuValidator {
 
 
 	/**
+	 *
+	 * @param	Float		$value
+	 * @param	Float		$minimum
+	 * @param	Boolean		$allowBorder
+	 * @return	Boolean
+	 */
+	public static function isMin($value, $minimum, $allowBorder = true) {
+		$value	= floatval($value);
+		$minimum= floatval($minimum);
+
+		if( $allowBorder ) {
+			return $value >= $minimum;
+		} else {
+			return $value > $minimum;
+		}
+	}
+
+
+
+	/**
+	 * Check wheter the value is lower than the maximum
+	 * 
+	 * @param	Float		$value
+	 * @param	Float		$maximum
+	 * @param	Boolean		$allowBorder
+	 * @return	Boolean
+	 */
+	public static function isMax($value, $maximum, $allowBorder = true) {
+		$value	= floatval($value);
+		$maximum= floatval($maximum);
+
+		if( $allowBorder ) {
+			return $value <= $maximum;
+		} else {
+			return $value < $maximum;
+		}
+	}
+
+
+
+	/**
 	 * Validate timestamp not being at 00:00:00
 	 *
 	 * @param	String		$value

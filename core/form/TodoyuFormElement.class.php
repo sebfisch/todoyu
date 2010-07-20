@@ -494,7 +494,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		foreach($validations as $validatorName => $validatorConfigs) {
 				// If multiple validators with the same name are defined, they are
 				// stored in an array, loop over them
-			if( isset($validatorConfigs['0']) ) {
+			if( !is_string($validatorConfigs) && isset($validatorConfigs['0']) ) {
 					// Loop over all instances of a validator type
 				foreach($validatorConfigs as $validatorConfig) {
 					$result	= $this->runValidator($validatorName, $validatorConfig, $formData);
@@ -505,6 +505,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 				}
 			} else {
 					// A validator type was only used once for this field, run normal
+				$validatorConfigs	= TodoyuArray::assure($validatorConfigs, true);
 				$result	= $this->runValidator($validatorName, $validatorConfigs, $formData);
 
 				if( $result === false ) {
@@ -534,9 +535,16 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 
+	/**
+	 * Run the validator
+	 *
+	 * @param	String		$validatorName
+	 * @param	Array		$validatorConfig
+	 * @return	Boolean
+	 */
 	private final function runValidator($validatorName, array $validatorConfig) {
 		$isValid = TodoyuFormValidator::validate($validatorName, $this->getStorageData(), $validatorConfig, $this, $this->getForm()->getFormData());
-
+	
 			// If validation failed, set error message
 		if( $isValid === false ) {
 			$this->setErrorTrue();

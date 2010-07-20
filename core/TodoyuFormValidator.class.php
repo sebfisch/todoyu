@@ -256,6 +256,78 @@ class TodoyuFormValidator {
 
 
 	/**
+	 * Validate maximal value of the input
+	 * Handled as floats
+	 *
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement 	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
+	 */
+	private static function max($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+			// Check for allowed exceptions
+		$allow	= self::checkAllow($validatorConfig, $formData);
+		if ( $allow === true ) {
+			return true;
+		}
+
+		$max	= floatval($validatorConfig['value']);
+
+		return TodoyuValidator::isMax($value, $max);
+	}
+
+
+
+	/**
+	 * Validate minimal value of the input
+	 * Handled as floats
+	 *
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement 	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
+	 */
+	private static function min($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+			// Check for allowed exceptions
+		$allow	= self::checkAllow($validatorConfig, $formData);
+		if ( $allow === true ) {
+			return true;
+		}
+
+		$min	= floatval($validatorConfig);
+
+		return TodoyuValidator::isMin($value, $min);
+	}
+
+
+
+	/**
+	 * Validate range of the value
+	 * Handled as floats
+	 *
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement 	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
+	 */
+	private static function range($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+			// Check for allowed exceptions
+		$allow	= self::checkAllow($validatorConfig, $formData);
+		if ( $allow === true ) {
+			return true;
+		}
+
+		$range	= explode(',', $validatorConfig['value']);
+
+		return TodoyuValidator::isInRange($value, $range[0], $range[1]);
+	}
+
+	
+
+	/**
 	 * Check whether value is decimal
 	 *
 	 * @param	String				$value
