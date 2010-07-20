@@ -153,7 +153,7 @@ class TodoyuFileManager {
 	 * @return	String
 	 */
 	public static function makeCleanFilename($dirtyFilename, $replaceBy = '_') {
-		$pattern	= '|[^A-Za-z0-9\.-_\[\]()]|';
+		$pattern	= '|[^A-Za-z0-9\.\-_\[\]()]|';
 
 		return preg_replace($pattern, $replaceBy, $dirtyFilename);
 	}

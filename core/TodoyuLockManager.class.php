@@ -98,6 +98,10 @@ class TodoyuLockManager {
 	public static function areLocked($table, array $recordIDs) {
 		$recordIDs	= TodoyuArray::intval($recordIDs, true, true);
 
+		if( sizeof($recordIDs) === 0 ) {
+			return false;
+		}
+
 		$where	= ' 	`table`		= ' . Todoyu::db()->quote($table, true)
 				. ' AND `id_record`	IN(' . implode(',', $recordIDs) . ')';
 

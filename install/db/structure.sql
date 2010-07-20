@@ -449,7 +449,6 @@ CREATE TABLE IF NOT EXISTS `ext_contact_company` (
 	`date_enter` int(10) unsigned NOT NULL DEFAULT '0',
 	`is_ngo` tinyint(1) NOT NULL DEFAULT '0',
 	`is_internal` tinyint(1) NOT NULL DEFAULT '0',
-	`ext_projectbilling_reduction` tinyint(1) unsigned NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
