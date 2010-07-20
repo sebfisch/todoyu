@@ -139,9 +139,11 @@ label {}
 	color:#444;
 }
 
-/* -----------------
+
+
+/* ----------------------
 	HTML building
-   -----------------*/
+   ----------------------*/
 
 div.fElement {
 	position:relative;
@@ -180,13 +182,16 @@ div.fElement {
 	div.fElement .fField input {
 	}
 
-
-
 	div.fElement .fClear {
 		clear:both;
 	}
 
-		/* Types */
+
+
+/* -------------
+	Types
+   ------------- */
+
 	.typeText {}
 
 	.typeDate {}
@@ -351,7 +356,11 @@ fieldset {}
 }
 */
 
-/* --- additional information after input field --- */
+
+
+/* ----------------------------------------------
+	Additional information after input field
+   ---------------------------------------------- */
 form .textAfterField  {
 	display:block;
 	padding:10px;
@@ -384,7 +393,9 @@ form .error.typeCheckbox {
 form .typeCheckbox div.errorMessage {
 }
 
-	/* --- left floating radio --- */
+/* -------------------------
+	Left floating radio
+   ------------------------- */
 /*
 .formElement fieldset input {
 	clear:left;
@@ -406,10 +417,9 @@ form .typeCheckbox div.errorMessage {
 .formLabel .fieldHasError label{
 	color:red;
 }
-
-
-
 */
+
+
 
 /* -------------------------
 	Auto-completer list
@@ -443,6 +453,7 @@ form .typeCheckbox div.errorMessage {
 /* ----------------------------------
 	Form element: databaseRelation
    ---------------------------------- */
+
 .formElement .databaseRelation {
 	margin-top:5px;
 }
@@ -461,9 +472,9 @@ form .typeCheckbox div.errorMessage {
 
 
 
-/* ----------------------------------------------
+/* ------------------------------------------------------
 	Form element: foreignRecordsActionControl
-   ---------------------------------------------- */
+   ------------------------------------------------------ */
 .formElement .foreignRecordsActionControl {
 	height:30px;
 	background-color:#a8c7de
@@ -480,7 +491,9 @@ form .typeCheckbox div.errorMessage {
 
 
 
-/* Wizard icon */
+/* --------------------
+	Wizard icon
+   -------------------- */
 .fField span.wizardIcon  {
 	height:16px;
 	width:16px;
@@ -490,9 +503,10 @@ form .typeCheckbox div.errorMessage {
 }
 
 
-/* ---------------------------------
+
+/* --------------------------------------
 	Form element: iconSelector
-   --------------------------------- */
+   -------------------------------------- */
 
 .fField .iconSelector {
 	width: auto;
@@ -505,6 +519,7 @@ form .typeCheckbox div.errorMessage {
 	margin: 9px 0 0 9px;
 	text-indent: -9999px;
 }
+
 .fField .iconSelector li {
 	float: left;
 	cursor: pointer;
@@ -594,3 +609,28 @@ form.formRightseditor,
 form.formConfig {
 	padding-top:10px;
 }
+
+
+
+/* ---------------------------------------
+	Error info: invalid items listing
+   --------------------------------------- */
+
+div.errorMessage ul.invalidItems {
+	font-style:normal;
+	border-left:5px solid #F00;
+	padding-left:5px;
+}
+
+	div.errorMessage ul.invalidItems li {
+		font-weight:bold;
+	}
+
+		div.errorMessage ul.invalidItems li ul {
+			list-style-type:square;
+		}
+
+			div.errorMessage ul.invalidItems li ul li {
+				font-weight:normal;
+				margin-left:20px;
+			}
