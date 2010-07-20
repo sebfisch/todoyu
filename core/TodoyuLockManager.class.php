@@ -89,6 +89,24 @@ class TodoyuLockManager {
 
 
 	/**
+	 * Check if one of the records is locked
+	 *
+	 * @param	String		$table
+	 * @param	Array		$recordIDs
+	 * @return	Boolean
+	 */
+	public static function areLocked($table, array $recordIDs) {
+		$recordIDs	= TodoyuArray::intval($recordIDs, true, true);
+
+		$where	= ' 	`table`		= ' . Todoyu::db()->quote($table, true)
+				. ' AND `id_record`	IN(' . implode(',', $recordIDs) . ')';
+
+		return Todoyu::db()->hasResult('id', self::TABLE, $where);
+	}
+
+
+
+	/**
 	 * Check if record is locked by an extension
 	 *
 	 * @param	Integer		$ext
