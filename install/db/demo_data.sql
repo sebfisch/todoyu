@@ -448,14 +448,14 @@ INSERT INTO `ext_project_role` (`id`, `date_create`, `id_person_create`, `date_u
 -- Data for Table `ext_project_worktype`
 --
 
-INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_person_create`, `date_create`, `deleted`, `title`, `type`) VALUES
-(1, 1254232852, 1, 1254232852, 0, 'Consulting', 0),
-(2, 1254232863, 1, 1254232863, 0, 'Java-Development', 0),
-(3, 1254232867, 1, 1254232867, 0, 'Design', 0),
-(4, 1254232876, 1, 1254232876, 0, 'Testing', 0),
-(5, 0, 1, 1264696282, 0, 'Frontend Engineering', 0),
-(6, 0, 1, 1264696297, 0, 'Database Engineering', 0),
-(7, 0, 17, 1264778822, 0, 'Documentation', 0);
+INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_person_create`, `date_create`, `deleted`, `title`) VALUES
+(1, 1254232852, 1, 1254232852, 0, 'Consulting'),
+(2, 1254232863, 1, 1254232863, 0, 'Java-Development'),
+(3, 1254232867, 1, 1254232867, 0, 'Design'),
+(4, 1254232876, 1, 1254232876, 0, 'Testing'),
+(5, 0, 1, 1264696282, 0, 'Frontend Engineering'),
+(6, 0, 1, 1264696297, 0, 'Database Engineering'),
+(7, 0, 17, 1264778822, 0, 'Documentation');
 
 -- --------------------------------------------------------
 
