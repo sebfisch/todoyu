@@ -89,7 +89,7 @@
 		<label index="quickcreate.title">Neue Daten anlegen</label>
 		<label index="quickcreate.alltypes.label">Alle Datentypen:</label>
 		<label index="create">Erstellen</label>
-		<label index="createNew">Neuen Datensatz anlegen:</label>
+		<label index="createNew">Neu anlegen:</label>
 		<label index="edit">Bearbeiten</label>
 		<label index="load">Daten laden</label>
 		<label index="save">Speichern</label>
