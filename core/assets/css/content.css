@@ -68,6 +68,7 @@ div.infoBox h4 {
 
 div.infoBox div.content {
 	padding:0.5em;
+	background: white;
 }
 
 
@@ -115,7 +116,7 @@ h1.headerLine.hasIcon span.title {
 	display:block;
 	margin:0;
 	padding:0;
-	background:transparent url('../img/bg-headerline.png') no-repeat 100% 0;
+	background:url('../img/bg-headerline.png') white no-repeat 100% 0;
 	width:10px;
 	height:28px;
 }
