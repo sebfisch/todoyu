@@ -50,17 +50,22 @@ class TodoyuTemplateDocumentException extends Exception {
 	 * Get document which caused the exception
 	 * Can be null if exception wasn't thrown in a document instance
 	 * 
-	 * @return
+	 * @return	TodoyuTemplateDocumentAbstract
 	 */
 	public function getDocument() {
 		return $this->document;
 	}
 
 
+
+	/**
+	 * Check whether the exception has a document object
+	 * 
+	 * @return	Boolean
+	 */
 	public function hasDocument() {
 		return $this->document instanceof TodoyuTemplateDocumentIf;
 	}
-
 
 }
 
