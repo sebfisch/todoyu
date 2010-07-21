@@ -182,8 +182,8 @@ Todoyu.Form = {
 		fieldNames = fieldNames || [];
 
 		fieldNames.each(function(fieldName){
-			var parentField = $$('form div.fieldname' + fieldName.capitalize()).first();
-			if ( parentField ) {
+			var parentField = $$('form div.fieldname' + fieldName.replace(/_/g,'').capitalize()).first();
+			if ( parentField !== undefined ) {
 				var subForms	= parentField.select('div.databaseRelation div.databaseRelationFormhtml');
 
 				subForms.invoke('show');
