@@ -639,7 +639,7 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
-	 * Get the hiddenfield array
+	 * Get the array of hidden fields
 	 *
 	 * @param	Boolean	$onlyStorage		Only get storage fields
 	 * @return	Array

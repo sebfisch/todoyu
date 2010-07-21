@@ -173,7 +173,7 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 	 */
 	public function getStorageData() {
 			// Check for no storage flag
-		if( $this->isNoStorageField() ) {
+		if( $this->isNoStorageField() && $this->hasValidations() === false ) {
 			return false;
 		} else {
 			$storageData= $this->getValue();
