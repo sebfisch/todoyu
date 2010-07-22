@@ -42,7 +42,7 @@ RedirectMatch 403 /cache/language/*
 RedirectMatch 403 /cache/tmpl/*
 
 # Disallow any direct file access (in extensions)
-RedirectMatch 403 /config/*
+#RedirectMatch 403 /config/*
 RedirectMatch 403 /controller/*
 RedirectMatch 403 /model/*
 RedirectMatch 403 /dwoo/*
