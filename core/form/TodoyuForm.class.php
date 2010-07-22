@@ -911,7 +911,7 @@ class TodoyuForm implements ArrayAccess {
 
 		$count = 1;
 
-		while($count != 0)	{
+		while( $count != 0 ) {
 			$id = str_replace($notAllowed, $replace, $id, $count);
 		}
 
