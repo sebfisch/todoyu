@@ -68,6 +68,7 @@ class TodoyuFreezeManager {
 		if( $freeze !== false ) {
 			return unserialize($freeze['data']);
 		} else {
+			Todoyu::log('Tried to unfreeze a not available object with ID: ' . $idFreeze, TodoyuLogger::LEVEL_ERROR);
 			return false;
 		}
 	}

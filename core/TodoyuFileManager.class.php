@@ -252,14 +252,14 @@ class TodoyuFileManager {
 	/**
 	 * Move a file to the folder structure
 	 *
-	 * @param	String		$path
-	 * @param	String		$sourceFile
-	 * @param	String		$uploadFileName
-	 * @return	Boolean
+	 * @param	String			$path
+	 * @param	String			$sourceFile
+	 * @param	String			$uploadFileName
+	 * @return	String|Boolean	New file path or FALSE
 	 */
 	public static function addFileToStorage($path, $sourceFile, $uploadFileName, $prependWithTimestamp = true) {
 		$fileName	= ( $prependWithTimestamp === true ? NOW . '_' . $fileName : '') . self::makeCleanFilename($uploadFileName);
-		$filePath	= $path . DIR_SEP . $fileName;
+		$filePath	= self::pathAbsolute($path . '/' . $fileName);
 
 		$fileMoved	= move_uploaded_file($sourceFile, $filePath);
 
@@ -409,7 +409,7 @@ class TodoyuFileManager {
 				Todoyu::log('sendFile() failed because file was not readable: ' . $pathFile, TodoyuLogger::LEVEL_ERROR, $pathFile);
 			}
 		} else {
-			Todoyu::log('sendFile() failed because file was not found: ' . $pathFile, TodoyuLogger::LEVEL_ERROR, $pathFile);
+			Todoyu::log('sendFile() failed because file was not found: "' . $pathFile . '"', TodoyuLogger::LEVEL_ERROR, $pathFile);
 		}
 
 		return false;

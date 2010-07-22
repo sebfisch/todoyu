@@ -166,8 +166,8 @@ var Todoyu = {
 	 * @param		{Element|String}		element		Element or its ID
 	 */
 	exists: function(element) {
-		if( typeof element === 'object' ) {
-			element = element.id;
+		if( Object.isElement(element) ) {
+			return true;
 		}
 
 		return document.getElementById(element) !== null;
