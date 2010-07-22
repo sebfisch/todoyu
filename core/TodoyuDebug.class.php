@@ -85,7 +85,7 @@ class TodoyuDebug {
 
 			$arr = get_class_methods($var);
 
-			foreach ($arr as $method) {
+			foreach($arr as $method) {
 				$str .= $method . '(), ';
 			}
 

@@ -76,7 +76,7 @@ class TodoyuHtmlFilter {
 		$words	= explode(' ', $string);
 
 		$out	= '';
-		foreach ($words as $word) {
+		foreach($words as $word) {
 //			$out .= chunk_split($word, $maxLen, ' ') .  ' ';
 			$out .= self::htmlSafeChunkSplit($word, $maxLen, ' ') .  ' ';
 		}

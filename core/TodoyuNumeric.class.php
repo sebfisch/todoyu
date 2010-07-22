@@ -83,7 +83,7 @@ class TodoyuNumeric {
 
 		// Increase value for subversions
 		if( ! empty($matches[4]) ) {
-			switch ($matches[4]) {
+			switch($matches[4]) {
 				case 'rc':
 					$added = 30;
 					break;
