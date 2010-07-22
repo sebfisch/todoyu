@@ -40,7 +40,7 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 		$engines= TodoyuQuickCreateManager::getEngines();
 
 			// If there's only one engine: remove primary (no need of primary entry when there's only a single one)
-		if ( sizeof($engines['all']) === 1 ) {
+		if( sizeof($engines['all']) === 1 ) {
 			unset($engines['primary']);
 		}
 

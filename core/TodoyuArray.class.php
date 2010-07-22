@@ -106,7 +106,7 @@ class TodoyuArray {
 
 			// Make integers
 		foreach($array as $index => $value) {
-			if (! $parseConstants) {
+			if(! $parseConstants) {
 				$array[$index] = intval($value);
 			} else {
 				$array[$index] = defined($value) ? constant($value) : intval($value);
@@ -218,7 +218,7 @@ class TodoyuArray {
 		foreach($unsortedArray as $index => $item) {
 
 			$label	= isset( $item[$sortByLabel] ) ? $item[$sortByLabel] : NULL;
-			if ( $caseSensitive !== true ) {
+			if( $caseSensitive !== true ) {
 				$label	= 	strtolower($label);
 			}
 
@@ -238,7 +238,7 @@ class TodoyuArray {
 			}
 
 				// Filter for duplicate field contents,  if requested
-			if ($avoidDuplicateFieldKey != '') {
+			if($avoidDuplicateFieldKey != '') {
 				$labelKeyArray = self::removeDuplicates($labelKeyArray, $avoidDuplicateFieldKey);
 			}
 

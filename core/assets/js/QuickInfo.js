@@ -194,13 +194,13 @@ Todoyu.QuickInfo = {
 	 */
 	showPopUp: function(x, y) {
 			// Check hide-flag (prevent lapse due to running request while mouseOut happened)
-		if ( ! this.hidden ) {
+		if( ! this.hidden ) {
 			x += 8;
 			y -= 12;
 
 			var popupWidth	= $(this.popupID).getDimensions().width;
 
-			if ( x + 20 > window.innerWidth - popupWidth) {
+			if( x + 20 > window.innerWidth - popupWidth) {
 				x = x - popupWidth - 20;
 			}
 
@@ -217,7 +217,7 @@ Todoyu.QuickInfo = {
 	 * Hide quick-info tooltip
 	 */
 	hide: function() {
-		if ( $(this.popupID) ) {
+		if( $(this.popupID) ) {
 			$(this.popupID).hide();
 
 				// hide-flag: comprehend overlapping of mouseOut and running show request
@@ -269,7 +269,7 @@ Todoyu.QuickInfo = {
 
 		this.loading = false;
 
-		if ( ! this.hidden ) {
+		if( ! this.hidden ) {
 			this.display(name, elementKey, event.pointerX(), event.pointerY());
 		}
 	},

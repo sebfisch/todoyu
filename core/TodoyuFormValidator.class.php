@@ -60,10 +60,10 @@ class TodoyuFormValidator {
 	public static function user($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Multiple user validators? handle each
 		$isAttributesArray = TodoyuArray::getFirstKey($validatorConfig) !== '@attributes';
-		if ( $isAttributesArray ) {
+		if( $isAttributesArray ) {
 			foreach($validatorConfig as $subValidatorConfig) {
 				$result	= self::user($value, $subValidatorConfig, $formElement, $formData);
-				if ( $result === false ) {
+				if( $result === false ) {
 					break;
 				}
 			}
@@ -94,7 +94,7 @@ class TodoyuFormValidator {
 	public static function checkAllow(array $validatorConfig, array $formData) {
 		$allow	= false;
 
-		if ( array_key_exists('allow', $validatorConfig) ) {
+		if( array_key_exists('allow', $validatorConfig) ) {
 			$allowConfig	= $validatorConfig['allow'];
 			$validator		= key($allowConfig);
 			$validatorConfig= $allowConfig[$validator];
@@ -116,7 +116,7 @@ class TodoyuFormValidator {
 	 */
 	public static function fieldEquals(array $validatorConfig, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -126,7 +126,7 @@ class TodoyuFormValidator {
 
 		$value	= $formData[$fieldName];
 
-		if ( is_array($value) && sizeof($value) === 1 ) {
+		if( is_array($value) && sizeof($value) === 1 ) {
 			$value	= array_pop($value);
 		}
 
@@ -146,7 +146,7 @@ class TodoyuFormValidator {
 	 */
 	private static function isNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -168,7 +168,7 @@ class TodoyuFormValidator {
 	 */
 	private static function isNotZeroTime($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -193,7 +193,7 @@ class TodoyuFormValidator {
 	 */
 	private static function isNotZero($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -214,7 +214,7 @@ class TodoyuFormValidator {
 	 */
 	private static function minLength($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -237,7 +237,7 @@ class TodoyuFormValidator {
 	 */
 	private static function maxLength($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -261,7 +261,7 @@ class TodoyuFormValidator {
 	 */
 	private static function max($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions;
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -284,7 +284,7 @@ class TodoyuFormValidator {
 	 */
 	private static function min($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -307,7 +307,7 @@ class TodoyuFormValidator {
 	 */
 	private static function range($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -329,7 +329,7 @@ class TodoyuFormValidator {
 	 */
 	private static function isDecimal($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -348,7 +348,7 @@ class TodoyuFormValidator {
 	 */
 	public static function dateBefore($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -381,13 +381,13 @@ class TodoyuFormValidator {
 	public static function dateNotBefore($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
 		$allow	= self::checkAllow($validatorConfig, $formData);
-		if ( $allow === true ) {
+		if( $allow === true ) {
 			return true;
 		}
 
 			// Validate
 		if( $value == 0 ) {
-			if ( array_key_exists('allowEmpty', $validatorConfig) ) {
+			if( array_key_exists('allowEmpty', $validatorConfig) ) {
 					// Empty is allowed
 				return true;
 			}
@@ -407,7 +407,7 @@ class TodoyuFormValidator {
 	 */
 	public static function dateAfter($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -438,7 +438,7 @@ class TodoyuFormValidator {
 	 */
 	public static function dateNotAfter($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) ) {
+		if( self::checkAllow($validatorConfig, $formData) ) {
 			return true;
 		}
 
@@ -457,7 +457,7 @@ class TodoyuFormValidator {
 	 */
 	public static function dateTimeBefore($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -484,7 +484,7 @@ class TodoyuFormValidator {
 	 */
 	public static function dateTimeNotBefore($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -513,7 +513,7 @@ class TodoyuFormValidator {
 	 */
 	public static function dateTimeAfter($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -538,7 +538,7 @@ class TodoyuFormValidator {
 	 */
 	public static function dateTimeNotAfter($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -559,7 +559,7 @@ class TodoyuFormValidator {
 	 */
 	public static function equals($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -587,7 +587,7 @@ class TodoyuFormValidator {
 	 */
 	public static function minLengthIfNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData)	{
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -614,7 +614,7 @@ class TodoyuFormValidator {
 	 */
 	public static function goodPassword($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -652,7 +652,7 @@ class TodoyuFormValidator {
 	 */
 	public static function unique($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -700,7 +700,7 @@ class TodoyuFormValidator {
 	 */
 	public static function email($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
@@ -728,7 +728,7 @@ class TodoyuFormValidator {
 	 */
 	public static function requiredIfNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 		
@@ -790,7 +790,7 @@ class TodoyuFormValidator {
 	 */
 	public static function validateSubRecords($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
-		if ( self::checkAllow($validatorConfig, $formData) === true ) {
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 

@@ -201,7 +201,7 @@ class TodoyuTime {
 	 * @return	Float
 	 */
 	public static function firstHourLeftOver($hours) {
-		if ( $hours > 1.0 ) {
+		if( $hours > 1.0 ) {
 			$hours	= 1.0;
 		} elseif( $hours <= 0.0 ) {
 			$hours	= 0.0;

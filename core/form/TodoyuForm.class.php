@@ -982,7 +982,7 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	Array
 	 */
 	public function getStorageData(array $formData = null) {
-		if ( ! is_null($formData) ) {
+		if( ! is_null($formData) ) {
 			$this->setFormData($formData);
 		}
 

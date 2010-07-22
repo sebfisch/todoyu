@@ -93,7 +93,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * @param	{String}		type
 	 */
 	openTypePopup: function(ext, type) {
-		if ( ! $('quickcreate') ) {
+		if( ! $('quickcreate') ) {
 			var ctrl 	= 'Quickcreate' + type.toLowerCase();
 			var url		= Todoyu.getUrl(ext, ctrl);
 			var options	= {

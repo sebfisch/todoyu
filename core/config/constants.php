@@ -22,7 +22,7 @@
 define('TODOYU', true);
 
 	// Directory separator shorthand
-if ( ! defined('DIR_SEP') ) {
+if( ! defined('DIR_SEP') ) {
 	define('DIR_SEP', DIRECTORY_SEPARATOR);
 }
 

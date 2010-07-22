@@ -119,7 +119,7 @@ class TodoyuRightsManager {
 	public static function getLastChangeTime() {
 		$timestampFile	= PATH_CACHE . DIR_SEP . 'timeLastRightsChange';
 
-		if ( TodoyuFileManager::isFile($timestampFile) ) {
+		if( TodoyuFileManager::isFile($timestampFile) ) {
 				// Get modification time of file
 			$fileMtime	= filemtime($timestampFile);
 		} else {

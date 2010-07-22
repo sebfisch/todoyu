@@ -736,7 +736,7 @@ class TodoyuInstallerManager {
 			$deletionFiles	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['deleteFiles']);
 			foreach($deletionFiles as $pathFile) {
 				$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);
-				if ( is_file($pathFile) ) {
+				if( is_file($pathFile) ) {
 					unlink($pathFile);
 				}
 			}
@@ -745,7 +745,7 @@ class TodoyuInstallerManager {
 			$deletionFolderContents	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['deleteFolderContents']);
 			foreach($deletionFolderContents as $pathFolder) {
 				$pathFolder	= TodoyuFileManager::pathAbsolute($pathFolder);
-				if ( is_dir($pathFolder) ) {
+				if( is_dir($pathFolder) ) {
 					TodoyuFileManager::deleteFolderContents($pathFolder);
 				}
 			}
@@ -754,7 +754,7 @@ class TodoyuInstallerManager {
 			$deletionFolders	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['deleteFolders']);
 			foreach($deletionFolders as $pathFolder) {
 				$pathFolder	= TodoyuFileManager::pathAbsolute($pathFolder);
-				if ( is_dir($pathFolder) ) {
+				if( is_dir($pathFolder) ) {
 					TodoyuFileManager::deleteFolder($pathFolder);
 				}
 			}

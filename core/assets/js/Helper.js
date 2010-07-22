@@ -134,7 +134,7 @@ Todoyu.Helper = {
 		var i, j, l, s, r;
 	
 		str += ''; 
-		if (m < 1) {
+		if(m < 1) {
 			return str;
 		}
 		 for (i = -1, l = (r = str.split(/\r\n|\n|\r/)).length; ++i < l; r[i] += s) {
@@ -157,7 +157,7 @@ Todoyu.Helper = {
 	fireEvent: function(element, event){
 		var evt;
 		
-		if (document.createEventObject){
+		if(document.createEventObject){
 				// dispatch for IE
 			evt = document.createEventObject();
 

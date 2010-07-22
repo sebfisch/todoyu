@@ -65,12 +65,12 @@ class TodoyuPanelWidgetManager {
 		$panelWidgets	= self::getDefaultPanelWidgets($ext);
 
 		foreach($panelWidgets as $widgetData) {
-			if ( $widgetData['widget'] == $widgetName ) {
-				if ( $configKey == '' ) {
+			if( $widgetData['widget'] == $widgetName ) {
+				if( $configKey == '' ) {
 					return $widgetData['config'];
 				} else {
 					foreach($widgetData['config'] as $key => $value) {
-						if ( $key == $configKey ) {
+						if( $key == $configKey ) {
 							return $value;
 						}
 					}

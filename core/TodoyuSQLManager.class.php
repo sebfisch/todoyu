@@ -550,7 +550,7 @@ class TodoyuSQLManager {
 		foreach($lines as $line) {
 			$line	= trim($line);
 				// Line is not a comment?
-			if ( substr($line, 0, 2) !== '--' && substr($line, 0, 1) !== '#' ) {
+			if( substr($line, 0, 2) !== '--' && substr($line, 0, 1) !== '#' ) {
 				$cleanSQL[]	= $line;
 			}
 		}

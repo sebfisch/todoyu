@@ -77,7 +77,7 @@ class TodoyuNumeric {
 	 * @return	Integer
 	 */
 	public static function getIntVersion($version) {
-		if (!preg_match('/^(\d+)\.(\d+)\.(\d+)(?:(?:\.|-(rc|dev|beta|alpha))(\d+)?)?$/', $version, $matches)) {
+		if(!preg_match('/^(\d+)\.(\d+)\.(\d+)(?:(?:\.|-(rc|dev|beta|alpha))(\d+)?)?$/', $version, $matches)) {
 			return false;
 		}
 
@@ -145,7 +145,7 @@ class TodoyuNumeric {
 	 * @return	Integer
 	 */
 	public static function fraction($fraction = 75, $total = 300) {
-		if ($total > 0) {
+		if($total > 0) {
 			$rc = intval (($fraction/ $total) * 100);
 		} else {
 			TodoyuDebug::printHtml('error in fraction(...) - division by 0!');

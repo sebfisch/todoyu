@@ -35,9 +35,9 @@ class TodoyuRequest {
 	 */
 	public static function getParam($name, $intVal = false) {
 			// Retrieve value from _POST or _GET if set, otherwise set NULL
-		if ( isset($_POST[$name]) ) {
+		if( isset($_POST[$name]) ) {
 			$value	= $_POST[$name];
-		} elseif ( isset($_GET[$name]) ) {
+		} elseif( isset($_GET[$name]) ) {
 			$value	= $_GET[$name];
 		} else {
 			$value	= NULL;

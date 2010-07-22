@@ -183,7 +183,7 @@ class TodoyuFrontend {
 
 		if( is_array($submenu) ) {
 			foreach($submenu as $key => $vals) {
-				if ($vals['key'] == $active) {
+				if($vals['key'] == $active) {
 					$submenu[$key]['active'] = true;
 				}
 			}

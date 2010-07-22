@@ -69,7 +69,7 @@ class TodoyuDebug {
 	public static function phpFormat($var, $indent = '&nbsp;&nbsp;', $niv = 0) {
 		$str = '';
 
-		if ( is_array($var) ) {
+		if( is_array($var) ) {
 			$str .= 'array(<br />';
 
 			foreach($var as $k=>$v) {
@@ -122,7 +122,7 @@ class TodoyuDebug {
 
 		$debug	= render($tmpl, $data);
 
-		if ( $return === true ) {
+		if( $return === true ) {
 			return $debug;
 		} else {
 			echo $debug;

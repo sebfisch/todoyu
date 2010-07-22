@@ -181,7 +181,7 @@ class TodoyuRoleManager {
 
 			// New created record?
 		$idRole	= intval($data['id']);
-		if ( $idRole == 0 ) {
+		if( $idRole == 0 ) {
 			$idRole	= self::addRole(array());
 		}
 

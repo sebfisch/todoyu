@@ -134,7 +134,7 @@ class TodoyuFileManager {
 			self::deleteFolderContents($pathFolder, true);
 
 			$result	= rmdir($pathFolder);
-			if ( $result === false ) {
+			if( $result === false ) {
 				Todoyu::log('Folder deletion failed: ' . $pathFolder, TodoyuLogger::LEVEL_NOTICE);
 			}
 		} else {
@@ -480,12 +480,12 @@ class TodoyuFileManager {
 		foreach($elements as $element) {
 			if( is_file($pathFolder . DIR_SEP . $element) ) {
 					// No filters defined: add file to results array
-				if ( sizeof($filters) === 0) {
+				if( sizeof($filters) === 0) {
 					$files[] = $element;
 				} else {
 						// Check string filters
 					foreach($filters as $filterString) {
-						if ( strpos($element, $filterString) !== false ) {
+						if( strpos($element, $filterString) !== false ) {
 							$files[] = $element;
 							break;
 						}

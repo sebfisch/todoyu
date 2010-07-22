@@ -47,7 +47,7 @@ class TodoyuSQLParser {
 					$match
 				);
 
-				if ( strlen($tableName) > 0 ) {
+				if( strlen($tableName) > 0 ) {
 					$tableNames[]	= $tableName;
 				}
 			}
@@ -115,7 +115,7 @@ class TodoyuSQLParser {
 		$pattern= '/(?<=`).*(?=`)/';
 		preg_match($pattern, $sql, $matches);
 
-		if ( count($matches) > 0 ) {
+		if( count($matches) > 0 ) {
 			$name	= $matches[0];
 		} else {
 			$name	= false;
@@ -166,7 +166,7 @@ class TodoyuSQLParser {
 		$pattern= '/(?<=\\)\\s)[a-zA-Z]*/';
 		preg_match($pattern, $sql, $matches);
 
-		if ( count($matches) > 0 ) {
+		if( count($matches) > 0 ) {
 			$attributes	= trim($matches[0]);
 			$attributes	= ! in_array($attributes, array('NOT', 'DEFAULT')) ? $attributes : '';
 		} else {
@@ -189,7 +189,7 @@ class TodoyuSQLParser {
 		$pattern= '/(NOT NULL|NULL)/';
 		preg_match($pattern, $sql, $matches);
 
-		if ( count($matches) > 0) {
+		if( count($matches) > 0) {
 			$null	= $matches[0];
 		} else {
 			$null	= false;
@@ -218,7 +218,7 @@ class TodoyuSQLParser {
 //		$pattern= '/(DEFAULT|default)\\s\'[0-9a-zA-Z_]+\'/';
 //		preg_match($pattern, $columnSQL, $matches);
 //
-//		if ( count($matches) > 0 ) {
+//		if( count($matches) > 0 ) {
 //			$default	= $matches[0];
 //			$default	= str_replace('default ', 'DEFAULT ', $default);
 //		} else {
@@ -266,10 +266,10 @@ class TodoyuSQLParser {
 	 * @param	String	$tablesSql
 	 */
 	public function getAllTableStructures(array $tableNames, $tablesSql = '') {
-		if ($tablesSql == '') {
+		if($tablesSql == '') {
 			$tablesSql	= self::getInstalledExtTablesSqls();
 		}
-		if ( count($tableNames) == 0 ) {
+		if( count($tableNames) == 0 ) {
 			$tableNames	= TodoyuSQLParser::extractTableNames($tablesSql);
 		}
 
@@ -285,13 +285,13 @@ class TodoyuSQLParser {
 				// Identify table, collect all column definitions per table
 			$tableName	= self::extractSingleTableName($tableSql);
 
-			if ( $tableName != '' ) {
+			if( $tableName != '' ) {
 				$tableColumns	= self::extractColumns($tableSql);
 
 					// Append columns to table structure data
 				$structures[$tableName]['columns']	= array_merge($structures[$tableName]['columns'], $tableColumns);
 
-				if (! array_key_exists('keys', $structures[$tableName]) ) {
+				if(! array_key_exists('keys', $structures[$tableName]) ) {
 					$structures[$tableName]['keys']		= self::extractTableKeys($tableSql);
 				}
 			}
@@ -317,16 +317,16 @@ class TodoyuSQLParser {
 //		$pattern	= '/(?<=\\(\\s)(.|\\s)*(?=\\).)/';
 		preg_match($pattern, $sql, $matches);
 
-		if ( count($matches) > 0 ) {
+		if( count($matches) > 0 ) {
 			$allColumnsSql	= $matches[0];
 				// Split into columns
 			$colsSqlArr	= explode(',', $allColumnsSql);
 			foreach($colsSqlArr as $columnSql) {
 				$columnSql	= trim($columnSql);
-				if ( strstr($columnSql, 'PRIMARY KEY') === false ) {
+				if( strstr($columnSql, 'PRIMARY KEY') === false ) {
 					$columnName	= self::extractColumnName($columnSql);
 
-					if ( strlen($columnName) > 0 ) {
+					if( strlen($columnName) > 0 ) {
 						$columns[$columnName]['field']		= '`' . $columnName . '`';
 						$columns[$columnName]['type']		= self::extractColumnType($columnSql);
 		//				$columns[$columnName]['collation']	= '';
@@ -337,7 +337,7 @@ class TodoyuSQLParser {
 						$columns[$columnName]['extra']		= self::extractColumnExtra($columnSql, $columns[$columnName]);
 							// 'extra' and 'attributes' confused? swop them!
 							//	@todo fix extraction regex to prevent this
-						if ( strstr($columns[$columnName]['extra'], 'SIGNED') !== false && $columns[$columnName]['attributes'] == '' ) {
+						if( strstr($columns[$columnName]['extra'], 'SIGNED') !== false && $columns[$columnName]['attributes'] == '' ) {
 							$columns[$columnName]['attributes']	= strtolower($columns[$columnName]['extra']);
 							$columns[$columnName]['extra']	= '';
 						}
@@ -372,9 +372,9 @@ class TodoyuSQLParser {
 				$dbColumn	= $columnStructure;
 				$sqlColumn	= $sqlStructures[$tableName]['columns'][$columnName];
 
-				if ( is_array($sqlColumn) ) {
+				if( is_array($sqlColumn) ) {
 					$colDiff	= array_diff_assoc($sqlColumn, $dbColumn);
-					if ( count($colDiff) === 0 ) {
+					if( count($colDiff) === 0 ) {
 							// Remove identic defined
 						unset($sqlStructures[$tableName]['columns'][$columnName]);
 					} else {
@@ -390,23 +390,23 @@ class TodoyuSQLParser {
 			// Cleanup
 		foreach($sqlStructures as $tableName => $tableStructure) {
 				// Remove all tables that have been emptied completely
-			if ( count($tableStructure['columns']) === 0 ) {
+			if( count($tableStructure['columns']) === 0 ) {
 				unset($sqlStructures[$tableName]);
 			} else {
 
 					// Parse diff result, add updating queries
 				foreach($sqlStructures[$tableName]['columns'] as $colName => $colStructure) {
-					if ( strstr($colName, '_SQL') === false && strstr($colName, '_DB') === false && strstr($colName, '_DIFF') === false ) {
+					if( strstr($colName, '_SQL') === false && strstr($colName, '_DB') === false && strstr($colName, '_DIFF') === false ) {
 						$action	= '';
 
-						if (array_key_exists($tableName, $newTables) ) {
-							if ( $colName === 'id' ) {
+						if(array_key_exists($tableName, $newTables) ) {
+							if( $colName === 'id' ) {
 									// Query to create table with id-field
 								$action	= 'CREATE';
 							}
 						} else {
 								// No Diff? column is to be added new
-							if ( ! array_key_exists($colName . '_DIFF', $sqlStructures[$tableName]['columns']) ) {
+							if( ! array_key_exists($colName . '_DIFF', $sqlStructures[$tableName]['columns']) ) {
 								$action	= 'ADD';
 								$sqlStructures[$tableName]['columns'][$colName]['action']	= $action;
 							} else {
@@ -419,7 +419,7 @@ class TodoyuSQLParser {
 							}
 						}
 
-						if ( $action !== '' ) {
+						if( $action !== '' ) {
 								// Get query
 							$sqlStructures[$tableName]['columns'][$colName]['query']	= self::getUpdatingQuery($action, $tableName, $colName, $sqlStructures[$tableName]['columns'][$colName], $sqlStructuresBak);
 						}

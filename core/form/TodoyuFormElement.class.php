@@ -267,7 +267,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$cleanOptions	= array();
 
 		foreach($options as $key => $option) {
-			if ( ! in_array($option['value'], $values) ) {
+			if( ! in_array($option['value'], $values) ) {
 				$cleanOptions[$key]	= $option;
 			}
 		}
@@ -289,7 +289,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 			// Ensure listed attributes are an array, so new ones are addable
 		$isAttributesArray = TodoyuArray::getFirstKey($userValidator) !== '@attributes';
-		if ( ! $isAttributesArray ) {
+		if( ! $isAttributesArray ) {
 			$attributes		= $userValidator;
 			$userValidator	= array('0'	=> $attributes);
 		}
