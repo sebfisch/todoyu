@@ -83,8 +83,8 @@ class TodoyuHtmlFilterTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testGetSubstrHTML() {
 //		$html	= '<strong>sdfkljasdf</strong><ul><li>item</li><li>other item</li></ul><em>sjdfskjdf</em>';
-//		$substr	= TodoyuHtmlFilter::entitySafeLimitWordsLen($html, 20);		
-		
+//		$substr	= TodoyuHtmlFilter::entitySafeLimitWordsLen($html, 20);
+
 		// Remove the following lines when you implement this test.
 		$this->markTestIncomplete(
 		 'This test has not been implemented yet.'

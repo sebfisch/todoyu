@@ -134,7 +134,7 @@ class TodoyuFormValidator {
 	}
 
 
-	
+
 	/**
 	 * Validate value not being empty
 	 *
@@ -316,7 +316,7 @@ class TodoyuFormValidator {
 		return TodoyuValidator::isInRange($value, $range[0], $range[1]);
 	}
 
-	
+
 
 	/**
 	 * Check whether value is decimal

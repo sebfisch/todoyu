@@ -7,7 +7,7 @@
  */
 
 Todoyu.Ext.project.Task = {
-	
+
 	/**
 	 * To initialize stuff when document is loaded, use the init() function
 	 * JS functions registered in PHP with Page::addJsOnloadedFunction() are called when DOM is loaded
@@ -34,7 +34,7 @@ Todoyu.Ext.project.Task = {
 	 * @param	{Event}		event
 	 */
 	onSomeElementChange: function(event) {
-		
+
 	}
 
 }; // Don't forget the closing semicolon. IE hates that!

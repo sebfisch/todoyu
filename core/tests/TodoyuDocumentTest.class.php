@@ -50,7 +50,7 @@ class TodoyuDocumentTest extends PHPUnit_Framework_TestCase {
 	 * Test TodoyuArray::getColumn
 	 */
 	public function testGeneral() {
-		
+
 
 	}
 

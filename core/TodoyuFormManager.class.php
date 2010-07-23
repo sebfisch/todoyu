@@ -57,7 +57,7 @@ class TodoyuFormManager {
 	 * @param	Array		$data
 	 * @return	String
 	 */
-	public static function renderSubformRecord($xmlPath, $fieldName, $formName, $index = 0, $idRecord = 0, array $data = array()) {
+	public static function renderSubFormRecord($xmlPath, $fieldName, $formName, $index = 0, $idRecord = 0, array $data = array()) {
 		$index		= intval($index);
 		$idRecord	= intval($idRecord);
 

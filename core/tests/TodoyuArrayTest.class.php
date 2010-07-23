@@ -285,9 +285,9 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testFromSimpleXml() {
 		$simpleXml	= simplexml_load_file(PATH_CORE . '/tests/files/xml.xml');
-		
+
 		$array		= TodoyuArray::fromSimpleXml($simpleXml);
-		
+
 
 		$this->assertEquals('John Resig', $array['book'][1]['author']);
 		$this->assertEquals('CHF 72.20', $array['book'][0]['price']);
@@ -407,7 +407,7 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		$array1 = array(1,2,3);
 		$array2 = array(4,5,6);
 		$array3 = array(6,2,7);
-	
+
 		$result	= TodoyuArray::mergeUnique($array1, $array2, $array3);
 
 		$this->assertTrue(is_array($result));
@@ -430,7 +430,7 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 				9, 10, 11
 			))
 		);
-		
+
 		$result	= TodoyuArray::flatten($array);
 
 		$this->assertTrue(is_array($result));
@@ -469,7 +469,7 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 			array('id'	=> 46),
 			array('id'	=> 46)
 		);
-		
+
 		$result	= TodoyuArray::removeDuplicates($array, 'id');
 
 		$this->assertEquals(3, sizeof($result));
@@ -558,11 +558,11 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 			'c'	=> array(
 				'id'	=> 3,
 				'name'	=> 'Jagger'
-			)		
+			)
 		);
-		
+
 		$result	= TodoyuArray::useFieldAsIndex($array, 'id');
-		
+
 		$this->assertEquals('Jagger', $result[3]['name']);
 		$this->assertEquals(3, sizeof($result));
 		$this->assertEquals('a', $result[1]['_oldIndex']);

@@ -53,7 +53,7 @@ Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 	'locale'	=> array(
 		'process'	=> 'TodoyuInstallerManager::processLocale',
 		'render'	=> 'TodoyuInstallerRenderer::renderLocale',
-		'tmpl'		=> '00_locale.tmpl'		
+		'tmpl'		=> '00_locale.tmpl'
 	),
 		// Accept end user license
 	'license' => array(

@@ -78,7 +78,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$testStart	= mktime(0, 0, 0, 8, 2, 2010);
 		$weekStart	= TodoyuTime::getWeekStart($time);
 
-		$this->assertEquals($testStart, $weekStart);		
+		$this->assertEquals($testStart, $weekStart);
 	}
 
 	public function testGetMonthStart() {
@@ -188,10 +188,10 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$currentLocale	= Todoyu::getLocale();
 
 		Todoyu::setLocale('de_DE');
-		
+
 		$format		= TodoyuTime::getFormat('DshortD2MlongY4');
 		$expected	= '%a, %d. %B %Y';
-		
+
 		$this->assertEquals($expected, $format);
 
 		$format		= TodoyuTime::getFormat('notavailableformatstring');
@@ -199,6 +199,12 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertNull($format);
 	}
 
+
+
+	/**
+	 * @todo	comment
+	 * @return void
+	 */
 	public function testParseDateString() {
 		$time	= mktime(13, 46, 22, 4, 19, 2016);
 		$date1	= date('r', $time);
@@ -211,6 +217,11 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($time, $time2);
 	}
 
+
+	/**
+	 * @todo	comment
+	 * @return void
+	 */
 	public function testParseDate() {
 		$dateCompare	= strtotime('2010-03-22');
 		$dateString1	= '2010-03-22';

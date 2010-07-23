@@ -56,7 +56,7 @@ Todoyu.Installer = {
 		$('locale').value = locale;
 		$$('form').first().submit()
 	},
-	
+
 
 	/**
 	 * Disable given text box if selected value == 0
@@ -108,7 +108,7 @@ Todoyu.Installer = {
 		var passwordOk	= this.validatePassword();
 
 		var submitButton= $$('button')[0];
-		
+
 		if ( companyOk && firstnameOk && lastnameOk && passwordOk ) {
 			submitButton.show();
 		} else {

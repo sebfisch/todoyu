@@ -230,7 +230,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 		$newList	= TodoyuString::addToList($list, 4);
 
-		$this->assertEquals('1,2,3,4', $newList);		
+		$this->assertEquals('1,2,3,4', $newList);
 	}
 
 
@@ -278,7 +278,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 		$noLabel	= TodoyuString::formatSize($sizeB, null, true);
 		$expectNoL	= '756';
-		
+
 		$this->assertEquals($expectNoL, $noLabel);
 	}
 

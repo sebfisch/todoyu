@@ -71,7 +71,7 @@ class TodoyuNumeric {
 
 	/**
 	 * Get integer representation of version string
-	 * Borrowed from typo3
+	 * Borrowed from TYPO3
 	 *
 	 * @param	String		$version
 	 * @return	Integer
@@ -88,16 +88,13 @@ class TodoyuNumeric {
 					$added = 30;
 					break;
 
-
 				case 'beta':
 					$added = 20;
 					break;
 
-
 				case 'alpha':
 					$added = 10;
 					break;
-
 
 				case 'dev':
 					$added = 0;
