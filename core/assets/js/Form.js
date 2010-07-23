@@ -233,11 +233,24 @@ Todoyu.Form = {
 		};
 		var idPopup	= 'popup-' + idField;
 
-		title	= title ? title : 'Form Wizard';
-		width	= width > 0 ? width : 480;
-		height	= height > 0 ? height : 300;
+		title	= ( title ) ? title : 'Form Wizard';
+		width	= ( width > 0 ) ? width : 480;
+		height	= ( height > 0 ) ? height : 300;
 
 		return Todoyu.Popup.openWindow(idPopup, title, width, url, options);
+	},
+
+
+
+	/**
+	 * Live-validation and correction of float value input field: on keyUp event replace ',' by '.'
+	 *
+	 * @param	{Element}	field
+	 */
+	assistFloatInput: function(field) {
+		var val	= $F(field).replace(',', '.');
+
+		$(field).value = val;
 	},
 
 
@@ -246,7 +259,7 @@ Todoyu.Form = {
 	 * Add an iFrame to the document body
 	 *
 	 * @param	{String}		key			Identifier
-	 * @return	{Element}		IFrame element
+	 * @return	{Element}					IFrame element
 	 */
 	addIFrame: function(key) {
 		var idIFrame= 'upload-iframe-' + key;
@@ -259,7 +272,6 @@ Todoyu.Form = {
 			});
 
 			iFrame.hide();
-
 			$(document.body).insert(iFrame);
 		}
 
@@ -308,4 +320,5 @@ Todoyu.Form = {
 
 		$(baseID + '-listItem-' + value).toggleClassName('selected');
 	}
+
 };
