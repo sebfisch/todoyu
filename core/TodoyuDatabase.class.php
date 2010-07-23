@@ -397,8 +397,8 @@ class TodoyuDatabase {
 		$fieldValues	= implode(',', $this->quoteArray(array_values($fieldNameValues), $noQuoteFields));
 
 		$query = '	INSERT INTO ' . $table
-			. ' (' . $fieldNames . ')'
-			. ' VALUES (' . $fieldValues . ')';
+				. ' (' . $fieldNames . ')'
+				. ' VALUES (' . $fieldValues . ')';
 
 		return $query;
 	}
@@ -754,6 +754,11 @@ class TodoyuDatabase {
 	 */
 	public function getLastQuery() {
 		$index	= sizeof($this->queryHistory);
+
+			// Inform about disabled history
+		if( ! $this->config['queryHistory'] ) {
+			Todoyu::log('Tried to get last query, but history is disabled. Change in db config', TodoyuLogger::LEVEL_NOTICE);
+		}
 
 		return $this->queryHistory[$index-1];
 	}
