@@ -47,7 +47,7 @@ Todoyu.PanelWidget = {
 	},
 
 
-	
+
 	/**
 	 * Save toggle status (expanded or collapsed)
 	 *

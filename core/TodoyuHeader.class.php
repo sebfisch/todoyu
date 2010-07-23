@@ -214,7 +214,7 @@ class TodoyuHeader {
 		self::sendHTTPHeader(503);
 	}
 
-	
+
 
 	/**
 	 * Send Todoyu error header, which marks the current response as failed

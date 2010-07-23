@@ -169,7 +169,7 @@ class TodoyuBrowserInfo {
 	public static function getBrowserLocale() {
 		$locale		= false;
 		$accepted	= explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-		
+
 		foreach($accepted as $localeString) {
 			if( strstr($localeString, '-') ) {
 				$localeParts= explode('-', $localeString);
@@ -177,7 +177,7 @@ class TodoyuBrowserInfo {
 				break;
 			}
 		}
-		
+
 		return $locale;
 	}
 

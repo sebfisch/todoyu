@@ -38,7 +38,7 @@ Todoyu.Helper = {
 
 			case 'number':
 				return Math.floor(mixedvar);
-				
+
 			default:
 				return 0;
 		}
@@ -98,7 +98,7 @@ Todoyu.Helper = {
 		return Math.round((value*factor))/factor;
 	},
 
-	
+
 
 	/**
 	 * Uppercase the first character of every word in a string
@@ -130,9 +130,9 @@ Todoyu.Helper = {
 		var m = ((arguments.length >= 2) ? arguments[1] : 75 );
 		var b = ((arguments.length >= 3) ? arguments[2] : "\n" );
 		var c = ((arguments.length >= 4) ? arguments[3] : false);
-	
+
 		var i, j, l, s, r;
-	
+
 		str += ''; 
 		if(m < 1) {
 			return str;
@@ -156,7 +156,7 @@ Todoyu.Helper = {
 	 */
 	fireEvent: function(element, event){
 		var evt;
-		
+
 		if(document.createEventObject){
 				// dispatch for IE
 			evt = document.createEventObject();

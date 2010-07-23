@@ -53,5 +53,5 @@ Todoyu.Headlet.AjaxLoader = {
 			'duration': 0.3
 		});
 	}
-	
+
 };

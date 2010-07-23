@@ -25,31 +25,64 @@
  * @subpackage	[Subpackage]
  */
 class TodoyuCountry extends TodoyuBaseObject {
-	
+
+	/**
+	 * Constructor
+	 *
+	 * @param	Integer		$idCountry
+	 */
 	public function __construct($idCountry) {
 		parent::__construct($idCountry, 'static_country');		
 	}
-	
+
+
+
+	/**
+	 * Get phone code of country
+	 *
+	 * @return	String
+	 */
 	public function getPhoneCode() {
 		return $this->get('phone');
 	}
-	
+
+
+
+	/**
+	 * Get ISO alpha2 code of country
+	 *
+	 * @return	String
+	 */
 	public function getCode2() {
 		return $this->get('iso_alpha2');
 	}
-	
-	
+
+
+
+	/**
+	 * Get ISO alpha2 code of country
+	 *
+	 * @return	String
+	 */
 	public function getCode3() {
 		return $this->get('iso_alpha3');
 	}
 
+
+
+	/**
+	 * Get ISO number of country
+	 *
+	 * @return	String
+	 */
 	public function getIsoNum() {
 		return $this->get('iso_num');
 	}
 
 
+
 	/**
-	 * Get currency of the country
+	 * Get currency of country
 	 *
 	 * @return		TodoyuCurrency
 	 */
@@ -62,14 +95,17 @@ class TodoyuCountry extends TodoyuBaseObject {
 
 		return TodoyuCurrencyManager::getCurrency($idCurrency);
 	}
-	
+
+
+
+	/**
+	 * Get country label
+	 *
+	 * @return	String
+	 */
 	public function getLabel() {
 		return TodoyuLanguage::getLabel('static_country.' . $this->getCode3());
 	}
-
-
-	
-	
 
 }
 

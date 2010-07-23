@@ -135,7 +135,7 @@ todoyu 2.0.0 - released 2010-05-10
 
 
 
-todoyu 2.0.0-rc2 - released 2010-03-29	
+todoyu 2.0.0-rc2 - released 2010-03-29
 	* Feature: JSCalendar lang file usage according to system language
 	* Feature: Improved role presets and related rights checks
 	* Feature: New core class: TodoyuFunction
@@ -163,7 +163,7 @@ todoyu 2.0.0-rc2 - released 2010-03-29
 	* Feature: The task header has now a dynamic part which is used by extensions. Currently timetracking adds the billable time there
 	* Feature: Hovering a persons name shows a quickinfo like for events in the calendar
 	* Changed: Dev extension is no longer part of the basic package. Now available as "public". No useful functionality yet
-	* Changed: Bugtracker is available as public extension	
+	* Changed: Bugtracker is available as public extension
 	* Changed: Changed license to BSD
 	* Changed: No more (there was one left) global variables, $GLOBALS['config'] is now Todoyu::$GLOBALS
 	* Changed: Cleaned and revised installer (optional) demo data
@@ -201,8 +201,8 @@ todoyu 2.0.0-rc2 - released 2010-03-29
 	* Bugfix: Fixed context menu to work everywhere now
 	* Bugfix: Tons of bugfixes and usability improvements (from internal testing and reported by the community)
 
-	
-	
+
+
 todoyu 2.0.0-rc1 - released 2010-01-29
 	* Feature: Demo data
 	* Feature: Project status filter panel widget
@@ -243,7 +243,7 @@ todoyu 2.0.0-beta3 - released 2010-01-14
 	* Feature: Licence agreement for installer
 	* Feature: New record wizard (for users)
 	* Changed: Installer can upgrade from any version
-	* Changed: CSS cleanup	
+	* Changed: CSS cleanup
 	* Changed: Redesigned timetracking headlet
 	* Changed: Renamed customer to company for clearer naming
 	* Changed: Added error message if autocomplete list is empty

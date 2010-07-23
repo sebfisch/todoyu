@@ -58,7 +58,7 @@ class TodoyuTemplateDocumentFactory {
 		return $document;
 	}
 
-	
+
 
 	/**
 	 * Get the class name for a document type
@@ -69,8 +69,8 @@ class TodoyuTemplateDocumentFactory {
 	 */
 	private static function getTypeClass($type) {
 		$className	= 'TodoyuTemplateDocument' . ucfirst($type);
-		
-		return class_exists($className, true) ? $className : false;		
+
+		return class_exists($className, true) ? $className : false;
 	}
 
 }

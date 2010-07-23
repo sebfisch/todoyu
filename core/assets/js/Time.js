@@ -106,10 +106,10 @@ Todoyu.Time = {
 	 * @param	{String}		step		'month' / other		@todo change into boolean if there's no more values
 	 * @param	{String}		direction	'up' / 'down'
 	 * @return	{Number}
-	 */		
+	 */
 	getShiftedTime: function(baseTime, step, direction) {
 		baseTime	= this.getDayStart(baseTime);
-		
+
 		var factor	= (direction === 'up' ? 1 : -1);
 		var date	= new Date(baseTime * 1000);
 
@@ -119,7 +119,7 @@ Todoyu.Time = {
 				date.setMonth(0);
 			} else if( direction === 'down' && date.getMonth() == 0 ) {
 				date.setYear(date.getFullYear() - 1);
-				date.setMonth(11);		
+				date.setMonth(11);
 			} else {
 				date.setMonth(date.getMonth() + factor);
 			}
@@ -202,9 +202,9 @@ Todoyu.Time = {
 
 		return 32 - new Date(year, month, 32).getDate();
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Get date string in format YYYY-MM-DD
 	 * 
@@ -212,11 +212,12 @@ Todoyu.Time = {
 	 */
 	getDateString: function(time) {
 		var date = new Date(time*1000);
-		
+
 		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth()+1) + '-' + date.getDate();
 	},
-	
-	
+
+
+
 	/**
 	 * Get date string with time part in format YYYY-MM-DD HH:MM
 	 * 
@@ -228,7 +229,7 @@ Todoyu.Time = {
 		}
 
 		var date = new Date(time * 1000);
-		
+
 		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth()+1) + '-' + Todoyu.Helper.twoDigit(date.getDate()) + ' ' + Todoyu.Helper.twoDigit(date.getHours()) + ':' + Todoyu.Helper.twoDigit(date.getMinutes());
 	}
 

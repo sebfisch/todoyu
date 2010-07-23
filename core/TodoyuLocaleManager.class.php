@@ -66,10 +66,10 @@ class TodoyuLocaleManager {
 	 * @return	Array
 	 */
 	public static function getAvailableLocales() {
-		return TodoyuArray::assure(Todoyu::$CONFIG['LOCALE']['available']);	
+		return TodoyuArray::assure(Todoyu::$CONFIG['LOCALE']['available']);
 	}
 
-	
+
 
 	/**
 	 * Get all names of a locale which may exists on a system

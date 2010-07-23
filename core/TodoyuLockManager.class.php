@@ -145,7 +145,7 @@ class TodoyuLockManager {
 
 		Todoyu::db()->freeResult($result);
 
-		return $numRows;		
+		return $numRows;
 	}
 
 

@@ -197,7 +197,7 @@ class TodoyuRightsManager {
 		$rightName		= $rightParts[1];
 
 		$found			= false;
-		
+
 		foreach(self::$checkRightsCache[$extKey] as $section) {
 			foreach($section as $sectionElements) {
 				if( $rightSection === $sectionElements['@attributes']['name'] ) {
@@ -226,8 +226,14 @@ class TodoyuRightsManager {
 			Todoyu::log('Right not found: ' . $extKey . '::' . $right . ' **' . $path . ':' . $position['line'] . '**', TodoyuLogger::LEVEL_SECURITY);
 		}
 	}
-	
-	
+
+
+
+	/**
+	 * Get step number within rights check
+	 *
+	 * @return	Mixed
+	 */
 	private static function getRightsCheckPosition() {
 		$backtrace	= debug_backtrace();
 		$functions	= array('allowed');

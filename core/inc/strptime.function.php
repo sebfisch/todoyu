@@ -89,7 +89,7 @@ function strptime_strToDate($date, $format) {
 	$date	= str_ireplace('am', '', $date);
 		// Remove AM/PM marker
 	$format	= trim(str_replace('%p', '', $format));
-	
+
 		// Check for PM, remove it and add 12 to the hour
 	if( stripos($date, 'pm') !== false ) {
 		if( preg_match('/.* ((\d{2}):(\d{2}) ?pm).*/i', $date, $matchesPM) === 1 ) {
@@ -135,7 +135,7 @@ function strptime_strToDate($date, $format) {
 	for($i=0, $j=count($id); $i<$j; $i++) {
 		$ret[$id[$i]] = $dp[$i+1];
 	}
-	
+
 	//echo '<pre>';
 	//print_r($ret);
 	//echo '</pre>';

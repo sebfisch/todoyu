@@ -60,7 +60,7 @@ class TodoyuStaticRecords {
 	public static function getRecord($type, $idRecord) {
 		$table		= self::getTable($type);
 		$idRecord	= intval($idRecord);
-		
+
 		return TodoyuRecordManager::getRecordData($table, $idRecord);
 	}
 
@@ -211,7 +211,7 @@ class TodoyuStaticRecords {
 	public static function getCountry($idCountry) {
 		$idCountry	= intval($idCountry);
 
-		return self::getRecord('country', $idCountry);	
+		return self::getRecord('country', $idCountry);
 	}
 
 
@@ -229,7 +229,7 @@ class TodoyuStaticRecords {
 		$table	= 'static_country';
 		$where	= '	iso_num	= ' . $countryIsoNumber;
 
-		return Todoyu::db()->getRecordByQuery($fields, $table, $where);		
+		return Todoyu::db()->getRecordByQuery($fields, $table, $where);
 	}
 
 

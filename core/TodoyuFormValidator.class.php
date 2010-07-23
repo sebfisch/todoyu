@@ -731,7 +731,7 @@ class TodoyuFormValidator {
 		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
-		
+
 			// Check if all fields are empty
 		$fieldsToCheck	= explode(',', $validatorConfig['fields']);
 		$exceptFields	= isset($validatorConfig['except']) ? explode(',', $validatorConfig['except']) : false;

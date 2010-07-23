@@ -59,7 +59,7 @@ Todoyu.LoaderBox = {
 		if( blockScreen ) {
 			this._showScreenBlock();
 		}
-		
+
 		this.box.show();
 	},
 

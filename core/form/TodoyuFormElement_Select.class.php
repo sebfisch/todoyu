@@ -51,7 +51,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 * Init
 	 */
 	protected function init() {
-		
+
 	}
 
 

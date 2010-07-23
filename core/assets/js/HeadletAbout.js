@@ -264,7 +264,6 @@ Todoyu.Headlet.About = {
 			});
 		}
 
-
 	}
-	
+
 };

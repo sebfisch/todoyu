@@ -48,11 +48,11 @@ class TodoyuImageManager {
 		}
 
 			// Load image based on filetype
-		$image	= self::loadImage($pathSource, $typeSource);		
+		$image	= self::loadImage($pathSource, $typeSource);
 
 		if( $image !== false ) {
 			$newDimensions =	self::getDimensions($sourceInfo[0], $sourceInfo[1], $newMaxWidth, $newMaxHeight, $upscale);
-			
+
 			$newImage	= imagecreatetruecolor($newDimensions['width'], $newDimensions['height']);
 			imagealphablending($newImage, false);
 
@@ -77,7 +77,7 @@ class TodoyuImageManager {
 	public static function loadImage($pathFile, $type) {
 		$ext		= self::getExt($type);
 		$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);
-		
+
 		switch($ext) {
 			case 'x-png':
 			case 'png':
@@ -150,7 +150,7 @@ class TodoyuImageManager {
 	 * Get image extension type from mimetype or extension
 	 *
 	 * @param	String		$type		image/gif or gif
-	 * @return	String		
+	 * @return	String
 	 */
 	public static function getExt($type) {
 		if( strstr($type, '/') !== false ) {
@@ -161,7 +161,8 @@ class TodoyuImageManager {
 
 		return $ext;
 	}
-	
+
+
 
 	/**
 	 * Get resize factor for image resizing

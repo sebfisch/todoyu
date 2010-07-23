@@ -190,7 +190,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			if( ! is_array($value) ) {
 				if( strpos($value, '#') !== false ) {
 					$this->config[$key] = $this->getForm()->parseWithFormData($value);
-				}				
+				}
 			}
 		}
 
@@ -390,7 +390,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 */
 	public function setValue($value, $updateForm = true) {
 		$this->setAttribute('value', $value);
-		
+
 		if( $updateForm ) {
 			$this->updateFormData($value);
 		}
@@ -544,7 +544,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 */
 	private final function runValidator($validatorName, array $validatorConfig) {
 		$isValid = TodoyuFormValidator::validate($validatorName, $this->getStorageData(), $validatorConfig, $this, $this->getForm()->getFormData());
-	
+
 			// If validation failed, set error message
 		if( $isValid === false ) {
 			$this->setErrorTrue();
@@ -729,7 +729,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		return $wizardConf;
 	}
 
-	
+
 
 	/**
 	 * Enable a form field

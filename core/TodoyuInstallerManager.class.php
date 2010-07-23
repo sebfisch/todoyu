@@ -122,7 +122,7 @@ class TodoyuInstallerManager {
 	 */
 	public static function processDbSelect(array $data) {
 		$result		= array();
-		
+
 		$database	= trim($data['database']);
 		$databaseNew= trim($data['database_new']);
 
@@ -247,7 +247,7 @@ class TodoyuInstallerManager {
 			$emailOk	= TodoyuString::isValidEmail(trim($data['email']));
 			$companyOk	= strlen(trim($data['company'])) >= 1;
 			$firstnameOk= strlen(trim($data['firstname'])) >= 1;
-			$lastnameOk	= strlen(trim($data['lastname'])) >= 1;			
+			$lastnameOk	= strlen(trim($data['lastname'])) >= 1;
 			$passwordOk	= strlen(trim($data['password'])) >= 5 && $data['password'] === $data['password_confirm'];
 
 				// Verified. save account data
@@ -474,7 +474,7 @@ class TodoyuInstallerManager {
 	}
 
 
-	
+
 	/**
 	 * Update admin-user password (and username)
 	 *
@@ -874,7 +874,7 @@ class TodoyuInstallerManager {
 
 	}
 
-	
+
 
 	/**
 	 * Run version updates.
@@ -883,13 +883,13 @@ class TodoyuInstallerManager {
 	public static function runVersionUpdates() {
 		TodoyuDebug::printInFireBug('runVersionUpdates');
 		$lastVersion	= self::getLastVersion();
-		
+
 		self::runVersionUpdatesSQL($lastVersion);
 		self::runVersionUpdatesPHP($lastVersion);
 
 		self::saveCurrentVersion();
 	}
-	
+
 
 
 	/**
@@ -906,7 +906,7 @@ class TodoyuInstallerManager {
 			TodoyuSQLManager::executeQueriesFromFile($baseFolder . '/' . $updateFile);
 		}
 	}
-	
+
 
 
 	/**
@@ -966,7 +966,7 @@ class TodoyuInstallerManager {
 	}
 
 
-	
+
 	/**
 	 * Find the last version of todoyu (and the database)
 	 * Tries to read to LAST_VERSION file. If not available, use to current todoyu version

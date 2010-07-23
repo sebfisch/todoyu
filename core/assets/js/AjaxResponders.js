@@ -27,7 +27,7 @@ Todoyu.Ajax.Responders = {
 
 	/**
 	 * Hooks called when request is completed
-	 * @var	{Function[]}	completeHooks	
+	 * @var	{Function[]}	completeHooks
 	 */
 	completeHooks: [],
 

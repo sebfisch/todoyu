@@ -32,7 +32,7 @@ class TodoyuInstaller {
 	public static function run() {
 			// Start output buffer
 		ob_start();
-		
+
 			// No installation step or restart? initialize installer
 		if( ! self::hasStep() || self::isRestart() ) {
 				// Clear all cache
@@ -61,7 +61,7 @@ class TodoyuInstaller {
 		if( $locale != '' ) {
 			Todoyu::setLocale($locale);
 		}
-		
+
 			// Process current step of installation
 		$result	= self::process($step, $postData);
 
@@ -79,10 +79,6 @@ class TodoyuInstaller {
 	 * Cleanup installation before initializing
 	 */
 	private static function onInitCleanup() {
-
-
-
-
 
 
 
@@ -303,7 +299,7 @@ class TodoyuInstaller {
 	}
 
 
-	
+
 	/**
 	 * Get locale options with localized labels
 	 *

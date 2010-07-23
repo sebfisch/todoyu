@@ -42,10 +42,10 @@ class TodoyuRenderer {
 		return render($tmpl, $data);
 	}
 
-	
+
 
 	/**
-	 * Render autocompletion results list
+	 * Render autoCompletion results list
 	 *
 	 * @param	Array	$options
 	 * @return	String

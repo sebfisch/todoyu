@@ -55,13 +55,13 @@ Todoyu.Form = {
 		var baseName	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
 		var formHtml	= baseName + '-formhtml';
 		var trigger		= baseName + '-trigger';
-		
+
 		if( Todoyu.exists(trigger) ) {
 			$(formHtml).toggle();
-			
+
 			$(trigger).down('span')[$(formHtml).visible() ? 'addClassName' : 'removeClassName']('expanded');
 		}
-		
+
 		/*
 		var idForm = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml';
 
@@ -146,14 +146,14 @@ Todoyu.Form = {
 	focusFirstRecordField: function(idRecord, fieldName, index) {
 		var formHTML= $('foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml');
 		var field	= formHTML.select('input[type!=hidden]', 'select', 'textarea').first();
-		
+
 		if( field )  {
 			field.focus();
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Focus first form field
 	 * 
@@ -162,11 +162,11 @@ Todoyu.Form = {
 	focusFirstFormField: function(formID)	{
 		if( $(formID) )	{
 			var field = $(formID).select('input[type!=hidden]', 'select', 'textarea').first();
-			
+
 			if( field )	{
 				if( field.visible() ) {
 					field.focus();
-				}				
+				}
 			}
 		}
 	},
@@ -190,15 +190,15 @@ Todoyu.Form = {
 			}
 		});
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Show formHTML of invalid form elements in foreign records
 	 * 
 	 * @param	{String}		formID
 	 */
-	expandInvalidForeignRecords: function(formID) {			
+	expandInvalidForeignRecords: function(formID) {
 		$(formID).select('div.error').each(function(errorField){
 			var formHTML = $(errorField).up('div.databaseRelationFormhtml');
 			if( formHTML ) {
@@ -232,7 +232,7 @@ Todoyu.Form = {
 			}
 		};
 		var idPopup	= 'popup-' + idField;
-		
+
 		title	= title ? title : 'Form Wizard';
 		width	= width > 0 ? width : 480;
 		height	= height > 0 ? height : 300;
@@ -291,21 +291,21 @@ Todoyu.Form = {
 			iFrame.remove();
 		}
 	},
-	
-	
-	
+
+
+
 	/**
-	 * Sets the value of the choosen icon to the hidden field
+	 * Sets the value of the chosen icon to the hidden field
 	 */
 	setIconSelectorValue: function(value, baseID)	{
 		$(baseID).value = value;
-		
+
 		var selectedOld = $(baseID + '-selector').select('.selected').first();
 
 		if(selectedOld)	{
 			selectedOld.toggleClassName('selected');
 		}
-		
+
 		$(baseID + '-listItem-' + value).toggleClassName('selected');
 	}
 };

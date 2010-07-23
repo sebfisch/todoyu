@@ -111,7 +111,7 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'merge'		=> true,
 			'localize'	=> false,
 			'compress'	=> false
-		),		
+		),
 
 /**
  * Note: JSCalendar lang file is added at end of initialization
@@ -189,7 +189,7 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/js/AjaxReplacer.js',
 			'position'	=> 57
-		),		
+		),
 		array(
 			'file'		=> 'core/assets/js/Helper.js',
 			'position'	=> 58

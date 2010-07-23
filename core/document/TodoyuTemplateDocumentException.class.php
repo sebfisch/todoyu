@@ -40,7 +40,7 @@ class TodoyuTemplateDocumentException extends Exception {
 
 			// Log all document exceptions
 		Todoyu::log($message, TodoyuLogger::LEVEL_ERROR);
-		
+
 		$this->document = $document;
 	}
 

@@ -68,7 +68,7 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 	public function __destruct() {
 		if( is_dir($this->tempDir) ) {
 			TodoyuFileManager::deleteFolder($this->tempDir);
-		}		
+		}
 	}
 
 
@@ -141,7 +141,7 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 
 			// Find all rows
 		preg_match_all($patternRow, $this->xmlContent, $rowMatches);
-		
+
 //		TodoyuDebug::printInFireBug($rowMatches, 'rows');
 
 			// Check for the row syntax in the matched row parts and modify the row
@@ -232,9 +232,8 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		$replaceOpen	= '\2\1\3';
 
 		$dwooTag	= preg_replace($patternOpen, $replaceOpen, $dwooTag);
-		
 
-			// Move single closign tags to the end of the string
+			// Move single closing tags to the end of the string
 		$patternClose	= '/({.*?)(<\/.*?>)(.*?})/';
 		$replaceClose	= '\1\3\2';
 
@@ -253,7 +252,7 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		$pattern	= '/(<text:p [^>]*?>)({foreach[^}]*?})(.*?)(<\/text:p>)/';
 		$replace	= '\2\1\3\4';
 
-		$this->xmlContent	= preg_replace($pattern, $replace, $this->xmlContent);		
+		$this->xmlContent	= preg_replace($pattern, $replace, $this->xmlContent);
 	}
 
 
@@ -325,8 +324,7 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 
 		$zip	= new PclZip($this->pathOdt);
 
-		$zip->delete(PCLZIP_OPT_BY_NAME, 'content.xml');				
-
+		$zip->delete(PCLZIP_OPT_BY_NAME, 'content.xml');
 		$zip->add($this->pathXML, PCLZIP_OPT_REMOVE_ALL_PATH);
 	}
 

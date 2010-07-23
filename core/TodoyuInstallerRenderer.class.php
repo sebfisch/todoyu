@@ -61,7 +61,7 @@ class TodoyuInstallerRenderer {
 			'locales'		=> TodoyuInstaller::getAvailableLocaleOptions(),
 			'userLocale'	=> TodoyuBrowserInfo::getBrowserLocale(),
 		);
-		
+
 		return $data;
 	}
 
@@ -139,7 +139,7 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Render installer step: Select Database
+	 * Render installer step: Select database
 	 *
 	 * @param	Array	$result
 	 * @return	Array
@@ -149,8 +149,8 @@ class TodoyuInstallerRenderer {
 		$databases	= TodoyuDbAnalyzer::getDatabasesOnServer($dbConfig);
 		$dbOptions	= array();
 		$dbConf		= $dbConfig;
-		
-			// Prerender database selection options 
+
+			// PreRender database selection options 
 		foreach($databases as $database) {
 			$dbConf['database']	= $database;
 			$tables				= TodoyuDbAnalyzer::getDatabaseTables($dbConf);
@@ -223,7 +223,7 @@ class TodoyuInstallerRenderer {
 	 * @param	Array	$result
 	 * @return	String
 	 */
-	public static function renderAdminAccount(array $result) {		
+	public static function renderAdminAccount(array $result) {
 		$data	= array(
 			'title'		=> 'installer.adminaccount.title',
 			'button'	=> 'installer.adminaccount.button',

@@ -32,7 +32,7 @@ Todoyu.ContextMenu = {
 	 */
 	attach: function(name, selector, callback) {
 		this.detach(selector);
-		
+
 		var elements	= $$(selector);
 
 		elements.each(function(name, callback, element){

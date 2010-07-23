@@ -291,7 +291,7 @@ Todoyu.QuickInfo = {
 		json.each(function(item){
 				// Ensure maxiumum word length not to break layout: add wordwrap
 			item.label	= Todoyu.Helper.wordwrap(item.label, 16, ' ', true);
-				
+
 				// Add template row with item
 			content += this.template.evaluate(item);
 		}.bind(this));
@@ -302,7 +302,7 @@ Todoyu.QuickInfo = {
 
 
 	/**
-	 * Update popup content
+	 * Update popUp content
 	 *
 	 * @param	{String}	content
 	 */
@@ -313,7 +313,7 @@ Todoyu.QuickInfo = {
 
 
 	/**
-	 * Add quickinfo content to cache
+	 * Add quickInfo content to cache
 	 *
 	 * @param	{String}		cacheID		ID of the cached element
 	 * @param	{String}		content		cached content

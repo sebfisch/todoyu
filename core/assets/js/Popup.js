@@ -56,14 +56,14 @@ Todoyu.Popup = {
 	getLastPopup: function() {
 		return this.last;
 	},
-	
-	
+
+
 
 	/**
 	 * Get amount of open popups
 	 * 
 	 * @return	{Number}
-	 */	
+	 */
 	getNumPopups: function() {
 		return Object.keys(this.popup).size();
 	},
@@ -109,7 +109,7 @@ Todoyu.Popup = {
 
 			destroyOnClose:		true
 		});
-		
+
 			// Show popup and activate content overlay
 		this.getPopup(idPopup).showCenter(true, 100);
 
@@ -192,7 +192,7 @@ Todoyu.Popup = {
 
 
 	/**
-	 * Update size of popup to fit its content without scrollbar
+	 * Update size of popUp to fit its content without scroll bar
 	 *
 	 * @param	{String}	idPopup
 	 * @param	{Boolean} clearTimeout
@@ -225,7 +225,7 @@ Todoyu.Popup = {
 	 * @param	{String}	contentUrl
 	 * @param	{Object}	requestOptions
 	 */
-	updateContent: function(idPopup, contentUrl, requestOptions) {		
+	updateContent: function(idPopup, contentUrl, requestOptions) {
 		this.getPopup(idPopup).setAjaxContent(contentUrl, requestOptions, false, false);
 	},
 
@@ -236,8 +236,8 @@ Todoyu.Popup = {
 	 *
 	 * @param	{String}	idPopup
 	 * @param	{String}	content
-	 */	
-	setContent: function(idPopup, content) {	
+	 */
+	setContent: function(idPopup, content) {
 		this.getPopup(idPopup).setHTMLContent(content);
 		content.evalScripts();
 	},
@@ -256,20 +256,20 @@ Todoyu.Popup = {
 
 
 	/**
-	 * Close popup
+	 * Close popUp
 	 *
-	 * @param	idPopup
+	 * @param	{String}	idPopup
 	 */
 	close: function(idPopup) {
 		this.getPopup(idPopup).close();
 	},
-	
-	
-	
+
+
+
 	/**
-	 * Destroy popup
+	 * Destroy popUp
 	 * 
-	 * @param	idPopup
+	 * @param	{String}	idPopup
 	 */
 	destroy: function(idPopup) {
 		this.getPopup(idPopup).destroy();

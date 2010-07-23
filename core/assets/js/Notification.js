@@ -18,12 +18,15 @@
 *****************************************************************************/
 
 Todoyu.Notification = {
-	
-	SUCCESS: 'success',
-	ERROR: 'error',
-	INFO: 'info',
-	
-	
+
+	SUCCESS:	'success',
+
+	ERROR:		'error',
+
+	INFO:		'info',
+
+
+
 	/**
 	 * Default countdown if non set
 	 */
@@ -31,15 +34,15 @@ Todoyu.Notification = {
 
 	/**
 	 * Template object
-	 */	
+	 */
 	template: null,
 
 	/**
 	 * Current id for note, incremented
 	 */
 	id: 1,
-	
-	
+
+
 
 	/**
 	 * Add new notification
@@ -58,7 +61,7 @@ Todoyu.Notification = {
 			'id':			id,
 			'type':			type,
 			'message':		message,
-			'countdown':	countdown === 0 ? '' : countdown		
+			'countdown':	countdown === 0 ? '' : countdown
 		};
 
 		var note	= this.template.evaluate(data);
@@ -70,8 +73,9 @@ Todoyu.Notification = {
 			this.countDown.bind(this).delay(1, id);
 		}
 	},
-	
-	
+
+
+
 	/**
 	 * Init template
 	 */
@@ -162,7 +166,7 @@ Todoyu.Notification = {
 
 	fadeAllNotes: function() {
 		$$('.note').each(function(note){
-			Effect.Fade(note.id, {'duration': 0.3});	
+			Effect.Fade(note.id, {'duration': 0.3});
 		}.bind(this));
 	},
 
@@ -170,7 +174,7 @@ Todoyu.Notification = {
 
 	closeFirstNote: function() {
 		var notes = $('notes').select('div.note');
-		
+
 		if( notes.size() > 0 ) {
 			var idNote = notes.first().id.split('-').last();
 			this.closeNote(idNote);
@@ -202,7 +206,7 @@ Todoyu.Notification = {
 		$('notes').insert({
 			'top':code
 		});
-		
+
 		var htmlID	= 'notification-note-' + idNote;
 
 			// Observe mouse over of note
@@ -235,7 +239,7 @@ Todoyu.Notification = {
 	 */
 	countDown: function(id) {
 		if( $('notification-note-' + id) ) {
-			var countBox= $('notification-note-' + id).down('.countdown');	
+			var countBox= $('notification-note-' + id).down('.countdown');
 			var current	= parseInt(countBox.innerHTML, 10);
 	
 			if( current === 0 ) {
@@ -246,9 +250,9 @@ Todoyu.Notification = {
 			}
 		}
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Check if the header of the response
 	 * 
@@ -257,7 +261,7 @@ Todoyu.Notification = {
 	checkNoteHeader: function(response) {
 		if( response.hasTodoyuHeader('note') ) {
 			var info	= response.getTodoyuHeader('note').evalJSON();
-			
+
 			this.notify(info.type, info.message);
 		}
 	}

@@ -656,7 +656,7 @@ class TodoyuArray {
 		}
 
 		$parts	= explode($delimiter, $string);
-		
+
 		foreach($parts as $value) {
 			$value = trim($value);
 			if( $value !== '' || $removeEmptyValues === false ) {
@@ -702,7 +702,7 @@ class TodoyuArray {
 		return $new;
 	}
 
-	
+
 
 	/**
 	 * Apply htmlspecialchars() to all elements recursivly

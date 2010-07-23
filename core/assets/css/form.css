@@ -21,7 +21,7 @@ form {
 			text-align:right;
 			float:right;
 		}
-		
+
 		fieldset.buttons .fElement {
 			margin-right:5px;
 		}
@@ -162,11 +162,11 @@ div.fElement {
 		position:relative;
 		right:10px;
 	}
-	
+
 	.noneFloatingInput .fLabel {
 		position:static !important;
 	}
-	
+
 	div.fElement .fLabel label {}
 
 	div.fElement .required {}
@@ -195,8 +195,7 @@ div.fElement {
 	.typeText {}
 
 	.typeDate {}
-	
-	
+
 	.typeUpload {
 		padding-left:5px !important;
 	}
@@ -228,14 +227,14 @@ div.fElement {
 			padding-left:0 !important;
 			text-align:left !important;
 		}
-		
+
 		div.typeCheckbox .fLabel label {
 			position:relative !important;
 			z-index:2 !important;
 			left:20px !important;
 			padding-right:20px;
 		}
-		
+
 			/* checkbox in a fField element. */
 			/* example:Address in Ext Contact */
 			.fField div.typeCheckbox .fLabel {
@@ -249,7 +248,7 @@ div.fElement {
 			padding-left:0!important;
 			text-align:left!important;
 		}
-		
+
 		div.typeCheckbox .fField input.checkbox {
 			width:auto !important;
 		}

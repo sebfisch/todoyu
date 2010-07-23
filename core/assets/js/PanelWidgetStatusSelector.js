@@ -62,9 +62,10 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 	 * @return	{Boolean}
 	 */
 	onChange: function(event) {
-		return true;	
+		return true;
 	},
-	
+
+
 
 	/**
 	 * Get form value of the panel widget (selected statuses)

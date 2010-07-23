@@ -10,18 +10,18 @@
 }
 
 #quickinfo dl {
-	
+
 }
 
 #quickinfo dl dt {
-	float:left;	
+	float:left;
 	width:20px;
 	min-height:15px;
 	padding:2px;
 }
 
 #quickinfo dl dd {
-	float:left;	
+	float:left;
 	width:150px;
 	min-height:15px;
 	padding:3px 4px;

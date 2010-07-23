@@ -194,7 +194,7 @@ class TodoyuFormXmlParser {
 		if( ! self::isAllowed($config) ) {
 			return false;
 		}
-		
+
 		$field	= TodoyuFormFactory::createField($type, $name, $fieldset, $config);
 
 		if( $field instanceof TodoyuFormElement ) {

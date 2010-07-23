@@ -130,7 +130,7 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 		return TodoyuTime::parseDate($dateString);
 	}
 
-	
+
 
 	/**
 	 * Set field value
@@ -177,7 +177,7 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 			return false;
 		} else {
 			$storageData= $this->getValue();
-			
+
 				// If storeAsDate, format in mysql date format
 			if( $this->hasAttribute('storeAsDate') ) {
 					// Set to zero if no data entered

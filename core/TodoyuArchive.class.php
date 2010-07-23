@@ -30,7 +30,7 @@ class TodoyuArchive extends ZipArchive {
 		$pathToFolder	= TodoyuFileManager::pathAbsolute($pathToFolder);
 		$files		= TodoyuFileManager::getFilesInFolder($pathToFolder);
 		$baseFolder	= $baseFolder === '' ? $pathToFolder : TodoyuFileManager::pathAbsolute($baseFolder);
-			
+
 					// Add files
 		foreach($files as $file) {
 			$filePath	= $pathToFolder . DIR_SEP . $file;

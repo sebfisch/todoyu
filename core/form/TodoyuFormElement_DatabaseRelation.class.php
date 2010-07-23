@@ -361,7 +361,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 */
 	public function validateRequired() {
 		$customValidator	= $this->config['record']['validateRequired'];
-		
+
 		if( TodoyuFunction::isFunctionReference($customValidator) ) {
 			$records	= $this->getRecords();
 			$valid		= true;
@@ -404,7 +404,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 		return $storageData;
 	}
-	
+
 }
 
 ?>

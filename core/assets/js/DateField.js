@@ -90,7 +90,7 @@ Todoyu.DateField = {
 	},
 
 
-	
+
 	/**
 	 * Set input field value to formatted string of given date time values
 	 *

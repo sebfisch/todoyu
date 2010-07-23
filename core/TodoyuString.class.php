@@ -57,7 +57,7 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function getAsUtf8($string) {
-		return self::isUTF8($string) ? $string : self::convertToUTF8($string);		
+		return self::isUTF8($string) ? $string : self::convertToUTF8($string);
 	}
 
 

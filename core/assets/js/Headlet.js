@@ -28,7 +28,7 @@ Todoyu.Headlet = {
 	 * List of headlet JS objects (to call the handlers)
 	 */
 	headlets: {},
-	
+
 	openStatusTimeout: null,
 
 
@@ -93,7 +93,7 @@ Todoyu.Headlet = {
 	 */
 	init: function() {
 		if( ! Todoyu.exists('headlets') ) {
-			
+
 		}
 		var headlets	= $('headlets').select('li.headlet');
 			// Observe headlet clicks
@@ -122,7 +122,7 @@ Todoyu.Headlet = {
 
 			// Add back reference to headlet object
 		headletObject.headlet = this;
-		
+
 			// Add functions to headlet
 		headletObject.hideOthers		= this.hideAllContent.bind(this, name);
 		headletObject.isContentVisible	= this.isContentVisible.bind(this, name);
@@ -158,10 +158,10 @@ Todoyu.Headlet = {
 				// Set headlet over status
 			headlet.overStatus = true;
 
-				// Find name of current headlet				
+				// Find name of current headlet
 			this.current = this._getNameFromEvent(event);
 				// Call over handler for element
-			this._callHandler(this.current, 'onMouseOver', event);			
+			this._callHandler(this.current, 'onMouseOver', event);
 		}
 	},
 
@@ -184,7 +184,7 @@ Todoyu.Headlet = {
 				// Call out handler
 			this._callHandler(this.current, 'onMouseOut', event);
 				// Remove current element link
-			this.current = null;	
+			this.current = null;
 		}
 	},
 
@@ -309,7 +309,7 @@ Todoyu.Headlet = {
 	 * @param	{String}		name
 	 * @param	{Boolean}		keepOthers
 	 */
-	showContent: function(name, keepOthers) {		
+	showContent: function(name, keepOthers) {
 		if( keepOthers === true ) {
 			this.hideAllContent(name);
 		}
@@ -433,9 +433,9 @@ Todoyu.Headlet = {
 	isEventInOwnContent: function(name, event) {
 		return event.element().up('ul#headlet-' + name + '-content') !== undefined;
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Save open status of a headlet
 	 * Setup a timeout for the save function

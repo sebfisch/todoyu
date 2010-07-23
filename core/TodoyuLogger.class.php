@@ -189,7 +189,7 @@ class TodoyuLogger {
 		$backtrace	= debug_backtrace();
 		$info		= $backtrace[0];
 		$level		= intval($level);
-		
+
 		if( $level >= $this->level ) {
 				// Find file in backtrace which is not on ignore list
 			foreach($backtrace as $btElement) {
@@ -202,7 +202,7 @@ class TodoyuLogger {
 			$info['fileshort'] 	= TodoyuFileManager::pathWeb($info['file']);
 
 			$loggers	= $this->getLoggerInstances();
-			
+
 			foreach($loggers as $logger) {
 				/**
 				 * @var	TodoyuLoggerIf	$logger

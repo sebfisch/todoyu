@@ -105,13 +105,13 @@ Todoyu.Tabs = {
 	 */
 	setActive: function(listname, tab) {
 		var tabID	= listname + '-tabs';
-		
+
 		if( Todoyu.exists(tabID) ) {
 			$(listname + '-tabs').select('li').invoke('removeClassName', 'active');
 			$(listname + '-tabs').down('li.tabkey-' + tab).addClassName('active');
 		} else {
 			Todoyu.log('Tab with name "' + listname + '" not found!');
-		}		
+		}
 	},
 
 	setActiveByElement: function(tabElement) {
@@ -130,9 +130,9 @@ Todoyu.Tabs = {
 	getActive: function(list) {
 		return $(list).down('li.active');
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Get key of the active tab of the list
 	 * 
@@ -146,7 +146,7 @@ Todoyu.Tabs = {
 			return active.id.split('-').last();
 		} else {
 			return null;
-		}		
+		}
 	},
 
 
@@ -172,7 +172,7 @@ Todoyu.Tabs = {
 	 */
 	removeTab: function(listname, tab) {
 		var tabElement = $(listname + '-tab-' + tab);
-		
+
 		if( tabElement ) {
 			tabElement.remove();
 		}

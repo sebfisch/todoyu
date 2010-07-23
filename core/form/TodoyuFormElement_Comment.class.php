@@ -64,7 +64,7 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 		} else {
 			$value	= TodoyuLanguage::getLabel($this->config['comment']);
 		}
-		
+
 		return $value;
 	}
 

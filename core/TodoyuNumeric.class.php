@@ -111,7 +111,7 @@ class TodoyuNumeric {
 		return $matches[1] * 1000000 + $matches[2] * 10000 + $matches[3] * 100 + $added;
 	}
 
-	
+
 
 	/**
 	 * Get percent of a value

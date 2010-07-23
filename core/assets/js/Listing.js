@@ -18,7 +18,7 @@
 *****************************************************************************/
 
 Todoyu.Listing = {
-	
+
 	config: {},
 
 
@@ -84,7 +84,7 @@ Todoyu.Listing = {
 		};
 
 		$('extendlisting').remove();
-	
+
 		var target	= 'paging-' + name + '-table-' + pagenum;
 
 		Todoyu.Ui.append(target, url, options);

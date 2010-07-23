@@ -169,7 +169,7 @@ class TodoyuTime {
 		return ( $mondayFirst ) ? ($weekday + 6) % 7 : $weekday;
 	}
 
-	
+
 
 	/**
 	 * Get time parts (hours, minutes, seconds) from an integer which represents seconds
@@ -403,7 +403,7 @@ class TodoyuTime {
 		$colons		= substr_count($timeString, ':');
 		$format		= $colons === 2 ? self::getFormat('timesec') : self::getFormat('time') ;
 		$timeParts	= strptime($timeString, $format);
-				
+
 		$hours	= intval($timeParts['tm_hour']);
 		$minutes= intval($timeParts['tm_min']);
 		$seconds= intval($timeParts['tm_sec']);
@@ -425,7 +425,7 @@ class TodoyuTime {
 
 		return intval($parts[0])*3600 + intval($parts[1])*60;
 	}
-	
+
 
 
 	/**
@@ -451,7 +451,7 @@ class TodoyuTime {
 		return $newTime;
 	}
 
-	
+
 
 	/**
 	 * Get dates of the (days of) full week which the given date is in
@@ -495,7 +495,7 @@ class TodoyuTime {
 		return date('t', $timestamp);
 	}
 
-	
+
 
 	/**
 	 * Check if two time ranges overlap.
@@ -546,7 +546,7 @@ class TodoyuTime {
 	public static function addDays($time, $days) {
 		$time	= intval($time);
 		$days	= intval($days);
-		
+
 		return $time + $days * self::SECONDS_DAY;
 	}
 }

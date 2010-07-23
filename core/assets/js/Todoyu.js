@@ -109,7 +109,7 @@ var Todoyu = {
 
 		if( typeof params === 'object' ) {
 			url += '&' + Object.toQueryString(params);
-		}	
+		}
 
 		if( Object.isString(hash) ) {
 			this.goToHashURL(url, hash);
@@ -130,12 +130,12 @@ var Todoyu = {
 	 */
 	goToHashURL: function(url, hash) {
 		var searchPart	= url.substr(url.indexOf('?'));
-		
+
 		if( location.search === searchPart && Todoyu.exists(hash) ) {
 			if( $(hash).getHeight() > 0 ) {
 				$(hash).scrollToElement();
 				return;
-			}			
+			}
 		}
 
 			// Fallback
@@ -184,8 +184,8 @@ var Todoyu = {
 	getArea: function() {
 		return document.body.id.split('-').last();
 	},
-	
-	
+
+
 
 	/**
 	 * Show error notification
@@ -254,7 +254,7 @@ var Todoyu = {
 	 */
 	callIfExists: function(functionReference, context /*, args */) {
 		var args = $A(arguments).slice(2);
-		
+
 		if( typeof functionReference === 'function' ) {
 			functionReference.apply(context, args);
 		} else {
@@ -275,10 +275,10 @@ var Todoyu = {
 		var namespaces 	= functionName.split(".");
 		var func 		= namespaces.pop();
 		var context		= window;
-		
+
 		for(var i = 0; i < namespaces.length; i++) {
 			context = context[namespaces[i]];
-			
+
 			if( context === undefined ) {
 				alert("Function: " + functionName + " not found!");
 			}

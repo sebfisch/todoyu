@@ -32,7 +32,7 @@ class Todoyu {
 	 * @var	String
 	 */
 	private static $locale;
-	
+
 
 	/**
 	 * Todoyu configuration
@@ -90,7 +90,7 @@ class Todoyu {
 	/**
 	 * Set system timezone
 	 */
-	public static function setTimezone() {		
+	public static function setTimezone() {
 		if( self::db()->isConnected() ) {
 			$timezone	= self::person()->getTimezone();
 		} else {
@@ -217,7 +217,7 @@ class Todoyu {
 		self::$locale = null;
 	}
 
-	
+
 
 	/**
 	 * Get locale: if set get from person profile pref, otherwise from system config
@@ -242,7 +242,7 @@ class Todoyu {
 				self::$locale = $browserLocale;
 			}
 		}
-				
+
 			// Check if locale exists
 		if( ! TodoyuLocaleManager::hasLocale(self::$locale) ) {
 			self::$locale	= TodoyuLocaleManager::getDefaultLocale();
@@ -262,7 +262,7 @@ class Todoyu {
 		if( $locale === false ) {
 			$locale	= self::getLocale();
 		}
-			
+
 			// Set internal locale
 		self::$locale = $locale;
 
@@ -270,7 +270,7 @@ class Todoyu {
 		TodoyuLanguage::setLocale($locale);
 
 			// Set locale for system
-		$status	= TodoyuLocaleManager::setSystemLocale($locale);		
+		$status	= TodoyuLocaleManager::setSystemLocale($locale);
 
 			// Log if operation fails
 		if( $status === false ) {

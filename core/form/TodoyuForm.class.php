@@ -1075,8 +1075,6 @@ class TodoyuForm implements ArrayAccess {
 		if( $this->hasAttribute('onsubmit') ) {
 			$this->setAttribute('onsubmit', $this->parseWithFormData($this->getAttribute('onsubmit')));
 		}
-		
-		
 
 		return $data;
 	}

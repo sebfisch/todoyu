@@ -38,9 +38,9 @@ Todoyu.Headlet.QuickCreate = {
 	init: function() {
 
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Handler: When clicked on button
 	 * 
@@ -54,8 +54,9 @@ Todoyu.Headlet.QuickCreate = {
 			this.showContent();
 		}
 	},
-	
-	
+
+
+
 	/**
 	 * Handler: When clicked on menu entry
 	 * 
@@ -71,14 +72,24 @@ Todoyu.Headlet.QuickCreate = {
 	},
 
 
+	/**
+	 * Handle click on headlet body: hide content, stop events
+	 *
+	 * @param	{Object}	event
+	 */
 	onBodyClick: function(event) {
 		this.hide();
 
-		if( this.isEventInOwnContent(event) ) {			
+		if( this.isEventInOwnContent(event) ) {
 			event.stop();
 		}
 	},
-	
+
+
+
+	/**
+	 * Hide quick create headlet content
+	 */
 	hide: function() {
 		this.hideContent();
 		this.headlet.setInactive('quickcreate');
@@ -121,12 +132,11 @@ Todoyu.Headlet.QuickCreate = {
 		$('quickcreate').addClassName(type);
 
 		var quickCreateObject	= 'Todoyu.Ext.' + ext + '.QuickCreate' + Todoyu.Helper.ucwords(type);
-		
 		Todoyu.callUserFunction(quickCreateObject + '.onPopupOpened');
 	},
-	
-	
-	
+
+
+
 	/**
 	 * Get label of a type from menu entry
 	 * 

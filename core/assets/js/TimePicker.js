@@ -18,7 +18,7 @@
 *****************************************************************************/
 
 Todoyu.TimePicker = Class.create({
-	
+
 	/**
 	 * Selected hour and minute
 	 */
@@ -57,7 +57,7 @@ Todoyu.TimePicker = Class.create({
 	 *
 	 * @param	{String}		idElement
 	 */
-	initialize: function(idElement, config) {		
+	initialize: function(idElement, config) {
 		this.element= $(idElement);
 		this.config	= $H(this.config).merge(config || {}).toObject();
 
@@ -73,7 +73,7 @@ Todoyu.TimePicker = Class.create({
 
 		this._build();
 		this._observePicker();
-				
+
 		this.setHour(dur.hour);
 		this.setMinute(dur.min);
 
@@ -89,7 +89,6 @@ Todoyu.TimePicker = Class.create({
 	 */
 	show: function() {
 		this._setPosition();
-		
 		this.picker.show();
 	},
 
@@ -111,7 +110,7 @@ Todoyu.TimePicker = Class.create({
 	 */
 	setHour: function(hour) {
 		this.hour = this._keepInRange(hour, this.config.rangeHour);
-		
+
 		this.updateScroll();
 	},
 
@@ -122,9 +121,8 @@ Todoyu.TimePicker = Class.create({
 	 * 
 	 * @param	{Number}		minute
 	 */
-	setMinute: function(minute) {		
+	setMinute: function(minute) {
 		this.minute = this._keepInRange(minute, this.config.rangeMinute);
-				
 		this.updateScroll();
 	},
 
@@ -142,14 +140,14 @@ Todoyu.TimePicker = Class.create({
 		});
 
 		var newMinPos = (this.minute/this.config.stepMinute) * this.config.height * -1 + 2 * this.config.height - (2 * this.config.height);
-				
+
 		new Effect.Move(this.divMinute, {
 			'x': 25,
 			'y': newMinPos,
 			'mode': 'absolute',
 			'duration': 0.3
 		});
-		
+
 		this.updateElement.bind(this).delay(0.2);
 	},
 
@@ -173,11 +171,11 @@ Todoyu.TimePicker = Class.create({
 		var dpHeight= this.picker.getHeight();
 		var left	= elOffset.left + elDim.width + 1;
 		var top		= elOffset.top + (elDim.height/2) - (dpHeight/2);
-		
+
 		this.picker.setStyle({
-			'display': 'block',
-			'left': left + 'px',
-			'top': top + 'px'
+			'display':	'block',
+			'left':		left + 'px',
+			'top':		top + 'px'
 		});
 	},
 
@@ -260,7 +258,7 @@ Todoyu.TimePicker = Class.create({
 	 */
 	_remove: function() {
 		var idPicker = this._makeID('durationpicker');
-		
+
 		if( Todoyu.exists(idPicker) ) {
 			$(idPicker).remove();
 		}
@@ -274,11 +272,11 @@ Todoyu.TimePicker = Class.create({
 	 */
 	_observePicker: function() {
 		var wheelEventName	= Prototype.Browser.Gecko ? 'DOMMouseScroll' : 'mousewheel';
-		
+
 		this.picker.observe('click', this._onSelection.bindAsEventListener(this));
 		this.divHour.observe(wheelEventName, this._onHourScroll.bindAsEventListener(this));
 		this.divMinute.observe(wheelEventName, this._onMinuteScroll.bindAsEventListener(this));
-		
+
 		this.element.observe('click', this._onElementClick.bindAsEventListener(this));
 	},
 
@@ -292,20 +290,20 @@ Todoyu.TimePicker = Class.create({
 	_onSelection: function(event) {
 		var column	= event.findElement('div.dpCol');
 		var delay	= 0;
-		
+
 		if( column !== event.element() ) {
 			var type = column.id.split('-').last();
 			var value= Todoyu.Helper.intval(event.element().innerHTML);
-			
+
 			if( type == 'hour' ) {
 				this.setHour(value);
 			} else {
 				this.setMinute(value);
 			}
-			
+
 			delay = 0.5;
 		}
-		
+
 		this.updateElement.bind(this).delay(delay);
 		this.hide.bind(this).delay(delay);
 	},
@@ -330,9 +328,9 @@ Todoyu.TimePicker = Class.create({
 	 */
 	_onHourScroll: function(event) {
 		Event.stop(event);
-		
+
 		var hour = this.hour - Event.wheel(event) * this.config.stepHour;
-		
+
 		this.setHour(hour);
 	},
 
@@ -345,9 +343,9 @@ Todoyu.TimePicker = Class.create({
 	 */
 	_onMinuteScroll: function(event) {
 		Event.stop(event);
-		
+
 		var minute = this.minute - Event.wheel(event) * this.config.stepMinute;
-		
+
 		this.setMinute(minute);
 	},
 
@@ -363,11 +361,11 @@ Todoyu.TimePicker = Class.create({
 		if( value < range[0] ) {
 			value = range[0];
 		}
-		
+
 		if( value > range[1] ) {
 			value = range[1];
 		}
-		
+
 		return value;
 	},
 
@@ -382,21 +380,21 @@ Todoyu.TimePicker = Class.create({
 			'hour': 0,
 			'min': 0
 		};
-		
+
 		if( value !== '' ) {
 			if( value.indexOf(':') === -1 ) {
 				dur.hour = Todoyu.Helper.intval(value);
 			} else {
 				var parts	= value.split(':');
-		
+
 				if( parts.size() === 2 ) {
 					dur.hour = Todoyu.Helper.intval(parts[0]);
 					dur.min = Todoyu.Helper.intval(parts[1]);
 				}
 			}
 		}
-		
-		return dur;	
+
+		return dur;
 	}
 
 });

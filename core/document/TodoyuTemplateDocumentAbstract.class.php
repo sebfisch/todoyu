@@ -87,7 +87,7 @@ abstract class TodoyuTemplateDocumentAbstract {
 	protected function sendFile($pathFile, $filename, $mimeType) {
 		$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);
 		$filename	= addslashes($filename);
-		
+
 		TodoyuFileManager::sendFile($pathFile, $mimeType, $filename);
 	}
 

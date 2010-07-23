@@ -28,14 +28,27 @@ class TodoyuHeadletManager {
 
 	private static $openPref	= 'headlet-open';
 
+
+	/**
+	 * Save preference: given headlet is opened
+	 *
+	 * @param	String	$headlet
+	 */
 	public static function saveOpenStatus($headlet) {
 		TodoyuPreferenceManager::savePreference(0, self::$openPref, strtolower($headlet), 0, true);
 	}
 
 
+
+	/**
+	 * Check preference whether given headlet is currently open
+	 *
+	 * @param	String		$headlet
+	 * @return	Boolean
+	 */
 	public static function isOpen($headlet) {
 		$openHeadlet	= TodoyuPreferenceManager::getPreference(0, self::$openPref);
-		
+
 		return strtolower($headlet) === $openHeadlet;
 	}
 
