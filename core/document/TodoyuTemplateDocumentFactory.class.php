@@ -27,24 +27,25 @@
 class TodoyuTemplateDocumentFactory {
 
 	/**
-	 * Get document object for a type
+	 * Get document object for given type
 	 *
 	 * @param	String		$type
 	 * @param	Array		$data
-	 * @param	String		$template
+	 * @param	String		$template		template path
 	 * @param	Array		$config
 	 * @return	TodoyuTemplateDocumentIf|Boolean
 	 */
 	public static function getTemplateDocument($type, array $data, $template, array $config = array()) {
 		$typeClass	= self::getTypeClass($type);
-		$template	= $template === false ? false : TodoyuFileManager::pathAbsolute($template);
+		$template	= ( $template === false ) ? false : TodoyuFileManager::pathAbsolute($template);
 		$document	= false;
 
-			// Check if template exists or template is false
+			// Template is no regular file and not false? throw exception 
 		if( $template !== false && ! is_file($template) ) {
 			throw new TodoyuTemplateDocumentException(null, 'Template file not found: ' . $template);
 		}
 
+			// Instantiate type class if exists 
 		if( $typeClass !== false ) {
 			$document	= new $typeClass($data, $template, $config);
 
@@ -61,8 +62,7 @@ class TodoyuTemplateDocumentFactory {
 
 
 	/**
-	 * Get the class name for a document type
-	 * Pattern "TodoyuDocumentTYPE"
+	 * Get class name for document type. (Pattern "TodoyuDocumentTYPE")
 	 *
 	 * @param	String		$type
 	 * @return	String|Boolean
