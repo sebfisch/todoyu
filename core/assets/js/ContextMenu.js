@@ -242,4 +242,5 @@ Todoyu.ContextMenu = {
 			submenu.hide();
 		}
 	}
+
 };

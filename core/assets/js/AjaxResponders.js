@@ -155,4 +155,5 @@ Todoyu.Ajax.Responders = {
 			$(hash).scrollToElement();
 		}
 	}
+
 };

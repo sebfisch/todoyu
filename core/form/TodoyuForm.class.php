@@ -446,21 +446,21 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Add all elements of a form to this form
 	 *
-	 * @param	$xmlPath		Path to sub form XML file
-	 * @param	$position		Insert position
+	 * @param	String		$xmlPath		Path to sub form XML file
+	 * @param	Integer		$position		Insert position
 	 */
 	public function addElementsFromXML($xmlPath, $position = null) {
 		$xmlPath	= TodoyuFileManager::pathAbsolute($xmlPath);
 		$form		= TodoyuFormManager::getForm($xmlPath);
 
-			// Get fieldsets of the other form
-		$fieldsets	= $form->getFieldsets();
+			// Get fieldSets of the other form
+		$fieldSets	= $form->getFieldsets();
 
-			// Add all fieldsets to this form
-		foreach($fieldsets as $fieldset) {
-			$this->injectFieldset($fieldset, $position);
-				// Insert all following fieldsets after the current
-			$position = 'after:' . $fieldset->getName();
+			// Add all fieldSets to this form
+		foreach($fieldSets as $fieldSet) {
+			$this->injectFieldset($fieldSet, $position);
+				// Insert all following fieldSets after the current
+			$position = 'after:' . $fieldSet->getName();
 		}
 	}
 
@@ -495,8 +495,8 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Register fieldset
 	 *
-	 * @param	String	$name
-	 * @param	Array	$fieldset
+	 * @param	String		$name
+	 * @param	Array		$fieldset
 	 */
 	public function registerFieldset($name, $fieldset) {
 		$this->fieldsetRegister[$name] = $fieldset;

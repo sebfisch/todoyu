@@ -204,12 +204,12 @@ function Dwoo_Plugin_HourMin(Dwoo $dwoo, $seconds) {
  * @subpackage	Template
  *
  * @param 	Dwoo 		$dwoo
- * @param	Integer		$filesize
+ * @param	Integer		$fileSize
  * @return	String
  */
 
-function Dwoo_Plugin_filesize(Dwoo $dwoo, $filesize) {
-	return TodoyuString::formatSize($filesize);
+function Dwoo_Plugin_filesize(Dwoo $dwoo, $fileSize) {
+	return TodoyuString::formatSize($fileSize);
 }
 
 
@@ -232,7 +232,7 @@ function Dwoo_Plugin_cropText_compile(Dwoo_Compiler $compiler, $string, $maxLen,
 
 
 /**
- * Render numberic value with (at least) two digits
+ * Render numeric value with (at least) two digits
  *
  * @package		Todoyu
  * @subpackage	Template
@@ -242,7 +242,7 @@ function Dwoo_Plugin_cropText_compile(Dwoo_Compiler $compiler, $string, $maxLen,
  */
 
 function Dwoo_Plugin_twoDigits(Dwoo $dwoo, $value) {
-	return intVal($value) < 10 ? ('0' . $value) : $value;
+	return ( intVal($value) < 10 ) ? ('0' . $value) : $value;
 }
 
 
@@ -289,14 +289,14 @@ function Dwoo_Plugin_firebug(Dwoo $dwoo, $variable) {
 
 
 /**
- * returns odd even by given index
+ * Return odd / even by given index
  *
  * @package		Todoyu
  * @subpackage 	Template
  *
- * @param Dwoo $dwoo
- * @param int $index
- * @return stringg
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$index
+ * @return	String
  */
 function Dwoo_Plugin_odd_even(Dwoo $dwoo, $index)	{
 	return $index % 2 ? 'odd' : 'even';
@@ -427,8 +427,7 @@ function Dwoo_Plugin_IndexLetters(Dwoo $dwoo, array $records, $field, $indexName
 
 
 /**
- * Check if right is allowed
- * Get function string to check this
+ * Check whether right is given. Get function string to check this
  *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$ext
@@ -442,8 +441,7 @@ function Dwoo_Plugin_allowed_compile(Dwoo_Compiler $compiler, $ext, $right) {
 
 
 /**
- * Check if all given rights are allowed
- * Get function string to check this
+ * Check if all given rights are allowed. Get function string to check this
  *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$ext
@@ -457,8 +455,7 @@ function Dwoo_Plugin_allowedAll_compile(Dwoo_Compiler $compiler, $ext, $rightsLi
 
 
 /**
- * Check if any given rights are allowed
- * Get function string to check this
+ * Check whether any of the given rights are allowed. Get function string to check this
  *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$ext
@@ -472,8 +469,7 @@ function Dwoo_Plugin_allowedAny_compile(Dwoo_Compiler $compiler, $ext, $rightsLi
 
 
 /**
- * Check if user has right, or given user ID is the current users ID
- * Get function string to check this
+ * Check whether user has right, or given user ID is the current users ID. Get function string to check this
  *
  * @param	Dwoo_Compiler 	$compiler
  * @param	String			$ext
@@ -495,7 +491,7 @@ function Dwoo_Plugin_allowedOrOwn_compile(Dwoo_Compiler $compiler, $ext, $right,
  * @param	String			$ext
  * @param	String			$right
  * @param	Integer			$idPerson
- * @return	String
+ * @return	Boolean
  */
 function Dwoo_Plugin_allowedAndOwn_compile(Dwoo_Compiler $compiler, $ext, $right, $idPerson) {
 	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ') && personid()==' . $idPerson;
@@ -511,6 +507,23 @@ function Dwoo_Plugin_allowedAndOwn_compile(Dwoo_Compiler $compiler, $ext, $right
  */
 function Dwoo_Plugin_isInternal_compile(Dwoo_Compiler $compiler) {
 	return 'Todoyu::person()->isInternal()';
+}
+
+
+
+/**
+ * Subtract given subtrahend from given minuend
+ *
+ * @param	Dwoo		$compiler
+ * @param	Mixed		$minuend
+ * @param	Mixed		$subtrahend
+ * @return	Integer							difference
+ */
+function Dwoo_Plugin_subtract(Dwoo $dwoo, $minuend, $subtrahend) {
+	$minuend	= floatval($minuend);
+	$subtrahend	= floatval($subtrahend);
+
+	return ($minuend - $subtrahend);
 }
 
 
