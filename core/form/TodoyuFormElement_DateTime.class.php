@@ -38,6 +38,7 @@ class TodoyuFormElement_DateTime extends TodoyuFormElement_Date {
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
 			// Initialize directly with the base class, not the parent
 		TodoyuFormElement::__construct('datetime', $name, $fieldset, $config);
+		parent::setValue(false);
 	}
 
 
