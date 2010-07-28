@@ -51,7 +51,7 @@ class TodoyuFormElement_Checkbox extends TodoyuFormElement {
 			$this->config['extraAttributes'] .= 'onchange="' . $this->getForm()->parseWithFormData($this->getAttribute('onchange')) . '"';
 		}
 
-		if( $this->getValue() == 1 )	{
+		if( $this->getValue() == 1 ) {
 			$this->config['extraAttributes'] .= 'checked="checked"';
 		}
 

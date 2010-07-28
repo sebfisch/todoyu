@@ -35,7 +35,7 @@ class TodoyuFormElement_TextAC extends TodoyuFormElement {
 	 * @param	TodoyuFieldset	$fieldset
 	 * @param	Array		$config
 	 */
-	function __construct($name, TodoyuFieldset $fieldset, array $config = array())	{
+	function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
 		parent::__construct('textAC', $name, $fieldset, $config);
 	}
 
@@ -44,8 +44,8 @@ class TodoyuFormElement_TextAC extends TodoyuFormElement {
 	/**
 	 * Initialize form element
 	 */
-	protected function init()	{
-		if( $this->hasAttribute('config') )	{
+	protected function init() {
+		if( $this->hasAttribute('config') ) {
 			$this->setAttribute('acConfigJson', json_encode($this->getAttribute('config')));
 		}
 	}

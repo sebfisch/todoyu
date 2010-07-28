@@ -121,7 +121,7 @@ class TodoyuPanelWidgetRenderer {
 
 			if( class_exists($widgetClass) ) {
 					// Check whether panelWidget is allowed to be displayed
-				if( call_user_func(array($widgetClass, 'isAllowed') ) )	{
+				if( call_user_func(array($widgetClass, 'isAllowed') ) ) {
 					$widget	= new $widgetClass($config, $params, $idArea);
 					$content .= $widget->render();
 				} else {

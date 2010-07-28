@@ -585,14 +585,14 @@ class TodoyuFormValidator {
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
-	public static function minLengthIfNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData)	{
+	public static function minLengthIfNotEmpty($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
 			// Check for allowed exceptions
 		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
 		}
 
 			// Validate
-		if( strlen($value) == 0 )	{
+		if( strlen($value) == 0 ) {
 			return true;
 		}
 

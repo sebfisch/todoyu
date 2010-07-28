@@ -365,7 +365,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 *
 	 * @return	String
 	 */
-	public function getType()	{
+	public function getType() {
 		return $this->type;
 	}
 
@@ -702,7 +702,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 *
 	 * @return	Array
 	 */
-	public function getWizardConfiguration()	{
+	public function getWizardConfiguration() {
 		if( $this->hasAttribute('wizard') )	{
 			$wizardConf = array(
 				'hasWizard'		=> true,
@@ -711,15 +711,15 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 			$wizardConf['wizardConf']['idRecord']	= intval($this->getForm()->getRecordID());
 
-			if( $wizardConf['wizardConf']['displayCondition'] )	{
+			if( $wizardConf['wizardConf']['displayCondition'] ) {
 				$wizardConf['hasWizard'] = TodoyuFunction::callUserFunctionArray($wizardConf['wizardConf']['displayCondition'], $wizardConf);
 			}
 
-			if( $wizardConf['wizardConf']['restrict'] && $wizardConf['hasWizard'] )	{
+			if( $wizardConf['wizardConf']['restrict'] && $wizardConf['hasWizard'] ) {
 				$wizardConf['hasWizard'] = false;
 
-				foreach($wizardConf['wizardConf']['restrict'] as $allowed)	{
-					if(allowed($allowed['@attributes']['ext'], $allowed['@attributes']['right']))	{
+				foreach($wizardConf['wizardConf']['restrict'] as $allowed) {
+					if(allowed($allowed['@attributes']['ext'], $allowed['@attributes']['right'])) {
 						$wizardConf['hasWizard'] = true;
 					}
 				}

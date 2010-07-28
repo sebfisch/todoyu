@@ -327,7 +327,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @param Obj $field
 	 */
-	protected function validateField($field)	{
+	protected function validateField($field) {
 		$this->checkRequiredFields($field);
 	}
 
@@ -339,9 +339,9 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @param Obj $field
 	 */
-	protected function checkRequiredFields($field)	{
-		if( $field->hasAttribute('required') )	{
-			if( ! TodoyuValidator::isNotEmpty($this->formdata[$field->getName()]) )	{
+	protected function checkRequiredFields($field) {
+		if( $field->hasAttribute('required') ) {
+			if( ! TodoyuValidator::isNotEmpty($this->formdata[$field->getName()]) ) {
 				$this->invalidFields[$field->getName()] = true;
 				$field->setAttribute('errorLabel', 'LLL:form.field.isrequired');
 				$field->setAttribute('hasError', true);
@@ -644,7 +644,7 @@ class TodoyuForm implements ArrayAccess {
 	 * @param	Boolean	$onlyStorage		Only get storage fields
 	 * @return	Array
 	 */
-	public function getHiddenFields($onlyStorage = false)	{
+	public function getHiddenFields($onlyStorage = false) {
 		$data	= array();
 
 		foreach($this->hiddenFields as $name => $config) {
@@ -837,7 +837,7 @@ class TodoyuForm implements ArrayAccess {
 	 * @param	String		$name			Field name
 	 * @param	Boolean		$cleanup
 	 */
-	public function removeField($name, $cleanup = false)	{
+	public function removeField($name, $cleanup = false) {
 		if( $cleanup ) {
 			if( $this->getField($name) !== null ) {
 				$this->getField($name)->remove();

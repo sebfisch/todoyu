@@ -298,7 +298,7 @@ function Dwoo_Plugin_firebug(Dwoo $dwoo, $variable) {
  * @param	Integer		$index
  * @return	String
  */
-function Dwoo_Plugin_odd_even(Dwoo $dwoo, $index)	{
+function Dwoo_Plugin_odd_even(Dwoo $dwoo, $index) {
 	return $index % 2 ? 'odd' : 'even';
 }
 

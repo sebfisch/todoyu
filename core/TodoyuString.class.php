@@ -68,7 +68,7 @@ class TodoyuString {
 	 * @param	String		Input string to evaluate
 	 * @return	Boolean		Returns true if the $email address (input string) is valid; Has a "@", domain name with at least one period and only allowed a-z characters.
 	 */
-	public static function isValidEmail($email)	{
+	public static function isValidEmail($email) {
 		$email = trim ($email);
 		if( strstr($email,' ') ) {
 			return false;
@@ -122,7 +122,7 @@ class TodoyuString {
 	 * @param	String	$wrap			<tag>|</tag>
 	 * @return	String
 	 */
-	public static function wrap($string, $wrap)	{
+	public static function wrap($string, $wrap) {
 		return str_replace('|', $string, $wrap);
 	}
 
@@ -222,7 +222,7 @@ class TodoyuString {
 	 * @param	String		$listSeparator		List element separating character
 	 * @return	Boolean
 	 */
-	public static function isInList($item, $listString, $listSeparator = ',')	{
+	public static function isInList($item, $listString, $listSeparator = ',') {
 		$list	= explode($listSeparator, $listString);
 
 		return in_array($item, $list);

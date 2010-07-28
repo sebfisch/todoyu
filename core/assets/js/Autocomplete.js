@@ -52,7 +52,7 @@ Todoyu.Autocomplete = {
 	 * @param	{Number}		idElement		ID of the element whichs value will be set by autocomplete
 	 * @param	{Object}		config			Custom config
 	 */
-	install: function(idElement, config)	{
+	install: function(idElement, config) {
 		var inputField		= idElement + '-fulltext';
 		var suggestDiv		= idElement + '-suggest';
 
@@ -141,7 +141,7 @@ Todoyu.Autocomplete = {
 
 		this.selectedFromList = true;
 
-		if(this.acRefs[baseID].options.onSelectCustom)	{
+		if( this.acRefs[baseID].options.onSelectCustom ) {
 			 Todoyu.callUserFunction(this.acRefs[baseID].options.onSelectCustom, inputField, $(baseID), selectedValue, selectedListElement.innerHTML, this);
 		}
 

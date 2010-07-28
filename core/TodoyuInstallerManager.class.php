@@ -686,7 +686,7 @@ class TodoyuInstallerManager {
 	 * @param	Array		$dbConfig
 	 * @return	Boolean
 	 */
-	public static function addDatabase($databaseName, array $dbConfig)	{
+	public static function addDatabase($databaseName, array $dbConfig) {
 		$link	= mysql_connect($dbConfig['server'], $dbConfig['username'], $dbConfig['password']);
 		$query	= 'CREATE DATABASE `' . $databaseName . '` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;';
 
@@ -791,10 +791,10 @@ class TodoyuInstallerManager {
 		$currentString	= '$CONFIG[';
 		$newString		= 'Todoyu::$CONFIG[';
 
-		foreach($files as $file)	{
+		foreach($files as $file) {
 			$file	= TodoyuFileManager::pathAbsolute('config/' . $file);
 
-			if( is_file($file) )	{
+			if( is_file($file) ) {
 				$content	= file_get_contents($file);
 
 				if( ! strstr($content, $newString) ) {

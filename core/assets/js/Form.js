@@ -51,7 +51,7 @@ Todoyu.Form = {
 	 * @param	{String}		fieldName
 	 * @param	{Number}		index
 	 */
-	toggleRecordForm: function(idRecord, fieldName, index)	{
+	toggleRecordForm: function(idRecord, fieldName, index) {
 		var baseName	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
 		var formHtml	= baseName + '-formhtml';
 		var trigger		= baseName + '-trigger';
@@ -159,11 +159,11 @@ Todoyu.Form = {
 	 * 
 	 * @param	{String}	formID
 	 */
-	focusFirstFormField: function(formID)	{
-		if( $(formID) )	{
+	focusFirstFormField: function(formID) {
+		if( $(formID) ) {
 			var field = $(formID).select('input[type!=hidden]', 'select', 'textarea').first();
 
-			if( field )	{
+			if( field ) {
 				if( field.visible() ) {
 					field.focus();
 				}
@@ -222,7 +222,7 @@ Todoyu.Form = {
 	 * @param	{String}		title
 	 * @return	{String}
 	 */
-	openWizard: function(idRecord, idField, extension, controller, action, height, width, title)	{
+	openWizard: function(idRecord, idField, extension, controller, action, height, width, title) {
 		var url		= Todoyu.getUrl(extension,	controller);
 		var options	= {
 			'parameters': {
@@ -309,12 +309,12 @@ Todoyu.Form = {
 	/**
 	 * Sets the value of the chosen icon to the hidden field
 	 */
-	setIconSelectorValue: function(value, baseID)	{
+	setIconSelectorValue: function(value, baseID) {
 		$(baseID).value = value;
 
 		var selectedOld = $(baseID + '-selector').select('.selected').first();
 
-		if(selectedOld)	{
+		if(selectedOld) {
 			selectedOld.toggleClassName('selected');
 		}
 

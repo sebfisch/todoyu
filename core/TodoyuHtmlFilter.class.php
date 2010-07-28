@@ -44,7 +44,7 @@ class TodoyuHtmlFilter {
 	 * @return	String
 	 */
 	public static function clean($inputHTML) {
-		if( $inputHTML === null )	{
+		if( $inputHTML === null ) {
 			return '';
 		}
 		$badTags	= self::getBadTags();
@@ -140,7 +140,7 @@ class TodoyuHtmlFilter {
 	 * @param	Array		$match
 	 * @return	String
 	 */
-	private static function escapeBadTag(array $match)	{
+	private static function escapeBadTag(array $match) {
 		return htmlentities($match[0], ENT_QUOTES, 'UTF-8');
 	}
 }

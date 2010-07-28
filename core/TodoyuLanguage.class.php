@@ -148,7 +148,7 @@ class TodoyuLanguage {
 	 * @param	String	$locale
 	 * @return	String
 	 */
-	public static function labelExists($labelKey, $locale = null)	{
+	public static function labelExists($labelKey, $locale = null) {
 		$label	= self::getLabelInternal($labelKey, $locale);
 
 		return !is_null($label);

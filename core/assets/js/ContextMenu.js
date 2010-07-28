@@ -58,7 +58,7 @@ Todoyu.ContextMenu = {
 
 
 	/**
-	 * Load contextmenu items (JSON) over AJAX
+	 * Load context menu items (JSON) over AJAX
 	 *
 	 * @param	{Event}			event				Click event object
 	 * @param	{String}		name				Name of the contextmenu type
@@ -109,7 +109,7 @@ Todoyu.ContextMenu = {
 
 
 	/**
-	 * Please enter Description here...
+	 * Render item context menu from given JSON (using JS template)  
 	 *
 	 * @param	{Object}		menuJSON
 	 */
@@ -168,9 +168,8 @@ Todoyu.ContextMenu = {
 
 
 
-
 	/**
-	 * Please enter Description here...
+	 * Update context menu container with given HTML
 	 *
 	 * @param	{String}		menuHTML
 	 */
@@ -181,7 +180,7 @@ Todoyu.ContextMenu = {
 
 
 	/**
-	 * Please enter Description here...
+	 * Prevent showing of context menu: stop event.
 	 *
 	 * @param	{Object}		event
 	 */
@@ -193,7 +192,7 @@ Todoyu.ContextMenu = {
 
 
 	/**
-	 * Please enter Description here...
+	 * Hide context menu
 	 */
 	hide: function() {
 			// Hide context menu
@@ -206,7 +205,7 @@ Todoyu.ContextMenu = {
 
 
 	/**
-	 * Please enter Description here...
+	 * Show or hide given item's sub menu (at calculated position)   
 	 *
 	 * @param	{String}		key
 	 * @param	{Boolean}		show

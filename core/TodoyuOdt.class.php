@@ -69,7 +69,7 @@ class TodoyuOdt {
 	 * @param	String	$ext
 	 * @param	String	$newFileName
 	 */
-	public function __construct($ext = 'unknown', $newFileName = 'unknown.odt')	{
+	public function __construct($ext = 'unknown', $newFileName = 'unknown.odt') {
 		$this->tmpDir		= PATH_CACHE . '/odt';
 		$this->ext			= $ext;
 		$this->newFileName 	= $newFileName;
@@ -82,7 +82,7 @@ class TodoyuOdt {
 	/**
 	 * Initializes the class
 	 */
-	protected function init()	{
+	protected function init() {
 		if( ! is_dir($this->tmpDir) ) {
 			mkdir($this->tmpDir);
 		}
@@ -104,8 +104,8 @@ class TodoyuOdt {
 	 * @param	String		$templateFile
 	 * @throws	Exception
 	 */
-	public function openFromTemplate($templateFile)	{
-		if( ! is_file($templateFile) )	{
+	public function openFromTemplate($templateFile) {
+		if( ! is_file($templateFile) ) {
 			throw new Exception('Templatefile ' . $templateFile . ' not found!');
 		}
 
@@ -133,10 +133,10 @@ class TodoyuOdt {
 	 *
 	 * @param	Array	$markersArray
 	 */
-	public function	replaceMarkers(array $markersArray)	{
+	public function	replaceMarkers(array $markersArray) {
 		$content = file_get_contents($this->tmpOdtDir . '/content.xml');
 
-		foreach($markersArray as $markerName => $valueToReplace)	{
+		foreach($markersArray as $markerName => $valueToReplace) {
 			$valueToReplace = nl2br($valueToReplace);
 			$valueToReplace = preg_replace('/[\n\s]*\<br \/\>[\n\s]*/', ']]><text:line-break/><![CDATA[', trim($valueToReplace));
 			$valueToReplace = str_replace('&nbsp;', ' ', $valueToReplace);
@@ -157,7 +157,7 @@ class TodoyuOdt {
 	 * @param	String	$content
 	 * @return	String
 	 */
-	public function replaceMarker($markerName, $value, $content)	{
+	public function replaceMarker($markerName, $value, $content) {
 		$search		= '<text:placeholder text:placeholder-type="text">&lt;' . $markerName . '&gt;</text:placeholder>';
 		$replace	= '<![CDATA[' . $value . ']]>';
 		return str_replace( $search , $replace, $content);
@@ -181,7 +181,7 @@ class TodoyuOdt {
 		$approach = $document;
 
 			// Take everything from after x table ($number)
-		for($i = 1; $i < $number; $i++)	{
+		for($i = 1; $i < $number; $i++) {
 			$approach = mb_substr($approach, mb_strpos($approach, '</table:table>')+mb_strlen('</table:table>'));
 		}
 
@@ -209,8 +209,8 @@ class TodoyuOdt {
 			// Take all what's not AFTER the header-rows
 		$approach = mb_substr($approach, mb_strpos($approach, '</table:table-header-rows>') + mb_strlen('</table:table-header-rows>'));
 
-		if( $which > 1 )	{	// drop all whats behind the end of the table's row
-			for($i = 1; $i < $which; $i++)	{	//here we kill first all unused rows which are before the needed one.
+		if( $which > 1 ) {	// drop all whats behind the end of the table's row
+			for($i = 1; $i < $which; $i++) {	//here we kill first all unused rows which are before the needed one.
 				$tmpApproach	= mb_substr($approach, 0, mb_strpos($approach, '</table:table-row>')+mb_strlen('</table:table-row>'));
 				$approach		= str_replace($tmpApproach, '', $approach);
 			}
@@ -229,7 +229,7 @@ class TodoyuOdt {
 	/**
 	 * Downloads the current ODT file
 	 */
-	public function download()	{
+	public function download() {
 		header('Content-Type: application/vnd.oasis.opendocument.text');
 		header('Content-Disposition: attachment; filename=' . $this->newFileName);
 		header('Pragma: no-cache');
@@ -250,7 +250,7 @@ class TodoyuOdt {
 	 * @param	String	$templateFile
 	 * @return	String
 	 */
-	protected function getTemplateFileName($templateFile)	{
+	protected function getTemplateFileName($templateFile) {
 		$templateFilesArray = explode('/', $templateFile);
 
 		return array_pop($templateFilesArray);
@@ -283,7 +283,7 @@ class TodoyuOdt {
 	 *
 	 * @return	String
 	 */
-	protected function getContent()	{
+	protected function getContent() {
 		if( ! $this->tmpOdtFile ) {
 			$this->write();
 		}
@@ -296,7 +296,7 @@ class TodoyuOdt {
 	/**
 	 * Remove temporary added folders and files
 	 */
-	protected function close()	{
+	protected function close() {
 		$command = 'rm -R ' . $this->tmpOdtDir;
 		$this->exec($command);
 		$command = 'rm ' . $this->tmpOdtFile;
@@ -312,8 +312,8 @@ class TodoyuOdt {
 	 * @param	String	$destination
 	 * @param	String	$source
 	 */
-	protected function compressToZip($destination, $source)	{
-		if( is_dir($source) )	{
+	protected function compressToZip($destination, $source) {
+		if( is_dir($source) ) {
 			$command = 'cd \'' . $source . '\' && zip -r \'' . $destination . '\' *';
 			$this->exec($command);
 		}
@@ -327,8 +327,8 @@ class TodoyuOdt {
 	 * @param	String	$destination
 	 * @param	String	$source
 	 */
-	protected function extractFromZip($destination, $source)	{
-		if( is_file($source) && is_dir($destination) )	{
+	protected function extractFromZip($destination, $source) {
+		if( is_file($source) && is_dir($destination) ) {
 			$command = 'unzip \'' . $source . '\' -d \'' . $destination. '\'';
 			$this->exec($command);
 		}
@@ -341,7 +341,7 @@ class TodoyuOdt {
 	 *
 	 * @param	String	$command
 	 */
-	protected function exec($command)	{
+	protected function exec($command) {
 		exec($command);
 	}
 }

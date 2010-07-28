@@ -304,14 +304,14 @@ class TodoyuPage {
 	 * @param	String	$type
 	 * @return	String
 	 */
-	public static function getExtJSinline($ext, $type = 'public')	{
+	public static function getExtJSinline($ext, $type = 'public') {
 		TodoyuExtensions::loadAllAssets();
 		$js		= '';
 		$files	= Todoyu::$CONFIG['EXT'][$ext]['assets'][$type]['js'];
 
 		if( is_array($files) ) {
 			foreach($files as $file) {
-				$js	.= 'Todoyu.Ui.loadJSFile(\''.$file['file'].'\');';
+				$js	.= 'Todoyu.Ui.loadJSFile(\'' . $file['file'] . '\');';
 			}
 			$js	= TodoyuString::wrapScript($js);
 		}
@@ -328,7 +328,7 @@ class TodoyuPage {
 	 * @param	String		$type
 	 * @return	String
 	 */
-	public static function getExtCSSinline($ext, $type = 'public')	{
+	public static function getExtCSSinline($ext, $type = 'public') {
 		TodoyuExtensions::loadAllAssets();
 
 		$files	= Todoyu::$CONFIG['EXT'][$ext]['assets'][$type]['css'];

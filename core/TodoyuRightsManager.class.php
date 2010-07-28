@@ -72,7 +72,7 @@ class TodoyuRightsManager {
 		$roleIDs	= TodoyuAuth::getPerson()->getRoleIDs();
 
 			// If person has roles, get rights for the roles and compile them
-		if( sizeof($roleIDs) > 0 )	{
+		if( sizeof($roleIDs) > 0 ) {
 			$fields	= '	ext, `right`';
 			$table	= self::TABLE;
 			$where	= '	id_role IN(' . implode(',', $roleIDs) . ')';

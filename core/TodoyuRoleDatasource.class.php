@@ -38,7 +38,7 @@ class TodoyuRoleDatasource {
 	 * @param	Array	$definitions
 	 * @return	Array
 	 */
-	public static function getRoleOptions(array $definitions)	{
+	public static function getRoleOptions(array $definitions) {
 		$options	= array();
 
 		$roleIDs	= array();

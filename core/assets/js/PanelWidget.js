@@ -91,11 +91,11 @@ Todoyu.PanelWidget = {
 	 * @param	{String}		widget
 	 * @param	{String}		callbackFunction
 	 */
-	stopObserving: function(widget, callbackFunction)	{
+	stopObserving: function(widget, callbackFunction) {
 		if( ! Object.isUndefined(this.observerCallbacks[widget]) ) {
-			if( ! callbackFunction )	{
-				if(this.observerCallbacks[widget].length > 0)	{
-						this.observerCallbacks[widget].clear();
+			if( ! callbackFunction ) {
+				if( this.observerCallbacks[widget].length > 0 ) {
+					this.observerCallbacks[widget].clear();
 				}
 			}
 		}

@@ -35,7 +35,7 @@ class TodoyuNumeric {
 	 * @param	Integer		$max
 	 * @return	Integer
 	 */
-	public static function intInRange($integer, $min = 0, $max = 2000000000)	{
+	public static function intInRange($integer, $min = 0, $max = 2000000000) {
 		$integer = intval($integer);
 
 		if( $integer < $min ) {

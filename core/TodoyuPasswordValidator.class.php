@@ -149,7 +149,7 @@ class TodoyuPasswordValidator {
 	/**
 	 * Checks password for lower case
 	 */
-	private function hasLowerCase($value, $config)	{
+	private function hasLowerCase($value, $config) {
 		$pattern= '/[a-z]+/';
 		$valid	= preg_match($pattern, $value);
 
@@ -163,7 +163,7 @@ class TodoyuPasswordValidator {
 	/**
 	 * Checks password for upper case
 	 */
-	private function hasUpperCase($value, $config)	{
+	private function hasUpperCase($value, $config) {
 		$pattern= '/[A-Z]+/';
 		$valid	= preg_match($pattern, $value);
 

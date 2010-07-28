@@ -29,10 +29,10 @@ class TodoyuDbAnalyzer {
 	/**
 	 * Get available databases on server
 	 *
-	 * @param 	Array		$dbConfig		Connectio configuration [server,username,password]
+	 * @param 	Array		$dbConfig		Connection configuration [server,username,password]
 	 * @return	Array
 	 */
-	public static function getDatabasesOnServer(array $dbConfig)	{
+	public static function getDatabasesOnServer(array $dbConfig) {
 		$ignore = array(
 			'information_schema',
 			'mysql',

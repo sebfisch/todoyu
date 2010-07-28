@@ -86,7 +86,7 @@ var Todoyu = {
 	getUrl: function(ext, controller) {
 		var url = 'index.php?ext=' + ext;
 
-		if(controller)	{
+		if(controller) {
 			url = url + '&controller=' + controller;
 		}
 

@@ -150,7 +150,7 @@ abstract class TodoyuPanelWidget {
 	/**
 	 * Set collapsed status
 	 */
-	public function setCollapsedStatus()	{
+	public function setCollapsedStatus() {
 		$this->set('collapsed', TodoyuPanelWidgetManager::isCollapsed($this->get('id')));
 	}
 
@@ -265,7 +265,7 @@ abstract class TodoyuPanelWidget {
 	 *
 	 * @return	Boolean
 	 */
-	public static function isAllowed()	{
+	public static function isAllowed() {
 		return true;
 	}
 

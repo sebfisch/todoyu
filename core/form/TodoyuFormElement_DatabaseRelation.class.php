@@ -33,7 +33,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @param	TodoyuFieldset	$fieldset
 	 * @param	Array		$config
 	 */
-	public function __construct($name, TodoyuFieldset $fieldset, array $config  = array())	{
+	public function __construct($name, TodoyuFieldset $fieldset, array $config  = array()) {
 		parent::__construct('databaseRelation', $name, $fieldset, $config);
 	}
 
@@ -140,7 +140,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @param	Integer		$index
 	 * @return	String
 	 */
-	public function renderNewRecord($index = 0)	{
+	public function renderNewRecord($index = 0) {
 		$tmpl	= 'core/view/form/FormElement_DatabaseRelation_Record.tmpl';
 		$data	= array();
 
@@ -162,13 +162,13 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @param	Index		$index
 	 * @return	String
 	 */
-	protected function renderRecordForm($index)	{
+	protected function renderRecordForm($index) {
 		$recordForm	= $this->getRecordForm($index);
 
 			// Evoke assigned validators
-		if( $this->getForm()->getValidateForm() )	{
+		if( $this->getForm()->getValidateForm() ) {
 			$recordForm->isValid();
-//			if( ! $form->isValid() )	{
+//			if( ! $form->isValid() ) {
 //				$this->setErrorMessage( Label('form.field.hasError') );
 //				$this->setErrorTrue();
 //			}

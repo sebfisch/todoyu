@@ -443,7 +443,7 @@ class TodoyuSQLParser {
 	 * @return	String
 	 */
 	private static function getUpdatingQuery($action, $tableName, $colName, array $colStructure, $allTablesStructure = array()) {
-		switch($action)	{
+		switch($action) {
 				// Create table
 			case 'CREATE':
 				$tableColumnsSql	= self::getMultipleColumnsQueryPart($allTablesStructure[$tableName]['columns']);

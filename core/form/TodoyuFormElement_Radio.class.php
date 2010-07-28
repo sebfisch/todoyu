@@ -33,7 +33,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 * @param	TodoyuFieldset	$fieldset
 	 * @param	Array		$config
 	 */
-	function __construct($name, TodoyuFieldset $fieldset, array $config  = array())	{
+	function __construct($name, TodoyuFieldset $fieldset, array $config  = array()) {
 		parent::__construct('radio', $name, $fieldset, $config);
 
 		if( ! $this->isLazyInit() ) {
@@ -46,7 +46,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	/**
 	 * Init
 	 */
-	protected function init()	{
+	protected function init() {
 		if( is_array($this->config['source']) ) {
 			$type	= $this->config['source']['@attributes']['type'];
 			$source	= $this->config['source'];
