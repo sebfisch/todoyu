@@ -19,10 +19,10 @@
 *****************************************************************************/
 
 /**
- * [Enter Class Description]
+ * Country
  * 
  * @package		Todoyu
- * @subpackage	[Subpackage]
+ * @subpackage	Core
  */
 class TodoyuCountry extends TodoyuBaseObject {
 

@@ -45,7 +45,6 @@ TodoyuLanguage::register('dateformat', PATH_CORE . '/config/dateformat.xml');
 	// Register static_... tables' localization files
 TodoyuLanguage::register('static_country', PATH_CORE . '/locale/static_country.xml');
 TodoyuLanguage::register('static_country_zone', PATH_CORE . '/locale/static_country_zone.xml');
-TodoyuLanguage::register('static_currency', PATH_CORE . '/locale/static_currency.xml');
 TodoyuLanguage::register('static_territory', PATH_CORE . '/locale/static_territory.xml');
 TodoyuLanguage::register('static_language', PATH_CORE . '/locale/static_language.xml');
 

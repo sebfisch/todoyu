@@ -137,6 +137,30 @@ class TodoyuBaseObject implements ArrayAccess {
 
 
 	/**
+	 * Check whether a property is set
+	 *
+	 * @param	String		$key
+	 * @return	Boolean
+	 */
+	public function has($key) {
+		return isset($this->data[$key]);
+	}
+
+
+
+	/**
+	 * Check whether a property is not empty
+	 *
+	 * @param	String		$key
+	 * @return	Boolean
+	 */
+	public function notEmpty($key) {
+		return empty($this->data[$key]) === false;
+	}
+
+
+
+	/**
 	 * Inject data.
 	 * Usefull if user initialized without an ID to avoid an extra request
 	 *

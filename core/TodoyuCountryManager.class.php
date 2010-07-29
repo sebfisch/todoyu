@@ -22,9 +22,11 @@
  * [Enter Class Description]
  * 
  * @package		Todoyu
- * @subpackage	[Subpackage]
+ * @subpackage	Core
  */
 class TodoyuCountryManager {
+
+	const TABLE = 'static_country';
 
 	/**
 	 *
@@ -34,6 +36,24 @@ class TodoyuCountryManager {
 	 */
 	public static function getCountry($idCountry) {
 		return TodoyuRecordManager::getRecord('TodoyuCountry', $idCountry);
+	}
+
+
+	/**
+	 * Get country by ISO code (alpha2 or alpha3)
+	 *
+	 * @param	String		$code
+	 * @param	Boolean		$alpha3
+	 * @return	TodoyuCountry
+	 */
+	public static function getCountryByISO($code, $alpha3 = false) {
+		$fields	= 'id';
+		$wField	= $alpha3 ? 'iso_alpha3' : 'iso_alpha2';
+		$where	= $wField . ' = ' . Todoyu::db()->quote($code, true);
+
+		$idCountry	= intval(Todoyu::db()->getRecordByQuery($fields, self::TABLE, $where));
+
+		return self::getCountry($idCountry);
 	}
 
 }

@@ -12,6 +12,14 @@ form {
 		border:none;
 	}
 
+	div.fieldset-clear {
+		clear:both;
+	}
+
+	form fieldset fieldset {
+		float:none;
+	}
+
 	* html fieldset {height:1%} /* IE6 */
 
 			/* Buttons, Footer line */
