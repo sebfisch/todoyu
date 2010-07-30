@@ -133,6 +133,13 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 	 * Prepare the XML with the row syntax
 	 */
 	private function prepareRowXML() {
+			// Remove text spans around the row tags
+		$patternRowTagA	= '|<text:span[^>]*?>(\[ROW:)</text:span>|sm';
+		$patternRowTagB	= '|<text:span[^>]*?>(--ROW\])</text:span>|sm';
+
+		$this->xmlContent	= preg_replace($patternRowTagA, '\1', $this->xmlContent);
+		$this->xmlContent	= preg_replace($patternRowTagB, '\1', $this->xmlContent);
+
 			// Pattern to find all table rows
 		$patternRow		= '|<table:table-row>.*?</table:table-row>|sm';
 			// Pattern to find sub parts in a table row if  it contains the row syntax '[--ROW:'
@@ -141,8 +148,6 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 
 			// Find all rows
 		preg_match_all($patternRow, $this->xmlContent, $rowMatches);
-
-//		TodoyuDebug::printInFireBug($rowMatches, 'rows');
 
 			// Check for the row syntax in the matched row parts and modify the row
 		foreach($rowMatches[0] as $rowXML) {
