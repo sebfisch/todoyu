@@ -292,6 +292,20 @@ Todoyu.Form = {
 
 
 	/**
+	 * Open an iframe URL
+	 * 
+	 * @param key
+	 * @param url
+	 */
+	openIFrame: function(key, url) {
+		this.addIFrame(key);
+
+		this.getIFrame(key).contentWindow.location.href = url;
+	},
+
+
+
+	/**
 	 * Remove a hidden iFrame
 	 *
 	 * @param	{String}		key

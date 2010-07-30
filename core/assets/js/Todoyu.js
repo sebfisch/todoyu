@@ -83,11 +83,15 @@ var Todoyu = {
 	 * @param		{String}		controller
 	 * @return		{String}
 	 */
-	getUrl: function(ext, controller) {
+	getUrl: function(ext, controller, params) {
 		var url = 'index.php?ext=' + ext;
 
-		if(controller) {
+		if( controller ) {
 			url = url + '&controller=' + controller;
+		}
+
+		if( typeof params === 'object' ) {
+			url += '&' + Object.toQueryString(params);
 		}
 
 		return url;
@@ -104,7 +108,7 @@ var Todoyu = {
 	 * @param		{Hash}		params
 	 * @param		{String}	hash
 	 */
-	goTo: function(ext, controller, params, hash) {
+	goTo: function(ext, controller, params, hash, newWindow) {
 		var url =  this.getUrl(ext, controller);
 
 		if( typeof params === 'object' ) {
