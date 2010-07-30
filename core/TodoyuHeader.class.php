@@ -94,8 +94,8 @@ class TodoyuHeader {
 		$fileSize		= intval($fileSize);
 		$fileModTime	= intval($fileModTime);
 
-		self::sendHeader('Content-type', $mimeType);
-		self::sendHeader('Content-disposition', 'attachment; filename="' . $filename . '"');
+		self::sendHeader('Content-Type', $mimeType);
+		self::sendHeader('Content-disposition', 'attachment; filename="' . addslashes($filename) . '"');
 		self::sendHeader('Content-length', $fileSize);
 		self::sendHeader('Expires', date('r', NOW + 600));
 		self::sendHeader('Cache-Control', 'no-cache, must-revalidate');

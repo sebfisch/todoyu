@@ -383,6 +383,9 @@ class TodoyuFileManager {
 	 * @return	Boolean		File was allowed to download and sent to browser
 	 */
 	public static function sendFile($absoluteFilePath, $mimeType = null, $filename = null) {
+			// Clear output buffer to prevent invalid file content
+		ob_clean();
+			// Get real path
 		$pathFile	= realpath($absoluteFilePath);
 
 		if( $pathFile !== false ) {
@@ -392,6 +395,7 @@ class TodoyuFileManager {
 					$filesize	= filesize($pathFile);
 					$filename	= is_null($filename) ? basename($pathFile) : $filename;
 					$filemodtime= filemtime($pathFile);
+
 					TodoyuHeader::sendDownloadHeaders($mimeType, $filename, $filesize, $filemodtime);
 
 						// Send file data
