@@ -58,9 +58,6 @@ class TodoyuDatabase {
 
 
 
-
-
-
 	/**
 	 * Get the only instance of the database object
 	 * Singleton Pattern
