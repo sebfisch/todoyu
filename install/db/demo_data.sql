@@ -263,7 +263,7 @@ INSERT INTO `ext_project_project` (`id`, `date_create`, `date_update`, `id_perso
 (11, 1264679825, 1264681779, 1, 0, 1264633200, 1267225200, 1267225200, 'Monthly support', '<p>Monthly support</p>', 8, 9),
 (12, 1264680252, 1264681686, 1, 0, 1231110000, 1234479600, 1235084400, 'Redesign', '<p>Redesign</p>', 8, 12),
 (13, 1264680885, 1264681744, 1, 0, 1243461600, 1248645600, 1248645600, 'Redesign', '<p>Redesign</p>', 9, 15),
-(14, 1264777540, 1264777661, 12, 0, 1266793200, 1269558000, 1269558000, 'New Opensource Server', '<p>Build a new server for opensource projects</p>', 1, 15);
+(14, 1264777540, 1264777661, 12, 0, 1266793200, 1269558000, 1269558000, 'New Opensource Server', '<p>Build a new server for opensource projects</p>', 3, 15);
 
 -- --------------------------------------------------------
 
