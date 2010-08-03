@@ -224,9 +224,7 @@ Todoyu.Time = {
 	 * @param	{Number}		time
 	 */
 	getDateTimeString: function(time) {
-		if( ! Object.isNumber(time) ) {
-			return '';
-		}
+		time = parseInt(time, 10);
 
 		var date = new Date(time * 1000);
 
