@@ -9,19 +9,6 @@
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
-
--- --------------------------------------------------------
-
---
--- Data for Table `ext_assets_asset`
---
-
-INSERT INTO `ext_assets_asset` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `id_parent`, `parenttype`, `is_public`, `file_ext`, `file_storage`, `file_name`, `file_size`, `file_mime`, `file_mime_sub`) VALUES
-(1, 1264699957, 1264699957, 17, 0, 60, 1, 0, 'jpg', 'task/60/1264699957_humor_cartoon_42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 'humor,cartoon-42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 31922, 'image', 'jpeg'),
-(2, 1264700333, 1264700333, 17, 0, 106, 1, 0, 'jpg', 'task/106/1264700333_humor_cartoon_42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 'humor,cartoon-42304c994c0da5c1ec2fd8e5d2dba52b_h.jpg', 31922, 'image', 'jpeg'),
-(3, 1264777318, 1264777318, 18, 0, 60, 1, 1, 'jpg', 'task/60/1264777318_startsprung.jpg', 'startsprung.jpg', 2629, 'image', 'jpeg'),
-(4, 1264778177, 1264778177, 18, 0, 134, 1, 0, 'jpg', 'task/134/1264778177_gettodoyu.jpg', 'gettodoyu.jpg', 1222, 'image', 'jpeg');
-
 -- --------------------------------------------------------
 
 --

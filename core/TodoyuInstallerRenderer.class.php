@@ -48,7 +48,6 @@ class TodoyuInstallerRenderer {
 	/**
 	 * Render installer step: select installer language (preset for system language)
 	 *
-	 * @param	String	$nextStep
 	 * @param	Array	$result
 	 * @return	String
 	 */
@@ -309,9 +308,10 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderUpdateToCurrentVersion(array $result) {
 		$data	= array(
-			'title'		=> 'installer.updatetocurrentversion.title',
-			'button'	=> 'installer.updatetocurrentversion.button',
-			'diff'		=> TodoyuSQLManager::getStructureDifferences()
+			'title'			=> 'installer.updatetocurrentversion.title',
+			'button'		=> 'installer.updatetocurrentversion.button',
+			'buttonClass'	=> 'updateDatabase',
+			'diff'			=> TodoyuSQLManager::getStructureDifferences()
 		);
 
 		if( sizeof($data['diff']['missingTables']) === 0 && sizeof($data['diff']['missingColumns']) === 0 && sizeof($data['diff']['changedColumns']) === 0 && sizeof($data['diff']['missingKeys']) === 0 ) {
@@ -338,13 +338,14 @@ class TodoyuInstallerRenderer {
 
 	public static function renderFinishUpdate(array $result) {
 		$data	= array(
-			'title'		=> 'installer.finish.title',
-			'button'	=> 'installer.finish.button',
-			'text'		=> Label('installer.finishupdate.text'),
-			'textClass'	=> 'success'
+			'title'			=> 'installer.finish.title',
+			'button'		=> 'installer.finish.button',
+			'text'			=> Label('installer.finishupdate.text'),
+			'textClass'		=> 'success'
 		);
 
 		return $data;
 	}
+
 }
 ?>

@@ -247,12 +247,12 @@ class TodoyuInstallerManager {
 		if( isset($data['password']) && isset($data['company']) && isset($data['firstname']) && isset($data['lastname']) ) {
 			$emailOk	= TodoyuString::isValidEmail(trim($data['email']));
 			$companyOk	= strlen(trim($data['company'])) >= 1;
-			$firstnameOk= strlen(trim($data['firstname'])) >= 1;
-			$lastnameOk	= strlen(trim($data['lastname'])) >= 1;
+			$firstNameOk= strlen(trim($data['firstname'])) >= 1;
+			$lastNameOk	= strlen(trim($data['lastname'])) >= 1;
 			$passwordOk	= strlen(trim($data['password'])) >= 5 && $data['password'] === $data['password_confirm'];
 
 				// Verified. save account data
-			if( $emailOk && $companyOk && $firstnameOk && $lastnameOk && $passwordOk ) {
+			if( $emailOk && $companyOk && $firstNameOk && $lastNameOk && $passwordOk ) {
 				self::saveInternalCompanyName($data['company']);
 				self::saveAdminAccountData($data['email'], $data['password'], $data['firstname'], $data['lastname']);
 
@@ -397,7 +397,7 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Disable the installer, remove redirector files, clear session and go to login
+	 * Disable the installer, remove redirection files, clear session and go to login
 	 */
 	public static function finishInstallerAndJumpToLogin() {
 		self::disableInstaller();
@@ -463,11 +463,13 @@ class TodoyuInstallerManager {
 	 * @param	String		$name
 	 */
 	private static function saveInternalCompanyName($name) {
+		$name	= trim($name);
+
 		$table	= 'ext_contact_company';
 		$where	= 'id = 1';
 		$update	= array(
-			'title'		=> trim($name),
-			'shortname'	=> trim($name),
+			'title'		=> $name,
+			'shortname'	=> $name,
 			'date_enter'=> NOW
 		);
 
@@ -479,9 +481,10 @@ class TodoyuInstallerManager {
 	/**
 	 * Update admin-user password (and username)
 	 *
+	 * @param	String		$email
+	 * @param	String		$password
 	 * @param	String		$firstName
 	 * @param	String		$lastName
-	 * @param	String		$password
 	 */
 	private static function saveAdminAccountData($email, $password, $firstName, $lastName) {
 		$email		= trim($email);
@@ -489,14 +492,17 @@ class TodoyuInstallerManager {
 		$lastName	= trim($lastName);
 		$password	= trim($password);
 
+		$shortName	= strtoupper(substr($firstName, 0, 2) . substr($lastName, 0, 2));
+		$passHash	= md5($password);
+
 		$table	= 'ext_contact_person';
 		$where	= 'username = \'admin\'';
 		$update	= array(
 			'email'			=> $email,
 			'firstname'		=> $firstName,
 			'lastname'		=> $lastName,
-			'shortname'		=> strtoupper(substr($firstName, 0, 2) . substr($lastName, 0, 2)),
-			'password'		=> md5($password)
+			'shortname'		=> $shortName,
+			'password'		=> $passHash
 		);
 
 		Todoyu::db()->doUpdate($table, $where, $update);
@@ -520,7 +526,7 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Import data from .sql file
+	 * Import data from SQL file
 	 *
 	 * @param	String		$file
 	 */
@@ -574,7 +580,7 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Check if installed php version is at least 5.2
+	 * Check if installed PHP version is at least 5.2
 	 *
 	 * @return	String
 	 */
@@ -594,7 +600,6 @@ class TodoyuInstallerManager {
 			'error'	=> false,
 			'files'	=> array()
 		);
-
 
 		foreach($elements as $element) {
 			$path	= TodoyuFileManager::pathAbsolute($element);

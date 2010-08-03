@@ -17,9 +17,9 @@ button {
 	color:#000;
 	cursor:pointer;
 	padding:0;
-	background:#ffffff url('../img/bg-button-css3.png') repeat-x 0 50%;
+	background:#fff url('../img/bg-button-css3.png') repeat-x 0 50%;
 
-	border:1px solid #bbbbbb;
+	border:1px solid #bbb;
 	-moz-border-radius:13px;
 	-khtml-border-radius:13px;
 	-webkit-border-radius:13px;
@@ -79,7 +79,6 @@ button.expandAll .icon {
 button.saveanddownload .icon {
 	background:url(../img/icons.png) no-repeat 0 -838px;
 }
-
 
 /* ---------------------------
 	Center save buttons
