@@ -180,8 +180,6 @@ class TodoyuInstaller {
 		if( $cookieLocale !== false ) {
 			TodoyuSession::set('installer/locale', $cookieLocale);
 		}
-		
-		TodoyuDebug::printInFireBug($cookieLocale, 'locale');
 	}
 
 
