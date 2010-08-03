@@ -80,26 +80,36 @@ class TodoyuFileManager {
 	/**
 	 * Delete all files inside given folder
 	 *
-	 * @param	String	$pathToFolder
+	 * @param	String		$pathToFolder
+	 * @param	Boolean		Deletion of all files was successful
 	 */
 	public static function deleteFolderContents($folderPath, $deleteHidden = false) {
-		$folderPath 	= self::pathAbsolute($folderPath);
-		$folders		= self::getFoldersInFolder($folderPath, $deleteHidden);
-		$files			= self::getFilesInFolder($folderPath);
+		$folderPath = self::pathAbsolute($folderPath);
+		$folders	= self::getFoldersInFolder($folderPath, $deleteHidden);
+		$files		= self::getFilesInFolder($folderPath);
+		$success	= true;
 
 			// Delete folders with contents
 		foreach($folders as $foldername) {
 			$pathFolder	= $folderPath . DIR_SEP . $foldername;
 
 			if( is_dir($pathFolder) ) {
-				self::deleteFolderContents($pathFolder, $deleteHidden);
+				$successContents = self::deleteFolderContents($pathFolder, $deleteHidden);
+
+				if( $successContents === false ) {
+					$success = false;
+				}
 
 					// Check if there are still elements in the folder
 				$elementsInFolder	= self::getFolderContents($pathFolder, true);
 
 					// Only delete the folder if empty
 				if( sizeof($elementsInFolder) === 0 ) {
-					self::deleteFolder($pathFolder);
+					$successFolder = self::deleteFolder($pathFolder);
+
+					if( $successFolder === false ) {
+						$success = false;
+					}
 				}
 			}
 		}
@@ -109,9 +119,19 @@ class TodoyuFileManager {
 			$pathFile	= $folderPath . DIR_SEP . $filename;
 
 			if( is_file($pathFile) ) {
-				unlink($pathFile);
+				if( is_writable($pathFile) ) {
+					unlink($pathFile);
+				} else {
+					Todoyu::log('Can\'t delete file. File not writable: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
+					$success = false;
+				}
+			} else {
+				Todoyu::log('Can\'t delete file. File not found: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
+				$success = false;
 			}
 		}
+
+		return $success;
 	}
 
 
@@ -128,6 +148,8 @@ class TodoyuFileManager {
 			return false;
 		}
 
+		$success	= true;
+
 		$pathFolder	= self::pathAbsolute($pathFolder);
 
 		if( is_dir($pathFolder) ) {
@@ -136,12 +158,13 @@ class TodoyuFileManager {
 			$result	= rmdir($pathFolder);
 			if( $result === false ) {
 				Todoyu::log('Folder deletion failed: ' . $pathFolder, TodoyuLogger::LEVEL_NOTICE);
+				$success = false;
 			}
 		} else {
-			$result	= false;
+			$success = false;
 		}
 
-		return $result;
+		return $success;
 	}
 
 
@@ -317,16 +340,35 @@ class TodoyuFileManager {
 	/**
 	 * Save content in file
 	 *
-	 * @param	String		$path
+	 * @param	String		$pathFile
 	 * @param	String		$content
 	 */
-	public static function saveFileContent($path, $content) {
-		$path	= self::pathAbsolute($path);
+	public static function saveFileContent($pathFile, $content) {
+		$pathFile	= self::pathAbsolute($pathFile);
 
-		if( is_file($path) && is_writable($path) ) {
-			file_put_contents($path, $content);
+		if( is_file($pathFile) && is_writable($pathFile) ) {
+			file_put_contents($pathFile, $content);
 		} else {
-			Todoyu::log('Can\'t open file! File: ' . $file, TodoyuLogger::LEVEL_ERROR);
+			Todoyu::log('Can\'t open file: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
+		}
+	}
+
+
+
+	/**
+	 * Get file content
+	 *
+	 * @param	String		$pathFile
+	 * @return	String
+	 */
+	public static function getFileContent($pathFile) {
+		$pathFile	= self::pathAbsolute($pathFile);
+
+		if( is_file($pathFile) && is_readable($pathFile) ) {
+			return file_get_contents($pathFile);
+		} else {
+			Todoyu::log('Can\'t open file! File: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
+			return '';
 		}
 	}
 
@@ -522,25 +564,6 @@ class TodoyuFileManager {
 		}
 
 		return $folders;
-	}
-
-
-
-	/**
-	 * Get file content
-	 *
-	 * @param	String		$path
-	 * @return	String
-	 */
-	public static function getFileContent($path) {
-		$path	= self::pathAbsolute($path);
-
-		if( is_file($path) && is_readable($path) ) {
-			return file_get_contents($path);
-		} else {
-			Todoyu::log('Can\'t open file! File: ' . $file, TodoyuLogger::LEVEL_ERROR);
-			return '';
-		}
 	}
 
 

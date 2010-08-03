@@ -146,12 +146,16 @@ class TodoyuLocaleManager {
 	 * Send a cookie with locale setting of current user
 	 */
 	public static function setLocaleCookie($locale = null) {
-		if( TodoyuAuth::isLoggedIn() ) {
-			if( is_null($locale)) {
+		if( is_null($locale)) {
+			if( TodoyuAuth::isLoggedIn() ) {
 				$locale	= Todoyu::getLocale();
 			}
+		}
 
+		if( ! is_null($locale) ) {
 			setcookie('locale', $locale, NOW + TodoyuTime::SECONDS_WEEK * 100, PATH_WEB);
+		} else {
+			Todoyu::log('Tried to set locale cookie. But not logged in and no parameter set!', TodoyuLogger::LEVEL_ERROR);
 		}
 	}
 
