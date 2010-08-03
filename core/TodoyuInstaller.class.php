@@ -174,6 +174,14 @@ class TodoyuInstaller {
 			self::setStep(INSTALLER_INITIALSTEP_INSTALL);
 			self::setMode('install');
 		}
+
+			// Try to detect to cookie locale
+		$cookieLocale = TodoyuLocaleManager::getCookieLocale();		
+		if( $cookieLocale !== false ) {
+			TodoyuSession::set('installer/locale', $cookieLocale);
+		}
+		
+		TodoyuDebug::printInFireBug($cookieLocale, 'locale');
 	}
 
 
