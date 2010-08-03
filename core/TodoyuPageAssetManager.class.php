@@ -634,7 +634,7 @@ class TodoyuPageAssetManager {
 		if( TodoyuBrowserInfo::isIE() ) {
 			self::addJavascript('core/assets/js/IE.js', 1000);
 			self::addStylesheet('core/assets/css/ie.css', 'all', 1000);
-			self::addJavascript('lib/js/highcharts/js/excanvas.compiled.js', 24, false, false, false);
+//			self::addJavascript('lib/js/excanvas.compiled.js', 24, false, false, false);
 		}
 	}
 

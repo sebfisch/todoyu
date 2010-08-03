@@ -13,7 +13,7 @@ form {
 	}
 
 	div.fieldset-clear {
-		clear:both;
+		/*clear:both;*/
 	}
 
 	form fieldset fieldset {
