@@ -72,6 +72,7 @@ Todoyu.Headlet.QuickCreate = {
 	},
 
 
+
 	/**
 	 * Handle click on headlet body: hide content, stop events
 	 *
@@ -109,7 +110,8 @@ Todoyu.Headlet.QuickCreate = {
 			var url		= Todoyu.getUrl(ext, ctrl);
 			var options	= {
 				'parameters': {
-					'action':	'popup'
+					'action':	'popup',
+					'area':		Todoyu.getArea()
 				},
 				'onComplete': this.onPopupOpened.bind(this, ext, type)
 			};

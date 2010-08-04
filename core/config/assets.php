@@ -249,6 +249,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/js/LoaderBox.js',
 			'position'	=> 70
+		),
+		array(
+			'file'		=> 'core/assets/js/Highcharts.js',
+			'position'	=> 71
 		)
 	),
 
