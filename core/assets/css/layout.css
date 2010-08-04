@@ -134,10 +134,6 @@ body {
 
 
 
-
-
-
-
 /* --------------
 	Footer
    --------------*/
@@ -284,7 +280,6 @@ body {
 /* -------------------------------
 	Styles & status
    ------------------------------- */
-
 div.toggled {
 	background-color:#adb989;font-weight:bold;
 }
@@ -307,6 +302,12 @@ div.error {
 
 .hasIcon {
 	padding-left:20px;
+}
+
+span.exticon {
+	background-repeat:no-repeat;
+	padding:0 18px 16px 0;
+	margin:0 2px 0 2px;
 }
 
 .iconEdit {
@@ -469,7 +470,6 @@ label.toggleSelect.expand {
 /* -------------------------------
 	Alphabetical index
    ------------------------------- */
-
 select.indexLetters option {
 	padding-left:16px !important;
 }

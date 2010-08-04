@@ -55,7 +55,6 @@
 /* -------------------
 	Success
    ------------------- */
-
 #notifications div.success {
 	background-color:#eff6bf;
 }
@@ -69,7 +68,6 @@
 /* -------------------
 	Error
    ------------------- */
-
 #notifications div.error {
 	background-color:#f6e0e0;
 }

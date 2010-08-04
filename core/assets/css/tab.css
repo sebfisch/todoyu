@@ -2,12 +2,10 @@
 /* -------------------
 	Task tabs and tab contents
    ------------------- */
-
 #content-tabs {
 	position:relative;
 	top:-35px;
 }
-
 
 #content .tabs {
 	z-index:2;

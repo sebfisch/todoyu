@@ -33,10 +33,11 @@ table.list td div.icon {
 	cursor:pointer;
 }
 
+
+
 /* ------------
 	Hover
    ------------ */
-
 table.list tr:hover,
 table.list tr:hover .odd,
 table.list tr:hover .even,
@@ -45,10 +46,11 @@ ul.withMouseHover li.even:hover {
 	background-color:#f2f2d2 !important;
 }
 
+
+
 /* -----------------------------
 	Odd and even alternation
    ----------------------------- */
-
 table.list tr.odd,
 table.listsimple tr.odd,
 li.odd {

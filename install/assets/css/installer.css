@@ -71,6 +71,7 @@ select#database option.disabled {
 }
 
 
+
 /* -----------------------------------
 	Panel: steps of installation
    ----------------------------------- */
@@ -277,6 +278,8 @@ input#email.adminaccount {
 	background:#e3eace url('../img/panel-footer.png') no-repeat 0 0;
 }
 
+
+
 /* ----------------------------
  	Todoyu Panelwidget Slogan
    ---------------------------- */
@@ -296,6 +299,8 @@ input#email.adminaccount {
 	font-weight:bold;
 	text-align:right;
 }
+
+
 
 /* --------------------------
 	License agreement
@@ -407,9 +412,9 @@ h1.deniedOpen span.rgt {
 
 
 
-/* -----------------------------
+/* ---------------------------------------
 	Hyperlinks, buttons, labels, etc.
-   ----------------------------- */
+   --------------------------------------- */
 a, a:link {
 	color:#414e1c;
 }
@@ -417,6 +422,8 @@ a, a:link {
 label {
 	cursor:pointer;
 }
+
+
 
 /* ----------------------------
 	Icons, decorations
@@ -440,8 +447,6 @@ label {
 .toggler.expanded {
 	background:transparent url('../img/icons.png') no-repeat 4px -85px;
 }
-
-
 
 td {
 	padding:4px 0 8px 0;

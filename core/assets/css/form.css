@@ -199,7 +199,6 @@ div.fElement {
 /* -------------
 	Types
    ------------- */
-
 	.typeText {}
 
 	.typeDate {}
@@ -467,7 +466,6 @@ form .typeCheckbox div.errorMessage {
 /* ----------------------------------
 	Form element: databaseRelation
    ---------------------------------- */
-
 .formElement .databaseRelation {
 	margin-top:5px;
 }
@@ -521,7 +519,6 @@ form .typeCheckbox div.errorMessage {
 /* --------------------------------------
 	Form element: iconSelector
    -------------------------------------- */
-
 .fField .iconSelector {
 	width: auto;
 }
@@ -555,7 +552,6 @@ form .typeCheckbox div.errorMessage {
 /* ----------------------------------
 	Quick creation light-box
    ---------------------------------- */
-
 #quickcreate form,
 #quicktask form,
 .dialog form {
@@ -629,7 +625,6 @@ form.formConfig {
 /* ---------------------------------------
 	Error info: invalid items listing
    --------------------------------------- */
-
 div.errorMessage ul.invalidItems {
 	font-style:normal;
 	border-left:5px solid #F00;

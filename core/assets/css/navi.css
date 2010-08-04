@@ -65,7 +65,6 @@ ul#navi-main-list li:hover {
 /* -------------------
 	Level 2
    ------------------- */
-
 ul#navi-main-list li:hover ul {
 	left:auto;
 }
@@ -121,7 +120,7 @@ ul#navi-main-list li ul li a:hover {
 #navi-main-list li.itemTodoyu {
 	float:right;
 }
-/* Todoyu submenu */
+/* Todoyu sub menu */
 #navi-main-list-todoyu {
 	margin-left:-146px !important;
 }
