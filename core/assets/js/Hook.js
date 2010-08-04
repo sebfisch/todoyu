@@ -24,8 +24,8 @@
  * 
  * How to use:
  * define: 		function myCallback(arg1, arg2) {...}
- * register:	Todoyu.Hook.add('demoHookName', myCallback);
- * call:		Todoyu.Hook.exec('demoHookName', arg1, arg2); 
+ * register:	Todoyu.Hook.add('extension.objectOrType.eventName', myCallback);
+ * call:		Todoyu.Hook.exec('extension.objectOrType.eventName', arg1, arg2); 
  */
 Todoyu.Hook = {
 
