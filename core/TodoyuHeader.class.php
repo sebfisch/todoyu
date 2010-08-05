@@ -244,10 +244,7 @@ class TodoyuHeader {
 	 * @param	String		$name
 	 * @param	String		$value
 	 */
-	public static function sendHeader($name, $value, $isUTF8 = true) {
-//		if( $isUTF8 ) {
-//			$value = utf8_decode($value);
-//		}
+	public static function sendHeader($name, $value) {
 		header($name . ': ' . $value);
 	}
 

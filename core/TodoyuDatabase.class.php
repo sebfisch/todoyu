@@ -1213,6 +1213,22 @@ class TodoyuDatabase {
 	}
 
 
+	
+	/**
+	 * Get version of database server
+	 *
+	 * @return	String
+	 */
+	public function getVersion() {
+		$q = 'SELECT VERSION() as version';
+
+		$result	= $this->query($q);
+		$info	= $this->resourceToArray($result);
+
+		return trim($info[0]['version']);
+	}
+
+
 
 	/**
 	 * Print database connection error message

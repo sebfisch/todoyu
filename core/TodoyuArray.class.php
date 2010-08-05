@@ -413,6 +413,37 @@ class TodoyuArray {
 
 
 	/**
+	 * Convert an object to an array (recursively)
+	 * Basic types are ignored
+	 *
+	 * @param	Mixed		$element
+	 * @param	Boolean		$recursive
+	 * @return	Array
+	 */
+	public static function toArray($element, $recursive = true) {
+			// Return element if not complex value
+		if( gettype($element) !== 'array' && gettype($element) !== 'object' ) {
+			return $element;
+		}
+
+			// Convert object to array by casting
+		if( gettype($element) === 'object' ) {
+			$element = (array)$element;
+		}
+
+			// Convert recursively
+		if( $recursive ) {
+			foreach($element as $index => $value) {
+				$element[$index] = self::toArray($value, true);
+			}
+		}
+
+		return $element;
+	}
+
+
+
+	/**
 	 * Remove data if key matches with one in $keysToRemove
 	 *
 	 * @param	Array		$array					The array with the data

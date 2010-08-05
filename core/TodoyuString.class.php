@@ -428,6 +428,33 @@ class TodoyuString {
 		return $info;
 	}
 
+
+	/**
+	 * Extract the headers from a full HTTP response (including headers and content)
+	 *
+	 * @param	String		$responseContent
+	 * @return	Array
+	 */
+	public static function extractHttpHeaders($responseContent) {
+			// Split header and content
+		list($header) = explode("\r\n\r\n", $responseContent);
+
+			// Split header pairs
+		$headerPairs= explode("\r\n", $header);
+		$headers	= array();
+
+			// Add HTTP staus as status key
+		$headers['status'] = array_shift($headerPairs);
+
+			// Add the rest of the header pairs
+		foreach($headerPairs as $headerPair) {
+			list($key, $value) = explode(':', $headerPair);
+			$headers[trim($key)] = trim($value);
+		}
+
+		return $headers;
+	}
+
 }
 
 ?>

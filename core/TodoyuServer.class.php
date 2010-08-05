@@ -34,6 +34,14 @@ class TodoyuServer {
 		return stripos(PHP_OS, 'Win') !== false;
 	}
 
+	public static function getIP() {
+		return $_SERVER['SERVER_ADDR'];
+	}
+
+	public static function getDomain() {
+		return $_SERVER['SERVER_NAME'];	
+	}
+
 }
 
 ?>
