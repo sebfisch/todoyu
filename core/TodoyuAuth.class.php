@@ -210,12 +210,29 @@ class TodoyuAuth {
 	 * @return	Array
 	 */
 	public static function checkLoginStatus(array $requestVars, array $originalRequestVars) {
-		if( ! self::isLoggedIn() && ! self::isNoLoginRequired($requestVars['ext'], $requestVars['ctrl']) )  {
-			$requestVars['ext']	= Todoyu::$CONFIG['AUTH']['login']['ext'];
-			$requestVars['ctrl']= Todoyu::$CONFIG['AUTH']['login']['controller'];
+		if( ! self::isLoggedIn() && ! self::isNoLoginRequired($requestVars['ext'], $requestVars['ctrl']) ) {
+				// If ajax request, send header and stop script
+			if( TodoyuRequest::isAjaxRequest() ) {
+				self::sendNotLoggedInHeader();
+				echo "NOT LOGGED IN";
+				exit();
+			} else {
+					// On normal request, change controller to login page
+				$requestVars['ext']	= Todoyu::$CONFIG['AUTH']['login']['ext'];
+				$requestVars['ctrl']= Todoyu::$CONFIG['AUTH']['login']['controller'];
+			}
 		}
 
 		return $requestVars;
+	}
+
+
+
+	/**
+	 * Send header to inform the user that the ajax request failed because of logout
+	 */
+	private static function sendNotLoggedInHeader() {
+		TodoyuHeader::sendTodoyuHeader('notLoggedIn', 1);
 	}
 
 

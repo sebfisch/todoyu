@@ -32,10 +32,19 @@ Todoyu.Ajax = {
 	 */
 	checkNoAccessHeader: function(response) {
 		if( response.hasNoAccess() ) {
-				// Delete onComplete handler to prevent processing an empty respone
+				// Delete onComplete handler to prevent processing an empty response
 			delete response.request.options.onComplete;
 			var missingRight = response.getTodoyuHeader('noAccess-right');
 			Todoyu.notifyError('[LLL:core.noAccess.errorMessage] (' + missingRight + ')');
+		}
+	},
+
+
+	checkNotLoggedInHeader: function(response) {
+		if( response.isNotLoggedIn() ) {
+				// Delete onComplete handler to prevent processing an empty response
+			delete response.request.options.onComplete;
+			Todoyu.notifyError('[LLL:core.notLoggedIn.errorMessage]', 0);
 		}
 	},
 

@@ -140,7 +140,7 @@ abstract class TodoyuActionController {
 	 * @return	Boolean
 	 */
 	public function isAction($action) {
-		$funcName	= self::getActionMethodName($action);
+		$funcName	= $this->getActionMethodName($action);
 
 		return method_exists($this, $funcName);
 	}

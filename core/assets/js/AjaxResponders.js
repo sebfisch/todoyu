@@ -45,6 +45,7 @@ Todoyu.Ajax.Responders = {
 			'onException':	this.onException.bind(this)
 		});
 
+		this.addOnCompleteHook(Todoyu.Ajax.checkNotLoggedInHeader.bind(Todoyu.Ajax));
 		this.addOnCompleteHook(Todoyu.Ajax.checkNoAccessHeader.bind(Todoyu.Ajax));
 		this.addOnCompleteHook(Todoyu.Ajax.checkPhpErrorHeader.bind(Todoyu.Ajax));
 		this.addOnCompleteHook(Todoyu.Notification.checkNoteHeader.bind(Todoyu.Notification));

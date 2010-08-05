@@ -46,6 +46,7 @@
 		<label index="deadline">Deadline</label>
 		<label index="closeWindow">Close Window</label>
 		<label index="noAccess.errorMessage">You have no access to the requested data</label>
+		<label index="notLoggedIn.errorMessage">Your login expired. Request could not be completed. Please re-login first.</label>
 		<label index="close">Close</label>
 		<label index="noAccess.pageTitle">No Access</label>
 		<label index="noAccess.goBackToLastPage">Go back to last page</label>
@@ -122,6 +123,7 @@
 		<label index="deadline">Frist</label>
 		<label index="closeWindow">Fenster schliessen</label>
 		<label index="noAccess.errorMessage">Sie haben keinen Zugriff auf die verlangten Daten</label>
+		<label index="notLoggedIn.errorMessage">Ihre Anmeldung ist abgelaufen. Anfrage konnte nicht verarbeitet werden. Bitte zuerst neu anmelden.</label>
 		<label index="close">Schliessen</label>
 		<label index="noAccess.pageTitle">Kein Zugriff</label>
 		<label index="noAccess.goBackToLastPage">Zurück zur letzten Seite</label>

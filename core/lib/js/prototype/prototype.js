@@ -65,6 +65,15 @@ Ajax.Response.addMethods({
 
 
 	/**
+	 * Check whether notLoggedIn header was sent
+	 */
+	isNotLoggedIn: function() {
+		return this.getTodoyuHeader('notLoggedIn') == 1;
+	},
+
+
+
+	/**
 	 * Check whether a php error header was sent
 	 */
 	hasPhpError: function() {
