@@ -124,10 +124,17 @@ class TodoyuInstallerManager {
 	public static function processDbSelect(array $data) {
 		$result		= array();
 
-		$database	= trim($data['database']);
-		$databaseNew= trim($data['database_new']);
+		$database		= trim($data['database']);
+		$databaseNew	= trim($data['database_new']);
+		$databaseManual	= trim($data['database_manual']);
 
-		if( !empty($database) || !empty($databaseNew) ) {
+			// Database has been specified manually
+		if ( ! empty($databaseManual) && empty($database) ) {
+			$database	= $databaseManual;
+		}
+
+			// Setup usage of selected database or create new one as specified
+		if( ! empty($database) || ! empty($databaseNew) ) {
 			$dbConf		= TodoyuSession::get('installer/db');
 			$databases	= TodoyuDbAnalyzer::getDatabasesOnServer($dbConf);
 			$success	= false;
@@ -135,6 +142,7 @@ class TodoyuInstallerManager {
 			$createDb	= false;
 
 			if( ! empty($databaseNew) ) {
+					// Create new database for todoyu
 				if( ! in_array($databaseNew, $databases) ) {
 					$useDatabase= $databaseNew;
 					$createDb	= true;
@@ -143,6 +151,7 @@ class TodoyuInstallerManager {
 					$result['textClass']= 'error';
 				}
 			} else {
+					// Use specified existing database for todoyu
 				$useDatabase	= $database;
 			}
 

@@ -152,7 +152,8 @@ select#language,
 select#locale,
 select#timezone,
 select#database,
-input#database_new {
+input#database_new,
+input#database_manual {
 	width:250px;
 }
 

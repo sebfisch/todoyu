@@ -14,7 +14,20 @@
 						{/foreach}
 					</select>
 				</td>
+			</tr>
+		{if sizeof($databases) == 0}
+			<tr>
+				<td colspan="2">
+					<label for="database_manual">{Label installer.dbselect.manual}</label>
+				</td>
 			</tr><tr>
+				<td></td>
+				<td>
+					<input type="text" id="database_manual" name="database_manual" value="{$postData.database_manual}" />
+				</td>
+			</tr>
+		{/if}
+			<tr>
 				<td><label for="database_new">{Label installer.dbselect.orCreateDB}</label></td>
 				<td>
 					<input onkeyup="Todoyu.Installer.checkDbSelect()" type="text" id="database_new" name="database_new" value="{$postData.database_new}" />

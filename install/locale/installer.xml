@@ -40,6 +40,7 @@
 		<label index="dbselect.dbEmpty">empty</label>
 		<label index="dbselect.dbNotEmpty">not empty</label>
 		<label index="dbselect.tables">tables</label>
+		<label index="dbselect.manual">If detection of available databases has been disabled on your server for security reasons and the above selection field contains no options, please specify the name of your database manually over here:</label>
 		<label index="importtables.title">Import Database Tables</label>
 		<label index="importtables.button">Import Database Tables</label>
 		<label index="importtables.coretables">TODOYU CORE DATABASE TABLES</label>
@@ -132,6 +133,7 @@
 		<label index="dbselect.dbEmpty">Leer</label>
 		<label index="dbselect.dbNotEmpty">Nicht leer</label>
 		<label index="dbselect.tables">Tabellen</label>
+		<label index="dbselect.manual">Falls die Erkennung verfügbarer Datenbanken auf Ihrem Server aus Sicherheitsgründen deaktiviert wurde und das obige Auswahlfeld keine Optionen enthält, geben Sie bitte hier den Namen der zu verwendenden Datenbank manuell an:</label>
 		<label index="importtables.title">Tabellen und Daten importieren</label>
 		<label index="importtables.button">Tabellen und Daten importieren</label>
 		<label index="importtables.coretables">TODOYU CORE DATENBANKTABELLEN</label>
