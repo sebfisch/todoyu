@@ -146,6 +146,7 @@ class TodoyuInstallerRenderer {
 	public static function renderDbSelect(array $result) {
 		$dbConfig	= TodoyuSession::get('installer/db');
 		$databases	= TodoyuDbAnalyzer::getDatabasesOnServer($dbConfig);
+
 		$dbOptions	= array();
 		$dbConf		= $dbConfig;
 

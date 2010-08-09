@@ -33,14 +33,14 @@ class TodoyuDbAnalyzer {
 	 * @return	Array
 	 */
 	public static function getDatabasesOnServer(array $dbConfig) {
-		$ignore = array(
+		$databases	= array();
+		$ignore 	= array(
 			'information_schema',
 			'mysql',
 			'phpmyadmin'
 		);
 
 		$link	= mysql_connect($dbConfig['server'], $dbConfig['username'], $dbConfig['password']);
-
 		if( $link !== false ) {
 			$resource	= mysql_list_dbs($link);
 
