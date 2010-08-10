@@ -35,16 +35,7 @@ class TodoyuInstaller {
 
 			// No installation step or restart? initialize installer
 		if( ! self::hasStep() || self::isRestart() ) {
-				// Clear all cache
-			TodoyuInstallerManager::clearCache();
-
-				// Initialize step in session
-			self::initStep();
-
-				// Run update scripts and sql
-			if( self::isUpdate() ) {
-				TodoyuInstallerManager::runVersionUpdates();
-			}
+			self::firstRun();
 		}
 
 		$step	= self::getStep();
@@ -71,6 +62,28 @@ class TodoyuInstaller {
 
 			// Flush output buffer
 		ob_end_flush();
+	}
+
+
+
+	/**
+	 * Todo on first run of installer
+	 *
+	 */
+	private static function firstRun() {
+		$_SESSION = array();
+		session_regenerate_id();
+
+			// Clear all cache
+		TodoyuInstallerManager::clearCache();
+
+			// Initialize step in session
+		self::initStep();
+
+			// Run update scripts and sql
+		if( self::isUpdate() ) {
+			TodoyuInstallerManager::runVersionUpdates();
+		}
 	}
 
 
@@ -176,7 +189,7 @@ class TodoyuInstaller {
 		}
 
 			// Try to detect to cookie locale
-		$cookieLocale = TodoyuLocaleManager::getCookieLocale();		
+		$cookieLocale = TodoyuLocaleManager::getCookieLocale();
 		if( $cookieLocale !== false ) {
 			TodoyuSession::set('installer/locale', $cookieLocale);
 		}
