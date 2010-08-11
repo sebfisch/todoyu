@@ -120,7 +120,31 @@
 		<label index="datetime">%d-%m-%y %H:%M</label>
 		<label index="day">%d</label>
 	</labels>
-		<labels lang="sr_RS">
+	<labels lang="ja_JP">
+		<label index="D2M2">%m/%d</label>
+		<label index="DlongD2Mlong">%B/%d (%A)</label>
+		<label index="D2M2Y2">%y/%m/%d</label>
+		<label index="D2M2Y4">%Y/%m/%d</label>
+		<label index="D2MshortY4">%y %b %d</label>
+		<label index="D2MshortY2">%Y %b %d</label>
+		<label index="D2Mshort">%b %d</label>
+		<label index="D2MshortTime">%b %d %H:%M</label>
+		<label index="DshortD2M2">%m %d %a</label>
+		<label index="D2MlongY4">%Y %B %d</label>
+		<label index="MlongD2">%B %d</label>
+		<label index="Mlong">%B</label>
+		<label index="MlongY4">%Y %B</label>
+		<label index="DshortD2MshortY2">%y %b %d (%a)</label>
+		<label index="DshortD2MlongY4">%Y %B %d (%a)</label>
+		<label index="DlongD2MlongY4">%Y %B %d (%A)</label>
+		<label index="calendarweek">%W 週目</label>
+		<label index="date">%Y/%m/%d</label>
+		<label index="time">%H:%M</label>
+		<label index="timesec">%H:%M:%S</label>
+		<label index="datetime">%y/%m/%d %H:%M</label>
+		<label index="day">%d</label>
+	</labels>
+	<labels lang="sr_RS">
 		<label index="D2M2">%d.%m.</label>
 		<label index="DlongD2Mlong">%A, %d. %B</label>
 		<label index="D2M2Y2">%d.%m.%y</label>
