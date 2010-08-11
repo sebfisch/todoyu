@@ -25,6 +25,9 @@
  * @subpackage	Installer
  */
 
+	// Override PATH_WEB to simulate normal script run
+define('PATH_WEB_OVERRIDE', dirname(dirname($_SERVER['SCRIPT_NAME'])));
+
  	// Change current work directory to main directory to prevent path problems
 chdir( dirname(dirname(__FILE__)) );
 
