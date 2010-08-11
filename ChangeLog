@@ -1,5 +1,42 @@
 todoyu Changelog
 
+todoyu 2.0.3 - released 2010-08-11
+	* Bugfix: getTasksInTimespan() finds now all tasks
+	* Bugfix: Handle filenames with quotes correctly on download
+	* Bugfix: Fixed problems with ODT handling when Dwoo and Office tags are mixed
+	* Bugfix: Fixed dependencies between extensions
+	* Bugfix: Prevent error on some servers during installation
+	* Bugfix: Correct handling of locking flags in timetracking
+	* Bugfix: New persons birthday was always 1970-01-01
+	* Bugfix: Fixed CSS layout of fieldsets in task and project
+	* Bugfix: Events were created on the wrong date
+	* Bugfix: If browser and todoyu timezones were different, time was shifted incorrect
+	* Changed: Merged global.css into ext.css
+	* Changed: Unified naming of hooks (first step)
+	* Changed: Support locking for all types. Check for all types for locking where implemented
+	* Changed: Container is locked when it contains locked subtasks
+	* Changed: Send notLoggedIn info with notification instead of action not found when not logged in anymore (just for ajax requests)
+	* Changed: FormElement_DateTime works now, if just a date was entered without time info
+    * Changed: Unified code style
+    * Changed: PATH_WEB constant can be overridden with PATH_WEB_OVERRIDE if defined before
+	* Added: First serbian translations (not complete yet, complete in 2.0.4)
+	* Added: mb_internal_encoding('UTF-8')
+	* Added: downloadFile() to download a file from another server to server disk
+	* Added: saveLocalCopy() Copy an external file to server
+	* Added: toArray() converts array/object constructs to pure arrays
+	* Added: If db detection doesn't work, add field so enter a name to use
+	* Added: getCountryByISO()
+	* Added has() and notEmpty() to BaseObject
+	* Added: LocaleCookie is set and used also for the installer/updater
+	* Added: Task icon if task has assets
+	* Added: Hook documentation
+	* Added: extractHttpHeaders() to get header values from request
+	* Added: areLocked() checks multiple records in a single query
+	* Added: Validators isMin() and isMax(), FormValidators: min,max
+	* Added: Log info, if query history is disabled and getLastQuery() called
+	* Added: Database server version detection
+
+
 todoyu 2.0.2 - released 2010-07-15
 	* Feature: Store / perceive cookie users selected language locale per cookie
 	* Feature: Personal Config headline displays logged-in person's name
