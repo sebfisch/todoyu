@@ -48,7 +48,7 @@ class TodoyuCrypto {
 			$vector	= mcrypt_create_iv(mcrypt_enc_get_iv_size(self::$mcrypt), $random);
 				// Get the expected key size based on mode and cipher
 			$expectedKeySize = mcrypt_enc_get_key_size(self::$mcrypt);
-				// Get a key in the needed length (use TYPO3 key)
+				// Get a key in the needed length (use encryption key)
 			$key = substr(Todoyu::$CONFIG['SYSTEM']['encryptionKey'], 0, $expectedKeySize);
 				// Initialize mcrypt library with mode/cipher, encryption key, and random initialization vector
 			mcrypt_generic_init(self::$mcrypt, $key, $vector);

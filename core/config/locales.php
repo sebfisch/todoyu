@@ -42,7 +42,7 @@ Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'hr_HR' => array('hr_HR.utf8', 'hr_HR', 'hr'), // Croatian
 	'sr_ME' => array('sr_ME.utf8', 'sr_ME', 'sr'), // Serbian (Montenegro)
 	'sr_RS' => array('sr_RS.utf8', 'sr_RS', 'sr'), // Serbian (Serbia)
-	'ja_JP' => array('ja_JP.utf8', 'ja_JP', 'ja') // Japanese
+	'ja_JP' => array('ja_JP', 'ja', 'ja_JP.eucjp', 'ja_JP.ujis', 'japanese', 'japanese.euc') // Japanese
 );
 Todoyu::$CONFIG['LOCALE']['default']	= 'en_GB';
 Todoyu::$CONFIG['LOCALE']['available']	= array('en_GB','de_DE','pt_BR','ru_RU','fr_FR','nl_NL','cs_CZ','sr_RS','ja_JP'/*,'hr_HR','sr_ME'*/);
