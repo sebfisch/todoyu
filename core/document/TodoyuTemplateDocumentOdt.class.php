@@ -24,7 +24,7 @@ require_once( PATH_LIB . '/php/pclzip/pclzip.lib.php');
 /**
  * Use an openoffice writer document as template, and replace all markers
  * Dwoo will process the content.xml file for Dwoo variables
- * 
+ *
  * @package		Todoyu
  * @subpackage	Core
  */
@@ -97,11 +97,11 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 	 * Move sections markers where necessary
 	 */
 	private function prepareXML() {
+		$this->prepareDwooTagSpans();
 		$this->prepareListXML();
 		$this->prepareRowXML();
 		$this->prepareConditionXML();
 		$this->preparePhpXML();
-		$this->prepareDwooTagSpans();
 		$this->prepareForeach();
 
 //		TodoyuHeader::sendHeaderXML();
@@ -141,9 +141,9 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		$this->xmlContent	= preg_replace($patternRowTagB, '\1', $this->xmlContent);
 
 			// Pattern to find all table rows
-		$patternRow		= '|<table:table-row>.*?</table:table-row>|sm';
+		$patternRow		= '|<table:table-row[^>]*?>.*?</table:table-row>|sm';
 			// Pattern to find sub parts in a table row if  it contains the row syntax '[--ROW:'
-		$patternRowParts= '|(<table:table-row>)(.*?)\[--ROW:({.*?})(.*?)({/.*?})--ROW\](.*?)(</table:table-row>)|sm';
+		$patternRowParts= '|(<table:table-row[^>]*?>)(.*?)\[--ROW:({.*?})(.*?)({/.*?})--ROW\](.*?)(</table:table-row>)|sm';
 		$replaces		= array();
 
 			// Find all rows
