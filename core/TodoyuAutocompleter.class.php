@@ -32,6 +32,13 @@ class TodoyuAutocompleter {
 	 */
 	private static $autocompleter = array();
 
+	/**
+	 * Register given autocompleter
+	 *
+	 * @param	String	$name
+	 * @param	String	$function
+	 * @param	Array	$restrict
+	 */
 	public static function addAutocompleter($name, $function, array $restrict = array()) {
 		self::$autocompleter[$name]	= array(
 			'function'	=> $function,
@@ -39,11 +46,28 @@ class TodoyuAutocompleter {
 		);
 	}
 
+
+
+	/**
+	 * Get given autocompleter configuration
+	 *
+	 * @param	String	$name
+	 * @return	Array
+	 */
 	public static function getAutocompleter($name) {
 		return self::$autocompleter[$name];
 	}
 
 
+
+	/**
+	 * Render suggestion results list of given autocompleter
+	 *
+	 * @param	String	$name
+	 * @param	String	$input
+	 * @param	Array	$formData
+	 * @return	String
+	 */
 	public static function renderAutocompleteList($name, $input, array $formData = array()) {
 		$results	= self::getResults($name, $input, $formData);
 
@@ -77,7 +101,7 @@ class TodoyuAutocompleter {
 			restrict($autocompleter['restrict'][0], $autocompleter['restrict'][1]);
 		}
 
-			// Call datasource function for results
+			// Call data source function for results
 		if( TodoyuFunction::isFunctionReference($autocompleter['function']) ) {
 			$result	= TodoyuFunction::callUserFunction($autocompleter['function'], $input, $formData, $name);
 		} else {

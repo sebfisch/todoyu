@@ -18,7 +18,8 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-/** Send HTTP headers
+/**
+ * Send HTTP headers
  *
  * @package		Todoyu
  * @subpackage	Core

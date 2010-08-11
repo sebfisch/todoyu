@@ -254,7 +254,7 @@ Todoyu.Notification = {
 
 
 	/**
-	 * Check if the header of the response
+	 * Check whether the todoyu specific 'note' HTTP header was received
 	 * 
 	 * @param	{Ajax.Response}		response
 	 */

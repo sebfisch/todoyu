@@ -416,6 +416,14 @@ Todoyu.Ui = {
 		}
 	},
 
+
+
+	/**
+	 * Scroll window content by given values
+	 *
+	 * @param	{Number}	x
+	 * @param	{Number}	y
+	 */
 	scrollBy: function(x, y) {
 		//alert('scroll: ' + y);
 		window.scrollBy(x, y);
@@ -582,13 +590,13 @@ Todoyu.Ui = {
 
 
 	/**
-	 * Appends given filereference to HTML head
+	 * Appends given file reference to HTML head
 	 *
-	 * @param	fileref
+	 * @param	fileRef
 	 */
-	appendAssetToHead: function(fileref) {
-		if( typeof fileref!="undefined" ) {
-			 document.getElementsByTagName( "head" )[0].appendChild(fileref);
+	appendAssetToHead: function(fileRef) {
+		if( typeof fileRef != "undefined" ) {
+			 document.getElementsByTagName( "head" )[0].appendChild(fileRef);
 		}
 	},
 

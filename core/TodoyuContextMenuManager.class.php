@@ -27,9 +27,9 @@
 class TodoyuContextMenuManager {
 
 	/**
-	 * Register a source function which adds items to a special contextmenu type
+	 * Register a source function which adds items to a special context menu type
 	 *
-	 * @param	String		$type			Identifier for a contextmenu type
+	 * @param	String		$type			Identifier for a context menu type
 	 * @param	String		$function		Function reference
 	 * @param	Integer		$position		Position when the function is called to fill the item queue
 	 */

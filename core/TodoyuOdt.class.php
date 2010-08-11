@@ -182,7 +182,7 @@ class TodoyuOdt {
 
 			// Take everything from after x table ($number)
 		for($i = 1; $i < $number; $i++) {
-			$approach = mb_substr($approach, mb_strpos($approach, '</table:table>')+mb_strlen('</table:table>'));
+			$approach = mb_substr($approach, mb_strpos($approach, '</table:table>') + mb_strlen('</table:table>'));
 		}
 
 			// Remove everything before the requested table
@@ -211,14 +211,14 @@ class TodoyuOdt {
 
 		if( $which > 1 ) {	// drop all whats behind the end of the table's row
 			for($i = 1; $i < $which; $i++) {	//here we kill first all unused rows which are before the needed one.
-				$tmpApproach	= mb_substr($approach, 0, mb_strpos($approach, '</table:table-row>')+mb_strlen('</table:table-row>'));
+				$tmpApproach	= mb_substr($approach, 0, mb_strpos($approach, '</table:table-row>') + mb_strlen('</table:table-row>'));
 				$approach		= str_replace($tmpApproach, '', $approach);
 			}
 
-			$approach = mb_substr($approach, 0, mb_strpos($approach, '</table:table-row>')+mb_strlen('</table:table-row>'));
+			$approach = mb_substr($approach, 0, mb_strpos($approach, '</table:table-row>') + mb_strlen('</table:table-row>'));
 
 		} else {
-			$approach = mb_substr($approach, 0, mb_strpos($approach, '</table:table-row>')+mb_strlen('</table:table-row>'));
+			$approach = mb_substr($approach, 0, mb_strpos($approach, '</table:table-row>') + mb_strlen('</table:table-row>'));
 		}
 
 		return $approach;

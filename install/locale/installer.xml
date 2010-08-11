@@ -358,7 +358,7 @@
 		<label index="finish.title">Installatie geslaagd</label>
 		<label index="finish.text">De installatie is gelukt</label>
 		<label index="finish.button">Naar de loginpagina</label>
-        <label index="finish.note">U kunt nu inloggen. De volgende stap kan enkele seconden duren (afhankelijk van de processor) omdat het systeem bestanden gaat samenvoegen, de cache gaat initiëren, data gaat voorbereiden en wat andere toverkunsten gaat doen.</label>
+		<label index="finish.note">U kunt nu inloggen. De volgende stap kan enkele seconden duren (afhankelijk van de processor) omdat het systeem bestanden gaat samenvoegen, de cache gaat initiëren, data gaat voorbereiden en wat andere toverkunsten gaat doen.</label>
 		<label index="update.title">todoyu installatie updaten</label>
 		<label index="update.button">Update starten</label>
 		<label index="update.info">Wijzigingen in de database toepassen op de huidige versie en de huidige kolommen vergelijken met de configuratie in bestanden</label>

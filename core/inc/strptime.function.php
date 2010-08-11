@@ -46,31 +46,43 @@ function strptime($date, $format) {
 		'tm_mon'	=> 1,
 		'tm_year'	=> date('Y')
 	); //array('sec' => 0, 'min' => 0, 'hour' => 0, 'day' => 0, 'mon' => 0, 'year' => 0, 'timestamp' => 0);
+
 	foreach($date as $key => $val) {
 		switch($key) {
 				// day
 			case 'd':
-			case 'e': $dateTime['tm_mday'] = intval($val); break;
+			case 'e':
+				$dateTime['tm_mday'] = intval($val);
+				break;
 
 				// month
-			case 'm': $dateTime['tm_mon'] = intval($val); break;
+			case 'm':
+				$dateTime['tm_mon'] = intval($val);
+				break;
 
-			case 'Y': $dateTime['tm_year'] = intval($val); break;
-			case 'y': $dateTime['tm_year'] = intval($val)+2000; break;
+			case 'Y':
+				$dateTime['tm_year'] = intval($val);
+				break;
+
+			case 'y':
+				$dateTime['tm_year'] = intval($val) + 2000;
+				break;
 
 			case 'H':
-			case 'I': $dateTime['tm_hour'] = intval($val); break;
+			case 'I':
+				$dateTime['tm_hour'] = intval($val);
+				break;
 
-			case 'M': $dateTime['tm_min'] = intval($val); break;
+			case 'M':
+				$dateTime['tm_min'] = intval($val);
+				break;
 
-			case 'S': $dateTime['tm_sec'] = intval($val); break;
+			case 'S':
+				$dateTime['tm_sec'] = intval($val);
+				break;
 		}
 	}
 	$dateTime['timestamp'] = mktime($dateTime['tm_hour'], $dateTime['tm_min'], $dateTime['tm_sec'], $dateTime['tm_mon'], $dateTime['tm_mday'], $dateTime['tm_year']);
-
-	/*echo '<pre>';
-	print_r($dateTime);
-	echo '</pre>';*/
 
 	return $dateTime;
 };
@@ -100,17 +112,19 @@ function strptime_strToDate($date, $format) {
 
 		// Define replacements for strftime markers with regex patterns
 	$search = array('%d', '%e', // day
-					'%m', // month
+					'%m', 		// month
 					'%Y', '%y', // year
 					'%H', '%I', // hour
-					'%M', // minutes
-					'%S'); // seconds
-	$replace = array('(\d{1,2})', '(\d{1,2})', //day
-					 '(\d{1,2})', // month
-					 '(\d{4})', '(\d{2})', // year
-					 '(\d{1,2})', '(\d{1,2})', // hour
-					 '(\d{1,2})', // minutes
-					 '(\d{2})'); // seconds					 
+					'%M', 		// minutes
+					'%S'		// seconds
+	);
+	$replace = array('(\d{1,2})', '(\d{1,2})', 	//day
+					 '(\d{1,2})', 				// month
+					 '(\d{4})', '(\d{2})', 		// year
+					 '(\d{1,2})', '(\d{1,2})',	// hour
+					 '(\d{1,2})', 				// minutes
+					 '(\d{2})'					// seconds
+	);
 
 		// Replace markers
 	$pattern = str_replace($search, $replace, $format);
@@ -136,9 +150,6 @@ function strptime_strToDate($date, $format) {
 		$ret[$id[$i]] = $dp[$i+1];
 	}
 
-	//echo '<pre>';
-	//print_r($ret);
-	//echo '</pre>';
 	return $ret;
 }
 

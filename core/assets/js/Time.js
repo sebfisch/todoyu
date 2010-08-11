@@ -213,7 +213,7 @@ Todoyu.Time = {
 	getDateString: function(time) {
 		var date = new Date(time*1000);
 
-		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth()+1) + '-' + date.getDate();
+		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth() + 1) + '-' + date.getDate();
 	},
 
 
@@ -228,7 +228,7 @@ Todoyu.Time = {
 
 		var date = new Date(time * 1000);
 
-		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth()+1) + '-' + Todoyu.Helper.twoDigit(date.getDate()) + ' ' + Todoyu.Helper.twoDigit(date.getHours()) + ':' + Todoyu.Helper.twoDigit(date.getMinutes());
+		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth() + 1) + '-' + Todoyu.Helper.twoDigit(date.getDate()) + ' ' + Todoyu.Helper.twoDigit(date.getHours()) + ':' + Todoyu.Helper.twoDigit(date.getMinutes());
 	}
 
 };

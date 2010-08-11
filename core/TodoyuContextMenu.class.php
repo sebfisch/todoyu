@@ -51,7 +51,7 @@ class TodoyuContextMenu {
 
 
 	/**
-	 * Initialize context menu with id of the processed element
+	 * Initialize context menu with ID of the processed element
 	 *
 	 * @param	String		$type
 	 * @param	Integer		$idElement
