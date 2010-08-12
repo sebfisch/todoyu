@@ -220,6 +220,27 @@ class TodoyuRecordManager {
 
 
 	/**
+	 * Update multiple records in the database
+	 *
+	 * @param	String		$table
+	 * @param	String		$where
+	 * @param	Array		$data
+	 * @param	Array		$noQuoteFields
+	 * @return	Integer		Number of updated records
+	 */
+	public static function updateRecords($table, $where, array $data, array $noQuoteFields = array()) {
+		unset($data['id']);
+		unset($data['date_create']);
+		unset($data['id_person_create']);
+
+		$data['date_update'] = NOW;
+
+		return Todoyu::db()->doUpdate($table, $where, $data, $noQuoteFields);
+	}
+
+
+
+	/**
 	 * Delete a record (set deleted flag)
 	 *
 	 * @param	String		$table
@@ -232,6 +253,29 @@ class TodoyuRecordManager {
 		);
 
 		self::updateRecord($table, $idRecord, $data);
+	}
+
+
+	/**
+	 * Delete multiple records at once
+	 *
+	 * @param	String		$table
+	 * @param	Array		$recordIDs
+	 * @return	Integer		Number of deleted records
+	 */
+	public static function deleteRecords($table, array $recordIDs) {
+		$recordIDs	= TodoyuArray::intval($recordIDs);
+
+		if( sizeof($recordIDs) > 0 ) {
+			$where	= 'id IN(' . implode(',', $recordIDs) . ')';
+			$data	= array(
+				'deleted'	=> 1
+			);
+
+			return self::updateRecords($table, $where, $data);
+		} else {
+			return 0;
+		}
 	}
 
 
