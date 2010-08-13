@@ -27,7 +27,7 @@
 class TodoyuFormFactory {
 
 	/**
-	 * Get class Todoyuwhich represents an object of the requested type
+	 * Get class which represents an object of the requested type
 	 * A new instance will be created with the NEW operator
 	 *
 	 * @param	String		$type
