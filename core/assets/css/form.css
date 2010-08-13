@@ -453,8 +453,8 @@ form .typeCheckbox div.errorMessage {
 	.acResultContainer .empty{
 		background:none;
 		border:none;
-		border-width:0 0 0 0;
-		padding:0 0 0 0;
+		border-width:0;
+		padding:0;
 	}
 
 
