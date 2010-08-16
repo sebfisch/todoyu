@@ -127,7 +127,7 @@ class TodoyuDatabase {
 		$this->initConnection();
 	}
 
-	
+
 
 	/**
 	 * Initialize database connection
@@ -1151,6 +1151,47 @@ class TodoyuDatabase {
 
 
 	/**
+	 * Check whether a table exists in the database
+	 *
+	 * @param	String		$table
+	 * @return	Boolean
+	 */
+	public function hasTable($table) {
+		return in_array($table, $this->getTables());
+	}
+
+
+
+	/**
+	 * Truncate a table
+	 *
+	 * @param	String		$table
+	 * @return	Boolean
+	 */
+	public function truncate($table) {
+		if( $this->hasTable($table) ) {
+			$this->query('TRUNCATE TABLE ' . $this->quoteFieldname($table));
+
+			return $this->getAffectedRows() > 0;
+		} else {
+			return false;
+		}		
+	}
+
+
+
+	/**
+	 * Drop a table
+	 *
+	 * @param	String		$table
+	 */
+	public function drop($table) {
+		$this->query('DROP TABLE IF EXISTS ' . $this->quoteFieldname($table));
+	}
+
+
+
+	/**
 	 * Get fields of a table
 	 *
 	 * @param	String		$table
@@ -1213,7 +1254,7 @@ class TodoyuDatabase {
 	}
 
 
-	
+
 	/**
 	 * Get version of database server
 	 *

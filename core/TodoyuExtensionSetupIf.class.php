@@ -19,19 +19,19 @@
 *****************************************************************************/
 
 /**
- * Interface for extension setup classes
- * 
+ * Interface for extension setup
+ *
  * @package		Todoyu
  * @subpackage	Core
  */
-interface TodoyuExtSetupIf {
+interface TodoyuExtensionSetupIf {
 
 	public static function install();
 
+	public static function uninstall();
+
 	public static function update();
 
-	public static function uninstall();
-	
 }
 
 ?>

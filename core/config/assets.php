@@ -243,6 +243,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 68
 		),
 		array(
+			'file'		=> 'core/assets/js/DelayedTextObserver.js',
+			'position'	=> 68
+		),
+		array(
 			'file'		=> 'core/assets/js/PanelWidgetStatusSelector.js',
 			'position'	=> 69
 		),
