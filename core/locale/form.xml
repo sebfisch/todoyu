@@ -2,7 +2,6 @@
 <locallang>
 	<labels lang="en_GB">
 		<label index="select.pleaseSelect">Please Select</label>
-		<label index="select.pleaseChoose">Please Choose</label>
 		<label index="field.isrequired">This is a required field</label>
 		<label index="field.hasError">The value entered is not valid</label>
 		<label index="field.save">Save</label>
@@ -20,7 +19,6 @@
 	</labels>
 	<labels lang="de_DE">
 		<label index="select.pleaseSelect">Bitte wählen</label>
-		<label index="select.pleaseChoose">Bitte wählen</label>
 		<label index="field.isrequired">Dieses Feld muss ausgefüllt werden</label>
 		<label index="field.hasError">Diese Eingabe ist ungültig</label>
 		<label index="field.save">Speichern</label>
@@ -38,7 +36,6 @@
 	</labels>
 	<labels lang="pt_BR">
 		<label index="select.pleaseSelect">Favor Selecionar</label>
-		<label index="select.pleaseChoose">Favor Escolher</label>
 		<label index="field.isrequired">Campo necessário</label>
 		<label index="field.hasError">Dado inválido</label>
 		<label index="field.save">Salvar</label>
@@ -56,7 +53,6 @@
 	</labels>
 	<labels lang="ru_RU">
 		<label index="select.pleaseSelect">Пожалуйста, выберите</label>
-		<label index="select.pleaseChoose">Пожалуйста, выберите</label>
 		<label index="field.isrequired">Обязательное поле</label>
 		<label index="field.hasError">Найдено неверное значение</label>
 		<label index="field.save">Сохранить</label>
@@ -74,7 +70,6 @@
 	</labels>
 	<labels lang="fr_FR">
 		<label index="select.pleaseSelect">SVP, sélectionner</label>
-		<label index="select.pleaseChoose">SVP, choisir</label>
 		<label index="field.isrequired">Ce champ est obligatoire</label>
 		<label index="field.hasError">La valeur saisie est invalide</label>
 		<label index="field.save">Sauvegarder</label>
@@ -92,7 +87,6 @@
 	</labels>
 	<labels lang="nl_NL">
 		<label index="select.pleaseSelect">A.u.b. kiezen</label>
-		<label index="select.pleaseChoose">A.u.b. selecteren</label>
 		<label index="field.isrequired">Verplicht veld</label>
 		<label index="field.hasError">De waarde is ongeldig</label>
 		<label index="field.save">Opslaan</label>
@@ -110,7 +104,6 @@
 	</labels>
 	<labels lang="cs_CZ">
 		<label index="select.pleaseSelect">Vyberte</label>
-		<label index="select.pleaseChoose">Zvolte</label>
 		<label index="field.isrequired">Toto je povinné pole</label>
 		<label index="field.hasError">Zadaná hodnota je neplatná</label>
 		<label index="field.save">Uložit</label>
@@ -128,7 +121,6 @@
 	</labels>
 	<labels lang="sr_RS">
 		<label index="select.pleaseSelect">Молимо изаберите</label>
-		<label index="select.pleaseChoose">Молимо одаберите</label>
 		<label index="field.isrequired">Ово је обавезно поље</label>
 		<label index="field.hasError">Унето није изправно</label>
 		<label index="field.save">Сачувај</label>
@@ -146,7 +138,6 @@
 	</labels>
 	<labels lang="ja_JP">
 		<label index="select.pleaseSelect">選択してください</label>
-		<label index="select.pleaseChoose">選んでください</label>
 		<label index="field.isrequired">これは必須項目です</label>
 		<label index="field.hasError">入力した値は有効な値ではありません</label>
 		<label index="field.save">保存</label>

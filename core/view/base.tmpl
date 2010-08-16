@@ -23,7 +23,7 @@
 			<div id="panel" class="panel">
 				<div class="panelHeader"><!-- panel header --></div>
 			{block "panel"}
-				Column for PanelWidgets
+				{$panelWidgets}
 			{/block}
 				<div class="panelFooter"><!-- panel footer --></div>
 			</div>
@@ -33,13 +33,16 @@
 				<span class="lb"><!-- left / bottom --></span>
 				<span class="rb"><!-- right / bottom --></span>
 				<div id="content" class="content">
-					<div id="content-tabs">
-						{block "contentTabs"}{/block}
-					</div>
-					<div id="content-body">
-						{block "contentBody"}{/block}
-					</div>
-					{block "content"}{/block}
+					{if $fullContent}
+						{block "content"}{$fullContent}{/block}
+					{else}
+						<div id="content-tabs">
+							{block "contentTabs"}{$tabs}{/block}
+						</div>
+						<div id="content-body">
+							{block "contentBody"}{$content}{/block}
+						</div>
+					{/if}
 				</div><!-- /inner -->
 			</div>
 			<div class="clear"><!-- --></div>

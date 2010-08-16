@@ -62,10 +62,10 @@ class TodoyuTabheadRenderer {
 	/**
 	 * Render tabs. Parse labels
 	 *
-	 * @param	String	$htmlID
-	 * @param	String	$class
-	 * @param	String	$jsHandler
+	 * @param	String	$name
 	 * @param	Array	$tabs
+	 * @param	String	$class
+	 * @param	String	$jsHandler 
 	 * @param	String	$active
 	 * @return	String
 	 */
@@ -85,7 +85,6 @@ class TodoyuTabheadRenderer {
 		$tmpl	= 'core/view/tabheads.tmpl';
 		$data	= array(
 			'name'		=> $name,
-			'htmlId'	=> $htmlID,
 			'class'		=> $class,
 			'jsHandler'	=> $jsHandler,
 			'active'	=> $active,

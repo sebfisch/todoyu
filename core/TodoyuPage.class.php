@@ -237,6 +237,40 @@ class TodoyuPage {
 
 
 	/**
+	 * Set content marker content
+	 *
+	 * @param	String		$content
+	 */
+	public static function setContent($content) {
+		self::set('content', $content);
+	}
+
+
+
+	/**
+	 * Set tabs marker content
+	 *
+	 * @param	String		$tabs
+	 */
+	public static function setTabs($tabs) {
+		self::set('tabs', $tabs);
+	}
+
+
+
+	/**
+	 * Set fullContent marker content
+	 * tabs and content marker are ignored then
+	 *
+	 * @param	String		$fullContent
+	 */
+	public static function setFullContent($fullContent) {
+		self::set('fullContent', $fullContent);
+	}
+
+
+
+	/**
 	 * Set body ID
 	 *
 	 * @param	String		$bodyID
@@ -298,7 +332,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Get inline JS of given type from given extension 
+	 * Get inline JS of given type from given extension
 	 *
 	 * @param	String	$ext
 	 * @param	String	$type

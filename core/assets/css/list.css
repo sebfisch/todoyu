@@ -13,6 +13,11 @@ table.list .header th {
 	border-bottom:1px dotted #aaa;
 }
 
+table.list td,
+table.list th {
+	vertical-align:middle;
+}
+
 table.list .header th.last {
 	background:#fff url(../img/bg-headerline.png) no-repeat 100% 0;
 }

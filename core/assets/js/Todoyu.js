@@ -109,11 +109,7 @@ var Todoyu = {
 	 * @param		{String}	hash
 	 */
 	goTo: function(ext, controller, params, hash, newWindow) {
-		var url =  this.getUrl(ext, controller);
-
-		if( typeof params === 'object' ) {
-			url += '&' + Object.toQueryString(params);
-		}
+		var url =  this.getUrl(ext, controller, params);
 
 		if( Object.isString(hash) ) {
 			this.goToHashURL(url, hash);
