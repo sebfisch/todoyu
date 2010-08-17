@@ -11,8 +11,8 @@ INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person
 -- Data for Table `ext_contact_company`
 --
 
-INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_internal`) VALUES
-(1, 1264696524, 1269509610, 1, 0, 'snowflake productions GmbH ', 'sfp', 0, 1259622000, 1);
+INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `shortname`, `date_enter`, `is_internal`) VALUES
+(1, 1264696524, 1269509610, 1, 0, 'snowflake productions GmbH ', 'sfp', 1259622000, 1);
 
 -- --------------------------------------------------------
 
