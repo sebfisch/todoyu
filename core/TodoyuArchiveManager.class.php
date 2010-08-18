@@ -19,14 +19,23 @@
 *****************************************************************************/
 
 /**
- * [Enter Class Description]
+ * Manage zip archives
  *
  * @package		Todoyu
  * @subpackage	Core
  */
 class TodoyuArchiveManager {
 
+	/**
+	 * Extract an archive to a folder
+	 *
+	 * @param	String			$zipFile
+	 * @param	String			$targetFolder
+	 * @param	String|Array	$entries
+	 */
 	public static function extract($zipFile, $targetFolder, $entries = null) {
+		@set_time_limit(60);
+
 		$zip	= new ZipArchive();
 		$zip->open($zipFile);
 		$zip->extractTo($targetFolder, $entries);
