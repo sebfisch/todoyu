@@ -616,7 +616,7 @@ class TodoyuFileManager {
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
 
 		if( $options['fullRequest'] || $options['onlyHeaders'] ) {
-			curl_setopt($ch, CURLOPT_HEADER, true);			
+			curl_setopt($ch, CURLOPT_HEADER, true);
 		}
 
 		if( sizeof($options['requestHeaders']) > 0 ) {
@@ -668,7 +668,7 @@ class TodoyuFileManager {
 		if( $query !== '' ) {
 			$query = '?' . $query;
 		}
-		
+
 		$fp = @fsockopen($scheme . $parsedURL['host'], $port, $errno, $errstr, 2.0);
 
 			// Connection failed
@@ -676,7 +676,6 @@ class TodoyuFileManager {
 			Todoyu::log('File download with socket failed. URL=' . $url . ' - ' . $errno . ' - ' . $errstr, TodoyuLogger::LEVEL_ERROR);
 			return false;
 		}
-
 
 		$requestHeaders	= array();
 
@@ -689,7 +688,7 @@ class TodoyuFileManager {
 		}
 
 		$requestHead	= implode($requestHeaders, "\r\n") . "\r\n\r\n";
-		
+
 		fputs($fp, $requestHead);
 
 		$content	= '';
@@ -708,7 +707,7 @@ class TodoyuFileManager {
 			if($options['onlyHeaders']) {
 				$content		= TodoyuString::extractHttpHeaders($content);
 			} else {
-				$requestParts	= explode("\r\n\r\n", $content);
+				$requestParts	= explode("\r\n\r\n", $content, 2);
 				$content		= $requestParts[1];
 			}
 		}
@@ -744,7 +743,7 @@ class TodoyuFileManager {
 		} else {
 			Todoyu::log('saveLocalCopy of ' . $url . ' failed', TodoyuLogger::LEVEL_ERROR);
 			return false;
-		}		
+		}
 	}
 
 }

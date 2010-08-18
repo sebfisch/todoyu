@@ -55,7 +55,7 @@ RedirectMatch 403 /view/*
 AddType application/x-httpd-php5 .php
 
 
-## Problems running todoyu. Comment in AddType and try one of this alternatives:
+## Problems running todoyu. Comment AddType (with a #) and try one of this alternatives:
 # AddHandler application/x-httpd-php .php
 
 # AddHandler x-mapp-php5 .php

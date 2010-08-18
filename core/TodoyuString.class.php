@@ -64,7 +64,7 @@ class TodoyuString {
 
 	/**
 	 * Checking syntax of input email address
-	 * 
+	 *
 	 * @param	String		Input string to evaluate
 	 * @return	Boolean		Returns true if the $email address (input string) is valid; Has a "@", domain name with at least one period and only allowed a-z characters.
 	 */
@@ -437,10 +437,15 @@ class TodoyuString {
 	 */
 	public static function extractHttpHeaders($responseContent) {
 			// Split header and content
-		list($header) = explode("\r\n\r\n", $responseContent);
+		list($headerString) = explode("\r\n\r\n", $responseContent);
 
+		return self::extractHeadersFromString($headerString);
+	}
+
+
+	public static function extractHeadersFromString($headerString) {
 			// Split header pairs
-		$headerPairs= explode("\r\n", $header);
+		$headerPairs= explode("\r\n", $headerString);
 		$headers	= array();
 
 			// Add HTTP staus as status key
@@ -448,7 +453,7 @@ class TodoyuString {
 
 			// Add the rest of the header pairs
 		foreach($headerPairs as $headerPair) {
-			list($key, $value) = explode(':', $headerPair);
+			list($key, $value) = explode(':', $headerPair, 2);
 			$headers[trim($key)] = trim($value);
 		}
 
