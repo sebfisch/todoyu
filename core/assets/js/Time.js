@@ -207,7 +207,7 @@ Todoyu.Time = {
 
 	/**
 	 * Get date string in format YYYY-MM-DD
-	 * 
+	 *
 	 * @param	{Number}		time
 	 */
 	getDateString: function(time) {
@@ -220,7 +220,7 @@ Todoyu.Time = {
 
 	/**
 	 * Get date string with time part in format YYYY-MM-DD HH:MM
-	 * 
+	 *
 	 * @param	{Number}		time
 	 */
 	getDateTimeString: function(time) {
@@ -229,6 +229,18 @@ Todoyu.Time = {
 		var date = new Date(time * 1000);
 
 		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth() + 1) + '-' + Todoyu.Helper.twoDigit(date.getDate()) + ' ' + Todoyu.Helper.twoDigit(date.getHours()) + ':' + Todoyu.Helper.twoDigit(date.getMinutes());
+	},
+
+
+	/**
+	 * Convert date string (Y-m-d) into an timestamp
+	 *
+	 * @param	{String}		date
+	 */
+	date2Time: function(date) {
+		var parts	= date.split('-');
+
+		return Math.round((new Date(parts[0], parts[1]-1, parts[2], 0, 0, 0)).getTime()/1000);
 	}
 
 };
