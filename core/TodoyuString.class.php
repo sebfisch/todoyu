@@ -443,6 +443,13 @@ class TodoyuString {
 	}
 
 
+
+	/**
+	 * Extract headers from given string, return associative array of header types with resp. values
+	 *
+	 * @param	String		$headerString
+	 * @return	Array
+	 */
 	public static function extractHeadersFromString($headerString) {
 			// Split header pairs
 		$headerPairs= explode("\r\n", $headerString);
