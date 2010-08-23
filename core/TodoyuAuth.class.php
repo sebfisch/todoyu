@@ -203,24 +203,39 @@ class TodoyuAuth {
 
 
 	/**
+	 * Send not logged in message for ajax requests
+	 *
+	 * @param	Array		$requestVars
+	 * @param	Array		$originalRequestVars
+	 * @return	Array
+	 */
+	public static function hookNotLoggedInAjax(array $requestVars, array $originalRequestVars) {
+		if( ! self::isLoggedIn() && ! self::isNoLoginRequired($requestVars['ext'], $requestVars['ctrl']) ) {
+			if( TodoyuRequest::isAjaxRequest() ) {
+				self::sendNotLoggedInHeader();
+				echo "NOT LOGGED IN";
+				exit();
+			}
+		}
+
+		return $requestVars;
+	}
+
+
+
+	/**
 	 * Override request vars, if person is not logged in
 	 *
 	 * @param	Array		$requestVars
 	 * @param	Array		$originalRequestVars
 	 * @return	Array
 	 */
-	public static function checkLoginStatus(array $requestVars, array $originalRequestVars) {
+	public static function hookCheckLoginStatus(array $requestVars, array $originalRequestVars) {
 		if( ! self::isLoggedIn() && ! self::isNoLoginRequired($requestVars['ext'], $requestVars['ctrl']) ) {
-				// If ajax request, send header and stop script
-			if( TodoyuRequest::isAjaxRequest() ) {
-				self::sendNotLoggedInHeader();
-				echo "NOT LOGGED IN";
-				exit();
-			} else {
-					// On normal request, change controller to login page
-				$requestVars['ext']	= Todoyu::$CONFIG['AUTH']['login']['ext'];
-				$requestVars['ctrl']= Todoyu::$CONFIG['AUTH']['login']['controller'];
-			}
+				// On normal request, change controller to login page
+			$requestVars['ext']		= Todoyu::$CONFIG['AUTH']['login']['ext'];
+			$requestVars['ctrl']	= Todoyu::$CONFIG['AUTH']['login']['controller'];
+			$requestVars['action']	= 'default';
 		}
 
 		return $requestVars;

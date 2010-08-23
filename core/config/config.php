@@ -70,7 +70,8 @@ Todoyu::$CONFIG['LIST']['size']	= 30;
 
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuRequest::setDefaultRequestVarsHook', 10);
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuCookieLogin::tryCookieLogin', 20);
-TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::checkLoginStatus', 1000);
+TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::hookNotLoggedInAjax', 990);
+TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::hookCheckLoginStatus', 1000);
 
 
 Todoyu::$CONFIG['goodPassword'] = array(

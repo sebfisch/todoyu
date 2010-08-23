@@ -429,6 +429,23 @@ class TodoyuString {
 	}
 
 
+
+	/**
+	 * Explode string and trim the parts
+	 * Alias of TodoyuArray::trimExplode()
+	 *
+	 * @see		TodoyuArray::trimExplode()
+	 * @param	String		$delimiter
+	 * @param	String		$string
+	 * @param	Boolean		$removeEmptyValues
+	 * @return	Array
+	 */
+	public static function trimExplode($delimiter, $string, $removeEmptyValues = false) {
+		return TodoyuArray::trimExplode($delimiter, $string, $removeEmptyValues);
+	}
+	
+
+
 	/**
 	 * Extract the headers from a full HTTP response (including headers and content)
 	 *
@@ -445,10 +462,10 @@ class TodoyuString {
 
 
 	/**
-	 * Extract headers from given string, return associative array of header types with resp. values
+	 * Extract header pairs from a HTTP header string
 	 *
 	 * @param	String		$headerString
-	 * @return	Array
+	 * @return	Array		array
 	 */
 	public static function extractHeadersFromString($headerString) {
 			// Split header pairs
