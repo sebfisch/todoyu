@@ -56,6 +56,17 @@ Todoyu.QuickInfo = {
 	hidden:		false,
 
 
+	/**
+	 * Timout callback for delayed hiding of quickinfo
+	 */
+	delayedHide: null,
+
+	/**
+	 * Delay for hiding. Allows to get move the mouse over the quickinfo, to prevent hiding
+	 */
+	delayedHideTime: 0.4,
+
+
 
 	/**
 	 * Init quickinfo
@@ -77,9 +88,44 @@ Todoyu.QuickInfo = {
 		this.uninstall(selector);
 
 		$$(selector).each(function(name, callback, element){
-			element.observe('mouseover', this.show.bindAsEventListener(this, name, callback, element));
-			element.observe('mouseout', this.hide.bindAsEventListener(this));
+			element.observe('mouseover', this.onMouseOver.bindAsEventListener(this, name, callback, element));
+			element.observe('mouseout', this.onMouseOut.bindAsEventListener(this, name, callback, element));
 		}.bind(this, name, callback));
+	},
+
+
+
+	/**
+	 * Handler when an observer element is hovered
+	 *
+	 * @param	{Event}		event
+	 * @param	{String}	name
+	 * @param	{Function}	callback
+	 * @param	{Element}	element
+	 */
+	onMouseOver: function(event, name, callback, element) {
+		clearTimeout(this.delayedHide);
+
+		if( ! this.isVisible() ) {
+			//console.log('onMouseOver');
+			this.show(event, name, callback, element);
+		}
+	},
+
+
+	/**
+	 * Handler when an observed element is left with the mouse
+	 *
+	 * @param	{Event}		event
+	 * @param	{String}	name
+	 * @param	{Function}	callback
+	 * @param	{Element}	element
+	 */
+	onMouseOut: function(event, name, callback, element) {
+		if( this.isVisible() ) {
+				// Delayed hide
+			this.delayedHide = this.hide.bind(this).delay(this.delayedHideTime);
+		}
 	},
 
 
@@ -108,7 +154,35 @@ Todoyu.QuickInfo = {
 			}).hide();
 
 			$(document.body).insert(quickInfo);
+
+				// Observe quickinfo for mouse events
+			$(this.popupID).observe('mouseover', this.onInfoOver.bindAsEventListener(this));
+			$(this.popupID).observe('mouseout', this.onInfoOut.bindAsEventListener(this));
 		}
+	},
+
+
+
+	/**
+	 * Handler when moving the mouse on the quickinfo
+	 * Cancel delayed hiding
+	 *
+	 * @param	{Event}		event
+	 */
+	onInfoOver: function(event) {
+		clearTimeout(this.delayedHide);
+	},
+
+
+
+	/**
+	 * Handler when moving the mouse off the quickinfo
+	 * Start delayed hiding
+	 *
+	 * @param	{Event}		event
+	 */
+	onInfoOut: function(event) {
+		this.delayedHide = this.hide.bind(this).delay(this.delayedHideTime);
 	},
 
 
@@ -188,7 +262,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Show quickinfo tooltip
-	 * 
+	 *
 	 * @param	{Number}		x
 	 * @param	{Number}		y
 	 */
@@ -289,8 +363,10 @@ Todoyu.QuickInfo = {
 
 		var content	= '';
 		json.each(function(item){
-				// Ensure maxiumum word length not to break layout: add wordwrap
-			item.label	= Todoyu.Helper.wordwrap(item.label, 16, ' ', true);
+				// Ensure maximum word length not to break layout: add wordwrap. But only if string doesn't contain html
+			if( item.label.indexOf('<') === -1 ) {
+				item.label	= Todoyu.Helper.wordwrap(item.label, 16, ' ', true);
+			}
 
 				// Add template row with item
 			content += this.template.evaluate(item);
@@ -308,6 +384,15 @@ Todoyu.QuickInfo = {
 	 */
 	updatePopup: function(content) {
 		$(this.popupID).update(content);
+	},
+
+
+
+	/**
+	 * Check whether the quickinfo is currently visible
+	 */
+	isVisible: function() {
+		return $(this.popupID).visible();
 	},
 
 

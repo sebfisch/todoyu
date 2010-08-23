@@ -83,12 +83,41 @@ class TodoyuQuickinfo {
 	 * @param	String		$label		Labeltext
 	 * @param	Integer		$position
 	 */
-	public function addInfo($key, $label, $position = 100) {
+	public function addInfo($key, $label, $position = 100, $escape = true) {
 		$this->elements[$key] = array(
 			'key'		=> $key,
-			'label'		=> str_replace("\n", '<br />', htmlentities($label, ENT_QUOTES, 'UTF-8')),
+			'label'		=> str_replace("\n", '<br />', ($escape ? htmlentities($label, ENT_QUOTES, 'UTF-8') : $label)),
 			'position'	=> intval($position)
 		);
+	}
+
+
+
+	/**
+	 * Add email address as quickinfo
+	 * Shortcut to addInfo
+	 *
+	 * @param	String		$key
+	 * @param	String		$label
+	 * @param	Integer		$position
+	 */
+	public function addEmail($key, $label, $position = 100) {
+		$email	= '<a href="mailto:' . $label . '">' . $label . '</a>';
+
+		$this->addHTML($key, $email, $position);
+	}
+
+
+
+	/**
+	 * Add HTML item. Will not be escaped
+	 *
+	 * @param	String		$key
+	 * @param	String		$html
+	 * @param	Integer		$position
+	 */
+	public function addHTML($key, $html, $position) {
+		$this->addInfo($key, $html, $position, false);
 	}
 
 
