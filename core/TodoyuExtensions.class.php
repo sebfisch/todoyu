@@ -384,7 +384,7 @@ class TodoyuExtensions {
 			if( is_dir($path) ) {
 				Todoyu::addIncludePath($path);
 			}
-		}		
+		}
 	}
 
 
@@ -458,11 +458,12 @@ class TodoyuExtensions {
 
 
 	/**
-	 * @todo	comment
-	 * @param 	String		$extKey
-	 * @return	Array
+	 * Check if the extension conflicts with another installed extension
+	 *
+	 * @param 	String		$extKeyToCheck
+	 * @return	Array		List of extensions which conflict with the checked one
 	 */
-	public static function getConflicts($extKey) {
+	public static function getConflicts($extKeyToCheck) {
 		self::loadAllExtinfo();
 
 		$conflicts	= array();
@@ -479,6 +480,20 @@ class TodoyuExtensions {
 		}
 
 		return $conflicts;
+	}
+
+
+
+	/**
+	 * Get installed extension version
+	 *
+	 * @param	String		$extKey
+	 * @return	String
+	 */
+	public static function getVersion($extKey) {
+		self::loadAllExtinfo();
+
+		return Todoyu::$CONFIG['EXT'][$extKey]['info']['version'];
 	}
 
 }

@@ -143,7 +143,7 @@ class TodoyuDebug {
 			return;
 		}
 
-		TodoyuHeader::sendHeaderPlain();
+		TodoyuHeader::sendTypeText();
 
 		$caller = self::getCaller();
 

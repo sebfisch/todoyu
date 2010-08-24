@@ -140,7 +140,7 @@ class TodoyuContextMenu {
 	 * Print json encoded context menu struct
 	 */
 	public function printJSON() {
-		TodoyuHeader::sendHeaderJSON();
+		TodoyuHeader::sendTypeJSON();
 
 		echo $this->getJSON();
 	}

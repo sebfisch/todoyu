@@ -60,7 +60,7 @@ class TodoyuErrorHandler {
 
 			$type = TodoyuHeader::getType();
 
-			if( TodoyuRequest::isAjaxRequest() || $type === 'PLAIN' ) {
+			if( TodoyuRequest::isAjaxRequest() || $type === 'TEXT' ) {
 				echo $exception->getErrorAsPlain();
 			} elseif( $type === 'JSON' ) {
 				echo $exception->getErrorAsJson();
@@ -122,7 +122,7 @@ class TodoyuErrorHandler {
 			// Send HTTP error header
 		TodoyuHeader::sendHTTPErrorHeader();
 
-		TodoyuHeader::sendHeaderPlain();
+		TodoyuHeader::sendTypeText();
 		die('ERROR: ' . $message);
 	}
 

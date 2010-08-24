@@ -159,7 +159,7 @@ class TodoyuQuickinfo {
 	 * Print info struct json encoded
 	 */
 	public function printJSON() {
-		TodoyuHeader::sendHeaderJSON();
+		TodoyuHeader::sendTypeJSON();
 
 		echo $this->getJSON();
 	}

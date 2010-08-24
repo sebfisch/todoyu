@@ -91,7 +91,7 @@ function render($template, $data = array(), $compiler = null, $output = false) {
 	try {
 		$content = Todoyu::tmpl()->get($template, $data, $compiler, $output);
 	} catch(Dwoo_Exception $e) {
-		TodoyuHeader::sendHeaderPlain();
+		TodoyuHeader::sendTypeText();
 
 		$trace	= $e->getTrace();
 

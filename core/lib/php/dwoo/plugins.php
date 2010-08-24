@@ -394,39 +394,6 @@ function Dwoo_Plugin_Title_compile(Dwoo_Compiler $compiler, $title) {
 
 
 /**
- * Index letter generator
- * Generates letters from A-Z with links the the anchors
- *
- * @param	Dwoo		$dwoo
- * @param	Array		$records		Record array the list is based on
- * @param	String		$field			Field to check if a record with this letter exists
- * @param	String		$indexName		Name of the anchor (default is index)
- * @return	String
- */
-function Dwoo_Plugin_IndexLetters(Dwoo $dwoo, array $records, $field, $indexName = 'index') {
-	$letters = array();
-
-	for($i = 65; $i < 91; $i++) {
-		$letters[chr($i)] = false;
-	}
-
-	foreach($records as $record) {
-		$key = strtoupper(substr($record[$field], 0, 1));
-		$letters[$key] = true;
-	}
-
-	$tmpl	= 'core/view/indexLetters.tmpl';
-	$data	= array(
-		'letters'	=> $letters,
-		'indexName'	=> $indexName
-	);
-
-	return render($tmpl, $data);
-}
-
-
-
-/**
  * Check whether right is given. Get function string to check this
  *
  * @param	Dwoo_Compiler	$compiler

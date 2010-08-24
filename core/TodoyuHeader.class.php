@@ -112,7 +112,7 @@ class TodoyuHeader {
 	/**
 	 * Send HTML header
 	 */
-	public static function sendHeaderHTML() {
+	public static function sendTypeHTML() {
 		self::setType('HTML');
 		self::sendContentType('text/html');
 	}
@@ -122,7 +122,7 @@ class TodoyuHeader {
 	/**
 	 * Send JSON header
 	 */
-	public static function sendHeaderJSON() {
+	public static function sendTypeJSON() {
 		self::setType('JSON');
 		self::sendContentType('application/json');
 	}
@@ -132,7 +132,7 @@ class TodoyuHeader {
 	/**
 	 * Send XML header
 	 */
-	public static function sendHeaderXML() {
+	public static function sendTypeXML() {
 		self::setType('XML');
 		self::sendContentType('text/xml');
 	}
@@ -142,8 +142,8 @@ class TodoyuHeader {
 	/**
 	 * Send plain text header
 	 */
-	public static function sendHeaderPlain() {
-		self::setType('PLAIN');
+	public static function sendTypeText() {
+		self::setType('TEXT');
 		self::sendContentType('text/plain');
 	}
 
@@ -209,7 +209,7 @@ class TodoyuHeader {
 
 	/**
 	 * Send HTTP error header
-	 * 
+	 *
 	 */
 	public static function sendHTTPErrorHeader() {
 		self::sendHTTPHeader(503);

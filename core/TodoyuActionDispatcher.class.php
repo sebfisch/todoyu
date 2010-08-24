@@ -143,7 +143,7 @@ class TodoyuActionDispatcher {
 
 		Todoyu::log('Request controller not found ' . $ext . '/' . $controller, TodoyuLogger::LEVEL_FATAL);
 
-		TodoyuHeader::sendHeaderPlain();
+		TodoyuHeader::sendTypeText();
 
 		echo "Request controller not found!\n";
 		echo "Extension: " . $ext . "\n";
