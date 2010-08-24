@@ -348,33 +348,6 @@ class TodoyuInstallerManager {
 		$result	= array();
 
 		if( intval($data['update']) === 1 ) {
-				// Process db update
-			$dbVersion	= self::getDBVersion();
-			$files		= array();
-
-			switch($dbVersion) {
-				case 'beta1':
-					$files[]	= 'install/db/update_beta1_to_beta2.sql';
-
-				case 'beta2':
-					$files[]	= 'install/db/update_beta2_to_beta3.sql';
-
-				case 'beta3':
-					$files[]	= 'install/db/update_beta3_to_rc1.sql';
-
-				case 'rc1':
-					$files[]	= 'install/db/update_rc1_to_rc2.sql';
-
-				case 'rc2':
-					// do nothing
-					break;
-			}
-
-				// Apply version update files
-			foreach($files as $file) {
-				TodoyuSQLManager::executeQueriesFromFile($file);
-			}
-
 				// Apply structure updates from table files
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
 
@@ -828,7 +801,7 @@ class TodoyuInstallerManager {
 	/**
 	 * Move task assets to a new and better structure
 	 * Move from tasks/TASKID/* to PROJECTID/TASKID/*
-	 * 
+	 *
 	 */
 	public static function changeFilesAssetStructure() {
 		if( ! TodoyuInstaller::isUpdate() ) {
