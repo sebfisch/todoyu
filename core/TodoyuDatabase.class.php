@@ -896,8 +896,8 @@ class TodoyuDatabase {
 	 * @param	String		$groupBy					Group
 	 * @param	String		$orderBy					Order
 	 * @param	String		$limit						Limit
-	 * @param	String		$resultFieldName			Fieldname which will be in the SQL result. (ex: "id as idTask"). Not needed if identical with $field
-	 * @param	String		$indexField					Field to use as index instead of automaticaly generated numeric indexes
+	 * @param	String		$resultFieldName			Field name which will be in the SQL result. (ex: "id as idTask"). Not needed if identical with $field
+	 * @param	String		$indexField					Field to use as index instead of automatically generated numeric indexes
 	 * @return	Array
 	 */
 	public function getColumn($field, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '', $resultFieldName = '', $indexField = '') {
@@ -911,7 +911,6 @@ class TodoyuDatabase {
 		$rows	= $this->getArray($fields, $table, $where, $groupBy, $orderBy, $limit);
 		$key	= $resultFieldName === '' ? $field : $resultFieldName ;
 		$column	= array();
-
 
 		foreach($rows as $row) {
 			if( $indexField === '' ) {
