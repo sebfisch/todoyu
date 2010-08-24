@@ -75,7 +75,7 @@ class Todoyu {
 
 	/**
 	 * Currently used timezone
-	 * 
+	 *
 	 * @var	String
 	 */
 	private static $timezone;
@@ -97,9 +97,16 @@ class Todoyu {
 
 	/**
 	 * Set system timezone
+	 *
+	 * @param	String|Boolean	$forceTimezone		Set new timezone
 	 */
-	public static function setTimezone() {
-		$timezone	= self::getTimezone();
+	public static function setTimezone($forceTimezone = false) {
+		if( $forceTimezone === false ) {
+			$timezone	= self::getTimezone();
+		} else {
+			$timezone		= $forceTimezone;
+			self::$timezone	= $forceTimezone;
+		}
 
 			// Set default timezone
 		date_default_timezone_set($timezone);

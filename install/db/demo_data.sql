@@ -564,18 +564,18 @@ INSERT INTO `ext_contact_address` (`id`, `date_create`, `date_update`, `id_perso
 -- Data for Table `ext_contact_company`
 --
 
-INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `shortname`, `id_currency`, `date_enter`, `is_internal`) VALUES
-(8, 1264581712, 1269508233, 1, 0, 'Eisbergen GmbH', 'Eisbergen', 0, 1262300400, 0),
-(9, 1264581965, 1269508901, 1, 0, 'Gripgrap Communications', 'Gripgrap', 0, 1262300400, 0),
-(10, 1264582231, 1269509705, 1, 0, 'Transmetric Measure Co.', 'TransMeas', 0, 1217541600, 0),
-(11, 1264582333, 1269508400, 1, 0, 'ABC-Tec Holding', 'ABCT', 0, 1262300400, 0),
-(12, 1264582503, 1269508373, 1, 0, 'World Watches Fedaration', 'WWF', 0, 1262300400, 0),
-(13, 1264583324, 1269509036, 1, 0, 'Innovacation Inc.', 'InnoVac', 0, 978303600, 0),
-(14, 1264583514, 1269508492, 1, 0, 'Goodmonth', 'Goodmonth', 0, 1262300400, 0),
-(15, 1264583707, 1269509362, 1, 0, 'Sugarion', 'sugarion', 0, 1262300400, 0),
-(16, 1264583917, 1269508153, 1, 0, 'Customers ACME', 'Customers', 0, 1262300400, 0),
-(17, 1264584243, 1269508609, 1, 0, 'Rainbowflag Ltd.', 'RBF', 0, 0, 0),
-(18, 1264587852, 1269509105, 1, 0, 'snowman production AG', 'smp', 0, 1262300400, 1);
+INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `title`, `shortname`, `date_enter`, `is_internal`) VALUES
+(8, 1264581712, 1269508233, 1, 0, 'Eisbergen GmbH', 'Eisbergen', 1262300400, 0),
+(9, 1264581965, 1269508901, 1, 0, 'Gripgrap Communications', 'Gripgrap', 1262300400, 0),
+(10, 1264582231, 1269509705, 1, 0, 'Transmetric Measure Co.', 'TransMeas', 1217541600, 0),
+(11, 1264582333, 1269508400, 1, 0, 'ABC-Tec Holding', 'ABCT', 1262300400, 0),
+(12, 1264582503, 1269508373, 1, 0, 'World Watches Fedaration', 'WWF', 1262300400, 0),
+(13, 1264583324, 1269509036, 1, 0, 'Innovacation Inc.', 'InnoVac', 978303600, 0),
+(14, 1264583514, 1269508492, 1, 0, 'Goodmonth', 'Goodmonth', 1262300400, 0),
+(15, 1264583707, 1269509362, 1, 0, 'Sugarion', 'sugarion', 1262300400, 0),
+(16, 1264583917, 1269508153, 1, 0, 'Customers ACME', 'Customers', 1262300400, 0),
+(17, 1264584243, 1269508609, 1, 0, 'Rainbowflag Ltd.', 'RBF', 0, 0),
+(18, 1264587852, 1269509105, 1, 0, 'snowman production AG', 'smp', 1262300400, 1);
 
 -- --------------------------------------------------------
 
