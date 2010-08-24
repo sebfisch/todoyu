@@ -6,12 +6,16 @@
  */
 class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
+	protected $timezone;
+
 	/**
 	 * Sets up the fixture, for example, opens a network connection.
 	 * This method is called before a test is executed.
 	 */
 	protected function setUp() {
+		$this->timezone = Todoyu::getTimezone();
 
+		Todoyu::setTimezone('UTC');
 	}
 
 	/**
@@ -19,11 +23,12 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * This method is called after a test is executed.
 	 */
 	protected function tearDown() {
+		Todoyu::setTimezone($this->timezone);
 	}
 
 	public function testGetStartOfDay() {
-		$timeAfternoon	= mktime(14, 0, 0, 1, 1, 2010);
-		$timeDaystart	= mktime(0, 0, 0, 1, 1, 2010);
+		$timeAfternoon	= gmmktime(14, 0, 0, 1, 1, 2010);
+		$timeDaystart	= gmmktime(0, 0, 0, 1, 1, 2010);
 
 		$result1	= TodoyuTime::getStartOfDay($timeAfternoon);
 		$result2	= TodoyuTime::getStartOfDay($timeDaystart);
@@ -33,8 +38,8 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetEndOfDay() {
-		$time		= mktime(14, 0, 0, 1, 1, 2010);
-		$testDayend	= mktime(23, 59, 59, 1, 1, 2010);
+		$time		= gmmktime(14, 0, 0, 1, 1, 2010);
+		$testDayend	= gmmktime(23, 59, 59, 1, 1, 2010);
 
 		$timeEnd1	= TodoyuTime::getEndOfDay($time);
 		$timeEnd2	= TodoyuTime::getEndOfDay($testDayend);
@@ -44,9 +49,9 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetDayRange() {
-		$time		= mktime(14, 33, 59, 8, 3, 2010);
-		$testStart	= mktime(0, 0, 0, 8, 3, 2010);
-		$testEnd	= mktime(23, 59, 59, 8, 3, 2010);
+		$time		= gmmktime(14, 33, 59, 8, 3, 2010);
+		$testStart	= gmmktime(0, 0, 0, 8, 3, 2010);
+		$testEnd	= gmmktime(23, 59, 59, 8, 3, 2010);
 		$range		= TodoyuTime::getDayRange($time);
 
 		$this->assertEquals($testStart, $range['start']);
@@ -54,9 +59,9 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetWeekRange() {
-		$time		= mktime(14, 33, 59, 8, 3, 2010);
-		$testStart	= mktime(0, 0, 0, 8, 2, 2010);
-		$testEnd	= mktime(23, 59, 59, 8, 8, 2010);
+		$time		= gmmktime(14, 33, 59, 8, 3, 2010);
+		$testStart	= gmmktime(0, 0, 0, 8, 2, 2010);
+		$testEnd	= gmmktime(23, 59, 59, 8, 8, 2010);
 		$range		= TodoyuTime::getWeekRange($time);
 
 		$this->assertEquals($testStart, $range['start']);
@@ -64,9 +69,9 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetMonthRange() {
-		$time		= mktime(14, 33, 59, 8, 3, 2010);
-		$testStart	= mktime(0, 0, 0, 8, 1, 2010);
-		$testEnd	= mktime(23, 59, 59, 8, 31, 2010);
+		$time		= gmmktime(14, 33, 59, 8, 3, 2010);
+		$testStart	= gmmktime(0, 0, 0, 8, 1, 2010);
+		$testEnd	= gmmktime(23, 59, 59, 8, 31, 2010);
 		$range		= TodoyuTime::getMonthRange($time);
 
 		$this->assertEquals($testStart, $range['start']);
@@ -74,23 +79,23 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetWeekStart() {
-		$time		= mktime(14, 33, 59, 8, 3, 2010);
-		$testStart	= mktime(0, 0, 0, 8, 2, 2010);
+		$time		= gmmktime(14, 33, 59, 8, 3, 2010);
+		$testStart	= gmmktime(0, 0, 0, 8, 2, 2010);
 		$weekStart	= TodoyuTime::getWeekStart($time);
 
 		$this->assertEquals($testStart, $weekStart);
 	}
 
 	public function testGetMonthStart() {
-		$time		= mktime(14, 33, 59, 8, 3, 2010);
-		$testStart	= mktime(0, 0, 0, 8, 1, 2010);
+		$time		= gmmktime(14, 33, 59, 8, 3, 2010);
+		$testStart	= gmmktime(0, 0, 0, 8, 1, 2010);
 		$monthStart	= TodoyuTime::getMonthStart($time);
 
 		$this->assertEquals($testStart, $monthStart);
 	}
 
 	public function testGetWeekday() {
-		$time		= mktime(14, 33, 59, 8, 3, 2010);
+		$time		= gmmktime(14, 33, 59, 8, 3, 2010);
 		$testWeekday= 1;
 		$weekday	= TodoyuTime::getWeekday($time);
 
@@ -166,7 +171,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 		Todoyu::setLocale('en_GB');
 
-		$time	= mktime(14, 36, 5, 3, 9, 1984);
+		$time	= gmmktime(14, 36, 5, 3, 9, 1984);
 
 		$formattedEN= TodoyuTime::format($time, 'datetime');
 		$expectedEN	= '09/03/84 14:36';
@@ -206,7 +211,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testParseDateString() {
-		$time	= mktime(13, 46, 22, 4, 19, 2016);
+		$time	= gmmktime(13, 46, 22, 4, 19, 2016);
 		$date1	= date('r', $time);
 		$date2	= date('Y-m-d H:i:s', $time);
 
@@ -337,24 +342,31 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($test5, $rounded8);
 	}
 
+
+
+	/**
+	 * Check week timestamps
+	 * Force UTC to test
+	 */
 	public function testGetTimestampsForWeekdays() {
 		$expectedTimestamps = array(
-			1275861600,	// 07.06.2010 00:00
-			1275948000,	// 08.06.2010 00:00
-			1276034400,	// 09.06.2010 00:00
-			1276120800,	// 10.06.2010 00:00
-			1276207200,	// 11.06.2010 00:00
-			1276293600,	// 12.06.2010 00:00
-			1276380000	// 13.06.2010 00:00
+			gmmktime(0,0,0,6,7,2010),	// 07.06.2010 00:00
+			gmmktime(0,0,0,6,8,2010),	// 08.06.2010 00:00
+			gmmktime(0,0,0,6,9,2010),	// 09.06.2010 00:00
+			gmmktime(0,0,0,6,10,2010),	// 10.06.2010 00:00
+			gmmktime(0,0,0,6,11,2010),	// 11.06.2010 00:00
+			gmmktime(0,0,0,6,12,2010),	// 12.06.2010 00:00
+			gmmktime(0,0,0,6,13,2010)	// 13.06.2010 00:00
 		);
+
 		$timestamps	= TodoyuTime::getTimestampsForWeekdays($expectedTimestamps[2]);
 
 		$this->assertEquals($expectedTimestamps, $timestamps);
 	}
 
 	public function testGetDaysInMonth() {
-		$timeJune2010	= mktime(0, 0, 0, 6, 1, 2010);
-		$timeFeb2010	= mktime(0, 0, 0, 2, 1, 2010);
+		$timeJune2010	= gmmktime(0, 0, 0, 6, 1, 2010);
+		$timeFeb2010	= gmmktime(0, 0, 0, 2, 1, 2010);
 
 		$resDaysJune2010	= TodoyuTime::getDaysInMonth($timeJune2010);
 		$resDaysFeb2010		= TodoyuTime::getDaysInMonth($timeFeb2010);
