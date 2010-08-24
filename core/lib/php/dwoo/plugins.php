@@ -544,4 +544,30 @@ function Dwoo_Plugin_select(Dwoo $dwoo, array $options, array $value, $id = '', 
 	return render($tmpl, $data);
 }
 
+
+
+/**
+ * Replace line breaks "\n" with ODT style line breaks
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String			$text
+ * @return	String
+ */
+function Dwoo_Plugin_OdtLinebreaks_compile(Dwoo_Compiler $compiler, $text) {
+	return 'str_replace("\n", \'<text:line-break/>\', ' . $text . ')';
+}
+
+
+/**
+ * Replace spaces with &nbsp; entities
+ * Prevent line breaks on spaces
+ *
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	String			$text
+ * @return	String
+ */
+function Dwoo_Plugin_nobreak_compile(Dwoo_Compiler $compiler, $text) {
+	return 'str_replace(\' \', \'&nbsp;\', ' . $text . ')';
+}
+
 ?>
