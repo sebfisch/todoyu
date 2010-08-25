@@ -20,7 +20,7 @@
 
 /**
  * [Enter Class Description]
- * 
+ *
  * @package		Todoyu
  * @subpackage	[Subpackage]
  */
@@ -127,6 +127,7 @@ class TodoyuFreezeManager {
 			$data = unserialize($backup['data']);
 		} else {
 			$data = false;
+			Todoyu::log('Failed to unfreeze element of type "' . $type . '" with ID=<' . $idElement . '>', TodoyuLogger::LEVEL_ERROR);
 		}
 
 		return $data;
