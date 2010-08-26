@@ -129,7 +129,7 @@ class TodoyuFormXmlParser {
 	private static function addFieldset(&$parentElement, SimpleXmlElement $fieldsetXmlObj) {
 			// If restricted to internal persons
 		if( $fieldsetXmlObj->restrictInternal ) {
-			if( ! Todoyu::person()->isInternal() ) {
+			if( ! Todoyu::person()->isAdmin() && ! Todoyu::person()->isInternal() ) {
 				return false;
 			}
 		}
@@ -256,7 +256,7 @@ class TodoyuFormXmlParser {
 			return $and;
 		} elseif( array_key_exists('restrictInternal', $config) ) {
 				// Restricted to internal persons
-			return Todoyu::person()->isInternal();
+			return Todoyu::person()->isAdmin() ||  Todoyu::person()->isInternal();
 		}
 
 			// If no requirements found for the filed, allow it

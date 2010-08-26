@@ -182,7 +182,7 @@ class TodoyuRightsManager {
 
 	/**
 	 * Check if a right exists in the rights XML file
-	 * 
+	 *
 	 * @param	String		$extKey
 	 * @param	String		$right
 	 */
@@ -301,7 +301,7 @@ class TodoyuRightsManager {
 	public static function deleteExtRoleRights($extID, $idRole) {
 		$extID	= intval($extID);
 		$idRole	= intval($idRole);
-		$where	= '		ext		= ' . $extID . 
+		$where	= '		ext		= ' . $extID .
 				  ' AND id_role	= ' . $idRole;
 
 		return Todoyu::db()->doDelete(self::TABLE, $where);
@@ -397,7 +397,7 @@ class TodoyuRightsManager {
 	 * Restrict access to internal persons
 	 */
 	public static function restrictInternal() {
-		if( ! Todoyu::person()->isInternal() ) {
+		if( ! Todoyu::person()->isAdmin() && ! Todoyu::person()->isInternal() ) {
 			self::deny('core', 'internal');
 		}
 	}

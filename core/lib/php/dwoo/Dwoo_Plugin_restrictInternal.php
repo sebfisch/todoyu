@@ -67,7 +67,7 @@ class Dwoo_Plugin_restrictInternal extends Dwoo_Block_Plugin implements Dwoo_ICo
 	public static function postProcessing(Dwoo_Compiler $compiler, array $params, $prepend, $append, $content) {
 		$params = $compiler->getCompiledParams($params);
 
-		$pre	= Dwoo_Compiler::PHP_OPEN.'if(Todoyu::person()->isInternal()) {'.Dwoo_Compiler::PHP_CLOSE;
+		$pre	= Dwoo_Compiler::PHP_OPEN.'if(Todoyu::person()->isInternal()||Todoyu::person()->isAdmin()) {'.Dwoo_Compiler::PHP_CLOSE;
 		$post	= Dwoo_Compiler::PHP_OPEN."}".Dwoo_Compiler::PHP_CLOSE;
 
 		if (isset($params['hasElse'])) {
