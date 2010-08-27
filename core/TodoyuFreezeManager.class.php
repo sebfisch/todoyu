@@ -111,9 +111,10 @@ class TodoyuFreezeManager {
 	 *
 	 * @param	String			$table
 	 * @param	Integer			$idElement
+	 * @param	Boolean			$ignoreMissing		Don't log an error if unfreezing failed, because we're just checking if it's available
 	 * @return	Mixed|Boolean	Restored element or false
 	 */
-	public static function unfreezeElement($type, $idElement) {
+	public static function unfreezeElement($type, $idElement, $ignoreMissing = false) {
 		$idElement	= intval($idElement);
 
 		$fields	= '*';
@@ -125,7 +126,7 @@ class TodoyuFreezeManager {
 
 		if( $backup !== false ) {
 			$data = unserialize($backup['data']);
-		} else {
+		} elseif( $ignoreMissing !== true ) {
 			$data = false;
 			Todoyu::log('Failed to unfreeze element of type "' . $type . '" with ID=<' . $idElement . '>', TodoyuLogger::LEVEL_ERROR);
 		}
