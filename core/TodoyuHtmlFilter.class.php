@@ -72,7 +72,11 @@ class TodoyuHtmlFilter {
 	 * @return	String
 	 */
 	public static function entitySafeLimitWordsLen($string, $maxLen = 45) {
-		$string	= str_replace("\n", "\n ", $string);
+		$replace= array(
+			"\n"	=> "\n ",
+			'><'	=> '> <'
+		);
+		$string	= str_replace(array_keys($replace), array_values($replace), $string);
 		$words	= explode(' ', $string);
 
 		$out	= '';
