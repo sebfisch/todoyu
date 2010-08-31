@@ -423,6 +423,10 @@ class TodoyuFormValidator {
 		$fieldDate		= intval($value);
 		$compareFieldDate= intval($compareFieldValue);
 
+		if( $compareFieldDate === 0 ) {
+			return false;
+		}
+
 		return ( $fieldDate > $compareFieldDate );
 	}
 
