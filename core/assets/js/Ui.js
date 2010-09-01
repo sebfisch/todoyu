@@ -532,7 +532,7 @@ Todoyu.Ui = {
 
 	/**
 	 * Set document title (shown in browser window title bar)
-	 * 
+	 *
 	 * @param	{String}		title
 	 */
 	setTitle: function(title) {
@@ -543,7 +543,7 @@ Todoyu.Ui = {
 
 	/**
 	 * Get document title, without the " - todoyu" postfix (shown in browser window title bar)
-	 * 
+	 *
 	 * @return String
 	 */
 	getTitle: function(strip) {
@@ -613,7 +613,7 @@ Todoyu.Ui = {
 
 	/**
 	 * Handler when clicked on the body
-	 * 
+	 *
 	 * @param	{Event}	event
 	 */
 	onBodyClick: function(event) {
@@ -626,7 +626,7 @@ Todoyu.Ui = {
 
 	/**
 	 * Add an observer for the body
-	 * 
+	 *
 	 * @param	{Function}	func
 	 */
 	addBodyClickObserver: function(func) {
@@ -639,7 +639,7 @@ Todoyu.Ui = {
 	 * Stop event bubbling
 	 * Useful when handling onclick-events of nested elements
 	 * whose parents have onclick handlers which should be not fired than
-	 * 
+	 *
 	 * @param	{Event}	event
 	 */
 	stopEventBubbling: function(event) {
@@ -649,7 +649,22 @@ Todoyu.Ui = {
 		} else{
 			event.preventDefault();
 			event.stopPropagation();
-		}	
+		}
+	},
+
+
+	
+	/**
+	 * Save all RTEs in the document
+	 * Sometimes, double instances exist. Prevents saving if missing instances of an editor
+	 * Use this function instead of tinyMCE.triggerSave();
+	 */
+	saveRTE: function() {
+		window.tinyMCE.editors.each(function(editor){
+			if( editor ) {
+				editor.save();
+			}
+		});
 	},
 
 
@@ -661,7 +676,7 @@ Todoyu.Ui = {
 	 * @param	{Element}	area		Area to look for tinyMCE instances (Can be a form, the whole window or the element itself)
 	 */
 	closeRTE: function(area) {
-		tinyMCE.triggerSave();
+		this.saveRTE();
 
 		if( ! Todoyu.exists(area) ) {
 			area = document.body;
