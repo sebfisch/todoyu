@@ -94,7 +94,12 @@ class TodoyuLocaleManager {
 	public static function setSystemLocale($locale) {
 		$localeNames	= self::getSystemLocaleNames($locale);
 
-		return setlocale(LC_ALL, $localeNames);
+		if( sizeof($localeNames) > 0 ) {
+			return setlocale(LC_ALL, $localeNames);
+		} else {
+			Todoyu::log('Failed to set system locale. No localnames available for ' . $locale, TodoyuLogger::LEVEL_ERROR);
+			return false;
+		}
 	}
 
 
