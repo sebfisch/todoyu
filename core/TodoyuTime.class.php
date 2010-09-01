@@ -155,6 +155,34 @@ class TodoyuTime {
 
 
 	/**
+	 * Get timestamp of last of month of given timestamp
+	 *
+	 * @param	Integer		$timestamp
+	 * @return	Integer
+	 */
+	public static function getLastDayOfMonth($timestamp = NOW) {
+		$range  = self::getMonthRange($timestamp);
+
+		return $range['end'];
+	}
+
+
+
+	/**
+	 * Get day-number of last day of month of given timestamp
+	 *
+	 * @param	Integer		$timestamp
+	 * @return	Integer
+	 */
+	public static function getNumberOfLastDayOfMonth($timestamp = NOW) {
+		$timestampLastDay   = self::getLastDayOfMonth($timestamp);
+
+		return date('j', $timestampLastDay);
+	}
+
+
+
+	/**
 	 * Get weekday of a timestamp. Like date('w'), but starts with monday
 	 * With $mondayFirst monday will be 0 and sunday 6
 	 *
