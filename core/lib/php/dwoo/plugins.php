@@ -523,7 +523,7 @@ function Dwoo_Plugin_html2text_compile(Dwoo_Compiler $compiler, $html) {
  * @param	Array		$value		Array to allow for multi selection
  * @return	String
  */
-function Dwoo_Plugin_select(Dwoo $dwoo, array $options, array $value, $id = '', $name = '', $class = '', $size = 0, $multiple = false, $disabled = false, $onchange = '') {
+function Dwoo_Plugin_select(Dwoo $dwoo, array $options, array $value = array(), $id = '', $name = '', $class = '', $size = 0, $multiple = false, $disabled = false, $onchange = '') {
 	$tmpl	= 'core/view/select.tmpl';
 	$data	= array(
 		'htmlId'	=> $id,

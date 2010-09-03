@@ -59,6 +59,7 @@ class TodoyuSession {
 
 	/**
 	 * Set a session value
+	 * Format for sub areas: this/is/a/nested/path
 	 *
 	 * @param	String		$path		Slash separated path to value
 	 * @param	Mixed		$data
