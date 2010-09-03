@@ -29,6 +29,9 @@ abstract class TodoyuHeadletTypeButton extends TodoyuHeadlet {
 
 	protected $type = 'button';
 
+	/**
+	 * @todo	comment
+	 */
 	protected function initType() {
 		$this->addButtonClass('headletTypeButton');
 	}
