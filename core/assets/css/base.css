@@ -61,7 +61,9 @@ ol {
 	list-style-position:inside;
 	padding-left:10px;
 }
-
+p {
+	padding-bottom: 5px;
+}
 
 
 /* ------------------------------
