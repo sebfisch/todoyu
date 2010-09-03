@@ -128,6 +128,7 @@ Todoyu.QuickInfo = {
 	},
 
 
+
 	/**
 	 * Handler when an observed element is left with the mouse
 	 *
@@ -214,6 +215,9 @@ Todoyu.QuickInfo = {
 	 */
 	show: function(event, name, callback, observedElement) {
 		event.stop();
+
+//		var elementID	=observedElement.id;
+//		var context		= elementID.split('_')[0];
 
 		var elementKey	= callback(observedElement, event);
 

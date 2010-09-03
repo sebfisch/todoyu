@@ -98,13 +98,19 @@ class TodoyuQuickinfo {
 	 * Shortcut to addInfo
 	 *
 	 * @param	String		$key
-	 * @param	String		$label
+	 * @param	String		$email
+	 * @param	String		$fullName
 	 * @param	Integer		$position
 	 */
-	public function addEmail($key, $label, $position = 100) {
-		$email	= '<a href="mailto:' . $label . '">' . $label . '</a>';
+	public function addEmail($key, $email, $fullName = '', $position = 100) {
+		if ( $fullName !== '' ) {
+			$fullName	= str_replace(' ', '%20', $fullName);
+			$item	=  '<a href="mailto:' . $fullName . '%3c' . $email . '%3e">' . $email . '</a>';
+		} else {
+			$item	= '<a href="mailto:' . $email . '">' . $email . '</a>';
+		}
 
-		$this->addHTML($key, $email, $position);
+		$this->addHTML($key, $item, $position);
 	}
 
 
