@@ -231,6 +231,21 @@ class TodoyuString {
 
 
 	/**
+	 * Remove duplicate entries from list
+	 *
+	 * @param	String	$listString
+	 * @return	String
+	 */
+	public static function listUnique($listString, $listSeparator = ',') {
+		$list = TodoyuArray::trimExplode($listSeparator, $listString);
+		$list = array_unique($list);
+
+		return implode($listSeparator, $list);
+	}
+
+
+
+	/**
 	 * Generate a random password. Customizeable
 	 *
 	 * @param	Integer		$length

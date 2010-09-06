@@ -43,8 +43,7 @@ class TodoyuRoleDatasource {
 
 		$roleIDs	= array();
 		$roles		= TodoyuRoleManager::getRoles($roleIDs);
-
-		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
+//		$selected	= TodoyuArray::intExplode(',', $definitions['value'], true, true);
 
 		foreach($roles as $role) {
 			$options[] = array(
