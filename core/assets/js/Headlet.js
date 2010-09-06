@@ -59,8 +59,8 @@ Todoyu.Headlet = {
 
 
 	/**
-	 * Check if event happend in the content div of an overlay headlet
-	 * 
+	 * Check if event happened in the content div of an overlay headlet
+	 *
 	 * @param	{Event}		event
 	 * @return	{Boolean}
 	 */
