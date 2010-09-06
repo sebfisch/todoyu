@@ -72,9 +72,8 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 			$tmpOpt[] = $name . ' : "' . $value . '"';
 		}
 
-		$jsCode .= implode(",\n", $tmpOpt);
-
-		$jsCode .= "\n});\n";
+		$jsCode .= implode(",\n", $tmpOpt) . "\n});\n";
+		$jsCode .= 'Todoyu.Ui.initRTEfocus(\'' . $options['elements'] . '\');';
 
 		return $jsCode;
 	}

@@ -653,7 +653,27 @@ Todoyu.Ui = {
 	},
 
 
-	
+
+	/**
+	 * Simulate sending a keystroke to RTE to initialize it, so that focus is given also for special keys like [BACKSPACE], [CTRL]+[A], etc.
+	 * Neccessary if there are more than one instance of tiny_mce open
+	 *
+	 * @param	{Element}	textControlElement
+	 */
+	initRTEfocus: function(textControlElement) {
+		var textControl = tinyMCE.get(textControlElement);
+
+		if ( textControl ) {
+				// get content
+			var tempContent = textControl.getContent();
+
+				// return content
+			textControl.setContent(tempContent);
+		}
+	},
+
+
+
 	/**
 	 * Save all RTEs in the document
 	 * Sometimes, double instances exist. Prevents saving if missing instances of an editor
