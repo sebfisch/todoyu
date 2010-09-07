@@ -4,9 +4,12 @@
 	position:absolute;
 	top:200px;
 	width:182px;
-	border:1px solid #b9bcae;
+	border:1px solid #ccc;
 	background-color:#d3dabb;
 	z-index:1000;
+	-webkit-box-shadow:2px 2px 5px #999;
+	-moz-box-shadow:2px 2px 5px #999;
+	box-shadow:2px 2px 5px #999;
 }
 
 #quickinfo dl {
@@ -24,7 +27,7 @@
 	float:left;
 	width:150px;
 	min-height:15px;
-	padding:3px 4px;
+	padding:2px 4px;
 	background-color:#edf1e0;
 	text-align:left;
 	font-size:10px;
