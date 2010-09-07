@@ -2,7 +2,9 @@ form {
 	margin:0;
 	padding:0;
 }
-	* html form {height:1%}
+	* html form {
+		height:1%
+	}
 
 	fieldset {
 		float:left; /* is a bugFix */
@@ -16,7 +18,9 @@ form {
 		/*clear:both;*/
 	}
 
-	* html fieldset {height:1%} /* IE6 */
+	* html fieldset {
+		height:1%;	/* IE6 */
+	}
 
 			/* Buttons, Footer line */
 		fieldset.buttons {
@@ -433,7 +437,7 @@ form .typeCheckbox div.errorMessage {
 /* -------------------------
 	Auto-completer list
    ------------------------- */
-.acResultContainer	{
+.acResultContainer {
 		z-index:100;
 		border-top:1px solid #ccc;
 		-webkit-box-shadow:2px 2px 5px #999;
@@ -522,31 +526,31 @@ form .typeCheckbox div.errorMessage {
 	Form element: iconSelector
    -------------------------------------- */
 .fField .iconSelector {
-	width: auto;
+	width:auto;
 }
 
 .fField .iconSelector .selectorIcon {
-	display: block;
-	height: 25px;
-	width: 25px;
-	margin: 9px 0 0 9px;
-	text-indent: -9999px;
+	display:block;
+	height:25px;
+	width:25px;
+	margin:9px 0 0 9px;
+	text-indent:-9999px;
 }
 
 .fField .iconSelector li {
-	float: left;
-	cursor: pointer;
-	background-color: #f3f3f3;
-	border: 1px dotted #848484;
+	float:left;
+	cursor:pointer;
+	background-color:#f3f3f3;
+	border:1px dotted #848484;
 }
 
 .fField .iconSelector li.selected {
-	border: 1px solid #848484;
-	background-color: #e3eace;
+	border:1px solid #848484;
+	background-color:#e3eace;
 }
 
 .fField .iconSelector li:hover {
-	background-color: #e3eace;
+	background-color:#e3eace;
 }
 
 
