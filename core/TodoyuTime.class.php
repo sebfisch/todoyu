@@ -309,6 +309,10 @@ class TodoyuTime {
 	public static function format($timestamp, $formatName = 'datetime') {
 		$timestamp	= intval($timestamp);
 
+		if( $timestamp === 0 ) {
+			return '-';
+		}
+
 		$format		= self::getFormat($formatName);
 		$string		= strftime($format, $timestamp);
 
@@ -551,7 +555,7 @@ class TodoyuTime {
 
 	/**
 	 * Rounds UP given time in seconds to given rounding minute
-	 * 
+	 *
 	 * @param	Integer		$timestamp
 	 * @param	Integer		$roundingMinute
 	 * @return	Integer							rounded time in seconds
