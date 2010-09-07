@@ -440,7 +440,9 @@ form .typeCheckbox div.errorMessage {
 		-moz-box-shadow:2px 2px 5px #999;
 		box-shadow:2px 2px 5px #999;
 	}
-
+	.acResultContainer ul {
+		padding:0 !important;
+	}
 	.acResultContainer li{
 		background:#fff;
 		border:1px solid #ccc;
@@ -604,7 +606,9 @@ form .fieldnameContactinfo .foreignRecordsActionControl,
 form .fieldnameAddress .foreignRecordsActionControl,
 form .fieldnameCompany .foreignRecordsActionControl,
 form .fieldnameRole .foreignRecordsActionControl,
-form .fieldnamePerson .foreignRecordsActionControl {
+form .fieldnamePerson .foreignRecordsActionControl,
+form .fieldnameExtprojectbillingapprovalroles .foreignRecordsActionControl,
+form .fieldnameExtprojectbillingprepayment .foreignRecordsActionControl {
 	text-align:left;
 }
 
