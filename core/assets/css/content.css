@@ -84,7 +84,7 @@ h1 {
 .headerLine span,
 .button,
 .title {
-	text-shadow: 1px 1px #fff;
+	text-shadow: 1px 1px #f3f3f3;
 }
 
 h1.headerLine.hasIcon {
