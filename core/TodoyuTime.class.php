@@ -249,8 +249,15 @@ class TodoyuTime {
 	public static function sec2hour($seconds) {
 		$timeParts	= self::getTimeParts($seconds);
 
+			// Round up minute, if more than 30 seconds
 		if( $timeParts['seconds'] >= 30 ) {
 			$timeParts['minutes'] += 1;
+
+				// If the minute round up caused 60 minutes, increment hour
+			if( $timeParts['minutes'] == 60 ) {
+				$timeParts['minutes'] = 0;
+				$timeParts['hours']++;
+			}
 		}
 
 		return sprintf('%02d:%02d', $timeParts['hours'], $timeParts['minutes']);

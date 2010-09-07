@@ -58,25 +58,14 @@ class TodoyuFormValidator {
 	 * @return	Boolean
 	 */
 	public static function user($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
-			// Multiple user validators? handle each
-		$isAttributesArray = TodoyuArray::getFirstKey($validatorConfig) !== '@attributes';
-		if( $isAttributesArray ) {
-			foreach($validatorConfig as $subValidatorConfig) {
-				$result	= self::user($value, $subValidatorConfig, $formElement, $formData);
-				if( $result === false ) {
-					break;
-				}
-			}
-		} else {
 				// Validate
-			$function	= $validatorConfig['function'];
+		$function	= $validatorConfig['function'];
 
-			if( TodoyuFunction::isFunctionReference($function) ) {
-				$result	= TodoyuFunction::callUserFunction($function, $value, $validatorConfig, $formElement, $formData);
-			} else  {
-				Todoyu::log('Formvalidator function not found: ' . $function, TodoyuLogger::LEVEL_FATAL);
-				$result	= false;
-			}
+		if( TodoyuFunction::isFunctionReference($function) ) {
+			$result	= TodoyuFunction::callUserFunction($function, $value, $validatorConfig, $formElement, $formData);
+		} else  {
+			Todoyu::log('Formvalidator function not found: ' . $function, TodoyuLogger::LEVEL_FATAL);
+			$result	= false;
 		}
 
 		return $result;

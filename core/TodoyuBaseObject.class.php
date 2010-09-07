@@ -18,13 +18,15 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+//require_once( PATH_LIB . '/php/dwoo/Dwoo/IDataProvider.php');
+
 /**
  * Add basic and lot used access functions for internal member vars
  *
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuBaseObject implements ArrayAccess {
+class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 
 	/**
 	 * Record data (database row)
@@ -188,7 +190,7 @@ class TodoyuBaseObject implements ArrayAccess {
 	 *
 	 * @return	Array
 	 */
-	public function getData() {
+	public function getObjectData() {
 		return $this->data;
 	}
 
@@ -377,6 +379,16 @@ class TodoyuBaseObject implements ArrayAccess {
 		return $this->get($name);
 	}
 
+
+
+	/**
+	 * Alias for getTemplateData to implement Dwoo_IDataProvider
+	 *
+	 * @return	Array
+	 */
+	public function getData() {
+		return $this->getTemplateData();
+	}
 }
 
 ?>

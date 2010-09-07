@@ -1,6 +1,6 @@
 <?php
 
-include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Dwoo.php';
+include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Dwoo.compiled.php';
 
 function dwooAutoload($class)
 {

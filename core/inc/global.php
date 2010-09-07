@@ -37,7 +37,8 @@ set_include_path(get_include_path() . PATH_SEPARATOR . PATH);
 	// Add PEAR to include path
 set_include_path(get_include_path() . PATH_SEPARATOR . PATH_PEAR);
 
-
+	// Load dwoo
+require_once( PATH_LIB . '/php/dwoo/dwooAutoload.php' );
 
 	// Load basic classes
 require_once( PATH_CORE . '/Todoyu.class.php' );
@@ -72,9 +73,6 @@ require_once( PATH_EXT .  '/contact/model/TodoyuContactPreferences.class.php' );
 	// Load development classes
 require_once( PATH_CORE . '/TodoyuDebug.class.php' );
 require_once( PATH_LIB . '/php/FirePHP/FirePHP.class.php' );
-
-	// Load dwoo
-require_once( PATH_LIB . '/php/dwoo/dwooAutoload.php' );
 
 	// Load CSS and JS minimizer
 require_once( PATH_LIB . '/php/cssmin.php' );
