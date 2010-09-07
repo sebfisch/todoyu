@@ -107,9 +107,11 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 	 * @return	String
 	 */
 	public function getStorageData() {
-		$value	= str_replace("\n", '', $this->getValue());
+//		$value	= str_replace("\n", '', $this->getValue());
 
-		$this->setValue($value);
+//		$this->setValue($value);
+		
+		TodoyuDebug::printInFireBug($this->getValue());
 
 		return parent::getStorageData();
 	}

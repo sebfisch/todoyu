@@ -56,7 +56,7 @@ class TodoyuFormElement_Textarea extends TodoyuFormElement {
 	 * @param	String	$value
 	 */
 	public function setValue($value) {
-		$value	= str_replace('\n', "\n", $value);
+//		$value	= str_replace('\n', "\n", $value);
 
 		parent::setValue($value);;
 	}
