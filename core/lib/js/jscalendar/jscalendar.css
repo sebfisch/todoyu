@@ -2,22 +2,29 @@
 
 div.calendar {
 	z-index:3000;
+	-webkit-box-shadow:2px 2px 5px #999;
+	-moz-box-shadow:2px 2px 5px #999;
+	box-shadow:2px 2px 5px #999;
 }
 
 div.calendar, div.calendar table {
-	border:1px solid #818181;
 	font-size:11px;
 	color:#000;
 	cursor:default;
-	background:#fff;
 	font-family:tahoma,verdana,sans-serif;
+	background:#fff url(../../../assets/img/bg-headers.png) no-repeat center -215px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 /* Header part -- contains navigation buttons and day names. */
 
 div.calendar .button { /* "<<", "<", ">", ">>" buttons have this class */
-	text-align:center;	/* They are the navigation buttons */
-	padding:2px;		/* Make the buttons seem like they're pressing */
+	text-align:center;
+	vertical-align:middle; /* They are the navigation buttons */
+	padding:4px;
+	border-bottom:1px solid #fff;
 }
 
 div.calendar .nav {
@@ -25,15 +32,16 @@ div.calendar .nav {
 }
 
 div.calendar thead .title {	/* This holds the current "month, year" */
-	font-weight:bold;		/* Pressing it will take you to the current date */
 	text-align:center;
-	background:#D7DCC6;
 	color:#000;
 	padding:2px;
+	vertical-align:middle;
+	text-transform:uppercase;
+	letter-spacing: 1px;
+	border-bottom:1px solid #fff;
 }
 
 div.calendar thead .button {
-	background:#D7DCC6;
 }
 
 div.calendar thead .headrow { /* Row <TR> containing navigation buttons */
@@ -41,12 +49,16 @@ div.calendar thead .headrow { /* Row <TR> containing navigation buttons */
 	color:#fff;
 }
 
+div.calendar thead .headrow .button {
+	border-bottom: 1px solid #ccc;
+}
+
 div.calendar thead .daynames { /* Row <TR> containing the day names */
 	background:#E4EACE;
 }
 
 div.calendar thead .name { /* Cells <TD> containing the day names */
-	border-bottom:1px solid #556;
+	border-bottom:1px solid #ccc;
 	padding:2px;
 	text-align:center;
 	text-transform:uppercase;
@@ -59,19 +71,12 @@ div.calendar thead .weekend { /* How a weekend day name shows in header */
 }
 
 div.calendar thead .hilite { /* How do the buttons in header appear when hover */
-	background-color:#316AC5;
-	color:#FFF;
-	border:1px solid #316AC5;
-	padding:1px;
-}
-
-div.calendar thead .hilite * {
-	color:#FFF;
+	background-color:#fff;
+	color:#000;
 }
 
 div.calendar thead .active { /* Active (pressed) buttons in header */
-	background-color:#77c;
-	padding:2px 0 0 2px;
+	
 }
 
 /* The body part -- contains all the days in month. */
@@ -93,7 +98,7 @@ div.calendar tbody .day.othermonth.oweekend {
 
 div.calendar table .wn {
 	padding:2px 3px 2px 2px;
-	border-right:1px solid #000;
+	border-right:1px solid #ccc;
 	background:#E4EACE;
 }
 
@@ -111,8 +116,7 @@ div.calendar tbody td.hilite { /* Hovered cells <TD> */
 }
 
 div.calendar tbody td.active { /* Active (pressed) cells <TD> */
-	background:#cde;
-	padding:2px 2px 0 2px;
+	
 }
 
 div.calendar tbody td.selected { /* Cell showing today date */
@@ -124,6 +128,9 @@ div.calendar tbody td.selected { /* Cell showing today date */
 
 div.calendar tbody td.weekend { /* Cells showing weekend days */
 	color:#999999;
+}
+div.calendar tbody td.hilite.weekend { /* Cells showing weekend days */
+	color:#fff;
 }
 
 div.calendar tbody td.today { /* Cell showing selected date */
@@ -158,8 +165,8 @@ div.calendar tfoot .footrow { /* The <TR> in footer (only one right now) */
 div.calendar tfoot .ttip { /* Tooltip (status bar) cell <TD> */
 	background:#fff;
 	color:#445;
-	border-top:1px solid #556;
-	padding:1px;
+	border-top:1px solid #ccc;
+	padding:4px;
 }
 
 div.calendar tfoot .hilite { /* Hover style for buttons in footer */
@@ -183,17 +190,19 @@ div.calendar .combo {
 	left:0;
 	width:4em;
 	cursor:default;
-	border:1px solid #655;
-	background:#def;
+	background:#d7dcc6;
 	color:#000;
 	font-size:90%;
 	z-index:3000;
+	-webkit-box-shadow:2px 2px 5px #999;
+	-moz-box-shadow:2px 2px 5px #999;
+	box-shadow:2px 2px 5px #999;
 }
 
 div.calendar .combo .label,
 div.calendar .combo .label-IEfix {
 	text-align:center;
-	padding:1px;
+	padding:2px;
 }
 
 div.calendar .combo .label-IEfix {
@@ -201,13 +210,11 @@ div.calendar .combo .label-IEfix {
 }
 
 div.calendar .combo .hilite {
-	background:#acf;
+	background:#e4eace;
 }
 
 div.calendar .combo .active {
-	border-top:1px solid #46a;
-	border-bottom:1px solid #46a;
-	background:#eef;
+	background:#fff;
 	font-weight:bold;
 }
 
