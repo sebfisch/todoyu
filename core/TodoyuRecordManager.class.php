@@ -32,7 +32,7 @@ class TodoyuRecordManager {
 	 *
 	 * @param	String		$className
 	 * @param	Integer		$idRecord
-	 * @return	BaseObject
+	 * @return	TodoyuBaseObject
 	 */
 	public static function getRecord($className, $idRecord) {
 		$idRecord	= intval($idRecord);
