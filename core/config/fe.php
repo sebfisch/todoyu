@@ -18,6 +18,13 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Core config for frontend
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+
 Todoyu::$CONFIG['FE'] = array(
 	'DEFAULT' => array(
 		'ext'		=> 'portal',

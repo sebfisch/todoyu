@@ -26,7 +26,6 @@ Todoyu::$CONFIG['DEBUG'] = false;
 	// Add core path to autoloader include paths
 Todoyu::$CONFIG['AUTOLOAD'] = array(PATH_CORE, PATH_CORE . DIR_SEP . 'controller');
 
-
 	// Todoyu session config
 Todoyu::$CONFIG['SESSION']		= array(
 	'key'	=> 'TODOYU'
@@ -40,6 +39,7 @@ Todoyu::$CONFIG['TEMPLATE']		= array(
 
 	// Bad tags which are encoded by the HtmlFilter
 Todoyu::$CONFIG['SECURITY']['badHtmlTags'] = array('script', 'iframe', 'input', 'textarea', 'select', 'form');
+
 
 
 	// Set (not) allowed paths for TodoyuFileManager::sendFile()
@@ -68,12 +68,14 @@ Todoyu::$CONFIG['SYSTEM']['timezone']	= 'Europe/Zurich';
 Todoyu::$CONFIG['LIST']['size']	= 30;
 
 
+	// Add core onLoad hooks
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuRequest::setDefaultRequestVarsHook', 10);
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuCookieLogin::tryCookieLogin', 20);
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::hookNotLoggedInAjax', 990);
 TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::hookCheckLoginStatus', 1000);
 
 
+	// Setup password requirements
 Todoyu::$CONFIG['goodPassword'] = array(
 	'minLength'		=> 8,
 	'hasNumbers'	=> true,

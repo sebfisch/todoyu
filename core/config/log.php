@@ -18,6 +18,13 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Core config for error logging
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+
 	/**
 	 * Log settings: level of incidents to logged, function references and related paths
 	 *

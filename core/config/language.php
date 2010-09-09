@@ -18,9 +18,15 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Core language config
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+
 Todoyu::$CONFIG['LANGUAGE']['cacheDir'] 	= PATH_CACHE . DIR_SEP . 'language';
 Todoyu::$CONFIG['LANGUAGE']['l10nDir'] 		= PATH . DIR_SEP . 'l10n';
 Todoyu::$CONFIG['LANGUAGE']['cacheExt'] 	= 'lang';
-
 
 ?>

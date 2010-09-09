@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Core config for page rendering
+ * Core config for forms: locales, templates
  *
  * @package		Todoyu
  * @subpackage	Core
