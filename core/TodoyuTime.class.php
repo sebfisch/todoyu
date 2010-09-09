@@ -399,7 +399,7 @@ class TodoyuTime {
 
 
 	/**
-	 * Parse date time string
+	 * Parse date time string (get UNIX timestamp)
 	 *
 	 * @param	String		$dateTimeString
 	 * @return	Integer
@@ -432,8 +432,7 @@ class TodoyuTime {
 
 
 	/**
-	 * Parse time string
-	 * Timeformat is based on the format time or timesec
+	 * Parse time string to UNIX timestamp (timeformat is based on the format time or timesec)
 	 *
 	 * @param	String		$timeString		Time string: 23:59 or 23:59:59 (function autodetects seconds part)
 	 * @return	Integer		Seconds
@@ -453,8 +452,7 @@ class TodoyuTime {
 
 
 	/**
-	 * Parse duration
-	 * Format: 32:50
+	 * Parse duration to seconds (format: 32:50)
 	 *
 	 * @param	String		$timeString
 	 * @return	Integer
@@ -537,7 +535,7 @@ class TodoyuTime {
 
 
 	/**
-	 * Check if two time ranges overlap.
+	 * Check whether two time ranges overlap.
 	 *
 	 * @param	Integer		$dateStart1
 	 * @param	Integer		$dateEnd1
@@ -561,7 +559,7 @@ class TodoyuTime {
 
 
 	/**
-	 * Rounds UP given time in seconds to given rounding minute
+	 * Round-UP given time in seconds to given rounding minute
 	 *
 	 * @param	Integer		$timestamp
 	 * @param	Integer		$roundingMinute
@@ -576,7 +574,7 @@ class TodoyuTime {
 
 
 	/**
-	 * Add days to date
+	 * Add given amount of days to given date
 	 *
 	 * @param	Integer		$time
 	 * @param	Integer		$days
