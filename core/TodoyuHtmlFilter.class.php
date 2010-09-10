@@ -147,6 +147,25 @@ class TodoyuHtmlFilter {
 	private static function escapeBadTag(array $match) {
 		return htmlentities($match[0], ENT_QUOTES, 'UTF-8');
 	}
+
+
+
+	/**
+	 * Takes a clear text message, finds all URLs and substitutes them by HTML hyperlinks
+	 *
+	 * @param	String	$text	Message content
+	 * @return	String
+	 */
+	public static function substituteUrlsByHperlinks($text)	{
+			// Match protocol://address/path/
+		$text = ereg_replace("[a-zA-Z]+://([.]?[a-zA-Z0-9_/-])*", "<a href=\"\\0\" target=\"_blank\">\\0</a>", $text);
+
+			// Match www.something
+		$text = ereg_replace("(^| )(www([.]?[a-zA-Z0-9_/-])*)", "\\1<a href=\"http://\\2\"  target=\"_blank\">\\2</a>", $text);
+
+		return $text;
+	}
+
 }
 
 ?>

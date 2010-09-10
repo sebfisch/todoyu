@@ -335,6 +335,19 @@ function Dwoo_Plugin_cleanHtml_compile(Dwoo_Compiler $compiler, $html) {
 
 
 /**
+ * Substitute URLs by hyperlinks
+ *
+ * @param 	Dwoo		$dwoo
+ * @param	String		$text
+ * @return	String
+ */
+function Dwoo_Plugin_substituteUrlsByHperlinks(Dwoo $dwoo, $text) {
+	return TodoyuHtmlFilter::substituteUrlsByHperlinks($text);
+}
+
+
+
+/**
  * Button template
  *
  * @param 	Dwoo		$dwoo
