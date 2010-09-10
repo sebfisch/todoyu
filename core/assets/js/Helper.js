@@ -17,6 +17,11 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * General helper functions
+ *
+ * @namespace	Todoyu.Helper
+ */
 Todoyu.Helper = {
 
 	/**

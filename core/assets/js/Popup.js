@@ -20,9 +20,9 @@
 /**
  *	Todoyu popup
  *
+ *	@namespace	Todoyu.Popup
  *	@see http://prototype-window.xilinus.com/documentation.html
  */
-
 Todoyu.Popup = {
 
 	/**

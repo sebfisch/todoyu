@@ -18,8 +18,8 @@
 *****************************************************************************/
 
 /**
- * Todoyu main container. All other JS containers are (sub-)nodes
- * of this container
+ * Todoyu main container. All other JS containers are (sub-)nodes of this container
+ *
  * @namespace	Todoyu
  */
 var Todoyu = {

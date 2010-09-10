@@ -17,6 +17,11 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * General form helper functions
+ *
+ * @namespace	Todoyu.Form
+ */
 Todoyu.Form = {
 
 	subFormIndex: 100,
@@ -29,7 +34,7 @@ Todoyu.Form = {
 	onFormDisplay: function(formID) {
 		if( Todoyu.exists(formID) ) {
 			this.expandInvalidForeignRecords(formID);
-			//this.focusFirstFormField(formID);
+//			this.focusFirstFormField(formID);
 		}
 	},
 
@@ -62,13 +67,11 @@ Todoyu.Form = {
 			$(trigger).down('span')[$(formHtml).visible() ? 'addClassName' : 'removeClassName']('expanded');
 		}
 
-		/*
-		var idForm = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml';
-
-		if( Todoyu.exists(idForm) ) {
-			$(idForm).toggle();
-		}
-		*/
+//		var idForm = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml';
+//
+//		if( Todoyu.exists(idForm) ) {
+//			$(idForm).toggle();
+//		}
 	},
 
 
@@ -174,19 +177,70 @@ Todoyu.Form = {
 
 
 	/**
-	 * @todo    comment
-	 *
+	 * Expand / collapse foreign record fields
+	 * 
 	 * @param	{Array}	fieldNames
 	 */
-	expandForeignRecords: function(fieldNames) {
+	toggleForeignRecords: function(fieldNames) {
 		fieldNames = fieldNames || [];
+
+		var method	= this.isAnyFieldHidden(fieldNames) ? 'show' : 'hide';
+
+		this.invokeForeignRecords(fieldNames, method);
+	},
+
+
+
+	/**
+	 * Check whether any of the given fields is currently hidden
+	 *
+	 * @param	{Array}	fieldNames
+	 * @return	{Boolean}
+	 */
+	isAnyFieldHidden: function(fieldNames) {
+		if( fieldNames.length > 0 ) {
+			var fieldName = fieldNames[0];
+			var parentField = $$('form div.fieldname' + fieldName.replace(/_/g,'').capitalize()).first();
+			if( parentField !== undefined ) {
+				var subForms	= parentField.select('div.databaseRelation div.databaseRelationFormhtml');
+
+				var anyHidden	= subForms.any(function(item){
+					return item.style.display == 'none';
+				}.bind(this));
+			}
+		}
+
+		return anyHidden;
+	},
+
+
+
+	/**
+	 * Expand fields of foreign records
+	 *
+	 * @param	{Array}		fieldNames
+	 */
+	expandForeignRecords: function(fieldNames) {
+		this.invokeForeignRecords(fieldNames, 'show');
+	},
+
+
+
+	/**
+	 * Invoke given method (e.g. 'show', 'hide') on all fields inside the parent of the given field names
+	 *
+	 * @param	{Array}		fieldNames
+	 */
+	invokeForeignRecords: function(fieldNames, method) {
+		fieldNames	= fieldNames || [];
+		method		= method || 'show';
 
 		fieldNames.each(function(fieldName){
 			var parentField = $$('form div.fieldname' + fieldName.replace(/_/g,'').capitalize()).first();
 			if( parentField !== undefined ) {
 				var subForms	= parentField.select('div.databaseRelation div.databaseRelationFormhtml');
 
-				subForms.invoke('show');
+				subForms.invoke(method);
 			}
 		});
 	},

@@ -19,6 +19,8 @@
 
 /**
  * Cookie
+ *
+ * @namespace	Todoyu.Cookie
  */
 
 Todoyu.Cookie = {
@@ -26,16 +28,16 @@ Todoyu.Cookie = {
 	data: {},
 
 	options: {
-		expires:    1,
-		domain:     "",
-		path:       "",
-		secure:     false
+		expires:	1,
+		domain:		"",
+		path:		"",
+		secure:		false
 	},
 
 
 
 	init: function(options, data) {
-		data    = data ? data : false;
+		data	= data ? data : false;
 
 		Todoyu.Cookie.options = Object.extend(Todoyu.Cookie.options, options || {});
 

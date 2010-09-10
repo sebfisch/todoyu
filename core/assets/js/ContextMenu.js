@@ -19,6 +19,8 @@
 
 /**
  * Context menu
+ *
+ * @namespace	Todoyu.ContextMenu
  */
 Todoyu.ContextMenu = {
 

@@ -17,6 +17,11 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Time related helper functions
+ *
+ * @namespace	Todoyu.Time
+ */
 Todoyu.Time = {
 
 	seconds: {

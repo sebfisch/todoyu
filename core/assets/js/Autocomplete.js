@@ -19,6 +19,8 @@
 
 /**
  * Autocompleter
+ *
+ * @namespace	Todoyu.Autocomplete
  */
 Todoyu.Autocomplete = {
 	/**

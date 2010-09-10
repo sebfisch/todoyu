@@ -17,6 +17,12 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Notification
+ *
+ * @namespace	Todoyu.Notification
+ */
+
 Todoyu.Notification = {
 
 	SUCCESS:	'success',

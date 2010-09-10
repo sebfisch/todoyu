@@ -17,6 +17,11 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Headlet
+ *
+ * @namespace	Todoyu.Headlet
+ */
 Todoyu.Headlet = {
 
 	/**

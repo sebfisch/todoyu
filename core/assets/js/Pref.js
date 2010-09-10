@@ -17,6 +17,11 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Preferences
+ *
+ * @namespace	Todoyu.Pref
+ */
 Todoyu.Pref = {
 
 	count: 0,

@@ -17,11 +17,15 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * Tabs handling
+ *
+ * @namespace	Todoyu.Tabs
+ */
 Todoyu.Tabs = {
 
 	/**
 	 * References to all functions which are bound as event handlers
-	 *
 	 */
 	bindCache: {},
 
