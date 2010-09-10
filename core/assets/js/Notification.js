@@ -164,6 +164,9 @@ Todoyu.Notification = {
 
 
 
+	/**
+	 *	Fade-out all notifications
+	 */
 	fadeAllNotes: function() {
 		$$('.note').each(function(note){
 			Effect.Fade(note.id, {'duration': 0.3});
@@ -172,6 +175,9 @@ Todoyu.Notification = {
 
 
 
+	/**
+	 * Close first (topmost) of the currently displayed notifications
+	 */
 	closeFirstNote: function() {
 		var notes = $('notes').select('div.note');
 
