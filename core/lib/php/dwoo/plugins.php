@@ -341,8 +341,8 @@ function Dwoo_Plugin_cleanHtml_compile(Dwoo_Compiler $compiler, $html) {
  * @param	String		$text
  * @return	String
  */
-function Dwoo_Plugin_substituteUrlsByHperlinks(Dwoo $dwoo, $text) {
-	return TodoyuHtmlFilter::substituteUrlsByHperlinks($text);
+function Dwoo_Plugin_linkUrls_compile(Dwoo_Compiler $compiler, $text) {
+	return 'TodoyuString::replaceUrlWithLink(' . $text . ')';
 }
 
 

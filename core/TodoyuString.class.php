@@ -458,7 +458,7 @@ class TodoyuString {
 	public static function trimExplode($delimiter, $string, $removeEmptyValues = false) {
 		return TodoyuArray::trimExplode($delimiter, $string, $removeEmptyValues);
 	}
-	
+
 
 
 	/**
@@ -497,6 +497,35 @@ class TodoyuString {
 		}
 
 		return $headers;
+	}
+
+	
+
+	/**
+	 * Takes a clear text message, finds all URLs and substitutes them by HTML hyperlinks
+	 *
+	 * @param	String	$text	Message content
+	 * @return	String
+	 */
+	public static function replaceUrlWithLink($htmlContent) {
+			// Find full links with prefixed protocol
+		$patternFull	= '/(?:[^"])((?:http|https|ftp|ftps):\/\/[-\w@:%+.~#?&\/=]+)/';
+		$replaceFull	= '<a href="\1"  target="_blank">\1</a>';
+
+			// Find links which are not prefixed with a protocol, use http
+		$patternSimple	= '/(?:[^\/\w])((?:[\w-]+)\.(?:[\w-]{2,})\.(?:[\w-]{2,6})[-\w@:%+.~#?&\/=]*)/';
+		$replaceSimple	= '<a href="http://\1" target="_blank">\1</a>';
+
+			// Find mailto links
+		$patternEmail	= '/((?:[\w-\.]+)@(?:[\w-\.]{2,})\.(?:\w{2,6}))/';
+		$replaceEmail	= '<a href="mailto:\1">\1</a>';
+
+			// Replace urls
+		$htmlContent	= preg_replace($patternFull, $replaceFull, $htmlContent);
+		$htmlContent	= preg_replace($patternSimple, $replaceSimple, $htmlContent);
+		$htmlContent	= preg_replace($patternEmail, $replaceEmail, $htmlContent);
+
+		return $htmlContent;
 	}
 
 }
