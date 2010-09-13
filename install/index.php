@@ -31,6 +31,13 @@ define('PATH_WEB_OVERRIDE', dirname(dirname($_SERVER['SCRIPT_NAME'])));
  	// Change current work directory to main directory to prevent path problems
 chdir( dirname(dirname(__FILE__)) );
 
+
+	// Stop here if insufficient php version
+if( version_compare(PHP_VERSION, '5.2.0') === -1 ) {
+	die('YOU NEED AT LEAST PHP v5.2.0 TO WORK WITH todoyu');
+}
+
+
 	// Load normal global.php file
 require_once('core/inc/global.php');
 	// Load installer config
