@@ -1,0 +1,26 @@
+div.overflowWindow {
+	position:fixed;
+	width:350px;
+	padding:10px;
+	background-color:#FFF;
+	left:0;
+	top:0;
+	z-index:3000;
+	filter:alpha(opacity=95);
+	-moz-opacity:0.95;
+	-khtml-opacity:0.95;
+	opacity:0.95;
+	-webkit-box-shadow:2px 2px 5px #999;
+	-moz-box-shadow:2px 2px 5px #999;
+	box-shadow:2px 2px 5px #999;
+}
+
+div.overflowWindow div.close {
+	position:absolute;
+	width:30px;
+	height:30px;
+	right:0px;
+	top:0px;
+	background:url(../img/icons.png) no-repeat 5px -350px;
+	cursor:pointer;
+}

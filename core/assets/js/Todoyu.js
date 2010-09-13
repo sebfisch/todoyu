@@ -108,7 +108,7 @@ var Todoyu = {
 	 * @param		{Hash}		params
 	 * @param		{String}	hash
 	 */
-	goTo: function(ext, controller, params, hash, newWindow) {
+	goTo: function(ext, controller, params, hash) {
 		var url =  this.getUrl(ext, controller, params);
 
 		if( Object.isString(hash) ) {

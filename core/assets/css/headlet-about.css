@@ -2,61 +2,36 @@
 	background:url(../img/headlet-icons.png) no-repeat 1px -24px;
 }
 
-#headlet-about-window {
-	position:fixed;
-	width:350px;
-	padding:10px;
-	background-color:#FFF;
-	left:0;
-	top:0;
-	z-index:3000;
-	filter:alpha(opacity=95);
-	-moz-opacity:0.95;
-	-khtml-opacity:0.95;
-	opacity:0.95;
-	-webkit-box-shadow:2px 2px 5px #999;
-	-moz-box-shadow:2px 2px 5px #999;
-	box-shadow:2px 2px 5px #999;
-}
 
-#headlet-about-window .logo {
+
+#overflow-window-about .logo {
 	height:120px;
 	background:url(../img/logo2.png) no-repeat 40% 0;
 }
 
-#headlet-about-window .close {
-	position:absolute;
-	width:30px;
-	height:30px;
-	right:0px;
-	top:0px;
-	background:url(../img/icons.png) no-repeat 5px -350px;
-	cursor:pointer;
-}
-
-#headlet-about-window p {
+#overflow-window-about p {
 	text-align:left;
 	margin-bottom:10px;
 }
 
-#headlet-about-window a {
+#overflow-window-about a {
 	text-decoration:underline;
 }
 
-#headlet-about-window .copyright {
+#overflow-window-about .copyright {
 
 }
 
-#headlet-about-window .community {
+#overflow-window-about .community {
 	font-weight:bold;
 }
 
-#headlet-about-window .thanks {
+#overflow-window-about .thanks {
 	font-weight:bold;
 	margin-top:20px;
 }
 
-#headlet-about-window .names {
+#overflow-window-about .names {
 	height:150px;
 	padding:5px;
 	border:1px dotted #ccc;
@@ -65,21 +40,21 @@
 	overflow:hidden;
 }
 
-#headlet-about-window .names ul {
+#overflow-window-about .names ul {
 	padding-top:50px;
 }
 
-#headlet-about-window .names ul li {
+#overflow-window-about .names ul li {
 	padding:5px;
 }
 
-#headlet-about-window .names ul li.coder {
+#overflow-window-about .names ul li.coder {
 	font-weight:bold;
 	letter-spacing:2px;
 	text-transform:uppercase;
 }
 
-#headlet-about-window #ee-img {
+#overflow-window-about #ee-img {
 	position:absolute;
 	left:-19px;
 	top:19px;

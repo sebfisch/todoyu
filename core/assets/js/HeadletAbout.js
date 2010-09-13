@@ -20,7 +20,7 @@
 /**
  * Headlet: About
  * Options about splash screen
- * 
+ *
  * @package		Todoyu
  * @subpackage	Core
  */
@@ -35,10 +35,32 @@ Todoyu.Headlet.About = {
 
 	/**
 	 * Instance of the current effect
-	 * 
+	 *
 	 * @param	{Effect.Move}
 	 */
 	nameEffect: null,
+
+	/**
+	 * @var	Todoyu.OverflowWindow
+	 */
+	win: null,
+
+	winConfig: {
+		id: 'about',
+		width: 350,
+		url: Todoyu.getUrl('core', 'about'),
+		options: {
+			parameters: {
+				action: 'window'
+			}
+		}
+	},
+
+	init: function() {
+		this.winConfig.onUpdate = this.onUpdate.bind(this);
+		this.winConfig.onHide	= this.onHide.bind(this);
+		this.winConfig.onDisplay= this.onDisplay.bind(this);
+	},
 
 
 	/**
@@ -47,88 +69,30 @@ Todoyu.Headlet.About = {
 	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
-		this.showWindow();
-	},
-
-
-
-	/**
-	 * Check whether window is already created
-	 *
-	 * @return	Boolean
-	 */
-	hasWindow: function() {
-		return Todoyu.exists(this.idWindow);
-	},
-
-
-
-	/**
-	 * Create a window element in the DOM
-	 */
-	createWindow: function() {
-		var window = new Element('div', {
-			'id':	this.idWindow
-		}).setStyle({
-			'display': 'none'
-		});
-
-		document.body.appendChild(window);
-	},
-
-
-
-	/**
-	 * Load window content over AJAX
-	 */
-	loadWindow: function() {
-		var url		= Todoyu.getUrl('core', 'about');
-		var options	= {
-			'parameters': {
-				'action':	'window'
-			},
-			'onComplete': this.onWindowLoaded.bind(this)
-		};
-		var target	= this.idWindow;
-
-		Todoyu.Ui.update(target, url, options);
-	},
-
-
-
-	/**
-	 * Handler when window content is loaded
-	 *
-	 * @param	{Ajax.Response}		response
-	 */
-	onWindowLoaded: function(response) {
-		$(this.idWindow).down('.close').observe('click', this.hideWindow.bindAsEventListener(this));
-		this.displayWindow(true);
-		this.initEE();
-	},
-
-
-
-	/**
-	 * Show window. Load if necessary
-	 */
-	showWindow: function() {
-		if( this.hasWindow() ) {
-			this.displayWindow(true);
+		if( this.win === null ) {
+			this.win = new Todoyu.OverflowWindow(this.winConfig);
 		} else {
-			this.createWindow();
-			this.loadWindow();
+			this.win.show();
 		}
 	},
 
 
 
 	/**
-	 * Hide window
+	 * Handler when window is updated
+	 *
+	 * @param	{Ajax.Response}		response
 	 */
-	hideWindow: function() {
-		this.displayWindow(false);
+	onUpdate: function(response) {
 
+	},
+
+
+
+	/**
+	 * Handler when window is hiding
+	 */
+	onHide: function() {
 		if( this.nameEffect !== null ) {
 			this.nameEffect.options.afterFinish = null;
 			this.nameEffect.cancel();
@@ -138,41 +102,11 @@ Todoyu.Headlet.About = {
 
 
 	/**
-	 * Display the window on the screen with an animation.
-	 * Hide it if show is false
-	 *
-	 * @param	{Boolean}		show
+	 * Handler when window is displayed
 	 */
-	displayWindow: function(show) {
-		var aboutWindow		= $(this.idWindow);
-		var screenDim	= document.viewport.getDimensions();
-		var windowDim	= aboutWindow.getDimensions();
-
-		var left	= parseInt((screenDim.width-windowDim.width)/2);
-		var topHide	= -windowDim.height - 30;
-		var top;
-
-		if( show ) {
-			aboutWindow.setStyle({
-				'left': left + 'px',
-				'top': topHide + 'px',
-				'display': 'block'
-			});
-
-			top	= parseInt((screenDim.height-windowDim.height)/2);
-			top	= top < 0 ? 0 : top;
-		} else {
-			top	= topHide;
-		}
-
-			// Move in/out
-		new Effect.Move(this.idWindow, {
-			y: top,
-			x: left,
-			'mode': 'absolute',
-			'duration': 0.5,
-			'afterFinish': show ? this.startNameScrolling.bind(this, true, true) : null
-		});
+	onDisplay: function() {
+		this.startNameScrolling(true, true);
+		this.initEE();
 	},
 
 
@@ -184,7 +118,7 @@ Todoyu.Headlet.About = {
 	 * @param	{Boolean}	first	Is the first scrolling, reset positions for start
 	 */
 	startNameScrolling: function(up, first) {
-		var box	= $('headlet-about-window').down('div.names');
+		var box	= this.win.div().down('div.names');
 		var list= box.down('ul');
 		var newY= -list.getHeight()+(box.getHeight()/2);
 
@@ -264,6 +198,12 @@ Todoyu.Headlet.About = {
 			});
 		}
 
+	},
+
+	hide: function() {
+		if( this.win ) {
+			this.win.hide();
+		}
 	}
 
 };

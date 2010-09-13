@@ -261,6 +261,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/js/Highcharts.js',
 			'position'	=> 74
+		),
+		array(
+			'file'		=> 'core/assets/js/OverflowWindow.js',
+			'position'	=> 75
 		)
 	),
 
@@ -372,6 +376,11 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/assets/css/loader-box.css',
+			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/overflow-window.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		)
