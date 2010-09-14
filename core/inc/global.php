@@ -18,12 +18,14 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-	// Set session cookie HTTPonly
+	// Set session cookie HTTP only
 @ini_set('session.cookie_httponly', 1);
 	// Ignore errors of type notice
 error_reporting(E_ALL ^ E_NOTICE);
 	// Set character encoding to utf-8
 mb_internal_encoding('UTF-8');
+	// Set session lifetime to 5 hours
+session_cache_expire(300);
 
 	// Start session
 session_start();

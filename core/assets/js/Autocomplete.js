@@ -140,14 +140,22 @@ Todoyu.Autocomplete = {
 	onElementSelected: function(inputField, selectedListElement) {
 		var baseID			= inputField.id.split('-').without('fulltext').join('-');
 		var selectedValue	= selectedListElement.id;
+		var updateValueField= true;
 
 		this.selectedFromList = true;
 
 		if( this.acRefs[baseID].options.onSelectCustom ) {
-			 Todoyu.callUserFunction(this.acRefs[baseID].options.onSelectCustom, inputField, $(baseID), selectedValue, selectedListElement.innerHTML, this);
+			var result = Todoyu.callUserFunction(this.acRefs[baseID].options.onSelectCustom, inputField, $(baseID), selectedValue, selectedListElement.innerHTML, this);
+
+			if( result === false ) {
+				updateValueField = false;
+			}
+
 		}
 
-		$(baseID).setValue(selectedValue);
+		if( updateValueField ) {
+			$(baseID).setValue(selectedValue);
+		}
 	},
 
 
