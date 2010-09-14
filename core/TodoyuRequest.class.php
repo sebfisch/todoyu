@@ -68,15 +68,17 @@ class TodoyuRequest {
 	 * @return	Array
 	 */
 	public static function getAll() {
-		$get	= $_GET;
-		$post	= $_POST;
-
-		if( PHP_OS === 'Linux' ) {
-			$get	= TodoyuArray::stripslashes($get);
-			$post	= TodoyuArray::stripslashes($post);
-	}
-
-		return array_merge($get, $post);
+		return array_merge($_GET, $_POST);
+		
+//		$get	= $_GET;
+//		$post	= $_POST;
+//
+//		if( PHP_OS === 'Linux' ) {
+//			$get	= TodoyuArray::stripslashes($get);
+//			$post	= TodoyuArray::stripslashes($post);
+//		}
+//
+//		return array_merge($get, $post);
 	}
 
 
