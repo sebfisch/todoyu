@@ -74,7 +74,7 @@ class TodoyuFormElement_TextAC extends TodoyuFormElement {
 			// Check label function
 		$labelFunc	= $this->config['config']['acLabel'];
 
-		if( TodoyuFunction::isFunctionReference($labelFunc) ) {
+		if( TodoyuFunction::isFunctionReference($labelFunc) && !is_null($this->getValue()) ) {
 			$data['displayLabel'] = TodoyuFunction::callUserFunction($labelFunc, $this->getValue());
 		}
 
