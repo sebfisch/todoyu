@@ -701,6 +701,22 @@ class TodoyuArray {
 
 
 	/**
+	 * Implode trimmed values
+	 * Combination of foreach, trim and implode
+	 *
+	 * @param	String		$glue
+	 * @param	Array		$array
+	 * @return	String
+	 */
+	public static function trimImplode($glue, array $array) {
+		$array = self::trim($array);
+
+		return implode($glue, $array);
+	}
+
+
+
+	/**
 	 * Trim all elements of an array. The elements have to be strings
 	 *
 	 * @param	Array		$array

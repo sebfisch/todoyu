@@ -556,53 +556,7 @@ Todoyu.Ui = {
 		}
 	},
 
-
-
-	/**
-	 * Creates a JS file reference and appends it to head
-	 *
-	 * @param	{String}		filename
-	 * @todo	NOT USED...
-	 */
-	loadJSFile: function(filename) {
-		var fileref=document.createElement( 'script' );
-		fileref.setAttribute( "type" , "text/javascript" );
-		fileref.setAttribute( "src" , filename );
-
-		Todoyu.Ui.appendAssetToHead(fileref);
-	},
-
-
-
-	/**
-	 * Creates a CSS filereference and appends it to head
-	 *
-	 * @param	{String}		filename
-	 * @todo	NOT USED...
-	 */
-	loadCSSFile: function(filename) {
-		var fileref=document.createElement( "link" );
-		fileref.setAttribute( "rel" , "stylesheet" );
-		fileref.setAttribute( "type" , "text/css" );
-		fileref.setAttribute( "href" , filename );
-
-		Todoyu.Ui.appendAssetToHead(fileref);
-	},
-
-
-
-	/**
-	 * Appends given file reference to HTML head
-	 *
-	 * @param	fileRef
-	 */
-	appendAssetToHead: function(fileRef) {
-		if( typeof fileRef != "undefined" ) {
-			 document.getElementsByTagName( "head" )[0].appendChild(fileRef);
-		}
-	},
-
-
+	
 
 	/**
 	 * Observe body for click events
