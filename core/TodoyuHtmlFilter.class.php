@@ -67,6 +67,7 @@ class TodoyuHtmlFilter {
 	/**
 	 * Split text into chunks of given max. length, preserving HTML entities
 	 *
+	 * @todo	Find a working alternative. This functions split wherever it wants (ex: hrefs)
 	 * @param	String	$string
 	 * @param	Integer	$maxLen
 	 * @return	String
