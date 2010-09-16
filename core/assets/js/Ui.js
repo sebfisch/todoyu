@@ -556,7 +556,7 @@ Todoyu.Ui = {
 		}
 	},
 
-	
+
 
 	/**
 	 * Observe body for click events
@@ -685,6 +685,27 @@ Todoyu.Ui = {
 		});
 
 		return element;
+	},
+
+
+
+	/**
+	 * Set selected options of a select element
+	 *
+	 * @param	{Element}	element
+	 * @param	{Array}		selection
+	 */
+	selectOptions: function(element, selection) {
+		element		= $(element);
+		selection	= selection.constructor === Array ? selection : [selection];
+
+		element.selectedIndex = -1;
+
+		$A(element.options).each(function(selection, option){
+			if( selection.include(option.value) ) {
+				option.selected = true;
+			}
+		}.bind(this, selection));
 	}
 
 };
