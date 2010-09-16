@@ -20,7 +20,7 @@
 /**
  * Headlet: Ajax Loader
  * Icon which indicated AJAX loading activity in head area
- * 
+ *
  * @package		Todoyu
  * @subpackage	Core
  */
@@ -35,12 +35,14 @@ Todoyu.Headlet.AjaxLoader = {
 	 * Show AJAX loading icon
 	 */
 	show: function() {
-		Effect.Appear(this.buttonID, {
-			'duration': 0.2,
-			'from': 0.3,
-			'to': 1.0,
-			'transition': Effect.Transitions.spring
-		});		
+		if( Todoyu.exists(this.buttonID) ) {
+			Effect.Appear(this.buttonID, {
+				'duration': 0.2,
+				'from': 0.3,
+				'to': 1.0,
+				'transition': Effect.Transitions.spring
+			});
+		}
 	},
 
 
@@ -49,9 +51,11 @@ Todoyu.Headlet.AjaxLoader = {
 	 * Hide AJAX loading icon
 	 */
 	hide: function() {
-		Effect.Fade.delay(0.2, this.buttonID, {
-			'duration': 0.3
-		});
+		if( Todoyu.exists(this.buttonID) ) {
+			Effect.Fade.delay(0.2, this.buttonID, {
+				'duration': 0.3
+			});
+		}
 	}
 
 };
