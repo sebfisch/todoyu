@@ -578,6 +578,19 @@ class TodoyuArray {
 
 
 	/**
+	 * Merge two array. Works also if one of the parameters is not an array (it's ignored)
+	 *
+	 * @param	Mixed	$arrayA
+	 * @param	Mixed	$arrayB
+	 * @return	Array
+	 */
+	public static function merge($arrayA, $arrayB) {
+		return array_merge(self::assure($arrayA), self::assure($arrayB));
+	}
+
+
+
+	/**
 	 * Flatten array: flattens multi-dim arrays (destroys keys)
 	 *
 	 * @param	Array	$array
