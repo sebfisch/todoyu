@@ -159,7 +159,7 @@ Todoyu.Form = {
 
 	/**
 	 * Focus first form field
-	 * 
+	 *
 	 * @param	{String}	formID
 	 */
 	focusFirstFormField: function(formID) {
@@ -178,7 +178,7 @@ Todoyu.Form = {
 
 	/**
 	 * Expand / collapse foreign record fields
-	 * 
+	 *
 	 * @param	{Array}	fieldNames
 	 */
 	toggleForeignRecords: function(fieldNames) {
@@ -249,7 +249,7 @@ Todoyu.Form = {
 
 	/**
 	 * Show formHTML of invalid form elements in foreign records
-	 * 
+	 *
 	 * @param	{String}		formID
 	 */
 	expandInvalidForeignRecords: function(formID) {
@@ -347,7 +347,7 @@ Todoyu.Form = {
 
 	/**
 	 * Open an iframe URL
-	 * 
+	 *
 	 * @param	{String}	key
 	 * @param	{String}	url
 	 */
@@ -386,6 +386,19 @@ Todoyu.Form = {
 		}
 
 		$(baseID + '-listItem-' + value).toggleClassName('selected');
+	},
+
+
+
+	/**
+	 * Disable save and cancel buttons in form
+	 *
+	 * @param	{Element}	form
+	 */
+	disableSaveButtons: function(form) {
+		$(form).down('fieldset.buttons').select('button').each(function(button){
+			Form.Element.disable(button);
+		});
 	}
 
 };

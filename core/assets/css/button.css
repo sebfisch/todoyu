@@ -27,6 +27,10 @@ button {
 	border-radius:13px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
 }
 
+button[disabled] {
+	opacity:0.6;
+}
+
 button span {
 	display:block;
 	float:left;
