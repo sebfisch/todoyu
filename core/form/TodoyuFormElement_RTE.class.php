@@ -53,8 +53,7 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 			'elements'			=> $this->getHtmlID(),
 			'theme'				=> 'simple',
 			'content_css'		=> 'core/assets/css/tinymce.css',
-			'valid_elements'	=> 'strong,em,p,br,u,stroke,ol,ul,li,a'
-//			'invalid_elements'	=> 'table,tr,td,th'
+			'valid_elements'	=> 'strong,em,p,br,u,strike,ol,ul,li,a,pre'
 		);
 
 			// Load config
@@ -97,20 +96,6 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 		}
 
 		return $config;
-	}
-
-
-
-	/**
-	 * Get data to store in the database for this field
-	 *
-	 * @return	String
-	 */
-	public function getStorageData() {
-//		$value	= str_replace("\n", '', $this->getValue());
-//		$this->setValue($value);
-
-		return parent::getStorageData();
 	}
 
 

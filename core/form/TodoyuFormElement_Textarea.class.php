@@ -39,28 +39,6 @@ class TodoyuFormElement_Textarea extends TodoyuFormElement {
 		parent::__construct('textarea', $name, $fieldset, $config);
 	}
 
-
-
-	/**
-	 * Initialize text area form element
-	 */
-	protected function init() {
-		$this->setValue($this->getValue());
-	}
-
-
-
-	/**
-	 * Set text area form element value
-	 *
-	 * @param	String	$value
-	 */
-	public function setValue($value) {
-//		$value	= str_replace('\n', "\n", $value);
-
-		parent::setValue($value);;
-	}
-
 }
 
 ?>
