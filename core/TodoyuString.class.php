@@ -529,6 +529,44 @@ class TodoyuString {
 		return $htmlContent;
 	}
 
+
+
+	/**
+	 * Clean RTE text
+	 *  - Remove empty paragraphs from the beginning
+	 *  - Remove <pre> tags and add <br> tags for the newlines
+	 *
+	 * @param	String		$text
+	 * @return	String
+	 */
+	public static function cleanRTEText($text) {
+		if( substr($text, 0, 13) === '<p>&nbsp;</p>' ) {
+			$text	= substr($text, 13);
+		}
+
+		if( strpos($text, '<pre>') !== false ) {
+			$prePattern	= '/<pre>(.*?)<\/pre>/s';
+			$text		= preg_replace_callback($prePattern, array(self,'callbackPreText'), $text);
+		}
+
+		return trim($text);
+	}
+
+
+
+	/**
+	 * Callback for cleanRTEText
+	 * Add <br> tags inside the <pre> tags
+	 *
+	 * @param	Array		$matches
+	 * @return	String
+	 */
+	private static function callbackPreText(array $matches) {
+		return nl2br(trim($matches[1]));
+	}
+
+
+
 }
 
 ?>

@@ -114,6 +114,20 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 	}
 
 
+	
+	/**
+	 * Set RTE text. Removed <pre> tags (copy from email programs) and adds <br> tags for the newlines in <pre>
+	 *
+	 * @param	String		$value
+	 * @param	Boolean		$updateForm
+	 */
+	public function setValue($value, $updateForm = true) {
+		$value	= TodoyuString::cleanRTEText($value);
+
+		parent::setValue($value, $updateForm);
+	}
+
+
 
 	/**
 	 * Check if field is valid for required flag
