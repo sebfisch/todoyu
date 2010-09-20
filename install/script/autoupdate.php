@@ -22,6 +22,32 @@
  * Update script for command line
  */
 
+	// Make sure only CLI access is allowed
+if( isset($_SERVER['REMOTE_ADDR']) ) {
+	die('Must be called from the command line.');
+}
+
+
+chdir( dirname(dirname(dirname(__FILE__))) );
+
+	// Load global config
 require_once('core/inc/global.php');
+
+	// Deactivate extensions during update
+Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] 	= true;
+Todoyu::$CONFIG['NO_INIT'] 				= true;
+
+	// Load default init script
+require_once('core/inc/init.php');
+
+
+	// Clear all cache
+TodoyuInstallerManager::clearCache();
+	// Run special version updates (php+sql) which are not handled by tables.sql autoupdates
+TodoyuInstallerManager::runVersionUpdates();
+	// Update database based on the tables.sql files of the installed extensions
+TodoyuSQLManager::updateDatabaseFromTableFiles();
+	// Remove index.html file if restored by svn update
+TodoyuInstallerManager::removeIndexRedirector();
 
 ?>

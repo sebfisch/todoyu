@@ -869,7 +869,7 @@ class TodoyuInstallerManager {
 	 *
 	 */
 	public static function runVersionUpdates() {
-		TodoyuDebug::printInFireBug('runVersionUpdates');
+//		TodoyuDebug::printInFireBug('runVersionUpdates');
 		$lastVersion	= self::getLastVersion();
 
 		self::runVersionUpdatesSQL($lastVersion);
@@ -886,7 +886,7 @@ class TodoyuInstallerManager {
 	 * @param	String		$lastVersion
 	 */
 	public static function runVersionUpdatesSQL($lastVersion) {
-		TodoyuDebug::printInFireBug('runVersionUpdatesSQL');
+//		TodoyuDebug::printInFireBug('runVersionUpdatesSQL');
 		$baseFolder	= 'install/update/db';
 		$updateFiles= self::getUpdateFiles($baseFolder, 'sql', $lastVersion);
 
