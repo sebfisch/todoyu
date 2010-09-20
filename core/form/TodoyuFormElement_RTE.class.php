@@ -53,7 +53,7 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 			'elements'			=> $this->getHtmlID(),
 			'theme'				=> 'simple',
 			'content_css'		=> 'core/assets/css/tinymce.css',
-			'valid_elements'	=> 'strong,em,p,br,u,strike,ol,ul,li,a,pre'
+			'valid_elements'	=> 'strong,em,p,br,u,strike,ol,ul,li,a[href],pre'
 		);
 
 			// Load config
@@ -114,7 +114,7 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 	}
 
 
-	
+
 	/**
 	 * Set RTE text. Removed <pre> tags (copy from email programs) and adds <br> tags for the newlines in <pre>
 	 *
