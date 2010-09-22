@@ -20,7 +20,7 @@
 
 /**
  * Country
- * 
+ *
  * @package		Todoyu
  * @subpackage	Core
  */
@@ -32,7 +32,7 @@ class TodoyuCountry extends TodoyuBaseObject {
 	 * @param	Integer		$idCountry
 	 */
 	public function __construct($idCountry) {
-		parent::__construct($idCountry, 'static_country');		
+		parent::__construct($idCountry, 'static_country');
 	}
 
 
@@ -105,6 +105,35 @@ class TodoyuCountry extends TodoyuBaseObject {
 	 */
 	public function getLabel() {
 		return TodoyuLanguage::getLabel('static_country.' . $this->getCode3());
+	}
+
+
+
+	/**
+	 * Load foreign data
+	 *
+	 */
+	protected function loadForeignData() {
+		$this->data['currency'] = $this->getCurrency()->getTemplateData();
+	}
+
+
+
+	/**
+	 * Get country template data
+	 * Foreign data: currency
+	 *
+	 * @param	Boolean		$loadForeignData
+	 * @return	Array
+	 */
+	public function getTemplateData($loadForeignData = false) {
+		if( $loadForeignData ) {
+			$this->loadForeignData();
+		}
+
+		$this->data['label'] = $this->getLabel();
+
+		return parent::getTemplateData();
 	}
 
 }
