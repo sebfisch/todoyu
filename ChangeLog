@@ -1,5 +1,70 @@
 todoyu Changelog
 
+todoyu 2.0.4 - released 2010-09-22
+	* Feature: TodoyuBaseObject now implements Dwoo_IDataProvider interface and is valid as data object for templates
+	* Feature: Quickinfo hiding is delayed now. Allows selecting and clicking of its content
+	* Feature: Added more indexes to tracking table. Makes queries to this table up to 200 times faster
+	* Feature: Added failing detection for asset upload. Check if server refused upload and sent an error page
+	* Feature: Auto preselect persons in comment if they requested a feedback in the last comment
+	* Bugfix: ODT parsing more robustly
+	* Bugfix: Fixed problem with japanese date format labels
+	* Bugfix: Localized calendar header rendering
+	* Bugfix: Fixed and simplified data function for day timestamps in month
+	* Bugfix: Task in todo tab ordered by date_start now
+	* Bugfix: Only tasks (no containers) in the todo tab in portal)
+	* Bugfix: Tracking only counts trackings from the past (ignore future trackings)
+	* Bugfix: Timetracking callback sends now more info (idTask, trackedTotal, trackedToday, trackedCurrent)
+	* Bugfix: Show only feedback requests of undeleted comments. Tab count show now open feedbacks, not tasks
+	* Bugfix: Adding a comment over contextmenu works now properly
+	* Bugfix: Daytracks now shows single and total tracking times correctly
+	* Bugfix: Dynamic dates are handled correctly for negated filter widgets
+	* Bugfix: Added own RTE save functions which prevent js errors on invalid instances
+	* Bugfix: Change for active and deleted flag on login, even if username/password matches
+	* Bugfix: Only strip slashes when magic_quotes is enables
+	* Bugfix: Prevent ajax loader icon animations if not available (caused js error on login)
+	* Bugfix: extractHeadersFromString() works now correctly
+	* Bugfix: Added cleanRTEText() to handle preformatted text from email bodies
+	* Bugfix: Prevent 60 minutes in timePart array after rounding up
+	* Bugfix: Only load timezone from database if connected
+	* Bugfix: SelectGrouped preselects values now correctly
+	* Bugfix: Set action if not logged in and redirected to login page. Prevents unknown action error
+	* Changed: Correct japanese system locale keys
+	* Changed: Daytracks history is much faster with buffered data
+	* Changed: Javascript and HTML cleanup in calendar
+	* Changed: TodoyuTimetrackingTask is now an active object, manager moved to TodoyuTimetrackingTaskManager
+	* Change: Only change task status to progress if current status is open (do nothing on other statuses)
+	* Changed: Filter query parts now have a join parts to make sure the filter conditions are handles correctly and more performant
+	* Change: Allow <pre> and <a> tags in RTE
+	* Changed: Remove task status field if no selectable status is available
+	* Changed: Limit filter results to available projects
+	* Change: Log error is todoyu can't set system locale
+	* Changed: Page can render fullContent instead of content and tabs
+	* Changed: Renamed TodoyuHeader::sendHeaderXXX() to TodoyuHeader::sendTypeXXX() to send content type of response
+	* Change: restrictInternal dwoo plugin allows access for admin anyway
+	* Changed: Defined a list of valid elements for RTE instead only invalid elements
+	* Changed: Added hook which sends info if an ajax request was send in not-logged-in status
+	* Changed: Removed beta update code
+	* Added: New project and task date filters
+	* Added: New calendar functions for better timezone support
+	* Added: A lot of new javascript hooks for important events
+	* Added: TodoyuTimetrackingTask extends TodoyuTask with timetracking field functions
+	* Added: Rights check if a tracking is editable (check rights, owner and locking)
+	* Added: Default sorting for filter types
+	* Added: Filter_filterObject() to combine multiple filtersets
+	* Added: Rights parts of the filter query is handled separate to ensure and AND conclusion
+	* Added: Task Status rights for status:create and status:changefrom
+	* Added: Autolink function for comment and task texts. Detects link like strings and adds <a> tags
+	* Added: disableSaveButtons() function to prevent multiple submits of a form
+	* Added: selectOptions(). Selects multiple options in a select input
+	* Added: Extracted OverlayWindow code from about headlet. Available for others
+	* Added: truncate() and drop() functions to database layer
+	* Added: addEmail() for quickinfo
+	* Added: Link to person in quickinfos
+	* Added: TodoyuArray::merge() works also if one parameters is not an array
+	* Added: TodoyuArray::trimImplode()
+	* Added: Installer checks first if PHP 5.2 is installed and stops scripts if not
+
+
 todoyu 2.0.3 - released 2010-08-11
 	* Bugfix: getTasksInTimespan() finds now all tasks
 	* Bugfix: Handle filenames with quotes correctly on download
@@ -55,24 +120,24 @@ todoyu 2.0.2 - released 2010-07-15
 	* Bugfix: Context menu of events in portal misses arrow at "show in calendar" sub menu
 	* Bugfix: PanelWidgetManager error due to rename of ProjectStatusFilter/StatusFilterProject
 	* Bugfix: RTE display contains pointed frame
-	* Bugfix: Configured task work default preset is ignored 
+	* Bugfix: Configured task work default preset is ignored
 	* Bugfix: Missing icon at "show in project" item of task context menu
 	* Bugfix: Several styling fixes (task header, task icons, etc.)
 	* Bugfix: TinyMCE leaves unclosed ghost instances in UI updates
-	* Bugfix: TinyMCE save fix for project 
+	* Bugfix: TinyMCE save fix for project
 	* Bugfix: Type conversion bug in time rounding
 	* Bugfix: Floating point formatting problem with german locales (1.2 => 1,2)
 	* Bugfix: Document generation for UNIX system
 	* Bugfix: Calendar controller loses values
 	* Changed: TinyMCE update to version 3.3.8
-	* Changed: Simplified form field type names, improved inheritance, added unsetting of options by value 
+	* Changed: Simplified form field type names, improved inheritance, added unsetting of options by value
 	* Changed: Fulltext filter for project only applies on not-empty string
 	* Changed: Database uses SHA1 instead of MD5 for hashing (32=>40)
-	* Changed: DB column rename 'static_currency.iso_country' => 'static_currency.iso_num' 
+	* Changed: DB column rename 'static_currency.iso_country' => 'static_currency.iso_num'
 	* Added: Htaccess options for different server config, blocked access to files folder
-	* Added: Create database with UTF8 force now 
+	* Added: Create database with UTF8 force now
 	* Added: Added records locking manager (TodoyuLockManager) to todoyu core, project extension and timetracking (no tracking on locked tasks)
-	* Added: TodoyuFreezemanager - table 'system_freeze', storing objects data 
+	* Added: TodoyuFreezemanager - table 'system_freeze', storing objects data
 	* Added: Project freezing and locking (is_locked flag in project table)
 	* Added: Log error for unknown form element type
 	* Added: New public extension - Currency
