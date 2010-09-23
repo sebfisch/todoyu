@@ -154,12 +154,12 @@ class TodoyuAuth {
 	/**
 	 * Check if an action is allowed
 	 *
-	 * @param	Integer		$extID
+	 * @param	Integer		$extKey
 	 * @param	Integer		$right
 	 * @return	Boolean
 	 */
-	public static function isAllowed($extID, $right) {
-		return TodoyuRightsManager::isAllowed($extID, $right);
+	public static function isAllowed($extKey, $right) {
+		return TodoyuRightsManager::isAllowed($extKey, $right);
 	}
 
 
