@@ -298,7 +298,14 @@ class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 
 
 
-
+	/**
+	 * Checks if the record is deleted
+	 *
+	 * @return	Boolean
+	 */
+	public function isDeleted()	{
+		return intval($this->get('deleted')) === 1;
+	}
 
 
 
