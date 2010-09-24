@@ -207,4 +207,7 @@
 	<labels lang="ja_JP">
 		<label index="ja">日本語</label>
 	</labels>
+		<labels lang="sr_RS">
+		<label index="sr">Српски</label>
+	</labels>
 </locallang>

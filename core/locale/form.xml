@@ -127,7 +127,7 @@
 		<label index="field.cancel">Прекини</label>
 		<label index="records.add">Додај унос</label>
 		<label index="records.remove">Избриши унос</label>
-		<label index="records.edit">Преправи унос</label>
+		<label index="records.edit">Уреди унос</label>
 		<label index="databaserelation.nolabel">[Нови унос]</label>
 		<label index="databaserelation.expandAllRecords">Покази детаље</label>
 		<label index="error.notUnique">Овај унос већ постоји</label>
