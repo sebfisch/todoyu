@@ -97,6 +97,7 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 	 * Move sections markers where necessary
 	 */
 	private function prepareXML() {
+		$this->removeSoftPageBreaks();
 		$this->prepareDwooTagSpans();
 		$this->prepareListXML();
 		$this->prepareRowXML();
@@ -109,6 +110,16 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 //		exit();
 	}
 
+
+
+	/**
+	 * Remove soft-page-break tags from xml
+	 * They destroy all dwoo code
+	 *
+	 */
+	private function removeSoftPageBreaks() {
+		$this->xmlContent = str_replace('<text:soft-page-break/>', '', $this->xmlContent);
+	}
 
 
 	/**
@@ -141,7 +152,7 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		$this->xmlContent	= preg_replace($patternRowTagB, '\1', $this->xmlContent);
 
 			// Pattern to find all table rows
-		$patternRow		= '|<table:table-row[^>]*?>.*?</table:table-row>|sm';
+		$patternRow		= '|<table:table-row[^>]*?>.*?</table:table-row>|s';
 			// Pattern to find sub parts in a table row if  it contains the row syntax '[--ROW:'
 		$patternRowParts= '|(<table:table-row[^>]*?>)(.*?)\[--ROW:({.*?})(.*?)({/.*?})--ROW\](.*?)(</table:table-row>)|sm';
 		$replaces		= array();
