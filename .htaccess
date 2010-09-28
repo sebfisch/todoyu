@@ -52,7 +52,7 @@ RedirectMatch 403 /view/*
 
 
 # Force php5 (instead 4)
-AddType application/x-httpd-php5 .php
+#AddType application/x-httpd-php5 .php
 
 
 ## Problems running todoyu. Comment AddType (with a #) and try one of this alternatives:
