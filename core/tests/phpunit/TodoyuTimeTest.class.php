@@ -232,17 +232,17 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$dateString1	= '2010-03-22';
 		$dateTime1		= TodoyuTime::parseDate($dateString1);
 
-		$oldLocale		= TodoyuLanguage::getLocale();
+		$oldLocale		= TodoyuLabelManager::getLocale();
 
-		TodoyuLanguage::setLocale('en_GB');
+		TodoyuLabelManager::setLocale('en_GB');
 		$dateString2	= '3/22/2010';
 		$dateTime2		= TodoyuTime::parseDate($dateString2);
 
-		TodoyuLanguage::setLocale('de_DE');
+		TodoyuLabelManager::setLocale('de_DE');
 		$dateString3	= '22.3.2010';
 		$dateTime3		= TodoyuTime::parseDate($dateString3);
 
-		TodoyuLanguage::setLocale('pt_BR');
+		TodoyuLabelManager::setLocale('pt_BR');
 		$dateString4	= '22.3.2010';
 		$dateTime4		= TodoyuTime::parseDate($dateString4);
 
@@ -252,13 +252,13 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($dateCompare, $dateTime3);
 		$this->assertEquals($dateCompare, $dateTime4);
 
-		TodoyuLanguage::setLocale($oldLocale);
+		TodoyuLabelManager::setLocale($oldLocale);
 	}
 
 	public function testParseDateTime() {
 		$dateCompare	= strtotime('2010-03-22 14:36');
 
-		$oldLocale		= TodoyuLanguage::getLocale();
+		$oldLocale		= TodoyuLabelManager::getLocale();
 
 		Todoyu::setLocale('de_DE');
 		$dateStringDE	= '22.03.2010 14:36';
@@ -266,7 +266,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($dateCompare, $timeDE);
 
-		TodoyuLanguage::setLocale($oldLocale);
+		TodoyuLabelManager::setLocale($oldLocale);
 	}
 
 	public function testParseTime() {

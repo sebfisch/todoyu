@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Shortcut for TodoyuLanguage::getLabel()
+ * Shortcut for TodoyuLabelManager::getLabel()
  * Get the label in the current language
  *
  * @package		Todoyu
@@ -29,7 +29,7 @@
  * @return	String
  */
 function Label($labelKey, $locale = null) {
-	return TodoyuLanguage::getLabel($labelKey, $locale);
+	return TodoyuLabelManager::getLabel($labelKey, $locale);
 }
 
 
@@ -46,7 +46,7 @@ function findLabel($label, $plain = false, $language = null) {
 	if( $plain ) {
 		return TodoyuString::getLabel($label, $language);
 	} else {
-		return TodoyuLanguage::getLabel($label, $language);
+		return TodoyuLabelManager::getLabel($label, $language);
 	}
 }
 

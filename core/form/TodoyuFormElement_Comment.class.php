@@ -53,7 +53,7 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 
 	/**
 	 * Get value (text) of comment
-	 * 
+	 *
 	 * @return String
 	 */
 	public function getValueForTemplate() {
@@ -62,7 +62,7 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 		if( $type === 'function' ) {
 			$value	= TodoyuFunction::callUserFunction($this->config['comment']['function'], $this);
 		} else {
-			$value	= TodoyuLanguage::getLabel($this->config['comment']);
+			$value	= TodoyuLabelManager::getLabel($this->config['comment']);
 		}
 
 		return $value;

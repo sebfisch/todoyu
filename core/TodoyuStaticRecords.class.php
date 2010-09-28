@@ -20,7 +20,7 @@
 
 /**
  * Static records handling
- * 
+ *
  * @package		Todoyu
  * @subpackage	Core
  */
@@ -135,7 +135,7 @@ class TodoyuStaticRecords {
 	public static function getLabel($type, $key) {
 		$labelKey	= 'static_' . $type . '.' . $key;
 
-		return TodoyuLanguage::getLabel($labelKey);
+		return TodoyuLabelManager::getLabel($labelKey);
 	}
 
 

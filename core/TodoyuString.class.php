@@ -344,7 +344,7 @@ class TodoyuString {
 			return '';
 		} elseif( strncmp('LLL:', $label, 4) === 0 ) {
 			$labelKey = substr($label, 4);
-			return TodoyuLanguage::getLabel($labelKey, $locale);
+			return TodoyuLabelManager::getLabel($labelKey, $locale);
 		} else {
 			return $label;
 		}

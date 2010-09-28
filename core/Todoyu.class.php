@@ -286,7 +286,7 @@ class Todoyu {
 
 
 	/**
-	 * Set system locale with setlocale() based on the currently selected language
+	 * Set system locale with setlocale() based on the currently selected locale
 	 *
 	 * @param	String		$locale			Force locale. If not set try to find the correct locale
 	 */
@@ -299,7 +299,7 @@ class Todoyu {
 		self::$locale = $locale;
 
 			// Set locale for locallang files
-		TodoyuLanguage::setLocale($locale);
+		TodoyuLabelManager::setLocale($locale);
 
 			// Set locale for system
 		$status	= TodoyuLocaleManager::setSystemLocale($locale);

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="download">Скачать</label>
+	<label index="upload">Закачать</label>
+	<label index="size.gb">Гб</label>
+	<label index="size.mb">Мб</label>
+	<label index="size.kb">Кб</label>
+	<label index="size.b">Б</label>
+	<label index="filename">Имя файла</label>
+	<label index="filesize">Размер файла</label>
+</labels>

@@ -553,7 +553,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			if( empty($this->errorMessage) ) {
 
 				if( isset($validatorConfig['@attributes']['msg']) ) {
-					$this->setErrorMessage( TodoyuLanguage::getLabel($validatorConfig['@attributes']['msg']) );
+					$this->setErrorMessage( TodoyuLabelManager::getLabel($validatorConfig['@attributes']['msg']) );
 				} else {
 					$this->setErrorMessage('LLL:form.field.hasError');
 				}

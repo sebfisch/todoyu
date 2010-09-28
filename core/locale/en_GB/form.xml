@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="select.pleaseSelect">Please Select</label>
+	<label index="field.isrequired">This is a required field</label>
+	<label index="field.hasError">The value entered is not valid</label>
+	<label index="field.save">Save</label>
+	<label index="field.cancel">Cancel</label>
+	<label index="records.add">Add Record</label>
+	<label index="records.remove">Remove Record</label>
+	<label index="records.edit">Edit Record</label>
+	<label index="databaserelation.nolabel">[New Entry]</label>
+	<label index="databaserelation.expandAllRecords">Show Details</label>
+	<label index="error.notUnique">This entry already exists</label>
+	<label index="ac.noResults">Autocomplete: no results found</label>
+	<label index="is_preferred">Preferred</label>
+	<label index="dateselector.open">Open date selector to pick a date</label>
+	<label index="autocompleteInfo">This is an autocomplete field. Start typing to get suggestions</label>
+</labels>

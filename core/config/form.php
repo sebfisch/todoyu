@@ -25,9 +25,6 @@
  * @subpackage	Core
  */
 
-	// Register form locale
-TodoyuLanguage::register('form', PATH_CORE . '/locale/form.xml');
-
 
 
 	/**

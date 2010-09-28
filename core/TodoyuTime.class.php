@@ -343,7 +343,7 @@ class TodoyuTime {
 	public static function getFormat($formatName) {
 		$localeKey	= 'dateformat.' . $formatName;
 
-		return TodoyuLanguage::getLabel($localeKey);
+		return TodoyuLabelManager::getLabel($localeKey);
 	}
 
 

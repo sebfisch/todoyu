@@ -183,13 +183,11 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 
 		$this->xmlContent = preg_replace($pattern, $replace, $this->xmlContent);
 
-			// Condition in single line
+			// Condition in single lines
 		$pattern	= '#(<text:p[^>]*?>)({[/]?(?:if|else)[^}]*?})(</text:p>)#sm';
 		$replace	= '$2';
 
 		$this->xmlContent = preg_replace($pattern, $replace, $this->xmlContent);
-
-
 	}
 
 

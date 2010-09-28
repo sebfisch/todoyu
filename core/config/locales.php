@@ -29,11 +29,30 @@
  * Windows: locales are listed in the Regional Options section of the Control Panel. For using complex script and right-to-left languages or East Asian languages (e.g. japanese) install them in the "Languages" section of "Regional and Language Options" of the Control Panel.
  */
 
+	// Default locale for fallback
+Todoyu::$CONFIG['LOCALE']['default']	= 'en_GB';
+
+	// Available locales on the system
+Todoyu::$CONFIG['LOCALE']['available']	= array(
+	'en_GB',
+	'de_DE',
+	'de_CH',
+	'pt_BR',
+	'ru_RU',
+	'fr_FR',
+	'nl_NL',
+	'cs_CZ',
+	'sr_RS',
+	'ja_JP'
+	/*,'hr_HR','sr_ME'*/
+);
+
+	// System locales for server system
 Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'en_GB' => array('en_GB.utf8', 'en_GB', 'en', 'English_GB'), // English (United Kingdom)
 	//'en_US'	=> array('en_US.utf8', 'en_US', 'en', 'English_US', 'English_United States.1252'),
 	'de_DE'	=> array('de_DE.utf8', 'de_DE', 'de', 'de_DE@euro', 'de_DE.utf8@euro', 'German_Germany.1252', 'deu_deu'), // German (Germany)
-	//'de_CH'	=> array('de_CH.utf8', 'de_CH', 'de', 'German_Switzerland.1252'),
+	'de_CH'	=> array('de_CH.utf8', 'de_CH', 'de', 'German_Switzerland.1252'),
 	//'de_AT'	=> array('de_AT.utf8', 'de_AT', 'de', 'de_AT@euro', 'de_AT.utf8@euro', 'German_Austria.1252'),
 	'fr_FR'	=> array('fr_FR.utf8', 'fr_FR', 'fr'), // French
 	'pt_BR' => array('pt_BR.utf8', 'pt_BR', 'pt'), // Portuguese (Brasilia)
@@ -45,6 +64,13 @@ Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'sr_RS' => array('sr_RS.utf8', 'sr_RS', 'sr'), // Serbian (Serbia)
 	'ja_JP' => array('ja_JP', 'ja', 'ja_JP.eucjp', 'ja_JP.ujis', 'japanese', 'japanese.euc') // Japanese
 );
-Todoyu::$CONFIG['LOCALE']['default']	= 'en_GB';
-Todoyu::$CONFIG['LOCALE']['available']	= array('en_GB','de_DE','pt_BR','ru_RU','fr_FR','nl_NL','cs_CZ','sr_RS','ja_JP'/*,'hr_HR','sr_ME'*/);
+
+	// Fallback locales for labels
+Todoyu::$CONFIG['LOCALE']['fallback'] = array(
+	'de_CH'	=> 'de_DE',
+	'de_AT'	=> 'de_DE'
+);
+
+Todoyu::$CONFIG['LOCALE']['labelCacheDir'] = PATH_CACHE . DIR_SEP . 'labels';
+
 ?>

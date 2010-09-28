@@ -49,7 +49,7 @@ require_once( PATH_CORE . '/TodoyuAuth.class.php' );
 require_once( PATH_CORE . '/TodoyuBaseObject.class.php' );
 require_once( PATH_CORE . '/TodoyuExtensions.class.php' );
 require_once( PATH_CORE . '/TodoyuSession.class.php' );
-require_once( PATH_CORE . '/TodoyuLanguage.class.php' );
+require_once( PATH_CORE . '/TodoyuLabelManager.class.php' );
 require_once( PATH_CORE . '/TodoyuCache.class.php' );
 require_once( PATH_CORE . '/TodoyuLogger.class.php' );
 require_once( PATH_CORE . '/TodoyuRequest.class.php' );
@@ -58,13 +58,11 @@ require_once( PATH_CORE . '/TodoyuActionDispatcher.class.php' );
 require_once( PATH_CORE . '/TodoyuArray.class.php' );
 require_once( PATH_CORE . '/TodoyuPreferenceManager.class.php' );
 require_once( PATH_CORE . '/TodoyuFileManager.class.php' );
-
 require_once( PATH_CORE . '/TodoyuRightsManager.class.php' );
-
 require_once( PATH_CORE . '/TodoyuHookManager.class.php' );
 require_once( PATH_CORE . '/TodoyuHeader.class.php' );
 require_once( PATH_CORE . '/TodoyuPanelWidgetManager.class.php' );
-require_once( PATH_CORE . '/TodoyuContextMenuManager.class.php' );
+//require_once( PATH_CORE . '/TodoyuContextMenuManager.class.php' );
 require_once( PATH_CORE . '/TodoyuErrorHandler.class.php' );
 
 	// Include basic person classes
@@ -77,6 +75,7 @@ require_once( PATH_CORE . '/TodoyuDebug.class.php' );
 require_once( PATH_LIB . '/php/FirePHP/FirePHP.class.php' );
 
 	// Load CSS and JS minimizer
+	// @todo only load when really minimizing stuff
 require_once( PATH_LIB . '/php/cssmin.php' );
 require_once( PATH_LIB . '/php/jsmin.php' );
 
@@ -106,7 +105,6 @@ if( ! function_exists('strptime') ) {
 	// Load basic core config
 require_once( PATH_CONFIG . '/config.php');
 require_once( PATH_CONFIG . '/locales.php');
-require_once( PATH_CONFIG . '/language.php');
 require_once( PATH_CONFIG . '/fe.php');
 require_once( PATH_CONFIG . '/assets.php');
 require_once( PATH_CONFIG . '/cache.php');
