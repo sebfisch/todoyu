@@ -29,6 +29,6 @@
 error_reporting(E_ALL ^ E_NOTICE);
 
 	// Register installer locales
-TodoyuLanguage::register('installer', PATH . '/install/locale/installer.xml');
+TodoyuLabelManager::registerFile('installer', 'installer.xml', PATH . '/install/locale');
 
 ?>
