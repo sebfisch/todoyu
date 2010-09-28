@@ -196,7 +196,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 		$this->config['htmlId']			= $this->getForm()->makeID($this->name);
 		$this->config['htmlName']		= $this->getForm()->makeName($this->name, $this->config['multiple']);
-		$this->config['label']			= TodoyuString::getLabel($this->config['label']);
+		$this->config['label']			= $this->config['label'] ? TodoyuString::getLabel($this->config['label']) : '&nbsp;';
 		$this->config['containerClass']	= 'type' . ucfirst($this->type) . ' fieldname' . ucfirst(str_replace('_', '', $this->name));
 		$this->config['inputClass']		= $this->type;
 		$this->config['required']		= $this->hasAttribute('required');
