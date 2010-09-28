@@ -62,7 +62,11 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 		if( $type === 'function' ) {
 			$value	= TodoyuFunction::callUserFunction($this->config['comment']['function'], $this);
 		} else {
-			$value	= TodoyuLabelManager::getLabel($this->config['comment']);
+			$comment= trim($this->config['comment']);
+
+			if( $comment !== '' ) {
+				$value	= TodoyuLabelManager::getLabel($comment);
+			}			
 		}
 
 		return $value;

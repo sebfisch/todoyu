@@ -125,6 +125,11 @@ class TodoyuLabelManager {
 	private static function getLabelInternal($fullLabelKey, $locale = null) {
 		$locale	= is_null($locale) ? self::$locale : $locale ;
 
+		if( ! is_string($fullLabelKey) || $fullLabelKey === '' ) {
+			Todoyu::log('Tried to read a label, but no key was provided', TodoyuLogger::LEVEL_ERROR);
+			return '';
+		}
+
 			// Split path parts into fileKey and label index
 		$fullLabelKey	= substr($fullLabelKey, 0, 4) == 'LLL:' ? substr($fullLabelKey, 4) : $fullLabelKey;
 		$keyParts		= explode('.', $fullLabelKey, 2);
