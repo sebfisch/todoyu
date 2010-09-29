@@ -14,15 +14,22 @@
 
 #notifications div.note {
 	width:100%;
-	padding:6px;
-	border-bottom:1px solid #8c9080;
+	padding:15px;
+	font-weight: bold;
 	background-color:#fff;
-	opacity:0.94;
-	filter: alpha(opacity = 94);
+	/* cross browser opacity */
+	-khtml-opacity:.95;
+	-moz-opacity:.95;
+	opacity:.95;
+	filter: alpha(opacity = 95);
+	/* cross browser shadow */
+	-webkit-box-shadow:2px 2px 7px #999;
+	-moz-box-shadow:2px 2px 7px #999;
+	box-shadow:2px 2px 7px #999;
 }
 
 #notifications div.note td.icon {
-	width:25px;
+	width:10px;
 }
 
 #notifications div.note td.message {
@@ -56,7 +63,6 @@
 	Success
    ------------------- */
 #notifications div.success {
-	background-color:#eff6bf;
 }
 
 #notifications div.success td.icon {
@@ -68,9 +74,6 @@
 /* -------------------
 	Error
    ------------------- */
-#notifications div.error {
-	background-color:#f6e0e0;
-}
 
 #notifications div.error td.icon {
 	background:url(../img/notify.png) 0 -96px no-repeat;
@@ -82,7 +85,6 @@
 	Info
    ------------------- */
 #notifications div.info {
-	background-color:#efefef;
 }
 
 #notifications div.info td.icon {
