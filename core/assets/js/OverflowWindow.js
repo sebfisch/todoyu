@@ -62,11 +62,14 @@ Todoyu.OverflowWindow = Class.create({
 		this.divElement = new Element('div', {
 			id: 'overflow-window-' + idWindow
 		}).setStyle({
-			'display': 'none',
-			'z-index': '1000'
+			display: 'none',
+			'z-index': '1000',
+			width: this.config.width + 'px'
 		}).addClassName('overflowWindow');
 
 		document.body.appendChild(this.div());
+
+		Todoyu.Ui.centerElement(this.div());
 	},
 
 
@@ -141,12 +144,27 @@ Todoyu.OverflowWindow = Class.create({
 	/**
 	 * Callback when windows has been updated
 	 *
-	 * @param	{Ajax.Reponse}		response
+	 * @param	{Ajax.Response}		response
 	 */
 	_onUpdated: function(response) {
 		this.show();
 		this._addCloseButton();
+		this._adjustHeight.bind(this).defer();
 		this.config.onUpdate(response);
+	},
+
+
+
+	/**
+	 * Adjust height of window if bigger than the screen height
+	 */
+	_adjustHeight: function() {
+		if( (this.div().getHeight() + 20) > document.viewport.getHeight() ) {
+			this.div().setStyle({
+				height: (document.viewport.getHeight() - 40) + 'px'	,
+				top: '10px'
+			});
+		}
 	},
 
 
