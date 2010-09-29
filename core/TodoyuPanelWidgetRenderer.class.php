@@ -43,7 +43,7 @@ class TodoyuPanelWidgetRenderer {
 		$content	.= self::renderDefaultPanelWidgets($extKey, $params);
 
 		// Render user defined widgets from database
-		$content	.= self::renderUserPanelWidgets($extKey, $params);
+//		$content	.= self::renderUserPanelWidgets($extKey, $params);
 
 		return $content;
 	}
