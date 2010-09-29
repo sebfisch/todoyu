@@ -944,9 +944,13 @@ class TodoyuInstallerManager {
 				// The filename is the version number
 			$fileVersion= $info['filename'];
 
+
 				// Get all version which are higher than the db version
 			if( version_compare($fileVersion, $lastVersion) === 1 ) {
-				$updateFiles[] = $filename;
+					// But the update file should not be newer than the current version
+				if( version_compare($fileVersion, TODOYU_VERSION) !== 1 ) {
+					$updateFiles[] = $filename;
+				}
 			}
 		}
 
