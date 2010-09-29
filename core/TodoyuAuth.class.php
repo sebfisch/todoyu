@@ -113,10 +113,10 @@ class TodoyuAuth {
 		session_regenerate_id(true);
 			// Set current person id
 		self::setPersonID($idPerson);
-			// Reload rights
-		TodoyuRightsManager::reloadRights();
 			// Set new person in Todoyu object
 		Todoyu::reset();
+			// Reload rights
+		TodoyuRightsManager::reloadRights();
 	}
 
 
