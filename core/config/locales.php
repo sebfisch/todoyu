@@ -73,4 +73,6 @@ Todoyu::$CONFIG['LOCALE']['fallback'] = array(
 
 Todoyu::$CONFIG['LOCALE']['labelCacheDir'] = PATH_CACHE . DIR_SEP . 'labels';
 
+Todoyu::$CONFIG['LOCALE']['logEmptyKeys']	= false;
+
 ?>

@@ -74,14 +74,7 @@ class TodoyuLabelManager {
 	 * @return	String		Translated label
 	 */
 	public static function getLabel($labelKey, $locale = null) {
-		$label	= self::getLabelInternal($labelKey, $locale);
-
-		if( $label === '' && Todoyu::$CONFIG['DEBUG'] ) {
-			Todoyu::log($label, TodoyuLogger::LEVEL_NOTICE);
-			$label	= 'Label not found: #' .$labelKey . '#';
-		}
-
-		return $label;
+		return self::getLabelInternal($labelKey, $locale);
 	}
 
 
@@ -126,7 +119,9 @@ class TodoyuLabelManager {
 		$locale	= is_null($locale) ? self::$locale : $locale ;
 
 		if( ! is_string($fullLabelKey) || $fullLabelKey === '' ) {
-			Todoyu::log('Tried to read a label, but no key was provided', TodoyuLogger::LEVEL_ERROR);
+			if( Todoyu::$CONFIG['LOCALE']['logEmptyKeys'] ) {
+				Todoyu::log('Tried to read a label, but no key was provided', TodoyuLogger::LEVEL_ERROR);
+			}			
 			return '';
 		}
 

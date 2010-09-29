@@ -1,5 +1,15 @@
 todoyu Changelog
 
+todoyu 2.0.5 - released 2010-09-28
+	* Bugfix: Opening email receivers in comment failed
+	* Bugfix: If a user wasn't allowed to see all projects, no tasks were available
+	* Bugfix: Saving roles in the rights manager failed because of a js error
+	* Bugfix: isAllowed parameters had the wrong format
+	* Bugfix: Filtersets were renamed, if the same name existed in
+	* Changed: Prevent direct access of not visible tasks and show info if tried
+	* Bugfix: Select all statuses of none selected in preferences
+
+
 todoyu 2.0.4 - released 2010-09-22
 	* Feature: TodoyuBaseObject now implements Dwoo_IDataProvider interface and is valid as data object for templates
 	* Feature: Quickinfo hiding is delayed now. Allows selecting and clicking of its content
