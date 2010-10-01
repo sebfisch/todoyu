@@ -56,7 +56,7 @@ class TodoyuSpeed {
 	 *
 	 * @param	String		$key
 	 */
-	public static function start($key) {
+	public static function start($key = 'default') {
 		self::$track[$key] = array();
 		self::tick($key);
 	}
@@ -68,7 +68,7 @@ class TodoyuSpeed {
 	 *
 	 * @param	String		$key
 	 */
-	public static function stop($key) {
+	public static function stop($key = 'default') {
 		self::tick($key);
 	}
 
@@ -79,7 +79,7 @@ class TodoyuSpeed {
 	 *
 	 * @param	String		$key
 	 */
-	public static function tick($key) {
+	public static function tick($key = 'default') {
 		self::$track[$key][] = microtime(true);
 	}
 
@@ -91,7 +91,7 @@ class TodoyuSpeed {
 	 * @param	Boolean		$format		Format as milliseconds instead of microseconds
 	 * @return
 	 */
-	public static function total($key, $format = false) {
+	public static function total($key = 'default', $format = false) {
 		$t = self::last($key) - self::first($key);
 
 		if( $format ) {
@@ -109,7 +109,7 @@ class TodoyuSpeed {
 	 * @param	String		$key
 	 * @return	Array
 	 */
-	public static function all($key) {
+	public static function all($key = 'default') {
 		return (array)self::$track[$key];
 	}
 
