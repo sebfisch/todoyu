@@ -2,7 +2,9 @@
 	<div class="inner">
 		<div id="footer-line"></div>
 		<div id="footer-info">
-			{Label core.footer.version}: {constant(TODOYU_VERSION)}, {constant(TODOYU_UPDATE)}<br />
+			{if isLoggedIn()}
+				{Label core.footer.version}: {constant(TODOYU_VERSION)}, {constant(TODOYU_UPDATE)}<br />
+			{/if}
 			<a href="http://bugs.todoyu.com/" target="_blank" title="{Label core.footer.bugreport.title}">{Label core.footer.bugreport}</a> |
 			<a href="http://www.todoyu.com/en/message-board/forum/" target="_blank" title="{Label core.footer.forum.title}">{Label core.footer.forum}</a><br />
 		</div>

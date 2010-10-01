@@ -583,4 +583,16 @@ function Dwoo_Plugin_nobreak_compile(Dwoo_Compiler $compiler, $text) {
 	return 'str_replace(\' \', \'&nbsp;\', ' . $text . ')';
 }
 
+
+
+/**
+ * Check in template if user is logged in
+ *
+ * @param	Dwoo_Compiler		$compiler
+ * @return	String
+ */
+function Dwoo_Plugin_isLoggedIn_compile(Dwoo_Compiler $compiler) {
+	return 'TodoyuAuth::isLoggedIn()';
+}
+
 ?>
