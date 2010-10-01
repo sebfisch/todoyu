@@ -584,7 +584,7 @@ class TodoyuTime {
 		$time	= intval($time);
 		$days	= intval($days);
 
-		return $time + $days * self::SECONDS_DAY;
+		return mktime(date('H', $time), date('i', $time), date('s', $time), date('n', $time), date('j', $time)+$days, date('Y', $time));
 	}
 }
 
