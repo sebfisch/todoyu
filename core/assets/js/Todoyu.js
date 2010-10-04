@@ -81,9 +81,10 @@ var Todoyu = {
 	 * @function	getUrl
 	 * @param		{String}		ext
 	 * @param		{String}		controller
+	 * @param		{String}		hash
 	 * @return		{String}
 	 */
-	getUrl: function(ext, controller, params) {
+	getUrl: function(ext, controller, params, hash) {
 		var url = 'index.php?ext=' + ext;
 
 		if( controller ) {
@@ -92,6 +93,10 @@ var Todoyu = {
 
 		if( typeof params === 'object' ) {
 			url += '&' + Object.toQueryString(params);
+		}
+
+		if ( hash ) {
+			url += '#hash';
 		}
 
 		return url;
@@ -107,14 +112,22 @@ var Todoyu = {
 	 * @param		{String}	controller
 	 * @param		{Hash}		params
 	 * @param		{String}	hash
+	 * @param		{Boolean}	newWindow
+	 * @param		{String}	windowName
 	 */
-	goTo: function(ext, controller, params, hash) {
-		var url =  this.getUrl(ext, controller, params);
+	goTo: function(ext, controller, params, hash, newWindow, windowName) {
+		var newWindow	= newWindow ? newWindow : false;
+
+		var url			=  this.getUrl(ext, controller, params);
 
 		if( Object.isString(hash) ) {
-			this.goToHashURL(url, hash);
+			this.goToHashURL(url, hash, newWindow, windowName);
 		} else {
-			location.href = url;
+			if ( newWindow === false ) {
+				location.href = url;
+			} else {
+				window.open(url, windowName);
+			}
 		}
 	},
 
@@ -127,8 +140,11 @@ var Todoyu = {
 	 * @function	goToHashURL
 	 * @param		{String}	url
 	 * @param		{String}	hash
+	 * @param		{Boolean}	newWindow
+	 * @param		{String}	windowName
 	 */
-	goToHashURL: function(url, hash) {
+	goToHashURL: function(url, hash, newWindow, windowName) {
+		var newWindow	= newWindow ? newWindow : false;
 		var searchPart	= url.substr(url.indexOf('?'));
 
 		if( location.search === searchPart && Todoyu.exists(hash) ) {
@@ -139,7 +155,13 @@ var Todoyu = {
 		}
 
 			// Fallback
-		location.href =  url + '#' + hash;
+		if ( newWindow === false ) {
+			location.href =  url + '#' + hash;
+		} else {
+			var windowName	= windowName ? windowName : '';
+
+			window.open(url + '#' + hash, windowName);
+		}
 	},
 
 
