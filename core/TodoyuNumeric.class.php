@@ -131,26 +131,7 @@ class TodoyuNumeric {
 
 		return floatval($percent * $value);
 	}
-
-
-
-	/**
-	 * Calculate fraction (how many percent is the given value of the given total?)
-	 *
-	 * @param	Integer	$fraction
-	 * @param	Integer	$total
-	 * @return	Integer
-	 */
-	public static function fraction($fraction = 75, $total = 300) {
-		if($total > 0) {
-			$rc = intval (($fraction/ $total) * 100);
-		} else {
-			TodoyuDebug::printHtml('error in fraction(...) - division by 0!');
-		}
-
-		return $rc;
-	}
-
+	
 }
 
 ?>

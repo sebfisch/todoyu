@@ -203,10 +203,6 @@ class Todoyu {
 	 * @param	Mixed		$data			Additional data to save with the log message
 	 */
 	public static function log($message, $level = 0, $data = null) {
-		if( is_null(self::$logger) ) {
-			self::$logger = TodoyuLogger::getInstance(self::$CONFIG['LOG_LEVEL']);
-		}
-
 		self::logger()->log($message, $level, $data);
 	}
 

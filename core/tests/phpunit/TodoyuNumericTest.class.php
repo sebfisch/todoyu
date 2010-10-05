@@ -72,13 +72,11 @@ class TodoyuNumericTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test TodoyuNumeric::intPositive
 	 *
-	 * @todo Implement testIntPositive().
 	 */
 	public function testIntPositive() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$this->assertEquals(0, TodoyuNumeric::intPositive(0));
+		$this->assertEquals(0, TodoyuNumeric::intPositive(-10));
+		$this->assertEquals(10, TodoyuNumeric::intPositive(10));
 	}
 
 
@@ -88,7 +86,7 @@ class TodoyuNumericTest extends PHPUnit_Framework_TestCase {
 	 *
 	 * @todo Implement testGetIntVersion().
 	 */
-	public function testGetIntVersion() {
+	public function testGetIntVersion() {		
 		// Remove the following lines when you implement this test.
 		$this->markTestIncomplete(
 		  'This test has not been implemented yet.'
@@ -103,20 +101,6 @@ class TodoyuNumericTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testPercent().
 	 */
 	public function testPercent() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
-	}
-
-
-
-	/**
-	 * Test TodoyuNumeric::fraction($fraction = 75, $total = 300)
-	 *
-	 * @todo Implement testFraction().
-	 */
-	public function testFraction() {
 		// Remove the following lines when you implement this test.
 		$this->markTestIncomplete(
 		  'This test has not been implemented yet.'
