@@ -528,10 +528,10 @@ INSERT INTO `ext_timetracking_track` (`id`, `date_create`, `date_update`, `id_pe
 -- --------------------------------------------------------
 
 --
--- Data for Table `ext_timetracking_tracking`
+-- Data for Table `ext_timetracking_active`
 --
 
-INSERT INTO `ext_timetracking_tracking` (`id`, `date_create`, `date_update`, `id_person_create`, `id_task`) VALUES
+INSERT INTO `ext_timetracking_active` (`id`, `date_create`, `date_update`, `id_person_create`, `id_task`) VALUES
 (4, 1264778433, 1264778433, 17, 138);
 
 -- --------------------------------------------------------
