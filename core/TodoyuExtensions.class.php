@@ -26,20 +26,13 @@
  */
 class TodoyuExtensions {
 
-	private static $extIDs = array();
-
-	private static $extKeys = array();
-
-
-
-
 	/**
 	 * Get extension keys of all installed extensions
 	 *
 	 * @return	Array
 	 */
 	public static function getInstalledExtKeys() {
-		return Todoyu::$CONFIG['EXT']['installed'];
+		return TodoyuArray::assure(Todoyu::$CONFIG['EXT']['installed']);
 	}
 
 
