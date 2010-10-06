@@ -18,8 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-require_once( PATH_LIB . '/php/pclzip/pclzip.lib.php');
-
 
 /**
  * Use an openoffice writer document as template, and replace all markers
@@ -28,64 +26,18 @@ require_once( PATH_LIB . '/php/pclzip/pclzip.lib.php');
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implements TodoyuTemplateDocumentIf {
+class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML implements TodoyuTemplateDocumentIf {
 
 	/**
-	 * ODT content type
-	 */
-	private $contentType = 'application/vnd.oasis.opendocument.text';
-
-	/**
-	 * Working directory (where odt archive will be extracted
-	 */
-	private $tempDir;
-
-	/**
-	 * Path to the content.xml file
-	 */
-	private $pathXML;
-
-	/**
-	 * Path to the temporary copy of the odt file
-	 */
-	private $pathOdt;
-
-	/**
-	 * Original XML content
-	 */
-	private $xmlContent;
-
-	/**
-	 * Parsed XML content
-	 */
-	private $xmlParsed;
-
-
-	/**
-	 * Cleanup all temporary files when finished
-	 *
-	 */
-	public function __destruct() {
-		if( is_dir($this->tempDir) ) {
-			TodoyuFileManager::deleteFolder($this->tempDir);
-		}
-	}
-
-
-
-	/**
-	 * Build new file
-	 * Replace all markers
+	 * Build parsed template
 	 */
 	protected function build() {
+			// Set content type
+		$this->setContentType('application/vnd.oasis.opendocument.text');
 			// Load the XML content from the template file
-		$this->loadXMLContent();
-			// Encode HTML entities
-		$this->encodeData();
+		$this->loadXMLContent('content.xml');
 			// Prepare the XML content (move some markers)
 		$this->prepareXML();
-			// Render the XML into $xmlParsed
-		$this->renderXML();
 			// Create an archive again for the odt
 		$this->buildArchive();
 	}
@@ -267,138 +219,6 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentAbstract implement
 		$replace	= '\2\1\3\4';
 
 		$this->xmlContent	= preg_replace($pattern, $replace, $this->xmlContent);
-	}
-
-
-
-	/**
-	 * Render the xml file
-	 */
-	private function renderXML() {
-		$this->xmlParsed = render(new Dwoo_Template_String($this->xmlContent), $this->data);
-	}
-
-
-
-	/**
-	 * Extract the template file (which is in fact a zip archive)
-	 */
-	private function extractTemplate() {
-		$zip			= new ZipArchive();
-		$path			= PATH_CACHE . '/temp/document/' . md5(microtime(true));
-		$this->tempDir	= TodoyuFileManager::pathAbsolute($path);
-		$this->pathXML	= TodoyuFileManager::pathAbsolute($this->tempDir . '/content.xml');
-
-		TodoyuFileManager::makeDirDeep($this->tempDir);
-
-		$zip->open($this->template);
-		$zip->extractTo($this->tempDir);
-		$zip->close();
-	}
-
-
-
-	/**
-	 * Load the xml content from content.xml
-	 */
-	private function loadXMLContent() {
-		if( is_null($this->tempDir) ) {
-			$this->extractTemplate();
-		}
-
-		if( is_file($this->pathXML) ) {
-			$this->xmlContent = file_get_contents($this->pathXML);
-		} else {
-			Todoyu::log('Can\'t load content.xml for odt. File not found', TodoyuLogger::LEVEL_ERROR);
-		}
-	}
-
-
-
-	/**
-	 * Encode HTML special chars into their entities to generate valid XML
-	 * when the data is inserted
-	 *
-	 */
-	private function encodeData() {
-		$this->data	= TodoyuArray::htmlspecialchars($this->data);
-	}
-
-
-
-	/**
-	 * Build the archive/odt file
-	 */
-	private function buildArchive() {
-		file_put_contents($this->pathXML, $this->xmlParsed);
-
-		$this->pathOdt	= TodoyuFileManager::pathAbsolute($this->tempDir . '.odt');
-
-		copy($this->template, $this->pathOdt);
-
-		$zip	= new PclZip($this->pathOdt);
-
-		$zip->delete(PCLZIP_OPT_BY_NAME, 'content.xml');
-		$zip->add($this->pathXML, PCLZIP_OPT_REMOVE_ALL_PATH);
-	}
-
-
-
-	/**
-	 * Get document content
-	 *
-	 * @return	String
-	 */
-	public function getFileData() {
-		return file_get_contents($this->pathOdt);
-	}
-
-
-
-	/**
-	 * Send the file to the browser
-	 *
-	 * @param	String		$filename
-	 */
-	public function sendFile($filename) {
-		parent::sendFile($this->pathOdt, $filename, $this->contentType);
-	}
-
-
-
-	/**
-	 * Save the file to the server
-	 *
-	 * @param	String		$pathFile
-	 * @return	Bool
-	 */
-	public function saveFile($pathFile) {
-		$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);
-
-		return copy($this->pathOdt, $pathFile);
-	}
-
-
-
-	/**
-	 * Get path of the created document
-	 *
-	 * @return	String
-	 */
-	public function  getFilePath() {
-		return $this->pathOdt;
-	}
-
-
-
-	/**
-	 * The the XML content of the document after it is prepared
-	 * This content will be rendered by Dwoo
-	 *
-	 * @return	String		XML content
-	 */
-	public function getPreparedXMLContent() {
-		return $this->xmlContent;
 	}
 
 }

@@ -36,6 +36,8 @@ class TodoyuArchiveManager {
 	public static function extract($zipFile, $targetFolder, $entries = null) {
 		@set_time_limit(60);
 
+		TodoyuFileManager::makeDirDeep($targetFolder);
+
 		$zip	= new ZipArchive();
 		$zip->open($zipFile);
 		$zip->extractTo($targetFolder, $entries);

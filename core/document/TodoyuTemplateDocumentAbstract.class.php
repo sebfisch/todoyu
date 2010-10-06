@@ -20,26 +20,35 @@
 
 /**
  * Abstract base class for document object classes
- * 
+ *
  * @package		Todoyu
  * @subpackage	Document
  */
 abstract class TodoyuTemplateDocumentAbstract {
 
 	/**
+	 * Path to template
+	 */
+	private $template;
+
+
+	/**
+	 * Template content type
+	 */
+	private $contentType = '';
+
+
+	/**
 	 * Template data
 	 */
 	protected $data;
 
-	/**
-	 * Path to template
-	 */
-	protected $template;
 
 	/**
 	 * Configuration
 	 */
 	protected $config;
+
 
 
 	/**
@@ -54,8 +63,19 @@ abstract class TodoyuTemplateDocumentAbstract {
 		$this->template	= TodoyuFileManager::pathAbsolute($template);
 		$this->config	= $config;
 
+		$this->init();
 		$this->build();
 	}
+
+
+
+	/**
+	 * Initialize document object. Called before build
+	 */
+	protected function init() {
+		// Do nothing
+	}
+
 
 
 	/**
@@ -78,6 +98,38 @@ abstract class TodoyuTemplateDocumentAbstract {
 
 
 	/**
+	 * Get path to original template
+	 *
+	 * @return	String
+	 */
+	protected function getTemplatePath() {
+		return $this->template;
+	}
+
+
+	/**
+	 * Get content type of document
+	 *
+	 * @return	String
+	 */
+	protected function getContentType() {
+		return $this->contentType;
+	}
+
+
+
+	/**
+	 * Set content type of document
+	 *
+	 * @param	String		$contentType
+	 */
+	protected function setContentType($contentType) {
+		$this->contentType = $contentType;
+	}
+
+	
+
+	/**
 	 * Send a file to the browser
 	 *
 	 * @param	String		$pathFile		Path to file on the server
@@ -86,7 +138,6 @@ abstract class TodoyuTemplateDocumentAbstract {
 	 */
 	protected function sendFile($pathFile, $filename, $mimeType) {
 		$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);
-		$filename	= addslashes($filename);
 
 		TodoyuFileManager::sendFile($pathFile, $mimeType, $filename);
 	}
