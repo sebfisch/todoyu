@@ -40,26 +40,27 @@ class TodoyuHtmlFilter {
 	/**
 	 * Clean HTML code with bad tags
 	 *
-	 * @param	String		$inputHTML
+	 * @param	String		$html
 	 * @return	String
 	 */
-	public static function clean($inputHTML) {
-		if( $inputHTML === null ) {
+	public static function clean($html) {
+		if( trim($html) === '' ) {
 			return '';
 		}
+		
 		$badTags	= self::getBadTags();
 
 		foreach($badTags as $badTag) {
 			$patternStandard	= '|<(' . $badTag . ')([^>]*)>(.*?)(</' . $badTag . '>)|sum';
 
-			$inputHTML	= preg_replace_callback($patternStandard, array('TodoyuHtmlFilter','escapeBadTags'), $inputHTML);
+			$html	= preg_replace_callback($patternStandard, array('TodoyuHtmlFilter','escapeBadTags'), $html);
 
 			$patternSimple	= '|<(' . $badTag . ')([^>]*)>(.*?)|sum';
 
-			$inputHTML	= preg_replace_callback($patternSimple, array('TodoyuHtmlFilter','escapeBadTag'), $inputHTML);
+			$html	= preg_replace_callback($patternSimple, array('TodoyuHtmlFilter','escapeBadTag'), $html);
 		}
 
-		return $inputHTML;
+		return $html;
 	}
 
 
