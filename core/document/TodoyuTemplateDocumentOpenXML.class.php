@@ -216,9 +216,9 @@ abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstr
 	 * Render the xml file
 	 */
 	private function renderXML() {
-		TodoyuHeader::sendTypeText();
-		echo $this->xmlContent;
-		exit();
+//		TodoyuHeader::sendTypeText();
+//		echo $this->xmlContent;
+//		exit();
 
 		$this->xmlParsed = render(new Dwoo_Template_String($this->xmlContent), $this->data);
 	}

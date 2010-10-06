@@ -42,6 +42,36 @@ class TodoyuTemplateDocumentDocx extends TodoyuTemplateDocumentOpenXML implement
 	}
 
 	protected function prepareXML() {
+//		$this->prepareRowXML();
+	}
+
+
+	protected function prepareRowXML() {
+/*			// Remove text spans around the row tags
+//		$patternRowTagA	= '|<text:span[^>]*?>(\[ROW:)</text:span>|sm';
+//		$patternRowTagB	= '|<text:span[^>]*?>(--ROW\])</text:span>|sm';
+//
+//		$this->xmlContent	= preg_replace($patternRowTagA, '\1', $this->xmlContent);
+//		$this->xmlContent	= preg_replace($patternRowTagB, '\1', $this->xmlContent);
+*/
+			// Pattern to find all table rows
+		$patternRow		= '|<w:tr.*?>.*?</w:tr>|s';
+			// Pattern to find sub parts in a table row if  it contains the row syntax '[--ROW:'
+		$patternRowParts= '|(<table:table-row[^>]*?>)(.*?)\[--ROW:({.*?})(.*?)({/.*?})--ROW\](.*?)(</table:table-row>)|sm';
+		$replaces		= array();
+
+			// Find all rows
+		preg_match_all($patternRow, $this->xmlContent, $rowMatches);
+
+			// Check for the row syntax in the matched row parts and modify the row
+		foreach($rowMatches[0] as $rowXML) {
+			if( preg_match($patternRowParts, $rowXML, $partMatches) ) {
+				$replaces[$rowXML] = $partMatches[3] . $partMatches[1] . $partMatches[2] . $partMatches[4] . $partMatches[6] . $partMatches[7] . $partMatches[5];
+			}
+		}
+
+		$this->xmlContent = str_replace(array_keys($replaces), array_values($replaces), $this->xmlContent);
+
 
 	}
 }
