@@ -509,11 +509,11 @@ class TodoyuString {
 	 */
 	public static function replaceUrlWithLink($htmlContent) {
 				// Find full links with prefixed protocol
-		$patternFull	= '/(^|[^"])((?:http|https|ftp|ftps):\/\/[-\w@:%+.~#?&;\/=]+)/';
+		$patternFull	= '/(^|[^"])((?:http|https|ftp|ftps):\/\/[-\w@:%+.~#?&;\/=\[\]]+)/';
 		$replaceFull	= '\1<a href="\2"  target="_blank">\2</a>';
 
 			// Find links which are not prefixed with a protocol, use http
-		$patternSimple	= '/(^|[> ])((?:[\w\.-]+)\.(?:[\w-]{2,})\.(?:[a-zA-Z-]{2,6})[-\w@:%+.~#?&;\/=]*)/';
+		$patternSimple	= '/(^|[> ])((?:[\w\.-]+)\.(?:[\w-]{2,})\.(?:[a-zA-Z-]{2,6})[-\w@:%+.~#?&;\/=\[\]]*)/';
 		$replaceSimple	= '\1<a href="http://\2" target="_blank">\2</a>';
 
 			// Find mailto links
