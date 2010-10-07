@@ -26,7 +26,7 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML implements TodoyuTemplateDocumentIf {
+class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 
 	/**
 	 * Build parsed template

@@ -27,7 +27,7 @@ require_once( PATH_LIB . '/php/pclzip/pclzip.lib.php');
  * @package		Todoyu
  * @subpackage	Document
  */
-abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstract {
+abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstract implements TodoyuTemplateDocumentIf {
 
 	/**
 	 * Base temp dir for document instance
