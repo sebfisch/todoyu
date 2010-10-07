@@ -96,27 +96,47 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 	 * Prepare the XML with the row syntax
 	 */
 	private function prepareRowXML() {
+		$markerRowStart	= '\[--ROW:';
+		$markerRowEnd	= '--ROW]';
+
 			// Remove text spans around the row tags
-		$patternRowTagA	= '|<text:span[^>]*?>(\[ROW:)</text:span>|sm';
-		$patternRowTagB	= '|<text:span[^>]*?>(--ROW\])</text:span>|sm';
+		$patternRowTagA	= '|<text:span[^>]*?>(\[--ROW:)</text:span>|s';
+		$patternRowTagB	= '|<text:span[^>]*?>(--ROW\])</text:span>|s';
 
 		$this->xmlContent	= preg_replace($patternRowTagA, '\1', $this->xmlContent);
 		$this->xmlContent	= preg_replace($patternRowTagB, '\1', $this->xmlContent);
 
+
 			// Pattern to find all table rows
 		$patternRow		= '|<table:table-row[^>]*?>.*?</table:table-row>|s';
-			// Pattern to find sub parts in a table row if  it contains the row syntax '[--ROW:'
-		$patternRowParts= '|(<table:table-row[^>]*?>)(.*?)\[--ROW:({.*?})(.*?)({/.*?})--ROW\](.*?)(</table:table-row>)|sm';
 		$replaces		= array();
+
+			// Find row start and endtags
+		$patternRowStart= '/' . $markerRowStart . '({[^}]*})/';
+		$patternRowEnd	= '/({\/[^}]*})' . $markerRowEnd . '/';
 
 			// Find all rows
 		preg_match_all($patternRow, $this->xmlContent, $rowMatches);
 
 			// Check for the row syntax in the matched row parts and modify the row
 		foreach($rowMatches[0] as $rowXML) {
-			if( preg_match($patternRowParts, $rowXML, $partMatches) ) {
-				$replaces[$rowXML] = $partMatches[3] . $partMatches[1] . $partMatches[2] . $partMatches[4] . $partMatches[6] . $partMatches[7] . $partMatches[5];
+				// Search start tags
+			preg_match_all($patternRowStart, $rowXML, $rowStartMatches);
+				// Search end tags
+			preg_match_all($patternRowEnd, $rowXML, $rowEndMatches);
+
+			if( sizeof($rowStartMatches[0]) === 0 && sizeof($rowEndMatches[0]) === 0 ) {
+				continue;
 			}
+
+				// Remove row markers and the dwoo tag
+			$newRowXML	= str_replace($rowStartMatches[0], '', $rowXML, $count);
+				// Remove row markers and the dwoo tag
+			$newRowXML	= str_replace($rowEndMatches[0], '', $newRowXML);
+				// Pre- and postfix the found markers
+			$newRowXML	= implode($rowStartMatches[1], '') . $newRowXML . implode($rowEndMatches[1], '');
+
+			$replaces[$rowXML] = $newRowXML;
 		}
 
 		$this->xmlContent = str_replace(array_keys($replaces), array_values($replaces), $this->xmlContent);
