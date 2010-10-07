@@ -50,7 +50,15 @@ class TodoyuArchiveManager {
 
 		$zip	= new ZipArchive();
 		$zip->open($zipFile);
-		$zip->extractTo($targetFolder, $entries);
+
+			// Workaround because null is not a valid default parameter
+			// @see http://pecl.php.net/bugs/bug.php?id=14962
+		if( is_null($entries) ) {
+			$zip->extractTo($targetFolder);
+		} else {
+			$zip->extractTo($targetFolder, $entries);
+		}
+
 		$zip->close();
 	}
 }
