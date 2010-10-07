@@ -96,12 +96,12 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 	 * Prepare the XML with the row syntax
 	 */
 	private function prepareRowXML() {
-		$markerRowStart	= '\[--ROW:';
-		$markerRowEnd	= '--ROW]';
+		$markerRowStart	= '\[TR:';
+		$markerRowEnd	= ':TR\]';
 
 			// Remove text spans around the row tags
-		$patternRowTagA	= '|<text:span[^>]*?>(\[--ROW:)</text:span>|s';
-		$patternRowTagB	= '|<text:span[^>]*?>(--ROW\])</text:span>|s';
+		$patternRowTagA	= '|<text:span[^>]*?>(' . $markerRowStart . ')</text:span>|s';
+		$patternRowTagB	= '|<text:span[^>]*?>(' . $markerRowEnd . ')</text:span>|s';
 
 		$this->xmlContent	= preg_replace($patternRowTagA, '\1', $this->xmlContent);
 		$this->xmlContent	= preg_replace($patternRowTagB, '\1', $this->xmlContent);
