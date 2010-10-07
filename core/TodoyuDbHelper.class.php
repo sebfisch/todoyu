@@ -55,6 +55,33 @@ class TodoyuDbHelper {
 
 
 	/**
+	 * Save MM relations from 1 record to n others, with an enumerated sorting index.
+	 *
+	 * @param	String		$mmTable			Link table
+	 * @param	String		$fieldLocal			Locale field name (for the one record linked to the others)
+	 * @param	String		$fieldForeign		Foreign field name for the other records
+	 * @param	Integer		$idLocalRecord		The linking record
+	 * @param	Array		$foreignRecordIDs	The other linked records
+	 */
+	public static function saveMMLinksSorted($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, array $foreignRecordIDs) {
+		$idLocalRecord		= intval($idLocalRecord);
+		$foreignRecordIDs	= TodoyuArray::intval($foreignRecordIDs, true, true);
+
+			// Remove existing link records
+		self::removeMMrelations($mmTable, $fieldLocal, $idLocalRecord);
+
+			// Add links
+		$counter	= 0;
+		foreach($foreignRecordIDs as $idForeignRecord) {
+			$extraData = array('sorting'	=> $counter);
+			self::addMMLink($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $idForeignRecord, $extraData);
+			$counter++;
+		}
+	}
+
+
+
+	/**
 	 * Get foreign record IDs of a mm table
 	 *
 	 * @param	String		$mmTable
@@ -67,6 +94,24 @@ class TodoyuDbHelper {
 		$where	= $fieldLocal . ' = ' . intval($idLocalRecord);
 
 		return Todoyu::db()->getColumn($fieldForeign, $mmTable, $where);
+	}
+
+
+
+	/**
+	 * Get foreign record IDs of an mm table, sorted by given column
+	 *
+	 * @param	String		$mmTable
+	 * @param	String		$fieldLocal
+	 * @param	String		$fieldForeign
+	 * @param	Integer		$idLocalRecord
+	 * @param	String		$fieldSorting
+	 * @return	Array
+	 */
+	public static function getForeignIDsSorted($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $fieldSorting = 'sorting') {
+		$where	= $fieldLocal . ' = ' . intval($idLocalRecord);
+
+		return Todoyu::db()->getColumn($fieldForeign, $mmTable, $where, '', $fieldSorting);
 	}
 
 
