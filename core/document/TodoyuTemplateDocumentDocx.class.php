@@ -42,7 +42,85 @@ class TodoyuTemplateDocumentDocx extends TodoyuTemplateDocumentOpenXML {
 	}
 
 	protected function prepareXML() {
+		$this->prepareConditions();
+		$this->prepareForeach();
 //		$this->prepareRowXML();
+	}
+
+
+	protected function prepareConditions() {
+		$ifPattern	= '|<w:p[^>]*?>((?!</w:p>).)*?<w:t>if</w:t>((?!</w:p>).)*?</w:p>|s';
+		$elsePattern= '|<w:p[^>]*?>((?!</w:p>).)*?<w:t>else</w:t>((?!</w:p>).)*?</w:p>|s';
+
+		preg_match_all($ifPattern, $this->xmlContent, $ifMatches);
+		preg_match_all($elsePattern, $this->xmlContent, $elseMatches);
+
+		$replace= array();
+
+		foreach($ifMatches[0] as $match) {
+			$replace[$match] = strip_tags($match);
+		}
+		foreach($elseMatches[0] as $match) {
+			$replace[$match] = strip_tags($match);
+		}
+
+		$this->xmlContent = str_replace(array_keys($replace), array_values($replace), $this->xmlContent);
+	}
+
+
+	protected function prepareForeach() {
+		$pPattern	= '|<w:p[^>]*?>((?!</w:p>).)*?foreach((?!</w:p>).)*?</w:p>|s';
+
+//		preg_match_all($pPattern, $this->xmlContent, $pMatches);
+//
+//
+//
+//		$
+
+
+
+
+
+//		foreach($pMatches[0] as $pMatch) {
+//
+//		}
+
+//
+//		TodoyuHeader::sendTypeText();
+//		print_r($matches);
+//		exit();
+
+
+
+
+		$pattern	= '/<w:p[^>]*?>((?!<\/w:p>).)*<w:r>(((?!<\/w:p>).)*){((?!<\/w:p>).)*foreach((?!<\/w:p>).)* (\$((?!<\/w:p>).)*)}(((?!<\/w:p>).)*)<\/w:r>((?!<\/w:p>).)*<\/w:p>/s';
+//		$pattern	= '/foreach/';
+//		die($this->xmlContent);
+
+//		phpinfo();
+//		exit();
+
+		preg_match_all($pattern, $this->xmlContent, $matches);
+
+		die("TEST");
+
+		$new = preg_replace_callback($pattern, array(self,'callbackForeach'), $this->xmlContent);
+
+		die("YYY");
+
+//		TodoyuHeader::sendTypeText();
+//		die($new);
+//		print_r($matches);
+//		exit();
+
+	}
+
+	private function callbackForeach($match) {
+		TodoyuDebug::printInFireBug($match);
+		print_r($match);
+
+
+		return 'forexxxxach';
 	}
 
 
@@ -59,6 +137,8 @@ class TodoyuTemplateDocumentDocx extends TodoyuTemplateDocumentOpenXML {
 			// Pattern to find sub parts in a table row if  it contains the row syntax '[--ROW:'
 		$patternRowParts= '|(<table:table-row[^>]*?>)(.*?)\[--ROW:({.*?})(.*?)({/.*?})--ROW\](.*?)(</table:table-row>)|sm';
 		$replaces		= array();
+
+		// (\[--ROW:{.*?foreach[^}]*?})(.*?)
 
 			// Find all rows
 		preg_match_all($patternRow, $this->xmlContent, $rowMatches);
