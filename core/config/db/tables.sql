@@ -206,5 +206,6 @@ CREATE TABLE `system_lock` (
 	`ext` smallint(6) NOT NULL,
 	`table` varchar(60) NOT NULL,
 	`id_record` int(11) NOT NULL,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `tablerecord` (`table`,`id_record`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
