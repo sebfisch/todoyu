@@ -19,40 +19,19 @@
 *****************************************************************************/
 
 /**
- * Manage zip archives
+ * Todoyu exception
  *
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuArchiveManager {
+class TodoyuException extends Exception {
 
-	/**
-	 * Extract an archive to a folder
-	 *
-	 * @param	String			$zipFile
-	 * @param	String			$targetFolder
-	 * @param	String|Array	$entries
-	 * @throws	TodoyuException
-	 */
-	public static function extract($zipFile, $targetFolder, $entries = null) {
-		@set_time_limit(60);
+	public function __construct($message, $code = 0, $previous = null) {
+		Todoyu::log('Exception: ' . $message, TodoyuLogger::LEVEL_ERROR);
 
-		$zipFile	= TodoyuFileManager::pathAbsolute($zipFile);
-
-		if( ! is_file($zipFile) ) {
-			throw new TodoyuException('Archive not found for extraction: ' . $zipFile);
-		}
-		if( ! is_string($targetFolder) ) {
-			throw new TodoyuException('Invalid target folder to extract ' . $zipFile . ' to');
-		}
-
-		TodoyuFileManager::makeDirDeep($targetFolder);
-
-		$zip	= new ZipArchive();
-		$zip->open($zipFile);
-		$zip->extractTo($targetFolder, $entries);
-		$zip->close();
+		parent::__construct($message, $code, $previous);
 	}
+
 }
 
 ?>

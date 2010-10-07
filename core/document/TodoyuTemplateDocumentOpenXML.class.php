@@ -55,7 +55,7 @@ abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstr
 	 *
 	 * @var	String
 	 */
-	protected $xmlParsed;
+	private $xmlParsed;
 
 
 	/**
@@ -241,6 +241,21 @@ abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstr
 		$zip->delete(PCLZIP_OPT_BY_NAME, $this->getXmlRelPath());
 			// Add parsed content document to archive
 		$zip->add($this->getXmlPath(), PCLZIP_OPT_REMOVE_PATH, $this->getExtractPath());
+	}
+
+
+
+	/**
+	 * Get parsed XML content
+	 *
+	 * @return	String
+	 */
+	protected function getXmlParsed() {
+		if( is_null($this->xmlParsed) ) {
+			$this->renderXML();
+		}
+
+		return $this->xmlParsed;
 	}
 
 
