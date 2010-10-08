@@ -117,7 +117,7 @@ class TodoyuRightsManager {
 	 * @return	Integer
 	 */
 	public static function getLastChangeTime() {
-		$timestampFile	= PATH_CACHE . DIR_SEP . 'timeLastRightsChange';
+		$timestampFile	= TodoyuFileManager::pathAbsolute('cache/timeLastRightsChange');
 
 		if( TodoyuFileManager::isFile($timestampFile) ) {
 				// Get modification time of file
