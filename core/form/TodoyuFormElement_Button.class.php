@@ -48,6 +48,9 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 		if( ! $this->hasAttribute('type') ) {
 			$this->setType('button');
 		}
+		if( $this->hasAttribute('disable') ) {
+			$this->setAttribute('disable', true);
+		}
 
 		$this->setAttribute('noIcon', $this->hasAttribute('noIcon'));
 	}

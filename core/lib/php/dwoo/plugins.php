@@ -357,7 +357,7 @@ function Dwoo_Plugin_linkUrls_compile(Dwoo_Compiler $compiler, $text) {
  * @param	Integer		$id			HTML id
  * @return	String
  */
-function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '', $title = '', $type = '') {
+function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '', $title = '', $type = '', $disable = false) {
 	$tmpl	= 'core/view/button.tmpl';
 	$data	= array(
 		'label'		=> $label,
@@ -365,7 +365,8 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
 		'class'		=> $class,
 		'id'		=> $id,
 		'title'		=> $title,
-		'type'		=> $type
+		'type'		=> $type,
+		'disable'	=> $disable === true || $disable === 'true'
 	);
 
 	return render($tmpl, $data);
