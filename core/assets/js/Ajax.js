@@ -24,6 +24,17 @@
 Todoyu.Ajax = {
 
 	/**
+	 * Handler when request failed (not status code 200)
+	 *
+	 * @param	{Ajax.Response}		response
+	 */
+	onFailure: function(response) {
+		Todoyu.log('Request was not successful');
+	},
+
+
+
+	/**
 	 * Check if a no access header has been sent.
 	 * Cancel execution and show error message if so
 	 *
@@ -36,6 +47,7 @@ Todoyu.Ajax = {
 			delete response.request.options.onComplete;
 			var missingRight = response.getTodoyuHeader('noAccess-right');
 			Todoyu.notifyError('[LLL:core.noAccess.errorMessage] (' + missingRight + ')');
+			Todoyu.Hook.exec('core.noaccess', response, missingRight);
 		}
 	},
 
@@ -51,6 +63,7 @@ Todoyu.Ajax = {
 				// Delete onComplete handler to prevent processing an empty response
 			delete response.request.options.onComplete;
 			Todoyu.notifyError('[LLL:core.notLoggedIn.errorMessage]', 0);
+			Todoyu.Hook.exec('core.notloggedin', response);
 		}
 	},
 
@@ -68,7 +81,40 @@ Todoyu.Ajax = {
 			delete response.request.options.onComplete;
 			Todoyu.notifyError(response.getPhpError(), 0);
 			Todoyu.log(response.getPhpError());
+			Todoyu.Hook.exec('core.phperror', response);
 		}
+	},
+
+
+
+	/**
+	 * Set default options
+	 *
+	 * @param	{Object}	options
+	 * @return	Object
+	 */
+	getDefaultOptions: function(options) {
+		if( options === undefined ) {
+			options = {};
+		}
+
+		if( options.evalScripts === undefined ) {
+			options.evalScripts = true;
+		}
+
+		if( options.parameters === undefined ) {
+			options.parameters = {};
+		}
+
+		if( options.parameters.area === undefined ) {
+			options.parameters.area = Todoyu.getArea();
+		}
+
+		if( options.onFailure === undefined ) {
+			options.onFailure = this.onFailure.bind(this);
+		}
+
+		return options;
 	}
 
 };
