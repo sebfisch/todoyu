@@ -702,7 +702,7 @@ class TodoyuInstallerManager {
 	 * Clear cached files
 	 */
 	public static function clearCache() {
-		TodoyuFileManager::deleteFolderContents(PATH_CACHE, false);
+		TodoyuCacheManager::clearAllCache();
 	}
 
 

@@ -385,6 +385,17 @@ class TodoyuPage {
 
 
 	/**
+	 * Add a class to the body element
+	 *
+	 * @param	String		$class
+	 */
+	public static function addBodyClass($class) {
+		self::append('bodyClass', ' ' . $class);
+	}
+
+
+
+	/**
 	 * Add an HTML element to the body
 	 *
 	 * @param	String		$elementHtml

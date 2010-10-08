@@ -31,6 +31,9 @@ class TodoyuCacheManager {
 	 * Clear all cache: call all registered clearCache hooks
 	 */
 	public static function clearAllCache() {
+			// Delete all files in cache folder
+		TodoyuFileManager::deleteFolderContents(PATH_CACHE, false);
+			// Call clearCache hook for other extensions
 		TodoyuHookManager::callHook('core', 'clearCache');
 	}
 
