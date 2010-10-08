@@ -174,7 +174,7 @@ var Todoyu = {
 	 * @param		{Hash}			options
 	 */
 	send: function(url, options) {
-		options = Todoyu.Ui._getDefaultOptions(options);
+		options = Todoyu.Ajax.getDefaultOptions(options);
 
 		return new Ajax.Request(url, options);
 	},

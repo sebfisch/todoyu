@@ -98,7 +98,9 @@ class TodoyuErrorHandler {
 				// Send HTTP error header
 			TodoyuHeader::sendHTTPErrorHeader();
 
-			self::sendPhpErrorHeader($errorstr);
+			$info	= TodoyuFileManager::pathWeb($file) . ' : ' . $line;
+
+			self::sendPhpErrorHeader('PHP ERROR: ' . $errorstr . ' # ' . $info);
 		}
 
 			// If debugging, call normal error handler to display the error

@@ -83,7 +83,7 @@ require_once( PATH_LIB . '/php/jsmin.php' );
 spl_autoload_register( array('Todoyu', 'autoloader') );
 
 	// Register error handler
-//set_error_handler(array('TodoyuErrorHandler', 'handleError'));
+set_error_handler(array('TodoyuErrorHandler', 'handleError'));
 
 	// Load global functions
 require_once( PATH_CORE . '/inc/version.php' );

@@ -40,9 +40,9 @@ Todoyu.Ajax.Responders = {
 	 */
 	init: function() {
 		Ajax.Responders.register({
-			'onCreate':		this.onCreate.bind(this),
-			'onComplete':	this.onComplete.bind(this),
-			'onException':	this.onException.bind(this)
+			onCreate:		this.onCreate.bind(this),
+			onComplete:		this.onComplete.bind(this),
+			onException:	this.onException.bind(this)
 		});
 
 		this.addOnCompleteHook(Todoyu.Ajax.checkNotLoggedInHeader.bind(Todoyu.Ajax));

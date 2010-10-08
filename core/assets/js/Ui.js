@@ -34,7 +34,7 @@ Todoyu.Ui = {
 	 * @param	{Object}	options
 	 */
 	update: function(container, url, options) {
-		options = this._getDefaultOptions(options);
+		options = Todoyu.Ajax.getDefaultOptions(options);
 
 		this.closeRTE(container);
 
@@ -55,7 +55,7 @@ Todoyu.Ui = {
 	 * @param	{Object}	options
 	 */
 	replace: function(container, url, options) {
-		options = this._getDefaultOptions(options);
+		options = Todoyu.Ajax.getDefaultOptions(options);
 
 		this.closeRTE(container);
 
@@ -76,7 +76,7 @@ Todoyu.Ui = {
 	 * @param	{Object}	options
 	 */
 	prepend: function(container, url, options) {
-		options = this._getDefaultOptions(options);
+		options = Todoyu.Ajax.getDefaultOptions(options);
 		options.insertion = 'before';
 
 		return this.update(container, url, options);
@@ -92,7 +92,7 @@ Todoyu.Ui = {
 	 * @param	{Object}	options
 	 */
 	append: function(container, url, options) {
-		options = this._getDefaultOptions(options);
+		options = Todoyu.Ajax.getDefaultOptions(options);
 		options.insertion = 'after';
 
 		return this.update(container, url, options);
@@ -108,42 +108,14 @@ Todoyu.Ui = {
 	 * @param	{Object}	options
 	 */
 	insert: function(container, url, options) {
-		options = this._getDefaultOptions(options);
+		options = Todoyu.Ajax.getDefaultOptions(options);
 		options.insertion = 'bottom';
 
 		return this.update(container, url, options);
 	},
 
 
-
-	/**
-	 * Set default options
-	 *
-	 * @param	{Object}	options
-	 * @return	Object
-	 */
-	_getDefaultOptions: function(options) {
-		if( Object.isUndefined(options) ) {
-			options = {};
-		}
-
-		if( Object.isUndefined(options.evalScripts) ) {
-			options.evalScripts = true;
-		}
-
-		if( Object.isUndefined(options.parameters) ) {
-			options.parameters = {};
-		}
-
-		if( Object.isUndefined(options.parameters.area) ) {
-			options.parameters.area = Todoyu.getArea();
-		}
-
-		return options;
-	},
-
-
-
+	
 	/**
 	 * Hide element
 	 *
