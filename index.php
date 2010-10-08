@@ -54,9 +54,9 @@ define('TIME_TOTAL', TIME_END - TIME_START);
 require( PATH_CORE. '/inc/finish.php' );
 
 	// Query debugging
-if( $_GET['qh'] == 1 ) {
-	TodoyuDebug::printHtml(Todoyu::db()->getQueryHistory());
-}
+//if( $_GET['qh'] == 1 ) {
+//	TodoyuDebug::printHtml(Todoyu::db()->getQueryHistory());
+//}
 
 	// Send output
 ob_end_flush();
