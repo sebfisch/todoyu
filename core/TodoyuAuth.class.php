@@ -139,7 +139,7 @@ class TodoyuAuth {
 
 
 	/**
-	 * Check if $username and $password are a valid login
+	 * Check whether $username and $password are a valid login
 	 *
 	 * @param	String		$username		Username
 	 * @param	String		$passwordHash	Password as md5
@@ -152,7 +152,7 @@ class TodoyuAuth {
 
 
 	/**
-	 * Check if an action is allowed
+	 * Check whether an action is allowed
 	 *
 	 * @param	Integer		$extKey
 	 * @param	Integer		$right
@@ -165,12 +165,23 @@ class TodoyuAuth {
 
 
 	/**
-	 * Check if current person is admin
+	 * Check whether current person is admin
 	 *
 	 * @return	Boolean
 	 */
 	public static function isAdmin() {
 		return self::getPerson()->isAdmin();
+	}
+
+
+
+	/**
+	 * Check whether the current person is working for the internal company
+	 *
+	 * @return  Boolean
+	 */
+	public static function isInternal() {
+		return Todoyu::person()->isInternal();
 	}
 
 
