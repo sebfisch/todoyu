@@ -103,7 +103,7 @@ class TodoyuQuickinfo {
 	 * @param	Integer		$position
 	 */
 	public function addEmail($key, $email, $fullName = '', $position = 100) {
-		if ( $fullName !== '' ) {
+		if( $fullName !== '' ) {
 			$fullName	= str_replace(' ', '%20', $fullName);
 			$item	=  '<a href="mailto:' . $fullName . '%3c' . $email . '%3e">' . $email . '</a>';
 		} else {

@@ -95,7 +95,7 @@ var Todoyu = {
 			url += '&' + Object.toQueryString(params);
 		}
 
-		if ( hash ) {
+		if( hash ) {
 			url += '#hash';
 		}
 
@@ -123,7 +123,7 @@ var Todoyu = {
 		if( Object.isString(hash) ) {
 			this.goToHashURL(url, hash, newWindow, windowName);
 		} else {
-			if ( newWindow === false ) {
+			if( newWindow === false ) {
 				location.href = url;
 			} else {
 				window.open(url, windowName);
@@ -155,7 +155,7 @@ var Todoyu = {
 		}
 
 			// Fallback
-		if ( newWindow === false ) {
+		if( newWindow === false ) {
 			location.href =  url + '#' + hash;
 		} else {
 			var windowName	= windowName ? windowName : '';
