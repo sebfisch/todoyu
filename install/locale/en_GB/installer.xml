@@ -70,7 +70,7 @@
 	<label index="importdemodata.checkboxlabel">Import Sample Data</label>
 	<label index="importdemodata.button">Go to next step</label>
 	<label index="importdemodata.text">You can import sample data to test todoyu right after the installation. Without importing sample data, you get an empty installation of todoyu which you then can customize to your needs.</label>
-	<label index="importdemodata.contains">Sample data contains: projects, tasks, addresses, companies, comments, feedback, roles, work types, filters and more.</label>
+	<label index="importdemodata.contains">Sample data contains: projects, tasks, addresses, companies, comments, feedback, roles, activity types, filters and more.</label>
 	<label index="finish.title">Installation Successful</label>
 	<label index="finish.text">The installation was successful</label>
 	<label index="finish.button">Go to login page</label>
