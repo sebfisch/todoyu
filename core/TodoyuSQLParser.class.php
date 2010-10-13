@@ -486,7 +486,7 @@ class TodoyuSQLParser {
 				. $colStructure['default'] . ' '
 				. $colStructure['extra'] . ' ';
 
-		return str_replace('  ', ' ', $query);;
+		return str_replace('  ', ' ', $query);
 	}
 
 
