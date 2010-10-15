@@ -192,6 +192,7 @@ class TodoyuLabelManager {
 		$pathTestFile	= TodoyuFileManager::pathAbsolute($dir . '/' . $defaultLocale . '/' . $filename);
 
 		if( ! is_file($pathTestFile) ) {
+			Todoyu::log('Language file for ' . $defaultLocale . ' not found in "' . $dir . '"!');
 			TodoyuDebug::printHtml($pathTestFile, 'Language file for ' . $defaultLocale . ' not found in "' . $dir . '"!');
 			//TodoyuDebug::printBacktrace();
 		}

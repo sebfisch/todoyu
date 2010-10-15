@@ -36,6 +36,8 @@ class TodoyuLanguage {
 	 * @param	String		$absPathToFile		Absolute path to the locallang XML file
 	 */
 	public static function register($identifier, $absPathToFile) {
+		Todoyu::log('Deprecated function used - TodoyuLanguage::register');
+
 			// Extract extKey from path
 		$absPathToFile	= TodoyuFileManager::pathAbsolute($absPathToFile);
 		$parts			= explode(DIR_SEP . 'ext' . DIR_SEP, $absPathToFile);
@@ -46,6 +48,22 @@ class TodoyuLanguage {
 		$file	= array_pop(explode(DIR_SEP, $absPathToFile));
 
 		TodoyuLabelManager::register($identifier, $extKey, $file);
+	}
+
+
+
+	/**
+	 * Backwards compatibility wrapper for TodoyuLanguage::getLabel
+	 * Please use TodoyuLabelManager::getLabel now!
+	 *
+	 * @param	String	$labelKey
+	 * @param	String	$locale
+	 * @return	String
+	 */
+	public static function getLabel($labelKey, $locale = null) {
+		Todoyu::log('Deprecated function used - TodoyuLanguage::getLabel');
+
+		return TodoyuLabelManager::getLabel($labelKey, $locale);
 	}
 
 }
