@@ -67,7 +67,7 @@ Todoyu.Notification = {
 			'id':			id,
 			'type':			type,
 			'message':		message,
-			'countdown':	countdown === 0 ? '' : countdown
+			'countdown':	( countdown === 0 ) ? '' : countdown
 		};
 
 		var note	= this.template.evaluate(data);
@@ -83,18 +83,25 @@ Todoyu.Notification = {
 
 
 	/**
-	 * Init template
+	 * Init notification HTML template
 	 */
 	loadTemplate: function() {
 		if( this.template === null ) {
-			this.template = new Template('<div class="note #{type}" id="notification-note-#{id}"><table width="100%"><tr><td class="icon">&nbsp;</td><td class="message">#{message}</td><td class="countdown" align="center">#{countdown}</td></tr></table></div>');
+			this.template = new Template(
+				'<div class="note #{type}" id="notification-note-#{id}">' 
+				+	'<table width="100%"><tr>'
+				+		'<td class="icon">&nbsp;</td>'
+				+		'<td class="message">#{message}</td>'
+				+		'<td class="countdown" align="center">#{countdown}</td>'
+				+	'</tr></table></div>'
+			);
 		}
 	},
 
 
 
 	/**
-	 * Remove note
+	 * Remove notification from DOM
 	 */
 	remove: function(id) {
 		$('ntification-note-' + id).remove();
