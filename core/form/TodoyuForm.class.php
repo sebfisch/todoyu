@@ -865,12 +865,26 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
-	 * Get all fieldnames in the form
+	 * Get all field names in the form
 	 *
 	 * @return	Array
 	 */
 	public function getFieldnames() {
 		return array_keys($this->fields);
+	}
+
+
+
+	/**
+	 * Check whether field with given name exist in the form
+	 *
+	 * @param	String	$fieldName
+	 * @return	Boolean
+	 */
+	public function hasField($fieldName) {
+		$fieldNames	= $this->getFieldnames();
+
+		return (in_array($fieldName, $fieldNames));
 	}
 
 
