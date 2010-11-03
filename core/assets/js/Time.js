@@ -108,7 +108,7 @@ Todoyu.Time = {
 	 * Get shifted time
 	 *
 	 * @param	{Number}		baseTime
-	 * @param	{String}		step		'month' / other		@todo change into boolean if there's no more values
+	 * @param	{String}		step		'month' / 'day'		@todo change into boolean if there's no more values
 	 * @param	{String}		direction	'up' / 'down'
 	 * @return	{Number}
 	 */
@@ -117,22 +117,18 @@ Todoyu.Time = {
 
 		var factor	= (direction === 'up' ? 1 : -1);
 		var date	= new Date(baseTime * 1000);
+		var day		= 0;
+		var month	= 0;
 
-		if( step === 'month' ) {
-			if( direction === 'up' && date.getMonth() == 11 ) {
-				date.setYear(date.getFullYear() + 1);
-				date.setMonth(0);
-			} else if( direction === 'down' && date.getMonth() == 0 ) {
-				date.setYear(date.getFullYear() - 1);
-				date.setMonth(11);
-			} else {
-				date.setMonth(date.getMonth() + factor);
-			}
-		} else {
-			date.setTime(date.getTime() + (factor * this.seconds[step] * 1000));
+		if( step === 'month' ) { // Month
+			month	= factor;
+		} else { // Day
+			day		= factor;
 		}
 
-		return parseInt(date.getTime() / 1000, 10);
+		var newDate = new Date(date.getFullYear(), date.getMonth()+month, date.getDate()+day, date.getHours(), date.getMinutes(), date.getSeconds());
+
+		return parseInt(newDate.getTime() / 1000, 10);
 	},
 
 
