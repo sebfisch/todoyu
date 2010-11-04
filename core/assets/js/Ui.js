@@ -608,10 +608,14 @@ Todoyu.Ui = {
 	 * Use this function instead of tinyMCE.triggerSave();
 	 */
 	saveRTE: function() {
-		window.tinyMCE.editors.each(function(editor){
+		window.tinyMCE.editors.each(function(editor, index){
 			if( editor && Todoyu.exists(editor.editorId) ) {
 				editor.save();
+				return;
 			}
+
+				// Delete item if element does not exist
+			delete window.tinyMCE.editors[index];
 		});
 	},
 
