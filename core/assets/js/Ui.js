@@ -115,7 +115,7 @@ Todoyu.Ui = {
 	},
 
 
-	
+
 	/**
 	 * Hide element
 	 *
@@ -609,7 +609,7 @@ Todoyu.Ui = {
 	 */
 	saveRTE: function() {
 		window.tinyMCE.editors.each(function(editor){
-			if( editor ) {
+			if( editor && Todoyu.exists(editor.editorId) ) {
 				editor.save();
 			}
 		});
