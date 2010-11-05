@@ -107,23 +107,29 @@ Todoyu.Time = {
 	/**
 	 * Get shifted time
 	 *
-	 * @param	{Number}		baseTime
-	 * @param	{String}		step		'month' / 'day'		@todo change into boolean if there's no more values
-	 * @param	{String}		direction	'up' / 'down'
-	 * @return	{Number}
+	 * @param	{Number}		baseTime		Unit timestamp
+	 * @param	{String}		tab
+	 * @param	{Boolean}		up
+	 * @return	{Number}		Unit timestamp
 	 */
-	getShiftedTime: function(baseTime, step, direction) {
+	getShiftedTime: function(baseTime, tab, up) {
 		baseTime	= this.getDayStart(baseTime);
 
-		var factor	= (direction === 'up' ? 1 : -1);
+		var factor	= up ? 1 : -1;
 		var date	= new Date(baseTime * 1000);
 		var day		= 0;
 		var month	= 0;
 
-		if( step === 'month' ) { // Month
-			month	= factor;
-		} else { // Day
-			day		= factor;
+		switch( tab ) {
+			case 'month':
+				month	= factor;
+				break;
+			case 'week':
+				day		= factor * 7;
+				break;
+			case 'day':
+				day		= factor;
+				break;
 		}
 
 		var newDate = new Date(date.getFullYear(), date.getMonth()+month, date.getDate()+day, date.getHours(), date.getMinutes(), date.getSeconds());
