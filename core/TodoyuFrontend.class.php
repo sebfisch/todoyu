@@ -139,7 +139,7 @@ class TodoyuFrontend {
 
 
 	/**
-	 * Add a submenu tab
+	 * Add a sub menu tab
 	 *
 	 * @param	String		$parentKey
 	 * @param	String		$key
@@ -172,27 +172,27 @@ class TodoyuFrontend {
 
 
 	/**
-	 * Get submenu tabs
+	 * Get sub menu tabs
 	 *
 	 * @param	String		$parentKey
 	 * @return	Array
 	 */
 	public static function getSubmenuTabs($parentKey) {
-		$submenu	= Todoyu::$CONFIG['FE']['TAB']['tabs'][$parentKey]['submenu'];
+		$subMenu	= Todoyu::$CONFIG['FE']['TAB']['tabs'][$parentKey]['submenu'];
 		$active		= self::getActiveSubmenuTab($parentKey);
 
-		if( is_array($submenu) ) {
-			foreach($submenu as $key => $vals) {
+		if( is_array($subMenu) ) {
+			foreach($subMenu as $key => $vals) {
 				if($vals['key'] == $active) {
-					$submenu[$key]['active'] = true;
+					$subMenu[$key]['active'] = true;
 				}
 			}
-			$submenu = TodoyuArray::sortByLabel($submenu, 'position');
+			$subMenu = TodoyuArray::sortByLabel($subMenu, 'position');
 		} else {
-			$submenu = array();
+			$subMenu = array();
 		}
 
-		return $submenu;
+		return $subMenu;
 	}
 
 
@@ -211,7 +211,7 @@ class TodoyuFrontend {
 			$tabs[$active]['active'] = true;
 		}
 
-			// Get label for menu entry and sort submenus
+			// Get label for menu entry and sort sub menus
 		foreach($tabs as $index => $tab) {
 			$tabs[$index]['label'] = TodoyuString::getLabel($tabs[$index]['label']);
 
@@ -227,6 +227,13 @@ class TodoyuFrontend {
 	}
 
 
+
+	/**
+	 * Set default frontend view
+	 *
+	 * @param	String	$ext
+	 * @param	String	$controller
+	 */
 	public static function setDefaultView($ext, $controller) {
 		Todoyu::$CONFIG['FE']['DEFAULT'] = array(
 			'ext'		=> $ext,

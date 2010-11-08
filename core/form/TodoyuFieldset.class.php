@@ -434,7 +434,7 @@ class TodoyuFieldset implements ArrayAccess {
 
 
 	/**
-	 * Render fieldset with all its childelements
+	 * Render fieldset with all its child elements
 	 *
 	 * @return	String
 	 */
