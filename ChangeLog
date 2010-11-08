@@ -1,5 +1,46 @@
 todoyu Changelog
 
+todoyu 2.0.6 - released 2010-11-10
+	* Bugfix: #51 Timetracking had wrong day total in daytracks widget
+	* Bugfix: #53 Days of the next month are missing in the month view of the calendar
+	* Bugfix: #54 Removed version number of todoyu on loginpage to prevent version based attacks
+	* Bugfix: #55 Current tracking time not visible in chrome
+	* Bugfix: #56 Birthdays in Portal. Strange order and range
+	* Bugfix: #57 Acknowledge event in portal
+	* Bugfix: #58 Admin can't see Planning and Contacts
+	* Bugfix: #59 Task overtime on empty enddate
+	* Bugfix: #60 If a persons birthday is today, event is now listed
+	* Bugfix: #61 Autolink for typo3 links fails
+	* Bugfix: #63 console.log causes error in some browsers
+	* Bugfix: #64 Iframe renders itself in comment
+	* Bugfix: #65 deleteFolder with deleteHidden option active fails
+	* Bugfix: #66 Extraction fails on Linux systems
+	* Bugfix: #67 Title of private events are visible
+	* Bugfix: #68 QueryHistory may be an attack point
+	* Bugfix: #70 Sending comments by email produces PHP error
+	* Bugfix: #71 bookmarks administration in profile has no access check
+	* Bugfix: #73 customers can not create tasks
+	* Bugfix: #74 Navigate from Okt 31 to Nov 1 fails in dayview
+	* Bugfix: #75 Title tag in task span around task title not escaped
+	* Bugfix: #76 Private events are not fully private
+	* Bugfix: #77 Month selector in daytrack - history
+	* Bugfix: #78 Can't save RTE sometimes
+	* Bugfix: #79 "project missing" message in empty installation could be more helpful
+	* Bugfix: #80 Disabled user requires email
+	* Bugfix: #81 projectbilling lacks generic tab labels with 2.0.5
+	* Bugfix: #82 Navigation problem in calendar week
+	* Bugfix: #83 projectbilling lacks core's MM sorting (approvalroles) in 2.0.5
+	* Bugfix: #84 project 1.0 lacks projectbilling dependency - sorting of roles
+	* Bugfix: #85 Panelwidget Toggle on Loginpage
+	* Bugfix: #86 Unescaped text causes layout problems
+	* Bugfix: #87 containers are created with status (but they have none)
+	* Bugfix: #88 chrome/safari: 24 hour view of day/week view doesn't set scrollTop correctly
+	* Bugfix: #89 usability - config/db.php needs warning that manual modifications might be overwritten
+	* Bugfix: #90 Encoding Problem in timetracking headlet and profile locale selector
+	* Bugfix: #91 Toggles missing for panelwidget on loginpage
+	* Bugfix: #92 Action icons in extension list in IE
+
+
 todoyu 2.0.5 - released 2010-09-28
 	* Bugfix: Opening email receivers in comment failed
 	* Bugfix: If a user wasn't allowed to see all projects, no tasks were available
