@@ -116,9 +116,8 @@ var Todoyu = {
 	 * @param		{String}	windowName
 	 */
 	goTo: function(ext, controller, params, hash, newWindow, windowName) {
-		var newWindow	= newWindow ? newWindow : false;
-
-		var url			=  this.getUrl(ext, controller, params);
+		newWindow	= newWindow ? newWindow : false;
+		var url		=  this.getUrl(ext, controller, params);
 
 		if( Object.isString(hash) ) {
 			this.goToHashURL(url, hash, newWindow, windowName);
@@ -144,7 +143,7 @@ var Todoyu = {
 	 * @param		{String}	windowName
 	 */
 	goToHashURL: function(url, hash, newWindow, windowName) {
-		var newWindow	= newWindow ? newWindow : false;
+		newWindow		= newWindow ? newWindow : false;
 		var searchPart	= url.substr(url.indexOf('?'));
 
 		if( location.search === searchPart && Todoyu.exists(hash) ) {
@@ -158,7 +157,7 @@ var Todoyu = {
 		if( newWindow === false ) {
 			location.href =  url + '#' + hash;
 		} else {
-			var windowName	= windowName ? windowName : '';
+			windowName	= windowName ? windowName : '';
 
 			window.open(url + '#' + hash, windowName);
 		}
