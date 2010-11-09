@@ -31,7 +31,7 @@ Todoyu.Headlet.About = {
 	/**
 	 * Window HTML ID
 	 */
-	idWindow: 'headlet-about-window',
+	idWindow: 'overflow-window-about',
 
 	/**
 	 * Instance of the current effect
@@ -185,7 +185,9 @@ Todoyu.Headlet.About = {
 		li.addClassName('coder');
 
 		if( $H(this.eeVisible).all(function(pair){ return pair.value === true; })) {
-			$('headlet-about-window').insert({
+			$H(this.eeVisible).each(function(pair){this.eeVisible[pair.key]=false; console.log(pair);}, this);
+			if(Todoyu.exists('ee-img')) $('ee-img').remove();
+			$(this.idWindow).insert({
 				'bottom': new Element('div', {
 					'id': 'ee-img'
 				})
