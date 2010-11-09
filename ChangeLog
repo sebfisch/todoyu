@@ -39,6 +39,15 @@ todoyu 2.0.6 - released 2010-11-10
 	* Bugfix: #90 Encoding Problem in timetracking headlet and profile locale selector
 	* Bugfix: #91 Toggles missing for panelwidget on loginpage
 	* Bugfix: #92 Action icons in extension list in IE
+	* Bugfix: #93 Rights tab in sysadmin shows wrong extension
+	* Bugfix: #94 calendar full view toggle display bug in safari + chrome
+	* Bugfix: #95 display fault: horizontal scrollbar in task details
+	* Bugfix: #96 More encoding problems
+	* Bugfix: #97 Searchword is not saved for company in contact
+	* Bugfix: #98 Rights editor doesn't work in IE
+	* Bugfix: #99 projectbilling 1.0 - fatal error when customer creates task
+	* Bugfix: #100 Daytracks History: IE shows details only on blur
+	* Bugfix: #101 Doubleclick doesn't create a new event in IE
 
 
 todoyu 2.0.5 - released 2010-09-28
