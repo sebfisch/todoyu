@@ -18,19 +18,27 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Modification of Ajax.Updater which replaces the target element
- * @namespace	Todoyu.Ajax.Replacer
+ *
+ * @class		Replacer
+ * @namespace	Todoyu.Ajax
+ * @extends		{Ajax.Request}
+ * @constructor
  */
 Todoyu.Ajax.Replacer = Class.create(Ajax.Request, {
 
 	/**
 	 * Initialize AJAX replacer
 	 *
-	 * @constructor	initialize
-	 * @param		{Function}		$super
-	 * @param		{String}		container
-	 * @param		{String}		url
-	 * @param		{Object}		options
+	 * @method	initialize
+	 * @param	{Function}		$super
+	 * @param	{String}		container
+	 * @param	{String}		url
+	 * @param	{Object}		options
 	 */
 	initialize: function($super, container, url, options) {
 		options = options || { };

@@ -18,14 +18,27 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Preferences
  *
- * @namespace	Todoyu.Pref
+ * @class		Pref
+ * @namespace	Todoyu
  */
 Todoyu.Pref = {
 
+	/**
+	 * @property	count
+	 * @item		Number
+	 */
 	count: 0,
 
+	/**
+	 * @property	temp
+	 * @type		Array
+	 */
 	temp: [],
 
 
@@ -33,6 +46,7 @@ Todoyu.Pref = {
 	/**
 	 * Save preference (AJAX)
 	 *
+	 * @method	save
 	 * @param	{String}		ext
 	 * @param	{String}		action
 	 * @param	{String}		value
@@ -62,6 +76,7 @@ Todoyu.Pref = {
 	/**
 	 * Get preference (AJAX)
 	 *
+	 * @method	get
 	 * @param	{String}	ext
 	 * @param	{String}	preference
 	 */

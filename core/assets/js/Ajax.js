@@ -18,14 +18,20 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * General AJAX helper functions
- * @namespace	Todoyu.Ajax
+ * @namespace	Todoyu
+ * @class		Ajax
  */
 Todoyu.Ajax = {
 
 	/**
 	 * Handler when request failed (not status code 200)
 	 *
+	 * @method	onFailure
 	 * @param	{Ajax.Response}		response
 	 */
 	onFailure: function(response) {
@@ -38,7 +44,7 @@ Todoyu.Ajax = {
 	 * Check if a no access header has been sent.
 	 * Cancel execution and show error message if so
 	 *
-	 * @function	checkNoAccessHeader
+	 * @method	checkNoAccessHeader
 	 * @param		{Ajax.Response}		response
 	 */
 	checkNoAccessHeader: function(response) {
@@ -56,6 +62,7 @@ Todoyu.Ajax = {
 	/**
 	 * Check whether not logged in header was sent
 	 *
+	 * @method	checkNotLoggedInHeader
 	 * @param	{Ajax.Response}		response
 	 */
 	checkNotLoggedInHeader: function(response) {
@@ -73,8 +80,8 @@ Todoyu.Ajax = {
 	 * Check if a php error header has been sent
 	 * Cancel execution and show error message if so
 	 *
-	 * @function	checkPhpErrorHeader
-	 * @param		{Ajax.Response}		response
+	 * @method	checkPhpErrorHeader
+	 * @param	{Ajax.Response}		response
 	 */
 	checkPhpErrorHeader: function(response) {
 		if( response.hasPhpError() ) {
@@ -90,8 +97,9 @@ Todoyu.Ajax = {
 	/**
 	 * Set default options
 	 *
+	 * @method	getDefaultOptions
 	 * @param	{Object}	options
-	 * @return	Object
+	 * @return	{Object}
 	 */
 	getDefaultOptions: function(options) {
 		if( options === undefined ) {

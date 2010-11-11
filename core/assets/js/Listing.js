@@ -18,19 +18,29 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Listing
  *
- * @namespace	Todoyu.Listing
+ * @class		Listing
+ * @namespace	Todoyu
  */
 Todoyu.Listing = {
 
+	/**
+	 * @property	config
+	 * @type		Object
+	 */
 	config: {},
 
 
 
 	/**
 	 * Initialize
-	 * 
+	 *
+	 * @method	init
 	 * @param	{String}		name
 	 * @param	{String}		update
 	 * @param	{Number}		size
@@ -57,7 +67,8 @@ Todoyu.Listing = {
 
 	/**
 	 * Evoke getting more list results
-	 * 
+	 *
+	 * @method	more
 	 * @param	{String}		name
 	 * @param	{Number}		pagenum
 	 */
@@ -72,7 +83,8 @@ Todoyu.Listing = {
 
 	/**
 	 * Fetch more results and extend the amount of entries listed
-	 * 
+	 *
+	 * @method	extend
 	 * @param	{String}		name
 	 * @param	{Number}		offset
 	 * @param	{Number}		pagenum
@@ -99,7 +111,8 @@ Todoyu.Listing = {
 
 	/**
 	 * Handler being evoked upon completion of extending displayed entries
-	 * 
+	 *
+	 * @method	onExtended
 	 * @param	{String}		name
 	 * @param	{Number}		offset
 	 * @param	{Object}		response

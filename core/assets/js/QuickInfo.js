@@ -18,61 +18,86 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * QuickInfo
  *
- * @namespace	Todoyu.QuickInfo
+ * @class		QuickInfo
+ * @namespace	Todoyu
  */
 Todoyu.QuickInfo = {
 
 	/**
 	 * ID of the quickinfo popup
+	 * @property	popupID
+	 * @type		String
 	 */
 	popupID:	'quickinfo',
 
 	/**
 	 * Content cache with time info
+	 * @property	cache
+	 * @type		Object
 	 */
 	cache:		{},
 
 	/**
 	 * Default cache time for an element (seconds)
+	 * @property	defaultCacheTime
+	 * @type		Number
 	 */
 	defaultCacheTime:	60,
 
 	/**
 	 * Custom cache time per element
-	 * @see		this.setCacheTime()
+	 * @see			this.setCacheTime()
+	 * @property	customCacheTime
+	 * @type		Object
 	 */
 	customCacheTime: {},
 
 	/**
 	 * Template object to convert JSON into HTML
+	 * @property	template
+	 * @type		Template
 	 */
 	template:	null,
 
 	/**
 	 * Flag if loading is in progress (prevents multiple loading requests)
+	 * @property	loading
+	 * @type		Boolean
 	 */
 	loading:	false,
 
 	/**
 	 * Flag if quickinfo is currently hidden
+	 * @property	hidden
+	 * @type		Boolean
 	 */
 	hidden:		false,
 
 
 	/**
 	 * Timout callback for delayed hiding of quickinfo
+	 * @property	delayedHide
+	 * @type		Function
 	 */
 	delayedHide: null,
 
 	/**
 	 * Delay for hiding. Allows to get move the mouse over the quickinfo, to prevent hiding
+	 * @property	delayedHideTime
+	 * @type		Number
 	 */
 	delayedHideTime: 0.4,
 
 	/**
 	 * Active element (DOM element)
+	 * @property	active
+	 * @type		Element
 	 */
 	active: null,
 
@@ -80,6 +105,8 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Init quickinfo
+	 *
+	 * @method	init
 	 */
 	init: function() {
 			// Insert HTML element into document
@@ -93,6 +120,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Install quickinfo on elements which match the selector
 	 *
+	 * @method	install
 	 * @param	{String}	name
 	 * @param	{String}	selector
 	 * @param	{Function}	callback
@@ -111,6 +139,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Handler when an observer element is hovered
 	 *
+	 * @method	onMouseOver
 	 * @param	{Event}		event
 	 * @param	{String}	name
 	 * @param	{Function}	callback
@@ -137,6 +166,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Handler when an observed element is left with the mouse
 	 *
+	 * @method	onMouseOut
 	 * @param	{Event}		event
 	 * @param	{String}	name
 	 * @param	{Function}	callback
@@ -156,6 +186,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Uninstall quickinfo from elements which match the selector
 	 *
+	 * @method	uninstall
 	 * @param	{String}	selector
 	 */
 	uninstall: function(selector) {
@@ -169,6 +200,8 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Insert quick info elements container
+	 *
+	 * @method	insertQuickInfoElement
 	 */
 	insertQuickInfoElement: function() {
 		if( ! Todoyu.exists( this.popupID) ) {
@@ -190,6 +223,7 @@ Todoyu.QuickInfo = {
 	 * Handler when moving the mouse on the quickinfo
 	 * Cancel delayed hiding
 	 *
+	 * @method	onInfoOver
 	 * @param	{Event}		event
 	 */
 	onInfoOver: function(event) {
@@ -202,6 +236,7 @@ Todoyu.QuickInfo = {
 	 * Handler when moving the mouse off the quickinfo
 	 * Start delayed hiding
 	 *
+	 * @method	onInfoOut
 	 * @param	{Event}		event
 	 */
 	onInfoOut: function(event) {
@@ -213,6 +248,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Update quick info element style to given position and set it visible
 	 *
+	 * @method	show
 	 * @param	{Event}			event
 	 * @param	{String}		name
 	 * @param	{Function}		callback
@@ -220,9 +256,6 @@ Todoyu.QuickInfo = {
 	 */
 	show: function(event, name, callback, observedElement) {
 		event.stop();
-
-//		var elementID	=observedElement.id;
-//		var context		= elementID.split('_')[0];
 
 		var elementKey	= callback(observedElement, event);
 
@@ -250,6 +283,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Display quickinfo which is in cache
 	 *
+	 * @method	display
 	 * @param	{String}	name
 	 * @param	{String}	elementKey
 	 * @param	{Number}	pointerX
@@ -269,6 +303,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Set cache time for a type
 	 *
+	 * @method	setCacheTime
 	 * @param	{String}		type
 	 * @param	{Number}		time		Cache time in seconds
 	 */
@@ -281,6 +316,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Get cache time for an element type. Gets time until cache is valid
 	 *
+	 * @method	getCacheTime
 	 * @param	{String}		type
 	 */
 	getCacheTime: function(type) {
@@ -292,6 +328,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Show quickinfo tooltip
 	 *
+	 * @method	showPopUp
 	 * @param	{Number}		x
 	 * @param	{Number}		y
 	 */
@@ -318,6 +355,8 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Hide quick-info tooltip
+	 *
+	 * @method	hide
 	 */
 	hide: function() {
 		if( $(this.popupID) ) {
@@ -334,6 +373,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Evoke loading of quickinfo tooltip content
 	 *
+	 * @method	loadQuickInfo
 	 * @param	{String}	name			'event' / 'holiday' / 'person', etc.
 	 * @param	{String}	elementKey
 	 * @param	{Function}	callback
@@ -359,6 +399,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Show quickinfo after loaded by ajax. Add to cache with custom cache time
 	 *
+	 * @method	onQuickInfoLoaded
 	 * @param	{String}			name			Type of element
 	 * @param	{String}			elementKey		Key of element (mostly element ID)
 	 * @param	{Event}				event			Hover event
@@ -384,6 +425,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Render quick info tooltip HTML from JSON data
 	 *
+	 * @method	buildQuickInfo
 	 * @param	{Object}		json
 	 * @return	{String}
 	 */
@@ -411,6 +453,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Update popUp content
 	 *
+	 * @method	updatePopup
 	 * @param	{String}	content
 	 */
 	updatePopup: function(content) {
@@ -421,6 +464,8 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Check whether the quickinfo is currently visible
+	 *
+	 * @method	isVisible
 	 */
 	isVisible: function() {
 		return $(this.popupID).visible();
@@ -431,6 +476,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Add quickInfo content to cache
 	 *
+	 * @method	addToCache
 	 * @param	{String}		cacheID		ID of the cached element
 	 * @param	{String}		content		cached content
 	 * @param	{Number}		time		cache time
@@ -447,6 +493,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Get quickinfo content from cache
 	 *
+	 * @method	getFromCache
 	 * @param	{String}		cacheID
 	 * @return	{String}		Or false
 	 */
@@ -459,6 +506,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Remove item of given ID from cache
 	 *
+	 * @method	removeFromCache
 	 * @param	{String}	cacheID
 	 */
 	removeFromCache: function(cacheID) {
@@ -472,6 +520,7 @@ Todoyu.QuickInfo = {
 	/**
 	 * Check whether item with given ID is cached
 	 *
+	 * @method	isCached
 	 * @return	{Boolean}
 	 */
 	isCached: function(cacheID) {

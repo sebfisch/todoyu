@@ -18,6 +18,10 @@
  *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Observe a text field delayed
  * Prevents useless ajax requests until the user has finished typing in the textfield
  */
@@ -25,7 +29,8 @@ Todoyu.DelayedTextObserver = {
 
 	/**
 	 * Timeouts of delayed update events
-	 * @var	{Object}
+	 * @property	timeouts
+	 * @type		Object
 	 */
 	timeouts: {},
 
@@ -34,6 +39,7 @@ Todoyu.DelayedTextObserver = {
 	 * Observe an input field delayed
 	 * Callback function will be called with new field value and the field reference (Ex: onChanged: function(value, field) {})
 	 *
+	 * @method	observe
 	 * @param	{Element}	inputField		Element or ID
 	 * @param	{Function}	callback		Callback function to call after delay. You should bind it before you give it as a parameters
 	 * @param	{Number}	delay			Number of seconds to delay the request in seconds. Default: 0.5s
@@ -61,6 +67,8 @@ Todoyu.DelayedTextObserver = {
 	 * Callback when the input field changes
 	 * Clear older timeouts and start a new one
 	 *
+	 * @private
+	 * @method	_onChanged
 	 * @param	{Event}		event
 	 * @param	{Element}	inputField
 	 * @param	{Function}	callback
@@ -77,6 +85,8 @@ Todoyu.DelayedTextObserver = {
 	/**
 	 * Call the callback function with the field reference and the value
 	 *
+	 * @private
+	 * @method	_callCallback
 	 * @param	{Element}	inputField
 	 * @param	{Function}	callback
 	 */

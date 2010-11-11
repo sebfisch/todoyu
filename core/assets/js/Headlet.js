@@ -18,24 +18,43 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Headlet
  *
- * @namespace	Todoyu.Headlet
+ * @class		Headlet
+ * @namespace	Todoyu
  */
 Todoyu.Headlet = {
 
 	/**
 	 * Current headlet name which is in over status
+	 * @property	current
+	 * @type		String
 	 */
 	current: null,
 
 	/**
 	 * List of headlet JS objects (to call the handlers)
+	 * @property	headlets
+	 * @type		Object
 	 */
 	headlets: {},
 
+	/**
+	 *
+	 * @property	openStatusTimeout
+	 * @type		Function
+	 */
 	openStatusTimeout: null,
 
+	/**
+	 * Currently opened headlet
+	 * @property	openHeadlet
+	 * @type		String
+	 */
 	openHeadlet: null,
 
 
@@ -43,6 +62,8 @@ Todoyu.Headlet = {
 	/**
 	 * Get the headlet element from an event
 	 *
+	 * @private
+	 * @method	_getHeadletFromEvent
 	 * @param	{Event}		event
 	 * @return	{Element}
 	 */
@@ -55,6 +76,8 @@ Todoyu.Headlet = {
 	/**
 	 * Get the headlets name from an event
 	 *
+	 * @private
+	 * @method	_getNameFromEvent
 	 * @param	{Event}		event
 	 * @return	{String}
 	 */
@@ -68,6 +91,8 @@ Todoyu.Headlet = {
 	/**
 	 * Check if event happened in the content div of an overlay headlet
 	 *
+	 * @private
+	 * @method	_isContentEvent
 	 * @param	{Event}		event
 	 * @return	{Boolean}
 	 */
@@ -81,6 +106,8 @@ Todoyu.Headlet = {
 	 * Call the handler of a headlet if it has the specific function
 	 * Possible handlers: onButtonClick, onContentClick, onMouseOver, onMouseOut
 	 *
+	 * @private
+	 * @method	_callHandler
 	 * @param	{String}	name		Name of the headlet
 	 * @param	{String}	eventType	Event type (handler name)
 	 * @param	{Event}		event		Event object
@@ -97,6 +124,8 @@ Todoyu.Headlet = {
 
 	/**
 	 * Initialize headlet management (observation)
+	 *
+	 * @method	init
 	 */
 	init: function() {
 		if( ! Todoyu.exists('headlets') ) {
@@ -118,6 +147,7 @@ Todoyu.Headlet = {
 	/**
 	 * Add a headlet object
 	 *
+	 * @method	add
 	 * @param	{String}		name
 	 * @param	{Object}		headletObject
 	 */
@@ -151,6 +181,7 @@ Todoyu.Headlet = {
 	/**
 	 * Handler for hovering a headlet
 	 *
+	 * @method	onOverHeadlet
 	 * @param	{Event}		event
 	 */
 	onOverHeadlet: function(event) {
@@ -177,6 +208,7 @@ Todoyu.Headlet = {
 	/**
 	 * Handler for hovering the headlet container
 	 *
+	 * @method	onOverContainer
 	 * @param	{Event}		event
 	 */
 	onOverContainer: function(event) {
@@ -201,6 +233,7 @@ Todoyu.Headlet = {
 	 * On click handler
 	 * Calls one of the click handlers when on a headlet
 	 *
+	 * @method	onClick
 	 * @param	{Event}		event
 	 */
 	onClick: function(event) {
@@ -243,6 +276,7 @@ Todoyu.Headlet = {
 	 * On menu click handler
 	 * Calls the onMenuClick handler on the headlet object
 	 *
+	 * @method	onMenuClick
 	 * @param	{Event}		event
 	 */
 	onMenuClick: function(event) {
@@ -261,6 +295,7 @@ Todoyu.Headlet = {
 	/**
 	 * Check if a headlet exists
 	 *
+	 * @method	exists
 	 * @param	{String}		name
 	 */
 	exists: function(name) {
@@ -272,27 +307,57 @@ Todoyu.Headlet = {
 	/**
 	 * Set a headlet active
 	 *
-	 * @param	{String}		name
+	 * @method	setActive
+	 * @param	{String}	name
 	 */
 	setActive: function(name) {
 		this.setAllInactive();
 		$('headlet-' + name).addClassName('active');
 	},
 
+
+
+	/**
+	 * Set headlet inactive
+	 *
+	 * @method	setInactive
+	 * @param	{String}	name
+	 */
 	setInactive: function(name) {
 		$('headlet-' + name).removeClassName('active');
 	},
 
+
+
+	/**
+	 * Set all headlets inactive
+	 *
+	 * @method	setAllInactive
+	 */
 	setAllInactive: function() {
 		$('headlets').select('li.headlet').invoke('removeClassName', 'active');
 	},
 
+
+
+	/**
+	 * Check whether a headlet is active
+	 *
+	 * @method	isActive
+	 * @param	{String}	name
+	 */
 	isActive: function(name) {
 		return $('headlet-' + name).hasClassName('active');
 	},
 
 
 
+	/**
+	 * Show/hide content
+	 *
+	 * @method	toggleContent
+	 * @param	{String}	name
+	 */
 	toggleContent: function(name) {
 		this.getContent(name).toggle();
 	},
@@ -302,7 +367,9 @@ Todoyu.Headlet = {
 	/**
 	 * Check if content of a headlet is visible
 	 *
+	 * @method	isContentVisible
 	 * @param	{String}		name
+	 * @return	{Boolean}
 	 */
 	isContentVisible: function(name) {
 		return this.getContent(name).visible();
@@ -313,6 +380,7 @@ Todoyu.Headlet = {
 	/**
 	 * Show content of a headlet
 	 *
+	 * @method	showContent
 	 * @param	{String}		name
 	 * @param	{Boolean}		keepOthers
 	 */
@@ -331,6 +399,7 @@ Todoyu.Headlet = {
 	/**
 	 * Hide content of a headlet
 	 *
+	 * @method	hideContent
 	 * @param	{String}		name
 	 */
 	hideContent: function(name) {
@@ -342,9 +411,11 @@ Todoyu.Headlet = {
 
 
 	/**
-	 * Check if headlet has a content element
+	 * Check wheter a headlet has a content element
 	 *
+	 * @method	hasContent
 	 * @param	{String}		name
+	 * @return	{Boolean}
 	 */
 	hasContent: function(name) {
 		return Todoyu.exists('headlet-' + name + '-content');
@@ -355,6 +426,7 @@ Todoyu.Headlet = {
 	/**
 	 * Hide all content except
 	 *
+	 * @method	hideAllContent
 	 * @param	{String}	exceptName
 	 */
 	hideAllContent: function(exceptName) {
@@ -371,6 +443,7 @@ Todoyu.Headlet = {
 	/**
 	 * Get headlet element
 	 *
+	 * @method	getHeadlet
 	 * @param	{String}		name
 	 * @return	{Element}
 	 */
@@ -383,7 +456,9 @@ Todoyu.Headlet = {
 	/**
 	 * Get button element of a headlet
 	 *
+	 * @method	getButton
 	 * @param	{String}		name
+	 * @return	{Element}
 	 */
 	getButton: function(name) {
 		return $('headlet-' + name + '-button');
@@ -394,7 +469,9 @@ Todoyu.Headlet = {
 	/**
 	 * Get content element of a headlet
 	 *
+	 * @method	getContent
 	 * @param	{String}		name
+	 * @return	{Element}
 	 */
 	getContent: function(name) {
 		return $('headlet-' + name.toLowerCase() + '-content');
@@ -405,7 +482,9 @@ Todoyu.Headlet = {
 	/**
 	 * Get headlet type
 	 *
+	 * @method	getType
 	 * @param	{String}		name
+	 * @return	{String}
 	 */
 	getType: function(name) {
 		var classNames	= $w(this.getButton(name).className);
@@ -422,6 +501,7 @@ Todoyu.Headlet = {
 	 * Handler when clicked on body, fired by Todoyu.Ui.onBodyClick()
 	 * If clicked outside the headlets, hide all content boxes
 	 *
+	 * @method	onBodyClick
 	 * @param	{Event}		event
 	 */
 	onBodyClick: function(event) {
@@ -434,8 +514,11 @@ Todoyu.Headlet = {
 
 	/**
 	 * Check if event occurred in own content element
+	 *
+	 * @method	isEventInOwnContent
 	 * @param	{String}	name
 	 * @param	{Event}		event
+	 * @return	{Boolean}
 	 */
 	isEventInOwnContent: function(name, event) {
 		return event.element().up('ul#headlet-' + name + '-content') !== undefined;
@@ -447,6 +530,7 @@ Todoyu.Headlet = {
 	 * Save open status of a headlet
 	 * Setup a timeout for the save function
 	 *
+	 * @method	saveOpenStatus
 	 * @param	{String}		name
 	 */
 	saveOpenStatus: function(name) {
@@ -456,19 +540,14 @@ Todoyu.Headlet = {
 			return overlay.visible();
 		});
 
-
-
 			// Extract headlet name
 		if( openOverlay !== undefined ) {
 			headlet	= openOverlay.id.split('-')[1];
 		}
 
-
-
 		if( this.openHeadlet === false && headlet === false ) {
 			return ;
 		}
-
 
 		this.openHeadlet = headlet;
 
@@ -478,11 +557,13 @@ Todoyu.Headlet = {
 		this.openStatusTimeout = this.submitOpenStatus.bind(this, headlet).delay(1);
 	},
 
+	
 
 	/**
 	 * Submit the currently open headlet
 	 * False means, no headlet is open at the moment
 	 *
+	 * @method	submitOpenStatus
 	 * @param	{String|Boolean}	openHeadlet
 	 */
 	submitOpenStatus: function(openHeadlet) {

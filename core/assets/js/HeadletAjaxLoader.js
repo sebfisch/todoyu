@@ -18,21 +18,29 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Headlet: Ajax Loader
  * Icon which indicated AJAX loading activity in head area
  *
- * @package		Todoyu
- * @subpackage	Core
+ * @class		AjaxLoader
+ * @namespace	Todoyu.Headlet
  */
 Todoyu.Headlet.AjaxLoader = {
 
 	/**
 	 * ID of the element which is toggled visible
+	 * @property	buttonID
+	 * @type		String
 	 */
 	buttonID: 'headlet-ajaxloader-button',
 
 	/**
 	 * Show AJAX loading icon
+	 *
+	 * @method	show
 	 */
 	show: function() {
 		if( Todoyu.exists(this.buttonID) ) {
@@ -49,6 +57,8 @@ Todoyu.Headlet.AjaxLoader = {
 
 	/**
 	 * Hide AJAX loading icon
+	 *
+	 * @method	hide
 	 */
 	hide: function() {
 		if( Todoyu.exists(this.buttonID) ) {

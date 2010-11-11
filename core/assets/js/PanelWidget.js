@@ -18,17 +18,27 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * PanelWidget
  *
- * @namespace	Todoyu.PanelWidget
+ * @class		PanelWidget
+ * @namespace	Todoyu
  */
 Todoyu.PanelWidget = {
 
+	/**
+	 * @property	observerCallbacks
+	 * @type		Object
+	 */
 	observerCallbacks: {},
 
 	/**
 	 * Toggle a panel widget
 	 *
+	 * @method	toggle
 	 * @param	{String}	widget
 	 */
 	toggle: function(widget) {
@@ -56,6 +66,7 @@ Todoyu.PanelWidget = {
 	/**
 	 * Save toggle status (expanded or collapsed)
 	 *
+	 * @method	saveToggleStatus
 	 * @param	{String}	widget
 	 * @param	{Boolean}	expanded
 	 */
@@ -75,8 +86,9 @@ Todoyu.PanelWidget = {
 
 
 	/**
-	 * Install observer on given widget, firing given callback function 
+	 * Install observer on given widget, firing given callback function
 	 *
+	 * @method	observe
 	 * @param	{String}			widget
 	 * @param	{String}			callbackFunction
 	 */
@@ -93,6 +105,7 @@ Todoyu.PanelWidget = {
 	/**
 	 * Stop observation of given widget
 	 *
+	 * @method	stopObserving
 	 * @param	{String}		widget
 	 * @param	{String}		callbackFunction
 	 */
@@ -111,6 +124,7 @@ Todoyu.PanelWidget = {
 	/**
 	 * Fire registered callback functions of given widget
 	 *
+	 * @method	fire
 	 * @param	{String}	widget
 	 * @param	{Array}	params
 	 */
@@ -127,6 +141,7 @@ Todoyu.PanelWidget = {
 	/**
 	 * Check whether given panel widget is loaded
 	 *
+	 * @method	isLoaded
 	 * @param	{String}		extKey
 	 * @param	{String}		widgetName
 	 * @return	{Boolean}

@@ -18,17 +18,29 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * General form helper functions
  *
- * @namespace	Todoyu.Form
+ * @class		Form
+ * @namespace	Todoyu
  */
 Todoyu.Form = {
 
+	/**
+	 * Index counter for sub forms. Starts at 100 to prevent colisions
+	 * @property	subFormIndex
+	 * @type		Number
+	 */
 	subFormIndex: 100,
+
 
 	/**
 	 * Initialize form display: expand invalid foreign records, focus first field
 	 *
+	 * @method	onFormDisplay
 	 * @param   {String}  formID
 	 */
 	onFormDisplay: function(formID) {
@@ -42,6 +54,9 @@ Todoyu.Form = {
 
 	/**
 	 * Get the next index for a sub form to prevent name collisions
+	 *
+	 * @method	getNextIndex
+	 * @return	{Number}
 	 */
 	getNextIndex: function() {
 		return this.subFormIndex++;
@@ -52,6 +67,7 @@ Todoyu.Form = {
 	/**
 	 * Toggle sub form
 	 *
+	 * @method	toggleRecordForm
 	 * @param	{Number}		idRecord
 	 * @param	{String}		fieldName
 	 * @param	{Number}		index
@@ -66,12 +82,6 @@ Todoyu.Form = {
 
 			$(trigger).down('span')[$(formHtml).visible() ? 'addClassName' : 'removeClassName']('expanded');
 		}
-
-//		var idForm = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index + '-formhtml';
-//
-//		if( Todoyu.exists(idForm) ) {
-//			$(idForm).toggle();
-//		}
 	},
 
 
@@ -79,6 +89,7 @@ Todoyu.Form = {
 	/**
 	 * Remove sub form
 	 *
+	 * @method	removeRecord
 	 * @param	{Number}		idRecord
 	 * @param	{String}		fieldName
 	 * @param	{Number}		index
@@ -94,6 +105,7 @@ Todoyu.Form = {
 	/**
 	 * Add a new record
 	 *
+	 * @method	addRecord
 	 * @param	{Number}		idRecord
 	 * @param	{String}		formName
 	 * @param	{String}		fieldName
@@ -124,11 +136,12 @@ Todoyu.Form = {
 	/**
 	 * Callback when new record added
 	 *
+	 * @method	onRecordAdded
 	 * @param	{Number}		idRecord
 	 * @param	{String}		formName
 	 * @param	{String}		fieldName
 	 * @param	{String}		index
-	 * @param	{String}		response
+	 * @param	{Ajax.Response}	response
 	 */
 	onRecordAdded: function(container, idRecord, formName, fieldName, index, response) {
 		$(container).insert({'top':response.responseText});
@@ -142,6 +155,7 @@ Todoyu.Form = {
 	/**
 	 * Focus first record field
 	 *
+	 * @method	focusFirstRecordField
 	 * @param	{Number}		idRecord
 	 * @param	{String}		fieldName
 	 * @param	{Number}		index
@@ -160,6 +174,7 @@ Todoyu.Form = {
 	/**
 	 * Focus first form field
 	 *
+	 * @method	focusFirstFormField
 	 * @param	{String}	formID
 	 */
 	focusFirstFormField: function(formID) {
@@ -179,7 +194,8 @@ Todoyu.Form = {
 	/**
 	 * Expand / collapse foreign record fields
 	 *
-	 * @param	{Array}	fieldNames
+	 * @method	toggleForeignRecords
+	 * @param	{Array}		fieldNames
 	 */
 	toggleForeignRecords: function(fieldNames) {
 		fieldNames = fieldNames || [];
@@ -194,6 +210,7 @@ Todoyu.Form = {
 	/**
 	 * Check whether any of the given fields is currently hidden
 	 *
+	 * @method	isAnyFieldHidden
 	 * @param	{Array}	fieldNames
 	 * @return	{Boolean}
 	 */
@@ -218,6 +235,7 @@ Todoyu.Form = {
 	/**
 	 * Expand fields of foreign records
 	 *
+	 * @method	expandForeignRecords
 	 * @param	{Array}		fieldNames
 	 */
 	expandForeignRecords: function(fieldNames) {
@@ -229,6 +247,7 @@ Todoyu.Form = {
 	/**
 	 * Invoke given method (e.g. 'show', 'hide') on all fields inside the parent of the given field names
 	 *
+	 * @method	invokeForeignRecords
 	 * @param	{Array}		fieldNames
 	 */
 	invokeForeignRecords: function(fieldNames, method) {
@@ -250,6 +269,7 @@ Todoyu.Form = {
 	/**
 	 * Show formHTML of invalid form elements in foreign records
 	 *
+	 * @method	expandInvalidForeignRecords
 	 * @param	{String}		formID
 	 */
 	expandInvalidForeignRecords: function(formID) {
@@ -266,6 +286,7 @@ Todoyu.Form = {
 	/**
 	 * Expand all foreign records in a form
 	 *
+	 * @method	openWizard
 	 * @param	{Number}		idRecord
 	 * @param	{Number}		idField
 	 * @param	{String}		extension
@@ -299,6 +320,7 @@ Todoyu.Form = {
 	/**
 	 * Live-validation and correction of float value input field: on keyUp event replace ',' by '.'
 	 *
+	 * @method	assistFloatInput
 	 * @param	{Element}	field
 	 */
 	assistFloatInput: function(field) {
@@ -312,6 +334,7 @@ Todoyu.Form = {
 	/**
 	 * Add an iFrame to the document body
 	 *
+	 * @method	addIFrame
 	 * @param	{String}		key			Identifier
 	 * @return	{Element}					IFrame element
 	 */
@@ -337,6 +360,7 @@ Todoyu.Form = {
 	/**
 	 * Get a hidden iFrame
 	 *
+	 * @method	getIFrame
 	 * @param	{String}		key
 	 */
 	getIFrame: function(key) {
@@ -348,6 +372,7 @@ Todoyu.Form = {
 	/**
 	 * Open an iframe URL
 	 *
+	 * @method	openIFrame
 	 * @param	{String}	key
 	 * @param	{String}	url
 	 */
@@ -361,6 +386,7 @@ Todoyu.Form = {
 	/**
 	 * Remove a hidden iFrame
 	 *
+	 * @method	removeIFrame
 	 * @param	{String}	key
 	 */
 	removeIFrame: function(key) {
@@ -375,6 +401,8 @@ Todoyu.Form = {
 
 	/**
 	 * Sets the value of the chosen icon to the hidden field
+	 *
+	 * @method	setIconSelectorValue
 	 */
 	setIconSelectorValue: function(value, baseID) {
 		$(baseID).value = value;
@@ -393,6 +421,7 @@ Todoyu.Form = {
 	/**
 	 * Disable save and cancel buttons in form
 	 *
+	 * @method	disableSaveButtons
 	 * @param	{Element}	form
 	 */
 	disableSaveButtons: function(form) {

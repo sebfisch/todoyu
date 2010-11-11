@@ -18,12 +18,21 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Time related helper functions
  *
- * @namespace	Todoyu.Time
+ * @class		Time
+ * @namespace	Todoyu
  */
 Todoyu.Time = {
 
+	/**
+	 * @property	seconds
+	 * @type		Object
+	 */
 	seconds: {
 		minute:	60,
 		hour:	3600,
@@ -37,6 +46,7 @@ Todoyu.Time = {
 	/**
 	 * Format given time, to e.g. '13:50:20'
 	 *
+	 * @method	timeFormat
 	 * @param	{Number}		hours
 	 * @param	{Number}		minutes
 	 * @param	{Number}		seconds
@@ -56,6 +66,7 @@ Todoyu.Time = {
 	/**
 	 * Format given time
 	 *
+	 * @method	timeFormatSeconds
 	 * @param	{String}	time
 	 * @param	{String}	separator
 	 * @return	{String}
@@ -71,6 +82,7 @@ Todoyu.Time = {
 	/**
 	 * Parse given time string to seconds
 	 *
+	 * @method	parseTimeToSeconds
 	 * @param	{String}	timeString
 	 * @return	{String}
 	 */
@@ -85,6 +97,7 @@ Todoyu.Time = {
 	/**
 	 * Get time parts of given (timestamp) time
 	 *
+	 * @method	getTimeParts
 	 * @param	{Number}		time
 	 * @return	Array
 	 */
@@ -107,6 +120,7 @@ Todoyu.Time = {
 	/**
 	 * Get shifted time
 	 *
+	 * @method	getShiftedTime
 	 * @param	{Number}		baseTime		Unit timestamp
 	 * @param	{String}		tab
 	 * @param	{Boolean}		up
@@ -142,6 +156,7 @@ Todoyu.Time = {
 	/**
 	 * Get timestamp at start of day
 	 *
+	 * @method	getDayStart
 	 * @param	{Number}	time
 	 * @return	{Number}
 	 */
@@ -160,6 +175,7 @@ Todoyu.Time = {
 	/**
 	 * Get timestamp at start of week
 	 *
+	 * @method	getWeekStart
 	 * @param	{Number}		baseTime
 	 * @return	{Number}
 	 */
@@ -183,6 +199,7 @@ Todoyu.Time = {
 	/**
 	 * Get todays date
 	 *
+	 * @method	getTodayDate
 	 * @return	{Number}		microtime timestamp
 	 */
 	getTodayDate: function() {
@@ -199,6 +216,7 @@ Todoyu.Time = {
 	/**
 	 * Get amount of days in month
 	 *
+	 * @method	getDaysInMonth
 	 * @param	{Number}	time
 	 * @return	{Number}
 	 */
@@ -215,7 +233,9 @@ Todoyu.Time = {
 	/**
 	 * Get date string in format YYYY-MM-DD
 	 *
+	 * @method	getDateString
 	 * @param	{Number}		time
+	 * @return	{String}
 	 */
 	getDateString: function(time) {
 		var date = new Date(time*1000);
@@ -228,7 +248,9 @@ Todoyu.Time = {
 	/**
 	 * Get date string with time part in format YYYY-MM-DD HH:MM
 	 *
+	 * @method	getDateTimeString
 	 * @param	{Number}		time
+	 * @return	{String}
 	 */
 	getDateTimeString: function(time) {
 		time = parseInt(time, 10);
@@ -239,10 +261,13 @@ Todoyu.Time = {
 	},
 
 
+
 	/**
 	 * Convert date string (Y-m-d) into an timestamp
 	 *
+	 * @method	date2Time
 	 * @param	{String}		date
+	 * @return	{Number}
 	 */
 	date2Time: function(date) {
 		var parts	= date.split('-');

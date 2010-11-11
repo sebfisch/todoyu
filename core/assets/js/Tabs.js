@@ -18,14 +18,21 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Tabs handling
  *
- * @namespace	Todoyu.Tabs
+ * @class		Tabs
+ * @namespace	Todoyu
  */
 Todoyu.Tabs = {
 
 	/**
 	 * References to all functions which are bound as event handlers
+	 * @property	bindCache
+	 * @type		Object
 	 */
 	bindCache: {},
 
@@ -34,6 +41,7 @@ Todoyu.Tabs = {
 	/**
 	 * Create tabs based on the <ul><li>
 	 *
+	 * @method	create
 	 * @param	{String}	name
 	 * @param	{Function}	handlerFunction
 	 */
@@ -56,6 +64,7 @@ Todoyu.Tabs = {
 	/**
 	 * Remove event listeners from a tab group
 	 *
+	 * @method	destroy
 	 * @param	{String}	list
 	 */
 	destroy: function(list) {
@@ -73,6 +82,8 @@ Todoyu.Tabs = {
 	/**
 	 * Handler for click events on a tab
 	 *
+	 * @private
+	 * @method	_clickHandler
 	 * @param	{Event}			event
 	 * @param	{Function}		handlerFunction
 	 */
@@ -104,6 +115,7 @@ Todoyu.Tabs = {
 	/**
 	 * Set a tab active in a group of tabs
 	 *
+	 * @method	setActive
 	 * @param	{String}	listname
 	 * @param	{String}	tab
 	 */
@@ -118,6 +130,14 @@ Todoyu.Tabs = {
 		}
 	},
 
+
+
+	/**
+	 * Activate tab element
+	 *
+	 * @method	setActiveByElement
+	 * @param	{Element}	tabElement
+	 */
 	setActiveByElement: function(tabElement) {
 		var idParts	= $(tabElement).id.split('-tab-');
 		this.setActive(idParts.first(), idParts.last());
@@ -128,6 +148,7 @@ Todoyu.Tabs = {
 	/**
 	 * Get currently active tab in a list
 	 *
+	 * @method	getActive
 	 * @param	{String}		list		List element or its ID
 	 * @return	{Element}
 	 */
@@ -139,7 +160,8 @@ Todoyu.Tabs = {
 
 	/**
 	 * Get key of the active tab of the list
-	 * 
+	 *
+	 * @method	getActiveKey
 	 * @param	{String}		list		List or its ID
 	 * @return	{Element}
 	 */
@@ -158,6 +180,7 @@ Todoyu.Tabs = {
 	/**
 	 * Set the label text of a tab
 	 *
+	 * @method	setLabel
 	 * @param	{String}	listname
 	 * @param	{String}	tab
 	 * @param	{String}	label
@@ -171,6 +194,7 @@ Todoyu.Tabs = {
 	/**
 	 * Remove a tab from a tab group
 	 *
+	 * @method	removeTab
 	 * @param	{String}	listname
 	 * @param	{String}	tab
 	 */
@@ -187,6 +211,7 @@ Todoyu.Tabs = {
 	/**
 	 * Build a tab
 	 *
+	 * @method	build
 	 * @param	{String}	listname
 	 * @param	{String}	name
 	 * @param	{String}	tabClass
@@ -230,6 +255,8 @@ Todoyu.Tabs = {
 	/**
 	 * Enter Description here...
 	 *
+	 * @private
+	 * @method	_hoverHandler
 	 * @param	{Event}		event
 	 * @param	{Boolean}	over
 	 */

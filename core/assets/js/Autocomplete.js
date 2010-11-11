@@ -18,13 +18,20 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Autocompleter
  *
- * @namespace	Todoyu.Autocomplete
+ * @class		Autocomplete
+ * @namespace	Todoyu
  */
 Todoyu.Autocomplete = {
 	/**
 	 * Configuration for autocompleter object
+	 * @property	config
+	 * @type		Object
 	 */
 	config: {
 		paramName: 'input',
@@ -33,24 +40,25 @@ Todoyu.Autocomplete = {
 
 	/**
 	 * Autocompleter references
+	 * @property	acRefs
+	 * @type		Object
 	 */
 	acRefs: {},
 
 	/**
 	 * Flag. True if a valid option just was selected
 	 * Prevents to cleanup field
+	 * @property	selectedFromList
+	 * @type		Boolean
 	 */
 	selectedFromList: false,
 
 
 
 	/**
-	 * Initialize autocompleter ('inputAC')
-	 */
-
-	/**
 	 * Initialize autocompleter
 	 *
+	 * @method	install
 	 * @param	{Number}		idElement		ID of the element whichs value will be set by autocomplete
 	 * @param	{Object}		config			Custom config
 	 */
@@ -86,8 +94,10 @@ Todoyu.Autocomplete = {
 	/**
 	 * Callback which builds the request url
 	 *
+	 * @method	beforeRequestCallback
 	 * @param	{Number}		idElement
 	 * @param	{String}		acParam
+	 * @return	{String}
 	 */
 	beforeRequestCallback: function(idElement, acParam) {
 		var form	= $(idElement).up('form');
@@ -102,6 +112,7 @@ Todoyu.Autocomplete = {
 	/**
 	 * Called if input field has changed (blur)
 	 *
+	 * @method	onInputChange
 	 * @param	{Event}		event
 	 */
 	onInputChange: function(event) {
@@ -121,6 +132,7 @@ Todoyu.Autocomplete = {
 	/**
 	 * On keypress. If its not the return key, the current value is invalid (until autocompleted)
 	 *
+	 * @method	onKeydown
 	 * @param	{Event}	event
 	 */
 	onKeydown: function(event) {
@@ -134,6 +146,7 @@ Todoyu.Autocomplete = {
 	/**
 	 * When autocomplete value is selected
 	 *
+	 * @method	onElementSelected
 	 * @param	{Element}	inputField
 	 * @param	{Element}	selectedListElement
 	 */
@@ -163,6 +176,7 @@ Todoyu.Autocomplete = {
 	/**
 	 * Clear fields because of invalid input
 	 *
+	 * @method	clear
 	 * @param	{Element}		element
 	 */
 	clear: function(element) {
@@ -171,6 +185,15 @@ Todoyu.Autocomplete = {
 		$(idElement + '-fulltext').setValue('');
 	},
 
+
+
+	/**
+	 * Get AC options
+	 *
+	 * @method	getOptions
+	 * @param	{String}	idElement
+	 * @return	{Object}
+	 */
 	getOptions: function(idElement) {
 		return this.acRefs[idElement].options;
 	}

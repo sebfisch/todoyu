@@ -17,30 +17,65 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * @module	Core
+ */
+
+/**
+ * Timepicker helper for time inputs
+ *
+ * @class		TimePicker
+ * @namespace	Todoyu
+ * @constructor
+ */
 Todoyu.TimePicker = Class.create({
 
 	/**
-	 * Selected hour and minute
+	 * @property	hour
+	 * @type		Number
 	 */
 	hour:	0,
+
+	/**
+	 * @property	minute
+	 * @type		Number
+	 */
 	minute:	0,
 
 	/**
 	 * Input element
+	 * @property	element
+	 * @type		Element
 	 */
 	element: null,
 
 	/**
-	 * Picker divs. Container, hour, minute
+	 * Picker div
+	 * @property	picker
+	 * @type		Element
 	 */
 	picker:		null,
+
+	/**
+	 * Container hour
+	 * @property	divHour
+	 * @type		Element
+	 */
 	divHour:	null,
+
+	/**
+	 * Container minute
+	 * @property	divMinute
+	 * @type		Element
+	 */
 	divMinute:	null,
 
 
 
 	/**
 	 * Configuration
+	 * @property	config
+	 * @type		Object
 	 */
 	config: {
 		height: 22,
@@ -55,6 +90,7 @@ Todoyu.TimePicker = Class.create({
 	/**
 	 * Constructor
 	 *
+	 * @method	initialize
 	 * @param	{String}		idElement
 	 */
 	initialize: function(idElement, config) {
@@ -86,6 +122,8 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Show picker near the element
+	 *
+	 * @method	show
 	 */
 	show: function() {
 		this._setPosition();
@@ -96,6 +134,8 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Hide the picker
+	 *
+	 * @method	hide
 	 */
 	hide: function() {
 		this.picker.hide();
@@ -105,7 +145,8 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Set hour and update scroll
-	 * 
+	 *
+	 * @method	setHour
 	 * @param	{Number}		hour
 	 */
 	setHour: function(hour) {
@@ -118,7 +159,8 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Set minute and update scroll
-	 * 
+	 *
+	 * @method	setMinute
 	 * @param	{Number}		minute
 	 */
 	setMinute: function(minute) {
@@ -130,6 +172,8 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Update scroll of minute and hour
+	 *
+	 * @method	updateScroll
 	 */
 	updateScroll: function() {
 		var newHourPos = this.hour * this.config.height * -1 + 2 * this.config.height - (2 * this.config.height);
@@ -155,6 +199,8 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Update current selection in element
+	 *
+	 * @method	updateElement
 	 */
 	updateElement: function() {
 		this.element.value = this.hour + ':' + Todoyu.Helper.twoDigit(this.minute);
@@ -164,6 +210,9 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Set picker position near the element
+	 *
+	 * @private
+	 * @method	_setPosition
 	 */
 	_setPosition: function() {
 		var elOffset= this.element.cumulativeOffset();
@@ -183,7 +232,9 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Make element id, prefixed with element id
-	 * 
+	 *
+	 * @private
+	 * @method	_makeID
 	 * @param	{String}		name
 	 */
 	_makeID: function(name) {
@@ -194,6 +245,9 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Build picker HTML
+	 *
+	 * @private
+	 * @method	_build
 	 */
 	_build: function() {
 		this._remove();
@@ -233,6 +287,9 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Insert hour elements
+	 *
+	 * @private
+	 * @method	_insertHours
 	 */
 	_insertHours: function() {
 		for(var i = this.config.rangeHour[0]; i <= this.config.rangeHour[1]; i += this.config.stepHour) {
@@ -244,6 +301,9 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Insert minute elements
+	 *
+	 * @private
+	 * @method	_insertMinute
 	 */
 	_insertMinute: function() {
 		for(var i = this.config.rangeMinute[0]; i <= this.config.rangeMinute[1]; i += this.config.stepMinute) {
@@ -255,6 +315,9 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Remove picker from document
+	 *
+	 * @private
+	 * @method	_remove
 	 */
 	_remove: function() {
 		var idPicker = this._makeID('durationpicker');
@@ -269,6 +332,9 @@ Todoyu.TimePicker = Class.create({
 	/**
 	 * Observe picker for click and wheel turning
 	 * Observe element for clicks
+	 *
+	 * @private
+	 * @method	_observePicker
 	 */
 	_observePicker: function() {
 		var wheelEventName	= Prototype.Browser.Gecko ? 'DOMMouseScroll' : 'mousewheel';
@@ -284,7 +350,9 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Event handler for picker click
-	 * 
+	 *
+	 * @private
+	 * @method	_onSelection
 	 * @param	{Event}		event
 	 */
 	_onSelection: function(event) {
@@ -312,7 +380,9 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Event handler for element click
-	 * 
+	 *
+	 * @private
+	 * @method	_onElementClick
 	 * @param	{Event}		event
 	 */
 	_onElementClick: function(event) {
@@ -323,7 +393,9 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Event handler for hour scroll
-	 * 
+	 *
+	 * @private
+	 * @method	_onHourScroll
 	 * @param	{Event}		event
 	 */
 	_onHourScroll: function(event) {
@@ -338,7 +410,9 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Event handler for minute scroll
-	 * 
+	 *
+	 * @private
+	 * @method	_onMinuteScroll
 	 * @param	{Event}		event
 	 */
 	_onMinuteScroll: function(event) {
@@ -353,7 +427,9 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Make sure the value stays in the range.
-	 * 
+	 *
+	 * @private
+	 * @method	_keepInRange
 	 * @param	{Number}		value
 	 * @param	{Array}		range		Bottom and top range
 	 */
@@ -373,6 +449,8 @@ Todoyu.TimePicker = Class.create({
 
 	/**
 	 * Read duration from element
+	 *
+	 * @method	_readDuration
 	 */
 	_readDuration: function() {
 		var value = $F(this.element);

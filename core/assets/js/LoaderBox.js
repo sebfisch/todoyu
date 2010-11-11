@@ -18,28 +18,43 @@
  *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Loader box
  * Shows a message and a spinner to show that an action is in progress
+ *
+ * @class		LoaderBox
+ * @namespace	Todoyu
  */
 Todoyu.LoaderBox = {
 
 	/**
 	 * Id of the loader box
+	 * @property	idBox
+	 * @type		String
 	 */
 	idBox: 'loader-box',
 
 	/**
 	 * Loader box element
+	 * @property	box
+	 * @type		Element
 	 */
 	box: null,
 
 	/**
 	 * Id of the screen blocker
+	 * @property	idScreenBlock
+	 * @type		String
 	 */
 	idScreenBlock: 'loader-box-screen-block',
 
 	/**
 	 * Screen blocker element
+	 * @property	screenBlock
+	 * @type		Element
 	 */
 	screenBlock: null,
 
@@ -48,6 +63,7 @@ Todoyu.LoaderBox = {
 	/**
 	 * Show the loader box with a message
 	 *
+	 * @method	show
 	 * @param	{String}	message
 	 * @param	{Boolean}	blockScreen
 	 */
@@ -67,6 +83,8 @@ Todoyu.LoaderBox = {
 
 	/**
 	 * Hide the loader box
+	 *
+	 * @method	hide
 	 */
 	hide: function() {
 		if( this.box ) {
@@ -80,7 +98,10 @@ Todoyu.LoaderBox = {
 
 
 	/**
-	 * Build the loader box with its subelements
+	 * Build the loader box with its sub elements
+	 *
+	 * @private
+	 * @method	_build
 	 */
 	_build: function() {
 		if( ! Todoyu.exists(this.idBox) ) {
@@ -110,6 +131,7 @@ Todoyu.LoaderBox = {
 	/**
 	 * Update the message in the loader box
 	 *
+	 * @method	_updateMessage
 	 * @param	{String}	message
 	 */
 	_updateMessage: function(message) {
@@ -120,6 +142,8 @@ Todoyu.LoaderBox = {
 
 	/**
 	 * Center the loader box on the screen
+	 *
+	 * @method	_center
 	 */
 	_center: function() {
 		Todoyu.Ui.centerElement(this.box);
@@ -129,6 +153,8 @@ Todoyu.LoaderBox = {
 
 	/**
 	 * Show the screen blocker
+	 *
+	 * @method	_showScreenBlock
 	 */
 	_showScreenBlock: function() {
 		if( ! Todoyu.exists(this.idScreenBlock) ) {

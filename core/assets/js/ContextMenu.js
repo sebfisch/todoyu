@@ -18,9 +18,14 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Context menu
  *
- * @namespace	Todoyu.ContextMenu
+ * @class		ContextMenu
+ * @namespace	Todoyu
  */
 Todoyu.ContextMenu = {
 
@@ -28,6 +33,7 @@ Todoyu.ContextMenu = {
 	 * Attach contextmenu to a group of elements
 	 * Automatically prevents double context menus by removing registered ones before adding the new one
 	 *
+	 * @method	attach
 	 * @param	{String}		name		Name of the contextmenu type (php callbacks are registered for this type)
 	 * @param	{String}		selector	CSS selector expression
 	 * @param	{Function}		callback	Callback function to find element if on the observed DomElement
@@ -47,6 +53,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Detach context menu from all elements which match to the selector
 	 *
+	 * @method	detach
 	 * @param	{String}	selector		CSS Selector
 	 */
 	detach: function(selector) {
@@ -62,10 +69,13 @@ Todoyu.ContextMenu = {
 	/**
 	 * Load context menu items (JSON) over AJAX
 	 *
+	 * @private
+	 * @method	load
 	 * @param	{Event}			event				Click event object
 	 * @param	{String}		name				Name of the contextmenu type
 	 * @param	{Function}		callback			Callback function to parse ID from element
 	 * @param	{Element}		observedElement		Observed element
+	 * @return	{Boolean}
 	 */
 	load: function(event, name, callback, observedElement) {
 			// Stop click event to prevent browsers context menu
@@ -90,6 +100,8 @@ Todoyu.ContextMenu = {
 	/**
 	 * Request, render and display context menu
 	 *
+	 * @private
+	 * @method	showMenu
 	 * @param	{String}		url
 	 * @param	{Array}			options
 	 * @param	{Object}		event
@@ -111,8 +123,10 @@ Todoyu.ContextMenu = {
 
 
 	/**
-	 * Render item context menu from given JSON (using JS template)  
+	 * Render item context menu from given JSON (using JS template)
 	 *
+	 * @private
+	 * @method	buildMenuFromJSON
 	 * @param	{Object}		menuJSON
 	 */
 	buildMenuFromJSON: function(menuJSON) {
@@ -125,7 +139,9 @@ Todoyu.ContextMenu = {
 
 	/**
 	 * Set menu dimensions (display position) and show the menu
-	 * 
+	 *
+	 * @private
+	 * @method	setMenuDimensions
 	 * @param	{Event}		event
 	 */
 	setMenuDimensions: function(event) {
@@ -173,6 +189,7 @@ Todoyu.ContextMenu = {
 	/**
 	 * Update context menu container with given HTML
 	 *
+	 * @method	updateMenuContainer
 	 * @param	{String}		menuHTML
 	 */
 	updateMenuContainer: function(menuHTML) {
@@ -184,7 +201,9 @@ Todoyu.ContextMenu = {
 	/**
 	 * Prevent showing of context menu: stop event.
 	 *
+	 * @method	preventContextMenu
 	 * @param	{Object}		event
+	 * @return	{Boolean}
 	 */
 	preventContextMenu: function(event) {
 		event.stop();
@@ -195,6 +214,8 @@ Todoyu.ContextMenu = {
 
 	/**
 	 * Hide context menu
+	 *
+	 * @method	hide
 	 */
 	hide: function() {
 			// Hide context menu
@@ -207,10 +228,12 @@ Todoyu.ContextMenu = {
 
 
 	/**
-	 * Show or hide given item's sub menu (at calculated position)   
+	 * Show or hide given item's sub menu (at calculated position)
 	 *
+	 * @method	submenu
 	 * @param	{String}		key
 	 * @param	{Boolean}		show
+	 * @return	{Boolean}
 	 */
 	submenu: function(key, show) {
 		var ctxMenuID	= 'contextmenu';
@@ -242,6 +265,8 @@ Todoyu.ContextMenu = {
 		} else {
 			submenu.hide();
 		}
+
+		return true;
 	}
 
 };

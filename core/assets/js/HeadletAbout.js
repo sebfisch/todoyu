@@ -18,6 +18,10 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Headlet: About
  * Options about splash screen
  *
@@ -26,25 +30,40 @@
  */
 Todoyu.Headlet.About = {
 
+	/**
+	 * @property	eeVisible
+	 * @type		Object
+	 * @private
+	 */
 	eeVisible: {},
 
 	/**
 	 * Window HTML ID
+	 * @property	idWindow
+	 * @type		String
+	 * @private
 	 */
 	idWindow: 'overflow-window-about',
 
 	/**
 	 * Instance of the current effect
 	 *
-	 * @param	{Effect.Move}
+	 * @property	nameEffect
+	 * @type		Effect.Move
+	 * @private
 	 */
 	nameEffect: null,
 
 	/**
-	 * @var	Todoyu.OverflowWindow
+	 * @property	win
+	 * @type		Todoyu.OverflowWindow
 	 */
 	win: null,
 
+	/**
+	 * @property	winConfig
+	 * @type		Object
+	 */
 	winConfig: {
 		id: 'about',
 		width: 350,
@@ -56,6 +75,12 @@ Todoyu.Headlet.About = {
 		}
 	},
 
+
+	/**
+	 * Initialize headlet
+	 *
+	 * @method	init
+	 */
 	init: function() {
 		this.winConfig.onUpdate = this.onUpdate.bind(this);
 		this.winConfig.onHide	= this.onHide.bind(this);
@@ -63,9 +88,11 @@ Todoyu.Headlet.About = {
 	},
 
 
+
 	/**
 	 * Handler for button clicks
 	 *
+	 * @method	onButtonClick
 	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
@@ -81,6 +108,7 @@ Todoyu.Headlet.About = {
 	/**
 	 * Handler when window is updated
 	 *
+	 * @method	onUpdate
 	 * @param	{Ajax.Response}		response
 	 */
 	onUpdate: function(response) {
@@ -91,6 +119,8 @@ Todoyu.Headlet.About = {
 
 	/**
 	 * Handler when window is hiding
+	 *
+	 * @method	onHide
 	 */
 	onHide: function() {
 		if( this.nameEffect !== null ) {
@@ -103,6 +133,8 @@ Todoyu.Headlet.About = {
 
 	/**
 	 * Handler when window is displayed
+	 *
+	 * @method	onDisplay
 	 */
 	onDisplay: function() {
 		this.startNameScrolling(true, true);
@@ -114,6 +146,7 @@ Todoyu.Headlet.About = {
 	/**
 	 * Start scrolling the names in the 'thank you' box
 	 *
+	 * @method	startNameScrolling
 	 * @param	{Boolean}	up		Scroll up
 	 * @param	{Boolean}	first	Is the first scrolling, reset positions for start
 	 */
@@ -146,6 +179,8 @@ Todoyu.Headlet.About = {
 
 	/**
 	 * Initialize EE
+	 *
+	 * @method	initEE
 	 */
 	initEE: function() {
 		var names	= ['Erni', 'Stenschke', 'Karrer'];
@@ -176,6 +211,7 @@ Todoyu.Headlet.About = {
 	/**
 	 * Show EE
 	 *
+	 * @method	EE
 	 * @param	{Event}		event
 	 */
 	EE: function(event, coderName) {
@@ -202,6 +238,13 @@ Todoyu.Headlet.About = {
 
 	},
 
+
+
+	/**
+	 * Hide window
+	 *
+	 * @method	hide
+	 */
 	hide: function() {
 		if( this.win ) {
 			this.win.hide();

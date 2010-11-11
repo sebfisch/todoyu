@@ -18,16 +18,23 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * General helper functions
  *
- * @namespace	Todoyu.Helper
+ * @class		Helper
+ * @namespace	Todoyu
  */
 Todoyu.Helper = {
 
 	/**
 	 * Convert value to Integer
 	 *
+	 * @method	intval
 	 * @param	{String|Boolean|Number}		mixedvar
+	 * @return	{Number}
 	 */
 	intval: function(mixedvar) {
 		var type = typeof( mixedvar );
@@ -54,6 +61,7 @@ Todoyu.Helper = {
 	/**
 	 * Convert to 2-digit value (possibly add leading zero)
 	 *
+	 * @method	twoDigit
 	 * @param	{String|Number}		number
 	 * @return	{String}
 	 */
@@ -72,6 +80,7 @@ Todoyu.Helper = {
 	/**
 	 * Toggle source of image
 	 *
+	 * @method	toggleImage
 	 * @param	{String}		idImage
 	 * @param	{String}		src1
 	 * @param	{String}		src2
@@ -91,6 +100,7 @@ Todoyu.Helper = {
 	/**
 	 * Round with given precision
 	 *
+	 * @method	round
 	 * @param	{Number}		value
 	 * @param	{Number}	precision
 	 * @return	{Number}
@@ -107,7 +117,8 @@ Todoyu.Helper = {
 
 	/**
 	 * Uppercase the first character of every word in a string
-	 * 
+	 *
+	 * @method	ucwords
 	 * @param	{String}	str
 	 * @return	{String}
 	 */
@@ -121,10 +132,11 @@ Todoyu.Helper = {
 
 	/**
 	 * Wraps buffer to selected number of characters using string break char
-	 * 
+	 *
 	 * Borrowed from phpjs	http://phpjs.org/functions/wordwrap
 	 * version: 909.322
-	 * 
+	 *
+	 * @method	wordwrap
 	 * @param	{String}		str
 	 * @param	{Number}		int_width
 	 * @param	{String}		str_break
@@ -138,7 +150,7 @@ Todoyu.Helper = {
 
 		var i, j, l, s, r;
 
-		str += ''; 
+		str += '';
 		if(m < 1) {
 			return str;
 		}
@@ -155,6 +167,7 @@ Todoyu.Helper = {
 	/**
 	 * Fire event
 	 *
+	 * @method	fireEvent
 	 * @param	{Element}		element
 	 * @param	{String}		event e.g. 'click'
 	 * @return	{String|Object}
@@ -181,7 +194,9 @@ Todoyu.Helper = {
 	/**
 	 * Check whether client is given browser (e.g. 'chrome', 'safari')
 	 *
+	 * @method	isNavigatorUserAgent
 	 * @param	{String}	browserName
+	 * @return	{Boolean}
 	 */
 	isNavigatorUserAgent: function(browserName) {
 		browserName	= browserName.toLowerCase();
@@ -194,6 +209,7 @@ Todoyu.Helper = {
 	/**
 	 * Check whether used client browser is google chrome
 	 *
+	 * @method	isChrome
 	 * @return	{Boolean}
 	 */
 	isChrome: function() {
@@ -205,6 +221,7 @@ Todoyu.Helper = {
 	/**
 	 * Check whether used client browser is apple safari
 	 *
+	 * @method	isSafari
 	 * @return	{Boolean}
 	 */
 	isSafari: function() {
@@ -216,6 +233,7 @@ Todoyu.Helper = {
 	/**
 	 * Set element scrollTop, circumventing refresh bug in safari + chrome
 	 *
+	 * @method	setScrollTop
 	 * @param	{Element}	element
 	 * @param	{Number}	position
 	 */
@@ -232,6 +250,7 @@ Todoyu.Helper = {
 	/**
 	 * Safari + Chrome workaround: defered window refresh to update after modification of scrollTop
 	 *
+	 * @method	onUpdateChromeSafariScrollTop
 	 * @param	{String}	elementID
 	 * @param	{Number}	step
 	 */

@@ -18,33 +18,54 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Notification
  *
- * @namespace	Todoyu.Notification
+ * @class		Notification
+ * @namespace	Todoyu
  */
 
 Todoyu.Notification = {
 
+	/**
+	 * @property	SUCCESS
+	 * @type		String
+	 */
 	SUCCESS:	'success',
 
+	/**
+	 * @property	ERROR
+	 * @type		String
+	 */
 	ERROR:		'error',
 
+	/**
+	 * @property	INFO
+	 * @type		String
+	 */
 	INFO:		'info',
-
-
 
 	/**
 	 * Default countdown if non set
+	 * @property	defaultCountdown
+	 * @type		Number
 	 */
 	defaultCountdown: 3,
 
 	/**
 	 * Template object
+	 * @property	template
+	 * @type		Template
 	 */
 	template: null,
 
 	/**
 	 * Current id for note, incremented
+	 * @property	id
+	 * @type		Number
 	 */
 	id: 1,
 
@@ -52,7 +73,8 @@ Todoyu.Notification = {
 
 	/**
 	 * Add new notification
-	 * 
+	 *
+	 * @method	notify
 	 * @param	{String}		type
 	 * @param	{String}		message
 	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
@@ -84,11 +106,13 @@ Todoyu.Notification = {
 
 	/**
 	 * Init notification HTML template
+	 *
+	 * @method	loadTemplate
 	 */
 	loadTemplate: function() {
 		if( this.template === null ) {
 			this.template = new Template(
-				'<div class="note #{type}" id="notification-note-#{id}">' 
+				'<div class="note #{type}" id="notification-note-#{id}">'
 				+	'<table width="100%"><tr>'
 				+		'<td class="icon">&nbsp;</td>'
 				+		'<td class="message">#{message}</td>'
@@ -102,6 +126,8 @@ Todoyu.Notification = {
 
 	/**
 	 * Remove notification from DOM
+	 *
+	 * @method	remove
 	 */
 	remove: function(id) {
 		$('ntification-note-' + id).remove();
@@ -111,7 +137,8 @@ Todoyu.Notification = {
 
 	/**
 	 * Shortcut to show info notification
-	 * 
+	 *
+	 * @method	notifyInfo
 	 * @param	{String}		message
 	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
@@ -123,7 +150,8 @@ Todoyu.Notification = {
 
 	/**
 	 * Shortcut to show error notification
-	 * 
+	 *
+	 * @method	notifyError
 	 * @param	{String}		message
 	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
@@ -135,7 +163,8 @@ Todoyu.Notification = {
 
 	/**
 	 * Shortcut to show success notification
-	 * 
+	 *
+	 * @method	notifySuccess
 	 * @param	{String}		message
 	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
@@ -147,7 +176,8 @@ Todoyu.Notification = {
 
 	/**
 	 * Close when clicking in the close button
-	 * 
+	 *
+	 * @method	close
 	 * @param	{Element}		closeButton
 	 */
 	close: function(closeButton) {
@@ -161,7 +191,8 @@ Todoyu.Notification = {
 	/**
 	 * Close note by ID
 	 * @todo	watch out for a bugfix of scriptaculous' malfunctioning 'afterFinish' callback
-	 * 
+	 *
+	 * @method	closeNote
 	 * @param	{Number}		id
 	 */
 	closeNote: function(id) {
@@ -178,7 +209,9 @@ Todoyu.Notification = {
 
 
 	/**
-	 *	Fade-out all notifications
+	 * Fade-out all notifications
+	 *
+	 * @method	fadeAllNotes
 	 */
 	fadeAllNotes: function() {
 		$$('.note').each(function(note){
@@ -190,6 +223,8 @@ Todoyu.Notification = {
 
 	/**
 	 * Close first (topmost) of the currently displayed notifications
+	 *
+	 * @method	closeFirstNote
 	 */
 	closeFirstNote: function() {
 		var notes = $('notes').select('div.note');
@@ -204,7 +239,8 @@ Todoyu.Notification = {
 
 	/**
 	 * Handler being evoked when a note is closed (fade-out finished)
-	 * 
+	 *
+	 * @method	onNoteClosed
 	 * @param	{Number}		id
 	 */
 	onNoteClosed: function(id) {
@@ -217,7 +253,8 @@ Todoyu.Notification = {
 
 	/**
 	 * Append new note
-	 * 
+	 *
+	 * @method	appendNote
 	 * @param	{Number}		idNote
 	 * @param	{String}		code
 	 */
@@ -243,6 +280,7 @@ Todoyu.Notification = {
 	/**
 	 * Handler for note mouse over
 	 *
+	 * @method	onMouseOver
 	 * @param	{Event}		event
 	 * @param	{Number}	idNote
 	 */
@@ -253,14 +291,14 @@ Todoyu.Notification = {
 
 
 	/**
-	 * 
+	 * @method	countDown
 	 * @param	{Number}		id
 	 */
 	countDown: function(id) {
 		if( $('notification-note-' + id) ) {
 			var countBox= $('notification-note-' + id).down('.countdown');
 			var current	= parseInt(countBox.innerHTML, 10);
-	
+
 			if( current === 0 ) {
 				this.closeNote(id);
 			} else {
@@ -274,7 +312,8 @@ Todoyu.Notification = {
 
 	/**
 	 * Check whether the todoyu specific 'note' HTTP header was received
-	 * 
+	 *
+	 * @method	checkNoteHeader
 	 * @param	{Ajax.Response}		response
 	 */
 	checkNoteHeader: function(response) {

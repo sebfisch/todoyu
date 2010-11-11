@@ -18,20 +18,35 @@
 *****************************************************************************/
 
 /**
- *	Todoyu popup
+ * @module
+ */
+
+/**
+ * Todoyu popup
  *
- *	@namespace	Todoyu.Popup
- *	@see http://prototype-window.xilinus.com/documentation.html
+ * @class		Popup
+ * @namespace	Todoyu
+ * @see http://prototype-window.xilinus.com/documentation.html
  */
 Todoyu.Popup = {
 
 	/**
 	 * Popup object reference
+	 * @property	popup
+	 * @type		Window
 	 */
 	popup:		{},
-	
+
+	/**
+	 * @property	last
+	 * @type		Window
+	 */
 	last:		null,
 
+	/**
+	 * @property	timoutID
+	 * @type		Function
+	 */
 	timeoutID:	null,
 
 
@@ -39,6 +54,7 @@ Todoyu.Popup = {
 	/**
 	 * Get popup reference
 	 *
+	 * @method	getPopup
 	 * @param	{String}			idPopup
 	 * @return	Object
 	 */
@@ -50,7 +66,8 @@ Todoyu.Popup = {
 
 	/**
 	 * Get last opened popup handle
-	 * 
+	 *
+	 * @method	getLastPopup
 	 * @return	Object
 	 */
 	getLastPopup: function() {
@@ -61,7 +78,8 @@ Todoyu.Popup = {
 
 	/**
 	 * Get amount of open popups
-	 * 
+	 *
+	 * @method	getNumPopups
 	 * @return	{Number}
 	 */
 	getNumPopups: function() {
@@ -73,6 +91,7 @@ Todoyu.Popup = {
 	/**
 	 * Open new popup window
 	 *
+	 * @method	openWindow
 	 * @param	{String}		idPopup
 	 * @param	{String}		title
 	 * @param	{Number}		winWidth
@@ -140,6 +159,7 @@ Todoyu.Popup = {
 	 * 1. upon clicking:	(delayed) popup windwow updates its seize to fit its content
 	 * 2. upon closing:	the cick observer (1) is stopped
 	 *
+	 * @method	onContentLoaded
 	 * @param	{String}	idPopup
 	 * @param	{Object}	response
 	 */
@@ -156,6 +176,7 @@ Todoyu.Popup = {
 	/**
 	 * Enter Description here...
 	 *
+	 * @method	onWindowClose
 	 * @param	{Object}	event
 	 * @param	{String}	idPopup
 	 */
@@ -171,6 +192,7 @@ Todoyu.Popup = {
 	/**
 	 * Enter Description here...
 	 *
+	 * @method	onMouseUp
 	 * @param	{Object}	event
 	 * @param	{String}	idPopup
 	 */
@@ -181,8 +203,9 @@ Todoyu.Popup = {
 
 
 	/**
-	 * Enter Description here...
+	 * Get content element of popup
 	 *
+	 * @method	getContentElement
 	 * @param	{String}	idPopup
 	 */
 	getContentElement: function(idPopup) {
@@ -194,6 +217,7 @@ Todoyu.Popup = {
 	/**
 	 * Update size of popUp to fit its content without scroll bar
 	 *
+	 * @method	updateHeight
 	 * @param	{String}	idPopup
 	 * @param	{Boolean} clearTimeout
 	 */
@@ -209,6 +233,8 @@ Todoyu.Popup = {
 
 	/**
 	 * Clear timeout (if set)
+	 *
+	 * @method	clearTimeout
 	 */
 	clearTimeout: function() {
 //		if( this.timeoutID !== null ) {
@@ -222,6 +248,7 @@ Todoyu.Popup = {
 	/**
 	 * Update popup content
 	 *
+	 * @method	updateContent
 	 * @param	{String}	contentUrl
 	 * @param	{Object}	requestOptions
 	 */
@@ -234,6 +261,7 @@ Todoyu.Popup = {
 	/**
 	 * Set content of given popup
 	 *
+	 * @method	setContent
 	 * @param	{String}	idPopup
 	 * @param	{String}	content
 	 */
@@ -247,6 +275,7 @@ Todoyu.Popup = {
 	/**
 	 * Refresh popup
 	 *
+	 * @method	refresh
 	 * @param	{String}	idPopup
 	 */
 	refresh: function(idPopup) {
@@ -258,6 +287,7 @@ Todoyu.Popup = {
 	/**
 	 * Close popUp
 	 *
+	 * @method	close
 	 * @param	{String}	idPopup
 	 */
 	close: function(idPopup) {
@@ -268,7 +298,8 @@ Todoyu.Popup = {
 
 	/**
 	 * Destroy popUp
-	 * 
+	 *
+	 * @method	destroy
 	 * @param	{String}	idPopup
 	 */
 	destroy: function(idPopup) {

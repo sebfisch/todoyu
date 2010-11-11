@@ -18,8 +18,12 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Quickcreate headlet
- * 
+ *
  * @package		Todoyu
  * @subpackage	Core
  */
@@ -27,6 +31,8 @@ Todoyu.Headlet.QuickCreate = {
 
 	/**
 	 * Popup reference
+	 * @property	popup
+	 * @type		Todoyu.Popup
 	 */
 	popup:	null,
 
@@ -34,6 +40,8 @@ Todoyu.Headlet.QuickCreate = {
 
 	/**
 	 * Initialize quick create headlet
+	 *
+	 * @method	init
 	 */
 	init: function() {
 
@@ -43,7 +51,8 @@ Todoyu.Headlet.QuickCreate = {
 
 	/**
 	 * Handler: When clicked on button
-	 * 
+	 *
+	 * @method	onButtonClick
 	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
@@ -59,14 +68,15 @@ Todoyu.Headlet.QuickCreate = {
 
 	/**
 	 * Handler: When clicked on menu entry
-	 * 
+	 *
+	 * @method	onMenuClick
 	 * @param	{Event}		event
 	 */
 	onMenuClick: function(event) {
 		var idParts	= Event.findElement(event, 'a').className.split('-');
 		var ext		= idParts[3];
 		var type	= idParts[4];
-		
+
 		this.openTypePopup(ext, type);
 		this.hide();
 	},
@@ -76,6 +86,7 @@ Todoyu.Headlet.QuickCreate = {
 	/**
 	 * Handle click on headlet body: hide content, stop events
 	 *
+	 * @method	onBodyClick
 	 * @param	{Object}	event
 	 */
 	onBodyClick: function(event) {
@@ -90,6 +101,8 @@ Todoyu.Headlet.QuickCreate = {
 
 	/**
 	 * Hide quick create headlet content
+	 *
+	 * @method	hide
 	 */
 	hide: function() {
 		this.hideContent();
@@ -100,7 +113,8 @@ Todoyu.Headlet.QuickCreate = {
 
 	/**
 	 * Open creator wizard popup
-	 * 
+	 *
+	 * @method	openTypePopup
 	 * @param	{String}		ext
 	 * @param	{String}		type
 	 */
@@ -127,7 +141,8 @@ Todoyu.Headlet.QuickCreate = {
 
 	/**
 	 * Handler after popup opened: call mode's onPopupOpened-handler
-	 * 
+	 *
+	 * @method	onPopupOpened
 	 * @param	{String}	ext
 	 */
 	onPopupOpened: function(ext, type) {
@@ -141,9 +156,11 @@ Todoyu.Headlet.QuickCreate = {
 
 	/**
 	 * Get label of a type from menu entry
-	 * 
+	 *
+	 * @method	getTypeLabel
 	 * @param	{String}		ext
 	 * @param	{String}		type
+	 * @return	{String}
 	 */
 	getTypeLabel: function(ext, type) {
 		return $$('#headlet-quickcreate-content a.headlet-quickcreate-item-' + ext + '-' + type)[0].innerHTML;
@@ -153,6 +170,8 @@ Todoyu.Headlet.QuickCreate = {
 
 	/**
 	 * Close wizard popup
+	 *
+	 * @method	closePopup
 	 */
 	closePopup: function() {
 		Todoyu.Popup.close('quickcreate');
@@ -163,6 +182,7 @@ Todoyu.Headlet.QuickCreate = {
 	/**
 	 * Update quick create popup content
 	 *
+	 * @method	updatePopupContent
 	 * @param	{String}		content
 	 */
 	updatePopupContent: function(content) {

@@ -18,19 +18,28 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Hook implementation in JS
  * Add named hooks to a list. Call all registered
  * hook functions with custom parameters
- * 
+ *
  * How to use:
  * define: 		function myCallback(arg1, arg2) {...}
  * register:	Todoyu.Hook.add('extension.objectOrType.eventName', myCallback);
- * call:		Todoyu.Hook.exec('extension.objectOrType.eventName', arg1, arg2); 
+ * call:		Todoyu.Hook.exec('extension.objectOrType.eventName', arg1, arg2);
+ *
+ * @class		Hook
+ * @namespace	Todoyu
  */
 Todoyu.Hook = {
 
 	/**
 	 * Hooks container
+	 * @property	hooks
+	 * @type		Object
 	 */
 	hooks: {},
 
@@ -38,7 +47,8 @@ Todoyu.Hook = {
 
 	/**
 	 * Add a new hook function
-	 * 
+	 *
+	 * @method	add
 	 * @param	{String}		name
 	 * @param	{Function}	callback
 	 */
@@ -54,9 +64,10 @@ Todoyu.Hook = {
 
 	/**
 	 * Get registered functions
-	 * 
+	 *
+	 * @method	get
 	 * @param	{String}		name
-	 * @return	Array
+	 * @return	{Array}
 	 */
 	get: function(name) {
 		if( typeof this.hooks[name] !== 'object' ) {
@@ -71,6 +82,7 @@ Todoyu.Hook = {
 	/**
 	 * Clear named hook (remove functions)
 	 *
+	 * @method	clear
 	 * @param	{String}		name
 	 */
 	clear: function(name) {
@@ -81,6 +93,8 @@ Todoyu.Hook = {
 
 	/**
 	 * Clear all hooks
+	 *
+	 * @method	clearAll
 	 */
 	clearAll: function() {
 		this.hooks = {};
@@ -93,7 +107,8 @@ Todoyu.Hook = {
 	 * All arguments passed after the hookname will be
 	 * passed in this order to the callback
 	 * Ex: Todoyu.Hook.exec('taskopen', idTask, myFlag1, option2); => myTaskCallback(idTask, myFlag1, option2);
-	 * 
+	 *
+	 * @method	exec
 	 * @param	{String}		name
 	 */
 	exec: function(name) {

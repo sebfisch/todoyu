@@ -18,6 +18,10 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Template class to render the context menu JSON object into
  * HTML with prototype template
  *
@@ -26,6 +30,8 @@ Todoyu.ContextMenu.Template = {
 
 	/**
 	 * Template objects
+	 * @property	template
+	 * @type		Object
 	 */
 	template: {
 		item:		null,
@@ -36,6 +42,8 @@ Todoyu.ContextMenu.Template = {
 
 	/**
 	 * HTML patterns for the templates
+	 * @property	html
+	 * @type		Object
 	 */
 	html: {
 		item:		'<li class="#{key}" id="contextmenu-#{key}" onmouseover="Todoyu.ContextMenu.submenu(\'#{key}\', true)" onmouseout="Todoyu.ContextMenu.submenu(\'#{key}\', false)"><a onclick="#{jsAction}" href="javascript:void(0)" class="#{class}">#{label}</a>#{submenu}</li>',
@@ -44,7 +52,13 @@ Todoyu.ContextMenu.Template = {
 
 
 
-		// The render functions appends each item to this variable to build the menu
+	/**
+	 * The render functions appends each item to this variable to build the menu
+	 * @property	code
+	 * @type		String
+	 * @private
+ 	 */
+
 	code: '',
 
 
@@ -52,7 +66,9 @@ Todoyu.ContextMenu.Template = {
 	/**
 	 * Render a json object into the context menu HTML code
 	 *
+	 * @method	render
 	 * @param	{Object}	json
+	 * @return	{String}
 	 */
 	render: function(json) {
 		this.init();
@@ -78,7 +94,9 @@ Todoyu.ContextMenu.Template = {
 	/**
 	 * Render submenu of an item
 	 *
+	 * @method	renderSubmenu
 	 * @param	{Object}		parentItem
+	 * @return	{String}
 	 */
 	renderSubmenu: function(parentItem) {
 		var items = '';
@@ -98,6 +116,8 @@ Todoyu.ContextMenu.Template = {
 
 	/**
 	 * Initialize template objects and clean code variable
+	 *
+	 * @method	init
 	 */
 	init: function() {
 		this.code = '';

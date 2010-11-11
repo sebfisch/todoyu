@@ -18,17 +18,27 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * User Interface
  *
- * @namespace	Todoyu.Ui
+ * @class		Ui
+ * @namespace	Todoyu
  */
 Todoyu.Ui = {
 
+	/**
+	 * @property	bodyClickObservers
+	 * @type		Array
+	 */
 	bodyClickObservers: [],
 
 	/**
 	 * Update element
 	 *
+	 * @method	update
 	 * @param	{String}	container
 	 * @param	{String}	url
 	 * @param	{Object}	options
@@ -50,6 +60,7 @@ Todoyu.Ui = {
 	/**
 	 * Replace element
 	 *
+	 * @method	replace
 	 * @param	{String}	container
 	 * @param	{String}	url
 	 * @param	{Object}	options
@@ -71,6 +82,7 @@ Todoyu.Ui = {
 	/**
 	 * Prepend before element
 	 *
+	 * @method	prepend
 	 * @param	{String}	container
 	 * @param	{String}	url
 	 * @param	{Object}	options
@@ -87,6 +99,7 @@ Todoyu.Ui = {
 	/**
 	 * Append to element
 	 *
+	 * @method	append
 	 * @param	{String}	container
 	 * @param	{String}	url
 	 * @param	{Object}	options
@@ -103,6 +116,7 @@ Todoyu.Ui = {
 	/**
 	 * Insert after element
 	 *
+	 * @method	insert
 	 * @param	{String}	container
 	 * @param	{String}	url
 	 * @param	{Object}	options
@@ -119,6 +133,7 @@ Todoyu.Ui = {
 	/**
 	 * Hide element
 	 *
+	 * @method	hide
 	 * @param	{String|Element}	idElement
 	 */
 	hide: function(idElement) {
@@ -132,6 +147,7 @@ Todoyu.Ui = {
 	/**
 	 * Show element
 	 *
+	 * @method	show
 	 * @param	{String}	idElement
 	 */
 	show: function(idElement) {
@@ -145,6 +161,7 @@ Todoyu.Ui = {
 	/**
 	 * Toggle element visibility
 	 *
+	 * @method	toggle
 	 * @param	{String}	idElement
 	 */
 	toggle: function(idElement) {
@@ -158,6 +175,7 @@ Todoyu.Ui = {
 	/**
 	 * Update toggler icon
 	 *
+	 * @method	updateToggleIcon
 	 * @param	{String}	elementPrefix
 	 * @param	{String}	idElement
 	 */
@@ -174,6 +192,7 @@ Todoyu.Ui = {
 	/**
 	 * Update element content
 	 *
+	 * @method	updateContent
 	 * @param	{String}	url
 	 * @param	{Object}	options
 	 */
@@ -186,6 +205,7 @@ Todoyu.Ui = {
 	/**
 	 * Update content with new HTML
 	 *
+	 * @method	setContent
 	 * @param	{String}		content
 	 */
 	setContent: function(content) {
@@ -199,6 +219,7 @@ Todoyu.Ui = {
 	/**
 	 * Update content tabs DIV
 	 *
+	 * @method	setContentTabs
 	 * @param	{String}		tabs
 	 */
 	setContentTabs: function(tabs) {
@@ -210,6 +231,7 @@ Todoyu.Ui = {
 	/**
 	 * Update content body div
 	 *
+	 * @method	setContentBody
 	 * @param	{String}		body
 	 */
 	setContentBody: function(body) {
@@ -223,6 +245,7 @@ Todoyu.Ui = {
 	/**
 	 * Update content body with request
 	 *
+	 * @method	updateContentBody
 	 * @param	{String}		url
 	 * @param	{Hash}		options
 	 */
@@ -235,6 +258,7 @@ Todoyu.Ui = {
 	/**
 	 * Update (left column) panel
 	 *
+	 * @method	updatePanel
 	 * @param	{String}	url
 	 * @param	{Object}	options
 	 */
@@ -247,6 +271,7 @@ Todoyu.Ui = {
 	/**
 	 * Update context menu
 	 *
+	 * @method	updateContextMenu
 	 * @param	{String}	url
 	 * @param	{Object}	options
 	 */
@@ -259,6 +284,7 @@ Todoyu.Ui = {
 	/**
 	 * Update page
 	 *
+	 * @method	updatePage
 	 * @param	{String}	ext
 	 * @param	{String}	controller
 	 */
@@ -279,6 +305,7 @@ Todoyu.Ui = {
 	/**
 	 * AJAX loader
 	 *
+	 * @method	ajaxLoader
 	 * @param	{Boolean}		showLoader
 	 */
 	ajaxLoader: function(showLoader) {
@@ -290,6 +317,7 @@ Todoyu.Ui = {
 	/**
 	 * Set cursor of link
 	 *
+	 * @method	setLinkCursor
 	 * @param	{Boolean}	wait
 	 */
 	setLinkCursor: function(wait) {
@@ -309,6 +337,7 @@ Todoyu.Ui = {
 	/**
 	 * Add hover effect to element
 	 *
+	 * @method	addHoverEffect
 	 * @param	{String}	idElement
 	 */
 	addHoverEffect: function(idElement) {
@@ -322,6 +351,7 @@ Todoyu.Ui = {
 	/**
 	 * Hover effect handler (handles both mouseOver/ Out)
 	 *
+	 * @method	hoverEffect
 	 * @param	{Object}		event
 	 * @param	{Boolean}		over
 	 * @param	{Element}		element
@@ -338,6 +368,8 @@ Todoyu.Ui = {
 
 	/**
 	 * Fix element anchor position
+	 *
+	 * @method	fixAnchorPosition
 	 */
 	fixAnchorPosition: function() {
 		if( location.hash !== '') {
@@ -350,8 +382,9 @@ Todoyu.Ui = {
 
 
 	/**
-	 * @todo	comment
+	 * Scroll view to the anchor in the document
 	 *
+	 * @method	scrollToAnchor
 	 * @param	{String}	name
 	 */
 	scrollToAnchor: function(name) {
@@ -367,6 +400,7 @@ Todoyu.Ui = {
 	/**
 	 * Scroll to given element
 	 *
+	 * @method	scrollToElement
 	 * @param	{Element}		element
 	 */
 	scrollToElement: function(element) {
@@ -395,6 +429,7 @@ Todoyu.Ui = {
 	/**
 	 * Scroll window content by given values
 	 *
+	 * @method	scrollBy
 	 * @param	{Number}	x
 	 * @param	{Number}	y
 	 */
@@ -407,6 +442,8 @@ Todoyu.Ui = {
 
 	/**
 	 * Scroll to top of the page
+	 *
+	 * @method	scrollToTop
 	 */
 	scrollToTop: function() {
 		Effect.ScrollTo('header', {
@@ -419,6 +456,7 @@ Todoyu.Ui = {
 	/**
 	 * Collapse / expand element
 	 *
+	 * @method	collapseExpandElement
 	 * @param	{Number}	idElement
 	 * @param	{Element}	toggle
 	 */
@@ -443,6 +481,7 @@ Todoyu.Ui = {
 	/**
 	 * Evoke twinkeling effect upon given element
 	 *
+	 * @method	twinkle
 	 * @param	{Element}		element
 	 */
 	twinkle: function(element) {
@@ -455,6 +494,7 @@ Todoyu.Ui = {
 	/**
 	 * Check whether given element is currently visible
 	 *
+	 * @method	isVisible
 	 * @param	{Element}	element
 	 * @return	{Boolean}
 	 */
@@ -471,6 +511,7 @@ Todoyu.Ui = {
 	/**
 	 * Show time picker
 	 *
+	 * @method	showTimePicker
 	 * @param	{Number}		idElement
 	 * @param	{Array}		config
 	 * @return	Todoyu.TimePicker
@@ -489,6 +530,7 @@ Todoyu.Ui = {
 	/**
 	 * Show duration picker
 	 *
+	 * @method	showDurationPicker
 	 * @param	{String}		idElement
 	 * @return	Todoyu.TimePicker
 	 */
@@ -507,6 +549,7 @@ Todoyu.Ui = {
 	/**
 	 * Set document title (shown in browser window title bar)
 	 *
+	 * @method	setTitle
 	 * @param	{String}		title
 	 */
 	setTitle: function(title) {
@@ -518,7 +561,8 @@ Todoyu.Ui = {
 	/**
 	 * Get document title, without the " - todoyu" postfix (shown in browser window title bar)
 	 *
-	 * @return String
+	 * @method	getTitle
+	 * @return	{String}
 	 */
 	getTitle: function(strip) {
 		if( strip === false ) {
@@ -532,6 +576,8 @@ Todoyu.Ui = {
 
 	/**
 	 * Observe body for click events
+	 *
+	 * @method	observeBody
 	 */
 	observeBody: function() {
 		$(document.body).observe('click', this.onBodyClick.bindAsEventListener(this));
@@ -542,7 +588,8 @@ Todoyu.Ui = {
 	/**
 	 * Handler when clicked on the body
 	 *
-	 * @param	{Event}	event
+	 * @method	onBodyClick
+	 * @param	{Event}		event
 	 */
 	onBodyClick: function(event) {
 		this.bodyClickObservers.each(function(event, func){
@@ -555,6 +602,7 @@ Todoyu.Ui = {
 	/**
 	 * Add an observer for the body
 	 *
+	 * @method	addBodyClickObserver
 	 * @param	{Function}	func
 	 */
 	addBodyClickObserver: function(func) {
@@ -568,6 +616,7 @@ Todoyu.Ui = {
 	 * Useful when handling onclick-events of nested elements
 	 * whose parents have onclick handlers which should be not fired than
 	 *
+	 * @method	addBodyClickObserver
 	 * @param	{Event}	event
 	 */
 	stopEventBubbling: function(event) {
@@ -586,6 +635,7 @@ Todoyu.Ui = {
 	 * Simulate sending a keystroke to RTE to initialize it, so that focus is given also for special keys like [BACKSPACE], [CTRL]+[A], etc.
 	 * Neccessary if there are more than one instance of tiny_mce open
 	 *
+	 * @method	initRTEfocus
 	 * @param	{Element}	textControlElement
 	 */
 	initRTEfocus: function(textControlElement) {
@@ -606,6 +656,8 @@ Todoyu.Ui = {
 	 * Save all RTEs in the document
 	 * Sometimes, double instances exist. Prevents saving if missing instances of an editor
 	 * Use this function instead of tinyMCE.triggerSave();
+	 *
+	 * @method	saveRTE
 	 */
 	saveRTE: function() {
 		window.tinyMCE.editors.each(function(editor, index){
@@ -625,6 +677,7 @@ Todoyu.Ui = {
 	 * Removes tinyMCE controls and save the editor
 	 * Prevents "ghost" objects which will break the save process
 	 *
+	 * @method	closeRTE
 	 * @param	{Element}	area		Area to look for tinyMCE instances (Can be a form, the whole window or the element itself)
 	 */
 	closeRTE: function(area) {
@@ -645,6 +698,7 @@ Todoyu.Ui = {
 	/**
 	 * Center an element on the screen
 	 *
+	 * @method	centerElement
 	 * @param	{Element|String}	element
 	 */
 	centerElement: function(element) {
@@ -668,6 +722,7 @@ Todoyu.Ui = {
 	/**
 	 * Set selected options of a select element
 	 *
+	 * @method	selectOptions
 	 * @param	{Element}	element
 	 * @param	{Array}		selection
 	 */

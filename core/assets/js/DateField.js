@@ -18,14 +18,22 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Helper functions for date fields
  * Requires the jsCalendar functions Date.parseDate and Date.print
+ *
+ * @class		DateField
+ * @namespace	Todoyu
  */
 Todoyu.DateField = {
 
 	/**
-	 *
-	 * @param	{String}		format
+	 * Formats
+	 * @property	format
+	 * @type		String
 	 */
 	format: null,
 
@@ -33,7 +41,9 @@ Todoyu.DateField = {
 	/**
 	 * Get format for the date field with a JsCalendar config
 	 *
+	 * @method	getFormat
 	 * @param	{String|Element}	field		ID or Element
+	 * @return	{String}			Format string
 	 */
 	getFormat: function(field) {
 		return Todoyu.JsCalFormat[$(field).id];
@@ -44,6 +54,7 @@ Todoyu.DateField = {
 	/**
 	 * Get date object from a field with a date in string based on the internal format
 	 *
+	 * @method	getDate
 	 * @param	{String|Element}	field
 	 * @return	{Date}
 	 */
@@ -56,6 +67,7 @@ Todoyu.DateField = {
 	/**
 	 * Set formatted time string in a dateTime field from given values
 	 *
+	 * @method	setTime
 	 * @param	{String|Element}	field
 	 * @param	{Number}			hour
 	 * @param	{Number}			minute
@@ -74,6 +86,7 @@ Todoyu.DateField = {
 	/**
 	 * Set input field value to formatted string of given date values
 	 *
+	 * @method	setDate
 	 * @param	{String|Element}	field
 	 * @param	{Number}			year
 	 * @param	{Number}			month
@@ -94,6 +107,7 @@ Todoyu.DateField = {
 	/**
 	 * Set input field value to formatted string of given date time values
 	 *
+	 * @method	setDateTime
 	 * @param	{String|Element}	field
 	 * @param	{Number}			year
 	 * @param	{Number}			month
