@@ -93,7 +93,7 @@ class TodoyuServer {
 			'json',
 			'pcre',
 			'libxml',
-			'SimpleXML22'
+			'SimpleXML'
 		);
 
 		foreach($requiredExtensions as $extension) {
