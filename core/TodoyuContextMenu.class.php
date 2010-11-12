@@ -169,7 +169,6 @@ class TodoyuContextMenu {
 	 */
 	private function renderLabel($label) {
 			// Check if there is a function reference in the label
-		TodoyuDebug::printInFirebug($label, 'label');
 		if( strstr($label, '::') ) {
 			$label = TodoyuFunction::callUserFunction($label, $this->idElement);
 		} else {
