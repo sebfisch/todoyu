@@ -81,18 +81,33 @@ Todoyu.QuickInfo = {
 
 
 	/**
-	 * Timout callback for delayed hiding of quickinfo
+	 * Callback for delayed hide
 	 * @property	delayedHide
 	 * @type		Function
 	 */
 	delayedHide: null,
 
 	/**
-	 * Delay for hiding. Allows to get move the mouse over the quickinfo, to prevent hiding
+	 * Delay time for hiding quickinfo
 	 * @property	delayedHideTime
 	 * @type		Number
 	 */
 	delayedHideTime: 0.4,
+
+
+	/**
+	 * Callback for delayed show
+	 * @property	delayedShow
+	 * @type		Function
+	 */
+	delayedShow: null,
+
+	/**
+	 * Delay time for showing quickinfo
+	 * @property	delayedShowTime
+	 * @type		Number
+	 */
+	delayedShowTime: 0.6,
 
 	/**
 	 * Active element (DOM element)
@@ -151,9 +166,6 @@ Todoyu.QuickInfo = {
 			this.hide();
 		}
 
-			// Clear delayed timeout for hide
-		clearTimeout(this.delayedHide);
-
 		if( ! this.isVisible() ) {
 			this.show(event, name, callback, element);
 		}
@@ -173,9 +185,10 @@ Todoyu.QuickInfo = {
 	 * @param	{Element}	element
 	 */
 	onMouseOut: function(event, name, callback, element) {
+		this.stopDelayedCallbacks();
+
 		if( this.isVisible() ) {
-				// Delayed hide
-			this.delayedHide = this.hide.bind(this).delay(this.delayedHideTime);
+			this.hide();
 		}
 
         Todoyu.Hook.exec('core.quickinfo.mouseout', event, name, element);
@@ -227,7 +240,7 @@ Todoyu.QuickInfo = {
 	 * @param	{Event}		event
 	 */
 	onInfoOver: function(event) {
-		clearTimeout(this.delayedHide);
+		this.stopDelayedCallbacks();
 	},
 
 
@@ -240,7 +253,7 @@ Todoyu.QuickInfo = {
 	 * @param	{Event}		event
 	 */
 	onInfoOut: function(event) {
-		this.delayedHide = this.hide.bind(this).delay(this.delayedHideTime);
+		this.hide();
 	},
 
 
@@ -254,8 +267,14 @@ Todoyu.QuickInfo = {
 	 * @param	{Function}		callback
 	 * @param	{String}		observedElement
 	 */
-	show: function(event, name, callback, observedElement) {
+	show: function(event, name, callback, observedElement, show) {
 		event.stop();
+		this.stopDelayedCallbacks();
+
+		if( show !== true ) {
+			this.delayedShow = this.show.bind(this, event, name, callback, observedElement, true).delay(this.delayedShowTime);
+			return;
+		}
 
 		var elementKey	= callback(observedElement, event);
 
@@ -355,10 +374,19 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Hide quick-info tooltip
+	 * If hide is not true, the function calls itself delayed with the true hide flag
 	 *
 	 * @method	hide
+	 * @param	{Boolean}	hide		True: hide now, False: hide delayed
 	 */
-	hide: function() {
+	hide: function(hide) {
+		this.stopDelayedCallbacks();
+
+		if( hide !== true ) {
+			this.delayedHide = this.hide.bind(this, true).delay(this.delayedHideTime);
+			return;
+		}
+
 		if( $(this.popupID) ) {
 			$(this.popupID).hide();
 
@@ -367,6 +395,19 @@ Todoyu.QuickInfo = {
 			this.active	= null;
 		}
 	},
+
+
+
+	/**
+	 * Stop timeout which call hide for quickinfo
+	 *
+	 * @method	stopDelayedHide
+	 */
+	stopDelayedCallbacks: function() {
+		clearTimeout(this.delayedHide);
+		clearTimeout(this.delayedShow);
+	},
+
 
 
 
