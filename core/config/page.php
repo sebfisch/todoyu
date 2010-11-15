@@ -28,7 +28,7 @@
 if( TodoyuAuth::isLoggedIn() ) {
 	TodoyuPage::addJsOnloadedFunction('Todoyu.QuickInfo.init.bind(Todoyu.QuickInfo)', 10);
 
-		// Register AJAX loader headlet which indicated acitve ajax requests
+		// Register AJAX loader headlet which indicated active AJAX requests
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletAjaxLoader', 0);
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletAbout', 10);
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickCreate', 50);

@@ -57,6 +57,9 @@ Todoyu::$CONFIG['CHMOD'] = array(
 	'folder'=> 0775
 );
 
+	// Add URL substitution to text auto-linkage 
+TodoyuHookManager::registerHook('core', 'substituteLinkableElements', 'TodoyuString::replaceUrlWithLink');
+
 	// Add IE scripts hook to page
 TodoyuHookManager::registerHook('core', 'renderPage', 'TodoyuPageAssetManager::addInternetExplorerAssets');
 

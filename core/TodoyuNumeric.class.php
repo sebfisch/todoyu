@@ -27,6 +27,23 @@
 class TodoyuNumeric {
 
 	/**
+	 * @var	Integer		Bytes per kilobyte
+	 */
+	const BYTES_KILOBYTE	= 1024;
+
+	/**
+	 * @var	Integer		Bytes per megabyte
+	 */
+	const BYTES_MEGABYTE	= 1048576;
+
+	/**
+	 * @var	Integer		Bytes per gigabyte
+	 */
+	const BYTES_GIGABYTE	= 1073741824;
+
+
+
+	/**
 	 * Make sure an integer is in a range. If the integer is out of range,
 	 * set it to one of the boundaries
 	 *
@@ -126,7 +143,7 @@ class TodoyuNumeric {
 		$percent	= floatval($percent);
 
 		if( $percent !== true ) {
-			$percent = floatval($percent/100);
+			$percent = floatval($percent / 100);
 		}
 
 		return floatval($percent * $value);

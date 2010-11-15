@@ -348,6 +348,21 @@ function Dwoo_Plugin_linkUrls_compile(Dwoo_Compiler $compiler, $text) {
 
 
 /**
+ * Substitute registered linkable elements in given text by their respective hyperlinks 
+ *
+ * @param	Dwoo	$dwoo
+ * @param	String	$text
+ * @return	String
+ */
+function Dwoo_Plugin_substituteLinkableElements(Dwoo $dwoo, $text) {
+	$text	= TodoyuString::substituteLinkableElements($text);
+
+	return $text;
+}
+
+
+
+/**
  * Button template
  *
  * @param 	Dwoo		$dwoo

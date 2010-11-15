@@ -77,8 +77,6 @@ class TodoyuString {
 		$regexp	= '#^[A-Za-z0-9\._-]+[@][A-Za-z0-9\._-]+[\.].[A-Za-z0-9]+$#';
 
 		return preg_match($regexp, $email) === 1;
-
-//		return (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) ? true : false;
 	}
 
 
@@ -89,11 +87,11 @@ class TodoyuString {
 	 *
 	 * @param	String		$text
 	 * @param	Integer		$length
-	 * @param	String		$postfix
+	 * @param	String		$postFix
 	 * @param	Boolean		$dontSplitWords
 	 * @return	String
 	 */
-	public static function crop($text, $length, $postfix = '...', $dontSplitWords = true) {
+	public static function crop($text, $length, $postFix = '...', $dontSplitWords = true) {
 		$length	= intval($length);
 
 		if( mb_strlen($text, 'utf-8') > $length ) {
@@ -105,7 +103,7 @@ class TodoyuString {
 				$spacePos	= mb_strrpos($cropped, ' ', 0, 'utf-8');
 				$cropped	= mb_substr($cropped, 0, $spacePos, 'utf-8');
 			}
-			$cropped .= $postfix;
+			$cropped .= $postFix;
 		} else {
 			$cropped = $text;
 		}
@@ -148,14 +146,6 @@ class TodoyuString {
 	 */
 	public static function html2text($html) {
 		return strip_tags($html);
-		/*
-		require_once( PATH_LIB . '/php/html2text/class.html2text.php' );
-
-		$html2text = new html2text($html);
-		$html2text->set_base_url(TODOYU_URL);
-
-		return $html2text->get_text();
-		*/
 	}
 
 
@@ -270,7 +260,7 @@ class TodoyuString {
 			$characters = array_merge($characters, $characters);
 		}
 
-		// Shuffle array
+			// Shuffle array
 		shuffle($characters);
 		$password = substr(implode('', $characters), 0, $length);
 
@@ -284,16 +274,16 @@ class TodoyuString {
 
 
 	/**
-	 * Format a filesize in the gb/mb/kb/b and add label
+	 * Format a file size in the GB/MB/KB/B and add label
 	 *
-	 * @param	Integer		$filesize
+	 * @param	Integer		$fileSize
 	 * @param	Array		$labels			Custom label array (overrides the default labels
 	 * @param	Boolean		$noLabel		Don't append label
 	 * @return	String
 	 */
-	public static function formatSize($filesize, array $labels = null, $noLabel = false) {
+	public static function formatSize($fileSize, array $labels = null, $noLabel = false) {
 			// Have to use floatval instead of intval because of the max range of integer supports only for up to 2,5GB..
-		$filesize	= round(floatval($filesize), 0);
+		$fileSize	= round(floatval($fileSize), 0);
 
 		if( is_null($labels) ) {
 			if( $noLabel === false ) {
@@ -308,17 +298,18 @@ class TodoyuString {
 			}
 		}
 
-		if( $filesize > 1073741824 ) { 		// GB
-			$size	= $filesize / (1024 * 1024 * 1024);
+			// Add applicable size label (GB / MB / KB / B)
+		if( $fileSize > TodoyuNumeric::BYTES_GIGABYTE ) { 			// GB
+			$size	= $fileSize / TodoyuNumeric::BYTES_GIGABYTE;
 			$label	= $labels['gb'];
-		} elseif( $filesize > 1048576 ) {	// MB
-			$size	= $filesize / (1024 * 1024);
+		} elseif( $fileSize > TodoyuNumeric::BYTES_MEGABYTE ) {		// MB
+			$size	= $fileSize / TodoyuNumeric::BYTES_MEGABYTE;
 			$label	= $labels['mb'];
-		} elseif( $filesize > 1024 ) {		// KB
-			$size	= $filesize / 1024;
+		} elseif( $fileSize > TodoyuNumeric::BYTES_KILOBYTE ) {		// KB
+			$size	= $fileSize / TodoyuNumeric::BYTES_KILOBYTE;
 			$label	= $labels['kb'];
-		} else {							// B
-			$size	= $filesize;
+		} else {													// B
+			$size	= $fileSize;
 			$label	= $labels['b'];
 		}
 
@@ -386,7 +377,7 @@ class TodoyuString {
 			$queryParts[] = $name . '=' . urlencode($value);
 		}
 
-			// Concatinate
+			// Concatenate
 		$query .= implode('&', $queryParts);
 
 			// Add hash
@@ -394,7 +385,7 @@ class TodoyuString {
 			$query .= '#' . $hash;
 		}
 
-			// Add absolute server url
+			// Add absolute server URL
 		if( $absolute ) {
 			$query = SERVER_URL . $query;
 		}
@@ -408,7 +399,7 @@ class TodoyuString {
 	 * Get short md5 hash of a string
 	 *
 	 * @param	String		$string
-	 * @return	String		10 characters md5 hash value of the string
+	 * @return	String		10 characters MD5 hash value of the string
 	 */
 	public static function md5short($string) {
 		return substr(md5($string), 0, 10);
@@ -487,7 +478,7 @@ class TodoyuString {
 		$headerPairs= explode("\r\n", $headerString);
 		$headers	= array();
 
-			// Add HTTP staus as status key
+			// Add HTTP status as status key
 		$headers['status'] = array_shift($headerPairs);
 
 			// Add the rest of the header pairs
@@ -502,9 +493,29 @@ class TodoyuString {
 
 
 	/**
+	 * Find registered linkable elements in given text and substitutes them by HTML hyperlinks
+	 *
+	 * @param	String	$htmlContent
+	 * @return	String
+	 */
+	public static function substituteLinkableElements($htmlContent) {
+		$hooks	= TodoyuHookManager::getHooks('core', 'substituteLinkableElements');
+
+		foreach($hooks as $funcRef) {
+			if( TodoyuFunction::isFunctionReference($funcRef) ) {
+				$htmlContent	= TodoyuFunction::callUserFunction($funcRef, $htmlContent);
+			}
+		}
+
+		return $htmlContent;
+	}
+
+
+
+	/**
 	 * Takes a clear text message, finds all URLs and substitutes them by HTML hyperlinks
 	 *
-	 * @param	String	$text	Message content
+	 * @param	String	$htmlContent	Message content
 	 * @return	String
 	 */
 	public static function replaceUrlWithLink($htmlContent) {
@@ -520,7 +531,7 @@ class TodoyuString {
 		$patternEmail	= '/(^|["> ])((?:[\w-\.]+)@(?:[\w-\.]{2,})\.(?:\w{2,6}))/';
 		$replaceEmail	= '\1<a href="mailto:\2">\2</a>';
 
-			// Replace urls
+			// Replace URLs
 		$htmlContent	= preg_replace($patternFull, $replaceFull, $htmlContent);
 		$htmlContent	= preg_replace($patternSimple, $replaceSimple, $htmlContent);
 		$htmlContent	= preg_replace($patternEmail, $replaceEmail, $htmlContent);
