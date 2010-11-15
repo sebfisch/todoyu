@@ -77,7 +77,7 @@ Todoyu.OverflowWindow = Class.create({
 		this._buildWindow(this.config.id);
 
 		if( this.config.blocker ) {
-			this.addBlocker();
+			this.showBlocker();
 		}
 
 		if( this.config.loadOnCreate ) {
@@ -309,7 +309,7 @@ Todoyu.OverflowWindow = Class.create({
 			this.config.onDisplay();
 
 			if( this.config.blocker ) {
-				this.addBlocker();
+				this.showBlocker();
 			}
 		}
 	},
@@ -328,7 +328,7 @@ Todoyu.OverflowWindow = Class.create({
 			this.div().hide();
 		}
 
-		this.removeBlocker();
+		this.hideBlocker();
 	},
 
 
@@ -362,7 +362,7 @@ Todoyu.OverflowWindow = Class.create({
 	 *
 	 * @method	addBlocker
 	 */
-	addBlocker: function() {
+	showBlocker: function() {
 		if( ! Todoyu.exists('overflow-window-blocker') ) {
 			$(document.documentElement).insert({
 				bottom: new Element('div', {
@@ -381,7 +381,7 @@ Todoyu.OverflowWindow = Class.create({
 	 *
 	 * @method	removeBlocker
 	 */
-	removeBlocker: function() {
+	hideBlocker: function() {
 		if( Todoyu.exists('overflow-window-blocker') ) {
 			$('overflow-window-blocker').hide();
 		}
