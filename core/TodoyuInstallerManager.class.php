@@ -583,7 +583,7 @@ class TodoyuInstallerManager {
 			'files'	=> array()
 		);
 
-		foreach($elements as $element) {
+		foreach($elements as $element => $fails) {
 			$path	= TodoyuFileManager::pathAbsolute($element);
 
 			TodoyuFileManager::setDefaultAccessRights($path);
@@ -592,7 +592,7 @@ class TodoyuInstallerManager {
 
 			$result['files'][$element] = $isWritable;
 
-			if( ! $isWritable ) {
+			if( ! $isWritable && $fails ) {
 				$result['error'] = true;
 			}
 		}

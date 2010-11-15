@@ -67,13 +67,13 @@ Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 		'render'	=> 'TodoyuInstallerRenderer::renderServerCheck',
 		'tmpl'		=> '02_servercheck.tmpl',
 		'fileCheck'	=> array(
-			'files',
-			'config',
-			'cache/tmpl/compile',
-			'config/db.php',
-			'config/extensions.php',
-			'config/extconf.php',
-			'index.html'
+			'files' => true,
+			'config' => true,
+			'cache/tmpl/compile' => true,
+			'config/db.php' => true,
+			'config/extensions.php' => true,
+			'config/extconf.php' => true,
+			'index.html' => false
 		)
 	),
 	'dbconnection' => array(
