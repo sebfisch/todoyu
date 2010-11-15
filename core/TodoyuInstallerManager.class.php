@@ -810,7 +810,8 @@ class TodoyuInstallerManager {
 
 			// Initialize todoyu to use all the functions
 		Todoyu::init();
-		require( PATH_CORE . '/inc/load_extensions.php' );
+			// Load extensions
+		TodoyuExtensions::loadAllExtensions();
 
 			// Get base paths
 		$pathAssets		= TodoyuFileManager::pathAbsolute('files/assets');

@@ -359,6 +359,15 @@ class TodoyuExtensions {
 
 
 	/**
+	 * Load all load configs (/config/load.php)
+	 */
+	public static function loadAllLoad() {
+		self::loadAllTypeConfig('load');
+	}
+
+
+
+	/**
 	 * Add extension paths to the autoload config
 	 * Adds the default paths (model,controller) and custom paths from $extraPaths
 	 *
@@ -487,6 +496,50 @@ class TodoyuExtensions {
 		self::loadAllExtinfo();
 
 		return Todoyu::$CONFIG['EXT'][$extKey]['info']['version'];
+	}
+
+
+
+	/**
+	 * Add all paths of the installed extension to the autoload path
+	 */
+	public static function addAllExtensionAutoloadPaths() {
+		$installedExtensions	= self::getInstalledExtKeys();
+
+			// First add all include paths
+		foreach($installedExtensions as $extKey) {
+			self::addExtAutoloadPaths($extKey);
+		}
+	}
+
+
+
+	/**
+	 * Load an extension by including it's ext.php file
+	 *
+	 * @param	String		$extKey
+	 */
+	public static function loadExtension($extKey) {
+		$extDir	= self::getExtPath($extKey);
+		$extFile= $extDir . DIR_SEP . 'ext.php';
+
+		if( is_file($extFile) ) {
+			require_once($extFile);
+		}
+	}
+
+
+
+	/**
+	 * Load all extensions
+	 */
+	public static function loadAllExtensions() {
+		$extensions	= self::getInstalledExtKeys();
+
+			// Load all ext.php files to init the extensions
+		foreach($extensions as $extKey) {
+			self::loadExtension($extKey);
+		}
 	}
 
 }

@@ -251,9 +251,9 @@ class TodoyuRequest {
 	 */
 	public static function getBasicRequestVars() {
 		return array(
-			'ext'	=> self::getExt(),
-			'ctrl'	=> self::getController(),
-			'action'=> self::getAction(),
+			'ext'	=> self::getParam('ext'),
+			'ctrl'	=> self::getParam('controller'),
+			'action'=> self::getParam('action'),
 			'area'	=> self::getAreaID()
 		);
 	}
@@ -269,7 +269,7 @@ class TodoyuRequest {
 	 */
 	public static function getCurrentRequestVars() {
 		$requestVars	= self::getBasicRequestVars();
-		$requestVars	= TodoyuHookManager::callHookDataModifier('core', 'onload', $requestVars, array($requestVars));
+		$requestVars	= TodoyuHookManager::callHookDataModifier('core', 'requestVars', $requestVars, array($requestVars));
 
 		return $requestVars;
 	}
@@ -311,6 +311,21 @@ class TodoyuRequest {
 		}
 
 		return $requestVars;
+	}
+
+
+	/**
+	 * Search, verify and define the main request variables as constants
+	 */
+	public static function defineRequestVars() {
+			// Get valid request variables (here it will be checked for login, etc)
+		$requestVars	= self::getCurrentRequestVars();
+
+			// Set definitive request vars as constants
+		define('EXT',		$requestVars['ext']);
+		define('CONTROLLER',$requestVars['ctrl']);
+		define('ACTION', 	$requestVars['action']);
+		define('AREA', 		$requestVars['area']);
 	}
 
 }

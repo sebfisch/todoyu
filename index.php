@@ -27,24 +27,27 @@ require_once('core/inc/global.php');
 	// Load default init script
 require_once('core/inc/init.php');
 
+
 	// Send "no cache" header
 TodoyuHeader::sendNoCacheHeaders();
 TodoyuHeader::sendTypeHTML();
 
+
 	// Start output buffering
 ob_start();
 
-	// Get valid request variables (here it will be checked for login, etc)
-$requestVars	= TodoyuRequest::getCurrentRequestVars();
+	// Load all load.php files of the extensions
+TodoyuExtensions::loadAllLoad();
 
-	// Set definitive request vars as constants
-define('EXT',		$requestVars['ext']);
-define('CONTROLLER',$requestVars['ctrl']);
-define('ACTION', 	$requestVars['action']);
-define('AREA', 		$requestVars['area']);
+	// Define request vars as constants
+TodoyuRequest::defineRequestVars();
+
+	// Load all extensions
+TodoyuExtensions::loadAllExtensions();
 
 	// Dispatch request to selected controller
 TodoyuActionDispatcher::dispatch();
+
 
 	// Measure processing time
 define('TIME_END', microtime(true));
@@ -53,10 +56,6 @@ define('TIME_TOTAL', TIME_END - TIME_START);
 	// Include finishing script
 require( PATH_CORE. '/inc/finish.php' );
 
-	// Query debugging
-//if( $_GET['qh'] == 1 ) {
-//	TodoyuDebug::printHtml(Todoyu::db()->getQueryHistory());
-//}
 
 	// Send output
 ob_end_flush();

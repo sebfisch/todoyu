@@ -72,10 +72,10 @@ Todoyu::$CONFIG['LIST']['size']	= 30;
 
 
 	// Add core onLoad hooks
-TodoyuHookManager::registerHook('core', 'onload', 'TodoyuRequest::setDefaultRequestVarsHook', 10);
-TodoyuHookManager::registerHook('core', 'onload', 'TodoyuCookieLogin::tryCookieLogin', 20);
-TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::hookNotLoggedInAjax', 990);
-TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::hookCheckLoginStatus', 1000);
+TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuRequest::setDefaultRequestVarsHook', 10);
+TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuCookieLogin::tryCookieLogin', 20);
+TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuAuth::hookNotLoggedInAjax', 990);
+TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuAuth::hookCheckLoginStatus', 1000);
 
 
 	// Setup password requirements
@@ -91,9 +91,7 @@ Todoyu::$CONFIG['CREATE'] = array(
 );
 
 	// Flags to prevent normal initialisation
-Todoyu::$CONFIG['WITHOUT_EXTENSIONS']	= false;
-Todoyu::$CONFIG['NO_INIT']				= false;
-
+Todoyu::$CONFIG['INIT']					= true;
 Todoyu::$CONFIG['CHECK_DENIED_RIGHTS']	= false;
 
 ?>
