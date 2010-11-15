@@ -1,19 +1,46 @@
+/****************************************************************************
+* todoyu is published under the BSD License:
+* http://www.opensource.org/licenses/bsd-license.php
+*
+* Copyright (c) 2010, snowflake productions GmbH, Switzerland
+* All rights reserved.
+*
+* This script is part of the todoyu project.
+* The todoyu project is free software; you can redistribute it and/or modify
+* it under the terms of the BSD License.
+*
+* This script is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the BSD License
+* for more details.
+*
+* This copyright notice MUST APPEAR in all copies of the script.
+*****************************************************************************/
+
 /**
- * Created by IntelliJ IDEA.
- * User: ferni
- * Date: 08.09.2010
- * Time: 16:40:24
- * To change this template use File | Settings | File Templates.
+ * @module	Core
  */
 
+/**
+ * @class		OverflowWindows
+ * @namespace	Todoyu
+ */
 Todoyu.OverflowWindows = {};
 
+
+/**
+ * Overflow window popups
+ *
+ * @class		OverflowWindow
+ * @namespace	Todoyu
+ * @constructor
+ */
 Todoyu.OverflowWindow = Class.create({
 
 	/**
 	 * Default window configuration
-	 *
-	 * @param	{Array}		config
+	 * @property	config
+	 * @type		Object
 	 */
 	config: {
 		id: 'default',
@@ -23,13 +50,14 @@ Todoyu.OverflowWindow = Class.create({
 		width: 400,
 		url: '',
 		options: {},
-		loadOnCreate: true
+		loadOnCreate: true,
+		blocker: false
 	},
 
 	/**
 	 * Div elements which builds the window
-	 *
-	 * @param	{Element}	divElement
+	 * @property	divElement
+	 * @type		Element
 	 */
 	divElement: null,
 
@@ -38,6 +66,7 @@ Todoyu.OverflowWindow = Class.create({
 	/**
 	 * Constructor
 	 *
+	 * @method	initialize
 	 * @param	{Object}	config
 	 */
 	initialize: function(config) {
@@ -47,15 +76,22 @@ Todoyu.OverflowWindow = Class.create({
 
 		this._buildWindow(this.config.id);
 
+		if( this.config.blocker ) {
+			this.addBlocker();
+		}
+
 		if( this.config.loadOnCreate ) {
 			this.update(this.config.url, this.config.options);
 		}
 	},
 
 
+
 	/**
 	 * Build the window in the DOM
 	 *
+	 * @private
+	 * @method	_buildWindow
 	 * @param	{String}	idWindow
 	 */
 	_buildWindow: function(idWindow) {
@@ -77,10 +113,11 @@ Todoyu.OverflowWindow = Class.create({
 	/**
 	 * Animate fade in and out
 	 *
+	 * @private
+	 * @method	_animate
 	 * @param	{Boolean}	show
 	 */
 	_animate: function(show) {
-		show 			= show ? true : false;
 		var screenDim	= document.viewport.getDimensions();
 		var windowDim	= this.div().getDimensions();
 
@@ -124,6 +161,9 @@ Todoyu.OverflowWindow = Class.create({
 
 	/**
 	 * Callback when show animation has finished
+	 *
+	 * @private
+	 * @method	_onAnimateIn
 	 */
 	_onAnimateIn: function() {
 		this.config.onDisplay();
@@ -133,6 +173,9 @@ Todoyu.OverflowWindow = Class.create({
 
 	/**
 	 * Callback when hide animation has finished
+	 *
+	 * @private
+	 * @method	_onAnimateOut
 	 */
 	_onAnimateOut: function() {
 		this.div().hide();
@@ -144,6 +187,8 @@ Todoyu.OverflowWindow = Class.create({
 	/**
 	 * Callback when windows has been updated
 	 *
+	 * @private
+	 * @method	_onUpdated
 	 * @param	{Ajax.Response}		response
 	 */
 	_onUpdated: function(response) {
@@ -157,6 +202,9 @@ Todoyu.OverflowWindow = Class.create({
 
 	/**
 	 * Adjust height of window if bigger than the screen height
+	 *
+	 * @private
+	 * @method	_adjustHeight
 	 */
 	_adjustHeight: function() {
 		if( (this.div().getHeight() + 20) > document.viewport.getHeight() ) {
@@ -171,6 +219,9 @@ Todoyu.OverflowWindow = Class.create({
 
 	/**
 	 * Add the close button when windows was updated
+	 *
+	 * @private
+	 * @method	_addCloseButton
 	 */
 	_addCloseButton: function() {
 		var closeButton	= new Element('div', {
@@ -188,6 +239,8 @@ Todoyu.OverflowWindow = Class.create({
 	/**
 	 * Handler when clicked on the close button
 	 *
+	 * @private
+	 * @method	_onCloseClick
 	 * @param	{Event}		event
 	 */
 	_onCloseClick: function(event) {
@@ -198,6 +251,9 @@ Todoyu.OverflowWindow = Class.create({
 
 	/**
 	 * Get window div element
+	 *
+	 * @method	div
+	 * @return	{Element}
 	 */
 	div: function() {
 		return this.divElement;
@@ -208,6 +264,7 @@ Todoyu.OverflowWindow = Class.create({
 	/**
 	 * Update windows content
 	 *
+	 * @method	update
 	 * @param	{String}	url
 	 * @param	{Object}	options
 	 * @param	{Boolean}	replaceOptions
@@ -241,6 +298,8 @@ Todoyu.OverflowWindow = Class.create({
 
 	/**
 	 * Show window
+	 *
+	 * @method	show
 	 */
 	show: function() {
 		if( ! this.visible() ) {
@@ -248,6 +307,10 @@ Todoyu.OverflowWindow = Class.create({
 		} else {
 			this.div().show();
 			this.config.onDisplay();
+
+			if( this.config.blocker ) {
+				this.addBlocker();
+			}
 		}
 	},
 
@@ -255,6 +318,8 @@ Todoyu.OverflowWindow = Class.create({
 
 	/**
 	 * Hide windows
+	 *
+	 * @method	hide
 	 */
 	hide: function() {
 		if( this.visible() ) {
@@ -262,20 +327,63 @@ Todoyu.OverflowWindow = Class.create({
 		} else {
 			this.div().hide();
 		}
+
+		this.removeBlocker();
 	},
 
 
 
 	/**
 	 * Check whether the windows is visible
+	 *
+	 * @method	visible
 	 */
 	visible: function() {
 		return this.div().visible();
 	},
 
 
+
+	/**
+	 * Set content
+	 *
+	 * @method	setContent
+	 * @param	{String}	content
+	 */
 	setContent: function(content) {
 		this.div().update(content);
 		this.config.onUpdate();
+	},
+
+
+
+	/**
+	 * Add blocker layer for the screen
+	 *
+	 * @method	addBlocker
+	 */
+	addBlocker: function() {
+		if( ! Todoyu.exists('overflow-window-blocker') ) {
+			$(document.documentElement).insert({
+				bottom: new Element('div', {
+					id: 'overflow-window-blocker'
+				})
+			});
+		}
+
+		$('overflow-window-blocker').show();
+	},
+
+
+
+	/**
+	 * Remove the blocker layer
+	 *
+	 * @method	removeBlocker
+	 */
+	removeBlocker: function() {
+		if( Todoyu.exists('overflow-window-blocker') ) {
+			$('overflow-window-blocker').hide();
+		}
 	}
 });

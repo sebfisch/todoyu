@@ -127,7 +127,7 @@ Todoyu.QuickInfo = {
 			// Insert HTML element into document
 		this.insertQuickInfoElement(this.popupID);
 			// Observe document for clicks to close the quickinfo
-		document.body.observe('click', this.hide.bindAsEventListener(this));
+		document.body.on('click', this.onBodyClick.bindAsEventListener(this));
 	},
 
 
@@ -144,8 +144,8 @@ Todoyu.QuickInfo = {
 		this.uninstall(selector);
 
 		$$(selector).each(function(name, callback, element){
-			element.observe('mouseover', this.onMouseOver.bindAsEventListener(this, name, callback, element));
-			element.observe('mouseout', this.onMouseOut.bindAsEventListener(this, name, callback, element));
+			element.on('mouseover', this.onMouseOver.bindAsEventListener(this, name, callback, element));
+			element.on('mouseout', this.onMouseOut.bindAsEventListener(this, name, callback, element));
 		}.bind(this, name, callback));
 	},
 
@@ -194,6 +194,10 @@ Todoyu.QuickInfo = {
         Todoyu.Hook.exec('core.quickinfo.mouseout', event, name, element);
 	},
 
+	onBodyClick: function(event) {
+		this.hide(true);
+	},
+
 
 
 	/**
@@ -225,8 +229,8 @@ Todoyu.QuickInfo = {
 			$(document.body).insert(quickInfo);
 
 				// Observe quickinfo for mouse events
-			$(this.popupID).observe('mouseover', this.onInfoOver.bindAsEventListener(this));
-			$(this.popupID).observe('mouseout', this.onInfoOut.bindAsEventListener(this));
+			$(this.popupID).on('mouseover', this.onInfoOver.bindAsEventListener(this));
+			$(this.popupID).on('mouseout', this.onInfoOut.bindAsEventListener(this));
 		}
 	},
 

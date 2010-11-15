@@ -30,11 +30,11 @@
 Todoyu.Tabs = {
 
 	/**
-	 * References to all functions which are bound as event handlers
-	 * @property	bindCache
+	 * Event handlers for tabs
+	 * @property	handler
 	 * @type		Object
 	 */
-	bindCache: {},
+	handler: {},
 
 
 
@@ -48,15 +48,11 @@ Todoyu.Tabs = {
 	create: function(name, handlerFunction) {
 		var list = $(name + '-tabs');
 
-		this.bindCache[list.id] = {
-			'click': 	this._clickHandler.bindAsEventListener(this, handlerFunction),
-			'mouseover':this._hoverHandler.bindAsEventListener(this, true),
-			'mouseout': this._hoverHandler.bindAsEventListener(this, false)
+		this.handler[list.id] = {
+			click: 		list.on('click',	'li', this._clickHandler.bind(this, handlerFunction)),
+			mouseover: 	list.on('mouseover','li', this._hoverHandler.bindAsEventListener(this, true)),
+			mouseout: 	list.on('mouseout', 'li', this._hoverHandler.bindAsEventListener(this, false))
 		};
-
-		Event.observe(list, 'click', this.bindCache[list.id].click);
-		Event.observe(list, 'mouseover', this.bindCache[list.id].mouseover);
-		Event.observe(list, 'mouseout', this.bindCache[list.id].mouseout);
 	},
 
 
@@ -70,11 +66,11 @@ Todoyu.Tabs = {
 	destroy: function(list) {
 		list = $(list);
 
-		Event.stopObserving(list, 'click', this.bindCache[list.id].click);
-		Event.stopObserving(list, 'mouseover', this.bindCache[list.id].mouseover);
-		Event.stopObserving(list, 'mouseout', this.bindCache[list.id].mouseout);
+		this.handler[list.id].click.stop();
+		this.handler[list.id].mouseover.stop();
+		this.handler[list.id].mouseout.stop();
 
-		delete this.bindCache[list.id];
+		delete this.handler[list.id];
 	},
 
 
@@ -87,25 +83,16 @@ Todoyu.Tabs = {
 	 * @param	{Event}			event
 	 * @param	{Function}		handlerFunction
 	 */
-	_clickHandler: function(event, handlerFunction) {
+	_clickHandler: function(handlerFunction, event, element) {
 		event.stop();
 
-		var element	= event.findElement('li');
+			// Get tabkey identifier
+		var tabKeyClass = element.classNames().detect(function(className){
+			return className.startsWith('tabkey-');
+		}).split('-').last();
 
-		if( Object.isUndefined(element) ) {
-			return;
-		}
-
-		var classes = element.className.split(' ');
-
-		classes.each(function(event, item){
-			if( item.substr(0,7) === 'tabkey-' ) {
-				handlerFunction(event, item.substr(7));
-				return;
-			}
-		}.bind(this, event));
-
-		//var list = event.findElement('ul');
+			// Call handler function
+		handlerFunction(event, tabKeyClass);
 
 		this.setActiveByElement(element);
 	},
@@ -260,7 +247,7 @@ Todoyu.Tabs = {
 	 * @param	{Event}		event
 	 * @param	{Boolean}	over
 	 */
-	_hoverHandler: function(event, over) {
+	_hoverHandler: function(event, over, element, x, y, z) {
 		var li = event.findElement('li');
 
 		if( Object.isUndefined(li) ) {

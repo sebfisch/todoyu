@@ -266,7 +266,7 @@ Todoyu.Notification = {
 		var htmlID	= 'notification-note-' + idNote;
 
 			// Observe mouse over of note
-		$(htmlID).observe('mouseover', this.onMouseOver.bindAsEventListener(this, idNote));
+		$(htmlID).on('mouseover', this.onMouseOver.bindAsEventListener(this, idNote));
 			// Hide the note before appearing
 		$(htmlID).hide();
 			// Appear with effect
