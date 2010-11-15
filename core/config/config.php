@@ -80,10 +80,11 @@ TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuAuth::hookCheckLog
 
 	// Setup password requirements
 Todoyu::$CONFIG['goodPassword'] = array(
-	'minLength'		=> 8,
-	'hasNumbers'	=> true,
-	'hasLowerCase'	=> true,
-	'hasUpperCase'	=> true
+	'minLength'			=> 8,
+	'hasLowerCase'		=> true,
+	'hasUpperCase'		=> true,
+	'hasNumbers'		=> true,
+	'hasSpecialChars'	=> false,
 );
 
 Todoyu::$CONFIG['CREATE'] = array(

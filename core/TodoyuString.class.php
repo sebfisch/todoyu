@@ -245,10 +245,13 @@ class TodoyuString {
 	 * @param	Boolean		$useDoubleChars
 	 * @return	String
 	 */
-	public static function generatePassword($length = 8, $useLowerCase = false, $useNumbers = true, $useSpecialChars = false, $useDoubleChars = true) {
+	public static function generatePassword($length = 8, $useUpperCase = true, $useNumbers = true, $useSpecialChars = true, $useDoubleChars = true) {
 		$length		= intval($length);
-		$characters	= array_merge(range('a', 'z'), range('A', 'Z'));
+		$characters	= range('a', 'z');
 
+		if( $useUpperCase )	{
+			$characters = array_merge($characters, range('A', 'Z'));
+		}
 		if( $useNumbers ) {
 			$characters = array_merge($characters, range('0', '9'));
 		}
@@ -263,10 +266,27 @@ class TodoyuString {
 			// Shuffle array
 		shuffle($characters);
 		$password = substr(implode('', $characters), 0, $length);
+		
+		return $password;
+	}
 
-		if( $useLowerCase ) {
-			$password = strtolower($password);
-		}
+
+
+	/**
+	 * @static
+	 * @return String
+	 */
+	public static function generateGoodPassword()	{
+		$config		= Todoyu::$CONFIG['goodPassword'];
+		$validator	= new TodoyuPasswordValidator();
+		
+		do {
+			$password = self::generatePassword(	$config['minLength'],
+												$config['hasUpperCase'],
+												$config['hasNumbers'],
+												$config['hasSpecialChars']);
+
+		} while ($validator->validate($password) === false);
 
 		return $password;
 	}
