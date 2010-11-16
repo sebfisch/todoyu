@@ -65,10 +65,10 @@ Todoyu.Headlet.About = {
 	 * @type		Object
 	 */
 	winConfig: {
-		id: 'about',
-		width: 350,
-		url: Todoyu.getUrl('core', 'about'),
-		options: {
+		id:			'about',
+		width:		400,
+		url:		Todoyu.getUrl('core', 'about'),
+		options:	{
 			parameters: {
 				action: 'window'
 			}
@@ -90,12 +90,14 @@ Todoyu.Headlet.About = {
 
 
 	/**
-	 * Handler for button clicks
+	 * Handle headlet icon click 
 	 *
 	 * @method	onButtonClick
 	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
+		Todoyu.Ui.disableScreen();
+
 		if( this.win === null ) {
 			this.win = new Todoyu.OverflowWindow(this.winConfig);
 		} else {
@@ -127,6 +129,7 @@ Todoyu.Headlet.About = {
 			this.nameEffect.options.afterFinish = null;
 			this.nameEffect.cancel();
 		}
+		Todoyu.Ui.enableScreen();
 	},
 
 

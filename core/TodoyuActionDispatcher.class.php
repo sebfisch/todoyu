@@ -178,10 +178,11 @@ class TodoyuActionDispatcher {
 	 * @param	String		$controller
 	 * @return	TodoyuActionController
 	 */
-	public static function getControllerObject($ext, $controller, array $params = array()) {
+	public static function getControllerObject($ext = '', $controller = '', array $params = array()) {
 		$controllerClassName	= self::getControllerClassName($ext, $controller);
+		$instance	= new $controllerClassName($params);
 
-		return new $controllerClassName($params);
+		return $instance;
 	}
 
 

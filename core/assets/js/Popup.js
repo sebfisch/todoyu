@@ -44,7 +44,7 @@ Todoyu.Popup = {
 	last:		null,
 
 	/**
-	 * @property	timoutID
+	 * @property	timeoutID
 	 * @type		Function
 	 */
 	timeoutID:	null,
@@ -164,11 +164,7 @@ Todoyu.Popup = {
 	 * @param	{Object}	response
 	 */
 	onContentLoaded: function(idPopup, response) {
-//		this.getPopup(idPopup).updateHeight();
-//
-//		this.getContentElement(idPopup).observe('mouseup', this.onMouseUp.bindAsEventListener(this, idPopup));
-//
-//		this.getPopup(idPopup).setCloseCallback(this.onWindowClose.bindAsEventListener(this, idPopup));
+
 	},
 
 
@@ -181,10 +177,7 @@ Todoyu.Popup = {
 	 * @param	{String}	idPopup
 	 */
 	onWindowClose: function(event, idPopup) {
-//		this.getContentElement(idPopup).stopObserving('mouseup');
-//		this.clearTimeout();
-//
-//		return true;
+
 	},
 
 
@@ -197,7 +190,7 @@ Todoyu.Popup = {
 	 * @param	{String}	idPopup
 	 */
 	onMouseUp: function(event, idPopup) {
-//		this.timeoutID = this.updateHeight.bind(this).delay(0.3, idPopup, true);
+
 	},
 
 
@@ -223,10 +216,6 @@ Todoyu.Popup = {
 	 */
 	updateHeight: function(idPopup, clearTimeout) {
 		this.getPopup(idPopup).updateHeight();
-//
-//		if( clearTimeout ) {
-//			this.clearTimeout();
-//		}
 	},
 
 
@@ -237,10 +226,7 @@ Todoyu.Popup = {
 	 * @method	clearTimeout
 	 */
 	clearTimeout: function() {
-//		if( this.timeoutID !== null ) {
-//			window.clearTimeout(this.timeoutID);
-//			this.timeoutID = null;
-//		}
+
 	},
 
 

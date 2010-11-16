@@ -159,7 +159,7 @@ abstract class TodoyuActionController {
 	public function forward($ext, $controller, $action, array $params = array()) {
 		$controllerObject	= TodoyuActionDispatcher::getControllerObject($ext, $controller, $params);
 
-				// Execute action
+			// Execute action
 		try {
 			return $controllerObject->runAction($action);
 		} catch(TodoyuControllerException $e) {

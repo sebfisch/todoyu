@@ -315,6 +315,24 @@ Todoyu.Ui = {
 
 
 	/**
+	 * Disable screen by adding todoyu overlay
+	 */
+	disableScreen: function() {
+		WindowUtilities.disableScreen('todoyu', 'overlay_modal', 0.7, '', document.body);
+	},
+
+
+
+	/**
+	 * Enable screen by removing todoyu overlay
+	 */
+	enableScreen: function() {
+		WindowUtilities.enableScreen('overlay_modal');
+	},
+
+
+
+	/**
 	 * Set cursor of link
 	 *
 	 * @method	setLinkCursor
