@@ -1,34 +1,57 @@
 <div class="logo"></div>
-<p class="copyright">
-	&copy; 2006-{date('Y')} snowflake productions GmbH, Zurich<br />
+<div class="version">todoyu {constant(TODOYU_VERSION)}</div>
+
+<p class="info">
+	&copy; 2006-{date('Y')} snowflake productions GmbH, Zurich.<br />
+	todoyu comes with absolutely no warranty.<br/>
+	This is free software, and you are welcome to redistribute it <a href="http://www.todoyu.com/index.php?id=bsdlicense" target="_blank">under certain conditions</a>.
+	<br /><br />
 	Extensions are copyright of their respective owners. Please visit <a href="http://www.todoyu.com" target="_blank">todoyu.com</a> for details.
-	todoyu comes with absolutely no warranty. This is free software, and you are welcome to redistribute it <a href="http://www.todoyu.com/index.php?id=bsdlicense" target="_blank">under certain conditions</a>.<br />
+	<br />
 	Obstructing the appearance of this notice is prohibited by law.
-</p>
-<p class="version">todoyu {constant(TODOYU_VERSION)}</p>
-<p class="community">
+	<br /><br />
 	We thank the <a href="http://www.todoyu.com/index.php?id=contributors" target="_blank">community</a> for contributing to this project.
 </p>
-<p class="thanks">Special thanks go to:</p>
-<div class="names">
-	<ul id="scrollingnames">
-		<li>Adrian Zimmermann</li>
-		<li>André Ledergerber</li>
-		<li>André Oechslin</li>
-		<li>Andri Steiner</li>
-		<li>Astrid Schenker</li>
-		<li>Cornel Boppart</li>
-		<li>Dominic Brander</li>
-		<li>Fabian Erni</li>
-		<li>Joel B. Orlow</li>
-		<li>Kay Stenschke</li>
-		<li>Mario Rossi</li>
-		<li>Markus Rohner</li>
-		<li>Martin Wiederkehr</li>
-		<li>Nicolas Karrer</li>
-		<li>Pascal Fuchser</li>
-		<li>Thomas Imboden</li>
-		<li>Thomas Schläpfer</li>
-		<li>and last but not least the whole rest of the snowflake team</li>
-	</ul>
+
+<p class="info">
+	<br /><span id="about-credits-dedication">Special thanks go to:</span>
+
+<button onclick="Todoyu.Headlet.About.toggleCredits()" id="about-toggle-credits" type="button" class="button">
+	<span class="icon"></span>
+	<span class="label">Third party products credits</span>
+	<span class="rgt"></span>
+</button>
+</p>
+
+<div class="clear"><!-- --></div>
+
+<div id="about-team" class="creditsbox names">
+		<ul id="scrollingnames">
+		{foreach $names lastname firstname}
+			<li><div class="left">{$firstname}</div> <div class="right">{$lastname}</div></li>
+		{/foreach}
+			<li></li>
+			<li>and last but not least the whole snowflake team</li>
+		</ul>
+	</div>
+</div>
+<div id="about-libs" class="creditsbox" style="display:none;">
+	<p>
+		<h1>todoyu contains the following 3rd party open source software:</h1>
+	</p>
+
+{foreach $thirdpartycredits product credits}
+	<p class="product">
+		<h2><a href="{$credits.url}" target="_blank">{$credits.title}</a></h2>
+		<p>
+			Coypright: &copy; {$credits.copyright}<br />
+			Software License Agreement: {if ! empty($credits.licenseUrl)}<a href="{$credits.licenseUrl}" taget="_blank">{/if}{$credits.license}{if ! empty($credits.licenseUrl)}</a>{/if}
+		</p>
+	</p>
+{/foreach}
+
+	<p class="product">
+		<h2><a href="http://www.jetbrains.com/phpstorm/" target="_blank">PhpStorm - Lightweight and Smart PHP IDE</a></h2>
+		The todoyu team is using <a href="http://www.jetbrains.com/phpstorm/" target="_blank">JetBrains' PhpStorm</a> for development.
+	</p>
 </div>

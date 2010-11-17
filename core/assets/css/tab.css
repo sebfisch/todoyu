@@ -9,12 +9,13 @@
 
 #content .tabs {
 	z-index:2;
+}
+
+#content .tabs {
 	height:26px;
 	width:100%;
 	position:relative;
-	/*top:-35px;*/ /* height and inner margin */
-	left:-9px; /* inner margin and padding */
-	/*margin:0 0 -34px 0;*/
+	left:-9px;
 	margin:0;
 	padding:0;
 }

@@ -327,7 +327,7 @@ Todoyu.Ui = {
 	 * Enable screen by removing todoyu overlay
 	 */
 	enableScreen: function() {
-		WindowUtilities.enableScreen('overlay_modal');
+		$('overlay_modal').remove();
 	},
 
 

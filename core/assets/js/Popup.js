@@ -96,7 +96,7 @@ Todoyu.Popup = {
 	 * @param	{String}		title
 	 * @param	{Number}		winWidth
 	 * @param	{String}		contentUrl
-	 * @param	{Array}		requestOptions
+	 * @param	{Array}			requestOptions
 	 * @return	{Window}
 	 */
 	openWindow: function(idPopup, title, winWidth, contentUrl, requestOptions) {

@@ -31,19 +31,25 @@
 Todoyu.Headlet.About = {
 
 	/**
+	 * ID of the about popup
+	 * @property	popupID
+	 * @type		String
+	 */
+	popupID:	'popup-about',
+
+	/**
+	 * @property	popupWidth
+	 * @type		Number
+	 * @private
+	 */
+	popupWidth:	560,
+
+	/**
 	 * @property	eeVisible
 	 * @type		Object
 	 * @private
 	 */
 	eeVisible: {},
-
-	/**
-	 * Window HTML ID
-	 * @property	idWindow
-	 * @type		String
-	 * @private
-	 */
-	idWindow: 'overflow-window-about',
 
 	/**
 	 * Instance of the current effect
@@ -54,82 +60,48 @@ Todoyu.Headlet.About = {
 	 */
 	nameEffect: null,
 
-	/**
-	 * @property	win
-	 * @type		Todoyu.OverflowWindow
-	 */
-	win: null,
-
-	/**
-	 * @property	winConfig
-	 * @type		Object
-	 */
-	winConfig: {
-		id:			'about',
-		width:		400,
-		url:		Todoyu.getUrl('core', 'about'),
-		options:	{
-			parameters: {
-				action: 'window'
-			}
-		}
-	},
 
 
 	/**
-	 * Initialize headlet
-	 *
-	 * @method	init
-	 */
-	init: function() {
-		this.winConfig.onUpdate = this.onUpdate.bind(this);
-		this.winConfig.onHide	= this.onHide.bind(this);
-		this.winConfig.onDisplay= this.onDisplay.bind(this);
-	},
-
-
-
-	/**
-	 * Handle headlet icon click 
+	 * Handle headlet icon click
 	 *
 	 * @method	onButtonClick
 	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
-		Todoyu.Ui.disableScreen();
-
-		if( this.win === null ) {
-			this.win = new Todoyu.OverflowWindow(this.winConfig);
-		} else {
-			this.win.show();
-		}
+		this.openPopup();
 	},
 
 
 
 	/**
-	 * Handler when window is updated
+	 * Open about popUp and load content
+	 */
+	openPopup: function() {
+		var url		= Todoyu.getUrl('core', 'about');
+		var options	= {
+			'parameters': {
+				'action':	'popup'
+			},
+			'onComplete':	this.onPopupLoaded.bind(this)
+		};
+
+		Todoyu.Popup.openWindow(this.popupID, '[LLL:headlet-about.title]', this.popupWidth, url, options);
+	},
+
+
+
+	/**
+	 * Handler when PopUp is loaded: Call hook to inform other extensions
 	 *
-	 * @method	onUpdate
 	 * @param	{Ajax.Response}		response
 	 */
-	onUpdate: function(response) {
+	onPopupLoaded: function(response) {
+		Todoyu.Hook.exec('core.about.popupLoaded', response);
+		this.onDisplay();
 
-	},
-
-
-
-	/**
-	 * Handler when window is hiding
-	 *
-	 * @method	onHide
-	 */
-	onHide: function() {
-		if( this.nameEffect !== null ) {
-			this.nameEffect.options.afterFinish = null;
-			this.nameEffect.cancel();
-		}
-		Todoyu.Ui.enableScreen();
+			// Deactivate resizability
+		$(this.popupID + '_sizer').remove();
 	},
 
 
@@ -147,35 +119,37 @@ Todoyu.Headlet.About = {
 
 
 	/**
-	 * Start scrolling the names in the 'thank you' box
+	 * Start scrolling the names in the 'thank you' box. Scrolling loops while popup is available in DOM
 	 *
 	 * @method	startNameScrolling
 	 * @param	{Boolean}	up		Scroll up
 	 * @param	{Boolean}	first	Is the first scrolling, reset positions for start
 	 */
 	startNameScrolling: function(up, first) {
-		var box	= this.win.div().down('div.names');
-		var list= box.down('ul');
-		var newY= -list.getHeight()+(box.getHeight()/2);
+		if ( Todoyu.exists($(this.popupID)) ) {
+			var box	= $(this.popupID).down('div.names');
+			var list= box.down('ul');
+			var newY= -list.getHeight()+(box.getHeight()/2);
 
-		if( up === false ) {
-			newY	= -newY;
-		}
+			if( up === false ) {
+				newY	= -newY;
+			}
 
-		if( first === true ) {
-			list.setStyle({
-				top: '0px'
+			if( first === true ) {
+				list.setStyle({
+					top: '0px'
+				});
+			}
+
+			this.nameEffect = new Effect.Move(list, {
+				x:				0,
+				y:				newY,
+				mode:			'relative',
+				duration:		list.select('li').size() * 0.5,
+				transition:		Effect.Transitions.linear,
+				afterFinish:	this.startNameScrolling.bind(this, !up)
 			});
 		}
-
-		this.nameEffect = new Effect.Move(list, {
-			x: 0,
-			y: newY,
-			mode: 'relative',
-			duration: list.select('li').size()*0.8,
-			transition: Effect.Transitions.linear,
-			afterFinish: this.startNameScrolling.bind(this, !up)
-		});
 	},
 
 
@@ -226,7 +200,7 @@ Todoyu.Headlet.About = {
 		if( $H(this.eeVisible).all(function(pair){ return pair.value === true; })) {
 			$H(this.eeVisible).each(function(pair){this.eeVisible[pair.key]=false; console.log(pair);}, this);
 			if(Todoyu.exists('ee-img')) $('ee-img').remove();
-			$(this.idWindow).insert({
+			$(this.popupID).insert({
 				'bottom': new Element('div', {
 					'id': 'ee-img'
 				})
@@ -242,16 +216,54 @@ Todoyu.Headlet.About = {
 	},
 
 
+	/**
+	 * Check whether names of team members are shown
+	 *
+	 * @return	{Boolean}
+	 */
+	isTeamShown: function() {
+		return $('about-team').style.display !== 'none';
+	},
+
+
 
 	/**
-	 * Hide window
-	 *
-	 * @method	hide
+	 * Toggle display of team names / third party library credits 
 	 */
-	hide: function() {
-		if( this.win ) {
-			this.win.hide();
+	toggleCredits: function() {
+		if( this.isTeamShown() ) {
+			$('about-team').hide();
+			$('about-libs').show();
+			this.setCreditsButtonText('Special thanks go to');
+			this.setCreditsDedicationText('Third party products credits:');
+		} else {
+			$('about-team').show();
+			$('about-libs').hide();
+			this.setCreditsButtonText('Third party products credits');
+			this.setCreditsDedicationText('Special thanks go to:');
 		}
+	},
+
+
+
+	/**
+	 * Change label of credits dedication
+	 *
+	 * @param	{String}	label
+	 */
+	setCreditsDedicationText: function(label) {
+		$('about-credits-dedication').innerHTML = label;
+	},
+
+
+
+	/**
+	 * Change label of toggle button
+	 *
+	 * @param	{String}	label
+	 */
+	setCreditsButtonText: function(label) {
+		$('about-toggle-credits').down('span.label').innerHTML = label;
 	}
 
 };

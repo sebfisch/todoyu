@@ -1,65 +1,139 @@
+/* -----------------------
+	About headlet
+   ----------------------- */
 #headlet-about-button {
 	background:url(../img/headlet-icons.png) no-repeat 1px -24px;
 }
 
 
 
-#overflow-window-about .logo {
-	height:120px;
-	background:url(../img/logo2.png) no-repeat 40% 0;
+/* -------------------------
+	About popup window
+   ------------------------- */
+#popup-about_row2 * {
+	background-color:#fff !important;
 }
 
-#overflow-window-about p {
-	text-align:left;
-	margin-bottom:10px;
-}
+	#popup-about .version {
+		position:relative;
+		right:-250px;
+		top:-36px;
+		z-index:50000;
+		width:200px;
+		text-align:right !important;
+		background:transparent !important;
+	}
 
-#overflow-window-about a {
-	text-decoration:underline;
-}
+	#popup-about .left {
+		float:left;
+	}
+	#popup-about .right {
+		float:left;
+		clear:right;
+	}
 
-#overflow-window-about .copyright {
+	#popup-about .logo {
+		height:120px;
+		background:url(../img/logo2.png) no-repeat 40% 0;
+	}
 
-}
+	#popup-about p.info {
+		text-align:left;
+		padding:0 8px 0 8px;
+		margin:0 0 12px 0;
+	}
+		#popup-about p.info p {
+			margin:12px 0 12px 0;
+		}
 
-#overflow-window-about .community {
-	font-weight:bold;
-}
+	#popup-about a {
+		text-decoration:underline;
+	}
 
-#overflow-window-about .thanks {
-	font-weight:bold;
-	margin-top:20px;
-}
+	#popup-about .thanks {
+		text-align:left !important;
+		padding:0 0 0 8px;
+		margin:24px 0 6px 0;
+	}
 
-#overflow-window-about .names {
-	height:150px;
-	padding:5px;
-	border:1px dotted #ccc;
-	background-color:#f3f3f3;
-	position:relative;
-	overflow:hidden;
-}
+	#popup-about .creditsbox {
+		border:1px dotted #ccc;
+		height:150px;
+		clear:left;
+		margin:0 0 0 6px;
+		width:536px;
+		padding:5px;
+		position:relative;
+	}
 
-#overflow-window-about .names ul {
-	padding-top:50px;
-}
 
-#overflow-window-about .names ul li {
-	padding:5px;
-}
+	/* ------------------------------------------------
+		Toggle button (team / 3rd party credits)
+	   ------------------------------------------------ */
+	button#about-toggle-credits {
+		float:right;
+		margin:-8px 12px 2px 0;
+	}
+		button#about-toggle-credits span.icon {
+			width:4px !important;
+		}
 
-#overflow-window-about .names ul li.coder {
-	font-weight:bold;
-	letter-spacing:2px;
-	text-transform:uppercase;
-}
 
-#overflow-window-about #ee-img {
-	position:absolute;
-	left:-19px;
-	top:19px;
-	width:400px;
-	height:200px;
-	background:url(../img/ggeretsae.gif) no-repeat 0 0;
-}
 
+	/* -----------------------------------
+		Third party libraries credits
+	   ----------------------------------- */
+	#about-libs {
+		overflow-y:scroll;
+		text-align:left;
+	}
+	.creditsbox h1 {
+		padding:0 0 10px 0;
+	}
+	.creditsbox p.product {
+		padding:8px 0 4px 0;
+	}
+
+
+
+	/* -----------------------
+		Scrolling Names
+	   ----------------------- */
+	ul#scrollingnames li div.left {
+		width:220px;
+		text-align:right !important;
+		float:left;
+	}
+	ul#scrollingnames li div.right {
+		padding:0 0 0 7px;
+		width:150px;
+		text-align:left !important;
+		float:left;
+		clear:right;
+	}
+
+	#popup-about .names {
+		overflow:hidden;
+	}
+
+	#popup-about .names ul {
+		padding-top:50px;
+	}
+
+	#popup-about .names ul li {
+		padding:9px;
+	}
+
+	#popup-about .names ul li.coder {
+		letter-spacing:2px;
+		text-transform:uppercase;
+	}
+
+	#popup-about #ee-img {
+		position:absolute;
+		left:57px;
+		top:38px;
+		width:400px;
+		height:200px;
+		background:url(../img/ggeretsae.gif) no-repeat 0 0;
+	}
