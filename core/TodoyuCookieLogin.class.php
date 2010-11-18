@@ -34,7 +34,7 @@ class TodoyuCookieLogin {
 	 * @param	Array		$originalRequestVars
 	 * @return	Array
 	 */
-	public static function tryCookieLogin(array $requestVars, array $originalRequestVars) {
+	public static function hookTryCookieLogin(array $requestVars, array $originalRequestVars) {
 			// Only make cookie login, if not already done
 		if( ! TodoyuAuth::isLoggedIn() ) {
 
