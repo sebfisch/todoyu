@@ -269,7 +269,7 @@ class TodoyuRequest {
 	 */
 	public static function getCurrentRequestVars() {
 		$requestVars	= self::getBasicRequestVars();
-		$requestVars	= TodoyuHookManager::callHookDataModifier('core', 'requestVars', $requestVars, array($requestVars));
+		$requestVars	= TodoyuHookManager::callHookDataModifier('core', 'onload', $requestVars, array($requestVars));
 
 		return $requestVars;
 	}

@@ -36,13 +36,9 @@
 require_once(realpath(dirname(__FILE__) . '/../inc/global.php'));
 require_once(PATH_CORE . '/ci/setup_config.php');
 
-Todoyu::$CONFIG['INIT'] = false;
+Todoyu::$CONFIG['NO_INIT'] = true;
 
-	// Initialize todoyu
 require_once(PATH_CORE . '/inc/init.php');
-
-	// Load all extensions
-TodoyuExtensions::loadAllExtensions();
 
 
 

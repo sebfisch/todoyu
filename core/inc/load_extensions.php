@@ -18,20 +18,21 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-/**
- * Core config for page rendering
- *
- * @package		Todoyu
- * @subpackage	Core
- */
+$installedExtensions	= TodoyuExtensions::getInstalledExtKeys();
 
-if( TodoyuAuth::isLoggedIn() ) {
-	TodoyuPage::addJsOnloadedFunction('Todoyu.QuickInfo.init.bind(Todoyu.QuickInfo)', 10);
+	// First add all include paths
+foreach($installedExtensions as $extKey) {
+	TodoyuExtensions::addExtAutoloadPaths($extKey);
+}
 
-		// Register AJAX loader headlet which indicated active AJAX requests
-	TodoyuHeadManager::addHeadlet('TodoyuHeadletAjaxLoader', 0);
-	TodoyuHeadManager::addHeadlet('TodoyuHeadletAbout', 10);
-	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickCreate', 50);
+	// Load all ext.php files to init the extensions
+foreach($installedExtensions as $extKey) {
+	$extDir	= TodoyuExtensions::getExtPath($extKey);
+	$extFile= $extDir . '/ext.php';
+
+	if( is_file($extFile) ) {
+		require_once($extFile);
+	}
 }
 
 ?>

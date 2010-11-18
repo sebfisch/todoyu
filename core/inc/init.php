@@ -29,7 +29,7 @@ Todoyu::addIncludePath( PATH_CORE . '/form' );
 Todoyu::addIncludePath( PATH_CORE . '/document');
 
 	// Init basic classes
-if( Todoyu::$CONFIG['INIT'] ) {
+if( Todoyu::$CONFIG['NO_INIT'] !== true ) {
 	Todoyu::init();
 }
 
@@ -48,10 +48,15 @@ TodoyuLabelManager::registerCore('static_country_zone', 'static_country_zone.xml
 TodoyuLabelManager::registerCore('static_territory', 'static_territory.xml');
 TodoyuLabelManager::registerCore('static_language', 'static_language.xml');
 
-	// Add all paths of installed extensions to autoload
-TodoyuExtensions::addAllExtensionAutoloadPaths();
+	// Load extensions
+if( Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] !== true ) {
+	require( PATH_CORE . '/inc/load_extensions.php' );
+}
 
 	// Custom config overrides
 require_once( PATH_LOCALCONF . '/override.php');
+
+	// Add JSCalendar language file suiting to system language
+TodoyuJSCalendar::addLangFile();
 
 ?>
