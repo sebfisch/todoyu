@@ -34,17 +34,19 @@ TodoyuHeader::sendTypeHTML();
 	// Start output buffering
 ob_start();
 
-	// Get valid request variables (here it will be checked for login, etc)
-$requestVars	= TodoyuRequest::getCurrentRequestVars();
 
-	// Set definitive request vars as constants
-define('EXT',		$requestVars['ext']);
-define('CONTROLLER',$requestVars['ctrl']);
-define('ACTION', 	$requestVars['action']);
-define('AREA', 		$requestVars['area']);
+	// Load all load.php files of the extensions
+TodoyuExtensions::loadAllLoad();
+
+	// Define request vars as constants
+TodoyuRequest::defineRequestVars();
+
+	// Load all extensions
+TodoyuExtensions::loadAllExtensions();
 
 	// Dispatch request to selected controller
 TodoyuActionDispatcher::dispatch();
+
 
 	// Measure processing time
 define('TIME_END', microtime(true));

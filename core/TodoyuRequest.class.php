@@ -269,7 +269,7 @@ class TodoyuRequest {
 	 */
 	public static function getCurrentRequestVars() {
 		$requestVars	= self::getBasicRequestVars();
-		$requestVars	= TodoyuHookManager::callHookDataModifier('core', 'onload', $requestVars, array($requestVars));
+		$requestVars	= TodoyuHookManager::callHookDataModifier('core', 'requestVars', $requestVars, array($requestVars));
 
 		return $requestVars;
 	}
@@ -284,7 +284,7 @@ class TodoyuRequest {
 	 * @param	Array		$originalRequestVars		Originaly provided request vars
 	 * @return	Array
 	 */
-	public static function setDefaultRequestVarsHook(array $requestVars, array $originalRequestVars) {
+	public static function hookSetDefaultRequestVars(array $requestVars, array $originalRequestVars) {
 			// Check ext for a valid string and set defaults if needed
 		if( empty($requestVars['ext']) ) {
 			$ext = false;

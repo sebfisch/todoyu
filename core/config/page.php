@@ -32,6 +32,9 @@ if( TodoyuAuth::isLoggedIn() ) {
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletAjaxLoader', 0);
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletAbout', 10);
 	TodoyuHeadManager::addHeadlet('TodoyuHeadletQuickCreate', 50);
+
+		// Add JSCalendar language file suiting to system language
+	TodoyuJSCalendar::addLangFile();
 }
 
 ?>

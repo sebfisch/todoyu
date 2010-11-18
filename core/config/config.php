@@ -57,7 +57,7 @@ Todoyu::$CONFIG['CHMOD'] = array(
 	'folder'=> 0775
 );
 
-	// Add URL substitution to text auto-linkage 
+	// Add URL substitution to text auto-linkage
 TodoyuHookManager::registerHook('core', 'substituteLinkableElements', 'TodoyuString::replaceUrlWithLink');
 
 	// Add IE scripts hook to page
@@ -72,10 +72,11 @@ Todoyu::$CONFIG['LIST']['size']	= 30;
 
 
 	// Add core onLoad hooks
-TodoyuHookManager::registerHook('core', 'onload', 'TodoyuRequest::setDefaultRequestVarsHook', 10);
-TodoyuHookManager::registerHook('core', 'onload', 'TodoyuCookieLogin::tryCookieLogin', 20);
-TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::hookNotLoggedInAjax', 990);
-TodoyuHookManager::registerHook('core', 'onload', 'TodoyuAuth::hookCheckLoginStatus', 1000);
+TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuRequest::hookSetDefaultRequestVars', 10);
+TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuCookieLogin::hookTryCookieLogin', 20);
+TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuAuth::hookSendNotLoggedInForAjaxRequest', 30);
+TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuAuth::hookRedirectToLoginIfNotLoggedIn', 1000);
+
 
 
 	// Setup password requirements
@@ -91,9 +92,8 @@ Todoyu::$CONFIG['CREATE'] = array(
 	'engines'	=> array()
 );
 
-	// Flags to prevent normal initialisation
-Todoyu::$CONFIG['WITHOUT_EXTENSIONS']	= false;
-Todoyu::$CONFIG['NO_INIT']				= false;
+	// Enable todoyu initialization
+Todoyu::$CONFIG['INIT']	= true;
 
 Todoyu::$CONFIG['CHECK_DENIED_RIGHTS']	= false;
 

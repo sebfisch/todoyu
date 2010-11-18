@@ -220,7 +220,7 @@ class TodoyuAuth {
 	 * @param	Array		$originalRequestVars
 	 * @return	Array
 	 */
-	public static function hookNotLoggedInAjax(array $requestVars, array $originalRequestVars) {
+	public static function hookSendNotLoggedInForAjaxRequest(array $requestVars, array $originalRequestVars) {
 		if( ! self::isLoggedIn() && ! self::isNoLoginRequired($requestVars['ext'], $requestVars['ctrl']) ) {
 			if( TodoyuRequest::isAjaxRequest() ) {
 				self::sendNotLoggedInHeader();
@@ -241,7 +241,7 @@ class TodoyuAuth {
 	 * @param	Array		$originalRequestVars
 	 * @return	Array
 	 */
-	public static function hookCheckLoginStatus(array $requestVars, array $originalRequestVars) {
+	public static function hookRedirectToLoginIfNotLoggedIn(array $requestVars, array $originalRequestVars) {
 		if( ! self::isLoggedIn() && ! self::isNoLoginRequired($requestVars['ext'], $requestVars['ctrl']) ) {
 				// On normal request, change controller to login page
 			$requestVars['ext']		= Todoyu::$CONFIG['AUTH']['login']['ext'];
