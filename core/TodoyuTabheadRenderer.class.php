@@ -36,7 +36,7 @@ class TodoyuTabheadRenderer {
 	 * @param	String	$active
 	 * @param	String	$label
 	 * @param 	String	$position
-	 * @param 	Int		$taskamount
+	 * @param 	Integer	$taskamount
 	 * @return	String
 	 */
 	public static function renderTab($htmlId, $class, $classKey, $active, $label, $position, $hasIcon = 0, $elementAmount = 0) {
