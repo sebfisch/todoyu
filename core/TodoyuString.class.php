@@ -585,6 +585,61 @@ class TodoyuString {
 
 
 	/**
+	 * Returns an HTML <a href="mailto:"> - tag
+	 *
+	 *
+	 * @static
+	 * @param	String	$emailAddress
+	 * @param	String	$label
+	 * @param	Boolean	$returnAsArray
+	 * @param	String	$subject
+	 * @param	String	$mailBody
+	 * @param	String	$cc
+	 * @param	String	$bcc
+	 * @return	String
+	 */
+	public static function getMailtoTag($emailAddress, $label = '', $returnAsArray = false, $subject = '', $mailBody = '', $cc ='', $bcc = '')	{
+		$result = '<a href="mailto:' . $emailAddress;
+		$separator = '?';
+		$end	= '</a>';
+
+		if($subject)	{
+			$result .= $separator . 'subject=' . $subject;
+			$separator = '&';
+		}
+
+		if($mailBody)	{
+			$result .= $separator . 'body=' . $mailBody;
+			$separator = '&';
+		}
+
+		if($cc)	{
+			$result .= $separator . 'cc=' . $cc;
+			$separator = '&';
+		}
+
+		if($bcc)	{
+			$result .= $separator . 'bcc=' . $bcc;
+		}
+
+		$result .= '">';
+
+		if($returnAsArray === true)	{
+			return array(	$result,
+							$end);
+		}
+
+		if($label)	{
+			return $result . $label . $end;
+		}
+
+
+		return $result . $emailAddress . $end;
+	}
+
+
+
+	/**
 	 * Callback for cleanRTEText
 	 * Add <br> tags inside the <pre> tags
 	 *
@@ -594,9 +649,6 @@ class TodoyuString {
 	private static function callbackPreText(array $matches) {
 		return nl2br(trim($matches[1]));
 	}
-
-
-
 }
 
 ?>
