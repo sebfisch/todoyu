@@ -95,10 +95,23 @@ class TodoyuSpeed {
 		$t = self::last($key) - self::first($key);
 
 		if( $format ) {
-			$t = ($t * 1000) . 'ms';
+			$t = round($t * 1000, 3) . 'ms';
 		}
 
 		return $t;
+	}
+
+
+
+	/**
+	 * Print total time in firebug
+	 *
+	 * @param	String		$key
+	 */
+	public static function totalInFirebug($key = 'default') {
+		$total	= self::total($key, true);
+
+		TodoyuDebug::printInFireBug($total, $key);
 	}
 
 
