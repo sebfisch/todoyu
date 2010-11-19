@@ -98,7 +98,7 @@ class TodoyuNumeric {
 			return false;
 		}
 
-		// Increase value for subversions
+		// Increase value for sub versions
 		if( ! empty($matches[4]) ) {
 			switch($matches[4]) {
 				case 'rc':
@@ -126,6 +126,22 @@ class TodoyuNumeric {
 		}
 
 		return $matches[1] * 1000000 + $matches[2] * 10000 + $matches[3] * 100 + $added;
+	}
+
+
+
+	/**
+	 * Check whether given version is same or newer than version to be compared to
+	 *
+	 * @param	String		$version
+	 * @param	String		$compareTo
+	 * @return	Boolean
+	 */
+	public static function isVersionAtLeast($version, $atLeastVersion) {
+		$intVersion			= self::getIntVersion($version);
+		$intAtLeastVersion	= self::getIntVersion($atLeastVersion);
+
+		return $intVersion >= $intAtLeastVersion;
 	}
 
 

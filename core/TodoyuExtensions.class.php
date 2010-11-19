@@ -392,8 +392,35 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Check if an extension has dependents
-	 * Dependents need the current extension to work properly
+	 * Check whether given extension depends on other extensions
+	 *
+	 * @param	String		$extKey
+	 * @return	Boolean
+	 */
+	public static function hasDependencies($extKey) {
+		$dependencies	= self::getDependencies($extKey);
+
+		return sizeof($dependencies) > 0;
+	}
+
+
+
+	/**
+	 * Get keys of extensions the given extension depends on  
+	 *
+	 * @param	String	$extKey
+	 * @return	Array
+	 */
+	public static function getDependencies($extKey) {
+		$extInfo	= self::getExtInfo($extKey);
+
+		return $extInfo['constraints']['depends'];
+	}
+
+
+
+	/**
+	 * Check whether other extensions depend on given extension
 	 *
 	 * @param	String		$extKey
 	 * @return	Boolean
