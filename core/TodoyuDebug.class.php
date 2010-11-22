@@ -106,6 +106,7 @@ class TodoyuDebug {
 	 * @param	Mixed		$item		Item to debug
 	 * @param	String		$title		Title for debug output
 	 * @param	String		$usernames	Only this listed users shall see the debug output
+	 * @param	Boolean		$return		Return or print result
 	 */
 	public static function printPHP($item, $title = '', $usernames = null, $return = false) {
 		if( ! is_null($usernames) && ! self::isCurrentUser($usernames) ) {
