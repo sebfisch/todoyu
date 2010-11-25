@@ -282,7 +282,7 @@ Todoyu.QuickInfo = {
 
 		var elementKey	= callback(observedElement, event);
 
-		var cacheID= name + elementKey;
+		var cacheID	= name + elementKey;
 		this.hidden	= false;
 
 		if( this.loading === true ) {
@@ -394,7 +394,7 @@ Todoyu.QuickInfo = {
 		if( $(this.popupID) ) {
 			$(this.popupID).hide();
 
-				// hide-flag: comprehend overlapping of mouseOut and running show request
+				// Hide-flag: comprehend overlapping of mouseOut and running show request
 			this.hidden	= true;
 			this.active	= null;
 		}
@@ -483,7 +483,7 @@ Todoyu.QuickInfo = {
 		json.each(function(item){
 				// Ensure maximum word length not to break layout: add wordwrap. But only if string doesn't contain html
 			if( item.label.indexOf('<') === -1 ) {
-				item.label	= Todoyu.Helper.wordwrap(item.label, 16, ' ', true);
+				item.label	= Todoyu.Helper.wordwrapEntities(item.label, 16, ' ', true);
 			}
 
 				// Add template row with item

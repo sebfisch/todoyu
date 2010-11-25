@@ -84,9 +84,14 @@ class TodoyuQuickinfo {
 	 * @param	Integer		$position
 	 */
 	public function addInfo($key, $label, $position = 100, $escape = true) {
+		if( $escape === true ) {
+			$label	= htmlentities($label, ENT_QUOTES, 'UTF-8');
+		}
+		$label	= str_replace("\n", '<br />', $label);
+
 		$this->elements[$key] = array(
 			'key'		=> $key,
-			'label'		=> str_replace("\n", '<br />', ($escape ? htmlentities($label, ENT_QUOTES, 'UTF-8') : $label)),
+			'label'		=> $label,
 			'position'	=> intval($position)
 		);
 	}
