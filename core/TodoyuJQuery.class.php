@@ -19,17 +19,19 @@
 *****************************************************************************/
 
 /**
- * Todoyu Highcharts
+ * Add jQuery to page
  *
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuHighcharts {
+class TodoyuJQuery {
 
-	public static function addHighcharts() {
-		TodoyuJQuery::addJQuery();
-
-		TodoyuPage::addJavascript('lib/js/highcharts/highcharts.src.js', 31, false, false, false);
+	/**
+	 * Add jQuery assets to page and
+	 */
+	public static function addJQuery() {
+		TodoyuPage::addJavascript('lib/js/jquery/jquery.min.js', 10, false, false, false);
+		TodoyuPage::addJsInline('Todoyu.jQueryNoConflict()', 0);
 	}
 
 }

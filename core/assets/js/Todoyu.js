@@ -73,6 +73,17 @@ var Todoyu = {
 
 
 	/**
+	 * Enable noConflict mode for jQuery if loaded
+	 */
+	jQueryNoConflict: function() {
+		if( window.jQuery ) {
+			window.jQ = window.jQuery.noConflict();
+		}
+	},
+
+
+
+	/**
 	 * Initialize all extensions
 	 * Call the init() function of all extensions in their main container if it exists
 	 *
