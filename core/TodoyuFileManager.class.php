@@ -193,31 +193,35 @@ class TodoyuFileManager {
 	 */
 	public static function makeDirDeep($directoryPath, $mode = null) {
 		$directoryPath	= self::pathAbsolute($directoryPath);
+		$mode			= is_null($mode) ? Todoyu::$CONFIG['CHMOD']['folder'] : $mode;
 
 			// Check if directory already exists
 		if( is_dir($directoryPath) ) {
 			return true;
 		}
 
-			// Remove base PATH, we only create the sub folders. Split the parts
-		$directoryPath	= str_replace(PATH, '', $directoryPath);
-		$pathParts		= array_slice(explode(DIR_SEP, $directoryPath), 1);
-		$basePath		= PATH;
-		$chmod			= is_null($mode) ? Todoyu::$CONFIG['CHMOD']['folder'] : $mode;
+		return mkdir($directoryPath, $mode, true);
 
-			// Create each level of the sub folder
-		foreach( $pathParts as $pathPart ) {
-			$currentPath = $basePath . DIR_SEP . $pathPart;
-
-			if( ! is_dir($currentPath) ) {
-				mkdir($currentPath);
-				chmod($currentPath, $chmod);
-			}
-
-			$basePath = $currentPath;
-		}
-
-		return true;
+//
+//			// Remove base PATH, we only create the sub folders. Split the parts
+//		$directoryPath	= str_replace(PATH, '', $directoryPath);
+//		$pathParts		= array_slice(explode(DIR_SEP, $directoryPath), 1);
+//		$basePath		= PATH;
+//
+//
+//			// Create each level of the sub folder
+//		foreach( $pathParts as $pathPart ) {
+//			$currentPath = $basePath . DIR_SEP . $pathPart;
+//
+//			if( ! is_dir($currentPath) ) {
+//				mkdir($currentPath);
+//				chmod($currentPath, $chmod);
+//			}
+//
+//			$basePath = $currentPath;
+//		}
+//
+//		return true;
 	}
 
 
