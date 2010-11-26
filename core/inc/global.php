@@ -72,7 +72,7 @@ require_once( PATH_EXT .  '/contact/model/TodoyuContactPreferences.class.php' );
 
 	// Load development classes
 require_once( PATH_CORE . '/TodoyuDebug.class.php' );
-require_once( PATH_LIB . '/php/FirePHP/FirePHP.class.php' );
+require_once( PATH_LIB . '/php/FirePHPCore/FirePHP.class.php' );
 
 	// Load CSS and JS minimizer
 	// @todo only load when really minimizing stuff
