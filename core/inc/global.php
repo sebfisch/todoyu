@@ -74,11 +74,6 @@ require_once( PATH_EXT .  '/contact/model/TodoyuContactPreferences.class.php' );
 require_once( PATH_CORE . '/TodoyuDebug.class.php' );
 require_once( PATH_LIB . '/php/FirePHPCore/FirePHP.class.php' );
 
-	// Load CSS and JS minimizer
-	// @todo only load when really minimizing stuff
-require_once( PATH_LIB . '/php/cssmin.php' );
-require_once( PATH_LIB . '/php/jsmin.php' );
-
 	// Register autoloader
 spl_autoload_register( array('Todoyu', 'autoloader') );
 

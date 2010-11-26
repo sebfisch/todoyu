@@ -351,6 +351,8 @@ class TodoyuPageAssetManager {
 	 * @return	String
 	 */
 	public static function compressJavaScript($javaScriptCode) {
+		require_once( PATH_LIB . '/php/jsmin.php' );
+		
 		try {
 			return JSMin::minify($javaScriptCode);
 		} catch(JSMinException $e) {
@@ -575,6 +577,8 @@ class TodoyuPageAssetManager {
 	 * @return	String
 	 */
 	private static function compressStylesheet($cssCode) {
+		require_once( PATH_LIB . '/php/cssmin.php' );
+
 		return cssmin::minify($cssCode);
 	}
 
