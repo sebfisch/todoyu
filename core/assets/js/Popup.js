@@ -94,12 +94,12 @@ Todoyu.Popup = {
 	 * @method	openWindow
 	 * @param	{String}		idPopup
 	 * @param	{String}		title
-	 * @param	{Number}		winWidth
+	 * @param	{Number}		minWidth
 	 * @param	{String}		contentUrl
 	 * @param	{Array}			requestOptions
 	 * @return	{Window}
 	 */
-	openWindow: function(idPopup, title, winWidth, contentUrl, requestOptions) {
+	openWindow: function(idPopup, title, minWidth, contentUrl, requestOptions) {
 			// Construct
 		this.popup[idPopup] = new Window({
 			id:					idPopup,
@@ -108,9 +108,9 @@ Todoyu.Popup = {
 
 			parent:				document.getElementsByTagName("body").item(0),
 
-			minWidth:			100,
+			minWidth:			minWidth,
 			minHeight:			220,
-			width:				winWidth,
+			width:				minWidth,
 			height:				240,
 
 			resizable:			true,
