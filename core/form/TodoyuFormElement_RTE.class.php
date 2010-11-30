@@ -42,7 +42,7 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 
 
 	/**
-	 * Build RTE initialisation javaScript code to convert the textarea into a RTE
+	 * Build RTE initialisation JavaScript code to convert the textarea into a RTE
 	 * when displayed on the page
 	 *
 	 * @return	String

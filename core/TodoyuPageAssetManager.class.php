@@ -229,7 +229,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Get the javaScript merge file
+	 * Get the JavaScript merge file
 	 *
 	 * @param	Array		$fileConfigs		Configs for all files which have merging enabled
 	 * @return	String		Web path to merge file in cache
@@ -274,7 +274,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Get paths to javaScript files which are not merged (but possibly compressed and localized)
+	 * Get paths to JavaScript files which are not merged (but possibly compressed and localized)
 	 *
 	 * @param	Array		$fileConfigs
 	 * @return	Array
@@ -323,7 +323,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Path to single javaScript file
+	 * Path to single JavaScript file
 	 *
 	 * @param	String		$pathToFile
 	 * @param	Boolean		$compressed
@@ -345,7 +345,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Compress javaScript code
+	 * Compress JavaScript code
 	 *
 	 * @param	String		$javaScriptCode
 	 * @return	String
@@ -366,7 +366,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Localize a javaScript
+	 * Localize a JavaScript
 	 *
 	 * @param	String	$javaScriptCode
 	 * @return	String

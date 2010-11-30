@@ -96,7 +96,7 @@ Todoyu.Popup = {
 	 * @param	{String}		title
 	 * @param	{Number}		minWidth
 	 * @param	{String}		contentUrl
-	 * @param	{Array}			requestOptions
+	 * @param	{Object}		requestOptions
 	 * @return	{Window}
 	 */
 	openWindow: function(idPopup, title, minWidth, contentUrl, requestOptions) {
@@ -137,7 +137,7 @@ Todoyu.Popup = {
 		if( typeof requestOptions.onComplete !== 'function' ) {
 			requestOptions.onComplete = Prototype.emptyFunction;
 		}
-
+			// Popup with AJAX content
 		requestOptions.onComplete.wrap(function(idPopup, callOriginal, response){
 			this.onContentLoaded.bind(this, idPopup);
 			callOriginal(response);
@@ -165,6 +165,67 @@ Todoyu.Popup = {
 	 */
 	onContentLoaded: function(idPopup, response) {
 
+	},
+
+
+
+	/**
+	 * Open new popup window containing given element
+	 *
+	 * @method	openWindow
+	 * @param	{String}		idPopup
+	 * @param	{String}		idElement
+	 * @param	{String}		title
+	 * @return	{Window}
+	 */
+	openElementInWindow: function(idPopup, idElement, title) {
+			// Get element dimensions
+		var element	= $(idElement);
+		var	elementDimension	= element.getDimensions();
+
+		var minWidth	= elementDimension.width + 14;
+		var minHeight	= elementDimension.height + 14;
+
+			// Open empty popup encompassing given element
+		this.popup[idPopup] = new Window({
+			id:					idPopup,
+			className:			"dialog",
+			title:				title,
+
+			parent:				document.getElementsByTagName("body").item(0),
+
+			minWidth:			minWidth,
+			minHeight:			minHeight,
+			width:				minWidth,
+			height:				minHeight + 20,
+
+			resizable:			true,
+			closable:			true,
+			minimizable:		false,
+			maximizable:		false,
+			draggable:			false,
+
+			zIndex:				2000,
+			recenterAuto:		false,
+
+			'hideEffect':		Element.hide,
+			'showEffect':		Element.show,
+			effectOptions:		null,
+
+			destroyOnClose:		true
+		});
+
+			// Show popup and activate content overlay
+		this.getPopup(idPopup).showCenter(true, 100);
+
+			// Set content
+		var idPopupContent	= idPopup + 'Content';
+		this.getPopup(idPopup).setHTMLContent('<div id="' + idPopupContent + '">' + $(idElement).innerHTML + '</div>');
+
+		// Save last opened popup
+		this.last = this.getPopup(idPopup);
+
+		return this.getPopup(idPopup);
 	},
 
 

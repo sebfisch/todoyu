@@ -367,7 +367,7 @@ function Dwoo_Plugin_substituteLinkableElements(Dwoo $dwoo, $text) {
  *
  * @param 	Dwoo		$dwoo
  * @param	String		$label		Button text
- * @param	String		$onclick	onClick javaScript handler
+ * @param	String		$onclick	onClick JavaScript handler
  * @param	String		$class		CSS class
  * @param	Integer		$id			HTML id
  * @return	String

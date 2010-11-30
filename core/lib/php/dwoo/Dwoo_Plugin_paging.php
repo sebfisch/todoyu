@@ -119,7 +119,7 @@ class Dwoo_Plugin_paging extends Dwoo_Block_Plugin implements Dwoo_ICompilable_B
 		$post 	.= "}";
 		$post	.= Dwoo_Compiler::PHP_CLOSE;
 
-			// Add javaScript init
+			// Add JavaScript init
 		$post	.= TodoyuString::wrapScript('Todoyu.Paging.init(' . $name . ', ' . Dwoo_Compiler::PHP_OPEN . ' echo ' . ($params['offset']) . '; ' . Dwoo_Compiler::PHP_CLOSE . ', ' . trim($params['update']) . ');');
 
 		return $pre . $content . $post;

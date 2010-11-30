@@ -24,7 +24,7 @@ class TodoyuHeadletAbout extends TodoyuHeadletTypeButton {
 	 * Initialize headlets
 	 */
 	protected function init() {
-			// Set javaScript object which handles events
+			// Set JavaScript object which handles events
 		$this->setJsHeadlet('Todoyu.Headlet.About');
 	}
 

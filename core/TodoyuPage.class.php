@@ -128,7 +128,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Load extension javaScript files
+	 * Load extension JavaScript files
 	 *
 	 * @param	String		$ext
 	 */
@@ -315,7 +315,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Add javaScript to the current page. The script will be managed (merged, compressed, localized)
+	 * Add JavaScript to the current page. The script will be managed (merged, compressed, localized)
 	 *
 	 * @param	String		$pathToFile			Path to original file
 	 * @param	Integer		$position			File position in loading order
@@ -330,7 +330,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Add inline javaScript code
+	 * Add inline JavaScript code
 	 *
 	 * @param	String		$jsCode
 	 * @param	Integer		$position
@@ -416,7 +416,7 @@ class TodoyuPage {
 
 
 	/**
-	 * Add javaScripts and stylesheets to the page object variables
+	 * Add JavaScripts and stylesheets to the page object variables
 	 */
 	private static function addJavascriptAndStylesheetsToPage() {
 		TodoyuPageAssetManager::addAssetsToPage();
@@ -453,7 +453,7 @@ class TodoyuPage {
 			// Add main navigation
 		self::set('navigation', TodoyuRenderer::renderNavigation());
 
-			// Add javaScripts and stylesheet to page
+			// Add JavaScripts and stylesheet to page
 		self::addJavascriptAndStylesheetsToPage();
 
 		self::sortJSinlines();
