@@ -348,7 +348,7 @@ function Dwoo_Plugin_linkUrls_compile(Dwoo_Compiler $compiler, $text) {
 
 
 /**
- * Substitute registered linkable elements in given text by their respective hyperlinks 
+ * Substitute registered linkable elements in given text by their respective hyperlinks
  *
  * @param	Dwoo	$dwoo
  * @param	String	$text
@@ -568,6 +568,13 @@ function Dwoo_Plugin_select(Dwoo $dwoo, array $options, array $value = array(), 
 
 	if( $multiple !== true ) {
 		$data['size'] = 1;
+	}
+
+		// Append brackets to ensure multiple values are submitted
+	if( $multiple ) {
+		if( $data['htmlName'] !== '' && substr($data['htmlName'], -2) !== '[]' ) {
+			$data['htmlName'] .= '[]';
+		}
 	}
 
 	return render($tmpl, $data);
