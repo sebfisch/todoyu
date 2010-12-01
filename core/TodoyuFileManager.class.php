@@ -201,27 +201,6 @@ class TodoyuFileManager {
 		}
 
 		return mkdir($directoryPath, $mode, true);
-
-//
-//			// Remove base PATH, we only create the sub folders. Split the parts
-//		$directoryPath	= str_replace(PATH, '', $directoryPath);
-//		$pathParts		= array_slice(explode(DIR_SEP, $directoryPath), 1);
-//		$basePath		= PATH;
-//
-//
-//			// Create each level of the sub folder
-//		foreach( $pathParts as $pathPart ) {
-//			$currentPath = $basePath . DIR_SEP . $pathPart;
-//
-//			if( ! is_dir($currentPath) ) {
-//				mkdir($currentPath);
-//				chmod($currentPath, $chmod);
-//			}
-//
-//			$basePath = $currentPath;
-//		}
-//
-//		return true;
 	}
 
 
