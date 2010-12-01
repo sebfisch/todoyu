@@ -49,7 +49,11 @@ Todoyu.Popup = {
 	 */
 	timeoutID:	null,
 
-
+	/**
+	 * @property	contentOrigParentNode
+	 * @type		DOMelement
+	 */
+	contentOrigParentNode: null,
 
 	/**
 	 * Get popup reference
@@ -174,19 +178,20 @@ Todoyu.Popup = {
 	 *
 	 * @method	openWindow
 	 * @param	{String}		idPopup
-	 * @param	{String}		idElement
+	 * @param	{String}		idContentElement
 	 * @param	{String}		title
+	 * @param	{Function}		closePopupCallback
 	 * @return	{Window}
 	 */
-	openElementInWindow: function(idPopup, idElement, title) {
+	openElementInWindow: function(idPopup, idContentElement, title, closePopupCallback) {
 			// Get element dimensions
-		var element	= $(idElement);
-		var	elementDimension	= element.getDimensions();
+		var contentElement		= $(idContentElement);
+		var	elementDimension	= contentElement.getDimensions();
 
 		var minWidth	= elementDimension.width + 14;
 		var minHeight	= elementDimension.height + 14;
 
-			// Open empty popup encompassing given element
+			// Open empty popup and show content overlay
 		this.popup[idPopup] = new Window({
 			id:					idPopup,
 			className:			"dialog",
@@ -215,17 +220,40 @@ Todoyu.Popup = {
 			destroyOnClose:		true
 		});
 
-			// Show popup and activate content overlay
 		this.getPopup(idPopup).showCenter(true, 100);
 
-			// Set content
-		var idPopupContent	= idPopup + 'Content';
-		this.getPopup(idPopup).setHTMLContent('<div id="' + idPopupContent + '">' + $(idElement).innerHTML + '</div>');
+			// Move content element into popup window
+		this.contentOrigParentNode = contentElement.parentNode;
+		var idPopupContent			= idPopup + 'Content';
 
-		// Save last opened popup
+		this.getPopup(idPopup).setHTMLContent('<div id="' + idPopupContent + '"></div>');
+		$(idPopupContent).insert(contentElement);
+
+			// Install observer to restore content when closing the window
+		var idCloseDiv	= idPopup + '_close';
+		$(idCloseDiv).observe('mouseup', this.restoreContent.bindAsEventListener(this, idPopup, closePopupCallback));
+
+			// Save last opened popup
 		this.last = this.getPopup(idPopup);
 
 		return this.getPopup(idPopup);
+	},
+
+
+
+	/**
+	 * Restore original node position of popup content element
+	 *
+	 * @param	{Object}	event
+	 * @param	{String}	idPopup
+	 * @param	{Function}	callback
+	 */
+	restoreContent: function(event, idPopup, callback) {
+		var contentElement		= $(idPopup + 'Content').down('div');
+
+		this.contentOrigParentNode.insert(contentElement);
+
+		callback();
 	},
 
 
