@@ -82,7 +82,10 @@
 .taskNameItem{
 	font-size:11px;
 	font-weight:normal;
-	color:#7D7D7D;     
+	color:#111;
+	left:0 !important;
+	height:17px !important;
+	padding:0 0 0 3px;
 }
 
 .panelErrors{
