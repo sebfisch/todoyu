@@ -68,6 +68,7 @@ Todoyu.Ajax = {
 	checkNotLoggedInHeader: function(response) {
 		if( response.isNotLoggedIn() ) {
 				// Delete onComplete handler to prevent processing an empty response
+			response.request.options.backupOnComplete = response.request.options.onComplete;
 			delete response.request.options.onComplete;
 			Todoyu.notifyError('[LLL:core.notLoggedIn.errorMessage]', 0);
 			Todoyu.Hook.exec('core.notloggedin', response);
