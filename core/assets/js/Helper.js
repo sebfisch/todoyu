@@ -500,6 +500,22 @@ Todoyu.Helper = {
 		if( step < 4 ) {
 			this.onUpdateChromeSafariScrollTop.defer(elementID, step)
 		}
+	},
+
+
+
+	/**
+	 * Get a key from a class with the specific prefix
+	 *
+	 * @param	{Element}		element
+	 * @param	{String}		prefix
+	 */
+	getClassKey: function(element, prefix) {
+		var keyClass = $w($(element).className).detect(function(className){
+			return className.startsWith(prefix);
+		});
+
+		return keyClass ? keyClass.replace(prefix, '').toLowerCase() : '';
 	}
 
 };

@@ -46,6 +46,19 @@ class TodoyuArray {
 
 
 	/**
+	 * Get unique values of a column
+	 *
+	 * @param	Array		$array
+	 * @param	String		$columnName
+	 * @return	Array
+	 */
+	public static function getColumnUnique(array $array, $columnName) {
+		return array_unique(self::getColumn($array, $columnName));
+	}
+
+
+
+	/**
 	 * Get first key of associative array
 	 *
 	 * @param	Array	$array

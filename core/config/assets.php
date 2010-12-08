@@ -148,6 +148,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 55
 		),
 		array(
+			'file'		=> 'core/assets/js/SortablePanelList.js',
+			'position'	=> 55
+		),
+		array(
 			'file'		=> 'core/assets/js/Headlet.js',
 			'position'	=> 55
 		),
@@ -336,6 +340,11 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/assets/css/panel.css',
+			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/sortable-panel-list.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),

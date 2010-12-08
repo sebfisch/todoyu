@@ -356,12 +356,11 @@ Todoyu.Ui = {
 	 * Add hover effect to element
 	 *
 	 * @method	addHoverEffect
-	 * @param	{String}	idElement
+	 * @param	{Element|String}	element
 	 */
-	addHoverEffect: function(idElement) {
-		var elt = $(idElement);
-		Event.observe(idElement, 'mouseover', this.hoverEffect.bindAsEventListener(this, true, elt));
-		Event.observe(idElement, 'mouseout', this.hoverEffect.bindAsEventListener(this, false, elt));
+	addHoverEffect: function(element) {
+		$(element).observe('mouseover', this.hoverEffect.bindAsEventListener(this, true, $(element)));
+		$(element).observe('mouseout', this.hoverEffect.bindAsEventListener(this, false, $(element)));
 	},
 
 

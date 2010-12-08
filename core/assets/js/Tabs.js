@@ -140,7 +140,7 @@ Todoyu.Tabs = {
 	 * @return	{Element}
 	 */
 	getActive: function(list) {
-		return $(list).down('li.active');
+		return $(list + '-tabs').down('li.active');
 	},
 
 
@@ -208,7 +208,7 @@ Todoyu.Tabs = {
 	build: function(listname, name, tabClass, tabLabel, active) {
 		var tab = new Element('li', {
 			'id': listname + '-tab-' + name,
-			'class': tabClass
+			'class': 'item bcg05 tabkey-' + name + ' ' + name + ' ' + tabClass
 		});
 		var p = new Element('p', {
 			'id': listname + '-tab-' + name + '-label',
@@ -240,6 +240,37 @@ Todoyu.Tabs = {
 
 
 	/**
+	 * Add a new tab to a tab group
+	 *
+	 * @param	{String}	listname
+	 * @param	{String}	name
+	 * @param	{String}	tabClass
+	 * @param	{String}	tabLabel
+	 * @param	{Boolean}	active
+	 * @param	{Boolean}	first
+	 */
+	addTab: function(listname, name, tabClass, tabLabel, active, first) {
+		var tab	= this.build(listname, name, tabClass, tabLabel, active);
+		var list= $(listname + '-tabs');
+
+		if( first ) {
+			list.insert({
+				top: tab
+			});
+		} else {
+			list.insert({
+				bottom: tab
+			});
+		}
+
+		if( active ) {
+			this.setActive(listname, name);
+		}
+	},
+
+
+
+	/**
 	 * Enter Description here...
 	 *
 	 * @private
@@ -259,6 +290,103 @@ Todoyu.Tabs = {
 		} else {
 			li.removeClassName('hover');
 		}
+	},
+
+
+
+	/**
+	 * Move tab to first position (on the left)
+	 *
+	 * @param	{String}	list
+	 * @param	{String}	idTab
+	 */
+	moveAsFirst: function(list, idTab) {
+			// Get tab which will be in front
+		var tab = $(list + '-tab-' + idTab);
+			// Remove it from the DOM
+		tab.remove();
+
+			// Add the tab as first element
+		$(list + '-tabs').insert({
+			'top':	tab
+		});
+
+		this.highlight(list, idTab);
+	},
+
+
+
+	/**
+	 * Highlight a tab
+	 *
+	 * @param	{String}	list
+	 * @param	{String}	idTab
+	 */
+	highlight: function(list, idTab) {
+		// Highlighting is currently disabled (find a nice style to highlight)
+	},
+
+
+
+	/**
+	 * Get tab IDs in the tab group
+	 *
+	 * @param	{String}	list
+	 */
+	getTabNames: function(list) {
+		return $(list + '-tabs').select('li.item').collect(function(tab){
+			return tab.id.split('-').last();
+		});
+	},
+
+
+	/**
+	 * Check if a tab with the ID is in the tab group
+	 *
+	 * @param	{String}	list
+	 * @param	{String}	idTab
+	 */
+	hasTab: function(list, idTab) {
+		return Todoyu.exists(list + '-tab-' + idTab);
+	},
+
+
+
+	/**
+	 * Remove surplus tabs
+	 *
+	 * @param	{String}	list
+	 * @param	{Number}	max		Maximal amount of tabs
+	 * @return	{Array}		List of removed tab IDs
+	 */
+	removeSurplus: function(list, max) {
+		var tabIDs = [];
+		var idTab;
+
+		while( $(list + '-tabs').down('li', max) !== undefined ) {
+			var x = $(list + '-tabs').down('li', max);
+			idTab = this.removeLast(list);
+			tabIDs.push(idTab);
+		}
+
+		return tabIDs;
+	},
+
+	
+
+	/**
+	 * Remove last tab
+	 *
+	 * @param	{String}	list
+	 * @return	{String}	ID of the remove tab
+	 */
+	removeLast: function(list) {
+		var last = $(list + '-tabs').select('li').last();
+		var idTab	= last.id.split('-').last();
+
+		last.remove();
+
+		return idTab;
 	}
 
 };

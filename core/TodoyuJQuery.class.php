@@ -30,8 +30,11 @@ class TodoyuJQuery {
 	 * Add jQuery assets to page and
 	 */
 	public static function addJQuery() {
+			// Add jQuery source file
 		TodoyuPage::addJavascript('lib/js/jquery/jquery.min.js', 10, false, false, false);
-		TodoyuPage::addJsInline('Todoyu.jQueryNoConflict()', 0);
+
+			// Prevent prototype conflicts
+		TodoyuPage::addAdditionalHeaderData('<script type="text/javascript">Todoyu.jQueryNoConflict();</script>');
 	}
 
 }
