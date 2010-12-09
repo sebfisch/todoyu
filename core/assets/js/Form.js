@@ -318,13 +318,25 @@ Todoyu.Form = {
 
 
 	/**
-	 * Live-validation and correction of float value input field: on keyUp event replace ',' by '.'
+	 * Live-validation and correction of numeric value input field. Removes/corrects illegal/ambiguous characters 
 	 *
-	 * @method	assistFloatInput
 	 * @param	{Element}	field
+	 * @param	{Boolean}	floatAllowed
 	 */
-	assistFloatInput: function(field) {
-		var val	= $F(field).replace(',', '.');
+	assistNumericInput: function(field, floatAllowed) {
+		floatAllowed= floatAllowed || false;
+		var val		= $F(field);
+
+		var whitelist	= (floatAllowed) ? /([0-9]|\.|\,)/g : /([0-9])/g;
+		var illegalChars	= val.replace(whitelist, '');
+
+		for( var i = 0; i <= illegalChars.length; i++ ) {
+			val	= val.replace(illegalChars[i], '');
+		}
+
+		if(floatAllowed) {
+			val	= val.replace(',', '.');
+		}
 
 		$(field).value = val;
 	},
