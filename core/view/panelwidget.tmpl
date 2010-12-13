@@ -4,6 +4,6 @@
 		<span class="toggle {if $collapsed}expand{/if}" id="panelwidget-{$id}-toggle" onclick="Todoyu.PanelWidget.toggle('{$id}')"></span>
 	</h1>
 	<div class="content" id="panelwidget-{$id}-content" {if $collapsed}style="display:none"{/if}>
-		<div class="panelwidgetContent">{$content}</div>
+		{$content}
 	</div>
 </div>
