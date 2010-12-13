@@ -114,7 +114,7 @@ class TodoyuExtensions {
 	public static function isPathInExtDir($extKey, $path) {
 		$path = TodoyuFileManager::pathAbsolute($path);
 
-			// Extensio path
+			// Extension path
 		$extPath	= self::getExtPath($extKey);
 
 			// Check if the extension path is the first part of the file path (position = 0)
@@ -276,7 +276,7 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Load contextmenu config from all extensions
+	 * Load context menu config from all extensions
 	 */
 	public static function loadAllContextMenus() {
 		self::loadAllTypeConfig('contextmenu');

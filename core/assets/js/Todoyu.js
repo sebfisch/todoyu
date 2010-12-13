@@ -227,7 +227,15 @@ var Todoyu = {
 	 * @return	{String}
 	 */
 	getArea: function() {
-		return document.body.id.split('-').last();
+		var area;
+
+		if( document.body ) {
+			area	= document.body.id.split('-').last();
+		} else {
+			area	= document.location.href.split('?ext=')[1];
+		}
+
+		return area;
 	},
 
 
