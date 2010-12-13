@@ -36,13 +36,15 @@ ob_start();
 
 
 	// Load all load.php files of the extensions
-TodoyuExtensions::loadAllLoad();
+//TodoyuExtensions::loadAllLoad();
+
+	// Load all extensions
+TodoyuExtensions::loadAllExtensions();
 
 	// Define request vars as constants
 TodoyuRequest::defineRequestVars();
 
-	// Load all extensions
-TodoyuExtensions::loadAllExtensions();
+
 
 	// Dispatch request to selected controller
 TodoyuActionDispatcher::dispatch();
