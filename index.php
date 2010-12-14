@@ -35,14 +35,14 @@ TodoyuHeader::sendTypeHTML();
 ob_start();
 
 
-	// Load all load.php files of the extensions
-//TodoyuExtensions::loadAllLoad();
-
-	// Load all extensions
-TodoyuExtensions::loadAllExtensions();
+	// Load all boot.php files of the installed extensions
+TodoyuExtensions::loadAllBoot();
 
 	// Define request vars as constants
-TodoyuRequest::defineRequestVars();
+TodoyuRequest::initRequest();
+
+	// Load all init.php files of the installed extensions
+TodoyuExtensions::loadAllInit();
 
 
 

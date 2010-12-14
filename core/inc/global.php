@@ -116,6 +116,6 @@ require_once( PATH_LOCALCONF . '/extconf.php');
 
 
 	// Load contact extension (needed to initialize todoyu)
-require_once( PATH_EXT . '/contact/ext.php' );
+//require_once( PATH_EXT . '/contact/config/boot.php' );
 
 ?>

@@ -111,15 +111,13 @@ class TodoyuTime {
 	/**
 	 * Get range (start and end timestamp) of month
 	 *
-	 * @param	Integer	$timestamp
+	 * @param	Integer		$timestamp
+	 * @return	Array
 	 */
 	public static function getMonthRange($timestamp) {
-		$timestamp	= intval($timestamp);
-		$start		= self::getMonthStart($timestamp);
-
 		return array(
-			'start'	=> $start,
-			'end'	=> mktime(0, 0, 0, date('n', $start) + 1, 1, date('Y', $start)) - 1
+			'start'	=> self::getMonthStart($timestamp),
+			'end'	=> self::getMonthEnd($timestamp)
 		);
 	}
 
@@ -150,6 +148,18 @@ class TodoyuTime {
 		$timestamp	= intval($timestamp);
 
 		return mktime(0, 0, 0, date('n', $timestamp), 1, date('Y', $timestamp));
+	}
+
+
+
+	/**
+	 * Get timestamp for end of month (last second in the month, 23:59:59)
+	 *
+	 * @param	Integer		$timestamp
+	 * @return	Integer
+	 */
+	public static function getMonthEnd($timestamp) {
+		return mktime(0, 0, 0, date('n', $timestamp) + 1, 1, date('Y', $timestamp)) - 1;
 	}
 
 

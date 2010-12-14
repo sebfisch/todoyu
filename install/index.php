@@ -55,7 +55,7 @@ unset($_COOKIE['todoyulogin']);
 TodoyuCookieLogin::removeRemainLoginCookie();
 
 	// Deactivate extensions during installation
-Todoyu::$CONFIG['INIT'] 				= false;
+Todoyu::$CONFIG['INIT'] = false;
 
 	// Load default init script
 require_once('core/inc/init.php');

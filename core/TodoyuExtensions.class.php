@@ -359,10 +359,19 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Load all load configs (/config/load.php)
+	 * Load all boot configs (/config/boot.php)
 	 */
-	public static function loadAllLoad() {
-		self::loadAllTypeConfig('load');
+	public static function loadAllBoot() {
+		self::loadAllTypeConfig('boot');
+	}
+
+
+
+	/**
+	 * Load all init configs (config/init.php)
+	 */
+	public static function loadAllInit() {
+		self::loadAllTypeConfig('init');
 	}
 
 
@@ -406,7 +415,7 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Get keys of extensions the given extension depends on  
+	 * Get keys of extensions the given extension depends on
 	 *
 	 * @param	String	$extKey
 	 * @return	Array
@@ -542,31 +551,11 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Load an extension by including it's ext.php file
-	 *
-	 * @param	String		$extKey
-	 */
-	public static function loadExtension($extKey) {
-		$extDir	= self::getExtPath($extKey);
-		$extFile= $extDir . DIR_SEP . 'ext.php';
-
-		if( is_file($extFile) ) {
-			require_once($extFile);
-		}
-	}
-
-
-
-	/**
 	 * Load all extensions
 	 */
 	public static function loadAllExtensions() {
-		$extensions	= self::getInstalledExtKeys();
-
-			// Load all ext.php files to init the extensions
-		foreach($extensions as $extKey) {
-			self::loadExtension($extKey);
-		}
+		self::loadAllBoot();
+		self::loadAllInit();
 	}
 
 }

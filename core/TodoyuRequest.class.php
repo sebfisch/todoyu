@@ -317,7 +317,7 @@ class TodoyuRequest {
 	/**
 	 * Search, verify and define the main request variables as constants
 	 */
-	public static function defineRequestVars() {
+	public static function initRequest() {
 			// Get valid request variables (here it will be checked for login, etc)
 		$requestVars	= self::getCurrentRequestVars();
 
