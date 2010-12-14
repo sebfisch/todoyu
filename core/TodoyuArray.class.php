@@ -152,6 +152,18 @@ class TodoyuArray {
 
 
 	/**
+	 * Apply floatval to all array elements
+	 *
+	 * @param	Array		$array
+	 * @return	Array
+	 */
+	public static function floatval(array $array) {
+		return array_map('floatval', $array);
+	}
+
+
+
+	/**
 	 * Implode array with given delimiter, force items to be integers
 	 *
 	 * @param	Array	$array
