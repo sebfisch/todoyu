@@ -6,7 +6,7 @@
 	width:182px;
 	border:1px solid #ccc;
 	background-color:#d3dabb;
-	z-index:1000;
+	z-index:3000;
 	-webkit-box-shadow:2px 2px 5px #999;
 	-moz-box-shadow:2px 2px 5px #999;
 	box-shadow:2px 2px 5px #999;
