@@ -327,7 +327,7 @@ Todoyu.Form = {
 		floatAllowed= floatAllowed || false;
 		var val		= $F(field);
 
-		var whitelist	= (floatAllowed) ? /([0-9]|\.|\,)/g : /([0-9])/g;
+		var whitelist	= (floatAllowed) ? /([0-9]|\.|\,|\-)/g : /([0-9])/g;
 		var illegalChars	= val.replace(whitelist, '');
 
 		for( var i = 0; i <= illegalChars.length; i++ ) {
