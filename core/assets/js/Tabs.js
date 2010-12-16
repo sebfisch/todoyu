@@ -372,7 +372,7 @@ Todoyu.Tabs = {
 		return tabIDs;
 	},
 
-	
+
 
 	/**
 	 * Remove last tab
@@ -387,6 +387,26 @@ Todoyu.Tabs = {
 		last.remove();
 
 		return idTab;
+	},
+
+	getNumTabs: function(list) {
+		return $(list + '-tabs').select('li').size();
+	},
+
+	getTab: function(list, index) {
+		return $(list + '-tabs').down('li', index || 0);
+	},
+
+	getFirstTab: function(list) {
+		return this.getTab(list, 0);
+	},
+
+	getLastTab: function(list) {
+		return this.getTab(list, this.getNumTabs(list)-1);
+	},
+
+	getAllTabs: function(list) {
+		return $(list + '-tabs').select('li');
 	}
 
 };
