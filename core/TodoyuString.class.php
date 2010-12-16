@@ -266,7 +266,7 @@ class TodoyuString {
 			// Shuffle array
 		shuffle($characters);
 		$password = substr(implode('', $characters), 0, $length);
-		
+
 		return $password;
 	}
 
@@ -279,7 +279,7 @@ class TodoyuString {
 	public static function generateGoodPassword()	{
 		$config		= Todoyu::$CONFIG['goodPassword'];
 		$validator	= new TodoyuPasswordValidator();
-		
+
 		do {
 			$password = self::generatePassword(	$config['minLength'],
 												$config['hasUpperCase'],
@@ -649,6 +649,38 @@ class TodoyuString {
 	private static function callbackPreText(array $matches) {
 		return nl2br(trim($matches[1]));
 	}
+
+
+
+	/**
+	 * Replace quotes around string which contain a function
+	 * Allows to add javascript functions in JSON encoded content
+	 *
+	 * Used code posted here:
+	 * http://tipstank.com/2010/10/29/how-to-add-javascript-function-expression-and-php-json_encode/
+	 *
+	 * @param	String		$json
+	 * @return	String
+	 */
+	public static function enableJsFunctionInJSON($json) {
+		$pattern	= '/(?<=:)"function\((?:(?!}").)*}"/';
+		$callback	= array('TodoyuString', 'escapeFunctionInJSON');
+
+		return preg_replace_callback($pattern, $callback, $json);
+	}
+
+	
+
+	/**
+	 * Callback for enableJsFunctionInJSON to replace quotes around function expressions
+	 *
+	 * @param	String		$string
+	 * @return	String
+	 */
+	private static function escapeFunctionInJSON($string) {
+		return str_replace('\\"','\"',substr($string[0],1,-1));
+	}
+
 }
 
 ?>
