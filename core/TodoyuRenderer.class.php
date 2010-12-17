@@ -101,6 +101,18 @@ class TodoyuRenderer {
 		return render($tmpl, $data);
 	}
 
+
+	public static function renderTimerange($id, $name, array $range, $nameWrap = null) {
+		$tmpl	= 'core/view/timerange.tmpl';
+		$data	= array(
+			'id'	=> $id,
+			'range'	=> $range,
+			'name'	=> is_null($nameWrap) ? $name : $nameWrap . '[' . $name . ']'
+		);
+
+		return render($tmpl, $data);
+	}
+
 }
 
 ?>

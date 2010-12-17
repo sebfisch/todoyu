@@ -615,4 +615,19 @@ function Dwoo_Plugin_isLoggedIn_compile(Dwoo_Compiler $compiler) {
 	return 'TodoyuAuth::isLoggedIn()';
 }
 
+
+/**
+ * Build timerange selector HTML code
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String		$id
+ * @param	String		$name
+ * @param	Array		$range
+ * @param	String		$nameWrap
+ * @return	String
+ */
+function Dwoo_Plugin_timerange_compile(Dwoo_Compiler $compiler, $id, $name, array $range = array(), $nameWrap = '') {
+	return 'TodoyuRenderer::renderTimerange(' . $id . ', ' . $name . ', ' . $range . ', ' . $nameWrap . ')';
+}
+
 ?>

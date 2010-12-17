@@ -254,7 +254,11 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/js/OverflowWindow.js',
 			'position'	=> 75
-		)
+		),
+		array(
+			'file'		=> 'core/assets/js/Timerange.js',
+			'position'	=> 76
+		),
 	),
 
 	'css' => array(
@@ -376,6 +380,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/css/overflow-window.css',
 			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/timerange.css',
 			'position'	=> 10
 		)
 	)

@@ -1,0 +1,23 @@
+<div class="timerange">
+	<div class="limits">
+		<div class="limit min">{dateFormat $range.start date}</div>
+		<div class="limit max">{dateFormat $range.end date}</div>
+		<div class="clear"></div>
+	</div>
+	<div class="bar">
+		<div class="track trackStart"></div><div class="track slider" id="{$id}-slider">
+			<div class="handle" id="{$id}-handle-start"></div>
+			<div class="handle" id="{$id}-handle-end"></div>
+			<div class="span" id="{$id}-span"></div>
+		</div><div class="track trackEnd"></div>
+	</div>
+	<div class="dates">
+		<div class="start">
+			<input type="text" id="{$id}-start" name="{$name}[start]" />
+		</div>
+		<div class="end">
+			<input type="text" id="{$id}-end" name="{$name}[end]" />
+		</div>
+	</div>
+	<input type="text" id="{$id}-focus" style="opacity:0" />
+</div>

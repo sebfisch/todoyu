@@ -1,0 +1,83 @@
+.timerange .bar {
+
+}
+
+.timerange .bar .slider {
+	position:relative;
+	width:472px;
+	background:url(../img/timerange-track-middle.png) repeat-x;
+}
+
+.timerange .bar .track {
+	height:16px;
+	display:inline-block;
+	cursor:pointer;
+}
+
+.timerange .bar .trackStart {
+	width:4px;
+	background:url(../img/timerange-track-start.png) no-repeat;
+}
+
+.timerange .bar .trackEnd {
+	width:4px;
+	background:url(../img/timerange-track-end.png) no-repeat;
+}
+
+
+.timerange .bar .slider .handle {
+	position:absolute;
+	width:26px;
+	height:26px;
+	cursor:move;
+	cursor:ew-resize;
+	background-image:url(../img/timerange-handle.png);
+	top:-5px;
+	z-index:10;
+}
+
+.timerange .bar .span {
+	position:relative;
+	margin-left:5px;
+	margin-top:1px;
+	height:14px;
+	z-index:9;
+	background-color:#000;
+	opacity:0.2;
+	cursor:default;
+
+}
+
+.timerange .limits {
+	font-size:10px;
+	display:block;
+}
+
+.timerange .limits > div {
+	clear:none;
+	width:60px;
+	height:16px;
+	text-align:center;
+}
+
+.timerange .limits .limit.min {
+	float:left;
+}
+.timerange .limits .limit.max {
+	float:right;
+}
+
+.timerange .dates {
+	margin:3px 80px;
+}
+
+.timerange .dates > div {
+	width:50%;
+	float:left;
+	clear:none;
+	text-align:center;
+}
+
+.timerange .dates input {
+	width:60px;
+}
