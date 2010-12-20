@@ -640,6 +640,18 @@ class TodoyuString {
 
 
 	/**
+	 * @static
+	 * @param  $url
+	 * @param string $lable
+	 * @return void
+	 */
+	public static function getATag($url, $label = '', $target = 'blank')	{
+		return '<a href="' . $url . '" target="' . $target . '">' . $label . '</a>';
+	}
+
+
+
+	/**
 	 * Callback for cleanRTEText
 	 * Add <br> tags inside the <pre> tags
 	 *
