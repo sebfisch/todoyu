@@ -75,4 +75,5 @@
 	<label index="headlet.about.label">Über todoyu</label>
 	<label index="unknown">unbekannt</label>
 	<label index="loaderBox.title">Gleich geht's weiter</label>
+	<label index="panelwidget.toggle">Widget öffnen/schliessen</label>
 </labels>
