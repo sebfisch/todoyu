@@ -33,6 +33,8 @@ Todoyu.ItemList = Class.create({
 	 */
 	options: {},
 
+
+	
 	/**
 	 * Initialize
 	 *
@@ -50,6 +52,7 @@ Todoyu.ItemList = Class.create({
 			// Observe list for remove clicks
 		this.list.on('click', 'span.remove', this.remove.bind(this));
 	},
+
 
 
 	/**
@@ -107,7 +110,15 @@ Todoyu.ItemList = Class.create({
 		});
 	},
 
+
+
+	/**
+	 * Check whether the item list already contains the item (with same id)
+	 *
+	 * @param	{String|Number}		idItem
+	 */
 	include: function(idItem) {
 		return this.getItems().include(idItem);
 	}
+
 });

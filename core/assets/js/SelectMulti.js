@@ -23,26 +23,41 @@
 Todoyu.SelectMulti = Class.create({
 
 	/**
-	 * List of itemLists
+	 * Item list for display
+	 *
+	 * @var	{Todoyu.ItemList}	itemList
 	 */
 	itemList: null,
 
+	/**
+	 * Field list for IDs
+	 *
+	 * @var	{Todoyu.FieldList}	fieldList
+	 */
 	fieldList: null,
 
 	/**
+	 * Select field
 	 *
-	 * var	{Element}	field
+	 * @var	{Element}	field
 	 */
 	field: null,
 
+	/**
+	 * Event handler callbacks
+	 *
+	 * @var	{Object}	callbacks
+	 */
 	callbacks: {},
 
 
+
 	/**
+	 * Initialize multi select object
 	 *
 	 * @param	{Element|String}	field
-	 * @param callbackAdd
-	 * @param callbackRemove
+	 * @param	{Function}			callbackAdd
+	 * @param	{Function}			callbackRemove
 	 */
 	initialize: function(field, callbackAdd, callbackRemove) {
 		this.field = $(field);
@@ -65,6 +80,14 @@ Todoyu.SelectMulti = Class.create({
 
 	},
 
+
+
+	/**
+	 * Handler when an item was selected
+	 *
+	 * @param	{Event}		event
+	 * @param	{Element}	field
+	 */
 	onSelect: function(event, field) {
 		var idItem	= $F(field);
 		var label	= field.options[field.selectedIndex].text;
@@ -76,10 +99,18 @@ Todoyu.SelectMulti = Class.create({
 	},
 
 
-	onItemListRemove: function(field, idItem) {
-		this.removeItem(field, idItem);
 
-		this.ext.refreshReport();
+	/**
+	 * Handler when an item was removed from the list
+	 *
+	 * @param	{Element}		listElement
+	 * @param	{String|Number}	idItem
+	 */
+	onItemListRemove: function(listElement, idItem) {
+		//this.itemList.remove(idItem);
+		this.fieldList.remove(idItem);
+
+		this.callbacks.onRemove.call(this, this, idItem);
 	}
 
 });
