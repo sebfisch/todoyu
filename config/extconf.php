@@ -30,6 +30,8 @@ Todoyu::$CONFIG['EXT']['admin']['extConf'] = unserialize(stripslashes('a:0:{}'))
 Todoyu::$CONFIG['EXT']['project']['extConf'] = unserialize(stripslashes('a:0:{}'));
 Todoyu::$CONFIG['EXT']['sysmanager']['extConf'] = unserialize(stripslashes('a:0:{}'));
 Todoyu::$CONFIG['EXT']['loginpage']['extConf'] = unserialize(stripslashes('a:0:{}'));
+Todoyu::$CONFIG['EXT']['portal']['extConf'] = unserialize(stripslashes('a:0:{}'));
+Todoyu::$CONFIG['EXT']['calendar']['extConf'] = unserialize(stripslashes('a:0:{}'));
 Todoyu::$CONFIG['EXT']['timetracking']['extConf'] = unserialize(stripslashes('a:0:{}'));
 Todoyu::$CONFIG['EXT']['daytracks']['extConf'] = unserialize(stripslashes('a:0:{}'));
 Todoyu::$CONFIG['EXT']['search']['extConf'] = unserialize(stripslashes('a:0:{}'));
@@ -38,11 +40,7 @@ Todoyu::$CONFIG['EXT']['contact']['extConf'] = unserialize(stripslashes('a:0:{}'
 Todoyu::$CONFIG['EXT']['comment']['extConf'] = unserialize(stripslashes('a:0:{}'));
 Todoyu::$CONFIG['EXT']['profile']['extConf'] = unserialize(stripslashes('a:0:{}'));
 Todoyu::$CONFIG['EXT']['assets']['extConf'] = unserialize(stripslashes('a:0:{}'));
-Todoyu::$CONFIG['EXT']['portal']['extConf'] = unserialize(stripslashes('a:0:{}'));
-Todoyu::$CONFIG['EXT']['resources']['extConf'] = unserialize(stripslashes('a:0:{}'));
-Todoyu::$CONFIG['EXT']['calendar']['extConf'] = unserialize(stripslashes('a:0:{}'));
 Todoyu::$CONFIG['EXT']['currency']['extConf'] = unserialize(stripslashes('a:1:{s:11:\"keycurrency\";s:2:\"31\";}'));
-Todoyu::$CONFIG['EXT']['projectbilling']['extConf'] = unserialize(stripslashes('a:0:{}'));
-Todoyu::$CONFIG['EXT']['unittest']['extConf'] = unserialize(stripslashes('a:0:{}'));
+Todoyu::$CONFIG['EXT']['projectbilling']['extConf'] = unserialize(stripslashes('a:4:{s:22:\"days_timelimit_payment\";s:2:\"14\";s:3:\"vat\";s:3:\"7.6\";s:43:\"remove_manual_project_status_cleared_option\";i:1;s:40:\"remove_manual_task_status_cleared_option\";i:1;}'));
 
 ?>
