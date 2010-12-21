@@ -128,7 +128,7 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 51
 		),
 		array(
-			'file'		=> 'core/lib/js/prototype/Autocompleter.js',
+			'file'		=> 'core/assets/js/Autocompleter.js',
 			'position'	=> 51
 		),
 		array(
@@ -258,6 +258,26 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/js/Timerange.js',
 			'position'	=> 76
+		),
+		array(
+			'file'		=> 'core/assets/js/ItemList.js',
+			'position'	=> 77
+		),
+		array(
+			'file'		=> 'core/assets/js/FieldList.js',
+			'position'	=> 78
+		),
+//		array(
+//			'file'		=> 'core/assets/js/AutocompleteMulti.js',
+//			'position'	=> 79
+//		),
+		array(
+			'file'		=> 'core/assets/js/SelectMulti.js',
+			'position'	=> 79
+		),
+				array(
+			'file'		=> 'core/assets/js/AutocompleterMulti.js',
+			'position'	=> 80
 		),
 	),
 

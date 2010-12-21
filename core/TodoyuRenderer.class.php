@@ -47,17 +47,17 @@ class TodoyuRenderer {
 	/**
 	 * Render autoCompletion results list
 	 *
-	 * @param	Array	$options
+	 * @param	Array	$results
 	 * @return	String
 	 */
-	public static function renderAutocompleteList(array $options) {
-		$tmpl	= 'core/view/autocompletion.tmpl';
+	public static function renderAutocompleteResults(array $results) {
+		$tmpl	= 'core/view/autocomplete-list.tmpl';
 		$data 	= array(
-			'results' => $options
+			'results' => $results
 		);
 
 			// Send number of elements as header
-		TodoyuHeader::sendTodoyuHeader('acElements', sizeof($options));
+		TodoyuHeader::sendTodoyuHeader('acElements', sizeof($results));
 
 		return render($tmpl, $data);
 	}

@@ -71,15 +71,7 @@ class TodoyuAutocompleter {
 	public static function renderAutocompleteList($name, $input, array $formData = array()) {
 		$results	= self::getResults($name, $input, $formData);
 
-		$tmpl	= 'core/view/autocompletion.tmpl';
-		$data 	= array(
-			'results' => $results
-		);
-
-			// Send number of elements as header
-		TodoyuHeader::sendTodoyuHeader('acElements', sizeof($results));
-
-		return render($tmpl, $data);
+		return TodoyuRenderer::renderAutocompleteResults($results);
 	}
 
 
