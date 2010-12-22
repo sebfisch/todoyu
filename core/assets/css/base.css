@@ -204,7 +204,7 @@ h5 {
 }
 .hide,
 .displayNone,
-.hidden {
+.hidden{
 	display:none;
 }
 .error {

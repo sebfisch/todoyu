@@ -24,7 +24,7 @@
 Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	/**
-	 * Hanlde completion of autocompleter suggestion retrieval
+	 * Handle completion of autocompleter suggestion retrieval
 	 *
 	 * @param	{Ajax.Response}		response
 	 */
@@ -50,7 +50,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 
 	/**
-	 * Hanlde receival of empty result (no suggestion found)
+	 * Handle reception of empty result (no suggestion found)
 	 *
 	 * @param	{Ajax.Response}		response
 	 */
@@ -65,4 +65,5 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 			Todoyu.notifyInfo('[LLL:form.ac.noResults]');
 		}
 	}
+
 });

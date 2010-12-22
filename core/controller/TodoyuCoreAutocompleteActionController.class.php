@@ -26,6 +26,12 @@
  */
 class TodoyuCoreAutocompleteActionController extends TodoyuActionController {
 
+	/**
+	 * Handle autocompleter update request
+	 *
+	 * @param	Array	$params
+	 * @return	String
+	 */
 	public function updateAction(array $params) {
 		$name		= trim($params['autocompleter']);
 		$input		= trim($params['input']);

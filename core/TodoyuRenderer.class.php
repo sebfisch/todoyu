@@ -102,6 +102,16 @@ class TodoyuRenderer {
 	}
 
 
+
+	/**
+	 * Render timerange selector form element
+	 *
+	 * @param	Integer		$id
+	 * @param	String		$name
+	 * @param	Array		$range
+	 * @param	String		$nameWrap
+	 * @return	String
+	 */
 	public static function renderTimerange($id, $name, array $range, $nameWrap = null) {
 		$tmpl	= 'core/view/timerange.tmpl';
 		$data	= array(
