@@ -31,7 +31,7 @@
 
 #panel div.panelWidget .notification {
 	text-align:left;
-	padding:4px 0 2px 12px;
+	padding:5px 0 2px 7px;
 }
 
 
@@ -40,7 +40,6 @@
 	Panelwidget content
    ---------------------*/
 #panel .panelWidget .content {
-	margin-top:5px;
 }
 
  /* Listing in panelwidgets */
@@ -66,4 +65,26 @@
 
 #panel div.panelWidget h2 {
 	padding-left:2px;
+}
+
+/* form styling */
+#panel select {
+	padding:0;
+}
+
+#panel .fForm {
+	padding:0;
+	background:none;
+}
+#panel fieldset {
+	margin:0;
+	padding:0;
+	border:none;
+	background:none;
+}
+#panel legend {
+	display:none;
+}
+#panel .fField {
+	float:right;
 }

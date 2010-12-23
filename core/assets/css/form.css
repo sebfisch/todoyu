@@ -5,15 +5,34 @@ form {
 	* html form {
 		height:1%
 	}
-
+	
 	fieldset {
-		float:left; /* is a bugFix */
-		width:100%;
+		border:none;
+	}
+	
+	form.fForm {
+		padding:7px;
+		background-color:#e2e2e2;
+	}
+	fieldset {
+		position:relative;
+		display:block;
+		margin:0 0 7px 0;
+		padding:40px 15px 15px 15px;
+		background-color:#fff;
+	}
+	fieldset fieldset,
+	fieldset.buttons {
 		margin:0;
 		padding:0;
 		border:none;
+		background:none;
 	}
-
+	fieldset fieldset {
+		width:100%;
+		margin-top:10px;
+	}
+	
 	div.fieldset-clear {
 		/*clear:both;*/
 	}
@@ -24,31 +43,47 @@ form {
 
 			/* Buttons, Footer line */
 		fieldset.buttons {
-			margin:10px 0 5px 0;
-			padding:0.2em 0;
+			margin:0;
+			padding:0;
 			text-align:right;
-			float:right;
 		}
 
 		fieldset.buttons .fElement {
-			margin-right:5px;
+			margin-left:5px;
 		}
-
-	legend {
+	
+	legend,
+	.fForm fieldset fieldset legend,
+	.fForm .buttons legend {
 		display:none;
+	}
+	.fForm legend {
+		position:absolute;
+		top:-40px;
+		left:-15px;
+		display:block;
+		width:100%;
+		padding:7px 0;
+		text-indent:15px;
+		text-transform:uppercase;
+		font-weight:bold;
+		border-bottom:1px solid#e1e1e1;
 	}
 
 textarea,
-select {
-	position:relative;
-	border:1px solid #000;
-	width:100%;
-}
-
+select,
 input {
 	position:relative;
+	width:100%;
 	border:1px solid #000;
-	width:99%;
+	padding: 1px;
+	/* hack to fix form elements width */
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-khtml-box-sizing:border-box;
+	-o-box-sizing:border-box;
 }
 
 	input.checkbox,
@@ -71,16 +106,9 @@ input {
 	input.textAC {
 		background-image:url(../img/icons.png);
 		background-repeat:no-repeat;
-		background-position:5px -809px;
+		background-position:6px -808px;
 		background-color:#e3eace;
 		padding-left:25px;
-		width:99.5%;
-		/* hack to fix input width */
-		box-sizing:border-box;
-		-moz-box-sizing:border-box;
-		-ms-box-sizing:border-box;
-		-webkit-box-sizing:border-box;
-		-khtml-box-sizing:border-box;
 	}
 
 
@@ -119,7 +147,7 @@ select {
 		width:150px;
 	}
 
-	select option{
+	select option {
 	text-transform:none;
 	padding-left:5px;
 }
@@ -139,7 +167,6 @@ select {
 	}
 
 label {}
-
 	label span.required {}
 
 [disabled] {
@@ -155,25 +182,21 @@ label {}
 
 div.fElement {
 	position:relative;
-	margin:0;
-	padding:3px 0;
 	height:auto !important;
 	height:1%;
+	margin:0;
+	padding:3px 0;
 }
 
 	/* label */
 	div.fElement .fLabel {
-		display:inline;
-		float:left;
-		text-align:right;
-		width:40%;
 		position:relative;
-		right:10px;
+		float:left;
+		width:140px;
+		padding:2px 0;
+		text-align:left;
 	}
-
-	.noneFloatingInput .fLabel {
-		position:static !important;
-	}
+	.noneFloatingInput div.fElement .fLabel {}
 
 	div.fElement .fLabel label {}
 
@@ -182,9 +205,9 @@ div.fElement {
 
 		/* input */
 	div.fElement .fField {
-		display:inline;
-		float:right;
-		width:60%;
+		float:left;
+		width:320px;
+		margin-left:5px;
 	}
 
 	div.fElement .fField input {
@@ -193,6 +216,14 @@ div.fElement {
 	div.fElement .fClear {
 		clear:both;
 	}
+	
+		/* second level */
+		div.fElement .fField .fLabel {
+			width:100px;
+		}
+		div.fElement .fField .fField {
+			width:215px;
+		}
 
 
 
@@ -203,9 +234,7 @@ div.fElement {
 
 	.typeDate {}
 
-	.typeUpload {
-		padding-left:5px !important;
-	}
+	.typeUpload {}
 
 		div.typeDate .fField input {
 			float:left;
@@ -220,44 +249,22 @@ div.fElement {
 		div.typeTime .fField input,
 		div.typeDuration .fField input  {
 			float:left;
-			width:30px;
+			width:33px;
 		}
 
 	.typeCheckbox {
 	}
+		/* checkbox in a fField element. */
+		/* example:Address in Ext Contact */
+		.fField div.typeCheckbox .fLabel {}
 
-		div.typeCheckbox .fLabel {
-			position:static !important;
-			float:right !important;
-			width:60%;
-			padding-right:0 !important;
-			padding-left:0 !important;
-			text-align:left !important;
-		}
-
-		div.typeCheckbox .fLabel label {
-			position:relative !important;
-			z-index:2 !important;
-			left:20px !important;
-			padding-right:20px;
-		}
-
-			/* checkbox in a fField element. */
-			/* example:Address in Ext Contact */
-			.fField div.typeCheckbox .fLabel {
-			}
-
-		div.typeCheckbox .fField {
-			position:absolute !important;
-			z-index:1!important;
-			right:0!important;
-			width:60%;
-			padding-left:0!important;
-			text-align:left!important;
+		.typeCheckbox .fField {
+			position:relative;
+			top:3px;
 		}
 
 		div.typeCheckbox .fField input.checkbox {
-			width:auto !important;
+			width:auto;
 		}
 
 	.typeDatabaseRelation {}
@@ -275,7 +282,6 @@ div.fElement {
 		}
 
 		.typeDatabaseRelation .databaseRelation span.label {
-			float:left;
 			cursor:pointer;
 		}
 
@@ -292,12 +298,12 @@ div.fElement {
 		background:url(../img/icons.png) no-repeat 2px -928px;
 	}
 
-	.fElement .fField.hasWizard input{
-		width:80%;
+	.fElement .fField.hasWizard input {
+		width:90%;
 		float:left;
 	}
 
-	.fElement .fField.hasWizard .wizardIcon{
+	.fElement .fField.hasWizard .wizardIcon {
 		cursor:pointer;
 	}
 
@@ -329,22 +335,17 @@ fieldset {}
 
 	fieldset div.even {}
 
-	fieldset.buttons,
-	fieldset.buttons div.odd,
-	fieldset.buttons div.even,
-	fieldset.buttons button span.rgt {
-		background-color:#e2e2e2;
-	}
-
 	fieldset.buttons div.fElement {
 		float:right;
 	}
 
 		/* none floating fields */
+	/*
 	fieldset.noneFloatingInput div.fElement .fField,
 	fieldset.noneFloatingInput div.fElement .fLabel {
 		float:none;
 	}
+	*/
 
 		/* --- right floating Input --- */
 	.formElement .formField {
@@ -375,14 +376,24 @@ fieldset {}
 	Additional information after input field
    ---------------------------------------------- */
 form .textAfterField  {
-	display:block;
+	position:absolute;
+	z-index:9999; /* always in front */
+	display:none;
 	padding:10px;
 	margin:1px 2px 0 0;
-	border:1px solid #ccc;
-	background-color:#efefef;
-	font-size:10px;
 	color:#666;
 	text-align:left;
+	-webkit-box-shadow:2px 2px 7px #999;
+	-moz-box-shadow:2px 2px 7px #999;
+	box-shadow:2px 2px 7px #999;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	background-color:#fff;
+}
+
+form .fField:hover .textAfterField {
+	display:block;
 }
 
 .dateElement input {
@@ -558,43 +569,10 @@ form .typeCheckbox div.errorMessage {
 /* ----------------------------------
 	Quick creation light-box
    ---------------------------------- */
-#quickcreate form,
-#quicktask form,
-.dialog form {
-	padding:10px 5px 0 5px;
-}
-
-#quickcreate.task .left,
-#quickcreate.project .left {
-	float:left;
-	padding:0 0 0 24px;
-	width:330px;
-}
-
-#quickcreate.task .left .fLabel,
-#quickcreate.project .left .fLabel {
+#quickcreate,
+#quicktask {
 	text-align:left;
-	width:100%;
-	display:block;
 }
-
-#quickcreate.task .right,
-#quickcreate.project .right {
-	float:right;
-	width:43%;
-}
-
-#quickcreate.project .basic {
-	position:absolute;
-}
-
-#quickcreate.project .persons {
-	width:43%;
-	float:right;
-	margin-top:20px;
-	min-height:170px;
-}
-
 
 
 /* ---------------------------------------
@@ -604,18 +582,6 @@ form .databaseRelation {
 	margin-top:5px;
 	padding-top:5px;
 }
-
-form .fieldnamePersons .foreignRecordsActionControl,
-form .fieldnameContactinfo .foreignRecordsActionControl,
-form .fieldnameAddress .foreignRecordsActionControl,
-form .fieldnameCompany .foreignRecordsActionControl,
-form .fieldnameRole .foreignRecordsActionControl,
-form .fieldnamePerson .foreignRecordsActionControl,
-form .fieldnameExtprojectbillingapprovalroles .foreignRecordsActionControl,
-form .fieldnameExtprojectbillingprepayment .foreignRecordsActionControl {
-	text-align:left;
-}
-
 form div.typeDatabaseRelation div.formtrigger span.label.expanded {
 	font-weight:bold;
 }
