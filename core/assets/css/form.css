@@ -12,7 +12,7 @@ form {
 	
 	form.fForm {
 		padding:7px;
-		background-color:#e2e2e2;
+		background-color:#eee;
 	}
 	fieldset {
 		position:relative;
@@ -67,7 +67,7 @@ form {
 		text-indent:15px;
 		text-transform:uppercase;
 		font-weight:bold;
-		border-bottom:1px solid#e1e1e1;
+		border-bottom:1px solid#eee;
 	}
 
 textarea,
