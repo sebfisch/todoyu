@@ -626,7 +626,7 @@ function Dwoo_Plugin_isLoggedIn_compile(Dwoo_Compiler $compiler) {
  * @param	String		$nameWrap
  * @return	String
  */
-function Dwoo_Plugin_timerange_compile(Dwoo_Compiler $compiler, $id, $name, array $range = array(), $nameWrap = '') {
+function Dwoo_Plugin_timerange_compile(Dwoo_Compiler $compiler, $id, $name, $range = array(), $nameWrap = '') {
 	return 'TodoyuRenderer::renderTimerange(' . $id . ', ' . $name . ', ' . $range . ', ' . $nameWrap . ')';
 }
 

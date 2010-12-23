@@ -1,0 +1,86 @@
+/* ---------------------------
+	basic
+   ---------------------------*/
+.inlineFilters {
+	margin-bottom:10px;
+	background-color:#FAFAFA;
+}
+
+.inlineFilters .filter {
+	border: 1px dashed #CCC;
+	padding:10px;
+	margin-bottom:5px;
+	background-color:#FAFAFA;
+}
+
+.inlineFilters .filter > div {
+	display:inline-block;
+}
+
+.inlineFilters .filter .label {
+	width:150px;
+	font-weight:bold;
+	vertical-align:top;
+}
+
+.inlineFilters .filter .input {
+	width:485px;
+}
+
+
+/* ---------------------------
+	main and extra
+   ---------------------------*/
+.inlineFilters .filter .input .main,
+.inlineFilters .filter .input .extra {
+	float:left;
+}
+
+.inlineFilters .filter.typeAutocompleteMulti .main,
+.inlineFilters .filter.typeSelectMulti .main {
+	width:240px;
+}
+
+.inlineFilters .filter.typeAutocompleteMulti .extra,
+.inlineFilters .filter.typeSelectMulti .extra {
+	width:220px;
+	margin-left:20px;
+}
+
+
+.inlineFilters .filter.typeAutocomplete .textAC {
+	width:400px;
+}
+
+.inlineFilters .filter.typeAutocompleteMulti .textAC {
+	width:230px;
+}
+
+
+
+
+/* ---------------------------
+	Item list
+   ---------------------------*/
+.inlineFilters .filter ul.itemList {
+
+}
+
+.inlineFilters .filter ul.itemList li {
+	padding:2px 20px 4px 2px;
+	margin-bottom:2px;
+	border-bottom:1px dashed #CCC;
+}
+
+.inlineFilters .filter ul.itemList li:hover {
+	background-color:#EEE;
+}
+
+.inlineFilters .filter ul.itemList li span.remove {
+	float:right;
+	width:16px;
+	height:16px;
+	margin-right:-20px;
+	background:url(../img/icons.png) no-repeat 0 -330px;
+	cursor:pointer;
+}

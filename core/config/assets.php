@@ -405,6 +405,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/css/timerange.css',
 			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/inline-filters.css',
+			'position'	=> 10
 		)
 	)
 );
