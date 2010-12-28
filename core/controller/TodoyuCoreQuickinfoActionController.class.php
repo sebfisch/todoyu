@@ -28,7 +28,7 @@
 class TodoyuCoreQuickinfoActionController extends TodoyuActionController {
 
 	/**
-	 * Render about window
+	 * Render quickinfo JSON
 	 *
 	 * @param	Array		$params
 	 * @return	String
