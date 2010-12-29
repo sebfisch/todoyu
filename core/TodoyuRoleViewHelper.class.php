@@ -33,7 +33,6 @@ class TodoyuRoleViewHelper {
 	 * @return	Array
 	 */
 	public static function getRoleOptions(TodoyuFormElement $field) {
-		$options= array();
 		$roles	= TodoyuRoleManager::getAllRoles(true);
 		$reform	= array(
 			'id'	=> 'value',

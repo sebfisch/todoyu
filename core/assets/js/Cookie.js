@@ -18,10 +18,6 @@
 *****************************************************************************/
 
 /**
- *
- */
-
-/**
  * Cookie
  *
  * @namespace	Todoyu.Cookie
@@ -40,6 +36,12 @@ Todoyu.Cookie = {
 
 
 
+	/**
+	 * Initialize
+	 *
+	 * @param	{Object}	options
+	 * @param	{Object}	data
+	 */
 	init: function(options, data) {
 		data	= data ? data : false;
 
@@ -49,8 +51,7 @@ Todoyu.Cookie = {
 
 		if( data == false && payload ) {
 			Todoyu.Cookie.data = payload.evalJSON();
-		}
-		else {
+		} else {
 			Todoyu.Cookie.data = data || {};
 		}
 		Todoyu.Cookie.store();
@@ -58,12 +59,22 @@ Todoyu.Cookie = {
 
 
 
+	/**
+	 * Get attribute with given key from cookie data
+	 *
+	 * @param	{String}	key
+	 */
 	getData: function(key) {
 		return Todoyu.Cookie.data[key];
 	},
 
 
 
+	/**
+	 * Store given attribute in cookie data
+	 *
+	 * @param	{String}	key
+	 */
 	setData: function(key, value) {
 		Todoyu.Cookie.data[key] = value;
 		Todoyu.Cookie.store();
@@ -71,6 +82,11 @@ Todoyu.Cookie = {
 
 
 
+	/**
+	 * Remove given attribute from cookie data
+	 *
+	 * @param	{String}	key
+	 */
 	removeData: function(key) {
 		delete Todoyu.Cookie.data[key];
 		Todoyu.Cookie.store();
@@ -78,6 +94,9 @@ Todoyu.Cookie = {
 
 
 
+	/**
+	 * Retrieve cookie
+	 */
 	retrieve: function() {
 		var start = document.cookie.indexOf(Todoyu.Cookie.options.name + "=");
 

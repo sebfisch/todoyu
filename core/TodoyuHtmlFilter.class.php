@@ -97,16 +97,16 @@ class TodoyuHtmlFilter {
 	 *
 	 * @param	String		$html
 	 * @param	Integer		$size
-	 * @param	String		$delim
+	 * @param	String		$delimiter
 	 * @return	String
 	 */
-	private static function htmlSafeChunkSplit($html, $size, $delim) {
+	private static function htmlSafeChunkSplit($html, $size, $delimiter) {
 		$pos	= 0;
 		$out	= '';
 
 		for($i = 0; $i < strlen($html); $i++) {
 			if( $pos >= $size && ! $unsafe ) {
-				$out	.= $delim;
+				$out	.= $delimiter;
 				$unsafe	= 0;
 				$pos	= 0;
 			}

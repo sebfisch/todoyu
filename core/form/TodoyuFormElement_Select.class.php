@@ -250,19 +250,19 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 * @param	String		$label
 	 * @param	String		$label
 	 * @param	Boolean		$disabled
-	 * @param	String		$classname
+	 * @param	String		$className
 	 */
-	public function addOption($value, $label, $disabled = false, $classname = '') {
+	public function addOption($value, $label, $disabled = false, $className = '') {
 		$this->config['options'][] = array(
 			'value'		=> $value,
 			'label'		=> $label,
-			'disabled'	=> $disabled !== true ? false : 'disabled',
-			'classname'	=> $classname
+			'disabled'	=> ( $disabled !== true ) ? false : 'disabled',
+			'classname'	=> $className
 		);
 
-		if( $selected ) {
-			$this->addSelectedValue($value);
-		}
+//		if( $selected ) {
+//			$this->addSelectedValue($value);
+//		}
 	}
 
 
@@ -275,9 +275,9 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 * @param	String		$label
 	 * @param	Boolean		$selected
 	 * @param	Boolean		$disabled
-	 * @param	String		$classname
+	 * @param	String		$className
 	 */
-	public function setOption($value, $label, $selected = false, $disabled = false, $classname = '') {
+	public function setOption($value, $label, $selected = false, $disabled = false, $className = '') {
 		$index = $this->getOptionIndexByValue($value);
 
 		if( $index === false ) {
@@ -288,7 +288,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 				'label'		=> $label,
 				'selected'	=> $selected,
 				'disabled'	=> $disabled,
-				'classname'	=> $classname
+				'classname'	=> $className
 			);
 		}
 	}

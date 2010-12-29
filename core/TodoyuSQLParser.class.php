@@ -157,23 +157,26 @@ class TodoyuSQLParser {
 	/**
 	 * Extract column attributes declaration
 	 *
+	 * @todo	cleanup
+	 *
 	 * @param	String	$sql
 	 * @return	String
 	 */
 	private static function extractColumnAttributes($sql) {
 		return '';
-		$sql	= trim($sql);
-		$pattern= '/(?<=\\)\\s)[a-zA-Z]*/';
-		preg_match($pattern, $sql, $matches);
 
-		if( count($matches) > 0 ) {
-			$attributes	= trim($matches[0]);
-			$attributes	= ! in_array($attributes, array('NOT', 'DEFAULT')) ? $attributes : '';
-		} else {
-			$attributes	= false;
-		}
-
-		return $attributes;
+//		$sql	= trim($sql);
+//		$pattern= '/(?<=\\)\\s)[a-zA-Z]*/';
+//		preg_match($pattern, $sql, $matches);
+//
+//		if( count($matches) > 0 ) {
+//			$attributes	= trim($matches[0]);
+//			$attributes	= ! in_array($attributes, array('NOT', 'DEFAULT')) ? $attributes : '';
+//		} else {
+//			$attributes	= false;
+//		}
+//
+//		return $attributes;
 	}
 
 
@@ -212,20 +215,6 @@ class TodoyuSQLParser {
 		preg_match($pattern, $columnSQL, $match);
 
 		return sizeof($match) > 0 ? $match[1] : '';
-
-//
-//		$columnSQL	= trim($columnSQL);
-//		$pattern= '/(DEFAULT|default)\\s\'[0-9a-zA-Z_]+\'/';
-//		preg_match($pattern, $columnSQL, $matches);
-//
-//		if( count($matches) > 0 ) {
-//			$default	= $matches[0];
-//			$default	= str_replace('default ', 'DEFAULT ', $default);
-//		} else {
-//			$default = false;
-//		}
-//
-//		return $default;
 	}
 
 
@@ -245,16 +234,6 @@ class TodoyuSQLParser {
 		}
 
 		return $extra;
-
-
-//		foreach($partsToRemove as $remove) {
-//			$sql	= str_replace($remove, '', $sql);
-//			$sql	= str_replace(strtolower($remove), '', $sql);
-//		}
-//		$sql	= trim($sql);
-//		$sql	= strtoupper($sql);
-//
-//		return $sql;
 	}
 
 
@@ -329,7 +308,7 @@ class TodoyuSQLParser {
 					if( strlen($columnName) > 0 ) {
 						$columns[$columnName]['field']		= '`' . $columnName . '`';
 						$columns[$columnName]['type']		= self::extractColumnType($columnSql);
-		//				$columns[$columnName]['collation']	= '';
+//						$columns[$columnName]['collation']	= '';
 						$columns[$columnName]['attributes']	= self::extractColumnAttributes($columnSql);
 						$columns[$columnName]['null']		= self::extractColumnNull($columnSql);
 						$columns[$columnName]['default']	= self::extractColumnDefault($columnSql);

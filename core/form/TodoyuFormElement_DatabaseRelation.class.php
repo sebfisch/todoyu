@@ -159,7 +159,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	/**
 	 * Render foreign record form
 	 *
-	 * @param	Index		$index
+	 * @param	Integer		$index
 	 * @return	String
 	 */
 	protected function renderRecordForm($index) {
@@ -271,7 +271,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	/**
 	 * Get record label defined by config
 	 *
-	 * @param	Index		$index
+	 * @param	Integer		$index
 	 * @return	String
 	 */
 	protected function getRecordLabel($index) {
