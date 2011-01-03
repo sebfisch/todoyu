@@ -46,6 +46,8 @@ Ajax.Response.addMethods({
 		return this.getTodoyuHeader(name) !== null;
 	},
 
+
+
 	/**
 	 * Check whether todoyu error was sent
 	 */
@@ -87,6 +89,24 @@ Ajax.Response.addMethods({
 	 */
 	getPhpError: function() {
 		return this.getTodoyuHeader('Php-Error');
+	},
+
+
+
+	/**
+	 * Get number of AC result items
+	 */
+	getNumAcElements: function() {
+		return Todoyu.Helper.intval(this.getTodoyuHeader('acElements'));
+	},
+
+
+
+	/**
+	 * Check whether the result is an empty autocompleter result
+	 */
+	isEmptyAcResult: function() {
+		return this.getNumAcElements() === 0;
 	}
 });
 

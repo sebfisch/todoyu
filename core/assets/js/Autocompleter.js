@@ -22,7 +22,9 @@
  */
 Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
-	clearDelay: null,
+	clearTimeout: null,
+
+	customOnComplete: null,
 
 
 	/**
@@ -35,15 +37,17 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @param	{Object}	options
 	 */
 	initialize: function($super, inputField, suggestDiv, url, options) {
-		options.afterUpdateElement	= options.afterUpdateElement || Prototype.emptyFunction;
+			// Store onComplete in internal property
+		options.onCompleteCustom = Todoyu.getFunction(options.onComplete);
+		delete options.onComplete;
 
-		options.afterUpdateElement = options.afterUpdateElement.wrap(this.onSelected.bind(this));
+			// Set empty function if no callback defined
+		options.afterUpdateElement	= Todoyu.getFunction(options.afterUpdateElement).wrap(this.onElementSelected.bind(this));
 
-
+			// Initialize original autocompleter
 		$super(inputField, suggestDiv, url, options);
 
-
-
+			// Install key handlers
 		$(inputField).on('blur', this.onBlur.bind(this));
 		$(inputField).on('keyup', this.onKeyup.bind(this));
 	},
@@ -53,25 +57,19 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Handle completion of autocompleter suggestion retrieval
 	 *
+	 * @param	{Function}			$super			Ajax.Autocompleter.onComplete
 	 * @param	{Ajax.Response}		response
 	 */
-	onComplete: function(response) {
-			// If a custom onComplete defined
-		if( this.options.onCompleteCustom ) {
-			var funResult = Todoyu.callUserFunction(this.options.onCompleteCustom, response, this);
+	onComplete: function($super, response) {
+		$super(response);
 
-				// If the custom function returns an object, override response
-			if( typeof(funResult) === 'object' ) {
-				response = funResult;
-			}
+			// Call custom method. If return value is false, don't show message
+		var showMessage = this.options.onCompleteCustom(response, this) !== false;
+
+			// Handle empty results
+		if( response.isEmptyAcResult() ) {
+			this.handleEmptyResult(showMessage);
 		}
-
-		if( response.getTodoyuHeader('acElements') == 0 ) {
-			this.onEmptyResult(response);
-		}
-
-			// Call default ac handler
-		this.updateChoices(response.responseText);
 	},
 
 
@@ -79,9 +77,8 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Handle reception of empty result (no suggestion found)
 	 *
-	 * @param	{Ajax.Response}		response
 	 */
-	onEmptyResult: function(response) {
+	handleEmptyResult: function(showMessage) {
 		new Effect.Highlight(this.element, {
 			'startcolor':	'#ff0000',
 			'endcolor':		'#ffffff',
@@ -90,7 +87,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 		this.clearValue();
 
-		if( ! this.options.onCompleteCustom ) {
+		if( showMessage ) {
 			Todoyu.notifyInfo('[LLL:form.ac.noResults]');
 		}
 	},
@@ -103,27 +100,41 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @param	{Element}	inputField
 	 * @param	{Element}	selectedListElement
 	 */
-	onSelected: function(callOriginal, inputField, selectedListElement) {
-		clearTimeout(this.clearDelay);
-
-		var selectedValue	= selectedListElement.id;
-		var updateValueField= true;
+	onElementSelected: function(callOriginal, inputField, selectedListElement, noUpdate) {
+		this.clearDelay();
 
 		this.valid = true;
 
-		if( this.options.onSelectCustom ) {
-			var result = Todoyu.callUserFunction(this.options.onSelectCustom, inputField, this.getValueField(), selectedValue, selectedListElement.innerHTML, this);
+		var updateValueField = this.callOnSelected(inputField, selectedListElement);
+
+		if( updateValueField && noUpdate !== true ) {
+			this.setValue(selectedListElement.id);
+		}
+
+		callOriginal(inputField, selectedListElement);
+	},
+
+	callOnSelected: function(inputField, selectedListElement) {
+		var selectedValue	= selectedListElement.id;
+		var selectedText	= selectedListElement.innerHTML.stripScripts().stripTags().strip();
+		var updateValueField= true;
+		var valueField		= this.getValueField();
+
+			// Call custom onSelected method
+		if( this.options.onSelected ) {
+			var result = Todoyu.callUserFunction(this.options.onSelected, inputField, valueField, selectedValue, selectedText, this);
 
 			if( result === false ) {
 				updateValueField = false;
 			}
 		}
 
-		if( updateValueField ) {
-			this.setValue(selectedValue);
-		}
+		return updateValueField;
+	},
 
-		callOriginal(inputField, selectedListElement);
+
+	clearDelay: function() {
+		clearTimeout(this.clearTimeout);
 	},
 
 
@@ -140,6 +151,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 		this.hideSuggestions();
 	},
+
 
 
 	/**
@@ -186,9 +198,9 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @param	{Boolean}	noDelay
 	 */
 	clear: function(noDelay) {
-		clearTimeout(this.clearDelay);
+		this.clearDelay();
 		if( noDelay !== true ) {
-			this.clearDelay = this.clear.bind(this, true).delay(0.1);
+			this.clearTimeout = this.clear.bind(this, true).delay(0.1);
 			return ;
 		}
 
@@ -200,12 +212,14 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	},
 
 
+
 	/**
 	 * Clear text of AC field
 	 */
 	clearText: function() {
 		this.setText('');
 	},
+
 
 
 	/**

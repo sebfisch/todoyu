@@ -30,6 +30,12 @@ Todoyu.SortablePanelList = {
 	 * @param	{Function}			callbackSort
 	 */
 	init: function(list, callbackToggle, callbackSort) {
+		if( ! Todoyu.exists(list) ) {
+			throw {
+				name: 'List element not found',
+				message: list
+			};
+		}
 		this._initToggle($(list), callbackToggle);
 		this._initSortable($(list), callbackSort);
 	},

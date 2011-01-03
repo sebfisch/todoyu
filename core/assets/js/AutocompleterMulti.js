@@ -59,10 +59,10 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	 * @param	{Function}				callbackRemove
 	 */
 	initialize: function($super, field, fieldSuggest, url, acOptions, callbackAdd, callbackRemove) {
-		acOptions	= acOptions || {};
+		//acOptions	= acOptions || {};
 
-		acOptions.afterUpdateElement	= acOptions.afterUpdateElement || Prototype.emptyFunction;
-		acOptions.afterUpdateElement	= acOptions.afterUpdateElement.wrap(this.onElementSelected.bind(this));
+//		acOptions.afterUpdateElement	= acOptions.afterUpdateElement || Prototype.emptyFunction;
+//		acOptions.afterUpdateElement	= acOptions.afterUpdateElement.wrap(this.onElementSelected.bind(this));
 
 		this.callbacks = {
 			onAdd: 		callbackAdd 	|| Prototype.emptyFunction,
@@ -91,7 +91,11 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	 * @param	{Element}	field
 	 * @param	{Element}	selectedListElement
 	 */
-	onElementSelected: function(callOriginal, inputField, valueField, selectedValue, selectedText, autocompleter) {
+	onElementSelected: function($super, callOriginal, inputField, selectedListElement) {
+		var selectedValue	= selectedListElement.id;
+		var selectedText	= selectedListElement.innerHTML.stripTags().stripScripts().strip();
+		var valueField		= $(inputField.id + '-value');
+
 			// Reset visible field
 		inputField.value = '';
 
@@ -100,7 +104,7 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 
 		this.callbacks.onAdd.call(this, this, selectedValue, selectedText);
 
-		callOriginal(inputField, valueField, selectedValue, selectedText, autocompleter);
+		$super(callOriginal, inputField, selectedListElement, true);
 	},
 
 
