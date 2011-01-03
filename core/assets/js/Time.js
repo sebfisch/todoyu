@@ -238,7 +238,7 @@ Todoyu.Time = {
 	 * @return	{String}
 	 */
 	getDateString: function(time) {
-		var date = new Date(time*1000);
+		var date = new Date(time * 1000);
 
 		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth() + 1) + '-' + date.getDate();
 	},
