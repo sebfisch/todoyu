@@ -289,10 +289,9 @@ var Todoyu = {
 	 */
 	callUserFunction: function(functionName /*, args */) {
 		var args 	= $A(arguments).slice(1);
-		var func	= this.getFunctionFromString(functionName);
-		var context	= this.getFunctionFromString(functionName.split('.').slice(0,-1).join('.'));
+		var func	= typeof functionName === 'string' ? this.getFunctionFromString(functionName, true) : functionName;
 
-		return func.apply(context, args);
+		return func.apply(window, args);
 	},
 
 

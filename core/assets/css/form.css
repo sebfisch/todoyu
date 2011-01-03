@@ -5,11 +5,11 @@ form {
 	* html form {
 		height:1%
 	}
-	
+
 	fieldset {
 		border:none;
 	}
-	
+
 	form.fForm {
 		padding:7px;
 		background-color:#eee;
@@ -33,7 +33,7 @@ form {
 		width:100%;
 		margin-top:10px;
 	}
-	
+
 	div.fieldset-clear {
 		/*clear:both;*/
 	}
@@ -52,7 +52,7 @@ form {
 		fieldset.buttons .fElement {
 			margin-left:5px;
 		}
-	
+
 	legend,
 	.fForm fieldset fieldset legend,
 	.fForm .buttons legend {
@@ -217,7 +217,7 @@ div.fElement {
 	div.fElement .fClear {
 		clear:both;
 	}
-	
+
 		/* second level */
 		div.fElement .fField .fLabel {
 			width:100px;
@@ -477,6 +477,10 @@ form .typeCheckbox div.errorMessage {
 		border:none;
 		border-width:0;
 		padding:0;
+	}
+
+	.fField .acResultContainer ul {
+		list-style:none;
 	}
 
 

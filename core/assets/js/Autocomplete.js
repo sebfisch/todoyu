@@ -40,18 +40,10 @@ Todoyu.Autocomplete = {
 
 	/**
 	 * Autocompleter references
-	 * @property	acRefs
+	 * @property	AC
 	 * @type		Object
 	 */
-	acRefs: {},
-
-	/**
-	 * Flag. True if a valid option just was selected
-	 * Prevents to cleanup field
-	 * @property	selectedFromList
-	 * @type		Boolean
-	 */
-	selectedFromList: false,
+	AC: {},
 
 
 
@@ -72,21 +64,15 @@ Todoyu.Autocomplete = {
 			paramName:	config.paramName || this.config.paramName,
 			minChars:	config.minChars || this.config.minChars,
 			callback:	this.beforeRequestCallback.bind(this),
-			parameters:	'&action=update&autocompleter=' + config.acName + '&element=' + idElement,
-			afterUpdateElement:	this.onElementSelected.bind(this)
+			parameters:	'&action=update&autocompleter=' + config.acName + '&element=' + idElement
 		};
 
 		if( config.options ) {
 			options = $H(options).update(config.options).toObject();
 		}
-
+		
 			// Create autocompleter
-		this.acRefs[idElement] = new Todoyu.Autocompleter(inputField, suggestDiv, url, options);
-
-			// Observe input
-		$(inputField).observe('change', this.onInputChange.bindAsEventListener(this));
-			// Observe input for key down to clean up invalid input
-		$(inputField).observe('keydown', this.onKeydown.bindAsEventListener(this));
+		this.AC[idElement] = new Todoyu.Autocompleter(inputField, suggestDiv, url, options);
 	},
 
 
@@ -107,95 +93,8 @@ Todoyu.Autocomplete = {
 		return acParam + '&form=' + name + '&' + data;
 	},
 
-
-
-	/**
-	 * Called if input field has changed (blur)
-	 *
-	 * @method	onInputChange
-	 * @param	{Event}		event
-	 */
-	onInputChange: function(event) {
-			// If the change was called by a valid select, revert flag and do nothing
-		if( this.selectedFromList ) {
-			this.selectedFromList = false;
-			return;
-		}
-			// Extract field id
-		var idElement = event.element().id.split('-').without('fulltext').join('-');
-			// Clear fields
-		this.clear(idElement);
-	},
-
-
-
-	/**
-	 * On keypress. If its not the return key, the current value is invalid (until autocompleted)
-	 *
-	 * @method	onKeydown
-	 * @param	{Event}	event
-	 */
-	onKeydown: function(event) {
-//		if( event.keyCode !== Event.KEY_RETURN && event.keyCode !== Event.KEY_TAB ) {
-//			this.selectedFromList = false;
-//		}
-	},
-
-
-
-	/**
-	 * When autocomplete value is selected
-	 *
-	 * @method	onElementSelected
-	 * @param	{Element}	inputField
-	 * @param	{Element}	selectedListElement
-	 */
-	onElementSelected: function(inputField, selectedListElement) {
-		var baseID			= inputField.id.split('-').without('fulltext').join('-');
-		var selectedValue	= selectedListElement.id;
-		var updateValueField= true;
-
-		this.selectedFromList = true;
-
-		if( this.acRefs[baseID].options.onSelectCustom ) {
-			var result = Todoyu.callUserFunction(this.acRefs[baseID].options.onSelectCustom, inputField, $(baseID), selectedValue, selectedListElement.innerHTML, this);
-
-			if( result === false ) {
-				updateValueField = false;
-			}
-
-		}
-
-		if( updateValueField ) {
-			$(baseID).setValue(selectedValue);
-		}
-	},
-
-
-
-	/**
-	 * Clear fields because of invalid input
-	 *
-	 * @method	clear
-	 * @param	{Element}		element
-	 */
-	clear: function(element) {
-		var idElement = $(element).id;
-		$(idElement).setValue('0');
-		$(idElement + '-fulltext').setValue('');
-	},
-
-
-
-	/**
-	 * Get AC options
-	 *
-	 * @method	getOptions
-	 * @param	{String}	idElement
-	 * @return	{Object}
-	 */
-	getOptions: function(idElement) {
-		return this.acRefs[idElement].options;
+	getAC: function(name) {
+		return this.AC[name];
 	}
 
 };
