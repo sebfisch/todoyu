@@ -10,3 +10,12 @@ Commented out 'Scriptaculous.load();' All needed libraries are already loaded in
 # lib/php/dwoo/plugins/builtin/functions/truncate.php
 Replaced substr() and strlen() with multibyte versions.
 Added utf-8 as encoding. Supports now truncating of asian (japanese) characters.
+
+# lib/js/dhtmlxgantt/sources/dhtmlgantt.js : 1202
+Commented out check of EST against parent task EST, to allow for display of "invalid" parent-child lineage
+
+# lib/js/dhtmlxgantt/sources/dhtmlgantt.js : 3588
+Commented out setting of calculated left position during checkPos-method, to allow for unrounded task starting times also during drag activities
+
+# lib/js/dhtmlxgantt/sources/dhtmlgantt.js : 4006
+Commented out check of miniumum movement ranges, to allow for dragging of tasks with "invalid" parent-child lineage
