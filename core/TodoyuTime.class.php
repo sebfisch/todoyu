@@ -130,11 +130,23 @@ class TodoyuTime {
 	 * @return 		Integer		Timestamp of beginning of week the given timestamp belongs to
 	 */
 	public static function getWeekStart($timestamp) {
-		$timestamp	= intval($timestamp);
-		$dayStart	= self::getStartOfDay($timestamp);
-		$weekday	= self::getWeekday($timestamp, true);
+		$diff	= (date('w', $timestamp)+6)%7;
 
-		return $dayStart - $weekday * self::SECONDS_DAY;
+		return mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp)-$diff, date('Y', $timestamp));
+	}
+
+
+
+	/**
+	 * Get timestamp for the end of the week (last second in the week)
+	 *
+	 * @param	Integer		$timestamp
+	 * @return	Integer
+	 */
+	public static function getWeekEnd($timestamp) {
+		$diff	= (7-date('w', $timestamp))%7;
+
+		return mktime(23, 59, 59, date('n', $timestamp), date('j', $timestamp)+$diff, date('Y', $timestamp));
 	}
 
 
