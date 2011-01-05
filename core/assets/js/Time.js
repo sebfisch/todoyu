@@ -99,7 +99,7 @@ Todoyu.Time = {
 	 *
 	 * @method	getTimeParts
 	 * @param	{Number}		time
-	 * @return	Array
+	 * @return	{Object}
 	 */
 	getTimeParts: function(time) {
 		time = Todoyu.Helper.intval(time);

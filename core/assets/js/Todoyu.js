@@ -309,7 +309,7 @@ var Todoyu = {
 	 *
 	 * @method	callIfExists
 	 * @param	{Function}	functionReference	Function
-	 * @param	{Object}		context				Context which is this in function
+	 * @param	{Object}	context				Context which is this in function
 	 */
 	callIfExists: function(functionReference, context /*, args */) {
 		var args = $A(arguments).slice(2);
@@ -327,8 +327,9 @@ var Todoyu = {
 	 * Get a function reference from a function string
 	 * Ex: 'Todoyu.Ext.project.edit'
 	 *
-	 * @method	getFunctionFromString
 	 * @param	{String}		functionName
+	 * @param	{Boolean}		bind
+	 * @return	{Function}
 	 */
 	getFunctionFromString: function(functionName, bind) {
 		var namespaces 	= functionName.split(".");
