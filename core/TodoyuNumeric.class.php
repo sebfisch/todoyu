@@ -158,13 +158,35 @@ class TodoyuNumeric {
 		$value		= floatval($value);
 		$percent	= floatval($percent);
 
-		if( $percent !== true ) {
+		if( $isFraction !== true ) {
 			$percent = floatval($percent / 100);
 		}
 
 		return floatval($percent * $value);
 	}
-	
+
+
+	public static function ratio($value1, $value2, $asPercent = false, $round = false, $default = false) {
+		$value1	= floatval($value1);
+		$value2	= floatval($value2);
+
+		if( $value1 === 0.0 || $value2 === 0.0 ) {
+			return $default;
+		}
+
+		$ratio	= $value1/$value2;
+
+		if( $asPercent ) {
+			$ratio *= 100;
+		}
+
+		if( $round !== false ) {
+			$ratio = round($ratio, $round);
+		}
+
+		return $ratio;
+	}
+
 }
 
 ?>
