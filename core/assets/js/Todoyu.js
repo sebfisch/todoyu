@@ -68,6 +68,8 @@ var Todoyu = {
 		this.Ui.fixAnchorPosition();
 		this.Ui.observeBody();
 		this.initExtensions();
+
+//		SI.Files.stylizeAll();
 	},
 
 
@@ -92,7 +94,11 @@ var Todoyu = {
 	initExtensions: function() {
 		$H(this.Ext).each(function(pair){
 			if( typeof(pair.value.init) === 'function' ) {
-				pair.value.init();
+				try {
+					pair.value.init();
+				} catch(exception) {
+					this.log(exception);
+				}
 			}
 		});
 	},
@@ -289,7 +295,7 @@ var Todoyu = {
 	 */
 	callUserFunction: function(functionName /*, args */) {
 		var args 	= $A(arguments).slice(1);
-		var func	= typeof functionName === 'string' ? this.getFunctionFromString(functionName, true) : functionName;
+		var func	= this.getFunction(functionName);
 
 		return func.apply(window, args);
 	},
@@ -344,6 +350,27 @@ var Todoyu = {
 		}
 
 		return funcRef;
+	},
+
+
+
+	/**
+	 * Get function from string or just return the function
+	 *
+	 * @param	{String|Function}	func
+	 */
+	getFunction: function(func) {
+		switch( typeof func ) {
+			case 'string':
+				return this.getFunctionFromString(func, true);
+
+			case 'function':
+				return func;
+
+			case 'undefined':
+			default:
+				return Prototype.emptyFunction;
+		}
 	},
 
 
