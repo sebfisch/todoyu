@@ -78,13 +78,13 @@ Todoyu.Timerange = Class.create({
 
 			// Merge default options with dynamic values and given config
 		var options	= $H(this.defaultOptions).merge({
-			range:  $R(0, this.selectableDates.length),
-			values: $R(0, this.selectableDates.length),
+			range:  $R(0, this.selectableDates.length-1),
+			values: $R(0, this.selectableDates.length-1),
 			spans: [this.name + '-span']
 		}).update(sliderOptions).toObject();
 
 			// Replace given event handler with internals
-		options.onChange= this.onChange.bind(this, options.onChange || Prototype.emptyFunction);
+		options.onChange= (options.onChange || Prototype.emptyFunction).wrap(this.onChange.bind(this));
 		options.onSlide	= this.onSlide.bind(this, options.onSlide || Prototype.emptyFunction);
 
 			// Get indexes of selected values
@@ -282,6 +282,14 @@ Todoyu.Timerange = Class.create({
 		return this.slider.values[valueIndex];
 	},
 
+
+	/**
+	 * Get index for a handle
+	 * start = 0, end = 1
+	 *
+	 * @param	{String}	key
+	 * @return	{Number}
+	 */
 	getHandleIndex: function(key) {
 		return {
 			'start': 0,
@@ -379,13 +387,13 @@ Todoyu.Timerange = Class.create({
 		return date.print(this.options.dateFormat);
 	},
 
-	onChange: function(onChange, values) {
+	onChange: function(callOriginal, values) {
 			// Enable keyboard
 		this.focusForKeyboard();
 
 		this.setFieldValues(values[0], values[1]);
 
-		onChange(this, values);
+		callOriginal(this, values);
 	},
 
 	onSlide: function(onSlide, values) {

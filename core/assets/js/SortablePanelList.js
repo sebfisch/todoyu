@@ -20,7 +20,19 @@
 /**
  * Sortable panel list with group toggle
  */
-Todoyu.SortablePanelList = {
+Todoyu.SortablePanelList = Class.create({
+
+	/**
+	 * List
+	 */
+	list: null,
+
+	/**
+	 * Flag if only one item in the whole list can be active
+	 */
+	onlyOneActive: true,
+
+
 
 	/**
 	 * Initialize sorting and toggle
@@ -28,16 +40,22 @@ Todoyu.SortablePanelList = {
 	 * @param	{Element|String}	list
 	 * @param	{Function}			callbackToggle
 	 * @param	{Function}			callbackSort
+	 * @param	{Boolean}			onlyOneActive
 	 */
-	init: function(list, callbackToggle, callbackSort) {
+	initialize: function(list, callbackToggle, callbackSort, onlyOneActive) {
 		if( ! Todoyu.exists(list) ) {
 			throw {
 				name: 'List element not found',
 				message: list
 			};
 		}
-		this._initToggle($(list), callbackToggle);
-		this._initSortable($(list), callbackSort);
+
+		this.list			= $(list);
+		this.onlyOneActive	= onlyOneActive || false;
+
+		this._initToggle(callbackToggle);
+		this._initSortable(callbackSort);
+		this._initActivator();
 	},
 
 
@@ -45,11 +63,10 @@ Todoyu.SortablePanelList = {
 	/**
 	 * Add toggle functions
 	 *
-	 * @param	{Element}	list
 	 * @param	{Function}	callback
 	 */
-	_initToggle: function(list, callback) {
-		list.select('li.groupTitle').each(function(callback, groupItem){
+	_initToggle: function(callback) {
+		this.list.select('li.groupTitle').each(function(callback, groupItem){
 			var groupName = Todoyu.Helper.getClassKey(groupItem, 'groupName');
 			if( groupName ) {
 				groupItem.on('click', 'li', this._toggle.bind(this, groupItem, groupName, callback));
@@ -82,18 +99,11 @@ Todoyu.SortablePanelList = {
 	/**
 	 * Add sortable function
 	 *
-	 * @param	{Element}	list
 	 * @param	{Function}	callback
 	 */
-	_initSortable: function(list, callback) {
-			// Define options for all sortables
-		var options	= {
-			'handle':	'handle',
-			'onUpdate':	this._onSort.bind(this)
-		};
-
+	_initSortable: function(callback) {
 			// Make each list sortable
-		list.select('.sortable').each(function(element) {
+		this.list.select('.sortable').each(function(element) {
 				// Create a sortable
 			Sortable.create(element, {
 				handle: 'handle',
@@ -102,7 +112,7 @@ Todoyu.SortablePanelList = {
 		}, this);
 
 			// Add hover effect to handles
-		list.select('.handle').each(Todoyu.Ui.addHoverEffect, Todoyu.Ui);
+		this.list.select('.handle').each(Todoyu.Ui.addHoverEffect, Todoyu.Ui);
 	},
 
 
@@ -118,6 +128,33 @@ Todoyu.SortablePanelList = {
 		var items	= Sortable.sequence(listItem);
 
 		callback(group, items);
+	},
+
+
+
+	/**
+	 * Initialize handler to activate list items (with current class)
+	 */
+	_initActivator: function() {
+		this.list.select('li.itemList > ul').each(function(itemList){
+			itemList.on('click', 'a', this._activate.bind(this));
+		}, this);
+	},
+
+
+
+	/**
+	 * Activate the list item
+	 *
+	 * @param	{Event}		event
+	 * @param	{Element}	linkItem
+	 */
+	_activate: function(event, linkItem) {
+		var listItem= linkItem.up('li.listItem');
+		var up		= this.onlyOneActive ? 1 : 0;
+
+		listItem.up('ul', up).select('li.current').invoke('removeClassName', 'current');
+		listItem.addClassName('current');
 	}
 
-};
+});

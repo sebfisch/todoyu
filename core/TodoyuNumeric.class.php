@@ -166,15 +166,27 @@ class TodoyuNumeric {
 	}
 
 
-	public static function ratio($value1, $value2, $asPercent = false, $round = false, $default = false) {
-		$value1	= floatval($value1);
-		$value2	= floatval($value2);
 
-		if( $value1 === 0.0 || $value2 === 0.0 ) {
+	/**
+	 * Get ratio of two values
+	 * Supports rounding and percentage value
+	 *
+	 * @param	Float			$dividend
+	 * @param	Float			$divisor
+	 * @param	Boolean			$asPercent
+	 * @param	Boolean|Integer	$round
+	 * @param	Boolean|Mixed	$default
+	 * @return	Float|Boolean|Mixed
+	 */
+	public static function ratio($dividend, $divisor, $asPercent = false, $round = false, $default = false) {
+		$dividend	= floatval($dividend);
+		$divisor	= floatval($divisor);
+
+		if( $dividend === 0.0 || $divisor === 0.0 ) {
 			return $default;
 		}
 
-		$ratio	= $value1/$value2;
+		$ratio	= $dividend/$divisor;
 
 		if( $asPercent ) {
 			$ratio *= 100;
