@@ -139,13 +139,47 @@ class TodoyuString {
 
 
 	/**
-	 * Convert an HTML snippet into plain text. Keep as much format information as possible
+	 * Convert an HTML snippet into plain text. Removes html - tags from snippet
 	 *
 	 * @param	String		$html		HTML snippet
 	 * @return	String		Text version
 	 */
 	public static function html2text($html) {
 		return strip_tags($html);
+	}
+
+
+
+	/**
+	 * Converts an HTML snippet into plain text.
+	 * 	- decodes html-entities & special chars
+	 *
+	 * @static
+	 * @param	String		$string
+	 * @param	Boolean		$closingPTagsToDoubleNewLine
+	 * @return	String
+	 */
+	public static function strictHtml2text($string, $convertClosingPTagsToDoubleNewLine = true) {
+		TodoyuDebug::printInFirebug($string, 'before');
+		
+		if( $convertClosingPTagsToDoubleNewLine === true ) {
+			$string = str_replace('</p>', chr(10) . chr(10), $string);
+		}
+		
+		return self::html2text(html_entity_decode(htmlspecialchars_decode(self::br2nl($string)), ENT_COMPAT, 'UTF-8'));
+	}
+
+
+
+	/**
+	 * Replaces html-tag <br /> with newlines
+	 *
+	 * @static
+	 * @param	String	$string
+	 * @return	String
+	 */
+	public static function br2nl($string) {
+		return str_ireplace(array('<br />', '<br>'), chr(10), $string);
 	}
 
 
@@ -276,7 +310,7 @@ class TodoyuString {
 	 * @static
 	 * @return String
 	 */
-	public static function generateGoodPassword()	{
+	public static function generateGoodPassword() {
 		$config		= Todoyu::$CONFIG['goodPassword'];
 		$validator	= new TodoyuPasswordValidator();
 
@@ -598,7 +632,7 @@ class TodoyuString {
 	 * @param	String	$bcc
 	 * @return	String
 	 */
-	public static function getMailtoTag($emailAddress, $label = '', $returnAsArray = false, $subject = '', $mailBody = '', $cc ='', $bcc = '')	{
+	public static function getMailtoTag($emailAddress, $label = '', $returnAsArray = false, $subject = '', $mailBody = '', $cc ='', $bcc = '') {
 		$result = '<a href="mailto:' . $emailAddress;
 		$separator = '?';
 		$end	= '</a>';
@@ -645,7 +679,7 @@ class TodoyuString {
 	 * @param string $lable
 	 * @return void
 	 */
-	public static function getATag($url, $label = '', $target = 'blank')	{
+	public static function getATag($url, $label = '', $target = 'blank') {
 		return '<a href="' . $url . '" target="' . $target . '">' . $label . '</a>';
 	}
 
@@ -692,7 +726,6 @@ class TodoyuString {
 	private static function escapeFunctionInJSON($string) {
 		return str_replace('\\"','\"',substr($string[0],1,-1));
 	}
-
 }
 
 ?>
