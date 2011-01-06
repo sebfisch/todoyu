@@ -73,6 +73,13 @@ class TodoyuExportCSV extends TodoyuExportBase {
 		$this->tmpFile = PATH_CACHE . '/output/' . 'tmpExport_' . NOW . '.csv';
 		$this->filePointer	= fopen($this->tmpFile, 'w+');
 		$this->filename = 'export_' . NOW . '.csv';
+
+		$defaultConfig	= Todoyu::$CONFIG['EXPORT']['CSV'];
+
+		$this->delimiter		= $customConfig['delimiter'] ? $customConfig['delimiter'] : ($defaultConfig['delimiter'] ? $defaultConfig['delimiter'] : $this->delimiter);
+		$this->enclosure		= $customConfig['enclosure'] ? $customConfig['enclosure'] : ($defaultConfig['enclosure'] ? $defaultConfig['enclosure'] : $this->enclosure);
+		$this->charset			= $customConfig['charset'] ? $customConfig['charset'] : ($defaultConfig['charset'] ? $defaultConfig['charset'] : $this->charset);
+		$this->useTableHeaders	= $customConfig['useTableHeaders'] ? $customConfig['useTableHeaders'] : ($defaultConfig['useTableHeaders'] ? $defaultConfig['useTableHeaders'] : $this->useTableHeaders);
 	}
 
 
