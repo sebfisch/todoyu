@@ -77,4 +77,7 @@
 	<label index="unknown">n/a</label>
 	<label index="loaderBox.title">Will proceed in a moment</label>
 	<label index="panelwidget.toggle">Open/Close This Widget</label>
+	<label index="date_update">Date of last update</label>
+	<label index="date_create">Creation Date</label>
+	<label index="id_user_create">Created by</label>
 </labels>
