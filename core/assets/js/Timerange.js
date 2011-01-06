@@ -34,11 +34,17 @@ Todoyu.Timerange = Class.create({
 
 	selectableDates: [],
 
+	/**
+	 * Default options for the slider object
+	 */
 	defaultOptions: {
 		axis: 'horizontal',
 		restricted: true
 	},
 
+	/**
+	 * Internal options
+	 */
 	options: {
 		dateFormat: '%d.%m.%Y'
 	},
@@ -85,7 +91,7 @@ Todoyu.Timerange = Class.create({
 
 			// Replace given event handler with internals
 		options.onChange= (options.onChange || Prototype.emptyFunction).wrap(this.onChange.bind(this));
-		options.onSlide	= this.onSlide.bind(this, options.onSlide || Prototype.emptyFunction);
+		options.onSlide	= (options.onSlide || Prototype.emptyFunction).wrap(this.onSlide.bind(this));
 
 			// Get indexes of selected values
 		if( this.selectedDates ) {
@@ -283,6 +289,7 @@ Todoyu.Timerange = Class.create({
 	},
 
 
+
 	/**
 	 * Get index for a handle
 	 * start = 0, end = 1
@@ -358,6 +365,7 @@ Todoyu.Timerange = Class.create({
 	},
 
 
+
 	/**
 	 * Get selectable dates
 	 *
@@ -379,37 +387,90 @@ Todoyu.Timerange = Class.create({
 		return this.selectableDates[index];
 	},
 
+
+
+	/**
+	 * Get formatted date for an index
+	 *
+	 * @param	{Number}	index
+	 * @return	{String}
+	 */
 	getDateFormatted: function(index) {
 		return this.formatDate(this.getDate(index));
 	},
 
+
+
+	/**
+	 * Format a date
+	 *
+	 * @param	{Date}	date
+	 * @return	{String}
+	 */
 	formatDate: function(date) {
 		return date.print(this.options.dateFormat);
 	},
 
+
+
+	/**
+	 * Handler when slider position is changed
+	 * Called only when mouse is released from handle
+	 *
+	 * @param	{Function}	callOriginal
+	 * @param	{Array}		values
+	 */
 	onChange: function(callOriginal, values) {
 			// Enable keyboard
 		this.focusForKeyboard();
 
+			// Update values in the display fields
 		this.setFieldValues(values[0], values[1]);
 
+			// Call outer callback function
 		callOriginal(this, values);
 	},
 
-	onSlide: function(onSlide, values) {
+
+
+	/**
+	 * Handler when slider moves
+	 * Called on every pixel move
+	 *
+	 * @param	{Function}	callOriginal
+	 * @param	{Array}		values
+	 */
+	onSlide: function(callOriginal, values) {
+			// Enable keyboard
 		this.focusForKeyboard();
 
+			// Update values in the display fields
 		this.setFieldValues(values[0], values[1]);
 
-		onSlide(this, values);
+			// Call outer callback function
+		callOriginal(this, values);
 	},
 
 
+
+	/**
+	 *
+	 * @param indexStart
+	 * @param indexEnd
+	 */
 	setFieldValues: function(indexStart, indexEnd) {
 		this.setFieldDate('start', this.getDate(indexStart));
 		this.setFieldDate('end', this.getDate(indexEnd));
 	},
 
+
+
+	/**
+	 * Set date for a field
+	 *
+	 * @param	{String}	key
+	 * @param	{Date}		date
+	 */
 	setFieldDate: function(key, date) {
 		$(this.name + '-' + key).value = this.formatDate(date);
 	}

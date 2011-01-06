@@ -904,9 +904,9 @@ class TodoyuDatabase {
 		$fields	= $field;
 
 			// If an index field is used, it have to be selected too in the
-		if( $indexField !== '' ) {
-			$fields .= ',' . $indexField;
-		}
+//		if( $indexField !== '' ) {
+//			$fields .= ',' . $indexField;
+//		}
 
 		$rows	= $this->getArray($fields, $table, $where, $groupBy, $orderBy, $limit);
 		$key	= $resultFieldName === '' ? $field : $resultFieldName ;
@@ -916,7 +916,7 @@ class TodoyuDatabase {
 			if( $indexField === '' ) {
 				$column[] = $row[$key];
 			} else {
-				$column[$row['id']] = $row[$key];
+				$column[$row[$indexField]] = $row[$key];
 			}
 		}
 
@@ -1174,7 +1174,7 @@ class TodoyuDatabase {
 			return $this->getAffectedRows() > 0;
 		} else {
 			return false;
-		}		
+		}
 	}
 
 
