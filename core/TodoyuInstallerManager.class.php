@@ -904,7 +904,7 @@ class TodoyuInstallerManager {
 	 * @param	String		$lastVersion
 	 */
 	public static function runVersionUpdatesPHP($lastVersion) {
-		TodoyuDebug::printInFireBug('runVersionUpdatesPHP');
+//		TodoyuDebug::printInFireBug('runVersionUpdatesPHP');
 		$baseFolder	= 'install/update/php';
 		$updateFiles= self::getUpdateFiles($baseFolder, 'php', $lastVersion);
 
