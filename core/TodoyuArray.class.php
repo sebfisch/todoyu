@@ -638,6 +638,24 @@ class TodoyuArray {
 
 
 	/**
+	* Flatten to values of element with given key in contained arrays
+	*
+	* @param	String  $key
+	* @param	Array   $data
+	* @return	Array
+	*/
+	public static function flattenToSubKey($key = '__key', array $data) {
+			// Reduce to values of given key in all sub arrays
+		$reform	= array($key    => 'key');
+		$reduced= self::reform($data, $reform, false);
+
+			// Return flattened array of given key values
+		return self::flatten($reduced);
+	}
+
+
+
+	/**
 	 * Remove array entries by their value
 	 *
 	 * @param	Array		$array
