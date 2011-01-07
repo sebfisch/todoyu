@@ -51,7 +51,7 @@ Todoyu.Popup = {
 
 	/**
 	 * @property	contentOrigParentNode
-	 * @type		DOMelement
+	 * @type		DOMElement
 	 */
 	contentOrigParentNode: null,
 
@@ -110,7 +110,7 @@ Todoyu.Popup = {
 			className:			"dialog",
 			title:				title,
 
-			parent:				document.getElementsByTagName("body").item(0),
+			parent:				document.body,
 
 			minWidth:			minWidth,
 			minHeight:			220,
@@ -147,7 +147,9 @@ Todoyu.Popup = {
 			callOriginal(response);
 		}.bind(this, idPopup));
 
-		this.getPopup(idPopup).setAjaxContent(contentUrl, requestOptions, false, false);
+		if( contentUrl !== false ) {
+			this.getPopup(idPopup).setAjaxContent(contentUrl, requestOptions, false, false);
+		}
 
 			// Save last opened popup
 		this.last = this.getPopup(idPopup);
@@ -197,7 +199,7 @@ Todoyu.Popup = {
 			className:			"dialog",
 			title:				title,
 
-			parent:				document.getElementsByTagName("body").item(0),
+			parent:				document.body,
 
 			minWidth:			minWidth,
 			minHeight:			minHeight,
