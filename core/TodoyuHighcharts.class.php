@@ -26,7 +26,12 @@
  */
 class TodoyuHighcharts {
 
+	/**
+	 * Add required javascript for highcharts
+	 *
+	 */
 	public static function addHighcharts() {
+			// Add jQuery javascript
 		TodoyuJQuery::addJQuery();
 
 		TodoyuPage::addJavascript('lib/js/highcharts/highcharts.src.js', 31, false, false, false);

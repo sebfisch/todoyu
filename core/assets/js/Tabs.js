@@ -37,7 +37,6 @@ Todoyu.Tabs = {
 	handler: {},
 
 
-
 	/**
 	 * Create tabs based on the <ul><li>
 	 *
@@ -53,6 +52,21 @@ Todoyu.Tabs = {
 			mouseover: 	list.on('mouseover','li', this._hoverHandler.bindAsEventListener(this, true)),
 			mouseout: 	list.on('mouseout', 'li', this._hoverHandler.bindAsEventListener(this, false))
 		};
+
+		this.activateFirstIfNonActive(list);
+	},
+
+
+
+	/**
+	 * Activate first tab if no tab is selected
+	 *
+	 * @param	{Element}	list
+	 */
+	activateFirstIfNonActive: function(list) {
+		if( list.down('li.active') === undefined ) {
+			this.setActiveByElement(list.down('li'));
+		}
 	},
 
 

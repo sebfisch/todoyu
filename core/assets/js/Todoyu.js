@@ -238,7 +238,7 @@ var Todoyu = {
 		if( document.body ) {
 			area	= document.body.id.split('-').last();
 		} else {
-			area	= document.location.href.split('?ext=')[1];
+			area	= document.location.href.split('?ext=')[1].split('&')[0];
 		}
 
 		return area;

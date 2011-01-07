@@ -55,7 +55,7 @@ Todoyu.Timerange = Class.create({
 	 * Constructor
 	 *
 	 * @param	{String}			baseID
-	 * @param	{Function|Array}	validDates
+	 * @param	{Array|Function}	validDates
 	 * @param	{Array}				selectedDates
 	 * @param	{Object}			sliderOptions
 	 * @param	{Object}			timerangeOptions
@@ -84,8 +84,8 @@ Todoyu.Timerange = Class.create({
 
 			// Merge default options with dynamic values and given config
 		var options	= $H(this.defaultOptions).merge({
-			range:  $R(0, this.selectableDates.length-1),
-			values: $R(0, this.selectableDates.length-1),
+			range:  $R(0, this.selectableDates.length-1, true),
+			values: $R(0, this.selectableDates.length-1, false),
 			spans: [this.name + '-span']
 		}).update(sliderOptions).toObject();
 
@@ -328,12 +328,12 @@ Todoyu.Timerange = Class.create({
 		var dates	= [];
 
 		dateStart.setHours(0, 0, 0, 0);
-		dateEnd.setHours(23, 59, 59, 0);
+		dateEnd.setHours(0, 0, 0, 0);
 		var current = new Date(dateStart);
 
 		dates.push(dateStart);
 
-		while( current <= dateEnd ) {
+		while( current < dateEnd ) {
 			current.setDate(current.getDate()+1);
 
 			dates.push(new Date(current));

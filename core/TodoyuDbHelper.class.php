@@ -296,5 +296,32 @@ class TodoyuDbHelper {
 		Todoyu::db()->doDelete($mmTable, $where);
 	}
 
+
+
+	/**
+	 * Save items with new sorting value in their sorting fields
+	 *
+	 * @param	String		$table
+	 * @param	Array		$itemIDs
+	 * @param	String		$sortingField
+	 * @param	String		$where
+	 */
+	public static function saveItemSorting($table, array $itemIDs, $sortingField = 'sorting',  $where = '') {
+		$itemIDs= TodoyuArray::intval($itemIDs);
+		$idList	= implode(',', $itemIDs);
+
+		if( $where != '' ) {
+			$where .= ' AND';
+		}
+
+		$where .= ' id IN(' . $idList . ')';
+
+		$values	= array(
+			$sortingField => 'FIELD(id,' . $idList . ')'
+		);
+
+		Todoyu::db()->doUpdate($table, $where, $values, array($sortingField));
+	}
+
 }
 ?>
