@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="D2M2">%d/%m</label>
+	<label index="D2M2">%m/%d</label>
 	<label index="DlongD2Mlong">%A, %d/%B</label>
-	<label index="D2M2Y2">%d/%m/%y</label>
-	<label index="D2M2Y4">%d/%m/%Y</label>
+	<label index="D2M2Y2">%m/%d/%y</label>
+	<label index="D2M2Y4">%m/%d/%Y</label>
 	<label index="D2MshortY4">%b %d %y</label>
 	<label index="D2MshortY2">%b %d %Y</label>
 	<label index="D2Mshort">%b %d</label>
@@ -20,6 +20,6 @@
 	<label index="date">%m/%d/%Y</label>
 	<label index="time">%H:%M</label>
 	<label index="timesec">%H:%M:%S</label>
-	<label index="datetime">%d/%m/%y %H:%M</label>
+	<label index="datetime">%m/%d/%y %H:%M</label>
 	<label index="day">%d</label>
 </labels>
