@@ -114,7 +114,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 
 
 	/**
-	 * @todo	comment
+	 * Get headlet label
 	 */
 	abstract public function getLabel();
 
