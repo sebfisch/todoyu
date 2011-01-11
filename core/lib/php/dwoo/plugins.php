@@ -630,4 +630,16 @@ function Dwoo_Plugin_timerange_compile(Dwoo_Compiler $compiler, $id, $name, $ran
 	return 'TodoyuRenderer::renderTimerange(' . $id . ', ' . $name . ', ' . $range . ', ' . $nameWrap . ')';
 }
 
+/**
+ * Render content message with label
+ *
+ * @param Dwoo_Compiler $compiler
+ * @param  $label
+ * @param string $class
+ * @return string
+ */
+function Dwoo_Plugin_contentMessage_compile(Dwoo_Compiler $compiler, $label, $class = '', $content = '') {
+	return 'render(\'core/view/contentMessage.tmpl\', array(\'labels\'=>explode(\'|\', ' . $label . '),\'class\'=>' . $class . ',\'content\'=>' . $content . '))';
+}
+
 ?>

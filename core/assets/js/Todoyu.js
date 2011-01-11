@@ -332,18 +332,8 @@ var Todoyu = {
 	 * @return	{Function}
 	 */
 	getFunctionFromString: function(functionName, bind) {
-		var namespaces 	= functionName.split(".");
-		var func 		= namespaces.pop();
-		var context		= window;
-
-		for(var i = 0; i < namespaces.length; i++) {
-			context = context[namespaces[i]];
-
-			if( context === undefined ) {
-				alert("Function: " + functionName + " not found!");
-			}
-		}
-
+		var context	= this.getContext(functionName);
+		var func 	= functionName.split(".").last();
 		var funcRef = context[func];
 
 		if( bind ) {
@@ -351,6 +341,31 @@ var Todoyu = {
 		}
 
 		return funcRef;
+	},
+
+
+
+	/**
+	 * Get context of a function string
+	 *
+	 * @param	{String}		functionName
+	 * @return	{Object}
+	 */
+	getContext: function(functionName) {
+		var namespaces 	= functionName.split(".");
+		namespaces.pop();
+		var context		= window;
+
+		for(var i = 0; i < namespaces.length; i++) {
+			context = context[namespaces[i]];
+
+			if( context === undefined ) {
+				alert("Function: " + functionName + " not found!");
+				return false;
+			}
+		}
+
+		return context;
 	},
 
 

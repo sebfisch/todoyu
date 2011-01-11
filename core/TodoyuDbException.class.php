@@ -86,12 +86,14 @@ class TodoyuDbException extends Exception {
 			$trace[$index]['file'] = TodoyuFileManager::removeSitePath($trace[$index]['file']);
 		}
 
-		$data	= array('message'	=> $this->getMessage(),
-						'code'		=> $this->getCode(),
-						'file'		=> $this->getFileShort(),
-						'line'		=> $this->getLine(),
-						'query'		=> $this->getQuery(),
-						'trace'		=> $trace);
+		$data = array(
+			'message'	=> $this->getMessage(),
+			'code'		=> $this->getCode(),
+			'file'		=> $this->getFileShort(),
+			'line'		=> $this->getLine(),
+			'query'		=> $this->getQuery(),
+			'trace'		=> $trace
+		);
 
 		$tmpl	= 'core/view/dberror_html.tmpl';
 

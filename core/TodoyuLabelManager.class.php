@@ -121,7 +121,7 @@ class TodoyuLabelManager {
 		if( ! is_string($fullLabelKey) || $fullLabelKey === '' ) {
 			if( Todoyu::$CONFIG['LOCALE']['logEmptyKeys'] ) {
 				Todoyu::log('Tried to read a label, but no key was provided', TodoyuLogger::LEVEL_ERROR);
-			}			
+			}
 			return '';
 		}
 
@@ -131,7 +131,17 @@ class TodoyuLabelManager {
 		$fileKey		= $keyParts[0];
 		$labelKey		= $keyParts[1];
 
-		return self::getCachedLabel($fileKey, $labelKey, $locale);
+		if( is_null($labelKey) ) {
+			return $fullLabelKey;
+		}
+
+		$label	= self::getCachedLabel($fileKey, $labelKey, $locale);
+
+		if( is_null($label) ) {
+			return $fullLabelKey;
+		} else {
+			return $label;
+		}
 	}
 
 

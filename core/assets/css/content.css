@@ -14,9 +14,30 @@ div.icon {
 
 .contentMessage {
 	clear:both;
-	padding:10px 10px 10px 50px;
-	background:#E3EACE url(../img/icons.png) 15px -620px no-repeat;
+	padding:10px;
+	background-color:#E3EACE;
+	margin:5px 0;
+}
+
+.contentMessage div.icon,
+.contentMessage div.text {
+	float:left;
+	clear:none;
+}
+
+.contentMessage .icon {
+	background:url(../img/icons.png) 2px -628px no-repeat;
+	margin-right:15px;
+}
+
+.contentMessage .text {
 	font-weight:bold;
+	padding-top:2px;
+	width:600px;
+}
+
+.contentMessage .text ul li {
+	margin-bottom:7px;
 }
 
 
