@@ -318,7 +318,7 @@ Todoyu.Form = {
 
 
 	/**
-	 * Live-validation and correction of numeric value input field. Removes/corrects illegal/ambiguous characters 
+	 * Live-validation and correction of numeric value input field. Removes/corrects illegal/ambiguous characters
 	 *
 	 * @param	{Element}	field
 	 * @param	{Boolean}	floatAllowed
@@ -440,6 +440,51 @@ Todoyu.Form = {
 		$(form).down('fieldset.buttons').select('button').each(function(button){
 			Form.Element.disable(button);
 		});
+	},
+
+
+
+	/**
+	 * Set selected options of a select element
+	 *
+	 * @method	selectOptions
+	 * @param	{Element}	element
+	 * @param	{Array}		selection
+	 */
+	selectOptions: function(element, selection) {
+		element		= $(element);
+		selection	= selection.constructor === Array ? selection : [selection];
+
+		element.selectedIndex = -1;
+
+		$A(element.options).each(function(selection, option){
+			if( selection.include(option.value) ) {
+				option.selected = true;
+			}
+		}.bind(this, selection));
+	},
+
+
+	/**
+	 * Get selected item pairs from a multi select
+	 *
+	 * @param	{Element}	element
+	 * @return	{Object}	Format: value:text
+	 */
+	getSelectedItems: function(element) {
+		var values	= $F(element);
+		var options	= {};
+		var items	= {};
+
+		$(element).select('option').each(function(option){
+			options[option.value] = option.innerHTML;
+		});
+
+		values.each(function(value){
+			items[value] = options[value];
+		});
+
+		return items;
 	}
 
 };

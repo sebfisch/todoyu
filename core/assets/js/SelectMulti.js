@@ -67,7 +67,7 @@ Todoyu.SelectMulti = Class.create({
 			onRemove: callbackRemove
 		};
 
-		this.field.on('click', 'select', this.onSelect.bind(this));
+		this.field.on('mouseup', 'select', this.onSelect.bind(this));
 		this.field.stopObserving('change');
 
 		var idItemList		= $(field).id + '-itemlist';
@@ -89,13 +89,14 @@ Todoyu.SelectMulti = Class.create({
 	 * @param	{Element}	field
 	 */
 	onSelect: function(event, field) {
-		var idItem	= $F(field);
-		var label	= field.options[field.selectedIndex].text;
+		var items	= Todoyu.Form.getSelectedItems(field);
 
-		this.itemList.add(idItem, label);
-		this.fieldList.add(idItem);
+		$H(items).each(function(pair){
+			this.itemList.add(pair.key, pair.value);
+			this.fieldList.add(pair.key);
+		}, this);
 
-		this.callbacks.onAdd.call(this, this, idItem, label);
+		this.callbacks.onAdd.call(this, this, items);
 	},
 
 

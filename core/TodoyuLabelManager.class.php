@@ -300,7 +300,7 @@ class TodoyuLabelManager {
 
 		$locales[] = $locale;
 
-		$labels=array();
+		$labels	= array();
 
 		foreach($locales as $fallbackLocale) {
 			$pathFile	= self::getFilePath($identifier, $fallbackLocale);
@@ -312,7 +312,10 @@ class TodoyuLabelManager {
 			}
 		}
 
-		self::writeCachedLabelFile($cacheFile, $labels);
+			// Only write a cache file when labels are found
+		if( sizeof($labels) > 0 ) {
+			self::writeCachedLabelFile($cacheFile, $labels);
+		}		
 
 		return $labels;
 	}
