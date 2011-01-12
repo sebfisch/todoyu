@@ -4,6 +4,13 @@
  */
 
 Element.addMethods({
+	/**
+	 * Replace a class name on an element
+	 *
+	 * @param	{Element}	element
+	 * @param	{String}	className
+	 * @param	{String}	replacement
+	 */
 	replaceClassName: function(element, className, replacement){
 		if (!(element = $(element))) {return;}
 		return element.removeClassName(className).addClassName(replacement);
@@ -135,3 +142,13 @@ Object.extend(Event, {
  */
 
 
+
+/**
+ * Add round with precision parameter to number type
+ */
+Object.extend(Number.prototype, {
+	round: function(precision) {
+		var factor	= Math.pow(10, precision || 0);
+		return Math.round(factor * this)/factor;
+	}
+});

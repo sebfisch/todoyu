@@ -79,4 +79,5 @@
 	<label index="date_update">Zuletzt bearbeitet am</label>
 	<label index="date_create">Erstellungs Datum</label>
 	<label index="id_user_create">Erstellt von</label>
+	<label index="of">von</label>
 </labels>

@@ -80,4 +80,5 @@
 	<label index="date_update">Date of last update</label>
 	<label index="date_create">Creation Date</label>
 	<label index="id_user_create">Created by</label>
+	<label index="of">of</label>
 </labels>
