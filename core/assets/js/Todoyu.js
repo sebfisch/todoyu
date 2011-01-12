@@ -34,14 +34,14 @@ var Todoyu = {
 	 * @property	name
 	 * @type		String
 	 */
-	name: 		'Todoyu',
+	name: 'Todoyu',
 
 	/**
 	 * Copyright owner
 	 * @property	copyright
 	 * @type		String
 	 */
-	copyright: 	'snowflake productions GmbH, Zurich/Switzerland',
+	copyright: 'snowflake productions GmbH, Zurich/Switzerland',
 
 	/**
 	 * Log level
@@ -100,7 +100,7 @@ var Todoyu = {
 					this.log(exception);
 				}
 			}
-		});
+		}, this);
 	},
 
 
@@ -294,7 +294,7 @@ var Todoyu = {
 	 * @return	{String|Number|Array|Object}
 	 */
 	callUserFunction: function(functionName /*, args */) {
-		var args 	= $A(arguments).slice(1);
+		var args	= $A(arguments).slice(1);
 		var func	= this.getFunction(functionName);
 
 		return func.apply(window, args);
@@ -333,8 +333,8 @@ var Todoyu = {
 	 */
 	getFunctionFromString: function(functionName, bind) {
 		var context	= this.getContext(functionName);
-		var func 	= functionName.split(".").last();
-		var funcRef = context[func];
+		var func	= functionName.split(".").last();
+		var funcRef	= context[func];
 
 		if( bind ) {
 			funcRef = funcRef.bind(context);
@@ -352,11 +352,12 @@ var Todoyu = {
 	 * @return	{Object}
 	 */
 	getContext: function(functionName) {
-		var namespaces 	= functionName.split(".");
+		var namespaces	= functionName.split("."),
+			context		= window,
+			i			= 0;
 		namespaces.pop();
-		var context		= window;
 
-		for(var i = 0; i < namespaces.length; i++) {
+		for(i=0; i < namespaces.length; i++) {
 			context = context[namespaces[i]];
 
 			if( context === undefined ) {
@@ -382,11 +383,9 @@ var Todoyu = {
 
 			case 'function':
 				return func;
-
-			case 'undefined':
-			default:
-				return Prototype.emptyFunction;
 		}
+
+		return Prototype.emptyFunction;
 	},
 
 
@@ -421,40 +420,50 @@ var Todoyu = {
 	observeZoom: function(callback) {
 			// Observe mousewheel
 		document.observe('mousewheel', function(e){
-			if (e.ctrlKey) callback();
+			if(e.ctrlKey) {
+				callback();
+			}
 		});
 		document.observe('DOMMouseScroll', function(e){
-			if (e.ctrlKey) callback();
+			if(e.ctrlKey) {
+				callback();
+			}
 		});
 
 			// Observe zoom keys
 		document.observe('keydown', function(e) {
 			switch (true) {
 				case Prototype.Browser.Gecko || Prototype.Browser.IE :
-					if (e.ctrlKey && (
-						e.which == 187 ||
-						e.which == 189 ||
-						e.which == 107 ||
-						e.which == 109 ||
-						e.which == 96  ||
-						e.which == 48
-					)) callback();
+					if(e.ctrlKey && (
+						e.which === 187 ||
+						e.which === 189 ||
+						e.which === 107 ||
+						e.which === 109 ||
+						e.which === 96  ||
+						e.which === 48
+					)) {
+						callback();
+					}
 				break;
 
 				case Prototype.Browser.Opera :
-					if (
-						e.which == 43 ||
-						e.which == 45 ||
-						e.which == 42 ||
-						(e.ctrlKey && e.which == 48)
-						) callback();
+					if(
+						e.which === 43 ||
+						e.which === 45 ||
+						e.which === 42 ||
+						(e.ctrlKey && e.which === 48)
+						) {
+						callback();
+					}
 				break;
 
 				case Prototype.Browser.WebKit :
 					if (e.metaKey && (
-						e.charCode == 43 ||
-						e.charCode == 45
-						)) callback();
+						e.charCode === 43 ||
+						e.charCode === 45
+						)) {
+						callback();
+					}
 				break;
 			}
 		});
