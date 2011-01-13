@@ -131,14 +131,23 @@ class TodoyuLabelManager {
 		$fileKey		= $keyParts[0];
 		$labelKey		= $keyParts[1];
 
+			// Return key if not valid key (in debug mode, else empty string)
 		if( is_null($labelKey) ) {
-			return $fullLabelKey;
+			if( Todoyu::$CONFIG['DEBUG'] ) {
+				return $fullLabelKey;
+			} else {
+				return '';
+			}
 		}
 
 		$label	= self::getCachedLabel($fileKey, $labelKey, $locale);
 
 		if( is_null($label) ) {
-			return $fullLabelKey;
+			if( Todoyu::$CONFIG['DEBUG'] ) {
+				return $fullLabelKey;
+			} else {
+				return '';
+			}
 		} else {
 			return $label;
 		}
@@ -147,7 +156,7 @@ class TodoyuLabelManager {
 
 
 	/**
-	 * Checks if requested lable exists
+	 * Checks if requested label exists
 	 *
 	 * @param	String	$labelKey
 	 * @param	String	$locale
@@ -315,7 +324,7 @@ class TodoyuLabelManager {
 			// Only write a cache file when labels are found
 		if( sizeof($labels) > 0 ) {
 			self::writeCachedLabelFile($cacheFile, $labels);
-		}		
+		}
 
 		return $labels;
 	}
