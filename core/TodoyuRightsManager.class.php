@@ -235,7 +235,7 @@ class TodoyuRightsManager {
 	 * @return	Mixed
 	 */
 	private static function getRightsCheckPosition() {
-		$backtrace	= debug_backtrace();
+		$backtrace	= debug_backtrace(false);
 		$functions	= array('allowed');
 
 		foreach($backtrace as $step) {

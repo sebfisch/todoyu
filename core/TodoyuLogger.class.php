@@ -186,7 +186,7 @@ class TodoyuLogger {
 	 * @param	Mixed		$data			An additional data container (for debugging)
 	 */
 	public function log($message, $level = 0, $data = null) {
-		$backtrace	= debug_backtrace();
+		$backtrace	= debug_backtrace(false);
 		$info		= $backtrace[0];
 		$level		= intval($level);
 

@@ -34,7 +34,7 @@ class TodoyuDebug {
 	 * @return	Array
 	 */
 	private static function getCaller() {
-		$backtrace = debug_backtrace();
+		$backtrace = debug_backtrace(false);
 
 		$backtrace[1]['fileshort'] = str_replace(PATH, '', $backtrace[1]['file']);
 
@@ -117,7 +117,7 @@ class TodoyuDebug {
 		$data	= array(
 			'title'		=> $title,
 			'debug'		=> self::phpFormat($item),
-			'backtrace'	=> $backtrace ? print_r( debug_backtrace(), true ) : '',
+			'backtrace'	=> print_r( debug_backtrace(false), true ),
 			'caller'	=> self::getCaller()
 		);
 
@@ -188,7 +188,7 @@ class TodoyuDebug {
 		$data	= array(
 			'title'		=> $title,
 			'debug'		=> $debug,
-			'backtrace'	=> $backtrace ? print_r( debug_backtrace(), true ) : '',
+			'backtrace'	=> $backtrace ? print_r( debug_backtrace(false), true ) : '',
 			'caller'	=> self::getCaller()
 		);
 
@@ -259,7 +259,7 @@ class TodoyuDebug {
 	 * Print function backtrace debug
 	 */
 	public static function printBacktrace() {
-		$backtrace	= debug_backtrace();
+		$backtrace	= debug_backtrace(false);
 		array_shift($backtrace);
 
 		self::printHtml($backtrace, 'Backtrace');
