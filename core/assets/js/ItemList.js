@@ -65,8 +65,8 @@ Todoyu.ItemList = Class.create({
 		item	= item.up('li');
 
 		Effect.SlideUp(item, {
-			afterFinish: item.remove.bind(item),
-			duration: 1.0
+			afterFinish:	item.remove.bind(item),
+			duration:		0.3
 		});
 
 		this.options.onRemove.call(this, this.list, item.id);
