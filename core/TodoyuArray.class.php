@@ -603,6 +603,49 @@ class TodoyuArray {
 
 
 	/**
+	 * Merges any number of arrays / parameters recursively, replacing
+	 * entries with string keys with values from latter arrays.
+	 * If the entry or the next value to be assigned is an array, then it
+	 * automagically treats both arguments as an array.
+	 * Numeric entries are appended, not replaced, but only if they are
+	 * unique
+	 *
+	 * @see		http://www.php.net/manual/en/function.array-merge-recursive.php
+	 * @return	Array
+	 */
+	public static function mergeRecursive(array $a1, array $a2 /* $a3, $a4, ...*/) {
+		$arrays	= func_get_args();
+		$base	= array_shift($arrays);
+
+		if( !is_array($base) ) {
+			$base = empty($base) ? array() : array($base);
+		}
+
+		foreach( $arrays as $append ) {
+			if( !is_array($append) ) {
+				$append = array($append);
+			}
+			foreach( $append as $key => $value ) {
+				if( !array_key_exists($key, $base) and !is_numeric($key) ) {
+					$base[$key] = $append[$key];
+					continue;
+				}
+				if( is_array($value) or is_array($base[$key]) ) {
+					$base[$key] = self::mergeRecursive($base[$key], $append[$key]);
+				} else if( is_numeric($key) ) {
+					if( !in_array($value, $base) ) $base[] = $value;
+				} else {
+					$base[$key] = $value;
+				}
+			}
+		}
+
+		return $base;
+	}
+
+
+
+	/**
 	 * Merge two array. Works also if one of the parameters is not an array (it's ignored)
 	 *
 	 * @param	Mixed	$arrayA
