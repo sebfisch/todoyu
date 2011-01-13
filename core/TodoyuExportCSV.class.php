@@ -96,7 +96,7 @@ class TodoyuExportCSV extends TodoyuExportBase {
 			}
 		}
 
-		foreach($this->exportData as $record)	{
+		foreach($this->exportData as $record) {
 			$record = $this->unifyRecord($record, $headers);
 
 			fputcsv($this->filePointer, $record, $this->delimiter, $this->enclosure);
@@ -115,13 +115,21 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	 * @return	Array
 	 */
 	protected function prepareHeaders()	{
-		$headers = array();
+		$colTitles = array();
+		
+		foreach($this->exportData as $record) {
+			foreach($record as $key => $data) {
+				$newKey = explode('_', $key);
 
-		foreach($this->exportData as $record)	{
-			$headers = TodoyuArray::mergeUnique($headers, array_keys($record));
+				if( !is_array($colTitles[$newKey[0]]) ) {
+					$colTitles[$newKey[0]] = array();
+				}
+
+				$colTitles[$newKey[0]] = TodoyuArray::mergeUnique($colTitles[$newKey[0]], array($key));
+			}
 		}
 
-		return array_unique($headers);
+		return TodoyuArray::flatten($colTitles);
 	}
 
 
@@ -133,10 +141,10 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	 * @param	Array	$headers
 	 * @return	Array
 	 */
-	private function unifyRecord($record, $headers)	{
+	private function unifyRecord($record, $headers) {
 		$realRecord = array();
 
-			foreach($headers as $key)	{
+			foreach($headers as $key) {
 				$realRecord[$key] = $record[$key];
 			}
 
