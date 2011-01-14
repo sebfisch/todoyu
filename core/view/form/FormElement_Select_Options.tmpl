@@ -1,4 +1,4 @@
-{if empty($multiple) && empty($noPleaseSelect) && $size==1}
+{if empty($multiple) && !isset($noPleaseSelect) && $size==1}
 	<option value="0">{Label form.select.pleaseSelect}</option>
 	<option value="0" disabled="disabled">---------------------------</option>
 {/if}

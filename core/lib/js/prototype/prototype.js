@@ -24,7 +24,7 @@ Element.addMethods({
 	scrollToElement: function(element) {
 		Todoyu.Ui.scrollToElement(element);
 
-	return element;
+		return element;
 	}
 });
 
