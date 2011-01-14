@@ -60,12 +60,14 @@ class TodoyuPreferenceManager {
 		}
 
 		$table	= self::TABLE;
-		$data	= array('id_person'	=> $idPerson,
-						'ext'		=> $extID,
-						'area'		=> $idArea,
-						'preference'=> $preference,
-						'item'		=> $idItem,
-						'value'		=> $value);
+		$data	= array(
+			'id_person'	=> $idPerson,
+			'ext'		=> $extID,
+			'area'		=> $idArea,
+			'preference'=> $preference,
+			'item'		=> $idItem,
+			'value'		=> $value
+		);
 
 		Todoyu::db()->doInsert($table, $data);
 	}

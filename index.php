@@ -44,8 +44,6 @@ TodoyuRequest::initRequest();
 	// Load all init.php files of the installed extensions
 TodoyuExtensions::loadAllInit();
 
-
-
 	// Dispatch request to selected controller
 TodoyuActionDispatcher::dispatch();
 
