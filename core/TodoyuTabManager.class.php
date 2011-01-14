@@ -32,7 +32,7 @@ class TodoyuTabManager {
 	 * @param	Array		$tabs
 	 * @return	Array
 	 */
-	public static function getTabs(array $tabs) {
+	public static function getAllowedTabs(array $tabs) {
 		foreach($tabs as $index => $tab) {
 			if( isset($tab['require']) ) {
 				$parts	= explode('.', $tab['require'], 2);
