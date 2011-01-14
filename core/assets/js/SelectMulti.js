@@ -50,6 +50,20 @@ Todoyu.SelectMulti = Class.create({
 	 */
 	callbacks: {},
 
+	/**
+	 * Timeout to fire change of selection
+	 *
+	 * @var	{Function}	fireChangeTimeout
+	 */
+	fireChangeTimeout: null,
+
+	/**
+	 * Last selected elements
+	 *
+	 * @var	{Array}		lastSelection
+	 */
+	lastSelection: null,
+
 
 
 	/**
@@ -67,17 +81,24 @@ Todoyu.SelectMulti = Class.create({
 			onRemove: callbackRemove
 		};
 
+			// After click on options
 		this.field.on('mouseup', 'option', this.onSelect.bind(this));
+			// When mouse leaves field and mouseup occurs outside
+		this.field.on('mouseout', 'select', this.onMouseOut.bind(this));
 		this.field.stopObserving('change');
 
 		var idItemList		= $(field).id + '-itemlist';
 		var idFieldList		= $(field).id + '-value';
 
+			// List with labels of selected elements
 		this.itemList	= new Todoyu.ItemList(idItemList, {
 			onRemove: this.onItemListRemove.bind(this)
 		});
+
+			// Hidden field with IDs of selected elements
 		this.fieldList	= new Todoyu.FieldList(idFieldList);
 
+		this.lastSelection = $F(this.field);
 	},
 
 
@@ -89,8 +110,48 @@ Todoyu.SelectMulti = Class.create({
 	 * @param	{Element}	option
 	 */
 	onSelect: function(event, option) {
-		var field	= option.up('select');
-		var items	= Todoyu.Form.getSelectedItems(field);
+		this.fireChange();
+	},
+
+
+
+	/**
+	 * Handler when mouse leaves select
+	 * Used when user selects a range of values but the mouseup event occurs outside of the element
+	 *
+	 * @param	{Event}		event
+	 * @param	{Element}	select
+	 */
+	onMouseOut: function(event, select) {
+			// Clear other timeout
+		clearTimeout(this.fireChangeTimeout);
+
+			// Get currently selected items
+		var selectedItems	= $F(this.field);
+
+			// Only handle if any element is selected
+		if( selectedItems.size() > 0 ) {
+				// Check whether there are new elements selected
+			var diff = Array.prototype.without.apply(selectedItems, this.lastSelection);
+
+			if( diff.size() > 0 ) {
+				this.fireChangeTimeout = this.fireChange.bind(this).delay(0.3);
+			}
+		}
+	},
+
+
+
+	/**
+	 * Handle selection change
+	 */
+	fireChange: function() {
+			// Clear registered timeouts
+		clearTimeout(this.fireChangeTimeout);
+			// Save last selection
+		this.lastSelection = $F(this.field);
+
+		var items	= Todoyu.Form.getSelectedItems(this.field);
 
 			// Add selected items to test list and hidden field
 		$H(items).each(function(pair){
@@ -99,7 +160,7 @@ Todoyu.SelectMulti = Class.create({
 		}, this);
 
 			// Select all selected options
-		Todoyu.Form.selectOptions(field, this.fieldList.getItems());
+		Todoyu.Form.selectOptions(this.field, this.fieldList.getItems());
 
 		this.callbacks.onAdd.call(this, this, items);
 	},
