@@ -679,8 +679,13 @@ class TodoyuDatabase {
 	 * @return	Resource
 	 */
 	public function query($query) {
+			// Add query to history if enabled
 		if( $this->config['queryHistory'] ) {
 			$this->addToHistory($query);
+		}
+			// If not connected, try again (will prompt an error if not possible)
+		if( ! $this->isConnected() ) {
+			$this->connect();
 		}
 
 		$resource	= mysql_query($query, $this->link);

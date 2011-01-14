@@ -23,6 +23,8 @@
  *
  * @package		Todoyu
  * @subpackage	Core
+ * @deprecated
+ * @todo		Remove as soon as prototype adapter for highcharts works
  */
 class TodoyuJQuery {
 

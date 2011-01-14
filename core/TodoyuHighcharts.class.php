@@ -29,12 +29,15 @@ class TodoyuHighcharts {
 	/**
 	 * Add required javascript for highcharts
 	 *
+	 * @todo	Remove jQuery if everything works fine with prototype adapter
 	 */
 	public static function addHighcharts() {
 			// Add jQuery javascript
-		TodoyuJQuery::addJQuery();
+//		TodoyuJQuery::addJQuery();
 
+		TodoyuPage::addJavascript('lib/js/highcharts/adapters/prototype-adapter.src.js', 30, false, false, false);
 		TodoyuPage::addJavascript('lib/js/highcharts/highcharts.src.js', 31, false, false, false);
+
 	}
 
 }

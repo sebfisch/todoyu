@@ -76,6 +76,8 @@ var Todoyu = {
 
 	/**
 	 * Enable noConflict mode for jQuery if loaded
+	 *
+	 * @todo	Remove when no longer needed for highcharts
 	 */
 	jQueryNoConflict: function() {
 		if( window.jQuery ) {
