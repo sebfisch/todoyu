@@ -55,9 +55,9 @@
 }
 
 .icon.iconNotifySmall {
-    background-image:url(../img/notify.png);
+	background-image:url(../img/notify.png);
 	background-repeat:no-repeat;
-    background-position:0 -240px;
+	background-position:0 -240px;
 }
 
 /* -------------------

@@ -77,8 +77,8 @@ Todoyu.SelectMulti = Class.create({
 		this.field = $(field);
 
 		this.callbacks = {
-			onAdd: callbackAdd,
-			onRemove: callbackRemove
+			onAdd:		callbackAdd,
+			onRemove:	callbackRemove
 		};
 
 			// After click on options
@@ -97,7 +97,6 @@ Todoyu.SelectMulti = Class.create({
 
 			// Hidden field with IDs of selected elements
 		this.fieldList	= new Todoyu.FieldList(idFieldList);
-
 		this.lastSelection = $F(this.field);
 	},
 
@@ -174,7 +173,7 @@ Todoyu.SelectMulti = Class.create({
 	 * @param	{String|Number}	idItem
 	 */
 	onItemListRemove: function(listElement, idItem) {
-		//this.itemList.remove(idItem);
+//		this.itemList.remove(idItem);
 		this.fieldList.remove(idItem);
 
 		this.callbacks.onRemove.call(this, this, idItem);

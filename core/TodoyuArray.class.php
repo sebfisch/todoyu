@@ -689,7 +689,7 @@ class TodoyuArray {
 	*/
 	public static function flattenToSubKey($key = '__key', array $data) {
 			// Reduce to values of given key in all sub arrays
-		$reform	= array($key    => 'key');
+		$reform	= array($key	=> 'key');
 		$reduced= self::reform($data, $reform, false);
 
 			// Return flattened array of given key values

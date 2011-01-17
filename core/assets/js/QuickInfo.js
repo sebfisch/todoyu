@@ -170,7 +170,7 @@ Todoyu.QuickInfo = {
 			this.show(event, name, callback, element);
 		}
 
-        Todoyu.Hook.exec('core.quickinfo.mouseover', event, name, element);
+		Todoyu.Hook.exec('core.quickinfo.mouseover', event, name, element);
 	},
 
 
@@ -191,7 +191,7 @@ Todoyu.QuickInfo = {
 			this.hide();
 		}
 
-        Todoyu.Hook.exec('core.quickinfo.mouseout', event, name, element);
+		Todoyu.Hook.exec('core.quickinfo.mouseout', event, name, element);
 	},
 
 	onBodyClick: function(event) {

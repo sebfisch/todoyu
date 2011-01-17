@@ -113,9 +113,9 @@ Todoyu.Listing = {
 	 * Handler being evoked upon completion of extending displayed entries
 	 *
 	 * @method	onExtended
-	 * @param	{String}		name
-	 * @param	{Number}		offset
-	 * @param	{Object}		response
+	 * @param	{String}			name
+	 * @param	{Number}			offset
+	 * @param	{Ajax.Response}		response
 	 */
 	onExtended: function(name, offset, response) {
 

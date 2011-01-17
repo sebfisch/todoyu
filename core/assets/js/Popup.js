@@ -162,12 +162,12 @@ Todoyu.Popup = {
 	/**
 	 * Evoked after window content has been rendered.
 	 * Installing observers:
-	 * 1. upon clicking:	(delayed) popup windwow updates its seize to fit its content
-	 * 2. upon closing:	the cick observer (1) is stopped
+	 * 1. upon clicking:	(delayed) popup window updates its seize to fit its content
+	 * 2. upon closing:	the click observer (1) is stopped
 	 *
 	 * @method	onContentLoaded
-	 * @param	{String}	idPopup
-	 * @param	{Object}	response
+	 * @param	{String}			idPopup
+	 * @param	{Ajax.Response}		response
 	 */
 	onContentLoaded: function(idPopup, response) {
 
