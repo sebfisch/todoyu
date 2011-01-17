@@ -369,7 +369,7 @@ Todoyu.Ui = {
 	 * Hover effect handler (handles both mouseOver/ Out)
 	 *
 	 * @method	hoverEffect
-	 * @param	{Object}		event
+	 * @param	{Event}			event
 	 * @param	{Boolean}		over
 	 * @param	{Element}		element
 	 */

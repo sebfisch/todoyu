@@ -246,7 +246,7 @@ Todoyu.Popup = {
 	/**
 	 * Restore original node position of popup content element
 	 *
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 * @param	{String}	idPopup
 	 * @param	{Function}	callback
 	 */
@@ -264,7 +264,7 @@ Todoyu.Popup = {
 	 * Enter Description here...
 	 *
 	 * @method	onWindowClose
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 * @param	{String}	idPopup
 	 */
 	onWindowClose: function(event, idPopup) {
@@ -277,7 +277,7 @@ Todoyu.Popup = {
 	 * Enter Description here...
 	 *
 	 * @method	onMouseUp
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 * @param	{String}	idPopup
 	 */
 	onMouseUp: function(event, idPopup) {

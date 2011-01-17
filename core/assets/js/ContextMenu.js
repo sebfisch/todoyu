@@ -102,9 +102,9 @@ Todoyu.ContextMenu = {
 	 *
 	 * @private
 	 * @method	showMenu
-	 * @param	{String}		url
-	 * @param	{Array}			options
-	 * @param	{Object}		event
+	 * @param	{String}	url
+	 * @param	{Array}		options
+	 * @param	{Event}		event
 	 */
 	showMenu: function(url, options, event) {
 			// Wrap to onComplete function to call renderMenu right before the defined onComplete function
@@ -202,7 +202,7 @@ Todoyu.ContextMenu = {
 	 * Prevent showing of context menu: stop event.
 	 *
 	 * @method	preventContextMenu
-	 * @param	{Object}		event
+	 * @param	{Event}			event
 	 * @return	{Boolean}
 	 */
 	preventContextMenu: function(event) {

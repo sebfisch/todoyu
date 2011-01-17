@@ -87,7 +87,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * Handle click on headlet body: hide content, stop events
 	 *
 	 * @method	onBodyClick
-	 * @param	{Object}	event
+	 * @param	{Event}		event
 	 */
 	onBodyClick: function(event) {
 		this.hide();
