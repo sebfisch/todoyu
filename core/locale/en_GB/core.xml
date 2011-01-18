@@ -81,4 +81,6 @@
 	<label index="date_create">Creation Date</label>
 	<label index="id_person_create">Created by</label>
 	<label index="of">of</label>
+	<label index="public">Public</label>
+	<label index="notpublic">Not Public</label>
 </labels>

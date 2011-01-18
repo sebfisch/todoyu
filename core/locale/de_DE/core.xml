@@ -80,4 +80,6 @@
 	<label index="date_create">Erstellungs Datum</label>
 	<label index="id_person_create">Erstellt von</label>
 	<label index="of">von</label>
+	<label index="public">Öffentlich</label>
+	<label index="notpublic">Nicht öffentlich</label>
 </labels>
