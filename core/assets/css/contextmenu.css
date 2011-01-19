@@ -17,8 +17,8 @@
 		#contextmenu li a,
 		#contextmenu li span {
 			display:block;
-			padding:0 10px 0 29px;
-			line-height:20px;
+			padding:4px 10px 4px 29px;
+			line-height:12px;
 			background-color:#F8F8F8;
 			background-repeat:no-repeat;
 			cursor:pointer;
