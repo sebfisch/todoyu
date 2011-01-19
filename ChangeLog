@@ -1,5 +1,42 @@
 todoyu Changelog
 
+todoyu 2.0.7 - released 2011-01-19
+	* Bugfix: English locale of date formats contained some german formats
+	* Bugfix: #136 "My Filters" in portal ignores "OR" conjunction (uses "AND")
+	* Bugfix: #125 Restricted task creation suggests also disallowed projects
+	* Bugfix: Extended numeric form value input assistant to allow for negative values
+	* Bugfix: #118 Fixed sorting of last tracked tasks in headlet
+	* Bugfix: #113 Deleted contactinfo is visible in quickinfo
+	* Bugfix: #112 Title in event quickinfo popups wordwraps inside html-entities
+	* Bugfix: #110 Tab labels are truncated by whole words only
+	* Bugfix: #104 Rights & roles administration fails in internet explorer
+	* Bugfix: #103 Calendar - February 2010 and and 2021 displays two empty rows of days
+	* Bugfix: Internet Explorer - Autocompleter suggestion dislocates underneath elements
+	* Bugfix: Internet Explorer - Overlay blocker layer wasn't transparent
+	* Bugfix: Internet Explorer - Type selector of quicksearch headlet works correctly now
+	* Bugfix: Users w/o permission to see non-public tasks see "is public" flag
+	* Bugfix: Portal did not refresh task list after quicktask creation
+	* Bugfix: UI - Improved element hovers in calendar (fixed: finger cursor above non-linked elements)
+	* Bugfix: Fixed HTML encoding inside calendar tooltips (/dqwoo plugin "truncate")
+	* Bugfix: Portal birthdays list misses one year when calculating upcoming ages in next year
+	* Bugfix: Project autocompleter - suggestion does not contain customer name if no shortname is stored
+	* Feature: Task creation inside projects with status "done" and "cleared" is prohibited now
+	* Feature: Improved events listing in portal: items sorting, layout
+	* Feature: Added various in-code comments (DOC)
+	* Feature: Contact rights: Restricted listed persons in task details to by visibility company/person group rights
+	* Feature: Comment rights: Feedbacks- and email receiver- options are filtered for allowed persons now
+	* Feature: Added array helper method: TodoyuArray::flattenToSubKeys
+	* Feature: #128 Added project rights settings for adding containers in own/all projects
+	* Feature: #128 Added project rights settings for using clipboard options
+	* Feature: #126 Separate rights settings for edit, delete task/containers
+	* Feature: #124 Tasks/containers can be created/cloned/pasted in projects with status "done" and "cleared"
+	* Feature: Live-validating input assistent for numeric/monetary form fields
+	* Feature: #105 Added dependency check to ext installation of sysmanager
+	* Feature: Added italian todoyu translation
+	* Feature: UI - Adapted timetracking headlet progressbar colors to todoyu CI
+	* Feature: Person quickinfo now treats (displays) sole stored phone number now as primary phone number
+	* Changed: Default duration of quicktasks is now 3 days (not 7)
+
 todoyu 2.0.6 - released 2010-11-10
 	* Bugfix: #51 Timetracking had wrong day total in daytracks widget
 	* Bugfix: #53 Days of the next month are missing in the month view of the calendar
