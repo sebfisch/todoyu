@@ -1,7 +1,7 @@
 {extends "core/view/form/FormElement.tmpl"}
 
 {block name="field"}
-<select name="{$htmlName}" id="{$htmlId}" class="{$inputClass} {$class}" size="{$size}" {if $multiple}multiple="multiple"{/if} {if $fieldClass}class="{$fieldClass}"{/if}>
+<select {$extraAttributes} name="{$htmlName}" id="{$htmlId}" class="{$inputClass} {$class}" size="{$size}" {if $multiple}multiple="multiple"{/if} {if $fieldClass}class="{$fieldClass}"{/if}>
 	{if !isset($multiple) && !isset($noPleaseSelect)}
 		<option value="0">{Label form.select.pleaseSelect}</option>
 		<option value="0" disabled="disabled">---------------------------</option>
