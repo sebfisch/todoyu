@@ -143,7 +143,6 @@ Todoyu.Popup = {
 		}
 			// Popup with AJAX content
 		requestOptions.onComplete.wrap(function(idPopup, callOriginal, response){
-			this.onContentLoaded.bind(this, idPopup);
 			callOriginal(response);
 		}.bind(this, idPopup));
 
@@ -153,24 +152,16 @@ Todoyu.Popup = {
 
 			// Save last opened popup
 		this.last = this.getPopup(idPopup);
+		
+			// Close all RTEs inside popup when closing it
+		var closeObserver = {
+			onDestroy: function(eventName, win) {
+				Todoyu.Ui.closeRTE(win.content);
+			}
+		}
+		Windows.addObserver(closeObserver);
 
 		return this.getPopup(idPopup);
-	},
-
-
-
-	/**
-	 * Evoked after window content has been rendered.
-	 * Installing observers:
-	 * 1. upon clicking:	(delayed) popup window updates its seize to fit its content
-	 * 2. upon closing:	the click observer (1) is stopped
-	 *
-	 * @method	onContentLoaded
-	 * @param	{String}			idPopup
-	 * @param	{Ajax.Response}		response
-	 */
-	onContentLoaded: function(idPopup, response) {
-
 	},
 
 

@@ -77,6 +77,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Handle reception of empty result (no suggestion found)
 	 *
+	 * @param	{Boolean}	showMessage
 	 */
 	handleEmptyResult: function(showMessage) {
 		new Effect.Highlight(this.element, {
@@ -114,6 +115,15 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 		callOriginal(inputField, selectedListElement);
 	},
 
+
+
+	/**
+	 * Call registered user function on selecting autocompleter suggestion
+	 *
+	 * @param	{Element}	inputField
+	 * @param	{Element}	selectedListElement
+	 * @return	{Element}
+	 */
 	callOnSelected: function(inputField, selectedListElement) {
 		var selectedValue	= selectedListElement.id;
 		var selectedText	= selectedListElement.innerHTML.stripScripts().stripTags().strip();
@@ -133,6 +143,10 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	},
 
 
+
+	/**
+	 * Clear autocompleter delay
+	 */
 	clearDelay: function() {
 		clearTimeout(this.clearTimeout);
 	},

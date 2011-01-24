@@ -700,7 +700,7 @@ Todoyu.Ui = {
 	closeRTE: function(area) {
 		this.saveRTE();
 
-		if( ! Todoyu.exists(area) ) {
+		if( area === null || ! Todoyu.exists(area) ) {
 			area = document.body;
 		}
 
