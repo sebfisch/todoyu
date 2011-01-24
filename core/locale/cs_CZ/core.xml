@@ -33,6 +33,7 @@
 	<label index="records">Záznamy</label>
 	<label index="components">Komponenty</label>
 	<label index="status">Stav</label>
+	<label index="locked">Zamknuto</label>
 	<label index="what">Co</label>
 	<label index="where">Kde</label>
 	<label index="when">Kdy</label>
@@ -44,16 +45,17 @@
 	<label index="beginning">Začátek</label>
 	<label index="deadline">Termín</label>
 	<label index="closeWindow">Zavřít okno</label>
-	<label index="noAccess.errorMessage">Nemáte přístup k požadovaným datům</label>
+	<label index="notLoggedIn.errorMessage">Vaše prihlášení vypršelo. Operace nemohla být dokoncena. Prihlašte se znovu a opakujte operaci.</label>
 	<label index="close">Zavřít</label>
+	<label index="noAccess.errorMessage">Nemáte přístup k požadovaným datům</label>
 	<label index="noAccess.pageTitle">Není přístup</label>
 	<label index="noAccess.goBackToLastPage">Zpět na předchozí stránku</label>
-	<label index="noAccess.contactAdmin">Ups! If you think you should have access, report the following data to your todoyu administrator:</label>
-	<label index="noAccess.requestURL">Request URL</label>
+	<label index="noAccess.contactAdmin">Ups! Pokud chcete mít prístup do této sekce, nahlašte následující údaje administrátorovi systému todoyu:</label>
+	<label index="noAccess.requestURL">Požadovaná URL</label>
 	<label index="noAccess.missingRight">Chybějící práva</label>
 	<label index="footer.version">Verze</label>
 	<label index="footer.bugreport">Nahlásit chybu</label>
-	<label index="footer.bugreport.title">Use the todoyu bug tracker at bugs.todoyu.com to add a bug report</label>
+	<label index="footer.bugreport.title">K nahláštení chyby použijte bug tracker na adrese bugs.todoyu.com</label>
 	<label index="footer.forum">Diskutovat ve fóru</label>
 	<label index="footer.forum.title">Vyhledat nápovědu nebo podělit se s vlastním nápadem</label>
 	<label index="footer.usermanual">Příručka</label>
@@ -65,7 +67,7 @@
 	<label index="paging.page">Stránka</label>
 	<label index="input.autocompleter">Autodoplňování</label>
 	<label index="ajax.requestFailed">Nelze navázat spojení se servrem (spojení nebo server je mimo provoz?)</label>
-	<label index="attr.is_active">Aktívní</label>
+	<label index="attr.is_active">Aktivní</label>
 	<label index="roles">Role</label>
 	<label index="role">Role</label>
 	<label index="role.new">Nová role</label>
@@ -73,4 +75,12 @@
 	<label index="headlet.ajaxloader.label">Synchronizuji data s webovym servrem</label>
 	<label index="headlet.about.label">O todoyu</label>
 	<label index="unknown">n/a</label>
+	<label index="loaderBox.title">Cekejte prosím</label>
+	<label index="panelwidget.toggle">Otevrít zavrít Widget</label>
+	<label index="date_update">Datum poslední zmeny</label>
+	<label index="date_create">Vytvoreno</label>
+	<label index="id_person_create">Vytvoril</label>
+	<label index="of">of</label>
+	<label index="public">Verejné</label>
+	<label index="notpublic">Neverejné</label>
 </labels>
