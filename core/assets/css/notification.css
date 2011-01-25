@@ -9,7 +9,6 @@
 #notifications div.notes {
 	width:100%;
 	margin:0 auto;
-	/*border-bottom:1px solid #E7E8E4;*/
 }
 
 #notifications div.note {
@@ -42,9 +41,6 @@
 #notifications div.note td.countdown {
 	display:none;
 	width:25px;
-	/*font-size:14px;*/
-	/*padding-right:4px;*/
-	/*color:#666;*/
 }
 
 #notifications div.note td.close {

@@ -1,4 +1,8 @@
-.overlay_dialog,.overlay___invisible__ {
+/* --------------------
+	Overlays
+   -------------------- */
+.overlay_dialog,
+.overlay___invisible__ {
 	background:#7b806e;
 }
 
@@ -15,56 +19,92 @@
 	opacity:0;
 }
 
-.dialog_nw,.dialog_ne,.dialog_sw,.dialog_se,.dialog_sizer {
+
+
+/* -----------------------------------------------
+	Dialog borders and corners from north to west
+   ----------------------------------------------- */
+.dialog_nw,
+.dialog_ne,
+.dialog_sw,
+.dialog_se,
+.dialog_sizer {
 	width:9px;
 }
 
-.dialog_nw,.dialog_n,.dialog_ne {
+.dialog_nw,
+.dialog_n,
+.dialog_ne {
 	height:28px;
 }
 
-.dialog_nw {
-	background:transparent url(todoyu.png) no-repeat 0 -645px;
+.dialog_nw,
+.dialog_n,
+.dialog_ne,
+.dialog_s,
+.dialog_sw,
+.dialog_se,
+.dialog_sizer,
+.dialog_close,
+.dialog_minimize,
+.dialog_maximize {
+	background:transparent url(todoyu.png) no-repeat;
 }
 
-.dialog_n {
-	background:transparent url(todoyu.png) repeat-x 0 -700px;
-}
-
-.dialog_ne {
-	background:transparent url(todoyu.png) no-repeat -1px -750px;
-}
-
-.dialog_e,.dialog_w {
+.dialog_e,
+.dialog_w {
+	background:transparent url(todoyurepeaty.png);
 	width:2px;
 }
 
+.dialog_nw {
+	background-position:0 -645px;
+}
+
+.dialog_n {
+	background-repeat:repeat-x;
+	background-position:0 -700px;
+}
+
+.dialog_ne {
+	background-position:-1px -750px;
+}
+
 .dialog_e {
-	background:transparent url(todoyurepeaty.png) repeat-y -41px 0;
+	background-position:-41px 0;
 }
 
 .dialog_w {
-	background:transparent url(todoyurepeaty.png) repeat-y 0 0;
+	background-position:0 0;
 }
 
-.dialog_sw,.dialog_s,.dialog_se,.dialog_sizer {
+.dialog_s,
+.dialog_sw,
+.dialog_se,
+.dialog_sizer {
 	height:19px;
 }
 
-.dialog_sw {
-	background:transparent url(todoyu.png) no-repeat 0 0;
+.dialog_s {
+	background-repeat:repeat-x;
+	background-position:0 -51px;
 }
 
-.dialog_s {
-	background:transparent url(todoyu.png) repeat-x 0 -51px;
+.dialog_sw {
+	background-position:0 0;
 }
 
 .dialog_se {
-	background:transparent url(todoyu.png) no-repeat 0 -153px;
+	background-position:0 -153px;
 }
 
+
+
+/* -------------------------------
+	Window decorations
+   ------------------------------- */
 .dialog_sizer {
-	background:transparent url(todoyu.png) no-repeat 0 -594px;
+	background-position:0 -594px;
 	cursor:se-resize;
 }
 
@@ -83,7 +123,7 @@
 }
 
 .dialog_close {
-	background:transparent url(todoyu.png) no-repeat 0 -320px;
+	background-position:0 -320px;
 	right:5px;
 }
 
@@ -100,17 +140,17 @@
 }
 
 .dialog_minimize {
-	background:transparent url(todoyu.png) no-repeat 0 -459px;
+	background-position:0 -459px;
 	right:33px;
 }
 
 .dialog_maximize {
-	background:transparent url(todoyu.png) no-repeat 0 -413px;
+	background-position:0 -413px;
 	right:17px;
 }
 
 .dialog_title {
-	font:11px arial,sans-serif;
+	font-size:11px;
 	float:left;
 	margin:5px 0 -5px 0;
 	letter-spacing:0.4px;
@@ -120,26 +160,23 @@
 	color:#151614;
 }
 
-.dialog_title,.dialog table.table_window {
+.dialog_title,
+.dialog table.table_window {
 	width:100%;
 }
 
-.dialog_content {
-	font:10px tahoma,arial,sans-serif;
-	background:#f6f8f1;
-	color:#ddd;
-	height:auto !important;
-}
-
-.bottom_draggable,.top_draggable {
+.bottom_draggable,
+.top_draggable {
 	cursor:move;
 }
 
-.status_bar input,.status_bar {
+.status_bar input,
+.status_bar {
 	font-size:12px;
 }
 
-.wired_frame,.dialog {
+.wired_frame,
+.dialog {
 	display:block;
 }
 
@@ -149,6 +186,42 @@
 
 .dialog {
 	z-index:1900;
+}
+
+
+
+/* ------------------------
+	Dialog content
+   ------------------------ */
+.table_window div.notification {
+	background-color:#eee;
+	padding:7px;
+}
+	.table_window div.notification form {
+		background-color:#fff;
+		border:1px solid #e1e1e1;
+	}
+		.table_window div.notification form div.left {
+			float:left;
+		}
+			.table_window div.notification form div.left span.icon {
+				background:url('../../../../assets/img/notify.png') 0 -96px no-repeat;
+				margin:20px 0 0 20px;
+			}
+			.table_window div.notification form fieldset.buttons {
+				padding:7px;
+				background-color:#eee;
+			}
+		.table_window div.notification form div.right .inner {
+			padding:14px 14px 20px 14px;
+		}
+
+
+.dialog_content {
+	font-size:10px;
+	background-color:#f6f8f1;
+	color:#ddd;
+	height:auto !important;
 }
 
 .dialog table.table_window {

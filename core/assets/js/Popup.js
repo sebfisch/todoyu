@@ -55,39 +55,41 @@ Todoyu.Popup = {
 	 */
 	contentOrigParentNode: null,
 
-	/**
-	 * Get popup reference
-	 *
-	 * @method	getPopup
-	 * @param	{String}			idPopup
-	 * @return	Object
-	 */
-	getPopup: function(idPopup) {
-		return this.popup[idPopup];
-	},
-
 
 
 	/**
-	 * Get last opened popup handle
+	 * Construct new prototype window
 	 *
-	 * @method	getLastPopup
-	 * @return	Object
+	 * @method	getNewWindow
+	 * @param	{String}	idPopup
+	 * @param	{String}	title
+	 * @param	{Number}	minWidth
+	 * @param	{Number}	minHeight
+	 * @param	{Number}	width
+	 * @param	{Number}	height
 	 */
-	getLastPopup: function() {
-		return this.last;
-	},
-
-
-
-	/**
-	 * Get amount of open popups
-	 *
-	 * @method	getNumPopups
-	 * @return	{Number}
-	 */
-	getNumPopups: function() {
-		return Object.keys(this.popup).size();
+	getNewWindow: function(idPopup, title, minWidth, minHeight, width, height) {
+		return new Window({
+			id:					idPopup,
+			className:			"dialog",
+			title:				title,
+			parent:				document.body,
+			minWidth:			minWidth,
+			minHeight:			minHeight,
+			width:				width,
+			height:				height,
+			resizable:			true,
+			closable:			true,
+			minimizable:		false,
+			maximizable:		false,
+			draggable:			false,
+			zIndex:				2000,
+			recenterAuto:		false,
+			'hideEffect':		Element.hide,
+			'showEffect':		Element.show,
+			effectOptions:		null,
+			destroyOnClose:		true
+		});
 	},
 
 
@@ -104,37 +106,8 @@ Todoyu.Popup = {
 	 * @return	{Window}
 	 */
 	openWindow: function(idPopup, title, minWidth, contentUrl, requestOptions) {
-			// Construct
-		this.popup[idPopup] = new Window({
-			id:					idPopup,
-			className:			"dialog",
-			title:				title,
-
-			parent:				document.body,
-
-			minWidth:			minWidth,
-			minHeight:			220,
-			width:				minWidth,
-			height:				240,
-
-			resizable:			true,
-			closable:			true,
-			minimizable:		false,
-			maximizable:		false,
-			draggable:			false,
-
-			zIndex:				2000,
-			recenterAuto:		false,
-
-			'hideEffect':		Element.hide,
-			'showEffect':		Element.show,
-			effectOptions:		null,
-
-			destroyOnClose:		true
-		});
-
-			// Show popup and activate content overlay
-		this.getPopup(idPopup).showCenter(true, 100);
+		this.popup[idPopup] = this.getNewWindow(idPopup, title, minWidth, 220, minWidth, 240);
+		this.popup[idPopup].showCenter(true, 100);
 
 			// Wrap onComplete with own onComplete to handle popup
 		requestOptions = requestOptions || {};
@@ -147,7 +120,7 @@ Todoyu.Popup = {
 		}.bind(this, idPopup));
 
 		if( contentUrl !== false ) {
-			this.getPopup(idPopup).setAjaxContent(contentUrl, requestOptions, false, false);
+			this.popup[idPopup].setAjaxContent(contentUrl, requestOptions, false, false);
 		}
 
 			// Save last opened popup
@@ -161,7 +134,7 @@ Todoyu.Popup = {
 		}
 		Windows.addObserver(closeObserver);
 
-		return this.getPopup(idPopup);
+		return this.popup[idPopup];
 	},
 
 
@@ -169,7 +142,7 @@ Todoyu.Popup = {
 	/**
 	 * Open new popup window containing given element
 	 *
-	 * @method	openWindow
+	 * @method	openElementInWindow
 	 * @param	{String}		idPopup
 	 * @param	{String}		idContentElement
 	 * @param	{String}		title
@@ -185,41 +158,13 @@ Todoyu.Popup = {
 		var minHeight	= elementDimension.height + 14;
 
 			// Open empty popup and show content overlay
-		this.popup[idPopup] = new Window({
-			id:					idPopup,
-			className:			"dialog",
-			title:				title,
-
-			parent:				document.body,
-
-			minWidth:			minWidth,
-			minHeight:			minHeight,
-			width:				minWidth,
-			height:				minHeight + 20,
-
-			resizable:			true,
-			closable:			true,
-			minimizable:		false,
-			maximizable:		false,
-			draggable:			false,
-
-			zIndex:				2000,
-			recenterAuto:		false,
-
-			'hideEffect':		Element.hide,
-			'showEffect':		Element.show,
-			effectOptions:		null,
-
-			destroyOnClose:		true
-		});
-
-		this.getPopup(idPopup).showCenter(true, 100);
+		this.popup[idPopup] = this.getNewWindow(idPopup, title, minWidth, minHeight, minWidth, minHeight + 20);
+		this.popup[idPopup].showCenter(true, 100);
 
 			// Move content element into popup window
-		this.contentOrigParentNode = contentElement.parentNode;
+		this.contentOrigParentNode	= contentElement.parentNode;
 		var idPopupContent			= idPopup + 'Content';
-
-		this.getPopup(idPopup).setHTMLContent('<div id="' + idPopupContent + '"></div>');
+		this.popup[idPopup].setHTMLContent('<div id="' + idPopupContent + '"></div>');
 		$(idPopupContent).insert(contentElement);
 
 			// Install observer to restore content when closing the window
@@ -227,9 +172,9 @@ Todoyu.Popup = {
 		$(idCloseDiv).observe('mouseup', this.restoreContent.bindAsEventListener(this, idPopup, closePopupCallback));
 
 			// Save last opened popup
-		this.last = this.getPopup(idPopup);
+		this.last = this.popup[idPopup];
 
-		return this.getPopup(idPopup);
+		return this.popup[idPopup];
 	},
 
 
@@ -237,6 +182,7 @@ Todoyu.Popup = {
 	/**
 	 * Restore original node position of popup content element
 	 *
+	 * @method	restoreContent
 	 * @param	{Event}		event
 	 * @param	{String}	idPopup
 	 * @param	{Function}	callback
@@ -252,27 +198,75 @@ Todoyu.Popup = {
 
 
 	/**
-	 * Enter Description here...
+	 * Open new popup window containing given HTML content
 	 *
-	 * @method	onWindowClose
-	 * @param	{Event}		event
-	 * @param	{String}	idPopup
+	 * @method	openWindow
+	 * @param	{String}		idPopup
+	 * @param	{String}		content
+	 * @param	{String}		title
+	 * @param	{Number}		minWidth
+	 * @param	{Function}		closePopupCallback
+	 * @return	{Window}
 	 */
-	onWindowClose: function(event, idPopup) {
+	openContentInWindow: function(idPopup, content, title, minWidth, closePopupCallback) {
+		this.popup[idPopup] = this.getNewWindow(idPopup, title, minWidth, 100, minWidth, 120);
+		this.popup[idPopup].showCenter(true, 100);
 
+			// Add content into popup window
+		this.setContent(idPopup, content);
+
+			// Save last opened popup
+		this.last = this.getPopup(idPopup);
+
+		return this.popup[idPopup];
 	},
 
 
 
 	/**
-	 * Enter Description here...
+	 * Get popup reference
 	 *
-	 * @method	onMouseUp
-	 * @param	{Event}		event
-	 * @param	{String}	idPopup
+	 * @method	getPopup
+	 * @param	{String}		idPopup
+	 * @return	Object
 	 */
-	onMouseUp: function(event, idPopup) {
+	getPopup: function(idPopup) {
+		return this.popup[idPopup];
+	},
 
+
+
+	/**
+	 * Get last opened popup handle
+	 *
+	 * @method	getLastPopup
+	 * @return	{Object}
+	 */
+	getLastPopup: function() {
+		return this.last;
+	},
+
+
+
+	/**
+	 * Get ID of last opened popup
+	 *
+	 * @return	{String}
+	 */
+	getLastPopupID: function() {
+		return this.getLastPopup().options.id;
+	},
+
+
+
+	/**
+	 * Get amount of open popups
+	 *
+	 * @method	getNumPopups
+	 * @return	{Number}
+	 */
+	getNumPopups: function() {
+		return Object.keys(this.popup).size();
 	},
 
 
@@ -303,18 +297,7 @@ Todoyu.Popup = {
 
 
 	/**
-	 * Clear timeout (if set)
-	 *
-	 * @method	clearTimeout
-	 */
-	clearTimeout: function() {
-
-	},
-
-
-
-	/**
-	 * Update popup content
+	 * Update popup content from response of AJAX request
 	 *
 	 * @method	updateContent
 	 * @param	{String}	contentUrl
@@ -359,6 +342,19 @@ Todoyu.Popup = {
 	 * @param	{String}	idPopup
 	 */
 	close: function(idPopup) {
+		this.getPopup(idPopup).close();
+	},
+
+
+
+	/**
+	 * Close last opened popUp
+	 *
+	 * @method	close
+	 * @param	{String}	idPopup
+	 */
+	closeLastPopup: function() {
+		var idPopup	= this.getLastPopupID();
 		this.getPopup(idPopup).close();
 	},
 
