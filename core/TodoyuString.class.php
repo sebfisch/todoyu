@@ -170,8 +170,6 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function strictHtml2text($string, $convertClosingPTagsToDoubleNewLine = true) {
-		TodoyuDebug::printInFirebug($string, 'before');
-		
 		if( $convertClosingPTagsToDoubleNewLine === true ) {
 			$string = str_replace('</p>', chr(10) . chr(10), $string);
 		}
