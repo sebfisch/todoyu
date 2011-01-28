@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<labels lang="ja_JP">
+<labels>
 	<label index="select.pleaseSelect">選択してください</label>
 	<label index="field.isrequired">これは必須項目です</label>
 	<label index="field.hasError">入力した値は有効な値ではありません</label>

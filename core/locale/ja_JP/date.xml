@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<labels lang="ja_JP">
+<labels>
 	<label index="date">日付</label>
 	<label index="time">時刻</label>
 	<label index="hrs">時間</label>

@@ -44,7 +44,8 @@ Todoyu::$CONFIG['LOCALE']['available']	= array(
 	'cs_CZ',
 	'sr_RS',
 	'ja_JP',
-	'it_IT'
+	'it_IT',
+	'es_CO',
 	/*,'hr_HR','sr_ME'*/
 );
 
@@ -64,6 +65,7 @@ Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'sr_ME' => array('sr_ME.utf8', 'sr_ME', 'sr'), // Serbian (Montenegro)
 	'sr_RS' => array('sr_RS.utf8', 'sr_RS', 'sr'), // Serbian (Serbia)
 	'it_IT' => array('it_IT.utf8', 'it_IT', 'it'), // Italian
+	'es_CO' => array('it_IT.utf8', 'it_IT', 'it'), // Spanish (Columbia)
 	'ja_JP' => array('ja_JP', 'ja', 'ja_JP.eucjp', 'ja_JP.ujis', 'japanese', 'japanese.euc') // Japanese
 );
 

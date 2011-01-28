@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<labels lang="hr_HR">
+<labels>
 	<label index="D2M2">%d.%m.</label>
 	<label index="DlongD2Mlong">%A, %d. %B</label>
 	<label index="D2M2Y2">%d.%m.%y</label>
