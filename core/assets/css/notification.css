@@ -43,6 +43,11 @@
 	width:25px;
 }
 
+
+
+/* -------------------
+	Icons
+   ------------------- */
 #notifications div.note td.close {
 	width:20px;
 	background:url(../img/notify.png) 0 -47px no-repeat;
@@ -56,34 +61,29 @@
 	background-position:0 -240px;
 }
 
-/* -------------------
-	Success
-   ------------------- */
-#notifications div.success {
+#notifications div td.icon {
+	background:url(../img/notify.png) no-repeat;
 }
-
-#notifications div.success td.icon {
-	background:url(../img/notify.png) 0 -1px no-repeat;
-}
-
-
-
-/* -------------------
-	Error
-   ------------------- */
-
-#notifications div.error td.icon {
-	background:url(../img/notify.png) 0 -96px no-repeat;
-}
+	#notifications div.success td.icon {
+		background-position:0 -1px;
+	}
+	#notifications div.error td.icon {
+		background-position:0 -96px;
+	}
+	#notifications div.info td.icon {
+		background-position:0 -189px;
+	}
 
 
 
 /* -------------------
-	Info
+	Large icons
    ------------------- */
-#notifications div.info {
+div.notification span.iconLarge {
+	background:url(../img/notify.png) 0 -348px no-repeat !important;
+	margin:12px 12px 0 12px;
 }
-
-#notifications div.info td.icon {
-	background:url(../img/notify.png) 0 -189px no-repeat;
+div.notification.reminder span.iconLarge {
+	background:url(../img/notify.png) 0 -544px no-repeat !important;
+	margin:12px 12px 0 12px;
 }

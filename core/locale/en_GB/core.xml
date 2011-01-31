@@ -2,7 +2,9 @@
 <labels>
 	<label index="tab.todoyu.label">todoyu</label>
 	<label index="yes">Yes</label>
+	<label index="ok">Ok</label>
 	<label index="no">No</label>
+	<label index="dismiss">Dismiss</label>
 	<label index="loading">Loading</label>
 	<label index="expandall">Expand All</label>
 	<label index="author">Author</label>

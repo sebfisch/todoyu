@@ -147,7 +147,7 @@ class TodoyuString {
 	public static function html2text($html, $br2Newline = false, $decodeChars = false) {
 		$text	= htmlspecialchars_decode($html);
 
-		$text	= $br2Newline ? self::br2nl($text) : $text;		
+		$text	= $br2Newline ? self::br2nl($text) : $text;
 		$text	= strip_tags($text);
 
 		if( $decodeChars === true ) {
@@ -173,7 +173,7 @@ class TodoyuString {
 		if( $convertClosingPTagsToDoubleNewLine === true ) {
 			$string = str_replace('</p>', chr(10) . chr(10), $string);
 		}
-		
+
 		return self::html2text(html_entity_decode(htmlspecialchars_decode(self::br2nl($string)), ENT_COMPAT, 'UTF-8'));
 	}
 
@@ -723,7 +723,7 @@ class TodoyuString {
 		return preg_replace_callback($pattern, $callback, $json);
 	}
 
-	
+
 
 	/**
 	 * Callback for enableJsFunctionInJSON to replace quotes around function expressions

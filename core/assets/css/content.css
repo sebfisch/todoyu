@@ -8,6 +8,15 @@ div.icon {
 	height:18px;
 }
 
+div.iconLarge,
+span.iconLarge {
+	display:block;
+	float:left;
+	clear:none;
+	width:32px;
+	height:32px;
+}
+
 .link {
 	cursor:pointer;
 }
