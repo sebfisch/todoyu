@@ -53,10 +53,11 @@ class TodoyuFormXmlParser {
 	 * Parse form definition into a form object
 	 *
 	 * @param	TodoyuForm		$form
-	 * @param	String		$xmlFile
+	 * @param	String			$xmlFile
+	 * @param	Array			$preParseMarkers
 	 * @return 	Boolean
 	 */
-	public static function parse($form, $xmlFile) {
+	public static function parse($form, $xmlFile, $preParseMarkers = array()) {
 		self::$form		= $form;
 		self::$xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
 
@@ -65,8 +66,18 @@ class TodoyuFormXmlParser {
 			return false;
 		}
 
-			// Load xml file as simple xml object
-		self::$xml	= simplexml_load_file($xmlFile, null, LIBXML_NOCDATA);
+		if( sizeof($preParseMarkers) > 0 ) {
+			$xmlString	= file_get_contents($xmlFile);
+			foreach($preParseMarkers as $key => $value) {
+				$xmlString	= str_replace($key, $value, $xmlString);
+			}
+			self::$xml	= simplexml_load_string($xmlString, null, LIBXML_NOCDATA);
+		} else {
+				// Load xml file as simple xml object
+			self::$xml	= simplexml_load_file($xmlFile, null, LIBXML_NOCDATA);
+		}
+
+
 
 			// Parse form attributes
 		self::parseAttributes();

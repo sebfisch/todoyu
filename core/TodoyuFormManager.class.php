@@ -32,10 +32,11 @@ class TodoyuFormManager {
 	 * @param	String		$xmlPath
 	 * @param	Integer		$idRecord
 	 * @param	Array		$params			Optional parameters for the form hooks
+	 * @param	Array		$preParse		Optional markers to be replaced inside XML before parsing
 	 * @return	TodoyuForm
 	 */
-	public static function getForm($xmlPath, $idRecord = 0, array $params = array()) {
-		$form	= new TodoyuForm($xmlPath);
+	public static function getForm($xmlPath, $idRecord = 0, array $params = array(), $preParse = array()) {
+		$form	= new TodoyuForm($xmlPath, $preParse);
 
 		$form->setRecordID($idRecord);
 

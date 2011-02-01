@@ -411,7 +411,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 	/**
 	 * Get value for template display
-	 * Override this function in custom fieldtype if special rendering necessary
+	 * Override this function in custom field type if special rendering necessary
 	 *
 	 * @return	String
 	 */

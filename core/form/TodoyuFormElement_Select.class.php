@@ -303,7 +303,11 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 */
 	public function setValue($value) {
 		if( ! is_array($value) ) {
-			$value = array($value);
+			if( is_string($value) && strstr($value, ',') !== false ) {
+				$value	= explode(',', $value);
+			} else {
+				$value = array($value);
+			}
 		}
 
 		parent::setValue($value);
