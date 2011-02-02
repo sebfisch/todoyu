@@ -139,6 +139,38 @@ class TodoyuFrontend {
 
 
 	/**
+	 * Add multiple sub menu entries from given config array
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$parentKey
+	 * @param	Array		$itemsConfig
+	 * @param	String		$labelPrefix
+	 */
+	public static function addSubMenuEntriesFromTabsConf($extKey, $parentKey, array $itemsConfig, $labelPrefix = '') {
+		foreach($itemsConfig as $itemKey => $itemConfig) {
+				// Check for access rights
+			if( array_key_exists('require', $itemConfig) ) {
+				$required	= explode('.', $itemConfig['require']);
+				$allowed	= allowed($required[0], $required[1]);
+			} else {
+				$allowed	= true;
+			}
+
+				// Add entry
+			if( $allowed ) {
+				$entryKey	= 'projectbilling' . ucfirst($itemKey);
+				$label		= Label('projectbilling.subMenuEntry.' . $itemKey);
+				$href		= '?ext=projectbilling&tab=' . $itemKey;
+				$position	= intval($itemConfig['position']);
+
+				self::addSubmenuEntry($parentKey, $entryKey, $labelPrefix . ' > ' . $label, $href, $position);
+			}
+		}
+	}
+
+
+
+	/**
 	 * Add a sub menu tab
 	 *
 	 * @param	String		$parentKey
@@ -211,7 +243,7 @@ class TodoyuFrontend {
 			$tabs[$active]['active'] = true;
 		}
 
-			// Get label for menu entry and sort sub menus
+			// Get label for menu entry and sort sub menus.
 		foreach($tabs as $index => $tab) {
 			$tabs[$index]['label'] = TodoyuString::getLabel($tabs[$index]['label']);
 
