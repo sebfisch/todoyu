@@ -100,6 +100,7 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 	}
 
 
+
 	/**
 	 * Never save buttons
 	 *

@@ -107,6 +107,7 @@ abstract class TodoyuTemplateDocumentAbstract {
 	}
 
 
+
 	/**
 	 * Get content type of document
 	 *

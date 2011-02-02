@@ -74,6 +74,7 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 	}
 
 
+
 	/**
 	 * Prepare list xml sections to repeat list elements
 	 */
@@ -192,6 +193,7 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 
 		$this->xmlContent = preg_replace_callback($pattern, array($this, 'replaceStyleTagsInDwooTags'), $this->xmlContent);
 	}
+
 
 
 	/**

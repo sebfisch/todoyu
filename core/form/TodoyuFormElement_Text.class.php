@@ -73,9 +73,16 @@ class TodoyuFormElement_Text extends TodoyuFormElement {
 	}
 
 
+
+	/**
+	 * Get "type"
+	 *
+	 * @return	Mixed
+	 */
 	public function getInputType() {
 		return $this->getAttribute('type');
 	}
+
 
 
 	/**
