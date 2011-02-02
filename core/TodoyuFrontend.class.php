@@ -158,12 +158,12 @@ class TodoyuFrontend {
 
 				// Add entry
 			if( $allowed ) {
-				$entryKey	= 'projectbilling' . ucfirst($itemKey);
-				$label		= Label('projectbilling.subMenuEntry.' . $itemKey);
-				$href		= '?ext=projectbilling&tab=' . $itemKey;
+				$entryKey	= $extKey . ucfirst($itemKey);
+				$label		= Label($extKey . '.subMenuEntry.' . $itemKey);
+				$href		= '?ext=' . $extKey . '&tab=' . $itemKey;
 				$position	= intval($itemConfig['position']);
 
-				self::addSubmenuEntry($parentKey, $entryKey, $labelPrefix . ' > ' . $label, $href, $position);
+				self::addSubmenuEntry($parentKey, $entryKey, $labelPrefix . $label, $href, $position);
 			}
 		}
 	}
