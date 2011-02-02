@@ -722,16 +722,16 @@ class TodoyuArray {
 	 * Remove duplicate entries in given field of array
 	 *
 	 * @param	Array	$array
-	 * @param	String	$fieldname
+	 * @param	String	$fieldName
 	 * @return	Array
 	 */
-	public static function removeDuplicates(array $array, $fieldname) {
+	public static function removeDuplicates(array $array, $fieldName) {
 		$values	= array();
 		$clean	= array();
 
 			// iterate all ass. sub arrays
 		foreach($array as $index => $item) {
-			$value	= $item[$fieldname];
+			$value	= $item[$fieldName];
 
 			if( ! in_array($value, $values) ) {
 				$clean[$index]	= $item;
@@ -748,6 +748,7 @@ class TodoyuArray {
 	/**
 	 * Explode a list of integers
 	 *
+	 * @todo	change parameters order: move $delimiter behind $string, add default ',' to $delimiter
 	 * @param	String		$delimiter			Character to split the list
 	 * @param	String		$string				The list
 	 * @param	Boolean		$onlyPositive		Set negative values zero
@@ -851,7 +852,7 @@ class TodoyuArray {
 
 
 	/**
-	 * Apply htmlspecialchars() to all elements recursivly
+	 * Apply htmlspecialchars() to all elements recursively
 	 *
 	 * @param	Array		$array
 	 * @return	Array

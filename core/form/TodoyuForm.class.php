@@ -398,7 +398,7 @@ class TodoyuForm implements ArrayAccess {
 		if( is_null($position) ) {
 			$this->fieldsets[$name] = $fieldset;
 		} else {
-				// If position available, insert element at given positon
+				// If position available, insert element at given position
 			$pos = explode(':', $position);
 
 			$this->fieldsets = TodoyuArray::insertElement($this->fieldsets, $name, $fieldset, $pos[0], $pos[1]);

@@ -207,6 +207,7 @@ class Todoyu {
 	}
 
 
+
 	/**
 	 * Get logger instance
 	 *

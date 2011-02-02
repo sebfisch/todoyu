@@ -246,7 +246,7 @@ class TodoyuFieldset implements ArrayAccess {
 		if( is_null($position) ) {
 			$this->elements[$name] = $fieldset;
 		} else {
-				// If position available, insert element at given positon
+				// If position available, insert element at given position
 			$pos = explode(':', $position);
 
 			$this->elements = TodoyuArray::insertElement($this->elements, $name, $fieldset, $pos[0], $pos[1]);
@@ -262,24 +262,24 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Add the $field to the fieldset
 	 *
-	 * @param	String		$name			Name of the field
-	 * @param	String		$field			Field object
-	 * @param	String		$position		Insert position. Format: after:title, before:status
+	 * @param	String				$fieldName
+	 * @param	TodoyuFormElement	$field			Field object
+	 * @param	String				$position		Insert position. Format: after:title, before:status
 	 * @return	TodoyuFormElement
 	 */
-	public function addField($name, TodoyuFormElement $field, $position = null) {
+	public function addField($fieldName, TodoyuFormElement $field, $position = null) {
 			// Set the new parent fieldset
 		$field->setFieldset($this);
-		$field->setName($name);
+		$field->setName($fieldName);
 
 			// If no position given, append element
 		if( is_null($position) ) {
-			$this->elements[$name] = $field;
+			$this->elements[$fieldName] = $field;
 		} else {
-				// If position available, insert element at given positon
+				// If position available, insert element at given position
 			$pos = explode(':', $position);
 
-			$this->elements = TodoyuArray::insertElement($this->elements, $name, $field, $pos[0], $pos[1]);
+			$this->elements = TodoyuArray::insertElement($this->elements, $fieldName, $field, $pos[0], $pos[1]);
 		}
 
 		$this->getForm()->registerField($field);
@@ -293,6 +293,7 @@ class TodoyuFieldset implements ArrayAccess {
 	 * Add all elements of a form to this field set
 	 *
 	 * @param	String		$xmlPath		Path to sub form XML file
+	 * @param	Integer		$position
 	 */
 	public function addElementsFromXML($xmlPath, $position = null) {
 		$xmlPath	= TodoyuFileManager::pathAbsolute($xmlPath);
@@ -323,7 +324,7 @@ class TodoyuFieldset implements ArrayAccess {
 
 
 	/**
-	 * Add elements from an other XML into the fieldset before the element named $name
+	 * Add elements from another XML into the fieldset before the element named $name
 	 *
 	 * @see		$this->addElementsFromXML()
 	 * @param	String		$xmlPath		Path to the xml file
@@ -338,7 +339,7 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Inject an existing fieldset into the form
 	 *
-	 * @param	TodoyuFieldset	$fieldset
+	 * @param	TodoyuFieldset		$fieldset
 	 * @return	TodoyuFieldset
 	 */
 	public function injectFieldset(TodoyuFieldset $fieldset, $position = null) {
@@ -353,14 +354,14 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Add a field from custom config
 	 *
-	 * @param	String		$name		Fieldname
-	 * @param	String		$type		Fieldtype
-	 * @param	Array		$config		Field configuration
+	 * @param	String		$fieldName
+	 * @param	String		$fieldType
+	 * @param	Array		$fieldConfig
 	 */
-	public function addFieldElement($name, $type, array $config) {
-		$field	= TodoyuFormFactory::createField($type, $name, $this, $config);
+	public function addFieldElement($fieldName, $fieldType, array $fieldConfig) {
+		$field	= TodoyuFormFactory::createField($fieldType, $fieldName, $this, $fieldConfig);
 
-		return $this->addField($name, $field);
+		return $this->addField($fieldName, $field);
 	}
 
 
@@ -368,14 +369,14 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Remove a field (and cleanup field references)
 	 *
-	 * @param	String		$name		Fieldname
-	 * @param	Boolean		$cleanup	Perform cleanup
+	 * @param	String		$fieldName
+	 * @param	Boolean		$cleanup
 	 */
-	public function removeField($name, $cleanup = true) {
-		unset($this->elements[$name]);
+	public function removeField($fieldName, $cleanup = true) {
+		unset($this->elements[$fieldName]);
 
 		if( $cleanup ) {
-			$this->getForm()->removeField($name, false);
+			$this->getForm()->removeField($fieldName, false);
 		}
 	}
 
@@ -402,19 +403,19 @@ class TodoyuFieldset implements ArrayAccess {
 	 * @return	Array
 	 */
 	public function getFieldNames() {
-		$fieldnames	= array();
+		$fieldNames	= array();
 
 		foreach($this->elements as $element) {
 			if( $element instanceof TodoyuFormElement ) {
 					// element is form element
-				$fieldnames[] = $element->getName();
+				$fieldNames[] = $element->getName();
 			} elseif( $element instanceof TodoyuFieldset ) {
 					// element is sub fieldset
-				$fieldnames = array_merge($fieldnames, $element->getFieldNames());
+				$fieldNames = array_merge($fieldNames, $element->getFieldNames());
 			}
 		}
 
-		return $fieldnames;
+		return $fieldNames;
 	}
 
 
@@ -542,7 +543,7 @@ class TodoyuFieldset implements ArrayAccess {
 
 
 	/**
-	 * Adds fields of a fieldset recursivly to the form
+	 * Adds fields of a fieldset recursively to the form
 	 *
 	 * @param TodoyuForm $form
 	 */
@@ -559,8 +560,7 @@ class TodoyuFieldset implements ArrayAccess {
 
 
 	/**
-	 * Bubble error
-	 * Report a field error to its parent
+	 * Bubble error: report a field error to its parent
 	 *
 	 * @param	TodoyuFormElement		$field
 	 */

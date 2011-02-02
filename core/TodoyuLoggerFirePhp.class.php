@@ -31,6 +31,7 @@ class TodoyuLoggerFirePhp implements TodoyuLoggerIf {
 	}
 
 
+
 	/**
 	 * Write log message in firebug
 	 *

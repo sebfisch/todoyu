@@ -51,6 +51,7 @@ class TodoyuSpeed {
 	}
 
 
+
 	/**
 	 * Start tracking
 	 *
@@ -82,6 +83,7 @@ class TodoyuSpeed {
 	public static function tick($key = 'default') {
 		self::$track[$key][] = microtime(true);
 	}
+
 
 
 	/**

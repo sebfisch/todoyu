@@ -314,6 +314,7 @@ class TodoyuRequest {
 	}
 
 
+
 	/**
 	 * Search, verify and define the main request variables as constants
 	 */

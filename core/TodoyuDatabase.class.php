@@ -139,6 +139,7 @@ class TodoyuDatabase {
 	}
 
 
+
 	/**
 	 * Check if todoyu is connected to the database
 	 *
