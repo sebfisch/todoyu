@@ -31,6 +31,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * ID of the quickinfo popup
+	 *
 	 * @property	popupID
 	 * @type		String
 	 */
@@ -45,6 +46,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Default cache time for an element (seconds)
+	 *
 	 * @property	defaultCacheTime
 	 * @type		Number
 	 */
@@ -52,6 +54,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Custom cache time per element
+	 *
 	 * @see			this.setCacheTime()
 	 * @property	customCacheTime
 	 * @type		Object
@@ -60,6 +63,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Template object to convert JSON into HTML
+	 *
 	 * @property	template
 	 * @type		Template
 	 */
@@ -67,6 +71,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Flag if loading is in progress (prevents multiple loading requests)
+	 *
 	 * @property	loading
 	 * @type		Boolean
 	 */
@@ -74,6 +79,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Flag if quickinfo is currently hidden
+	 *
 	 * @property	hidden
 	 * @type		Boolean
 	 */
@@ -82,6 +88,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Callback for delayed hide
+	 *
 	 * @property	delayedHide
 	 * @type		Function
 	 */
@@ -89,6 +96,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Delay time for hiding quickinfo
+	 *
 	 * @property	delayedHideTime
 	 * @type		Number
 	 */
@@ -97,6 +105,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Callback for delayed show
+	 *
 	 * @property	delayedShow
 	 * @type		Function
 	 */
@@ -104,6 +113,7 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Delay time for showing quickinfo
+	 *
 	 * @property	delayedShowTime
 	 * @type		Number
 	 */
@@ -111,10 +121,19 @@ Todoyu.QuickInfo = {
 
 	/**
 	 * Active element (DOM element)
+	 *
 	 * @property	active
 	 * @type		Element
 	 */
 	active: null,
+
+	/**
+	 * Trigger to deactivate quickInfo, e.g. while dragging elements
+	 *
+	 * @property	deactivated
+	 * @type		Boolean
+	 */
+	deactivated: false,
 
 
 
@@ -126,8 +145,35 @@ Todoyu.QuickInfo = {
 	init: function() {
 			// Insert HTML element into document
 		this.insertQuickInfoElement(this.popupID);
+
+			// Activate showing of quickinfos
+		this.activate();
+
 			// Observe document for clicks to close the quickinfo
 		document.body.on('click', this.onBodyClick.bindAsEventListener(this));
+	},
+
+
+
+	/**
+	 * Activate showing of quickinfos
+	 *
+	 * @method	activate
+	 */
+	activate: function() {
+		this.deactivated	= false;
+	},
+
+
+
+	/**
+	 * Deactivate showing of quickinfos
+	 *
+	 * @method	deactivate
+	 */
+	deactivate: function() {
+		this.hide(true);
+		this.deactivated	= true;
 	},
 
 
@@ -194,6 +240,14 @@ Todoyu.QuickInfo = {
 		Todoyu.Hook.exec('core.quickinfo.mouseout', event, name, element);
 	},
 
+
+
+	/**
+	 * Handler for <body> click
+	 *
+	 * @method	onBodyClick
+	 * @param	{Event}	event
+	 */
 	onBodyClick: function(event) {
 		this.hide(true);
 	},
