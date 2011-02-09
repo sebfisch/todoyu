@@ -704,8 +704,8 @@ class TodoyuString {
 	 * @param	String		$altText
 	 * @return	String
 	 */
-	public static function getImgTag($src, $width = 100, $height = 100, $altText = '') {
-		return '<img src="' . $src . '" width="' . $width . '" height="' . $height . '" alt="' . $altText .'" />';
+	public static function getImgTag($src, $width = 0, $height = 0, $altText = '') {
+		return '<img src="' . $src . '"' . ($width > 0 ?  ' width="' . $width .'"' : '') . ($height > 0 ?  ' height="' . $height .'"' : '') . ' alt="' . $altText .'" />';
 	}
 
 
