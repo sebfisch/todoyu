@@ -694,6 +694,23 @@ class TodoyuString {
 
 
 	/**
+	 * Returns an HTML - img tag
+	 * 
+	 * @param int $width
+	 * @static
+	 * @param	String		$src
+	 * @param	Integer		width
+	 * @param	Integer		$height
+	 * @param	String		$altText
+	 * @return	String
+	 */
+	public static function getImgTag($src, $width = 100, $height = 100, $altText = '') {
+		return '<img src="' . $src . '" width="' . $width . '" height="' . $height . '" alt="' . $altText .'" />';
+	}
+
+
+
+	/**
 	 * Callback for cleanRTEText
 	 * Add <br> tags inside the <pre> tags
 	 *
