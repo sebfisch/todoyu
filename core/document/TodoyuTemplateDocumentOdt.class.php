@@ -20,7 +20,7 @@
 
 
 /**
- * Use an openoffice writer document as template, and replace all markers
+ * Use an openOffice writer document as template, and replace all markers
  * Dwoo will process the content.xml file for Dwoo variables
  *
  * @package		Todoyu
@@ -112,7 +112,7 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 		$patternRow		= '|<table:table-row[^>]*?>.*?</table:table-row>|s';
 		$replaces		= array();
 
-			// Find row start and endtags
+			// Find row start and end tags
 		$patternRowStart= '/' . $markerRowStart . '({[^}]*})/';
 		$patternRowEnd	= '/({\/[^}]*})' . $markerRowEnd . '/';
 
@@ -166,8 +166,7 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 
 
 	/**
-	 * Prepare the XML to include php code
-	 *
+	 * Prepare the XML to include PHP code
 	 */
 	private function preparePhpXML() {
 		$replace	= array(
@@ -186,7 +185,6 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 	 * Prepare the XML for Dwoo tags in span
 	 * Between Dwoo braces, there may be <span> tags which add formatting information.
 	 * Move them out of the Dwoo tags
-	 *
 	 */
 	private function prepareDwooTagSpans() {
 		$pattern	= '/{.*?}/';
@@ -231,6 +229,10 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 	}
 
 
+
+	/**
+	 * Prepare XML content for parsing of {foreach} iterations
+	 */
 	private function prepareForeach() {
 		$pattern	= '/(<text:[^>]*?>)({[\/]?foreach[^\}]*?})(<\/text:[^>]*?>)/';
 		$replace	= '\2';
