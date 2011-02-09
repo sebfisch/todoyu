@@ -703,7 +703,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Array
 	 */
 	public function getWizardConfiguration() {
-		if( $this->hasAttribute('wizard') )	{
+		if( $this->hasAttribute('wizard') ) {
 			$wizardConf = array(
 				'hasWizard'		=> true,
 				'wizardConf'	=> $this->getAttribute('wizard')

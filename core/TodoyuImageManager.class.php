@@ -47,7 +47,7 @@ class TodoyuImageManager {
 			$typeSource	= $sourceInfo['mime'];
 		}
 
-			// Load image based on filetype
+			// Load image based on file type
 		$image	= self::loadImage($pathSource, $typeSource);
 
 		if( $image !== false ) {
@@ -147,7 +147,7 @@ class TodoyuImageManager {
 
 
 	/**
-	 * Get image extension type from mimetype or extension
+	 * Get image extension type from mime type or extension
 	 *
 	 * @param	String		$type		image/gif or gif
 	 * @return	String
@@ -169,18 +169,18 @@ class TodoyuImageManager {
 	 *
 	 * @param	Integer		$sourceWidth
 	 * @param	Integer		$sourceHeight
-	 * @param	Integer		$destWidth
-	 * @param	Integer		$destHeight
+	 * @param	Integer		$newWidth
+	 * @param	Integer		$newHeight
 	 * @param	Bool		$upscale			Upscale image if source is smaller than destination
 	 * @return	Array		[width,height]
 	 */
-	public static function getDimensions($sourceWidth, $sourceHeight, $destWidth, $destHeight, $upscale = false) {
-		$factorHeight	= $destHeight/$sourceHeight;
-		$factorWidth	= $destWidth/$sourceWidth;
+	public static function getDimensions($sourceWidth, $sourceHeight, $newWidth, $newHeight, $upscale = false) {
+		$factorHeight	= $newHeight / $sourceHeight;
+		$factorWidth	= $newWidth / $sourceWidth;
 		$factor			= min($factorHeight, $factorWidth);
 
 		if( $upscale === false && $factor > 1.0 ) {
-			$factor = 1.0;
+			$factor	= 1.0;
 		}
 
 		return array(

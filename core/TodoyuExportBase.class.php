@@ -46,7 +46,7 @@ abstract class TodoyuExportBase {
 	 * @param array $customConfig
 	 * @return void
 	 */
-	public function __construct(array $exportData, array $customConfig = array())	{
+	public function __construct(array $exportData, array $customConfig = array()) {
 		$this->exportData	= $exportData;
 
 		$this->init($customConfig);
@@ -69,7 +69,7 @@ abstract class TodoyuExportBase {
 	 * @param  $filename
 	 * @return void
 	 */
-	public function setFilename($filename)	{
+	public function setFilename($filename) {
 		$this->filename = $filename;
 	}
 
@@ -88,7 +88,7 @@ abstract class TodoyuExportBase {
 	 *
 	 * @return void
 	 */
-	public function download($type, $filename = '')	{
+	public function download($type, $filename = '') {
 		header( 'Content-Type: ' . $type );
 		header( 'Content-Disposition: attachment; filename=' . ($filename ? $filename : $this->filename));
 		header( 'Content-Description: csv File' );

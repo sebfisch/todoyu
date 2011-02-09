@@ -69,7 +69,7 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	 * @param  $customConfig
 	 * @return void
 	 */
-	protected function init(array $customConfig)	{
+	protected function init(array $customConfig) {
 		$this->tmpFile = PATH_CACHE . '/output/' . 'tmpExport_' . NOW . '.csv';
 		$this->filePointer	= fopen($this->tmpFile, 'w+');
 		$this->filename = 'export_' . NOW . '.csv';
@@ -87,11 +87,11 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	/**
 	 *	creates the content
 	 */
-	public function getContent()	{
+	public function getContent() {
 		$headers = $this->prepareHeaders();
 
-		if($this->useTableHeaders )	{
-			if(is_array($headers))	{
+		if($this->useTableHeaders ) {
+			if( is_array($headers) ) {
 				fputcsv($this->filePointer, $headers, $this->delimiter, $this->enclosure);
 			}
 		}
@@ -114,7 +114,7 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	 *
 	 * @return	Array
 	 */
-	protected function prepareHeaders()	{
+	protected function prepareHeaders() {
 		$colTitles = array();
 		
 		foreach($this->exportData as $record) {
@@ -161,7 +161,7 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	 * @param string $filename
 	 * @return void
 	 */
-	public function download($filename = '')	{
+	public function download($filename = '') {
 		parent::download('text/csv', $filename);
 	}
 
@@ -174,7 +174,7 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	 *
 	 * @return void
 	 */
-	public function __destruct()	{
+	public function __destruct() {
 		unlink($this->tmpFile);
 	}
 

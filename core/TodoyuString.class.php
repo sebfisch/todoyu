@@ -291,7 +291,7 @@ class TodoyuString {
 		$length		= intval($length);
 		$characters	= range('a', 'z');
 
-		if( $useUpperCase )	{
+		if( $useUpperCase ) {
 			$characters = array_merge($characters, range('A', 'Z'));
 		}
 		if( $useNumbers ) {
@@ -629,8 +629,6 @@ class TodoyuString {
 	/**
 	 * Returns an HTML <a href="mailto:"> - tag
 	 *
-	 *
-	 * @static
 	 * @param	String	$emailAddress
 	 * @param	String	$label
 	 * @param	Boolean	$returnAsArray
@@ -645,36 +643,35 @@ class TodoyuString {
 		$separator = '?';
 		$end	= '</a>';
 
-		if($subject)	{
+		if( $subject ) {
 			$result .= $separator . 'subject=' . $subject;
 			$separator = '&';
 		}
 
-		if($mailBody)	{
+		if( $mailBody ) {
 			$result .= $separator . 'body=' . $mailBody;
 			$separator = '&';
 		}
 
-		if($cc)	{
+		if( $cc ) {
 			$result .= $separator . 'cc=' . $cc;
 			$separator = '&';
 		}
 
-		if($bcc)	{
+		if( $bcc ) {
 			$result .= $separator . 'bcc=' . $bcc;
 		}
 
 		$result .= '">';
 
-		if($returnAsArray === true)	{
+		if( $returnAsArray === true ) {
 			return array(	$result,
 							$end);
 		}
 
-		if($label)	{
+		if( $label ) {
 			return $result . $label . $end;
 		}
-
 
 		return $result . $emailAddress . $end;
 	}
@@ -682,10 +679,11 @@ class TodoyuString {
 
 
 	/**
-	 * @static
-	 * @param  $url
-	 * @param string $lable
-	 * @return void
+	 * Returns an HTML (anchor) link tag
+	 *
+	 * @param	String	$url
+	 * @param	String	$label
+	 * @return	String
 	 */
 	public static function getATag($url, $label = '', $target = 'blank') {
 		return '<a href="' . $url . '" target="' . $target . '">' . $label . '</a>';
@@ -697,7 +695,6 @@ class TodoyuString {
 	 * Returns an HTML - img tag
 	 * 
 	 * @param int $width
-	 * @static
 	 * @param	String		$src
 	 * @param	Integer		width
 	 * @param	Integer		$height
