@@ -116,7 +116,9 @@ Todoyu.Hook = {
 
 		if( typeof this.hooks[name] === 'object' ) {
 			this.hooks[name].each(function(item){
-				item.apply(item, params);
+				if( item ) {
+					item.apply(item, params);
+				}
 			});
 		}
 	}
