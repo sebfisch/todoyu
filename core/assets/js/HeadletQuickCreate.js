@@ -134,6 +134,8 @@ Todoyu.Headlet.QuickCreate = {
 			var width	= 700;
 
 			this.popup = Todoyu.Popup.openWindow(idPopup, title, width, url, options);
+
+			Todoyu.Hook.exec('headlet.quickcreate.' + type + '.popupOpened');
 		}
 	},
 

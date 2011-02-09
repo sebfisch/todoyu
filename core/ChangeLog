@@ -1,11 +1,12 @@
 todoyu core changelog
 
 core 2.1.0 - not released yet
+	* Feature: Added calling of JS hook after quickcreate popup has been opened ('headlet.quickcreate.' + type + '.popupOpened')
 	* Feature: Added Img-function to TodoyuString
- 	* Feature: Quickinfos are now deactivatible via JS
-  	* Feature: Added changelog
-  	* Feature: Added placeholders for to-be columbian spanish localization files of installer
-  	* Feature: Added large notification icons
+	* Feature: Quickinfos are now deactivatible via JS
+	* Feature: Added changelog
+	* Feature: Added placeholders for to-be columbian spanish localization files of installer
+	* Feature: Added large notification icons
  
 calendar 0.0.1 to 2.0.7 - core 2.0.7 released on 2011-01-17
 	* See release changelog in root
