@@ -48,14 +48,14 @@
 	<label index="systemconfig.title">System Configuration</label>
 	<label index="systemconfig.button">Save System Configuration</label>
 	<label index="systemconfig.name">System Name</label>
-	<label index="systemconfig.email">System E-mail</label>
+	<label index="systemconfig.email">System Email</label>
 	<label index="systemconfig.language">Language</label>
 	<label index="systemconfig.locale">Language (Country)</label>
 	<label index="systemconfig.timezone">Timezone</label>
 	<label index="systemconfig.text">Enter the basic configuration for your system</label>
-	<label index="systemconfig.text.error">Please enter a system name and e-mail address</label>
+	<label index="systemconfig.text.error">Please enter a system name and email address</label>
 	<label index="adminaccount.title">Create Administrator Account</label>
-	<label index="adminaccount.email">Administrator E-mail</label>
+	<label index="adminaccount.email">Administrator Email</label>
 	<label index="adminaccount.button">Create Administrator Account</label>
 	<label index="adminaccount.companyname">Company Name</label>
 	<label index="adminaccount.adminfirstname">First Name</label>

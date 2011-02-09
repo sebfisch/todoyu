@@ -584,6 +584,15 @@ class TodoyuFileManager {
 		return $content;
 	}
 
+
+
+	/**
+	 * Download a file from given URL via CURL
+	 *
+	 * @param	String	$url
+	 * @param	Array	$options
+	 * @return	Array|bool|mixed$
+	 */
 	private static function downloadFile_CURL($url, array $options = array()) {
 		$ch	= curl_init();
 
@@ -625,6 +634,13 @@ class TodoyuFileManager {
 
 
 
+	/**
+	 * Download a file via socket connection
+	 *
+	 * @param	String	$url
+	 * @param	Array	$options
+	 * @return	Array|bool|string
+	 */
 	private static function downloadFile_SOCKET($url, array $options = array()) {
 		$parsedURL	= parse_url($url);
 		$port		= intval($parsedURL['port']);

@@ -93,15 +93,17 @@ class TodoyuHeader {
 	 * @param	Integer		$fileModTime
 	 */
 	public static function sendDownloadHeaders($mimeType, $filename, $fileSize, $fileModTime = null) {
-		$fileSize		= intval($fileSize);
+		$fileSize	= intval($fileSize);
 		$fileModTime	= intval($fileModTime);
 
+		self::sendHeader('Content-Description', 'File Transfer');
 		self::sendHeader('Content-Type', $mimeType);
 		self::sendHeader('Content-disposition', 'attachment; filename="' . addslashes($filename) . '"');
+		self::sendHeader('Content-Transfer-Encoding', 'binary');
 		self::sendHeader('Content-length', $fileSize);
 		self::sendHeader('Expires', date('r', NOW + 600));
-		self::sendHeader('Cache-Control', 'no-cache, must-revalidate');
-		self::sendHeader('Pragma', 'no-cache');
+		self::sendHeader('Cache-Control', 'must-revalidate');	// Attention: no-cache will not work with https + internet explorer!
+		self::sendHeader('Pragma', 'public');
 
 		if( ! is_null($fileModTime) ) {
 			self::sendHeader('Last-Modified', date('r', $fileModTime));
