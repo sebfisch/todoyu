@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.1.0 - not released yet
+	* Feature: Added array helper method that merges TodoyuArray::reform() and TodoyuArray::useFieldAsIndex() => TodoyuArray::reformWithFieldAsIndex()
 	* Feature: Added check for items existence before applying hooked callbacks on items (Todoyu.Hooks.exec())
 	* Feature: Added calling of JS hook after quickcreate popup has been opened ('headlet.quickcreate.' + type + '.popupOpened')
 	* Feature: Added Img-function to TodoyuString
