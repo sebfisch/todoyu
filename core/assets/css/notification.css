@@ -79,11 +79,18 @@
 /* -------------------
 	Large icons
    ------------------- */
-div.notification span.iconLarge {
-	background:url(../img/notify.png) 0 -348px no-repeat !important;
+span.iconLarge {
 	margin:12px 12px 0 12px;
 }
+
+div.notification span.iconLarge {
+	background:url(../img/notify.png) 0 -348px no-repeat !important;
+}
+
 div.notification.reminder span.iconLarge {
 	background:url(../img/notify.png) 0 -544px no-repeat !important;
-	margin:12px 12px 0 12px;
+}
+
+div.confirmation span.iconLarge {
+	background:url(../img/notify.png) 0 -466px no-repeat !important;
 }
