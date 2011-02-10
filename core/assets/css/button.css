@@ -84,6 +84,15 @@ button.saveanddownload .icon {
 	background:url(../img/icons.png) no-repeat 0 -838px;
 }
 
+button.sendemail .icon {
+	background:url(../img/icons.png) no-repeat 2px -1156px;
+}
+
+button.exclamation .icon {
+	background:url(../img/icons.png) no-repeat 0 -386px;
+}
+
+
 /* ---------------------------
 	Center save buttons
    ---------------------------*/
