@@ -164,7 +164,7 @@ Todoyu.Tabs = {
 	 *
 	 * @method	getActiveKey
 	 * @param	{String}		list		List or its ID
-	 * @return	{Element}
+	 * @return	{String}
 	 */
 	getActiveKey: function(list) {
 		var active = this.getActive(list);
@@ -316,7 +316,7 @@ Todoyu.Tabs = {
 	 */
 	moveAsFirst: function(list, idTab) {
 			// Get tab which will be in front
-		var tab = $(list + '-tab-' + idTab);
+		var tab	= $(list + '-tab-' + idTab);
 			// Remove it from the DOM
 		tab.remove();
 
@@ -354,6 +354,7 @@ Todoyu.Tabs = {
 	},
 
 
+
 	/**
 	 * Check if a tab with the ID is in the tab group
 	 *
@@ -378,8 +379,8 @@ Todoyu.Tabs = {
 		var idTab;
 
 		while( $(list + '-tabs').down('li', max) !== undefined ) {
-			var x = $(list + '-tabs').down('li', max);
-			idTab = this.removeLast(list);
+			var x	= $(list + '-tabs').down('li', max);
+			idTab	= this.removeLast(list);
 			tabIDs.push(idTab);
 		}
 
@@ -395,7 +396,7 @@ Todoyu.Tabs = {
 	 * @return	{String}	ID of the remove tab
 	 */
 	removeLast: function(list) {
-		var last = $(list + '-tabs').select('li').last();
+		var last	= $(list + '-tabs').select('li').last();
 		var idTab	= last.id.split('-').last();
 
 		last.remove();
@@ -403,22 +404,65 @@ Todoyu.Tabs = {
 		return idTab;
 	},
 
+
+
+	/**
+	 * Get amount of tabs in list
+	 *
+	 * @method	getNumTabs
+	 * @param	{String}	list
+	 * @return	{Number}
+	 */
 	getNumTabs: function(list) {
 		return $(list + '-tabs').select('li').size();
 	},
 
+
+
+	/**
+	 * Get tab with given index in given list
+	 *
+	 * @method	getTab
+	 * @param	{String}	list
+	 * @param	{Number}	index
+	 * @return	{Element}
+	 */
 	getTab: function(list, index) {
 		return $(list + '-tabs').down('li', index || 0);
 	},
 
+
+
+	/**
+	 * Get first tab of given list
+	 *
+	 * @param	{String}	list
+	 * @return	{Element}
+	 */
 	getFirstTab: function(list) {
 		return this.getTab(list, 0);
 	},
 
+
+
+	/**
+	 * Get last tab of given list
+	 *
+	 * @param	{String}	list
+	 * @return	{Element}
+	 */
 	getLastTab: function(list) {
 		return this.getTab(list, this.getNumTabs(list)-1);
 	},
 
+
+
+	/**
+	 * Get all tab elements of given list
+	 *
+	 * @param	{String}	list
+	 * @return	{Array}
+	 */
 	getAllTabs: function(list) {
 		return $(list + '-tabs').select('li');
 	}
