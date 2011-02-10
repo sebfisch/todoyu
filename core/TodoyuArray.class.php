@@ -204,6 +204,23 @@ class TodoyuArray {
 
 
 	/**
+	 * Rename key of array by given mapping array (see TodoyuArray::reform()), use given field as new index for sub arrays
+	 *
+	 * @param	Array	$array
+	 * @param	Array	$reformConfig
+	 * @param	Bool	$copyAllData
+	 * @param	String	$indexFieldName
+	 * @return	Array
+	 */
+	public static function reformWithFieldAsIndex(array $array, array $reformConfig, $copyAllData = false, $indexFieldName) {
+		$array	= self::reform($array, $reformConfig, $copyAllData);
+
+		return self::useFieldAsIndex($array, $indexFieldName);
+	}
+
+
+
+	/**
 	 * Stripslashes on all array values and sub arrays
 	 *
 	 * @param	Array	$array
