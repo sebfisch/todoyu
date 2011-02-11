@@ -3,7 +3,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2010, snowflake productions GmbH, Switzerland
+* Copyright (c) 2011, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -26,6 +26,6 @@
 	// ****************************************************************************
 
 	// Installed extensions
-Todoyu::$CONFIG['EXT']['installed'] = array('admin','project','sysmanager','loginpage','portal','calendar','timetracking','daytracks','search','bookmark','contact','comment','profile','assets');
+Todoyu::$CONFIG['EXT']['installed'] = array('admin','project','sysmanager','loginpage','portal','calendar','timetracking','daytracks','search','bookmark','contact','comment','profile','assets','dev','currency','projectbilling','gantt','reporting','projectbillingreporting','calendarreporting');
 
 ?>

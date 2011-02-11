@@ -3,7 +3,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2010, snowflake productions GmbH, Switzerland
+* Copyright (c) 2011, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -28,12 +28,12 @@ Todoyu::$CONFIG['DEBUG'] = true;
 Todoyu::$CONFIG['LOG']['active'] = array('FILE', 'FIREPHP');
 
 	// Asset caching
-Todoyu::$CONFIG['CACHE']['JS']['localize']	= true;
-Todoyu::$CONFIG['CACHE']['JS']['merge']		= true;
-Todoyu::$CONFIG['CACHE']['JS']['compress']	= true;
+Todoyu::$CONFIG['CACHE']['JS']['localize']	= false;
+Todoyu::$CONFIG['CACHE']['JS']['merge']		= false;
+Todoyu::$CONFIG['CACHE']['JS']['compress']	= false;
 
-Todoyu::$CONFIG['CACHE']['CSS']['merge']	= true;
-Todoyu::$CONFIG['CACHE']['CSS']['compress']	= true;
+Todoyu::$CONFIG['CACHE']['CSS']['merge']	= false;
+Todoyu::$CONFIG['CACHE']['CSS']['compress']	= false;
 
 Todoyu::$CONFIG['LIST']['size']	= 30;
 
