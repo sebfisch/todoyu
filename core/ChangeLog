@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.1.0 - not released yet
+	* Feature: Added TodoyuBaseObject::getCreatePersonID() and getCreatePerson() shortcut methods
 	* Feature: Added exclamation and email icons to core standard icons
 	* Feature: Added CSS for big (32x32px) confirmation icon
 	* Feature: Added array helper method that merges TodoyuArray::reform() and TodoyuArray::useFieldAsIndex() => TodoyuArray::reformWithFieldAsIndex()

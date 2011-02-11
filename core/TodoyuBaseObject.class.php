@@ -251,6 +251,28 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 
 
 	/**
+	 * Get ID of the creator person
+	 *
+	 * @return	Integer
+	 */
+	public function getCreatePersonID() {
+		return $this->getPersonID('create');
+	}
+
+
+
+	/**
+	 * Get the creator person
+	 *
+	 * @return	TodoyuPerson
+	 */
+	public function getCreatePerson() {
+		return $this->getPerson('create');
+	}
+
+
+
+	/**
 	 *
 	 *
 	 * @param	String	$key

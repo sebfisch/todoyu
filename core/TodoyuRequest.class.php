@@ -27,10 +27,10 @@
 class TodoyuRequest {
 
 	/**
-	 * Get parameter from request. POST data is prefered if available
+	 * Get parameter from request. POST data is preferred if available
 	 *
 	 * @param	String		$name			name of the variable
-	 * @param	Boolean		$intval			Apply intval() on the value
+	 * @param	Boolean		$intVal			Apply intval() on the value
 	 * @return	Mixed
 	 */
 	public static function getParam($name, $intVal = false) {
