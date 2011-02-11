@@ -482,6 +482,21 @@ class TodoyuDatabase {
 
 
 	/**
+	 * Set record(s) deleted = 1
+	 *
+	 * @param	String		$table
+	 * @param	String		$where
+	 * @return	Integer		Num affected (updated) rows
+	 */
+	public function setDeleted($table, $where) {
+		$fieldNameValues	= array('deleted'	=> '1');
+
+		return $this->doUpdate($table, $where, $fieldNameValues);
+	}
+
+
+
+	/**
 	 * Build an update query
 	 *
 	 * @param	String		$table
