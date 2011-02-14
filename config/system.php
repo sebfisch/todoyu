@@ -19,10 +19,12 @@
 *****************************************************************************/
 
 Todoyu::$CONFIG['SYSTEM']['name'] 		= 'todoyu';
-Todoyu::$CONFIG['SYSTEM']['email']		= 'kstenschke@snowflake.ch';
-Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_GB';
-Todoyu::$CONFIG['SYSTEM']['timezone']	= 'Africa/Abidjan';
+Todoyu::$CONFIG['SYSTEM']['email']		= 'install@todoyu.com';
+Todoyu::$CONFIG['SYSTEM']['language']	= 'en_GB';
+Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_GB.utf8';
 
-Todoyu::$CONFIG['SYSTEM']['encryptionKey']	= 'OWIwNzBhODYyY2I1OGQzNDhmOTA0ODdiZTBkMTE3Yjc';
+//Todoyu::$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
+
+Todoyu::$CONFIG['SYSTEM']['encryptionKey']	= 'N2Q1ZDA1ZTQ2NGZiNjRjODM4NGVjMzYyYmFlOTI3MDk';
 
 ?>
