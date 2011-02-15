@@ -115,9 +115,9 @@ Todoyu.Popup = {
 			requestOptions.onComplete = Prototype.emptyFunction;
 		}
 			// Popup with AJAX content
-		requestOptions.onComplete.wrap(function(idPopup, callOriginal, response){
-			callOriginal(response);
-		}.bind(this, idPopup));
+//		requestOptions.onComplete.wrap(function(idPopup, callOriginal, response){
+//			callOriginal(response);
+//		}.bind(this, idPopup));
 
 		if( contentUrl !== false ) {
 			this.popup[idPopup].setAjaxContent(contentUrl, requestOptions, false, false);
@@ -125,7 +125,7 @@ Todoyu.Popup = {
 
 			// Save last opened popup
 		this.last = this.getPopup(idPopup);
-		
+
 			// Close all RTEs inside popup when closing it
 		var closeObserver = {
 			onDestroy: function(eventName, win) {

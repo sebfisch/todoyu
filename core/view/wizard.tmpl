@@ -1,0 +1,42 @@
+<div class="wizard wizard{ucfirst $wizardName}" id="wizard">
+
+	<div class="navi">
+		<ul>
+			{foreach $steps step}
+				<li {if $stepName == $step.step}class="active"{/if}>{Label $step.label}</li>
+			{/foreach}
+		</ul>
+	</div>
+
+	<div class="content">
+		<h1 class="title">{$title}</h1>
+
+		{if $description}
+			<p class="description">{$description}</p>
+		{/if}
+
+		<form method="post" action="?ext=core&amp;controller=wizard">
+			<input type="hidden" name="action" value="save" />
+			<input type="hidden" name="wizard" value="{$wizardName}" id="wizard-wizard" />
+			<input type="hidden" name="step" value="{$stepName}" id="wizard-step" />
+			<input type="hidden" name="direction" value="next" id="wizard-direction" />
+			{$content}
+		</form>
+	</div>
+
+	<div class="help">
+		{$help}
+	</div>
+
+	<div class="buttons">
+		<div class="close">
+			<a href="">Close wizard</a>
+		</div>
+		<div class="main">
+			{Button label="Back to last page" onclick="Todoyu.Wizard.back('$wizardName')"}
+			{Button label="Next" onclick="Todoyu.Wizard.next('$wizardName')"}
+		</div>
+
+	</div>
+
+</div>

@@ -837,10 +837,14 @@ class TodoyuArray {
 	 * Trim all elements of an array. The elements have to be strings
 	 *
 	 * @param	Array		$array
+	 * @param	Boolean		$removeEmpty		Remove empty elements
 	 */
-	public static function trim(array $array) {
+	public static function trim(array $array, $removeEmpty = false) {
 		foreach($array as $index => $value) {
-			$array[$index] = trim($value);
+			$value	= trim($value);
+			if( !$removeEmpty || $value !== '' ) {
+				$array[$index] = $value;
+			}
 		}
 
 		return $array;

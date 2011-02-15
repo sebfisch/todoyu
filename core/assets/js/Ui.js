@@ -436,7 +436,7 @@ Todoyu.Ui = {
 					scrollBy	= scrollOffset - (elementOffset - headerHeight);
 				}
 
-				this.scrollBy.delay(0.1, 0, -scrollBy);
+				this.scrollBy.defer(0, -scrollBy);
 			}
 		}
 	},
@@ -732,28 +732,6 @@ Todoyu.Ui = {
 		});
 
 		return element;
-	},
-
-
-
-	/**
-	 * Set selected options of a select element
-	 *
-	 * @method	selectOptions
-	 * @param	{Element}	element
-	 * @param	{Array}		selection
-	 */
-	selectOptions: function(element, selection) {
-		element		= $(element);
-		selection	= selection.constructor === Array ? selection : [selection];
-
-		element.selectedIndex = -1;
-
-		$A(element.options).each(function(selection, option){
-			if( selection.include(option.value) ) {
-				option.selected = true;
-			}
-		}.bind(this, selection));
 	}
 
 };

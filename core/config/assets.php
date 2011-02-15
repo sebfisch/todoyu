@@ -267,18 +267,18 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'file'		=> 'core/assets/js/FieldList.js',
 			'position'	=> 78
 		),
-//		array(
-//			'file'		=> 'core/assets/js/AutocompleteMulti.js',
-//			'position'	=> 79
-//		),
 		array(
 			'file'		=> 'core/assets/js/SelectMulti.js',
 			'position'	=> 79
 		),
-				array(
+		array(
 			'file'		=> 'core/assets/js/AutocompleterMulti.js',
 			'position'	=> 80
 		),
+		array(
+			'file'		=> 'core/assets/js/Wizard.js',
+			'position'	=> 81
+		)
 	),
 
 	'css' => array(
@@ -408,6 +408,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/assets/css/inline-filters.css',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/wizard.css',
 			'position'	=> 10
 		)
 	)

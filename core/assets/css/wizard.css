@@ -1,0 +1,86 @@
+/*#wizard-button {
+	position: fixed;
+	top:10px;
+	left:10px;
+	background-color:#F00;
+	color:#FFF;
+	padding:10px;
+	cursor:pointer;
+	z-index:1000;
+}*/
+
+.wizard {
+	background-color:#FFF;
+}
+
+.wizard .navi,
+.wizard .content,
+.wizard .help {
+	float:left;
+	clear:none;
+}
+
+.wizard .navi {
+	width:180px;
+	height:520px;
+	background-color:#E3EACE;
+}
+
+.wizard .navi ul {
+	margin-left:20px;
+	margin-top:20px;
+	text-align:left;
+	list-style-type:square;
+	list-style-position:inside;
+}
+
+.wizard .navi ul li {
+	font-size:12px;
+	font-weight:bold;
+	padding:5px;
+}
+
+.wizard .content {
+	padding:20px;
+	width:460px;
+	height:460px;
+}
+
+.wizard .content h1.title {
+	font-size:18px;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+
+.wizard .help {
+	width:219px;
+	height:500px;
+	padding-top:20px;
+	background-color:#EFEFEF;
+	border-left:1px solid #000;
+}
+
+.wizard .buttons {
+	float:left;
+	clear:both;
+	width:100%;
+	border-top:1px solid #000;
+	background-color:#FFF;
+	padding:10px 0;
+}
+
+.wizard .buttons > div {
+	float:left;
+	clear:none;
+}
+
+.wizard .buttons .close {
+	width:180px;
+	text-align:center;
+}
+
+.wizard .buttons .main {
+	width:720px;
+}
+
+
