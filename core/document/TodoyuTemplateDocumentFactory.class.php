@@ -20,7 +20,7 @@
 
 /**
  * Factory class for document type objects
- * 
+ *
  * @package		Todoyu
  * @subpackage	Document
  */
@@ -38,14 +38,13 @@ class TodoyuTemplateDocumentFactory {
 	public static function getTemplateDocument($type, array $data, $template, array $config = array()) {
 		$typeClass	= self::getTypeClass($type);
 		$template	= ( $template === false ) ? false : TodoyuFileManager::pathAbsolute($template);
-		$document	= false;
 
-			// Template is no regular file and not false? throw exception 
+			// Template is no regular file and not false? throw exception
 		if( $template !== false && ! is_file($template) ) {
 			throw new TodoyuTemplateDocumentException(null, 'Template file not found: ' . $template);
 		}
 
-			// Instantiate type class if exists 
+			// Instantiate type class if exists
 		if( $typeClass !== false ) {
 			$document	= new $typeClass($data, $template, $config);
 

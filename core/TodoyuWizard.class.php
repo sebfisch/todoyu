@@ -34,6 +34,9 @@ abstract class TodoyuWizard {
 	private $name;
 
 
+	private $steps = array();
+
+
 	/**
 	 * @param	String		$name
 	 */
@@ -47,7 +50,7 @@ abstract class TodoyuWizard {
 
 		$step	= $this->getStep($stepName);
 
-		return $step->render();
+		return $step->renderContent();
 	}
 
 
@@ -69,16 +72,15 @@ abstract class TodoyuWizard {
 	 * @return 	String
 	 */
 	public function render($stepName) {
-		$stepName	= $this->getActiveStepName($stepName);
-		$step		= $this->getStep($stepName);
+		$step		= $this->getActiveStep();
 
 		$tmpl	= 'core/view/wizard.tmpl';
 		$data	= array(
 			'wizardName'=> $this->name,
-			'stepName'	=> $stepName,
 			'steps'		=> $this->getStepItems(),
+			'stepName'	=> $step->getName(),
 			'title'		=> $step->getLabel(),
-			'content'	=> $step->render(),
+			'content'	=> $step->renderContent(),
 			'help'		=> $step->renderHelp()
 		);
 
@@ -95,10 +97,6 @@ abstract class TodoyuWizard {
 	protected function getStepItems() {
 		$steps	= TodoyuWizardManager::getSteps($this->name);
 
-//		foreach($steps as $index => $step) {
-//			$steps[$index]['label'] = Label($step['label']);
-//		}
-
 		return $steps;
 	}
 
@@ -111,18 +109,29 @@ abstract class TodoyuWizard {
 	 */
 	protected function getStep($stepName) {
 		$stepName	= $this->getActiveStepName($stepName);
-		$stepConfig	= TodoyuWizardManager::getStep($this->name, $stepName);
 
-		$class	= get_class($this) . 'Step' . ucfirst(strtolower($stepName));
+		if( ! isset($this->steps[$stepName]) ) {
+			$stepConfig	= TodoyuWizardManager::getStep($this->name, $stepName);
 
-		if( class_exists($class, true) ) {
-			return new $class($this, $stepConfig);
-		} else {
-			throw new Exception('Wizard step class not found: ' . $class);
+			$class	= get_class($this) . 'Step' . ucfirst(strtolower($stepName));
+
+			if( class_exists($class, true) ) {
+				 $this->steps[$stepName] = new $class($this, $stepConfig);
+			} else {
+				throw new Exception('Wizard step class not found: ' . $class);
+			}
 		}
+
+		return $this->steps[$stepName];
 	}
 
 
+
+	/**
+	 * Get name of active step. Use parameter if step name was given
+	 * @param null $stepName
+	 * @return Mixed|null|void
+	 */
 	protected function getActiveStepName($stepName = null) {
 		if( empty($stepName) ) {
 			$stepName = TodoyuWizardManager::getCurrentStep($this->name);
@@ -135,12 +144,43 @@ abstract class TodoyuWizard {
 	}
 
 
+	/**
+	 * @return	TodoyuWizardStep
+	 */
+	public function getActiveStep() {
+		return $this->getStep($this->getActiveStepName());
+	}
+
+
+
+	/**
+	 * Get label of active step
+	 *
+	 * @return	String
+	 */
+	public function getActiveStepLabel() {
+		return $this->getActiveStep()->getLabel();
+	}
+
+
+	/**
+	 * Change step into given direction (next/back)
+	 *
+	 * @param	String		$direction
+	 * @return	String		Next step key
+	 */
 	public function goToStepInDirection($direction) {
-		return $direction === 'next' ? $this->goToNextStep() : $this->goToLastStep();
+		if( $direction === 'next' ) {
+			return $this->goToNextStep();
+		} elseif( $direction === 'back' ) {
+			return $this->goToLastStep();
+		} else {
+			return $this->getActiveStepName();
+		}
 	}
 
 	public function goToNextStep() {
-		$nextStep	= $this->getNextStep();
+		$nextStep	= $this->getNextStepName();
 
 		TodoyuWizardManager::setCurrentStep($this->name, $nextStep);
 
@@ -149,16 +189,24 @@ abstract class TodoyuWizard {
 
 
 	public function goToLastStep() {
-		$lastStep	= $this->getLastStep();
+		$lastStep	= $this->getLastStepName();
 
 		TodoyuWizardManager::setCurrentStep($this->name, $lastStep);
 
 		return $lastStep;
 	}
 
-
-
 	protected function getNextStep() {
+		return $this->getStep($this->getNextStepName());
+	}
+
+	protected function getLastStep() {
+		return $this->getStep($this->getLastStepName());
+	}
+
+
+
+	protected function getNextStepName() {
 		$activeStep	= $this->getActiveStepName();
 
 		$steps		= TodoyuWizardManager::getSteps($this->name);
@@ -177,7 +225,11 @@ abstract class TodoyuWizard {
 	}
 
 
-	protected function getLastStep() {
+
+
+
+
+	protected function getLastStepName() {
 		$activeStep	= $this->getActiveStepName();
 
 		$steps		= TodoyuWizardManager::getSteps($this->name);

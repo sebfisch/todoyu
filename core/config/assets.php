@@ -278,6 +278,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/js/Wizard.js',
 			'position'	=> 81
+		),
+		array(
+			'file'		=> 'core/assets/js/AutoExtendingList.js',
+			'position'	=> 82
 		)
 	),
 

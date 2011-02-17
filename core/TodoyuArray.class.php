@@ -840,14 +840,15 @@ class TodoyuArray {
 	 * @param	Boolean		$removeEmpty		Remove empty elements
 	 */
 	public static function trim(array $array, $removeEmpty = false) {
-		foreach($array as $index => $value) {
+		$new	= array();
+		foreach($array as $value) {
 			$value	= trim($value);
 			if( !$removeEmpty || $value !== '' ) {
-				$array[$index] = $value;
+				$new[] = $value;
 			}
 		}
 
-		return $array;
+		return $new;
 	}
 
 
@@ -891,6 +892,31 @@ class TodoyuArray {
 		}
 
 		return $array;
+	}
+
+
+
+	/**
+	 * Get items of the left array which are not in the right one
+	 * Difference to array_diff. Unique elements from the right array are ignored
+	 *
+	 * @param	Array	$left
+	 * @param	Array	$right
+	 * @return	Array
+	 */
+	public static function diffLeft(array $left, array $right) {
+		$new = array();
+
+		foreach($left as $leftItem) {
+			foreach($right as $rightItem) {
+				if( $leftItem == $rightItem ) {
+					continue 2;
+				}
+			}
+			$new[] = $leftItem;
+		}
+
+		return $new;
 	}
 
 }

@@ -1120,6 +1120,19 @@ class TodoyuForm implements ArrayAccess {
 
 		return render($tmpl, $data);
 	}
+
+
+
+	/**
+	 * Render form without form tag
+	 *
+	 * @return	String
+	 */
+	public function renderContent() {
+		$this->setAttribute('noFormTag', true);
+
+		return $this->render();
+	}
 }
 
 ?>

@@ -489,7 +489,9 @@ class TodoyuDatabase {
 	 * @return	Integer		Num affected (updated) rows
 	 */
 	public function setDeleted($table, $where) {
-		$fieldNameValues	= array('deleted'	=> '1');
+		$fieldNameValues = array(
+			'deleted'	=> 1
+		);
 
 		return $this->doUpdate($table, $where, $fieldNameValues);
 	}

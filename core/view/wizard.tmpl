@@ -15,11 +15,12 @@
 			<p class="description">{$description}</p>
 		{/if}
 
-		<form method="post" action="?ext=core&amp;controller=wizard">
+		<form method="post" action="?ext=core&amp;controller=wizard" id="wizard-form">
 			<input type="hidden" name="action" value="save" />
 			<input type="hidden" name="wizard" value="{$wizardName}" id="wizard-wizard" />
 			<input type="hidden" name="step" value="{$stepName}" id="wizard-step" />
 			<input type="hidden" name="direction" value="next" id="wizard-direction" />
+			<input type="hidden" name="nosave" value="0" id="wizard-nosave" />
 			{$content}
 		</form>
 	</div>
@@ -38,5 +39,7 @@
 		</div>
 
 	</div>
+
+	<div class="clear"></div>
 
 </div>

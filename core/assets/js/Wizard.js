@@ -19,8 +19,19 @@
 
 Todoyu.Wizard = {
 
-	wizards: {},
+	/**
+	 * Active wizard info
+	 */
+	wizard: null,
 
+
+
+	/**
+	 * Open a wizard
+	 *
+	 * @param	{String}	wizardName
+	 * @param	{Function}	onLoadCallback
+	 */
 	open: function(wizardName, onLoadCallback) {
 		var url		= Todoyu.getUrl('core', 'wizard');
 		var options	= {
@@ -28,51 +39,132 @@ Todoyu.Wizard = {
 				action: 'load',
 				wizard: wizardName
 			},
-			onComplete: this.onOpened.bind(this, wizardName)
+			onComplete: this.onOpened.bind(this)
 		};
 
-		this.wizards[wizardName] = {
+		this.wizard = {
+			name: wizardName,
 			popup: Todoyu.Popup.openWindow('wizard' + wizardName, 'Wizard', 900, url, options),
 			callback: onLoadCallback || Prototype.emptyFunction
 		};
 	},
 
-	onOpened: function(wizardName, response) {
-		this.wizards[wizardName].popup.setTitle('test');
-		this.wizards[wizardName].callback(wizardName, response);
+
+	/**
+	 * Handler when wizard was opened
+	 *
+	 * @param 	{Ajax.Response}	response
+	 */
+	onOpened: function(response) {
+		this.onLoaded(response);
 	},
 
-	back: function(wizardName) {
-		this.setDirection('back');
-		this.submit(wizardName);
+
+	/**
+	 * Go one step back in wizard
+	 */
+	back: function() {
+		this.submit('back');
 	},
 
-	next: function(wizardName) {
-		this.setDirection('next');
-		this.submit(wizardName);
+
+
+	/**
+	 * Go to next step in wizard
+	 */
+	next: function() {
+		this.submit('next');
 	},
 
-	submit: function(wizardName) {
+
+
+	/**
+	 * Submit the wizard form. Set direction if provided
+	 */
+	submit: function(direction, callback) {
+		if( typeof direction === 'string' ) {
+			this.setDirection(direction);
+		}
+
+		callback	= callback || Prototype.emptyFunction;
+
 		$('wizard').down('form').request({
-			onComplete: this.onSubmitted.bind(this, wizardName)
+			onComplete: this.onSubmitted.bind(this, callback)
 		});
 	},
 
-	onSubmitted: function(wizardName, response) {
+
+
+	/**
+	 * Handler when form was submitted
+	 *
+	 * @param	{Ajax.Response}	response
+	 */
+	onSubmitted: function(callback, response) {
 		$('wizard').replace(response.responseText);
-		this.wizards[wizardName].callback(wizardName, response);
+		this.onLoaded(response);
+		callback(response);
 	},
 
+
+
+	/**
+	 * Handler when wizard was loaded (opened or submitted)
+	 *
+	* @param	{Ajax.Response}	response
+	 */
+	onLoaded: function(response) {
+		this.wizard.popup.setTitle(response.getTodoyuHeader('label'));
+		this.wizard.callback(response, this.wizard);
+	},
+
+
+
+	/**
+	 * Set direction for next step
+	 *
+	 * @param	{String}	direction
+	 */
 	setDirection: function(direction) {
 		$('wizard-direction').value = direction;
 	},
 
+
+
+	/**
+	 * Get current step
+	 */
 	getStepName: function() {
 		return $F('wizard-step');
 	},
 
+
+
+	/**
+	 * Get name of the wizard
+	 */
 	getWizardName: function() {
-		return $F('wizard-wizard');
+		return this.wizard.name;
+	},
+
+
+
+	/**
+	 * Get form element of the wizard
+	 */
+	getForm: function() {
+		return $('wizard-form');
+	},
+
+
+
+	/**
+	 * Set no save mode. Wizard just goes to requested direction without validation or saving data
+	 *
+	 * @param	{Boolean}	value
+	 */
+	setNoSave: function(value) {
+		$('wizard-nosave').value = value === false ? 0 : 1;
 	}
 
 };

@@ -22,44 +22,107 @@
  * [Enter Class Description]
  *
  * @package		Todoyu
- * @subpackage	[Subpackage]
+ * @subpackage	Core
  */
 abstract class TodoyuWizardStep {
 
+	/**
+	 * Wizard which contains
+	 * @var		TodoyuWizard
+	 */
 	protected $wizard;
 
+	/**
+	 * Step config
+	 * @var	Array
+	 */
 	protected $config;
 
-	protected $data = array();
+	/**
+	 * Submitted data
+	 * @var	Boolean
+	 */
+	protected $data = null;
 
+
+
+	/**
+	 * Initialize step
+	 *
+	 * @param	TodoyuWizard	$wizard
+	 * @param 	Array			$config
+	 */
 	final public function __construct(TodoyuWizard $wizard, array $config) {
 		$this->wizard	= $wizard;
 		$this->config	= $config;
+
+		$this->init();
 	}
 
 
+
+	/**
+	 * Get name of the step
+	 *
+	 * @return	String
+	 */
 	public function getName() {
 		return $this->config['step'];
 	}
 
 
+
+	/**
+	 * Get label of the step
+	 *
+	 * @return		String
+	 */
 	public function getLabel() {
 		return Label($this->config['label']);
 	}
 
 
-	public function init() {
 
+
+	/**
+	 * Replacement for the constructor
+	 *
+	 */
+	protected function init() {
+		// Dummy
 	}
 
+
+
+	/**
+	 * Render content for help frame
+	 *
+	 * @return	String|Boolean
+	 */
 	public function renderHelp() {
 		return false;
 	}
 
 
+
+	/**
+	 * Save step data
+	 *
+	 * @abstract
+	 * @param	Array		$data
+	 * @return	Boolean
+	 */
 	abstract public function save(array $data);
 
-	abstract public function render();
+
+
+	/**
+	 * Render content
+	 *
+	 * @abstract
+	 * @return	String
+	 */
+	abstract public function renderContent();
 
 }
 

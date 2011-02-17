@@ -39,25 +39,44 @@ class TodoyuCoreWizardActionController extends TodoyuActionController {
 
 		$wizard		= TodoyuWizardManager::getWizard($wizardName);
 
+		$label	= $wizard->getActiveStepLabel();
+		TodoyuHeader::sendTodoyuHeader('label', $label);
+
 		return $wizard->render($step);
 	}
 
 
+
+	/**
+	 * Save wizard step and render next step if data was valid
+	 *
+	 * @param	Array		$params
+	 * @return	String
+	 */
 	public function saveAction(array $params) {
 		$wizardName	= trim($params['wizard']);
 		$step		= trim($params['step']);
 		$direction	= trim($params['direction']);
+		$noSave		= intval($params['nosave']) === 1;
 		$data		= TodoyuArray::assure($params['data']);
 
 		$wizard		= TodoyuWizardManager::getWizard($wizardName);
 
-		if( $wizard->save($step, $data) ) {
-			$step	= $wizard->goToStepInDirection($direction);
+		if( $noSave === false ) {
+			if( $wizard->save($step, $data) ) {
+				$step	= $wizard->goToStepInDirection($direction);
 
-//			TodoyuDebug::printInFireBug($step, 'next step');
+	//			TodoyuDebug::printInFireBug($step, 'next step');
+			} else {
+				TodoyuNotification::notifyError('Invalid data');
+	//			TodoyuDebug::printInFireBug('failed, render again the same');
+			}
 		} else {
-//			TodoyuDebug::printInFireBug('failed, render again the same');
+			$step	= $wizard->goToStepInDirection($direction);
 		}
+
+		$label	= $wizard->getActiveStepLabel();
+		TodoyuHeader::sendTodoyuHeader('label', $label);
 
 		return $wizard->render($step);
 	}
