@@ -291,6 +291,16 @@ var Todoyu = {
 
 
 	/**
+	 * Check whether the current user is logged in
+	 * Guess for logged in if headlets are shown
+	 */
+	isLoggedIn: function() {
+		return this.exists('headlets');
+	},
+
+
+
+	/**
 	 * Call a user function in string format with given arguments
 	 * @example	Todoyu.calluserFunction('Todoyu.notifySuccess', 'This is a message', 5);
 	 *
