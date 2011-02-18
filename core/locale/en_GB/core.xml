@@ -85,4 +85,9 @@
 	<label index="of">of</label>
 	<label index="public">Public</label>
 	<label index="notpublic">Not Public</label>
+	<label index="wizard">Wizard</label>
+	<label index="wizard.close">Close wizard</label>
+	<label index="wizard.close.confirm">Are you sure to close the wizard before you have finished all steps?</label>
+	<label index="wizard.back">Back</label>
+	<label index="wizard.next">Forward</label>
 </labels>

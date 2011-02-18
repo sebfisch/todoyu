@@ -3,7 +3,8 @@
 	<div class="navi">
 		<ul>
 			{foreach $steps step}
-				<li {if $stepName == $step.step}class="active"{/if}>{Label $step.label}</li>
+				{$done = in_array($step.step, $doneSteps)}
+				<li class="{if $stepName==$step.step}active{/if}{if $done} done{/if}" {if $done}onclick="Todoyu.Wizard.goToStep('{$step.step}')"{/if}>{Label $step.label}</li>
 			{/foreach}
 		</ul>
 	</div>
@@ -23,6 +24,7 @@
 			<input type="hidden" name="nosave" value="0" id="wizard-nosave" />
 			{$content}
 		</form>
+
 	</div>
 
 	<div class="help">
@@ -31,11 +33,15 @@
 
 	<div class="buttons">
 		<div class="close">
-			<a href="">Close wizard</a>
+			<a href="javascript:void(0)" onclick="Todoyu.Wizard.close()">Close wizard</a>
 		</div>
 		<div class="main">
-			{Button label="Back to last page" onclick="Todoyu.Wizard.back('$wizardName')"}
-			{Button label="Next" onclick="Todoyu.Wizard.next('$wizardName')"}
+			{if !$isFirst}
+				{Button label="LLL:core.wizard.back" class="back" onclick="Todoyu.Wizard.back()"}
+			{/if}
+			{if !$isLast}
+				{Button label="LLL:core.wizard.next" class="next" onclick="Todoyu.Wizard.next()"}
+			{/if}
 		</div>
 
 	</div>

@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * [Enter Class Description]
+ * Wizard step
  *
  * @package		Todoyu
  * @subpackage	Core

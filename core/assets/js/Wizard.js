@@ -17,6 +17,10 @@
  * This copyright notice MUST APPEAR in all copies of the script.
  *****************************************************************************/
 
+/**
+ * Wizard with multiple steps in a popup
+ * Only one wizard can be open at the time
+ */
 Todoyu.Wizard = {
 
 	/**
@@ -50,6 +54,7 @@ Todoyu.Wizard = {
 	},
 
 
+
 	/**
 	 * Handler when wizard was opened
 	 *
@@ -58,6 +63,7 @@ Todoyu.Wizard = {
 	onOpened: function(response) {
 		this.onLoaded(response);
 	},
+
 
 
 	/**
@@ -88,7 +94,7 @@ Todoyu.Wizard = {
 
 		callback	= callback || Prototype.emptyFunction;
 
-		$('wizard').down('form').request({
+		this.getForm().request({
 			onComplete: this.onSubmitted.bind(this, callback)
 		});
 	},
@@ -132,6 +138,17 @@ Todoyu.Wizard = {
 
 
 	/**
+	 * Go to a wizard step
+	 *
+	 * @param	{String}	step
+	 */
+	goToStep: function(step) {
+		this.submit(step);
+	},
+
+
+
+	/**
 	 * Get current step
 	 */
 	getStepName: function() {
@@ -165,6 +182,17 @@ Todoyu.Wizard = {
 	 */
 	setNoSave: function(value) {
 		$('wizard-nosave').value = value === false ? 0 : 1;
+	},
+
+
+
+	/**
+	 * Close wizard
+	 */
+	close: function() {
+		if( confirm('Are you sure?') ) {
+			Todoyu.Popup.close('wizard' + this.wizard.name);
+		}
 	}
 
 };

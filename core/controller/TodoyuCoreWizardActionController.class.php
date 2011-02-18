@@ -20,7 +20,7 @@
 
 /**
  * Core Action Controller
- * About
+ * Wizard
  *
  * @package		Todoyu
  * @subpackage	Core
@@ -65,11 +65,8 @@ class TodoyuCoreWizardActionController extends TodoyuActionController {
 		if( $noSave === false ) {
 			if( $wizard->save($step, $data) ) {
 				$step	= $wizard->goToStepInDirection($direction);
-
-	//			TodoyuDebug::printInFireBug($step, 'next step');
 			} else {
-				TodoyuNotification::notifyError('Invalid data');
-	//			TodoyuDebug::printInFireBug('failed, render again the same');
+				TodoyuNotification::notifyError('Can\'t proceed to the next step. Step is incomplete');
 			}
 		} else {
 			$step	= $wizard->goToStepInDirection($direction);

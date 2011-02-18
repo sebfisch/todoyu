@@ -19,21 +19,26 @@
 *****************************************************************************/
 
 /**
- * [Enter Class Description]
+ * Manage wizards and their steps
  *
  * @package		Todoyu
- * @subpackage	[Subpackage]
+ * @subpackage	Core
  */
 class TodoyuWizardManager {
 
 	/**
-	 * Wizard configurations
+	 * Wizard step configurations
 	 *
 	 * @var	Array
 	 */
 	private static $steps	= array();
 
 
+	/**
+	 * List of wizard classes
+	 *
+	 * @var	Array
+	 */
 	private static $wizards	= array();
 
 
@@ -100,10 +105,25 @@ class TodoyuWizardManager {
 	}
 
 
+
+	/**
+	 * Save current step
+	 *
+	 * @param	String		$wizardName
+	 * @param	String		$stepName
+	 */
 	public static function setCurrentStep($wizardName, $stepName) {
 		TodoyuSession::set('wizard/' . $wizardName, $stepName);
 	}
 
+
+
+	/**
+	 * Get current step
+	 *
+	 * @param	String		$wizardName
+	 * @return	String
+	 */
 	public static function getCurrentStep($wizardName) {
 		return TodoyuSession::get('wizard/' . $wizardName);
 	}
