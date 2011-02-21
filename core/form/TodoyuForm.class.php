@@ -212,6 +212,20 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
+	 * Clear form values
+	 *
+	 */
+	public function clear() {
+		foreach($this->fields as $name => $field ) {
+			$this->formdata[$name] = '';
+		}
+
+		$this->updateFieldValues();
+	}
+
+
+
+	/**
 	 * Add extra form data without replacing the current one (overrides existing keys)
 	 *
 	 * @param	Array		$data
@@ -304,7 +318,7 @@ class TodoyuForm implements ArrayAccess {
 	 * Update field values from form data
 	 */
 	protected function updateFieldValues() {
-		// Update fields
+			// Update fields
 		foreach($this->fields as $name => $field ) {
 			/**
 			 * @var	$field	TodoyuFormElement
