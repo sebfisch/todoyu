@@ -146,7 +146,7 @@ class TodoyuDatabase {
 	 * @return	Boolean
 	 */
 	public function isConnected() {
-		return is_null($this->link) === false;
+		return $this->link ? true : false;
 	}
 
 
@@ -704,7 +704,13 @@ class TodoyuDatabase {
 			// If not connected, try again (will prompt an error if not possible)
 		if( ! $this->isConnected() ) {
 			$this->connect();
+
+			if( ! $this->isConnected() ) {
+				die("Cannot connect to the database. Unknown error.");
+			}
 		}
+
+
 
 		$resource	= mysql_query($query, $this->link);
 

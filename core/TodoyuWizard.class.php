@@ -78,15 +78,16 @@ abstract class TodoyuWizard {
 
 		$tmpl	= 'core/view/wizard.tmpl';
 		$data	= array(
-			'wizardName'=> $this->name,
-			'steps'		=> $this->getStepItems(),
-			'stepName'	=> $step->getName(),
-			'title'		=> $step->getLabel(),
-			'content'	=> $step->renderContent(),
-			'help'		=> $step->renderHelp(),
-			'isFirst'	=> $this->isFirstStep(),
-			'isLast'	=> $this->isLastStep(),
-			'doneSteps'	=> $this->getDoneStepNames()
+			'wizardName'	=> $this->name,
+			'steps'			=> $this->getStepItems(),
+			'stepName'		=> $step->getName(),
+			'title'			=> $step->getTitle(),
+			'content'		=> $step->getContent(),
+			'info'			=> $step->getInfo(),
+			'help'			=> $step->getHelp(),
+			'isFirst'		=> $this->isFirstStep(),
+			'isLast'		=> $this->isLastStep(),
+			'doneSteps'		=> $this->getDoneStepNames()
 		);
 
 		return render($tmpl, $data);
@@ -221,7 +222,7 @@ abstract class TodoyuWizard {
 	 * @return	String
 	 */
 	public function getActiveStepLabel() {
-		return $this->getActiveStep()->getLabel();
+		return $this->getActiveStep()->getTitle();
 	}
 
 

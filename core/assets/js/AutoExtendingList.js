@@ -86,6 +86,16 @@ Todoyu.AutoExtendingList = Class.create({
 
 
 	/**
+	 * Make all removers visible, hide the last one
+	 */
+	showRemoverExceptLast: function() {
+		this.list.select('.remove').invoke('show');
+		this.list.select('.remove').last().hide();
+	},
+
+
+
+	/**
 	 * Add remove handler to remove button
 	 *
 	 * @param	{Element}	element
@@ -133,13 +143,21 @@ Todoyu.AutoExtendingList = Class.create({
 	 * @param	{Element}	list
 	 */
 	onChanged: function(event, list) {
-		var allFull	= this.getInputs().all(function(input){
-			return input.value.trim() !== '';
-		});
-
-		if( allFull ) {
+		if( this.areAllElementsFull() ) {
 			this.appendElement();
 		}
+		this.showRemoverExceptLast();
+	},
+
+
+
+	/**
+	 * Check whether all elements are "full"
+	 */
+	areAllElementsFull: function() {
+		return this.getInputs().all(function(input){
+			return input.value.trim() !== '';
+		});
 	},
 
 

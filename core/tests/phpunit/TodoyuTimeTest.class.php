@@ -192,7 +192,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$time	= gmmktime(14, 36, 5, 3, 9, 1984);
 
 		$formattedEN= TodoyuTime::format($time, 'datetime');
-		$expectedEN	= '09/03/84 14:36';
+		$expectedEN	= '03/09/84 14:36';
 
 		$this->assertEquals($expectedEN, $formattedEN);
 
@@ -219,7 +219,11 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 		$format		= TodoyuTime::getFormat('notavailableformatstring');
 
+//		TodoyuDebug::printInFireBug($format, 'f');
+
 		$this->assertNull($format);
+
+		Todoyu::setLocale($currentLocale);
 	}
 
 

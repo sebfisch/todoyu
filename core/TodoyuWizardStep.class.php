@@ -73,18 +73,6 @@ abstract class TodoyuWizardStep {
 
 
 	/**
-	 * Get label of the step
-	 *
-	 * @return		String
-	 */
-	public function getLabel() {
-		return Label($this->config['label']);
-	}
-
-
-
-
-	/**
 	 * Replacement for the constructor
 	 *
 	 */
@@ -95,12 +83,34 @@ abstract class TodoyuWizardStep {
 
 
 	/**
+	 * Get title of the step
+	 *
+	 * @return		String
+	 */
+	public function getTitle() {
+		return Label($this->config['title']);
+	}
+
+
+
+	/**
 	 * Render content for help frame
 	 *
-	 * @return	String|Boolean
+	 * @return	String
 	 */
-	public function renderHelp() {
-		return false;
+	public function getHelp() {
+		return empty($this->config['help']) ? '' : Label($this->config['help']);
+	}
+
+
+
+	/**
+	 * Get step description
+	 *
+	 * @return	String
+	 */
+	public function getInfo() {
+		return empty($this->config['info']) ? '' : Label($this->config['info']);
 	}
 
 
@@ -122,7 +132,7 @@ abstract class TodoyuWizardStep {
 	 * @abstract
 	 * @return	String
 	 */
-	abstract public function renderContent();
+	abstract public function getContent();
 
 }
 
