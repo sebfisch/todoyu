@@ -352,7 +352,7 @@ class TodoyuPageAssetManager {
 	 */
 	public static function compressJavaScript($javaScriptCode) {
 		require_once( PATH_LIB . '/php/jsmin.php' );
-		
+
 		try {
 			return JSMin::minify($javaScriptCode);
 		} catch(JSMinException $e) {
@@ -468,7 +468,7 @@ class TodoyuPageAssetManager {
 						// Compress
 					$fileCode	= self::compressStylesheet($fileCode);
 						// Rewrite external media paths (url())
-					$fileCode	= self::rewriteRelativPaths($fileCode, $fileConfig['file'], $filePath);
+					$fileCode	= self::rewriteRelativePaths($fileCode, $fileConfig['file'], $filePath);
 						// Save content in this file
 					file_put_contents($filePath, $fileCode);
 				}
@@ -539,7 +539,7 @@ class TodoyuPageAssetManager {
 							// Load file content
 						$fileCode	= file_get_contents($fileConfig['file']);
 							// Rewrite external media paths (url())
-						$fileCode	= self::rewriteRelativPaths($fileCode, $fileConfig['file'], $mergeFilePath);
+						$fileCode	= self::rewriteRelativePaths($fileCode, $fileConfig['file'], $mergeFilePath);
 
 						if( $doCompress && $fileConfig['compress'] ) {
 							$fileCode = self::compressStylesheet($fileCode);
@@ -591,7 +591,7 @@ class TodoyuPageAssetManager {
 	 * @param	String		$pathToUncompressedFile
 	 * @return 	String
 	 */
-	private static function rewriteRelativPaths($cssCode, $pathToUncompressedFile) {
+	private static function rewriteRelativePaths($cssCode, $pathToUncompressedFile) {
 			// Remove quotes in url() elements
 		$pattern	= '|url\([\'"]{1}([^\'")]+?)[\'"]{1}\)|';
 		$replace	= 'url($1)';
