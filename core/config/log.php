@@ -48,7 +48,7 @@ Todoyu::logger()->addLogger('TodoyuLoggerFirePhp');
 
 	// Database Logger
 //Todoyu::logger()->addLogger('TodoyuLoggerDb', array(
-//	'table'	=> 'system_errorlog'
+//	'table'	=> 'system_log_error'
 //));
 
 ?>

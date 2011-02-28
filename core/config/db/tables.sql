@@ -17,10 +17,10 @@ CREATE TABLE `system_log` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_errorlog`
+-- Table structure for table `system_log_error`
 --
 
-CREATE TABLE `system_errorlog` (
+CREATE TABLE `system_log_error` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`date_create` int(10) unsigned NOT NULL,
 	`requestkey` varchar(8) NOT NULL,
