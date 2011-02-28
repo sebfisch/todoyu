@@ -1,22 +1,6 @@
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_log`
---
-
-CREATE TABLE `system_log` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`date_create` int(10) unsigned NOT NULL DEFAULT '0',
-	`id_person_create` int(10) unsigned NOT NULL,
-	`table` varchar(20) NOT NULL,
-	`id_record` int(10) unsigned NOT NULL,
-	`rowdata` mediumtext NOT NULL,
-	PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `system_log_error`
 --
 

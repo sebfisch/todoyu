@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.1.0 - not released yet
+	* Changed: Removed unused DB table system_log
 	* Changed: Renamed DB table system_errorlog to system_log_error
 	* Feature: Added Todoyu::db()->setDeleted() wrapper method
 	* Feature: Added TodoyuBaseObject::getCreatePersonID() and getCreatePerson() shortcut methods
@@ -15,8 +16,9 @@ core 2.1.0 - not released yet
 	* Feature: Added placeholders for to-be columbian spanish localization files of installer
 	* Feature: Added large notification icons
  
-calendar 0.0.1 to 2.0.7 - core 2.0.7 released on 2011-01-17
-	* See release changelog in root
-
 core 2.0.8 - not released yet
 	* Bugfix: file downloads fail with internet explorer and https connection
+
+core 0.0.1 to 2.0.7 - core 2.0.7 released on 2011-01-17
+	* See release changelog in root
+
