@@ -176,10 +176,10 @@ INSERT INTO `ext_comment_comment` (`id`, `date_update`, `date_create`, `deleted`
 -- --------------------------------------------------------
 
 --
--- Data for Table `ext_comment_feedback`
+-- Data for Table `ext_comment_mm_comment_feedback`
 --
 
-INSERT INTO `ext_comment_feedback` (`id`, `date_create`, `date_update`, `id_person_create`, `id_person_feedback`, `id_comment`, `is_seen`) VALUES
+INSERT INTO `ext_comment_mm_comment_feedback` (`id`, `date_create`, `date_update`, `id_person_create`, `id_person_feedback`, `id_comment`, `is_seen`) VALUES
 (1, 1254233694, 0, 1, 2, 1, 0),
 (2, 1264699613, 0, 1, 1, 3, 0),
 (3, 1264699947, 0, 17, 14, 4, 0),
