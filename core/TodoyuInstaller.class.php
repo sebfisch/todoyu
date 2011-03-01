@@ -27,7 +27,7 @@
 class TodoyuInstaller {
 
 	/**
-	 * Proccess and display current step of installer
+	 * Process and display current step of installer
 	 */
 	public static function run() {
 			// Start output buffer
@@ -67,8 +67,7 @@ class TodoyuInstaller {
 
 
 	/**
-	 * Todo on first run of installer
-	 *
+	 * First run of installer: clear cache, init session, run PHP and SQL updates
 	 */
 	private static function firstRun() {
 		$_SESSION = array();
@@ -80,7 +79,7 @@ class TodoyuInstaller {
 			// Initialize step in session
 		self::initStep();
 
-			// Run update scripts and sql
+			// Run update scripts and SQL
 		if( self::isUpdate() ) {
 			TodoyuInstallerManager::runVersionUpdates();
 		}

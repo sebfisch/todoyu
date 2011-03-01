@@ -244,7 +244,7 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Process administrator account data update: create internal company, update administrator person and user data
+	 * Process admin account data update: create internal company, update administrator person and user data
 	 *
 	 * @param	Array		$data
 	 * @return	Array
@@ -260,7 +260,7 @@ class TodoyuInstallerManager {
 			$lastNameOk	= strlen(trim($data['lastname'])) >= 1;
 			$passwordOk	= strlen(trim($data['password'])) >= 5 && $data['password'] === $data['password_confirm'];
 
-				// Verified. save account data
+				// Verified. Save account data
 			if( $emailOk && $companyOk && $firstNameOk && $lastNameOk && $passwordOk ) {
 				self::saveInternalCompanyName($data['company']);
 				self::saveAdminAccountData($data['email'], $data['password'], $data['firstname'], $data['lastname']);
@@ -799,78 +799,9 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Move task assets to a new and better structure
-	 * Move from tasks/TASKID/* to PROJECTID/TASKID/*
-	 *
-	 */
-	public static function changeFilesAssetStructure() {
-		if( ! TodoyuInstaller::isUpdate() ) {
-			return false;
-		}
-
-			// Initialize todoyu to use all the functions
-		Todoyu::init();
-			// Load extensions
-		TodoyuExtensions::loadAllExtensions();
-
-			// Get base paths
-		$pathAssets		= TodoyuFileManager::pathAbsolute('files/assets');
-		$pathAssetTask	= TodoyuFileManager::pathAbsolute($pathAssets . '/task');
-
-			// If there is still an old task folder, process it
-		if( is_dir($pathAssetTask) ) {
-			$taskFolders	= TodoyuFileManager::getFoldersInFolder($pathAssetTask);
-
-				// All subfolders are task IDs, loop over them
-			foreach($taskFolders as $taskFolder) {
-				$idTask	= intval($taskFolder);
-
-					// If the folder is a (task-)number
-				if( $idTask > 0 ) {
-						// Find project ID
-					$idProject		= TodoyuTaskManager::getProjectID($idTask);
-						// New folder for task files
-					$pathTaskFiles	= TodoyuFileManager::pathAbsolute($pathAssets . '/' . $idProject . '/' . $idTask);
-						// Get all task files
-					$taskFiles		= TodoyuFileManager::getFilesInFolder($pathAssetTask . '/' . $taskFolder);
-						// Make new task folder
-					TodoyuFileManager::makeDirDeep($pathTaskFiles);
-
-						// Process all files of a task
-					foreach($taskFiles as $taskFile) {
-						$pathSource	= TodoyuFileManager::pathAbsolute($pathAssetTask . '/' . $taskFolder . '/' . $taskFile);
-						$pathDest	= TodoyuFileManager::pathAbsolute($pathTaskFiles . '/' . $taskFile);
-
-							// Rename file
-						rename($pathSource, $pathDest);
-
-							// Update database
-						$pathStorageOld	= str_replace($pathAssets . DIR_SEP, '', $pathSource);
-						$pathStorageNew	= str_replace($pathAssets . DIR_SEP, '', $pathDest);
-						$update	= array(
-							'file_storage'	=> $pathStorageNew
-						);
-						$where	= 'file_storage = ' . Todoyu::db()->quote($pathStorageOld, true);
-
-						Todoyu::db()->doUpdate('ext_assets_asset', $where, $update);
-					}
-				}
-			}
-
-				// Delete old task folder
-//			TodoyuFileManager::deleteFolder($pathAssetTask);
-		}
-
-	}
-
-
-
-	/**
-	 * Run version updates.
-	 *
+	 * Run SQL and PHP version updates.
 	 */
 	public static function runVersionUpdates() {
-//		TodoyuDebug::printInFireBug('runVersionUpdates');
 		$lastVersion	= self::getLastVersion();
 
 		self::runVersionUpdatesSQL($lastVersion);
@@ -887,7 +818,6 @@ class TodoyuInstallerManager {
 	 * @param	String		$lastVersion
 	 */
 	public static function runVersionUpdatesSQL($lastVersion) {
-//		TodoyuDebug::printInFireBug('runVersionUpdatesSQL');
 		$baseFolder	= 'install/update/db';
 		$updateFiles= self::getUpdateFiles($baseFolder, 'sql', $lastVersion);
 
@@ -904,7 +834,6 @@ class TodoyuInstallerManager {
 	 * @param	String		$lastVersion
 	 */
 	public static function runVersionUpdatesPHP($lastVersion) {
-//		TodoyuDebug::printInFireBug('runVersionUpdatesPHP');
 		$baseFolder	= 'install/update/php';
 		$updateFiles= self::getUpdateFiles($baseFolder, 'php', $lastVersion);
 
@@ -981,12 +910,73 @@ class TodoyuInstallerManager {
 
 	/**
 	 * Save current todoyu version as DB version in the LAST_VERSION file
-	 *
 	 */
 	public static function saveCurrentVersion() {
 		$pathFile	= TodoyuFileManager::pathAbsolute('install/config/LAST_VERSION');
 
 		file_put_contents($pathFile, TODOYU_VERSION);
+	}
+
+
+
+	/**
+	 * Move task assets to a new and better structure (from tasks/TASKID/* to PROJECTID/TASKID/*)
+	 * Used with todoyu update to v2.0.1
+	 */
+	public static function changeFilesAssetStructure() {
+		if( ! TodoyuInstaller::isUpdate() ) {
+			return false;
+		}
+
+			// Initialize todoyu to use all the functions
+		Todoyu::init();
+			// Load extensions
+		TodoyuExtensions::loadAllExtensions();
+
+			// Get base paths
+		$pathAssets		= TodoyuFileManager::pathAbsolute('files/assets');
+		$pathAssetTask	= TodoyuFileManager::pathAbsolute($pathAssets . '/task');
+
+			// If there is still an old task folder, process it
+		if( is_dir($pathAssetTask) ) {
+			$taskFolders	= TodoyuFileManager::getFoldersInFolder($pathAssetTask);
+
+				// All sub folders are task IDs, loop over them
+			foreach($taskFolders as $taskFolder) {
+				$idTask	= intval($taskFolder);
+
+					// If the folder is a (task-)number
+				if( $idTask > 0 ) {
+						// Find project ID
+					$idProject		= TodoyuTaskManager::getProjectID($idTask);
+						// New folder for task files
+					$pathTaskFiles	= TodoyuFileManager::pathAbsolute($pathAssets . '/' . $idProject . '/' . $idTask);
+						// Get all task files
+					$taskFiles		= TodoyuFileManager::getFilesInFolder($pathAssetTask . '/' . $taskFolder);
+						// Make new task folder
+					TodoyuFileManager::makeDirDeep($pathTaskFiles);
+
+						// Process all files of a task
+					foreach($taskFiles as $taskFile) {
+						$pathSource	= TodoyuFileManager::pathAbsolute($pathAssetTask . '/' . $taskFolder . '/' . $taskFile);
+						$pathDest	= TodoyuFileManager::pathAbsolute($pathTaskFiles . '/' . $taskFile);
+
+							// Rename file
+						rename($pathSource, $pathDest);
+
+							// Update database
+						$pathStorageOld	= str_replace($pathAssets . DIR_SEP, '', $pathSource);
+						$pathStorageNew	= str_replace($pathAssets . DIR_SEP, '', $pathDest);
+						$update	= array(
+							'file_storage'	=> $pathStorageNew
+						);
+						$where	= 'file_storage = ' . Todoyu::db()->quote($pathStorageOld, true);
+
+						Todoyu::db()->doUpdate('ext_assets_asset', $where, $update);
+					}
+				}
+			}
+		}
 	}
 
 }

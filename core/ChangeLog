@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.1.0 - not released yet
+	* Feature: Added TodoyuMailManager (DB table system_log_email) for logging of various email types
 	* Changed: Removed unused DB table system_log
 	* Changed: Renamed DB table system_errorlog to system_log_error
 	* Feature: Added Todoyu::db()->setDeleted() wrapper method

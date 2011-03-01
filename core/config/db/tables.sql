@@ -158,7 +158,6 @@ CREATE TABLE `static_timezone` (
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
-
 -- --------------------------------------------------------
 
 --
@@ -178,7 +177,6 @@ CREATE TABLE IF NOT EXISTS `system_freeze` (
 	KEY `original` (`element_type`,`element_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-
 -- --------------------------------------------------------
 
 --
@@ -193,3 +191,22 @@ CREATE TABLE `system_lock` (
 	PRIMARY KEY (`id`),
 	KEY `tablerecord` (`table`,`id_record`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `system_log_mail`
+--
+
+CREATE TABLE `system_log_email` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+	`date_create` int(10) unsigned NOT NULL,
+	`date_update` int(10) unsigned NOT NULL,
+	`id_person_create` int(10) unsigned NOT NULL,
+	`ext` smallint(5) unsigned NOT NULL,
+	`record_type` smallint(5) unsigned NOT NULL,
+	`id_record` int(10) unsigned NOT NULL,
+	`id_person_email` int(10) unsigned NOT NULL,
+	PRIMARY KEY (`id`),
+	KEY `record` (`id_record`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
