@@ -28,7 +28,7 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-Todoyu.Headlets.About = {
+Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 
 	/**
 	 * ID of the about popup
@@ -59,7 +59,6 @@ Todoyu.Headlets.About = {
 	 * @private
 	 */
 	nameEffect: null,
-
 
 
 	/**
@@ -266,4 +265,4 @@ Todoyu.Headlets.About = {
 		$('about-toggle-credits').down('span.label').innerHTML = label;
 	}
 
-};
+});

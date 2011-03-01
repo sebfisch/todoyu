@@ -152,22 +152,6 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 55
 		),
 		array(
-			'file'		=> 'core/assets/js/Headlets.js',
-			'position'	=> 55
-		),
-		array(
-			'file'		=> 'core/assets/js/HeadletQuickCreate.js',
-			'position'	=> 55
-		),
-		array(
-			'file'		=> 'core/assets/js/HeadletAbout.js',
-			'position'	=> 55
-		),
-		array(
-			'file'		=> 'core/assets/js/HeadletAjaxLoader.js',
-			'position'	=> 55
-		),
-		array(
 			'file'		=> 'core/assets/js/Ajax.js',
 			'position'	=> 56
 		),
@@ -282,6 +266,26 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/js/AutoExtendingList.js',
 			'position'	=> 82
+		),
+		array(
+			'file'		=> 'core/assets/js/Headlets.js',
+			'position'	=> 90
+		),
+		array(
+			'file'		=> 'core/assets/js/Headlet.js',
+			'position'	=> 90
+		),
+		array(
+			'file'		=> 'core/assets/js/HeadletQuickCreate.js',
+			'position'	=> 91
+		),
+		array(
+			'file'		=> 'core/assets/js/HeadletAbout.js',
+			'position'	=> 91
+		),
+		array(
+			'file'		=> 'core/assets/js/HeadletAjaxLoader.js',
+			'position'	=> 91
 		)
 	),
 

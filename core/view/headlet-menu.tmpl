@@ -1,6 +1,6 @@
 <!-- <ul id="{$id}-menu"> -->
 	{foreach $items item}
-		<li class="item{ucfirst($item.id)} {$item.class}">
+		<li class="{$item.class}" id="menuItem-{$item.id}">
 			<a class="{$name}-item-{$item.id}">{Label $item.label}</a>
 		</li>
 	{/foreach}

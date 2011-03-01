@@ -26,31 +26,22 @@
  * Icon which indicated AJAX loading activity in head area
  *
  * @class		AjaxLoader
- * @namespace	Todoyu.Headlet
+ * @namespace	Todoyu.CoreHeadlets
  */
-Todoyu.Headlets.AjaxLoader = {
-
-	/**
-	 * ID of the element which is toggled visible
-	 * @property	buttonID
-	 * @type		String
-	 */
-	buttonID: 'todoyuheadletajaxloader-button',
+Todoyu.CoreHeadlets.AjaxLoader = Class.create(Todoyu.Headlet, {
 
 	/**
 	 * Show AJAX loading icon
 	 *
 	 * @method	show
 	 */
-	show: function() {
-		if( Todoyu.exists(this.buttonID) ) {
-			Effect.Appear(this.buttonID, {
-				'duration': 0.2,
-				'from': 0.3,
-				'to': 1.0,
-				'transition': Effect.Transitions.spring
-			});
-		}
+	active: function() {
+		Effect.Appear(this.getButton(), {
+			'duration': 0.2,
+			'from': 0.3,
+			'to': 1.0,
+			'transition': Effect.Transitions.spring
+		});
 	},
 
 
@@ -60,12 +51,10 @@ Todoyu.Headlets.AjaxLoader = {
 	 *
 	 * @method	hide
 	 */
-	hide: function() {
-		if( Todoyu.exists(this.buttonID) ) {
-			Effect.Fade.delay(0.2, this.buttonID, {
-				'duration': 0.3
-			});
-		}
+	inactive: function() {
+		Effect.Fade.delay(0.2, this.getButton(), {
+			'duration': 0.3
+		});
 	}
 
-};
+});

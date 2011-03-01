@@ -303,18 +303,6 @@ Todoyu.Ui = {
 
 
 	/**
-	 * AJAX loader
-	 *
-	 * @method	ajaxLoader
-	 * @param	{Boolean}		showLoader
-	 */
-	ajaxLoader: function(showLoader) {
-		Todoyu.Headlets.show(showLoader);
-	},
-
-
-
-	/**
 	 * Disable screen by adding todoyu overlay
 	 */
 	disableScreen: function() {

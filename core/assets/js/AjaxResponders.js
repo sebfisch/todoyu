@@ -95,7 +95,9 @@ Todoyu.Ajax.Responders = {
 	 * @param	{Ajax.Request}	request
 	 */
 	onCreate: function(request) {
-		Todoyu.Headlets.AjaxLoader.show();
+		if( Todoyu.Headlets.isHeadlet('todoyuheadletajaxloader') ) {
+			Todoyu.Headlets.getHeadlet('todoyuheadletajaxloader').active();
+		}
 		//Todoyu.Ui.setLinkCursor(true);
 
 		var oldRespondToReadyState = request.respondToReadyState;
@@ -126,7 +128,10 @@ Todoyu.Ajax.Responders = {
 
 			// If no more requests are running, stop spinner
 		if( Ajax.activeRequestCount < 1 ) {
-			Todoyu.Headlets.AjaxLoader.hide();
+			if( Todoyu.Headlets.isHeadlet('todoyuheadletajaxloader') ) {
+				Todoyu.Headlets.getHeadlet('todoyuheadletajaxloader').inactive();
+			}
+
 			//Todoyu.Ui.setLinkCursor(false);
 		}
 	},

@@ -27,9 +27,9 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-Todoyu.Headlets.QuickCreate = {
+Todoyu.CoreHeadlets.QuickCreate = Class.create(Todoyu.Headlet, {
 
-	popupid: 'quickcreatepopup',
+	popupid: 'quickcreate',
 
 	/**
 	 * Popup reference
@@ -40,16 +40,6 @@ Todoyu.Headlets.QuickCreate = {
 
 
 
-	/**
-	 * Initialize quick create headlet
-	 *
-	 * @method	init
-	 */
-	init: function() {
-
-	},
-
-
 
 	/**
 	 * Handler: When clicked on button
@@ -57,7 +47,7 @@ Todoyu.Headlets.QuickCreate = {
 	 * @method	onButtonClick
 	 * @param	{Event}		event
 	 */
-	onButtonClick: function(event) {
+	onButtonClickXXX: function(event) {
 		if( this.isContentVisible() ) {
 			this.hide();
 		} else {
@@ -74,41 +64,9 @@ Todoyu.Headlets.QuickCreate = {
 	 * @method	onMenuClick
 	 * @param	{Event}		event
 	 */
-	onMenuClick: function(event) {
-		var idParts	= event.element().className.split('-');
-		var ext		= idParts[2];
-		var type	= idParts[3];
-
+	onMenuClick: function(ext, type, event, item) {
 		this.openTypePopup(ext, type);
 		this.hide();
-	},
-
-
-
-	/**
-	 * Handle click on headlet body: hide content, stop events
-	 *
-	 * @method	onBodyClick
-	 * @param	{Event}		event
-	 */
-	onBodyClick: function(event) {
-		this.hide();
-
-		if( this.isEventInOwnContent(event) ) {
-			event.stop();
-		}
-	},
-
-
-
-	/**
-	 * Hide quick create headlet content
-	 *
-	 * @method	hide
-	 */
-	hide: function() {
-		this.hideContent();
-		this.headlet.setInactive('todoyuheadletquickcreate');
 	},
 
 
@@ -122,7 +80,7 @@ Todoyu.Headlets.QuickCreate = {
 	 */
 	openTypePopup: function(ext, type) {
 		if( ! $(this.popupid) ) {
-			var ctrl 	= 'Quickcreate' + type.toLowerCase();
+			var ctrl 	= 'Quickcreate' + type;
 			var url		= Todoyu.getUrl(ext, ctrl);
 			var options	= {
 				'parameters': {
@@ -131,7 +89,7 @@ Todoyu.Headlets.QuickCreate = {
 				},
 				'onComplete': this.onPopupOpened.bind(this, ext, type)
 			};
-			var title	= '[LLL:core.create]' + ': ' + this.getTypeLabel(ext, type);
+			var title	= '[LLL:core.create]' + ': ' + this.getMenuItemLabel(ext, type);
 			var width	= 700;
 
 			this.popup = Todoyu.Popup.openWindow(this.popupid, title, width, url, options);
@@ -149,25 +107,12 @@ Todoyu.Headlets.QuickCreate = {
 	 * @param	{String}	ext
 	 */
 	onPopupOpened: function(ext, type) {
-		$('todoyuheadletquickcreate').addClassName(type);
+		$(this.name).addClassName(type);
 
 		var quickCreateObject	= 'Todoyu.Ext.' + ext + '.QuickCreate' + Todoyu.Helper.ucwords(type);
 		Todoyu.callUserFunction(quickCreateObject + '.onPopupOpened');
 	},
 
-
-
-	/**
-	 * Get label of a type from menu entry
-	 *
-	 * @method	getTypeLabel
-	 * @param	{String}		ext
-	 * @param	{String}		type
-	 * @return	{String}
-	 */
-	getTypeLabel: function(ext, type) {
-		return $('todoyuheadletquickcreate').down('li a.todoyuheadletquickcreate-item-' + ext + '-' + type).innerHTML;
-	},
 
 
 
@@ -177,7 +122,7 @@ Todoyu.Headlets.QuickCreate = {
 	 * @method	closePopup
 	 */
 	closePopup: function() {
-		Todoyu.Popup.close('todoyuheadletquickcreate');
+		Todoyu.Popup.close(this.popupid);
 	},
 
 
@@ -192,4 +137,4 @@ Todoyu.Headlets.QuickCreate = {
 		$('quickcreate_content').update(content);
 	}
 
-};
+});

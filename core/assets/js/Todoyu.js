@@ -60,6 +60,8 @@ var Todoyu = {
 
 	EXT: {},
 
+	CoreHeadlets: {},
+
 
 	/**
 	 * Initialize todoyu object
