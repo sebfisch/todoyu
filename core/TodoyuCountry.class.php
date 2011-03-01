@@ -84,7 +84,7 @@ class TodoyuCountry extends TodoyuBaseObject {
 	/**
 	 * Get currency of country
 	 *
-	 * @return		TodoyuCurrency
+	 * @return		TodoyuCurrencyCurrency
 	 */
 	public function getCurrency() {
 		$field	= 'id';
@@ -93,7 +93,7 @@ class TodoyuCountry extends TodoyuBaseObject {
 
 		$idCurrency	= Todoyu::db()->getFieldValue($field, $table, $where);
 
-		return TodoyuCurrencyManager::getCurrency($idCurrency);
+		return TodoyuCurrencyCurrencyManager::getCurrency($idCurrency);
 	}
 
 
