@@ -95,7 +95,7 @@ Todoyu.Ajax.Responders = {
 	 * @param	{Ajax.Request}	request
 	 */
 	onCreate: function(request) {
-		Todoyu.Headlet.AjaxLoader.show();
+		Todoyu.Headlets.AjaxLoader.show();
 		//Todoyu.Ui.setLinkCursor(true);
 
 		var oldRespondToReadyState = request.respondToReadyState;
@@ -126,7 +126,7 @@ Todoyu.Ajax.Responders = {
 
 			// If no more requests are running, stop spinner
 		if( Ajax.activeRequestCount < 1 ) {
-			Todoyu.Headlet.AjaxLoader.hide();
+			Todoyu.Headlets.AjaxLoader.hide();
 			//Todoyu.Ui.setLinkCursor(false);
 		}
 	},

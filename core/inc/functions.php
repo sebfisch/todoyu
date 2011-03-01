@@ -69,7 +69,7 @@ function personid($idPerson = 0) {
 /**
  * Shortcut to current person object
  *
- * @return	TodoyuPerson
+ * @return	TodoyuContactPerson
  */
 function person() {
 	return TodoyuAuth::getPerson();

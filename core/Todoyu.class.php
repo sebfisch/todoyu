@@ -68,7 +68,7 @@ class Todoyu {
 	/**
 	 * Currently logged in person
 	 *
-	 * @var	TodoyuPerson
+	 * @var	TodoyuContactPerson
 	 */
 	private static $person;
 
@@ -226,7 +226,7 @@ class Todoyu {
 	/**
 	 * Return current person object
 	 *
-	 * @return	TodoyuPerson
+	 * @return	TodoyuContactPerson
 	 */
 	public static function person() {
 		if( is_null(self::$person) ) {

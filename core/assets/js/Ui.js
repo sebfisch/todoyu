@@ -309,7 +309,7 @@ Todoyu.Ui = {
 	 * @param	{Boolean}		showLoader
 	 */
 	ajaxLoader: function(showLoader) {
-		Todoyu.Headlet.show(showLoader);
+		Todoyu.Headlets.show(showLoader);
 	},
 
 

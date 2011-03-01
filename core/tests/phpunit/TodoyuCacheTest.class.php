@@ -79,7 +79,7 @@ class TodoyuCacheTest extends PHPUnit_Framework_TestCase {
 	public function testSet() {
 		$string	= 'This is a little test';
 		$array	= array('a', 'b', 'c');
-		$person	= new TodoyuPerson(0);
+		$person	= new TodoyuContactPerson(0);
 
 		TodoyuCache::set('string', $string);
 		TodoyuCache::set('array2', $array);

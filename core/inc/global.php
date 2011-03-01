@@ -66,8 +66,8 @@ require_once( PATH_CORE . '/TodoyuPanelWidgetManager.class.php' );
 require_once( PATH_CORE . '/TodoyuErrorHandler.class.php' );
 
 	// Include basic person classes
-require_once( PATH_EXT .  '/contact/model/TodoyuPerson.class.php' );
-require_once( PATH_EXT .  '/contact/model/TodoyuPersonManager.class.php' );
+require_once(PATH_EXT . '/contact/model/TodoyuContactPerson.class.php');
+require_once(PATH_EXT . '/contact/model/TodoyuContactPersonManager.class.php');
 require_once( PATH_EXT .  '/contact/model/TodoyuContactPreferences.class.php' );
 
 	// Load development classes

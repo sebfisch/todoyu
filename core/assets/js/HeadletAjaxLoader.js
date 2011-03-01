@@ -28,14 +28,14 @@
  * @class		AjaxLoader
  * @namespace	Todoyu.Headlet
  */
-Todoyu.Headlet.AjaxLoader = {
+Todoyu.Headlets.AjaxLoader = {
 
 	/**
 	 * ID of the element which is toggled visible
 	 * @property	buttonID
 	 * @type		String
 	 */
-	buttonID: 'headlet-ajaxloader-button',
+	buttonID: 'todoyuheadletajaxloader-button',
 
 	/**
 	 * Show AJAX loading icon

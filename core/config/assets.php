@@ -152,7 +152,7 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 55
 		),
 		array(
-			'file'		=> 'core/assets/js/Headlet.js',
+			'file'		=> 'core/assets/js/Headlets.js',
 			'position'	=> 55
 		),
 		array(

@@ -71,9 +71,20 @@ class TodoyuHeadManager {
 
 		$headlets	= TodoyuArray::sortByLabel(self::$headlets, 'position', true);
 
+		TodoyuDebug::printInFireBug($headlets, 'headlets');
+
+
+
+
+
 		foreach($headlets as $headletConfig) {
 			$className	= $headletConfig['class'];
-			$name		= strtolower(str_replace('TodoyuHeadlet', '', $className));
+//			$classParts	= TodoyuString::splitCamelCase($className);
+			$name		= strtolower($className); // implode('', array_slice($classParts, 3));
+//			$name		= strtolower(str_replace('TodoyuHeadlet', '', $className));
+			/**
+			 * @var	TodoyuHeadlet	$headlet
+			 */
 			$headlet	= new $className();
 
 			if( ! $headlet->isEmpty() ) {
@@ -88,7 +99,7 @@ class TodoyuHeadManager {
 			}
 		}
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.init.bind(Todoyu.Headlet)', 10);
+		TodoyuPage::addJsOnloadedFunction('Todoyu.Headlets.init.bind(Todoyu.Headlets)', 10);
 
 		return render($tmpl, $data);
 	}

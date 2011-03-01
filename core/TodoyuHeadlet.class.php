@@ -108,7 +108,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 * @return	String
 	 */
 	public function getName() {
-		return str_replace('TodoyuHeadlet', '', get_class($this));
+		return strtolower(get_class($this));
 	}
 
 
@@ -126,7 +126,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 * @return	String
 	 */
 	public function getID() {
-		return 'headlet-' . strtolower($this->getName());
+		return strtolower($this->getName());
 	}
 
 
@@ -268,13 +268,13 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 	 * @return	String
 	 */
 	public function render() {
-		$this->data['id'] = 'headlet-' . strtolower(str_replace('TodoyuHeadlet', '', get_class($this)));
+		$this->data['id'] = $this->getName();
 
 
 		$this->data['buttonAttributes']	= $this->getButtonAttributes();
 
 		if( ! is_null($this->jsHeadlet) ) {
-			TodoyuPage::addJsOnloadedFunction('Todoyu.Headlet.add.bind(Todoyu.Headlet, \'' . $this->getName() . '\', ' . $this->jsHeadlet . ')', 150);
+			TodoyuPage::addJsOnloadedFunction('Todoyu.Headlets.add.bind(Todoyu.Headlets, \'' . $this->getName() . '\', ' . $this->jsHeadlet . ')', 150);
 		}
 
 		return render($this->template, $this->data);

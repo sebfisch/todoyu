@@ -1,12 +1,10 @@
-li#headlet-ajaxloader {
+#todoyuheadletajaxloader {
 	width:27px;
 	height:26px;
 }
 
-li#headlet-ajaxloader a {
-	border:none;
-}
 
-#headlets #headlet-ajaxloader-button {
+#todoyuheadletajaxloader .button {
 	background:url(../img/ajax-loader.gif) no-repeat 7px 5px;
+	border:none;
 }

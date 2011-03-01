@@ -27,7 +27,7 @@
  * @class		Headlet
  * @namespace	Todoyu
  */
-Todoyu.Headlet = {
+Todoyu.Headlets = {
 
 	/**
 	 * Current headlet name which is in over status
@@ -56,36 +56,6 @@ Todoyu.Headlet = {
 	 * @type		String
 	 */
 	openHeadlet: null,
-
-
-
-	/**
-	 * Get the headlet element from an event
-	 *
-	 * @private
-	 * @method	_getHeadletFromEvent
-	 * @param	{Event}		event
-	 * @return	{Element}
-	 */
-	_getHeadletFromEvent: function(event) {
-		return event.findElement('li.headlet');
-	},
-
-
-
-	/**
-	 * Get the headlets name from an event
-	 *
-	 * @private
-	 * @method	_getNameFromEvent
-	 * @param	{Event}		event
-	 * @return	{String}
-	 */
-	_getNameFromEvent: function(event) {
-		var h = this._getHeadletFromEvent(event);
-		return h.id.split('-').last().toLowerCase();
-	},
-
 
 
 	/**
@@ -128,16 +98,13 @@ Todoyu.Headlet = {
 	 * @method	init
 	 */
 	init: function() {
-		if( ! Todoyu.exists('headlets') ) {
-
-		}
 		var headlets	= $('headlets').select('li.headlet');
 			// Observe headlet clicks
-		headlets.invoke('observe', 'click', this.onClick.bindAsEventListener(this));
+		headlets.invoke('on', 'click', 'li.headlet', this.onClick.bind(this));
 			// Observe all headlet elements
-		headlets.invoke('observe', 'mouseover', this.onOverHeadlet.bindAsEventListener(this));
+		headlets.invoke('on', 'mouseover', 'li.headlet', this.onOverHeadlet.bind(this));
 			// Observe headlet container
-		$('headlets').observe('mouseover', this.onOverContainer.bindAsEventListener(this));
+		$('headlets').on('mouseover', this.onOverContainer.bindAsEventListener(this));
 			// Close headlets when clicked outside of the headlets (on body)
 		Todoyu.Ui.addBodyClickObserver(this.onBodyClick.bind(this));
 	},
@@ -169,13 +136,12 @@ Todoyu.Headlet = {
 		headletObject.getButton			= this.getButton.bind(this, name);
 		headletObject.getContent		= this.getContent.bind(this, name);
 		headletObject.saveOpenStatus	= this.saveOpenStatus.bind(this, name);
-		headletObject.isEventInOwnContent	= this.isEventInOwnContent.bind(this, name);
+		headletObject.isEventInOwnContent= this.isEventInOwnContent.bind(this, name);
 		headletObject.setActive			= this.setActive.bind(this, name);
 
 			// Call headlet init function if exists
 		Todoyu.callIfExists(headletObject.init, headletObject);
 	},
-
 
 
 	/**
@@ -184,12 +150,9 @@ Todoyu.Headlet = {
 	 * @method	onOverHeadlet
 	 * @param	{Event}		event
 	 */
-	onOverHeadlet: function(event) {
+	onOverHeadlet: function(event, headlet) {
 			// Over headlet, stop event bubbling
 		event.stop();
-
-			// Get headlet elements
-		var headlet = this._getHeadletFromEvent(event);
 
 			// If overstatus for headlet not already set
 		if( headlet.overStatus !== true ) {
@@ -197,7 +160,7 @@ Todoyu.Headlet = {
 			headlet.overStatus = true;
 
 				// Find name of current headlet
-			this.current = this._getNameFromEvent(event);
+			this.current = headlet.id;
 				// Call over handler for element
 			this._callHandler(this.current, 'onMouseOver', event);
 		}
@@ -236,38 +199,34 @@ Todoyu.Headlet = {
 	 * @method	onClick
 	 * @param	{Event}		event
 	 */
-	onClick: function(event) {
-		var headlet = this._getHeadletFromEvent(event);
+	onClick: function(event, headlet) {
+		event.stop();
 
-		if( headlet !== undefined ) {
-			var name	= this._getNameFromEvent(event);
-			var type	= '';
+		var name	= headlet.id;
+		var type	= '';
 
-			this.hideAllContent(name);
+		this.hideAllContent(name);
 
-			if( this.isActive(name) ) {
-				this.setAllInactive();
-			} else {
-				if( this.getType(name) !== 'button' ) {
-					this.setActive(name);
-				}
+		if( this.isActive(name) ) {
+			this.setAllInactive();
+		} else {
+			if( this.getType(name) !== 'button' ) {
+				this.setActive(name);
 			}
-
-			if( this._isContentEvent(event) ) {
-				type	= 'onContentClick';
-
-					// Check for menu click
-				if( headlet.down('a.button').hasClassName('headletTypeMenu') ) {
-					this._callHandler(name, 'onMenuClick', event);
-				}
-			} else {
-				type	= 'onButtonClick';
-			}
-
-			this._callHandler(name, type, event);
 		}
 
-		event.stop();
+		if( this._isContentEvent(event) ) {
+			type	= 'onContentClick';
+
+				// Check for menu click
+			if( headlet.down('a.button').hasClassName('headletTypeMenu') ) {
+				this._callHandler(name, 'onMenuClick', event);
+			}
+		} else {
+			type	= 'onButtonClick';
+		}
+
+		this._callHandler(name, type, event);
 	},
 
 
@@ -299,7 +258,7 @@ Todoyu.Headlet = {
 	 * @param	{String}		name
 	 */
 	exists: function(name) {
-		return Todoyu.exists('headlet-' + name);
+		return Todoyu.exists(name);
 	},
 
 
@@ -312,7 +271,7 @@ Todoyu.Headlet = {
 	 */
 	setActive: function(name) {
 		this.setAllInactive();
-		$('headlet-' + name).addClassName('active');
+		$(name).addClassName('active');
 	},
 
 
@@ -324,7 +283,7 @@ Todoyu.Headlet = {
 	 * @param	{String}	name
 	 */
 	setInactive: function(name) {
-		$('headlet-' + name).removeClassName('active');
+		$(name).removeClassName('active');
 	},
 
 
@@ -347,7 +306,7 @@ Todoyu.Headlet = {
 	 * @param	{String}	name
 	 */
 	isActive: function(name) {
-		return $('headlet-' + name).hasClassName('active');
+		return $(name).hasClassName('active');
 	},
 
 
@@ -390,7 +349,7 @@ Todoyu.Headlet = {
 		}
 
 		if( this.hasContent(name) ) {
-			$('headlet-' + name + '-content').show();
+			$(name + '-content').show();
 		}
 	},
 
@@ -404,7 +363,7 @@ Todoyu.Headlet = {
 	 */
 	hideContent: function(name) {
 		if( this.hasContent(name) ) {
-			$('headlet-' + name + '-content').hide();
+			$(name + '-content').hide();
 		}
 	},
 
@@ -418,7 +377,7 @@ Todoyu.Headlet = {
 	 * @return	{Boolean}
 	 */
 	hasContent: function(name) {
-		return Todoyu.exists('headlet-' + name + '-content');
+		return Todoyu.exists(name + '-content');
 	},
 
 
@@ -448,7 +407,7 @@ Todoyu.Headlet = {
 	 * @return	{Element}
 	 */
 	getHeadlet: function(name) {
-		return $('headlet-' + name);
+		return $(name);
 	},
 
 
@@ -461,7 +420,7 @@ Todoyu.Headlet = {
 	 * @return	{Element}
 	 */
 	getButton: function(name) {
-		return $('headlet-' + name + '-button');
+		return $(name + '-button');
 	},
 
 
@@ -474,7 +433,7 @@ Todoyu.Headlet = {
 	 * @return	{Element}
 	 */
 	getContent: function(name) {
-		return $('headlet-' + name.toLowerCase() + '-content');
+		return $(name.toLowerCase() + '-content');
 	},
 
 
@@ -521,7 +480,7 @@ Todoyu.Headlet = {
 	 * @return	{Boolean}
 	 */
 	isEventInOwnContent: function(name, event) {
-		return event.element().up('ul#headlet-' + name + '-content') !== undefined;
+		return event.element().up('ul#' + name + '-content') !== undefined;
 	},
 
 
@@ -557,7 +516,7 @@ Todoyu.Headlet = {
 		this.openStatusTimeout = this.submitOpenStatus.bind(this, headlet).delay(1);
 	},
 
-	
+
 
 	/**
 	 * Submit the currently open headlet

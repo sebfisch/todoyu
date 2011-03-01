@@ -1,16 +1,16 @@
-#headlet-quickcreate-button {
+#todoyuheadletquickcreate .button {
 	background:url(../img/headlet-icons.png) no-repeat 1px 6px;
 }
 
-#headlet-quickcreate-content li.primary {
+#todoyuheadletquickcreate .content li.primary {
 	border-bottom:1px dotted #b9bbad;
 	background-color:#edf0df;
 }
 
-#headlet-quickcreate-content li.primary a {
+#todoyuheadletquickcreate .content li.primary a {
 	border-bottom:1px solid white !important;
 }
 
-#headlet-quickcreate-content li.primary a:hover {
+#todoyuheadletquickcreate .content li.primary a:hover {
 	background-color:white !important;
 }

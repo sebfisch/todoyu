@@ -30,7 +30,7 @@ class TodoyuAuth {
 	/**
 	 * Instance of the logged in person
 	 *
-	 * @var	TodoyuPerson
+	 * @var	TodoyuContactPerson
 	 */
 	private static $person = null;
 
@@ -51,14 +51,14 @@ class TodoyuAuth {
 	 * Get person object of current person
 	 *
 	 * @param	Boolean		$reload		Force to reinit person from current session value
-	 * @return	TodoyuPerson
+	 * @return	TodoyuContactPerson
 	 */
 	public static function getPerson($reload = false) {
 		if( is_null(self::$person) || $reload ) {
 			if( self::getPersonID() !== 0 ) {
-				self::$person = TodoyuPersonManager::getPerson(self::getPersonID());
+				self::$person = TodoyuContactPersonManager::getPerson(self::getPersonID());
 			} else {
-				self::$person = TodoyuPersonManager::getPerson(0);
+				self::$person = TodoyuContactPersonManager::getPerson(0);
 			}
 		}
 
@@ -146,7 +146,7 @@ class TodoyuAuth {
 	 * @return	Boolean
 	 */
 	public static function isValidLogin($username, $passwordHash) {
-		return TodoyuPersonManager::isValidLogin($username, $passwordHash);
+		return TodoyuContactPersonManager::isValidLogin($username, $passwordHash);
 	}
 
 

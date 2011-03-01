@@ -41,7 +41,7 @@ abstract class TodoyuHeadletTypeMenu extends TodoyuHeadlet {
 
 		$tmpl	= 'core/view/headlet-menu.tmpl';
 		$data	= array(
-			'id'	=> $this->getID(),// 'xxx',
+			'name'	=> $this->getName(),
 			'items'	=> $items
 		);
 

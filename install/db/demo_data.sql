@@ -257,7 +257,7 @@ INSERT INTO `ext_project_project` (`id`, `date_create`, `date_update`, `id_perso
 --
 -- Data for Table `ext_project_task`
 --
-INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `type`, `id_project`, `id_parenttask`, `title`, `description`, `id_person_assigned`, `id_person_owner`, `date_deadline`, `date_start`, `date_end`, `tasknumber`, `status`, `id_worktype`, `estimated_workload`, `is_acknowledged`, `is_public`, `sorting`) VALUES
+INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `type`, `id_project`, `id_parenttask`, `title`, `description`, `id_person_assigned`, `id_person_owner`, `date_deadline`, `date_start`, `date_end`, `tasknumber`, `status`, `id_activity`, `estimated_workload`, `is_acknowledged`, `is_public`, `sorting`) VALUES
 (8, 1264669127, 1264682012, 1, 0, 2, 4, 0, 'Hosting-Move', '<p>Hosting-Move</p>', 0, 14, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0),
 (9, 1264669127, 1264669958, 1, 0, 2, 4, 0, 'Conception', '<p>Conception</p>', 0, 14, 0, 0, 0, 2, 2, 0, 0, 1, 0, 1),
 (10, 1264669127, 1264669965, 1, 0, 2, 4, 0, 'Design', '<p>Design</p>', 0, 14, 0, 0, 0, 3, 2, 0, 0, 1, 0, 2),
@@ -432,10 +432,10 @@ INSERT INTO `ext_project_role` (`id`, `date_create`, `id_person_create`, `date_u
 -- --------------------------------------------------------
 
 --
--- Data for Table `ext_project_worktype`
+-- Data for Table `ext_project_activity`
 --
 
-INSERT INTO `ext_project_worktype` (`id`, `date_update`, `id_person_create`, `date_create`, `deleted`, `title`) VALUES
+INSERT INTO `ext_project_activity` (`id`, `date_update`, `id_person_create`, `date_create`, `deleted`, `title`) VALUES
 (1, 1254232852, 1, 1254232852, 0, 'Consulting'),
 (2, 1254232863, 1, 1254232863, 0, 'Java-Development'),
 (3, 1254232867, 1, 1254232867, 0, 'Design'),

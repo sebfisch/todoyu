@@ -27,7 +27,9 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-Todoyu.Headlet.QuickCreate = {
+Todoyu.Headlets.QuickCreate = {
+
+	popupid: 'quickcreatepopup',
 
 	/**
 	 * Popup reference
@@ -73,9 +75,9 @@ Todoyu.Headlet.QuickCreate = {
 	 * @param	{Event}		event
 	 */
 	onMenuClick: function(event) {
-		var idParts	= Event.findElement(event, 'a').className.split('-');
-		var ext		= idParts[3];
-		var type	= idParts[4];
+		var idParts	= event.element().className.split('-');
+		var ext		= idParts[2];
+		var type	= idParts[3];
 
 		this.openTypePopup(ext, type);
 		this.hide();
@@ -106,7 +108,7 @@ Todoyu.Headlet.QuickCreate = {
 	 */
 	hide: function() {
 		this.hideContent();
-		this.headlet.setInactive('quickcreate');
+		this.headlet.setInactive('todoyuheadletquickcreate');
 	},
 
 
@@ -119,7 +121,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * @param	{String}		type
 	 */
 	openTypePopup: function(ext, type) {
-		if( ! $('quickcreate') ) {
+		if( ! $(this.popupid) ) {
 			var ctrl 	= 'Quickcreate' + type.toLowerCase();
 			var url		= Todoyu.getUrl(ext, ctrl);
 			var options	= {
@@ -129,11 +131,10 @@ Todoyu.Headlet.QuickCreate = {
 				},
 				'onComplete': this.onPopupOpened.bind(this, ext, type)
 			};
-			var idPopup	= 'quickcreate';
 			var title	= '[LLL:core.create]' + ': ' + this.getTypeLabel(ext, type);
 			var width	= 700;
 
-			this.popup = Todoyu.Popup.openWindow(idPopup, title, width, url, options);
+			this.popup = Todoyu.Popup.openWindow(this.popupid, title, width, url, options);
 
 			Todoyu.Hook.exec('headlet.quickcreate.' + type + '.popupOpened');
 		}
@@ -148,7 +149,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * @param	{String}	ext
 	 */
 	onPopupOpened: function(ext, type) {
-		$('quickcreate').addClassName(type);
+		$('todoyuheadletquickcreate').addClassName(type);
 
 		var quickCreateObject	= 'Todoyu.Ext.' + ext + '.QuickCreate' + Todoyu.Helper.ucwords(type);
 		Todoyu.callUserFunction(quickCreateObject + '.onPopupOpened');
@@ -165,7 +166,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * @return	{String}
 	 */
 	getTypeLabel: function(ext, type) {
-		return $$('#headlet-quickcreate-content a.headlet-quickcreate-item-' + ext + '-' + type)[0].innerHTML;
+		return $('todoyuheadletquickcreate').down('li a.todoyuheadletquickcreate-item-' + ext + '-' + type).innerHTML;
 	},
 
 
@@ -176,7 +177,7 @@ Todoyu.Headlet.QuickCreate = {
 	 * @method	closePopup
 	 */
 	closePopup: function() {
-		Todoyu.Popup.close('quickcreate');
+		Todoyu.Popup.close('todoyuheadletquickcreate');
 	},
 
 

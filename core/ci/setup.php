@@ -69,8 +69,8 @@ TodoyuInstallerManager::importDemoData();
 TodoyuCache::flush();
 
 	// Install unitTest extension
-TodoyuExtInstaller::installExtension('unittest');
-TodoyuExtInstaller::installExtension('projectbilling');
+TodoyuSysmanagerExtInstaller::installExtension('unittest');
+TodoyuSysmanagerExtInstaller::installExtension('projectbilling');
 
 echo "todoyu setup done";
 

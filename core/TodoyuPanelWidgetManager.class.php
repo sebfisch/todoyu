@@ -168,8 +168,8 @@ class TodoyuPanelWidgetManager {
 	 * @param	Array		$params
 	 * @return	TodoyuPanelWidget
 	 */
-	public static function getPanelWidget($widgetName, $idArea = 0, array $params = array()) {
-		$widgetClassName= 'TodoyuPanelWidget' . $widgetName;
+	public static function getPanelWidget($extension, $widgetName, $idArea = 0, array $params = array()) {
+		$widgetClassName= 'Todoyu' . ucfirst(strtolower($extension)) . 'PanelWidget' . ucfirst($widgetName);
 		$config			= array();
 
 		return new $widgetClassName($config, $params, $idArea);

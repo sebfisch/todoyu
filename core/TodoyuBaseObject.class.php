@@ -236,13 +236,13 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * Get user of a specific type (create, update, assigned, etc)
 	 *
 	 * @param	String		$type
-	 * @return	TodoyuPerson
+	 * @return	TodoyuContactPerson
 	 */
 	public function getPerson($type) {
 		$idPerson = $this->getPersonID($type);
 
 		if( $idPerson !== false ) {
-			return new TodoyuPerson($idPerson);
+			return new TodoyuContactPerson($idPerson);
 		} else {
 			return false;
 		}
@@ -264,7 +264,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	/**
 	 * Get the creator person
 	 *
-	 * @return	TodoyuPerson
+	 * @return	TodoyuContactPerson
 	 */
 	public function getCreatePerson() {
 		return $this->getPerson('create');

@@ -28,7 +28,7 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-Todoyu.Headlet.About = {
+Todoyu.Headlets.About = {
 
 	/**
 	 * ID of the about popup
@@ -228,7 +228,7 @@ Todoyu.Headlet.About = {
 
 
 	/**
-	 * Toggle display of team names / third party library credits 
+	 * Toggle display of team names / third party library credits
 	 */
 	toggleCredits: function() {
 		if( this.isTeamShown() ) {
