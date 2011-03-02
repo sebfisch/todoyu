@@ -99,6 +99,30 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 
 
+	public function testGetColumnUnique() {
+		$array	= array(
+			array(
+				'name'	=> 'John'
+			),
+			array(
+				'name'	=> 'Jim'
+			),
+			array(
+				'name'	=> 'Jack'
+			),
+			array(
+				'name'	=> 'Jack'
+			)
+		);
+
+		$column	= TodoyuArray::getColumnUnique($array, 'name');
+
+		$this->assertEquals(3, sizeof($column));
+		$this->assertEquals($column, array_unique($column));
+	}
+
+
+
 	/**
 	 * Test TodoyuArray::getFirstKey
 	 */
@@ -109,15 +133,6 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	}
 
 
-
-	/**
-	 * Test TodoyuArray::getKeyOffset
-	 */
-	public function testGetKeyOffset() {
-		$offset	= TodoyuArray::getKeyOffset($this->array[0], 'street');
-
-		$this->assertEquals(3, $offset);
-	}
 
 
 
@@ -149,6 +164,27 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		$sum	= array_sum($names);
 
 		$this->assertEquals(0, $sum);
+	}
+
+
+	public function testFloatval() {
+		$array	= array(
+			1,
+			2,
+			'3.3',
+			'4',
+			5.5,
+			'a'
+		);
+
+		$floats	= TodoyuArray::floatval($array);
+
+		$this->assertEquals(1.0, $floats[0]);
+		$this->assertEquals(2.0, $floats[1]);
+		$this->assertEquals(3.3, $floats[2]);
+		$this->assertEquals(4.0, $floats[3]);
+		$this->assertEquals(5.5, $floats[4]);
+		$this->assertEquals(0.0, $floats[5]);
 	}
 
 
@@ -184,6 +220,22 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		$this->assertType('array', $new);
 		$this->assertTrue(array_key_exists('value', $new[0]));
 		$this->assertEquals('Max', $new[0]['label']);
+	}
+
+
+	public function testReformWithFieldAsIndex() {
+		$reform	= array(
+			'id'		=> 'id',
+			'firstname'	=> 'first',
+			'lastname'	=> 'last'
+		);
+		$index	= 'id';
+
+		$reformed	= TodoyuArray::reformWithFieldAsIndex($this->array, $reform, false, $index);
+
+		$this->assertEquals('Max', $reformed[32]['first']);
+		$this->assertEquals('Doe', $reformed[45]['last']);
+		$this->assertEquals(15, $reformed[15]['id']);
 	}
 
 
@@ -270,10 +322,6 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		);
 
 		$assoc = TodoyuArray::insertElement($assoc, 'georgy', $new, 'after', 'Doe');
-
-		$pos	= TodoyuArray::getKeyOffset($assoc, 'georgy');
-
-		$this->assertEquals(2, $pos);
 	}
 
 
@@ -292,6 +340,25 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('John Resig', $array['book'][1]['author']);
 		$this->assertEquals('CHF 72.20', $array['book'][0]['price']);
 		$this->assertEquals('1-59059-727-3', $array['book'][1]['@attributes']['isbn']);
+	}
+
+
+
+	public function testToArray() {
+		$array	= array(
+			1,
+			array(1,2,3),
+		);
+		$class	= new stdClass();
+		$class->test = 4;
+		$class->field= 'text';
+		$array[] = $class;
+
+		$clearArray	= TodoyuArray::toArray($array);
+
+		$this->assertEquals('text', $clearArray[2]['field']);
+		$this->assertEquals('4', $clearArray[2]['test']);
+		$this->assertEquals(3, $clearArray[1][2]);
 	}
 
 
@@ -338,6 +405,22 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		$expect	= "'1','fun','test\\\"with\\'quotes'";
 
 		$this->assertEquals($expect, $quoted);
+	}
+
+
+	public function testWrapItems() {
+		$array	= array(
+			1,
+			2,
+			'string',
+			array(),
+			null
+		);
+
+		$wrapped	= TodoyuArray::wrapItems($array, 'A', 'Z');
+
+		$this->assertEquals(3, sizeof($wrapped));
+		$this->assertEquals('A1Z', $wrapped[0]);
 	}
 
 
@@ -414,6 +497,58 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue(is_array($result));
 		$this->assertEquals(7, sizeof($result));
 		$this->assertEquals(28, array_sum($result));
+	}
+
+
+	public function testMergeRecursive() {
+		$arrayOne	= array(
+			'type'		=> 'area',
+			'height'	=> 500,
+			'opacity'	=> 0.8,
+			'events'	=> array(
+				'close'	=> false,
+				'resize'=> true
+			)
+		);
+		$arrayTwo	= array(
+			'height'	=> 600,
+			'width'		=> 400,
+			'events'	=> array(
+				'move'	=> true,
+				'close'	=> true,
+				'max'	=> false
+			)
+		);
+
+		$merged	= TodoyuArray::mergeRecursive($arrayOne, $arrayTwo);
+
+		$this->assertEquals('area', $merged['type']);
+		$this->assertEquals(600, $merged['height']);
+		$this->assertEquals(0.8, $merged['opacity']);
+		$this->assertEquals(true, $merged['events']['resize']);
+		$this->assertEquals(false, $merged['events']['max']);
+		$this->assertEquals(true, $merged['events']['close']);
+	}
+
+
+	public function testMerge() {
+		$array1	= array(1,2,3);
+		$array2	= array(3,4,5);
+
+		$merged	= TodoyuArray::merge($array1, $array2);
+
+		$this->assertType('array', $merged);
+		$this->assertEquals(6, sizeof($merged));
+
+		$merged	= TodoyuArray::merge($array1, null);
+
+		$this->assertType('array', $merged);
+		$this->assertEquals(3, sizeof($merged));
+
+		$merged	= TodoyuArray::merge(false, null);
+
+		$this->assertType('array', $merged);
+		$this->assertEquals(0, sizeof($merged));
 	}
 
 
@@ -521,6 +656,21 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+	public function testTrimImplode() {
+		$array	= array(
+			3,
+			'   text1 ',
+			' test2 ',
+			'342',
+			4.5
+		);
+
+		$string	= TodoyuArray::trimImplode(',', $array);
+
+		$this->assertEquals('3,text1,test2,342,4.5', $string);
+	}
+
+
 
 	/**
 	 * Test TodoyuArray::trim
@@ -567,6 +717,37 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('Jagger', $result[3]['name']);
 		$this->assertEquals(3, sizeof($result));
 		$this->assertEquals('a', $result[1]['_oldIndex']);
+	}
+
+
+	public function testHtmlspecialchars() {
+		$array	= array(
+			1,
+			array(),
+			'normal',
+			'<strong>"\'',
+			'<&>'
+		);
+
+		$clean	= TodoyuArray::htmlspecialchars($array);
+
+		$this->assertEquals(1, $clean[0]);
+		$this->assertEquals(array(), $clean[1]);
+		$this->assertEquals('normal', $clean[2]);
+		$this->assertEquals('&lt;strong&gt;&quot;&#039;', $clean[3]);
+		$this->assertEquals('&lt;&amp;&gt;', $clean[4]);
+	}
+
+
+	public function testDiffLeft() {
+		$arrayOne	= array(1,2,3,4,5);
+		$arrayTwo	= array(3,4,5,6,7);
+
+		$diffOne	= TodoyuArray::diffLeft($arrayOne, $arrayTwo);
+		$diffTwo	= TodoyuArray::diffLeft($arrayTwo, $arrayOne);
+
+		$this->assertEquals(array(1,2), $diffOne);
+		$this->assertEquals(array(6,7), $diffTwo);
 	}
 
 }

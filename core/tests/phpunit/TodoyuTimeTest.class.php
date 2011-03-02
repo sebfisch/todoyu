@@ -207,9 +207,12 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		Todoyu::setLocale($currentLocale);
 	}
 
+
+
 	public function testGetFormat() {
 		$currentLocale	= Todoyu::getLocale();
 
+			// Test with german locale
 		Todoyu::setLocale('de_DE');
 
 		$format		= TodoyuTime::getFormat('DshortD2MlongY4');
@@ -217,12 +220,23 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($expected, $format);
 
+
+			// Test with debugging enabled
+		$debug	= Todoyu::$CONFIG['DEBUG'];
+
+		Todoyu::$CONFIG['DEBUG'] = true;
 		$format		= TodoyuTime::getFormat('notavailableformatstring');
+		$this->assertEquals('dateformat.notavailableformatstring', $format);
 
-//		TodoyuDebug::printInFireBug($format, 'f');
 
-		$this->assertNull($format);
+			// Test with debugging disabled
+		Todoyu::$CONFIG['DEBUG'] = false;
+		$format		= TodoyuTime::getFormat('notavailableformatstring');
+		$this->assertEquals('', $format);
 
+
+			// Restore settings
+		Todoyu::$CONFIG['DEBUG'] = $debug;
 		Todoyu::setLocale($currentLocale);
 	}
 

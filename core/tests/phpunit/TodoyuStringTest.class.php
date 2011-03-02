@@ -213,7 +213,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(8, strlen($password));
 
-		$password	= TodoyuString::generatePassword(10, true, false);
+		$password	= TodoyuString::generatePassword(10, false, false);
 
 		$this->assertEquals($password, strtolower($password));
 		$this->assertNotRegExp('/\d/', $password);

@@ -73,21 +73,6 @@ class TodoyuArray {
 
 
 	/**
-	 * Get offset of given key in given array
-	 *
-	 * @param	Array		$array
-	 * @param	String		$key
-	 */
-	public static function getKeyOffset(array $array, $key) {
-		$keys	= array_keys($array);
-		$keys	= array_flip($keys);
-
-		return $keys[$key];
-	}
-
-
-
-	/**
 	 * Get key of last element in associative array
 	 *
 	 * @param	Array	$array
@@ -109,21 +94,16 @@ class TodoyuArray {
 	 * @param	Array		$array			Dirty array
 	 * @param	Boolean		$onlyPositive	Set negative values zero
 	 * @param	Boolean		$removeZeros	Remove all zero values
-	 * @param	Boolean		$parseConstants	Parse constants?
 	 * @return	Array		Integer array
 	 */
-	public static function intval($array, $onlyPositive = false, $removeZeros = true, $parseConstants = false) {
+	public static function intval($array, $onlyPositive = false, $removeZeros = true) {
 		if( ! is_array($array) ) {
 			return array();
 		}
 
 			// Make integers
 		foreach($array as $index => $value) {
-			if(! $parseConstants) {
-				$array[$index] = intval($value);
-			} else {
-				$array[$index] = defined($value) ? constant($value) : intval($value);
-			}
+			$array[$index] = intval($value);
 		}
 
 			// Set negative values zero
@@ -693,24 +673,6 @@ class TodoyuArray {
 		}
 
 		return $flattened;
-	}
-
-
-
-	/**
-	* Flatten to values of element with given key in contained arrays
-	*
-	* @param	String  $key
-	* @param	Array   $data
-	* @return	Array
-	*/
-	public static function flattenToSubKey($key = '__key', array $data) {
-			// Reduce to values of given key in all sub arrays
-		$reform	= array($key	=> 'key');
-		$reduced= self::reform($data, $reform, false);
-
-			// Return flattened array of given key values
-		return self::flatten($reduced);
 	}
 
 
