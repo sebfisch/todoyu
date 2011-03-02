@@ -69,12 +69,12 @@ class TodoyuLabelManager {
 	/**
 	 * Get translated label
 	 *
-	 * @param	String		$labelKey		Key to label. First part is the fileKey
+	 * @param	String		$fullKey		Key to label. First part is the fileKey
 	 * @param	String		$locale			Force language. If not set, us defined language
 	 * @return	String		Translated label
 	 */
-	public static function getLabel($labelKey, $locale = null) {
-		return self::getLabelInternal($labelKey, $locale);
+	public static function getLabel($fullKey, $locale = null) {
+		return self::getLabelInternal($fullKey, $locale);
 	}
 
 
@@ -111,46 +111,38 @@ class TodoyuLabelManager {
 	/**
 	 * Get label or null if not existing
 	 *
-	 * @param	String		$fullLabelKey
+	 * @param	String		$fullKey
 	 * @param	String		$locale
 	 * @return	String		Or NULL
 	 */
-	private static function getLabelInternal($fullLabelKey, $locale = null) {
+	private static function getLabelInternal($fullKey, $locale = null) {
 		$locale	= is_null($locale) ? self::$locale : $locale ;
 
-		if( ! is_string($fullLabelKey) || $fullLabelKey === '' ) {
+		if( empty($fullKey) ) {
 			if( Todoyu::$CONFIG['LOCALE']['logEmptyKeys'] ) {
 				Todoyu::log('Tried to read a label, but no key was provided', TodoyuLogger::LEVEL_ERROR);
 			}
 			return '';
 		}
 
-			// Split path parts into fileKey and label index
-		$fullLabelKey	= substr($fullLabelKey, 0, 4) == 'LLL:' ? substr($fullLabelKey, 4) : $fullLabelKey;
-		$keyParts		= explode('.', $fullLabelKey, 2);
-		$fileKey		= $keyParts[0];
-		$labelKey		= $keyParts[1];
+		$fullKey	= str_replace('LLL:', '', $fullKey);
+		$keyParts	= explode('.', $fullKey, 3);
+		$extKey		= $keyParts[0];
+		$fileKey	= $keyParts[1];
+		$labelKey	= $keyParts[2];
 
-			// Return key if not valid key (in debug mode, else empty string)
-		if( is_null($labelKey) ) {
-			if( Todoyu::$CONFIG['DEBUG'] ) {
-				return $fullLabelKey;
-			} else {
-				return '';
-			}
+		if( empty($extKey) || empty($fileKey) || empty($labelKey) ) {
+			Todoyu::log('Invalid label key: <' . $fullKey . '>', TodoyuLogger::LEVEL_ERROR);
+			return Todoyu::$CONFIG['DEBUG'] ? $fullKey : '';
 		}
 
-		$label	= self::getCachedLabel($fileKey, $labelKey, $locale);
+		$label	= self::getCachedLabel($extKey, $fileKey, $labelKey, $locale);
 
 		if( is_null($label) ) {
-			if( Todoyu::$CONFIG['DEBUG'] ) {
-				return $fullLabelKey;
-			} else {
-				return '';
-			}
-		} else {
-			return $label;
+			return Todoyu::$CONFIG['DEBUG'] ? $fullKey : '';
 		}
+
+		return $label;
 	}
 
 
@@ -235,14 +227,14 @@ class TodoyuLabelManager {
 	 * @param	String		$locale			Locale to load the label
 	 * @return	String		The label with the key $index for $language
 	 */
-	private static function getCachedLabel($fileKey, $labelKey, $locale = null) {
+	private static function getCachedLabel($extKey, $fileKey, $labelKey, $locale = null) {
 		$locale	= is_null($locale) ? self::$locale : $locale ;
 
-		if( ! is_string(self::$cache[$fileKey][$locale][$labelKey]) ) {
-			self::$cache[$fileKey][$locale] = self::getFileLabels($fileKey, $locale);
+		if( ! is_string(self::$cache[$extKey][$fileKey][$locale][$labelKey]) ) {
+			self::$cache[$extKey][$fileKey][$locale] = self::getFileLabels($extKey, $fileKey, $locale);
 		}
 
-		return self::$cache[$fileKey][$locale][$labelKey];
+		return self::$cache[$extKey][$fileKey][$locale][$labelKey];
 	}
 
 
@@ -250,13 +242,21 @@ class TodoyuLabelManager {
 	/**
 	 * Get path of the file which is registered for a file key
 	 *
-	 * @param	String		$identifier
+	 * @param	String		$fileKey
 	 * @return	String		Abs. path to file
 	 */
-	private static function getFilePath($identifier, $locale) {
-		$path	= $locale . '/' . self::$files[$identifier]['file'];
+	private static function getFilePath($extKey, $fileKey, $locale) {
+		$path	= $locale . '/' . self::$files[$fileKey]['file'];
 
-		return TodoyuFileManager::pathAbsolute(self::$files[$identifier]['dir'] . '/' . $path);
+		if( $extKey === 'core' ) {
+			$basePath	= TodoyuFileManager::pathAbsolute('core');
+		} elseif( $extKey === 'installer' ) {
+			$basePath	= TodoyuFileManager::pathAbsolute('install');
+		} else {
+			$basePath	= TodoyuExtensions::getExtPath($extKey);
+		}
+
+		return $basePath . DIR_SEP . 'locale' . DIR_SEP . $locale . DIR_SEP . $fileKey . '.xml';
 	}
 
 
@@ -294,14 +294,14 @@ class TodoyuLabelManager {
 	/**
 	 * Get labels for an identifier for a locale
 	 *
-	 * @param	String		$identifier
+	 * @param	String		$fileKey
 	 * @param	String		$locale
 	 * @return	Array
 	 */
-	private static function getFileLabels($identifier, $locale = null) {
+	private static function getFileLabels($extKey, $fileKey, $locale = null) {
 		$locale		= is_null($locale) ? self::$locale : $locale;
 		$locales	= self::getFallbackLocales($locale);
-		$cacheFile	= self::getCacheFileName($identifier, $locale);
+		$cacheFile	= self::getCacheFileName($extKey, $fileKey, $locale);
 
 		if( is_file($cacheFile) ) {
 			return self::readCachedLabelFile($cacheFile);
@@ -312,7 +312,7 @@ class TodoyuLabelManager {
 		$labels	= array();
 
 		foreach($locales as $fallbackLocale) {
-			$pathFile	= self::getFilePath($identifier, $fallbackLocale);
+			$pathFile	= self::getFilePath($extKey, $fileKey, $fallbackLocale);
 
 			if( is_file($pathFile) ) {
 				$localeLabels	= self::readXmlFile($pathFile);
@@ -433,8 +433,8 @@ class TodoyuLabelManager {
 	 * @param	String		$absPathToLocallangFile
 	 * @return	String
 	 */
-	private static function getCacheFileName($fileKey, $locale) {
-		return TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['LOCALE']['labelCacheDir'] . DIR_SEP . $locale . DIR_SEP . $fileKey . '.labels');
+	private static function getCacheFileName($extKey, $fileKey, $locale) {
+		return TodoyuFileManager::pathAbsolute(Todoyu::$CONFIG['LOCALE']['labelCacheDir'] . DIR_SEP . $locale . DIR_SEP . $extKey . '.' . $fileKey . '.labels');
 	}
 
 }

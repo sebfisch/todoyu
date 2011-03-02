@@ -35,18 +35,18 @@ if( Todoyu::$CONFIG['INIT'] ) {
 
 
 	// Register core localization file
-TodoyuLabelManager::registerCore('core', 'core.xml');
-TodoyuLabelManager::registerCore('date', 'date.xml');
-TodoyuLabelManager::registerCore('file', 'file.xml');
-TodoyuLabelManager::registerCore('form', 'form.xml');
-TodoyuLabelManager::registerCore('locale', 'locale.xml');
-TodoyuLabelManager::registerCore('dateformat', 'dateformat.xml');
+//TodoyuLabelManager::registerCore('core', 'core.xml');
+//TodoyuLabelManager::registerCore('date', 'date.xml');
+//TodoyuLabelManager::registerCore('file', 'file.xml');
+//TodoyuLabelManager::registerCore('form', 'form.xml');
+//TodoyuLabelManager::registerCore('locale', 'locale.xml');
+//TodoyuLabelManager::registerCore('dateformat', 'dateformat.xml');
 
 	// Register static_... tables' localization files
-TodoyuLabelManager::registerCore('static_country', 'static_country.xml');
-TodoyuLabelManager::registerCore('static_country_zone', 'static_country_zone.xml');
-TodoyuLabelManager::registerCore('static_territory', 'static_territory.xml');
-TodoyuLabelManager::registerCore('static_language', 'static_language.xml');
+//TodoyuLabelManager::registerCore('static_country', 'static_country.xml');
+//TodoyuLabelManager::registerCore('static_country_zone', 'static_country_zone.xml');
+//TodoyuLabelManager::registerCore('static_territory', 'static_territory.xml');
+//TodoyuLabelManager::registerCore('static_language', 'static_language.xml');
 
 	// Add all paths of installed extensions to autoload
 TodoyuExtensions::addAllExtensionAutoloadPaths();

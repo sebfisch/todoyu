@@ -6,7 +6,7 @@
 			<elements>
 
 				<field type="select" name="id">
-					<label>contact.person</label>
+					<label>contact.ext.person</label>
 					<source type="function">
 						<function>TodoyuContactViewHelper::getPersonOptions</function>
 					</source>

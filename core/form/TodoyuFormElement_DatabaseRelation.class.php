@@ -303,7 +303,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 			// If still no label found, get default "no label" tag
 		if( empty($label) ) {
-			$label = TodoyuLabelManager::getLabel('form.databaserelation.nolabel');
+			$label = TodoyuLabelManager::getLabel('core.form.databaserelation.nolabel');
 		}
 
 		return $label;

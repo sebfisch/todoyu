@@ -48,7 +48,7 @@ class TodoyuFormElement_ExpandAllButton extends TodoyuFormElement_Button {
 		$this->setType('button');
 
 		if( ! $this->hasAttribute('text') ) {
-			$this->setAttribute('text', 'form.databaserelation.showAllRecords');
+			$this->setAttribute('text', 'core.form.databaserelation.showAllRecords');
 		}
 		if( ! $this->hasAttribute('class') ) {
 			$this->setAttribute('class', 'expandAll');

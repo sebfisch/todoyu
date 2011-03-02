@@ -28,12 +28,14 @@ class TodoyuStaticRecords {
 
 	private static $localeConfig = array(
 		'country'	=> array(
-			'value'	=> 'id',
-			'label'	=> 'iso_alpha3'
+			'value'		=> 'id',
+			'label'		=> 'iso_alpha3',
+			'locale'	=> 'core.static_country'
 		),
 		'currency'	=> array(
-			'value'	=> 'id',
-			'label'	=> 'code'
+			'value'		=> 'id',
+			'label'		=> 'code',
+			'locale'	=> 'currency.static_currency'
 		)
 	);
 
@@ -133,7 +135,7 @@ class TodoyuStaticRecords {
 	 * @return	String
 	 */
 	public static function getLabel($type, $key) {
-		$labelKey	= 'static_' . $type . '.' . $key;
+		$labelKey	= self::$localeConfig[$type]['locale'] . '.' . $key;
 
 		return TodoyuLabelManager::getLabel($labelKey);
 	}
@@ -246,7 +248,7 @@ class TodoyuStaticRecords {
 		$record	= self::getCountry($idCountry);
 		$alpha3	= $record['iso_alpha3'];
 
-		return Label('static_country.' . $alpha3);
+		return Label('core.static_country.' . $alpha3);
 	}
 
 
@@ -305,7 +307,7 @@ class TodoyuStaticRecords {
 		foreach($countryZones as $countryZone) {
 			$options[] = array(
 				'value'	=> $countryZone['id'],
-				'label'	=> self::getLabel('country_zone', $countryZone['iso_alpha3_country'] . '.' . $countryZone['code'])
+				'label'	=> self::getLabel('core.static_country_zone', $countryZone['iso_alpha3_country'] . '.' . $countryZone['code'])
 			);
 		}
 

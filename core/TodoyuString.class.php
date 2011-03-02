@@ -350,10 +350,10 @@ class TodoyuString {
 		if( is_null($labels) ) {
 			if( $noLabel === false ) {
 				$labels = array(
-					'gb'	=> Label('file.size.gb'),
-					'mb'	=> Label('file.size.mb'),
-					'kb'	=> Label('file.size.kb'),
-					'b'		=> Label('file.size.b')
+					'gb'	=> Label('core.file.size.gb'),
+					'mb'	=> Label('core.file.size.mb'),
+					'kb'	=> Label('core.file.size.kb'),
+					'b'		=> Label('core.file.size.b')
 				);
 			} else {
 				$labels	= array();
@@ -693,7 +693,7 @@ class TodoyuString {
 
 	/**
 	 * Returns an HTML - img tag
-	 * 
+	 *
 	 * @param int $width
 	 * @param	String		$src
 	 * @param	Integer		width

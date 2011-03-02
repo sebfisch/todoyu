@@ -52,7 +52,7 @@ Todoyu.Ajax = {
 				// Delete onComplete handler to prevent processing an empty response
 			delete response.request.options.onComplete;
 			var missingRight = response.getTodoyuHeader('noAccess-right');
-			Todoyu.notifyError('[LLL:core.noAccess.errorMessage] (' + missingRight + ')');
+			Todoyu.notifyError('[LLL:core.global.noAccess.errorMessage] (' + missingRight + ')');
 			Todoyu.Hook.exec('core.noaccess', response, missingRight);
 		}
 	},
@@ -70,7 +70,7 @@ Todoyu.Ajax = {
 				// Delete onComplete handler to prevent processing an empty response
 			response.request.options.backupOnComplete = response.request.options.onComplete;
 			delete response.request.options.onComplete;
-			Todoyu.notifyError('[LLL:core.notLoggedIn.errorMessage]', 0);
+			Todoyu.notifyError('[LLL:core.global.notLoggedIn.errorMessage]', 0);
 			Todoyu.Hook.exec('core.notloggedin', response);
 		}
 	},

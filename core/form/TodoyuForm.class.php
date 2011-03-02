@@ -353,13 +353,13 @@ class TodoyuForm implements ArrayAccess {
 	 * checks if field is required
 	 * 	checks if field is empty
 	 *
-	 * @param Obj $field
+	 * @param	TodoyuFormElement	$field
 	 */
 	protected function checkRequiredFields($field) {
 		if( $field->hasAttribute('required') ) {
 			if( ! TodoyuValidator::isNotEmpty($this->formdata[$field->getName()]) ) {
 				$this->invalidFields[$field->getName()] = true;
-				$field->setAttribute('errorLabel', 'LLL:form.field.isrequired');
+				$field->setAttribute('errorLabel', 'LLL:core.form.field.isrequired');
 				$field->setAttribute('hasError', true);
 			}
 		}

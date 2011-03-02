@@ -114,7 +114,7 @@ Todoyu.LoaderBox = {
 
 			this.box.insert(new Element('div', {
 				'class': 'title'
-			}).update('[LLL:core.loaderBox.title]'));
+			}).update('[LLL:core.global.loaderBox.title]'));
 
 			this.box.insert(new Element('img', {
 				'class': 	'spinner',

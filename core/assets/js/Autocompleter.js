@@ -89,7 +89,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 		this.clearValue();
 
 		if( showMessage ) {
-			Todoyu.notifyInfo('[LLL:form.ac.noResults]');
+			Todoyu.notifyInfo('[LLL:core.global.form.ac.noResults]');
 		}
 	},
 

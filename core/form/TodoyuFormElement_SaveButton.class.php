@@ -44,7 +44,7 @@ class TodoyuFormElement_SaveButton extends TodoyuFormElement_Button {
 	 */
 	protected function init() {
 		if( ! $this->hasAttribute('text') ) {
-			$this->setAttribute('text', 'form.field.save');
+			$this->setAttribute('text', 'core.form.field.save');
 		}
 		if( ! $this->hasAttribute('class') ) {
 			$this->setAttribute('class', 'save');

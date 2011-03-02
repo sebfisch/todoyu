@@ -226,7 +226,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 		Todoyu::$CONFIG['DEBUG'] = true;
 		$format		= TodoyuTime::getFormat('notavailableformatstring');
-		$this->assertEquals('dateformat.notavailableformatstring', $format);
+		$this->assertEquals('core.dateformat.notavailableformatstring', $format);
 
 
 			// Test with debugging disabled

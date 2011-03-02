@@ -44,7 +44,7 @@ class TodoyuFormElement_CancelButton extends TodoyuFormElement_Button {
 	 */
 	protected function init() {
 		if( ! $this->hasAttribute('text') ) {
-			$this->setAttribute('text', 'form.field.cancel');
+			$this->setAttribute('text', 'core.form.field.cancel');
 		}
 		if( ! $this->hasAttribute('class') ) {
 			$this->setAttribute('class', 'cancel');

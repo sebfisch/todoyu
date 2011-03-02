@@ -2,6 +2,6 @@
 
 {block name="field"}
 <input type="text" name="{$htmlName}" id="{$htmlId}" value="{htmlencode $valueTemplate}" {if $disabled}disabled="disabled"{/if} class="{$inputClass} {$class}" {$extraAttributes} />
-<div {if $disabled}style="display:none"{/if} class="icon link calendaricon" id="{$htmlId}-calicon" title="{Label form.dateselector.open}" alt="{Label form.dateselector.open}"></div>
+<div {if $disabled}style="display:none"{/if} class="icon link calendaricon" id="{$htmlId}-calicon" title="{Label core.form.dateselector.open}" alt="{Label form.dateselector.open}"></div>
 {$jsSetup}
 {/block}

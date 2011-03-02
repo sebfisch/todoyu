@@ -89,7 +89,7 @@ Todoyu.CoreHeadlets.QuickCreate = Class.create(Todoyu.Headlet, {
 				},
 				'onComplete': this.onPopupOpened.bind(this, ext, type)
 			};
-			var title	= '[LLL:core.create]' + ': ' + this.getMenuItemLabel(ext, type);
+			var title	= '[LLL:core.global.create]' + ': ' + this.getMenuItemLabel(ext, type);
 			var width	= 700;
 
 			this.popup = Todoyu.Popup.openWindow(this.popupid, title, width, url, options);

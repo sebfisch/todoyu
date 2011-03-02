@@ -13,20 +13,20 @@
 			<elements>
 
 				<field type="text" name="title">
-					<label>core.title</label>
+					<label>core.global.title</label>
 					<required />
 				</field>
 
 				<field type="textarea" name="description">
-					<label>core.description</label>
+					<label>core.global.description</label>
 				</field>
 
 				<field type="checkbox" name="is_active">
-					<label>core.attr.is_active</label>
+					<label>core.global.attr.is_active</label>
 				</field>
 
 				<field type="databaseRelation" name="persons">
-					<label>core.role.attr.persons</label>
+					<label>core.global.role.attr.persons</label>
 					<record>
 						<form>core/config/form/role-person.xml</form>
 						<url>
@@ -35,7 +35,7 @@
 						</url>
 						<label type="function">
 							<function>TodoyuContactViewHelper::getPersonLabel</function>
-							<noLabel>contact.person.new</noLabel>
+							<noLabel>contact.ext.person.new</noLabel>
 						</label>
 					</record>
 				</field>

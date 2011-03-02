@@ -42,11 +42,11 @@ function Label($labelKey, $locale = null) {
  * @param	String		$locale		Forced locale
  * @return	String
  */
-function findLabel($label, $plain = false, $language = null) {
+function findLabel($label, $plain = false, $locale = null) {
 	if( $plain ) {
-		return TodoyuString::getLabel($label, $language);
+		return TodoyuString::getLabel($label, $locale);
 	} else {
-		return TodoyuLabelManager::getLabel($label, $language);
+		return TodoyuLabelManager::getLabel($label, $locale);
 	}
 }
 
