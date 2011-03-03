@@ -247,6 +247,17 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 	/**
+	 * Set form element label
+	 *
+	 * @param	String		$label
+	 */
+	public function setLabel($label) {
+		$this->setAttribute('label', $label);
+	}
+
+
+
+	/**
 	 * Remove option with given value from options array of config (of <select> element)
 	 *
 	 * @param	Mixed	$value
