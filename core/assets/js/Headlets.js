@@ -66,6 +66,7 @@ Todoyu.Headlets = {
 	/**
 	 * Add a headlet object
 	 *
+	 * @method	add
 	 * @param	{String}	name
 	 * @param	{Class}		headletClass
 	 */
@@ -76,7 +77,9 @@ Todoyu.Headlets = {
 
 
 	/**
+	 * Get headlet
 	 *
+	 * @method	getHeadlet
 	 * @param	{String}	name
 	 * @return	{Todoyu.Headlet}
 	 */
@@ -89,6 +92,7 @@ Todoyu.Headlets = {
 	/**
 	 * Check whether a headlet with this name exists
 	 *
+	 * @method	isHeadlet
 	 * @param	{String}	name
 	 * @return	{Boolean}
 	 */
@@ -146,8 +150,9 @@ Todoyu.Headlets = {
 
 
 	/**
-	 * Get open headlet
+	 * Get currently open headlet
 	 *
+	 * @method	getOpenHeadlet
 	 * @return	{Element|undefined}
 	 */
 	getOpenHeadlet: function() {
@@ -161,6 +166,7 @@ Todoyu.Headlets = {
 	/**
 	 * Check whether any headlet is currently opened
 	 *
+	 * @method	areHeadletsOpen
 	 * @return	{Boolean}
 	 */
 	areHeadletsOpen: function() {

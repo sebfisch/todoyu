@@ -69,6 +69,7 @@ Todoyu.SelectMulti = Class.create({
 	/**
 	 * Initialize multi select object
 	 *
+	 * @method	initialize
 	 * @param	{Element|String}	field
 	 * @param	{Function}			callbackAdd
 	 * @param	{Function}			callbackRemove
@@ -105,6 +106,7 @@ Todoyu.SelectMulti = Class.create({
 	/**
 	 * Handler when an item was selected
 	 *
+	 * @method	onSelect
 	 * @param	{Event}		event
 	 * @param	{Element}	option
 	 */
@@ -118,6 +120,7 @@ Todoyu.SelectMulti = Class.create({
 	 * Handler when mouse leaves select
 	 * Used when user selects a range of values but the mouseup event occurs outside of the element
 	 *
+	 * @method	onMouseOut
 	 * @param	{Event}		event
 	 * @param	{Element}	select
 	 */
@@ -143,6 +146,8 @@ Todoyu.SelectMulti = Class.create({
 
 	/**
 	 * Handle selection change
+	 *
+	 * @method	fireChange
 	 */
 	fireChange: function() {
 			// Clear registered timeouts
@@ -169,6 +174,7 @@ Todoyu.SelectMulti = Class.create({
 	/**
 	 * Handler when an item was removed from the list
 	 *
+	 * @method	onItemListRemove
 	 * @param	{Element}		listElement
 	 * @param	{String|Number}	idItem
 	 */

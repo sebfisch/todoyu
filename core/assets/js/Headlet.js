@@ -29,9 +29,9 @@ Todoyu.Headlet = Class.create({
 
 
 	/**
-	 * Constructor
-	 * Install basics for all headlet types
+	 * Constructor: Install basics for all headlet types
 	 *
+	 * @method	initialize
 	 * @param	{String}	name
 	 */
 	initialize: function(name) {
@@ -47,8 +47,12 @@ Todoyu.Headlet = Class.create({
 		}
 	},
 
+
+
 	/**
 	 * Observe the button/icon
+	 *
+	 * @method	observeButton
 	 */
 	observeButton: function() {
 		this.getButton().on('click', 'a', this._handleButtonClick.bind(this));
@@ -58,6 +62,8 @@ Todoyu.Headlet = Class.create({
 
 	/**
 	 * Observe the menu list
+	 *
+	 * @method	observeMenu
 	 */
 	observeMenu: function() {
 		this.getContent().on('click', 'li', this._handleMenuClick.bind(this));
@@ -67,6 +73,8 @@ Todoyu.Headlet = Class.create({
 
 	/**
 	 * Observe the overlay box
+	 *
+	 * @method	observeOverlay
 	 */
 	observeOverlay: function() {
 		this.getContent().on('click', this._handleOverlayClick.bind(this));
@@ -77,6 +85,7 @@ Todoyu.Headlet = Class.create({
 	/**
 	 * Internal handler when clicked on the button
 	 *
+	 * @method	_handleButtonClick
 	 * @param	{Event}		event
 	 * @param	{Element}	buttonElement
 	 */
@@ -102,6 +111,7 @@ Todoyu.Headlet = Class.create({
 	 * Default button click handler
 	 * Toggles the overlay/menu if available
 	 *
+	 * @method	onButtonClick
 	 * @param	{Event}		event
 	 */
 	onButtonClick: function(event) {
@@ -113,6 +123,7 @@ Todoyu.Headlet = Class.create({
 	/**
 	 * Internal handler when clicked on a menu entry
 	 *
+	 * @method	_handleMenuClick
 	 * @param	{Event}		event
 	 * @param	{Element}	menuItem
 	 */
@@ -128,6 +139,7 @@ Todoyu.Headlet = Class.create({
 	/**
 	 * Default handler when clicked on a menu item
 	 *
+	 * @method	onMenuClick
 	 * @param	{String}	ext
 	 * @param	{String}	type
 	 * @param	{Event}		event
@@ -143,6 +155,7 @@ Todoyu.Headlet = Class.create({
 	 * Internal handler when clicked on the overlay box
 	 * Prevent body click event which closes all overlays
 	 *
+	 * @method	_handleOverlayClick
 	 * @param	{Event}	event
 	 */
 	_handleOverlayClick: function(event) {
@@ -155,6 +168,7 @@ Todoyu.Headlet = Class.create({
 	/**
 	 * Get the label of a menu entry
 	 *
+	 * @method	getMenuItemLabel
 	 * @param	{String}	ext
 	 * @param	{String}	type
 	 * @return	{String}
@@ -234,6 +248,8 @@ Todoyu.Headlet = Class.create({
 
 	/**
 	 * Toggle content of headlet
+	 *
+	 * @method	toggle
 	 */
 	toggle: function() {
 		this.isVisible() ? this.hide() : this.show();
@@ -243,6 +259,8 @@ Todoyu.Headlet = Class.create({
 
 	/**
 	 * Hide all other headlet contents
+	 *
+	 * @method	hideOthers
 	 */
 	hideOthers: function() {
 		this.hideAll(this.name);
@@ -252,6 +270,8 @@ Todoyu.Headlet = Class.create({
 
 	/**
 	 * Hide all headlet contents
+	 *
+	 * @method	hideAll
 	 */
 	hideAll: function(except) {
 			// Call hide function for all headlets
@@ -296,6 +316,7 @@ Todoyu.Headlet = Class.create({
 	/**
 	 * Check whether the headlet has type menu
 	 *
+	 * @method	isMenu
 	 * @return	{Boolean}
 	 */
 	isMenu: function() {
@@ -307,6 +328,7 @@ Todoyu.Headlet = Class.create({
 	/**
 	 * Check whether the headlet has type overlay
 	 *
+	 * @method	isOverlay
 	 * @return	{Boolean}
 	 */
 	isOverlay: function() {
@@ -362,9 +384,9 @@ Todoyu.Headlet = Class.create({
 
 
 	/**
-	 * Default handler when clicked on the body
-	 * This means an event was not stopped
+	 * Default handler when clicked on the body (this means an event was not stopped)
 	 *
+	 * @method	onBodyClick
 	 */
 	onBodyClick: function() {
 		this.hide();
@@ -375,6 +397,8 @@ Todoyu.Headlet = Class.create({
 
 	/**
 	 * Save open status of all headlets
+	 *
+	 * @method	saveOpenStatus
 	 */
 	saveOpenStatus: function() {
 		Todoyu.Headlets.saveOpenStatus();

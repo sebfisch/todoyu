@@ -61,6 +61,7 @@ Todoyu.Tabs = {
 	/**
 	 * Activate first tab if no tab is selected
 	 *
+	 * @method	activateFirstIfNonActive
 	 * @param	{Element}	list
 	 */
 	activateFirstIfNonActive: function(list) {
@@ -256,6 +257,7 @@ Todoyu.Tabs = {
 	/**
 	 * Add a new tab to a tab group
 	 *
+	 * @method	addTab
 	 * @param	{String}	listname
 	 * @param	{String}	name
 	 * @param	{String}	tabClass
@@ -311,6 +313,7 @@ Todoyu.Tabs = {
 	/**
 	 * Move tab to first position (on the left)
 	 *
+	 * @method	moveAsFirst
 	 * @param	{String}	list
 	 * @param	{String}	idTab
 	 */
@@ -333,6 +336,7 @@ Todoyu.Tabs = {
 	/**
 	 * Highlight a tab
 	 *
+	 * @method	highlight
 	 * @param	{String}	list
 	 * @param	{String}	idTab
 	 */
@@ -345,6 +349,7 @@ Todoyu.Tabs = {
 	/**
 	 * Get tab IDs in the tab group
 	 *
+	 * @method	getTabNames
 	 * @param	{String}	list
 	 */
 	getTabNames: function(list) {
@@ -358,6 +363,7 @@ Todoyu.Tabs = {
 	/**
 	 * Check if a tab with the ID is in the tab group
 	 *
+	 * @method	hasTab
 	 * @param	{String}	list
 	 * @param	{String}	idTab
 	 */
@@ -370,6 +376,7 @@ Todoyu.Tabs = {
 	/**
 	 * Remove surplus tabs
 	 *
+	 * @method	removeSurplus
 	 * @param	{String}	list
 	 * @param	{Number}	max		Maximal amount of tabs
 	 * @return	{Array}		List of removed tab IDs
@@ -392,6 +399,7 @@ Todoyu.Tabs = {
 	/**
 	 * Remove last tab
 	 *
+	 * @method	removeLast
 	 * @param	{String}	list
 	 * @return	{String}	ID of the remove tab
 	 */
@@ -436,6 +444,7 @@ Todoyu.Tabs = {
 	/**
 	 * Get first tab of given list
 	 *
+	 * @method	getFirstTab
 	 * @param	{String}	list
 	 * @return	{Element}
 	 */
@@ -448,6 +457,7 @@ Todoyu.Tabs = {
 	/**
 	 * Get last tab of given list
 	 *
+	 * @method	getLastTab
 	 * @param	{String}	list
 	 * @return	{Element}
 	 */
@@ -460,6 +470,7 @@ Todoyu.Tabs = {
 	/**
 	 * Get all tab elements of given list
 	 *
+	 * @method	getAllTabs
 	 * @param	{String}	list
 	 * @return	{Array}
 	 */

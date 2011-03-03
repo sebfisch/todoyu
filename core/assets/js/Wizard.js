@@ -33,6 +33,7 @@ Todoyu.Wizard = {
 	/**
 	 * Open a wizard
 	 *
+	 * @method	open
 	 * @param	{String}	wizardName
 	 * @param	{Function}	onLoadCallback
 	 */
@@ -58,6 +59,7 @@ Todoyu.Wizard = {
 	/**
 	 * Handler when wizard was opened
 	 *
+	 * @method	onOpened
 	 * @param 	{Ajax.Response}	response
 	 */
 	onOpened: function(response) {
@@ -68,6 +70,8 @@ Todoyu.Wizard = {
 
 	/**
 	 * Go one step back in wizard
+	 *
+	 * @method	back
 	 */
 	back: function() {
 		this.submit('back');
@@ -77,6 +81,8 @@ Todoyu.Wizard = {
 
 	/**
 	 * Go to next step in wizard
+	 *
+	 * @method	next
 	 */
 	next: function() {
 		this.submit('next');
@@ -86,6 +92,8 @@ Todoyu.Wizard = {
 
 	/**
 	 * Submit the wizard form. Set direction if provided
+	 *
+	 * @method	submit
 	 */
 	submit: function(direction, callback) {
 		if( typeof direction === 'string' ) {
@@ -104,6 +112,7 @@ Todoyu.Wizard = {
 	/**
 	 * Handler when form was submitted
 	 *
+	 * @method	onSubmitted
 	 * @param	{Ajax.Response}	response
 	 */
 	onSubmitted: function(callback, response) {
@@ -117,7 +126,8 @@ Todoyu.Wizard = {
 	/**
 	 * Handler when wizard was loaded (opened or submitted)
 	 *
-	* @param	{Ajax.Response}	response
+	 * @method	onLoaded
+	 * @param	{Ajax.Response}	response
 	 */
 	onLoaded: function(response) {
 		this.wizard.popup.setTitle(response.getTodoyuHeader('label'));
@@ -129,6 +139,7 @@ Todoyu.Wizard = {
 	/**
 	 * Set direction for next step
 	 *
+	 * @method	setDirection
 	 * @param	{String}	direction
 	 */
 	setDirection: function(direction) {
@@ -140,6 +151,7 @@ Todoyu.Wizard = {
 	/**
 	 * Go to a wizard step
 	 *
+	 * @method	goToStep
 	 * @param	{String}	step
 	 */
 	goToStep: function(step) {
@@ -150,6 +162,8 @@ Todoyu.Wizard = {
 
 	/**
 	 * Get current step
+	 *
+	 * @method	getStepName
 	 */
 	getStepName: function() {
 		return $F('wizard-step');
@@ -159,6 +173,8 @@ Todoyu.Wizard = {
 
 	/**
 	 * Get name of the wizard
+	 *
+	 * @method	getWizardName
 	 */
 	getWizardName: function() {
 		return this.wizard.name;
@@ -168,6 +184,8 @@ Todoyu.Wizard = {
 
 	/**
 	 * Get form element of the wizard
+	 *
+	 * @method	getForm
 	 */
 	getForm: function() {
 		return $('wizard-form');
@@ -178,6 +196,7 @@ Todoyu.Wizard = {
 	/**
 	 * Set no save mode. Wizard just goes to requested direction without validation or saving data
 	 *
+	 * @method	setNoSave
 	 * @param	{Boolean}	value
 	 */
 	setNoSave: function(value) {
@@ -188,6 +207,8 @@ Todoyu.Wizard = {
 
 	/**
 	 * Close wizard
+	 *
+	 * @method	close
 	 */
 	close: function() {
 		if( confirm('Are you sure?') ) {

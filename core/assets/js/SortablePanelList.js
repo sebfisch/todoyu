@@ -37,6 +37,7 @@ Todoyu.SortablePanelList = Class.create({
 	/**
 	 * Initialize sorting and toggle
 	 *
+	 * @method	initialize
 	 * @param	{Element|String}	list
 	 * @param	{Function}			callbackToggle
 	 * @param	{Function}			callbackSort
@@ -63,6 +64,7 @@ Todoyu.SortablePanelList = Class.create({
 	/**
 	 * Add toggle functions
 	 *
+	 * @method	_initToggle
 	 * @param	{Function}	callback
 	 */
 	_initToggle: function(callback) {
@@ -79,6 +81,7 @@ Todoyu.SortablePanelList = Class.create({
 	/**
 	 * Toggle handler
 	 *
+	 * @method	_toggle
 	 * @param	{Element}	groupItem
 	 * @param	{String}	groupKey
 	 * @param	{Function}	callback
@@ -99,6 +102,7 @@ Todoyu.SortablePanelList = Class.create({
 	/**
 	 * Add sortable function
 	 *
+	 * @method	_initSortable
 	 * @param	{Function}	callback
 	 */
 	_initSortable: function(callback) {
@@ -120,6 +124,7 @@ Todoyu.SortablePanelList = Class.create({
 	/**
 	 * Sorting handler
 	 *
+	 * @method	_onSort
 	 * @param	{Function}	callback
 	 * @param	{Element}	listItem
 	 */
@@ -134,6 +139,8 @@ Todoyu.SortablePanelList = Class.create({
 
 	/**
 	 * Initialize handler to activate list items (with current class)
+	 *
+	 * @method	_initActivator
 	 */
 	_initActivator: function() {
 		this.list.select('li.itemList > ul').each(function(itemList){
@@ -146,6 +153,7 @@ Todoyu.SortablePanelList = Class.create({
 	/**
 	 * Activate the list item
 	 *
+	 * @method	_activate
 	 * @param	{Event}		event
 	 * @param	{Element}	linkItem
 	 */

@@ -327,18 +327,21 @@ Todoyu.Form = {
 		floatAllowed= floatAllowed || false;
 		var val		= $F(field);
 
-		var whitelist	= (floatAllowed) ? /([0-9]|\.|\,|\-)/g : /([0-9])/g;
-		var illegalChars	= val.replace(whitelist, '');
+		if( ! Todoyu.Validate.isOnlyAllowedChars(val, '0123456789.,-') ) {
+				// Filter-out any illegal characters
+			var whitelist	= (floatAllowed) ? /([0-9]|\.|\,|\-)/g : /([0-9])/g;
+			var illegalChars	= val.replace(whitelist, '');
 
-		for( var i = 0; i <= illegalChars.length; i++ ) {
-			val	= val.replace(illegalChars[i], '');
+			for( var i = 0; i <= illegalChars.length; i++ ) {
+				val	= val.replace(illegalChars[i], '');
+			}
+
+			if(floatAllowed) {
+				val	= val.replace(',', '.');
+			}
+
+			$(field).value = val;
 		}
-
-		if(floatAllowed) {
-			val	= val.replace(',', '.');
-		}
-
-		$(field).value = val;
 	},
 
 

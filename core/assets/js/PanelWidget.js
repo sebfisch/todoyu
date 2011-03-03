@@ -126,7 +126,7 @@ Todoyu.PanelWidget = {
 	 *
 	 * @method	fire
 	 * @param	{String}	widget
-	 * @param	{Array}	params
+	 * @param	{Array}		params
 	 */
 	fire: function(widget, params) {
 		if( ! Object.isUndefined(this.observerCallbacks[widget]) ) {

@@ -50,4 +50,5 @@
 	<label index="monthly">Monatlich</label>
 	<label index="yearly">Jährlich</label>
 	<label index="today">Heute</label>
+	<label index="warning.dateformat.invalid">Ungültiges Datum entdeckt (wird beim Speichern verändert).</label>
 </labels>

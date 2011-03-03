@@ -74,8 +74,15 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 			$jsConf[] = $key . ' : ' . $value;
 		}
 
+		$htmlID	= $this->getHtmlID();
+		$format	= $this->getFormat();
+
+			// Setup JsCal
 		$jsCode	= 'Calendar.setup({' . implode(',', $jsConf) . '});';
-		$jsCode .='Todoyu.JsCalFormat["' . $this->getHtmlID() . '"] = "' . $this->getFormat() . '";';
+		$jsCode .= 'Todoyu.JsCalFormat["' . $htmlID . '"] = "' . $format . '";';
+
+			// Add onchange validation observer
+		$jsCode.= 'Todoyu.DateField.observeChange(\'' . $htmlID . '\', \'' . $format . '\');';
 
 		return TodoyuString::wrapScript($jsCode);
 	}

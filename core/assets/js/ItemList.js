@@ -38,6 +38,7 @@ Todoyu.ItemList = Class.create({
 	/**
 	 * Initialize
 	 *
+	 * @method	initialize
 	 * @param	{Element|String}	list
 	 * @param	{Object}			options
 	 */
@@ -58,6 +59,7 @@ Todoyu.ItemList = Class.create({
 	/**
 	 * Handler to remove an item
 	 *
+	 * @method	remove
 	 * @param	{Event}		event
 	 * @param	{Element}	item
 	 */
@@ -77,6 +79,7 @@ Todoyu.ItemList = Class.create({
 	/**
 	 * Add a new item
 	 *
+	 * @method	add
 	 * @param	{Number}	idItem
 	 * @param	{String}	label
 	 */
@@ -102,6 +105,7 @@ Todoyu.ItemList = Class.create({
 	/**
 	 * Get item IDs as array
 	 *
+	 * @method	getItems
 	 * @return	{Array}
 	 */
 	getItems: function() {
@@ -115,6 +119,7 @@ Todoyu.ItemList = Class.create({
 	/**
 	 * Check whether the item list already contains the item (with same id)
 	 *
+	 * @method	include
 	 * @param	{String|Number}		idItem
 	 */
 	include: function(idItem) {

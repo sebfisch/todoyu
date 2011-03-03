@@ -54,6 +54,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Constructor
 	 *
+	 * @method	initialize
 	 * @param	{String}			baseID
 	 * @param	{Array|Function}	validDates
 	 * @param	{Array}				selectedDates
@@ -114,6 +115,8 @@ Todoyu.Timerange = Class.create({
 
 	/**
 	 * Focus the key board dummy input
+	 *
+	 * @method	focusForKeyboard
 	 */
 	focusForKeyboard: function() {
 		$(this.name + '-focus').focus();
@@ -123,6 +126,8 @@ Todoyu.Timerange = Class.create({
 
 	/**
 	 * Observe track and key board field
+	 *
+	 * @method	observeElements
 	 */
 	observeElements: function() {
 			// On timerange click, set focus to dummy field
@@ -140,6 +145,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Handler when key in fields are pressed
 	 *
+	 * @method	onDateFieldKeyPress
 	 * @param	{Event}		event
 	 */
 	onDateFieldKeyPress: function(event) {
@@ -157,6 +163,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Handler when date in fields is changed
 	 *
+	 * @method	onDateFieldChange
 	 * @param	{Event}		event
 	 */
 	onDateFieldChange: function(event) {
@@ -175,6 +182,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Callback for key presses to change date
 	 *
+	 * @method	onKeyPress
 	 * @param	{Event}		event
 	 * @param	{Boolean}	dontStopEvent
 	 */
@@ -230,6 +238,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Set active handle based on the given key
 	 *
+	 * @method	setActiveHandle
 	 * @param	{String}	baseID		Base ID of the filter
 	 * @param	{String}	key			Key of the field (start or end)
 	 */
@@ -248,6 +257,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Get the index for the next or last month
 	 *
+	 * @method	getIndexShiftedByMonth
 	 * @param	{Number}	index		Index of the current date
 	 * @param	{Boolean}	next		Next or last month
 	 * @return	{Number}	Index of new date
@@ -264,6 +274,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Shift date for next or last month
 	 *
+	 * @method	shiftMonth
 	 * @param	{Date}		date		Current date
 	 * @param	{Boolean}	next		Next or last month
 	 * @return	{Date}		New date
@@ -278,6 +289,8 @@ Todoyu.Timerange = Class.create({
 
 	/**
 	 * Get value of the active drag handle
+	 *
+	 * @method	getActiveHandleValue
 	 */
 	getActiveHandleValue: function() {
 			// Get key of handle
@@ -294,6 +307,7 @@ Todoyu.Timerange = Class.create({
 	 * Get index for a handle
 	 * start = 0, end = 1
 	 *
+	 * @method	getHandleIndex
 	 * @param	{String}	key
 	 * @return	{Number}
 	 */
@@ -309,6 +323,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Get key of the selected handle
 	 *
+	 * @method	getSelectedHandleKey
 	 * @return	{String}
 	 */
 	getSelectedHandleKey: function() {
@@ -320,6 +335,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Generate dates in a range
 	 *
+	 * @method	getDatesInRange
 	 * @param	{Date}	dateStart
 	 * @param	{Date}	dateEnd
 	 * @return	{Array}	List of dates in the range
@@ -346,7 +362,9 @@ Todoyu.Timerange = Class.create({
 
 	/**
 	 * Get index if the
-	 * @param time
+	 *
+	 * @method	getIndex
+	 * @param	{String}	time
 	 */
 	getIndex: function(time) {
 		var i 		= 0;
@@ -369,6 +387,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Get selectable dates
 	 *
+	 * @method	getDates
 	 * @return	{Array}
 	 */
 	getDates: function() {
@@ -380,6 +399,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Get date at a specific index
 	 *
+	 * @method	getDate
 	 * @param	{Number}	index
 	 * @return	{Date}
 	 */
@@ -392,6 +412,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Get formatted date for an index
 	 *
+	 * @method	getDateFormatted
 	 * @param	{Number}	index
 	 * @return	{String}
 	 */
@@ -404,6 +425,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Format a date
 	 *
+	 * @method	formatDate
 	 * @param	{Date}	date
 	 * @return	{String}
 	 */
@@ -417,6 +439,7 @@ Todoyu.Timerange = Class.create({
 	 * Handler when slider position is changed
 	 * Called only when mouse is released from handle
 	 *
+	 * @method	onChange
 	 * @param	{Function}	callOriginal
 	 * @param	{Array}		values
 	 */
@@ -437,6 +460,7 @@ Todoyu.Timerange = Class.create({
 	 * Handler when slider moves
 	 * Called on every pixel move
 	 *
+	 * @method	onSlide
 	 * @param	{Function}	callOriginal
 	 * @param	{Array}		values
 	 */
@@ -455,8 +479,9 @@ Todoyu.Timerange = Class.create({
 
 	/**
 	 *
-	 * @param indexStart
-	 * @param indexEnd
+	 * @method	setFieldValues
+	 * @param	{Number}	indexStart
+	 * @param	{Number}	indexEnd
 	 */
 	setFieldValues: function(indexStart, indexEnd) {
 		this.setFieldDate('start', this.getDate(indexStart));
@@ -468,6 +493,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Set date for a field
 	 *
+	 * @method	setFieldDate
 	 * @param	{String}	key
 	 * @param	{Date}		date
 	 */

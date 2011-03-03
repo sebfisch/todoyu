@@ -136,145 +136,147 @@ Todoyu.Helper = {
 	 * Borrowed from phpjs  http://phpjs.org/functions/wordwrap
 	 * version: 1009.2513
 	 *
+	 * @method	get_html_translation_table
 	 * @param	{String}	table
 	 * @param	{String}	quote_style
 	 */
 	get_html_translation_table:function(table, quote_style) {
-			var entities = {}, hash_map = {}, decimal = 0, symbol = '';
-			var constMappingTable = {}, constMappingQuoteStyle = {};
-			var useTable = {}, useQuoteStyle = {};
+		var entities = {}, hash_map = {}, decimal = 0, symbol = '';
+		var constMappingTable = {}, constMappingQuoteStyle = {};
+		var useTable = {}, useQuoteStyle = {};
 
 			// Translate arguments
-			constMappingTable[0]		= 'HTML_SPECIALCHARS';
-			constMappingTable[1]		= 'HTML_ENTITIES';
-			constMappingQuoteStyle[0]	= 'ENT_NOQUOTES';
-			constMappingQuoteStyle[2]	= 'ENT_COMPAT';
-			constMappingQuoteStyle[3]	= 'ENT_QUOTES';
+		constMappingTable[0]		= 'HTML_SPECIALCHARS';
+		constMappingTable[1]		= 'HTML_ENTITIES';
+		constMappingQuoteStyle[0]	= 'ENT_NOQUOTES';
+		constMappingQuoteStyle[2]	= 'ENT_COMPAT';
+		constMappingQuoteStyle[3]	= 'ENT_QUOTES';
 
-			useTable		= !isNaN(table) ? constMappingTable[table] : table ? table.toUpperCase() : 'HTML_SPECIALCHARS';
-			useQuoteStyle	= !isNaN(quote_style) ? constMappingQuoteStyle[quote_style] : quote_style ? quote_style.toUpperCase() : 'ENT_COMPAT';
+		useTable		= ! isNaN(table) ? constMappingTable[table] : table ? table.toUpperCase() : 'HTML_SPECIALCHARS';
+		useQuoteStyle	= ! isNaN(quote_style) ? constMappingQuoteStyle[quote_style] : quote_style ? quote_style.toUpperCase() : 'ENT_COMPAT';
 
-			if (useTable !== 'HTML_SPECIALCHARS' && useTable !== 'HTML_ENTITIES') {
-					throw new Error("Table: "+useTable+' not supported');
-					// return false;
-			}
+		if( useTable !== 'HTML_SPECIALCHARS' && useTable !== 'HTML_ENTITIES' ) {
+			throw new Error('Table: ' + useTable + ' not supported');
+			// return false;
+		}
 
-			entities['38'] = '&amp;';
-			if (useTable === 'HTML_ENTITIES') {
-					entities['160'] = '&nbsp;';
-					entities['161'] = '&iexcl;';
-					entities['162'] = '&cent;';
-					entities['163'] = '&pound;';
-					entities['164'] = '&curren;';
-					entities['165'] = '&yen;';
-					entities['166'] = '&brvbar;';
-					entities['167'] = '&sect;';
-					entities['168'] = '&uml;';
-					entities['169'] = '&copy;';
-					entities['170'] = '&ordf;';
-					entities['171'] = '&laquo;';
-					entities['172'] = '&not;';
-					entities['173'] = '&shy;';
-					entities['174'] = '&reg;';
-					entities['175'] = '&macr;';
-					entities['176'] = '&deg;';
-					entities['177'] = '&plusmn;';
-					entities['178'] = '&sup2;';
-					entities['179'] = '&sup3;';
-					entities['180'] = '&acute;';
-					entities['181'] = '&micro;';
-					entities['182'] = '&para;';
-					entities['183'] = '&middot;';
-					entities['184'] = '&cedil;';
-					entities['185'] = '&sup1;';
-					entities['186'] = '&ordm;';
-					entities['187'] = '&raquo;';
-					entities['188'] = '&frac14;';
-					entities['189'] = '&frac12;';
-					entities['190'] = '&frac34;';
-					entities['191'] = '&iquest;';
-					entities['192'] = '&Agrave;';
-					entities['193'] = '&Aacute;';
-					entities['194'] = '&Acirc;';
-					entities['195'] = '&Atilde;';
-					entities['196'] = '&Auml;';
-					entities['197'] = '&Aring;';
-					entities['198'] = '&AElig;';
-					entities['199'] = '&Ccedil;';
-					entities['200'] = '&Egrave;';
-					entities['201'] = '&Eacute;';
-					entities['202'] = '&Ecirc;';
-					entities['203'] = '&Euml;';
-					entities['204'] = '&Igrave;';
-					entities['205'] = '&Iacute;';
-					entities['206'] = '&Icirc;';
-					entities['207'] = '&Iuml;';
-					entities['208'] = '&ETH;';
-					entities['209'] = '&Ntilde;';
-					entities['210'] = '&Ograve;';
-					entities['211'] = '&Oacute;';
-					entities['212'] = '&Ocirc;';
-					entities['213'] = '&Otilde;';
-					entities['214'] = '&Ouml;';
-					entities['215'] = '&times;';
-					entities['216'] = '&Oslash;';
-					entities['217'] = '&Ugrave;';
-					entities['218'] = '&Uacute;';
-					entities['219'] = '&Ucirc;';
-					entities['220'] = '&Uuml;';
-					entities['221'] = '&Yacute;';
-					entities['222'] = '&THORN;';
-					entities['223'] = '&szlig;';
-					entities['224'] = '&agrave;';
-					entities['225'] = '&aacute;';
-					entities['226'] = '&acirc;';
-					entities['227'] = '&atilde;';
-					entities['228'] = '&auml;';
-					entities['229'] = '&aring;';
-					entities['230'] = '&aelig;';
-					entities['231'] = '&ccedil;';
-					entities['232'] = '&egrave;';
-					entities['233'] = '&eacute;';
-					entities['234'] = '&ecirc;';
-					entities['235'] = '&euml;';
-					entities['236'] = '&igrave;';
-					entities['237'] = '&iacute;';
-					entities['238'] = '&icirc;';
-					entities['239'] = '&iuml;';
-					entities['240'] = '&eth;';
-					entities['241'] = '&ntilde;';
-					entities['242'] = '&ograve;';
-					entities['243'] = '&oacute;';
-					entities['244'] = '&ocirc;';
-					entities['245'] = '&otilde;';
-					entities['246'] = '&ouml;';
-					entities['247'] = '&divide;';
-					entities['248'] = '&oslash;';
-					entities['249'] = '&ugrave;';
-					entities['250'] = '&uacute;';
-					entities['251'] = '&ucirc;';
-					entities['252'] = '&uuml;';
-					entities['253'] = '&yacute;';
-					entities['254'] = '&thorn;';
-					entities['255'] = '&yuml;';
-			}
+		entities['38'] = '&amp;';
 
-			if (useQuoteStyle !== 'ENT_NOQUOTES') {
-					entities['34'] = '&quot;';
-			}
-			if (useQuoteStyle === 'ENT_QUOTES') {
-					entities['39'] = '&#39;';
-			}
-			entities['60'] = '&lt;';
-			entities['62'] = '&gt;';
+		if( useTable === 'HTML_ENTITIES' ) {
+			entities['160'] = '&nbsp;';
+			entities['161'] = '&iexcl;';
+			entities['162'] = '&cent;';
+			entities['163'] = '&pound;';
+			entities['164'] = '&curren;';
+			entities['165'] = '&yen;';
+			entities['166'] = '&brvbar;';
+			entities['167'] = '&sect;';
+			entities['168'] = '&uml;';
+			entities['169'] = '&copy;';
+			entities['170'] = '&ordf;';
+			entities['171'] = '&laquo;';
+			entities['172'] = '&not;';
+			entities['173'] = '&shy;';
+			entities['174'] = '&reg;';
+			entities['175'] = '&macr;';
+			entities['176'] = '&deg;';
+			entities['177'] = '&plusmn;';
+			entities['178'] = '&sup2;';
+			entities['179'] = '&sup3;';
+			entities['180'] = '&acute;';
+			entities['181'] = '&micro;';
+			entities['182'] = '&para;';
+			entities['183'] = '&middot;';
+			entities['184'] = '&cedil;';
+			entities['185'] = '&sup1;';
+			entities['186'] = '&ordm;';
+			entities['187'] = '&raquo;';
+			entities['188'] = '&frac14;';
+			entities['189'] = '&frac12;';
+			entities['190'] = '&frac34;';
+			entities['191'] = '&iquest;';
+			entities['192'] = '&Agrave;';
+			entities['193'] = '&Aacute;';
+			entities['194'] = '&Acirc;';
+			entities['195'] = '&Atilde;';
+			entities['196'] = '&Auml;';
+			entities['197'] = '&Aring;';
+			entities['198'] = '&AElig;';
+			entities['199'] = '&Ccedil;';
+			entities['200'] = '&Egrave;';
+			entities['201'] = '&Eacute;';
+			entities['202'] = '&Ecirc;';
+			entities['203'] = '&Euml;';
+			entities['204'] = '&Igrave;';
+			entities['205'] = '&Iacute;';
+			entities['206'] = '&Icirc;';
+			entities['207'] = '&Iuml;';
+			entities['208'] = '&ETH;';
+			entities['209'] = '&Ntilde;';
+			entities['210'] = '&Ograve;';
+			entities['211'] = '&Oacute;';
+			entities['212'] = '&Ocirc;';
+			entities['213'] = '&Otilde;';
+			entities['214'] = '&Ouml;';
+			entities['215'] = '&times;';
+			entities['216'] = '&Oslash;';
+			entities['217'] = '&Ugrave;';
+			entities['218'] = '&Uacute;';
+			entities['219'] = '&Ucirc;';
+			entities['220'] = '&Uuml;';
+			entities['221'] = '&Yacute;';
+			entities['222'] = '&THORN;';
+			entities['223'] = '&szlig;';
+			entities['224'] = '&agrave;';
+			entities['225'] = '&aacute;';
+			entities['226'] = '&acirc;';
+			entities['227'] = '&atilde;';
+			entities['228'] = '&auml;';
+			entities['229'] = '&aring;';
+			entities['230'] = '&aelig;';
+			entities['231'] = '&ccedil;';
+			entities['232'] = '&egrave;';
+			entities['233'] = '&eacute;';
+			entities['234'] = '&ecirc;';
+			entities['235'] = '&euml;';
+			entities['236'] = '&igrave;';
+			entities['237'] = '&iacute;';
+			entities['238'] = '&icirc;';
+			entities['239'] = '&iuml;';
+			entities['240'] = '&eth;';
+			entities['241'] = '&ntilde;';
+			entities['242'] = '&ograve;';
+			entities['243'] = '&oacute;';
+			entities['244'] = '&ocirc;';
+			entities['245'] = '&otilde;';
+			entities['246'] = '&ouml;';
+			entities['247'] = '&divide;';
+			entities['248'] = '&oslash;';
+			entities['249'] = '&ugrave;';
+			entities['250'] = '&uacute;';
+			entities['251'] = '&ucirc;';
+			entities['252'] = '&uuml;';
+			entities['253'] = '&yacute;';
+			entities['254'] = '&thorn;';
+			entities['255'] = '&yuml;';
+		}
 
-			// ascii decimals to real symbols
-			for (decimal in entities) {
-					symbol = String.fromCharCode(decimal);
-					hash_map[symbol] = entities[decimal];
-			}
+		if (useQuoteStyle !== 'ENT_NOQUOTES') {
+			entities['34'] = '&quot;';
+		}
+		if (useQuoteStyle === 'ENT_QUOTES') {
+			entities['39'] = '&#39;';
+		}
+		entities['60'] = '&lt;';
+		entities['62'] = '&gt;';
 
-			return hash_map;
+			// ASCII decimals to real symbols
+		for (decimal in entities) {
+			symbol = String.fromCharCode(decimal);
+			hash_map[symbol] = entities[decimal];
+		}
+
+		return hash_map;
 	},
 
 
@@ -353,25 +355,25 @@ Todoyu.Helper = {
 	 * @return	{String}
 	 */
 	wordwrap: function(str, int_width, str_break, cut) {
-			var m = ((arguments.length >= 2) ? arguments[1] : 75   );
-			var b = ((arguments.length >= 3) ? arguments[2] : "\n" );
-			var c = ((arguments.length >= 4) ? arguments[3] : false);
+		var m = ((arguments.length >= 2) ? arguments[1] : 75   );
+		var b = ((arguments.length >= 3) ? arguments[2] : "\n" );
+		var c = ((arguments.length >= 4) ? arguments[3] : false);
 
-			var i, j, l, s, r;
+		var i, j, l, s, r;
 
-			str += '';
+		str += '';
 
-			if (m < 1) {
-					return str;
+		if (m < 1) {
+			return str;
+		}
+
+		for (i = -1, l = (r = str.split(/\r\n|\n|\r/)).length; ++i < l; r[i] += s) {
+			for (s = r[i], r[i] = ""; s.length > m; r[i] += s.slice(0, j) + ((s = s.slice(j)).length ? b : "")){
+				j = c == 2 || (j = s.slice(0, m + 1).match(/\S*(\s)?$/))[1] ? m : j.input.length - j[0].length || c == 1 && m || j.input.length + (j = s.slice(m).match(/^\S*/)).input.length;
 			}
+		}
 
-			for (i = -1, l = (r = str.split(/\r\n|\n|\r/)).length; ++i < l; r[i] += s) {
-					for (s = r[i], r[i] = ""; s.length > m; r[i] += s.slice(0, j) + ((s = s.slice(j)).length ? b : "")){
-							j = c == 2 || (j = s.slice(0, m + 1).match(/\S*(\s)?$/))[1] ? m : j.input.length - j[0].length || c == 1 && m || j.input.length + (j = s.slice(m).match(/^\S*/)).input.length;
-					}
-			}
-
-			return r.join("\n");
+		return r.join("\n");
 	},
 
 
@@ -380,6 +382,7 @@ Todoyu.Helper = {
 	 * Wraps buffer to selected number of characters using string break char,
 	 * while keeping HTML entities intact
 	 *
+	 * @method	wordwrapEntities
 	 * @param	{String}		str
 	 * @param	{Number}		int_width
 	 * @param	{String}		str_break
@@ -387,11 +390,11 @@ Todoyu.Helper = {
 	 * @return	{String}
 	 */
 	wordwrapEntities: function(str, int_width, str_break, cut) {
-			str		= this.html_entity_decode(str);
-			str		= this.wordwrap(str, int_width, str_break, cut);
-			str		= this.htmlentities(str);
+		str		= this.html_entity_decode(str);
+		str		= this.wordwrap(str, int_width, str_break, cut);
+		str		= this.htmlentities(str);
 
-			return str;
+		return str;
 	},
 
 
@@ -407,57 +410,18 @@ Todoyu.Helper = {
 	fireEvent: function(element, event){
 		var evt;
 
-		if(document.createEventObject){
-				// dispatch for IE
+		if( document.createEventObject ){
+				// Dispatch for IE
 			evt = document.createEventObject();
 
 			return element.fireEvent('on' + event, evt);
 		} else {
-				// dispatch for firefox + others
+				// Dispatch for firefox + others
 			evt = document.createEvent('HTMLEvents');
 			evt.initEvent(event, true, true ); // event type, bubbling, cancelable
 
 			return ! element.dispatchEvent(evt);
 		}
-	},
-
-
-
-	/**
-	 * Check whether client is given browser (e.g. 'chrome', 'safari')
-	 *
-	 * @method	isNavigatorUserAgent
-	 * @param	{String}	browserName
-	 * @return	{Boolean}
-	 */
-	isNavigatorUserAgent: function(browserName) {
-		browserName	= browserName.toLowerCase();
-
-		return navigator.userAgent.toLowerCase().indexOf(browserName) > -1;
-	},
-
-
-
-	/**
-	 * Check whether used client browser is google chrome
-	 *
-	 * @method	isChrome
-	 * @return	{Boolean}
-	 */
-	isChrome: function() {
-		return this.isNavigatorUserAgent('chrome');
-	},
-
-
-
-	/**
-	 * Check whether used client browser is apple safari
-	 *
-	 * @method	isSafari
-	 * @return	{Boolean}
-	 */
-	isSafari: function() {
-		return this.isNavigatorUserAgent('safari');
 	},
 
 
@@ -472,7 +436,7 @@ Todoyu.Helper = {
 	setScrollTop: function(element, position) {
 		element.scrollTop = position;
 
-		if( this.isChrome() || this.isSafari() ) {
+		if( Todoyu.Validate.isChrome() || Todoyu.Validate.isSafari() ) {
 			this.onUpdateChromeSafariScrollTop(element.id, 0);
 		}
 	},
@@ -507,6 +471,7 @@ Todoyu.Helper = {
 	/**
 	 * Get a key from a class with the specific prefix
 	 *
+	 * @method	getClassKey
 	 * @param	{Element}		element
 	 * @param	{String}		prefix
 	 */

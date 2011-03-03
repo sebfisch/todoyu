@@ -200,7 +200,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * Check whether the input field is empty
 	 */
 	isEmpty: function() {
-		return $F(this.element).strip() === '';
+		return Todoyu.Validate.isEmpty($F(this.element).strip());
 	},
 
 

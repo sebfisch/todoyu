@@ -17,10 +17,24 @@
  * This copyright notice MUST APPEAR in all copies of the script.
  *****************************************************************************/
 
+/**
+ * @module	Core
+ */
+
+/**
+ * Field list helper functions
+ *
+ * @class		FieldList
+ * @namespace	Todoyu
+ */
 Todoyu.FieldList = Class.create({
 
 	field: null,
 
+	/**
+	 * @method	initialize
+	 * @param	{Element|String}	field
+	 */
 	initialize: function(field) {
 		this.field = $(field);
 	},
@@ -30,6 +44,7 @@ Todoyu.FieldList = Class.create({
 	/**
 	 * Add a new id to the value field
 	 *
+	 * @method	add
 	 * @param	{Number}	item
 	 */
 	add: function(item) {
@@ -44,6 +59,7 @@ Todoyu.FieldList = Class.create({
 	/**
 	 * Remove item from list
 	 *
+	 * @method	remove
 	 * @param	{Number}	item
 	 */
 	remove: function(item) {
@@ -55,6 +71,8 @@ Todoyu.FieldList = Class.create({
 	/**
 	 * Get selected items
 	 *
+	 * @method	getItems
+	 * @return	{Array}
 	 */
 	getItems: function() {
 		var value	= $F(this.field);
@@ -67,6 +85,7 @@ Todoyu.FieldList = Class.create({
 	/**
 	 * Set selected items
 	 *
+	 * @method	setItems
 	 * @param	{Array}		items
 	 */
 	setItems: function(items) {
@@ -78,7 +97,9 @@ Todoyu.FieldList = Class.create({
 	/**
 	 * Check if the list already contains the item
 	 *
+	 * @method	contains
 	 * @param	{Number}	item
+	 * @return	{Array}
 	 */
 	contains: function(item) {
 		return this.getItems().include(item);

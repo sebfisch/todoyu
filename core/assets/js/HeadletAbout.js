@@ -75,6 +75,8 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 
 	/**
 	 * Open about popUp and load content
+	 *
+	 * @method	openPopup
 	 */
 	openPopup: function() {
 		var url		= Todoyu.getUrl('core', 'about');
@@ -93,6 +95,7 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 	/**
 	 * Handler when PopUp is loaded: Call hook to inform other extensions
 	 *
+	 * @method	onPopupLoaded
 	 * @param	{Ajax.Response}		response
 	 */
 	onPopupLoaded: function(response) {
@@ -218,6 +221,7 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 	/**
 	 * Check whether names of team members are shown
 	 *
+	 * @method	isTeamShown
 	 * @return	{Boolean}
 	 */
 	isTeamShown: function() {
@@ -228,6 +232,8 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 
 	/**
 	 * Toggle display of team names / third party library credits
+	 *
+	 * @method	toggleCredits
 	 */
 	toggleCredits: function() {
 		if( this.isTeamShown() ) {
@@ -248,6 +254,7 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 	/**
 	 * Change label of credits dedication
 	 *
+	 * @method	setCreditsDedicationText
 	 * @param	{String}	label
 	 */
 	setCreditsDedicationText: function(label) {
@@ -259,6 +266,7 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 	/**
 	 * Change label of toggle button
 	 *
+	 * @method	setCreditsButtonText
 	 * @param	{String}	label
 	 */
 	setCreditsButtonText: function(label) {

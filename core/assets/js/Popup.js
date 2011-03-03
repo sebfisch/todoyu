@@ -51,7 +51,7 @@ Todoyu.Popup = {
 
 	/**
 	 * @property	contentOrigParentNode
-	 * @type		DOMElement
+	 * @type		Element
 	 */
 	contentOrigParentNode: null,
 
@@ -350,8 +350,7 @@ Todoyu.Popup = {
 	/**
 	 * Close last opened popUp
 	 *
-	 * @method	close
-	 * @param	{String}	idPopup
+	 * @method	closeLastPopup
 	 */
 	closeLastPopup: function() {
 		var idPopup	= this.getLastPopupID();

@@ -204,20 +204,24 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 65
 		),
 		array(
-			'file'		=> 'core/assets/js/Autocomplete.js',
+			'file'		=> 'core/assets/js/Validate.js',
 			'position'	=> 66
 		),
 		array(
-			'file'		=> 'core/assets/js/TimePicker.js',
+			'file'		=> 'core/assets/js/Autocomplete.js',
 			'position'	=> 67
 		),
 		array(
-			'file'		=> 'core/assets/js/Listing.js',
+			'file'		=> 'core/assets/js/TimePicker.js',
 			'position'	=> 68
 		),
 		array(
-			'file'		=> 'core/assets/js/Cookie.js',
+			'file'		=> 'core/assets/js/Listing.js',
 			'position'	=> 69
+		),
+		array(
+			'file'		=> 'core/assets/js/Cookie.js',
+			'position'	=> 70
 		),
 		array(
 			'file'		=> 'core/assets/js/DelayedTextObserver.js',

@@ -83,6 +83,7 @@ var Todoyu = {
 	 * Enable noConflict mode for jQuery if loaded
 	 *
 	 * @todo	Remove when no longer needed for highcharts
+	 * @method	jQueryNoConflict
 	 */
 	jQueryNoConflict: function() {
 		if( window.jQuery ) {
@@ -365,6 +366,7 @@ var Todoyu = {
 	/**
 	 * Get context of a function string
 	 *
+	 * @method	getContext
 	 * @param	{String}		functionName
 	 * @return	{Object}
 	 */
@@ -391,6 +393,7 @@ var Todoyu = {
 	/**
 	 * Get function from string or just return the function
 	 *
+	 * @method	getFunction
 	 * @param	{String|Function}	func
 	 */
 	getFunction: function(func) {
@@ -432,6 +435,7 @@ var Todoyu = {
 	 * Observe zoom event in browser with callback function
 	 * Ported to prototype from http://mlntn.com/2008/12/11/javascript-jquery-zoom-event-plugin/
 	 *
+	 * @method	observeZoom
 	 * @param	{Function}	callback
 	 */
 	observeZoom: function(callback) {

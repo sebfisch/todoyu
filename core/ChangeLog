@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.1.0 - not released yet
+	* Feature: Added onchange validation of manually edited date/datetime fields
 	* Changed: Added globally used icons (unacknowledged/acknowledged/modified/accepted/emailed) to core
 	* Feature: Added TodoyuMailManager (DB table system_log_email) for logging of various email types
 	* Changed: Removed unused DB table system_log
