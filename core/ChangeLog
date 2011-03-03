@@ -20,6 +20,7 @@ core 2.1.0 - not released yet
 	* Feature: Added large notification icons
  
 core 2.0.8 - not released yet
+	* Feature: Text form fields are trimmed before saving
 	* Bugfix: file downloads fail with internet explorer and https connection
 
 core 0.0.1 to 2.0.7 - core 2.0.7 released on 2011-01-17

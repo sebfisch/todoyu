@@ -103,7 +103,26 @@ class TodoyuFormElement_Text extends TodoyuFormElement {
 	 * @return	String
 	 */
 	public function getValueForTemplate() {
-		return $this->getAttribute('type') === 'password' ? '' : parent::getValueForTemplate();
+		if( $this->getAttribute('type') === 'password' ) {
+			return '';
+		}
+
+		return parent::getValueForTemplate();
+	}
+
+
+
+	/**
+	 * Get data of field to store in the database
+	 *
+	 * @return	String
+	 */
+	public function getStorageData() {
+		if( $this->isNoStorageField() ) {
+			return false;
+		} else {
+			return trim($this->getValue());
+		}
 	}
 
 }
