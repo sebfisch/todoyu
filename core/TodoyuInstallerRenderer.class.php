@@ -37,7 +37,7 @@ class TodoyuInstallerRenderer {
 		$data	= array(
 			'steps'	=> TodoyuInstaller::getStepsWithLabels(),
 			'step'	=> TodoyuInstaller::getStep(),
-			'title'	=> Label('installer.type.' . TodoyuInstaller::getMode())
+			'title'	=> Label('install.installer.type.' . TodoyuInstaller::getMode())
 		);
 
 		return render($tmpl, $data);
@@ -53,9 +53,9 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderLocale(array $result) {
 		$data	= array(
-			'title'			=> 'installer.locale.title',
+			'title'			=> 'install.installer.locale.title',
 			'button'		=> false,
-			'text'			=> Label('installer.locale.text'),
+			'text'			=> Label('install.installer.locale.text'),
 			'textClass'		=> 'text textInfo',
 			'locales'		=> TodoyuInstaller::getAvailableLocaleOptions(),
 			'userLocale'	=> TodoyuBrowserInfo::getBrowserLocale(),
@@ -74,9 +74,9 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderLicense(array $result) {
 		$data	= array(
-			'title'		=> 'installer.license.title',
-			'button'	=> 'installer.license.button',
-			'text'		=> Label('installer.license.text'),
+			'title'		=> 'install.installer.license.title',
+			'button'	=> 'install.installer.license.button',
+			'text'		=> Label('install.installer.license.text'),
 			'textClass'	=> 'text textInfo'
 		);
 
@@ -95,8 +95,8 @@ class TodoyuInstallerRenderer {
 		$info	= TodoyuInstallerManager::checkServer();
 
 		$data	= array(
-			'title'		=> 'installer.servercheck.title',
-			'button'	=> 'installer.servercheck.button',
+			'title'		=> 'install.installer.servercheck.title',
+			'button'	=> 'install.installer.servercheck.button',
 			'info'		=> array(
 				'phpversion'=> $info['phpversion'],
 				'files'		=> $info['files'],
@@ -106,10 +106,10 @@ class TodoyuInstallerRenderer {
 
 			// Get result of server check, set response display
 		if( $info['stop'] === false ) {
-			$data['text'] 		= Label('installer.servercheck.ready');
+			$data['text'] 		= Label('install.installer.servercheck.ready');
 			$data['textClass'] 	= 'success';
 		} else {
-			$data['text'] 		= Label('installer.servercheck.NotReady');
+			$data['text'] 		= Label('install.installer.servercheck.NotReady');
 			$data['textClass'] 	= 'error';
 		}
 
@@ -126,9 +126,9 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderDbConnection(array $result) {
 		$data	= array(
-			'title'		=> 'installer.dbconnection.title',
-			'button'	=> 'installer.dbconnection.button',
-			'text'		=> Label('installer.dbconnection.text'),
+			'title'		=> 'install.installer.dbconnection.title',
+			'button'	=> 'install.installer.dbconnection.button',
+			'text'		=> Label('install.installer.dbconnection.text'),
 			'textClass'	=> 'info'
 		);
 
@@ -150,7 +150,7 @@ class TodoyuInstallerRenderer {
 		$dbOptions	= array();
 		$dbConf		= $dbConfig;
 
-			// PreRender database selection options 
+			// PreRender database selection options
 		foreach($databases as $database) {
 			$dbConf['database']	= $database;
 			$tables				= TodoyuDbAnalyzer::getDatabaseTables($dbConf);
@@ -162,10 +162,10 @@ class TodoyuInstallerRenderer {
 		}
 			// Setup rendering data
 		$data	= array(
-			'title'		=> 'installer.dbselect.title',
-			'button'	=> 'installer.dbselect.button',
+			'title'		=> 'install.installer.dbselect.title',
+			'button'	=> 'install.installer.dbselect.button',
 			'databases'	=> $dbOptions,
-			'text'		=> Label('installer.dbselect.text'),
+			'text'		=> Label('install.installer.dbselect.text'),
 			'textClass'	=> 'info'
 		);
 
@@ -182,11 +182,11 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderImportDbTables(array $result) {
 		$data	= array(
-			'title'			=> 'installer.importtables.title',
-			'button'		=> 'installer.importtables.button',
+			'title'			=> 'install.installer.importtables.title',
+			'button'		=> 'install.installer.importtables.button',
 			'coreStructure'	=> TodoyuSQLManager::getCoreTablesFromFile(),
 			'extStructure'	=> TodoyuSQLManager::getExtTablesFromFile(),
-			'text'			=> Label('installer.importtables.text'),
+			'text'			=> Label('install.installer.importtables.text'),
 			'textClass'		=> 'info'
 		);
 
@@ -203,12 +203,12 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderSystemConfig(array $result) {
 		$data	= array(
-			'title'			=> 'installer.systemconfig.title',
-			'button'		=> 'installer.systemconfig.button',
+			'title'			=> 'install.installer.systemconfig.title',
+			'button'		=> 'install.installer.systemconfig.button',
 			'userLocale'	=> TodoyuSession::get('installer/locale'),
 			'locales'		=> TodoyuLocaleManager::getLocaleOptions(),
 			'timezones'		=> TodoyuStaticRecords::getAllTimezones(),
-			'text'			=> Label('installer.systemconfig.text'),
+			'text'			=> Label('install.installer.systemconfig.text'),
 			'textClass'		=> 'info'
 		);
 
@@ -225,10 +225,10 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderAdminAccount(array $result) {
 		$data	= array(
-			'title'		=> 'installer.adminaccount.title',
-			'button'	=> 'installer.adminaccount.button',
+			'title'		=> 'install.installer.adminaccount.title',
+			'button'	=> 'install.installer.adminaccount.button',
 			'email'		=> TodoyuSession::get('installer/systememail'),
-			'text'		=> Label('installer.adminaccount.text'),
+			'text'		=> Label('install.installer.adminaccount.text'),
 			'textClass'	=> 'info'
 		);
 
@@ -245,9 +245,9 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderImportDemoData(array $result) {
 		$data	= array(
-			'title'		=> 'installer.importdemodata.title',
-			'button'	=> 'installer.importdemodata.button',
-			'text'		=> Label('installer.importdemodata.text'),
+			'title'		=> 'install.installer.importdemodata.title',
+			'button'	=> 'install.installer.importdemodata.button',
+			'text'		=> Label('install.installer.importdemodata.text'),
 			'textClass'	=> 'info'
 		);
 
@@ -264,9 +264,9 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderFinish(array $result) {
 		$data	= array(
-			'title'		=> 'installer.finish.title',
-			'button'	=> 'installer.finish.button',
-			'text'		=> Label('installer.finish.text'),
+			'title'		=> 'install.installer.finish.title',
+			'button'	=> 'install.installer.finish.button',
+			'text'		=> Label('install.installer.finish.text'),
 			'textClass'	=> 'success'
 		);
 
@@ -290,9 +290,9 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderUpdate(array $result) {
 		$data	= array(
-			'title'			=> 'installer.update.title',
-			'button'		=> 'installer.update.button',
-			'text'			=> Label('installer.update.title'),
+			'title'			=> 'install.installer.update.title',
+			'button'		=> 'install.installer.update.button',
+			'text'			=> Label('install.installer.update.title'),
 			'textClass'		=> 'info'
 		);
 
@@ -309,19 +309,19 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderUpdateToCurrentVersion(array $result) {
 		$data	= array(
-			'title'			=> 'installer.updatetocurrentversion.title',
-			'button'		=> 'installer.updatetocurrentversion.button',
+			'title'			=> 'install.installer.updatetocurrentversion.title',
+			'button'		=> 'install.installer.updatetocurrentversion.button',
 			'buttonClass'	=> 'updateDatabase',
 			'diff'			=> TodoyuSQLManager::getStructureDifferences()
 		);
 
 		if( sizeof($data['diff']['missingTables']) === 0 && sizeof($data['diff']['missingColumns']) === 0 && sizeof($data['diff']['changedColumns']) === 0 && sizeof($data['diff']['missingKeys']) === 0 ) {
-			$data['text']		= Label('installer.updatetocurrentversion.noupdates');
+			$data['text']		= Label('install.installer.updatetocurrentversion.noupdates');
 			$data['textClass']	= 'success';
-			$data['button']		= 'installer.updatetocurrentversion.button.noupdates';
+			$data['button']		= 'install.installer.updatetocurrentversion.button.noupdates';
 			$data['noUpdates']	= true;
 		} else {
-			$data['text']		= Label('installer.updatetocurrentversion.updates');
+			$data['text']		= Label('install.installer.updatetocurrentversion.updates');
 			$data['textClass']	= 'info';
 		}
 
@@ -339,9 +339,9 @@ class TodoyuInstallerRenderer {
 
 	public static function renderFinishUpdate(array $result) {
 		$data	= array(
-			'title'			=> 'installer.finish.title',
-			'button'		=> 'installer.finish.button',
-			'text'			=> Label('installer.finishupdate.text'),
+			'title'			=> 'install.installer.finish.title',
+			'button'		=> 'install.installer.finish.button',
+			'text'			=> Label('install.installer.finishupdate.text'),
 			'textClass'		=> 'success'
 		);
 

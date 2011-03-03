@@ -4,10 +4,10 @@
 {if $noUpdates !== true}
 	<div class="sqlQuery">
 
-		<p>{Label installer.updatetocurrentversion.updates}</p>
+		<p>{Label install.installer.updatetocurrentversion.updates}</p>
 
 		{if sizeof($diff.missingTables) > 0}
-			<p class="section">{Label installer.updatetocurrentversion.newTables}</p>
+			<p class="section">{Label install.installer.updatetocurrentversion.newTables}</p>
 			<table class="dbstruct">
 				<tr>
 					<th class="table">Table</th>
@@ -33,7 +33,7 @@
 		{/if}
 
 		{if sizeof($diff.missingColumns) > 0}
-			<p class="section">{Label installer.updatetocurrentversion.newColumns}</p>
+			<p class="section">{Label install.installer.updatetocurrentversion.newColumns}</p>
 			<table class="dbstruct">
 				<tr>
 					<th class="table">Table</th>
@@ -55,7 +55,7 @@
 		{/if}
 
 		{if sizeof($diff.changedColumns) > 0}
-			<p class="section">{Label installer.updatetocurrentversion.changedColumns}</p>
+			<p class="section">{Label install.installer.updatetocurrentversion.changedColumns}</p>
 			<table class="dbstruct">
 				<tr>
 					<th class="table">Table</th>
@@ -77,7 +77,7 @@
 		{/if}
 
 		{if sizeof($diff.missingKeys) > 0}
-			<p class="section">{Label installer.updatetocurrentversion.missingKeys}</p>
+			<p class="section">{Label install.installer.updatetocurrentversion.missingKeys}</p>
 			<table class="dbstruct">
 				<tr>
 					<th class="table">Table</th>

@@ -159,9 +159,9 @@ class TodoyuFrontend {
 				// Add entry
 			if( $allowed ) {
 				$entryKey	= $extKey . ucfirst($itemKey);
-				$label		= Label($extKey . '.subMenuEntry.' . $itemKey);
 				$href		= '?ext=' . $extKey . '&tab=' . $itemKey;
 				$position	= intval($itemConfig['position']);
+				$label		= Label($extKey . '.ext.subMenuEntry.' . $itemKey);
 
 				self::addSubmenuEntry($parentKey, $entryKey, $labelPrefix . $label, $href, $position);
 			}

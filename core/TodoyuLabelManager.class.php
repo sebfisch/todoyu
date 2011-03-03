@@ -37,9 +37,12 @@ class TodoyuLabelManager {
 	public static $cache = array();
 
 	/**
-	 * @var	Array		Registered file references
+	 * @var	Array		Custom path to locale files for extKeys
 	 */
-	private static $files = array();
+	private static $customPaths = array(
+		'core'		=> 'core',
+		'installer'	=> 'install'
+	);
 
 
 
@@ -67,14 +70,14 @@ class TodoyuLabelManager {
 
 
 	/**
-	 * Get translated label
+	 * Add a custom path for 'extkeys' which are not located in the normal file structure
+	 * The folder has to contain a "locale" folder like the extensions
 	 *
-	 * @param	String		$fullKey		Key to label. First part is the fileKey
-	 * @param	String		$locale			Force language. If not set, us defined language
-	 * @return	String		Translated label
+	 * @param	String		$extKey
+	 * @param	String		$customPath		Path relative to todoyu root
 	 */
-	public static function getLabel($fullKey, $locale = null) {
-		return self::getLabelInternal($fullKey, $locale);
+	public static function addCustomPath($extKey, $customPath) {
+		self::$customPaths[$extKey] = $customPath;
 	}
 
 
@@ -96,26 +99,13 @@ class TodoyuLabelManager {
 
 
 	/**
-	 * Get label if it exists. If not existing, get empty string
+	 * Get translated label
 	 *
-	 * @param	String		$labelKey
-	 * @param	String		$locale
-	 * @return	String
+	 * @param	String		$fullKey		Key to label. First part is the fileKey
+	 * @param	String		$locale			Force language. If not set, us defined language
+	 * @return	String		Translated label
 	 */
-	public static function getLabelIfExists($labelKey, $locale = null) {
-		return trim(self::getLabelInternal($labelKey, $locale));
-	}
-
-
-
-	/**
-	 * Get label or null if not existing
-	 *
-	 * @param	String		$fullKey
-	 * @param	String		$locale
-	 * @return	String		Or NULL
-	 */
-	private static function getLabelInternal($fullKey, $locale = null) {
+	public static function getLabel($fullKey, $locale = null) {
 		$locale	= is_null($locale) ? self::$locale : $locale ;
 
 		if( empty($fullKey) ) {
@@ -148,78 +138,6 @@ class TodoyuLabelManager {
 
 
 	/**
-	 * Checks if requested label exists
-	 *
-	 * @param	String	$labelKey
-	 * @param	String	$locale
-	 * @return	String
-	 */
-	public static function labelExists($labelKey, $locale = null) {
-		$label	= self::getLabelInternal($labelKey, $locale);
-
-		return !is_null($label);
-	}
-
-
-
-	/**
-	 * Register a file, so translations can be accessed over this key
-	 * The $fileKey has to be unique in the system, else, it will override other translations
-	 *
-	 * @param	String		$fileKey			Filekey used as prefix of the labels
-	 * @param	String		$absPathToFile		Absolute path to the locallang XML file
-	 */
-	public static function register($identifier, $extKey, $file) {
-		$baseDir	= TodoyuExtensions::getExtPath($extKey, 'locale');
-
-		self::registerFile($identifier, $file, $baseDir);
-	}
-
-
-
-	/**
-	 * Register a label file for the core
-	 *
-	 * @param	String		$identifier
-	 * @param	String		$filename
-	 */
-	public static function registerCore($identifier, $filename) {
-		$baseDir	= TodoyuFileManager::pathAbsolute(PATH_CORE . '/locale');
-
-		self::registerFile($identifier, $filename, $baseDir);
-	}
-
-
-
-	/**
-	 * Register a label file
-	 *
-	 * @param	String		$identifier			Prefix to get labels from the file
-	 * @param	String		$filename			Filename (exists in all/some locale folders)
-	 * @param	String		$dir				Absolute path to the base folder which contains the locale folders
-	 */
-	public static function registerFile($identifier, $filename, $dir) {
-		$defaultLocale	= Todoyu::$CONFIG['LOCALE']['default'];
-		$pathTestFile	= TodoyuFileManager::pathAbsolute($dir . '/' . $defaultLocale . '/' . $filename);
-
-		if( ! is_file($pathTestFile) ) {
-			Todoyu::log('Language file for ' . $defaultLocale . ' not found in "' . $dir . '"!');
-			TodoyuDebug::printHtml($pathTestFile, 'Language file for ' . $defaultLocale . ' not found in "' . $dir . '"!');
-			//TodoyuDebug::printBacktrace();
-		}
-
-		self::$files[$identifier] = array(
-			'dir'	=> $dir,
-			'file'	=> $filename
-		);
-	}
-
-
-
-
-
-
-	/**
 	 * Get a label from internal cache. If the label is not available, load it
 	 *
 	 * @param	String		$fileKey		Filekey
@@ -246,12 +164,8 @@ class TodoyuLabelManager {
 	 * @return	String		Abs. path to file
 	 */
 	private static function getFilePath($extKey, $fileKey, $locale) {
-		$path	= $locale . '/' . self::$files[$fileKey]['file'];
-
-		if( $extKey === 'core' ) {
-			$basePath	= TodoyuFileManager::pathAbsolute('core');
-		} elseif( $extKey === 'installer' ) {
-			$basePath	= TodoyuFileManager::pathAbsolute('install');
+		if( array_key_exists($extKey, self::$customPaths) ) {
+			$basePath	= TodoyuFileManager::pathAbsolute(self::$customPaths[$extKey]);
 		} else {
 			$basePath	= TodoyuExtensions::getExtPath($extKey);
 		}

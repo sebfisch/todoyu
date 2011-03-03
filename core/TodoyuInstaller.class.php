@@ -310,7 +310,7 @@ class TodoyuInstaller {
 		$withLabels	= array();
 
 		foreach($steps as $step) {
-			$withLabels[$step] = Label('installer.' . $step . '.title');
+			$withLabels[$step] = Label('install.installer.' . $step . '.title');
 		}
 
 		return $withLabels;
@@ -330,7 +330,7 @@ class TodoyuInstaller {
 		foreach($locales as $locale) {
 			$options[] = array(
 				'key'	=> $locale,
-				'label'	=> TodoyuLabelManager::getLabel('installer.locale.selectthislocale', $locale)
+				'label'	=> TodoyuLabelManager::getLabel('install.installer.locale.selectthislocale', $locale)
 			);
 		}
 

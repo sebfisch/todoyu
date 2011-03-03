@@ -4,7 +4,7 @@
 		<table width="500" border="0" cellspacing="0" cellpadding="3">
 			<tr>
 				<td width="180">
-					<label id="labelCompany" for="company">{Label installer.adminaccount.companyname}*</label>
+					<label id="labelCompany" for="company">{Label install.installer.adminaccount.companyname}*</label>
 				</td>
 				<td>
 					<input onkeyup="Todoyu.Installer.validateAdminAccountData()" name="company" id="company" value="{htmlencode $postData.company}" />
@@ -12,20 +12,20 @@
 			</tr>
 			<tr>
 				<td>
-					<label id="labelFirstname" for="firstname">{Label installer.adminaccount.adminfirstname}*</label>
+					<label id="labelFirstname" for="firstname">{Label install.installer.adminaccount.adminfirstname}*</label>
 				</td>
 				<td><input onkeyup="Todoyu.Installer.validateAdminAccountData()"  name="firstname" id="firstname" value="{htmlencode $postData.firstname}" /></td>
 			</tr>
 			<tr>
 				<td>
-					<label id="labelLastname" onkeyup="Todoyu.Installer.validateAdminAccountData()" for="lastname">{Label installer.adminaccount.adminlastname}*</label>
+					<label id="labelLastname" onkeyup="Todoyu.Installer.validateAdminAccountData()" for="lastname">{Label install.installer.adminaccount.adminlastname}*</label>
 				</td><td>
 					<input name="lastname" id="lastname" value="{htmlencode $postData.lastname}" />
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<label id="labelEmail" onkeyup="Todoyu.Installer.validateAdminAccountData()" for="email">{Label installer.adminaccount.email}*</label>
+					<label id="labelEmail" onkeyup="Todoyu.Installer.validateAdminAccountData()" for="email">{Label install.installer.adminaccount.email}*</label>
 				</td><td>
 					<input name="email" id="email" class="adminaccount" value="{htmlencode $email|default:$postData.company}" />
 					<br /><br /><br />
@@ -35,20 +35,20 @@
 
 
 			<tr>
-				<td>{Label installer.adminaccount.username}</td>
+				<td>{Label install.installer.adminaccount.username}</td>
 				<td>admin</td>
 			</tr><tr>
 				<td>
-					<label id="labelPassword" for="password">{Label installer.adminaccount.password}&nbsp;*</label>
+					<label id="labelPassword" for="password">{Label install.installer.adminaccount.password}&nbsp;*</label>
 				</td><td>
 					<input onkeyup="Todoyu.Installer.validateAdminAccountData()" type="password" name="password" id="password" value="" />
 				</td>
 			</tr><tr>
 				<td>
-					<label id="labelPasswordConfirm" for="password_confirm">{Label installer.adminaccount.repeatPassword}&nbsp;*</label>
+					<label id="labelPasswordConfirm" for="password_confirm">{Label install.installer.adminaccount.repeatPassword}&nbsp;*</label>
 				</td><td>
 					<input type="password" name="password_confirm" value="" id="password_confirm" onkeyup="Todoyu.Installer.validateAdminAccountData()" />
-					({Label installer.adminaccount.passwordHint})
+					({Label install.installer.adminaccount.passwordHint})
 				</td>
 			</tr>
 		</table>

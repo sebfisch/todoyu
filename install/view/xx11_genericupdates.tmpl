@@ -1,7 +1,7 @@
 {extends main.tmpl}
 
 {block name="box"}
-	<span class="title">{Label installer.title.doneGenericChanges}</span>
+	<span class="title">{Label install.installer.title.doneGenericChanges}</span>
 	<div class="{$textclass}">
 		<div class="sqlQuery">
 			<ul>
@@ -14,7 +14,7 @@
 				</li>
 			{/foreach}
 			</ul>
-			{if count($diffs) == 0}{Label installer.affirm.dbIsUptodate}{/if}
+			{if count($diffs) == 0}{Label install.installer.affirm.dbIsUptodate}{/if}
 		</div>
 	</div>
 {/block}

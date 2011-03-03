@@ -77,7 +77,8 @@ TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuCookieLogin::hookT
 TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuAuth::hookSendNotLoggedInForAjaxRequest', 30);
 TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuAuth::hookRedirectToLoginIfNotLoggedIn', 1000);
 
-
+	// Set locale path for core
+TodoyuLabelManager::addCustomPath('core', 'core');
 
 	// Setup password requirements
 Todoyu::$CONFIG['goodPassword'] = array(
