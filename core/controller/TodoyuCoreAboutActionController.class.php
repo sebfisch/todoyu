@@ -69,6 +69,13 @@ class TodoyuCoreAboutActionController extends TodoyuActionController {
 					'license'	=> 'Modified BSD License',
 					'licenseUrl'=> ''
 				),
+				'famfamfam'	=> array(
+					'title'		=> 'famfamfam Silk Icons',
+					'url'		=> 'http://www.famfamfam.com/lab/icons/silk/',
+					'copyright'	=> 'Mark James',
+					'license'	=> 'Creative Commons Attribution 2.5 License',
+					'licenseUrl'=> 'http://creativecommons.org/licenses/by/2.5/'
+				),
 				'firephp'	=> array(
 					'title'		=> 'FirePHP',
 					'url'		=> 'http://www.firephp.org/',
@@ -76,7 +83,6 @@ class TodoyuCoreAboutActionController extends TodoyuActionController {
 					'license'	=> 'New BSD License',
 					'licenseUrl'=> 'http://www.opensource.org/licenses/bsd-license.php'
 				),
-
 				'firebug_lite'	=> array(
 					'title'		=> 'Firebug Lite',
 					'url'		=> 'http://getfirebug.com/firebuglite',
