@@ -14,3 +14,6 @@ ALTER TABLE `ext_projectbilling_rate` CHANGE `id_worktype` `id_activity` SMALLIN
 
 -- container status --- (open)
 UPDATE ext_project_task SET status = 2 WHERE `type` = 2;
+
+-- locale path ---
+UPDATE ext_contact_contactinfotype SET title = REPLACE(title, 'LLL:contact.contactinfo.', 'LLL:contact.ext.contactinfo.');
