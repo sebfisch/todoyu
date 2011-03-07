@@ -1082,19 +1082,6 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	String
 	 */
 	private function getData() {
-			// Add form attributes
-		$data	= array();
-		foreach($this->attributes as $attrName => $attrValue) {
-			$data[$attrName] = $this->parseWithFormData($attrValue);
-		}
-
-		$this->updateFieldValues();
-
-		$data['hiddenFields']	= $this->renderHiddenFields();
-		$data['fieldsets']		= $this->renderFieldsets();
-
-		$data['htmlId']			= $this->makeID('', 'form');
-
 		if( ! $this->hasAttribute('action') ) {
 			$this->setAttribute('action', TodoyuRequest::getRequestUrl());
 		}
@@ -1106,6 +1093,18 @@ class TodoyuForm implements ArrayAccess {
 		if( $this->hasAttribute('onsubmit') ) {
 			$this->setAttribute('onsubmit', $this->parseWithFormData($this->getAttribute('onsubmit')));
 		}
+
+			// Add form attributes
+		$data	= array();
+		foreach($this->attributes as $attrName => $attrValue) {
+			$data[$attrName] = $this->parseWithFormData($attrValue);
+		}
+
+		$this->updateFieldValues();
+
+		$data['hiddenFields']	= $this->renderHiddenFields();
+		$data['fieldsets']		= $this->renderFieldsets();
+		$data['htmlId']			= $this->makeID('', 'form');
 
 		return $data;
 	}

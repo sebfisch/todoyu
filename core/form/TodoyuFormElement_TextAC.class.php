@@ -46,7 +46,9 @@ class TodoyuFormElement_TextAC extends TodoyuFormElement {
 	 */
 	protected function init() {
 		if( $this->hasAttribute('config') ) {
-			$this->setAttribute('acConfigJson', json_encode($this->getAttribute('config')));
+			$config	= TodoyuArray::assure($this->getAttribute('config'));
+			$options= TodoyuArray::assure($config['options']);
+			$this->setAttribute('optionsJson', json_encode($options));
 		}
 	}
 

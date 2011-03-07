@@ -26,6 +26,11 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	customOnComplete: null,
 
+	config: {
+		paramName: 'input',
+		minChars: 2
+	},
+
 
 	/**
 	 * Initialize autocompleter
@@ -37,6 +42,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @param	{Object}	options
 	 */
 	initialize: function($super, inputField, suggestDiv, url, options) {
+		options	= options	|| {};
 			// Store onComplete in internal property
 		options.onCompleteCustom = Todoyu.getFunction(options.onComplete);
 		delete options.onComplete;
@@ -44,12 +50,58 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 			// Set empty function if no callback defined
 		options.afterUpdateElement	= Todoyu.getFunction(options.afterUpdateElement).wrap(this.onElementSelected.bind(this));
 
+			// Add form name and data
+		options.parameters	= '&action=update&autocompleter=' + options.acName + '&element=' + $(inputField).id,
+		options.callback	= this.callbackModifyRequestParams.bind(this);
+		options.paramName	= options.paramName || this.config.paramName;
+		options.minChars	= options.minChars || this.config.minChars;
+
+
 			// Initialize original autocompleter
 		$super(inputField, suggestDiv, url, options);
 
 			// Install key handlers
 		$(inputField).on('blur', this.onBlur.bind(this));
 		$(inputField).on('keyup', this.onKeyup.bind(this));
+			// Install change handler
+		$(inputField).observe('change', this.onInputChange.bind(this));
+	},
+
+
+
+	/**
+	 * Callback. Add form name and data to request
+	 *
+	 * @method	callbackModifyRequestParams
+	 * @param	{Number}		idElement
+	 * @param	{String}		acParam
+	 * @return	{String}
+	 */
+	callbackModifyRequestParams: function(inputElement, acParam) {
+		var form	= this.element.up('form');
+		var name	= form.readAttribute('name');
+		var data	= form.serialize();
+
+		return acParam + '&form=' + name + '&' + data;
+	},
+
+
+
+	/**
+	 * Called if input field has changed (blur)
+	 *
+	 * @method	onInputChange
+	 * @param	{Event}		event
+	 */
+	onInputChange: function(event) {
+			// If the change was called by a valid select, revert flag and do nothing
+		if( this.selectedFromList ) {
+			this.selectedFromList = false;
+			return;
+		}
+
+			// Clear fields
+		this.clear();
 	},
 
 
@@ -105,12 +157,31 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 		this.clearDelay();
 
 		this.valid = true;
+		this.selectedFromList = true;
 
 		var updateValueField = this.callOnSelected(inputField, selectedListElement);
 
 		if( updateValueField && noUpdate !== true ) {
 			this.setValue(selectedListElement.id);
 		}
+
+
+//		var selectedValue	= selectedListElement.id;
+//		var updateValueField= true;
+//
+//		this.selectedFromList = true;
+//
+//		if( this.options.onSelectCustom ) {
+//			var result = Todoyu.callUserFunction(this.options.onSelectCustom, inputField, this.element, selectedValue, selectedListElement.innerHTML, this);
+//
+//			if( result === false ) {
+//				updateValueField = false;
+//			}
+//		}
+//
+//		if( updateValueField ) {
+//			this.element.setValue(selectedValue);
+//		}
 
 		callOriginal(inputField, selectedListElement);
 	},

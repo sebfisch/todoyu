@@ -59,11 +59,6 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	 * @param	{Function}				callbackRemove
 	 */
 	initialize: function($super, field, fieldSuggest, url, acOptions, callbackAdd, callbackRemove) {
-		//acOptions	= acOptions || {};
-
-//		acOptions.afterUpdateElement	= acOptions.afterUpdateElement || Prototype.emptyFunction;
-//		acOptions.afterUpdateElement	= acOptions.afterUpdateElement.wrap(this.onElementSelected.bind(this));
-
 		this.callbacks = {
 			onAdd: 		callbackAdd 	|| Prototype.emptyFunction,
 			onRemove: 	callbackRemove  || Prototype.emptyFunction
@@ -71,9 +66,7 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 
 		var idItemList		= $(field).id + '-itemlist';
 		var idFieldList		= $(field).id + '-value';
-		var itemListOptions	= {
-			onRemove: this.onItemListRemove.bind(this)
-		};
+
 
 		this.itemList	= new Todoyu.ItemList(idItemList, {
 			onRemove: this.onItemListRemove.bind(this)
@@ -118,6 +111,10 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	onItemListRemove: function(listElement, idItem) {
 		this.fieldList.remove(idItem);
 		this.callbacks.onRemove.call(this, idItem);
+	},
+
+	callbackModifyRequestParams: function($super, inputElement, acParam) {
+		return acParam;
 	}
 
 });

@@ -5,6 +5,6 @@
 	<input type="hidden" name="{$htmlName}" id="{$htmlId}" value="{htmlencode $valueTemplate}" />
 	<div id="{$htmlId}-suggest" class="acResultContainer"></div>
 	<script type="text/javascript">
-		Todoyu.Autocomplete.install('{$htmlId}', {$acConfigJson});
+		Todoyu.Autocomplete.install('{$htmlId}', {$optionsJson});
 	</script>
 {/block}
