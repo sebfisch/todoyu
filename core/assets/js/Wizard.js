@@ -49,7 +49,7 @@ Todoyu.Wizard = {
 
 		this.wizard = {
 			name: wizardName,
-			popup: Todoyu.Popup.openWindow('wizard' + wizardName, 'Wizard', 900, url, options),
+			popup: Todoyu.Popups.open('wizard' + wizardName, 'Wizard', 900, url, options),
 			callback: onLoadCallback || Prototype.emptyFunction
 		};
 	},
@@ -212,7 +212,7 @@ Todoyu.Wizard = {
 	 */
 	close: function() {
 		if( confirm('Are you sure?') ) {
-			Todoyu.Popup.close('wizard' + this.wizard.name);
+			Todoyu.Popups.close('wizard' + this.wizard.name);
 		}
 	}
 

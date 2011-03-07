@@ -42,23 +42,6 @@ Todoyu.CoreHeadlets.QuickCreate = Class.create(Todoyu.Headlet, {
 
 
 	/**
-	 * Handler: When clicked on button
-	 *
-	 * @method	onButtonClick
-	 * @param	{Event}		event
-	 */
-	onButtonClickXXX: function(event) {
-		if( this.isContentVisible() ) {
-			this.hide();
-		} else {
-			this.hideOthers();
-			this.showContent();
-		}
-	},
-
-
-
-	/**
 	 * Handler: When clicked on menu entry
 	 *
 	 * @method	onMenuClick
@@ -79,7 +62,7 @@ Todoyu.CoreHeadlets.QuickCreate = Class.create(Todoyu.Headlet, {
 	 * @param	{String}		type
 	 */
 	openTypePopup: function(ext, type) {
-		if( ! $(this.popupid) ) {
+		if( ! Todoyu.Popups.getPopup(this.popupid) ) {
 			var ctrl 	= 'Quickcreate' + type;
 			var url		= Todoyu.getUrl(ext, ctrl);
 			var options	= {
@@ -92,7 +75,13 @@ Todoyu.CoreHeadlets.QuickCreate = Class.create(Todoyu.Headlet, {
 			var title	= '[LLL:core.global.create]' + ': ' + this.getMenuItemLabel(ext, type);
 			var width	= 700;
 
-			this.popup = Todoyu.Popup.openWindow(this.popupid, title, width, url, options);
+			this.popup = Todoyu.Popups.show({
+				id:				this.popupid,
+				title:			title,
+				width:			width,
+				contentUrl: 	url,
+				requestOptions: options
+			});
 
 			Todoyu.Hook.exec('headlet.quickcreate.' + type + '.popupOpened');
 		}
@@ -122,7 +111,7 @@ Todoyu.CoreHeadlets.QuickCreate = Class.create(Todoyu.Headlet, {
 	 * @method	closePopup
 	 */
 	closePopup: function() {
-		Todoyu.Popup.close(this.popupid);
+		this.popup.close();
 	},
 
 
@@ -134,7 +123,7 @@ Todoyu.CoreHeadlets.QuickCreate = Class.create(Todoyu.Headlet, {
 	 * @param	{String}		content
 	 */
 	updatePopupContent: function(content) {
-		$('quickcreate_content').update(content);
+		this.popup.setHTMLContent(content);
 	}
 
 });

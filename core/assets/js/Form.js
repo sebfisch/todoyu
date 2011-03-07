@@ -312,7 +312,7 @@ Todoyu.Form = {
 		width	= ( width > 0 ) ? width : 480;
 		height	= ( height > 0 ) ? height : 300;
 
-		return Todoyu.Popup.openWindow(idPopup, title, width, url, options);
+		return Todoyu.Popups.open(idPopup, title, width, url, options);
 	},
 
 

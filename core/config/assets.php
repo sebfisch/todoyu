@@ -144,6 +144,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 54
 		),
 		array(
+			'file'		=> 'core/assets/js/Popups.js',
+			'position'	=> 54
+		),
+		array(
 			'file'		=> 'core/assets/js/QuickInfo.js',
 			'position'	=> 55
 		),
