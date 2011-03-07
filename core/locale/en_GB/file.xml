@@ -8,4 +8,11 @@
 	<label index="size.b">B</label>
 	<label index="filename">File Name</label>
 	<label index="filesize">File Size</label>
+	<label index="upload.succeeded">Uploading of file succeeded</label>
+	<label index="upload.selectfile">Select file to upload:</label>
+	<label index="upload.error.uploadfailed">Upload failed.</label>
+	<label index="upload.failed.maxFileSizeExceeded">Upload failed: maximum allowed file size exceeded.</label>
+	<label index="confirm.delete">Delete Selected File</label>
+	<label index="notify.delete.success">File has been deleted:</label>
+	<label index="notify.delete.error">File deletion failed:</label>
 </labels>

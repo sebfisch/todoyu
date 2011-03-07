@@ -397,6 +397,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @param	String			$name
 	 * @param	TodoyuFieldset	$fieldset
+	 * @param	String			$fieldset	'after:fieldsetname' / 'before:fieldsetname'
 	 * @return	TodoyuFieldset
 	 */
 	public function addFieldset($name, TodoyuFieldset $fieldset = null, $position = null) {
