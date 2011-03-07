@@ -45,7 +45,7 @@ Todoyu.Validate = {
 			return true;
 		}
 
-		return value.strip() === '';
+		return mixed_var.strip() === '';
 	},
 
 
