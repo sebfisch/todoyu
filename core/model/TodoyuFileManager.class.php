@@ -118,17 +118,31 @@ class TodoyuFileManager {
 		foreach($files as $filename) {
 			$pathFile	= $folderPath . DIR_SEP . $filename;
 
-			if( is_file($pathFile) ) {
-				if( is_writable($pathFile) ) {
-					unlink($pathFile);
-				} else {
-					Todoyu::log('Can\'t delete file. File not writable: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
-					$success = false;
-				}
+			$success	= self::deleteFile($pathFile);
+		}
+
+		return $success;
+	}
+
+
+
+	/**
+	 * Delete given file, return deletion whether succeeded, log failures
+	 *
+	 * @param	String		$pathFile
+	 * @return	Boolean
+	 */
+	public static function deleteFile($pathFile) {
+		if( is_file($pathFile) ) {
+			if( is_writable($pathFile) ) {
+				$success	= unlink($pathFile);
 			} else {
-				Todoyu::log('Can\'t delete file. File not found: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
+				Todoyu::log('Can\'t delete file. File not writable: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
 				$success = false;
 			}
+		} else {
+			Todoyu::log('Can\'t delete file. File not found: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
+			$success = false;
 		}
 
 		return $success;
@@ -281,10 +295,12 @@ class TodoyuFileManager {
 	 * @return	String|Boolean	New file path or FALSE
 	 */
 	public static function addFileToStorage($path, $sourceFile, $uploadFileName, $prependWithTimestamp = true) {
-		$fileName	= ( $prependWithTimestamp === true ? NOW . '_' . $fileName : '') . self::makeCleanFilename($uploadFileName);
+		$fileName	= ( $prependWithTimestamp === true ) ? NOW . '_' . $uploadFileName : '';
+		$fileName	.= self::makeCleanFilename($uploadFileName);
+
 		$filePath	= self::pathAbsolute($path . '/' . $fileName);
 
-		$fileMoved	= move_uploaded_file($sourceFile, $filePath);
+		$fileMoved	= rename($sourceFile, $filePath);
 
 		return $fileMoved ? $filePath : false;
 	}
