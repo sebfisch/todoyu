@@ -1,6 +1,8 @@
 todoyu core changelog
 
 core 2.1.0 - not released yet
+	* Feature: added method for creation of random named cache folders to TodoyuFileManager
+	* Feature: extended TodoyuFileManager::getFolderContents with option to retrieve file stats
 	* Feature: Added reference to famfamfam silk icons in third party info of about popup
 	* Feature: Added onchange validation of manually edited date/datetime fields
 	* Changed: Added globally used icons (unacknowledged/acknowledged/modified/accepted/emailed) to core

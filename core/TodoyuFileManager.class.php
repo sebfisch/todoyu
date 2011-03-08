@@ -206,6 +206,23 @@ class TodoyuFileManager {
 
 
 	/**
+	 * Create new randomly named folder inside cache, optionally prefixed as given, return path (or false on failure)
+	 *
+	 * @param	String		$basePath
+	 * @param	Boolean		$more_entropy		Add additional entropy? (making result more unique)
+	 * @param	String		$prefix
+	 * @return	String|Boolean
+	 */
+	public static function makeRandomCacheDir($basePath, $more_entropy = false, $prefix = '') {
+		$dirName= uniqid($prefix, $more_entropy);
+		$path	= PATH_CACHE . DIR_SEP . $basePath . DIR_SEP . $dirName;
+
+		return self::makeDirDeep($path) ? $path : false;
+	}
+
+
+
+	/**
 	 * Check if file exists. Also relative path from PATH
 	 *
 	 * @param	String		$path
@@ -467,11 +484,12 @@ class TodoyuFileManager {
 	 *
 	 * @param	String		$pathFolder
 	 * @param	Boolean		$showHidden
+	 * @param	Boolean		$getFileStats		Get also statistics of the files?
 	 * @return	Array
 	 */
-	public static function getFolderContents($pathFolder, $showHidden = false) {
+	public static function getFolderContents($pathFolder, $showHidden = false, $getFileStats = false) {
 		$pathFolder	= self::pathAbsolute($pathFolder);
-		$items			= array();
+		$items		= array();
 
 		if( is_dir($pathFolder) ) {
 			$elements		= scandir($pathFolder);
@@ -483,7 +501,13 @@ class TodoyuFileManager {
 				}
 					// Also get hidden folders (starting with a dot)?
 				if( substr($element, 0, 1) !== '.' || $showHidden ) {
-					$items[] = $element;
+					if( $getFileStats ) {
+							// Get file statistics
+						$items[$element] = stat($pathFolder . DIR_SEP . $element);
+					} else {
+							// Get only file name
+						$items[] = $element;
+					}
 				}
 			}
 		}
