@@ -54,7 +54,6 @@ Todoyu.DelayedTextObserver = {
 			return false;
 		}
 
-
 		inputField	= $(inputField);
 		delay		= delay || 0.5;
 

@@ -72,6 +72,12 @@ class TodoyuFormElement_Checkbox extends TodoyuFormElement {
 	}
 
 
+
+	/**
+	 * Set form element value as given
+	 *
+	 * @param	Mixed	$value
+	 */
 	public function setValue($value) {
 		parent::setValue($value);
 	}

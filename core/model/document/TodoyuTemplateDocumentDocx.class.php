@@ -41,6 +41,11 @@ class TodoyuTemplateDocumentDocx extends TodoyuTemplateDocumentOpenXML {
 		$this->buildArchive();
 	}
 
+
+
+	/**
+	 * Prepare template XML content
+	 */
 	protected function prepareXML() {
 		$this->prepareConditions();
 		$this->prepareForeach();
@@ -48,6 +53,10 @@ class TodoyuTemplateDocumentDocx extends TodoyuTemplateDocumentOpenXML {
 	}
 
 
+
+	/**
+	 * Prepare if/else conditions in template XML content
+	 */
 	protected function prepareConditions() {
 		$ifPattern	= '|<w:p[^>]*?>((?!</w:p>).)*?<w:t>if</w:t>((?!</w:p>).)*?</w:p>|s';
 		$elsePattern= '|<w:p[^>]*?>((?!</w:p>).)*?<w:t>else</w:t>((?!</w:p>).)*?</w:p>|s';
@@ -68,6 +77,10 @@ class TodoyuTemplateDocumentDocx extends TodoyuTemplateDocumentOpenXML {
 	}
 
 
+
+	/**
+	 * @todo	cleanup
+	 */
 	protected function prepareForeach() {
 		$pPattern	= '|<w:p[^>]*?>((?!</w:p>).)*?foreach((?!</w:p>).)*?</w:p>|s';
 
@@ -107,14 +120,15 @@ class TodoyuTemplateDocumentDocx extends TodoyuTemplateDocumentOpenXML {
 		$new = preg_replace_callback($pattern, array(self,'callbackForeach'), $this->xmlContent);
 
 		die("YYY");
-
-//		TodoyuHeader::sendTypeText();
-//		die($new);
-//		print_r($matches);
-//		exit();
-
 	}
 
+
+
+	/**
+	 * @todo	comment,implement or remove
+	 * @param	String	$match
+	 * @return	String
+	 */
 	private function callbackForeach($match) {
 		TodoyuDebug::printInFireBug($match);
 		print_r($match);
@@ -124,6 +138,10 @@ class TodoyuTemplateDocumentDocx extends TodoyuTemplateDocumentOpenXML {
 	}
 
 
+
+	/**
+	 * Find table rows in XML and substitute ROW markers
+	 */
 	protected function prepareRowXML() {
 /*			// Remove text spans around the row tags
 //		$patternRowTagA	= '|<text:span[^>]*?>(\[ROW:)</text:span>|sm';
@@ -151,8 +169,6 @@ class TodoyuTemplateDocumentDocx extends TodoyuTemplateDocumentOpenXML {
 		}
 
 		$this->xmlContent = str_replace(array_keys($replaces), array_values($replaces), $this->xmlContent);
-
-
 	}
 }
 

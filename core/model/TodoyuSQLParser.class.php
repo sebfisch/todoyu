@@ -23,6 +23,7 @@
  *
  * @package		Todoyu
  * @subpackage	Installer
+ * @todo		Check for unused old/deprecated methods and remove
  */
 class TodoyuSQLParser {
 
@@ -330,10 +331,6 @@ class TodoyuSQLParser {
 
 
 
-
-
-
-
 	/**
 	 * Find differences between tables' column structures in 'tables.sql' files and DB
 	 *
@@ -456,7 +453,12 @@ class TodoyuSQLParser {
 
 
 
-
+	/**
+	 * Create SQL query from to given column structure
+	 *
+	 * @param	Array	$colStructure
+	 * @return	String
+	 */
 	private static function getFieldColumnsQueryPart(array $colStructure) {
 		$query	= $colStructure['field'] . ' '
 				. $colStructure['type'] . ' '
@@ -471,6 +473,12 @@ class TodoyuSQLParser {
 
 
 
+	/**
+	 * Parse given columns structure and retrieve query parts
+	 *
+	 * @param	Array	$columnsStructure
+	 * @return	String
+	 */
 	private static function getMultipleColumnsQueryPart($columnsStructure) {
 		$queryParts	= array();
 		foreach($columnsStructure as $colName => $colProps) {
@@ -483,6 +491,12 @@ class TodoyuSQLParser {
 
 
 
+	/**
+	 * Create comma + newline separated list from given keys array
+	 *
+	 * @param	Array	$keysArr
+	 * @return	String
+	 */
 	private static function getKeysQueryPart(array $keysArr) {
 		$query	= implode(', ' . "\n", $keysArr);
 
@@ -491,6 +505,12 @@ class TodoyuSQLParser {
 
 
 
+	/**
+	 * Parse given SQL create query and retrieve general (table, extra, keys) and column stats (field, type, attributes, null, default, extra)
+	 *
+	 * @param	String	$query
+	 * @return	Array
+	 */
 	public static function parseCreateQuery($query) {
 		$query	= str_replace("\n", ' ', $query);
 		$info	= array(
@@ -523,12 +543,17 @@ class TodoyuSQLParser {
 			);
 		}
 
-//		TodoyuDebug::printHtml($info, '$info');
-
 		return $info;
 	}
 
 
+
+	/**
+	 * Split given SQL to extract column keys
+	 *
+	 * @param	String	$SQL
+	 * @return	Array
+	 */
 	private static function splitColumnKeySQL($SQL) {
 		$strPosPrimary	= stripos($SQL, 'PRIMARY KEY ');
 		$strPosUnique	= stripos($SQL, 'UNIQUE KEY ');
@@ -553,8 +578,6 @@ class TodoyuSQLParser {
 
 		return $info;
 	}
-
-
 
 }
 

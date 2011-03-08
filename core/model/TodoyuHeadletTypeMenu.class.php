@@ -49,6 +49,12 @@ abstract class TodoyuHeadletTypeMenu extends TodoyuHeadlet {
 	}
 
 
+
+	/**
+	 * Render items of headlet type menu
+	 *
+	 * @return String
+	 */
 	public function render() {
 		$this->data['content'] = $this->renderMenuItems();
 

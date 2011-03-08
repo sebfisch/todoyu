@@ -99,6 +99,9 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 
 
+	/**
+	 * Test TodoyuArray::getColumnUnique
+	 */
 	public function testGetColumnUnique() {
 		$array	= array(
 			array(
@@ -134,8 +137,6 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 
 
-
-
 	/**
 	 * Test TodoyuArray::getLastKey
 	 */
@@ -148,7 +149,7 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 
 	/**
-	 * TodoyuArray::intval
+	 * Test TodoyuArray::intval
 	 */
 	public function testIntval() {
 		$ids	= TodoyuArray::getColumn($this->array, 'id');
@@ -167,6 +168,10 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test TodoyuArray::floatVal
+	 */
 	public function testFloatval() {
 		$array	= array(
 			1,
@@ -223,6 +228,10 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test TodoyuArray::reformWithFieldAsIndex
+	 */
 	public function testReformWithFieldAsIndex() {
 		$reform	= array(
 			'id'		=> 'id',
@@ -344,6 +353,9 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 
 
+	/**
+	 * Test TodoyuArray::toArray
+	 */
 	public function testToArray() {
 		$array	= array(
 			1,
@@ -408,6 +420,10 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test TodoyuArray::wrapItems
+	 */
 	public function testWrapItems() {
 		$array	= array(
 			1,
@@ -500,6 +516,10 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test TodoyuArray::mergeRecursive
+	 */
 	public function testMergeRecursive() {
 		$arrayOne	= array(
 			'type'		=> 'area',
@@ -531,6 +551,10 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test TodoyuArray::merge
+	 */
 	public function testMerge() {
 		$array1	= array(1,2,3);
 		$array2	= array(3,4,5);
@@ -656,6 +680,10 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test TodoyuArray::trimImplode
+	 */
 	public function testTrimImplode() {
 		$array	= array(
 			3,
@@ -720,6 +748,10 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test TodoyuArray::htmlspecialchars
+	 */
 	public function testHtmlspecialchars() {
 		$array	= array(
 			1,
@@ -739,6 +771,10 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test TodoyuArray::diffLeft
+	 */
 	public function testDiffLeft() {
 		$arrayOne	= array(1,2,3,4,5);
 		$arrayTwo	= array(3,4,5,6,7);

@@ -94,6 +94,7 @@ abstract class TodoyuWizard {
 	}
 
 
+
 	/**
 	 * Check whether current step is first step
 	 *
