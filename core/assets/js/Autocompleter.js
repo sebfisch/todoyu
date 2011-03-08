@@ -109,6 +109,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Handle completion of autocompleter suggestion retrieval
 	 *
+	 * @method	onComplete
 	 * @param	{Function}			$super			Ajax.Autocompleter.onComplete
 	 * @param	{Ajax.Response}		response
 	 */
@@ -129,6 +130,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Handle reception of empty result (no suggestion found)
 	 *
+	 * @method	handleEmptyResult
 	 * @param	{Boolean}	showMessage
 	 */
 	handleEmptyResult: function(showMessage) {
@@ -150,6 +152,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Handler when a suggested item was selected
 	 *
+	 * @method	onElementSelected
 	 * @param	{Element}	inputField
 	 * @param	{Element}	selectedListElement
 	 */
@@ -191,6 +194,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Call registered user function on selecting autocompleter suggestion
 	 *
+	 * @method	callOnSelected
 	 * @param	{Element}	inputField
 	 * @param	{Element}	selectedListElement
 	 * @return	{Element}
@@ -217,6 +221,8 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	/**
 	 * Clear autocompleter delay
+	 *
+	 * @method	clearDelay
 	 */
 	clearDelay: function() {
 		clearTimeout(this.clearTimeout);
@@ -227,6 +233,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * If focus leaves autocompleter field
 	 *
+	 * @method	onBlur
 	 * @param	{Event}		event
 	 */
 	onBlur: function(event) {
@@ -243,6 +250,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * Keyup event
 	 * Element is invalid because new text was entered. Space will be ignored
 	 *
+	 * @method	onKeyup
 	 * @param	{Event}		event
 	 */
 	onKeyup: function(event) {
@@ -258,6 +266,8 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	/**
 	 * Hide suggestion div (delayed)
+	 *
+	 * @method	hideSuggestions
 	 */
 	hideSuggestions: function() {
 		var sug	= this.element.up('div').down('.acResultContainer');
@@ -269,6 +279,8 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	/**
 	 * Check whether the input field is empty
+	 *
+	 * @method	isEmpty
 	 */
 	isEmpty: function() {
 		return Todoyu.Validate.isEmpty($F(this.element).strip());
@@ -280,6 +292,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * Clear the input field
 	 * Delayed to allow selection of an element from the suggestion list
 	 *
+	 * @method	clear
 	 * @param	{Boolean}	noDelay
 	 */
 	clear: function(noDelay) {
@@ -300,6 +313,8 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	/**
 	 * Clear text of AC field
+	 *
+	 * @method	clearText
 	 */
 	clearText: function() {
 		this.setText('');
@@ -319,6 +334,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Set text of AC field
 	 *
+	 * @method	setText
 	 * @param	{String}	text
 	 */
 	setText: function(text) {
@@ -330,6 +346,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Set value of AC field
 	 *
+	 * @method	setValue
 	 * @param	{String}	value
 	 */
 	setValue: function(value) {
@@ -340,6 +357,9 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	/**
 	 * Get hidden value field
+	 *
+	 * @method	getValueField
+	 * @return	{Element}
 	 */
 	getValueField: function() {
 		return this.element.up('div').down('input[type=hidden]');

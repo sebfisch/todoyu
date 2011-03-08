@@ -52,6 +52,7 @@ Todoyu.AutoExtendingList = Class.create({
 	/**
 	 * Install an auto extending list
 	 *
+	 * @method	initialize
 	 * @param	{Element}	list
 	 * @param	{String}	listItemTag		Tag name of the list elements (default: li)
 	 * @param	{String}	inputSelector	Selector for input elements (default: input[type=text])
@@ -76,6 +77,8 @@ Todoyu.AutoExtendingList = Class.create({
 
 	/**
 	 * Observe remove buttons
+	 *
+	 * @method	installRemove
 	 */
 	installRemove: function() {
 		this.list.select('.remove').each(function(removeIcon) {
@@ -87,6 +90,8 @@ Todoyu.AutoExtendingList = Class.create({
 
 	/**
 	 * Make all removers visible, hide the last one
+	 *
+	 * @method	showRemoverExceptLast
 	 */
 	showRemoverExceptLast: function() {
 		this.list.select('.remove').invoke('show');
@@ -98,6 +103,7 @@ Todoyu.AutoExtendingList = Class.create({
 	/**
 	 * Add remove handler to remove button
 	 *
+	 * @method	addRemoveHandler
 	 * @param	{Element}	element
 	 */
 	addRemoveHandler: function(element) {
@@ -109,6 +115,7 @@ Todoyu.AutoExtendingList = Class.create({
 	/**
 	 * Remove an item
 	 *
+	 * @method	removeHandler
 	 * @param	{Event}		event
 	 * @param	{Element}	listItem
 	 */
@@ -127,6 +134,7 @@ Todoyu.AutoExtendingList = Class.create({
 	 *  - Remove item from DOM
 	 *  - Call change handler to make sure an empty element exists
 	 *
+	 * @method	onRemoved
 	 * @param	{Element}	listItem
 	 */
 	onRemoved: function(listItem) {
@@ -139,6 +147,7 @@ Todoyu.AutoExtendingList = Class.create({
 	/**
 	 * Event handler when an input field was changed
 	 *
+	 * @method	onChanged
 	 * @param	{Event}		event
 	 * @param	{Element}	list
 	 */
@@ -153,6 +162,8 @@ Todoyu.AutoExtendingList = Class.create({
 
 	/**
 	 * Check whether all elements are "full"
+	 *
+	 * @method	areAllElementsFull
 	 */
 	areAllElementsFull: function() {
 		return this.getInputs().all(function(input){
@@ -164,6 +175,8 @@ Todoyu.AutoExtendingList = Class.create({
 
 	/**
 	 * Clone last element and append it to the list as last item
+	 *
+	 * @method	appendElement
 	 */
 	appendElement: function() {
 		var clone	= this.element.clone(true);
@@ -179,6 +192,9 @@ Todoyu.AutoExtendingList = Class.create({
 
 	/**
 	 * Get all input elements
+	 *
+	 * @method	getInputs
+	 * @return	{Array}
 	 */
 	getInputs: function() {
 		return this.list.select(this.inputSelector);

@@ -22,9 +22,7 @@
  */
 
 /**
- * Template class to render the context menu JSON object into
- * HTML with prototype template
- *
+ * Template class to render the context menu JSON object into HTML with prototype template
  */
 Todoyu.ContextMenu.Template = {
 
@@ -92,7 +90,7 @@ Todoyu.ContextMenu.Template = {
 
 
 	/**
-	 * Render submenu of an item
+	 * Render sub menu of an item
 	 *
 	 * @method	renderSubmenu
 	 * @param	{Object}		parentItem

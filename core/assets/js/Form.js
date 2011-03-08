@@ -418,6 +418,8 @@ Todoyu.Form = {
 	 * Sets the value of the chosen icon to the hidden field
 	 *
 	 * @method	setIconSelectorValue
+	 * @param	{String}	value
+	 * @param	{String}	baseID
 	 */
 	setIconSelectorValue: function(value, baseID) {
 		$(baseID).value = value;

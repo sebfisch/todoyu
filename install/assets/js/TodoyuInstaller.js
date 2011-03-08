@@ -31,6 +31,8 @@ Todoyu.Installer = {
 
 	/**
 	 * Hide the next button
+	 *
+	 * @method	hideButton
 	 */
 	hideButton: function() {
 		$('next').hide();
@@ -40,6 +42,8 @@ Todoyu.Installer = {
 
 	/**
 	 * Show the next button
+	 *
+	 * @method	showButton
 	 */
 	showButton: function() {
 		$('next').show();
@@ -50,6 +54,7 @@ Todoyu.Installer = {
 	/**
 	 * Submit locale selection
 	 *
+	 * @method	selectLocale
 	 * @param	{String}	locale
 	 */
 	selectLocale: function(locale) {
@@ -61,6 +66,7 @@ Todoyu.Installer = {
 	/**
 	 * Disable given text box if selected value == 0
 	 *
+	 * @method	disableTextBox
 	 * @param	{Element}	selector
 	 */
 	disableTextBox: function(selector)	{
@@ -72,6 +78,8 @@ Todoyu.Installer = {
 
 	/**
 	 * Check database selection / declaration of new database to be created
+	 *
+	 * @method	checkDbSelect
 	 */
 	checkDbSelect: function() {
 		var newDbName	= $F('database_new').trim();
@@ -100,6 +108,8 @@ Todoyu.Installer = {
 
 	/**
 	 * Ensure password and it's repetition are identical
+	 *
+	 * @method	validateAdminAccountData
 	 */
 	validateAdminAccountData: function() {
 		var companyOk	= this.validateCompanyName();
@@ -120,6 +130,7 @@ Todoyu.Installer = {
 	/**
 	 * Set CSS class of field label red / default depending on given validation result
 	 *
+	 * @method	updateLabelValidationClass
 	 * @param	{String}		labelField
 	 * @param	{Boolean}		isOk
 	 */
@@ -138,6 +149,7 @@ Todoyu.Installer = {
 	/**
 	 * Validate input for company name
 	 *
+	 * @method	validateCompanyName
 	 * @return	{Boolean}
 	 */
 	validateCompanyName: function() {
@@ -152,6 +164,7 @@ Todoyu.Installer = {
 	/**
 	 * Validate input for firstname
 	 *
+	 * @method	validateFirstname
 	 * @return  {Boolean}
 	 */
 	validateFirstname: function() {
@@ -166,6 +179,7 @@ Todoyu.Installer = {
 	/**
 	 * Validate input for lastname
 	 *
+	 * @method	validateLastname
 	 * @return	{Boolean}
 	 */
 	validateLastname: function() {
@@ -180,6 +194,7 @@ Todoyu.Installer = {
 	/**
 	 * Validate password to be long enough and both repetitions being identic
 	 *
+	 * @method	validatePassword
 	 * @return	{Boolean}
 	 */
 	validatePassword: function() {

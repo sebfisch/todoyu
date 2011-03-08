@@ -61,6 +61,7 @@ Todoyu.Autocomplete = {
 	/**
 	 * Get autocompleter
 	 *
+	 * @method	getAC
 	 * @param	{String}	name
 	 */
 	getAC: function(name) {

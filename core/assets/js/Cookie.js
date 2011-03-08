@@ -39,6 +39,7 @@ Todoyu.Cookie = {
 	/**
 	 * Initialize
 	 *
+	 * @method	init
 	 * @param	{Object}	options
 	 * @param	{Object}	data
 	 */
@@ -62,6 +63,7 @@ Todoyu.Cookie = {
 	/**
 	 * Get attribute with given key from cookie data
 	 *
+	 * @method	getData
 	 * @param	{String}	key
 	 */
 	getData: function(key) {
@@ -73,6 +75,7 @@ Todoyu.Cookie = {
 	/**
 	 * Store given attribute in cookie data
 	 *
+	 * @method	setData
 	 * @param	{String}	key
 	 */
 	setData: function(key, value) {
@@ -85,6 +88,7 @@ Todoyu.Cookie = {
 	/**
 	 * Remove given attribute from cookie data
 	 *
+	 * @method	removeData
 	 * @param	{String}	key
 	 */
 	removeData: function(key) {
@@ -96,6 +100,9 @@ Todoyu.Cookie = {
 
 	/**
 	 * Retrieve cookie
+	 *
+	 * @method	retrieve
+	 * @return	{String}
 	 */
 	retrieve: function() {
 		var start = document.cookie.indexOf(Todoyu.Cookie.options.name + "=");
@@ -120,6 +127,9 @@ Todoyu.Cookie = {
 
 
 
+	/**
+	 * @method	store
+	 */
 	store: function() {
 		var expires = '';
 
@@ -134,12 +144,18 @@ Todoyu.Cookie = {
 
 
 
+	/**
+	 * @method	erase
+	 */
 	erase: function() {
 		document.cookie = Todoyu.Cookie.options.name + '=' + Todoyu.Cookie.getOptions() + ';expires=Thu, 01-Jan-1970 00:00:01 GMT';
 	},
 
 
 
+	/**
+	 * @method	getOptions
+	 */
 	getOptions: function() {
 		return (Todoyu.Cookie.options.path ? ';path=' + Todoyu.Cookie.options.path : '') + (Todoyu.Cookie.options.domain ? ';domain=' + Todoyu.Cookie.options.domain : '') + (Todoyu.Cookie.options.secure ? ';secure' : '');
 	}
