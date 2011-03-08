@@ -24,9 +24,9 @@
  */
 
 	// Add form include path
-Todoyu::addIncludePath( PATH_CORE . '/form' );
+Todoyu::addIncludePath( PATH_CORE . '/model/form' );
 	// Add document include path
-Todoyu::addIncludePath( PATH_CORE . '/document');
+Todoyu::addIncludePath( PATH_CORE . '/model/document');
 
 	// Init basic classes
 if( Todoyu::$CONFIG['INIT'] ) {

@@ -21,6 +21,9 @@ core 2.1.0 - not released yet
 	* Feature: Added changelog
 	* Feature: Added placeholders for to-be columbian spanish localization files of installer
 	* Feature: Added large notification icons
+	* Changed: Moved core classes to core/model
+	* Changed: Moved document classes to core/model/document
+	* Changed: Moved form classes to core/model/form
  
 core 2.0.8 - not released yet
 	* Feature: Text form fields are trimmed before saving

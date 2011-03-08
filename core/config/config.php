@@ -23,8 +23,12 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 Todoyu::$CONFIG['DEBUG'] = false;
 
-	// Add core path to autoloader include paths
-Todoyu::$CONFIG['AUTOLOAD'] = array(PATH_CORE, PATH_CORE . DIR_SEP . 'controller');
+	// Define autoload config array
+Todoyu::$CONFIG['AUTOLOAD'] = array();
+
+	// Set core autoload paths
+Todoyu::addIncludePath('core/model');
+Todoyu::addIncludePath('core/controller');
 
 	// Todoyu session config
 Todoyu::$CONFIG['SESSION']		= array(

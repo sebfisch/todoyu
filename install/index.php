@@ -32,7 +32,7 @@ define('PATH_WEB_OVERRIDE', dirname(dirname($_SERVER['SCRIPT_NAME'])));
 chdir( dirname(dirname(__FILE__)) );
 
 	// Check requirements (on stop if not ok)
-require_once('core/TodoyuServer.class.php');
+require_once('core/model/TodoyuServer.class.php');
 TodoyuServer::assertMinimalRequirements();
 
 

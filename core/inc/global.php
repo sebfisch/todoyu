@@ -43,27 +43,26 @@ set_include_path(get_include_path() . PATH_SEPARATOR . PATH_PEAR);
 require_once( PATH_LIB . '/php/dwoo/dwooAutoload.php' );
 
 	// Load basic classes
-require_once( PATH_CORE . '/Todoyu.class.php' );
-require_once( PATH_CORE . '/TodoyuDatabase.class.php' );
-require_once( PATH_CORE . '/TodoyuAuth.class.php' );
-require_once( PATH_CORE . '/TodoyuBaseObject.class.php' );
-require_once( PATH_CORE . '/TodoyuExtensions.class.php' );
-require_once( PATH_CORE . '/TodoyuSession.class.php' );
-require_once( PATH_CORE . '/TodoyuLabelManager.class.php' );
-require_once( PATH_CORE . '/TodoyuCache.class.php' );
-require_once( PATH_CORE . '/TodoyuLogger.class.php' );
-require_once( PATH_CORE . '/TodoyuRequest.class.php' );
-require_once( PATH_CORE . '/TodoyuActionController.class.php' );
-require_once( PATH_CORE . '/TodoyuActionDispatcher.class.php' );
-require_once( PATH_CORE . '/TodoyuArray.class.php' );
-require_once( PATH_CORE . '/TodoyuPreferenceManager.class.php' );
-require_once( PATH_CORE . '/TodoyuFileManager.class.php' );
-require_once( PATH_CORE . '/TodoyuRightsManager.class.php' );
-require_once( PATH_CORE . '/TodoyuHookManager.class.php' );
-require_once( PATH_CORE . '/TodoyuHeader.class.php' );
-require_once( PATH_CORE . '/TodoyuPanelWidgetManager.class.php' );
-//require_once( PATH_CORE . '/TodoyuContextMenuManager.class.php' );
-require_once( PATH_CORE . '/TodoyuErrorHandler.class.php' );
+require_once( PATH_CORE . '/model/Todoyu.class.php' );
+require_once( PATH_CORE . '/model/TodoyuDatabase.class.php' );
+require_once( PATH_CORE . '/model/TodoyuAuth.class.php' );
+require_once( PATH_CORE . '/model/TodoyuBaseObject.class.php' );
+require_once( PATH_CORE . '/model/TodoyuExtensions.class.php' );
+require_once( PATH_CORE . '/model/TodoyuSession.class.php' );
+require_once( PATH_CORE . '/model/TodoyuLabelManager.class.php' );
+require_once( PATH_CORE . '/model/TodoyuCache.class.php' );
+require_once( PATH_CORE . '/model/TodoyuLogger.class.php' );
+require_once( PATH_CORE . '/model/TodoyuRequest.class.php' );
+require_once( PATH_CORE . '/model/TodoyuActionController.class.php' );
+require_once( PATH_CORE . '/model/TodoyuActionDispatcher.class.php' );
+require_once( PATH_CORE . '/model/TodoyuArray.class.php' );
+require_once( PATH_CORE . '/model/TodoyuPreferenceManager.class.php' );
+require_once( PATH_CORE . '/model/TodoyuFileManager.class.php' );
+require_once( PATH_CORE . '/model/TodoyuRightsManager.class.php' );
+require_once( PATH_CORE . '/model/TodoyuHookManager.class.php' );
+require_once( PATH_CORE . '/model/TodoyuHeader.class.php' );
+require_once( PATH_CORE . '/model/TodoyuPanelWidgetManager.class.php' );
+require_once( PATH_CORE . '/model/TodoyuErrorHandler.class.php' );
 
 	// Include basic person classes
 require_once(PATH_EXT . '/contact/model/TodoyuContactPerson.class.php');
@@ -71,7 +70,7 @@ require_once(PATH_EXT . '/contact/model/TodoyuContactPersonManager.class.php');
 require_once( PATH_EXT .  '/contact/model/TodoyuContactPreferences.class.php' );
 
 	// Load development classes
-require_once( PATH_CORE . '/TodoyuDebug.class.php' );
+require_once( PATH_CORE . '/model/TodoyuDebug.class.php' );
 require_once( PATH_LIB . '/php/FirePHPCore/FirePHP.class.php' );
 
 	// Register autoloader
@@ -113,9 +112,5 @@ require_once( PATH_LOCALCONF . '/config.php');
 require_once( PATH_LOCALCONF . '/system.php');
 require_once( PATH_LOCALCONF . '/extensions.php');
 require_once( PATH_LOCALCONF . '/extconf.php');
-
-
-	// Load contact extension (needed to initialize todoyu)
-//require_once( PATH_EXT . '/contact/config/boot.php' );
 
 ?>
