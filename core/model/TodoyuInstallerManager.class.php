@@ -498,9 +498,10 @@ class TodoyuInstallerManager {
 	 * @param 	Array		$config
 	 */
 	public static function saveSystemConfig(array $config) {
-		$config['encryptionKey'] = self::makeEncryptionKey();
-		$tmpl	= 'install/view/configs/system.php.tmpl';
 		$file	= TodoyuFileManager::pathAbsolute('config/system.php');
+		$tmpl	= 'install/view/configs/system.php.tmpl';
+
+		$config['encryptionKey'] = self::makeEncryptionKey();
 
 		TodoyuFileManager::saveTemplatedFile($file, $tmpl, $config, true);
 	}

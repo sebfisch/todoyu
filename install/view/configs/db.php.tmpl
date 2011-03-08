@@ -26,10 +26,10 @@
  */
 
 Todoyu::$CONFIG['DB'] = array(
-	'server'		=> '{$server}',
-	'username'		=> '{$username}',
-	'password'		=> '{$password}',
-	'database'		=> '{$database}',
+	'server'		=> '{addslashes $server}',
+	'username'		=> '{addslashes $username}',
+	'password'		=> '{addslashes $password}',
+	'database'		=> '{addslashes $database}',
 	'autoconnect'	=> true,
 	'persistent'	=> true,
 	'queryHistory'	=> false

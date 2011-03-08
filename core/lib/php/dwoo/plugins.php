@@ -171,6 +171,22 @@ function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string) {
 
 
 /**
+ * Quote string with slashes, e.g. for PHP output
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param 	Dwoo_Compiler 	$compiler
+ * @param 	String			$string
+ * @return	String
+ */
+function Dwoo_Plugin_addslashes_compile(Dwoo_Compiler $compiler, $string) {
+	return 'addslashes(\'' . $string . '\')';
+}
+
+
+
+/**
  * Format an integer to hours:minutes:seconds
  *
  * @param 	Dwoo 		$dwoo
