@@ -180,7 +180,7 @@ function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string) {
  * @param 	String			$string
  * @return	String
  */
-function Dwoo_Plugin_addslashes(Dwoo_Compiler $compiler, $string) {
+function Dwoo_Plugin_addslashes(Dwoo $dwoo, $string) {
 	return addslashes($string);
 }
 
