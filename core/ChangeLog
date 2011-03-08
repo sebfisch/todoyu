@@ -24,7 +24,9 @@ core 2.1.0 - not released yet
 	* Changed: Moved core classes to core/model
 	* Changed: Moved document classes to core/model/document
 	* Changed: Moved form classes to core/model/form
- 
+	* Changed: Removed TodoyuPanelWidgetIf
+	* Changed: TodoyuPanelWidget::renderContent() only renders the content, parent class handles full render process
+
 core 2.0.8 - not released yet
 	* Feature: Text form fields are trimmed before saving
 	* Bugfix: file downloads fail with internet explorer and https connection

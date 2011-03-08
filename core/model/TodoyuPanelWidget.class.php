@@ -255,6 +255,8 @@ abstract class TodoyuPanelWidget {
 	public function render() {
 		$tmpl	= 'core/view/panelwidget.tmpl';
 
+		$this->setContent($this->renderContent());
+
 		return render($tmpl, $this->data);
 	}
 
@@ -268,6 +270,9 @@ abstract class TodoyuPanelWidget {
 	public static function isAllowed() {
 		return true;
 	}
+
+
+	protected abstract function renderContent();
 
 }
 
