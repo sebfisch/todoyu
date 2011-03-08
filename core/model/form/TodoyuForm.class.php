@@ -996,7 +996,6 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	String
 	 */
 	public function parseWithFormData($string) {
-		return $string;
 		foreach($this->formdata as $key => $value) {
 			if( is_string($value) || is_numeric($value) ) {
 				if( stristr($string, '#' . $key . '#') ) {
