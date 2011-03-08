@@ -41,7 +41,7 @@ Todoyu.Form = {
 	 * Initialize form display: expand invalid foreign records, focus first field
 	 *
 	 * @method	onFormDisplay
-	 * @param   {String}  formID
+	 * @param	{String}  formID
 	 */
 	onFormDisplay: function(formID) {
 		if( Todoyu.exists(formID) ) {

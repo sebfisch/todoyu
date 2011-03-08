@@ -64,10 +64,9 @@ class TodoyuExportCSV extends TodoyuExportBase {
 
 
 	/**
-	 * Preparation for the csv-export
+	 * Preparation for the CSV export
 	 *
-	 * @param  $customConfig
-	 * @return void
+	 * @param	Array	$customConfig
 	 */
 	protected function init(array $customConfig) {
 		$this->tmpFile = PATH_CACHE . '/output/' . 'tmpExport_' . NOW . '.csv';
@@ -156,10 +155,9 @@ class TodoyuExportCSV extends TodoyuExportBase {
 
 
 	/**
-	 * sends the file to download
+	 * Sends the file to download
 	 *
-	 * @param string $filename
-	 * @return void
+	 * @param	String	$filename
 	 */
 	public function download($filename = '') {
 		parent::download('text/csv', $filename);
@@ -168,11 +166,7 @@ class TodoyuExportCSV extends TodoyuExportBase {
 
 
 	/**
-	 * destructor
-	 *
-	 * deletes the temporary file
-	 *
-	 * @return void
+	 * Destructor - deletes the temporary file
 	 */
 	public function __destruct() {
 		unlink($this->tmpFile);

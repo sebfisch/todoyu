@@ -29,7 +29,7 @@ class TodoyuDbAnalyzer {
 	/**
 	 * Get available databases on server
 	 *
-	 * @param 	Array		$dbConfig		Connection configuration [server,username,password]
+	 * @param	Array		$dbConfig		Connection configuration [server,username,password]
 	 * @return	Array
 	 */
 	public static function getDatabasesOnServer(array $dbConfig) {

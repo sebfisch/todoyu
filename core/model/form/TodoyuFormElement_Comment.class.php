@@ -31,9 +31,9 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 	/**
 	 * TodoyuFormElement comment constructor
 	 *
-	 * @param	String		$name
-	 * @param 	TodoyuFieldset	$fieldset
-	 * @param	Array		$config
+	 * @param	String				$name
+	 * @param	TodoyuFieldset		$fieldset
+	 * @param	Array				$config
 	 */
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
 		parent::__construct('comment', $name, $fieldset, $config);

@@ -312,7 +312,7 @@ class TodoyuFormValidator {
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
-	 * @param 	TodoyuFormElement	$formElement
+	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
@@ -600,9 +600,9 @@ class TodoyuFormValidator {
 	 * Validate for a good password
 	 *
 	 * @param	String				$value
-	 * @param 	TodoyuFormElement 	$validatorConfig
+	 * @param	TodoyuFormElement 	$validatorConfig
 	 * @param	Array				$formElement
-	 * @param 	Array				$formData
+	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
 	public static function goodPassword($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {

@@ -495,7 +495,7 @@ class TodoyuInstallerManager {
 	/**
 	 * Save system configuration
 	 *
-	 * @param 	Array		$config
+	 * @param	Array		$config
 	 */
 	public static function saveSystemConfig(array $config) {
 		$file	= TodoyuFileManager::pathAbsolute('config/system.php');

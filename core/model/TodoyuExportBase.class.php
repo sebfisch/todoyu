@@ -42,9 +42,10 @@ abstract class TodoyuExportBase {
 
 
 	/**
-	 * @param  $exportData
-	 * @param array $customConfig
-	 * @return void
+	 * Constructor
+	 *
+	 * @param	Array	$exportData
+	 * @param	Array	$customConfig
 	 */
 	public function __construct(array $exportData, array $customConfig = array()) {
 		$this->exportData	= $exportData;
@@ -56,18 +57,16 @@ abstract class TodoyuExportBase {
 
 	/**
 	 * @abstract
-	 * @param  $customConfig
-	 * @return void
+	 * @param	Array	$customConfig
 	 */
 	protected abstract function init(array $customConfig);
 
 
 
 	/**
-	 * setter method for filename
+	 * Setter method for filename
 	 *
-	 * @param  $filename
-	 * @return void
+	 * @param	String		$filename
 	 */
 	public function setFilename($filename) {
 		$this->filename = $filename;
@@ -76,8 +75,10 @@ abstract class TodoyuExportBase {
 
 
 	/**
+	 * Getter for content data
+	 *
 	 * @abstract
-	 * @return void
+	 * @return	String
 	 */
 	public abstract function getContent();
 
@@ -85,8 +86,6 @@ abstract class TodoyuExportBase {
 
 	/**
 	 * Sends the file to download
-	 *
-	 * @return void
 	 */
 	public function download($type, $filename = '') {
 		header( 'Content-Type: ' . $type );

@@ -50,7 +50,7 @@ abstract class TodoyuWizardStep {
 	 * Initialize step
 	 *
 	 * @param	TodoyuWizard	$wizard
-	 * @param 	Array			$config
+	 * @param	Array			$config
 	 */
 	final public function __construct(TodoyuWizard $wizard, array $config) {
 		$this->wizard	= $wizard;

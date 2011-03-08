@@ -496,9 +496,9 @@ class TodoyuExtensions {
 
 
 	/**
-	 * Check if the extension conflicts with another installed extension
+	 * Check whether the extension conflicts with another installed extension
 	 *
-	 * @param 	String		$extKeyToCheck
+	 * @param	String		$extKeyToCheck
 	 * @return	Array		List of extensions which conflict with the checked one
 	 */
 	public static function getConflicts($extKeyToCheck) {

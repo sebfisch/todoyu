@@ -27,16 +27,16 @@
 class TodoyuTabheadRenderer {
 
 	/**
-	 * Render tab
+	 * Render tab head
 	 *
-	 * @param	String	$id
-	 * @param	String	$key
-	 * @param	String	$class
-	 * @param	String	$classKey
-	 * @param	String	$active
-	 * @param	String	$label
-	 * @param 	String	$position
-	 * @param 	Integer	$taskamount
+	 * @param	String		$htmlId
+	 * @param	String		$class
+	 * @param	String		$classKey
+	 * @param	String		$active
+	 * @param	String		$label
+	 * @param	String		$position
+	 * @param	Boolean		$hasIcon
+	 * @param	Integer		$elementAmount
 	 * @return	String
 	 */
 	public static function renderTab($htmlId, $class, $classKey, $active, $label, $position, $hasIcon = 0, $elementAmount = 0) {

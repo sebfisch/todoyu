@@ -198,9 +198,10 @@ class TodoyuSQLManager {
 
 
 	/**
-	 * Get
-	 * @param  $extKey
-	 * @return array
+	 * Get SQL queries for DB tables of extension
+	 *
+	 * @param	String	$extKey
+	 * @return	Array
 	 */
 	public static function getExtensionTableQueries($extKey) {
 		$tablesFile	= TodoyuExtensions::getExtPath($extKey, 'config/db/tables.sql');

@@ -341,7 +341,7 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * validates given fields
 	 *
-	 * @param Obj $field
+	 * @param	TodoyuFormElement	$field
 	 */
 	protected function validateField($field) {
 		$this->checkRequiredFields($field);

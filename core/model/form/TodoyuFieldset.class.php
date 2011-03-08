@@ -545,7 +545,7 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Adds fields of a fieldset recursively to the form
 	 *
-	 * @param TodoyuForm $form
+	 * @param	TodoyuForm	$form
 	 */
 	public function setFieldsToForm(TodoyuForm $form) {
 		foreach($this->elements as $element) {

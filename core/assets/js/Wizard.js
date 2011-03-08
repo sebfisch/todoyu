@@ -60,7 +60,7 @@ Todoyu.Wizard = {
 	 * Handler when wizard was opened
 	 *
 	 * @method	onOpened
-	 * @param 	{Ajax.Response}	response
+	 * @param	{Ajax.Response}	response
 	 */
 	onOpened: function(response) {
 		this.onLoaded(response);

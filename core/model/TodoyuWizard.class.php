@@ -52,10 +52,10 @@ abstract class TodoyuWizard {
 
 
 	/**
-	 * Save
-	 * @param  $stepName
-	 * @param array $data
-	 * @return void
+	 * Save given step data
+	 *
+	 * @param	String	$stepName
+	 * @param	Array	$data
 	 */
 	public function save($stepName, array $data) {
 		return $this->getStep($stepName)->save($data);
@@ -192,8 +192,9 @@ abstract class TodoyuWizard {
 
 	/**
 	 * Get name of active step. Use parameter if step name was given
-	 * @param null $stepName
-	 * @return Mixed|null|void
+	 *
+	 * @param	String	$stepName
+	 * @return	Mixed|null|void
 	 */
 	protected function getActiveStepName($stepName = null) {
 		if( empty($stepName) ) {

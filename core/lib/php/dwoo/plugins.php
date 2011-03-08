@@ -79,7 +79,7 @@ function Dwoo_Plugin_LabelReplace(Dwoo $dwoo, $key, $locale = null, $needle, $re
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo 		$dwoo
+ * @param	Dwoo 		$dwoo
  * @param	Integer		$workload
  * @return	String
  */
@@ -96,8 +96,8 @@ function Dwoo_Plugin_Workload_compile(Dwoo_Compiler $compiler, $workload) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo 		$dwoo
- * @param 	String		$extension
+ * @param	Dwoo 		$dwoo
+ * @param	String		$extension
  * @param	String		$action
  * @param	String		$params
  * @return	String
@@ -114,8 +114,8 @@ function Dwoo_Plugin_link(Dwoo $dwoo, $extension, $controller = 'ext', $params =
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo 		$dwoo
- * @param 	String		$file
+ * @param	Dwoo 		$dwoo
+ * @param	String		$file
  * @return	String
  */
 function Dwoo_Plugin_includeEscaped(Dwoo $dwoo, $file, $convertSpecialCharsOnly = true) {
@@ -134,7 +134,7 @@ function Dwoo_Plugin_includeEscaped(Dwoo $dwoo, $file, $convertSpecialCharsOnly 
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo 		$dwoo
+ * @param	Dwoo 		$dwoo
  * @param	String		$value
  * @param	Array		$array
  * @return	Boolean
@@ -160,8 +160,8 @@ function Dwoo_Plugin_inArray(Dwoo $dwoo, $value, $array) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo_Compiler 	$compiler
- * @param 	String			$string
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	String			$string
  * @return	String
  */
 function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string) {
@@ -176,8 +176,8 @@ function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo_Compiler 	$compiler
- * @param 	String			$string
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	String			$string
  * @return	String
  */
 function Dwoo_Plugin_addslashes(Dwoo $dwoo, $string) {
@@ -189,7 +189,7 @@ function Dwoo_Plugin_addslashes(Dwoo $dwoo, $string) {
 /**
  * Format an integer to hours:minutes:seconds
  *
- * @param 	Dwoo 		$dwoo
+ * @param	Dwoo 		$dwoo
  * @param	Integer		$seconds
  * @return	String
  */
@@ -202,11 +202,10 @@ function Dwoo_Plugin_HourMinSec(Dwoo $dwoo, $seconds) {
 /**
  * Format an integer to hours:minutes:seconds
  *
- * @param 	Dwoo 		$dwoo
+ * @param	Dwoo 		$dwoo
  * @param	Integer		$seconds
  * @return	String
  */
-
 function Dwoo_Plugin_HourMin(Dwoo $dwoo, $seconds) {
 	return TodoyuTime::sec2time($seconds);
 }
@@ -219,11 +218,10 @@ function Dwoo_Plugin_HourMin(Dwoo $dwoo, $seconds) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo 		$dwoo
+ * @param	Dwoo 		$dwoo
  * @param	Integer		$fileSize
  * @return	String
  */
-
 function Dwoo_Plugin_filesize(Dwoo $dwoo, $fileSize) {
 	return TodoyuString::formatSize($fileSize);
 }
@@ -236,11 +234,10 @@ function Dwoo_Plugin_filesize(Dwoo $dwoo, $fileSize) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo 		$dwoo
- * @param 	String		$string
- * @param 	Integer		$maxLen
+ * @param	Dwoo 		$dwoo
+ * @param	String		$string
+ * @param	Integer		$maxLen
  */
-
 function Dwoo_Plugin_cropText_compile(Dwoo_Compiler $compiler, $string, $maxLen, $dontSplitWords = true) {
 	return 'TodoyuString::crop(' . $string . ', ' . $maxLen . ', \'...\', ' . $dontSplitWords . ')';
 }
@@ -253,10 +250,9 @@ function Dwoo_Plugin_cropText_compile(Dwoo_Compiler $compiler, $string, $maxLen,
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo 		$dwoo
- * @param 	String		$value
+ * @param	Dwoo 		$dwoo
+ * @param	String		$value
  */
-
 function Dwoo_Plugin_twoDigits(Dwoo $dwoo, $value) {
 	return ( intVal($value) < 10 ) ? ('0' . $value) : $value;
 }
@@ -269,9 +265,9 @@ function Dwoo_Plugin_twoDigits(Dwoo $dwoo, $value) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo 		$dwoo
- * @param 	Mixed		$variable
- * @param 	Boolean		$phpFormat
+ * @param	Dwoo 		$dwoo
+ * @param	Mixed		$variable
+ * @param	Boolean		$phpFormat
  * @return	String
  */
 function Dwoo_Plugin_debug(Dwoo $dwoo, $variable, $phpFormat = false) {
@@ -294,8 +290,8 @@ function Dwoo_Plugin_debug(Dwoo $dwoo, $variable, $phpFormat = false) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param 	Dwoo 		$dwoo
- * @param 	Mixed		$variable
+ * @param	Dwoo 		$dwoo
+ * @param	Mixed		$variable
  * @return	String
  */
 function Dwoo_Plugin_firebug(Dwoo $dwoo, $variable) {
@@ -353,7 +349,7 @@ function Dwoo_Plugin_cleanHtml_compile(Dwoo_Compiler $compiler, $html) {
 /**
  * Substitute URLs by hyperlinks
  *
- * @param 	Dwoo		$dwoo
+ * @param	Dwoo		$dwoo
  * @param	String		$text
  * @return	String
  */
@@ -381,7 +377,7 @@ function Dwoo_Plugin_substituteLinkableElements(Dwoo $dwoo, $text) {
 /**
  * Button template
  *
- * @param 	Dwoo		$dwoo
+ * @param	Dwoo		$dwoo
  * @param	String		$label		Button text
  * @param	String		$onclick	onClick JavaScript handler
  * @param	String		$class		CSS class
@@ -408,7 +404,7 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
 /**
  * Header template
  *
- * @param 	Dwoo		$dwoo
+ * @param	Dwoo		$dwoo
  * @param	String		$title
  * @param	String		$class
  * @return	String
@@ -649,10 +645,10 @@ function Dwoo_Plugin_timerange_compile(Dwoo_Compiler $compiler, $id, $name, $ran
 /**
  * Render content message with label
  *
- * @param Dwoo_Compiler $compiler
- * @param  $label
- * @param string $class
- * @return string
+ * @param	Dwoo_Compiler $compiler
+ * @param	String		$label
+ * @param	String		$class
+ * @return	String
  */
 function Dwoo_Plugin_contentMessage_compile(Dwoo_Compiler $compiler, $label, $class = '', $content = '') {
 	return 'render(\'core/view/contentMessage.tmpl\', array(\'labels\'=>explode(\'|\', ' . $label . '),\'class\'=>' . $class . ',\'content\'=>' . $content . '))';

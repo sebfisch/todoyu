@@ -355,7 +355,7 @@ class TodoyuArray {
 	 * The base array should have named keys. Insert position can be defined by $beforeItem.
 	 * If an element with the specified key already exists, it will be replace, except if $replace is false.
 	 *
-	 * @param 	Array		$array			Base array to insert new item into
+	 * @param	Array		$array			Base array to insert new item into
 	 * @param	Mixed		$newArrayItem	New array item
 	 * @param	String		$keyname		Key name of the new array item
 	 * @param	String		$beforeItem		Insert new item before this key. If no key specified, the new element will be appended

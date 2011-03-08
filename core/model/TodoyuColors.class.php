@@ -177,7 +177,7 @@ class TodoyuColors {
 	/**
 	 * Checks brightness of a color and returns either black or white
 	 *
-	 * @param 	String		$color: Color in hex
+	 * @param	String		$color: Color in hex
 	 * @return	String
 	 */
 	private static function getBestReadableContrastTextColor($color) {

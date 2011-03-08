@@ -694,7 +694,6 @@ class TodoyuString {
 	/**
 	 * Returns an HTML - img tag
 	 *
-	 * @param int $width
 	 * @param	String		$src
 	 * @param	Integer		width
 	 * @param	Integer		$height

@@ -29,11 +29,11 @@
 class TodoyuFormElement_Time extends TodoyuFormElement_Text {
 
 	/**
-	 * Initialize timeinput field
+	 * Initialize time-input field
 	 *
-	 * @param	String		$name
-	 * @param 	TodoyuFieldset	$fieldset
-	 * @param	Array		$config
+	 * @param	String				$name
+	 * @param 	TodoyuFieldset		$fieldset
+	 * @param	Array				$config
 	 */
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
 		TodoyuFormElement::__construct('time', $name, $fieldset, $config);
