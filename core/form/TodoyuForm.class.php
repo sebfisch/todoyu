@@ -126,7 +126,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var Boolean
 	 */
-	private $validateForm = false;
+	private $validateSubforms = false;
 
 
 
@@ -561,8 +561,8 @@ class TodoyuForm implements ArrayAccess {
 	 * @todo	REMOVE
 	 * @return	Boolean
 	 */
-	public function getValidateForm() {
-		return $this->validateForm;
+	public function isSubformValidationActive() {
+		return $this->validateSubforms;
 	}
 
 
@@ -972,7 +972,7 @@ class TodoyuForm implements ArrayAccess {
 	public function isValid() {
 		$isValid	= true;
 
-		$this->validateForm = true;
+		$this->validateSubforms = true;
 
 		$fieldNames	= $this->getFieldnames();
 
@@ -996,9 +996,12 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	String
 	 */
 	public function parseWithFormData($string) {
+		return $string;
 		foreach($this->formdata as $key => $value) {
-			if( stristr($string, '#' . $key . '#') ) {
-				$string = str_replace('#' . $key . '#', (string)$value, $string);
+			if( is_string($value) || is_numeric($value) ) {
+				if( stristr($string, '#' . $key . '#') ) {
+					$string = str_replace('#' . $key . '#', $value, $string);
+				}
 			}
 		}
 

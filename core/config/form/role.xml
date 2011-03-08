@@ -27,6 +27,7 @@
 
 				<field type="databaseRelation" name="persons">
 					<label>core.global.role.attr.persons</label>
+					<addLabel>contact.ext.person.new</addLabel>
 					<record>
 						<form>core/config/form/role-person.xml</form>
 						<url>

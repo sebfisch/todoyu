@@ -80,11 +80,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 * @return	Array
 	 */
 	public function getRecord($index) {
-		if( ! is_array($this->config['value'][$index]) ) {
-			$this->config['value'][$index] = array();
-		}
-
-		return $this->config['value'][$index];
+		return TodoyuArray::assure($this->config['value'][$index]);
 	}
 
 
@@ -166,7 +162,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$recordForm	= $this->getRecordForm($index);
 
 			// Evoke assigned validators
-		if( $this->getForm()->getValidateForm() ) {
+		if( $this->getForm()->isSubformValidationActive() ) {
 			$recordForm->isValid();
 //			if( ! $form->isValid() ) {
 //				$this->setErrorMessage( Label('form.field.hasError') );

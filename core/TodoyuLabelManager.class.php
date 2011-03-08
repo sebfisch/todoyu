@@ -122,10 +122,10 @@ class TodoyuLabelManager {
 		$labelKey	= $keyParts[2];
 
 		if( empty($extKey) || empty($fileKey) || empty($labelKey) ) {
-			if( strpos($fullKey, '.') ) {
+			if( Todoyu::$CONFIG['LOCALE']['logInvalidKeys'] ) {
 				Todoyu::log('Invalid label key: <' . $fullKey . '>', TodoyuLogger::LEVEL_ERROR);
-				return Todoyu::$CONFIG['DEBUG'] ? $fullKey : '';
 			}
+			return Todoyu::$CONFIG['DEBUG'] ? $fullKey : '';
 		}
 
 		$label	= self::getCachedLabel($extKey, $fileKey, $labelKey, $locale);
