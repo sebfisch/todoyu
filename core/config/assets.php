@@ -294,6 +294,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/assets/js/HeadletAjaxLoader.js',
 			'position'	=> 91
+		),
+		array(
+			'file'		=> 'core/assets/js/PanelWidgetSearchList.js',
+			'position'	=> 91
 		)
 	),
 
@@ -428,6 +432,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/assets/css/wizard.css',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/assets/css/panelwidget-searchlist.css',
 			'position'	=> 10
 		)
 	)

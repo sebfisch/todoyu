@@ -38,7 +38,7 @@ class TodoyuPreferenceManager {
 	 * Save preference. Unique replaces an existing preference
 	 *
 	 * @param	Integer		$extID
-	 * @param	Integer		$preference
+	 * @param	String		$preference
 	 * @param	String		$value
 	 * @param	Integer		$idItem
 	 * @param	Boolean		$unique
@@ -50,7 +50,7 @@ class TodoyuPreferenceManager {
 		$preference	= strtolower($preference);
 		$idItem		= intval($idItem);
 		$idArea		= intval($idArea);
-		$idPerson		= personid($idPerson);
+		$idPerson	= personid($idPerson);
 
 			// Delete existing preferences
 		if( $unique ) {
@@ -124,7 +124,7 @@ class TodoyuPreferenceManager {
 		$preference	= strtolower($preference);
 		$idItem		= intval($idItem);
 		$idArea		= intval($idArea);
-		$idPerson		= personid($idPerson);
+		$idPerson	= personid($idPerson);
 
 			// Don't check database if the user ID is 0
 		if( $idPerson === 0 ) {

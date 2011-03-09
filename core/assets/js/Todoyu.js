@@ -58,7 +58,7 @@ var Todoyu = {
 	JsCalFormat: {},
 
 
-	EXT: {},
+	Ext: {},
 
 	CoreHeadlets: {},
 

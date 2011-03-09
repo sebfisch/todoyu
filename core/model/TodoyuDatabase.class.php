@@ -1024,7 +1024,7 @@ class TodoyuDatabase {
 
 		if( $this->getNumRows($resource) > 0 ) {
 			$row	= $this->fetchAssoc($resource);
-			$value	= $row[ $key ];
+			$value	= $row[$key];
 		}
 
 		return $value;

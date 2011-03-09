@@ -37,15 +37,15 @@ class TodoyuPanelWidgetRenderer {
 	public static function renderPanelWidgets($extKey, array $params = array()) {
 		TodoyuExtensions::loadAllPanelWidget();
 
-		$content	= '';
+//		$content	= '';
 
-		// Render default widgets from config
-		$content	.= self::renderDefaultPanelWidgets($extKey, $params);
+			// Render default widgets from config
+		return self::renderDefaultPanelWidgets($extKey, $params);
 
 		// Render user defined widgets from database
 //		$content	.= self::renderUserPanelWidgets($extKey, $params);
 
-		return $content;
+//		return $content;
 	}
 
 
@@ -80,22 +80,7 @@ class TodoyuPanelWidgetRenderer {
 	 * @return	String
 	 */
 	private static function renderDefaultPanelWidgets($extKey, array $params = array()) {
-		$panelWidgets	= TodoyuPanelWidgetManager::getDefaultPanelWidgets($extKey);
-
-		return self::render($extKey, $panelWidgets, $params);
-	}
-
-
-
-	/**
-	 * Render user defined widgets from database
-	 *
-	 * @param	String		$extKey		Extension key
-	 * @param	Array		$params		Custom parameters for current area
-	 * @return	String
-	 */
-	private static function renderUserPanelWidgets($extKey, array $params = array()) {
-		$panelWidgets	= TodoyuPanelWidgetManager::getUserPanelWidgets($extKey);
+		$panelWidgets	= TodoyuPanelWidgetManager::getAllPanelWidgets($extKey);
 
 		return self::render($extKey, $panelWidgets, $params);
 	}
@@ -114,15 +99,14 @@ class TodoyuPanelWidgetRenderer {
 		$idArea		= TodoyuExtensions::getExtID($extKey);
 
 			// Render the widgets
-		foreach($panelWidgets as $pWidgetConfig) {
-			$widgetClass	= $pWidgetConfig['widget'];
-			$config			= is_array($pWidgetConfig['config']) ? $pWidgetConfig['config'] : array();
-			// Changed: if no array key exists expand the widget by default.
+		foreach($panelWidgets as $widgetConfig) {
+			$widgetClass	= TodoyuPanelWidgetManager::getPanelWidgetClassName($widgetConfig['ext'], $widgetConfig['widget']);
+			$config			= TodoyuArray::assure($widgetConfig['config']);
 
 			if( class_exists($widgetClass) ) {
 					// Check whether panelWidget is allowed to be displayed
 				if( call_user_func(array($widgetClass, 'isAllowed') ) ) {
-					$widget	= new $widgetClass($config, $params, $idArea);
+					$widget	= TodoyuPanelWidgetManager::getPanelWidget($widgetConfig['ext'], $widgetConfig['widget'], $idArea, $params, $config);
 					$content .= $widget->render();
 				} else {
 						// Widget not allowed
@@ -131,7 +115,7 @@ class TodoyuPanelWidgetRenderer {
 			} else {
 				$debug	= 'Can\'t find requested panel widget: "' . $widgetClass . '"';
 				TodoyuDebug::printHtml($debug, 'PanelWidget not found!', null, true);
-				TodoyuDebug::printHtml($pWidgetConfig, 'Widget config');
+				TodoyuDebug::printHtml($widgetConfig, 'Widget config');
 			}
 		}
 
