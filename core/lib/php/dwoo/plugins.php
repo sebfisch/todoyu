@@ -85,7 +85,6 @@ function Dwoo_Plugin_LabelReplace(Dwoo $dwoo, $key, $locale = null, $needle, $re
  */
 function Dwoo_Plugin_Workload_compile(Dwoo_Compiler $compiler, $workload) {
 	return 'TodoyuTime::sec2hour(' . $workload . ')';
-	//return TodoyuTime::sec2hour($workload);
 }
 
 
@@ -166,22 +165,6 @@ function Dwoo_Plugin_inArray(Dwoo $dwoo, $value, $array) {
  */
 function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string) {
 	return 'htmlentities(' . $string . ', ENT_QUOTES, \'UTF-8\')';
-}
-
-
-
-/**
- * Quote string with slashes, e.g. for PHP output
- *
- * @package		Todoyu
- * @subpackage	Template
- *
- * @param	Dwoo_Compiler 	$compiler
- * @param	String			$string
- * @return	String
- */
-function Dwoo_Plugin_addslashes(Dwoo $dwoo, $string) {
-	return addslashes($string);
 }
 
 
