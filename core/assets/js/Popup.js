@@ -59,7 +59,7 @@ Todoyu.Popup = Class.create(Window, {
 	 * @param	{Object}			options
 	 */
 	initialize: function($super, options) {
-		options = Object.extend(this.todoyuOptions, options);
+		options = $H(this.todoyuOptions).merge(options).toObject();
 
 		$super(options);
 
