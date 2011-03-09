@@ -27,49 +27,83 @@
 class TodoyuPanelWidgetManager {
 
 	/**
-	 * Panel widget storage
+	 * Configs for panel widgets
 	 *
 	 * @var	Array
 	 */
 	private static $panelWidgets = array();
 
 
-
 	/**
-	 * Get default panel widgets defined in the config array
+	 * Add a panel widget for an area
 	 *
-	 * @param	String		$ext		Extension key
-	 * @return	Array
+	 * @param	String		$area		Area where to display the widget
+	 * @param	String		$ext		Extension which implements the widget
+	 * @param	String		$name		Name of the widget
+	 * @param	Integer		$position
+	 * @param	Array		$config
 	 */
-	public static function getAllPanelWidgets($ext) {
-		$widgets	= Todoyu::$CONFIG['EXT'][$ext]['panelWidgets'];
+	public static function addPanelWidget($area, $ext, $name, $position, array $config = array()) {
+		$className	= self::getClassName($ext, $name);
+		$idArea		= TodoyuExtensions::getExtID($area);
 
-		if( is_array($widgets) ) {
-			$widgets = TodoyuArray::sortByLabel($widgets, 'position');
-		} else {
-			$widgets = array();
-		}
-
-		return $widgets;
+		self::$panelWidgets[$idArea][$className] = array(
+			'class'		=> $className,
+			'ext'		=> $ext,
+			'name'		=> $name,
+			'position'	=> intval($position),
+			'config'	=> $config,
+			'area'		=> $area
+		);
 	}
 
 
 
 	/**
-	 * Add a panel widget for all users
+	 * Get panel widget config
 	 *
-	 * @param	String		$ext			Extension key
-	 * @param	String		$widget			Widget class
-	 * @param	Integer		$position		Widget position
-	 * @param	Array		$config
+	 * @param	String		$ext
+	 * @param	String		$name
+	 * @return	Array
 	 */
-	public static function addPanelWidget($area, $ext, $widget, $position = 100, array $config = array()) {
-		Todoyu::$CONFIG['EXT'][$area]['panelWidgets'][] = array(
-			'ext'		=> $ext,
-			'widget'	=> $widget,
-			'position'	=> intval($position),
-			'config'	=> $config
-		);
+	public static function getConfig($ext, $name) {
+		$className	= self::getClassName($ext, $name);
+
+		return TodoyuArray::assure(self::$panelWidgets[AREA][$className]);
+	}
+
+
+
+	/**
+	 * Get config parameter from widget config
+	 *
+	 * @param	String		$ext
+	 * @param	String		$name
+	 * @return	Array
+	 */
+	public static function getCustomConfig($ext, $name) {
+		$config	= self::getConfig($ext, $name);
+
+		return TodoyuArray::assure($config['config']);
+	}
+
+
+
+	/**
+	 * Get panel widget configs for area
+	 *
+	 * @param	String		$area
+	 * @return	Array
+	 */
+	public static function getAreaPanelWidgets($area) {
+		TodoyuExtensions::loadAllPanelWidget();
+		$idArea	= TodoyuExtensions::getExtID($area);
+
+		if( is_array(self::$panelWidgets[$idArea]) ) {
+			return TodoyuArray::sortByLabel(self::$panelWidgets[$idArea], 'position');
+		}
+
+		return array();
 	}
 
 
@@ -82,14 +116,26 @@ class TodoyuPanelWidgetManager {
 	 * @param	Array		$params
 	 * @return	TodoyuPanelWidget
 	 */
-	public static function getPanelWidget($extension, $widgetName, $idArea = 0, array $params = array(), array $config = array()) {
-		$widgetClassName= self::getPanelWidgetClassName($extension, $widgetName);
 
-		if( ! array_key_exists($widgetClassName, self::$panelWidgets) ) {
-			self::$panelWidgets[$widgetClassName] = new $widgetClassName($config, $params, $idArea);
+	/**
+	 * Get panel widget instance
+	 *
+	 * @param	String	$ext
+	 * @param	String	$name
+	 * @param	Array	$params
+	 * @return	TodoyuPanelWidget
+	 */
+	public static function getPanelWidget($ext, $name, array $params = array()) {
+		TodoyuExtensions::loadAllPanelWidget();
+
+		$className		= self::getClassName($ext, $name);
+		$customConfig	= self::getCustomConfig($ext, $name);
+
+		if( ! array_key_exists($className, self::$panelWidgets) ) {
+			self::$panelWidgets[$className] = new $className($customConfig, $params);
 		}
 
-		return self::$panelWidgets[$widgetClassName];
+		return self::$panelWidgets[$className];
 	}
 
 
@@ -101,7 +147,7 @@ class TodoyuPanelWidgetManager {
 	 * @param	String		$name
 	 * @return	String
 	 */
-	public static function getPanelWidgetClassName($ext, $name) {
+	public static function getClassName($ext, $name) {
 		return 'Todoyu' . ucfirst(strtolower($ext)) . 'PanelWidget' . ucfirst($name);
 	}
 

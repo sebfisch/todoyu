@@ -88,6 +88,11 @@ abstract class TodoyuPanelWidgetSearchList extends TodoyuPanelWidget {
 	}
 
 
+	/**
+	 * Set javascript object which handles the selector
+	 *
+	 * @param	String		$jsObject
+	 */
 	protected function setJsObject($jsObject) {
 		$this->jsObject = $jsObject;
 	}
@@ -101,14 +106,14 @@ abstract class TodoyuPanelWidgetSearchList extends TodoyuPanelWidget {
 		$pref	= 'panelwidgetsearchlist-' . $this->getID() . '-search';
 		$search	= trim($search);
 
-		return TodoyuPreferenceManager::savePreference($this->getExtID(), $pref, $search, 0, true);
+		return TodoyuPreferenceManager::savePreference($this->getExtID(), $pref, $search, 0, true, AREA);
 	}
 
 
 	public function getSearchText() {
 		$pref	= 'panelwidgetsearchlist-' . $this->getID() . '-search';
 
-		return trim(TodoyuPreferenceManager::getPreference($this->getExtID(), $pref));
+		return trim(TodoyuPreferenceManager::getPreference($this->getExtID(), $pref, 0, AREA));
 	}
 
 	protected abstract function getItems();

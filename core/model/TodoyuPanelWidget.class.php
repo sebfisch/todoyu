@@ -71,9 +71,8 @@ abstract class TodoyuPanelWidget {
 	 * @param	String		$title		Title of the panel widget
 	 * @param	Array		$config		Configuration array for the widget
 	 * @param	Array		$params		Custom parameters for current page request
-	 * @param	Integer		$idArea		Area ID
 	 */
-	public function __construct($ext, $id, $title, array $config = array(), array $params = array(), $idArea = 0) {
+	public function __construct($ext, $id, $title, array $config = array(), array $params = array()) {
 		$this->set('ext', $ext);
 		$this->set('id', $id);
 
@@ -82,7 +81,6 @@ abstract class TodoyuPanelWidget {
 
 		$this->config	= $config;
 		$this->params	= $params;
-		$this->idArea	= intval($idArea);
 
 		$this->setCollapsedStatus();
 	}
