@@ -98,24 +98,6 @@ CREATE TABLE `system_role` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `system_panelwidget`
---
-
-CREATE TABLE `system_panelwidget` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`id_person` smallint(5) unsigned NOT NULL,
-	`ext` smallint(5) unsigned NOT NULL,
-	`widget` varchar(50) NOT NULL,
-	`position` tinyint(4) NOT NULL,
-	`expanded` tinyint(1) NOT NULL,
-	`config` text NOT NULL,
-	PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `system_preference`
 --
 
