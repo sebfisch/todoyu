@@ -533,6 +533,28 @@ class TodoyuTime {
 
 
 	/**
+	 * Get (timestamps at 00:00 of) days inside given timespan
+	 *
+	 * @param	Integer		$from
+	 * @param	Integer		$until
+	 * @return	Array
+	 */
+	public static function getDaysInTimespan($from, $until) {
+		$timestamp	= self::getStartOfDay($from);
+		$until		= self::getStartOfDay($until);
+
+		$days	= array();
+		while($timestamp < $until) {
+			$days[]	= self::getStartOfDay($timestamp);
+			$timestamp	+= TodoyuTime::SECONDS_DAY;
+		}
+
+		return $days;
+	}
+
+
+
+	/**
 	 * Get days in month for the month of the timestamp
 	 * Use monthDelta to query an other month (ex: last = -1, next = 1, etc)
 	 *
