@@ -30,6 +30,8 @@
  */
 Todoyu.Popup = Class.create(Window, {
 
+	isClosing: false,
+
 	/**
 	 * Default todoyu options for window
 	 * @var	{Object}
@@ -59,6 +61,7 @@ Todoyu.Popup = Class.create(Window, {
 	 * @param	{Object}			options
 	 */
 	initialize: function($super, options) {
+		this.todoyuOptions.closeCallback	= this.closeCallback.bind(this);
 		options = $H(this.todoyuOptions).merge(options).toObject();
 
 		$super(options);
@@ -141,5 +144,29 @@ Todoyu.Popup = Class.create(Window, {
 	 */
 	onDestroy: function(eventName, popup) {
 		Todoyu.Popups.onDestroy(popup);
+	},
+
+	close: function($super) {
+		this.isClosing = true;
+
+		$super();
+	},
+
+
+	/**
+	 * Close callback
+	 * @param popup
+	 */
+	closeCallback: function(popup) {
+		if( this.isClosing ) {
+			return true;
+		}
+
+		var button	= this.content.down('button.cancelButton');
+
+		if( button ) {
+			this.isClosing = true;
+			Todoyu.Helper.fireEvent(button, 'click');
+		}
 	}
 });
