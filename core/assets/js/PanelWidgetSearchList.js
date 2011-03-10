@@ -47,6 +47,21 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 */
 	timeoutSearch: null,
 
+	/**
+	 * Keys which are ignored on entering
+	 * No request will be fired
+	 */
+	ignoreKeyInputs: [
+		Event.KEY_RETURN,
+		32 // Space
+	],
+
+	/**
+	 * Last submitted search text.
+	 * Prevent needless updates
+	 */
+	lastText: null,
+
 
 	/**
 	 * Constructor
@@ -59,6 +74,8 @@ Todoyu.PanelWidgetSearchList = Class.create({
 		this.config	= config;
 		this.input	= $(this.config.id + '-field-search');
 		this.list	= $('panelwidget-' + this.config.id + '-list');
+
+		this.lastText	= this.getSearchText();
 
 		this.initObservers();
 	},
@@ -96,7 +113,17 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 * @param	{Event}		event
 	 */
 	onSearchKeyUp: function(event) {
-		this.startNewTimeout();
+		event.stop();
+
+		if( ! this.ignoreKeyInputs.include(event.keyCode) ) {
+			if( this.lastText !== this.getSearchText() ) {
+				this.startNewTimeout();
+			} else {
+				//console.log('Text has not changed');
+			}
+		} else {
+			//console.log('Ignored key');
+		}
 	},
 
 
@@ -129,6 +156,8 @@ Todoyu.PanelWidgetSearchList = Class.create({
 			},
 			'onComplete':	this.onListUpdated.bind(this)
 		};
+
+		this.lastText = this.getSearchText();
 
 		Todoyu.Ui.update(this.list, url, options);
 	},
@@ -165,7 +194,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 * @return	{String}
 	 */
 	getSearchText: function() {
-		return $F(this.input);
+		return $F(this.input).trim();
 	}
 
 });
