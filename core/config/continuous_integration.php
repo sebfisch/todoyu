@@ -23,7 +23,7 @@
  * Configuration for continuous integration setup
  * Used to run unit tests and code analysis on hudson server
  */
-$SETUPCONFIG['db'] = array(
+Todoyu::$CONFIG['CI']['db'] = array(
 	'server'		=> 'localhost',
 	'username'		=> 'todoyu',
 	'password'		=> '0kbcBbQPi',
@@ -33,7 +33,7 @@ $SETUPCONFIG['db'] = array(
 	'queryHistory'	=> true
 );
 
-$SETUPCONFIG['system'] = array(
+Todoyu::$CONFIG['CI']['system'] = array(
 	'name'			=> 'todoyu hudson ci',
 	'email'			=> 'team@todoyu.com',
 	'locale'		=> 'de_DE',

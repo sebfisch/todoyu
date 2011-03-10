@@ -34,7 +34,7 @@
 
 
 require_once(realpath(dirname(__FILE__) . '/../inc/global.php'));
-require_once(PATH_CORE . '/ci/setup_config.php');
+require_once(PATH_CORE . '/config/continuous_integration.php');
 
 	// Prevent todoyu init
 Todoyu::$CONFIG['INIT'] = false;
@@ -46,7 +46,7 @@ require_once(PATH_CORE . '/inc/init.php');
 TodoyuExtensions::loadAllExtensions();
 
 	// Setup DB connection
-TodoyuInstallerManager::saveDbConfigInFile($SETUPCONFIG['db']);
+TodoyuInstallerManager::saveDbConfigInFile(Todoyu::$CONFIG['CI']['db']);
 
 require(PATH . '/config/db.php');
 
@@ -59,7 +59,7 @@ TodoyuInstallerManager::importStaticData();
 TodoyuInstallerManager::importBasicData();
 
 	// Save system config
-TodoyuInstallerManager::saveSystemConfig($SETUPCONFIG['system']);
+TodoyuInstallerManager::saveSystemConfig(Todoyu::$CONFIG['CI']['system']);
 
 require(PATH . '/config/system.php');
 
