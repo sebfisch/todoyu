@@ -50,12 +50,16 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 			// Set empty function if no callback defined
 		options.afterUpdateElement	= Todoyu.getFunction(options.afterUpdateElement).wrap(this.onElementSelected.bind(this));
 
-			// Add form name and data
-		options.parameters	= '&action=update&autocompleter=' + options.acName + '&element=' + $(inputField).id,
-		options.callback	= this.callbackModifyRequestParams.bind(this);
+
+			// Only add callback and default parameters if no action parameter defined (default)
+		if( ! url.toQueryParams().action ) {
+			options.parameters	= '&action=update&autocompleter=' + options.acName + '&element=' + $(inputField).id;
+				// Add form name and data
+			options.callback	= this.callbackModifyRequestParams.bind(this);
+		}
+
 		options.paramName	= options.paramName || this.config.paramName;
 		options.minChars	= options.minChars || this.config.minChars;
-
 
 			// Initialize original autocompleter
 		$super(inputField, suggestDiv, url, options);
@@ -73,7 +77,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * Callback. Add form name and data to request
 	 *
 	 * @method	callbackModifyRequestParams
-	 * @param	{Number}		idElement
+	 * @param	{Element}		inputElement
 	 * @param	{String}		acParam
 	 * @return	{String}
 	 */
@@ -82,7 +86,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 		var name	= form.readAttribute('name');
 		var data	= form.serialize();
 
-		return acParam + '&form=' + name + '&' + data;
+		return acParam + '&form=' + name + '&data=' + data;
 	},
 
 

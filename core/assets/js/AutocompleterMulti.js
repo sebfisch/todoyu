@@ -81,13 +81,14 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	/**
 	 * Callback when element was selected
 	 *
-	 * @param	{Element}	field
+	 * @param	{Function}	$super
+	 * @param	{Function}	callOriginal
+	 * @param	{Element}	inputField
 	 * @param	{Element}	selectedListElement
 	 */
 	onElementSelected: function($super, callOriginal, inputField, selectedListElement) {
 		var selectedValue	= selectedListElement.id;
 		var selectedText	= selectedListElement.innerHTML.stripTags().stripScripts().strip();
-		var valueField		= $(inputField.id + '-value');
 
 			// Reset visible field
 		inputField.value = '';
