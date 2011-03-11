@@ -193,7 +193,11 @@ CREATE TABLE `system_log_email` (
 	KEY `record` (`id_record`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `system_scheduler`
+--
 CREATE TABLE IF NOT EXISTS `system_scheduler` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_execute` int(11) NOT NULL,
