@@ -194,11 +194,11 @@ CREATE TABLE `system_log_email` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `system_scheduler` (
-	`id` INT NOT NULL AUTO_INCREMENT ,
-	`date_execute` INT NOT NULL ,
-	`class` VARCHAR( 100 ) NOT NULL ,
-	`success` BOOL NOT NULL ,
-	`message` VARCHAR( 255 ) NOT NULL,
-	PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `system_scheduler` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date_execute` int(11) NOT NULL,
+  `class` varchar(100) NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
