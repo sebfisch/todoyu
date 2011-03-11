@@ -454,9 +454,9 @@ class TodoyuTime {
 
 
 	/**
-	 * Parse time string to UNIX timestamp (timeformat is based on the format time or timesec)
+	 * Parse time string to UNIX timestamp (time format is based on the format time or timesec)
 	 *
-	 * @param	String		$timeString		Time string: 23:59 or 23:59:59 (function autodetects seconds part)
+	 * @param	String		$timeString		Time string: 23:59 or 23:59:59 (function auto-detects seconds part)
 	 * @return	Integer		Seconds
 	 */
 	public static function parseTime($timeString) {
@@ -541,15 +541,38 @@ class TodoyuTime {
 	 */
 	public static function getDaysInTimespan($from, $until) {
 		$timestamp	= self::getStartOfDay($from);
-		$until		= self::getStartOfDay($until);
+		$until		= intval($until);
 
 		$days	= array();
-		while($timestamp < $until) {
+		while($timestamp <= $until) {
 			$days[]	= self::getStartOfDay($timestamp);
 			$timestamp	+= TodoyuTime::SECONDS_DAY;
 		}
 
 		return $days;
+	}
+
+
+
+	/**
+	 * Get dates of the days (at 00:00) which intersect the two given timespans
+	 *
+	 * @param	Integer		$start1
+	 * @param	Integer		$end1
+	 * @param	Integer		$start2
+	 * @param	Integer		$end2
+	 * @return	Array
+	 */
+	public static function getIntersectingDays($start1, $end1, $start2, $end2) {
+		$start1	= intval($start1);
+		$end1	= intval($end1);
+		$start2	= intval($start2);
+		$end2	= intval($end2);
+
+		$span1	= self::getDaysInTimespan($start1, $end1);	// view
+		$span2	= self::getDaysInTimespan($start2, $end2);	// event
+
+		return array_intersect($span2, $span1);
 	}
 
 
