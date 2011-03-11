@@ -18,6 +18,22 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-echo "Scheduler";
+require_once(realpath(dirname(__FILE__) . '/../inc/global.php'));
+require_once(PATH_CORE . '/inc/init.php');
+
+	// Load all boot.php files of the installed extensions
+TodoyuExtensions::loadAllBoot();
+
+	// Load all init.php files of the installed extensions
+TodoyuExtensions::loadAllInit();
+
+	// Prevent HTTP request
+TodoyuCli::assertShell();
+
+	// Set time limit to 1 minute
+set_time_limit(60);
+
+	// Run scheduler
+TodoyuScheduler::run();
 
 ?>
