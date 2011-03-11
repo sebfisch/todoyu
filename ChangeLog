@@ -1,5 +1,11 @@
 todoyu Changelog
 
+todoyu 2.1.0
+	* Rename: TodoyuFileManager::setFileMtime to touch()
+	* Added: TodoyuCli class
+	* Change: .htaccess denies acccess to phpsh files
+	* Added: Basic scheduler for cronjobs
+
 todoyu 2.0.7 - released 2011-01-19
 	* Bugfix: English locale of date formats contained some german formats
 	* Bugfix: #136 "My Filters" in portal ignores "OR" conjunction (uses "AND")
