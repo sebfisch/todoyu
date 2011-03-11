@@ -50,30 +50,12 @@ class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 	 * @param	Array	$source
 	 */
 	protected function initSourceFunction(array $source) {
-		$funcRef	= explode('::', $source['function']);
+		$groups		= TodoyuFunction::callUserFunction($source['function'], $this);
 
-		switch( sizeof($funcRef) ) {
-				// funcRef is built like class::function
-			case 2:
-				$groups	= call_user_func($funcRef, $this);
-				foreach($groups as $group => $options) {
-					foreach($options as $option) {
-						$this->addOption($group, $option['value'], $option['label'], $option['selected'], $option['disabled'], $option['classname']);
-					}
-				}
-				break;
-
-
-				// funcRef is built like class::function::param, param is e.g the field ID
-			case 3:
-				Todoyu::log('Non standard 3 parts select source function: ' . $source['function'], TodoyuLogger::LEVEL_NOTICE);
-				$funcParam	= $funcRef[2];
-				array_pop($funcRef);
-				$groups	= call_user_func($funcRef, $this->getForm()->getFormData(), $funcParam);
-				foreach($options as $option) {
-					$this->addOption($group, $option['value'], $option['label'], $option['selected'], $option['disabled']);
-				}
-				break;
+		foreach($groups as $group => $options) {
+			foreach($options as $option) {
+				$this->addOption($group, $option['value'], $option['label'], $option['selected'], $option['disabled'], $option['classname']);
+			}
 		}
 	}
 
