@@ -34,6 +34,9 @@ RedirectMatch 403 /\\.svn(/|$)
 # Disallow any log file viewing from web
 RedirectMatch 403 (.*)\.log$
 
+# Disallow any .phpsh viewing from web
+RedirectMatch 403 (.*)\.phpsh$
+
 # Disallow any file download from web
 RedirectMatch 403 /files/*
 

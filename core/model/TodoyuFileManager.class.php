@@ -133,6 +133,8 @@ class TodoyuFileManager {
 	 * @return	Boolean
 	 */
 	public static function deleteFile($pathFile) {
+		$pathFile	= self::pathAbsolute($pathFile);
+
 		if( is_file($pathFile) ) {
 			if( is_writable($pathFile) ) {
 				$success	= unlink($pathFile);
@@ -254,10 +256,12 @@ class TodoyuFileManager {
 	 * Set modification timestamp of file
 	 *
 	 * @param	String		$filePath
-	 * @param	Integer		$timestamp
+	 * @return	Boolean
 	 */
-	public static function setFileMtime($filePath, $timestamp = NOW) {
-		touch($filePath, $timestamp);
+	public static function touch($filePath) {
+		$filePath	= self::pathAbsolute($filePath);
+
+		return touch($filePath);
 	}
 
 
