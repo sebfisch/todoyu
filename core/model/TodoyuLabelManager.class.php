@@ -186,7 +186,7 @@ class TodoyuLabelManager {
 	public static function getFallbackLocales($locale) {
 		$fallbacks	= TodoyuArray::assure(Todoyu::$CONFIG['LOCALE']['fallback']);
 		$fallback	= array();
-		$tmpLocale	= $locale;
+		$tmpLocale	= (string)$locale;
 		$counter	= 0;
 
 			// Dig down the fallback languages. The counter prevents endless loops for bad configuration

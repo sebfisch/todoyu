@@ -288,20 +288,6 @@ class TodoyuTime {
 
 
 	/**
-	 * Convert seconds (integer) to a readable format with hours, minutes and seconds (01:10:45 = 1 hour, 10 minutes and 45 seconds)
-	 *
-	 * @param	Integer		$seconds
-	 * @return	String
-	 */
-	public static function sec2time($seconds) {
-		$timeParts	= self::getTimeParts($seconds);
-
-		return sprintf('%02d:%02d:%02d', $timeParts['hours'], $timeParts['minutes'], $timeParts['seconds']);
-	}
-
-
-
-	/**
 	 * Format time values 23:59 or 23:59:59
 	 *
 	 * @param	Integer		$seconds

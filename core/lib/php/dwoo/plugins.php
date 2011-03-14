@@ -39,36 +39,8 @@
  * @param	String			$locale		locale (de,en,...)
  * @return	String
  */
-function Dwoo_Plugin_Label_compile(Dwoo_Compiler $compiler, $key, $plain = false, $locale = null) {
-	return 'findLabel(' . $key . ', ' . $plain . ', ' . $locale . ')';
-//	return 'TodoyuLabelManager::getLabel(' . $key . ',' . $locale . ')';
-}
-
-
-
-/**
- * Dwoo plugin function for label translation with replacement of substring
- *
- * @package		Todoyu
- * @subpackage	Template
- *
- * @param	Dwoo		$dwoo
- * @param	String		$key		label-key
- * @param	String		$locale		locale (de,en,...)
- * @param	String		$needle
- * @param	String		$replacement
- * @return	String
- */
-
-function Dwoo_Plugin_LabelReplace(Dwoo $dwoo, $key, $locale = null, $needle, $replacement) {
-	$res = Label($key, $locale);
-	if ( trim($res) != '') {
-		$res	= str_replace($needle, $replacement, $res);
-	} else {
-		$res = 'Label not found: "' . $key . '" ';
-	}
-
-	return $res;
+function Dwoo_Plugin_Label_compile(Dwoo_Compiler $compiler, $key, $locale = null) {
+	return 'TodoyuLabelManager::getLabel(' . $key . ', ' . $locale . ')';
 }
 
 
@@ -85,24 +57,6 @@ function Dwoo_Plugin_LabelReplace(Dwoo $dwoo, $key, $locale = null, $needle, $re
  */
 function Dwoo_Plugin_Workload_compile(Dwoo_Compiler $compiler, $workload) {
 	return 'TodoyuTime::sec2hour(' . $workload . ')';
-}
-
-
-
-/**
- * Build a Todoyu link link ?ext=EXTNAME&action=ACTION
- *
- * @package		Todoyu
- * @subpackage	Template
- *
- * @param	Dwoo 		$dwoo
- * @param	String		$extension
- * @param	String		$action
- * @param	String		$params
- * @return	String
- */
-function Dwoo_Plugin_link(Dwoo $dwoo, $extension, $controller = 'ext', $params = '') {
-	return '?ext=' . $extension . '&controller=' . $controller . $params;
 }
 
 
@@ -172,12 +126,12 @@ function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string) {
 /**
  * Format an integer to hours:minutes:seconds
  *
- * @param	Dwoo 		$dwoo
- * @param	Integer		$seconds
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	Integer			$seconds
  * @return	String
  */
-function Dwoo_Plugin_HourMinSec(Dwoo $dwoo, $seconds) {
-	return TodoyuTime::sec2time($seconds);
+function Dwoo_Plugin_HourMinSec_compile(Dwoo_Compiler $compiler, $seconds) {
+	return 'TodoyuTime::formatTime(' . $seconds . ', true)';
 }
 
 
@@ -185,12 +139,12 @@ function Dwoo_Plugin_HourMinSec(Dwoo $dwoo, $seconds) {
 /**
  * Format an integer to hours:minutes:seconds
  *
- * @param	Dwoo 		$dwoo
- * @param	Integer		$seconds
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	Integer			$seconds
  * @return	String
  */
-function Dwoo_Plugin_HourMin(Dwoo $dwoo, $seconds) {
-	return TodoyuTime::sec2time($seconds);
+function Dwoo_Plugin_HourMin_compile(Dwoo_Compiler $compiler, $seconds) {
+	return 'TodoyuTime::formatTime(' . $seconds . ', false)';
 }
 
 
@@ -205,8 +159,8 @@ function Dwoo_Plugin_HourMin(Dwoo $dwoo, $seconds) {
  * @param	Integer		$fileSize
  * @return	String
  */
-function Dwoo_Plugin_filesize(Dwoo $dwoo, $fileSize) {
-	return TodoyuString::formatSize($fileSize);
+function Dwoo_Plugin_filesize_compile(Dwoo_Compiler $compiler, $fileSize) {
+	return 'TodoyuString::formatSize(' . $fileSize . ')';
 }
 
 
@@ -236,8 +190,8 @@ function Dwoo_Plugin_cropText_compile(Dwoo_Compiler $compiler, $string, $maxLen,
  * @param	Dwoo 		$dwoo
  * @param	String		$value
  */
-function Dwoo_Plugin_twoDigits(Dwoo $dwoo, $value) {
-	return ( intVal($value) < 10 ) ? ('0' . $value) : $value;
+function Dwoo_Plugin_twoDigits_compile(Dwoo_Compiler $compiler, $value) {
+	return 'sprintf(\'%02d\', ' . $value . ')';
 }
 
 
@@ -277,24 +231,8 @@ function Dwoo_Plugin_debug(Dwoo $dwoo, $variable, $phpFormat = false) {
  * @param	Mixed		$variable
  * @return	String
  */
-function Dwoo_Plugin_firebug(Dwoo $dwoo, $variable) {
-	TodoyuDebug::printInFirebug($variable);
-}
-
-
-
-/**
- * Return odd / even by given index
- *
- * @package		Todoyu
- * @subpackage 	Template
- *
- * @param	Dwoo		$dwoo
- * @param	Integer		$index
- * @return	String
- */
-function Dwoo_Plugin_odd_even(Dwoo $dwoo, $index) {
-	return $index % 2 ? 'odd' : 'even';
+function Dwoo_Plugin_firebug_compile(Dwoo_Compiler $compiler, $variable) {
+	return 'TodoyuDebug::printInFirebug(' . $variable . ')';
 }
 
 
@@ -349,10 +287,8 @@ function Dwoo_Plugin_linkUrls_compile(Dwoo_Compiler $compiler, $text) {
  * @param	String	$text
  * @return	String
  */
-function Dwoo_Plugin_substituteLinkableElements(Dwoo $dwoo, $text) {
-	$text	= TodoyuString::substituteLinkableElements($text);
-
-	return $text;
+function Dwoo_Plugin_substituteLinkableElements_compile(Dwoo_Compiler $compiler, $text) {
+	return 'TodoyuString::substituteLinkableElements(' . $text . ')';
 }
 
 
@@ -505,16 +441,14 @@ function Dwoo_Plugin_isInternal_compile(Dwoo_Compiler $compiler) {
 /**
  * Subtract given subtrahend from given minuend
  *
+ * @todo	Too simple, can this get removed?
  * @param	Dwoo		$compiler
  * @param	Mixed		$minuend
  * @param	Mixed		$subtrahend
  * @return	Integer							difference
  */
-function Dwoo_Plugin_subtract(Dwoo $dwoo, $minuend, $subtrahend) {
-	$minuend	= floatval($minuend);
-	$subtrahend	= floatval($subtrahend);
-
-	return ($minuend - $subtrahend);
+function Dwoo_Plugin_subtract(Dwoo_Compiler $compiler, $minuend, $subtrahend) {
+	return '(floatval(' . $minuend . ')-floatval(' . $subtrahend . '))';
 }
 
 

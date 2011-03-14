@@ -32,6 +32,11 @@ class TodoyuStaticRecords {
 			'label'		=> 'iso_alpha3',
 			'locale'	=> 'core.static_country'
 		),
+		'country_zone' => array(
+			'value'		=> 'id',
+			'label'		=> 'iso_alpha3_country',
+			'locale'	=> 'core.static_country_zone'
+		),
 		'currency'	=> array(
 			'value'		=> 'id',
 			'label'		=> 'code',
@@ -304,10 +309,12 @@ class TodoyuStaticRecords {
 		$countryZones	= self::getCountryZones($idCountry);
 		$options		= array();
 
+		TodoyuDebug::printInFireBug($countryZones, 'cz');
+
 		foreach($countryZones as $countryZone) {
 			$options[] = array(
 				'value'	=> $countryZone['id'],
-				'label'	=> self::getLabel('core.static_country_zone', $countryZone['iso_alpha3_country'] . '.' . $countryZone['code'])
+				'label'	=> self::getLabel('country_zone', $countryZone['iso_alpha3_country'] . '.' . $countryZone['code'])
 			);
 		}
 

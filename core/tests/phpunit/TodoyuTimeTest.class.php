@@ -160,14 +160,14 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testString2, $timeString2);
 	}
 
-	public function testSec2time() {
-		$seconds	= (14*3600) + (33*60) + (29); // 14:33:29
-		$testString	= '14:33:29';
-
-		$timeString	= TodoyuTime::sec2time($seconds);
-
-		$this->assertEquals($testString, $timeString);
-	}
+//	public function testSec2time() {
+//		$seconds	= (14*3600) + (33*60) + (29); // 14:33:29
+//		$testString	= '14:33:29';
+//
+//		$timeString	= TodoyuTime::sec2time($seconds);
+//
+//		$this->assertEquals($testString, $timeString);
+//	}
 
 	public function testFormatTime() {
 		$seconds	= 18*3600 + 24*60 + 35;

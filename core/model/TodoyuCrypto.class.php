@@ -89,6 +89,17 @@ class TodoyuCrypto {
 		return unserialize($decryptedString);
 	}
 
+
+
+	/**
+	 * Generate encryption key
+	 *
+	 * @return	String
+	 */
+	public static function makeEncryptionKey() {
+		return str_replace('=', '', base64_encode(md5(NOW . serialize($_SERVER) . session_id() . rand(1000, 30000))));
+	}
+
 }
 
 ?>

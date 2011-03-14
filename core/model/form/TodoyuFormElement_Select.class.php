@@ -41,8 +41,6 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 		if( ! $this->isLazyInit() ) {
 			$this->initSource();
 		}
-
-		//$this->setValue($this->getValue());
 	}
 
 
@@ -190,7 +188,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 
 				// funcRef is built like class::function
 			case 2:
-				$options	= call_user_func($funcRef, $this);
+				$options = TodoyuFunction::callUserFunction($source['function'], $this);
 				foreach($options as $option) {
 					$this->addOption($option['value'], $option['label'], $option['disabled'], $option['classname']);
 				}
@@ -259,10 +257,6 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 			'disabled'	=> ( $disabled !== true ) ? false : 'disabled',
 			'classname'	=> $className
 		);
-
-//		if( $selected ) {
-//			$this->addSelectedValue($value);
-//		}
 	}
 
 
