@@ -71,7 +71,7 @@ Todoyu.Headlets = {
 	 * @param	{Class}		headletClass
 	 */
 	add: function(name, headletClass) {
-		this.headlets[name] = new headletClass(name);
+		Todoyu.R[name] = this.headlets[name] = new headletClass(name);
 	},
 
 

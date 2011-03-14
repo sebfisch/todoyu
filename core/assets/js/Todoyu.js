@@ -57,10 +57,20 @@ var Todoyu = {
 	 */
 	JsCalFormat: {},
 
-
+	/**
+	 * Extension container
+	 */
 	Ext: {},
 
+	/**
+	 * Core headlets container
+	 */
 	CoreHeadlets: {},
+
+	/**
+	 * Registry
+	 */
+	R: {},
 
 
 	/**
