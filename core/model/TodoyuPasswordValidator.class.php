@@ -125,7 +125,7 @@ class TodoyuPasswordValidator {
 		$length	= intval($config);
 
 		if( strlen($value) < $length ) {
-			$errorMessage = str_replace('%s', $length, Label('LLL:contact.password.minLengthIfNotEmpty'));
+			$errorMessage = str_replace('%s', $length, Label('contact.ext.password.minLengthIfNotEmpty'));
 			$this->addError($errorMessage);
 		}
 	}
@@ -140,7 +140,7 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if( ! $valid ) {
-			$this->addError(Label('contact.password.numbers'));
+			$this->addError(Label('contact.ext.password.numbers'));
 		}
 	}
 
@@ -154,7 +154,7 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if( ! $valid ) {
-			$this->addError(Label('contact.password.lower'));
+			$this->addError(Label('contact.ext.password.lower'));
 		}
 	}
 
@@ -168,7 +168,7 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if( ! $valid ) {
-			$this->addError(Label('contact.password.upper'));
+			$this->addError(Label('contact.ext.password.upper'));
 		}
 	}
 
@@ -182,7 +182,7 @@ class TodoyuPasswordValidator {
 		$valid	= preg_match($pattern, $value);
 
 		if( ! $valid ) {
-			$this->addError(Label('contact.password.special'));
+			$this->addError(Label('contact.ext.password.special'));
 		}
 	}
 
@@ -194,7 +194,7 @@ class TodoyuPasswordValidator {
 	 * @return	Array
 	 */
 	public static function getChecks() {
-		return TodoyuArray::assure(Todoyu::$CONFIG['goodPassword']);
+		return TodoyuArray::assure(Todoyu::$CONFIG['SETTINGS']['passwordStrength']);
 	}
 
 }

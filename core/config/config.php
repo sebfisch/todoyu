@@ -85,7 +85,7 @@ TodoyuHookManager::registerHook('core', 'requestVars', 'TodoyuAuth::hookRedirect
 TodoyuLabelManager::addCustomPath('core', 'core');
 
 	// Setup password requirements
-Todoyu::$CONFIG['goodPassword'] = array(
+Todoyu::$CONFIG['SETTINGS']['passwordStrength'] = array(
 	'minLength'			=> 8,
 	'hasLowerCase'		=> true,
 	'hasUpperCase'		=> true,

@@ -37,6 +37,7 @@ if( Todoyu::$CONFIG['INIT'] ) {
 TodoyuExtensions::addAllExtensionAutoloadPaths();
 
 	// Custom config overrides
+require_once( PATH_LOCALCONF . '/settings.php');
 require_once( PATH_LOCALCONF . '/override.php');
 
 ?>

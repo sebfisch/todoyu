@@ -319,7 +319,7 @@ class TodoyuString {
 	 * @return String
 	 */
 	public static function generateGoodPassword() {
-		$config		= Todoyu::$CONFIG['goodPassword'];
+		$config		= Todoyu::$CONFIG['SETTINGS']['passwordStrength'];
 		$validator	= new TodoyuPasswordValidator();
 
 		do {
@@ -747,6 +747,37 @@ class TodoyuString {
 	private static function escapeFunctionInJSON($string) {
 		return str_replace('\\"','\"',substr($string[0],1,-1));
 	}
+
+
+
+	/**
+	 * Convert a variable to it's string representation
+	 *
+	 * @param	Mixed		$var
+	 * @return	String
+	 */
+	public static function toString($var) {
+		if( is_bool($var) ) {
+			return $var ? 'true' : 'false';
+		} elseif( is_string($var) ) {
+			return '\'' . $var . '\'';
+		} elseif( is_numeric($var) ) {
+			return $var;
+		} elseif( is_array($var) ) {
+			$tmp	= 'array(';
+			$items	= array();
+			foreach($var as $key => $value) {
+				$items[$key] = self::toString($value);
+			}
+			$tmp	.= implode(',', $items);
+			$tmp	.= ')';
+
+			return $tmp;
+		} else {
+			return '';
+		}
+	}
+
 }
 
 ?>

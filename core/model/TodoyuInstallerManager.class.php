@@ -497,15 +497,8 @@ class TodoyuInstallerManager {
 	 *
 	 * @param	Array		$config
 	 */
-	public static function saveSystemConfig(array $config, $generateEncryptionKey = true) {
-		$file	= TodoyuFileManager::pathAbsolute('config/system.php');
-		$tmpl	= 'install/view/configs/system.php.tmpl';
-
-		if( $generateEncryptionKey ) {
-			$config['encryptionKey'] = self::makeEncryptionKey();
-		}
-
-		TodoyuFileManager::saveTemplatedFile($file, $tmpl, $config, true);
+	public static function saveSystemConfig(array $config) {
+		TodoyuConfigManager::saveSystemConfigConfig($config, true);
 	}
 
 
@@ -549,17 +542,6 @@ class TodoyuInstallerManager {
 	 */
 	public static function importDemoData() {
 		self::importSqlFromFile('install/db/demo_data.sql');
-	}
-
-
-
-	/**
-	 * Generate encryption key
-	 *
-	 * @return	String
-	 */
-	private static function makeEncryptionKey() {
-		return str_replace('=', '', base64_encode(md5(NOW . serialize($_SERVER) . session_id() . rand(1000, 30000))));
 	}
 
 

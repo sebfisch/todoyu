@@ -1,5 +1,4 @@
-
-
+<?php
 /****************************************************************************
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
@@ -19,9 +18,9 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu::$CONFIG['SYSTEM']['name'] 		= '{addslashes($name)}';
-Todoyu::$CONFIG['SYSTEM']['email']		= '{addslashes($email)}';
-Todoyu::$CONFIG['SYSTEM']['locale']		= '{$locale}';
-Todoyu::$CONFIG['SYSTEM']['timezone']	= '{$timezone}';
+	// ****************************************************************************
+	// ATTENTION - TODOYU MANAGED FILE
+	// THIS FILE IS AUTOMATICALLY UPDATED BY TODOYU
+	// ****************************************************************************
 
-Todoyu::$CONFIG['SYSTEM']['encryptionKey']	= '{$encryptionKey}';
+?>
