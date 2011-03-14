@@ -86,7 +86,7 @@ class TodoyuRenderer {
 
 	/**
 	 * Render content for a iFrame which needs a JavaScript call to finish the action
-	 * The JavaScript commands are automatically executed when iFrame is loaded. This is the same like an ajax onComplete handler
+	 * The JavaScript commands are automatically executed when iFrame is loaded. This is the same like an AJAX onComplete handler
 	 *
 	 * @param	String		$javaScriptCommands
 	 * @return	String

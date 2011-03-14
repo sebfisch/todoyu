@@ -214,7 +214,7 @@ class TodoyuAuth {
 
 
 	/**
-	 * Send not logged in message for ajax requests
+	 * Send not logged in message for AJAX requests
 	 *
 	 * @param	Array		$requestVars
 	 * @param	Array		$originalRequestVars
@@ -255,7 +255,7 @@ class TodoyuAuth {
 
 
 	/**
-	 * Send header to inform the user that the ajax request failed because of logout
+	 * Send header to inform the user that the AJAX request failed because of logout
 	 */
 	private static function sendNotLoggedInHeader() {
 		TodoyuHeader::sendTodoyuHeader('notLoggedIn', 1);

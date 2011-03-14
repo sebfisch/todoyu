@@ -124,7 +124,7 @@ todoyu 2.0.4 - released 2010-09-22
 	* Bugfix: Added own RTE save functions which prevent js errors on invalid instances
 	* Bugfix: Change for active and deleted flag on login, even if username/password matches
 	* Bugfix: Only strip slashes when magic_quotes is enables
-	* Bugfix: Prevent ajax loader icon animations if not available (caused js error on login)
+	* Bugfix: Prevent AJAX loader icon animations if not available (caused js error on login)
 	* Bugfix: extractHeadersFromString() works now correctly
 	* Bugfix: Added cleanRTEText() to handle preformatted text from email bodies
 	* Bugfix: Prevent 60 minutes in timePart array after rounding up
@@ -145,7 +145,7 @@ todoyu 2.0.4 - released 2010-09-22
 	* Changed: Renamed TodoyuHeader::sendHeaderXXX() to TodoyuHeader::sendTypeXXX() to send content type of response
 	* Change: restrictInternal dwoo plugin allows access for admin anyway
 	* Changed: Defined a list of valid elements for RTE instead only invalid elements
-	* Changed: Added hook which sends info if an ajax request was send in not-logged-in status
+	* Changed: Added hook which sends info if an AJAX request was send in not-logged-in status
 	* Changed: Removed beta update code
 	* Added: New project and task date filters
 	* Added: New calendar functions for better timezone support
@@ -183,7 +183,7 @@ todoyu 2.0.3 - released 2010-08-11
 	* Changed: Unified naming of hooks (first step)
 	* Changed: Support locking for all types. Check for all types for locking where implemented
 	* Changed: Container is locked when it contains locked subtasks
-	* Changed: Send notLoggedIn info with notification instead of action not found when not logged in anymore (just for ajax requests)
+	* Changed: Send notLoggedIn info with notification instead of action not found when not logged in anymore (just for AJAX requests)
 	* Changed: FormElement_DateTime works now, if just a date was entered without time info
     * Changed: Unified code style
     * Changed: PATH_WEB constant can be overridden with PATH_WEB_OVERRIDE if defined before
@@ -264,7 +264,7 @@ todoyu 2.0.1 - released 2010-06-16
 	* Bugfix: Undefined conditions in search
 	* Bugfix: PHP error in renderResults() because of unchecked parameters
 	* Bugfix: Use only one single function to prepare task defaults for saving
-	* Bugfix: Uninstall tinyMCE instances on ajax reload to prevent ghost instances
+	* Bugfix: Uninstall tinyMCE instances on AJAX reload to prevent ghost instances
 	* Bugfix: getStorageData was not used for subforms. Works now recursive over all elements
 	* Bugfix: Check if an extension is available before using it (if not a dependency)
 	* Bugfix: UTF-8 problem in croatian calendar language file in javascript
@@ -416,7 +416,7 @@ todoyu 2.0.0-rc1 - released 2010-01-29
 	* Changed: Clear and consistent content structure (splitted up tabs and content)
 	* Changed: Fixed calendar event display/listing
 	* Changed: Clean handling of task info icons
-	* Changed: Removed asynchronous ajax requests for faster UI
+	* Changed: Removed asynchronous AJAX requests for faster UI
 	* Changed: Installer works properly, finds missing tables, missing columns, changed columns
 	* Changed: Projectlist is now a simple and superfast list, remove tree support
 	* Changed: Completed translation for all (?) labels used in todoyu

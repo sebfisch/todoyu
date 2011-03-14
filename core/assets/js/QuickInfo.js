@@ -496,7 +496,7 @@ Todoyu.QuickInfo = {
 
 
 	/**
-	 * Show quickinfo after loaded by ajax. Add to cache with custom cache time
+	 * Show quickinfo after loaded via AJAX. Add to cache with custom cache time
 	 *
 	 * @method	onQuickInfoLoaded
 	 * @param	{String}			name			Type of element

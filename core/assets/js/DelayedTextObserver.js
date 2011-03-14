@@ -23,7 +23,7 @@
 
 /**
  * Observe a text field delayed
- * Prevents useless ajax requests until the user has finished typing in the textfield
+ * Prevents useless AJAX requests until the user has finished typing in the text field
  */
 Todoyu.DelayedTextObserver = {
 
