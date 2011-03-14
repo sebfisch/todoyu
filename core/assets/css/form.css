@@ -279,6 +279,7 @@ div.fElement {
 		}
 
 		.typeDatabaseRelation .databaseRelation {
+			position: relative;
 			border-top:1px solid #ccc;
 		}
 
@@ -287,14 +288,13 @@ div.fElement {
 		}
 
 		.typeDatabaseRelation .databaseRelation span.additionalStuff {
-			position: relative;
-			float:right;
+			position: absolute;
+			top: 4px;
+			right: 0;
 		}
 
 		.typeDatabaseRelation .databaseRelation span.additionalStuff a.remove {
 			background:url(../img/icons.png) no-repeat 0 -539px;
-			position: absolute;
-			right: 0;
 		}
 
 	button.updateDatabase .icon {

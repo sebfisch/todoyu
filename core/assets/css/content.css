@@ -49,8 +49,6 @@ span.iconLarge {
 	margin-bottom:7px;
 }
 
-
-
 /* -----------------
 	Listings
    -----------------*/
@@ -86,6 +84,14 @@ li.listItem a.editableItem {
 /* -----------------
 	Box
    -----------------*/
+.infoBoxOuter {
+	padding:7px;
+	background-color:#eee;
+}
+.infoBoxOuter.edit form {
+	margin:-7px;
+}
+
 div.infoBox {
 	margin-bottom:5px;
 	border:1px solid #e1e1e1;
