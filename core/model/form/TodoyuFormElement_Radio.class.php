@@ -36,9 +36,9 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	function __construct($name, TodoyuFieldset $fieldset, array $config  = array()) {
 		parent::__construct('radio', $name, $fieldset, $config);
 
-		if( ! $this->isLazyInit() ) {
-			$this->init();
-		}
+//		if( ! $this->isLazyInit() ) {
+//			$this->init();
+//		}
 	}
 
 
@@ -82,7 +82,6 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 * @param	Array		$source
 	 */
 	protected function initSourceList(array $source) {
-
 		if( is_array($source['option']) ) {
 			foreach($source['option'] as $option) {
 				$this->addOption($option['value'], $option['label']);
@@ -189,13 +188,13 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	public function addOption($value, $label, $selected = false, $disabled = false) {
 		$this->config['options'][] = array(
 			'value'		=> $value,
-			'label'		=> TodoyuString::getLabel($label),
+			'label'		=> label($label), //TodoyuString::getLabel($label),
 			'disabled'	=> $disabled
 		);
 
-		if( $selected ) {
-			$this->addSelectedValue($value);
-		}
+//		if( $selected ) {
+//			$this->addSelectedValue($value);
+//		}
 	}
 
 
