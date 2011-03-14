@@ -245,6 +245,7 @@ class TodoyuRecordManager {
 	 *
 	 * @param	String		$table
 	 * @param	Integer		$idRecord
+	 * @return	Boolean
 	 */
 	public static function deleteRecord($table, $idRecord) {
 		$idRecord	= intval($idRecord);
@@ -252,7 +253,7 @@ class TodoyuRecordManager {
 			'deleted'	=> 1
 		);
 
-		self::updateRecord($table, $idRecord, $data);
+		return self::updateRecord($table, $idRecord, $data);
 	}
 
 

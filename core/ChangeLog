@@ -29,6 +29,7 @@ core 2.1.0 - not released yet
 	* Changed: TodoyuPanelWidget::renderContent() only renders the content, parent class handles full render process
 
 core 2.0.8 - not released yet
+	* Bugfix: Deleted persons were shown in persons list of role
 	* Feature: Added dwoo plugin: addslashes, escaped installer-written strings inside config file
 	* Feature: Text form fields are trimmed before saving
 	* Bugfix: file downloads fail with internet explorer and https connection
