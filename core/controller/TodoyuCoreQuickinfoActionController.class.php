@@ -34,7 +34,9 @@ class TodoyuCoreQuickinfoActionController extends TodoyuActionController {
 	 * @return	String
 	 */
 	public function getAction(array $params) {
+			// Get name of quickinfo element, e.g. 'person'
 		$name	= trim($params['quickinfo']);
+			// Get element item ID
 		$element= trim($params['element']);
 
 		$quickinfo	= new TodoyuQuickinfo($name, $element);

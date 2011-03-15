@@ -48,6 +48,9 @@ class TodoyuQuickinfo {
 	/**
 	 * Create a new quickinfo object
 	 * Call all registered functions to let them add items
+	 *
+	 * @param	String	$type			element type, e.g. 'person'
+	 * @param	String	$element		ID of element item
 	 */
 	public function __construct($type, $element) {
 		$this->type		= $type;
