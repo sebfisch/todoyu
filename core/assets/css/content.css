@@ -99,6 +99,7 @@ div.infoBox {
 
 div.infoBox h4 {
 	margin:0;
+	font-weight: bold;
 }
 
 div.infoBox div.content {
