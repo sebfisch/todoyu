@@ -8,7 +8,7 @@
 	<label index="locale.text">Bitte wählen Sie eine Sprache für den Installationsvorgang:</label>
 	<label index="license.eula">Benutzer-Vereinbarung für todoyu</label>
 	<label index="license.lgpl">Folgende Dritt-Bibliotheken sind unter LGPL v2.1 lizensiert</label>
-	<label index="license.title">todoyu Benutzerlizenz</label>
+	<label index="license.title">Benutzer-Vereinbarung</label>
 	<label index="license.button">Ich stimme zu, todoyu jetzt installieren</label>
 	<label index="license.text">Willkommen zur Installation von todoyu!</label>
 	<label index="servercheck.title">Server überprüfen</label>
