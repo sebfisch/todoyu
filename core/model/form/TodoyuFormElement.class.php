@@ -258,6 +258,17 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 	/**
+	 * Set required flag
+	 *
+	 * @param	Boolean		$required
+	 */
+	public function setRequired($required = true) {
+		$this->setAttribute('required', $required?true:false);
+	}
+
+
+
+	/**
 	 * Remove option with given value from options array of config (of <select> element)
 	 *
 	 * @param	Mixed	$value
