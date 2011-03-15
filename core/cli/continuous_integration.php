@@ -70,6 +70,7 @@ TodoyuCache::flush();
 
 	// Install unitTest extension
 TodoyuSysmanagerExtInstaller::installExtension('unittest');
+TodoyuSysmanagerExtInstaller::installExtension('currency');
 TodoyuSysmanagerExtInstaller::installExtension('projectbilling');
 
 echo "todoyu setup done";
