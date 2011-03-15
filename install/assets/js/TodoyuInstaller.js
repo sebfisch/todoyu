@@ -95,7 +95,7 @@ Todoyu.Installer = {
 			$$('#database option').each(function(dbOption){
 				if ( dbOption.value == newDbName) {
 					$('error-newnameTaken').show();
-					$('submit').hide();
+					$('next').hide();
 				}
 			});
 		} else {
