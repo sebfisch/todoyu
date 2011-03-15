@@ -19,8 +19,6 @@
 *****************************************************************************/
 
 
-require_once(PATH_CORE . '/TodoyuArray.class.php');
-
 /**
  * Test for: TodoyuArray
  *
