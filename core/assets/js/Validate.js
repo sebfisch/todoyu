@@ -57,7 +57,7 @@ Todoyu.Validate = {
 	 * @return	{Boolean}
 	 */
 	IsObjectEmpty: function(obj) {
-		for(key in obj) {
+		for(var key in obj) {
         	return false;
         }
 

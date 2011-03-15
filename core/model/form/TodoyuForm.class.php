@@ -1048,8 +1048,8 @@ class TodoyuForm implements ArrayAccess {
 
 		foreach( $this->hiddenFields as $name => $config ) {
 			$data	= array(
-				'htmlId'	=> self::makeID($name),
-				'htmlName'	=> $config['noWrap'] ? $name : self::makeName($name),
+				'htmlId'	=> $this->makeID($name),
+				'htmlName'	=> $config['noWrap'] ? $name : $this->makeName($name),
 				'value'		=> htmlspecialchars($config['value'], ENT_QUOTES, 'UTF-8')
 			);
 
