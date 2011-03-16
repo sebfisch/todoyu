@@ -128,7 +128,6 @@ class TodoyuRecordManager {
 	 * @return	Array
 	 */
 	public static function getAllRecords($table, $where = 'deleted = 0', $order = 'title') {
-
 		return Todoyu::db()->getArray('*', $table, $where, '', $order);
 	}
 
