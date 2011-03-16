@@ -441,6 +441,25 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertFalse($overlaps5);
 	}
 
+
+	public function testGetWeekend() {
+		$date1		= mktime(0, 0, 0, 3, 16, 2011);
+		$weekend1	= mktime(23, 59, 59, 3, 20, 2011);
+		$test1		= TodoyuTime::getWeekEnd($date1);
+
+		$date2		= mktime(0, 0, 0, 2, 29, 2024);
+		$weekend2	= mktime(23, 59, 59, 3, 3, 2024);
+		$test2		= TodoyuTime::getWeekEnd($date2);
+
+		$date3		= mktime(0, 0, 0, 12, 31, 1984);
+		$weekend3	= mktime(23, 59, 59, 1, 6, 1985);
+		$test3		= TodoyuTime::getWeekEnd($date3);
+
+		$this->assertEquals($weekend1, $test1);
+		$this->assertEquals($weekend2, $test2);
+		$this->assertEquals($weekend3, $test3);
+	}
+
 }
 
 ?>

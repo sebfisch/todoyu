@@ -125,6 +125,7 @@ class TodoyuTime {
 
 	/**
 	 * Get start and end timestamp of every day in the week of the timestamp
+	 * 00:00:00
 	 *
 	 * @param		Integer		$timestamp		Timestamp
 	 * @return 		Integer		Timestamp of beginning of week the given timestamp belongs to
@@ -139,6 +140,7 @@ class TodoyuTime {
 
 	/**
 	 * Get timestamp for the end of the week (last second in the week)
+	 * 23:59:59
 	 *
 	 * @param	Integer		$timestamp
 	 * @return	Integer
@@ -153,6 +155,7 @@ class TodoyuTime {
 
 	/**
 	 * Get timestamp of first day of month
+	 * 00:00:00
 	 *
 	 * @param	Integer	$timestamp
 	 */
