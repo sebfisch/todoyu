@@ -1020,3 +1020,40 @@ INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person
 (17, 1264696599, 1269513378, 1, 0, '', '098f6bcd4621d373cade4e832627b4f6', '', 0, 0, 'Richard', 'Wagner', 'RIWA', 'm', '', '1813-05-22'),
 (18, 1264696672, 1269513070, 1, 0, 'staff', '5f4dcc3b5aa765d61d8327deb882cf99', 'williworker@todoyu.example.com', 0, 1, 'Willi', 'Worker', 'WiWo', 'm', '', '1970-01-09'),
 (19, 1264696709, 1269513322, 1, 0, '', '', '', 0, 0, 'Johannes', 'Brahms', 'JOBR2', 'm', '', '1833-05-07');
+
+-- --------------------------------------------------------
+
+--
+-- Raise sample data timestamps
+--
+
+-- events
+UPDATE ext_calendar_event SET date_create	= date_create + 3715200 WHERE 1;
+UPDATE ext_calendar_event SET date_update	= date_update + 3715200 WHERE 1;
+UPDATE ext_calendar_event SET date_start	= date_start + 3715200 WHERE 1;
+UPDATE ext_calendar_event SET date_end		= date_end + 3715200 WHERE 1;
+
+-- projects
+UPDATE ext_project_project SET date_create		= date_create + 3715200 WHERE 1;
+UPDATE ext_project_project SET date_update		= date_update + 3715200 WHERE 1;
+UPDATE ext_project_project SET date_start		= date_start + 3715200 WHERE 1;
+UPDATE ext_project_project SET date_end			= date_end + 3715200 WHERE 1;
+UPDATE ext_project_project SET date_deadline	= date_deadline + 3715200 WHERE 1;
+
+-- tasks
+UPDATE ext_project_task SET date_create		= date_create + 3715200 WHERE 1;
+UPDATE ext_project_task SET date_update		= date_update + 3715200 WHERE 1;
+UPDATE ext_project_task SET date_start		= date_start + 3715200 WHERE 1;
+UPDATE ext_project_task SET date_end		= date_end + 3715200 WHERE 1;
+UPDATE ext_project_task SET date_deadline	= date_deadline + 3715200 WHERE 1;
+
+-- comments, feedbacks
+UPDATE ext_comment_comment SET date_create	= date_create + 3715200 WHERE 1;
+UPDATE ext_comment_comment SET date_update	= date_update + 3715200 WHERE 1;
+UPDATE ext_comment_feedback SET date_create	= date_create + 3715200 WHERE 1;
+UPDATE ext_comment_feedback SET date_update	= date_update + 3715200 WHERE 1;
+
+-- timetracks
+UPDATE ext_timetracking_track SET date_create		= date_create + 3715200 WHERE 1;
+UPDATE ext_timetracking_track SET date_update		= date_update + 3715200 WHERE 1;
+UPDATE ext_timetracking_track SET date_track		= date_track + 3715200 WHERE 1;
