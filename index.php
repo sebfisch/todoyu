@@ -18,7 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
 	// Measure processing time
 define('TIME_START', microtime(true));
 
