@@ -1,4 +1,0 @@
-	/* add dropshadow for ie */
-button {
-	behavior:url(core/assets/css/compatibility/ie-css3.htc);
-}

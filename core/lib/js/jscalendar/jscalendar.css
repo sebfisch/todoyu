@@ -12,7 +12,7 @@ div.calendar, div.calendar table {
 	color:#000;
 	cursor:default;
 	font-family:tahoma,verdana,sans-serif;
-	background:#fff url(../../../assets/img/bg-headers.png) no-repeat center -215px;
+	background:#fff url(../../../asset/img/bg-headers.png) no-repeat center -215px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -89,7 +89,7 @@ div.calendar thead .hilite { /* How do the buttons in header appear when hover *
 }
 
 div.calendar thead .active { /* Active (pressed) buttons in header */
-	
+
 }
 
 /* The body part -- contains all the days in month. */
@@ -129,7 +129,7 @@ div.calendar tbody td.hilite { /* Hovered cells <TD> */
 }
 
 div.calendar tbody td.active { /* Active (pressed) cells <TD> */
-	
+
 }
 
 div.calendar tbody td.selected { /* Cell showing today date */

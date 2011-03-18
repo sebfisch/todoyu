@@ -52,7 +52,7 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 			'mode'				=> 'exact',
 			'elements'			=> $this->getHtmlID(),
 			'theme'				=> 'simple',
-			'content_css'		=> 'core/assets/css/tinymce.css',
+			'content_css'		=> 'core/asset/css/tinymce.css',
 			'valid_elements'	=> 'strong,em,p,br,u,ol,ul,li,a[href],pre,span[style]'
 		);
 

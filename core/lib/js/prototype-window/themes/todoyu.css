@@ -205,7 +205,7 @@
 			float:left;
 		}
 			.table_window div.notification form div.left span.icon {
-				background:url('../../../../assets/img/notify.png') 0 -96px no-repeat;
+				background:url('../../../../asset/img/notify.png') 0 -96px no-repeat;
 				margin:20px 0 0 20px;
 			}
 			.table_window div.notification form fieldset.buttons {

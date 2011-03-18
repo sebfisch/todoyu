@@ -120,240 +120,240 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 26
 		),
 		array(
-			'file'		=> 'core/assets/js/Todoyu.js',
+			'file'		=> 'core/asset/js/Todoyu.js',
 			'position'	=> 50
 		),
 		array(
-			'file'		=> 'core/assets/js/Ext.js',
+			'file'		=> 'core/asset/js/Ext.js',
 			'position'	=> 51
 		),
 		array(
-			'file'		=> 'core/assets/js/Autocompleter.js',
+			'file'		=> 'core/asset/js/Autocompleter.js',
 			'position'	=> 51
 		),
 		array(
-			'file'		=> 'core/assets/js/Ui.js',
+			'file'		=> 'core/asset/js/Ui.js',
 			'position'	=> 52
 		),
 		array(
-			'file'		=> 'core/assets/js/Notification.js',
+			'file'		=> 'core/asset/js/Notification.js',
 			'position'	=> 53
 		),
 		array(
-			'file'		=> 'core/assets/js/Popup.js',
+			'file'		=> 'core/asset/js/Popup.js',
 			'position'	=> 54
 		),
 		array(
-			'file'		=> 'core/assets/js/Popups.js',
+			'file'		=> 'core/asset/js/Popups.js',
 			'position'	=> 54
 		),
 		array(
-			'file'		=> 'core/assets/js/QuickInfo.js',
+			'file'		=> 'core/asset/js/QuickInfo.js',
 			'position'	=> 55
 		),
 		array(
-			'file'		=> 'core/assets/js/SortablePanelList.js',
+			'file'		=> 'core/asset/js/SortablePanelList.js',
 			'position'	=> 55
 		),
 		array(
-			'file'		=> 'core/assets/js/Ajax.js',
+			'file'		=> 'core/asset/js/Ajax.js',
 			'position'	=> 56
 		),
 		array(
-			'file'		=> 'core/assets/js/AjaxResponders.js',
+			'file'		=> 'core/asset/js/AjaxResponders.js',
 			'position'	=> 57
 		),
 		array(
-			'file'		=> 'core/assets/js/AjaxReplacer.js',
+			'file'		=> 'core/asset/js/AjaxReplacer.js',
 			'position'	=> 57
 		),
 		array(
-			'file'		=> 'core/assets/js/Helper.js',
+			'file'		=> 'core/asset/js/Helper.js',
 			'position'	=> 58
 		),
 		array(
-			'file'		=> 'core/assets/js/Hook.js',
+			'file'		=> 'core/asset/js/Hook.js',
 			'position'	=> 58
 		),
 		array(
-			'file'		=> 'core/assets/js/Time.js',
+			'file'		=> 'core/asset/js/Time.js',
 			'position'	=> 59
 		),
 		array(
-			'file'		=> 'core/assets/js/DateField.js',
+			'file'		=> 'core/asset/js/DateField.js',
 			'position'	=> 59
 		),
 		array(
-			'file'		=> 'core/assets/js/ContextMenu.js',
+			'file'		=> 'core/asset/js/ContextMenu.js',
 			'position'	=> 60
 		),
 		array(
-			'file'		=> 'core/assets/js/ContextMenuTemplate.js',
+			'file'		=> 'core/asset/js/ContextMenuTemplate.js',
 			'position'	=> 61
 		),
 		array(
-			'file'		=> 'core/assets/js/Tabs.js',
+			'file'		=> 'core/asset/js/Tabs.js',
 			'position'	=> 62
 		),
 		array(
-			'file'		=> 'core/assets/js/PanelWidget.js',
+			'file'		=> 'core/asset/js/PanelWidget.js',
 			'position'	=> 63
 		),
 		array(
-			'file'		=> 'core/assets/js/Pref.js',
+			'file'		=> 'core/asset/js/Pref.js',
 			'position'	=> 64
 		)	,
 		array(
-			'file'		=> 'core/assets/js/Form.js',
+			'file'		=> 'core/asset/js/Form.js',
 			'position'	=> 65
 		),
 		array(
-			'file'		=> 'core/assets/js/Validate.js',
+			'file'		=> 'core/asset/js/Validate.js',
 			'position'	=> 66
 		),
 		array(
-			'file'		=> 'core/assets/js/Autocomplete.js',
+			'file'		=> 'core/asset/js/Autocomplete.js',
 			'position'	=> 67
 		),
 		array(
-			'file'		=> 'core/assets/js/TimePicker.js',
+			'file'		=> 'core/asset/js/TimePicker.js',
 			'position'	=> 68
 		),
 		array(
-			'file'		=> 'core/assets/js/Listing.js',
+			'file'		=> 'core/asset/js/Listing.js',
 			'position'	=> 69
 		),
 		array(
-			'file'		=> 'core/assets/js/Cookie.js',
+			'file'		=> 'core/asset/js/Cookie.js',
 			'position'	=> 70
 		),
 		array(
-			'file'		=> 'core/assets/js/DelayedTextObserver.js',
+			'file'		=> 'core/asset/js/DelayedTextObserver.js',
 			'position'	=> 71
 		),
 		array(
-			'file'		=> 'core/assets/js/PanelWidgetStatusSelector.js',
+			'file'		=> 'core/asset/js/PanelWidgetStatusSelector.js',
 			'position'	=> 72
 		),
 		array(
-			'file'		=> 'core/assets/js/LoaderBox.js',
+			'file'		=> 'core/asset/js/LoaderBox.js',
 			'position'	=> 73
 		),
 		array(
-			'file'		=> 'core/assets/js/Highcharts.js',
+			'file'		=> 'core/asset/js/Highcharts.js',
 			'position'	=> 74
 		),
 		array(
-			'file'		=> 'core/assets/js/OverflowWindow.js',
+			'file'		=> 'core/asset/js/OverflowWindow.js',
 			'position'	=> 75
 		),
 		array(
-			'file'		=> 'core/assets/js/Timerange.js',
+			'file'		=> 'core/asset/js/Timerange.js',
 			'position'	=> 76
 		),
 		array(
-			'file'		=> 'core/assets/js/ItemList.js',
+			'file'		=> 'core/asset/js/ItemList.js',
 			'position'	=> 77
 		),
 		array(
-			'file'		=> 'core/assets/js/FieldList.js',
+			'file'		=> 'core/asset/js/FieldList.js',
 			'position'	=> 78
 		),
 		array(
-			'file'		=> 'core/assets/js/SelectMulti.js',
+			'file'		=> 'core/asset/js/SelectMulti.js',
 			'position'	=> 79
 		),
 		array(
-			'file'		=> 'core/assets/js/AutocompleterMulti.js',
+			'file'		=> 'core/asset/js/AutocompleterMulti.js',
 			'position'	=> 80
 		),
 		array(
-			'file'		=> 'core/assets/js/Wizard.js',
+			'file'		=> 'core/asset/js/Wizard.js',
 			'position'	=> 81
 		),
 		array(
-			'file'		=> 'core/assets/js/AutoExtendingList.js',
+			'file'		=> 'core/asset/js/AutoExtendingList.js',
 			'position'	=> 82
 		),
 		array(
-			'file'		=> 'core/assets/js/Headlets.js',
+			'file'		=> 'core/asset/js/Headlets.js',
 			'position'	=> 90
 		),
 		array(
-			'file'		=> 'core/assets/js/Headlet.js',
+			'file'		=> 'core/asset/js/Headlet.js',
 			'position'	=> 90
 		),
 		array(
-			'file'		=> 'core/assets/js/HeadletQuickCreate.js',
+			'file'		=> 'core/asset/js/HeadletQuickCreate.js',
 			'position'	=> 91
 		),
 		array(
-			'file'		=> 'core/assets/js/HeadletAbout.js',
+			'file'		=> 'core/asset/js/HeadletAbout.js',
 			'position'	=> 91
 		),
 		array(
-			'file'		=> 'core/assets/js/HeadletAjaxLoader.js',
+			'file'		=> 'core/asset/js/HeadletAjaxLoader.js',
 			'position'	=> 91
 		),
 		array(
-			'file'		=> 'core/assets/js/PanelWidgetSearchList.js',
+			'file'		=> 'core/asset/js/PanelWidgetSearchList.js',
 			'position'	=> 91
 		)
 	),
 
 	'css' => array(
 		array(
-			'file'		=> 'core/assets/css/base.css',
+			'file'		=> 'core/asset/css/base.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/layout.css',
+			'file'		=> 'core/asset/css/layout.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/notification.css',
+			'file'		=> 'core/asset/css/notification.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/navi.css',
+			'file'		=> 'core/asset/css/navi.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/contextmenu.css',
+			'file'		=> 'core/asset/css/contextmenu.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/form.css',
+			'file'		=> 'core/asset/css/form.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/button.css',
+			'file'		=> 'core/asset/css/button.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/tab.css',
+			'file'		=> 'core/asset/css/tab.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/toppanel.css',
+			'file'		=> 'core/asset/css/toppanel.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/headlet.css',
+			'file'		=> 'core/asset/css/headlet.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/content.css',
+			'file'		=> 'core/asset/css/content.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
@@ -368,74 +368,74 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/timepicker.css',
+			'file'		=> 'core/asset/css/timepicker.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/list.css',
+			'file'		=> 'core/asset/css/list.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/listing.css',
+			'file'		=> 'core/asset/css/listing.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/panel.css',
+			'file'		=> 'core/asset/css/panel.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/sortable-panel-list.css',
+			'file'		=> 'core/asset/css/sortable-panel-list.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/quickinfo.css',
+			'file'		=> 'core/asset/css/quickinfo.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/headlet-ajaxloader.css',
+			'file'		=> 'core/asset/css/headlet-ajaxloader.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/headlet-quickcreate.css',
+			'file'		=> 'core/asset/css/headlet-quickcreate.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/headlet-about.css',
+			'file'		=> 'core/asset/css/headlet-about.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/loader-box.css',
+			'file'		=> 'core/asset/css/loader-box.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/overflow-window.css',
+			'file'		=> 'core/asset/css/overflow-window.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/timerange.css',
+			'file'		=> 'core/asset/css/timerange.css',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/inline-filters.css',
+			'file'		=> 'core/asset/css/inline-filters.css',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/wizard.css',
+			'file'		=> 'core/asset/css/wizard.css',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/assets/css/panelwidget-searchlist.css',
+			'file'		=> 'core/asset/css/panelwidget-searchlist.css',
 			'position'	=> 10
 		)
 	)

@@ -118,7 +118,7 @@ Todoyu.LoaderBox = {
 
 			this.box.insert(new Element('img', {
 				'class': 	'spinner',
-				'src': 		'core/assets/img/ajax-loader-large.gif'
+				'src': 		'core/asset/img/ajax-loader-large.gif'
 			}));
 			this.box.insert(new Element('div', {
 				'class': 'message'
