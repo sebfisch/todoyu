@@ -1,0 +1,9 @@
+todoyu selenium testsuite steps: core
+-------------------------------------
+
+* headlet "about":
+	check presents
+	open/close popup
+	check popup elements, check 3rd party credits
+* headlet "quickcreate":
+	present with all options?
