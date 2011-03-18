@@ -43,6 +43,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 */
 	initialize: function($super, inputField, suggestDiv, url, options) {
 		options	= options	|| {};
+		options.parameters	= options.parameters || '';
 			// Store onComplete in internal property
 		options.onCompleteCustom = Todoyu.getFunction(options.onComplete);
 		delete options.onComplete;
@@ -52,7 +53,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 
 			// Only add callback and default parameters if no action parameter defined (default)
-		if( ! url.toQueryParams().action && (options.parameters.toQueryParams && ! options.parameters.toQueryParams().action) ) {
+		if( ! url.toQueryParams().action && (options.parameters == '' && ! options.parameters.toQueryParams().action) ) {
 			options.parameters	= '&action=update&autocompleter=' + options.acName + '&element=' + $(inputField).id;
 				// Add form name and data
 			options.callback	= this.callbackModifyRequestParams.bind(this);
@@ -176,24 +177,6 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 		if( updateValueField && noUpdate !== true ) {
 			this.setValue(selectedListElement.id);
 		}
-
-
-//		var selectedValue	= selectedListElement.id;
-//		var updateValueField= true;
-//
-//		this.selectedFromList = true;
-//
-//		if( this.options.onSelectCustom ) {
-//			var result = Todoyu.callUserFunction(this.options.onSelectCustom, inputField, this.element, selectedValue, selectedListElement.innerHTML, this);
-//
-//			if( result === false ) {
-//				updateValueField = false;
-//			}
-//		}
-//
-//		if( updateValueField ) {
-//			this.element.setValue(selectedValue);
-//		}
 
 		callOriginal(inputField, selectedListElement);
 	},
