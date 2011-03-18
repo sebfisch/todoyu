@@ -180,10 +180,20 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testHtml2text().
 	 */
 	public function testHtml2text() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$html_1		= '<strong>strong</strong>';
+		$expect_1	= 'strong';
+		$html_2		= 'line1<br>line2<br />line3';
+		$expect_2	= "line1\nline2\nline3";
+		$html_3		= '<ul><li>繁体字</li></ul>';
+		$expect_3	= "繁体字";
+
+		$result_1	= TodoyuString::html2text($html_1);
+		$result_2	= TodoyuString::html2text($html_2, true);
+		$result_3	= TodoyuString::html2text($html_3);
+
+		$this->assertEquals($expect_1, $result_1);
+		$this->assertEquals($expect_2, $result_2);
+		$this->assertEquals($expect_3, $result_3);
 	}
 
 

@@ -82,29 +82,22 @@ class TodoyuNumericTest extends PHPUnit_Framework_TestCase {
 
 
 	/**
-	 * Test TodoyuNumeric::getIntVersion
-	 *
-	 * @todo Implement testGetIntVersion().
-	 */
-	public function testGetIntVersion() {		
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
-	}
-
-
-
-	/**
 	 * Test TodoyuNumeric::percent($percent, $value)
 	 *
 	 * @todo Implement testPercent().
 	 */
 	public function testPercent() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		  'This test has not been implemented yet.'
-		);
+		$result_1	= TodoyuNumeric::percent(100, 47.4);
+		$result_2	= TodoyuNumeric::percent(100, 101);
+		$result_3	= TodoyuNumeric::percent(100, 0.5, true);
+		$result_4	= TodoyuNumeric::percent(100, 0.5);
+		$result_5	= TodoyuNumeric::percent(100, 0.001, true);
+
+		$this->assertEquals(47.4, $result_1);
+		$this->assertEquals(101.0, $result_2);
+		$this->assertEquals(50.0, $result_3);
+		$this->assertEquals(0.5, $result_4);
+		$this->assertEquals(0.1, $result_5);
 	}
 
 

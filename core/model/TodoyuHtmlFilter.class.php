@@ -47,7 +47,7 @@ class TodoyuHtmlFilter {
 		if( trim($html) === '' ) {
 			return '';
 		}
-		
+
 		$badTags	= self::getBadTags();
 
 		foreach($badTags as $badTag) {
@@ -61,69 +61,6 @@ class TodoyuHtmlFilter {
 		}
 
 		return $html;
-	}
-
-
-
-	/**
-	 * Split text into chunks of given max. length, preserving HTML entities
-	 *
-	 * @todo	Find a working alternative. This functions split wherever it wants (ex: hrefs)
-	 * @param	String	$string
-	 * @param	Integer	$maxLen
-	 * @return	String
-	 */
-	public static function entitySafeLimitWordsLen($string, $maxLen = 45) {
-		$replace= array(
-			"\n"	=> "\n ",
-			'><'	=> '> <'
-		);
-		$string	= str_replace(array_keys($replace), array_values($replace), $string);
-		$words	= explode(' ', $string);
-
-		$out	= '';
-		foreach($words as $word) {
-//			$out .= chunk_split($word, $maxLen, ' ') .  ' ';
-			$out .= self::htmlSafeChunkSplit($word, $maxLen, ' ') .  ' ';
-		}
-
-		return $out;
-	}
-
-
-
-	/**
-	 * Split string into chunks of given size, keeping HTML tags and entities intact
-	 *
-	 * @param	String		$html
-	 * @param	Integer		$size
-	 * @param	String		$delimiter
-	 * @return	String
-	 */
-	private static function htmlSafeChunkSplit($html, $size, $delimiter) {
-		$pos	= 0;
-		$out	= '';
-
-		for($i = 0; $i < strlen($html); $i++) {
-			if( $pos >= $size && ! $unsafe ) {
-				$out	.= $delimiter;
-				$unsafe	= 0;
-				$pos	= 0;
-			}
-
-			$c	= substr($html, $i, 1);
-
-			if( strstr('&<', $c) !== false ) {
-				$unsafe	= 1;
-			} elseif( strstr(';>', $c) !== false ) {
-				$unsafe	= 0;
-			}
-
-			$out	.= $c;
-			$pos++;
-		}
-
-		return $out;
 	}
 
 

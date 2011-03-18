@@ -73,24 +73,6 @@ class TodoyuHtmlFilterTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expectIframe, $cleanIframe);
 	}
 
-
-
-
-
-	/**
-	 * Test TodoyuHtmlFilter::entitySafeLimitWordsLen($string, $maxLen = 45)
-	 * @todo Implement testEntitySafeLimitWordsLen().
-	 */
-	public function testGetSubstrHTML() {
-//		$html	= '<strong>sdfkljasdf</strong><ul><li>item</li><li>other item</li></ul><em>sjdfskjdf</em>';
-//		$substr	= TodoyuHtmlFilter::entitySafeLimitWordsLen($html, 20);
-
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-		 'This test has not been implemented yet.'
-		);
-	}
-
 }
 
 ?>

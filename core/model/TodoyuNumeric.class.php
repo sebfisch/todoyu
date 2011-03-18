@@ -87,61 +87,14 @@ class TodoyuNumeric {
 
 
 	/**
-	 * Get integer representation of version string
-	 * Borrowed from TYPO3
-	 *
-	 * @param	String		$version
-	 * @return	Integer
-	 */
-	public static function getIntVersion($version) {
-		if(!preg_match('/^(\d+)\.(\d+)\.(\d+)(?:(?:\.|-(rc|dev|beta|alpha))(\d+)?)?$/', $version, $matches)) {
-			return false;
-		}
-
-		// Increase value for sub versions
-		if( ! empty($matches[4]) ) {
-			switch($matches[4]) {
-				case 'rc':
-					$added = 30;
-					break;
-
-				case 'beta':
-					$added = 20;
-					break;
-
-				case 'alpha':
-					$added = 10;
-					break;
-
-				case 'dev':
-					$added = 0;
-					break;
-			}
-		} else {
-			$added = 50; // for final
-		}
-			// Add version of subversion (ex: alpha3 = +3)
-		if( ! empty($matches[5]) ) {
-			$added = $added + $matches[5];
-		}
-
-		return $matches[1] * 1000000 + $matches[2] * 10000 + $matches[3] * 100 + $added;
-	}
-
-
-
-	/**
 	 * Check whether given version is same or newer than version to be compared to
 	 *
-	 * @param	String		$version
+	 * @param	String		$actualVersion
 	 * @param	String		$compareTo
 	 * @return	Boolean
 	 */
-	public static function isVersionAtLeast($version, $atLeastVersion) {
-		$intVersion			= self::getIntVersion($version);
-		$intAtLeastVersion	= self::getIntVersion($atLeastVersion);
-
-		return $intVersion >= $intAtLeastVersion;
+	public static function isVersionAtLeast($actualVersion, $atLeastVersion) {
+		return version_compare($actualVersion, $atLeastVersion) >= 0;
 	}
 
 
