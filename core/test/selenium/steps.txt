@@ -1,6 +1,7 @@
 todoyu selenium testsuite steps: core
 -------------------------------------
 
+* durationpicker working? (tested inside quicktask form)
 * headlet "about":
 	check presents
 	open/close popup
