@@ -348,7 +348,7 @@ function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '') {
  * @return	String
  */
 function Dwoo_Plugin_Title_compile(Dwoo_Compiler $compiler, $title) {
-	return '\'<h5>\' . htmlentities(TodoyuString::getLabel(' . $title . '), ENT_QUOTES, \'UTF-8\') . \'</h5>\'';
+	return '\'<h5>\' . htmlentities(Label(' . $title . '), ENT_QUOTES, \'UTF-8\') . \'</h5>\'';
 }
 
 

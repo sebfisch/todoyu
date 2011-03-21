@@ -71,8 +71,14 @@ class TodoyuFileManager {
 	 * @param	String		$absolutePath
 	 * @return 	String
 	 */
-	public static function pathWeb($absolutePath) {
-		return str_replace('\\', '/', str_replace(PATH . DIR_SEP, '', self::pathAbsolute($absolutePath)));
+	public static function pathWeb($absolutePath, $prependDomain = false) {
+		$pathWeb	= str_replace('\\', '/', str_replace(PATH . DIR_SEP, '', self::pathAbsolute($absolutePath)));
+
+		if( $prependDomain ) {
+			$pathWeb = TODOYU_URL . '/' . $pathWeb;
+		}
+
+		return $pathWeb;
 	}
 
 

@@ -36,10 +36,7 @@ class TodoyuFormManager {
 	 * @return	TodoyuForm
 	 */
 	public static function getForm($xmlPath, $idRecord = 0, array $params = array(), $preParse = array()) {
-		$form	= new TodoyuForm($xmlPath, $preParse);
-
-		$form->setRecordID($idRecord);
-
+		$form	= new TodoyuForm($xmlPath, $preParse, $idRecord);
 		$form	= TodoyuFormHook::callBuildForm($xmlPath, $form, $idRecord, $params);
 
 		return $form;
