@@ -8,7 +8,6 @@ DROP TABLE `system_log` ;
 -- Rename worktype to activity --
 RENAME TABLE `ext_project_worktype` TO `ext_project_activity` ;
 ALTER TABLE `ext_project_task` CHANGE `id_worktype` `id_activity` SMALLINT( 6 ) NOT NULL DEFAULT '0';
-ALTER TABLE `ext_project_taskpreset` CHANGE `id_worktype` `id_activity` SMALLINT( 6 ) NOT NULL DEFAULT '0';
 ALTER TABLE `ext_projectbilling_rate` CHANGE `id_worktype` `id_activity` SMALLINT( 6 ) UNSIGNED NOT NULL;
 
 -- container status --- (open)
@@ -22,15 +21,3 @@ UPDATE `ext_contact_contactinfotype` SET `title` = REPLACE(`title`, 'LLL:contact
 DROP TABLE `system_panelwidget`;
 
 ALTER TABLE `ext_timetracking_track` CHANGE `comment` `comment` VARCHAR( 250 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
-
---
--- Table structure for table `system_scheduler`
---
-CREATE TABLE `system_scheduler` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date_execute` int(11) NOT NULL,
-  `class` varchar(100) NOT NULL,
-  `success` tinyint(1) NOT NULL,
-  `message` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
