@@ -339,7 +339,7 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * @todo Implement testFromSimpleXml().
 	 */
 	public function testFromSimpleXml() {
-		$simpleXml	= simplexml_load_file(PATH_CORE . '/tests/files/xml.xml');
+		$simpleXml	= simplexml_load_file(PATH_CORE . '/test/files/xml.xml');
 
 		$array		= TodoyuArray::fromSimpleXml($simpleXml);
 

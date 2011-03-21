@@ -180,27 +180,13 @@ class TodoyuTime {
 
 
 	/**
-	 * Get timestamp of last of month of given timestamp
-	 *
-	 * @param	Integer		$timestamp
-	 * @return	Integer
-	 */
-	public static function getLastDayOfMonth($timestamp = NOW) {
-		$range  = self::getMonthRange($timestamp);
-
-		return $range['end'];
-	}
-
-
-
-	/**
 	 * Get day-number of last day of month of given timestamp
 	 *
 	 * @param	Integer		$timestamp
 	 * @return	Integer
 	 */
-	public static function getNumberOfLastDayOfMonth($timestamp = NOW) {
-		$timestampLastDay   = self::getLastDayOfMonth($timestamp);
+	public static function getLastDayNumberInMonth($timestamp) {
+		$timestampLastDay   = self::getMonthEnd($timestamp);
 
 		return date('j', $timestampLastDay);
 	}
@@ -524,18 +510,20 @@ class TodoyuTime {
 	/**
 	 * Get (timestamps at 00:00 of) days inside given timespan
 	 *
-	 * @param	Integer		$from
-	 * @param	Integer		$until
+	 * @param	Integer		$dateStart
+	 * @param	Integer		$dateEnd
 	 * @return	Array
 	 */
-	public static function getDaysInTimespan($from, $until) {
-		$timestamp	= self::getStartOfDay($from);
-		$until		= intval($until);
+	public static function getDayTimestampsInRange($dateStart, $dateEnd) {
+		$dateStart	= self::getStartOfDay($dateStart);
+		$dateEnd	= self::getEndOfDay($dateEnd);
 
-		$days	= array();
-		while($timestamp <= $until) {
-			$days[]	= self::getStartOfDay($timestamp);
-			$timestamp	+= TodoyuTime::SECONDS_DAY;
+		$timestamp	= $dateStart;
+		$days		= array();
+
+		while( $timestamp <= $dateEnd ) {
+			$days[]		= $timestamp;
+			$timestamp	= self::addDays($timestamp, 1);
 		}
 
 		return $days;
@@ -546,20 +534,20 @@ class TodoyuTime {
 	/**
 	 * Get dates of the days (at 00:00) which intersect the two given timespans
 	 *
-	 * @param	Integer		$start1
-	 * @param	Integer		$end1
+	 * @param	Integer		$dateStart1
+	 * @param	Integer		$dateEnd1
 	 * @param	Integer		$start2
 	 * @param	Integer		$end2
 	 * @return	Array
 	 */
-	public static function getIntersectingDays($start1, $end1, $start2, $end2) {
-		$start1	= intval($start1);
-		$end1	= intval($end1);
+	public static function getIntersectingDayTimestamps($dateStart1, $dateEnd1, $start2, $end2) {
+		$dateStart1	= intval($dateStart1);
+		$dateEnd1	= intval($dateEnd1);
 		$start2	= intval($start2);
 		$end2	= intval($end2);
 
-		$span1	= self::getDaysInTimespan($start1, $end1);	// view
-		$span2	= self::getDaysInTimespan($start2, $end2);	// event
+		$span1	= self::getDayTimestampsInRange($dateStart1, $dateEnd1);	// view
+		$span2	= self::getDayTimestampsInRange($start2, $end2);	// event
 
 		return array_intersect($span2, $span1);
 	}
@@ -618,7 +606,7 @@ class TodoyuTime {
 	 * Round-UP given time in seconds to given rounding minute
 	 *
 	 * @param	Integer		$timestamp
-	 * @param	Integer		$roundingMinute
+	 * @param	Integer		$roundingMinute		Round to number of minutes (10min, 15min, etc)
 	 * @return	Integer							rounded time in seconds
 	 */
 	public static function roundUpTime($timestamp, $roundingMinute = 1) {
@@ -639,8 +627,9 @@ class TodoyuTime {
 	public static function addDays($time, $days) {
 		$time	= intval($time);
 		$days	= intval($days);
+		$date	= getdate($time);
 
-		return mktime(date('H', $time), date('i', $time), date('s', $time), date('n', $time), date('j', $time)+$days, date('Y', $time));
+		return mktime($date['hours'], $date['minutes'], $date['seconds'], $date['mon'], $date['mday']+$days, $date['year']);
 	}
 }
 

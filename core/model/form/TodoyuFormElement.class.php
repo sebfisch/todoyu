@@ -790,9 +790,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @param	String		$text
 	 */
 	public function setAfterFieldText($text) {
-		$text		= TodoyuString::getLabel($text);
-
-		$this->setAttribute('textAfterField', $text);
+		$this->setAttribute('textAfterField', Label($text));
 	}
 
 
@@ -816,7 +814,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 */
 	public function addAfterFieldText($text, $glue = '<br />') {
 		$current	= $this->getAfterFieldText();
-		$text		= TodoyuString::getLabel($text);
+		$text		= Label($text);
 
 		if( $current === '' ) {
 			$this->setAfterFieldText($text);
@@ -833,9 +831,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @param	String		$text
 	 */
 	public function setBeforeFieldText($text) {
-		$text		= TodoyuString::getLabel($text);
-
-		$this->setAttribute('textBeforeField', $text);
+		$this->setAttribute('textBeforeField', Label($text));
 	}
 
 

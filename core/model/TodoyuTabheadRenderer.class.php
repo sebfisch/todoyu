@@ -65,7 +65,7 @@ class TodoyuTabheadRenderer {
 	 * @param	String	$name
 	 * @param	Array	$tabs
 	 * @param	String	$class
-	 * @param	String	$jsHandler 
+	 * @param	String	$jsHandler
 	 * @param	String	$active
 	 * @return	String
 	 */
@@ -75,7 +75,7 @@ class TodoyuTabheadRenderer {
 			if( TodoyuFunction::isFunctionReference($labelParam) ) {
 				$tabs[$index]['label'] = TodoyuFunction::callUserFunctionArray($labelParam, $tab['labelFuncArgs']);
 			} else {
-				$tabs[$index]['label'] = TodoyuString::getLabel($tab['label']);
+				$tabs[$index]['label'] = Label($tab['label']);
 			}
 		}
 

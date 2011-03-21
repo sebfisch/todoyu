@@ -38,7 +38,7 @@ class TodoyuNotification {
 	private static function notify($type, $message, $countdown = 3) {
 		$info	= array(
 			'type'		=> $type,
-			'message'	=> TodoyuString::getLabel($message),
+			'message'	=> Label($message),
 			'countdown'	=> $countdown
 		);
 

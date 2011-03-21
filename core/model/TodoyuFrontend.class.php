@@ -183,7 +183,7 @@ class TodoyuFrontend {
 	public static function addSubmenuEntry($parentKey, $key, $label, $href, $position = 50, $type = '') {
 		Todoyu::$CONFIG['FE']['NAVI']['entries'][$parentKey]['submenu'][] = array(
 			'key'		=> $key,
-			'label'		=> TodoyuString::getLabel($label),
+			'label'		=> Label($label),
 			'href'		=> $href,
 			'position'	=> $position,
 			'type'		=> $type,
@@ -245,7 +245,7 @@ class TodoyuFrontend {
 
 			// Get label for menu entry and sort sub menus.
 		foreach($tabs as $index => $tab) {
-			$tabs[$index]['label'] = TodoyuString::getLabel($tabs[$index]['label']);
+			$tabs[$index]['label'] = Label($tabs[$index]['label']);
 
 			if( $tabs[$index]['submenu'] ) {
 					// sort by 'position', remove duplicate entries

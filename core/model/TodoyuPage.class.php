@@ -218,7 +218,7 @@ class TodoyuPage {
 	 * @param	String		$title
 	 */
 	public static function setTitle($title) {
-		self::set('pagetitle', TodoyuString::getLabel($title) . ' - todoyu');
+		self::set('pagetitle', Label($title) . ' - todoyu');
 	}
 
 

@@ -292,6 +292,219 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expectNoL, $noLabel);
 	}
 
+	public function testbr2nl() {
+		$text	= 'this<br>string<br />contains<br >html<br/>linebreaks';
+		$expect	= "this\nstring\ncontains\nhtml\nlinebreaks";
+		$result	= TodoyuString::br2nl($text);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testListUnique() {
+		$list	= '1,2,3,3,4,5,1,2,3';
+		$expect	= '1,2,3,4,5';
+		$result	= TodoyuString::listUnique($list, ',');
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testWrapscript() {
+		$script	= 'var x = 44;';
+		$expect	= '<script language="javascript" type="text/javascript">' . $script . '</script>';
+		$result	= TodoyuString::wrapscript($script);
+
+		$this->assertEquals($expect, $result);
+	}
+
+	public function testMd5short() {
+		$text	= 'this text will be hashed';
+		$expect	= substr(md5($text), 0, 10);
+		$result	= TodoyuString::md5short($text);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testTrimExplode() {
+		$text	= 'hello,   world,this  ,  text, will,be        ,trimmed';
+		$expect	= array('hello', 'world', 'this', 'text', 'will', 'be', 'trimmed');
+		$result	= TodoyuString::trimExplode(',', $text);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testToPhpCodeString() {
+		$var1	= 'already a string';
+		$expect1= "'already a string'";
+		$result1= TodoyuString::toPhpCodeString($var1);
+
+		$var2	= 12345;
+		$expect2= '12345';
+		$result2= TodoyuString::toPhpCodeString($var2);
+
+		$var3	= 123.45;
+		$expect3= '123.45';
+		$result3= TodoyuString::toPhpCodeString($var3);
+
+		$var4	= array(1,2,3);
+		$expect4= 'array(0=>1,1=>2,2=>3)';
+		$result4= TodoyuString::toPhpCodeString($var4);
+
+		$var5	= array('a' => 1, 'b' => 'test', 3 => 'xxx');
+		$expect5= 'array(\'a\'=>1,\'b\'=>\'test\',3=>\'xxx\')';
+		$result5= TodoyuString::toPhpCodeString($var5);
+
+		$var5	= new stdClass();
+		$var5->member	= 'tes\'t';
+		$expect5= 'unserialize(stripslashes(\'O:8:\"stdClass\":1:{s:6:\"member\";s:5:\"tes\\\'t\";}\'))';
+		$result5= TodoyuString::toPhpCodeString($var5);
+
+		$this->assertEquals($expect1, $result1);
+		$this->assertEquals($expect2, $result2);
+		$this->assertEquals($expect3, $result3);
+		$this->assertEquals($expect4, $result4);
+		$this->assertEquals($expect5, $result5);
+	}
+
+
+	public function testBuildUrl() {
+		$params	= array(
+			'a'	=> 'alpha',
+			'b'	=> 'beta',
+			'g'	=> 'gamma'
+		);
+		$hash	= 'task-123';
+
+		$result1	= TodoyuString::buildUrl($params, $hash);
+		$result2	= TodoyuString::buildUrl($params, $hash, true);
+
+		$expect1	= PATH_WEB . '/index.php?a=alpha&b=beta&g=gamma#task-123';
+		$expect2	= SERVER_URL . PATH_WEB . '/index.php?a=alpha&b=beta&g=gamma#task-123';
+
+		$this->assertEquals($expect1, $result1);
+		$this->assertEquals($expect2, $result2);
+	}
+
+	public function testGetImgTag() {
+		$src	= 'assets/test.png';
+		$width	= 300;
+		$height	= 200;
+		$alt	= 'Alternative text';
+
+		$expect	= '<img src="' . $src . '" width="' . $width . '" height="' . $height . '" alt="' . $alt . '" />';
+		$result	= TodoyuString::getImgTag($src, $width, $height, $alt);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testGetATag() {
+		$url	= 'unit/test.html';
+		$label	= 'Link Text';
+		$expect	= '<a href="' . $url . '" target="_blank">' . $label . '</a>';
+		$result	= TodoyuString::getATag($url, $label);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testGetMailtoTag() {
+		$email	= 'team@todoyu.com';
+		$label	= 'Send message to todoyu team';
+		$subject= 'Mail Subject';
+		$content= 'Hello, I am a mail body';
+		$cc		= 'sales@todoyu.com';
+
+		$expect	= '<a href="mailto:' . $email . '?subject=' . urlencode($subject) . '&body=' . urlencode($content) . '&cc=' . $cc . '">' . $label . '</a>';
+		$result	= TodoyuString::getMailtoTag($email, $label, false, $subject, $content, $cc);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testBuildHtmlTag() {
+		$tag	= 'a';
+		$params	= array(
+			'href'		=> 'test/url.html',
+			'onclick'	=> 'doSomething()'
+		);
+		$content	= 'Click me';
+		$expect	= '<a href="test/url.html" onclick="doSomething()">Click me</a>';
+		$result	= TodoyuString::buildHtmlTag($tag, $params, $content);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testCleanRteText() {
+		$text1	= '<p>&nbsp;</p><p>Second paragraph</p>';
+		$expect1= '<p>Second paragraph</p>';
+		$result1= TodoyuString::cleanRTEText($text1);
+
+		$text2	= "<pre>Preformatted text\nwith linebreaks and whitespaces                    </pre>";
+		$expect2= 'Preformatted text<br />with linebreaks and whitespaces';
+		$result2= TodoyuString::cleanRTEText($text2);
+
+		$this->assertEquals($expect1, $result1);
+		$this->assertEquals($expect2, $result2);
+	}
+
+
+	public function testExtractHttpHeaders() {
+		$responseContent = "200\r\n"
+						. "Date: Fri, 18 Mar 2011 16:07:16 GMT\r\n"
+						. "Server: Apache/2.2.14 (Win32) DAV/2 mod_ssl/2.2.14 OpenSSL/0.9.8l mod_autoindex_color PHP/5.3.1 mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1"
+						. "\r\n\r\n"
+						. "Response Content";
+
+		$headers	= TodoyuString::extractHttpHeaders($responseContent);
+
+		$this->assertEquals(200, $headers['status']);
+		$this->assertEquals('Fri, 18 Mar 2011 16:07:16 GMT', $headers['Date']);
+		$this->assertEquals('Apache/2.2.14 (Win32) DAV/2 mod_ssl/2.2.14 OpenSSL/0.9.8l mod_autoindex_color PHP/5.3.1 mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1', $headers['Server']);
+	}
+
+
+	public function testExtractHeadersFromString() {
+		$headerContent = "200\r\n"
+						. "Date: Fri, 18 Mar 2011 16:07:16 GMT\r\n"
+						. "Server: Apache/2.2.14 (Win32) DAV/2 mod_ssl/2.2.14 OpenSSL/0.9.8l mod_autoindex_color PHP/5.3.1 mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1";
+
+		$headers	= TodoyuString::extractHttpHeaders($headerContent);
+
+		$this->assertEquals(200, $headers['status']);
+		$this->assertEquals('Fri, 18 Mar 2011 16:07:16 GMT', $headers['Date']);
+		$this->assertEquals('Apache/2.2.14 (Win32) DAV/2 mod_ssl/2.2.14 OpenSSL/0.9.8l mod_autoindex_color PHP/5.3.1 mod_apreq2-20090110/2.7.1 mod_perl/2.0.4 Perl/v5.10.1', $headers['Server']);
+	}
+
+
+	public function testgetversioninfo() {
+		$version	= '2.3.43-alpha';
+		$result		= TodoyuString::getVersionInfo($version);
+
+		$this->assertEquals(2, $result['major']);
+		$this->assertEquals(3, $result['minor']);
+		$this->assertEquals(43, $result['revision']);
+		$this->assertEquals('alpha', $result['status']);
+	}
+
+
+
+	public function testReplaceUrlWithLink() {
+		$text	= 'This is plaintext with www.todoyu.com links in it. http://www.snowflake.ch You can also mail: team@todoyu.com';
+		$expect	= 'This is plaintext with <a href="http://www.todoyu.com" target="_blank">www.todoyu.com</a> links in it. <a href="http://www.snowflake.ch" target="_blank">http://www.snowflake.ch</a> You can also mail: <a href="mailto:team@todoyu.com">team@todoyu.com</a>';
+
+		$result	= TodoyuString::replaceUrlWithLink($text);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+
+
 }
 
 ?>

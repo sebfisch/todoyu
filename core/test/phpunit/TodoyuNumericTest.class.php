@@ -101,6 +101,47 @@ class TodoyuNumericTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+	public function testIsversionatleast() {
+		$result_1	= TodoyuNumeric::isVersionAtLeast('1.0.0', '1.0.0');
+
+		// xx - dev - a - b - rc - # - p
+
+		$result_2	= TodoyuNumeric::isVersionAtLeast('2.0.0dev', '2.0.0xx');
+		$result_3	= TodoyuNumeric::isVersionAtLeast('2.0.0a', '2.0.0dev');
+		$result_4	= TodoyuNumeric::isVersionAtLeast('2.0.0b', '2.0.0alpha');
+		$result_5	= TodoyuNumeric::isVersionAtLeast('2.0.0rc', '2.0.0beta');
+		$result_6	= TodoyuNumeric::isVersionAtLeast('2.0.0', '2.0.0RC');
+
+		$result_7	= TodoyuNumeric::isVersionAtLeast('3alpha', '2.9');
+		$result_8	= TodoyuNumeric::isVersionAtLeast('2.1.0', '2.1.0-alpha');
+
+		$this->assertTrue($result_1);
+		$this->assertTrue($result_2);
+		$this->assertTrue($result_3);
+		$this->assertTrue($result_4);
+		$this->assertTrue($result_5);
+		$this->assertTrue($result_6);
+		$this->assertTrue($result_7);
+		$this->assertTrue($result_8);
+	}
+
+
+	public function testRatio() {
+		$value1	= 100;
+		$value2	= 53.4;
+
+		$result_1	= TodoyuNumeric::ratio($value2, $value1);
+		$result_2	= TodoyuNumeric::ratio($value2, $value1, true);
+		$result_3	= TodoyuNumeric::ratio($value2, $value1, true, 0);
+		$result_4	= TodoyuNumeric::ratio($value2, 0, true, 0, 'no result');
+
+		$this->assertEquals(0.534, $result_1);
+		$this->assertEquals(53.4, $result_2, '', 0.1);
+		$this->assertEquals(53.0, $result_3);
+		$this->assertEquals('no result', $result_4);
+	}
+
+
 }
 
 ?>

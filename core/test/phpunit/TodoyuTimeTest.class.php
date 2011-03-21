@@ -460,6 +460,125 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($weekend3, $test3);
 	}
 
+
+
+	public function testGetMonthEnd() {
+		$test1	= mktime(0, 0, 0, 3, 1, 2011);
+		$expect1= mktime(0, 0, 0, 4, 1, 2011)-1;
+		$test2	= mktime(0, 0, 0, 2, 10, 2011);
+		$expect2= mktime(0, 0, 0, 3, 1, 2011)-1;
+		$test3	= mktime(23, 59, 59, 5, 31, 2011);
+		$expect3= mktime(0, 0, 0, 6, 1, 2011)-1;
+
+		$result1= TodoyuTime::getMonthEnd($test1);
+		$result2= TodoyuTime::getMonthEnd($test2);
+		$result3= TodoyuTime::getMonthEnd($test3);
+
+		$this->assertEquals($expect1, $result1);
+		$this->assertEquals($expect2, $result2);
+		$this->assertEquals($expect3, $result3);
+	}
+
+
+	public function testGetLastDayNumberInMonth() {
+		$test1	= mktime(0, 0, 0, 3, 10, 2011);
+		$expect1= 31;
+		$result1= TodoyuTime::getLastDayNumberInMonth($test1);
+		$this->assertEquals($expect1, $result1);
+
+		$test2	= mktime(0, 0, 0, 4, 10, 2011);
+		$expect2= 30;
+		$result2= TodoyuTime::getLastDayNumberInMonth($test2);
+		$this->assertEquals($expect2, $result2);
+
+		$test3	= mktime(0, 0, 0, 2, 10, 2011);
+		$expect3= 28;
+		$result3= TodoyuTime::getLastDayNumberInMonth($test3);
+		$this->assertEquals($expect3, $result3);
+	}
+
+
+	public function testAddDays() {
+		$date		= mktime(0, 0, 0, 3, 18, 2011);
+		$expect1	= mktime(0, 0, 0, 3, 19, 2011);
+		$expect2	= mktime(0, 0, 0, 3, 20, 2011);
+		$expect5	= mktime(0, 0, 0, 3, 23, 2011);
+		$expect10	= mktime(0, 0, 0, 3, 28, 2011);
+		$expect20	= mktime(0, 0, 0, 4, 7, 2011);
+
+		$result1	= TodoyuTime::addDays($date, 1);
+		$result2	= TodoyuTime::addDays($date, 2);
+		$result5	= TodoyuTime::addDays($date, 5);
+		$result10	= TodoyuTime::addDays($date, 10);
+		$result20	= TodoyuTime::addDays($date, 20);
+
+		$this->assertEquals($expect1, $result1);
+		$this->assertEquals($expect2, $result2);
+		$this->assertEquals($expect5, $result5);
+		$this->assertEquals($expect10, $result10);
+		$this->assertEquals($expect20, $result20);
+
+			// Test with custom time set
+		$date2		= mktime(20, 30, 30, 3, 1, 2011);
+		$expectX1	= mktime(20, 30, 30, 3, 2, 2011);
+
+		$resultX1	= TodoyuTime::addDays($date2, 1);
+
+		$this->assertEquals($expectX1, $resultX1);
+	}
+
+
+	public function testRoundUpTime() {
+		$time1	= 44 * 60;
+		$round1	= 15;
+		$expect1= 45 * 60;
+
+		$result1= TodoyuTime::roundUpTime($time1, $round1);
+		$this->assertEquals($expect1, $result1);
+
+
+		$time2	= 20 * 60 + 5;
+		$round2	= 10;
+		$expect2= 30 * 60;
+
+		$result2= TodoyuTime::roundUpTime($time2, $round2);
+		$this->assertEquals($expect2, $result2);
+
+
+		$time3	= 2 * 60 + 30;
+		$round3	= 30;
+		$expect3= 30 * 60;
+
+		$result3= TodoyuTime::roundUpTime($time3, $round3);
+		$this->assertEquals($expect3, $result3);
+	}
+
+	public function testGetIntersectingDayTimestamps() {
+		$dateStart1	= mktime(0, 0, 0, 3, 1, 2011);
+		$dateEnd1	= mktime(0, 0, 0, 3, 15, 2011);
+		$dateStart2	= mktime(0, 0, 0, 3, 10, 2011);
+		$dateEnd2	= mktime(0, 0, 0, 3, 20, 2011);
+
+		$intersection	= TodoyuTime::getIntersectingDayTimestamps($dateStart1, $dateEnd1, $dateStart2, $dateEnd2);
+
+		$this->assertEquals(6, sizeof($intersection));
+		$this->assertEquals($dateEnd1, $intersection[5]);
+		$this->assertEquals($dateStart2, $intersection[0]);
+	}
+
+
+	public function testGetDayTimestampsInRange() {
+		$dateStart	= mktime(0, 0, 0, 3, 1, 2011);
+		$dateEnd	= mktime(0, 0, 0, 3, 31, 2011);
+
+		$days		= TodoyuTime::getDayTimestampsInRange($dateStart, $dateEnd);
+
+		$this->assertEquals(31, sizeof($days));
+		$this->assertEquals($dateStart, $days[0]);
+		$this->assertEquals($dateEnd, $days[30]);
+	}
+
+
 }
 
 ?>

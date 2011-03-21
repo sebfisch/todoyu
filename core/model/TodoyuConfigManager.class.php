@@ -79,7 +79,7 @@ class TodoyuConfigManager {
 			$prepared[$groupName] = array();
 
 			foreach($groupConfig as $key => $value) {
-				$prepared[$groupName][$key]	= TodoyuString::toString($value);
+				$prepared[$groupName][$key]	= TodoyuString::toPhpCodeString($value);
 			}
 		}
 

@@ -187,7 +187,14 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function br2nl($string) {
-		return str_ireplace(array('<br />', '<br>'), chr(10), $string);
+		$breaks	= array(
+			'<br />',
+			'<br/>',
+			'<br>',
+			'<br >'
+		);
+
+		return str_ireplace($breaks, "\n", $string);
 	}
 
 
@@ -385,27 +392,6 @@ class TodoyuString {
 
 
 	/**
-	 * Parse label if there is a label reference (LLL:)
-	 * Else, just return the label
-	 *
-	 * @param	String		$label		Label or label reference
-	 * @param	String		$locale		For output for this locale
-	 * @return	String		Real label
-	 */
-	public static function getLabel($label, $locale = null) {
-		if( ! is_string($label) ) {
-			return '';
-		} elseif( strncmp('LLL:', $label, 4) === 0 ) {
-			$labelKey = substr($label, 4);
-			return TodoyuLabelManager::getLabel($labelKey, $locale);
-		} else {
-			return $label;
-		}
-	}
-
-
-
-	/**
 	 * Wrap into JS tag
 	 *
 	 * @param	String	$jsCode
@@ -583,7 +569,7 @@ class TodoyuString {
 	public static function replaceUrlWithLink($htmlContent) {
 				// Find full links with prefixed protocol
 		$patternFull	= '/(^|[^"])((?:http|https|ftp|ftps):\/\/[-\w@:%+.~#?&;\/=\[\]]+)/';
-		$replaceFull	= '\1<a href="\2"  target="_blank">\2</a>';
+		$replaceFull	= '\1<a href="\2" target="_blank">\2</a>';
 
 			// Find links which are not prefixed with a protocol, use http
 		$patternSimple	= '/(^|[> ])((?:[\w\.-]+)\.(?:[\w-]{2,})\.(?:[a-zA-Z-]{2,6})[-\w@:%+.~#?&;\/=\[\]]*)/';
@@ -619,6 +605,7 @@ class TodoyuString {
 		if( strpos($text, '<pre>') !== false ) {
 			$prePattern	= '/<pre>(.*?)<\/pre>/s';
 			$text		= preg_replace_callback($prePattern, array(self,'callbackPreText'), $text);
+			$text		= str_replace("\n", '', $text);
 		}
 
 		return trim($text);
@@ -639,41 +626,38 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function getMailtoTag($emailAddress, $label = '', $returnAsArray = false, $subject = '', $mailBody = '', $cc ='', $bcc = '') {
-		$result = '<a href="mailto:' . $emailAddress;
-		$separator = '?';
-		$end	= '</a>';
+		$attributes	= array();
+		$linkParts	= array();
 
 		if( $subject ) {
-			$result .= $separator . 'subject=' . $subject;
-			$separator = '&';
+			$linkParts[] = 'subject=' . urlencode($subject);
 		}
-
 		if( $mailBody ) {
-			$result .= $separator . 'body=' . $mailBody;
-			$separator = '&';
+			$linkParts[] = 'body=' . urlencode($mailBody);
 		}
-
 		if( $cc ) {
-			$result .= $separator . 'cc=' . $cc;
-			$separator = '&';
+			$linkParts[] = 'cc=' . $cc;
 		}
-
 		if( $bcc ) {
-			$result .= $separator . 'bcc=' . $bcc;
+			$linkParts[] = 'ccc=' . $bcc;
 		}
 
-		$result .= '">';
+		$attributes['href']	= 'mailto:' . $emailAddress . '?' . implode('&', $linkParts);
 
-		if( $returnAsArray === true ) {
-			return array(	$result,
-							$end);
+		if( $label === '' ) {
+			$label = $emailAddress;
 		}
 
-		if( $label ) {
-			return $result . $label . $end;
-		}
+		$aTag	= self::buildHtmlTag('a', $attributes, $label);
 
-		return $result . $emailAddress . $end;
+		if( $returnAsArray ) {
+			return array(
+				str_replace('</a>', '', $aTag),
+				'</a>'
+			);
+		} else {
+			return $aTag;
+		}
 	}
 
 
@@ -685,8 +669,13 @@ class TodoyuString {
 	 * @param	String	$label
 	 * @return	String
 	 */
-	public static function getATag($url, $label = '', $target = 'blank') {
-		return '<a href="' . $url . '" target="' . $target . '">' . $label . '</a>';
+	public static function getATag($url, $label, $target = '_blank') {
+		$attributes	= array(
+			'href'	=> $url,
+			'target'=> $target
+		);
+
+		return self::buildHtmlTag('a', $attributes, $label);
 	}
 
 
@@ -701,7 +690,49 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function getImgTag($src, $width = 0, $height = 0, $altText = '') {
-		return '<img src="' . $src . '"' . ($width > 0 ?  ' width="' . $width .'"' : '') . ($height > 0 ?  ' height="' . $height .'"' : '') . ' alt="' . $altText .'" />';
+		$attributes	= array();
+		$width		= intval($width);
+		$height		= intval($height);
+		$altText	= trim($altText);
+
+		$attributes['src'] = $src;
+
+		if( $width > 0 ) {
+			$attributes['width']	= $width;
+		}
+		if( $height > 0 ) {
+			$attributes['height']	= $height;
+		}
+		if( $altText !== '' ) {
+			$attributes['alt']	= $altText;
+		}
+
+		return self::buildHtmlTag('img', $attributes);
+	}
+
+
+
+	/**
+	 * Build a HTML tag with attributes
+	 *
+	 * @param	String		$tagName
+	 * @param	Array		$attributes
+	 * @return	String
+	 */
+	public static function buildHtmlTag($tagName, array $attributes = array(), $content = false) {
+		$attr	= array();
+
+		foreach($attributes as $name => $value) {
+			$attr[]	= $name . '="' . $value . '"';
+		}
+
+		$attrList	= implode(' ', $attr);
+
+		if( $content !== false ) {
+			return '<' . $tagName . ' ' . $attrList . '>' . $content . '</' . $tagName . '>';
+		} else {
+			return '<' . $tagName . ' ' . $attrList . ' />';
+		}
 	}
 
 
@@ -751,12 +782,12 @@ class TodoyuString {
 
 
 	/**
-	 * Convert a variable to it's string representation
+	 * Convert a variable to it's php string representation
 	 *
 	 * @param	Mixed		$var
 	 * @return	String
 	 */
-	public static function toString($var) {
+	public static function toPhpCodeString($var) {
 		if( is_bool($var) ) {
 			return $var ? 'true' : 'false';
 		} elseif( is_string($var) ) {
@@ -767,12 +798,17 @@ class TodoyuString {
 			$tmp	= 'array(';
 			$items	= array();
 			foreach($var as $key => $value) {
-				$items[$key] = self::toString($value);
+				$items[$key] = self::toPhpCodeString($value);
+			}
+			foreach($items as $key => $preparedValue) {
+				$items[$key] = self::toPhpCodeString($key) . '=>' . $preparedValue;
 			}
 			$tmp	.= implode(',', $items);
 			$tmp	.= ')';
 
 			return $tmp;
+		} elseif( is_object($var) ) {
+			return 'unserialize(stripslashes(\'' . addslashes(serialize($var))  . '\'))';
 		} else {
 			return '';
 		}
