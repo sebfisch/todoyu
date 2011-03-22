@@ -330,7 +330,7 @@ class TodoyuInstaller {
 		foreach($locales as $locale) {
 			$options[] = array(
 				'key'	=> $locale,
-				'label'	=> TodoyuLabelManager::getLabel('install.installer.locale.selectthislocale', $locale)
+				'label'	=> Label('install.installer.locale.selectthislocale', $locale)
 			);
 		}
 

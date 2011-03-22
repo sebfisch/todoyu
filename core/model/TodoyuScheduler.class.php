@@ -296,7 +296,7 @@ class TodoyuScheduler {
 		$data	= array(
 			'date_execute'	=> NOW,
 			'class'			=> $className,
-			'success'		=> $success ? 1 : 0,
+			'is_success'	=> $success ? 1 : 0,
 			'message'		=> $message
 		);
 

@@ -202,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `system_scheduler` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_execute` int(11) NOT NULL,
   `class` varchar(100) NOT NULL,
-  `success` tinyint(1) NOT NULL,
+  `is_success` tinyint(1) NOT NULL,
   `message` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
