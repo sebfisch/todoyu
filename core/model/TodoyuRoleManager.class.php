@@ -33,7 +33,7 @@ class TodoyuRoleManager {
 
 
 	/**
-	 * Get a usergroup object
+	 * Get a role object
 	 *
 	 * @param	Integer		$idRole
 	 * @return	TodoyuRole

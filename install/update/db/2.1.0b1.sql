@@ -30,4 +30,4 @@ ALTER TABLE `ext_contact_contactinfo` CHANGE `preferred` `is_preferred` TINYINT(
 ALTER TABLE `ext_contact_person` CHANGE `active` `is_active` TINYINT( 1 ) NOT NULL DEFAULT '0';
 
 -- Rename course to rate
-ALTER TABLE `ext_currency_exchange` CHANGE `course` `rate` FLOAT UNSIGNED NOT NULL DEFAULT '0'
+ALTER TABLE `ext_currency_exchange` CHANGE `course` `rate` FLOAT UNSIGNED NOT NULL DEFAULT '0';
