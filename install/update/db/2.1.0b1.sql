@@ -21,3 +21,6 @@ UPDATE `ext_contact_contactinfotype` SET `title` = REPLACE(`title`, 'LLL:contact
 DROP TABLE `system_panelwidget`;
 
 ALTER TABLE `ext_timetracking_track` CHANGE `comment` `comment` VARCHAR( 250 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+-- Rename person.active => is_active
+ALTER TABLE `ext_contact_person` CHANGE `active` `is_active` TINYINT( 1 ) NOT NULL DEFAULT '0';
