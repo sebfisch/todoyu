@@ -331,6 +331,21 @@ class TodoyuTime {
 
 
 	/**
+	 * Format an SQL datetime string with one of todoyu's default date formats
+	 *
+	 * @param	String	$datetime
+	 * @return	String
+	 */
+	public static function formatSqlDate($datetime) {
+		$format		= '%Y-%m-%d';
+		$timestamp	= self::parseDateTime($datetime, $format);
+
+		return self::format($timestamp, 'date');
+	}
+
+
+
+	/**
 	 * Get format config string
 	 *
 	 * @see		core/config/dateformat.xml
@@ -399,10 +414,11 @@ class TodoyuTime {
 	 * Parse date time string (get UNIX timestamp)
 	 *
 	 * @param	String		$dateTimeString
+	 * @param	String		$format
 	 * @return	Integer
 	 */
-	public static function parseDateTime($dateTimeString) {
-		$format		= self::getFormat('datetime');
+	public static function parseDateTime($dateTimeString, $format = '') {
+		$format		= $format == '' ? self::getFormat('datetime') : $format;
 		$dateParts	= strptime($dateTimeString, $format);
 
 		if( $dateParts === false ) {

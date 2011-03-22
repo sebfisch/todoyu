@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.1.0 - not released yet
+	* Feature: Added dwoo plugin "formatSqlDate" to format SQL datetime string as date in current locale format
 	* Bugfix: Fixed filemanager file existence check before deletion
 	* Changed: Added deleteFile method (with success logging) to TodoyuFileManager
 	* Feature: Added method for creation of random named cache folders to TodoyuFileManager

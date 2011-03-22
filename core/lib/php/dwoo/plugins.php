@@ -255,6 +255,23 @@ function Dwoo_Plugin_dateFormat_compile(Dwoo_Compiler $compiler, $timestamp, $fo
 
 
 /**
+ * Format an SQL datetime string as date format of current locale
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo_Compiler 	$compiler		Dwoo compiler
+ * @param	Integer			$datetime		Timestamp to format
+ * @param	String			$formatName		Format name
+ * @return	String
+ */
+function Dwoo_Plugin_formatSqlDate_compile(Dwoo_Compiler $compiler, $datetime) {
+	return 'TodoyuTime::formatSqlDate(' . $datetime . ')';
+}
+
+
+
+/**
  * Clean bad tags from HTML code
  *
  * @param	Dwoo_Compiler 	$compiler		Dwoo compiler
