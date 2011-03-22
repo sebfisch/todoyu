@@ -141,7 +141,7 @@ class TodoyuFileManager {
 	public static function deleteFile($pathFile) {
 		$pathFile	= self::pathAbsolute($pathFile);
 
-		if( is_file($pathFile) ) {
+		if( is_file($pathFile) && file_exists($pathFile) ) {
 			if( is_writable($pathFile) ) {
 				$success	= unlink($pathFile);
 			} else {
