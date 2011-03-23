@@ -321,7 +321,7 @@ class TodoyuStaticRecords {
 		if( sizeof($options) === 0 ) {
 			$options[]	= array(
 				'value'		=> 'disabled',
-				'label'		=> 'LLL:contact.address.noRegion',
+				'label'		=> 'LLL:contact.ext.address.noRegion',
 				'disabled'	=> true,
 				'classname'	=> 'error'
 			);

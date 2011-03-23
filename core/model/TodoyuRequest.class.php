@@ -162,7 +162,7 @@ class TodoyuRequest {
 	 *
 	 * @return	String
 	 */
-	public static function getReferrer() {
+	public static function getReferer() {
 		return getenv('HTTP_REFERER');
 	}
 
