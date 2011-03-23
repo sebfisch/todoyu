@@ -24,6 +24,7 @@ span.iconLarge {
 .contentMessage {
 	clear:both;
 	padding:10px;
+	width:640px;
 	background-color:#E3EACE;
 	margin:5px 0;
 }
