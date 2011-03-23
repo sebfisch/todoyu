@@ -27,7 +27,7 @@
 							{else}
 								{$maxLen = intval($config.truncate.$colName)}
 								{if $maxLen == 0}{$maxLen = 16}{/if}
-								{truncate htmlencode($row[$colName]) $maxLen break=true}
+								{htmlencode(truncate($row[$colName],$maxLen,'...',true))}
 							{/if}
 						</span>
 					</td>
