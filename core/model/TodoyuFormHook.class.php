@@ -147,7 +147,7 @@ class TodoyuFormHook {
 		$hooks		= self::getHooks('saveData', $xmlPath);
 
 		foreach($hooks as $hook) {
-			$temp	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord);
+			$temp	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord, $params);
 
 			if( is_array($temp) ) {
 				$data = $temp;
