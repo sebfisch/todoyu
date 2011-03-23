@@ -29,19 +29,19 @@ INSERT INTO `ext_contact_mm_company_person` (`id`, `id_company`, `id_person`, `i
 -- Data for Table `ext_contact_contactinfotype`
 --
 
-INSERT INTO `ext_contact_contactinfotype` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `category`, `key`, `title`) VALUES
-(1, 0, 0, 0, 0, 1, 'email_business', 'LLL:contact.ext.contactinfo.type.email_business'),
-(2, 0, 0, 0, 0, 2, 'tel_private', 'LLL:contact.ext.contactinfo.type.tel_private'),
-(3, 0, 0, 0, 0, 2, 'tel_exchange', 'LLL:contact.ext.contactinfo.type.tel_exchange'),
-(4, 0, 0, 0, 0, 2, 'tel_business', 'LLL:contact.ext.contactinfo.type.tel_business'),
-(5, 0, 0, 0, 0, 1, 'email_private', 'LLL:contact.ext.contactinfo.type.email_private'),
-(6, 0, 0, 0, 0, 2, 'mobile_business', 'LLL:contact.ext.contactinfo.type.mobile_business'),
-(7, 0, 0, 0, 0, 2, 'fax_private', 'LLL:contact.ext.contactinfo.type.fax_private'),
-(8, 0, 0, 0, 0, 2, 'fax_business', 'LLL:contact.ext.contactinfo.type.fax_business'),
-(9, 0, 0, 0, 0, 2, 'mobile_private', 'LLL:contact.ext.contactinfo.type.mobile_private'),
-(10, 0, 0, 0, 0, 2, 'fax_exchange', 'LLL:contact.ext.contactinfo.type.fax_exchange'),
-(11, 0, 0, 0, 0, 3, 'website', 'LLL:contact.ext.contactinfo.type.website'),
-(12, 0, 0, 0, 0, 3, 'skype', 'LLL:contact.ext.contactinfo.type.skype');
+INSERT INTO `ext_contact_contactinfotype` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `category`, `key`, `title`, `is_public`) VALUES
+(1, 0, 0, 0, 0, 1, 'email_business', 'LLL:contact.ext.contactinfo.type.email_business', 1),
+(2, 0, 0, 0, 0, 2, 'tel_private', 'LLL:contact.ext.contactinfo.type.tel_private', 0),
+(3, 0, 0, 0, 0, 2, 'tel_exchange', 'LLL:contact.ext.contactinfo.type.tel_exchange', 1),
+(4, 0, 0, 0, 0, 2, 'tel_business', 'LLL:contact.ext.contactinfo.type.tel_business', 1),
+(5, 0, 0, 0, 0, 1, 'email_private', 'LLL:contact.ext.contactinfo.type.email_private', 0),
+(6, 0, 0, 0, 0, 2, 'mobile_business', 'LLL:contact.ext.contactinfo.type.mobile_business', 1),
+(7, 0, 0, 0, 0, 2, 'fax_private', 'LLL:contact.ext.contactinfo.type.fax_private', 0),
+(8, 0, 0, 0, 0, 2, 'fax_business', 'LLL:contact.ext.contactinfo.type.fax_business', 1),
+(9, 0, 0, 0, 0, 2, 'mobile_private', 'LLL:contact.ext.contactinfo.type.mobile_private', 0),
+(10, 0, 0, 0, 0, 2, 'fax_exchange', 'LLL:contact.ext.contactinfo.type.fax_exchange', 1),
+(11, 0, 0, 0, 0, 3, 'website', 'LLL:contact.ext.contactinfo.type.website', 1),
+(12, 0, 0, 0, 0, 3, 'skype', 'LLL:contact.ext.contactinfo.type.skype', 0);
 
 -- --------------------------------------------------------
 
