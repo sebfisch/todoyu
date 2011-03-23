@@ -73,14 +73,14 @@ class TodoyuRightsManager {
 
 			// If person has roles, get rights for the roles and compile them
 		if( sizeof($roleIDs) > 0 ) {
-			$fields	= '	ext, `right`';
+			$fields	= '	ext, LOWER(`right`) as rightname';
 			$table	= self::TABLE;
 			$where	= '	id_role IN(' . implode(',', $roleIDs) . ')';
 
 			$rights = Todoyu::db()->getArray($fields, $table, $where);
 
 			foreach($rights as $right) {
-				self::$rights[$right['ext']][$right['right']] = 1;
+				self::$rights[$right['ext']][$right['rightname']] = 1;
 			}
 
 				// Save compiled rights in session
@@ -166,7 +166,8 @@ class TodoyuRightsManager {
 		}
 
 			// Get ID of the extension to access to right
-		$extID = TodoyuExtensions::getExtID($extKey);
+		$extID	= TodoyuExtensions::getExtID($extKey);
+		$right	= strtolower($right);
 
 		$allowed	= intval(self::$rights[$extID][$right]) === 1;
 
