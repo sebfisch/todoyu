@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * class Todoyufor radio boxes
+ * class for radio boxes
  *
  * @package 	Todoyu
  * @subpackage	Form
@@ -84,7 +84,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	protected function initSourceList(array $source) {
 		if( is_array($source['option']) ) {
 			foreach($source['option'] as $option) {
-				$this->addOption($option['value'], $option['label']);
+				$this->addOption($option['value'], $option['label'], $option['checked']);
 			}
 		}
 	}
@@ -184,13 +184,20 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 *
 	 * @param	String		$value
 	 * @param	String		$label
+	 * @param	Boolean		$checked
+	 * @param	Boolean		$disabled
 	 */
-	public function addOption($value, $label, $selected = false, $disabled = false) {
+	public function addOption($value, $label, $checked = false, $disabled = false) {
 		$this->config['options'][] = array(
 			'value'		=> $value,
 			'label'		=> label($label),
+			'checked'	=> $checked,
 			'disabled'	=> $disabled
 		);
+
+		if( $checked ) {
+			$this->addCheckedValue($value);
+		}
 	}
 
 
@@ -208,7 +215,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 		$index = $this->getOptionIndexByValue($value);
 
 		if( $index === false ) {
-			$this->addOption($value, $label);
+			$this->addOption($value, $label, $checked, $disabled);
 		} else {
 			$this->config['options'][$index] =  array(
 				'value'		=> $value,
