@@ -150,11 +150,11 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	update: function() {
 		var url		= Todoyu.getUrl(this.config.ext, this.config.controller);
 		var options	= {
-			'parameters': {
+			parameters: {
 				action:	this.config.action,
 				search:	this.getSearchText()
 			},
-			'onComplete':	this.onListUpdated.bind(this)
+			onComplete:	this.onListUpdated.bind(this)
 		};
 
 		this.lastText = this.getSearchText();

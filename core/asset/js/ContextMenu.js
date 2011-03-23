@@ -83,8 +83,8 @@ Todoyu.ContextMenu = {
 
 		var url		= Todoyu.getUrl('core', 'contextmenu');
 		var options	= {
-			'parameters': {
-				'action':		'get',
+			parameters: {
+				action:		'get',
 				'contextmenu':	name,
 				'element':		callback(observedElement, event)
 			}

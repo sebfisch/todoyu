@@ -185,8 +185,8 @@ Todoyu.Headlets = {
 	submitOpenStatus: function(headletName) {
 		var url		= Todoyu.getUrl('core', 'headlet');
 		var options	= {
-			'parameters': {
-				'action': 	'open',
+			parameters: {
+				action: 	'open',
 				'headlet':	headletName === false ? '' : headletName
 			}
 		};

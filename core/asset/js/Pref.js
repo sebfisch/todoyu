@@ -56,8 +56,8 @@ Todoyu.Pref = {
 	save: function(ext, action, value, idItem, onComplete) {
 		var url		= Todoyu.getUrl(ext, 'preference');
 		var options	= {
-			'parameters': {
-				'action':	action,
+			parameters: {
+				action:	action,
 				'value':	value,
 				'item':		idItem,
 				'area':		Todoyu.getArea()
@@ -86,12 +86,12 @@ Todoyu.Pref = {
 
 		var url		= Todoyu.getUrl(ext, 'preference');
 		var options	= {
-			'parameters': {
-				'action':		'get',
+			parameters: {
+				action:		'get',
 				'preference':	preference
 			},
 			'asynchronous':		false,
-			'onComplete':		function(count, response) {
+			onComplete:		function(count, response) {
 									this.temp[count] = response.responseText;
 								}.bind(this, currentCount)
 		};

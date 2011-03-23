@@ -81,10 +81,10 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 	openPopup: function() {
 		var url		= Todoyu.getUrl('core', 'about');
 		var options	= {
-			'parameters': {
-				'action':	'popup'
+			parameters: {
+				action:	'popup'
 			},
-			'onComplete':	this.onPopupLoaded.bind(this)
+			onComplete:	this.onPopupLoaded.bind(this)
 		};
 
 		Todoyu.Popups.open(this.popupID, '[LLL:global.headlet.about.title]', this.popupWidth, url, options);

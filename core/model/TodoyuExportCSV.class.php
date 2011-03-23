@@ -20,12 +20,12 @@
 
 
 /**
- * 
+ *
  */
 class TodoyuExportCSV extends TodoyuExportBase {
 
 
-	
+
 	/**
 	 * @var string
 	 */
@@ -48,7 +48,7 @@ class TodoyuExportCSV extends TodoyuExportBase {
 
 
 	/**
-	 * @var bool
+	 * @var	Booolean
 	 */
 	private $useTableHeaders	= true;
 
@@ -57,9 +57,16 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	/**
 	 * filepointer to the temporary file
 	 *
-	 * @var 
+	 * @var	Resource
 	 */
 	private $filePointer;
+
+	/**
+	 * Path to temporary file
+	 *
+	 * @var	String
+	 */
+	private $tmpFile;
 
 
 
@@ -69,9 +76,12 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	 * @param	Array	$customConfig
 	 */
 	protected function init(array $customConfig) {
-		$this->tmpFile = PATH_CACHE . '/output/' . 'tmpExport_' . NOW . '.csv';
+		$pathTemp	= 'cache/output';
+		TodoyuFileManager::makeDirDeep($pathTemp);
+
+		$this->tmpFile 		= TodoyuFileManager::pathAbsolute($pathTemp . '/tmpExport_' . NOW . '.csv');
 		$this->filePointer	= fopen($this->tmpFile, 'w+');
-		$this->filename = 'export_' . NOW . '.csv';
+		$this->filename 	= 'export_' . NOW . '.csv';
 
 		$defaultConfig	= Todoyu::$CONFIG['EXPORT']['CSV'];
 
@@ -101,9 +111,21 @@ class TodoyuExportCSV extends TodoyuExportBase {
 			fputcsv($this->filePointer, $record, $this->delimiter, $this->enclosure);
 		}
 
-		fclose($this->filePointer);
+		$this->closeFile();
 
 		return file_get_contents($this->tmpFile);
+	}
+
+
+
+	/**
+	 * Close temporary file
+	 *
+	 */
+	private function closeFile() {
+		if( is_resource($this->filePointer) )  {
+			fclose($this->filePointer);
+		}
 	}
 
 
@@ -115,7 +137,7 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	 */
 	protected function prepareHeaders() {
 		$colTitles = array();
-		
+
 		foreach($this->exportData as $record) {
 			foreach($record as $key => $data) {
 				$newKey = explode('_', $key);
@@ -169,7 +191,11 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	 * Destructor - deletes the temporary file
 	 */
 	public function __destruct() {
-		unlink($this->tmpFile);
+		$this->closeFile();
+
+		if( is_file($this->tmpFile) ) {
+			unlink($this->tmpFile);
+		}
 	}
 
 }

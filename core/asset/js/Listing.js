@@ -58,7 +58,7 @@ Todoyu.Listing = {
 			'url': {
 				'ext':			url[0],
 				'controller': 	url[1],
-				'action':		url[2]
+				action:		url[2]
 			}
 		};
 	},
@@ -92,12 +92,12 @@ Todoyu.Listing = {
 	extend: function(name, offset, pagenum) {
 		var url		= Todoyu.getUrl(this.config[name].url.ext, this.config[name].url.controller);
 		var options	= {
-			'parameters': {
-				'action': 	this.config[name].url.action,
+			parameters: {
+				action: 	this.config[name].url.action,
 				'name':		name,
 				'offset':	offset
 			},
-			'onComplete': this.onExtended.bind(this, name, offset)
+			onComplete: this.onExtended.bind(this, name, offset)
 		};
 
 		$('extendlisting').remove();

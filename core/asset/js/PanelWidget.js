@@ -73,8 +73,8 @@ Todoyu.PanelWidget = {
 	saveToggleStatus: function(widget, expanded) {
 		var url		= Todoyu.getUrl('core', 'panelwidget');
 		var options	= {
-			'parameters': {
-				'action': 	'expanded',
+			parameters: {
+				action: 	'expanded',
 				'widget':	widget,
 				'expanded':	expanded ? 1 : 0
 			}

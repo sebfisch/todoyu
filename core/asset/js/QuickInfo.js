@@ -482,12 +482,12 @@ Todoyu.QuickInfo = {
 	loadQuickInfo: function(name, elementKey, callback, event, observedElement) {
 		var url		= Todoyu.getUrl('core', 'quickinfo');
 		var options	= {
-			'parameters': {
-				'action':		'get',
+			parameters: {
+				action:		'get',
 				'quickinfo':	name,
 				'element':		elementKey
 			},
-			'onComplete': this.onQuickInfoLoaded.bind(this, name, elementKey, event, observedElement)
+			onComplete: this.onQuickInfoLoaded.bind(this, name, elementKey, event, observedElement)
 		};
 
 		Todoyu.send(url, options);

@@ -118,14 +118,14 @@ Todoyu.Form = {
 
 		var url 	= Todoyu.getUrl(updateExt, updateController);
 		var options = {
-			'parameters': {
-				'action':		'addSubform',
+			parameters: {
+				action:		'addSubform',
 				'form': 	formName,
 				'field':	fieldName,
 				'record':	idRecord,
 				'index': 	index
 			},
-			'onComplete': this.onRecordAdded.bind(this, container, idRecord, formName, fieldName, index)
+			onComplete: this.onRecordAdded.bind(this, container, idRecord, formName, fieldName, index)
 		};
 
 		Todoyu.send(url, options);
@@ -300,8 +300,8 @@ Todoyu.Form = {
 	openWizard: function(idRecord, idField, extension, controller, action, height, width, title) {
 		var url		= Todoyu.getUrl(extension,	controller);
 		var options	= {
-			'parameters': {
-				'action':	action,
+			parameters: {
+				action:	action,
 				'idRecord':	idRecord,
 				'idField':	idField
 			}
