@@ -583,7 +583,7 @@ INSERT INTO `ext_contact_company` (`id`, `date_create`, `date_update`, `id_perso
 -- Data for Table `ext_contact_contactinfo`
 --
 
-INSERT INTO `ext_contact_contactinfo` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `id_contactinfotype`, `info`, `preferred`) VALUES
+INSERT INTO `ext_contact_contactinfo` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `id_contactinfotype`, `info`, `is_preferred`) VALUES
 (1, 1259845750, 1259848722, 1, 0, '11', 'http://www.snowflake.ch/', 1),
 (2, 1259845750, 1259848722, 1, 0, '4', '+41 44 455 80 80', 1),
 (3, 1259845750, 1259848722, 1, 0, '1', 'info@snowflake.ch', 1),
@@ -1003,7 +1003,7 @@ INSERT INTO `system_preference` (`id`, `id_person`, `ext`, `area`, `preference`,
 -- Data for Table `ext_contact_person`
 --
 
-INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `salutation`, `title`, `birthday`) VALUES
+INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `is_active`, `firstname`, `lastname`, `shortname`, `salutation`, `title`, `birthday`) VALUES
 (4, 1264581204, 1269513298, 1, 0, '', '', '', 0, 0, 'James', 'Brown', 'JABR', 'm', '', '1933-05-03'),
 (5, 1264584484, 1269513353, 1, 0, '', '', '', 0, 0, 'Ludwig', 'van Beethoven', 'LUVA', 'm', '', '1770-12-17'),
 (6, 1264584644, 1269510452, 1, 0, 'customer', '5f4dcc3b5aa765d61d8327deb882cf99', 'curt@trava.example.com', 0, 1, 'Curt', 'Customer', 'CUCU', 'm', '', '1980-04-04'),
