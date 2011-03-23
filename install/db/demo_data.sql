@@ -450,7 +450,7 @@ INSERT INTO `ext_project_activity` (`id`, `date_update`, `id_person_create`, `da
 -- Data for Table `ext_search_filtercondition`
 --
 
-INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `id_person_create`, `deleted`, `id_set`, `filter`, `value`, `negate`) VALUES
+INSERT INTO `ext_search_filtercondition` (`id`, `date_update`, `date_create`, `id_person_create`, `deleted`, `id_set`, `filter`, `value`, `is_negated`) VALUES
 (7, 0, 0, 0, 0, 1, 'currentPersonAssigned', '1', 0),
 (8, 0, 0, 0, 0, 1, 'status', '2,3', 0),
 (317, 1264779500, 1264779500, 1, 0, 3, 'owner', '17', 0),
