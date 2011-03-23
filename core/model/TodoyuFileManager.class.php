@@ -448,26 +448,26 @@ class TodoyuFileManager {
 	 *
 	 * @param	String		$absoluteFilePath
 	 * @param	String		$mimeType			Mime type of the file
-	 * @param	String		$filename			Name of the downloaded file shown in the browser
+	 * @param	String		$fileName			Name of the downloaded file shown in the browser
 	 * @return	Boolean		File was allowed to download and sent to browser
 	 */
-	public static function sendFile($absoluteFilePath, $mimeType = null, $filename = null) {
-			// Clear output buffer to prevent invalid file content
-		ob_clean();
+	public static function sendFile($absoluteFilePath, $mimeType = null, $fileName = null) {
 			// Get real path
 		$pathFile	= realpath($absoluteFilePath);
 
-		if( $pathFile !== false ) {
+			// Check file existence, readability, allowance. Than send file
+		if( $pathFile !== false && file_exists($pathFile) ) {
 			if( is_readable($pathFile) ) {
 				if( self::isFileInAllowedDownloadPath($pathFile) ) {
 						// Send download headers
-					$filesize	= filesize($pathFile);
-					$filename	= is_null($filename) ? basename($pathFile) : $filename;
-					$filemodtime= filemtime($pathFile);
+					$fileSize	= filesize($pathFile);
+					$fileName	= is_null($fileName) ? basename($pathFile) : $fileName;
+					$fileModTime= filemtime($pathFile);
 
-					TodoyuHeader::sendDownloadHeaders($mimeType, $filename, $filesize, $filemodtime);
-
-						// Send file data
+						// Clear output buffer to prevent invalid file content
+					ob_clean();
+						// Send headers, file data
+					TodoyuHeader::sendDownloadHeaders($mimeType, $fileName, $fileSize, $fileModTime);
 					$status = readfile($pathFile);
 
 					if( $status === false ) {

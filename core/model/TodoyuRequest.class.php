@@ -158,6 +158,17 @@ class TodoyuRequest {
 
 
 	/**
+	 * Get current referrer URL
+	 *
+	 * @return	String
+	 */
+	public static function getReferrer() {
+		return getenv('HTTP_REFERER');
+	}
+
+
+
+	/**
 	 * Get currently requested URL
 	 *
 	 * @return	String
