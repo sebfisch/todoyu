@@ -87,7 +87,7 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 			onComplete:	this.onPopupLoaded.bind(this)
 		};
 
-		Todoyu.Popups.open(this.popupID, '[LLL:global.headlet.about.title]', this.popupWidth, url, options);
+		Todoyu.Popups.open(this.popupID, '[LLL:core.global.headlet.about.label]', this.popupWidth, url, options);
 	},
 
 
