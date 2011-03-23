@@ -2,7 +2,7 @@
 -- Data for Table `ext_contact_person`
 --
 
-INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `active`, `firstname`, `lastname`, `shortname`, `salutation`, `title`, `birthday`) VALUES
+INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `is_active`, `firstname`, `lastname`, `shortname`, `salutation`, `title`, `birthday`) VALUES
 (1, 1246615200, 1264780312, 0, 0, 'admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'demo@todoyu.com', 1, 1, 'Adam', 'Admin', 'ALAD', 'm', '', '0000-00-00');
 
 -- --------------------------------------------------------
