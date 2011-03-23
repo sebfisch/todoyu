@@ -142,12 +142,11 @@ Todoyu.PanelWidget = {
 	 * Check whether given panel widget is loaded
 	 *
 	 * @method	isLoaded
-	 * @param	{String}		extKey
 	 * @param	{String}		widgetName
 	 * @return	{Boolean}
 	 */
-	isLoaded: function(extKey, widgetName) {
-		return typeof(Todoyu.Ext[extKey].PanelWidget[widgetName]) === 'object';
+	isLoaded: function(widgetName) {
+		return Todoyu.exists('panelwidget-' + widgetName.toLowerCase());
 	}
 
 };
