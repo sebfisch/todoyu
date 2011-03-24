@@ -34,3 +34,10 @@ ALTER TABLE `ext_currency_exchange` CHANGE `course` `rate` FLOAT UNSIGNED NOT NU
 
 -- Public flag of contactinfotype
 UPDATE `ext_contact_contactinfotype` SET `is_public` = 1 WHERE id IN (1, 3, 4, 6, 8, 10, 11);
+
+-- Replace old class names in freeze table
+UPDATE `system_freeze` SET `data` = REPLACE(`data`, 'O:13:"TodoyuAddress"', 'O:20:"TodoyuContactAddress"') WHERE `data` LIKE '%TodoyuAddress%';
+UPDATE `system_freeze` SET `data` = REPLACE(`data`, 'O:12:"TodoyuPerson"', 'O:19:"TodoyuContactPerson"') WHERE `data` LIKE '%TodoyuPerson%';
+UPDATE `system_freeze` SET `element_type` = REPLACE(`element_type`, 'TodoyuAddress', 'TodoyuContactAddress') WHERE `element_type` = 'TodoyuAddress';
+UPDATE `system_freeze` SET `element_type` = REPLACE(`element_type`, 'TodoyuPerson', 'TodoyuContactPerson') WHERE `element_type` = 'TodoyuPerson';
+UPDATE `system_freeze` SET `hash` = MD5(`data`);
