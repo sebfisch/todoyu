@@ -167,7 +167,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @param	{Element}	selectedListElement
 	 */
 	onElementSelected: function(callOriginal, inputField, selectedListElement, noUpdate) {
-		this.clearDelay();
+		this.resetClearDelay();
 
 		this.valid = true;
 		this.selectedFromList = true;
@@ -216,7 +216,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 *
 	 * @method	clearDelay
 	 */
-	clearDelay: function() {
+	resetClearDelay: function() {
 		clearTimeout(this.clearTimeout);
 	},
 
@@ -288,7 +288,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @param	{Boolean}	noDelay
 	 */
 	clear: function(noDelay) {
-		this.clearDelay();
+		this.resetClearDelay();
 		if( noDelay !== true ) {
 			this.clearTimeout = this.clear.bind(this, true).delay(0.1);
 			return ;
@@ -299,6 +299,10 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 		this.clearText();
 		this.clearValue();
 
+			// Call onCleared handler
+		if( Object.isFunction(this.options.onCleared) ) {
+			this.options.onCleared.call(null, this);
+		}
 	},
 
 
