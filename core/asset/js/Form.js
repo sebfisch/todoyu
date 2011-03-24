@@ -321,27 +321,32 @@ Todoyu.Form = {
 	 * Live-validation and correction of numeric value input field. Removes/corrects illegal/ambiguous characters
 	 *
 	 * @param	{Element}	field
-	 * @param	{Boolean}	floatAllowed
+	 * @param	{Boolean}	allowFloat
 	 */
-	assistNumericInput: function(field, floatAllowed) {
-		floatAllowed= floatAllowed || false;
-		var val		= $F(field);
+	assistNumericInput: function(field, allowFloat) {
+		allowFloat		= allowFloat || false;
+		var value		= $F(field);
+		var allowedChars= '0123456789.-';
 
-		if( ! Todoyu.Validate.isOnlyAllowedChars(val, '0123456789.,-') ) {
+		if(allowFloat) {
+			value	= value.replace(',', '.');
+
+			if( value.indexOf('.') !== value.lastIndexOf('.') ) {
+				value = value.substring(0, value.lastIndexOf('.'));
+			}
+		}
+
+		if( ! Todoyu.Validate.isOnlyAllowedChars(value, allowedChars) ) {
 				// Filter-out any illegal characters
-			var whitelist	= (floatAllowed) ? /([0-9]|\.|\,|\-)/g : /([0-9])/g;
-			var illegalChars	= val.replace(whitelist, '');
+			var whitelist	= (allowFloat) ? /([0-9]|\.|\-)/g : /([0-9])/g;
+			var illegalChars	= value.replace(whitelist, '');
 
 			for( var i = 0; i <= illegalChars.length; i++ ) {
-				val	= val.replace(illegalChars[i], '');
+				value	= value.replace(illegalChars[i], '');
 			}
-
-			if(floatAllowed) {
-				val	= val.replace(',', '.');
-			}
-
-			$(field).value = val;
 		}
+
+		$(field).value = value;
 	},
 
 
