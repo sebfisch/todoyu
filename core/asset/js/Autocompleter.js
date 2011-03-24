@@ -69,7 +69,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 		$(inputField).on('blur', this.onBlur.bind(this));
 		$(inputField).on('keyup', this.onKeyup.bind(this));
 			// Install change handler
-		$(inputField).observe('change', this.onInputChange.bind(this));
+		$(inputField).on('change', this.onChange.bind(this));
 	},
 
 
@@ -103,7 +103,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @method	onInputChange
 	 * @param	{Event}		event
 	 */
-	onInputChange: function(event) {
+	onChange: function(event) {
 			// If the change was called by a valid select, revert flag and do nothing
 		if( this.selectedFromList ) {
 			this.selectedFromList = false;
@@ -246,13 +246,31 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @param	{Event}		event
 	 */
 	onKeyup: function(event) {
-		if( event.which != 32 ) {
+		if( this.isNormalKey(event.which) ) {
 			this.valid = false;
 		}
 
 		if( this.isEmpty() ) {
 			this.clear();
 		}
+	},
+
+
+
+	/**
+	 * Check whether key is a normal key (not one of the specials which are ignored)
+	 *
+	 * @param	{Number}	keyCode
+	 */
+	isNormalKey: function(keyCode) {
+		return [
+			Event.KEY_DOWN,
+			Event.KEY_LEFT,
+			Event.KEY_UP,
+			Event.KEY_RIGHT,
+			Event.KEY_RETURN,
+			32 // Space
+		].include(keyCode) === false;
 	},
 
 
