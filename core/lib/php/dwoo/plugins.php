@@ -464,7 +464,7 @@ function Dwoo_Plugin_isInternal_compile(Dwoo_Compiler $compiler) {
  * @param	Mixed		$subtrahend
  * @return	Integer							difference
  */
-function Dwoo_Plugin_subtract(Dwoo_Compiler $compiler, $minuend, $subtrahend) {
+function Dwoo_Plugin_subtract_compile(Dwoo_Compiler $compiler, $minuend, $subtrahend) {
 	return '(floatval(' . $minuend . ')-floatval(' . $subtrahend . '))';
 }
 

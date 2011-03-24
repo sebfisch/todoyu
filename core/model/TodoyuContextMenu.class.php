@@ -75,6 +75,7 @@ class TodoyuContextMenu {
 
 			// Get items from all functions
 		foreach($funcRefs as $funcRef) {
+//			TodoyuDebug::printInFirebug($funcRef, 'funcRef');
 			$modified	=  TodoyuFunction::callUserFunction($funcRef['function'], $this->idElement, $this->elements);
 
 			if( is_array($modified) ) {
