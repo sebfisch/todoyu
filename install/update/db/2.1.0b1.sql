@@ -33,6 +33,7 @@ ALTER TABLE `ext_contact_person` CHANGE `active` `is_active` TINYINT( 1 ) NOT NU
 ALTER TABLE `ext_currency_exchange` CHANGE `course` `rate` FLOAT UNSIGNED NOT NULL DEFAULT '0';
 
 -- Public flag of contactinfotype
+ALTER TABLE `ext_contact_contactinfotype` ADD `is_public` TINYINT( 1 ) NOT NULL DEFAULT '0';
 UPDATE `ext_contact_contactinfotype` SET `is_public` = 1 WHERE id IN (1, 3, 4, 6, 8, 10, 11);
 
 -- Replace old class names in freeze table
