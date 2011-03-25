@@ -24,7 +24,7 @@ DROP TABLE `system_panelwidget`;
 ALTER TABLE `ext_timetracking_track` CHANGE `comment` `comment` VARCHAR( 250 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
 
 -- Rename preferred to is_preferred
-ALTER TABLE `ext_contact_contactinfo` CHANGE `preferred` `is_preferred` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT '0';-- Rename person.active => is_active
+ALTER TABLE `ext_contact_contactinfo` CHANGE `preferred` `is_preferred` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT '0';
 
 -- Rename active to is_active
 ALTER TABLE `ext_contact_person` CHANGE `active` `is_active` TINYINT( 1 ) NOT NULL DEFAULT '0';
