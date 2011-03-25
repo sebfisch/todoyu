@@ -237,7 +237,7 @@ class TodoyuFileManager {
 	 */
 	public static function makeRandomCacheDir($basePath, $more_entropy = false, $prefix = '') {
 		$dirName= uniqid($prefix, $more_entropy);
-		$path	= PATH_CACHE . DIR_SEP . $basePath . DIR_SEP . $dirName;
+		$path	= self::pathAbsolute(PATH_CACHE . DIR_SEP . $basePath . DIR_SEP . $dirName) ;
 
 		return self::makeDirDeep($path) ? $path : false;
 	}
