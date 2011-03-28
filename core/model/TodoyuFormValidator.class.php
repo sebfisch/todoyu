@@ -673,7 +673,7 @@ class TodoyuFormValidator {
 		$exists	= Todoyu::db()->hasResult($fields, $table, $where);
 
 		if( $exists ) {
-			$formElement->setErrorMessage(Label('form.error.notUnique'));
+			$formElement->setErrorMessage(Label('core.form.error.notUnique'));
 			return false;
 		} else {
 			return true;
