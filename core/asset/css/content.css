@@ -57,6 +57,7 @@ span.iconLarge {
 ul.ulList {}
 ul.ulList li.listItem {
 	overflow:hidden;
+	list-style: none;
 	line-height:18px;
 }
 * html ul.ulList li.listItem {
