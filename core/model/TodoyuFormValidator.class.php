@@ -662,11 +662,11 @@ class TodoyuFormValidator {
 
 			// If no table defined to check in
 		if( $table === '') {
-			Todoyu::log('Missing tablename in unique form validation for field ' . $formElement->getName(), TodoyuLogger::LEVEL_ERROR);
+			Todoyu::log('Missing table name in unique form validation for field ' . $formElement->getName(), TodoyuLogger::LEVEL_ERROR);
 			return false;
 		}
 
-			// Check if a record with this fieldvalue already exists (current record is ignored)
+			// Check if a record with this field value already exists (current record is ignored)
 		$fields	= $field;
 		$where	= Todoyu::db()->backtick($field) . ' = ' . Todoyu::db()->quote($value, true) . ' AND id != ' . $idRecord;
 

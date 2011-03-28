@@ -255,6 +255,24 @@ function Dwoo_Plugin_dateFormat_compile(Dwoo_Compiler $compiler, $timestamp, $fo
 
 
 /**
+ * Special Todoyu time format. Format time like 23:59 (or 23:59:59)
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo_Compiler 	$compiler		Dwoo compiler
+ * @param	Integer			$timestamp		Timestamp to format
+ * @param	Boolean			$withSeconds
+ * @param	Boolean			$round
+ * @return	String
+ */
+function Dwoo_Plugin_timeFormat_compile(Dwoo_Compiler $compiler, $timestamp, $withSeconds = false, $round = true) {
+	return 'TodoyuTime::formatTime(' . $timestamp . ', ' . $withSeconds . ', ' . $round . ')';
+}
+
+
+
+/**
  * Format an SQL datetime string as date format of current locale
  *
  * @package		Todoyu
