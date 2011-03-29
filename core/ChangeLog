@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.1.0 - not released yet
+	* Bugfix: Made allowed tags of RTE more precise to disallow styles that are not supported via RTE options (inserted via paste)
 	* Feature: Added dwoo plugin "formatSqlDate" to format SQL datetime string as date in current locale format
 	* Bugfix: Fixed filemanager file existence check before deletion
 	* Changed: Added deleteFile method (with success logging) to TodoyuFileManager
