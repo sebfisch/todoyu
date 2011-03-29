@@ -173,7 +173,7 @@ class TodoyuContextMenu {
 		if( strstr($label, '::') ) {
 			$label = TodoyuFunction::callUserFunction($label, $this->idElement);
 		} else {
-			$label	= TodoyuLabelManager::getLabel($label);
+			$label	= Label($label);
 		}
 
 		return $label;

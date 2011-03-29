@@ -142,7 +142,7 @@ class TodoyuStaticRecords {
 	public static function getLabel($type, $key) {
 		$labelKey	= self::$localeConfig[$type]['locale'] . '.' . $key;
 
-		return TodoyuLabelManager::getLabel($labelKey);
+		return Label($labelKey);
 	}
 
 

@@ -65,8 +65,8 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 			$comment= trim($this->config['comment']);
 
 			if( $comment !== '' ) {
-				$value	= TodoyuLabelManager::getLabel($comment);
-			}			
+				$value	= Label($comment);
+			}
 		}
 
 		return $value;

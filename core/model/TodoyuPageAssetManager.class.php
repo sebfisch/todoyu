@@ -384,7 +384,7 @@ class TodoyuPageAssetManager {
 	 * @return	String
 	 */
 	private static function localizeJavascriptCallback(array $match) {
-		return str_replace('\'', '\\\'', TodoyuLabelManager::getLabel($match[1]));
+		return str_replace('\'', '\\\'', Label($match[1]));
 	}
 
 
