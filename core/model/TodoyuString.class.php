@@ -681,6 +681,36 @@ class TodoyuString {
 
 
 	/**
+	 * Wrap given label with a todoyu-internal link if given ext is allowed to be used
+	 *
+	 * @param	String		$label
+	 * @param	String		$extKey
+	 * @param	Array		$params
+	 * @param	String		$hash
+	 * @param	String		$target
+	 * @return	String
+	 */
+	public static function wrapTodoyuLink($label, $extKey, array $params, $hash = '', $target = '') {
+		$allowed	= true;
+
+			// Check extension's general right setting
+		if( TodoyuRightsManager::checkIfRightExists($extKey, 'general:use') && ! allowed($extKey, 'general:use') ) {
+			$allowed	= false;
+		}
+
+		if( $allowed ) {
+			$params['ext']	= $extKey;
+			$linkURL		= self::buildUrl($params, $hash);
+
+			$label	= '<a href="' . $linkURL . '"' . ( $target != '' ? ' target="' . $target . '"' : '') . '>' . $label . '</a>';
+		}
+
+		return $label;
+	}
+
+
+
+	/**
 	 * Returns an HTML - img tag
 	 *
 	 * @param	String		$src
