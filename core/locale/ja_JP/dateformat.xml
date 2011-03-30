@@ -21,5 +21,6 @@
 	<label index="time">%H:%M</label>
 	<label index="timesec">%H:%M:%S</label>
 	<label index="datetime">%y/%m/%d %H:%M</label>
+	<label index="dShortDatetime">%a %y/%m/%d %H:%M</label>
 	<label index="day">%d</label>
 </labels>

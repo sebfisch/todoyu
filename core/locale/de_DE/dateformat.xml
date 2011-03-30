@@ -8,6 +8,7 @@
 	<label index="D2MshortY2">%d. %b %y</label>
 	<label index="D2Mshort">%d. %b</label>
 	<label index="D2MshortTime">%d. %b %H:%M</label>
+	<label index="dShort">%a</label>
 	<label index="DshortD2M2">%a %d.%m.</label>
 	<label index="D2MlongY4">%d. %B %Y</label>
 	<label index="Mlong">%B</label>
@@ -21,5 +22,6 @@
 	<label index="time">%H:%M</label>
 	<label index="timesec">%H:%M:%S</label>
 	<label index="datetime">%d.%m.%Y %H:%M</label>
+	<label index="dShortDatetime">%a %d.%m.%Y %H:%M</label>
 	<label index="day">%d.</label>
 </labels>
