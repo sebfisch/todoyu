@@ -88,3 +88,7 @@ UPDATE `system_right` SET `right` = 'deletetask:deleteTaskInAllProjects' WHERE `
 UPDATE `system_right` SET `right` = 'deletetask:deleteOwnContainers' WHERE `right` = 'container:deleteOwnContainers' AND `ext` = 112;
 UPDATE `system_right` SET `right` = 'deletetask:deleteContainerInOwnProjects' WHERE `right` = 'container:deleteInOwnProjects' AND `ext` = 112;
 UPDATE `system_right` SET `right` = 'deletetask:deleteContainerInAllProjects' WHERE `right` = 'container:deleteInAllProjects' AND `ext` = 112;
+
+
+-- change end date field of containers from date_end to date_deadline
+UPDATE `ext_project_task` SET `date_deadline` = `date_end` WHERE `type` = 2 AND `date_deadline` = 0 AND `date_end` != 0;
