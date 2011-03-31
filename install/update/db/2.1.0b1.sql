@@ -42,3 +42,6 @@ UPDATE `system_freeze` SET `data` = REPLACE(`data`, 'O:12:"TodoyuPerson"', 'O:19
 UPDATE `system_freeze` SET `element_type` = REPLACE(`element_type`, 'TodoyuAddress', 'TodoyuContactAddress') WHERE `element_type` = 'TodoyuAddress';
 UPDATE `system_freeze` SET `element_type` = REPLACE(`element_type`, 'TodoyuPerson', 'TodoyuContactPerson') WHERE `element_type` = 'TodoyuPerson';
 UPDATE `system_freeze` SET `hash` = MD5(`data`);
+
+-- rename is_negated
+ALTER TABLE `ext_search_filtercondition` CHANGE `negate` `is_negated` TINYINT( 1 ) NOT NULL DEFAULT '0';
