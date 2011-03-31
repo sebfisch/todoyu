@@ -455,6 +455,20 @@ Todoyu.Form = {
 
 
 	/**
+	 * Enable save and cancel buttons in form
+	 *
+	 * @method	enableSaveButtons
+	 * @param	{Element}	form
+	 */
+	enableSaveButtons: function(form) {
+		$(form).down('fieldset.buttons').select('button').each(function(button){
+			Form.Element.enable(button);
+		});
+	},
+
+
+
+	/**
 	 * Set selected options of a select element
 	 *
 	 * @method	selectOptions
