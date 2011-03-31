@@ -862,6 +862,21 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			$this->setBeforeFieldText($current . $glue . $text);
 		}
 	}
+
+
+
+	/**
+	 * Get names of parent fieldsets
+	 *
+	 * @return	Array
+	 */
+	public function getParentFieldsetNames() {
+		$parentFieldsets	= $this->getFieldset()->getParentFieldsetNames();
+		$parentFieldsets[]	= $this->getFieldset()->getName();
+
+		return $parentFieldsets;
+	}
+
 }
 
 ?>

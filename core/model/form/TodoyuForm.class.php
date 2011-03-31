@@ -1116,6 +1116,30 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
+	 * Remove all fieldsets which contain no elements
+	 *
+	 */
+	private function removeEmptyFieldsetsBeforeRendering() {
+		$allFieldsetNames		= $this->getFieldsetNames();
+		$activeFieldsetNames	= array();
+
+		foreach($this->getFieldnames() as $fieldname) {
+			$activeFieldsetNames[] = $this->getField($fieldname)->getParentFieldsetNames();
+		}
+
+		$activeFieldsetNames	= TodoyuArray::flatten($activeFieldsetNames);
+		$activeFieldsetNames	= array_unique($activeFieldsetNames);
+
+		$emptyFieldsetNames		= array_diff($allFieldsetNames, $activeFieldsetNames);
+
+		foreach($emptyFieldsetNames as $emptyFieldsetName) {
+			$this->getFieldset($emptyFieldsetName)->remove();
+		}
+	}
+
+
+
+	/**
 	 * Render only a fieldset without other fieldsets and form stuff
 	 *
 	 * @param	String		$fieldsetName
@@ -1133,6 +1157,8 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	String
 	 */
 	public function render() {
+		$this->removeEmptyFieldsetsBeforeRendering();
+
 		$tmpl	= Todoyu::$CONFIG['FORM']['templates']['form'];
 		$data	= $this->getData();
 

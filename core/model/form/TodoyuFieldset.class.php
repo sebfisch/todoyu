@@ -226,7 +226,7 @@ class TodoyuFieldset implements ArrayAccess {
 	 * Add a new fieldset to the fieldset
 	 * Creates a new fieldset and adds it to the child list
 	 * and return a reference to the fieldset
-	 * 
+	 *
 	 * To add a complete fieldset and its fields (e.g. form hook) use injectFieldset
 	 * @see TodoyuFieldset->injectFieldset();
 	 *
@@ -532,12 +532,31 @@ class TodoyuFieldset implements ArrayAccess {
 		$fieldsets = array();
 
 		foreach($this->elements as $element) {
-			if( $element instanceof Fieldset ) {
+			if( $element instanceof TodoyuFieldset ) {
 				$fieldsets[] = $element;
 			}
 		}
 
 		return $fieldsets;
+	}
+
+
+
+	/**
+	 * Get names of parent fieldsets
+	 *
+	 * @return	Array
+	 */
+	public function getParentFieldsetNames() {
+		$fieldset	= $this;
+		$parents	= array();
+
+		while( ! ($fieldset->getParent() instanceof TodoyuForm)  ) {
+			$parents[] = $fieldset->getParent()->getName();
+			$fieldset = $fieldset->getParent();
+		}
+
+		return $parents;
 	}
 
 
@@ -552,6 +571,9 @@ class TodoyuFieldset implements ArrayAccess {
 			if( $element instanceof TodoyuFormElement ) {
 				$form->registerField($element);
 			} else if( $element instanceof TodoyuFieldset ) {
+				/**
+				 * @var	TodoyuFieldset	$element
+				 */
 				$element->setFieldsToForm($form);
 			}
 		}
