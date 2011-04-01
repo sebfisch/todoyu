@@ -79,6 +79,17 @@ Todoyu.LoaderBox = {
 		this.box.show();
 	},
 
+	update: function(message) {
+		this._updateMessage(message);
+	},
+
+
+	updateElement: function(element) {
+		this._updateMessage('');
+
+		this.box.down('div.message').insert(element);
+	},
+
 
 
 	/**
