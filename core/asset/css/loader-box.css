@@ -1,4 +1,4 @@
-#loader-box {
+.loaderBox {
 	position:fixed;
 	z-index:300;
 	background-color:#FFF;
@@ -6,12 +6,12 @@
 	-moz-box-shadow:2px 2px 7px #999999;
 }
 
-#loader-box div,
-#loader-box img {
+.loaderBox div,
+.loaderBox img {
 	float:left;
 }
 
-#loader-box div.title {
+.loaderBox div.title {
 	clear:both;
 	width:282px;
 	padding:5px;
@@ -19,14 +19,14 @@
 	font-weight:bold;
 }
 
-#loader-box img.spinner {
+.loaderBox img.spinner {
 	clear:left;
 	padding:20px;
 	width:32px;
 	height:32px;
 }
 
-#loader-box div.message {
+.loaderBox div.content {
 	display:inline-block;
 	width:180px;
 	padding:20px;
@@ -44,5 +44,4 @@
 	position:fixed;
 	opacity:0.5;
 	filter: alpha(opacity = 50);
-
 }

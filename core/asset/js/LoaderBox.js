@@ -28,14 +28,20 @@
  * @class		LoaderBox
  * @namespace	Todoyu
  */
-Todoyu.LoaderBox = {
+Todoyu.LoaderBox = Class.create({
 
 	/**
-	 * Id of the loader box
-	 * @property	idBox
-	 * @type		String
+	 * Name of the box
 	 */
-	idBox: 'loader-box',
+	name: '',
+
+	/**
+	 * Config
+	 */
+	config: {
+		block: true
+	},
+
 
 	/**
 	 * Loader box element
@@ -45,13 +51,6 @@ Todoyu.LoaderBox = {
 	box: null,
 
 	/**
-	 * Id of the screen blocker
-	 * @property	idScreenBlock
-	 * @type		String
-	 */
-	idScreenBlock: 'loader-box-screen-block',
-
-	/**
 	 * Screen blocker element
 	 * @property	screenBlock
 	 * @type		Element
@@ -59,35 +58,95 @@ Todoyu.LoaderBox = {
 	screenBlock: null,
 
 
+	/**
+	 * Initialize
+	 *
+	 * @param	{String}	name
+	 * @param	{Object}	config
+	 */
+	initialize: function(name, config) {
+		this.name = name;
+
+		if( config ) {
+			this.config	= $H(this.config).merge(config).toObject();
+		}
+
+		if( this.config.title ) {
+			this.setTitle(this.config.title);
+		}
+
+		if( this.config.text ) {
+			this.setText(this.config.text);
+		}
+
+		this.build();
+		this.hide();
+	},
+
+
+	/**
+	 * Remove HTML of the box
+	 */
+	remove: function() {
+		if( this.box ) {
+			this.box.remove();
+		}
+	},
+
+
+
+	/**
+	 * Set text
+	 *
+	 * @param	{String}	text
+	 */
+	setText: function(text) {
+		this.box.down('.content').update(text);
+	},
+
+
+
+	/**
+	 * Update content with a new element
+	 * Like text, but inserts a HTML element
+	 *
+	 * @param 	{Element}	element
+	 */
+	update: function(element) {
+		this.setText('');
+		this.box.down('.content').insert(element);
+	},
+
+
+
+	/**
+	 * Set box title
+	 *
+	 * @param	{String}	title
+	 */
+	setTitle: function(title) {
+		this.box.down('.title').update(title);
+	},
+
 
 	/**
 	 * Show the loader box with a message
 	 *
 	 * @method	show
-	 * @param	{String}	message
-	 * @param	{Boolean}	blockScreen
+	 * @param	{String}	text
+	 * @param	{Boolean}	block
 	 */
-	show: function(message, blockScreen) {
-		this._build();
-		this._updateMessage(message);
-		this._center();
-
-		if( blockScreen ) {
-			this._showScreenBlock();
+	show: function(text, block) {
+		if( text ) {
+			this.setText(text);
 		}
 
+		if( this.config.block || block ) {
+			this.showBlock();
+		}
+
+		this.center();
 		this.box.show();
-	},
-
-	update: function(message) {
-		this._updateMessage(message);
-	},
-
-
-	updateElement: function(element) {
-		this._updateMessage('');
-
-		this.box.down('div.message').insert(element);
 	},
 
 
@@ -98,12 +157,18 @@ Todoyu.LoaderBox = {
 	 * @method	hide
 	 */
 	hide: function() {
-		if( this.box ) {
-			this.box.hide();
-		}
-		if( this.screenBlock ) {
-			this.screenBlock.hide();
-		}
+		this.box.hide();
+		this.hideBlock();
+	},
+
+
+
+	/**
+	 * Build HTML structure
+	 */
+	build: function() {
+		this.buildBox();
+		this.buildScreenBlock();
 	},
 
 
@@ -111,17 +176,16 @@ Todoyu.LoaderBox = {
 	/**
 	 * Build the loader box with its sub elements
 	 *
-	 * @private
-	 * @method	_build
+	 *
+	 * @method	buildBox
 	 */
-	_build: function() {
-		if( ! Todoyu.exists(this.idBox) ) {
-			document.body.insert(new Element('div',{
-				'id':	this.idBox,
-				'style':'display:none'
-			}));
-
-			this.box = $(this.idBox);
+	buildBox: function() {
+		if( ! this.box ) {
+			this.box = new Element('div',{
+				id:		'loader-box-' + this.name,
+				style:	'display:none',
+				'class':'loaderBox'
+			});
 
 			this.box.insert(new Element('div', {
 				'class': 'title'
@@ -129,24 +193,27 @@ Todoyu.LoaderBox = {
 
 			this.box.insert(new Element('img', {
 				'class': 	'spinner',
-				'src': 		'core/asset/img/ajax-loader-large.gif'
+				src: 		'core/asset/img/ajax-loader-large.gif'
 			}));
+
 			this.box.insert(new Element('div', {
-				'class': 'message'
+				'class': 'content'
 			}));
+
+			document.body.insert(this.box);
 		}
 	},
 
 
-
 	/**
-	 * Update the message in the loader box
-	 *
-	 * @method	_updateMessage
-	 * @param	{String}	message
+	 * Build screen blocker
 	 */
-	_updateMessage: function(message) {
-		this.box.down('div.message').update(message);
+	buildScreenBlock: function() {
+		this.screenBlock	= new Element('div', {
+			id:	'loader-box-screen-block'
+		});
+
+		document.body.insert(this.screenBlock);
 	},
 
 
@@ -156,7 +223,7 @@ Todoyu.LoaderBox = {
 	 *
 	 * @method	_center
 	 */
-	_center: function() {
+	center: function() {
 		Todoyu.Ui.centerElement(this.box);
 	},
 
@@ -167,16 +234,17 @@ Todoyu.LoaderBox = {
 	 *
 	 * @method	_showScreenBlock
 	 */
-	_showScreenBlock: function() {
-		if( ! Todoyu.exists(this.idScreenBlock) ) {
-			document.body.insert(new Element('div', {
-				'id':	this.idScreenBlock
-			}));
-
-			this.screenBlock = $(this.idScreenBlock);
-		}
-
+	showBlock: function() {
 		this.screenBlock.show();
+	},
+
+
+
+	/**
+	 * Hide blocker
+	 */
+	hideBlock: function() {
+		this.screenBlock.hide();
 	}
 
-};
+});
