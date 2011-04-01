@@ -39,7 +39,8 @@ Todoyu.LoaderBox = Class.create({
 	 * Config
 	 */
 	config: {
-		block: true
+		block:	true,
+		show:	false
 	},
 
 
@@ -71,6 +72,8 @@ Todoyu.LoaderBox = Class.create({
 			this.config	= $H(this.config).merge(config).toObject();
 		}
 
+		this.build();
+
 		if( this.config.title ) {
 			this.setTitle(this.config.title);
 		}
@@ -79,8 +82,11 @@ Todoyu.LoaderBox = Class.create({
 			this.setText(this.config.text);
 		}
 
-		this.build();
-		this.hide();
+		if( this.config.show ) {
+			this.show();
+		} else {
+			this.hide();
+		}
 	},
 
 
