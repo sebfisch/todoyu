@@ -95,9 +95,19 @@ Todoyu.LoaderBox = Class.create({
 	 */
 	destroy: function() {
 		if( this.box ) {
-			this.box.remove();
-			this.screenBlock.remove();
+			this.hide();
+			this.remove();
 		}
+	},
+
+
+
+	/**
+	 * Remove elements
+	 */
+	remove: function() {
+		this.box.remove();
+		this.screenBlock.remove();
 	},
 
 

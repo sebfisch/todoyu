@@ -720,6 +720,40 @@ Todoyu.Ui = {
 		});
 
 		return element;
+	},
+
+
+
+	/**
+	 * Build a button element
+	 *
+	 * @param	{String}	id
+	 * @param	{String}	className
+	 * @param	{String}	label
+	 * @param	{Function}	onClick
+	 */
+	buildButton: function(id, className, label, onClick) {
+		var button	= new Element('button', {
+			title:	label,
+			'class':'button ' + className,
+			type:	'button',
+			id:		id
+		});
+		button.insert(new Element('span', {
+			'class': 'icon'
+		}));
+		button.insert(new Element('span', {
+			'class': 'label'
+		}).update(label));
+		button.insert(new Element('span', {
+			'class': 'rgt'
+		}));
+
+		if( onClick ) {
+			button.on('click', 'button', onClick);
+		}
+
+		return button;
 	}
 
 };

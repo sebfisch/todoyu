@@ -240,6 +240,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 73
 		),
 		array(
+			'file'		=> 'core/asset/js/ProgressBox.js',
+			'position'	=> 74
+		),
+		array(
 			'file'		=> 'core/asset/js/Highcharts.js',
 			'position'	=> 74
 		),
@@ -414,6 +418,11 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/asset/css/loader-box.css',
+			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/asset/css/progress-box.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
