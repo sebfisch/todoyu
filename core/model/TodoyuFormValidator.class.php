@@ -656,8 +656,13 @@ class TodoyuFormValidator {
 		$value		= trim($value);
 
 			// If empty is allowed, don't check
-		if( $value === '' && isset($validatorConfig['allowEmpty']) ) {
-			return true;
+		if( $value === '' ) {
+			if( isset($validatorConfig['allowEmpty']) ) {
+				return true;
+			} else {
+					// Disallowed empty value found
+				return false;
+			}
 		}
 
 			// If no table defined to check in
