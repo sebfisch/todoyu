@@ -305,9 +305,12 @@ class TodoyuFileManager {
 	 * @param	String			$uploadFileName
 	 * @return	String|Boolean	New file path or FALSE
 	 */
-	public static function addFileToStorage($path, $sourceFile, $uploadFileName, $prependWithTimestamp = true) {
-		$fileName	= ( $prependWithTimestamp === true ) ? NOW . '_' . $uploadFileName : '';
-		$fileName	.= self::makeCleanFilename($uploadFileName);
+	public static function addFileToStorage($path, $sourceFile, $uploadFileName, $prependTimestamp = true) {
+		$fileName	= self::makeCleanFilename($uploadFileName);
+
+		if( $prependTimestamp ) {
+			$fileName	= NOW . '_' . $fileName;
+		}
 
 		$filePath	= self::pathAbsolute($path . '/' . $fileName);
 
