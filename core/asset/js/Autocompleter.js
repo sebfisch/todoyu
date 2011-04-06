@@ -53,7 +53,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 
 			// Only add callback and default parameters if no action parameter defined (default)
-		if( ! url.toQueryParams().action && (options.parameters == '' && ! options.parameters.toQueryParams().action) ) {
+		if( ! url.toQueryParams().action && options.parameters == '' && ! options.parameters.toQueryParams().action ) {
 			options.parameters	= '&action=update&autocompleter=' + options.acName + '&element=' + $(inputField).id;
 				// Add form name and data
 			options.callback	= this.callbackModifyRequestParams.bind(this);
@@ -110,8 +110,11 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 			return;
 		}
 
-			// Clear fields
-		this.clear();
+		if( !this.isSuggestionVisible() ) {
+				// Clear fields
+			this.clear();
+		}
+
 	},
 
 
@@ -192,14 +195,15 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @return	{Element}
 	 */
 	callOnSelected: function(inputField, selectedListElement) {
-		var selectedValue	= selectedListElement.id;
-		var selectedText	= selectedListElement.innerHTML.stripScripts().stripTags().strip();
 		var updateValueField= true;
-		var valueField		= this.getValueField();
 
 			// Call custom onSelected method
 		if( this.options.onSelected ) {
-			var result = Todoyu.callUserFunction(this.options.onSelected, inputField, valueField, selectedValue, selectedText, this);
+			var selectedValue	= selectedListElement.id;
+			var selectedText	= selectedListElement.innerHTML.stripScripts().stripTags().strip();
+			var valueField		= this.getValueField();
+
+			var result 			= Todoyu.callUserFunction(this.options.onSelected, inputField, valueField, selectedValue, selectedText, this);
 
 			if( result === false ) {
 				updateValueField = false;
@@ -223,13 +227,23 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 
 	/**
+	 * Check whether the suggestion div is visible
+	 */
+	isSuggestionVisible: function() {
+		var id	= this.element.id + '-suggestions';
+		return $(id) && $(id).visible();
+	},
+
+
+
+	/**
 	 * If focus leaves autocompleter field
 	 *
 	 * @method	onBlur
 	 * @param	{Event}		event
 	 */
 	onBlur: function(event) {
-		if( this.valid === false ) {
+		if( this.valid === false && !this.isSuggestionVisible() ) {
 			this.clear();
 		}
 

@@ -114,8 +114,32 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 		this.callbacks.onRemove.call(this, idItem);
 	},
 
+
+	/**
+	 *
+	 * @param $super
+	 * @param inputElement
+	 * @param acParam
+	 */
 	callbackModifyRequestParams: function($super, inputElement, acParam) {
 		return acParam;
+	},
+
+
+
+	/**
+	 * onKeyup handler
+	 * Override autocompleter keyup handler.
+	 * Don't clear fields if input is empty, because after a valid selection,
+	 * the input is cleared in the multi autocompleter
+	 *
+	 * @param	{Function}	$super
+	 * @param	{Event}		event
+	 */
+	onKeyup: function($super, event) {
+		if( this.isNormalKey(event.which) ) {
+			this.valid = false;
+		}
 	}
 
 });
