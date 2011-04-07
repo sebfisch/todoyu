@@ -516,19 +516,20 @@ function Dwoo_Plugin_html2text_compile(Dwoo_Compiler $compiler, $html) {
  * @param	Array		$value		Array to allow for multi selection
  * @return	String
  */
-function Dwoo_Plugin_select(Dwoo $dwoo, array $options, array $value = array(), $id = '', $name = '', $class = '', $size = 0, $multiple = false, $disabled = false, $onchange = '', $onclick = '') {
+function Dwoo_Plugin_select(Dwoo $dwoo, array $options, array $value = array(), $id = '', $name = '', $class = '', $size = 0, $multiple = false, $disabled = false, $onchange = '', $onclick = '', $noPleaseSelect = false) {
 	$tmpl	= 'core/view/select.tmpl';
 	$data	= array(
-		'htmlId'	=> $id,
-		'htmlName'	=> $name,
-		'class'		=> $class,
-		'size'		=> $size == 0 ? sizeof($options) : $size,
-		'multiple'	=> $multiple,
-		'disabled'	=> $disabled,
-		'onchange'	=> $onchange,
-		'onclick'	=> $onclick,
-		'value'		=> $value,
-		'options'	=> $options
+		'htmlId'		=> $id,
+		'htmlName'		=> $name,
+		'class'			=> $class,
+		'size'			=> $size == 0 ? sizeof($options) : $size,
+		'multiple'		=> $multiple,
+		'disabled'		=> $disabled,
+		'onchange'		=> $onchange,
+		'onclick'		=> $onclick,
+		'value'			=> $value,
+		'options'		=> $options,
+		'noPleaseSelect'=> $noPleaseSelect
 	);
 
 		// Append brackets to ensure multiple values are submitted
