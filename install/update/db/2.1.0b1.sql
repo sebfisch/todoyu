@@ -8,7 +8,7 @@ DROP TABLE `system_log`;
 -- Rename worktype to activity --
 RENAME TABLE `ext_project_worktype` TO `ext_project_activity` ;
 ALTER TABLE `ext_project_task` CHANGE `id_worktype` `id_activity` SMALLINT( 6 ) NOT NULL DEFAULT '0';
-ALTER TABLE `ext_projectbilling_rate` CHANGE `id_worktype` `id_activity` SMALLINT( 6 ) UNSIGNED NOT NULL;
+-- ALTER TABLE `ext_projectbilling_rate` CHANGE `id_worktype` `id_activity` SMALLINT( 6 ) UNSIGNED NOT NULL;
 
 -- container status --- (open)
 UPDATE `ext_project_task` SET status = 2 WHERE `type` = 2;
@@ -30,7 +30,7 @@ ALTER TABLE `ext_contact_contactinfo` CHANGE `preferred` `is_preferred` TINYINT(
 ALTER TABLE `ext_contact_person` CHANGE `active` `is_active` TINYINT( 1 ) NOT NULL DEFAULT '0';
 
 -- Rename course to rate
-ALTER TABLE `ext_currency_exchange` CHANGE `course` `rate` FLOAT UNSIGNED NOT NULL DEFAULT '0';
+-- ALTER TABLE `ext_currency_exchange` CHANGE `course` `rate` FLOAT UNSIGNED NOT NULL DEFAULT '0';
 
 -- Public flag of contactinfotype
 ALTER TABLE `ext_contact_contactinfotype` ADD `is_public` TINYINT( 1 ) NOT NULL DEFAULT '0';
