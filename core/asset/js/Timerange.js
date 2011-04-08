@@ -114,7 +114,7 @@ Todoyu.Timerange = Class.create({
 
 			// Get indexes of selected values
 		if( this.selectedDates ) {
-			options.sliderValue	= [this.getIndex(this.selectedDates[0]), this.getIndex(this.selectedDates[1])];
+			options.sliderValue	= [this.getDateIndex(new Date(this.selectedDates[0])), this.getDateIndex(new Date(this.selectedDates[1]))];
 		} else {
 			options.sliderValue = [0, this.selectableDates.length-1];
 		}
@@ -263,6 +263,14 @@ Todoyu.Timerange = Class.create({
 
 		this.setMaxRangeDates();
 
+			// Limit dates to available ranges
+		if( this.getFirstDate() > startDate ) {
+			startDate = this.getFirstDate();
+		}
+		if( this.getLastDate() < endDate ) {
+			endDate	= this.getLastDate();
+		}
+
 		this.setSliderDate('start', startDate);
 		this.setSliderDate('end', endDate);
 	},
@@ -328,7 +336,7 @@ Todoyu.Timerange = Class.create({
 		var value		= $F(event.element());
 
 		var date		= Date.parseDate($F(event.element()), this.options.dateFormat);
-		var dateIndex	= this.getIndex(date.getTime());
+		var dateIndex	= this.getDateIndex(date);
 
 		this.slider.setValue(dateIndex, handleIndex);
 	},
@@ -422,7 +430,7 @@ Todoyu.Timerange = Class.create({
 		var currentDate	= this.getDate(index);
 		var shiftedDate	= this.shiftMonth(currentDate, next);
 
-		return this.getIndex(shiftedDate.getTime());
+		return this.getDateIndex(shiftedDate);
 	},
 
 
@@ -517,20 +525,20 @@ Todoyu.Timerange = Class.create({
 
 
 	/**
-	 * Get index if the
+	 * Get slider index of the date
 	 *
-	 * @method	getIndex
-	 * @param	{String}	time
+	 * @method	getDateIndex
+	 * @param	{Date}		date
 	 */
-	getIndex: function(time) {
+	getDateIndex: function(date) {
 		var i 		= 0;
 		var dates 	= this.getDates();
 		var length	= dates.length;
-		var d		= new Date(time);
-		d.setHours(0,0,0,0);
+		date.setHours(0,0,0,0);
+		var time	= date.getTime();
 
 		for(i=0; i<length; i++) {
-			if( dates[i].getTime() == d.getTime() ) {
+			if( dates[i].getTime() === time ) {
 				return i;
 			}
 		}
@@ -676,7 +684,7 @@ Todoyu.Timerange = Class.create({
 	 * @param	{Date}		date
 	 */
 	setSliderDate: function(key, date) {
-		var dateIndex	= this.getIndex(date.getTime());
+		var dateIndex	= this.getDateIndex(date);
 		var handleIndex	= this.getHandleIndex(key);
 
 		this.slider.setValue(dateIndex, handleIndex);
