@@ -68,16 +68,60 @@
 }
 
 .timerange .dates {
-	margin:3px 80px;
+	display:inline-block;
+	margin:3px 10px;
+	width:95%;
 }
 
-.timerange .dates > div {
-	width:50%;
+.timerange .dates .start,
+.timerange .dates .end,
+.timerange .dates .ranges {
 	float:left;
 	clear:none;
+}
+
+.timerange .dates .start {
+	width:100px;
+}
+
+.timerange .dates .end {
+	width:80px;
+	margin-left:20px;
+}
+
+.timerange .dates .ranges {
+	width:260px;
 	text-align:center;
 }
 
 .timerange .dates input {
 	width:60px;
 }
+
+.timerange .dates .ranges span.chooseRange {
+	cursor:pointer;
+}
+
+.timerange .dates .ranges ul {
+	position:absolute;
+	width:150px;
+	background-color:#EFEFEF;
+	border: 1px solid #CCC;
+	padding:5px;
+	text-align:left;
+	margin-left:50px;
+	-moz-border-radius:8px;
+	z-index:1000;
+}
+
+.timerange .dates .ranges ul li {
+	font-size:12px;
+	padding:5px;
+	cursor:pointer;
+	-moz-border-radius:5px;
+}
+
+.timerange .dates .ranges ul li:hover {
+	background-color:#FCFCFC;
+}
+

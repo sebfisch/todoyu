@@ -1,4 +1,4 @@
-<div class="timerange">
+<div class="timerange" id="{$id}">
 	<div class="limits">
 		<div class="limit min">{dateFormat $range.start date}</div>
 		<div class="limit max">{dateFormat $range.end date}</div>
@@ -14,10 +14,27 @@
 	<div class="dates">
 		<div class="start">
 			<input type="text" id="{$id}-start" name="{$name}[start]" />
+			<div class="icon link calendaricon" id="{$id}-start-calicon" title="{Label core.form.dateselector.open}" alt="{Label form.dateselector.open}"></div>
+		</div>
+		<div class="ranges">
+			<span class="chooseRange">Choose Time Range</span>
+			<ul style="display:none">
+				<li class="monthToDate">Month to date</li>
+				<li class="yearToDate">Year to date</li>
+				<li class="quarterToDate">Quarter to date</li>
+				<li class="previousMonth">Previous month</li>
+				<li class="previousQuarter">Previous quarter</li>
+				<li class="fullTimeRange">Full Time Range</li>
+			</ul>
 		</div>
 		<div class="end">
 			<input type="text" id="{$id}-end" name="{$name}[end]" />
+			<div class="icon link calendaricon" id="{$id}-end-calicon" title="{Label core.form.dateselector.open}" alt="{Label form.dateselector.open}"></div>
 		</div>
 	</div>
-	<input type="text" id="{$id}-focus" style="opacity:0" />
+	<input type="text" id="{$id}-focus" style="opacity:0;width:1px;height:1px" />
 </div>
+
+<script type="text/javascript">
+Todoyu.R['dateFormat'] = '{Label core.dateformat.date}';
+</script>
