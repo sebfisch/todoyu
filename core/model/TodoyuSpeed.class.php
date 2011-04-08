@@ -26,8 +26,22 @@
  */
 class TodoyuSpeed {
 
+	/**
+	 * Way point of a time tracking
+	 *
+	 * @var	Array
+	 */
 	private static $track = array();
 
+	/**
+	 * Currently active trackings
+	 *
+	 * @var	Array
+	 */
+	private static $active = array();
+
+
+	
 	/**
 	 * Get first tick
 	 *
@@ -58,6 +72,7 @@ class TodoyuSpeed {
 	 * @param	String		$key
 	 */
 	public static function start($key = 'default') {
+		self::$active[$key] = true;
 		self::$track[$key] = array();
 		self::tick($key);
 	}
@@ -70,6 +85,7 @@ class TodoyuSpeed {
 	 * @param	String		$key
 	 */
 	public static function stop($key = 'default') {
+		self::$active[$key] = false;
 		self::tick($key);
 	}
 
@@ -94,6 +110,10 @@ class TodoyuSpeed {
 	 * @return
 	 */
 	public static function total($key = 'default', $format = false) {
+		if( self::isActive($key) ) {
+			self::stop($key);
+		}
+
 		$t = self::last($key) - self::first($key);
 
 		if( $format ) {
@@ -126,6 +146,18 @@ class TodoyuSpeed {
 	 */
 	public static function all($key = 'default') {
 		return (array)self::$track[$key];
+	}
+
+
+
+	/**
+	 * Check whether test is active for a key
+	 *
+	 * @param	String	$key
+	 * @return	Boolean
+	 */
+	public static function isActive($key) {
+		return self::$active[$key] === true;
 	}
 
 }
