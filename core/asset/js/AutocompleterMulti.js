@@ -106,10 +106,10 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	/**
 	 * Callback when an item was removed from the list
 	 *
-	 * @param	{Element}		listElement
+	 * @param	{Element}		list
 	 * @param	{String|Number}	idItem
 	 */
-	onItemListRemove: function(listElement, idItem) {
+	onItemListRemove: function(list, idItem) {
 		this.fieldList.remove(idItem);
 		this.callbacks.onRemove.call(this, idItem);
 	},
