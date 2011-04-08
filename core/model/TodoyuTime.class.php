@@ -331,6 +331,45 @@ class TodoyuTime {
 
 
 	/**
+	 * Get given duration formatted in most suiting format
+	 *
+	 * @param	Integer		$seconds
+	 * @return	String
+	 */
+	public static function autoformatDuration($seconds) {
+		if( $seconds >= TodoyuTime::SECONDS_WEEK ) {
+				// Weeks
+			$value	= $seconds / TodoyuTime::SECONDS_WEEK;
+			$unit	= 'week';
+		} elseif( $seconds >= TodoyuTime::SECONDS_DAY ) {
+				// Days
+			$value	= $seconds / TodoyuTime::SECONDS_DAY;
+			$unit	= 'day';
+		} elseif( $seconds >= TodoyuTime::SECONDS_HOUR ) {
+				// Hours
+			$value	= $seconds / TodoyuTime::SECONDS_HOUR;
+			$unit	= 'time.hour';
+		} elseif( $seconds >= TodoyuTime::SECONDS_MIN ) {
+				// Minutes
+			$value	= $seconds / TodoyuTime::SECONDS_MIN;
+			$unit	= 'time.minute';
+		} else {
+				// Seconds
+			$value	= $seconds;
+			$unit	= 'time.second';
+		}
+		
+		if( $value != 1 ) {
+				// Plural?
+			$unit .= 's';
+		}
+
+		return $value . ' ' . label('core.date.' . $unit);
+	}
+
+
+
+	/**
 	 * Format an SQL datetime string with one of todoyu's default date formats
 	 *
 	 * @param	String	$datetime
