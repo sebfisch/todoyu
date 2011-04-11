@@ -725,30 +725,49 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Array
 	 */
 	public function getWizardConfiguration() {
+		$wizardConfig	= false;
+
 		if( $this->hasAttribute('wizard') ) {
-			$wizardConf = array(
-				'hasWizard'		=> true,
-				'wizardConf'	=> $this->getAttribute('wizard')
-			);
+			$xmlConfig		= $this->getAttribute('wizard');
+			$name			= $xmlConfig['@attributes']['name'];
+			$wizardConfig	= TodoyuCreateWizardManager::getWizard($name);
 
-			$wizardConf['wizardConf']['idRecord']	= intval($this->getForm()->getRecordID());
+			$wizardConfig['record']	= intval($this->getForm()->getRecordID());
 
-			if( $wizardConf['wizardConf']['displayCondition'] ) {
-				$wizardConf['hasWizard'] = TodoyuFunction::callUserFunctionArray($wizardConf['wizardConf']['displayCondition'], $wizardConf);
+			if( $wizardConfig['title'] ) {
+				$wizardConfig['title'] = Label($wizardConfig['title']);
 			}
 
-			if( $wizardConf['wizardConf']['restrict'] && $wizardConf['hasWizard'] ) {
-				$wizardConf['hasWizard'] = false;
+			if( $wizardConfig['displayCondition'] ) {
+				$showWizard	= TodoyuFunction::callUserFunctionArray($wizardConfig['displayCondition'], $this, $wizardConfig);
 
-				foreach($wizardConf['wizardConf']['restrict'] as $allowed) {
-					if(allowed($allowed['@attributes']['ext'], $allowed['@attributes']['right'])) {
-						$wizardConf['hasWizard'] = true;
-					}
+				if( $showWizard === false ) {
+					return false;
 				}
 			}
+
+			if( is_array($wizardConfig['restrict']) ) {
+				$allowed	= false;
+
+				foreach($wizardConfig['restrict'] as $restriction) {
+					if( allowed($restriction[0], $restriction[1]) ) {
+						$allowed = true;
+						break;
+					}
+				}
+
+				if( ! $allowed ) {
+					return false;
+				}
+			}
+
+			$wizardConfig['jsParams']	= $wizardConfig;
+			unset($wizardConfig['jsParams']['restrict']);
+			unset($wizardConfig['jsParams']['displayCondition']);
+			unset($wizardConfig['jsParams']['htmlClass']);
 		}
 
-		return $wizardConf;
+		return $wizardConfig;
 	}
 
 

@@ -309,8 +309,6 @@ class TodoyuStaticRecords {
 		$countryZones	= self::getCountryZones($idCountry);
 		$options		= array();
 
-		TodoyuDebug::printInFireBug($countryZones, 'cz');
-
 		foreach($countryZones as $countryZone) {
 			$options[] = array(
 				'value'	=> $countryZone['id'],
