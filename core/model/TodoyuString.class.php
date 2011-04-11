@@ -127,6 +127,19 @@ class TodoyuString {
 
 
 	/**
+	 * Wrap content with a HTML tag
+	 *
+	 * @param	String		$tag
+	 * @param	String		$content
+	 * @return	String
+	 */
+	public static function wrapWithTag($tag, $content) {
+		return self::wrap($content, '<' . $tag . '>|</' . $tag . '>');
+	}
+
+
+
+	/**
 	 * Split a camel case formatted string into its words
 	 *
 	 * @param	String		$string
