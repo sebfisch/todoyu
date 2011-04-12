@@ -59,7 +59,7 @@ class TodoyuDebug {
 
 
 	/**
-	 * Get PHP formated information about given variable
+	 * Get PHP formatted information about given variable
 	 *
 	 * @todo	check and improve for different var types
 	 *
@@ -245,7 +245,7 @@ class TodoyuDebug {
 
 
 	/**
-	 * Get firePhp Instance
+	 * Get singleton instance of firePhp
 	 *
 	 * @return	FirePhp
 	 */
@@ -266,7 +266,5 @@ class TodoyuDebug {
 	}
 
 }
-
-
 
 ?>

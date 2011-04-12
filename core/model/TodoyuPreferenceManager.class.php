@@ -216,7 +216,7 @@ class TodoyuPreferenceManager {
 	public static function isPreferenceSet($extID, $preference, $idItem = 0, $value = null, $idArea = 0, $idPerson = 0) {
 		$extID		= intval($extID);
 		$preference	= strtolower($preference);
-		$idPerson		= personid($idPerson);
+		$idPerson	= personid($idPerson);
 		$idArea		= intval($idArea);
 
 		$field	= 'id_person';
