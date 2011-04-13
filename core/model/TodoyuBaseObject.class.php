@@ -86,6 +86,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 			return $this->get($dataKey);
 		} else {
 			Todoyu::log('Data "' . $dataKey . '" not found in ' . get_class($this) . ' (ID:' . $this->data['id'] . ')', TodoyuLogger::LEVEL_NOTICE, $this->data);
+//			die('<pre>'. print_r(debug_backtrace(false),true)) . '</pre>';
 			return '';
 		}
 	}
