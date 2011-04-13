@@ -70,14 +70,14 @@ class TodoyuLabelManager {
 
 
 	/**
-	 * Add a custom path for 'extkeys' which are not located in the normal file structure
+	 * Add a custom path for keys which are not located in the normal file structure
 	 * The folder has to contain a "locale" folder like the extensions
 	 *
-	 * @param	String		$extKey
+	 * @param	String		$key
 	 * @param	String		$customPath		Path relative to todoyu root
 	 */
-	public static function addCustomPath($extKey, $customPath) {
-		self::$customPaths[$extKey] = $customPath;
+	public static function addCustomPath($key, $customPath) {
+		self::$customPaths[$key] = $customPath;
 	}
 
 
@@ -107,14 +107,41 @@ class TodoyuLabelManager {
 	 */
 	public static function getLabel($fullKey, $locale = null) {
 		$locale	= is_null($locale) ? self::$locale : $locale ;
+		$label	= self::getLabelInternal($fullKey, $locale);
 
-		if( empty($fullKey) ) {
-			if( Todoyu::$CONFIG['LOCALE']['logEmptyKeys'] ) {
-				Todoyu::log('Tried to read a label, but no key was provided', TodoyuLogger::LEVEL_ERROR);
-			}
-			return '';
+		if( $label === false ) {
+			return Todoyu::$CONFIG['DEBUG'] ? $fullKey : '';
+		} else {
+			return $label;
 		}
+	}
 
+
+
+	/**
+	 * Get label or an empty string if not found
+	 *
+	 * @param	String		$labelKey
+	 * @param	String		$locale
+	 * @return	String
+	 */
+	public static function getLabelOrEmpty($fullKey, $locale = null) {
+		$locale	= is_null($locale) ? self::$locale : $locale ;
+		$label	= self::getLabelInternal($fullKey, $locale);
+
+		return $label === false ? '' : $label;
+	}
+
+
+
+	/**
+	 * Get label (or false if not found)
+	 *
+	 * @param	String		$fullKey
+	 * @param	String		$locale
+	 * @return	String|Boolean
+	 */
+	private static function getLabelInternal($fullKey, $locale = null) {
 		$fullKey	= str_replace('LLL:', '', $fullKey);
 		$keyParts	= explode('.', $fullKey, 3);
 		$extKey		= $keyParts[0];
@@ -125,16 +152,12 @@ class TodoyuLabelManager {
 			if( Todoyu::$CONFIG['LOCALE']['logInvalidKeys'] ) {
 				Todoyu::log('Invalid label key: <' . $fullKey . '>', TodoyuLogger::LEVEL_ERROR);
 			}
-			return Todoyu::$CONFIG['DEBUG'] ? $fullKey : '';
+			return false;
 		}
 
 		$label	= self::getCachedLabel($extKey, $fileKey, $labelKey, $locale);
 
-		if( is_null($label) ) {
-			return Todoyu::$CONFIG['DEBUG'] ? $fullKey : '';
-		}
-
-		return $label;
+		return is_null($label) ? false : $label;
 	}
 
 
