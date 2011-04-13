@@ -26,6 +26,8 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	customOnComplete: null,
 
+	selectedFromList: false,
+
 	config: {
 		paramName: 'input',
 		minChars: 2
@@ -283,7 +285,8 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 			Event.KEY_UP,
 			Event.KEY_RIGHT,
 			Event.KEY_RETURN,
-			32 // Space
+			32, // Space
+			9 // Tab
 		].include(keyCode) === false;
 	},
 
