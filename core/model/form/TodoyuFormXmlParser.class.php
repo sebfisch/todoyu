@@ -230,7 +230,7 @@ class TodoyuFormXmlParser {
 		if( array_key_exists('restrictAdmin', $config) ) {
 			return TodoyuAuth::isAdmin();
 		} elseif( array_key_exists('restrict', $config) ) {
-			$restrict 	=& $config['restrict'];
+			$restrict 	= $config['restrict'];
 			$and		= strtoupper(trim($restrict['@attributes']['conjunction'])) === 'AND';
 			$rights		= TodoyuArray::assure($restrict['allow']);
 
@@ -251,11 +251,26 @@ class TodoyuFormXmlParser {
 							return true;
 						}
 					} else {
-
 							// If right is disallowed and conjunction is AND, field is disallowed
 						if( $and ) {
 							return false;
 						}
+					}
+				} elseif( isset($right['@attributes']['function']) ) {
+						// Use function to decide if allowed
+					$function	= $right['@attributes']['function'];
+
+					if( TodoyuFunction::isFunctionReference($function) ) {
+						$allowed	= TodoyuFunction::callUserFunction($function, $config);
+
+						if( $allowed && !$and ) {
+							return true;
+						} elseif( !$allowed && $and ) {
+							return false;
+						}
+					} else {
+						Todoyu::log('FormElement rights function not found <' . $function . '>', TodoyuLogger::LEVEL_ERROR);
+						return true;
 					}
 				} else {
 					Todoyu::log('Misconfigured right in form', TodoyuLogger::LEVEL_ERROR);

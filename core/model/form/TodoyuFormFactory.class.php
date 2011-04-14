@@ -58,7 +58,7 @@ class TodoyuFormFactory {
 	 * @param	String		$name		Name of the field
 	 * @param	TodoyuFieldset	$fieldset	Parent fieldset
 	 * @param	Array		$config		Configuration array (XML child nodes)
-	 * @return	FieldElement
+	 * @return	TodoyuFormElement
 	 */
 	public static function createField($type, $name, TodoyuFieldset $fieldset, array $config = array()) {
 		$class = self::getClass($type);
