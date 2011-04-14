@@ -70,6 +70,7 @@ class TodoyuScheduler {
 		if( self::hasRecentBlockFile() ) {
 			return false;
 		}
+
 			// Create block file for this execution
 		self::createBlockFile();
 
@@ -188,6 +189,11 @@ class TodoyuScheduler {
 	 * @return	Boolean
 	 */
 	private static function isJobDue($className, $crontime) {
+			// Shortcut for forced execution
+		if( $crontime === 0 ) {
+			return true;
+		}
+
 		$lastExecutionDate	= self::getLastExecutionDate($className);
 
 		if( $lastExecutionDate === 0 ) {
