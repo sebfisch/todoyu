@@ -7,10 +7,6 @@
 	background-color:#edf0df;
 }
 
-#todoyuheadletquickcreate .content li.primary a {
-	border-bottom:1px solid white !important;
-}
-
 #todoyuheadletquickcreate .content li.primary a:hover {
 	background-color:white !important;
 }

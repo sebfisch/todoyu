@@ -157,6 +157,7 @@ h5 {
 
 .overflow {
 	overflow:auto;
+	overflow-x:hidden;
 	height:auto;
 	height:100%;
 	/* ie7 needs this sometimes */

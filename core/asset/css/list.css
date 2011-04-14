@@ -3,15 +3,14 @@ table.list {
 	margin-top:5px;
 }
 
-table.list tr.header {
-	height:28px;
+table.list {
 	background:url('../img/bg-headerline.png') no-repeat 0 0;
+}
+table.list .header tr {
 	text-align:left;
+	background:none;
 }
 
-table.list .header th {
-	border-bottom:1px dotted #aaa;
-}
 
 table.list td,
 table.list th {
@@ -22,12 +21,15 @@ table.list .header th.last {
 	background:#fff url(../img/bg-headerline.png) no-repeat 100% 0;
 }
 
-table.list th,
+table.list th {
+	height:14px;
+	padding:7px 5px 6px 5px;
+}
 table.list td {
 	padding:5px;
 }
 
-table.list td {
+table.list tr {
 	border-bottom:1px dotted #aaa;
 }
 
@@ -50,7 +52,9 @@ ul.withMouseHover li.odd:hover,
 ul.withMouseHover li.even:hover {
 	background-color:#f2f2d2 !important;
 }
-
+table.list tr.header:hover {
+	background-color:transparent !important;
+}
 
 
 /* -----------------------------
