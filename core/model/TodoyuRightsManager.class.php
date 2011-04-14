@@ -150,6 +150,11 @@ class TodoyuRightsManager {
 	 * @return	Boolean
 	 */
 	public static function isAllowed($extKey, $right) {
+			// Check for CLI user
+		if( TodoyuCli::isCliMode() ) {
+			return true;
+		}
+
 			// Not logged in users have no rights at all
 		if( ! TodoyuAuth::isLoggedIn() ) {
 			return false;

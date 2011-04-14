@@ -71,6 +71,8 @@ class TodoyuScheduler {
 			return false;
 		}
 
+		TodoyuCli::setCliMode();
+
 			// Create block file for this execution
 		self::createBlockFile();
 
