@@ -758,10 +758,13 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			}
 		}
 
-		$wizardConfig['jsParams']	= $wizardConfig;
-		unset($wizardConfig['jsParams']['restrict']);
-		unset($wizardConfig['jsParams']['displayCondition']);
-		unset($wizardConfig['jsParams']['htmlClass']);
+		$jsParams	= $wizardConfig;
+
+		unset($jsParams['restrict']);
+		unset($jsParams['displayCondition']);
+		unset($jsParams['htmlClass']);
+
+		$wizardConfig['jsParams']	= $jsParams;
 
 		return $wizardConfig;
 	}
