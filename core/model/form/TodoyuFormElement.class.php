@@ -202,7 +202,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$this->config['required']		= $this->hasAttribute('required');
 		$this->config['hasErrorClass']	= $this->hasAttribute('hasError') ? 'fieldHasError':'';
 		$this->config['hasIconClass']	= $this->hasAttribute('hasIcon') ? 'hasIcon icon' . ucfirst($this->name):'';
-		$this->config['wizard']			= $this->getWizardConfiguration();
+		$this->config['wizard']			= $this->hasAttribute('wizard') ? $this->getWizardConfiguration() : false;
 		$this->config['valueTemplate']	= $this->getValueForTemplate();
 
 		return $this->config;
@@ -725,47 +725,43 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Array
 	 */
 	public function getWizardConfiguration() {
-		$wizardConfig	= false;
+		$xmlConfig		= $this->getAttribute('wizard');
+		$name			= $xmlConfig['@attributes']['name'];
+		$wizardConfig	= TodoyuCreateWizardManager::getWizard($name);
 
-		if( $this->hasAttribute('wizard') ) {
-			$xmlConfig		= $this->getAttribute('wizard');
-			$name			= $xmlConfig['@attributes']['name'];
-			$wizardConfig	= TodoyuCreateWizardManager::getWizard($name);
+		$wizardConfig['record']	= intval($this->getForm()->getRecordID());
 
-			$wizardConfig['record']	= intval($this->getForm()->getRecordID());
-
-			if( $wizardConfig['title'] ) {
-				$wizardConfig['title'] = Label($wizardConfig['title']);
-			}
-
-			if( $wizardConfig['displayCondition'] ) {
-				$showWizard	= TodoyuFunction::callUserFunctionArray($wizardConfig['displayCondition'], $this, $wizardConfig);
-
-				if( $showWizard === false ) {
-					return false;
-				}
-			}
-
-			if( is_array($wizardConfig['restrict']) ) {
-				$allowed	= false;
-
-				foreach($wizardConfig['restrict'] as $restriction) {
-					if( allowed($restriction[0], $restriction[1]) ) {
-						$allowed = true;
-						break;
-					}
-				}
-
-				if( ! $allowed ) {
-					return false;
-				}
-			}
-
-			$wizardConfig['jsParams']	= $wizardConfig;
-			unset($wizardConfig['jsParams']['restrict']);
-			unset($wizardConfig['jsParams']['displayCondition']);
-			unset($wizardConfig['jsParams']['htmlClass']);
+		if( $wizardConfig['title'] ) {
+			$wizardConfig['title'] = Label($wizardConfig['title']);
 		}
+
+		if( $wizardConfig['displayCondition'] ) {
+			$showWizard	= TodoyuFunction::callUserFunctionArray($wizardConfig['displayCondition'], $this, $wizardConfig);
+
+			if( $showWizard === false ) {
+				return false;
+			}
+		}
+
+		if( is_array($wizardConfig['restrict']) ) {
+			$allowed	= false;
+
+			foreach($wizardConfig['restrict'] as $restriction) {
+				if( allowed($restriction[0], $restriction[1]) ) {
+					$allowed = true;
+					break;
+				}
+			}
+
+			if( ! $allowed ) {
+				return false;
+			}
+		}
+
+		$wizardConfig['jsParams']	= $wizardConfig;
+		unset($wizardConfig['jsParams']['restrict']);
+		unset($wizardConfig['jsParams']['displayCondition']);
+		unset($wizardConfig['jsParams']['htmlClass']);
 
 		return $wizardConfig;
 	}
