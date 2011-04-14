@@ -853,6 +853,30 @@ class TodoyuDatabase {
 
 
 	/**
+	 * Get ID of MM record
+	 *
+	 * @param	String		$table
+	 * @param	Integer		$idEntity1
+	 * @param	Integer		$idEntity2
+	 * @return	Integer
+	 */
+	public static function getMMid($table, $fieldNameEntity1, $idEntity1, $fieldNameEntity2, $idEntity2) {
+		$idEntity1	= intval($idEntity1);
+		$idEntity2	= intval($idEntity2);
+
+		$field	= 'id';
+		$where	= '		' . $fieldNameEntity1 . ' 	= ' . $idEntity1
+				. ' AND	' . $fieldNameEntity2 . '	= ' . $idEntity2;
+		$limit	= '1';
+
+		$row	= Todoyu::db()->getColumn($field, $table, $where, '', '', $limit, $field);
+
+		return $row[0];
+	}
+
+
+
+	/**
 	 * Get a record by query. It hasn't to be a "record", its just a single row result
 	 *
 	 * @param	String		$fields
