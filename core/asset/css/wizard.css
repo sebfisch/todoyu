@@ -1,5 +1,5 @@
 .wizard {
-
+	text-align:left;
 }
 
 .wizard .navi,
@@ -57,9 +57,10 @@
 }
 
 .wizard .help {
-	width:219px;
+	width:209px;
 	height:500px;
-	padding-top:20px;
+	padding-top:60px;
+	padding-left:10px;
 	background-color:#EFEFEF;
 	border-left:1px solid #000;
 }
@@ -86,7 +87,7 @@
 }
 
 .wizard .buttons .close a {
-	background:url(../img/icons.png) no-repeat 0 -328px;
+	background:url(../img/icons.png) no-repeat 0 -357px;
 	padding:3px;
 	padding-left:20px;
 }
