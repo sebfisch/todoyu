@@ -41,6 +41,15 @@ class TodoyuCli {
 		'SERVER_PROTOCOL'
 	);
 
+	
+
+	/**
+	 * Change current work directory to main directory to prevent path problems
+	 */
+	public static function init() {
+		chdir(PATH);
+	}
+
 
 
 	/**

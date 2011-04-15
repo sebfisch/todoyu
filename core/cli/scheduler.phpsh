@@ -21,6 +21,9 @@
 require_once(realpath(dirname(__FILE__) . '/../inc/global.php'));
 require_once(PATH_CORE . '/inc/init.php');
 
+	// Initialize CLI run
+TodoyuCli::init();
+
 	// Load all boot.php files of the installed extensions
 TodoyuExtensions::loadAllBoot();
 
