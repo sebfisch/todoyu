@@ -481,6 +481,54 @@ Todoyu.Helper = {
 		});
 
 		return keyClass ? keyClass.replace(prefix, '').toLowerCase() : '';
-	}
+	},
 
+
+
+	/**
+	 * Set format config for currencyFormat
+	 *
+	 * @param	{Object}	config
+	 */
+	setCurrencyFormat: function(config) {
+		Todoyu.R.currencyFormat = config;
+	},
+
+
+
+	/**
+	 * Format a number with currency config
+	 *
+	 * @param	{Number}	number
+	 * @param	{Boolean}	withSymbol
+	 * @return	{String}
+	 */
+	currencyFormat: function(number, withSymbol) {
+		if( Todoyu.R.currencyFormat ) {
+			var config	= Todoyu.R.currencyFormat;
+			number 		= (number + '').replace(/[^0-9+\-Ee.]/g, '');
+			var s 		= '';
+			var toFixedFix = function (n, prec) {
+				var k = Math.pow(10, prec);
+				return '' + Math.round(n * k) / k;
+			};
+			// Fix for IE parseFloat(0.55).toFixed(0) = 0;
+			s = (config.decimals ? toFixedFix(number, config.decimals) : '' + Math.round(number)).split('.');
+			if (s[0].length > 3) {
+				s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, config.thousandSign);
+			}
+			if( (s[1] || '').length < config.decimals) {
+				s[1] = s[1] || '';
+				s[1] += new Array(config.decimals - s[1].length + 1).join('0');
+			}
+
+			number	= s.join(config.decimalSign);
+
+			if( withSymbol ) {
+				number += ' ' + config.symbol;
+			}
+		}
+
+		return '' + number;
+	}
 };
