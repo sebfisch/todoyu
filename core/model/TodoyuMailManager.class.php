@@ -18,6 +18,9 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+	// Include mailer library
+require_once( PATH_LIB . '/php/phpmailer/class.phpmailer-lite.php' );
+
 /**
  * Manage mail DB logs
  *
@@ -30,6 +33,32 @@ class TodoyuMailManager {
 	 * @var	String		Default table for database requests
 	 */
 	const TABLE = 'system_log_email';
+
+
+
+	/**
+	 * Get PHPMailerLite object
+	 *
+	 * @param	String:mail			$mailer
+	 * @param	String:utf-8		$charSet
+	 * @param	Boolean:false		$exceptions
+	 * @return	PHPMailerLite
+	 */
+	public static function getPHPMailerLite($mailer = 'mail', $charSet = 'uft-8', $exceptions = false) {
+		$phpMailerLite			= new PHPMailerLite($exceptions);
+
+			// Config
+		$phpMailerLite->Mailer	= $mailer;
+		$phpMailerLite->CharSet	= $charSet;
+
+//			// Change mail program
+//		if( PHP_OS !== 'Linux' ) {
+//				// Windows Server: use 'mail' instead of 'sendmail'
+//			$mail->Mailer	= 'mail';
+//		}
+
+		return $phpMailerLite;
+	}
 
 
 

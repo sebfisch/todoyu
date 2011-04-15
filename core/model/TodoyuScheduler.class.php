@@ -153,7 +153,7 @@ class TodoyuScheduler {
 	private static function hasRecentBlockFile() {
 		$path	= TodoyuFileManager::pathAbsolute(self::$blockFile);
 
-		if( ! is_file($path) ) {
+		if( ! file_exists($path) ) {
 			return false;
 		}
 

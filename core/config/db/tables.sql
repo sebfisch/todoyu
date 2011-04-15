@@ -75,7 +75,6 @@ CREATE TABLE `static_language` (
 	UNIQUE KEY `alpha2` (`iso_alpha2`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
 
-
 -- --------------------------------------------------------
 
 --
@@ -93,7 +92,6 @@ CREATE TABLE `system_role` (
 	`description` text NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
-
 
 -- --------------------------------------------------------
 
