@@ -37,15 +37,61 @@ class TodoyuMailManager {
 
 
 	/**
+	 * Send email using phpMailerLite
+	 *
+	 * @param	String	$subject
+	 * @param	String	$fromAddress
+	 * @param	String	$fromName
+	 * @param	String	$toAddress
+	 * @param	String	$toName
+	 * @param	String	$htmlBody
+	 * @param	String	$textBody
+	 * @param	String	$baseURL		URL to base HTML paths (e.g. images) on
+	 * @param	Boolean	$noReplyTo
+	 * @return	Boolean
+	 */
+	public static function sendMail($subject, $fromAddress, $fromName, $toAddress, $toName, $htmlBody, $textBody, $baseURL, $noReplyTo = false) {
+		$mailer	= self::getPHPMailerLite(true);
+
+			// Set subject
+		$mailer->Subject	= $subject;
+
+			// Set "from" and "to" email addresses and names
+		$mailer->SetFrom($fromAddress, $fromName);
+		$mailer->AddAddress($toAddress, $toName);
+
+			// Add message body as HTML and plain text
+		$mailer->MsgHTML($htmlBody, $baseURL);
+		$mailer->AltBody	= $textBody;
+
+			// Set "replyTo"
+		if( ! $noReplyTo ) {
+			$mailer->AddReplyTo(Todoyu::person()->getEmail(), Todoyu::person()->getFullName());
+		}
+
+		try {
+			$sendStatus	= $mailer->Send();
+		} catch(phpmailerException $e) {
+			Todoyu::log($e->getMessage(), TodoyuLogger::LEVEL_ERROR);
+		} catch(Exception $e) {
+			Todoyu::log($e->getMessage(), TodoyuLogger::LEVEL_ERROR);
+		}
+
+		return $sendStatus;
+	}
+
+
+
+	/**
 	 * Get PHPMailerLite object
 	 *
-	 * @param	String:mail			$mailer
-	 * @param	String:utf-8		$charSet
-	 * @param	Boolean:false		$exceptions
+	 * @param	Boolean		$exceptions
+	 * @param	String		$mailer
+	 * @param	String		$charSet
 	 * @return	PHPMailerLite
 	 */
-	public static function getPHPMailerLite($mailer = 'mail', $charSet = 'uft-8', $exceptions = false) {
-		$phpMailerLite			= new PHPMailerLite($exceptions);
+	private static function getPHPMailerLite($exceptions = false, $mailer = 'mail', $charSet = 'uft-8') {
+		$phpMailerLite	= new PHPMailerLite($exceptions);
 
 			// Config
 		$phpMailerLite->Mailer	= $mailer;

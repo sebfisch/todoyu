@@ -61,6 +61,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 				$this->data = $record;
 			} else {
 				Todoyu::log('Record not found! ID: "' . $idRecord . '", TABLE: "' . $table . '"', TodoyuLogger::LEVEL_ERROR);
+//				die('<pre>'. print_r(debug_backtrace(false),true)) . '</pre>';
 			}
 		} else {
 			//Todoyu::log('Record with ID 0 created (new object or missing data?) Table: ' . $table, TodoyuLogger::LEVEL_NOTICE);
