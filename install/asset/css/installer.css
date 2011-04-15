@@ -7,7 +7,7 @@
 
 p.installMessage {
 	padding:10px 10px 10px 40px;
-	margin:10px;
+	margin:12px;
 	border:2px solid #fff;
 	background:#edf1e0 url(../img/icons.png) 0 1000px no-repeat;
 	font-weight:bold;
@@ -214,8 +214,15 @@ input#email.adminaccount {
 	background-color:#e3eace;
 }
 
+.content .boxContent form {
+	padding:0 12px;
+}
+
 .content .boxContent .blockcontent {
-	padding:0 10px 10px 10px;
+	padding-bottom: 10px;
+}
+.content .boxContent .blockcontent .installMessage {
+	margin:0 0 10px 0;
 }
 
 
