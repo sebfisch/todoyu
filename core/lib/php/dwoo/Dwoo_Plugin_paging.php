@@ -110,7 +110,7 @@ class Dwoo_Plugin_paging extends Dwoo_Block_Plugin implements Dwoo_ICompilable_B
 
 
 			// Start post PHP
-		$post 	.= Dwoo_Compiler::PHP_OPEN . "\n";
+		$post 	= Dwoo_Compiler::PHP_OPEN . "\n";
 			// Add iteration updates
 		$post	.="\n\t\t".'$_fh'.$cnt.'_glob["index"]+=1;';
 		$post	.="\n\t\t".'$_fh'.$cnt.'_glob["iteration"]+=1;';

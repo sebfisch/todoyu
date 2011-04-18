@@ -1038,7 +1038,7 @@ class TodoyuDatabase {
 	 * @param	String		$groupBy
 	 * @param	String		$orderBy
 	 * @param	String		$limit
-	 * @param	String		$resultFieldName		If field isn't the fieldname in the resultset (possibily with table prefix...), set the name here
+	 * @param	String		$resultFieldName		If field isn't the field name in the resultset (possibly with table prefix...), set the name here
 	 * @return	String
 	 */
 	public function getFieldValue($field, $table, $where = null, $groupBy = null, $orderBy = null, $limit = null, $resultFieldName = null) {
@@ -1091,10 +1091,9 @@ class TodoyuDatabase {
 
 	/**
 	 * Fetch a row (array) out of a mysql result
-	 * Numeric indexes
 	 *
 	 * @param	Resource	$result
-	 * @return	Array
+	 * @return	Array					Numeric indexes
 	 */
 	public static function fetchRow($result) {
 		return mysql_fetch_row($result);
@@ -1103,11 +1102,10 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Fetch a row (array) out of a mysql result
-	 * Associative array with fieldnames
+	 * Fetch a row (array) out of a mySql result
 	 *
 	 * @param	Resource	$result
-	 * @return	Array
+	 * @return	Array					Associative array with field names
 	 */
 	public static function fetchAssoc($result) {
 		return mysql_fetch_assoc($result);
@@ -1145,8 +1143,8 @@ class TodoyuDatabase {
 	 * Fetch all rows in a result set into an array
 	 * Use getArray() if you need all rows of a result
 	 *
-	 * @param	Resource	$resource
-	 * @param	String		$indexField
+	 * @param	Resource			$resource
+	 * @param	String|Boolean		$indexField
 	 * @return	Array
 	 */
 	public static function resourceToArray($resource, $indexField = false) {
@@ -1247,16 +1245,16 @@ class TodoyuDatabase {
 	 * Get fields of a table
 	 *
 	 * @param	String		$table
-	 * @param	Boolean		$onlyFieldnames
+	 * @param	Boolean		$onlyFieldNames
 	 * @return	Array
 	 */
-	public function getFields($table, $onlyFieldnames = false) {
+	public function getFields($table, $onlyFieldNames = false) {
 		$query		= 'SHOW COLUMNS FROM ' . $table;
 		$resource	= $this->query($query);
 
 		$fields		= $this->resourceToArray($resource);
 
-		if( $onlyFieldnames ) {
+		if( $onlyFieldNames ) {
 			$fieldNames = array();
 			foreach($fields as $fieldInfo) {
 				$fieldNames[] = $fieldInfo['Field'];
@@ -1273,16 +1271,16 @@ class TodoyuDatabase {
 	 * Get all keys (indexes) of a table
 	 *
 	 * @param	String		$table
-	 * @param	Boolean		$onlyKeynames
+	 * @param	Boolean		$onlyKeyNames
 	 * @return	Array
 	 */
-	public function getTableKeys($table, $onlyKeynames = false) {
+	public function getTableKeys($table, $onlyKeyNames = false) {
 		$query		= 'SHOW KEYS FROM ' . $table;
 		$resource	= $this->query($query);
 
 		$keys		= $this->resourceToArray($resource);
 
-		if( $onlyKeynames ) {
+		if( $onlyKeyNames ) {
 			$keyNames = array();
 			foreach($keys as $keyInfo) {
 				$keyNames[] = $keyInfo['Key_name'];
@@ -1325,14 +1323,15 @@ class TodoyuDatabase {
 
 	/**
 	 * Print database connection error message
+	 *
 	 * @param	String		$error
 	 * @param	Integer		$errorNo
 	 */
 	private function printConnectionError($error, $errorNo) {
 		ob_end_clean();
 
-		$title	= 'Cannot connect to the server "' . htmlentities($this->config['server'], ENT_QUOTES, 'UTF-8') . '"';
-		$message= $error . '<br/><br />Check server or change in config/db.php';
+//		$title	= 'Cannot connect to the server "' . htmlentities($this->config['server'], ENT_QUOTES, 'UTF-8') . '"';
+//		$message= $error . '<br/><br />Check server or change in config/db.php';
 
 		include('core/view/error.html');
 	}
@@ -1341,14 +1340,15 @@ class TodoyuDatabase {
 
 	/**
 	 * Print database selection error message
+	 *
 	 * @param	String		$error
 	 * @param	Integer		$errorNo
 	 */
 	private function printSelectDbError($error, $errorNo) {
 		ob_end_clean();
 
-		$title	= 'Failed selecting database';
-		$message= 'Cannot select database "' . htmlentities($this->config['database'], ENT_QUOTES, 'UTF-8') . '" on server ' . htmlentities($this->config['server'], ENT_QUOTES, 'UTF-8') . '<br />Check server or change in config/db.php<br />' . $error;
+//		$title	= 'Failed selecting database';
+//		$message= 'Cannot select database "' . htmlentities($this->config['database'], ENT_QUOTES, 'UTF-8') . '" on server ' . htmlentities($this->config['server'], ENT_QUOTES, 'UTF-8') . '<br />Check server or change in config/db.php<br />' . $error;
 
 		include('core/view/error.html');
 	}

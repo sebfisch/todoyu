@@ -101,7 +101,6 @@ abstract class TodoyuActionController {
 			$result	= call_user_func(array($this, '_unknownAction'), $action, $this->params);
 		} else {
 			throw new TodoyuControllerException(EXT, get_class($this), $action, 'Action "' . $action . '" not found in ' . get_class($this));
-			$result	= false;
 		}
 
 		return $result;

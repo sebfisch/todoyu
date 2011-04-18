@@ -283,7 +283,6 @@ class TodoyuDbHelper {
 	 */
 	public static function deleteOtherMmLinks($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, array $ignoreForeignIDs = array()) {
 		$ignoreForeignIDs	= TodoyuArray::intval($ignoreForeignIDs, true, true);
-		$idForeignRecord	= intval($idForeignRecord);
 		$idLocalRecord		= intval($idLocalRecord);
 
 		$where	= $fieldLocal . ' = ' . $idLocalRecord;
