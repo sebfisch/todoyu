@@ -90,25 +90,6 @@ class TodoyuConfigManager {
 		self::saveConfigFile($savePath, $template, $saveData);
 	}
 
-
-
-	/**
-	 * Save password strength configuration
-	 *
-	 * @param	Array	$data
-	 */
-	public static function savePasswordStrengthConfig(array $data) {
-		Todoyu::$CONFIG['SETTINGS']['passwordStrength'] = array(
-			'minLength'			=> intval($data['minLength']),
-			'hasNumbers'		=> intval($data['hasNumbers']) === 1,
-			'hasLowerCase'		=> intval($data['hasLowerCase']) === 1,
-			'hasUpperCase'		=> intval($data['hasUpperCase']) === 1,
-			'hasSpecialChars'	=> intval($data['hasSpecialChars']) === 1
-		);
-
-		TodoyuConfigManager::saveSettingsConfig();
-	}
-
 }
 
 ?>

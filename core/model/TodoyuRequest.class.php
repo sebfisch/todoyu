@@ -340,6 +340,74 @@ class TodoyuRequest {
 		define('AREA', 		$requestVars['area']);
 	}
 
+
+
+	/**
+	 * Send a POST request to another server
+	 *
+	 * @throws	TodoyuException
+	 * @param	String			$host			Host name
+	 * @param	String			$getQuery		Get query params. Ex: index.php?foo=bar
+	 * @param	Array:array		$data			Data to send over post
+	 * @param	String:data		$dataVar		Name of the data var
+	 * @param	Array			$headers		Extra header to send with the request
+	 * @param	Integer:80		$port			Server port
+	 * @param	Integer:30		$timeout		Timeout
+	 * @return	Array
+	 */
+	public static function sendPostRequest($host, $getQuery = '', array $data = array(), $dataVar = 'data', array $headers = array(), $port = 80, $timeout = 30) {
+			// Disable error handler
+		TodoyuErrorHandler::setActive(false);
+			// Open socket
+		$sock = fsockopen("tcp://$host", $port, &$errno, &$errstr, $timeout);
+			// Enable error handler
+		TodoyuErrorHandler::setActive(true);
+
+			// Check whether connection was successful
+		if( ! $sock ) {
+			throw new TodoyuException('Cannot connect to host <' . $host . '>');
+		}
+
+			// Encode data
+		$postData 	= $dataVar . '=' . urlencode(json_encode($data));
+
+			// Send HTTP headers
+		fwrite($sock, "POST /$getQuery HTTP/1.0\r\n");
+		fwrite($sock, "Host: $host\r\n");
+		fwrite($sock, "Content-type: application/x-www-form-urlencoded\r\n");
+		fwrite($sock, "Content-length: " . strlen($postData) . "\r\n");
+		fwrite($sock, "Accept: */*\r\n");
+
+			// Send extra headers
+		foreach($headers as $name => $value) {
+			fwrite($sock, "$name: $value\r\n");
+		}
+
+			// Send data
+		fwrite($sock, "\r\n");
+		fwrite($sock, "$postData\r\n");
+		fwrite($sock, "\r\n");
+
+			// Receive data
+		$content	= '';
+		while( ! feof($sock) ) {
+			$line 		= fgets($sock, 2048);
+			$content	.= $line;
+		}
+
+		fclose($sock);
+
+			// Parse response data
+		$requestParts	= explode("\r\n\r\n", $content, 2);
+		$responseHeaders= TodoyuString::extractHeadersFromString($requestParts[0]);
+		$responseContent= $requestParts[1];
+
+		return array(
+			'headers'	=> $responseHeaders,
+			'content'	=> $responseContent
+		);
+	}
+
 }
 
 ?>
