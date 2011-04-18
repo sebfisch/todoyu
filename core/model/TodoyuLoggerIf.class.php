@@ -41,9 +41,8 @@ interface TodoyuLoggerIf {
 	 * @param	String		$message
 	 * @param	Integer		$level
 	 * @param	Mixed		$data
-	 * @param  $info
-	 * @param  $requestKey
-	 * @return void
+	 * @param	String		$info
+	 * @param	String		$requestKey
 	 */
 	public function log($message, $level, $data, $info, $requestKey);
 
