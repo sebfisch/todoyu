@@ -25,39 +25,66 @@
  * Observe a text field delayed
  * Prevents useless AJAX requests until the user has finished typing in the text field
  */
-Todoyu.DelayedTextObserver = {
+Todoyu.DelayedTextObserver = Class.create({
 
 	/**
 	 * Timeouts of delayed update events
 	 * @property	timeouts
 	 * @type		Object
 	 */
-	timeouts: {},
+	timeout: null,
+
+	/**
+	 * Field reference
+	 */
+	field:	null,
+
+	/**
+	 * Callback function
+	 */
+	callback: null,
+
+	/**
+	 * Delay
+	 */
+	delay: null,
 
 
 	/**
 	 * Observe an input field delayed
-	 * Callback function will be called with new field value and the field reference (Ex: onChanged: function(value, field) {})
+	 * Callback function will be called with field and value (Ex: onChanged: function(field, value) {})
 	 *
-	 * @method	observe
-	 * @param	{Element}	inputField		Element or ID
-	 * @param	{Function}	callback		Callback function to call after delay. You should bind it before you give it as a parameters
+	 * @method	initialize
+	 * @param	{Element}	field
+	 * @param	{Function}	callback		Callback. Parameters: field, fieldValue
 	 * @param	{Number}	delay			Number of seconds to delay the request in seconds. Default: 0.5s
 	 */
-	observe: function(inputField, callback, delay) {
-		if( ! Todoyu.exists(inputField) ) {
-			alert('DelayedTextObserver: unknown field to observe "' + inputField.toString() + '"');
+	initialize: function(field, callback, delay) {
+		this.field		= $(field);
+		this.callback	= callback;
+		this.delay		= delay || 0.5;
+
+		if( ! this.field ) {
+			alert('DelayedTextObserver: unknown field to observe "' + field.toString() + '"');
 			return false;
 		}
-		if( callback.constructor !== Function ) {
+
+		if( ! Object.isFunction(callback) ) {
 			alert('The callback needs to be a valid function');
 			return false;
 		}
 
-		inputField	= $(inputField);
-		delay		= delay || 0.5;
+		this.install();
+	},
 
-		inputField.observe('keyup', this._onChanged.bindAsEventListener(this, inputField, callback, delay));
+
+
+	/**
+	 * Install change handler
+	 *
+	 */
+	install: function() {
+		this.field.on('keyup', this.onChanged.bind(this));
 	},
 
 
@@ -67,16 +94,13 @@ Todoyu.DelayedTextObserver = {
 	 * Clear older timeouts and start a new one
 	 *
 	 * @private
-	 * @method	_onChanged
+	 * @method	onChanged
 	 * @param	{Event}		event
-	 * @param	{Element}	inputField
-	 * @param	{Function}	callback
-	 * @param	{Number}	delay
 	 */
-	_onChanged: function(event, inputField, callback, delay) {
-		clearTimeout(this.timeouts[inputField.id]);
+	onChanged: function(event) {
+		clearTimeout(this.timeout);
 
-		this.timeouts[inputField.id] = this._callCallback.bind(this).delay(delay, inputField, callback);
+		this.timeout = this.callCallback.bind(this).delay(this.delay);
 	},
 
 
@@ -85,12 +109,10 @@ Todoyu.DelayedTextObserver = {
 	 * Call the callback function with the field reference and the value
 	 *
 	 * @private
-	 * @method	_callCallback
-	 * @param	{Element}	inputField
-	 * @param	{Function}	callback
+	 * @method	callCallback
 	 */
-	_callCallback: function(inputField, callback) {
-		callback($F(inputField), inputField);
+	callCallback: function() {
+		this.callback.call(null, this.field, $F(this.field).trim());
 	}
 
-};
+});
