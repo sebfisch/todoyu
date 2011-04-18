@@ -46,6 +46,30 @@ function Dwoo_Plugin_Label_compile(Dwoo_Compiler $compiler, $key, $locale = null
 
 
 /**
+ * Get name of country
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo		$dwoo
+ * @param	Integer		$idCountry
+ * @return	String
+ */
+function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
+	$idCountry = intval($idCountry);
+
+	if( $idCountry > 0 ) {
+		$country	= TodoyuStaticRecords::getCountry($idCountry);
+
+		return TodoyuStaticRecords::getLabel('country', $country['iso_alpha3']);
+	} else {
+		return '';
+	}
+}
+
+
+
+/**
  * Format the amount of workload (number of seconds to hours and minutes)
  *
  * @package		Todoyu
