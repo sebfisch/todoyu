@@ -42,7 +42,7 @@ Todoyu::$CONFIG['TEMPLATE']		= array(
 );
 
 	// Bad tags which are encoded by the HtmlFilter
-Todoyu::$CONFIG['SECURITY']['badHtmlTags'] = array('script', 'iframe', 'input', 'textarea', 'select', 'form');
+Todoyu::$CONFIG['SECURITY']['badHtmlTags'] = array('script', 'iframe', 'input', 'textarea', 'select', 'form', 'base');
 
 
 
