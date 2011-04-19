@@ -165,14 +165,14 @@ class TodoyuFileManager {
 	 * @return	Boolean
 	 */
 	public static function deleteFolder($pathFolder) {
+		$pathFolder	= self::pathAbsolute($pathFolder);
+
 			// Prevent deleting whole todoyu if an empty variable is given
-		if( empty($pathFolder) || $pathFolder === PATH ) {
+		if( $pathFolder === PATH ) {
 			return false;
 		}
 
 		$success	= true;
-
-		$pathFolder	= self::pathAbsolute($pathFolder);
 
 		if( is_dir($pathFolder) ) {
 			self::deleteFolderContents($pathFolder, true);
@@ -798,6 +798,61 @@ class TodoyuFileManager {
 			Todoyu::log('saveLocalCopy of ' . $url . ' failed', TodoyuLogger::LEVEL_ERROR);
 			return false;
 		}
+	}
+
+
+
+	/**
+	 * Copy a folder recursive to another folder
+	 * If move is set, all files are moved instead of copied
+	 *
+	 * @param	String		$sourceFolder
+	 * @param	String		$destFolder
+	 * @param	Boolean		$move				Move instead copy
+	 */
+	public static function copyRecursive($sourceFolder, $destFolder, $move = false) {
+		$sourceFolder	= self::pathAbsolute($sourceFolder);
+		$destFolder		= self::pathAbsolute($destFolder);
+		$removeFolders	= array();
+
+		self::makeDirDeep($destFolder);
+
+		$folderElements	= self::getFolderContents($sourceFolder);
+
+		foreach($folderElements as $element) {
+			$pathElement	= self::pathAbsolute($sourceFolder . '/' . $element);
+			$pathDestElement= self::pathAbsolute($destFolder . '/' . $element);
+
+			if( is_dir($pathElement) ) {
+					// Folder
+				if( ! is_dir($pathDestElement) ) {
+					self::makeDirDeep($pathDestElement);
+				}
+				self::copyRecursive($pathElement, $pathDestElement, $move);
+				if( $move ) {
+					$removeFolders[] = $pathElement;
+				}
+			} else {
+					// File
+				if( is_file($pathDestElement) ) {
+					TodoyuDebug::printInFireBug($pathDestElement, 'delete');
+//					self::deleteFile($pathDestElement);
+				}
+				if( $move ) {
+					TodoyuDebug::printInFireBug($pathDestElement, 'rename');
+//					rename($pathElement, $pathDestElement);
+				} else {
+					TodoyuDebug::printInFireBug($pathDestElement, 'copy');
+//					copy($pathElement, $pathDestElement);
+				}
+			}
+		}
+
+		TodoyuDebug::printInFireBug($removeFolders, '$removeFolders');
+
+//		foreach($removeFolders as $folder) {
+//			rmdir($folder);
+//		}
 	}
 
 }
