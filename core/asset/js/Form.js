@@ -354,8 +354,8 @@ Todoyu.Form = {
 
 		if( ! Todoyu.exists(idIFrame) ) {
 			var iFrame	= new Element('iframe', {
-				'name':		'upload-iframe-' + key,
-				'id':		'upload-iframe-' + key,
+				name:		'upload-iframe-' + key,
+				id:			'upload-iframe-' + key,
 				'class':	'uploadIframe'
 			});
 
@@ -390,6 +390,22 @@ Todoyu.Form = {
 	openIFrame: function(key, url) {
 		this.addIFrame(key);
 		this.getIFrame(key).contentWindow.location.href = url;
+	},
+
+
+
+	/**
+	 * Submit a form to an iFrame
+	 *
+	 * @param	{Element|String}	form
+	 * @param	{String}			iFrameName
+	 */
+	submitToIFrame: function(form, iFrameName) {
+		var iFrame	= this.addIFrame(iFrameName);
+
+		$(form).writeAttribute('target', iFrame.name);
+
+		$(form).submit();
 	},
 
 
