@@ -134,7 +134,7 @@ class TodoyuDatabase {
 	 * Use utf8 names and clear sql_mode
 	 */
 	private function initConnection() {
-		$this->query("SET sql_mode='ANSI'");
+//		$this->query("SET sql_mode='ANSI'");
 		$this->query('SET NAMES utf8;');
 	}
 
