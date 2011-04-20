@@ -82,7 +82,7 @@ Todoyu.Installer = {
 	 * @method	checkDbSelect
 	 */
 	checkDbSelect: function() {
-		var newDbName	= $F('database_new').trim();
+		var newDbName	= $F('database_new').strip();
 
 		if( newDbName !== '' ) {
 				// New DB name specified? deactivate selector

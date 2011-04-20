@@ -167,7 +167,7 @@ Todoyu.AutoExtendingList = Class.create({
 	 */
 	areAllElementsFull: function() {
 		return this.getInputs().all(function(input){
-			return input.value.trim() !== '';
+			return input.value.strip() !== '';
 		});
 	},
 

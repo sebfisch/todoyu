@@ -112,7 +112,7 @@ Todoyu.DelayedTextObserver = Class.create({
 	 * @method	callCallback
 	 */
 	callCallback: function() {
-		this.callback.call(null, this.field, $F(this.field).trim());
+		this.callback.call(null, this.field, $F(this.field).strip());
 	}
 
 });

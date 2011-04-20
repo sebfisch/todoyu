@@ -194,7 +194,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 * @return	{String}
 	 */
 	getSearchText: function() {
-		return $F(this.input).trim();
+		return $F(this.input).strip();
 	}
 
 });
