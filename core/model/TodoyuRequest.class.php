@@ -359,7 +359,7 @@ class TodoyuRequest {
 			// Disable error handler
 		TodoyuErrorHandler::setActive(false);
 			// Open socket
-		$sock = fsockopen("tcp://$host", $port, &$errno, &$errstr, $timeout);
+		$sock = fsockopen("tcp://$host", $port, $errno, $errstr, $timeout);
 			// Enable error handler
 		TodoyuErrorHandler::setActive(true);
 
