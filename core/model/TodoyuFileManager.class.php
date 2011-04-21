@@ -375,12 +375,9 @@ class TodoyuFileManager {
 	 */
 	public static function saveFileContent($pathFile, $content) {
 		$pathFile	= self::pathAbsolute($pathFile);
+		self::makeDirDeep(dirname($pathFile));
 
-		if( is_file($pathFile) && is_writable($pathFile) ) {
-			file_put_contents($pathFile, $content);
-		} else {
-			Todoyu::log('Can\'t open file: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
-		}
+		file_put_contents($pathFile, $content);
 	}
 
 
@@ -628,11 +625,11 @@ class TodoyuFileManager {
 	 */
 	public static function downloadFile($url, array $options = array()) {
 		if( function_exists('curl_init') ) {
-			$content		= self::downloadFile_CURL($url, $options);
+			$content	= self::downloadFile_CURL($url, $options);
 		} elseif( function_exists('fsockopen') ) {
-			$content		= self::downloadFile_SOCKET($url, $options);
+			$content	= self::downloadFile_SOCKET($url, $options);
 		} else {
-			$content		= 'NOT IMPLEMENTED YET';
+			$content	= @file_get_contents($url);
 		}
 
 		return $content;
@@ -701,10 +698,10 @@ class TodoyuFileManager {
 		$path		= trim($parsedURL['path']);
 		$query		= trim($parsedURL['query']);
 
-		if( $parsedURL['scheme'] === 'http' ) {
-			$scheme	= 'tcp://';
-		} elseif( $parsedURL['scheme'] === 'https' ) {
+		if( $parsedURL['scheme'] === 'https' ) {
 			$scheme	= 'ssl://';
+		} else {
+			$scheme	= 'tcp://';
 		}
 
 		if( $port === 0 ) {
@@ -755,11 +752,22 @@ class TodoyuFileManager {
 
 		fclose($fp);
 
+			// Get response headers
+		$httpHeaders	= TodoyuString::extractHttpHeaders($content);
+
+			// If a redirect header was sent, download redirection URL
+		if( $httpHeaders['statusCode'] >= 300 && $httpHeaders['statusCode'] < 400 ) {
+			if( array_key_exists('Location', $httpHeaders) ) {
+					// Download from redirection URL
+				return self::downloadFile_SOCKET($httpHeaders['Location'], $options);
+			}
+		}
+
 		if( $options['fullResponse'] ) {
 			// Do nothing
 		} else {
 			if($options['onlyHeaders']) {
-				$content		= TodoyuString::extractHttpHeaders($content);
+				$content		= $httpHeaders;
 			} else {
 				$requestParts	= explode("\r\n\r\n", $content, 2);
 				$content		= $requestParts[1];

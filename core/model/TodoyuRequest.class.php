@@ -408,6 +408,17 @@ class TodoyuRequest {
 		);
 	}
 
+
+
+	/**
+	 * Check whether HTTPS is enabled
+	 *
+	 * @return	Boolean
+	 */
+	public static function isSecureRequest() {
+		return $_SERVER['HTTPS'] === 'on';
+	}
+
 }
 
 ?>

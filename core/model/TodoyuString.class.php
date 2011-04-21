@@ -540,7 +540,8 @@ class TodoyuString {
 		$headers	= array();
 
 			// Add HTTP status as status key
-		$headers['status'] = array_shift($headerPairs);
+		$headers['status']		= array_shift($headerPairs);
+		$headers['statusCode']	= self::extractHttpStatusCode($headers['status']);
 
 			// Add the rest of the header pairs
 		foreach($headerPairs as $headerPair) {
@@ -549,6 +550,20 @@ class TodoyuString {
 		}
 
 		return $headers;
+	}
+
+
+
+	/**
+	 * Extract status code from http status header
+	 *
+	 * @param	String		$httpStatusHeader
+	 * @return	Integer
+	 */
+	public static function extractHttpStatusCode($httpStatusHeader) {
+		$parts	= explode(' ', $httpStatusHeader);
+
+		return intval($parts[1]);
 	}
 
 
