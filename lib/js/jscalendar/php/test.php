@@ -1,5 +1,7 @@
 <?php
 
+die("XSS Protection");
+
 $lang = $_GET['lang'];
 if (!$lang) {
     $lang = $_REQUEST['lang'];
