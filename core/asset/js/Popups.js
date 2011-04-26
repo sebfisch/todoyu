@@ -113,9 +113,37 @@ Todoyu.Popups = {
 	show: function(options) {
 		var popup = new Todoyu.Popup(options);
 
+		popup.onShow =   this.onShow(options.id);
 		popup.showCenter(true, 100);
 
 		return popup;
+	},
+
+
+
+	/**
+	 * Handler called after popup shown
+	 *
+	 * @param	{String}	idPopup
+	 */
+	onShow: function(idPopup) {
+
+	},
+
+
+
+	/**
+	 * Focus first field (of first form) inside given/ most recent popup
+	 *
+	 * @param	{String}	idPopup
+	 */
+	focusFirstField: function(idPopup) {
+		idPopup	=	idPopup || this.getLast().element.id;
+
+		var form	= $(idPopup).select('form')[0];
+		if( form ) {
+			form.down('textarea[type!="hidden"], select[type!="hidden"], input[type!="hidden"]').focus();
+		}
 	},
 
 
@@ -157,6 +185,8 @@ Todoyu.Popups = {
 			contentUrl:		contentUrl,
 			requestOptions:	requestOptions || {}
 		});
+
+		return popup;
 	},
 
 
