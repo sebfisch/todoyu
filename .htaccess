@@ -40,6 +40,9 @@ RedirectMatch 403 (.*)\.phpsh$
 # Disallow any file download from web
 RedirectMatch 403 /files/*
 
+# Disallow any backup file download from web
+RedirectMatch 403 /backup/*
+
 # Disallow file download from cache
 RedirectMatch 403 /cache/language/*
 RedirectMatch 403 /cache/tmpl/*
