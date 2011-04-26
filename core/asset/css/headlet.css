@@ -39,6 +39,7 @@
 	#headlets li:hover a {
 		border-color:#b9bbad;
 		z-index:203;
+		background-color:white;
 	}
 
 #headlets li ul {

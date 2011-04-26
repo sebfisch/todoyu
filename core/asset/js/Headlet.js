@@ -401,7 +401,7 @@ Todoyu.Headlet = Class.create({
 	 * @method	saveOpenStatus
 	 */
 	saveOpenStatus: function() {
-		Todoyu.Headlets.saveOpenStatus();
+		Todoyu.Headlets.saveOpenStatus.bind(Todoyu.Headlets).delay(1);
 	}
 
 

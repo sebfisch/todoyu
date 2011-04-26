@@ -47,7 +47,7 @@ Todoyu.Headlets = {
 	 * @property	openHeadlet
 	 * @type		String
 	 */
-	openHeadlet: null,
+	openHeadlet: undefined,
 
 
 
@@ -59,6 +59,8 @@ Todoyu.Headlets = {
 	init: function() {
 			// Close headlets when clicked outside of the headlets (on body)
 		Todoyu.Ui.addBodyClickObserver(this.onBodyClick.bind(this));
+
+		this.openHeadlet = this.getOpenHeadlet();
 	},
 
 
@@ -126,25 +128,19 @@ Todoyu.Headlets = {
 	 * @method	saveOpenStatus
 	 */
 	saveOpenStatus: function() {
-		var headletName		= false;
 			// Find open headlet
 		var openOverlay	= this.getOpenHeadlet();
 
-			// Extract headlet name
-		if( openOverlay !== undefined ) {
-			headletName	= openOverlay.id.split('-').first();
-		}
-
-		if( this.openHeadlet === false && headletName === false ) {
+		if( this.openHeadlet === openOverlay ) {
 			return ;
+		} else {
+			this.openHeadlet = openOverlay;
 		}
-
-		this.openHeadlet = headletName;
 
 			// Clear current timeout
 		window.clearTimeout(this.openStatusTimeout);
 			// Start new timeout
-		this.openStatusTimeout = this.submitOpenStatus.bind(this, headletName).delay(1);
+		this.openStatusTimeout = this.submitOpenStatus.bind(this).delay(1);
 	},
 
 
@@ -180,14 +176,16 @@ Todoyu.Headlets = {
 	 * False means, no headlet is open at the moment
 	 *
 	 * @method	submitOpenStatus
-	 * @param	{String|Boolean}	headletName
 	 */
-	submitOpenStatus: function(headletName) {
+	submitOpenStatus: function() {
+		var openHeadlet	= this.getOpenHeadlet();
+		var headletKey	= openHeadlet ? openHeadlet.id.split('-').first() : '';
+
 		var url		= Todoyu.getUrl('core', 'headlet');
 		var options	= {
 			parameters: {
-				action: 	'open',
-				'headlet':	headletName === false ? '' : headletName
+				action: 'open',
+				headlet:headletKey
 			}
 		};
 
