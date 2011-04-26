@@ -61,6 +61,83 @@ class TodoyuArchiveManager {
 
 		$zip->close();
 	}
+
+
+
+	/**
+	 * Create an archive from a folder
+	 *
+	 * @param	String		$pathFolder
+	 * @param	String		$baseFolder
+	 * @param	Boolean		$recursive
+	 * @param	Array		$exclude
+	 * @return	String
+	 */
+	public static function createArchiveFromFolder($pathFolder, $baseFolder, $recursive = true, array $exclude = array()) {
+		$pathFolder	= TodoyuFileManager::pathAbsolute($pathFolder);
+		$baseFolder	= TodoyuFileManager::pathAbsolute($baseFolder);
+		$randomFile	= md5(uniqid($pathFolder, microtime(true))) . '.zip';
+		$tempPath	= TodoyuFileManager::pathAbsolute('cache/temp/' . $randomFile);
+		$archive	= new ZipArchive();
+
+			// Prepare exclude paths
+		foreach($exclude as $index => $path) {
+			$exclude[$index] = TodoyuFileManager::pathAbsolute($path);
+		}
+
+			// Create temp dir
+		TodoyuFileManager::makeDirDeep(dirname($tempPath));
+
+		$archive->open($tempPath, ZipArchive::CREATE);
+
+		self::addFolderToArchive($archive, $pathFolder, $baseFolder, $recursive, $exclude);
+
+		$archive->close();
+
+		return $tempPath;
+	}
+
+
+
+	/**
+	 * Add a folder (and sub elements) to an archive
+	 *
+	 * @param	ZipArchive		$archive
+	 * @param	String			$pathToFolder		Path to folder which elements should be added
+	 * @param	String			$baseFolder			Base folder defined to root for the archive. Base path will be removed from internal archive path
+	 * @param	Boolean			$recursive			Add also all sub folders and files
+	 */
+	private static function addFolderToArchive(ZipArchive &$archive, $pathToFolder, $baseFolder, $recursive = true, array $exclude = array()) {
+		$files		= TodoyuFileManager::getFilesInFolder($pathToFolder);
+
+			// Add files
+		foreach($files as $file) {
+			$filePath	= $pathToFolder . DIR_SEP . $file;
+
+			if( ! in_array($filePath, $exclude) ) {
+				$relPath	= str_replace($baseFolder . DIR_SEP, '', $filePath);
+
+				$archive->addFile($filePath, $relPath);
+			}
+		}
+
+			// Add folders if recursive is enabled
+		if( $recursive ) {
+			$folders	= TodoyuFileManager::getFoldersInFolder($pathToFolder);
+				// Add folders
+			foreach($folders as $folder) {
+				$folderPath	= $pathToFolder . DIR_SEP . $folder;
+
+				if( ! in_array($folderPath, $exclude) ) {
+					$relPath	= str_replace($baseFolder . DIR_SEP, '', $folderPath);
+
+					$archive->addEmptyDir($relPath);
+
+					self::addFolderToArchive($archive, $folderPath, $baseFolder, true, $exclude);
+				}
+			}
+		}
+	}
 }
 
 ?>
