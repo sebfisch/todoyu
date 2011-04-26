@@ -60,6 +60,9 @@ class TodoyuMailManager {
 		$mailer->SetFrom($fromAddress, $fromName);
 		$mailer->AddAddress($toAddress, $toName);
 
+		$htmlBody	= self::embedImages($mailer, $htmlBody);
+
+
 			// Add message body as HTML and plain text
 		$mailer->MsgHTML($htmlBody, $baseURL);
 		$mailer->AltBody	= $textBody;
@@ -78,6 +81,32 @@ class TodoyuMailManager {
 		}
 
 		return $sendStatus;
+	}
+
+
+
+	/**
+	 * Embed images into the email
+	 *
+	 * @param	PHPMailerLite	$mailer
+	 * @param	String			$htmlContent
+	 * @return	String
+	 */
+	private static function embedImages(PHPMailerLite $mailer, $htmlContent) {
+		$pattern	= '|<img.*?src="([\d\w\.\-/]*?)".*?/>|';
+
+		preg_match_all($pattern, $htmlContent, $matches);
+
+		foreach($matches[1] as $pathImage) {
+			$absPathImage	= TodoyuFileManager::pathAbsolute($pathImage);
+			$cidString		= str_replace(array('/', '\\', '-', '.'), '-', $pathImage);
+
+			$mailer->AddEmbeddedImage($absPathImage, $cidString, basename($pathImage));
+
+			$htmlContent	= str_replace($pathImage, 'cid:' . $cidString, $htmlContent);
+		}
+
+		return $htmlContent;
 	}
 
 
