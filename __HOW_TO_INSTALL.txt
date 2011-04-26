@@ -21,7 +21,7 @@ todoyu Requirements
 ===================
 	* Web server:						Apache (version 2.0 or greater) is recommended (http://apache.org/).
 	* Middleware:						PHP 5.2 (or greater) (http://www.php.net/).
-	* Required PHP extensions:			mbstring extension
+	* Required PHP extensions:			mbstring, zlib
 	* Database:							MYSQL 5.0 or greater (http://www.mysql.com/).
 	* Web server configuration: 		Multibyte (UTF-8) must be supported by the webserver
 	* Recommended web server modules:	mod_rewrite for URL rewriting
