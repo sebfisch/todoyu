@@ -21,7 +21,7 @@ todoyu Requirements
 ===================
 	* Web server:						Apache (version 2.0 or greater) is recommended (http://apache.org/).
 	* Middleware:						PHP 5.2 (or greater) (http://www.php.net/).
-	* Required PHP extensions:			mbstring, zlib
+	* Required PHP extensions:			mbstring, zlib, mcrypt, zip, json, pcre, libxml, SimpleXML, gd
 	* Database:							MYSQL 5.0 or greater (http://www.mysql.com/).
 	* Web server configuration: 		Multibyte (UTF-8) must be supported by the webserver
 	* Recommended web server modules:	mod_rewrite for URL rewriting
@@ -39,7 +39,7 @@ Instructions to install todoyu
 	Upload the files to the root of your webspace or to a custom sub directory.
 
 	3. Create a MySql database and a respective user with sufficient database privileges
-	(such as the ability to create tables). Take note of the username, password, database name 
+	(such as the ability to create tables). Take note of the username, password, database name
 	and hostname as you create the database. You will enter this information during the installation.
 
 	4. File permissions
@@ -51,7 +51,7 @@ Instructions to install todoyu
 		* config/extensions.php
 		* config/extconf.php
 		* index.html
-	
+
 	5. Run the install script.
 	To run the todoyu installer, point your browser to the URL of your website where you uploaded todoyu
 	(http://wwww.example.org/ if you uploaded todoyu to the root of your webspace,
