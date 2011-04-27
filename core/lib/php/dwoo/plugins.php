@@ -362,7 +362,7 @@ function Dwoo_Plugin_substituteLinkableElements_compile(Dwoo_Compiler $compiler,
  * @param	Integer		$id			HTML id
  * @return	String
  */
-function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '', $title = '', $type = '', $disable = false) {
+function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '', $title = '', $type = '', $disable = false, $disabled = false) {
 	$tmpl	= 'core/view/button.tmpl';
 	$data	= array(
 		'label'		=> $label,
@@ -371,7 +371,8 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
 		'id'		=> $id,
 		'title'		=> $title,
 		'type'		=> $type,
-		'disable'	=> $disable === true || $disable === 'true'
+		'disable'	=> $disable === true || $disable === 'true' || $disable,
+		'disabled'	=> $disabled === true || $disabled === 'true' || $disabled
 	);
 
 	return render($tmpl, $data);
