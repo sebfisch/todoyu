@@ -185,8 +185,6 @@ Todoyu.Popups = {
 			contentUrl:		contentUrl,
 			requestOptions:	requestOptions || {}
 		});
-
-		return popup;
 	},
 
 

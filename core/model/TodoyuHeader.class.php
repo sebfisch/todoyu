@@ -234,6 +234,17 @@ class TodoyuHeader {
 
 
 	/**
+	 * Send todoyu error header and error message
+	 * @param	String		$message
+	 */
+	public static function sendTodoyuError($message) {
+		self::sendTodoyuErrorHeader();
+		self::sendTodoyuHeader('errorMessage', $message);
+	}
+
+
+
+	/**
 	 * Send a no access header to inform the script that the request has been canceled
 	 */
 	public static function sendNoAccessHeader() {
