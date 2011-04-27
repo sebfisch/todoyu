@@ -50,7 +50,7 @@
 #panel div.panelWidget ul.naviList li {
 	line-height:18px;
 	padding:3px 0 3px 5px;
-	border-bottom:1px dotted #848484;
+	border-bottom:1px solid #ddd;
 }
 
 #panel div.panelWidget ul.naviList li.active {

@@ -258,7 +258,7 @@ body {
 	.panelWidget .content select option {
 		padding:2px;
 		background-color:#fff;
-		border-bottom:1px dotted #848484;
+		border-bottom:1px solid #ddd;
 		color:#333;
 	}
 

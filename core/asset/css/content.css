@@ -24,9 +24,8 @@ span.iconLarge {
 .contentMessage {
 	clear:both;
 	padding:10px;
-	width:640px;
 	background-color:#E3EACE;
-	margin:5px 0;
+	margin-bottom:5px;
 }
 
 .contentMessage div.icon,
@@ -74,7 +73,7 @@ ul.ulList li.listItemHeader span {
 }
 
 ul.ulListDotted li.listItem {
-	border-bottom:1px dotted #aaaaaa;
+	border-bottom:1px solid #ddd;
 }
 /* -----------------------------
 	Editable / linked items
@@ -133,7 +132,6 @@ h1.headerLine.hasIcon span.title {
 .headerLine {
 	position:relative;
 	margin-top:5px;
-	padding-left: 3px;
 	width:100%;
 	height:28px;
 	background:url('../img/bg-headerline.png') no-repeat 0 0;
@@ -147,7 +145,8 @@ h1.headerLine.hasIcon span.title {
 }
 
 .headerLine span.first {
-	padding:0 0 0 17px;
+	margin: 0;
+	padding:0 0 0 20px;
 }
 
 .headerLine span.rgt {

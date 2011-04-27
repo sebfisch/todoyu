@@ -30,7 +30,7 @@ table.list td {
 }
 
 table.list tr {
-	border-bottom:1px dotted #aaa;
+	border-bottom:1px solid #ddd;
 }
 
 table.list td div.icon {

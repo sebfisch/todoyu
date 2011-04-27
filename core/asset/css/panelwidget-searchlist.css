@@ -18,7 +18,7 @@
 	width:95%;
 	padding:1px 5px;
 	margin-top:3px;
-	border:1px dotted #ccc;
+	border:1px solid #ddd;
 	border-bottom:none;
 }
 
@@ -26,7 +26,7 @@
 	display:inline-block;
 	width:95%;
 	padding:5px;
-	border:1px dotted #ccc;
+	border:1px solid #ddd;
 	border-top:none;
 }
 

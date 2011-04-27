@@ -5,7 +5,8 @@
 
 .sortablePanelList li.groupTitle {
 	font-size:11px;
-	border-bottom:1px solid #848484;
+	font-weight:bold;
+	border-bottom:1px solid #ddd;
 	cursor:pointer;
 	padding-bottom:2px;
 }
@@ -22,7 +23,7 @@
 	padding:5px 0 6px 5px;
 	height:auto !important;
 	height:1px;
-	border-bottom:1px #000 dotted;
+	border-bottom:1px solid #ddd;
 }
 
 .sortablePanelList .listItem.odd {
@@ -64,7 +65,7 @@
 }
 
 .sortablePanelList .handle {
-	background:transparent url(../img/icons.png) no-repeat scroll 0 -960px;
+	background:transparent url(../img/icons.png) no-repeat scroll 0 -963px;
 	width:13px;
 	float:left;
 	cursor:move;
@@ -75,5 +76,5 @@
 }
 
 .sortablePanelList .handle.hover {
-	background:transparent url(../img/icons.png) no-repeat scroll 0 -1020px;
+	background:transparent url(../img/icons.png) no-repeat scroll 0 -1022px;
 }
