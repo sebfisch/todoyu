@@ -3,7 +3,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2010, snowflake productions GmbH, Switzerland
+* Copyright (c) 2011, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -26,12 +26,11 @@
 
 Todoyu::$CONFIG['DB'] = array(
 	'server'		=> 'localhost',
-	'username'		=> 'sfpdev',
-	'password'		=> 'sfpdev0',
-	'database'		=> 'dev_todoyutrunk',
-	'autoconnect'	=> true,
+	'username'		=> 'todoyu',
+	'password'		=> 'todoyu',
+	'database'		=> 'todoyu',
+	'autoconnect'	=> false,
 	'persistent'	=> true,
-	'queryHistory'	=> false
+	'queryHistory'	=> true
 );
-
 ?>
