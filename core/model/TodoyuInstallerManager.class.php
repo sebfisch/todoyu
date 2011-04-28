@@ -498,6 +498,8 @@ class TodoyuInstallerManager {
 	 * @param	Array		$config
 	 */
 	public static function saveSystemConfig(array $config) {
+		$config['todoyuURL']	= TODOYU_URL;
+
 		TodoyuConfigManager::saveSystemConfigConfig($config, true);
 	}
 

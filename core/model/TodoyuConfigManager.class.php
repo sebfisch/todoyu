@@ -49,7 +49,7 @@ class TodoyuConfigManager {
 	 */
 	public static function saveSystemConfigConfig(array $data, $generateNewKey = false) {
 		$savePath	= 'config/system.php';
-		$template	= 'core/view/system.php.tmpl';
+		$template	= 'core/view/template/system.php.tmpl';
 
 		if( $generateNewKey ) {
 			$data['encryptionKey']	= TodoyuCrypto::makeEncryptionKey();
@@ -73,7 +73,7 @@ class TodoyuConfigManager {
 		$data		= TodoyuArray::assure(Todoyu::$CONFIG['SETTINGS']);
 		$prepared	= array();
 		$savePath	= 'config/settings.php';
-		$template	= 'core/view/settings.php.tmpl';
+		$template	= 'core/view/template/settings.php.tmpl';
 
 		foreach($data as $groupName => $groupConfig) {
 			$prepared[$groupName] = array();

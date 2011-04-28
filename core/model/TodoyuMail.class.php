@@ -18,14 +18,21 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+require_once( PATH_LIB . '/php/phpmailer/class.phpmailer-lite.php' );
+
 /**
  * [Enter Class Description]
  *
  * @package		Todoyu
- * @subpackage	[Subpackage]
+ * @subpackage	Core
  */
 class TodoyuMail extends PHPMailerLite {
 
+	/**
+	 * Default config
+	 *
+	 * @var	Array
+	 */
 	private $config = array(
 		'exceptions'=> true,
 		'mailer'	=> 'mail',
@@ -34,7 +41,12 @@ class TodoyuMail extends PHPMailerLite {
 
 
 
-	public function __construct(array $config) {
+	/**
+	 * Initialize with config
+	 *
+	 * @param	Array		$config
+	 */
+	public function __construct(array $config = array()) {
 		$this->config	= TodoyuArray::mergeRecursive($this->config, $config);
 
 		parent::__construct($this->config['exceptions']);
@@ -42,45 +54,181 @@ class TodoyuMail extends PHPMailerLite {
 			// Config
 		$this->Mailer	= $this->config['mailer'];
 		$this->CharSet	= $this->config['charset'];
+
+		if( is_array($this->config['from']) ) {
+			$this->SetFrom($this->config['from']['email'], $this->config['from']['name']);
+		} elseif( is_numeric($this->config['from']) ) {
+			$this->setSender($this->config['from']);
+		} elseif( $this->config['from'] !== false ) {
+			$this->setSystemAsSender();
+		}
 	}
 
+
+
+	/**
+	 * Set system as sender of the email (system name and email)
+	 *
+	 */
+	public function setSystemAsSender() {
+		$this->SetFrom(Todoyu::$CONFIG['SYSTEM']['email'], Todoyu::$CONFIG['SYSTEM']['name']);
+	}
+
+
+
+	/**
+	 * Set mail subject
+	 *
+	 * @param	String		$subject
+	 */
 	public function setSubject($subject) {
-		$this->Subject = trim($subject);
+		$this->Subject = Label($subject);
 	}
 
 
+	/**
+	 * Set html content of the mail
+	 *
+	 * @param	String		$html
+	 */
 	public function setHtmlContent($html) {
-//		$html	= $this->embedImages($html);
+		$html	= $this->fullyQualifyLinksInHtml($html);
 
 		$this->MsgHTML($html, PATH);
-
 	}
 
-//		/**
-//	 * Embed images into the email
-//	 *
-//	 * @param	PHPMailerLite	$mailer
-//	 * @param	String			$html
-//	 * @return	String
-//	 */
-//	private function embedImages($html) {
-//		$pattern	= '|<img.*?src="([\d\w\.\-/]*?)".*?/>|';
-//
-//		preg_match_all($pattern, $html, $matches);
-//
-//		foreach($matches[1] as $pathImage) {
-//			$absPathImage	= TodoyuFileManager::pathAbsolute($pathImage);
-//			$cidString		= str_replace(array('/', '\\', '-', '.'), '-', $pathImage);
-//
-//			$this->AddEmbeddedImage($absPathImage, $cidString, basename($pathImage));
-//
-//			$html	= str_replace($pathImage, 'cid:' . $cidString, $html);
-//		}
-//
-//		return $html;
-//	}
 
 
+	/**
+	 * Prefix links with TODOYU_URL to make them work in mails
+	 *
+	 * @param	String		$html
+	 * @return	String
+	 */
+	private function fullyQualifyLinksInHtml($html) {
+		$pattern	= '/href=["\']{1}([^"\']*?)["\']{1}/is';
+		$replace	= array();
+
+		preg_match_all($pattern, $html, $matches);
+
+		foreach($matches[1] as $link) {
+			if( strncmp('http', $link, 4) === 0 ) {
+				continue;
+			}
+			if( strncmp('javascript', $link, 10) === 0 ) {
+				continue;
+			}
+
+			$replace[$link] = TODOYU_URL . '/' . $link;
+		}
+
+		return str_replace(array_keys($replace), array_values($replace), $html);
+	}
+
+
+
+	/**
+	 * Set text content of the mail
+	 *
+	 * @param	String		$text
+	 */
+	public function setTextContent($text) {
+		$this->AltBody = $text;
+	}
+
+
+
+	/**
+	 * Add an attachment
+	 *
+	 * @param	String		$path
+	 * @param	String		$name
+	 */
+	public function AddAttachment($path, $name) {
+		$path	= TodoyuFileManager::pathAbsolute($path);
+
+		parent::AddAttachment($path, $name);
+	}
+
+
+
+	/**
+	 * Add a person as receiver
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	Boolean
+	 */
+	public function addReceiver($idPerson) {
+		$idPerson	= intval($idPerson);
+		$person		= TodoyuContactPersonManager::getPerson($idPerson);
+
+		$email		= $person->getEmail();
+
+		if( empty($email) ) {
+			return false;
+		}
+
+		$this->AddAddress($email, $person->getFullName());
+
+		return true;
+	}
+
+
+
+	/**
+	 * Add a person as reply to
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	Boolean
+	 */
+	public function addReplyToPerson($idPerson) {
+		$idPerson	= intval($idPerson);
+		$person		= TodoyuContactPersonManager::getPerson($idPerson);
+
+		$email		= $person->getEmail();
+
+		if( empty($email) ) {
+			return false;
+		}
+
+		$this->AddReplyTo($email, $person->getFullName());
+
+		return true;
+	}
+
+
+
+	/**
+	 * Add current person as reply to
+	 *
+	 * @return	Boolean
+	 */
+	public function addCurrentPersonAsReplyTo() {
+		return $this->addReplyToPerson(personid());
+	}
+
+
+
+	/**
+	 * Set sender of the email
+	 *
+	 * @param  $idPerson
+	 * @return bool
+	 */
+	public function setSender($idPerson) {
+		$idPerson	= intval($idPerson);
+		$person		= TodoyuContactPersonManager::getPerson($idPerson);
+
+		$email		= $person->getEmail();
+
+		if( empty($email) ) {
+			return false;
+		}
+
+		$this->SetFrom($email, $person->getFullName());
+
+		return true;
+	}
 }
 
 ?>

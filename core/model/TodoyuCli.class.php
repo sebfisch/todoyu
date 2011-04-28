@@ -41,13 +41,24 @@ class TodoyuCli {
 		'SERVER_PROTOCOL'
 	);
 
-	
+
 
 	/**
 	 * Change current work directory to main directory to prevent path problems
 	 */
 	public static function init() {
 		chdir(PATH);
+
+			// Predefine URL constants
+		if( ! defined('SERVER_URL') ) {
+			$url	= parse_url('http://' . str_replace('http://', '', Todoyu::$CONFIG['SYSTEM']['todoyuURL']));
+
+			define('PATH_WEB_OVERRIDE', $url['path']);
+
+			define('SERVER_URL', 'http://' . $url['host']);
+
+			define('TODOYU_URL', SERVER_URL . $url['path']);
+		}
 	}
 
 

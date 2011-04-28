@@ -28,7 +28,6 @@ if( ! defined('DIR_SEP') ) {
 
 	// Paths
 define( 'PATH', 			dirname(dirname(dirname(__FILE__))) );
-define( 'PATH_WEB',			defined('PATH_WEB_OVERRIDE') ? PATH_WEB_OVERRIDE : dirname($_SERVER['SCRIPT_NAME']) );
 define( 'PATH_CACHE',		PATH . DIR_SEP . 'cache' );
 define( 'PATH_CORE',		PATH . DIR_SEP . 'core' );
 define( 'PATH_EXT',			PATH . DIR_SEP . 'ext' );
@@ -43,14 +42,21 @@ define( 'PATH_FILES',		PATH . DIR_SEP . 'files' );
 	// Constants
 define( 'NOW', time() );
 
-/**
- * Public URL of the server (use to build absolute links)
- */
-define('SERVER_URL', ($_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST']);
+if( $_SERVER['HTTP_HOST'] ) {
+	/**
+	 * Path after host server to todoyu
+	 */
+	define( 'PATH_WEB',	defined('PATH_WEB_OVERRIDE') ? PATH_WEB_OVERRIDE : dirname($_SERVER['SCRIPT_NAME']) === '.' ? '' : dirname($_SERVER['SCRIPT_NAME']) );
 
-/**
- * Public URL of the todoyu installation (server path and web path)
- */
-define('TODOYU_URL', SERVER_URL . PATH_WEB);
+	/**
+	 * Public URL of the server (use to build absolute links)
+	 */
+	define('SERVER_URL', ($_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST']);
+
+	/**
+	 * Public URL of the todoyu installation (server path and web path)
+	 */
+	define('TODOYU_URL', SERVER_URL . PATH_WEB);
+}
 
 ?>
