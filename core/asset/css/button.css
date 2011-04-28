@@ -92,6 +92,9 @@ button.exclamation .icon {
 	background:url(../img/icons.png) no-repeat 0 -386px;
 }
 
+button.generate .icon {
+	background:url(../img/icons.png) no-repeat 0 -1629px;
+}
 
 /* ---------------------------
 	Center save buttons
