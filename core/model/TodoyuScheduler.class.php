@@ -76,11 +76,30 @@ class TodoyuScheduler {
 			// Create block file for this execution
 		self::createBlockFile();
 
+			// Check for forced class name
+		$jobClassName	= $_SERVER['argv'][1] ? $_SERVER['argv'][1] : false;
+
+				// Execute the jobs
+		self::executeJobs($jobClassName);
+
+			// Remove block file
+		self::removeBlockFile();
+	}
+
+
+	private static function executeJobs($jobClassName = false) {
 			// Cache last execution dates for all jobs
 		self::cacheLastExecutionDates();
 
-			// Get all due jobs and execute them
-		$jobs	= self::getDueJobs();
+		if( $jobClassName === false ) {
+				// Get all due jobs and execute them
+			$jobs	= self::getDueJobs();
+		} else {
+				// Set fixed job
+			$jobs	= array(
+				$jobClassName => self::getJob($jobClassName)
+			);
+		}
 
 		foreach($jobs as $jobConfig) {
 			if( class_exists($jobConfig['class'], true) ) {
@@ -102,9 +121,6 @@ class TodoyuScheduler {
 				self::logExecution($jobConfig['class'], $success, $message);
 			}
 		}
-
-			// Remove block file
-		self::removeBlockFile();
 	}
 
 
@@ -117,12 +133,25 @@ class TodoyuScheduler {
 	 * @param	Array			$options		Job options
 	 */
 	public static function addJob($className, $crontime, array $options = array()) {
-		self::$jobs[] = array(
+		self::$jobs[$className] = array(
 			'class'		=> $className,
 			'crontime'	=> $crontime,
 			'options'	=> $options
 		);
 	}
+
+
+
+	/**
+	 * Get a job by class name
+	 *
+	 * @param	String		$className
+	 * @return	Array
+	 */
+	private static function getJob($className) {
+		return self::$jobs[$className];
+	}
+
 
 
 	/**
