@@ -2,15 +2,16 @@
 	basic
    ---------------------------*/
 .inlineFilters {
+	padding:7px;
 	margin-bottom:10px;
-	background-color:#FAFAFA;
+	background-color:#eee;
 }
 
 .inlineFilters .filter {
-	border: 1px dashed #CCC;
+	border:1px solid #e1e1e1;
+	background-color:#fff;
 	padding:10px;
 	margin-bottom:5px;
-	background-color:#FAFAFA;
 }
 
 .inlineFilters .filter > div {
@@ -18,13 +19,13 @@
 }
 
 .inlineFilters .filter .label {
-	width:150px;
-	font-weight:bold;
+	width:140px;
+	padding: 2px 0;
 	vertical-align:top;
 }
 
 .inlineFilters .filter .input {
-	width:485px;
+	width:483px;
 }
 
 
@@ -43,8 +44,8 @@
 
 .inlineFilters .filter.typeAutocompleteMulti .extra,
 .inlineFilters .filter.typeSelectMulti .extra {
-	width:220px;
-	margin-left:20px;
+	width:223px;
+	margin-left: 20px;
 }
 
 
@@ -69,18 +70,16 @@
 	Item list
    ---------------------------*/
 .inlineFilters .filter ul.itemList {
-
 }
-
 .inlineFilters .filter ul.itemList li {
-	padding:2px 20px 4px 2px;
-	margin-bottom:2px;
-	border-bottom:1px dashed #CCC;
+	padding:2px 20px 2px 2px;
+	border-bottom:1px solid #ddd;
 }
 
 .inlineFilters .filter ul.itemList li:hover {
-	background-color:#EEE;
+	background-color:#f6f6f6;
 }
+
 
 .inlineFilters .filter ul.itemList li span.remove {
 	float:right;

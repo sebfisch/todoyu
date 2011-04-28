@@ -1,5 +1,9 @@
+.timerange {
+	padding-top:2px;
+}
 .timerange .bar {
-
+	position:relative;
+	padding:10px 0;
 }
 
 .timerange .bar .slider {
@@ -9,7 +13,7 @@
 }
 
 .timerange .bar .track {
-	height:16px;
+	height:3px;
 	display:inline-block;
 	cursor:pointer;
 }
@@ -27,23 +31,28 @@
 
 .timerange .bar .slider .handle {
 	position:absolute;
-	width:26px;
-	height:26px;
+	width:20px;
+	height:20px;
 	cursor:move;
 	cursor:ew-resize;
-	background-image:url(../img/timerange-handle.png);
-	top:-5px;
+	background:url(../img/timerange-handle.png) center center no-repeat;
+	margin-top:-17px;
 	z-index:10;
+}
+.timerange .bar .slider .handleStart {
+	margin-left:-4px;
+}
+.timerange .bar .slider .handleEnd {
+	margin-left:-5px;
 }
 
 .timerange .bar .span {
 	position:relative;
 	margin-left:5px;
-	margin-top:1px;
-	height:14px;
+	height:3px;
 	z-index:9;
 	background-color:#000;
-	opacity:0.2;
+	/*opacity:0.5;*/
 	cursor:default;
 
 }
@@ -57,24 +66,23 @@
 	clear:none;
 	width:60px;
 	height:16px;
-	text-align:center;
 }
 
 .timerange .limits .limit.min {
 	float:left;
+	text-align:left;
 }
 .timerange .limits .limit.max {
 	float:right;
+	text-align:right;
 }
 
 .timerange .dates {
-	display:inline-block;
-	margin:3px 10px;
-	width:95%;
+	margin:3px 0;
+	position:relative;
 }
 
 .timerange .dates .start,
-.timerange .dates .end,
 .timerange .dates .ranges {
 	float:left;
 	clear:none;
@@ -85,43 +93,56 @@
 }
 
 .timerange .dates .end {
-	width:80px;
-	margin-left:20px;
-}
-
-.timerange .dates .ranges {
-	width:260px;
-	text-align:center;
+	width:81px;
+	clear:none;
+	float: right;
 }
 
 .timerange .dates input {
 	width:60px;
 }
 
-.timerange .dates .ranges span.chooseRange {
-	cursor:pointer;
-}
-
-.timerange .dates .ranges ul {
+.timerange .dates .ranges {
 	position:absolute;
+	z-index:0;
 	width:150px;
-	background-color:#EFEFEF;
-	border: 1px solid #CCC;
-	padding:5px;
-	text-align:left;
-	margin-left:50px;
-	-moz-border-radius:8px;
-	z-index:1000;
+	left:50%;
+	right:50%;
+	margin-left:-75px;
+	cursor:pointer;
+	text-align:center;
+}
+.timerange .dates .ranges:hover span.chooseRange {
+	font-weight:bold;
+}
+.timerange .dates .ranges:hover {
+	margin:-10px -10px -10px -85px;
+	padding:10px;
+	-webkit-box-shadow:2px 2px 7px #999;
+	-moz-box-shadow:2px 2px 7px #999;
+	box-shadow:2px 2px 7px #999;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	background-color:#fff;
+}
+.timerange .dates .ranges ul {
+	display:none;
+	z-index:9999; /* always in front */
+	padding:10px 0 0 0;
+	color:#666;
+}
+.timerange .dates .ranges:hover ul {
+	display:block;
 }
 
 .timerange .dates .ranges ul li {
-	font-size:12px;
-	padding:5px;
+	padding:2px;
 	cursor:pointer;
-	-moz-border-radius:5px;
+	border-bottom:1px solid #ddd;
 }
 
 .timerange .dates .ranges ul li:hover {
-	background-color:#FCFCFC;
+	background-color:#f3f3f3;
 }
 

@@ -26,6 +26,6 @@
 	// ****************************************************************************
 
 	// Installed extensions
-Todoyu::$CONFIG['EXT']['installed'] = array('admin','project','sysmanager','loginpage','portal','calendar','timetracking','daytracks','search','bookmark','contact','comment','profile','assets','firststeps');
+Todoyu::$CONFIG['EXT']['installed'] = array('admin','project','sysmanager','loginpage','portal','calendar','timetracking','daytracks','search','bookmark','contact','comment','profile','assets','currency','dev','gantt','projectbilling','resources','reporting','projectbillingreporting','calendarreporting','minireport','firststeps');
 
 ?>

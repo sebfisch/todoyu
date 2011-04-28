@@ -3,7 +3,7 @@
 * todoyu is published under the BSD License:
 * http://www.opensource.org/licenses/bsd-license.php
 *
-* Copyright (c) 2011, snowflake productions GmbH, Switzerland
+* Copyright (c) 2010, snowflake productions GmbH, Switzerland
 * All rights reserved.
 *
 * This script is part of the todoyu project.
@@ -19,12 +19,10 @@
 *****************************************************************************/
 
 Todoyu::$CONFIG['SYSTEM']['name'] 		= 'todoyu';
-Todoyu::$CONFIG['SYSTEM']['email']		= 'install@todoyu.com';
-Todoyu::$CONFIG['SYSTEM']['language']	= 'en_GB';
-Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_GB.utf8';
+Todoyu::$CONFIG['SYSTEM']['email']		= 'ferni@snowflake.ch';
+Todoyu::$CONFIG['SYSTEM']['locale']		= 'de_DE';
+Todoyu::$CONFIG['SYSTEM']['timezone']	= 'Europe/Zurich';
 
-//Todoyu::$CONFIG['LOCALE']['defaultTimezone']= 'Europe/Zurich';
-
-Todoyu::$CONFIG['SYSTEM']['encryptionKey']	= 'N2Q1ZDA1ZTQ2NGZiNjRjODM4NGVjMzYyYmFlOTI3MDk';
+Todoyu::$CONFIG['SYSTEM']['encryptionKey']	= 'NDRmMTgzOTNhNDVhMjE2YzJjZjRiODEyNDExMjUyMjE';
 
 ?>

@@ -188,17 +188,20 @@ Todoyu.Timerange = Class.create({
 		var button	= ranges.down('span');
 		var list	= ranges.down('ul');
 
+		/*
 		list.hide();
-
 		button.on('mouseover', function(event){
 			list.show();
 		});
+		*/
 		button.on('click', 'div', function(event){
 			list.toggle();
 		});
+		/*
 		list.on('mouseleave', 'ul', function(event){
 			list.hide();
 		});
+		*/
 		list.on('click', 'li', function(event, element) {
 			this.setRange(element.className);
 			list.hide();
