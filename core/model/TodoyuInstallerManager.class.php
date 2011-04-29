@@ -935,7 +935,7 @@ class TodoyuInstallerManager {
 					// If the folder is a (task-)number
 				if( $idTask > 0 ) {
 						// Find project ID
-					$idProject		= TodoyuTaskManager::getProjectID($idTask);
+					$idProject		= TodoyuProjectTaskManager::getProjectID($idTask);
 						// New folder for task files
 					$pathTaskFiles	= TodoyuFileManager::pathAbsolute($pathAssets . '/' . $idProject . '/' . $idTask);
 						// Get all task files

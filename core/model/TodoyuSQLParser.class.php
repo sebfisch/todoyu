@@ -246,7 +246,7 @@ class TodoyuSQLParser {
 	 * @param	String	$tablesSql
 	 */
 	public function getAllTableStructures(array $tableNames, $tablesSql = '') {
-		if($tablesSql == '') {
+		if( $tablesSql == '' ) {
 			$tablesSql	= self::getInstalledExtTablesSqls();
 		}
 		if( count($tableNames) == 0 ) {
@@ -271,7 +271,7 @@ class TodoyuSQLParser {
 					// Append columns to table structure data
 				$structures[$tableName]['columns']	= array_merge($structures[$tableName]['columns'], $tableColumns);
 
-				if(! array_key_exists('keys', $structures[$tableName]) ) {
+				if( ! array_key_exists('keys', $structures[$tableName]) ) {
 					$structures[$tableName]['keys']		= self::extractTableKeys($tableSql);
 				}
 			}
@@ -375,7 +375,7 @@ class TodoyuSQLParser {
 					if( strstr($colName, '_SQL') === false && strstr($colName, '_DB') === false && strstr($colName, '_DIFF') === false ) {
 						$action	= '';
 
-						if(array_key_exists($tableName, $newTables) ) {
+						if( array_key_exists($tableName, $newTables) ) {
 							if( $colName === 'id' ) {
 									// Query to create table with id-field
 								$action	= 'CREATE';

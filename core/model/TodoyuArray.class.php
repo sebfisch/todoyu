@@ -708,7 +708,7 @@ class TodoyuArray {
 		$values	= array();
 		$clean	= array();
 
-			// iterate all ass. sub arrays
+			// Iterate all associative sub arrays
 		foreach($array as $index => $item) {
 			$value	= $item[$fieldName];
 

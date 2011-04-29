@@ -105,10 +105,10 @@ Todoyu::$CONFIG['CHECK_DENIED_RIGHTS']	= false;
 
 	// Export Config
 Todoyu::$CONFIG['EXPORT']['CSV']	= array(
-	'delimiter'			=> ';',				// field delimiter
-	'enclosure'			=> '"',				// field enclosure (wrap for fields)
-	'charset'			=> 'utf-8',			// charset of the file
-	'useTableHeaders'	=> true				// print headers in the file?
+	'delimiter'			=> ';',				// Field delimiter
+	'enclosure'			=> '"',				// Field enclosure (wrap for fields)
+	'charset'			=> 'utf-8',			// Charset of the file
+	'useTableHeaders'	=> true				// Print headers in the file?
 );
 
 ?>

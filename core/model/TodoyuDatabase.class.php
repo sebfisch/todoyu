@@ -811,7 +811,7 @@ class TodoyuDatabase {
 	 * @return	Array		Or false if row doesn't exist
 	 */
 	public function getRowByID($table, $idRow) {
-			// build cache id
+			// Build cache ID
 		$cacheKey	= TodoyuRecordManager::makeRecordQueryKey($table, $idRow);
 
 			// Check if row is already cached

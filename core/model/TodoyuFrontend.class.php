@@ -248,7 +248,7 @@ class TodoyuFrontend {
 			$tabs[$index]['label'] = Label($tabs[$index]['label']);
 
 			if( $tabs[$index]['submenu'] ) {
-					// sort by 'position', remove duplicate entries
+					// Sort by 'position', remove duplicate entries
 				$tabs[$index]['submenu'] = TodoyuArray::sortByLabel($tabs[$index]['submenu'], 'position', false, false, false, SORT_REGULAR, 'href');
 			}
 		}

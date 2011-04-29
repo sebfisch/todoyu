@@ -233,10 +233,10 @@ function Dwoo_Plugin_twoDigits_compile(Dwoo_Compiler $compiler, $value) {
  */
 function Dwoo_Plugin_debug(Dwoo $dwoo, $variable, $phpFormat = false) {
 	if ( $phpFormat ) {
-			// use PHP syntax formatting
+			// Use PHP syntax formatting
 		TodoyuDebug::printPHP($variable);
 	} else {
-			// simple print_r
+			// Simple print_r
 		$debug	= '<pre style="z-index:200; background-color:#fff;">' . print_r($variable, true) . '</pre>';
 	}
 
@@ -501,7 +501,6 @@ function Dwoo_Plugin_isInternal_compile(Dwoo_Compiler $compiler) {
 /**
  * Subtract given subtrahend from given minuend
  *
- * @todo	Too simple, can this get removed?
  * @param	Dwoo		$compiler
  * @param	Mixed		$minuend
  * @param	Mixed		$subtrahend

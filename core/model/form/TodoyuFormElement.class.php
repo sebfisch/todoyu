@@ -514,8 +514,8 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 			// Loop over all validators
 		foreach($validations as $validatorName => $validatorConfigs) {
-				// If multiple validators with the same name are defined, they are
-				// stored in an array, loop over them
+				// If multiple validators with the same name are defined,
+				// they are stored in an array, loop over them
 			if( !is_string($validatorConfigs) && isset($validatorConfigs['0']) ) {
 					// Loop over all instances of a validator type
 				foreach($validatorConfigs as $validatorConfig) {

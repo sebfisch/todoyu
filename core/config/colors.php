@@ -23,14 +23,14 @@
  *
  * Global enumerated colors array.
  *
- * Used to visually differenciate various elements (e.g list entries/ options, persons, types, etc.),
+ * Used to visually differ various elements (e.g list entries/ options, persons, types, etc.),
  * to be used assigned top-down upon elements (repeated from beginning when there are more elements than predifined colors)
  *
  * To evoke (re-)generation of 'cache/css/colors.css' and 'cache/img/colors.png' evoke: Install::generateColorsCSS();
  */
 
 Todoyu::$CONFIG['COLORS'] = array(
-		// based upon "tango"-palette
+		// Based upon "tango"-palette
 	'#FCE94F',	// Butter 1
 	'#8AE234',	// Chameleon Green 1
 	'#E9B96E',	// Chocolate 1
@@ -40,7 +40,7 @@ Todoyu::$CONFIG['COLORS'] = array(
 	'#EF2929',	// Scarlet Red 1
 	'#EEEEEC',	// Aluminium 1
 
-	'#EDD400',	// butter 2
+	'#EDD400',	// Butter 2
 	'#73D216',	// Chameleon Green 2
 	'#C17D11',	// Chocolate 2
 	'#3465A4',	// Sky Blue 2

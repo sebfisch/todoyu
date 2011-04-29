@@ -177,7 +177,6 @@ class TodoyuString {
 	 * Converts an HTML snippet into plain text.
 	 * 	- decodes html-entities & special chars
 	 *
-	 * @static
 	 * @param	String		$string
 	 * @param	Boolean		$closingPTagsToDoubleNewLine
 	 * @return	String
@@ -195,7 +194,6 @@ class TodoyuString {
 	/**
 	 * Replaces html-tag <br /> with newlines
 	 *
-	 * @static
 	 * @param	String	$string
 	 * @return	String
 	 */
@@ -335,7 +333,6 @@ class TodoyuString {
 
 
 	/**
-	 * @static
 	 * @return String
 	 */
 	public static function generateGoodPassword() {
@@ -343,12 +340,12 @@ class TodoyuString {
 		$validator	= new TodoyuPasswordValidator();
 
 		do {
-			$password = self::generatePassword(	$config['minLength'],
+			$password = self::generatePassword( $config['minLength'],
 												$config['hasUpperCase'],
 												$config['hasNumbers'],
 												$config['hasSpecialChars']);
 
-		} while ($validator->validate($password) === false);
+		} while( $validator->validate($password) === false );
 
 		return $password;
 	}

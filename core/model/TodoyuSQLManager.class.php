@@ -51,14 +51,22 @@ class TodoyuSQLManager {
 
 
 	/**
-	 * Get table queries of code tables.sql
+	 * Get table queries of all core SQL files
 	 *
 	 * @return	Array
 	 */
 	public static function getCoreTableQueries() {
-		$file	= PATH . '/core/config/db/tables.sql';
+		$queries	= array();
 
-		return self::getQueriesFromFile($file);
+		$pathCoreSql= PATH_CORE . DIR_SEP . 'config' . DIR_SEP . 'db';
+		$sqlFiles	= TodoyuFileManager::getFilesInFolder($pathCoreSql, false, array('.sql'));
+
+		foreach($sqlFiles as $filename) {
+			$file	= $pathCoreSql . DIR_SEP . $filename;
+			$queries= array_merge($queries, self::getQueriesFromFile($file));
+		}
+
+		return $queries;
 	}
 
 

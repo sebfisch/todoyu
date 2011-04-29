@@ -135,7 +135,7 @@ class TodoyuValidator {
 
 
 	/**
-	 * Check wheter the value is lower than the maximum
+	 * Check whether the value is lower than the maximum
 	 * 
 	 * @param	Float		$value
 	 * @param	Float		$maximum

@@ -27,7 +27,7 @@
 class TodoyuServer {
 
 	/**
-	 * Check wheter server OS is Linux
+	 * Check whether server OS is Linux
 	 *
 	 * @return	Boolean
 	 */
@@ -38,7 +38,7 @@ class TodoyuServer {
 
 
 	/**
-	 * Check wheter server OS is Windows
+	 * Check whether server OS is Windows
 	 *
 	 * @return	Boolean
 	 */
