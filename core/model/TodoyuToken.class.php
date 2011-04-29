@@ -53,7 +53,7 @@ class TodoyuToken extends TodoyuBaseObject {
 	 *
 	 * @return	Integer
 	 */
-	public function getType() {
+	public function getTokenType() {
 		return intval($this->data['token_type']);
 	}
 

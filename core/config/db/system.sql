@@ -116,5 +116,6 @@ CREATE TABLE IF NOT EXISTS `system_token` (
   `ext` smallint(6) NOT NULL,
   `token_type` varchar(255) NOT NULL,
   `hash` varchar(32) NOT NULL,
+  `callback_params` text NOT NULL,
   PRIMARY KEY (`id`),
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

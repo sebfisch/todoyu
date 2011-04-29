@@ -90,11 +90,26 @@ class TodoyuTokenManager {
 	 * @return	TodoyuToken
 	 */
 	public static function getTokenByHash($hash) {
-		$where	= '	hash = ' . $hash . ' AND deleted = 0';
+		$hash	= mysql_real_escape_string($hash);
+
+		$where	= '	hash = \'' . $hash . '\' AND deleted = 0';
 		$idToken= Todoyu::db()->getColumn('id', self::TABLE, $where);
 
 		return self::getToken($idToken);
 	}
+
+
+
+//	/**
+//	 * Get token from hash received with request
+//	 *
+//	 * @return	TodoyuToken
+//	 */
+//	public static function getTokenByRequestHash() {
+//		$hash	= self::geTokenHashValueFromRequest();
+//
+//		return self::getTokenByHash($hash);
+//	}
 
 
 
@@ -277,6 +292,30 @@ class TodoyuTokenManager {
 
 		TodoyuRecordManager::removeRecordCache('TodoyuToken', $idToken);
 		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idToken);
+	}
+
+
+
+	/**
+	 * Get hash of token that was received with request
+	 *
+	 * @return	String
+	 */
+	public static function geTokenHashValueFromRequest() {
+		return TodoyuRequest::getParam('token');
+	}
+
+
+
+	/**
+	 * Check whether token has been received with request
+	 *
+	 * @return	Boolean
+	 */
+	public static function hasRequestToken() {
+		$hash	= self::geTokenHashValueFromRequest();
+
+		return ( ! empty($hash) );
 	}
 
 }
