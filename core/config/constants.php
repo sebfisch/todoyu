@@ -42,11 +42,15 @@ define( 'PATH_FILES',		PATH . DIR_SEP . 'files' );
 	// Constants
 define( 'NOW', time() );
 
+
+	// Define public URL constants if available
+	// (not available over CLI, they will be defined in TodoyuCli)
 if( $_SERVER['HTTP_HOST'] ) {
+
 	/**
 	 * Path after host server to todoyu
 	 */
-	define( 'PATH_WEB',	defined('PATH_WEB_OVERRIDE') ? PATH_WEB_OVERRIDE : dirname($_SERVER['SCRIPT_NAME']) === '.' ? '' : dirname($_SERVER['SCRIPT_NAME']) );
+	define( 'PATH_WEB',	defined('PATH_WEB_OVERRIDE') ? PATH_WEB_OVERRIDE : (dirname($_SERVER['SCRIPT_NAME']) === '.' ? '' : dirname($_SERVER['SCRIPT_NAME'])) );
 
 	/**
 	 * Public URL of the server (use to build absolute links)
