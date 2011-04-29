@@ -41,24 +41,40 @@ class TodoyuTokenManager {
 
 
 	/**
+	 * Get token of given extension and type by owner's person ID
+	 *
+	 * @param	Integer		$idPersonOwner
+	 * @param	Integer		$extID
+	 * @param	Integer		$idTokenType
+	 * @return	String
+	 */
+	public static function getTokenByOwner($idPersonOwner, $extID, $idTokenType) {
+
+	}
+
+
+
+	/**
 	 * Generate new token hash
 	 *
 	 * @param	Integer		$idTokenType
 	 * @param	Integer		$idPersonOwner
+	 * @param	Integer		$extID
 	 * @param	Boolean		$storeInSession
-	 * @return	String						Hash
+	 * @return	String							Hash
 	 */
-	public static function generateHash($idTokenType, $idPersonOwner = 0, $storeInSession = false) {
+	public static function generateHash($idTokenType, $extID, $idPersonOwner = 0, $storeInSession = false) {
 		$idTokenType	= intval($idTokenType);
+		$extID			= intval($extID);
 		$idPersonOwner	= personid($idPersonOwner);
 		$idPersonCreate	= personid();
 
-		$prefix	= $idTokenType . $idPersonCreate . $idPersonOwner;
+		$prefix	= $extID . $idTokenType . $idPersonCreate . $idPersonOwner;
 		$salt	= uniqid($prefix, microtime(true));
 		$hash	= md5($salt);
 
 		if( $storeInSession ) {
-			self::storeHashInSession($idTokenType, $hash);
+			self::storeHashInSession($idTokenType, $extID, $hash);
 		}
 
 		return $hash;
@@ -67,34 +83,21 @@ class TodoyuTokenManager {
 
 
 	/**
-	 * Store hash in session
+	 * Store hash of given extension and type in session
 	 *
 	 * @param	Integer		$idTokenType
+	 * @param	Integer		$extID
 	 * @param	String		$hash
 	 * @param	Integer		$idPersonOwner
 	 */
-	public static function storeHashInSession($idTokenType, $hash, $idPersonOwner = 0) {
+	public static function storeHashInSession($idTokenType, $extID, $hash, $idPersonOwner = 0) {
 		$idTokenType	= intval($idTokenType);
+		$extID			= intval($extID);
 		$idPersonOwner	= personid($idPersonOwner);
 
-		$tokenTypeKey	= self::getTokenTypeKey($idTokenType);
-		$valuePath		= 'token/' . $tokenTypeKey . '/' . $idPersonOwner;
+		$valuePath		= 'token/' . $extID . '/' . $idTokenType . '/' . $idPersonOwner;
 
 		TodoyuSession::set($valuePath, $hash);
-	}
-
-
-
-	/**
-	 * Get key to given token type ID
-	 *
-	 * @param	Integer		$idTokenType
-	 * @return	String
-	 */
-	public static function getTokenTypeKey($idTokenType) {
-		//@todo	implement for calendar and generally configurable/parseable
-
-		return 'calendar/personal';
 	}
 
 }
