@@ -41,6 +41,11 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 		if( ! $this->isLazyInit() ) {
 			$this->initSource();
 		}
+
+			// Fix noPleaseSelect setting
+		if( array_key_exists('noPleaseSelect', $this->config) ) {
+			$this->config['noPleaseSelect'] = true;
+		}
 	}
 
 
