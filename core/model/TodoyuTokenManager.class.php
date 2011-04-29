@@ -43,14 +43,14 @@ class TodoyuTokenManager {
 
 
 	/**
-	 * Get token of given extension and type by owner's person ID
+	 * Get ID of token of given extension, type and owner person
 	 *
 	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
 	 * @param	Integer		$idPersonOwner
-	 * @return	String|Boolean
+	 * @return	Integer
 	 */
-	public static function getTokenByOwner($extID, $idTokenType, $idPersonOwner = 0) {
+	public static function getTokenIdByOwner($extID, $idTokenType, $idPersonOwner) {
 		$extID			= intval($extID);
 		$idTokenType	= intval($idTokenType);
 		$idPersonOwner	= personid($idPersonOwner);
@@ -59,9 +59,39 @@ class TodoyuTokenManager {
 		$table	= self::TABLE;
 		$where	= '		ext 			= ' . $extID
 				. ' AND	token_type		= ' . $idTokenType
-				. ' AND	id_person_owner	= ' . $idPersonOwner;
+				. ' AND	id_person_owner	= ' . $idPersonOwner
+				. ' AND deleted 		= 0';
 
-		$idToken= Todoyu::db()->getColumn($field, $table, $where);
+		return intval(Todoyu::db()->getColumn($field, $table, $where));
+	}
+
+
+
+	/**
+	 * Get token of given extension and type by owner's person ID
+	 *
+	 * @param	Integer		$extID
+	 * @param	Integer		$idTokenType
+	 * @param	Integer		$idPersonOwner
+	 * @return	TodoyuToken|Boolean
+	 */
+	public static function getTokenByOwner($extID, $idTokenType, $idPersonOwner = 0) {
+		$idToken	= self::getTokenIdByOwner($extID, $idTokenType, $idPersonOwner);
+
+		return $idToken > 0 ? self::getToken($idToken) : false;
+	}
+
+
+
+	/**
+	 * Get token with given hash
+	 *
+	 * @param	String		$hash
+	 * @return	TodoyuToken
+	 */
+	public static function getTokenByHash($hash) {
+		$where	= '	hash = ' . $hash . ' AND deleted = 0';
+		$idToken= Todoyu::db()->getColumn('id', self::TABLE, $where);
 
 		return self::getToken($idToken);
 	}
@@ -71,15 +101,15 @@ class TodoyuTokenManager {
 	/**
 	 * Generate new token hash
 	 *
+	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
 	 * @param	Integer		$idPersonOwner
-	 * @param	Integer		$extID
 	 * @param	Boolean		$storeInSession
 	 * @return	String							Hash
 	 */
-	public static function generateHash($idTokenType, $extID, $idPersonOwner = 0, $storeInSession = false) {
-		$idTokenType	= intval($idTokenType);
+	public static function generateHash($extID, $idTokenType, $idPersonOwner = 0, $storeInSession = false) {
 		$extID			= intval($extID);
+		$idTokenType	= intval($idTokenType);
 		$idPersonOwner	= personid($idPersonOwner);
 		$idPersonCreate	= personid();
 
@@ -88,7 +118,7 @@ class TodoyuTokenManager {
 		$hash	= md5($salt);
 
 		if( $storeInSession ) {
-			self::storeHashInSession($idTokenType, $extID, $hash);
+			self::storeHashInSession($extID, $idTokenType, $hash);
 		}
 
 		return $hash;
@@ -104,14 +134,149 @@ class TodoyuTokenManager {
 	 * @param	String		$hash
 	 * @param	Integer		$idPersonOwner
 	 */
-	public static function storeHashInSession($idTokenType, $extID, $hash, $idPersonOwner = 0) {
+	public static function storeHashInSession($extID, $idTokenType, $hash, $idPersonOwner = 0) {
 		$idTokenType	= intval($idTokenType);
 		$extID			= intval($extID);
 		$idPersonOwner	= personid($idPersonOwner);
 
-		$valuePath		= 'token/' . $extID . '/' . $idTokenType . '/' . $idPersonOwner;
+		$hashPath	= self::getTokenHashSessionPath($extID, $idTokenType, $idPersonOwner);
 
-		TodoyuSession::set($valuePath, $hash);
+		TodoyuSession::set($hashPath, $hash);
+	}
+
+
+
+	/**
+	 * Get path to token hash value in session
+	 *
+	 * @param	Integer		$extID
+	 * @param	Integer		$idTokenType
+	 * @param	Integer		$idPersonOwner
+	 * @return	String
+	 */
+	public static function getTokenHashSessionPath($extID, $idTokenType, $idPersonOwner) {
+		$extID			= intval($extID);
+		$idTokenType	= intval($idTokenType);
+		$idPersonOwner	= personid($idPersonOwner);
+
+		return 'tokenHash/' . $extID . '/' . $idTokenType . '/' . $idPersonOwner;
+	}
+
+
+
+	/**
+	 * Get hash of given extension, type and owner from session
+	 *
+	 * @param	Integer		$extID
+	 * @param	Integer		$idTokenType
+	 * @param	Integer		$idPersonOwner
+	 */
+	public static function getHashFromSession($extID, $idTokenType, $idPersonOwner = 0) {
+		$idTokenType	= intval($idTokenType);
+		$extID			= intval($extID);
+		$idPersonOwner	= personid($idPersonOwner);
+
+		$hashPath	= self::getTokenHashSessionPath($extID, $idTokenType, $idPersonOwner);
+
+		return TodoyuSession::get($hashPath);
+	}
+
+
+
+	/**
+	 * Store token to database, hash value is taken from session
+	 *
+	 * @param	Integer		$idPersonOwner
+	 * @param	Integer		$extID
+	 * @param	$idTokenType
+	 */
+	public static function saveTokenFromSession($extID, $idTokenType, $idPersonOwner = 0) {
+		$extID			= intval($extID);
+		$idTokenType	= intval($idTokenType);
+		$idPersonOwner	= personid($idPersonOwner);
+
+		$idToken= self::getTokenIdByOwner($extID, $idTokenType, $idPersonOwner);
+		$hash	= self::getHashFromSession($extID, $idTokenType, $idPersonOwner);
+
+		$data	= array(
+			'id'				=> $idToken,
+			'ext'				=> $extID,
+			'token_type'		=> $idTokenType,
+			'id_person_owner'	=> $idPersonOwner,
+			'hash'				=> $hash
+		);
+
+		self::saveToken($data);
+	}
+
+
+
+	/**
+	 * Save token to DB (new or update)
+	 *
+	 * @param	Array	$data
+	 * @param	Integer			ID of token record
+	 */
+	public static function saveToken(array $data) {
+		$idToken	= intval($data['id']);
+
+			// Is a new token?
+		if( $idToken === 0 ) {
+			$idToken = self::addToken($data);
+		} else {
+				// Is update of existing token
+			self::updateToken($idToken, $data);
+			self::removeTokenFromCache($idToken);
+		}
+
+		return $idToken;
+	}
+
+
+
+	/**
+	 * Add new token record to DB
+	 *
+	 * @param	Array		$data
+	 * @return	Integer				Token record ID
+	 */
+	public static function addToken(array $data = array()) {
+		$data['date_create']		= NOW;
+		$data['id_person_create']	= personid();
+
+		return TodoyuRecordManager::addRecord(self::TABLE, $data);
+	}
+
+
+
+	/**
+	 * Update token
+	 *
+	 * @param	Integer		$idToken
+	 * @param	Array		$data
+	 * @return	Boolean
+	 */
+	public static function updateToken($idToken, array $data) {
+		$idToken	= intval($idToken);
+
+		self::removeTokenFromCache($idToken);
+
+		return TodoyuRecordManager::updateRecord(self::TABLE, $idToken, $data);
+	}
+
+
+
+	/**
+	 * Remove token from cache (only necessary if the token has been loaded from database
+	 * and updated after in the same request and needs to be loaded again)
+	 *
+	 * @param	Integer		$idToken
+	 */
+	public static function removeTokenFromCache($idToken) {
+		$idToken	= intval($idToken);
+
+		TodoyuRecordManager::removeRecordCache('TodoyuToken', $idToken);
+		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idToken);
 	}
 
 }
