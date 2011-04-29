@@ -31,10 +31,12 @@ class TodoyuTokenManager {
 	/**
 	 * Token Getter
 	 *
-	 * @param	Integer		$idToken
+	 * @param	Integer			$idToken
 	 * @return	TodoyuToken
 	 */
 	public static function getToken($idToken) {
+		$idToken	= intval($idToken);
+
 		return TodoyuRecordManager::getRecord('TodoyuToken', $idToken);
 	}
 
@@ -43,13 +45,25 @@ class TodoyuTokenManager {
 	/**
 	 * Get token of given extension and type by owner's person ID
 	 *
-	 * @param	Integer		$idPersonOwner
 	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
-	 * @return	String
+	 * @param	Integer		$idPersonOwner
+	 * @return	String|Boolean
 	 */
-	public static function getTokenByOwner($idPersonOwner, $extID, $idTokenType) {
+	public static function getTokenByOwner($extID, $idTokenType, $idPersonOwner = 0) {
+		$extID			= intval($extID);
+		$idTokenType	= intval($idTokenType);
+		$idPersonOwner	= personid($idPersonOwner);
 
+		$field	= 'id';
+		$table	= self::TABLE;
+		$where	= '		ext 			= ' . $extID
+				. ' AND	token_type		= ' . $idTokenType
+				. ' AND	id_person_owner	= ' . $idPersonOwner;
+
+		$idToken= Todoyu::db()->getColumn($field, $table, $where);
+
+		return self::getToken($idToken);
 	}
 
 

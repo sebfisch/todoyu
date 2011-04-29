@@ -35,6 +35,39 @@ class TodoyuToken extends TodoyuBaseObject {
 		parent::__construct($idToken, 'system_token');
 	}
 
+
+
+	/**
+	 * Get token ext ID
+	 *
+	 * @return	Integer
+	 */
+	public function getExtID() {
+		return intval($this->data['ext']);
+	}
+
+
+
+	/**
+	 * Get token type ID
+	 *
+	 * @return	Integer
+	 */
+	public function getType() {
+		return intval($this->data['token_type']);
+	}
+
+
+
+	/**
+	 * Get token hash
+	 *
+	 * @return	String
+	 */
+	public function getHash() {
+		return $this->data['hash'];
+	}
+
 }
 
 ?>

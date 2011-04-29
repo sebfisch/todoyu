@@ -50,7 +50,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * Only load data from database, when $idRecord is not zero
 	 *
 	 * @param	Integer		$idRecordOrData		Record ID
-	 * @param	String		$table				Tablename
+	 * @param	String		$table				Table name
 	 */
 	public function __construct($idRecord, $table) {
 		$idRecord	= intval($idRecord);

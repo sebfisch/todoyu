@@ -113,6 +113,7 @@ CREATE TABLE IF NOT EXISTS `system_token` (
   `id_person_create` int(11) NOT NULL,
   `id_person_owner` int(11) NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `ext` smallint(6) NOT NULL,
   `token_type` varchar(255) NOT NULL,
   `hash` varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
