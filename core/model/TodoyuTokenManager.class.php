@@ -62,7 +62,7 @@ class TodoyuTokenManager {
 				. ' AND	id_person_owner	= ' . $idPersonOwner
 				. ' AND deleted 		= 0';
 
-		return intval(Todoyu::db()->getColumn($field, $table, $where));
+		return intval(Todoyu::db()->getFieldValue($field, $table, $where));
 	}
 
 
