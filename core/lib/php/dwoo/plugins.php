@@ -371,8 +371,8 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
 		'id'		=> $id,
 		'title'		=> $title,
 		'type'		=> $type,
-		'disable'	=> $disable === true || $disable === 'true' || $disable,
-		'disabled'	=> $disabled === true || $disabled === 'true' || $disabled
+		'disable'	=> $disable  ? true : false,
+		'disabled'	=> $disabled ? true : false
 	);
 
 	return render($tmpl, $data);
