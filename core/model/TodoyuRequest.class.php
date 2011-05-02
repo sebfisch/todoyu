@@ -365,7 +365,7 @@ class TodoyuRequest {
 
 			// Check whether connection was successful
 		if( ! $sock ) {
-			throw new TodoyuException('Cannot connect to host <' . $host . '>');
+			throw new TodoyuException('Cannot connect to host "' . $host . '"');
 		}
 
 			// Encode data

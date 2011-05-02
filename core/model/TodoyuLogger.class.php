@@ -95,7 +95,7 @@ class TodoyuLogger {
 	 * Get the logger instance. Singleton
 	 *
 	 * @param	Integer		$level		Log level limit
-	 * @return	Log
+	 * @return	TodoyuLogger
 	 */
 	public static function getInstance($level = 0) {
 		if( is_null(self::$instance) ) {
@@ -210,6 +210,66 @@ class TodoyuLogger {
 				$logger->log($message, $level, $data, $info, $this->requestKey);
 			}
 		}
+	}
+
+
+
+	/**
+	 * Log debug message
+	 *
+	 * @param	String		$message
+	 * @param	Mixed		$data
+	 */
+	public static function logDebug($message, $data = null) {
+		self::getInstance()->log($message, self::LEVEL_DEBUG, $data);
+	}
+
+
+
+	/**
+	 * Log notice message
+	 *
+	 * @param	String		$message
+	 * @param	Mixed		$data
+	 */
+	public static function logNotice($message, $data = null) {
+		self::getInstance()->log($message, self::LEVEL_NOTICE, $data);
+	}
+
+
+
+	/**
+	 * Log error message
+	 *
+	 * @param	String		$message
+	 * @param	Mixed		$data
+	 */
+	public static function logError($message, $data = null) {
+		self::getInstance()->log($message, self::LEVEL_ERROR, $data);
+	}
+
+
+
+	/**
+	 * Log security message
+	 *
+	 * @param	String		$message
+	 * @param	Mixed		$data
+	 */
+	public static function logSecurity($message, $data = null) {
+		self::getInstance()->log($message, self::LEVEL_SECURITY, $data);
+	}
+
+
+
+	/**
+	 * Log fatal message
+	 *
+	 * @param	String		$message
+	 * @param	Mixed		$data
+	 */
+	public static function logFatal($message, $data = null) {
+		self::getInstance()->log($message, self::LEVEL_FATAL, $data);
 	}
 
 }
