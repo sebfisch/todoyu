@@ -53,7 +53,7 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 			'elements'			=> $this->getHtmlID(),
 			'theme'				=> 'simple',
 			'content_css'		=> 'core/asset/css/tinymce.css',
-			'valid_elements'	=> 'strong,em,p,br,u,ol,ul,li,a[href],pre,span[style][text-decoration]'
+			'valid_elements'	=> 'strong,em,p,br,u,ol,ul,li,a[href],pre,span[style:text-decoration:line-through]'
 		);
 
 			// Load config
@@ -72,7 +72,7 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 		}
 
 		$jsCode .= implode(",\n", $tmpOpt) . "\n});\n";
-		$jsCode .= 'Todoyu.Ui.initRTEfocus(\'' . $options['elements'] . '\');';
+//		$jsCode .= 'Todoyu.Ui.initRTEfocus(\'' . $options['elements'] . '\');';
 
 		return $jsCode;
 	}
