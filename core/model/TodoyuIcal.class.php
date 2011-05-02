@@ -89,21 +89,26 @@ class TodoyuIcal {
 				'sec'	=> date('s', $eventData['date_end']),
 			));
 
-			$vEvent->setProperty('UID',				$eventData['id']);
-			$vEvent->setProperty('LAST-MODIFIED',	$eventData['date_update']);
-			$vEvent->setProperty('summary',			$eventData['title']);
-			$vEvent->setProperty('description',		$eventData['description']);
-//			$vEvent->setProperty('comment',			'');
-			$vEvent->setProperty('LOCATION',		$eventData['place']);
+			$vEvent->setProperty('summary',		$eventData['title']);
+
+			if( ! empty($eventData['description']) ) {
+				$vEvent->setProperty('description',	$eventData['description']);
+			}
+
+//			$vEvent->setProperty('comment',		'');
 
 				// Add attendees (email address)
 			foreach($eventData['attendees'] as $personAttend) {
-				$person	= TodoyuContactPersonManager::getPerson($personAttend['id_person']);
-				$vEvent->setProperty( 'attendee', $person->getEmail());
+				$idPersonAttend	= $personAttend['id_person'];
+				if( $idPersonAttend > 0 ) {
+					$person	= TodoyuContactPersonManager::getPerson($idPersonAttend);
+					$vEvent->setProperty( 'attendee', $person->getEmail());
+				}
 			}
-				// Add category for type (see rfc2445)
-			$eventTypeKey	= TodoyuCalendarEventTypeManager::getEventTypeKey($eventData['eventtype']);
-			$vEvent->setProperty('categories', 'type_' . $eventTypeKey);
+
+			if( ! empty($eventData['place']) ) {
+				$vEvent->setProperty('LOCATION',	$eventData['place']);
+			}
 		}
 	}
 
