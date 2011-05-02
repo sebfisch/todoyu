@@ -34,13 +34,6 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'localize'	=> false,
 			'compress'	=> true
 		),
-//		array(
-//			'file'		=> 'lib/js/scriptaculous/scriptaculous.js',
-//			'position'	=> 2,
-//			'merge'		=> true,
-//			'localize'	=> false,
-//			'compress'	=> true
-//		),
 		array(
 			'file'		=> 'lib/js/scriptaculous/builder.js',
 			'position'	=> 3,
