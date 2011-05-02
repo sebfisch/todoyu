@@ -115,15 +115,36 @@ class TodoyuTokenManager {
 		$idPersonOwner	= personid($idPersonOwner);
 		$idPersonCreate	= personid();
 
+			// Generate new hash
 		$prefix	= $extID . $idTokenType . $idPersonCreate . $idPersonOwner;
 		$salt	= uniqid($prefix, microtime(true));
 		$hash	= md5($salt);
 
+			// Ensure the hash not being used yet
+		if(! self::isUnusedHash($hash) ) {
+			$hash	= self::generateHash($extID, $idTokenType, $idPersonOwner, $storeInSession);
+		}
+
+			// Cache the hash in the session
 		if( $storeInSession ) {
 			self::storeHashInSession($extID, $idTokenType, $hash);
 		}
 
 		return $hash;
+	}
+
+
+
+	/**
+	 * Check given hash to (not) exist already
+	 *
+	 * @param	String	$hash
+	 * @return	Boolean
+	 */
+	public static function isUnusedHash($hash) {
+		$token	= self::getTokenByHash($hash);
+
+		return $token == false || $token->getID() == 0;
 	}
 
 
