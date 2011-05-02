@@ -94,6 +94,8 @@ class TodoyuTokenCallbackManager {
 			$params	= array();
 		}
 
+		$params['idPersonOwner']	= $token->getPersonID('owner');
+
 		return TodoyuFunction::callUserFunctionArray($callback, $params);
 	}
 
