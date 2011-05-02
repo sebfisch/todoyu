@@ -93,23 +93,10 @@ class TodoyuTokenManager {
 		$hash	= mysql_real_escape_string($hash);
 
 		$where	= '	hash = \'' . $hash . '\' AND deleted = 0';
-		$idToken= Todoyu::db()->getColumn('id', self::TABLE, $where);
+		$idToken= Todoyu::db()->getFieldValue('id', self::TABLE, $where);
 
 		return $idToken !== false ? self::getToken($idToken) : false;
 	}
-
-
-
-//	/**
-//	 * Get token from hash received with request
-//	 *
-//	 * @return	TodoyuToken
-//	 */
-//	public static function getTokenByRequestHash() {
-//		$hash	= self::geTokenHashValueFromRequest();
-//
-//		return self::getTokenByHash($hash);
-//	}
 
 
 
