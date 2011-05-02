@@ -281,6 +281,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 90
 		),
 		array(
+			'file'		=> 'core/asset/js/HeadletButton.js',
+			'position'	=> 91
+		),
+		array(
 			'file'		=> 'core/asset/js/HeadletQuickCreate.js',
 			'position'	=> 91
 		),

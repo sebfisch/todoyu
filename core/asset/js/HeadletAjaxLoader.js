@@ -28,7 +28,7 @@
  * @class		AjaxLoader
  * @namespace	Todoyu.CoreHeadlets
  */
-Todoyu.CoreHeadlets.AjaxLoader = Class.create(Todoyu.Headlet, {
+Todoyu.CoreHeadlets.AjaxLoader = Class.create(Todoyu.HeadletButton, {
 
 	/**
 	 * Show AJAX loading icon
