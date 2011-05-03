@@ -87,7 +87,7 @@ Todoyu.Popups = {
 	 * @return	{Todoyu.Popup}
 	 */
 	getLast: function() {
-		return this.getPopup(this.stack.pop());
+		return this.getPopup(this.stack[this.stack.length - 1]);
 	},
 
 
@@ -98,7 +98,24 @@ Todoyu.Popups = {
 	 * @method	closeLast
 	 */
 	closeLast: function() {
-		this.getLast().close();
+		var last	= this.getLast();
+
+		if( last ) {
+			last.close();
+		}
+	},
+
+
+
+	/**
+	 * Custom keyup handler - close last opened popup on [ESC] key up
+	 *
+	 * @param	{Event}		event
+	 */
+	onEscUp: function(event) {
+		if( event.keyCode == 27 && this.stack.lenght > 0 ) {
+			this.closeLast();
+		}
 	},
 
 

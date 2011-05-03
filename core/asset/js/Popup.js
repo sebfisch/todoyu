@@ -98,6 +98,8 @@ Todoyu.Popup = Class.create(Window, {
 	 * @method	installObserver
 	 */
 	installObserver: function() {
+		document.observe('keyup', Todoyu.Popups.onEscUp.bind(Todoyu.Popups));
+
 		Windows.addObserver({
 			onDestroy: this.onDestroy.bind(this)
 		});
