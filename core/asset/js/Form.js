@@ -516,6 +516,41 @@ Todoyu.Form = {
 		});
 
 		return items;
+	},
+
+
+
+	/**
+	 * Custom handler for keyup event inside textarea field - auto resize field by content
+	 *
+	 * @param	{string}	idElement		ID of textarea field element
+	 */
+	onKeyupInTextArea: function(idElement) {
+		var element	= $(idElement);
+
+		var minHeight		= 90;
+		var maxHeight		= document.viewport.getHeight();
+		var elementHeight	= Element.getHeight(element);
+		var amountLines		= Todoyu.Helper.countLines($F(idElement));
+
+			// Grow if necessary
+		if( elementHeight < element.scrollHeight && elementHeight < maxHeight ) {
+			element.style.height= element.getHeight() + 15 + 'px';
+			element.scrollTop	= element.scrollHeight;
+
+			if( Element.getHeight(element) < element.scrollHeight ) {
+				this.onKeyupInTextArea(idElement);
+			}
+
+			// Shrink if necessary
+		} else if( elementHeight > minHeight && (elementHeight / 20) >  amountLines ) {
+			var elementHeight	= element.getHeight() - 15 + 'px';
+			element.style.height= elementHeight;
+
+			if( elementHeight > minHeight && (elementHeight / 20) >  amountLines ) {
+				this.onKeyupInTextArea(idElement);
+			}
+		}
 	}
 
 };

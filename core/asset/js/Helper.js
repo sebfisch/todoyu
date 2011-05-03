@@ -78,6 +78,19 @@ Todoyu.Helper = {
 
 
 	/**
+	 * Get amount of lines in given string
+	 *
+	 * @param	String	str
+	 */
+	countLines: function(str) {
+		var lines	= str.split('\n');
+
+		return lines.length;
+	},
+
+
+
+	/**
 	 * Toggle source of image
 	 *
 	 * @method	toggleImage
