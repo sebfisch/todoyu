@@ -1331,8 +1331,8 @@ class TodoyuDatabase {
 	private function printConnectionError($error, $errorNo) {
 		ob_end_clean();
 
-//		$title	= 'Cannot connect to the server "' . htmlentities($this->config['server'], ENT_QUOTES, 'UTF-8') . '"';
-//		$message= $error . '<br/><br />Check server or change in config/db.php';
+		$title	= 'Cannot connect to the server "' . htmlentities($this->config['server'], ENT_QUOTES, 'UTF-8') . '"';
+		$message= $error . '<br/><br />Check server or change in config/db.php';
 
 		include('core/view/error.html');
 	}
@@ -1348,8 +1348,8 @@ class TodoyuDatabase {
 	private function printSelectDbError($error, $errorNo) {
 		ob_end_clean();
 
-//		$title	= 'Failed selecting database';
-//		$message= 'Cannot select database "' . htmlentities($this->config['database'], ENT_QUOTES, 'UTF-8') . '" on server ' . htmlentities($this->config['server'], ENT_QUOTES, 'UTF-8') . '<br />Check server or change in config/db.php<br />' . $error;
+		$title	= 'Failed selecting database';
+		$message= 'Cannot select database "' . htmlentities($this->config['database'], ENT_QUOTES, 'UTF-8') . '" on server ' . htmlentities($this->config['server'], ENT_QUOTES, 'UTF-8') . '<br />Check server or change in config/db.php<br />' . $error;
 
 		include('core/view/error.html');
 	}
