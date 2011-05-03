@@ -33,9 +33,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ---------------------------------------------------------------------
 
 todoyu contains the following unmodified software modules (LGPL):
-- tinyMCE
-- phpMailer
+- iCalcreator
 - jsCalendar
+- phpMailer
+- tinyMCE
+
 
 see also the licenses of these modules in the file-license-folders.
 ---------------------------------------------------------------------

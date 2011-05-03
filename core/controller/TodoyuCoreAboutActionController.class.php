@@ -97,6 +97,13 @@ class TodoyuCoreAboutActionController extends TodoyuActionController {
 					'license'	=> 'Creative Commons Attributiuon-NonCommercial 3.0 License',
 					'licenseUrl'=> 'http://creativecommons.org/licenses/by-nc/3.0/'
 				),
+				'iCalcreator'	=> array(
+					'title'		=> 'iCalcreator',
+					'url'		=> 'http://www.kigkonsult.se/iCalcreator/',
+					'copyright'	=> '2007-2011 Kjell-Inge Gustafsson, kigkonsult',
+					'license'	=> 'GNU LGPL',
+					'licenseUrl'=> 'http://www.gnu.org/licenses/lgpl.html'
+				),
 				'jsCalendar'	=> array(
 					'title'		=> 'jsCalendar',
 					'url'		=> 'http://dynarch.com/mishoo/',
@@ -149,7 +156,7 @@ class TodoyuCoreAboutActionController extends TodoyuActionController {
 				'tinyMCE'	=> array(
 					'title'		=> 'TinyMCE - JavaScript WYSIWYG Editor',
 					'url'		=> 'http://tinymce.moxiecode.com/',
-					'copyright'	=> '2003-2010 Moxiecode Systems AB.',
+					'copyright'	=> '2003-2011 Moxiecode Systems AB.',
 					'license'	=> 'GNU LGPL',
 					'licenseUrl'=> 'http://tinymce.moxiecode.com/license.php'
 				),
