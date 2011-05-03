@@ -27,30 +27,85 @@
 class TodoyuIcal {
 
 	/**
-	 * @var		vcalendar
+	 * @var	vcalendar
 	 */
-	const calendar = null;
+	public $calendar;
+
+
 
 	/**
 	 * Constructor
+	 * 
+	 * @param	String	$hash			Calendar token hash
+	 * @param	String	$name			Calendar name
+	 * @param	String	$description	Calendar description
 	 */
-	public function __construct() {
+	public function __construct($hash = '', $name = 'todoyu Calendar', $description = '') {
 		require_once( PATH_LIB . DIR_SEP . 'php' . DIR_SEP . 'iCalcreator' . DIR_SEP . 'iCalcreator.class.php' );
 
-			// Set unique ID
-		$config = array(
-			'unique_id' => Todoyu::$CONFIG['SYSTEM']['todoyuURL']
-		);
-
 			// Create new calendar instance
+		$config = array(
+//			'unique_id' => Todoyu::$CONFIG['SYSTEM']['todoyuURL']
+			'unique_id' => 'token=' . $hash
+		);
 		$this->calendar = new vcalendar($config);
 
-		$this->calendar->setProperty( 'method', 'PUBLISH');
-		$this->calendar->setProperty( "x-wr-calname", 'todoyu Calendar');
-		$this->calendar->setProperty( "X-WR-CALDESC", 'todoyu Calendar');
-		$this->calendar->setProperty( "X-WR-TIMEZONE", Todoyu::$CONFIG['SYSTEM']['timezone']);
+			// Init required properties
+		$this->setMethod('PUBLISH');
+		$this->setName($name);
+		$this->setDescription($description);
+		$this->setTimeZone();
 
 		return $this->calendar;
+	}
+
+
+
+	/**
+	 * Set calendar name property (x-wr-calname)
+	 *
+	 * @param	String	$name
+	 */
+	public function setMethod($method = 'PUBLISH') {
+		$this->calendar->setProperty('method', $method);
+	}
+
+
+
+	/**
+	 * Set calendar name property (x-wr-calname)
+	 *
+	 * @param	String	$name
+	 */
+	public function setName($name) {
+		$this->calendar->setProperty('x-wr-calname', $name);
+	}
+
+
+
+	/**
+	 * Set calendar description property (X-WR-CALDESC)
+	 *
+	 * @param	String $description
+	 */
+	public function setDescription($description = '')	{
+		$this->calendar->setProperty('X-WR-CALDESC', $description);
+	}
+
+
+
+	/**
+	 * Set calendar timezone property (X-WR-TIMEZONE)
+	 *
+	 * @param	String $timezone
+	 */
+	public function setTimezone($timezone = '') {
+		if( empty($timezone) ) {
+				// Default: take timezone from todoyu
+			$timezone	= Todoyu::$CONFIG['SYSTEM']['timezone'];
+		}
+
+		$this->calendar->setProperty('X-WR-TIMEZONE', $timezone);
 	}
 
 
@@ -68,44 +123,47 @@ class TodoyuIcal {
 			$this->addFreebusy($eventData);
 		} else {
 				// Add event component to calendar
-			$vEvent = & $this->calendar->newComponent( 'vevent' );
+				/** @var vevent $vEvent */
+			$vEvent = & $this->calendar->newComponent('vevent');
 
-				// Set props
-			$vEvent->setProperty( 'dtstart', array(
-				'year'	=> date('Y', $eventData['date_start']),
-				'month'	=> date('n', $eventData['date_start']),
-				'day'	=> date('j', $eventData['date_start']),
-				'hour'	=> date('G', $eventData['date_start']),
-				'min'	=> date('i', $eventData['date_start']),
-				'sec'	=> date('s', $eventData['date_start']),
-			));
-
-			$vEvent->setProperty( 'dtend', array(
-				'year'	=> date('Y', $eventData['date_end']),
-				'month'	=> date('n', $eventData['date_end']),
-				'day'	=> date('j', $eventData['date_end']),
-				'hour'	=> date('G', $eventData['date_end']),
-				'min'	=> date('i', $eventData['date_end']),
-				'sec'	=> date('s', $eventData['date_end']),
-			));
-
-			$vEvent->setProperty('summary',		$eventData['title']);
-
-			if( ! empty($eventData['description']) ) {
-				$vEvent->setProperty('description',	$eventData['description']);
+				// Set organizer (person create)
+			$idPersonOrganizer	= $eventData['id_person_create'];
+			$organizerEmail	= TodoyuContactPersonManager::getPerson($idPersonOrganizer)->getEmail();
+			if( ! empty($organizerEmail) ) {
+				$vEvent->setProperty('ORGANIZER', $organizerEmail);
 			}
 
-//			$vEvent->setProperty('comment',		'');
+				// Set date start
+			$dateStart	= TodoyuIcalManager::getDateParts($eventData['date_start']);
+			$vEvent->setProperty('dtstart', $dateStart);
+
+				// Set date end
+			$dateEnd	= TodoyuIcalManager::getDateParts($eventData['date_end']);
+			$vEvent->setProperty('dtend', $dateEnd);
+
+				// Add summary (from title)
+			$vEvent->setProperty('summary',	$eventData['title']);
+
+				// Add description
+			if( ! empty($eventData['description']) ) {
+//				$description	= nl2br($eventData['description']);
+				$description	= TodoyuString::cleanRTEText($eventData['description']);
+
+				$vEvent->setProperty('description',	$description);
+			}
 
 				// Add attendees (email address)
 			foreach($eventData['attendees'] as $personAttend) {
 				$idPersonAttend	= $personAttend['id_person'];
 				if( $idPersonAttend > 0 ) {
-					$person	= TodoyuContactPersonManager::getPerson($idPersonAttend);
-					$vEvent->setProperty( 'attendee', $person->getEmail());
+					$attendeeEmail	= TodoyuContactPersonManager::getPerson($idPersonAttend)->getEmail();
+					if( ! empty($attendeeEmail) ) {
+						$vEvent->setProperty('attendee', $attendeeEmail);
+					}
 				}
 			}
 
+				// Add place (location) of event
 			if( ! empty($eventData['place']) ) {
 				$vEvent->setProperty('LOCATION',	$eventData['place']);
 			}
@@ -122,15 +180,29 @@ class TodoyuIcal {
 	 */
 	public function addFreebusy(array $eventData, $freebusyType = 'BUSY') {
 			// Create an event calendar component
-		$vEvent = & $this->calendar->newComponent( 'vfreebusy' );
-			// Set props
-		$fbPeriods	= array(
-			array(
-				array('timestamp'	=> $eventData['date_start']),
-				array('timestamp'	=> $eventData['date_end'])
-			)
-		);
-		$vEvent->setProperty( 'freebusy', $freebusyType, $fbPeriods);
+			/** @var vfreebusy $vEvent */
+		$vEvent = & $this->calendar->newComponent('vfreebusy');
+
+			// Set organizer (person create)
+		$idPersonOrganizer	= $eventData['id_person_create'];
+		$organizerEmail	= TodoyuContactPersonManager::getPerson($idPersonOrganizer)->getEmail();
+		if( ! empty($organizerEmail) ) {
+			$vEvent->setProperty('ORGANIZER', $organizerEmail);
+		}
+
+			// Set start, end
+//		$dateStart	= TodoyuIcalManager::getDateParts($eventData['date_start']);
+//		$dateEnd	= TodoyuIcalManager::getDateParts($eventData['date_end']);
+//		$periods	= array($dateStart, $dateEnd);
+//		$fbPeriods	= array($periods);
+		$dateStart	= TodoyuIcalManager::getDateParts($eventData['date_start']);
+		$vEvent->setProperty('dtstart', $dateStart);
+
+		$dateEnd	= TodoyuIcalManager::getDateParts($eventData['date_end']);
+		$vEvent->setProperty('dtend', $dateEnd);
+
+			// Set freebusy type
+		$vEvent->setProperty('freebusy', $freebusyType, $fbPeriods);
 	}
 
 
@@ -144,6 +216,14 @@ class TodoyuIcal {
 		return $this->calendar->createCalendar();
 	}
 
+
+
+	/**
+	 * Send iCal file to browser via HTTP redirect header
+	 */
+	public function send() {
+		return $this->calendar->returnCalendar();
+	}
 }
 
 ?>
