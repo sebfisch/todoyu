@@ -16,6 +16,19 @@ Element.addMethods({
 		return element.removeClassName(className).addClassName(replacement);
 	},
 
+
+
+	/**
+	 * Get class names of an element
+	 *
+	 * @param	{Element}	element
+	 */
+	getClassNames: function(element) {
+		return $w(element.className);
+	},
+
+
+
 	/**
 	 * Scroll to an element but consider the fixed header
 	 *

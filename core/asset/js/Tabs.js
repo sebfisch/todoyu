@@ -102,7 +102,7 @@ Todoyu.Tabs = {
 		event.stop();
 
 			// Get tabkey identifier
-		var tabKeyClass = element.classNames().detect(function(className){
+		var tabKeyClass = element.getClassNames().detect(function(className){
 			return className.startsWith('tabkey-');
 		}).split('-').last();
 
