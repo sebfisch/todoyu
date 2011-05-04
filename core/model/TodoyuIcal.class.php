@@ -180,7 +180,7 @@ class TodoyuIcal {
 	 */
 	public function addFreebusy(array $eventData, $freebusyType = 'BUSY') {
 			// Create an event calendar component
-			/** @var vfreebusy $vEvent */
+		/** @var vfreebusy $vEvent */
 		$vEvent = & $this->calendar->newComponent('vfreebusy');
 
 			// Set organizer (person create)
@@ -191,15 +191,15 @@ class TodoyuIcal {
 		}
 
 			// Set start, end
-//		$dateStart	= TodoyuIcalManager::getDateParts($eventData['date_start']);
-//		$dateEnd	= TodoyuIcalManager::getDateParts($eventData['date_end']);
-//		$periods	= array($dateStart, $dateEnd);
-//		$fbPeriods	= array($periods);
 		$dateStart	= TodoyuIcalManager::getDateParts($eventData['date_start']);
-		$vEvent->setProperty('dtstart', $dateStart);
-
 		$dateEnd	= TodoyuIcalManager::getDateParts($eventData['date_end']);
+
+		$vEvent->setProperty('dtstart', $dateStart);
 		$vEvent->setProperty('dtend', $dateEnd);
+
+			// Set periods
+		$periods	= array($dateStart, $dateEnd);
+		$fbPeriods	= array($periods);
 
 			// Set freebusy type
 		$vEvent->setProperty('freebusy', $freebusyType, $fbPeriods);

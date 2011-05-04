@@ -523,33 +523,33 @@ Todoyu.Form = {
 	/**
 	 * Custom handler for keyup event inside textarea field - auto resize field by content
 	 *
-	 * @param	{string}	idElement		ID of textarea field element
+	 * @param	{String}	idElement	ID of textarea field element
+	 * @param	{Number}	rows		Amount of default rows in textarea
 	 */
-	onKeyupInTextArea: function(idElement) {
+	onKeyupInTextArea: function(idElement, rows) {
 		var element	= $(idElement);
 
-		var minHeight		= 90;
+		var minHeight		= rows * 19;
 		var maxHeight		= document.viewport.getHeight();
 		var elementHeight	= Element.getHeight(element);
-		var amountLines		= Todoyu.Helper.countLines($F(idElement));
+		var amountLines		= Todoyu.Helper.countLines($F(idElement)) - 1;
 
 			// Grow if necessary
 		if( elementHeight < element.scrollHeight && elementHeight < maxHeight ) {
-			element.style.height= element.getHeight() + 15 + 'px';
+			var newHeight	= element.getHeight() + 19;
+			new Effect.Morph(idElement, {
+				style:		'height:' + newHeight + 'px',
+				duration:	0.1
+			});
 			element.scrollTop	= element.scrollHeight;
 
-			if( Element.getHeight(element) < element.scrollHeight ) {
-				this.onKeyupInTextArea(idElement);
-			}
-
 			// Shrink if necessary
-		} else if( elementHeight > minHeight && (elementHeight / 20) >  amountLines ) {
-			var elementHeight	= element.getHeight() - 15 + 'px';
-			element.style.height= elementHeight;
-
-			if( elementHeight > minHeight && (elementHeight / 20) >  amountLines ) {
-				this.onKeyupInTextArea(idElement);
-			}
+		} else if( elementHeight > minHeight && (elementHeight / 19) > amountLines ) {
+			var newHeight	= element.getHeight() - 19;
+			new Effect.Morph(idElement, {
+				style:		'height:' + newHeight + 'px',
+				duration:	0.1
+			});
 		}
 	}
 
