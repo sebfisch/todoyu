@@ -84,7 +84,7 @@ class TodoyuTokenCallbackManager {
 		if( ! $token->isValid() ) {
 			return 'Invalid Token!';
 		}
-		
+
 		$callback	= self::getCallback($token);
 
 		$params		= $token->get('callback_params');
