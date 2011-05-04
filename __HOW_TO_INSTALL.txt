@@ -30,7 +30,6 @@ todoyu Requirements
 
 Instructions to install todoyu
 ==============================
-
 	1. Download and extract todoyu.
 	You can obtain the latest todoyu release from http://sourceforge.net/projects/todoyu/
 	the files are available in .zip format and can be extracted using most compression tools.

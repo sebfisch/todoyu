@@ -81,7 +81,7 @@ class TodoyuTokenCallbackManager {
 	public static function getCallbackResultByHash($hash) {
 		$token	= TodoyuTokenManager::getTokenByHash($hash);
 
-		if( ! $token || $token->getID() === 0 ) {
+		if( ! $token->isValid() ) {
 			return 'Invalid Token!';
 		}
 		

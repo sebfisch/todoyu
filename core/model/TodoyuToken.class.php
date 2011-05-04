@@ -68,6 +68,29 @@ class TodoyuToken extends TodoyuBaseObject {
 		return $this->data['hash'];
 	}
 
+
+
+	/**
+	 * Check whether token is valid (owner must be active and not deleted)
+	 *
+	 * @return	Boolean
+	 */
+	public function isValid() {
+			// Token record must exits
+		if( $this->getID() === 0 ) {
+			return false;
+		}
+
+			// Owner person must have active login and be not deleted
+		$idPersonOwner	= $this->getPersonID('owner');
+		$personOwner	= TodoyuContactPersonManager::getPerson($idPersonOwner);
+		if( $personOwner->isDeleted() || $personOwner->get('is_active') == 0 ) {
+			return false;
+		}
+
+		return true;
+	}
+
 }
 
 ?>
