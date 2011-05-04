@@ -261,7 +261,7 @@ class Todoyu {
 			$browserLocale 	= TodoyuBrowserInfo::getBrowserLocale();
 
 			if( TodoyuAuth::isLoggedIn() && self::db()->isConnected() ) {
-				$personLocale	= self::person()->getLocale();
+				$personLocale	= self::person()->getLocale(false);
 				if( $personLocale !== false ) {
 					self::$locale = $personLocale;
 				}
