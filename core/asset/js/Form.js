@@ -249,6 +249,7 @@ Todoyu.Form = {
 	 *
 	 * @method	invokeForeignRecords
 	 * @param	{Array}		fieldNames
+	 * @param	{String}	method
 	 */
 	invokeForeignRecords: function(fieldNames, method) {
 		fieldNames	= fieldNames || [];
@@ -286,8 +287,10 @@ Todoyu.Form = {
 	/**
 	 * Open popup for create wizard
 	 *
-	 * @param	{String}	fieldName
-	 * @param	{Object}	config
+	 * @method	openCreateWizard
+	 * @param	{String}			fieldName
+	 * @param	{Object}			config
+	 * @return	{Todoyu.Popup}
 	 */
 	openCreateWizard: function(fieldName, config) {
 		var url		= Todoyu.getUrl(config.ext,	config.controller);
@@ -311,8 +314,9 @@ Todoyu.Form = {
 	/**
 	 * Live-validation and correction of numeric value input field. Removes/corrects illegal/ambiguous characters
 	 *
-	 * @param	{Element}	field
-	 * @param	{Boolean}	allowFloat
+	 * @method	assistNumericInput
+	 * @param	{Element}			field
+	 * @param	{Boolean}			allowFloat
 	 */
 	assistNumericInput: function(field, allowFloat) {
 		allowFloat		= allowFloat || false;
@@ -346,8 +350,8 @@ Todoyu.Form = {
 	 * Add an iFrame to the document body
 	 *
 	 * @method	addIFrame
-	 * @param	{String}		key			Identifier
-	 * @return	{Element}					IFrame element
+	 * @param	{String}	key			Identifier
+	 * @return	{Element}				IFrame element
 	 */
 	addIFrame: function(key) {
 		var idIFrame= 'upload-iframe-' + key;
@@ -381,7 +385,7 @@ Todoyu.Form = {
 
 
 	/**
-	 * Open an iframe URL
+	 * Open URL in new iFrame with given key
 	 *
 	 * @method	openIFrame
 	 * @param	{String}	key
@@ -397,6 +401,7 @@ Todoyu.Form = {
 	/**
 	 * Submit a form to an iFrame
 	 *
+	 * @method	submitToIFrame
 	 * @param	{Element|String}	form
 	 * @param	{String}			iFrameName
 	 */
@@ -496,9 +501,11 @@ Todoyu.Form = {
 	},
 
 
+
 	/**
 	 * Get selected item pairs from a multi select
 	 *
+	 * @method	getSelectedItems
 	 * @param	{Element}	element
 	 * @return	{Object}	Format: value:text
 	 */
@@ -521,33 +528,35 @@ Todoyu.Form = {
 
 
 	/**
-	 * Custom handler for keyup event inside textarea field - auto resize field by content
+	 * Custom handler for keyUp event inside textarea field - auto resize field by content
 	 *
-	 * @param	{String}	idElement	ID of textarea field element
-	 * @param	{Number}	rows		Amount of default rows in textarea
+	 * @method	onKeyupInTextArea
+	 * @param	{String}			idElement	ID of textarea field element
 	 */
-	onKeyupInTextArea: function(idElement, rows) {
-		var element	= $(idElement);
-
-		var minHeight		= rows * 19;
-		var maxHeight		= document.viewport.getHeight();
-		var elementHeight	= Element.getHeight(element);
-		var amountLines		= Todoyu.Helper.countLines($F(idElement)) - 1;
+	onKeyupInTextArea: function(idElement) {
+		var element			= $(idElement);
+		var minHeight		= element.rows * 18;
+		var elementHeight	= element.getHeight();
+		var amountLines		= Todoyu.Helper.countLines($F(idElement));
 
 			// Grow if necessary
-		if( elementHeight < element.scrollHeight && elementHeight < maxHeight ) {
-			var newHeight	= element.getHeight() + 19;
-			new Effect.Morph(idElement, {
-				style:		'height:' + newHeight + 'px',
-				duration:	0.1
-			});
-			element.scrollTop	= element.scrollHeight;
+		if( elementHeight < (element.scrollHeight + 4) ) {
+			element.style.overflow	= "hidden";
 
-			// Shrink if necessary
-		} else if( elementHeight > minHeight && (elementHeight / 19) > amountLines ) {
-			var newHeight	= element.getHeight() - 19;
 			new Effect.Morph(idElement, {
-				style:		'height:' + newHeight + 'px',
+				style:			'height:' + (element.getHeight() + 18) + 'px',
+				duration:		0.1,
+				afterFinish:	function(event) {
+					if( event.element.getHeight() < (event.element.scrollHeight + 4) ) {
+						Todoyu.Form.onKeyupInTextArea(event.element.id);
+					}
+					event.element.scrollTop	= event.element.scrollHeight;
+				}
+			});
+			// Shrink if necessary
+		} else if( elementHeight > minHeight && (elementHeight / 18) > amountLines ) {
+			new Effect.Morph(idElement, {
+				style:		'height:' + (element.getHeight() - 18) + 'px',
 				duration:	0.1
 			});
 		}

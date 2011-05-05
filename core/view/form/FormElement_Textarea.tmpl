@@ -1,5 +1,5 @@
 {extends "core/view/form/FormElement.tmpl"}
 
 {block name="field"}
-<textarea name="{$htmlName}" id="{$htmlId}" onkeyup="Todoyu.Form.onKeyupInTextArea('{$htmlId}', {$rows|default:'5'})" cols="{$cols}" rows="{$rows}" class="{$inputClass} {$class}" {if $style}style="{$style}"{/if}>{cleanHtml $valueTemplate}</textarea>
+<textarea name="{$htmlName}" id="{$htmlId}" onkeyup="Todoyu.Form.onKeyupInTextArea('{$htmlId}')" cols="{$cols}" rows="{$rows}" class="{$inputClass} {$class}" {if $style}style="{$style}"{/if}>{cleanHtml $valueTemplate}</textarea>
 {/block}

@@ -80,7 +80,9 @@ Todoyu.Helper = {
 	/**
 	 * Get amount of lines in given string
 	 *
-	 * @param	String	str
+	 * @method	countLines
+	 * @param	{String}	str
+	 * @return	{Number}
 	 */
 	countLines: function(str) {
 		var lines	= str.split('\n');
@@ -544,4 +546,5 @@ Todoyu.Helper = {
 
 		return '' + number;
 	}
+
 };
