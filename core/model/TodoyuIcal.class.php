@@ -203,6 +203,17 @@ class TodoyuIcal {
 
 			// Set freebusy type
 		$vEvent->setProperty('freebusy', $freebusyType, $fbPeriods);
+
+//			// Add attendees (email address)
+//		foreach($eventData['attendees'] as $personAttend) {
+//			$idPersonAttend	= $personAttend['id_person'];
+//			if( $idPersonAttend > 0 ) {
+//				$attendeeEmail	= TodoyuContactPersonManager::getPerson($idPersonAttend)->getEmail();
+//				if( ! empty($attendeeEmail) ) {
+//					$vEvent->setProperty('attendee', $attendeeEmail);
+//				}
+//			}
+//		}
 	}
 
 
