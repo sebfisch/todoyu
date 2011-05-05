@@ -102,7 +102,6 @@ require_once( PATH_CONFIG . '/locales.php');
 require_once( PATH_CONFIG . '/fe.php');
 require_once( PATH_CONFIG . '/assets.php');
 require_once( PATH_CONFIG . '/cache.php');
-require_once( PATH_CONFIG . '/log.php');
 require_once( PATH_CONFIG . '/colors.php');
 
 
@@ -112,5 +111,6 @@ require_once( PATH_LOCALCONF . '/config.php');
 require_once( PATH_LOCALCONF . '/system.php');
 require_once( PATH_LOCALCONF . '/extensions.php');
 require_once( PATH_LOCALCONF . '/extconf.php');
+require_once( PATH_LOCALCONF . '/settings.php');
 
 ?>

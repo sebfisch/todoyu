@@ -49,10 +49,10 @@ class TodoyuDbAnalyzer {
 				$databases	= TodoyuArray::getColumn($rows, 'Database');
 				$databases	= array_diff($databases, $ignore);
 			} else {
-				Todoyu::log('Can\'t get list of databases on server: ' . mysql_error(), TodoyuLogger::LEVEL_ERROR);
+				TodoyuLogger::logError('Can\'t get list of databases on server: ' . mysql_error());
 			}
 		} else {
-			Todoyu::log('Can\'t connect to the database: ' . mysql_error(), TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('Can\'t connect to the database: ' . mysql_error());
 		}
 
 		return $databases;

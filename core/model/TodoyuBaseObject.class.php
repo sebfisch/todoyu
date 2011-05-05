@@ -60,11 +60,11 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 			if( $record !== false ) {
 				$this->data = $record;
 			} else {
-				Todoyu::log('Record not found! ID: "' . $idRecord . '", TABLE: "' . $table . '"', TodoyuLogger::LEVEL_ERROR);
+				TodoyuLogger::logError('Record not found! ID: "' . $idRecord . '", TABLE: "' . $table . '"');
 //				die('<pre>'. print_r(debug_backtrace(false),true)) . '</pre>';
 			}
 		} else {
-			//Todoyu::log('Record with ID 0 created (new object or missing data?) Table: ' . $table, TodoyuLogger::LEVEL_NOTICE);
+			//TodoyuLogger::logNotice('Record with ID 0 created (new object or missing data?) Table: ' . $table);
 		}
 	}
 
@@ -86,7 +86,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 		if( substr($methodName, 0, 3) === 'get' && array_key_exists($dataKey, $this->data) ) {
 			return $this->get($dataKey);
 		} else {
-			Todoyu::log('Data "' . $dataKey . '" not found in ' . get_class($this) . ' (ID:' . $this->data['id'] . ')', TodoyuLogger::LEVEL_NOTICE, $this->data);
+			TodoyuLogger::logNotice('Data "' . $dataKey . '" not found in ' . get_class($this) . ' (ID:' . $this->data['id'] . ')', $this->data);
 //			die('<pre>'. print_r(debug_backtrace(false),true)) . '</pre>';
 			return '';
 		}
@@ -110,7 +110,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 		} elseif( array_key_exists($dataKey, $this->data) ) {
 			return $this->get($dataKey);
 		} else {
-			Todoyu::log('Data [' . $dataKey . '] not found in object [' . get_class($this) . ']', TodoyuLogger::LEVEL_NOTICE);
+			TodoyuLogger::logNotice('Data [' . $dataKey . '] not found in object [' . get_class($this) . ']');
 			return '';
 		}
 	}

@@ -36,8 +36,14 @@ if( Todoyu::$CONFIG['INIT'] ) {
 	// Add all paths of installed extensions to autoload
 TodoyuExtensions::addAllExtensionAutoloadPaths();
 
+	// File Logger
+TodoyuLogger::addLogger('TodoyuLoggerFile', array(
+	'file'	=> PATH . '/log/error.log'
+));
+	// FirePhp Logger
+TodoyuLogger::addLogger('TodoyuLoggerFirePhp');
+
 	// Custom config overrides
-require_once( PATH_LOCALCONF . '/settings.php');
 require_once( PATH_LOCALCONF . '/override.php');
 
 ?>

@@ -62,7 +62,7 @@ class TodoyuFormXmlParser {
 		self::$xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
 
 		if( ! is_file($xmlFile) ) {
-			Todoyu::log('Form XML file not found (\'' . self::$xmlFile . '\')', TodoyuLogger::LEVEL_FATAL);
+			TodoyuLogger::logFatal('Form XML file not found (\'' . self::$xmlFile . '\')');
 			return false;
 		}
 
@@ -180,7 +180,7 @@ class TodoyuFormXmlParser {
 						break;
 
 					default:
-						Todoyu::log('Unknown field type (not field or fieldset)', TodoyuLogger::LEVEL_ERROR);
+						TodoyuLogger::logError('Unknown field type (not field or fieldset)');
 				}
 			}
 		}
@@ -212,7 +212,7 @@ class TodoyuFormXmlParser {
 			$fieldset->addField($name, $field);
 			return true;
 		} else {
-			Todoyu::log('Can\'t create field object. Invalid config?', TodoyuLogger::LEVEL_ERROR, $config);
+			TodoyuLogger::logError('Can\'t create field object. Invalid config?', $config);
 			return false;
 		}
 
@@ -269,11 +269,11 @@ class TodoyuFormXmlParser {
 							return false;
 						}
 					} else {
-						Todoyu::log('FormElement rights function not found <' . $function . '>', TodoyuLogger::LEVEL_ERROR);
+						TodoyuLogger::logError('FormElement rights function not found <' . $function . '>');
 						return true;
 					}
 				} else {
-					Todoyu::log('Misconfigured right in form', TodoyuLogger::LEVEL_ERROR);
+					TodoyuLogger::logError('Misconfigured right in form');
 				}
 			}
 

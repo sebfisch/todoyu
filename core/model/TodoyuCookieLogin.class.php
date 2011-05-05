@@ -46,7 +46,7 @@ class TodoyuCookieLogin {
 					// Decrypt cookie data
 				$cookieData	= TodoyuCrypto::decrypt($cookieValue);
 
-				Todoyu::log('Try to login with cookie, is cookie data valid?');
+				TodoyuLogger::logDebug('Try to login with cookie, is cookie data valid?');
 
 					// If
 				if( is_array($cookieData) ) {
@@ -58,18 +58,18 @@ class TodoyuCookieLogin {
 							TodoyuAuth::login($idPerson);
 							self::setRemainLoginCookie($idPerson);
 
-							Todoyu::log('Logged in with cookie, proceed request');
+							TodoyuLogger::logDebug('Logged in with cookie, proceed request');
 
 							// Proceed with the request, because we're logged in and it's all ok
 						} else {
-							Todoyu::log('Cookie login failed (username/password)', TodoyuLogger::LEVEL_SECURITY);
+							TodoyuLogger::logNotice('Cookie login failed (username/password)', TodoyuLogger::LEVEL_SECURITY);
 							self::removeRemainLoginCookie();
 						}
 					} else {
-						Todoyu::log('Cookie login failed (useragent)', TodoyuLogger::LEVEL_SECURITY);
+						TodoyuLogger::logNotice('Cookie login failed (useragent)', TodoyuLogger::LEVEL_SECURITY);
 					}
 				} else {
-					Todoyu::log('Decrypted cookie date is not an array', TodoyuLogger::LEVEL_ERROR, $cookieData);
+					TodoyuLogger::logNotice('Decrypted cookie date is not an array', TodoyuLogger::LEVEL_ERROR, $cookieData);
 				}
 			}
 		}

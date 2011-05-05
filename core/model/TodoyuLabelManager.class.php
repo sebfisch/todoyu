@@ -150,7 +150,7 @@ class TodoyuLabelManager {
 
 		if( empty($extKey) || empty($fileKey) || empty($labelKey) ) {
 			if( Todoyu::$CONFIG['LOCALE']['logInvalidKeys'] ) {
-				Todoyu::log('Invalid label key: <' . $fullKey . '>', TodoyuLogger::LEVEL_ERROR);
+				TodoyuLogger::logError('Invalid label key: <' . $fullKey . '>');
 			}
 			return false;
 		}

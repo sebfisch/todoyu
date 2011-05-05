@@ -206,7 +206,7 @@ abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstr
 		if( is_file($this->getXmlPath()) ) {
 			$this->xmlContent = file_get_contents($this->getXmlPath());
 		} else {
-			Todoyu::log('Can\'t load XML file with content from template. File not found: "' . $this->getXmlPath() . '"!', TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('Can\'t load XML file with content from template. File not found: "' . $this->getXmlPath() . '"!');
 		}
 	}
 

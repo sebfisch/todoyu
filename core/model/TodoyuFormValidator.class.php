@@ -64,7 +64,7 @@ class TodoyuFormValidator {
 		if( TodoyuFunction::isFunctionReference($function) ) {
 			$result	= TodoyuFunction::callUserFunction($function, $value, $validatorConfig, $formElement, $formData);
 		} else  {
-			Todoyu::log('Formvalidator function not found: ' . $function, TodoyuLogger::LEVEL_FATAL);
+			TodoyuLogger::logFatal('Formvalidator function not found: ' . $function);
 			$result	= false;
 		}
 
@@ -667,7 +667,7 @@ class TodoyuFormValidator {
 
 			// If no table defined to check in
 		if( $table === '') {
-			Todoyu::log('Missing table name in unique form validation for field ' . $formElement->getName(), TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('Missing table name in unique form validation for field ' . $formElement->getName());
 			return false;
 		}
 

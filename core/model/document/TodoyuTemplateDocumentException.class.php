@@ -20,11 +20,11 @@
 
 /**
  * Exception for TemplateDocuments
- * 
+ *
  * @package		Todoyu
  * @subpackage	Document
  */
-class TodoyuTemplateDocumentException extends Exception {
+class TodoyuTemplateDocumentException extends TodoyuException {
 
 	protected $document;
 
@@ -38,9 +38,6 @@ class TodoyuTemplateDocumentException extends Exception {
 	public function __construct($document, $message = '', $code = 0) {
 		parent::__construct($message, $code);
 
-			// Log all document exceptions
-		Todoyu::log($message, TodoyuLogger::LEVEL_ERROR);
-
 		$this->document = $document;
 	}
 
@@ -49,7 +46,7 @@ class TodoyuTemplateDocumentException extends Exception {
 	/**
 	 * Get document which caused the exception
 	 * Can be null if exception wasn't thrown in a document instance
-	 * 
+	 *
 	 * @return	TodoyuTemplateDocumentAbstract
 	 */
 	public function getDocument() {
@@ -60,7 +57,7 @@ class TodoyuTemplateDocumentException extends Exception {
 
 	/**
 	 * Check whether the exception has a document object
-	 * 
+	 *
 	 * @return	Boolean
 	 */
 	public function hasDocument() {

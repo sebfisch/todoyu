@@ -525,7 +525,7 @@ class TodoyuArray {
 				$array[$index] = $wrapBefore . $item . $wrapAfter;
 			} else {
 				unset($array[$index]);
-				Todoyu::log('Item was not quoted because was not string or number: ' . serialize($array[$index]), TodoyuLogger::LEVEL_NOTICE, $item);
+				TodoyuLogger::logNotice('Item was not quoted because was not string or number: ' . serialize($array[$index]), $item);
 			}
 		}
 

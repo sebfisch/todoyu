@@ -65,7 +65,7 @@ class TodoyuPasswordValidator {
 				if( method_exists($this, $function) ) {
 					call_user_func(array($this, $function), $value, $this->checks[$function]);
 				} else {
-					Todoyu::log('Invalid password validator function: ' . $function, TodoyuLogger::LEVEL_ERROR);
+					TodoyuLogger::logError('Invalid password validator function: ' . $function);
 				}
 			}
 		}

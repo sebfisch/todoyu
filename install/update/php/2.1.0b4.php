@@ -18,10 +18,5 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-	// Update system config with host information
-$config				= Todoyu::$CONFIG['SYSTEM'];
-$config['pathWeb']	= $_SERVER['HTTP_HOST'] . '/' . dirname($_SERVER['SCRIPT_NAME']);
-
-TodoyuConfigManager::saveSystemConfigConfig($config, false);
 
 ?>

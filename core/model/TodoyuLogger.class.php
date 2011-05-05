@@ -97,9 +97,9 @@ class TodoyuLogger {
 	 * @param	Integer		$level		Log level limit
 	 * @return	TodoyuLogger
 	 */
-	public static function getInstance($level = 0) {
+	public static function getInstance() {
 		if( is_null(self::$instance) ) {
-			self::$instance = new self($level);
+			self::$instance = new self();
 		}
 
 		return self::$instance;
@@ -112,49 +112,24 @@ class TodoyuLogger {
 	 *
 	 * @param	Integer		$level
 	 */
-	private function __construct($level = 0) {
-		$this->setLevel($level);
-
-		$this->requestKey = substr(md5(microtime(true) . session_id()), 0, 10);
+	private function __construct() {
+		$this->level 		= $this->getLogLevel();
+		$this->requestKey	= substr(md5(microtime(true) . session_id()), 0, 10);
 	}
 
 
 
 	/**
-	 * Add a logger class. Class is just provided as string and will be
-	 * instantiated on the first use of the log
+	 * Get log level
 	 *
-	 * @param	String		$className
-	 * @param	Array		$config
+	 * @return	Integer
 	 */
-	public function addLogger($className, array $config = array()) {
-		$this->loggerNames[] = array(
-			'class'	=> $className,
-			'config'=> $config
-		);
-	}
-
-
-
-	/**
-	 * Change to log level
-	 *
-	 * @param	Integer		$level
-	 */
-	public function setLevel($level) {
-		$this->level = intval($level);
-	}
-
-
-
-	/**
-	 * Add a pattern which will be ignored while looking for the error
-	 * position in the backtrace
-	 *
-	 * @param	String		$pattern
-	 */
-	public function addFileIgnorePattern($pattern) {
-		$this->fileIgnorePattern[] = $pattern;
+	private function getLogLevel() {
+		if( isset(Todoyu::$CONFIG['SYSTEM']['loglevel']) ) {
+			return intval(Todoyu::$CONFIG['SYSTEM']['loglevel']);
+		} else {
+			return self::LEVEL_DEBUG;
+		}
 	}
 
 
@@ -185,7 +160,7 @@ class TodoyuLogger {
 	 * @param	Integer		$level			Log level of current message
 	 * @param	Mixed		$data			An additional data container (for debugging)
 	 */
-	public function log($message, $level = 0, $data = null) {
+	private function log($message, $level = 0, $data = null) {
 		$backtrace	= debug_backtrace(false);
 		$info		= $backtrace[0];
 		$level		= intval($level);
@@ -210,6 +185,34 @@ class TodoyuLogger {
 				$logger->log($message, $level, $data, $info, $this->requestKey);
 			}
 		}
+	}
+
+
+
+	/**
+	 * Add a pattern which will be ignored while looking for the error
+	 * position in the backtrace
+	 *
+	 * @param	String		$pattern
+	 */
+	public static function addFileIgnorePattern($pattern) {
+		self::getInstance()->fileIgnorePattern[] = $pattern;
+	}
+
+
+
+	/**
+	 * Add a logger class. Class is just provided as string and will be
+	 * instantiated on the first use of the log
+	 *
+	 * @param	String		$className
+	 * @param	Array		$config
+	 */
+	public static function addLogger($className, array $config = array()) {
+		self::getInstance()->loggerNames[] = array(
+			'class'	=> $className,
+			'config'=> $config
+		);
 	}
 
 

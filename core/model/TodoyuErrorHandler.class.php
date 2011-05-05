@@ -94,7 +94,7 @@ class TodoyuErrorHandler {
 
 			// If not a notice, log it
 		if( ! in_array($errorno, self::$ignoreErros) ) {
-			Todoyu::log('PHP ERROR: [' . $errorno . '] ' . $errorstr, TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('PHP ERROR: [' . $errorno . '] ' . $errorstr);
 				// Send HTTP error header
 			TodoyuHeader::sendHTTPErrorHeader();
 

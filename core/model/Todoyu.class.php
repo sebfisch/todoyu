@@ -172,7 +172,7 @@ class Todoyu {
 				self::$template = new Dwoo($config['compile'], $config['cache']);
 			} catch(Dwoo_Exception $e) {
 				$msg	= 'Can\'t initialize tempalate engine: ' . $e->getMessage();
-				Todoyu::log($msg, TodoyuLogger::LEVEL_FATAL);
+				TodoyuLogger::logFatal($msg);
 				die($msg);
 			}
 		}
@@ -191,34 +191,6 @@ class Todoyu {
 		$directory	= TodoyuFileManager::pathAbsolute($directory);
 
 		self::$template->getLoader()->addDirectory($directory);
-	}
-
-
-
-	/**
-	 * Save log message (can be stored in multiple systems)
-	 *
-	 * @param	String		$message		Log message
-	 * @param	Integer		$level			Log level (use constants!)
-	 * @param	Mixed		$data			Additional data to save with the log message
-	 */
-	public static function log($message, $level = 0, $data = null) {
-		self::logger()->log($message, $level, $data);
-	}
-
-
-
-	/**
-	 * Get logger instance
-	 *
-	 * @return		TodoyuLogger
-	 */
-	public static function logger() {
-		if( is_null(self::$logger) ) {
-			self::$logger = TodoyuLogger::getInstance(self::$CONFIG['LOG_LEVEL']);
-		}
-
-		return self::$logger;
 	}
 
 
@@ -303,7 +275,7 @@ class Todoyu {
 
 			// Log if operation fails
 		if( $status === false ) {
-			self::log('Can\'t set locale "' . $locale . '"', TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('Can\'t set locale "' . $locale . '"');
 		}
 	}
 

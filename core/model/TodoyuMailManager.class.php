@@ -72,12 +72,14 @@ class TodoyuMailManager {
 			$mailer->AddReplyTo(Todoyu::person()->getEmail(), Todoyu::person()->getFullName());
 		}
 
+		$sendStatus = false;
+
 		try {
 			$sendStatus	= $mailer->Send();
 		} catch(phpmailerException $e) {
-			Todoyu::log($e->getMessage(), TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError($e->getMessage());
 		} catch(Exception $e) {
-			Todoyu::log($e->getMessage(), TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError($e->getMessage());
 		}
 
 		return $sendStatus;

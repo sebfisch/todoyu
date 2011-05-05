@@ -68,7 +68,7 @@ class TodoyuFreezeManager {
 		if( $freeze !== false ) {
 			return unserialize($freeze['data']);
 		} else {
-			Todoyu::log('Tried to unfreeze a not available object with ID: ' . $idFreeze, TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('Tried to unfreeze a not available object with ID: ' . $idFreeze);
 			return false;
 		}
 	}
@@ -116,6 +116,7 @@ class TodoyuFreezeManager {
 	 */
 	public static function unfreezeElement($type, $idElement, $ignoreMissing = false) {
 		$idElement	= intval($idElement);
+		$data 		= false;
 
 		$fields	= '*';
 		$where	= '		`element_type`	= ' . Todoyu::db()->quote($type)
@@ -127,8 +128,7 @@ class TodoyuFreezeManager {
 		if( $backup !== false ) {
 			$data = unserialize($backup['data']);
 		} elseif( $ignoreMissing !== true ) {
-			$data = false;
-			Todoyu::log('Failed to unfreeze element of type "' . $type . '" with ID=<' . $idElement . '>', TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('Failed to unfreeze element of type "' . $type . '" with ID=<' . $idElement . '>');
 		}
 
 		return $data;

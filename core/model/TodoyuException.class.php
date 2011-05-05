@@ -26,8 +26,15 @@
  */
 class TodoyuException extends Exception {
 
+	/**
+	 * Log all exceptions
+	 *
+	 * @param	String			$message
+	 * @param	Integer			$code
+	 * @param	Exception|null	$previous
+	 */
 	public function __construct($message, $code = 0, $previous = null) {
-		Todoyu::log('Exception: ' . $message, TodoyuLogger::LEVEL_ERROR);
+		TodoyuLogger::logError('Exception: ' . $message);
 
 		parent::__construct($message, $code, $previous);
 	}

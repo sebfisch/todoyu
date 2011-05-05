@@ -145,11 +145,11 @@ class TodoyuFileManager {
 			if( is_writable($pathFile) ) {
 				$success	= unlink($pathFile);
 			} else {
-				Todoyu::log('Can\'t delete file. File not writable: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
+				TodoyuLogger::logError('Can\'t delete file. File not writable: ' . $pathFile);
 				$success = false;
 			}
 		} else {
-			Todoyu::log('Can\'t delete file. File not found: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('Can\'t delete file. File not found: ' . $pathFile);
 			$success = false;
 		}
 
@@ -179,7 +179,7 @@ class TodoyuFileManager {
 
 			$result	= rmdir($pathFolder);
 			if( $result === false ) {
-				Todoyu::log('Folder deletion failed: ' . $pathFolder, TodoyuLogger::LEVEL_NOTICE);
+				TodoyuLogger::logNotice('Folder deletion failed: ' . $pathFolder);
 				$success = false;
 			}
 		} else {
@@ -394,7 +394,7 @@ class TodoyuFileManager {
 		if( is_file($pathFile) && is_readable($pathFile) ) {
 			return file_get_contents($pathFile);
 		} else {
-			Todoyu::log('Can\'t open file! File: ' . $pathFile, TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('Can\'t open file! File: ' . $pathFile);
 			return '';
 		}
 	}
@@ -471,18 +471,18 @@ class TodoyuFileManager {
 					$status = readfile($pathFile);
 
 					if( $status === false ) {
-						Todoyu::log('Reading the file failed for a unknown reason: ' . $pathFile, TodoyuLogger::LEVEL_ERROR, $pathFile);
+						TodoyuLogger::logError('Reading the file failed for a unknown reason: ' . $pathFile, $pathFile);
 					}
 
 					return $status !== false && $status > 0;
 				} else {
-					Todoyu::log('Tried to download a file from a not allowed path: ' . $pathFile, TodoyuLogger::LEVEL_SECURITY, $pathFile);
+					TodoyuLogger::logSecurity('Tried to download a file from a not allowed path: ' . $pathFile, $pathFile);
 				}
 			} else {
-				Todoyu::log('sendFile() failed because file was not readable: ' . $pathFile, TodoyuLogger::LEVEL_ERROR, $pathFile);
+				TodoyuLogger::logError('sendFile() failed because file was not readable: ' . $pathFile, $pathFile);
 			}
 		} else {
-			Todoyu::log('sendFile() failed because file was not found: "' . $pathFile . '"', TodoyuLogger::LEVEL_ERROR, $pathFile);
+			TodoyuLogger::logError('sendFile() failed because file was not found: "' . $pathFile . '"', $pathFile);
 		}
 
 		return false;
@@ -648,7 +648,7 @@ class TodoyuFileManager {
 		$ch	= curl_init();
 
 		if( $ch === false ) {
-			Todoyu::log('Failed to init curl', TodoyuLogger::LEVEL_FATAL);
+			TodoyuLogger::logFatal('Failed to init curl');
 			return false;
 		}
 
@@ -724,7 +724,7 @@ class TodoyuFileManager {
 
 			// Connection failed
 		if( $fp === false ) {
-			Todoyu::log('File download with socket failed. URL=' . $url . ' - ' . $errno . ' - ' . $errstr, TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('File download with socket failed. URL=' . $url . ' - ' . $errno . ' - ' . $errstr);
 			return false;
 		}
 
@@ -803,7 +803,7 @@ class TodoyuFileManager {
 
 			return $targetPath;
 		} else {
-			Todoyu::log('saveLocalCopy of ' . $url . ' failed', TodoyuLogger::LEVEL_ERROR);
+			TodoyuLogger::logError('saveLocalCopy of ' . $url . ' failed');
 			return false;
 		}
 	}
