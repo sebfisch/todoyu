@@ -199,6 +199,22 @@ class TodoyuStaticRecords {
 
 
 	/**
+	 * Get ID of a timezone
+	 *
+	 * @param	String		$timezone
+	 * @return	Integer
+	 */
+	public static function getTimezoneID($timezone) {
+		$field	= 'id';
+		$table	= 'static_timezone';
+		$where	= 'timezone = ' . Todoyu::db()->quote($timezone, true);
+
+		return intval(Todoyu::db()->getFieldValue($field, $table, $where));
+	}
+
+
+
+	/**
 	 * Get all timezone records
 	 *
 	 * @return	Array
