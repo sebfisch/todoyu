@@ -489,10 +489,7 @@ var Todoyu = {
 				break;
 
 				case Prototype.Browser.WebKit :
-					if (e.metaKey && (
-						e.charCode === 43 ||
-						e.charCode === 45
-						)) {
+					if( e.metaKey && (e.charCode === 43 || e.charCode === 45) ) {
 						callback();
 					}
 				break;

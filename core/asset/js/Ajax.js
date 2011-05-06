@@ -45,7 +45,7 @@ Todoyu.Ajax = {
 	 * Cancel execution and show error message if so
 	 *
 	 * @method	checkNoAccessHeader
-	 * @param		{Ajax.Response}		response
+	 * @param	{Ajax.Response}		response
 	 */
 	checkNoAccessHeader: function(response) {
 		if( response.hasNoAccess() ) {

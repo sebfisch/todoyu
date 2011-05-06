@@ -76,7 +76,7 @@ input {
 	position:relative;
 	width:100%;
 	border:1px solid #000;
-	padding: 1px;
+	padding:1px;
 	/* hack to fix form elements width */
 	box-sizing:border-box;
 	-moz-box-sizing:border-box;
@@ -278,7 +278,7 @@ div.fElement {
 		}
 
 		.typeDatabaseRelation .databaseRelation {
-			position: relative;
+			position:relative;
 			border-top:1px solid #ccc;
 		}
 
@@ -287,9 +287,9 @@ div.fElement {
 		}
 
 		.typeDatabaseRelation .databaseRelation span.additionalStuff {
-			position: absolute;
-			top: 4px;
-			right: 0;
+			position:absolute;
+			top:4px;
+			right:0;
 		}
 
 		.typeDatabaseRelation .databaseRelation span.additionalStuff a.remove {
@@ -414,7 +414,7 @@ form div.error div.errorMessage {
 }
 
 form .error.typeCheckbox {
-	height: 30px !important;
+	height:30px !important;
 }
 
 form .typeCheckbox div.errorMessage {
@@ -464,7 +464,7 @@ form .typeCheckbox div.errorMessage {
 	.acResultContainer li{
 		background:#fff;
 		border:1px solid #ccc;
-		border-top: none;
+		border-top:none;
 		padding:5px;
 		cursor:pointer;
 		text-align:left;

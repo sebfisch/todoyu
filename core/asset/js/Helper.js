@@ -276,17 +276,17 @@ Todoyu.Helper = {
 			entities['255'] = '&yuml;';
 		}
 
-		if (useQuoteStyle !== 'ENT_NOQUOTES') {
+		if( useQuoteStyle !== 'ENT_NOQUOTES' ) {
 			entities['34'] = '&quot;';
 		}
-		if (useQuoteStyle === 'ENT_QUOTES') {
+		if( useQuoteStyle === 'ENT_QUOTES' ) {
 			entities['39'] = '&#39;';
 		}
 		entities['60'] = '&lt;';
 		entities['62'] = '&gt;';
 
 			// ASCII decimals to real symbols
-		for (decimal in entities) {
+		for(decimal in entities) {
 			symbol = String.fromCharCode(decimal);
 			hash_map[symbol] = entities[decimal];
 		}
@@ -309,7 +309,7 @@ Todoyu.Helper = {
 			var hash_map = {}, symbol = '', tmp_str = '', entity = '';
 			tmp_str = string.toString();
 
-			if (false === (hash_map = this.get_html_translation_table('HTML_ENTITIES', quote_style))) {
+			if( false === (hash_map = this.get_html_translation_table('HTML_ENTITIES', quote_style)) ) {
 					return false;
 			}
 
@@ -342,7 +342,7 @@ Todoyu.Helper = {
 			var hash_map = {}, symbol = '', tmp_str = '', entity = '';
 			tmp_str = string.toString();
 
-			if (false === (hash_map = this.get_html_translation_table('HTML_ENTITIES', quote_style))) {
+			if( false === (hash_map = this.get_html_translation_table('HTML_ENTITIES', quote_style)) ) {
 					return false;
 			}
 			hash_map["'"] = '&#039;';
@@ -378,7 +378,7 @@ Todoyu.Helper = {
 
 		str += '';
 
-		if (m < 1) {
+		if( m < 1 ) {
 			return str;
 		}
 
@@ -529,7 +529,7 @@ Todoyu.Helper = {
 			};
 			// Fix for IE parseFloat(0.55).toFixed(0) = 0;
 			s = (config.decimals ? toFixedFix(number, config.decimals) : '' + Math.round(number)).split('.');
-			if (s[0].length > 3) {
+			if( s[0].length > 3 ) {
 				s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, config.thousandSign);
 			}
 			if( (s[1] || '').length < config.decimals) {

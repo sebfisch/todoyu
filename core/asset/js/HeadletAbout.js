@@ -128,7 +128,7 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 	 * @param	{Boolean}	first	Is the first scrolling, reset positions for start
 	 */
 	startNameScrolling: function(up, first) {
-		if ( Todoyu.exists($(this.popupID)) ) {
+		if( Todoyu.exists($(this.popupID)) ) {
 			var box	= $(this.popupID).down('div.names');
 			var list= box.down('ul');
 			var newY= -list.getHeight()+(box.getHeight()/2);

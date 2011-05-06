@@ -133,7 +133,7 @@ Todoyu.Cookie = {
 	store: function() {
 		var expires = '';
 
-		if ( Todoyu.Cookie.options.expires ) {
+		if( Todoyu.Cookie.options.expires ) {
 			var today = new Date();
 			expires = Todoyu.Cookie.options.expires * 86400000;
 			expires = ';expires=' + new Date(today.getTime() + expires);

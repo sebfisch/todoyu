@@ -56,7 +56,7 @@ span.iconLarge {
 ul.ulList {}
 ul.ulList li.listItem {
 	overflow:hidden;
-	list-style: none;
+	list-style:none;
 	line-height:18px;
 }
 * html ul.ulList li.listItem {
@@ -100,12 +100,12 @@ div.infoBox {
 
 div.infoBox h4 {
 	margin:0;
-	font-weight: bold;
+	font-weight:bold;
 }
 
 div.infoBox div.content {
-	padding: 5px 12px;
-	background: white;
+	padding:5px 12px;
+	background:white;
 }
 /* -----------------
 	Heading
@@ -119,7 +119,7 @@ h1 {
 .headerLine span,
 .button,
 .title {
-	text-shadow: 1px 1px #f3f3f3;
+	text-shadow:1px 1px #f3f3f3;
 }
 
 h1.headerLine.hasIcon {
@@ -145,7 +145,7 @@ h1.headerLine.hasIcon span.title {
 }
 
 .headerLine span.first {
-	margin: 0;
+	margin:0;
 	padding:0 0 0 20px;
 }
 

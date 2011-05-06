@@ -5,8 +5,8 @@
 .progressBox .bar {
 	width:180px;
 	height:16px;
-	background-color:#EEE;
-	border: 1px solid #CCC;
+	background-color:#eee;
+	border:1px solid #ccc;
 	margin-top:5px;
 }
 

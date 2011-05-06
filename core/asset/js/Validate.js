@@ -37,11 +37,11 @@ Todoyu.Validate = {
 	 * @return	{Boolean}
 	 */
 	isEmpty: function(mixed_var) {
-		if (typeof mixed_var == 'object') {
+		if( typeof mixed_var == 'object' ) {
 			return this.IsObjectEmpty(mixed_var);
-    	}
+		}
 
-		if (mixed_var === "" || mixed_var === 0 || mixed_var === "0" || mixed_var === null || mixed_var === false || typeof mixed_var === 'undefined') {
+		if( mixed_var === "" || mixed_var === 0 || mixed_var === "0" || mixed_var === null || mixed_var === false || typeof mixed_var === 'undefined' ) {
 			return true;
 		}
 
@@ -58,8 +58,8 @@ Todoyu.Validate = {
 	 */
 	IsObjectEmpty: function(obj) {
 		for(var key in obj) {
-        	return false;
-        }
+			return false;
+		}
 
 		return true;
 	},

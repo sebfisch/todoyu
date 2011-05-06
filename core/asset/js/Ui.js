@@ -646,7 +646,7 @@ Todoyu.Ui = {
 	initRTEfocus: function(textControlElement) {
 		var textControl = tinyMCE.get(textControlElement);
 
-		if ( textControl ) {
+		if( textControl ) {
 				// get content
 			var tempContent = textControl.getContent();
 

@@ -379,9 +379,9 @@ Todoyu.Time = {
 
 				case "%P":
 				case "%p":
-					if (/pm/i.test(a[i]) && hours < 12) {
+					if( /pm/i.test(a[i]) && hours < 12 ) {
 						hours += 12;
-					} else if (/am/i.test(a[i]) && hours >= 12) {
+					} else if( /am/i.test(a[i]) && hours >= 12 ) {
 						hours -= 12;
 					}
 					break;

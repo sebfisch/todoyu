@@ -20,7 +20,7 @@
 
 .inlineFilters .filter .label {
 	width:140px;
-	padding: 2px 0;
+	padding:2px 0;
 	vertical-align:top;
 }
 
@@ -45,7 +45,7 @@
 .inlineFilters .filter.typeAutocompleteMulti .extra,
 .inlineFilters .filter.typeSelectMulti .extra {
 	width:223px;
-	margin-left: 20px;
+	margin-left:20px;
 }
 
 
