@@ -18,8 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-	// Include mailer library
-require_once( PATH_LIB . '/php/phpmailer/class.phpmailer-lite.php' );
 
 /**
  * Manage mail DB logs
@@ -35,7 +33,7 @@ class TodoyuMailManager {
 	const TABLE = 'system_log_email';
 
 
-	
+
 	/**
 	 * Save log record about persons the given mail has been sent to
 	 *
