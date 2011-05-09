@@ -67,6 +67,29 @@ class TodoyuMail extends PHPMailerLite {
 
 
 	/**
+	 * Send mail
+	 *
+	 * @param	Boolean		$catchExceptions		Catch the exceptions and log them automatically. Returns true or false
+	 * @return	Boolean		Sending was successful
+	 */
+	public function send($catchExceptions = true) {
+		if( $catchExceptions ) {
+			try {
+				return parent::Send();
+			} catch(phpmailerException $e) {
+				TodoyuLogger::logError($e->getMessage());
+			} catch(Exception $e) {
+				TodoyuLogger::logError($e->getMessage());
+			}
+			return false;
+		} else {
+			return parent::Send();
+		}
+	}
+
+
+
+	/**
 	 * Set system as sender of the email (system name and email)
 	 *
 	 */

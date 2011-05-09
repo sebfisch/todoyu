@@ -59,13 +59,6 @@ class Todoyu {
 	private static $template;
 
 	/**
-	 * Log object instance
-	 *
-	 * @var	TodoyuLogger
-	 */
-	private static $logger;
-
-	/**
 	 * Currently logged in person
 	 *
 	 * @var	TodoyuContactPerson
@@ -79,6 +72,13 @@ class Todoyu {
 	 * @var	String
 	 */
 	private static $timezone;
+
+	/**
+	 * Backup of current environment
+	 *
+	 * @var	Array
+	 */
+	private static $environmentBackup;
 
 
 
@@ -520,6 +520,42 @@ class Todoyu {
 	 */
 	public static function deny($extKey, $right) {
 		TodoyuRightsManager::deny($extKey, $right);
+	}
+
+
+
+	/**
+	 * Set environment for a person
+	 * - Timezone
+	 * - Locale
+	 *
+	 * @param	Integer		$idPerson
+	 */
+	public static function setEnvironmentForPerson($idPerson) {
+		self::$environmentBackup = array(
+			'locale'	=> self::getLocale(),
+			'timezone'	=> self::getTimezone()
+		);
+
+		$person	= TodoyuContactPersonManager::getPerson($idPerson);
+
+		TodoyuLabelManager::setLocale($person->getLocale());
+		Todoyu::setTimezone($person->getTimezone());
+	}
+
+
+
+	/**
+	 * Reset environment to a previous backup
+	 *
+	 */
+	public static function resetEnvironment() {
+		if( is_array(self::$environmentBackup) ) {
+			TodoyuLabelManager::setLocale(self::$environmentBackup['locale']);
+			Todoyu::setTimezone(self::$environmentBackup['timezone']);
+
+			self::$environmentBackup = null;
+		}
 	}
 
 }
