@@ -26,6 +26,7 @@ todoyu Requirements
 	* Web server configuration: 		Multibyte (UTF-8) must be supported by the webserver
 	* Recommended web server modules:	mod_rewrite for URL rewriting
 
+	See also http://www.todoyu.com/community/system-requirements/ for detailed information
 
 
 Instructions to install todoyu
