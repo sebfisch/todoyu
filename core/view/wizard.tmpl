@@ -1,12 +1,12 @@
 <div class="wizard wizard{ucfirst $wizardName}" id="wizard">
 
 	<div class="navi">
-		<ul>
+		<ol>
 			{foreach $steps step}
 				{$done = in_array($step.step, $doneSteps)}
 				<li class="{if $stepName==$step.step}active{/if}{if $done} done{/if}" {if $done}onclick="Todoyu.Wizard.goToStep('{$step.step}')"{/if}>{Label $step.title}</li>
 			{/foreach}
-		</ul>
+		</ol>
 	</div>
 
 	<div class="content">

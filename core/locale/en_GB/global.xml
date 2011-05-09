@@ -89,8 +89,8 @@
 	<label index="wizard.close">Close wizard</label>
 	<label index="wizard.close.confirm">Are you sure to close the wizard before you have finished all steps?</label>
 	<label index="wizard.back">Back</label>
-	<label index="wizard.next">Forward</label>
-	<label index="log.debug">Debug Informations</label>
+	<label index="wizard.next">Continue</label>
+	<label index="log.debug">Debug Information</label>
 	<label index="log.notice">Notices</label>
 	<label index="log.error">Normal Errors</label>
 	<label index="log.security">Security Issues</label>
