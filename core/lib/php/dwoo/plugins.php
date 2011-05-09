@@ -406,7 +406,7 @@ function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '') {
  * @return	String
  */
 function Dwoo_Plugin_Title_compile(Dwoo_Compiler $compiler, $title) {
-	return '\'<h5>\' . htmlentities(Label(' . $title . '), ENT_QUOTES, \'UTF-8\') . \'</h5>\'';
+	return '\'<h5>\' . htmlentities(Todoyu::Label(' . $title . '), ENT_QUOTES, \'UTF-8\') . \'</h5>\'';
 }
 
 
@@ -626,7 +626,7 @@ function Dwoo_Plugin_timerange_compile(Dwoo_Compiler $compiler, $id, $name, $ran
  * @return	String
  */
 function Dwoo_Plugin_contentMessage_compile(Dwoo_Compiler $compiler, $label, $class = '', $content = '') {
-	return 'render(\'core/view/contentMessage.tmpl\', array(\'labels\'=>explode(\'|\', ' . $label . '),\'class\'=>' . $class . ',\'content\'=>' . $content . '))';
+	return 'Todoyu::render(\'core/view/contentMessage.tmpl\', array(\'labels\'=>explode(\'|\', ' . $label . '),\'class\'=>' . $class . ',\'content\'=>' . $content . '))';
 }
 
 ?>
