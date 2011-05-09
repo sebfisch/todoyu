@@ -339,6 +339,189 @@ class Todoyu {
 		}
 	}
 
+
+
+	/**
+	 * Shortcut for TodoyuLabelManager::getLabel()
+	 * Get the label in the current language
+	 *
+	 * @param	String		$labelKey	e.g 'project.status.planning'
+	 * @param	String		$locale
+	 * @return	String
+	 */
+	public static function Label($labelKey, $locale = null) {
+		return TodoyuLabelManager::getLabel($labelKey, $locale);
+	}
+
+
+
+	/**
+	 * Get person ID. If parameter is not set or 0, get the current person ID
+	 *
+	 * @param	Integer		$idPerson
+	 * @return	Integer
+	 */
+	public static function personid($idPerson = 0) {
+		$idPerson = intval($idPerson);
+
+		return $idPerson === 0 ? TodoyuAuth::getPersonID() : $idPerson;
+	}
+
+
+
+	/**
+	 * Render data with a template
+	 * Shortcut for Todoyu Todoyu::tmpl()->get(...);
+	 *
+	 * @param	String			$template		Path to template file (or a template object)
+	 * @param	Array			$data			Data for template rendering
+	 * @param	Dwoo_ICompiler 	$compiler		Custom compiler
+	 * @param	Boolean			$output			Output directly with echo
+	 * @return	String			Rendered template
+	 */
+	public static function render($template, $data = array(), $compiler = null, $output = false) {
+		try {
+			$content = self::tmpl()->get($template, $data, $compiler, $output);
+		} catch(Dwoo_Exception $e) {
+			TodoyuHeader::sendTypeText();
+
+			$trace	= $e->getTrace();
+
+			echo "Dwoo Template Error: ({$e->getCode()})\n";
+			echo "=================================================\n\n";
+			echo "Error:		{$e->getMessage()}\n";
+			echo "File:		{$trace[1]['file']} : {$trace[1]['line']}\n";
+			echo "Template:	{$trace[1]['args'][0]}\n";
+
+			exit();
+		}
+
+		return $content;
+	}
+
+
+
+	/**
+	 * Check whether a right is set (=allowed)
+	 *
+	 * @param	String		$extKey		Extension key
+	 * @param	String		$right		Right name
+	 * @return	Boolean
+	 */
+	public static function allowed($extKey, $right) {
+		return TodoyuRightsManager::isAllowed($extKey, $right);
+	}
+
+
+
+	/**
+	 * Check if ALL given rights of an extension are allowed
+	 *
+	 * @param	String		$extKey			Extension key
+	 * @param	String		$rightsList		Comma separated names of rights
+	 * @return	Bool
+	 */
+	public static function allowedAll($extKey, $rightsList) {
+		$rights	= explode(',', $rightsList);
+
+		foreach($rights as $right) {
+			if( ! self::allowed($extKey, $right) ) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+
+
+	/**
+	 * Check if ANY of the given rights of an extension is allowed
+	 *
+	 * @param	String		$extKey			Extension key
+	 * @param	String		$rightsList		Comma separated names of rights
+	 * @return	Bool
+	 */
+	public static function allowedAny($extKey, $rightsList) {
+		$rights	= explode(',', $rightsList);
+
+		foreach($rights as $right) {
+			if( self::allowed($extKey, $right) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+
+
+	/**
+	 * Restrict current request to persons who have the right
+	 * Stop script if right is not set
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$right
+	 */
+	public static function restrict($extKey, $right) {
+		TodoyuRightsManager::restrict($extKey, $right);
+	}
+
+
+
+	/**
+	 * Restrict access to internal persons
+	 */
+	public static function restrictInternal() {
+		TodoyuRightsManager::restrictInternal();
+	}
+
+
+
+	/**
+	 * Restrict access to admin
+	 *
+	 */
+	public static function restrictAdmin() {
+		TodoyuRightsManager::restrictAdmin();
+	}
+
+
+
+	/**
+	 * Restrict (deny) access if none if the rights is allowed
+	 * If one right is allowed, do nothing
+	 *
+	 * @param	String		$extKey			Extension key
+	 * @param	String		$rightsList		Comma separated names of rights
+	 */
+	public static function restrictIfNone($extKey, $rightsList) {
+		$rights		= explode(',', $rightsList);
+		$denyRight	= '';
+
+		foreach($rights as $right) {
+			if( self::allowed($extKey, $right) ) {
+				return;
+			} else {
+				$denyRight = $right;
+			}
+		}
+
+		self::deny($extKey, $denyRight);
+	}
+
+
+
+	/**
+	 * Deny access because of a missing right
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$right
+	 */
+	public static function deny($extKey, $right) {
+		TodoyuRightsManager::deny($extKey, $right);
+	}
+
 }
 
 ?>

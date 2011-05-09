@@ -90,7 +90,7 @@ abstract class TodoyuWizard {
 			'doneSteps'		=> $this->getDoneStepNames()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 

@@ -88,7 +88,7 @@ abstract class TodoyuWizardStep {
 	 * @return		String
 	 */
 	public function getTitle() {
-		return Label($this->config['title']);
+		return Todoyu::Label($this->config['title']);
 	}
 
 
@@ -99,7 +99,7 @@ abstract class TodoyuWizardStep {
 	 * @return	String
 	 */
 	public function getHelp() {
-		return empty($this->config['help']) ? '' : Label($this->config['help']);
+		return empty($this->config['help']) ? '' : Todoyu::Label($this->config['help']);
 	}
 
 
@@ -110,7 +110,7 @@ abstract class TodoyuWizardStep {
 	 * @return	String
 	 */
 	public function getInfo() {
-		return empty($this->config['info']) ? '' : Label($this->config['info']);
+		return empty($this->config['info']) ? '' : Todoyu::Label($this->config['info']);
 	}
 
 

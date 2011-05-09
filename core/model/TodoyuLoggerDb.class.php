@@ -27,13 +27,15 @@
 class TodoyuLoggerDb implements TodoyuLoggerIf {
 
 	/**
-	 * 
+	 *
 	 */
 	private $table	= null;
 
 
 	public function __construct(array $config) {
 		$this->table = trim($config['table']);
+
+		TodoyuLogger::addIgnoreFile(basename(__FILE__));
 	}
 
 
@@ -51,7 +53,7 @@ class TodoyuLoggerDb implements TodoyuLoggerIf {
 		if( Todoyu::db()->hasLink() && !empty($this->table) ) {
 			$data 	= array(
 				'date_create'	=> NOW,
-				'id_person'		=> personid(),
+				'id_person'		=> Todoyu::personid(),
 				'requestkey'	=> $requestKey,
 				'level'			=> intval($level),
 				'file'			=> $info['fileshort'],

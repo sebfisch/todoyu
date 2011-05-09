@@ -45,7 +45,7 @@ abstract class TodoyuHeadletTypeMenu extends TodoyuHeadlet {
 			'items'	=> $items
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 

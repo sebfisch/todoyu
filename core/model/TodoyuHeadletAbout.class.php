@@ -36,7 +36,7 @@ class TodoyuHeadletAbout extends TodoyuHeadletTypeButton {
 	 * @return	String
 	 */
 	public function getLabel() {
-		return Label('core.global.headlet.about.label');
+		return Todoyu::Label('core.global.headlet.about.label');
 	}
 
 }

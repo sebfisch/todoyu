@@ -74,7 +74,7 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 	 * @return	String
 	 */
 	public function getLabel() {
-		return Label('core.global.quickcreate.title');
+		return Todoyu::Label('core.global.quickcreate.title');
 	}
 
 

@@ -1055,7 +1055,7 @@ class TodoyuForm implements ArrayAccess {
 				'value'		=> htmlspecialchars($config['value'], ENT_QUOTES, 'UTF-8')
 			);
 
-			$content .= render($template, $data);
+			$content .= Todoyu::render($template, $data);
 		}
 
 		return $content;
@@ -1161,7 +1161,7 @@ class TodoyuForm implements ArrayAccess {
 		$tmpl	= Todoyu::$CONFIG['FORM']['templates']['form'];
 		$data	= $this->getData();
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 

@@ -71,7 +71,7 @@ class TodoyuListingRenderer {
 			'nextPos'	=> $offset + $size,
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 }

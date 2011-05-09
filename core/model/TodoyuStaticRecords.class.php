@@ -142,7 +142,7 @@ class TodoyuStaticRecords {
 	public static function getLabel($type, $key) {
 		$labelKey	= self::$localeConfig[$type]['locale'] . '.' . $key;
 
-		return Label($labelKey);
+		return Todoyu::Label($labelKey);
 	}
 
 
@@ -269,7 +269,7 @@ class TodoyuStaticRecords {
 		$record	= self::getCountry($idCountry);
 		$alpha3	= $record['iso_alpha3'];
 
-		return Label('core.static_country.' . $alpha3);
+		return Todoyu::Label('core.static_country.' . $alpha3);
 	}
 
 

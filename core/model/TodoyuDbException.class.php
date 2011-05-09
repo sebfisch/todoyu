@@ -97,7 +97,7 @@ class TodoyuDbException extends Exception {
 
 		$tmpl	= 'core/view/dberror_html.tmpl';
 
-		$content= render($tmpl, $data);
+		$content= Todoyu::render($tmpl, $data);
 
 		if( $fullDoc ) {
 			$tmpl	= 'core/view/htmldoc.tmpl';
@@ -105,7 +105,7 @@ class TodoyuDbException extends Exception {
 				'title'		=> 'Database Error!',
 				'content'	=> $content
 			);
-			$content= render($tmpl, $data);
+			$content= Todoyu::render($tmpl, $data);
 		}
 
 		return $content;
@@ -145,7 +145,7 @@ class TodoyuDbException extends Exception {
 		//$content	= 'D'
 		$tmpl	= 'core/view/dberror_plain.tmpl';
 
-		$content= render($tmpl, $data);
+		$content= Todoyu::render($tmpl, $data);
 
 		return $content;
 	}

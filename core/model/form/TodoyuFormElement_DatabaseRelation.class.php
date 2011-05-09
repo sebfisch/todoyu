@@ -147,7 +147,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$data['fieldname']	= $this->getName();
 		$data['idRecord']	= $this->getForm()->getRecordID();
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -294,12 +294,12 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 			// If no label found, check if there is a noLabel tag
 		if( empty($label) && ! empty($config['label']['noLabel']) ) {
-			$label	= Label($config['label']['noLabel']);
+			$label	= Todoyu::Label($config['label']['noLabel']);
 		}
 
 			// If still no label found, get default "no label" tag
 		if( empty($label) ) {
-			$label = Label('core.form.databaserelation.nolabel');
+			$label = Todoyu::Label('core.form.databaserelation.nolabel');
 		}
 
 		return $label;

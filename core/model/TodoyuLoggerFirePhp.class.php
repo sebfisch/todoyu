@@ -26,8 +26,13 @@
  */
 class TodoyuLoggerFirePhp implements TodoyuLoggerIf {
 
+	/**
+	 * Initialize logger
+	 *
+	 * @param	Array	$config
+	 */
 	public function __construct(array $config) {
-
+		TodoyuLogger::addIgnoreFile(basename(__FILE__));
 	}
 
 

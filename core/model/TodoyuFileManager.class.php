@@ -285,7 +285,7 @@ class TodoyuFileManager {
 		$templateFile	= self::pathAbsolute($templateFile);
 
 			// Render file content
-		$content= render($templateFile, $data);
+		$content= Todoyu::render($templateFile, $data);
 
 		if( $wrapAsPhp ) {
 				// Add php start and end tag

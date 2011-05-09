@@ -218,7 +218,7 @@ class TodoyuPage {
 	 * @param	String		$title
 	 */
 	public static function setTitle($title) {
-		self::set('pagetitle', Label($title) . ' - todoyu');
+		self::set('pagetitle', Todoyu::Label($title) . ' - todoyu');
 	}
 
 
@@ -458,7 +458,7 @@ class TodoyuPage {
 
 		self::sortJSinlines();
 
-		return render(self::$template, self::$data);
+		return Todoyu::render(self::$template, self::$data);
 	}
 
 

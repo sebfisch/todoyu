@@ -245,7 +245,7 @@ class TodoyuFormXmlParser {
 					// Check if the ext and right keys are available
 				if( isset($right['@attributes']['ext']) && isset($right['@attributes']['right']) ) {
 						// Check if right is allowed
-					if( allowed($right['@attributes']['ext'], $right['@attributes']['right']) ) {
+					if( Todoyu::allowed($right['@attributes']['ext'], $right['@attributes']['right']) ) {
 							// If right allowed and conjunction is OR, field is allowed
 						if( ! $and ) {
 							return true;

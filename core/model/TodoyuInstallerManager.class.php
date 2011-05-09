@@ -105,7 +105,7 @@ class TodoyuInstallerManager {
 					$result['textClass']= 'error';
 				}
 			} else {
-				$result['text']		= Label('install.installer.dbconnection.text');
+				$result['text']		= Todoyu::Label('install.installer.dbconnection.text');
 				$result['textClass']= 'error';
 			}
 		}
@@ -147,7 +147,7 @@ class TodoyuInstallerManager {
 					$useDatabase= $databaseNew;
 					$createDb	= true;
 				} else {
-					$result['text'] 	= Label('install.installer.dbselect.text.dbNameExists');
+					$result['text'] 	= Todoyu::Label('install.installer.dbselect.text.dbNameExists');
 					$result['textClass']= 'error';
 				}
 			} else {
@@ -165,7 +165,7 @@ class TodoyuInstallerManager {
 						$dbConf['database']	= $useDatabase;
 						$success = true;
 					} else {
-						$result['errorMessage'] = Label('install.dbselect.text.notCreated');
+						$result['errorMessage'] = Todoyu::Label('install.dbselect.text.notCreated');
 					}
 				} else {
 						// Use existing database
@@ -182,10 +182,10 @@ class TodoyuInstallerManager {
 				$data['textClass']	= 'error';
 			}
 		} elseif( isset($data['database']) ) {
-			$result['text']		= Label('install.installer.dbselect.text.notCreated');
+			$result['text']		= Todoyu::Label('install.installer.dbselect.text.notCreated');
 			$result['textClass']= 'error';
 		} else {
-			$result['text']		= Label('install.installer.dbselect.text');
+			$result['text']		= Todoyu::Label('install.installer.dbselect.text');
 			$result['textClass']= 'info';
 		}
 
@@ -233,7 +233,7 @@ class TodoyuInstallerManager {
 				TodoyuSession::set('installer/systememail', $data['email']);
 				TodoyuInstaller::setStep('adminaccount');
 			} else {
-				$result['text']		= Label('install.installer.systemconfig.text.error');
+				$result['text']		= Todoyu::Label('install.installer.systemconfig.text.error');
 				$result['textClass']= 'error';
 			}
 		}
@@ -268,7 +268,7 @@ class TodoyuInstallerManager {
 				TodoyuInstaller::setStep('importdemodata');
 			} else {
 					// Verification failed, display failure response
-				$result['text']		= Label('install.installer.adminaccount.error');
+				$result['text']		= Todoyu::Label('install.installer.adminaccount.error');
 				$result['textClass']= 'error';
 			}
 		}
@@ -330,7 +330,7 @@ class TodoyuInstallerManager {
 		if( intval($data['start']) === 1 ) {
 			TodoyuInstaller::setStep('updatetocurrentversion');
 		} else {
-			$result['text']		= Label('install.installer.update.info');
+			$result['text']		= Todoyu::Label('install.installer.update.info');
 			$result['textClass']= 'info';
 		}
 

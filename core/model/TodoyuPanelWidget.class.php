@@ -105,7 +105,7 @@ abstract class TodoyuPanelWidget {
 	 * @param	String		$title
 	 */
 	public function setTitle($title) {
-		$this->set('title', Label($title));
+		$this->set('title', Todoyu::Label($title));
 	}
 
 
@@ -255,7 +255,7 @@ abstract class TodoyuPanelWidget {
 
 		$this->setContent($this->renderContent());
 
-		return render($tmpl, $this->data);
+		return Todoyu::render($tmpl, $this->data);
 	}
 
 

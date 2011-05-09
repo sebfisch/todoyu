@@ -121,7 +121,7 @@ class TodoyuDebug {
 			'caller'	=> self::getCaller()
 		);
 
-		$debug	= render($tmpl, $data);
+		$debug	= Todoyu::render($tmpl, $data);
 
 		if( $return === true ) {
 			return $debug;
@@ -192,7 +192,7 @@ class TodoyuDebug {
 			'caller'	=> self::getCaller()
 		);
 
-		echo render($tmpl, $data);
+		echo Todoyu::render($tmpl, $data);
 	}
 
 

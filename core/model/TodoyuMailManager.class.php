@@ -176,7 +176,7 @@ class TodoyuMailManager {
 
 		$data	= array(
 			'date_create'		=> NOW,
-			'id_person_create'	=> personid(),
+			'id_person_create'	=> Todoyu::personid(),
 			'ext'				=> $extID,
 			'record_type'		=> $type,
 			'id_record'			=> $idRecord,

@@ -367,10 +367,10 @@ class TodoyuString {
 		if( is_null($labels) ) {
 			if( $noLabel === false ) {
 				$labels = array(
-					'gb'	=> Label('core.file.size.gb'),
-					'mb'	=> Label('core.file.size.mb'),
-					'kb'	=> Label('core.file.size.kb'),
-					'b'		=> Label('core.file.size.b')
+					'gb'	=> Todoyu::Label('core.file.size.gb'),
+					'mb'	=> Todoyu::Label('core.file.size.mb'),
+					'kb'	=> Todoyu::Label('core.file.size.kb'),
+					'b'		=> Todoyu::Label('core.file.size.b')
 				);
 			} else {
 				$labels	= array();
@@ -719,7 +719,7 @@ class TodoyuString {
 		$allowed	= true;
 
 			// Check extension's general right setting
-		if( TodoyuRightsManager::checkIfRightExists($extKey, 'general:use') && ! allowed($extKey, 'general:use') ) {
+		if( TodoyuRightsManager::checkIfRightExists($extKey, 'general:use') && ! Todoyu::allowed($extKey, 'general:use') ) {
 			$allowed	= false;
 		}
 

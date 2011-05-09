@@ -277,7 +277,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 			TodoyuPage::addJsOnloadedFunction('Todoyu.Headlets.add.bind(Todoyu.Headlets, \'' . $this->getName() . '\', ' . $this->jsHeadlet . ')', 150);
 		}
 
-		return render($this->template, $this->data);
+		return Todoyu::render($this->template, $this->data);
 	}
 
 

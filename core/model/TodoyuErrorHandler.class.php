@@ -144,7 +144,7 @@ class TodoyuErrorHandler {
 			'message'	=> $message
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 

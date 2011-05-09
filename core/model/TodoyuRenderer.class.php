@@ -39,7 +39,7 @@ class TodoyuRenderer {
 			'active'	=> TodoyuFrontend::getActiveTab()
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -59,7 +59,7 @@ class TodoyuRenderer {
 			// Send number of elements as header
 		TodoyuHeader::sendTodoyuHeader('acElements', sizeof($results));
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -79,7 +79,7 @@ class TodoyuRenderer {
 			'body'	=> $body
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -98,7 +98,7 @@ class TodoyuRenderer {
 			'content'	=> TodoyuString::wrapScript($javaScriptCommands)
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -120,7 +120,7 @@ class TodoyuRenderer {
 			'name'	=> is_null($nameWrap) ? $name : $nameWrap . '[' . $name . ']'
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 }

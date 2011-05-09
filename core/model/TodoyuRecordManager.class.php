@@ -185,7 +185,7 @@ class TodoyuRecordManager {
 
 		$data['date_create']		= NOW;
 		$data['date_update']		= NOW;
-		$data['id_person_create']	= personid();
+		$data['id_person_create']	= Todoyu::personid();
 
 		return Todoyu::db()->addRecord($table, $data, $noQuoteFields);
 	}

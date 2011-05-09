@@ -68,7 +68,7 @@ class TodoyuLogger {
 	 *
 	 * @var	Integer
 	 */
-	private $level	= 0;
+	private $minimumLevel	= 0;
 
 	/**
 	 * Unique key for current request. So we can group the log messages by request
@@ -82,12 +82,14 @@ class TodoyuLogger {
 	 *
 	 * @var	Array
 	 */
-	private $fileIgnorePattern = array(
+	private $filesSkip = array(
 		'TodoyuLogger.class.php',
 		'TodoyuErrorHandler.class.php',
 		'TodoyuDebug.class.php',
 		'Todoyu.class.php'
 	);
+
+	private $filesIgnore = array();
 
 
 
@@ -113,7 +115,7 @@ class TodoyuLogger {
 	 * @param	Integer		$level
 	 */
 	private function __construct() {
-		$this->level 		= $this->getLogLevel();
+		$this->minimumLevel 		= $this->getLogLevel();
 		$this->requestKey	= substr(md5(microtime(true) . session_id()), 0, 10);
 	}
 
@@ -157,46 +159,73 @@ class TodoyuLogger {
 	 * Log a message. The message will be processed by all loggers
 	 *
 	 * @param	String		$message		Log message
-	 * @param	Integer		$level			Log level of current message
+	 * @param	Integer		$eventLevel			Log level of current message
 	 * @param	Mixed		$data			An additional data container (for debugging)
+	 * @return	Boolean		Logged event
 	 */
-	private function log($message, $level = 0, $data = null) {
+	private function log($message, $eventLevel = 0, $data = null) {
 		$backtrace	= debug_backtrace(false);
-		$info		= $backtrace[0];
-		$level		= intval($level);
+		$info		= false;
+		$eventLevel	= intval($eventLevel);
 
-		if( $level >= $this->level ) {
-				// Find file in backtrace which is not on ignore list
-			foreach($backtrace as $btElement) {
-				if( ! in_array(basename($btElement['file']), $this->fileIgnorePattern) ) {
-					$info = $btElement;
-					break;
-				}
-			}
+			// Check if minimum requirement for logging is set
+		if( $eventLevel < $this->minimumLevel ) {
+			return false;
+		}
 
-			$info['fileshort'] 	= TodoyuFileManager::pathWeb($info['file']);
-
-			$loggers	= $this->getLoggerInstances();
-
-			foreach($loggers as $logger) {
-				/**
-				 * @var	TodoyuLoggerIf	$logger
-				 */
-				$logger->log($message, $level, $data, $info, $this->requestKey);
+			// Find file in backtrace which is not on ignore list
+		foreach($backtrace as $btElement) {
+			if( ! in_array(basename($btElement['file']), $this->filesSkip) ) {
+				$info = $btElement;
+				break;
 			}
 		}
+
+			// If no file found which is not skipped, cancel
+		if( $info === false ) {
+			return false;
+		}
+
+			// If found file is an ignore file, cancel
+		if( in_array(basename($info['file']), $this->filesIgnore) ) {
+			return false;
+		}
+
+		$info['fileshort'] 	= TodoyuFileManager::pathWeb($info['file']);
+
+		$loggers	= $this->getLoggerInstances();
+
+		foreach($loggers as $logger) {
+			/**
+			 * @var	TodoyuLoggerIf	$logger
+			 */
+			$logger->log($message, $eventLevel, $data, $info, $this->requestKey);
+		}
+
+		return true;
 	}
 
 
 
 	/**
-	 * Add a pattern which will be ignored while looking for the error
+	 * Add file name which will be ignored while looking for the error
 	 * position in the backtrace
 	 *
-	 * @param	String		$pattern
+	 * @param	String		$filename
 	 */
-	public static function addFileIgnorePattern($pattern) {
-		self::getInstance()->fileIgnorePattern[] = $pattern;
+	public static function addSkipFile($filename) {
+		self::getInstance()->filesSkip[] = $filename;
+	}
+
+
+
+	/**
+	 * Add file name where error will not be logged
+	 *
+	 * @param	String		$filename
+	 */
+	public static function addIgnoreFile($filename) {
+		self::getInstance()->filesIgnore[] = $filename;
 	}
 
 

@@ -575,7 +575,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			if( empty($this->errorMessage) ) {
 
 				if( isset($validatorConfig['@attributes']['msg']) ) {
-					$this->setErrorMessage(Label($validatorConfig['@attributes']['msg']));
+					$this->setErrorMessage(Todoyu::Label($validatorConfig['@attributes']['msg']));
 				} else {
 					$this->setErrorMessage('LLL:core.form.field.hasError');
 				}
@@ -714,7 +714,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$data['error'] 			= $this->hasErrorStatus();
 		$data['errorMessage'] 	= $this->getErrorMessage();
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -732,7 +732,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$wizardConfig['record']	= intval($this->getForm()->getRecordID());
 
 		if( $wizardConfig['title'] ) {
-			$wizardConfig['title'] = Label($wizardConfig['title']);
+			$wizardConfig['title'] = Todoyu::Label($wizardConfig['title']);
 		}
 
 		if( $wizardConfig['displayCondition'] ) {
@@ -747,7 +747,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			$allowed	= false;
 
 			foreach($wizardConfig['restrict'] as $restriction) {
-				if( allowed($restriction[0], $restriction[1]) ) {
+				if( Todoyu::allowed($restriction[0], $restriction[1]) ) {
 					$allowed = true;
 					break;
 				}
@@ -808,7 +808,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @param	String		$text
 	 */
 	public function setAfterFieldText($text) {
-		$this->setAttribute('textAfterField', Label($text));
+		$this->setAttribute('textAfterField', Todoyu::Label($text));
 	}
 
 
@@ -832,7 +832,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 */
 	public function addAfterFieldText($text, $glue = '<br />') {
 		$current	= $this->getAfterFieldText();
-		$text		= Label($text);
+		$text		= Todoyu::Label($text);
 
 		if( $current === '' ) {
 			$this->setAfterFieldText($text);
@@ -849,7 +849,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @param	String		$text
 	 */
 	public function setBeforeFieldText($text) {
-		$this->setAttribute('textBeforeField', Label($text));
+		$this->setAttribute('textBeforeField', Todoyu::Label($text));
 	}
 
 

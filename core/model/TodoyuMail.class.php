@@ -82,7 +82,7 @@ class TodoyuMail extends PHPMailerLite {
 	 * @param	String		$subject
 	 */
 	public function setSubject($subject) {
-		$this->Subject = Label($subject);
+		$this->Subject = Todoyu::Label($subject);
 	}
 
 
@@ -204,7 +204,7 @@ class TodoyuMail extends PHPMailerLite {
 	 * @return	Boolean
 	 */
 	public function addCurrentPersonAsReplyTo() {
-		return $this->addReplyToPerson(personid());
+		return $this->addReplyToPerson(Todoyu::personid());
 	}
 
 

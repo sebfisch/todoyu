@@ -54,7 +54,7 @@ class TodoyuTabheadRenderer {
 			'active'	=> $active,
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -75,7 +75,7 @@ class TodoyuTabheadRenderer {
 			if( TodoyuFunction::isFunctionReference($labelParam) ) {
 				$tabs[$index]['label'] = TodoyuFunction::callUserFunctionArray($labelParam, $tab['labelFuncArgs']);
 			} else {
-				$tabs[$index]['label'] = Label($tab['label']);
+				$tabs[$index]['label'] = Todoyu::Label($tab['label']);
 			}
 		}
 
@@ -96,7 +96,7 @@ class TodoyuTabheadRenderer {
 			'tabs'		=> $tabs,
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 }

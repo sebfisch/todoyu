@@ -53,7 +53,7 @@ class TodoyuTokenManager {
 	public static function getTokenIdByOwner($extID, $idTokenType, $idPersonOwner) {
 		$extID			= intval($extID);
 		$idTokenType	= intval($idTokenType);
-		$idPersonOwner	= personid($idPersonOwner);
+		$idPersonOwner	= Todoyu::personid($idPersonOwner);
 
 		$field	= 'id';
 		$table	= self::TABLE;
@@ -112,8 +112,8 @@ class TodoyuTokenManager {
 	public static function generateHash($extID, $idTokenType, $idPersonOwner = 0, $storeInSession = false) {
 		$extID			= intval($extID);
 		$idTokenType	= intval($idTokenType);
-		$idPersonOwner	= personid($idPersonOwner);
-		$idPersonCreate	= personid();
+		$idPersonOwner	= Todoyu::personid($idPersonOwner);
+		$idPersonCreate	= Todoyu::personid();
 
 			// Generate new hash
 		$prefix	= $extID . $idTokenType . $idPersonCreate . $idPersonOwner;
@@ -160,7 +160,7 @@ class TodoyuTokenManager {
 	public static function storeHashInSession($extID, $idTokenType, $hash, $idPersonOwner = 0) {
 		$idTokenType	= intval($idTokenType);
 		$extID			= intval($extID);
-		$idPersonOwner	= personid($idPersonOwner);
+		$idPersonOwner	= Todoyu::personid($idPersonOwner);
 
 		$hashPath	= self::getTokenHashSessionPath($extID, $idTokenType, $idPersonOwner);
 
@@ -180,7 +180,7 @@ class TodoyuTokenManager {
 	public static function getTokenHashSessionPath($extID, $idTokenType, $idPersonOwner) {
 		$extID			= intval($extID);
 		$idTokenType	= intval($idTokenType);
-		$idPersonOwner	= personid($idPersonOwner);
+		$idPersonOwner	= Todoyu::personid($idPersonOwner);
 
 		return 'tokenHash/' . $extID . '/' . $idTokenType . '/' . $idPersonOwner;
 	}
@@ -197,7 +197,7 @@ class TodoyuTokenManager {
 	public static function getHashFromSession($extID, $idTokenType, $idPersonOwner = 0) {
 		$idTokenType	= intval($idTokenType);
 		$extID			= intval($extID);
-		$idPersonOwner	= personid($idPersonOwner);
+		$idPersonOwner	= Todoyu::personid($idPersonOwner);
 
 		$hashPath	= self::getTokenHashSessionPath($extID, $idTokenType, $idPersonOwner);
 
@@ -216,7 +216,7 @@ class TodoyuTokenManager {
 	public static function saveTokenFromSession($extID, $idTokenType, $idPersonOwner = 0) {
 		$extID			= intval($extID);
 		$idTokenType	= intval($idTokenType);
-		$idPersonOwner	= personid($idPersonOwner);
+		$idPersonOwner	= Todoyu::personid($idPersonOwner);
 
 		$idToken= self::getTokenIdByOwner($extID, $idTokenType, $idPersonOwner);
 		$hash	= self::getHashFromSession($extID, $idTokenType, $idPersonOwner);
@@ -265,7 +265,7 @@ class TodoyuTokenManager {
 	 */
 	public static function addToken(array $data = array()) {
 		$data['date_create']		= NOW;
-		$data['id_person_create']	= personid();
+		$data['id_person_create']	= Todoyu::personid();
 
 		return TodoyuRecordManager::addRecord(self::TABLE, $data);
 	}

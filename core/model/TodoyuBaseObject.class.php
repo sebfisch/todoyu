@@ -182,7 +182,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Boolean
 	 */
 	public function isCurrentPersonCreator() {
-		return intval($this->get('id_person_create')) === personid();
+		return intval($this->get('id_person_create')) === Todoyu::personid();
 	}
 
 

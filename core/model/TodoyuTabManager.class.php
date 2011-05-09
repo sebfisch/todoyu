@@ -36,7 +36,7 @@ class TodoyuTabManager {
 		foreach($tabs as $index => $tab) {
 			if( isset($tab['require']) ) {
 				$parts	= explode('.', $tab['require'], 2);
-				if( ! allowed($parts[0], $parts[1]) ) {
+				if( ! Todoyu::allowed($parts[0], $parts[1]) ) {
 					unset($tabs[$index]);
 				}
 			}

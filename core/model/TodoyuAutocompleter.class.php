@@ -90,7 +90,7 @@ class TodoyuAutocompleter {
 
 			// Check for restrictions
 		if( isset($autocompleter['restrict']) ) {
-			restrict($autocompleter['restrict'][0], $autocompleter['restrict'][1]);
+			Todoyu::restrict($autocompleter['restrict'][0], $autocompleter['restrict'][1]);
 		}
 
 			// Call data source function for results

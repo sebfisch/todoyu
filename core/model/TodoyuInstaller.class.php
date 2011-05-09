@@ -270,7 +270,7 @@ class TodoyuInstaller {
 		$data['result']		= $result;
 		$data['postData']	= $postData;
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -310,7 +310,7 @@ class TodoyuInstaller {
 		$withLabels	= array();
 
 		foreach($steps as $step) {
-			$withLabels[$step] = Label('install.installer.' . $step . '.title');
+			$withLabels[$step] = Todoyu::Label('install.installer.' . $step . '.title');
 		}
 
 		return $withLabels;
@@ -330,7 +330,7 @@ class TodoyuInstaller {
 		foreach($locales as $locale) {
 			$options[] = array(
 				'key'	=> $locale,
-				'label'	=> Label('install.installer.locale.selectthislocale', $locale)
+				'label'	=> Todoyu::Label('install.installer.locale.selectthislocale', $locale)
 			);
 		}
 

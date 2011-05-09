@@ -90,7 +90,7 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 		}
 
 		if( $this->hasAttribute('title') ) {
-			$title	= Label($this->getAttribute('title'));
+			$title	= Todoyu::Label($this->getAttribute('title'));
 			$this->setAttribute('title', $this->getForm()->parseWithFormData( $title ) );
 		}
 
@@ -120,7 +120,7 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 		$data	= $this->getData();
 		$data['odd'] = $odd;
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 }

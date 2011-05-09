@@ -138,7 +138,7 @@ class TodoyuLocaleManager {
 		foreach($locales as $locale) {
 			$options[] = array(
 				'value'	=> $locale,
-				'label'	=> Label('core.locale.' . $locale)
+				'label'	=> Todoyu::Label('core.locale.' . $locale)
 			);
 		}
 

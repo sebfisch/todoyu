@@ -358,13 +358,13 @@ class TodoyuTime {
 			$value	= $seconds;
 			$unit	= 'time.second';
 		}
-		
+
 		if( $value != 1 ) {
 				// Plural?
 			$unit .= 's';
 		}
 
-		return $value . ' ' . label('core.date.' . $unit);
+		return $value . ' ' . Todoyu::Label('core.date.' . $unit);
 	}
 
 
@@ -394,7 +394,7 @@ class TodoyuTime {
 	public static function getFormat($formatName) {
 		$localeKey	= 'core.dateformat.' . $formatName;
 
-		return Label($localeKey);
+		return Todoyu::Label($localeKey);
 	}
 
 

@@ -166,7 +166,7 @@ class TodoyuCoreAboutActionController extends TodoyuActionController {
 
 		$tmpl	= 'core/view/about-window.tmpl';
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 
 }

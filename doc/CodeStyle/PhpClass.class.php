@@ -76,7 +76,7 @@ class MyCamelCaseClassName {
 			)
 		);
 
-		return render($tmpl, $data);
+		return Todoyu::render($tmpl, $data);
 	}
 }
 

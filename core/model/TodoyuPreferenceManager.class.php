@@ -50,7 +50,7 @@ class TodoyuPreferenceManager {
 		$preference	= strtolower($preference);
 		$idItem		= intval($idItem);
 		$idArea		= intval($idArea);
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 
 			// Delete existing preferences
 		if( $unique ) {
@@ -88,7 +88,7 @@ class TodoyuPreferenceManager {
 	public static function deletePreference($extID, $preference, $value = null, $idItem = 0, $idArea = 0, $idPerson = 0) {
 		$extID		= intval($extID);
 		$preference	= strtolower($preference);
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 		$idItem		= intval($idItem);
 		$idArea		= intval($idArea);
 
@@ -124,7 +124,7 @@ class TodoyuPreferenceManager {
 		$preference	= strtolower($preference);
 		$idItem		= intval($idItem);
 		$idArea		= intval($idArea);
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 
 			// Don't check database if the user ID is 0
 		if( $idPerson === 0 ) {
@@ -164,7 +164,7 @@ class TodoyuPreferenceManager {
 	public static function getPreferences($extID, $preference, $idItem = 0, $idArea = 0, $idPerson = 0) {
 		$extID		= intval($extID);
 		$preference	= strtolower($preference);
-		$idPerson		= personid($idPerson);
+		$idPerson		= Todoyu::personid($idPerson);
 		$idItem		= intval($idItem);
 		$idArea		= intval($idArea);
 
@@ -190,7 +190,7 @@ class TodoyuPreferenceManager {
 	 * @param	Integer		$idPerson
 	 */
 	public static function deleteUserPreferences($idPerson = 0) {
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 
 		$table	= self::TABLE;
 		$where	= 'id_person	= ' . $idPerson;
@@ -216,7 +216,7 @@ class TodoyuPreferenceManager {
 	public static function isPreferenceSet($extID, $preference, $idItem = 0, $value = null, $idArea = 0, $idPerson = 0) {
 		$extID		= intval($extID);
 		$preference	= strtolower($preference);
-		$idPerson	= personid($idPerson);
+		$idPerson	= Todoyu::personid($idPerson);
 		$idArea		= intval($idArea);
 
 		$field	= 'id_person';

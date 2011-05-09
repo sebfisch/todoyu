@@ -443,7 +443,7 @@ class TodoyuRightsManager {
 
 			ob_end_clean();
 
-			$output = render($tmpl, $data);
+			$output = Todoyu::render($tmpl, $data);
 		}
 
 		TodoyuLogger::logSecurity('Access denied (' . $extKey . '/' . $right . ')');

@@ -79,7 +79,7 @@ class TodoyuFrontend {
 	 * @param	String		$parentTab
 	 */
 	public static function setActiveSubmenuTab($parentTab, $activeTab) {
-		$idPerson = personid();
+		$idPerson = Todoyu::personid();
 
 		TodoyuPreferenceManager::savePreference(0, 'tabSubmenu_' . $parentTab, $activeTab, 0, true, $idPerson);
 	}
@@ -151,7 +151,7 @@ class TodoyuFrontend {
 				// Check for access rights
 			if( array_key_exists('require', $itemConfig) ) {
 				$required	= explode('.', $itemConfig['require']);
-				$allowed	= allowed($required[0], $required[1]);
+				$allowed	= Todoyu::allowed($required[0], $required[1]);
 			} else {
 				$allowed	= true;
 			}
@@ -161,7 +161,7 @@ class TodoyuFrontend {
 				$entryKey	= $extKey . ucfirst($itemKey);
 				$href		= '?ext=' . $extKey . '&tab=' . $itemKey;
 				$position	= intval($itemConfig['position']);
-				$label		= Label($extKey . '.ext.subMenuEntry.' . $itemKey);
+				$label		= Todoyu::Label($extKey . '.ext.subMenuEntry.' . $itemKey);
 
 				self::addSubmenuEntry($parentKey, $entryKey, $labelPrefix . $label, $href, $position);
 			}
@@ -183,7 +183,7 @@ class TodoyuFrontend {
 	public static function addSubmenuEntry($parentKey, $key, $label, $href, $position = 50, $type = '') {
 		Todoyu::$CONFIG['FE']['NAVI']['entries'][$parentKey]['submenu'][] = array(
 			'key'		=> $key,
-			'label'		=> Label($label),
+			'label'		=> Todoyu::Label($label),
 			'href'		=> $href,
 			'position'	=> $position,
 			'type'		=> $type,
@@ -245,7 +245,7 @@ class TodoyuFrontend {
 
 			// Get label for menu entry and sort sub menus.
 		foreach($tabs as $index => $tab) {
-			$tabs[$index]['label'] = Label($tabs[$index]['label']);
+			$tabs[$index]['label'] = Todoyu::Label($tabs[$index]['label']);
 
 			if( $tabs[$index]['submenu'] ) {
 					// Sort by 'position', remove duplicate entries

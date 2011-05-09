@@ -237,10 +237,8 @@ function Dwoo_Plugin_debug(Dwoo $dwoo, $variable, $phpFormat = false) {
 		TodoyuDebug::printPHP($variable);
 	} else {
 			// Simple print_r
-		$debug	= '<pre style="z-index:200; background-color:#fff;">' . print_r($variable, true) . '</pre>';
+		return '<pre style="z-index:200; background-color:#fff;">' . print_r($variable, true) . '</pre>';
 	}
-
-	return $debug;
 }
 
 
@@ -375,7 +373,7 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
 		'disabled'	=> $disabled ? true : false
 	);
 
-	return render($tmpl, $data);
+	return Todoyu::render($tmpl, $data);
 }
 
 
@@ -391,11 +389,11 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
 function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '') {
 	$tmpl	= 'core/view/headerLine.tmpl';
 	$data	= array(
-		'title'	=> Label($title),
+		'title'	=> Todoyu::Label($title),
 		'class'	=> $class
 	);
 
-	return render($tmpl, $data);
+	return Todoyu::render($tmpl, $data);
 }
 
 
@@ -436,7 +434,7 @@ function Dwoo_Plugin_allowed_compile(Dwoo_Compiler $compiler, $ext, $right) {
  * @return	String
  */
 function Dwoo_Plugin_allowedAll_compile(Dwoo_Compiler $compiler, $ext, $rightsList) {
-	return 'allowedAll(' . $ext . ',' . $rightsList . ')';
+	return 'Todoyu::allowedAll(' . $ext . ',' . $rightsList . ')';
 }
 
 
@@ -450,7 +448,7 @@ function Dwoo_Plugin_allowedAll_compile(Dwoo_Compiler $compiler, $ext, $rightsLi
  * @return	String
  */
 function Dwoo_Plugin_allowedAny_compile(Dwoo_Compiler $compiler, $ext, $rightsList) {
-	return 'allowedAny(' . $ext . ',' . $rightsList . ')';
+	return 'Todoyu::allowedAny(' . $ext . ',' . $rightsList . ')';
 }
 
 
@@ -465,7 +463,7 @@ function Dwoo_Plugin_allowedAny_compile(Dwoo_Compiler $compiler, $ext, $rightsLi
  * @return	String
  */
 function Dwoo_Plugin_allowedOrOwn_compile(Dwoo_Compiler $compiler, $ext, $right, $idPerson) {
-	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ') || personid()==' . $idPerson;
+	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ') || Todoyu::personid()==' . $idPerson;
 }
 
 
@@ -481,7 +479,7 @@ function Dwoo_Plugin_allowedOrOwn_compile(Dwoo_Compiler $compiler, $ext, $right,
  * @return	Boolean
  */
 function Dwoo_Plugin_allowedAndOwn_compile(Dwoo_Compiler $compiler, $ext, $right, $idPerson) {
-	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ') && personid()==' . $idPerson;
+	return 'TodoyuRightsManager::isAllowed(' . $ext . ',' . $right . ') && Todoyu::personid()==' . $idPerson;
 }
 
 
@@ -563,7 +561,7 @@ function Dwoo_Plugin_select(Dwoo $dwoo, array $options, array $value = array(), 
 		}
 	}
 
-	return render($tmpl, $data);
+	return Todoyu::render($tmpl, $data);
 }
 
 

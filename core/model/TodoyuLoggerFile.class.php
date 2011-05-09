@@ -43,6 +43,8 @@ class TodoyuLoggerFile implements TodoyuLoggerIf {
 	public function __construct(array $config) {
 		$pathFile	= TodoyuFileManager::pathAbsolute($config['file']);
 
+		TodoyuLogger::addIgnoreFile(basename(__FILE__));
+
 			// Make folder and file if not exists
 		if( ! is_file($pathFile) ) {
 			TodoyuFileManager::makeDirDeep(dirname($pathFile));

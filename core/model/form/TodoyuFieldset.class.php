@@ -445,7 +445,7 @@ class TodoyuFieldset implements ArrayAccess {
 
 		$data['content'] =  $this->renderElements();;
 
-		return render($template, $data);
+		return Todoyu::render($template, $data);
 	}
 
 
