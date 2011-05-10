@@ -18,6 +18,8 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+require_once( PATH_LIB . '/php/iCalcreator/iCalcreator.class.php' );
+
 /**
  * todoyu iCalender
  *
@@ -35,14 +37,12 @@ class TodoyuIcal {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param	String	$hash			Calendar token hash
 	 * @param	String	$name			Calendar name
 	 * @param	String	$description	Calendar description
 	 */
 	public function __construct($hash = '', $name = 'todoyu Calendar', $description = '') {
-		require_once( PATH_LIB . DIR_SEP . 'php' . DIR_SEP . 'iCalcreator' . DIR_SEP . 'iCalcreator.class.php' );
-
 			// Create new calendar instance
 		$config = array(
 //			'unique_id' => Todoyu::$CONFIG['SYSTEM']['todoyuURL']
@@ -124,7 +124,7 @@ class TodoyuIcal {
 		} else {
 				// Add event component to calendar
 				/** @var vevent $vEvent */
-			$vEvent = & $this->calendar->newComponent('vevent');
+			$vEvent = $this->calendar->newComponent('vevent');
 
 				// Set organizer (person create)
 			$idPersonOrganizer	= $eventData['id_person_create'];
@@ -142,13 +142,12 @@ class TodoyuIcal {
 			$vEvent->setProperty('dtend', $dateEnd);
 
 				// Add summary (from title)
-			$vEvent->setProperty('summary',	$eventData['title']);
+			$summary	= addcslashes($eventData['title'], '\\');
+			$vEvent->setProperty('summary',	$summary);
 
 				// Add description
 			if( ! empty($eventData['description']) ) {
-//				$description	= nl2br($eventData['description']);
-				$description	= TodoyuString::cleanRTEText($eventData['description']);
-
+				$description	= addcslashes($eventData['description'], '\\');
 				$vEvent->setProperty('description',	$description);
 			}
 
@@ -165,7 +164,8 @@ class TodoyuIcal {
 
 				// Add place (location) of event
 			if( ! empty($eventData['place']) ) {
-				$vEvent->setProperty('LOCATION',	$eventData['place']);
+				$place	= addcslashes($eventData['place'], '\\');
+				$vEvent->setProperty('LOCATION', $place);
 			}
 		}
 	}
