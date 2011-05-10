@@ -59,7 +59,8 @@ class TodoyuSQLManager {
 		$queries	= array();
 
 		$pathCoreSql= PATH_CORE . DIR_SEP . 'config' . DIR_SEP . 'db';
-		$sqlFiles	= TodoyuFileManager::getFilesInFolder($pathCoreSql, false, array('.sql'));
+
+		$sqlFiles	= array('static.sql', 'system.sql', 'system_log.sql');
 
 		foreach($sqlFiles as $filename) {
 			$file	= $pathCoreSql . DIR_SEP . $filename;
