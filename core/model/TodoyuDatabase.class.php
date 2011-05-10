@@ -887,7 +887,7 @@ class TodoyuDatabase {
 	 * @return	Array		Or false
 	 */
 	public function getRecordByQuery($fields, $table, $where = '', $groupBy = '', $order = '') {
-		$rows	= $this->getArray($fields, $table, $where, $groupBy, $order, '1');
+		$rows	= $this->getArray($fields, $table, $where, $groupBy, $order, 1);
 
 		return sizeof($rows) === 1 ? $rows[0] : false;
 	}
