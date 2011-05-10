@@ -869,6 +869,68 @@ class TodoyuString {
 		}
 	}
 
+
+
+	/**
+	 * Render duration string
+	 *
+	 * @param	Array	$data
+	 * @return	String
+	 */
+	public static function renderDurationString1(array $data) {
+		$tmpl	= 'core/view/duration.tmpl';
+
+		return Todoyu::render($tmpl, $data);
+	}
+
+
+	/**
+	 * Get duration as string
+	 * Includes start and end date with hours
+	 *
+	 *
+	 * @param	Array	$data
+	 * @return	String
+	 */
+	public static function getRangeString($dateStart, $dateEnd, $withDuration = true) {
+		$dateStart	= intval($dateStart);
+		$dateEnd	= intval($dateEnd);
+		$duration	= $dateEnd-$dateStart;
+		$hours		= intval($duration/3600);
+		$hoursMax	= 23;
+
+			// Make day keys to detect multi day duration
+		$dateKeyStart	= date('dmY', $dateStart);
+		$dateKeyEnd		= date('dmY', $dateEnd);
+		$isMultiDay		= $dateKeyStart !== $dateKeyEnd;
+
+			// Set general data
+		$data	= array(
+			'dateStart'	=> $dateStart,
+			'dateEnd'	=> $dateEnd,
+			'multi'		=> $isMultiDay
+		);
+
+		if( $withDuration ) {
+			$data['withDuration']	= $withDuration;
+			$data['asDays']			= $hours >= $hoursMax;
+			$data['hours']			= $hours;
+			$data['duration']		= $duration;
+
+						// Duration is over multiple days?
+			if( $isMultiDay ) {
+				$dayTimestamps	= TodoyuTime::getDayTimestampsInRange($dateStart, $dateEnd);
+
+				$data['days']	= sizeof($dayTimestamps);
+			}
+		}
+
+		$tmpl	= 'core/view/duration.tmpl';
+		$string	= Todoyu::render($tmpl, $data);
+
+		return str_replace(array("\n", "\t", "\r"), '', trim($string));
+	}
+
 }
 
 ?>
