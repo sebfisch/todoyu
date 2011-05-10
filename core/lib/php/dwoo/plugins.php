@@ -301,12 +301,12 @@ function Dwoo_Plugin_timeFormat_compile(Dwoo_Compiler $compiler, $timestamp, $wi
  * @subpackage	Template
  *
  * @param	Dwoo_Compiler 	$compiler		Dwoo compiler
- * @param	Integer			$datetime		Timestamp to format
- * @param	String			$formatName		Format name
+ * @param	Integer			$date			Timestamp to format
+ * @param	String			$format			Format
  * @return	String
  */
-function Dwoo_Plugin_formatSqlDate_compile(Dwoo_Compiler $compiler, $datetime) {
-	return 'TodoyuTime::formatSqlDate(' . $datetime . ')';
+function Dwoo_Plugin_formatSqlDate_compile(Dwoo_Compiler $compiler, $date, $format = 'date') {
+	return 'TodoyuTime::formatSqlDate(' . $date . ', ' . $format . ')';
 }
 
 

@@ -872,19 +872,6 @@ class TodoyuString {
 
 
 	/**
-	 * Render duration string
-	 *
-	 * @param	Array	$data
-	 * @return	String
-	 */
-	public static function renderDurationString1(array $data) {
-		$tmpl	= 'core/view/duration.tmpl';
-
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-	/**
 	 * Get duration as string
 	 * Includes start and end date with hours
 	 *

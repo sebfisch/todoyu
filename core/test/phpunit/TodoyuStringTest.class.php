@@ -503,6 +503,80 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+	public function testGetRangeString() {
+		Todoyu::setLocale('en_GB');
+
+			// 2 hours
+		$dateStart1	= mktime(14, 0, 0, 1, 1, 2011);
+		$dateEnd1	= mktime(16, 0, 0, 1, 1, 2011);
+		$expect1	= '01/01/2011, 14:00 - 16:00 (02:00 Hours)';
+		$result1	= TodoyuString::getRangeString($dateStart1, $dateEnd1);
+
+		$this->assertEquals($expect1, $result1);
+
+			// 2 days
+		$dateStart2	= mktime(14, 0, 0, 1, 1, 2011);
+		$dateEnd2	= mktime(16, 0, 0, 1, 2, 2011);
+		$expect2	= '01/01/11 14:00 - 01/02/11 16:00 (2 Days)';
+		$result2	= TodoyuString::getRangeString($dateStart2, $dateEnd2);
+
+		$this->assertEquals($expect2, $result2);
+
+			// 30 minutes
+		$dateStart3	= mktime(14, 0, 0, 1, 1, 2011);
+		$dateEnd3	= mktime(14, 30, 0, 1, 1, 2011);
+		$expect3	= '01/01/2011, 14:00 - 14:30 (30 Minutes)';
+		$result3	= TodoyuString::getRangeString($dateStart3, $dateEnd3);
+
+		$this->assertEquals($expect3, $result3);
+	}
+
+
+	public function testExtracthttpstatuscode() {
+		$test200	= 'HTTP/1.1 200 OK';
+		$test404	= 'HTTP/1.1 404 Not Found';
+
+		$result200	= TodoyuString::extractHttpStatusCode($test200);
+		$result404	= TodoyuString::extractHttpStatusCode($test404);
+
+		$this->assertEquals(200, $result200);
+		$this->assertEquals(404, $result404);
+	}
+
+	public function testenableJsFunctionInJSON() {
+		$array	= array(
+			'func' => 'function(arg){return arg;}'
+		);
+		$json		= json_encode($array);
+		$enabled	= TodoyuString::enableJsFunctionInJSON($json);
+		$expected	= '{"func":function(arg){return arg;}}';
+
+		$this->assertEquals($expected, $enabled);
+	}
+
+
+	public function testwrapwithtag() {
+		$result	= TodoyuString::wrapWithTag('strong', 'Bold');
+		$expect	= '<strong>Bold</strong>';
+
+		$this->assertEquals($result, $expect);
+	}
+
+
+	public function testwraptodoyulink() {
+		$result1	= TodoyuString::wrapTodoyuLink('Link', 'project', array('controller'=>'test'));
+		$expect1	= '<a href="/todoyu_trunk/index.php?controller=test&ext=project">Link</a>';
+
+		$this->assertEquals($expect1, $result1);
+
+		$result2	= TodoyuString::wrapTodoyuLink('Link', 'project', array('controller'=>'test','action'=>'foo'), 'myHash', '_blank');
+		$expect2	= '<a href="/todoyu_trunk/index.php?controller=test&action=foo&ext=project#myHash" target="_blank">Link</a>';
+
+		$this->assertEquals($expect2, $result2);
+	}
+
+
+
 
 
 }

@@ -1,12 +1,12 @@
 {if $multi}
 	{dateFormat $dateStart datetime} - {dateFormat $dateEnd datetime}
 	{if $withDuration}
-		&nbsp;({if $asDays}
-				{$days}&nbsp;
+		 ({if $asDays}
+			{$days}
 				{if $days == 1}
-					{Label core.date.day}
+					 {Label core.date.day}
 				{else}
-					{Label core.date.days}
+					 {Label core.date.days}
 				{/if}
 		{else}
 			{if $hours > 0}
@@ -19,7 +19,7 @@
 {else}
 	{dateFormat $dateStart date}, {dateFormat $dateStart time} - {dateFormat $dateEnd time}
 	{if $withDuration}
-		&nbsp;({if $hours > 0}
+		 ({if $hours > 0}
 			{timeFormat $duration} {Label core.date.time.hours}
 		{else}
 			{intval($duration/60)} {Label core.date.time.minutes}

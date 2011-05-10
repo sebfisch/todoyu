@@ -336,7 +336,7 @@ class TodoyuTime {
 	 * @param	Integer		$seconds
 	 * @return	String
 	 */
-	public static function autoformatDuration($seconds) {
+	public static function formatDuration($seconds) {
 		if( $seconds >= TodoyuTime::SECONDS_WEEK ) {
 				// Weeks
 			$value	= $seconds / TodoyuTime::SECONDS_WEEK;
@@ -372,14 +372,28 @@ class TodoyuTime {
 	/**
 	 * Format an SQL datetime string with one of todoyu's default date formats
 	 *
-	 * @param	String	$datetime
+	 * @param	String	$sqlDate
+	 * @param	String	$format
 	 * @return	String
 	 */
-	public static function formatSqlDate($datetime) {
-		$format		= '%Y-%m-%d';
-		$timestamp	= self::parseDateTime($datetime, $format);
+	public static function formatSqlDate($sqlDate, $format = 'date') {
+		$timestamp		= self::parseSqlDate($sqlDate);
 
-		return self::format($timestamp, 'date');
+		return self::format($timestamp, $format);
+	}
+
+
+
+	/**
+	 * Parse sql date to timestamp
+	 *
+	 * @param	String		$sqlDate
+	 * @return	Integer
+	 */
+	public static function parseSqlDate($sqlDate) {
+		$pattern	= '%Y-%m-%d';
+
+		return self::parseDateTime($sqlDate, $pattern);
 	}
 
 

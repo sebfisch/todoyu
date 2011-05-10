@@ -579,6 +579,46 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+	public function testparsesqldate() {
+		$date	= '2010-01-01';
+		$expect	= mktime(0, 0, 0, 1, 1, 2010);
+		$result	= TodoyuTime::parseSqlDate($date);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testformatsqldate() {
+		Todoyu::setLocale('en_GB');
+
+		$date	= '2010-01-01';
+		$expect	= '01/01/2010';
+		$result	= TodoyuTime::formatSqlDate($date);
+
+		$this->assertEquals($expect, $result);
+	}
+
+	public function testformatDuration() {
+		Todoyu::setLocale('en_GB');
+
+		$duration60	= TodoyuTime::formatDuration(60);
+		$expect60	= '1 Minute';
+		$this->assertEquals($expect60, $duration60);
+
+		$duration300	= TodoyuTime::formatDuration(300);
+		$expect300	= '5 Minutes';
+		$this->assertEquals($expect300, $duration300);
+
+		$duration3600	= TodoyuTime::formatDuration(3600);
+		$expect3600	= '1 Hour';
+		$this->assertEquals($expect3600, $duration3600);
+
+		$duration172800	= TodoyuTime::formatDuration(172800);
+		$expect172800	= '2 Days';
+		$this->assertEquals($expect172800, $duration172800);
+	}
+
+
 }
 
 ?>
