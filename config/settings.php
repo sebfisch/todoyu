@@ -28,7 +28,7 @@ Todoyu::$CONFIG['SETTINGS']['passwordStrength'] = array(
 	'hasNumbers'	=> true,
 	'hasLowerCase'	=> true,
 	'hasUpperCase'	=> true,
-	'hasSpecialChars'	=> true
+	'hasSpecialChars'	=> false
 );
 
 
