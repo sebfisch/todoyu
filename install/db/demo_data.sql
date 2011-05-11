@@ -801,9 +801,9 @@ INSERT INTO `ext_contact_mm_person_contactinfo` (`id`, `id_person`, `id_contacti
 --
 
 INSERT INTO `ext_contact_mm_person_role` (`id`, `id_person`, `id_role`) VALUES
-(3, 18, 4),
-(6, 12, 2),
-(12, 6, 1);
+(1, 18, 3),
+(2, 12, 2),
+(3, 6, 1);
 
 -- --------------------------------------------------------
 
