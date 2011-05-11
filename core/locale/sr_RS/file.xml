@@ -7,5 +7,5 @@
 	<label index="size.kb">КБ</label>
 	<label index="size.b">Б</label>
 	<label index="filename">Име фајл-а</label>
-	<label index="filesize">Величина фајл-а </label>
+	<label index="filesize">Величина фајл-а</label>
 </labels>
