@@ -571,5 +571,5 @@ INSERT INTO `system_right` (`id`, `ext`, `right`, `id_role`) VALUES
 (3771, 112, 'addtask:cleared:create', 1),
 (3772, 104, 'event:deleteAll', 3),
 (3773, 104, 'event:deleteAll', 2),
-(3774, 104, 'comment:deleteOwn', 2),
-(3774, 104, 'comment:deleteOwn', 4);
+(3774, 105, 'comment:deleteOwn', 2),
+(3775, 105, 'comment:deleteOwn', 4);
