@@ -1012,7 +1012,7 @@ INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person
 (9, 1264585252, 1269513237, 1, 0, '', '', '', 0, 0, 'Ella', 'Fitzgerald', 'ELFI', 'w', '', '1917-04-25'),
 (10, 1264585479, 1269513406, 1, 0, '', '', '', 0, 0, 'Wolfgang Amadeus', 'Mozart', 'WOMO', 'm', '', '1756-01-27'),
 (11, 1264585573, 1269513430, 1, 0, '', '', '', 0, 0, 'Marlene', 'Dietrich', 'MADI', 'w', '', '1901-12-27'),
-(12, 1264585673, 1269511275, 1, 0, 'projectmanager', '5f4dcc3b5aa765d61d8327deb882cf99', 'paul@gripgrap.example.com', 1, 1, 'Paul', 'Projectmanager', 'PaPr', 'm', '', '1974-02-25'),
+(12, 1264585673, 1269511275, 1, 0, 'projectmanager', '5f4dcc3b5aa765d61d8327deb882cf99', 'paul@gripgrap.example.com', 0, 1, 'Paul', 'Projectmanager', 'PaPr', 'm', '', '1974-02-25'),
 (13, 1264585840, 1269513340, 1, 0, '', '', '', 0, 0, 'Joseph', 'Haydn', 'JOHA', 'm', '', '1732-03-31'),
 (14, 1264587666, 1269513255, 1, 0, '', '', '', 0, 0, 'Elvis', 'Presley', 'ELPR', 'm', '', '1935-01-08'),
 (15, 1264694201, 1269513308, 1, 0, '', '', '', 0, 0, 'Johann Sebastian', 'Bach', 'JOBA', 'm', '', '1685-03-21'),
