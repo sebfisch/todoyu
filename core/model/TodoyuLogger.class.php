@@ -127,8 +127,8 @@ class TodoyuLogger {
 	 * @return	Integer
 	 */
 	private function getLogLevel() {
-		if( isset(Todoyu::$CONFIG['SYSTEM']['loglevel']) ) {
-			return intval(Todoyu::$CONFIG['SYSTEM']['loglevel']);
+		if( isset(Todoyu::$CONFIG['SYSTEM']['logLevel']) ) {
+			return intval(Todoyu::$CONFIG['SYSTEM']['logLevel']);
 		} else {
 			return self::LEVEL_DEBUG;
 		}
