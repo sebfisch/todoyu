@@ -118,7 +118,7 @@ class TodoyuPasswordValidator {
 	/**
 	 * Checks if password has a minimum length
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	private function minLength($value, $config) {
 		$value	= trim($value);

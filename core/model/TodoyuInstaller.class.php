@@ -154,7 +154,7 @@ class TodoyuInstaller {
 	/**
 	 * Check if data is submitted
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	private static function hasData() {
 		return $_SERVER['REQUEST_METHOD'] === 'POST';

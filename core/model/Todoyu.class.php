@@ -419,7 +419,7 @@ class Todoyu {
 	 *
 	 * @param	String		$extKey			Extension key
 	 * @param	String		$rightsList		Comma separated names of rights
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function allowedAll($extKey, $rightsList) {
 		$rights	= explode(',', $rightsList);
@@ -440,7 +440,7 @@ class Todoyu {
 	 *
 	 * @param	String		$extKey			Extension key
 	 * @param	String		$rightsList		Comma separated names of rights
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function allowedAny($extKey, $rightsList) {
 		$rights	= explode(',', $rightsList);

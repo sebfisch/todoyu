@@ -171,7 +171,7 @@ class TodoyuImageManager {
 	 * @param	Integer		$sourceHeight
 	 * @param	Integer		$newWidth
 	 * @param	Integer		$newHeight
-	 * @param	Bool		$upscale			Upscale image if source is smaller than destination
+	 * @param	Boolean		$upscale			Upscale image if source is smaller than destination
 	 * @return	Array		[width,height]
 	 */
 	public static function getDimensions($sourceWidth, $sourceHeight, $newWidth, $newHeight, $upscale = false) {

@@ -188,7 +188,7 @@ class TodoyuArray {
 	 *
 	 * @param	Array	$array
 	 * @param	Array	$reformConfig
-	 * @param	Bool	$copyAllData
+	 * @param	Boolean	$copyAllData
 	 * @param	String	$indexFieldName
 	 * @return	Array
 	 */

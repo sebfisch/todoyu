@@ -642,7 +642,7 @@ class TodoyuFileManager {
 	 *
 	 * @param	String	$url
 	 * @param	Array	$options
-	 * @return	Array|bool|mixed$
+	 * @return	Array|Boolean|mixed$
 	 */
 	private static function downloadFile_CURL($url, array $options = array()) {
 		$ch	= curl_init();
@@ -690,7 +690,7 @@ class TodoyuFileManager {
 	 *
 	 * @param	String	$url
 	 * @param	Array	$options
-	 * @return	Array|bool|string
+	 * @return	Array|Boolean|String
 	 */
 	private static function downloadFile_SOCKET($url, array $options = array()) {
 		$parsedURL	= parse_url($url);

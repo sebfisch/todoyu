@@ -275,7 +275,7 @@ abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstr
 	 * Save the file to the server
 	 *
 	 * @param	String		$pathFile
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function saveFile($pathFile) {
 		$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);

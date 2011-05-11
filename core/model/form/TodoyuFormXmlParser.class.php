@@ -224,7 +224,7 @@ class TodoyuFormXmlParser {
 	 * Check if a field has requirements
 	 *
 	 * @param	Array		$config			Field config
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	private static function isAllowed(array $config) {
 		if( array_key_exists('restrictAdmin', $config) ) {

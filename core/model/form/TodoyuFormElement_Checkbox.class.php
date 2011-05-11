@@ -87,7 +87,7 @@ class TodoyuFormElement_Checkbox extends TodoyuFormElement {
 	/**
 	 * Check if checkbox is checked
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function isChecked() {
 		return $this->getValue() == 1;

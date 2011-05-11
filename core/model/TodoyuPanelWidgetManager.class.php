@@ -157,7 +157,7 @@ class TodoyuPanelWidgetManager {
 	 * Save collapsed status
 	 *
 	 * @param	String		$widget
-	 * @param	Bool		$expaded
+	 * @param	Boolean		$expanded
 	 */
 	public static function saveCollapsedStatus($widget, $expanded = true) {
 		$preference	= 'pwidget-collapsed-' . strtolower($widget);

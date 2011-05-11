@@ -83,7 +83,7 @@ class TodoyuClipboard {
 	 * Check if type has data (something of this type is on the clipboard)
 	 *
 	 * @param	String		$type
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function has($type) {
 		$type	= strtoupper(trim($type));

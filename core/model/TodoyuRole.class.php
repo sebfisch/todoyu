@@ -73,7 +73,7 @@ class TodoyuRole extends TodoyuBaseObject {
 	/**
 	 * Check if group has any users
 	 *
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public function hasPersons() {
 		return sizeof($this->getNumPersons()) > 0;

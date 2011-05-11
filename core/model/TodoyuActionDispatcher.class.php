@@ -192,7 +192,7 @@ class TodoyuActionDispatcher {
 	 *
 	 * @param	String		$ext
 	 * @param	String		$controller
-	 * @return	Bool
+	 * @return	Boolean
 	 */
 	public static function isController($ext, $controller) {
 		$controllerClassName = self::getControllerClassName($ext, $controller);

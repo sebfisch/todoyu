@@ -235,8 +235,8 @@ class TodoyuMail extends PHPMailerLite {
 	/**
 	 * Set sender of the email
 	 *
-	 * @param  $idPerson
-	 * @return bool
+	 * @param  Integer		$idPerson
+	 * @return Boolean
 	 */
 	public function setSender($idPerson) {
 		$idPerson	= intval($idPerson);
