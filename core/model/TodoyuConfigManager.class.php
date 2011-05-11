@@ -75,6 +75,12 @@ class TodoyuConfigManager {
 		$savePath	= 'config/settings.php';
 		$template	= 'core/view/template/settings.php.tmpl';
 
+			// No minimum password length set? set default to 5 chars
+		if( ! array_key_exists('minLength', $data['passwordStrength']) ) {
+			$data['passwordStrength']['minLength'] = 5;
+		}
+
+			// Convert value declarations to PHP code
 		foreach($data as $groupName => $groupConfig) {
 			$prepared[$groupName] = array();
 
