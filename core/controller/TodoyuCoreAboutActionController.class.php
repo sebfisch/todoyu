@@ -97,13 +97,6 @@ class TodoyuCoreAboutActionController extends TodoyuActionController {
 					'license'	=> 'Creative Commons Attributiuon-NonCommercial 3.0 License',
 					'licenseUrl'=> 'http://creativecommons.org/licenses/by-nc/3.0/'
 				),
-				'iCalcreator'	=> array(
-					'title'		=> 'iCalcreator',
-					'url'		=> 'http://www.kigkonsult.se/iCalcreator/',
-					'copyright'	=> '2007-2011 Kjell-Inge Gustafsson, kigkonsult',
-					'license'	=> 'GNU LGPL',
-					'licenseUrl'=> 'http://www.gnu.org/licenses/lgpl.html'
-				),
 				'jsCalendar'	=> array(
 					'title'		=> 'jsCalendar',
 					'url'		=> 'http://dynarch.com/mishoo/',
