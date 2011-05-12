@@ -2,15 +2,6 @@
 	<option value="0">{Label core.form.select.pleaseSelect}</option>
 	<option value="0" disabled="disabled">---------------------------</option>
 {/if}
-{$anySelected = false}
 {foreach $options option}
-	{if $anySelected == false}
-		{if in_array($option.value, $value)}
-			{$isSelected =  true}
-			{$anySelected = true}
-		{else}
-			{$isSelected = false}
-		{/if}
-	{/if}
-	<option value="{htmlencode $option.value}" class="{$option.class} {cycle values="odd,even"}" {if $isSelected} selected="selected"{/if}{if $option.disabled} disabled="disabled"{/if}>{htmlencode(Label($option.label))}</option>
+	<option value="{htmlencode $option.value}" class="{$option.class} {cycle values="odd,even"}" {if in_array($option.value, $value)} selected="selected"{/if}{if $option.disabled} disabled="disabled"{/if}>{htmlencode(Label($option.label))}</option>
 {/foreach}
