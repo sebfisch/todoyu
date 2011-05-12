@@ -43,6 +43,12 @@ TodoyuRequest::initRequest();
 	// Load all init.php files of the installed extensions
 TodoyuExtensions::loadAllInit();
 
+	// Process sharing token if any
+if( TodoyuTokenManager::hasRequestToken() ) {
+	$hash	= TodoyuTokenManager::geTokenHashValueFromRequest();
+	die(TodoyuTokenCallbackManager::getCallbackResultByHash($hash));
+}
+
 	// Dispatch request to selected controller
 TodoyuActionDispatcher::dispatch();
 
