@@ -31,7 +31,7 @@ class TodoyuErrorHandler {
 	 *
 	 * @var	Boolean
 	 */
-	private static $ignoreErros = array(E_NOTICE, E_STRICT);
+	private static $ignoreErros = array(E_NOTICE, E_STRICT, E_DEPRECATED);
 
 
 	/**
