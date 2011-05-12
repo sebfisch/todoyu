@@ -918,6 +918,19 @@ class TodoyuString {
 		return str_replace(array("\n", "\t", "\r"), '', trim($string));
 	}
 
+
+
+	/**
+	 * htmlentities with predefined config for todoyu
+	 *
+	 * @param	String		$string
+	 * @return	String
+	 */
+	public static function htmlentities($string) {
+		return htmlentities($string, ENT_QUOTES, 'UTF-8', false);
+	}
+
 }
+
 
 ?>
