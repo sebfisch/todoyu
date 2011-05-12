@@ -1,6 +1,15 @@
 todoyu core changelog
 
-core 2.1.0 - not released yet
+core 2.1.0 - beta release
+	* Feature: Added auto-growing behavior textareas and RTE areas
+	* Feature: Added todoyuToken, todoyuTokenManager for public data access interfacing
+	* Changed: Every PHP class has extension prefix
+	* Changed: Updated database config files with default values
+	* Changed: Implemented headlets (JS) as classes, general headlet cleanup
+	* Feature: Cleaned up popup handling, Todoyu.Popup is a class now, support for multiple popups
+	* Changed: Renamed "assets" folder to "asset" (all folders now singular)
+	* Feature: Improved logger
+	* Changed: Moved global functions to Todoyu namespace
 	* Bugfix: Made allowed tags of RTE more precise to disallow styles that are not supported via RTE options (inserted via paste)
 	* Feature: Added dwoo plugin "formatSqlDate" to format SQL datetime string as date in current locale format
 	* Bugfix: Fixed filemanager file existence check before deletion
@@ -31,7 +40,7 @@ core 2.1.0 - not released yet
 	* Changed: Removed TodoyuPanelWidgetIf
 	* Changed: TodoyuPanelWidget::renderContent() only renders the content, parent class handles full render process
 
-core 2.0.8 - not released yet
+core 2.0.8 - beta
 	* Bugfix: Added forgotten button label to "add person" button of role form
 	* Bugfix: Deleted persons were shown in persons list of role
 	* Feature: Added dwoo plugin: addslashes, escaped installer-written strings inside config file
