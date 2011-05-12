@@ -115,7 +115,7 @@ abstract class TodoyuActionController {
 	 * @param	Array		$params
 	 */
 	protected function _unknownAction($action, array $params) {
-		die('Unknown action: ' . htmlentities($action, ENT_QUOTES, 'UTF-8'));
+		die('Unknown action: ' . htmlentities($action, ENT_QUOTES, 'UTF-8', false));
 	}
 
 

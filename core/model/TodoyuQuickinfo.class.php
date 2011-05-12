@@ -88,7 +88,7 @@ class TodoyuQuickinfo {
 	 */
 	public function addInfo($key, $label, $position = 100, $escape = true) {
 		if( $escape === true ) {
-			$label	= htmlentities($label, ENT_QUOTES, 'UTF-8');
+			$label	= htmlentities($label, ENT_QUOTES, 'UTF-8', false);
 		}
 		$label	= str_replace("\n", '<br />', $label);
 

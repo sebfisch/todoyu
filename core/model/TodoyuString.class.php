@@ -228,13 +228,13 @@ class TodoyuString {
 		$subLen		= $charsBefore + $keyLen + $charsAfter;
 
 		if( $htmlEntities ) {
-			$string	= html_entity_decode($string);
+			$string	= html_entity_decode($string, ENT_QUOTES, 'UTF-8');
 		}
 
 		$string = mb_substr($string, $start, $subLen);
 
 		if( $htmlEntities ) {
-			$string = htmlentities($string, ENT_QUOTES, 'UTF-8');
+			$string = htmlentities($string, ENT_QUOTES, 'UTF-8', false);
 		}
 
 		return trim($string);

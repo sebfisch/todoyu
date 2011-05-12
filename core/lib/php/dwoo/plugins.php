@@ -100,7 +100,7 @@ function Dwoo_Plugin_includeEscaped(Dwoo $dwoo, $file, $convertSpecialCharsOnly 
 
 	$content	= Dwoo_Plugin_include($dwoo, $file);
 
-	return $convertSpecialCharsOnly == true ? htmlspecialchars($content, ENT_QUOTES, 'UTF-8') : htmlentities($content, ENT_QUOTES, 'UTF-8');
+	return $convertSpecialCharsOnly == true ? htmlspecialchars($content, ENT_QUOTES, 'UTF-8', false) : htmlentities($content, ENT_QUOTES, 'UTF-8', false);
 }
 
 
@@ -142,7 +142,7 @@ function Dwoo_Plugin_inArray(Dwoo $dwoo, $value, $array) {
  * @return	String
  */
 function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string) {
-	return 'htmlentities(' . $string . ', ENT_QUOTES, \'UTF-8\')';
+	return 'htmlentities(' . $string . ', ENT_QUOTES, \'UTF-8\', false)';
 }
 
 
@@ -406,7 +406,7 @@ function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '') {
  * @return	String
  */
 function Dwoo_Plugin_Title_compile(Dwoo_Compiler $compiler, $title) {
-	return '\'<h5>\' . htmlentities(Todoyu::Label(' . $title . '), ENT_QUOTES, \'UTF-8\') . \'</h5>\'';
+	return '\'<h5>\' . htmlentities(Todoyu::Label(' . $title . '), ENT_QUOTES, \'UTF-8\', false) . \'</h5>\'';
 }
 
 
