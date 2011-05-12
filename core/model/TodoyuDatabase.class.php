@@ -1332,7 +1332,7 @@ class TodoyuDatabase {
 		ob_end_clean();
 
 		$title	= 'Cannot connect to the server "' . htmlentities($this->config['server'], ENT_QUOTES, 'UTF-8',false) . '"';
-		$message= $error . '<br/><br />Check server or change in config/db.php';
+		$message= $error . '<br /><br />Check server or change in config/db.php';
 
 		include('core/view/error.html');
 	}
