@@ -6,12 +6,23 @@
 		<option value="0">{Label core.form.select.pleaseSelect}</option>
 		<option value="0" disabled="disabled">---------------------------</option>
 	{/if}
+	{$anySelected = false}
 	{foreach $options label group}
 		{if $label != "none"}
 			<optgroup label="{$label}">
 		{/if}
 		{foreach $group option}
-			<option value="{htmlencode $option.value}" {if $option.classname != ""}class="{$option.classname}"{/if} {if in_array($option.value, $valueTemplate)} selected="selected"{/if} {if $option.disabled}disabled="disabled"{/if}>{$option.label}</option>
+			{if $anySelected == false}
+				{if in_array($option.value, $valueTemplate)}
+					{$isSelected =  true}
+					{$anySelected = true}
+				{else}
+					{$isSelected = false}
+				{/if}
+			{else}
+				{$isSelected = false}
+			{/if}
+			<option value="{htmlencode $option.value}" {if $option.classname != ""}class="{$option.classname}"{/if} {if $isSelected} selected="selected"{/if} {if $option.disabled}disabled="disabled"{/if}>{$option.label}</option>
 		{/foreach}
 		{if $label != "none"}
 			</optgroup>
