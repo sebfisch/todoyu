@@ -46,7 +46,7 @@ Todoyu.Form = {
 	onFormDisplay: function(formID) {
 		if( Todoyu.exists(formID) ) {
 			this.expandInvalidForeignRecords(formID);
-//			this.focusFirstFormField(formID);
+			this.focusFirstFormField(formID);
 		}
 	},
 
