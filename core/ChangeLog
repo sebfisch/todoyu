@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.1.0 - beta release
+	* Changed: UI: easier deselection of simple / grouped select options - only the first current value option is preselected in case there are multiple identic options
 	* Feature: Added auto-growing behavior textareas and RTE areas
 	* Feature: Added todoyuToken, todoyuTokenManager for public data access interfacing
 	* Changed: Every PHP class has extension prefix
