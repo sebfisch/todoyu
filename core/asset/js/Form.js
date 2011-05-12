@@ -377,6 +377,7 @@ Todoyu.Form = {
 	 *
 	 * @method	getIFrame
 	 * @param	{String}		key
+	 * @return	{Element}
 	 */
 	getIFrame: function(key) {
 		return $('upload-iframe-' + key);
@@ -540,14 +541,14 @@ Todoyu.Form = {
 		var amountLines		= Todoyu.Helper.countLines($F(idElement));
 
 			// Grow if necessary
-		if( elementHeight < (element.scrollHeight + 4) ) {
+		if( elementHeight < (element.scrollHeight + 2) ) {
 			element.style.overflow	= "hidden";
 
 			new Effect.Morph(idElement, {
 				style:			'height:' + (element.getHeight() + 18) + 'px',
 				duration:		0.1,
 				afterFinish:	function(event) {
-					if( event.element.getHeight() < (event.element.scrollHeight + 4) ) {
+					if( event.element.getHeight() < (event.element.scrollHeight + 2) ) {
 						Todoyu.Form.onKeyupInTextArea(event.element.id);
 					}
 					event.element.scrollTop	= event.element.scrollHeight;
