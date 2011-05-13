@@ -69,6 +69,7 @@ Todoyu::$CONFIG['INSTALLER']['steps'] = array(
 		'fileCheck'	=> array(
 			'files' => true,
 			'config' => true,
+			'log'	=> true,
 			'cache/tmpl/compile' => true,
 			'config/db.php' => true,
 			'config/extensions.php' => true,
