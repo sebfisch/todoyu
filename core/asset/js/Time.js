@@ -118,7 +118,7 @@ Todoyu.Time = {
 
 
 	/**
-	 * Get shifted time
+	 * Get result of given base timestamp shifted into future/past by given factor
 	 *
 	 * @method	getShiftedTime
 	 * @param	{Number}		baseTime		Unit timestamp
@@ -426,6 +426,69 @@ Todoyu.Time = {
 		}
 
 		return true;
+	},
+
+
+
+	/**
+	 * Get (javaScript) timestamp of start (00:00) of given day
+	 *
+	 * @method	getStartOfDay
+	 * @param	{Date}		day
+	 * @return	{Number}
+	 */
+	getStartOfDay: function(day) {
+		var y	= day.getFullYear();
+		var m	= day.getMonth();
+		var d	= day.getDate();
+
+		var dateStart	= new Date(y, m, d, 0, 0);
+
+		return dateStart.getTime();
+	},
+
+
+
+	/**
+	 * Get (javaScript) timestamp of end (23:59) of given day
+	 *
+	 * @method	getEndOfDay
+	 * @param	{Date}		day
+	 * @return	{Number}
+	 */
+	getEndOfDay: function(day) {
+		var y	= day.getFullYear();
+		var m	= day.getMonth();
+		var d	= day.getDate();
+
+		var dateStart	= new Date(y, m, d, 23, 59);
+
+		return dateStart.getTime();
+	},
+
+
+
+	/**
+	 * Get (timestamps at 00:00 of) days inside given timespan
+	 *
+	 * @method	getDayTimestampsInRange
+	 * @param	{Date}		dateStart
+	 * @param	{Date}		dateEnd
+	 * @return	{Array}
+	 */
+	getDayTimestampsInRange: function(dateStart, dateEnd) {
+		dateStart	= this.getStartOfDay(dateStart);
+		dateEnd		= this.getEndOfDay(dateEnd);
+
+		var timestamp	= dateStart;
+
+		var days		= new Array();
+		while( timestamp <= dateEnd ) {
+			days.push(timestamp);
+			timestamp	+= this.seconds.day * 1000;
+		}
+
+		return days;
 	}
 
 };
