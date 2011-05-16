@@ -53,9 +53,15 @@ form {
 			margin-left:5px;
 		}
 
+		.fForm fieldset#config-fieldset-save{
+			padding:10px 0;
+
+		}
+
 	legend,
 	.fForm fieldset fieldset legend,
-	.fForm .buttons legend {
+	.fForm .buttons legend,
+	.fForm legend#config-fieldset-save-legend{
 		display:none;
 	}
 	.fForm legend {
