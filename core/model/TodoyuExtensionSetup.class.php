@@ -37,13 +37,13 @@ class TodoyuExtensionSetup {
 	}
 
 
-	public static function afterOtherExtensionUninstall($extKey) {
+	public static function afterOtherExtensionUninstall($extKey, $otherExtKey) {
 
 
 	}
 
 
-	public static function afterOtherExtensionInstall($extKey) {
+	public static function afterOtherExtensionInstall($extKey, $otherExtKey) {
 
 
 	}
@@ -54,7 +54,7 @@ class TodoyuExtensionSetup {
 	}
 
 
-	public static function beforeDbUpdate($extKey, $previousVersion) {
+	public static function beforeDbUpdate($extKey, $previousVersion, $currentVersion) {
 		self::processDbUpdateFiles($extKey, $previousVersion);
 	}
 
@@ -72,7 +72,7 @@ class TodoyuExtensionSetup {
 
 
 
-	public static function afterUpdate($extKey, $previousVersion) {
+	public static function afterUpdate($extKey, $previousVersion, $currentVersion) {
 
 	}
 
