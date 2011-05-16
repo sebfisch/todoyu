@@ -155,6 +155,24 @@ class TodoyuExtensions {
 
 
 	/**
+	 * Get extension version
+	 *
+	 * @param	String		$extKey
+	 * @return	String|Boolean
+	 */
+	public static function getExtVersion($extKey) {
+		$info	= self::getExtInfo($extKey);
+
+		if( $info !== false ) {
+			return $info['version'];
+		} else {
+			return '0.0.0';
+		}
+	}
+
+
+
+	/**
 	 * Get list of all extensions info
 	 *
 	 * @return	Array

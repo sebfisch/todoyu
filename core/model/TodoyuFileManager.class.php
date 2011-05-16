@@ -556,11 +556,12 @@ class TodoyuFileManager {
 		$pathFolder	= self::pathAbsolute($pathFolder);
 		$elements	= self::getFolderContents($pathFolder, $showHidden);
 		$files		= array();
+		$hasFilters	= sizeof($filters) > 0;
 
 		foreach($elements as $element) {
 			if( is_file($pathFolder . DIR_SEP . $element) ) {
 					// No filters defined: add file to results array
-				if( sizeof($filters) === 0) {
+				if( ! $hasFilters ) {
 					$files[] = $element;
 				} else {
 						// Check string filters
@@ -856,6 +857,54 @@ class TodoyuFileManager {
 		foreach($removeFolders as $folder) {
 			rmdir($folder);
 		}
+	}
+
+
+
+	/**
+	 * Get list of version files from a directory. Limit by min and max version and extension
+	 *
+	 * @param	String			$pathToFolder
+	 * @param	String|Boolean	$extension
+	 * @param	String			$minVersion			Min version will not be included
+	 * @param	String			$maxVersion			Max version will not be included
+	 * @return	Array
+	 */
+	public static function getVersionFiles($pathToFolder, $extension = false, $minVersion = '0.0.0', $maxVersion = '999.999.999') {
+		$pathToFolder	= TodoyuFileManager::pathAbsolute($pathToFolder);
+		$files			= TodoyuFileManager::getFilesInFolder($pathToFolder);
+		$updateFiles	= array();
+		$version2File	= array();
+
+			// Map version numbers to real file names (without extension)
+		foreach($files as $filename) {
+			$version2File[pathinfo($filename, PATHINFO_FILENAME)] = $filename;
+		}
+
+			// Get list of versions
+		$versions		= array_keys($version2File);
+
+			// Sort the versions
+		usort($versions, 'version_compare');
+
+			// Check all files if they are necessary for the update
+		foreach($versions as $version) {
+			$filename	= $version2File[$version];
+			$info		= pathinfo($filename);
+
+				// Only use file with the requested extension
+			if( $extension !== false && $info['extension'] !== $extension ) {
+				continue;
+			}
+
+				// Get all version which are higher than the db version
+			if( version_compare($version, $minVersion) === 1 && version_compare($version, $maxVersion) === -1 ) {
+					// Add version file to list
+				$updateFiles[] = $version2File[$version];
+			}
+		}
+
+		return $updateFiles;
 	}
 
 }

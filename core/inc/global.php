@@ -20,6 +20,8 @@
 
 	// Set session cookie HTTP only
 @ini_set('session.cookie_httponly', 1);
+	// Force long session data lifetime (5 hours)
+@ini_set('session.gc_maxlifetime', 3600*5);
 	// Ignore errors of type notice
 error_reporting(E_ALL ^ E_NOTICE);
 	// Set character encoding to utf-8
