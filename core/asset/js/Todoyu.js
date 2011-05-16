@@ -449,7 +449,7 @@ var Todoyu = {
 	 * @param	{Function}	callback
 	 */
 	observeZoom: function(callback) {
-			// Observe mousewheel
+			// Observe mouse wheel
 		document.observe('mousewheel', function(e){
 			if(e.ctrlKey) {
 				callback();

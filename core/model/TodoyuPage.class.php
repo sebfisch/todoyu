@@ -59,6 +59,7 @@ class TodoyuPage {
 		self::addExtAssets();
 
 		self::addMetatag('Content-Type', Todoyu::$CONFIG['FE']['ContentType']);
+		self::addMetatag('robots', 'noindex,nofollow');
 
 		self::addJsOnloadedFunction('Todoyu.init.bind(Todoyu)', 1);
 	}

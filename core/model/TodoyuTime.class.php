@@ -49,7 +49,7 @@ class TodoyuTime {
 
 
 	/**
-	 * Get timestamp of start of day
+	 * Get timestamp of start (00:00:00) of day
 	 *
 	 * @param	Integer		$timestamp
 	 * @return	Integer
@@ -63,7 +63,7 @@ class TodoyuTime {
 
 
 	/**
-	 * Make timestamp for end of day
+	 * Make timestamp for end (23:59:59) of day
 	 *
 	 * @param	Integer		$timestamp
 	 * @return	Integer
