@@ -39,7 +39,7 @@ Instructions to install todoyu
 	Upload the files to the root of your webspace or to a custom sub directory.
 
 	3. Create a MySql database and a respective user with sufficient database privileges
-	(such as the ability to create tables). Take note of the username, password, database name
+	(such as the ability to create tables). Take note of the user name, password, database name
 	and hostname as you create the database. You will enter this information during the installation.
 
 	4. File permissions

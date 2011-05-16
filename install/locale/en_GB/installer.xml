@@ -25,12 +25,12 @@
 	<label index="dbconnection.title">Setup Database Connection</label>
 	<label index="dbconnection.button">Save Database Configuration</label>
 	<label index="dbconnection.server">Server</label>
-	<label index="dbconnection.username">Username</label>
+	<label index="dbconnection.username">User Name</label>
 	<label index="dbconnection.password">Password</label>
 	<label index="dbconnection.text">Enter your database connection data</label>
 	<label index="dbselect.title">Select Database</label>
 	<label index="dbselect.button">Save Database Setup</label>
-	<label index="dbselect.text">Select an existing database or create a new dababase for todoyu</label>
+	<label index="dbselect.text">Select an existing database or create a new database for todoyu</label>
 	<label index="dbselect.text.saved">Database Connection Saved</label>
 	<label index="dbselect.text.notCreated">Unable to create a new database on the server</label>
 	<label index="dbselect.text.dbNameExists">A database with this name already exists</label>
@@ -60,7 +60,7 @@
 	<label index="adminaccount.companyname">Company Name</label>
 	<label index="adminaccount.adminfirstname">First Name</label>
 	<label index="adminaccount.adminlastname">Last Name</label>
-	<label index="adminaccount.username">Username</label>
+	<label index="adminaccount.username">User Name</label>
 	<label index="adminaccount.password">Password</label>
 	<label index="adminaccount.repeatPassword">Repeat Password</label>
 	<label index="adminaccount.passwordHint">at least 5 characters</label>
