@@ -57,7 +57,11 @@ class TodoyuTime {
 	public static function getStartOfDay($timestamp = false) {
 		$timestamp = $timestamp === false ? NOW : intval($timestamp);
 
-		return mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp), date('Y', $timestamp));
+		$month	= date('n', $timestamp);
+		$day	= date('j', $timestamp);
+		$year	= date('Y', $timestamp);
+
+		return mktime(0, 0, 0, $month, $day, $year);
 	}
 
 
@@ -71,7 +75,29 @@ class TodoyuTime {
 	public static function getEndOfDay($timestamp = false) {
 		$timestamp = $timestamp === false ? NOW : intval($timestamp);
 
-		return mktime(23, 59, 59, date('n', $timestamp), date('j', $timestamp), date('Y', $timestamp));
+		$month	= date('n', $timestamp);
+		$day	= date('j', $timestamp);
+		$year	= date('Y', $timestamp);
+
+		return mktime(23, 59, 59, $month, $day, $year);
+	}
+
+
+
+	/**
+	 * Make timestamp for given date's time (at 1.1.1970)
+	 *
+	 * @param	Integer		$timestamp
+	 * @return	Integer
+	 */
+	public static function getTimeOfDay($timestamp = false) {
+		$timestamp = $timestamp === false ? NOW : intval($timestamp);
+
+		$hour	= date('G', $timestamp);
+		$minute	= date('i', $timestamp) + 0;
+		$second	= date('s', $timestamp) + 0;
+
+		return $hour * self::SECONDS_HOUR + $minute * self::SECONDS_MIN + $second;
 	}
 
 
