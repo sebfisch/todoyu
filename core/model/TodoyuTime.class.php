@@ -359,12 +359,43 @@ class TodoyuTime {
 			$unit	= 'time.second';
 		}
 
+		if( is_float($value) ) {
+			$value	= round($value, 2);
+		}
+
 		if( $value != 1 ) {
 				// Plural?
 			$unit .= 's';
 		}
 
 		return $value . ' ' . Todoyu::Label('core.date.' . $unit);
+	}
+
+
+
+	/**
+	 * Have given timespan formatted in most suiting format
+	 *
+	 * @param	Integer		$dateStart
+	 * @param	Integer		$dateEnd
+	 * @return	String
+	 */
+	public static function formatTimespan($dateStart, $dateEnd, $withDuration = false) {
+			// Start and end at same day
+		if( self::getStartOfDay($dateStart) == self::getStartOfDay($dateEnd) ) {
+			$formatted	= self::format($dateStart, 'datetime') . ' - ' . self::format($dateEnd, 'time');
+		} else {
+				// Different days
+			$formatted	= self::format($dateStart, 'datetime') . ' - ' . self::format($dateEnd, 'datetime');
+		}
+
+			// Add duration
+		if( $withDuration ) {
+			$duration	= $dateEnd - $dateStart;
+			$formatted .= ' (' .self::formatDuration($duration) . ')';
+		}
+
+		return $formatted;
 	}
 
 
