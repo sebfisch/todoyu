@@ -24,11 +24,11 @@
 	// ****************************************************************************
 
 Todoyu::$CONFIG['SETTINGS']['passwordStrength'] = array(
-	'minLength'		=> 5,
+	'minLength'	=> 12,
 	'hasNumbers'	=> true,
 	'hasLowerCase'	=> true,
 	'hasUpperCase'	=> true,
-	'hasSpecialChars'	=> false
+	'hasSpecialChars'	=> true
 );
 
 
