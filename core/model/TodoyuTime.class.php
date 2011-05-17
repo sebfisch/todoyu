@@ -360,10 +360,11 @@ class TodoyuTime {
 	 * Get given duration formatted in most suiting format
 	 *
 	 * @param	Integer		$seconds
+	 * @param	Boolean		$largerUnitsThanDays	Don't format in larger unit than days?
 	 * @return	String
 	 */
-	public static function formatDuration($seconds) {
-		if( $seconds >= TodoyuTime::SECONDS_WEEK ) {
+	public static function formatDuration($seconds, $largerUnitsThanDays = false) {
+		if( $largerUnitsThanDays && $seconds >= TodoyuTime::SECONDS_WEEK ) {
 				// Weeks
 			$value	= $seconds / TodoyuTime::SECONDS_WEEK;
 			$unit	= 'week';
