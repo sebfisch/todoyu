@@ -643,7 +643,7 @@ class TodoyuArray {
 
 
 	/**
-	 * Merge two array. Works also if one of the parameters is not an array (it's ignored)
+	 * Merge two arrays. Works also if one of the parameters is not an array (it's ignored)
 	 *
 	 * @param	Mixed	$arrayA
 	 * @param	Mixed	$arrayB
