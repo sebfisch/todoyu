@@ -410,10 +410,10 @@ class TodoyuTime {
 	public static function formatTimespan($dateStart, $dateEnd, $withDuration = false) {
 			// Start and end at same day
 		if( self::getStartOfDay($dateStart) === self::getStartOfDay($dateEnd) ) {
-			$formatted	= self::format($dateStart, 'date') . ', ' . self::format($dateStart, 'time') . ' - ' . self::format($dateEnd, 'time');
+			$formatted	= self::format($dateStart, 'DshortD2MlongY4') . ', ' . self::format($dateStart, 'time') . ' - ' . self::format($dateEnd, 'time');
 		} else {
 				// Different days
-			$formatted	= self::format($dateStart, 'datetime') . ' - ' . self::format($dateEnd, 'datetime');
+			$formatted	= self::format($dateStart, 'DshortD2MlongY4') . ' - ' . self::format($dateEnd, 'DshortD2MlongY4');
 		}
 
 			// Add duration
