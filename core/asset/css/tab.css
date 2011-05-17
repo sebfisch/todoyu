@@ -7,6 +7,13 @@
 	top:-35px;
 	width:663px;
 }
+	#content-tabs li p.label span.labeltext {
+	  color:#444;
+	}
+	#content-tabs li.active p.label span.labeltext,
+	#content-tabs li p.label:hover span.labeltext {
+	  color:#000;
+	}
 
 #content .tabs {
 	z-index:2;
