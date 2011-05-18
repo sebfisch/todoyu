@@ -128,6 +128,17 @@ abstract class TodoyuExtensionSetup {
 
 	}
 
+
+	public static function beforeMajorUpdate($extKey, $previousVersion, $currentVersion) {
+
+	}
+
+
+	public static function afterMajorUpdate($extKey, $previousVersion, $currentVersion) {
+
+	}
+
+
 }
 
 ?>
