@@ -96,8 +96,8 @@ class TodoyuFileManager {
 		$success	= true;
 
 			// Delete folders with contents
-		foreach($folders as $foldername) {
-			$pathFolder	= $folderPath . DIR_SEP . $foldername;
+		foreach($folders as $folderName) {
+			$pathFolder	= $folderPath . DIR_SEP . $folderName;
 
 			if( is_dir($pathFolder) ) {
 				$successContents = self::deleteFolderContents($pathFolder, $deleteHidden);
@@ -866,8 +866,8 @@ class TodoyuFileManager {
 	 *
 	 * @param	String			$pathToFolder
 	 * @param	String|Boolean	$extension
-	 * @param	String			$minVersion			Min version will not be included
-	 * @param	String			$maxVersion			Max version will not be included
+	 * @param	String			$minVersion			Min version will NOT be included
+	 * @param	String			$maxVersion			Max version will be included
 	 * @return	Array
 	 */
 	public static function getVersionFiles($pathToFolder, $extension = false, $minVersion = '0.0.0', $maxVersion = '999.999.999') {
@@ -897,8 +897,8 @@ class TodoyuFileManager {
 				continue;
 			}
 
-				// Get all version which are higher than the db version
-			if( version_compare($version, $minVersion) === 1 && version_compare($version, $maxVersion) === -1 ) {
+				// Get all version which are in the required version range
+			if( version_compare($version, $minVersion) === 1 && version_compare($version, $maxVersion) !== 1 ) {
 					// Add version file to list
 				$updateFiles[] = $version2File[$version];
 			}

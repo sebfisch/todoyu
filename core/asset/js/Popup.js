@@ -67,7 +67,8 @@ Todoyu.Popup = Class.create(Window, {
 		$super(options);
 
 		if( this.options.contentUrl ) {
-			this.setAjaxContent(this.options.contentUrl, this.options.requestOptions||{}, false, false);
+			this.addOnCompleteWrap();
+			this.setAjaxContent(this.options.contentUrl, this.options.requestOptions, false, false);
 		} else if( this.options.content ) {
 			this.setHTMLContent(this.options.content, true);
 		} else if( this.options.element ) {
@@ -76,6 +77,32 @@ Todoyu.Popup = Class.create(Window, {
 
 		Todoyu.Popups.setPopup(this.options.id, this);
 		this.installObserver();
+	},
+
+
+
+	/**
+	 * Add internal onComplete wrapper to give popup instance as second parameter
+	 */
+	addOnCompleteWrap: function() {
+			// Assert that request options exists
+		this.options.requestOptions				= this.options.requestOptions || {};
+			// Assert that onComplete exists
+		this.options.requestOptions.onComplete	= this.options.requestOptions.onComplete || Prototype.emptyFunction;
+			// Wrap onComplete with internal onComplete
+		this.options.requestOptions.onComplete	= this.options.requestOptions.onComplete.wrap(this.onComplete.bind(this));
+	},
+
+
+
+	/**
+	 * Internal onComplete handler
+	 *
+	 * @param	{Function}		originalOnComplete
+	 * @param	{Ajax.Response}	response
+	 */
+	onComplete: function(originalOnComplete, response) {
+		originalOnComplete(response, this);
 	},
 
 

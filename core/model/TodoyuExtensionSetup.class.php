@@ -19,17 +19,23 @@
 *****************************************************************************/
 
 /**
- * [Enter Class Description]
+ * Extension update callback base class
  *
  * @package		Todoyu
- * @subpackage	[Subpackage]
+ * @subpackage	Core
  */
-class TodoyuExtensionSetup {
+abstract class TodoyuExtensionSetup {
 
-
-	protected static function processDbUpdateFiles($extKey, $previousVersion) {
+	/**
+	 * Execute database updates from update files in extension
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$previousVersion
+	 * @param	String		$currentVersion
+	 */
+	protected static function runDbUpdateFiles($extKey, $previousVersion, $currentVersion) {
 		$path	= TodoyuExtensions::getExtPath($extKey, 'config/db/update');
-		$files	= TodoyuFileManager::getVersionFiles($path, 'sql', $previousVersion);
+		$files	= TodoyuFileManager::getVersionFiles($path, 'sql', $previousVersion, $currentVersion);
 
 		foreach($files as $file) {
 			TodoyuSQLManager::executeQueriesFromFile($path . '/' . $file);
@@ -37,45 +43,90 @@ class TodoyuExtensionSetup {
 	}
 
 
+
+	/**
+	 * Callback: Other extension has been uninstalled
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$otherExtKey
+	 */
 	public static function afterOtherExtensionUninstall($extKey, $otherExtKey) {
 
 
 	}
 
 
+
+	/**
+	 * Callback: Other extension has been installed
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$otherExtKey
+	 */
 	public static function afterOtherExtensionInstall($extKey, $otherExtKey) {
 
 
 	}
 
 
-	public static function beforeDbInstall($extKey) {
 
-	}
-
-
+	/**
+	 * Callback: Before database is updated with changes from table.sql
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$previousVersion
+	 * @param	String		$currentVersion
+	 */
 	public static function beforeDbUpdate($extKey, $previousVersion, $currentVersion) {
-		self::processDbUpdateFiles($extKey, $previousVersion);
+		self::runDbUpdateFiles($extKey, $previousVersion, $currentVersion);
 	}
 
-	public static function beforeUpdate($extKey, $previousVersion) {
+
+
+	/**
+	 * Callback: Before extension update
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$currentVersion
+	 */
+	public static function beforeUpdate($extKey, $currentVersion) {
 
 	}
 
+
+
+	/**
+	 * Callback: After extension installation
+	 *
+	 * @param	String		$extKey
+	 */
 	public static function afterInstall($extKey) {
 
 	}
 
+
+
+	/**
+	 * Callback: Before extension un-installation
+	 *
+	 * @param	String		$extKey
+	 */
 	public static function beforeUninstall($extKey) {
 
 	}
 
 
 
+	/**
+	 * Callback: After extension update
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$previousVersion
+	 * @param	String		$currentVersion
+	 */
 	public static function afterUpdate($extKey, $previousVersion, $currentVersion) {
 
 	}
-
 
 }
 

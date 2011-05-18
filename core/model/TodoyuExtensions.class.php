@@ -47,7 +47,7 @@ class TodoyuExtensions {
 		$extFolders		= TodoyuFileManager::getFoldersInFolder(PATH_EXT);
 		$extInstalled	= TodoyuExtensions::getInstalledExtKeys();
 
-		return array_diff($extFolders, $extInstalled);
+		return array_values(array_diff($extFolders, $extInstalled));
 	}
 
 
@@ -161,12 +161,31 @@ class TodoyuExtensions {
 	 * @return	String|Boolean
 	 */
 	public static function getExtVersion($extKey) {
-		$info	= self::getExtInfo($extKey);
+		$version	= false;
 
-		if( $info !== false ) {
-			return $info['version'];
+		if( self::isInstalled($extKey) ) {
+			$info	= self::getExtInfo($extKey);
+
+			if( $info !== false ) {
+				$version = $info['version'];
+			}
 		} else {
-			return '0.0.0';
+			$version	= self::getVersionOfImportedExtension($extKey);
+		}
+
+		return $version;
+	}
+
+
+	private static function getVersionOfImportedExtension($extKey) {
+		$path	= self::getExtPath($extKey, 'config/extinfo.php');
+
+		if( is_file($path) ) {
+			include($path);
+
+			return Todoyu::$CONFIG['EXT'][$extKey]['info']['version'];
+		} else {
+			return false;
 		}
 	}
 

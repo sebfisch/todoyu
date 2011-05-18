@@ -144,6 +144,7 @@ class TodoyuLogger {
 	 */
 	private function getLoggerInstances() {
 		if( is_null($this->loggerInstances) ) {
+			$this->loggerInstances = array();
 			foreach($this->loggerNames as $logger) {
 				$className	= $logger['class'];
 				$this->loggerInstances[] = new $className($logger['config']);

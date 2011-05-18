@@ -29,6 +29,8 @@ button {
 
 button[disabled] {
 	opacity:0.6;
+	cursor:no-drop;
+	cursor:not-allowed;
 }
 
 button span {
