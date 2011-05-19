@@ -422,12 +422,12 @@ INSERT INTO `ext_project_task` (`id`, `date_create`, `date_update`, `id_person_c
 -- Data for Table `ext_project_role`
 --
 
-INSERT INTO `ext_project_role` (`id`, `date_create`, `id_person_create`, `date_update`, `rolekey`, `title`, `deleted`) VALUES
-(1, 0, 0, 1264696219, 'projectleader', 'Project Manager', 0),
-(2, 0, 0, 1264696225, 'developer', 'Developer', 0),
-(3, 0, 0, 0, 'designer', 'Designer', 0),
-(4, 0, 0, 1264696237, 'external_projectleader', 'External Project Manager', 0),
-(5, 0, 0, 1264696246, 'customer_contact', 'Customer', 0);
+INSERT INTO `ext_project_role` (`id`, `date_create`, `id_person_create`, `date_update`, `title`, `deleted`) VALUES
+(1, 0, 0, 1264696219, 'Project Manager', 0),
+(2, 0, 0, 1264696225, 'Developer', 0),
+(3, 0, 0, 0, 'Designer', 0),
+(4, 0, 0, 1264696237, 'External Project Manager', 0),
+(5, 0, 0, 1264696246, 'Customer', 0);
 
 -- --------------------------------------------------------
 
