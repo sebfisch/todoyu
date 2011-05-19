@@ -233,7 +233,7 @@ abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstr
 		$this->renderXML();
 
 			// Write parsed xml content into extracted document
-		file_put_contents($this->getXmlPath(), $this->xmlParsed);
+		TodoyuFileManager::saveFileContent($this->getXmlPath(), $this->xmlParsed);
 
 			// Open temp template file
 		$zip	= new PclZip($this->getTempFilePath());

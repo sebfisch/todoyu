@@ -264,8 +264,7 @@ class TodoyuPageAssetManager {
 				$mergeCode .= $fileCode;
 			}
 
-			TodoyuFileManager::makeDirDeep( dirname($mergeFilePath) );
-			file_put_contents($mergeFilePath, $mergeCode);
+			TodoyuFileManager::saveFileContent($mergeFilePath, $mergeCode);
 		}
 
 		return TodoyuFileManager::pathWeb($mergeFilePath);
@@ -307,8 +306,7 @@ class TodoyuPageAssetManager {
 					}
 
 						// Save content in this file
-					TodoyuFileManager::makeDirDeep( dirname($filePath) );
-					file_put_contents($filePath, $fileCode);
+					TodoyuFileManager::saveFileContent($filePath, $fileCode);
 				}
 			} else {
 				$filePath	= $fileConfig['file'];
@@ -470,7 +468,7 @@ class TodoyuPageAssetManager {
 						// Rewrite external media paths (url())
 					$fileCode	= self::rewriteRelativePaths($fileCode, $fileConfig['file'], $filePath);
 						// Save content in this file
-					file_put_contents($filePath, $fileCode);
+					TodoyuFileManager::saveFileContent($filePath, $fileCode);
 				}
 			} else {
 					// No compression, get normal path
@@ -555,8 +553,7 @@ class TodoyuPageAssetManager {
 				}
 
 					// Write content into file
-				TodoyuFileManager::makeDirDeep( dirname($mergeFilePath) );
-				file_put_contents($mergeFilePath, $mergeCode);
+				TodoyuFileManager::saveFileContent($mergeFilePath, $mergeCode);
 			}
 
 			$files[] = array(

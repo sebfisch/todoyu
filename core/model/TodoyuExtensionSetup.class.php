@@ -129,15 +129,29 @@ abstract class TodoyuExtensionSetup {
 	}
 
 
+
+	/**
+	 * Callback: Before a major version update
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$previousVersion
+	 * @param	String		$currentVersion
+	 */
 	public static function beforeMajorUpdate($extKey, $previousVersion, $currentVersion) {
 
 	}
 
 
+
+	/**
+	 * Callback: After a major version update
+	 * @param	String		$extKey
+	 * @param	String		$previousVersion
+	 * @param	String		$currentVersion
+	 */
 	public static function afterMajorUpdate($extKey, $previousVersion, $currentVersion) {
 
 	}
-
 
 }
 

@@ -92,8 +92,7 @@ class TodoyuColors {
 		}
 
 			// Save CSS file
-		TodoyuFileManager::makeDirDeep(dirname($fileCSS));
-		file_put_contents($fileCSS, $css);
+		TodoyuFileManager::saveFileContent($fileCSS, $css);
 
 		$pathWeb	= TodoyuFileManager::pathWeb($fileCSS);
 

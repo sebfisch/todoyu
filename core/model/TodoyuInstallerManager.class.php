@@ -776,7 +776,7 @@ class TodoyuInstallerManager {
 				if( ! strstr($content, $newString) ) {
 					$content = str_replace($currentString, $newString, $content);
 
-					file_put_contents($file, $content);
+					TodoyuFileManager::saveFileContent($file, $content);
 
 					include($file);
 				}
@@ -900,9 +900,9 @@ class TodoyuInstallerManager {
 	 * Save current todoyu version as DB version in the LAST_VERSION file
 	 */
 	public static function saveCurrentVersion() {
-		$pathFile	= TodoyuFileManager::pathAbsolute('install/config/LAST_VERSION');
+		$pathFile	= 'install/config/LAST_VERSION';
 
-		file_put_contents($pathFile, TODOYU_VERSION);
+		TodoyuFileManager::saveFileContent($pathFile, TODOYU_VERSION);
 	}
 
 

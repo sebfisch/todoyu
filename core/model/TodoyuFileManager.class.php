@@ -292,7 +292,7 @@ class TodoyuFileManager {
 			$content= TodoyuString::wrap($content, '<?php|?>');
 		}
 
-		return file_put_contents($savePath, $content) !== false;
+		return TodoyuFileManager::saveFileContent($savePath, $content) !== false;
 	}
 
 
@@ -372,12 +372,13 @@ class TodoyuFileManager {
 	 *
 	 * @param	String		$pathFile
 	 * @param	String		$content
+	 * @return	Integer|Boolean
 	 */
 	public static function saveFileContent($pathFile, $content) {
 		$pathFile	= self::pathAbsolute($pathFile);
 		self::makeDirDeep(dirname($pathFile));
 
-		file_put_contents($pathFile, $content);
+		return file_put_contents($pathFile, $content);
 	}
 
 
@@ -798,9 +799,7 @@ class TodoyuFileManager {
 				$targetPath	= self::pathAbsolute($targetPath);
 			}
 
-			self::makeDirDeep(dirname($targetPath));
-
-			file_put_contents($targetPath, $content);
+			self::saveFileContent($targetPath, $content);
 
 			return $targetPath;
 		} else {

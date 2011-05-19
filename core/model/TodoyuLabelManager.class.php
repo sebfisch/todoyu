@@ -340,9 +340,7 @@ class TodoyuLabelManager {
 	private static function writeCachedLabelFile($pathFile, array $labels) {
 		$cacheData	= serialize($labels);
 
-		TodoyuFileManager::makeDirDeep(dirname($pathFile));
-
-		return file_put_contents($pathFile, $cacheData) !== false;
+		return TodoyuFileManager::saveFileContent($pathFile, $cacheData) !== false;
 	}
 
 
