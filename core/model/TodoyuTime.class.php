@@ -319,6 +319,11 @@ class TodoyuTime {
 		} else {
 			if( $round && $timeParts['seconds'] >= 30 ) {
 				$timeParts['minutes'] += 1;
+
+				if( $timeParts['minutes'] == 60 ) {
+					$timeParts['hours'] += 1;
+					$timeParts['minutes'] = 0;
+				}
 			}
 			$formatted	= sprintf('%02d:%02d', $timeParts['hours'], $timeParts['minutes']);
 		}
