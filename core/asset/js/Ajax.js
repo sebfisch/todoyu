@@ -70,7 +70,7 @@ Todoyu.Ajax = {
 				// Delete onComplete handler to prevent processing an empty response
 			response.request.options.backupOnComplete = response.request.options.onComplete;
 			delete response.request.options.onComplete;
-			Todoyu.notifyError('[LLL:core.global.notLoggedIn.errorMessage]', 0);
+			Todoyu.notifyError('[LLL:core.global.notLoggedIn.errorMessage]');
 			Todoyu.Hook.exec('core.notloggedin', response);
 		}
 	},
@@ -87,7 +87,7 @@ Todoyu.Ajax = {
 	checkPhpErrorHeader: function(response) {
 		if( response.hasPhpError() ) {
 			delete response.request.options.onComplete;
-			Todoyu.notifyError(response.getPhpError(), 0);
+			Todoyu.notifyError(response.getPhpError());
 			Todoyu.log(response.getPhpError());
 			Todoyu.Hook.exec('core.phperror', response);
 		}

@@ -49,11 +49,11 @@ Todoyu.Notification = {
 	INFO:		'info',
 
 	/**
-	 * Default countdown if non set
-	 * @property	defaultCountdown
+	 * Close delay
+	 * @property	closeDelay
 	 * @type		Number
 	 */
-	defaultCountdown: 3,
+	closeDelay: 3,
 
 	/**
 	 * Template object
@@ -77,28 +77,25 @@ Todoyu.Notification = {
 	 * @method	notify
 	 * @param	{String}		type
 	 * @param	{String}		message
-	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 * @param	{Boolean}		sticky			Don't hide note (error is by default sticky)
 	 */
-	notify: function(type, message, countdown) {
+	notify: function(type, message, sticky) {
 		this.loadTemplate();
 
-		countdown	= countdown === undefined ? this.defaultCountdown : Todoyu.Helper.intval(countdown);
 		var id		= this.id++;
 
 		var data	= {
 			'id':			id,
 			'type':			type,
-			'message':		message,
-			'countdown':	( countdown === 0 ) ? '' : countdown
+			'message':		message
 		};
 
 		var note	= this.template.evaluate(data);
 
 		this.appendNote(id, note);
 
-			// Only start countdown if not sticky
-		if( countdown !== 0 ) {
-			this.countDown.bind(this).delay(1, id);
+		if( type !== this.ERROR && ! sticky ) {
+			this.closeNote.bind(this, id).delay(this.closeDelay);
 		}
 	},
 
@@ -140,10 +137,10 @@ Todoyu.Notification = {
 	 *
 	 * @method	notifyInfo
 	 * @param	{String}		message
-	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 * @param	{Boolean}		sticky
 	 */
-	notifyInfo: function(message, countdown) {
-		this.notify(this.INFO, message, countdown);
+	notifyInfo: function(message, sticky) {
+		this.notify(this.INFO, message, sticky);
 	},
 
 
@@ -153,10 +150,9 @@ Todoyu.Notification = {
 	 *
 	 * @method	notifyError
 	 * @param	{String}		message
-	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
 	 */
-	notifyError: function(message, countdown) {
-		this.notify(this.ERROR, message, countdown);
+	notifyError: function(message) {
+		this.notify(this.ERROR, message, true);
 	},
 
 
@@ -166,10 +162,10 @@ Todoyu.Notification = {
 	 *
 	 * @method	notifySuccess
 	 * @param	{String}		message
-	 * @param	{Number}		countdown		Seconds for automatic closing. 0 = sticky (no close)
+	 * @param	{Boolean}		sticky
 	 */
-	notifySuccess: function(message, countdown) {
-		this.notify(this.SUCCESS, message, countdown);
+	notifySuccess: function(message, sticky) {
+		this.notify(this.SUCCESS, message, sticky);
 	},
 
 

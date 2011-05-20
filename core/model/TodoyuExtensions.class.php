@@ -161,31 +161,12 @@ class TodoyuExtensions {
 	 * @return	String|Boolean
 	 */
 	public static function getExtVersion($extKey) {
-		$version	= false;
+		$info	= self::getExtInfo($extKey);
 
-		if( self::isInstalled($extKey) ) {
-			$info	= self::getExtInfo($extKey);
-
-			if( $info !== false ) {
-				$version = $info['version'];
-			}
-		} else {
-			$version	= self::getVersionOfImportedExtension($extKey);
-		}
-
-		return $version;
-	}
-
-
-	private static function getVersionOfImportedExtension($extKey) {
-		$path	= self::getExtPath($extKey, 'config/extinfo.php');
-
-		if( is_file($path) ) {
-			include($path);
-
-			return Todoyu::$CONFIG['EXT'][$extKey]['info']['version'];
-		} else {
+		if( $info === false ) {
 			return false;
+		} else {
+			return $info['version'];
 		}
 	}
 
@@ -513,9 +494,9 @@ class TodoyuExtensions {
 	 * @return	Boolean
 	 */
 	public static function isSystemExtension($extKey) {
-		self::loadConfig($extKey, 'extinfo');
+		$extInfo	= self::getExtInfo($extKey);
 
-		return Todoyu::$CONFIG['EXT'][$extKey]['info']['constraints']['system'] === true;
+		return $extInfo['constraints']['system'] === true;
 	}
 
 
@@ -541,16 +522,16 @@ class TodoyuExtensions {
 	public static function getConflicts($extKeyToCheck) {
 		self::loadAllExtinfo();
 
-		$conflicts	= array();
-		$extKeys	= self::getInstalledExtKeys();
+		$ownExtInfo		= self::getExtInfo($extKeyToCheck);
+		$conflicts		= TodoyuArray::assure($ownExtInfo['constraints']['conflicts']);
+		$extKeys		= self::getInstalledExtKeys();
 
 		foreach($extKeys as $extKey) {
-			$conflictInfo	= Todoyu::$CONFIG['EXT'][$extKey]['info']['constraints']['conflict'];
+			$extInfo		= self::getExtInfo($extKey);
+			$extConflicts	= TodoyuArray::assure($extInfo['constraints']['conflicts']);
 
-			if( is_array($conflictInfo) ) {
-				if( array_key_exists($extKeyToCheck, $conflictInfo) ) {
-					$conflicts[] = $extKey;
-				}
+			if( in_array($extKeyToCheck, $extConflicts) ) {
+				$conflicts[] = $extKey;
 			}
 		}
 
