@@ -64,7 +64,7 @@
 	<label index="footer.devmanual.title">Manuel pour les développeurs</label>
 	<label index="paging.page">Page</label>
 	<label index="input.autocompleter">Saisie auto-complètée</label>
-	<label index="ajax.requestFailed">Connexion au serveur  impossible (connexion ou serveur en problème?)</label>
+	<label index="ajax.requestFailed">Connexion au serveur impossible (connexion ou serveur en problème?)</label>
 	<label index="roles">Rôles</label>
 	<label index="role">Rôle</label>
 	<label index="role.new">Nouveau Rôle</label>

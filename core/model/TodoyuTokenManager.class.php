@@ -121,7 +121,7 @@ class TodoyuTokenManager {
 		$hash	= md5($salt);
 
 			// Ensure the hash not being used yet
-		if(! self::isUnusedHash($hash) ) {
+		if( ! self::isUnusedHash($hash) ) {
 			$hash	= self::generateHash($extID, $idTokenType, $idPersonOwner, $storeInSession);
 		}
 

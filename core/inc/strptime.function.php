@@ -130,23 +130,23 @@ function strptime_strToDate($date, $format) {
 	$pattern = str_replace($search, $replace, $format);
 
 		// The to find a marker
-	if(!preg_match("#$pattern#", $date, $matches)) {
+	if( ! preg_match("#$pattern#", $date, $matches) ) {
 		return false;
 	}
 	$dp = $matches;
 
 		// Find all markers
-	if(!preg_match_all('#%(\w)#', $format, $matches)) {
+	if( ! preg_match_all('#%(\w)#', $format, $matches) ) {
 		return false;
 	}
 	$id = $matches['1'];
 
-	if(count($dp) != count($id)+1) {
+	if( count($dp) != count($id) + 1 ) {
 		return false;
 	}
 
 	$ret = array();
-	for($i=0, $j=count($id); $i<$j; $i++) {
+	for($i = 0, $j = count($id); $i < $j; $i++) {
 		$ret[$id[$i]] = $dp[$i+1];
 	}
 
