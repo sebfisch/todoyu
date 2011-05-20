@@ -211,7 +211,7 @@ Todoyu.Wizard = {
 	 * @method	close
 	 */
 	close: function() {
-		if( confirm('Are you sure?') ) {
+		if( confirm('[LLL:core.global.wizard.close.confirm]') ) {
 			Todoyu.Popups.close('wizard' + this.wizard.name);
 		}
 	}

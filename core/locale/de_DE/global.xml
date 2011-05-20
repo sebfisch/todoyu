@@ -89,4 +89,17 @@
 	<label index="log.error">Normale Fehler</label>
 	<label index="log.security">Sicherheitshinweise</label>
 	<label index="log.fatal">Schwere Fehler</label>
+
+	<label index="wizard">Assistent</label>
+	<label index="wizard.close">Schliessen</label>
+	<label index="wizard.close.confirm">Sind Sie sicher, dass Sie den Assistenten schliessen möchten?</label>
+	<label index="wizard.back">Zurück</label>
+	<label index="wizard.next">Weiter</label>
+	<label index="log.debug">Debug Information</label>
+	<label index="log.notice">Warnungen</label>
+	<label index="log.error">Normale Fehler</label>
+	<label index="log.security">Security Issues</label>
+	<label index="log.fatal">Fatal Errors</label>
+
+
 </labels>

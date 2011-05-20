@@ -9,7 +9,7 @@
 	</hiddenFields>
 	<fieldsets>
 		<fieldset name="main">
-			<legend>Main role data</legend>
+			<legend>core.form.legend.main</legend>
 			<elements>
 
 				<field type="text" name="title">

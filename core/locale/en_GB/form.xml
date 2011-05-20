@@ -15,4 +15,5 @@
 	<label index="is_preferred">Preferred</label>
 	<label index="dateselector.open">Open date selector to pick a date</label>
 	<label index="autocompleteInfo">This is an autocomplete field. Start typing to get suggestions</label>
+	<label index="legend.main">Role Definition</label>
 </labels>
