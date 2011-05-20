@@ -1,24 +1,58 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Subject</title>
-		<style type="text/css">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$subject}</title>
+<style type="text/css">
+body, p {
+	margin:0;
+	padding:0;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+body {
+	background-color:#F8FFF0;
+}
+td {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	vertical-align:top;
+}
 
-		</style>
-	</head>
+.mailHeader {
+	background-color:#EEE;
+	padding:10px;
+	font-weight:bold;
+	font-size:12px;
+}
+.mailContent {
+	border-top:1px solid #000;
+	border-bottom:1px solid #000;
+	padding:10px;
+}
+.mailFooter {
+	padding:10px;
+	background-color:#EEE;
+}
+{foreach $cssStyles cssStyle}
+	{$cssStyle}
 
-	<body>
-		<table width="600" border="0" cellspacing="0" cellpadding="0">
-		  <tr>
-			<td>Header</td>
-		  </tr>
-		  <tr>
-			<td>Content</td>
-		  </tr>
-		  <tr>
-			<td>Footer</td>
-		  </tr>
-		</table>
-	</body>
+{/foreach}
+
+</style>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="mailHeader">{$headline|default:$subject}</td>
+  </tr>
+  <tr>
+    <td class="mailContent">{$content}</td>
+  </tr>
+  <tr>
+    <td class="mailFooter">This email was send with todoyu: <a href="{constant(TODOYU_URL)}">{constant(TODOYU_URL)}</a></td>
+  </tr>
+</table>
+</body>
 </html>

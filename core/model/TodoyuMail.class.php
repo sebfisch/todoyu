@@ -29,6 +29,27 @@ require_once( PATH_LIB . '/php/phpmailer/class.phpmailer-lite.php' );
 class TodoyuMail extends PHPMailerLite {
 
 	/**
+	 * Temporary HTML content. Render it before sending
+	 *
+	 * @var	String
+	 */
+	private $contentHTML = '';
+
+	/**
+	 * Additional CSS styles
+	 *
+	 * @var	Array
+	 */
+	private $cssStyles	= array();
+
+	/**
+	 * Headline of the todoyu email
+	 *
+	 * @var	String
+	 */
+	private $headline	= null;
+
+	/**
 	 * Default config
 	 *
 	 * @var	Array
@@ -67,12 +88,85 @@ class TodoyuMail extends PHPMailerLite {
 
 
 	/**
+	 * @return void
+	 */
+	private function renderHtmlContent() {
+		$tmpl	= 'core/view/email-html.tmpl';
+		$data	= array(
+			'content'	=> $this->fullyQualifyLinksInHtml($this->contentHTML),
+			'subject'	=> $this->Subject,
+			'headline'	=> $this->headline,
+			'cssStyles'	=> $this->cssStyles
+		);
+
+		$html	= Todoyu::render($tmpl, $data);
+
+		$this->MsgHTML($html, PATH);
+	}
+
+
+
+
+	/**
+	 * Prefix links with TODOYU_URL to make them work in mails
+	 *
+	 * @param	String		$html
+	 * @return	String
+	 */
+	private function fullyQualifyLinksInHtml($html) {
+		$pattern	= '/href=["\']{1}([^"\']*?)["\']{1}/is';
+		$replace	= array();
+
+		preg_match_all($pattern, $html, $matches);
+
+		foreach($matches[1] as $link) {
+			if( strncmp('http', $link, 4) === 0 ) {
+				continue;
+			}
+			if( strncmp('javascript', $link, 10) === 0 ) {
+				continue;
+			}
+
+			$replace[$link] = TODOYU_URL . '/' . $link;
+		}
+
+		return str_replace(array_keys($replace), array_values($replace), $html);
+	}
+
+
+
+	/**
+	 * Set email headline
+	 * Can be a label
+	 *
+	 * @param	String		$headline
+	 */
+	public function setHeadline($headline) {
+		$this->headline	= Todoyu::Label($headline);
+	}
+
+
+
+	/**
+	 * Add CSS style code
+	 *
+	 * @param	String		$cssStyle
+	 */
+	public function addCssStyles($cssStyle) {
+		$this->cssStyles[] = $cssStyle;
+	}
+
+
+
+	/**
 	 * Send mail
 	 *
 	 * @param	Boolean		$catchExceptions		Catch the exceptions and log them automatically. Returns true or false
 	 * @return	Boolean		Sending was successful
 	 */
 	public function send($catchExceptions = true) {
+		$this->renderHtmlContent();
+
 		if( $catchExceptions ) {
 			try {
 				return parent::Send();
@@ -109,43 +203,14 @@ class TodoyuMail extends PHPMailerLite {
 	}
 
 
+
 	/**
 	 * Set html content of the mail
 	 *
 	 * @param	String		$html
 	 */
 	public function setHtmlContent($html) {
-		$html	= $this->fullyQualifyLinksInHtml($html);
-
-		$this->MsgHTML($html, PATH);
-	}
-
-
-
-	/**
-	 * Prefix links with TODOYU_URL to make them work in mails
-	 *
-	 * @param	String		$html
-	 * @return	String
-	 */
-	private function fullyQualifyLinksInHtml($html) {
-		$pattern	= '/href=["\']{1}([^"\']*?)["\']{1}/is';
-		$replace	= array();
-
-		preg_match_all($pattern, $html, $matches);
-
-		foreach($matches[1] as $link) {
-			if( strncmp('http', $link, 4) === 0 ) {
-				continue;
-			}
-			if( strncmp('javascript', $link, 10) === 0 ) {
-				continue;
-			}
-
-			$replace[$link] = TODOYU_URL . '/' . $link;
-		}
-
-		return str_replace(array_keys($replace), array_values($replace), $html);
+		$this->contentHTML	= $html;
 	}
 
 
@@ -158,6 +223,7 @@ class TodoyuMail extends PHPMailerLite {
 	public function setTextContent($text) {
 		$this->AltBody = $text;
 	}
+
 
 
 
