@@ -35,6 +35,7 @@
 	<label index="records">Datensätze</label>
 	<label index="components">Komponenten</label>
 	<label index="status">Status</label>
+	<label index="locked">Locked</label>
 	<label index="what">Was</label>
 	<label index="where">Wo</label>
 	<label index="when">Wann</label>
@@ -89,8 +90,7 @@
 	<label index="log.error">Normale Fehler</label>
 	<label index="log.security">Sicherheitshinweise</label>
 	<label index="log.fatal">Schwere Fehler</label>
-
-	<label index="wizard">Assistent</label>
+   	<label index="wizard">Assistent</label>
 	<label index="wizard.close">Schliessen</label>
 	<label index="wizard.close.confirm">Sind Sie sicher, dass Sie den Assistenten schliessen möchten?</label>
 	<label index="wizard.back">Zurück</label>
@@ -100,6 +100,4 @@
 	<label index="log.error">Normale Fehler</label>
 	<label index="log.security">Security Issues</label>
 	<label index="log.fatal">Fatal Errors</label>
-
-
 </labels>
