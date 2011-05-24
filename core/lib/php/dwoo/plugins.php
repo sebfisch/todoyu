@@ -132,6 +132,30 @@ function Dwoo_Plugin_inArray(Dwoo $dwoo, $value, $array) {
 
 
 /**
+ * Helper function to unset array values, needed for non-referenceable parameters
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo 		$dwoo
+ * @param	Array		$array
+ * @param	Mixed		$deletionValue
+ * @return	Boolean
+ */
+function Dwoo_Plugin_unsetArrayValue(Dwoo $dwoo, $array, $deletionValue) {
+	TodoyuDebug::printInFirebug($array, '1');
+	foreach($array as $itemKey => $itemValue) {
+		if( $itemValue == $deletionValue ) {
+			unset($array[$itemKey]);
+		}
+	}
+
+	return $array;
+}
+
+
+
+/**
  * Encode string for HTML output
  *
  * @package		Todoyu

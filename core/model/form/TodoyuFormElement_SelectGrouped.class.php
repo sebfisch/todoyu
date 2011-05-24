@@ -69,14 +69,14 @@ class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 	 * @param	String		$label
 	 * @param	Boolean		$selected
 	 * @param	Boolean		$disabled
-	 * @param	String		$classname
+	 * @param	String		$className
 	 */
-	public function addOption($group, $value, $label, $selected = false, $disabled = false, $classname='') {
+	public function addOption($group, $value, $label, $selected = false, $disabled = false, $className='') {
 		$this->config['options'][$group][] = array(
 			'value'			=> $value,
 			'label'			=> $label,
 			'disabled'		=> $disabled,
-			'classname'		=> $classname,
+			'classname'		=> $className,
 		);
 
 		if( $selected === true ) {

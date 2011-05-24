@@ -164,10 +164,6 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 			// Evoke assigned validators
 		if( $this->getForm()->isSubformValidationActive() ) {
 			$recordForm->isValid();
-//			if( ! $form->isValid() ) {
-//				$this->setErrorMessage( Label('form.field.hasError') );
-//				$this->setErrorTrue();
-//			}
 		}
 
 			// Render
