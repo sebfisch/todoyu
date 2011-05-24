@@ -61,7 +61,7 @@ class TodoyuPage {
 		self::addMetatag('Content-Type', Todoyu::$CONFIG['FE']['ContentType']);
 		self::addMetatag('robots', 'noindex,nofollow');
 
-		self::addJsOnloadedFunction('Todoyu.init.bind(Todoyu)', 1);
+		self::addJsOnloadedFunction('Todoyu.init', 1, true);
 	}
 
 
@@ -353,7 +353,14 @@ class TodoyuPage {
 	 * @param	String		$function
 	 * @param	Integer		$position
 	 */
-	public static function addJsOnloadedFunction($function, $position = 100) {
+	public static function addJsOnloadedFunction($function, $position = 100, $bind = false) {
+			// Add binding if enabled
+		if( $bind ) {
+			$parts		= array_slice(explode('.', $function), 0, -1);
+			$binding	= implode('.', $parts);
+			$function	= $function . '.bind(' . $binding . ')';
+		}
+
 		self::addJsInline('document.observe("dom:loaded", ' . $function . ');', $position);
 	}
 

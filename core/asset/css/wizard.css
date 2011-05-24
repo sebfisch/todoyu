@@ -81,20 +81,18 @@
 	display:inline-block;
 }
 
-.wizard .buttons .close {
-	width:180px;
-	text-align:center;
-	margin-top:5px;
+.wizard .buttons div.close {
+	width:170px;
+	padding-left:20px;
+	text-align:left;
 }
 
-.wizard .buttons .close a {
+.wizard .buttons div.close button.close .icon {
 	background:url(../img/icons.png) no-repeat 0 -357px;
-	padding:3px;
-	padding-left:20px;
 }
 
 .wizard .buttons .main {
-	width:500px;
+	width:460px;
 }
 
 .wizard .buttons .main button {

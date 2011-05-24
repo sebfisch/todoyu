@@ -48,9 +48,9 @@ Todoyu.Wizard = {
 		};
 
 		this.wizard = {
-			name: wizardName,
-			popup: Todoyu.Popups.open('wizard' + wizardName, 'Wizard', 900, url, options),
-			callback: onLoadCallback || Prototype.emptyFunction
+			name: 		wizardName,
+			popup: 		Todoyu.Popups.open('wizard' + wizardName, 'Wizard', 900, url, options),
+			callback: 	onLoadCallback || Prototype.emptyFunction
 		};
 	},
 
@@ -210,8 +210,10 @@ Todoyu.Wizard = {
 	 *
 	 * @method	close
 	 */
-	close: function() {
-		if( confirm('[LLL:core.global.wizard.close.confirm]') ) {
+	close: function(noConfirm) {
+		noConfirm	= noConfirm === true;
+
+		if( noConfirm || confirm('[LLL:core.global.wizard.close.confirm]') ) {
 			Todoyu.Popups.close('wizard' + this.wizard.name);
 		}
 	}
