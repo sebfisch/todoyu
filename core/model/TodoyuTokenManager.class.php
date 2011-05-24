@@ -326,6 +326,49 @@ class TodoyuTokenManager {
 		return ( ! empty($hash) );
 	}
 
+
+
+	/**
+	 * Get todoyu sharing URL for accessing public token of given specs
+	 *
+	 * @param	Integer		$extID
+	 * @param	Integer		$idTokenType
+	 * @param	Boolean		$download
+	 * @return	String
+	 */
+	public static function getPublicTokenURL($extID, $idTokenType, $download = false) {
+		$extID			= intval($extID);
+		$idTokenType	= intval($idTokenType);
+
+		$urlParams = array(
+			'token'	=> TodoyuTokenManager::getTokenByOwner($extID, $idTokenType)->getHash()
+		);
+
+		if( $download ) {
+			$urlParams['download']	= 1;
+		}
+
+		return TodoyuString::buildUrl($urlParams, '', true);
+	}
+
+
+
+	/**
+	 * Check whether a token of the given specs is stored already
+	 *
+	 * @param	Integer		$extID
+	 * @param	Integer		$idTokenType
+	 * @param	Integer		$idPersonOwner
+	 * @return	Boolean
+	 */
+	public static function isTokenStored($extID, $idTokenType, $idPersonOwner = 0) {
+		$extID			= intval($extID);
+		$idTokenType	= intval($idTokenType);
+		$idPersonOwner	= Todoyu::personid($idPersonOwner);
+
+		return TodoyuTokenManager::getTokenByOwner($extID, $idTokenType, $idPersonOwner)->getHash();
+	}
+
 }
 
 ?>
