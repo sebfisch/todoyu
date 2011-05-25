@@ -441,7 +441,7 @@ class TodoyuExtensions {
 	public static function getDependencies($extKey) {
 		$extInfo	= self::getExtInfo($extKey);
 
-		return $extInfo['constraints']['depends'];
+		return TodoyuArray::assure($extInfo['constraints']['depends']);
 	}
 
 

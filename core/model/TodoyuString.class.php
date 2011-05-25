@@ -416,6 +416,7 @@ class TodoyuString {
 	/**
 	 * Build an URL with given parameters prefixed with todoyu path
 	 *
+	 * @todo	Have a look at http_build_query(). Useful replacement?
 	 * @param	Array		$params		Parameters as key=>value
 	 * @param	String		$hash		Hash (#hash)
 	 * @param	Boolean		$absolute	Absolute URL with host server

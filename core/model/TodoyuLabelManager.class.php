@@ -165,6 +165,7 @@ class TodoyuLabelManager {
 	/**
 	 * Get a label from internal cache. If the label is not available, load it
 	 *
+	 * @param	String		$extKey
 	 * @param	String		$fileKey		Filekey
 	 * @param	String		$labelKey		Index of the label in the file
 	 * @param	String		$locale			Locale to load the label
@@ -185,17 +186,34 @@ class TodoyuLabelManager {
 	/**
 	 * Get path of the file which is registered for a file key
 	 *
+	 * @param	String		$extKey
 	 * @param	String		$fileKey
+	 * @param	String		$locale
 	 * @return	String		Abs. path to file
 	 */
 	private static function getFilePath($extKey, $fileKey, $locale) {
+		$localePath	= self::getLocalePath($extKey, $locale);
+
+		return $localePath . DIR_SEP . $fileKey . '.xml';
+	}
+
+
+
+	/**
+	 * Get path where locales are stored
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$locale
+	 * @return	String
+	 */
+	public static function getLocalePath($extKey, $locale) {
 		if( array_key_exists($extKey, self::$customPaths) ) {
 			$basePath	= TodoyuFileManager::pathAbsolute(self::$customPaths[$extKey]);
 		} else {
 			$basePath	= TodoyuExtensions::getExtPath($extKey);
 		}
 
-		return $basePath . DIR_SEP . 'locale' . DIR_SEP . $locale . DIR_SEP . $fileKey . '.xml';
+		return $basePath . DIR_SEP . 'locale' . DIR_SEP . $locale;
 	}
 
 
@@ -251,18 +269,37 @@ class TodoyuLabelManager {
 		$labels	= array();
 
 		foreach($locales as $fallbackLocale) {
-			$pathFile	= self::getFilePath($extKey, $fileKey, $fallbackLocale);
+			$fileLabels	= self::getXmlFileLabels($extKey, $fileKey, $fallbackLocale);
 
-			if( is_file($pathFile) ) {
-				$localeLabels	= self::readXmlFile($pathFile);
-
-				$labels	= array_merge($labels, $localeLabels);
+			if( sizeof($fileLabels) > 0 ) {
+				$labels	= array_merge($labels, $fileLabels);
 			}
 		}
 
 			// Only write a cache file when labels are found
 		if( sizeof($labels) > 0 ) {
 			self::writeCachedLabelFile($cacheFile, $labels);
+		}
+
+		return $labels;
+	}
+
+
+
+	/**
+	 * Read labels from an XML file
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$fileKey
+	 * @param	String		$locale
+	 * @return	Array
+	 */
+	public static function getXmlFileLabels($extKey, $fileKey, $locale) {
+		$labels		= array();
+		$pathFile	= self::getFilePath($extKey, $fileKey, $locale);
+
+		if( is_file($pathFile) ) {
+			$labels	= self::readXmlFile($pathFile);
 		}
 
 		return $labels;

@@ -67,13 +67,17 @@ class TodoyuArchiveManager {
 	/**
 	 * Create an archive from a folder
 	 *
-	 * @param	String		$pathFolder
-	 * @param	String		$baseFolder
-	 * @param	Boolean		$recursive
-	 * @param	Array		$exclude
+	 * @param	String			$pathFolder
+	 * @param	String|Boolean	$baseFolder
+	 * @param	Boolean			$recursive
+	 * @param	Array			$exclude
 	 * @return	String
 	 */
-	public static function createArchiveFromFolder($pathFolder, $baseFolder, $recursive = true, array $exclude = array()) {
+	public static function createArchiveFromFolder($pathFolder, $baseFolder = false, $recursive = true, array $exclude = array()) {
+		if( $baseFolder === false ) {
+			$baseFolder = $pathFolder;
+		}
+
 		$pathFolder	= TodoyuFileManager::pathAbsolute($pathFolder);
 		$baseFolder	= TodoyuFileManager::pathAbsolute($baseFolder);
 		$randomFile	= md5(uniqid($pathFolder, microtime(true))) . '.zip';
