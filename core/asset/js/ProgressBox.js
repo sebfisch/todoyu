@@ -77,7 +77,7 @@ Todoyu.ProgressBox = Class.create(Todoyu.LoaderBox, {
 		wrap.insert(bar);
 
 		if( this.config.onCancel ) {
-			var button	= Todoyu.Ui.buildButton('progressbox-cancel', 'cancelProgress', '[LLL:gantt.ext.progress.cancel]', this.onCancel.bind(this))
+			var button	= Todoyu.Ui.buildButton('progressbox-cancel', 'cancelProgress', '[LLL:gantt.ext.progress.cancel]', this.onCancel.bind(this));
 
 			wrap.insert(button);
 		}
