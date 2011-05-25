@@ -174,7 +174,8 @@ class TodoyuRoleManager {
 	/**
 	 * Save role (add or update)
 	 *
-	 * @param	Array	$data
+	 * @param	Array		$data
+	 * @return	Integer		Role ID
 	 */
 	public static function saveRole(array $data) {
 		$xmlPath= 'core/config/form/role.xml';

@@ -96,7 +96,6 @@ class TodoyuLogger {
 	/**
 	 * Get the logger instance. Singleton
 	 *
-	 * @param	Integer		$level		Log level limit
 	 * @return	TodoyuLogger
 	 */
 	public static function getInstance() {
@@ -111,8 +110,6 @@ class TodoyuLogger {
 
 	/**
 	 * Called by getInstance for Singleton Pattern
-	 *
-	 * @param	Integer		$level
 	 */
 	private function __construct() {
 		$this->minimumLevel 		= $this->getLogLevel();

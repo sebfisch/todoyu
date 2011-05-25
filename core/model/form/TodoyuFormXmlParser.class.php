@@ -136,6 +136,7 @@ class TodoyuFormXmlParser {
 	 *
 	 * @param	TodoyuFieldset			$parentElement
 	 * @param	SimpleXmlElement	$fieldsetXmlObj
+	 * @return	Boolean|Void
 	 */
 	private static function addFieldset(&$parentElement, SimpleXmlElement $fieldsetXmlObj) {
 			// If restricted to internal persons

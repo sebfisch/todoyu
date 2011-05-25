@@ -107,7 +107,7 @@ class TodoyuSpeed {
 	 *
 	 * @param	String		$key
 	 * @param	Boolean		$format		Format as milliseconds instead of microseconds
-	 * @return
+	 * @return	String
 	 */
 	public static function total($key = 'default', $format = false) {
 		if( self::isActive($key) ) {

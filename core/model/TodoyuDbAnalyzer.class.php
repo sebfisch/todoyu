@@ -83,7 +83,9 @@ class TodoyuDbAnalyzer {
 	/**
 	 * Check if database connection data is valid
 	 *
-	 * @param	Array		$data
+	 * @param	String		$server
+	 * @param	String		$username
+	 * @param	String		$password
 	 * @return	Boolean
 	 * @throws	Exception
 	 */

@@ -165,6 +165,7 @@ class TodoyuArray {
 	 *
 	 * @param	Array	$array
 	 * @param	Array	$reformConfig		[old=>new,old=>new]
+	 * @param	Boolean	$copyAllData
 	 * @return	Array
 	 */
 	public static function reform(array $array, array $reformConfig, $copyAllData = false) {
@@ -224,11 +225,12 @@ class TodoyuArray {
 	 * Sort an array by a specified label. Allows advanced sorting configuration
 	 *
 	 * @param	Array		$unsortedArray			Original array
-	 * @param	String		$sortByLabel			Labelkey to sort by
+	 * @param	String		$sortByLabel			Label key to sort by
 	 * @param	Boolean		$reversed				Reverse order
 	 * @param	Boolean		$caseSensitive			Sort case sensitive. Lower case string are sorted as extra group at the end
 	 * @param	Boolean		$useNaturalSorting		Sort as a human would do. Ex: Image1, Image2, Image 10, Image20
 	 * @param	Integer		$sortingFlag			Flag for normal (not natural) sorting. Use constants: SORT_NUMERIC, SORT_STRING, SORT_LOCALE_STRING
+	 * @param	String		$avoidDuplicateFieldKey
 	 * @return	Array		Sorted array
 	 */
 	public static function sortByLabel(array $unsortedArray, $sortByLabel = 'position', $reversed = false, $caseSensitive = false, $useNaturalSorting = true, $sortingFlag = SORT_REGULAR, $avoidDuplicateFieldKey = '') {
@@ -356,9 +358,10 @@ class TodoyuArray {
 	 * If an element with the specified key already exists, it will be replace, except if $replace is false.
 	 *
 	 * @param	Array		$array			Base array to insert new item into
-	 * @param	Mixed		$newArrayItem	New array item
-	 * @param	String		$keyname		Key name of the new array item
-	 * @param	String		$beforeItem		Insert new item before this key. If no key specified, the new element will be appended
+	 * @param	String		$newKeyName		Key name of the new array item
+	 * @param	Mixed		$newItem
+	 * @param	String		$mode			'after' / 'before'
+	 * @param	String		$refKeyName		Key name of field the mode refers to
 	 * @param	Boolean		$replace		Replace an existing element
 	 * @return	Array		Array with new item inside
 	 */
@@ -587,7 +590,6 @@ class TodoyuArray {
 	 * Merge multiple arrays and return a unique array
 	 * Combination of array_merge and array_unique
 	 *
-	 * @param	Array		Multiple array arguments like array_merge
 	 * @return	Array
 	 */
 	public static function mergeUnique(/*arrays*/) {
@@ -603,11 +605,13 @@ class TodoyuArray {
 	 * Merges any number of arrays / parameters recursively, replacing
 	 * entries with string keys with values from latter arrays.
 	 * If the entry or the next value to be assigned is an array, then it
-	 * automagically treats both arguments as an array.
+	 * automatically treats both arguments as an array.
 	 * Numeric entries are appended, not replaced, but only if they are
 	 * unique
 	 *
 	 * @see		http://www.php.net/manual/en/function.array-merge-recursive.php
+	 * @param	Array	$a1
+	 * @param	Array	$a2
 	 * @return	Array
 	 */
 	public static function mergeRecursive(array $a1, array $a2 /* $a3, $a4, ...*/) {
@@ -800,6 +804,7 @@ class TodoyuArray {
 	 *
 	 * @param	Array		$array
 	 * @param	Boolean		$removeEmpty		Remove empty elements
+	 * @return	Array
 	 */
 	public static function trim(array $array, $removeEmpty = false) {
 		$new	= array();

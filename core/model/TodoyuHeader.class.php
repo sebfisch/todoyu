@@ -269,7 +269,7 @@ class TodoyuHeader {
 	 * Redirect to a todoyu page
 	 *
 	 * @param	String		$ext
-	 * @param	String		$action
+	 * @param	String		$controller
 	 * @param	Array		$addParams
 	 */
 	public static function redirect($ext, $controller = 'ext', array $addParams = array()) {

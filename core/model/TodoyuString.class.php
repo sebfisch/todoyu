@@ -42,6 +42,7 @@ class TodoyuString {
 	 * Convert a string to UTF-8 if necessary
 	 *
 	 * @param	String		$stringToConvert
+	 * @param	String		$from
 	 * @return	String
 	 */
 	public static function convertToUTF8($stringToConvert, $from = 'UTF-16') {
@@ -65,8 +66,8 @@ class TodoyuString {
 	/**
 	 * Checking syntax of input email address
 	 *
-	 * @param	String		Input string to evaluate
-	 * @return	Boolean		Returns true if the $email address (input string) is valid; Has a "@", domain name with at least one period and only allowed a-z characters.
+	 * @param	String		$email
+	 * @return	Boolean		True if the $email is valid: Has a "@", domain name with at least one period and only allowed a-z characters.
 	 */
 	public static function isValidEmail($email) {
 		$email = trim ($email);
@@ -155,6 +156,8 @@ class TodoyuString {
 	 * Convert an HTML snippet into plain text. Removes html - tags from snippet
 	 *
 	 * @param	String		$html		HTML snippet
+	 * @param	Boolean		$br2Newline
+	 * @param	Boolean		$decodeChars
 	 * @return	String		Text version
 	 */
 	public static function html2text($html, $br2Newline = false, $decodeChars = false) {
@@ -178,7 +181,7 @@ class TodoyuString {
 	 * 	- decodes html-entities & special chars
 	 *
 	 * @param	String		$string
-	 * @param	Boolean		$closingPTagsToDoubleNewLine
+	 * @param	Boolean		$convertClosingPTagsToDoubleNewLine
 	 * @return	String
 	 */
 	public static function strictHtml2text($string, $convertClosingPTagsToDoubleNewLine = true) {
@@ -217,6 +220,7 @@ class TodoyuString {
 	 * @param	String		$keyword		Keyword to find in the text
 	 * @param	Integer		$charsBefore	Characters included before the keyword
 	 * @param	Integer		$charsAfter		Characters included after the keyword
+	 * @param	Boolean		$htmlEntities
 	 * @return	String		Substring with keyword surrounded by the original text
 	 */
 	public static function getSubstring($string, $keyword, $charsBefore = 20, $charsAfter = 20, $htmlEntities = true) {
@@ -284,6 +288,7 @@ class TodoyuString {
 	 * Remove duplicate entries from list
 	 *
 	 * @param	String	$listString
+	 * @param	String	$listSeparator
 	 * @return	String
 	 */
 	public static function listUnique($listString, $listSeparator = ',') {
@@ -296,10 +301,10 @@ class TodoyuString {
 
 
 	/**
-	 * Generate a random password. Customizeable
+	 * Generate a random password. Customizable
 	 *
 	 * @param	Integer		$length
-	 * @param	Boolean		$useLowerCase
+	 * @param	Boolean		$useUpperCase
 	 * @param	Boolean		$useNumbers
 	 * @param	Boolean		$useSpecialChars
 	 * @param	Boolean		$useDoubleChars
@@ -693,6 +698,7 @@ class TodoyuString {
 	 *
 	 * @param	String	$url
 	 * @param	String	$label
+	 * @param	String	$target
 	 * @return	String
 	 */
 	public static function getATag($url, $label, $target = '_blank') {
@@ -740,7 +746,7 @@ class TodoyuString {
 	 * Returns an HTML - img tag
 	 *
 	 * @param	String		$src
-	 * @param	Integer		width
+	 * @param	Integer		$width
 	 * @param	Integer		$height
 	 * @param	String		$altText
 	 * @return	String
@@ -773,6 +779,7 @@ class TodoyuString {
 	 *
 	 * @param	String		$tagName
 	 * @param	Array		$attributes
+	 * @param	String		$content			Optional HTML content to be wrapped
 	 * @return	String
 	 */
 	public static function buildHtmlTag($tagName, array $attributes = array(), $content = false) {
@@ -877,7 +884,9 @@ class TodoyuString {
 	 * Includes start and end date with hours
 	 *
 	 *
-	 * @param	Array	$data
+	 * @param	Integer		$dateStart
+	 * @param	Integer		$dateEnd
+	 * @param	Boolean		$withDuration
 	 * @return	String
 	 */
 	public static function getRangeString($dateStart, $dateEnd, $withDuration = true) {

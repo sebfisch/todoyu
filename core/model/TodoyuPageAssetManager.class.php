@@ -50,6 +50,7 @@ class TodoyuPageAssetManager {
 	 * @param	Boolean		$compress			Compress content?
 	 * @param	Boolean		$merge				Include file into merge file?
 	 * @param	Boolean		$localize			Parse locale labels
+	 * @return	Void|Boolean
 	 */
 	public static function addJavascript($pathToFile, $position = 100, $compress = true, $merge = true, $localize = true) {
 		$absPathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
@@ -366,7 +367,7 @@ class TodoyuPageAssetManager {
 	/**
 	 * Localize a JavaScript
 	 *
-	 * @param	String	$javaScriptCode
+	 * @param	String	$javascriptCode
 	 * @return	String
 	 */
 	public static function localizeJavascript($javascriptCode) {

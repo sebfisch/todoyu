@@ -136,6 +136,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @param	String		$xmlFile		Path to XML form definition
 	 * @param	Array		$preParseValues	Optional markers to be initially replaced inside the XML before parsing
+	 * @param	Integer		$idRecord
 	 */
 	public function __construct($xmlFile, $preParseValues = array(), $idRecord = 0) {
 		$this->xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
@@ -399,7 +400,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @param	String			$name
 	 * @param	TodoyuFieldset	$fieldset
-	 * @param	String			$fieldset	'after:fieldsetname' / 'before:fieldsetname'
+	 * @param	Integer			$position
 	 * @return	TodoyuFieldset
 	 */
 	public function addFieldset($name, TodoyuFieldset $fieldset = null, $position = null) {
@@ -433,6 +434,7 @@ class TodoyuForm implements ArrayAccess {
 	 * Inject an existing fieldset into the form
 	 *
 	 * @param	TodoyuFieldset	$fieldset
+	 * @param	Integer			$position
 	 * @return	TodoyuFieldset
 	 */
 	public function injectFieldset(TodoyuFieldset $fieldset, $position = null) {
@@ -1014,6 +1016,7 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Get data of all fields to store in the database
 	 *
+	 * @param	Array	$formData
 	 * @return	Array
 	 */
 	public function getStorageData(array $formData = null) {

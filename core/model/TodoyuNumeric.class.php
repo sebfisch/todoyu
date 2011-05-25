@@ -90,7 +90,7 @@ class TodoyuNumeric {
 	 * Check whether given version is same or newer than version to be compared to
 	 *
 	 * @param	String		$actualVersion
-	 * @param	String		$compareTo
+	 * @param	String		$atLeastVersion
 	 * @return	Boolean
 	 */
 	public static function isVersionAtLeast($actualVersion, $atLeastVersion) {

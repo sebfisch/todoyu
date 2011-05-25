@@ -51,7 +51,7 @@ class TodoyuTime {
 	/**
 	 * Get timestamp of start (00:00:00) of day
 	 *
-	 * @param	Integer		$timestamp
+	 * @param	Integer|Boolean		$timestamp
 	 * @return	Integer
 	 */
 	public static function getStartOfDay($timestamp = false) {
@@ -69,7 +69,7 @@ class TodoyuTime {
 	/**
 	 * Make timestamp for end (23:59:59) of day
 	 *
-	 * @param	Integer		$timestamp
+	 * @param	Integer|Boolean		$timestamp
 	 * @return	Integer
 	 */
 	public static function getEndOfDay($timestamp = false) {
@@ -87,7 +87,7 @@ class TodoyuTime {
 	/**
 	 * Make timestamp for given date's time (at 1.1.1970)
 	 *
-	 * @param	Integer		$timestamp
+	 * @param	Integer|Boolean		$timestamp
 	 * @return	Integer
 	 */
 	public static function getTimeOfDay($timestamp = false) {
@@ -105,8 +105,8 @@ class TodoyuTime {
 	/**
 	 * Get timestamps for the first and the last second of a day
 	 *
-	 * @param	Integer		$timestamp
-	 * @return	Array		[start,end]
+	 * @param	Integer|Boolean		$timestamp
+	 * @return	Array				[start,end]
 	 */
 	public static function getDayRange($timestamp = false) {
 		return array(
@@ -121,6 +121,7 @@ class TodoyuTime {
 	 * Get timestamps of start and of week that contains the given timestamp
 	 *
 	 * @param	Integer	$timestamp
+	 * @return	Array
 	 */
 	public static function getWeekRange($timestamp) {
 		$timestamp	= intval($timestamp);
@@ -180,10 +181,10 @@ class TodoyuTime {
 
 
 	/**
-	 * Get timestamp of first day of month
-	 * 00:00:00
+	 * Get timestamp of first day (at 00:00:00) of month
 	 *
 	 * @param	Integer	$timestamp
+	 * @return	Integer
 	 */
 	public static function getMonthStart($timestamp) {
 		$timestamp	= intval($timestamp);
@@ -410,6 +411,7 @@ class TodoyuTime {
 	 *
 	 * @param	Integer		$dateStart
 	 * @param	Integer		$dateEnd
+	 * @param	Boolean		$withDuration
 	 * @return	String
 	 */
 	public static function formatTimespan($dateStart, $dateEnd, $withDuration = false) {

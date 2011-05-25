@@ -257,7 +257,7 @@ class Todoyu {
 	/**
 	 * Set system locale with setlocale() based on the currently selected locale
 	 *
-	 * @param	String		$locale			Force locale. If not set try to find the correct locale
+	 * @param	String|Boolean		$locale			Force locale. If not set try to find the correct locale
 	 */
 	public static function setLocale($locale = false) {
 		if( $locale === false ) {

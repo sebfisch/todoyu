@@ -53,8 +53,10 @@ class TodoyuFormValidator {
 	 * Calls the function defined in the <function> attribute the same way
 	 * as a normal function in the
 	 *
-	 * @param	Mixed		$value
-	 * @param	Array		$config
+	 * @param	Mixed				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
 	public static function user($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
@@ -331,8 +333,10 @@ class TodoyuFormValidator {
 	/**
 	 * Check whether the checked value (date) is before another date from within $config array
 	 *
-	 * @param	String		$value			Readable date format which works with strtotime()
-	 * @param	Array		$config			Field config array
+	 * @param	String				$value				Readable date format which works with strtotime()
+	 * @param	Array				$validatorConfig	Field config array
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
 	public static function dateBefore($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
@@ -363,8 +367,10 @@ class TodoyuFormValidator {
 	 * Negate check of dateBefore. Check validity if the date is after or the same time
 	 *
 	 * @see 	dateBefore()
-	 * @param	String		$value			Readable date format which works with strtotime()
-	 * @param	Array		$config			Field config array
+	 * @param	String				$value				Readable date format which works with strtotime()
+	 * @param	Array				$validatorConfig	Field config array
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
 	public static function dateNotBefore($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
@@ -390,8 +396,10 @@ class TodoyuFormValidator {
 	/**
 	 * Check whether the checked value (date) is after another date from within the $config array
 	 *
-	 * @param	String		$value			Readable date format which works with strtotime()
-	 * @param	Array		$config			Field config array
+	 * @param	String				$value				Readable date format which works with strtotime()
+	 * @param	Array				$validatorConfig	Field config array
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
 	public static function dateAfter($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
@@ -425,8 +433,10 @@ class TodoyuFormValidator {
 	 * Negated check of dateAfter. Check is valid if the date is before or the same time.
 	 *
 	 * @see 	dateAfter()
-	 * @param	String		$value			Readable date format which works with strtotime()
-	 * @param	Array		$config			Field config array
+	 * @param	String				$value			Readable date format which works with strtotime()
+	 * @param	Array				$validatorConfig			Field config array
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
 	public static function dateNotAfter($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
@@ -444,8 +454,10 @@ class TodoyuFormValidator {
 	/**
 	 * Check if date and time of a field is before an other field
 	 *
-	 * @param	String		$value
-	 * @param	Array		$config
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
 	public static function dateTimeBefore($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
@@ -500,8 +512,10 @@ class TodoyuFormValidator {
 	/**
 	 * Check if date and time are after an other field
 	 *
-	 * @param	String		$value
-	 * @param	Array		$config
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement 	$formElement
+	 * @param	Array 				$formData
 	 * @return	Boolean
 	 */
 	public static function dateTimeAfter($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
@@ -525,8 +539,10 @@ class TodoyuFormValidator {
 	/**
 	 * Check if date and time are not after an other field
 	 *
-	 * @param	String		$value
-	 * @param	Array		$config
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
 	public static function dateTimeNotAfter($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
@@ -572,9 +588,9 @@ class TodoyuFormValidator {
 	/**
 	 * Validate value to have minimum length or be empty
 	 *
-	 * @param	Array				$value
-	 * @param	TodoyuFormElement	$validatorConfig
-	 * @param	Array				$formElement
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
@@ -600,8 +616,8 @@ class TodoyuFormValidator {
 	 * Validate for a good password
 	 *
 	 * @param	String				$value
-	 * @param	TodoyuFormElement 	$validatorConfig
-	 * @param	Array				$formElement
+	 * @param	Array			 	$validatorConfig
+	 * @param	TodoyuFormElement 	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */

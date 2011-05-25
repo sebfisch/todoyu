@@ -109,7 +109,7 @@ class TodoyuFreezeManager {
 	/**
 	 * Get a freeze by tye and ID
 	 *
-	 * @param	String			$table
+	 * @param	String			$type
 	 * @param	Integer			$idElement
 	 * @param	Boolean			$ignoreMissing		Don't log an error if unfreezing failed, because we're just checking if it's available
 	 * @return	Mixed|Boolean	Restored element or false

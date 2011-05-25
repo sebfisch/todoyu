@@ -352,6 +352,7 @@ class TodoyuPage {
 	 *
 	 * @param	String		$function
 	 * @param	Integer		$position
+	 * @param	Boolean		$bind
 	 */
 	public static function addJsOnloadedFunction($function, $position = 100, $bind = false) {
 			// Add binding if enabled
@@ -448,7 +449,6 @@ class TodoyuPage {
 	/**
 	 * Render page with template
 	 *
-	 * @param	Boolean		$output		Print HTML code with echo
 	 * @return	String
 	 */
 	public static function render() {

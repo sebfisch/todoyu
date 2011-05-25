@@ -113,6 +113,7 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 	/**
 	 * Render button to HTML
 	 *
+	 * @param	Boolean	$odd
 	 * @return	String
 	 */
 	public function render($odd = false) {

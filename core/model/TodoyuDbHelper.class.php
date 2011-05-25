@@ -120,11 +120,10 @@ class TodoyuDbHelper {
 	 * Save MM relation with extended (more than the commonly two) data columns
 	 *
 	 * @param	String		$mmTable
-	 * @param	String		$localField
-	 * @param	String		$foreignField
+	 * @param	String		$fieldLocal
+	 * @param	String		$fieldForeign
 	 * @param	Integer		$idLocalRecord
-	 * @param	Integer		$idForeignRecord
-	 * @param	Array		$data
+	 * @param	Array		$linksData
 	 * @return	Integer		New ID of the record
 	 */
 	public static function saveExtendedMMLinks($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, array $linksData) {
@@ -171,10 +170,11 @@ class TodoyuDbHelper {
 	 * Add a single MM relation
 	 *
 	 * @param	String		$mmTable			Link table
-	 * @param	String		$localField			Locale field name (for the one record linked to the others)
-	 * @param	String		$foreignField		Foreign field name for the other records
+	 * @param	String		$fieldLocal			Locale field name (for the one record linked to the others)
+	 * @param	String		$fieldForeign		Foreign field name for the other records
 	 * @param	Integer		$idLocalRecord
 	 * @param	Integer		$idForeignRecord
+	 * @param	Array		$extraData
 	 * @return	Integer		ID of new record
 	 */
 	public static function addMMLink($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $idForeignRecord, array $extraData = array()) {

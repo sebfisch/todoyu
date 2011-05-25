@@ -67,10 +67,9 @@ class TodoyuImageManager {
 
 
 	/**
-	 * Create an image resource from a file
-	 * PNG, JPEG and GIF are supported
+	 * Create an image resource from a file. PNG, JPEG and GIF are supported
 	 *
-	 * @param	String		$pathImage
+	 * @param	String		$pathFile
 	 * @param	String		$type
 	 * @return	Boolean|Resource
 	 */

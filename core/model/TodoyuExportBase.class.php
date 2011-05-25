@@ -86,6 +86,9 @@ abstract class TodoyuExportBase {
 
 	/**
 	 * Sends the file to download
+	 *
+	 * @param	String	$type
+	 * @param	String	$filename
 	 */
 	public function download($type, $filename = '') {
 		header( 'Content-Type: ' . $type );

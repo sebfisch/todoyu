@@ -94,7 +94,9 @@ class TodoyuExportCSV extends TodoyuExportBase {
 
 
 	/**
-	 *	creates the content
+	 * Creates CSV temp file and returns its content
+	 *
+	 * @return	String
 	 */
 	public function getContent() {
 		$headers = $this->prepareHeaders();

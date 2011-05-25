@@ -61,6 +61,8 @@ abstract class TodoyuActionController {
 
 	/**
 	 * Get words of classname (split into camelCase separated words)
+	 *
+	 * @return	Array
 	 */
 	protected final function getClassNameParts() {
 		return TodoyuString::splitCamelCase(get_class($this));

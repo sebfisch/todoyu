@@ -193,6 +193,7 @@ class TodoyuTokenManager {
 	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
 	 * @param	Integer		$idPersonOwner
+	 * @return	String
 	 */
 	public static function getHashFromSession($extID, $idTokenType, $idPersonOwner = 0) {
 		$idTokenType	= intval($idTokenType);
@@ -238,7 +239,7 @@ class TodoyuTokenManager {
 	 * Save token to DB (new or update)
 	 *
 	 * @param	Array	$data
-	 * @param	Integer			ID of token record
+	 * @return	Integer			ID of token record
 	 */
 	public static function saveToken(array $data) {
 		$idToken	= intval($data['id']);

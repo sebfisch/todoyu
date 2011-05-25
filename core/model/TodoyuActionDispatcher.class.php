@@ -176,6 +176,7 @@ class TodoyuActionDispatcher {
 	 * Get action controller object for the $ext-$controller combination
 	 * @param	String		$ext
 	 * @param	String		$controller
+	 * @param	Array		$params
 	 * @return	TodoyuActionController
 	 */
 	public static function getControllerObject($ext = '', $controller = '', array $params = array()) {

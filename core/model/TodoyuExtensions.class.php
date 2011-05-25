@@ -108,7 +108,7 @@ class TodoyuExtensions {
 	 * Check if file path is in the path of the extension
 	 *
 	 * @param	String		$extKey
-	 * @param	String		$filePath
+	 * @param	String		$path
 	 * @return	Boolean
 	 */
 	public static function isPathInExtDir($extKey, $path) {
@@ -128,6 +128,7 @@ class TodoyuExtensions {
 	 * This is the path an extension would have. Doesn't mean the path exists or extension is installed
 	 *
 	 * @param	String		$extKey
+	 * @param	String		$appendPath
 	 * @return	String		Absolute path to extension
 	 */
 	public static function getExtPath($extKey, $appendPath = '') {

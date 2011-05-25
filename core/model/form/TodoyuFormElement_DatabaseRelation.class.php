@@ -219,9 +219,8 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 
 	/**
-	 * Load foreign record from baserecord
+	 * Load foreign record from base record
 	 *
-	 * @param	Array	$data
 	 * @return	Array
 	 */
 	protected function getRecords() {

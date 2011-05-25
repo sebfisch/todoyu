@@ -80,7 +80,8 @@ class TodoyuLoggerFile implements TodoyuLoggerIf {
 	 * @param	String		$message
 	 * @param	Integer		$level
 	 * @param	Mixed		$data
-	 * @param	Array		$callerInfo
+	 * @param	Array		$info
+	 * @param	String		$requestKey
 	 */
 	public function log($message, $level, $data, $info, $requestKey) {
 		$logLine	= sprintf($this->pattern, $requestKey, date('Y-m-d H:i:s'), $level, $info['fileshort'], $info['line'], $message);

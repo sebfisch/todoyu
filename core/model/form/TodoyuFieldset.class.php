@@ -232,6 +232,7 @@ class TodoyuFieldset implements ArrayAccess {
 	 *
 	 * @param	String			$name
 	 * @param	TodoyuFieldset	$fieldset
+	 * @param	Integer			$position
 	 * @return	TodoyuFieldset
 	 */
 	public function addFieldset($name, TodoyuFieldset $fieldset = null, $position = null) {
@@ -340,6 +341,7 @@ class TodoyuFieldset implements ArrayAccess {
 	 * Inject an existing fieldset into the form
 	 *
 	 * @param	TodoyuFieldset		$fieldset
+	 * @param	Integer				$position
 	 * @return	TodoyuFieldset
 	 */
 	public function injectFieldset(TodoyuFieldset $fieldset, $position = null) {
@@ -357,6 +359,7 @@ class TodoyuFieldset implements ArrayAccess {
 	 * @param	String		$fieldName
 	 * @param	String		$fieldType
 	 * @param	Array		$fieldConfig
+	 * @return	TodoyuFormElement
 	 */
 	public function addFieldElement($fieldName, $fieldType, array $fieldConfig) {
 		$field	= TodoyuFormFactory::createField($fieldType, $fieldName, $this, $fieldConfig);

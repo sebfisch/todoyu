@@ -64,6 +64,7 @@ class TodoyuScheduler {
 	/**
 	 * Execute all due jobs
 	 *
+	 * @return Boolean|Void
 	 */
 	public static function run() {
 			// Prevent executing if a recent block file exists (means scheduler still running)

@@ -35,7 +35,7 @@ class TodoyuTabheadRenderer {
 	 * @param	String		$active
 	 * @param	String		$label
 	 * @param	String		$position
-	 * @param	Boolean		$hasIcon
+	 * @param	Integer		$hasIcon
 	 * @param	Integer		$elementAmount
 	 * @return	String
 	 */

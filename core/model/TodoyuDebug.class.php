@@ -64,7 +64,9 @@ class TodoyuDebug {
 	 * @todo	check and improve for different var types
 	 *
 	 * @param	Mixed		$var
+	 * @param	String		$indent
 	 * @param	Integer		$niv
+	 * @return	String
 	 */
 	public static function phpFormat($var, $indent = '&nbsp;&nbsp;', $niv = 0) {
 		$str = '';
@@ -107,6 +109,7 @@ class TodoyuDebug {
 	 * @param	String		$title		Title for debug output
 	 * @param	String		$usernames	Only this listed users shall see the debug output
 	 * @param	Boolean		$return		Return or print result
+	 * @return	Void|String
 	 */
 	public static function printPHP($item, $title = '', $usernames = null, $return = false) {
 		if( ! is_null($usernames) && ! self::isCurrentUser($usernames) ) {
@@ -170,6 +173,7 @@ class TodoyuDebug {
 	 * @param	Mixed		$item		Item to debug
 	 * @param	String		$title		Title for debug output
 	 * @param	String		$usernames	Only this listed users shall see the debug output
+	 * @param	Boolean		$backtrace
 	 */
 	public static function printHtml($item, $title = '', $usernames = null, $backtrace = false) {
 		if( ! is_null($usernames) && !self::isCurrentUser($usernames) ) {

@@ -83,8 +83,9 @@ class TodoyuQuickinfo {
 	 * Add new info
 	 *
 	 * @param	String		$key		Identifier and classname
-	 * @param	String		$label		Labeltext
+	 * @param	String		$label		Label text
 	 * @param	Integer		$position
+	 * @param	Boolean		$escape
 	 */
 	public function addInfo($key, $label, $position = 100, $escape = true) {
 		if( $escape === true ) {

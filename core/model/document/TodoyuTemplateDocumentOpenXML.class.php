@@ -198,6 +198,8 @@ abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstr
 
 	/**
 	 * Load the xml content from content.xml
+	 *
+	 * @param	String	$relPath
 	 */
 	protected function loadXMLContent($relPath) {
 		$this->setXmlPath($relPath);

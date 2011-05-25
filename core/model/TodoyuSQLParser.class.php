@@ -64,7 +64,7 @@ class TodoyuSQLParser {
 	/**
 	 * Extract one table name from SQL
 	 *
-	 * @param	String	$tableSql
+	 * @param	String	$sql
 	 * @return	String
 	 */
 	private static function extractSingleTableName($sql) {
@@ -78,19 +78,19 @@ class TodoyuSQLParser {
 	/**
 	 * Extract table keys from SQL
 	 *
-	 * @param	String	$tableSql
+	 * @param	String	$sql
 	 * @return	Array
 	 */
-	private static function extractTableKeys($keySQL) {
-		$keySQL	= trim($keySQL);
+	private static function extractTableKeys($sql) {
+		$sql	= trim($sql);
 		$keys	= array();
 
-		if( $keySQL !== '' ) {
-			$keysSQL= explode(', ', $keySQL);
+		if( $sql !== '' ) {
+			$keysSQL= explode(', ', $sql);
 			$pattern= '/([A-Za-z]*(?:\s*)KEY) (?:`(\w+)`)*(?:\s*)\((.*)\)/';
 
-			foreach($keysSQL as $keySQL) {
-				preg_match($pattern, $keySQL, $match);
+			foreach($keysSQL as $sql) {
+				preg_match($pattern, $sql, $match);
 
 				$keys[] = array(
 					'type'	=> $match[1] === 'PRIMARY KEY' ? 'PRIMARY' : ($match[1] === 'KEY' ? 'INDEX' : trim(str_ireplace('KEY', '', $match[1]))),
@@ -130,7 +130,7 @@ class TodoyuSQLParser {
 	/**
 	 * Extract column type declaration
 	 *
-	 * @param	String	$sql
+	 * @param	String	$columnSQL
 	 * @return	String
 	 */
 	private static function extractColumnType($columnSQL) {
@@ -205,9 +205,9 @@ class TodoyuSQLParser {
 
 
 	/**
-	 * Extract column dfault declaration
+	 * Extract column default declaration
 	 *
-	 * @param	String	$sql
+	 * @param	String	$columnSQL
 	 * @return	String
 	 */
 	private static function extractColumnDefault($columnSQL) {
@@ -223,8 +223,7 @@ class TodoyuSQLParser {
 	/**
 	 * Extract extra from SQL column declaration
 	 *
-	 * @param	Stringt	$sql
-	 * @param	Array	$partsToRemove
+	 * @param	String	$columnSQL
 	 * @return	String
 	 */
 	private static function extractColumnExtra($columnSQL) {
@@ -244,6 +243,7 @@ class TodoyuSQLParser {
 	 *
 	 * @param	Array	$tableNames
 	 * @param	String	$tablesSql
+	 * @return	Array
 	 */
 	public function getAllTableStructures(array $tableNames, $tablesSql = '') {
 		if( $tablesSql == '' ) {
@@ -285,7 +285,7 @@ class TodoyuSQLParser {
 	/**
 	 * Extract table structure definition from SQL (separated into table and columns definition)
 	 *
-	 * @param	String	$tableSql
+	 * @param	String	$sql
 	 * @return	Array
 	 */
 	private static function extractColumns($sql) {
@@ -334,8 +334,10 @@ class TodoyuSQLParser {
 	/**
 	 * Find differences between tables' column structures in 'tables.sql' files and DB
 	 *
+	 * @param	Array	$newTables
 	 * @param	Array	$sqlStructures
 	 * @param	Array	$dbStructures
+	 * @return	Array
 	 */
 	public static function getStructureDifferencesX($newTables, array $sqlStructures, array $dbStructures) {
 		$sqlStructuresBak	= $sqlStructures;
@@ -416,6 +418,7 @@ class TodoyuSQLParser {
 	 * @param	String	$tableName
 	 * @param	String	$colName
 	 * @param	Array	$colStructure
+	 * @param	Array	$allTableStructure
 	 * @return	String
 	 */
 	private static function getUpdatingQuery($action, $tableName, $colName, array $colStructure, $allTablesStructure = array()) {

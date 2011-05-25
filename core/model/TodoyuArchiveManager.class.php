@@ -106,10 +106,11 @@ class TodoyuArchiveManager {
 	/**
 	 * Add a folder (and sub elements) to an archive
 	 *
-	 * @param	ZipArchive		$archive
+	 * @param	ZipArchive		&$archive
 	 * @param	String			$pathToFolder		Path to folder which elements should be added
 	 * @param	String			$baseFolder			Base folder defined to root for the archive. Base path will be removed from internal archive path
 	 * @param	Boolean			$recursive			Add also all sub folders and files
+	 * @param	Array			$exclude
 	 */
 	private static function addFolderToArchive(ZipArchive &$archive, $pathToFolder, $baseFolder, $recursive = true, array $exclude = array()) {
 		$files		= TodoyuFileManager::getFilesInFolder($pathToFolder);

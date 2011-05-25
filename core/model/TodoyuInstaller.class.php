@@ -254,6 +254,7 @@ class TodoyuInstaller {
 	 *
 	 * @param	String		$step
 	 * @param	Array		$result
+	 * @param	Array		$postData
 	 * @return	String
 	 */
 	private static function display($step, array $result = array(), array $postData = array()) {

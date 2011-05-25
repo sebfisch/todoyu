@@ -29,7 +29,7 @@ class TodoyuRole extends TodoyuBaseObject {
 	/**
 	 * Constructs a usergroup
 	 *
-	 * @param	Integer	$idUsergroup
+	 * @param	Integer	$idRole
 	 */
 	public function __construct($idRole) {
 		parent::__construct($idRole, 'system_role');

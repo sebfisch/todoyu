@@ -56,6 +56,7 @@ abstract class TodoyuWizard {
 	 *
 	 * @param	String	$stepName
 	 * @param	Array	$data
+	 * @return	TodoyuWizardStep
 	 */
 	public function save($stepName, array $data) {
 		return $this->getStep($stepName)->save($data);
@@ -66,7 +67,7 @@ abstract class TodoyuWizard {
 	/**
 	 * Render step of the wizard
 	 *
-	 * @param	String		$stepName
+	 * @param	Boolean|String		$stepName
 	 * @return 	String
 	 */
 	public function render($stepName = false) {
@@ -167,7 +168,7 @@ abstract class TodoyuWizard {
 	/**
 	 * Get step object
 	 *
-	 * @param	String		$step
+	 * @param	String		$stepName
 	 * @return	TodoyuWizardStep
 	 */
 	protected function getStep($stepName) {

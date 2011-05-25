@@ -342,7 +342,7 @@ class TodoyuSQLManager {
 	 * Build a query to add a column to a table
 	 *
 	 * @param	String		$table
-	 * @param	Array		$columnStructures
+	 * @param	Array		$columnStructure
 	 * @return	String
 	 */
 	private static function buildAddColumnQueriesFromStructure($table, array $columnStructure) {
@@ -520,6 +520,7 @@ class TodoyuSQLManager {
 	 * Execute the queries in the version update file
 	 *
 	 * @param	String		$updateFile			Path to update file
+	 * @return	Integer
 	 */
 	public static function executeQueriesFromFile($updateFile) {
 		$queries	= self::getQueriesFromFile($updateFile);
@@ -539,10 +540,10 @@ class TodoyuSQLManager {
 	 * @param	String	$sql
 	 * @return	String
 	 */
-	public static function cleanSQL($SQLString) {
-		$SQLString	= self::removeSQLComments($SQLString);
+	public static function cleanSQL($sql) {
+		$sql	= self::removeSQLComments($sql);
 
-		return $SQLString;
+		return $sql;
 	}
 
 
@@ -553,9 +554,9 @@ class TodoyuSQLManager {
 	 * @param	String	$sql
 	 * @return	String
 	 */
-	private static function removeSQLComments($SQLString) {
+	private static function removeSQLComments($sql) {
 		$cleanSQL	= array();
-		$lines		= explode("\n", $SQLString);
+		$lines		= explode("\n", $sql);
 
 		foreach($lines as $line) {
 			$line	= trim($line);
@@ -573,12 +574,12 @@ class TodoyuSQLManager {
 	/**
 	 * Check DB for existence of given tables, return missing ones
 	 *
-	 * @param	Array	$extTableNames
+	 * @param	Array	$tableNames
 	 * @return	Array
 	 */
-	public static function getMissingTables(array $tablesNames) {
+	public static function getMissingTables(array $tableNames) {
 		$dbTables	= Todoyu::db()->getTables();
-		$missingTables	= array_diff($tablesNames, $dbTables);
+		$missingTables	= array_diff($tableNames, $dbTables);
 
 		return array_flip($missingTables);
 	}

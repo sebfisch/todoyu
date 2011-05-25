@@ -243,6 +243,7 @@ class TodoyuDatabase {
 	 * Quote a string value.
 	 *
 	 * @param	String		$value
+	 * @param	Boolean		$escape
 	 * @return	String
 	 */
 	public function quote($value, $escape = false) {
@@ -856,7 +857,8 @@ class TodoyuDatabase {
 	 * Get ID of MM record
 	 *
 	 * @param	String		$table
-	 * @param	Integer		$idEntity1
+	 * @param	Integer		$fieldNameEntity1
+	 * @param	Integer		$fieldNameEntity2
 	 * @param	Integer		$idEntity2
 	 * @return	Integer
 	 */

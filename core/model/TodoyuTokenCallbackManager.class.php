@@ -62,6 +62,7 @@ class TodoyuTokenCallbackManager {
 	/**
 	 * Get registered callback to type and extID of token
 	 *
+	 * @param	Integer		$idToken
 	 * @return	String
 	 */
 	public static function getCallbackByTokenID($idToken) {
@@ -76,6 +77,7 @@ class TodoyuTokenCallbackManager {
 	/**
 	 * Get rendered content of callback of current token
 	 *
+	 * @param	String	$hash
 	 * @return	String
 	 */
 	public static function getCallbackResultByHash($hash) {

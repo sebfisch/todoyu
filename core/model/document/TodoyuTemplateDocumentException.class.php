@@ -31,9 +31,9 @@ class TodoyuTemplateDocumentException extends TodoyuException {
 	/**
 	 * Initialize document
 	 *
-	 * @param	Array		$data
-	 * @param	String		$template
-	 * @param	Array		$config
+	 * @param	String		$document
+	 * @param	String		$message
+	 * @param	Integer		$code
 	 */
 	public function __construct($document, $message = '', $code = 0) {
 		parent::__construct($message, $code);

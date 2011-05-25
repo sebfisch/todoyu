@@ -29,8 +29,7 @@ class TodoyuValidator {
 	/**
 	 * Validate string being email address
 	 *
-	 * @param	String		$email
-	 * @param	Array		$config
+	 * @param	String		$value
 	 * @return	Boolean
 	 */
 	public static function isEmail($value) {
@@ -46,7 +45,7 @@ class TodoyuValidator {
 	/**
 	 * Validate variable being numeric digit
 	 *
-	 * @param	String 		$digit
+	 * @param	String 		$value
 	 * @return	Boolean
 	 */
 	public static function isDigit($value) {
@@ -82,7 +81,7 @@ class TodoyuValidator {
 	/**
 	 * Validate string not being empty
 	 *
-	 * @param	String		$string
+	 * @param	String		$value
 	 * @return	String
 	 */
 	public static function isNotEmpty($value) {
@@ -174,7 +173,7 @@ class TodoyuValidator {
 	 * Validate string being of at least given minimum length
 	 *
 	 * @param	Integer		$value
-	 * @param	Array		$config
+	 * @param	Integer		$minLength
 	 * @return	Boolean
 	 */
 	public static function hasMinLength($value, $minLength) {
@@ -188,8 +187,8 @@ class TodoyuValidator {
 	/**
 	 * Validate string not being longer than given length
 	 *
-	 * @param	Integer		$value
-	 * @param	Array		$config
+	 * @param	String		$value
+	 * @param	Integer		$maxLength
 	 * @return	Boolean
 	 */
 	public static function hasMaxLength($value, $maxLength) {
@@ -204,7 +203,7 @@ class TodoyuValidator {
 	 * Validate string not containing given illegal characters
 	 *
 	 * @param	String		$value
-	 * @param	Array		$config
+	 * @param	Array		$validatorConfig
 	 * @return	Boolean
 	 */
 	public static function illegalChars($value, array $validatorConfig = array()) {

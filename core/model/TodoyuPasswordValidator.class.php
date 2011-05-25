@@ -118,6 +118,8 @@ class TodoyuPasswordValidator {
 	/**
 	 * Checks if password has a minimum length
 	 *
+	 * @param	String	$value
+	 * @param	Array	$config
 	 * @return	Boolean
 	 */
 	private function minLength($value, $config) {
@@ -134,6 +136,9 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Checks password for numbers
+	 *
+	 * @param	String	$value
+	 * @param	Array	$config
 	 */
 	private function hasNumbers($value, $config) {
 		$pattern= '/[0-9]+/';
@@ -148,6 +153,9 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Checks password for lower case
+	 *
+	 * @param	String	$value
+	 * @param	Array	$config
 	 */
 	private function hasLowerCase($value, $config) {
 		$pattern= '/[a-z]+/';
@@ -162,6 +170,9 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Checks password for upper case
+	 *
+	 * @param	String	$value
+	 * @param	Array	$config
 	 */
 	private function hasUpperCase($value, $config) {
 		$pattern= '/[A-Z]+/';
@@ -176,6 +187,9 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Checks if password has special chars
+	 *
+	 * @param	String	$value
+	 * @param	Array	$config
 	 */
 	private function hasSpecialChars($value, $config) {
 		$pattern= '/[^a-zA-Z0-9]+/';

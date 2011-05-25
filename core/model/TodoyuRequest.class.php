@@ -123,9 +123,9 @@ class TodoyuRequest {
 	/**
 	 * Get information for an uploaded file
 	 *
-	 * @param	String		$name
-	 * @param	String		$container
-	 * @return	Array		Or false if not found
+	 * @param	String				$name
+	 * @param	String|Boolean		$container
+	 * @return	Array|Boolean
 	 */
 	public static function getUploadFile($name, $container = false) {
 		$file	= false;
@@ -345,15 +345,15 @@ class TodoyuRequest {
 	/**
 	 * Send a POST request to another server
 	 *
-	 * @throws	TodoyuException
 	 * @param	String			$host			Host name
 	 * @param	String			$getQuery		Get query params. Ex: index.php?foo=bar
-	 * @param	Array:array		$data			Data to send over post
-	 * @param	String:data		$dataVar		Name of the data var
+	 * @param	Array			$data			Data to send over post
+	 * @param	String			$dataVar		Name of the data var
 	 * @param	Array			$headers		Extra header to send with the request
-	 * @param	Integer:80		$port			Server port
-	 * @param	Integer:30		$timeout		Timeout
+	 * @param	Integer			$port			Server port
+	 * @param	Integer			$timeout		Timeout
 	 * @return	Array
+	 * @throws	TodoyuException
 	 */
 	public static function sendPostRequest($host, $getQuery = '', array $data = array(), $dataVar = 'data', array $headers = array(), $port = 80, $timeout = 30) {
 			// Disable error handler

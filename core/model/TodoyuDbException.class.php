@@ -127,6 +127,8 @@ class TodoyuDbException extends Exception {
 
 	/**
 	 * Render database error in plain text
+	 *
+	 * @return	String
 	 */
 	public function getErrorAsPlain() {
 			// Remove full site path

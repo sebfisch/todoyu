@@ -149,6 +149,8 @@ class TodoyuLocaleManager {
 
 	/**
 	 * Send a cookie with locale setting of current user
+	 *
+	 * @param	Void|String		$locale
 	 */
 	public static function setLocaleCookie($locale = null) {
 		if( is_null($locale)) {
