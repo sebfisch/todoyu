@@ -313,7 +313,6 @@ class TodoyuDatabase {
 	 * @return	String
 	 */
 	public function buildSELECTquery($fields, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '') {
-
 		$query = 'SELECT ' . $fields . ' FROM ' . $table;
 
 		if( $where != '' ) {
