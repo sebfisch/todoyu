@@ -143,7 +143,6 @@ function Dwoo_Plugin_inArray(Dwoo $dwoo, $value, $array) {
  * @return	Boolean
  */
 function Dwoo_Plugin_unsetArrayValue(Dwoo $dwoo, $array, $deletionValue) {
-	TodoyuDebug::printInFirebug($array, '1');
 	foreach($array as $itemKey => $itemValue) {
 		if( $itemValue == $deletionValue ) {
 			unset($array[$itemKey]);
