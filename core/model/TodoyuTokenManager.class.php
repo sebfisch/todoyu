@@ -360,14 +360,16 @@ class TodoyuTokenManager {
 	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
 	 * @param	Integer		$idPersonOwner
-	 * @return	Boolean
+	 * @return	String|Boolean
 	 */
 	public static function isTokenStored($extID, $idTokenType, $idPersonOwner = 0) {
 		$extID			= intval($extID);
 		$idTokenType	= intval($idTokenType);
 		$idPersonOwner	= Todoyu::personid($idPersonOwner);
 
-		return TodoyuTokenManager::getTokenByOwner($extID, $idTokenType, $idPersonOwner)->getHash();
+		$token	= TodoyuTokenManager::getTokenByOwner($extID, $idTokenType, $idPersonOwner);
+
+		return $token ? true : false;
 	}
 
 }

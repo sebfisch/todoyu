@@ -428,7 +428,8 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {
-		$query		= rtrim(PATH_WEB, '/\\') . '/index.php';
+		$pathWeb	= PATH_WEB;
+		$query		= rtrim($pathWeb, '/\\') . '/index.php';
 		$queryParts	= array();
 
 			// Add question mark if there are query parameters
