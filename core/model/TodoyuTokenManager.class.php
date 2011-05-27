@@ -341,15 +341,20 @@ class TodoyuTokenManager {
 		$extID			= intval($extID);
 		$idTokenType	= intval($idTokenType);
 
-		$urlParams = array(
-			'token'	=> TodoyuTokenManager::getTokenByOwner($extID, $idTokenType)->getHash()
-		);
+		$token	= TodoyuTokenManager::getTokenByOwner($extID, $idTokenType);
+		if( $token !== false ) {
+			$urlParams = array(
+				'token'	=> $token->getHash()
+			);
 
-		if( $download ) {
-			$urlParams['download']	= 1;
+			if( $download ) {
+				$urlParams['download']	= 1;
+			}
+
+			return TodoyuString::buildUrl($urlParams, '', true);
 		}
 
-		return TodoyuString::buildUrl($urlParams, '', true);
+		return false;
 	}
 
 
