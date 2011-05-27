@@ -173,7 +173,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 * Update toggler icon
+	 * Update toggle (expand/collapse) icon
 	 *
 	 * @method	updateToggleIcon
 	 * @param	{String}	elementPrefix
@@ -367,6 +367,35 @@ Todoyu.Ui = {
 		} else {
 			element.removeClassName('hover');
 		}
+	},
+
+
+
+	/**
+	 * Set favIcon from file at given path
+	 *
+	 * @method	setFavIcon
+	 * @param	{String}	hrefIcon
+	 */
+	setFavIcon: function(hrefIcon) {
+		var link	= document.createElement('link');
+		link.type	= 'image/x-icon';
+		link.rel	= 'shortcut icon';
+
+		link.href	= hrefIcon
+
+		$$('head')[0].appendChild(link);
+	},
+
+
+
+	/**
+	 * Set favIcon back to original one
+	 *
+	 * @method	resetFavIcon
+	 */
+	resetFavIcon: function() {
+		this.setFavIcon('favicon.ico');
 	},
 
 
