@@ -75,6 +75,17 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 
 
 	/**
+	 * Set content of comment
+	 *
+	 * @param	String		$content
+	 */
+	public function setCommentText($content) {
+		$this->config['comment'] = $content;
+	}
+
+
+
+	/**
 	 * Comment fields are never stored in the database
 	 *
 	 * @return	Boolean
