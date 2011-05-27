@@ -342,11 +342,11 @@ class TodoyuTokenManager {
 		$idTokenType	= intval($idTokenType);
 
 		$token	= TodoyuTokenManager::getTokenByOwner($extID, $idTokenType);
+
 		if( $token !== false ) {
 			$urlParams = array(
 				'token'	=> $token->getHash()
 			);
-
 			if( $download ) {
 				$urlParams['download']	= 1;
 			}
