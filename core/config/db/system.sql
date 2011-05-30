@@ -12,7 +12,7 @@ CREATE TABLE `system_role` (
 	`date_update` int(10) unsigned NOT NULL,
 	`id_person_create` int(10) unsigned NOT NULL,
 	`deleted` tinyint(1) NOT NULL DEFAULT '0',
-	`title` varchar(32) NOT NULL,
+	`title` varchar(64) NOT NULL,
 	`is_active` tinyint(1) NOT NULL DEFAULT '0',
 	`description` text NOT NULL,
 	PRIMARY KEY (`id`)
