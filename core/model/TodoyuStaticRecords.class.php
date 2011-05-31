@@ -170,11 +170,11 @@ class TodoyuStaticRecords {
 		}
 
 			// Reform the array to work as options source
-		$reform	= array(
-			$keyValue	=> 'value',
-			$keyLabel	=> 'label'
+		$reformConfig	= array(
+				$keyValue	=> 'value',
+				$keyLabel	=> 'label'
 		);
-		$options= TodoyuArray::reform($records, $reform);
+		$options= TodoyuArray::reform($records, $reformConfig);
 
 			// Sort array by label
 		$options= TodoyuArray::sortByLabel($options, 'label');

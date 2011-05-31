@@ -214,11 +214,11 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 	 * Test TodoyuArray::reform
 	 */
 	public function testReform() {
-		$reform	= array(
+		$reformConfig	= array(
 			'id'		=> 'value',
 			'firstname'	=> 'label'
 		);
-		$new	= TodoyuArray::reform($this->array, $reform);
+		$new	= TodoyuArray::reform($this->array, $reformConfig);
 
 		$this->assertType('array', $new);
 		$this->assertTrue(array_key_exists('value', $new[0]));
