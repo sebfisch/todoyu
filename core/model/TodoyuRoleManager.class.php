@@ -47,6 +47,20 @@ class TodoyuRoleManager {
 
 
 	/**
+	 * Get label (title) of role with given ID
+	 *
+	 * @param	Integer		$idRole
+	 * @return	String
+	 */
+	public static function getLabel($idRole) {
+		$role	= self::getRole($idRole);
+
+		return $role['title'];
+	}
+
+
+
+	/**
 	 * Get informations about the roles defined in $groupIDs
 	 *
 	 * @param	Array		$roleIDs		IDs of the groups to the get information from
