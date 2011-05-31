@@ -162,10 +162,11 @@ function Dwoo_Plugin_unsetArrayValue(Dwoo $dwoo, $array, $deletionValue) {
  *
  * @param	Dwoo_Compiler 	$compiler
  * @param	String			$string
+ * @param	Boolean			$doubleEncode
  * @return	String
  */
-function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string) {
-	return 'htmlentities(' . $string . ', ENT_QUOTES, \'UTF-8\', false)';
+function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string, $doubleEncode = false) {
+	return 'htmlentities(' . $string . ', ENT_QUOTES, \'UTF-8\', ' . $doubleEncode . ')';
 }
 
 
