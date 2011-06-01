@@ -140,6 +140,19 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 
 
 	/**
+	 * Set a value
+	 * Sets the value only in the object, this in not persistent
+	 *
+	 * @param	String		$key
+	 * @param	Mixed		$value
+	 */
+	public function set($key, $value) {
+		$this->data[$key] = $value;
+	}
+
+
+
+	/**
 	 * Check whether a property is set
 	 *
 	 * @param	String		$key
