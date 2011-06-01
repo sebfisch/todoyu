@@ -20,8 +20,8 @@
 	<label index="servercheck.writableCheck">フォルダ / ファイルの書込み権限</label>
 	<label index="servercheck.writable">書込み可能</label>
 	<label index="servercheck.notWritable">書込めない</label>
-	<label index="servercheck.ready">サーバは todoyu 2.0 を動かすことが可能です。</label>
-	<label index="servercheck.notReady">サーバは todoyu 2.0 を動かすことができません。</label>
+	<label index="servercheck.ready">サーバは todoyu 2.1 を動かすことが可能です。</label>
+	<label index="servercheck.notReady">サーバは todoyu 2.1 を動かすことができません。</label>
 	<label index="dbconnection.title">データベース接続の設定</label>
 	<label index="dbconnection.button">データベースの設定を保存</label>
 	<label index="dbconnection.server">サーバ</label>

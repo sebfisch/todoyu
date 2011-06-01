@@ -20,8 +20,8 @@
 	<label index="servercheck.writableCheck">Cartelle / file scrivibili</label>
 	<label index="servercheck.writable">Scrivibile</label>
 	<label index="servercheck.notWritable">NON SCRIVIBILE</label>
-	<label index="servercheck.ready">Il server è pronto per todoyu 2.0</label>
-	<label index="servercheck.notReady">Il server NON è pronto per todoyu 2.0</label>
+	<label index="servercheck.ready">Il server è pronto per todoyu 2.1</label>
+	<label index="servercheck.notReady">Il server NON è pronto per todoyu 2.1</label>
 	<label index="dbconnection.title">Impostazione della connessione al database</label>
 	<label index="dbconnection.button">Salva la configurazione del database</label>
 	<label index="dbconnection.server">Server</label>

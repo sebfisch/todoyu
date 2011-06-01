@@ -20,8 +20,8 @@
 	<label index="servercheck.writableCheck">Folders / Files Writable</label>
 	<label index="servercheck.writable">Writable</label>
 	<label index="servercheck.notWritable">NOT WRITABLE</label>
-	<label index="servercheck.ready">Server is ready for todoyu 2.0</label>
-	<label index="servercheck.notReady">Server is NOT ready for todoyu 2.0</label>
+	<label index="servercheck.ready">Server is ready for todoyu 2.1</label>
+	<label index="servercheck.notReady">Server is NOT ready for todoyu 2.1</label>
 	<label index="dbconnection.title">Setup Database Connection</label>
 	<label index="dbconnection.button">Save Database Configuration</label>
 	<label index="dbconnection.server">Server</label>

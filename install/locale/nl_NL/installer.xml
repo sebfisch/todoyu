@@ -20,8 +20,8 @@
 	<label index="servercheck.writableCheck">Beschrijfbare mappen / bestanden</label>
 	<label index="servercheck.writable">Beschrijfbaar</label>
 	<label index="servercheck.notWritable">NIET BESCHRIJFBAAR</label>
-	<label index="servercheck.ready">Server is gereed voor todoyu 2.0</label>
-	<label index="servercheck.notReady">Server is NIET gereed voor todoyu 2.0</label>
+	<label index="servercheck.ready">Server is gereed voor todoyu 2.1</label>
+	<label index="servercheck.notReady">Server is NIET gereed voor todoyu 2.1</label>
 	<label index="dbconnection.title">Database-verbinding instellen</label>
 	<label index="dbconnection.button">Database-configuratie opslaan</label>
 	<label index="dbconnection.server">Server</label>

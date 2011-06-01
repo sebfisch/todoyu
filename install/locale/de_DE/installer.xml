@@ -20,8 +20,8 @@
 	<label index="servercheck.writableCheck">Ordner / Dateien schreibbar</label>
 	<label index="servercheck.writable">schreibbar</label>
 	<label index="servercheck.notWritable">NICHT SCHREIBBAR</label>
-	<label index="servercheck.ready">Server ist bereit für todoyu 2.0</label>
-	<label index="servercheck.notReady">Server ist NICHT bereit für todoyu 2.0</label>
+	<label index="servercheck.ready">Server ist bereit für todoyu 2.1</label>
+	<label index="servercheck.notReady">Server ist NICHT bereit für todoyu 2.1</label>
 	<label index="dbconnection.title">Datenbankserver einrichten</label>
 	<label index="dbconnection.button">Datenbankkonfiguration speichern</label>
 	<label index="dbconnection.server">Server</label>

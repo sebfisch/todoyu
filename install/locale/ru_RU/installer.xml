@@ -20,8 +20,8 @@
 	<label index="servercheck.writableCheck">Каталоги/файлы для записи</label>
 	<label index="servercheck.writable">Доступны</label>
 	<label index="servercheck.notWritable">НЕДОСТУПНЫ</label>
-	<label index="servercheck.ready">Сервер готов к установке todoyu 2.0</label>
-	<label index="servercheck.notReady">Сервер не готов к установке todoyu 2.0</label>
+	<label index="servercheck.ready">Сервер готов к установке todoyu 2.1</label>
+	<label index="servercheck.notReady">Сервер не готов к установке todoyu 2.1</label>
 	<label index="dbconnection.title">Связь с базой данных</label>
 	<label index="dbconnection.button">Сохранить конфигурацию</label>
 	<label index="dbconnection.server">Сервер</label>
