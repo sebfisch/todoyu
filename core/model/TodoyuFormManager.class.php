@@ -60,15 +60,18 @@ class TodoyuFormManager {
 		$idRecord	= intval($idRecord);
 
 			// Make form object
-		$form 	= self::getForm($xmlPath, $index);
+		$form 	= self::getForm($xmlPath, $idRecord);
 
 			// Load (/preset) form data
-		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $index);
+		$data	= TodoyuFormHook::callLoadData($xmlPath, $data, $idRecord);
 
 			// Set form data
 		$form->setFormData($data);
 		$form->setRecordID($idRecord);
 
+		/**
+		 * @var	TodoyuFormElement_DatabaseRelation	$field
+		 */
 		$field			= $form->getField($fieldName);
 		$form['name']	= $formName;
 
