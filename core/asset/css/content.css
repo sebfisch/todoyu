@@ -17,6 +17,13 @@ span.iconLarge {
 	height:32px;
 }
 
+.icon.disabled {
+	opacity: 0.4;
+	filter:alpha(opacity = 40);
+	cursor:no-drop !important;
+	cursor:not-allowed !important;
+}
+
 .link {
 	cursor:pointer;
 }
