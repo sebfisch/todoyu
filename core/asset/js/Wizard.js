@@ -102,6 +102,8 @@ Todoyu.Wizard = {
 
 		callback	= callback || Prototype.emptyFunction;
 
+		Todoyu.Ui.closeRTE('wizard-form');
+
 		this.getForm().request({
 			onComplete: this.onSubmitted.bind(this, callback)
 		});
