@@ -19,10 +19,10 @@
 *****************************************************************************/
 
 Todoyu::$CONFIG['SYSTEM']['name'] 		= 'todoyu';
-Todoyu::$CONFIG['SYSTEM']['email']		= 'kstenschke@snowflake.ch';
-Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_GB';
-Todoyu::$CONFIG['SYSTEM']['timezone']	= 'Europe/Amsterdam';
-Todoyu::$CONFIG['SYSTEM']['todoyuURL']	= 'http://kastodoyutrunk.srv05.ch1.snowflake.ch';
+Todoyu::$CONFIG['SYSTEM']['email']		= 'install@todoyu.com';
+Todoyu::$CONFIG['SYSTEM']['locale']		= 'en_GB.utf8';
+Todoyu::$CONFIG['SYSTEM']['timezone']	= 'Europe/Zurich';
 
-Todoyu::$CONFIG['SYSTEM']['encryptionKey']	= 'YTk5NzVhNzM5NjJlNGM5YWJkN2UyN2RiODdjMzUxZjQ';
+Todoyu::$CONFIG['SYSTEM']['encryptionKey']	= 'N2Q1ZDA1ZTQ2NGZiNjRjODM4NGVjMzYyYmFlOTI3MDk';
+
 ?>
