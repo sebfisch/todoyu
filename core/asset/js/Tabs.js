@@ -148,6 +148,21 @@ Todoyu.Tabs = {
 
 
 	/**
+	 * Set first tab active
+	 *
+	 * @param	{String|Element}	list
+	 */
+	setFirstActive: function(list) {
+		var first	= this.getFirstTab(list);
+
+		if( first ) {
+			this.setActiveByElement(first);
+		}
+	},
+
+
+
+	/**
 	 * Get currently active tab in a list
 	 *
 	 * @method	getActive
@@ -165,15 +180,20 @@ Todoyu.Tabs = {
 	 *
 	 * @method	getActiveKey
 	 * @param	{String}		list		List or its ID
-	 * @return	{String}
+	 * @return	{String|Boolean}
 	 */
 	getActiveKey: function(list) {
 		var active = this.getActive(list);
 
+		if( ! active ) {
+			this.setFirstActive(list);
+			active = this.getActive(list);
+		}
+
 		if( active ) {
 			return active.id.split('-').last();
 		} else {
-			return null;
+			return false;
 		}
 	},
 
