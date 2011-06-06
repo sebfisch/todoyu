@@ -62,18 +62,25 @@ Todoyu.DateField = {
 		var elementID		= event.element().id;
 		var datetimeString	= $F(elementID);
 
-		var formElement	= $(elementID).up('div.fElement');
-		var elementLabel= $(formElement).down('div.fLabel');
+		var formElement			= $(elementID).up('div.fElement');
+		var elementLabel		= $(formElement).down('div.fLabel');
 
 			// Are parts of datetime string being changed when parsed by calendar?
 		if( ! Todoyu.Time.isDateString(datetimeString, format) ) {
+				// Notify invalid value
 			Todoyu.notifyError('[LLL:core.date.warning.dateformat.invalid]');
 
 			formElement.addClassName('error');
 			elementLabel.addClassName('error');
 		} else {
+				// Unset invalid-style
 			formElement.removeClassName('error');
 			elementLabel.removeClassName('error');
+				// Unset error message
+			var elementErrorMessage	= formElement.down('div.errorMessage');
+			if( Todoyu.exists(elementErrorMessage) ) {
+				elementErrorMessage.update('');
+			}
 		}
 	},
 

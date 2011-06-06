@@ -28,8 +28,6 @@ class TodoyuFreezeManager {
 
 	const TABLE = 'system_freeze';
 
-
-
 	/**
 	 * Freeze an element
 	 * Check first if there is already an identical freeze of this element.
@@ -56,7 +54,7 @@ class TodoyuFreezeManager {
 
 
 	/**
-	 * Get a freezed element
+	 * Unfreeze a freezed element
 	 *
 	 * @param	Integer		$idFreeze
 	 * @return	Mixed
