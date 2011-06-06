@@ -545,6 +545,27 @@ Todoyu.Helper = {
 		}
 
 		return '' + number;
+	},
+
+
+
+	/**
+	 * Cron text to requested length
+	 *
+	 * @method	cropText
+	 * @param	{String}		text
+	 * @param	{Number=100}	length
+	 * @param	{String=...}	append		Appendix
+	 */
+	cropText: function(text, length, append) {
+		length	= length || 100;
+		append	= append === undefined ? '...' : append;
+
+		if( text.length <= length ) {
+			return text;
+		} else {
+			return text.substr(0, length-append.length) + append;
+		}
 	}
 
 };
