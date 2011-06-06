@@ -46,6 +46,7 @@ Todoyu::$CONFIG['LOCALE']['available']	= array(
 	'ja_JP',
 	'it_IT',
 	'es_CO',
+	'sl_SL'
 	/*,'hr_HR','sr_ME'*/
 );
 
@@ -66,7 +67,8 @@ Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'sr_RS' => array('sr_RS.utf8', 'sr_RS', 'sr'), // Serbian (Serbia)
 	'it_IT' => array('it_IT.utf8', 'it_IT', 'it'), // Italian
 	'es_CO' => array('es_CO.utf8', 'es_CO', 'es'), // Spanish (Columbia)
-	'ja_JP' => array('ja_JP', 'ja', 'ja_JP.eucjp', 'ja_JP.ujis', 'japanese', 'japanese.euc') // Japanese
+	'ja_JP' => array('ja_JP', 'ja', 'ja_JP.eucjp', 'ja_JP.ujis', 'japanese', 'japanese.euc'), // Japanese
+	'sl_SI'	=> array('sl_SI.utf8')
 );
 
 	// Fallback locales for labels
