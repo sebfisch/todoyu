@@ -239,50 +239,6 @@ class TodoyuSQLParser {
 
 
 	/**
-	 * Get structural declarations of all tables' columns from SQL
-	 *
-	 * @param	Array	$tableNames
-	 * @param	String	$tablesSql
-	 * @return	Array
-	 */
-	public function getAllTableStructures(array $tableNames, $tablesSql = '') {
-		if( $tablesSql == '' ) {
-			$tablesSql	= self::getInstalledExtTablesSqls();
-		}
-		if( count($tableNames) == 0 ) {
-			$tableNames	= TodoyuSQLParser::extractTableNames($tablesSql);
-		}
-
-			// Init structural definition data array
-		$structures	= array();
-		foreach($tableNames as $num => $tableName) {
-			$structures[$tableName]['columns'] = array();
-		}
-
-			// Split SQL into single table definitions, parse them
-		$tablesSqlArr	= explode(';', $tablesSql);
-		foreach($tablesSqlArr as $num => $tableSql) {
-				// Identify table, collect all column definitions per table
-			$tableName	= self::extractSingleTableName($tableSql);
-
-			if( $tableName != '' ) {
-				$tableColumns	= self::extractColumns($tableSql);
-
-					// Append columns to table structure data
-				$structures[$tableName]['columns']	= array_merge($structures[$tableName]['columns'], $tableColumns);
-
-				if( ! array_key_exists('keys', $structures[$tableName]) ) {
-					$structures[$tableName]['keys']		= self::extractTableKeys($tableSql);
-				}
-			}
-		}
-
-		return $structures;
-	}
-
-
-
-	/**
 	 * Extract table structure definition from SQL (separated into table and columns definition)
 	 *
 	 * @param	String	$sql
@@ -329,85 +285,6 @@ class TodoyuSQLParser {
 		return $columns;
 	}
 
-
-
-	/**
-	 * Find differences between tables' column structures in 'tables.sql' files and DB
-	 *
-	 * @param	Array	$newTables
-	 * @param	Array	$sqlStructures
-	 * @param	Array	$dbStructures
-	 * @return	Array
-	 */
-	public static function getStructureDifferencesX($newTables, array $sqlStructures, array $dbStructures) {
-		$sqlStructuresBak	= $sqlStructures;
-
-			// Compare each table, column from DB with declaration in 'tables.sql', filter out differing ones
-		foreach($dbStructures as $tableName => $tableStructure) {
-			foreach($tableStructure['columns'] as $columnName => $columnStructure) {
-					// Check if column is declared identic in DB and tables.sql
-
-				$dbColumn	= $columnStructure;
-				$sqlColumn	= $sqlStructures[$tableName]['columns'][$columnName];
-
-				if( is_array($sqlColumn) ) {
-					$colDiff	= array_diff_assoc($sqlColumn, $dbColumn);
-					if( count($colDiff) === 0 ) {
-							// Remove identic defined
-						unset($sqlStructures[$tableName]['columns'][$columnName]);
-					} else {
-							// Add lookups
-						$sqlStructures[$tableName]['columns'][$columnName . '_SQL']	= $sqlColumn;
-						$sqlStructures[$tableName]['columns'][$columnName . '_DB']	= $dbColumn;
-						$sqlStructures[$tableName]['columns'][$columnName . '_DIFF']= $colDiff;
-					}
-				}
-			}
-		}
-
-			// Cleanup
-		foreach($sqlStructures as $tableName => $tableStructure) {
-				// Remove all tables that have been emptied completely
-			if( count($tableStructure['columns']) === 0 ) {
-				unset($sqlStructures[$tableName]);
-			} else {
-
-					// Parse diff result, add updating queries
-				foreach($sqlStructures[$tableName]['columns'] as $colName => $colStructure) {
-					if( strstr($colName, '_SQL') === false && strstr($colName, '_DB') === false && strstr($colName, '_DIFF') === false ) {
-						$action	= '';
-
-						if( array_key_exists($tableName, $newTables) ) {
-							if( $colName === 'id' ) {
-									// Query to create table with id-field
-								$action	= 'CREATE';
-							}
-						} else {
-								// No Diff? column is to be added new
-							if( ! array_key_exists($colName . '_DIFF', $sqlStructures[$tableName]['columns']) ) {
-								$action	= 'ADD';
-								$sqlStructures[$tableName]['columns'][$colName]['action']	= $action;
-							} else {
-									// Diff exists, column is to be altered
-								$action	= 'ALTER';
-								$sqlStructures[$tableName]['columns'][$colName]	= $sqlStructures[$tableName]['columns'][$colName . '_SQL'];
-								$sqlStructures[$tableName]['columns'][$colName]['action']	= $action;
-								unset($sqlStructures[$tableName]['columns'][$colName . '_DB']);
-								unset($sqlStructures[$tableName]['columns'][$colName . '_SQL']);
-							}
-						}
-
-						if( $action !== '' ) {
-								// Get query
-							$sqlStructures[$tableName]['columns'][$colName]['query']	= self::getUpdatingQuery($action, $tableName, $colName, $sqlStructures[$tableName]['columns'][$colName], $sqlStructuresBak);
-						}
-					}
-				}
-			}
-		}
-
-		return $sqlStructures;
-	}
 
 
 
