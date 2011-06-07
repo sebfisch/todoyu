@@ -253,7 +253,7 @@ class TodoyuMail extends PHPMailerLite {
 
 		$email		= $person->getEmail();
 
-		if( empty($email) ) {
+		if( $email === false ) {
 			return false;
 		}
 
@@ -276,7 +276,7 @@ class TodoyuMail extends PHPMailerLite {
 
 		$email		= $person->getEmail();
 
-		if( empty($email) ) {
+		if( $email === false ) {
 			return false;
 		}
 
@@ -310,7 +310,7 @@ class TodoyuMail extends PHPMailerLite {
 
 		$email		= $person->getEmail();
 
-		if( empty($email) ) {
+		if( $email === false ) {
 			return false;
 		}
 
