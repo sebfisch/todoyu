@@ -150,15 +150,15 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 */
 	handleEmptyResult: function(showMessage) {
 		new Effect.Highlight(this.element, {
-			'startcolor':	'#ff0000',
-			'endcolor':		'#ffffff',
-			'duration':		2.0
+			startcolor:	'#ff0000',
+			endcolor:	'#ffffff',
+			duration:	2.0
 		});
 
 		this.clearValue();
 
 		if( showMessage ) {
-			Todoyu.notifyInfo('[LLL:core.global.form.ac.noResults]');
+			Todoyu.notifyInfo('[LLL:core.form.ac.noResults]');
 		}
 	},
 
