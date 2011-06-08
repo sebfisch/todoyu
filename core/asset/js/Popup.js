@@ -175,11 +175,22 @@ Todoyu.Popup = Class.create(Window, {
 		Todoyu.Popups.onDestroy(popup);
 	},
 
+
+
+	/**
+	 * Wrapper for close method
+	 * Prevent close callback loops
+	 *
+	 * @param	{Function}	$super
+	 */
 	close: function($super) {
 		this.isClosing = true;
 
+		Todoyu.Ui.closeRTE(this.content);
+
 		$super();
 	},
+
 
 
 	/**
