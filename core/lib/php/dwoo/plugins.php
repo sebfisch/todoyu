@@ -35,12 +35,27 @@
  *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$key		label key
- * @param	Boolean			$plain		If true, the label needs a LLL: prefix to be recognized as label. Used if labelkeys and plaintext is possible
  * @param	String			$locale		locale (de,en,...)
  * @return	String
  */
 function Dwoo_Plugin_Label_compile(Dwoo_Compiler $compiler, $key, $locale = null) {
 	return 'TodoyuLabelManager::getLabel(' . $key . ', ' . $locale . ')';
+}
+
+/**
+ * Dwoo plugin function for label translation with dynamic values
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo			$dwoo
+ * @param	String			$key		label key
+ * @param	Array			$values		Data variables
+ * @param	String			$locale		locale (de_DE,en_GB,...)
+ * @return	String
+ */
+function Dwoo_Plugin_LabelFormat(Dwoo $dwoo, $key, array $values, $locale = null) {
+	return TodoyuLabelManager::getFormatLabel($key, $values, $locale);
 }
 
 
@@ -277,10 +292,10 @@ function Dwoo_Plugin_debug(Dwoo $dwoo, $variable, $phpFormat = false) {
  *
  * @param	Dwoo 		$dwoo
  * @param	Mixed		$variable
- * @return	String
+ * @param	String		$label
  */
-function Dwoo_Plugin_firebug_compile(Dwoo_Compiler $compiler, $variable) {
-	return 'TodoyuDebug::printInFirebug(' . $variable . ')';
+function Dwoo_Plugin_firebug(Dwoo $dwoo, $variable, $label = 'dwoo debug') {
+	TodoyuDebug::printInFirebug($variable, $label);
 }
 
 
