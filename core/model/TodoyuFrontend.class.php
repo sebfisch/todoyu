@@ -26,6 +26,8 @@
  */
 class TodoyuFrontend {
 
+	private static $navi = array();
+
 	/**
 	 * Get active tab
 	 *
@@ -117,22 +119,35 @@ class TodoyuFrontend {
 	 * @param	String		$href
 	 * @param	Integer		$position
 	 * @param	String		$target
+	 * @param	Boolean		$override
+	 * @return	Boolean
 	 */
-	public static function addMenuEntry($key, $label, $href, $position = 50, $target = '') {
-		if( ! is_array(Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]) ) {
-			Todoyu::$CONFIG['FE']['NAVI']['entries'][$key] = array();
+	public static function addMenuEntry($key, $label, $href, $position = 50, $target = '', $override = false) {
+
+		if( array_key_exists($key, self::$navi) && $override === false ) {
+			return false;
 		}
 
-		Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['key']		= $key;
-		Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['label']		= $label;
-		Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['href']		= $href;
+		if( ! array_key_exists($key, self::$navi) || $override ) {
+			if( ! array_key_exists($key, self::$navi) ) {
+				self::$navi[$key] = array();
+			}
 
-		if( ! isset(Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['position']) ) {
-			Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['position']	= $position;
-		}
+			self::$navi[$key]['key']		= $key;
+			self::$navi[$key]['label']		= Todoyu::Label($label);
+			self::$navi[$key]['href']		= $href;
 
-		if( $target !== '' ) {
-			Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]['target']	= $target;
+			if( ! isset(self::$navi[$key]['position']) ) {
+				self::$navi[$key]['position']	= $position;
+			}
+
+			if( $target !== '' ) {
+				self::$navi[$key]['target']	= $target;
+			}
+
+			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -181,7 +196,7 @@ class TodoyuFrontend {
 	 * @param	String		$type
 	 */
 	public static function addSubmenuEntry($parentKey, $key, $label, $href, $position = 50, $type = '') {
-		Todoyu::$CONFIG['FE']['NAVI']['entries'][$parentKey]['submenu'][] = array(
+		self::$navi[$parentKey]['submenu'][] = array(
 			'key'		=> $key,
 			'label'		=> Todoyu::Label($label),
 			'href'		=> $href,
@@ -198,7 +213,7 @@ class TodoyuFrontend {
 	 * @param	String		$key		Entry key
 	 */
 	public static function removeMenuEntry($key) {
-		unset(Todoyu::$CONFIG['FE']['NAVI']['entries'][$key]);
+		unset(self::$navi[$key]);
 	}
 
 
@@ -235,27 +250,23 @@ class TodoyuFrontend {
 	 * @return	Array
 	 */
 	public static function getMenuEntries() {
-		$tabs	= Todoyu::$CONFIG['FE']['NAVI']['entries'];
-
 		$active	= self::getActiveTab();
 
-		if( array_key_exists($active, $tabs) ) {
-			$tabs[$active]['active'] = true;
+		if( array_key_exists($active, self::$navi) ) {
+			self::$navi[$active]['active'] = true;
 		}
 
 			// Get label for menu entry and sort sub menus.
-		foreach($tabs as $index => $tab) {
-			$tabs[$index]['label'] = Todoyu::Label($tabs[$index]['label']);
+		foreach(self::$navi as $index => $tab) {
+			self::$navi[$index]['label'] = Todoyu::Label($tab['label']);
 
-			if( $tabs[$index]['submenu'] ) {
+			if( $tab['submenu'] ) {
 					// Sort by 'position', remove duplicate entries
-				$tabs[$index]['submenu'] = TodoyuArray::sortByLabel($tabs[$index]['submenu'], 'position', false, false, false, SORT_REGULAR, 'href');
+				self::$navi[$index]['submenu'] = TodoyuArray::sortByLabel($tab['submenu'], 'position', false, false, false, SORT_REGULAR, 'href');
 			}
 		}
 
-		$tabs = TodoyuArray::sortByLabel($tabs, 'position');
-
-		return $tabs;
+		return TodoyuArray::sortByLabel(self::$navi, 'position');
 	}
 
 
