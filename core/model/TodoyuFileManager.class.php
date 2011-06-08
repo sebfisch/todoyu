@@ -73,7 +73,7 @@ class TodoyuFileManager {
 	 * @return 	String
 	 */
 	public static function pathWeb($absolutePath, $prependDomain = false) {
-		$pathWeb	= str_replace('\\', '/', str_replace(PATH . DIR_SEP, '', self::pathAbsolute($absolutePath)));
+		$pathWeb = str_replace('\\', '/', str_replace(PATH . DIR_SEP, '', self::pathAbsolute($absolutePath)));
 
 		if( $prependDomain ) {
 			$pathWeb = TODOYU_URL . '/' . $pathWeb;
@@ -286,7 +286,7 @@ class TodoyuFileManager {
 	 */
 	public static function saveTemplatedFile($savePath, $templateFile, array $data = array(), $wrapAsPhp = true) {
 		$savePath		= self::pathAbsolute($savePath);
-		$templateFile	= self::pathAbsolute($templateFile);
+		$templateFile	= self::pathWeb($templateFile);
 
 			// Render file content
 		$content= Todoyu::render($templateFile, $data);

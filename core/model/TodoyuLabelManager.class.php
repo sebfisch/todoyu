@@ -86,14 +86,14 @@ class TodoyuLabelManager {
 	 * Get label which will be parsed with wildcards like printf()
 	 *
 	 * @param	String		$labelKey
-	 * @param	Array		$wildcards
+	 * @param	Array		$data
 	 * @param	String		$locale
 	 * @return	String
 	 */
-	public static function getFormatLabel($labelKey, array $wildcards = array(), $locale = null) {
+	public static function getFormatLabel($labelKey, array $data = array(), $locale = null) {
 		$label	= self::getLabel($labelKey, $locale);
 
-		return vsprintf($label, $wildcards);
+		return vsprintf($label, $data);
 	}
 
 
