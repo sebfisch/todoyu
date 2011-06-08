@@ -8,6 +8,7 @@
 	<label index="D2MshortY2">%Y年%m月%d日</label>
 	<label index="D2Mshort">%m月%d日</label>
 	<label index="D2MshortTime">%m月%d日 %H:%M</label>
+	<label index="dShort">%a</label>
 	<label index="DshortD2M2">%m月%d日 (%a)</label>
 	<label index="D2MlongY4">%Y年%m月%d日</label>
 	<label index="MlongD2">%m月%d日</label>

@@ -50,4 +50,5 @@
 	<label index="monthly">月次</label>
 	<label index="yearly">年次</label>
 	<label index="today">今日</label>
+	<label index="warning.dateformat.invalid">無効な日付を検出 (保存時に変更されます)</label>
 </labels>

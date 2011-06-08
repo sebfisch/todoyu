@@ -4,7 +4,7 @@
 	<label index="type.install">todoyu のインストール</label>
 	<label index="type.update">todoyu のアップデート</label>
 	<label index="locale.title">インストーラの言語選択</label>
-	<label index="locale.selectthislocale">日本語で todoyu をインストール</label><!-- name of the current locale language -->
+	<label index="locale.selectthislocale">日本語で todoyu をインストール</label>
 	<label index="locale.text">インストール時に使用する言語を選択してください:</label>
 	<label index="license.eula">ライセンス使用許諾契約</label>
 	<label index="license.lgpl">以下のサードパーティライブラリは LGPL v2.1 のもとで許諾されます</label>
@@ -39,6 +39,7 @@
 	<label index="dbselect.dbEmpty">データなし</label>
 	<label index="dbselect.dbNotEmpty">データあり</label>
 	<label index="dbselect.tables">テーブル</label>
+	<label index="dbselect.manual">セキュリティ上の理由から利用可能なデータベースの検出が無効になっていて上記の選択欄が全くオプションを含んでいないのであれば、ここでデータベースの名前を直接入力してください: </label>
 	<label index="importtables.title">データベースのテーブルをインポート</label>
 	<label index="importtables.button">データベースのテーブルをインポート</label>
 	<label index="importtables.coretables">TODOYU のメインなデータベースのテーブル</label>
