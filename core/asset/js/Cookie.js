@@ -50,7 +50,7 @@ Todoyu.Cookie = {
 
 		var payload = Todoyu.Cookie.retrieve();
 
-		if( data == false && payload ) {
+		if( ! data && payload ) {
 			Todoyu.Cookie.data = payload.evalJSON();
 		} else {
 			Todoyu.Cookie.data = data || {};

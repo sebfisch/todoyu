@@ -416,16 +416,12 @@ Todoyu.Time = {
 		var parts		= this.getDateTimeStringParts(dateString, format);
 		var partsParsed	= this.getDateTimeStringPartsParsed(dateString, format);
 
-		if( parts.year != partsParsed.year ||
-			parts.month != partsParsed.month ||
-			parts.day != partsParsed.day ||
-			parts.hours != partsParsed.hours ||
-			parts.minutes != partsParsed.minutes
-		) {
-			return false;
-		}
-
-		return true;
+			// Isn't date string if any part differs unparsed from parsed
+		return ! (	parts.year != partsParsed.year ||
+					parts.month != partsParsed.month ||
+					parts.day != partsParsed.day ||
+					parts.hours != partsParsed.hours ||
+					parts.minutes != partsParsed.minutes );
 	},
 
 

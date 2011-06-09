@@ -97,7 +97,7 @@ class TodoyuTime {
 		$minute	= date('i', $timestamp) + 0;
 		$second	= date('s', $timestamp) + 0;
 
-		return $hour * self::SECONDS_HOUR + $minute * self::SECONDS_MIN + $second;
+		return self::SECONDS_HOUR * $hour + self::SECONDS_MIN * $minute  + $second;
 	}
 
 
