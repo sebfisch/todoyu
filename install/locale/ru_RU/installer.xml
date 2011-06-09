@@ -4,7 +4,7 @@
 	<label index="type.install">Установка todoyu</label>
 	<label index="type.update">Обновление todoyu</label>
 	<label index="locale.title">Выберите язык программы установки</label>
-	<label index="locale.selectthislocale">Установить todoyu на русском</label><!-- name of the current locale language -->
+	<label index="locale.selectthislocale">Установить todoyu на русском</label>
 	<label index="locale.text">Пожалуйста, выберите язык для установки:</label>
 	<label index="license.eula">Пользовательское соглашение</label>
 	<label index="license.lgpl">Следующие сторонние библиотеки лицензтрованы с помощью LGPL v2.1</label>
@@ -20,8 +20,8 @@
 	<label index="servercheck.writableCheck">Каталоги/файлы для записи</label>
 	<label index="servercheck.writable">Доступны</label>
 	<label index="servercheck.notWritable">НЕДОСТУПНЫ</label>
-	<label index="servercheck.ready">Сервер готов к установке todoyu 2.1</label>
-	<label index="servercheck.notReady">Сервер не готов к установке todoyu 2.1</label>
+	<label index="servercheck.ready">Сервер готов к установке todoyu 2.0</label>
+	<label index="servercheck.notReady">Сервер не готов к установке todoyu 2.0</label>
 	<label index="dbconnection.title">Связь с базой данных</label>
 	<label index="dbconnection.button">Сохранить конфигурацию</label>
 	<label index="dbconnection.server">Сервер</label>
@@ -39,6 +39,7 @@
 	<label index="dbselect.dbEmpty">пустая</label>
 	<label index="dbselect.dbNotEmpty">не пустая</label>
 	<label index="dbselect.tables">таблиц</label>
+	<label index="dbselect.manual">Если распознавание баз данных на вашем сервере закрыто и поля выше пусты, пожалуйста, введите имя базы вручную тут:</label>
 	<label index="importtables.title">Импортировать таблицы в базу данных</label>
 	<label index="importtables.button">Импортировать теблицы</label>
 	<label index="importtables.coretables">ТАБЛИЦЫ ДЛЯ TODOYU CORE</label>

@@ -50,4 +50,5 @@
 	<label index="monthly">Ежемесячно</label>
 	<label index="yearly">Каждый год</label>
 	<label index="today">Сегодня</label>
+	<label index="warning.dateformat.invalid">Обнаружена неправильная дата (будет изменена при сохранении).</label>
 </labels>

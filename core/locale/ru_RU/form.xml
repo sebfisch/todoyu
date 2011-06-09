@@ -15,4 +15,5 @@
 	<label index="is_preferred">Предпочтительно</label>
 	<label index="dateselector.open">Откройте календарь, чтобы выбрать дату</label>
 	<label index="autocompleteInfo">Это поле с автозаполнением. Начните писать, чтобы получить возможные варианты</label>
+	<label index="legend.main">Определения ролей</label>
 </labels>
