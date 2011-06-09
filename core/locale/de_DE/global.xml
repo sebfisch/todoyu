@@ -81,7 +81,7 @@
 	<label index="panelwidget.toggle">Widget öffnen/schliessen</label>
 	<label index="date_update">Zuletzt bearbeitet am</label>
 	<label index="date_create">Erstellungs Datum</label>
-	<label index="id_person_create">Erstellt von</label>
+	<label index="id_person_create">Ersteller</label>
 	<label index="of">von</label>
 	<label index="public">Öffentlich</label>
 	<label index="notpublic">Nicht öffentlich</label>
