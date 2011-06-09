@@ -56,6 +56,14 @@ Todoyu.Notification = {
 	closeDelay: 3,
 
 	/**
+	 * Close delay for sticky messages
+	 *
+	 * @property	closeDelaySticky
+	 * @type		Number
+	 */
+	closeDelaySticky: 20,
+
+	/**
 	 * Template object
 	 * @property	template
 	 * @type		Template
@@ -91,12 +99,10 @@ Todoyu.Notification = {
 		};
 
 		var note	= this.template.evaluate(data);
+		var delay	= sticky ? this.closeDelaySticky : this.closeDelay;
 
 		this.appendNote(id, note);
-
-		if( type !== this.ERROR && ! sticky ) {
-			this.closeNote.bind(this, id).delay(this.closeDelay);
-		}
+		this.closeNote.bind(this, id).delay(delay);
 	},
 
 
