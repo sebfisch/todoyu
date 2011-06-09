@@ -46,7 +46,7 @@ Todoyu.DateField = {
 	 * @param	{String}	format
 	 */
 	observeChange: function(fieldID, format) {
-		$(fieldID).observe('change', this.onchangeValue.bind(this, format));
+		$(fieldID).on('change', this.onValueChange.bind(this, format));
 	},
 
 
@@ -54,11 +54,11 @@ Todoyu.DateField = {
 	/**
 	 * "onchange" event handler: validate format of input
 	 *
-	 * @method	onchangeDateField
+	 * @method	onValueChange
 	 * @param	{Event}		event
 	 * @param	{String}	format
 	 */
-	onchangeValue: function(format, event) {
+	onValueChange: function(format, event) {
 		var elementID		= event.element().id;
 		var datetimeString	= $F(elementID);
 

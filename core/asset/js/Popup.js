@@ -32,6 +32,8 @@ Todoyu.Popup = Class.create(Window, {
 
 	isClosing: false,
 
+	escBodyHandler: null,
+
 	/**
 	 * Default todoyu options for window
 	 * @var	{Object}
@@ -125,11 +127,25 @@ Todoyu.Popup = Class.create(Window, {
 	 * @method	installObserver
 	 */
 	installObserver: function() {
-		document.observe('keyup', Todoyu.Popups.onEscUp.bind(Todoyu.Popups));
+		this.escBodyHandler = document.on('keyup', this.onEscUp.bind(this));
 
 		Windows.addObserver({
 			onDestroy: this.onDestroy.bind(this)
 		});
+	},
+
+
+
+	/**
+	 * Custom keyup handler - close last opened popup on [ESC] key up
+	 *
+	 * @param	{Event}		event
+	 */
+	onEscUp: function(event) {
+		if( event.keyCode == 27  ) {
+			this.close();
+			this.escBodyHandler.stop();
+		}
 	},
 
 

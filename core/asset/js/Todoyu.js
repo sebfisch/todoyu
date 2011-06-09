@@ -450,19 +450,19 @@ var Todoyu = {
 	 */
 	observeZoom: function(callback) {
 			// Observe mouse wheel
-		document.observe('mousewheel', function(e){
+		document.on('mousewheel', function(e){
 			if(e.ctrlKey) {
 				callback();
 			}
 		});
-		document.observe('DOMMouseScroll', function(e){
+		document.on('DOMMouseScroll', function(e){
 			if(e.ctrlKey) {
 				callback();
 			}
 		});
 
 			// Observe zoom keys
-		document.observe('keydown', function(e) {
+		document.on('keydown', function(e) {
 			switch (true) {
 				case Prototype.Browser.Gecko || Prototype.Browser.IE :
 					if(e.ctrlKey && (

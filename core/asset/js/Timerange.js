@@ -298,13 +298,13 @@ Todoyu.Timerange = Class.create({
 	 */
 	observeElements: function() {
 			// On timerange click, set focus to dummy field
-		this.element.observe('click', this.focusForKeyboard.bind(this));
+		this.element.on('click', this.focusForKeyboard.bind(this));
 			// Observe the dummy field to act own keypresses
-		$(this.name + '-focus').observe('keydown', this.onKeyPress.bind(this));
-		$(this.name + '-start').observe('keydown', this.onDateFieldKeyPress.bind(this));
-		$(this.name + '-end').observe('keydown', this.onDateFieldKeyPress.bind(this));
-		$(this.name + '-start').observe('change', this.onDateFieldChange.bind(this));
-		$(this.name + '-end').observe('change', this.onDateFieldChange.bind(this));
+		$(this.name + '-focus').on('keydown', this.onKeyPress.bind(this));
+		$(this.name + '-start').on('keydown', this.onDateFieldKeyPress.bind(this));
+		$(this.name + '-end').on('keydown', this.onDateFieldKeyPress.bind(this));
+		$(this.name + '-start').on('change', this.onDateFieldChange.bind(this));
+		$(this.name + '-end').on('change', this.onDateFieldChange.bind(this));
 	},
 
 

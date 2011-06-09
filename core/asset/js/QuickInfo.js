@@ -150,7 +150,7 @@ Todoyu.QuickInfo = {
 		this.activate();
 
 			// Observe document for clicks to close the quickinfo
-		document.body.on('click', this.onBodyClick.bindAsEventListener(this));
+		document.body.on('click', this.onBodyClick.bind(this));
 	},
 
 
@@ -190,8 +190,8 @@ Todoyu.QuickInfo = {
 		this.uninstall(selector);
 
 		$$(selector).each(function(name, callback, element){
-			element.on('mouseover', this.onMouseOver.bindAsEventListener(this, name, callback, element));
-			element.on('mouseout', this.onMouseOut.bindAsEventListener(this, name, callback, element));
+			element.on('mouseover', this.onMouseOver.bind(this, name, callback, element));
+			element.on('mouseout', this.onMouseOut.bind(this, name, callback, element));
 		}.bind(this, name, callback));
 	},
 
@@ -201,12 +201,12 @@ Todoyu.QuickInfo = {
 	 * Handler when an observer element is hovered
 	 *
 	 * @method	onMouseOver
-	 * @param	{Event}		event
 	 * @param	{String}	name
 	 * @param	{Function}	callback
 	 * @param	{Element}	element
+	 * @param	{Event}		event
 	 */
-	onMouseOver: function(event, name, callback, element) {
+	onMouseOver: function(name, callback, element, event) {
 			// Hide active element if another one should be displayed
 		if( this.active !== null && this.active !== element) {
 			this.hide();
@@ -225,12 +225,12 @@ Todoyu.QuickInfo = {
 	 * Handler when an observed element is left with the mouse
 	 *
 	 * @method	onMouseOut
-	 * @param	{Event}		event
 	 * @param	{String}	name
 	 * @param	{Function}	callback
 	 * @param	{Element}	element
+	 * @param	{Event}		event
 	 */
-	onMouseOut: function(event, name, callback, element) {
+	onMouseOut: function(name, callback, element, event) {
 		this.stopDelayedCallbacks();
 
 		if( this.isVisible() ) {
@@ -283,8 +283,8 @@ Todoyu.QuickInfo = {
 			$(document.body).insert(quickInfo);
 
 				// Observe quickinfo for mouse events
-			$(this.popupID).on('mouseover', this.onInfoOver.bindAsEventListener(this));
-			$(this.popupID).on('mouseout', this.onInfoOut.bindAsEventListener(this));
+			$(this.popupID).on('mouseover', this.onInfoOver.bind(this));
+			$(this.popupID).on('mouseout', this.onInfoOut.bind(this));
 		}
 	},
 

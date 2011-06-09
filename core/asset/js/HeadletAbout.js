@@ -180,7 +180,7 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 					return itemName.indexOf(coderName) !== -1;
 				}.bind(this, element.innerHTML));
 
-				element.observe('click', this.EE.bindAsEventListener(this, coderName));
+				element.on('click', 'li', this.EE.bind(this, coderName));
 			}
 		}.bind(this, names));
 	},
@@ -191,17 +191,22 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 	 * Show EE
 	 *
 	 * @method	EE
+	 * @param	{String}	coderName
 	 * @param	{Event}		event
+	 * @param	{Element}	element
 	 */
-	EE: function(event, coderName) {
-		var li = event.findElement('li');
+	EE: function(coderName, event, element) {
 		this.eeVisible[coderName] = true;
 
-		li.addClassName('coder');
+		element.addClassName('coder');
 
-		if( $H(this.eeVisible).all(function(pair){ return pair.value === true; })) {
-			$H(this.eeVisible).each(function(pair){this.eeVisible[pair.key]=false; console.log(pair);}, this);
-			if(Todoyu.exists('ee-img')) $('ee-img').remove();
+		if( $H(this.eeVisible).all(function(pair){return pair.value === true; })) {
+			$H(this.eeVisible).each(function(pair){
+				this.eeVisible[pair.key]=false;
+			}, this);
+			if(Todoyu.exists('ee-img')) {
+				$('ee-img').remove();
+			}
 			$(this.popupID).insert({
 				'bottom': new Element('div', {
 					'id': 'ee-img'
@@ -210,7 +215,7 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 
 			$('scrollingnames').select('li').invoke('removeClassName', 'coder');
 
-			$('ee-img').observe('click', function(event){
+			$('ee-img').on('click', function(event){
 				Effect.Puff(event.element());
 			});
 		}

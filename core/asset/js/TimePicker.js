@@ -339,11 +339,11 @@ Todoyu.TimePicker = Class.create({
 	_observePicker: function() {
 		var wheelEventName	= Prototype.Browser.Gecko ? 'DOMMouseScroll' : 'mousewheel';
 
-		this.picker.observe('click', this._onSelection.bindAsEventListener(this));
-		this.divHour.observe(wheelEventName, this._onHourScroll.bindAsEventListener(this));
-		this.divMinute.observe(wheelEventName, this._onMinuteScroll.bindAsEventListener(this));
+		this.picker.on('click', this._onSelection.bind(this));
+		this.divHour.on(wheelEventName, this._onHourScroll.bind(this));
+		this.divMinute.on(wheelEventName, this._onMinuteScroll.bind(this));
 
-		this.element.observe('click', this._onElementClick.bindAsEventListener(this));
+		this.element.on('click', this._onElementClick.bind(this));
 	},
 
 

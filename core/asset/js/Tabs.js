@@ -49,8 +49,8 @@ Todoyu.Tabs = {
 
 		this.handler[list.id] = {
 			click: 		list.on('click',	'li', this._clickHandler.bind(this, handlerFunction)),
-			mouseover: 	list.on('mouseover','li', this._hoverHandler.bindAsEventListener(this, true)),
-			mouseout: 	list.on('mouseout', 'li', this._hoverHandler.bindAsEventListener(this, false))
+			mouseover: 	list.on('mouseover','li', this._hoverHandler.bind(this, true)),
+			mouseout: 	list.on('mouseout', 'li', this._hoverHandler.bind(this, false))
 		};
 
 		this.activateFirstIfNonActive(list);
@@ -95,8 +95,9 @@ Todoyu.Tabs = {
 	 *
 	 * @private
 	 * @method	_clickHandler
-	 * @param	{Event}			event
 	 * @param	{Function}		handlerFunction
+	 * @param	{Event}			event
+	 * @param	{Element}		element
 	 */
 	_clickHandler: function(handlerFunction, event, element) {
 		event.stop();
@@ -311,20 +312,15 @@ Todoyu.Tabs = {
 	 *
 	 * @private
 	 * @method	_hoverHandler
-	 * @param	{Event}		event
 	 * @param	{Boolean}	over
+	 * @param	{Event}		event
+	 * @param	{Element}	element
 	 */
-	_hoverHandler: function(event, over, element, x, y, z) {
-		var li = event.findElement('li');
-
-		if( Object.isUndefined(li) ) {
-			return;
-		}
-
+	_hoverHandler: function(over, event, element) {
 		if( over ) {
-			li.addClassName('hover');
+			element.addClassName('hover');
 		} else {
-			li.removeClassName('hover');
+			element.removeClassName('hover');
 		}
 	},
 

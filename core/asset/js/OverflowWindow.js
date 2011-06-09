@@ -229,7 +229,7 @@ Todoyu.OverflowWindow = Class.create({
 			'class': 'close'
 		});
 
-		closeButton.observe('mouseup', this._onCloseClick.bindAsEventListener(this));
+		closeButton.on('mouseup', this._onCloseClick.bind(this));
 
 		this.div().appendChild(closeButton);
 	},

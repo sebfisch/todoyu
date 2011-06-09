@@ -29,6 +29,8 @@
  */
 Todoyu.ContextMenu = {
 
+	bodyClickObserver: null,
+
 	/**
 	 * Attach contextmenu to a group of elements
 	 * Automatically prevents double context menus by removing registered ones before adding the new one
@@ -41,11 +43,9 @@ Todoyu.ContextMenu = {
 	attach: function(name, selector, callback) {
 		this.detach(selector);
 
-		var elements	= $$(selector);
-
-		elements.each(function(name, callback, element){
-			element.observe('contextmenu', this.load.bindAsEventListener(this, name, callback, element));
-		}.bind(this, name, callback));
+		$$(selector).each(function(element){
+			element.on('contextmenu', this.load.bind(this, name, callback, element));
+		}, this);
 	},
 
 
@@ -71,13 +71,13 @@ Todoyu.ContextMenu = {
 	 *
 	 * @private
 	 * @method	load
-	 * @param	{Event}			event				Click event object
 	 * @param	{String}		name				Name of the contextmenu type
 	 * @param	{Function}		callback			Callback function to parse ID from element
 	 * @param	{Element}		observedElement		Observed element
+	 * @param	{Event}			event				Click event object
 	 * @return	{Boolean}
 	 */
-	load: function(event, name, callback, observedElement) {
+	load: function(name, callback, observedElement, event) {
 			// Stop click event to prevent browsers context menu
 		event.stop();
 
@@ -85,8 +85,8 @@ Todoyu.ContextMenu = {
 		var options	= {
 			parameters: {
 				action:		'get',
-				'contextmenu':	name,
-				'element':		callback(observedElement, event)
+				contextmenu:name,
+				element:	callback(observedElement, event)
 			}
 		};
 
@@ -179,9 +179,9 @@ Todoyu.ContextMenu = {
 		});
 
 			// Observe outside clicks
-		Event.observe(document.body, 'click', Todoyu.ContextMenu.hide);
+		this.bodyClickObserver = document.body.on('click', this.hide.bind(this));
 			// Observe context-menu-clicks on contextmenu
-		Event.observe(menu, 'contextmenu', Todoyu.ContextMenu.preventContextMenu);
+		menu.on('contextmenu', this.preventContextMenu.bind(this));
 	},
 
 
@@ -218,11 +218,11 @@ Todoyu.ContextMenu = {
 	 * @method	hide
 	 */
 	hide: function() {
+			// Stop body click observer
+		this.bodyClickObserver.stop();
+
 			// Hide context menu
 		$('contextmenu').hide();
-
-			// Stop observing body for click events (outside of the context menu)
-		Event.stopObserving(document.body, 'click', this.hide);
 	},
 
 

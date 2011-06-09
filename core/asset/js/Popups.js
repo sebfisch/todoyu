@@ -108,19 +108,6 @@ Todoyu.Popups = {
 
 
 	/**
-	 * Custom keyup handler - close last opened popup on [ESC] key up
-	 *
-	 * @param	{Event}		event
-	 */
-	onEscUp: function(event) {
-		if( event.keyCode == 27 && this.stack.lenght > 0 ) {
-			this.closeLast();
-		}
-	},
-
-
-
-	/**
 	 * Create a new popup with given options and show it centered
 	 *
 	 * @method	show

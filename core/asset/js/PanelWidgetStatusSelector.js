@@ -57,7 +57,7 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 	 * @method	_observeList
 	 */
 	_observeList: function() {
-		this.list.observe('change', this._onChange.bindAsEventListener(this));
+		this.list.on('change', this._onChange.bind(this));
 	},
 
 

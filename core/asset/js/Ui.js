@@ -347,8 +347,10 @@ Todoyu.Ui = {
 	 * @param	{Element|String}	element
 	 */
 	addHoverEffect: function(element) {
-		$(element).observe('mouseover', this.hoverEffect.bindAsEventListener(this, true, $(element)));
-		$(element).observe('mouseout', this.hoverEffect.bindAsEventListener(this, false, $(element)));
+		element	= $(element);
+
+		element.on('mouseover', this.hoverEffect.bind(this, true, element));
+		element.on('mouseout', this.hoverEffect.bind(this, false, element));
 	},
 
 
@@ -357,11 +359,11 @@ Todoyu.Ui = {
 	 * Hover effect handler (handles both mouseOver/ Out)
 	 *
 	 * @method	hoverEffect
-	 * @param	{Event}			event
 	 * @param	{Boolean}		over
 	 * @param	{Element}		element
+	 * @param	{Event}			event
 	 */
-	hoverEffect: function(event, over, element) {
+	hoverEffect: function(over, element, event) {
 		if( over ) {
 			element.addClassName('hover');
 		} else {
@@ -614,7 +616,7 @@ Todoyu.Ui = {
 	 * @method	observeBody
 	 */
 	observeBody: function() {
-		$(document.body).observe('click', this.onBodyClick.bindAsEventListener(this));
+		$(document.body).on('click', this.onBodyClick.bind(this));
 	},
 
 
@@ -626,9 +628,9 @@ Todoyu.Ui = {
 	 * @param	{Event}		event
 	 */
 	onBodyClick: function(event) {
-		this.bodyClickObservers.each(function(event, func){
+		this.bodyClickObservers.each(function(func){
 			func(event);
-		}.bind(this, event));
+		}, this);
 	},
 
 

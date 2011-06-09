@@ -362,7 +362,7 @@ class TodoyuPage {
 			$function	= $function . '.bind(' . $binding . ')';
 		}
 
-		self::addJsInline('document.observe("dom:loaded", ' . $function . ');', $position);
+		self::addJsInline('document.on("dom:loaded", ' . $function . ');', $position);
 	}
 
 
