@@ -143,15 +143,14 @@ class TodoyuActionDispatcher {
 
 		TodoyuLogger::logFatal('Request controller not found ' . $ext . '/' . $controller);
 
-		TodoyuHeader::sendTypeText();
+		$tmpl	= 'core/view/controller_error.tmpl';
+		$data	= array(
+			'ext'			=> $ext,
+			'controller'	=> $controller,
+			'pathWeb'		=> PATH_WEB
+		);
 
-		echo "Request controller not found!\n";
-		echo "Extension: " . $ext . "\n";
-		echo "Controller: " . $controller . "\n\n";
-
-		$params	= TodoyuRequest::getAll();
-
-		print_r($params);
+		echo Todoyu::render($tmpl, $data);
 
 		exit();
 	}

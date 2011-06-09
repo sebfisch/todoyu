@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Controller Error</title>
+<style type="text/css">
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#000000;
+	background-color: #E3EACE;
+}
+p {
+	text-align:center;
+}
+.oops {
+	font-weight:bold;
+	font-size:80px;
+}
+.info {
+	font-size: 20px;
+}
+.reason {
+
+}
+table.params {
+	margin-top:30px;
+}
+th {
+	text-align:left;
+}
+th, td {
+	border-bottom: 1px dashed #CCC;
+}
+.link {
+	margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+<p class="oops">{Label core.global.controllerError.oops}</p>
+<p class="info">{Label core.global.controllerError.info}</p>
+<p class="reason">{Label core.global.controllerError.reason}</p>
+<table width="300" border="0" align="center" cellpadding="5" cellspacing="0" class="params">
+  <tr>
+    <th width="80" scope="row">Extension</th>
+    <td width="200">{$ext}</td>
+  </tr>
+  <tr>
+    <th scope="row">Controller</th>
+    <td>{$controller}</td>
+  </tr>
+</table>
+<p class="link"><a href="{$pathWeb}">{Label core.global.controllerError.goBack}</a></p>
+</body>
+</html>
