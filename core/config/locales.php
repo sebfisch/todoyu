@@ -35,6 +35,7 @@ Todoyu::$CONFIG['LOCALE']['default']	= 'en_GB';
 	// Available locales on the system
 Todoyu::$CONFIG['LOCALE']['available']	= array(
 	'en_GB',
+	'en_US',
 	'de_DE',
 	'de_CH',
 	'pt_BR',
@@ -53,7 +54,7 @@ Todoyu::$CONFIG['LOCALE']['available']	= array(
 	// System locales for server system
 Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'en_GB' => array('en_GB.utf8', 'en_GB', 'en', 'English_GB'), // English (United Kingdom)
-	//'en_US'	=> array('en_US.utf8', 'en_US', 'en', 'English_US', 'English_United States.1252'),
+	'en_US'	=> array('en_US.utf8', 'en_US', 'en', 'English_US', 'English_United States.1252'),
 	'de_DE'	=> array('de_DE.utf8', 'de_DE', 'de', 'de_DE@euro', 'de_DE.utf8@euro', 'German_Germany.1252', 'deu_deu'), // German (Germany)
 	'de_CH'	=> array('de_CH.utf8', 'de_CH', 'de', 'German_Switzerland.1252'),
 	//'de_AT'	=> array('de_AT.utf8', 'de_AT', 'de', 'de_AT@euro', 'de_AT.utf8@euro', 'German_Austria.1252'),
