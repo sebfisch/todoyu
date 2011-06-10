@@ -23,5 +23,5 @@
 	<label index="daterange.previousMonth">Vorangehender Monat</label>
 	<label index="daterange.previousQuarter">Vorangehendes Quartal</label>
 	<label index="daterange.previousYear">Vorangehendes Jahr</label>
-	<label index="daterange.fullTimeRange">Gesamte Zeitspanne</label>
+	<label index="daterange.fullTimeRange">Gesamte mögliche Zeitspanne</label>
 </labels>

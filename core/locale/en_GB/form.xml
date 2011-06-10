@@ -23,5 +23,5 @@
 	<label index="daterange.previousMonth">Previous Month</label>
 	<label index="daterange.previousQuarter">Previous Quarter</label>
 	<label index="daterange.previousYear">Previous Year</label>
-	<label index="daterange.fullTimeRange">Full Time Range</label>
+	<label index="daterange.fullTimeRange">Full Possible Time Range</label>
 </labels>
