@@ -321,26 +321,6 @@ Todoyu.Ui = {
 
 
 	/**
-	 * Set cursor of link
-	 *
-	 * @method	setLinkCursor
-	 * @param	{Boolean}	wait
-	 */
-	setLinkCursor: function(wait) {
-		$$('a').each(function(a) {
-			a.setStyle({
-				'cursor': wait ? 'wait' : 'pointer'
-			});
-		});
-
-		$(document.body).setStyle({
-			'cursor': wait ? 'wait' : 'auto'
-		});
-	},
-
-
-
-	/**
 	 * Add hover effect to element
 	 *
 	 * @method	addHoverEffect

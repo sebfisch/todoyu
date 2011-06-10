@@ -98,7 +98,6 @@ Todoyu.Ajax.Responders = {
 		if( Todoyu.Headlets.isHeadlet('todoyuheadletajaxloader') ) {
 			Todoyu.Headlets.getHeadlet('todoyuheadletajaxloader').active();
 		}
-		//Todoyu.Ui.setLinkCursor(true);
 
 		var oldRespondToReadyState = request.respondToReadyState;
 		request.respondToReadyState = function(readyState) {
@@ -131,8 +130,6 @@ Todoyu.Ajax.Responders = {
 			if( Todoyu.Headlets.isHeadlet('todoyuheadletajaxloader') ) {
 				Todoyu.Headlets.getHeadlet('todoyuheadletajaxloader').inactive();
 			}
-
-			//Todoyu.Ui.setLinkCursor(false);
 		}
 	},
 
