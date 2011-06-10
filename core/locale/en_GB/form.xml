@@ -16,4 +16,12 @@
 	<label index="dateselector.open">Open date selector to pick a date</label>
 	<label index="autocompleteInfo">This is an autocomplete field. Start typing to get suggestions</label>
 	<label index="legend.main">Role Definition</label>
+	<label index="daterange.choose">Choose A Time Range</label>
+	<label index="daterange.monthToDate">Month To Date</label>
+	<label index="daterange.yearToDate">Year To Date</label>
+	<label index="daterange.quarterToDate">Quarter To Date</label>
+	<label index="daterange.previousMonth">Previous Month</label>
+	<label index="daterange.previousQuarter">Previous Quarter</label>
+	<label index="daterange.previousYear">Previous Year</label>
+	<label index="daterange.fullTimeRange">Full Time Range</label>
 </labels>

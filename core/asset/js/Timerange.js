@@ -255,6 +255,15 @@ Todoyu.Timerange = Class.create({
 				startDate.setMonth(startDate.getMonth()-2, 1);
 				break;
 
+            case 'previousYear':
+                    // TODO: please review
+                var prevYear = today.getFullYear()-1;
+                endDate = new Date();
+                endDate.setFullYear(prevYear,11,31);
+                startDate = new Date();
+                startDate.setFullYear(prevYear,0,1);    
+                break;
+
 			case 'fullTimeRange':
 				startDate	= this.getFirstDate();
 				endDate		= this.getLastDate();

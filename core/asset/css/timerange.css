@@ -108,7 +108,7 @@
 	z-index:0;
 	left:50%;
 	right: 50%;
-	width:125px;
+	width:185px;
 	margin:-2px 0 0 -75px;
 	padding:0 5px;
 	cursor:pointer;
@@ -139,6 +139,7 @@
 	z-index:9999; /* always in front */
 	padding:0;
 	color:#666;
+    text-align:left;
 }
 .timerange .dates .ranges:hover ul {
 	display:block;
