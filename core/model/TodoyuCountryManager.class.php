@@ -48,13 +48,26 @@ class TodoyuCountryManager {
 	 * @return	TodoyuCountry
 	 */
 	public static function getCountryByISO($code, $alpha3 = false) {
-		$fields	= 'id';
-		$wField	= $alpha3 ? 'iso_alpha3' : 'iso_alpha2';
-		$where	= $wField . ' = ' . Todoyu::db()->quote($code, true);
-
-		$idCountry	= intval(Todoyu::db()->getRecordByQuery($fields, self::TABLE, $where));
+		$idCountry = self::getCountryIdByISO($alpha3, $code);
 
 		return self::getCountry($idCountry);
+	}
+
+
+
+	/**
+	 * @static
+	 * @param  $alpha3
+	 * @param  $code
+	 * @return int
+	 */
+	public static function getCountryIdByISO($alpha3, $code) {
+		$fields = 'id';
+		$wField = $alpha3 ? 'iso_alpha3' : 'iso_alpha2';
+		$where = $wField . ' = ' . Todoyu::db()->quote($code, true);
+
+		$idCountry = intval(Todoyu::db()->getRecordByQuery($fields, self::TABLE, $where));
+		return $idCountry;
 	}
 
 }

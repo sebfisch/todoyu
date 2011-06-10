@@ -82,23 +82,6 @@ class TodoyuCountry extends TodoyuBaseObject {
 
 
 	/**
-	 * Get currency of country
-	 *
-	 * @return		TodoyuCurrencyCurrency
-	 */
-	public function getCurrency() {
-		$field	= 'id';
-		$table	= 'static_currency';
-		$where	= 'iso_num = ' . $this->getIsoNum();
-
-		$idCurrency	= Todoyu::db()->getFieldValue($field, $table, $where);
-
-		return TodoyuCurrencyCurrencyManager::getCurrency($idCurrency);
-	}
-
-
-
-	/**
 	 * Get country label
 	 *
 	 * @return	String
@@ -114,7 +97,7 @@ class TodoyuCountry extends TodoyuBaseObject {
 	 *
 	 */
 	protected function loadForeignData() {
-		$this->data['currency'] = $this->getCurrency()->getTemplateData();
+
 	}
 
 

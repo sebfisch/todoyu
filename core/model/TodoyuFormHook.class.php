@@ -79,7 +79,7 @@ class TodoyuFormHook {
 			$method	= explode('::', $hook['funcRef']);
 			$temp	= call_user_func($method, $form, $idRecord, $params);
 
-			if( $temp instanceof Form ) {
+			if( $temp instanceof TodoyuForm ) {
 				$form = $temp;
 			}
 		}
