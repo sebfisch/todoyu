@@ -38,23 +38,12 @@ class TodoyuLocaleManager {
 
 
 	/**
-	 * Get all locale keys
-	 *
-	 * @return	Array
-	 */
-	public static function getLocaleKeys() {
-		return array_keys(self::getSystemLocales());
-	}
-
-
-
-	/**
 	 * Check if locale exists in list
 	 *
 	 * @param	String		$locale
 	 * @return	Boolean
 	 */
-	public static function hasLocale($locale) {
+	public static function hasSystemLocale($locale) {
 		return array_key_exists($locale, self::getSystemLocales());
 	}
 
@@ -66,18 +55,39 @@ class TodoyuLocaleManager {
 	 * @return	Array
 	 */
 	public static function getAvailableLocales() {
-		return TodoyuArray::assure(Todoyu::$CONFIG['LOCALE']['available']);
+		$extKeys	= TodoyuExtensions::getInstalledExtKeys();
+		$default	= self::getDefaultLocale();
+
+			// Check core
+		$locales	= TodoyuFileManager::getFoldersInFolder('core/locale');
+
+			// Check extensions
+		foreach($extKeys as $extKey) {
+			$path		= TodoyuExtensions::getExtPath($extKey, 'locale');
+			$extLocales	= TodoyuFileManager::getFoldersInFolder($path);
+			$locales	= array_merge($locales, $extLocales);
+		}
+
+		$locales	= array_unique($locales);
+
+		TodoyuArray::removeByValue($locales, array($default));
+
+		sort($locales);
+
+		array_unshift($locales, $default);
+
+		return $locales;
 	}
 
 
 
 	/**
-	 * Get all names of a locale which may exists on a system
+	 * Get all code of a locale which may exists on a system
 	 *
 	 * @param	String		$locale
 	 * @return	Array
 	 */
-	public static function getSystemLocaleNames($locale) {
+	public static function getSystemLocaleCodes($locale) {
 		$locales	= self::getSystemLocales();
 
 		return TodoyuArray::assure($locales[$locale]);
@@ -92,7 +102,7 @@ class TodoyuLocaleManager {
 	 * @return	Boolean / String		FALSE or the new locale string
 	 */
 	public static function setSystemLocale($locale) {
-		$localeNames	= self::getSystemLocaleNames($locale);
+		$localeNames	= self::getSystemLocaleCodes($locale);
 
 		if( sizeof($localeNames) > 0 ) {
 			return setlocale(LC_ALL, $localeNames);
@@ -132,7 +142,7 @@ class TodoyuLocaleManager {
 	 * @return	Array
 	 */
 	public static function getLocaleOptions() {
-		$locales	= self::getLocaleKeys();
+		$locales	= self::getAvailableLocales();
 		$options	= array();
 
 		foreach($locales as $locale) {

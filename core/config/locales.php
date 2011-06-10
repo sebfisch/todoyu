@@ -32,25 +32,6 @@
 	// Default locale for fallback
 Todoyu::$CONFIG['LOCALE']['default']	= 'en_GB';
 
-	// Available locales on the system
-Todoyu::$CONFIG['LOCALE']['available']	= array(
-	'en_GB',
-	'en_US',
-	'de_DE',
-	'de_CH',
-	'pt_BR',
-	'ru_RU',
-	'fr_FR',
-	'nl_NL',
-	'cs_CZ',
-	'sr_RS',
-	'ja_JP',
-	'it_IT',
-	'es_CO',
-	'sl_SL'
-	/*,'hr_HR','sr_ME'*/
-);
-
 	// System locales for server system
 Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'en_GB' => array('en_GB.utf8', 'en_GB', 'en', 'English_GB'), // English (United Kingdom)
