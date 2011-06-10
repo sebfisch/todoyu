@@ -43,7 +43,7 @@ require_once('core/inc/init.php');
 	// Clear all cache
 TodoyuInstallerManager::clearCache();
 	// Run special version updates (php+sql) which are not handled by tables.sql autoupdates
-TodoyuInstallerManager::runVersionUpdates();
+TodoyuInstallerManager::runCoreVersionUpdates();
 	// Update database based on the tables.sql files of the installed extensions
 TodoyuSQLManager::updateDatabaseFromTableFiles();
 	// Remove index.html file if restored by svn update

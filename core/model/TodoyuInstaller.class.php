@@ -81,7 +81,7 @@ class TodoyuInstaller {
 
 			// Run update scripts and SQL
 		if( self::isUpdate() ) {
-			TodoyuInstallerManager::runVersionUpdates();
+			TodoyuInstallerManager::runCoreVersionUpdates();
 		}
 	}
 

@@ -792,11 +792,11 @@ class TodoyuInstallerManager {
 	/**
 	 * Run SQL and PHP version updates.
 	 */
-	public static function runVersionUpdates() {
+	public static function runCoreVersionUpdates() {
 		$lastVersion	= self::getLastVersion();
 
-		self::runVersionUpdatesSQL($lastVersion);
-		self::runVersionUpdatesPHP($lastVersion);
+		self::runCoreVersionUpdatesSQL($lastVersion);
+		self::runCoreVersionUpdatesPHP($lastVersion);
 
 		self::saveCurrentVersion();
 	}
@@ -808,8 +808,8 @@ class TodoyuInstallerManager {
 	 *
 	 * @param	String		$lastVersion
 	 */
-	public static function runVersionUpdatesSQL($lastVersion) {
-		$baseFolder	= 'install/update/db';
+	private static function runCoreVersionUpdatesSQL($lastVersion) {
+		$baseFolder	= 'core/update/db';
 		$updateFiles= self::getUpdateFiles($baseFolder, 'sql', $lastVersion);
 
 		foreach($updateFiles as $updateFile) {
@@ -824,8 +824,8 @@ class TodoyuInstallerManager {
 	 *
 	 * @param	String		$lastVersion
 	 */
-	public static function runVersionUpdatesPHP($lastVersion) {
-		$baseFolder	= 'install/update/php';
+	private static function runCoreVersionUpdatesPHP($lastVersion) {
+		$baseFolder	= 'core/update/php';
 		$updateFiles= self::getUpdateFiles($baseFolder, 'php', $lastVersion);
 
 		foreach($updateFiles as $updateFile) {

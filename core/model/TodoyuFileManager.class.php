@@ -842,7 +842,7 @@ class TodoyuFileManager {
 				if( ! is_dir($pathDestElement) ) {
 					self::makeDirDeep($pathDestElement);
 				}
-				self::copyRecursive($pathElement, $pathDestElement, $move);
+				self::copyRecursive($pathElement, $pathDestElement, $move, $hiddenFiles);
 				if( $move ) {
 					$removeFolders[] = $pathElement;
 				}
@@ -862,6 +862,19 @@ class TodoyuFileManager {
 		foreach($removeFolders as $folder) {
 			rmdir($folder);
 		}
+	}
+
+
+
+	/**
+	 * Move folders and files recursive
+	 *
+	 * @param	String		$sourceFolder
+	 * @param	String		$destinationFolder
+	 * @param	Boolean		$hiddenFiles
+	 */
+	public static function moveRecursive($sourceFolder, $destinationFolder, $hiddenFiles = false) {
+		self::copyRecursive($sourceFolder, $destinationFolder, true, $hiddenFiles);
 	}
 
 
