@@ -94,7 +94,6 @@ class TodoyuHeader {
 	 */
 	public static function sendDownloadHeaders($mimeType, $filename, $fileSize, $fileModTime = null) {
 		$fileSize	= intval($fileSize);
-		$fileModTime	= intval($fileModTime);
 
 		self::sendHeader('Content-Description', 'File Transfer');
 		self::sendHeader('Content-Type', $mimeType);
