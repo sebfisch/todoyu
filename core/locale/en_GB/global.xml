@@ -29,6 +29,7 @@
 	<label index="update">Update</label>
 	<label index="search">Search</label>
 	<label index="back">Back</label>
+	<label index="version">Version</label>
 	<label index="filter">Filter</label>
 	<label index="type">Type</label>
 	<label index="record">Record</label>

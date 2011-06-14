@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
 	<label index="date">Datum</label>
+	<label index="title.date_update">Aktualisierungsdatum</label>
+	<label index="title.date_create">Erzeugungsdatum</label>
 	<label index="time">Zeit</label>
 	<label index="hrs">h</label>
 	<label index="month.january">Januar</label>
