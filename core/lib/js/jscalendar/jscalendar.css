@@ -267,3 +267,8 @@ div.calendar td.time span.active {
 	background-color:#000;
 	color:#0f0;
 }
+
+/* Bugfix for opera to force word wrap an table cell */
+div.calendar td.ttip {
+	width:223px;
+}
