@@ -465,6 +465,8 @@ class TodoyuFileManager {
 		if( $pathFile !== false && file_exists($pathFile) ) {
 			if( is_readable($pathFile) ) {
 				if( self::isFileInAllowedDownloadPath($pathFile) ) {
+						// Clear file information cache
+					clearstatcache();
 						// Send download headers
 					$fileSize	= filesize($pathFile);
 					$fileName	= is_null($fileName) ? basename($pathFile) : $fileName;
