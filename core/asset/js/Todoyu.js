@@ -279,10 +279,9 @@ var Todoyu = {
 	 *
 	 * @method	notifyError
 	 * @param	{String}		message
-	 * @param	{Number}		countdown
 	 */
-	notifyError: function(message, countdown) {
-		Todoyu.Notification.notifyError(message, countdown);
+	notifyError: function(message) {
+		Todoyu.Notification.notifyError(message);
 	},
 
 
@@ -292,10 +291,10 @@ var Todoyu = {
 	 *
 	 * @method	notifyInfo
 	 * @param	{String}		message
-	 * @param	{Number}		countdown
+	 * @param	{Number}		delay
 	 */
-	notifyInfo: function(message, countdown) {
-		Todoyu.Notification.notifyInfo(message, countdown);
+	notifyInfo: function(message, delay) {
+		Todoyu.Notification.notifyInfo(message, false, delay);
 	},
 
 
@@ -305,10 +304,10 @@ var Todoyu = {
 	 *
 	 * @method	notifySuccess
 	 * @param	{String}		message
-	 * @param	{Number}		countdown
+	 * @param	{Number}		delay
 	 */
-	notifySuccess: function(message, countdown) {
-		Todoyu.Notification.notifySuccess(message, countdown);
+	notifySuccess: function(message, delay) {
+		Todoyu.Notification.notifySuccess(message, false, delay);
 	},
 
 
