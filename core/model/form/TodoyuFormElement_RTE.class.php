@@ -48,19 +48,14 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 	 * @return	String
 	 */
 	private function buildRTEjs() {
-		if( ! TodoyuBrowserInfo::isChrome() ) {
-			$plugins	= 'autoresize';
-		} else {
-			$plugins	= '';
-		}
-
 		$options	= array(
-			'mode'				=> 'exact',
-			'plugins'			=> $plugins,
-			'elements'			=> $this->getHtmlID(),
-			'theme'				=> 'simple',
-			'content_css'		=> 'core/asset/css/tinymce.css',
-			'valid_elements'	=> 'strong/b,em/i,p,br,u,ol,ul,li,a[href],pre,span[style]'
+			'mode'					=> 'exact',
+			'plugins'				=> 'autoresize',
+			'elements'				=> $this->getHtmlID(),
+			'theme'					=> 'simple',
+			'content_css'			=> 'core/asset/css/tinymce.css',
+			'valid_elements'		=> 'strong/b,em/i,p,br,u,ol,ul,li,a[href],pre,span[style]',
+			'autoresize_max_height'	=> 400
 		);
 
 			// Load config
