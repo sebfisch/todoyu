@@ -16,8 +16,8 @@
 	<label index="dateselector.open">Öffne Kalender um ein Datum auszuwählen</label>
 	<label index="autocompleteInfo">Dieses Feld wird automatisch vervollständigt. Fangen Sie an zu schreiben um die Vorschläge zu sehen</label>
 	<label index="legend.main">Rollendefinition</label>
-    <label index="daterange.choose">Wählen Sie einen Zeitabschnitt</label>
-    <label index="daterange.monthToDate">Aktueller Monat</label>
+	<label index="daterange.choose">Wählen Sie einen Zeitabschnitt</label>
+	<label index="daterange.monthToDate">Aktueller Monat</label>
 	<label index="daterange.yearToDate">Aktuelles Jahr</label>
 	<label index="daterange.quarterToDate">Aktuelles Quartal</label>
 	<label index="daterange.previousMonth">Vorangehender Monat</label>
