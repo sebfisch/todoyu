@@ -85,9 +85,11 @@ Todoyu.Notification = {
 	 * @method	notify
 	 * @param	{String}		type
 	 * @param	{String}		message
-	 * @param	{Boolean}		sticky			Don't hide note (error is by default sticky)
+	 * @param	{Boolean}		sticky			Don't hide note
+	 * @param	{Number}		delay			Overwrite default delay time
 	 */
-	notify: function(type, message, sticky) {
+	notify: function(type, message, sticky, delay) {
+		delay	= delay || this.closeDelay;
 		this.loadTemplate();
 
 		var id		= this.id++;
@@ -98,8 +100,8 @@ Todoyu.Notification = {
 			'message':		message
 		};
 
-		var note	= this.template.evaluate(data);
-		var delay	= sticky ? this.closeDelaySticky : this.closeDelay;
+		var note= this.template.evaluate(data);
+		delay	= sticky ? this.closeDelaySticky : delay;
 
 		this.appendNote(id, note);
 		this.closeNote.bind(this, id).delay(delay);
@@ -144,9 +146,10 @@ Todoyu.Notification = {
 	 * @method	notifyInfo
 	 * @param	{String}		message
 	 * @param	{Boolean}		sticky
+	 * @param	{Number}		delay
 	 */
-	notifyInfo: function(message, sticky) {
-		this.notify(this.INFO, message, sticky);
+	notifyInfo: function(message, sticky, delay) {
+		this.notify(this.INFO, message, sticky, delay);
 	},
 
 
@@ -169,9 +172,10 @@ Todoyu.Notification = {
 	 * @method	notifySuccess
 	 * @param	{String}		message
 	 * @param	{Boolean}		sticky
+	 * @param	{Number}
 	 */
-	notifySuccess: function(message, sticky) {
-		this.notify(this.SUCCESS, message, sticky);
+	notifySuccess: function(message, sticky, delay) {
+		this.notify(this.SUCCESS, message, sticky, delay);
 	},
 
 
