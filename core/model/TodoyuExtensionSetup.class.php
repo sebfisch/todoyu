@@ -87,9 +87,8 @@ abstract class TodoyuExtensionSetup {
 	 * Callback: Before extension update
 	 *
 	 * @param	String		$extKey
-	 * @param	String		$currentVersion
 	 */
-	public static function beforeUpdate($extKey, $currentVersion) {
+	public static function beforeUpdate($extKey) {
 
 	}
 
