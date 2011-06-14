@@ -84,6 +84,7 @@ class TodoyuArchiveManager {
 		$tempPath	= TodoyuFileManager::pathAbsolute('cache/temp/' . $randomFile);
 		$archive	= new ZipArchive();
 
+
 			// Prepare exclude paths
 		foreach($exclude as $index => $path) {
 			$exclude[$index] = TodoyuFileManager::pathAbsolute($path);
@@ -94,7 +95,14 @@ class TodoyuArchiveManager {
 
 		$archive->open($tempPath, ZipArchive::CREATE);
 
-		self::addFolderToArchive($archive, $pathFolder, $baseFolder, $recursive, $exclude);
+			// Prevent empty archive (which will not be created)
+		$elements	= TodoyuFileManager::getFolderContents($pathFolder);
+
+		if( sizeof($elements) === 0 ) {
+			$archive->addFromString('todoyu-this-archive-is-empty', '');
+		} else {
+			self::addFolderToArchive($archive, $pathFolder, $baseFolder, $recursive, $exclude);
+		}
 
 		$archive->close();
 
