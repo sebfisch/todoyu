@@ -262,7 +262,7 @@ class TodoyuArray {
 			}
 
 				// Filter for duplicate field contents,  if requested
-			if($avoidDuplicateFieldKey != '') {
+			if( $avoidDuplicateFieldKey != '' ) {
 				$labelKeyArray = self::removeDuplicates($labelKeyArray, $avoidDuplicateFieldKey);
 			}
 

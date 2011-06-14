@@ -121,7 +121,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetTimeParts() {
-		$time		= (14*3600) + (33*60) + (59); // 14:33:59
+		$time		= (14 * 3600) + (33 * 60) + (59); // 14:33:59
 		$testHours	= 14;
 		$testMinutes= 33;
 		$testSeconds= 59;
@@ -148,8 +148,8 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testSec2hour() {
-		$seconds1	= (14*3600) + (33*60) + (29); // 14:33:29
-		$seconds2	= (14*3600) + (33*60) + (31); // 14:33:31
+		$seconds1	= (14 * 3600) + (33 * 60) + (29); // 14:33:29
+		$seconds2	= (14 * 3600) + (33 * 60) + (31); // 14:33:31
 		$testString1= '14:33';
 		$testString2= '14:34';
 
@@ -161,7 +161,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	}
 
 //	public function testSec2time() {
-//		$seconds	= (14*3600) + (33*60) + (29); // 14:33:29
+//		$seconds	= (14 * 3600) + (33 * 60) + (29); // 14:33:29
 //		$testString	= '14:33:29';
 //
 //		$timeString	= TodoyuTime::sec2time($seconds);
@@ -170,7 +170,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 //	}
 
 	public function testFormatTime() {
-		$seconds	= 18*3600 + 24*60 + 35;
+		$seconds	= 18 * 3600 + 24 * 60 + 35;
 		$testString1= '18:24:35';
 		$testString2= '18:25';
 		$testString3= '18:24';
@@ -353,12 +353,12 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetRoundedTime() {
-		$time	= 10*3600 + 33*60 + 31; // 10:33:31
-		$test1	= 10*3600 + 35*60 + 0; // 10:35:00
-		$test2	= 10*3600 + 30*60 + 0; // 10:30:00
-		$test3	= 10*3600 + 40*60 + 0; // 10:40:00
-		$test4	= 11*3600 + 0 + 0; // 11:00:00
-		$test5	= 10*3600 + 33*60 + 0; // 10:33:00
+		$time	= 10 * 3600 + 33 * 60 + 31; // 10:33:31
+		$test1	= 10 * 3600 + 35 * 60 + 0; // 10:35:00
+		$test2	= 10 * 3600 + 30 * 60 + 0; // 10:30:00
+		$test3	= 10 * 3600 + 40 * 60 + 0; // 10:40:00
+		$test4	= 11 * 3600 + 0 + 0; // 11:00:00
+		$test5	= 10 * 3600 + 33 * 60 + 0; // 10:33:00
 
 		$rounded1	= TodoyuTime::getRoundedTime($time);
 		$rounded2	= TodoyuTime::getRoundedTime($time, 5);

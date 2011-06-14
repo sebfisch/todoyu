@@ -370,7 +370,7 @@ Todoyu.Helper = {
 	 * @return	{String}
 	 */
 	wordwrap: function(str, int_width, str_break, cut) {
-		var m = ((arguments.length >= 2) ? arguments[1] : 75   );
+		var m = ((arguments.length >= 2) ? arguments[1] : 75	);
 		var b = ((arguments.length >= 3) ? arguments[2] : "\n" );
 		var c = ((arguments.length >= 4) ? arguments[3] : false);
 

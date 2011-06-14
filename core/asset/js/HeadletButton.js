@@ -24,22 +24,51 @@
  */
 Todoyu.HeadletButton = Class.create(Todoyu.Headlet, {
 
+	/**
+	 * @method	onButtonClick
+	 * @param	{function}	$super
+	 */
 	onButtonClick: function($super) {
 
 	},
 
+
+
+	/**
+	 * @method	isVisible
+	 * @param	{function}	$super
+	 * @return	{Boolean}
+	 */
 	isVisible: function($super) {
 		return false;
 	},
 
+
+
+	/**
+	 * @method	toggle
+	 * @param	{function}	$super
+	 */
 	toggle: function($super) {
 
 	},
 
+
+
+	/**
+	 * @method	hide
+	 * @param	{function}	$super
+	 */
 	hide: function($super) {
 
 	},
 
+
+
+	/**
+	 * @method	show
+	 * @param	{function}	$super
+	 */
 	show: function($super) {
 
 	}

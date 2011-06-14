@@ -54,6 +54,9 @@ Todoyu.Timerange = Class.create({
 
 	/**
 	 * Default options for the slider object
+	 *
+	 * @property	defaultOptions
+	 * @type		Object
 	 */
 	defaultOptions: {
 		axis: 'horizontal',
@@ -62,6 +65,9 @@ Todoyu.Timerange = Class.create({
 
 	/**
 	 * Internal options
+	 *
+	 * @property	options
+	 * @type		Object
 	 */
 	options: {
 		dateFormat: '%d.%m.%Y'

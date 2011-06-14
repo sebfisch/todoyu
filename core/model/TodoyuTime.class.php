@@ -213,7 +213,7 @@ class TodoyuTime {
 	 * @return	Integer
 	 */
 	public static function getLastDayNumberInMonth($timestamp) {
-		$timestampLastDay   = self::getMonthEnd($timestamp);
+		$timestampLastDay	= self::getMonthEnd($timestamp);
 
 		return date('j', $timestampLastDay);
 	}

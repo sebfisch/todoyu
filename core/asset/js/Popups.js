@@ -115,9 +115,9 @@ Todoyu.Popups = {
 	 * @return	{Todoyu.Popup}
 	 */
 	show: function(options) {
-		var popup = new Todoyu.Popup(options);
+		var popup	= new Todoyu.Popup(options);
+		popup.onShow= this.onShow(options.id);
 
-		popup.onShow =   this.onShow(options.id);
 		popup.showCenter(true, 100);
 
 		return popup;
