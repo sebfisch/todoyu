@@ -36,7 +36,11 @@ class TodoyuException extends Exception {
 	public function __construct($message, $code = 0, $previous = null) {
 		TodoyuLogger::logError('Exception: ' . $message);
 
-		parent::__construct($message, $code, $previous);
+		if( version_compare(PHP_VERSION, '5.3.0') === -1 ) {
+			parent::__construct($message, $code);
+		} else {
+			parent::__construct($message, $code, $previous);
+		}
 	}
 
 }

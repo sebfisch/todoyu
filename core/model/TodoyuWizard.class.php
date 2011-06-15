@@ -182,7 +182,7 @@ abstract class TodoyuWizard {
 			if( class_exists($class, true) ) {
 				 $this->steps[$stepName] = new $class($this, $stepConfig);
 			} else {
-				throw new Exception('Wizard step class not found: ' . $class);
+				throw new TodoyuException('Wizard step class not found: ' . $class);
 			}
 		}
 
