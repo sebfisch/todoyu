@@ -59,12 +59,12 @@
 	<label index="adminaccount.button">Administratoren-Account anlegen</label>
 	<label index="adminaccount.username">Benutzername</label>
 	<label index="adminaccount.password">Passwort</label>
-	<label index="adminaccount.repeatPassword">Passwort wiederholen</label>
-	<label index="adminaccount.passwordHint">mindestestens 5 Zeichen</label>
-	<label index="adminaccount.text">Bitte geben Sie die Daten für Ihren Administrator-Account ein</label>
 	<label index="adminaccount.companyname">Firmenname</label>
 	<label index="adminaccount.adminfirstname">Administrator Vorname</label>
 	<label index="adminaccount.adminlastname">Administrator Nachname</label>
+	<label index="adminaccount.repeatPassword">Passwort wiederholen</label>
+	<label index="adminaccount.passwordHint">mindestestens 5 Zeichen</label>
+	<label index="adminaccount.text">Bitte geben Sie die Daten für Ihren Administrator-Account ein</label>
 	<label index="adminaccount.error">Bitte die Accountdaten prüfen</label>
 	<label index="importdemodata.title">Beispieldaten importieren</label>
 	<label index="importdemodata.checkboxlabel">Importiere die Beispieldaten</label>
@@ -73,8 +73,8 @@
 	<label index="importdemodata.contains">Enthalten sind: Projekte, Aufgaben, Adressen, Firmen, Kommentare, Feedbacks, Systemrollen, Leistungsarten, Filter und noch weitere Daten.</label>
 	<label index="finish.title">Installation abschliessen</label>
 	<label index="finish.text">Installation beendet</label>
-	<label index="finish.note">Sie können sich nun einloggen. Der nächste Schritt dauert einige Sekunden (abhängig von Ihrer CPU), da das System Dateien zusammenführt, das Caching vorbereitet, Daten aufbereitet und weitere Vorbereitungen durchführt.</label>
 	<label index="finish.button">Installer deaktivieren und weiter zum Login</label>
+	<label index="finish.note">Sie können sich nun einloggen. Der nächste Schritt dauert einige Sekunden (abhängig von Ihrer CPU), da das System Dateien zusammenführt, das Caching vorbereitet, Daten aufbereitet und weitere Vorbereitungen durchführt.</label>
 	<label index="update.title">todoyu aktualisieren</label>
 	<label index="update.button">Aktualisierung starten</label>
 	<label index="update.info">Änderungen der Datenbank der vorliegenden Version durchführen und mit Datei-Konfiguration abgleichen</label>

@@ -57,11 +57,11 @@
 	<label index="adminaccount.title">Create Administrator Account</label>
 	<label index="adminaccount.email">Administrator Email</label>
 	<label index="adminaccount.button">Create Administrator Account</label>
+	<label index="adminaccount.username">User Name</label>
+	<label index="adminaccount.password">Password</label>
 	<label index="adminaccount.companyname">Company Name</label>
 	<label index="adminaccount.adminfirstname">First Name</label>
 	<label index="adminaccount.adminlastname">Last Name</label>
-	<label index="adminaccount.username">User Name</label>
-	<label index="adminaccount.password">Password</label>
 	<label index="adminaccount.repeatPassword">Repeat Password</label>
 	<label index="adminaccount.passwordHint">at least 5 characters</label>
 	<label index="adminaccount.text">Enter the data for your administrator account</label>

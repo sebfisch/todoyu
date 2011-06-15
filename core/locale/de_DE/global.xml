@@ -29,6 +29,7 @@
 	<label index="update">Aktualisieren</label>
 	<label index="search">Suche</label>
 	<label index="back">Zurück</label>
+	<label index="version">Version</label>
 	<label index="filter">Auswahl</label>
 	<label index="type">Typ</label>
 	<label index="record">Datensatz</label>
