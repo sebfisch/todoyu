@@ -107,7 +107,7 @@ abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstr
 	 *
 	 */
 	private function extractTemplate() {
-		TodoyuArchiveManager::extract($this->getTemplatePath(), $this->getExtractPath());
+		TodoyuArchiveManager::extractTo($this->getTemplatePath(), $this->getExtractPath());
 	}
 
 

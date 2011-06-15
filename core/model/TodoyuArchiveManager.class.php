@@ -34,7 +34,7 @@ class TodoyuArchiveManager {
 	 * @param	String|Array	$entries
 	 * @throws	TodoyuException
 	 */
-	public static function extract($zipFile, $targetFolder, $entries = null) {
+	public static function extractTo($zipFile, $targetFolder, $entries = null) {
 		@set_time_limit(60);
 
 		$zipFile	= TodoyuFileManager::pathAbsolute($zipFile);
