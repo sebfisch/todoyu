@@ -129,6 +129,7 @@ class TodoyuArchiveManager {
 
 			if( ! in_array($filePath, $exclude) ) {
 				$relPath	= str_replace($baseFolder . DIR_SEP, '', $filePath);
+				$relPath	= str_replace('\\', '/', $relPath);
 
 				$archive->addFile($filePath, $relPath);
 			}
