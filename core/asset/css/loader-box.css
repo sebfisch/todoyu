@@ -2,7 +2,7 @@
 	position:fixed;
 	z-index:300;
 	background-color:#FFF;
-	border:1px dashed #CCC;
+	border:1px solid #fff;
 	-moz-box-shadow:2px 2px 7px #999999;
 }
 
