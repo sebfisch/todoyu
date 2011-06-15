@@ -83,7 +83,7 @@ class TodoyuLabelManager {
 
 
 	/**
-	 * Get label which will be parsed with wildcards like printf()
+	 * Get label which will be parsed with wild cards like printf()
 	 *
 	 * @param	String		$labelKey
 	 * @param	Array		$data

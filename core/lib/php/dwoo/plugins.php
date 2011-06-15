@@ -20,12 +20,7 @@
 
 /**
  * Simple (non-block) Dwoo plugins
- *
- * @package		Todoyu
- * @subpackage	Template
  */
-
-
 
 /**
  * Dwoo plugin function for label translation
@@ -41,6 +36,10 @@
 function Dwoo_Plugin_Label_compile(Dwoo_Compiler $compiler, $key, $locale = null) {
 	return 'TodoyuLabelManager::getLabel(' . $key . ', ' . $locale . ')';
 }
+
+
+
+
 
 /**
  * Dwoo plugin function for label translation with dynamic values
@@ -189,6 +188,9 @@ function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string, $doubl
 /**
  * Format an integer to hours:minutes:seconds
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo_Compiler 	$compiler
  * @param	Integer			$seconds
  * @return	String
@@ -202,6 +204,9 @@ function Dwoo_Plugin_HourMinSec_compile(Dwoo_Compiler $compiler, $seconds) {
 /**
  * Format an integer to hours:minutes:seconds
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo_Compiler 	$compiler
  * @param	Integer			$seconds
  * @return	String
@@ -213,7 +218,7 @@ function Dwoo_Plugin_HourMin_compile(Dwoo_Compiler $compiler, $seconds) {
 
 
 /**
- * Get formatted filesize
+ * Get formatted file size
  *
  * @package		Todoyu
  * @subpackage	Template
@@ -355,6 +360,9 @@ function Dwoo_Plugin_formatSqlDate_compile(Dwoo_Compiler $compiler, $date, $form
 /**
  * Clean bad tags from HTML code
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo_Compiler 	$compiler		Dwoo compiler
  * @param	String			$html
  * @return	String
@@ -367,6 +375,9 @@ function Dwoo_Plugin_cleanHtml_compile(Dwoo_Compiler $compiler, $html) {
 
 /**
  * Substitute URLs by hyperlinks
+ *
+ * @package		Todoyu
+ * @subpackage	Template
  *
  * @param	Dwoo		$dwoo
  * @param	String		$text
@@ -381,6 +392,9 @@ function Dwoo_Plugin_linkUrls_compile(Dwoo_Compiler $compiler, $text) {
 /**
  * Substitute registered linkable elements in given text by their respective hyperlinks
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo	$dwoo
  * @param	String	$text
  * @return	String
@@ -394,11 +408,18 @@ function Dwoo_Plugin_substituteLinkableElements_compile(Dwoo_Compiler $compiler,
 /**
  * Button template
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo		$dwoo
  * @param	String		$label		Button text
  * @param	String		$onclick	onClick JavaScript handler
  * @param	String		$class		CSS class
  * @param	Integer		$id			HTML id
+ * @param	String		$title
+ * @param	String		$type
+ * @param	Boolean		$disable
+ * @param	Boolean		$disabled
  * @return	String
  */
 function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '', $title = '', $type = '', $disable = false, $disabled = false) {
@@ -422,6 +443,9 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
 /**
  * Header template
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo		$dwoo
  * @param	String		$title
  * @param	String		$class
@@ -442,6 +466,9 @@ function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '') {
 /**
  * Build page content title
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$title
  * @return	String
@@ -454,6 +481,9 @@ function Dwoo_Plugin_Title_compile(Dwoo_Compiler $compiler, $title) {
 
 /**
  * Check whether right is given. Get function string to check this
+ *
+ * @package		Todoyu
+ * @subpackage	Template
  *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$ext
@@ -469,6 +499,9 @@ function Dwoo_Plugin_allowed_compile(Dwoo_Compiler $compiler, $ext, $right) {
 /**
  * Check if all given rights are allowed. Get function string to check this
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$ext
  * @param	String			$rightsList
@@ -483,6 +516,9 @@ function Dwoo_Plugin_allowedAll_compile(Dwoo_Compiler $compiler, $ext, $rightsLi
 /**
  * Check whether any of the given rights are allowed. Get function string to check this
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$ext
  * @param	String			$rightsList
@@ -496,6 +532,9 @@ function Dwoo_Plugin_allowedAny_compile(Dwoo_Compiler $compiler, $ext, $rightsLi
 
 /**
  * Check whether user has right, or given user ID is the current users ID. Get function string to check this
+ *
+ * @package		Todoyu
+ * @subpackage	Template
  *
  * @param	Dwoo_Compiler 	$compiler
  * @param	String			$ext
@@ -513,6 +552,9 @@ function Dwoo_Plugin_allowedOrOwn_compile(Dwoo_Compiler $compiler, $ext, $right,
  * Check if user has right and given user ID is the current users ID
  * Get function string to check this
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo_Compiler 	$compiler
  * @param	String			$ext
  * @param	String			$right
@@ -528,6 +570,9 @@ function Dwoo_Plugin_allowedAndOwn_compile(Dwoo_Compiler $compiler, $ext, $right
 /**
  * Subtract given subtrahend from given minuend
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo_Compiler	$compiler
  * @param	Mixed			$minuend
  * @param	Mixed			$subtrahend
@@ -542,6 +587,9 @@ function Dwoo_Plugin_subtract_compile(Dwoo_Compiler $compiler, $minuend, $subtra
 /**
  * Convert HTML code to text, keep as much format as possible
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$html
  * @return	String			Text version
@@ -554,6 +602,9 @@ function Dwoo_Plugin_html2text_compile(Dwoo_Compiler $compiler, $html) {
 
 /**
  * Render select element with options
+ *
+ * @package		Todoyu
+ * @subpackage	Template
  *
  * @param	Dwoo 		$dwoo
  * @param	Array		$options
@@ -601,6 +652,9 @@ function Dwoo_Plugin_select(Dwoo $dwoo, array $options, array $value = array(), 
 /**
  * Replace line breaks "\n" with ODT style line breaks
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$text
  * @return	String
@@ -613,6 +667,9 @@ function Dwoo_Plugin_OdtLinebreaks_compile(Dwoo_Compiler $compiler, $text) {
 /**
  * Replace spaces with &nbsp; entities
  * Prevent line breaks on spaces
+ *
+ * @package		Todoyu
+ * @subpackage	Template
  *
  * @param	Dwoo_Compiler 	$compiler
  * @param	String			$text
@@ -627,6 +684,9 @@ function Dwoo_Plugin_nobreak_compile(Dwoo_Compiler $compiler, $text) {
 /**
  * Check in template if user is logged in
  *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
  * @param	Dwoo_Compiler		$compiler
  * @return	String
  */
@@ -637,6 +697,9 @@ function Dwoo_Plugin_isLoggedIn_compile(Dwoo_Compiler $compiler) {
 
 /**
  * Build timerange selector HTML code
+ *
+ * @package		Todoyu
+ * @subpackage	Template
  *
  * @param	Dwoo_Compiler	$compiler
  * @param	String		$id
@@ -651,6 +714,9 @@ function Dwoo_Plugin_timerange_compile(Dwoo_Compiler $compiler, $id, $name, $ran
 
 /**
  * Render content message with label
+ *
+ * @package		Todoyu
+ * @subpackage	Template
  *
  * @param	Dwoo_Compiler $compiler
  * @param	String		$label
