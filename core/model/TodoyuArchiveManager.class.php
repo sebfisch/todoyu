@@ -33,6 +33,7 @@ class TodoyuArchiveManager {
 	 * @param	String			$targetFolder
 	 * @param	String|Array	$entries
 	 * @throws	TodoyuException
+	 * @return	Boolean
 	 */
 	public static function extractTo($zipFile, $targetFolder, $entries = null) {
 		@set_time_limit(60);
@@ -54,12 +55,14 @@ class TodoyuArchiveManager {
 			// Workaround because null is not a valid default parameter
 			// @see http://pecl.php.net/bugs/bug.php?id=14962
 		if( is_null($entries) ) {
-			$zip->extractTo($targetFolder);
+			$success	= $zip->extractTo($targetFolder);
 		} else {
-			$zip->extractTo($targetFolder, $entries);
+			$success	= $zip->extractTo($targetFolder, $entries);
 		}
 
 		$zip->close();
+
+		return $success;
 	}
 
 
