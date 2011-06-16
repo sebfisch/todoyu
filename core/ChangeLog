@@ -1,48 +1,47 @@
 todoyu core changelog
 
-core 2.1.0 - Release Candidate
-
-
-core 2.1.0 - beta release
-	* Changed: UI: easier deselection of simple / grouped select options - only the first current value option is preselected in case there are multiple identic options
+core 2.1.0
+	* Feature: Added TodoyuMail objects which handles mail sending. Extendable by extensions
 	* Feature: Added auto-growing behavior textareas and RTE areas
-	* Feature: Added todoyuToken, todoyuTokenManager for public data access interfacing
-	* Changed: Every PHP class has extension prefix
-	* Changed: Updated database config files with default values
-	* Changed: Implemented headlets (JS) as classes, general headlet cleanup
-	* Feature: Cleaned up popup handling, Todoyu.Popup is a class now, support for multiple popups
-	* Changed: Renamed "assets" folder to "asset" (all folders now singular)
-	* Feature: Improved logger
-	* Changed: Moved global functions to Todoyu namespace
-	* Bugfix: Made allowed tags of RTE more precise to disallow styles that are not supported via RTE options (inserted via paste)
-	* Feature: Added dwoo plugin "formatSqlDate" to format SQL datetime string as date in current locale format
-	* Bugfix: Fixed filemanager file existence check before deletion
-	* Changed: Added deleteFile method (with success logging) to TodoyuFileManager
+	* Feature: Added authentification with tokens to allow public data access interfacing
+	* Feature: Changed popup behaviour. Multiple popups are handled correct now. Close with escape
 	* Feature: Added method for creation of random named cache folders to TodoyuFileManager
 	* Feature: Extended TodoyuFileManager::getFolderContents with option to retrieve file stats
-	* Feature: Added reference to famfamfam silk icons in third party info of about popup
-	* Feature: Added onchange validation of manually edited date/datetime fields
-	* Changed: Added globally used icons (unacknowledged/acknowledged/modified/accepted/emailed) to core
-	* Feature: Added TodoyuMailManager (DB table system_log_email) for logging of various email types
-	* Changed: Removed unused DB table system_log
-	* Changed: Renamed DB table system_errorlog to system_log_error
+	* Feature: Live validation of date/datetime fields
 	* Feature: Added Todoyu::db()->setDeleted() wrapper method
 	* Feature: Added TodoyuBaseObject::getCreatePersonID() and getCreatePerson() shortcut methods
-	* Feature: Added exclamation and email icons to core standard icons
-	* Feature: Added CSS for big (32x32px) confirmation icon
 	* Feature: Added array helper method that merges TodoyuArray::reform() and TodoyuArray::useFieldAsIndex() => TodoyuArray::reformWithFieldAsIndex()
 	* Feature: Added check for items existence before applying hooked callbacks on items (Todoyu.Hooks.exec())
 	* Feature: Added calling of JS hook after quickcreate popup has been opened ('headlet.quickcreate.' + type + '.popupOpened')
 	* Feature: Added Img-function to TodoyuString
 	* Feature: Quickinfos are now deactivatible via JS
-	* Feature: Added changelog
-	* Feature: Added placeholders for to-be columbian spanish localization files of installer
-	* Feature: Added large notification icons
+	* Changed: UI: easier deselection of simple / grouped select options - only the first current value option is preselected in case there are multiple identic options
+	* Changed: Every PHP class has extension prefix
+	* Changed: Implemented headlets (JS) as classes, general headlet cleanup
+	* Changed: Renamed DB table system_errorlog to system_log_error
 	* Changed: Moved core classes to core/model
 	* Changed: Moved document classes to core/model/document
 	* Changed: Moved form classes to core/model/form
 	* Changed: Removed TodoyuPanelWidgetIf
+	* Changed: Removed unused DB table system_log
 	* Changed: TodoyuPanelWidget::renderContent() only renders the content, parent class handles full render process
+	* Changed: Added globally used icons (unacknowledged/acknowledged/modified/accepted/emailed) to core
+	* Changed: Added deleteFile method (with success logging) to TodoyuFileManager
+	* Changed: Moved global functions to Todoyu namespace
+	* Changed: Renamed "assets" folder to "asset" (all folders now singular)
+	* Changed: Made allowed tags of RTE more precise to disallow styles that are not supported via RTE options (inserted via paste)
+	* Changed: Installer respects version order of php and sql files
+	* Changed: When last version is unknown during an update, prompt for user input
+	* Changed: Extension archives are created completely in core modules. Valid extraction to all OS
+	* Changed: Support exception handling for PHP 5.2 and 5.3
+	* Changed: Replaced functions of Prototype 1.6 with newer versions for 1.7
+	* Changed: Database connection uses now default sql mode (removed sql_mode=ansi)
+	* Added: Added locale en_US for proper date formatting
+	* Added: Todoyu.Helper.cropText() to crop text in js
+	* Added: addJsOnloadedFunction has now an autobind parameter
+	* Translation: Updated german, russian and japanese translation updates
+
+
 
 core 2.0.8 - beta
 	* Bugfix: Added forgotten button label to "add person" button of role form
