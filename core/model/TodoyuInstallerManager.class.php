@@ -455,16 +455,13 @@ class TodoyuInstallerManager {
 	 */
 	private static function saveInternalCompanyName($name) {
 		$name	= trim($name);
-
-		$table	= 'ext_contact_company';
-		$where	= 'id = 1';
 		$update	= array(
 			'title'		=> $name,
 			'shortname'	=> $name,
 			'date_enter'=> NOW
 		);
 
-		Todoyu::db()->doUpdate($table, $where, $update);
+		TodoyuContactCompanyManager::updateCompany(1, $update);
 	}
 
 
