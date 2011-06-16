@@ -86,11 +86,11 @@ TodoyuLabelManager::addCustomPath('core', 'core');
 
 	// Setup password requirements
 Todoyu::$CONFIG['SETTINGS']['passwordStrength'] = array(
-	'minLength'			=> 8,
+	'minLength'			=> 6,
 	'hasLowerCase'		=> true,
 	'hasUpperCase'		=> true,
-	'hasNumbers'		=> true,
-	'hasSpecialChars'	=> false,
+	'hasNumbers'		=> false,
+	'hasSpecialChars'	=> false
 );
 
 Todoyu::$CONFIG['CREATE'] = array(
