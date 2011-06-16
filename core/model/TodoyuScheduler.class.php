@@ -85,6 +85,8 @@ class TodoyuScheduler {
 
 			// Remove block file
 		self::removeBlockFile();
+
+		return true;
 	}
 
 
