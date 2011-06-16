@@ -231,6 +231,10 @@ div.fElement {
 		}
 
 
+.fField span.commenttext a,
+.fField span.commenttext a:link {
+	text-decoration:underline;
+}
 
 /* -------------
 	Types
