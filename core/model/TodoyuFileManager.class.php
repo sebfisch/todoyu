@@ -933,6 +933,36 @@ class TodoyuFileManager {
 		return $updateFiles;
 	}
 
+
+
+	/**
+	 * Get a recursive file list of all elements
+	 *
+	 * @param	String		$pathFolder
+	 * @return	Array
+	 */
+	public static function getRecursiveFileList($pathFolder) {
+		$pathFolder	= self::pathAbsolute($pathFolder);
+		$files		= self::getFilesInFolder($pathFolder);
+		$folders	= self::getFoldersInFolder($pathFolder);
+		$elements	= array();
+
+			// Add files
+		foreach($files as $filename) {
+			$elements[] = self::pathAbsolute($pathFolder . '/' . $filename);
+		}
+
+		foreach($folders as $folder) {
+			$pathSubfolder	= self::pathAbsolute($pathFolder . '/' . $folder);
+			$elements[]		= $pathSubfolder;
+			$subElements	= self::getRecursiveFileList($pathSubfolder);
+
+			$elements		= array_merge($elements, $subElements);
+		}
+
+		return $elements;
+	}
+
 }
 
 ?>
