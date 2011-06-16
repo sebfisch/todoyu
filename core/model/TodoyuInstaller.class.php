@@ -27,11 +27,28 @@
 class TodoyuInstaller {
 
 	/**
+	 * Path to last version file
+	 *
+	 * @var	String
+	 */
+	private static $versionFile = 'install/config/LAST_VERSION';
+
+	/**
 	 * Process and display current step of installer
 	 */
 	public static function run() {
 			// Start output buffer
 		ob_start();
+
+			// Save last version if submitted
+		self::saveVersionDetection();
+
+			// Show special form to set last version if file is not available
+		if( self::isUpdate() && ! self::hasVersionFile() ) {
+			echo TodoyuInstallerRenderer::renderVersionSelector();
+			$_SESSION = array();
+			exit();
+		}
 
 			// No installation step or restart? initialize installer
 		if( ! self::hasStep() || self::isRestart() ) {
@@ -88,22 +105,31 @@ class TodoyuInstaller {
 
 
 	/**
-	 * Cleanup installation before initializing
+	 * Check whether the installation has a LAST_VERSION file
+	 *
+	 * @return	Boolean
 	 */
-	private static function onInitCleanup() {
-
-
-
-		/**
-		 * /Was only necessary for the RC2 release
-		 */
-
-			// Remove files of old installations
-//		TodoyuInstallerManager::removeOldFiles();
-			// Update config files if necessary
-//		TodoyuInstallerManager::updateConfigFileVariables();
+	private static function hasVersionFile() {
+		return is_file(self::$versionFile);
 	}
 
+
+
+	/**
+	 * Save last installed version from form which comes before update
+	 * Only necessary when no LAST_VERSION file was available
+	 *
+	 */
+	private static function saveVersionDetection() {
+		if( TodoyuRequest::isPostRequest() ) {
+			if( isset($_POST['version']) ) {
+				TodoyuDebug::printInFireBug('save version');
+				$version	= trim($_POST['version']);
+
+				TodoyuFileManager::saveFileContent(self::$versionFile, $version);
+			}
+		}
+	}
 
 
 

@@ -27,6 +27,13 @@
 class TodoyuInstallerManager {
 
 	/**
+	 * Path to last version file
+	 *
+	 * @var string
+	 */
+	private static $lastVersionFile = 'install/config/LAST_VERSION';
+
+	/**
 	 * Process first step of installation: locale selection for installer and as preset for system locale
 	 *
 	 * @param	Array	$data
@@ -887,7 +894,7 @@ class TodoyuInstallerManager {
 	 * @return	String
 	 */
 	public static function getLastVersion() {
-		$pathFile	= TodoyuFileManager::pathAbsolute('install/config/LAST_VERSION');
+		$pathFile	= TodoyuFileManager::pathAbsolute(self::$lastVersionFile);
 		$version	= TODOYU_VERSION;
 
 		if( is_file($pathFile) ) {
@@ -903,9 +910,7 @@ class TodoyuInstallerManager {
 	 * Save current todoyu version as DB version in the LAST_VERSION file
 	 */
 	public static function saveCurrentVersion() {
-		$pathFile	= 'install/config/LAST_VERSION';
-
-		TodoyuFileManager::saveFileContent($pathFile, TODOYU_VERSION);
+		TodoyuFileManager::saveFileContent(self::$lastVersionFile, TODOYU_VERSION);
 	}
 
 

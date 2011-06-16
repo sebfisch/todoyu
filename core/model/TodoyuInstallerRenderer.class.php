@@ -348,5 +348,19 @@ class TodoyuInstallerRenderer {
 		return $data;
 	}
 
+
+
+	/**
+	 * Render version selector which comes before updater
+	 *
+	 * @return	String
+	 */
+	public static function renderVersionSelector() {
+		$tmpl	= 'install/view/version-selector.tmpl';
+
+		return Todoyu::render($tmpl);
+	}
+
+
 }
 ?>
