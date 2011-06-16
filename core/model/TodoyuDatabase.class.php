@@ -579,7 +579,7 @@ class TodoyuDatabase {
 
 		if( ! TodoyuCache::isIn($cacheID) ) {
 			$result	= $this->doSelect($fields, $table, $where, $groupBy, '', $limit);
-			$hasRes	= $this->getNumRows($result) > 0 ;
+			$hasRes	= $this->getNumRows($result) > 0;
 
 			TodoyuCache::set($cacheID, $hasRes);
 		}
@@ -963,7 +963,7 @@ class TodoyuDatabase {
 //		}
 
 		$rows	= $this->getArray($fields, $table, $where, $groupBy, $orderBy, $limit);
-		$key	= $resultFieldName === '' ? $field : $resultFieldName ;
+		$key	= $resultFieldName === '' ? $field : $resultFieldName;
 		$column	= array();
 
 		foreach($rows as $row) {
@@ -1044,7 +1044,7 @@ class TodoyuDatabase {
 	 */
 	public function getFieldValue($field, $table, $where = null, $groupBy = null, $orderBy = null, $limit = null, $resultFieldName = null) {
 		$resource	= $this->doSelect($field, $table, $where, $groupBy, $orderBy, $limit);
-		$key		= is_null($resultFieldName) ? $field : $resultFieldName ;
+		$key		= is_null($resultFieldName) ? $field : $resultFieldName;
 		$value		= false;
 
 		if( $this->getNumRows($resource) > 0 ) {

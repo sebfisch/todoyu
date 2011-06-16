@@ -189,7 +189,7 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
-		return ( intval($value) > 0 );
+		return intval($value) > 0;
 	}
 
 
@@ -358,7 +358,7 @@ class TodoyuFormValidator {
 		$fieldDate			= intval($value);
 		$compareFieldDate	= intval($compareFieldValue);
 
-		return ( $fieldDate < $compareFieldDate );
+		return $fieldDate < $compareFieldDate;
 	}
 
 
@@ -424,7 +424,7 @@ class TodoyuFormValidator {
 			return false;
 		}
 
-		return ( $fieldDate > $compareFieldDate );
+		return $fieldDate > $compareFieldDate;
 	}
 
 

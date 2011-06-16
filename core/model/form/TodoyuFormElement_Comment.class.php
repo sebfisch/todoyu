@@ -86,6 +86,22 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 
 
 	/**
+	 * Set field value ('attribute')
+	 *
+	 * @param	Mixed		$value
+	 * @param	Boolean		$updateForm		Update the form. Can be false if the form already has the value
+	 */
+	public function setValue($value, $updateForm = true) {
+		$this->setCommentText($value);
+
+		if( $updateForm ) {
+			$this->updateFormData($value);
+		}
+	}
+
+
+
+	/**
 	 * Comment fields are never stored in the database
 	 *
 	 * @return	Boolean

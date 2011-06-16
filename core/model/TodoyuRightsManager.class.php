@@ -106,7 +106,7 @@ class TodoyuRightsManager {
 		$timestampSession	= TodoyuSession::get('mtime');
 		$timestampRightsMod	= self::getLastChangeTime();
 
-		return ($timestampSession < $timestampRightsMod) ? true : false;
+		return $timestampSession < $timestampRightsMod ? true : false;
 	}
 
 

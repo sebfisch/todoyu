@@ -324,7 +324,7 @@ class TodoyuTokenManager {
 	public static function hasRequestToken() {
 		$hash	= self::geTokenHashValueFromRequest();
 
-		return ( ! empty($hash) );
+		return ! empty($hash);
 	}
 
 

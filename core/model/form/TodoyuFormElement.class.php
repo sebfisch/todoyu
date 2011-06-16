@@ -653,7 +653,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Boolean
 	 */
 	public function hasValidations() {
-		return sizeof($this->getValidations()) > 0 ;
+		return sizeof($this->getValidations()) > 0;
 	}
 
 
@@ -695,7 +695,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Boolean
 	 */
 	public function validateRequired() {
-		return ($this->getValue()) ? true : false;
+		return $this->getValue() ? true : false;
 	}
 
 
