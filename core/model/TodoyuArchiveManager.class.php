@@ -79,20 +79,20 @@ class TodoyuArchiveManager {
 
 			// Create temp folder with content
 		$tempFolder	= TodoyuFileManager::makeRandomCacheDir('archive');
-		TodoyuFileManager::copyRecursive($pathFolder, $tempFolder);
+		TodoyuFileManager::copyRecursive($pathFolder, $tempFolder, $exclude);
 
-			// Remove excluded
-		foreach($exclude as $excludeElement) {
-			$excludeElement		= TodoyuFileManager::pathAbsolute($excludeElement);
-			$excludeElementRel	= str_replace(PATH, '', $excludeElement);
-			$excludeElement		= TodoyuFileManager::pathAbsolute($tempFolder . $excludeElementRel);
-
-			if( is_file($excludeElement) ) {
-				TodoyuFileManager::deleteFile($excludeElement);
-			} elseif( is_dir($excludeElement) ) {
-				TodoyuFileManager::deleteFolder($excludeElement);
-			}
-		}
+//			// Remove excluded
+//		foreach($exclude as $excludeElement) {
+//			$excludeElement		= TodoyuFileManager::pathAbsolute($excludeElement);
+//			$excludeElementRel	= str_replace(PATH, '', $excludeElement);
+//			$excludeElement		= TodoyuFileManager::pathAbsolute($tempFolder . $excludeElementRel);
+//
+//			if( is_file($excludeElement) ) {
+//				TodoyuFileManager::deleteFile($excludeElement);
+//			} elseif( is_dir($excludeElement) ) {
+//				TodoyuFileManager::deleteFolder($excludeElement);
+//			}
+//		}
 
 			// Create temp dir
 		TodoyuFileManager::makeDirDeep(dirname($tempArchivePath));

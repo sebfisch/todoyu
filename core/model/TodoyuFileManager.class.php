@@ -829,28 +829,42 @@ class TodoyuFileManager {
 	 *
 	 * @param	String		$sourceFolder
 	 * @param	String		$destinationFolder
+	 * @param	Array		$exclude
 	 * @param	Boolean		$move					Move instead copy
 	 * @param	Boolean		$hiddenFiles
 	 */
-	public static function copyRecursive($sourceFolder, $destinationFolder, $move = false, $hiddenFiles = false) {
-		$sourceFolder	= self::pathAbsolute($sourceFolder);
-		$destinationFolder		= self::pathAbsolute($destinationFolder);
-		$removeFolders	= array();
+	public static function copyRecursive($sourceFolder, $destinationFolder, array $exclude = array(), $move = false, $hiddenFiles = false) {
+		$sourceFolder		= self::pathAbsolute($sourceFolder);
+		$destinationFolder	= self::pathAbsolute($destinationFolder);
+		$removeFolders		= array();
+
+		foreach($exclude as $index => $item) {
+			$exclude[$index] = TodoyuFileManager::pathAbsolute($item);
+		}
+
+
 
 		self::makeDirDeep($destinationFolder);
 
 		$folderElements	= self::getFolderContents($sourceFolder, $hiddenFiles);
 
+		print_r($folderElements);
+
 		foreach($folderElements as $element) {
 			$pathElement	= self::pathAbsolute($sourceFolder . '/' . $element);
 			$pathDestElement= self::pathAbsolute($destinationFolder . '/' . $element);
+
+				// Skip excluded files
+			if( in_array($pathElement, $exclude) ) {
+				continue;
+			}
 
 			if( is_dir($pathElement) ) {
 					// Folder
 				if( ! is_dir($pathDestElement) ) {
 					self::makeDirDeep($pathDestElement);
 				}
-				self::copyRecursive($pathElement, $pathDestElement, $move, $hiddenFiles);
+				self::copyRecursive($pathElement, $pathDestElement, $exclude, $move, $hiddenFiles);
 				if( $move ) {
 					$removeFolders[] = $pathElement;
 				}
@@ -881,7 +895,7 @@ class TodoyuFileManager {
 	 * @param	String		$destinationFolder
 	 * @param	Boolean		$hiddenFiles
 	 */
-	public static function moveRecursive($sourceFolder, $destinationFolder, $hiddenFiles = false) {
+	public static function moveRecursive($sourceFolder, $destinationFolder, array $exclude = array(), $hiddenFiles = false) {
 		self::copyRecursive($sourceFolder, $destinationFolder, true, $hiddenFiles);
 	}
 
