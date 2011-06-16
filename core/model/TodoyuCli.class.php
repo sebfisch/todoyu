@@ -51,11 +51,13 @@ class TodoyuCli {
 
 			// Predefine URL constants
 		if( ! defined('SERVER_URL') ) {
-			$url	= parse_url('http://' . str_replace('http://', '', Todoyu::$CONFIG['SYSTEM']['todoyuURL']));
+			$protocol	= stristr(Todoyu::$CONFIG['SYSTEM']['todoyuURL'], 'https://') !== false ? 'https' : 'http';
+			$url		= parse_url('http://' . str_replace(array('http://', 'https://'), '', Todoyu::$CONFIG['SYSTEM']['todoyuURL']));
 
 			define('PATH_WEB_OVERRIDE', $url['path']);
+			define('PATH_WEB', $url['path']);
 
-			define('SERVER_URL', 'http://' . $url['host']);
+			define('SERVER_URL', $protocol . '://' . $url['host']);
 
 			define('TODOYU_URL', SERVER_URL . $url['path']);
 		}
