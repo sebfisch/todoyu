@@ -57,7 +57,7 @@ class TodoyuMail extends PHPMailerLite {
 	private $config = array(
 		'exceptions'=> true,
 		'mailer'	=> 'mail',
-		'charset'	=> 'uft-8'
+		'charset'	=> 'utf-8'
 	);
 
 
