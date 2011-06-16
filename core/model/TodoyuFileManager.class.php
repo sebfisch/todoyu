@@ -93,6 +93,12 @@ class TodoyuFileManager {
 	 */
 	public static function deleteFolderContents($folderPath, $deleteHidden = false) {
 		$folderPath = self::pathAbsolute($folderPath);
+
+			// No folder, no action taken
+		if( ! is_dir($folderPath) ) {
+			return true;
+		}
+
 		$folders	= self::getFoldersInFolder($folderPath, $deleteHidden);
 		$files		= self::getFilesInFolder($folderPath, $deleteHidden);
 		$success	= true;

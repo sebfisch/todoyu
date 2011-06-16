@@ -310,6 +310,25 @@ class TodoyuLabelManager {
 
 
 	/**
+	 * Clear locale cache
+	 *
+	 * @param	String|Boolean	$locale
+	 */
+	public static function clearCache($locale = false) {
+		$pathCache	= Todoyu::$CONFIG['LOCALE']['labelCacheDir'];
+
+		if( $locale  ) {
+			$pathCache	.= '/' . $locale;
+		}
+
+		$pathCache	= TodoyuFileManager::pathAbsolute($pathCache);
+
+		TodoyuFileManager::deleteFolderContents($pathCache);
+	}
+
+
+
+	/**
 	 * Read a locallang XML file using a XML parser.
 	 * Transforms the parser result in an useful array
 	 * Structure [de][INDEX] = Label
