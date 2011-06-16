@@ -232,7 +232,7 @@ class TodoyuTime {
 		$timestamp	= intval($timestamp);
 		$weekday	= date('w', $timestamp);
 
-		return ( $mondayFirst ) ? ($weekday + 6) % 7 : $weekday;
+		return $mondayFirst ? ($weekday + 6) % 7 : $weekday;
 	}
 
 
@@ -570,7 +570,7 @@ class TodoyuTime {
 	 */
 	public static function parseTime($timeString) {
 		$colons		= substr_count($timeString, ':');
-		$format		= $colons === 2 ? self::getFormat('timesec') : self::getFormat('time') ;
+		$format		= $colons === 2 ? self::getFormat('timesec') : self::getFormat('time');
 		$timeParts	= strptime($timeString, $format);
 
 		$hours	= intval($timeParts['tm_hour']);
