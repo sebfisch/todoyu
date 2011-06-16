@@ -802,44 +802,36 @@ class TodoyuInstallerManager {
 	public static function runCoreVersionUpdates() {
 		$lastVersion	= self::getLastVersion();
 
-		self::runCoreVersionUpdatesSQL($lastVersion);
-		self::runCoreVersionUpdatesPHP($lastVersion);
+		$updates	= array();
+		$baseSQL	= 'core/update/db';
+		$basePhp	= 'core/update/php';
+		$sqlFiles	= self::getUpdateFiles($baseSQL, 'sql', $lastVersion);
+		$phpFiles	= self::getUpdateFiles($basePhp, 'php', $lastVersion);
+
+			// Collect files grouped by version
+		foreach($sqlFiles as $sqlFile) {
+			$version	= basename($sqlFile, '.sql');
+			$updates[$version]['sql'] = $sqlFile;
+		}
+		foreach($phpFiles as $phpFile) {
+			$version	= basename($phpFile, '.php');
+			$updates[$version]['php'] = $phpFile;
+		}
+
+			// Sort by version
+		uksort($updates, 'version_compare');
+
+			// Execute all updates which are between last and current version
+		foreach($updates as $version => $files) {
+			if( $files['sql'] ) {
+				TodoyuSQLManager::executeQueriesFromFile($baseSQL . '/' . $files['sql']);
+			}
+			if( $files['php'] ) {
+				include($basePhp . '/' . $files['php']);
+			}
+		}
 
 		self::saveCurrentVersion();
-	}
-
-
-
-	/**
-	 * Run version updates from SQL files
-	 *
-	 * @param	String		$lastVersion
-	 */
-	private static function runCoreVersionUpdatesSQL($lastVersion) {
-		$baseFolder	= 'core/update/db';
-		$updateFiles= self::getUpdateFiles($baseFolder, 'sql', $lastVersion);
-
-		foreach($updateFiles as $updateFile) {
-			TodoyuSQLManager::executeQueriesFromFile($baseFolder . '/' . $updateFile);
-		}
-	}
-
-
-
-	/**
-	 * Run version updates from PHP files
-	 *
-	 * @param	String		$lastVersion
-	 */
-	private static function runCoreVersionUpdatesPHP($lastVersion) {
-		$baseFolder	= 'core/update/php';
-		$updateFiles= self::getUpdateFiles($baseFolder, 'php', $lastVersion);
-
-		foreach($updateFiles as $updateFile) {
-			$pathFile	= TodoyuFileManager::pathAbsolute($baseFolder . '/' . $updateFile);
-
-			include($pathFile);
-		}
 	}
 
 
