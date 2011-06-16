@@ -842,13 +842,9 @@ class TodoyuFileManager {
 			$exclude[$index] = TodoyuFileManager::pathAbsolute($item);
 		}
 
-
-
 		self::makeDirDeep($destinationFolder);
 
 		$folderElements	= self::getFolderContents($sourceFolder, $hiddenFiles);
-
-		print_r($folderElements);
 
 		foreach($folderElements as $element) {
 			$pathElement	= self::pathAbsolute($sourceFolder . '/' . $element);
