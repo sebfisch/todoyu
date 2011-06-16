@@ -30,10 +30,6 @@
 	background-color:#f3f3f3;
 }
 
-.sortablePanelList .listItem.even {
-
-}
-
 .sortablePanelList .listItem.current {
 	background-color:#e3eace;
 }

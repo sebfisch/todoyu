@@ -19,10 +19,6 @@ body {
 		margin:0 auto;
 	}
 
-	#menuCurrentTimeTracking {
-
-	}
-
 #box {
 	position:relative;
 	width:978px;
@@ -54,7 +50,6 @@ body {
 	padding:0 0 80px 0;
 }
 
-
 #notification {
 	margin:0 0 0 18px;
 	padding:6px 8px 12px 8px;
@@ -64,10 +59,9 @@ body {
 
 
 
-/* -------------------
+/* ----------------------
 	Content column
-   -------------------*/
-
+   ----------------------*/
 #right {
 	position:relative;
 	top:46px;
@@ -137,7 +131,6 @@ body {
 /* --------------
 	Footer
    --------------*/
-
 #footer {
 	display:block;
 	clear:both;
@@ -406,6 +399,9 @@ span.exticon {
 
 
 
+/* ---------------------
+	Toggle select
+   --------------------- */
 input.toggleSelect {
 	display:none;
 }
@@ -432,11 +428,9 @@ label.toggleSelect.expand {
 
 
 
-
 /* ---------------
 	Colors
    --------------- */
-
 /* layout */
 .bclFF {background-color:#fff;}
 .bcl00 {background-color:#000;}
@@ -466,7 +460,6 @@ label.toggleSelect.expand {
 .bcg07 {background-color:#bbb;}
 /*.bcg08 {background-color:#;}*/
 .bcg09 {background-color:#999;}
-
 
 a.defaultCursor {
 	cursor:default;

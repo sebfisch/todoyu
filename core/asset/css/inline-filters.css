@@ -29,6 +29,7 @@
 }
 
 
+
 /* ---------------------------
 	main and extra
    ---------------------------*/
@@ -48,7 +49,6 @@
 	margin-left:20px;
 }
 
-
 .inlineFilters .filter.typeAutocomplete .textAC {
 	width:400px;
 }
@@ -60,9 +60,6 @@
 .inlineFilters .filter.typeSelect select {
 	width:230px;
 }
-
-
-
 
 
 
@@ -79,7 +76,6 @@
 .inlineFilters .filter ul.itemList li:hover {
 	background-color:#f6f6f6;
 }
-
 
 .inlineFilters .filter ul.itemList li span.remove {
 	float:right;

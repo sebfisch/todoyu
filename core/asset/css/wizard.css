@@ -1,8 +1,6 @@
-
 .wizard * {
 	text-align:left;
 	font-size:12px;
-
 }
 
 .wizard .navi,
@@ -10,7 +8,6 @@
 .wizard .help {
 	float:left;
 	clear:none;
-
 }
 
 .wizard .navi {
@@ -26,14 +23,13 @@
 
 .wizard .navi ol li {
 	padding:5px;
-	color:#A5A5A5;
+	color:#a5a5a5;
 }
 
 .wizard .navi ol li.active {
 	background-color:#fff;
 	color:#000;
 	font-weight:bold;
-
 }
 
 .wizard .navi ol li.done {
@@ -64,7 +60,6 @@
 	width:209px;
 	margin-top:60px;
 	padding-left:10px;
-
 }
 
 .wizard .buttons {
@@ -116,10 +111,6 @@
 	background-position:0 -1188px;
 }
 
-
-
 .wizard .buttons .main .next .icon {
 	background-position:0 -1218px;
 }
-
-

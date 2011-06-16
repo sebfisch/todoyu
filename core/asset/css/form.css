@@ -185,7 +185,6 @@ label {}
 /* ----------------------
 	HTML building
    ----------------------*/
-
 div.fElement {
 	position:relative;
 	height:auto !important;
@@ -331,30 +330,17 @@ div.fElement {
 /* -----------------
 	Design
    -----------------*/
-
 input, textarea, select {
 	border-color:#848484 #e8e5de #e8e5de #848484;
 }
 
 fieldset {}
 
-	fieldset div.odd {
-		/*background-color:#fff;*/
-	}
-
 	fieldset div.even {}
 
 	fieldset.buttons div.fElement {
 		float:right;
 	}
-
-		/* none floating fields */
-	/*
-	fieldset.noneFloatingInput div.fElement .fField,
-	fieldset.noneFloatingInput div.fElement .fLabel {
-		float:none;
-	}
-	*/
 
 		/* --- right floating Input --- */
 	.formElement .formField {
@@ -365,19 +351,6 @@ fieldset {}
 		display:inline;
 		float:right;
 	}
-
-
-/*
-.formElement input,
-.formElement textarea,
-.formElement select {
-	width:100%;
-}
-
-.formElement textarea {
-	height:100px;
-}
-*/
 
 
 
@@ -422,35 +395,6 @@ form div.error div.errorMessage {
 form .error.typeCheckbox {
 	height:30px !important;
 }
-
-form .typeCheckbox div.errorMessage {
-}
-
-/* -------------------------
-	Left floating radio
-   ------------------------- */
-/*
-.formElement fieldset input {
-	clear:left;
-	float:left;
-	height:18px;
-}
-
-.formElement fieldset label {
-	float:left;
-	width:88% !important;
-	width:83%;
-	line-height:18px;
-}
-
-*+html .formElement fieldset label {
-	width:83% !important;
-}
-
-.formLabel .fieldHasError label{
-	color:red;
-}
-*/
 
 
 
@@ -586,6 +530,7 @@ form .typeCheckbox div.errorMessage {
 #quicktask {
 	text-align:left;
 }
+
 
 
 /* ---------------------------------------

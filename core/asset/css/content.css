@@ -56,10 +56,11 @@ span.iconLarge {
 	margin-bottom:7px;
 }
 
+
+
 /* -----------------
 	Listings
    -----------------*/
-
 ul.ulList {}
 ul.ulList li.listItem {
 	overflow:hidden;
@@ -84,12 +85,17 @@ ul.ulList li.listItemHeader span {
 ul.ulListDotted li.listItem {
 	border-bottom:1px solid #ddd;
 }
+
+
+
 /* -----------------------------
 	Editable / linked items
    ----------------------------- */
 li.listItem a.editableItem {
 	display:block;
 }
+
+
 
 /* -----------------
 	Box
@@ -116,10 +122,12 @@ div.infoBox div.content {
 	padding:5px 12px;
 	background:white;
 }
+
+
+
 /* -----------------
 	Heading
    -----------------*/
-
 h1 {
 	position:relative;
 	overflow:hidden;

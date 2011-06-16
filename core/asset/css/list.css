@@ -57,6 +57,7 @@ table.list tr.header:hover {
 }
 
 
+
 /* -----------------------------
 	Odd and even alternation
    ----------------------------- */
@@ -71,8 +72,6 @@ table.listsimple tr.even,
 li.even {
 	background-color:#fff;
 }
-
-
 
 #extendlisting {
 	width:650px;
