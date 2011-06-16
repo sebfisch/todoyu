@@ -23,13 +23,5 @@
 	// THIS FILE IS AUTOMATICALLY UPDATED BY TODOYU
 	// ****************************************************************************
 
-Todoyu::$CONFIG['SETTINGS']['passwordStrength'] = array(
-	'minLength'	=> 12,
-	'hasNumbers'	=> true,
-	'hasLowerCase'	=> true,
-	'hasUpperCase'	=> true,
-	'hasSpecialChars'	=> true
-);
-
 
 ?>
