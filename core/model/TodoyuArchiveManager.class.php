@@ -107,43 +107,6 @@ class TodoyuArchiveManager {
 	 */
 	public static function createArchiveFromFolder($pathFolder, array $exclude = array()) {
 		$pathFolder		= TodoyuFileManager::pathAbsolute($pathFolder);
-
-		if( true || TodoyuServer::isPhp53() ) {
-			return self::createArchiveFromFolderPhp53($pathFolder, $exclude);
-		} else {
-//			return self::createArchiveFromFolderPhp52($pathFolder, $exclude);
-		}
-	}
-
-
-
-	/**
-	 * @static
-	 * @param  $pathFolder
-	 * @param array $exclude
-	 * @return String
-	 */
-	private static function createArchiveFromFolderPhp52($pathFolder, array $exclude = array()) {
-		$pathArchive	= TodoyuFileManager::getTempFile('zip');
-
-		self::setExcludeItems($pathFolder, $exclude);
-
-		$archive	= new PclZip($pathArchive);
-		$archive->create($pathFolder, PCLZIP_OPT_REMOVE_PATH, $pathFolder, PCLZIP_CB_PRE_ADD, 'TodoyuArchiveManagerCreateArchiveFromFolderPhp52Callback');
-
-		return $pathArchive;
-	}
-
-
-
-	/**
-	 * Create archive from a folder (php 5.3 style)
-	 *
-	 * @param	String		$pathFolder
-	 * @param	Array		$exclude
-	 * @return	String
-	 */
-	private static function createArchiveFromFolderPhp53($pathFolder, array $exclude = array()) {
 		$pathArchive	= TodoyuFileManager::getTempFile('zip', false);
 
 			// Prevent empty archive (which will not be created)
@@ -168,6 +131,7 @@ class TodoyuArchiveManager {
 
 		return $pathArchive;
 	}
+
 
 
 
