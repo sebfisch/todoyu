@@ -1,8 +1,10 @@
 todoyu core changelog
 
 core 2.1.0
-	Note: Since release 2.1.0, the todoyu extension repository is enabling us to decouple version updates of the todoyu core and basic extensions from one another.
+	1. Note: Since release 2.1.0, the todoyu extension repository is enabling us to decouple version updates of the todoyu core and basic extensions from one another.
 	Respectively, the core and extensions changelogs are now maintained separately.
+	2. Upgrade instruction: When upgrading an existing todoyu installation to 2.1.0 please read the instructions in the file __UPGRADE_TODOYU___READ_THIS_FIRST.txt
+	which you'll find in the todoyu root folder.
 
 	* Feature: Added TodoyuMail objects which handles mail sending. Extendable by extensions
 	* Feature: Added auto-growing behavior textareas and RTE areas
