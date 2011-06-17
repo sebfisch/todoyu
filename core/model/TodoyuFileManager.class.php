@@ -254,6 +254,29 @@ class TodoyuFileManager {
 
 
 	/**
+	 * Get random temp file (path) in cache
+	 *
+	 * @param	String|Boolean	$ext		File extension
+	 * @return	String
+	 */
+	public static function getTempFile($ext = false) {
+		$key	= md5(PATH . time() . microtime(true) . uniqid());
+		$path	= self::pathAbsolute(PATH_CACHE . '/temp/' . $key);
+
+		if( $ext !== false ) {
+			$path .= '.' . $ext;
+		}
+
+		self::makeDirDeep(dirname($path));
+
+		touch($path);
+
+		return $path;
+	}
+
+
+
+	/**
 	 * Check if file exists. Also relative path from PATH
 	 *
 	 * @param	String		$path

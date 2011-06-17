@@ -28,6 +28,12 @@ require_once( PATH_LIB . '/php/pclzip/pclzip.lib.php' );
  */
 class TodoyuArchiveManager {
 
+	private static $excludeItems	= array();
+
+	private static $defaultExcludePatterns = array(
+		'.svn'
+	);
+
 	/**
 	 * Extract an archive to a folder
 	 *
@@ -74,35 +80,96 @@ class TodoyuArchiveManager {
 	 */
 	public static function createArchiveFromFolder($pathFolder, array $exclude = array()) {
 		$pathFolder		= TodoyuFileManager::pathAbsolute($pathFolder);
-		$randomFile		= md5(uniqid($pathFolder, microtime(true))) . '.zip';
-		$tempArchivePath= TodoyuFileManager::pathAbsolute('cache/temp/' . $randomFile);
 
-			// Create temp folder with content
-		$tempFolder	= TodoyuFileManager::makeRandomCacheDir('archive');
-		TodoyuFileManager::copyRecursive($pathFolder, $tempFolder, $exclude);
 
-//			// Remove excluded
-//		foreach($exclude as $excludeElement) {
-//			$excludeElement		= TodoyuFileManager::pathAbsolute($excludeElement);
-//			$excludeElementRel	= str_replace(PATH, '', $excludeElement);
-//			$excludeElement		= TodoyuFileManager::pathAbsolute($tempFolder . $excludeElementRel);
-//
-//			if( is_file($excludeElement) ) {
-//				TodoyuFileManager::deleteFile($excludeElement);
-//			} elseif( is_dir($excludeElement) ) {
-//				TodoyuFileManager::deleteFolder($excludeElement);
-//			}
-//		}
+		if( version_compare(PHP_VERSION, '5.3.0') === -1 ) {
+			return self::createArchiveFromFolderPhp52($pathFolder, $exclude);
+		} else {
+			return self::createArchiveFromFolderPhp53($pathFolder, $exclude);
+		}
+	}
 
-			// Create temp dir
-		TodoyuFileManager::makeDirDeep(dirname($tempArchivePath));
 
-		$archive	= new PclZip($tempArchivePath);
-		$archive->create($tempFolder, PCLZIP_OPT_REMOVE_PATH, $tempFolder);
+	private static function createArchiveFromFolderPhp52($pathFolder, array $exclude = array()) {
+		$pathArchive	= TodoyuFileManager::getTempFile('zip');
 
-		TodoyuFileManager::deleteFolder($tempFolder);
+		self::setExcludeItems($pathFolder, $exclude);
 
-		return $tempArchivePath;
+		$archive	= new PclZip($pathArchive);
+		$archive->create($pathFolder, PCLZIP_OPT_REMOVE_PATH, $pathFolder, PCLZIP_CB_PRE_ADD, 'TodoyuArchiveManagerCreateArchiveFromFolderPhp52Callback');
+
+		return $pathArchive;
+	}
+
+
+	private static function createArchiveFromFolderPhp53($pathFolder, array $exclude = array()) {
+		$pathArchive	= TodoyuFileManager::getTempFile('zip');
+
+			// Prevent empty archive (which will not be created)
+		$elements	= TodoyuFileManager::getFolderContents($pathFolder);
+
+		if( sizeof($elements) === 0 ) {
+			self::createEmptyArchive($pathArchive);
+		} else {
+				// Prepare exclude paths
+			foreach($exclude as $index => $path) {
+				$exclude[$index] = TodoyuFileManager::pathAbsolute($path);
+			}
+
+				// Create archive
+			$archive = new ZipArchive();
+			$archive->open($pathArchive, ZipArchive::CREATE);
+
+			self::addFolderToArchive($archive, $pathFolder, $pathFolder, true, $exclude);
+
+			$archive->close();
+		}
+
+		return $pathArchive;
+	}
+
+
+	private static function createEmptyArchive($pathArchive) {
+		$archive	= new PclZip($pathArchive);
+		$archive->create('');
+	}
+
+
+
+	/**
+	 * Set exclude items
+	 * Make absolute paths with slashes as separators (even when OS separator is backslash)
+	 *
+	 * @param	String		$basePath
+	 * @param	Array		$items
+	 */
+	private static function setExcludeItems($basePath, array $items) {
+		foreach($items as $index => $item) {
+			$items[$index] = str_replace('\\', '/', TodoyuFileManager::pathAbsolute($basePath . '/' . $item));
+		}
+
+		self::$excludeItems = $items;
+	}
+
+
+	public static function createArchiveFromFolderPhp52Callback($event, array $header) {
+		$file	= $header['filename'];
+
+			// Check for default exclude patterns
+		foreach(self::$defaultExcludePatterns as $excludePattern) {
+			if( stristr($file, $excludePattern) ) {
+				return 0;
+			}
+		}
+
+			// Check for exclude items
+		foreach(self::$excludeItems as $excludeItem) {
+			if( strncasecmp($file, $excludeItem, strlen($excludeItem)) === 0 ) {
+				return 0;
+			}
+		}
+
+		return 1;
 	}
 
 
@@ -148,6 +215,16 @@ class TodoyuArchiveManager {
 			}
 		}
 	}
+}
+
+
+/**
+ * @param  $event
+ * @param  $header
+ * @return int
+ */
+function TodoyuArchiveManagerCreateArchiveFromFolderPhp52Callback($event, $header) {
+	return TodoyuArchiveManager::createArchiveFromFolderPhp52Callback($event, $header);
 }
 
 ?>
