@@ -127,6 +127,16 @@ class TodoyuServer {
 	}
 
 
+
+	/**
+	 * Check whether the server runs php 5.3.0 at least
+	 *
+	 * @return	Boolean
+	 */
+	public static function isPhp53() {
+		return version_compare(PHP_VERSION, '5.3.0') > -1;
+	}
+
 }
 
 ?>

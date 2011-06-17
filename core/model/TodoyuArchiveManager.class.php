@@ -37,36 +37,63 @@ class TodoyuArchiveManager {
 	/**
 	 * Extract an archive to a folder
 	 *
-	 * @param	String			$zipFile
+	 * @param	String			$pathArchive
 	 * @param	String			$targetFolder
-	 * @param	String|Array	$entries
 	 * @throws	TodoyuException
 	 * @return	Boolean
 	 */
-	public static function extractTo($zipFile, $targetFolder, $entries = null) {
-		@set_time_limit(60);
+	public static function extractTo($pathArchive, $targetFolder) {
+		@set_time_limit(120);
 
-		$zipFile	= TodoyuFileManager::pathAbsolute($zipFile);
+		$pathArchive	= TodoyuFileManager::pathAbsolute($pathArchive);
+		$targetFolder	= TodoyuFileManager::pathAbsolute($targetFolder);
 
-		if( ! is_file($zipFile) ) {
-			throw new TodoyuException('Archive not found for extraction: ' . $zipFile);
-		}
-		if( ! is_string($targetFolder) ) {
-			throw new TodoyuException('Invalid target folder to extract ' . $zipFile . ' to');
+		if( ! is_file($pathArchive) ) {
+			throw new TodoyuException('Archive not found for extraction: ' . $pathArchive);
 		}
 
 		TodoyuFileManager::makeDirDeep($targetFolder);
 
+		try {
+			if( TodoyuServer::isPhp53() ) {
+				return self::extractToPhp53($pathArchive, $targetFolder);
+			} else {
+				return self::extractToPhp52($pathArchive, $targetFolder);
+			}
+		} catch(TodoyuException $e) {
+			TodoyuLogger::logFatal('Cannot extract archive: ' . $e->getMessage());
+
+			return false;
+		}
+	}
+
+
+	private static function extractToPhp52($pathArchive, $targetFolder) {
 			// Extract files
-		$zip	= new PclZip($zipFile);
-		$result	= $zip->extract(PCLZIP_OPT_PATH, $targetFolder);
+		$archive	= new PclZip($pathArchive);
+		$result		= $archive->extract(PCLZIP_OPT_PATH, $targetFolder);
 
 		if( $result == 0 ) {
-			TodoyuLogger::logFatal('Cannot extract archive. ' . $zip->errorInfo(true));
-			return false;
-		} else {
-			return true;
+			throw new TodoyuException($archive->errorInfo(true));
 		}
+
+		return true;
+	}
+
+
+	private static function extractToPhp53($pathArchive, $targetFolder) {
+		$archive	= new ZipArchive();
+		$archive->open($pathArchive);
+
+		$result	= $archive->extractTo($targetFolder);
+
+		if( $result === false ) {
+			throw new TodoyuException('Unknown error');
+		}
+
+		$archive->close();
+
+		return true;
 	}
 
 
@@ -82,10 +109,10 @@ class TodoyuArchiveManager {
 		$pathFolder		= TodoyuFileManager::pathAbsolute($pathFolder);
 
 
-		if( version_compare(PHP_VERSION, '5.3.0') === -1 ) {
-			return self::createArchiveFromFolderPhp52($pathFolder, $exclude);
-		} else {
+		if( TodoyuServer::isPhp53() ) {
 			return self::createArchiveFromFolderPhp53($pathFolder, $exclude);
+		} else {
+			return self::createArchiveFromFolderPhp52($pathFolder, $exclude);
 		}
 	}
 
