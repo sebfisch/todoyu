@@ -9,7 +9,7 @@
 .timerange .bar .slider {
 	position:relative;
 	width:472px;
-	background:url(../img/timerange-track-middle.png) repeat-x;
+	background:url(../img/timerange.png) repeat-x 0 -32px;
 }
 
 .timerange .bar .track {
@@ -20,12 +20,12 @@
 
 .timerange .bar .trackStart {
 	width:4px;
-	background:url(../img/timerange-track-start.png) no-repeat;
+	background:url(../img/timerange.png) no-repeat 0 -49px;
 }
 
 .timerange .bar .trackEnd {
 	width:4px;
-	background:url(../img/timerange-track-end.png) no-repeat;
+	background:url(../img/timerange.png) no-repeat 0 -17px;
 }
 
 .timerange .bar .slider .handle {
