@@ -111,7 +111,7 @@ class TodoyuArchiveManager {
 		if( true || TodoyuServer::isPhp53() ) {
 			return self::createArchiveFromFolderPhp53($pathFolder, $exclude);
 		} else {
-			return self::createArchiveFromFolderPhp52($pathFolder, $exclude);
+//			return self::createArchiveFromFolderPhp52($pathFolder, $exclude);
 		}
 	}
 
