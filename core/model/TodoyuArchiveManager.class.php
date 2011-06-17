@@ -68,6 +68,8 @@ class TodoyuArchiveManager {
 	}
 
 
+
+	
 	private static function extractToPhp52($pathArchive, $targetFolder) {
 			// Extract files
 		$archive	= new PclZip($pathArchive);
