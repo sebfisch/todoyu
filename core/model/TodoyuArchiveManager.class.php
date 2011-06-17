@@ -108,8 +108,7 @@ class TodoyuArchiveManager {
 	public static function createArchiveFromFolder($pathFolder, array $exclude = array()) {
 		$pathFolder		= TodoyuFileManager::pathAbsolute($pathFolder);
 
-
-		if( TodoyuServer::isPhp53() ) {
+		if( true || TodoyuServer::isPhp53() ) {
 			return self::createArchiveFromFolderPhp53($pathFolder, $exclude);
 		} else {
 			return self::createArchiveFromFolderPhp52($pathFolder, $exclude);
@@ -117,6 +116,13 @@ class TodoyuArchiveManager {
 	}
 
 
+
+	/**
+	 * @static
+	 * @param  $pathFolder
+	 * @param array $exclude
+	 * @return String
+	 */
 	private static function createArchiveFromFolderPhp52($pathFolder, array $exclude = array()) {
 		$pathArchive	= TodoyuFileManager::getTempFile('zip');
 
@@ -129,8 +135,16 @@ class TodoyuArchiveManager {
 	}
 
 
+
+	/**
+	 * Create archive from a folder (php 5.3 style)
+	 *
+	 * @param	String		$pathFolder
+	 * @param	Array		$exclude
+	 * @return	String
+	 */
 	private static function createArchiveFromFolderPhp53($pathFolder, array $exclude = array()) {
-		$pathArchive	= TodoyuFileManager::getTempFile('zip');
+		$pathArchive	= TodoyuFileManager::getTempFile('zip', false);
 
 			// Prevent empty archive (which will not be created)
 		$elements	= TodoyuFileManager::getFolderContents($pathFolder);
@@ -156,6 +170,12 @@ class TodoyuArchiveManager {
 	}
 
 
+
+	/**
+	 * Create an empty archive
+	 *
+	 * @param	String		$pathArchive
+	 */
 	private static function createEmptyArchive($pathArchive) {
 		$archive	= new PclZip($pathArchive);
 		$archive->create('');
@@ -213,6 +233,8 @@ class TodoyuArchiveManager {
 	private static function addFolderToArchive(ZipArchive &$archive, $pathToFolder, $baseFolder, $recursive = true, array $exclude = array()) {
 		$files		= TodoyuFileManager::getFilesInFolder($pathToFolder);
 
+//		TodoyuDebug::printInFireBug($archive, 'ar2');
+
 			// Add files
 		foreach($files as $file) {
 			$filePath	= $pathToFolder . DIR_SEP . $file;
@@ -220,7 +242,7 @@ class TodoyuArchiveManager {
 			if( ! in_array($filePath, $exclude) ) {
 				$relPath	= str_replace($baseFolder . DIR_SEP, '', $filePath);
 				$relPath	= str_replace('\\', '/', $relPath);
-
+//				TodoyuDebug::printInFireBug($archive, 'ar3');
 				$archive->addFile($filePath, $relPath);
 			}
 		}

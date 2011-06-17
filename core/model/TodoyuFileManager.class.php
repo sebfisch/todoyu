@@ -257,9 +257,10 @@ class TodoyuFileManager {
 	 * Get random temp file (path) in cache
 	 *
 	 * @param	String|Boolean	$ext		File extension
+	 * @param	Boolean			$create		Create empty file with (touch)
 	 * @return	String
 	 */
-	public static function getTempFile($ext = false) {
+	public static function getTempFile($ext = false, $create = false) {
 		$key	= md5(PATH . time() . microtime(true) . uniqid());
 		$path	= self::pathAbsolute(PATH_CACHE . '/temp/' . $key);
 
@@ -269,7 +270,9 @@ class TodoyuFileManager {
 
 		self::makeDirDeep(dirname($path));
 
-		touch($path);
+		if( $create ) {
+			touch($path);
+		}
 
 		return $path;
 	}
