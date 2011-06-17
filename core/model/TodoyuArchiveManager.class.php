@@ -18,7 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-require_once( PATH_LIB . '/php/pclzip/pclzip.lib.php' );
 
 /**
  * Manage zip archives
@@ -27,12 +26,6 @@ require_once( PATH_LIB . '/php/pclzip/pclzip.lib.php' );
  * @subpackage	Core
  */
 class TodoyuArchiveManager {
-
-	private static $excludeItems	= array();
-
-	private static $defaultExcludePatterns = array(
-		'.svn'
-	);
 
 	/**
 	 * Extract an archive to a folder
@@ -69,8 +62,17 @@ class TodoyuArchiveManager {
 
 
 
-	
+	/**
+	 * Extract archive on server with php 5.2
+	 *
+	 * @throws	TodoyuException
+	 * @param	String		$pathArchive
+	 * @param	String		$targetFolder
+	 * @return	Boolean
+	 */
 	private static function extractToPhp52($pathArchive, $targetFolder) {
+		self::loadPclZip();
+
 			// Extract files
 		$archive	= new PclZip($pathArchive);
 		$result		= $archive->extract(PCLZIP_OPT_PATH, $targetFolder);
@@ -83,17 +85,36 @@ class TodoyuArchiveManager {
 	}
 
 
+
+	/**
+	 * Load pcl Zip library
+	 *
+	 */
+	private static function loadPclZip() {
+		require_once( PATH_LIB . '/php/pclzip/pclzip.lib.php' );
+	}
+
+
+
+	/**
+	 * Extract archive on server with php 5.3
+	 *
+	 * @throws	TodoyuException
+	 * @param	String		$pathArchive
+	 * @param	String		$targetFolder
+	 * @return	Boolean
+	 */
 	private static function extractToPhp53($pathArchive, $targetFolder) {
 		$archive	= new ZipArchive();
 		$archive->open($pathArchive);
 
 		$result	= $archive->extractTo($targetFolder);
 
+		$archive->close();
+
 		if( $result === false ) {
 			throw new TodoyuException('Unknown error');
 		}
-
-		$archive->close();
 
 		return true;
 	}
@@ -136,53 +157,16 @@ class TodoyuArchiveManager {
 
 
 
-
 	/**
 	 * Create an empty archive
 	 *
 	 * @param	String		$pathArchive
 	 */
 	private static function createEmptyArchive($pathArchive) {
+		self::loadPclZip();
+
 		$archive	= new PclZip($pathArchive);
 		$archive->create('');
-	}
-
-
-
-	/**
-	 * Set exclude items
-	 * Make absolute paths with slashes as separators (even when OS separator is backslash)
-	 *
-	 * @param	String		$basePath
-	 * @param	Array		$items
-	 */
-	private static function setExcludeItems($basePath, array $items) {
-		foreach($items as $index => $item) {
-			$items[$index] = str_replace('\\', '/', TodoyuFileManager::pathAbsolute($basePath . '/' . $item));
-		}
-
-		self::$excludeItems = $items;
-	}
-
-
-	public static function createArchiveFromFolderPhp52Callback($event, array $header) {
-		$file	= $header['filename'];
-
-			// Check for default exclude patterns
-		foreach(self::$defaultExcludePatterns as $excludePattern) {
-			if( stristr($file, $excludePattern) ) {
-				return 0;
-			}
-		}
-
-			// Check for exclude items
-		foreach(self::$excludeItems as $excludeItem) {
-			if( strncasecmp($file, $excludeItem, strlen($excludeItem)) === 0 ) {
-				return 0;
-			}
-		}
-
-		return 1;
 	}
 
 
@@ -199,8 +183,6 @@ class TodoyuArchiveManager {
 	private static function addFolderToArchive(ZipArchive &$archive, $pathToFolder, $baseFolder, $recursive = true, array $exclude = array()) {
 		$files		= TodoyuFileManager::getFilesInFolder($pathToFolder);
 
-//		TodoyuDebug::printInFireBug($archive, 'ar2');
-
 			// Add files
 		foreach($files as $file) {
 			$filePath	= $pathToFolder . DIR_SEP . $file;
@@ -208,7 +190,6 @@ class TodoyuArchiveManager {
 			if( ! in_array($filePath, $exclude) ) {
 				$relPath	= str_replace($baseFolder . DIR_SEP, '', $filePath);
 				$relPath	= str_replace('\\', '/', $relPath);
-//				TodoyuDebug::printInFireBug($archive, 'ar3');
 				$archive->addFile($filePath, $relPath);
 			}
 		}
@@ -230,16 +211,7 @@ class TodoyuArchiveManager {
 			}
 		}
 	}
-}
 
-
-/**
- * @param  $event
- * @param  $header
- * @return int
- */
-function TodoyuArchiveManagerCreateArchiveFromFolderPhp52Callback($event, $header) {
-	return TodoyuArchiveManager::createArchiveFromFolderPhp52Callback($event, $header);
 }
 
 ?>
