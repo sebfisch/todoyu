@@ -36,10 +36,11 @@ class TodoyuFreezeManager {
 	 * @param	String		$type				The type of the freeze. Mostly the base table
 	 * @param	Integer		$idElement			ID of the element
 	 * @param	Mixed		$element			The element. Can be simple data, array or object. Will be serialized for storage
+	 * @param	Boolean		$ignoreMissing
 	 * @return	Integer		Freeze ID
 	 */
-	public static function freeze($type, $idElement, $element) {
-		$freeze	= self::unfreezeElement($type, $idElement);
+	public static function freeze($type, $idElement, $element, $ignoreMissing = false) {
+		$freeze	= self::unfreezeElement($type, $idElement, $ignoreMissing);
 		$hash	= md5(serialize($element));
 
 		if( $freeze !== false && $freeze['hash'] === $hash && $freeze['element_type'] === $type && $freeze['element_id'] == $idElement ) {
@@ -78,12 +79,13 @@ class TodoyuFreezeManager {
 	 *
 	 * @param	String		$table
 	 * @param	Integer		$idRecord
+	 * @param	Boolean		$ignoreMissing
 	 * @return	Integer		Freeze ID
 	 */
-	public static function freezeRecord($table, $idRecord) {
+	public static function freezeRecord($table, $idRecord, $ignoreMissing = false) {
 		$record	= TodoyuRecordManager::getRecordData($table, $idRecord);
 
-		return self::freeze($table, $idRecord, $record);
+		return self::freeze($table, $idRecord, $record, $ignoreMissing);
 	}
 
 
@@ -94,12 +96,13 @@ class TodoyuFreezeManager {
 	 *
 	 * @param	String		$class
 	 * @param	Integer		$idRecord
+	 * @param	Boolean		$ignoreMissing
 	 * @return	Integer
 	 */
-	public static function freezeObject($class, $idRecord) {
+	public static function freezeObject($class, $idRecord, $ignoreMissing = false) {
 		$object	= TodoyuRecordManager::getRecord($class, $idRecord);
 
-		return self::freeze($class, $idRecord, $object);
+		return self::freeze($class, $idRecord, $object, $ignoreMissing);
 	}
 
 
