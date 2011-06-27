@@ -561,7 +561,7 @@ class TodoyuInstallerManager {
 	 * @return	String
 	 */
 	public static function hasAdequatePhpVersion() {
-		return version_compare(PHP_VERSION, '5.2.0', '>=');
+		return version_compare(PHP_VERSION, '5.2.3', '>=');
 	}
 
 
