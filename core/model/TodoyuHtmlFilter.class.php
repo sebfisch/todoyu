@@ -51,13 +51,11 @@ class TodoyuHtmlFilter {
 		$badTags	= self::getBadTags();
 
 		foreach($badTags as $badTag) {
-			$patternStandard	= '|<(' . $badTag . ')([^>]*)>(.*?)(</' . $badTag . '>)|sum';
-
-			$html	= preg_replace_callback($patternStandard, array('TodoyuHtmlFilter','escapeBadTags'), $html);
+			$patternStandard= '|<(' . $badTag . ')([^>]*)>(.*?)</' . $badTag . '>|sim';
+			$html			= preg_replace_callback($patternStandard, array('TodoyuHtmlFilter','escapeBadTags'), $html);
 
 			$patternSimple	= '|<(' . $badTag . ')([^>]*)>(.*?)|sum';
-
-			$html	= preg_replace_callback($patternSimple, array('TodoyuHtmlFilter','escapeBadTag'), $html);
+			$html			= preg_replace_callback($patternSimple, array('TodoyuHtmlFilter','escapeBadTag'), $html);
 		}
 
 		return $html;
@@ -72,7 +70,7 @@ class TodoyuHtmlFilter {
 	 * @return	String
 	 */
 	private static function escapeBadTags(array $match) {
-		return '&lt;' . $match[1] . $match[2] . '&gt;' . nl2br(htmlentities($match[3], ENT_QUOTES, 'UTF-8', false)) . '&lt;' . $match[1] . '&gt;';
+		return '&lt;' . $match[1] . $match[2] . '&gt;' . $match[3] . '&lt;/' . $match[1] . '&gt;';
 	}
 
 
