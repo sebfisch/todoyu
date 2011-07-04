@@ -54,9 +54,18 @@ class TodoyuHtmlFilter {
 			$patternStandard= '|<(' . $badTag . ')([^>]*)>(.*?)</' . $badTag . '>|sim';
 			$html			= preg_replace_callback($patternStandard, array('TodoyuHtmlFilter','escapeBadTags'), $html);
 
-			$patternSimple	= '|<(' . $badTag . ')([^>]*)>(.*?)|sum';
+			$patternSimple	= '|<(' . $badTag . ')([^>]*)>(.*?)|sim';
 			$html			= preg_replace_callback($patternSimple, array('TodoyuHtmlFilter','escapeBadTag'), $html);
 		}
+
+		$replace	= array(
+			'<![CDATA['	=> '&lt;![CDATA[',
+			']]>'		=> ']]&gt;',
+			'<!--'		=> '&lt;!--',
+			'<!--'		=> '--&gt;'
+		);
+
+		$html	= str_replace(array_keys($replace), array_values($replace), $html);
 
 		return $html;
 	}
