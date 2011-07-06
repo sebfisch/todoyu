@@ -608,7 +608,7 @@ class TodoyuString {
 		$replaceSimple	= '\1<a href="http://\2" target="_blank">\2</a>';
 
 			// Find mailto links
-		$patternEmail	= '/(^|["> ])((?:[\w-\.]+)@(?:[\w-\.]{2,})\.(?:\w{2,6}))/';
+		$patternEmail	= '/(^|[">; ])((?:[\w-\.]+)@(?:[\w-\.]{2,})\.(?:\w{2,6}))/';
 		$replaceEmail	= '\1<a href="mailto:\2">\2</a>';
 
 			// Replace URLs
