@@ -700,7 +700,7 @@ class TodoyuFileManager {
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
 
 			// Only set curl options if safe mode is not enabled
-		if( ! intval(ini_get('safe_mode')) !== 1 ) {
+		if( intval(ini_get('safe_mode')) !== 1 ) {
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		}
 
