@@ -1,5 +1,8 @@
 todoyu core changelog
 
+core 2.1.1
+	* Change: Only set curl option CURLOPT_FOLLOWLOCATION when safe mode is not enabled
+
 core 2.1.0
 	1. Note: Since release 2.1.0, the todoyu extension repository is enabling us to decouple version updates of the todoyu core and basic extensions from one another.
 	Respectively, the core and extensions changelogs are now maintained separately.

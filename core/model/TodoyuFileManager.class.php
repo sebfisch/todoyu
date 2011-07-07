@@ -697,8 +697,12 @@ class TodoyuFileManager {
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_FAILONERROR, true);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+
+			// Only set curl options if safe mode is not enabled
+		if( ! intval(ini_get('safe_mode')) !== 1 ) {
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		}
 
 		if( $options['fullRequest'] || $options['onlyHeaders'] ) {
 			curl_setopt($ch, CURLOPT_HEADER, true);
