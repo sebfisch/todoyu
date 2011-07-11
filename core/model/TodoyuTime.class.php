@@ -506,14 +506,11 @@ class TodoyuTime {
 	public static function parseDate($dateString) {
 		$dateString	= trim($dateString);
 		$time		= 0;
-		$parsedTime	= strtotime($dateString);
 
-		if( $parsedTime !== false ) {
-			$time = $parsedTime;
-		} elseif( $dateString !== '' ) {
-			$format		= self::getFormat('date');
-			$dateParts	= strptime($dateString, $format);
+		$format		= self::getFormat('date');
+		$dateParts	= strptime($dateString, $format);
 
+		if( $dateParts !== false ) {
 				// Fix for built in function (windows function works correctly)
 			if( PHP_OS !== 'WINNT' && $dateParts !== false ) {
 				$dateParts['tm_year']	= $dateParts['tm_year'] + 1900;
