@@ -70,10 +70,11 @@ class TodoyuLocaleManager {
 
 		$locales	= array_unique($locales);
 
-		TodoyuArray::removeByValue($locales, array($default));
+		$locales	= TodoyuArray::removeByValue($locales, array($default));
 
 		sort($locales);
 
+			// Prepend default
 		array_unshift($locales, $default);
 
 		return $locales;
