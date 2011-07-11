@@ -693,7 +693,7 @@ class TodoyuArray {
 		$array = array_diff($array, $valuesToRemove);
 
 		if( $reIndex ) {
-			$array = array_merge($array);
+			$array = array_values($array);
 		}
 
 		return $array;
