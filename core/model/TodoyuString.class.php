@@ -92,10 +92,10 @@ class TodoyuString {
 	 * @param	Boolean		$dontSplitWords
 	 * @return	String
 	 */
-	public static function crop($text, $length, $postFix = '...', $dontSplitWords = true) {
+	public static function crop($text, $length, $postFix = '..', $dontSplitWords = true) {
 		$length	= intval($length);
 
-		if( mb_strlen($text, 'utf-8') > $length ) {
+		if( mb_strlen($text, 'utf-8') > $length + mb_strlen($postFix, 'utf-8') ) {
 			$cropped	= mb_substr($text, 0, $length, 'utf-8');
 			$nextChar	= mb_substr($text, $length, 1, 'utf-8');
 
