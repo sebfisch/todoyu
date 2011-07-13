@@ -223,8 +223,8 @@ function Dwoo_Plugin_HourMin_compile(Dwoo_Compiler $compiler, $seconds) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo 		$dwoo
- * @param	Integer		$fileSize
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	Integer			$fileSize
  * @return	String
  */
 function Dwoo_Plugin_filesize_compile(Dwoo_Compiler $compiler, $fileSize) {
@@ -239,13 +239,14 @@ function Dwoo_Plugin_filesize_compile(Dwoo_Compiler $compiler, $fileSize) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo 		$dwoo
- * @param	String		$string
- * @param	Integer		$maxLen
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	String			$string
+ * @param	Integer			$maxLen
+ * @param	Boolean			$dontSplitWords
  * @return	String
  */
 function Dwoo_Plugin_cropText_compile(Dwoo_Compiler $compiler, $string, $maxLen, $dontSplitWords = true) {
-	return 'TodoyuString::crop(' . $string . ', ' . $maxLen . ', \'...\', ' . $dontSplitWords . ')';
+	return 'TodoyuString::crop(' . $string . ', ' . $maxLen . ', \'..\', ' . $dontSplitWords . ')';
 }
 
 
@@ -256,8 +257,8 @@ function Dwoo_Plugin_cropText_compile(Dwoo_Compiler $compiler, $string, $maxLen,
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo 		$dwoo
- * @param	String		$value
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	String			$value
  * @return	String
  */
 function Dwoo_Plugin_twoDigits_compile(Dwoo_Compiler $compiler, $value) {
@@ -281,6 +282,8 @@ function Dwoo_Plugin_debug(Dwoo $dwoo, $variable, $phpFormat = false) {
 	if ( $phpFormat ) {
 			// Use PHP syntax formatting
 		TodoyuDebug::printPHP($variable);
+
+		return '';
 	} else {
 			// Simple print_r
 		return '<pre style="z-index:200; background-color:#fff;">' . print_r($variable, true) . '</pre>';
@@ -379,8 +382,8 @@ function Dwoo_Plugin_cleanHtml_compile(Dwoo_Compiler $compiler, $html) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo		$dwoo
- * @param	String		$text
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String			$text
  * @return	String
  */
 function Dwoo_Plugin_linkUrls_compile(Dwoo_Compiler $compiler, $text) {
@@ -395,8 +398,8 @@ function Dwoo_Plugin_linkUrls_compile(Dwoo_Compiler $compiler, $text) {
  * @package		Todoyu
  * @subpackage	Template
  *
- * @param	Dwoo	$dwoo
- * @param	String	$text
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String			$text
  * @return	String
  */
 function Dwoo_Plugin_substituteLinkableElements_compile(Dwoo_Compiler $compiler, $text) {
