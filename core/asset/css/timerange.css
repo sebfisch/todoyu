@@ -104,7 +104,7 @@
 .timerange .dates .ranges {
 	position:absolute;
 	top:0;
-	z-index:1000;
+	z-index:5;
 	left:50%;
 	right: 50%;
 	width:185px;

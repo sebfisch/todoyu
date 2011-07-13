@@ -4,11 +4,13 @@ core 2.1.1 - ???
 	* Bugfix: Added more tags to the badHtmlTags list to make sure they are escaped and not rendered (ex: embed)
 	* Bugfix: Parsing dates in british english format failed (was interpreted as american)
 	* Bugfix: List of available locales contained default locale twice
+	* Bugfix: Timerange date selector had to high z-index
+	* Changed: Padding of inline filter forms to prevent layout problems
 	* Changed: Only set curl option CURLOPT_FOLLOWLOCATION when safe mode is not enabled
 	* Changed: Minimum php version is 5.2.3 (instead only 5.2.0)
 	* Changed: Updated highcharts library to 2.1.6
 	* Changed: Updated tinyMCE to 3.4.3.2
-	* Changed: A tags are now removed from RTE when saving (autolink function rebuilds them when necessary for output)
+	* Changed: <a>-tags are now removed from RTE when saving (autolink function rebuilds them when necessary for output)
 
 
 core 2.1.0 - 2011-06-17
