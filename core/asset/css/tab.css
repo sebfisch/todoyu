@@ -4,7 +4,8 @@
 #content-tabs {
 	position:relative;
 	top:-35px;
-	width:670px;
+	left:-9px;
+	width:673px;
 }
 	#content-tabs li p.label span.labeltext {
 	  color:#444;
@@ -22,7 +23,6 @@
 	height:26px;
 	width:100%;
 	position:relative;
-	left:-9px;
 	margin:0;
 	padding:0;
 }
