@@ -147,23 +147,23 @@ Todoyu.Timerange = Class.create({
 		var dateFormat	= Todoyu.R['dateFormat'];
 
 		Calendar.setup({
-			inputField : this.name + '-start',
-			range : [1990,2020],
-			ifFormat : dateFormat,
-			align : "br",
-			button : this.name + '-start-calicon',
-			firstDay : 1,
-			onClose: this.onCalendarClosed.bind(this, 'start')
+			inputField:		this.name + '-start',
+			range:			[1990,2020],
+			ifFormat:		dateFormat,
+			align:			"br",
+			button:			this.name + '-start-calicon',
+			firstDay:		1,
+			onClose:		this.onCalendarClosed.bind(this, 'start')
 		});
 
 		Calendar.setup({
-			inputField : this.name + '-end',
-			range : [1990,2020],
-			ifFormat : dateFormat,
-			align : "br",
-			button : this.name + '-end-calicon',
-			firstDay : 1,
-			onClose: this.onCalendarClosed.bind(this, 'end')
+			inputField:		this.name + '-end',
+			range:			[1990,2020],
+			ifFormat:		dateFormat,
+			align:			"br",
+			button:			this.name + '-end-calicon',
+			firstDay:		1,
+			onClose:		this.onCalendarClosed.bind(this, 'end')
 		});
 
 		Todoyu.JsCalFormat[this.name + '-start']	= dateFormat;
@@ -473,7 +473,7 @@ Todoyu.Timerange = Class.create({
 	 */
 	getActiveHandleValue: function() {
 			// Get key of handle
-		var key		= this.getSelectedHandleKey();
+		var key	= this.getSelectedHandleKey();
 			// Transform the key to array index
 		var valueIndex = this.getHandleIndex(key);
 
@@ -492,8 +492,8 @@ Todoyu.Timerange = Class.create({
 	 */
 	getHandleIndex: function(key) {
 		return {
-			'start': 0,
-			'end': 1
+			'start':	0,
+			'end':		1
 		}[key];
 	},
 
@@ -587,11 +587,24 @@ Todoyu.Timerange = Class.create({
 	},
 
 
+	/**
+	 * Get first date of timerange
+	 *
+	 * @method	getFirstDate
+	 * @return	{Date}
+	 */
 	getFirstDate: function() {
 		return this.getDate(0);
 	},
 
 
+
+	/**
+	 * Get last date of timerange
+	 *
+	 * @method	getLastDate
+	 * @return	{Date}
+	 */
 	getLastDate: function() {
 		return this.getDate(this.selectableDates.length-1);
 	},
@@ -667,7 +680,6 @@ Todoyu.Timerange = Class.create({
 
 
 	/**
-	 *
 	 * @method	setFieldValues
 	 * @param	{Number}	indexStart
 	 * @param	{Number}	indexEnd
@@ -719,6 +731,12 @@ Todoyu.Timerange = Class.create({
 	},
 
 
+
+	/**
+	 * Set start and end of timerange
+	 *
+	 * @method	setMaxRangeDates
+	 */
 	setMaxRangeDates: function() {
 		this.setSliderDate('start', this.getFirstDate());
 		this.setSliderDate('end', this.getLastDate());
