@@ -30,9 +30,17 @@
  */
 Todoyu.Popup = Class.create(Window, {
 
-	isClosing: false,
+	/**
+	 * Closing status
+	 */
+	isClosing:		false,
 
-	escBodyHandler: null,
+	/**
+	 * ESC key event handler for popup closing
+	 */
+	escBodyHandler:	null,
+
+
 
 	/**
 	 * Default todoyu options for window
@@ -204,6 +212,9 @@ Todoyu.Popup = Class.create(Window, {
 
 		Todoyu.Ui.closeRTE(this.content);
 
+			// Fire custom 'close' event
+		Todoyu.Helper.fireEvent($(this.options.id), 'close');
+
 		$super();
 	},
 
@@ -211,7 +222,10 @@ Todoyu.Popup = Class.create(Window, {
 
 	/**
 	 * Close callback
-	 * @param popup
+	 *
+	 * @method	closeCallback
+	 * @param	unknown		popup
+	 * @return	Boolean
 	 */
 	closeCallback: function(popup) {
 		if( this.isClosing ) {

@@ -28,6 +28,7 @@
  * @see http://prototype-window.xilinus.com/documentation.html
  */
 Todoyu.Popups = {
+
 	/**
 	 * References to opened popoups
 	 */
@@ -153,18 +154,19 @@ Todoyu.Popups = {
 
 
 	/**
-	 * Handler when popup is destroyed
-	 * Close RTE references
+	 * Handler when popup is destroyed: close duration pickers, RTE references
 	 *
 	 * @method	onDestroy
 	 * @param	{Todoyu.Popup}	popup
 	 */
 	onDestroy: function(popup) {
+		var idPopup	= popup.getPopupID();
+
 		Todoyu.Ui.closeRTE(popup.content);
 
-		delete this.popups[popup.getPopupID()];
+		delete this.popups[idPopup];
 
-		this.stack = this.stack.without(popup.getPopupID());
+		this.stack = this.stack.without(idPopup);
 	},
 
 

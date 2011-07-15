@@ -78,11 +78,11 @@ Todoyu.TimePicker = Class.create({
 	 * @type		Object
 	 */
 	config: {
-		height: 22,
-		rangeHour: [0,99],
-		stepHour: 1,
-		rangeMinute: [0,55],
-		stepMinute: 5
+		height:			22,
+		rangeHour:		[0,99],
+		stepHour:		1,
+		rangeMinute:	[0,55],
+		stepMinute:		5
 	},
 
 

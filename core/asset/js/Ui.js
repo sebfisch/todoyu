@@ -528,8 +528,8 @@ Todoyu.Ui = {
 	 * Show time picker
 	 *
 	 * @method	showTimePicker
-	 * @param	{Number}		idElement
-	 * @param	{Array}		config
+	 * @param	{Number}		idElement		ID of element the picker belongs to
+	 * @param	{Array}			config
 	 * @return	Todoyu.TimePicker
 	 */
 	showTimePicker: function(idElement, config) {
@@ -537,8 +537,6 @@ Todoyu.Ui = {
 			'rangeHour':	[0,23],
 			'rangeMinute':	[0,55]
 		}).merge(config).toObject();
-
-		return new Todoyu.TimePicker(idElement, config);
 	},
 
 
@@ -547,7 +545,7 @@ Todoyu.Ui = {
 	 * Show duration picker
 	 *
 	 * @method	showDurationPicker
-	 * @param	{String}		idElement
+	 * @param	{String}			idElement		ID of element the picker belongs to
 	 * @return	Todoyu.TimePicker
 	 */
 	showDurationPicker: function(idElement, config) {
@@ -557,7 +555,25 @@ Todoyu.Ui = {
 			'rangeMinute':	[0,55]
 		}).merge(config).toObject();
 
+			// Form element is part of a dialog? close picker when dialog is closed
+		var parentDialog	= $(idElement).up('.dialog');
+		if( Todoyu.exists(parentDialog) ) {
+			parentDialog.on('close', this.hideDurationPicker.bind(this, idElement));
+		}
+
 		return new Todoyu.TimePicker(idElement);
+	},
+
+
+
+	/**
+	 * Hide duration picker belonging to given form element
+	 *
+	 * @method	hideDurationPicker
+	 * @param	{String}	idElement		ID of element the picker belongs to
+	 */
+	hideDurationPicker: function(idElement) {
+		this.hide(idElement + '-durationpicker');
 	},
 
 
