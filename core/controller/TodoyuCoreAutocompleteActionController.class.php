@@ -36,7 +36,7 @@ class TodoyuCoreAutocompleteActionController extends TodoyuActionController {
 		$name		= trim($params['autocompleter']);
 		$input		= trim($params['input']);
 		$formName	= trim($params['form']);
-		$formData	= $params[$formName];
+		$formData	= TodoyuArray::assure($params[$formName]);
 
 		return TodoyuAutocompleter::renderAutocompleteList($name, $input, $formData);
 	}

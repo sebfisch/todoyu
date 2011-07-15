@@ -106,7 +106,7 @@ class TodoyuString {
 			}
 
 				// Remove chars which will be postfixes anyway (prevents 3 points at the end)
-			$cropped = rtrim($cropped, substr($postFix, 0, 1));
+			$cropped = rtrim(trim($cropped), substr($postFix, 0, 1));
 
 			$cropped .= $postFix;
 		} else {
