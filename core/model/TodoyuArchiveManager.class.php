@@ -189,7 +189,7 @@ class TodoyuArchiveManager {
 
 			if( ! in_array($filePath, $exclude) ) {
 				$relPath	= str_replace($baseFolder . DIR_SEP, '', $filePath);
-				$relPath	= str_replace('\\', '/', $relPath);
+				$relPath	= self::sanitizePath($relPath);
 				$archive->addFile($filePath, $relPath);
 			}
 		}
@@ -203,6 +203,7 @@ class TodoyuArchiveManager {
 
 				if( ! in_array($folderPath, $exclude) ) {
 					$relPath	= str_replace($baseFolder . DIR_SEP, '', $folderPath);
+					$relPath	= self::sanitizePath($relPath);
 
 					$archive->addEmptyDir($relPath);
 
@@ -210,6 +211,19 @@ class TodoyuArchiveManager {
 				}
 			}
 		}
+	}
+
+
+
+	/**
+	 * Replace backslash path separators (from windows) with normal slashes
+	 * When you add a file or folder with a backslash in its path, archive will contain random folders
+	 *
+	 * @param	String		$path
+	 * @return	String
+	 */
+	private static function sanitizePath($path) {
+		return str_replace('\\', '/', $path);
 	}
 
 }
