@@ -112,7 +112,7 @@ class TodoyuLogger {
 	 * Called by getInstance for Singleton Pattern
 	 */
 	private function __construct() {
-		$this->minimumLevel 		= $this->getLogLevel();
+		$this->minimumLevel = $this->getLogLevel();
 		$this->requestKey	= substr(md5(microtime(true) . session_id()), 0, 10);
 	}
 

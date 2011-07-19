@@ -58,6 +58,10 @@ class TodoyuLoggerFile implements TodoyuLoggerIf {
 
 			// Open file
 		$this->filePointer = fopen($pathFile, 'a');
+
+		if( $this->filePointer === false ) {
+			die("Cannot use file {$config['file']} as log file. Please check file permissions");
+		}
 	}
 
 
@@ -67,7 +71,7 @@ class TodoyuLoggerFile implements TodoyuLoggerIf {
 	 *
 	 */
 	public function __destruct() {
-		if( ! is_null($this->filePointer) ) {
+		if( is_resource($this->filePointer) ) {
 			fclose($this->filePointer);
 		}
 	}
