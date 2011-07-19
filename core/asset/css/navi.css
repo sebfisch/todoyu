@@ -81,10 +81,10 @@ ul#navi-main-list li ul {
 	top:29px;
 	left:-9999px;
 	z-index:1;
-	width:200px !important;
+	width:270px !important;
 	margin-top:1px;
 	text-transform:none;
-	clip:rect(0px, 207px, 207px, -7px);
+	clip:rect(0px, 277px, 277px, -7px);
 	-webkit-box-shadow:2px 2px 5px #999;
 	-moz-box-shadow:2px 2px 5px #999;
 	box-shadow:2px 2px 5px #999;
