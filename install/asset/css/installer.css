@@ -88,17 +88,23 @@ select#database option.disabled {
 }
 #panelwidget-installprogress ul li {
 	font-size:12px;
-	padding:8px 8px 8px 30px;
+	padding:8px 8px 8px 20px;
 	color:#ccc;
 }
 #panelwidget-installprogress ul li.done {
 	color:#000;
-	background:url(../img/icons.png) no-repeat 0 -20px;
+}
+#panelwidget-installprogress ul li.done .icon {
+	display:block;
+	position:absolute;
+	left:0;
+	width:16px;
+	height:16px;
+	background:url(../img/icons.png) no-repeat 0 -29px;
 }
 #panelwidget-installprogress ul li.current {
 	color:#C51C1C;
 	font-weight:bold;
-	background:none;
 }
 
 

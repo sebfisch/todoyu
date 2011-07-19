@@ -9,7 +9,7 @@
 		{$done = true}
 		{foreach $steps stepKey stepLabel}
 			<li class="{if $step == $stepKey}current{/if} {if $done}done{/if}">
-				{$stepLabel}
+				<span class="icon"></span>{$stepLabel}
 			</li>
 			{if $step == $stepKey}
 				{$done = false}
