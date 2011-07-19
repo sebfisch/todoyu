@@ -425,7 +425,7 @@ class TodoyuInstallerManager {
 	 * Jump to log-in page
 	 */
 	public static function goToLogInPage() {
-		TodoyuHeader::location(TODOYU_URL . '/index.php', true);
+		TodoyuHeader::location(rtrim(TODOYU_URL, '/') . '/index.php', true);
 	}
 
 
