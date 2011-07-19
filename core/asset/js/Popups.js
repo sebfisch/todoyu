@@ -154,7 +154,7 @@ Todoyu.Popups = {
 
 
 	/**
-	 * Handler when popup is destroyed: close duration pickers, RTE references
+	 * Handler when popup is destroyed: close RTE references
 	 *
 	 * @method	onDestroy
 	 * @param	{Todoyu.Popup}	popup

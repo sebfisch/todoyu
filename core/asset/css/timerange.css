@@ -106,7 +106,7 @@
 	top:0;
 	z-index:5;
 	left:50%;
-	right: 50%;
+	right:50%;
 	width:185px;
 	margin:-2px 0 0 -75px;
 	padding:0 5px;
@@ -129,7 +129,7 @@
 	-moz-border-radius:5px;
 	border-radius:5px;
 	background-color:#fff;
-	background-image: none;
+	background-image:none;
 }
 
 .timerange .dates .ranges:hover span.chooseRange {
@@ -150,7 +150,7 @@
 
 .timerange .dates .ranges ul li {
 	cursor:pointer;
-	line-height: 18px;
+	line-height:18px;
 	border-bottom:1px solid #ddd;
 }
 
