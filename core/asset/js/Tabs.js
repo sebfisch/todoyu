@@ -138,31 +138,30 @@ Todoyu.Tabs = {
 		var shareWidth	= this.maxWidth - totalWidthSmallTabs - padding;
 		var cropToWidth	= Math.floor(shareWidth / numTooLongTabs);
 
-		var tabWidth, tabLabel, shortenedLabel, postFixLength = postFix.length;
-
-			// Remember "previous" total width to be able to quit endless looping
-		var prevTotalWidth = -1;
+		var tabWidth, tabLabelEl, tabLabel, tabLabelLen, shortenedLabel, postFixLength = postFix.length;
 
 			// Remove chars until the total width is not any more larger than maxWidth 
-		while( totalWidth > this.maxWidth && (totalWidth != prevTotalWidth) ) {
+		while( totalWidth > this.maxWidth/* && (totalWidth != prevTotalWidth)*/ ) {
 			tooLongTabs.each(function(tab, index) {
 				tabWidth	= parseInt(tab.getWidth(), 10);
 
 					// Is tab longer than the crop width?
 				if( tabWidth > cropToWidth ) {
-					tabLabel = tab.down('span.labeltext').innerHTML;
+					tabLabelEl	= tab.down('span.labeltext');
+					tabLabel	= Todoyu.Helper.html_entity_decode(tabLabelEl.innerHTML);
+
 						// Remove postFix if added
 					if( tabLabel.substr(-postFix.length) == postFix ) {
-						tabLabel = tabLabel.substr(0, tabLabel.length - postFixLength);
+						tabLabel = tabLabel.substr(0, tabLabel.length - postFixLength).strip();
 					}
+
 						// Shorten label
 					shortenedLabel = tabLabel.substr(0, tabLabel.length - 1).strip();
 						// Update element with label and postfix
-					tab.down('span.labeltext').update(shortenedLabel + postFix);
+					tabLabelEl.innerHTML = Todoyu.Helper.htmlentities(shortenedLabel + postFix);
 				}
 			}, this);
 
-			prevTotalWidth	= totalWidth;
 			totalWidth = allTabs.collect(function(tab){
 				return parseInt(tab.getWidth(), 10);
 			}).sum() + padding;
