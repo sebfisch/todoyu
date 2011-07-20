@@ -184,12 +184,12 @@ Todoyu.Popups = {
 	 */
 	open: function(idPopup, title, minWidth, contentUrl, requestOptions) {
 		return this.show({
-			id:				idPopup,
-			title:			title,
-			minWidth:		minWidth || 220,
-			minHeight:		240,
-			contentUrl:		contentUrl,
-			requestOptions:	requestOptions || {}
+			id:					idPopup,
+			title:				title,
+			minWidth:			minWidth || 220,
+			minHeight:			240,
+			contentUrl:			contentUrl,
+			requestOptions:		requestOptions || {},
 		});
 	},
 

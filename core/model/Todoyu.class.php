@@ -52,7 +52,7 @@ class Todoyu {
 
 
 	/**
-	 * Templating engine. Currenty Dwoo
+	 * Templating engine. Currently Dwoo
 	 *
 	 * @var	Dwoo
 	 */

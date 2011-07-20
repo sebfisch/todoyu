@@ -87,9 +87,14 @@ Todoyu.Notification = {
 	 * @param	{String}		message
 	 * @param	{Boolean}		sticky			Don't hide note
 	 * @param	{Number}		delay			Overwrite default delay time
+	 * @param	{String}		identifier		Optional identifier to remove preceding notifications of the same event
 	 */
-	notify: function(type, message, sticky, delay) {
-		delay	= delay || this.closeDelay;
+	notify: function(type, message, sticky, delay, identifier) {
+		delay		= delay || this.closeDelay;
+
+		identifier	= identifier || '';
+		identifier	= identifier.replace(/\./g, '-');
+
 		this.loadTemplate();
 
 		var id		= this.id++;
@@ -97,14 +102,22 @@ Todoyu.Notification = {
 		var data	= {
 			'id':			id,
 			'type':			type,
-			'message':		message
+			'message':		message,
+			'identifier':	identifier
 		};
 
 		var note= this.template.evaluate(data);
-		delay	= sticky ? this.closeDelaySticky : delay;
+		delayBeforeClose	= sticky ? this.closeDelaySticky : delay;
 
-		this.appendNote(id, note);
-		this.closeNote.bind(this, id).delay(delay);
+			// Close preceding note(s) if any
+		var isClosingPrecedingNotes = this.closePrecedingNotes(identifier);
+
+			// Append new note delayed to visually happen after old one(s) are closed / immediately if no preceding notes
+		var delayBeforeAppend	= isClosingPrecedingNotes ? 0.5 : 0;
+		this.appendNote.bind(this, id, note).delay(delayBeforeAppend);
+
+			// Setup timeout to auto-close the note
+		this.closeNote.bind(this, id).delay(delayBeforeClose);
 	},
 
 
@@ -117,7 +130,7 @@ Todoyu.Notification = {
 	loadTemplate: function() {
 		if( this.template === null ) {
 			this.template = new Template(
-				'<div class="note #{type}" id="notification-note-#{id}">'
+				'<div class="note #{type} note-#{identifier}" id="notification-note-#{id}">'
 				+	'<table width="100%"><tr>'
 				+		'<td class="icon">&nbsp;</td>'
 				+		'<td class="message">#{message}</td>'
@@ -159,9 +172,10 @@ Todoyu.Notification = {
 	 *
 	 * @method	notifyError
 	 * @param	{String}		message
+	 * @param	{String}		identifiert
 	 */
-	notifyError: function(message) {
-		this.notify(this.ERROR, message, true);
+	notifyError: function(message, identifier) {
+		this.notify(this.ERROR, message, true, this.closeDelay, identifier);
 	},
 
 
@@ -172,10 +186,11 @@ Todoyu.Notification = {
 	 * @method	notifySuccess
 	 * @param	{String}		message
 	 * @param	{Boolean}		sticky
-	 * @param	{Number}
+	 * @param	{Number}		delay
+	 * @param	{String}		identifier
 	 */
-	notifySuccess: function(message, sticky, delay) {
-		this.notify(this.SUCCESS, message, sticky, delay);
+	notifySuccess: function(message, sticky, delay, identifier) {
+		this.notify(this.SUCCESS, message, sticky, delay, identifier);
 	},
 
 
@@ -258,15 +273,41 @@ Todoyu.Notification = {
 
 
 	/**
+	 * Close any (identifiable) notifications related to the given event (called prior to showing new ones of that same event)
+	 *
+	 * @method	closePrecedingNotes
+	 * @param	{String}	noteIdentifier		Identifier of note related event
+	 * @return	{Boolean}						Any old notes found and closed?
+	 */
+	closePrecedingNotes: function(noteIdentifier) {
+		if( typeof noteIdentifier == 'string' && noteIdentifier != '' ) {
+			var preceedingNotes	= $$('.note-' + noteIdentifier);
+
+			if( preceedingNotes.length > 0 ) {
+				preceedingNotes.each(function(note){
+					var idNote	= note.id.replace('notification-note-', '');
+					this.closeNote(idNote);
+				}.bind(this));
+
+				return true;
+			}
+		}
+
+		return false;
+	},
+
+
+
+	/**
 	 * Append new note
 	 *
 	 * @method	appendNote
-	 * @param	{Number}		idNote
-	 * @param	{String}		code
+	 * @param	{Number}		idNote				Unique numeric (counter) for note element ID
+	 * @param	{String}		code				HTML code of note
 	 */
 	appendNote: function(idNote, code) {
 		$('notes').insert({
-			'top':code
+			'top':	code
 		});
 
 		var htmlID	= 'notification-note-' + idNote;

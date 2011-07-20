@@ -279,9 +279,24 @@ var Todoyu = {
 	 *
 	 * @method	notifyError
 	 * @param	{String}		message
+	 * @param	{String}		identifier
 	 */
-	notifyError: function(message) {
-		Todoyu.Notification.notifyError(message);
+	notifyError: function(message, identifier) {
+		Todoyu.Notification.notifyError(message, identifier);
+	},
+
+
+
+	/**
+	 * Show success notification
+	 *
+	 * @method	notifySuccess
+	 * @param	{String}		message
+	 * @param	{String}		identifier
+	 * @param	{Number}		delay
+	 */
+	notifySuccess: function(message, identifier, delay) {
+		Todoyu.Notification.notifySuccess(message, false, delay, identifier);
 	},
 
 
@@ -295,19 +310,6 @@ var Todoyu = {
 	 */
 	notifyInfo: function(message, delay) {
 		Todoyu.Notification.notifyInfo(message, false, delay);
-	},
-
-
-
-	/**
-	 * Show success notification
-	 *
-	 * @method	notifySuccess
-	 * @param	{String}		message
-	 * @param	{Number}		delay
-	 */
-	notifySuccess: function(message, delay) {
-		Todoyu.Notification.notifySuccess(message, false, delay);
 	},
 
 
