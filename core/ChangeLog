@@ -7,6 +7,7 @@ core 2.1.1 - ???
 	* Bugfix: Timerange date selector had to high z-index
 	* Bugfix: Detect also links in this format: "mailto:name@domain.com"
 	* Bugfix: Archive manager creates now valid zip archives on windows (valid extraction on linux)
+	* Bugfix: Contextmenu submenu works now correct on linux firefox 5
 	* Changed: Padding of inline filter forms to prevent layout problems
 	* Changed: Only set curl option CURLOPT_FOLLOWLOCATION when safe mode is not enabled
 	* Changed: Minimum php version is 5.2.3 (instead only 5.2.0)

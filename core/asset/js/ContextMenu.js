@@ -29,8 +29,23 @@
  */
 Todoyu.ContextMenu = {
 
+	/**
+	 * Callback for body click events
+	 */
 	bodyClickObserver: null,
 
+	/**
+	 * Currently visible submenu (for the delay workaround)
+	 */
+	visibleSubmenu: null,
+
+	/**
+	 * Timeout callback for submenu (for the delay workaround)
+	 */
+	hideSubmenuDelay: null,
+
+
+	
 	/**
 	 * Attach contextmenu to a group of elements
 	 * Automatically prevents double context menus by removing registered ones before adding the new one
@@ -229,19 +244,38 @@ Todoyu.ContextMenu = {
 
 	/**
 	 * Show or hide given item's sub menu (at calculated position)
+	 * Note: The whole hide callback stuff is only necessary for firefox (5) on linux
 	 *
 	 * @method	submenu
-	 * @param	{String}		key
-	 * @param	{Boolean}		show
+	 * @param	{String}		key			Key of the item, a submenu should be displayed
+	 * @param	{Boolean}		show		Show or hide?
+	 * @param	{Boolean}		noDelay		Don't delay hide (was delayed on the first execution)
 	 * @return	{Boolean}
 	 */
-	submenu: function(key, show) {
+	submenu: function(key, show, noDelay) {
 		var ctxMenuID	= 'contextmenu';
 		var itemID		= 'contextmenu-' + key;
 		var submenuID	= itemID + '-submenu';
 
 		if( ! Todoyu.exists(submenuID) ) {
 			return false;
+		}
+
+			// Already show another submenu, hide last visible
+		if( show === true && this.visibleSubmenu !== key && this.visibleSubmenu !== undefined ) {
+			this.submenu(this.visibleSubmenu, false, true);
+		}
+
+			// Hide request for current submenu. Prevent closing while navigating in the submenu, so start delayed call
+		if( show === false && noDelay !== true && key === this.visibleSubmenu ) {
+			clearTimeout(this.hideSubmenuDelay);
+			this.hideSubmenuDelay = this.submenu.bind(this, key, false, true).delay(0.1);
+			return true;
+		}
+
+			// Show submenu, cancel delayed hide callback
+		if( show === true && key === this.visibleSubmenu ) {
+			clearTimeout(this.hideSubmenuDelay);
 		}
 
 		var submenu	= $(submenuID);
@@ -262,7 +296,15 @@ Todoyu.ContextMenu = {
 				'left':		left + 'px',
 				'top':		top + 'px'
 			});
+
+				// Set current visible context menu
+			this.visibleSubmenu = key;
 		} else {
+				// Cancel hide callback
+			if( this.visibleSubmenu === key ) {
+				clearTimeout(this.hideSubmenuDelay);
+			}
+			this.visibleSubmenu = null;
 			submenu.hide();
 		}
 
