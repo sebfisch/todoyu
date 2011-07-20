@@ -337,6 +337,7 @@ Todoyu.OverflowWindow = Class.create({
 	 * Check whether the windows is visible
 	 *
 	 * @method	visible
+	 * @return	{Boolean}
 	 */
 	visible: function() {
 		return this.div().visible();

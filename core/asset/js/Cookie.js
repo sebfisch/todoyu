@@ -65,6 +65,7 @@ Todoyu.Cookie = {
 	 *
 	 * @method	getData
 	 * @param	{String}	key
+	 * @return	{String}
 	 */
 	getData: function(key) {
 		return Todoyu.Cookie.data[key];

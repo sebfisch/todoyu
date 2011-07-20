@@ -22,21 +22,39 @@
  */
 Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
+	/**
+	 * @property	clearTimeout
+	 * @type		Object
+	 */
 	clearTimeout: null,
 
+	/**
+	 * @property	customOnComplete
+	 * @type		Object
+	 */
 	customOnComplete: null,
 
+	/**
+	 * @property	selectedFromList
+	 * @type		Boolean
+	 */
 	selectedFromList: false,
 
+	/**
+	 * @property	config
+	 * @type		Object
+	 */
 	config: {
 		paramName: 'input',
 		minChars: 2
 	},
 
 
+
 	/**
 	 * Initialize autocompleter
 	 *
+	 * @method	initialize
 	 * @param	{Function}	$super		Constructor of Ajax.Autocompleter
 	 * @param	{Element}	inputField
 	 * @param	{Element}	suggestDiv
@@ -230,6 +248,8 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	/**
 	 * Check whether the suggestion div is visible
+	 *
+	 * @method	isSuggestionVisible
 	 */
 	isSuggestionVisible: function() {
 		var id	= this.element.id + '-suggestions';
@@ -276,6 +296,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Check whether key is a normal key (not one of the specials which are ignored)
 	 *
+	 * @method	isNormalKey
 	 * @param	{Number}	keyCode
 	 */
 	isNormalKey: function(keyCode) {
@@ -308,6 +329,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * Check whether the input field is empty
 	 *
 	 * @method	isEmpty
+	 * @return	{Boolean}
 	 */
 	isEmpty: function() {
 		return Todoyu.Validate.isEmpty($F(this.element).strip());
@@ -355,6 +377,8 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 	/**
 	 * Clear value of AC field
+	 *
+	 * @method	clearValue
 	 */
 	clearValue: function() {
 		this.setValue('');

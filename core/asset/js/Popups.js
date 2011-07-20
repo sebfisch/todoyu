@@ -129,6 +129,7 @@ Todoyu.Popups = {
 	/**
 	 * Handler called after popup shown
 	 *
+	 * @method	onShow
 	 * @param	{String}	idPopup
 	 */
 	onShow: function(idPopup) {
@@ -140,6 +141,7 @@ Todoyu.Popups = {
 	/**
 	 * Focus first field (of first form) inside given/ most recent popup
 	 *
+	 * @method	focusFirstField
 	 * @param	{String}	idPopup
 	 */
 	focusFirstField: function(idPopup) {

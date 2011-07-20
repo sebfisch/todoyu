@@ -146,9 +146,10 @@ Todoyu.Notification = {
 	 * Remove notification from DOM
 	 *
 	 * @method	remove
+	 * @param	{Number}	id
 	 */
 	remove: function(id) {
-		$('ntification-note-' + id).remove();
+		$('notification-note-' + id).remove();
 	},
 
 
@@ -214,7 +215,7 @@ Todoyu.Notification = {
 	 * @todo	watch out for a bugfix of scriptaculous' malfunctioning 'afterFinish' callback
 	 *
 	 * @method	closeNote
-	 * @param	{Number}		id
+	 * @param	{Number}	id
 	 */
 	closeNote: function(id) {
 		var duration	= 0.3;

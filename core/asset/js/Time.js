@@ -197,7 +197,7 @@ Todoyu.Time = {
 
 
 	/**
-	 * Get todays date
+	 * Get today's date
 	 *
 	 * @method	getTodayDate
 	 * @return	{Number}		microtime timestamp
@@ -317,6 +317,7 @@ Todoyu.Time = {
 	/**
 	 * Extract parts (month, day, year, hours, minutes, seconds) out of datetime string w/o correction
 	 *
+	 * @method	getDateTimeStringParts
 	 * @param	{String}	datetimeString
 	 * @param	{String}	format
 	 * @return	{Array}

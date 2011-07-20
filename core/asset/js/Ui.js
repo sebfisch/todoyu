@@ -304,6 +304,8 @@ Todoyu.Ui = {
 
 	/**
 	 * Disable screen by adding todoyu overlay
+	 *
+	 * @method	disableScreen
 	 */
 	disableScreen: function() {
 		WindowUtilities.disableScreen('todoyu', 'overlay_modal', 0.7, '', document.body);
@@ -313,6 +315,8 @@ Todoyu.Ui = {
 
 	/**
 	 * Enable screen by removing todoyu overlay
+	 *
+	 * @method	enableScreen
 	 */
 	enableScreen: function() {
 		$('overlay_modal').remove();
@@ -754,6 +758,7 @@ Todoyu.Ui = {
 	/**
 	 * Build a button element
 	 *
+	 * @method	buildButton
 	 * @param	{String}	id
 	 * @param	{String}	className
 	 * @param	{String}	label

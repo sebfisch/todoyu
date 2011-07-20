@@ -142,6 +142,8 @@ Todoyu.Timerange = Class.create({
 
 	/**
 	 * Initialize popup calendars
+	 *
+	 * @method	initCalendars
 	 */
 	initCalendars: function() {
 		var dateFormat	= Todoyu.R['dateFormat'];
@@ -175,6 +177,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Handler when date was selected and calendar would close
 	 *
+	 * @method	onCalendarClosed
 	 * @param	{Number}	key
 	 * @param	{Calendar}	calendar
 	 */
@@ -188,6 +191,8 @@ Todoyu.Timerange = Class.create({
 
 	/**
 	 * Initialize range selector
+	 *
+	 * @method	initRangeSelector
 	 */
 	initRangeSelector: function() {
 		var ranges	= $(this.name).down('.dates .ranges');
@@ -219,6 +224,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Set range for selected preset
 	 *
+	 * @method	setRange
 	 * @param	{String}	rangeKey
 	 */
 	setRange: function(rangeKey) {
@@ -470,6 +476,7 @@ Todoyu.Timerange = Class.create({
 	 * Get value of the active drag handle
 	 *
 	 * @method	getActiveHandleValue
+	 * @return	{Number}
 	 */
 	getActiveHandleValue: function() {
 			// Get key of handle
@@ -707,6 +714,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Set date for the slider
 	 *
+	 * @method	setSliderDate
 	 * @param	{String}	key
 	 * @param	{Date}		date
 	 */
@@ -722,6 +730,7 @@ Todoyu.Timerange = Class.create({
 	/**
 	 * Set timerange date for key
 	 *
+	 * @method	setDate
 	 * @param	{String}	key
 	 * @param	{Date}		date
 	 */

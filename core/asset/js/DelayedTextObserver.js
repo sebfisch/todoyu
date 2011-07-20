@@ -82,6 +82,7 @@ Todoyu.DelayedTextObserver = Class.create({
 	/**
 	 * Install change handler
 	 *
+	 * @method	install
 	 */
 	install: function() {
 		this.field.on('keyup', this.onChanged.bind(this));

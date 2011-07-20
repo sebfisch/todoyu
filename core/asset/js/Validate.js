@@ -53,6 +53,7 @@ Todoyu.Validate = {
 	/**
 	 * Check whether given object is empty (based on http://phpjs.org/functions/empty)
 	 *
+	 * @method	IsObjectEmpty
 	 * @param	{Object}	obj
 	 * @return	{Boolean}
 	 */

@@ -503,6 +503,7 @@ Todoyu.Helper = {
 	/**
 	 * Set format config for currencyFormat
 	 *
+	 * @method	setCurrencyFormat
 	 * @param	{Object}	config
 	 */
 	setCurrencyFormat: function(config) {
@@ -514,6 +515,7 @@ Todoyu.Helper = {
 	/**
 	 * Format a number with currency config
 	 *
+	 * @method	currencyFormat
 	 * @param	{Number}	number
 	 * @param	{Boolean}	withSymbol
 	 * @return	{String}

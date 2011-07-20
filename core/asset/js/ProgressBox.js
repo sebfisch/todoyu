@@ -39,6 +39,7 @@ Todoyu.ProgressBox = Class.create(Todoyu.LoaderBox, {
 	/**
 	 * Initialize progress box
 	 *
+	 * @method	initialize
 	 * @param	{Function}	$super
 	 * @param	{String}	name
 	 * @param	{Object}	config
@@ -57,6 +58,8 @@ Todoyu.ProgressBox = Class.create(Todoyu.LoaderBox, {
 
 	/**
 	 * Build progress box elements
+	 *
+	 * @method	buildProgress
 	 */
 	buildProgress: function() {
 		var wrap 	= new Element('div');
@@ -93,6 +96,7 @@ Todoyu.ProgressBox = Class.create(Todoyu.LoaderBox, {
 	 * - Set message
 	 * - Move progress bar
 	 *
+	 * @method	updateProgress
 	 * @param	{Number}	count
 	 * @param	{String}	message
 	 */
@@ -112,6 +116,7 @@ Todoyu.ProgressBox = Class.create(Todoyu.LoaderBox, {
 	/**
 	 * Set width of bar with new counter
 	 *
+	 * @method	setBarWidth
 	 * @param	{Number}	count
 	 */
 	setBarWidth: function(count) {
@@ -128,6 +133,7 @@ Todoyu.ProgressBox = Class.create(Todoyu.LoaderBox, {
 	/**
 	 * Set progress message
 	 *
+	 * @method	setProgressMessage
 	 * @param	{String}	message
 	 */
 	setProgressMessage: function(message) {
@@ -139,6 +145,7 @@ Todoyu.ProgressBox = Class.create(Todoyu.LoaderBox, {
 	/**
 	 * Handler when cancel clicked
 	 *
+	 * @method	onCancel
 	 * @param	{Event}		event
 	 * @param	{Element}	element
 	 */
@@ -153,6 +160,8 @@ Todoyu.ProgressBox = Class.create(Todoyu.LoaderBox, {
 
 	/**
 	 * Handler when progress reached total count
+	 *
+	 * @method	onComplete
 	 */
 	onComplete: function() {
 		this.destroy();

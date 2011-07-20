@@ -93,6 +93,8 @@ Todoyu.Popup = Class.create(Window, {
 
 	/**
 	 * Add internal onComplete wrapper to give popup instance as second parameter
+	 *
+	 * @method	addOnCompleteWrap
 	 */
 	addOnCompleteWrap: function() {
 			// Assert that request options exists
@@ -108,6 +110,7 @@ Todoyu.Popup = Class.create(Window, {
 	/**
 	 * Internal onComplete handler
 	 *
+	 * @method	onComplete
 	 * @param	{Function}		originalOnComplete
 	 * @param	{Ajax.Response}	response
 	 */
@@ -147,6 +150,7 @@ Todoyu.Popup = Class.create(Window, {
 	/**
 	 * Custom keyup handler - close last opened popup on [ESC] key up
 	 *
+	 * @method	onEscUp
 	 * @param	{Event}		event
 	 */
 	onEscUp: function(event) {
@@ -205,6 +209,7 @@ Todoyu.Popup = Class.create(Window, {
 	 * Wrapper for close method
 	 * Prevent close callback loops
 	 *
+	 * @method	close
 	 * @param	{Function}	$super
 	 */
 	close: function($super) {

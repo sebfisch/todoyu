@@ -87,6 +87,7 @@ Todoyu.Highcharts = {
 	/**
 	 * Get rendering options for highcharts chart type: 'stackedArea'
 	 *
+	 * @method	getAreaChartOptions
 	 * @param	Object		renderData
 	 * @return	Object
 	 */

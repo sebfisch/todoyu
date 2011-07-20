@@ -50,6 +50,7 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	/**
 	 * Initialize autocompleter with callbacks
 	 *
+	 * @method	initialize
 	 * @param	{Ajax.Autocompleter}	$super
 	 * @param	{String|Element}		field
 	 * @param	{String|Element}		fieldSuggest
@@ -81,6 +82,7 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	/**
 	 * Callback when element was selected
 	 *
+	 * @method	onElementSelected
 	 * @param	{Function}	$super
 	 * @param	{Function}	callOriginal
 	 * @param	{Element}	inputField
@@ -106,6 +108,7 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	/**
 	 * Callback when an item was removed from the list
 	 *
+	 * @method	onItemListRemove
 	 * @param	{Element}		list
 	 * @param	{String|Number}	idItem
 	 */
@@ -116,10 +119,10 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 
 
 	/**
-	 *
-	 * @param $super
-	 * @param inputElement
-	 * @param acParam
+	 * @method	callbackModifyRequestParams
+	 * @param	$super
+	 * @param	inputElement
+	 * @param	acParam
 	 */
 	callbackModifyRequestParams: function($super, inputElement, acParam) {
 		return acParam;
@@ -133,6 +136,7 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	 * Don't clear fields if input is empty, because after a valid selection,
 	 * the input is cleared in the multi autocompleter
 	 *
+	 * @method	onKeyup
 	 * @param	{Function}	$super
 	 * @param	{Event}		event
 	 */
