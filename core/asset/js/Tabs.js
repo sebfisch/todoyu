@@ -36,6 +36,16 @@ Todoyu.Tabs = {
 	 */
 	handler: {},
 
+	/**
+	 * Max width of all tab
+	 */
+	maxWidth: 672,
+
+	/**
+	 * Max width of a tab (ignored if there is more space available
+	 */
+	maxTabWidth: 224,
+
 
 	/**
 	 * Create tabs based on the <ul><li>
@@ -45,7 +55,7 @@ Todoyu.Tabs = {
 	 * @param	{Function}	handlerFunction
 	 */
 	create: function(name, handlerFunction) {
-		var list = $(name + '-tabs');
+		var list = this.getList(name);
 
 		this.handler[list.id] = {
 			click: 		list.on('click',	'li', this._clickHandler.bind(this, handlerFunction)),
@@ -54,6 +64,115 @@ Todoyu.Tabs = {
 		};
 
 		this.activateFirstIfNonActive(list);
+		this.cropTabs(list);
+	},
+
+
+
+	/**
+	 * List element (ul)
+	 *
+	 * @param	{String}	name
+	 * @return	{Element}
+	 */
+	getList: function(name) {
+		return $(name + '-tabs');
+	},
+
+
+
+	/**
+	 * Get tab element
+	 *
+	 * @param	{String}	listName
+	 * @param	{String}	tabName
+	 */
+	getTab: function(listName, tabName) {
+		return this.getList(listName).down('.item.tabkey-' + tabName);
+	},
+
+	
+
+	/**
+	 * Crop all labels in a tab row to make sure they fit in a row
+	 *
+	 * @param	{Element}	list
+	 */
+	cropTabs: function(list) {
+		list = $(list);
+		this.resetUncroppedLabels(list);
+
+		var postFix				= '..';
+		var totalWidthSmallTabs	= 0;
+		var allTabs				= $(list).select('.item');
+		var padding				= allTabs.size() * 3;
+		var tooLongTabs			= allTabs.findAll(function(tab){
+			return parseInt(tab.getWidth()) > this.maxTabWidth;
+		}, this);
+		var numTooLongTabs		= tooLongTabs.size();
+
+			// Calc total width
+		var totalWidth = allTabs.collect(function(tab){
+			return parseInt(tab.getWidth(), 10);
+		}).sum() + padding;
+
+			// Stop here, if tabs are not too width
+		if( totalWidth <= this.maxWidth ) {
+			return false;
+		}
+
+			// Count width of small tabs and number of too long tabs
+		$(list).select('.item').each(function(tab){
+			var width = parseInt(tab.getWidth(), 10);
+			if( width <= this.maxTabWidth ) {
+				totalWidthSmallTabs += width;
+			}
+		}, this);
+
+			// Divide available with by too long tabs
+		var shareWidth	= this.maxWidth - totalWidthSmallTabs - padding;
+		var cropToWidth	= Math.floor(shareWidth/numTooLongTabs);
+
+		var tabWidth, tabLabel, shortenLabel, postFixLength = postFix.length;
+
+			// Remove chars as long the total width is larger than the maxWidth
+		while( totalWidth > this.maxWidth ) {
+			tooLongTabs.each(function(tab, index){
+				tabWidth	= parseInt(tab.getWidth(), 10);
+
+				console.log('crop');
+
+					// Is tab longer than the crop width
+				if( tabWidth > cropToWidth ) {
+					tabLabel = tab.down('span.labeltext').innerHTML;
+						// Remove postFix if added
+					if( tabLabel.substr(-postFix.length) == postFix ) {
+						tabLabel = tabLabel.substr(0, tabLabel.length-postFixLength);
+					}
+						// Shorten label
+					shortenLabel = tabLabel.substr(0, tabLabel.length-1).strip();
+						// Update element with label and postfix
+					tab.down('span.labeltext').update(shortenLabel + postFix);
+				}
+			}, this);
+
+			totalWidth = allTabs.collect(function(tab){
+				return parseInt(tab.getWidth(), 10);
+			}).sum() + padding;
+		}
+	},
+
+
+
+	/**
+	 * Update labels with full length label to start cropping from start
+	 *
+	 * @param	{Element}	list
+	 */
+	resetUncroppedLabels: function(list) {
+		$(list).select('.item').each(function(tab){
+			tab.down('span.labeltext').update(tab.title);
+		});
 	},
 
 
@@ -119,18 +238,23 @@ Todoyu.Tabs = {
 	 * Set a tab active in a group of tabs
 	 *
 	 * @method	setActive
-	 * @param	{String}	listname
-	 * @param	{String}	tab
+	 * @param	{String}	listName
+	 * @param	{String}	tabName
 	 */
-	setActive: function(listname, tab) {
-		var tabID	= listname + '-tabs';
+	setActive: function(listName, tabName) {
+		var list	= this.getList(listName);
 
-		if( Todoyu.exists(tabID) ) {
-			$(listname + '-tabs').select('li').invoke('removeClassName', 'active');
-			$(listname + '-tabs').down('li.tabkey-' + tab).addClassName('active');
-		} else {
-			Todoyu.log('Tab with name "' + listname + '" not found!');
+		if( list ) {
+			var tab = list.down('li.tabkey-' + tabName);
+
+			if( tab ) {
+				list.select('li').invoke('removeClassName', 'active');
+				tab.addClassName('active');
+				return;
+			}
 		}
+
+		Todoyu.log('Tab with name "' + tabName + '" not found in list ' + listName + '!');
 	},
 
 
@@ -204,12 +328,20 @@ Todoyu.Tabs = {
 	 * Set the label text of a tab
 	 *
 	 * @method	setLabel
-	 * @param	{String}	listname
-	 * @param	{String}	tab
+	 * @param	{String}	listName
+	 * @param	{String}	tabName
 	 * @param	{String}	label
 	 */
-	setLabel: function(listname, tab, label) {
-		$(listname + '-tab-' + tab).down('span.labeltext').update(label);
+	setLabel: function(listName, tabName, label) {
+		label	= label.strip();
+		var tab	= this.getTab(listName, tabName);
+
+		if( tab ) {
+			tab.down('.labeltext').update(label);
+			tab.title = label;
+		}
+
+		this.cropTabs(this.getList(listName));
 	},
 
 
@@ -279,18 +411,19 @@ Todoyu.Tabs = {
 	 * Add a new tab to a tab group
 	 *
 	 * @method	addTab
-	 * @param	{String}	listname
-	 * @param	{String}	name
+	 * @param	{String}	listName
+	 * @param	{String}	tabName
 	 * @param	{String}	tabClass
 	 * @param	{String}	tabLabel
-	 * @param	{Boolean}	active
-	 * @param	{Boolean}	first
+	 * @param	{Boolean}	isActive
+	 * @param	{Boolean}	insertAsFirst
 	 */
-	addTab: function(listname, name, tabClass, tabLabel, active, first) {
-		var tab	= this.build(listname, name, tabClass, tabLabel, active);
-		var list= $(listname + '-tabs');
+	addTab: function(listName, tabName, tabClass, tabLabel, isActive, insertAsFirst) {
+		var tab	= this.build(listName, tabName, tabClass, tabLabel, isActive);
+		var list= this.getList(listName);
+		tab.title = tabLabel;
 
-		if( first ) {
+		if( insertAsFirst ) {
 			list.insert({
 				top: tab
 			});
@@ -300,9 +433,11 @@ Todoyu.Tabs = {
 			});
 		}
 
-		if( active ) {
-			this.setActive(listname, name);
+		if( isActive ) {
+			this.setActive(listName, tabName);
 		}
+
+		this.cropTabs(list);
 	},
 
 
@@ -393,19 +528,22 @@ Todoyu.Tabs = {
 	 * Remove surplus tabs
 	 *
 	 * @method	removeSurplus
-	 * @param	{String}	list
+	 * @param	{String}	name
 	 * @param	{Number}	max		Maximal amount of tabs
 	 * @return	{Array}		List of removed tab IDs
 	 */
-	removeSurplus: function(list, max) {
+	removeSurplus: function(name, max) {
 		var tabIDs = [];
-		var idTab;
+		var idTab, surplusTab;
+		var list	= this.getList(name);
 
-		while( $(list + '-tabs').down('li', max) !== undefined ) {
-			var x	= $(list + '-tabs').down('li', max);
-			idTab	= this.removeLast(list);
-			tabIDs.push(idTab);
+		while( (surplusTab = list.down('li', max)) !== undefined ) {
+			//var x	= $(name + '-tabs').down('li', max);
+			idTab	= this.removeLast(name);
+			tabIDs.push(surplusTab);
 		}
+
+		this.cropTabs(list);
 
 		return tabIDs;
 	},
@@ -416,14 +554,17 @@ Todoyu.Tabs = {
 	 * Remove last tab
 	 *
 	 * @method	removeLast
-	 * @param	{String}	list
+	 * @param	{String}	name
 	 * @return	{String}	ID of the remove tab
 	 */
-	removeLast: function(list) {
-		var last	= $(list + '-tabs').select('li').last();
+	removeLast: function(name) {
+		var list	= this.getList(name);
+		var last	= list.select('li').last();
 		var idTab	= last.id.split('-').last();
 
 		last.remove();
+
+		this.cropTabs(list);
 
 		return idTab;
 	},
@@ -451,7 +592,7 @@ Todoyu.Tabs = {
 	 * @param	{Number}	index
 	 * @return	{Element}
 	 */
-	getTab: function(list, index) {
+	getTabByIndex: function(list, index) {
 		return $(list + '-tabs').down('li', index || 0);
 	},
 
@@ -465,7 +606,7 @@ Todoyu.Tabs = {
 	 * @return	{Element}
 	 */
 	getFirstTab: function(list) {
-		return this.getTab(list, 0);
+		return this.getTabByIndex(list, 0);
 	},
 
 
@@ -478,7 +619,7 @@ Todoyu.Tabs = {
 	 * @return	{Element}
 	 */
 	getLastTab: function(list) {
-		return this.getTab(list, this.getNumTabs(list)-1);
+		return this.getTabByIndex(list, this.getNumTabs(list)-1);
 	},
 
 
@@ -491,7 +632,7 @@ Todoyu.Tabs = {
 	 * @return	{Array}
 	 */
 	getAllTabs: function(list) {
-		return $(list + '-tabs').select('li');
+		return $(list + '-tabs').select('li.item');
 	}
 
 };

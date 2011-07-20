@@ -14,6 +14,8 @@ core 2.1.1 - ???
 	* Changed: Updated tinyMCE to 3.4.3.2
 	* Changed: <a>-tags are now removed from RTE when saving (autolink function rebuilds them when necessary for output)
 	* Changed: Logger init position. Init before todoyu is initialized to log init errors. Added check if file logger has a problem. Check for resource instead null
+	* Changed: Tabs are now cropped in javascript and use dynamically as much space as available. Removed template label cropping for tabs
+	* Added: Array.prototype.sum()
 
 
 core 2.1.0 - 2011-06-17
