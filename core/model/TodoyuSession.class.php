@@ -32,7 +32,7 @@ class TodoyuSession {
 	 * @return	String
 	 */
 	private static function key() {
-		return Todoyu::$CONFIG['SESSION']['key'];
+		return PATH_WEB;
 	}
 
 

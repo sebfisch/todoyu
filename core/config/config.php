@@ -30,11 +30,6 @@ Todoyu::$CONFIG['AUTOLOAD'] = array();
 Todoyu::addIncludePath('core/model');
 Todoyu::addIncludePath('core/controller');
 
-	// Todoyu session config
-Todoyu::$CONFIG['SESSION']		= array(
-	'key'	=> 'TODOYU'
-);
-
 	// Template (dwoo) path config
 Todoyu::$CONFIG['TEMPLATE']		= array(
 	'compile'	=> PATH_CACHE . DIR_SEP . 'tmpl' . DIR_SEP . 'compile',

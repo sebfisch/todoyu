@@ -15,6 +15,8 @@ core 2.1.1 - ???
 	* Changed: <a>-tags are now removed from RTE when saving (autolink function rebuilds them when necessary for output)
 	* Changed: Logger init position. Init before todoyu is initialized to log init errors. Added check if file logger has a problem. Check for resource instead null
 	* Changed: Tabs are now cropped in javascript and use dynamically as much space as available. Removed template label cropping for tabs
+	* Changed: Moved javascript object prototype definitions from core/lib/js/prototype.js to core/asset/js/prototypes.js
+	* Changed: Session key is now the web path. Multiple todoyu instances on the same server have now different session namespaces
 	* Added: Array.prototype.sum()
 
 
