@@ -113,6 +113,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 26
 		),
 		array(
+			'file'		=> 'core/asset/js/prototypes.js',
+			'position'	=> 26,
+		),
+		array(
 			'file'		=> 'core/asset/js/Todoyu.js',
 			'position'	=> 50
 		),
