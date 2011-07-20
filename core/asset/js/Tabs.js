@@ -31,6 +31,7 @@ Todoyu.Tabs = {
 
 	/**
 	 * Event handlers for tabs
+	 *
 	 * @property	handler
 	 * @type		Object
 	 */
@@ -45,6 +46,7 @@ Todoyu.Tabs = {
 	 * Max width of a tab (ignored if there is more space available
 	 */
 	maxTabWidth: 224,
+
 
 
 	/**
@@ -72,6 +74,7 @@ Todoyu.Tabs = {
 	/**
 	 * List element (ul)
 	 *
+	 * @method	getList
 	 * @param	{String}	name
 	 * @return	{Element}
 	 */
@@ -84,6 +87,7 @@ Todoyu.Tabs = {
 	/**
 	 * Get tab element
 	 *
+	 * @method	getTab
 	 * @param	{String}	listName
 	 * @param	{String}	tabName
 	 */
@@ -94,8 +98,9 @@ Todoyu.Tabs = {
 	
 
 	/**
-	 * Crop all labels in a tab row to make sure they fit in a row
+	 * Crop long tab labels in a tab row to ensure them to fit into the available width
 	 *
+	 * @method	cropTabs
 	 * @param	{Element}	list
 	 */
 	cropTabs: function(list) {
@@ -116,7 +121,7 @@ Todoyu.Tabs = {
 			return parseInt(tab.getWidth(), 10);
 		}).sum() + padding;
 
-			// Stop here, if tabs are not too width
+			// Stop here, if tabs are not too wide
 		if( totalWidth <= this.maxWidth ) {
 			return false;
 		}
@@ -129,33 +134,35 @@ Todoyu.Tabs = {
 			}
 		}, this);
 
-			// Divide available with by too long tabs
+			// Divide available width by too long tabs
 		var shareWidth	= this.maxWidth - totalWidthSmallTabs - padding;
-		var cropToWidth	= Math.floor(shareWidth/numTooLongTabs);
+		var cropToWidth	= Math.floor(shareWidth / numTooLongTabs);
 
-		var tabWidth, tabLabel, shortenLabel, postFixLength = postFix.length;
+		var tabWidth, tabLabel, shortenedLabel, postFixLength = postFix.length;
 
-			// Remove chars as long the total width is larger than the maxWidth
-		while( totalWidth > this.maxWidth ) {
-			tooLongTabs.each(function(tab, index){
+			// Remember "previous" total width to be able to quit endless looping
+		var prevTotalWidth = -1;
+
+			// Remove chars until the total width is not any more larger than maxWidth 
+		while( totalWidth > this.maxWidth && (totalWidth != prevTotalWidth) ) {
+			tooLongTabs.each(function(tab, index) {
 				tabWidth	= parseInt(tab.getWidth(), 10);
 
-				console.log('crop');
-
-					// Is tab longer than the crop width
+					// Is tab longer than the crop width?
 				if( tabWidth > cropToWidth ) {
 					tabLabel = tab.down('span.labeltext').innerHTML;
 						// Remove postFix if added
 					if( tabLabel.substr(-postFix.length) == postFix ) {
-						tabLabel = tabLabel.substr(0, tabLabel.length-postFixLength);
+						tabLabel = tabLabel.substr(0, tabLabel.length - postFixLength);
 					}
 						// Shorten label
-					shortenLabel = tabLabel.substr(0, tabLabel.length-1).strip();
+					shortenedLabel = tabLabel.substr(0, tabLabel.length - 1).strip();
 						// Update element with label and postfix
-					tab.down('span.labeltext').update(shortenLabel + postFix);
+					tab.down('span.labeltext').update(shortenedLabel + postFix);
 				}
 			}, this);
 
+			prevTotalWidth	= totalWidth;
 			totalWidth = allTabs.collect(function(tab){
 				return parseInt(tab.getWidth(), 10);
 			}).sum() + padding;
@@ -167,6 +174,7 @@ Todoyu.Tabs = {
 	/**
 	 * Update labels with full length label to start cropping from start
 	 *
+	 * @method	resetUncroppedLabels
 	 * @param	{Element}	list
 	 */
 	resetUncroppedLabels: function(list) {
@@ -275,6 +283,7 @@ Todoyu.Tabs = {
 	/**
 	 * Set first tab active
 	 *
+	 * @method	setFirstActive
 	 * @param	{String|Element}	list
 	 */
 	setFirstActive: function(list) {
@@ -367,19 +376,19 @@ Todoyu.Tabs = {
 	 * Build a tab
 	 *
 	 * @method	build
-	 * @param	{String}	listname
+	 * @param	{String}	listName
 	 * @param	{String}	name
 	 * @param	{String}	tabClass
 	 * @param	{String}	tabLabel
 	 * @param	{Boolean}	active
 	 */
-	build: function(listname, name, tabClass, tabLabel, active) {
+	build: function(listName, name, tabClass, tabLabel, active) {
 		var tab = new Element('li', {
-			'id': listname + '-tab-' + name,
+			'id': listName + '-tab-' + name,
 			'class': 'item bcg05 tabkey-' + name + ' ' + name + ' ' + tabClass
 		});
 		var p = new Element('p', {
-			'id': listname + '-tab-' + name + '-label',
+			'id': listName + '-tab-' + name + '-label',
 			'class': 'label'
 		});
 		var lt = new Element('span', {
