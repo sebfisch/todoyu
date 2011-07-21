@@ -28,6 +28,7 @@ Todoyu.Headlet = Class.create({
 	name: '',
 
 
+
 	/**
 	 * Constructor: Install basics for all headlet types
 	 *
@@ -136,6 +137,7 @@ Todoyu.Headlet = Class.create({
 	},
 
 
+
 	/**
 	 * Default handler when clicked on a menu item
 	 *
@@ -202,6 +204,7 @@ Todoyu.Headlet = Class.create({
 	getContent: function() {
 		return $(this.name + '-content');
 	},
+
 
 
 	/**

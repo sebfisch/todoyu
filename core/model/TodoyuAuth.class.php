@@ -19,8 +19,8 @@
 *****************************************************************************/
 
 /**
- * Authentification class
- * Get acces to the current person, check rights and handle login
+ * Authentication class
+ * Get access to the current person, check rights and handle login
  *
  * @package		Todoyu
  * @subpackage	Core

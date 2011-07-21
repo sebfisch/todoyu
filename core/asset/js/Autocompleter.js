@@ -312,6 +312,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	},
 
 
+
 	/**
 	 * Hide suggestion div (delayed)
 	 *

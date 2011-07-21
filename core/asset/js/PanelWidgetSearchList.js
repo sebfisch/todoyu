@@ -63,6 +63,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	lastText: null,
 
 
+
 	/**
 	 * Constructor
 	 *

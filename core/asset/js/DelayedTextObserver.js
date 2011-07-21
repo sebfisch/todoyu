@@ -50,6 +50,7 @@ Todoyu.DelayedTextObserver = Class.create({
 	delay: null,
 
 
+
 	/**
 	 * Observe an input field delayed
 	 * Callback function will be called with field and value (Ex: onChanged: function(field, value) {})

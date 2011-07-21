@@ -95,7 +95,7 @@ Todoyu.Tabs = {
 		return this.getList(listName).down('.item.tabkey-' + tabName);
 	},
 
-	
+
 
 	/**
 	 * Crop long tab labels in a tab row to ensure them to fit into the available width

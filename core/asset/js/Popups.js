@@ -40,6 +40,7 @@ Todoyu.Popups = {
 	stack: [],
 
 
+
 	/**
 	 * Set popup reference to access opened popup
 	 * This is done by Todoyu.Popup() already

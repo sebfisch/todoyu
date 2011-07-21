@@ -44,6 +44,7 @@ Todoyu.LoaderBox = Class.create({
 	},
 
 
+
 	/**
 	 * Loader box element
 	 * @property	box
@@ -57,6 +58,7 @@ Todoyu.LoaderBox = Class.create({
 	 * @type		Element
 	 */
 	screenBlock: null,
+
 
 
 	/**
@@ -89,6 +91,7 @@ Todoyu.LoaderBox = Class.create({
 			this.hide();
 		}
 	},
+
 
 
 	/**
@@ -230,6 +233,7 @@ Todoyu.LoaderBox = Class.create({
 			document.body.insert(this.box);
 		}
 	},
+
 
 
 	/**

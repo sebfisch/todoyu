@@ -37,6 +37,7 @@ Todoyu.Form = {
 	subFormIndex: 100,
 
 
+
 	/**
 	 * Initialize form display: expand invalid foreign records, focus first field
 	 *

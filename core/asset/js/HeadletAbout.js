@@ -61,6 +61,7 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 	nameEffect: null,
 
 
+
 	/**
 	 * Handle headlet icon click
 	 *
@@ -221,6 +222,7 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 		}
 
 	},
+
 
 
 	/**

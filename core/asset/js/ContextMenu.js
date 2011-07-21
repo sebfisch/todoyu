@@ -45,7 +45,7 @@ Todoyu.ContextMenu = {
 	hideSubmenuDelay: null,
 
 
-	
+
 	/**
 	 * Attach contextmenu to a group of elements
 	 * Automatically prevents double context menus by removing registered ones before adding the new one

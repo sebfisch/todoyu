@@ -158,6 +158,7 @@ Todoyu.ProgressBox = Class.create(Todoyu.LoaderBox, {
 	},
 
 
+
 	/**
 	 * Handler when progress reached total count
 	 *

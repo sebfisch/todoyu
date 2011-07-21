@@ -83,6 +83,7 @@ var Todoyu = {
 	R: {},
 
 
+
 	/**
 	 * Initialize todoyu object
 	 *

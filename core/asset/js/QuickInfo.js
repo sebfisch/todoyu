@@ -86,6 +86,7 @@ Todoyu.QuickInfo = {
 	hidden:		false,
 
 
+
 	/**
 	 * Callback for delayed hide
 	 *
@@ -101,7 +102,6 @@ Todoyu.QuickInfo = {
 	 * @type		Number
 	 */
 	delayedHideTime: 0.4,
-
 
 	/**
 	 * Callback for delayed show

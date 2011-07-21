@@ -34,7 +34,7 @@ Todoyu.ItemList = Class.create({
 	options: {},
 
 
-	
+
 	/**
 	 * Initialize
 	 *

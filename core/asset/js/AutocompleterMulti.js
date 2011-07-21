@@ -118,6 +118,7 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	},
 
 
+
 	/**
 	 * @method	callbackModifyRequestParams
 	 * @param	$super

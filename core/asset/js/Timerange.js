@@ -594,6 +594,7 @@ Todoyu.Timerange = Class.create({
 	},
 
 
+
 	/**
 	 * Get first date of timerange
 	 *

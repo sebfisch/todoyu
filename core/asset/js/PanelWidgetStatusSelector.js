@@ -97,6 +97,7 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 	},
 
 
+
 	/**
 	 * OnChange handler
 	 *

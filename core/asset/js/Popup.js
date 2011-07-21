@@ -62,6 +62,7 @@ Todoyu.Popup = Class.create(Window, {
 	},
 
 
+
 	/**
 	 * Constructor
 	 * Handle contentUrl, content and element parameter
