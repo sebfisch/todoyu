@@ -33,14 +33,34 @@ abstract class TodoyuSchedulerJob {
 	 */
 	protected $options = array();
 
+	/**
+	 * Configured frequency when added
+	 *
+	 * @var	Integer
+	 */
+	protected $frequency = 0;
+
 
 	/**
 	 * Initialize
 	 *
 	 * @param	Array	$options
+	 * @param	Integer	$frequency
 	 */
-	public function __construct(array $options = array()) {
+	public function __construct(array $options = array(), $frequency) {
 		$this->options	= $options;
+		$this->frequency= intval($frequency);
+	}
+
+
+
+	/**
+	 * Get next date of planned execution
+	 *
+	 * @return	Integer
+	 */
+	protected function getNextExecutionTime() {
+		return NOW + $this->frequency * 60;
 	}
 
 

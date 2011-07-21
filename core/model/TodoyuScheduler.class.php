@@ -106,13 +106,14 @@ class TodoyuScheduler {
 
 		foreach($jobs as $jobConfig) {
 			if( class_exists($jobConfig['class'], true) ) {
-				$options= TodoyuArray::assure($jobConfig['options']);
+				$options	= TodoyuArray::assure($jobConfig['options']);
+				$frequency	= intval($jobConfig['crontime']);
 
 				try {
 					/**
 					 * @var	TodoyuSchedulerJob	$job
 					 */
-					$job	= new $jobConfig['class']($options);
+					$job	= new $jobConfig['class']($options, $frequency);
 
 					$success= $job->execute();
 					$message= '';

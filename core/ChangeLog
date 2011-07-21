@@ -18,6 +18,7 @@ core 2.1.1 - ???
 	* Changed: Tabs are now cropped in javascript and use dynamically as much space as available. Removed template label cropping for tabs
 	* Changed: Moved javascript object prototype definitions from core/lib/js/prototype.js to core/asset/js/prototypes.js
 	* Changed: Session key is now the web path. Multiple todoyu instances on the same server have now different session namespaces
+	* Changed: Frequency of a cronjob if given to the job to calculate next expected execution time
 	* Added: Array.prototype.sum()
 
 
