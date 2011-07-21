@@ -1,13 +1,17 @@
 todoyu core changelog
 
 core 2.1.1 - ???
+	* Bugfix: Installer- Fixed icon display bug of installer steps with long labels
+	* Feature: Added optional event identifier to error/success notifications- notifications of the same event are now closing preceding notes of the same event (if present)
+	* Bugfix: open duration picker wasn't hidden when closing parent dialog
+	* Changed: Merged duration wizard icon into general sprite
 	* Bugfix: Added more tags to the badHtmlTags list to make sure they are escaped and not rendered (ex: embed)
 	* Bugfix: Parsing dates in british english format failed (was interpreted as american)
 	* Bugfix: List of available locales contained default locale twice
 	* Bugfix: Timerange date selector had to high z-index
 	* Bugfix: Detect also links in this format: "mailto:name@domain.com"
 	* Bugfix: Archive manager creates now valid zip archives on windows (valid extraction on linux)
-	* Bugfix: Contextmenu submenu works now correct on linux firefox 5
+	* Bugfix: Contextmenu sub menu works now correct on linux firefox 5
 	* Changed: Padding of inline filter forms to prevent layout problems
 	* Changed: Only set curl option CURLOPT_FOLLOWLOCATION when safe mode is not enabled
 	* Changed: Minimum php version is 5.2.3 (instead only 5.2.0)
@@ -30,7 +34,7 @@ core 2.1.0 - 2011-06-17
 
 	* Feature: Added TodoyuMail objects which handles mail sending. Extendable by extensions
 	* Feature: Added auto-growing behavior textareas and RTE areas
-	* Feature: Added authentification with tokens to allow public data access interfacing
+	* Feature: Added authentication with tokens to allow public data access interfacing
 	* Feature: Changed popup behaviour. Multiple popups are handled correct now. Close with escape
 	* Feature: Added method for creation of random named cache folders to TodoyuFileManager
 	* Feature: Extended TodoyuFileManager::getFolderContents with option to retrieve file stats
