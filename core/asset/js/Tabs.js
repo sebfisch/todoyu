@@ -42,12 +42,6 @@ Todoyu.Tabs = {
 	 */
 	maxWidth: 672,
 
-	/**
-	 * Max width of a tab (ignored if there is more space available
-	 */
-	maxTabWidth: 224,
-
-
 
 	/**
 	 * Create tabs based on the <ul><li>
@@ -106,42 +100,44 @@ Todoyu.Tabs = {
 	cropTabs: function(list) {
 		list = $(list);
 		this.resetUncroppedLabels(list);
+		var padding = 3;
 
 		var postFix				= '..';
-		var totalWidthSmallTabs	= 0;
 		var allTabs				= $(list).select('.item');
-		var padding				= allTabs.size() * 3;
+		var numTabs				= allTabs.size();
+		var totalPadding		= numTabs * padding;
+		var maxTabWidth			= Math.floor((this.maxWidth - (numTabs * padding))/numTabs);
 		var tooLongTabs			= allTabs.findAll(function(tab){
-			return parseInt(tab.getWidth()) > this.maxTabWidth;
-		}, this);
+			return parseInt(tab.getWidth()) > maxTabWidth;
+		});
 		var numTooLongTabs		= tooLongTabs.size();
+
 
 			// Calc total width
 		var totalWidth = allTabs.collect(function(tab){
 			return parseInt(tab.getWidth(), 10);
-		}).sum() + padding;
+		}).sum() + totalPadding;
 
 			// Stop here, if tabs are not too wide
 		if( totalWidth <= this.maxWidth ) {
 			return false;
 		}
 
-			// Count width of small tabs and number of too long tabs
-		$(list).select('.item').each(function(tab){
+			// Count width of small tabs
+		var totalWidthSmallTabs = allTabs.collect(function(tab){
 			var width = parseInt(tab.getWidth(), 10);
-			if( width <= this.maxTabWidth ) {
-				totalWidthSmallTabs += width;
-			}
-		}, this);
+
+			return width <= maxTabWidth ? width : 0;
+		}).sum();
 
 			// Divide available width by too long tabs
-		var shareWidth	= this.maxWidth - totalWidthSmallTabs - padding;
+		var shareWidth	= this.maxWidth - totalWidthSmallTabs - totalPadding;
 		var cropToWidth	= Math.floor(shareWidth / numTooLongTabs);
 
 		var tabWidth, tabLabelEl, tabLabel, tabLabelLen, shortenedLabel, postFixLength = postFix.length;
 
 			// Remove chars until the total width is not any more larger than maxWidth 
-		while( totalWidth > this.maxWidth/* && (totalWidth != prevTotalWidth)*/ ) {
+		while( totalWidth > this.maxWidth ) {
 			tooLongTabs.each(function(tab, index) {
 				tabWidth	= parseInt(tab.getWidth(), 10);
 
@@ -164,7 +160,7 @@ Todoyu.Tabs = {
 
 			totalWidth = allTabs.collect(function(tab){
 				return parseInt(tab.getWidth(), 10);
-			}).sum() + padding;
+			}).sum() + totalPadding;
 		}
 	},
 
