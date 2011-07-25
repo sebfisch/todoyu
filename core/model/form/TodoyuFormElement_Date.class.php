@@ -82,7 +82,7 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 		$jsCode .= 'Todoyu.JsCalFormat["' . $htmlID . '"] = "' . $format . '";';
 
 			// Add onchange validation observer
-		$jsCode.= 'Todoyu.DateField.observeChange(\'' . $htmlID . '\', \'' . $format . '\');';
+		$jsCode.= 'Todoyu.DateField.addValidator(\'' . $htmlID . '\', \'' . $format . '\');';
 
 		return TodoyuString::wrapScript($jsCode);
 	}

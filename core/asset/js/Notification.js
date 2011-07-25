@@ -91,29 +91,30 @@ Todoyu.Notification = {
 	 */
 	notify: function(type, message, sticky, delay, identifier) {
 		delay		= delay || this.closeDelay;
-
-		identifier	= identifier || '';
-		identifier	= identifier.replace(/\./g, '-');
+		identifier	= (identifier || '').replace('.', '-');
 
 		this.loadTemplate();
 
-		var id		= this.id++;
-
-		var data	= {
-			'id':			id,
-			'type':			type,
-			'message':		message,
-			'identifier':	identifier
+		var id	= this.id++;
+		var data= {
+			id:			id,
+			type:		type,
+			message:	message,
+			identifier:	identifier
 		};
 
-		var note= this.template.evaluate(data);
-		delayBeforeClose	= sticky ? this.closeDelaySticky : delay;
+		var note				= this.template.evaluate(data);
+		var delayBeforeClose	= sticky ? this.closeDelaySticky : delay;
+		var delayBeforeAppend	= 0;
 
 			// Close preceding note(s) if any
-		var isClosingPrecedingNotes = this.closePrecedingNotes(identifier);
+		if( identifier ) {
+			if( this.closeTypeNotes(identifier) ) {
+				delayBeforeAppend = 0.5;
+			}
+		}
 
 			// Append new note delayed to visually happen after old one(s) are closed / immediately if no preceding notes
-		var delayBeforeAppend	= isClosingPrecedingNotes ? 0.5 : 0;
 		this.appendNote.bind(this, id, note).delay(delayBeforeAppend);
 
 			// Setup timeout to auto-close the note
@@ -215,17 +216,20 @@ Todoyu.Notification = {
 	 * @todo	watch out for a bugfix of scriptaculous' malfunctioning 'afterFinish' callback
 	 *
 	 * @method	closeNote
-	 * @param	{Number}	id
+	 * @param	{Number}	idNote
 	 */
-	closeNote: function(id) {
+	closeNote: function(idNote) {
 		var duration	= 0.3;
+		var noteHtmlId	= 'notification-note-' + idNote;
 
-		new Effect.Move('notification-note-' + id, {
-			'y':		-80,
-			'mode':		'absolute'
-		});
+		if( Todoyu.exists(noteHtmlId) ) {
+			new Effect.Move('notification-note-' + idNote, {
+				y:		-80,
+				mode:	'absolute'
+			});
 
-		this.onNoteClosed.bind(this).delay(duration + 0.1, id);
+			this.onNoteClosed.bind(this).delay(duration + 0.1, idNote);
+		}
 	},
 
 
@@ -276,22 +280,21 @@ Todoyu.Notification = {
 	/**
 	 * Close any (identifiable) notifications related to the given event (called prior to showing new ones of that same event)
 	 *
-	 * @method	closePrecedingNotes
-	 * @param	{String}	noteIdentifier		Identifier of note related event
-	 * @return	{Boolean}						Any old notes found and closed?
+	 * @method	closeTypeNotes
+	 * @param	{String}	identifier	Identifier of note related event
+	 * @return	{Boolean}				Any old notes found and closed?
 	 */
-	closePrecedingNotes: function(noteIdentifier) {
-		if( typeof noteIdentifier == 'string' && noteIdentifier != '' ) {
-			var preceedingNotes	= $$('.note-' + noteIdentifier);
+	closeTypeNotes: function(identifier) {
+		identifier	= identifier.replace('.', '-');
+		var notes	= $('notes').select('.note-' + identifier);
 
-			if( preceedingNotes.length > 0 ) {
-				preceedingNotes.each(function(note){
-					var idNote	= note.id.replace('notification-note-', '');
-					this.closeNote(idNote);
-				}.bind(this));
+		if( notes.size() > 0 ) {
+			notes.each(function(note){
+				var idNote	= note.id.split('-').last();
+				this.closeNote(idNote);
+			}, this);
 
-				return true;
-			}
+			return true;
 		}
 
 		return false;

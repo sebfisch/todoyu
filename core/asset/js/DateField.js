@@ -31,55 +31,66 @@
 Todoyu.DateField = {
 
 	/**
-	 * Formats
-	 * @property	format
-	 * @type		String
-	 */
-	format: null,
-
-
-	/**
 	 * Install date field onchange observation for input validation
 	 *
-	 * @method	observeDateField
-	 * @param	{String}	fieldID
+	 * @method	addValidator
+	 * @param	{String}	idField
 	 * @param	{String}	format
 	 */
-	observeChange: function(fieldID, format) {
-		$(fieldID).on('change', this.onValueChange.bind(this, format));
+	addValidator: function(idField, format) {
+		$(idField).on('change', 'input', this.validateDateFormat.bind(this, format));
 	},
 
 
 
 	/**
-	 * "onchange" event handler: validate format of input
+	 * Check date format on value change
 	 *
-	 * @method	onValueChange
-	 * @param	{Event}		event
+	 * @method	validateDateFormat
 	 * @param	{String}	format
+	 * @param	{Event}		event
+	 * @param	{Element}	input
 	 */
-	onValueChange: function(format, event) {
-		var elementID		= event.element().id;
-		var datetimeString	= $F(elementID);
+	validateDateFormat: function(format, event, input) {
+		var dateValue	= $F(input).strip();
 
-		var formElement			= $(elementID).up('div.fElement');
-		var elementLabel		= $(formElement).down('div.fLabel');
+			// Remove all errors
+		this.setError(input, false);
+		Todoyu.Notification.closeTypeNotes('date.formaterror');
 
-			// Are parts of datetime string being changed when parsed by calendar?
-		if( ! Todoyu.Time.isDateString(datetimeString, format) ) {
-				// Notify invalid value
-			Todoyu.notifyError('[LLL:core.date.warning.dateformat.invalid]');
+			// Empty is valid too
+		if( dateValue.empty() ) {
+			return;
+		}
 
-			formElement.addClassName('error');
-			elementLabel.addClassName('error');
-		} else {
-				// Unset invalid-style
-			formElement.removeClassName('error');
-			elementLabel.removeClassName('error');
-				// Unset error message
-			var elementErrorMessage	= formElement.down('div.errorMessage');
-			if( Todoyu.exists(elementErrorMessage) ) {
-				elementErrorMessage.update('');
+			// Is date in valid format?
+		if( ! Todoyu.Time.isDateString(dateValue, format) ) {
+			Todoyu.notifyError('[LLL:core.date.warning.dateformat.invalid]', 'date.formaterror');
+
+			this.setError(input, true);
+		}
+	},
+
+
+
+	/**
+	 * Mark field as error/valid
+	 *
+	 * @param	{String}	input
+	 * @param	{Boolean}	hasError
+	 */
+	setError: function(input, hasError) {
+		var method	= hasError ? 'addClassName' : 'removeClassName';
+		var field	= $(input).up('.fElement');
+
+		field[method]('error');
+		field.down('.fLabel')[method]('error');
+
+			// Clear error message
+		if( ! hasError ) {
+			var errorMsg = field.down('.errorMessage');
+			if( errorMsg ) {
+				errorMsg.update('');
 			}
 		}
 	},
