@@ -32,6 +32,8 @@
  *  - Install the unittest extension to run unittests
  */
 
+error_reporting(E_ALL ^ E_NOTICE ^ E_STRICT);
+ini_set('show_errors', true);
 
 require_once(realpath(dirname(__FILE__) . '/../inc/global.php'));
 require_once(PATH_CORE . '/config/continuous_integration.php');
