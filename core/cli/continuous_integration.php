@@ -44,15 +44,12 @@ Todoyu::$CONFIG['INIT'] = false;
 	// Initialize todoyu
 require_once(PATH_CORE . '/inc/init.php');
 
-	// Load all extensions
-TodoyuExtensions::loadAllExtensions();
-
 	// Setup DB connection
 TodoyuInstallerManager::saveDbConfigInFile(Todoyu::$CONFIG['CI']['db']);
-
 require(PATH . '/config/db.php');
 
-
+	// Load all extensions
+TodoyuExtensions::loadAllExtensions();
 
 	// Update database
 TodoyuSQLManager::updateDatabaseFromTableFiles();
