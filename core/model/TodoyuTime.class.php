@@ -492,6 +492,10 @@ class TodoyuTime {
 			$time = self::parseDate($dateString);
 		}
 
+		if( $time === 0 ) {
+			$time	= strtotime($dateString);
+		}
+
 		return $time;
 	}
 

@@ -1,5 +1,9 @@
 todoyu core changelog
 
+core 2.1.2 - ???
+	* Change: TodoyuTime::parseDateString has now a fallback to strtotime() if date was not recognized before
+	
+
 core 2.1.1 - 2011-07-25
 	* Feature: Added optional event identifier to error/success notifications- notifications of the same event are now closing preceding notes of the same event (if present)
 	* Bugfix: Installer- Fixed icon display bug of installer steps with long labels
