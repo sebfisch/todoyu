@@ -48,9 +48,6 @@ require_once(PATH_CORE . '/inc/init.php');
 TodoyuInstallerManager::saveDbConfigInFile(Todoyu::$CONFIG['CI']['db']);
 require(PATH . '/config/db.php');
 
-	// Load all extensions
-TodoyuExtensions::loadAllExtensions();
-
 	// Update database
 TodoyuSQLManager::updateDatabaseFromTableFiles();
 
@@ -71,6 +68,9 @@ TodoyuCache::flush();
 TodoyuSysmanagerExtInstaller::installExtension('unittest');
 TodoyuSysmanagerExtInstaller::installExtension('currency');
 TodoyuSysmanagerExtInstaller::installExtension('projectbilling');
+
+	// Load all extensions
+TodoyuExtensions::loadAllExtensions();
 
 echo "todoyu setup done";
 
