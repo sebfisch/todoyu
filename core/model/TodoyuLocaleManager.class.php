@@ -83,7 +83,7 @@ class TodoyuLocaleManager {
 
 
 	/**
-	 * Get all code of a locale which may exists on a system
+	 * Get all codes (encoding type description, language abbreviation, language name) of a locale which may exists on a system
 	 *
 	 * @param	String		$locale
 	 * @return	Array
@@ -108,7 +108,7 @@ class TodoyuLocaleManager {
 		if( sizeof($localeNames) > 0 ) {
 			return setlocale(LC_ALL, $localeNames);
 		} else {
-			TodoyuLogger::logError('Failed to set system locale. No localnames available for ' . $locale);
+			TodoyuLogger::logError('Failed to set system locale. No localnames available for locale: "' . $locale . '"');
 			return false;
 		}
 	}

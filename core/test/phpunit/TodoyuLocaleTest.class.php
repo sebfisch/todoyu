@@ -48,7 +48,7 @@ class TodoyuLocaleTest extends PHPUnit_Framework_TestCase {
 	 */
 	protected function setUp() {
 		$this->originalLocale	= TodoyuLocaleManager::getLocale();
-		$this->localeKeys	= array('en_GB', 'en_US', 'de_DE', 'fr_FR');
+		$this->testLocaleKeys	= array('en_GB', 'en_US', 'de_DE', 'fr_FR');
 	}
 
 
@@ -83,7 +83,7 @@ class TodoyuLocaleTest extends PHPUnit_Framework_TestCase {
 		$this->assertType($expected, $locales);
 
 			// Assert locale keys
-		foreach($this->localeKeys as $expectedKey) {
+		foreach($this->testLocaleKeys as $expectedKey) {
 			$this->assertArrayHasKey($expectedKey, $locales);
 		}
 	}
@@ -94,7 +94,7 @@ class TodoyuLocaleTest extends PHPUnit_Framework_TestCase {
 	 * Test locale presence check
 	 */
 	public function testHasSystemLocale() {
-		foreach($this->localeKeys as $expectedLocale) {
+		foreach($this->testLocaleKeys as $expectedLocale) {
 			$this->assertTrue(TodoyuLocaleManager::hasSystemLocale($expectedLocale));
 		}
 	}
@@ -157,7 +157,7 @@ class TodoyuLocaleTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testSetSystemLocale() {
 			// Set various locale languages and verify them being set after
-		foreach($this->localeKeys as $localeKey) {
+		foreach($this->testLocaleKeys as $localeKey) {
 			$localeLangUTF8	= $localeKey . '.utf8';
 				// Test setting locale
 			$this->assertEquals($localeLangUTF8, TodoyuLocaleManager::setSystemLocale($localeKey));

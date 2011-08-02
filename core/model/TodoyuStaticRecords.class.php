@@ -26,6 +26,11 @@
  */
 class TodoyuStaticRecords {
 
+	/**
+	 * Locale config
+	 *
+	 * @var	Array
+	 */
 	private static $localeConfig = array(
 		'country'	=> array(
 			'value'		=> 'id',
@@ -43,6 +48,7 @@ class TodoyuStaticRecords {
 			'locale'	=> 'currency.static_currency'
 		)
 	);
+
 
 
 	/**
