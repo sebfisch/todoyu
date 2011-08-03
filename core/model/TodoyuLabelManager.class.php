@@ -71,7 +71,7 @@ class TodoyuLabelManager {
 
 	/**
 	 * Add a custom path for keys which are not located in the normal file structure
-	 * The folder has to contain a "locale" folder like the extensions
+	 * The folder has to contain a "locale" folder with locale key sub folders like the extensions
 	 *
 	 * @param	String		$key
 	 * @param	String		$customPath		Path relative to todoyu root
@@ -225,7 +225,7 @@ class TodoyuLabelManager {
 	 * @param	String		$locale
 	 * @return	Array
 	 */
-	public static function getFallbackLocales($locale) {
+	private static function getFallbackLocales($locale) {
 		$fallbacks	= TodoyuArray::assure(Todoyu::$CONFIG['LOCALE']['fallback']);
 		$fallback	= array();
 		$tmpLocale	= (string)$locale;
