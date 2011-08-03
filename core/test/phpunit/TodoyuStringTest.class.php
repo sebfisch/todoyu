@@ -58,42 +58,24 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testIsUTF8() {
 		$utf8		= 'スノーフレイクは、プレ';
-		$ascii		= 'This is ASCII text';
-		$iso8859_15	= 'Ich möchte Umlaute haben';
 
-//		$this->assertTrue(TodoyuString::isUTF8($utf8));
-//		$this->assertFalse(TodoyuString::isUTF8($ascii));
-//		$this->assertFalse(TodoyuString::isUTF8($iso8859_15));
+		$this->assertTrue(TodoyuString::isUTF8($utf8));
 
-
-
-//		$utf8		= 'häöüllilu';
-//		$nonUtf8	= 'Hallo';
-//		$integer	= 6699;
-//		$float		= 123.5;
-//
-//		$this->assertFalse(TodoyuString::isUTF8($nonUtf8));
-//
-//		$toUtf8	= utf8_encode($nonUtf8);
-//		$this->assertTrue(TodoyuString::isUTF8($toUtf8));
-//		$this->assertTrue($utf8);
-//
-//		$this->assertFalse(TodoyuString::isUTF8($integer) );
-//		$this->assertFalse(TodoyuString::isUTF8($float) );
+		//@todo	add more tests
 	}
 
 
 
 	/**
 	 * Test TodoyuString::convertToUTF8
-	 *
-	 * @todo Implement testConvertToUTF8().
 	 */
 	public function testConvertToUTF8() {
-//		$string	= 'h��llilu';
-//
-//		$utf8	= TodoyuString::convertToUTF8($string);
-//		$this->assertEquals(true, TodoyuString::isUTF8($utf8) );
+		$string		= 'Ä ä Ü ü';
+
+		$utf8String	= TodoyuString::convertToUTF8($string);
+		$expected	= '蓃쌠₤鳃쌠';
+
+		$this->assertEquals($expected, $utf8String);
 	}
 
 
@@ -261,7 +243,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 
 	/**
-	 * Test TodoyuString::formatSize($filesize, array $labels = null, $noLabel = false)
+	 * Test TodoyuString::formatSize($fileSize, array $labels = null, $noLabel = false)
 	 *
 	 */
 	public function testFormatSize() {
@@ -292,6 +274,11 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expectNoL, $noLabel);
 	}
 
+
+
+	/**
+	 * Test br2nl
+	 */
 	public function testbr2nl() {
 		$text	= 'this<br>string<br />contains<br >html<br/>linebreaks';
 		$expect	= "this\nstring\ncontains\nhtml\nlinebreaks";
@@ -301,6 +288,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test listUnique
+	 */
 	public function testListUnique() {
 		$list	= '1,2,3,3,4,5,1,2,3';
 		$expect	= '1,2,3,4,5';
@@ -310,6 +301,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test wrapscript
+	 */
 	public function testWrapscript() {
 		$script	= 'var x = 44;';
 		$expect	= '<script language="javascript" type="text/javascript">' . $script . '</script>';
@@ -318,6 +313,11 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expect, $result);
 	}
 
+
+
+	/**
+	 * Test md5short
+	 */
 	public function testMd5short() {
 		$text	= 'this text will be hashed';
 		$expect	= substr(md5($text), 0, 10);
@@ -327,6 +327,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test trimExplode
+	 */
 	public function testTrimExplode() {
 		$text	= 'hello,   world,this  ,  text, will,be        ,trimmed';
 		$expect	= array('hello', 'world', 'this', 'text', 'will', 'be', 'trimmed');
@@ -336,6 +340,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test phpCodeString
+	 */
 	public function testToPhpCodeString() {
 		$var1	= 'already a string';
 		$expect1= "'already a string'";
@@ -370,6 +378,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test buildUrl
+	 */
 	public function testBuildUrl() {
 		$params	= array(
 			'a'	=> 'alpha',
@@ -378,16 +390,24 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		);
 		$hash	= 'task-123';
 
+			// Check relative URL
 		$result1	= TodoyuString::buildUrl($params, $hash);
-		$result2	= TodoyuString::buildUrl($params, $hash, true);
-
-		$expect1	= PATH_WEB . '/index.php?a=alpha&b=beta&g=gamma#task-123';
-		$expect2	= SERVER_URL . PATH_WEB . '/index.php?a=alpha&b=beta&g=gamma#task-123';
+		$expect1	= '/index.php?a=alpha&b=beta&g=gamma#task-123';
 
 		$this->assertEquals($expect1, $result1);
+
+			// Check absolute URL
+		$result2	= TodoyuString::buildUrl($params, $hash, true);
+		$expect2	= SERVER_URL . '/index.php?a=alpha&b=beta&g=gamma#task-123';
+
 		$this->assertEquals($expect2, $result2);
 	}
 
+
+
+	/**
+	 * Test getImgTag
+	 */
 	public function testGetImgTag() {
 		$src	= 'assets/test.png';
 		$width	= 300;
@@ -401,6 +421,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test getATag
+	 */
 	public function testGetATag() {
 		$url	= 'unit/test.html';
 		$label	= 'Link Text';
@@ -411,6 +435,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test getMailtoTag
+	 */
 	public function testGetMailtoTag() {
 		$email	= 'team@todoyu.com';
 		$label	= 'Send message to todoyu team';
@@ -425,6 +453,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test buildHtmlTag
+	 */
 	public function testBuildHtmlTag() {
 		$tag	= 'a';
 		$params	= array(
@@ -439,6 +471,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test cleanRteText
+	 */
 	public function testCleanRteText() {
 		$text1	= '<p>&nbsp;</p><p>Second paragraph</p>';
 		$expect1= '<p>Second paragraph</p>';
@@ -453,6 +489,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test extractHttpHeaders
+	 */
 	public function testExtractHttpHeaders() {
 		$responseContent = "200\r\n"
 						. "Date: Fri, 18 Mar 2011 16:07:16 GMT\r\n"
@@ -468,6 +508,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test extractHeadersFromString
+	 */
 	public function testExtractHeadersFromString() {
 		$headerContent = "200\r\n"
 						. "Date: Fri, 18 Mar 2011 16:07:16 GMT\r\n"
@@ -481,6 +525,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test getversioninfo
+	 */
 	public function testgetversioninfo() {
 		$version	= '2.3.43-alpha';
 		$result		= TodoyuString::getVersionInfo($version);
@@ -493,6 +541,9 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 
 
+	/**
+	 * Test replaceUrlWithLink
+	 */
 	public function testReplaceUrlWithLink() {
 		$text	= 'This is plaintext with www.todoyu.com links in it. http://www.snowflake.ch You can also mail: team@todoyu.com';
 		$expect	= 'This is plaintext with <a href="http://www.todoyu.com" target="_blank">www.todoyu.com</a> links in it. <a href="http://www.snowflake.ch" target="_blank">http://www.snowflake.ch</a> You can also mail: <a href="mailto:team@todoyu.com">team@todoyu.com</a>';
@@ -503,6 +554,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test getRangeString
+	 */
 	public function testGetRangeString() {
 		Todoyu::setLocale('en_GB');
 
@@ -532,6 +587,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test Extracthttpstatuscode
+	 */
 	public function testExtracthttpstatuscode() {
 		$test200	= 'HTTP/1.1 200 OK';
 		$test404	= 'HTTP/1.1 404 Not Found';
@@ -543,6 +602,11 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(404, $result404);
 	}
 
+
+
+	/**
+	 * Test enableJsFunctionInJSON
+	 */
 	public function testenableJsFunctionInJSON() {
 		$array	= array(
 			'func' => 'function(arg){return arg;}'
@@ -555,6 +619,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test wrapwithtag
+	 */
 	public function testwrapwithtag() {
 		$result	= TodoyuString::wrapWithTag('strong', 'Bold');
 		$expect	= '<strong>Bold</strong>';
@@ -563,20 +631,36 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test wraptodoyulink
+	 */
 	public function testwraptodoyulink() {
-		$result1	= TodoyuString::wrapTodoyuLink('Link', 'project', array('controller'=>'test'));
-		$expect1	= '<a href="/todoyu_trunk/index.php?controller=test&ext=project">Link</a>';
+			// Check wrapped link w/o hash parameter and target attribute
+		$params1	= array(
+			'controller'=> 'test',
+		);
+		$result1	= TodoyuString::wrapTodoyuLink('Link', 'project', $params1);
+		$expect1	= '<a href="/index.php?controller=test&ext=project">Link</a>';
 
 		$this->assertEquals($expect1, $result1);
 
-		$result2	= TodoyuString::wrapTodoyuLink('Link', 'project', array('controller'=>'test','action'=>'foo'), 'myHash', '_blank');
-		$expect2	= '<a href="/todoyu_trunk/index.php?controller=test&action=foo&ext=project#myHash" target="_blank">Link</a>';
+			// Check wrapped link with hash parameter and target attribute
+		$params2	= array(
+			'controller'	=> 'test',
+			'action'		=> 'foo'
+		);
+		$result2	= TodoyuString::wrapTodoyuLink('Link', 'project', $params2, 'myHash', '_blank');
+		$expect2	= '<a href="/index.php?controller=test&action=foo&ext=project#myHash" target="_blank">Link</a>';
 
 		$this->assertEquals($expect2, $result2);
 	}
 
 
 
+	/**
+	 * Test substitutelinkableelements
+	 */
 	public function testsubstitutelinkableelements() {
 		$testHttp	= 'visit http://www.todoyu.com for more informations';
 		$expectHttp	= 'visit <a href="http://www.todoyu.com" target="_blank">http://www.todoyu.com</a> for more informations';
@@ -598,6 +682,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test htmlentities
+	 */
 	public function testhtmlentities() {
 		$test	= '<strong>test äöü</strong>';
 		$expect	= '&lt;strong&gt;test &auml;&ouml;&uuml;&lt;/strong&gt;';
@@ -607,6 +695,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test stricthtml2text
+	 */
 	public function teststricthtml2text() {
 		$html	= '<p>A paragraph</p><p>New<br />paragraph<br />with <strong>linebreaks</strong></p>';
 		$expect	= "A paragraph\n\nNew\nparagraph\nwith linebreaks";
@@ -616,6 +708,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+
+	/**
+	 * Test generategoodpassword
+	 */
 	public function testgenerategoodpassword() {
 		Todoyu::$CONFIG['SETTINGS']['passwordStrength'] = array(
 			'minLength'			=> 8,

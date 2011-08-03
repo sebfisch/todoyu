@@ -42,11 +42,11 @@ class TodoyuString {
 	 * Convert a string to UTF-8 if necessary
 	 *
 	 * @param	String		$stringToConvert
-	 * @param	String		$from
-	 * @return	String
+	 * @param	String		$inCharSet				Charset encoding to convert from
+	 * @return	String								The UTF-8 encoded string
 	 */
-	public static function convertToUTF8($stringToConvert, $from = 'UTF-16') {
-		return iconv($from, 'UTF-8', $stringToConvert);
+	public static function convertToUTF8($stringToConvert, $inCharSet = 'UTF-16') {
+		return iconv($inCharSet, 'UTF-8', $stringToConvert);
 	}
 
 
