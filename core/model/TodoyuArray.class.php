@@ -551,24 +551,6 @@ class TodoyuArray {
 
 
 	/**
-	 * Convert each element of an array to utf-8
-	 *
-	 * @param	Array		$arrayToConvert
-	 * @return	Array
-	 */
-	public static function convertToUTF8Array(array $arrayToConvert) {
-		$convertedArray = array();
-
-		foreach( $arrayToConvert as $key => $value ) {
-			$convertedArray[$key] = TodoyuString::convertToUTF8($value);
-		}
-
-		return $convertedArray;
-	}
-
-
-
-	/**
 	 * Merge all sub arrays of the array to a single array
 	 *
 	 * @param	Array		$array

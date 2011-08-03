@@ -275,7 +275,7 @@ class Todoyu {
 
 			// Log if operation fails
 		if( $status === false ) {
-			TodoyuLogger::logError('Can\'t set locale "' . $locale . '"');
+			TodoyuLogger::logError('Can\'t set system locale for "' . $locale . '"');
 		}
 	}
 

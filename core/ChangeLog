@@ -2,6 +2,9 @@ todoyu core changelog
 
 core 2.1.2 - ???
 	* Change: TodoyuTime::parseDateString has now a fallback to strtotime() if date was not recognized before
+	* Remove: Removed unused function TodoyuArray::convertToUTF8Array
+	* Change: Made TodoyuLabelManager::$cache private
+	* Add: Added doubleEncode parameter for TodoyuString::htmlentities
 	
 
 core 2.1.1 - 2011-07-25

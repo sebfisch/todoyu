@@ -184,16 +184,22 @@ class TodoyuString {
 	 * Converts an HTML snippet into plain text.
 	 * 	- decodes html-entities & special chars
 	 *
-	 * @param	String		$string
-	 * @param	Boolean		$convertClosingPTagsToDoubleNewLine
+	 * @param	String		$html
 	 * @return	String
 	 */
-	public static function strictHtml2text($string, $convertClosingPTagsToDoubleNewLine = true) {
-		if( $convertClosingPTagsToDoubleNewLine === true ) {
-			$string = str_replace('</p>', chr(10) . chr(10), $string);
-		}
+	public static function strictHtml2text($html) {
+			// Add empty line after paragraph
+		$plain 	= str_replace('</p>', "\n\n", $html);
+			// <br> to newlines
+		$plain	= self::br2nl($plain);
+			// Decode special chars
+		$plain	= htmlspecialchars_decode($plain);
+			// Decode entities
+		$plain	= html_entity_decode($plain, ENT_COMPAT, 'UTF-8');
+			// Rest of html to text
+		$plain	= self::html2text($plain);
 
-		return self::html2text(html_entity_decode(htmlspecialchars_decode(self::br2nl($string)), ENT_COMPAT, 'UTF-8'));
+		return trim($plain);
 	}
 
 
@@ -939,10 +945,11 @@ class TodoyuString {
 	 * htmlentities with predefined config for todoyu
 	 *
 	 * @param	String		$string
+	 * @param	Boolean		$doubleEncode
 	 * @return	String
 	 */
-	public static function htmlentities($string) {
-		return htmlentities($string, ENT_QUOTES, 'UTF-8', false);
+	public static function htmlentities($string, $doubleEncode = false) {
+		return htmlentities($string, ENT_QUOTES, 'UTF-8', $doubleEncode);
 	}
 
 }

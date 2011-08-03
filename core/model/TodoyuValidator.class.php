@@ -172,7 +172,7 @@ class TodoyuValidator {
 	/**
 	 * Validate string being of at least given minimum length
 	 *
-	 * @param	Integer		$value
+	 * @param	String		$value
 	 * @param	Integer		$minLength
 	 * @return	Boolean
 	 */
@@ -205,6 +205,7 @@ class TodoyuValidator {
 	 * @param	String		$value
 	 * @param	Array		$validatorConfig
 	 * @return	Boolean
+	 * @todo	Chars should be a direct parameter. Add wrapper in TodoyuFormValidator
 	 */
 	public static function illegalChars($value, array $validatorConfig = array()) {
 		$chars	= $validatorConfig['char'];

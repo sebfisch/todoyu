@@ -34,7 +34,7 @@ class TodoyuLabelManager {
 	/**
 	 * @var	Array		Locallang labels cache
 	 */
-	public static $cache = array();
+	private static $cache = array();
 
 	/**
 	 * @var	Array		Custom path to locale files for extKeys
@@ -300,9 +300,13 @@ class TodoyuLabelManager {
 		$labels		= array();
 		$pathFile	= self::getFilePath($extKey, $fileKey, $locale);
 
+		TodoyuDebug::printInFirebug($pathFile, 'pathFile');
+
 		if( is_file($pathFile) ) {
 			$labels	= self::readXmlFile($pathFile);
 		}
+
+		TodoyuDebug::printInFirebug($labels, 'labels');
 
 		return $labels;
 	}
