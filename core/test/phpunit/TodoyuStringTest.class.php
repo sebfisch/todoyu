@@ -136,7 +136,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expect, $cropped);
 
 		$text	= 'スノーフレイクは、プレミアム・オープンソース・ソフトウェア（※）の実装（※）を手がける情報通信  ソリュー';
-		$expect	= 'スノーフレイクは、プレミアム・オープンソ...';
+		$expect	= 'スノーフレイクは、プレミアム・オープンソ..';
 		$cropped= TodoyuString::crop($text, 20);
 
 		$this->assertEquals($expect, $cropped);
@@ -517,7 +517,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 			// 2 days
 		$dateStart2	= mktime(14, 0, 0, 1, 1, 2011);
 		$dateEnd2	= mktime(16, 0, 0, 1, 2, 2011);
-		$expect2	= '01/01/11 14:00 - 01/02/11 16:00 (2 Days)';
+		$expect2	= '01/01/11 14:00 - 02/01/11 16:00 (2 Days)';
 		$result2	= TodoyuString::getRangeString($dateStart2, $dateEnd2);
 
 		$this->assertEquals($expect2, $result2);
@@ -577,7 +577,62 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 
 
+	public function testsubstitutelinkableelements() {
+		$testHttp	= 'visit http://www.todoyu.com for more informations';
+		$expectHttp	= 'visit <a href="http://www.todoyu.com" target="_blank">http://www.todoyu.com</a> for more informations';
+		$resultHttp	= TodoyuString::substituteLinkableElements($testHttp);
 
+		$this->assertEquals($expectHttp, $resultHttp);
+
+		$testPlain		= 'visit www.todoyu.com for more informations';
+		$expectPlain	= 'visit <a href="http://www.todoyu.com" target="_blank">www.todoyu.com</a> for more informations';
+		$resultPlain	= TodoyuString::substituteLinkableElements($testPlain);
+
+		$this->assertEquals($expectPlain, $resultPlain);
+
+		$testEmail		= 'contact us at team@todoyu.com for more informations';
+		$expectEmail	= 'contact us at <a href="mailto:team@todoyu.com">team@todoyu.com</a> for more informations';
+		$resultEmail	= TodoyuString::substituteLinkableElements($testEmail);
+
+		$this->assertEquals($expectEmail, $resultEmail);
+	}
+
+
+	public function testhtmlentities() {
+		$test	= '<strong>test äöü</strong>';
+		$expect	= '&lt;strong&gt;test &auml;&ouml;&uuml;&lt;/strong&gt;';
+		$result	= TodoyuString::htmlentities($test);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function teststricthtml2text() {
+		$html	= '<p>A paragraph</p><p>New<br />paragraph<br />with <strong>linebreaks</strong></p>';
+		$expect	= "A paragraph\n\nNew\nparagraph\nwith linebreaks";
+		$result	= TodoyuString::strictHtml2text($html);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testgenerategoodpassword() {
+		Todoyu::$CONFIG['SETTINGS']['passwordStrength'] = array(
+			'minLength'			=> 8,
+			'hasNumbers'		=> true,
+			'hasLowerCase'		=> true,
+			'hasUpperCase'		=> true,
+			'hasSpecialChars'	=> true
+		);
+
+		$password	= TodoyuString::generateGoodPassword();
+
+		$this->assertEquals(8, strlen($password));
+		$this->assertRegExp('/\d/', $password);
+		$this->assertRegExp('/[a-z]/', $password);
+		$this->assertRegExp('/[A-Z]/', $password);
+		$this->assertRegExp('/[#&@$_%?+-]/', $password);
+	}
 
 }
 

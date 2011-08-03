@@ -28,28 +28,8 @@ class TodoyuHtmlFilterTest extends PHPUnit_Framework_TestCase {
 
 
 	/**
-	 * Sets up the fixture, for example, opens a network connection.
-	 * This method is called before a test is executed.
-	 */
-	protected function setUp() {
-
-	}
-
-
-
-	/**
-	 * Tears down the fixture, for example, closes a network connection.
-	 * This method is called after a test is executed.
-	 */
-	protected function tearDown() {
-
-	}
-
-
-
-	/**
 	 * Test TodoyuHtmlFilter::clean
-	 * @todo Implement testClean().
+	 *
 	 */
 	public function testClean() {
 		$htmlNormal		= '<p>test</p>';
@@ -60,14 +40,14 @@ class TodoyuHtmlFilterTest extends PHPUnit_Framework_TestCase {
 
 
 		$htmlScript		= '<script>alert("test");</script>';
-		$expectScript	= '&lt;script&gt;alert(&quot;test&quot;);&lt;script&gt;';
+		$expectScript	= '&lt;script&gt;alert("test");&lt;/script&gt;';
 		$cleanScript	= TodoyuHtmlFilter::clean($htmlScript);
 
 		$this->assertEquals($expectScript, $cleanScript);
 
 
 		$htmlIframe		= '<iframe src="http://evil.server.com"></iframe>';
-		$expectIframe	= '&lt;iframe src="http://evil.server.com"&gt;&lt;iframe&gt;';
+		$expectIframe	= '&lt;iframe src="http://evil.server.com"&gt;&lt;/iframe&gt;';
 		$cleanIframe	= TodoyuHtmlFilter::clean($htmlIframe);
 
 		$this->assertEquals($expectIframe, $cleanIframe);

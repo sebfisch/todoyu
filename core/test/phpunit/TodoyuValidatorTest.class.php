@@ -55,6 +55,65 @@ class TodoyuValidatorTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+	public function testisnotempty() {
+		$this->assertTrue(TodoyuValidator::isNotEmpty('a'));
+		$this->assertFalse(TodoyuValidator::isNotEmpty(' '));
+		$this->assertFalse(TodoyuValidator::isNotEmpty(null));
+	}
+
+	public function testisinrange() {
+		$this->assertTrue(TodoyuValidator::isInRange(2, 1, 3));
+		$this->assertFalse(TodoyuValidator::isInRange(2, 1, 2, false));
+		$this->assertTrue(TodoyuValidator::isInRange(2, 1, 2));
+		$this->assertFalse(TodoyuValidator::isInRange(7, 1, 2));
+		$this->assertTrue(TodoyuValidator::isInRange('1', 1, 2));
+	}
+
+	public function testismin() {
+		$this->assertTrue(TodoyuValidator::isMin(1, 1));
+		$this->assertTrue(TodoyuValidator::isMin(2, 1));
+		$this->assertFalse(TodoyuValidator::isMin(2, 2, false));
+		$this->assertFalse(TodoyuValidator::isMin(-2, 2));
+		$this->assertTrue(TodoyuValidator::isMin(-2, -3));
+	}
+
+
+	public function testismax() {
+		$this->assertTrue(TodoyuValidator::isMax(1, 1));
+		$this->assertTrue(TodoyuValidator::isMax(2, 3));
+		$this->assertFalse(TodoyuValidator::isMax(2, 2, false));
+		$this->assertFalse(TodoyuValidator::isMax(2, -2));
+		$this->assertTrue(TodoyuValidator::isMax(-3, -2));
+	}
+
+
+	public function testhasminlength() {
+		$this->assertTrue(TodoyuValidator::hasMinLength('test', 2));
+		$this->assertTrue(TodoyuValidator::hasMinLength('test', 4));
+		$this->assertFalse(TodoyuValidator::hasMinLength('tes ', 4));
+	}
+
+	public function testhasmaxlength() {
+		$this->assertTrue(TodoyuValidator::hasMaxLength('test', 6));
+		$this->assertTrue(TodoyuValidator::hasMaxLength('test', 4));
+		$this->assertTrue(TodoyuValidator::hasMaxLength('tes ', 3));
+		$this->assertFalse(TodoyuValidator::hasMaxLength('tes ', 2));
+	}
+
+
+	public function testisnotzerotime() {
+		$this->assertTrue(TodoyuValidator::isNotZerotime('00:10'));
+		$this->assertTrue(TodoyuValidator::isNotZerotime(':10'));
+		$this->assertFalse(TodoyuValidator::isNotZerotime('00:00'));
+		$this->assertFalse(TodoyuValidator::isNotZerotime(''));
+		$this->assertTrue(TodoyuValidator::isNotZerotime('1:'));
+	}
+
+
+	public function testillegalchars() {
+		// Method is not correct yet, no testing until fixed
+	}
+
 
 }
 

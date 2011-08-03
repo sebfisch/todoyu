@@ -192,7 +192,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$time	= gmmktime(14, 36, 5, 3, 9, 1984);
 
 		$formattedEN= TodoyuTime::format($time, 'datetime');
-		$expectedEN	= '03/09/84 14:36';
+		$expectedEN	= '09/03/84 14:36';
 
 		$this->assertEquals($expectedEN, $formattedEN);
 
@@ -247,15 +247,18 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testParseDateString() {
-		$time	= gmmktime(13, 46, 22, 4, 19, 2016);
+		$time	= gmmktime(13, 46, 0, 4, 19, 2016);
 		$date1	= date('r', $time);
 		$date2	= date('Y-m-d H:i:s', $time);
+		$date3	= TodoyuTime::format($time, 'datetime');
 
 		$time1	= TodoyuTime::parseDateString($date1);
 		$time2	= TodoyuTime::parseDateString($date2);
+		$time3	= TodoyuTime::parseDateString($date3);
 
 		$this->assertEquals($time, $time1);
 		$this->assertEquals($time, $time2);
+		$this->assertEquals($time, $time3);
 	}
 
 
@@ -265,14 +268,15 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testParseDate() {
+		$oldLocale		= TodoyuLabelManager::getLocale();
 		$dateCompare	= strtotime('2010-03-22');
-		$dateString1	= '2010-03-22';
+
+		TodoyuLabelManager::setLocale('en_US');
+		$dateString1	= '3/22/2010';
 		$dateTime1		= TodoyuTime::parseDate($dateString1);
 
-		$oldLocale		= TodoyuLabelManager::getLocale();
-
 		TodoyuLabelManager::setLocale('en_GB');
-		$dateString2	= '3/22/2010';
+		$dateString2	= '22/3/2010';
 		$dateTime2		= TodoyuTime::parseDate($dateString2);
 
 		TodoyuLabelManager::setLocale('de_DE');
@@ -616,6 +620,40 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$duration172800	= TodoyuTime::formatDuration(172800);
 		$expect172800	= '2 Days';
 		$this->assertEquals($expect172800, $duration172800);
+	}
+
+
+	public function testformattimespan() {
+		Todoyu::setLocale('en_GB');
+
+		$startHours		= mktime(10, 0, 0, 1, 1, 2011);
+		$endHours		= mktime(12, 0, 0, 1, 1, 2011);
+		$expectHours	= 'Sa, Jan 01 11, 10:00 - 12:00';
+		$resultHours	= TodoyuTime::formatTimespan($startHours, $endHours);
+		$expectHours2	= 'Sa, Jan 01 11, 10:00 - 12:00 (2 Hours)';
+		$resultHours2	= TodoyuTime::formatTimespan($startHours, $endHours, true);
+
+		$this->assertEquals($expectHours, $resultHours);
+		$this->assertEquals($expectHours2, $resultHours2);
+
+		$startDays		= mktime(10, 0, 0, 1, 1, 2011);
+		$endDays		= mktime(10, 0, 0, 1, 2, 2011);
+		$expectDays		= 'Sa, Jan 01 11 - So, Jan 02 11';
+		$resultDays		= TodoyuTime::formatTimespan($startDays, $endDays);
+		$expectDays2	= 'Sa, Jan 01 11 - So, Jan 02 11 (1 Day)';
+		$resultDays2	= TodoyuTime::formatTimespan($startDays, $endDays, true);
+
+		$this->assertEquals($expectDays, $resultDays);
+		$this->assertEquals($expectDays2, $resultDays2);
+	}
+
+
+	public function testgettimeofday() {
+		$time	= mktime(0, 0, 1, 1, 1, 2011);
+		$expect	= 1;
+		$result	= TodoyuTime::getTimeOfDay($time);
+
+		$this->assertEquals($expect, $result);
 	}
 
 
