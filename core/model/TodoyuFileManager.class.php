@@ -811,7 +811,7 @@ class TodoyuFileManager {
 		if( $options['fullResponse'] ) {
 			// Do nothing
 		} else {
-			if($options['onlyHeaders']) {
+			if( $options['onlyHeaders'] ) {
 				$content		= $httpHeaders;
 			} else {
 				$requestParts	= explode("\r\n\r\n", $content, 2);

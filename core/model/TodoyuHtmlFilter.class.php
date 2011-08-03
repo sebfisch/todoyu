@@ -27,7 +27,7 @@
 class TodoyuHtmlFilter {
 
 	/**
-	 * Get bad HTML tags config array
+	 * Get config array of "bad" (causing danger when output w/o being escaped) HTML tags
 	 *
 	 * @return	Array
 	 */
@@ -38,7 +38,7 @@ class TodoyuHtmlFilter {
 
 
 	/**
-	 * Clean HTML code with bad tags
+	 * Clean HTML code: escape all found "bad" tags (and comments)
 	 *
 	 * @param	String		$html
 	 * @return	String
@@ -47,9 +47,9 @@ class TodoyuHtmlFilter {
 		if( trim($html) === '' ) {
 			return '';
 		}
-
+			// Get "bad" HTML tags (protect the user): tags being disallowed to be output non-escaped
 		$badTags	= self::getBadTags();
-
+			// Find/replace each bad tag by it's escaped version
 		foreach($badTags as $badTag) {
 			$patternStandard= '|<(' . $badTag . ')([^>]*)>(.*?)</' . $badTag . '>|sim';
 			$html			= preg_replace_callback($patternStandard, array('TodoyuHtmlFilter','escapeBadTags'), $html);
@@ -58,6 +58,21 @@ class TodoyuHtmlFilter {
 			$html			= preg_replace_callback($patternSimple, array('TodoyuHtmlFilter','escapeBadTag'), $html);
 		}
 
+			// Escape comment variations
+		$html	= self::escapeComments($html);
+
+		return $html;
+	}
+
+
+
+	/**
+	 * Escape comments in HTML
+	 *
+	 * @param	String	$html
+	 * @return	String
+	 */
+	public static function escapeComments($html) {
 		$replace	= array(
 			'<![CDATA['	=> '&lt;![CDATA[',
 			']]>'		=> ']]&gt;',
@@ -73,18 +88,6 @@ class TodoyuHtmlFilter {
 
 
 	/**
-	 * Callback to escape bad HTML tags
-	 *
-	 * @param	Array		$match
-	 * @return	String
-	 */
-	private static function escapeBadTags(array $match) {
-		return '&lt;' . $match[1] . $match[2] . '&gt;' . $match[3] . '&lt;/' . $match[1] . '&gt;';
-	}
-
-
-
-	/**
 	 * Callback to escape bad simple HTML tags
 	 *
 	 * @param	Array		$match
@@ -92,6 +95,18 @@ class TodoyuHtmlFilter {
 	 */
 	private static function escapeBadTag(array $match) {
 		return htmlentities($match[0], ENT_QUOTES, 'UTF-8', false);
+	}
+
+
+
+	/**
+	 * Callback to escape bad HTML tags
+	 *
+	 * @param	Array		$match
+	 * @return	String
+	 */
+	private static function escapeBadTags(array $match) {
+		return '&lt;' . $match[1] . $match[2] . '&gt;' . $match[3] . '&lt;/' . $match[1] . '&gt;';
 	}
 
 }

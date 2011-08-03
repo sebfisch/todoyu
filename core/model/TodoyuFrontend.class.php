@@ -229,8 +229,8 @@ class TodoyuFrontend {
 		$active		= self::getActiveSubmenuTab($parentKey);
 
 		if( is_array($subMenu) ) {
-			foreach($subMenu as $key => $vals) {
-				if($vals['key'] == $active) {
+			foreach($subMenu as $key => $values) {
+				if( $values['key'] == $active ) {
 					$subMenu[$key]['active'] = true;
 				}
 			}

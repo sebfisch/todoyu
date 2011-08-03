@@ -33,6 +33,8 @@ class TodoyuInstallerManager {
 	 */
 	private static $lastVersionFile = 'install/config/LAST_VERSION';
 
+
+
 	/**
 	 * Process first step of installation: locale selection for installer and as preset for system locale
 	 *
