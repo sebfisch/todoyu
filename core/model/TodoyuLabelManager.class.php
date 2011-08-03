@@ -300,13 +300,9 @@ class TodoyuLabelManager {
 		$labels		= array();
 		$pathFile	= self::getFilePath($extKey, $fileKey, $locale);
 
-		TodoyuDebug::printInFirebug($pathFile, 'pathFile');
-
 		if( is_file($pathFile) ) {
 			$labels	= self::readXmlFile($pathFile);
 		}
-
-		TodoyuDebug::printInFirebug($labels, 'labels');
 
 		return $labels;
 	}
