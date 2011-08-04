@@ -6,6 +6,7 @@ core 2.1.2 - ???
 	* Change: Made TodoyuLabelManager::$cache private
 	* Change: Made TodoyuLabelManger::getFallbackLocales private
 	* Add: Added doubleEncode parameter for TodoyuString::htmlentities
+	* Change: Comment out unused database relation input field (relations have their own sub fields)
 	
 
 core 2.1.1 - 2011-07-25
