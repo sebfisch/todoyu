@@ -36,6 +36,11 @@ Todoyu.Popup = Class.create(Window, {
 	isClosing:		false,
 
 	/**
+	 * Close was forced by code
+	 */
+	forcedClose:	false,
+
+	/**
 	 * ESC key event handler for popup closing
 	 */
 	escBodyHandler:	null,
@@ -211,17 +216,21 @@ Todoyu.Popup = Class.create(Window, {
 	 * Prevent close callback loops
 	 *
 	 * @method	close
-	 * @param	{Function}	$super
+	 * @param	{Function}	$super		Parent close function
+	 * @param	{Boolean}	forced		Close was forced by code, not by an event of the window
 	 */
-	close: function($super) {
-		this.isClosing = true;
+	close: function($super, forced) {
+		if( forced ) {
+			this.forcedClose = true;
+		}
 
-		Todoyu.Ui.closeRTE(this.content);
+		if( ! this.isClosing ) {
+			this.isClosing = true;
 
-			// Fire custom 'close' event
-		Todoyu.Helper.fireEvent($(this.options.id), 'close');
+			Todoyu.Ui.closeRTE(this.content);
 
-		$super();
+			$super();
+		}
 	},
 
 
@@ -230,19 +239,18 @@ Todoyu.Popup = Class.create(Window, {
 	 * Close callback
 	 *
 	 * @method	closeCallback
-	 * @param	unknown		popup
-	 * @return	Boolean
+	 * @param	{Todoyu.Popup}		popup
+	 * @return	Boolean				True destroys the window
 	 */
 	closeCallback: function(popup) {
-		if( this.isClosing ) {
-			return true;
+		if( ! this.forcedClose ) {
+			var button	= this.content.down('button.cancelButton');
+			if( button ) {
+				this.isClosing = true;
+				Todoyu.Helper.fireEvent(button, 'click');
+			}
 		}
 
-		var button	= this.content.down('button.cancelButton');
-
-		if( button ) {
-			this.isClosing = true;
-			Todoyu.Helper.fireEvent(button, 'click');
-		}
+		return true;
 	}
 });

@@ -77,7 +77,7 @@ Todoyu.Popups = {
 	 * @param	{String}	idPopup
 	 */
 	close: function(idPopup) {
-		this.getPopup(idPopup).close();
+		this.getPopup(idPopup).close(true);
 	},
 
 
@@ -103,7 +103,7 @@ Todoyu.Popups = {
 		var last	= this.getLast();
 
 		if( last ) {
-			last.close();
+			last.close(true);
 		}
 	},
 
