@@ -419,21 +419,21 @@ Todoyu.Helper = {
 	 *
 	 * @method	fireEvent
 	 * @param	{Element}		element
-	 * @param	{String}		event e.g. 'click'
+	 * @param	{String}		eventType e.g. 'click'
 	 * @return	{String|Object}
 	 */
-	fireEvent: function(element, event){
+	fireEvent: function(element, eventType){
 		var evt;
 
-		if( document.createEventObject ){
-				// Dispatch for IE
+		if( ! document.createEvent ){
+				// Dispatch for IE 8 (9 works as normal browser)
 			evt = document.createEventObject();
 
-			return element.fireEvent('on' + event, evt);
+			return element.fireEvent('on' + eventType, evt);
 		} else {
 				// Dispatch for firefox + others
 			evt = document.createEvent('HTMLEvents');
-			evt.initEvent(event, true, true ); // event type, bubbling, cancelable
+			evt.initEvent(eventType, true, true); // event type, bubbling, cancelable
 
 			return ! element.dispatchEvent(evt);
 		}
