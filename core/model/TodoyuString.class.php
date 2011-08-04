@@ -27,26 +27,42 @@
 class TodoyuString {
 
 	/**
-	 * Check if a string is utf-8 encoded
+	 * Detect encoding from a string
 	 *
-	 * @param	String		$stringToCheck
-	 * @return	Boolean
+	 * @param	String		$string
+	 * @return	String		Encoding type (one of the values from the list)
 	 */
-	public static function isUTF8($stringToCheck) {
-		return mb_detect_encoding($stringToCheck, 'UTF-16, UTF-8, ISO-8859-15, ISO-8859-1, ASCII') === 'UTF-8';
+	public static function getEncoding($string) {
+		return mb_detect_encoding($string, 'UTF-16,UTF-8,ISO-8859-15,ISO-8859-1,ASCII');
 	}
 
 
 
 	/**
-	 * Convert a string to UTF-8 if necessary
+	 * Check whether a string is utf-8 encoded
 	 *
-	 * @param	String		$stringToConvert
-	 * @param	String		$inCharSet				Charset encoding to convert from
-	 * @return	String								The UTF-8 encoded string
+	 * @param	String		$string
+	 * @return	Boolean
 	 */
-	public static function convertToUTF8($stringToConvert, $inCharSet = 'UTF-16') {
-		return iconv($inCharSet, 'UTF-8', $stringToConvert);
+	public static function isUTF8($string) {
+		return self::getEncoding($string) === 'UTF-8';
+	}
+
+
+
+	/**
+	 * Convert a string to UTF-8
+	 *
+	 * @param	String		$string
+	 * @param	String		$fromCharset	Charset to convert from. If not set, we try to auto detect
+	 * @return	String						The UTF-8 encoded string
+	 */
+	public static function convertToUTF8($string, $fromCharset = null) {
+		if( is_null($fromCharset) ) {
+			$fromCharset = self::getEncoding($string);
+		}
+
+		return iconv($fromCharset, 'UTF-8', $string);
 	}
 
 

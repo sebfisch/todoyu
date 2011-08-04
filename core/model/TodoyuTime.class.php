@@ -349,13 +349,12 @@ class TodoyuTime {
 			return '-';
 		}
 
+			// Format timestamp with pattern
 		$format		= self::getFormat($formatName);
 		$string		= strftime($format, $timestamp);
 
-			// If server locale file is not yet UTF8, convert the string
-		if( ! TodoyuString::isUTF8($string) ) {
-			$string = utf8_encode($string);
-		}
+			// Convert to utf-8 if not already
+		$string		= TodoyuString::getAsUtf8($string);
 
 		return $string;
 	}

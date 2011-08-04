@@ -2,13 +2,13 @@ todoyu core changelog
 
 core 2.1.2 - ???
 	* Bugfix: #185 Deleting an access role in sysmanager caused a fatal error (invalid function call)
+	* Bugfix: #189 Problems with character set conversion when server character sets are not utf-8
 	* Change: TodoyuTime::parseDateString has now a fallback to strtotime() if date was not recognized before
 	* Change: Made TodoyuLabelManager::$cache private
 	* Change: Made TodoyuLabelManger::getFallbackLocales private
 	* Change: Comment out unused database relation input field (relations have their own sub fields)
 	* Add: Added doubleEncode parameter for TodoyuString::htmlentities
 	* Remove: Removed unused function TodoyuArray::convertToUTF8Array
-
 
 	
 
