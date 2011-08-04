@@ -179,8 +179,7 @@ class TodoyuRoleManager {
 		$idRole = intval($idRole);
 
 		TodoyuRecordManager::removeRecordCache('TodoyuRole', $idRole);
-
-		TodoyuCache::removeRecordQuery(self::TABLE, $idRole);
+		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idRole);
 	}
 
 
