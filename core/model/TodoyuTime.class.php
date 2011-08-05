@@ -510,7 +510,13 @@ class TodoyuTime {
 		$dateString	= trim($dateString);
 		$time		= 0;
 
-		$format		= self::getFormat('date');
+			// Standard date from mysql date type
+		if( self::isStandardDate($dateString) ) {
+			$format	= '%Y-%m-%d';
+		} else {
+			$format	= self::getFormat('date');
+		}
+
 		$dateParts	= strptime($dateString, $format);
 
 		if( $dateParts !== false ) {
@@ -592,6 +598,18 @@ class TodoyuTime {
 		$parts	= explode(':', $timeString);
 
 		return intval($parts[0])* self::SECONDS_HOUR + intval($parts[1]) * self::SECONDS_MIN;
+	}
+
+
+
+	/**
+	 * Check whether date string has standard date format 2011-08-05 (year-month-day)
+	 *
+	 * @param	String		$dateString
+	 * @return	Boolean
+	 */
+	public static function isStandardDate($dateString) {
+		return preg_match('/^\d{4}-\d{2}-\d{2}$/', trim($dateString)) === 1;
 	}
 
 

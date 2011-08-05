@@ -4,6 +4,7 @@ core 2.1.2 - ???
 	* Bugfix: #185 Deleting an access role in sysmanager caused a fatal error (invalid function call)
 	* Bugfix: #189 Problems with character set conversion when server character sets are not utf-8
 	* Bugfix: Problems with close handling for popups in IE8. Redesigned callback structure
+	* Bugfix: #199 Parsing mysql date (standard date YYYY-MM-DD) failed. Birthdays were not received correct from form field
 	* Change: TodoyuTime::parseDateString has now a fallback to strtotime() if date was not recognized before
 	* Change: Made TodoyuLabelManager::$cache private
 	* Change: Made TodoyuLabelManger::getFallbackLocales private
