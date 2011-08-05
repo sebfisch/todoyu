@@ -831,6 +831,18 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expect, $result);
 	}
 
+
+
+	/**
+	 * Test isStandardDate
+	 *
+	 */
+	public function testisstandarddate() {
+		$this->assertTrue(TodoyuTime::isStandardDate('2011-08-05'));
+		$this->assertTrue(TodoyuTime::isStandardDate('1999-01-01'));
+		$this->assertFalse(TodoyuTime::isStandardDate('1999-1-01'));
+	}
+
 }
 
 ?>
