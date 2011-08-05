@@ -31,7 +31,7 @@ class TodoyuJSCalendar {
 	 *
 	 * @return	String
 	 */
-	public static function getLangFile() {
+	private static function getLanguageFile() {
 		$locale		= Todoyu::person()->getLocale();
 		$temp		= explode('_', $locale);
 		$lang		= strtolower($temp[0]);
@@ -52,7 +52,7 @@ class TodoyuJSCalendar {
 		}  elseif( is_file($fileLib) ) {
 			$file	= $fileLib;
 		} else {
-			$file	= false;
+			$file	= $fileEn;
 		}
 
 		return $file;
@@ -64,13 +64,9 @@ class TodoyuJSCalendar {
 	 * Add JSCalendar language JavaScript file to the page
 	 */
 	public static function addLangFile() {
-		TodoyuPageAssetManager::addJavascript('lib/js/jscalendar/lang/calendar-en.js', 25);
+		$languageFile	= self::getLanguageFile();
 
-		$file	= self::getLangFile();
-
-		if( $file !== false ) {
-			TodoyuPageAssetManager::addJavascript($file, 25);
-		}
+		TodoyuPageAssetManager::addJavascript($languageFile, 25);
 	}
 
 }
