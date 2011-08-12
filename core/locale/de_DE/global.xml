@@ -86,11 +86,6 @@
 	<label index="of">von</label>
 	<label index="public">Öffentlich</label>
 	<label index="notpublic">Nicht öffentlich</label>
-	<label index="log.debug">Debug Informationen</label>
-	<label index="log.notice">Hinweise</label>
-	<label index="log.error">Normale Fehler</label>
-	<label index="log.security">Sicherheitshinweise</label>
-	<label index="log.fatal">Schwere Fehler</label>
 	<label index="wizard">Assistent</label>
 	<label index="wizard.close">Schliessen</label>
 	<label index="wizard.close.confirm">Sind Sie sicher, dass Sie den Assistenten schliessen möchten?</label>

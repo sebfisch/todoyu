@@ -86,11 +86,6 @@
 	<label index="of">of</label>
 	<label index="public">Public</label>
 	<label index="notpublic">Not public</label>
-	<label index="log.debug">Debug Informations</label>
-	<label index="log.notice">Notes</label>
-	<label index="log.error">Normal fault</label>
-	<label index="log.security">Safety</label>
-	<label index="log.fatal">Major fault</label>
 	<label index="wizard">Wizard</label>
 	<label index="wizard.close">Close wizard</label>
 	<label index="wizard.close.confirm">Are you sure you want to close the wizard?</label>
