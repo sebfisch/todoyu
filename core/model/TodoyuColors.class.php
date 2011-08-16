@@ -30,10 +30,15 @@ class TodoyuColors {
 	/**
 	 * Dimensions of the color rectangles
 	 */
-	const HEIGHT= 20;
-	const WIDTH	= 16;
+	const HEIGHT	= 20;
+	const WIDTH		= 16;
 
-	private static $numColors = null;
+	/**
+	 * Amount of defined colors
+	 *
+	 * @var	Integer
+	 */
+	private static $amountColors = null;
 
 
 
@@ -62,41 +67,44 @@ class TodoyuColors {
 	/**
 	 * Render Color CSS. If not stored up-to-date yet: save and have CSS-sprite be generated as well
 	 *
-	 * @param	String	$fileCSS
-	 * @param	String	$fileIMG
+	 * @param	String		$fileCSS
+	 * @param	String		$fileImage
 	 */
-	private static function generateCSS($fileCSS, $fileIMG) {
+	private static function generateCSS($fileCSS, $fileImage) {
+		$fileImage	= basename($fileImage);
+
 			// Get configured colors
 		$colors	= TodoyuArray::assure(Todoyu::$CONFIG['COLORS']);
-			// Render CSS file content
-		$css	= '/* colors.css - Enumerated colors to be used for visual differenciation of elements */' . "\n";
 
+			// Render CSS file content
+		$css	= '/* colors.css - Enumerated colors to be used for visual differentiation of elements */' . "\n";
+			// Add style for background, color + inverse color, borders, background-image for each color
 		foreach($colors as $num => $rgb) {
 			$inverse	= self::invert($rgb);
 			$fade		= self::fade($rgb, 65);
+			$posYBgTile	= $num * self::HEIGHT;
 
-			$css	.= '.enumColBG' . $num . ' { background-color:' . $rgb . ' !important; }' . "\n";
-			$css	.= '.enumColBGFade' . $num . ' { background-color:' . $fade . ' !important; }' . "\n";
-			$css	.= '.enumColFont' . $num . ' { color:' . $rgb . ' !important; }' . "\n";
-			$css	.= '.enumColFontFade' . $num . ' { color:' . $fade . ' !important; }' . "\n";
-			$css	.= '.enumColBgFg' . $num . ' { background-color:' . $rgb . ' !important; color:' . $inverse . ' !important; }' . "\n";
-			$css	.= '.enumColFgBg' . $num . ' { background-color:' . $inverse . ' !important; color:' . $rgb . ' !important; }' . "\n";
-			$css	.= '.enumColFgBg' . $num . ' { background-color:' . $inverse . ' !important; color:' . $rgb . ' !important; }' . "\n";
-			$css	.= '.enumColBor' . $num . ' { border-color:' . $rgb . ' !important; }' . "\n";
-			$css	.= '.enumColBorFade' . $num . ' { border-color:' . $fade . ' !important; }' . "\n";
-			$css	.= '.enumColBorLef' . $num . ' { border-left-color:' . $rgb . ' !important; }' . "\n";
-			$css	.= '.enumColBorRig' . $num . ' { border-right-color:' . $rgb . ' !important; }' . "\n";
-			$css	.= '.enumColBorTop' . $num . ' { border-top-color:' . $rgb . ' !important; }' . "\n";
-			$css	.= '.enumColBorBot' . $num . ' { border-bottom-color:' . $rgb . ' !important; }' . "\n";
-			$css	.= 'option.enumColOptionLeftIcon' . $num . ' { background:url(\'../img/' . basename($fileIMG) . '\') no-repeat -8px -' . ($num * self::HEIGHT) . 'px !important; padding:0 0 0 12px; }' . "\n";
+			$css	.= ".enumColBG$num { background-color:$rgb !important; } \n";
+			$css	.= ".enumColBGFade$num { background-color:$fade !important; }\n";
+			$css	.= ".enumColFont$num { color:$rgb !important; }\n";
+			$css	.= ".enumColFontFade$num { color:$fade !important; }\n";
+			$css	.= ".enumColBgFg$num { background-color:$rgb !important; color:$inverse !important; }\n";
+			$css	.= ".enumColFgBg$num { background-color:$inverse !important; color:$rgb !important; }\n";
+			$css	.= ".enumColFgBg$num { background-color:$inverse !important; color:$rgb !important; }\n";
+			$css	.= ".enumColBor$num { border-color:$rgb !important; }\n";
+			$css	.= ".enumColBorFade$num { border-color:$fade !important; }\n";
+			$css	.= ".enumColBorLef$num { border-left-color:$rgb !important; }\n";
+			$css	.= ".enumColBorRig$num { border-right-color:$rgb !important; }\n";
+			$css	.= ".enumColBorTop$num { border-top-color:$rgb !important; }\n";
+			$css	.= ".enumColBorBot$num { border-bottom-color:$rgb !important; }\n";
+			$css	.= "option.enumColOptionLeftIcon$num { background:url('../img/$fileImage') no-repeat -8px -$posYBgTile" . "px !important; padding:0 0 0 12px; }\n";
 		}
 
 			// Save CSS file
 		TodoyuFileManager::saveFileContent($fileCSS, $css);
 
-		$pathWeb	= TodoyuFileManager::pathWeb($fileCSS);
-
 			// Register 'colors.css' to page
+		$pathWeb	= TodoyuFileManager::pathWeb($fileCSS);
 		TodoyuPage::addStylesheet($pathWeb, 'all', 200, false, false);
 	}
 
@@ -194,7 +202,7 @@ class TodoyuColors {
 
 
 	/**
-	 * Returns color array by given color id
+	 * Returns color data array of given color ID
 	 *
 	 * @param	Integer		$index
 	 * @return	Array
@@ -202,8 +210,8 @@ class TodoyuColors {
 	public static function getColorArray($index) {
 		$idColor	= self::getColorIndex($index);
 
-		$idColor	= self::getColorID( $idColor );
-		$rgb		= self::getColorRGB( $idColor );
+		$idColor	= self::getColorID($idColor);
+		$rgb		= self::getColorRGB($idColor);
 
 		$color = array(
 			'id'		=> $idColor,
@@ -220,7 +228,7 @@ class TodoyuColors {
 	/**
 	 * Returns the id of a color by its position in the config array
 	 *
-	 * @param	Integer	$position
+	 * @param	Integer		$position
 	 * @return	Integer
 	 */
 	private static function getColorRGB($position) {
@@ -260,12 +268,13 @@ class TodoyuColors {
 	 * @return	Integer
 	 */
 	public static function getColorIndex($inputIndex) {
-		if( is_null(self::$numColors) ) {
-			self::$numColors	= sizeof(TodoyuArray::assure(Todoyu::$CONFIG['COLORS']));
+		if( is_null(self::$amountColors) ) {
+			self::$amountColors	= sizeof(TodoyuArray::assure(Todoyu::$CONFIG['COLORS']));
 		}
 
-		return intval($inputIndex)%self::$numColors;
+		return intval($inputIndex) % self::$amountColors;
 	}
+
 }
 
 ?>
