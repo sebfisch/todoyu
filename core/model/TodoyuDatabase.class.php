@@ -1215,6 +1215,29 @@ class TodoyuDatabase {
 
 
 	/**
+	 * Returns the number of rows in the given table. You can specify an
+	 * optional where clause to return a subset of the table.
+	 *
+	 * @param	String	$tableName
+	 * @param	String	$where
+	 * @param	Integer
+	 */
+	public function getRowCount($tableName, $where = NULL) {
+		$query = 'SELECT COUNT(*) FROM ' . $this->quoteFieldname($tableName);
+
+		if( isset($where) ) {
+			$query .= ' WHERE ' . $where;
+		}
+
+		$result	= $this->query($query);
+		$rows	= TodoyuArray::flatten($this->resourceToArray($result));
+
+		return $rows[0];
+	}
+
+
+
+	/**
 	 * Truncate a table
 	 *
 	 * @param	String		$table
