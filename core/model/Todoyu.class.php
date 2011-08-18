@@ -480,7 +480,6 @@ class Todoyu {
 
 	/**
 	 * Restrict access to admin
-	 *
 	 */
 	public static function restrictAdmin() {
 		TodoyuRightsManager::restrictAdmin();
@@ -547,7 +546,6 @@ class Todoyu {
 
 	/**
 	 * Reset environment to a previous backup
-	 *
 	 */
 	public static function resetEnvironment() {
 		if( is_array(self::$environmentBackup) ) {
