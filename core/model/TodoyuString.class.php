@@ -187,7 +187,7 @@ class TodoyuString {
 		$text	= strip_tags($text);
 
 		if( $decodeChars === true ) {
-			$charSet= TodoyuString::isUTF8($text) ? 'UTF-8' : 'ISO-8859-1';
+			$charSet= self::isUTF8($text) ? 'UTF-8' : 'ISO-8859-1';
 			$text	= html_entity_decode($text, ENT_COMPAT, $charSet);
 		}
 
