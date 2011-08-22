@@ -28,6 +28,8 @@ error_reporting(E_ALL ^ E_NOTICE);
 mb_internal_encoding('UTF-8');
 	// Set session lifetime to 5 hours
 session_cache_expire(300);
+	// Set default dummy timezone
+date_default_timezone_set('Europe/Paris');
 
 	// Start session
 session_start();
