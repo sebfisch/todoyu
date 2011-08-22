@@ -65,6 +65,7 @@ require_once( PATH_CORE . '/model/TodoyuHookManager.class.php' );
 require_once( PATH_CORE . '/model/TodoyuHeader.class.php' );
 require_once( PATH_CORE . '/model/TodoyuPanelWidgetManager.class.php' );
 require_once( PATH_CORE . '/model/TodoyuErrorHandler.class.php' );
+require_once( PATH_CORE . '/model/TodoyuAutoloader.class.php' );
 
 	// Include basic person classes
 require_once(PATH_EXT . '/contact/model/TodoyuContactPerson.class.php');
@@ -76,7 +77,7 @@ require_once( PATH_CORE . '/model/TodoyuDebug.class.php' );
 require_once( PATH_LIB . '/php/FirePHPCore/FirePHP.class.php' );
 
 	// Register autoloader
-spl_autoload_register( array('Todoyu', 'autoloader') );
+spl_autoload_register( array('TodoyuAutoloader', 'load') );
 
 	// Register error handler
 set_error_handler(array('TodoyuErrorHandler', 'handleError'));

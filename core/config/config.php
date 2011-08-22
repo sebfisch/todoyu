@@ -24,11 +24,18 @@ error_reporting(E_ALL ^ E_NOTICE);
 Todoyu::$CONFIG['DEBUG'] = true;
 
 	// Define autoload config array
-Todoyu::$CONFIG['AUTOLOAD'] = array();
-
-	// Set core autoload paths
-Todoyu::addIncludePath('core/model');
-Todoyu::addIncludePath('core/controller');
+Todoyu::$CONFIG['AUTOLOAD'] = array(
+	'static' => array(
+		'core/controller',
+		'core/model',
+		'core/model/document',
+		'core/model/form'
+	),
+	'ext'	=> array(
+		'controller',
+		'model'
+	)
+);
 
 	// Template (dwoo) path config
 Todoyu::$CONFIG['TEMPLATE']		= array(

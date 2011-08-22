@@ -30,19 +30,10 @@ TodoyuLogger::addLogger('TodoyuLoggerFile', array(
 	// FirePhp Logger
 TodoyuLogger::addLogger('TodoyuLoggerFirePhp');
 
-	// Add form include path
-Todoyu::addIncludePath( PATH_CORE . '/model/form' );
-	// Add document include path
-Todoyu::addIncludePath( PATH_CORE . '/model/document');
-
 	// Init basic classes
 if( Todoyu::$CONFIG['INIT'] ) {
 	Todoyu::init();
 }
-
-	// Add all paths of installed extensions to autoload
-TodoyuExtensions::addAllExtensionAutoloadPaths();
-
 
 	// Custom config overrides
 require_once( PATH_LOCALCONF . '/override.php');

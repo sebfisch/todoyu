@@ -394,28 +394,19 @@ class TodoyuExtensions {
 	}
 
 
-
+	
 	/**
-	 * Add extension paths to the autoload config
-	 * Adds the default paths (model,controller) and custom paths from $extraPaths
+	 * Only for backwards compatibility
+	 * Will just reload the
 	 *
 	 * @param	String		$extKey
-	 * @param	Array		$extraPaths
+	 * @deprecated
+	 * @todoyu	Remove in later version
 	 */
-	public static function addExtAutoloadPaths($extKey, array $extraPaths = array()) {
-		$extDir	= TodoyuExtensions::getExtPath($extKey);
-
-		Todoyu::addIncludePath($extDir . '/model');
-		Todoyu::addIncludePath($extDir . '/controller');
-
-		foreach($extraPaths as $extraPath) {
-			$path	= TodoyuFileManager::pathAbsolute($extDir . '/' . $extraPath);
-
-			if( is_dir($path) ) {
-				Todoyu::addIncludePath($path);
-			}
-		}
+	public static function addExtAutoloadPaths($extKey) {
+		TodoyuAutoloader::reload();
 	}
+
 
 
 
@@ -551,20 +542,6 @@ class TodoyuExtensions {
 		self::loadAllExtinfo();
 
 		return Todoyu::$CONFIG['EXT'][$extKey]['info']['version'];
-	}
-
-
-
-	/**
-	 * Add all paths of the installed extension to the autoload path
-	 */
-	public static function addAllExtensionAutoloadPaths() {
-		$installedExtensions	= self::getInstalledExtKeys();
-
-			// First add all include paths
-		foreach($installedExtensions as $extKey) {
-			self::addExtAutoloadPaths($extKey);
-		}
 	}
 
 

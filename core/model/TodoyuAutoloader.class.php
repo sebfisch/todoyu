@@ -1,0 +1,182 @@
+<?php
+/****************************************************************************
+* todoyu is published under the BSD License:
+* http://www.opensource.org/licenses/bsd-license.php
+*
+* Copyright (c) 2011, snowflake productions GmbH, Switzerland
+* All rights reserved.
+*
+* This script is part of the todoyu project.
+* The todoyu project is free software; you can redistribute it and/or modify
+* it under the terms of the BSD License.
+*
+* This script is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the BSD License
+* for more details.
+*
+* This copyright notice MUST APPEAR in all copies of the script.
+*****************************************************************************/
+
+/**
+ * Handle auto loading of classes
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
+class TodoyuAutoloader {
+
+	/**
+	 * Path of cache file
+	 *
+	 * @var	String
+	 */
+	private static $cacheFile = 'cache/autoload.php';
+
+
+	/**
+	 * Load a class
+	 *
+	 * @param	String		$className
+	 */
+	public static function load($className) {
+		self::buildCache();
+
+		$classNameLower	= strtolower($className);
+
+		if( Todoyu::$CONFIG['AUTOLOAD']['CLASS'][$classNameLower] ) {
+			include(Todoyu::$CONFIG['AUTOLOAD']['CLASS'][$classNameLower]);
+		}
+	}
+
+
+	/**
+	 * Reload the class paths. Clear the cache
+	 *
+	 */
+	public static function reload() {
+		self::clearCache();
+		self::buildCache();
+	}
+
+
+
+	/**
+	 * Add a custom static path for autoloading
+	 *
+	 * @param	String		$path
+	 */
+	public static function addPath($path) {
+		Todoyu::$CONFIG['AUTOLOAD']['static'][] = $path;
+	}
+
+
+
+	/**
+	 * Clear the cache
+	 *
+	 */
+	private static function clearCache() {
+		if( TodoyuFileManager::isFile(self::$cacheFile) ) {
+			TodoyuFileManager::deleteFile(self::$cacheFile);
+		}
+	}
+
+
+
+	/**
+	 * Build cache file and load cached elements
+	 *
+	 */
+	private static function buildCache() {
+		if( ! TodoyuFileManager::isFile(self::$cacheFile) ) {
+			self::generateClassList();
+
+			include(self::$cacheFile);
+		}
+	}
+	
+
+
+	/**
+	 * Generate a mapping from class names to class file paths
+	 * and save it into the cache
+	 *
+	 */
+	private static function generateClassList() {
+		$classList	= self::getClassList();
+
+		self::saveClassList($classList);
+	}
+
+
+
+	/**
+	 * Get class name to path mapping
+	 *
+	 * @return	Array
+	 */
+	private static function getClassList() {
+		$classList		= array();
+
+			// Static
+		foreach(Todoyu::$CONFIG['AUTOLOAD']['static'] as $path) {
+			$classList	= array_merge($classList, self::getClassListFromFolder($path));
+		}
+
+			// Ext
+		$extKeys	= TodoyuExtensions::getInstalledExtKeys();
+		foreach($extKeys as $extKey) {
+			foreach(Todoyu::$CONFIG['AUTOLOAD']['ext'] as $extLoadPath) {
+				$path		= TodoyuExtensions::getExtPath($extKey, $extLoadPath);
+				$classList	= array_merge($classList, self::getClassListFromFolder($path));
+			}
+		}
+
+		return $classList;
+	}
+
+
+
+	/**
+	 * Get a list of all classes in the folder (mapping to paths)
+	 *
+	 * @param	String		$pathFolder
+	 * @return	Array
+	 */
+	private static function getClassListFromFolder($pathFolder) {
+		$classList	= array();
+		$classFiles	= TodoyuFileManager::getFilesInFolder($pathFolder, false, array('.class.php'));
+
+		foreach($classFiles as $classFile) {
+			$className	= strtolower(str_replace('.class.php', '', $classFile));
+			$classPath	= TodoyuFileManager::pathWeb($pathFolder . '/' . $classFile);
+
+			$classList[$className] = $classPath;
+		}
+
+		return $classList;
+	}
+
+
+
+	/**
+	 * Save class list into the cache
+	 *
+	 * @param	Array	$classList
+	 */
+	private static function saveClassList(array $classList) {
+		$pairStrings	= array();
+
+		foreach($classList as $className => $classPath ) {
+			$pairStrings[] = "'$className'=>'$classPath'";
+		}
+
+		$content	= '<?php Todoyu::$CONFIG[\'AUTOLOAD\'][\'CLASS\']=array(' . implode(',', $pairStrings) . ');?>';
+
+		TodoyuFileManager::saveFileContent(self::$cacheFile, $content);
+	}
+
+}
+
+?>
