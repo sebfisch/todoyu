@@ -1,3 +1,23 @@
+Version 3.4.4 (2011-08-04)
+	Added new html5 audio support. Patch contributed by Ronald M. Clifford.
+	Added mute option for video elements and preload options for video/audio patch contributed by Dmitry Kalinkin.
+	Fixed selection to match visual selection before applying formatting changes.
+	Fixed browser specific bugs in lists for WebKit and IE.
+	Fixed bug where IE would scroll the window if you closed an inline dialog that was larger than the viewport. Patch by Laurence Keijmel.
+	Fixed bug where pasting contents near a span element could remove parts of that span. Patch contributed by Wesley Walser.
+	Fixed bug where formatting change would be lost after pressing enter.
+	Fixed bug in WebKit where deleting across blocks would add extra styles.
+	Fixed bug where moving cursor vertically in tables in WebKit wasn't working.
+	Fixed bug in IE where deleting would cause error in console.
+	Fixed bug where the formatter was not applying formats across list elements.
+	Fixed bug where the wordcount plugin would try and update the wordcount if tinymce had been destroyed.
+	Fixed bug where tabfocus plugin would attempt to focus elements not displayed when their parent element was hidden.
+	Fixed bug where the contentEditable state would sometimes be removed if you deleted contents in Gecko.
+	Fixed bug where inserting contents using mceInsertContent would fail if "span" was disabled in valid_elements.
+	Fixed bug where initialization might fail if some resource on gecko wouldn't load properly and fire the onload event.
+	Fixed bug where ctrl+7/8/9 keys wouldn't properly add the specific formats associated with them.
+	Fixed bug where the HTML tags wasn't properly closed in the style plugins properties dialog.
+	Fixed bug where the list plugin would produce an exception if the user tried to delete an element at the very first location.
 Version 3.4.3.2 (2011-06-30)
 	Fixed bug where deleting all of a paragraph inside a table cell would behave badly in webkit.
 	Fixed bugs in tests in firefox5 and WebKit.
