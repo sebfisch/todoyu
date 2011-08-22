@@ -39,6 +39,35 @@ class TodoyuString {
 
 
 	/**
+	 * Check whether the given string has an upper-cased first letter
+	 *
+	 * @param	String	$word
+	 * @return	Boolean
+	 */
+	public static function isUcFirst($string) {
+		$firstChar	= $string[0];
+
+		return strtoupper($firstChar) == $firstChar;
+	}
+
+
+
+	/**
+	 * Check whether the given string contains HTML tag(s)
+	 *
+	 * @param	String	$string
+	 * @return	Boolean
+	 */
+	public static function isContainingHTML($string) {
+		$length			= strlen($string);
+		$lengthNoTags	= strlen(strip_tags($string));
+
+		return	$length != $lengthNoTags;
+	}
+
+
+
+	/**
 	 * Check whether a string is utf-8 encoded
 	 *
 	 * @param	String		$string
