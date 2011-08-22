@@ -38,6 +38,9 @@ ini_set('show_errors', true);
 require_once(realpath(dirname(__FILE__) . '/../inc/global.php'));
 require_once(PATH_CORE . '/config/continuous_integration.php');
 
+	// Initialize CLI run
+TodoyuCli::init();
+
 	// Prevent todoyu init
 Todoyu::$CONFIG['INIT'] = false;
 
