@@ -26,9 +26,21 @@
  */
 abstract class TodoyuPanelWidgetSearchList extends TodoyuPanelWidget {
 
+	/**
+	 * Javascript object for initialization
+	 *
+	 * @var	String
+	 */
 	protected $jsObject;
 
 
+
+	/**
+	 * Render content of the search list
+	 *
+	 * @param	Boolean		$listOnly
+	 * @return	String
+	 */
 	public function renderContent($listOnly = false) {
 		$this->addClass('searchList');
 
@@ -41,20 +53,38 @@ abstract class TodoyuPanelWidgetSearchList extends TodoyuPanelWidget {
 			TodoyuPage::addJsOnloadedFunction('function(){Todoyu.R[\'' . $this->getID() . '\'] = new ' . $this->jsObject . '(\'' . htmlentities($this->getSearchText(), ENT_QUOTES, 'UTF-8', false) . '\');}');
 		}
 
-		return Todoyu::render($tmpl, $data);
+		return trim(Todoyu::render($tmpl, $data));
 	}
 
 
+
+	/**
+	 * Render search list
+	 *
+	 * @return String
+	 */
 	public function renderList() {
 		return $this->renderContent(true);
 	}
 
 
+
+	/**
+	 * Get template to render the search list
+	 *
+	 * @return	String
+	 */
 	protected function getTemplate() {
 		return 'core/view/panelwidget-searchlist.tmpl';
 	}
 
 
+
+	/**
+	 * Get template data
+	 *
+	 * @return	Array
+	 */
 	protected function getTemplateData() {
 		$data = array(
 			'searchForm'=> $this->renderSearchForm(),
@@ -88,6 +118,7 @@ abstract class TodoyuPanelWidgetSearchList extends TodoyuPanelWidget {
 	}
 
 
+
 	/**
 	 * Set javascript object which handles the selector
 	 *
@@ -98,24 +129,50 @@ abstract class TodoyuPanelWidgetSearchList extends TodoyuPanelWidget {
 	}
 
 
+
+	/**
+	 * Get extension id of the panel widget
+	 *
+	 * @return	Integer
+	 */
 	protected function getExtID() {
 		return TodoyuExtensions::getExtID($this->get('ext'));
 	}
 
+
+
+	/**
+	 * Save the entered search text as user preference
+	 *
+	 * @param	String		$search
+	 */
 	public function saveSearchText($search) {
 		$pref	= 'panelwidgetsearchlist-' . $this->getID() . '-search';
 		$search	= trim($search);
 
-		return TodoyuPreferenceManager::savePreference($this->getExtID(), $pref, $search, 0, true, AREA);
+		TodoyuPreferenceManager::savePreference($this->getExtID(), $pref, $search, 0, true, AREA);
 	}
 
 
+
+	/**
+	 * Get search text from prefs
+	 *
+	 * @return	String
+	 */
 	public function getSearchText() {
 		$pref	= 'panelwidgetsearchlist-' . $this->getID() . '-search';
 
 		return trim(TodoyuPreferenceManager::getPreference($this->getExtID(), $pref, 0, AREA));
 	}
 
+
+	/**
+	 * Get items to render the list
+	 *
+	 * @abstract
+	 * @return	Array
+	 */
 	protected abstract function getItems();
 
 }

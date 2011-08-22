@@ -172,7 +172,11 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 * @param	{Ajax.Response}  response
 	 */
 	onListUpdated: function(response) {
-		this.onUpdated();
+		if( response.responseText.strip() === '' ) {
+			this.onEmptyResult(response);
+		} else {
+			this.onUpdated(response);
+		}
 	},
 
 
@@ -182,7 +186,18 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 *
 	 * @method	onUpdated
 	 */
-	onUpdated: function() {
+	onUpdated: function(response) {
+		// Override
+	},
+
+
+
+	/**
+	 * Callback when result was empty
+	 *
+	 * @param response
+	 */
+	onEmptyResult: function(response) {
 		// Override
 	},
 
