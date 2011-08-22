@@ -12,6 +12,7 @@ core 2.1.2 - ???
 	* Change: Comment out unused database relation input field (relations have their own sub fields)
 	* Change: Cleanup adding the language file for jscalendar
 	* Change: Set default dummy timezone to prevent problems with date() before setting the users timezone
+	* Change: Allow installation in not empty database (as long as no conflicts with existing tables occurs)
 	* Add: Added doubleEncode parameter for TodoyuString::htmlentities
 	* Add: Translated log levels in core/locale/en_GB/global.xml
 	* Add: Caching for class autoloader

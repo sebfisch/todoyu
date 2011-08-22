@@ -8,7 +8,7 @@
 					<select name="database" type="text" id="database">
 						<option value=""></option>
 						{foreach $databases database}
-							<option value="{$database.database}" {if $database.size>0}disabled="disabled" class="disabled"{/if}>
+							<option value="{$database.database}" {if $database.block}disabled="disabled" class="disabled"{/if}>
 								{$database.database} {if $database.size>0}({Label install.installer.dbselect.dbNotEmpty}! {$database.size} {Label install.installer.dbselect.tables}){else}({Label install.installer.dbselect.dbEmpty}){/if}
 							</option>
 						{/foreach}

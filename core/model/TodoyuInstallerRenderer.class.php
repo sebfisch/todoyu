@@ -157,7 +157,8 @@ class TodoyuInstallerRenderer {
 			$dbOptions[] = array(
 				'database'	=> $database,
 				'tables'	=> $tables,
-				'size'		=> sizeof($tables)
+				'size'		=> sizeof($tables),
+				'block'		=> self::hasTableConflicts($tables)
 			);
 		}
 			// Setup rendering data
@@ -170,6 +171,21 @@ class TodoyuInstallerRenderer {
 		);
 
 		return $data;
+	}
+
+
+
+	/**
+	 * Check whether tables from the database conflict with tables from the install sql files
+	 *
+	 * @param	Array	$databaseTableNames
+	 * @return	Boolean
+	 */
+	private static function hasTableConflicts(array $databaseTableNames) {
+		$tableStructures= TodoyuSQLManager::getFileTableStructures();
+		$fileTableNames	= array_keys($tableStructures);
+
+		return sizeof(array_intersect($databaseTableNames, $fileTableNames)) > 0;
 	}
 
 
