@@ -592,7 +592,7 @@ class TodoyuFileManager {
 	 * @param	Array		$filters			strings needed to be contained in files looking for
 	 * @return	Array
 	 */
-	public static function getFilesInFolder($pathFolder, $showHidden = false, $filters = array()) {
+	public static function getFilesInFolder($pathFolder, $showHidden = false, array $filters = array()) {
 		$pathFolder	= self::pathAbsolute($pathFolder);
 		$elements	= self::getFolderContents($pathFolder, $showHidden);
 		$files		= array();
