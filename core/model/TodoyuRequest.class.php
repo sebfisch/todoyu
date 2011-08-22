@@ -355,7 +355,7 @@ class TodoyuRequest {
 	 * @return	Array
 	 * @throws	TodoyuException
 	 */
-	public static function sendPostRequest($host, $getQuery = '', array $data = array(), $dataVar = 'data', array $headers = array(), $port = 80, $timeout = 30) {
+	public static function sendPostRequest($host, $getQuery = '', array $data = array(), $dataVar = 'data', array $headers = array(), $port = 80, $timeout = 10) {
 			// Disable error handler
 		TodoyuErrorHandler::setActive(false);
 			// Open socket
@@ -365,7 +365,7 @@ class TodoyuRequest {
 
 			// Check whether connection was successful
 		if( ! $sock ) {
-			throw new TodoyuException('Cannot connect to host "' . $host . '"');
+			throw new TodoyuException('Cannot connect to host "' . $host . '" (' . $errno . ', ' . $errstr . ')');
 		}
 
 			// Encode data
