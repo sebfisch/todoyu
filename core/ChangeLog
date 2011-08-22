@@ -16,6 +16,7 @@ core 2.1.2 - ???
 	* Add: Translated log levels in core/locale/en_GB/global.xml
 	* Add: Caching for class autoloader
 	* Add: Custom callback on empty result for searchlist panel widget
+	* Add: TodoyuMail::setCurrentUserAsSender() as a shortcut
 	* Remove: Removed unused function TodoyuArray::convertToUTF8Array
 	* Update: JsCalendar library updated. Added some extra utf-8 language packages (provided by Captain_FLAM)
 	* Update: tinyMCE 3.4.4
