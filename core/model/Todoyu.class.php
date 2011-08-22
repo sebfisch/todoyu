@@ -91,6 +91,9 @@ class Todoyu {
 
 			// Set system timezone
 		self::setTimezone();
+
+			// Add autoloader clear cache hook
+		TodoyuHookManager::registerHook('core', 'clearCache', 'TodoyuAutoloader::clearCacheHook');
 	}
 
 

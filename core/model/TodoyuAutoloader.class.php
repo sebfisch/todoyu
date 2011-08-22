@@ -33,6 +33,14 @@ class TodoyuAutoloader {
 	 */
 	private static $cacheFile = 'cache/autoload.php';
 
+	/**
+	 * Is cache file already loaded?
+	 *
+	 * @var	Boolean
+	 */
+	private static $loaded = false;
+
+
 
 	/**
 	 * Load a class
@@ -73,12 +81,23 @@ class TodoyuAutoloader {
 
 
 	/**
+	 * Hook to clear the cache
+	 *
+	 */
+	public static function clearCacheHook() {
+		self::clearCache();
+	}
+
+
+
+	/**
 	 * Clear the cache
 	 *
 	 */
 	private static function clearCache() {
 		if( TodoyuFileManager::isFile(self::$cacheFile) ) {
 			TodoyuFileManager::deleteFile(self::$cacheFile);
+			self::$loaded = false;
 		}
 	}
 
@@ -91,8 +110,11 @@ class TodoyuAutoloader {
 	private static function buildCache() {
 		if( ! TodoyuFileManager::isFile(self::$cacheFile) ) {
 			self::generateClassList();
+		}
 
+		if( ! self::$loaded ) {
 			include(self::$cacheFile);
+			self::$loaded = true;
 		}
 	}
 	
@@ -107,6 +129,8 @@ class TodoyuAutoloader {
 		$classList	= self::getClassList();
 
 		self::saveClassList($classList);
+
+		self::$loaded = false;
 	}
 
 
