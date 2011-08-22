@@ -41,4 +41,6 @@ Todoyu::$CONFIG['CI']['system'] = array(
 	'encryptionKey'	=> 'abcdefghijklmnopqrstuvwxyz1234567890'
 );
 
+Todoyu::$CONFIG['SYSTEM']['todoyuURL'] = 'http://hudson:8080';
+
 ?>
