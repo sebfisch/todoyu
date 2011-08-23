@@ -452,7 +452,7 @@ class TodoyuFormValidator {
 
 
 	/**
-	 * Check if date and time of a field is before an other field
+	 * Check if date and time of a field is before another field
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
@@ -479,7 +479,7 @@ class TodoyuFormValidator {
 
 
 	/**
-	 * Check if date and time are not before an other field
+	 * Check if date and time are not before another field
 	 *
 	 * @param	String					$value
 	 * @param	Array					$validatorConfig
@@ -510,7 +510,7 @@ class TodoyuFormValidator {
 
 
 	/**
-	 * Check if date and time are after an other field
+	 * Check if date and time are after another field
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
@@ -537,7 +537,7 @@ class TodoyuFormValidator {
 
 
 	/**
-	 * Check if date and time are not after an other field
+	 * Check if date and time are not after another field
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig

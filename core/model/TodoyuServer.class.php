@@ -119,7 +119,7 @@ class TodoyuServer {
 
 			echo "\n\n";
 			echo "todoyu doesn't run with this configuration.\n";
-			echo "Please update your config or install todoyu on an other server";
+			echo "Please update your config or install todoyu on another server";
 
 				// Stop script here
 			exit();

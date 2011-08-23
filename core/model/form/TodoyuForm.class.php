@@ -488,7 +488,7 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
-	 * Add elements from an other XML into the form after the element named $name
+	 * Add elements from another XML into the form after the element named $name
 	 *
 	 * @see		$this->addElementsFromXML()
 	 * @param	String		$xmlPath		Path to the xml file
@@ -501,7 +501,7 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
-	 * Add elements from an other XML into the form before the element named $name
+	 * Add elements from another XML into the form before the element named $name
 	 *
 	 * @see		$this->addElementsFromXML()
 	 * @param	String		$xmlPath		Path to the xml file

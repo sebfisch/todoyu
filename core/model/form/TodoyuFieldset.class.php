@@ -34,7 +34,7 @@ class TodoyuFieldset implements ArrayAccess {
 	private $name;
 
 	/**
-	 * Parent element of the fieldset. Can be the form or an other fieldset.
+	 * Parent element of the fieldset. Can be the form or another fieldset.
 	 *
 	 * @var	TodoyuFieldset
 	 */
@@ -312,7 +312,7 @@ class TodoyuFieldset implements ArrayAccess {
 
 
 	/**
-	 * Add elements from an other XML into the fieldset after the element named $name
+	 * Add elements from another XML into the fieldset after the element named $name
 	 *
 	 * @see		$this->addElementsFromXML()
 	 * @param	String		$xmlPath		Path to the xml file

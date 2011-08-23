@@ -167,7 +167,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 	/**
-	 * Set parent fieldset. Only necessary when inserted into an other form
+	 * Set parent fieldset. Only necessary when inserted into another form
 	 *
 	 * @param	TodoyuFieldset		$fieldset
 	 */

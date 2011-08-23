@@ -708,7 +708,7 @@ class TodoyuTime {
 
 	/**
 	 * Get days in month for the month of the timestamp
-	 * Use monthDelta to query an other month (ex: last = -1, next = 1, etc)
+	 * Use monthDelta to query another month (ex: last = -1, next = 1, etc)
 	 *
 	 * @param	Integer		$timestamp
 	 * @param	Integer		$monthDelta
