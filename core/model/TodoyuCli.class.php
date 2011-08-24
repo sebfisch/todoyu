@@ -54,12 +54,12 @@ class TodoyuCli {
 			$protocol	= stristr(Todoyu::$CONFIG['SYSTEM']['todoyuURL'], 'https://') !== false ? 'https' : 'http';
 			$url		= parse_url('http://' . str_replace(array('http://', 'https://'), '', Todoyu::$CONFIG['SYSTEM']['todoyuURL']));
 
-			define('PATH_WEB_OVERRIDE', $url['path']);
-			define('PATH_WEB', $url['path']);
+			define('PATH_WEB_OVERRIDE', trim($url['path']));
+			define('PATH_WEB', trim($url['path']));
 
 			define('SERVER_URL', $protocol . '://' . $url['host']);
 
-			define('TODOYU_URL', SERVER_URL . $url['path']);
+			define('TODOYU_URL', SERVER_URL . trim($url['path']));
 		}
 	}
 
