@@ -476,29 +476,21 @@ class TodoyuString {
 	/**
 	 * Build an URL with given parameters prefixed with todoyu path
 	 *
-	 * @todo	Have a look at http_build_query(). Useful replacement?
 	 * @param	Array		$params		Parameters as key=>value
 	 * @param	String		$hash		Hash (#hash)
 	 * @param	Boolean		$absolute	Absolute URL with host server
 	 * @return	String
 	 */
 	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {
-		$pathWeb	= PATH_WEB;
-		$query		= rtrim($pathWeb, '/\\') . '/index.php';
-		$queryParts	= array();
-
+		$query	= rtrim(PATH_WEB, '/\\') . '/index.php';
+		
 			// Add question mark if there are query parameters
 		if( sizeof($params) > 0 ) {
 			$query .= '?';
 		}
 
 			// Add all parameters encoded
-		foreach($params as $name => $value) {
-			$queryParts[] = $name . '=' . urlencode($value);
-		}
-
-			// Concatenate
-		$query .= implode('&', $queryParts);
+		$query .= http_build_query($params);
 
 			// Add hash
 		if( ! empty($hash) ) {
@@ -507,7 +499,7 @@ class TodoyuString {
 
 			// Add absolute server URL
 		if( $absolute ) {
-			$query = SERVER_URL . $query;
+			$query = SERVER_URL . ltrim($query, '/');
 		}
 
 		return $query;
