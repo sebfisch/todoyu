@@ -21,7 +21,7 @@
 	// Disable notices
 error_reporting(E_ALL ^ E_NOTICE);
 
-Todoyu::$CONFIG['DEBUG'] = true;
+Todoyu::$CONFIG['DEBUG'] = false;
 
 	// Define autoload config array
 Todoyu::$CONFIG['AUTOLOAD'] = array(
