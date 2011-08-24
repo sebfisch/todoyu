@@ -128,6 +128,28 @@ class TodoyuString {
 
 
 	/**
+	 * Check whether given string seems to be a valid phone number
+	 *
+	 * @param	String		$string
+	 * @param	String		$allowedChars		Allowed characters (besides numbers)
+	 * @return	Boolean
+	 */
+	public static function isValidPhoneNumber($string, $allowedChars = ' /+-()') {
+		$length	= strlen($string);
+
+		for($i = 0; $i < $length; $i++) {
+			$curChar	= substr($string, $i, 1);
+			if( ! is_numeric($curChar) && strpos($allowedChars, $curChar) === false ) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+
+
+	/**
 	 * Crop a text to a specific length. If text is cropped, a postfix will be added (default: ...)
 	 * Per default, words will not be split and the text will mostly be a little bit shorter
 	 *
