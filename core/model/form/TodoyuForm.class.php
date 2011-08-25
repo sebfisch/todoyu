@@ -440,26 +440,9 @@ class TodoyuForm implements ArrayAccess {
 	public function injectFieldset(TodoyuFieldset $fieldset, $position = null) {
 		$fieldset->setFieldsToForm($this);
 
-			// Find object to inject fieldset
-		if( is_null($position) ) {
-			$parentObject	= $this;
-		} else {
-				// Get field(set) name
-			$insertParts	= explode(':', $position);
-			$field			= $this->getField($insertParts[1]);
-				// If name was a field, get its fieldset
-			if( $field instanceof TodoyuFormElement ) {
-				$parentObject = $field->getFieldset();
-			} else {
-					// If no field was found, the name has to be a fieldset
-				$parentObject = $this->getFieldset($insertParts[1]);
-			}
-		}
+        $fieldset->setParent($this);
 
-			// Set the parent of the fieldset
-		$fieldset->setParent($parentObject);
-
-		return $parentObject->addFieldset($fieldset->getName(), $fieldset, $position);
+        return $this->addFieldset($fieldset->getName(), $fieldset, $position);
 	}
 
 

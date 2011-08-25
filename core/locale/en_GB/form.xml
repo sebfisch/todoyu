@@ -8,6 +8,7 @@
 	<label index="records.add">Add Record</label>
 	<label index="records.remove">Remove Record</label>
 	<label index="records.edit">Edit Record</label>
+	<label index="records.removeconfirm">Do you really want to remove this Record ?</label> 
 	<label index="databaserelation.nolabel">[New Entry]</label>
 	<label index="databaserelation.expandAllRecords">Show Details</label>
 	<label index="error.notUnique">This entry already exists</label>

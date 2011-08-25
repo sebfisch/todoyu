@@ -96,9 +96,10 @@ Todoyu.Form = {
 	 * @param	{Number}		index
 	 */
 	removeRecord: function(idRecord, fieldName, index) {
-		var idElement	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
-
-		$(idElement).remove();
+        if( confirm('[LLL:core.form.records.removeconfirm]') ) {
+            var idElement    = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
+            $(idElement).remove();
+        }
 	},
 
 

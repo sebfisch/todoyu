@@ -8,6 +8,7 @@
 	<label index="records.add">Datensatz anfügen</label>
 	<label index="records.remove">Datensatz entfernen</label>
 	<label index="records.edit">Datensatz bearbeiten</label>
+	<label index="records.removeconfirm">Sind Sie sicher, dass Sie diesen Datensatz entfernen wollen?</label>
 	<label index="databaserelation.nolabel">[Neuer Eintrag]</label>
 	<label index="databaserelation.expandAllRecords">Details anzeigen</label>
 	<label index="error.notUnique">Dieser Eintrag existiert bereits</label>
