@@ -504,7 +504,7 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {
-		$query	= rtrim(PATH_WEB, '/\\') . '/index.php';
+		$query	= ltrim(rtrim(PATH_WEB, '/\\') . '/index.php', '/');
 		
 			// Add question mark if there are query parameters
 		if( sizeof($params) > 0 ) {
@@ -521,7 +521,7 @@ class TodoyuString {
 
 			// Add absolute server URL
 		if( $absolute ) {
-			$query = SERVER_URL . ltrim($query, '/');
+			$query = SERVER_URL . '/' . ltrim($query, '/');
 		}
 
 		return $query;
