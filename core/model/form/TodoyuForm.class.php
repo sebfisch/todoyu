@@ -1095,6 +1095,7 @@ class TodoyuForm implements ArrayAccess {
 		$data['hiddenFields']	= $this->renderHiddenFields();
 		$data['fieldsets']		= $this->renderFieldsets();
 		$data['htmlId']			= $this->makeID('', 'form');
+		$data['isAjax']			= TodoyuRequest::isAjaxRequest();
 
 		return $data;
 	}

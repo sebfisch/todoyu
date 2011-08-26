@@ -10,6 +10,10 @@
 
 	<script type="text/javascript">
 	{if $extraOnDisplay}{$extraOnDisplay}{/if}
-	Todoyu.Form.onFormDisplay('{$htmlId}');
+	{if $isAjax}
+		Todoyu.Form.onFormDisplay('{$htmlId}', '{$name}', '{$id}');
+	{else}
+		document.observe('dom:loaded', function(){ Todoyu.Form.onFormDisplay.bind(Todoyu.Form, '{$htmlId}', '{$name}', '{$id}').defer(); });
+	{/if}
 	</script>
 {/if}

@@ -21,6 +21,7 @@ core 2.1.2 - ???
 	* Add: Custom callback on empty result for searchlist panel widget
 	* Add: TodoyuMail::setCurrentUserAsSender() as a shortcut
 	* Add: Confirm removal of sub record in db relation in form
+	* Add: Allow to hook in into the form display event in javascript
 	* Remove: Removed unused function TodoyuArray::convertToUTF8Array
 	* Update: JsCalendar library updated. Added some extra utf-8 language packages (provided by Captain_FLAM)
 	* Update: tinyMCE 3.4.4

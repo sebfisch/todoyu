@@ -44,11 +44,25 @@ Todoyu.Form = {
 	 * @method	onFormDisplay
 	 * @param	{String}  formID
 	 */
-	onFormDisplay: function(formID) {
-		if( Todoyu.exists(formID) ) {
-			this.expandInvalidForeignRecords(formID);
-			this.focusFirstFormField(formID);
+	onFormDisplay: function(idForm, name, idRecord) {
+		if( Todoyu.exists(idForm) ) {
+			this.expandInvalidForeignRecords(idForm);
+			this.focusFirstFormField(idForm);
+			this.callFormDisplayHooks(idForm, name, idRecord);
 		}
+	},
+
+
+
+	/**
+	 * Call hooks which are registered for the form display event
+	 *
+	 * @param	{String}	idForm
+	 * @param	{String}	name
+	 * @param	{Number}	idRecord
+	 */
+	callFormDisplayHooks: function(idForm, name, idRecord) {
+		Todoyu.Hook.exec('form.display', idForm, name, idRecord);
 	},
 
 
