@@ -195,7 +195,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 			case 2:
 				$options = TodoyuFunction::callUserFunction($source['function'], $this);
 				foreach($options as $option) {
-					$this->addOption($option['value'], $option['label'], $option['disabled'], $option['classname']);
+					$this->addOption($option['value'], $option['label'], $option['disabled'], $option['class']);
 				}
 				break;
 
@@ -260,7 +260,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 			'value'		=> $value,
 			'label'		=> $label,
 			'disabled'	=> ( $disabled !== true ) ? false : 'disabled',
-			'classname'	=> $className
+			'class'		=> $className
 		);
 	}
 
@@ -287,7 +287,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 				'label'		=> $label,
 				'selected'	=> $selected,
 				'disabled'	=> $disabled,
-				'classname'	=> $className
+				'class'		=> $className
 			);
 		}
 	}

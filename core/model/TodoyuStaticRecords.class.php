@@ -343,7 +343,7 @@ class TodoyuStaticRecords {
 				'value'		=> 'disabled',
 				'label'		=> 'LLL:contact.ext.address.noRegion',
 				'disabled'	=> true,
-				'classname'	=> 'error'
+				'class'		=> 'error'
 			);
 		}
 

@@ -16,7 +16,7 @@
 					{$isSelected =  true}
 					{$valueTemplate	= unsetArrayValue($valueTemplate,$option.value)}
 				{/if}
-			<option value="{htmlencode $option.value}" {if $option.classname != ""}class="{$option.classname}"{/if} {if $isSelected} selected="selected"{/if} {if $option.disabled}disabled="disabled"{/if}>{$option.label}</option>
+			<option value="{htmlencode $option.value}" {if $option.class != ""}class="{$option.class}"{/if} {if $isSelected} selected="selected"{/if} {if $option.disabled}disabled="disabled"{/if}>{$option.label}</option>
 		{/foreach}
 		{if $label != "none"}
 			</optgroup>

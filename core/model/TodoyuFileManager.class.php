@@ -336,24 +336,23 @@ class TodoyuFileManager {
 	/**
 	 * Move a file to the folder structure
 	 *
-	 * @param	String			$path
-	 * @param	String			$sourceFile
-	 * @param	String			$uploadFileName
+	 * @param	String			$storagePath			Path of the storage directory
+	 * @param	String			$sourceFile				Path to source file
+	 * @param	String			$realFileName			
 	 * @param	Boolean			$prependTimestamp
 	 * @return	String|Boolean	New file path or FALSE
 	 */
-	public static function addFileToStorage($path, $sourceFile, $uploadFileName, $prependTimestamp = true) {
-		$fileName	= self::makeCleanFilename($uploadFileName);
+	public static function addFileToStorage($storagePath, $sourceFile, $realFileName, $prependTimestamp = true) {
+		$fileName	= self::makeCleanFilename($realFileName);
 
 		if( $prependTimestamp ) {
 			$fileName	= NOW . '_' . $fileName;
 		}
 
-		$filePath	= self::pathAbsolute($path . '/' . $fileName);
+		$targetFile	= self::pathAbsolute($storagePath . '/' . $fileName);
+		$fileMoved	= rename($sourceFile, $targetFile);
 
-		$fileMoved	= rename($sourceFile, $filePath);
-
-		return $fileMoved ? $filePath : false;
+		return $fileMoved ? $targetFile : false;
 	}
 
 

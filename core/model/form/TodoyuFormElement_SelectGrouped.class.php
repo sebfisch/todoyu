@@ -54,7 +54,7 @@ class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 
 		foreach($groups as $group => $options) {
 			foreach($options as $option) {
-				$this->addOption($group, $option['value'], $option['label'], $option['selected'], $option['disabled'], $option['classname']);
+				$this->addOption($group, $option['value'], $option['label'], $option['selected'], $option['disabled'], $option['class']);
 			}
 		}
 	}
@@ -73,10 +73,10 @@ class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 	 */
 	public function addOption($group, $value, $label, $selected = false, $disabled = false, $className='') {
 		$this->config['options'][$group][] = array(
-			'value'			=> $value,
-			'label'			=> $label,
-			'disabled'		=> $disabled,
-			'classname'		=> $className,
+			'value'		=> $value,
+			'label'		=> $label,
+			'disabled'	=> $disabled,
+			'class'		=> $className,
 		);
 
 		if( $selected === true ) {
