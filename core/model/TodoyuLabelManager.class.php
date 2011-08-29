@@ -109,11 +109,7 @@ class TodoyuLabelManager {
 		$locale	= is_null($locale) ? self::$locale : $locale ;
 		$label	= self::getLabelInternal($fullKey, $locale);
 
-		if( $label === false ) {
-			return Todoyu::$CONFIG['DEBUG'] ? $fullKey : '';
-		} else {
-			return $label;
-		}
+		return $label === false ? $fullKey : $label;
 	}
 
 

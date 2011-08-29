@@ -15,6 +15,8 @@ core 2.1.2 - ???
 	* Change: Set default dummy timezone to prevent problems with date() before setting the users timezone
 	* Change: Allow installation in not empty database (as long as no conflicts with existing tables occurs)
 	* Change: Simplified TodoyuForm::injectFieldset (by Captain_FLAM)
+	* Change: Load the override config before init (CaptainFLAM)
+	* Change: Always return the label (or the key) for a label (never empty)
 	* Add: Added doubleEncode parameter for TodoyuString::htmlentities
 	* Add: Translated log levels in core/locale/en_GB/global.xml
 	* Add: Caching for class autoloader
