@@ -23,6 +23,9 @@
  * @todo	Use hook functions to allow others to hook in here
  */
 
+	// Custom config overrides
+require_once( PATH_LOCALCONF . '/override.php');
+
 	// File Logger
 TodoyuLogger::addLogger('TodoyuLoggerFile', array(
 	'file'	=> PATH . '/log/error.log'
@@ -34,8 +37,5 @@ TodoyuLogger::addLogger('TodoyuLoggerFirePhp');
 if( Todoyu::$CONFIG['INIT'] ) {
 	Todoyu::init();
 }
-
-	// Custom config overrides
-require_once( PATH_LOCALCONF . '/override.php');
 
 ?>
