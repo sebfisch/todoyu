@@ -139,10 +139,8 @@ class TodoyuLabelManager {
 	 */
 	private static function getLabelInternal($fullKey, $locale = null) {
 		$fullKey	= str_replace('LLL:', '', $fullKey);
-		$keyParts	= explode('.', $fullKey, 3);
-		$extKey		= $keyParts[0];
-		$fileKey	= $keyParts[1];
-		$labelKey	= $keyParts[2];
+			// Extract parts of key
+		list($extKey, $fileKey, $labelKey) = explode('.', $fullKey, 3);
 
 		if( empty($extKey) || empty($fileKey) || empty($labelKey) ) {
 			if( Todoyu::$CONFIG['LOCALE']['logInvalidKeys'] ) {
