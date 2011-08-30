@@ -117,7 +117,7 @@ class TodoyuSpeed {
 		$t = self::last($key) - self::first($key);
 
 		if( $format ) {
-			$t = round($t * 1000, 3) . 'ms';
+			$t = round($t * 1000, 4) . 'ms';
 		}
 
 		return $t;
@@ -134,6 +134,21 @@ class TodoyuSpeed {
 		$total	= self::total($key, true);
 
 		TodoyuDebug::printInFireBug($total, $key);
+	}
+
+
+
+	/**
+	 * Stop measuring and print all point in firebug
+	 *
+	 * @param	String		$key
+	 */
+	public static function allInFirebug($key = 'default') {
+		if( self::isActive($key) ) {
+			self::stop($key);
+		}
+		
+		TodoyuDebug::printInFireBug(self::all($key), $key);
 	}
 
 
