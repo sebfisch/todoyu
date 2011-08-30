@@ -137,21 +137,23 @@ class TodoyuLabelManager {
 	 * @param	String		$locale
 	 * @return	String|Boolean
 	 */
-	private static function getLabelInternal($fullKey, $locale = null) {
-		$fullKey	= str_replace('LLL:', '', $fullKey);
-			// Extract parts of key
-		list($extKey, $fileKey, $labelKey) = explode('.', $fullKey, 3);
+	private static function getLabelInternal($fullKey, $locale) {
+		if( substr($fullKey, 0, 4) === 'LLL:' ) {
+			$fullKey = substr($fullKey, 4);
+		}
 
-		if( empty($extKey) || empty($fileKey) || empty($labelKey) ) {
+		if( substr_count($fullKey, '.') < 2 ) {
 			if( Todoyu::$CONFIG['LOCALE']['logInvalidKeys'] ) {
 				TodoyuLogger::logError('Invalid label key: <' . $fullKey . '>');
 			}
 			return false;
+		} else {
+			list($extKey, $fileKey, $labelKey) = explode('.', $fullKey, 3);
+
+			$label	= self::getCachedLabel($extKey, $fileKey, $labelKey, $locale);
+
+			return is_null($label) ? false : $label;
 		}
-
-		$label	= self::getCachedLabel($extKey, $fileKey, $labelKey, $locale);
-
-		return is_null($label) ? false : $label;
 	}
 
 
@@ -166,9 +168,7 @@ class TodoyuLabelManager {
 	 * @param	String		$locale			Locale to load the label
 	 * @return	String		The label with the key $index for $language
 	 */
-	private static function getCachedLabel($extKey, $fileKey, $labelKey, $locale = null) {
-		$locale	= is_null($locale) ? self::$locale : $locale ;
-
+	private static function getCachedLabel($extKey, $fileKey, $labelKey, $locale) {
 		if( ! is_string(self::$cache[$extKey][$fileKey][$locale][$labelKey]) ) {
 			self::$cache[$extKey][$fileKey][$locale] = self::getFileLabels($extKey, $fileKey, $locale);
 		}
@@ -251,8 +251,7 @@ class TodoyuLabelManager {
 	 * @param	String		$locale
 	 * @return	Array
 	 */
-	private static function getFileLabels($extKey, $fileKey, $locale = null) {
-		$locale		= is_null($locale) ? self::$locale : $locale;
+	private static function getFileLabels($extKey, $fileKey, $locale) {
 		$locales	= self::getFallbackLocales($locale);
 		$cacheFile	= self::getCacheFileName($extKey, $fileKey, $locale);
 
