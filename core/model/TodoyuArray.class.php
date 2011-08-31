@@ -234,7 +234,11 @@ class TodoyuArray {
 	 * @return	Array		Sorted array
 	 */
 	public static function sortByLabel(array $unsortedArray, $sortByLabel = 'position', $reversed = false, $caseSensitive = false, $useNaturalSorting = true, $sortingFlag = SORT_REGULAR, $avoidDuplicateFieldKey = '') {
-			// Use the labels as key
+		if( sizeof($unsortedArray) === 0 ) {
+			return $unsortedArray;
+		}
+
+					// Use the labels as key
 			// Prevent overwriting double labels
 		$labelKeyArray		= array();
 		$conflictCounter	= 0;

@@ -117,6 +117,8 @@ class TodoyuAuth {
 		Todoyu::reset();
 			// Reload rights
 		TodoyuRightsManager::reloadRights();
+			// Call login hook
+		TodoyuHookManager::callHook('core', 'login', array($idPerson));
 	}
 
 
@@ -125,13 +127,12 @@ class TodoyuAuth {
 	 * Logout current person
 	 */
 	public static function logout() {
+			// Call logout hook
 		TodoyuHookManager::callHook('core', 'logout');
 			// Clear session
 		TodoyuSession::clear();
-
 			// Delete relogin cookie
 		TodoyuCookieLogin::removeRemainLoginCookie();
-
 			// Generate a new session id for the logged out person
 		session_regenerate_id(true);
 	}
@@ -181,7 +182,7 @@ class TodoyuAuth {
 	 * @return  Boolean
 	 */
 	public static function isInternal() {
-		return Todoyu::person()->isInternal();
+		return self::getPerson()->isInternal();
 	}
 
 

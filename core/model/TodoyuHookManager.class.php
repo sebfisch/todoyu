@@ -19,15 +19,21 @@
 *****************************************************************************/
 
 /**
- * Hook Manager.
- * Call hooks in a predefined config structure.
- * Define your hooks in this structure:
- * Todoyu::$CONFIG['EXT'][EXTNAME]['hooks'][HOOKNAME][]
+ * Register hooks and call them
  *
  * @package		Todoyu
  * @subpackage	Core
  */
 class TodoyuHookManager {
+
+	/**
+	 * Registered callbacks for hooks grouped by extension and hook name
+	 *
+	 * @var	Array
+	 */
+	private static $hooks = array();
+
+
 
 	/**
 	 * Get registered hooks
@@ -37,12 +43,9 @@ class TodoyuHookManager {
 	 * @return	Array
 	 */
 	public static function getHooks($ext, $name) {
-		$hooks	= Todoyu::$CONFIG['HOOKS'][$ext][$name];
-
-		if( ! is_array($hooks) ) {
-			$hooks = array();
-		}
-
+		$ext	= strtolower($ext);
+		$name	= strtolower($name);
+		$hooks	= TodoyuArray::assure(self::$hooks[$ext][$name]);
 		$hooks	= TodoyuArray::sortByLabel($hooks, 'position');
 
 		return TodoyuArray::getColumn($hooks, 'function');
@@ -99,12 +102,15 @@ class TodoyuHookManager {
 	 * Add a new hook functions for a hook event
 	 *
 	 * @param	String		$ext			Extension key (of Ext to be extended)
-	 * @param	String		$name			Hookname
+	 * @param	String		$name			Hook name
 	 * @param	String		$function		Function reference (e.g: 'Classname::method')
 	 * @param	Integer		$position		Position of the hook (order of calling)
 	 */
 	public static function registerHook($ext, $name, $function, $position = 100) {
-		Todoyu::$CONFIG['HOOKS'][$ext][$name][] = array(
+		$ext	= strtolower($ext);
+		$name	= strtolower($name);
+		
+		self::$hooks[$ext][$name][] = array(
 			'function'	=> $function,
 			'position'	=> intval($position)
 		);

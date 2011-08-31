@@ -187,7 +187,11 @@ class TodoyuRecordManager {
 		$data['date_update']		= NOW;
 		$data['id_person_create']	= Todoyu::personid();
 
-		return Todoyu::db()->addRecord($table, $data, $noQuoteFields);
+		$idRecord	=  Todoyu::db()->addRecord($table, $data, $noQuoteFields);
+
+		TodoyuHookManager::callHook('core', 'record.add', array($table, $idRecord));
+
+		return $idRecord;
 	}
 
 
@@ -213,7 +217,11 @@ class TodoyuRecordManager {
 			// Remove from cache
 		self::removeRecordQueryCache($table, $idRecord);
 
-		return Todoyu::db()->updateRecord($table, $idRecord, $data, $noQuoteFields);
+		$success	= Todoyu::db()->updateRecord($table, $idRecord, $data, $noQuoteFields);
+
+		TodoyuHookManager::callHook('core', 'record.update', array($table, $idRecord, $data));
+
+		return $success;
 	}
 
 
@@ -252,7 +260,11 @@ class TodoyuRecordManager {
 			'deleted'	=> 1
 		);
 
-		return self::updateRecord($table, $idRecord, $data);
+		$result	= self::updateRecord($table, $idRecord, $data);
+
+		TodoyuHookManager::callHook('core', 'record.delete', array($table, $idRecord));
+
+		return $result;
 	}
 
 
