@@ -698,6 +698,7 @@ function Dwoo_Plugin_isLoggedIn_compile(Dwoo_Compiler $compiler) {
 }
 
 
+
 /**
  * Build timerange selector HTML code
  *
@@ -714,6 +715,8 @@ function Dwoo_Plugin_isLoggedIn_compile(Dwoo_Compiler $compiler) {
 function Dwoo_Plugin_timerange_compile(Dwoo_Compiler $compiler, $id, $name, $range = array(), $nameWrap = '') {
 	return 'TodoyuRenderer::renderTimerange(' . $id . ', ' . $name . ', ' . $range . ', ' . $nameWrap . ')';
 }
+
+
 
 /**
  * Render content message with label

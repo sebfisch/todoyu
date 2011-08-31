@@ -134,7 +134,7 @@ class TodoyuString {
 	 * @param	String		$allowedChars		Allowed characters (besides numbers)
 	 * @return	Boolean
 	 */
-	public static function isValidPhoneNumber($string, $allowedChars = ' /+-()') {
+	public static function isValidPhoneNumber($string, $allowedChars = ' /+-().[]') {
 		$length	= strlen($string);
 
 		for($i = 0; $i < $length; $i++) {
@@ -962,11 +962,11 @@ class TodoyuString {
 	public static function getRangeString($dateStart, $dateEnd, $withDuration = true) {
 		$dateStart	= intval($dateStart);
 		$dateEnd	= intval($dateEnd);
-		$duration	= $dateEnd-$dateStart;
-		$hours		= intval($duration/3600);
+		$duration	= $dateEnd - $dateStart;
+		$hours		= intval($duration / 3600);
 		$hoursMax	= 23;
 
-			// Make day keys to detect multi day duration
+			// Make day keys to detect multi-day duration
 		$dateKeyStart	= date('dmY', $dateStart);
 		$dateKeyEnd		= date('dmY', $dateEnd);
 		$isMultiDay		= $dateKeyStart !== $dateKeyEnd;
@@ -984,7 +984,7 @@ class TodoyuString {
 			$data['hours']			= $hours;
 			$data['duration']		= $duration;
 
-						// Duration is over multiple days?
+				// Duration over multiple days?
 			if( $isMultiDay ) {
 				$dayTimestamps	= TodoyuTime::getDayTimestampsInRange($dateStart, $dateEnd);
 
@@ -1009,6 +1009,27 @@ class TodoyuString {
 	 */
 	public static function htmlentities($string, $doubleEncode = false) {
 		return htmlentities($string, ENT_QUOTES, 'UTF-8', $doubleEncode);
+	}
+
+
+
+	/**
+	 * Replace (only) first occurrence of search string by given replacement
+	 *
+	 * @param	String	$search
+	 * @param	String	$replace
+	 * @param	String	$subject
+	 * @return	String
+	 */
+	public static function replaceOnce($search, $replace, $subject) {
+		$pos = strpos($subject, $search);
+
+		if( $pos !== false ) {
+			$length	= strlen($search);
+			$subject= substr_replace($subject, $replace, $pos, $length);
+		}
+
+		return $subject;
 	}
 
 }
