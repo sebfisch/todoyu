@@ -504,7 +504,7 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {
-		$query	= ltrim(rtrim(PATH_WEB, '/\\') . '/index.php', '/');
+		$query	= '/' . ltrim(rtrim(PATH_WEB, '/\\') . '/index.php', '/');
 		
 			// Add question mark if there are query parameters
 		if( sizeof($params) > 0 ) {
