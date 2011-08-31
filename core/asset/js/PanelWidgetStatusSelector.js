@@ -165,9 +165,7 @@ Todoyu.PanelWidgetStatusSelector = Class.create({
 	 * @method	selectAll
 	 */
 	selectAll: function() {
-		$(this.list).childElements().each(function(option){
-			option.selected = true;
-		});
+		$(this.list).childElements().invoke('writeAttribute', 'selected', true);
 	},
 
 

@@ -463,7 +463,7 @@ Todoyu.Form = {
 
 		var selectedOld = $(baseID + '-selector').select('.selected').first();
 
-		if(selectedOld) {
+		if( selectedOld ) {
 			selectedOld.toggleClassName('selected');
 		}
 
@@ -479,9 +479,7 @@ Todoyu.Form = {
 	 * @param	{Element}	form
 	 */
 	disableSaveButtons: function(form) {
-		$(form).down('fieldset.buttons').select('button').each(function(button){
-			Form.Element.disable(button);
-		});
+		$(form).down('fieldset.buttons').select('button').invoke('disable');
 	},
 
 
@@ -493,9 +491,7 @@ Todoyu.Form = {
 	 * @param	{Element}	form
 	 */
 	enableSaveButtons: function(form) {
-		$(form).down('fieldset.buttons').select('button').each(function(button){
-			Form.Element.enable(button);
-		});
+		$(form).down('fieldset.buttons').select('button').invoke('enable');
 	},
 
 
@@ -504,8 +500,8 @@ Todoyu.Form = {
 	 * Set selected options of a select element
 	 *
 	 * @method	selectOptions
-	 * @param	{Element}	element
-	 * @param	{Array}		selection
+	 * @param	{Element}		element
+	 * @param	{Array}			selection
 	 */
 	selectOptions: function(element, selection) {
 		element		= $(element);

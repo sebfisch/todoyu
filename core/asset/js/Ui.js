@@ -669,7 +669,7 @@ Todoyu.Ui = {
 
 	/**
 	 * Simulate sending a keystroke to RTE to initialize it, so that focus is given also for special keys like [BACKSPACE], [CTRL]+[A], etc.
-	 * Neccessary if there are more than one instance of tiny_mce open
+	 * Necessary if there are more than one instance of tiny_mce open
 	 *
 	 * @method	initRTEfocus
 	 * @param	{Element}	textControlElement

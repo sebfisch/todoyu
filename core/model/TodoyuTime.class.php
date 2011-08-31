@@ -175,7 +175,7 @@ class TodoyuTime {
 	public static function getWeekEnd($timestamp) {
 		$diff	= (7-date('w', $timestamp))%7;
 
-		return mktime(23, 59, 59, date('n', $timestamp), date('j', $timestamp)+$diff, date('Y', $timestamp));
+		return mktime(23, 59, 59, date('n', $timestamp), date('j', $timestamp) + $diff, date('Y', $timestamp));
 	}
 
 
@@ -781,7 +781,7 @@ class TodoyuTime {
 		$days	= intval($days);
 		$date	= getdate($time);
 
-		return mktime($date['hours'], $date['minutes'], $date['seconds'], $date['mon'], $date['mday']+$days, $date['year']);
+		return mktime($date['hours'], $date['minutes'], $date['seconds'], $date['mon'], $date['mday'] + $days, $date['year']);
 	}
 }
 

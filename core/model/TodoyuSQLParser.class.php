@@ -452,7 +452,7 @@ class TodoyuSQLParser {
 		if( sizeof($keyPositions) > 0 ) {
 			$pos	= min($keyPositions);
 
-			$info['columns']= trim(substr($SQL, 0, $pos-1), ',');
+			$info['columns']= trim(substr($SQL, 0, $pos - 1), ',');
 			$info['keys']	= substr($SQL, $pos);
 		}
 

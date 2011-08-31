@@ -542,7 +542,6 @@ Todoyu.Tabs = {
 		var list	= this.getList(name);
 
 		while( (surplusTab = list.down('li', max)) !== undefined ) {
-			//var x	= $(name + '-tabs').down('li', max);
 			idTab	= this.removeLast(name);
 			tabIDs.push(surplusTab);
 		}
