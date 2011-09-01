@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Role for rights management
+ * Role object for rights management
  *
  * @package		Todoyu
  * @subpackage	Core

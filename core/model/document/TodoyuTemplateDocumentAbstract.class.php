@@ -23,6 +23,7 @@
  *
  * @package		Todoyu
  * @subpackage	Document
+ * @abstract
  */
 abstract class TodoyuTemplateDocumentAbstract {
 

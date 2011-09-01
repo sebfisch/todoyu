@@ -87,8 +87,9 @@ abstract class TodoyuActionController {
 	 * If requested action is not defined in current object, check for _unknowAction.
 	 * If _unknownAction() is defined, call it. First parameter is original action name, second are all parameters
 	 *
-	 * @param	String		$action
-	 * @return	String
+	 * @param		String		$action
+	 * @return		String
+	 * @throws	TodoyuControllerException
 	 */
 	public final function runAction($action = 'default') {
 		$result	= false;

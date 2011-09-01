@@ -23,6 +23,7 @@
  *
  * @package		Todoyu
  * @subpackage	Core
+ * @abstract
  */
 abstract class TodoyuWizardStep {
 

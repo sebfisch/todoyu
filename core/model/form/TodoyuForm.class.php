@@ -183,7 +183,6 @@ class TodoyuForm implements ArrayAccess {
 	 * @param	String		$name
 	 * @return	Boolean
 	 */
-
 	public function __isset($name) {
 		return $this->hasFieldset($name);
 	}

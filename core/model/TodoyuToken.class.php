@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Server informations
+ * Todoyu token object
  *
  * @package		Todoyu
  * @subpackage	Core

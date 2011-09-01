@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Country
+ * Country object
  *
  * @package		Todoyu
  * @subpackage	Core

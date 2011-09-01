@@ -376,7 +376,6 @@ class TodoyuInstallerManager {
 	 * @param	Array		$data
 	 * @return	Array
 	 */
-
 	public static function processFinishUpdate(array $data) {
 		$result	= array();
 

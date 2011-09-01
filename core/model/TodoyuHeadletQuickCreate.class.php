@@ -18,6 +18,10 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * @package		Todoyu
+ * @subpackage	Core
+ */
 class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 
 	/**

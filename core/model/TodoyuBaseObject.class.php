@@ -25,6 +25,7 @@
  *
  * @package		Todoyu
  * @subpackage	Core
+ * @abstract
  */
 abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 
@@ -327,7 +328,6 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 *
 	 * @return	Array
 	 */
-
 	public function getTemplateData() {
 		return $this->data;
 	}

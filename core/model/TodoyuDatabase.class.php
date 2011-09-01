@@ -693,6 +693,7 @@ class TodoyuDatabase {
 	/**
 	 * Execute a query on the database
 	 *
+	 * @throws	TodoyuDbException
 	 * @param	String		$query
 	 * @return	Resource
 	 */
@@ -709,8 +710,6 @@ class TodoyuDatabase {
 				die("Cannot connect to the database. Unknown error.");
 			}
 		}
-
-
 
 		$resource	= mysql_query($query, $this->link);
 

@@ -352,7 +352,6 @@ class TodoyuInstallerRenderer {
 	 * @param	Array		$result
 	 * @return	Array
 	 */
-
 	public static function renderFinishUpdate(array $result) {
 		$data	= array(
 			'title'			=> 'install.installer.finish.title',
