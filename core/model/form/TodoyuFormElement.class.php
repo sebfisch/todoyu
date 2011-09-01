@@ -400,7 +400,13 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Mixed
 	 */
 	public function getValue() {
-		return $this->getAttribute('value');
+		$value	= $this->getAttribute('value');
+
+		if( empty($value) && /*$this->isRequired() &&*/ $this->hasAttribute('default') ) {
+			$value	= $this->getAttribute('default');
+		}
+
+		return $value;
 	}
 
 
