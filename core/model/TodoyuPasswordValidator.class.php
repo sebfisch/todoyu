@@ -28,15 +28,18 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Enabled checks
+	 *
 	 * @var	Array
 	 */
 	private $checks	= array();
 
 	/**
 	 * Occured errors
+	 *
 	 * @var	Array
 	 */
 	private $errors = array();
+
 
 
 	/**
@@ -50,6 +53,7 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Validate $value with registered checks
+	 *
 	 * @param	Mixed	$value
 	 * @return	Boolean
 	 */
@@ -77,6 +81,7 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Reset error array (for second use of same object)
+	 *
 	 * @return	Array
 	 */
 	private function resetErrors() {
@@ -87,6 +92,7 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Add a new error
+	 *
 	 * @param	String		$errorMessage
 	 */
 	private function addError($errorMessage) {
@@ -97,6 +103,7 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Check if errors are registered
+	 *
 	 * @return	Boolean
 	 */
 	public function hasErrors() {
@@ -107,6 +114,7 @@ class TodoyuPasswordValidator {
 
 	/**
 	 * Get registered errors
+	 *
 	 * @return	Array
 	 */
 	public function getErrors() {

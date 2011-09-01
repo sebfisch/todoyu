@@ -26,6 +26,11 @@
  */
 class TodoyuHeadletManager {
 
+	/**
+	 * Name of preference whether headlet is open
+	 *
+	 * @var	String
+	 */
 	private static $openPref	= 'headlet-open';
 
 

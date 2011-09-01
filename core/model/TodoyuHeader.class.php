@@ -34,7 +34,7 @@ class TodoyuHeader {
 	private static $type = 'HTML';
 
 	/**
-	 * Stauts flag if headers already have been sent (with the Header class)
+	 * Status flag if headers already have been sent (with the Header class)
 	 *
 	 * @var	Boolean
 	 */

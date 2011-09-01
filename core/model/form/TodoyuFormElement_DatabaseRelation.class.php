@@ -29,9 +29,9 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	/**
 	 * Constructor of the class
 	 *
-	 * @param	String		$name
+	 * @param	String			$name
 	 * @param	TodoyuFieldset	$fieldset
-	 * @param	Array		$config
+	 * @param	Array			$config
 	 */
 	public function __construct($name, TodoyuFieldset $fieldset, array $config  = array()) {
 		parent::__construct('databaseRelation', $name, $fieldset, $config);

@@ -21,7 +21,7 @@
 require_once( PATH_LIB . '/php/phpmailer/class.phpmailer-lite.php' );
 
 /**
- * [Enter Class Description]
+ * Todoyu mail
  *
  * @package		Todoyu
  * @subpackage	Core

@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * FormElement: Selecticon
+ * FormElement: SelectIcon
  *
  * Icon selector
  *

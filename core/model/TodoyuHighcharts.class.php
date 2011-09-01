@@ -36,7 +36,6 @@ class TodoyuHighcharts {
 		TodoyuPage::addJavascript('lib/js/highcharts/adapters/prototype-adapter.js', 30, false, false, false);
 //		TodoyuPage::addJavascript('lib/js/highcharts/highcharts.src.js', 31, false, false, false);
 		TodoyuPage::addJavascript('lib/js/highcharts/highcharts.js', 31, false, false, false);
-
 	}
 
 }

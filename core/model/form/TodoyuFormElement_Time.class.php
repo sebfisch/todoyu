@@ -21,7 +21,7 @@
 /**
  * FormElement: Time
  *
- * Single line text, <input type="text"> for time valus
+ * Single line text, <input type="text"> for time values
  *
  * @package		Todoyu
  * @subpackage	Form

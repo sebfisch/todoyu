@@ -39,6 +39,9 @@ class TodoyuRightsManager {
 	private static $rights = null;
 
 
+	/**
+	 * @var	Array
+	 */
 	private static $checkRightsCache = array();
 
 

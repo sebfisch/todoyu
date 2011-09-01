@@ -28,7 +28,7 @@
 class TodoyuPreferenceManager {
 
 	/**
-	 * Working table
+	 * Database table
 	 */
 	const TABLE = 'system_preference';
 

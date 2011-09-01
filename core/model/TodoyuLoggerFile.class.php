@@ -33,13 +33,18 @@ class TodoyuLoggerFile implements TodoyuLoggerIf {
 	 */
 	private $filePointer = null;
 
-
 	/**
 	 * Log file pattern
 	 */
 	private $pattern	= "%s :: %s - L:%d [%s:%d] :: %s\n";
 
 
+
+	/**
+	 * Constructor
+	 *
+	 * @param	Array	$config
+	 */
 	public function __construct(array $config) {
 		$pathFile	= TodoyuFileManager::pathAbsolute($config['file']);
 
@@ -68,7 +73,6 @@ class TodoyuLoggerFile implements TodoyuLoggerIf {
 
 	/**
 	 * Close file if opened
-	 *
 	 */
 	public function __destruct() {
 		if( is_resource($this->filePointer) ) {

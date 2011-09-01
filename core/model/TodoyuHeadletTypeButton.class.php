@@ -27,7 +27,12 @@
  */
 abstract class TodoyuHeadletTypeButton extends TodoyuHeadlet {
 
+	/**
+	 * @var	String
+	 */
 	protected $type = 'button';
+
+
 
 	/**
 	 * Init headlet type button

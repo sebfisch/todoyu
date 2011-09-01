@@ -37,7 +37,7 @@ abstract class TodoyuHeadletTypeOverlay extends TodoyuHeadlet {
 
 
 	/**
-	 * Type initialization
+	 * Init type
 	 */
 	protected function initType() {
 		$this->addButtonClass('headletTypeOverlay');

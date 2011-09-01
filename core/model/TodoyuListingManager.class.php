@@ -36,6 +36,7 @@ class TodoyuListingManager {
 	public static function getConfig($ext, $name) {
 		return TodoyuArray::assure(Todoyu::$CONFIG['EXT'][$ext]['listing'][$name]);
 	}
+
 }
 
 ?>

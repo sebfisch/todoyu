@@ -26,6 +26,7 @@ require_once( PATH_LIB . '/php/pclzip/pclzip.lib.php');
  *
  * @package		Todoyu
  * @subpackage	Document
+ * @abstract
  */
 abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstract implements TodoyuTemplateDocumentIf {
 
@@ -58,9 +59,9 @@ abstract class TodoyuTemplateDocumentOpenXML extends TodoyuTemplateDocumentAbstr
 	private $xmlParsed;
 
 
+
 	/**
 	 * Cleanup all temporary files when finished
-	 *
 	 */
 	public function __destruct() {
 		if( is_dir($this->getTempBasePath()) ) {

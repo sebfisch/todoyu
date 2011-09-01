@@ -28,18 +28,21 @@ abstract class TodoyuWizardStep {
 
 	/**
 	 * Wizard which contains
+	 *
 	 * @var		TodoyuWizard
 	 */
 	protected $wizard;
 
 	/**
 	 * Step config
+	 *
 	 * @var	Array
 	 */
 	protected $config;
 
 	/**
 	 * Submitted data
+	 *
 	 * @var	Boolean
 	 */
 	protected $data = null;

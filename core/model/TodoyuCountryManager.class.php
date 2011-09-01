@@ -19,8 +19,8 @@
 *****************************************************************************/
 
 /**
- * [Enter Class Description]
- * 
+ * (Static-)Country manager
+ *
  * @package		Todoyu
  * @subpackage	Core
  */

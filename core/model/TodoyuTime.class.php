@@ -27,22 +27,30 @@
 class TodoyuTime {
 
 	/**
-	 * @var	Integer		Seconds per minute
+	 * Seconds per minute
+	 *
+	 * @var	Integer
 	 */
 	const SECONDS_MIN	= 60;
 
 	/**
-	 * @var	Integer		Seconds per hour
+	 * Seconds per hour
+	 *
+	 * @var	Integer
 	 */
 	const SECONDS_HOUR	= 3600;
 
 	/**
-	 * @var	Integer		Seconds per day
+	 * Seconds per day
+	 *
+	 * @var	Integer
 	 */
 	const SECONDS_DAY	= 86400;
 
 	/**
-	 * @var	Integer		Seconds per week
+	 * Seconds per week (7 days)
+	 *
+	 * @var	Integer
 	 */
 	const SECONDS_WEEK	= 604800;
 

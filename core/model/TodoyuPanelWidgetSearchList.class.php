@@ -27,7 +27,7 @@
 abstract class TodoyuPanelWidgetSearchList extends TodoyuPanelWidget {
 
 	/**
-	 * Javascript object for initialization
+	 * JavaScript object for initialization
 	 *
 	 * @var	String
 	 */

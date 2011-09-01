@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Manage stylesheets and javascripts which are added to the page
+ * Manage stylesheets and javaScripts which are added to the page
  *
  * @package		Todoyu
  * @subpackage	Core
@@ -27,7 +27,7 @@
 class TodoyuPageAssetManager {
 
 	/**
-	 * Javascripts to add to the page
+	 * JavaScripts to add to the page
 	 *
 	 * @var	Array
 	 */

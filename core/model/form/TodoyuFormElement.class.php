@@ -23,6 +23,7 @@
  *
  * @package		Todoyu
  * @subpackage	Form
+ * @abstract
  */
 abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 

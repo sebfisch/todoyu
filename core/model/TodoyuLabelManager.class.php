@@ -27,17 +27,23 @@
 class TodoyuLabelManager {
 
 	/**
+	 * Locale
+	 *
 	 * @var	String		Current locale key
 	 */
 	private static $locale = 'en_GB';
 
 	/**
-	 * @var	Array		Locallang labels cache
+	 * Locallang labels cache
+	 *
+	 * @var	Array
 	 */
 	private static $cache = array();
 
 	/**
-	 * @var	Array		Custom path to locale files for extKeys
+	 * Custom path to locale files for extKeys
+	 *
+	 * @var	Array
 	 */
 	private static $customPaths = array(
 		'core'		=> 'core',

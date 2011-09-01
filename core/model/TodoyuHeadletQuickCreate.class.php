@@ -32,7 +32,7 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 
 
 	/**
-	 * Get menu items for headlet based on registered enginges
+	 * Get menu items for headlet based on registered engines
 	 *
 	 * @return	Array
 	 */

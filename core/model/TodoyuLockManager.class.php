@@ -29,7 +29,7 @@
 class TodoyuLockManager {
 
 	/**
-	 * Table
+	 * @var	String	Default table for database requests
 	 */
 	const TABLE = 'system_lock';
 

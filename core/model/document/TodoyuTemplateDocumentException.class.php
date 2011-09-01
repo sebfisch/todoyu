@@ -26,7 +26,14 @@
  */
 class TodoyuTemplateDocumentException extends TodoyuException {
 
+	/**
+	 * Document
+	 *
+	 * @var String
+	 */
 	protected $document;
+
+
 
 	/**
 	 * Initialize document

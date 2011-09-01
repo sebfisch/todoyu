@@ -22,10 +22,13 @@
  * [Enter Class Description]
  *
  * @package		Todoyu
- * @subpackage	[Subpackage]
+ * @subpackage	Core
  */
 class TodoyuFreezeManager {
 
+	/**
+	 * @var String		Default table for database requests
+	 */
 	const TABLE = 'system_freeze';
 
 	/**

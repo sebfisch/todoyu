@@ -33,13 +33,13 @@ abstract class TodoyuWizard {
 	 */
 	private $name;
 
-
 	/**
 	 * List with created step instances
 	 *
 	 * @var	Array
 	 */
 	private $steps = array();
+
 
 
 	/**

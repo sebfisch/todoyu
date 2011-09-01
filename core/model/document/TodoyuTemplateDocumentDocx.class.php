@@ -18,7 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
 /**
  * Document type: Microsoft Office Text Document (docx)
  *

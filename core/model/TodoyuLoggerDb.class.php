@@ -27,11 +27,17 @@
 class TodoyuLoggerDb implements TodoyuLoggerIf {
 
 	/**
-	 *
+	 * @var	null|String
 	 */
 	private $table	= null;
 
 
+
+	/**
+	 * Constructor
+	 *
+	 * @param	Array	$config
+	 */
 	public function __construct(array $config) {
 		$this->table = trim($config['table']);
 

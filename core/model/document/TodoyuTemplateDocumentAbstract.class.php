@@ -28,24 +28,29 @@ abstract class TodoyuTemplateDocumentAbstract {
 
 	/**
 	 * Path to template
+	 * 
+	 * @var String
 	 */
 	private $template;
 
-
 	/**
 	 * Template content type
+	 *
+	 * @var	String
 	 */
 	private $contentType = '';
 
-
 	/**
 	 * Template data
+	 *
+	 * @var Array
 	 */
 	protected $data;
 
-
 	/**
 	 * Configuration
+	 *
+	 * @var Array
 	 */
 	protected $config;
 

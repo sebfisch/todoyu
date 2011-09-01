@@ -18,14 +18,14 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
-
 /**
- * 
+ * Export base
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ * @abstract
  */
 abstract class TodoyuExportBase {
-
-
 
 	/**
 	 * @var array

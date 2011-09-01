@@ -18,7 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
 /**
  * Manage mail DB logs
  *
@@ -28,7 +27,9 @@
 class TodoyuMailManager {
 
 	/**
-	 * @var	String		Default table for database requests
+	 * Default table for database requests
+	 *
+	 * @var	String
 	 */
 	const TABLE = 'system_log_email';
 

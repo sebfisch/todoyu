@@ -26,7 +26,12 @@
  */
 class TodoyuTokenManager {
 
+	/**
+	 * Database table
+	 */
 	const TABLE = 'system_token';
+
+
 
 	/**
 	 * Token Getter

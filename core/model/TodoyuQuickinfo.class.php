@@ -28,11 +28,15 @@ class TodoyuQuickinfo {
 
 	/**
 	 * Element key. Mostly a record ID
+	 *
+	 * @var int|String
 	 */
 	private $element = 0;
 
 	/**
 	 * Quickinfo type
+	 *
+	 * @var	String
 	 */
 	private $type;
 

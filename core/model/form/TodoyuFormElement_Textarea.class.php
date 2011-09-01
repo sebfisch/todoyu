@@ -31,9 +31,9 @@ class TodoyuFormElement_Textarea extends TodoyuFormElement {
 	/**
 	 * Constructor
 	 *
-	 * @param	String		$name
+	 * @param	String			$name
 	 * @param	TodoyuFieldset	$fieldset
-	 * @param	Array		$config
+	 * @param	Array			$config
 	 */
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
 		parent::__construct('textarea', $name, $fieldset, $config);

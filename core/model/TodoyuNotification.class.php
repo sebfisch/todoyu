@@ -29,17 +29,23 @@
 class TodoyuNotification {
 
 	/**
-	 * @var	Integer		Notification type: success
+	 * Notification type: success
+	 *
+	 * @var	Integer
 	 */
 	const TYPE_SUCCESS	= 1;
 
 	/**
-	 * @var	Integer		Notification type: error
+	 * Notification type: error
+	 *
+	 * @var	Integer
 	 */
 	const TYPE_ERROR	= 2;
 
 	/**
-	 * @var	Integer		Notification type: info
+	 * Notification type: info
+	 *
+	 * @var	Integer
 	 */
 	const TYPE_INFO		= 3;
 

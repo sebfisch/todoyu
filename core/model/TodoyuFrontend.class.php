@@ -26,6 +26,11 @@
  */
 class TodoyuFrontend {
 
+	/**
+	 * Navigation entries for all areas (stores key, label, href, position[, type]) for main and resp. sub navigational items
+	 *
+     * @var	Array
+     */
 	private static $navi = array();
 
 	/**
@@ -46,7 +51,7 @@ class TodoyuFrontend {
 
 
 	/**
-	 * Get active tab submenu tab
+	 * Get active tab sub menu tab
 	 *
 	 * @param	String		$parentTab
 	 * @return	String

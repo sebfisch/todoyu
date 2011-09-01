@@ -27,17 +27,23 @@
 class TodoyuNumeric {
 
 	/**
-	 * @var	Integer		Bytes per kilobyte
+	 * Bytes per kilobyte
+	 *
+	 * @var	Integer
 	 */
 	const BYTES_KILOBYTE	= 1024;
 
 	/**
-	 * @var	Integer		Bytes per megabyte
+	 * Bytes per megabyte
+	 *
+	 * @var	Integer
 	 */
 	const BYTES_MEGABYTE	= 1048576;
 
 	/**
-	 * @var	Integer		Bytes per gigabyte
+	 * Bytes per gigabyte
+	 *
+	 * @var	Integer
 	 */
 	const BYTES_GIGABYTE	= 1073741824;
 

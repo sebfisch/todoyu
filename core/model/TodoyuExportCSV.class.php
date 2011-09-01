@@ -20,11 +20,13 @@
 
 
 /**
+ * TodoyuExportBase
+ * CSV export
  *
+ * @package		Todoyu
+ * @subpackage	Core
  */
 class TodoyuExportCSV extends TodoyuExportBase {
-
-
 
 	/**
 	 * @var string

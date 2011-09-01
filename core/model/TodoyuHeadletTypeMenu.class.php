@@ -27,15 +27,33 @@
  */
 abstract class TodoyuHeadletTypeMenu extends TodoyuHeadlet {
 
+	/**
+	 * Type
+	 *
+	 * @var	String
+	 */
 	protected $type = 'menu';
 
+
+
+	/**
+	 * Init type
+	 */
 	protected function initType() {
 		$this->addButtonClass('headletTypeMenu');
 	}
 
+
+
 	abstract protected function getMenuItems();
 
 
+
+	/**
+	 * Render headlet type menu items
+	 *
+	 * @return	String
+	 */
 	private function renderMenuItems() {
 		$items	= $this->getMenuItems();
 
@@ -53,7 +71,7 @@ abstract class TodoyuHeadletTypeMenu extends TodoyuHeadlet {
 	/**
 	 * Render items of headlet type menu
 	 *
-	 * @return String
+	 * @return	String
 	 */
 	public function render() {
 		$this->data['content'] = $this->renderMenuItems();

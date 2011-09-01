@@ -18,7 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-
 /**
  * Use an openOffice writer document as template, and replace all markers
  * Dwoo will process the content.xml file for Dwoo variables
