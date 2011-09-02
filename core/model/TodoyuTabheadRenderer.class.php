@@ -27,39 +27,6 @@
 class TodoyuTabheadRenderer {
 
 	/**
-	 * Render tab head
-	 *
-	 * @param	String		$htmlId
-	 * @param	String		$class
-	 * @param	String		$classKey
-	 * @param	String		$active
-	 * @param	String		$label
-	 * @param	String		$position
-	 * @param	Integer		$hasIcon
-	 * @param	Integer		$elementAmount
-	 * @return	String
-	 */
-	public static function renderTab($htmlId, $class, $classKey, $active, $label, $position, $hasIcon = 0, $elementAmount = 0) {
-		$tmpl	= 'core/view/tabhead.tmpl';
-		$data	= array(
-			'tab' => array(
-				'htmlId'	=> $htmlId,
-				'class'		=> $class,
-				'classKey'	=> $classKey,
-				'label'		=> $label,
-				'position'	=> $position,
-				'hasIcon'	=> $hasIcon,
-				'elementAmount'=> $elementAmount
-			),
-			'active'	=> $active,
-		);
-
-		return Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
 	 * Render tabs. Parse labels
 	 *
 	 * @param	String	$name
