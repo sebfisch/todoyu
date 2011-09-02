@@ -286,22 +286,11 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expected, $format);
 
 
-			// Test with debugging enabled
-		$debug	= Todoyu::$CONFIG['DEBUG'];
-
-		Todoyu::$CONFIG['DEBUG'] = true;
-		$format		= TodoyuTime::getFormat('notavailableformatstring');
-		$this->assertEquals('core.dateformat.notavailableformatstring', $format);
-
-
-			// Test with debugging disabled
-		Todoyu::$CONFIG['DEBUG'] = false;
-		$format		= TodoyuTime::getFormat('notavailableformatstring');
-		$this->assertEquals('', $format);
-
+		$result		= TodoyuTime::getFormat('notavailableformatstring');
+		$expected	= 'core.dateformat.notavailableformatstring';
+		$this->assertEquals($expected, $result);
 
 			// Restore settings
-		Todoyu::$CONFIG['DEBUG'] = $debug;
 		Todoyu::setLocale($currentLocale);
 	}
 
