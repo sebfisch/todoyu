@@ -23,10 +23,13 @@ require_once(realpath(dirname(__FILE__) . '/../inc/global.php'));
 	// Load all boot.php files of the installed extensions
 TodoyuExtensions::loadAllBoot();
 
-require_once(PATH_CORE . '/inc/init.php');
-
 	// Initialize CLI run
 TodoyuCli::init();
+
+	// Prevent todoyu init
+Todoyu::$CONFIG['INIT'] = false;
+
+require_once(PATH_CORE . '/inc/init.php');
 
 	// Load all init.php files of the installed extensions
 TodoyuExtensions::loadAllInit();
