@@ -49,6 +49,8 @@ class TodoyuCli {
 	public static function init() {
 		chdir(PATH);
 
+		TodoyuErrorHandler::setActive(false);
+
 			// Predefine URL constants
 		if( ! defined('SERVER_URL') ) {
 			$protocol	= stristr(Todoyu::$CONFIG['SYSTEM']['todoyuURL'], 'https://') !== false ? 'https' : 'http';
