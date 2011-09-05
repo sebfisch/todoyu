@@ -43,4 +43,6 @@ set_time_limit(60);
 	// Run scheduler
 TodoyuSeleniumManager::mergeAllTests();
 
+echo "All selenium tests merged into a master suite file";
+
 ?>
