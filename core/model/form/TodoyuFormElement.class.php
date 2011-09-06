@@ -552,7 +552,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 				if( ! empty($this->config['required']['@attributes']['label']) ) {
 					$this->setErrorMessage($this->config['required']['@attributes']['label']);
 				} else {
-					$this->setErrorMessage('LLL:core.form.field.isrequired');
+					$this->setErrorMessage('core.form.field.isrequired');
 				}
 
 				return false;
@@ -584,7 +584,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 				if( isset($validatorConfig['@attributes']['msg']) ) {
 					$this->setErrorMessage(Todoyu::Label($validatorConfig['@attributes']['msg']));
 				} else {
-					$this->setErrorMessage('LLL:core.form.field.hasError');
+					$this->setErrorMessage('core.form.field.hasError');
 				}
 			}
 
