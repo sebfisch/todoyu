@@ -692,6 +692,21 @@ class TodoyuTime {
 
 
 	/**
+	 * Get amount of days between given dates
+	 *
+	 * @param	Integer		$dateStart
+	 * @param	Integer		$dateEnd
+	 * @return	Integer
+	 */
+	public static function getAmountDaysInRange($dateStart, $dateEnd) {
+		$daysInRange	= self::getDayTimestampsInRange($dateStart, $dateEnd);
+
+		return sizeof($daysInRange);
+	}
+
+
+
+	/**
 	 * Get dates of the days (at 00:00) which intersect the two given timespans
 	 *
 	 * @param	Integer		$dateStart1
