@@ -86,26 +86,28 @@ Todoyu.ContextMenu = {
 	 *
 	 * @private
 	 * @method	load
-	 * @param	{String}		name				Name of the contextmenu type
+	 * @param	{String}		type				Name of the contextmenu type
 	 * @param	{Function}		callback			Callback function to parse ID from element
 	 * @param	{Element}		observedElement		Observed element
 	 * @param	{Event}			event				Click event object
 	 * @return	{Boolean}
 	 */
-	load: function(name, callback, observedElement, event) {
+	load: function(type, callback, observedElement, event) {
 			// Stop click event to prevent browsers context menu
 		event.stop();
+
+		var elementKey	= callback(observedElement, event);
 
 		var url		= Todoyu.getUrl('core', 'contextmenu');
 		var options	= {
 			parameters: {
 				action:		'get',
-				contextmenu:name,
-				element:	callback(observedElement, event)
+				contextmenu:type,
+				element:	elementKey
 			}
 		};
 
-		this.showMenu(url, options, event);
+		this.showMenu(url, options, event, type, elementKey);
 
 		return false;
 	},
@@ -120,17 +122,19 @@ Todoyu.ContextMenu = {
 	 * @param	{String}	url
 	 * @param	{Array}		options
 	 * @param	{Event}		event
+	 * @param	{String}	type
+	 * @param	{String}	elementKey
 	 */
-	showMenu: function(url, options, event) {
+	showMenu: function(url, options, event, type, elementKey) {
 			// Wrap to onComplete function to call renderMenu right before the defined onComplete function
-		options.onComplete = (options.onComplete || Prototype.emptyFunction).wrap(function(event, proceed, transport, json) {
+		options.onComplete = (options.onComplete || Prototype.emptyFunction).wrap(function(proceed, transport, json) {
 				// Build menu HTML from json
 			this.buildMenuFromJSON(transport.responseJSON);
 				// Set menu dimensions based on the event location and the items
-			this.setMenuDimensions(event);
+			this.setMenuDimensions(event, type, elementKey);
 				// Call defined onComplete function
-			proceed(transport, json);
-		 }.bind(this, event));
+			proceed(transport, json, type, elementKey);
+		 }.bind(this));
 
 		Todoyu.send(url, options);
 	},
@@ -158,8 +162,10 @@ Todoyu.ContextMenu = {
 	 * @private
 	 * @method	setMenuDimensions
 	 * @param	{Event}		event
+	 * @param	{String}	type
+	 * @param	{String}	elementKey
 	 */
-	setMenuDimensions: function(event) {
+	setMenuDimensions: function(event, type, elementKey) {
 			// Fetch menu dimension data
 		var menu		= $('contextmenu');
 		var left		= event.pointerX();
@@ -187,16 +193,18 @@ Todoyu.ContextMenu = {
 
 			// Set position of the menu
 		menu.setStyle({
-			'position':		'absolute',
-			'display':		'block',
-			'left':			left + 'px',
-			'top':			top + 'px'
+			position:	'absolute',
+			display:	'block',
+			left:		left + 'px',
+			top:		top + 'px'
 		});
 
 			// Observe outside clicks
 		this.bodyClickObserver = document.body.on('click', this.hide.bind(this));
 			// Observe context-menu-clicks on contextmenu
 		menu.on('contextmenu', this.preventContextMenu.bind(this));
+
+		Todoyu.Hook.exec('core.contextmenu', type, elementKey, left, top);
 	},
 
 
