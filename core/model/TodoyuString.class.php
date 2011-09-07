@@ -695,21 +695,79 @@ class TodoyuString {
 	 *  - Remove empty paragraphs from the beginning
 	 *  - Remove <pre> tags and add <br> tags for the newlines
 	 *
-	 * @param	String		$text
+	 * @param	String		$html
 	 * @return	String
 	 */
-	public static function cleanRTEText($text) {
-		if( substr($text, 0, 13) === '<p>&nbsp;</p>' ) {
-			$text	= substr($text, 13);
+	public static function cleanRTEText($html) {
+		if( substr($html, 0, 13) === '<p>&nbsp;</p>' ) {
+			$html	= substr($html, 13);
 		}
 
-		if( strpos($text, '<pre>') !== false ) {
-			$prePattern	= '/<pre>(.*?)<\/pre>/s';
-			$text		= preg_replace_callback($prePattern, array(self,'callbackPreText'), $text);
-			$text		= str_replace("\n", '', $text);
+			// Fix problem with <pre> tags from RTE
+		$html	= self::cleanPreTagsInRTE($html);
+			// Remove event handler attributes to prevent XSS
+		$html	= self::cleanXssTagAttributes($html);
+
+		return trim($html);
+	}
+
+
+
+	/**
+	 * Remove <pre> tags and add <br> tags for line breaks
+	 *
+	 * @param	String		$html
+	 * @return	String
+	 */
+	private static function cleanPreTagsInRTE($html) {
+		if( strpos($html, '<pre>') !== false ) {
+			$pattern	= '/<pre>(.*?)<\/pre>/s';
+			$html		= preg_replace_callback($pattern, array('TodoyuString','callbackPreText'), $html);
+			$html		= str_replace("\n", '', $html);
 		}
 
-		return trim($text);
+		return $html;
+	}
+
+
+
+	/**
+	 * Callback for cleanRTEText
+	 * Add <br> tags inside the <pre> tags
+	 *
+	 * @param	Array		$match
+	 * @return	String
+	 */
+	private static function callbackPreText(array $match) {
+		return nl2br(trim($match[1]));
+	}
+
+
+
+	/**
+	 * Cleanup for XSS in tag attributes (onclick, ...)
+	 *
+	 * @param	String		$html
+	 * @return	String
+	 */
+	private static function cleanXssTagAttributes($html) {
+		$pattern	= '/<(?:.+?)( on(?:\w{4,})=(["\'])(?:.*?)[^\\]\2)(?:[^>]*?)>/';
+		$html		= preg_replace_callback($pattern, array('TodoyuString','callbackXssTagAttributes'), $html);
+
+		return $html;
+	}
+
+
+
+	/**
+	 * Callback for XSS attribute cleanup
+	 * Replace event handler attributes from tags
+	 *
+	 * @param	Array	$match
+	 * @return	String
+	 */
+	private static function callbackXssTagAttributes(array $match) {
+		return str_replace($match[1], '', $match[0]);
 	}
 
 
@@ -847,9 +905,9 @@ class TodoyuString {
 	/**
 	 * Build a HTML tag with attributes
 	 *
-	 * @param	String		$tagName
-	 * @param	Array		$attributes
-	 * @param	String		$content			Optional HTML content to be wrapped
+	 * @param	String			$tagName
+	 * @param	Array			$attributes
+	 * @param	String|Boolean	$content			Optional HTML content to be wrapped
 	 * @return	String
 	 */
 	public static function buildHtmlTag($tagName, array $attributes = array(), $content = false) {
@@ -866,19 +924,6 @@ class TodoyuString {
 		} else {
 			return '<' . $tagName . ' ' . $attrList . ' />';
 		}
-	}
-
-
-
-	/**
-	 * Callback for cleanRTEText
-	 * Add <br> tags inside the <pre> tags
-	 *
-	 * @param	Array		$matches
-	 * @return	String
-	 */
-	private static function callbackPreText(array $matches) {
-		return nl2br(trim($matches[1]));
 	}
 
 

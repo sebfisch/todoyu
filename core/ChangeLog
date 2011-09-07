@@ -2,7 +2,7 @@ todoyu core changelog
 
 core 2.1.2 - ???
 	* Bugfix: #123 Text form fields are ignoring defined default values
-	* Add: Added getRowCount() method to TodoyuDatabase
+
 	* Bugfix: #185 Deleting an access role in sysmanager caused a fatal error (invalid function call)
 	* Bugfix: #189 Problems with character set conversion when server character sets are not utf-8
 	* Bugfix: Problems with close handling for popups in IE8. Redesigned callback structure
@@ -28,6 +28,7 @@ core 2.1.2 - ???
 	* Add: Allow to hook in into the form display event in javascript
 	* Add: Hook core.login on successful login
 	* Add: Hooks core.record.add, core.record.update, core.record.delete
+	* Add: Added getRowCount() method to TodoyuDatabase
 	* Remove: Removed unused function TodoyuArray::convertToUTF8Array
 	* Update: JsCalendar library updated. Added some extra utf-8 language packages (provided by Captain_FLAM)
 	* Update: tinyMCE 3.4.4
