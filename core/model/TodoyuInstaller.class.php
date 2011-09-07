@@ -39,6 +39,8 @@ class TodoyuInstaller {
 	 * Process and display current step of installer
 	 */
 	public static function run() {
+		TodoyuHeader::sendNoCacheHeaders();
+		
 			// Start output buffer
 		ob_start();
 
