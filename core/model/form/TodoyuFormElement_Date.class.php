@@ -157,6 +157,11 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 			$value	= $this->parseDate($value);
 		}
 
+			// 0 = invalid date, so false for empty field
+		if( $value === 0 ) {
+			$value = false;
+		}
+
 		parent::setValue($value);
 	}
 
@@ -169,6 +174,8 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 	 */
 	public function getValueForTemplate() {
 		$value	= $this->getValue();
+
+		TodoyuDebug::printInFirebug($value, 'value');
 
 		return $value === false ? '' : TodoyuTime::format($value, $this->getFormatKey());
 	}
