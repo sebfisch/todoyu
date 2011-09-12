@@ -231,7 +231,25 @@ class TodoyuFileManager {
 			return true;
 		}
 
-		return mkdir($directoryPath, $mode, true);
+		$success	= mkdir($directoryPath, $mode, true);
+
+			// Make sure
+		if( $success ) {
+			$last	= null;
+			while( $last != $directoryPath && is_dir($directoryPath) ) {
+				if( ! @chmod($directoryPath, $mode) ) {
+					break;
+				}
+				$last			= $directoryPath;
+				$directoryPath 	= dirname($directoryPath);
+
+				if( $directoryPath === PATH ) {
+					break;
+				}
+			}
+		}
+
+		return $success;
 	}
 
 
