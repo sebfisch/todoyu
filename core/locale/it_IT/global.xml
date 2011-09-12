@@ -20,6 +20,7 @@
 	<label index="delete">Elimina</label>
 	<label index="deleteRecord">Elimina record</label>
 	<label index="show">Mostra</label>
+	<label index="showDetails">Mostra dettagli</label>
 	<label index="hide">Nascondi</label>
 	<label index="unhide">Ri-mostra</label>
 	<label index="rename">Rinomina</label>

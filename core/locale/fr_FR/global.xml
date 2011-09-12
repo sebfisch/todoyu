@@ -22,6 +22,7 @@
 	<label index="delete">Effacer</label>
 	<label index="deleteRecord">Effacer l'enregistrement</label>
 	<label index="show">Montrer</label>
+	<label index="showDetails">Voir les détails</label>
 	<label index="hide">Cacher</label>
 	<label index="unhide">montrer</label>
 	<label index="rename">Renommer</label>

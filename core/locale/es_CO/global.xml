@@ -20,6 +20,7 @@
 	<label index="delete">Borrar</label>
 	<label index="deleteRecord">Borrar registro</label>
 	<label index="show">Mostrar</label>
+	<label index="show">Mostrar detalles</label>
 	<label index="hide">Ocultar</label>
 	<label index="unhide">desocultar</label>
 	<label index="rename">Renombrar</label>

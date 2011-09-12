@@ -22,6 +22,7 @@
 	<label index="delete">Löschen</label>
 	<label index="deleteRecord">Einträge löschen</label>
 	<label index="show">Zeigen</label>
+	<label index="showDetails">Details anzeigen</label>
 	<label index="hide">Verstecken</label>
 	<label index="unhide">Sichtbar machen</label>
 	<label index="rename">Umbenennen</label>
