@@ -175,8 +175,6 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 	public function getValueForTemplate() {
 		$value	= $this->getValue();
 
-		TodoyuDebug::printInFirebug($value, 'value');
-
 		return $value === false ? '' : TodoyuTime::format($value, $this->getFormatKey());
 	}
 
