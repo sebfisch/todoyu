@@ -1,6 +1,6 @@
 todoyu core changelog
 
-core 2.1.2 - ???
+core 2.1.2 - not released yet
 	* Bugfix: #123 Text form fields are ignoring defined default values
 	* Bugfix: #185 Deleting an access role in sysmanager caused a fatal error (invalid function call)
 	* Bugfix: #189 Problems with character set conversion when server character sets are not utf-8
