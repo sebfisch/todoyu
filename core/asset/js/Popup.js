@@ -73,8 +73,8 @@ Todoyu.Popup = Class.create(Window, {
 	 * Handle contentUrl, content and element parameter
 	 *
 	 * @constructor
-	 * @param	{Window.initialize}	$super
-	 * @param	{Object}			options
+	 * @param	{Function}	$super		Window.initialize
+	 * @param	{Object}	options
 	 */
 	initialize: function($super, options) {
 		this.todoyuOptions.closeCallback	= this.closeCallback.bind(this);
@@ -184,8 +184,8 @@ Todoyu.Popup = Class.create(Window, {
 	 * Set html content. Evaluate scripts
 	 *
 	 * @method	setHTMLContent
-	 * @param	{Window.setHTMLContent}	$super
-	 * @param	{String}				html
+	 * @param	{Function}	$super			Window.setHTMLContent
+	 * @param	{String}	html
 	 * @param	{Boolean}	evalScripts
 	 */
 	setHTMLContent: function($super, html, evalScripts) {
@@ -216,7 +216,7 @@ Todoyu.Popup = Class.create(Window, {
 	 * Prevent close callback loops
 	 *
 	 * @method	close
-	 * @param	{Function}	$super		Parent close function
+	 * @param	{Function}	$super		Parent close function: Window.close
 	 * @param	{Boolean}	forced		Close was forced by code, not by an event of the window
 	 */
 	close: function($super, forced) {

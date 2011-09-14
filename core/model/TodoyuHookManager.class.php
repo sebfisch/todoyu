@@ -57,7 +57,7 @@ class TodoyuHookManager {
 	 * Call all registered hooks for an event
 	 *
 	 * @param	String		$ext			Extension key
-	 * @param	String		$name			Hookname
+	 * @param	String		$name			Hook name
 	 * @param	Array		$params			Parameters for the hook function
 	 * @return	Array		The return values of all hook functions
 	 */

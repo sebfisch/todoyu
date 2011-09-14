@@ -29,8 +29,8 @@ class TodoyuFrontend {
 	/**
 	 * Navigation entries for all areas (stores key, label, href, position[, type]) for main and resp. sub navigational items
 	 *
-     * @var	Array
-     */
+	 * @var	Array
+	 */
 	private static $navi = array();
 
 	/**

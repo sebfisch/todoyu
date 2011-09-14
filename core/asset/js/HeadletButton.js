@@ -26,7 +26,7 @@ Todoyu.HeadletButton = Class.create(Todoyu.Headlet, {
 
 	/**
 	 * @method	onButtonClick
-	 * @param	{function}	$super
+	 * @param	{Function}	$super
 	 */
 	onButtonClick: function($super) {
 
@@ -36,7 +36,7 @@ Todoyu.HeadletButton = Class.create(Todoyu.Headlet, {
 
 	/**
 	 * @method	isVisible
-	 * @param	{function}	$super
+	 * @param	{Function}	$super		Todoyu.Headlet.isVisible
 	 * @return	{Boolean}
 	 */
 	isVisible: function($super) {
@@ -47,7 +47,7 @@ Todoyu.HeadletButton = Class.create(Todoyu.Headlet, {
 
 	/**
 	 * @method	toggle
-	 * @param	{function}	$super
+	 * @param	{Function}	$super		Todoyu.Headlet.toggle
 	 */
 	toggle: function($super) {
 
@@ -57,7 +57,7 @@ Todoyu.HeadletButton = Class.create(Todoyu.Headlet, {
 
 	/**
 	 * @method	hide
-	 * @param	{function}	$super
+	 * @param	{Function}	$super		Todoyu.Headlet.hide
 	 */
 	hide: function($super) {
 
@@ -67,7 +67,7 @@ Todoyu.HeadletButton = Class.create(Todoyu.Headlet, {
 
 	/**
 	 * @method	show
-	 * @param	{function}	$super
+	 * @param	{Function}	$super		Todoyu.Headlet.show
 	 */
 	show: function($super) {
 

@@ -439,9 +439,9 @@ class TodoyuForm implements ArrayAccess {
 	public function injectFieldset(TodoyuFieldset $fieldset, $position = null) {
 		$fieldset->setFieldsToForm($this);
 
-        $fieldset->setParent($this);
+		$fieldset->setParent($this);
 
-        return $this->addFieldset($fieldset->getName(), $fieldset, $position);
+		return $this->addFieldset($fieldset->getName(), $fieldset, $position);
 	}
 
 

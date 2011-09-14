@@ -55,7 +55,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * Initialize autocompleter
 	 *
 	 * @method	initialize
-	 * @param	{Function}	$super		Constructor of Ajax.Autocompleter
+	 * @param	{Function}	$super			Constructor of Ajax.Autocompleter
 	 * @param	{Element}	inputField
 	 * @param	{Element}	suggestDiv
 	 * @param	{String}	url

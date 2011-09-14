@@ -35,7 +35,7 @@ Todoyu.Ajax.Replacer = Class.create(Ajax.Request, {
 	 * Initialize AJAX replacer
 	 *
 	 * @method	initialize
-	 * @param	{Function}		$super
+	 * @param	{Function}		$super		Constructor of Ajax.Request
 	 * @param	{String}		container
 	 * @param	{String}		url
 	 * @param	{Object}		options

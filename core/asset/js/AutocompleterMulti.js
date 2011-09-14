@@ -51,7 +51,7 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	 * Initialize autocompleter with callbacks
 	 *
 	 * @method	initialize
-	 * @param	{Ajax.Autocompleter}	$super
+	 * @param	{Ajax.Autocompleter}	$super				Todoyu.Autocompleter.initialize
 	 * @param	{String|Element}		field
 	 * @param	{String|Element}		fieldSuggest
 	 * @param	{String}				url
@@ -83,7 +83,7 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	 * Callback when element was selected
 	 *
 	 * @method	onElementSelected
-	 * @param	{Function}	$super
+	 * @param	{Function}	$super				Todoyu.Autocompleter.onElementSelected
 	 * @param	{Function}	callOriginal
 	 * @param	{Element}	inputField
 	 * @param	{Element}	selectedListElement
@@ -121,9 +121,9 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 
 	/**
 	 * @method	callbackModifyRequestParams
-	 * @param	$super
-	 * @param	inputElement
-	 * @param	acParam
+	 * @param	{Function}		$super			Todoyu.Autocompleter.callbackModifyRequestParams
+	 * @param	{Element}		inputElement
+	 * @param	{String}		acParam
 	 */
 	callbackModifyRequestParams: function($super, inputElement, acParam) {
 		return acParam;
@@ -138,7 +138,7 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	 * the input is cleared in the multi autocompleter
 	 *
 	 * @method	onKeyup
-	 * @param	{Function}	$super
+	 * @param	{Function}	$super		Todoyu.Autocompleter.onKeyup
 	 * @param	{Event}		event
 	 */
 	onKeyup: function($super, event) {

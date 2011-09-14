@@ -40,7 +40,7 @@ Todoyu.ProgressBox = Class.create(Todoyu.LoaderBox, {
 	 * Initialize progress box
 	 *
 	 * @method	initialize
-	 * @param	{Function}	$super
+	 * @param	{Function}	$super		Parent constructor: Todoyu.LoaderBox.initialize
 	 * @param	{String}	name
 	 * @param	{Object}	config
 	 */

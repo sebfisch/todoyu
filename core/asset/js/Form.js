@@ -110,13 +110,13 @@ Todoyu.Form = {
 	 * @param	{Number}		index
 	 */
 	removeRecord: function(idRecord, fieldName, index) {
-        if( confirm('[LLL:core.form.records.removeconfirm]') ) {
-            var idElement    = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
-            $(idElement).remove();
-        } else {
-           	 // Click event toggled sub form, so toggle again
-            this.toggleRecordForm(idRecord, fieldName, index);
-        }
+		if( confirm('[LLL:core.form.records.removeconfirm]') ) {
+			var idElement	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
+			$(idElement).remove();
+		} else {
+				// Click event toggled sub form, so toggle again
+			this.toggleRecordForm(idRecord, fieldName, index);
+		}
 	},
 
 
