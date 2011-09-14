@@ -68,7 +68,8 @@ button.edit .icon {
 }
 
 button.save .icon {
-	background:url(../img/icons.png) no-repeat 0 -208px;
+	background:url(../img/icons.png) no-repeat 1px -208px;
+	width:18px;
 }
 
 button.cancel .icon {
