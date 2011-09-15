@@ -378,6 +378,9 @@ Todoyu.Tabs = {
 	 * @param	{Boolean}	active
 	 */
 	build: function(listName, name, tabClass, tabLabel, active) {
+			// Label must be at least one char to ensure later resizing in webkit browsers
+		tabLabel	= tabLabel == '' ? ' ' : tabLabel;
+
 		var tab = new Element('li', {
 			'id': listName + '-tab-' + name,
 			'class': 'item bcg05 tabkey-' + name + ' ' + name + ' ' + tabClass
@@ -400,6 +403,8 @@ Todoyu.Tabs = {
 		p.insert(lt);
 		p.insert(icon);
 		p.insert(labeltext);
+
+		tab.title = tabLabel;
 
 		if( active === true ) {
 			tab.addClassName('active');
@@ -425,7 +430,6 @@ Todoyu.Tabs = {
 	addTab: function(listName, tabName, tabClass, tabLabel, isActive, insertAsFirst) {
 		var tab	= this.build(listName, tabName, tabClass, tabLabel, isActive);
 		var list= this.getList(listName);
-		tab.title = tabLabel;
 
 		if( insertAsFirst ) {
 			list.insert({
