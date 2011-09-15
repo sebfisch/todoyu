@@ -101,20 +101,6 @@ var Todoyu = {
 
 
 	/**
-	 * Enable noConflict mode for jQuery if loaded
-	 *
-	 * @todo	Remove when no longer needed for highcharts
-	 * @method	jQueryNoConflict
-	 */
-	jQueryNoConflict: function() {
-		if( window.jQuery ) {
-			window.jQ = window.jQuery.noConflict();
-		}
-	},
-
-
-
-	/**
 	 * Initialize all extensions
 	 * Call the init() function of all extensions in their main container if it exists
 	 *
