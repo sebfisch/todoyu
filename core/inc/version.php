@@ -23,6 +23,6 @@
  *
  */
 define('TODOYU_VERSION', '2.1.2');
-define('TODOYU_UPDATE', '2011-09-12');
+define('TODOYU_UPDATE', '2011-09-15');
 
 ?>
