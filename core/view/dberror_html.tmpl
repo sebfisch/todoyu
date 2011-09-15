@@ -21,33 +21,33 @@ table {
 </style>
 <h1>Database Error!</h1>
 <table width="600" border="0" cellspacing="4" cellpadding="3">
-  <tr>
-	<th width="100" align="left" valign="top" scope="row">Error Message</th>
-	<td width="480" class="errmsg">{$message}</td>
-  </tr>
-  <tr>
-	<th align="left" valign="top" scope="row">Error Code</th>
-	<td>{$code}</td>
-  </tr>
-  <tr>
-	<th align="left" valign="top" scope="row">Error Position</th>
-	<td>{$file} : {$line}</td>
-  </tr>
-  <tr>
-	<th align="left" valign="top" scope="row">Failed Query</th>
-	<td><code>{$query}</code></td>
-  </tr>
-  <tr>
-	<th align="left" valign="top" scope="row">Backtrace</th>
-	<td><code>
-	{foreach $trace step implode="<br />"}
-		<strong>{$step.file}</strong> : {$step.line}<br />
-		&nbsp;&nbsp;{$step.class}{$step.type}{$step.function}()<br />
-		{foreach $step.args nr argument }
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{$nr}] {$argument}<br />
-		{/foreach}
-	{/foreach} 
+	<tr>
+		<th width="100" align="left" valign="top" scope="row">Error Message</th>
+		<td width="480" class="errmsg">{$message}</td>
+	</tr>
+	<tr>
+		<th align="left" valign="top" scope="row">Error Code</th>
+		<td>{$code}</td>
+	</tr>
+	<tr>
+		<th align="left" valign="top" scope="row">Error Position</th>
+		<td>{$file} : {$line}</td>
+	</tr>
+	<tr>
+		<th align="left" valign="top" scope="row">Failed Query</th>
+		<td><code>{$query}</code></td>
+	</tr>
+		<tr>
+			<th align="left" valign="top" scope="row">Backtrace</th>
+			<td><code>
+				{foreach $trace step implode="<br />"}
+					<strong>{$step.file}</strong> : {$step.line}<br />
+					&nbsp;&nbsp;{$step.class}{$step.type}{$step.function}()<br />
+					{foreach $step.args nr argument}
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{$nr}] {$argument}<br />
+				{/foreach}
+	{/foreach}
 	</code>
 	</td>
-  </tr>
+	</tr>
 </table>
