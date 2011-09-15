@@ -87,8 +87,8 @@ button.expandAll .icon {
 }
 
 button.saveanddownload .icon {
-	background:url(../img/icons.png) no-repeat 4px -838px;
-	width:21px;
+	background:url(../img/icons.png) no-repeat 5px -838px;
+	width:22px;
 }
 
 button.upload .icon, {
@@ -111,8 +111,8 @@ button.generate .icon {
 }
 
 button.exportCsv .icon {
-	background:url(../img/icons.png) 6px -1598px no-repeat;
-	width:24px;
+	background:url(../img/icons.png) 7px -1598px no-repeat;
+	width:28px;
 }
 
 button.clear .icon	{
