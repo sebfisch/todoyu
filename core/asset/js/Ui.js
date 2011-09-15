@@ -395,7 +395,7 @@ Todoyu.Ui = {
 		if( location.hash !== '') {
 			var name	= location.hash.substr(1);
 
-			this.scrollToAnchor(name);
+			this.scrollToAnchor.bind(this).defer(name);
 		}
 	},
 
@@ -425,22 +425,13 @@ Todoyu.Ui = {
 	 */
 	scrollToElement: function(element) {
 		element = $(element);
-		element.scrollTo();
 
 		if( Todoyu.exists('header') ) {
 			var headerHeight	= $('header').getHeight();
-			var scrollOffset	= element.cumulativeScrollOffset().top;
-			var elementOffset	= element.cumulativeOffset().top;
+			var elementTop		= element.cumulativeOffset().top;
+			var fixedTop		= elementTop - headerHeight;
 
-			var scrollBy	= headerHeight;
-
-			if( scrollOffset > headerHeight ) {
-				if( scrollOffset !== elementOffset ) {
-					scrollBy	= scrollOffset - (elementOffset - headerHeight);
-				}
-
-				this.scrollBy.defer(0, -scrollBy);
-			}
+			window.scrollTo(0, fixedTop);
 		}
 	},
 
