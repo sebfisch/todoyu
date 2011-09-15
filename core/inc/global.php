@@ -84,7 +84,7 @@ spl_autoload_register( array('TodoyuAutoloader', 'load') );
 	// Register error handler
 set_error_handler(array('TodoyuErrorHandler', 'handleError'));
 
-	// Load global functions
+	// Load global functions @todo: Only load dwoo plugins when needed
 require_once( PATH_CORE . '/inc/version.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/plugins.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrict.php' );
@@ -97,7 +97,8 @@ if( ! function_exists('strptime') ) {
 	require_once( PATH_CORE . '/inc/strptime.function.php' );
 }
 
-
+	// Load installed extension list
+require_once( PATH_LOCALCONF . '/extensions.php');
 
 	// Load basic core config
 require_once( PATH_CONFIG . '/config.php');
@@ -112,7 +113,6 @@ require_once( PATH_CONFIG . '/colors.php');
 require_once( PATH_LOCALCONF . '/db.php');
 require_once( PATH_LOCALCONF . '/config.php');
 require_once( PATH_LOCALCONF . '/system.php');
-require_once( PATH_LOCALCONF . '/extensions.php');
 require_once( PATH_LOCALCONF . '/extconf.php');
 require_once( PATH_LOCALCONF . '/settings.php');
 
