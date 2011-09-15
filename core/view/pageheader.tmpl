@@ -3,7 +3,7 @@
 <head>
 	<title>{$pagetitle}</title>
 {foreach $metatags metatag}
-	<meta {if $metatag.name}name="{$metatag.name}"{/if} {if $metatag.httpequiv}http-equiv="{$metatag.httpequiv}"{/if} content="{$metatag.content}"  />
+	<meta {if $metatag.name}name="{$metatag.name}"{/if} {if $metatag.httpequiv}http-equiv="{$metatag.httpequiv}"{/if} content="{$metatag.content}" />
 {/foreach}
 {foreach $cssFiles cssFile}
 	<link rel="stylesheet" type="text/css" href="{$cssFile.file}" media="{$cssFile.media}" />

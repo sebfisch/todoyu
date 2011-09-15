@@ -68,12 +68,13 @@ button.edit .icon {
 }
 
 button.save .icon {
-	background:url(../img/icons.png) no-repeat 1px -208px;
-	width:18px;
+	background:url(../img/icons.png) no-repeat 4px -208px;
+	width:23px;
 }
 
 button.cancel .icon {
-	background:url(../img/icons.png) no-repeat 3px -357px;
+	background:url(../img/icons.png) no-repeat 5px -357px;
+	width:21px;
 }
 
 button.delete .icon {
@@ -81,12 +82,18 @@ button.delete .icon {
 }
 
 button.expandAll .icon {
-	background:url(../img/icons.png) no-repeat 0 -600px;
-	width:25px;
+	background:url(../img/icons.png) no-repeat 6px -598px;
+	width:30px;
 }
 
 button.saveanddownload .icon {
-	background:url(../img/icons.png) no-repeat 0 -838px;
+	background:url(../img/icons.png) no-repeat 4px -838px;
+	width:21px;
+}
+
+button.upload .icon, {
+	background:url(../img/icons.png) no-repeat 5px -1692px;
+	width:24px;
 }
 
 button.sendemail .icon {
@@ -94,13 +101,24 @@ button.sendemail .icon {
 }
 
 button.exclamation .icon {
-	background:url(../img/icons.png) no-repeat 0 -386px;
+	background:url(../img/icons.png) no-repeat 2px -387px;
+	width:19px;
 }
 
 button.generate .icon {
-	background:url(../img/icons.png) no-repeat 0 -1629px;
+	background:url(../img/icons.png) no-repeat 4px -1628px;
+	width:22px;
 }
 
+button.exportCsv .icon {
+	background:url(../img/icons.png) 6px -1598px no-repeat;
+	width:24px;
+}
+
+button.clear .icon	{
+	background:url(../img/icons.png) no-repeat 5px -357px;
+	width:21px;
+}
 
 
 /* ---------------------------
