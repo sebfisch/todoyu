@@ -282,11 +282,13 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @param	{Event}		event
 	 */
 	onKeyup: function(event) {
+			// Normal key input = changed value = no valid selection
 		if( this.isNormalKey(event.which) ) {
 			this.valid = false;
 		}
 
-		if( this.isEmpty() ) {
+			// If not the return key, and field is empty => clear value field
+		if( ! this.isReturnKey(event.which) && this.isEmpty() ) {
 			this.clear();
 		}
 	},
@@ -309,6 +311,17 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 			32, // Space
 			9 // Tab
 		].include(keyCode) === false;
+	},
+
+
+
+	/**
+	 * Check whether keyCode matches the return key
+	 *
+	 * @param	{Number}	keyCode
+	 */
+	isReturnKey: function(keyCode) {
+		return keyCode === Event.KEY_RETURN;
 	},
 
 
