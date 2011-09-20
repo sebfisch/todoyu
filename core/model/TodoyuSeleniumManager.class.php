@@ -26,8 +26,17 @@
  */
 class TodoyuSeleniumManager {
 
+	/**
+	 * Target file in cache
+	 *
+	 * @var	String
+	 */
 	private static $pathMasterFile = 'cache/cli/selenium.html';
 
+	/**
+	 * Merge all selenium tests of todoyu
+	 *
+	 */
 	public static function mergeAllTests() {
 		$allTests	= self::getAllTests();
 
