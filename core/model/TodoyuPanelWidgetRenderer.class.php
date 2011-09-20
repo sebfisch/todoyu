@@ -51,7 +51,7 @@ class TodoyuPanelWidgetRenderer {
 				}
 			} else {
 				$debug	= 'Can\'t find requested panel widget: "' . $widgetConfig['class'] . '"';
-				TodoyuDebug::printHtml($debug, 'PanelWidget not found!', null, true);
+				TodoyuDebug::printHtml($debug, 'PanelWidget not found!', true);
 				TodoyuDebug::printHtml($widgetConfig, 'Widget config');
 			}
 		}

@@ -29,6 +29,15 @@
 class TodoyuDebug {
 
 	/**
+	 * Debugging active?
+	 *
+	 * @var	Boolean
+	 */
+	private static $active = false;
+
+
+	
+	/**
 	 * Get information about the position debug was called
 	 *
 	 * @return	Array
@@ -54,6 +63,28 @@ class TodoyuDebug {
 		$checkUsernames		= explode(',', $usernames);
 
 		return in_array($currentUsername, $checkUsernames);
+	}
+
+
+
+	/**
+	 * Check whether debugging is active
+	 *
+	 * @return	Boolean
+	 */
+	public static function isActive() {
+		return self::$active === true;
+	}
+
+
+	
+	/**
+	 * Enable / disable debugging
+	 *
+	 * @param	Boolean		$active
+	 */
+	public static function setActive($active = true) {
+		self::$active = $active ? true : false;
 	}
 
 
@@ -107,15 +138,10 @@ class TodoyuDebug {
 	 *
 	 * @param	Mixed		$item		Item to debug
 	 * @param	String		$title		Title for debug output
-	 * @param	String		$usernames	Only this listed users shall see the debug output
 	 * @param	Boolean		$return		Return or print result
 	 * @return	Void|String
 	 */
-	public static function printPHP($item, $title = '', $usernames = null, $return = false) {
-		if( ! is_null($usernames) && ! self::isCurrentUser($usernames) ) {
-			return;
-		}
-
+	public static function printPHP($item, $title = '', $return = false) {
 		$tmpl	= 'core/view/debug_php.tmpl';
 		$data	= array(
 			'title'		=> $title,
@@ -126,10 +152,12 @@ class TodoyuDebug {
 
 		$debug	= Todoyu::render($tmpl, $data);
 
-		if( $return === true ) {
+		if( $return ) {
 			return $debug;
 		} else {
 			echo $debug;
+
+			return '';
 		}
 	}
 
@@ -172,44 +200,28 @@ class TodoyuDebug {
 	 *
 	 * @param	Mixed		$item		Item to debug
 	 * @param	String		$title		Title for debug output
-	 * @param	String		$usernames	Only this listed users shall see the debug output
 	 * @param	Boolean		$backtrace
 	 */
-	public static function printHtml($item, $title = '', $usernames = null, $backtrace = false) {
-		if( ! is_null($usernames) && !self::isCurrentUser($usernames) ) {
-			return;
+	public static function printHtml($item, $title = '', $backtrace = false) {
+		if( self::isActive() ) {
+			if( $item === false || $item === true || $item === '' || $item === null ) {
+				ob_start();
+				var_dump($item);
+				$debug = ob_get_flush();
+			} else {
+				$debug = print_r($item, true);
+			}
+
+			$tmpl	= 'core/view/debug_html.tmpl';
+			$data	= array(
+				'title'		=> $title,
+				'debug'		=> $debug,
+				'backtrace'	=> $backtrace ? print_r( debug_backtrace(false), true ) : '',
+				'caller'	=> self::getCaller()
+			);
+
+			echo Todoyu::render($tmpl, $data);
 		}
-
-		if( $item === false || $item === true || $item === '' || $item === null ) {
-			ob_start();
-			var_dump($item);
-			$debug = ob_get_flush();
-		} else {
-			$debug = print_r($item, true);
-		}
-
-		$tmpl	= 'core/view/debug_html.tmpl';
-		$data	= array(
-			'title'		=> $title,
-			'debug'		=> $debug,
-			'backtrace'	=> $backtrace ? print_r( debug_backtrace(false), true ) : '',
-			'caller'	=> self::getCaller()
-		);
-
-		echo Todoyu::render($tmpl, $data);
-	}
-
-
-
-	/**
-	 * Print debug message as JSON
-	 *
-	 * @param	Mixed		$item		Item to debug
-	 * @param	String		$title		Title for debug output
-	 * @param	String		$usernames	Only this listed users shall see the debug output
-	 */
-	public static function printJson($item, $title, $usernames = null) {
-		echo "NO JSON DEBUG AT THE MOMENT";
 	}
 
 
@@ -219,14 +231,11 @@ class TodoyuDebug {
 	 *
 	 * @param	Mixed		$item
 	 * @param	String		$title
-	 * @param	String		$usernames
 	 */
-	public static function printInFirebug($item, $title = '', $usernames = null) {
-		if( ! is_null($usernames) && !self::isCurrentUser($usernames) ) {
-			return;
+	public static function printInFirebug($item, $title = '') {
+		if( self::isActive() ) {
+			self::firePhp()->log($item, $title);
 		}
-
-		self::firePhp()->log($item, $title);
 	}
 
 
@@ -267,6 +276,17 @@ class TodoyuDebug {
 		array_shift($backtrace);
 
 		self::printHtml($backtrace, 'Backtrace');
+	}
+
+
+	public static function printFatalExceptionPage(TodoyuException $exception) {
+		$tmpl	= 'core/view/uncaught-exception.tmpl';
+		$data	= array(
+			'exception'	=> $exception
+		);
+
+		echo Todoyu::render($tmpl, $data);
+		exit();
 	}
 
 }
