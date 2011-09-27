@@ -917,9 +917,9 @@ class TodoyuFileManager {
 					self::deleteFile($pathDestElement);
 				}
 				if( $move ) {
-					rename($pathElement, $pathDestElement);
+					self::rename($pathElement, $pathDestElement);
 				} else {
-					copy($pathElement, $pathDestElement);
+					self::copy($pathElement, $pathDestElement);
 				}
 			}
 		}
@@ -938,8 +938,40 @@ class TodoyuFileManager {
 	 * @param	String		$destinationFolder
 	 * @param	Boolean		$hiddenFiles
 	 */
-	public static function moveRecursive($sourceFolder, $destinationFolder, array $exclude = array(), $hiddenFiles = false) {
+	public static function moveRecursive($sourceFolder, $destinationFolder, $hiddenFiles = false) {
 		self::copyRecursive($sourceFolder, $destinationFolder, true, $hiddenFiles);
+	}
+
+
+
+	/**
+	 * Copy file. Wrapper with path fixes
+	 *
+	 * @param	String	$sourceFile
+	 * @param	String	$targetFile
+	 * @return	Boolean
+	 */
+	public static function copy($sourceFile, $targetFile) {
+		$sourceFile	= self::pathAbsolute($sourceFile);
+		$targetFile	= self::pathAbsolute($targetFile);
+
+		return copy($sourceFile, $targetFile);
+	}
+
+
+
+	/**
+	 * Rename file/folder. Wrapper with path fixes
+	 *
+	 * @param	String	$sourceFile
+	 * @param	String	$targetFile
+	 * @return	Boolean
+	 */
+	public static function rename($sourceFile, $targetFile) {
+		$sourceFile	= self::pathAbsolute($sourceFile);
+		$targetFile	= self::pathAbsolute($targetFile);
+
+		return rename($sourceFile, $targetFile);
 	}
 
 
