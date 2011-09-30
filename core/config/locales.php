@@ -51,7 +51,8 @@ Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'es_CO' => array('es_CO.utf8', 'es_CO', 'es'), // Spanish (Columbia)
 	'ja_JP' => array('ja_JP', 'ja', 'ja_JP.eucjp', 'ja_JP.ujis', 'japanese', 'japanese.euc'), // Japanese
 	'sl_SI'	=> array('sl_SI.utf8'),
-	'zh_TW' => array('zh_TW', 'tw', 'Taiwan_Traditional_Chinese') // Taiwan Traditional Chinese
+	'zh_TW' => array('zh_TW', 'tw', 'Taiwan_Traditional_Chinese'), // Taiwan Traditional Chinese
+	'pl_PL' => array('pl_PL', 'pl_PL.utf8') // Polish
 );
 
 	// Fallback locales for labels

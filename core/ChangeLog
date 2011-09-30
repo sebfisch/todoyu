@@ -2,6 +2,7 @@ todoyu core changelog
 
 core 2.1.3 - not released yet
 	* Changed: Don't require system locale data to set a locale for translation
+	* Translation: Added polish translation for core
 
 core 2.1.2 - 2011-09-15
 	* Bugfix: Tab layout for chrome fixed

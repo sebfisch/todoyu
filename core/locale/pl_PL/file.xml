@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="files">Pliki</label>
+	<label index="download">Pobierz</label>
+	<label index="upload">Załaduj</label>
+	<label index="size.gb">GB</label>
+	<label index="size.mb">MB</label>
+	<label index="size.kb">KB</label>
+	<label index="size.b">B</label>
+	<label index="filename">Nazwa Pliku</label>
+	<label index="filesize">Wielkość Pliku</label>
+	<label index="upload.progressmessage">Ładowanie Pliku</label>
+	<label index="upload.succeeded">Ładowanie zakończone sukcesem</label>
+	<label index="upload.selectfile">Wybierz plik do załadowania:</label>
+	<label index="upload.error.uploadfailed">Ładowanie nie powiodło się.</label>
+	<label index="upload.failed.maxFileSizeExceeded">Nie udało się załadować: maksymalny dopuszczalny rozmiar pliku został przekroczony.</label>
+	<label index="confirm.delete">Usuń zaznaczone pliki</label>
+	<label index="notify.delete.success">Plik został usunięty:</label>
+	<label index="notify.delete.error">Usuwanie pliku nie powiodło się:</label>
+</labels>
