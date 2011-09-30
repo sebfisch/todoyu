@@ -1,5 +1,8 @@
 todoyu core changelog
 
+core 2.1.3 - not released yet
+	* Changed: Don't require system locale data to set a locale for translation
+
 core 2.1.2 - 2011-09-15
 	* Bugfix: Tab layout for chrome fixed
 	* Bugfix: labels of dynamic tabs float over bounding box of the tab in chrome (ex: view/edit event)

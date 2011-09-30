@@ -247,11 +247,6 @@ class Todoyu {
 			}
 		}
 
-			// Check if locale exists
-		if( ! TodoyuLocaleManager::hasSystemLocale(self::$locale) ) {
-			self::$locale	= TodoyuLocaleManager::getDefaultLocale();
-		}
-
 		return self::$locale;
 	}
 
