@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="tab.todoyu.label">ToDoYu</label>
+	<label index="tab.todoyu.label">todoyu</label>
 	<label index="yes">Tak</label>
 	<label index="ok">Ok</label>
 	<label index="no">Nie</label>

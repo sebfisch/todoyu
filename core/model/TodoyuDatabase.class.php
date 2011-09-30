@@ -1069,9 +1069,7 @@ class TodoyuDatabase {
 		$table	= '`' . $table . '`';
 		$where	= '`id` = ' . intval($idRecord);
 
-		$this->doUpdate($table, $where, $fieldValues, $noQuoteFields);
-
-		return $this->getAffectedRows() === 1;
+		return $this->doUpdate($table, $where, $fieldValues, $noQuoteFields) === 1;
 	}
 
 

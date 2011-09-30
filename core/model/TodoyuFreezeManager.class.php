@@ -111,7 +111,7 @@ class TodoyuFreezeManager {
 
 
 	/**
-	 * Get a freeze by tye and ID
+	 * Get a freeze by type and ID
 	 *
 	 * @param	String			$type
 	 * @param	Integer			$idElement
