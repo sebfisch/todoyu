@@ -645,14 +645,12 @@ Todoyu.Ui = {
 	 *
 	 * @method	addBodyClickObserver
 	 * @param	{Event}	event
+	 * @todo	Remove, because never used? Was a workaround for bad dom structure which was fixed meanwhile
 	 */
 	stopEventBubbling: function(event) {
-		if( window.event ){
-			event.returnValue = false;
-			event.cancelBubble = true;
-		} else{
-			event.preventDefault();
-			event.stopPropagation();
+		if( event ) {
+			Event.extend(event);
+			event.stop();
 		}
 	},
 
