@@ -54,6 +54,9 @@ class TodoyuAutoloader {
 
 		if( Todoyu::$CONFIG['AUTOLOAD']['CLASS'][$classNameLower] ) {
 			include(Todoyu::$CONFIG['AUTOLOAD']['CLASS'][$classNameLower]);
+		} else {
+			// Let PHP throw a class not found error
+			// This also happens when we check with class_exists, so we don't handle this condition here
 		}
 	}
 
@@ -152,8 +155,16 @@ class TodoyuAutoloader {
 		$extKeys	= TodoyuExtensions::getInstalledExtKeys();
 		foreach($extKeys as $extKey) {
 			foreach(Todoyu::$CONFIG['AUTOLOAD']['ext'] as $extLoadPath) {
-				$path		= TodoyuExtensions::getExtPath($extKey, $extLoadPath);
-				$classList	= array_merge($classList, self::getClassListFromFolder($path));
+				$path			= TodoyuExtensions::getExtPath($extKey, $extLoadPath);
+				$folderClassList= self::getClassListFromFolder($path);
+				$doubleClasses	= array_intersect(array_keys($folderClassList), array_keys($classList));
+
+					// Prevent class name conflicts
+				if( sizeof($doubleClasses) > 0 ) {
+					throw new TodoyuExceptionClassNameConflict($doubleClasses);
+				}
+
+				$classList	= array_merge($classList, $folderClassList);
 			}
 		}
 

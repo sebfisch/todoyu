@@ -21,51 +21,67 @@
 	// Measure processing time
 define('TIME_START', microtime(true));
 
-	// Include global include file
-require_once('core/inc/global.php');
-	// Load default init script
-require_once('core/inc/init.php');
+try {
+		// Include global include file
+	require_once('core/inc/global.php');
+		// Load default init script
+	require_once('core/inc/init.php');
 
-	// Send "no cache" header
-TodoyuHeader::sendNoCacheHeaders();
-TodoyuHeader::sendTypeHTML();
+		// Send "no cache" header
+	TodoyuHeader::sendNoCacheHeaders();
+	TodoyuHeader::sendTypeHTML();
 
-	// Start output buffering
-ob_start();
+		// Start output buffering
+	ob_start();
 
+		// Load all boot.php files of the installed extensions
+	TodoyuExtensions::loadAllBoot();
 
-	// Load all boot.php files of the installed extensions
-TodoyuExtensions::loadAllBoot();
+		// Define request vars as constants
+	TodoyuRequest::initRequest();
 
-	// Define request vars as constants
-TodoyuRequest::initRequest();
+		// Load all init.php files of the installed extensions
+	TodoyuExtensions::loadAllInit();
 
-	// Load all init.php files of the installed extensions
-TodoyuExtensions::loadAllInit();
+		// Process sharing token if any
+	if( TodoyuTokenManager::hasRequestToken() ) {
+		$hash	= TodoyuTokenManager::geTokenHashValueFromRequest();
+		die(TodoyuTokenCallbackManager::getCallbackResultByHash($hash));
+	}
 
-	// Process sharing token if any
-if( TodoyuTokenManager::hasRequestToken() ) {
-	$hash	= TodoyuTokenManager::geTokenHashValueFromRequest();
-	die(TodoyuTokenCallbackManager::getCallbackResultByHash($hash));
+	//throw new TodoyuException('Hello World');
+
+		// Dispatch request to selected controller
+	TodoyuActionDispatcher::dispatch();
+
+		// Measure processing time
+	define('TIME_END', microtime(true));
+	define('TIME_TOTAL', TIME_END - TIME_START);
+
+		// Include finishing script
+	require( PATH_CORE. '/inc/finish.php' );
+
+		// Send output
+	ob_end_flush();
+} catch(TodoyuException $e) {
+	ob_end_clean();
+	
+	TodoyuDebug::printFatalExceptionPage($e);
+	exit();
+} catch(Exception $e) {
+		// Remove all generated content
+	ob_end_clean();
+
+	if( TodoyuDebug::isActive() ) {
+		if( version_compare(PHP_VERSION, '5.3.0') === -1 ) {
+			throw new Exception($e->getMessage(), $e->getCode());
+		} else {
+			throw new Exception($e->getMessage(), $e->getCode(), $e);
+		}
+	} else {
+		echo "Oops. A fatal error occurred. Please enable debugging to see more details";
+		exit();
+	}
 }
-
-	// Dispatch request to selected controller
-TodoyuActionDispatcher::dispatch();
-
-
-	// Measure processing time
-define('TIME_END', microtime(true));
-define('TIME_TOTAL', TIME_END - TIME_START);
-
-	// Include finishing script
-require( PATH_CORE. '/inc/finish.php' );
-
-	// Query debugging
-//if( $_GET['qh'] == 1 ) {
-//	TodoyuDebug::printHtml(Todoyu::db()->getQueryHistory());
-//}
-
-	// Send output
-ob_end_flush();
 
 ?>
