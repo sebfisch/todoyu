@@ -1,5 +1,8 @@
 todoyu core changelog
 
+core 2.2.0 - not released yet
+	* Removed: Color styles for project (moved to project)
+
 core 2.1.3 - not released yet
 	* Changed: Don't require system locale data to set a locale for translation
 	* Changed: TodoyuDebug handles now debugging status
