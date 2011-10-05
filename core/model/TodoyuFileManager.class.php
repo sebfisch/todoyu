@@ -167,7 +167,7 @@ class TodoyuFileManager {
 
 
 	/**
-	 * Delete given directory
+	 * Delete given directory and all contained files
 	 *
 	 * @param	String		$pathFolder
 	 * @return	Boolean
