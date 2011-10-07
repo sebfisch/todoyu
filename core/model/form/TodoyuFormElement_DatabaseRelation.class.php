@@ -185,12 +185,15 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$recordData	= $this->getRecord($index);
 		$idRecord	= intval($recordData['id']);
 
-			// Construct form object
-		$recordForm	= TodoyuFormManager::getForm($xmlPath, $idRecord, array('field'=>$this));
-
+			// Load record data from hooks
 		$recordData	= TodoyuFormHook::callLoadData($xmlPath, $recordData, $idRecord);
 
-		$formName	= $this->getForm()->getName() . '[' . $this->getName() . '][' . $index . ']';
+			// Construct form object
+		$formParams	= array(
+			'field'	=> $this,
+			'data'	=> $recordData
+		);
+		$recordForm	= TodoyuFormManager::getForm($xmlPath, $idRecord, $formParams);
 
 			// Set form data
 		$recordForm->setFormData($recordData);
@@ -200,6 +203,8 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 		$recordForm->setUseRecordID(false);
 		$recordForm->setRecordID($idRecord);
 		$recordForm->setAttribute('noFormTag', true);
+
+		$formName	= $this->getForm()->getName() . '[' . $this->getName() . '][' . $index . ']';
 		$recordForm->setName($formName);
 
 		return $recordForm;
@@ -277,7 +282,10 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 				$function	= $config['label']['function'];
 
 				if( TodoyuFunction::isFunctionReference($function) ) {
-					$label = TodoyuFunction::callUserFunction($function, $this, $record);
+					$funcLabel	= TodoyuFunction::callUserFunction($function, $this, $record);
+					if( $funcLabel !== false ) {
+						$label = $funcLabel;
+					}
 				}
 				break;
 
