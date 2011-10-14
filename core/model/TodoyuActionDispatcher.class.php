@@ -97,8 +97,6 @@ class TodoyuActionDispatcher {
 			echo $controller->runAction(ACTION);
 		} catch(TodoyuControllerException $e) {
 			$e->printError();
-		} catch(Exception $e) {
-			die("Error: " . $e->getMessage());
 		}
 	}
 
