@@ -8,7 +8,7 @@ body {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 	color:#000000;
-	background-color: #E3EACE;
+	background-color:#E3Eace;
 }
 p {
 	text-align:center;
@@ -16,11 +16,11 @@ p {
 .oops {
 	font-weight:bold;
 	font-size:80px;
-	height: 56px;
-	margin-top: 37px;
+	height:56px;
+	margin-top:37px;
 }
 .info {
-	font-size: 20px;
+	font-size:20px;
 }
 table.params {
 	margin-top:30px;
@@ -29,7 +29,7 @@ th {
 	text-align:left;
 }
 th, td {
-	border-bottom: 1px dashed #CCC;
+	border-bottom:1px dashed #CCC;
 }
 .link {
 	margin-top:30px;
@@ -43,12 +43,16 @@ th, td {
 <p class="reason">{Label core.global.controllerError.reason}</p>
 <table width="300" border="0" align="center" cellpadding="5" cellspacing="0" class="params">
 	<tr>
+		<th scope="row">Controller</th>
+		<td>{$controller}</td>
+	</tr>
+	<tr>
 		<th width="80" scope="row">Extension</th>
 		<td width="200">{$ext}</td>
 	</tr>
 	<tr>
-	<th scope="row">Controller</th>
-		<td>{$controller}</td>
+		<th>Class Name</th>
+		<td>{$className}</td>
 	</tr>
 </table>
 <p class="link"><a href="{$pathWeb}">{Label core.global.controllerError.goBack}</a></p>

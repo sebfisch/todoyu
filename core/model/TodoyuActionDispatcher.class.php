@@ -145,6 +145,7 @@ class TodoyuActionDispatcher {
 		$data	= array(
 			'ext'			=> $ext,
 			'controller'	=> $controller,
+			'className'		=> self::getControllerClassName($ext, $controller),
 			'pathWeb'		=> PATH_WEB
 		);
 
@@ -177,8 +178,8 @@ class TodoyuActionDispatcher {
 	 * @return	TodoyuActionController
 	 */
 	public static function getControllerObject($ext = '', $controller = '', array $params = array()) {
-		$controllerClassName	= self::getControllerClassName($ext, $controller);
-		$instance	= new $controllerClassName($params);
+		$controllerClassName= self::getControllerClassName($ext, $controller);
+		$instance			= new $controllerClassName($params);
 
 		return $instance;
 	}

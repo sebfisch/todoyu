@@ -27,8 +27,9 @@
 require_once( PATH_LOCALCONF . '/override.php');
 
 	// File Logger
+define('PATH_ERRORLOG', PATH . '/log/error.log');
 TodoyuLogger::addLogger('TodoyuLoggerFile', array(
-	'file'	=> PATH . '/log/error.log'
+	'file'	=> PATH_ERRORLOG
 ));
 	// FirePhp Logger
 TodoyuLogger::addLogger('TodoyuLoggerFirePhp');
