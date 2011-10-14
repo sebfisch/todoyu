@@ -57,6 +57,25 @@ class TodoyuRecordManager {
 
 
 	/**
+	 * Get a list of records of a specific class
+	 *
+	 * @param	String		$className
+	 * @param	Array		$recordIDs
+	 * @return	Array		List of objects
+	 */
+	public static function getRecordList($className, array $recordIDs) {
+		$records	= array();
+
+		foreach($recordIDs as $idRecord) {
+			$records[] = self::getRecord($className, $idRecord);
+		}
+
+		return $records;
+	}
+
+
+
+	/**
 	 * Remove a record from cache
 	 *
 	 * @param	String		$className
