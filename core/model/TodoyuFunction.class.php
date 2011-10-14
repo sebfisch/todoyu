@@ -43,6 +43,8 @@ class TodoyuFunction {
 
 			$result	= call_user_func_array($funcRefParts, $funcArgs);
 		} else {
+			TodoyuLogger::logError('Invalid function reference: ' . $funcRefString);
+
 			$result = false;
 		}
 
