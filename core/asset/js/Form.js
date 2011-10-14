@@ -102,6 +102,21 @@ Todoyu.Form = {
 
 
 	/**
+	 * Highlight a sub record
+	 *
+	 * @param	{Number}	idRecord
+	 * @param	{String}	fieldName
+	 * @param	{Number}	index
+	 */
+	highlightRecordForm: function(idRecord, fieldName, index) {
+		var record = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
+
+		$(record).highlight();
+	},
+
+
+
+	/**
 	 * Remove sub form
 	 *
 	 * @method	removeRecord
