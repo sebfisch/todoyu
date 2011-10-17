@@ -872,6 +872,26 @@ class TodoyuArray {
 		return $new;
 	}
 
+
+
+	/**
+	 * Create an array with the keys from the given array
+	 * Set value to value parameter
+	 *
+	 * @param	Array	$keys
+	 * @param	Mixed	$value
+	 * @return	Array
+	 */
+	public static function createMap(array $keys, $value = 0) {
+		$map	= array();
+
+		foreach($keys as $key) {
+			$map[$key] = $value;
+		}
+
+		return $map;
+	}
+
 }
 
 ?>

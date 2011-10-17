@@ -57,6 +57,20 @@ class TodoyuTime {
 
 
 	/**
+	 * Get current time if time is not a number
+	 *
+	 * @param	Integer		$time
+	 * @return	Integer
+	 */
+	public static function time($time = 0) {
+		$time	= intval($time);
+		
+		return $time === 0 ? NOW : $time;
+	}
+
+
+
+	/**
 	 * Get timestamp of start (00:00:00) of day
 	 *
 	 * @param	Integer|Boolean		$timestamp

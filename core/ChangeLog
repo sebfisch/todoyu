@@ -2,6 +2,9 @@ todoyu core changelog
 
 core 2.2.0 - not released yet
 	* Removed: Color styles for project (moved to project)
+	* Added TodoyuTime::time() to set null values to current time
+	* Added TodoyuDateRange
+	* Added TodoyuArray::createMap()
 
 core 2.1.3 - not released yet
 	* Added: action dispatcher error output contains now also action controller class name
