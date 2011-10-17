@@ -50,7 +50,6 @@ class TodoyuCli {
 		chdir(PATH);
 
 		TodoyuErrorHandler::setActive(false);
-		error_reporting(E_ALL ^ E_NOTICE ^ E_STRICT);
 		@ini_set('show_errors', true);
 
 			// Predefine URL constants

@@ -44,10 +44,15 @@ class TodoyuDateRange {
 
 	/**
 	 * Initialize with range
-	 * @param $dateStart
-	 * @param $dateEnd
+	 * 
+	 * @param	Integer		$dateStart
+	 * @param	Integer		$dateEnd
 	 */
-	public function __construct($dateStart, $dateEnd) {
+	public function __construct($dateStart = 0, $dateEnd = 0) {
+		if( $dateStart > 0 && $dateEnd === 0 ) {
+			$dateEnd = $dateStart;
+		}
+		
 		$this->setRange($dateStart, $dateEnd);
 	}
 
@@ -81,7 +86,7 @@ class TodoyuDateRange {
 	 * @param	Integer		$date
 	 */
 	public function setStart($date) {
-		$this->dateStart = TodoyuTime::getStartOfDay($date);
+		$this->dateStart = intval($date);
 	}
 
 
@@ -92,7 +97,7 @@ class TodoyuDateRange {
 	 * @param	Integer		$date
 	 */
 	public function setEnd($date) {
-		$this->dateEnd = TodoyuTime::getEndOfDay($date);
+		$this->dateEnd = intval($date);
 	}
 
 
@@ -103,9 +108,12 @@ class TodoyuDateRange {
 	 * @param	Integer		$year
 	 * @param	Integer		$month
 	 * @param	Integer		$day
+	 * @param	Integer		$hour
+	 * @param	Integer		$minute
+	 * @param	Integer		$second
 	 */
-	public function setStartDate($year, $month, $day) {
-		$this->setStart(mktime(0, 0, 0, $month, $day, $year));
+	public function setStartDate($year, $month, $day, $hour = 0, $minute = 0, $second = 0) {
+		$this->setStart(mktime($hour, $minute, $second, $month, $day, $year));
 	}
 
 	
@@ -116,9 +124,12 @@ class TodoyuDateRange {
 	 * @param	Integer		$year
 	 * @param	Integer		$month
 	 * @param	Integer		$day
+	 * @param	Integer		$hour
+	 * @param	Integer		$minute
+	 * @param	Integer		$second
 	 */
-	public function setEndDate($year, $month, $day) {
-		$this->setEnd(mktime(0, 0, 0, $month, $day, $year));
+	public function setEndDate($year, $month, $day, $hour = 0, $minute = 0, $second = 0) {
+		$this->setEnd(mktime($hour, $minute, $second, $month, $day, $year));
 	}
 
 
@@ -200,11 +211,7 @@ class TodoyuDateRange {
 	 * @return	Boolean
 	 */
 	public function isActive($date = 0) {
-		$date	= intval($date);
-
-		if( $date === 0 ) {
-			$date = time();
-		}
+		$date	= TodoyuTime::time($date);
 
 		return $this->isInRange($date);
 	}
@@ -265,18 +272,6 @@ class TodoyuDateRange {
 
 
 	/**
-	 * Get duration of this range in days
-	 *
-	 * @param	Bool	$absolute
-	 * @return	Integer
-	 */
-	public function getDiffInDays($absolute = false) {
-		return round($this->getDiff($absolute) / TodoyuTime::SECONDS_DAY, 0);
-	}
-
-
-
-	/**
 	 * Set limit for end date
 	 * If end date exceeds the limit, it will be adjusted
 	 * The limit doesn't affect later operations
@@ -306,58 +301,6 @@ class TodoyuDateRange {
 		if( $this->dateStart < $dateStart ) {
 			$this->dateStart = $dateStart;
 		}	
-	}
-
-
-
-	/**
-	 * Get timestamps for days in range
-	 * The timestamps always have the time 00:00:00 for all days inside the range
-	 *
-	 * @param	String|Boolean	$format		Format timestamp with date and given format (false = integer)
-	 * @return	Array
-	 */
-	public function getDayTimestamps($format = false) {
-		$dateStart	= $this->getStart();
-		$dateEnd	= $this->getEnd();
-		$day		= date('j', $dateStart);
-		$month		= date('n', $dateStart);
-		$year		= date('Y', $dateStart);
-		$count		= 0;
-		$date		= $dateStart;
-		$days		= array();
-
-			// Loop while end date not reached
-		while( $date < $dateEnd ) {
-			$date	= mktime(0, 0, 0, $month, $day + $count, $year);
-			$days[]	= $date;
-			$count++;
-		}
-
-			// Remove last date. It is after the end date
-		array_pop($days);
-
-			// Format?
-		if( $format ) {
-			foreach($days as $index => $timestamp) {
-				$days[$index] = date($format, $timestamp);
-			}
-		}
-
-		return $days;
-	}
-	
-
-
-	/**
-	 * @param	Boolean	$format
-	 * @param	Mixed	$value
-	 * @return	Array
-	 */
-	public function getDayTimestampsMap($format = false, $value = 0) {
-		$timestamps	= $this->getDayTimestamps($format);
-
-		return TodoyuArray::createMap($timestamps, $value);
 	}
 
 	

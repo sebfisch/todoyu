@@ -18,9 +18,6 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-	// Disable notices
-error_reporting(E_ALL ^ E_NOTICE);
-
 	// Define autoload config array
 Todoyu::$CONFIG['AUTOLOAD'] = array(
 	'static' => array(
