@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <labels>
 	<label index="D2M2">%m/%d</label>
 	<label index="DlongD2Mlong">%A, %d/%B</label>

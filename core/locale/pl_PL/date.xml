@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <labels>
-	<label index="date">Data</label>
-	<label index="title.date_update">Data Modyfikacji</label>
+	<label index="date">Date</label>
+	<label index="title.date_update">Data Aktualizacji</label>
 	<label index="title.date_create">Data Utworzenia</label>
 	<label index="time">Czas</label>
 	<label index="hrs">h</label>
@@ -30,27 +30,27 @@
 	<label index="weekday.thu">Czw</label>
 	<label index="weekday.fri">Pt</label>
 	<label index="weekday.sat">Sob</label>
-	<label index="weekday.sun">Ndz</label>
+	<label index="weekday.sun">Nd</label>
 	<label index="time.second">Sekunda</label>
-	<label index="time.seconds">Sekund</label>
+	<label index="time.seconds">Sekundy</label>
 	<label index="time.minute">Minuta</label>
-	<label index="time.minutes">Minut</label>
+	<label index="time.minutes">Minuty</label>
 	<label index="time.hour">Godzina</label>
-	<label index="time.hours">Godzin</label>
+	<label index="time.hours">Godziny</label>
 	<label index="day">Dzień</label>
 	<label index="days">Dni</label>
 	<label index="week">Tydzień</label>
-	<label index="weeks">Tygodni</label>
+	<label index="weeks">Tygodnie</label>
 	<label index="month">Miesiąc</label>
-	<label index="months">Miesięcy</label>
+	<label index="months">Miesiące</label>
 	<label index="year">Rok</label>
-	<label index="years">Lat</label>
-	<label index="weeknumber">Tydzień Kalendarzowy</label>
+	<label index="years">Lata</label>
+	<label index="weeknumber">Tydzień</label>
 	<label index="weeknumberAbbr">Tydzień</label>
-	<label index="daily">Dziennie</label>
-	<label index="weekly">Tygodniowo</label>
-	<label index="monthly">Miesięcznie</label>
-	<label index="yearly">Rocznie</label>
+	<label index="daily">Dzienny</label>
+	<label index="weekly">Tygodniowy</label>
+	<label index="monthly">Miesięczny</label>
+	<label index="yearly">Roczny</label>
 	<label index="today">Dzisiaj</label>
-	<label index="warning.dateformat.invalid">Wykryto niewłaściwą datę (zostanie zmieniona podczas zapisywania).</label>
+	<label index="warning.dateformat.invalid">Wykryto nieprawidłową datę (zostanie zamieniona podczas zapisu).</label>
 </labels>
