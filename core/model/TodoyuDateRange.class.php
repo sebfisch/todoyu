@@ -303,6 +303,74 @@ class TodoyuDateRange {
 		}	
 	}
 
+
+	public function isFullYearRange() {
+		return $this->isInOneYear() && date('m-d', $this->getStart()) === '01-01' && date('m-d', $this->getEnd()) === '12-31';
+	}
+
+
+	public function isFullMonthRange() {
+		return $this->isInOneMonth() && $this->isStartStartOfMonth() && $this->isEndEndOfMonth();
+	}
+
+	public function isInOneYear() {
+		return date('Y', $this->getStart()) === date('Y', $this->getEnd());
+	}
+
+
+	public function isInOneMonth() {
+		return date('Y-m', $this->getStart()) === date('Y-m', $this->getEnd());
+	}
+
+	public function isStartStartOfMonth() {
+		return date('d', $this->getStart()) === '01';
+	}
+
+
+	public function isEndEndOfMonth() {
+		$lastDay	= date('t', $this->getEnd());
+
+		return date('d', $this->getEnd()) === $lastDay;
+	}
+
+
+
+	/**
+	 * Get label for range
+	 * Format depends on start, end times
+	 * - Full year:
+	 *
+	 * @return	String
+	 */
+	public function getLabel() {
+			// Full year range: 2011
+		if( $this->isFullYearRange() ) {
+			return date('Y', $this->getStart());
+		}
+
+			// Full month range: January 2011
+		if( $this->isFullMonthRange() ) {
+			TodoyuDebug::printInFirebug(Todoyu::getLocale());
+			return TodoyuTime::format($this->getStart(), 'MlongY4');
+		}
+
+			// Starts on first of the month: January 2011 / January 13 2011
+		if( $this->isStartStartOfMonth() ) {
+			$start	= TodoyuTime::format($this->getStart(), 'MlongY4');
+		} else {
+			$start	= TodoyuTime::format($this->getStart(), 'D2MlongY4');
+		}
+
+			// Ends on last of the month. March / March 13
+		if( $this->isEndEndOfMonth() ) {
+			$end	= TodoyuTime::format($this->getEnd(), 'MlongY4');
+		} else {
+			$end	= TodoyuTime::format($this->getEnd(), 'D2MlongY4');
+		}
+
+		return $start . ' - ' . $end;
+	}
+
 	
 
 	/**
