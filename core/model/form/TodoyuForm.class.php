@@ -829,6 +829,10 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	TodoyuFormElement
 	 */
 	public function getField($name) {
+		if( ! array_key_exists($name, $this->fields) ) {
+			TodoyuLogger::logError('Getter of non-existent form field used: ' . $name);
+		}
+
 		return $this->fields[$name];
 	}
 

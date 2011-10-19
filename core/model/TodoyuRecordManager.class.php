@@ -49,7 +49,7 @@ class TodoyuRecordManager {
 
 			return $object;
 		} else {
-			TodoyuLogger::logError('Record class not found: ' . $className);
+			TodoyuLogger::logError('Record class not found: "' . $className . '"');
 			return false;
 		}
 	}
