@@ -258,7 +258,7 @@ class TodoyuDateRangeTest extends PHPUnit_Framework_TestCase {
 	}
 
 
-	public function test__ToString() {
+	public function test__toString() {
 		$this->range->setStartDate(2011, 1, 1);
 		$this->range->setEndDate(2011, 1, 2);
 

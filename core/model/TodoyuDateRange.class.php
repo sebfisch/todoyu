@@ -299,8 +299,8 @@ class TodoyuDateRange {
 		$dateStart	= intval($dateStart);
 
 		if( $this->dateStart < $dateStart ) {
-			$this->dateStart = $dateStart;
-		}	
+			$this->setStart($dateStart);
+		}
 	}
 
 

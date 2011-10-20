@@ -22,7 +22,7 @@
  * [Add class description]
  *
  * @package		Todoyu
- * @subpackage	Hosting
+ * @subpackage	Core
  */
 class TodoyuDayRange extends TodoyuDateRange {
 
@@ -137,8 +137,12 @@ class TodoyuDayRange extends TodoyuDateRange {
 
 
 	/**
-	 * @param	Boolean	$format
-	 * @param	Mixed	$value
+	 * Get array with a key for every day in the range
+	 * By default, it's the timestamp, but when format is a string, it will be formatted with date()
+	 * Value is the value which will be set for every item
+	 *
+	 * @param	Boolean		$format
+	 * @param	Mixed		$value
 	 * @return	Array
 	 */
 	public function getDayTimestampsMap($format = false, $value = 0) {
