@@ -350,7 +350,6 @@ class TodoyuDateRange {
 
 			// Full month range: January 2011
 		if( $this->isFullMonthRange() ) {
-			TodoyuDebug::printInFirebug(Todoyu::getLocale());
 			return TodoyuTime::format($this->getStart(), 'MlongY4');
 		}
 

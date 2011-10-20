@@ -254,7 +254,20 @@ class TodoyuDateRangeTest extends PHPUnit_Framework_TestCase {
 		$expect	= 'January 2011';
 		$this->assertEquals($expect, $this->range->getLabel());
 
+		$this->range->setStartDate(2011, 1, 1);
+		$this->range->setEndDate(2011, 3, 31);
+		$expect	= 'January 2011 - March 2011';
+		$this->assertEquals($expect, $this->range->getLabel());
 
+		$this->range->setStartDate(2011, 1, 2);
+		$this->range->setEndDate(2011, 3, 31);
+		$expect	= 'January 02 2011 - March 2011';
+		$this->assertEquals($expect, $this->range->getLabel());
+
+		$this->range->setStartDate(2011, 1, 2);
+		$this->range->setEndDate(2012, 3, 30);
+		$expect	= 'January 02 2011 - March 30 2012';
+		$this->assertEquals($expect, $this->range->getLabel());
 	}
 
 
