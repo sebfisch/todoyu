@@ -74,19 +74,30 @@ class TodoyuScheduler {
 
 		TodoyuCli::setCliMode();
 
-			// Create block file for this execution
-		self::createBlockFile();
-
 			// Check for forced class name
 		$jobClassName	= $_SERVER['argv'][1] ? $_SERVER['argv'][1] : false;
 
-				// Execute the jobs
+			// Show help
+		if( $jobClassName === 'help' ) {
+			self::printUsageInfoForConsole();
+			exit();
+		}
+
+			// Create block file for this execution
+		self::createBlockFile();
+
+			// Execute the jobs
 		self::executeJobs($jobClassName);
 
 			// Remove block file
 		self::removeBlockFile();
 
 		return true;
+	}
+
+
+	private static function printUsageInfoForConsole() {
+		echo TodoyuFileManager::getFileContent('core/view/scheduler-usage.tmpl');
 	}
 
 
