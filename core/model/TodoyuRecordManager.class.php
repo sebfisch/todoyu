@@ -67,7 +67,7 @@ class TodoyuRecordManager {
 		$records	= array();
 
 		foreach($recordIDs as $idRecord) {
-			$records[] = self::getRecord($className, $idRecord);
+			$records[$idRecord] = self::getRecord($className, $idRecord);
 		}
 
 		return $records;

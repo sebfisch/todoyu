@@ -78,6 +78,12 @@ class TodoyuDayRange extends TodoyuDateRange {
 	}
 
 
+
+	/**
+	 * Set same date for start and end
+	 *
+	 * @param	Integer		$date
+	 */
 	public function setDate($date) {
 		$this->setStart($date);
 		$this->setEnd($date);
