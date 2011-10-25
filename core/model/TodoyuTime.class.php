@@ -191,13 +191,14 @@ class TodoyuTime {
 	 * Get timestamp for the end of the week (last second in the week)
 	 * 23:59:59
 	 *
-	 * @param	Integer		$timestamp
+	 * @param	Integer		$time
 	 * @return	Integer
 	 */
-	public static function getWeekEnd($timestamp) {
-		$diff	= (7-date('w', $timestamp))%7;
+	public static function getWeekEnd($time = 0) {
+		$time	= self::time($time);
+		$diff	= (7-date('w', $time))%7;
 
-		return mktime(23, 59, 59, date('n', $timestamp), date('j', $timestamp) + $diff, date('Y', $timestamp));
+		return mktime(23, 59, 59, date('n', $time), date('j', $time) + $diff, date('Y', $time));
 	}
 
 
@@ -205,13 +206,13 @@ class TodoyuTime {
 	/**
 	 * Get timestamp of first day (at 00:00:00) of month
 	 *
-	 * @param	Integer	$timestamp
+	 * @param	Integer	$time
 	 * @return	Integer
 	 */
-	public static function getMonthStart($timestamp) {
-		$timestamp	= intval($timestamp);
+	public static function getMonthStart($time = 0) {
+		$time	= self::time($time);
 
-		return mktime(0, 0, 0, date('n', $timestamp), 1, date('Y', $timestamp));
+		return mktime(0, 0, 0, date('n', $time), 1, date('Y', $time));
 	}
 
 
@@ -219,11 +220,41 @@ class TodoyuTime {
 	/**
 	 * Get timestamp for end of month (last second in the month, 23:59:59)
 	 *
-	 * @param	Integer		$timestamp
+	 * @param	Integer		$time
 	 * @return	Integer
 	 */
-	public static function getMonthEnd($timestamp) {
-		return mktime(0, 0, 0, date('n', $timestamp) + 1, 1, date('Y', $timestamp)) - 1;
+	public static function getMonthEnd($time = 0) {
+		$time	= self::time($time);
+		
+		return mktime(0, 0, 0, date('n', $time) + 1, 1, date('Y', $time)) - 1;
+	}
+
+
+
+	/**
+	 * Get timestamp for start of year
+	 *
+	 * @param	Integer		$time
+	 * @return	Integer
+	 */
+	public function getYearStart($time = 0) {
+		$time	= self::time($time);
+
+		return mktime(0, 0, 0, 1, 1, date('Y', $time));
+	}
+
+
+
+	/**
+	 * Get timestamp for end of year
+	 *
+	 * @param	Integer		$time
+	 * @return	Integer
+	 */
+	public static function getYearEnd($time = 0) {
+		$time	= self::time($time);
+
+		return mktime(0, 0, 0, 1, 1, date('Y', $time)+1) - 1;
 	}
 
 
@@ -231,13 +262,14 @@ class TodoyuTime {
 	/**
 	 * Get day-number of last day of month of given timestamp
 	 *
-	 * @param	Integer		$timestamp
+	 * @param	Integer		$time
 	 * @return	Integer
 	 */
-	public static function getLastDayNumberInMonth($timestamp) {
-		$timestampLastDay	= self::getMonthEnd($timestamp);
+	public static function getLastDayNumberInMonth($time = 0) {
+		$time		= self::time($time);
+		$timeLastDay= self::getMonthEnd($time);
 
-		return date('j', $timestampLastDay);
+		return date('j', $timeLastDay);
 	}
 
 
@@ -246,13 +278,13 @@ class TodoyuTime {
 	 * Get weekday of a timestamp. Like date('w'), but starts with monday
 	 * With $mondayFirst monday will be 0 and sunday 6
 	 *
-	 * @param	Integer		$timestamp
+	 * @param	Integer		$time
 	 * @param	Boolean		$mondayFirst
 	 * @return	Integer		0 = monday, 6 = sunday
 	 */
-	public static function getWeekday($timestamp, $mondayFirst = true) {
-		$timestamp	= intval($timestamp);
-		$weekday	= date('w', $timestamp);
+	public static function getWeekday($time = 0, $mondayFirst = true) {
+		$time	= self::time($time);
+		$weekday= date('w', $time);
 
 		return $mondayFirst ? ($weekday + 6) % 7 : $weekday;
 	}

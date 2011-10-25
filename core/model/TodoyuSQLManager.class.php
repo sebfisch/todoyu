@@ -556,17 +556,17 @@ class TodoyuSQLManager {
 	 */
 	private static function removeSQLComments($sql) {
 		$cleanSQL	= array();
-		$lines		= explode("\n", $sql);
+		$lines		= explode(PHP_EOL, $sql);
 
 		foreach($lines as $line) {
 			$line	= trim($line);
 				// Line is not a comment?
-			if( substr($line, 0, 2) !== '--' && substr($line, 0, 1) !== '#' ) {
+			if( substr($line, 0, 2) !== '--' && substr($line, 0, 1) !== '#' && !empty($line) ) {
 				$cleanSQL[]	= $line;
 			}
 		}
 
-		return implode("\n", $cleanSQL);
+		return implode(PHP_EOL, $cleanSQL);
 	}
 
 
