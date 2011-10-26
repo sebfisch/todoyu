@@ -73,15 +73,15 @@ class TodoyuTime {
 	/**
 	 * Get timestamp of start (00:00:00) of day
 	 *
-	 * @param	Integer|Boolean		$timestamp
+	 * @param	Integer		$time
 	 * @return	Integer
 	 */
-	public static function getStartOfDay($timestamp = false) {
-		$timestamp = $timestamp === false ? NOW : intval($timestamp);
+	public static function getStartOfDay($time = 0) {
+		$time = self::time($time);// $time === false ? NOW : intval($time);
 
-		$month	= date('n', $timestamp);
-		$day	= date('j', $timestamp);
-		$year	= date('Y', $timestamp);
+		$month	= date('n', $time);
+		$day	= date('j', $time);
+		$year	= date('Y', $time);
 
 		return mktime(0, 0, 0, $month, $day, $year);
 	}
@@ -91,15 +91,15 @@ class TodoyuTime {
 	/**
 	 * Make timestamp for end (23:59:59) of day
 	 *
-	 * @param	Integer|Boolean		$timestamp
+	 * @param	Integer		$time
 	 * @return	Integer
 	 */
-	public static function getEndOfDay($timestamp = false) {
-		$timestamp = $timestamp === false ? NOW : intval($timestamp);
+	public static function getEndOfDay($time = 0) {
+		$time = self::time($time);
 
-		$month	= date('n', $timestamp);
-		$day	= date('j', $timestamp);
-		$year	= date('Y', $timestamp);
+		$month	= date('n', $time);
+		$day	= date('j', $time);
+		$year	= date('Y', $time);
 
 		return mktime(23, 59, 59, $month, $day, $year);
 	}

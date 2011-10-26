@@ -856,6 +856,7 @@ class TodoyuDatabase {
 	 *
 	 * @param	String		$table
 	 * @param	Integer		$fieldNameEntity1
+	 * @param	Integer		$idEntity1
 	 * @param	Integer		$fieldNameEntity2
 	 * @param	Integer		$idEntity2
 	 * @return	Integer

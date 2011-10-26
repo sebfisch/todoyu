@@ -566,7 +566,7 @@ class TodoyuSQLManager {
 			}
 		}
 
-		return implode(PHP_EOL, $cleanSQL);
+		return implode("\n", $cleanSQL);
 	}
 
 
