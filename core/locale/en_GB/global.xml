@@ -99,6 +99,6 @@
 	<label index="log.fatal">Fatal Errors</label>
 	<label index="controllerError.oops">Oops!</label>
 	<label index="controllerError.info">todoyu can't handle this request</label>
-	<label index="controllerError.reason">Maybe you misstyped the URL or the requested extension has been removed</label>
+	<label index="controllerError.reason">Maybe you misstyped the URL or the requested extension has been removed? If you added a new controller- did you empty the cache?</label>
 	<label index="controllerError.goBack">Go back to todoyu</label>
 </labels>
