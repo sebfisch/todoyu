@@ -49,8 +49,6 @@ try {
 		die(TodoyuTokenCallbackManager::getCallbackResultByHash($hash));
 	}
 
-	//throw new TodoyuException('Hello World');
-
 		// Dispatch request to selected controller
 	TodoyuActionDispatcher::dispatch();
 
