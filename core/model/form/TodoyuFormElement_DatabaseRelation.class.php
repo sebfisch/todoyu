@@ -389,6 +389,17 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 
 	/**
+	 * Get amount of sub records
+	 *
+	 * @return	Integer
+	 */
+	public function getRecordsAmount() {
+		return sizeof($this->config['value']);
+	}
+
+
+
+	/**
 	 * Get storage data of the sub records
 	 *
 	 * @return	Array

@@ -40,7 +40,7 @@ class TodoyuFormValidator {
 		if( method_exists('TodoyuFormValidator', $validatorName) ) {
 			return call_user_func(array('TodoyuFormValidator', $validatorName), $fieldValue, $validatorConfig, $formElement, $formData);
 		} else {
-			TodoyuDebug::printInFirebug("Validator '$validatorName' not found", 'Invalid validator');
+			TodoyuDebug::printInFirebug('Validator \'' . $validatorName . '\' not found in field ' . $formElement->getName(), 'Invalid validator');
 
 			return false;
 		}
@@ -795,14 +795,13 @@ class TodoyuFormValidator {
 	/**
 	 * Validate database relation field
 	 *
-	 * @uses	TodoyuFormElement_DatabaseRelation
-	 * @param	String				$value
-	 * @param	Array				$validatorConfig
-	 * @param	TodoyuFormElement	$formElement
-	 * @param	Array				$formData
+	 * @param	String								$value
+	 * @param	Array								$validatorConfig
+	 * @param	TodoyuFormElement_DatabaseRelation	$formElement
+	 * @param	Array								$formData
 	 * @return	Boolean
 	 */
-	public static function validateSubRecords($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+	public static function validateSubRecords($value, array $validatorConfig, TodoyuFormElement_DatabaseRelation $formElement, array $formData) {
 			// Check for allowed exceptions
 		if( self::checkAllow($validatorConfig, $formData) === true ) {
 			return true;
@@ -810,6 +809,29 @@ class TodoyuFormValidator {
 
 			// Validate
 		return $formElement->areAllRecordsValid();
+	}
+
+
+
+	/**
+	 * Required validator
+	 * Normal field: Custom required handling
+	 * DB Relation: At least one record
+	 *
+	 * @param	Mixed				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
+	 */
+	public static function required($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+		if( $formElement instanceof TodoyuFormElement_DatabaseRelation ) {
+			/** @var	TodoyuFormElement_DatabaseRelation	$formElement->getRec */
+			return $formElement->getRecordsAmount() > 0;
+		} else {
+			/** @var	TodoyuFormElement	$formElement->getRec */
+			return $formElement->validateRequired();
+		}
 	}
 
 }
