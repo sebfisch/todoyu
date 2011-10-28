@@ -1257,8 +1257,20 @@ class TodoyuDatabase {
 	 * Drop a table
 	 *
 	 * @param	String		$table
+	 * @deprecated
 	 */
 	public function drop($table) {
+		$this->dropTable($table);
+	}
+
+
+
+	/**
+	 * Drop a table
+	 *
+	 * @param	String		$table
+	 */
+	public function dropTable($table) {
 		$this->query('DROP TABLE IF EXISTS ' . $this->quoteFieldname($table));
 	}
 
