@@ -68,15 +68,15 @@ class TodoyuRenderer {
 	 * Render content area
 	 * Contains tab and body area
 	 *
-	 * @param	String		$body
+	 * @param	String		$content
 	 * @param	String		$tabs
 	 * @return	String
 	 */
-	public static function renderContent($body, $tabs) {
+	public static function renderContent($content, $tabs) {
 		$tmpl	= 'core/view/content.tmpl';
 		$data	= array(
 			'tabs'	=> $tabs,
-			'body'	=> $body
+			'body'	=> $content
 		);
 
 		return Todoyu::render($tmpl, $data);

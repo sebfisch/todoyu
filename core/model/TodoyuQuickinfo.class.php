@@ -116,9 +116,11 @@ class TodoyuQuickinfo {
 	 * @param	Integer		$position
 	 */
 	public function addEmail($key, $email, $fullName = '', $position = 100) {
+		$email	= htmlspecialchars($email);
+
 		if( $fullName !== '' ) {
-			$fullName	= str_replace(' ', '%20', $fullName);
-			$item	=  '<a href="mailto:' . $fullName . '%3c' . $email . '%3e">' . $email . '</a>';
+			$fullName	= htmlspecialchars($fullName);
+			$item		=  '<a href="mailto:' . $fullName . '%3c' . $email . '%3e">' . $email . '</a>';
 		} else {
 			$item	= '<a href="mailto:' . $email . '">' . $email . '</a>';
 		}

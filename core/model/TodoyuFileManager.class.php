@@ -367,7 +367,7 @@ class TodoyuFileManager {
 			$fileName	= NOW . '_' . $fileName;
 		}
 
-		$targetFile	= self::pathAbsolute($storagePath . '/' . $fileName);
+		$targetFile	= self::pathAbsolute($storagePath . DIR_SEP . $fileName);
 		$fileMoved	= rename($sourceFile, $targetFile);
 
 		return $fileMoved ? $targetFile : false;
