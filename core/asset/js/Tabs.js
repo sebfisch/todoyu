@@ -134,21 +134,21 @@ Todoyu.Tabs = {
 		var shareWidth	= this.maxWidth - totalWidthSmallTabs - totalPadding;
 		var cropToWidth	= Math.floor(shareWidth / numTooLongTabs);
 
-		var tabWidth, tabLabelEl, tabLabel, tabLabelLen, shortenedLabel, postFixLength = postFix.length;
+		var tabWidth, tabLabelEl, tabLabel, shortenedLabel = postFix.length;
 
 			// Remove chars until the total width is not any more larger than maxWidth 
 		while( totalWidth > this.maxWidth ) {
 			tooLongTabs.each(function(tab, index) {
 				tabWidth	= parseInt(tab.getWidth(), 10);
-
 					// Is tab longer than the crop width?
 				if( tabWidth > cropToWidth ) {
 					tabLabelEl	= tab.down('span.labeltext');
 					tabLabel	= Todoyu.Helper.html_entity_decode(tabLabelEl.innerHTML);
 
 						// Remove postFix if added
-					if( tabLabel.substr(-postFix.length) == postFix ) {
-						tabLabel = tabLabel.substr(0, tabLabel.length - postFixLength).strip();
+					
+					if( tabLabel.endsWith(postFix) ) {
+						tabLabel = tabLabel.substr(0, tabLabel.length - postFix.length).strip();
 					}
 
 						// Shorten label
@@ -161,6 +161,7 @@ Todoyu.Tabs = {
 			totalWidth = allTabs.collect(function(tab){
 				return parseInt(tab.getWidth(), 10);
 			}).sum() + totalPadding;
+
 		}
 	},
 
