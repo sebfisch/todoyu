@@ -1,0 +1,21 @@
+#head,
+#panel,
+#footer {
+	display:none;
+}
+
+#navi-main li.item {
+	display: none;
+}
+#navi-main li.item.active {
+	display: block;
+}
+
+#header {
+	border:none;
+}
+
+.buttons,
+.button {
+	display:none;
+}

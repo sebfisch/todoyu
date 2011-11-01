@@ -447,6 +447,11 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/asset/css/panelwidget-searchlist.css',
 			'position'	=> 10
+		),
+                array(
+			'file'		=> 'core/asset/css/print.css',
+			'media'		=> 'print',
+			'position'	=> 10
 		)
 	)
 );
