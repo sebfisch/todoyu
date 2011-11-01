@@ -49,11 +49,30 @@ class TodoyuDateRange {
 	 * @param	Integer		$dateEnd
 	 */
 	public function __construct($dateStart = 0, $dateEnd = 0) {
-		if( $dateStart > 0 && $dateEnd === 0 ) {
-			$dateEnd = $dateStart;
+		$dateStart	= intval($dateStart);
+		$dateEnd	= intval($dateEnd);
+
+		if( $dateStart === 0 && $dateEnd === 0 ) {
+			$this->setMaxRanges();
+		} else {
+			if( $dateStart > 0 && $dateEnd === 0 ) {
+				$dateEnd = $dateStart;
+			}
+
+			$this->setRange($dateStart, $dateEnd);
 		}
-		
-		$this->setRange($dateStart, $dateEnd);
+	}
+
+
+
+	/**
+	 * Set to maximum ranges
+	 * 1910-2037 should be enough
+	 *
+	 */
+	public function setMaxRanges() {
+		$this->setStart(-1893463200);
+		$this->setEnd(2114377200);
 	}
 
 
