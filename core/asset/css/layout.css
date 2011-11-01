@@ -197,6 +197,7 @@ body {
 	background-position:0 -60px; /* allowedOpen open  */
 	margin:0;
 	padding:0;
+	cursor:pointer;
 }
 
 .panelWidget h1.expand {
@@ -228,14 +229,13 @@ body {
 		background-repeat:no-repeat;
 		background-position:1000px 50%;
 	}
-
+	
 	.panelWidget h1 span.toggle {
 		float:right;
 		clear:none;
 		width:22px;
 		height:26px;
 		background:url('../img/ico-toggle.png') no-repeat 6px 50%;
-		cursor:pointer;
 	}
 
 	.panelWidget h1 span.expand {
