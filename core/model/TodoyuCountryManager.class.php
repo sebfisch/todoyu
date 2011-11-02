@@ -67,8 +67,9 @@ class TodoyuCountryManager {
 		$wField = $isAlpha3 ? 'iso_alpha3' : 'iso_alpha2';
 		$where	= $wField . ' = ' . Todoyu::db()->quote($code, true);
 
-		$idCountry = intval(Todoyu::db()->getRecordByQuery($fields, self::TABLE, $where));
-		return $idCountry;
+		$idCountry	= Todoyu::db()->getFieldValue($fields, self::TABLE, $where);
+
+		return intval($idCountry);
 	}
 
 }

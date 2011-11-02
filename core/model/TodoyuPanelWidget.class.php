@@ -274,7 +274,7 @@ abstract class TodoyuPanelWidget {
 	 * @abstract
 	 * @return	String
 	 */
-	protected abstract function renderContent();
+	public abstract function renderContent();
 
 }
 

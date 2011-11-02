@@ -219,6 +219,10 @@ h1.headerLine.hasIcon span.title {
 	line-height:20px;
 }
 
+div.dialog {
+	text-align: left;
+}
+
 div.dialog_content h1.headerLine {
 	display:none;
 }

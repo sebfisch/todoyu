@@ -204,11 +204,14 @@ class TodoyuForm implements ArrayAccess {
 	 * Set form data with default values for form fields
 	 *
 	 * @param	Array		$formData
+	 * @return	TodoyuForm
 	 */
 	public function setFormData(array $formData = array()) {
 		$this->formdata = $formData;
 
 		$this->updateFieldValues();
+
+		return $this;
 	}
 
 

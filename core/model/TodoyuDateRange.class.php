@@ -355,6 +355,20 @@ class TodoyuDateRange {
 
 
 	/**
+	 * Get dates as array
+	 * 
+	 * @return	Array	[start,end]
+	 */
+	public function getDates() {
+		return array(
+			'start'	=> $this->getStart(),
+			'end'	=> $this->getEnd()
+		);
+	}
+
+
+
+	/**
 	 * Get label for range
 	 * Format depends on start, end times
 	 * - Full year:
