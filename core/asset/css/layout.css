@@ -198,6 +198,9 @@ body {
 	margin:0;
 	padding:0;
 	cursor:pointer;
+	position: relative;
+	z-index: 10;
+	overflow:hidden;
 }
 
 .panelWidget h1.expand {

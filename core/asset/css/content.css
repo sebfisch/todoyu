@@ -123,16 +123,6 @@ div.infoBox div.content {
 	background:white;
 }
 
-
-
-/* -----------------
-	Heading
-   -----------------*/
-h1 {
-	position:relative;
-	overflow:hidden;
-}
-
 .headerLine span,
 .button,
 .title {

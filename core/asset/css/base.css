@@ -87,6 +87,7 @@ h1, h1 * {
 	white-space:nowrap;
 	letter-spacing:0.1em;
 }
+
 /*
 h2 {}
 */
@@ -111,7 +112,6 @@ h4 {
 }
 
 h5 {
-	border-bottom:1px solid #000;
 	font-size:18px;
 	margin:5px 0;
 	padding-left:5px;
