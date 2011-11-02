@@ -21,12 +21,11 @@
 INSTRUCTIONS TO UPGRADE AN EXISTING todoyu VERSION
 ==================================================
 
-	1. Backup your installation
-	2. Make a local copy of your config files in /config/ (db.php, extensions.php, etc) you will need them later
-	3. Delete everything inside the /cache/ folder
- 	4. Extract the new version of todoyu into your todoyu folder (override all existing files)
-	5. Copy back your config files from 2 to replace the existing default ones
-	6. Open todoyu in your browser, you will be redirected to the update dialog
-	7. Follow the update instructions
-
-	8. Enjoy the new features ;-)
+1. Backup your whole installation. This includes all of your files/sourcecode and also your data base.
+2. Make a local copy of your configuration files in /config/ (db.php, extensions.php, etc). You will need them later!
+3. Delete all files in the /cache/ folder.
+4. Extract the new version of todoyu into your todoyu root folder (override all existing files).
+5. Overwrite the default config files coming with this update and replace it with the ones you saved previously.
+6. Open todoyu in your browser, you will be redirected to the update dialog.
+7. Follow the update instructions.
+8. Enjoy the new features ;-)
