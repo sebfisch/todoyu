@@ -91,6 +91,7 @@ class TodoyuPageAssetManager {
 	 */
 	public static function addStylesheet($pathToFile, $media = 'all', $position = 100, $compress = true, $merge = true) {
 		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
+		$media		= empty($media) ? 'all' : $media;
 		$position	= intval($position) == 0 ? 100 : intval($position);
 		$compress	= $compress === false ? false : true ;
 		$merge		= $merge 	=== false ? false : true ;
