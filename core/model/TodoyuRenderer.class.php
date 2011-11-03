@@ -72,7 +72,7 @@ class TodoyuRenderer {
 	 * @param	String		$tabs
 	 * @return	String
 	 */
-	public static function renderContent($content, $tabs) {
+	public static function renderContent($content, $tabs = null) {
 		$tmpl	= 'core/view/content.tmpl';
 		$data	= array(
 			'tabs'	=> $tabs,

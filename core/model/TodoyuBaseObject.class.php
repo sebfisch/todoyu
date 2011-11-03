@@ -249,6 +249,28 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 
 
 	/**
+	 * Get date create
+	 *
+	 * @return	Integer
+	 */
+	public function getDateCreate() {
+		return intval($this->get('date_create'));
+	}
+
+
+
+	/**
+	 * Get date update
+	 *
+	 * @return	Integer
+	 */
+	public function getDateUpdate() {
+		return intval($this->get('date_update'));
+	}
+
+
+
+	/**
 	 * Get user ID of a specific type (create, update, assigned, etc)
 	 *
 	 * @param	String		$type
