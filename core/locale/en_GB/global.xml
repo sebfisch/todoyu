@@ -41,6 +41,7 @@
 	<label index="what">What</label>
 	<label index="where">Where</label>
 	<label index="when">When</label>
+	<label index="new">New</label>
 	<label index="until">Until</label>
 	<label index="private">Private</label>
 	<label index="start">Start</label>
