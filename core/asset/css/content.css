@@ -123,6 +123,32 @@ div.infoBox div.content {
 	background:white;
 }
 
+.headerLine,
+.headerOptLine {
+	position:relative;
+	margin-top:5px;
+	height:25px;
+	text-align:left;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+	border:1px solid #dfdfdf;
+	border-bottom-color:#fff;
+}
+.headerLine {
+	background:url('../img/bg-headerline.png') repeat-x 0 0;
+}
+.headerOptLine {
+	background:url('../img/bg-headerline.png') repeat-x 0 -46px;
+	border-color:#d0d6be;
+}
+
+.headerLine label {
+	text-transform:uppercase;
+	font-size:10px;
+	letter-spacing:0.3px;
+}
+
 .headerLine span,
 .button,
 .title {
@@ -136,47 +162,15 @@ h1.headerLine.hasIcon span.title {
 	padding-left:27px;
 }
 
-.headerLine {
-	position:relative;
-	margin-top:5px;
-	width:100%;
-	height:28px;
-	background:url('../img/bg-headerline.png') no-repeat 0 0;
-	text-align:left;
-}
-
 .headerLine span {
 	float:left;
 	margin:0 0 0 5px;
-	line-height:28px;
+	line-height:25px;
 }
 
 .headerLine span.first {
 	margin:0;
 	padding:0 0 0 20px;
-}
-
-.headerLine span.rgt {
-	position:absolute;
-	right:0;
-	top:0;
-	display:block;
-	margin:0;
-	padding:0;
-	background:url('../img/bg-headerline.png') white no-repeat 100% 0;
-	width:10px;
-	height:28px;
-}
-
-.headerLine label {
-	text-transform:uppercase;
-	font-size:10px;
-	letter-spacing:0.3px;
-}
-
-.headerLine th.last,
-.headerLine td.last {
-	background:#fff url('../img/bg-headerline.png') no-repeat 100% 0;
 }
 
 .headerLine th, .headerOptLine th {
@@ -188,31 +182,6 @@ h1.headerLine.hasIcon span.title {
 
 .headerLine input {
 	margin-right:10px;
-}
-
-.headerOptLine {
-	position:relative;
-	margin-top:5px;
-	width:100%;
-	height:28px;
-	background:url('../img/bg-headerline.png') no-repeat 0 -46px;
-	text-align:left;
-}
-
-.headerOptLine span.rgt {
-	position:absolute;
-	right:0;
-	display:block;
-	margin:0;
-	padding:0;
-	background:#fff url('../img/bg-headerline.png') no-repeat 100% -46px;
-	width:10px;
-	height:28px;
-}
-
-.headerOptLine th.last,
-.headerOptLine td.last {
-	background:#fff url('../img/bg-headerline.png') no-repeat 100% -46px;
 }
 
 .headerLine button span {

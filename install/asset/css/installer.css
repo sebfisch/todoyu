@@ -3,6 +3,9 @@
 	float:left;
 	width:680px !important;
 	background-color:#fff;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
 }
 
 p.installMessage {
@@ -175,41 +178,6 @@ input#email.adminaccount {
 #box {
 	padding:1px 2px 0 3px;
 }
-
-		#contentBox span.lt,
-		#contentBox span.rt,
-		#contentBox span.lb,
-		#contentBox span.rb,
-		.content span.lt,
-		.content span.rt,
-		.content span.lb,
-		.content span.rb {
-			display:block;
-			position:absolute;
-			width:13px;
-			height:13px;
-			background:transparent url('../img/rounded-box02.png') 0 0 no-repeat;
-		}
-
-		.content span.lt, #contentBox span.lt {
-			top:0;
-			left:0;
-		}
-		.content span.rt, #contentBox span.rt {
-			top:0;
-			right:0;
-			background-position:100% 0;
-		}
-		.content span.lb, #contentBox span.lb {
-			bottom:0;
-			left:0;
-			background-position:0 100%;
-		}
-		.content span.rb, #contentBox span.rb {
-			bottom:0;
-			right:0;
-			background-position:100% 100%;
-		}
 
 .content {
 	margin:8px;
@@ -409,22 +377,6 @@ h1 span.title {
 	font-size:10px;
 	letter-spacing:0.3px;
 }
-
-h1 span.rgt {
-	background:#fff url('../img/bg-headerline.png') no-repeat scroll 100% 0;
-	height:28px;
-	margin:0;
-	padding:0;
-	position:absolute;
-	right:0;
-	width:10px;
-}
-
-h1.deniedOpen span.rgt {
-	background:none;
-}
-
-
 
 /* ---------------------------------------
 	Hyperlinks, buttons, labels, etc.
