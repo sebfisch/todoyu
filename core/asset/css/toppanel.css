@@ -1,8 +1,7 @@
 #toppanel {
-	position:absolute;
-	top:0;
-	/*right:0;*/
-	width:100%;
+	position: relative;
+	width:978px;
+	margin: 0 auto;
 	height:70px;
 	background:transparent;
 }

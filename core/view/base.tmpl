@@ -21,17 +21,12 @@
 	<div id="contentBox">
 		<div id="main">
 			<div id="panel" class="panel">
-				<div class="panelHeader"><!-- panel header --></div>
 			{block "panel"}
 				{$panelWidgets}
 			{/block}
 				<div class="panelFooter"><!-- panel footer --></div>
 			</div>
 			<div id="right" class="bclFF">
-				<span class="lt"><!-- left / top --></span>
-				<span class="rt"><!-- right / top --></span>
-				<span class="lb"><!-- left / bottom --></span>
-				<span class="rb"><!-- right / bottom --></span>
 				<div id="content" class="content">
 					{if $fullContent}
 						{block "content"}{$fullContent}{/block}

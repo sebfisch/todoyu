@@ -10,8 +10,8 @@
 /* -------------------------
 	About popup window
    ------------------------- */
-#popup-about_row2 * {
-	background-color:#fff !important;
+#popup-about_content {
+	background-color:#fff;
 }
 
 	#popup-about .version {
@@ -76,7 +76,8 @@
 		margin:-8px 12px 2px 0;
 	}
 		button#about-toggle-credits span.icon {
-			width:4px !important;
+			width:2px !important;
+			visibility: hidden;
 		}
 
 

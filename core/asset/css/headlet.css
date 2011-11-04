@@ -1,5 +1,6 @@
 #headlets {
 	position:absolute;
+	top:0;
 	right:89px;
 	z-index:200;
 }
@@ -43,8 +44,8 @@
 	}
 
 #headlets li ul {
-	position:absolute;
-	top:25px;
+	position: absolute;
+	top: 25px;
 	left:-1px;
 	border:1px solid #b9bbad;
 	z-index:202;
