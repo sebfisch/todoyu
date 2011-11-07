@@ -127,7 +127,7 @@ class TodoyuMail extends PHPMailerLite {
 				continue;
 			}
 
-			$replace[$link] = TODOYU_URL . '/' . $link;
+			$replace[$link] = SERVER_URL . '/' . ltrim($link, '/');
 		}
 
 		return str_replace(array_keys($replace), array_values($replace), $html);
