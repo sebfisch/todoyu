@@ -556,7 +556,7 @@ class TodoyuSQLManager {
 	 */
 	private static function removeSQLComments($sql) {
 		$cleanSQL	= array();
-		$lines		= explode(PHP_EOL, $sql);
+		$lines		= explode("\n", $sql);
 
 		foreach($lines as $line) {
 			$line	= trim($line);
