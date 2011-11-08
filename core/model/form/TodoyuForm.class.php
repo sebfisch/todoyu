@@ -622,7 +622,7 @@ class TodoyuForm implements ArrayAccess {
 	 * @param	Boolean		$noStorage		Don't save file in database
 	 * @param	Boolean		$noWrap			Don't wrap field name with form name
 	 */
-	public function addHiddenField($name, $value, $noStorage = false, $noWrap = false) {
+	public function addHiddenField($name, $value = '', $noStorage = false, $noWrap = false) {
 		$this->hiddenFields[$name] = array(
 			'value'		=> $value,
 			'noStorage' => $noStorage || $noWrap,
