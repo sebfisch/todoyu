@@ -94,7 +94,7 @@ class TodoyuArray {
 	 * @param	Array		$array			Dirty array
 	 * @param	Boolean		$onlyPositive	Set negative values zero
 	 * @param	Boolean		$removeZeros	Remove all zero values
-	 * @return	Array		Integer array
+	 * @return	Integer[]	Integer array
 	 */
 	public static function intval($array, $onlyPositive = false, $removeZeros = true) {
 		if( ! is_array($array) ) {
@@ -109,7 +109,7 @@ class TodoyuArray {
 			// Set negative values zero
 		if( $onlyPositive ) {
 			foreach($array as $index => $value) {
-				if( $value <= 0 ) {
+				if( $value < 0 ) {
 					$array[$index] = 0;
 				}
 			}
@@ -119,7 +119,7 @@ class TodoyuArray {
 		if( $removeZeros ) {
 			$newArray = array();
 			foreach($array as $index => $value) {
-				if( $value > 0 ) {
+				if( $value != 0 ) {
 					$newArray[$index] = $value;
 				}
 			}
