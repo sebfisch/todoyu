@@ -558,6 +558,60 @@ class TodoyuFormValidator {
 
 
 	/**
+	 * Check whether date is in the future
+	 * 
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
+	 */
+	public static function dateInFuture($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+			// Check for allowed exceptions
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
+			return true;
+		}
+
+		$date		= TodoyuTime::getStartOfDay($value);
+		$dateToday	= TodoyuTime::getStartOfDay(NOW);
+
+		if( array_key_exists('allowToday', $validatorConfig) ) {
+			return $date >= $dateToday;
+		} else {
+			return $date > $dateToday;
+		}
+	}
+
+
+
+	/**
+	 * Check whether date is in the past
+	 *
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
+	 */
+	public static function dateInPast($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+			// Check for allowed exceptions
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
+			return true;
+		}
+
+		$date		= TodoyuTime::getStartOfDay($value);
+		$dateToday	= TodoyuTime::getStartOfDay(NOW);
+
+		if( array_key_exists('allowToday', $validatorConfig) ) {
+			return $date <= $dateToday;
+		} else {
+			return $date < $dateToday;
+		}
+	}
+
+
+
+	/**
 	 * Check if two fields are equal
 	 *
 	 * @param	String				$value
