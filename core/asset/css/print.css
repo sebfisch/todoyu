@@ -3,12 +3,9 @@
 #footer {
 	display:none;
 }
-
+.tabs li.item,
 #navi-main li.item {
-	display: none;
-}
-#navi-main li.item.active {
-	display: block;
+	display:none;
 }
 
 #header {

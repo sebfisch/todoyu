@@ -1,62 +1,32 @@
 table.list {
-	width:650px;
-	margin-top:5px;
+	width: 100%;
+	background-color:#fff;
 }
-
-table.list {
-	background:url('../img/bg-headerline.png') no-repeat 0 0;
-}
-table.list .header tr {
-	text-align:left;
-	background:none;
-}
-
-
-table.list td,
-table.list th {
+table.list th,
+table.list td {
+	padding:3px 0 3px 5px;
 	vertical-align:middle;
 }
-
-table.list .header th.last {
-	background:#fff url(../img/bg-headerline.png) no-repeat 100% 0;
+table.list th:first-child,
+table.list td:first-child {
+	padding-left:0;
 }
-
-table.list th {
-	height:14px;
-	padding:7px 5px 6px 5px;
+table.list td.icon {
 }
-table.list td {
-	padding:5px;
-}
-
-table.list tr {
-	border-bottom:1px solid #ddd;
-}
-
-table.list td div.icon {
-	height:18px;
-	margin-top:-2px;
-	margin-bottom:-2px;
-	cursor:pointer;
-}
-
-
 
 /* ------------
 	Hover
    ------------ */
-table.list tr:hover,
-table.list tr:hover .odd,
-table.list tr:hover .even,
+table.withMouseHover tr:hover,
+table.withMouseHover tr:hover .odd,
+table.withMouseHover tr:hover .even,
 ul.withMouseHover li.odd:hover,
 ul.withMouseHover li.even:hover {
 	background-color:#f2f2d2 !important;
 }
-table.list tr.header:hover {
+table.withMouseHover tr.header:hover {
 	background-color:transparent !important;
 }
-
-
 
 /* -----------------------------
 	Odd and even alternation
@@ -71,10 +41,6 @@ table.list tr.even,
 table.listsimple tr.even,
 li.even {
 	background-color:#fff;
-}
-
-#extendlisting {
-	width:650px;
 }
 
 #extendlisting a {

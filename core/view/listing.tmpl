@@ -3,11 +3,11 @@
 {/if}
 
 	<a id="{$offset}"></a>
-	<table class="list {$config.name}Listing" id="paging-{$config.name}-table-{$page}" >
+	<table class="list {$config.name}Listing withMouseHover" id="paging-{$config.name}-table-{$page}" >
 
 	{*-------------- Column titles ---------------*}
 		<thead>
-			<tr class="header">
+			<tr class="headerLine">
 				{foreach $config.columns colName label}
 					<th scope="col" class="{$colName} {if $dwoo.foreach.default.last}last{/if}">{Label $label}&nbsp;</th>
 				{/foreach}
