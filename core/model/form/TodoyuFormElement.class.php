@@ -402,11 +402,45 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	public function getValue() {
 		$value	= $this->getAttribute('value');
 
-		if( empty($value) && /*$this->isRequired() &&*/ $this->hasAttribute('default') ) {
-			$value	= $this->getAttribute('default');
+		if( $this->isEmpty() && $this->hasDefaultValue() ) {
+			$value	= $this->getDefaultValue();
 		}
 
 		return $value;
+	}
+
+
+
+	/**
+	 * Check whether the field is empty
+	 * @return bool
+	 */
+	public function isEmpty() {
+		$value	= $this->getAttribute('value');
+
+		return empty($value);
+	}
+
+
+	
+	/**
+	 * Check whether field is empty
+	 *
+	 * @return	Boolean
+	 */
+	public function hasDefaultValue() {
+		return $this->hasAttribute('default');
+	}
+
+
+
+	/**
+	 * Get default value
+	 *
+	 * @return	String
+	 */
+	public function getDefaultValue() {
+		return $this->getAttribute('default');
 	}
 
 

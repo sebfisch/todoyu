@@ -96,6 +96,17 @@ class TodoyuFormElement_Checkbox extends TodoyuFormElement {
 
 
 	/**
+	 * Empty for checkbox means no values available (new record)
+	 *
+	 * @return	Boolean
+	 */
+	public function isEmpty() {
+		return !$this->hasAttribute('value');
+	}
+
+	
+
+	/**
 	 * Get storage data:
 	 * 1: checked; 0: not checked
 	 *
