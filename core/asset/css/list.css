@@ -2,6 +2,9 @@ table.list {
 	width: 100%;
 	background-color:#fff;
 }
+table.list.autoWidthTable {
+	width:auto;
+}
 table.list th,
 table.list td {
 	padding:3px 0 3px 5px;

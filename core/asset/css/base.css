@@ -37,11 +37,15 @@ caption {
 }
 
 table {
-	border-collapse:collapse;
+	border-collapse:separated;
+	border-spacing:0;
 }
 
 table.fixedTable {
 	table-layout:fixed;
+}
+table.autoWidthTable {
+	width:auto;
 }
 
 th {

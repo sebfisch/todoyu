@@ -188,6 +188,29 @@ h1.headerLine.hasIcon span.title {
 	line-height:20px;
 }
 
+/* table header */
+tr.headerLine {
+	border:none;
+	background:none;
+}
+tr.headerLine th {
+	background:url('../img/bg-headerline.png') repeat-x 0 0;
+	border-top:1px solid #dfdfdf;
+	border-bottom:1px solid #fff;
+}
+tr.headerLine th:first-child {
+	border-left:1px solid #dfdfdf;
+	-moz-border-radius:5px 0 0 0;
+	-webkit-border-radius:5px 0 0 0;
+	border-radius:5px 0 0 0;
+}
+tr.headerLine th:last-child {
+	border-right:1px solid #dfdfdf;
+	-moz-border-radius:0 5px 0 0;
+	-webkit-border-radius:0 5px 0 0;
+	border-radius:0 5px 0 0;
+}
+
 div.dialog {
 	text-align:left;
 }
