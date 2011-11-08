@@ -118,6 +118,17 @@ class TodoyuCli {
 		return TODOYU_CLI === true;
 	}
 
+
+
+	/**
+	 * Print message to console
+	 *
+	 * @param	String		$message
+	 */
+	public static function printLine($message) {
+		echo $message . "\n";
+	}
+
 }
 
 ?>
