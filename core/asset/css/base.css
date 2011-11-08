@@ -37,8 +37,7 @@ caption {
 }
 
 table {
-	border-collapse:separate;
-	border-spacing:0;
+	border-collapse:collapse;
 }
 
 table.fixedTable {
@@ -75,7 +74,7 @@ p {
 h1 {
 	margin:0;
 	padding:0;
-	overflow: hidden;
+	overflow:hidden;
 }
 
 h1 span {

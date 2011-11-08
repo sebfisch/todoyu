@@ -73,7 +73,7 @@ button.cancel .icon {
 }
 
 button.delete .icon {
-	background:url(../img/icons.png) no-repeat 0 -330px;
+	background:url(../img/icons.png) no-repeat 4px -328px;
 }
 
 button.expandAll .icon {

@@ -7,9 +7,6 @@ div.icon {
 	width:18px;
 	height:18px;
 }
-.icon.iconNotifySmall {
-	height:14px;
-}
 
 div.iconLarge,
 span.iconLarge {
@@ -132,9 +129,9 @@ div.infoBox div.content {
 	margin-top:5px;
 	height:25px;
 	text-align:left;
-	-moz-border-radius: 5px 5px 0 0;
-	-webkit-border-radius: 5px 5px 0 0;
-	border-radius: 5px 5px 0 0;
+	-moz-border-radius:5px 5px 0 0;
+	-webkit-border-radius:5px 5px 0 0;
+	border-radius:5px 5px 0 0;
 	border:1px solid #dfdfdf;
 	border-bottom-color:#fff;
 }
@@ -158,12 +155,11 @@ div.infoBox div.content {
 	text-shadow:1px 1px #f3f3f3;
 }
 
-h1.headerLine span.title {
-	width:635px;
-	white-space: nowrap;
-    overflow: hidden;
-	text-overflow:ellipsis;
-	-o-text-overflow:ellipsis;
+h1.headerLine.hasIcon {
+	padding-left:2px;
+}
+h1.headerLine.hasIcon span.title {
+	padding-left:27px;
 }
 
 .headerLine span {
@@ -176,14 +172,6 @@ h1.headerLine span.title {
 	margin:0;
 	padding:0 0 0 20px;
 }
-
-h1.headerLine.hasIcon {
-	padding-left:2px;
-}
-h1.headerLine.hasIcon span.title {
-	padding-left:27px;
-}
-
 
 .headerLine th, .headerOptLine th {
 	font-size:10px;
@@ -200,32 +188,8 @@ h1.headerLine.hasIcon span.title {
 	line-height:20px;
 }
 
-/* table header */
-tr.headerLine {
-	border:none;
-	background:none;
-}
-tr.headerLine th {
-	background:url('../img/bg-headerline.png') repeat-x 0 0;
-	border-top:1px solid #dfdfdf;
-	border-bottom:1px solid #fff;
-}
-tr.headerLine th:first-child {
-	border-left:1px solid #dfdfdf;
-	-moz-border-radius:5px 0 0 0;
-	-webkit-border-radius:5px 0 0 0;
-	border-radius:5px 0 0 0;
-}
-tr.headerLine th:last-child {
-	border-right:1px solid #dfdfdf;
-	-moz-border-radius:0 5px 0 0;
-	-webkit-border-radius:0 5px 0 0;
-	border-radius:0 5px 0 0;
-}
-
-
 div.dialog {
-	text-align: left;
+	text-align:left;
 }
 
 div.dialog_content h1.headerLine {

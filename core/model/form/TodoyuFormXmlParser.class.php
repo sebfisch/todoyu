@@ -122,8 +122,9 @@ class TodoyuFormXmlParser {
 	 */
 	private static function parseTopFieldsets() {
 		$children	= self::$xml->fieldsets->children();
+
 		if( is_object($children) ) {
-			foreach( $children as $fieldset ) {
+			foreach($children as $fieldset) {
 				self::addFieldset(self::$form, $fieldset);
 			}
 		}
