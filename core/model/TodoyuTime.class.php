@@ -433,7 +433,7 @@ class TodoyuTime {
 			$unit	= 'day';
 		} elseif( $seconds >= TodoyuTime::SECONDS_HOUR ) {
 				// Hours
-			$value	= $seconds / TodoyuTime::SECONDS_HOUR;
+			$value = self::sec2hour($seconds);
 			$unit	= 'time.hour';
 		} elseif( $seconds >= TodoyuTime::SECONDS_MIN ) {
 				// Minutes
