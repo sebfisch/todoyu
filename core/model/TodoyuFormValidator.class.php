@@ -351,14 +351,18 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
-		$compareFieldName	= $validatorConfig['field'];
-		$compareFieldValue	= $formData[$compareFieldName];
+		if( array_key_exists('field', $validatorConfig) ) {
+			$compareFieldName	= $validatorConfig['field'];
+			$compareValue		= $formData[$compareFieldName];
+		} else {
+			$compareValue	=	intval($validatorConfig['value']);
+		}
 
 			// Convert dates to timestamps
 		$fieldDate			= intval($value);
-		$compareFieldDate	= intval($compareFieldValue);
+		$compareDate	= intval($compareValue);
 
-		return $fieldDate < $compareFieldDate;
+		return $fieldDate < $compareDate;
 	}
 
 
@@ -374,6 +378,7 @@ class TodoyuFormValidator {
 	 * @return	Boolean
 	 */
 	public static function dateNotBefore($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+
 			// Check for allowed exceptions
 		$allow	= self::checkAllow($validatorConfig, $formData);
 		if( $allow === true ) {
@@ -413,18 +418,22 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
+		if( array_key_exists('field', $validatorConfig) ) {
 		$compareFieldName	= $validatorConfig['field'];
-		$compareFieldValue	= $formData[$compareFieldName];
+		$compareValue		= $formData[$compareFieldName];
+		} else {
+			$compareValue	= $validatorConfig['value'];
+		}
 
 			// Convert dates to timestamps
-		$fieldDate		= intval($value);
-		$compareFieldDate= intval($compareFieldValue);
+		$fieldDate	= intval($value);
+		$compareDate= intval($compareValue);
 
-		if( $compareFieldDate === 0 ) {
+		if( $compareDate === 0 ) {
 			return false;
 		}
 
-		return $fieldDate > $compareFieldDate;
+		return $fieldDate > $compareDate;
 	}
 
 
@@ -467,13 +476,17 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
-		$secondFieldName	= $validatorConfig['field'];
-		$secondFieldValue	= $formData[$secondFieldName];
+		if( array_key_exists('field', $validatorConfig) ) {
+			$secondFieldName= $validatorConfig['field'];
+			$secondValue	= $formData[$secondFieldName];
+		} else {
+			$secondValue	= intval($validatorConfig['value']);
+		}
 
-		$fieldDate			= intval($value);
-		$secondFieldDate	= intval($secondFieldValue);
+		$fieldDate	= intval($value);
+		$secondDate	= intval($secondValue);
 
-		return $fieldDate < $secondFieldDate || $fieldDate === 0 || $secondFieldDate === 0;
+		return $fieldDate < $secondDate || $fieldDate === 0 || $secondDate === 0;
 	}
 
 
@@ -494,13 +507,17 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
-		$secondFieldName	= $validatorConfig['field'];
-		$secondFieldValue	= $formData[$secondFieldName];
+		if( array_key_exists('field', $validatorConfig) ) {
+			$secondFieldName= $validatorConfig['field'];
+			$secondValue	= $formData[$secondFieldName];
+		} else {
+			$secondValue	= intval($formData['value']);
+		}
 
 		$fieldDate			= intval($value);
-		$secondFieldDate	= intval($secondFieldValue);
+		$secondDate	= intval($secondValue);
 
-		if( $fieldDate === 0 || $secondFieldDate === 0) {
+		if( $fieldDate === 0 || $secondDate === 0) {
 			return true;
 		}
 
@@ -525,13 +542,17 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
-		$secondFieldName	= $validatorConfig['field'];
-		$secondFieldValue	= $formData[$secondFieldName];
+		if( array_key_exists('field', $validatorConfig) ) {
+			$secondFieldName= $validatorConfig['field'];
+			$secondValue	= $formData[$secondFieldName];
+		} else {
+			$secondValue	= $validatorConfig['value'];
+		}
 
 		$fieldDate		= intval($value);
-		$secondFieldDate= intval($secondFieldValue);
+		$secondDate= intval($secondValue);
 
-		return $fieldDate > $secondFieldDate;
+		return $fieldDate > $secondDate;
 	}
 
 
@@ -627,11 +648,16 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
-		$secondFieldName	= $validatorConfig['field'];
-		$secondFieldValue	= $formData[$secondFieldName];
-		$allowEmpty			= isset($validatorConfig['allowEmpty']);
+		if( array_key_exists('field', $validatorConfig) ) {
+			$secondFieldName= $validatorConfig['field'];
+			$secondValue	= $formData[$secondFieldName];
+		} else {
+			$secondValue	= $validatorConfig['value'];
+		}
 
-		$equal		= $secondFieldValue === $value;
+		$allowEmpty	= isset($validatorConfig['allowEmpty']);
+
+		$equal		= $secondValue === $value;
 		$notEmpty	= $allowEmpty ? true : $value !== '';
 
 		return $equal && $notEmpty;

@@ -280,11 +280,11 @@ Todoyu.Time = {
 	 * Convert date string (Y-m-d) into an timestamp
 	 *
 	 * @method	date2Time
-	 * @param	{String}		date
+	 * @param	{String}		dateString
 	 * @return	{Number}
 	 */
-	date2Time: function(date) {
-		var parts	= date.split('-');
+	date2Time: function(dateString) {
+		var parts	= dateString.split('-');
 
 		return Math.round((new Date(parts[0], parts[1]-1, parts[2], 0, 0, 0)).getTime()/1000);
 	},
