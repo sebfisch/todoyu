@@ -750,12 +750,12 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 			// Check 1 hour
 		$duration3600	= TodoyuTime::formatDuration(3600);
-		$expect3600	= '1 Hour';
+		$expect3600	= '01:00 Hour';
 		$this->assertEquals($expect3600, $duration3600);
 
 			// Check 5 hours
 		$duration3600	= TodoyuTime::formatDuration(18000);
-		$expect3600	= '5 Hours';
+		$expect3600	= '05:00 Hours';
 		$this->assertEquals($expect3600, $duration3600);
 
 			// Check 1 day
@@ -787,7 +787,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expectHours, $resultHours);
 
 			// Check timespan within same day with duration
-		$expectHours2	= 'Sat, Jan 01 11, 10:00 - 12:00 (2 Hours)';
+		$expectHours2	= 'Sat, Jan 01 11, 10:00 - 12:00 (02:00 Hours)';
 		$resultHours2	= TodoyuTime::formatTimespan($startHours, $endHours, true);
 
 		$this->assertEquals($expectHours2, $resultHours2);
