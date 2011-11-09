@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.1.3 - not released yet
+	* Added: Default link to documentation
 	* Added: Comparisom form validators (dateBefore, dateAfter, dateNotAfter, dateTimeNotBefore, dateTimeAfter, equals) can optionally compare against a value
 	* Changed: Duration formatting
 	* Bugfix: System URL was set wrong on windows systems

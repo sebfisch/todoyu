@@ -27,6 +27,13 @@
 class TodoyuExtensions {
 
 	/**
+	 * 
+	 */
+	const EXTINFO_DEFAULT_DOC = 'http://doc.todoyu.com/?';
+
+
+
+	/**
 	 * Get extension keys of all installed extensions
 	 *
 	 * @return	Array
@@ -204,11 +211,26 @@ class TodoyuExtensions {
 		if( $filePath !== false && self::isPathInExtDir($extKey, $filePath) ) {
 			if( is_file($filePath) ) {
 				include_once($filePath);
+				self::setDefaultDocumentationLink($extKey);
 				return true;
 			}
 		}
 
 		return false;
+	}
+
+
+
+	/**
+	 * @static
+	 * @param	String		$extKey
+	 */
+	private static function setDefaultDocumentationLink($extKey) {
+		if( is_array(Todoyu::$CONFIG['EXT'][$extKey]['info']) ) {
+			if ( !Todoyu::$CONFIG['EXT'][$extKey]['info']['urlDocumentation'] ) {
+				Todoyu::$CONFIG['EXT'][$extKey]['info']['urlDocumentation'] = self::EXTINFO_DEFAULT_DOC . $extKey;
+			}
+		}
 	}
 
 
