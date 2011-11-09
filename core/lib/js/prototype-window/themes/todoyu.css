@@ -230,11 +230,11 @@
 	margin:0;
 }
 
-.dialog table.table_window,
-.dialog table.table_window th,
-.dialog table.table_window td {
-	padding:0;
-}
+/*.dialog table.table_window,*/
+/*.dialog table.table_window th,*/
+/*.dialog table.table_window td {*/
+	/*padding:0;*/
+/*}*/
 
 .dialog .title_window {
 	-moz-user-select:none;
