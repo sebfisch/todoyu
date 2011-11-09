@@ -561,36 +561,15 @@ Todoyu.Form = {
 	/**
 	 * Custom handler for keyUp event inside textarea field - auto resize field by content
 	 *
-	 * @method	onKeyupInTextArea
+	 * @method	autoResizeTextArea
 	 * @param	{String}			idElement	ID of textarea field element
 	 */
-	onKeyupInTextArea: function(idElement) {
-		var element			= $(idElement);
-		var minHeight		= element.rows * 18;
-		var elementHeight	= element.getHeight();
-		var amountLines		= Todoyu.Helper.countLines($F(idElement));
+	autoResizeTextArea: function(idElement) {
+		var element		= $(idElement);
+		var content		= $F(element).strip();
+		var numTextRows	= Todoyu.Helper.countLines(content);
 
-			// Grow if necessary
-		if( elementHeight < (element.scrollHeight + 2) ) {
-			element.style.overflow	= "hidden";
-
-			new Effect.Morph(idElement, {
-				style:			'height:' + (element.getHeight() + 18) + 'px',
-				duration:		0.1,
-				afterFinish:	function(event) {
-					if( event.element.getHeight() < (event.element.scrollHeight + 2) ) {
-						Todoyu.Form.onKeyupInTextArea(event.element.id);
-					}
-					event.element.scrollTop	= event.element.scrollHeight;
-				}
-			});
-			// Shrink if necessary
-		} else if( elementHeight > minHeight && (elementHeight / 18) > amountLines ) {
-			new Effect.Morph(idElement, {
-				style:		'height:' + (element.getHeight() - 18) + 'px',
-				duration:	0.1
-			});
-		}
+		element.rows = numTextRows < 2 ? 2 : numTextRows+1;
 	}
 
 };

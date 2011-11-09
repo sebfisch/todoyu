@@ -81,13 +81,11 @@ Todoyu.Helper = {
 	 * Get amount of lines in given string
 	 *
 	 * @method	countLines
-	 * @param	{String}	str
+	 * @param	{String}	multilineText
 	 * @return	{Number}
 	 */
-	countLines: function(str) {
-		var lines	= str.split('\n');
-
-		return lines.length;
+	countLines: function(multilineText) {
+		return multilineText.split("\n").length;
 	},
 
 

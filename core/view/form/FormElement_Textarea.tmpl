@@ -1,5 +1,8 @@
 {extends "core/view/form/FormElement.tmpl"}
 
 {block name="field"}
-<textarea name="{$htmlName}" id="{$htmlId}" onclick="{$onclick}" onkeyup="Todoyu.Form.onKeyupInTextArea('{$htmlId}')" cols="{$cols}" rows="{$rows}" class="{$inputClass} {$class}" {if $style}style="{$style}"{/if}>{cleanHtml $valueTemplate}</textarea>
+{$numTextRows = sizeof(explode("\n", $valueTemplate))}
+{$autoRows = max($rows, $numTextRows)}
+{$autoRows += 1}
+<textarea name="{$htmlName}" id="{$htmlId}" {if $onclick}onclick="{$onclick}"{/if} onkeyup="Todoyu.Form.autoResizeTextArea('{$htmlId}')" cols="{$cols}" rows="{$autoRows}" class="{$inputClass} {$class}" {if $style}style="{$style}"{/if}>{cleanHtml $valueTemplate}</textarea>
 {/block}
