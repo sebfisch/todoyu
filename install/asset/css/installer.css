@@ -10,7 +10,7 @@
 
 p.installMessage {
 	padding:10px 10px 10px 40px;
-	margin:12px;
+	margin:0 12px 12px 12px;
 	border:2px solid #fff;
 	background:#edf1e0 url(../img/icons.png) 0 1000px no-repeat;
 	font-weight:bold;
@@ -78,6 +78,9 @@ select#database option.disabled {
 /* -----------------------------------
 	Panel: steps of installation
    ----------------------------------- */
+#panelwidget-installprogress h1 span.title {
+	padding-left:10px;
+}
 #panelwidget-installprogress h6 {
   	font-size:14px;
 	font-weight:bold;
@@ -185,6 +188,7 @@ input#email.adminaccount {
 }
 
 .content .boxContent {
+	padding-top:12px;
 	background-color:#e3eace;
 }
 
@@ -360,19 +364,22 @@ ul.installationLocales {
 /* --------------------------
 	Headers, footers
    --------------------------- */
-h1 {
-	background:transparent url('../img/bg-headerline.png') no-repeat 0 0;
-	height:28px;
-	margin-top:5px;
+h1.headerLine {
+	background:transparent url('../img/bg-headerline.png') repeat-x 0 0;
 	position:relative;
+	height:25px;
 	text-align:left;
-	width:100%;
+	-moz-border-radius:5px 5px 0 0;
+	-webkit-border-radius:5px 5px 0 0;
+	border-radius:5px 5px 0 0;
+	border:1px solid #dfdfdf;
+	border-bottom-color:#fff;
 }
 
 h1 span.title {
 	float:left;
-	line-height:28px;
-	margin:0 0 0 5px;
+	line-height:25px;
+	margin:0 0 0 10px;
 	text-transform:uppercase;
 	font-size:10px;
 	letter-spacing:0.3px;

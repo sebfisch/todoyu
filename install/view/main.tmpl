@@ -43,10 +43,10 @@
 
 			<div id="contentBox">
 				<div class="content">
-					<div class="boxContent">
-						<h1>
+						<h1 class="headerLine">
 							<span class="title">Todoyu Installer - {Label $title}</span>
 						</h1>
+					<div class="boxContent">
 
 						{if $result.text || $text}
 							<p class="installMessage {$result.textClass|default:$textClass}">{$result.text|default:$text}</p>
