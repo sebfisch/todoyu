@@ -106,7 +106,7 @@ class TodoyuDatabase {
 			// Decide how to connect to mysql server
 		$mysqlFunc	= $this->config['persistent'] ? 'mysql_pconnect' : 'mysql_connect';
 
-			// Connect to mysql server
+			// Connect to MySQL server
 		$this->link	= @call_user_func($mysqlFunc, $this->config['server'], $this->config['username'], $this->config['password']);
 
 			// Check if connection to server has failed
@@ -131,7 +131,7 @@ class TodoyuDatabase {
 
 	/**
 	 * Initialize database connection
-	 * Use utf8 names and clear sql_mode
+	 * Use UTF-8 names and clear sql_mode
 	 */
 	private function initConnection() {
 		$this->query("SET sql_mode=''");
@@ -1090,7 +1090,7 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Fetch a row (array) out of a mysql result
+	 * Fetch a row (array) out of a MySQL result
 	 *
 	 * @param	Resource	$result
 	 * @return	Array					Numeric indexes
@@ -1102,7 +1102,7 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Fetch a row (array) out of a mySql result
+	 * Fetch a row (array) out of a MySQL result
 	 *
 	 * @param	Resource	$result
 	 * @return	Array					Associative array with field names
@@ -1114,7 +1114,7 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Fetch a row (object) out of a mysql result
+	 * Fetch a row (object) out of a MySQL result
 	 * StdObject with fields as public member variables
 	 *
 	 * @param	Resource	$result

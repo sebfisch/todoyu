@@ -22,7 +22,7 @@
  * @todo	check	- remove?
  */
 
-	// The last lines of php code in the request
+	// The last lines of PHP code in the request
 
 //TodoyuDebug::printInFirebug(TIME_TOTAL*1000, 'Script runtime (ms)');
 //TodoyuDebug::printHtml($_SESSION['TODOYU'], '$_SESSION');

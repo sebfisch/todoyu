@@ -38,6 +38,7 @@
 	<label index="components">Components</label>
 	<label index="status">Status</label>
 	<label index="locked">Locked</label>
+	<label index="enabled">Enabled</label>
 	<label index="what">What</label>
 	<label index="where">Where</label>
 	<label index="when">When</label>

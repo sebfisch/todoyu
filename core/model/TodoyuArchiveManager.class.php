@@ -63,7 +63,7 @@ class TodoyuArchiveManager {
 
 
 	/**
-	 * Extract archive on server with php 5.2
+	 * Extract archive on server with PHP 5.2
 	 *
 	 * @throws	TodoyuException
 	 * @param	String		$pathArchive
@@ -97,7 +97,7 @@ class TodoyuArchiveManager {
 
 
 	/**
-	 * Extract archive on server with php 5.3
+	 * Extract archive on server with PHP 5.3
 	 *
 	 * @throws	TodoyuException
 	 * @param	String		$pathArchive

@@ -78,7 +78,7 @@ Todoyu.Ajax = {
 
 
 	/**
-	 * Check if a php error header has been sent
+	 * Check if a PHP error header has been sent
 	 * Cancel execution and show error message if so
 	 *
 	 * @method	checkPhpErrorHeader

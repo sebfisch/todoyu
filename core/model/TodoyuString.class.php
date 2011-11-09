@@ -960,7 +960,7 @@ class TodoyuString {
 
 
 	/**
-	 * Convert a variable to it's php string representation
+	 * Convert a variable to it's PHP string representation
 	 *
 	 * @param	Mixed		$var
 	 * @return	String

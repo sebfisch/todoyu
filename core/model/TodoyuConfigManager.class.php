@@ -28,7 +28,7 @@
 class TodoyuConfigManager {
 
 	/**
-	 * Save data in template php file
+	 * Save data in template PHP file
 	 *
 	 * @param	String		$savePath
 	 * @param	String		$templateFile

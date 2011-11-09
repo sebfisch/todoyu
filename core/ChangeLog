@@ -31,7 +31,7 @@ core 2.1.2 - 2011-09-15
 	* Bugfix: #185 Deleting an access role in sysmanager caused a fatal error (invalid function call)
 	* Bugfix: #189 Problems with character set conversion when server character sets are not utf-8
 	* Bugfix: Problems with close handling for popups in IE8. Redesigned callback structure
-	* Bugfix: #199 Parsing mysql date (standard date YYYY-MM-DD) failed. Birthdays were not received correct from form field
+	* Bugfix: #199 Parsing MySQL date (standard date YYYY-MM-DD) failed. Birthdays were not received correct from form field
 	* Bugfix: Option class name was not used (invalid variable name in template)
 	* Bugfix: Remove event handler attributes from tags in RTE HTML to prevent RSS attacks
 	* Bugfix: Select AC value with return key doesn't clear the hidden value field (previously selected items had got lost)
@@ -78,7 +78,7 @@ core 2.1.1 - 2011-07-25
 	* Changed: Rename Todoyu.Notification.observeChange to addValidator
 	* Changed: Padding of inline filter forms to prevent layout problems
 	* Changed: Only set curl option CURLOPT_FOLLOWLOCATION when safe mode is not enabled
-	* Changed: Minimum php version is 5.2.3 (instead only 5.2.0)
+	* Changed: Minimum PHP version is 5.2.3 (instead only 5.2.0)
 	* Changed: Updated highcharts library to 2.1.6
 	* Changed: Updated tinyMCE to 3.4.3.2
 	* Changed: <a>-tags are now removed from RTE when saving (autolink function rebuilds them when necessary for output)
@@ -127,7 +127,7 @@ core 2.1.0 - 2011-06-17
 	* Changed: Moved global functions to Todoyu namespace
 	* Changed: Renamed "assets" folder to "asset" (all folders now singular)
 	* Changed: Made allowed tags of RTE more precise to disallow styles that are not supported via RTE options (inserted via paste)
-	* Changed: Installer respects version order of php and sql files
+	* Changed: Installer respects version order of PHP and SQL files
 	* Changed: When last version is unknown during an update, prompt for user input
 	* Changed: Extension archives are created completely in core modules. Valid extraction to all OS
 	* Changed: Support exception handling for PHP 5.2 and 5.3

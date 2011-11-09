@@ -503,7 +503,7 @@ class TodoyuTime {
 
 
 	/**
-	 * Parse sql date to timestamp
+	 * Parse SQL date to timestamp
 	 *
 	 * @param	String		$sqlDate
 	 * @return	Integer
@@ -564,7 +564,7 @@ class TodoyuTime {
 		$dateString	= trim($dateString);
 		$time		= 0;
 
-			// Standard date from mysql date type
+			// Standard date from MySQL date type
 		if( self::isStandardDate($dateString) ) {
 			$format	= '%Y-%m-%d';
 		} else {

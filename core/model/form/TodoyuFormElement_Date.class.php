@@ -143,7 +143,7 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 
 	/**
 	 * Set field value
-	 * Can be timestamp, date or mysql date format
+	 * Can be timestamp, date or MySQL date format
 	 * Formats: 1262214000, 31.12.2009 (locale), 2009-12-31
 	 *
 	 * @param	Mixed		$value
@@ -193,7 +193,7 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 		} else {
 			$storageData= $this->getValue();
 
-				// If storeAsDate, format in mysql date format
+				// If storeAsDate, format in MySQL date format
 			if( $this->hasAttribute('storeAsDate') ) {
 					// Set to zero if no data entered
 				if( $storageData === false ) {

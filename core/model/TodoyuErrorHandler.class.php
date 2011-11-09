@@ -27,7 +27,7 @@
 class TodoyuErrorHandler {
 
 	/**
-	 * Flag. If true, the default php error handler will be called after the custom one
+	 * Flag. If true, the default PHP error handler will be called after the custom one
 	 *
 	 * @var	Boolean
 	 */
@@ -77,7 +77,7 @@ class TodoyuErrorHandler {
 
 
 	/**
-	 * Handle normal php errors. Disabled at the moment!
+	 * Handle normal PHP errors. Disabled at the moment!
 	 *
 	 * @todo	Decide which errors are reported to the log
 	 * @param	Integer		$errorno
@@ -150,7 +150,7 @@ class TodoyuErrorHandler {
 
 
 	/**
-	 * Send a php error header
+	 * Send a PHP error header
 	 *
 	 * @param	String		$errorMessage
 	 */

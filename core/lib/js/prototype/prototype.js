@@ -114,7 +114,7 @@ Ajax.Response.addMethods({
 
 
 	/**
-	 * Check whether a php error header was sent
+	 * Check whether a PHP error header was sent
 	 *
 	 * @return	{Boolean}
 	 */
@@ -125,7 +125,7 @@ Ajax.Response.addMethods({
 
 
 	/**
-	 * Get the php error header
+	 * Get the PHP error header
 	 *
 	 * @return	{String}
 	 */

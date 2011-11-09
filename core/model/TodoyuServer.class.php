@@ -79,7 +79,7 @@ class TodoyuServer {
 		$problems			= array();
 		$requiredVersion	= '5.2.3';
 
-			// Check php version
+			// Check PHP version
 		if( version_compare(PHP_VERSION, $requiredVersion) === -1 ) {
 			$problems[] = 'PHP version to low. You need at least ' . $requiredVersion . '. You only have ' . PHP_VERSION;
 		}
@@ -129,7 +129,7 @@ class TodoyuServer {
 
 
 	/**
-	 * Check whether the server runs php 5.3.0 at least
+	 * Check whether the server runs PHP 5.3.0 at least
 	 *
 	 * @return	Boolean
 	 */

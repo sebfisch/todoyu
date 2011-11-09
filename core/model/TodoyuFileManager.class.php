@@ -342,7 +342,7 @@ class TodoyuFileManager {
 		$content= Todoyu::render($templateFile, $data);
 
 		if( $wrapAsPhp ) {
-				// Add php start and end tag
+				// Add PHP start and end tag
 			$content= TodoyuString::wrap($content, '<?php|?>');
 		}
 

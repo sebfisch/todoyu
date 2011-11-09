@@ -176,7 +176,7 @@ class TodoyuInstallerRenderer {
 
 
 	/**
-	 * Check whether tables from the database conflict with tables from the install sql files
+	 * Check whether tables from the database conflict with tables from the install SQL files
 	 *
 	 * @param	Array	$databaseTableNames
 	 * @return	Boolean
