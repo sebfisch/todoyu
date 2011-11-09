@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.1.3 - not released yet
+	* Changed: Duration formatting
 	* Bugfix: System URL was set wrong on windows systems
 	* Bugfix: Cropping of tabs didn't work correctly in ie. Due to substr(negativeValue)
 	* Bugfix: Checkbox had problem with default value

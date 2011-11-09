@@ -358,6 +358,19 @@ class TodoyuTime {
 
 
 	/**
+	 * @static
+	 * @param	Integer		$seconds
+	 * @return	String
+	 */
+	public static function sec2Min($seconds) {
+		$timeParts	= self::getTimeParts($seconds);
+
+		return sprintf('%02d:%02d', $timeParts['minutes'], $timeParts['seconds']);
+	}
+
+
+
+	/**
 	 * Format time values 23:59 or 23:59:59
 	 *
 	 * @param	Integer		$seconds
@@ -422,22 +435,32 @@ class TodoyuTime {
 	 * @param	Boolean		$largerUnitsThanDays	Don't format in larger unit than days?
 	 * @return	String
 	 */
-	public static function formatDuration($seconds, $largerUnitsThanDays = false) {
+	public static function formatDuration($seconds, $largerUnitsThanDays = false, $withSubunit = true) {
+		$subunit = false;
+
 		if( $largerUnitsThanDays && $seconds >= TodoyuTime::SECONDS_WEEK ) {
 				// Weeks
+			$subUnitValue	= $seconds % TodoyuTime::SECONDS_WEEK;
 			$value	= $seconds / TodoyuTime::SECONDS_WEEK;
+			if( $withSubunit == true && $subUnitValue >= TodoyuTime::SECONDS_DAY) {
+				$subunit	= self::formatDuration($subUnitValue, false, false);
+			}
 			$unit	= 'week';
 		} elseif( $seconds >= TodoyuTime::SECONDS_DAY ) {
 				// Days
-			$value	= $seconds / TodoyuTime::SECONDS_DAY;
+			$subUnitValue	= $seconds % TodoyuTime::SECONDS_DAY;
+			$value			= ($seconds - $subUnitValue) / TodoyuTime::SECONDS_DAY;
+			if( $withSubunit == true && $subUnitValue >= TodoyuTime::SECONDS_HOUR) {
+				$subunit	= self::formatDuration($subUnitValue, false, false);
+			}
 			$unit	= 'day';
 		} elseif( $seconds >= TodoyuTime::SECONDS_HOUR ) {
 				// Hours
-			$value = self::sec2hour($seconds);
+			$value = ($withSubunit) ? self::sec2hour($seconds) : intval($seconds / TodoyuTime::SECONDS_HOUR);
 			$unit	= 'time.hour';
 		} elseif( $seconds >= TodoyuTime::SECONDS_MIN ) {
 				// Minutes
-			$value	= $seconds / TodoyuTime::SECONDS_MIN;
+			$value	= ($withSubunit) ? self::sec2Min($seconds) : intval($seconds / TodoyuTime::SECONDS_MIN);
 			$unit	= 'time.minute';
 		} else {
 				// Seconds
@@ -454,7 +477,7 @@ class TodoyuTime {
 			$unit .= 's';
 		}
 
-		return $value . ' ' . Todoyu::Label('core.date.' . $unit);
+		return $value . ' ' . Todoyu::Label('core.date.' . $unit) . ($subunit ? ' ' . $subunit : '');
 	}
 
 
