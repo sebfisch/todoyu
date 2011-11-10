@@ -141,7 +141,7 @@
 	z-index:9999; /* always in front */
 	padding:0;
 	color:#666;
-    text-align:left;
+	text-align:left;
 }
 
 .timerange .dates .ranges:hover ul {
