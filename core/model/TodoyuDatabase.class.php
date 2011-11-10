@@ -510,7 +510,6 @@ class TodoyuDatabase {
 	public function buildUPDATEquery($table, $where, array $fieldNameValues, array $noQuoteFields = array()) {
 		$fieldNameValues= $this->escapeArray($fieldNameValues, true, $noQuoteFields);
 		$fields			= array();
-		$table			= $this->backtick($table);
 
 		foreach($fieldNameValues as $key => $quotedValue) {
 			if( in_array($key, $noQuoteFields) ) {
@@ -526,6 +525,7 @@ class TodoyuDatabase {
 		if( !empty($where) ) {
 			$query .= ' WHERE ' . $where;
 		}
+
 
 		return $query;
 	}
@@ -561,6 +561,7 @@ class TodoyuDatabase {
 	 * @return	Boolean		Was record updated?
 	 */
 	public function doUpdateRecord($table, $idRecord, array $fieldNameValues, array $noQuoteFields = array()) {
+		$table  = '`' . $table . '`'; 
 		$where	= 'id = ' . intval($idRecord);
 
 		return $this->doUpdate($table, $where, $fieldNameValues, $noQuoteFields) === 1;
@@ -1071,6 +1072,7 @@ class TodoyuDatabase {
 	 * @return	Boolean
 	 */
 	public function updateRecord($table, $idRecord, array $fieldValues, array $noQuoteFields = array()) {
+		$table	= '`' . $table . '`';
 		$where	= '`id` = ' . intval($idRecord);
 
 		return $this->doUpdate($table, $where, $fieldValues, $noQuoteFields) === 1;
