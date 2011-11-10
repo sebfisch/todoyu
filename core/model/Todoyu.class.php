@@ -364,13 +364,12 @@ class Todoyu {
 		} catch(Dwoo_Exception $e) {
 			TodoyuHeader::sendTypeText();
 
-			$trace	= $e->getTrace();
-
 			echo "Dwoo Template Error: ({$e->getCode()})\n";
 			echo "=================================================\n\n";
 			echo "Error:	{$e->getMessage()}\n";
-			echo "File:		{$trace[1]['file']} : {$trace[1]['line']}\n";
-			echo "Template:	{$trace[1]['args'][0]}\n";
+			echo "File:		{$e->getFile()} : {$e->getLine()}\n";
+			echo "Trace:\n\n";
+			echo $e->getTraceAsString();
 
 			exit();
 		}
