@@ -42,6 +42,11 @@ define( 'PATH_FILES',		PATH . DIR_SEP . 'files' );
 	// Constants
 define( 'NOW', time() );
 
+	// int min
+if( !defined('PHP_INT_MIN') ) {
+	define('PHP_INT_MIN', intval(PHP_INT_MAX+1));
+}
+
 
 	// Define public URL constants if available
 	// (not available over CLI, they will be defined in TodoyuCli)

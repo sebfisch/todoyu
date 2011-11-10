@@ -21,6 +21,13 @@
 /**
  * Date range element
  *
+ * The two constructor parameters are start and end of the range
+ * start	end		result
+ * 0		0		full range
+ * 0		x		everything before x
+ * x		0		everything from x
+ * x		y		everything between x and y
+ *
  * @package		Todoyu
  * @subpackage	Core
  */
@@ -39,6 +46,20 @@ class TodoyuDateRange {
 	 * @var	Integer
 	 */
 	protected $dateEnd;
+
+	/**
+	 * Minimal date for maximal range
+	 *
+	 * @var	Integer
+	 */
+	protected $dateMin = -2145920400;
+
+	/**
+	 * Maximal date for maximal range
+	 *
+	 * @var	Integer
+	 */
+	protected $dateMax = 2145913200;
 	
 
 
@@ -52,15 +73,15 @@ class TodoyuDateRange {
 		$dateStart	= intval($dateStart);
 		$dateEnd	= intval($dateEnd);
 
-		if( $dateStart === 0 && $dateEnd === 0 ) {
-			$this->setMaxRanges();
-		} else {
-			if( $dateStart > 0 && $dateEnd === 0 ) {
-				$dateEnd = $dateStart;
-			}
-
-			$this->setRange($dateStart, $dateEnd);
+		if( $dateStart === 0 ) {
+			$dateStart = $this->dateMin;
 		}
+
+		if( $dateEnd === 0 ) {
+			$dateEnd = $this->dateMax;
+		}
+
+		$this->setRange($dateStart, $dateEnd);
 	}
 
 
@@ -71,8 +92,11 @@ class TodoyuDateRange {
 	 *
 	 */
 	public function setMaxRanges() {
-		$this->setStart(-1893463200);
-		$this->setEnd(2114377200);
+		$this->setStart(PHP_INT_MIN);
+		$this->setEnd(PHP_INT_MAX);
+
+//		PHP_INT_MAX
+//		PHP_INT_MIN
 	}
 
 

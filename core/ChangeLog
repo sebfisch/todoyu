@@ -1,9 +1,6 @@
 todoyu core changelog
 
 core 2.1.3 - not released yet
-	* Added: Default link to documentation
-	* Added: Comparisom form validators (dateBefore, dateAfter, dateNotAfter, dateTimeNotBefore, dateTimeAfter, equals) can optionally compare against a value
-	* Changed: Duration formatting
 	* Bugfix: System URL was set wrong on windows systems
 	* Bugfix: Cropping of tabs didn't work correctly in ie. Due to substr(negativeValue)
 	* Bugfix: Checkbox had problem with default value
@@ -17,9 +14,12 @@ core 2.1.3 - not released yet
 	* Added: Wrappers for rename() and copy() in TodoyuFileManager
 	* Added: TodoyuTime:: getYearEnd(), getYearStart()
 	* Added: update() and updateField()
+	* Added: Default link to documentation
+	* Added: Comparisom form validators (dateBefore, dateAfter, dateNotAfter, dateTimeNotBefore, dateTimeAfter, equals) can optionally compare against a value
 	* Changed: Don't require system locale data to set a locale for translation
 	* Changed: TodoyuDebug handles now debugging status
 	* Changed: Format of duration (hour)
+	* Changed: Duration formatting
 	* Removed: Moved continuous integration files to private extension
 	* Removed: Username list from debug function. Were never used
 	* Removed: Color styles for project (moved to project)
