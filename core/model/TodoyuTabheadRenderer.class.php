@@ -50,6 +50,10 @@ class TodoyuTabheadRenderer {
 			$active = $tabs[0]['id'];
 		}
 
+		if( $jsHandler === '' ) {
+			$jsHandler = 'Prototype.emptyFunction';
+		}
+
 		if( $class === '' ) {
 			$class = $name;
 		}
