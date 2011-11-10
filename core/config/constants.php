@@ -55,11 +55,14 @@ if( $_SERVER['HTTP_HOST'] ) {
 	/**
 	 * Path after host server to todoyu
 	 */
-	$tempPathWeb = (defined('PATH_WEB_OVERRIDE') ? PATH_WEB_OVERRIDE :
-						(dirname($_SERVER['SCRIPT_NAME']) === '.' ? '' : dirname($_SERVER['SCRIPT_NAME']))
-					);
+	if( defined('PATH_WEB_OVERRIDE') ) {
+		$pathWeb = PATH_WEB_OVERRIDE;
+	} else {
+		$pathWeb = dirname($_SERVER['SCRIPT_NAME']) === '.' ? '' : dirname($_SERVER['SCRIPT_NAME']);
+	}
+	$pathWeb = str_replace('\\', '/', $pathWeb);
 
-	define('PATH_WEB',  str_replace('\\', '/', $tempPathWeb));
+	define('PATH_WEB', $pathWeb);
 	
 	/**
 	 * Public URL of the server (use to build absolute links)
