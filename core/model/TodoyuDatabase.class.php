@@ -1071,7 +1071,6 @@ class TodoyuDatabase {
 	 * @return	Boolean
 	 */
 	public function updateRecord($table, $idRecord, array $fieldValues, array $noQuoteFields = array()) {
-		$table	= '`' . $table . '`';
 		$where	= '`id` = ' . intval($idRecord);
 
 		return $this->doUpdate($table, $where, $fieldValues, $noQuoteFields) === 1;
