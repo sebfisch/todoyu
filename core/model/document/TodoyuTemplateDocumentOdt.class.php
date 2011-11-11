@@ -55,6 +55,8 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 		$this->prepareConditionXML();
 		$this->preparePhpXML();
 		$this->prepareForeach();
+		$this->removeAnnotations();
+		$this->convertXmlEntitiesInDwooTags();
 
 //		TodoyuHeader::sendHeaderXML();
 //		echo $this->xmlContent;
@@ -242,6 +244,46 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 		$replace	= '\2\1\3\4';
 
 		$this->xmlContent	= preg_replace($pattern, $replace, $this->xmlContent);
+	}
+
+
+
+	/**
+	 * Remove annotations from documents
+	 *
+	 */
+	private function removeAnnotations() {
+		$pattern	= '/<office:annotation>.*?<\/office:annotation>/is';
+		$replace	= '';
+
+		$this->xmlContent	= preg_replace($pattern, $replace, $this->xmlContent);
+	}
+
+
+
+	/**
+	 * Convert encoded entities back to original char when it's inside a dwoo tag
+	 * Useful for < or > which are &gt; and &lt; in an XML document
+	 */
+	private function convertXmlEntitiesInDwooTags() {
+		$pattern	= '/{(.*?)(&([^;]+?);)(.*?)}/';
+
+		$this->xmlContent	= preg_replace_callback($pattern, array($this,'callbackConvertEntities'), $this->xmlContent);
+
+	}
+
+
+
+	/**
+	 * Callback to convert XML entities back inside of a dwoo tag
+	 *
+	 * @param	Array	$match
+	 * @return	String
+	 */
+	private static function callbackConvertEntities(array $match) {
+		$entity	= html_entity_decode($match[2], ENT_QUOTES, 'UTF-8');
+
+		return str_replace($match[2], $entity, $match[0]);
 	}
 
 }
