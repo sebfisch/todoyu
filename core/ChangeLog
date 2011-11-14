@@ -7,6 +7,7 @@ core 2.1.3 - not released yet
 	* Bugfix: ReplyTo & sender of emails were automatically set to the system mail
 	* Bugfix: Simplified textarea auto resize. Works now in all major up-to-date browsers
 	* Bugfix: XML entities were encoded inside of dwoo tags which caused parse error in template engine (dwoo)
+	* Bugfix: Hiding of notifications of the same type failed when more than 2 dots were in the identifier
 	* Added: Cropping for database relation labels in form
 	* Added TodoyuTime::time() to set null values to current time
 	* Added TodoyuDateRange
