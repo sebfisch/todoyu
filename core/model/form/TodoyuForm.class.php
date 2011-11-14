@@ -825,6 +825,20 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
+	 * Check whether field with given name exist in the form
+	 *
+	 * @param	String	$fieldName
+	 * @return	Boolean
+	 */
+	public function hasField($fieldName) {
+		$fieldNames	= $this->getFieldnames();
+
+		return in_array($fieldName, $fieldNames);
+	}
+
+
+
+	/**
 	 * Get a field object by name. It doesn't matter where
 	 * the field is located in the form
 	 *
@@ -832,8 +846,9 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	TodoyuFormElement
 	 */
 	public function getField($name) {
-		if( ! array_key_exists($name, $this->fields) ) {
+		if( ! $this->hasField($name) ) {
 			TodoyuLogger::logError('Getter of non-existent form field used: ' . $name);
+//			TodoyuDebug::printInFirebug(debug_backtrace(false));
 		}
 
 		return $this->fields[$name];
@@ -849,7 +864,7 @@ class TodoyuForm implements ArrayAccess {
 	 */
 	public function removeField($name, $cleanup = false) {
 		if( $cleanup ) {
-			if( $this->getField($name) !== null ) {
+			if( $this->hasField($name) && $this->getField($name) !== null ) {
 				$this->getField($name)->remove();
 			}
 		}
@@ -880,20 +895,6 @@ class TodoyuForm implements ArrayAccess {
 	 */
 	public function getFieldnames() {
 		return array_keys($this->fields);
-	}
-
-
-
-	/**
-	 * Check whether field with given name exist in the form
-	 *
-	 * @param	String	$fieldName
-	 * @return	Boolean
-	 */
-	public function hasField($fieldName) {
-		$fieldNames	= $this->getFieldnames();
-
-		return in_array($fieldName, $fieldNames);
 	}
 
 
