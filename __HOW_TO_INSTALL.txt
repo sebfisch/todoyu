@@ -44,7 +44,7 @@ Instructions to install todoyu
 
 	4. File permissions
 	The webserver should have write privileges to all folders and files of todoyu.
-	But especially this elements require write access so todoyu can run:
+	But especially these elements require write access so todoyu can run:
 		* files/
 		* config/
 		* cache/
