@@ -67,14 +67,24 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 
 			// Generate config code
 		$jsCode	= "tinyMCE.init({\n";
-		$tmpOpt	= array();
 
+		$tmpOpt	= array();
 		foreach($options as $name => $value) {
 			$tmpOpt[] = $name . ' : "' . $value . '"';
 		}
 
+			// If RTE is first field in form: focus it
+		$allFields	= parent::getForm()->getFieldnames();
+
+		$idField	= $options['elements'];
+		$idParts	= explode('-', $idField);
+		$nameField	= $idParts[0];
+
+		if( $allFields[0] === $nameField ) {
+			$tmpOpt[]	= 'auto_focus: "' . $idField . '"';
+		}
+
 		$jsCode .= implode(",\n", $tmpOpt) . "\n});\n";
-//		$jsCode .= 'Todoyu.Ui.initRTEfocus(\'' . $options['elements'] . '\');';
 
 		return $jsCode;
 	}
