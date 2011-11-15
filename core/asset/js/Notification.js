@@ -61,7 +61,7 @@ Todoyu.Notification = {
 	 * @property	closeDelaySticky
 	 * @type		Number
 	 */
-	closeDelaySticky: 20,
+	closeDelaySticky: 15,
 
 	/**
 	 * Template object
@@ -131,7 +131,7 @@ Todoyu.Notification = {
 	 * @return	{String}
 	 */
 	getIdentifierClass: function(identifier) {
-		identifier	= identifier || '';
+		identifier	= identifier || 'r' + Math.round(Math.random() * 1000);
 
 		return identifier.replace(/\./g, '-');
 	},
@@ -189,7 +189,7 @@ Todoyu.Notification = {
 	 *
 	 * @method	notifyError
 	 * @param	{String}		message
-	 * @param	{String}		identifiert
+	 * @param	{String}		identifier
 	 */
 	notifyError: function(message, identifier) {
 		this.notify(this.ERROR, message, true, this.closeDelay, identifier);
