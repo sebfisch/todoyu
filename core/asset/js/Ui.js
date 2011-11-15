@@ -775,6 +775,19 @@ Todoyu.Ui = {
 		}
 
 		return button;
+	},
+
+
+
+	/**
+	 * TinyMCE paste plugin callback
+	 * Remove first <br> tag from pasted text (prevents line break before content in webkit)
+	 *
+	 * @param	{Object}	plugin
+	 * @param	{Object}	pasteObject
+	 */
+	onTinyMcePasteCleanup: function(plugin, pasteObject) {
+		pasteObject.node.innerHTML = pasteObject.node.innerHTML.replace('<br />', '');
 	}
 
 };
