@@ -75,7 +75,11 @@ class TodoyuPageAssetManager {
 				'localize'	=> $localize,
 				'lib'		=> strstr($absPathToFile, PATH_LIB) !== false
 			);
+
+			return true;
 		}
+
+		return false;
 	}
 
 
