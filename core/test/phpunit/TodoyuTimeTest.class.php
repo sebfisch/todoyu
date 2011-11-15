@@ -740,12 +740,12 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 			// Check 1 minute
 		$duration60	= TodoyuTime::formatDuration(60);
-		$expect60	= '1 Minute';
+		$expect60	= '01:00 Minute';
 		$this->assertEquals($expect60, $duration60);
 
 			// Check 5 minutes
 		$duration300	= TodoyuTime::formatDuration(300);
-		$expect300	= '5 Minutes';
+		$expect300	= '05:00 Minutes';
 		$this->assertEquals($expect300, $duration300);
 
 			// Check 1 hour
