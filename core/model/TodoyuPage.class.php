@@ -135,8 +135,27 @@ class TodoyuPage {
 	 */
 	private static function addExtJavascript($ext) {
 		$files	= TodoyuArray::assure(Todoyu::$CONFIG['EXT'][$ext]['assets']['js']);
+		$area	= Todoyu::getAreaKey();
 
 		foreach($files as $file) {
+				// Only check for area, when merging is disabled
+			if( $file['merge'] !== true ) {
+					// Limit file to areas
+				if( isset($file['area']) ) {
+						// List of areas
+					if( is_array($file['area']) ) {
+						if( !in_array($area, $file['area']) ) {
+							continue;
+						}
+					} else {
+							// Single area
+						if( $area !== $file['area'] ) {
+							continue;
+						}
+					}
+				}
+			}
+
 			self::addJavascript($file['file'], $file['position'], $file['compress'], $file['merge'], $file['localize']);
 		}
 	}
