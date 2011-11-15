@@ -110,7 +110,7 @@ h4 {
 	height:12px;
 	padding:5px 0 7px 12px;
 	background-color:#fff;
-	border-bottom:1px solid #e1e1e1;
+	border-bottom:1px solid #eee;
 	font-weight:normal;
 	text-transform:uppercase;
 	white-space:nowrap;
@@ -162,8 +162,7 @@ h5 {
 
 
 .overflow {
-	overflow:auto;
-	overflow-x:hidden;
+	overflow:hidden;
 	height:auto;
 	height:100%;
 	/* ie7 needs this sometimes */

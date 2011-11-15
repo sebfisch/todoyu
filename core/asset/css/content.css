@@ -110,7 +110,6 @@ li.listItem a.editableItem {
 
 div.infoBox {
 	margin-bottom:5px;
-	border:1px solid #e1e1e1;
 }
 
 div.infoBox h4 {
@@ -120,7 +119,7 @@ div.infoBox h4 {
 
 div.infoBox div.content {
 	padding:5px 12px;
-	background:white;
+	background:#fff;
 }
 
 .headerLine,
