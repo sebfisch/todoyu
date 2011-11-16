@@ -987,13 +987,13 @@ class TodoyuDatabase {
 	/**
 	 * Get all selected rows as an array
 	 *
-	 * @param	String		$fields
-	 * @param	String		$table
-	 * @param	String		$where
-	 * @param	String		$groupBy
-	 * @param	String		$orderBy
-	 * @param	String		$limit
-	 * @param	String		$indexField
+	 * @param	String			$fields
+	 * @param	String			$table
+	 * @param	String			$where
+	 * @param	String			$groupBy
+	 * @param	String			$orderBy
+	 * @param	String			$limit
+	 * @param	String|Boolean	$indexField
 	 * @return	Array
 	 */
 	public function getArray($fields, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '', $indexField = false) {
@@ -1048,13 +1048,21 @@ class TodoyuDatabase {
 	 * @return	String
 	 */
 	public function getFieldValue($field, $table, $where = null, $groupBy = null, $orderBy = null, $limit = null, $resultFieldName = null) {
-		$resource	= $this->doSelect($field, $table, $where, $groupBy, $orderBy, $limit);
-		$key		= is_null($resultFieldName) ? $field : $resultFieldName;
-		$value		= false;
+		$cacheID	= sha1(serialize(func_get_args()));
 
-		if( $this->getNumRows($resource) > 0 ) {
-			$row	= $this->fetchAssoc($resource);
-			$value	= $row[$key];
+		if( TodoyuCache::isIn($cacheID) ) {
+			return TodoyuCache::get($cacheID);
+		} else {
+			$resource	= $this->doSelect($field, $table, $where, $groupBy, $orderBy, $limit);
+			$key		= is_null($resultFieldName) ? $field : $resultFieldName;
+			$value		= false;
+
+			if( $this->getNumRows($resource) > 0 ) {
+				$row	= $this->fetchAssoc($resource);
+				$value	= $row[$key];
+			}
+
+			TodoyuCache::set($cacheID, $value);
 		}
 
 		return $value;
