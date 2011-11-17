@@ -395,6 +395,8 @@ class TodoyuInstallerManager {
 		self::disableInstaller();
 		self::removeIndexRedirector();
 
+		TodoyuCacheManager::clearAllCache();
+
 		TodoyuSession::remove('installer');
 
 		self::goToLogInPage();

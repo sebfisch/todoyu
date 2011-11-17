@@ -34,4 +34,6 @@ foreach($files as $file) {
 	}
 }
 
+@unlink(PATH . '/cache/autoload.php');
+
 ?>
