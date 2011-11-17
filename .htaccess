@@ -58,6 +58,7 @@ RedirectMatch 403 /ext/(.*)/dwoo/(.*)
 RedirectMatch 403 /ext/(.*)/locale/(.*)
 RedirectMatch 403 /ext/(.*)/test/(.*)
 RedirectMatch 403 /ext/(.*)/view/(.*)
+RedirectMatch 403 /ext/(.*)/cli/(.*)
 
 
 # Force php5 (instead 4)
