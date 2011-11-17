@@ -144,6 +144,8 @@ class TodoyuAutoloader {
 	 * @return	Array
 	 */
 	private static function getClassList() {
+//		require_once(PATH . '/core/model/TodoyuException.class.php');
+//		require_once(PATH . '/core/model/TodoyuExceptionClassNameConflict.class.php');
 		$classList		= array();
 
 			// Static
@@ -161,7 +163,7 @@ class TodoyuAutoloader {
 
 					// Prevent class name conflicts
 				if( sizeof($doubleClasses) > 0 ) {
-					throw new TodoyuExceptionClassNameConflict($doubleClasses);
+//					throw new TodoyuExceptionClassNameConflict($doubleClasses);
 				}
 
 				$classList	= array_merge($classList, $folderClassList);

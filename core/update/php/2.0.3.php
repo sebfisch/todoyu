@@ -18,18 +18,20 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-/**
- * Class name conflict
- *
- * @package		Todoyu
- * @subpackage	Core
- */
-class TodoyuExceptionClassNameConflict extends TodoyuException {
+$files = array(
+	'/ext/assets/model/TodoyuBookmarkBookmark.class.php',
+	'/ext/assets/model/TodoyuBookmarkBookmarkManager.class.php',
+	'/ext/assets/model/TodoyuBookmarkPanelWidgetTaskBookmarks.class.php',
+	'/ext/assets/model/TodoyuBookmarkProfileRenderer.class.php',
+	'/ext/assets/model/TodoyuBookmarkRights.class.php'
+);
 
-//	public function getMessage() {
-//		return 'Class name conflicts for: ' . implode(', ', parent::getMessage());
-//	}
+foreach($files as $file) {
+	$path = PATH . $file;
 
+	if( is_file($path) ) {
+		@unlink($path);
+	}
 }
 
 ?>
