@@ -279,7 +279,7 @@ class TodoyuFileManager {
 	 * @return	String
 	 */
 	public static function getTempFile($ext = false, $create = false) {
-		$key	= md5(PATH . time() . microtime(true) . uniqid());
+		$key	= md5(PATH . NOW . microtime(true) . uniqid());
 		$path	= self::pathAbsolute(PATH_CACHE . '/temp/' . $key);
 
 		if( $ext !== false ) {
@@ -854,7 +854,7 @@ class TodoyuFileManager {
 
 		if( is_string($content) ) {
 			if( $targetPath === false || $targetPath === '' ) {
-				$targetPath	= self::pathAbsolute(PATH_CACHE . '/temp/' . md5($url.time()));
+				$targetPath	= self::pathAbsolute(PATH_CACHE . '/temp/' . md5($url . NOW));
 			} else {
 				$targetPath	= self::pathAbsolute($targetPath);
 			}
