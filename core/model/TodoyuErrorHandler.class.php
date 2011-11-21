@@ -70,7 +70,7 @@ class TodoyuErrorHandler {
 
 			exit();
 		} else {
-			self::endScriptClean('Database error!' /*. print_r(debug_backtrace(), true)*/ );
+			self::endScriptClean('Database error!' /* . print_r(debug_backtrace(), true)*/ );
 		}
 	}
 

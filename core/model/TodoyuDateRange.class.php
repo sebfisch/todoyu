@@ -94,9 +94,6 @@ class TodoyuDateRange {
 	public function setMaxRanges() {
 		$this->setStart(PHP_INT_MIN);
 		$this->setEnd(PHP_INT_MAX);
-
-//		PHP_INT_MAX
-//		PHP_INT_MIN
 	}
 
 
@@ -347,29 +344,67 @@ class TodoyuDateRange {
 	}
 
 
+
+	/**
+	 * Check whether dateRange spans one full year (01.01. to 12.31.)
+	 *
+	 * @return	Boolean
+	 */
 	public function isFullYearRange() {
 		return $this->isInOneYear() && date('m-d', $this->getStart()) === '01-01' && date('m-d', $this->getEnd()) === '12-31';
 	}
 
 
+
+	/**
+	 * Check whether dateRange spans one full month
+	 *
+	 * @return	Boolean
+	 */
 	public function isFullMonthRange() {
 		return $this->isInOneMonth() && $this->isStartStartOfMonth() && $this->isEndEndOfMonth();
 	}
 
+
+
+	/**
+	 * Check whether dateRange span lays within one (start/end the same) year
+	 *
+	 * @return	Boolean
+	 */
 	public function isInOneYear() {
 		return date('Y', $this->getStart()) === date('Y', $this->getEnd());
 	}
 
 
+
+	/**
+	 * Check whether dateRange span lays within one (start/ end the same) month
+	 *
+	 * @return	Boolean
+	 */
 	public function isInOneMonth() {
 		return date('Y-m', $this->getStart()) === date('Y-m', $this->getEnd());
 	}
 
+
+
+	/**
+	 * Check whether dateRange starts at 1st day of month
+	 *
+	 * @return	Boolean
+	 */
 	public function isStartStartOfMonth() {
 		return date('d', $this->getStart()) === '01';
 	}
 
 
+
+	/**
+	 * Check whether dateRange ends on last day of month
+	 *
+	 * @return	Boolean
+	 */
 	public function isEndEndOfMonth() {
 		$lastDay	= date('t', $this->getEnd());
 
