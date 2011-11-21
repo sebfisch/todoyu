@@ -52,13 +52,13 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 		$this->prepareDwooTagSpans();
 		$this->prepareListXML();
 		$this->prepareRowXML();
-		$this->prepareConditionXML();
 		$this->preparePhpXML();
 		$this->prepareForeach();
+		$this->prepareConditionXML();
 		$this->removeAnnotations();
 		$this->convertXmlEntitiesInDwooTags();
 
-//		TodoyuHeader::sendHeaderXML();
+//		TodoyuHeader::sendTypeXML();
 //		echo $this->xmlContent;
 //		exit();
 	}
@@ -151,15 +151,15 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 	 * Free them from wrapping with text nodes
 	 */
 	private function prepareConditionXML() {
-			// Condition in same line
-		$pattern	= '#(<text:p[^>]*?>)\s*?({if[^}]*?})(.*?)({/if})(</text:p>)#sm';
-		$replace	= '$2$1$3$5$4';
+			// Only one condition in a line: {if $xxx} or {/if}
+		$pattern	= '#(<text:p[^>]*?>)\s?({[/]?(?:if|else)[^}]*?})\s?(</text:p>)#is';
+		$replace	= '$2';
 
 		$this->xmlContent = preg_replace($pattern, $replace, $this->xmlContent);
 
-			// Condition in single lines
-		$pattern	= '#(<text:p[^>]*?>)({[/]?(?:if|else)[^}]*?})(</text:p>)#sm';
-		$replace	= '$2';
+			// Conditions with content between: {$if $xxx}yyy{else}zzz{/if}
+		$pattern	= '#(<text:p[^>]*?>)\s*?({if[^}]*?})(.*?)({/if})(</text:p>)#is';
+		$replace	= '$2$1$3$5$4';
 
 		$this->xmlContent = preg_replace($pattern, $replace, $this->xmlContent);
 	}
@@ -235,11 +235,13 @@ class TodoyuTemplateDocumentOdt extends TodoyuTemplateDocumentOpenXML {
 	 * Prepare XML content for parsing of {foreach} iterations
 	 */
 	private function prepareForeach() {
+			// Only foreach in a line
 		$pattern	= '/(<text:[^>]*?>)({[\/]?foreach[^\}]*?})(<\/text:[^>]*?>)/';
 		$replace	= '\2';
 
 		$this->xmlContent	= preg_replace($pattern, $replace, $this->xmlContent);
 
+			// Additional content in line after foreach
 		$pattern	= '/(<text:p [^>]*?>)({foreach[^}]*?})(.*?)(<\/text:p>)/';
 		$replace	= '\2\1\3\4';
 
