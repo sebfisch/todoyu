@@ -73,10 +73,21 @@ class TodoyuCountry extends TodoyuBaseObject {
 	/**
 	 * Get ISO number of country
 	 *
-	 * @return	String
+	 * @return	Integer
 	 */
 	public function getIsoNum() {
-		return $this->get('iso_num');
+		return intval($this->get('iso_num'));
+	}
+
+
+
+	/**
+	 * Get currency iso number
+	 *
+	 * @return	Integer
+	 */
+	public function getIsoNumCurrency() {
+		return intval($this->get('iso_num_currency'));
 	}
 
 
