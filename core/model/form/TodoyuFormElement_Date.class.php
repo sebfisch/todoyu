@@ -186,24 +186,19 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 	 *
 	 * @return	Mixed		Integer or String
 	 */
-	public function getStorageData() {
-			// Check for no storage flag
-		if( $this->isNoStorageField() && $this->hasValidations() === false ) {
-			return false;
-		} else {
-			$storageData= $this->getValue();
+	protected function getStorageDataInternal() {
+		$storageData= $this->getValue();
 
-				// If storeAsDate, format in MySQL date format
-			if( $this->hasAttribute('storeAsDate') ) {
-					// Set to zero if no data entered
-				if( $storageData === false ) {
-					$storageData = '0000-00-00';
-				} else {
-					$storageData = date('Y-m-d', $storageData);
-				}
+			// If storeAsDate, format in MySQL date format
+		if( $this->hasAttribute('storeAsDate') ) {
+				// Set to zero if no data entered
+			if( $storageData === false ) {
+				$storageData = '0000-00-00';
 			} else {
-				$storageData	= intval($storageData);
+				$storageData = date('Y-m-d', $storageData);
 			}
+		} else {
+			$storageData = intval($storageData);
 		}
 
 		return $storageData;

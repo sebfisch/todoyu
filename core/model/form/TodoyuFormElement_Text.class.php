@@ -117,12 +117,8 @@ class TodoyuFormElement_Text extends TodoyuFormElement {
 	 *
 	 * @return	String
 	 */
-	public function getStorageData() {
-		if( $this->isNoStorageField() ) {
-			return false;
-		} else {
-			return trim($this->getValue());
-		}
+	protected function getStorageDataInternal() {
+		return trim($this->getValue());
 	}
 
 }

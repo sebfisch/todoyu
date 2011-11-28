@@ -378,7 +378,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 *
 	 * @return	String
 	 */
-	public function getStorageData() {
+	protected function getStorageDataInternal() {
 		return implode(',', $this->getValue());
 	}
 

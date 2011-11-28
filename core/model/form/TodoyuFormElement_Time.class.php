@@ -88,17 +88,6 @@ class TodoyuFormElement_Time extends TodoyuFormElement_Text {
 		return $value === 0 ? '00:00' : TodoyuTime::formatTime($value);
 	}
 
-
-
-	/**
-	 * Get storage data
-	 *
-	 * @return	Integer
-	 */
-	public function getStorageData() {
-		return intval($this->getValue());
-	}
-
 }
 
 ?>

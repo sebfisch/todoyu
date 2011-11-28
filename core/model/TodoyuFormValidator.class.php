@@ -418,11 +418,13 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
-		if( array_key_exists('field', $validatorConfig) ) {
-		$compareFieldName	= $validatorConfig['field'];
-		$compareValue		= $formData[$compareFieldName];
+		if( isset($validatorConfig['field']) ) {
+			$compareFieldName	= $validatorConfig['field'];
+			$compareValue		= $formData[$compareFieldName];
+		} elseif( isset($validatorConfig['value']) ) {
+			$compareValue		= $validatorConfig['value'];
 		} else {
-			$compareValue	= $validatorConfig['value'];
+			return true; // No compare value = ok
 		}
 
 			// Convert dates to timestamps
@@ -430,7 +432,7 @@ class TodoyuFormValidator {
 		$compareDate= intval($compareValue);
 
 		if( $compareDate === 0 ) {
-			return false;
+			return true;
 		}
 
 		return $fieldDate > $compareDate;

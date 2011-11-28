@@ -404,7 +404,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	 *
 	 * @return	Array
 	 */
-	public function getStorageData() {
+	protected function getStorageDataInternal() {
 		$indexes	= $this->getRecordIndexes();
 		$storageData= array();
 

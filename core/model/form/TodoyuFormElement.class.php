@@ -88,6 +88,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 		$this->setAttribute('nodeAttributes', $this->getAttribute('@attributes'));
 		$this->setAttribute('htmlId', $this->getForm()->makeID($this->name));
+		$this->setAttribute('disabled', isset($config['disabled']));
 
 			// Parse labels of comment fields
 		$this->setAfterFieldText($this->getAfterFieldText());
@@ -511,12 +512,24 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 *
 	 * @return	String
 	 */
-	public function getStorageData() {
-		if( $this->isNoStorageField() ) {
+	public final function getStorageData() {
+		if( $this->isNoStorageField() || $this->isDisabled() ) {
 			return false;
 		} else {
-			return $this->getValue();
+			return $this->getStorageDataInternal();
 		}
+	}
+
+
+
+	/**
+	 * Get storage data (internal version)
+	 * Only called if noStorageField and disabled are false
+	 *
+	 * @return	String
+	 */
+	protected function getStorageDataInternal() {
+		return $this->getValue();
 	}
 
 
@@ -552,6 +565,11 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	public final function isValid() {
 		$validations 	= $this->getValidations();
 		$formData		= $this->getForm()->getFormData();
+
+			// Don't validate disabled fields
+		if( $this->isDisabled() ) {
+			return true;
+		}
 
 			// Loop over all validators
 		foreach($validations as $validatorName => $validatorConfigs) {

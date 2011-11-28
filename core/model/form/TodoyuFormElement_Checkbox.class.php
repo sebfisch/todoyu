@@ -112,7 +112,7 @@ class TodoyuFormElement_Checkbox extends TodoyuFormElement {
 	 *
 	 * @return	Integer
 	 */
-	public function getStorageData() {
+	protected function getStorageDataInternal() {
 		return $this->isChecked() ? 1 : 0;
 	}
 
