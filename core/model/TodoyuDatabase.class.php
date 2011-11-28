@@ -290,13 +290,26 @@ class TodoyuDatabase {
 	 * @return	String		Field name in backticks
 	 */
 	public function quoteFieldname($fieldName, $tableName = null) {
-		$fieldName	= '`' . $fieldName . '`';
+		$fieldName	= $this->backtick($fieldName);
 
 		if( ! is_null($tableName) ) {
-			$fieldName = '`' . $tableName . '`.' . $fieldName;
+			$fieldName = $this->quoteTablename($tableName) . '.' . $fieldName;
 		}
 
 		return $fieldName;
+	}
+
+
+
+	/**
+	 * Quote table name with backticks
+	 * tablename => `tablename`
+	 *
+	 * @param	String		$tableName
+	 * @return	String
+	 */
+	public function quoteTablename($tableName) {
+		return $this->backtick($tableName);
 	}
 
 
