@@ -921,7 +921,11 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	Mixed
 	 */
 	public function getFieldValue($name) {
-		return $this->getField($name)->getValue();
+		if( $this->hasField($name) ) {
+			return $this->getField($name)->getValue();
+		} else {
+			return false;
+		}
 	}
 
 
