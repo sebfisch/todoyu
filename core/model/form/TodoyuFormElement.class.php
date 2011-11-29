@@ -510,10 +510,11 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	/**
 	 * Get data of field to store in the database
 	 *
+	 * @param	Boolean		$force		Get the storage data, even if field is noStorage or disabled
 	 * @return	String
 	 */
-	public final function getStorageData() {
-		if( $this->isNoStorageField() || $this->isDisabled() ) {
+	public final function getStorageData($force = false) {
+		if( !$force && ($this->isNoStorageField() || $this->isDisabled()) ) {
 			return false;
 		} else {
 			return $this->getStorageDataInternal();
@@ -624,7 +625,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Boolean
 	 */
 	private final function runValidator($validatorName, array $validatorConfig) {
-		$isValid = TodoyuFormValidator::validate($validatorName, $this->getStorageData(), $validatorConfig, $this, $this->getForm()->getFormData());
+		$isValid = TodoyuFormValidator::validate($validatorName, $this->getStorageData(true), $validatorConfig, $this, $this->getForm()->getFormData());
 
 			// If validation failed, set error message
 		if( $isValid === false ) {

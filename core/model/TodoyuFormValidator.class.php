@@ -421,11 +421,9 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
-		if( $value == 0 ) {
-			if( array_key_exists('allowEmpty', $validatorConfig) ) {
-					// Empty is allowed
-				return true;
-			}
+		if( $value == 0 && isset($validatorConfig['allowEmpty']) ) {
+				// Empty is allowed
+			return true;
 		}
 
 		return self::dateBefore($value, $validatorConfig, $formElement, $formData) === false;
