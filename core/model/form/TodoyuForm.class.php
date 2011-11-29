@@ -320,6 +320,44 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
+	 * Check whether a parent form exists
+	 *
+	 * @return	Boolean
+	 */
+	public function hasParentForm() {
+		return $this->getVar('parentForm') instanceof TodoyuForm;
+	}
+
+
+
+	/**
+	 * Get parent form
+	 *
+	 * @return	TodoyuForm
+	 */
+	public function getParentForm() {
+		return $this->getVar('parentForm');
+	}
+
+
+
+	/**
+	 * Get field from parent form
+	 * 
+	 * @param	String		$fieldName
+	 * @return	TodoyuFormElement|Boolean
+	 */
+	public function getFieldFromParentForm($fieldName) {
+		if( $this->hasParentForm() ) {
+			return $this->getParentForm()->getField($fieldName);
+		} else {
+			return false;
+		}
+	}
+
+
+
+	/**
 	 * Update field values from form data
 	 */
 	protected function updateFieldValues() {
@@ -843,15 +881,15 @@ class TodoyuForm implements ArrayAccess {
 	 * the field is located in the form
 	 *
 	 * @param	String			$name
-	 * @return	TodoyuFormElement
+	 * @return	TodoyuFormElement|Boolean
 	 */
 	public function getField($name) {
-		if( ! $this->hasField($name) ) {
-			TodoyuLogger::logError('Getter of non-existent form field used: ' . $name);
-//			TodoyuDebug::printInFirebug(debug_backtrace(false));
+		if( $this->hasField($name) ) {
+			return $this->fields[$name];
+		} else {
+			TodoyuLogger::logError('Tried to access a field which is no available in the form: ' . $name);
+			return false;
 		}
-
-		return $this->fields[$name];
 	}
 
 
@@ -864,7 +902,7 @@ class TodoyuForm implements ArrayAccess {
 	 */
 	public function removeField($name, $cleanup = false) {
 		if( $cleanup ) {
-			if( $this->hasField($name) && $this->getField($name) !== null ) {
+			if( $this->hasField($name) ) {
 				$this->getField($name)->remove();
 			}
 		}

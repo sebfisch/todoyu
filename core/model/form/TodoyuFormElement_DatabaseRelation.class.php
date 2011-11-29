@@ -198,8 +198,10 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 			// Set form data
 		$recordForm->setFormData($recordData);
 		$recordForm->setVars(array(
-			'parent' => $this->getForm()->getRecordID())
-		);
+			'parent' 		=> $this->getForm()->getRecordID(), // @todo remove when nowhere else used anymore
+			'parentRecordID'=> $this->getForm()->getRecordID(),
+			'parentForm'	=> $this->getForm()
+		));
 		$recordForm->setUseRecordID(false);
 		$recordForm->setRecordID($idRecord);
 		$recordForm->setAttribute('noFormTag', true);

@@ -723,7 +723,11 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Array
 	 */
 	public function getValidations() {
-		return is_array($this->config['validate']) ? $this->config['validate'] : array();
+		$validations	= TodoyuArray::assure($this->config['validate']);
+
+		unset($validations['comment']);
+
+		return $validations;
 	}
 
 
