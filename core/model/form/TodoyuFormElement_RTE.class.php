@@ -80,18 +80,23 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 			$tmpOpt[] = $name . ' : ' . $val;
 		}
 
-			// If RTE is first field in form: focus it
-		$allFields	= parent::getForm()->getFieldnames();
+//			// If RTE is first field in form: focus it
+//		$allFields	= parent::getForm()->getFieldnames();
+//
+//		$idField	= $options['elements'];
+//		$idParts	= explode('-', $idField);
+//		$nameField	= $idParts[0];
 
-		$idField	= $options['elements'];
-		$idParts	= explode('-', $idField);
-		$nameField	= $idParts[0];
-
-		if( $allFields[0] === $nameField ) {
-			$tmpOpt[]	= 'auto_focus: "' . $idField . '"';
-		}
+//		if( $allFields[0] === $nameField ) {
+//			$tmpOpt[]	= 'auto_focus: "' . $idField . '"';
+//		}
 
 		$jsCode .= implode(",\n", $tmpOpt) . "\n});\n";
+
+					// Add own callback to focus the active editor (auto_focus fails because of a bug)
+		if( $this->isFirstElement() ) {
+			$jsCode .= 'setTimeout(function(){if(tinyMCE.activeEditor){tinyMCE.activeEditor.focus();}}, 1500);';
+		}
 
 		return $jsCode;
 	}
