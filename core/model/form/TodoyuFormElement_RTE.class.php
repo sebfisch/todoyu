@@ -88,7 +88,7 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 
 			// Add own callback to focus the active editor (auto_focus fails because of a bug)
 		if( $this->isFirstElement() ) {
-			$jsCode .= 'setTimeout(function(){if(tinyMCE.activeEditor){tinyMCE.activeEditor.focus();}}, 1250);';
+			$jsCode .= 'setTimeout(function(){if(tinyMCE.activeEditor){tinyMCE.activeEditor.focus();}}, 2000);';
 		}
 
 		return $jsCode;
