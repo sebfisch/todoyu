@@ -234,7 +234,9 @@ class TodoyuString {
 	public static function html2text($html, $br2Newline = false, $decodeChars = false) {
 		$text	= htmlspecialchars_decode($html);
 
+		$text	= str_replace(array("\n", "\r"), '', $text);
 		$text	= $br2Newline ? self::br2nl($text) : $text;
+		$text	= str_replace('</p>', "\n\n", $text);
 		$text	= strip_tags($text);
 
 		if( $decodeChars === true ) {
@@ -242,7 +244,7 @@ class TodoyuString {
 			$text	= html_entity_decode($text, ENT_COMPAT, $charSet);
 		}
 
-		return $text;
+		return trim($text);
 	}
 
 
