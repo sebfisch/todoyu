@@ -2,6 +2,7 @@ todoyu core changelog
 
 core 2.1.4 - not released yet
 	* Bugfix: RTE auto focus failed. Added workaround to focus RTE if first field
+	* Changed: Only focus RTE when loaded over ajax
 	* Changed: TodoyuFormElement::getStorageData() is final now and checks always for noStorage and disabled
 	* Added: TodoyuCountry::getIsoNumCurrency()
 	* Added: TodoyuFormElement::getStorageDataInternal() to override storageData properly
