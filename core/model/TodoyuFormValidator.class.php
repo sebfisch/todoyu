@@ -430,6 +430,12 @@ class TodoyuFormValidator {
 			return true;
 		}
 
+			// Get compare value from referenced field or value
+		$compareValue	= self::getCompareValue($formElement, $validatorConfig);
+		if( $compareValue === false ) {
+			return true;
+		}
+
 		return self::dateBefore($value, $validatorConfig, $formElement, $formData) === false;
 	}
 
