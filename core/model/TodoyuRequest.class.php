@@ -274,7 +274,7 @@ class TodoyuRequest {
 	/**
 	 * Get current valid request vars
 	 * The basic request vars (ext,controller,action,area) will be processed by
-	 * the core/onload hooks. These hooks can modifiy the request vars (for login or what ever)
+	 * the core/onload hooks. These hooks can modify the request vars (for login or what ever)
 	 *
 	 * @return	Array
 	 */
@@ -292,7 +292,7 @@ class TodoyuRequest {
 	 * This is the first hook which processes the request vars
 	 *
 	 * @param	Array		$requestVars				Current request vars (may have been modified)
-	 * @param	Array		$originalRequestVars		Originaly provided request vars
+	 * @param	Array		$originalRequestVars		Originally provided request vars
 	 * @return	Array
 	 */
 	public static function hookSetDefaultRequestVars(array $requestVars, array $originalRequestVars) {

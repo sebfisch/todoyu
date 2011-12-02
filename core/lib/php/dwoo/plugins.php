@@ -653,6 +653,55 @@ function Dwoo_Plugin_select(Dwoo $dwoo, array $options, array $value = array(), 
 
 
 /**
+ * Render select element with grouped options
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo 		$dwoo
+ * @param	Array		$options
+ * @param	Array		$value		Array to allow for multi selection
+ * @param	String		$id			HTML id
+ * @param	String		$name		HTML name
+ * @param	String		$class
+ * @param	Integer		$size
+ * @param	Boolean		$multiple
+ * @param	Boolean		$disabled
+ * @param	String		$onchange
+ * @param	String		$onclick
+ * @param	Boolean		$noPleaseSelect
+ * @param	Array		$value
+ * @return	String
+ */
+function Dwoo_Plugin_selectGrouped(Dwoo $dwoo, array $options, array $value = array(), $id = '', $name = '', $class = '', $size = 0, $multiple = false, $disabled = false, $onchange = '', $onclick = '', $noPleaseSelect = false) {
+	$tmpl	= 'core/view/select-grouped.tmpl';
+	$data	= array(
+		'htmlId'		=> $id,
+		'htmlName'		=> $name,
+		'class'			=> $class,
+		'size'			=> $size == 0 ? sizeof($options) : $size,
+		'multiple'		=> $multiple,
+		'disabled'		=> $disabled,
+		'onchange'		=> $onchange,
+		'onclick'		=> $onclick,
+		'value'			=> $value,
+		'options'		=> $options,
+		'noPleaseSelect'=> $noPleaseSelect
+	);
+
+		// Append brackets to ensure multiple values are submitted
+	if( $multiple ) {
+		if( $data['htmlName'] !== '' && substr($data['htmlName'], -2) !== '[]' ) {
+			$data['htmlName'] .= '[]';
+		}
+	}
+
+	return Todoyu::render($tmpl, $data);
+}
+
+
+
+/**
  * Replace line breaks "\n" with ODT style line breaks
  *
  * @package		Todoyu
