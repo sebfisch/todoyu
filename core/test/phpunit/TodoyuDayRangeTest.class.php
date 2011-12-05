@@ -95,7 +95,7 @@ class TodoyuDayRangeTest extends PHPUnit_Framework_TestCase {
 
 		$timestamps	= $range->getDayTimestamps();
 
-		$this->assertType('array', $timestamps);
+		$this->assertInternalType('array', $timestamps);
 		$this->assertEquals(32, sizeof($timestamps));
 		$this->assertEquals($range->getStart(), $timestamps[0]);
 		$this->assertLessThan($range->getEnd(), $timestamps[31]);

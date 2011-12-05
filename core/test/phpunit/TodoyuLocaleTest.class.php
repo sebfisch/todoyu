@@ -80,7 +80,7 @@ class TodoyuLocaleTest extends PHPUnit_Framework_TestCase {
 
 			// Assert system locales present at all
 		$expected	= 'array';
-		$this->assertType($expected, $locales);
+		$this->assertInternalType($expected, $locales);
 
 			// Assert locale keys
 		foreach($this->testLocaleKeys as $expectedKey) {
@@ -108,7 +108,7 @@ class TodoyuLocaleTest extends PHPUnit_Framework_TestCase {
 		$availableLocales	= TodoyuLocaleManager::getAvailableLocales();
 			// Assert system locales present at all
 		$expected	= 'array';
-		$this->assertType($expected, $availableLocales);
+		$this->assertInternalType($expected, $availableLocales);
 
 			// Assert at least one language contained
 		$amountLocales	= count($availableLocales);
@@ -127,7 +127,7 @@ class TodoyuLocaleTest extends PHPUnit_Framework_TestCase {
 
 			// Assert anything found
 		$expected	= 'array';
-		$this->assertType($expected, $codes);
+		$this->assertInternalType($expected, $codes);
 
 			// Assert correct codes returned	en_GB
 		$this->assertContains('en_GB.utf8', $codes);
@@ -139,7 +139,7 @@ class TodoyuLocaleTest extends PHPUnit_Framework_TestCase {
 		$codes	= TodoyuLocaleManager::getSystemLocaleCodes($locale);
 
 		$expected	= 'array';
-		$this->assertType($expected, $codes);
+		$this->assertInternalType($expected, $codes);
 
 		$this->assertContains('de_DE.utf8', $codes);
 		$this->assertContains('de_DE', $codes);
@@ -184,7 +184,7 @@ class TodoyuLocaleTest extends PHPUnit_Framework_TestCase {
 
 			// Assert anything returned
 		$expected	= 'array';
-		$this->assertType($expected, $localeOptions);
+		$this->assertInternalType($expected, $localeOptions);
 			// Assert at least one language contained
 		$amountOptions	= count($localeOptions);
 		$this->assertTrue($amountOptions > 0);
@@ -193,7 +193,7 @@ class TodoyuLocaleTest extends PHPUnit_Framework_TestCase {
 		foreach($localeOptions as $localeOption) {
 				// Type: array
 			$expected	= 'array';
-			$this->assertType($expected, $localeOption);
+			$this->assertInternalType($expected, $localeOption);
 
 				// Assert each option to have value and key
 			$this->assertArrayHasKey('value', $localeOption);

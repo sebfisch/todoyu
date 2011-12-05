@@ -55,7 +55,7 @@ class TodoyuCryptoTest extends PHPUnit_Framework_TestCase {
 	public function testmakeencryptionkey() {
 		$key	= TodoyuCrypto::makeEncryptionKey();
 
-		$this->assertType('string', $key);
+		$this->assertInternalType('string', $key);
 		$this->assertEquals(43, strlen($key));
 	}
 

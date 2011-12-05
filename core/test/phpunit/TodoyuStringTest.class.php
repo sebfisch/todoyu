@@ -155,7 +155,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$camelCase	= 'TodoyuTaskAndProjectManagementSoftware';
 		$parts		= TodoyuString::splitCamelCase($camelCase);
 
-		$this->assertType('array', $parts);
+		$this->assertInternalType('array', $parts);
 		$this->assertEquals(6, sizeof($parts));
 	}
 

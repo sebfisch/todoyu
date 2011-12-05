@@ -220,7 +220,7 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		);
 		$new	= TodoyuArray::reform($this->array, $reformConfig);
 
-		$this->assertType('array', $new);
+		$this->assertInternalType('array', $new);
 		$this->assertTrue(array_key_exists('value', $new[0]));
 		$this->assertEquals('Max', $new[0]['label']);
 	}
@@ -559,17 +559,17 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 		$merged	= TodoyuArray::merge($array1, $array2);
 
-		$this->assertType('array', $merged);
+		$this->assertInternalType('array', $merged);
 		$this->assertEquals(6, sizeof($merged));
 
 		$merged	= TodoyuArray::merge($array1, null);
 
-		$this->assertType('array', $merged);
+		$this->assertInternalType('array', $merged);
 		$this->assertEquals(3, sizeof($merged));
 
 		$merged	= TodoyuArray::merge(false, null);
 
-		$this->assertType('array', $merged);
+		$this->assertInternalType('array', $merged);
 		$this->assertEquals(0, sizeof($merged));
 	}
 
