@@ -205,12 +205,17 @@ class TodoyuDateRange {
 	 * Check whether this range starts before the given date
 	 *
 	 * @param	Integer		$date
+	 * @param	Boolean		$allowSame
 	 * @return	Boolean
 	 */
-	public function startsBefore($date) {
+	public function startsBefore($date, $allowSame = false) {
 		$date	= intval($date);
 
-		return $this->dateStart < $date;
+		if( $allowSame ) {
+			return $this->dateStart <= $date;
+		} else {
+			return $this->dateStart < $date;
+		}
 	}
 
 
@@ -219,12 +224,17 @@ class TodoyuDateRange {
 	 * Check whether this range ends after the given date
 	 *
 	 * @param	Integer		$date
+	 * @param	Boolean		$allowSame
 	 * @return	Boolean
 	 */
-	public function endsAfter($date) {
+	public function endsAfter($date, $allowSame = false) {
 		$date	= intval($date);
 
-		return $this->dateEnd > $date;
+		if( $allowSame ) {
+			return $this->dateEnd >= $date;
+		} else {
+			return $this->dateEnd > $date;
+		}
 	}
 
 
@@ -264,16 +274,17 @@ class TodoyuDateRange {
 	 * @param	Integer		$dateStart
 	 * @param	Integer		$dateEnd
 	 * @param	Boolean		$partly			It's enough when the range and the period just overlap at some date
+	 * @param	Boolean		$allowLimits	Allow the period to start or end exactly at the start or end date
 	 * @return	Boolean
 	 */
-	public function isPeriodInRange($dateStart, $dateEnd, $partly = false) {
+	public function isPeriodInRange($dateStart, $dateEnd, $partly = false, $allowLimits = false) {
 		$dateStart	= intval($dateStart);
 		$dateEnd	= intval($dateEnd);
 
 		if( $partly ) {
-			return $this->isInRange($dateStart) || $this->isInRange($dateEnd);
+			return $this->isInRange($dateStart, $allowLimits) || $this->isInRange($dateEnd, $allowLimits);
 		} else {
-			return $this->startsBefore($dateStart) && $this->endsAfter($dateEnd);
+			return $this->startsBefore($dateStart, $allowLimits) && $this->endsAfter($dateEnd, $allowLimits);
 		}
 	}
 
@@ -283,12 +294,13 @@ class TodoyuDateRange {
 	 * Check whether the given date is inside of this range
 	 *
 	 * @param	Integer		$date
+	 * @param	Boolean		$allowLimits		Allow the date to be at the start or end date
 	 * @return	Boolean
 	 */
-	protected function isInRange($date) {
+	public function isInRange($date, $allowLimits = true) {
 		$date = intval($date);
 		
-		return $this->startsBefore($date) && $this->endsAfter($date);
+		return $this->startsBefore($date, $allowLimits) && $this->endsAfter($date, $allowLimits);
 	}
 
 

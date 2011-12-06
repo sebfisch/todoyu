@@ -11,6 +11,8 @@ core 2.1.4 - not released yet
 	* Added: Support to validate against fields in the parent form
 	* Added: TodoyuFormElement methods replaceFieldValidatorWithValue() and removeValidator()
     * Added: Log hook calls
+    * Added: Log level LEVEL_CORE which is even deeper than debug and shows internal logs of todoyu core (hooks, connections, etc)
+    * Added: Limit parameter for TodoyuDateRange methods
 
 core 2.1.3 - 2011-11-17
 	* Bugfix: System URL was set wrong on windows systems
