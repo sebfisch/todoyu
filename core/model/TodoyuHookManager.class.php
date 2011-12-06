@@ -66,7 +66,7 @@ class TodoyuHookManager {
 		$returnValues	= array();
 
 		foreach($hookFuncRefs as $hookFuncRef) {
-			TodoyuLogger::logDebug('Hook: ' . $hookFuncRef);
+			TodoyuLogger::logCore('Hook: ' . $hookFuncRef);
 			$returnValues[] = TodoyuFunction::callUserFunctionArray($hookFuncRef, $params);
 		}
 
@@ -91,7 +91,7 @@ class TodoyuHookManager {
 		array_unshift($hookParams, $dataVar);
 
 		foreach($hookFuncRefs as $hookFuncRef) {
-			TodoyuLogger::logDebug('Hook: ' . $hookFuncRef);
+			TodoyuLogger::logCore('Hook: ' . $hookFuncRef);
 			$hookParams[0] = TodoyuFunction::callUserFunctionArray($hookFuncRef, $hookParams);
 		}
 

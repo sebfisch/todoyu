@@ -29,11 +29,12 @@ class TodoyuLogger {
 	/**
 	 * Log levels
 	 */
-	const LEVEL_DEBUG	= 0;
-	const LEVEL_NOTICE	= 1;
-	const LEVEL_ERROR	= 2;
-	const LEVEL_SECURITY= 3;
-	const LEVEL_FATAL	= 4;
+	const LEVEL_CORE	= 0;
+	const LEVEL_DEBUG	= 1;
+	const LEVEL_NOTICE	= 2;
+	const LEVEL_ERROR	= 3;
+	const LEVEL_SECURITY= 4;
+	const LEVEL_FATAL	= 5;
 
 
 	/**
@@ -240,6 +241,18 @@ class TodoyuLogger {
 			'class'	=> $className,
 			'config'=> $config
 		);
+	}
+
+
+
+	/**
+	 * Log debug message
+	 *
+	 * @param	String		$message
+	 * @param	Mixed		$data
+	 */
+	public static function logCore($message, $data = null) {
+		self::getInstance()->log($message, self::LEVEL_CORE, $data);
 	}
 
 

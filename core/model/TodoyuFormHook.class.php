@@ -75,7 +75,7 @@ class TodoyuFormHook {
 		$hooks		= self::getHooks('buildForm', $xmlPath);
 
 		foreach($hooks as $hook) {
-			TodoyuLogger::logDebug('Hook: ' . $hook['funcRef']);
+			TodoyuLogger::logCore('Hook: ' . $hook['funcRef']);
 			$result	= TodoyuFunction::callUserFunction($hook['funcRef'], $form, $idRecord, $params);
 
 			if( $result instanceof TodoyuForm ) {
@@ -102,7 +102,7 @@ class TodoyuFormHook {
 		$hooks		= self::getHooks('loadData', $xmlPath);
 
 		foreach($hooks as $hook) {
-			TodoyuLogger::logDebug('Hook: ' . $hook['funcRef']);
+			TodoyuLogger::logCore('Hook: ' . $hook['funcRef']);
 			$data	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord, $params);
 		}
 
@@ -126,7 +126,7 @@ class TodoyuFormHook {
 		$hooks		= self::getHooks('saveData', $xmlPath);
 
 		foreach($hooks as $hook) {
-			TodoyuLogger::logDebug('Hook: ' . $hook['funcRef']);
+			TodoyuLogger::logCore('Hook: ' . $hook['funcRef']);
 			$result	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord, $params);
 
 			if( is_array($result) ) {

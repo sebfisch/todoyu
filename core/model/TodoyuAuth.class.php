@@ -108,7 +108,7 @@ class TodoyuAuth {
 	 */
 	public static function login($idPerson) {
 			// Log successful login
-		TodoyuLogger::logNotice('Login person (' . $idPerson . ')', $idPerson);
+		TodoyuLogger::logCore('Login person (' . $idPerson . ')', $idPerson);
 			// Generate a new session id for the logged in person
 		session_regenerate_id(true);
 			// Set current person id

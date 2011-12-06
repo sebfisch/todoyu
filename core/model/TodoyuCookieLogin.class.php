@@ -58,7 +58,7 @@ class TodoyuCookieLogin {
 							TodoyuAuth::login($idPerson);
 							self::setRemainLoginCookie($idPerson);
 
-							TodoyuLogger::logDebug('Logged in with cookie, proceed request');
+							TodoyuLogger::logCore('Logged in with cookie, proceed request');
 
 							// Proceed with the request, because we're logged in and it's all ok
 						} else {

@@ -532,7 +532,7 @@ class TodoyuArray {
 				$array[$index] = $wrapBefore . $item . $wrapAfter;
 			} else {
 				unset($array[$index]);
-				TodoyuLogger::logNotice('Item was not quoted because was not string or number: ' . serialize($array[$index]), $item);
+				TodoyuLogger::logCore('Item was not quoted because was not string or number: ' . serialize($array[$index]), $item);
 			}
 		}
 
