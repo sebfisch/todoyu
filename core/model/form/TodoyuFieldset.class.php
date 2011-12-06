@@ -50,7 +50,7 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Elements of the fieldsets. Can be a mix of fieldsets and FormElements
 	 *
-	 * @var	Array
+	 * @var	TodoyuFormElement[]
 	 */
 	private $elements = array();
 

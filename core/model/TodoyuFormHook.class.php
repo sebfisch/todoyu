@@ -72,40 +72,18 @@ class TodoyuFormHook {
 	 */
 	public static function callBuildForm($xmlPath, TodoyuForm $form, $idRecord, array $params = array()) {
 		$idRecord	= intval($idRecord);
-
 		$hooks		= self::getHooks('buildForm', $xmlPath);
 
 		foreach($hooks as $hook) {
-			$method	= explode('::', $hook['funcRef']);
-			$temp	= call_user_func($method, $form, $idRecord, $params);
+			TodoyuLogger::logDebug('Hook: ' . $hook['funcRef']);
+			$result	= TodoyuFunction::callUserFunction($hook['funcRef'], $form, $idRecord, $params);
 
-			if( $temp instanceof TodoyuForm ) {
-				$form = $temp;
+			if( $result instanceof TodoyuForm ) {
+				$form = $result;
 			}
 		}
 
 		return $form;
-	}
-
-
-
-	/**
-	 * Call hooks to modify HTML of contained fields of type "databaseRelation"
-	 *
-	 * @param	String		$xmlPath			Path to main XML form file
-	 * @param	String		$fieldHTML			HTML (field(s)) to be modified
-	 * @param	Array		$data				data array
-	 * @return	String
-	 */
-	public static function callDatabaseRelationFieldModifier($xmlPath, $fieldHTML, $data) {
-		$hooks		= self::getHooks('buildFormDatabaseRelation', $xmlPath);
-
-		foreach($hooks as $hook) {
-			$method	= explode('::', $hook['funcRef']);
-			$fieldHTML	= call_user_func($method, $fieldHTML, $data);
-		}
-
-		return $fieldHTML;
 	}
 
 
@@ -124,6 +102,7 @@ class TodoyuFormHook {
 		$hooks		= self::getHooks('loadData', $xmlPath);
 
 		foreach($hooks as $hook) {
+			TodoyuLogger::logDebug('Hook: ' . $hook['funcRef']);
 			$data	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord, $params);
 		}
 
@@ -147,10 +126,11 @@ class TodoyuFormHook {
 		$hooks		= self::getHooks('saveData', $xmlPath);
 
 		foreach($hooks as $hook) {
-			$temp	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord, $params);
+			TodoyuLogger::logDebug('Hook: ' . $hook['funcRef']);
+			$result	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord, $params);
 
-			if( is_array($temp) ) {
-				$data = $temp;
+			if( is_array($result) ) {
+				$data = $result;
 			}
 		}
 
@@ -168,7 +148,7 @@ class TodoyuFormHook {
 	 * @param	Integer		$position		Order of the callback function calls
 	 */
 	public static function register($type, $xmlPath, $funcRef, $position = 100) {
-		$xmlPath	= TodoyuFileManager::pathWeb( $xmlPath );
+		$xmlPath = TodoyuFileManager::pathWeb($xmlPath);
 
 		self::$hooks[ $type ][ $xmlPath ][] = array(
 			'funcRef'	=> $funcRef,

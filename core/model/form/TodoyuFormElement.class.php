@@ -490,7 +490,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 *
 	 * @param	Mixed		$value
 	 */
-	protected function updateFormdata($value) {
+	protected function updateFormData($value) {
 		$this->getForm()->setFieldFormData($this->getName(), $value);
 	}
 
@@ -970,6 +970,32 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$allFields	= $this->getForm()->getFieldnames();
 
 		return $allFields[0] === $this->getName();
+	}
+
+
+
+	/**
+	 * Replace a field reference of a validator with a static value
+	 *
+	 * @param	String		$validatorName
+	 * @param	String		$value
+	 */
+	public function replaceFieldValidatorWithValue($validatorName, $value) {
+		if( isset($this->config['validate'][$validatorName]) ) {
+			unset($this->config['validate'][$validatorName]['field']);
+			$this->config['validate'][$validatorName]['value'] = $value;
+		}
+	}
+
+
+
+	/**
+	 * Remove a validator
+	 *
+	 * @param	String		$validatorName
+	 */
+	public function removeValidator($validatorName) {
+		unset($this->config['validate'][$validatorName]);
 	}
 
 }

@@ -9,6 +9,8 @@ core 2.1.4 - not released yet
 	* Added: TodoyuFormElement::getStorageDataInternal() to override storageData properly
 	* Added: TodoyuDatabase::quoteTablename() (currently alias of quoteFieldName()). Cleanup quoteFieldName()
 	* Added: Support to validate against fields in the parent form
+	* Added: TodoyuFormElement methods replaceFieldValidatorWithValue() and removeValidator()
+    * Added: Log hook calls
 
 core 2.1.3 - 2011-11-17
 	* Bugfix: System URL was set wrong on windows systems
