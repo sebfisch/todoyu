@@ -108,4 +108,6 @@ Todoyu::$CONFIG['EXPORT']['CSV']	= array(
 	'useTableHeaders'	=> true				// Print headers in the file?
 );
 
+Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] = false;
+
 ?>

@@ -111,9 +111,9 @@ require_once( PATH_CONFIG . '/colors.php');
 
 	// Load local config
 require_once( PATH_LOCALCONF . '/db.php');
-require_once( PATH_LOCALCONF . '/config.php');
 require_once( PATH_LOCALCONF . '/system.php');
 require_once( PATH_LOCALCONF . '/extconf.php');
 require_once( PATH_LOCALCONF . '/settings.php');
+require_once( PATH_LOCALCONF . '/config.php');
 
 ?>
