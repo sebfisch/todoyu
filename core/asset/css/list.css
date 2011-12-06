@@ -8,7 +8,7 @@ table.list.autoWidthTable {
 table.list th,
 table.list td {
 	padding:3px 0 3px 5px;
-	vertical-align:middle;
+	vertical-align:top;
 }
 table.list th:first-child,
 table.list td:first-child {
@@ -55,4 +55,13 @@ li.even {
 
 #extendlisting a:hover {
 	background-color:#f2f2d2;
+}
+
+
+/* -----------------------------
+	Special elements in the table
+   ----------------------------- */
+table.list td > span.icon {
+	height:25px;
+	margin:-2px 4px -8px 2px;
 }
