@@ -132,7 +132,7 @@ abstract class TodoyuPanelWidgetSearchList extends TodoyuPanelWidget {
 
 
 	/**
-	 * Get extension id of the panel widget
+	 * Get extension ID of the panel widget
 	 *
 	 * @return	Integer
 	 */

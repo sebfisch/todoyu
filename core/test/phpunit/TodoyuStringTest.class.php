@@ -105,7 +105,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(true, TodoyuString::isValidEmail($emailValid));
 
 		foreach($invalid as $emailInvalid) {
-			$this->assertFalse(TodoyuString::isValidEmail($emailInvalid), 'email: ' . $emailInvalid );
+			$this->assertFalse(TodoyuString::isValidEmail($emailInvalid), 'email: ' . $emailInvalid);
 		}
 	}
 

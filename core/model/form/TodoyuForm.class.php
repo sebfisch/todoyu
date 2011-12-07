@@ -280,7 +280,7 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Get record ID. If record ID is available, use it, if not, try to find
 	 * it in the data array under the id-key. Else return 0
-	 * In special cases, the id can also be a string (ex: 23-4)
+	 * In special cases, the ID can also be a string (ex: 23-4)
 	 *
 	 * @return	String
 	 */

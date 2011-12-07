@@ -716,7 +716,7 @@ class TodoyuInstallerManager {
 				// Get path to deletions config file
 			$filePath	= TodoyuFileManager::pathAbsolute($pathConfig . '/' . $oldFilesConfig);
 				// Get directories and files to be deleted
-			require_once($filePath);
+			require_once( $filePath );
 
 				// Delete files
 			$deletionFiles	= TodoyuArray::assure(Todoyu::$CONFIG['INSTALLER']['oldFiles']['deleteFiles']);

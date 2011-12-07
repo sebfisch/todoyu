@@ -42,7 +42,7 @@ Todoyu.FieldList = Class.create({
 
 
 	/**
-	 * Add a new id to the value field
+	 * Add a new ID to the value field
 	 *
 	 * @method	add
 	 * @param	{Number}	item

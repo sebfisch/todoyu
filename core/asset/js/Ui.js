@@ -479,9 +479,9 @@ Todoyu.Ui = {
 		var content = $(idElement);
 
 		if( content.visible() ) {
-			Effect.SlideUp( content, options );
+			Effect.SlideUp(content, options);
 		} else {
-			Effect.SlideDown( content, options );
+			Effect.SlideDown(content, options);
 		}
 
 		toggle.toggleClassName('expand');
@@ -496,8 +496,8 @@ Todoyu.Ui = {
 	 * @param	{Element}		element
 	 */
 	twinkle: function(element) {
-		Todoyu.Ui.hide( element );
-		Effect.Appear( element );
+		Todoyu.Ui.hide(element);
+		Effect.Appear(element);
 	},
 
 

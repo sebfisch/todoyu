@@ -18,7 +18,7 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-require_once( PATH_LIB . '/php/pclzip/pclzip.lib.php');
+require_once( PATH_LIB . '/php/pclzip/pclzip.lib.php' );
 
 /**
  * Document type: openXML

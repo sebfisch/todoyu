@@ -123,9 +123,9 @@ class TodoyuColors {
 		TodoyuFileManager::makeDirDeep(dirname($fileIMG));
 
 		foreach($colors as $num => $rgb) {
-			$red	= hexdec( substr($rgb, 1, 2) );
-			$green	= hexdec( substr($rgb, 3, 2) );
-			$blue	= hexdec( substr($rgb, 5, 2) );
+			$red	= hexdec(substr($rgb, 1, 2));
+			$green	= hexdec(substr($rgb, 3, 2));
+			$blue	= hexdec(substr($rgb, 5, 2));
 
 			$color = ImageColorAllocate($img, $red, $green, $blue);
 
@@ -146,10 +146,10 @@ class TodoyuColors {
 	 */
 	private static function fade($color, $percentage) {
 		$percentage = 100 - $percentage;
-		$rgbValues = array_map( 'hexDec', str_split( ltrim($color, '#'), 2 ) );
+		$rgbValues = array_map('hexDec', str_split( ltrim($color, '#'), 2 ));
 
 		for($i = 0, $len = count($rgbValues); $i < $len; $i++) {
-			$rgbValues[$i] = decHex( floor($rgbValues[$i] + (255 - $rgbValues[$i]) * ($percentage / 100) ) );
+			$rgbValues[$i] = decHex(floor($rgbValues[$i] + (255 - $rgbValues[$i]) * ($percentage / 100) ));
 		}
 
 		return '#' . implode('', $rgbValues);
@@ -171,8 +171,8 @@ class TodoyuColors {
 
 		$rgb = '';
 		for($x = 0; $x < 3; $x++) {
-			$c = 255 - hexdec( substr($color, (2 * $x), 2) );
-			$c = ($c < 0) ? 0 : dechex( $c );
+			$c = 255 - hexdec(substr($color, (2 * $x), 2));
+			$c = ($c < 0) ? 0 : dechex($c);
 			$rgb .= ( strlen($c) < 2 ) ? '0' . $c : $c;
 		}
 
@@ -188,7 +188,7 @@ class TodoyuColors {
 	 * @return	String
 	 */
 	private static function getBestReadableContrastTextColor($color) {
-		$color 	= trim( str_replace('#', '', $color) );
+		$color 	= trim(str_replace('#', '', $color));
 
 		$c_r	= hexdec(substr($color, 0, 2));
 		$c_g	= hexdec(substr($color, 2, 2));
@@ -226,7 +226,7 @@ class TodoyuColors {
 
 
 	/**
-	 * Returns the id of a color by its position in the config array
+	 * Returns the ID of a color by its position in the config array
 	 *
 	 * @param	Integer		$position
 	 * @return	Integer

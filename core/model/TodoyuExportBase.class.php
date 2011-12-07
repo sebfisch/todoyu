@@ -91,11 +91,11 @@ abstract class TodoyuExportBase {
 	 * @param	String	$filename
 	 */
 	public function download($type, $filename = '') {
-		header( 'Content-Type: ' . $type );
-		header( 'Content-Disposition: attachment; filename=' . ($filename ? $filename : $this->filename));
-		header( 'Content-Description: csv File' );
-		header( 'Pragma: no-cache' );
-		header( 'Expires: 0' );
+		header('Content-Type: ' . $type);
+		header('Content-Disposition: attachment; filename=' . ($filename ? $filename : $this->filename));
+		header('Content-Description: csv File');
+		header('Pragma: no-cache');
+		header('Expires: 0');
 
 		echo $this->getContent();
 

@@ -780,7 +780,7 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Get id which was generated for the last row inserted in the database
+	 * Get ID which was generated for the last row inserted in the database
 	 *
 	 * @return	Integer
 	 */

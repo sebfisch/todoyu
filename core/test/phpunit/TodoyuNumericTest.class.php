@@ -60,11 +60,11 @@ class TodoyuNumericTest extends PHPUnit_Framework_TestCase {
 	 * Test TodoyuNumeric::intInRange($integer, $min = 0, $max = 2000000000)
 	 */
 	public function testIntInRange() {
-		$this->assertEquals(50, TodoyuNumeric::intInRange(50, 0, 100) );
-		$this->assertEquals(-50, TodoyuNumeric::intInRange(-50, -100, 100) );
+		$this->assertEquals(50, TodoyuNumeric::intInRange(50, 0, 100));
+		$this->assertEquals(-50, TodoyuNumeric::intInRange(-50, -100, 100));
 
-		$this->assertEquals(100, TodoyuNumeric::intInRange(500, 1, 100) );
-		$this->assertEquals(-100, TodoyuNumeric::intInRange(-500, -100, 100) );
+		$this->assertEquals(100, TodoyuNumeric::intInRange(500, 1, 100));
+		$this->assertEquals(-100, TodoyuNumeric::intInRange(-500, -100, 100));
 	}
 
 

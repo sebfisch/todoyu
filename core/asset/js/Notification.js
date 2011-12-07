@@ -71,7 +71,7 @@ Todoyu.Notification = {
 	template: null,
 
 	/**
-	 * Current id for note, incremented
+	 * Current ID for note, incremented
 	 * @property	id
 	 * @type		Number
 	 */

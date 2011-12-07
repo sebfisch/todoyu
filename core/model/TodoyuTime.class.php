@@ -856,7 +856,7 @@ class TodoyuTime {
 	public static function roundUpTime($timestamp, $roundingMinute = 1) {
 		$roundingSeconds	=	$roundingMinute * self::SECONDS_MIN;
 
-		return intval( ceil( intval($timestamp) / $roundingSeconds ) * $roundingSeconds );
+		return intval(ceil( intval($timestamp) / $roundingSeconds ) * $roundingSeconds);
 	}
 
 

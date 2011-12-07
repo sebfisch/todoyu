@@ -329,7 +329,7 @@ class TodoyuExtensions {
 	 * Load form config from all extensions
 	 */
 	public static function loadAllForm() {
-		require_once( PATH_CONFIG . '/form.php');
+		require_once( PATH_CONFIG . '/form.php' );
 
 		self::loadAllTypeConfig('form');
 	}

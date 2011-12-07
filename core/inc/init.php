@@ -24,7 +24,7 @@
  */
 
 	// Custom config overrides
-require_once( PATH_LOCALCONF . '/override.php');
+require_once( PATH_LOCALCONF . '/override.php' );
 
 	// File Logger
 define('PATH_ERRORLOG', PATH . '/log/error.log');
