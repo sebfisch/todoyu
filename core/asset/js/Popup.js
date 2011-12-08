@@ -63,7 +63,8 @@ Todoyu.Popup = Class.create(Window, {
 		hideEffect:			Element.hide,
 		showEffect:			Element.show,
 		effectOptions:		null,
-		destroyOnClose:		true
+		destroyOnClose:		true,
+		requestOptions:		{}
 	},
 
 
@@ -79,6 +80,10 @@ Todoyu.Popup = Class.create(Window, {
 	initialize: function($super, options) {
 		this.todoyuOptions.closeCallback	= this.closeCallback.bind(this);
 		options = $H(this.todoyuOptions).merge(options).toObject();
+
+		if( !options.requestOptions.parameters.area ) {
+			options.requestOptions.parameters.area = Todoyu.getArea();
+		}
 
 		$super(options);
 

@@ -27,12 +27,45 @@
 class TodoyuRole extends TodoyuBaseObject {
 
 	/**
-	 * Constructs a usergroup
+	 * Initialize
 	 *
-	 * @param	Integer	$idRole
+	 * @param	Integer		$idRole
 	 */
 	public function __construct($idRole) {
 		parent::__construct($idRole, 'system_role');
+	}
+
+
+
+	/**
+	 * Get title
+	 *
+	 * @return	String
+	 */
+	public function getTitle() {
+		return $this->get('title');
+	}
+
+
+
+	/**
+	 * Check whether role is active
+	 *
+	 * @return	Boolean
+	 */
+	public function isActive() {
+		return intval($this->get('is_active')) === 1;
+	}
+
+
+
+	/**
+	 * Get role description
+	 *
+	 * @return	String
+	 */
+	public function getDescription() {
+		return $this->get('description');
 	}
 
 
@@ -43,7 +76,7 @@ class TodoyuRole extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getPersonIDs() {
-		return TodoyuRoleManager::getPersonIDs($this->id);
+		return TodoyuRoleManager::getPersonIDs($this->getID());
 	}
 
 
@@ -54,7 +87,7 @@ class TodoyuRole extends TodoyuBaseObject {
 	 * @return	Array
 	 */
 	public function getPersons() {
-		return TodoyuRoleManager::getPersonData($this->id);
+		return TodoyuRoleManager::getPersonData($this->getID());
 	}
 
 
@@ -65,7 +98,7 @@ class TodoyuRole extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getNumPersons() {
-		return TodoyuRoleManager::getNumPersons($this->id);
+		return TodoyuRoleManager::getNumPersons($this->getID());
 	}
 
 
