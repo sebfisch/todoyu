@@ -179,7 +179,7 @@ Todoyu.QuickInfo = {
 
 
 	/**
-	 * Install quickinfo on elements which match the selector
+	 * Install quickinfo on elements matching the selector
 	 *
 	 * @method	install
 	 * @param	{String}	name
@@ -189,7 +189,7 @@ Todoyu.QuickInfo = {
 	install: function(name, selector, callback) {
 		this.uninstall(selector);
 
-		$$(selector).each(function(name, callback, element){
+		$$(selector).each(function(name, callback, element) {
 			element.on('mouseover', this.onMouseOver.bind(this, name, callback, element));
 			element.on('mouseout', this.onMouseOut.bind(this, name, callback, element));
 		}.bind(this, name, callback));
@@ -440,17 +440,16 @@ Todoyu.QuickInfo = {
 	hide: function(hide) {
 		this.stopDelayedCallbacks();
 
-		if( hide !== true ) {
-			this.delayedHide = this.hide.bind(this, true).delay(this.delayedHideTime);
-			return;
-		}
-
 		if( $(this.popupID) ) {
+				// Hide quick info element
 			$(this.popupID).hide();
-
 				// Hide-flag: comprehend overlapping of mouseOut and running show request
 			this.hidden	= true;
 			this.active	= null;
+		} else if( hide !== true ) {
+				// Schedule delayed hiding
+			this.delayedHide = this.hide.bind(this, true).delay(this.delayedHideTime);
+			return;
 		}
 	},
 
