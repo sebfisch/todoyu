@@ -520,6 +520,22 @@ Todoyu.Ui = {
 
 
 	/**
+	 * Detect whether capsLock is on during given keyPress event
+	 *
+	 * @method	isCapsLock
+	 * @param	{Event}		event
+	 * @return	{Boolean}
+	 */
+	isCapsLock: function(event) {
+		charCode = event.keyCode ? event.keyCode : event.which;
+ 		shiftKey = event.shiftKey ? event.shiftKey: ( charCode === 16 );
+
+		return (( charCode >= 65 && charCode <= 90) && !shiftKey) || ((charCode >= 97 && charCode <= 122) && shiftKey);
+	},
+
+
+
+	/**
 	 * Show time picker
 	 *
 	 * @method	showTimePicker
