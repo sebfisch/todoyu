@@ -92,6 +92,7 @@
 	<label index="wizard.close.confirm">Sind Sie sicher, dass Sie den Assistenten schliessen möchten?</label>
 	<label index="wizard.back">Zurück</label>
 	<label index="wizard.next">Weiter</label>
+	<label index="log.core">Core Debug Information</label>
 	<label index="log.debug">Debug Information</label>
 	<label index="log.notice">Warnungen</label>
 	<label index="log.error">Normale Fehler</label>

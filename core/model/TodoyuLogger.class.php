@@ -128,7 +128,7 @@ class TodoyuLogger {
 		if( isset(Todoyu::$CONFIG['SYSTEM']['logLevel']) ) {
 			return intval(Todoyu::$CONFIG['SYSTEM']['logLevel']);
 		} else {
-			return self::LEVEL_DEBUG;
+			return self::LEVEL_ERROR;
 		}
 	}
 

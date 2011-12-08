@@ -94,6 +94,7 @@
 	<label index="wizard.close.confirm">Are you sure you want to close the wizard?</label>
 	<label index="wizard.back">Back</label>
 	<label index="wizard.next">Continue</label>
+	<label index="log.core">Core Debug Information</label>
 	<label index="log.debug">Debug Information</label>
 	<label index="log.notice">Notices</label>
 	<label index="log.error">Normal Errors</label>
