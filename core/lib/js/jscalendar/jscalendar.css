@@ -99,7 +99,8 @@ div.calendar tbody .day { /* Cells <TD> containing month days dates */
 	color:#000;
 	text-align:right;
 	padding:2px 4px 2px 2px;
-	border:1px dotted #818181;
+	border-right:1px dotted #818181;
+	border-bottom:1px dotted #818181;
 }
 div.calendar tbody .day.othermonth {
 	font-size:80%;
@@ -232,10 +233,9 @@ div.calendar .combo .active {
 }
 
 div.calendar td.time {
-	border-top:1px solid #000;
-	padding:1px 0;
+	padding:5px 0;
 	text-align:center;
-	background-color:#f4f0e8;
+	background-color:#fff;
 }
 
 div.calendar td.time .hour,
