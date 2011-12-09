@@ -209,7 +209,7 @@ Todoyu.QuickInfo = {
 	onMouseOver: function(name, callback, element, event) {
 			// Hide active element if another one should be displayed
 		if( this.active !== null && this.active !== element) {
-			this.hide();
+			this.hide(true);
 		}
 
 		if( ! this.isVisible() ) {
@@ -234,7 +234,7 @@ Todoyu.QuickInfo = {
 		this.stopDelayedCallbacks();
 
 		if( this.isVisible() ) {
-			this.hide();
+			this.hide(false);
 		}
 
 		Todoyu.Hook.exec('core.quickinfo.mouseout', event, name, element);
@@ -440,16 +440,18 @@ Todoyu.QuickInfo = {
 	hide: function(hide) {
 		this.stopDelayedCallbacks();
 
-		if( $(this.popupID) ) {
+		if( hide === true ) {
 				// Hide quick info element
-			$(this.popupID).hide();
-				// Hide-flag: comprehend overlapping of mouseOut and running show request
-			this.hidden	= true;
-			this.active	= null;
-		} else if( hide !== true ) {
+			if( $(this.popupID) ) {
+				$(this.popupID).hide();
+
+					// Hide-flag: comprehend overlapping of mouseOut and running show request
+				this.hidden	= true;
+				this.active	= null;
+			}
+		} else {
 				// Schedule delayed hiding
 			this.delayedHide = this.hide.bind(this, true).delay(this.delayedHideTime);
-			return;
 		}
 	},
 
