@@ -29,7 +29,7 @@ interface TodoyuFilterInterface {
 
 	public function __construct(array $activeFilters = array(), $conjunction = 'AND');
 
-	public function getItemIDs($sorting = 'sorting', $limit = 100);
+	public function getItemIDs($sortingFallback = 'sorting', $limit = 100);
 
 }
 

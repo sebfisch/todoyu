@@ -892,6 +892,28 @@ class TodoyuArray {
 		return $map;
 	}
 
+
+
+	/**
+	 * Group an array by a field
+	 *
+	 * @param	Array	$elements
+	 * @param	String	$field
+	 * @param	String	$fallbackGroup
+	 * @return	Array
+	 */
+	public static function groupByField(array $elements, $field, $fallbackGroup = 'noGroup') {
+		$grouped = array();
+
+		foreach($elements as $key => $element) {
+			$group = isset($element[$field]) ? $element[$field] : $fallbackGroup;
+			$grouped[$group][$key] = $element;
+		}
+
+		return $grouped;
+	}
+
+
 }
 
 ?>

@@ -8,6 +8,7 @@ core 2.1.4 - not released yet
 	* Changed: TodoyuFormElement::getStorageData() is final now and checks always for noStorage and disabled
 	* Changed: TodoyuString::html2text text handling improved
 	* Changed: Popup calendar dotted border width is now 1px (was 2)
+	* Changed: Labels core.date.title.date_create => core.date.date_create (same for date_update)
 	* Added: TodoyuCountry::getIsoNumCurrency()
 	* Added: TodoyuFormElement::getStorageDataInternal() to override storageData properly
 	* Added: TodoyuDatabase::quoteTablename() (currently alias of quoteFieldName()). Cleanup quoteFieldName()
@@ -17,6 +18,7 @@ core 2.1.4 - not released yet
 	* Added: Log level LEVEL_CORE which is even deeper than debug and shows internal logs of todoyu core (hooks, connections, etc)
 	* Added: Limit parameter for TodoyuDateRange methods
 	* Added: Basic getters for TodoyuRole
+	* Added: TodoyuArray::groupByField()
 
 core 2.1.3 - 2011-11-17
 	* Bugfix: System URL was set wrong on windows systems
