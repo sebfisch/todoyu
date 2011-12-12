@@ -188,6 +188,17 @@ class TodoyuAuth {
 
 
 	/**
+	 * Check whether the current person is NOT working for the internal company
+	 *
+	 * @return  Boolean
+	 */
+	public static function isExternal() {
+		return self::getPerson()->isExternal();
+	}
+
+
+
+	/**
 	 * There can be actions of extensions defined, which do not require a login
 	 * (I know, this can be a security problem!)
 	 * This is for example used to verfiy login data by loginpage (which is an normal action)
