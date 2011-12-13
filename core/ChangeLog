@@ -1,6 +1,6 @@
 todoyu core changelog
 
-core 2.1.4 - not released yet
+core 2.1.4 - 2011-12-13
 	* Bugfix: Hovering multiple quick-info elements subsequently in direct sequence did only show the first info, no following ones
 	* Bugfix: RTE auto focus failed. Added workaround to focus RTE if first field
 	* Bugfix: Area was not set on popup ajax requests
