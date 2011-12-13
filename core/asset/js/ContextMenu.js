@@ -241,11 +241,13 @@ Todoyu.ContextMenu = {
 	 * @method	hide
 	 */
 	hide: function() {
-			// Stop body click observer
-		this.bodyClickObserver.stop();
+		if( $('contextmenu') && this.bodyClickObserver ) {
+				// Stop body click observer
+			this.bodyClickObserver.stop();
 
-			// Hide context menu
-		$('contextmenu').hide();
+				// Hide context menu
+			$('contextmenu').hide();
+		}
 	},
 
 
