@@ -9,6 +9,7 @@ core 2.1.4 - 2011-12-13
 	* Changed: TodoyuString::html2text text handling improved
 	* Changed: Popup calendar dotted border width is now 1px (was 2)
 	* Changed: Labels core.date.title.date_create => core.date.date_create (same for date_update)
+	* Added: Hide context menu on tab change
 	* Added: TodoyuCountry::getIsoNumCurrency()
 	* Added: TodoyuFormElement::getStorageDataInternal() to override storageData properly
 	* Added: TodoyuDatabase::quoteTablename() (currently alias of quoteFieldName()). Cleanup quoteFieldName()

@@ -225,6 +225,8 @@ Todoyu.Tabs = {
 	_clickHandler: function(handlerFunction, event, element) {
 		event.stop();
 
+		Todoyu.ContextMenu.hide();
+
 			// Get tabkey identifier
 		var tabKeyClass = element.getClassNames().detect(function(className){
 			return className.startsWith('tabkey-');
