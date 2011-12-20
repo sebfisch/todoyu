@@ -212,10 +212,10 @@ class TodoyuSQLParser {
 	 */
 	private static function extractColumnDefault($columnSQL) {
 		$columnSQL	= str_replace('default ', 'DEFAULT ', $columnSQL);
-		$pattern	= '/(DEFAULT \'[\w]?\')/';
+		$pattern	= '/DEFAULT (\')?[\w,\(\)\.\d]*(\')?/';
 		preg_match($pattern, $columnSQL, $match);
 
-		return sizeof($match) > 0 ? $match[1] : '';
+		return trim($match[0]);
 	}
 
 
@@ -392,17 +392,16 @@ class TodoyuSQLParser {
 	 * @return	Array
 	 */
 	public static function parseCreateQuery($query) {
-		$query	= str_replace("\n", ' ', $query);
 		$info	= array(
 			'table'		=> '',
 			'columns'	=> array()
 		);
 
-		$pattern1	= '/CREATE TABLE ([A-Za-z ]*)`(\w+)` \((.*)\)(.*)/';
+		$pattern1	= '/CREATE TABLE ([A-Za-z ]*)`(\w+)` \((.*)\)(.*)/is';
 		preg_match_all($pattern1, $query, $matches);
 
 		$columnsKeySQL	= self::splitColumnKeySQL($matches[3][0]);
-		$columnsSQL		= explode(',', $columnsKeySQL['columns']);
+		$columnsSQL		= explode(",\n", trim($columnsKeySQL['columns']));
 
 		$info['table']	= $matches[2][0];
 		$info['extra']	= $matches[4][0];
