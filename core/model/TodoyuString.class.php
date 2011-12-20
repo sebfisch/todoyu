@@ -227,48 +227,22 @@ class TodoyuString {
 	 * Convert an HTML snippet into plain text. Removes html - tags from snippet
 	 *
 	 * @param	String		$html		HTML snippet
-	 * @param	Boolean		$br2Newline
-	 * @param	Boolean		$decodeChars
+	 * @param	Boolean		$decodeEntity
 	 * @return	String		Text version
 	 */
-	public static function html2text($html, $br2Newline = false, $decodeChars = false) {
+	public static function html2text($html, $decodeEntity = false) {
 		$text	= htmlspecialchars_decode($html);
 
 		$text	= str_replace(array("\n", "\r"), '', $text);
-		$text	= $br2Newline ? self::br2nl($text) : $text;
+		$text	= self::br2nl($text);
 		$text	= str_replace('</p>', "\n\n", $text);
 		$text	= strip_tags($text);
 
-		if( $decodeChars === true ) {
-			$charSet= self::isUTF8($text) ? 'UTF-8' : 'ISO-8859-1';
-			$text	= html_entity_decode($text, ENT_COMPAT, $charSet);
+		if( $decodeEntity === true ) {
+			$text	= html_entity_decode($text, ENT_COMPAT, 'UTF-8');
 		}
 
 		return trim($text);
-	}
-
-
-
-	/**
-	 * Converts an HTML snippet into plain text.
-	 * 	- decodes html-entities & special chars
-	 *
-	 * @param	String		$html
-	 * @return	String
-	 */
-	public static function strictHtml2text($html) {
-			// Add empty line after paragraph
-		$plain 	= str_replace('</p>', "\n\n", $html);
-			// <br> to newlines
-		$plain	= self::br2nl($plain);
-			// Decode special chars
-		$plain	= htmlspecialchars_decode($plain);
-			// Decode entities
-		$plain	= html_entity_decode($plain, ENT_COMPAT, 'UTF-8');
-			// Rest of html to text
-		$plain	= self::html2text($plain);
-
-		return trim($plain);
 	}
 
 
@@ -852,19 +826,22 @@ class TodoyuString {
 	 * @param	String		$target
 	 * @return	String
 	 */
-	public static function wrapTodoyuLink($label, $extKey, array $params, $hash = '', $target = '') {
-		$allowed	= true;
-
+	public static function wrapTodoyuLink($label, $extKey, array $params = array(), $hash = '', $target = '') {
 			// Check extension's general right setting
-		if( TodoyuRightsManager::checkIfRightExists($extKey, 'general:use') && ! Todoyu::allowed($extKey, 'general:use') ) {
-			$allowed	= false;
-		}
+		if( Todoyu::allowed($extKey, 'general:use') ) {
+			if( !isset($params['ext']) ) {
+				$params['ext'] = $extKey;
+			}
 
-		if( $allowed ) {
-			$params['ext']	= $extKey;
-			$linkURL		= self::buildUrl($params, $hash);
+			$attributes = array(
+				'href'	=> self::buildUrl($params, $hash)
+			);
 
-			$label	= '<a href="' . $linkURL . '"' . ( $target != '' ? ' target="' . $target . '"' : '') . '>' . $label . '</a>';
+			if( !empty($target) ) {
+				$attributes['target'] = $target;
+			}
+
+			$label	= self::buildHtmlTag('a', $attributes, $label);
 		}
 
 		return $label;
@@ -1056,27 +1033,6 @@ class TodoyuString {
 	 */
 	public static function htmlentities($string, $doubleEncode = false) {
 		return htmlentities($string, ENT_QUOTES, 'UTF-8', $doubleEncode);
-	}
-
-
-
-	/**
-	 * Replace (only) first occurrence of search string by given replacement
-	 *
-	 * @param	String	$search
-	 * @param	String	$replace
-	 * @param	String	$subject
-	 * @return	String
-	 */
-	public static function replaceOnce($search, $replace, $subject) {
-		$pos = strpos($subject, $search);
-
-		if( $pos !== false ) {
-			$length	= strlen($search);
-			$subject= substr_replace($subject, $replace, $pos, $length);
-		}
-
-		return $subject;
 	}
 
 }

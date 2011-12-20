@@ -647,29 +647,34 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 * Test wraptodoyulink
 	 */
 	public function testwraptodoyulink() {
-//			// Check wrapped link w/o hash parameter and target attribute
-//		$params1	= array(
-//			'controller'=> 'test',
-//		);
-//		$result1	= TodoyuString::wrapTodoyuLink('Link', 'project', $params1);
-//		$expect1	= '<a href="/index.php?controller=test&ext=project">Link</a>';
-//
-//		$this->assertEquals($expect1, $result1);
-//
-//			// Check wrapped link with hash parameter and target attribute
-//		$params2	= array(
-//			'controller'	=> 'test',
-//			'action'		=> 'foo'
-//		);
-//		$result2	= TodoyuString::wrapTodoyuLink('Link', 'project', $params2, 'myHash', '_blank');
-//		$expect2	= '<a href="/index.php?controller=test&action=foo&ext=project#myHash" target="_blank">Link</a>';
-//
-//		$this->assertEquals($expect2, $result2);
-
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
+			// Check wrapped link w/o hash parameter and target attribute
+		$params1	= array(
+			'ext'		=> 'project',
+			'controller'=> 'test',
 		);
+		$expect1	= '<a href="' . PATH_WEB . '/index.php?ext=project&controller=test">Link Text</a>';
+		$result1	= TodoyuString::wrapTodoyuLink('Link Text', 'project', $params1);
+
+		$this->assertEquals($expect1, $result1);
+
+
+			// Check wrapped link with hash parameter and target attribute
+		$params2	= array(
+			'ext'			=> 'project',
+			'controller'	=> 'test',
+			'action'		=> 'foo'
+		);
+		$expect2	= '<a href="' . PATH_WEB . '/index.php?ext=project&controller=test&action=foo#myHash" target="_blank">Link</a>';
+		$result2	= TodoyuString::wrapTodoyuLink('Link', 'project', $params2, 'myHash', '_blank');
+
+		$this->assertEquals($expect2, $result2);
+
+
+//		$params3	= array();
+//		$expect3	= 'not linked';
+//		$result3	= TodoyuString::wrapTodoyuLink('not linked', 'notanextensionkey', $params3);
+//
+//		$this->assertEquals($expect3, $result3);
 	}
 
 
@@ -706,19 +711,6 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$test	= '<strong>test äöü</strong>';
 		$expect	= '&lt;strong&gt;test &auml;&ouml;&uuml;&lt;/strong&gt;';
 		$result	= TodoyuString::htmlentities($test);
-
-		$this->assertEquals($expect, $result);
-	}
-
-
-
-	/**
-	 * Test stricthtml2text
-	 */
-	public function teststricthtml2text() {
-		$html	= '<p>A paragraph</p><p>New<br />paragraph<br />with <strong>linebreaks</strong></p>';
-		$expect	= "A paragraph\n\nNew\nparagraph\nwith linebreaks";
-		$result	= TodoyuString::strictHtml2text($html);
 
 		$this->assertEquals($expect, $result);
 	}

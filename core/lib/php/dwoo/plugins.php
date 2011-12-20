@@ -595,10 +595,11 @@ function Dwoo_Plugin_subtract_compile(Dwoo_Compiler $compiler, $minuend, $subtra
  *
  * @param	Dwoo_Compiler	$compiler
  * @param	String			$html
+ * @param	Boolean			$decodeEntity
  * @return	String			Text version
  */
-function Dwoo_Plugin_html2text_compile(Dwoo_Compiler $compiler, $html) {
-	return 'TodoyuString::html2text(' . $html . ')';
+function Dwoo_Plugin_html2text_compile(Dwoo_Compiler $compiler, $html, $decodeEntity = false) {
+	return 'TodoyuString::html2text(' . $html . ', ' . $decodeEntity . ')';
 }
 
 
