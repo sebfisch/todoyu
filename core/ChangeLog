@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.2.0 - not released yet
+	* Feature: Removing valueless foreign records does not require confirmation anymore
 	* Feature: Better support for SQL statements to update fields. Comma is now allowed in type definition (ex: DECIMAL(5,2))
 	* Removed: TodoyuString::replaceOnce()
 	* Removed: TodoyuString::strictHtml2text() is now integrated in html2text() method
@@ -8,8 +9,8 @@ core 2.2.0 - not released yet
 core 2.1.4 - 2011-12-13
 	* Bugfix: Hovering multiple quick-info elements subsequently in direct sequence did only show the first info, no following ones
 	* Bugfix: RTE auto focus failed. Added workaround to focus RTE if first field
-	* Bugfix: Area was not set on popup ajax requests
-	* Changed: Only focus RTE when loaded over ajax
+	* Bugfix: Area was not set on popup AJAX requests
+	* Changed: Only focus RTE when loaded over AJAX
 	* Changed: TodoyuFormElement::getStorageData() is final now and checks always for noStorage and disabled
 	* Changed: TodoyuString::html2text text handling improved
 	* Changed: Popup calendar dotted border width is now 1px (was 2)

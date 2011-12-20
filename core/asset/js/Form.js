@@ -79,6 +79,40 @@ Todoyu.Form = {
 
 
 
+
+	/**
+	 * Get record element
+	 *
+	 * @method	getForeignRecordElement
+	 * @param	{Number}	idRecord
+	 * @param	{String}	fieldName
+	 * @param	{Number}	index
+	 * @return	{Element}
+	 */
+	getForeignRecordElement: function(idRecord, fieldName, index) {
+		return $('foreignrecord-' + idRecord + '-' + fieldName + '-' + index);
+	},
+
+
+
+	/**
+	 * Get value of foreign record
+	 *
+	 * @method	getForeignRecordValue
+	 * @param	{Number}	idRecord
+	 * @param	{String}	fieldName
+	 * @param	{Number}	index
+	 * @return	{String}
+	 */
+	getForeignRecordValue: function(idRecord, fieldName, index) {
+		var recordElement	= this.getForeignRecordElement(idRecord, fieldName, index);
+		var valueElement	= recordElement.select('input[type="hidden"]').first();
+
+		return $F(valueElement);
+	},
+
+
+
 	/**
 	 * Toggle sub form
 	 *
@@ -109,7 +143,7 @@ Todoyu.Form = {
 	 * @param	{Number}	index
 	 */
 	highlightRecordForm: function(idRecord, fieldName, index) {
-		var record = 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
+		var record = this.getForeignRecordElement(idRecord, fieldName, index);
 
 		$(record).highlight();
 	},
@@ -125,9 +159,11 @@ Todoyu.Form = {
 	 * @param	{Number}		index
 	 */
 	removeRecord: function(idRecord, fieldName, index) {
-		if( confirm('[LLL:core.form.records.removeconfirm]') ) {
-			var idElement	= 'foreignrecord-' + idRecord + '-' + fieldName + '-' + index;
-			$(idElement).remove();
+		var recordValue	= this.getForeignRecordValue(idRecord, fieldName, index);
+
+		if( recordValue === '' || confirm('[LLL:core.form.records.removeconfirm]') ) {
+			var recordElement	= this.getForeignRecordElement(idRecord, fieldName, index);
+			recordElement.remove();
 		} else {
 				// Click event toggled sub form, so toggle again
 			this.toggleRecordForm(idRecord, fieldName, index);

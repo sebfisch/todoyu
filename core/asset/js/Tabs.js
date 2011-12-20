@@ -227,7 +227,7 @@ Todoyu.Tabs = {
 
 		Todoyu.ContextMenu.hide();
 
-			// Get tabkey identifier
+			// Get tab key identifier
 		var tabKeyClass = element.getClassNames().detect(function(className){
 			return className.startsWith('tabkey-');
 		}).split('-').last();
