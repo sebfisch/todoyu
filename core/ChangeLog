@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.2.0 - not released yet
+	* Feature: Better support for SQL statements to update fields. Comma is now allowed in type definition (ex: DECIMAL(5,2))
 	* Removed: TodoyuString::replaceOnce()
 	* Removed: TodoyuString::strictHtml2text() is now integrated in html2text() method
 
