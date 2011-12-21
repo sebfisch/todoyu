@@ -44,6 +44,8 @@ class TodoyuColors {
 
 	/**
 	 * Generate CSS and image file for user colors
+	 *
+	 * @todo	Rename function to "addStylesheet", move generate part into another sub method
 	 */
 	public static function generate() {
 		$fileCSS	= PATH_CACHE . DIR_SEP . 'css' . DIR_SEP . 'colors.css';
