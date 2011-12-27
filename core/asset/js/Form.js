@@ -96,6 +96,26 @@ Todoyu.Form = {
 
 
 	/**
+	 * Check whether the given foreign record's field is an autocompleter (not a regular select)
+	 *
+	 * @method	isForeignRecordAutocompleter
+	 * @param	{Element}	recordElement
+	 * @return	{Boolean}
+	 */
+	isForeignRecordAutocompleter: function(recordElement) {
+		var isAutocompleter = false;
+
+		if( Todoyu.exists(recordElement) ) {
+			var selectElement	= recordElement.down('select');
+			isAutocompleter		= typeof selectElement === "undefined";
+		}
+
+		return isAutocompleter;
+	},
+
+
+
+	/**
 	 * Get value of foreign record
 	 *
 	 * @method	getForeignRecordValue
@@ -105,8 +125,15 @@ Todoyu.Form = {
 	 * @return	{String}
 	 */
 	getForeignRecordValue: function(idRecord, fieldName, index) {
+		var valueElement;
 		var recordElement	= this.getForeignRecordElement(idRecord, fieldName, index);
-		var valueElement	= recordElement.select('input[type="hidden"]').first();
+
+		var isAutocompleter	= this.isForeignRecordAutocompleter(recordElement);
+		if( isAutocompleter ) {
+			valueElement	= recordElement.select('input[type="hidden"]').first();
+		} else {
+			valueElement	= recordElement.down('select');
+		}
 
 		return $F(valueElement);
 	},
@@ -161,7 +188,7 @@ Todoyu.Form = {
 	removeRecord: function(idRecord, fieldName, index) {
 		var recordValue	= this.getForeignRecordValue(idRecord, fieldName, index);
 
-		if( recordValue === '' || confirm('[LLL:core.form.records.removeconfirm]') ) {
+		if( recordValue === '0' || recordValue === '' || confirm('[LLL:core.form.records.removeconfirm]') ) {
 			var recordElement	= this.getForeignRecordElement(idRecord, fieldName, index);
 			recordElement.remove();
 		} else {
