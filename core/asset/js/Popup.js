@@ -81,7 +81,11 @@ Todoyu.Popup = Class.create(Window, {
 		this.todoyuOptions.closeCallback	= this.closeCallback.bind(this);
 		options = $H(this.todoyuOptions).merge(options).toObject();
 
-		if( !options.requestOptions.parameters.area ) {
+		if( ! options.requestOptions.parameters ) {
+			options.requestOptions.parameters	= {};
+		}
+
+		if( ! options.requestOptions.parameters.area ) {
 			options.requestOptions.parameters.area = Todoyu.getArea();
 		}
 
