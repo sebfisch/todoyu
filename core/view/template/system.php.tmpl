@@ -19,11 +19,21 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-Todoyu::$CONFIG['SYSTEM']['name'] 		= '{addslashes($name)}';
-Todoyu::$CONFIG['SYSTEM']['email']		= '{addslashes($email)}';
-Todoyu::$CONFIG['SYSTEM']['locale']		= '{$locale}';
-Todoyu::$CONFIG['SYSTEM']['timezone']	= '{$timezone}';
-Todoyu::$CONFIG['SYSTEM']['todoyuURL']	= '{$todoyuURL}';
-Todoyu::$CONFIG['SYSTEM']['logLevel']	= {$logLevel};
+	// General system settings
+Todoyu::$CONFIG['SYSTEM']['name'] 			= '{addslashes($name)}';
+Todoyu::$CONFIG['SYSTEM']['email']			= '{addslashes($email)}';
+Todoyu::$CONFIG['SYSTEM']['locale']			= '{$locale}';
+
+	// Date and time settings
+Todoyu::$CONFIG['SYSTEM']['timezone']		= '{$timezone}';
+Todoyu::$CONFIG['SYSTEM']['firstDayOfWeek']	= '{$firstDayOfWeek}';
+
+	// Command line interface
+Todoyu::$CONFIG['SYSTEM']['todoyuURL']		= '{$todoyuURL}';
+
+	// Debugging
+Todoyu::$CONFIG['SYSTEM']['logLevel']		= {$logLevel};
+
+
 
 Todoyu::$CONFIG['SYSTEM']['encryptionKey']	= '{$encryptionKey}';

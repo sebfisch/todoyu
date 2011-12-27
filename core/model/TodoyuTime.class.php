@@ -180,9 +180,18 @@ class TodoyuTime {
 	 * @return 		Integer		Timestamp of beginning of week the given timestamp belongs to
 	 */
 	public static function getWeekStart($timestamp) {
-		$diff	= (date('w', $timestamp)+6)%7;
+		$diff	= (date('w', $timestamp) + 6) % 7;
 
-		return mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp)-$diff, date('Y', $timestamp));
+			// Get timestamp of monday of that week at 00:00:00
+		$weekStart	= mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp)-$diff, date('Y', $timestamp));
+
+			// Adjust if system setting of first day of week is sunday
+		$firstDayOfWeek	= TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek();
+		if( $firstDayOfWeek === 0 ) {
+			$weekStart -= self::SECONDS_DAY;
+		}
+
+		return $weekStart;
 	}
 
 
@@ -196,9 +205,18 @@ class TodoyuTime {
 	 */
 	public static function getWeekEnd($time = 0) {
 		$time	= self::time($time);
-		$diff	= (7-date('w', $time))%7;
+		$diff	= (7 - date('w', $time)) % 7;
 
-		return mktime(23, 59, 59, date('n', $time), date('j', $time) + $diff, date('Y', $time));
+			// Get timestamp of sunday of that week at 23:59:59
+		$weekEnd	= mktime(23, 59, 59, date('n', $time), date('j', $time) + $diff, date('Y', $time));
+
+			// System setting for last day of week is monday? (first day = sunday)
+		$firstDayOfWeek	= TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek();
+		if( $firstDayOfWeek === 0 ) {
+			$weekEnd += self::SECONDS_DAY;
+		}
+
+		return $weekEnd;
 	}
 
 
@@ -314,25 +332,6 @@ class TodoyuTime {
 
 
 	/**
-	 * Get present amount of first hour of given amount of hours
-	 *
-	 * @todo	What does this function? Right place?
-	 * @param	Float $hours
-	 * @return	Float
-	 */
-	public static function firstHourLeftOver($hours) {
-		if( $hours > 1.0 ) {
-			$hours	= 1.0;
-		} elseif( $hours <= 0.0 ) {
-			$hours	= 0.0;
-		}
-
-		return $hours;
-	}
-
-
-
-	/**
 	 * Convert seconds (integer) to a readable format with hours and minutes (03:10 = 3 hours and 10 minutes)
 	 *
 	 * @param	Integer		$seconds		Seconds
@@ -441,7 +440,7 @@ class TodoyuTime {
 		if( $largerUnitsThanDays && $seconds >= TodoyuTime::SECONDS_WEEK ) {
 				// Weeks
 			$subUnitValue	= $seconds % TodoyuTime::SECONDS_WEEK;
-			$value	= $seconds / TodoyuTime::SECONDS_WEEK;
+			$value			= $seconds / TodoyuTime::SECONDS_WEEK;
 			if( $withSubunit == true && $subUnitValue >= TodoyuTime::SECONDS_DAY) {
 				$subunit	= self::formatDuration($subUnitValue, false, false);
 			}
@@ -472,8 +471,8 @@ class TodoyuTime {
 			$value	= round($value, 2);
 		}
 
+			// Plural?
 		if( $value != 1 ) {
-				// Plural?
 			$unit .= 's';
 		}
 
@@ -674,7 +673,7 @@ class TodoyuTime {
 	public static function parseDuration($timeString) {
 		$parts	= explode(':', $timeString);
 
-		return intval($parts[0])* self::SECONDS_HOUR + intval($parts[1]) * self::SECONDS_MIN;
+		return intval($parts[0]) * self::SECONDS_HOUR + intval($parts[1]) * self::SECONDS_MIN;
 	}
 
 
