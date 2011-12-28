@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Manage stylesheets and javaScripts which are added to the page
+ * Manage style sheets and javaScripts which are added to the page
  *
  * @package		Todoyu
  * @subpackage	Core
@@ -27,18 +27,18 @@
 class TodoyuPageAssetManager {
 
 	/**
-	 * JavaScripts to add to the page
+	 * JavaScripts to be added to the page
 	 *
 	 * @var	Array
 	 */
-	private static $javascripts = array();
+	private static $javaScripts = array();
 
 	/**
-	 * Stylesheets to add to the page
+	 * Stylesheets to added to the page
 	 *
 	 * @var	Array
 	 */
-	private static $stylesheets = array();
+	private static $styleSheets = array();
 
 
 
@@ -66,8 +66,8 @@ class TodoyuPageAssetManager {
 		}
 
 			// Add file, if not already in list
-		if( ! array_key_exists($absPathToFile, self::$javascripts) ) {
-			self::$javascripts[$absPathToFile] = array(
+		if( ! array_key_exists($absPathToFile, self::$javaScripts) ) {
+			self::$javaScripts[$absPathToFile] = array(
 				'file'		=> $absPathToFile,
 				'position'	=> $position,
 				'compress'	=> $compress,
@@ -104,8 +104,8 @@ class TodoyuPageAssetManager {
 			TodoyuDebug::printHtml($pathToFile, 'File not found');
 		}
 
-		if( ! array_key_exists($pathToFile, self::$stylesheets) ) {
-			self::$stylesheets[$pathToFile] = array(
+		if( ! array_key_exists($pathToFile, self::$styleSheets) ) {
+			self::$styleSheets[$pathToFile] = array(
 				'file'		=> $pathToFile,
 				'position'	=> $position,
 				'compress'	=> $compress,
@@ -125,7 +125,7 @@ class TodoyuPageAssetManager {
 		TodoyuFileManager::makeDirDeep(PATH_CACHE . '/js');
 		TodoyuFileManager::makeDirDeep(PATH_CACHE . '/css');
 
-			// Add javascripts
+			// Add javaScripts
 		$jsFiles	= self::getJavascripts();
 
 			// Add all JS files
@@ -135,8 +135,8 @@ class TodoyuPageAssetManager {
 			));
 		}
 
-			// Add stylesheets
-		$cssFiles	= self::getStylesheets();
+			// Add style sheets
+		$cssFiles	= self::getStyleSheets();
 
 			// Add all CSS files
 		foreach($cssFiles as $cssFile) {
@@ -198,12 +198,12 @@ class TodoyuPageAssetManager {
 		$merge		= array();
 		$libsMerge	= array();
 
-		$javascripts= TodoyuArray::sortByLabel(self::$javascripts, 'position');
+		$javaScripts= TodoyuArray::sortByLabel(self::$javaScripts, 'position');
 		$doMerging	= Todoyu::$CONFIG['CACHE']['JS']['merge'] === true;
 
-		foreach( $javascripts as $fileConfig ) {
+		foreach( $javaScripts as $fileConfig ) {
 			if( $doMerging && $fileConfig['merge'] ) {
-					// If file is a thirdparty library, add to a separate merge file
+					// If file is a third party library, add to a separate merge file
 				if( $fileConfig['lib'] === true ) {
 					$libsMerge[]	= $fileConfig;
 				} else {
@@ -405,20 +405,20 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Get stylesheets which have to be included in the page
+	 * Get style sheets which have to be included in the page
 	 * The files are merged and compressed as configured in the asset array
 	 *
 	 * @return	Array
 	 */
-	private static function getStylesheets() {
+	private static function getStyleSheets() {
 		$files	= array();
 		$merge	= array();
 		$single	= array();
 
-		$stylesheets= TodoyuArray::sortByLabel(self::$stylesheets, 'position');
+		$styleSheets= TodoyuArray::sortByLabel(self::$styleSheets, 'position');
 		$doMerging	= Todoyu::$CONFIG['CACHE']['CSS']['merge'];
 
-		foreach( $stylesheets as $fileConfig ) {
+		foreach( $styleSheets as $fileConfig ) {
 			if( $doMerging && $fileConfig['merge'] !== false ) {
 				$merge[]	= $fileConfig;
 			} else {

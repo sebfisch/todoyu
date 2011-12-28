@@ -146,7 +146,7 @@ Todoyu.Time = {
 				break;
 		}
 
-		var newDate = new Date(date.getFullYear(), date.getMonth()+month, date.getDate()+day, date.getHours(), date.getMinutes(), date.getSeconds());
+		var newDate = new Date(date.getFullYear(), date.getMonth() + month, date.getDate() + day, date.getHours(), date.getMinutes(), date.getSeconds());
 
 		return parseInt(newDate.getTime() / 1000, 10);
 	},
@@ -173,7 +173,7 @@ Todoyu.Time = {
 
 
 	/**
-	 * Get timestamp at start of week
+	 * Get timestamp at start of week (being sunday or monday depending on system config)
 	 *
 	 * @method	getWeekStart
 	 * @param	{Number}		baseTime
@@ -188,6 +188,12 @@ Todoyu.Time = {
 
 		var newTime = parseInt(date.getTime() / 1000, 10);
 		var shift = (((date.getDay() % 7) - 1) * -1);
+
+			// Adjust 1st day of week from monday to sunday
+		var firstDayIsSunday	=  Todoyu.Config.firstDayOfWeek === 0;
+		if( firstDayIsSunday ) {
+			shift = shift -1;
+		}
 
 		newTime += shift * this.seconds.day;
 
@@ -286,7 +292,7 @@ Todoyu.Time = {
 	date2Time: function(dateString) {
 		var parts	= dateString.split('-');
 
-		return Math.round((new Date(parts[0], parts[1]-1, parts[2], 0, 0, 0)).getTime()/1000);
+		return Math.round((new Date(parts[0], parts[1]-1, parts[2], 0, 0, 0)).getTime() / 1000);
 	},
 
 

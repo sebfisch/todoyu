@@ -53,6 +53,10 @@ class TodoyuPage {
 			// Load all page configuration provided by extensions
 		self::loadExtPageConfig();
 
+			// Ensure cache\js\Config.js to be available
+		if( ! TodoyuFileManager::isFile(PATH_CACHE . DIR_SEP . 'js' . DIR_SEP . 'Config.js') ) {
+			TodoyuConfigManager::saveJavaScriptSystemConfig();
+		}
 			// Add core assets
 		self::addCoreAssets();
 			// Add all assets of allowed extensions
@@ -444,9 +448,9 @@ class TodoyuPage {
 
 
 	/**
-	 * Add JavaScripts and stylesheets to the page object variables
+	 * Add JavaScripts and style sheets to the page object variables
 	 */
-	private static function addJavascriptAndStylesheetsToPage() {
+	private static function addJavascriptAndStyleSheetsToPage() {
 		TodoyuPageAssetManager::addAssetsToPage();
 	}
 
@@ -481,7 +485,7 @@ class TodoyuPage {
 		self::set('navigation', TodoyuRenderer::renderNavigation());
 
 			// Add JavaScripts and stylesheet to page
-		self::addJavascriptAndStylesheetsToPage();
+		self::addJavascriptAndStyleSheetsToPage();
 
 		self::sortJSinlines();
 

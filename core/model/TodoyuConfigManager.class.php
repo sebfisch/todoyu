@@ -33,9 +33,10 @@ class TodoyuConfigManager {
 	 * @param	String		$savePath
 	 * @param	String		$templateFile
 	 * @param	Array		$data
+	 * @param	Boolean		$wrapAsPhp
 	 */
-	public static function saveConfigFile($savePath, $templateFile, array $data) {
-		TodoyuFileManager::saveTemplatedFile($savePath, $templateFile, $data, true);
+	public static function saveConfigFile($savePath, $templateFile, array $data, $wrapAsPhp = true) {
+		TodoyuFileManager::saveTemplatedFile($savePath, $templateFile, $data, $wrapAsPhp);
 	}
 
 
@@ -58,6 +59,24 @@ class TodoyuConfigManager {
 		}
 
 		self::saveConfigFile($savePath, $template, $data);
+	}
+
+
+
+	/**
+	 * Save javaScript system config (cache/js/Config.js)
+	 *
+	 * @param	Array	$data
+	 */
+	public static function saveJavaScriptSystemConfig(array $data = array()) {
+		$savePath	= 'cache/js/Config.js';
+		$template	= 'core/view/template/Config.js.tmpl';
+
+		if( ! array_key_exists('firstDayOfWeek', $data) ) {
+			$data['firstDayOfWeek']	= intval(TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek());
+		}
+
+		self::saveConfigFile($savePath, $template, $data, false);
 	}
 
 
