@@ -177,18 +177,24 @@ class TodoyuTime {
 	 * 00:00:00
 	 *
 	 * @param		Integer		$timestamp		Timestamp
-	 * @return 		Integer		Timestamp of beginning of week the given timestamp belongs to
+	 * @return 		Integer		Timestamp of beginning of week (sunday or monday by system config) the given timestamp belongs to
 	 */
-	public static function getWeekStart($timestamp) {
-		$diff	= (date('w', $timestamp) + 6) % 7;
+	public static function getWeekStart($timestamp = 0) {
+		$timestamp	= self::time($timestamp);
 
-			// Get timestamp of monday of that week at 00:00:00
-		$weekStart	= mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp)-$diff, date('Y', $timestamp));
-
-			// Adjust if system setting of first day of week is sunday
 		$firstDayOfWeek	= TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek();
-		if( $firstDayOfWeek === 0 ) {
-			$weekStart -= self::SECONDS_DAY;
+		if( $firstDayOfWeek === 0 && date('D', $timestamp) === 'Sun' ) {
+				// Given timestamp is sunday and system is configured to display sunday as 1st day of week
+			$weekStart	= mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp), date('Y', $timestamp));
+		} else {
+				// Get timestamp of monday of that week at 00:00:00
+			$diff		= (date('w', $timestamp) + 6) % 7;
+			$weekStart	= mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp) - $diff, date('Y', $timestamp));
+
+				// Adjust to sunday if set as 1st day of week
+			if( $firstDayOfWeek === 0 ) {
+				$weekStart -= self::SECONDS_DAY;
+			}
 		}
 
 		return $weekStart;
@@ -197,26 +203,15 @@ class TodoyuTime {
 
 
 	/**
-	 * Get timestamp for the end of the week (last second in the week)
-	 * 23:59:59
+	 * Get timestamp for the end of the week (last second in the week) 23:59:59
 	 *
-	 * @param	Integer		$time
+	 * @param	Integer		$timestamp
 	 * @return	Integer
 	 */
-	public static function getWeekEnd($time = 0) {
-		$time	= self::time($time);
-		$diff	= (7 - date('w', $time)) % 7;
+	public static function getWeekEnd($timestamp = 0) {
+		$weekStart	= self::getWeekStart($timestamp);
 
-			// Get timestamp of sunday of that week at 23:59:59
-		$weekEnd	= mktime(23, 59, 59, date('n', $time), date('j', $time) + $diff, date('Y', $time));
-
-			// System setting for last day of week is monday? (first day = sunday)
-		$firstDayOfWeek	= TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek();
-		if( $firstDayOfWeek === 0 ) {
-			$weekEnd += self::SECONDS_DAY;
-		}
-
-		return $weekEnd;
+		return $weekStart + self::SECONDS_WEEK - 1;
 	}
 
 
@@ -224,13 +219,13 @@ class TodoyuTime {
 	/**
 	 * Get timestamp of first day (at 00:00:00) of month
 	 *
-	 * @param	Integer	$time
+	 * @param	Integer	$timestamp
 	 * @return	Integer
 	 */
-	public static function getMonthStart($time = 0) {
-		$time	= self::time($time);
+	public static function getMonthStart($timestamp = 0) {
+		$timestamp	= self::time($timestamp);
 
-		return mktime(0, 0, 0, date('n', $time), 1, date('Y', $time));
+		return mktime(0, 0, 0, date('n', $timestamp), 1, date('Y', $timestamp));
 	}
 
 
@@ -238,13 +233,13 @@ class TodoyuTime {
 	/**
 	 * Get timestamp for end of month (last second in the month, 23:59:59)
 	 *
-	 * @param	Integer		$time
+	 * @param	Integer		$timestamp
 	 * @return	Integer
 	 */
-	public static function getMonthEnd($time = 0) {
-		$time	= self::time($time);
+	public static function getMonthEnd($timestamp = 0) {
+		$timestamp	= self::time($timestamp);
 		
-		return mktime(0, 0, 0, date('n', $time) + 1, 1, date('Y', $time)) - 1;
+		return mktime(0, 0, 0, date('n', $timestamp) + 1, 1, date('Y', $timestamp)) - 1;
 	}
 
 
@@ -252,13 +247,13 @@ class TodoyuTime {
 	/**
 	 * Get timestamp for start of year
 	 *
-	 * @param	Integer		$time
+	 * @param	Integer		$timestamp
 	 * @return	Integer
 	 */
-	public function getYearStart($time = 0) {
-		$time	= self::time($time);
+	public function getYearStart($timestamp = 0) {
+		$timestamp	= self::time($timestamp);
 
-		return mktime(0, 0, 0, 1, 1, date('Y', $time));
+		return mktime(0, 0, 0, 1, 1, date('Y', $timestamp));
 	}
 
 
@@ -266,13 +261,13 @@ class TodoyuTime {
 	/**
 	 * Get timestamp for end of year
 	 *
-	 * @param	Integer		$time
+	 * @param	Integer		$timestamp
 	 * @return	Integer
 	 */
-	public static function getYearEnd($time = 0) {
-		$time	= self::time($time);
+	public static function getYearEnd($timestamp = 0) {
+		$timestamp	= self::time($timestamp);
 
-		return mktime(0, 0, 0, 1, 1, date('Y', $time)+1) - 1;
+		return mktime(0, 0, 0, 1, 1, date('Y', $timestamp) + 1) - 1;
 	}
 
 
@@ -280,12 +275,13 @@ class TodoyuTime {
 	/**
 	 * Get day-number of last day of month of given timestamp
 	 *
-	 * @param	Integer		$time
+	 * @param	Integer		$timestamp
 	 * @return	Integer
 	 */
-	public static function getLastDayNumberInMonth($time = 0) {
-		$time		= self::time($time);
-		$timeLastDay= self::getMonthEnd($time);
+	public static function getLastDayNumberInMonth($timestamp = 0) {
+		$timestamp	= self::time($timestamp);
+
+		$timeLastDay= self::getMonthEnd($timestamp);
 
 		return date('j', $timeLastDay);
 	}
@@ -296,13 +292,14 @@ class TodoyuTime {
 	 * Get weekday of a timestamp. Like date('w'), but starts with monday
 	 * With $mondayFirst monday will be 0 and sunday 6
 	 *
-	 * @param	Integer		$time
+	 * @param	Integer		$timestamp
 	 * @param	Boolean		$mondayFirst
 	 * @return	Integer		0 = monday, 6 = sunday
 	 */
-	public static function getWeekday($time = 0, $mondayFirst = true) {
-		$time	= self::time($time);
-		$weekday= date('w', $time);
+	public static function getWeekday($timestamp = 0, $mondayFirst = true) {
+		$timestamp	= self::time($timestamp);
+
+		$weekday	= date('w', $timestamp);
 
 		return $mondayFirst ? ($weekday + 6) % 7 : $weekday;
 	}
@@ -317,6 +314,7 @@ class TodoyuTime {
 	 */
 	public static function getTimeParts($seconds) {
 		$seconds	= TodoyuNumeric::intPositive($seconds);
+
 		$hours		= floor($seconds / self::SECONDS_HOUR);
 		$seconds	= $seconds - $hours * self::SECONDS_HOUR;
 		$minutes	= floor($seconds / self::SECONDS_MIN);
@@ -517,7 +515,7 @@ class TodoyuTime {
 	 * @return	String
 	 */
 	public static function formatSqlDate($sqlDate, $format = 'date') {
-		$timestamp		= self::parseSqlDate($sqlDate);
+		$timestamp	= self::parseSqlDate($sqlDate);
 
 		return self::format($timestamp, $format);
 	}
@@ -693,22 +691,22 @@ class TodoyuTime {
 	/**
 	 * Round minutes by given steps
 	 *
-	 * @param	Integer		$time
+	 * @param	Integer		$timestamp
 	 * @param	Integer		$steps
 	 * @return	Integer		Rounded time
 	 */
-	public static function getRoundedTime($time = 0, $steps = 5) {
-		$time	= intval($time);
+	public static function getRoundedTime($timestamp = 0, $steps = 5) {
+		$timestamp	= intval($timestamp);
 		$factor	= intval( self::SECONDS_MIN / $steps);
 
-		if( $time === 0 ) {
-			$time = NOW;
+		if( $timestamp === 0 ) {
+			$timestamp = NOW;
 		}
 
-		$currentMinutes	= intval(date('i', $time));
+		$currentMinutes	= intval(date('i', $timestamp));
 		$roundedMinutes	= intval(round(($currentMinutes * $factor) / self::SECONDS_MIN, 0) * $steps);
-		$currentSeconds	= intval(date('s', $time));
-		$newTime		= $time + ($roundedMinutes - $currentMinutes) * self::SECONDS_MIN - $currentSeconds;
+		$currentSeconds	= intval(date('s', $timestamp));
+		$newTime		= $timestamp + ($roundedMinutes - $currentMinutes) * self::SECONDS_MIN - $currentSeconds;
 
 		return $newTime;
 	}
@@ -718,12 +716,12 @@ class TodoyuTime {
 	/**
 	 * Get dates of the (days of) full week which the given date is in
 	 *
-	 * @param		Mixed		$time		Timestamp
+	 * @param		Mixed		$timestamp
 	 * @return 		Array		Dates of the week
 	 */
-	public static function getTimestampsForWeekdays($time) {
-		$time		= intval($time);
-		$weekRange	= self::getWeekRange($time);
+	public static function getTimestampsForWeekdays($timestamp) {
+		$timestamp		= intval($timestamp);
+		$weekRange	= self::getWeekRange($timestamp);
 		$dayTimes	= array();
 
 		for($dayTime = $weekRange['start']; $dayTime < $weekRange['end']; $dayTime += self::SECONDS_DAY) {
@@ -749,7 +747,7 @@ class TodoyuTime {
 		$timestamp	= $dateStart;
 		$days		= array();
 
-		while( $timestamp <= $dateEnd ) {
+		while($timestamp <= $dateEnd) {
 			$days[]		= $timestamp;
 			$timestamp	= self::addDays($timestamp, 1);
 		}
@@ -863,16 +861,17 @@ class TodoyuTime {
 	/**
 	 * Add given amount of days to given date
 	 *
-	 * @param	Integer		$time
-	 * @param	Integer		$days
+	 * @param	Integer		$timestamp
+	 * @param	Integer		$amountDays
 	 * @return	Integer
 	 */
-	public static function addDays($time, $days) {
-		$time	= intval($time);
-		$days	= intval($days);
-		$date	= getdate($time);
+	public static function addDays($timestamp, $amountDays) {
+		$timestamp	= intval($timestamp);
+		$amountDays	= intval($amountDays);
 
-		return mktime($date['hours'], $date['minutes'], $date['seconds'], $date['mon'], $date['mday'] + $days, $date['year']);
+		$date	= getdate($timestamp);
+
+		return mktime($date['hours'], $date['minutes'], $date['seconds'], $date['mon'], $date['mday'] + $amountDays, $date['year']);
 	}
 }
 
