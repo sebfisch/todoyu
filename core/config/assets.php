@@ -77,13 +77,6 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'compress'	=> false
 		),
 		array(
-			'file'		=> 'lib/js/scal/javascripts/scal.js',
-			'position'	=> 21,
-			'merge'		=> true,
-			'localize'	=> false,
-			'compress'	=> true
-		),
-		array(
 			'file'		=> 'lib/js/jscalendar/calendar.js',
 			'position'	=> 22,
 			'merge'		=> false,
