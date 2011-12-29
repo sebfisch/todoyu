@@ -147,7 +147,13 @@ class TodoyuTime {
 	 */
 	public static function getWeekRange($timestamp) {
 		$timestamp	= intval($timestamp);
-		$start		= self::getWeekstart($timestamp);
+
+		$isWeekStartingSunday	= TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek()	=== 0;
+		$isWeekendDisplayed		= TodoyuCalendarPreferences::getIsWeekendDisplayed();
+			// If weekend (sat+sun) is hidden it doesn't matter whether weeks start on sunday or monday ;)
+		$forceStartOnMonday 	= $isWeekStartingSunday && ! $isWeekendDisplayed;
+
+		$start		= self::getWeekstart($timestamp, $forceStartOnMonday);
 
 		return array(
 			'start'	=> $start,
@@ -176,14 +182,15 @@ class TodoyuTime {
 	 * Get start and end timestamp of every day in the week of the timestamp
 	 * 00:00:00
 	 *
-	 * @param		Integer		$timestamp		Timestamp
+	 * @param		Integer		$timestamp					Timestamp
+	 * @param		Boolean		$forceStartOnMonday			Override system setting and force monday as first day?
 	 * @return 		Integer		Timestamp of beginning of week (sunday or monday by system config) the given timestamp belongs to
 	 */
-	public static function getWeekStart($timestamp = 0) {
+	public static function getWeekStart($timestamp = 0, $forceStartOnMonday = false) {
 		$timestamp	= self::time($timestamp);
 
 		$firstDayOfWeek	= TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek();
-		if( $firstDayOfWeek === 0 && date('D', $timestamp) === 'Sun' ) {
+		if( ! $forceStartOnMonday && $firstDayOfWeek === 0 && date('D', $timestamp) === 'Sun' ) {
 				// Given timestamp is sunday and system is configured to display sunday as 1st day of week
 			$weekStart	= mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp), date('Y', $timestamp));
 		} else {
@@ -192,7 +199,7 @@ class TodoyuTime {
 			$weekStart	= mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp) - $diff, date('Y', $timestamp));
 
 				// Adjust to sunday if set as 1st day of week
-			if( $firstDayOfWeek === 0 ) {
+			if( ! $forceStartOnMonday && $firstDayOfWeek === 0 ) {
 				$weekStart -= self::SECONDS_DAY;
 			}
 		}
