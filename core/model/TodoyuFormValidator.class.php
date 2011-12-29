@@ -60,7 +60,7 @@ class TodoyuFormValidator {
 	 * @return	Boolean
 	 */
 	public static function user($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
-				// Validate
+			// Validate
 		$function	= $validatorConfig['function'];
 
 		if( TodoyuFunction::isFunctionReference($function) ) {
@@ -362,6 +362,39 @@ class TodoyuFormValidator {
 		$compareDate= intval($compareValue);
 
 		return $fieldDate < $compareDate;
+	}
+
+
+
+	/**
+	 * Check whether the checked value is greater than another value
+	 *
+	 * @param	String				$value
+	 * @param	Array				$validatorConfig	Field config array
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
+	 * @return	Boolean
+	 */
+	public static function greaterThan($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
+			// Check for allowed exceptions
+		if( self::checkAllow($validatorConfig, $formData) === true ) {
+			return true;
+		}
+
+		if( $value == 0 && array_key_exists('allowEmpty', $validatorConfig) ) {
+			return true;
+		}
+
+			// Get compare value from referenced field or value
+		$compareValue	= self::getCompareValue($formElement, $validatorConfig);
+		if( is_array($compareValue) ) {
+			$compareValue	= $compareValue[0];
+		}
+		if( $compareValue === false ) {
+			return true;
+		}
+
+		return $value > $compareValue;
 	}
 
 
