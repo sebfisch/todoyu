@@ -71,12 +71,12 @@ class TodoyuPage {
 
 
 	/**
-	 * Set page template. Normaly the page template will be set by the constructor
+	 * Set page template. Normally the page template will be set by the constructor
 	 *
-	 * @param	String		$tempalte
+	 * @param	String		$template
 	 */
-	public static function setTemplate($tempalte) {
-		self::$template = $tempalte;
+	public static function setTemplate($template) {
+		self::$template = $template;
 	}
 
 
@@ -486,7 +486,6 @@ class TodoyuPage {
 
 			// Add JavaScripts and stylesheet to page
 		self::addJavascriptAndStyleSheetsToPage();
-
 		self::sortJSinlines();
 
 		return Todoyu::render(self::$template, self::$data);

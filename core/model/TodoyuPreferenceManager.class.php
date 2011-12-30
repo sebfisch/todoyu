@@ -210,7 +210,7 @@ class TodoyuPreferenceManager {
 	 * @param	Integer		$idItem			ID of the item
 	 * @param	String		$value			Stored value
 	 * @param	Integer		$idArea			ID of the area
-	 * @param	Integer		$idPerson			ID of the user
+	 * @param	Integer		$idPerson		User ID
 	 * @return	Boolean
 	 */
 	public static function isPreferenceSet($extID, $preference, $idItem = 0, $value = null, $idArea = 0, $idPerson = 0) {
