@@ -115,7 +115,7 @@ class TodoyuRightsManager {
 
 
 	/**
-	 * Get timestamp of last change of systemwide rights settings
+	 * Get timestamp of last change of system wide rights settings
 	 *
 	 * @return	Integer
 	 */
@@ -194,30 +194,136 @@ class TodoyuRightsManager {
 	 *
 	 * @param	String		$extKey
 	 * @param	String		$right
+	 * @return	Boolean
 	 */
 	public static function checkIfRightExists($extKey, $right) {
-		if( ! is_array(self::$checkRightsCache[$extKey]) ) {
-			$xmlFile = TodoyuExtensions::getExtPath($extKey, '/config/rights.xml');
-			self::$checkRightsCache[$extKey] = TodoyuArray::fromSimpleXml(simplexml_load_file($xmlFile));
-		}
-
 		$rightParts		= explode(':', $right, 2);
 		$rightSection	= $rightParts[0];
 		$rightName		= $rightParts[1];
 
-		$found			= false;
+		$rightNode	= self::getRightNode($extKey, $rightSection, $rightName);
+		$rightExists= $rightNode !== false;
+
+			// If right doesn't exist, log it
+		if( ! $rightExists ) {
+			$position	= self::getRightsCheckPosition();
+			$path		= TodoyuFileManager::pathWeb($position['file']);
+
+//			debug_print_backtrace();
+			TodoyuLogger::logSecurity('Right not found: ' . $extKey . '::' . $right . ' **' . $path . ':' . $position['line'] . '**');
+		}
+
+		return $rightExists;
+	}
+
+
+
+	/**
+	 * Load rights array from rights XML file of given extension
+	 *
+	 * @param	String	$extKey
+	 * @return	Array
+	 */
+	public static function loadExtRightsMatrixFromXml($extKey) {
+		$xmlFile = TodoyuExtensions::getExtPath($extKey, '/config/rights.xml');
+
+		return TodoyuArray::fromSimpleXml(simplexml_load_file($xmlFile));
+	}
+
+
+
+	/**
+	 * Get required rights (if any) for given section
+	 *
+	 * @param	String	$extKey
+	 * @param	String	$sectionName
+	 * @param	String	$right
+	 * @return	Array|Boolean
+	 */
+	public static function getSectionRequirement($extKey, $sectionName) {
+		$sectionNode	= self::getSectionNode($extKey, $sectionName);
+
+		if( $sectionNode === false || ! array_key_exists('require', $sectionNode['@attributes']) ) {
+			return false;
+		}
+
+		return $sectionNode['@attributes']['require'];
+	}
+
+
+
+	/**
+	 * Get required rights (if any) for given right
+	 *
+	 * @param	String	$extKey
+	 * @param	String	$sectionName
+	 * @param	String	$right
+	 * @return	Array|Boolean
+	 */
+	public static function getRightRequirement($extKey, $sectionName, $right) {
+		$rightNode	= self::getRightNode($extKey, $sectionName, $right);
+
+		if( $rightNode === false || ! array_key_exists('require', $rightNode['@attributes']) ) {
+			false;
+		}
+
+		$require	= trim($rightNode['@attributes']['require']);
+
+		return empty($require) ? false : $require;
+	}
+
+
+
+	/**
+	 * Get section definition node from given extension rights matrix
+	 *
+	 * @param	String			$extKey
+	 * @param	String			$sectionName
+	 * @return	Array|Boolean
+	 */
+	public static function getSectionNode($extKey, $sectionName) {
+		if( ! is_array(self::$checkRightsCache[$extKey]) ) {
+			self::$checkRightsCache[$extKey] = self::loadExtRightsMatrixFromXml($extKey);
+		}
 
 		foreach(self::$checkRightsCache[$extKey] as $section) {
 			foreach($section as $sectionElements) {
-				if( $rightSection === $sectionElements['@attributes']['name'] ) {
+				if( $sectionElements['@attributes']['name'] === $sectionName ) {
+					return $sectionElements;
+				}
+			}
+		}
+
+		return false;
+	}
+
+
+
+	/**
+	 * Get right definition node from given extension rights matrix
+	 *
+	 * @param	String			$extKey
+	 * @param	String			$sectionName
+	 * @param	String			$right
+	 * @return	Array|Boolean
+	 */
+	public static function getRightNode($extKey, $sectionName, $right) {
+		if( ! is_array(self::$checkRightsCache[$extKey]) ) {
+			self::$checkRightsCache[$extKey] = self::loadExtRightsMatrixFromXml($extKey);
+		}
+
+		$rightNode	= false;
+		foreach(self::$checkRightsCache[$extKey] as $section) {
+			foreach($section as $sectionElements) {
+				if( $sectionElements['@attributes']['name'] === $sectionName ) {
 					if( sizeof($sectionElements['right']) === 1 ) {
 						$sectionRights	= array($sectionElements['right']);
 					} else {
 						$sectionRights	= $sectionElements['right'];
 					}
 					foreach($sectionRights as $rightNode) {
-						if( $rightNode['@attributes']['name'] === $rightName ) {
-							$found	= true;
+						if( $rightNode['@attributes']['name'] === $right ) {
+								// Found the right
 							break 3;
 						}
 					}
@@ -225,15 +331,7 @@ class TodoyuRightsManager {
 			}
 		}
 
-			// If right doesn't exist, log it
-		if( $found !== true ) {
-			$position	= self::getRightsCheckPosition();
-			$path		= TodoyuFileManager::pathWeb($position['file']);
-
-//			debug_print_backtrace();
-
-			TodoyuLogger::logSecurity('Right not found: ' . $extKey . '::' . $right . ' **' . $path . ':' . $position['line'] . '**');
-		}
+		return $rightNode;
 	}
 
 
