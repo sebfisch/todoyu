@@ -184,15 +184,15 @@ Todoyu.QuickInfo = {
 	 * @method	install
 	 * @param	{String}	name
 	 * @param	{String}	selector
-	 * @param	{Function}	callback
+	 * @param	{Function}	idCallback
 	 */
-	install: function(name, selector, callback) {
+	install: function(name, selector, idCallback) {
 		this.uninstall(selector);
 
-		$$(selector).each(function(name, callback, element) {
-			element.on('mouseover', this.onMouseOver.bind(this, name, callback, element));
-			element.on('mouseout', this.onMouseOut.bind(this, name, callback, element));
-		}.bind(this, name, callback));
+		$$(selector).each(function(element) {
+			element.on('mouseover', this.onMouseOver.bind(this, name, idCallback, element));
+			element.on('mouseout', this.onMouseOut.bind(this, name, idCallback, element));
+		},this);
 	},
 
 
@@ -202,18 +202,18 @@ Todoyu.QuickInfo = {
 	 *
 	 * @method	onMouseOver
 	 * @param	{String}	name
-	 * @param	{Function}	callback
+	 * @param	{Function}	idCallback
 	 * @param	{Element}	element
 	 * @param	{Event}		event
 	 */
-	onMouseOver: function(name, callback, element, event) {
+	onMouseOver: function(name, idCallback, element, event) {
 			// Hide active element if another one should be displayed
 		if( this.active !== null && this.active !== element) {
 			this.hide(true);
 		}
 
 		if( ! this.isVisible() ) {
-			this.show(event, name, callback, element);
+			this.show(event, name, idCallback, element);
 		}
 
 		Todoyu.Hook.exec('core.quickinfo.mouseover', event, name, element);
@@ -322,19 +322,19 @@ Todoyu.QuickInfo = {
 	 * @method	show
 	 * @param	{Event}			event
 	 * @param	{String}		name
-	 * @param	{Function}		callback
+	 * @param	{Function}		idCallback
 	 * @param	{String}		observedElement
 	 */
-	show: function(event, name, callback, observedElement, show) {
+	show: function(event, name, idCallback, observedElement, show) {
 		event.stop();
 		this.stopDelayedCallbacks();
 
 		if( show !== true ) {
-			this.delayedShow = this.show.bind(this, event, name, callback, observedElement, true).delay(this.delayedShowTime);
+			this.delayedShow = this.show.bind(this, event, name, idCallback, observedElement, true).delay(this.delayedShowTime);
 			return;
 		}
 
-		var elementKey	= callback(observedElement, event);
+		var elementKey	= idCallback(observedElement, event);
 
 		var cacheID	= name + elementKey;
 		this.hidden	= false;
@@ -351,7 +351,7 @@ Todoyu.QuickInfo = {
 			this.loading = false;
 		} else {
 				// Have it be loaded and shown after
-			this.loadQuickInfo(name, elementKey, callback, event, observedElement);
+			this.loadQuickInfo(name, elementKey, idCallback, event, observedElement);
 		}
 	},
 

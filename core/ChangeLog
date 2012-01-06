@@ -1,11 +1,15 @@
 todoyu core changelog
 
 core 2.2.0 - not released yet
-	* Changed: Made TodoyuTime::getWeekStart and getWeekAnd relative to system config of 1st day of week being sunday or monday
+
 	* Feature: Removing valueless foreign records does not require confirmation anymore
 	* Feature: Better support for SQL statements to update fields. Comma is now allowed in type definition (ex: DECIMAL(5,2))
 	* Added: "greaterThan" form validator
 	* Added: Methods for fetching right / section and resp. required right from extension rights matrix
+	* Added: TodoyuArray::implodeAssoc()
+	* Added: TodoyuDateRange: setMinLength(), isOverlapping(), isInOneDay(), getOverlappingRange(), getAmountOfDays()
+	* Changed: Moved getDayTimestamps(), getDayTimestampsMap() to TodoyuDayRange
+	* Changed: Made TodoyuTime::getWeekStart and getWeekAnd relative to system config of 1st day of week being sunday or monday
 	* Removed: scal calendar/date picker library
 	* Removed: TodoyuString::replaceOnce()
 	* Removed: TodoyuString::strictHtml2text() is now integrated in html2text() method

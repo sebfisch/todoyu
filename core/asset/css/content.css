@@ -19,7 +19,7 @@ span.iconLarge {
 
 .icon.disabled {
 	opacity:0.4;
-	filter:alpha(opacity = 40);
+	/*filter:alpha(opacity = 40);*/
 	cursor:no-drop !important;
 	cursor:not-allowed !important;
 }
@@ -149,8 +149,8 @@ div.infoBox div.content {
 }
 
 .headerLine span,
-.button,
-.title {
+.button/*,
+.title*/ {
 	text-shadow:1px 1px #f3f3f3;
 }
 

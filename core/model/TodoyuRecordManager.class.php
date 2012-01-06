@@ -158,6 +158,8 @@ class TodoyuRecordManager {
 	 * @param	String		$table
 	 * @param	Integer		$idRecord
 	 * @return	Array
+	 * @deprecated
+	 * @todo	Switch to objects, instead using flat arrays
 	 */
 	public static function getRecordData($table, $idRecord) {
 		$idRecord	= intval($idRecord);

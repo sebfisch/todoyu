@@ -39,9 +39,9 @@ class TodoyuCoreQuickinfoActionController extends TodoyuActionController {
 			// Get element item ID
 		$element= trim($params['element']);
 
-		$quickinfo	= new TodoyuQuickinfo($name, $element);
+		$quickInfo	= new TodoyuQuickinfo($name, $element);
 
-		$quickinfo->printJSON();
+		$quickInfo->printJSON();
 	}
 
 }

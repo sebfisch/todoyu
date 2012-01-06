@@ -142,18 +142,12 @@ class TodoyuTime {
 	/**
 	 * Get timestamps of start and of week that contains the given timestamp
 	 *
-	 * @param	Integer	$timestamp
+	 * @param	Integer	$date
 	 * @return	Array
 	 */
-	public static function getWeekRange($timestamp) {
-		$timestamp	= intval($timestamp);
-
-		$isWeekStartingSunday	= TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek()	=== 0;
-		$isWeekendDisplayed		= TodoyuCalendarPreferences::getIsWeekendDisplayed();
-			// If weekend (sat+sun) is hidden it doesn't matter whether weeks start on sunday or monday ;)
-		$forceStartOnMonday 	= $isWeekStartingSunday && ! $isWeekendDisplayed;
-
-		$start		= self::getWeekstart($timestamp, $forceStartOnMonday);
+	public static function getWeekRange($date) {
+		$date	= intval($date);
+		$start	= self::getWeekstart($date);
 
 		return array(
 			'start'	=> $start,
@@ -182,29 +176,25 @@ class TodoyuTime {
 	 * Get start and end timestamp of every day in the week of the timestamp
 	 * 00:00:00
 	 *
-	 * @param		Integer		$timestamp					Timestamp
-	 * @param		Boolean		$forceStartOnMonday			Override system setting and force monday as first day?
+	 * @param		Integer		$date					Timestamp
 	 * @return 		Integer		Timestamp of beginning of week (sunday or monday by system config) the given timestamp belongs to
 	 */
-	public static function getWeekStart($timestamp = 0, $forceStartOnMonday = false) {
-		$timestamp	= self::time($timestamp);
+	public static function getWeekStart($date = 0) {
+		$date			= self::time($date);
+		$startOnMonday	= self::isMondayFirstDayOfWeek();
 
-		$firstDayOfWeek	= TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek();
-		if( ! $forceStartOnMonday && $firstDayOfWeek === 0 && date('D', $timestamp) === 'Sun' ) {
-				// Given timestamp is sunday and system is configured to display sunday as 1st day of week
-			$weekStart	= mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp), date('Y', $timestamp));
+		$year	= date('Y', $date);
+		$month	= date('n', $date);
+		$day	= date('j', $date);
+		$weekDay= date('w', $date);
+
+		if( $startOnMonday ) {
+			$dayShift	= ($weekDay + 6) % 7; // Monday
 		} else {
-				// Get timestamp of monday of that week at 00:00:00
-			$diff		= (date('w', $timestamp) + 6) % 7;
-			$weekStart	= mktime(0, 0, 0, date('n', $timestamp), date('j', $timestamp) - $diff, date('Y', $timestamp));
-
-				// Adjust to sunday if set as 1st day of week
-			if( ! $forceStartOnMonday && $firstDayOfWeek === 0 ) {
-				$weekStart -= self::SECONDS_DAY;
-			}
+			$dayShift	= $weekDay; // Sunday
 		}
 
-		return $weekStart;
+		return mktime(0, 0, 0, $month, $day-$dayShift, $year);
 	}
 
 
@@ -212,13 +202,13 @@ class TodoyuTime {
 	/**
 	 * Get timestamp for the end of the week (last second in the week) 23:59:59
 	 *
-	 * @param	Integer		$timestamp
+	 * @param	Integer		$date
 	 * @return	Integer
 	 */
-	public static function getWeekEnd($timestamp = 0) {
-		$weekStart	= self::getWeekStart($timestamp);
+	public static function getWeekEnd($date = 0) {
+		$weekStart	= self::getWeekStart($date);
 
-		return $weekStart + self::SECONDS_WEEK - 1;
+		return self::addDays($weekStart, 7)-1;
 	}
 
 
@@ -880,6 +870,18 @@ class TodoyuTime {
 
 		return mktime($date['hours'], $date['minutes'], $date['seconds'], $date['mon'], $date['mday'] + $amountDays, $date['year']);
 	}
+
+
+
+	/**
+	 * Check whether monday is the first day of the week
+	 *
+	 * @return	Boolean
+	 */
+	public static function isMondayFirstDayOfWeek() {
+		return TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek() === 1;
+	}
+
 }
 
 ?>

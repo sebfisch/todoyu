@@ -497,7 +497,7 @@ class TodoyuArray {
 	 * @param	Boolean		$useDoubleQuotes	Use double quotes (") instead of single quotes (')
 	 * @return	Array
 	 */
-	public static function implodeQuoted($array = array(), $delimiter = ',', $useDoubleQuotes = false) {
+	public static function implodeQuoted(array $array, $delimiter = ',', $useDoubleQuotes = false) {
 		$quote	= $useDoubleQuotes ? '"' : "'";
 
 		$array	= self::wrapItems($array, $quote, $quote, 'addslashes');
@@ -508,14 +508,39 @@ class TodoyuArray {
 
 
 	/**
+	 * Implode associative array
+	 *
+	 * Example:
+	 * $data = array('top'=>200, 'left'=>300)
+	 * implodeAssoc($data, ':', ';')
+	 * => top:200;left:300
+	 *
+	 * @param	Array	$array
+	 * @param	String	$keyValueSeparator
+	 * @param	String	$itemSeparator
+	 * @return	String
+	 */
+	public static function implodeAssoc(array $array, $keyValueSeparator, $itemSeparator) {
+		$inner	= array();
+
+		foreach($array as $key => $value) {
+			$inner[] = $key . $keyValueSeparator . $value;
+		}
+
+		return implode($itemSeparator, $inner);
+	}
+
+
+
+	/**
 	 * Wrap all items of an array. Add a string before and after the value.
 	 * Only strings and numbers are wrapped, everything else will not be touched.
 	 * If $wrapAfter is false, $wrapBefore is used
 	 *
-	 * @param	Array		$array
-	 * @param	String		$wrapBefore
-	 * @param	String		$wrapAfter
-	 * @param	String		$callback		Optional callback function which is applied to all processed items before wrapped. Ex: addslashes
+	 * @param	Array				$array
+	 * @param	String				$wrapBefore
+	 * @param	String|Boolean		$wrapAfter
+	 * @param	String|Boolean		$callback		Optional callback function which is applied to all processed items before wrapped. Ex: addslashes
 	 * @return	Array
 	 */
 	public static function wrapItems(array $array, $wrapBefore, $wrapAfter = false, $callback = false) {

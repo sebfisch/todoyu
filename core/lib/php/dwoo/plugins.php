@@ -777,6 +777,7 @@ function Dwoo_Plugin_timerange_compile(Dwoo_Compiler $compiler, $id, $name, $ran
  * @param	Dwoo_Compiler $compiler
  * @param	String		$label
  * @param	String		$class
+ * @param	String		$content
  * @return	String
  */
 function Dwoo_Plugin_contentMessage_compile(Dwoo_Compiler $compiler, $label, $class = '', $content = '') {

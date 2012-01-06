@@ -101,62 +101,6 @@ class TodoyuDayRange extends TodoyuDateRange {
 		return round($this->getDiff($absolute) / TodoyuTime::SECONDS_DAY, 0);
 	}
 
-
-
-	/**
-	 * Get timestamps for days in range
-	 * The timestamps always have the time 00:00:00 for all days inside the range
-	 *
-	 * @param	String|Boolean	$format		Format timestamp with date and given format (false = integer)
-	 * @return	Array
-	 */
-	public function getDayTimestamps($format = false) {
-		$dateStart	= $this->getStart();
-		$dateEnd	= $this->getEnd();
-		$day		= date('j', $dateStart);
-		$month		= date('n', $dateStart);
-		$year		= date('Y', $dateStart);
-		$count		= 0;
-		$date		= $dateStart;
-		$days		= array();
-
-			// Loop while end date not reached
-		while( $date < $dateEnd ) {
-			$date	= mktime(0, 0, 0, $month, $day + $count, $year);
-			$days[]	= $date;
-			$count++;
-		}
-
-			// Remove last date. It is after the end date
-		array_pop($days);
-
-			// Format?
-		if( $format ) {
-			foreach($days as $index => $timestamp) {
-				$days[$index] = date($format, $timestamp);
-			}
-		}
-
-		return $days;
-	}
-
-
-
-	/**
-	 * Get array with a key for every day in the range
-	 * By default, it's the timestamp, but when format is a string, it will be formatted with date()
-	 * Value is the value which will be set for every item
-	 *
-	 * @param	Boolean		$format
-	 * @param	Mixed		$value
-	 * @return	Array
-	 */
-	public function getDayTimestampsMap($format = false, $value = 0) {
-		$timestamps	= $this->getDayTimestamps($format);
-
-		return TodoyuArray::createMap($timestamps, $value);
-	}
-
 }
 
 ?>

@@ -188,6 +188,21 @@ class TodoyuDateRange {
 
 
 	/**
+	 * Force minimal length of range in seconds
+	 *
+	 * @param	Integer		$seconds
+	 */
+	public function setMinLength($seconds) {
+		$seconds	= intval($seconds);
+
+		if( $this->getDiff() < $seconds ) {
+			$this->setEnd($this->getStart()+$seconds);
+		}
+	}
+
+
+
+	/**
 	 * Check whether this range ends before the given date
 	 *
 	 * @param	Integer		$date
@@ -306,6 +321,18 @@ class TodoyuDateRange {
 
 
 	/**
+	 * Check whether a range overlaps another comment
+	 *
+	 * @param	TodoyuDateRange	$range
+	 * @return	Boolean
+	 */
+	public function isOverlapping(TodoyuDateRange $range) {
+		return TodoyuTime::rangeOverlaps($this->getStart(), $this->getEnd(), $range->getStart(), $range->getEnd());
+	}
+
+
+
+	/**
 	 * Get duration of this range in seconds
 	 *
 	 * @param	Boolean		$absolute			Make sure the difference is absolute
@@ -402,6 +429,17 @@ class TodoyuDateRange {
 
 
 	/**
+	 * Check whether the range is inside of a day
+	 *
+	 * @return	Boolean
+	 */
+	public function isInOneDay() {
+		return date('Y-m-d', $this->getStart()) === date('Y-m-d', $this->getEnd());
+	}
+
+
+
+	/**
 	 * Check whether dateRange starts at 1st day of month
 	 *
 	 * @return	Boolean
@@ -472,6 +510,96 @@ class TodoyuDateRange {
 		}
 
 		return $start . ' - ' . $end;
+	}
+
+
+
+	/**
+	 * Get timestamps for days in range
+	 * The timestamps always have the time 00:00:00 for all days inside the range
+	 *
+	 * @param	String|Boolean	$format		Format timestamp with date and given format (false = integer)
+	 * @return	Array
+	 */
+	public function getDayTimestamps($format = false) {
+		$dateStart	= $this->getStart();
+		$dateEnd	= $this->getEnd();
+		$day		= date('j', $dateStart);
+		$month		= date('n', $dateStart);
+		$year		= date('Y', $dateStart);
+		$count		= 0;
+		$date		= $dateStart;
+		$days		= array();
+
+			// Loop while end date not reached
+		while( $date <= $dateEnd ) {
+			$date	= mktime(0, 0, 0, $month, $day + $count, $year);
+			$days[]	= $date;
+			$count++;
+		}
+
+			// Remove last date. It is after the end date
+		if( sizeof($days) > 1 ) {
+			array_pop($days);
+		}
+
+			// Format?
+		if( $format ) {
+			foreach($days as $index => $timestamp) {
+				$days[$index] = date($format, $timestamp);
+			}
+		}
+
+		return $days;
+	}
+
+
+
+	/**
+	 * Get array with a key for every day in the range
+	 * By default, it's the timestamp, but when format is a string, it will be formatted with date()
+	 * Value is the value which will be set for every item
+	 *
+	 * @param	Boolean		$format
+	 * @param	Mixed		$value
+	 * @return	Array
+	 */
+	public function getDayTimestampsMap($format = false, $value = 0) {
+		$timestamps	= $this->getDayTimestamps($format);
+
+		return TodoyuArray::createMap($timestamps, $value);
+	}
+
+
+
+	/**
+	 * Get a new date range for overlapping with the $range
+	 *
+	 * @param	TodoyuDateRange		$range
+	 * @return	TodoyuDateRange|Boolean
+	 */
+	public function getOverlappingRange(TodoyuDateRange $range) {
+		if( !$this->isOverlapping($range) ) {
+			return false;
+		}
+
+		$start	= max($this->getStart(), $range->getStart());
+		$end	= min($this->getEnd(), $range->getEnd());
+
+		return new TodoyuDateRange($start, $end);
+	}
+
+
+
+	/**
+	 * Get amount of intersected days
+	 *
+	 * @return	Integer
+	 */
+	public function getAmountOfDays() {
+		$dayTimestamps	= $this->getDayTimestamps();
+
+		return sizeof($dayTimestamps);
 	}
 
 	
