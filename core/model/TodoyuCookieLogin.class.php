@@ -113,7 +113,7 @@ class TodoyuCookieLogin {
 	 * @return	String
 	 */
 	public static function generateRemainLoginCode($idPerson) {
-		$idPerson	= intval($idPerson);
+		$idPerson	= (int) $idPerson;
 		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 		$data		= array(
 			'username'		=> $person->getUsername(),

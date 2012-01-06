@@ -176,7 +176,7 @@ class TodoyuInstaller {
 	 * @return	Boolean
 	 */
 	private static function isRestart() {
-		return intval($_GET['restart']) === 1;
+		return ((int) $_GET['restart']) === 1;
 	}
 
 

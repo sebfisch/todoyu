@@ -52,33 +52,33 @@ function strptime($date, $format) {
 				// Day
 			case 'd':
 			case 'e':
-				$dateTime['tm_mday'] = intval($val);
+				$dateTime['tm_mday'] = (int) $val;
 				break;
 
 				// Month
 			case 'm':
-				$dateTime['tm_mon'] = intval($val);
+				$dateTime['tm_mon'] = (int) $val;
 				break;
 
 			case 'Y':
-				$dateTime['tm_year'] = intval($val);
+				$dateTime['tm_year'] = (int) $val;
 				break;
 
 			case 'y':
-				$dateTime['tm_year'] = intval($val) + 2000;
+				$dateTime['tm_year'] = (int) $val + 2000;
 				break;
 
 			case 'H':
 			case 'I':
-				$dateTime['tm_hour'] = intval($val);
+				$dateTime['tm_hour'] = (int) $val;
 				break;
 
 			case 'M':
-				$dateTime['tm_min'] = intval($val);
+				$dateTime['tm_min'] = (int) $val;
 				break;
 
 			case 'S':
-				$dateTime['tm_sec'] = intval($val);
+				$dateTime['tm_sec'] = (int) $val;
 				break;
 		}
 	}
@@ -105,7 +105,7 @@ function strptime_strToDate($date, $format) {
 		// Check for PM, remove it and add 12 to the hour
 	if( stripos($date, 'pm') !== false ) {
 		if( preg_match('/.* ((\d{2}):(\d{2}) ?pm).*/i', $date, $matchesPM) === 1 ) {
-			$replace= (intval($matchesPM[2])+12) . ':' . $matchesPM[3];
+			$replace= ( (int) $matchesPM[2] + 12) . ':' . $matchesPM[3];
 			$date	= str_replace($matchesPM[1], $replace, $date);
 		}
 	}

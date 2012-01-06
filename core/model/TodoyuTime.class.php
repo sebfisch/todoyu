@@ -63,7 +63,7 @@ class TodoyuTime {
 	 * @return	Integer
 	 */
 	public static function time($time = 0) {
-		$time	= intval($time);
+		$time	= (int) $time;
 		
 		return $time === 0 ? NOW : $time;
 	}
@@ -77,7 +77,7 @@ class TodoyuTime {
 	 * @return	Integer
 	 */
 	public static function getStartOfDay($time = 0) {
-		$time = self::time($time);// $time === false ? NOW : intval($time);
+		$time = self::time($time);// $time === false ? NOW : (int) $time;
 
 		$month	= date('n', $time);
 		$day	= date('j', $time);
@@ -113,7 +113,7 @@ class TodoyuTime {
 	 * @return	Integer
 	 */
 	public static function getTimeOfDay($timestamp = false) {
-		$timestamp = $timestamp === false ? NOW : intval($timestamp);
+		$timestamp = $timestamp === false ? NOW : (int) $timestamp;
 
 		$hour	= date('G', $timestamp);
 		$minute	= date('i', $timestamp) + 0;
@@ -146,7 +146,7 @@ class TodoyuTime {
 	 * @return	Array
 	 */
 	public static function getWeekRange($date) {
-		$date	= intval($date);
+		$date	= (int) $date;
 		$start	= self::getWeekstart($date);
 
 		return array(
@@ -373,7 +373,7 @@ class TodoyuTime {
 	 * @return	String
 	 */
 	public static function formatTime($seconds, $withSeconds = false, $round = true) {
-		$seconds	= intval($seconds);
+		$seconds	= (int) $seconds;
 		$timeParts	= self::getTimeParts($seconds);
 
 		if( $withSeconds ) {
@@ -404,7 +404,7 @@ class TodoyuTime {
 	 * @return	String		Formatted date
 	 */
 	public static function format($timestamp, $formatName = 'datetime') {
-		$timestamp	= intval($timestamp);
+		$timestamp	= (int) $timestamp;
 
 		if( $timestamp === 0 ) {
 			return '-';
@@ -430,7 +430,8 @@ class TodoyuTime {
 	 * @return	String
 	 */
 	public static function formatDuration($seconds, $largerUnitsThanDays = false, $withSubunit = true) {
-		$subunit = false;
+		$seconds	= (int) $seconds;
+		$subunit	= false;
 
 		if( $largerUnitsThanDays && $seconds >= TodoyuTime::SECONDS_WEEK ) {
 				// Weeks
@@ -450,11 +451,11 @@ class TodoyuTime {
 			$unit	= 'day';
 		} elseif( $seconds >= TodoyuTime::SECONDS_HOUR ) {
 				// Hours
-			$value = ($withSubunit) ? self::sec2hour($seconds) : intval($seconds / TodoyuTime::SECONDS_HOUR);
+			$value = ($withSubunit) ? self::sec2hour($seconds) : ($seconds / TodoyuTime::SECONDS_HOUR);
 			$unit	= 'time.hour';
 		} elseif( $seconds >= TodoyuTime::SECONDS_MIN ) {
 				// Minutes
-			$value	= ($withSubunit) ? self::sec2Min($seconds) : intval($seconds / TodoyuTime::SECONDS_MIN);
+			$value	= ($withSubunit) ? self::sec2Min($seconds) : ($seconds / TodoyuTime::SECONDS_MIN);
 			$unit	= 'time.minute';
 		} else {
 				// Seconds
@@ -650,9 +651,9 @@ class TodoyuTime {
 		$format		= $colons === 2 ? self::getFormat('timesec') : self::getFormat('time');
 		$timeParts	= strptime($timeString, $format);
 
-		$hours	= intval($timeParts['tm_hour']);
-		$minutes= intval($timeParts['tm_min']);
-		$seconds= intval($timeParts['tm_sec']);
+		$hours	= (int) $timeParts['tm_hour'];
+		$minutes= (int) $timeParts['tm_min'];
+		$seconds= (int) $timeParts['tm_sec'];
 
 		return $hours * self::SECONDS_HOUR + $minutes * self::SECONDS_MIN + $seconds;
 	}
@@ -668,7 +669,7 @@ class TodoyuTime {
 	public static function parseDuration($timeString) {
 		$parts	= explode(':', $timeString);
 
-		return intval($parts[0]) * self::SECONDS_HOUR + intval($parts[1]) * self::SECONDS_MIN;
+		return ((int) $parts[0]) * self::SECONDS_HOUR + ((int) $parts[1]) * self::SECONDS_MIN;
 	}
 
 
@@ -693,16 +694,16 @@ class TodoyuTime {
 	 * @return	Integer		Rounded time
 	 */
 	public static function getRoundedTime($timestamp = 0, $steps = 5) {
-		$timestamp	= intval($timestamp);
-		$factor	= intval( self::SECONDS_MIN / $steps);
+		$timestamp	= (int) $timestamp);
+		$factor		= (int) (self::SECONDS_MIN / $steps);
 
 		if( $timestamp === 0 ) {
 			$timestamp = NOW;
 		}
 
-		$currentMinutes	= intval(date('i', $timestamp));
-		$roundedMinutes	= intval(round(($currentMinutes * $factor) / self::SECONDS_MIN, 0) * $steps);
-		$currentSeconds	= intval(date('s', $timestamp));
+		$currentMinutes	= (int) date('i', $timestamp);
+		$roundedMinutes	= (int) (round(($currentMinutes * $factor) / self::SECONDS_MIN, 0) * $steps);
+		$currentSeconds	= (int) date('s', $timestamp);
 		$newTime		= $timestamp + ($roundedMinutes - $currentMinutes) * self::SECONDS_MIN - $currentSeconds;
 
 		return $newTime;
@@ -717,7 +718,7 @@ class TodoyuTime {
 	 * @return 		Array		Dates of the week
 	 */
 	public static function getTimestampsForWeekdays($timestamp) {
-		$timestamp		= intval($timestamp);
+		$timestamp		= (int) $timestamp;
 		$weekRange	= self::getWeekRange($timestamp);
 		$dayTimes	= array();
 
@@ -779,10 +780,10 @@ class TodoyuTime {
 	 * @return	Array
 	 */
 	public static function getIntersectingDayTimestamps($dateStart1, $dateEnd1, $start2, $end2) {
-		$dateStart1	= intval($dateStart1);
-		$dateEnd1	= intval($dateEnd1);
-		$start2	= intval($start2);
-		$end2	= intval($end2);
+		$dateStart1	= (int) $dateStart1;
+		$dateEnd1	= (int) $dateEnd1;
+		$start2		= (int) $start2;
+		$end2		= (int) $end2;
 
 		$span1	= self::getDayTimestampsInRange($dateStart1, $dateEnd1);	// View
 		$span2	= self::getDayTimestampsInRange($start2, $end2);			// Event
@@ -801,7 +802,7 @@ class TodoyuTime {
 	 * @return	Integer
 	 */
 	public static function getDaysInMonth($timestamp, $monthDelta = 0) {
-		$monthDelta	= intval($monthDelta);
+		$monthDelta	= (int) $monthDelta;
 
 		if( $monthDelta !== 0 ) {
 			$year	= date('Y', $timestamp);
@@ -826,10 +827,10 @@ class TodoyuTime {
 	 * @return	Boolean
 	 */
 	public static function rangeOverlaps($dateStart1, $dateEnd1, $dateStart2, $dateEnd2) {
-		$dateStart1	= intval($dateStart1);
-		$dateEnd1	= intval($dateEnd1);
-		$dateStart2	= intval($dateStart2);
-		$dateEnd2	= intval($dateEnd2);
+		$dateStart1	= (int) $dateStart1;
+		$dateEnd1	= (int) $dateEnd1;
+		$dateStart2	= (int) $dateStart2;
+		$dateEnd2	= (int) $dateEnd2;
 
 		if( $dateEnd2 <= $dateStart1 || $dateStart2 >= $dateEnd1 ) {
 			return false;
@@ -850,7 +851,7 @@ class TodoyuTime {
 	public static function roundUpTime($timestamp, $roundingMinute = 1) {
 		$roundingSeconds	=	$roundingMinute * self::SECONDS_MIN;
 
-		return intval(ceil( intval($timestamp) / $roundingSeconds ) * $roundingSeconds);
+		return (int) (ceil( intval($timestamp) / $roundingSeconds ) * $roundingSeconds);
 	}
 
 
@@ -863,8 +864,8 @@ class TodoyuTime {
 	 * @return	Integer
 	 */
 	public static function addDays($timestamp, $amountDays) {
-		$timestamp	= intval($timestamp);
-		$amountDays	= intval($amountDays);
+		$timestamp	= (int) $timestamp;
+		$amountDays	= (int) $amountDays;
 
 		$date	= getdate($timestamp);
 

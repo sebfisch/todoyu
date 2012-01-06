@@ -54,10 +54,15 @@ class TodoyuPageAssetManager {
 	 */
 	public static function addJavascript($pathToFile, $position = 100, $compress = true, $merge = true, $localize = true) {
 		$absPathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
-		$position		= intval($position) == 0 ? 100 : intval($position);
+
 		$compress		= $compress === false ? false : true ;
 		$merge			= $merge 	=== false ? false : true ;
 		$localize		= $localize === false ? false : true ;
+
+		$position		= (int) $position;
+		if( $position === 0) {
+			$position = 100;
+		}
 
 			// Break if file not found
 		if( $absPathToFile === false || ! is_file($absPathToFile) ) {
@@ -96,9 +101,13 @@ class TodoyuPageAssetManager {
 	public static function addStylesheet($pathToFile, $media = 'all', $position = 100, $compress = true, $merge = true) {
 		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
 		$media		= empty($media) ? 'all' : $media;
-		$position	= intval($position) == 0 ? 100 : intval($position);
 		$compress	= $compress === false ? false : true ;
 		$merge		= $merge 	=== false ? false : true ;
+
+		$position	= (int) $position;
+		if( $position === 0) {
+			$position	= 100;
+		}
 
 		if( ! is_file($pathToFile) ) {
 			TodoyuDebug::printHtml($pathToFile, 'File not found');

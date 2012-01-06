@@ -56,8 +56,8 @@ class TodoyuFormManager {
 	 * @return	String
 	 */
 	public static function renderSubFormRecord($xmlPath, $fieldName, $formName, $index = 0, $idRecord = 0, array $data = array()) {
-		$index		= intval($index);
-		$idRecord	= intval($idRecord);
+		$index		= (int) $index;
+		$idRecord	= (int) $idRecord;
 
 			// Make form object
 		$form 	= self::getForm($xmlPath, $idRecord);

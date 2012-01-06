@@ -43,7 +43,7 @@ class TodoyuToken extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getExtID() {
-		return intval($this->data['ext']);
+		return (int) $this->data['ext'];
 	}
 
 
@@ -54,7 +54,7 @@ class TodoyuToken extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getTokenType() {
-		return intval($this->data['token_type']);
+		return (int) $this->data['token_type'];
 	}
 
 

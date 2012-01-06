@@ -44,9 +44,9 @@ class TodoyuLockManager {
 	public static function lock($ext, $table, $idRecord) {
 		if( ! self::isLockedByExt($ext, $table, $idRecord) ) {
 			$data	= array(
-				'ext'		=> intval($ext),
+				'ext'		=> (int) $ext,
 				'table'		=> $table,
-				'id_record'	=> intval($idRecord)
+				'id_record'	=> (int) $idRecord
 			);
 
 			Todoyu::db()->doInsert(self::TABLE, $data);
@@ -63,9 +63,9 @@ class TodoyuLockManager {
 	 * @param	Integer		$idRecord
 	 */
 	public static function unlock($ext, $table, $idRecord) {
-		$where	= '		`ext`		= ' . intval($ext)
+		$where	= '		`ext`		= ' . (int) $ext
 				. ' AND	`table`		= ' . Todoyu::db()->quote($table, true)
-				. ' AND `id_record`	= ' . intval($idRecord);
+				. ' AND `id_record`	= ' . (int) $idRecord;
 
 		Todoyu::db()->doDelete(self::TABLE, $where, 1);
 	}
@@ -81,7 +81,7 @@ class TodoyuLockManager {
 	 */
 	public static function isLocked($table, $idRecord) {
 		$where	= ' 	`table`		= ' . Todoyu::db()->quote($table, true)
-				. ' AND `id_record`	= ' . intval($idRecord);
+				. ' AND `id_record`	= ' . (int) $idRecord;
 
 		return Todoyu::db()->hasResult('id', self::TABLE, $where);
 	}
@@ -113,15 +113,15 @@ class TodoyuLockManager {
 	/**
 	 * Check if record is locked by an extension
 	 *
-	 * @param	Integer		$ext
+	 * @param	Integer		$extID
 	 * @param	String		$table
 	 * @param	Integer		$idRecord
 	 * @return	Boolean
 	 */
-	public static function isLockedByExt($ext, $table, $idRecord) {
-		$where	= '		`ext`		= ' . intval($ext)
+	public static function isLockedByExt($extID, $table, $idRecord) {
+		$where	= '		`ext`		= ' . (int) $extID
 				. ' AND	`table`		= ' . Todoyu::db()->quote($table, true)
-				. ' AND `id_record`	= ' . intval($idRecord);
+				. ' AND `id_record`	= ' . (int) $idRecord;
 
 		return Todoyu::db()->hasResult('id', self::TABLE, $where);
 	}
@@ -138,7 +138,7 @@ class TodoyuLockManager {
 	public static function getNumLocks($table, $idRecord) {
 		$field	= 'id';
 		$where	= ' 	`table`		= ' . Todoyu::db()->quote($table, true)
-				. ' AND `id_record`	= ' . intval($idRecord);
+				. ' AND `id_record`	= ' . (int) $idRecord;
 
 		$result	= Todoyu::db()->doSelect($field, self::TABLE, $where);
 		$numRows= Todoyu::db()->getNumRows($result);

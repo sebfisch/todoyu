@@ -51,7 +51,7 @@ class TodoyuPanelWidgetManager {
 			'class'		=> $className,
 			'ext'		=> $ext,
 			'name'		=> $name,
-			'position'	=> intval($position),
+			'position'	=> (int) $position,
 			'config'	=> $config,
 			'area'		=> $area
 		);
@@ -180,7 +180,7 @@ class TodoyuPanelWidgetManager {
 	public static function isCollapsed($widget) {
 		$pref	= TodoyuPreferenceManager::getPreference(0, 'pwidget-collapsed-' . $widget, 0, AREA);
 
-		return intval($pref) === 1;
+		return ((int) $pref) === 1;
 	}
 }
 

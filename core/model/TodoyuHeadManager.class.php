@@ -43,7 +43,7 @@ class TodoyuHeadManager {
 	public static function addHeadlet($className, $initPosition = 100) {
 		self::$headlets[] = array(
 			'class'		=> $className,
-			'position'	=> intval($initPosition)
+			'position'	=> (int) $initPosition
 		);
 	}
 

@@ -34,7 +34,7 @@ class TodoyuCorePanelwidgetActionController extends TodoyuActionController {
 	 */
 	public function expandedAction(array $params) {
 		$widget	= $params['widget'];
-		$expanded	= intval($params['expanded']) === 1;
+		$expanded	= (int) ($params['expanded']) === 1;
 
 		TodoyuPanelWidgetManager::saveCollapsedStatus($widget, $expanded);
 	}

@@ -341,7 +341,7 @@ class Todoyu {
 	 * @return	Integer
 	 */
 	public static function personid($idPerson = 0) {
-		$idPerson = intval($idPerson);
+		$idPerson = (int) $idPerson;
 
 		return $idPerson === 0 ? TodoyuAuth::getPersonID() : $idPerson;
 	}

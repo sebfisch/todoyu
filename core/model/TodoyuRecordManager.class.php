@@ -35,7 +35,7 @@ class TodoyuRecordManager {
 	 * @return	TodoyuBaseObject
 	 */
 	public static function getRecord($className, $idRecord) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 
 		if( class_exists($className, true) ) {
 			$cacheKey	= self::makeClassKey($className, $idRecord);
@@ -82,7 +82,7 @@ class TodoyuRecordManager {
 	 * @param	Integer		$idRecord
 	 */
 	public static function removeRecordCache($className, $idRecord) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 		$cacheKey	= self::makeClassKey($className, $idRecord);
 
 		TodoyuCache::remove($cacheKey);
@@ -101,7 +101,7 @@ class TodoyuRecordManager {
 	 * @param	Integer		$idRecord
 	 */
 	public static function removeRecordQueryCache($table, $idRecord) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 		$cacheKey	= self::makeRecordQueryKey($table, $idRecord);
 
 		TodoyuCache::remove($cacheKey);
@@ -120,7 +120,7 @@ class TodoyuRecordManager {
 	 * @return	String
 	 */
 	public static function makeRecordQueryKey($table, $idRecord) {
-		return $table . ':' . intval($idRecord);
+		return $table . ':' . (int) $idRecord;
 	}
 
 
@@ -133,7 +133,7 @@ class TodoyuRecordManager {
 	 * @return	String		Cache key
 	 */
 	public static function makeClassKey($className, $idRecord) {
-		return $className . ':' . intval($idRecord);
+		return $className . ':' . (int) $idRecord;
 	}
 
 
@@ -162,7 +162,7 @@ class TodoyuRecordManager {
 	 * @todo	Switch to objects, instead using flat arrays
 	 */
 	public static function getRecordData($table, $idRecord) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 
 		return Todoyu::db()->getRecord($table, $idRecord);
 	}
@@ -179,7 +179,7 @@ class TodoyuRecordManager {
 	 * @return	Integer
 	 */
 	public static function saveRecord($table, $idRecord, array $data, array $noQuoteFields = array()) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 
 		if( $idRecord === 0 ) {
 			$idRecord	= self::addRecord($table, $data, $noQuoteFields);
@@ -227,7 +227,7 @@ class TodoyuRecordManager {
 	 * @return	Boolean
 	 */
 	public static function updateRecord($table, $idRecord, array $data, array $noQuoteFields = array()) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 
 		unset($data['id']);
 		unset($data['date_create']);
@@ -276,7 +276,7 @@ class TodoyuRecordManager {
 	 * @return	Boolean
 	 */
 	public static function deleteRecord($table, $idRecord) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 		$data		= array(
 			'deleted'	=> 1
 		);
@@ -322,7 +322,7 @@ class TodoyuRecordManager {
 	 * @return	Boolean
 	 */
 	public static function isRecord($table, $idRecord) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 
 		return Todoyu::db()->isRecord($table, $idRecord);
 	}

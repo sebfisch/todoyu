@@ -72,7 +72,7 @@ class TodoyuStaticRecords {
 	 */
 	public static function getRecord($type, $idRecord) {
 		$table		= self::getTable($type);
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 
 		return TodoyuRecordManager::getRecordData($table, $idRecord);
 	}
@@ -197,7 +197,7 @@ class TodoyuStaticRecords {
 	 * @return	Array
 	 */
 	public static function getTimezone($idTimezone) {
-		$idTimezone	= intval($idTimezone);
+		$idTimezone	= (int) $idTimezone;
 
 		return self::getRecord('timezone', $idTimezone);
 	}
@@ -215,7 +215,7 @@ class TodoyuStaticRecords {
 		$table	= 'static_timezone';
 		$where	= 'timezone = ' . Todoyu::db()->quote($timezone, true);
 
-		return intval(Todoyu::db()->getFieldValue($field, $table, $where));
+		return (int) Todoyu::db()->getFieldValue($field, $table, $where);
 	}
 
 
@@ -238,7 +238,7 @@ class TodoyuStaticRecords {
 	 * @return	Array
 	 */
 	public static function getCountry($idCountry) {
-		$idCountry	= intval($idCountry);
+		$idCountry	= (int) $idCountry;
 
 		return self::getRecord('country', $idCountry);
 	}
@@ -252,7 +252,7 @@ class TodoyuStaticRecords {
 	 * @return	Array
 	 */
 	public static function getCountryByISO($countryIsoNumber) {
-		$countryIsoNumber	= intval($countryIsoNumber);
+		$countryIsoNumber	= (int) $countryIsoNumber;
 
 		$fields	= '*';
 		$table	= 'static_country';
@@ -270,7 +270,7 @@ class TodoyuStaticRecords {
 	 * @return	String
 	 */
 	public static function getCountryLabel($idCountry) {
-		$idCountry	= intval($idCountry);
+		$idCountry	= (int) $idCountry;
 
 		$record	= self::getCountry($idCountry);
 		$alpha3	= $record['iso_alpha3'];
@@ -287,13 +287,13 @@ class TodoyuStaticRecords {
 	 * @return	Array
 	 */
 	public static function getCountryZones($idCountry) {
-		$idCountry	= intval($idCountry);
+		$idCountry	= (int) $idCountry;
 
 		$countryZones	= array();
 
 		if( $idCountry !== 0 ) {
 			$country	= self::getCountry($idCountry);
-			$countryIso	= intval($country['iso_num']);
+			$countryIso	= (int) $country['iso_num'];
 
 			$fields	= '	id,
 						iso_alpha3_country,
@@ -327,7 +327,7 @@ class TodoyuStaticRecords {
 	 * @return	Array
 	 */
 	public static function getCountryZoneOptions($idCountry) {
-		$idCountry		= intval($idCountry);
+		$idCountry		= (int) $idCountry;
 		$countryZones	= self::getCountryZones($idCountry);
 		$options		= array();
 

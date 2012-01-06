@@ -44,7 +44,7 @@ class TodoyuRequest {
 		}
 
 		if( $intVal === true ) {
-			$value = intval($value);
+			$value = (int) $value;
 		}
 
 			// Strip slashes on string values
@@ -136,8 +136,8 @@ class TodoyuRequest {
 				'name'		=> $info['name'][$name],
 				'type'		=> $info['type'][$name],
 				'tmp_name'	=> $info['tmp_name'][$name],
-				'error'		=> intval($info['error'][$name]),
-				'size'		=> intval($info['size'][$name])
+				'error'		=> (int) $info['error'][$name],
+				'size'		=> (int) $info['size'][$name]
 			);
 		}
 

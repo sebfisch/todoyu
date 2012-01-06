@@ -266,7 +266,7 @@ class TodoyuMail extends PHPMailerLite {
 	 * @return	Boolean
 	 */
 	public function addReceiver($idPerson) {
-		$idPerson	= intval($idPerson);
+		$idPerson	= (int) $idPerson;
 		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
 		$email		= $person->getEmail();
@@ -289,7 +289,7 @@ class TodoyuMail extends PHPMailerLite {
 	 * @return	Boolean
 	 */
 	public function addReplyToPerson($idPerson) {
-		$idPerson	= intval($idPerson);
+		$idPerson	= (int) $idPerson;
 		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
 		$email		= $person->getEmail();
@@ -323,7 +323,7 @@ class TodoyuMail extends PHPMailerLite {
 	 * @return Boolean
 	 */
 	public function setSender($idPerson) {
-		$idPerson	= intval($idPerson);
+		$idPerson	= (int) $idPerson;
 		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
 		$email		= $person->getEmail();

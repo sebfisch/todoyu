@@ -71,7 +71,7 @@ class TodoyuFormHook {
 	 * @return	TodoyuForm		Modified form object
 	 */
 	public static function callBuildForm($xmlPath, TodoyuForm $form, $idRecord, array $params = array()) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 		$hooks		= self::getHooks('buildForm', $xmlPath);
 
 		foreach($hooks as $hook) {
@@ -98,7 +98,7 @@ class TodoyuFormHook {
 	 * @return	Array
 	 */
 	public static function callLoadData($xmlPath, array $data, $idRecord = 0, array $params = array()) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 		$hooks		= self::getHooks('loadData', $xmlPath);
 
 		foreach($hooks as $hook) {
@@ -122,7 +122,7 @@ class TodoyuFormHook {
 	 * @return	Array
 	 */
 	public static function callSaveData($xmlPath, array $data, $idRecord, array $params = array()) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 		$hooks		= self::getHooks('saveData', $xmlPath);
 
 		foreach($hooks as $hook) {
@@ -152,7 +152,7 @@ class TodoyuFormHook {
 
 		self::$hooks[ $type ][ $xmlPath ][] = array(
 			'funcRef'	=> $funcRef,
-			'position'	=> intval($position)
+			'position'	=> (int) $position
 		);
 	}
 

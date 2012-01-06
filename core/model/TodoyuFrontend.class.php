@@ -180,7 +180,7 @@ class TodoyuFrontend {
 			if( $allowed ) {
 				$entryKey	= $extKey . ucfirst($itemKey);
 				$href		= '?ext=' . $extKey . '&tab=' . $itemKey;
-				$position	= intval($itemConfig['position']);
+				$position	= (int) $itemConfig['position'];
 				$label		= Todoyu::Label($extKey . '.ext.subMenuEntry.' . $itemKey);
 
 				self::addSubmenuEntry($parentKey, $entryKey, $labelPrefix . $label, $href, $position);

@@ -37,8 +37,8 @@ class TodoyuListingRenderer {
 	 */
 	public static function render($ext, $name, $offset = 0, $searchWord = '') {
 		$config		= TodoyuListingManager::getConfig($ext, $name);
-		$offset		= intval($offset);
-		$size		= intval($config['size']);
+		$offset		= (int) $offset;
+		$size		= (int) $config['size'];
 		$searchWord	= trim($searchWord);
 
 			// Get default size if not set
@@ -54,7 +54,7 @@ class TodoyuListingRenderer {
 		}
 
 		$listData	= TodoyuFunction::callUserFunction($config['dataFunc'], $size, $offset, $searchWord);
-		$totalRows	= intval($listData['total']);
+		$totalRows	= (int) $listData['total'];
 
 		$tmpl	= 'core/view/listing.tmpl';
 		$data	= array(

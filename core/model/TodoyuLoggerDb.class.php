@@ -61,7 +61,7 @@ class TodoyuLoggerDb implements TodoyuLoggerIf {
 				'date_create'	=> NOW,
 				'id_person'		=> Todoyu::personid(),
 				'requestkey'	=> $requestKey,
-				'level'			=> intval($level),
+				'level'			=> (int) $level,
 				'file'			=> $info['fileshort'],
 				'line'			=> $info['line'],
 				'message'		=> $message,

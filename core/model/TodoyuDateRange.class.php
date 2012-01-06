@@ -70,8 +70,8 @@ class TodoyuDateRange {
 	 * @param	Integer		$dateEnd
 	 */
 	public function __construct($dateStart = 0, $dateEnd = 0) {
-		$dateStart	= intval($dateStart);
-		$dateEnd	= intval($dateEnd);
+		$dateStart	= (int) $dateStart;
+		$dateEnd	= (int) $dateEnd;
 
 		if( $dateStart === 0 ) {
 			$dateStart = $this->dateMin;
@@ -126,7 +126,7 @@ class TodoyuDateRange {
 	 * @param	Integer		$date
 	 */
 	public function setStart($date) {
-		$this->dateStart = intval($date);
+		$this->dateStart = (int) $date;
 	}
 
 
@@ -137,7 +137,7 @@ class TodoyuDateRange {
 	 * @param	Integer		$date
 	 */
 	public function setEnd($date) {
-		$this->dateEnd = intval($date);
+		$this->dateEnd = (int) $date;
 	}
 
 
@@ -209,7 +209,7 @@ class TodoyuDateRange {
 	 * @return	Boolean
 	 */
 	public function endsBefore($date) {
-		$date	= intval($date);
+		$date	= (int) $date;
 
 		return $this->dateEnd < $date;
 	}
@@ -224,7 +224,7 @@ class TodoyuDateRange {
 	 * @return	Boolean
 	 */
 	public function startsBefore($date, $allowSame = false) {
-		$date	= intval($date);
+		$date	= (int) $date;
 
 		if( $allowSame ) {
 			return $this->dateStart <= $date;
@@ -243,7 +243,7 @@ class TodoyuDateRange {
 	 * @return	Boolean
 	 */
 	public function endsAfter($date, $allowSame = false) {
-		$date	= intval($date);
+		$date	= (int) $date;
 
 		if( $allowSame ) {
 			return $this->dateEnd >= $date;
@@ -261,7 +261,7 @@ class TodoyuDateRange {
 	 * @return	Boolean
 	 */
 	public function startsAfter($date) {
-		$date	= intval($date);
+		$date	= (int) $date;
 
 		return $this->dateStart > $date;
 	}
@@ -293,8 +293,8 @@ class TodoyuDateRange {
 	 * @return	Boolean
 	 */
 	public function isPeriodInRange($dateStart, $dateEnd, $partly = false, $allowLimits = false) {
-		$dateStart	= intval($dateStart);
-		$dateEnd	= intval($dateEnd);
+		$dateStart	= (int) $dateStart;
+		$dateEnd	= (int) $dateEnd;
 
 		if( $partly ) {
 			return $this->isInRange($dateStart, $allowLimits) || $this->isInRange($dateEnd, $allowLimits);
@@ -313,7 +313,7 @@ class TodoyuDateRange {
 	 * @return	Boolean
 	 */
 	public function isInRange($date, $allowLimits = true) {
-		$date = intval($date);
+		$date = (int) $date;
 		
 		return $this->startsBefore($date, $allowLimits) && $this->endsAfter($date, $allowLimits);
 	}
@@ -339,7 +339,7 @@ class TodoyuDateRange {
 	 * @return	Integer
 	 */
 	public function getDiff($absolute = true) {
-		$diff	= intval($this->dateEnd - $this->dateStart);
+		$diff	= (int) ($this->dateEnd - $this->dateStart);
 
 		if( $absolute ) {
 			$diff = abs($diff);
@@ -358,7 +358,7 @@ class TodoyuDateRange {
 	 * @param	Integer		$dateEnd
 	 */
 	public function setEndLimit($dateEnd) {
-		$dateEnd	= intval($dateEnd);
+		$dateEnd	= (int) $dateEnd;
 
 		if( $this->getEnd() > $dateEnd ) {
 			$this->setEnd($dateEnd);
@@ -375,7 +375,7 @@ class TodoyuDateRange {
 	 * @param	Integer		$dateStart
 	 */
 	public function setStartLimit($dateStart) {
-		$dateStart	= intval($dateStart);
+		$dateStart	= (int) $dateStart;
 
 		if( $this->dateStart < $dateStart ) {
 			$this->setStart($dateStart);

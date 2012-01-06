@@ -65,7 +65,7 @@ class TodoyuInstallerManager {
 	public static function processLicense(array $data) {
 		$result	= array();
 
-		if( intval($data['install']) === 1 ) {
+		if( ( (int) ($data['install'])) === 1 ) {
 			TodoyuInstaller::setStep('servercheck');
 		}
 
@@ -83,7 +83,7 @@ class TodoyuInstallerManager {
 	public static function processServerCheck(array $data) {
 		$result	= array();
 
-		if( intval($data['checked']) === 1 ) {
+		if( ((int) ($data['checked'])) === 1 ) {
 			TodoyuInstaller::setStep('dbconnection');
 		}
 
@@ -212,7 +212,7 @@ class TodoyuInstallerManager {
 	public static function processImportDbTables(array $data) {
 		$result	= array();
 
-		if( intval($data['import']) === 1 ) {
+		if( ((int) ($data['import'])) === 1 ) {
 				// Create database structure from all table files
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
 			self::importStaticData();
@@ -295,7 +295,7 @@ class TodoyuInstallerManager {
 	 */
 	public static function processImportDemoData(array $data) {
 		if( isset($data['importdemodata']) ) {
-			$import	= intval($data['import']) === 1;
+			$import	= ((int) ($data['import'])) === 1;
 
 			if( $import ) {
 				self::importDemoData();
@@ -318,7 +318,7 @@ class TodoyuInstallerManager {
 	public static function processFinish(array $data) {
 		$result	= array();
 
-		if( intval($data['finish']) === 1 ) {
+		if( ((int) ($data['finish'])) === 1 ) {
 			self::finishInstallerAndJumpToLogin();
 		}
 
@@ -336,7 +336,7 @@ class TodoyuInstallerManager {
 	public static function processUpdate(array $data) {
 		$result	= array();
 
-		if( intval($data['start']) === 1 ) {
+		if( ((int) ($data['start'])) === 1 ) {
 			TodoyuInstaller::setStep('updatetocurrentversion');
 		} else {
 			$result['text']		= Todoyu::Label('install.installer.update.info');
@@ -358,7 +358,7 @@ class TodoyuInstallerManager {
 	public static function processUpdateToCurrentVersion(array $data) {
 		$result	= array();
 
-		if( intval($data['update']) === 1 ) {
+		if( ((int) ($data['update'])) === 1 ) {
 				// Apply structure updates from table files
 			TodoyuSQLManager::updateDatabaseFromTableFiles();
 
@@ -379,7 +379,7 @@ class TodoyuInstallerManager {
 	public static function processFinishUpdate(array $data) {
 		$result	= array();
 
-		if( intval($data['finish']) === 1 ) {
+		if( ((int) ($data['finish'])) === 1 ) {
 			self::finishInstallerAndJumpToLogin();
 		}
 
@@ -933,7 +933,7 @@ class TodoyuInstallerManager {
 
 				// All sub folders are task IDs, loop over them
 			foreach($taskFolders as $taskFolder) {
-				$idTask	= intval($taskFolder);
+				$idTask	= (int) $taskFolder;
 
 					// If the folder is a (task-)number
 				if( $idTask > 0 ) {

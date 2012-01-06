@@ -165,7 +165,7 @@ class TodoyuFormValidator {
 
 			// Validate
 		if( is_numeric($value) ) {
-			return intval($value) > 0;
+			return ((int) $value) > 0;
 		} else {
 			return TodoyuValidator::isNotZerotime($value);
 		}
@@ -189,7 +189,7 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
-		return intval($value) > 0;
+		return ((int) ($value)) > 0;
 	}
 
 
@@ -233,7 +233,7 @@ class TodoyuFormValidator {
 		}
 
 			// Validate
-		$maxLength	= intval($validatorConfig);
+		$maxLength	= (int) $validatorConfig;
 
 		return TodoyuValidator::hasMaxLength($value, $maxLength);
 	}
@@ -358,8 +358,8 @@ class TodoyuFormValidator {
 
 
 			// Convert dates to timestamps
-		$fieldDate	= intval($value);
-		$compareDate= intval($compareValue);
+		$fieldDate	= (int) $value;
+		$compareDate= (int) $compareValue;
 
 		return $fieldDate < $compareDate;
 	}
@@ -500,8 +500,8 @@ class TodoyuFormValidator {
 		}
 		
 			// Convert dates to timestamps
-		$fieldDate	= intval($value);
-		$compareDate= intval($compareValue);
+		$fieldDate	= (int) $value;
+		$compareDate= (int) $compareValue;
 
 		if( $compareDate === 0 ) {
 			return false;
@@ -560,8 +560,8 @@ class TodoyuFormValidator {
 			return true;
 		}
 		
-		$fieldDate		= intval($value);
-		$compareDate	= intval($compareValue);
+		$fieldDate		= (int) $value;
+		$compareDate	= (int) $compareValue;
 
 		return $fieldDate < $compareDate || $fieldDate === 0 || $compareDate === 0;
 	}
@@ -588,8 +588,8 @@ class TodoyuFormValidator {
 			return true;
 		}
 		
-		$fieldDate		= intval($value);
-		$compareDate	= intval($compareValue);
+		$fieldDate		= (int) $value;
+		$compareDate	= (int) $compareValue;
 
 		if( $fieldDate === 0 || $compareDate === 0) {
 			return true;
@@ -620,8 +620,8 @@ class TodoyuFormValidator {
 			return true;
 		}
 		
-		$fieldDate		= intval($value);
-		$compareDate	= intval($compareValue);
+		$fieldDate		= (int) $value;
+		$compareDate	= (int) $compareValue;
 
 		return $fieldDate > $compareDate;
 	}
@@ -821,7 +821,7 @@ class TodoyuFormValidator {
 			// Validate
 		$table		= trim($validatorConfig['table']);
 		$field		= $formElement->getName();
-		$idRecord	= intval($formData['id']);
+		$idRecord	= (int) $formData['id'];
 		$value		= trim($value);
 
 			// If empty is allowed, don't check

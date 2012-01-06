@@ -793,7 +793,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$name			= $xmlConfig['@attributes']['name'];
 		$wizardConfig	= TodoyuCreateWizardManager::getWizard($name);
 
-		$wizardConfig['record']	= intval($this->getForm()->getRecordID());
+		$wizardConfig['record']	= (int) $this->getForm()->getRecordID();
 
 		if( $wizardConfig['title'] ) {
 			$wizardConfig['title'] = Todoyu::Label($wizardConfig['title']);

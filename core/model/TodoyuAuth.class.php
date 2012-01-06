@@ -85,7 +85,7 @@ class TodoyuAuth {
 	 * @return	Integer
 	 */
 	public static function getPersonID() {
-		return intval(TodoyuSession::get('person'));
+		return (int) TodoyuSession::get('person');
 	}
 
 
@@ -96,7 +96,7 @@ class TodoyuAuth {
 	 * @param	Integer		$idPerson
 	 */
 	public static function setPersonID($idPerson) {
-		TodoyuSession::set('person', intval($idPerson));
+		TodoyuSession::set('person', (int) $idPerson);
 	}
 
 

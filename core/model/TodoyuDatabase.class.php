@@ -574,8 +574,10 @@ class TodoyuDatabase {
 	 * @return	Boolean		Was record updated?
 	 */
 	public function doUpdateRecord($table, $idRecord, array $fieldNameValues, array $noQuoteFields = array()) {
-		$table  = '`' . $table . '`'; 
-		$where	= 'id = ' . intval($idRecord);
+		$table	= '`' . $table . '`';
+		$idRecord	= (int)	$idRecord;
+
+		$where	= 'id = ' . $idRecord;
 
 		return $this->doUpdate($table, $where, $fieldNameValues, $noQuoteFields) === 1;
 	}
@@ -664,7 +666,9 @@ class TodoyuDatabase {
 	 * @return	Integer
 	 */
 	public function doBooleanInvert($table, $idRecord, $fieldName) {
-		$where	= 'id = ' . intval($idRecord);
+		$idRecord	= (int) $idRecord;
+
+		$where	= 'id = ' . $idRecord;
 		$toggle	= $this->buildBooleanInvert($table, $fieldName);
 		$update	= array($fieldName => $toggle);
 
@@ -880,8 +884,8 @@ class TodoyuDatabase {
 	 * @return	Integer
 	 */
 	public static function getMMid($table, $fieldNameEntity1, $idEntity1, $fieldNameEntity2, $idEntity2) {
-		$idEntity1	= intval($idEntity1);
-		$idEntity2	= intval($idEntity2);
+		$idEntity1	= (int) $idEntity1;
+		$idEntity2	= (int) $idEntity2;
 
 		$field	= 'id';
 		$where	= '		' . $fieldNameEntity1 . ' 	= ' . $idEntity1
@@ -921,7 +925,7 @@ class TodoyuDatabase {
 	 * @return	Boolean
 	 */
 	public function deleteRecord($table, $idRecord) {
-		$where	= 'id = ' . intval($idRecord);
+		$where	= 'id = ' . (int) $idRecord;
 
 		return $this->doDelete($table, $where, 1) === 1;
 	}
@@ -950,7 +954,7 @@ class TodoyuDatabase {
 	 * @return	Boolean
 	 */
 	public function isRecord($table, $idRecord) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 
 		$where	= 'id = ' . $idRecord;
 
@@ -1094,7 +1098,7 @@ class TodoyuDatabase {
 	 */
 	public function updateRecord($table, $idRecord, array $fieldValues, array $noQuoteFields = array()) {
 		$table	= '`' . $table . '`';
-		$where	= '`id` = ' . intval($idRecord);
+		$where	= '`id` = ' . (int) $idRecord;
 
 		return $this->doUpdate($table, $where, $fieldValues, $noQuoteFields) === 1;
 	}
@@ -1201,7 +1205,7 @@ class TodoyuDatabase {
 		$result	= $this->query($query);
 		$row	= $this->fetchAssoc($result);
 
-		return intval($row['rows']);
+		return (int) $row['rows'];
 	}
 
 

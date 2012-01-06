@@ -59,7 +59,7 @@ class TodoyuNumeric {
 	 * @return	Integer
 	 */
 	public static function intInRange($integer, $min = 0, $max = 2000000000) {
-		$integer = intval($integer);
+		$integer = (int) $integer;
 
 		if( $integer < $min ) {
 			$integer = $min;
@@ -81,7 +81,7 @@ class TodoyuNumeric {
 	 * @return	Integer		Integer equal or greater than 0
 	 */
 	public static function intPositive($value) {
-		$integer = intval($value);
+		$integer = (int) $value;
 
 		if( $integer < 0 ) {
 			$integer = 0;

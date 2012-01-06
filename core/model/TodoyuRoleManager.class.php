@@ -39,7 +39,7 @@ class TodoyuRoleManager {
 	 * @return	TodoyuRole
 	 */
 	public static function getRole($idRole) {
-		$idRole	= intval($idRole);
+		$idRole	= (int) $idRole;
 
 		return TodoyuRecordManager::getRecord('TodoyuRole', $idRole);
 	}
@@ -125,7 +125,7 @@ class TodoyuRoleManager {
 	 * @return	Boolean
 	 */
 	public static function updateRole($idRole, array $data) {
-		$idRole	= intval($idRole);
+		$idRole	= (int) $idRole;
 
 		return TodoyuRecordManager::updateRecord(self::TABLE, $idRole, $data);
 	}
@@ -139,7 +139,7 @@ class TodoyuRoleManager {
 	 * @param	Array		$personIDs
 	 */
 	public static function assignPersonsToRole($idRole, array $personIDs) {
-		$idRole		= intval($idRole);
+		$idRole		= (int) $idRole;
 		$personIDs	= TodoyuArray::intval($personIDs, true, false);
 
 		foreach($personIDs as $idPerson) {
@@ -156,8 +156,8 @@ class TodoyuRoleManager {
 	 * @param	Integer		$idPerson
 	 */
 	public static function assignPersonToRole($idRole, $idPerson) {
-		$idRole		= intval($idRole);
-		$idPerson	= intval($idPerson);
+		$idRole		= (int) $idRole;
+		$idPerson	= (int) $idPerson;
 
 		$table	= 'ext_contact_mm_person_role';
 		$data	= array(
@@ -176,7 +176,7 @@ class TodoyuRoleManager {
 	 * @param	Integer		$idRole
 	 */
 	public static function removeRoleFromCache($idRole) {
-		$idRole = intval($idRole);
+		$idRole = (int) $idRole;
 
 		TodoyuRecordManager::removeRecordCache('TodoyuRole', $idRole);
 		TodoyuRecordManager::removeRecordQueryCache(self::TABLE, $idRole);
@@ -194,7 +194,7 @@ class TodoyuRoleManager {
 		$xmlPath= 'core/config/form/role.xml';
 
 			// New created record?
-		$idRole	= intval($data['id']);
+		$idRole	= (int) $data['id'];
 		if( $idRole == 0 ) {
 			$idRole	= self::addRole(array());
 		}
@@ -226,7 +226,7 @@ class TodoyuRoleManager {
 	 * @return	Array
 	 */
 	public static function saveRoleForeignRecords(array $data, $idRole) {
-		$idRole = intval($idRole);
+		$idRole = (int) $idRole;
 
 			// Remove all persons
 		self::removePersons($idRole);
@@ -249,8 +249,8 @@ class TodoyuRoleManager {
 	 * @param	Integer		$idPerson
 	 */
 	public static function removePerson($idRole, $idPerson) {
-		$idRole		= intval($idRole);
-		$idPerson	= intval($idPerson);
+		$idRole		= (int) $idRole;
+		$idPerson	= (int) $idPerson;
 
 		TodoyuDbHelper::removeMMrelation('ext_contact_mm_person_role', 'id_role', 'id_person', $idRole, $idPerson);
 	}
@@ -263,7 +263,7 @@ class TodoyuRoleManager {
 	 * @param	Integer		$idRole
 	 */
 	public static function removePersons($idRole) {
-		$idRole	= intval($idRole);
+		$idRole	= (int) $idRole;
 
 		TodoyuDbHelper::removeMMrelations('ext_contact_mm_person_role', 'id_role', $idRole);
 	}
@@ -276,7 +276,7 @@ class TodoyuRoleManager {
 	 * @param	Integer		$idPerson
 	 */
 	public static function removeRoles($idPerson) {
-		$idPerson= intval($idPerson);
+		$idPerson= (int) $idPerson;
 
 		TodoyuDbHelper::removeMMrelations('ext_contact_mm_person_role', 'id_person', $idPerson);
 	}
@@ -290,8 +290,8 @@ class TodoyuRoleManager {
 	 * @param	Integer		$idPerson
 	 */
 	public static function addPerson($idRole, $idPerson) {
-		$idRole		= intval($idRole);
-		$idPerson	= intval($idPerson);
+		$idRole		= (int) $idRole;
+		$idPerson	= (int) $idPerson;
 
 		self::removePerson($idRole, $idPerson);
 
@@ -307,7 +307,7 @@ class TodoyuRoleManager {
 	 * @param	Array		$personIDs
 	 */
 	public static function addPersons($idRole, array $personIDs) {
-		$idRole		= intval($idRole);
+		$idRole		= (int) $idRole;
 		$personIDs	= TodoyuArray::intval($personIDs, true, true);
 		$personIDs	= array_unique($personIDs);
 
@@ -325,7 +325,7 @@ class TodoyuRoleManager {
 	 * @param	Array		$roleIDs
 	 */
 	public static function addPersonToRoles($idPerson, array $roleIDs) {
-		$idPerson	= intval($idPerson);
+		$idPerson	= (int) $idPerson;
 		$roleIDs	= array_unique(TodoyuArray::intval($roleIDs, true, true));
 
 		TodoyuDbHelper::addMMLinks('ext_contact_mm_person_role', 'id_person', 'id_role', $idPerson, $roleIDs, true);
@@ -352,7 +352,7 @@ class TodoyuRoleManager {
 	 * @return	Array
 	 */
 	public static function getPersonIDs($idRole) {
-		$idRole	= intval($idRole);
+		$idRole	= (int) $idRole;
 
 		$field	= 'id_person';
 		$table	= 'ext_contact_mm_person_role';
@@ -370,7 +370,7 @@ class TodoyuRoleManager {
 	 * @return	Integer
 	 */
 	public static function getNumPersons($idRole) {
-		$idRole		= intval($idRole);
+		$idRole		= (int) $idRole;
 		$personIDs	= self::getPersonIDs($idRole);
 
 		return sizeof($personIDs);
@@ -385,7 +385,7 @@ class TodoyuRoleManager {
 	 * @return	Array
 	 */
 	public static function getPersonData($idRole) {
-		$idRole	= intval($idRole);
+		$idRole	= (int) $idRole;
 
 		$fields	= '	p.*';
 		$table	= '	ext_contact_person p,

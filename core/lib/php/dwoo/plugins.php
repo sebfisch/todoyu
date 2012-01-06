@@ -70,7 +70,7 @@ function Dwoo_Plugin_LabelFormat(Dwoo $dwoo, $key, array $values, $locale = null
  * @return	String
  */
 function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
-	$idCountry = intval($idCountry);
+	$idCountry = (int) $idCountry;
 
 	if( $idCountry > 0 ) {
 		$country	= TodoyuStaticRecords::getCountry($idCountry);

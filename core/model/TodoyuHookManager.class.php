@@ -114,7 +114,7 @@ class TodoyuHookManager {
 		
 		self::$hooks[$ext][$name][] = array(
 			'function'	=> $function,
-			'position'	=> intval($position)
+			'position'	=> (int) $position
 		);
 	}
 

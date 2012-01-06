@@ -76,7 +76,7 @@ class TodoyuCountry extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getIsoNum() {
-		return intval($this->get('iso_num'));
+		return (int) $this->get('iso_num');
 	}
 
 
@@ -87,7 +87,7 @@ class TodoyuCountry extends TodoyuBaseObject {
 	 * @return	Integer
 	 */
 	public function getIsoNumCurrency() {
-		return intval($this->get('iso_num_currency'));
+		return (int) $this->get('iso_num_currency');
 	}
 
 

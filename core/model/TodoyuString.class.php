@@ -160,7 +160,7 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function crop($text, $length, $postFix = '..', $dontSplitWords = true) {
-		$length	= intval($length);
+		$length	= (int) $length;
 
 		if( mb_strlen($text, 'utf-8') > $length + mb_strlen($postFix, 'utf-8') ) {
 			$cropped	= mb_substr($text, 0, $length, 'utf-8');
@@ -277,8 +277,8 @@ class TodoyuString {
 	 * @return	String		Substring with keyword surrounded by the original text
 	 */
 	public static function getSubstring($string, $keyword, $charsBefore = 20, $charsAfter = 20, $htmlEntities = true) {
-		$charsBefore= intval($charsBefore);
-		$charsAfter	= intval($charsAfter);
+		$charsBefore= (int) $charsBefore;
+		$charsAfter	= (int) $charsAfter;
 		$keyLen		= mb_strlen(trim($keyword));
 		$pos		= mb_stripos($string, $keyword);
 		$start		= TodoyuNumeric::intInRange($pos-$charsBefore, 0);
@@ -364,7 +364,7 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function generatePassword($length = 8, $useUpperCase = true, $useNumbers = true, $useSpecialChars = true, $useDoubleChars = true) {
-		$length		= intval($length);
+		$length		= (int) $length;
 		$characters	= range('a', 'z');
 
 		if( $useUpperCase ) {
@@ -536,9 +536,9 @@ class TodoyuString {
 		}
 
 		$info['full']		= $versionString;
-		$info['major']		= intval($version[0]);
-		$info['minor']		= intval($version[1]);
-		$info['revision']	= intval($version[2]);
+		$info['major']		= (int) $version[0];
+		$info['minor']		= (int) $version[1];
+		$info['revision']	= (int) $version[2];
 		$info['status']		= $status;
 
 		return $info;
@@ -612,7 +612,7 @@ class TodoyuString {
 	public static function extractHttpStatusCode($httpStatusHeader) {
 		$parts	= explode(' ', $httpStatusHeader);
 
-		return intval($parts[1]);
+		return (int) $parts[1];
 	}
 
 
@@ -860,8 +860,8 @@ class TodoyuString {
 	 */
 	public static function getImgTag($src, $width = 0, $height = 0, $altText = '') {
 		$attributes	= array();
-		$width		= intval($width);
-		$height		= intval($height);
+		$width		= (int) $width;
+		$height		= (int) $height;
 		$altText	= trim($altText);
 
 		$attributes['src'] = $src;
@@ -984,10 +984,10 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function getRangeString($dateStart, $dateEnd, $withDuration = true) {
-		$dateStart	= intval($dateStart);
-		$dateEnd	= intval($dateEnd);
+		$dateStart	= (int) $dateStart;
+		$dateEnd	= (int) $dateEnd;
 		$duration	= $dateEnd - $dateStart;
-		$hours		= intval($duration / 3600);
+		$hours		= $duration / 3600;
 		$hoursMax	= 23;
 
 			// Make day keys to detect multi-day duration

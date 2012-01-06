@@ -34,11 +34,12 @@ class TodoyuContextMenuManager {
 	 * @param	Integer		$position		Position when the function is called to fill the item queue
 	 */
 	public static function addFunction($type, $function, $position = 100) {
-		$type	= strtoupper(trim($type));
+		$type		= strtoupper(trim($type));
+		$position	= (int) $position;
 
 		Todoyu::$CONFIG['ContextMenu'][$type][] = array(
 			'function'	=> $function,
-			'position'	=> intval($position)
+			'position'	=> $position
 		);
 	}
 

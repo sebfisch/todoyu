@@ -234,7 +234,7 @@ class TodoyuColors {
 	 * @return	Integer
 	 */
 	private static function getColorRGB($position) {
-		$position = intval($position);
+		$position = (int) $position;
 
 		$rgb	= Todoyu::$CONFIG['COLORS'][	$position ];
 
@@ -250,7 +250,7 @@ class TodoyuColors {
 	 * @return	Integer
 	 */
 	private static function getColorID($position) {
-		$position = intval($position);
+		$position = (int) $position;
 
 		$numOfColors = count(Todoyu::$CONFIG['COLORS']);
 
@@ -270,11 +270,13 @@ class TodoyuColors {
 	 * @return	Integer
 	 */
 	public static function getColorIndex($inputIndex) {
+		$inputIndex	= (int) $inputIndex;
+
 		if( is_null(self::$amountColors) ) {
 			self::$amountColors	= sizeof(TodoyuArray::assure(Todoyu::$CONFIG['COLORS']));
 		}
 
-		return intval($inputIndex) % self::$amountColors;
+		return $inputIndex % self::$amountColors;
 	}
 
 }

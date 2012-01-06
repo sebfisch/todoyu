@@ -183,7 +183,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 
 			// Load form data
 		$recordData	= $this->getRecord($index);
-		$idRecord	= intval($recordData['id']);
+		$idRecord	= (int) $recordData['id'];
 
 			// Load record data from hooks
 		$recordData	= TodoyuFormHook::callLoadData($xmlPath, $recordData, $idRecord);

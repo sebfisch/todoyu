@@ -64,7 +64,7 @@ class TodoyuFreezeManager {
 	 * @return	Mixed
 	 */
 	public static function unfreeze($idFreeze) {
-		$idFreeze	= intval($idFreeze);
+		$idFreeze	= (int) $idFreeze;
 		$freeze		= TodoyuRecordManager::getRecordData(self::TABLE, $idFreeze);
 
 		if( $freeze !== false ) {
@@ -119,7 +119,7 @@ class TodoyuFreezeManager {
 	 * @return	Mixed|Boolean	Restored element or false
 	 */
 	public static function unfreezeElement($type, $idElement, $ignoreMissing = false) {
-		$idElement	= intval($idElement);
+		$idElement	= (int) $idElement;
 		$data 		= false;
 
 		$fields	= '*';
@@ -153,7 +153,7 @@ class TodoyuFreezeManager {
 
 		$data	= array(
 			'element_type'	=> $type,
-			'element_id'	=> intval($idElement),
+			'element_id'	=> (int) $idElement,
 			'data'			=> $elementData,
 			'hash'			=> md5($elementData)
 		);

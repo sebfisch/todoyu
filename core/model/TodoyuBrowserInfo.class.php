@@ -156,7 +156,7 @@ class TodoyuBrowserInfo {
 		$version	= self::getVersion();
 		$vParts		= explode('.', $version);
 
-		return intval($vParts[0]);
+		return (int) $vParts[0];
 	}
 
 

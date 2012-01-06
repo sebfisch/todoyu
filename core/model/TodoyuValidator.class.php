@@ -49,7 +49,7 @@ class TodoyuValidator {
 	 * @return	Boolean
 	 */
 	public static function isDigit($value) {
-		return trim(intval($value)) === trim($value);
+		return trim((int) $value) === trim($value);
 	}
 
 
@@ -162,7 +162,7 @@ class TodoyuValidator {
 	 */
 	public static function isNotZerotime($value) {
 		$parts	= explode(':', $value);
-		$check	= intval($parts[0]) + intval($parts[1]);
+		$check	= (int) $parts[0] + (int) $parts[1];
 
 		return $check > 0;
 	}
@@ -177,7 +177,7 @@ class TodoyuValidator {
 	 * @return	Boolean
 	 */
 	public static function hasMinLength($value, $minLength) {
-		$minLength	= intval($minLength);
+		$minLength	= (int) $minLength;
 
 		return strlen(trim($value)) >= $minLength;
 	}
@@ -192,7 +192,7 @@ class TodoyuValidator {
 	 * @return	Boolean
 	 */
 	public static function hasMaxLength($value, $maxLength) {
-		$maxLength	= intval($maxLength);
+		$maxLength	= (int) $maxLength;
 
 		return strlen(trim($value)) <= $maxLength;
 	}

@@ -38,7 +38,7 @@ class TodoyuDbHelper {
 	 * @param	Array		$foreignRecordIDs	The other linked records
 	 */
 	public static function addMMLinks($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, array $foreignRecordIDs) {
-		$idLocalRecord		= intval($idLocalRecord);
+		$idLocalRecord		= (int) $idLocalRecord;
 		$foreignRecordIDs	= TodoyuArray::intval($foreignRecordIDs, true, true);
 
 			// Get existing record IDs in link table
@@ -64,7 +64,7 @@ class TodoyuDbHelper {
 	 * @param	Array		$foreignRecordIDs	The other linked records
 	 */
 	public static function saveMMLinksSorted($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, array $foreignRecordIDs) {
-		$idLocalRecord		= intval($idLocalRecord);
+		$idLocalRecord		= (int) $idLocalRecord;
 		$foreignRecordIDs	= TodoyuArray::intval($foreignRecordIDs, true, true);
 
 			// Remove existing link records
@@ -91,7 +91,7 @@ class TodoyuDbHelper {
 	 * @return	Array
 	 */
 	public static function getForeignIDs($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord) {
-		$where	= $fieldLocal . ' = ' . intval($idLocalRecord);
+		$where	= $fieldLocal . ' = ' . (int) $idLocalRecord;
 
 		return Todoyu::db()->getColumn($fieldForeign, $mmTable, $where);
 	}
@@ -109,7 +109,7 @@ class TodoyuDbHelper {
 	 * @return	Array
 	 */
 	public static function getForeignIDsSorted($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $fieldSorting = 'sorting') {
-		$where	= $fieldLocal . ' = ' . intval($idLocalRecord);
+		$where	= $fieldLocal . ' = ' . (int) $idLocalRecord;
 
 		return Todoyu::db()->getColumn($fieldForeign, $mmTable, $where, '', $fieldSorting);
 	}
@@ -127,7 +127,7 @@ class TodoyuDbHelper {
 	 * @return	Integer		New ID of the record
 	 */
 	public static function saveExtendedMMLinks($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, array $linksData) {
-		$idLocalRecord		= intval($idLocalRecord);
+		$idLocalRecord		= (int) $idLocalRecord;
 		$foreignRecordIDs	= self::getForeignIDs($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord);
 
 		foreach($linksData as $linkData) {
@@ -179,8 +179,8 @@ class TodoyuDbHelper {
 	 */
 	public static function addMMLink($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, $idForeignRecord, array $extraData = array()) {
 		$data	= array(
-			$fieldLocal		=> intval($idLocalRecord),
-			$fieldForeign	=> intval($idForeignRecord)
+			$fieldLocal		=> (int) $idLocalRecord,
+			$fieldForeign	=> (int) $idForeignRecord
 		);
 
 		unset($extraData['id']);
@@ -205,8 +205,8 @@ class TodoyuDbHelper {
 	 * @return	Integer		Num affected (deleted) rows
 	 */
 	public static function removeMMrelation($mmTable, $localField, $foreignField, $idLocalRecord, $idForeignRecord) {
-		$idLocalRecord	= intval($idLocalRecord);
-		$idForeignRecord= intval($idForeignRecord);
+		$idLocalRecord	= (int) $idLocalRecord;
+		$idForeignRecord= (int) $idForeignRecord;
 
 		$where	= 	Todoyu::db()->backtick($localField) . ' = ' . $idLocalRecord . ' AND ' .
 					Todoyu::db()->backtick($foreignField) . ' = ' . $idForeignRecord;
@@ -226,7 +226,7 @@ class TodoyuDbHelper {
 	 * @return	Integer		Num affected (deleted) rows
 	 */
 	public static function removeMMrelations($mmTable, $field, $idRecord) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 		$where		= Todoyu::db()->backtick($field) . ' = ' . $idRecord;
 
 		return Todoyu::db()->doDelete($mmTable, $where);
@@ -247,7 +247,7 @@ class TodoyuDbHelper {
 	 * @return	Integer		Number of delete records
 	 */
 	public static function deleteOtherMmRecords($mmTable, $recordTable, $idLinkRecord, array $ignoreRecordIDs, $fieldRecord, $fieldLink) {
-		$idLinkRecord	= intval($idLinkRecord);
+		$idLinkRecord	= (int) $idLinkRecord;
 		$ignoreRecordIDs= TodoyuArray::intval($ignoreRecordIDs, true, true);
 
 		$tables		= 	$recordTable . ' r,' .
@@ -283,7 +283,7 @@ class TodoyuDbHelper {
 	 */
 	public static function deleteOtherMmLinks($mmTable, $fieldLocal, $fieldForeign, $idLocalRecord, array $ignoreForeignIDs = array()) {
 		$ignoreForeignIDs	= TodoyuArray::intval($ignoreForeignIDs, true, true);
-		$idLocalRecord		= intval($idLocalRecord);
+		$idLocalRecord		= (int) $idLocalRecord;
 
 		$where	= $fieldLocal . ' = ' . $idLocalRecord;
 

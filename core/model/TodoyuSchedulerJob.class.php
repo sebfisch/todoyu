@@ -50,7 +50,7 @@ abstract class TodoyuSchedulerJob {
 	 */
 	public function __construct(array $options = array(), $frequency) {
 		$this->options	= $options;
-		$this->frequency= intval($frequency);
+		$this->frequency= (int) $frequency;
 	}
 
 

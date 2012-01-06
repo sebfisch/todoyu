@@ -103,7 +103,7 @@ class TodoyuArray {
 
 			// Make integers
 		foreach($array as $index => $value) {
-			$array[$index] = intval($value);
+			$array[$index] = (int) $value;
 		}
 
 			// Set negative values zero
@@ -152,7 +152,7 @@ class TodoyuArray {
 	 */
 	public static function intImplode($array = array(), $delimiter = ',') {
 		foreach($array as $id => $value) {
-			$array[$id] = intval($value);
+			$array[$id] = (int) $value;
 		}
 
 		return implode($delimiter, $array);

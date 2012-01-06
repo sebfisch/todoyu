@@ -164,7 +164,7 @@ class TodoyuDbAnalyzer {
 						// Find type
 					if( $keyName === 'PRIMARY' ) {
 						$key['type']	= 'PRIMARY';
-					} elseif( intval($tableKey[0]['Non_unique']) === 0 ) {
+					} elseif( ((int) ($tableKey[0]['Non_unique'])) === 0 ) {
 						$key['type']	= 'UNIQUE';
 					} elseif( $tableKey[0]['Index_type'] === 'FULLTEXT' ) {
 						$key['type']	= 'FULLTEXT';

@@ -58,7 +58,7 @@ class TodoyuContextMenu {
 	 */
 	public function __construct($type, $idElement) {
 		$this->type			= $type;
-		$this->idElement	= intval($idElement);
+		$this->idElement	= (int) $idElement;
 
 		$this->init();
 	}

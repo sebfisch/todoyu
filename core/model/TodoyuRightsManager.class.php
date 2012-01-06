@@ -177,7 +177,7 @@ class TodoyuRightsManager {
 		$extID	= TodoyuExtensions::getExtID($extKey);
 		$right	= strtolower($right);
 
-		$allowed	= intval(self::$rights[$extID][$right]) === 1;
+		$allowed	= ((int) (self::$rights[$extID][$right])) === 1;
 
 			// If right was denied and checking is active, check if this right exists
 		if( $allowed === false && Todoyu::$CONFIG['CHECK_DENIED_RIGHTS'] === true ) {
@@ -406,8 +406,8 @@ class TodoyuRightsManager {
 	 * @return	Integer		Number of deleted rights
 	 */
 	public static function deleteExtRoleRights($extID, $idRole) {
-		$extID	= intval($extID);
-		$idRole	= intval($idRole);
+		$extID	= (int) $extID;
+		$idRole	= (int) $idRole;
 		$where	= '		ext		= ' . $extID .
 				  ' AND id_role	= ' . $idRole;
 
@@ -423,7 +423,7 @@ class TodoyuRightsManager {
 	 * @return	Integer		Number of deleted rights
 	 */
 	public static function deleteExtensionRights($extID) {
-		$extID	= intval($extID);
+		$extID	= (int) $extID;
 		$where	= 'ext	= ' . $extID;
 
 		return Todoyu::db()->doDelete(self::TABLE, $where);

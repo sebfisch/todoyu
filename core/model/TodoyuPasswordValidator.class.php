@@ -132,7 +132,7 @@ class TodoyuPasswordValidator {
 	 */
 	private function minLength($value, $config) {
 		$value	= trim($value);
-		$length	= intval($config);
+		$length	= (int) $config;
 
 		if( strlen($value) < $length ) {
 			$errorMessage = str_replace('%s', $length, Todoyu::Label('contact.ext.password.minLengthIfNotEmpty'));

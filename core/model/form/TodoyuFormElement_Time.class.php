@@ -57,7 +57,7 @@ class TodoyuFormElement_Time extends TodoyuFormElement_Text {
 	 */
 	public function setValue($value) {
 		if( is_numeric($value) ) {
-			$value	= intval($value);
+			$value	= (int) $value;
 		} else {
 			$value	= TodoyuTime::parseTime($value);
 		}
@@ -72,7 +72,7 @@ class TodoyuFormElement_Time extends TodoyuFormElement_Text {
 	 * @return	Integer		Seconds
 	 */
 	public function getValue() {
-		return intval(parent::getValue());
+		return (int) parent::getValue();
 	}
 
 

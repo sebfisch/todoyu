@@ -44,7 +44,7 @@ define( 'NOW', time() );
 
 	// int min
 if( !defined('PHP_INT_MIN') ) {
-	define('PHP_INT_MIN', intval(PHP_INT_MAX+1));
+	define('PHP_INT_MIN', (int) (PHP_INT_MAX + 1));
 }
 
 

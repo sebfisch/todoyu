@@ -126,7 +126,7 @@ class TodoyuLogger {
 	 */
 	private function getLogLevel() {
 		if( isset(Todoyu::$CONFIG['SYSTEM']['logLevel']) ) {
-			return intval(Todoyu::$CONFIG['SYSTEM']['logLevel']);
+			return (int) Todoyu::$CONFIG['SYSTEM']['logLevel'];
 		} else {
 			return self::LEVEL_ERROR;
 		}
@@ -165,7 +165,7 @@ class TodoyuLogger {
 	private function log($message, $eventLevel = 0, $data = null) {
 		$backtrace	= debug_backtrace(false);
 		$info		= false;
-		$eventLevel	= intval($eventLevel);
+		$eventLevel	= (int) $eventLevel;
 
 			// Check if minimum requirement for logging is set
 		if( $eventLevel < $this->minimumLevel ) {

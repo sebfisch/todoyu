@@ -44,9 +44,9 @@ class TodoyuMailManager {
 	 * @param	Array		$personIDs		Persons the comment has been sent to
 	 */
 	public static function saveMailsSent($extID, $type, $idRecord, array $personIDs = array() ) {
-		$extID		= intval($extID);
-		$type		= intval($type);
-		$idRecord	= intval($idRecord);
+		$extID		= (int) $extID;
+		$type		= (int) $type;
+		$idRecord	= (int) $idRecord;
 		$personIDs	= TodoyuArray::intval($personIDs);
 
 		foreach($personIDs as $idPerson) {
@@ -65,10 +65,10 @@ class TodoyuMailManager {
 	 * @param	Integer		$idPerson
 	 */
 	public static function addMailSent($extID, $type, $idRecord, $idPerson) {
-		$extID		= intval($extID);
-		$type		= intval($type);
-		$idRecord	= intval($idRecord);
-		$idPerson	= intval($idPerson);
+		$extID		= (int) $extID;
+		$type		= (int) $type;
+		$idRecord	= (int) $idRecord;
+		$idPerson	= (int) $idPerson;
 
 		$data	= array(
 			'date_create'		=> NOW,
@@ -93,9 +93,9 @@ class TodoyuMailManager {
 	 * @return	Array
 	 */
 	public static function getEmailPersons($extID, $type, $idRecord) {
-		$extID		= intval($extID);
-		$type		= intval($type);
-		$idRecord	= intval($idRecord);
+		$extID		= (int) $extID;
+		$type		= (int) $type;
+		$idRecord	= (int) $idRecord;
 
 		$fields	= '	p.id,
 					p.username,

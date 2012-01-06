@@ -34,8 +34,8 @@ class TodoyuTokenCallbackManager {
 	 * @param	String		$function		Function reference
 	 */
 	public static function addFunction($extID, $idTokenType, $function) {
-		$extID			= intval($extID);
-		$idTokenType	= intval($idTokenType);
+		$extID			= (int) $extID;
+		$idTokenType	= (int) $idTokenType;
 
 		Todoyu::$CONFIG['Token'][$extID][$idTokenType][] = array(
 			'function'	=> $function
@@ -66,7 +66,7 @@ class TodoyuTokenCallbackManager {
 	 * @return	String
 	 */
 	public static function getCallbackByTokenID($idToken) {
-		$idToken	= intval($idToken);
+		$idToken	= (int) $idToken;
 		$token		= TodoyuTokenManager::getToken($idToken);
 
 		return self::getCallback($token);

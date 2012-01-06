@@ -60,7 +60,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @param	String		$table
 	 */
 	public function __construct($idRecord, $table) {
-		$idRecord	= intval($idRecord);
+		$idRecord	= (int) $idRecord;
 		$this->table= trim(strtolower($table));
 
 		if( $idRecord > 0 ) {
@@ -130,7 +130,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Integer
 	 */
 	public function getID() {
-		return intval($this->data['id']);
+		return (int) $this->data['id'];
 	}
 
 
@@ -232,7 +232,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Boolean
 	 */
 	public function isCurrentPersonCreator() {
-		return intval($this->get('id_person_create')) === Todoyu::personid();
+		return (int) ( $this->get('id_person_create') === Todoyu::personid() );
 	}
 
 
@@ -254,7 +254,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Integer
 	 */
 	public function getDateCreate() {
-		return intval($this->get('date_create'));
+		return (int) $this->get('date_create');
 	}
 
 
@@ -265,7 +265,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Integer
 	 */
 	public function getDateUpdate() {
-		return intval($this->get('date_update'));
+		return (int) $this->get('date_update');
 	}
 
 
@@ -280,7 +280,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 		$dataKey = 'id_person_' . strtolower($type);
 
 		if( array_key_exists($dataKey, $this->data) ) {
-			return intval($this->data[$dataKey]);
+			return (int) $this->data[$dataKey];
 		} else {
 			return false;
 		}
@@ -399,7 +399,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Boolean
 	 */
 	public function isDeleted() {
-		return intval($this->get('deleted')) === 1;
+		return (int) ( $this->get('deleted') === 1 );
 	}
 
 

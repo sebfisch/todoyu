@@ -118,7 +118,7 @@ class TodoyuScheduler {
 		foreach($jobs as $jobConfig) {
 			if( class_exists($jobConfig['class'], true) ) {
 				$options	= TodoyuArray::assure($jobConfig['options']);
-				$frequency	= intval($jobConfig['crontime']);
+				$frequency	= (int) $jobConfig['crontime'];
 
 				try {
 					/**
@@ -247,7 +247,7 @@ class TodoyuScheduler {
 		}
 
 		if( is_numeric($crontime) ) {
-			$seconds	= intval($crontime) * 60;
+			$seconds	= ((int) $crontime) * 60;
 
 			return $lastExecutionDate + $seconds < NOW;
 		} else {
@@ -294,7 +294,7 @@ class TodoyuScheduler {
 	 * @return	Integer		Timestamp
 	 */
 	private static function getLastExecutionDate($className) {
-		return intval(self::$lastExecutionDates[$className]);
+		return (int) self::$lastExecutionDates[$className];
 	}
 
 

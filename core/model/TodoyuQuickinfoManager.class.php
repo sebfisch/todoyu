@@ -38,7 +38,7 @@ class TodoyuQuickinfoManager {
 
 		Todoyu::$CONFIG['Quickinfo'][$type][] = array(
 			'function'	=> $function,
-			'position'	=> intval($position)
+			'position'	=> (int) $position
 		);
 	}
 

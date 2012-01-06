@@ -193,7 +193,7 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 	 */
 	public function setValue($value) {
 		if( is_numeric($value) ) {
-			$value	= intval($value);
+			$value	= (int) $value;
 		} elseif( trim($value) == '' || $value == '0000-00-00' ) {
 			$value	= false;
 		} elseif( $value !== false ) {
@@ -241,7 +241,7 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 				$storageData = date('Y-m-d', $storageData);
 			}
 		} else {
-			$storageData = intval($storageData);
+			$storageData = (int) $storageData;
 		}
 
 		return $storageData;

@@ -48,7 +48,7 @@ class TodoyuFormElement_Duration extends TodoyuFormElement_Time {
 	 */
 	public function setValue($value) {
 		if( is_numeric($value) ) {
-			$value	= intval($value);
+			$value	= (int) $value;
 		} else {
 			$value	= TodoyuTime::parseDuration($value);
 		}

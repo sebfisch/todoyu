@@ -717,7 +717,7 @@ class TodoyuFileManager {
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
 
 			// Only set curl options if safe mode is not enabled
-		if( intval(ini_get('safe_mode')) !== 1 ) {
+		if( ((int) (ini_get('safe_mode'))) !== 1 ) {
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		}
 
@@ -756,7 +756,7 @@ class TodoyuFileManager {
 	 */
 	private static function downloadFile_SOCKET($url, array $options = array()) {
 		$parsedURL	= parse_url($url);
-		$port		= intval($parsedURL['port']);
+		$port		= (int) $parsedURL['port'];
 		$path		= trim($parsedURL['path']);
 		$query		= trim($parsedURL['query']);
 

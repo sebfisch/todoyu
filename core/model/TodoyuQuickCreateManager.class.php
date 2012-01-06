@@ -41,7 +41,7 @@ class TodoyuQuickCreateManager {
 			'ext'		=> $ext,
 			'type'		=> $type,
 			'label'		=> $label,
-			'position'	=> intval($position),
+			'position'	=> (int) $position,
 			'primary'	=> $primaryAreas,
 			'areaOnly'	=> $areaOnly ? true : false
 		);

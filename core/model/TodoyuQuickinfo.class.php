@@ -100,7 +100,7 @@ class TodoyuQuickinfo {
 		$this->elements[$key] = array(
 			'key'		=> $key,
 			'label'		=> $label,
-			'position'	=> intval($position)
+			'position'	=> (int) $position
 		);
 	}
 
