@@ -694,7 +694,7 @@ class TodoyuTime {
 	 * @return	Integer		Rounded time
 	 */
 	public static function getRoundedTime($timestamp = 0, $steps = 5) {
-		$timestamp	= (int) $timestamp);
+		$timestamp	= (int) $timestamp;
 		$factor		= (int) (self::SECONDS_MIN / $steps);
 
 		if( $timestamp === 0 ) {
