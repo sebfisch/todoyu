@@ -9,12 +9,12 @@
 	<link rel="stylesheet" type="text/css" href="{$cssFile.file}" media="{$cssFile.media}" />
 {/foreach}
 {foreach $jsFiles jsFile}
-<script type="text/javascript" src="{$jsFile.file}"></script>
+	<script type="text/javascript" src="{$jsFile.file}"></script>
 {/foreach}
+	<script type="text/javascript" src="cache/js/Config.js"></script>
 {foreach $additionalHeaderData headerData}
 	{$headerData}
 {/foreach}
-
 <!--[if IE 8]>
 	<link rel="stylesheet" media="screen" href="core/asset/css/compatibility/ie8.css" />
 <![endif]-->
@@ -23,5 +23,5 @@
 	<link rel="stylesheet" media="screen" href="core/asset/css/compatibility/ie8.css" />
 <![endif]-->
 
-<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="shortcut icon" href="favicon.ico" />
 </head>

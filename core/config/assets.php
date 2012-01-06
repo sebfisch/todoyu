@@ -114,13 +114,6 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 50
 		),
 		array(
-			'file'		=> 'cache/js/Config.js',
-			'position'	=> 51,
-			'merge'		=> false,
-			'localize'	=> false,
-			'compress'	=> true
-		),
-		array(
 			'file'		=> 'core/asset/js/Ext.js',
 			'position'	=> 51
 		),
