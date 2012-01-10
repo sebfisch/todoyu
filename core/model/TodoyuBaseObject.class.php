@@ -148,6 +148,18 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 
 
 	/**
+	 * Get data as integer
+	 *
+	 * @param	String		$key
+	 * @return	Integer
+	 */
+	public function getInt($key) {
+		return intval($this->get($key));
+	}
+
+
+
+	/**
 	 * Set a value
 	 * Sets the value only in the object, this in not persistent
 	 *
