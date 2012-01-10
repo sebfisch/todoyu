@@ -177,7 +177,7 @@ class TodoyuTime {
 	 * 00:00:00
 	 *
 	 * @param		Integer		$date					Timestamp
-	 * @return 		Integer		Timestamp of beginning of week (sunday or monday by system config) the given timestamp belongs to
+	 * @return		Integer		Timestamp of beginning of week (sunday or monday by system config) the given timestamp belongs to
 	 */
 	public static function getWeekStart($date = 0) {
 		$date			= self::time($date);
@@ -575,7 +575,7 @@ class TodoyuTime {
 	/**
 	 * Parse date string (formatted according to current locale) to UNIX timestamp
 	 *
-	 * @param	String 		$dateString
+	 * @param	String		$dateString
 	 * @return	Integer		UNIX timestamp
 	 */
 	public static function parseDate($dateString) {
@@ -715,7 +715,7 @@ class TodoyuTime {
 	 * Get dates of the (days of) full week which the given date is in
 	 *
 	 * @param		Mixed		$timestamp
-	 * @return 		Array		Dates of the week
+	 * @return		Array		Dates of the week
 	 */
 	public static function getTimestampsForWeekdays($timestamp) {
 		$timestamp		= (int) $timestamp;

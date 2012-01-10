@@ -62,10 +62,10 @@ class TodoyuTokenManager {
 
 		$field	= 'id';
 		$table	= self::TABLE;
-		$where	= '		ext 			= ' . $extID
+		$where	= '		ext				= ' . $extID
 				. ' AND	token_type		= ' . $idTokenType
 				. ' AND	id_person_owner	= ' . $idPersonOwner
-				. ' AND deleted 		= 0';
+				. ' AND deleted			= 0';
 
 		return (int) Todoyu::db()->getFieldValue($field, $table, $where);
 	}

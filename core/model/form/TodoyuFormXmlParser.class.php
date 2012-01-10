@@ -55,7 +55,7 @@ class TodoyuFormXmlParser {
 	 * @param	TodoyuForm		$form
 	 * @param	String			$xmlFile
 	 * @param	Array			$preParseMarkers
-	 * @return 	Boolean
+	 * @return	Boolean
 	 */
 	public static function parse($form, $xmlFile, $preParseMarkers = array()) {
 		self::$form		= $form;
@@ -195,7 +195,7 @@ class TodoyuFormXmlParser {
 	 *
 	 * @param	TodoyuFieldset			$fieldset
 	 * @param	SimpleXmlElement	$fieldXmlObj
-	 * @return 	Boolean
+	 * @return	Boolean
 	 */
 	private static function addField(TodoyuFieldset $fieldset, SimpleXmlElement $fieldXmlObj) {
 		$type	= trim($fieldXmlObj['type']);
@@ -232,7 +232,7 @@ class TodoyuFormXmlParser {
 		if( array_key_exists('restrictAdmin', $config) ) {
 			return TodoyuAuth::isAdmin();
 		} elseif( array_key_exists('restrict', $config) ) {
-			$restrict 	= $config['restrict'];
+			$restrict	= $config['restrict'];
 			$and		= strtoupper(trim($restrict['@attributes']['conjunction'])) === 'AND';
 			$rights		= TodoyuArray::assure($restrict['allow']);
 

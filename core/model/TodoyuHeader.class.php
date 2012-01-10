@@ -278,7 +278,7 @@ class TodoyuHeader {
 	 */
 	public static function redirect($ext, $controller = 'ext', array $addParams = array()) {
 		$params		= array(
-			'ext' 		=> $ext,
+			'ext'		=> $ext,
 			'controller'=> $controller
 		);
 		$params	= array_merge($params, $addParams);

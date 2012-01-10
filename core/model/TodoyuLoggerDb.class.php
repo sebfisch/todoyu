@@ -57,7 +57,7 @@ class TodoyuLoggerDb implements TodoyuLoggerIf {
 	 */
 	public function log($message, $level, $data, $info, $requestKey) {
 		if( Todoyu::db()->hasLink() && !empty($this->table) ) {
-			$data 	= array(
+			$data	= array(
 				'date_create'	=> NOW,
 				'id_person'		=> Todoyu::personid(),
 				'requestkey'	=> $requestKey,

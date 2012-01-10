@@ -81,9 +81,9 @@ class TodoyuExportCSV extends TodoyuExportBase {
 		$pathTemp	= 'cache/output';
 		TodoyuFileManager::makeDirDeep($pathTemp);
 
-		$this->tmpFile 		= TodoyuFileManager::pathAbsolute($pathTemp . '/tmpExport_' . NOW . '.csv');
+		$this->tmpFile		= TodoyuFileManager::pathAbsolute($pathTemp . '/tmpExport_' . NOW . '.csv');
 		$this->filePointer	= fopen($this->tmpFile, 'w+');
-		$this->filename 	= 'export_' . NOW . '.csv';
+		$this->filename		= 'export_' . NOW . '.csv';
 
 		$defaultConfig	= Todoyu::$CONFIG['EXPORT']['CSV'];
 

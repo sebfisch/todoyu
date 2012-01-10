@@ -309,7 +309,7 @@ class TodoyuSQLParser {
 						. $tableColumnsSql . ', '					. "\n"
 						. 'PRIMARY KEY  (`id`)'
 						. ($keys !== '' ? ', '. "\n" : '')
-						. $keys						 				. "\n"
+						. $keys										. "\n"
 						. ') ENGINE=MyISAM  DEFAULT CHARSET=utf8 ; ' . "\n";
 				break;
 
@@ -443,10 +443,10 @@ class TodoyuSQLParser {
 		);
 		$keyPositions	= array();
 
-		if( $strPosPrimary !== false ) 	$keyPositions[] = $strPosPrimary;
-		if( $strPosUnique !== false ) 	$keyPositions[] = $strPosUnique;
+		if( $strPosPrimary !== false )	$keyPositions[] = $strPosPrimary;
+		if( $strPosUnique !== false )	$keyPositions[] = $strPosUnique;
 		if( $strPosFulltext !== false ) $keyPositions[] = $strPosFulltext;
-		if( $strPosKey !== false ) 		$keyPositions[] = $strPosKey;
+		if( $strPosKey !== false )		$keyPositions[] = $strPosKey;
 
 		if( sizeof($keyPositions) > 0 ) {
 			$pos	= min($keyPositions);

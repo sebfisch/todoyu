@@ -52,7 +52,7 @@ class TodoyuRenderer {
 	 */
 	public static function renderAutocompleteResults(array $results) {
 		$tmpl	= 'core/view/autocomplete-list.tmpl';
-		$data 	= array(
+		$data	= array(
 			'results' => $results
 		);
 

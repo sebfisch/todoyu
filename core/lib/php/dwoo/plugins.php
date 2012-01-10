@@ -70,7 +70,7 @@ function Dwoo_Plugin_LabelFormat(Dwoo $dwoo, $key, array $values, $locale = null
  * @return	String
  */
 function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
-	$idCountry = (int) $idCountry;
+	$idCountry	= (int) $idCountry;
 
 	if( $idCountry > 0 ) {
 		$country	= TodoyuStaticRecords::getCountry($idCountry);
@@ -132,13 +132,13 @@ function Dwoo_Plugin_includeEscaped(Dwoo $dwoo, $file, $convertSpecialCharsOnly 
  */
 function Dwoo_Plugin_inArray(Dwoo $dwoo, $value, $array) {
 	if( ! is_array($value) ) {
-		$value = explode(',', $value);
+		$value	= explode(',', $value);
 	}
 	if( ! is_array($array) ) {
-		$array = explode(',', $array);
+		$array	= explode(',', $array);
 	}
 
-	$mix = array_intersect($value, $array);
+	$mix	= array_intersect($value, $array);
 
 	return sizeof($mix) > 0 ;
 }

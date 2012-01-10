@@ -233,7 +233,7 @@ class Todoyu {
 			self::$locale = self::$CONFIG['SYSTEM']['locale'];
 
 			$cookieLocale	= TodoyuLocaleManager::getCookieLocale();
-			$browserLocale 	= TodoyuBrowserInfo::getBrowserLocale();
+			$browserLocale	= TodoyuBrowserInfo::getBrowserLocale();
 
 			if( TodoyuAuth::isLoggedIn() && self::db()->isConnected() ) {
 				$personLocale	= self::person()->getLocale(false);
@@ -354,7 +354,7 @@ class Todoyu {
 	 *
 	 * @param	String			$template		Path to template file (or a template object)
 	 * @param	Array			$data			Data for template rendering
-	 * @param	Dwoo_ICompiler 	$compiler		Custom compiler
+	 * @param	Dwoo_ICompiler	$compiler		Custom compiler
 	 * @param	Boolean			$output			Output directly with echo
 	 * @return	String			Rendered template
 	 */

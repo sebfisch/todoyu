@@ -23,7 +23,7 @@
  *
  * @package		Todoyu
  * @subpackage	Colors
- * @see 		config\colors.php
+ * @see			config\colors.php
  */
 class TodoyuColors {
 
@@ -190,7 +190,7 @@ class TodoyuColors {
 	 * @return	String
 	 */
 	private static function getBestReadableContrastTextColor($color) {
-		$color 	= trim(str_replace('#', '', $color));
+		$color	= trim(str_replace('#', '', $color));
 
 		$c_r	= hexdec(substr($color, 0, 2));
 		$c_g	= hexdec(substr($color, 2, 2));

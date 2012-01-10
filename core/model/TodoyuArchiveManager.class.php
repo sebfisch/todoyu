@@ -139,9 +139,7 @@ class TodoyuArchiveManager {
 			self::createEmptyArchive($pathArchive);
 		} else {
 				// Prepare exclude paths
-			foreach($exclude as $index => $path) {
-				$exclude[$index] = TodoyuFileManager::pathAbsolute($path);
-			}
+			array_walk($exclude, 'TodoyuFilemanager::pathAbsolute');
 
 				// Create archive
 			$archive = new ZipArchive();

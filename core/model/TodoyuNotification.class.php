@@ -24,7 +24,7 @@
  *
  * @package		Todoyu
  * @subpackage	Core
- * @see 		core/asset/js/Notification.js
+ * @see			core/asset/js/Notification.js
  */
 class TodoyuNotification {
 

@@ -888,7 +888,7 @@ class TodoyuDatabase {
 		$idEntity2	= (int) $idEntity2;
 
 		$field	= 'id';
-		$where	= '		' . $fieldNameEntity1 . ' 	= ' . $idEntity1
+		$where	= '		' . $fieldNameEntity1 . '	= ' . $idEntity1
 				. ' AND	' . $fieldNameEntity2 . '	= ' . $idEntity2;
 		$limit	= '1';
 

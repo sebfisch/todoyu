@@ -44,7 +44,7 @@ class TodoyuPanelWidgetRenderer {
 					// Check whether panelWidget is allowed to be displayed
 				if( call_user_func(array($widgetConfig['class'], 'isAllowed') ) ) {
 					$widget		= TodoyuPanelWidgetManager::getPanelWidget($widgetConfig['ext'], $widgetConfig['name'], $params);
-					$content 	.= $widget->render();
+					$content	.= $widget->render();
 				} else {
 						// Widget not allowed
 //					TodoyuDebug::printInFirebug('PanelWidget ' . $widgetClass . ' is not allowed');

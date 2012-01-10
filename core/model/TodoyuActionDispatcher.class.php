@@ -31,7 +31,7 @@ class TodoyuActionDispatcher {
 	 * Get request extension.
 	 * Fallback for last requested extension and default
 	 *
-	 * @return 	String
+	 * @return	String
 	 */
 	private static function getExtension() {
 		$ext	= TodoyuRequest::getExt();

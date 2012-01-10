@@ -436,7 +436,7 @@ class TodoyuString {
 		}
 
 			// Add applicable size label (GB / MB / KB / B)
-		if( $fileSize > TodoyuNumeric::BYTES_GIGABYTE ) { 			// GB
+		if( $fileSize > TodoyuNumeric::BYTES_GIGABYTE ) {			// GB
 			$size	= $fileSize / TodoyuNumeric::BYTES_GIGABYTE;
 			$label	= $labels['gb'];
 		} elseif( $fileSize > TodoyuNumeric::BYTES_MEGABYTE ) {		// MB

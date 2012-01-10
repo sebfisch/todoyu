@@ -34,7 +34,7 @@ class TodoyuDbAnalyzer {
 	 */
 	public static function getDatabasesOnServer(array $dbConfig) {
 		$databases	= array();
-		$ignore 	= array(
+		$ignore		= array(
 			'information_schema',
 			'mysql',
 			'phpmyadmin'

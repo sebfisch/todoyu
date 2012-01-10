@@ -156,7 +156,7 @@ class TodoyuInstallerManager {
 					$useDatabase= $databaseNew;
 					$createDb	= true;
 				} else {
-					$result['text'] 	= Todoyu::Label('install.installer.dbselect.text.dbNameExists');
+					$result['text']		= Todoyu::Label('install.installer.dbselect.text.dbNameExists');
 					$result['textClass']= 'error';
 				}
 			} else {
@@ -616,7 +616,7 @@ class TodoyuInstallerManager {
 			// Check PHP version compatibility
 		if( ! self::hasAdequatePhpVersion() ) {
 			$result['phpversion']	= false;
-			$result['false'] 		= true;
+			$result['false']		= true;
 		}
 
 		$fileCheck		= self::checkWritableStatus($stepConfig['fileCheck']);

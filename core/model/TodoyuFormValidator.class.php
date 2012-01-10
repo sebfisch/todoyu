@@ -30,7 +30,7 @@ class TodoyuFormValidator {
 	 * Validate form field
 	 *
 	 * @param	String				$validatorName
-	 * @param	Mixed			 	$fieldValue
+	 * @param	Mixed				$fieldValue
 	 * @param	Array				$validatorConfig
 	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
@@ -246,7 +246,7 @@ class TodoyuFormValidator {
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
-	 * @param	TodoyuFormElement 	$formElement
+	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
@@ -269,7 +269,7 @@ class TodoyuFormValidator {
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
-	 * @param	TodoyuFormElement 	$formElement
+	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
@@ -292,7 +292,7 @@ class TodoyuFormValidator {
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
-	 * @param	TodoyuFormElement 	$formElement
+	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
@@ -443,7 +443,7 @@ class TodoyuFormValidator {
 	/**
 	 * Negate check of dateBefore. Check validity if the date is after or the same time
 	 *
-	 * @see 	dateBefore()
+	 * @see		dateBefore()
 	 * @param	String				$value				Readable date format which works with strtotime()
 	 * @param	Array				$validatorConfig	Field config array
 	 * @param	TodoyuFormElement	$formElement
@@ -515,7 +515,7 @@ class TodoyuFormValidator {
 	/**
 	 * Negated check of dateAfter. Check is valid if the date is before or the same time.
 	 *
-	 * @see 	dateAfter()
+	 * @see		dateAfter()
 	 * @param	String				$value			Readable date format which works with strtotime()
 	 * @param	Array				$validatorConfig			Field config array
 	 * @param	TodoyuFormElement	$formElement
@@ -605,8 +605,8 @@ class TodoyuFormValidator {
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
-	 * @param	TodoyuFormElement 	$formElement
-	 * @param	Array 				$formData
+	 * @param	TodoyuFormElement	$formElement
+	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
 	public static function dateTimeAfter($value, array $validatorConfig, TodoyuFormElement $formElement, array $formData) {
@@ -713,7 +713,7 @@ class TodoyuFormValidator {
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig		field = other fieldname
-	 * @param	TodoyuFormElement 	$formElement
+	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
@@ -769,8 +769,8 @@ class TodoyuFormValidator {
 	 * Validate for a good password
 	 *
 	 * @param	String				$value
-	 * @param	Array			 	$validatorConfig
-	 * @param	TodoyuFormElement 	$formElement
+	 * @param	Array				$validatorConfig
+	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
@@ -808,7 +808,7 @@ class TodoyuFormValidator {
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
-	 * @param	TodoyuFormElement 	$formElement
+	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
@@ -861,7 +861,7 @@ class TodoyuFormValidator {
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
-	 * @param	TodoyuFormElement 	$formElement
+	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */
@@ -889,7 +889,7 @@ class TodoyuFormValidator {
 	 *
 	 * @param	String				$value
 	 * @param	Array				$validatorConfig
-	 * @param	TodoyuFormElement 	$formElement
+	 * @param	TodoyuFormElement	$formElement
 	 * @param	Array				$formData
 	 * @return	Boolean
 	 */

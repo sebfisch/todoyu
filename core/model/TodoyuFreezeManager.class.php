@@ -120,7 +120,7 @@ class TodoyuFreezeManager {
 	 */
 	public static function unfreezeElement($type, $idElement, $ignoreMissing = false) {
 		$idElement	= (int) $idElement;
-		$data 		= false;
+		$data		= false;
 
 		$fields	= '*';
 		$where	= '		`element_type`	= ' . Todoyu::db()->quote($type)

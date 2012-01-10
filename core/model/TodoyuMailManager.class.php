@@ -105,9 +105,9 @@ class TodoyuMailManager {
 					e.date_create';
 		$tables	= '		ext_contact_person p,' .
 					'	system_log_email e';
-		$where	= '		e.ext 				= ' . $extID .
+		$where	= '		e.ext				= ' . $extID .
 				'	AND	e.record_type		= \'' . $type . '\' ' .
-				'	AND	e.id_record 		= ' . $idRecord .
+				'	AND	e.id_record			= ' . $idRecord .
 				  ' AND	e.id_person_email	= p.id
 					AND	p.deleted			= 0';
 		$group	= '	p.id';

@@ -56,7 +56,7 @@ class TodoyuPageAssetManager {
 		$absPathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
 
 		$compress		= $compress === false ? false : true ;
-		$merge			= $merge 	=== false ? false : true ;
+		$merge			= $merge	=== false ? false : true ;
 		$localize		= $localize === false ? false : true ;
 
 		$position		= (int) $position;
@@ -102,7 +102,7 @@ class TodoyuPageAssetManager {
 		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
 		$media		= empty($media) ? 'all' : $media;
 		$compress	= $compress === false ? false : true ;
-		$merge		= $merge 	=== false ? false : true ;
+		$merge		= $merge	=== false ? false : true ;
 
 		$position	= (int) $position;
 		if( $position === 0) {
@@ -150,8 +150,8 @@ class TodoyuPageAssetManager {
 			// Add all CSS files
 		foreach($cssFiles as $cssFile) {
 			TodoyuPage::add('cssFiles', array(
-				'file' 	=> $cssFile['file'],
-				'media' => $cssFile['media']
+				'file'	=> $cssFile['file'],
+				'media'	=> $cssFile['media']
 			));
 		}
 	}
@@ -312,7 +312,7 @@ class TodoyuPageAssetManager {
 					$fileCode	= file_get_contents($fileConfig['file']);
 
 					if( $localized ) {
-						$fileCode 	= self::localizeJavascript($fileCode);
+						$fileCode	= self::localizeJavascript($fileCode);
 						$localized	= true;
 					}
 					if( $compressed ) {
@@ -601,7 +601,7 @@ class TodoyuPageAssetManager {
 	 *
 	 * @param	String		$cssCode
 	 * @param	String		$pathToUncompressedFile
-	 * @return 	String
+	 * @return	String
 	 */
 	private static function rewriteRelativePaths($cssCode, $pathToUncompressedFile) {
 			// Remove quotes in url() elements
@@ -611,7 +611,7 @@ class TodoyuPageAssetManager {
 
 			// Rewrite paths
 		$search		= 'url(';
-		$replace 	= 'url(../../' . dirname( TodoyuFileManager::pathWeb($pathToUncompressedFile) ) . '/';
+		$replace	= 'url(../../' . dirname( TodoyuFileManager::pathWeb($pathToUncompressedFile) ) . '/';
 		$cssCode	= str_replace($search, $replace, $cssCode);
 
 			// Make a real path
@@ -644,7 +644,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
- 	 * Add IE custom scripts to the browser (if its an IE)
+	 * Add IE custom scripts to the browser (if its an IE)
 	 */
 	function addInternetExplorerAssets() {
 		if( TodoyuBrowserInfo::isIE() ) {

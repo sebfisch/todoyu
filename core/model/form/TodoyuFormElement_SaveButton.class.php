@@ -21,7 +21,7 @@
 /**
  * Save button form element
  *
- * @package 	Todoyu
+ * @package		Todoyu
  * @subpackage	Form
  */
 class TodoyuFormElement_SaveButton extends TodoyuFormElement_Button {

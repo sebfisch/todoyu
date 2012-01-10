@@ -81,9 +81,9 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @param	Array		$config
 	 */
 	public function __construct($type, $name, TodoyuFieldset $fieldset, array $config = array()) {
-		$this->type 	= $type;
-		$this->name 	= $name;
-		$this->fieldset = $fieldset;
+		$this->type		= $type;
+		$this->name		= $name;
+		$this->fieldset	= $fieldset;
 		$this->config	= $config;
 
 		$this->setAttribute('nodeAttributes', $this->getAttribute('@attributes'));
@@ -353,7 +353,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	/**
 	 * Get form element field name
 	 *
-	 * @return 	String
+	 * @return	String
 	 */
 	public function getName() {
 		return $this->name;
@@ -564,7 +564,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Boolean
 	 */
 	public final function isValid() {
-		$validations 	= $this->getValidations();
+		$validations	= $this->getValidations();
 		$formData		= $this->getForm()->getFormData();
 
 			// Don't validate disabled fields
@@ -774,9 +774,9 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$tmpl	= $this->getTemplate();
 		$data	= $this->getData();
 
-		$data['odd'] 			= $odd ? true : false;
-		$data['error'] 			= $this->hasErrorStatus();
-		$data['errorMessage'] 	= $this->getErrorMessage();
+		$data['odd']			= $odd ? true : false;
+		$data['error']			= $this->hasErrorStatus();
+		$data['errorMessage']	= $this->getErrorMessage();
 
 		return Todoyu::render($tmpl, $data);
 	}

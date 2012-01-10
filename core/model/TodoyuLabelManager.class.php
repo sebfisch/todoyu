@@ -365,7 +365,7 @@ class TodoyuLabelManager {
 	 * @return	Array
 	 */
 	private static function extractLabelsFromXmlResult(array $xmlValueArray) {
-		$labels 	= array();
+		$labels	= array();
 
 		foreach($xmlValueArray as $xmlTag) {
 			switch($xmlTag['type']) {

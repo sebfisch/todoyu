@@ -70,7 +70,7 @@ class TodoyuFileManager {
 	 *
 	 * @param	String		$absolutePath
 	 * @param	Boolean		$prependDomain
-	 * @return 	String
+	 * @return	String
 	 */
 	public static function pathWeb($absolutePath, $prependDomain = false) {
 		$pathWeb = str_replace('\\', '/', str_replace(PATH . DIR_SEP, '', self::pathAbsolute($absolutePath)));
@@ -241,7 +241,7 @@ class TodoyuFileManager {
 					break;
 				}
 				$last			= $directoryPath;
-				$directoryPath 	= dirname($directoryPath);
+				$directoryPath	= dirname($directoryPath);
 
 				if( $directoryPath === PATH ) {
 					break;

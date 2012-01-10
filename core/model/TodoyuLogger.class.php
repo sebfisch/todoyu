@@ -61,11 +61,11 @@ class TodoyuLogger {
 	 * Levels are defined as constants TodoyuLogger::LEVEL_*
 	 *
 	 * Levels:
-	 * 	0: Debug Message
-	 *  1: Notice
-	 * 	2: Logical Error
-	 * 	3: Security Error
-	 *  4: Fatal Error
+	 *	0: Debug Message
+	 *	1: Notice
+	 *	2: Logical Error
+	 *	3: Security Error
+	 *	4: Fatal Error
 	 *
 	 * @var	Integer
 	 */
@@ -190,7 +190,7 @@ class TodoyuLogger {
 			return false;
 		}
 
-		$info['fileshort'] 	= TodoyuFileManager::pathWeb($info['file']);
+		$info['fileshort']	= TodoyuFileManager::pathWeb($info['file']);
 
 		$loggers	= $this->getLoggerInstances();
 

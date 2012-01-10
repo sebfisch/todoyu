@@ -106,7 +106,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * First it checks for a getter function, if not available try to find the data in $this->data
 	 *
 	 * @param	String		$memberName
-	 * @return 	String
+	 * @return	String
 	 */
 	public function __get($memberName) {
 		$dataKey	= strtolower($memberName);

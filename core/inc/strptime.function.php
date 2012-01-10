@@ -38,7 +38,7 @@ function strptime($date, $format) {
 		return false;
 	}
 
-	$dateTime = array(
+	$dateTime	= array(
 		'tm_sec'	=> 0,
 		'tm_min'	=> 0,
 		'tm_hour'	=> 0,
@@ -52,37 +52,38 @@ function strptime($date, $format) {
 				// Day
 			case 'd':
 			case 'e':
-				$dateTime['tm_mday'] = (int) $val;
+				$dateTime['tm_mday']	= (int) $val;
 				break;
 
 				// Month
 			case 'm':
-				$dateTime['tm_mon'] = (int) $val;
+				$dateTime['tm_mon']		= (int) $val;
 				break;
 
 			case 'Y':
-				$dateTime['tm_year'] = (int) $val;
+				$dateTime['tm_year']	= (int) $val;
 				break;
 
 			case 'y':
-				$dateTime['tm_year'] = (int) $val + 2000;
+				$dateTime['tm_year']	= (int) $val + 2000;
 				break;
 
 			case 'H':
 			case 'I':
-				$dateTime['tm_hour'] = (int) $val;
+				$dateTime['tm_hour']	= (int) $val;
 				break;
 
 			case 'M':
-				$dateTime['tm_min'] = (int) $val;
+				$dateTime['tm_min']		= (int) $val;
 				break;
 
 			case 'S':
-				$dateTime['tm_sec'] = (int) $val;
+				$dateTime['tm_sec']		= (int) $val;
 				break;
 		}
 	}
-	$dateTime['timestamp'] = mktime($dateTime['tm_hour'], $dateTime['tm_min'], $dateTime['tm_sec'], $dateTime['tm_mon'], $dateTime['tm_mday'], $dateTime['tm_year']);
+
+	$dateTime['timestamp']	= mktime($dateTime['tm_hour'], $dateTime['tm_min'], $dateTime['tm_sec'], $dateTime['tm_mon'], $dateTime['tm_mday'], $dateTime['tm_year']);
 
 	return $dateTime;
 };
@@ -111,14 +112,14 @@ function strptime_strToDate($date, $format) {
 	}
 
 		// Define replacements for strftime markers with regex patterns
-	$search = array('%d', '%e', // Day
+	$search		= array('%d', '%e', // Day
 					'%m', 		// Month
 					'%Y', '%y', // Year
 					'%H', '%I', // Hour
 					'%M', 		// Minutes
 					'%S'		// Seconds
 	);
-	$replace = array('(\d{1,2})', '(\d{1,2})', 	// Day
+	$replace	= array('(\d{1,2})', '(\d{1,2})', 	// Day
 					 '(\d{1,2})', 				// Month
 					 '(\d{4})', '(\d{2})', 		// Year
 					 '(\d{1,2})', '(\d{1,2})',	// Hour
@@ -127,27 +128,27 @@ function strptime_strToDate($date, $format) {
 	);
 
 		// Replace markers
-	$pattern = str_replace($search, $replace, $format);
+	$pattern	= str_replace($search, $replace, $format);
 
 		// The to find a marker
 	if( ! preg_match("#$pattern#", $date, $matches) ) {
 		return false;
 	}
-	$dp = $matches;
+	$dp	= $matches;
 
 		// Find all markers
 	if( ! preg_match_all('#%(\w)#', $format, $matches) ) {
 		return false;
 	}
-	$id = $matches['1'];
+	$id	= $matches['1'];
 
 	if( count($dp) != count($id) + 1 ) {
 		return false;
 	}
 
-	$ret = array();
+	$ret	= array();
 	for($i = 0, $j = count($id); $i < $j; $i++) {
-		$ret[$id[$i]] = $dp[$i+1];
+		$ret[$id[$i]]	= $dp[$i+1];
 	}
 
 	return $ret;

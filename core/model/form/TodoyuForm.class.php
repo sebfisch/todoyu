@@ -167,7 +167,7 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Set a new fieldset. You should use addFieldset()
 	 *
-	 * @see 	addFieldset
+	 * @see		addFieldset
 	 * @param	String		$name
 	 * @param	TodoyuFieldset	$fieldset
 	 */
@@ -394,7 +394,7 @@ class TodoyuForm implements ArrayAccess {
 
 	/**
 	 * checks if field is required
-	 * 	checks if field is empty
+	 *	checks if field is empty
 	 *
 	 * @param	TodoyuFormElement	$field
 	 */

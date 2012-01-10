@@ -32,7 +32,7 @@ abstract class TodoyuPanelWidget {
 	 *
 	 * @var	Array
 	 */
-	protected $data 	= array();
+	protected $data	= array();
 
 	/**
 	 * Widget config

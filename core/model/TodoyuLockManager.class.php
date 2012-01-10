@@ -80,7 +80,7 @@ class TodoyuLockManager {
 	 * @return	Boolean
 	 */
 	public static function isLocked($table, $idRecord) {
-		$where	= ' 	`table`		= ' . Todoyu::db()->quote($table, true)
+		$where	= '		`table`		= ' . Todoyu::db()->quote($table, true)
 				. ' AND `id_record`	= ' . (int) $idRecord;
 
 		return Todoyu::db()->hasResult('id', self::TABLE, $where);
@@ -102,7 +102,7 @@ class TodoyuLockManager {
 			return false;
 		}
 
-		$where	= ' 	`table`		= ' . Todoyu::db()->quote($table, true)
+		$where	= '		`table`		= ' . Todoyu::db()->quote($table, true)
 				. ' AND `id_record`	IN(' . implode(',', $recordIDs) . ')';
 
 		return Todoyu::db()->hasResult('id', self::TABLE, $where);
@@ -137,7 +137,7 @@ class TodoyuLockManager {
 	 */
 	public static function getNumLocks($table, $idRecord) {
 		$field	= 'id';
-		$where	= ' 	`table`		= ' . Todoyu::db()->quote($table, true)
+		$where	= '		`table`		= ' . Todoyu::db()->quote($table, true)
 				. ' AND `id_record`	= ' . (int) $idRecord;
 
 		$result	= Todoyu::db()->doSelect($field, self::TABLE, $where);

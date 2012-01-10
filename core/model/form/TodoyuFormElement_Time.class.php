@@ -32,7 +32,7 @@ class TodoyuFormElement_Time extends TodoyuFormElement_Text {
 	 * Initialize time-input field
 	 *
 	 * @param	String				$name
-	 * @param 	TodoyuFieldset		$fieldset
+	 * @param	TodoyuFieldset		$fieldset
 	 * @param	Array				$config
 	 */
 	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {

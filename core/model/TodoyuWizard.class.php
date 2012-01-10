@@ -69,7 +69,7 @@ abstract class TodoyuWizard {
 	 * Render step of the wizard
 	 *
 	 * @param	Boolean|String		$stepName
-	 * @return 	String
+	 * @return	String
 	 */
 	public function render($stepName = false) {
 		if( ! empty($stepName) ) {

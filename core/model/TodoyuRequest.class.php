@@ -336,8 +336,8 @@ class TodoyuRequest {
 			// Set definitive request vars as constants
 		define('EXT',		$requestVars['ext']);
 		define('CONTROLLER',$requestVars['ctrl']);
-		define('ACTION', 	$requestVars['action']);
-		define('AREA', 		$requestVars['area']);
+		define('ACTION',	$requestVars['action']);
+		define('AREA',		$requestVars['area']);
 	}
 
 
@@ -371,7 +371,7 @@ class TodoyuRequest {
 		}
 
 			// Encode data
-		$postData 	= $dataVar . '=' . urlencode(json_encode($data));
+		$postData	= $dataVar . '=' . urlencode(json_encode($data));
 
 		TodoyuLogger::logCore('Start sending data to host ' . $host);
 
@@ -397,7 +397,7 @@ class TodoyuRequest {
 			// Receive data
 		$content	= '';
 		while( ! feof($sock) ) {
-			$line 		= fgets($sock, 2048);
+			$line		= fgets($sock, 2048);
 			$content	.= $line;
 		}
 

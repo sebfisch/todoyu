@@ -21,7 +21,7 @@
 /**
  * class for radio boxes
  *
- * @package 	Todoyu
+ * @package		Todoyu
  * @subpackage	Form
  */
 class TodoyuFormElement_Radio extends TodoyuFormElement {

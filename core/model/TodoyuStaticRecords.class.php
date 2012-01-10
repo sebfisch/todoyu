@@ -85,7 +85,7 @@ class TodoyuStaticRecords {
 	 * @param	String		$type
 	 * @param	String		$field
 	 * @param	String		$value
-	 * @return 	Array
+	 * @return	Array
 	 */
 	public static function getRecordByField($type, $field, $value) {
 		$conditions	= array($field => $value);

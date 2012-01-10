@@ -198,7 +198,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 			// Set form data
 		$recordForm->setFormData($recordData);
 		$recordForm->setVars(array(
-			'parent' 		=> $this->getForm()->getRecordID(), // @todo remove when nowhere else used anymore
+			'parent'		=> $this->getForm()->getRecordID(), // @todo remove when nowhere else used anymore
 			'parentRecordID'=> $this->getForm()->getRecordID(),
 			'parentForm'	=> $this->getForm()
 		));
@@ -321,8 +321,8 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 	protected function getRecordTemplateData($index) {
 		$record	= $this->getRecord($index);
 
-		$record['_index'] 	= $index;
-		$record['_label'] 	= $this->getRecordLabel($index);
+		$record['_index']	= $index;
+		$record['_label']	= $this->getRecordLabel($index);
 		$record['_formHTML']= $this->renderRecordForm($index);
 
 		return $record;

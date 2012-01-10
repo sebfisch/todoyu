@@ -247,14 +247,14 @@ class TodoyuArray {
 
 			$label	= isset( $item[$sortByLabel] ) ? $item[$sortByLabel] : NULL;
 			if( $caseSensitive !== true ) {
-				$label	= 	strtolower($label);
+				$label	=	strtolower($label);
 			}
 
-			$key 	= array_key_exists($label, $labelKeyArray) ? $label . '-' . $conflictCounter++ : $label;
+			$key	= array_key_exists($label, $labelKeyArray) ? $label . '-' . $conflictCounter++ : $label;
 
 			$item['__key']	= $index;
 
-			$labelKeyArray[$key] 	= $item;
+			$labelKeyArray[$key]	= $item;
 		}
 
 			// If no natural sorting is needed, we can take the built-in functions
@@ -300,9 +300,9 @@ class TodoyuArray {
 	 *
 	 * Only keep items which have a uid between 1 and 9 AND have 352, 80, 440 or 240 pages
 	 *
-	 * $products 	= $this->getArray('*', 'ext_shop_products');
-	 * $filter 		= array('uid' 	=> array(1,2,3,4,5,6,7,8,9),
-	 * 						'pages'	=> array(352,80,440,240));
+	 * $products	= $this->getArray('*', 'ext_shop_products');
+	 * $filter		= array('uid'	=> array(1,2,3,4,5,6,7,8,9),
+	 *						'pages'	=> array(352,80,440,240));
 	 * $filteredProducts = tx_sfp::arrayFilter($prodcuts, $filter);
 	 *
 	 *

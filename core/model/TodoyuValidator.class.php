@@ -45,7 +45,7 @@ class TodoyuValidator {
 	/**
 	 * Validate variable being numeric digit
 	 *
-	 * @param	String 		$value
+	 * @param	String		$value
 	 * @return	Boolean
 	 */
 	public static function isDigit($value) {

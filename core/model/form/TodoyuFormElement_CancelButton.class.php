@@ -21,7 +21,7 @@
 /**
  * Cancel button form element
  *
- * @package 	Todoyu
+ * @package		Todoyu
  * @subpackage	Form
  */
 class TodoyuFormElement_CancelButton extends TodoyuFormElement_Button {
