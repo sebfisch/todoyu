@@ -125,6 +125,13 @@ class TodoyuCoreAboutActionController extends TodoyuActionController {
 					'license'	=> 'GNU/LGPL - August 2009',
 					'licenseUrl'=> 'http://www.gnu.org/copyleft/lesser.html'
 				),
+				'phamlp'	=> array(
+					'title'		=> 'phamlp - PHP port of Haml and Sass',
+					'url'		=> 'http://code.google.com/p/phamlp/',
+					'copyright'	=> 'Copyright (c) 2010, PBM Web Development',
+					'license'	=> 'All Rights Reserved',
+					'licenseUrl'=> 'http://code.google.com/p/phamlp/downloads/detail?name=license.txt'
+				),
 				'prototype'	=> array(
 					'title'		=> 'prototype JavaScript framework',
 					'url'		=> 'http://www.prototypejs.org/',

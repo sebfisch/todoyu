@@ -1,0 +1,34 @@
+@import "../../config/theme.scss";
+
+
+
+#quickinfo {
+	display:block;
+	left:200px;
+	position:absolute;
+	top:200px;
+	width:212px;
+	border:1px solid $grey03;
+	background-color:$colorCorporate02;
+	z-index:3000;
+	-webkit-box-shadow:2px 2px 5px $grey06;
+	-moz-box-shadow:2px 2px 5px $grey06;
+	box-shadow:2px 2px 5px $grey06;
+
+	dl {
+		dt {
+        	float:left;
+        	width:20px;
+        	min-height:15px;
+        	padding:2px; }
+
+        dd {
+         	float:left;
+         	width:180px;
+         	min-height:15px;
+         	padding:2px 4px;
+         	background-color:$colorCorporate01;
+         	text-align:left;
+         	font-size:10px; }
+	}
+}

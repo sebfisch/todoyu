@@ -28,6 +28,7 @@
  * @namespace	Todoyu
  */
 Todoyu.PanelWidgetSearchList = Class.create({
+
 	/**
 	 * Config
 	 * @var	{Object}

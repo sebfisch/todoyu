@@ -1,0 +1,242 @@
+@import "../../config/theme.scss";
+
+
+
+a.icon,
+span.icon,
+div.icon {
+	display:block;
+	float:left;
+	clear:none;
+	width:18px;
+	height:18px; }
+
+div.iconLarge,
+span.iconLarge {
+	display:block;
+	float:left;
+	clear:none;
+	width:32px;
+	height:32px; }
+
+.icon.disabled {
+	opacity:0.4;
+	cursor:no-drop !important;
+	cursor:not-allowed !important; }
+
+.link {
+	cursor:pointer; }
+
+.contentMessage {
+	clear:both;
+	padding:10px;
+	background-color:$colorCorporate02;
+	margin-bottom:5px;
+
+	div.icon,
+    div.text {
+    	float:left;
+    	clear:none; }
+
+    .icon {
+    	background:url(../img/icons.png) 2px -628px no-repeat;
+    	margin-right:15px; }
+
+    .text {
+        font-weight:bold;
+		padding-top:2px;
+		width:600px;
+
+		ul li {
+        	margin-bottom:7px; }
+    }
+}
+
+
+
+/* -----------------
+	Listings
+   -----------------*/
+ul.ulList li.listItem {
+	overflow:hidden;
+	list-style:none;
+	line-height:15px;
+	padding: {
+		top:2px;
+		bottom:2px;
+	};
+
+	span {
+    	display:block;
+    	float:left; }
+
+    &Header span {
+        font-weight:bold; }
+}
+
+ul.ulListDotted li.listItem {
+	border-bottom:1px solid $grey02; }
+
+* html ul.ulList li.listItem {
+	overflow:visible;
+	height:1%; }
+
+
+
+/* -----------------------------
+	Editable / linked items
+   ----------------------------- */
+li.listItem a.editableItem {
+	display:block; }
+
+
+
+/* -----------------
+	Box
+   -----------------*/
+.infoBoxOuter {
+	padding:7px;
+	background-color:$grey01;
+
+	&.edit form {
+     	margin:-7px; }
+}
+
+
+div.infoBox {
+	margin-bottom:5px;
+
+	h4 {
+    	margin:0px;
+    	font-weight:bold; }
+
+    div.content {
+    	padding:5px 12px;
+    	background:$white; }
+}
+
+.headerLine,
+.headerOptLine {
+	position:relative;
+	margin-top:5px;
+	height:25px;
+	text-align:left;
+	-moz-border-radius:5px 5px 0 0;
+	-webkit-border-radius:5px 5px 0 0;
+	border-radius:5px 5px 0 0;
+	border:1px solid #dfdfdf;
+	border-bottom-color:$white;
+}
+
+.headerLine {
+	background:url('../img/bg-headerline.png') repeat-x 0 0;
+
+	label {
+    	text-transform:uppercase;
+    	font-size:10px;
+    	letter-spacing:0.3px; }
+
+    th,
+    &OptLine th {
+    	font: {
+			size:10px;
+			weight:normal; }
+    	text-transform:uppercase;
+    	white-space:nowrap;
+    }
+
+    input {
+    	margin-right:10px; }
+
+    button span {
+    	line-height:20px; }
+}
+
+.headerOptLine {
+	background:url('../img/bg-headerline.png') repeat-x 0 -46px;
+	border-color:$colorCorporate04; }
+
+.headerLine span,
+.button {
+	text-shadow:1px 1px $grey01; }
+
+h1.headerLine.hasIcon {
+	padding-left:2px;
+
+	span{
+		float:left;
+        margin:0 0 0 5px;
+        line-height:25px;
+
+		&.title {
+	    	padding-left:27px; }
+
+	    &.first {
+        	margin:0px;
+        	padding:0 0 0 15px;
+        }
+	}
+}
+
+/* table header */
+tr.headerLine {
+	border:none;
+	background:none;
+
+	th {
+    	background:url('../img/bg-headerline.png') repeat-x 0 0;
+    	border: {
+			top:1px solid $grey02;
+			bottom:1px solid $white;
+    	}
+
+        &:first-child {
+         	border: {
+         	    left:1px solid $grey02;
+         	    radius:5px 0 0 0;
+         	}
+         	-moz-border-radius:5px 0 0 0;
+         	-webkit-border-radius:5px 0 0 0;
+        }
+
+		&:last-child {
+        	border: {
+        	    right:1px solid $grey02;
+        	    radius:0 5px 0 0;
+        	}
+        	-moz-border-radius:0 5px 0 0;
+        	-webkit-border-radius:0 5px 0 0;
+        }
+    }
+}
+
+div.dialog {
+	text-align:left;
+
+	&_content h1.headerLine {
+     	display:none; }
+}
+
+	/* h3 */
+.headLabel span {
+	display:block;
+	float:left;
+	overflow:hidden;
+}
+
+span.infoIcon {
+	background:url('../img/icons.png') no-repeat 0 -629px !important;
+}
+
+span.checkbox {
+	&CheckedIcon {
+		background:url('../img/icons.png') no-repeat 0 -870px !important; }
+
+	&OpenIcon {
+		background:url('../img/icons.png') no-repeat 0 -900px !important; }
+}
+
+.calendaricon {
+	background:url('../img/icons.png') no-repeat 0 -690px;
+	cursor:pointer;
+}

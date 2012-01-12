@@ -300,6 +300,21 @@ class TodoyuString {
 
 
 	/**
+	 * Check whether the given string has the given ending
+	 *
+	 * @param   String  $string
+	 * @param   String  $ending
+	 * @return  Boolean
+	 */
+	public static function endsWith($string, $ending) {
+		$lenEnding  = strlen($ending);
+
+		return substr($string, strlen($string) - $lenEnding) === $ending;
+	}
+
+
+
+	/**
 	 * Add an element to a separated list (ex: coma separated)
 	 *
 	 * @param	String		$list
@@ -391,7 +406,7 @@ class TodoyuString {
 
 
 	/**
-	 * @return String
+	 * @return	String
 	 */
 	public static function generateGoodPassword() {
 		$config		= Todoyu::$CONFIG['SETTINGS']['passwordStrength'];

@@ -1,0 +1,51 @@
+@import "../../config/theme.scss";
+
+
+
+.paging {
+	display:block;
+	margin:8px 0 0 0;
+	background-color:$colorAlert00;
+
+	div {
+		display:block;
+		float:left;
+		clear:none;
+		text-align:center;
+		font: {
+			size:12px;
+			weight:bold; }
+
+		&.view {
+			padding-right:10px; }
+
+		&.pages {
+			width:auto;
+
+			div.page {
+				padding:0 5px;
+				width:30px;
+				cursor:pointer;
+				background-color:$colorCorporate01;
+				margin-right:1px;
+
+				&.active {
+					background-color:$colorCorporate02;
+					cursor:default; }
+			}
+		}
+
+		&.nav {
+			float:right;
+			width:80px;
+
+			div {
+				padding:0 5px;
+				margin:0 1px;
+				width:20px;
+				cursor:pointer;
+				font-size:12px;
+				background-color:$colorCorporate02; }
+		}
+	}
+}

@@ -1,0 +1,384 @@
+@import "../../config/theme.scss";
+
+
+
+body {
+	background-color:$colorCorporate02; }
+
+#header {
+	position:fixed;
+	z-index:200;
+	text-align:center;
+	width:100%;
+	left:0px;
+	border-bottom:2px solid $colorCorporate02;
+
+	.inner {
+ 		height:100px;
+ 		text-align:left;
+ 		background-color:$white; }
+}
+
+#box {
+	position:relative;
+	width:978px;
+	padding-top:100px;
+	margin:0 auto;
+	text-align:left; }
+
+#contentBox {
+	position:relative;
+	width:973px !important;
+	width:978px;
+	min-height:415px;
+	height:auto !important;
+	height:415px;
+	padding:1px 2px 0 3px; }
+
+#contentBoxTop {
+	position:absolute;
+	height:85px;
+	width:978px;
+	margin:-1px -2px 0 -3px; }
+
+#main {
+	position:relative;
+	clear:both;
+	padding:0 0 80px 0; }
+
+#notification {
+	margin:0 0 0 18px;
+	padding:6px 8px 12px 8px;
+	background-color:$colorCorporate00;
+	border:1px solid $grey05; }
+
+
+
+/* ----------------------
+	Content column
+   ----------------------*/
+#right {
+	position:relative;
+	top:46px;
+	float:left;
+	width:680px;
+	-moz-border-radius:0 10px 10px 10px;
+	-webkit-border-radius:0 10px 10px 10px;
+	border-radius:0 10px 10px 10px; }
+
+*+html #right .inner {
+	height:1%;
+	padding-top:8px; }
+
+#right span.lt,
+#right span.rt,
+#right span.lb,
+#right span.rb {
+	display:block;
+	position:absolute;
+	width:13px;
+	height:13px;
+	background: {
+		color:transparent;
+		image:url(../img/rounded-box02.png);
+		repeat:no-repeat;
+		position:0px 0px; }
+}
+
+#right span.lt {
+	display:none; }
+
+#todoyu-loginpage #right span.lt {
+	display:block; }
+
+#right span.rt {
+	top:0px;
+	right:0px;
+	background-position:100% 0; }
+
+#right span.lb {
+	bottom:0px;
+	left:0px;
+	background-position:0 100%; }
+
+#right span.rb {
+	bottom:0px;
+	right:0px;
+	background-position:100% 100%; }
+
+#content {
+	padding:1px;
+	margin:8px; }
+
+#content-body {
+	position:relative;
+	top:-28px;
+	margin-bottom:-28px; }
+
+
+
+/* --------------
+	Footer
+   --------------*/
+#footer {
+	display:block;
+	clear:both;
+	position:relative;
+	width:100%;
+	height:70px;
+	text-align:left;
+	margin-top:100px;
+	padding-top:20px; }
+
+#footer .inner {
+	width:950px;
+	margin:0 auto; }
+
+#footer-info {
+	float:left;
+	width:400px; }
+
+#footer-logo {
+	float:left;
+	width:140px;
+	text-align:center; }
+
+#footer-address {
+	float:right;
+	width:400px;
+	text-align:right; }
+
+#footer-line {
+	display:block;
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:5px;
+	background:#b0d026 url(../img/bg-footer.png) repeat-y 0 top; }
+
+
+
+/* -----------------
+	Panel
+   ----------------- */
+#panel * {
+	font-size:11px; }
+
+.panelWidget {
+	position:relative;
+	padding-bottom:3px;
+
+	h1 {
+    	height:26px;
+    	background: {
+    		image:url(../img/bg-headers.png);
+    		repeat:no-repeat;
+    		position:0 -60px; /* allowedOpen open  */
+    	}
+    	margin:0px;
+    	padding:0px;
+    	cursor:pointer;
+    	position: relative;
+    	z-index: 10;
+    	overflow:hidden;
+
+		&.expand {
+        	background-position:0 0; /* allowedOpen close */ }
+
+		&.deniedOpenClosed {
+        	background-position:0 -120px; /* deniedOpen close */ }
+
+        &.deniedOpen {
+        	background-position:0 -180px; /* deniedOpen open */}
+
+		span {
+        	display:block;
+
+            &.title {
+	            float:left;
+	            clear:none;
+	            margin:0px;
+	            padding:0 0 0 10px;
+	            line-height:26px;
+	            width:205px;
+	            overflow: hidden; }
+
+	        &.toggle {
+                float:right;
+                clear:none;
+                width:22px;
+                height:26px;
+                background:url(../img/ico-toggle.png) no-repeat 6px 50%; }
+
+            &.expand {
+             	background:url(../img/ico-toggle.png) no-repeat -24px 50%; }
+        }
+    }
+
+    &.hasIcon span.title {
+        padding-left:27px;
+        background: {
+            image:url(../img/icons.png);
+            repeat:no-repeat;
+            position:1000px 50%;
+        }
+    }
+
+    .content select {
+        border:0 none;
+
+        option {
+            padding:2px;
+            background-color:$white;
+            border-bottom:1px solid $grey02;
+            color:$grey08;
+
+            .odd {
+                background-color:$grey01; }
+        }
+
+        &.filter option {
+            color:$grey08;
+
+            .selected {
+                background-color:$colorCorporate05;
+                color:$colorTextGeneral; }
+        }
+    }
+}
+
+*+html .panelWidget div.content {
+	height:1%; /* IE7 */ }
+
+
+
+/* -------------------------------
+	Styles & status
+   ------------------------------- */
+div.toggled {
+	background-color:$colorCorporate05;
+	font-weight:bold; }
+
+.noIcon {
+	padding:0 !important;
+	background-image:none !important; }
+
+.hasIcon {
+	padding-left:20px; }
+
+span.exticon {
+	background-repeat:no-repeat;
+	padding:0 18px 16px 0;
+	margin:0 2px 0 2px; }
+
+.iconEdit {
+	background:url(../img/icons.png) no-repeat 3px -776px; }
+
+
+
+/* ---------------------
+	Toggle select
+   --------------------- */
+input.toggleSelect {
+	display:none; }
+
+label.toggleSelect {
+	padding:0 22px 18px 0;
+	cursor:pointer;
+
+	&.collapse {
+		background:url(../img/toggle.png) no-repeat 0 -150px; }
+
+	&.expand {
+		background:url(../img/toggle.png) no-repeat 0 -182px; }
+}
+
+
+
+/* ---------------
+	default width for span width display block
+   --------------- */
+.dateWithTime {
+	width:98px; }
+
+
+
+/* ---------------
+	Colors
+   --------------- */
+/* Layout */
+.bclFF {
+	background-color:$white; }
+
+.bcl00 {
+	background-color:$colorTextGeneral; }
+
+.bcl01 {
+	background-color:$colorCorporate01; }
+
+.bcl02 {
+	background-color:$colorCorporate02; }
+
+.bcl03 {
+	background-color:$colorCorporate02; }
+
+.bcl04 {
+	background-color:$colorCorporate05; }
+
+.bcl05 {
+	background-color:$colorPositive05; }
+
+.bcl06 {
+	background-color:$colorPositive04; }
+
+.bcl07 {
+	background-color:$colorHighlight01; }
+
+.bcl08 {
+	background-color:$colorPositive03; }
+
+.bcl09 {
+	background-color:$colorPositive06; }
+
+.bcl10 {
+	background-color:$blue00; }
+
+.bcl11 {
+	background-color:$blue04; }
+
+.bcl12 {
+	background-color:$blue02; }
+
+
+
+/* Gray */
+.bcgFF {
+	background-color:$white; }
+
+.bcg00 {
+	background-color:$black; }
+
+.bcg01 {
+	background-color:$grey02; }
+
+.bcg02 {
+	background-color:$grey03; }
+
+.bcg03 {
+	background-color:$grey02; }
+
+.bcg04 {
+	background-color:$colorCorporate01; }
+
+.bcg05 {
+	background-color:$grey01; }
+
+.bcg06 {
+	background-color:$grey07; }
+
+.bcg07 {
+	background-color:$grey04; }
+
+.bcg09 {
+	background-color:$grey06; }

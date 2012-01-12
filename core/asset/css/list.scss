@@ -1,0 +1,66 @@
+@import "../../config/theme.scss";
+
+
+
+table.list {
+	width: 100%;
+	background-color:$white;
+
+	&.autoWidthTable {
+    	width:auto; }
+
+	th,
+    td {
+    	padding:3px 0 3px 5px;
+    	vertical-align:top;
+
+        > span.icon {
+        	height:25px;
+        	margin:-2px 4px -8px 2px; }
+    }
+
+	th:first-child,
+    td:first-child {
+    	padding-left:0px; }
+}
+
+
+
+/* ------------
+	Hover
+   ------------ */
+table.withMouseHover tr:hover,
+table.withMouseHover tr:hover .odd,
+table.withMouseHover tr:hover .even,
+ul.withMouseHover li.odd:hover,
+ul.withMouseHover li.even:hover {
+	background-color:$grey00 !important; }
+
+table.withMouseHover tr.header:hover {
+	background-color:transparent !important; }
+
+
+
+/* -----------------------------------
+	Odd and even alternation, hover
+   ---------------------------------- */
+table.list tr.odd,
+table.listsimple tr.odd,
+li.odd {
+	background-color:$grey01; }
+
+table.list tr.even,
+table.listsimple tr.even,
+li.even {
+	background-color:$white; }
+
+#extendlisting a {
+	display:block;
+	font-weight:bold;
+	padding:9px 0 9px 20px;
+	background:url(../img/icons.png) no-repeat 5px -289px;
+
+	&:hover {
+    	background-color:$grey00;
+    }
+}

@@ -427,6 +427,18 @@ class TodoyuPageAssetManager {
 		$styleSheets= TodoyuArray::sortByLabel(self::$styleSheets, 'position');
 		$doMerging	= Todoyu::$CONFIG['CACHE']['CSS']['merge'];
 
+			// Parse SCSS files
+		foreach($styleSheets as $index => $styleSheet) {
+			$stylesheetFile   = $styleSheet['file'];
+			if( TodoyuString::endsWith($stylesheetFile, '.scss') ) {
+					// Parse SCSS to cached CSS to be included in page
+				$styleSheets[$index]['file']    = self::parseScssStylesheet($stylesheetFile);
+			}
+		}
+
+
+
+			// Group stylesheets to be merged / added separately
 		foreach( $styleSheets as $fileConfig ) {
 			if( $doMerging && $fileConfig['merge'] !== false ) {
 				$merge[]	= $fileConfig;
@@ -434,20 +446,53 @@ class TodoyuPageAssetManager {
 				$single[]	= $fileConfig;
 			}
 		}
-
-
-
 			// Process non-merge files
 		if( sizeof($single) ) {
 			$files = self::getSingleCssFiles($single);
 		}
-
 			// Process merge files
 		if( sizeof($merge) > 0 ) {
 			$files = array_merge($files, self::getMergedCssFiles($merge));
 		}
 
 		return $files;
+	}
+
+
+
+	/**
+	 * Parse given SCSS file into cache/css/ and return the new file path
+	 *
+	 * @param	String	$stylesheetFile
+	 * @return	String|Boolean				Path of created CSS file in cache / false if failed
+	 */
+	public static function parseScssStylesheet($stylesheetFile) {
+		require_once( PATH_LIB . '/php/Phamlp/sass/SassParser.php' );
+
+		$fileName	= TodoyuFileManager::getFileName($stylesheetFile);
+
+			// Create unique filename for parsed file
+		$filenameParsed	= str_replace(DIR_SEP, '-', TodoyuFileManager::pathWeb(($stylesheetFile)));
+		$fileCTime      = filectime($stylesheetFile);
+		$filenameParsed	= str_replace('.scss', $fileCTime . '.css', $filenameParsed);
+		$pathCssFile	= PATH_CACHE . '/css/' . $filenameParsed;
+
+			// Parse if not parsed yet or changed since last parse
+		if( ! file_exists($pathCssFile) ) {
+			$options    = array(
+				'filename'		=> $fileName,
+				'debug_info'	=> false,
+				'quiet'			=> false
+			);
+			$sass = new SassParser($options);
+
+			$cssCode	= $sass->toCss($stylesheetFile, true);
+			$cssCode	= self::rewriteRelativePaths($cssCode, $stylesheetFile);
+
+			return TodoyuFileManager::saveFileContent($pathCssFile, $cssCode) ? $pathCssFile : false;
+		}
+
+		return $pathCssFile;
 	}
 
 

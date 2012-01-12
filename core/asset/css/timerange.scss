@@ -1,0 +1,151 @@
+@import "../../config/theme.scss";
+
+
+
+.timerange {
+	padding-top:2px;
+
+	.bar {
+		position:relative;
+		padding:10px 0;
+
+		.slider {
+			position:relative;
+			width:472px;
+			background:url(../img/timerange.png) repeat-x 0 -32px; }
+
+		.track {
+			height:3px;
+			display:inline-block;
+			cursor:pointer; }
+
+		.trackStart {
+			width:4px;
+			background:url(../img/timerange.png) no-repeat 0 -49px; }
+
+		.trackEnd {
+			width:4px;
+			background:url(../img/timerange.png) no-repeat 0 -17px; }
+
+		.slide {
+			.handle {
+				position:absolute;
+				width:20px;
+				height:20px;
+				cursor:move;
+				cursor:ew-resize;
+				background:url(../img/timerange-handle.png) center center no-repeat;
+				margin-top:-17px;
+				z-index:10; }
+
+			.handleStart {
+				margin-left:-4px; }
+
+			.handleEnd {
+				margin-left:-5px; }
+		}
+
+		.span {
+			position:relative;
+			margin-left:5px;
+			height:3px;
+			z-index:9;
+			background-color:$black;
+			cursor:default; }
+	}
+
+	.limits {
+		font-size:10px;
+		display:block;
+
+		> div {
+			clear:none;
+			width:60px;
+			height:16px; }
+
+		limit {
+			&.min {
+				float:left;
+				text-align:left; }
+
+			&.max {
+				float:right;
+				text-align:right; }
+		}
+	}
+
+	.dates {
+		margin:3px 0;
+		position:relative;
+
+		.start,
+		.ranges {
+			float:left;
+			clear:none; }
+
+		.start {
+			width:100px; }
+
+		.end {
+			width:81px;
+			clear:none;
+			float:right; }
+
+		input {
+			width:60px; }
+
+		.ranges {
+			position:absolute;
+			top:0px;
+			z-index:5;
+			left:50%;
+			right:50%;
+			width:185px;
+			margin:-2px 0 0 -75px;
+			padding:0 5px;
+			cursor:pointer;
+			line-height:20px;
+			text-align:center;
+			white-space:nowrap;
+			background:url(../img/bg-button-css3.png) repeat-x 0 50% $white;
+			border:1px solid $grey04;
+			border-radius:13px;
+
+			&:hover {
+				margin:-7px -15px -10px -80px;
+				padding:5px 10px 10px 10px;
+				-webkit-box-shadow:2px 2px 7px $grey06;
+				-moz-box-shadow:2px 2px 7px $grey06;
+				box-shadow:2px 2px 7px $grey06;
+				-webkit-border-radius:5px;
+				-moz-border-radius:5px;
+				border-radius:5px;
+				background-color:$white;
+				background-image:none;
+
+				span.chooseRange {
+                	font-weight:bold; }
+
+                ul {
+					display:block; }
+			}
+
+			ul {
+            	display:none;
+            	z-index:9999; /* always in front */
+            	padding:0px;
+            	color:$grey07;
+            	text-align:left;
+
+				li {
+                	cursor:pointer;
+                	line-height:18px;
+                	border-bottom:1px solid $grey02;
+
+					&:hover {
+                    	background-color:$grey01; }
+                }
+            }
+		}
+	}
+}

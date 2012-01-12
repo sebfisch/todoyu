@@ -1,28 +1,28 @@
+@import "../../config/theme.scss";
+
+
+
 /* ---------------------------
-	basic
+	Basic
    ---------------------------*/
 .inlineFilters {
 	padding:6px;
 	margin-bottom:10px;
-	background-color:#eee;
-}
+	background-color:$grey01; }
 
 .inlineFilters .filter {
-	border:1px solid #e1e1e1;
-	background-color:#fff;
+	border:1px solid $grey02;
+	background-color:$white;
 	padding:10px;
-	margin-bottom:5px;
-}
+	margin-bottom:5px; }
 
 .inlineFilters .filter > div {
-	display:inline-block;
-}
+	display:inline-block; }
 
 .inlineFilters .filter .label {
 	width:140px;
 	padding:2px 0;
-	vertical-align:top;
-}
+	vertical-align:top; }
 
 .inlineFilters .filter .input {
 	width:483px;
@@ -31,50 +31,40 @@
 
 
 /* ---------------------------
-	main and extra
+	Main and extra
    ---------------------------*/
 .inlineFilters .filter .input .main,
 .inlineFilters .filter .input .extra {
-	float:left;
-}
+	float:left; }
 
 .inlineFilters .filter.typeAutocompleteMulti .main,
 .inlineFilters .filter.typeSelectMulti .main {
-	width:240px;
-}
+	width:240px; }
 
 .inlineFilters .filter.typeAutocompleteMulti .extra,
 .inlineFilters .filter.typeSelectMulti .extra {
 	width:223px;
-	margin-left:20px;
-}
+	margin-left:20px; }
 
 .inlineFilters .filter.typeAutocomplete .textAC {
-	width:400px;
-}
+	width:400px; }
 
-.inlineFilters .filter.typeAutocompleteMulti .textAC {
-	width:230px;
-}
-
+.inlineFilters .filter.typeAutocompleteMulti .textAC,
 .inlineFilters .filter.typeSelect select {
-	width:230px;
-}
+	width:230px; }
 
 
 
 /* ---------------------------
 	Item list
    ---------------------------*/
-.inlineFilters .filter ul.itemList {
-}
 .inlineFilters .filter ul.itemList li {
 	padding:2px 20px 2px 2px;
-	border-bottom:1px solid #ddd;
+	border-bottom:1px solid $grey02;
 }
 
 .inlineFilters .filter ul.itemList li:hover {
-	background-color:#f6f6f6;
+	background-color:$grey01;
 }
 
 .inlineFilters .filter ul.itemList li span.remove {

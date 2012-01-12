@@ -661,6 +661,18 @@ class TodoyuFileManager {
 
 
 	/**
+	 * Get file name (w/o extension)
+	 *
+	 * @param	String	$filename
+	 * @return	String					filename
+	 */
+	public static function getFileName($filename) {
+		return pathinfo($filename, PATHINFO_FILENAME);
+	}
+
+
+
+	/**
 	 * Get file extension
 	 *
 	 * @param	String	$filename

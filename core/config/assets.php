@@ -300,43 +300,43 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 	),
 
 	'css' => array(
-		array(
-			'file'		=> 'core/asset/css/base.css',
+	array(
+			'file'		=> 'core/asset/css/base.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/layout.css',
+			'file'		=> 'core/asset/css/layout.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/notification.css',
+			'file'		=> 'core/asset/css/notification.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/navi.css',
+			'file'		=> 'core/asset/css/navi.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/contextmenu.css',
+			'file'		=> 'core/asset/css/contextmenu.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/form.css',
+			'file'		=> 'core/asset/css/form.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/button.css',
+			'file'		=> 'core/asset/css/button.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/tab.css',
+			'file'		=> 'core/asset/css/tab.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
@@ -346,12 +346,12 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/headlet.css',
+			'file'		=> 'core/asset/css/headlet.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/content.css',
+			'file'		=> 'core/asset/css/content.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
@@ -366,79 +366,79 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/timepicker.css',
+			'file'		=> 'core/asset/css/timepicker.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/list.css',
+			'file'		=> 'core/asset/css/list.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/listing.css',
+			'file'		=> 'core/asset/css/listing.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/panel.css',
+			'file'		=> 'core/asset/css/panel.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/sortable-panel-list.css',
+			'file'		=> 'core/asset/css/sortable-panel-list.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/quickinfo.css',
+			'file'		=> 'core/asset/css/quickinfo.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/headlet-ajaxloader.css',
+			'file'		=> 'core/asset/css/headlet-ajaxloader.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/headlet-quickcreate.css',
+			'file'		=> 'core/asset/css/headlet-quickcreate.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/headlet-about.css',
+			'file'		=> 'core/asset/css/headlet-about.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/loader-box.css',
+			'file'		=> 'core/asset/css/loader-box.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/progress-box.css',
+			'file'		=> 'core/asset/css/progress-box.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/overflow-window.css',
+			'file'		=> 'core/asset/css/overflow-window.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/timerange.css',
+			'file'		=> 'core/asset/css/timerange.scss',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/inline-filters.css',
+			'file'		=> 'core/asset/css/inline-filters.scss',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/wizard.css',
+			'file'		=> 'core/asset/css/wizard.scss',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/panelwidget-searchlist.css',
+			'file'		=> 'core/asset/css/panelwidget-searchlist.scss',
 			'position'	=> 10
 		),
 		array(
