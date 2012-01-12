@@ -7,21 +7,21 @@ table.list {
 	background-color:$white;
 
 	&.autoWidthTable {
-    	width:auto; }
+		width:auto; }
 
 	th,
-    td {
-    	padding:3px 0 3px 5px;
-    	vertical-align:top;
+	td {
+		padding:3px 0 3px 5px;
+		vertical-align:top;
 
-        > span.icon {
-        	height:25px;
-        	margin:-2px 4px -8px 2px; }
-    }
+		> span.icon {
+			height:25px;
+			margin:-2px 4px -8px 2px; }
+	}
 
 	th:first-child,
-    td:first-child {
-    	padding-left:0px; }
+	td:first-child {
+		padding-left:0px; }
 }
 
 
@@ -61,6 +61,6 @@ li.even {
 	background:url(../img/icons.png) no-repeat 5px -289px;
 
 	&:hover {
-    	background-color:$grey00;
-    }
+		background-color:$grey00;
+	}
 }

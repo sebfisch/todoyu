@@ -56,16 +56,16 @@
 	}
 
 	.handle {
-    	background:transparent url(../img/icons.png) no-repeat scroll 0 -963px;
-    	width:13px;
-    	float:left;
-    	cursor:move;
-    	position:absolute;
-    	top:0px;
-    	padding:5px 0 20px;
-    	margin-right:5px;
+		background:transparent url(../img/icons.png) no-repeat scroll 0 -963px;
+		width:13px;
+		float:left;
+		cursor:move;
+		position:absolute;
+		top:0px;
+		padding:5px 0 20px;
+		margin-right:5px;
 
-    	&.hover {
-            background:transparent url(../img/icons.png) no-repeat scroll 0 -1022px; }
-    }
+		&.hover {
+			background:transparent url(../img/icons.png) no-repeat scroll 0 -1022px; }
+	}
 }

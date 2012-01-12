@@ -170,82 +170,82 @@ body {
 	padding-bottom:3px;
 
 	h1 {
-    	height:26px;
-    	background: {
-    		image:url(../img/bg-headers.png);
-    		repeat:no-repeat;
-    		position:0 -60px; /* allowedOpen open  */
-    	}
-    	margin:0px;
-    	padding:0px;
-    	cursor:pointer;
-    	position: relative;
-    	z-index: 10;
-    	overflow:hidden;
+		height:26px;
+		background: {
+			image:url(../img/bg-headers.png);
+			repeat:no-repeat;
+			position:0 -60px; /* allowedOpen open  */
+		}
+		margin:0px;
+		padding:0px;
+		cursor:pointer;
+		position: relative;
+		z-index: 10;
+		overflow:hidden;
 
 		&.expand {
-        	background-position:0 0; /* allowedOpen close */ }
+			background-position:0 0; /* allowedOpen close */ }
 
 		&.deniedOpenClosed {
-        	background-position:0 -120px; /* deniedOpen close */ }
+			background-position:0 -120px; /* deniedOpen close */ }
 
-        &.deniedOpen {
-        	background-position:0 -180px; /* deniedOpen open */}
+		&.deniedOpen {
+			background-position:0 -180px; /* deniedOpen open */}
 
 		span {
-        	display:block;
+			display:block;
 
-            &.title {
-	            float:left;
-	            clear:none;
-	            margin:0px;
-	            padding:0 0 0 10px;
-	            line-height:26px;
-	            width:205px;
-	            overflow: hidden; }
+			&.title {
+				float:left;
+				clear:none;
+				margin:0px;
+				padding:0 0 0 10px;
+				line-height:26px;
+				width:205px;
+				overflow: hidden; }
 
-	        &.toggle {
-                float:right;
-                clear:none;
-                width:22px;
-                height:26px;
-                background:url(../img/ico-toggle.png) no-repeat 6px 50%; }
+			&.toggle {
+				float:right;
+				clear:none;
+				width:22px;
+				height:26px;
+				background:url(../img/ico-toggle.png) no-repeat 6px 50%; }
 
-            &.expand {
-             	background:url(../img/ico-toggle.png) no-repeat -24px 50%; }
-        }
-    }
+			&.expand {
+			 	background:url(../img/ico-toggle.png) no-repeat -24px 50%; }
+		}
+	}
 
-    &.hasIcon span.title {
-        padding-left:27px;
-        background: {
-            image:url(../img/icons.png);
-            repeat:no-repeat;
-            position:1000px 50%;
-        }
-    }
+	&.hasIcon span.title {
+		padding-left:27px;
+		background: {
+			image:url(../img/icons.png);
+			repeat:no-repeat;
+			position:1000px 50%;
+		}
+	}
 
-    .content select {
-        border:0 none;
+	.content select {
+		border:0 none;
 
-        option {
-            padding:2px;
-            background-color:$white;
-            border-bottom:1px solid $grey02;
-            color:$grey08;
+		option {
+			padding:2px;
+			background-color:$white;
+			border-bottom:1px solid $grey02;
+			color:$grey08;
 
-            .odd {
-                background-color:$grey01; }
-        }
+			.odd {
+				background-color:$grey01; }
+		}
 
-        &.filter option {
-            color:$grey08;
+		&.filter option {
+			color:$grey08;
 
-            .selected {
-                background-color:$colorCorporate05;
-                color:$colorTextGeneral; }
-        }
-    }
+			.selected {
+				background-color:$colorCorporate05;
+				color:$colorTextGeneral; }
+		}
+	}
 }
 
 *+html .panelWidget div.content {

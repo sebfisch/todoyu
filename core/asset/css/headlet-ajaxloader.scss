@@ -3,14 +3,14 @@
 	height:26px;
 
 	.button {
-    	background:url(../img/ajax-loader.gif) no-repeat 7px 5px;
-    	border:none;
-    }
+		background:url(../img/ajax-loader.gif) no-repeat 7px 5px;
+		border:none;
+	}
 }
 
 li#todoyuheadletajaxloader a {
 	cursor:wait;
 
 	&:hover {
-     	background-color:transparent !important; }
+	 	background-color:transparent !important; }
 }

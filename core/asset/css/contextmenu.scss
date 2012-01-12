@@ -13,27 +13,27 @@
 	box-shadow:2px 2px 7px $grey06;
 
 	li {
-        border:1px solid $grey02;
+		border:1px solid $grey02;
 		margin-bottom:-1px;
 
 		a,
-    	span {
-	        display:block;
-	        padding:4px 10px 4px 29px;
-	        line-height:12px;
-	        cursor:pointer;
-         	text-align:left;
+		span {
+			display:block;
+			padding:4px 10px 4px 29px;
+			line-height:12px;
+			cursor:pointer;
+			text-align:left;
 
-	        background: {
-	            color:$grey00;
-	            repeat:no-repeat; };
-	    }
+			background: {
+				color:$grey00;
+				repeat:no-repeat; };
+		}
 
 		a:hover,
-        span:hover {
-            background-color:$colorCorporate03; }
+		span:hover {
+			background-color:$colorCorporate03; }
 
-        ul {
+		ul {
 			display:none;
 			position:absolute;
 			z-index:100001;
@@ -44,14 +44,14 @@
 
 		&.header a {
 			padding:0 5px;
-	        background-color:$blue03 !important;
-	        color:$white;
-	        cursor:default;
-	        font: {
-	            weight:bold;
-	            size:10px; }
-	    }
-    }
+			background-color:$blue03 !important;
+			color:$white;
+			cursor:default;
+			font: {
+				weight:bold;
+				size:10px; }
+		}
+	}
 }
 
 

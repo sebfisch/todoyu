@@ -124,28 +124,28 @@
 				background-image:none;
 
 				span.chooseRange {
-                	font-weight:bold; }
+					font-weight:bold; }
 
-                ul {
+				ul {
 					display:block; }
 			}
 
 			ul {
-            	display:none;
-            	z-index:9999; /* always in front */
-            	padding:0px;
-            	color:$grey07;
-            	text-align:left;
+				display:none;
+				z-index:9999; /* always in front */
+				padding:0px;
+				color:$grey07;
+				text-align:left;
 
 				li {
-                	cursor:pointer;
-                	line-height:18px;
-                	border-bottom:1px solid $grey02;
+					cursor:pointer;
+					line-height:18px;
+					border-bottom:1px solid $grey02;
 
 					&:hover {
-                    	background-color:$grey01; }
-                }
-            }
+						background-color:$grey01; }
+				}
+			}
 		}
 	}
 }

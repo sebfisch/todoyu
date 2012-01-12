@@ -9,60 +9,60 @@
 	left:0px;
 	top:0px;
 
-    div {
-        &.notes {
-            width:100%;
-            margin:0 auto; }
+	div {
+		&.notes {
+			width:100%;
+			margin:0 auto; }
 
-        &.note {
-	        width:100%;
-	        padding:15px;
-	        font-weight:bold;
-	        background-color:$white;
-	        /* cross browser opacity */
-	        -khtml-opacity:.95;
-	        -moz-opacity:.95;
-	        opacity:.95;
+		&.note {
+			width:100%;
+			padding:15px;
+			font-weight:bold;
+			background-color:$white;
+			/* cross browser opacity */
+			-khtml-opacity:.95;
+			-moz-opacity:.95;
+			opacity:.95;
 //filter:alpha(opacity = 95);
-	        /* cross browser shadow */
-	        -webkit-box-shadow:2px 2px 7px $grey06;
-	        -moz-box-shadow:2px 2px 7px $grey06;
-	        box-shadow:2px 2px 7px $grey06;
+			/* cross browser shadow */
+			-webkit-box-shadow:2px 2px 7px $grey06;
+			-moz-box-shadow:2px 2px 7px $grey06;
+			box-shadow:2px 2px 7px $grey06;
 
 			td {
 				&.icon {
-	                width:10px; }
+					width:10px; }
 
-	            &.message {
-	                width:90%;
-	                font-size:14px;
-	                color:$grey09;
-	                text-align:left; }
+				&.message {
+					width:90%;
+					font-size:14px;
+					color:$grey09;
+					text-align:left; }
 
-	            &.countdown {
-	                display:none;
-	                width:25px; }
+				&.countdown {
+					display:none;
+					width:25px; }
 
 				&.close {
-	                width:20px;
-	                background:url(../img/notify.png) 0 -47px no-repeat;
-	                cursor:pointer;
-	                padding-right:12px; }
+					width:20px;
+					background:url(../img/notify.png) 0 -47px no-repeat;
+					cursor:pointer;
+					padding-right:12px; }
 
-	            &.icon {
-	                background:url(../img/notify.png) no-repeat; }
-	       }
-	    }
+				&.icon {
+					background:url(../img/notify.png) no-repeat; }
+		   }
+		}
 
-	    &.success td.icon {
+		&.success td.icon {
 			background-position:0 -1px; }
 
 		&.error td.icon {
 			background-position:0 -96px; }
 
 		&.info td.icon {
-        	background-position:0 -189px; }
-    }
+			background-position:0 -189px; }
+	}
 }
 
 

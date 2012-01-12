@@ -11,24 +11,24 @@ form {
 		background-color:$grey01; }
 
 	/* ---------------------------------------
-    	Special styles for involved persons
-       --------------------------------------- */
-    .databaseRelation {
-    	margin-top:5px;
-    	padding-top:5px; }
+		Special styles for involved persons
+	   --------------------------------------- */
+	.databaseRelation {
+		margin-top:5px;
+		padding-top:5px; }
 
-    div.typeDatabaseRelation div.formtrigger span.label.expanded {
-    	font-weight:bold; }
+	div.typeDatabaseRelation div.formtrigger span.label.expanded {
+		font-weight:bold; }
 
-    &.formGeneral,
-    &.formPerson,
-    &.formRecord,
-    &.formRightseditor,
-    &.formConfig {
-    	padding-top:10px; }
-    /* -------------------------------------------
-        End: Special styles for involved persons
-    ---------------------------------------------- */
+	&.formGeneral,
+	&.formPerson,
+	&.formRecord,
+	&.formRightseditor,
+	&.formConfig {
+		padding-top:10px; }
+	/* -------------------------------------------
+		End: Special styles for involved persons
+	---------------------------------------------- */
 }
 
 * html form {
@@ -43,11 +43,11 @@ form {
 		background-color:$white;
 
 		fieldset,
-        &.buttons {
-        	margin:0px;
-        	padding:0px;
-        	border:none;
-        	background:none; }
+		&.buttons {
+			margin:0px;
+			padding:0px;
+			border:none;
+			background:none; }
 
 	}
 
@@ -69,7 +69,7 @@ form {
 		text-align:right;
 
 		.fElement {
-            margin-left:5px; }
+			margin-left:5px; }
 	}
 
 	.fForm fieldset#config-fieldset-save{
@@ -143,33 +143,33 @@ select {
 	text-transform:none;
 
 	&.auto {
-  		width:auto; }
+		width:auto; }
 
-  	&.day,
-    &.month {
-    	width:40px;
-    	margin-right:2px; }
+	&.day,
+	&.month {
+		width:40px;
+		margin-right:2px; }
 
 	&.monthnames {
-    	margin-left:2px; }
+		margin-left:2px; }
 
 	&.year {
-        width:60px; }
+		width:60px; }
 
-    &.datetime {
-        width:150px; }
+	&.datetime {
+		width:150px; }
 
-    option {
-	    text-transform:none;
-	    padding-left:5px; }
+	option {
+		text-transform:none;
+		padding-left:5px; }
 
 	optgroup {
-        padding-top:10px;
-        font-size:11px;
+		padding-top:10px;
+		font-size:11px;
 
-        option {
-        	background:$white; }
-    }
+		option {
+			background:$white; }
+	}
 }
 
 	select option.error,
@@ -200,19 +200,19 @@ div.fElement {
 		text-align:left; }
 
 	.fField {
-	    /* input */
-        float:left;
-        width:320px;
-        margin-left:5px;
+		/* input */
+		float:left;
+		width:320px;
+		margin-left:5px;
 
-        .fLabel {
-	        width:100px; }
+		.fLabel {
+			width:100px; }
 
-	    .fField {
-	        width:215px; }
-    }
+		.fField {
+			width:215px; }
+	}
 
-    .fClear {
+	.fClear {
 		clear:both; }
 }
 
@@ -251,30 +251,30 @@ div.fElement {
 
 	.typeDatabaseRelation {
 		.foreignRecordsActionControl {
-            display:block; }
+			display:block; }
 
-        button.addForeignRecord .icon {
-            background:url(../img/icons.png) no-repeat 6px -567px;
-            width:23px; }
+		button.addForeignRecord .icon {
+			background:url(../img/icons.png) no-repeat 6px -567px;
+			width:23px; }
 
-        .databaseRelation {
-            position:relative;
-            border-top:1px solid $grey03;
+		.databaseRelation {
+			position:relative;
+			border-top:1px solid $grey03;
 
-            span {
-                .label {
-                    cursor:pointer; }
+			span {
+				.label {
+					cursor:pointer; }
 
-                .additionalStuff {
-                    position:absolute;
-                    top:4px;
-                    right:0px;
+				.additionalStuff {
+					position:absolute;
+					top:4px;
+					right:0px;
 
-                    a.remove {
+					a.remove {
 						background:url(../img/icons.png) no-repeat 0 -539px; }
-                }
-            }
-        }
+				}
+			}
+		}
 	}
 
 	button.updateDatabase .icon {
@@ -283,11 +283,11 @@ div.fElement {
 
 	.fElement .fField.hasWizard {
 		input {
-	        width:90%;
-	        float:left; }
+			width:90%;
+			float:left; }
 
-	    .wizardIcon {
-            cursor:pointer; }
+		.wizardIcon {
+			cursor:pointer; }
 	}
 
 	fieldset.buttons div,
@@ -368,25 +368,25 @@ form .error.typeCheckbox {
 	box-shadow:2px 2px 5px $grey06;
 
 	ul {
-	    padding:0 !important; }
+		padding:0 !important; }
 
 	li{
-	    background:$white;
-	    border:1px solid $grey03;
-	    border-top:none;
-	    padding:5px;
-	    cursor:pointer;
-	    text-align:left;
+		background:$white;
+		border:1px solid $grey03;
+		border-top:none;
+		padding:5px;
+		cursor:pointer;
+		text-align:left;
 
-	    &.selected {
-	        background:$colorCorporate01; }
+		&.selected {
+			background:$colorCorporate01; }
 	}
 
 	.empty{
-        background:none;
-        border:none;
-        border-width:0px;
-        padding:0px; }
+		background:none;
+		border:none;
+		border-width:0px;
+		padding:0px; }
 }
 
 .fField .acResultContainer ul {
@@ -401,15 +401,15 @@ form .error.typeCheckbox {
 	margin-top:5px;
 
 	.formtrigger {
-    	padding:5px 0 5px 19px;
+		padding:5px 0 5px 19px;
 
 		a.remove {
-	        background:transparent url(../img/formelements.png) no-repeat 3px 3px;
-	        height:16px;
-	        width:16px;
-	        position:absolute;
-	        right:5px; }
-    }
+			background:transparent url(../img/formelements.png) no-repeat 3px 3px;
+			height:16px;
+			width:16px;
+			position:absolute;
+			right:5px; }
+	}
 }
 
 
@@ -450,25 +450,25 @@ form .error.typeCheckbox {
 	width:auto;
 
 	.selectorIcon {
-    	display:block;
-    	height:25px;
-    	width:25px;
-    	margin:9px 0 0 9px;
-    	text-indent:-9999px; }
+		display:block;
+		height:25px;
+		width:25px;
+		margin:9px 0 0 9px;
+		text-indent:-9999px; }
 
-    li {
-    	float:left;
-    	cursor:pointer;
-    	background-color:$grey01;
-    	border:1px dotted $grey06;
+	li {
+		float:left;
+		cursor:pointer;
+		background-color:$grey01;
+		border:1px dotted $grey06;
 
-    	&.selected {
-         	border:1px solid $grey06;
-         	background-color:$colorCorporate02; }
+		&.selected {
+			border:1px solid $grey06;
+			background-color:$colorCorporate02; }
 
-        &:hover {
-            background-color:$colorCorporate02; }
-   	}
+		&:hover {
+			background-color:$colorCorporate02; }
+	}
 }
 
 
@@ -491,14 +491,14 @@ div.errorMessage ul.invalidItems {
 	padding-left:5px;
 
 	li {
-	    font-weight:bold;
+		font-weight:bold;
 
 		ul {
-            list-style-type:square;
+			list-style-type:square;
 
-            li {
-	            font-weight:normal;
-	            margin-left:20px; }
-        }
+			li {
+				font-weight:normal;
+				margin-left:20px; }
+		}
 	}
 }
