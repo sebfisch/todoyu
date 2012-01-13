@@ -109,19 +109,20 @@ ul#navi-main-list li {
 
 		li {
 			width:100%;
-			background-image:none;
-			background-color:$colorCorporate02;
+			background: {
+				image:none;
+				color:$colorCorporate02; }
 			text-align:left;
 			margin-right:0px;
 
 			a {
 				padding:2px 10px 2px 30px;
 				line-height:20px;
-				font-size:10px;
-				font-weight:normal;
+				font: {
+					size:10px;
+					weight:normal; }
 
 				&:hover {
-					/* bcl04 */
 					background-color:$colorCorporate01; }
 			}
 		}

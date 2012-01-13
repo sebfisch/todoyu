@@ -419,15 +419,16 @@ form .error.typeCheckbox {
    ------------------------------------------------------ */
 .formElement .foreignRecordsActionControl {
 	height:30px;
-	background-color:$blue01; }
+	background-color:$blue01;
 
-.formElement .foreignRecordsActionControl a {
-	background:transparent url(../img/formelements.png) no-repeat 0 -30px;
-	height:16px;
-	width:17px;
-	position:absolute;
-	top:7px;
-	right:7px; }
+	a {
+		background:transparent url(../img/formelements.png) no-repeat 0 -30px;
+		height:16px;
+		width:17px;
+		position:absolute;
+		top:7px;
+		right:7px; }
+}
 
 
 

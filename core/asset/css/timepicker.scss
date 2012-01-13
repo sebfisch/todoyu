@@ -11,8 +11,10 @@
 	width:50px;
 	height:110px;
 	overflow:hidden;
-	font-family:"Courier New", Courier, monospace;
-	font-size:16px;
+	font: {
+		family:"Courier New", Courier, monospace;
+		size:16px;
+	}
 	cursor:pointer;
 	background-color:$grey00;
 	border:1px solid $grey03;

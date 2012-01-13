@@ -51,7 +51,7 @@
 
 				&.icon {
 					background:url(../img/notify.png) no-repeat; }
-		   }
+			}
 		}
 
 		&.success td.icon {
@@ -79,13 +79,13 @@
 
 span.iconLarge {
 	margin:12px 12px 0 12px;
+
+	div.notification & {
+		background:url(../img/notify.png) 0 -348px no-repeat !important; }
+
+	div.notifictation.reminder & {
+		background:url(../img/notify.png) 0 -544px no-repeat !important; }
+
+	div.confirmation & {
+		background:url(../img/notify.png) 0 -466px no-repeat !important; }
 }
-
-div.notification span.iconLarge {
-	background:url(../img/notify.png) 0 -348px no-repeat !important; }
-
-div.notification.reminder span.iconLarge {
-	background:url(../img/notify.png) 0 -544px no-repeat !important; }
-
-div.confirmation span.iconLarge {
-	background:url(../img/notify.png) 0 -466px no-repeat !important; }

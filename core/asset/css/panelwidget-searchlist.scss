@@ -2,31 +2,23 @@
 
 
 
-/* --------------------
-	Form
-   ------------------- */
-.panelWidget.searchList form {
-	.fLabel {
-		width:50px; }
-
-	.fField {
-		width:180px; }
-}
-
-
-
-/* --------------------
-	List
-   ------------------- */
-#panel .panelWidget.searchList form {
-	display:inline-block;
-	width:95%;
-	padding:1px 5px;
-	margin-top:3px;
-	border:1px solid $grey02;
-	border-bottom:none; }
-
 .panelWidget.searchList {
+	form {
+		.fLabel {
+			width:50px; }
+
+		.fField {
+			width:180px; }
+
+		#panel & {
+			display:inline-block;
+			width:95%;
+			padding:1px 5px;
+			margin-top:3px;
+			border:1px solid $grey02;
+			border-bottom:none; }
+	}
+
 	ul {
 		display:inline-block;
 		width:95%;
@@ -37,14 +29,15 @@
 	li {
 		line-height:18px;
 		margin-bottom:1px;
-		overflow:hidden; }
+		overflow:hidden;
 
-	li:hover {
-		background-color:$grey01; }
+		&:hover {
+			background-color:$grey01; }
 
-	li a {
-		display:block;
-		padding-left:25px;
-		height:18px;
-		width:250px; }
+		a {
+			display:block;
+			padding-left:25px;
+			height:18px;
+			width:250px; }
+	}
 }

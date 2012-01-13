@@ -2,76 +2,64 @@
 
 
 
-/* ---------------------------
-	Basic
-   ---------------------------*/
 .inlineFilters {
 	padding:6px;
 	margin-bottom:10px;
-	background-color:$grey01; }
-
-.inlineFilters .filter {
-	border:1px solid $grey02;
-	background-color:$white;
-	padding:10px;
-	margin-bottom:5px; }
-
-.inlineFilters .filter > div {
-	display:inline-block; }
-
-.inlineFilters .filter .label {
-	width:140px;
-	padding:2px 0;
-	vertical-align:top; }
-
-.inlineFilters .filter .input {
-	width:483px;
-}
-
-
-
-/* ---------------------------
-	Main and extra
-   ---------------------------*/
-.inlineFilters .filter .input .main,
-.inlineFilters .filter .input .extra {
-	float:left; }
-
-.inlineFilters .filter.typeAutocompleteMulti .main,
-.inlineFilters .filter.typeSelectMulti .main {
-	width:240px; }
-
-.inlineFilters .filter.typeAutocompleteMulti .extra,
-.inlineFilters .filter.typeSelectMulti .extra {
-	width:223px;
-	margin-left:20px; }
-
-.inlineFilters .filter.typeAutocomplete .textAC {
-	width:400px; }
-
-.inlineFilters .filter.typeAutocompleteMulti .textAC,
-.inlineFilters .filter.typeSelect select {
-	width:230px; }
-
-
-
-/* ---------------------------
-	Item list
-   ---------------------------*/
-.inlineFilters .filter ul.itemList li {
-	padding:2px 20px 2px 2px;
-	border-bottom:1px solid $grey02;
-}
-
-.inlineFilters .filter ul.itemList li:hover {
 	background-color:$grey01;
-}
 
-.inlineFilters .filter ul.itemList li span.remove {
-	float:right;
-	width:16px;
-	height:16px;
-	margin-right:-20px;
-	background:url(../img/icons.png) no-repeat 0 -360px;
-	cursor:pointer;
+	.filter {
+		border:1px solid $grey02;
+		background-color:$white;
+		padding:10px;
+		margin-bottom:5px;
+
+		> div {
+			display:inline-block; }
+
+		.label {
+			width:140px;
+			padding:2px 0;
+			vertical-align:top; }
+
+		.input {
+			width:483px;
+
+			.main,
+			.extra {
+				float:left; }
+		}
+
+		&.typeAutocompleteMulti .main,
+		&.typeSelectMulti .main {
+			width:240px; }
+
+		&.typeAutocompleteMulti .extra,
+		&.typeSelectMulti .extra {
+			width:223px;
+			margin-left:20px; }
+
+		&.typeAutocomplete .textAC {
+			width:400px; }
+
+		&.typeAutocompleteMulti .textAC,
+		&.typeSelect select {
+			width:230px; }
+
+		/* itemList */
+		ul.itemList li {
+			padding:2px 20px 2px 2px;
+			border-bottom:1px solid $grey02;
+
+			&:hover {
+				background-color:$grey01; }
+
+			span.remove {
+				float:right;
+				width:16px;
+				height:16px;
+				margin-right:-20px;
+				background:url(../img/icons.png) no-repeat 0 -360px;
+				cursor:pointer; }
+		}
+	}
 }

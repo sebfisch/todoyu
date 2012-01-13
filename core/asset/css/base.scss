@@ -24,10 +24,11 @@ html, body {
 img { border:0px; }
 
 a {
-	text-decoration: none; }
+	text-decoration: none;
 
-a:focus {
-	outline: none; }
+	&:focus {
+		outline: none; }
+}
 
 caption {
 	display:none; }
@@ -73,10 +74,11 @@ p {
 h1 {
 	margin:0px;
 	padding:0px;
-	overflow:hidden; }
+	overflow:hidden;
 
-h1 span {
-	float:left; }
+	span {
+		float:left; }
+}
 
 h1, h1 * {
 	font: {
@@ -133,11 +135,12 @@ h5 {
 	text-align:center; }
 
 .clearfix {
-	overflow:hidden; }
+	overflow:hidden;
 
-* html .clearfix {
-	overflow:visible;
-	height:1%; }
+	* html & {
+		overflow:visible;
+		height:1%; }
+}
 
 .overflow {
 	overflow:hidden;

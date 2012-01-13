@@ -6,11 +6,11 @@
 		background:url(../img/ajax-loader.gif) no-repeat 7px 5px;
 		border:none;
 	}
-}
 
-li#todoyuheadletajaxloader a {
-	cursor:wait;
+	li& a {
+		cursor:wait;
 
-	&:hover {
-	 	background-color:transparent !important; }
+		&:hover {
+			background-color:transparent !important; }
+	}
 }
