@@ -636,22 +636,52 @@ class TodoyuDatabase {
 		$searchWords= $this->escapeArray($searchWords);
 		$fieldWheres= array();
 
-			// Build an AND-group for all searchwords
+			// Build an AND-group for all search words
 		foreach($searchWords as $searchWord) {
 			$fieldParts = array();
 
-				// Build an OR-group for all searchfields
+				// Build an OR-group for all search fields
 			foreach($searchInFields as $fieldName) {
 				$fieldParts[] = $fieldName . ($negate ? ' NOT ' : '') . ' LIKE \'%' . $searchWord . '%\'';
 			}
 
-				// Concat field wheres with each words inside
+				// Concatenate field WHEREs with each words inside
 			$fieldWheres[] = implode(' OR ', $fieldParts);
 		}
 
 		$where = '((' . implode(') AND (', $fieldWheres) . '))';
 
 		return $where;
+	}
+
+
+
+	/**
+	 * Build "WHERE IN()" query part
+	 *
+	 * @param	Array		$values
+	 * @param	String		$searchField
+	 * @param	Boolean		$isInt			Values are integers?
+	 * @param	Boolean		$negate			Negate using NOT?
+	 * @param	Boolean		$quote			Quote non-integer values?
+	 * @return	String
+	 */
+	public function buildInArrayQuery(array $values, $searchField = 'id', $isInt = true, $negate = false, $quote = true) {
+		if( empty($values) ) {
+			return ' ';
+		}
+		$values = array_unique($values);
+
+			// Implode values array to list
+		if( $isInt ) {
+			$values = TodoyuArray::intImplode($values);
+		} elseif( $quote ) {
+			$values = TodoyuArray::implodeQuoted($values, ',');
+		} else {
+			$values = implode(',', $values);
+		}
+
+		return ' ' . $searchField . ($negate ? ' NOT ' : ' ') . 'IN (' . $values . ') ';
 	}
 
 
