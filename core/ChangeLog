@@ -3,6 +3,7 @@ todoyu core changelog
 core 2.2.0 - not released yet
 	* Feature: Removing valueless foreign records does not require confirmation anymore
 	* Feature: Better support for SQL statements to update fields. Comma is now allowed in type definition (ex: DECIMAL(5,2))
+	* Added: new DB query building method: Todoyu::db()->buildInArrayQuery()
 	* Added: General content item inline tabs management and rendering to core
 	* Added: "greaterThan" form validator
 	* Added: Methods for fetching right / section and resp. required right from extension rights matrix
