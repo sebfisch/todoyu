@@ -305,6 +305,28 @@ Todoyu.Form = {
 
 
 	/**
+	 * Confirm when toggling an exclusive (only one record of this type can be preferred) "is_preferred" flag
+	 *
+	 * @method  togglePreferredExclusive
+	 * @param	{Element}	field
+	 */
+	togglePreferredExclusive: function(field) {
+			// Switch off "is_preferred"
+		if( field.checked ) {
+			if( ! confirm('[LLL:core.form.confirm.toggle.is_preferred.on]') ) {
+				field.checked   = false;
+			}
+		} else {
+				// Switch on "is_preferred"
+			if( ! confirm('[LLL:core.form.confirm.toggle.is_preferred.off]') ) {
+				field.checked   = true;
+			}
+		}
+	},
+
+
+
+	/**
 	 * Check whether any of the given fields is currently hidden
 	 *
 	 * @method	isAnyFieldHidden

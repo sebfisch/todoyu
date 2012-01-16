@@ -14,6 +14,8 @@
 	<label index="error.notUnique">This entry already exists</label>
 	<label index="ac.noResults">Autocomplete: no results found</label>
 	<label index="is_preferred">Preferred</label>
+	<label index="confirm.toggle.is_preferred.on">Only one record of this type can be preferred at a time. Really select this record to be preferred?</label>
+	<label index="confirm.toggle.is_preferred.off">Only one record of this type can be preferred at a time. Really deselect this record from being preferred?</label>
 	<label index="dateselector.open">Open date selector to pick a date</label>
 	<label index="autocompleteInfo">This is an autocomplete field. Start typing to get suggestions</label>
 	<label index="legend.main">Role Definition</label>
