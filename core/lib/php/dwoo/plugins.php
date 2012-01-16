@@ -787,24 +787,23 @@ function Dwoo_Plugin_contentMessage_compile(Dwoo_Compiler $compiler, $label, $cl
 
 
 /**
- * Render CSS classnames from record attributes
- * Records with is_... column containing TRUE are receiving that column name as classname
+ * Render CSS classnames from boolean attribute names+values of given record. E.g. is_preferred => isPreferred0 / isPreferred1
  *
  * @param	Dwoo	$dwoo
  * @param	Array	$record
  * @return	String
  */
-function Dwoo_Plugin_getRecordClassnames(Dwoo $dwoo, array $record) {
+function Dwoo_Plugin_getRecordBooleanColumnsClassnames(Dwoo $dwoo, array $record) {
 	$classNames = '';
 
 	foreach($record as $columnKey => $columnValue) {
 			// Boolean field column containing TRUE
-		if( substr($columnKey, 0, 3) === 'is_' && $columnValue === '1' ) {
+		if( substr($columnKey, 0, 3) === 'is_' ) {
 			$classParts = explode('_', $columnKey);
 			foreach($classParts as $index => $part) {
-				$classNames .= $index > 0 ? ucfirst($part) : strtolower($part);
+				$classNames .= ($index > 0 ? ucfirst($part) : strtolower($part));
 			}
-			$classNames .= ' ';
+			$classNames .= $columnValue . ' ';
 		}
 	}
 

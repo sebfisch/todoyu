@@ -10,12 +10,17 @@ form {
 		padding:7px;
 		background-color:$grey01; }
 
-	/* ---------------------------------------
-		Special styles for involved persons
-	   --------------------------------------- */
 	.databaseRelation {
 		margin-top:5px;
-		padding-top:5px; }
+		padding-top:5px;
+
+		&.isPreferred1 div.formtrigger span.label {
+			padding-left:20px;
+			background:url(../img/icons.png) no-repeat 0 -1790px; }
+		&.isPreferred0 div.formtrigger span.label {
+			padding-left:20px;
+			background:url(../img/icons.png) no-repeat 0 -1825px; }
+	}
 
 	div.typeDatabaseRelation div.formtrigger span.label.expanded {
 		font-weight:bold; }
@@ -265,7 +270,7 @@ div.fElement {
 				.label {
 					cursor:pointer; }
 
-				.additionalStuff {
+				&.additionalStuff {
 					position:absolute;
 					top:4px;
 					right:0px;
@@ -306,16 +311,14 @@ div.fElement {
 input, textarea, select {
 	border-color:$grey06 $grey01 $grey01 $grey06; }
 
-	fieldset.buttons div.fElement {
-		float:right; }
+fieldset.buttons div.fElement {
+	float:right; }
 
-		/* --- right floating Input --- */
-	.formElement .formField {
-		width:58%; }
-
-	.formElement .formField {
-		display:inline;
-		float:right; }
+	/* --- right floating Input --- */
+.formElement .formField {
+	width:58%;
+	display:inline;
+	float:right; }
 
 
 
@@ -403,6 +406,7 @@ form .error.typeCheckbox {
 	.formtrigger {
 		padding:5px 0 5px 19px;
 
+// @todo remap to icons.png and remove formelements.png
 		a.remove {
 			background:transparent url(../img/formelements.png) no-repeat 3px 3px;
 			height:16px;
@@ -421,6 +425,7 @@ form .error.typeCheckbox {
 	height:30px;
 	background-color:$blue01;
 
+// @todo remap to icons.png and remove formelements.png
 	a {
 		background:transparent url(../img/formelements.png) no-repeat 0 -30px;
 		height:16px;
@@ -435,40 +440,38 @@ form .error.typeCheckbox {
 /* --------------------
 	Wizard icon
    -------------------- */
-.fField span.wizardIcon  {
-	height:16px;
-	width:16px;
-	display:block;
-	float:right;
-	background:transparent url(../img/icons.png) no-repeat 0 -90px; }
-
-
-
-/* --------------------------------------
-	Form element: iconSelector
-   -------------------------------------- */
-.fField .iconSelector {
-	width:auto;
-
-	.selectorIcon {
+.fField {
+	span.wizardIcon  {
+		height:16px;
+		width:16px;
 		display:block;
-		height:25px;
-		width:25px;
-		margin:9px 0 0 9px;
-		text-indent:-9999px; }
+		float:right;
+		background:transparent url(../img/icons.png) no-repeat 0 -90px;
 
-	li {
-		float:left;
-		cursor:pointer;
-		background-color:$grey01;
-		border:1px dotted $grey06;
+		.iconSelector {
+			width:auto;
 
-		&.selected {
-			border:1px solid $grey06;
-			background-color:$colorCorporate02; }
+			.selectorIcon {
+				display:block;
+				height:25px;
+				width:25px;
+				margin:9px 0 0 9px;
+				text-indent:-9999px; }
 
-		&:hover {
-			background-color:$colorCorporate02; }
+			li {
+				float:left;
+				cursor:pointer;
+				background-color:$grey01;
+				border:1px dotted $grey06;
+
+				&.selected {
+					border:1px solid $grey06;
+					background-color:$colorCorporate02; }
+
+				&:hover {
+					background-color:$colorCorporate02; }
+			}
+		}
 	}
 }
 

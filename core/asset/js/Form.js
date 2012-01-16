@@ -141,7 +141,7 @@ Todoyu.Form = {
 
 
 	/**
-	 * Toggle sub form
+	 * Toggle display of sub form
 	 *
 	 * @method	toggleRecordForm
 	 * @param	{Number}		idRecord
