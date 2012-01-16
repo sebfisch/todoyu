@@ -1,4 +1,4 @@
-<div id="foreignrecord-{$idRecord}-{$fieldname}-{$record._index}" class="databaseRelation">
+<div id="foreignrecord-{$idRecord}-{$fieldname}-{$record._index}" class="databaseRelation {getRecordClassnames $record}">
 	<div id="foreignrecord-{$idRecord}-{$fieldname}-{$record._index}-trigger" onclick="Todoyu.Form.toggleRecordForm({$idRecord}, '{$fieldname}', {$record._index})" class="formtrigger">
 		<span class="label {if $error}expanded{/if}" title="{Label core.form.records.edit}">{cropText htmlencode($record._label) 60}</span>
 		<span class="additionalStuff">

@@ -784,4 +784,31 @@ function Dwoo_Plugin_contentMessage_compile(Dwoo_Compiler $compiler, $label, $cl
 	return 'Todoyu::render(\'core/view/contentMessage.tmpl\', array(\'labels\'=>explode(\'|\', ' . $label . '),\'class\'=>' . $class . ',\'content\'=>' . $content . '))';
 }
 
+
+
+/**
+ * Render CSS classnames from record attributes
+ * Records with is_... column containing TRUE are receiving that column name as classname
+ *
+ * @param	Dwoo	$dwoo
+ * @param	Array	$record
+ * @return	String
+ */
+function Dwoo_Plugin_getRecordClassnames(Dwoo $dwoo, array $record) {
+	$classNames = '';
+
+	foreach($record as $columnKey => $columnValue) {
+			// Boolean field column containing TRUE
+		if( substr($columnKey, 0, 3) === 'is_' && $columnValue === '1' ) {
+			$classParts = explode('_', $columnKey);
+			foreach($classParts as $index => $part) {
+				$classNames .= $index > 0 ? ucfirst($part) : strtolower($part);
+			}
+			$classNames .= ' ';
+		}
+	}
+
+	return trim($classNames);
+}
+
 ?>
