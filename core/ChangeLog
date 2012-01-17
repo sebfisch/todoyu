@@ -13,6 +13,7 @@ core 2.2.0 - not released yet
 	* Changed: Used faster (int) instead of intval() for integer typecasting
 	* Changed: Moved getDayTimestamps(), getDayTimestampsMap() to TodoyuDayRange
 	* Changed: Made TodoyuTime::getWeekStart and getWeekAnd relative to system config of 1st day of week being sunday or monday
+	* Changed: Minimum PHP version is 5.2.5
 	* Removed: scal calendar/date picker library
 	* Removed: TodoyuString::replaceOnce()
 	* Removed: TodoyuString::strictHtml2text() is now integrated in html2text() method

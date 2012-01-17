@@ -77,7 +77,7 @@ class TodoyuServer {
 	public static function assertMinimalRequirements() {
 		$loadedExtension	= get_loaded_extensions();
 		$problems			= array();
-		$requiredVersion	= '5.2.3';
+		$requiredVersion	= '5.2.5';
 
 			// Check PHP version
 		if( version_compare(PHP_VERSION, $requiredVersion) === -1 ) {
