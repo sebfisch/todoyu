@@ -126,6 +126,7 @@ class TodoyuPageAssetManager {
 
 
 
+
 	/**
 	 * Add processed assets (JS + CSS) to the page
 	 */
@@ -481,6 +482,8 @@ class TodoyuPageAssetManager {
 			// Parse if not parsed yet or changed since last parse
 		if( ! file_exists($pathCss) ) {
 			$options    = array(
+//				'cache_location' => dirname(__FILE__) . DIRECTORY_SEPARATOR . self::CACHE_LOCATION,
+				'cache_location'=> PATH_CACHE . DIR_SEP . 'css',
 				'filename'		=> $fileName,
 				'debug_info'	=> false,
 				'quiet'			=> false
