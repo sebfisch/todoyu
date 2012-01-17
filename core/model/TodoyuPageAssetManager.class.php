@@ -463,22 +463,23 @@ class TodoyuPageAssetManager {
 	/**
 	 * Parse given SCSS file into cache/css/ and return the new file path
 	 *
-	 * @param	String	$stylesheetFile
+	 * @param	String	$pathScss
 	 * @return	String|Boolean				Path of created CSS file in cache / false if failed
 	 */
-	public static function parseScssStylesheet($stylesheetFile) {
+	public static function parseScssStylesheet($pathScss) {
 		require_once( PATH_LIB . '/php/Phamlp/sass/SassParser.php' );
 
-		$fileName	= TodoyuFileManager::getFileName($stylesheetFile);
+		$fileName	= TodoyuFileManager::getFileName($pathScss);
 
 			// Create unique filename for parsed file
-		$filenameParsed	= str_replace(DIR_SEP, '-', TodoyuFileManager::pathWeb(($stylesheetFile)));
-		$fileCTime      = filectime($stylesheetFile);
-		$filenameParsed	= str_replace('.scss', $fileCTime . '.css', $filenameParsed);
-		$pathCssFile	= PATH_CACHE . '/css/' . $filenameParsed;
+		$pathWeb		= TodoyuFileManager::pathWeb($pathScss);
+		$fileCTime      = filectime($pathScss);
+		$filenameDashed	= str_replace('/', '-', $pathWeb);
+		$filenameCss	= str_replace('.scss', $fileCTime . '.css', $filenameDashed);
+		$pathCss		= TodoyuFileManager::pathAbsolute('cache/css/' . $filenameCss);
 
 			// Parse if not parsed yet or changed since last parse
-		if( ! file_exists($pathCssFile) ) {
+		if( ! file_exists($pathCss) ) {
 			$options    = array(
 				'filename'		=> $fileName,
 				'debug_info'	=> false,
@@ -486,13 +487,13 @@ class TodoyuPageAssetManager {
 			);
 			$sass = new SassParser($options);
 
-			$cssCode	= $sass->toCss($stylesheetFile, true);
-			$cssCode	= self::rewriteRelativePaths($cssCode, $stylesheetFile);
+			$cssCode	= $sass->toCss($pathScss, true);
+			$cssCode	= self::rewriteRelativePaths($cssCode, $pathScss);
 
-			return TodoyuFileManager::saveFileContent($pathCssFile, $cssCode) ? $pathCssFile : false;
+			return TodoyuFileManager::saveFileContent($pathCss, $cssCode) ? $pathCss : false;
 		}
 
-		return $pathCssFile;
+		return $pathCss;
 	}
 
 
@@ -526,7 +527,7 @@ class TodoyuPageAssetManager {
 						// Compress
 					$fileCode	= self::compressStylesheet($fileCode);
 						// Rewrite external media paths (url())
-					$fileCode	= self::rewriteRelativePaths($fileCode, $fileConfig['file'], $filePath);
+					$fileCode	= self::rewriteRelativePaths($fileCode, $fileConfig['file']);
 						// Save content in this file
 					TodoyuFileManager::saveFileContent($filePath, $fileCode);
 				}
@@ -597,7 +598,7 @@ class TodoyuPageAssetManager {
 							// Load file content
 						$fileCode	= file_get_contents($fileConfig['file']);
 							// Rewrite external media paths (url())
-						$fileCode	= self::rewriteRelativePaths($fileCode, $fileConfig['file'], $mergeFilePath);
+						$fileCode	= self::rewriteRelativePaths($fileCode, $fileConfig['file']);
 
 						if( $doCompress && $fileConfig['compress'] ) {
 							$fileCode = self::compressStylesheet($fileCode);
@@ -645,18 +646,19 @@ class TodoyuPageAssetManager {
 	 *  Rewrite relative CSS paths in files
 	 *
 	 * @param	String		$cssCode
-	 * @param	String		$pathToUncompressedFile
+	 * @param	String		$pathSourceFile
 	 * @return	String
 	 */
-	private static function rewriteRelativePaths($cssCode, $pathToUncompressedFile) {
+	private static function rewriteRelativePaths($cssCode, $pathSourceFile) {
 			// Remove quotes in url() elements
 		$pattern	= '|url\([\'"]{1}([^\'")]+?)[\'"]{1}\)|';
 		$replace	= 'url($1)';
 		$cssCode	= preg_replace($pattern, $replace, $cssCode);
 
 			// Rewrite paths
+		$webDirName	= dirname( TodoyuFileManager::pathWeb($pathSourceFile) );
 		$search		= 'url(';
-		$replace	= 'url(../../' . dirname( TodoyuFileManager::pathWeb($pathToUncompressedFile) ) . '/';
+		$replace	= 'url(../../' . $webDirName . '/';
 		$cssCode	= str_replace($search, $replace, $cssCode);
 
 			// Make a real path
