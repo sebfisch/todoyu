@@ -19,7 +19,7 @@
 		float:left;
 		z-index:200;
 
-		&.active,
+		.active,
 		&:hover {
 			z-index:202; }
 
@@ -35,8 +35,7 @@
 			z-index:200;
 
 			&.active,
-			&.active a,
-			&:hover a {
+			&:hover {
 				border-color:$grey03;
 				z-index:203;
 				background-color:$white; }
@@ -59,23 +58,23 @@
 			margin:0px;
 			border:none;
 
-	   		a {
-				width:auto;
-				height:auto;
-				margin:0px;
-				padding:5px 30px 3px 30px;
-				border:none;
-				font-size:11px;
-				white-space:nowrap;
-
-				&.primary {
-					border-bottom:1px solid $grey03; }
-			}
-
-			&.active a,
+	   		&.active a,
 			&:hover a {
 				border:none;
 				background-color:$colorCorporate01; }
+
+			a {
+                width:auto;
+                height:auto;
+                margin:0px;
+                padding:5px 30px 3px 30px;
+                border:none;
+                font-size:11px;
+                white-space:nowrap;
+
+                &.primary {
+                    border-bottom:1px solid $grey03; }
+            }
 		}
 	}
 }
