@@ -1195,9 +1195,13 @@ class TodoyuForm implements ArrayAccess {
 		$this->removeEmptyFieldsetsBeforeRendering();
 
 		$tmpl	= Todoyu::$CONFIG['FORM']['templates']['form'];
-		$data	= $this->getData();
+		$formData	= $this->getData();
 
-		return Todoyu::render($tmpl, $data);
+			// Call render hooks
+		$xmlPath	= TodoyuFileManager::pathWeb($this->xmlFile);
+		$formData	= TodoyuFormHook::callRenderForm($xmlPath, $formData);
+
+		return Todoyu::render($tmpl, $formData);
 	}
 
 

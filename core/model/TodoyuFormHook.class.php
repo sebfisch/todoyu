@@ -89,6 +89,28 @@ class TodoyuFormHook {
 
 
 	/**
+	 * Call hooked callbacks before form is actually rendered. Last chance for data updates
+	 *
+	 * @param	String	$xmlPath
+	 * @param	Array	$formDataVar
+	 */
+	public static function callRenderForm($xmlPath, $formDataVar, array $additionalParams = array()) {
+		$callbacks	= self::getHooks('renderForm', $xmlPath);
+		$hookParams		= $additionalParams;
+			// Prepend data var
+		array_unshift($hookParams, $formDataVar);
+
+		foreach($callbacks as $callback) {
+			TodoyuLogger::logCore('Hook: ' . $callback['funcRef']);
+			$hookParams[0]	= TodoyuFunction::callUserFunctionArray($callback['funcRef'], $hookParams);
+		}
+
+		return $hookParams[0];
+	}
+
+
+
+	/**
 	 * Call hooks to add extra data
 	 *
 	 * @param	String		$xmlPath		Path to main XML form file
@@ -173,14 +195,28 @@ class TodoyuFormHook {
 
 
 	/**
+	 * Register (hook-in) a buildForm callback function
+	 * Modify form data immediately before final rendering
+	 *
+	 * @param	String		$xmlPath		Path to the form XML file
+	 * @param	String		$funcRef		Function reference
+	 * @param	Integer		$position		Order of the callback function calls
+	 */
+	public static function registerRenderForm($xmlPath, $funcRef, $position = 100) {
+		self::register('renderForm', $xmlPath, $funcRef, $position);
+	}
+
+
+
+	/**
 	 * Register (hook-in) a modification function for fields of type "DatabaseRelation"
 	 *
 	 * @param	String	$xmlPath
-	 * @param	Array	$funcref
+	 * @param	Array	$funcRef
 	 * @param	Integer	$position
 	 */
-	public static function registerDatabaseRelationFieldModifier($xmlPath, $funcref, $position = 100) {
-		self::register('buildFormDatabaseRelation', $xmlPath, $funcref, $position);
+	public static function registerDatabaseRelationFieldModifier($xmlPath, $funcRef, $position = 100) {
+		self::register('buildFormDatabaseRelation', $xmlPath, $funcRef, $position);
 	}
 
 
