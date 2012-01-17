@@ -117,7 +117,7 @@ class TodoyuPreferenceManager {
 	 * @param	Integer		$idArea
 	 * @param	Boolean		$unserialize
 	 * @param	Integer		$idPerson
-	 * @return	String
+	 * @return	String|Boolean
 	 */
 	public static function getPreference($extID, $preference, $idItem = 0, $idArea = 0, $unserialize = false, $idPerson = 0) {
 		$extID		= (int) $extID;

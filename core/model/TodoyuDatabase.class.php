@@ -1092,7 +1092,7 @@ class TodoyuDatabase {
 	 * @param	String		$orderBy
 	 * @param	String		$limit
 	 * @param	String		$resultFieldName		If field isn't the field name in the resultset (possibly with table prefix...), set the name here
-	 * @return	String
+	 * @return	String|Boolean
 	 */
 	public function getFieldValue($field, $table, $where = null, $groupBy = null, $orderBy = null, $limit = null, $resultFieldName = null) {
 		$cacheID	= sha1(serialize(func_get_args()));
