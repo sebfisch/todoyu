@@ -215,7 +215,7 @@ var Todoyu = {
 	 *
 	 * @method	send
 	 * @param	{String}		url
-	 * @param	{Hash}			options
+	 * @param	{Object}			options
 	 */
 	send: function(url, options) {
 		options = Todoyu.Ajax.getDefaultOptions(options);

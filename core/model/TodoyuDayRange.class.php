@@ -94,11 +94,10 @@ class TodoyuDayRange extends TodoyuDateRange {
 	/**
 	 * Get duration of this range in days
 	 *
-	 * @param	Bool	$absolute
 	 * @return	Integer
 	 */
-	public function getDiffInDays($absolute = false) {
-		return round($this->getDiff($absolute) / TodoyuTime::SECONDS_DAY, 0);
+	public function getDurationInDays() {
+		return round($this->getDuration() / TodoyuTime::SECONDS_DAY, 0);
 	}
 
 }

@@ -109,9 +109,9 @@ Todoyu.Time = {
 		var seconds	= time - (hours * this.seconds.hour) - (minutes * this.seconds.minute);
 
 		return {
-			'hours':	hours,
-			'minutes':	minutes,
-			'seconds':	seconds
+			hours:		hours,
+			minutes:	minutes,
+			seconds:	seconds
 		};
 	},
 
@@ -127,10 +127,10 @@ Todoyu.Time = {
 	 * @return	{Number}		Unit timestamp
 	 */
 	getShiftedTime: function(baseTime, tab, up) {
-		baseTime	= this.getDayStart(baseTime);
+		var date	= new Date(baseTime*1000);
+		baseTime	= this.getDayStart(date);
 
 		var factor	= up ? 1 : -1;
-		var date	= new Date(baseTime * 1000);
 		var day		= 0;
 		var month	= 0;
 
@@ -157,17 +157,15 @@ Todoyu.Time = {
 	 * Get timestamp at start of day
 	 *
 	 * @method	getDayStart
-	 * @param	{Number}	time
-	 * @return	{Number}
+	 * @param	{Date}		date
+	 * @return	{Date}
 	 */
-	getDayStart: function(time) {
-		var date = new Date(time * 1000);
-
+	getDayStart: function(date) {
 		date.setHours(0);
 		date.setMinutes(0);
 		date.setSeconds(0);
 
-		return parseInt(date.getTime() / 1000, 10);
+		return date;
 	},
 
 
@@ -176,12 +174,10 @@ Todoyu.Time = {
 	 * Get timestamp at start of week (being sunday or monday depending on system config)
 	 *
 	 * @method	getWeekStart
-	 * @param	{Number}		baseTime
-	 * @return	{Number}
+	 * @param	{Date}		date
+	 * @return	{Date}
 	 */
-	getWeekStart: function(baseTime) {
-		var date = new Date(baseTime * 1000);
-
+	getWeekStart: function(date) {
 		date.setHours(0);
 		date.setMinutes(0);
 		date.setSeconds(0);
@@ -197,7 +193,7 @@ Todoyu.Time = {
 
 		newTime += shift * this.seconds.day;
 
-		return newTime;
+		return new Date(newTime*1000);
 	},
 
 
@@ -206,15 +202,13 @@ Todoyu.Time = {
 	 * Get today's date
 	 *
 	 * @method	getTodayDate
-	 * @return	{Number}		microtime timestamp
+	 * @return	{Date}		microtime timestamp
 	 */
 	getTodayDate: function() {
 		var date	= new Date();
-		date.setHours(0);
-		date.setMinutes(0);
-		date.setSeconds(0);
+		date.setHours(0, 0, 0, 0);
 
-		return date.getTime();
+		return date;
 	},
 
 
@@ -254,12 +248,10 @@ Todoyu.Time = {
 	 * Get date string in format YYYY-MM-DD
 	 *
 	 * @method	getDateString
-	 * @param	{Number}		time
+	 * @param	{Date}		date
 	 * @return	{String}
 	 */
-	getDateString: function(time) {
-		var date = new Date(time * 1000);
-
+	getDateString: function(date) {
 		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth() + 1) + '-' + date.getDate();
 	},
 
@@ -269,13 +261,13 @@ Todoyu.Time = {
 	 * Get date string with time part in format YYYY-MM-DD HH:MM
 	 *
 	 * @method	getDateTimeString
-	 * @param	{Number}		time
+	 * @param	{Date|Number}	date
 	 * @return	{String}
 	 */
-	getDateTimeString: function(time) {
-		time = parseInt(time, 10);
-
-		var date = new Date(time * 1000);
+	getDateTimeString: function(date) {
+		if( ! (date instanceof Date) ) {
+			date = new Date(date * 1000);
+		}
 
 		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth() + 1) + '-' + Todoyu.Helper.twoDigit(date.getDate()) + ' ' + Todoyu.Helper.twoDigit(date.getHours()) + ':' + Todoyu.Helper.twoDigit(date.getMinutes());
 	},

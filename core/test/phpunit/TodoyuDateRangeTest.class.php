@@ -152,7 +152,7 @@ class TodoyuDateRangeTest extends PHPUnit_Framework_TestCase {
 		$this->range->setStart(1);
 		$this->range->setEnd(5);
 
-		$this->assertEquals(4, $this->range->getDiff());
+		$this->assertEquals(4, $this->range->getDuration());
 	}
 
 

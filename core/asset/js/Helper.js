@@ -440,6 +440,17 @@ Todoyu.Helper = {
 
 
 	/**
+	 * Default callback when date was set with calendar
+	 *
+	 * @param	{Calendar}		calendar
+	 */
+	onDateFieldUpdate: function(calendar) {
+		this.fireEvent(calendar.params.inputField, 'change');
+	},
+
+
+
+	/**
 	 * Set element scrollTop, circumventing refresh bug in safari + chrome
 	 *
 	 * @method	setScrollTop

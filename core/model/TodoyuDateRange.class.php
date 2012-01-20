@@ -195,7 +195,7 @@ class TodoyuDateRange {
 	public function setMinLength($seconds) {
 		$seconds	= intval($seconds);
 
-		if( $this->getDiff() < $seconds ) {
+		if( $this->getDuration() < $seconds ) {
 			$this->setEnd($this->getStart()+$seconds);
 		}
 	}
@@ -335,17 +335,10 @@ class TodoyuDateRange {
 	/**
 	 * Get duration of this range in seconds
 	 *
-	 * @param	Boolean		$absolute			Make sure the difference is absolute
 	 * @return	Integer
 	 */
-	public function getDiff($absolute = true) {
-		$diff	= (int) ($this->dateEnd - $this->dateStart);
-
-		if( $absolute ) {
-			$diff = abs($diff);
-		}
-
-		return $diff;
+	public function getDuration() {
+		return intval($this->dateEnd - $this->dateStart);
 	}
 
 

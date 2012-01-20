@@ -63,7 +63,7 @@ Todoyu.Wizard = {
 	 * @param	{Ajax.Response}	response
 	 */
 	onOpened: function(response) {
-		this.onLoaded(response);
+		this.onConfigUpdate(response);
 	},
 
 
@@ -119,7 +119,7 @@ Todoyu.Wizard = {
 	 */
 	onSubmitted: function(callback, response) {
 		$('wizard').replace(response.responseText);
-		this.onLoaded(response);
+		this.onConfigUpdate(response);
 		callback(response);
 	},
 
@@ -131,7 +131,7 @@ Todoyu.Wizard = {
 	 * @method	onLoaded
 	 * @param	{Ajax.Response}	response
 	 */
-	onLoaded: function(response) {
+	onConfigUpdate: function(response) {
 		this.wizard.popup.setTitle(response.getTodoyuHeader('label'));
 		this.wizard.callback(response, this.wizard);
 	},

@@ -1,0 +1,62 @@
+/****************************************************************************
+* todoyu is published under the BSD License:
+* http://www.opensource.org/licenses/bsd-license.php
+*
+* Copyright (c) 2011, snowflake productions GmbH, Switzerland
+* All rights reserved.
+*
+* This script is part of the todoyu project.
+* The todoyu project is free software; you can redistribute it and/or modify
+* it under the terms of the BSD License.
+*
+* This script is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the BSD License
+* for more details.
+*
+* This copyright notice MUST APPEAR in all copies of the script.
+*****************************************************************************/
+
+#dialogchoice .wrapper {
+	padding:10px;
+}
+
+#dialogchoice .description {
+	margin-bottom:10px;
+	border-bottom: 1px solid #CCC;
+}
+
+#dialogchoice .choices {
+}
+
+#dialogchoice .choice {
+	margin-bottom: 5px;
+	padding:8px;
+	background-color: #FFF;
+	border:1px solid #FFF;
+	border-radius: 5px;
+}
+
+#dialogchoice .choice div {
+	display: inline-block;
+}
+
+#dialogchoice .choice .boxButton {
+	width:170px;
+}
+
+#dialogchoice .choice button {
+	width:150px;
+}
+
+#dialogchoice .choice button .label {
+	margin:0;
+	width:100%;
+	text-align: center;
+}
+
+#dialogchoice .choice .boxLabel {
+	width:280px;
+	height:20px;
+	vertical-align: bottom;
+}

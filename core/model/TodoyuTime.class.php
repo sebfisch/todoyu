@@ -292,6 +292,8 @@ class TodoyuTime {
 	 * @param	Integer		$timestamp
 	 * @param	Boolean		$mondayFirst
 	 * @return	Integer		0 = monday, 6 = sunday
+	 * @deprecated
+	 * @todo	Should be removed, this is dangerous. Sunday should always be 0
 	 */
 	public static function getWeekday($timestamp = 0, $mondayFirst = true) {
 		$timestamp	= self::time($timestamp);
@@ -881,6 +883,17 @@ class TodoyuTime {
 	 */
 	public static function isMondayFirstDayOfWeek() {
 		return TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek() === 1;
+	}
+
+
+
+	/**
+	 * Get index of week end day (compare to date('w')
+	 *
+	 * @return	Array
+	 */
+	public static function getWeekEndDayIndexes() {
+		return self::isMondayFirstDayOfWeek() ? array(6,0) : array(5,6);
 	}
 
 }

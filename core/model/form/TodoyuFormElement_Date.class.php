@@ -144,7 +144,8 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 			'ifFormat'		=> '"' . $format . '"',
 			'align'			=> '"br"',
 			'button'		=> '"' . $htmlID . '-calicon"',
-			'firstDay'		=> TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek()
+			'firstDay'		=> TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek(),
+			'onUpdate'		=> 'Todoyu.Helper.onDateFieldUpdate.bind(Todoyu.Helper)'
 		);
 	}
 

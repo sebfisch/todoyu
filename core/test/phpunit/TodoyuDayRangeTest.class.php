@@ -86,7 +86,7 @@ class TodoyuDayRangeTest extends PHPUnit_Framework_TestCase {
 	public function testGetDiffInDays() {
 		$range	= $this->getRange();
 
-		$this->assertEquals(32, $range->getDiffInDays());
+		$this->assertEquals(32, $range->getDurationInDays());
 	}
 
 

@@ -296,7 +296,11 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/asset/js/PanelWidgetSearchList.js',
 			'position'	=> 91
-		)
+		),
+		array(
+			'file'		=> 'core/asset/js/DialogChoice.js',
+			'position'	=> 91
+		),
 	),
 
 	'css' => array(
@@ -444,6 +448,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/asset/css/print.css',
 			'media'		=> 'print',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/asset/css/dialogchoice.css',
 			'position'	=> 10
 		)
 	)

@@ -580,6 +580,18 @@ class TodoyuArray {
 
 
 	/**
+	 * Get array from JSON string
+	 *
+	 * @param	String		$jsonInput
+	 * @return	Array
+	 */
+	public static function assureFromJSON($jsonInput) {
+		return self::assure(json_decode($jsonInput, true));
+	}
+
+
+
+	/**
 	 * Merge all sub arrays of the array to a single array
 	 *
 	 * @param	Array		$array

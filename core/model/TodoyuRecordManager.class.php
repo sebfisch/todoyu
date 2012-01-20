@@ -297,7 +297,7 @@ class TodoyuRecordManager {
 	 * @param	Array		$recordIDs
 	 * @return	Integer		Number of deleted records
 	 */
-	public static function deleteRecords($table, array $recordIDs) {
+	public static function deleteRecordsByID($table, array $recordIDs) {
 		$recordIDs	= TodoyuArray::intval($recordIDs);
 
 		if( sizeof($recordIDs) > 0 ) {
@@ -310,6 +310,23 @@ class TodoyuRecordManager {
 		} else {
 			return 0;
 		}
+	}
+
+
+
+	/**
+	 * Delete records by where statement (records are just set deleted)
+	 *
+	 * @param	String		$table
+	 * @param	String		$where
+	 * @return	Integer
+	 */
+	public static function deleteRecords($table, $where) {
+		$data	= array(
+			'deleted'	=> 1
+		);
+
+		return self::updateRecords($table, $where, $data);
 	}
 
 
