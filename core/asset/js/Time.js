@@ -161,9 +161,7 @@ Todoyu.Time = {
 	 * @return	{Date}
 	 */
 	getDayStart: function(date) {
-		date.setHours(0);
-		date.setMinutes(0);
-		date.setSeconds(0);
+		date.setHours(0, 0, 0, 0);
 
 		return date;
 	},
