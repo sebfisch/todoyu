@@ -482,6 +482,32 @@ Todoyu.Time = {
 		}
 
 		return days;
+	},
+
+
+
+	/**
+	 * Check whether timestamp is in future
+	 *
+	 * @param	{Number}	time
+	 * @return	{Boolean}
+	 */
+	isTimeInFuture: function(time) {
+		return this.isDateInFuture(new Date(time*1000));
+	},
+
+
+
+	/**
+	 * Check whether date in in future
+	 *
+	 * @param	{Date}	date
+	 * @return	{Boolean}
+	 */
+	isDateInFuture: function(date) {
+		var dateNow		= new Date();
+
+		return dateNow < date;
 	}
 
 };
