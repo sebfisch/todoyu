@@ -440,11 +440,16 @@ Todoyu.Helper = {
 
 
 	/**
-	 * Default callback when date was set with calendar
+	 * Replacement for default calendar close event
+	 * Hide calendar and fire change event
 	 *
 	 * @param	{Calendar}		calendar
 	 */
-	onDateFieldUpdate: function(calendar) {
+	onCalendarDateChanged: function(calendar) {
+			// Close calendar as in default handler
+		calendar.hide();
+
+			// Fire change event to inform all observers
 		this.fireEvent(calendar.params.inputField, 'change');
 	},
 

@@ -294,9 +294,10 @@ var Todoyu = {
 	 * @method	notifyInfo
 	 * @param	{String}		message
 	 * @param	{Number}		delay
+	 * @param	{String}		identifier
 	 */
-	notifyInfo: function(message, delay) {
-		Todoyu.Notification.notifyInfo(message, false, delay);
+	notifyInfo: function(message, delay, identifier) {
+		Todoyu.Notification.notifyInfo(message, false, delay, identifier);
 	},
 
 

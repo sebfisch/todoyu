@@ -487,7 +487,7 @@ Todoyu.Time = {
 
 
 	/**
-	 * Check whether timestamp is in future
+	 * Check whether timestamp is in the future
 	 *
 	 * @param	{Number}	time
 	 * @return	{Boolean}
@@ -499,7 +499,19 @@ Todoyu.Time = {
 
 
 	/**
-	 * Check whether date in in future
+	 * Check whether timestamp is in the past
+	 *
+	 * @param	{Number}	time
+	 * @return	{Boolean}
+	 */
+	isTimeInPast: function(time) {
+		return !this.isTimeInFuture(time);
+	},
+
+
+
+	/**
+	 * Check whether date is in the future
 	 *
 	 * @param	{Date}	date
 	 * @return	{Boolean}
@@ -508,6 +520,18 @@ Todoyu.Time = {
 		var dateNow		= new Date();
 
 		return dateNow < date;
+	},
+
+
+
+	/**
+	 * Check whether date is in the past
+	 *
+	 * @param	{Date}	date
+	 * @return	{Boolean}
+	 */
+	isDateInPast: function(date) {
+		return !this.isDateInFuture(date);
 	}
 
 };

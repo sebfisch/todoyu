@@ -177,9 +177,10 @@ Todoyu.Notification = {
 	 * @param	{String}		message
 	 * @param	{Boolean}		sticky
 	 * @param	{Number}		delay
+	 * @param	{String}		identifier
 	 */
-	notifyInfo: function(message, sticky, delay) {
-		this.notify(this.INFO, message, sticky, delay);
+	notifyInfo: function(message, sticky, delay, identifier) {
+		this.notify(this.INFO, message, sticky, delay, identifier);
 	},
 
 
