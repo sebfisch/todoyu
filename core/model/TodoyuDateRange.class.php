@@ -508,6 +508,30 @@ class TodoyuDateRange {
 
 
 	/**
+	 * Get an exact label which includes the time
+	 * One day: 15. August 2012, 15:00 - 16:00
+	 * Multi day: 15. August 2012 15:00 - 16. August 2012 18:00
+	 *
+	 * @return	String
+	 */
+	public function getLabelWithTime() {
+		if( $this->isInOneDay() ) {
+			$label	= TodoyuTime::format($this->getStart(), 'D2MlongY4');
+			$label .= ', ' . date('H:i', $this->getStart()) . ' - ' . date('H:i', $this->getEnd());
+		} else {
+			$label	= TodoyuTime::format($this->getStart(), 'D2MlongY4');
+			$label .= ' ' . date('H:i', $this->getStart());
+			$label .= ' - ';
+			$label .= TodoyuTime::format($this->getEnd(), 'D2MlongY4');
+			$label .= ' ' . date('H:i', $this->getEnd());
+		}
+
+		return $label;
+	}
+
+
+
+	/**
 	 * Get timestamps for days in range
 	 * The timestamps always have the time 00:00:00 for all days inside the range
 	 *

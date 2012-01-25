@@ -94,8 +94,24 @@ var Todoyu = {
 		this.Ui.fixAnchorPosition();
 		this.Ui.observeBody();
 		this.initExtensions();
+		this.initConsole();
 
 //		SI.Files.stylizeAll();
+	},
+
+
+
+	/**
+	 * Init fake console if it doesn't exist
+	 */
+	initConsole: function() {
+		if( !window.console ) {
+			window.console = {
+				log: function(){},
+				info: function(){},
+				warn: function(){}
+			};
+		}
 	},
 
 

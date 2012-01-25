@@ -202,6 +202,9 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 		}
 
 		callOriginal(inputField, selectedListElement);
+
+		Todoyu.Hook.exec('core.ac.selected', selectedListElement.id, this);
+		Todoyu.Helper.fireEvent(inputField, 'change');
 	},
 
 
