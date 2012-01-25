@@ -169,16 +169,18 @@ class TodoyuMail extends PHPMailerLite {
 
 		if( $catchExceptions ) {
 			try {
-				return parent::Send();
+				$status = parent::Send();
 			} catch(phpmailerException $e) {
 				TodoyuLogger::logError($e->getMessage());
 			} catch(Exception $e) {
 				TodoyuLogger::logError($e->getMessage());
 			}
-			return false;
+			$status = false;
 		} else {
-			return parent::Send();
+			$status = parent::Send();
 		}
+
+		return $status;
 	}
 
 
