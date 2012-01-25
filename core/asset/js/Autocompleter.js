@@ -41,6 +41,13 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	selectedFromList: false,
 
 	/**
+	 * Ignore next change event
+	 * @property	ignoreNextChange
+	 * @type		Boolean
+	 */
+	ignoreNextChange: false,
+
+	/**
 	 * @property	config
 	 * @type		Object
 	 */
@@ -124,6 +131,11 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @param	{Event}		event
 	 */
 	onChange: function(event) {
+		if( this.ignoreNextChange ) {
+			this.ignoreNextChange = false;
+			return;
+		}
+
 			// If the change was called by a valid select, revert flag and do nothing
 		if( this.selectedFromList ) {
 			this.selectedFromList = false;
@@ -134,7 +146,6 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 				// Clear fields
 			this.clear();
 		}
-
 	},
 
 
@@ -204,7 +215,10 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 		callOriginal(inputField, selectedListElement);
 
 		Todoyu.Hook.exec('core.ac.selected', selectedListElement.id, this);
-		Todoyu.Helper.fireEvent(inputField, 'change');
+
+			// Fire change event, but prevent internal handling
+		this.ignoreNextChange = true;
+		Todoyu.Helper.fireEvent.bind(Todoyu.Helper, inputField, 'change').delay(0.2);
 	},
 
 
