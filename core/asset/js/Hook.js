@@ -111,7 +111,7 @@ Todoyu.Hook = {
 	 * @method	exec
 	 * @param	{String}		name
 	 */
-	exec: function(name) {
+	exec: function(name /*, arg1, arg2, argN*/) {
 		var params = $A(arguments).slice(1);
 
 		if( typeof this.hooks[name] === 'object' ) {

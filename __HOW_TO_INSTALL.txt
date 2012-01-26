@@ -48,10 +48,12 @@ Instructions to install todoyu
 		* files/
 		* config/
 		* cache/
+		* log/
 		* install/config
 		* config/db.php
 		* config/extensions.php
 		* config/extconf.php
+		* config/system.php
 		* index.html
 
 	5. Run the install script.
