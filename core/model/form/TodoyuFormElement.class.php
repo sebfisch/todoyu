@@ -206,6 +206,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$this->config['hasIconClass']	= $this->hasAttribute('hasIcon') ? 'hasIcon icon' . ucfirst($this->name):'';
 		$this->config['wizard']			= $this->hasAttribute('wizard') ? $this->getWizardConfiguration() : false;
 		$this->config['valueTemplate']	= $this->getValueForTemplate();
+		$this->config['value']			= $this->getValue();
 
 		return $this->config;
 	}
