@@ -90,4 +90,12 @@ button {
 	&.clear .icon	{
 		background:url(../img/icons.png) no-repeat 5px -357px;
 		width:21px; }
+
+	&.order .icon {
+		background:url(../img/icons.png) no-repeat 3px -477px;
+    	width:21px; }
+
+    &.order.desc .icon {
+		background:url(../img/icons.png) no-repeat 3px -508px;
+		width:21px; }
 }
