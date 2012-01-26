@@ -1145,6 +1145,7 @@ class TodoyuForm implements ArrayAccess {
 		$data['fieldsets']		= $this->renderFieldsets();
 		$data['htmlId']			= $this->makeID('', 'form');
 		$data['isAjax']			= TodoyuRequest::isAjaxRequest();
+		$data['id']				= $this->getRecordID();
 
 		return $data;
 	}
@@ -1194,7 +1195,7 @@ class TodoyuForm implements ArrayAccess {
 	public function render() {
 		$this->removeEmptyFieldsetsBeforeRendering();
 
-		$tmpl	= Todoyu::$CONFIG['FORM']['templates']['form'];
+		$tmpl		= Todoyu::$CONFIG['FORM']['templates']['form'];
 		$formData	= $this->getData();
 
 			// Call render hooks
