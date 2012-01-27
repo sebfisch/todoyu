@@ -97,7 +97,7 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 	 * @return	Array
 	 */
 	public function getValue() {
-		return parent::getValue();
+		return TodoyuArray::assure(parent::getValue());
 	}
 
 
