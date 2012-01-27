@@ -243,8 +243,14 @@ Todoyu.FormRecords = Class.create({
 
 		this.addSelectedItem(id, label);
 		resultItem.remove();
-		this.searchField.focus();
+
 		this.markFirstAsHot();
+
+		if( this.isResultListEmpty() ) {
+			this.searchField.select();
+		} else {
+			this.searchField.focus();
+		}
 	},
 
 
@@ -263,6 +269,17 @@ Todoyu.FormRecords = Class.create({
 		removeIcon.remove();
 
 		this.removeSelectedItem(idItem);
+	},
+
+
+
+	/**
+	 * Check whether result list is empty
+	 *
+	 * @return	{Boolean}
+	 */
+	isResultListEmpty: function() {
+		return this.results.select('li').size() === 0;
 	},
 
 
@@ -504,6 +521,7 @@ Todoyu.FormRecords = Class.create({
 
 		if( ! this.getStorageOption(id) ) {
 			this.storageField.options[this.storageField.length] = new Option(label, id, true, true);
+			Todoyu.Helper.fireEvent(this.storageField, 'change');
 		}
 	},
 
@@ -519,6 +537,7 @@ Todoyu.FormRecords = Class.create({
 
 		if( option ) {
 			option.remove();
+			Todoyu.Helper.fireEvent(this.storageField, 'change');
 		}
 	},
 

@@ -53,8 +53,9 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 	 * @param	String		$action
 	 */
 	protected function initRecords($type, $ext = null, $controller = null, $action = null) {
+		$this->type				= 'records' . ucfirst($type);
 		$this->config['type']	= $type;
-		$this->config['class'] .= 'records' . ucfirst($type);
+		$this->config['class'] .= 'typeRecords records' . ucfirst($type);
 
 		if( $ext ) {
 			$this->config['options']['url'] = array(
@@ -124,7 +125,7 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 	 * @return	String
 	 */
 	protected function getStorageDataInternal() {
-		return implode(',', $this->getValue());
+		return $this->getValue();
 	}
 
 
