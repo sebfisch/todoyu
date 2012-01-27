@@ -301,6 +301,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'file'		=> 'core/asset/js/DialogChoice.js',
 			'position'	=> 91
 		),
+		array(
+			'file'		=> 'core/asset/js/FormRecords.js',
+			'position'	=> 91
+		)
 	),
 
 	'css' => array(
@@ -452,6 +456,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/asset/css/dialogchoice.css',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/asset/css/formrecords.css',
 			'position'	=> 10
 		)
 	)
