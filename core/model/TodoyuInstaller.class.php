@@ -47,6 +47,27 @@ class TodoyuInstaller {
 			// Save last version if submitted
 		self::saveVersionDetection();
 
+            // Ensure SCSS being parsed (CSS available)
+        $scssFiles    = array(
+            array(
+			    'file'		=> 'core/asset/css/base.scss',
+		    ),
+            array(
+			    'file'		=> 'core/asset/css/layout.scss',
+		    ),
+            array(
+			    'file'		=> 'core/asset/css/panel.scss',
+		    ),
+            array(
+			    'file'		=> 'core/asset/css/form.scss',
+		    ),
+            array(
+			    'file'		=> 'core/asset/css/button.scss',
+		    ),
+        );
+        TodoyuPageAssetManager::getStyleSheets($scssFiles);
+
+
 			// Show special form to set last version if file is not available
 		if( self::isUpdate() && ! self::hasVersionFile() ) {
 			echo TodoyuInstallerRenderer::renderVersionSelector();

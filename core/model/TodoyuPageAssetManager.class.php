@@ -386,7 +386,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Callback for javascrip localization
+	 * Callback for javascript localization
 	 *
 	 * @param	Array		$match		Regex matching data
 	 * @return	String
@@ -412,14 +412,18 @@ class TodoyuPageAssetManager {
 	 * Get style sheets which have to be included in the page
 	 * The files are merged and compressed as configured in the asset array
 	 *
+     * @param   Array   $styleSheets    optional
 	 * @return	Array
 	 */
-	private static function getStyleSheets() {
+	public static function getStyleSheets($styleSheets = array()) {
 		$files	= array();
 		$merge	= array();
 		$single	= array();
 
-		$styleSheets= TodoyuArray::sortByLabel(self::$styleSheets, 'position');
+        if( count($styleSheets) === 0 ) {
+			$styleSheets= TodoyuArray::sortByLabel(self::$styleSheets, 'position');
+        }
+
 		$doMerging	= Todoyu::$CONFIG['CACHE']['CSS']['merge'];
 
 			// Parse SCSS files
@@ -468,12 +472,11 @@ class TodoyuPageAssetManager {
 
 			// Create unique filename for parsed file
 		$pathWeb		= TodoyuFileManager::pathWeb($pathScss);
-		$fileCTime      = filectime($pathScss);
 		$filenameDashed	= str_replace('/', '-', $pathWeb);
-		$filenameCss	= str_replace('.scss', $fileCTime . '.css', $filenameDashed);
+		$filenameCss	= str_replace('.scss', '.css', $filenameDashed);
 		$pathCss		= TodoyuFileManager::pathAbsolute('cache/css/' . $filenameCss);
 
-			// Parse if not parsed yet or changed since last parse
+			// Parse if not yet
 		if( ! file_exists($pathCss) ) {
 			$options    = array(
 				'cache_location'=> PATH_CACHE . DIR_SEP . 'css',
