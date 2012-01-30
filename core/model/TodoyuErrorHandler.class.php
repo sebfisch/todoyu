@@ -166,7 +166,7 @@ class TodoyuErrorHandler {
 	 * @param	Boolean		$active
 	 */
 	public static function setActive($active = true) {
-		self::$active = $active === true;
+		self::$active = (boolean)$active;
 	}
 
 }

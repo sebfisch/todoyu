@@ -565,13 +565,34 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Boolean
 	 */
 	public final function isValid() {
-		$validations	= $this->getValidations();
-		$formData		= $this->getForm()->getFormData();
-
 			// Don't validate disabled fields
 		if( $this->isDisabled() ) {
 			return true;
 		}
+
+			// Check all validators
+		if( $this->hasValidatorError() ) {
+			return false;
+		}
+
+			// Check for required
+		if( $this->hasRequiredValidatorError() ) {
+			return false;
+		}
+
+		return true;
+	}
+
+
+
+	/**
+	 * Check whether a validator fails
+	 *
+	 * @return	Boolean
+	 */
+	private function hasValidatorError() {
+		$validations	= $this->getValidations();
+		$formData		= $this->getForm()->getFormData();
 
 			// Loop over all validators
 		foreach($validations as $validatorName => $validatorConfigs) {
@@ -582,8 +603,8 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 				foreach($validatorConfigs as $validatorConfig) {
 					$result	= $this->runValidator($validatorName, $validatorConfig, $formData);
 
-					if( $result === false ) {
-						return false;
+					if( !$result ) {
+						return true;
 					}
 				}
 			} else {
@@ -591,15 +612,25 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 				$validatorConfigs	= TodoyuArray::assure($validatorConfigs, true);
 				$result	= $this->runValidator($validatorName, $validatorConfigs, $formData);
 
-				if( $result === false ) {
-					return false;
+				if( !$result ) {
+					return true;
 				}
 			}
 		}
 
-			// Check for required
-		if( $this->isRequired() && ! $this->isRequiredNoCheck() ) {
-			if( ! $this->validateRequired() ) {
+		return false;
+	}
+
+
+
+	/**
+	 * Check whether the require validator is active and fails
+	 *
+	 * @return	Boolean
+	 */
+	private function hasRequiredValidatorError() {
+		if( $this->isRequired() && !$this->isRequiredCheckDisabled() ) {
+			if( !$this->validateRequired() ) {
 				$this->setErrorTrue();
 				//$this->bubbleError($this);
 
@@ -609,11 +640,11 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 					$this->setErrorMessage('core.form.field.isrequired');
 				}
 
-				return false;
+				return true;
 			}
 		}
 
-		return true;
+		return false;
 	}
 
 
@@ -629,7 +660,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$isValid = TodoyuFormValidator::validate($validatorName, $this->getStorageData(true), $validatorConfig, $this, $this->getForm()->getFormData());
 
 			// If validation failed, set error message
-		if( $isValid === false ) {
+		if( !$isValid ) {
 			$this->setErrorTrue();
 
 				// If error message not already set by function, check config or use default
@@ -703,7 +734,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Boolean
 	 */
 	protected function hasErrorStatus() {
-		return $this->error === true;
+		return $this->error;
 	}
 
 
@@ -748,7 +779,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	/**
 	 * @return Check if field required has a noCheck option
 	 */
-	public function isRequiredNoCheck() {
+	public function isRequiredCheckDisabled() {
 		return isset($this->config['required']['noCheck']);
 	}
 
@@ -803,7 +834,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		if( $wizardConfig['displayCondition'] ) {
 			$showWizard	= TodoyuFunction::callUserFunctionArray($wizardConfig['displayCondition'], $this, $wizardConfig);
 
-			if( $showWizard === false ) {
+			if( !$showWizard ) {
 				return false;
 			}
 		}

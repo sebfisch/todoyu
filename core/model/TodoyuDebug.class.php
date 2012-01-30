@@ -73,7 +73,7 @@ class TodoyuDebug {
 	 * @return	Boolean
 	 */
 	public static function isActive() {
-		return self::$active === true;
+		return self::$active;
 	}
 
 

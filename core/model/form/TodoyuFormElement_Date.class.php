@@ -219,7 +219,7 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 	public function getValueForTemplate() {
 		$value	= $this->getValue();
 
-		return $value === false ? '' : TodoyuTime::format($value, $this->getFormatKey());
+		return !$value ? '' : TodoyuTime::format($value, $this->getFormatKey());
 	}
 
 
@@ -236,7 +236,7 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 			// If storeAsDate, format in MySQL date format
 		if( $this->hasAttribute('storeAsDate') ) {
 				// Set to zero if no data entered
-			if( $storageData === false ) {
+			if( !$storageData ) {
 				$storageData = '0000-00-00';
 			} else {
 				$storageData = date('Y-m-d', $storageData);

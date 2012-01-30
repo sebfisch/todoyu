@@ -54,10 +54,11 @@ class TodoyuFormElement_Comment extends TodoyuFormElement {
 	/**
 	 * Get value (text) of comment
 	 *
-	 * @return String
+	 * @return	String
 	 */
 	public function getValueForTemplate() {
-		$type	= is_array($this->config['comment']) ? $this->config['comment']['@attributes']['type'] : false;
+		$type	= $this->config['comment']['@attributes']['type'];
+		$value	= '';
 
 		if( $type === 'function' ) {
 			$value	= TodoyuFunction::callUserFunction($this->config['comment']['function'], $this);

@@ -168,7 +168,7 @@ class TodoyuStaticRecords {
 		$keyValue	= self::$localeConfig[$type]['value'];
 
 			// Localize record
-		if( $localize === true ) {
+		if( $localize ) {
 			foreach($records as $index => $record) {
 				$records[$index]['label'] = self::getLabel($type, $record[$keyLabel]);
 			}

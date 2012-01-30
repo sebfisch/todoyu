@@ -539,8 +539,8 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Register fieldset
 	 *
-	 * @param	String		$name
-	 * @param	Array		$fieldset
+	 * @param	String			$name
+	 * @param	TodoyuFieldset	$fieldset
 	 */
 	public function registerFieldset($name, $fieldset) {
 		$this->fieldsetRegister[$name] = $fieldset;
@@ -692,7 +692,7 @@ class TodoyuForm implements ArrayAccess {
 		$data	= array();
 
 		foreach($this->hiddenFields as $name => $config) {
-			if( $onlyStorage === false || $config['noStorage'] !== true ) {
+			if( !$onlyStorage || !$config['noStorage'] ) {
 				$data[$name] = $config['value'];
 			}
 		}
@@ -733,6 +733,20 @@ class TodoyuForm implements ArrayAccess {
 	 */
 	public function setAttribute($name, $value) {
 		$this->attributes[$name] = $value;
+	}
+
+
+
+	/**
+	 * Set attribute only of not already set
+	 *
+	 * @param	String		$name
+	 * @param	Mixed		$value
+	 */
+	public function setAttributeIfNotSet($name, $value) {
+		if( !$this->hasAttribute($name) ) {
+			$this->setAttribute($name, $value);
+		}
 	}
 
 
@@ -966,7 +980,7 @@ class TodoyuForm implements ArrayAccess {
 
 		$id		= $this->getName();
 
-		if( $this->useRecordID === true ) {
+		if( $this->useRecordID ) {
 			$id .= '-' . $this->getRecordID();
 		}
 
@@ -1121,25 +1135,10 @@ class TodoyuForm implements ArrayAccess {
 	 * @return	Array
 	 */
 	private function getData() {
-		if( ! $this->hasAttribute('action') ) {
-			$this->setAttribute('action', TodoyuRequest::getRequestUrl());
-		}
-
-		if( ! $this->hasAttribute('method') ) {
-			$this->setAttribute('method', 'post');
-		}
-
-		if( $this->hasAttribute('onsubmit') ) {
-			$this->setAttribute('onsubmit', $this->parseWithFormData($this->getAttribute('onsubmit')));
-		}
-
-			// Add form attributes
-		$data	= array();
-		foreach($this->attributes as $attrName => $attrValue) {
-			$data[$attrName] = $this->parseWithFormData($attrValue);
-		}
-
+		$this->setDefaultAttributes();
 		$this->updateFieldValues();
+
+		$data	= $this->getParsedData();
 
 		$data['hiddenFields']	= $this->renderHiddenFields();
 		$data['fieldsets']		= $this->renderFieldsets();
@@ -1148,6 +1147,39 @@ class TodoyuForm implements ArrayAccess {
 		$data['id']				= $this->getRecordID();
 
 		return $data;
+	}
+
+
+
+	/**
+	 * Get parsed form data
+	 *
+	 * @return	Array
+	 */
+	private function getParsedData() {
+		$data	= array();
+
+		foreach($this->attributes as $attrName => $attrValue) {
+			$data[$attrName] = $this->parseWithFormData($attrValue);
+		}
+
+		return $data;
+	}
+
+
+
+	/**
+	 * Set default attributes
+	 *
+	 *
+	 */
+	private function setDefaultAttributes() {
+		$this->setAttributeIfNotSet('action', TodoyuRequest::getRequestUrl());
+		$this->setAttributeIfNotSet('method', 'post');
+
+		if( $this->hasAttribute('onsubmit') ) {
+			$this->setAttribute('onsubmit', $this->parseWithFormData($this->getAttribute('onsubmit')));
+		}
 	}
 
 

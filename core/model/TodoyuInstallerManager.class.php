@@ -106,7 +106,7 @@ class TodoyuInstallerManager {
 			if( strlen($data['server']) > 0 && strlen($data['username']) > 0 ) {
 				$info	= TodoyuDbAnalyzer::checkDbConnection($data['server'], $data['username'], $data['password']);
 
-				if( $info['status'] === true ) {
+				if( $info['status'] ) {
 					TodoyuSession::set('installer/db', $data);
 					TodoyuInstaller::setStep('dbselect');
 				} else {
@@ -170,7 +170,7 @@ class TodoyuInstallerManager {
 				if( $createDb ) {
 					$status	= TodoyuInstallerManager::addDatabase($useDatabase, $dbConf);
 
-					if( $status === true ) {
+					if( $status ) {
 						$dbConf['database']	= $useDatabase;
 						$success = true;
 					} else {
@@ -621,7 +621,7 @@ class TodoyuInstallerManager {
 
 		$fileCheck		= self::checkWritableStatus($stepConfig['fileCheck']);
 		$result['files']= $fileCheck['files'];
-		if( $fileCheck['error'] === true ) {
+		if( $fileCheck['error'] ) {
 			$result['stop']	= true;
 		}
 
@@ -660,7 +660,7 @@ class TodoyuInstallerManager {
 	 * @return	Boolean
 	 */
 	public static function isDatabaseConfigured() {
-		return Todoyu::$CONFIG['DB']['autoconnect'] === true;
+		return (boolean)Todoyu::$CONFIG['DB']['autoconnect'];
 	}
 
 

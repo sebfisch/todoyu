@@ -136,7 +136,7 @@ class TodoyuImageManager {
 		}
 
 			// Destroy image resource to save memory
-		if( $destroy === true ) {
+		if( $destroy ) {
 			imagedestroy($image);
 		}
 
@@ -178,7 +178,7 @@ class TodoyuImageManager {
 		$factorWidth	= $newWidth / $sourceWidth;
 		$factor			= min($factorHeight, $factorWidth);
 
-		if( $upscale === false && $factor > 1.0 ) {
+		if( !$upscale && $factor > 1.0 ) {
 			$factor	= 1.0;
 		}
 

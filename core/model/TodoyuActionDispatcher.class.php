@@ -39,7 +39,7 @@ class TodoyuActionDispatcher {
 		if( ! is_string($ext) ) {
 			$ext	= TodoyuPreferenceManager::getLastExt();
 
-			if( $ext === false ) {
+			if( !$ext ) {
 				$ext = Todoyu::$CONFIG['FE']['DEFAULT']['ext'];
 			}
 		}

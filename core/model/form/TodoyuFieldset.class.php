@@ -50,7 +50,7 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Elements of the fieldsets. Can be a mix of fieldsets and FormElements
 	 *
-	 * @var	TodoyuFormElement[]
+	 * @var	TodoyuFormElement[]|TodoyuFieldset[]
 	 */
 	private $elements = array();
 
@@ -574,8 +574,9 @@ class TodoyuFieldset implements ArrayAccess {
 		/**	@var	TodoyuFormElement	$element */
 		foreach($this->elements as $element) {
 			if( $element instanceof TodoyuFormElement ) {
+				/**	@var	TodoyuFormElement	$element */
 				$form->registerField($element);
-			} else if( $element instanceof TodoyuFieldset ) {
+			} elseif( $element instanceof TodoyuFieldset ) {
 				/**	@var	TodoyuFieldset	$element */
 				$element->setFieldsToForm($form);
 			}

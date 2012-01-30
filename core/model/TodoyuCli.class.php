@@ -115,7 +115,7 @@ class TodoyuCli {
 	 * @return	Boolean
 	 */
 	public static function isCliMode() {
-		return TODOYU_CLI === true;
+		return TODOYU_CLI;
 	}
 
 

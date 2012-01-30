@@ -92,7 +92,7 @@ class TodoyuQuickinfo {
 	 * @param	Boolean		$escape
 	 */
 	public function addInfo($key, $label, $position = 100, $escape = true) {
-		if( $escape === true ) {
+		if( $escape ) {
 			$label	= htmlentities($label, ENT_QUOTES, 'UTF-8', false);
 		}
 		$label	= str_replace("\n", '<br />', $label);

@@ -104,7 +104,7 @@ class Todoyu {
 	 * @param	String|Boolean	$forceTimezone		Set new timezone
 	 */
 	public static function setTimezone($forceTimezone = false) {
-		if( $forceTimezone === false ) {
+		if( !$forceTimezone ) {
 			$timezone	= self::getTimezone();
 		} else {
 			$timezone		= $forceTimezone;
@@ -130,7 +130,7 @@ class Todoyu {
 				$timezone	= false;
 			}
 
-			if( $timezone === false ) {
+			if( !$timezone ) {
 				$timezone = self::$CONFIG['SYSTEM']['timezone'];
 			}
 
@@ -258,7 +258,7 @@ class Todoyu {
 	 * @param	String|Boolean		$locale			Force locale. If not set try to find the correct locale
 	 */
 	public static function setLocale($locale = false) {
-		if( $locale === false ) {
+		if( !$locale ) {
 			$locale	= self::getLocale();
 		}
 
@@ -272,7 +272,7 @@ class Todoyu {
 		$status	= TodoyuLocaleManager::setSystemLocale($locale);
 
 			// Log if operation fails
-		if( $status === false ) {
+		if( !$status ) {
 			TodoyuLogger::logError('Can\'t set system locale for "' . $locale . '"');
 		}
 	}

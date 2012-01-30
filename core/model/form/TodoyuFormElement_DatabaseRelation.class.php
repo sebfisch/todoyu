@@ -342,7 +342,7 @@ class TodoyuFormElement_DatabaseRelation extends TodoyuFormElement {
 			$form	= $this->getRecordForm($index);
 			$valid	= $form->isValid();
 
-			if( $valid === false ) {
+			if( !$valid ) {
 				return false;
 			}
 		}

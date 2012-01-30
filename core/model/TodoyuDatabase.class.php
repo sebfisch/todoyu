@@ -110,7 +110,7 @@ class TodoyuDatabase {
 		$this->link	= @call_user_func($mysqlFunc, $this->config['server'], $this->config['username'], $this->config['password']);
 
 			// Check if connection to server has failed
-		if( $this->link === false ) {
+		if( !$this->link ) {
 			$this->printConnectionError(mysql_error(), mysql_errno());
 			exit();
 		}
@@ -119,7 +119,7 @@ class TodoyuDatabase {
 		$selectedStatus = @mysql_select_db($this->config['database'], $this->link);
 
 			// Check if database selection has failed
-		if( $selectedStatus === false ) {
+		if( !$selectedStatus ) {
 			$this->printSelectDbError(mysql_error(), mysql_errno());
 			exit();
 		}
@@ -766,7 +766,7 @@ class TodoyuDatabase {
 		$resource	= mysql_query($query, $this->link);
 
 		try {
-			if( $resource === false ) {
+			if( !$resource ) {
 				throw new TodoyuDbException($this->getError(), $this->getErrorNo(), $query);
 			}
 		} catch(TodoyuDbException $e) {

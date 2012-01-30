@@ -177,10 +177,10 @@ class TodoyuRightsManager {
 		$extID	= TodoyuExtensions::getExtID($extKey);
 		$right	= strtolower($right);
 
-		$allowed	= ((int) (self::$rights[$extID][$right])) === 1;
+		$allowed	= intval(self::$rights[$extID][$right]) === 1;
 
 			// If right was denied and checking is active, check if this right exists
-		if( $allowed === false && Todoyu::$CONFIG['CHECK_DENIED_RIGHTS'] === true ) {
+		if( !$allowed && Todoyu::$CONFIG['CHECK_DENIED_RIGHTS'] ) {
 			self::checkIfRightExists($extKey, $right);
 		}
 
@@ -237,13 +237,12 @@ class TodoyuRightsManager {
 	 *
 	 * @param	String	$extKey
 	 * @param	String	$sectionName
-	 * @param	String	$right
 	 * @return	Array|Boolean
 	 */
 	public static function getSectionRequirement($extKey, $sectionName) {
 		$sectionNode	= self::getSectionNode($extKey, $sectionName);
 
-		if( $sectionNode === false || ! array_key_exists('require', $sectionNode['@attributes']) ) {
+		if( !$sectionNode|| !isset($sectionNode['@attributes']['require']) ) {
 			return false;
 		}
 
@@ -263,7 +262,7 @@ class TodoyuRightsManager {
 	public static function getRightRequirement($extKey, $sectionName, $right) {
 		$rightNode	= self::getRightNode($extKey, $sectionName, $right);
 
-		if( $rightNode === false || ! array_key_exists('require', $rightNode['@attributes']) ) {
+		if( !$rightNode || !isset($rightNode['@attributes']['require']) ) {
 			false;
 		}
 

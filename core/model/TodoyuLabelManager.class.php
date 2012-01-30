@@ -115,7 +115,7 @@ class TodoyuLabelManager {
 		$locale	= is_null($locale) ? self::$locale : $locale ;
 		$label	= self::getLabelInternal($fullKey, $locale);
 
-		return $label === false ? $fullKey : $label;
+		return !$label ? $fullKey : $label;
 	}
 
 
@@ -131,7 +131,7 @@ class TodoyuLabelManager {
 		$locale	= is_null($locale) ? self::$locale : $locale ;
 		$label	= self::getLabelInternal($fullKey, $locale);
 
-		return $label === false ? '' : $label;
+		return !$label ? '' : $label;
 	}
 
 

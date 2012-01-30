@@ -41,7 +41,7 @@ class TodoyuFrontend {
 	public static function getActiveTab() {
 		$tab	= TodoyuPreferenceManager::getPreference(0, 'tab');
 
-		if( $tab === false ) {
+		if( !$tab ) {
 			$tab = self::getDefaultTab();
 		}
 
@@ -59,7 +59,7 @@ class TodoyuFrontend {
 	public static function getActiveSubmenuTab($parentTab) {
 		$tab	= TodoyuPreferenceManager::getPreference(0, 'tabSubmenu_' . $parentTab);
 
-		if( $tab === false ) {
+		if( !$tab ) {
 			$tab = self::getDefaultTab();
 		}
 
@@ -129,12 +129,12 @@ class TodoyuFrontend {
 	 */
 	public static function addMenuEntry($key, $label, $href, $position = 50, $target = '', $override = false) {
 
-		if( array_key_exists($key, self::$navi) && $override === false ) {
+		if( isset(self::$navi[$key]) && !$override ) {
 			return false;
 		}
 
-		if( ! array_key_exists($key, self::$navi) || $override ) {
-			if( ! array_key_exists($key, self::$navi) ) {
+		if( !isset(self::$navi[$key]) || $override ) {
+			if( !isset(self::$navi[$key]) ) {
 				self::$navi[$key] = array();
 			}
 

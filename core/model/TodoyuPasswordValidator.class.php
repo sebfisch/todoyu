@@ -74,7 +74,7 @@ class TodoyuPasswordValidator {
 			}
 		}
 
-		return $this->hasErrors() === false;
+		return !$this->hasErrors();
 	}
 
 

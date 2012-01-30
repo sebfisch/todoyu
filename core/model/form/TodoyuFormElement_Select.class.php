@@ -241,7 +241,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 * @return	Array
 	 */
 	public function getOptions() {
-		return $this->get('options');
+		return TodoyuArray::assure($this->config['options']);
 	}
 
 
@@ -279,7 +279,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	public function setOption($value, $label, $selected = false, $disabled = false, $className = '') {
 		$index = $this->getOptionIndexByValue($value);
 
-		if( $index === false ) {
+		if( !$index ) {
 			$this->addOption($value, $label);
 		} else {
 			$this->config['options'][$index] =  array(

@@ -110,7 +110,7 @@ class TodoyuFileManager {
 			if( is_dir($pathFolder) ) {
 				$successContents = self::deleteFolderContents($pathFolder, $deleteHidden);
 
-				if( $successContents === false ) {
+				if( !$successContents ) {
 					$success = false;
 				}
 
@@ -121,7 +121,7 @@ class TodoyuFileManager {
 				if( sizeof($elementsInFolder) === 0 ) {
 					$successFolder = self::deleteFolder($pathFolder);
 
-					if( $successFolder === false ) {
+					if( !$successFolder ) {
 						$success = false;
 					}
 				}
@@ -186,7 +186,7 @@ class TodoyuFileManager {
 			self::deleteFolderContents($pathFolder, true);
 
 			$result	= rmdir($pathFolder);
-			if( $result === false ) {
+			if( !$result ) {
 				TodoyuLogger::logNotice('Folder deletion failed: ' . $pathFolder);
 				$success = false;
 			}
@@ -527,7 +527,7 @@ class TodoyuFileManager {
 					TodoyuHeader::sendDownloadHeaders($mimeType, $fileName, $fileSize, $fileModTime);
 					$status = readfile($pathFile);
 
-					if( $status === false ) {
+					if( !$status ) {
 						TodoyuLogger::logError('Reading the file failed for a unknown reason: ' . $pathFile, $pathFile);
 					}
 
@@ -717,7 +717,7 @@ class TodoyuFileManager {
 	private static function downloadFile_CURL($url, array $options = array()) {
 		$ch	= curl_init();
 
-		if( $ch === false ) {
+		if( !$ch ) {
 			TodoyuLogger::logFatal('Failed to init curl');
 			return false;
 		}
@@ -797,7 +797,7 @@ class TodoyuFileManager {
 		$fp = @fsockopen($scheme . $parsedURL['host'], $port, $errno, $errstr, 2.0);
 
 			// Connection failed
-		if( $fp === false ) {
+		if( !$fp ) {
 			TodoyuLogger::logError('File download with socket failed. URL=' . $url . ' - ' . $errno . ' - ' . $errstr);
 			return false;
 		}
@@ -865,7 +865,7 @@ class TodoyuFileManager {
 		$content	= self::downloadFile($url, $options);
 
 		if( is_string($content) ) {
-			if( $targetPath === false || $targetPath === '' ) {
+			if( !$targetPath || $targetPath === '' ) {
 				$targetPath	= self::pathAbsolute(PATH_CACHE . '/temp/' . md5($url . NOW));
 			} else {
 				$targetPath	= self::pathAbsolute($targetPath);

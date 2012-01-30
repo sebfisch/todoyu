@@ -37,7 +37,7 @@ class TodoyuTemplateDocumentFactory {
 	 */
 	public static function getTemplateDocument($type, array $data, $template, array $config = array()) {
 		$typeClass	= self::getTypeClass($type);
-		$template	= ( $template === false ) ? false : TodoyuFileManager::pathAbsolute($template);
+		$template	= !$template ? false : TodoyuFileManager::pathAbsolute($template);
 
 			// Template is no regular file and not false? throw exception
 		if( $template !== false && ! is_file($template) ) {

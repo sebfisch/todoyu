@@ -112,7 +112,7 @@ class TodoyuArchiveManager {
 
 		$archive->close();
 
-		if( $result === false ) {
+		if( !$result ) {
 			throw new TodoyuException('Unknown error');
 		}
 

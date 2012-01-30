@@ -144,10 +144,8 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 * @param	Array	$source
 	 */
 	protected function initSourceFunction(array $source) {
-		$funcRef	= explode('::', $source['function']);
-
-		if( sizeof($funcRef) == 2 ) {
-			$options	= call_user_func($funcRef, $this->getForm());
+		if( TodoyuFunction::isFunctionReference($source['function']) ) {
+			$options	= TodoyuFunction::callUserFunction($source['function'], $this->getForm());
 
 			foreach($options as $option) {
 				$this->addOption($option['value'], $option['label'], $option['checked']);
@@ -174,7 +172,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 * @return	Array
 	 */
 	public function getOptions() {
-		return $this->get('options');
+		return TodoyuArray::assure($this->config['options']);
 	}
 
 
@@ -214,7 +212,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	public function setOption($value, $label, $checked = false, $disabled = false) {
 		$index = $this->getOptionIndexByValue($value);
 
-		if( $index === false ) {
+		if( !$index ) {
 			$this->addOption($value, $label, $checked, $disabled);
 		} else {
 			$this->config['options'][$index] =  array(

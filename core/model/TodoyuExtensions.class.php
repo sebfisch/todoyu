@@ -171,7 +171,7 @@ class TodoyuExtensions {
 	public static function getExtVersion($extKey) {
 		$info	= self::getExtInfo($extKey);
 
-		if( $info === false ) {
+		if( !$info ) {
 			return false;
 		} else {
 			return $info['version'];
@@ -510,7 +510,7 @@ class TodoyuExtensions {
 	public static function isSystemExtension($extKey) {
 		$extInfo	= self::getExtInfo($extKey);
 
-		return $extInfo['constraints']['system'] === true;
+		return (boolean)$extInfo['constraints']['system'];
 	}
 
 

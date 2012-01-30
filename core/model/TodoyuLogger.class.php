@@ -181,7 +181,7 @@ class TodoyuLogger {
 		}
 
 			// If no file found which is not skipped, cancel
-		if( $info === false ) {
+		if( !$info ) {
 			return false;
 		}
 

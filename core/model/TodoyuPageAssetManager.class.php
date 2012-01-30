@@ -55,17 +55,13 @@ class TodoyuPageAssetManager {
 	public static function addJavascript($pathToFile, $position = 100, $compress = true, $merge = true, $localize = true) {
 		$absPathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
 
-		$compress		= $compress === false ? false : true ;
-		$merge			= $merge	=== false ? false : true ;
-		$localize		= $localize === false ? false : true ;
-
 		$position		= (int) $position;
 		if( $position === 0) {
 			$position = 100;
 		}
 
 			// Break if file not found
-		if( $absPathToFile === false || ! is_file($absPathToFile) ) {
+		if( !$absPathToFile || !is_file($absPathToFile) ) {
 			TodoyuDebug::printHtml($pathToFile, 'File not found');
 			return false;
 		}
@@ -101,8 +97,6 @@ class TodoyuPageAssetManager {
 	public static function addStylesheet($pathToFile, $media = 'all', $position = 100, $compress = true, $merge = true) {
 		$pathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
 		$media		= empty($media) ? 'all' : $media;
-		$compress	= $compress === false ? false : true ;
-		$merge		= $merge	=== false ? false : true ;
 
 		$position	= (int) $position;
 		if( $position === 0) {
@@ -209,12 +203,12 @@ class TodoyuPageAssetManager {
 		$libsMerge	= array();
 
 		$javaScripts= TodoyuArray::sortByLabel(self::$javaScripts, 'position');
-		$doMerging	= Todoyu::$CONFIG['CACHE']['JS']['merge'] === true;
+		$doMerging	= Todoyu::$CONFIG['CACHE']['JS']['merge'];
 
 		foreach( $javaScripts as $fileConfig ) {
 			if( $doMerging && $fileConfig['merge'] ) {
 					// If file is a third party library, add to a separate merge file
-				if( $fileConfig['lib'] === true ) {
+				if( $fileConfig['lib'] ) {
 					$libsMerge[]	= $fileConfig;
 				} else {
 					$merge[]	= $fileConfig;
@@ -273,7 +267,7 @@ class TodoyuPageAssetManager {
 				}
 
 					// If not compressed, add file information at the top of the code
-				if( $doCompress === false ) {
+				if( !$doCompress ) {
 					$fileCode = "\n\n/* " . TodoyuFileManager::pathWeb($fileConfig['file']) . "\n" . str_repeat('=', 50) . "*/\n" . $fileCode;
 				}
 
@@ -297,8 +291,8 @@ class TodoyuPageAssetManager {
 	private static function getSingleJavascriptFiles(array $fileConfigs) {
 		$fileConfigs= TodoyuArray::sortByLabel($fileConfigs);
 		$files		= array();
-		$doLocalize	= Todoyu::$CONFIG['CACHE']['JS']['localize'] === true;
-		$doCompress	= Todoyu::$CONFIG['CACHE']['JS']['compress'] === true;
+		$doLocalize	= Todoyu::$CONFIG['CACHE']['JS']['localize'];
+		$doCompress	= Todoyu::$CONFIG['CACHE']['JS']['compress'];
 
 		foreach($fileConfigs as $fileConfig) {
 			if( ($doLocalize && $fileConfig['localize']) || ($doCompress && $fileConfig['compress']) ) {
@@ -607,7 +601,7 @@ class TodoyuPageAssetManager {
 						}
 
 							// If not compressed, add file information at the top of the code
-						if( $doCompress === false ) {
+						if( !$doCompress ) {
 							$fileCode = "\n\n/* " . TodoyuFileManager::pathWeb($fileConfig['file']) . "\n" . str_repeat('=', 50) . "*/\n" . $fileCode;
 						}
 

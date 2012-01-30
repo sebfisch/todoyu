@@ -45,7 +45,7 @@ class TodoyuContentItemTabPreferences {
 			$preference	= $extKey . '-tab';
 			$prefTab	= TodoyuPreferenceManager::getPreference($extID, $preference, $idItem);
 
-			if( $prefTab === false || $prefTab === '' ) {
+			if( !$prefTab || $prefTab === '' ) {
 				$prefTab = TodoyuContentItemTabManager::getDefaultTab($extKey, $itemKey, $idItem);
 			}
 		}

@@ -43,7 +43,7 @@ class TodoyuRequest {
 			$value	= NULL;
 		}
 
-		if( $intVal === true ) {
+		if( $intVal ) {
 			$value = (int) $value;
 		}
 
@@ -304,7 +304,7 @@ class TodoyuRequest {
 				$ext	= TodoyuPreferenceManager::getLastExt();
 			}
 
-			if( $ext === false ) {
+			if( !$ext ) {
 				$ext = Todoyu::$CONFIG['FE']['DEFAULT']['ext'];
 			}
 

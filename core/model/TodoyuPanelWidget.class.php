@@ -217,7 +217,7 @@ abstract class TodoyuPanelWidget {
 	 * @return	Boolean
 	 */
 	public function isCollapsed() {
-		return $this->collapsed === true;
+		return $this->collapsed;
 	}
 
 

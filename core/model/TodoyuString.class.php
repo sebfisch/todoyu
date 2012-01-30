@@ -139,7 +139,7 @@ class TodoyuString {
 
 		for($i = 0; $i < $length; $i++) {
 			$curChar	= substr($string, $i, 1);
-			if( ! is_numeric($curChar) && strpos($allowedChars, $curChar) === false ) {
+			if( !is_numeric($curChar) && strpos($allowedChars, $curChar) === false ) {
 				return false;
 			}
 		}
@@ -167,7 +167,7 @@ class TodoyuString {
 			$nextChar	= mb_substr($text, $length, 1, 'utf-8');
 
 				// Go back to last word ending
-			if( $dontSplitWords === true && $nextChar !== ' ' && mb_stristr($cropped, ' ', null, 'utf-8') !== false ) {
+			if( $dontSplitWords && $nextChar !== ' ' && mb_stristr($cropped, ' ', null, 'utf-8') !== false ) {
 				$spacePos	= mb_strrpos($cropped, ' ', 0, 'utf-8');
 				$cropped	= mb_substr($cropped, 0, $spacePos, 'utf-8');
 			}
@@ -238,7 +238,7 @@ class TodoyuString {
 		$text	= str_replace('</p>', "\n\n", $text);
 		$text	= strip_tags($text);
 
-		if( $decodeEntity === true ) {
+		if( $decodeEntity ) {
 			$text	= html_entity_decode($text, ENT_COMPAT, 'UTF-8');
 		}
 
@@ -418,7 +418,7 @@ class TodoyuString {
 												$config['hasNumbers'],
 												$config['hasSpecialChars']);
 
-		} while( $validator->validate($password) === false );
+		} while( !$validator->validate($password) );
 
 		return $password;
 	}
@@ -438,7 +438,7 @@ class TodoyuString {
 		$fileSize	= round(floatval($fileSize), 0);
 
 		if( is_null($labels) ) {
-			if( $noLabel === false ) {
+			if( !$noLabel ) {
 				$labels = array(
 					'gb'	=> Todoyu::Label('core.file.size.gb'),
 					'mb'	=> Todoyu::Label('core.file.size.mb'),

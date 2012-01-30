@@ -105,7 +105,7 @@ class TodoyuScheduler {
 			// Cache last execution dates for all jobs
 		self::cacheLastExecutionDates();
 
-		if( $jobClassName === false ) {
+		if( !$jobClassName ) {
 				// Get all due jobs and execute them
 			$jobs	= self::getDueJobs();
 		} else {

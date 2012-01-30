@@ -79,7 +79,7 @@ class TodoyuFormElement_SelectGrouped extends TodoyuFormElement_Select {
 			'class'		=> $className,
 		);
 
-		if( $selected === true ) {
+		if( $selected ) {
 			$this->addSelectedValue($value);
 		}
 	}

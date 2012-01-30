@@ -67,13 +67,13 @@ class TodoyuQuickCreateManager {
 
 		foreach($engines as $index => $engine) {
 				// If onlyArea flag is set and area is not in primary types, remove
-			if( $engine['areaOnly'] === true && ! in_array($area, $engine['primary']) ) {
+			if( $engine['areaOnly'] && ! in_array($area, $engine['primary']) ) {
 				unset($engines[$index]);
 				continue;
 			}
 
 				// Find primary type
-			if( $data['primary'] === false && in_array($area, $engine['primary']) ) {
+			if( !$data['primary'] && in_array($area, $engine['primary']) ) {
 				$data['primary'] = $engine;
 				$data['primary']['isPrimary'] = true;
 			}

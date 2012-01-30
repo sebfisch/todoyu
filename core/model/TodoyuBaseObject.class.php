@@ -221,7 +221,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Boolean
 	 */
 	public function notEmpty($key) {
-		return empty($this->data[$key]) === false;
+		return !empty($this->data[$key]);
 	}
 
 

@@ -57,12 +57,12 @@ class TodoyuCoreWizardActionController extends TodoyuActionController {
 		$wizardName	= trim($params['wizard']);
 		$step		= trim($params['step']);
 		$direction	= trim($params['direction']);
-		$noSave		= (int) ($params['nosave']) === 1;
+		$noSave		= (boolean)$params['nosave'];
 		$data		= TodoyuArray::assure($params['data']);
 
 		$wizard		= TodoyuWizardManager::getWizard($wizardName);
 
-		if( $noSave === false ) {
+		if( !$noSave ) {
 			if( $wizard->save($step, $data) ) {
 				$step	= $wizard->goToStepInDirection($direction);
 			} else {

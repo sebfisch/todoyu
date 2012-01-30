@@ -95,7 +95,7 @@ class TodoyuDbAnalyzer {
 			'status'	=> true
 		);
 
-		if( $status === false ) {
+		if( !$status ) {
 			$info['status']	= false;
 			$info['error']	= mysql_error();
 		}

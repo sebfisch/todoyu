@@ -36,7 +36,7 @@ class TodoyuFunction {
 	 */
 	public static function callUserFunction($funcRefString) {
 		$funcArgs	= func_get_args();
-		$funcRef	= array_shift($funcArgs);
+		array_shift($funcArgs); // Remove function name
 
 		if( self::isFunctionReference($funcRefString) ) {
 			$funcRefParts = explode('::', $funcRefString);

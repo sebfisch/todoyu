@@ -258,7 +258,7 @@ class TodoyuArray {
 		}
 
 			// If no natural sorting is needed, we can take the built-in functions
-		if( $useNaturalSorting === false ) {
+		if( !$useNaturalSorting ) {
 			if( $reversed ) {
 				krsort($labelKeyArray, $sortingFlag);
 			} else {
@@ -381,7 +381,7 @@ class TodoyuArray {
 		}
 
 			// Stop here if key exists and replacing is disabled
-		if( $exists === true && $replace === false && $newKeyName === $refKeyName ) {
+		if( $exists && !$replace && $newKeyName === $refKeyName ) {
 				// No action if element already exists and replacing is disabled
 			$newArray =& $array;
 //			TodoyuDebug::printHtml($array);
@@ -796,7 +796,7 @@ class TodoyuArray {
 
 		foreach($parts as $value) {
 			$value = trim($value);
-			if( $value !== '' || $removeEmptyValues === false ) {
+			if( $value !== '' || !$removeEmptyValues ) {
 				$array[] = $value;
 			}
 		}

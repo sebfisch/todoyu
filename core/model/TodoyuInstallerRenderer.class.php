@@ -105,7 +105,7 @@ class TodoyuInstallerRenderer {
 		);
 
 			// Get result of server check, set response display
-		if( $info['stop'] === false ) {
+		if( !$info['stop'] ) {
 			$data['text']		= Todoyu::Label('install.installer.servercheck.ready');
 			$data['textClass']	= 'success';
 		} else {

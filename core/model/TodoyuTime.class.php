@@ -77,7 +77,7 @@ class TodoyuTime {
 	 * @return	Integer
 	 */
 	public static function getStartOfDay($time = 0) {
-		$time = self::time($time);// $time === false ? NOW : (int) $time;
+		$time	= self::time($time);
 
 		$month	= date('n', $time);
 		$day	= date('j', $time);
@@ -109,15 +109,15 @@ class TodoyuTime {
 	/**
 	 * Make timestamp for given date's time (at 1.1.1970)
 	 *
-	 * @param	Integer|Boolean		$timestamp
+	 * @param	Integer|Boolean		$time
 	 * @return	Integer
 	 */
-	public static function getTimeOfDay($timestamp = false) {
-		$timestamp = $timestamp === false ? NOW : (int) $timestamp;
+	public static function getTimeOfDay($time = false) {
+		$time	= self::time($time);
 
-		$hour	= date('G', $timestamp);
-		$minute	= date('i', $timestamp) + 0;
-		$second	= date('s', $timestamp) + 0;
+		$hour	= date('G', $time);
+		$minute	= date('i', $time) + 0;
+		$second	= date('s', $time) + 0;
 
 		return self::SECONDS_HOUR * $hour + self::SECONDS_MIN * $minute  + $second;
 	}
@@ -619,11 +619,11 @@ class TodoyuTime {
 		$format		= $format == '' ? self::getFormat('datetime') : $format;
 		$dateParts	= strptime($dateTimeString, $format);
 
-		if( $dateParts === false ) {
+		if( !$dateParts ) {
 			return 0;
 		}
 
-		if( array_key_exists('timestamp', $dateParts) ) {
+		if( isset($dateParts['timestamp']) ) {
 			return $dateParts['timestamp'];
 		} else {
 			$dateParts['tm_year']	+= 1900;

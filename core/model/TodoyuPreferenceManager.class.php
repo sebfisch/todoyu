@@ -241,13 +241,13 @@ class TodoyuPreferenceManager {
 	 * @return	String
 	 */
 	public static function getLastExt() {
-		$pref = self::getPreference(0, 'ext');
+		$lastExt = self::getPreference(0, 'ext');
 
-		if( $pref === false ) {
-			$pref = Todoyu::$CONFIG['FE']['DEFAULT']['ext'];
+		if( !$lastExt ) {
+			$lastExt = Todoyu::$CONFIG['FE']['DEFAULT']['ext'];
 		}
 
-		return $pref;
+		return $lastExt;
 	}
 
 
