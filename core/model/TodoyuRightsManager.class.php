@@ -159,7 +159,7 @@ class TodoyuRightsManager {
 		}
 
 			// Not logged in users have no rights at all
-		if( ! TodoyuAuth::isLoggedIn() ) {
+		if( !TodoyuAuth::isLoggedIn() ) {
 			return false;
 		}
 

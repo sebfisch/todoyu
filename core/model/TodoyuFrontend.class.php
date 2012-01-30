@@ -128,7 +128,6 @@ class TodoyuFrontend {
 	 * @return	Boolean
 	 */
 	public static function addMenuEntry($key, $label, $href, $position = 50, $target = '', $override = false) {
-
 		if( isset(self::$navi[$key]) && !$override ) {
 			return false;
 		}
@@ -257,7 +256,7 @@ class TodoyuFrontend {
 	public static function getMenuEntries() {
 		$active	= self::getActiveTab();
 
-		if( array_key_exists($active, self::$navi) ) {
+		if( isset(self::$navi[$active]) ) {
 			self::$navi[$active]['active'] = true;
 		}
 
