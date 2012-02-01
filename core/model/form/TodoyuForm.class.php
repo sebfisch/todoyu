@@ -372,7 +372,7 @@ class TodoyuForm implements ArrayAccess {
 		}
 
 			// Update hidden fields
-		$this->updateFieldValues();
+		$this->updateHiddenFieldValues();
 	}
 
 
