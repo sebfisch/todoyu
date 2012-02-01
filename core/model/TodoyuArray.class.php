@@ -951,6 +951,38 @@ class TodoyuArray {
 	}
 
 
+
+	/**
+	 * Prepend a custom please select label to a option list
+	 * Use this, if you don't want to use the default "Please select" of the select element
+	 * The default has to be disabled with <noPleaseSelect />
+	 *
+	 * @param	Array			$options
+	 * @param	String			$pleaseSelectLabel
+	 * @param	String|Integer	$pleaseSelectValue
+	 * @param	Boolean			$addSeparator
+	 * @return	Array
+	 */
+	public static function prependSelectOption(array $options, $pleaseSelectLabel, $pleaseSelectValue = 0, $addSeparator = true) {
+		$select		= array(
+			'value'		=> $pleaseSelectValue,
+			'label'		=> $pleaseSelectLabel
+		);
+		$separator	= array(
+			'value'		=> 0,
+			'label'		=> '---------------------------',
+			'disabled'	=> true
+		);
+
+		if( $addSeparator ) {
+			array_unshift($options, $separator);
+		}
+
+		array_unshift($options, $select);
+
+		return $options;
+	}
+
 }
 
 ?>
