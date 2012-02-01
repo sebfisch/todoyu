@@ -372,8 +372,18 @@ class TodoyuForm implements ArrayAccess {
 		}
 
 			// Update hidden fields
+		$this->updateFieldValues();
+	}
+
+
+
+	/**
+	 * Set values of hidden fields if set in form data
+	 *
+	 */
+	protected function updateHiddenFieldValues() {
 		foreach( $this->hiddenFields as $name => $value ) {
-			if( ! is_null($this->formdata[$name]) ) {
+			if( !is_null($this->formdata[$name]) ) {
 				$this->hiddenFields[$name]['value'] = $this->formdata[$name];
 			}
 		}
