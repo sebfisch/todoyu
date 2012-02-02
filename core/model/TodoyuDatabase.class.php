@@ -587,14 +587,14 @@ class TodoyuDatabase {
 	/**
 	 * Execute a select on the database, but only return if there is a result for this query
 	 *
-	 * @param	String		$fields
-	 * @param	String		$table
-	 * @param	String		$where
-	 * @param	String		$groupBy
-	 * @param	String		$limit
+	 * @param	String			$fields
+	 * @param	String			$table
+	 * @param	String			$where
+	 * @param	String			$groupBy
+	 * @param	String|Integer	$limit
 	 * @return	Boolean
 	 */
-	public function hasResult($fields, $table, $where, $groupBy = '', $limit = '') {
+	public function hasResult($fields, $table, $where, $groupBy = '', $limit = 1) {
 		$cacheID	= 'hasresult:' . sha1(serialize(func_get_args()));
 
 		if( ! TodoyuCache::isIn($cacheID) ) {
