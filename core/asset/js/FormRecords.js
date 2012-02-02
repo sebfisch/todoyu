@@ -194,9 +194,10 @@ Todoyu.FormRecords = Class.create({
 	startDelayedClear: function() {
 		this.stopDelayedClear();
 
-		this.timeoutClear = this.clear.bind(this).delay(0.1);
+		this.timeoutClear = this.clear.bind(this).delay(0.3);
 	},
 
+	
 
 	/**
 	 * Stop the clear timeout
