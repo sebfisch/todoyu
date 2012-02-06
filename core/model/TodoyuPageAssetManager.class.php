@@ -55,6 +55,10 @@ class TodoyuPageAssetManager {
 	public static function addJavascript($pathToFile, $position = 100, $compress = true, $merge = true, $localize = true) {
 		$absPathToFile	= TodoyuFileManager::pathAbsolute($pathToFile);
 
+		$compress	= $compress === false ? false : true;
+		$merge		= $merge 	=== false ? false : true;
+		$localize	= $localize === false ? false : true;
+
 		$position		= (int) $position;
 		if( $position === 0) {
 			$position = 100;
@@ -206,7 +210,7 @@ class TodoyuPageAssetManager {
 		$doMerging	= Todoyu::$CONFIG['CACHE']['JS']['merge'];
 
 		foreach( $javaScripts as $fileConfig ) {
-			if( $doMerging && $fileConfig['merge'] !== false ) {
+			if( $doMerging && $fileConfig['merge'] ) {
 					// If file is a third party library, add to a separate merge file
 				if( $fileConfig['lib'] ) {
 					$libsMerge[]	= $fileConfig;
