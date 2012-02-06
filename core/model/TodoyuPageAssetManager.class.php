@@ -67,7 +67,7 @@ class TodoyuPageAssetManager {
 		}
 
 			// Add file, if not already in list
-		if( ! array_key_exists($absPathToFile, self::$javaScripts) ) {
+		if( !isset(self::$javaScripts[$absPathToFile]) ) {
 			self::$javaScripts[$absPathToFile] = array(
 				'file'		=> $absPathToFile,
 				'position'	=> $position,
@@ -206,7 +206,7 @@ class TodoyuPageAssetManager {
 		$doMerging	= Todoyu::$CONFIG['CACHE']['JS']['merge'];
 
 		foreach( $javaScripts as $fileConfig ) {
-			if( $doMerging && $fileConfig['merge'] ) {
+			if( $doMerging && $fileConfig['merge'] !== false ) {
 					// If file is a third party library, add to a separate merge file
 				if( $fileConfig['lib'] ) {
 					$libsMerge[]	= $fileConfig;
