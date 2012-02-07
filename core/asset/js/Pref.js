@@ -58,15 +58,11 @@ Todoyu.Pref = {
 		var options	= {
 			parameters: {
 				action:	action,
-				'value':	value,
-				'item':		idItem,
-				'area':		Todoyu.getArea()
-			}
+				value:	value,
+				item:	idItem
+			},
+			onComplete: onComplete || Prototype.emptyFunction
 		};
-
-		if( ! Object.isUndefined(onComplete) ) {
-			options.onComplete = onComplete;
-		}
 
 		Todoyu.send(url, options);
 	},

@@ -122,11 +122,11 @@ Todoyu.Time = {
 	 *
 	 * @method	getShiftedTime
 	 * @param	{Number}		baseTime		Unit timestamp
-	 * @param	{String}		tab
+	 * @param	{String}		type
 	 * @param	{Boolean}		up
 	 * @return	{Number}		Unit timestamp
 	 */
-	getShiftedTime: function(baseTime, tab, up) {
+	getShiftedTime: function(baseTime, type, up) {
 		var date	= new Date(baseTime*1000);
 		baseTime	= this.getDayStart(date);
 
@@ -134,7 +134,7 @@ Todoyu.Time = {
 		var day		= 0;
 		var month	= 0;
 
-		switch( tab ) {
+		switch( type ) {
 			case 'month':
 				month	= factor;
 				break;
