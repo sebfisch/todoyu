@@ -12,6 +12,7 @@
 	<label index="databaserelation.nolabel">[Neuer Eintrag]</label>
 	<label index="databaserelation.expandAllRecords">Details anzeigen</label>
 	<label index="error.notUnique">Dieser Eintrag existiert bereits</label>
+	<label index="error.duration.invalidinput">Dauer in ungültig, bitte korrigieren.</label>
 	<label index="ac.noResults">Autovervollständigung: Keine Resultate gefunden</label>
 	<label index="is_preferred">Bevorzugt</label>
 	<label index="confirm.toggle.is_preferred.on">Nur ein Datensatz dieses Typs kann jeweils als bevorzugt gewählt werden. Diesen Datensatz wirklich als bevorzugt anwählen?</label>

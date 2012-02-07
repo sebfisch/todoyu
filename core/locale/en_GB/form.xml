@@ -12,6 +12,7 @@
 	<label index="databaserelation.nolabel">[New Entry]</label>
 	<label index="databaserelation.expandAllRecords">Show Details</label>
 	<label index="error.notUnique">This entry already exists</label>
+	<label index="error.duration.invalidinput">Invalid duration input, please correct.</label>
 	<label index="ac.noResults">Autocomplete: no results found</label>
 	<label index="is_preferred">Preferred</label>
 	<label index="confirm.toggle.is_preferred.on">Only one record of this type can be preferred at a time. Really select this record to be preferred?</label>

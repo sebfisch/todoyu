@@ -466,6 +466,49 @@ Todoyu.Form = {
 
 
 	/**
+	 * Assist input of time duration: correct abbreviated / alert on illegal input
+	 *
+	 * @method  assistDurationInput
+	 * @param   {Element}   field
+	 */
+	assistDurationInput: function(field) {
+		var value	= $F(field).strip();
+
+		if( value.match(/^\d+$/) !== null ) {		// Format like "1" => "1:00", also 11, 111, 1111...
+			$(field).value  = value + ':00';
+		} else if( value.match(/^\:\d{1,2}$/) ) {	// Format like ":30" => "0:30", also ":3", not ":333"
+			$(field).value  = '0' + value;
+		} else if( value.match(/^\d+\:$/) ) {		// Format like "2:" => "2:00", also 22, 222, 2222...
+			$(field).value  = value + '00';
+		}
+
+			// Detect and alert on empty or otherwise illegal (containing characters other than numbers and ":") input
+		if( value === '' || value === ':' || value.match(/^[0-9\:]+$/) === null ) {
+			this.getFieldLabelElement(field).addClassName('error');
+			alert('[LL:core.form.error.duration.invalidinput]');
+		} else {
+			this.getFieldLabelElement(field).removeClassName('error');
+			this.markFieldInvalid(field, false);
+		}
+	},
+
+
+
+	/**
+	 * Get label element of given field
+	 *
+	 * @method	getFieldLabelElement
+	 * @param	{Element}				field
+	 */
+	getFieldLabelElement: function(field) {
+		var labelBox	= $('formElement-' + field.id + '-labelbox');
+
+		return labelBox.down('label');
+	},
+
+
+
+	/**
 	 * Add an iFrame to the document body
 	 *
 	 * @method	addIFrame

@@ -91,8 +91,8 @@ abstract class TodoyuPanelWidget {
 	/**
 	 * Set data
 	 *
-	 * @param	String		$key
-	 * @param	Mixed		$value
+	 * @param	String						$key
+	 * @param	Array|Boolean|Int|String	$value
 	 */
 	public function set($key, $value) {
 		$this->data[$key] = $value;
@@ -158,8 +158,8 @@ abstract class TodoyuPanelWidget {
 	/**
 	 * Get data
 	 *
-	 * @param	String		$key
-	 * @return	Mixed
+	 * @param	String						$key
+	 * @return	Array|Boolean|Int|String
 	 */
 	public function get($key) {
 		return $this->data[$key];

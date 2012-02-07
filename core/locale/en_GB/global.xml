@@ -10,6 +10,7 @@
 	<label index="author">Author</label>
 	<label index="title">Title</label>
 	<label index="description">Description</label>
+	<label index="notice">Notice</label>
 	<label index="date">Date</label>
 	<label index="quickcreate.title">Create</label>
 	<label index="quickcreate.alltypes.label">All Data Types:</label>
