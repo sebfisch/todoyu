@@ -11,7 +11,7 @@ core 2.2.0 - not released yet
 	* Added: "greaterThan" form validator
 	* Added: Methods for fetching right / section and resp. required right from extension rights matrix
 	* Added: TodoyuArray::implodeAssoc()
-	* Added: TodoyuDateRange: setMinLength(), isOverlapping(), isInOneDay(), getOverlappingRange(), getAmountOfDays()
+	* Added: TodoyuDateRange: setMinLength(), isOverlapping(), isInOneDay(), getOverlappingRange(), getAmountOfDays(), contains(), setRangeLimits()
 	* Added: DialogChoice. Create a popup and creates options to get selected by user
 	* Added: TodoyuArray::assureFromJSON() - Takes a JSON string, tries to decode it as an array and makes sure an array is return (even on invalid JSON)
 	* Added: TodoyuRecordManager::deleteRecords() sets deleted flag for records in a table by where statement

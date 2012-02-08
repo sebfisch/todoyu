@@ -321,6 +321,18 @@ class TodoyuDateRange {
 
 
 	/**
+	 * Check whether the range containes another range completely
+	 *
+	 * @param	TodoyuDateRange		$range
+	 * @return	Boolean
+	 */
+	public function contains(TodoyuDateRange $range) {
+		return $this->startsBefore($range->getStart(), true) && $this->endsAfter($range->getEnd(), true);
+	}
+
+
+
+	/**
 	 * Check whether a range overlaps another comment
 	 *
 	 * @param	TodoyuDateRange	$range
@@ -373,6 +385,18 @@ class TodoyuDateRange {
 		if( $this->dateStart < $dateStart ) {
 			$this->setStart($dateStart);
 		}
+	}
+
+
+
+	/**
+	 * Set limits based on given range
+	 *
+	 * @param	TodoyuDateRange		$range
+	 */
+	public function setRangeLimits(TodoyuDateRange $range) {
+		$this->setStartLimit($range->getStart());
+		$this->setEndLimit($range->getEnd());
 	}
 
 
