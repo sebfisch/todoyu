@@ -38,11 +38,16 @@ class TodoyuContentItemTabRenderer {
 	public static function renderTabs($extKey, $itemKey, $idItem, $activeTab = '') {
 		$idItem		= intval($idItem);
 		$activeTab	= trim($activeTab) === '' ? TodoyuContentItemTabPreferences::getActiveTab($extKey, $itemKey, $idItem) : $activeTab;
+		$tmpl		= 'core/view/contentitem-tabcontainer.tmpl';
 
-		$tabHeads		= self::renderTabHeads($extKey, $itemKey, $idItem, $activeTab);
-		$tabContents	= self::renderTabsContent($extKey, $itemKey, $idItem, $activeTab);
+		$data = array(
+			'itemName'		=> $itemKey,
+			'idItem'		=> $idItem,
+			'tabHeads'		=> self::renderTabHeads($extKey, $itemKey, $idItem, $activeTab),
+			'tabContents'	=> self::renderTabsContent($extKey, $itemKey, $idItem, $activeTab),
+		);
 
-		return $tabHeads . $tabContents;
+		return Todoyu::render($tmpl, $data);
 	}
 
 
@@ -60,7 +65,7 @@ class TodoyuContentItemTabRenderer {
 		$activeTab	= $activeTab === '' ? TodoyuContentItemTabPreferences::getActiveTab($extKey, $itemKey, $idItem) : $activeTab;
 
 		$name		= $itemKey . '-' . $idItem;
-		$jsHandler	= 'Todoyu.Ext.' . $extKey . '.' . ucfirst($itemKey) . '.Tab.onSelect.bind(Todoyu.Ext.' . $extKey . '.' . ucfirst($itemKey) . '.Tab)';
+		$jsHandler	= 'Todoyu.ContentItemTab.onSelect.bind(Todoyu.ContentItemTab, \'' . $extKey . '\')';
 
 		$tabs		= TodoyuContentItemTabManager::getTabs($extKey, $itemKey, $idItem);
 

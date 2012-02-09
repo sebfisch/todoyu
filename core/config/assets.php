@@ -304,6 +304,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/asset/js/FormRecords.js',
 			'position'	=> 91
+		),
+		array(
+			'file'		=> 'core/asset/js/ContentItemTab.js',
+			'position'	=> 91
 		)
 	),
 
@@ -460,6 +464,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/asset/css/formrecords.css',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/asset/css/contentitemtabs.css',
 			'position'	=> 10
 		)
 	)
