@@ -668,7 +668,7 @@ class TodoyuDatabase {
 	 */
 	public function buildInArrayQuery(array $values, $searchField = 'id', $isInt = true, $negate = false, $quote = true) {
 		if( empty($values) ) {
-			return ' ';
+			return '0';
 		}
 		$values = array_unique($values);
 
