@@ -86,7 +86,7 @@ Todoyu.Time = {
 	durationFormat: function(seconds) {
 		var timeParts = this.getTimeParts(seconds);
 
-		return timeParts.hours + ':' + timeParts.minutes;
+		return timeParts.hours + ':' + Todoyu.Helper.twoDigit(timeParts.minutes);
 	},
 
 
