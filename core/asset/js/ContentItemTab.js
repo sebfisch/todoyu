@@ -224,7 +224,6 @@ Todoyu.ContentItemTab = {
 	 * @return	{Element}
 	 */
 	getContainer: function(idItem, itemKey) {
-		console.log(itemKey);
 		return $(itemKey + '-' + idItem + '-tabcontainer');
 	},
 
