@@ -54,9 +54,7 @@ Todoyu.Time = {
 	 * @return	{String}
 	 */
 	timeFormat: function(hours, minutes, seconds, separator) {
-		if( Object.isUndefined(separator) ) {
-			separator = ':';
-		}
+		separator	= separator || ':';
 
 		return Todoyu.Helper.twoDigit(hours) + separator + Todoyu.Helper.twoDigit(minutes) + separator + Todoyu.Helper.twoDigit(seconds);
 	},
@@ -75,6 +73,20 @@ Todoyu.Time = {
 		var timeParts = this.getTimeParts(time);
 
 		return this.timeFormat(timeParts.hours, timeParts.minutes, timeParts.seconds, separator);
+	},
+
+
+
+	/**
+	 * Format duration. Hours:minutes
+	 *
+	 * @param	{Number}	seconds
+	 * @return	{String}
+	 */
+	durationFormat: function(seconds) {
+		var timeParts = this.getTimeParts(seconds);
+
+		return timeParts.hours + ':' + timeParts.minutes;
 	},
 
 
@@ -299,12 +311,12 @@ Todoyu.Time = {
 		var dateObj	= Date.parseDate(dateString, format);
 
 		return {
-			'month':	dateObj.getMonth(),
-			'day':		dateObj.getDate(),
-			'year':		dateObj.getFullYear(),
-			'hours':	dateObj.getHours(),
-			'minutes':	dateObj.getMinutes(),
-			'seconds':	dateObj.getSeconds()
+			month:		dateObj.getMonth(),
+			day:		dateObj.getDate(),
+			year:		dateObj.getFullYear(),
+			hours:		dateObj.getHours(),
+			minutes:	dateObj.getMinutes(),
+			seconds:	dateObj.getSeconds()
 		};
 	},
 
