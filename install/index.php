@@ -33,7 +33,7 @@ chdir( dirname(dirname(__FILE__)) );
 
 	// Check requirements (on stop if not ok)
 require_once('core/model/TodoyuServer.class.php');
-TodoyuServer::assertMinimalRequirements();
+TodoyuServer::assertMinimumRequirements();
 
 
 	// Load normal global.php file

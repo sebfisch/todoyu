@@ -39,34 +39,12 @@ class TodoyuInstaller {
 	 * Process and display current step of installer
 	 */
 	public static function run() {
+			// Send headers to prevent caching
 		TodoyuHeader::sendNoCacheHeaders();
-		
 			// Start output buffer
 		ob_start();
-
 			// Save last version if submitted
 		self::saveVersionDetection();
-
-            // Ensure SCSS being parsed (CSS available)
-        $scssFiles    = array(
-            array(
-			    'file'		=> 'core/asset/css/base.scss',
-		    ),
-            array(
-			    'file'		=> 'core/asset/css/layout.scss',
-		    ),
-            array(
-			    'file'		=> 'core/asset/css/panel.scss',
-		    ),
-            array(
-			    'file'		=> 'core/asset/css/form.scss',
-		    ),
-            array(
-			    'file'		=> 'core/asset/css/button.scss',
-		    ),
-        );
-        TodoyuPageAssetManager::getStyleSheets($scssFiles);
-
 
 			// Show special form to set last version if file is not available
 		if( self::isUpdate() && ! self::hasVersionFile() ) {
@@ -109,6 +87,22 @@ class TodoyuInstaller {
 
 
 	/**
+	 * Ensure installer CSS files to be available (SCSS being parsed)
+	 */
+	public static function prepareInstallerCss() {
+		$scssFiles    = array(
+			array('file'	=> 'core/asset/css/base.scss'),
+			array('file'	=> 'core/asset/css/layout.scss'),
+			array('file'	=> 'core/asset/css/panel.scss'),
+			array('file'	=> 'core/asset/css/form.scss'),
+			array('file'	=> 'core/asset/css/button.scss'),
+		);
+		TodoyuPageAssetManager::getStyleSheets($scssFiles);
+	}
+
+
+
+	/**
 	 * First run of installer: clear cache, init session, run PHP and SQL updates
 	 */
 	private static function firstRun() {
@@ -117,6 +111,8 @@ class TodoyuInstaller {
 
 			// Clear all cache
 		TodoyuInstallerManager::clearCache();
+			// Ensure installer SCSS to be parsed into cached CSS
+		self::prepareInstallerCss();
 
 			// Initialize step in session
 		self::initStep();

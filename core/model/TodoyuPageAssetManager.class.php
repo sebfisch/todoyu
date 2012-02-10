@@ -434,12 +434,10 @@ class TodoyuPageAssetManager {
 		foreach($styleSheets as $index => $styleSheet) {
 			$stylesheetFile   = $styleSheet['file'];
 			if( TodoyuString::endsWith($stylesheetFile, '.scss') ) {
-					// Parse SCSS to cached CSS to be included in page
+					// Parse SCSS and store resulting CSS in cache to be included in page
 				$styleSheets[$index]['file']    = self::parseScssStylesheet($stylesheetFile);
 			}
 		}
-
-
 
 			// Group stylesheets to be merged / added separately
 		foreach( $styleSheets as $fileConfig ) {
@@ -467,7 +465,7 @@ class TodoyuPageAssetManager {
 	 * Parse given SCSS file into cache/css/ and return the new file path
 	 *
 	 * @param	String	$pathScss
-	 * @return	String|Boolean				Path of created CSS file in cache / false if failed
+	 * @return	String|Boolean		Path of created CSS file in cache / false if failed
 	 */
 	public static function parseScssStylesheet($pathScss) {
 		require_once( PATH_LIB . '/php/Phamlp/sass/SassParser.php' );
@@ -493,7 +491,8 @@ class TodoyuPageAssetManager {
 			$cssCode	= $sass->toCss($pathScss, true);
 			$cssCode	= self::rewriteRelativePaths($cssCode, $pathScss);
 
-			return TodoyuFileManager::saveFileContent($pathCss, $cssCode) ? $pathCss : false;
+			$file   = TodoyuFileManager::saveFileContent($pathCss, $cssCode) ? $pathCss : false;
+			return $file;
 		}
 
 		return $pathCss;

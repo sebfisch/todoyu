@@ -71,13 +71,12 @@ class TodoyuServer {
 
 
 	/**
-	 * Assert that the minimal requirements for todoyu are available
-	 *
+	 * Assert minimum requirements for todoyu being available
 	 */
-	public static function assertMinimalRequirements() {
-		$loadedExtension	= get_loaded_extensions();
-		$problems			= array();
-		$requiredVersion	= '5.2.5';
+	public static function assertMinimumRequirements() {
+		$loadedExtension= get_loaded_extensions();
+		$requiredVersion= '5.2.5';
+		$problems		= array();
 
 			// Check PHP version
 		if( version_compare(PHP_VERSION, $requiredVersion) === -1 ) {
