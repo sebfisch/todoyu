@@ -247,7 +247,7 @@ Todoyu.Ui = {
 	 *
 	 * @method	updateContentBody
 	 * @param	{String}		url
-	 * @param	{Hash}		options
+	 * @param	{Object}		options
 	 */
 	updateContentBody: function(url, options) {
 		return this.update('content-body', url, options);
