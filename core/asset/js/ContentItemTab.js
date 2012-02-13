@@ -174,7 +174,7 @@ Todoyu.ContentItemTab = {
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 */
 	saveSelection: function(idItem, tabKey, itemKey, extKey) {
-		var url = Todoyu.getUrl('core', 'contentItemTab');
+		var url = Todoyu.getUrl('core', 'contenttab');
 		var options	= {
 			parameters: {
 				action:	'tabselected',
