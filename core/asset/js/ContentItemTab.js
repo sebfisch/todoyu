@@ -27,8 +27,8 @@ Todoyu.ContentItemTab = {
 	 * Handle onSelect event of tab: show affected tab which the event occured on
 	 *
 	 * @method	onSelect
+	 * @param	{String}	extKey
 	 * @param	{Event}		event
-	 * @param	{String}	tabKey
 	 */
 	onSelect: function(extKey, event) {
 		var idParts	= event.findElement('li').id.split('-');
@@ -44,6 +44,8 @@ Todoyu.ContentItemTab = {
 	 * @method	show
 	 * @param	{Number}	idItem
 	 * @param	{String}	tabKey
+	 * @param	{String}	extKey
+	 * @param	{String}	onComplete
 	 */
 	show: function(idItem, tabKey, itemKey, extKey, onComplete) {
 		var tabContainer = this.buildTabID(idItem, tabKey, itemKey);
@@ -67,6 +69,9 @@ Todoyu.ContentItemTab = {
 	 * @method	load
 	 * @param	{Number}	idItem
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{String}	itemKey
+	 * @param	{String}	extKey
+	 * @param	{String}	onComplete
 	 */
 	load: function(idItem, tabKey, itemKey, extKey, onComplete) {
 		var url 	= Todoyu.getUrl('core', 'contenttab');
@@ -108,8 +113,9 @@ Todoyu.ContentItemTab = {
 	 * Check if a tab of a item is already loaded
 	 *
 	 * @method	isLoaded
-	 * @param	{Number}		idItem
-	 * @param	{String}		tabKey
+	 * @param	{Number}	idItem
+	 * @param	{String}	tabKey
+	 * @param	{String}	itemKey
 	 */
 	isLoaded: function(idItem, tabKey, itemKey) {
 		return Todoyu.exists(itemKey + '-' + idItem + '-tabcontent-' + tabKey);
@@ -123,6 +129,7 @@ Todoyu.ContentItemTab = {
 	 * @method	creatTabContainer
 	 * @param	{Number}	idItem
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{String}	itemKey
 	 */
 	createTabContainer: function(idItem, tabKey, itemKey) {
 		$(itemKey + '-' + idItem + '-tabcontent').insert({
@@ -143,6 +150,7 @@ Todoyu.ContentItemTab = {
 	 * @method	buildTabID
 	 * @param	{Number}	idItem
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{String}	itemKey
 	 * @return	{String}
 	 */
 	buildTabID: function(idItem, tabKey, itemKey) {
@@ -157,6 +165,7 @@ Todoyu.ContentItemTab = {
 	 * @method	activate
 	 * @param	{Number}	idItem
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{String}	itemKey
 	 */
 	activate: function(idItem, tabKey, itemKey) {
 		this.hideAll(idItem, itemKey);
@@ -172,16 +181,18 @@ Todoyu.ContentItemTab = {
 	 * @method	saveSelection
 	 * @param	{Number}	idItem
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{String}	itemKey
+	 * @param	{String}	extKey
 	 */
 	saveSelection: function(idItem, tabKey, itemKey, extKey) {
 		var url = Todoyu.getUrl('core', 'contenttab');
 		var options	= {
 			parameters: {
-				action:	'tabselected',
-				idItem:	idItem,
-				tabKey:	tabKey,
-				itemKey: itemKey,
-				extKey: extKey
+				action:		'tabselected',
+				idItem:		idItem,
+				tabKey:		tabKey,
+				itemKey:	itemKey,
+				extKey:		extKey
 			}
 		};
 
@@ -195,6 +206,7 @@ Todoyu.ContentItemTab = {
 	 *
 	 * @method	hideAll
 	 * @param	{Number}	idItem
+	 * @param	{String}	itemKey
 	 */
 	hideAll: function(idItem, itemKey) {
 		this.getContainer(idItem, itemKey).select('.tab').invoke('hide');
@@ -209,6 +221,7 @@ Todoyu.ContentItemTab = {
 	 * @method	setVisible
 	 * @param	{Number}	idItem
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{String}	itemKey
 	 */
 	setVisible: function(idItem, tabKey, itemKey) {
 		$(this.buildTabID(idItem, tabKey, itemKey)).show();
@@ -221,6 +234,7 @@ Todoyu.ContentItemTab = {
 	 *
 	 * @method	getContainer
 	 * @param	{Number}	idItem
+	 * @param	{String}	itemKey
 	 * @return	{Element}
 	 */
 	getContainer: function(idItem, itemKey) {
@@ -235,6 +249,7 @@ Todoyu.ContentItemTab = {
 	 * @method	getHeadID
 	 * @param	{Number}	idItem
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
+	 * @param	{String}	itemKey
 	 * @return	{String}
 	 */
 	getHeadID: function(idItem, tabKey, itemKey) {
