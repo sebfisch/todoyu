@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.2.0 - not released yet
+	* Changed: ListingRenderer behaviour. Changed Parameter sword to params to be more flexible.
 	* Added: JS-Handling for contentItemTabs
 	* Bugfix: fixed bug in preference saving
 	* Feature: Removing valueless foreign records does not require confirmation anymore

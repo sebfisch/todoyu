@@ -29,17 +29,18 @@ class TodoyuListingRenderer {
 	/**
 	 * Render listing for configuration
 	 *
+	 * @static
 	 * @param	String		$ext
 	 * @param	String		$name
 	 * @param	Integer		$offset
-	 * @param	String		$searchWord
+	 * @param	Boolean		$noPaging
+	 * @param	Array		$params
 	 * @return	String
 	 */
-	public static function render($ext, $name, $offset = 0, $searchWord = '') {
+	public static function render($ext, $name, $offset = 0, $noPaging = true, array $params = array()) {
 		$config		= TodoyuListingManager::getConfig($ext, $name);
 		$offset		= (int) $offset;
 		$size		= (int) $config['size'];
-		$searchWord	= trim($searchWord);
 
 			// Get default size if not set
 		if( $size === 0 ) {
@@ -47,13 +48,7 @@ class TodoyuListingRenderer {
 			$config['size']	= $size;
 		}
 
-			// Disable paging if searching
-		if( $searchWord !== '' ) {
-			$size	= 100;
-			$offset	= 0;
-		}
-
-		$listData	= TodoyuFunction::callUserFunction($config['dataFunc'], $size, $offset, $searchWord);
+		$listData	= TodoyuFunction::callUserFunction($config['dataFunc'], $size, $offset, $params);
 		$totalRows	= (int) $listData['total'];
 
 		$tmpl	= 'core/view/listing.tmpl';
@@ -67,7 +62,7 @@ class TodoyuListingRenderer {
 			'size'		=> $size,
 			'page'		=> $offset === 0 ? 1 : ($offset / $size) + 1,
 			'pages'		=> ceil($totalRows / $size),
-			'noPaging'	=> $searchWord !== '',
+			'noPaging'	=> $noPaging,
 			'nextPos'	=> $offset + $size,
 		);
 
