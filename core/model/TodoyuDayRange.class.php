@@ -26,6 +26,16 @@
  */
 class TodoyuDayRange extends TodoyuDateRange {
 
+	/**
+	 * Get range ID
+	 *
+	 * @return	String
+	 */
+	public function getID() {
+		return date('Ymd', $this->getStart()) . date('Ymd', $this->getEnd());
+	}
+
+
 
 	/**
 	 * Set start date

@@ -87,6 +87,17 @@ class TodoyuDateRange {
 
 
 	/**
+	 * Get range ID, based on start and end of the range
+	 *
+	 * @return	String
+	 */
+	public function getID() {
+		return date('YmdHis', $this->getStart()) . date('YmdHis', $this->getEnd());
+	}
+
+
+
+	/**
 	 * Set to maximum ranges
 	 * 1910-2037 should be enough
 	 *
@@ -604,11 +615,28 @@ class TodoyuDateRange {
 	 * @param	Boolean		$format
 	 * @param	Mixed		$value
 	 * @return	Array
+	 * @deprecated
+	 * @see	getDayMap
 	 */
 	public function getDayTimestampsMap($format = false, $value = 0) {
-		$timestamps	= $this->getDayTimestamps($format);
+		return $this->getDayMap($format, $value);
+	}
 
-		return TodoyuArray::createMap($timestamps, $value);
+
+
+	/**
+	 * Get array with a key for every day in the range
+	 * By default, it's the timestamp, but when format is a string, it will be formatted with date()
+	 * Value is the value which will be set for every item
+	 *
+	 * @param	Boolean|String	$keyFormat
+	 * @param	Mixed			$defaultValue
+	 * @return	Array
+	 */
+	public function getDayMap($keyFormat = false, $defaultValue = 0) {
+		$dayTimestamps	= $this->getDayTimestamps($keyFormat);
+
+		return TodoyuArray::createMap($dayTimestamps, $defaultValue);
 	}
 
 
