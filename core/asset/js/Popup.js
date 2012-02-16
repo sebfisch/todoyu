@@ -262,4 +262,5 @@ Todoyu.Popup = Class.create(Window, {
 
 		return true;
 	}
+
 });

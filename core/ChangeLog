@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.2.0 - not released yet
+	* Added: Todoyu.Popups (open, openElement, openContent) can now optionally position the popup to a top coordinate
 	* Changed: ListingRenderer behaviour. Changed Parameter sword to params to be more flexible.
 	* Added: JS-Handling for contentItemTabs
 	* Bugfix: fixed bug in preference saving

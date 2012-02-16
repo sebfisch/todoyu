@@ -116,14 +116,14 @@ Todoyu.Popups = {
 	 * Create a new popup with given options and show it centered
 	 *
 	 * @method	show
-	 * @param	{Object}	options
+	 * @param	{Object}		options
+	 * @param	{Number}		positionTop		Relative to current scrollTop
 	 * @return	{Todoyu.Popup}
 	 */
-	show: function(options) {
+	show: function(options, positionTop) {
 		var popup	= new Todoyu.Popup(options);
 		popup.onShow= this.onShow(options.id);
-
-		popup.showCenter(true, 100);
+		popup.showCenter(true, positionTop || 100);
 
 		return popup;
 	},
@@ -186,17 +186,21 @@ Todoyu.Popups = {
 	 * @param	{Number}		minWidth
 	 * @param	{String}		contentUrl
 	 * @param	{Object}		requestOptions
+	 * @param	{Number}		positionTop
 	 * @return	{Todoyu.Popup}
 	 */
-	open: function(idPopup, title, minWidth, contentUrl, requestOptions) {
-		return this.show({
-			id:					idPopup,
-			title:				title,
-			minWidth:			minWidth || 220,
-			minHeight:			240,
-			contentUrl:			contentUrl,
-			requestOptions:		requestOptions || {},
-		});
+	open: function(idPopup, title, minWidth, contentUrl, requestOptions, positionTop) {
+		return this.show(
+			{
+				id:					idPopup,
+				title:				title,
+				minWidth:			minWidth || 220,
+				minHeight:			240,
+				contentUrl:			contentUrl,
+				requestOptions:		requestOptions || {},
+			},
+			positionTop || 100
+		);
 	},
 
 
@@ -209,15 +213,19 @@ Todoyu.Popups = {
 	 * @param	{String}		idContentElement
 	 * @param	{String}		title
 	 * @param	{Function}		closeCallback
+	 * @param	{Number}		positionTop
 	 * @return	{Todoyu.Popup}
 	 */
-	openElement: function(idPopup, idContentElement, title, closeCallback) {
-		return this.show({
-			id:				idPopup,
-			element:		idContentElement,
-			title:			title,
-			closeCallback:	closeCallback
-		});
+	openElement: function(idPopup, idContentElement, title, closeCallback, positionTop) {
+		return this.show(
+			{
+				id:				idPopup,
+				element:		idContentElement,
+				title:			title,
+				closeCallback:	closeCallback
+			},
+			positionTop || 100
+		);
 	},
 
 
@@ -231,17 +239,21 @@ Todoyu.Popups = {
 	 * @param	{String}		title
 	 * @param	{Number}		minWidth
 	 * @param	{Function}		closePopupCallback
+	 * @param	{Number}		positionTop
 	 * @return	{Todoyu.Popup}
 	 */
-	openContent: function(idPopup, content, title, minWidth, closePopupCallback) {
-		return this.show({
-			id:				idPopup,
-			title:			title,
-			minWidth:		minWidth,
-			minHeight:		100,
-			content:		content,
-			closeCallback:	closePopupCallback
-		});
+	openContent: function(idPopup, content, title, minWidth, closePopupCallback, positionTop) {
+		return this.show(
+			{
+				id:				idPopup,
+				title:			title,
+				minWidth:		minWidth,
+				minHeight:		100,
+				content:		content,
+				closeCallback:	closePopupCallback
+			},
+			positionTop || 100
+		);
 	},
 
 
