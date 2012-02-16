@@ -71,12 +71,26 @@ class TodoyuTime {
 
 
 	/**
-	 * Get timestamp of start (00:00:00) of day
+	 *Get timestamp of start of day (00:00:00)
+	 *
+	 * @param	Integer		$time
+	 * @return	Integer
+	 * @deprecated
+	 * @see		getDayStart
+	 */
+	public static function getStartOfDay($time = 0) {
+		return self::getDayStart($time);
+	}
+
+
+
+	/**
+	 * Get timestamp of start of day (00:00:00)
 	 *
 	 * @param	Integer		$time
 	 * @return	Integer
 	 */
-	public static function getStartOfDay($time = 0) {
+	public static function getDayStart($time = 0) {
 		$time	= self::time($time);
 
 		$month	= date('n', $time);
@@ -93,8 +107,22 @@ class TodoyuTime {
 	 *
 	 * @param	Integer		$time
 	 * @return	Integer
+	 * @deprecated
+	 * @see		getDayEnd
 	 */
 	public static function getEndOfDay($time = 0) {
+		return self::getDayEnd($time);
+	}
+
+
+
+	/**
+	 * Make timestamp for end (23:59:59) of day
+	 *
+	 * @param	Integer		$time
+	 * @return	Integer
+	 */
+	public static function getDayEnd($time = 0) {
 		$time = self::time($time);
 
 		$month	= date('n', $time);
