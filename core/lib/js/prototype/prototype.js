@@ -156,4 +156,37 @@ Ajax.Response.addMethods({
 	}
 });
 
+/**
+ * Add days to a date
+ *
+ * @param	{Number}	days
+ * @return	{Date}
+ */
+Date.prototype.addDays = function(days) {
+	this.setDate(this.getDate() + days);
+
+	return this;
+};
+
+/**
+ * Subtract day from a date
+ *
+ * @param	{Number}	days
+ * @return	{Date}
+ */
+Date.prototype.subtractDays = function(days) {
+	return this.addDays(-days);
+};
+
+/**
+ * Check whether current date is today
+ *
+ * @return	{Boolean}
+ */
+Date.prototype.isToday = function() {
+	var today = new Date();
+
+	return this.getFullYear() === today.getFullYear() && this.getMonth() === today.getMonth() && this.getDate() === today.getDate();
+};
+
 
