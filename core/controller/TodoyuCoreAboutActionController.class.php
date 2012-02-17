@@ -139,6 +139,13 @@ class TodoyuCoreAboutActionController extends TodoyuActionController {
 					'license'	=> 'MIT License',
 					'licenseUrl'=> 'http://opensource.org/licenses/mit-license.php'
 				),
+				'prototype.innerSVG' => array(
+					'title'		=> 'innerSVG for prototype',
+					'url'		=> 'http://code.google.com/p/innersvg',
+					'copyright'	=> '2010, Jeff Schiller',
+					'license'	=> 'Apache License 2.0',
+					'licenseUrl'=> 'http://www.apache.org/licenses/LICENSE-2.0'
+				),
 				'scal'	=> array(
 					'title'		=> 'sCal - Javascript Calendar Based on Prototype',
 					'url'		=> 'http://scal.fieldguidetoprogrammers.com',

@@ -87,6 +87,7 @@
 	<label index="date_update">Date of last update</label>
 	<label index="date_create">Creation Date</label>
 	<label index="id_person_create">Created by</label>
+	<label index="Total">Total</label>
 	<label index="of">of</label>
 	<label index="public">Public</label>
 	<label index="notpublic">Not public</label>
