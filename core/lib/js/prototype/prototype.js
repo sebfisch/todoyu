@@ -159,23 +159,16 @@ Ajax.Response.addMethods({
 /**
  * Add days to a date
  *
- * @param	{Number}	days
+ * @param	{Number}	days		Amount of day
+ * @param	{Boolean}	newDate		Create a new date instead updating this one
  * @return	{Date}
  */
-Date.prototype.addDays = function(days) {
-	this.setDate(this.getDate() + days);
+Date.prototype.addDays = function(days, newDate) {
+	var date = newDate ? new Date(this) : this;
 
-	return this;
-};
+	date.setDate(this.getDate() + days);
 
-/**
- * Subtract day from a date
- *
- * @param	{Number}	days
- * @return	{Date}
- */
-Date.prototype.subtractDays = function(days) {
-	return this.addDays(-days);
+	return date;
 };
 
 /**
