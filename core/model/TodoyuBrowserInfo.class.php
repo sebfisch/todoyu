@@ -27,6 +27,15 @@
 class TodoyuBrowserInfo {
 
 	/**
+	 * Mobile detect instance
+	 *
+	 * @var	Mobile_Detect
+	 */
+	protected static $mobileDetect;
+
+
+
+	/**
 	 * Check if browser is Internet Explorer
 	 *
 	 * @return	Boolean
@@ -179,6 +188,34 @@ class TodoyuBrowserInfo {
 		}
 
 		return $locale;
+	}
+
+
+
+	/**
+	 * Get mobile detect instance
+	 *
+	 * @return	Mobile_Detect
+	 */
+	public static function getMobileDetect() {
+		if( is_null(self::$mobileDetect) ) {
+			require_once( PATH_LIB . '/php/MobileDetect/Mobile_Detect.php' );
+
+			self::$mobileDetect = new Mobile_Detect();
+		}
+
+		return self::$mobileDetect;
+	}
+
+
+
+	/**
+	 * Is mobile browser
+	 *
+	 * @return	Boolean
+	 */
+	public static function isMobile() {
+		return self::getMobileDetect()->isMobile();
 	}
 
 }
