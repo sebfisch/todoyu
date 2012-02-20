@@ -84,6 +84,9 @@ class TodoyuFunction {
 	 * @return	Boolean
 	 */
 	public static function isFunctionReference($funcRefString) {
+		if( !is_string($funcRefString) ) {
+			return false;
+		}
 		if( strpos($funcRefString, '::') === false ) {
 			return function_exists($funcRefString);
 		} else {
