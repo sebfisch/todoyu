@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
 	<label index="date">Датум</label>
+	<label index="title.date_update">Дан ажурирања</label>
+	<label index="title.date_create">Дан стварања</label>
 	<label index="time">Време</label>
 	<label index="hrs">Сати</label>
 	<label index="month.january">Јануар</label>
@@ -43,11 +45,12 @@
 	<label index="months">Месеци</label>
 	<label index="year">Година</label>
 	<label index="years">Године</label>
-	<label index="weeknumberAbbr">рн</label>
 	<label index="weeknumber">радна недеља</label>
+	<label index="weeknumberAbbr">рн</label>
 	<label index="daily">Дневно</label>
 	<label index="weekly">Недељно</label>
 	<label index="monthly">Месечно</label>
 	<label index="yearly">Годишње</label>
 	<label index="today">Данас</label>
+	<label index="warning.dateformat.invalid">Октривен је не важећи датум (биће измењен у току сачувања).</label>
 </labels>

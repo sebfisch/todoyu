@@ -10,6 +10,7 @@
 	<label index="ANT">Холандски Антили</label>
 	<label index="AGO">Ангола</label>
 	<label index="ATA">Антарктик</label>
+	<label index="ATF">Француске прекоморске територије</label>
 	<label index="ARG">Аргентина</label>
 	<label index="ASM">Америчка Самоа</label>
 	<label index="AUT">Аустрија</label>
@@ -168,8 +169,8 @@
 	<label index="PYF">Француска Полинезија</label>
 	<label index="PNG">Папуа Нова Гвинеја</label>
 	<label index="PHL">Филипини</label>
-	<label index="POL">Пољска</label>
 	<label index="PAK">Пакистан</label>
+	<label index="POL">Пољска</label>
 	<label index="SPM">Свети Пјер и Микелон</label>
 	<label index="PCN">Острва Питкерн</label>
 	<label index="PRI">Порторико</label>
@@ -202,15 +203,14 @@
 	<label index="SWZ">Свазиленд</label>
 	<label index="TCA">Туркс и Кајкос острва</label>
 	<label index="TCD">Чад</label>
-	<label index="ATF">Француске прекоморске територије</label>
 	<label index="TGO">Того</label>
 	<label index="THA">Тајланд</label>
 	<label index="TJK">Таџикистан</label>
 	<label index="TKL">Токелау</label>
 	<label index="TKM">Туркменистан</label>
+	<label index="TLS">Источни Тимор</label>
 	<label index="TUN">Тунис</label>
 	<label index="TON">Тонга</label>
-	<label index="TLS">Источни Тимор</label>
 	<label index="TUR">Турска</label>
 	<label index="TTO">Тринидад и Тобаго</label>
 	<label index="TUV">Тринидад и Тобаго</label>
@@ -236,6 +236,5 @@
 	<label index="ZMB">Замбија</label>
 	<label index="ZWE">Зимбабве</label>
 	<label index="PSE">Палестинска Народна Самоуправа</label>
-	<label index="SCG">Србија и Црна Гора</label>
 	<label index="HMD">Острво Хеард и острва МцДоналд-а</label>
 </labels>
