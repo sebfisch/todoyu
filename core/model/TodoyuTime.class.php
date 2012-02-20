@@ -924,6 +924,21 @@ class TodoyuTime {
 		return self::isMondayFirstDayOfWeek() ? array(6,0) : array(5,6);
 	}
 
+
+
+	/**
+	 * Check whether a date is during the weekend
+	 *
+	 * @param	Integer		$date
+	 * @return	Boolean
+	 */
+	public static function isWeekendDate($date) {
+		$weekDay		= date('w', $date);
+		$weekendDays	= self::getWeekEndDayIndexes();
+
+		return in_array($weekDay, $weekendDays);
+	}
+
 }
 
 ?>
