@@ -667,8 +667,8 @@ class TodoyuFormValidator {
 			return true;
 		}
 
-		$date		= TodoyuTime::getStartOfDay($value);
-		$dateToday	= TodoyuTime::getStartOfDay(NOW);
+		$date		= TodoyuTime::getDayStart($value);
+		$dateToday	= TodoyuTime::getDayStart(NOW);
 
 		if( array_key_exists('allowToday', $validatorConfig) ) {
 			return $date >= $dateToday;
@@ -694,8 +694,8 @@ class TodoyuFormValidator {
 			return true;
 		}
 
-		$date		= TodoyuTime::getStartOfDay($value);
-		$dateToday	= TodoyuTime::getStartOfDay(NOW);
+		$date		= TodoyuTime::getDayStart($value);
+		$dateToday	= TodoyuTime::getDayStart(NOW);
 
 		if( array_key_exists('allowToday', $validatorConfig) ) {
 			return $date <= $dateToday;

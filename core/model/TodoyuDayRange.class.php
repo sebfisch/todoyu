@@ -43,7 +43,7 @@ class TodoyuDayRange extends TodoyuDateRange {
 	 * @param	Integer		$date
 	 */
 	public function setStart($date) {
-		$date	= TodoyuTime::getStartOfDay($date);
+		$date	= TodoyuTime::getDayStart($date);
 
 		parent::setStart($date);
 	}
@@ -56,7 +56,7 @@ class TodoyuDayRange extends TodoyuDateRange {
 	 * @param	Integer		$date
 	 */
 	public function setEnd($date) {
-		$date	= TodoyuTime::getEndOfDay($date);
+		$date	= TodoyuTime::getDayEnd($date);
 
 		parent::setEnd($date);
 	}

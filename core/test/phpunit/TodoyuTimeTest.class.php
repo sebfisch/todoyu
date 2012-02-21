@@ -59,8 +59,8 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$timeAfternoon	= gmmktime(14, 0, 0, 1, 1, 2010);
 		$timeDaystart	= gmmktime(0, 0, 0, 1, 1, 2010);
 
-		$result1	= TodoyuTime::getStartOfDay($timeAfternoon);
-		$result2	= TodoyuTime::getStartOfDay($timeDaystart);
+		$result1	= TodoyuTime::getDayStart($timeAfternoon);
+		$result2	= TodoyuTime::getDayStart($timeDaystart);
 
 		$this->assertEquals($timeDaystart, $result1);
 		$this->assertEquals($result1, $result2);
@@ -75,8 +75,8 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$time		= gmmktime(14, 0, 0, 1, 1, 2010);
 		$testDayend	= gmmktime(23, 59, 59, 1, 1, 2010);
 
-		$timeEnd1	= TodoyuTime::getEndOfDay($time);
-		$timeEnd2	= TodoyuTime::getEndOfDay($testDayend);
+		$timeEnd1	= TodoyuTime::getDayEnd($time);
+		$timeEnd2	= TodoyuTime::getDayEnd($testDayend);
 
 		$this->assertEquals($testDayend, $timeEnd1);
 		$this->assertEquals($testDayend, $timeEnd2);
