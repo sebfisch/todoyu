@@ -760,7 +760,7 @@ class TodoyuArray {
 	 * @param	Boolean		$onlyPositive		Set negative values zero
 	 * @param	Boolean		$removeZeros		Remove all zero values
 	 * @param	Boolean		$parseConstants		Parse constants?
-	 * @return	Array
+	 * @return	Integer[]
 	 */
 	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false, $parseConstants = false) {
 		$string	= trim($string);

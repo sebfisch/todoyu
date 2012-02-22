@@ -766,17 +766,21 @@ class TodoyuTime {
 	 *
 	 * @param	Integer		$dateStart
 	 * @param	Integer		$dateEnd
-	 * @return	Array
+	 * @param	Boolean		$excludeWeekendDays
+	 * @return	Integer[]	Array of day timestamps
 	 */
-	public static function getDayTimestampsInRange($dateStart, $dateEnd) {
-		$dateStart	= self::getStartOfDay($dateStart);
-		$dateEnd	= self::getEndOfDay($dateEnd);
+	public static function getDayTimestampsInRange($dateStart, $dateEnd, $excludeWeekendDays = false) {
+		$dateStart	= self::getDayStart($dateStart);
+		$dateEnd	= self::getDayEnd($dateEnd);
 
 		$timestamp	= $dateStart;
 		$days		= array();
 
 		while($timestamp <= $dateEnd) {
-			$days[]		= $timestamp;
+			if( $excludeWeekendDays === false || ! self::isWeekendDate($timestamp) ) {
+				$days[]		= $timestamp;
+			}
+
 			$timestamp	= self::addDays($timestamp, 1);
 		}
 

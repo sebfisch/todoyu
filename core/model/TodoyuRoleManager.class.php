@@ -92,7 +92,8 @@ class TodoyuRoleManager {
 	public static function getAllRoles($onlyActive = false) {
 		$fields	= '*';
 		$table	= self::TABLE;
-		$where	= '	deleted = 0' . ($onlyActive ? ' AND is_active = 1' : '');
+		$where	=				'		 deleted	= 0 ' .
+				  ($onlyActive ? ' AND   is_active	= 1' : '');
 		$order	= ' is_active, title';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
@@ -354,9 +355,11 @@ class TodoyuRoleManager {
 	public static function getPersonIDs($idRole) {
 		$idRole	= (int) $idRole;
 
-		$field	= 'id_person';
-		$table	= 'ext_contact_mm_person_role';
-		$where	= 'id_role = ' . $idRole;
+		$field	= 'mm.id_person';
+		$table	= 'ext_contact_mm_person_role mm, ext_contact_person person';
+		$where	= '		mm.id_role		= ' . $idRole .
+				  ' AND person.id		= mm.id_person ' .
+				  ' AND person.deleted	= 0';
 
 		return Todoyu::db()->getColumn($field, $table, $where);
 	}
@@ -364,7 +367,7 @@ class TodoyuRoleManager {
 
 
 	/**
-	 * Get number of users in the group
+	 * Get number of persons in the group
 	 *
 	 * @param	Integer		$idRole
 	 * @return	Integer

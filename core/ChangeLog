@@ -4,6 +4,7 @@ core 2.2.0 - not released yet
 	* Feature: Removing valueless foreign records does not require confirmation anymore
 	* Feature: Better support for SQL statements to update fields. Comma is now allowed in type definition (ex: DECIMAL(5,2))
 	* Added: prototype.js plugin "svginner"
+	* Added: TodoyuTime.getDayTimestampsInRange can now optionally ommit weekend days
 	* Added: Todoyu.Popups (open, openElement, openContent) can now optionally position the popup to a top coordinate
 	* Added: JavaScript Date prototypes: addDays(), subtractDays(), isToday()
 	* Added: JS-Handling for contentItemTabs

@@ -49,6 +49,7 @@ class TodoyuListingRenderer {
 		}
 
 		$listData	= TodoyuFunction::callUserFunction($config['dataFunc'], $size, $offset, $params);
+//		TodoyuDebug::printInFirebug($config['dataFunc'], 'dataFunc');
 		$totalRows	= (int) $listData['total'];
 
 		$tmpl	= 'core/view/listing.tmpl';
