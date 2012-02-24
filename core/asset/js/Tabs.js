@@ -308,18 +308,18 @@ Todoyu.Tabs = {
 
 
 	/**
-	 * Get key of the active tab of the list
+	 * Get key of the active tab of the listName
 	 *
 	 * @method	getActiveKey
-	 * @param	{String}		list		List or its ID
+	 * @param	{String}		listName		List or its ID
 	 * @return	{String|Boolean}
 	 */
-	getActiveKey: function(list) {
-		var active = this.getActive(list);
+	getActiveKey: function(listName) {
+		var active = this.getActive(listName);
 
 		if( ! active ) {
-			this.setFirstActive(list);
-			active = this.getActive(list);
+			this.setFirstActive(listName);
+			active = this.getActive(listName);
 		}
 
 		if( active ) {
