@@ -582,6 +582,34 @@ Todoyu.Helper = {
 		} else {
 			return text.substr(0, length-append.length) + append;
 		}
+	},
+
+
+
+	/**
+	 * Clone an object using deep copy
+	 * Borrowed from the highcharts prototype adapter
+	 *
+	 * @param	{Object}	originalObject
+	 * @return	{Object}
+	 */
+	cloneObject: function(originalObject) {
+		function doCopy(copy, original) {
+			var value, key;
+
+			for(key in original) {
+				value = original[key];
+				if( value && typeof value === 'object' && value.constructor !== Array && typeof value.nodeType !== 'number') {
+					copy[key] = doCopy(copy[key] || {}, value); // copy
+				} else {
+					copy[key] = original[key];
+				}
+			}
+			return copy;
+		}
+
+		return doCopy({}, originalObject)
 	}
+
 
 };

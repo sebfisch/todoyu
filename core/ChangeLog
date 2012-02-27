@@ -24,6 +24,7 @@ core 2.2.0 - not released yet
 	* Added: Call hook core.ac.selected and fire change event on AC element selection
 	* Added: TodoyuDateRange::getLabelWithTime()
 	* Added: Initialize fake console element to prevent errors on console.log() in not supporting browsers
+	* Added: Todoyu.Helper.cloneObject() for deep object copy (alternative to Object.clone())
 	* Changed: Prevent selection of disabled select option
 	* Changed: Todoyu.Time: time means now php timestamp and date means js date object (for vars and methods)
 	* Changed: Updates of date fields with the popup calendar will now trigger a change event
