@@ -190,14 +190,13 @@ Todoyu.Popups = {
 	 * @return	{Todoyu.Popup}
 	 */
 	open: function(idPopup, title, minWidth, contentUrl, requestOptions, positionTop) {
-		return this.show(
-			{
+		return this.show({
 				id:					idPopup,
 				title:				title,
 				minWidth:			minWidth || 220,
 				minHeight:			240,
 				contentUrl:			contentUrl,
-				requestOptions:		requestOptions || {},
+				requestOptions:		requestOptions || {}
 			},
 			positionTop || 100
 		);
