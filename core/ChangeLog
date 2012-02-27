@@ -35,6 +35,7 @@ core 2.2.0 - not released yet
 	* Changed: Renamed TodoyuDateRange::getDiff() to getDuration(), TodoyuDayRange::getDiffInDays() to getDurationInDays()
 	* Changed: Renamed TodoyuRecordManger::deleteRecords() to deleteRecordsByID()
 	* Changed: ListingRenderer behaviour. Changed Parameter sword to params to be more flexible.
+	* Changed: Rich Text Editor (tinyMCE) uses now advanced mode with some additional edit features
 	* Removed: scal calendar/date picker library
 	* Removed: TodoyuString::replaceOnce()
 	* Removed: TodoyuString::strictHtml2text() is now integrated in html2text() method

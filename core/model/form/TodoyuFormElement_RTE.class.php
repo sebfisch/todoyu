@@ -48,71 +48,18 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 	 * @return	String
 	 */
 	private function buildRTEjs() {
-		$options	= array(
-			'mode'					=> 'exact',
-			'plugins'				=> 'autoresize,paste',
-			'elements'				=> $this->getHtmlID(),
-			'theme'					=> 'simple',
-			'content_css'			=> 'core/asset/css/tinymce.css',
-			'valid_elements'		=> 'strong/b,em/i,p,br,u,ol,ul,li,pre,span[style]',
-			'autoresize_max_height'	=> 400,
-			'paste_remove_spans'	=> '--true',
-			'paste_remove_styles'	=> '--true',
-			'paste_text_linebreaktype'	=> 'p',
-			'paste_postprocess'		=> '--Todoyu.Ui.onTinyMcePasteCleanup'
-		);
-
-			// Load config
-		if( is_array($this->config['tinymce']) ) {
-			foreach($this->config['tinymce'] as $name => $value) {
-				$options[$name] = $value;
-			}
-		}
-
-			// Generate config code
-		$jsCode	= "tinyMCE.init({\n";
-
-		$tmpOpt	= array();
-		foreach($options as $name => $value) {
-			$value	= trim($value);
-			$val	= substr($value, 0, 2) === '--' ? substr($value, 2) : '"' . $value . '"';
-
-			$tmpOpt[] = $name . ' : ' . $val;
-		}
-
-//		if( $this->isFirstElement() ) {
-//			$tmpOpt[]	= 'auto_focus: "' . $this->getHtmlID() . '"';
-//		}
-
-		$jsCode .= implode(",\n", $tmpOpt) . "\n});\n";
+		$extraOptions	= TodoyuArray::assure($this->config['tinymce']);
+		$config			= array();
 
 			// Add own callback to focus the active editor (auto_focus fails because of a bug)
 		if( $this->isFirstElement() && TodoyuRequest::isAjaxRequest() ) {
-			$jsCode .= 'setTimeout(function(){if(tinyMCE.activeEditor){tinyMCE.activeEditor.focus();}}, 2000);';
+			$config['focus'] = true;
 		}
 
-		return $jsCode;
-	}
+		$jsonExtraOptions	= sizeof($extraOptions) > 0 ? json_encode($extraOptions) : '{}';
+		$jsonConfig			= sizeof($config) > 0 ? json_encode($config) : '{}';
 
-
-
-	/**
-	 * Get rich text editor (tinyMCE) config
-	 *
-	 * @param	String	$name
-	 * @return	Array
-	 */
-	private function getRTEconfig($name) {
-		$defaults	= array('theme'	=> 'simple');
-		$config		= false;
-
-		if( isset($this->config['tinymce']['theme']) ) {
-			$config = $this->config['tinymce']['theme'];
-		} elseif( array_key_exists($name, $defaults) ) {
-			$config = $defaults[$name];
-		}
-
-		return $config;
+		return 'Todoyu.Ui.initRTE(\'' . $this->getHtmlID() . '\', ' . $jsonExtraOptions . ', ' .$jsonConfig . ');';
 	}
 
 

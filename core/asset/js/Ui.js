@@ -36,6 +36,53 @@ Todoyu.Ui = {
 	bodyClickObservers: [],
 
 	/**
+	 * RTE options "cache"
+	 */
+	rteOptions: false,
+
+
+
+	/**
+	 * Get options for RTE element
+	 *
+	 * @param	{String}	idElement
+	 * @param	{Object}	extraOptions
+	 */
+	getRteOptions: function(idElement, extraOptions) {
+		if( !this.rteOptions ) {
+			this.rteOptions = {
+				mode:					'exact',
+				plugins:				'autoresize,paste,advlist',
+				theme:					'advanced',
+				width:					'100%',
+				content_css:			'core/asset/css/tinymce.css',
+				valid_elements:			'strong/b,em/i,p,br,u,ol,ul,li,pre,span[style],sub,sup,hr,a[href|target=_blank]',
+					/* Plugin Autoresize */
+				autoresize_max_height:	400,
+					/* Plugin Paste */
+				paste_remove_spans:			true,
+				paste_remove_styles:		true,
+				paste_text_linebreaktype:	'p',
+				paste_postprocess:			this.onTinyMcePasteCleanup,
+					/* Advanced theme */
+				theme_advanced_toolbar_location:	'bottom',
+				theme_advanced_buttons1:	'bold,italic,strikethrough,|,bullist,numlist,outdent,indent,|,link,unlink',
+				theme_advanced_buttons2: 	'undo,|,removeformat,|,hr,sub,sup,|,cut,copy,paste,pastetext',
+				theme_advanced_buttons3:	''
+			};
+		}
+
+			// Set element ID
+		var elementOptions		= Object.clone(this.rteOptions);
+		elementOptions			= Object.extend(elementOptions, extraOptions || {});
+		elementOptions.elements = idElement;
+
+		return elementOptions;
+	},
+
+
+
+	/**
 	 * Update element
 	 *
 	 * @method	update
@@ -650,6 +697,39 @@ Todoyu.Ui = {
 	 */
 	addBodyClickObserver: function(func) {
 		this.bodyClickObservers.push(func);
+	},
+
+
+
+	/**
+	 * Initialize RTE for element
+	 *
+	 * @param	{String}	idElement
+	 * @param	{Object}	extraOptions
+	 * @param	{Object}	config
+	 */
+	initRTE: function(idElement, extraOptions, config) {
+		var options = this.getRteOptions(idElement, extraOptions || {});
+
+		tinyMCE.init(options);
+
+		if( config.focus ) {
+			this.setFocusOnActiveRTE.bind(this).delay(2);
+		}
+	},
+
+
+
+	/**
+	 * Focus active RTE editor
+	 *
+	 */
+	setFocusOnActiveRTE: function() {
+		if( tinyMCE.activeEditor ) {
+			tinyMCE.activeEditor.focus();
+		} else {
+			this.setFocusOnActiveRTE.bind(this).delay(1);
+		}
 	},
 
 
