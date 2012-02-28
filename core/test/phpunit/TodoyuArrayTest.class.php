@@ -221,7 +221,7 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		$new	= TodoyuArray::reform($this->array, $reformConfig);
 
 		$this->assertInternalType('array', $new);
-		$this->assertTrue(array_key_exists('value', $new[0]));
+		$this->assertTrue(isset($new[0]['value']));
 		$this->assertEquals('Max', $new[0]['label']);
 	}
 
@@ -394,11 +394,11 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 		$result	= TodoyuArray::removeKeys($array, $remove);
 
-		$this->assertTrue(array_key_exists('switzerland', $result));
-		$this->assertTrue(array_key_exists('england', $result));
-		$this->assertTrue(array_key_exists('spain', $result));
-		$this->assertFalse(array_key_exists('france', $result));
-		$this->assertFalse(array_key_exists('italy', $result));
+		$this->assertTrue(isset($result['switzerland']));
+		$this->assertTrue(isset($result['england']));
+		$this->assertTrue(isset($result['spain']));
+		$this->assertFalse(isset($result['france']));
+		$this->assertFalse(isset($result['italy']));
 	}
 
 

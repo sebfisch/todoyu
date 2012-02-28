@@ -229,9 +229,9 @@ class TodoyuFormXmlParser {
 	 * @return	Boolean
 	 */
 	private static function isAllowed(array $config) {
-		if( array_key_exists('restrictAdmin', $config) ) {
+		if( isset($config['restrictAdmin']) ) {
 			return TodoyuAuth::isAdmin();
-		} elseif( array_key_exists('restrict', $config) ) {
+		} elseif( isset($config['restrict']) ) {
 			$restrict	= $config['restrict'];
 			$and		= strtoupper(trim($restrict['@attributes']['conjunction'])) === 'AND';
 			$rights		= TodoyuArray::assure($restrict['allow']);
@@ -282,7 +282,7 @@ class TodoyuFormXmlParser {
 				// If all rights processed without a return
 				// AND = allowed, all rights passed		OR = disallowed, no right matched
 			return $and;
-		} elseif( array_key_exists('restrictInternal', $config) ) {
+		} elseif( isset($config['restrictInternal']) ) {
 				// Restricted to internal persons
 			return Todoyu::person()->isAdmin() ||  Todoyu::person()->isInternal();
 		}

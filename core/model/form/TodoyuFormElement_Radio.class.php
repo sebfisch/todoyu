@@ -161,7 +161,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 * @return	Boolean
 	 */
 	protected function isLazyInit() {
-		return array_key_exists('lazyInit', $this->config['source']);
+		return isset($this->config['source']['lazyInit']);
 	}
 
 

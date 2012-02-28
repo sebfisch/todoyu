@@ -72,7 +72,7 @@ class TodoyuConfigManager {
 		$savePath	= 'cache/js/Config.js';
 		$template	= 'core/view/template/Config.js.tmpl';
 
-		if( ! array_key_exists('firstDayOfWeek', $data) ) {
+		if( ! isset($data['firstDayOfWeek']) ) {
 			$data['firstDayOfWeek']	= TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek();
 		}
 

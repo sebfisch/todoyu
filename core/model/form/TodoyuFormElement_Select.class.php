@@ -43,7 +43,7 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 		}
 
 			// Fix noPleaseSelect setting
-		if( array_key_exists('noPleaseSelect', $this->config) ) {
+		if( isset($this->config['noPleaseSelect']) ) {
 			$this->config['noPleaseSelect'] = true;
 		}
 	}

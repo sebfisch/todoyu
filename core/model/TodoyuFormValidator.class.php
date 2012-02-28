@@ -85,7 +85,7 @@ class TodoyuFormValidator {
 	public static function checkAllow(array $validatorConfig, array $formData) {
 		$allow	= false;
 
-		if( array_key_exists('allow', $validatorConfig) ) {
+		if( isset($validatorConfig['allow']) ) {
 			$allowConfig	= $validatorConfig['allow'];
 			$validator		= key($allowConfig);
 			$validatorConfig= $allowConfig[$validator];
@@ -346,7 +346,7 @@ class TodoyuFormValidator {
 		}
 
 			// Field is empty and allowEmpty is set: no validation required
-		if( $value == 0 && array_key_exists('allowEmpty', $validatorConfig) ) {
+		if( $value == 0 && isset($validatorConfig['allowEmpty']) ) {
 			return true;
 		}
 		
@@ -381,7 +381,7 @@ class TodoyuFormValidator {
 			return true;
 		}
 
-		if( $value == 0 && array_key_exists('allowEmpty', $validatorConfig) ) {
+		if( $value == 0 && isset($validatorConfig['allowEmpty']) ) {
 			return true;
 		}
 
@@ -488,7 +488,7 @@ class TodoyuFormValidator {
 			return true;
 		}
 
-		if( $value == 0 && array_key_exists('allowEmpty', $validatorConfig) ) {
+		if( $value == 0 && isset($validatorConfig['allowEmpty']) ) {
 			return true;
 		}
 
@@ -670,7 +670,7 @@ class TodoyuFormValidator {
 		$date		= TodoyuTime::getDayStart($value);
 		$dateToday	= TodoyuTime::getDayStart(NOW);
 
-		if( array_key_exists('allowToday', $validatorConfig) ) {
+		if( isset($validatorConfig['allowToday']) ) {
 			return $date >= $dateToday;
 		} else {
 			return $date > $dateToday;
@@ -697,7 +697,7 @@ class TodoyuFormValidator {
 		$date		= TodoyuTime::getDayStart($value);
 		$dateToday	= TodoyuTime::getDayStart(NOW);
 
-		if( array_key_exists('allowToday', $validatorConfig) ) {
+		if( isset($validatorConfig['allowToday']) ) {
 			return $date <= $dateToday;
 		} else {
 			return $date < $dateToday;

@@ -44,7 +44,7 @@ class TodoyuInstallerManager {
 	public static function processLocale(array $data) {
 		$result	= array();
 
-		if( array_key_exists('locale', $data) ) {
+		if( isset($data['locale']) ) {
 			TodoyuSession::set('installer/locale', $data['locale']);
 			TodoyuLocaleManager::setLocaleCookie($data['locale']);
 			TodoyuInstaller::setStep('license');

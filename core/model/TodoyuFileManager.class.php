@@ -831,7 +831,7 @@ class TodoyuFileManager {
 
 			// If a redirect header was sent, download redirection URL
 		if( $httpHeaders['statusCode'] >= 300 && $httpHeaders['statusCode'] < 400 ) {
-			if( array_key_exists('Location', $httpHeaders) ) {
+			if( isset($httpHeaders['Location']) ) {
 					// Download from redirection URL
 				return self::downloadFile_SOCKET($httpHeaders['Location'], $options);
 			}

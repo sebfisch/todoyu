@@ -168,7 +168,7 @@ class TodoyuFrontend {
 	public static function addSubMenuEntriesFromTabsConf($extKey, $parentKey, array $itemsConfig, $labelPrefix = '') {
 		foreach($itemsConfig as $itemKey => $itemConfig) {
 				// Check for access rights
-			if( array_key_exists('require', $itemConfig) ) {
+			if( isset($itemConfig['require']) ) {
 				$required	= explode('.', $itemConfig['require']);
 				$allowed	= Todoyu::allowed($required[0], $required[1]);
 			} else {
