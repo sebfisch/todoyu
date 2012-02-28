@@ -518,11 +518,11 @@ Todoyu.Form = {
 	addIFrame: function(key) {
 		var idIFrame= 'upload-iframe-' + key;
 
-		if( ! Todoyu.exists(idIFrame) ) {
+		if( !Todoyu.exists(idIFrame) ) {
 			var iFrame	= new Element('iframe', {
 				name:		'upload-iframe-' + key,
 				id:			'upload-iframe-' + key,
-				'class':	'uploadIframe'
+				className:	'uploadIframe'
 			});
 
 			iFrame.hide();
@@ -530,6 +530,57 @@ Todoyu.Form = {
 		}
 
 		return $(idIFrame)
+	},
+
+
+
+	/**
+	 * Submit a form for file upload
+	 * Set special encoding type and submit into an iframe
+	 *
+	 * @param	{Element}	form
+	 * @param	{String}	url
+	 */
+	submitFileUploadForm: function(form, url) {
+		var iFrame	= this.addIFrame(form.id);
+		var specialAttributes = {
+			enctype: 	'multipart/form-data',
+			target:		iFrame.id
+		};
+
+		if( url ) {
+			specialAttributes.action = url;
+		}
+
+		this.submitForm(form, specialAttributes);
+
+		return iFrame;
+	},
+
+
+
+	/**
+	 * Submit a form with custom parameters for the submit
+	 * The custom parameters are restored after the form is submitted
+	 * Useful to convert a normal form into a file upload form
+	 *
+	 * @param	{Form}		form
+	 * @param	{Object}	tempFormAttributes
+	 */
+	submitForm: function(form, tempFormAttributes) {
+		form	= $(form);
+		var backup	= {};
+
+		$H(tempFormAttributes).each(function(pair){
+			backup[pair.key]= form[pair.key];
+			form[pair.key]	= pair.value;
+		});
+
+		form.submit();
+
+		$H(backup).each(function(pair){
+			form[pair.key]	= pair.value;
+		});
 	},
 
 

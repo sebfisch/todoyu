@@ -25,6 +25,7 @@ core 2.2.0 - not released yet
 	* Added: TodoyuDateRange::getLabelWithTime()
 	* Added: Initialize fake console element to prevent errors on console.log() in not supporting browsers
 	* Added: Todoyu.Helper.cloneObject() for deep object copy (alternative to Object.clone())
+	* Added: Javascript form submit helpers (simple file upload)
 	* Changed: Prevent selection of disabled select option
 	* Changed: Todoyu.Time: time means now php timestamp and date means js date object (for vars and methods)
 	* Changed: Updates of date fields with the popup calendar will now trigger a change event
