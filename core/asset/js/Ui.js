@@ -52,11 +52,11 @@ Todoyu.Ui = {
 		if( !this.rteOptions ) {
 			this.rteOptions = {
 				mode:					'exact',
-				plugins:				'autoresize,paste,advlist',
+				plugins:				'autoresize,paste',
 				theme:					'advanced',
 				width:					'100%',
 				content_css:			'core/asset/css/tinymce.css',
-				valid_elements:			'strong/b,em/i,p,br,u,ol[style],ul[style],li,pre,span[style],sub,sup,hr,a[href|target=_blank]',
+				valid_elements:			'strong/b,em/i,p,br,u,ol[style],ul[style],li,pre,span[style],hr,a[href|target=_blank]',
 					/* Plugin Autoresize */
 				autoresize_max_height:	400,
 					/* Plugin Paste */
@@ -66,8 +66,8 @@ Todoyu.Ui = {
 				paste_postprocess:			this.onTinyMcePasteCleanup,
 					/* Advanced theme */
 				theme_advanced_toolbar_location:	'bottom',
-				theme_advanced_buttons1:	'bold,italic,strikethrough,|,bullist,numlist,outdent,indent,|,link,unlink',
-				theme_advanced_buttons2: 	'undo,|,removeformat,|,hr,sub,sup,|,cut,copy,paste,pastetext',
+				theme_advanced_buttons1:	'bold,italic,strikethrough,|,bullist,numlist,outdent,indent,|,link,unlink,|,hr',
+				theme_advanced_buttons2: 	'',
 				theme_advanced_buttons3:	''
 			};
 		}
