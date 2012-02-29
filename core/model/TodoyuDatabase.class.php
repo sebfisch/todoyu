@@ -857,9 +857,9 @@ class TodoyuDatabase {
 	/**
 	 * Get a row by ID (Primary key)
 	 *
-	 * @param	String		$table
-	 * @param	Integer		$idRow
-	 * @return	Array		Or false if row doesn't exist
+	 * @param	String			$table
+	 * @param	Integer			$idRow
+	 * @return	Array|Boolean	Or false if row doesn't exist
 	 */
 	public function getRowByID($table, $idRow) {
 			// Build cache ID
