@@ -425,7 +425,7 @@ function Dwoo_Plugin_substituteLinkableElements_compile(Dwoo_Compiler $compiler,
  * @param	Boolean		$disabled
  * @return	String
  */
-function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '', $title = '', $type = '', $disable = false, $disabled = false) {
+function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', $id = '', $title = '', $type = '', $disable = false, $disabled = false, $style = '') {
 	$tmpl	= 'core/view/button.tmpl';
 	$data	= array(
 		'label'		=> $label,
@@ -435,7 +435,8 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
 		'title'		=> $title,
 		'type'		=> $type,
 		'disable'	=> $disable  ? true : false,
-		'disabled'	=> $disabled ? true : false
+		'disabled'	=> $disabled ? true : false,
+		'style'		=> $style
 	);
 
 	return Todoyu::render($tmpl, $data);
