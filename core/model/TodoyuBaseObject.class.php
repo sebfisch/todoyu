@@ -83,6 +83,8 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * this function will be called and try to get the value from $this->data
 	 * This is only for getters, so parameters are ignored
 	 *
+	 * @deprecated
+	 * @notice	Define your own getters
 	 * @param	String		$methodName
 	 * @param	Array		$params
 	 * @return	String
@@ -105,6 +107,8 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * Fallback for direct member access.
 	 * First it checks for a getter function, if not available try to find the data in $this->data
 	 *
+	 * @deprecated
+	 * @notice	Define your own getters
 	 * @param	String		$memberName
 	 * @return	String
 	 */
@@ -130,7 +134,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Integer
 	 */
 	public function getID() {
-		return (int) $this->data['id'];
+		return $this->getInt('id');
 	}
 
 
@@ -244,7 +248,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Boolean
 	 */
 	public function isCurrentPersonCreator() {
-		return (int) ( $this->get('id_person_create') === Todoyu::personid() );
+		return $this->getPersonCreateID() === Todoyu::personid();
 	}
 
 
@@ -266,7 +270,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Integer
 	 */
 	public function getDateCreate() {
-		return (int) $this->get('date_create');
+		return $this->getInt('date_create');
 	}
 
 
@@ -277,7 +281,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Integer
 	 */
 	public function getDateUpdate() {
-		return (int) $this->get('date_update');
+		return $this->getInt('date_update');
 	}
 
 
@@ -291,29 +295,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	public function getPersonID($type) {
 		$dataKey = 'id_person_' . strtolower($type);
 
-		if( array_key_exists($dataKey, $this->data) ) {
-			return (int) $this->data[$dataKey];
-		} else {
-			return false;
-		}
-	}
-
-
-
-	/**
-	 * Get user array of a specific type (create, update, assigned, etc)
-	 *
-	 * @param	String		$type
-	 * @return	Array
-	 */
-	public function getPersonData($type) {
-		$idPerson = $this->getPersonID($type);
-
-		if( $idPerson !== false ) {
-			return TodoyuRecordManager::getRecordData('ext_contact_person', $idPerson);
-		} else {
-			return false;
-		}
+		return $this->getInt($dataKey);
 	}
 
 
@@ -327,11 +309,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	public function getPerson($type) {
 		$idPerson = $this->getPersonID($type);
 
-		if( $idPerson !== false ) {
-			return new TodoyuContactPerson($idPerson);
-		} else {
-			return false;
-		}
+		return TodoyuContactPersonManager::getPerson($idPerson);
 	}
 
 
@@ -341,7 +319,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 *
 	 * @return	Integer
 	 */
-	public function getCreatePersonID() {
+	public function getPersonCreateID() {
 		return $this->getPersonID('create');
 	}
 
@@ -352,7 +330,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 *
 	 * @return	TodoyuContactPerson
 	 */
-	public function getCreatePerson() {
+	public function getPersonCreate() {
 		return $this->getPerson('create');
 	}
 
@@ -411,18 +389,16 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @return	Boolean
 	 */
 	public function isDeleted() {
-		return (int) ( $this->get('deleted') === 1 );
+		return $this->getInt('deleted') === 1;
 	}
 
-
-
-	### MAGIC FUNCTIONS (DON'T CALL THEM DIRECTLY!) ###
 
 
 	/**
 	 * Called by empty() and isset() on member variables
 	 *
 	 * @magic
+	 * @deprecated
 	 * @param	String		$memberName
 	 * @return	Boolean
 	 */
@@ -439,6 +415,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * Usage: $obj = new Obj(); isset($obj['id_person'])
 	 *
 	 * @magic
+	 * @deprecated
 	 * @param	String		$name
 	 * @return	Boolean
 	 */
@@ -455,6 +432,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * Usage: $obj = new Obj(); unset($obj['id_person'])
 	 *
 	 * @magic
+	 * @deprecated
 	 * @param	String		$name
 	 */
 	public function offsetUnset($name) {
@@ -470,6 +448,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * Usage: $obj = new Obj(); $obj['id_person'] = 53;
 	 *
 	 * @magic
+	 * @deprecated
 	 * @param	String		$name
 	 * @param	String		$value
 	 */
@@ -486,6 +465,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * Usage: $obj = new Obj(); echo $obj['id_person'];
 	 *
 	 * @magic
+	 * @deprecated
 	 * @param	String		$name
 	 * @return	String
 	 */
