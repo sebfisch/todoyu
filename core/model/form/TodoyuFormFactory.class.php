@@ -56,11 +56,11 @@ class TodoyuFormFactory {
 	 *
 	 * @param	String		$type		Type of the field
 	 * @param	String		$name		Name of the field
-	 * @param	TodoyuFieldset	$fieldset	Parent fieldset
+	 * @param	TodoyuFormFieldset	$fieldset	Parent fieldset
 	 * @param	Array		$config		Configuration array (XML child nodes)
 	 * @return	TodoyuFormElement
 	 */
-	public static function createField($type, $name, TodoyuFieldset $fieldset, array $config = array()) {
+	public static function createField($type, $name, TodoyuFormFieldset $fieldset, array $config = array()) {
 		$class = self::getClass($type);
 
 		if( ! is_null($class) && class_exists($class, true) ) {

@@ -19,12 +19,12 @@
 *****************************************************************************/
 
 /**
- * TodoyuFieldset object for form
+ * TodoyuFormFieldset object for form
  *
  * @package		Todoyu
  * @subpackage	Form
  */
-class TodoyuFieldset implements ArrayAccess {
+class TodoyuFormFieldset implements ArrayAccess {
 
 	/**
 	 * Name of the fieldset
@@ -36,7 +36,7 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Parent element of the fieldset. Can be the form or another fieldset.
 	 *
-	 * @var	TodoyuFieldset
+	 * @var	TodoyuFormFieldset
 	 */
 	private $parent;
 
@@ -50,7 +50,7 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Elements of the fieldsets. Can be a mix of fieldsets and FormElements
 	 *
-	 * @var	TodoyuFormElement[]|TodoyuFieldset[]
+	 * @var	TodoyuFormElement[]|TodoyuFormFieldset[]
 	 */
 	private $elements = array();
 
@@ -59,7 +59,7 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Initialize a new fieldset.
 	 *
-	 * @param	TodoyuFieldset	$parent		Reference to parent element (fieldset or the form)
+	 * @param	TodoyuFormFieldset	$parent		Reference to parent element (fieldset or the form)
 	 * @param	String			$name		Name of the fieldset to be accessed over $form->FIELDSETNAME->method()
 	 */
 	public function __construct($parent, $name) {
@@ -83,7 +83,7 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Get parent element (fieldset or form)
 	 *
-	 * @return	TodoyuFieldset
+	 * @return	TodoyuFormFieldset
 	 */
 	public function getParent() {
 		return $this->parent;
@@ -145,7 +145,7 @@ class TodoyuFieldset implements ArrayAccess {
 	 * Get a fieldset by name
 	 *
 	 * @param	String		$name
-	 * @return	TodoyuFieldset
+	 * @return	TodoyuFormFieldset
 	 */
 	public function getFieldset($name) {
 		return $this->elements[$name];
@@ -228,16 +228,16 @@ class TodoyuFieldset implements ArrayAccess {
 	 * and return a reference to the fieldset
 	 *
 	 * To add a complete fieldset and its fields (e.g. form hook) use injectFieldset
-	 * @see TodoyuFieldset->injectFieldset();
+	 * @see TodoyuFormFieldset->injectFieldset();
 	 *
-	 * @param	String			$name
-	 * @param	TodoyuFieldset	$fieldset
-	 * @param	Integer			$position
-	 * @return	TodoyuFieldset
+	 * @param	String				$name
+	 * @param	TodoyuFormFieldset	$fieldset
+	 * @param	Integer				$position
+	 * @return	TodoyuFormFieldset
 	 */
-	public function addFieldset($name, TodoyuFieldset $fieldset = null, $position = null) {
+	public function addFieldset($name, TodoyuFormFieldset $fieldset = null, $position = null) {
 		if( is_null($fieldset) ) {
-			$fieldset = new TodoyuFieldset($this, $name);
+			$fieldset = new TodoyuFormFieldset($this, $name);
 		}
 
 			// Set fieldset parent
@@ -340,11 +340,11 @@ class TodoyuFieldset implements ArrayAccess {
 	/**
 	 * Inject an existing fieldset into the form
 	 *
-	 * @param	TodoyuFieldset		$fieldset
+	 * @param	TodoyuFormFieldset		$fieldset
 	 * @param	Integer				$position
-	 * @return	TodoyuFieldset
+	 * @return	TodoyuFormFieldset
 	 */
-	public function injectFieldset(TodoyuFieldset $fieldset, $position = null) {
+	public function injectFieldset(TodoyuFormFieldset $fieldset, $position = null) {
 		$fieldset->setParent($this);
 		$fieldset->setFieldsToForm($this->getForm());
 
@@ -413,7 +413,7 @@ class TodoyuFieldset implements ArrayAccess {
 			if( $element instanceof TodoyuFormElement ) {
 					// Element is form element
 				$fieldNames[] = $element->getName();
-			} elseif( $element instanceof TodoyuFieldset ) {
+			} elseif( $element instanceof TodoyuFormFieldset ) {
 					// Element is sub fieldset
 				$fieldNames = array_merge($fieldNames, $element->getFieldNames());
 			}
@@ -468,7 +468,7 @@ class TodoyuFieldset implements ArrayAccess {
 				if( ! $element->isHidden() ) {
 					$content .= $element->render($odd) . "\n";
 				}
-			} elseif( $element instanceof TodoyuFieldset ) {
+			} elseif( $element instanceof TodoyuFormFieldset ) {
 				$content .= $element->render($odd) . "\n";
 			}
 
@@ -536,7 +536,7 @@ class TodoyuFieldset implements ArrayAccess {
 		$fieldsets = array();
 
 		foreach($this->elements as $element) {
-			if( $element instanceof TodoyuFieldset ) {
+			if( $element instanceof TodoyuFormFieldset ) {
 				$fieldsets[] = $element;
 			}
 		}
@@ -576,8 +576,8 @@ class TodoyuFieldset implements ArrayAccess {
 			if( $element instanceof TodoyuFormElement ) {
 				/**	@var	TodoyuFormElement	$element */
 				$form->registerField($element);
-			} elseif( $element instanceof TodoyuFieldset ) {
-				/**	@var	TodoyuFieldset	$element */
+			} elseif( $element instanceof TodoyuFormFieldset ) {
+				/**	@var	TodoyuFormFieldset	$element */
 				$element->setFieldsToForm($form);
 			}
 		}

@@ -32,10 +32,10 @@ class TodoyuFormElement_DateTime extends TodoyuFormElement_Date {
 	 * Constructs a date time input form field
 	 *
 	 * @param	String			$name
-	 * @param	TodoyuFieldset	$fieldset
+	 * @param	TodoyuFormFieldset	$fieldset
 	 * @param	Array			$config
 	 */
-	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
+	public function __construct($name, TodoyuFormFieldset $fieldset, array $config = array()) {
 			// Initialize directly with the base class, not the parent
 		TodoyuFormElement::__construct('datetime', $name, $fieldset, $config);
 		TodoyuFormElement::setValue(false);

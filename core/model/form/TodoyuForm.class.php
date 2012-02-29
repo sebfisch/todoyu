@@ -156,7 +156,7 @@ class TodoyuForm implements ArrayAccess {
 	 * Get a fieldset by name
 	 *
 	 * @param	String		$name
-	 * @return	TodoyuFieldset
+	 * @return	TodoyuFormFieldset
 	 */
 	public function __get($name) {
 		return $this->getFieldset($name);
@@ -169,9 +169,9 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @see		addFieldset
 	 * @param	String		$name
-	 * @param	TodoyuFieldset	$fieldset
+	 * @param	TodoyuFormFieldset	$fieldset
 	 */
-	public function __set($name, TodoyuFieldset $fieldset) {
+	public function __set($name, TodoyuFormFieldset $fieldset) {
 		$this->fieldsets[$name] = $fieldset;
 	}
 
@@ -437,7 +437,7 @@ class TodoyuForm implements ArrayAccess {
 	 * Get a fieldset (reference) in the form by name
 	 *
 	 * @param	String		$name
-	 * @return	TodoyuFieldset
+	 * @return	TodoyuFormFieldset
 	 */
 	public function getFieldset($name) {
 		return $this->fieldsetRegister[$name];
@@ -449,13 +449,13 @@ class TodoyuForm implements ArrayAccess {
 	 * Add a new fieldset and return a reference to it
 	 *
 	 * @param	String			$name
-	 * @param	TodoyuFieldset	$fieldset
+	 * @param	TodoyuFormFieldset	$fieldset
 	 * @param	Integer			$position
-	 * @return	TodoyuFieldset
+	 * @return	TodoyuFormFieldset
 	 */
-	public function addFieldset($name, TodoyuFieldset $fieldset = null, $position = null) {
+	public function addFieldset($name, TodoyuFormFieldset $fieldset = null, $position = null) {
 		if( is_null($fieldset) ) {
-			$fieldset	= new TodoyuFieldset($this, $name);
+			$fieldset	= new TodoyuFormFieldset($this, $name);
 		} else {
 				// Set form parent to this form and register fields in the form
 			$fieldset->setParent($this);
@@ -483,11 +483,11 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Inject an existing fieldset into the form
 	 *
-	 * @param	TodoyuFieldset	$fieldset
+	 * @param	TodoyuFormFieldset	$fieldset
 	 * @param	Integer			$position
-	 * @return	TodoyuFieldset
+	 * @return	TodoyuFormFieldset
 	 */
-	public function injectFieldset(TodoyuFieldset $fieldset, $position = null) {
+	public function injectFieldset(TodoyuFormFieldset $fieldset, $position = null) {
 		$fieldset->setFieldsToForm($this);
 
 		$fieldset->setParent($this);
@@ -550,7 +550,7 @@ class TodoyuForm implements ArrayAccess {
 	 * Register fieldset
 	 *
 	 * @param	String			$name
-	 * @param	TodoyuFieldset	$fieldset
+	 * @param	TodoyuFormFieldset	$fieldset
 	 */
 	public function registerFieldset($name, $fieldset) {
 		$this->fieldsetRegister[$name] = $fieldset;

@@ -44,7 +44,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	/**
 	 * Parent fieldset
 	 *
-	 * @var	TodoyuFieldset
+	 * @var	TodoyuFormFieldset
 	 */
 	protected $fieldset;
 
@@ -77,10 +77,10 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 *
 	 * @param	String		$type
 	 * @param	String		$name
-	 * @param	TodoyuFieldset	$fieldset
+	 * @param	TodoyuFormFieldset	$fieldset
 	 * @param	Array		$config
 	 */
-	public function __construct($type, $name, TodoyuFieldset $fieldset, array $config = array()) {
+	public function __construct($type, $name, TodoyuFormFieldset $fieldset, array $config = array()) {
 		$this->type		= $type;
 		$this->name		= $name;
 		$this->fieldset	= $fieldset;
@@ -148,7 +148,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	/**
 	 * Get fieldset
 	 *
-	 * @return	TodoyuFieldset
+	 * @return	TodoyuFormFieldset
 	 */
 	public final function getFieldset() {
 		return $this->fieldset;
@@ -160,7 +160,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * Alias for parent fieldset element
 	 *
 	 * @see		getFieldset()
-	 * @return	TodoyuFieldset
+	 * @return	TodoyuFormFieldset
 	 */
 	public final function getParent() {
 		return $this->getFieldset();
@@ -171,9 +171,9 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	/**
 	 * Set parent fieldset. Only necessary when inserted into another form
 	 *
-	 * @param	TodoyuFieldset		$fieldset
+	 * @param	TodoyuFormFieldset		$fieldset
 	 */
-	public final function setFieldset(TodoyuFieldset $fieldset) {
+	public final function setFieldset(TodoyuFormFieldset $fieldset) {
 		$this->fieldset = $fieldset;
 	}
 

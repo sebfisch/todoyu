@@ -30,10 +30,10 @@ class TodoyuFormElement_CancelButton extends TodoyuFormElement_Button {
 	 * Initialize cancelButton element
 	 *
 	 * @param	String			$name
-	 * @param	TodoyuFieldset	$fieldset
+	 * @param	TodoyuFormFieldset	$fieldset
 	 * @param	Array			$config
 	 */
-	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
+	public function __construct($name, TodoyuFormFieldset $fieldset, array $config = array()) {
 		TodoyuFormElement::__construct('cancelButton', $name, $fieldset, $config);
 	}
 

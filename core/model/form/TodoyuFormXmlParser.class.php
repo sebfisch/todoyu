@@ -29,7 +29,7 @@ class TodoyuFormXmlParser {
 	/**
 	 * Form instance to add all elements to
 	 *
-	 * @var	Form
+	 * @var	TodoyuForm
 	 */
 	private static $form;
 
@@ -135,7 +135,7 @@ class TodoyuFormXmlParser {
 	/**
 	 * Add a fieldset to the form object or a fieldset from a XML node
 	 *
-	 * @param	TodoyuFieldset			$parentElement
+	 * @param	TodoyuFormFieldset			$parentElement
 	 * @param	SimpleXmlElement	$fieldsetXmlObj
 	 * @return	Boolean|Void
 	 */
@@ -193,11 +193,11 @@ class TodoyuFormXmlParser {
 	/**
 	 * Add a field to a fieldset from an XML node
 	 *
-	 * @param	TodoyuFieldset			$fieldset
+	 * @param	TodoyuFormFieldset			$fieldset
 	 * @param	SimpleXmlElement	$fieldXmlObj
 	 * @return	Boolean
 	 */
-	private static function addField(TodoyuFieldset $fieldset, SimpleXmlElement $fieldXmlObj) {
+	private static function addField(TodoyuFormFieldset $fieldset, SimpleXmlElement $fieldXmlObj) {
 		$type	= trim($fieldXmlObj['type']);
 		$name	= trim($fieldXmlObj['name']);
 

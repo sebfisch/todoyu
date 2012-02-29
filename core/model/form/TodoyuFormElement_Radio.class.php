@@ -30,10 +30,10 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 * Constructor of the class
 	 *
 	 * @param	String		$name
-	 * @param	TodoyuFieldset	$fieldset
+	 * @param	TodoyuFormFieldset	$fieldset
 	 * @param	Array		$config
 	 */
-	function __construct($name, TodoyuFieldset $fieldset, array $config  = array()) {
+	function __construct($name, TodoyuFormFieldset $fieldset, array $config  = array()) {
 		parent::__construct('radio', $name, $fieldset, $config);
 
 //		if( ! $this->isLazyInit() ) {

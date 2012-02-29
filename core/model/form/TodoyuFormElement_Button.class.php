@@ -32,10 +32,10 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 	 * Create button element
 	 *
 	 * @param	String		$name		Button name
-	 * @param	TodoyuFieldset	$fieldset	Parent fieldset
+	 * @param	TodoyuFormFieldset	$fieldset	Parent fieldset
 	 * @param	Array		$config		Button config
 	 */
-	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
+	public function __construct($name, TodoyuFormFieldset $fieldset, array $config = array()) {
 		parent::__construct('button', $name, $fieldset, $config);
 	}
 

@@ -30,10 +30,10 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 	 * Initialize
 	 *
 	 * @param	String			$name
-	 * @param	TodoyuFieldset	$fieldset
+	 * @param	TodoyuFormFieldset	$fieldset
 	 * @param	Array			$config
 	 */
-	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
+	public function __construct($name, TodoyuFormFieldset $fieldset, array $config = array()) {
 		parent::__construct('records', $name, $fieldset, $config);
 
 		if( !is_array($this->config['options']) ) {

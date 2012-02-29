@@ -32,10 +32,10 @@ class TodoyuFormElement_Text extends TodoyuFormElement {
 	 * TodoyuFormElement text constructor
 	 *
 	 * @param	String				$name
-	 * @param	TodoyuFieldset		$fieldset
+	 * @param	TodoyuFormFieldset		$fieldset
 	 * @param	Array				$config
 	 */
-	public function __construct($name, TodoyuFieldset $fieldset, array $config = array()) {
+	public function __construct($name, TodoyuFormFieldset $fieldset, array $config = array()) {
 		parent::__construct('text', $name, $fieldset, $config);
 	}
 
