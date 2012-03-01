@@ -58,11 +58,6 @@
 			margin:0px;
 			border:none;
 
-	   		&.active a,
-			&:hover a {
-				border:none;
-				background-color:$colorCorporate01; }
-
 			a {
                 width:auto;
                 height:auto;
@@ -76,5 +71,10 @@
                     border-bottom:1px solid $grey03; }
             }
 		}
+	}
+
+	li.menu li:hover a {
+		border:none;
+    	background-color:$colorCorporate01;
 	}
 }
