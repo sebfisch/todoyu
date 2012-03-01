@@ -510,18 +510,11 @@ class TodoyuFileManager {
 	public static function sendFile($pathFile, $mimeType = null, $fileName = null) {
 			// Get real path
 		$pathFile	= self::pathAbsolute($pathFile);
-		$pathFile	= realpath($pathFile);
+		$status		= self::canSendFile($pathFile);
 
-		if( !$pathFile ) {
-			throw new TodoyuExceptionFileDownload($pathFile, 'File was not found');
-		}
-
-		if( !is_readable($pathFile) ) {
-			throw new TodoyuExceptionFileDownload($pathFile, 'File is not readable');
-		}
-
-		if( !self::isFileInAllowedDownloadPath($pathFile) ) {
-			throw new TodoyuExceptionFileDownload($pathFile, 'Tried to download a file from a not allowed path');
+			// Problem detected?
+		if( $status !== true ) {
+			throw new TodoyuExceptionFileDownload($pathFile, $status);
 		}
 
 			// Clear file information cache
@@ -535,10 +528,31 @@ class TodoyuFileManager {
 		ob_clean();
 			// Send headers, file data
 		TodoyuHeader::sendDownloadHeaders($mimeType, $fileName, $fileSize, $fileModTime);
-		$status = readfile($pathFile);
 
-		if( !$status ) {
-			throw new TodoyuExceptionFileDownload($pathFile, 'Reading the file failed for a unknown reason');
+		return readfile($pathFile) !== false;
+	}
+
+
+
+	/**
+	 * Check whether a file can get sent to the browser
+	 *
+	 * @param	String			$pathFile
+	 * @return	Boolean|String	True or an error message
+	 */
+	public static function canSendFile($pathFile) {
+		$pathFile	= self::pathAbsolute($pathFile);
+
+		if( !is_file($pathFile) ) {
+			return Todoyu::Label('core.file.error.notFound');
+		}
+
+		if( !is_readable($pathFile) ) {
+			return Todoyu::Label('core.file.error.notReadable');
+		}
+
+		if( !self::isFileInAllowedDownloadPath($pathFile) ) {
+			return Todoyu::Label('core.file.error.notInDownloadPath');
 		}
 
 		return true;

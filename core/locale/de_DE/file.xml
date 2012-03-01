@@ -17,4 +17,7 @@
 	<label index="confirm.delete">Datei wirklich löschen?</label>
 	<label index="notify.delete.success">Datei wurde gelöscht:</label>
 	<label index="notify.delete.error">Datei löschen fehlgeschlagen:</label>
+	<label index="error.notFround">Datei nicht gefunden</label>
+	<label index="error.notReadable">Datei nicht lesbar</label>
+	<label index="error.notInDownloadPath">Datei nicht in einem der erlaubten Download-Ordner</label>
 </labels>

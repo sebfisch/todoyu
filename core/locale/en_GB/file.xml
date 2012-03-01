@@ -17,4 +17,7 @@
 	<label index="confirm.delete">Delete Selected File</label>
 	<label index="notify.delete.success">File has been deleted:</label>
 	<label index="notify.delete.error">File deletion failed:</label>
+	<label index="error.notFround">File not found</label>
+	<label index="error.notReadable">File not readable</label>
+	<label index="error.notInDownloadPath">File not inside of an allowed download path</label>
 </labels>
