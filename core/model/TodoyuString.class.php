@@ -996,9 +996,10 @@ class TodoyuString {
 	 * @param	Integer		$dateStart
 	 * @param	Integer		$dateEnd
 	 * @param	Boolean		$withDuration
+	 * @param	Boolean		$withDates
 	 * @return	String
 	 */
-	public static function getRangeString($dateStart, $dateEnd, $withDuration = true) {
+	public static function getRangeString($dateStart, $dateEnd, $withDuration = true, $withDates = true) {
 		$dateStart	= (int) $dateStart;
 		$dateEnd	= (int) $dateEnd;
 		$duration	= $dateEnd - $dateStart;
@@ -1012,9 +1013,10 @@ class TodoyuString {
 
 			// Set general data
 		$data	= array(
-			'dateStart'	=> $dateStart,
-			'dateEnd'	=> $dateEnd,
-			'multi'		=> $isMultiDay
+			'dateStart'		=> $dateStart,
+			'dateEnd'		=> $dateEnd,
+			'multi'			=> $isMultiDay,
+			'withDates'		=> $withDates
 		);
 
 		if( $withDuration ) {

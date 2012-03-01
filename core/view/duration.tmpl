@@ -1,5 +1,7 @@
 {if $multi}
-	{dateFormat $dateStart datetime} - {dateFormat $dateEnd datetime}
+	{if $withDates}
+		{dateFormat $dateStart datetime} - {dateFormat $dateEnd datetime}
+	{/if}
 	{if $withDuration}
 		 ({if $asDays}
 			{$days}
@@ -17,7 +19,9 @@
 		{/if})
 	{/if}
 {else}
-	{dateFormat $dateStart date}, {dateFormat $dateStart time} - {dateFormat $dateEnd time}
+	{if $withDates}
+		{dateFormat $dateStart date}, {dateFormat $dateStart time} - {dateFormat $dateEnd time}
+	{/if}
 	{if $withDuration}
 		 ({if $hours > 0}
 			{timeFormat $duration} {Label core.date.time.hours}
