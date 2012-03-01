@@ -170,12 +170,12 @@ class TodoyuTime {
 	/**
 	 * Get timestamps of start and of week that contains the given timestamp
 	 *
-	 * @param	Integer	$date
+	 * @param	Integer	$timestamp
 	 * @return	Array
 	 */
-	public static function getWeekRange($date) {
-		$date	= (int) $date;
-		$start	= self::getWeekstart($date);
+	public static function getWeekRange($timestamp) {
+		$timestamp	= (int) $timestamp;
+		$start	= self::getWeekstart($timestamp);
 
 		return array(
 			'start'	=> $start,
@@ -204,19 +204,19 @@ class TodoyuTime {
 	 * Get start and end timestamp of every day in the week of the timestamp
 	 * 00:00:00
 	 *
-	 * @param		Integer		$date					Timestamp
+	 * @param		Integer		$timestamp					Timestamp
+	 * @param		Boolean		$forceStartWithMonday
 	 * @return		Integer		Timestamp of beginning of week (sunday or monday by system config) the given timestamp belongs to
 	 */
-	public static function getWeekStart($date = 0) {
-		$date			= self::time($date);
-		$startOnMonday	= self::isMondayFirstDayOfWeek();
+	public static function getWeekStart($timestamp = 0, $forceStartWithMonday = false) {
+		$timestamp		= self::time($timestamp);
 
-		$year	= date('Y', $date);
-		$month	= date('n', $date);
-		$day	= date('j', $date);
-		$weekDay= date('w', $date);
+		$year	= date('Y', $timestamp);
+		$month	= date('n', $timestamp);
+		$day	= date('j', $timestamp);
+		$weekDay= date('w', $timestamp);
 
-		if( $startOnMonday ) {
+		if( $forceStartWithMonday || self::isMondayFirstDayOfWeek() ) {
 			$dayShift	= ($weekDay + 6) % 7; // Monday
 		} else {
 			$dayShift	= $weekDay; // Sunday
@@ -230,13 +230,14 @@ class TodoyuTime {
 	/**
 	 * Get timestamp for the end of the week (last second in the week) 23:59:59
 	 *
-	 * @param	Integer		$date
+	 * @param	Integer		$timestamp
+	 * @param	Boolean		$forceStartWeekWithMonday
 	 * @return	Integer
 	 */
-	public static function getWeekEnd($date = 0) {
-		$weekStart	= self::getWeekStart($date);
+	public static function getWeekEnd($timestamp = 0, $forceStartWeekWithMonday = false) {
+		$weekStart	= self::getWeekStart($timestamp, $forceStartWeekWithMonday);
 
-		return self::addDays($weekStart, 7)-1;
+		return self::addDays($weekStart, 7) - 1;
 	}
 
 
@@ -925,7 +926,7 @@ class TodoyuTime {
 	 * @return	Array
 	 */
 	public static function getWeekEndDayIndexes() {
-		return self::isMondayFirstDayOfWeek() ? array(6,0) : array(5,6);
+		return self::isMondayFirstDayOfWeek() ? array(6, 0) : array(5, 6);
 	}
 
 
