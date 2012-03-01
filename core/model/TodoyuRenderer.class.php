@@ -123,6 +123,40 @@ class TodoyuRenderer {
 		return Todoyu::render($tmpl, $data);
 	}
 
+
+
+	/**
+	 * Render select with grouped options
+	 *
+	 * @param	Array	$data
+	 * @return	String
+	 */
+	public static function renderSelectGrouped(array $data) {
+		$tmpl	= 'core/view/select-grouped.tmpl';
+
+		$data['options']= TodoyuArray::assure($data['options']);
+		$data['value']	= TodoyuArray::assure($data['value']);
+
+		if( !isset($data['htmlId']) && $data['id']) {
+			$data['htmlId'] = $data['id'];
+		}
+		if( !isset($data['htmlName']) && $data['name'] ) {
+			$data['htmlName'] = $data['name'];
+		}
+		if( !$data['size'] ) {
+			$data['size'] = 5;
+		}
+
+			// Append brackets to ensure multiple values are submitted
+		if( $data['multiple'] ) {
+			if( $data['htmlName'] !== '' && substr($data['htmlName'], -2) !== '[]' ) {
+				$data['htmlName'] .= '[]';
+			}
+		}
+
+		return Todoyu::render($tmpl, $data);
+	}
+
 }
 
 ?>

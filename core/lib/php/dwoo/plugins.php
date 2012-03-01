@@ -676,12 +676,11 @@ function Dwoo_Plugin_select(Dwoo $dwoo, array $options, array $value = array(), 
  * @return	String
  */
 function Dwoo_Plugin_selectGrouped(Dwoo $dwoo, array $options, array $value = array(), $id = '', $name = '', $class = '', $size = 0, $multiple = false, $disabled = false, $onchange = '', $onclick = '', $noPleaseSelect = false) {
-	$tmpl	= 'core/view/select-grouped.tmpl';
 	$data	= array(
-		'htmlId'		=> $id,
-		'htmlName'		=> $name,
+		'id'			=> $id,
+		'name'			=> $name,
 		'class'			=> $class,
-		'size'			=> $size == 0 ? sizeof($options) : $size,
+		'size'			=> $size,
 		'multiple'		=> $multiple,
 		'disabled'		=> $disabled,
 		'onchange'		=> $onchange,
@@ -691,14 +690,7 @@ function Dwoo_Plugin_selectGrouped(Dwoo $dwoo, array $options, array $value = ar
 		'noPleaseSelect'=> $noPleaseSelect
 	);
 
-		// Append brackets to ensure multiple values are submitted
-	if( $multiple ) {
-		if( $data['htmlName'] !== '' && substr($data['htmlName'], -2) !== '[]' ) {
-			$data['htmlName'] .= '[]';
-		}
-	}
-
-	return Todoyu::render($tmpl, $data);
+	return TodoyuRenderer::renderSelectGrouped($data);
 }
 
 

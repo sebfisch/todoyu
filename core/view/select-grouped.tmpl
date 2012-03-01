@@ -1,4 +1,4 @@
-<select {$extraAttributes} name="{$htmlName}" id="{$htmlId}" class="{$inputClass} {$class}" size="{$size}" {if $multiple}multiple="multiple"{/if} {if $fieldClass}class="{$fieldClass}"{/if}>
+<select {$extraAttributes} {if $htmlName}name="{$htmlName}"{/if} {if $htmlId}id="{$htmlId}"{/if} class="{$inputClass} {$class}" size="{$size}" {if $multiple}multiple="multiple"{/if} {if $fieldClass}class="{$fieldClass}"{/if}>
 	{if !$multiple && !$noPleaseSelect}
 		<option value="0">{Label core.form.select.pleaseSelect}</option>
 		<option value="0" disabled="disabled">---------------------------</option>
