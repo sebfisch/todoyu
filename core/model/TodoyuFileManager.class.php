@@ -501,48 +501,47 @@ class TodoyuFileManager {
 	 * Read a file from hard disk and send it to the browser (with echo)
 	 * Reads file in small parts (1024 B)
 	 *
-	 * @param	String		$absoluteFilePath
+	 * @throws	TodoyuExceptionFileDownload
+	 * @param	String		$pathFile
 	 * @param	String		$mimeType			Mime type of the file
 	 * @param	String		$fileName			Name of the downloaded file shown in the browser
 	 * @return	Boolean		File was allowed to download and sent to browser
 	 */
-	public static function sendFile($absoluteFilePath, $mimeType = null, $fileName = null) {
+	public static function sendFile($pathFile, $mimeType = null, $fileName = null) {
 			// Get real path
-		$pathFile	= realpath($absoluteFilePath);
+		$pathFile	= self::pathAbsolute($pathFile);
+		$pathFile	= realpath($pathFile);
 
-			// Check file existence, readability, allowance. Than send file
-		if( $pathFile !== false && file_exists($pathFile) ) {
-			if( is_readable($pathFile) ) {
-				if( self::isFileInAllowedDownloadPath($pathFile) ) {
-						// Clear file information cache
-					clearstatcache();
-						// Send download headers
-					$fileSize	= filesize($pathFile);
-					$fileName	= is_null($fileName) ? basename($pathFile) : $fileName;
-					$fileModTime= filemtime($pathFile);
-
-						// Clear output buffer to prevent invalid file content
-					ob_clean();
-						// Send headers, file data
-					TodoyuHeader::sendDownloadHeaders($mimeType, $fileName, $fileSize, $fileModTime);
-					$status = readfile($pathFile);
-
-					if( !$status ) {
-						TodoyuLogger::logError('Reading the file failed for a unknown reason: ' . $pathFile, $pathFile);
-					}
-
-					return $status !== false && $status > 0;
-				} else {
-					TodoyuLogger::logSecurity('Tried to download a file from a not allowed path: ' . $pathFile, $pathFile);
-				}
-			} else {
-				TodoyuLogger::logError('sendFile() failed because file was not readable: ' . $pathFile, $pathFile);
-			}
-		} else {
-			TodoyuLogger::logError('sendFile() failed because file was not found: "' . $pathFile . '"', $pathFile);
+		if( !$pathFile ) {
+			throw new TodoyuExceptionFileDownload($pathFile, 'File was not found');
 		}
 
-		return false;
+		if( !is_readable($pathFile) ) {
+			throw new TodoyuExceptionFileDownload($pathFile, 'File is not readable');
+		}
+
+		if( !self::isFileInAllowedDownloadPath($pathFile) ) {
+			throw new TodoyuExceptionFileDownload($pathFile, 'Tried to download a file from a not allowed path');
+		}
+
+			// Clear file information cache
+		clearstatcache();
+			// Send download headers
+		$fileSize	= filesize($pathFile);
+		$fileName	= is_null($fileName) ? basename($pathFile) : $fileName;
+		$fileModTime= filemtime($pathFile);
+
+			// Clear output buffer to prevent invalid file content
+		ob_clean();
+			// Send headers, file data
+		TodoyuHeader::sendDownloadHeaders($mimeType, $fileName, $fileSize, $fileModTime);
+		$status = readfile($pathFile);
+
+		if( !$status ) {
+			throw new TodoyuExceptionFileDownload($pathFile, 'Reading the file failed for a unknown reason');
+		}
+
+		return true;
 	}
 
 

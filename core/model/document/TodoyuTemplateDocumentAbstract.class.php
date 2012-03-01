@@ -146,7 +146,11 @@ abstract class TodoyuTemplateDocumentAbstract {
 	protected function sendFile($pathFile, $filename, $mimeType) {
 		$pathFile	= TodoyuFileManager::pathAbsolute($pathFile);
 
-		TodoyuFileManager::sendFile($pathFile, $mimeType, $filename);
+		try {
+			TodoyuFileManager::sendFile($pathFile, $mimeType, $filename);
+		} catch(TodoyuExceptionFileDownload $e) {
+			// @todo catch
+		}
 	}
 
 }
