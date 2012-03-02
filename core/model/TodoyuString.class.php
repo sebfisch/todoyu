@@ -989,59 +989,6 @@ class TodoyuString {
 
 
 	/**
-	 * Get duration as string
-	 * Includes start and end date with hours
-	 *
-	 *
-	 * @param	Integer		$dateStart
-	 * @param	Integer		$dateEnd
-	 * @param	Boolean		$withDuration
-	 * @param	Boolean		$withDates
-	 * @return	String
-	 */
-	public static function getRangeString($dateStart, $dateEnd, $withDuration = true, $withDates = true) {
-		$dateStart	= (int) $dateStart;
-		$dateEnd	= (int) $dateEnd;
-		$duration	= $dateEnd - $dateStart;
-		$hours		= $duration / 3600;
-		$hoursMax	= 23;
-
-			// Make day keys to detect multi-day duration
-		$dateKeyStart	= date('dmY', $dateStart);
-		$dateKeyEnd		= date('dmY', $dateEnd);
-		$isMultiDay		= $dateKeyStart !== $dateKeyEnd;
-
-			// Set general data
-		$data	= array(
-			'dateStart'		=> $dateStart,
-			'dateEnd'		=> $dateEnd,
-			'multi'			=> $isMultiDay,
-			'withDates'		=> $withDates
-		);
-
-		if( $withDuration ) {
-			$data['withDuration']	= $withDuration;
-			$data['asDays']			= $hours >= $hoursMax;
-			$data['hours']			= $hours;
-			$data['duration']		= $duration;
-
-				// Duration over multiple days?
-			if( $isMultiDay ) {
-				$dayTimestamps	= TodoyuTime::getDayTimestampsInRange($dateStart, $dateEnd);
-
-				$data['days']	= sizeof($dayTimestamps);
-			}
-		}
-
-		$tmpl	= 'core/view/duration.tmpl';
-		$string	= Todoyu::render($tmpl, $data);
-
-		return str_replace(array("\n", "\t", "\r"), '', trim($string));
-	}
-
-
-
-	/**
 	 * htmlentities with predefined config for todoyu
 	 *
 	 * @param	String		$string

@@ -567,39 +567,6 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 
 	/**
-	 * Test getRangeString
-	 */
-	public function testGetRangeString() {
-		Todoyu::setLocale('en_GB');
-
-			// 2 hours
-		$dateStart1	= mktime(14, 0, 0, 1, 1, 2011);
-		$dateEnd1	= mktime(16, 0, 0, 1, 1, 2011);
-		$expect1	= '01/01/2011, 14:00 - 16:00 (02:00 Hours)';
-		$result1	= TodoyuString::getRangeString($dateStart1, $dateEnd1);
-
-		$this->assertEquals($expect1, $result1);
-
-			// 2 days
-		$dateStart2	= mktime(14, 0, 0, 1, 1, 2011);
-		$dateEnd2	= mktime(16, 0, 0, 1, 2, 2011);
-		$expect2	= '01/01/11 14:00 - 02/01/11 16:00 (2 Days)';
-		$result2	= TodoyuString::getRangeString($dateStart2, $dateEnd2);
-
-		$this->assertEquals($expect2, $result2);
-
-			// 30 minutes
-		$dateStart3	= mktime(14, 0, 0, 1, 1, 2011);
-		$dateEnd3	= mktime(14, 30, 0, 1, 1, 2011);
-		$expect3	= '01/01/2011, 14:00 - 14:30 (30 Minutes)';
-		$result3	= TodoyuString::getRangeString($dateStart3, $dateEnd3);
-
-		$this->assertEquals($expect3, $result3);
-	}
-
-
-
-	/**
 	 * Test Extracthttpstatuscode
 	 */
 	public function testExtracthttpstatuscode() {

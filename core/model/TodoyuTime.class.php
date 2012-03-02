@@ -361,10 +361,12 @@ class TodoyuTime {
 	 * Convert seconds (integer) to a readable format with hours and minutes (03:10 = 3 hours and 10 minutes)
 	 *
 	 * @param	Integer		$seconds		Seconds
+	 * @param	Boolean		$leadingZero	Assure leading zero: 2:30 = 02:30
 	 * @return	String		Formatted
 	 */
-	public static function sec2hour($seconds) {
+	public static function sec2hour($seconds, $leadingZero = true) {
 		$timeParts	= self::getTimeParts($seconds);
+		$format		= $leadingZero ? '%02d:%02d' : '%d:%02d';
 
 			// Round up minute, if more than 30 seconds
 		if( $timeParts['seconds'] >= 30 ) {
@@ -377,7 +379,7 @@ class TodoyuTime {
 			}
 		}
 
-		return sprintf('%02d:%02d', $timeParts['hours'], $timeParts['minutes']);
+		return sprintf($format, $timeParts['hours'], $timeParts['minutes']);
 	}
 
 
@@ -456,54 +458,41 @@ class TodoyuTime {
 	/**
 	 * Get given duration formatted in most suiting format
 	 *
-	 * @param	Integer		$seconds
-	 * @param	Boolean		$largerUnitsThanDays	Don't format in larger unit than days?
+	 * @param	Integer		$duration
 	 * @return	String
 	 */
-	public static function formatDuration($seconds, $largerUnitsThanDays = false, $withSubunit = true) {
-		$seconds	= (int) $seconds;
-		$subunit	= false;
+	public static function formatDuration($duration) {
+		$duration	= intval($duration);
 
-		if( $largerUnitsThanDays && $seconds >= TodoyuTime::SECONDS_WEEK ) {
-				// Weeks
-			$subUnitValue	= $seconds % TodoyuTime::SECONDS_WEEK;
-			$value			= $seconds / TodoyuTime::SECONDS_WEEK;
-			if( $withSubunit == true && $subUnitValue >= TodoyuTime::SECONDS_DAY) {
-				$subunit	= self::formatDuration($subUnitValue, false, false);
+		if( $duration === 0 ) {
+			return '-';
+		}
+
+		if( $duration > self::SECONDS_DAY-self::SECONDS_HOUR ) { // days
+			$value	= round($duration / self::SECONDS_DAY, 0);
+			$unit	= $value == 1 ? 'day' : 'days';
+		} elseif( $duration > self::SECONDS_HOUR ) { // hours
+			if( $duration % self::SECONDS_HOUR === 0 ) {
+				$value = $duration / self::SECONDS_HOUR;
+			} else {
+				$value = self::sec2hour($duration, false);
 			}
-			$unit	= 'week';
-		} elseif( $seconds >= TodoyuTime::SECONDS_DAY ) {
-				// Days
-			$subUnitValue	= $seconds % TodoyuTime::SECONDS_DAY;
-			$value			= ($seconds - $subUnitValue) / TodoyuTime::SECONDS_DAY;
-			if( $withSubunit == true && $subUnitValue >= TodoyuTime::SECONDS_HOUR) {
-				$subunit	= self::formatDuration($subUnitValue, false, false);
-			}
-			$unit	= 'day';
-		} elseif( $seconds >= TodoyuTime::SECONDS_HOUR ) {
-				// Hours
-			$value = ($withSubunit) ? self::sec2hour($seconds) : ($seconds / TodoyuTime::SECONDS_HOUR);
+			$unit	= 'time.hours';
+		} elseif( $duration === self::SECONDS_HOUR ) { // 1 hour
+			$value	= 1;
 			$unit	= 'time.hour';
-		} elseif( $seconds >= TodoyuTime::SECONDS_MIN ) {
-				// Minutes
-			$value	= ($withSubunit) ? self::sec2Min($seconds) : ($seconds / TodoyuTime::SECONDS_MIN);
+		} elseif( $duration > self::SECONDS_MIN ) { // minutes
+			$value	= round($duration / TodoyuTime::SECONDS_MIN, 0);
+			$unit	= 'time.minutes';
+		} elseif( $duration === self::SECONDS_MIN ) { // 1 minute
+			$value	= 1;
 			$unit	= 'time.minute';
-		} else {
-				// Seconds
-			$value	= $seconds;
-			$unit	= 'time.second';
+		} else { // seconds
+			$value	= $duration;
+			$unit	= 'time.seconds';
 		}
 
-		if( is_float($value) ) {
-			$value	= round($value, 2);
-		}
-
-			// Plural?
-		if( $value != 1 ) {
-			$unit .= 's';
-		}
-
-		return $value . ' ' . Todoyu::Label('core.date.' . $unit) . ($subunit ? ' ' . $subunit : '');
+		return $value . ' ' . Todoyu::Label('core.date.' . $unit);
 	}
 
 
@@ -513,22 +502,18 @@ class TodoyuTime {
 	 *
 	 * @param	Integer		$dateStart
 	 * @param	Integer		$dateEnd
-	 * @param	Boolean		$withDuration
 	 * @return	String
 	 */
-	public static function formatTimespan($dateStart, $dateEnd, $withDuration = false) {
-			// Start and end at same day
-		if( self::getStartOfDay($dateStart) === self::getStartOfDay($dateEnd) ) {
-			$formatted	= self::format($dateStart, 'DshortD2MshortY2') . ', ' . self::format($dateStart, 'time') . ' - ' . self::format($dateEnd, 'time');
-		} else {
-				// Different days
-			$formatted	= self::format($dateStart, 'DshortD2MshortY2') . ' - ' . self::format($dateEnd, 'DshortD2MshortY2');
-		}
+	public static function formatRange($dateStart, $dateEnd) {
+		$dateStart	= intval($dateStart);
+		$dateEnd	= intval($dateEnd);
 
-			// Add duration
-		if( $withDuration ) {
-			$duration	= $dateEnd - $dateStart;
-			$formatted .= ' (' .self::formatDuration($duration) . ')';
+		if( $dateStart === $dateEnd ) {
+			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ', ' . self::format($dateStart, 'time');
+		} elseif( self::getDayStart($dateStart) === self::getDayStart($dateEnd) ) { // Start and end at same day
+			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ', ' . self::format($dateStart, 'time') . ' - ' . self::format($dateEnd, 'time');
+		} else { 	// Different days
+			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ' - ' . self::format($dateEnd, 'DshortD2MshortY2');
 		}
 
 		return $formatted;

@@ -792,13 +792,13 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$endHours		= mktime(12, 0, 0, 1, 1, 2011);
 
 		$expectHours	= 'Sat, Jan 01 11, 10:00 - 12:00';
-		$resultHours	= TodoyuTime::formatTimespan($startHours, $endHours);
+		$resultHours	= TodoyuTime::formatRange($startHours, $endHours);
 
 		$this->assertEquals($expectHours, $resultHours);
 
 			// Check timespan within same day with duration
 		$expectHours2	= 'Sat, Jan 01 11, 10:00 - 12:00 (02:00 Hours)';
-		$resultHours2	= TodoyuTime::formatTimespan($startHours, $endHours, true);
+		$resultHours2	= TodoyuTime::formatRange($startHours, $endHours, true);
 
 		$this->assertEquals($expectHours2, $resultHours2);
 
@@ -806,13 +806,13 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$startDays		= mktime(10, 0, 0, 1, 1, 2011);
 		$endDays		= mktime(10, 0, 0, 1, 2, 2011);
 		$expectDays		= 'Sat, Jan 01 11 - Sun, Jan 02 11';
-		$resultDays		= TodoyuTime::formatTimespan($startDays, $endDays);
+		$resultDays		= TodoyuTime::formatRange($startDays, $endDays);
 
 		$this->assertEquals($expectDays, $resultDays);
 
 			// Check timespan over multiple days with duration
 		$expectDays2	= 'Sat, Jan 01 11 - Sun, Jan 02 11 (1 Day)';
-		$resultDays2	= TodoyuTime::formatTimespan($startDays, $endDays, true);
+		$resultDays2	= TodoyuTime::formatRange($startDays, $endDays, true);
 
 		$this->assertEquals($expectDays2, $resultDays2);
 	}
