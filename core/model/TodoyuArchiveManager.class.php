@@ -36,7 +36,9 @@ class TodoyuArchiveManager {
 	 * @return	Boolean
 	 */
 	public static function extractTo($pathArchive, $targetFolder) {
-		@set_time_limit(120);
+		if( function_exists('set_time_limit') ) {
+			@set_time_limit(120);
+		}
 
 		$pathArchive	= TodoyuFileManager::pathAbsolute($pathArchive);
 		$targetFolder	= TodoyuFileManager::pathAbsolute($targetFolder);
