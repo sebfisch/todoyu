@@ -23,22 +23,19 @@
  */
 
 	// Make sure only CLI access is allowed
-if( isset($_SERVER['REMOTE_ADDR']) ) {
-	die('Must be called from the command line.');
-}
-
-
 chdir( dirname(dirname(dirname(__FILE__))) );
 
 	// Load global config
 require_once('core/inc/global.php');
 
 	// Deactivate extensions during update
-Todoyu::$CONFIG['INIT'] 				= false;
+Todoyu::$CONFIG['INIT'] = false;
 
 	// Load default init script
 require_once('core/inc/init.php');
 
+	// Prevent HTTP request
+TodoyuCli::assertShell();
 
 	// Clear all cache
 TodoyuInstallerManager::clearCache();
