@@ -348,8 +348,8 @@ class TodoyuExtensions {
 	/**
 	 * Load admin config for all extensions
 	 */
-	public static function loadAllAdmin() {
-		self::loadAllTypeConfig('admin');
+	public static function loadAllSysmanager() {
+		self::loadAllTypeConfig('sysmanager');
 	}
 
 

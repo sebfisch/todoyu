@@ -88,6 +88,7 @@ set_error_handler(array('TodoyuErrorHandler', 'handleError'));
 require_once( PATH_CORE . '/inc/version.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/plugins.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrict.php' );
+require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrictAdmin.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrictIfNone.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrictOrOwn.php' );
 require_once( PATH_CORE . '/lib/php/dwoo/Dwoo_Plugin_restrictInternal.php' );

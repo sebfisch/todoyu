@@ -19,14 +19,14 @@
 *****************************************************************************/
 
 /**
- * Dwoo plugin to restrict access to template parts
+ * Dwoo plugin to restrict access to template parts to internal persons
  *
- * @example		{restrict 'extkey' 'rightskey'}Restricted parts{else}Unrestricted{/restrict}
+ * @example		{restrictAdmin}Restricted parts{else}Unrestricted{/restrictAdmin}
  *
  * @package		Todoyu
  * @subpackage	Template
  */
-class Dwoo_Plugin_restrictIfNone extends Dwoo_Block_Plugin implements Dwoo_ICompilable_Block, Dwoo_IElseable {
+class Dwoo_Plugin_restrictAdmin extends Dwoo_Block_Plugin implements Dwoo_ICompilable_Block, Dwoo_IElseable {
 
 	/**
 	 * Initialize plugin
@@ -67,10 +67,10 @@ class Dwoo_Plugin_restrictIfNone extends Dwoo_Block_Plugin implements Dwoo_IComp
 	public static function postProcessing(Dwoo_Compiler $compiler, array $params, $prepend, $append, $content) {
 		$params = $compiler->getCompiledParams($params);
 
-		$pre	= Dwoo_Compiler::PHP_OPEN.'if( Todoyu::allowedAny(' . $params[0] . ',' . $params[1] . ") ) {".Dwoo_Compiler::PHP_CLOSE;
+		$pre	= Dwoo_Compiler::PHP_OPEN.'if( TodoyuAuth::isAdmin() ) {'.Dwoo_Compiler::PHP_CLOSE;
 		$post	= Dwoo_Compiler::PHP_OPEN."}".Dwoo_Compiler::PHP_CLOSE;
 
-		if ( isset($params['hasElse']) ) {
+		if (isset($params['hasElse'])) {
 			$post .= $params['hasElse'];
 		}
 

@@ -61,7 +61,7 @@ class Dwoo_Plugin_restrict extends Dwoo_Block_Plugin implements Dwoo_ICompilable
 	 * @param	Array			$params
 	 * @param	String			$prepend		Unknown param
 	 * @param	String			$append			Unknown param
-	 * @param	String			$type			Unknown param
+	 * @param	String			$content		Unknown param
 	 * @return	String
 	 */
 	public static function postProcessing(Dwoo_Compiler $compiler, array $params, $prepend, $append, $content) {
