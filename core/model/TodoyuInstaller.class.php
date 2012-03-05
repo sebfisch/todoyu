@@ -407,7 +407,9 @@ class TodoyuInstaller {
 	 * @return	Boolean
 	 */
 	public static function isUpdate() {
-		return (self::getMode() !== 'install' && TodoyuInstallerManager::isDatabaseConfigured()) || self::hasDoubleEnableFile();
+
+		return	( self::getMode() !== 'install' && TodoyuInstallerManager::isDatabaseConfigured() )
+				|| self::hasDoubleEnableFile();
 	}
 
 }
