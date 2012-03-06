@@ -81,12 +81,18 @@ Todoyu.Time = {
 	 * Format duration. Hours:minutes
 	 *
 	 * @param	{Number}	seconds
+	 * @param	{Boolean}	leadingZero
 	 * @return	{String}
 	 */
-	durationFormat: function(seconds) {
-		var timeParts = this.getTimeParts(seconds);
+	durationFormat: function(seconds, leadingZero) {
+		var timeParts	= this.getTimeParts(seconds);
+		var hours		= timeParts.hours;
 
-		return timeParts.hours + ':' + Todoyu.Helper.twoDigit(timeParts.minutes);
+		if( timeParts.hours < 10 && leadingZero) {
+			hours = Todoyu.Helper.twoDigit(timeParts.hours);
+		}
+
+		return hours + ':' + Todoyu.Helper.twoDigit(timeParts.minutes);
 	},
 
 

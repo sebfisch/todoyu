@@ -38,7 +38,23 @@ Element.addMethods({
 		Todoyu.Ui.scrollToElement(element);
 
 		return element;
+	},
+
+
+
+	/**
+	 * Convert node to HTML string
+	 *
+	 * @param	{Element}	element
+	 * @return	{String}
+	 */
+	toHTML: function(element) {
+		var dummy = new Element('div');
+		dummy.insert(element);
+
+		return dummy.innerHTML;
 	}
+	
 });
 
 
