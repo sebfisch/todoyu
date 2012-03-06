@@ -54,7 +54,7 @@ Element.addMethods({
 
 		return dummy.innerHTML;
 	}
-	
+
 });
 
 
