@@ -28,6 +28,7 @@ core 2.2.0 - not released yet
 	* Added: Javascript form submit helpers (simple file upload)
 	* Added: TodoyuRenderer::renderSelectGrouped(). Extracted from a dwoo plugin
 	* Added: Dwoo plugin {restrictAdmin}retricted content{/restrictAdmin}
+	* Added: Moved dwoo plugins from calendar extension to core: {formatDuration}, {formatRange}
 	* Changed: Unified method naming - getDateXXX() getPersonXXX() getPersonXXXID()
 	* Changed: Renamed TodoyuFieldset to TodoyuFormFieldset
 	* Changed: Prevent selection of disabled select option
@@ -42,6 +43,8 @@ core 2.2.0 - not released yet
 	* Changed: ListingRenderer behaviour. Changed Parameter sword to params to be more flexible.
 	* Changed: Rich Text Editor (tinyMCE) uses now advanced mode with some additional edit features
 	* Changed: Renamed config/admin.php to config/sysmanager.php because admin extension was removed
+	* Changed: Renamed dwoo plugin {Workload} to {formatDuration}
+	* Chagned: Renamed TodoyuTime::sec2hours() to formatHours()
 	* Removed: scal calendar/date picker library
 	* Removed: TodoyuString::replaceOnce()
 	* Removed: TodoyuString::strictHtml2text() is now integrated in html2text() method

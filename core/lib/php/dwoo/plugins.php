@@ -84,22 +84,6 @@ function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
 
 
 /**
- * Format the amount of workload (number of seconds to hours and minutes)
- *
- * @package		Todoyu
- * @subpackage	Template
- *
- * @param	Dwoo 		$dwoo
- * @param	Integer		$workload
- * @return	String
- */
-function Dwoo_Plugin_Workload_compile(Dwoo_Compiler $compiler, $workload) {
-	return 'TodoyuTime::sec2hour(' . $workload . ')';
-}
-
-
-
-/**
  * Include given file's content with special- or all applicable characters converted to HTML character entities
  *
  * @package		Todoyu
@@ -801,6 +785,56 @@ function Dwoo_Plugin_getRecordBooleanColumnsClassnames(Dwoo $dwoo, array $record
 	}
 
 	return trim($classNames);
+}
+
+
+
+/**
+ * Render duration in suiting format
+ *
+ * @package		Todoyu
+ * @subpackage	Calendar
+ *
+ * @param	Dwoo_Compiler 		$compiler
+ * @param	Integer			$seconds
+ * @return	String
+ */
+function Dwoo_Plugin_formatDuration_compile(Dwoo_Compiler $compiler, $seconds) {
+	return 'TodoyuTime::formatDuration(' . $seconds . ')';
+}
+
+
+
+/**
+ * Render timespan in suiting format
+ *
+ * @package		Todoyu
+ * @subpackage	Calendar
+ *
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	Integer			$dateStart
+ * @param	Integer			$dateEnd
+ * @return	String
+ */
+function Dwoo_Plugin_formatRange_compile(Dwoo_Compiler $compiler, $dateStart, $dateEnd) {
+	return 'TodoyuTime::formatRange(' . $dateStart . ', ' . $dateEnd . ')';
+}
+
+
+
+/**
+ * Format the amount of hours
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	Integer			$workload
+ * @param	Boolean			$leadingZero
+ * @return	String
+ */
+function Dwoo_Plugin_formatHours_compile(Dwoo_Compiler $compiler, $workload, $leadingZero = false) {
+	return 'TodoyuTime::formatHours(' . $workload . ', ' . $leadingZero . ')';
 }
 
 ?>

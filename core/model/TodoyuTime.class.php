@@ -356,6 +356,20 @@ class TodoyuTime {
 	}
 
 
+	/**
+	 * Convert seconds (integer) to a readable format with hours and minutes (03:10 = 3 hours and 10 minutes)
+	 *
+	 * @param	Integer		$seconds		Seconds
+	 * @param	Boolean		$leadingZero	Assure leading zero: 2:30 = 02:30
+	 * @return	String		Formatted
+	 * @deprecated
+	 * @see		formatHours
+	 */
+	public static function sec2hour($seconds, $leadingZero = true) {
+		return self::formatHours($seconds, $leadingZero);
+	}
+
+
 
 	/**
 	 * Convert seconds (integer) to a readable format with hours and minutes (03:10 = 3 hours and 10 minutes)
@@ -364,7 +378,7 @@ class TodoyuTime {
 	 * @param	Boolean		$leadingZero	Assure leading zero: 2:30 = 02:30
 	 * @return	String		Formatted
 	 */
-	public static function sec2hour($seconds, $leadingZero = true) {
+	public static function formatHours($seconds, $leadingZero = true) {
 		$timeParts	= self::getTimeParts($seconds);
 		$format		= $leadingZero ? '%02d:%02d' : '%d:%02d';
 
@@ -380,19 +394,6 @@ class TodoyuTime {
 		}
 
 		return sprintf($format, $timeParts['hours'], $timeParts['minutes']);
-	}
-
-
-
-	/**
-	 * @static
-	 * @param	Integer		$seconds
-	 * @return	String
-	 */
-	public static function sec2Min($seconds) {
-		$timeParts	= self::getTimeParts($seconds);
-
-		return sprintf('%02d:%02d', $timeParts['minutes'], $timeParts['seconds']);
 	}
 
 
@@ -475,7 +476,7 @@ class TodoyuTime {
 			if( $duration % self::SECONDS_HOUR === 0 ) {
 				$value = $duration / self::SECONDS_HOUR;
 			} else {
-				$value = self::sec2hour($duration, false);
+				$value = self::formatHours($duration, false);
 			}
 			$unit	= 'time.hours';
 		} elseif( $duration === self::SECONDS_HOUR ) { // 1 hour
