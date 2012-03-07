@@ -44,7 +44,7 @@ class TodoyuPanelWidgetManager {
 	 * @param	Array		$config
 	 */
 	public static function addPanelWidget($area, $ext, $name, $position, array $config = array()) {
-		$className	= self::getClassName($ext, $name);
+		$className	= self::buildClassName($ext, $name);
 		$idArea		= TodoyuExtensions::getExtID($area);
 
 		self::$panelWidgets[$idArea][$className] = array(
@@ -67,9 +67,29 @@ class TodoyuPanelWidgetManager {
 	 * @return	Array
 	 */
 	public static function getConfig($ext, $name) {
-		$className	= self::getClassName($ext, $name);
+		TodoyuExtensions::loadAllPanelWidget();
+
+		$className	= self::buildClassName($ext, $name);
 
 		return TodoyuArray::assure(self::$panelWidgets[AREA][$className]);
+	}
+
+
+
+	/**
+	 * Check whether a panel widgets exists in the current area
+	 *
+	 * @param	String		$area
+	 * @param	String		$ext
+	 * @param	String		$name
+	 * @return	Boolean
+	 */
+	public static function exists($area, $ext, $name) {
+		TodoyuExtensions::loadAllPanelWidget();
+
+		$className	= self::buildClassName($ext, $name);
+
+		return isset(self::$panelWidgets[$area][$className]);
 	}
 
 
@@ -128,7 +148,7 @@ class TodoyuPanelWidgetManager {
 	public static function getPanelWidget($ext, $name, array $params = array()) {
 		TodoyuExtensions::loadAllPanelWidget();
 
-		$className		= self::getClassName($ext, $name);
+		$className		= self::buildClassName($ext, $name);
 		$customConfig	= self::getCustomConfig($ext, $name);
 
 		if( ! array_key_exists($className, self::$panelWidgets) ) {
@@ -147,7 +167,7 @@ class TodoyuPanelWidgetManager {
 	 * @param	String		$name
 	 * @return	String
 	 */
-	public static function getClassName($ext, $name) {
+	public static function buildClassName($ext, $name) {
 		return 'Todoyu' . ucfirst(strtolower($ext)) . 'PanelWidget' . ucfirst($name);
 	}
 

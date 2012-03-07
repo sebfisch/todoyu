@@ -262,10 +262,11 @@ class TodoyuRequest {
 	 */
 	public static function getBasicRequestVars() {
 		return array(
-			'ext'	=> self::getParam('ext'),
-			'ctrl'	=> self::getParam('controller'),
-			'action'=> self::getParam('action'),
-			'area'	=> self::getAreaID()
+			'ext'		=> self::getParam('ext'),
+			'ctrl'		=> self::getParam('controller'),
+			'action'	=> self::getParam('action'),
+			'area'		=> self::getAreaID(),
+			'areaExt'	=> self::getArea()
 		);
 	}
 
@@ -338,6 +339,7 @@ class TodoyuRequest {
 		define('CONTROLLER',$requestVars['ctrl']);
 		define('ACTION',	$requestVars['action']);
 		define('AREA',		$requestVars['area']);
+		define('AREAEXT',	$requestVars['areaExt']);
 	}
 
 
