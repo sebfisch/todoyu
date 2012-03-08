@@ -198,4 +198,32 @@ Date.prototype.isToday = function() {
 	return this.getFullYear() === today.getFullYear() && this.getMonth() === today.getMonth() && this.getDate() === today.getDate();
 };
 
+/**
+ * Set date to week start (monday morning)
+ *
+ * @retrun	{Date}
+ */
+Date.prototype.setToWeekStart = function() {
+	var day		= this.getDay();
+	var shift	= (day+6)%7;
+
+	this.addDays(-shift, false);
+	this.setHours(0, 0, 0);
+
+	return this;
+};
+
+/**
+ * Set date to week end (sunday night)
+ *
+ * @return	{Date}
+ */
+Date.prototype.setToWeekEnd = function() {
+	var day = this.getDay();
+
+	this.addDays(7-day, false);
+	this.setHours(23, 59, 59);
+
+	return this;
+};
 

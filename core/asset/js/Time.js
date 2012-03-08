@@ -550,6 +550,20 @@ Todoyu.Time = {
 	 */
 	isDateInPast: function(date) {
 		return !this.isDateInFuture(date);
+	},
+
+
+
+	/**
+	 * Check whether date is in a past week
+	 *
+	 * @param	{Date}	date
+	 * @return	{Boolean}
+	 */
+	isDateInPastWeek: function(date) {
+		var compare = new Date(date).setToWeekEnd();
+
+		return this.isDateInPast(compare);
 	}
 
 };
