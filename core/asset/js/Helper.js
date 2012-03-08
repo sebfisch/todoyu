@@ -420,7 +420,7 @@ Todoyu.Helper = {
 	 * @param	{String}		eventType e.g. 'click'
 	 * @return	{String|Object}
 	 */
-	fireEvent: function(element, eventType){
+	fireEvent: function(element, eventType, x, y){
 		var evt;
 
 		if( ! document.createEvent ){

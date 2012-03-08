@@ -144,6 +144,18 @@ class TodoyuArray {
 
 
 	/**
+	 * Apply strtolower to all array elements
+	 *
+	 * @param	Array		$array
+	 * @return	Array
+	 */
+	public static function strtolower(array $array) {
+		return array_map('strtolower', $array);
+	}
+
+
+
+	/**
 	 * Implode array with given delimiter, force items to be integers
 	 *
 	 * @param	Array	$array
