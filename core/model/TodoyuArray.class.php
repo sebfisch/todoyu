@@ -975,7 +975,7 @@ class TodoyuArray {
 	 * @param	Boolean			$addSeparator
 	 * @return	Array
 	 */
-	public static function prependSelectOption(array $options, $pleaseSelectLabel, $pleaseSelectValue = 0, $addSeparator = true) {
+	public static function prependSelectOption(array $options, $pleaseSelectLabel = 'core.form.select.pleaseSelect', $pleaseSelectValue = 0, $addSeparator = true) {
 		$select		= array(
 			'value'		=> $pleaseSelectValue,
 			'label'		=> $pleaseSelectLabel

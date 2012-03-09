@@ -784,6 +784,95 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(array(6,7), $diffTwo);
 	}
 
+
+	public function testStrtolower() {
+		$input	= array(
+			'Hello',
+			'WORLD',
+			'lowercase'
+		);
+		$output	= TodoyuArray::strtolower($input);
+
+		$this->assertEquals('hello', $output[0]);
+		$this->assertEquals('world', $output[1]);
+		$this->assertEquals('lowercase', $output[2]);
+	}
+
+	public function testImplodeassoc() {
+		$data	= array(
+			'width'		=> 200,
+			'height'	=> '300px',
+			'display'	=> 'none'
+		);
+
+		$cssOutput	= TodoyuArray::implodeAssoc($data, ':', ';');
+		$expect		= 'width:200;height:300px;display:none';
+
+		$this->assertEquals($expect, $cssOutput);
+	}
+
+	public function testAssurefromjson() {
+		$data	= array(
+			'key'	=> 'value'
+		);
+		$json	= json_encode($data);
+		$parsed	= TodoyuArray::assureFromJSON($json);
+
+		$this->assertEquals('value', $parsed['key']);
+
+		$parsedFail	= TodoyuArray::assureFromJSON('x');
+		$this->assertInternalType('array', $parsedFail);
+	}
+
+	public function testCreatemap() {
+		$mapKeys	= array('a', 'b', 'c');
+		$map		= TodoyuArray::createMap($mapKeys, 3);
+
+		$this->assertEquals(3, $map['c']);
+	}
+
+
+	public function testGroupbyfield() {
+		$data = array(
+			'tom'	=> array(
+				'country'	=> 'switzerland',
+				'age'		=> 35
+			),
+			'lisa'	=> array(
+				'country'	=> 'germany',
+				'age'		=> 20
+			),
+			'paul'	=> array(
+				'country'	=> 'switzerland',
+				'age'		=> 44
+			)
+		);
+
+		$groupped	= TodoyuArray::groupByField($data, 'country');
+
+		$this->assertEquals(35, $groupped['switzerland']['tom']['age']);
+	}
+
+	public function testPrependselectoption() {
+		$options	= array(
+			array(
+				'value'	=> 'a',
+				'label'	=> 'The A'
+			),
+			array(
+				'value'	=> 'b',
+				'label'	=> 'The B'
+			),
+			array(
+				'value'	=> 'c',
+				'label'	=> 'The C'
+			)
+		);
+
+		$newOptions	= TodoyuArray::prependSelectOption($options);
+
+		$this->assertEquals(0, $newOptions[0]['value']);
+	}
 }
 
 ?>
