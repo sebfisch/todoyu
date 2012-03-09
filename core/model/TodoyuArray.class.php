@@ -995,6 +995,34 @@ class TodoyuArray {
 		return $options;
 	}
 
+
+
+	/**
+	 * Get items which are allwed for the current user
+	 * Check if item has a field which contains a right to check.
+	 * No right = allow without check
+	 *
+	 * @param	Array		$items
+	 * @param	String		$rightsField		Custom right field
+	 * @return	Array
+	 */
+	public static function getAllowedItems(array $items, $rightsField = 'require') {
+		$filtered	= array();
+
+		foreach($items as $key => $item) {
+			if( isset($item[$rightsField]) ) {
+				list($extKey, $right) = explode('.', $item[$rightsField], 2);
+				if( !Todoyu::allowed($extKey, $right) ) {
+					continue;
+				}
+			}
+
+			$filtered[$key] = $item;
+		}
+
+		return $filtered;
+	}
+
 }
 
 ?>
