@@ -1009,7 +1009,7 @@ class TodoyuString {
 		$pairs	= array();
 
 		foreach($data as $key => $value) {
-			$pairs[] = self::toPhpCode($key) . '\'=>' . self::toPhpCode($value);
+			$pairs[] = self::toPhpCode($key) . '=>' . self::toPhpCode($value);
 		}
 
 		return 'array(' . implode(',', $pairs) . ')';
