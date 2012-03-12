@@ -307,7 +307,7 @@ Todoyu.Form = {
 	/**
 	 * Confirm when toggling an exclusive (only one record of this type can be preferred) "is_preferred" flag
 	 *
-	 * @method  togglePreferredExclusive
+	 * @method	togglePreferredExclusive
 	 * @param	{Element}	field
 	 */
 	togglePreferredExclusive: function(field) {
@@ -468,8 +468,8 @@ Todoyu.Form = {
 	/**
 	 * Assist input of time duration: correct abbreviated / alert on illegal input
 	 *
-	 * @method  assistDurationInput
-	 * @param   {Element}   field
+	 * @method	assistDurationInput
+	 * @param	{Element}	field
 	 */
 	assistDurationInput: function(field) {
 		var value	= $F(field).strip();

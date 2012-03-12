@@ -36,7 +36,7 @@ Todoyu.PanelWidget = {
 	observerCallbacks: {},
 
 	/**
-	 * Toggle a panel widget
+	 * Toggle (expand/collapse) a panel widget
 	 *
 	 * @method	toggle
 	 * @param	{String}	widget
@@ -46,7 +46,10 @@ Todoyu.PanelWidget = {
 		var content	= $('panelwidget-' + widget + '-content');
 		var toggle	= $('panelwidget-' + widget + '-toggle');
 		var options = {
-			'duration': 0.3
+			'duration': 0.3,
+			afterFinish: function(effect) {
+				Todoyu.Hook.exec('panelwidget.' + widget + '.toggled');
+			}
 		};
 
 		this.saveToggleStatus(widget, !content.visible());

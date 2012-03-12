@@ -639,7 +639,7 @@ Todoyu.Tabs = {
 	 *
 	 * @method	getAllTabs
 	 * @param	{String}	list
-	 * @return	{Array}
+	 * @return	{Element[]}
 	 */
 	getAllTabs: function(list) {
 		return $(list + '-tabs').select('li.item');

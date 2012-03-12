@@ -79,7 +79,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 
 		this.lastText	= this.getSearchText();
 
-		this.initObservers();
+		this.addPanelWidgetObservers();
 	},
 
 
@@ -89,7 +89,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 *
 	 * @method	initObservers
 	 */
-	initObservers: function() {
+	addPanelWidgetObservers: function() {
 		this.input.on('keyup', this.onSearchKeyUp.bind(this));
 		this.list.on('click', 'li', this.onItemClick.bind(this));
 	},
@@ -145,7 +145,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 
 
 	/**
-	 * Refresh project list panelWidget
+	 * Refresh search list from current search text
 	 *
 	 * @method	update
 	 */
@@ -200,6 +200,18 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 */
 	onEmptyResult: function(response) {
 		// Override
+	},
+
+
+
+	/**
+	 * Get label of given item, e.g. the person or group name
+	 *
+	 * @method	getItemLabel
+	 * @param   {Element}  item
+	 */
+	getItemLabel: function(item) {
+		return item.down('a').innerHTML.stripTags().trim();
 	},
 
 

@@ -10,3 +10,6 @@ Event Hooks
 	@param	String		$elementKey
 	@param	Number		$left
 	@param	Number		$top
+
+
+panelwidget + widget + toggled
