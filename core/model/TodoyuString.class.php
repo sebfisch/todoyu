@@ -956,34 +956,63 @@ class TodoyuString {
 	/**
 	 * Convert a variable to it's PHP string representation
 	 *
-	 * @param	Mixed		$var
+	 * @param	Mixed		$value
+	 * @return	String
+	 * @deprecated
+	 */
+	public static function toPhpCodeString($value) {
+		return self::toPhpCode($value);
+	}
+
+
+	/**
+	 * Convert a value to it's php code representation
+	 *
+	 * @param	Mixed		$value
 	 * @return	String
 	 */
-	public static function toPhpCodeString($var) {
-		if( is_bool($var) ) {
-			return $var ? 'true' : 'false';
-		} elseif( is_string($var) ) {
-			return '\'' . $var . '\'';
-		} elseif( is_numeric($var) ) {
-			return $var;
-		} elseif( is_array($var) ) {
-			$tmp	= 'array(';
-			$items	= array();
-			foreach($var as $key => $value) {
-				$items[$key] = self::toPhpCodeString($value);
-			}
-			foreach($items as $key => $preparedValue) {
-				$items[$key] = self::toPhpCodeString($key) . '=>' . $preparedValue;
-			}
-			$tmp	.= implode(',', $items);
-			$tmp	.= ')';
-
-			return $tmp;
-		} elseif( is_object($var) ) {
-			return 'unserialize(stripslashes(\'' . addslashes(serialize($var))  . '\'))';
-		} else {
-			return '';
+	public static function toPhpCode($value) {
+		switch(gettype($value)) {
+			case 'integer';
+			case 'double';
+				break;
+			case 'string':
+				$value = '\'' . $value . '\'';
+				break;
+			case 'NULL':
+				$value = 'null';
+				break;
+			case 'boolean':
+				$value = $value ? 'true' : 'false';
+				break;
+			case 'array':
+				$value = self::toPhpCodeArray($value);
+				break;
+//			case 'object':
+			default:
+				$value = 'unserialize(\'' . serialize($value) . '\')';
+				break;
 		}
+
+		return $value;
+	}
+
+
+
+	/**
+	 * Convert an array to it's php code representation
+	 *
+	 * @param	Array		$data
+	 * @return	String
+	 */
+	public static function toPhpCodeArray(array $data) {
+		$pairs	= array();
+
+		foreach($data as $key => $value) {
+			$pairs[] = self::toPhpCode($key) . '\'=>' . self::toPhpCode($value);
+		}
+
+		return 'array(' . implode(',', $pairs) . ')';
 	}
 
 
