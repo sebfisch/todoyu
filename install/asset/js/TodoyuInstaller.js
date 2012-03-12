@@ -30,6 +30,23 @@ if( ! Todoyu ) {
 Todoyu.Installer = {
 
 	/**
+	 * Focus first form field
+	 *
+	 * @method	focusFirstFormField
+	 * @param	{Element}	form
+	 */
+	focusFirstFormField: function(form) {
+		if( form ) {
+			var field = form.select('input[type!=hidden]', 'select', 'textarea', 'button').first();
+			if( field && field.visible() ) {
+				field.focus();
+			}
+		}
+	},
+
+
+
+	/**
 	 * Hide the next button
 	 *
 	 * @method	hideButton
