@@ -1028,6 +1028,20 @@ class TodoyuString {
 		return htmlentities($string, ENT_QUOTES, 'UTF-8', $doubleEncode);
 	}
 
+
+
+	/**
+	 * Remove every path info or file extensions
+	 * Make sure you have a simple string without any path or file information
+	 * (which could cause an attack)
+	 *
+	 * @param	String		$pathString
+	 * @return	String
+	 */
+	public static function removePathInfos($pathString) {
+		return pathinfo($pathString, PATHINFO_FILENAME);
+	}
+
 }
 
 ?>
