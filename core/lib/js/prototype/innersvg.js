@@ -1,3 +1,5 @@
+if( window.SVGElement ) {
+
 /**
  * innerHTML property for SVGElement
  * Copyright(c) 2010, Jeff Schiller
@@ -92,3 +94,5 @@ Object.defineProperty(SVGElement.prototype, 'innerSVG', {
 });
 
 })();
+
+}
