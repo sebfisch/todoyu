@@ -346,11 +346,12 @@ class TodoyuDateRange {
 	/**
 	 * Check whether a range overlaps another comment
 	 *
-	 * @param	TodoyuDateRange	$range
+	 * @param	TodoyuDateRange		$range
+	 * @param	Boolean				$allowBorderTouching		See TodoyuTime::rangeOverlaps() for details
 	 * @return	Boolean
 	 */
-	public function isOverlapping(TodoyuDateRange $range) {
-		return TodoyuTime::rangeOverlaps($this->getStart(), $this->getEnd(), $range->getStart(), $range->getEnd());
+	public function isOverlapping(TodoyuDateRange $range, $allowBorderTouching = false) {
+		return TodoyuTime::rangeOverlaps($this->getStart(), $this->getEnd(), $range->getStart(), $range->getEnd(), $allowBorderTouching);
 	}
 
 
@@ -645,10 +646,11 @@ class TodoyuDateRange {
 	 * Get a new date range for overlapping with the $range
 	 *
 	 * @param	TodoyuDateRange		$range
+	 * @param	Boolean				$allowBorderTouching
 	 * @return	TodoyuDateRange|Boolean
 	 */
-	public function getOverlappingRange(TodoyuDateRange $range) {
-		if( !$this->isOverlapping($range) ) {
+	public function getOverlappingRange(TodoyuDateRange $range, $allowBorderTouching = false) {
+		if( !$this->isOverlapping($range, $allowBorderTouching) ) {
 			return false;
 		}
 

@@ -841,21 +841,33 @@ class TodoyuTime {
 	/**
 	 * Check whether two time ranges overlap.
 	 *
+	 * Border touching example:
+	 * A (14:00-15:00), B (15:00-16:00)
+	 * Only when border touching is true, this ranges are recognized as overlapping
+	 *
 	 * @param	Integer		$dateStart1
 	 * @param	Integer		$dateEnd1
 	 * @param	Integer		$dateStart2
 	 * @param	Integer		$dateEnd2
+	 * @param	Boolean		$allowBorderTouching		False: ranges have to overlap, True: Count border touching as overlapping
 	 * @return	Boolean
 	 */
-	public static function rangeOverlaps($dateStart1, $dateEnd1, $dateStart2, $dateEnd2) {
+	public static function rangeOverlaps($dateStart1, $dateEnd1, $dateStart2, $dateEnd2, $allowBorderTouching = false) {
 		$dateStart1	= (int) $dateStart1;
 		$dateEnd1	= (int) $dateEnd1;
 		$dateStart2	= (int) $dateStart2;
 		$dateEnd2	= (int) $dateEnd2;
 
-		if( $dateEnd2 <= $dateStart1 || $dateStart2 >= $dateEnd1 ) {
-			return false;
+		if( $allowBorderTouching ) {
+			if( $dateEnd2 < $dateStart1 || $dateStart2 > $dateEnd1 ) {
+				return false;
+			}
+		} else {
+			if( $dateEnd2 <= $dateStart1 || $dateStart2 >= $dateEnd1 ) {
+				return false;
+			}
 		}
+
 
 		return true;
 	}
