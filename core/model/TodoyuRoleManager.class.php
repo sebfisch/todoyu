@@ -94,7 +94,7 @@ class TodoyuRoleManager {
 		$table	= self::TABLE;
 		$where	=				'		 deleted	= 0 ' .
 				  ($onlyActive ? ' AND   is_active	= 1' : '');
-		$order	= ' is_active, title';
+		$order	= ' is_active DESC, title';
 
 		return Todoyu::db()->getArray($fields, $table, $where, '', $order);
 	}

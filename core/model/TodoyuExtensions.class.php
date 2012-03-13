@@ -215,7 +215,7 @@ class TodoyuExtensions {
 	public static function loadConfig($extKey, $type) {
 		$filePath	= realpath(PATH_EXT . DIR_SEP . $extKey . DIR_SEP . 'config' . DIR_SEP . $type . '.php');
 
-		if( ! is_array(self::$loadedExtConfigTypes[$extKey]) || ! array_key_exists($type, self::$loadedExtConfigTypes[$extKey]) ) {
+		if( ! isset(self::$loadedExtConfigTypes[$extKey . $type]) ) {
 				// Attempt load given config
 			if( $filePath !== false && self::isPathInExtDir($extKey, $filePath) ) {
 				if( is_file($filePath) ) {
@@ -225,7 +225,7 @@ class TodoyuExtensions {
 						// Call hook, e.g. 'loadconfig.contact.filter'
 					TodoyuHookManager::callHook('core', 'loadconfig.' . $extKey . '.' . $type);
 						// Register the type config to be loaded
-					self::$loadedExtConfigTypes[$extKey][$type]    = true;
+					self::$loadedExtConfigTypes[$extKey . $type]    = true;
 				}
 					// Config loaded
 				return true;
