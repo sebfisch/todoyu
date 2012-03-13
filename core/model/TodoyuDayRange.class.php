@@ -70,8 +70,8 @@ class TodoyuDayRange extends TodoyuDateRange {
 	 * @param	Integer		$month
 	 * @param	Integer		$day
 	 */
-	public function setStartDate($year, $month, $day) {
-		parent::setStartDate($year, $month, $day, 0, 0, 0);
+	public function setDateStart($year, $month, $day) {
+		parent::setDateStart($year, $month, $day, 0, 0, 0);
 	}
 
 
@@ -83,8 +83,8 @@ class TodoyuDayRange extends TodoyuDateRange {
 	 * @param	Integer		$month
 	 * @param	Integer		$day
 	 */
-	public function setEndDate($year, $month, $day) {
-		parent::setEndDate($year, $month, $day, 23, 59, 59);
+	public function setDateEnd($year, $month, $day) {
+		parent::setDateEnd($year, $month, $day, 23, 59, 59);
 	}
 
 

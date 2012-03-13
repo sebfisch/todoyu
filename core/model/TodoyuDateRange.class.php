@@ -163,7 +163,7 @@ class TodoyuDateRange {
 	 * @param	Integer		$minute
 	 * @param	Integer		$second
 	 */
-	public function setStartDate($year, $month, $day, $hour = 0, $minute = 0, $second = 0) {
+	public function setDateStart($year, $month, $day, $hour = 0, $minute = 0, $second = 0) {
 		$this->setStart(mktime($hour, $minute, $second, $month, $day, $year));
 	}
 
@@ -179,7 +179,7 @@ class TodoyuDateRange {
 	 * @param	Integer		$minute
 	 * @param	Integer		$second
 	 */
-	public function setEndDate($year, $month, $day, $hour = 0, $minute = 0, $second = 0) {
+	public function setDateEnd($year, $month, $day, $hour = 0, $minute = 0, $second = 0) {
 		$this->setEnd(mktime($hour, $minute, $second, $month, $day, $year));
 	}
 

@@ -72,7 +72,7 @@ class TodoyuDateRangeTest extends PHPUnit_Framework_TestCase {
 	public function testSetStartDate() {
 		$date	= mktime(0, 0, 0, 1, 1, 2015);
 
-		$this->range->setStartDate(2015, 1, 1);
+		$this->range->setDateStart(2015, 1, 1);
 
 		$this->assertEquals($date, $this->range->getStart());
 	}
@@ -87,7 +87,7 @@ class TodoyuDateRangeTest extends PHPUnit_Framework_TestCase {
 	public function testSetEndDate() {
 		$date	= mktime(0, 0, 0, 1, 1, 2015);
 
-		$this->range->setEndDate(2015, 1, 1);
+		$this->range->setDateEnd(2015, 1, 1);
 
 		$this->assertEquals($date, $this->range->getEnd());
 	}
@@ -174,69 +174,69 @@ class TodoyuDateRangeTest extends PHPUnit_Framework_TestCase {
 
 
 	public function testIsFullYearRange() {
-		$this->range->setStartDate(2011, 1, 1);
-		$this->range->setEndDate(2011, 12, 31);
+		$this->range->setDateStart(2011, 1, 1);
+		$this->range->setDateEnd(2011, 12, 31);
 
 		$this->assertTrue($this->range->isFullYearRange());
 
-		$this->range->setEndDate(2011, 12, 30);
+		$this->range->setDateEnd(2011, 12, 30);
 
 		$this->assertFalse($this->range->isFullYearRange());
 	}
 
 
 	public function testIsFullMonthRange() {
-		$this->range->setStartDate(2011, 1, 1);
-		$this->range->setEndDate(2011, 1, 31);
+		$this->range->setDateStart(2011, 1, 1);
+		$this->range->setDateEnd(2011, 1, 31);
 
 		$this->assertTrue($this->range->isFullMonthRange());
 
-		$this->range->setEndDate(2011, 1, 30);
+		$this->range->setDateEnd(2011, 1, 30);
 
 		$this->assertFalse($this->range->isFullMonthRange());
 	}
 
 	public function testIsInOneYear() {
-		$this->range->setStartDate(2011, 1, 1);
-		$this->range->setEndDate(2011, 8, 1);
+		$this->range->setDateStart(2011, 1, 1);
+		$this->range->setDateEnd(2011, 8, 1);
 
 		$this->assertTrue($this->range->isInOneYear());
 
-		$this->range->setEndDate(2012, 1, 1);
+		$this->range->setDateEnd(2012, 1, 1);
 
 		$this->assertFalse($this->range->isInOneYear());
 	}
 
 
 	public function testIsInOneMonth() {
-		$this->range->setStartDate(2011, 1, 1);
-		$this->range->setEndDate(2011, 1, 20);
+		$this->range->setDateStart(2011, 1, 1);
+		$this->range->setDateEnd(2011, 1, 20);
 
 		$this->assertTrue($this->range->isInOneMonth());
 
-		$this->range->setEndDate(2012, 2, 1);
+		$this->range->setDateEnd(2012, 2, 1);
 
 		$this->assertFalse($this->range->isInOneMonth());
 	}
 
 
 	public function testIsStartStartOfMonth() {
-		$this->range->setStartDate(2011, 1, 1);
+		$this->range->setDateStart(2011, 1, 1);
 
 		$this->assertTrue($this->range->isStartStartOfMonth());
 
-		$this->range->setStartDate(2011, 1, 2);
+		$this->range->setDateStart(2011, 1, 2);
 
 		$this->assertFalse($this->range->isStartStartOfMonth());
 	}
 
 
 	public function testIsEndEndOfMonth() {
-		$this->range->setEndDate(2011, 1, 31);
+		$this->range->setDateEnd(2011, 1, 31);
 
 		$this->assertTrue($this->range->isEndEndOfMonth());
 
-		$this->range->setEndDate(2011, 1, 30);
+		$this->range->setDateEnd(2011, 1, 30);
 
 		$this->assertFalse($this->range->isEndEndOfMonth());
 	}
@@ -244,36 +244,36 @@ class TodoyuDateRangeTest extends PHPUnit_Framework_TestCase {
 	public function testGetLabel() {
 		Todoyu::setLocale('en_GB');
 
-		$this->range->setStartDate(2011, 1, 1);
-		$this->range->setEndDate(2011, 12, 31);
+		$this->range->setDateStart(2011, 1, 1);
+		$this->range->setDateEnd(2011, 12, 31);
 		$expect	= '2011';
 		$this->assertEquals($expect, $this->range->getLabel());
 
-		$this->range->setStartDate(2011, 1, 1);
-		$this->range->setEndDate(2011, 1, 31);
+		$this->range->setDateStart(2011, 1, 1);
+		$this->range->setDateEnd(2011, 1, 31);
 		$expect	= 'January 2011';
 		$this->assertEquals($expect, $this->range->getLabel());
 
-		$this->range->setStartDate(2011, 1, 1);
-		$this->range->setEndDate(2011, 3, 31);
+		$this->range->setDateStart(2011, 1, 1);
+		$this->range->setDateEnd(2011, 3, 31);
 		$expect	= 'January 2011 - March 2011';
 		$this->assertEquals($expect, $this->range->getLabel());
 
-		$this->range->setStartDate(2011, 1, 2);
-		$this->range->setEndDate(2011, 3, 31);
+		$this->range->setDateStart(2011, 1, 2);
+		$this->range->setDateEnd(2011, 3, 31);
 		$expect	= 'January 02 2011 - March 2011';
 		$this->assertEquals($expect, $this->range->getLabel());
 
-		$this->range->setStartDate(2011, 1, 2);
-		$this->range->setEndDate(2012, 3, 30);
+		$this->range->setDateStart(2011, 1, 2);
+		$this->range->setDateEnd(2012, 3, 30);
 		$expect	= 'January 02 2011 - March 30 2012';
 		$this->assertEquals($expect, $this->range->getLabel());
 	}
 
 
 	public function test__toString() {
-		$this->range->setStartDate(2011, 1, 1);
-		$this->range->setEndDate(2011, 1, 2);
+		$this->range->setDateStart(2011, 1, 1);
+		$this->range->setDateEnd(2011, 1, 2);
 
 		$expected	= 'Sat, 01 Jan 2011 00:00:00 +0100 - Sun, 02 Jan 2011 00:00:00 +0100';
 

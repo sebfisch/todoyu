@@ -66,7 +66,7 @@ class TodoyuDayRangeTest extends PHPUnit_Framework_TestCase {
 		$range	= $this->getRange();
 		$date	= mktime(0, 0, 0, 2, 1, 2011);
 
-		$range->setStartDate(2011, 2, 1);
+		$range->setDateStart(2011, 2, 1);
 
 		$this->assertEquals($date, $range->getStart());
 	}
@@ -75,7 +75,7 @@ class TodoyuDayRangeTest extends PHPUnit_Framework_TestCase {
 		$range	= $this->getRange();
 		$date	= mktime(23, 59, 59, 2, 1, 2011);
 
-		$range->setEndDate(2011, 2, 1);
+		$range->setDateEnd(2011, 2, 1);
 
 		$this->assertEquals($date, $range->getEnd());
 	}
