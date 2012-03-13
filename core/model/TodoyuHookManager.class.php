@@ -38,14 +38,14 @@ class TodoyuHookManager {
 	/**
 	 * Get registered hooks
 	 *
-	 * @param	String		$ext
+	 * @param	String		$extKey
 	 * @param	String		$name
 	 * @return	Array
 	 */
-	public static function getHooks($ext, $name) {
-		$ext	= strtolower($ext);
+	public static function getHooks($extKey, $name) {
+		$extKey	= strtolower($extKey);
 		$name	= strtolower($name);
-		$hooks	= TodoyuArray::assure(self::$hooks[$ext][$name]);
+		$hooks	= TodoyuArray::assure(self::$hooks[$extKey][$name]);
 		$hooks	= TodoyuArray::sortByLabel($hooks, 'position');
 
 		return TodoyuArray::getColumn($hooks, 'function');
@@ -56,13 +56,13 @@ class TodoyuHookManager {
 	/**
 	 * Call all registered hooks for an event
 	 *
-	 * @param	String		$ext			Extension key
+	 * @param	String		$extKey
 	 * @param	String		$name			Hook name
 	 * @param	Array		$params			Parameters for the hook function
 	 * @return	Array		The return values of all hook functions
 	 */
-	public static function callHook($ext, $name, array $params = array()) {
-		$hookFuncRefs	= self::getHooks($ext, $name);
+	public static function callHook($extKey, $name, array $params = array()) {
+		$hookFuncRefs	= self::getHooks($extKey, $name);
 		$returnValues	= array();
 
 		foreach($hookFuncRefs as $hookFuncRef) {
@@ -78,14 +78,14 @@ class TodoyuHookManager {
 	/**
 	 * Call hooks which modify a data variable (ex: an array)
 	 *
-	 * @param	String		$ext				Extension key
+	 * @param	String		$extKey
 	 * @param	String		$name				Hook name
 	 * @param	Mixed		$dataVar			Data variable which will be passed to each hook
 	 * @param	Array		$additionalParams	Additional parameters which will be placed after the $dataVar
 	 * @return	Mixed
 	 */
-	public static function callHookDataModifier($ext, $name, $dataVar, array $additionalParams = array()) {
-		$hookFuncRefs	= self::getHooks($ext, $name);
+	public static function callHookDataModifier($extKey, $name, $dataVar, array $additionalParams = array()) {
+		$hookFuncRefs	= self::getHooks($extKey, $name);
 		$hookParams		= $additionalParams;
 			// Prepend data var
 		array_unshift($hookParams, $dataVar);
@@ -103,16 +103,16 @@ class TodoyuHookManager {
 	/**
 	 * Add a new hook functions for a hook event
 	 *
-	 * @param	String		$ext			Extension key (of Ext to be extended)
+	 * @param	String		$extKey			Extension key (of Ext to be extended)
 	 * @param	String		$name			Hook name
 	 * @param	String		$function		Function reference (e.g: 'Classname::method')
 	 * @param	Integer		$position		Position of the hook (order of calling)
 	 */
-	public static function registerHook($ext, $name, $function, $position = 100) {
-		$ext	= strtolower($ext);
+	public static function registerHook($extKey, $name, $function, $position = 100) {
+		$extKey	= strtolower($extKey);
 		$name	= strtolower($name);
 		
-		self::$hooks[$ext][$name][] = array(
+		self::$hooks[$extKey][$name][] = array(
 			'function'	=> $function,
 			'position'	=> (int) $position
 		);

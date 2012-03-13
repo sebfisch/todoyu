@@ -27,9 +27,16 @@
 class TodoyuExtensions {
 
 	/**
-	 * 
+	 * Default extension documentation URL
 	 */
 	const EXTINFO_DEFAULT_DOC = 'http://doc.todoyu.com/?';
+
+	/**
+	 * Already loaded extension config types
+	 *
+	 * @var array
+	 */
+	private static $loadedExtConfigTypes = array();
 
 
 
@@ -208,12 +215,24 @@ class TodoyuExtensions {
 	public static function loadConfig($extKey, $type) {
 		$filePath	= realpath(PATH_EXT . DIR_SEP . $extKey . DIR_SEP . 'config' . DIR_SEP . $type . '.php');
 
-		if( $filePath !== false && self::isPathInExtDir($extKey, $filePath) ) {
-			if( is_file($filePath) ) {
-				include_once($filePath);
-				self::setDefaultDocumentationLink($extKey);
+		if( ! is_array(self::$loadedExtConfigTypes[$extKey]) || ! array_key_exists($type, self::$loadedExtConfigTypes[$extKey]) ) {
+				// Attempt load given config
+			if( $filePath !== false && self::isPathInExtDir($extKey, $filePath) ) {
+				if( is_file($filePath) ) {
+					include_once($filePath);
+					self::setDefaultDocumentationLink($extKey);
+
+						// Call hook, e.g. 'loadconfig.contact.filter'
+					TodoyuHookManager::callHook('core', 'loadconfig.' . $extKey . '.' . $type);
+						// Register the type config to be loaded
+					self::$loadedExtConfigTypes[$extKey][$type]    = true;
+				}
+					// Config loaded
 				return true;
 			}
+		} else {
+				// Config was already loaded
+			 return true;
 		}
 
 		return false;

@@ -331,7 +331,7 @@ class TodoyuArray {
 		foreach($dataArray as $key => $itemArray) {
 			$match = true;
 
-				// Check if all filters success. Stop if one fails
+				// Check if all filters succeed. Stop if any fails
 			foreach($filterArray as $fieldName => $allowedValues) {
 				if( ! in_array($itemArray[$fieldName], $allowedValues) ) {
 					$match = false;
