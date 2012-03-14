@@ -245,15 +245,17 @@ class TodoyuSQLManager {
 		}
 
 			// Build queries for missing columns
-		foreach($structureDifferences['missingColumns'] as $table => $columnStructures) {
-			foreach($columnStructures as $columnName => $columnStructure) {
+		foreach($structureDifferences['missingColumns'] as $table => $changedColumns) {
+			foreach($changedColumns as $columnName => $columnStructure) {
 				$queries['add'][] = self::buildAddColumnQueriesFromStructure($table, $columnStructure);
 			}
 		}
 
 			// Build queries for changed columns
-		foreach($structureDifferences['changedColumns'] as $table => $columnStructure) {
-			$queries['change'][] = self::buildChangeColumnQueriesFromStructure($table, $columnStructure);
+		foreach($structureDifferences['changedColumns'] as $table => $changedColumns) {
+			foreach($changedColumns as $columnName => $columnStructure) {
+				$queries['change'][] = self::buildChangeColumnQueriesFromStructure($table, $columnStructure);
+			}
 		}
 
 		foreach($structureDifferences['missingKeys'] as $table => $keyStructures) {
@@ -363,7 +365,6 @@ class TodoyuSQLManager {
 	 * @return	String
 	 */
 	private static function buildChangeColumnQueriesFromStructure($table, array $columnStructure) {
-		$columnStructure= array_shift($columnStructure);
 		$columnSQL		= self::buildColumnSQL($columnStructure);
 
 		$query	= 'ALTER TABLE `' . $table . '` CHANGE `' . $columnStructure['field'] . '` ' . $columnSQL;
@@ -461,24 +462,24 @@ class TodoyuSQLManager {
 	/**
 	 * Get differences between file and database structure
 	 *
-	 * @param	Array		$fileStructure
-	 * @param	Array		$dbStructure
+	 * @param	Array		$file
+	 * @param	Array		$db
 	 * @return	Array
 	 */
-	public static function getDifferencesFromStructures(array $fileStructure, array $dbStructure) {
+	public static function getDifferencesFromStructures(array $file, array $db) {
 		$missingTables	= array();
 		$missingColumns	= array();
 		$changedColumns	= array();
 		$missingKeys	= array();
 
-		foreach($fileStructure as $fileTableName => $fileTableConfig) {
-			if( array_key_exists($fileTableName, $dbStructure) ) {
+		foreach($file as $fileTableName => $fileTableConfig) {
+			if( isset($db[$fileTableName]) ) {
 					// Compare columns
 				foreach($fileTableConfig['columns'] as $fileColumnName => $fileColumnConfig) {
 						// Column already exists in database
-					if( array_key_exists($fileColumnName, $dbStructure[$fileTableName]['columns']) ) {
+					if( isset($db[$fileTableName]['columns'][$fileColumnName]) ) {
 							// Check for differences in the column structure
-						$diff	= array_diff($fileColumnConfig, $dbStructure[$fileTableName]['columns'][$fileColumnName]);
+						$diff	= array_diff($fileColumnConfig, $db[$fileTableName]['columns'][$fileColumnName]);
 							// Found a difference?
 						if( sizeof($diff) > 0 ) {
 								// Column if different in the database
@@ -492,7 +493,7 @@ class TodoyuSQLManager {
 
 					// Compare keys
 				$fileKeyNames		= TodoyuArray::getColumn($fileTableConfig['keys'], 'name');
-				$dbKeyNames			= TodoyuArray::getColumn($dbStructure[$fileTableName]['keys'], 'name');
+				$dbKeyNames			= TodoyuArray::getColumn($db[$fileTableName]['keys'], 'name');
 				$missingTableKeys	= array_diff($fileKeyNames, $dbKeyNames);
 
 				foreach($fileTableConfig['keys'] as $fileKey) {
