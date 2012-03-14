@@ -229,8 +229,19 @@ Todoyu.Headlet = Class.create({
 		this.setActive();
 
 		if( this.hasContent() ) {
-			this.getContent().show()
+			this.getContent().show();
+			this.onContentShow();
 		}
+	},
+
+
+
+	/**
+	 * Handle show content
+	 *
+	 */
+	onContentShow: function() {
+		// noop
 	},
 
 

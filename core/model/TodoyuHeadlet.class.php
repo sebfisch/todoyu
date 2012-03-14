@@ -294,5 +294,16 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 		return false;
 	}
 
+
+
+	/**
+	 * Check whether current headlet is open
+	 *
+	 * @return	Boolean
+	 */
+	public function isOpen() {
+		return TodoyuHeadletManager::isOpen(get_class($this));
+	}
+
 }
 ?>
