@@ -97,7 +97,8 @@ abstract class TodoyuExportBase {
 		header('Pragma: no-cache');
 		header('Expires: 0');
 
-		echo $this->getContent();
+		$content = iconv('UTF-8', 'WINDOWS-1257', html_entity_decode($this->getContent(), ENT_COMPAT, 'utf-8'));
+		echo $content; //$this->getContent();
 
 		exit();
 	}
