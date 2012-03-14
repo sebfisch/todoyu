@@ -24,6 +24,7 @@
 	<label index="deleteRecord">Delete Record</label>
 	<label index="show">Show</label>
 	<label index="showDetails">Show Details</label>
+	<label index="showMore">Show More</label>
 	<label index="hide">Hide</label>
 	<label index="unhide">Unhide</label>
 	<label index="rename">Rename</label>

@@ -31,6 +31,7 @@ core 2.2.0 - not released yet
 	* Added: TodoyuRenderer::renderSelectGrouped(). Extracted from a dwoo plugin
 	* Added: Dwoo plugin {restrictAdmin}retricted content{/restrictAdmin}
 	* Added: Moved dwoo plugins from calendar extension to core: {formatDuration}, {formatRange}
+	* Changed: Extending item listings (fetching additional items) now also keeps list-function parameters, like search filters
 	* Changed: Inactive roles are listed last instead of first
 	* Changed: Unified method naming - getDateXXX() getPersonXXX() getPersonXXXID()
 	* Changed: Renamed TodoyuFieldset to TodoyuFormFieldset

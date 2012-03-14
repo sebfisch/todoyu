@@ -51,20 +51,26 @@ class TodoyuListingRenderer {
 		$listData	= TodoyuFunction::callUserFunction($config['dataFunc'], $size, $offset, $params);
 //		TodoyuDebug::printInFirebug($config['dataFunc'], 'dataFunc');
 		$totalRows	= (int) $listData['total'];
-
 		$tmpl	= 'core/view/listing.tmpl';
+
+			// Workaround - add spaces around compounds in JSON string
+			// to prevent DWOO from mistaking it as a DWOO-plugin
+		$listingParams  = json_encode($params);
+		$listingParams  = '{ ' . substr($listingParams, 1, strlen($listingParams) - 2) . ' }';
+
 		$data	= array(
-			'ext'		=> $ext,
-			'name'		=> $name,
-			'config'	=> $config,
-			'rows'		=> $listData['rows'],
-			'offset'	=> $offset,
-			'total'		=> $totalRows,
-			'size'		=> $size,
-			'page'		=> $offset === 0 ? 1 : ($offset / $size) + 1,
-			'pages'		=> ceil($totalRows / $size),
-			'noPaging'	=> $noPaging,
-			'nextPos'	=> $offset + $size,
+			'ext'		     => $ext,
+			'name'		     => $name,
+			'config'	     => $config,
+			'rows'		     => $listData['rows'],
+			'offset'	     => $offset,
+			'total'		     => $totalRows,
+			'size'		     => $size,
+			'page'		     => $offset === 0 ? 1 : ($offset / $size) + 1,
+			'pages'		     => ceil($totalRows / $size),
+			'noPaging'	     => $noPaging,
+			'nextPos'	     => $offset + $size,
+			'listingParams'  => $listingParams
 		);
 
 		return Todoyu::render($tmpl, $data);

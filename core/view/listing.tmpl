@@ -41,7 +41,7 @@
 	{*-------------- Listing show more entries option ---------------*}
 {if ! $noPaging && $page < $pages}
 	<div id="extendlisting">
-		<a href="#pos{$nextPos}" onclick="Todoyu.Listing.more('{$name}',{$page})">Show more</a>
+		<a href="#pos{$nextPos}" onclick='Todoyu.Listing.more("{$name}", {$page}, {$listingParams})'>{Label core.global.showMore}</a>
 	</div>
 
 	<script>

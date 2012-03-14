@@ -69,13 +69,16 @@ Todoyu.Listing = {
 	 * Evoke getting more list results
 	 *
 	 * @method	more
-	 * @param	{String}		name
-	 * @param	{Number}		pagenum
+	 * @param	{String}	name
+	 * @param	{Number}	pagenum
+	 * @param	{Object}	listParams      List function parameters
 	 */
-	more: function(name, pagenum) {
+	more: function(name, pagenum, listParams) {
+		listParams	= listParams || {};
+
 		var newOffset = this.config[name].offset + this.config[name].size;
 		if( newOffset < this.config[name].total ) {
-			this.extend(name, newOffset, pagenum);
+			this.extend(name, newOffset, pagenum, listParams);
 		}
 	},
 
@@ -88,14 +91,18 @@ Todoyu.Listing = {
 	 * @param	{String}		name
 	 * @param	{Number}		offset
 	 * @param	{Number}		pagenum
+	 * @param	{Object}		listParams      List function parameters, e.g. search-word config
 	 */
-	extend: function(name, offset, pagenum) {
+	extend: function(name, offset, pagenum, listParams) {
+		listParams	= listParams || {};
+
 		var url		= Todoyu.getUrl(this.config[name].url.ext, this.config[name].url.controller);
 		var options	= {
 			parameters: {
-				action: 	this.config[name].url.action,
-				'name':		name,
-				'offset':	offset
+				action:			this.config[name].url.action,
+				'name':			name,
+				'listParams':	Object.toJSON(listParams),
+				'offset':		offset
 			},
 			onComplete: this.onExtended.bind(this, name, offset)
 		};
