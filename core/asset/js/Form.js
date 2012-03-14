@@ -42,12 +42,19 @@ Todoyu.Form = {
 	 * Initialize form display: expand invalid foreign records, focus first field
 	 *
 	 * @method	onFormDisplay
-	 * @param	{String}  formID
+	 * @param	{String}  			idForm
+	 * @param	{String}			name
+	 * @param	{Number|String}		idRecord
 	 */
 	onFormDisplay: function(idForm, name, idRecord) {
 		if( Todoyu.exists(idForm) ) {
-			this.expandInvalidForeignRecords(idForm);
-			this.focusFirstFormField(idForm);
+			if( this.hasError(idForm) ) {
+				this.expandInvalidForeignRecords(idForm);
+				this.scrollToError(idForm);
+			} else {
+				this.focusFirstFormField(idForm);
+			}
+
 			this.callFormDisplayHooks(idForm, name, idRecord);
 		}
 	},
@@ -272,16 +279,16 @@ Todoyu.Form = {
 	 * Focus first form field
 	 *
 	 * @method	focusFirstFormField
-	 * @param	{String}	formID
+	 * @param	{String}	form
 	 */
-	focusFirstFormField: function(formID) {
-		if( $(formID) ) {
-			var field = $(formID).select('input[type!=hidden]', 'select', 'textarea').first();
+	focusFirstFormField: function(form) {
+		form	= $(form);
 
-			if( field ) {
-				if( field.visible() ) {
-					field.focus();
-				}
+		if( form ) {
+			var firstField = form.down(':input[type!=hidden]');
+
+			if( firstField ) {
+				firstField.focus();
 			}
 		}
 	},
@@ -749,6 +756,32 @@ Todoyu.Form = {
 		var numTextRows	= Todoyu.Helper.countLines(content);
 
 		element.rows = numTextRows < 2 ? 2 : numTextRows+1;
+	},
+
+
+
+	/**
+	 * Scroll to the first form field with an error
+	 *
+	 * @param	{String|Element}	form
+	 */
+	scrollToError: function(form) {
+		var firstErrorField	= $(form).down('.fElement.error');
+
+		if( firstErrorField ) {
+			Todoyu.Ui.scrollToElement(firstErrorField);
+		}
+	},
+
+
+
+	/**
+	 * Check whether the form contains a field in error status
+	 *
+	 * @param	{String|Element}	form
+	 */
+	hasError: function(form) {
+		return $(form).down('.fElement.error') !== undefined;
 	}
 
 };

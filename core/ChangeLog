@@ -49,7 +49,8 @@ core 2.2.0 - not released yet
 	* Changed: Rich Text Editor (tinyMCE) uses now advanced mode with some additional edit features
 	* Changed: Renamed config/admin.php to config/sysmanager.php because admin extension was removed
 	* Changed: Renamed dwoo plugin {Workload} to {formatDuration}
-	* Chagned: Renamed TodoyuTime::sec2hours() to formatHours()
+	* Changed: Renamed TodoyuTime::sec2hours() to formatHours()
+	* Changed: Scroll to error in form when form is initialized with errors
 	* Removed: scal calendar/date picker library
 	* Removed: TodoyuString::replaceOnce()
 	* Removed: TodoyuString::strictHtml2text() is now integrated in html2text() method
