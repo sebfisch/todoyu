@@ -1,9 +1,9 @@
 todoyu core changelog
 
 core 2.2.0 - not released yet
-	* Bugfix: Added missing special chars encoding to CSV exported data
 	* Feature: Removing valueless foreign records does not require confirmation anymore
 	* Feature: Better support for SQL statements to update fields. Comma is now allowed in type definition (ex: DECIMAL(5,2))
+	* Added: Special chars encoding of CSV exported data
 	* Added: Added core hook of loaded extension type configs: 'loadconfig.extkey.type'
 	* Added: Installer now focuses it's first form field on page load
 	* Added: prototype.js plugin "svginner"
