@@ -3,6 +3,8 @@
 {/if}
 
 	<a id="{$offset}"></a>
+
+{if !empty($rows)}
 	<table class="list {$config.name}Listing withMouseHover" id="paging-{$config.name}-table-{$page}" >
 
 	{*-------------- Column titles ---------------*}
@@ -37,6 +39,9 @@
 
 		</tbody>
 	</table>
+{else}
+	<p class="fontWeightBold">{Label core.global.listing.noItems}</p>
+{/if}
 
 	{*-------------- Listing show more entries option ---------------*}
 {if ! $noPaging && $page < $pages}
