@@ -166,6 +166,7 @@ class TodoyuMail extends PHPMailerLite {
 	 */
 	public function send($catchExceptions = true) {
 		$this->renderHtmlContent();
+		$status = false;
 
 		if( $catchExceptions ) {
 			try {
@@ -175,7 +176,6 @@ class TodoyuMail extends PHPMailerLite {
 			} catch(Exception $e) {
 				TodoyuLogger::logError($e->getMessage());
 			}
-			$status = false;
 		} else {
 			$status = parent::Send();
 		}
