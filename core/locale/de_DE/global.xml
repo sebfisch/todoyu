@@ -10,6 +10,7 @@
 	<label index="author">Autor</label>
 	<label index="title">Titel</label>
 	<label index="description">Beschreibung</label>
+	<label index="notice">Hinweis</label>
 	<label index="date">Datum</label>
 	<label index="quickcreate.title">Neue Daten anlegen</label>
 	<label index="quickcreate.alltypes.label">Alle Datentypen:</label>
@@ -40,9 +41,11 @@
 	<label index="components">Komponenten</label>
 	<label index="status">Status</label>
 	<label index="locked">Locked</label>
+	<label index="enabled">Aktiviert</label>
 	<label index="what">Was</label>
 	<label index="where">Wo</label>
 	<label index="when">Wann</label>
+	<label index="new">Neu</label>
 	<label index="until">Bis</label>
 	<label index="private">Privat</label>
 	<label index="start">Start</label>
@@ -86,6 +89,7 @@
 	<label index="date_update">Zuletzt bearbeitet am</label>
 	<label index="date_create">Erstellungs Datum</label>
 	<label index="id_person_create">Ersteller</label>
+	<label index="Total">Gesamt</label>
 	<label index="of">von</label>
 	<label index="public">Öffentlich</label>
 	<label index="notpublic">Nicht öffentlich</label>
