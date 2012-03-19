@@ -193,30 +193,6 @@
 /* ------------------------
 	Dialog content
    ------------------------ */
-.table_window div.notification {
-	background-color:#eee;
-	padding:7px;
-}
-	.table_window div.notification form {
-		background-color:#fff;
-		border:1px solid #e1e1e1;
-	}
-		.table_window div.notification form div.left {
-			float:left;
-		}
-			.table_window div.notification form div.left span.icon {
-				background:url('../../../../asset/img/notify.png') 0 -96px no-repeat;
-				margin:20px 0 0 20px;
-			}
-			.table_window div.notification form fieldset.buttons {
-				padding:7px;
-				background-color:#eee;
-			}
-		.table_window div.notification form div.right .inner {
-			padding:14px 14px 20px 14px;
-		}
-
-
 .dialog_content {
 	font-size:10px;
 	background-color:#f6f8f1;
