@@ -83,13 +83,6 @@ class TodoyuCoreAboutActionController extends TodoyuActionController {
 					'license'	=> 'New BSD License',
 					'licenseUrl'=> 'http://www.opensource.org/licenses/bsd-license.php'
 				),
-				'firebug_lite'	=> array(
-					'title'		=> 'Firebug Lite',
-					'url'		=> 'http://getfirebug.com/firebuglite',
-					'copyright'	=> 'JoeHewitt',
-					'license'	=> 'New BSD License',
-					'licenseUrl'=> 'http://www.opensource.org/licenses/bsd-license.php'
-				),
 				'highcharts'	=> array(
 					'title'		=> 'Highcharts',
 					'url'		=> 'http://www.highcharts.com/',
