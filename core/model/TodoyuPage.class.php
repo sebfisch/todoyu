@@ -373,23 +373,6 @@ class TodoyuPage {
 
 
 
-
-	public static function addJsOnloadedFunction($function, $position = 100, $bind = false) {
-		self::addJsInit($function, $position);
-
-//
-//			// Add binding if enabled
-//		if( $bind ) {
-//			$parts		= array_slice(explode('.', $function), 0, -1);
-//			$binding	= implode('.', $parts);
-//			$function	= $function . '.bind(' . $binding . ')';
-//		}
-//
-//		self::addJsInline('document.on("dom:loaded", ' . $function . ');', $position);
-	}
-
-
-
 	/**
 	 * Add JS functions which shall be called on dom loaded
 	 *
