@@ -41,6 +41,9 @@ class TodoyuPage {
 	private static $data = array();
 
 
+	private static $jsInit = array();
+
+
 
 	/**
 	 * Initialize page object with given template
@@ -65,7 +68,7 @@ class TodoyuPage {
 		self::addMetatag('Content-Type', Todoyu::$CONFIG['FE']['ContentType']);
 		self::addMetatag('robots', 'noindex,nofollow');
 
-		self::addJsOnloadedFunction('Todoyu.init', 1, true);
+		self::addJsInit('Todoyu.init()', 1);
 	}
 
 
@@ -370,22 +373,55 @@ class TodoyuPage {
 
 
 
+
+	public static function addJsOnloadedFunction($function, $position = 100, $bind = false) {
+		self::addJsInit($function, $position);
+
+//
+//			// Add binding if enabled
+//		if( $bind ) {
+//			$parts		= array_slice(explode('.', $function), 0, -1);
+//			$binding	= implode('.', $parts);
+//			$function	= $function . '.bind(' . $binding . ')';
+//		}
+//
+//		self::addJsInline('document.on("dom:loaded", ' . $function . ');', $position);
+	}
+
+
+
 	/**
 	 * Add JS functions which shall be called on dom loaded
 	 *
 	 * @param	String		$function
 	 * @param	Integer		$position
-	 * @param	Boolean		$bind
 	 */
-	public static function addJsOnloadedFunction($function, $position = 100, $bind = false) {
-			// Add binding if enabled
-		if( $bind ) {
-			$parts		= array_slice(explode('.', $function), 0, -1);
-			$binding	= implode('.', $parts);
-			$function	= $function . '.bind(' . $binding . ')';
+	public static function addJsInit($function, $position = 100) {
+		self::$jsInit[] = array(
+			'function'	=> $function,
+			'position'	=> intval($position)
+		);
+	}
+
+
+
+	/**
+	 * All all js init function in one dom loaded callback
+	 *
+	 */
+	private static function addJsInitsAsJsInline() {
+		$inits		= TodoyuArray::sortByLabel(self::$jsInit, 'position');
+		$functions	= TodoyuArray::getColumn($inits, 'function');
+
+		$code	= "document.on('dom:loaded', function(){\n"; //);'
+
+		foreach($functions as $function) {
+			$code .= "\t" . trim($function) . ";\n";
 		}
 
-		self::addJsInline('document.on("dom:loaded", ' . $function . ');', $position);
+		$code	.= '});';
+
+		self::addJsInline($code, 10);
 	}
 
 
@@ -442,7 +478,9 @@ class TodoyuPage {
 	 * Sort inline JavaScripts by position (key)
 	 */
 	public static function sortJSinlines() {
-		self::$data['jsInlines']	= TodoyuArray::sortByLabel(self::$data['jsInlines'], 'position');
+		if( is_array(self::$data['jsInlines']) ) {
+			self::$data['jsInlines']	= TodoyuArray::sortByLabel(self::$data['jsInlines'], 'position');
+		}
 	}
 
 
@@ -486,6 +524,7 @@ class TodoyuPage {
 
 			// Add JavaScripts and stylesheet to page
 		self::addJavascriptAndStyleSheetsToPage();
+		self::addJsInitsAsJsInline();
 		self::sortJSinlines();
 
 		return Todoyu::render(self::$template, self::$data);

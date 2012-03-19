@@ -91,8 +91,6 @@ class TodoyuHeadManager {
 			}
 		}
 
-		TodoyuPage::addJsOnloadedFunction('Todoyu.Headlets.init', 10, true);
-
 		return Todoyu::render($tmpl, $data);
 	}
 

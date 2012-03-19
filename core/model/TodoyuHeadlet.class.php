@@ -275,7 +275,7 @@ abstract class TodoyuHeadlet implements TodoyuHeadletInterface {
 		$this->data['buttonAttributes']	= $this->getButtonAttributes();
 
 		if( ! is_null($this->jsHeadlet) ) {
-			TodoyuPage::addJsOnloadedFunction('Todoyu.Headlets.add.bind(Todoyu.Headlets, \'' . $this->getName() . '\', ' . $this->jsHeadlet . ')', 150);
+			TodoyuPage::addJsInit('Todoyu.Headlets.add(\'' . $this->getName() . '\', ' . $this->jsHeadlet . ')', 150);
 		}
 
 		return Todoyu::render($this->template, $this->data);

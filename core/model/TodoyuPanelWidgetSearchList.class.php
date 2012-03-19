@@ -51,7 +51,7 @@ abstract class TodoyuPanelWidgetSearchList extends TodoyuPanelWidget {
 		$data['listOnly']	= $listOnly;
 
 		if( ! TodoyuRequest::isAjaxRequest() ) {
-			TodoyuPage::addJsOnloadedFunction('function(){Todoyu.R[\'' . $this->getID() . '\'] = new ' . $this->jsObject . '(\'' . htmlentities($this->getSearchText(), ENT_QUOTES, 'UTF-8', false) . '\');}');
+			TodoyuPage::addJsInit('Todoyu.R[\'' . $this->getID() . '\'] = new ' . $this->jsObject . '(\'' . htmlentities($this->getSearchText(), ENT_QUOTES, 'UTF-8', false) . '\')');
 		}
 
 		return trim(Todoyu::render($tmpl, $data));

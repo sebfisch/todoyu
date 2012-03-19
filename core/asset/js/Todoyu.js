@@ -91,12 +91,12 @@ var Todoyu = {
 	 */
 	init: function() {
 		this.Ajax.Responders.init();
+		this.Headlets.init();
+		this.QuickInfo.init();
 		this.Ui.fixAnchorPosition();
 		this.Ui.observeBody();
 		this.initExtensions();
 		this.initConsole();
-
-//		SI.Files.stylizeAll();
 	},
 
 

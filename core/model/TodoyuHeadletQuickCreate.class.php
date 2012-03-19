@@ -30,7 +30,7 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 	protected function init() {
 		$this->setJsHeadlet('Todoyu.CoreHeadlets.QuickCreate');
 
-//		TodoyuPage::addJsOnloadedFunction('Todoyu.Headlets.QuickCreate.init.bind(Todoyu.Headlets.QuickCreate)', 100);
+//		TodoyuPage::addJsInit('Todoyu.Headlets.QuickCreate.init.bind(Todoyu.Headlets.QuickCreate)', 100);
 	}
 
 
