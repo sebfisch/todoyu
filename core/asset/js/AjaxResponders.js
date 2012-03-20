@@ -94,7 +94,7 @@ Todoyu.Ajax.Responders = {
 	 * @method	onCreate
 	 * @param	{Ajax.Request}	request
 	 */
-	onCreate: function(request) {
+	onCreate: function(request, xhr) {
 		if( Todoyu.Headlets.isHeadlet('todoyuheadletajaxloader') ) {
 			Todoyu.Headlets.getHeadlet('todoyuheadletajaxloader').active();
 		}

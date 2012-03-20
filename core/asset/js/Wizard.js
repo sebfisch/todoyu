@@ -105,7 +105,8 @@ Todoyu.Wizard = {
 		Todoyu.Ui.closeRTE('wizard-form');
 
 		this.getForm().request({
-			onComplete: this.onSubmitted.bind(this, callback)
+			onComplete: this.onSubmitted.bind(this, callback),
+			area:	Todoyu.getArea()
 		});
 	},
 
