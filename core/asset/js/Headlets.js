@@ -60,7 +60,7 @@ Todoyu.Headlets = {
 			// Close headlets when clicked outside of the headlets (on body)
 		Todoyu.Ui.addBodyClickObserver(this.onBodyClick.bind(this));
 
-		this.openHeadlet = this.getOpenHeadlet();
+//		this.openHeadlet = this.getOpenHeadlet();
 	},
 
 
