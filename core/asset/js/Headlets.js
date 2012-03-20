@@ -45,9 +45,9 @@ Todoyu.Headlets = {
 	/**
 	 * Currently opened headlet
 	 * @property	openHeadlet
-	 * @type		String
+	 * @type		Todoyu.Headlet
 	 */
-	openHeadlet: null,
+	lastOpenHeadlet: null,
 
 
 
@@ -61,8 +61,17 @@ Todoyu.Headlets = {
 		Todoyu.Ui.addBodyClickObserver(this.onBodyClick.bind(this));
 
 		if( this.areHeadletsVisible() ) {
-			this.openHeadlet = this.getOpenHeadlet();
+			this.detectOpenHeadlet.bind(this).delay(0.3);
 		}
+	},
+
+
+
+	/**
+	 * Detect the open headlet object
+	 */
+	detectOpenHeadlet: function() {
+		this.lastOpenHeadlet = this.getOpenHeadlet();
 	},
 
 
@@ -127,6 +136,8 @@ Todoyu.Headlets = {
 			$H(this.headlets).each(function(pair) {
 				pair.value.onBodyClick();
 			}, this);
+
+			this.saveOpenStatus();
 		}
 	},
 
@@ -139,19 +150,21 @@ Todoyu.Headlets = {
 	 * @method	saveOpenStatus
 	 */
 	saveOpenStatus: function() {
-			// Find open headlet
-		var openOverlay	= this.getOpenHeadlet();
+			// Get open headlet
+		var openHeadlet	= this.getOpenHeadlet();
 
-		if( this.openHeadlet === openOverlay ) {
-			return ;
-		} else {
-			this.openHeadlet = openOverlay;
+			// Is a different one open?
+		if( this.lastOpenHeadlet !== openHeadlet ) {
+				// Clear current timeout
+			window.clearTimeout(this.openStatusTimeout);
+
+				// Last or current headlet have to be an overlay type. All others are ignored anyway
+			if( this.lastOpenHeadlet && this.lastOpenHeadlet.isOverlay() || openHeadlet && openHeadlet.isOverlay() ) {
+					// Start new timeout
+				this.openStatusTimeout	= this.submitOpenStatus.bind(this).delay(0.5);
+				this.lastOpenHeadlet	= openHeadlet;
+			}
 		}
-
-			// Clear current timeout
-		window.clearTimeout(this.openStatusTimeout);
-			// Start new timeout
-		this.openStatusTimeout = this.submitOpenStatus.bind(this).delay(1);
 	},
 
 
@@ -160,12 +173,31 @@ Todoyu.Headlets = {
 	 * Get currently open headlet
 	 *
 	 * @method	getOpenHeadlet
-	 * @return	{Element|undefined}
+	 * @return	{Element|Boolean}
 	 */
-	getOpenHeadlet: function() {
-		return $('headlets').select('li.overlay > ul').detect(function(overlay){
+	getOpenHeadletElement: function() {
+		var visibleOverlayContent = $('headlets').select('li > ul.content').detect(function(overlay){
 			return overlay.visible();
 		});
+
+		return visibleOverlayContent ? visibleOverlayContent.up('li.headlet') : false;
+	},
+
+
+
+	/**
+	 * Get open headlet object
+	 *
+	 * @return	{Todoyu.Headlet|Boolean}
+	 */
+	getOpenHeadlet: function() {
+		var headletElement	= this.getOpenHeadletElement();
+
+		if( headletElement ) {
+			return this.getHeadlet(headletElement.id);
+		} else {
+			return false;
+		}
 	},
 
 
@@ -177,7 +209,7 @@ Todoyu.Headlets = {
 	 * @return	{Boolean}
 	 */
 	areHeadletsOpen: function() {
-		return this.getOpenHeadlet() !== undefined;
+		return !!this.getOpenHeadletElement();
 	},
 
 
@@ -189,8 +221,8 @@ Todoyu.Headlets = {
 	 * @method	submitOpenStatus
 	 */
 	submitOpenStatus: function() {
-		var openHeadlet	= this.getOpenHeadlet();
-		var headletKey	= openHeadlet ? openHeadlet.id.split('-').first() : '';
+		var headlet		= this.getOpenHeadlet();
+		var headletKey	= headlet && headlet.isOverlay() ? headlet.name : '';
 
 		var url		= Todoyu.getUrl('core', 'headlet');
 		var options	= {

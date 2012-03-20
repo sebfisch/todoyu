@@ -117,6 +117,8 @@ Todoyu.Headlet = Class.create({
 	 */
 	onButtonClick: function(event) {
 		this.toggle();
+
+		this.saveOpenStatus();
 	},
 
 
@@ -214,7 +216,17 @@ Todoyu.Headlet = Class.create({
 	 * @return	{Boolean}
 	 */
 	isVisible: function() {
-		return this.getContent().visible();
+		return this.hasContent() && this.getContent().visible();
+	},
+
+
+
+	/**
+	 * Check whether content overlay is open
+	 *
+	 */
+	isOpen: function() {
+		return this.isVisible()
 	},
 
 
@@ -403,7 +415,9 @@ Todoyu.Headlet = Class.create({
 	 * @method	onBodyClick
 	 */
 	onBodyClick: function() {
-		this.hide();
+		if( this.isOpen() ) {
+			this.hide();
+		}
 	},
 
 
@@ -415,7 +429,7 @@ Todoyu.Headlet = Class.create({
 	 * @method	saveOpenStatus
 	 */
 	saveOpenStatus: function() {
-		Todoyu.Headlets.saveOpenStatus.bind(Todoyu.Headlets).delay(1);
+		Todoyu.Headlets.saveOpenStatus();
 	}
 
 
