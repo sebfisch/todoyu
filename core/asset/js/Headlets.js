@@ -47,7 +47,7 @@ Todoyu.Headlets = {
 	 * @property	openHeadlet
 	 * @type		String
 	 */
-	openHeadlet: undefined,
+	openHeadlet: null,
 
 
 
@@ -60,7 +60,18 @@ Todoyu.Headlets = {
 			// Close headlets when clicked outside of the headlets (on body)
 		Todoyu.Ui.addBodyClickObserver(this.onBodyClick.bind(this));
 
-//		this.openHeadlet = this.getOpenHeadlet();
+		if( this.areHeadletsVisible() ) {
+			this.openHeadlet = this.getOpenHeadlet();
+		}
+	},
+
+
+
+	/**
+	 * Check whether headlets are present on the page
+	 */
+	areHeadletsVisible: function() {
+		return Todoyu.exists('headlets');
 	},
 
 
