@@ -107,9 +107,9 @@ var Todoyu = {
 	initConsole: function() {
 		if( !window.console ) {
 			window.console = {
-				log: function(){},
-				info: function(){},
-				warn: function(){}
+				log:	function(){},
+				info:	function(){},
+				warn:	function(){}
 			};
 		}
 	},
@@ -146,7 +146,7 @@ var Todoyu = {
 	 * @return	{String}
 	 */
 	getUrl: function(ext, controller, params, hash) {
-		var url = 'index.php?ext=' + ext;
+		var url	= 'index.php?ext=' + ext;
 
 		if( controller ) {
 			url = url + '&controller=' + controller;
