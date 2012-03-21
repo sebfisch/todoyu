@@ -230,6 +230,30 @@ Todoyu.Time = {
 
 
 	/**
+	 * Get current hour of day
+	 *
+	 * @method	getCurrentHourOfDay
+	 * @return  {Number}
+	 */
+	getCurrentHourOfDay: function() {
+		return new Date().getHours();
+	},
+
+
+
+	/**
+	 * Get current minutes of hour
+	 *
+	 * @method	getCurrentMinutesOfHour
+	 * @return  {Number}
+	 */
+	getCurrentMinutesOfHour: function() {
+		return new Date().getMinutes();
+	},
+
+
+
+	/**
 	 * Get amount of days in month
 	 *
 	 * @method	getDaysInMonth
