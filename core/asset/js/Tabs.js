@@ -487,7 +487,7 @@ Todoyu.Tabs = {
 
 			// Add the tab as first element
 		$(list + '-tabs').insert({
-			'top':	tab
+			top:	tab
 		});
 
 		this.highlight(list, idTab);
@@ -503,7 +503,12 @@ Todoyu.Tabs = {
 	 * @param	{String}	idTab
 	 */
 	highlight: function(list, idTab) {
-		// Highlighting is currently disabled (find a nice style to highlight)
+		this.getTab(list, idTab).highlight({
+			duration: 0.5,
+			afterFinish: function(effect) {
+				effect.element.removeAttribute('style');
+			}
+		});
 	},
 
 
