@@ -560,8 +560,16 @@ class TodoyuTime {
 	 */
 	public static function getFormat($formatName) {
 		$localeKey	= 'core.dateformat.' . $formatName;
+		$format		= Todoyu::Label($localeKey);
 
-		return Todoyu::Label($localeKey);
+			// Replace %e with %d on windows
+		if( strpos($format, '%e') !== false ) {
+			if( TodoyuServer::isWindows() ) {
+				$format = str_replace('%e', '%d', $format);
+			}
+		}
+
+		return $format;
 	}
 
 
