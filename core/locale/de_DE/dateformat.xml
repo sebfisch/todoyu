@@ -21,6 +21,7 @@
 	<label index="DshortD2MshortY2">%a, %d. %b %y</label>
 	<label index="DshortD2MlongY4">%a, %d. %B %Y</label>
 	<label index="DlongD2MlongY4">%A, %d. %B %Y</label>
+	<label index="DlongDMlongY4">%A, %e. %B %Y</label>
 	<label index="calendarweek">KW %W</label>
 	<label index="date">%d.%m.%Y</label>
 	<label index="dateMshort">%e. %b</label>
