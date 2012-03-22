@@ -1,8 +1,6 @@
 todoyu core changelog
 
 core 2.2.0 - not released yet
-	* Feature: Removing valueless foreign records does not require confirmation anymore
-	* Feature: Better support for SQL statements to update fields. Comma is now allowed in type definition (ex: DECIMAL(5,2))
 	* Added: Empty listing shows "no items" notice
 	* Added: Special chars encoding of CSV exported data
 	* Added: Added core hook of loaded extension type configs: 'loadconfig.extkey.type'
@@ -34,6 +32,8 @@ core 2.2.0 - not released yet
 	* Added: Dwoo plugin {restrictAdmin}retricted content{/restrictAdmin}
 	* Added: Moved dwoo plugins from calendar extension to core: {formatDuration}, {formatRange}
 	* Added: date locale format label "dateMshort"
+	* Changed: Removing valueless foreign records does not require confirmation anymore
+	* Changed: Better support for SQL statements to update fields. Comma is now allowed in type definition (ex: DECIMAL(5,2))
 	* Changed: Extending item listings (fetching additional items) now also keeps list-function parameters, like search filters
 	* Changed: Inactive roles are listed last instead of first
 	* Changed: Unified method naming - getDateXXX() getPersonXXX() getPersonXXXID()
