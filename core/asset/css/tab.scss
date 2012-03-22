@@ -47,14 +47,12 @@
 			height:1px;
 			line-height:26px;
 			padding:0 10px;
-			font: {
-				size:10px;
-				weight:bold; }
+
 			/*text-transform:uppercase;*/
 			letter-spacing:1px;
 			white-space:nowrap;
 
-			span.icon {
+			.icon {
 				display:block;
 				float:left;
 				position:relative;
@@ -62,6 +60,12 @@
 				height:26px;
 				width:20px;
 				background-repeat:no-repeat; }
+
+			.labeltext {
+				font: {
+				size:12px;
+				weight:bold; }
+			}
 		}
 
 		&:hover,

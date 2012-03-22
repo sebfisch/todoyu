@@ -163,7 +163,7 @@ body {
 /* -----------------
 	Panel
    ----------------- */
-#panel * {
+.panelWidget * {
 	font-size:11px; }
 
 .panelWidget {
@@ -203,7 +203,8 @@ body {
 				padding:0 0 0 10px;
 				line-height:26px;
 				width:205px;
-				overflow: hidden; }
+				overflow: hidden;
+				font-size:11px;	 }
 
 			&.toggle {
 				float:right;
