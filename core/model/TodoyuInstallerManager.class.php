@@ -960,7 +960,7 @@ class TodoyuInstallerManager {
 						$update	= array(
 							'file_storage'	=> $pathStorageNew
 						);
-						$where	= 'file_storage = ' . Todoyu::db()->quote($pathStorageOld, true);
+						$where	= 'file_storage = ' . TodoyuSql::quote($pathStorageOld, true);
 
 						Todoyu::db()->doUpdate('ext_assets_asset', $where, $update);
 					}

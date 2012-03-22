@@ -65,7 +65,7 @@ class TodoyuCountryManager {
 	public static function getCountryIdByISO($code, $isAlpha3 = false) {
 		$fields = 'id';
 		$wField = $isAlpha3 ? 'iso_alpha3' : 'iso_alpha2';
-		$where	= $wField . ' = ' . Todoyu::db()->quote($code, true);
+		$where	= $wField . ' = ' . TodoyuSql::quote($code, true);
 
 		return (int) Todoyu::db()->getFieldValue($fields, self::TABLE, $where);
 	}

@@ -123,7 +123,7 @@ class TodoyuFreezeManager {
 		$data		= false;
 
 		$fields	= '*';
-		$where	= '		`element_type`	= ' . Todoyu::db()->quote($type)
+		$where	= '		`element_type`	= ' . TodoyuSql::quote($type)
 				. ' AND	`element_id`		= ' . $idElement;
 		$order	= 'date_create DESC';
 

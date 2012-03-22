@@ -13,7 +13,7 @@ core 2.2.0 - not released yet
 	* Added: Todoyu.Form.assistDurationInput() for onblur-validation of duration input fields
 	* Added: New form hook for data modification immediately before rendering (use TodoyuFormHook::registerRenderForm() for callback registration)
 	* Added: global confirmation dialog for toggling of record-types with exclusive "is_preferred" attribute
-	* Added: new DB query building method: Todoyu::db()->buildInArrayQuery()
+	* Added: new DB query building method: TodoyuSql::buildInArrayQuery()
 	* Added: General content item inline tabs management and rendering to core
 	* Added: "greaterThan" form validator
 	* Added: Methods for fetching right / section and resp. required right from extension rights matrix
@@ -32,6 +32,7 @@ core 2.2.0 - not released yet
 	* Added: Dwoo plugin {restrictAdmin}retricted content{/restrictAdmin}
 	* Added: Moved dwoo plugins from calendar extension to core: {formatDuration}, {formatRange}
 	* Added: date locale format label "dateMshort"
+	* Changed: Moved static database and query functions to TodoyuSql
 	* Changed: Removing valueless foreign records does not require confirmation anymore
 	* Changed: Better support for SQL statements to update fields. Comma is now allowed in type definition (ex: DECIMAL(5,2))
 	* Changed: Extending item listings (fetching additional items) now also keeps list-function parameters, like search filters
@@ -69,7 +70,7 @@ core 2.1.4 - 2011-12-13
 	* Added: Hide context menu on tab change
 	* Added: TodoyuCountry::getIsoNumCurrency()
 	* Added: TodoyuFormElement::getStorageDataInternal() to override storageData properly
-	* Added: TodoyuDatabase::quoteTablename() (currently alias of quoteFieldName()). Cleanup quoteFieldName()
+	* Added: TodoyuSql::quoteTablename() (currently alias of quoteFieldName()). Cleanup quoteFieldName()
 	* Added: Support to validate against fields in the parent form
 	* Added: TodoyuFormElement methods replaceFieldValidatorWithValue() and removeValidator()
 	* Added: Log hook calls

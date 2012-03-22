@@ -97,11 +97,11 @@ class TodoyuPreferenceManager {
 		$where	= '		id_person	= ' . $idPerson .
 				  ' AND	ext			= ' . $extID .
 				  ' AND	area		= ' . $idArea .
-				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true) .
+				  ' AND	preference	= ' . TodoyuSql::quote($preference, true) .
 				  ' AND	item		= ' . $idItem;;
 
 		if( ! is_null($value) ) {
-			$where .= ' AND value = ' . Todoyu::db()->quote($value, true);
+			$where .= ' AND value = ' . TodoyuSql::quote($value, true);
 		}
 
 		return Todoyu::db()->doDelete($table, $where);
@@ -137,7 +137,7 @@ class TodoyuPreferenceManager {
 		$where	= '		id_person	= ' . $idPerson .
 				  ' AND	ext			= ' . $extID .
 				  ' AND	area		= ' . $idArea .
-				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true) .
+				  ' AND	preference	= ' . TodoyuSql::quote($preference, true) .
 				  ' AND	item		= ' . $idItem;
 
 		$value	= Todoyu::db()->getFieldValue($field, $table, $where);
@@ -174,7 +174,7 @@ class TodoyuPreferenceManager {
 		$where	= '		id_person	= ' . $idPerson .
 				  ' AND	ext			= ' . $extID .
 				  ' AND	area		= ' . $idArea .
-				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true);
+				  ' AND	preference	= ' . TodoyuSql::quote($preference, true);
 
 		if( $idItem !== 0 ) {
 			$where .= ' AND item = ' . $idItem;
@@ -225,10 +225,10 @@ class TodoyuPreferenceManager {
 		$where	= '		id_person	= ' . $idPerson .
 				  ' AND	ext			= ' . $extID .
 				  ' AND	area		= ' . $idArea .
-				  ' AND	preference	= ' . Todoyu::db()->quote($preference, true);
+				  ' AND	preference	= ' . TodoyuSql::quote($preference, true);
 
 		if( ! is_null($value) ) {
-			$where .= ' AND value = ' . Todoyu::db()->quote($value, true);
+			$where .= ' AND value = ' . TodoyuSql::quote($value, true);
 		}
 
 		return Todoyu::db()->hasResult($field, $table, $where);

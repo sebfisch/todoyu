@@ -31,7 +31,7 @@ class TodoyuDatabase {
 	 * Holds the only instance if available.
 	 * Singleton Pattern
 	 *
-	 * @var	Database
+	 * @var	TodoyuDatabase
 	 */
 	private static $instance = null;
 
@@ -63,7 +63,7 @@ class TodoyuDatabase {
 	 * Singleton Pattern
 	 *
 	 * @param	Array		$config			Configuration
-	 * @return	Database
+	 * @return	TodoyuDatabase
 	 */
 	public static function getInstance($config) {
 		if( is_null(self::$instance) ) {
@@ -185,171 +185,6 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Escape string for queries
-	 *
-	 * @param	String		$string
-	 * @return	String
-	 */
-	public function escape($string) {
-		return is_float($string) ? str_replace(',', '.', (string)$string) : mysql_real_escape_string($string, $this->link);
-	}
-
-
-
-	/**
-	 * Escape all values in the array
-	 * Optional it's available to quote all fields. $noQuoteFields can disable this function for specific fields
-	 *
-	 * @param	Array		$array				Array to escape (name => value pairs)
-	 * @param	Boolean		$quoteFields		Quote the fields (field will be surrounded by single quotes:')
-	 * @param	Array		$noQuoteFields		If $quoteFields is enabled, this fields will be ignored for quoting
-	 * @return	Array
-	 */
-	public function escapeArray(array $array, $quoteFields = false, array $noQuoteFields = array()) {
-			// Only escape the field if they will not be quoted, quoteArray() escapes the field by itself
-		if( $quoteFields  ) {
-			$array = $this->quoteArray($array, $noQuoteFields);
-		} else {
-			foreach($array as $key => $value) {
-				$array[$key] =  $this->escape($value);
-			}
-		}
-
-		return $array;
-	}
-
-
-
-	/**
-	 * Quote all fields in an array
-	 *
-	 * @param	Array		$array
-	 * @param	Array		$noQuoteFields
-	 * @return	Array
-	 */
-	public function quoteArray(array $array, array $noQuoteFields = array()) {
-		foreach($array as $key => $value) {
-			if( !in_array($key, $noQuoteFields) ) {
-				$array[$key] = $this->quote($value, true);
-			}
-		}
-
-		return $array;
-	}
-
-
-
-	/**
-	 * Quote a string value.
-	 *
-	 * @param	String		$value
-	 * @param	Boolean		$escape
-	 * @return	String
-	 */
-	public function quote($value, $escape = false) {
-		$value = $escape ? $this->escape($value) : $value;
-
-		return '\'' . $value . '\'';
-	}
-
-
-
-	/**
-	 * Wrap value in backticks
-	 *
-	 * @param	String		$value
-	 * @return	String
-	 */
-	public function backtick($value) {
-		if( stristr($value, '.') !== false ) {
-			$value = str_replace('.', '`.`', $value);
-		}
-
-		return '`' . $value . '`';
-	}
-
-
-
-	/**
-	 * Wrap all elements of an array in backticks
-	 *
-	 * @param	Array		$array
-	 * @return	Array
-	 */
-	public function backtickArray(array $array) {
-		return array_map(array($this, 'backtick'), $array);
-	}
-
-
-
-	/**
-	 * Quote a field name. Optionally, the table name is prefixed
-	 *
-	 * @param	String		$fieldName
-	 * @param	String		$tableName
-	 * @return	String		Field name in backticks
-	 */
-	public function quoteFieldname($fieldName, $tableName = null) {
-		$fieldName	= $this->backtick($fieldName);
-
-		if( ! is_null($tableName) ) {
-			$fieldName = $this->quoteTablename($tableName) . '.' . $fieldName;
-		}
-
-		return $fieldName;
-	}
-
-
-
-	/**
-	 * Quote table name with backticks
-	 * tablename => `tablename`
-	 *
-	 * @param	String		$tableName
-	 * @return	String
-	 */
-	public function quoteTablename($tableName) {
-		return $this->backtick($tableName);
-	}
-
-
-
-	/**
-	 * Build a select query
-	 *
-	 * @param	String		$fields
-	 * @param	String		$table
-	 * @param	String		$where
-	 * @param	String		$groupBy
-	 * @param	String		$orderBy
-	 * @param	String		$limit
-	 * @return	String
-	 */
-	public function buildSELECTquery($fields, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '') {
-		$query = 'SELECT ' . $fields . ' FROM ' . $table;
-
-		if( $where != '' ) {
-			$query .= ' WHERE ' . $where;
-		}
-
-		if( $groupBy != '' ) {
-			$query .= ' GROUP BY ' . $groupBy;
-		}
-
-		if( $orderBy != '' ) {
-			$query .= ' ORDER BY ' . $orderBy;
-		}
-
-		if( $limit != '' ) {
-			$query .= ' LIMIT ' . $limit;
-		}
-
-		return $query;
-	}
-
-
-
-	/**
 	 * Build and execute a select query
 	 *
 	 * @param	String		$fields
@@ -361,7 +196,7 @@ class TodoyuDatabase {
 	 * @return	Resource
 	 */
 	public function doSelect($fields, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '') {
-		$query = $this->buildSELECTquery($fields, $table, $where, $groupBy, $orderBy, $limit);
+		$query = TodoyuSql::buildSELECTquery($fields, $table, $where, $groupBy, $orderBy, $limit);
 
 		return $this->query($query);
 	}
@@ -381,7 +216,7 @@ class TodoyuDatabase {
 	 * @return	Array
 	 */
 	public function doSelectRow($fields, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '1') {
-		$query	= $this->buildSELECTquery($fields, $table, $where, $groupBy, $orderBy, $limit);
+		$query	= TodoyuSql::buildSELECTquery($fields, $table, $where, $groupBy, $orderBy, $limit);
 		$result	= $this->query($query);
 
 		if( $this->hasRows($result) ) {
@@ -396,49 +231,6 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Build insert query
-	 *
-	 * @param	String		$table
-	 * @param	Array		$fieldNameValues
-	 * @param	Array		$noQuoteFields
-	 * @return	String
-	 */
-	public function buildINSERTquery($table, array $fieldNameValues, array $noQuoteFields = array()) {
-		$fieldNames		= implode(',', $this->backtickArray(array_keys($fieldNameValues)));
-		$fieldValues	= implode(',', $this->quoteArray(array_values($fieldNameValues), $noQuoteFields));
-
-		$query = '	INSERT INTO ' . $table
-				. ' (' . $fieldNames . ')'
-				. ' VALUES (' . $fieldValues . ')';
-
-		return $query;
-	}
-
-
-
-	/**
-	 * Build a select from INFORMATION_SCHEMA.COLUMNS query
-	 *
-	 * @param	String		$fields
-	 * @param	String		$where
-	 * @return	String
-	 */
-	public function buildSELECTinformationSchemaColumnsQuery($fields, $where = '') {
-		$dbName	= Todoyu::$CONFIG['DB']['database'];
-
-		$query	 = 'SELECT ' . $fields . ' FROM INFORMATION_SCHEMA.COLUMNS ';
-		$query	.= ' WHERE TABLE_SCHEMA = \'' . $dbName . '\' ';
-
-		if( $where != '' ) {
-			$query .= ' AND ' . $where;
-		}
-
-		return $query;
-	}
-
-
-
-	/**
 	 * Build and execute an insert query
 	 *
 	 * @param	String		$table
@@ -447,31 +239,11 @@ class TodoyuDatabase {
 	 * @return	Integer		Autogenerated ID
 	 */
 	public function doInsert($table, array $fieldNameValues, array $noQuoteFields = array()) {
-		$query = $this->buildINSERTquery($table, $fieldNameValues, $noQuoteFields);
+		$query = TodoyuSql::buildINSERTquery($table, $fieldNameValues, $noQuoteFields);
 
 		$this->query($query);
 
 		return $this->getLastInsertID();
-	}
-
-
-
-	/**
-	 * Build delete query
-	 *
-	 * @param	String		$table
-	 * @param	String		$where
-	 * @param	String		$limit
-	 * @return	String
-	 */
-	public function buildDELETEquery($table, $where, $limit = '') {
-		$query	= 'DELETE FROM ' . $table . ' WHERE ' . $where;
-
-		if( $limit != '' ) {
-			$query .= ' LIMIT ' . $limit;
-		}
-
-		return $query;
 	}
 
 
@@ -485,7 +257,7 @@ class TodoyuDatabase {
 	 * @return	Integer		Num affected (deleted) rows
 	 */
 	public function doDelete($table, $where, $limit = '') {
-		$query	= $this->buildDELETEquery($table, $where, $limit);
+		$query	= TodoyuSql::buildDELETEquery($table, $where, $limit);
 
 		$this->query($query);
 
@@ -511,37 +283,6 @@ class TodoyuDatabase {
 
 
 
-	/**
-	 * Build an update query
-	 *
-	 * @param	String		$table
-	 * @param	String		$where
-	 * @param	Array		$fieldNameValues
-	 * @param	Array		$noQuoteFields
-	 * @return	String
-	 */
-	public function buildUPDATEquery($table, $where, array $fieldNameValues, array $noQuoteFields = array()) {
-		$fieldNameValues= $this->escapeArray($fieldNameValues, true, $noQuoteFields);
-		$fields			= array();
-
-		foreach($fieldNameValues as $key => $quotedValue) {
-			if( in_array($key, $noQuoteFields) ) {
-				$fields[] = $key . ' = ' . $quotedValue;
-			} else {
-				$fields[] = $this->backtick($key) . ' = ' . $quotedValue;
-			}
-		}
-
-		$query = 'UPDATE ' . $table . ' SET ';
-		$query .= implode(', ', $fields);
-
-		if( !empty($where) ) {
-			$query .= ' WHERE ' . $where;
-		}
-
-
-		return $query;
-	}
 
 
 
@@ -555,7 +296,7 @@ class TodoyuDatabase {
 	 * @return	Integer		Num affected (updated) rows
 	 */
 	public function doUpdate($table, $where, array $fieldNameValues, array $noQuoteFields = array()) {
-		$query	= $this->buildUPDATEquery($table, $where, $fieldNameValues, $noQuoteFields);
+		$query	= TodoyuSql::buildUPDATEquery($table, $where, $fieldNameValues, $noQuoteFields);
 
 		$this->query($query);
 
@@ -610,83 +351,6 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Build a FIND_IN_SET SQL statement so search in a comma separated field
-	 *
-	 * @param	String		$itemToFind
-	 * @param	String		$fieldName
-	 * @return	String
-	 */
-	public function buildFindInSetQuery($itemToFind, $fieldName) {
-		$itemToFind = $this->escape($itemToFind);
-
-		return "FIND_IN_SET('$itemToFind', $fieldName) != 0";
-	}
-
-
-
-	/**
-	 * Build a like query to search multiple strings in multiple fields with LIKE %word%
-	 *
-	 * @param	Array		$searchWords			Words to search for
-	 * @param	Array		$searchInFields			Fields which have to match the $searchWords
-	 * @param	Boolean		$negate
-	 * @return	String		Where part condition
-	 */
-	public function buildLikeQuery(array $searchWords, array $searchInFields, $negate = false) {
-		$searchWords= $this->escapeArray($searchWords);
-		$fieldWheres= array();
-
-			// Build an AND-group for all search words
-		foreach($searchWords as $searchWord) {
-			$fieldParts = array();
-
-				// Build an OR-group for all search fields
-			foreach($searchInFields as $fieldName) {
-				$fieldParts[] = $fieldName . ($negate ? ' NOT ' : '') . ' LIKE \'%' . $searchWord . '%\'';
-			}
-
-				// Concatenate field WHEREs with each words inside
-			$fieldWheres[] = implode(' OR ', $fieldParts);
-		}
-
-		$where = '((' . implode(') AND (', $fieldWheres) . '))';
-
-		return $where;
-	}
-
-
-
-	/**
-	 * Build "WHERE IN()" query part
-	 *
-	 * @param	Array		$values
-	 * @param	String		$searchField
-	 * @param	Boolean		$isInt			Values are integers?
-	 * @param	Boolean		$negate			Negate using NOT?
-	 * @param	Boolean		$quote			Quote non-integer values?
-	 * @return	String
-	 */
-	public function buildInArrayQuery(array $values, $searchField = 'id', $isInt = true, $negate = false, $quote = true) {
-		if( empty($values) ) {
-			return '0';
-		}
-		$values = array_unique($values);
-
-			// Implode values array to list
-		if( $isInt ) {
-			$values = TodoyuArray::intImplode($values);
-		} elseif( $quote ) {
-			$values = TodoyuArray::implodeQuoted($values, ',');
-		} else {
-			$values = implode(',', $values);
-		}
-
-		return ' ' . $searchField . ($negate ? ' NOT ' : ' ') . 'IN (' . $values . ') ';
-	}
-
-
-
-	/**
 	 * Switch a boolean value in database (0 or 1) to the opposite value
 	 * 0 => 1, 1 => 0
 	 *
@@ -699,23 +363,10 @@ class TodoyuDatabase {
 		$idRecord	= (int) $idRecord;
 
 		$where	= 'id = ' . $idRecord;
-		$toggle	= $this->buildBooleanInvert($table, $fieldName);
+		$toggle	= TodoyuSql::buildBooleanInvert($table, $fieldName);
 		$update	= array($fieldName => $toggle);
 
 		return $this->doUpdate($table, $where, $update, array($fieldName)) === 1;
-	}
-
-
-
-	/**
-	 * Build a boolean invert SQL command
-	 *
-	 * @param	String		$table
-	 * @param	String		$fieldName
-	 * @return	String
-	 */
-	public function buildBooleanInvert($table, $fieldName) {
-		return $this->quoteFieldname($fieldName, $table) . ' XOR 1';
 	}
 
 
@@ -1248,7 +899,7 @@ class TodoyuDatabase {
 	public function getTables() {
 		$dbName	= $this->config['database'];
 
-		$query	= 'SHOW TABLES FROM ' . $this->quoteFieldname($dbName);
+		$query	= 'SHOW TABLES FROM ' . TodoyuSql::quoteFieldname($dbName);
 		$result	= $this->query($query);
 
 		$rows	= $this->resourceToArray($result);
@@ -1276,21 +927,21 @@ class TodoyuDatabase {
 	 * Returns the number of rows in the given table. You can specify an
 	 * optional where clause to return a subset of the table.
 	 *
-	 * @param	String	$table
-	 * @param	String	$where
-	 * @param	Integer
+	 * @param	String			$table
+	 * @param	String		$where
+	 * @return	Integer
 	 */
-	public function getRowCount($table, $where = null) {
-		$query = 'SELECT COUNT(*) FROM ' . $this->quoteFieldname($table);
+	public function getRowCount($table, $where = '') {
+		$query = 'SELECT COUNT(*) as total FROM ' . TodoyuSql::quoteFieldname($table);
 
-		if( ! is_null($where) ) {
+		if( $where ) {
 			$query .= ' WHERE ' . $where;
 		}
 
 		$result	= $this->query($query);
-		$rows	= TodoyuArray::flatten($this->resourceToArray($result));
+		$rows	= $this->resourceToArray($result);
 
-		return $rows[0];
+		return intval($rows[0]['total']);
 	}
 
 
@@ -1301,9 +952,9 @@ class TodoyuDatabase {
 	 * @param	String		$table
 	 * @return	Boolean
 	 */
-	public function truncate($table) {
+	public function truncateTable($table) {
 		if( $this->hasTable($table) ) {
-			$this->query('TRUNCATE TABLE ' . $this->quoteFieldname($table));
+			$this->query('TRUNCATE TABLE ' . TodoyuSql::quoteFieldname($table));
 
 			return $this->getAffectedRows() > 0;
 		} else {
@@ -1317,21 +968,9 @@ class TodoyuDatabase {
 	 * Drop a table
 	 *
 	 * @param	String		$table
-	 * @deprecated
-	 */
-	public function drop($table) {
-		$this->dropTable($table);
-	}
-
-
-
-	/**
-	 * Drop a table
-	 *
-	 * @param	String		$table
 	 */
 	public function dropTable($table) {
-		$this->query('DROP TABLE IF EXISTS ' . $this->quoteFieldname($table));
+		$this->query('DROP TABLE IF EXISTS ' . TodoyuSql::quoteFieldname($table));
 	}
 
 
@@ -1343,7 +982,7 @@ class TodoyuDatabase {
 	 * @param	Boolean		$onlyFieldNames
 	 * @return	Array
 	 */
-	public function getFields($table, $onlyFieldNames = false) {
+	public function getTableFields($table, $onlyFieldNames = false) {
 		$query		= 'SHOW COLUMNS FROM ' . $table;
 		$resource	= $this->query($query);
 

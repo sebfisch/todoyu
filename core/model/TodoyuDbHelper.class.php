@@ -208,8 +208,8 @@ class TodoyuDbHelper {
 		$idLocalRecord	= (int) $idLocalRecord;
 		$idForeignRecord= (int) $idForeignRecord;
 
-		$where	=	Todoyu::db()->backtick($localField) . ' = ' . $idLocalRecord . ' AND ' .
-					Todoyu::db()->backtick($foreignField) . ' = ' . $idForeignRecord;
+		$where	=	TodoyuSql::backtick($localField) . ' = ' . $idLocalRecord . ' AND ' .
+					TodoyuSql::backtick($foreignField) . ' = ' . $idForeignRecord;
 		$limit	= 1;
 
 		return Todoyu::db()->doDelete($mmTable, $where, $limit);
@@ -227,7 +227,7 @@ class TodoyuDbHelper {
 	 */
 	public static function removeMMrelations($mmTable, $field, $idRecord) {
 		$idRecord	= (int) $idRecord;
-		$where		= Todoyu::db()->backtick($field) . ' = ' . $idRecord;
+		$where		= TodoyuSql::backtick($field) . ' = ' . $idRecord;
 
 		return Todoyu::db()->doDelete($mmTable, $where);
 	}

@@ -111,7 +111,7 @@ class TodoyuStaticRecords {
 		$wheres	= array();
 
 		foreach($conditions as $fieldName => $value) {
-			$wheres[]	= Todoyu::db()->quoteFieldname($fieldName) . ' = ' . Todoyu::db()->quote($value);
+			$wheres[]	= TodoyuSql::quoteFieldname($fieldName) . ' = ' . TodoyuSql::quote($value);
 		}
 
 		$where	= implode(' AND ', $wheres);
@@ -213,7 +213,7 @@ class TodoyuStaticRecords {
 	public static function getTimezoneID($timezone) {
 		$field	= 'id';
 		$table	= 'static_timezone';
-		$where	= 'timezone = ' . Todoyu::db()->quote($timezone, true);
+		$where	= 'timezone = ' . TodoyuSql::quote($timezone, true);
 
 		return (int) Todoyu::db()->getFieldValue($field, $table, $where);
 	}

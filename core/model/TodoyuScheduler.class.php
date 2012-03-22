@@ -279,7 +279,7 @@ class TodoyuScheduler {
 	 */
 	private static function getLastExecution($className) {
 		$fields	= '*';
-		$where	= 'class = ' . Todoyu::db()->quote($className, true);
+		$where	= 'class = ' . TodoyuSql::quote($className, true);
 		$order	= 'date_execute DESC';
 
 		return Todoyu::db()->getRecordByQuery($fields, self::TABLE, $where, '', $order);

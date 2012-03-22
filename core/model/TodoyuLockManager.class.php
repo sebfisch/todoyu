@@ -64,7 +64,7 @@ class TodoyuLockManager {
 	 */
 	public static function unlock($ext, $table, $idRecord) {
 		$where	= '		`ext`		= ' . (int) $ext
-				. ' AND	`table`		= ' . Todoyu::db()->quote($table, true)
+				. ' AND	`table`		= ' . TodoyuSql::quote($table, true)
 				. ' AND `id_record`	= ' . (int) $idRecord;
 
 		Todoyu::db()->doDelete(self::TABLE, $where, 1);
@@ -80,7 +80,7 @@ class TodoyuLockManager {
 	 * @return	Boolean
 	 */
 	public static function isLocked($table, $idRecord) {
-		$where	= '		`table`		= ' . Todoyu::db()->quote($table, true)
+		$where	= '		`table`		= ' . TodoyuSql::quote($table, true)
 				. ' AND `id_record`	= ' . (int) $idRecord;
 
 		return Todoyu::db()->hasResult('id', self::TABLE, $where);
@@ -102,7 +102,7 @@ class TodoyuLockManager {
 			return false;
 		}
 
-		$where	= '		`table`		= ' . Todoyu::db()->quote($table, true)
+		$where	= '		`table`		= ' . TodoyuSql::quote($table, true)
 				. ' AND `id_record`	IN(' . implode(',', $recordIDs) . ')';
 
 		return Todoyu::db()->hasResult('id', self::TABLE, $where);
@@ -120,7 +120,7 @@ class TodoyuLockManager {
 	 */
 	public static function isLockedByExt($extID, $table, $idRecord) {
 		$where	= '		`ext`		= ' . (int) $extID
-				. ' AND	`table`		= ' . Todoyu::db()->quote($table, true)
+				. ' AND	`table`		= ' . TodoyuSql::quote($table, true)
 				. ' AND `id_record`	= ' . (int) $idRecord;
 
 		return Todoyu::db()->hasResult('id', self::TABLE, $where);
@@ -137,7 +137,7 @@ class TodoyuLockManager {
 	 */
 	public static function getNumLocks($table, $idRecord) {
 		$field	= 'id';
-		$where	= '		`table`		= ' . Todoyu::db()->quote($table, true)
+		$where	= '		`table`		= ' . TodoyuSql::quote($table, true)
 				. ' AND `id_record`	= ' . (int) $idRecord;
 
 		$result	= Todoyu::db()->doSelect($field, self::TABLE, $where);
