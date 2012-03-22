@@ -404,7 +404,9 @@ Todoyu.Headlet = Class.create({
 	 * @method	setAllInactive
 	 */
 	setAllInactive: function() {
-		$('headlets').select('li.headlet').invoke('removeClassName', 'active');
+		if( $('headlets') ) {
+			$('headlets').select('.headlet').invoke('removeClassName', 'active');
+		}
 	},
 
 
