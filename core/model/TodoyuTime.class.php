@@ -433,11 +433,12 @@ class TodoyuTime {
 	 * Format a timestamp with one of todoyu's default date formats
 	 *
 	 * @see		core/config/dateformat.xml
-	 * @param	Integer		$timestamp
-	 * @param	String		$formatName
+	 * @param	Integer			$timestamp
+	 * @param	String			$formatName
+	 * @param	String|Boolean	$format				Ignore formatName and use directly this format
 	 * @return	String		Formatted date
 	 */
-	public static function format($timestamp, $formatName = 'datetime') {
+	public static function format($timestamp, $formatName = 'datetime', $format = false) {
 		$timestamp	= (int) $timestamp;
 
 		if( $timestamp === 0 ) {
@@ -445,13 +446,15 @@ class TodoyuTime {
 		}
 
 			// Format timestamp with pattern
-		$format		= self::getFormat($formatName);
-		$string		= strftime($format, $timestamp);
+		if( $format ) {
+			$format	= self::cleanFormatForWindows($format);
+		} else {
+			$format	= self::getFormat($formatName);
+		}
+		$formattedDate	= strftime($format, $timestamp);
 
 			// Convert to utf-8 if not already
-		$string		= TodoyuString::getAsUtf8($string);
-
-		return $string;
+		return TodoyuString::getAsUtf8($formattedDate);
 	}
 
 
@@ -563,6 +566,19 @@ class TodoyuTime {
 		$format		= Todoyu::Label($localeKey);
 
 			// Replace %e with %d on windows
+		return self::cleanFormatForWindows($format);
+	}
+
+
+
+	/**
+	 * Clean date format for windows
+	 * Replace %e with %d
+	 *
+	 * @param	String		$format
+	 * @return	String
+	 */
+	public static function cleanFormatForWindows($format) {
 		if( strpos($format, '%e') !== false ) {
 			if( TodoyuServer::isWindows() ) {
 				$format = str_replace('%e', '%d', $format);
