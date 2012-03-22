@@ -52,25 +52,28 @@
 			background:-webkit-gradient(linear, from($white), to($grey01));
 			/* filter fails in sass parser, do it without gradient in IE */
 			/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$white' , endColorstr='$grey01');*/
-		}
 
-		> li {
-			float:none;
-			margin:0px;
-			border:none;
 
-			a {
-                width:auto;
-                height:auto;
-                margin:0px;
-                padding:5px 30px 3px 30px;
-                border:none;
-                font-size:11px;
-                white-space:nowrap;
+			> li {
+				float:none;
+				margin:0px;
+				border:none;
 
-                &.primary {
-                    border-bottom:1px solid $grey03; }
-            }
+				a {
+					width:auto;
+					height:auto;
+					margin:0px;
+					padding:5px 30px 3px 30px;
+					border:none;
+					font-size:11px;
+					white-space:nowrap;
+					cursor:pointer;
+					display:block;
+
+					&.primary {
+						border-bottom:1px solid $grey03; }
+				}
+			}
 		}
 	}
 
