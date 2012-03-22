@@ -225,7 +225,7 @@ class TodoyuExtensions {
 						// Call hook, e.g. 'loadconfig.contact.filter'
 					TodoyuHookManager::callHook('core', 'loadconfig.' . $extKey . '.' . $type);
 						// Register the type config to be loaded
-					self::$loadedExtConfigTypes[$extKey . $type]    = true;
+					self::$loadedExtConfigTypes[$extKey . $type]	= true;
 				}
 					// Config loaded
 				return true;

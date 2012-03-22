@@ -90,7 +90,7 @@ class TodoyuInstaller {
 	 * Ensure installer CSS files to be available (SCSS being parsed)
 	 */
 	public static function prepareInstallerCss() {
-		$scssFiles    = array(
+		$scssFiles	= array(
 			array('file'	=> 'core/asset/css/base.scss'),
 			array('file'	=> 'core/asset/css/layout.scss'),
 			array('file'	=> 'core/asset/css/panel.scss'),

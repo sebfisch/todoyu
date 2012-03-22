@@ -432,10 +432,10 @@ class TodoyuPageAssetManager {
 
 			// Parse SCSS files
 		foreach($styleSheets as $index => $styleSheet) {
-			$stylesheetFile   = $styleSheet['file'];
+			$stylesheetFile	= $styleSheet['file'];
 			if( TodoyuString::endsWith($stylesheetFile, '.scss') ) {
 					// Parse SCSS and store resulting CSS in cache to be included in page
-				$styleSheets[$index]['file']    = self::parseScssStylesheet($stylesheetFile);
+				$styleSheets[$index]['file']	= self::parseScssStylesheet($stylesheetFile);
 			}
 		}
 
@@ -480,7 +480,7 @@ class TodoyuPageAssetManager {
 
 			// Parse if not yet
 		if( ! file_exists($pathCss) ) {
-			$options    = array(
+			$options	= array(
 				'cache_location'=> PATH_CACHE . DIR_SEP . 'css',
 				'filename'		=> $fileName,
 				'debug_info'	=> false,
@@ -491,7 +491,7 @@ class TodoyuPageAssetManager {
 			$cssCode	= $sass->toCss($pathScss, true);
 			$cssCode	= self::rewriteRelativePaths($cssCode, $pathScss);
 
-			$file   = TodoyuFileManager::saveFileContent($pathCss, $cssCode) ? $pathCss : false;
+			$file	= TodoyuFileManager::saveFileContent($pathCss, $cssCode) ? $pathCss : false;
 			return $file;
 		}
 

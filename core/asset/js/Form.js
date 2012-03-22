@@ -321,12 +321,12 @@ Todoyu.Form = {
 			// Switch off "is_preferred"
 		if( field.checked ) {
 			if( ! confirm('[LLL:core.form.confirm.toggle.is_preferred.on]') ) {
-				field.checked   = false;
+				field.checked	= false;
 			}
 		} else {
 				// Switch on "is_preferred"
 			if( ! confirm('[LLL:core.form.confirm.toggle.is_preferred.off]') ) {
-				field.checked   = true;
+				field.checked	= true;
 			}
 		}
 	},
