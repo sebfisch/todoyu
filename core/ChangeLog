@@ -32,6 +32,7 @@ core 2.2.0 - not released yet
 	* Added: Dwoo plugin {restrictAdmin}retricted content{/restrictAdmin}
 	* Added: Moved dwoo plugins from calendar extension to core: {formatDuration}, {formatRange}
 	* Added: date locale format label "dateMshort"
+	* Changed: Listing renderer requires and renders additionally to columns now also record ID
 	* Changed: Moved static database and query functions to TodoyuSql
 	* Changed: Removing valueless foreign records does not require confirmation anymore
 	* Changed: Better support for SQL statements to update fields. Comma is now allowed in type definition (ex: DECIMAL(5,2))
