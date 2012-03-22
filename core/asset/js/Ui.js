@@ -440,9 +440,9 @@ Todoyu.Ui = {
 	 */
 	fixAnchorPosition: function() {
 		if( location.hash !== '') {
-			var name	= location.hash.substr(1);
+			var anchor	= location.hash.substr(1);
 
-			this.scrollToAnchor.bind(this).defer(name);
+			this.scrollToAnchor.bind(this, anchor).delay(0.3);
 		}
 	},
 
