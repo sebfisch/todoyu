@@ -1,3 +1,33 @@
+Version 3.5b2 (2012-03-15)
+	Rewrote the enter key logic to normalize browser behavior.
+	Fixed so enter within PRE elements produces a BR and shift+enter breaks/end the PRE. Can be disabled using the br_in_pre option.
+	Fixed bug where the selection wouldn't be correct after applying formatting and having the caret at the end of the new format node.
+	Fixed bug where the noneditable plugin would process contents on raw input calls for example on undo/redo calls.
+	Fixed bug where WebKit could produce an exception when a bookmark was requested when there wasn't a proper selection.
+	Fixed bug where WebKit would fail to open the image dialog since it would be returning false for a class name instead of a string.
+	Fixed so alignment and indentation works properly when forced_root_blocks is set to false. It will produce a DIV by default.
+Version 3.5b1 (2012-03-08)
+	Added new event class that is faster and enables support for faking events.
+	Added new self_closing_elements, short_ended_elements, boolean_attributes, non_empty_elements and block_elements options to control the HTML Schema.
+	Added new schema option and support for the HTML5 schema.
+	Added new visualblocks plugin that shows html5 blocks with visual borders.
+	Added new types and selector options to make it easier to create editor instances with different configs.
+	Added new preview of formatting options in various listboxes.
+	Added new preview_styles option that enables control over what gets previewed.
+	Fixed bug where content css would be loaded twice into iframe. 
+	Fixed bug where start elements with only whitespace in the attribute part wouldn't be correctly parsed.
+	Fixed bug where the advlink dialog would produce an error about the addSelectAccessibility function not being defined.
+	Fixed bug where the caret would be placed at an incorrect position if span was removed by the invalid_elements setting.
+	Fixed bug where elements inside a white space preserve element like pre didn't inherit the behavior while parsing.
+Version 3.4.9.x (2012-02-xx)
+	Improved behaviour of backspacing into a table to be consistant across browsers and disable backspace when cursor immediately follows a table.
+	Improved edit CSS style plugin for single and multiple block selection and provide option to apply style to only selected text.
+	Fixed bug in Chrome where moving caret down in table and pasting throws errors.
+	Corrected reference to TinyMCE trim function.
+	Fixed bug where Ignore All in IE did not remove the underline from the selected word.
+	Fixed bug in html source editor word wrap option not wrapping text in Webkit browsers.
+	Fixed bug where it was possible to insert an invalid colour in the color pop-up dialog.
+	Fixed bug in Webkit where if anchor is on last line by itself caret can not be placed after it.
 Version 3.4.9 (2012-02-23)
 	Added settings to wordcount plugin to configure update rate and checking wordcount on backspace and delete using wordcount_update_rate and wordcount_update_on_delete.
 	Fixed bug in Webkit and IE where deleting empty paragraphs would remove entire editor contents.
