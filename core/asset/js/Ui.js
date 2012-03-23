@@ -56,7 +56,7 @@ Todoyu.Ui = {
 				theme:					'advanced',
 				width:					'100%',
 				content_css:			'core/asset/css/tinymce.css',
-				valid_elements:			'strong/b,em/i,p,br,u,ol[style],ul[style],li,pre,span[style],hr,a[href|title|target=_blank]',
+				valid_elements:			'strong/b,em/i,p,br,u,ol,ul,li,pre,span[style],hr,a[href|title|target=_blank]',
 					/* Plugin Autoresize */
 				autoresize_max_height:	400,
 					/* Plugin Paste */
