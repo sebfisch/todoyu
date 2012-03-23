@@ -266,10 +266,10 @@ div.fElement {
 			position:relative;
 			border-top:1px solid $grey03;
 
-			span {
-				.label {
-					cursor:pointer; }
+			.formtrigger {
+				cursor:pointer; }
 
+			span {
 				&.additionalStuff {
 					position:absolute;
 					top:4px;
