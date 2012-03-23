@@ -102,11 +102,11 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'compress'	=> true
 		),
 		array(
-			'file'		=> 'core/lib/js/prototype/prototype.js',
+			'file'		=> 'core/asset/js/prototype.js',
 			'position'	=> 26
 		),
 		array(
-			'file'		=> 'core/lib/js/prototype/innersvg.js',
+			'file'		=> 'core/asset/js/innersvg.js',
 			'position'	=> 26
 		),
 		array(
@@ -372,12 +372,12 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/lib/js/jscalendar/jscalendar.css',
+			'file'		=> 'core/asset/js/jscalendar/jscalendar.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/lib/js/prototype-window/themes/todoyu.css',
+			'file'		=> 'core/asset/js/prototype-window/themes/todoyu.css',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
