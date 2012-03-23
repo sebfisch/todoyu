@@ -64,88 +64,24 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 	 * @return	String
 	 */
 	protected function getJsSetup() {
-		$defaultConfig	= $this->getDefaultSetupOptions();
-		$customConfig	= TodoyuArray::assure($this->config['calendar']);
-		$config			= array_merge($defaultConfig, $customConfig);
-
 		$htmlID	= $this->getHtmlID();
 		$format	= $this->getFormat();
 
-			// Setup JsCal
-		$jsCode	= self::getCalendarSetupJS($config);
-		$jsCode.= self::getCalendarFormatSetupJS($htmlID, $format);
-
-			// Add onchange validation observer
-		$jsCode.= 'Todoyu.DateField.addValidator(\'' . $htmlID . '\', \'' . $format . '\');';
+		$baseConfig	= self::getBaseCalendarConfig($htmlID, $format);
+		$fieldConfig= TodoyuArray::assure($this->config['calendar']);
+		$config		= array_merge($baseConfig, $fieldConfig);
+		$jsCode		= 'Todoyu.Ui.initCalendar(' . json_encode($config) . ');';
 
 		return TodoyuString::wrapScript($jsCode);
 	}
 
 
-
-
-	/**
-	 * Get JavaScript setup code for calendar
-	 *
-	 * @param	Array	$config
-	 * @return	String
-	 */
-	public static function getCalendarSetupJS(array $config) {
-		$jsConf	= array();
-
-		foreach($config as $key => $value) {
-			$jsConf[] = $key . ' : ' . $value;
-		}
-
-		return 'Calendar.setup({' . implode(',', $jsConf) . '});';
-	}
-
-
-
-	/**
-	 * Get JavaScript code for setting format of calendar
-	 *
-	 * @param	String	$htmlID
-	 * @param	String	$format
-	 * @return	String
-	 */
-	public static function getCalendarFormatSetupJS($htmlID, $format = '') {
-		if( empty($format) ) {
-			$format	= TodoyuTime::getFormat('date');
-		}
-
-		return 'Todoyu.JsCalFormat["' . $htmlID . '"] = "' . $format . '";';
-	}
-
-
-
-	/**
-	 * Get default init options for calendar
-	 *
-	 * @return	Array
-	 */
-	protected function getDefaultSetupOptions() {
-		return self::getSetupOptions($this->getHtmlID(), $this->getFormat());
-	}
-
-
-
-	/**
-	 * Get init options for calendar
-	 *
-	 * @param	String	$htmlID
-	 * @param	String	$format
-	 * @return	Array
-	 */
-	public static function getSetupOptions($htmlID, $format) {
+	public static function getBaseCalendarConfig($htmlID, $format) {
 		return array(
-			'inputField'	=> '"' . $htmlID . '"',
-			'range'			=> '[1990,2020]',
-			'ifFormat'		=> '"' . $format . '"',
-			'align'			=> '"br"',
-			'button'		=> '"' . $htmlID . '-calicon"',
-			'firstDay'		=> TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek(),
-			'onClose'		=> 'Todoyu.Helper.onCalendarDateChanged.bind(Todoyu.Helper)'
+			'inputField'	=> $htmlID,
+			'button'		=> $htmlID . '-calicon',
+			'ifFormat'		=> $format,
+			'firstDay'		=> TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek()
 		);
 	}
 

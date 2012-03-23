@@ -39,22 +39,8 @@ class TodoyuFormElement_DateTime extends TodoyuFormElement_Date {
 			// Initialize directly with the base class, not the parent
 		TodoyuFormElement::__construct('datetime', $name, $fieldset, $config);
 		TodoyuFormElement::setValue(false);
-	}
 
-
-
-	/**
-	 * Get default config options
-	 * Add 'showsTime' to config
-	 *
-	 * @return	Array
-	 */
-	protected function getDefaultSetupOptions() {
-		$options	= parent::getDefaultSetupOptions();
-
-		$options['showsTime'] = 'true';
-
-		return $options;
+		$this->config['calendar']['showsTime'] = true;
 	}
 
 

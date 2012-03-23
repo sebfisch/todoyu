@@ -100,11 +100,6 @@ Todoyu::$CONFIG['FORM']['TYPES']['expandAllButton'] = array(
 	'template'	=> 'core/view/form/FormElement_Button.tmpl'
 );
 
-Todoyu::$CONFIG['FORM']['TYPES']['time'] = array(
-	'class'		=> 'TodoyuFormElement_Time',
-	'template'	=> 'core/view/form/FormElement_Time.tmpl'
-);
-
 Todoyu::$CONFIG['FORM']['TYPES']['duration'] = array(
 	'class'		=> 'TodoyuFormElement_Duration',
 	'template'	=> 'core/view/form/FormElement_Duration.tmpl'

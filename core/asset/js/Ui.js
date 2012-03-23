@@ -40,6 +40,8 @@ Todoyu.Ui = {
 	 */
 	rteOptions: false,
 
+	calendarOptions: false,
+
 
 
 	/**
@@ -583,23 +585,6 @@ Todoyu.Ui = {
 
 
 	/**
-	 * Show time picker
-	 *
-	 * @method	showTimePicker
-	 * @param	{Number}		idElement		ID of element the picker belongs to
-	 * @param	{Array}			config
-	 * @return	Todoyu.TimePicker
-	 */
-	showTimePicker: function(idElement, config) {
-		config = $H({
-			'rangeHour':	[0,23],
-			'rangeMinute':	[0,55]
-		}).merge(config).toObject();
-	},
-
-
-
-	/**
 	 * Show duration picker
 	 *
 	 * @method	showDurationPicker
@@ -607,11 +592,10 @@ Todoyu.Ui = {
 	 * @return	Todoyu.TimePicker
 	 */
 	showDurationPicker: function(idElement, config) {
-		config = config || {};
-		config = $H({
-			'rangeHour':	[0,99],
-			'rangeMinute':	[0,55]
-		}).merge(config).toObject();
+//		config = $H({
+//			rangeHour:		[0,99],
+//			rangeMinute:	[0,55]
+//		}).merge(config || {}).toObject();
 
 			// Form element is part of a dialog? close picker when dialog is closed
 		var parentDialog	= $(idElement).up('.dialog');
@@ -773,6 +757,46 @@ Todoyu.Ui = {
 		$(area).select('textarea.RTE').each(function(textarea){
 			tinyMCE.execCommand('mceRemoveControl', false, textarea.id);
 		});
+	},
+
+
+
+	/**
+	 * Initialize popup calendar
+	 *
+	 * @param	{Object}	fieldConfig
+	 */
+	initCalendar: function(fieldConfig) {
+		fieldConfig	= this.getCalendarConfig(fieldConfig);
+
+		if( fieldConfig.disableFunc && !Object.isFunction(fieldConfig.disableFunc) ) {
+			fieldConfig.disableFunc = Todoyu.getFunctionFromString(fieldConfig.disableFunc, true);
+		}
+
+		Todoyu.JsCalFormat[fieldConfig.inputField] = fieldConfig.ifFormat;
+		Todoyu.DateField.addValidator(fieldConfig.inputField, fieldConfig.ifFormat);
+		Calendar.setup(fieldConfig);
+	},
+
+
+
+	/**
+	 * Get custom calendar config
+	 *
+	 * @param	{Object}	fieldConfig
+	 * @return	{Object}
+	 */
+	getCalendarConfig: function(fieldConfig) {
+		if( !this.calendarOptions ) {
+			this.calendarOptions = {
+				range:		[1990,2020],
+				align:		"br",
+				firstDay:	1,
+				onClose:	Todoyu.Helper.onCalendarDateChanged.bind(Todoyu.Helper)
+			};
+		}
+
+		return $H(this.calendarOptions).merge(fieldConfig || {}).toObject();
 	},
 
 
