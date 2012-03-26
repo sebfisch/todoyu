@@ -44,7 +44,7 @@ var serializeXML = function(node, output) {
     // TODO: Handle DOCUMENT nodes.
     alert('Unknown type of element: ' + nodeType);
   }
-}
+};
 
 // The innerHTML DOM property for SVGElement.
 Object.defineProperty(SVGElement.prototype, 'innerHTML', {
@@ -79,7 +79,7 @@ Object.defineProperty(SVGElement.prototype, 'innerHTML', {
       }
     } catch(e) {
       throw new Error('Error parsing XML string');
-    };
+    }
   }
 });
 
