@@ -218,18 +218,23 @@ Todoyu.Headlets = {
 	 * False means, no headlet is open at the moment
 	 *
 	 * @method	submitOpenStatus
+	 * @param	{Function}			onComplete		Function reference
 	 */
-	submitOpenStatus: function() {
+	submitOpenStatus: function(onComplete) {
 		var headlet		= this.getOpenHeadlet();
 		var headletKey	= headlet && headlet.isOverlay() ? headlet.name : '';
 
 		var url		= Todoyu.getUrl('core', 'headlet');
-		var options	= {
+		options	= {
 			parameters: {
 				action: 'open',
 				headlet:headletKey
 			}
 		};
+
+		if( onComplete !== null ) {
+			options.onComplete	= onComplete;
+		}
 
 		Todoyu.send(url, options);
 	}

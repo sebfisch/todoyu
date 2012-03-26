@@ -35,7 +35,7 @@
 		.odd {
 			background-color:$grey01; }
 
-		.current {
+		&.current {
 			background-color:$colorCorporate02; }
 
 		a.title {
