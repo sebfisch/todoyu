@@ -669,8 +669,9 @@ class TodoyuDateRange {
 	 */
 	public function getAmountOfDays() {
 		$dayTimestamps	= $this->getDayTimestamps();
+		$amount			= sizeof($dayTimestamps);
 
-		return sizeof($dayTimestamps);
+		return $amount > 0 ? $amount : 1;
 	}
 
 	
