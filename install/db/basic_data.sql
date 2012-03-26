@@ -347,8 +347,6 @@ INSERT INTO `system_right` (`id`, `ext`, `right`, `id_role`) VALUES
 (819, 112, 'edittask:accepted:edit', 2),
 (820, 112, 'edittask:rejected:edit', 3),
 (821, 112, 'edittask:rejected:edit', 2),
-(822, 112, 'edittask:useTaskAndContainerClipboard', 3),
-(823, 112, 'edittask:useTaskAndContainerClipboard', 2),
 (824, 112, 'edittaskdetail:editDateStart', 3),
 (825, 112, 'edittaskdetail:editDateStart', 2),
 (826, 112, 'edittaskdetail:editDateEnd', 3),
