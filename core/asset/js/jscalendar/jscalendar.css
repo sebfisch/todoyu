@@ -41,7 +41,7 @@ div.calendar .button { /* "<<", "<", ">", ">>" buttons have this class */
 }
 
 div.calendar .nav {
-	background:#D7DCC6 url(../../../lib/js/jscalendar/menuarrow.gif) no-repeat 100% 100%;
+	background:#D7DCC6 url(menuarrow.gif) no-repeat 100% 100%;
 }
 
 div.calendar thead .title {	/* This holds the current "month, year" */
