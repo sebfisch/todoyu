@@ -65,8 +65,10 @@ class TodoyuHookManager {
 		$hookFuncRefs	= self::getHooks($extKey, $name);
 		$returnValues	= array();
 
+		TodoyuLogger::logCore('Hook: ' . $extKey . '/' . $name);
+
 		foreach($hookFuncRefs as $hookFuncRef) {
-			TodoyuLogger::logCore('Hook: ' . $hookFuncRef);
+			TodoyuLogger::logCore('Call: ' . $hookFuncRef);
 			$returnValues[] = TodoyuFunction::callUserFunctionArray($hookFuncRef, $params);
 		}
 

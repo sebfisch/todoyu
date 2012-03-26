@@ -74,8 +74,10 @@ class TodoyuFormHook {
 		$idRecord	= (int) $idRecord;
 		$hooks		= self::getHooks('buildForm', $xmlPath);
 
+		TodoyuLogger::logCore('Hook BuildForm: ' . $xmlPath);
+
 		foreach($hooks as $hook) {
-			TodoyuLogger::logCore('Hook: ' . $hook['funcRef']);
+			TodoyuLogger::logCore('Call: ' . $hook['funcRef']);
 			$result	= TodoyuFunction::callUserFunction($hook['funcRef'], $form, $idRecord, $params);
 
 			if( $result instanceof TodoyuForm ) {
@@ -93,6 +95,8 @@ class TodoyuFormHook {
 	 *
 	 * @param	String	$xmlPath
 	 * @param	Array	$formDataVar
+	 * @param	Array	$additionalParams
+	 * @return	Mixed
 	 */
 	public static function callRenderForm($xmlPath, $formDataVar, array $additionalParams = array()) {
 		$callbacks	= self::getHooks('renderForm', $xmlPath);
@@ -100,8 +104,10 @@ class TodoyuFormHook {
 			// Prepend data var
 		array_unshift($hookParams, $formDataVar);
 
+		TodoyuLogger::logCore('Hook RenderForm: ' . $xmlPath);
+
 		foreach($callbacks as $callback) {
-			TodoyuLogger::logCore('Hook: ' . $callback['funcRef']);
+			TodoyuLogger::logCore('Call: ' . $callback['funcRef']);
 			$hookParams[0]	= TodoyuFunction::callUserFunctionArray($callback['funcRef'], $hookParams);
 		}
 
@@ -123,8 +129,10 @@ class TodoyuFormHook {
 		$idRecord	= (int) $idRecord;
 		$hooks		= self::getHooks('loadData', $xmlPath);
 
+		TodoyuLogger::logCore('Hook LoadData: ' . $xmlPath);
+
 		foreach($hooks as $hook) {
-			TodoyuLogger::logCore('Hook: ' . $hook['funcRef']);
+			TodoyuLogger::logCore('Call: ' . $hook['funcRef']);
 			$data	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord, $params);
 		}
 
@@ -147,8 +155,10 @@ class TodoyuFormHook {
 		$idRecord	= (int) $idRecord;
 		$hooks		= self::getHooks('saveData', $xmlPath);
 
+		TodoyuLogger::logCore('Hook SaveData: ' . $xmlPath);
+
 		foreach($hooks as $hook) {
-			TodoyuLogger::logCore('Hook: ' . $hook['funcRef']);
+			TodoyuLogger::logCore('Call: ' . $hook['funcRef']);
 			$result	= TodoyuFunction::callUserFunction($hook['funcRef'], $data, $idRecord, $params);
 
 			if( is_array($result) ) {
