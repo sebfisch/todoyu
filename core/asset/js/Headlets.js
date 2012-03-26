@@ -57,12 +57,9 @@ Todoyu.Headlets = {
 	 * @method	init
 	 */
 	init: function() {
-			// Close headlets when clicked outside of the headlets (on body)
-		if( $('headlets') ) {
-			Todoyu.Ui.addBodyClickObserver(this.onBodyClick.bind(this));
-		}
-
 		if( this.areHeadletsVisible() ) {
+				// Close headlets when clicked outside of the headlets (on body)
+			Todoyu.Ui.addBodyClickObserver(this.onBodyClick.bind(this));
 			this.detectOpenHeadlet.bind(this).delay(0.3);
 		}
 	},
