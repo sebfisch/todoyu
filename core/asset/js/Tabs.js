@@ -506,6 +506,8 @@ Todoyu.Tabs = {
 		this.getTab(list, idTab).highlight({
 			duration: 0.5,
 			afterFinish: function(effect) {
+				effect.element.style.removeProperty('background-image');
+				effect.element.style.removeProperty('background-color');
 				effect.element.removeAttribute('style');
 			}
 		});
