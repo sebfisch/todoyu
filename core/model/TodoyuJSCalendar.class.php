@@ -36,7 +36,7 @@ class TodoyuJSCalendar {
 		$temp		= explode('_', $locale);
 		$lang		= strtolower($temp[0]);
 
-		$fileCore	= TodoyuFileManager::pathAbsolute('core/lib/js/jscalendar/lang/calendar-' . $lang . '.js');
+		$fileCore	= TodoyuFileManager::pathAbsolute('core/asset/js/jscalendar/lang/calendar-' . $lang . '.js');
 		$fileLibUtf8= TodoyuFileManager::pathAbsolute('lib/js/jscalendar/lang/calendar-' . $lang . '-utf8.js');
 		$fileLib	= TodoyuFileManager::pathAbsolute('lib/js/jscalendar/lang/calendar-' . $lang . '.js');
 		$fileEn		= TodoyuFileManager::pathAbsolute('lib/js/jscalendar/lang/calendar-en.js');
