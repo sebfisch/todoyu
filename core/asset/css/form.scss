@@ -98,7 +98,14 @@ form {
 			/*transform:uppercase;*/
 		}
 		font-weight:bold;
-		border-bottom:1px solid $grey01; }
+		border-bottom:1px solid $grey01;
+
+		& a.ajaxloader {
+			padding-left:32px;
+			padding-bottom:20px;
+			background:url(../img/ajax-loader.gif) no-repeat 7px 0px;
+		}
+	}
 
 textarea,
 select,
