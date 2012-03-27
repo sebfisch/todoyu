@@ -46,7 +46,7 @@ class Todoyu {
 	/**
 	 * Database object instance
 	 *
-	 * @var	Database
+	 * @var	TodoyuDatabase
 	 */
 	private static $db;
 
@@ -88,9 +88,10 @@ class Todoyu {
 	public static function init() {
 			// Set system locale with setlocale
 		self::setLocale();
-
 			// Set system timezone
 		self::setTimezone();
+			// Dummy init of database
+		self::db();
 
 			// Add autoloader clear cache hook
 		TodoyuHookManager::registerHook('core', 'clearCache', 'TodoyuAutoloader::clearCacheHook');
