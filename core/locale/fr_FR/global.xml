@@ -79,7 +79,7 @@
 	<label index="headlet.ajaxloader.label">Synchronisation avec le serveur Web</label>
 	<label index="headlet.about.label">A propos de todoyu</label>
 	<label index="unknown">n/a</label>
-	<label index="loaderBox.title">Sera traité dans  un moment</label>
+	<label index="loaderBox.title">Sera traité dans un moment</label>
 	<label index="panelwidget.toggle">Ouvrir/Fermer ce Panneau</label>
 	<label index="date_update">Date de dernière MAJ</label>
 	<label index="date_create">Date de Création</label>

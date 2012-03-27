@@ -280,7 +280,7 @@ class TodoyuSql {
 	 * @return	String
 	 */
 	public static function escape($string) {
-		return is_float($string) ? str_replace(',', '.', (string)$string) : mysql_real_escape_string($string);
+		return is_float($string) ? str_replace(',', '.', (string) $string) : mysql_real_escape_string($string);
 	}
 
 
