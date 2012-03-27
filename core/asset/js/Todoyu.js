@@ -84,7 +84,7 @@ var Todoyu = {
 
 	/**
 	 * System config. Injected on page load
-	 * 
+	 *
 	 * @type	Object
 	 */
 	Config: {},
