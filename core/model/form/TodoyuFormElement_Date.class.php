@@ -76,6 +76,15 @@ class TodoyuFormElement_Date extends TodoyuFormElement {
 	}
 
 
+
+	/**
+	 * Get basic calendar config
+	 * Static helper
+	 *
+	 * @param	String		$htmlID
+	 * @param	String		$format
+	 * @return	Array
+	 */
 	public static function getBaseCalendarConfig($htmlID, $format) {
 		return array(
 			'inputField'	=> $htmlID,

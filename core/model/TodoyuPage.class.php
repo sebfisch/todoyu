@@ -56,10 +56,10 @@ class TodoyuPage {
 			// Load all page configuration provided by extensions
 		self::loadExtPageConfig();
 
-			// Ensure cache\js\Config.js to be available
-		if( ! TodoyuFileManager::isFile(PATH_CACHE . DIR_SEP . 'js' . DIR_SEP . 'Config.js') ) {
-			TodoyuConfigManager::saveJavaScriptSystemConfig();
-		}
+			// Ensure cache\js\Config.XX.js to be available
+		TodoyuConfigManager::checkJavaScriptConfig();
+		self::addJavaScriptConfigAsset();
+
 			// Add core assets
 		self::addCoreAssets();
 			// Add all assets of allowed extensions
@@ -98,6 +98,18 @@ class TodoyuPage {
 		foreach($cssFiles as $cssFile) {
 			self::addStylesheet($cssFile['file'], $cssFile['media'], $cssFile['position'], $cssFile['compress'], $cssFile['merge']);
 		}
+	}
+
+
+
+	/**
+	 * Add javascript config asset for user
+	 *
+	 */
+	private static function addJavaScriptConfigAsset() {
+		$idPerson	= TodoyuAuth::getPersonID();
+
+		self::addJavascript('cache/jsconfig/Config.' . $idPerson . '.js', 51, false, false, false);
 	}
 
 

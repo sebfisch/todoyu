@@ -202,7 +202,7 @@ Todoyu.Time = {
 		var shift = (((date.getDay() % 7) - 1) * -1);
 
 			// Adjust 1st day of week from monday to sunday
-		var firstDayIsSunday	=  Todoyu.Config.firstDayOfWeek === 0;
+		var firstDayIsSunday	=  Todoyu.Config.system.firstDayOfWeek === 0;
 		if( firstDayIsSunday ) {
 			shift = shift -1;
 		}

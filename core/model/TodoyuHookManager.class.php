@@ -92,8 +92,10 @@ class TodoyuHookManager {
 			// Prepend data var
 		array_unshift($hookParams, $dataVar);
 
+		TodoyuLogger::logCore('Hook: ' . $extKey . '.' . $name);
+
 		foreach($hookFuncRefs as $hookFuncRef) {
-			TodoyuLogger::logCore('Hook: ' . $hookFuncRef);
+			TodoyuLogger::logCore('Call: ' . $hookFuncRef);
 			$hookParams[0] = TodoyuFunction::callUserFunctionArray($hookFuncRef, $hookParams);
 		}
 

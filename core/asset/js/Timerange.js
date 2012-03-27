@@ -148,28 +148,19 @@ Todoyu.Timerange = Class.create({
 	initCalendars: function() {
 		var dateFormat	= Todoyu.R['dateFormat'];
 
-		Calendar.setup({
+		Todoyu.Ui.initCalendar({
 			inputField:		this.name + '-start',
-			range:			[1990,2020],
 			ifFormat:		dateFormat,
-			align:			"br",
 			button:			this.name + '-start-calicon',
-			firstDay:		1,
 			onClose:		this.onCalendarClosed.bind(this, 'start')
 		});
 
-		Calendar.setup({
+		Todoyu.Ui.initCalendar({
 			inputField:		this.name + '-end',
-			range:			[1990,2020],
 			ifFormat:		dateFormat,
-			align:			"br",
 			button:			this.name + '-end-calicon',
-			firstDay:		1,
 			onClose:		this.onCalendarClosed.bind(this, 'end')
 		});
-
-		Todoyu.JsCalFormat[this.name + '-start']	= dateFormat;
-		Todoyu.JsCalFormat[this.name + '-end']		= dateFormat;
 	},
 
 

@@ -782,6 +782,31 @@ Todoyu.Form = {
 	 */
 	hasError: function(form) {
 		return $(form).down('.fElement.error') !== undefined;
-	}
+	},
+
+
+
+	/**
+	 * Mark field as error/valid
+	 *
+	 * @param	{String}	input
+	 * @param	{Boolean}	hasError
+	 */
+	setFieldErrorStatus: function(input, hasError) {
+		var method	= hasError ? 'addClassName' : 'removeClassName';
+		var field	= $(input).up('.fElement');
+
+		field[method]('error');
+		field.down('.fLabel')[method]('error');
+
+			// Clear error message
+		if( ! hasError ) {
+			var errorMsg = field.down('.errorMessage');
+			if( errorMsg ) {
+				errorMsg.update('');
+			}
+		}
+	},
+
 
 };

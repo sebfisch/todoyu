@@ -64,19 +64,69 @@ class TodoyuConfigManager {
 
 
 	/**
+	 * Delete javascript config files for all users
+	 *
+	 */
+	public static function clearJavaScriptConfig() {
+		TodoyuFileManager::deleteFolderContents('cache/jsconfig');
+	}
+
+
+
+	/**
+	 * Check whether javascript config file exists for user
+	 * Create if missing
+	 *
+	 */
+	public static function checkJavaScriptConfig() {
+		$idPerson	= TodoyuAuth::getPersonID();
+		$path		= 'cache/jsconfig/Config.' . $idPerson . '.js';
+
+		if( !TodoyuFileManager::isFile($path) ) {
+			TodoyuConfigManager::saveJavaScriptConfig();
+		}
+	}
+
+
+
+	/**
 	 * Save javaScript system config (cache/js/Config.js)
 	 *
-	 * @param	Array	$data
 	 */
-	public static function saveJavaScriptSystemConfig(array $data = array()) {
-		$savePath	= 'cache/js/Config.js';
+	public static function saveJavaScriptConfig() {
+		$idPerson	= TodoyuAuth::getPersonID();
+		$savePath	= 'cache/jsconfig/Config.' . $idPerson . '.js';
 		$template	= 'core/view/template/Config.js.tmpl';
+		$config		= self::getBasicJavaScriptSystemConfig();
+		$config		= TodoyuHookManager::callHookDataModifier('core', 'javascript.config', $config, array($idPerson));
 
-		if( ! isset($data['firstDayOfWeek']) ) {
-			$data['firstDayOfWeek']	= TodoyuSysmanagerSystemConfigManager::getFirstDayOfWeek();
-		}
+		$data = array(
+			'config' => TodoyuArray::assure($config)
+		);
 
 		self::saveConfigFile($savePath, $template, $data, false);
+	}
+
+
+
+	/**
+	 * Get basic config values for javascript config file
+	 *
+	 * @return	Array
+	 */
+	private static function getBasicJavaScriptSystemConfig() {
+		return array(
+			'system' => array(
+				'name'			=> Todoyu::$CONFIG['SYSTEM']['name'],
+				'locale'		=> Todoyu::$CONFIG['SYSTEM']['locale'],
+				'timezone'		=> Todoyu::$CONFIG['SYSTEM']['timezone'],
+				'firstDayOfWeek'=> Todoyu::$CONFIG['SYSTEM']['firstDayOfWeek']
+			),
+			'dateFormat' => array(
+				'date'		=> TodoyuTime::getFormat('date'),
+				'datetime'	=> TodoyuTime::getFormat('datetime')
+			)
+		);
 	}
 
 

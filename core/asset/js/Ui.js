@@ -40,8 +40,19 @@ Todoyu.Ui = {
 	 */
 	rteOptions: false,
 
-	calendarOptions: false,
+	/**
+	 * Default calendar options
+	 *
+	 * @type	Object
+	 */
+	calendarDefaultOptions: false,
 
+	/**
+	 * Calendar options of instances
+	 *
+	 * @type	Object
+	 */
+	calendarOptions: {},
 
 
 	/**
@@ -767,14 +778,20 @@ Todoyu.Ui = {
 	 * @param	{Object}	fieldConfig
 	 */
 	initCalendar: function(fieldConfig) {
-		fieldConfig	= this.getCalendarConfig(fieldConfig);
+		fieldConfig	= this.buildCalendarFieldConfig(fieldConfig);
 
 		if( fieldConfig.disableFunc && !Object.isFunction(fieldConfig.disableFunc) ) {
 			fieldConfig.disableFunc = Todoyu.getFunctionFromString(fieldConfig.disableFunc, true);
 		}
 
-		Todoyu.JsCalFormat[fieldConfig.inputField] = fieldConfig.ifFormat;
-		Todoyu.DateField.addValidator(fieldConfig.inputField, fieldConfig.ifFormat);
+			// Store calendar options
+		this.calendarOptions[fieldConfig.inputField] = Object.clone(fieldConfig);
+
+			// Add validator if not disabled
+		if( !fieldConfig.noValidator ) {
+			Todoyu.DateField.addValidator(fieldConfig.inputField, fieldConfig.ifFormat);
+		}
+
 		Calendar.setup(fieldConfig);
 	},
 
@@ -786,9 +803,9 @@ Todoyu.Ui = {
 	 * @param	{Object}	fieldConfig
 	 * @return	{Object}
 	 */
-	getCalendarConfig: function(fieldConfig) {
-		if( !this.calendarOptions ) {
-			this.calendarOptions = {
+	buildCalendarFieldConfig: function(fieldConfig) {
+		if( !this.calendarDefaultOptions ) {
+			this.calendarDefaultOptions = {
 				range:		[1990,2020],
 				align:		"br",
 				firstDay:	1,
@@ -796,7 +813,20 @@ Todoyu.Ui = {
 			};
 		}
 
-		return $H(this.calendarOptions).merge(fieldConfig || {}).toObject();
+		return $H(this.calendarDefaultOptions).merge(fieldConfig || {}).toObject();
+	},
+
+
+
+	/**
+	 * Get calendar options for a field
+	 *
+	 * @param	{String|Element}	field
+	 */
+	getCalendarOptions: function(field) {
+		var options = this.calendarOptions[$(field).id];
+
+		return options ? Object.clone(options) : {};
 	},
 
 

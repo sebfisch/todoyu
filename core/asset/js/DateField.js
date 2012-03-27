@@ -31,6 +31,11 @@
 Todoyu.DateField = {
 
 	/**
+	 * Validators for date field
+	 */
+	validators: {},
+
+	/**
 	 * Install date field onchange observation for input validation
 	 *
 	 * @method	addValidator
@@ -38,7 +43,55 @@ Todoyu.DateField = {
 	 * @param	{String}	format
 	 */
 	addValidator: function(idField, format) {
-		$(idField).on('change', 'input', this.validateDateFormat.bind(this, format));
+		this.removeValidator(idField);
+
+		this.validators[idField] = $(idField).on('change', 'input', this.validateDateFormat.bind(this, format));
+	},
+
+
+
+	/**
+	 * Remove a validator if registered
+	 *
+	 * @param	{String}	idField
+	 */
+	removeValidator: function(idField) {
+		if( this.validators[idField] && this.validators[idField].stop ) {
+			this.validators[idField].stop();
+			delete this.validators[idField];
+		}
+	},
+
+
+
+	/**
+	 * Change/replace a calendar config
+	 *
+	 * @param	{String|Element}	field
+	 * @param	{Object}			newOptions
+	 */
+	changeCalendarConfig: function(field, newOptions) {
+		var date	= this.getDate(field);
+		var oldOptions	= Todoyu.Ui.getCalendarOptions(field);
+		var options		= Object.extend(oldOptions, newOptions);
+
+		Todoyu.Ui.initCalendar(options);
+
+		this.setDate(field, date);
+	},
+
+
+
+	/**
+	 * Change calendar date format
+	 *
+	 * @param	{String|Element}	field
+	 * @param	{String}			newFormat
+	 */
+	changeCalendarFormat: function(field, newFormat) {
+		this.changeCalendarConfig(field, {
+			ifFormat: newFormat
+		});
 	},
 
 
@@ -55,7 +108,7 @@ Todoyu.DateField = {
 		var dateValue	= $F(input).strip();
 
 			// Remove all errors
-		this.setError(input, false);
+		Todoyu.Form.setFieldErrorStatus(input, false);
 		Todoyu.Notification.closeTypeNotes('date.formaterror');
 
 			// Empty is valid too
@@ -67,33 +120,12 @@ Todoyu.DateField = {
 		if( ! Todoyu.Time.isDateString(dateValue, format) ) {
 			Todoyu.notifyError('[LLL:core.date.warning.dateformat.invalid]', 'date.formaterror');
 
-			this.setError(input, true);
+			Todoyu.Form.setFieldErrorStatus(input, true);
 		}
 	},
 
 
 
-	/**
-	 * Mark field as error/valid
-	 *
-	 * @param	{String}	input
-	 * @param	{Boolean}	hasError
-	 */
-	setError: function(input, hasError) {
-		var method	= hasError ? 'addClassName' : 'removeClassName';
-		var field	= $(input).up('.fElement');
-
-		field[method]('error');
-		field.down('.fLabel')[method]('error');
-
-			// Clear error message
-		if( ! hasError ) {
-			var errorMsg = field.down('.errorMessage');
-			if( errorMsg ) {
-				errorMsg.update('');
-			}
-		}
-	},
 
 
 
@@ -105,7 +137,7 @@ Todoyu.DateField = {
 	 * @return	{String}			Format string
 	 */
 	getFormat: function(field) {
-		return Todoyu.JsCalFormat[$(field).id];
+		return Todoyu.Ui.getCalendarOptions(field).ifFormat;
 	},
 
 
@@ -119,6 +151,18 @@ Todoyu.DateField = {
 	 */
 	getDate: function(field) {
 		return Date.parseDate($F(field), this.getFormat(field));
+	},
+
+
+
+	/**
+	 * Set date for field (requires a registered field config)
+	 *
+	 * @param	{Element|String}	field
+	 * @param	{Date}				date
+	 */
+	setDate: function(field, date) {
+		$(field).value = date.print(this.getFormat(field));
 	},
 
 
@@ -151,14 +195,14 @@ Todoyu.DateField = {
 	 * @param	{Number}			month
 	 * @param	{Number}			day
 	 */
-	setDate: function(field, year, month, day) {
+	setDateByDay: function(field, year, month, day) {
 		var date	= this.getDate(field);
 
 		date.setFullYear(year);
 		date.setMonth(month);
 		date.setDate(day);
 
-		$(field).value = date.print(this.getFormat(field));
+		this.setDate(field, date);
 	},
 
 
