@@ -82,6 +82,13 @@ var Todoyu = {
 	 */
 	R: {},
 
+	/**
+	 * System config. Injected on page load
+	 * 
+	 * @type	Object
+	 */
+	Config: {},
+
 
 
 	/**
@@ -90,6 +97,7 @@ var Todoyu = {
 	 * @method	init
 	 */
 	init: function() {
+		this.loadConfig();
 		this.Ajax.Responders.init();
 		this.Headlets.init();
 		this.QuickInfo.init();
@@ -97,6 +105,19 @@ var Todoyu = {
 		this.Ui.observeBody();
 		this.initExtensions();
 		this.initConsole();
+	},
+
+
+
+	/**
+	 * Import todoyuTempConfig from window namespace into todoyu
+	 *
+	 */
+	loadConfig: function() {
+		if( window.todoyuTempConfig ) {
+			this.Config = window.todoyuTempConfig;
+			window.todoyuTempConfig = null;
+		}
 	},
 
 
