@@ -85,23 +85,54 @@ abstract class TodoyuExportBase {
 
 
 	/**
+	 * Get headers for download
+	 *
+	 * @param	String		$type
+	 * @param	String		$filename
+	 * @return	Array
+	 */
+	protected function getHeaders($type, $filename) {
+		$filename	= empty($filename) ? $this->filename : $filename;
+
+		return array(
+			'Content-Type'			=> $type,
+			'Content-Disposition'	=> 'attachment; filename="' . $filename . '"',
+			'Pragma'				=> 'no-cache',
+			'Expires'				=> 0
+		);
+	}
+
+
+
+	/**
+	 * Send headers for download
+	 *
+	 * @param	String		$type
+	 * @param	String		$filename
+	 */
+	protected function sendHeaders($type, $filename) {
+		$headers	= $this->getHeaders($type, $filename);
+
+		foreach($headers as $name => $value) {
+			header($name . ': ' . $value);
+		}
+	}
+
+
+
+	/**
 	 * Sends the file to download
 	 *
 	 * @param	String	$type
 	 * @param	String	$filename
 	 */
 	public function download($type, $filename = '') {
-		header('Content-Type: ' . $type);
-		header('Content-Disposition: attachment; filename=' . ($filename ? $filename : $this->filename));
-		header('Content-Description: csv File');
-		header('Pragma: no-cache');
-		header('Expires: 0');
+		$this->sendHeaders($type, $filename);
 
-		$content = iconv('UTF-8', 'WINDOWS-1257', html_entity_decode($this->getContent(), ENT_COMPAT, 'utf-8'));
-		echo $content; //$this->getContent();
-
+		echo $this->getContent();
 		exit();
 	}
+
 }
 
 ?>

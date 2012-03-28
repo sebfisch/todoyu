@@ -50,7 +50,7 @@ class TodoyuExportCSV extends TodoyuExportBase {
 
 
 	/**
-	 * @var	Booolean
+	 * @var	Boolean
 	 */
 	private $useTableHeaders	= true;
 
@@ -73,6 +73,19 @@ class TodoyuExportCSV extends TodoyuExportBase {
 
 
 	/**
+	 * Destructor - deletes the temporary file
+	 */
+	public function __destruct() {
+		$this->closeFile();
+
+		if( is_file($this->tmpFile) ) {
+			unlink($this->tmpFile);
+		}
+	}
+
+
+
+	/**
 	 * Preparation for the CSV export
 	 *
 	 * @param	Array	$customConfig
@@ -82,7 +95,7 @@ class TodoyuExportCSV extends TodoyuExportBase {
 		TodoyuFileManager::makeDirDeep($pathTemp);
 
 		$this->tmpFile		= TodoyuFileManager::pathAbsolute($pathTemp . '/tmpExport_' . NOW . '.csv');
-		$this->filePointer	= fopen($this->tmpFile, 'w+');
+		$this->filePointer	= fopen($this->tmpFile, 'w');
 		$this->filename		= 'export_' . NOW . '.csv';
 
 		$defaultConfig	= Todoyu::$CONFIG['EXPORT']['CSV'];
@@ -187,19 +200,6 @@ class TodoyuExportCSV extends TodoyuExportBase {
 	 */
 	public function download($filename = '') {
 		parent::download('text/csv', $filename);
-	}
-
-
-
-	/**
-	 * Destructor - deletes the temporary file
-	 */
-	public function __destruct() {
-		$this->closeFile();
-
-		if( is_file($this->tmpFile) ) {
-			unlink($this->tmpFile);
-		}
 	}
 
 }
