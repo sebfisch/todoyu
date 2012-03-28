@@ -837,4 +837,22 @@ function Dwoo_Plugin_formatHours_compile(Dwoo_Compiler $compiler, $workload, $le
 	return 'TodoyuTime::formatHours(' . $workload . ', ' . $leadingZero . ')';
 }
 
+
+
+/**
+ * Plugin for listing renderer
+ *
+ * @param	Dwoo		$dwoo
+ * @param	String		$ext
+ * @param	String		$list
+ * @param	Integer		$offset
+ * @param	Boolean		$noPaging
+ * @param	Array		$params
+ * @return	String
+ */
+function Dwoo_Plugin_List(Dwoo $dwoo, $ext, $list, $offset = 0, $noPaging = false, array $params = array()) {
+	return TodoyuListingRenderer::render($ext, $list, $offset, $noPaging, $params);
+}
+
+
 ?>
