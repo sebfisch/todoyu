@@ -31,17 +31,12 @@
 
 			td {
 				&.icon {
-					width:10px; }
+					width:40px; }
 
 				&.message {
-					width:90%;
 					font-size:14px;
 					color:$grey09;
 					text-align:left; }
-
-				&.countdown {
-					display:none;
-					width:25px; }
 
 				&.close {
 					width:20px;

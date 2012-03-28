@@ -150,7 +150,6 @@ Todoyu.Notification = {
 				+	'<table width="100%"><tr>'
 				+		'<td class="icon">&nbsp;</td>'
 				+		'<td class="message">#{message}</td>'
-				+		'<td class="countdown" align="center">#{countdown}</td>'
 				+	'</tr></table></div>'
 			);
 		}
@@ -353,26 +352,6 @@ Todoyu.Notification = {
 	 */
 	onMouseOver: function(idNote, event) {
 		this.closeNote(idNote);
-	},
-
-
-
-	/**
-	 * @method	countDown
-	 * @param	{Number}		id
-	 */
-	countDown: function(id) {
-		if( $('notification-note-' + id) ) {
-			var countBox= $('notification-note-' + id).down('.countdown');
-			var current	= parseInt(countBox.innerHTML, 10);
-
-			if( current === 0 ) {
-				this.closeNote(id);
-			} else {
-				countBox.update(current-1);
-				this.countDown.bind(this).delay(1, id);
-			}
-		}
 	},
 
 
