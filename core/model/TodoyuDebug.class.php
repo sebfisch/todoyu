@@ -168,13 +168,8 @@ class TodoyuDebug {
 	 *
 	 * @param	Mixed		$item		Item to debug
 	 * @param	String		$title		Title for debug output
-	 * @param	String		$usernames	Only this listed users shall see the debug output
 	 */
-	public static function printPlain($item, $title = '', $usernames = null) {
-		if( ! is_null($usernames) && ! self::isCurrentUser($usernames) ) {
-			return;
-		}
-
+	public static function printPlain($item, $title = '') {
 		TodoyuHeader::sendTypeText();
 
 		$caller = self::getCaller();
