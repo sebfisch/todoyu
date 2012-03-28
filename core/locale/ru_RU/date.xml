@@ -51,4 +51,12 @@
 	<label index="yearly">Каждый год</label>
 	<label index="today">Сегодня</label>
 	<label index="warning.dateformat.invalid">Обнаружена неправильная дата (будет изменена при сохранении).</label>
+	<label index="dyndate.today">Сегодня</label>
+	<label index="dyndate.tomorrow">Завтра</label>
+	<label index="dyndate.dayaftertomorrow">Послезавтра</label>
+	<label index="dyndate.yesterday">Вчера</label>
+	<label index="dyndate.daybeforeyesterday">Позавчера</label>
+	<label index="dyndate.currentweek">Эта неделя</label>
+	<label index="dyndate.nextweek">Следующая неделя</label>
+	<label index="dyndate.lastweek">Предыдущая неделя</label>
 </labels>

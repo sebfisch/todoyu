@@ -53,4 +53,12 @@
 	<label index="yearly">Roczny</label>
 	<label index="today">Dzisiaj</label>
 	<label index="warning.dateformat.invalid">Wykryto nieprawidłową datę (zostanie zamieniona podczas zapisu).</label>
+	<label index="dyndate.today">Dzisiaj</label>
+	<label index="dyndate.tomorrow">Jutro</label>
+	<label index="dyndate.dayaftertomorrow">Pojutrze</label>
+	<label index="dyndate.yesterday">Wczoraj</label>
+	<label index="dyndate.daybeforeyesterday">Przedwczoraj</label>
+	<label index="dyndate.currentweek">Bieżący tydzień</label>
+	<label index="dyndate.nextweek">Następny tydzień</label>
+	<label index="dyndate.lastweek">Poprzedni tydzień</label>
 </labels>

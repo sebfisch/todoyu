@@ -53,4 +53,16 @@
 	<label index="yearly">Jährlich</label>
 	<label index="today">Heute</label>
 	<label index="warning.dateformat.invalid">Ungültiges Datum entdeckt (wird beim Speichern verändert).</label>
+	<label index="dyndate.today">Heute</label>
+	<label index="dyndate.tomorrow">Morgen</label>
+	<label index="dyndate.dayaftertomorrow">Übermorgen</label>
+	<label index="dyndate.yesterday">Gestern</label>
+	<label index="dyndate.daybeforeyesterday">Vorgestern</label>
+	<label index="dyndate.currentweek">Aktuelle Woche</label>
+	<label index="dyndate.nextweek">Nächste Woche</label>
+	<label index="dyndate.lastweek">Letzte Woche</label>
+	<label index="dyndate.currentmonth">Aktuelle Woche</label>
+	<label index="dyndate.currentyear">Aktuelles Jahr</label>
+	<label index="dyndate.lastyear">Letztes Jahr</label>
+	<label index="dyndate.nextyear">Nächstes Jahr</label>
 </labels>

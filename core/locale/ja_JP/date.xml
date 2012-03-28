@@ -51,4 +51,12 @@
 	<label index="yearly">年次</label>
 	<label index="today">今日</label>
 	<label index="warning.dateformat.invalid">無効な日付を検出 (保存時に変更されます)</label>
+	<label index="dyndate.today">今日</label>
+	<label index="dyndate.tomorrow">明日</label>
+	<label index="dyndate.dayaftertomorrow">明後日</label>
+	<label index="dyndate.yesterday">昨日</label>
+	<label index="dyndate.daybeforeyesterday">一昨日</label>
+	<label index="dyndate.currentweek">今週</label>
+	<label index="dyndate.nextweek">来週</label>
+	<label index="dyndate.lastweek">先週</label>
 </labels>

@@ -276,7 +276,7 @@ class TodoyuTime {
 	 * @param	Integer		$timestamp
 	 * @return	Integer
 	 */
-	public function getYearStart($timestamp = 0) {
+	public static function getYearStart($timestamp = 0) {
 		$timestamp	= self::time($timestamp);
 
 		return mktime(0, 0, 0, 1, 1, date('Y', $timestamp));

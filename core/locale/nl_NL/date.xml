@@ -50,4 +50,12 @@
 	<label index="monthly">maandelijks</label>
 	<label index="yearly">jaarlijks</label>
 	<label index="today">vandaag</label>
+	<label index="dyndate.today">Vandaag</label>
+	<label index="dyndate.tomorrow">Morgen</label>
+	<label index="dyndate.dayaftertomorrow">Overmorgen</label>
+	<label index="dyndate.yesterday">Gisteren</label>
+	<label index="dyndate.daybeforeyesterday">Eergisteren</label>
+	<label index="dyndate.currentweek">Deze week</label>
+	<label index="dyndate.nextweek">Volgende week</label>
+	<label index="dyndate.lastweek">Vorige week</label>
 </labels>

@@ -566,9 +566,10 @@ Todoyu.QuickInfo = {
 	 * Check whether the quickinfo is currently visible
 	 *
 	 * @method	isVisible
+	 * @return	{Boolean}
 	 */
 	isVisible: function() {
-		return $(this.popupID).visible();
+		return $(this.popupID) && $(this.popupID).visible();
 	},
 
 

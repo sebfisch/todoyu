@@ -53,4 +53,12 @@
 	<label index="yearly">Годишње</label>
 	<label index="today">Данас</label>
 	<label index="warning.dateformat.invalid">Октривен је не важећи датум (биће измењен у току сачувања).</label>
+	<label index="dyndate.today">Данас</label>
+	<label index="dyndate.tomorrow">Сутра</label>
+	<label index="dyndate.dayaftertomorrow">Прексутра</label>
+	<label index="dyndate.yesterday">Јуђе</label>
+	<label index="dyndate.daybeforeyesterday">Прекјуђе</label>
+	<label index="dyndate.currentweek">Тренутна недеља</label>
+	<label index="dyndate.nextweek">Следећа недеља</label>
+	<label index="dyndate.lastweek">Прошла недења</label>
 </labels>

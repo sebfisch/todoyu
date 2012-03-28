@@ -50,4 +50,15 @@
 	<label index="monthly">Mensile</label>
 	<label index="yearly">Annuale</label>
 	<label index="today">Oggi</label>
+	<label index="dyndate.today">Oggi</label>
+	<label index="dyndate.tomorrow">Domani</label>
+	<label index="dyndate.dayaftertomorrow">Dopodomani</label>
+	<label index="dyndate.yesterday">Ieri</label>
+	<label index="dyndate.daybeforeyesterday">L'altroieri</label>
+	<label index="dyndate.currentweek">Settimana corrente</label>
+	<label index="dyndate.nextweek">Prossima settimana</label>
+	<label index="dyndate.lastweek">Settimana precedente</label>
+	<label index="dyndate.currentyear">Anno corrente</label>
+	<label index="dyndate.lastyear">Anno precedente</label>
+	<label index="dyndate.nextyear">Prossima anno</label>
 </labels>

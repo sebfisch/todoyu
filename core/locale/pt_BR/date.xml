@@ -50,4 +50,12 @@
 	<label index="monthly">Mensal</label>
 	<label index="yearly">Anual</label>
 	<label index="today">Hoje</label>
+	<label index="dyndate.today">Hoje</label>
+	<label index="dyndate.tomorrow">Amanhã</label>
+	<label index="dyndate.dayaftertomorrow">Depois de Amanhã</label>
+	<label index="dyndate.yesterday">Ontem</label>
+	<label index="dyndate.daybeforeyesterday">Anteontem</label>
+	<label index="dyndate.currentweek">Esta Semana</label>
+	<label index="dyndate.nextweek">Próxima Semana</label>
+	<label index="dyndate.lastweek">Semana Passada</label>
 </labels>

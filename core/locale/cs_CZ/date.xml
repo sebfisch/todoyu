@@ -50,4 +50,14 @@
 	<label index="monthly">Měsíčně</label>
 	<label index="yearly">Ročně</label>
 	<label index="today">Dnes</label>
+	<label index="dyndate.today">Dnes</label>
+	<label index="dyndate.tomorrow">Zítra</label>
+	<label index="dyndate.dayaftertomorrow">Pozítří</label>
+	<label index="dyndate.yesterday">Včera</label>
+	<label index="dyndate.daybeforeyesterday">Předevčírem</label>
+	<label index="dyndate.currentweek">Tento týden</label>
+	<label index="dyndate.nextweek">Příští týden</label>
+	<label index="dyndate.lastweek">Minulý týden</label>
+	<label index="dyndate.lastyear">Příští rok</label>
+	<label index="dyndate.nextyear">Minulý rok</label>
 </labels>

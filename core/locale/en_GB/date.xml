@@ -53,4 +53,16 @@
 	<label index="yearly">Yearly</label>
 	<label index="today">Today</label>
 	<label index="warning.dateformat.invalid">Invalid date detected (will be altered when saving).</label>
+	<label index="dyndate.today">Today</label>
+	<label index="dyndate.tomorrow">Tomorrow</label>
+	<label index="dyndate.dayaftertomorrow">The day after tomorrow</label>
+	<label index="dyndate.yesterday">Yesterday</label>
+	<label index="dyndate.daybeforeyesterday">The day before yesterday</label>
+	<label index="dyndate.currentweek">Current Week</label>
+	<label index="dyndate.nextweek">Next Week</label>
+	<label index="dyndate.lastweek">Last Week</label>
+	<label index="dyndate.currentmonth">Current Month</label>
+	<label index="dyndate.currentyear">Current Year</label>
+	<label index="dyndate.lastyear">Last Year</label>
+	<label index="dyndate.nextyear">Next Year</label>
 </labels>
