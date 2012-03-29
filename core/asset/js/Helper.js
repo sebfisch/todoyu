@@ -491,7 +491,7 @@ Todoyu.Helper = {
 
 		step++;
 		if( step < 4 ) {
-			this.onUpdateChromeSafariScrollTop.defer(elementID, step)
+			this.onUpdateChromeSafariScrollTop.bind(this, elementID, step).defer();
 		}
 	},
 
