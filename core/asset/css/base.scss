@@ -85,7 +85,7 @@ h1, h1 * {
 		size:11px;
 		weight:normal;
 	}
-	/*text-transform:uppercase;*/
+	text-transform:uppercase;
 	white-space:nowrap;
 	letter-spacing:0.1em; }
 
@@ -102,7 +102,7 @@ h4 {
 	background-color:$white;
 	border-bottom:1px solid $grey01;
 	font-weight:normal;
-	/*text-transform:uppercase;*/
+	text-transform:uppercase;
 	white-space:nowrap; }
 
 h5 {

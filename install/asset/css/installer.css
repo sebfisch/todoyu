@@ -312,7 +312,7 @@ input#email.adminaccount {
 	#licenseagreement h2 {
 		font-weight:normal;
 		font-size:11px;
-		/*text-transform:uppercase;*/
+		text-transform:uppercase;
 		letter-spacing:1px;
 	}
 
