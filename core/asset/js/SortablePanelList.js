@@ -159,10 +159,14 @@ Todoyu.SortablePanelList = Class.create({
 	 */
 	_activate: function(event, linkItem) {
 		var listItem= linkItem.up('li.listItem');
-		var up		= this.onlyOneActive ? 1 : 0;
 
-		listItem.up('ul', up).select('li.current').invoke('removeClassName', 'current');
-		listItem.addClassName('current');
+		var upIndex	= this.onlyOneActive ? 1 : 0;
+		var itemParent	= listItem.up('ul', upIndex);
+
+		if( itemParent ) {
+			itemParent.select('li.current').invoke('removeClassName', 'current');
+			listItem.addClassName('current');
+		}
 	}
 
 });
