@@ -20,8 +20,8 @@
 	<label index="servercheck.writableCheck">Zapisovatelné Složky / Soubory</label>
 	<label index="servercheck.writable">Zápis povolen</label>
 	<label index="servercheck.notWritable">ZÁPIS NEPOVOLEN</label>
-	<label index="servercheck.ready">Servr je připraven pro instalaci todoyu 2.1</label>
-	<label index="servercheck.notReady">Server NENÍ připraven pro todoyu 2.1</label>
+	<label index="servercheck.ready">Servr je připraven pro instalaci todoyu</label>
+	<label index="servercheck.notReady">Server NENÍ připraven pro todoyu</label>
 	<label index="dbconnection.title">Nastavení databázového spojení</label>
 	<label index="dbconnection.button">Uložit databázové spojení</label>
 	<label index="dbconnection.server">Server</label>

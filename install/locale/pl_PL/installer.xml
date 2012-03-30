@@ -20,8 +20,8 @@
 	<label index="servercheck.writableCheck">Foldery / Pliki Zapisywalne</label>
 	<label index="servercheck.writable">Zapisywalny</label>
 	<label index="servercheck.notWritable">NIEZAPISYWALNY</label>
-	<label index="servercheck.ready">Serwer jest gotowy do todoyu 2.1</label>
-	<label index="servercheck.notReady">Serwer nie jest gotowy do todoyu 2.1</label>
+	<label index="servercheck.ready">Serwer jest gotowy do todoyu</label>
+	<label index="servercheck.notReady">Serwer nie jest gotowy do todoyu</label>
 	<label index="dbconnection.title">Konfiguracja połączenia bazy danych </label>
 	<label index="dbconnection.button">Zapisz ustawienia bazy danych</label>
 	<label index="dbconnection.server">Serwer</label>

@@ -20,8 +20,8 @@
 	<label index="servercheck.writableCheck">Описљиве Фолдере / фајлове</label>
 	<label index="servercheck.writable">Описљиво</label>
 	<label index="servercheck.notWritable">НИЈЕ ОПИСЉИВО</label>
-	<label index="servercheck.ready">Сервер је спреман за todoyu 2.1</label>
-	<label index="servercheck.notReady">Сервер није спреман за todoyu 2.1</label>
+	<label index="servercheck.ready">Сервер је спреман за todoyu</label>
+	<label index="servercheck.notReady">Сервер није спреман за todoyu</label>
 	<label index="dbconnection.title">Подешавање базе података за повезивање</label>
 	<label index="dbconnection.button">Сачувај конфигурацију базе податка</label>
 	<label index="dbconnection.server">Сервер</label>
