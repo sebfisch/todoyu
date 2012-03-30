@@ -98,7 +98,17 @@ class TodoyuCountry extends TodoyuBaseObject {
 	 * @return	String
 	 */
 	public function getLabel() {
-		return $this->getCode3() ? Todoyu::Label('core.static_country.' . $this->getCode3()) : '';
+		$label = '';
+
+		if( $this->getCode3() ) {
+			$tempLabel	= Todoyu::Label('core.static_country.' . $this->getCode3());
+
+			if( strpos($tempLabel, 'static_country') === false ) {
+				$label = $tempLabel;
+			}
+		}
+
+		return $label;
 	}
 
 
