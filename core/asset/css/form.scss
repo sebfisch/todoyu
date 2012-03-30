@@ -454,30 +454,29 @@ form .error.typeCheckbox {
 		display:block;
 		float:right;
 		background:transparent url(../img/icons.png) no-repeat 0 -90px;
+	}
+	.iconSelector {
+		width:auto;
 
-		.iconSelector {
-			width:auto;
+		.selectorIcon {
+			display:block;
+			height:25px;
+			width:25px;
+			margin:9px 0 0 9px;
+			text-indent:-9999px; }
 
-			.selectorIcon {
-				display:block;
-				height:25px;
-				width:25px;
-				margin:9px 0 0 9px;
-				text-indent:-9999px; }
+		li {
+			float:left;
+			cursor:pointer;
+			background-color:$grey01;
+			border:1px dotted $grey06;
 
-			li {
-				float:left;
-				cursor:pointer;
-				background-color:$grey01;
-				border:1px dotted $grey06;
+			&.selected {
+				border:1px solid $grey06;
+				background-color:$colorCorporate02; }
 
-				&.selected {
-					border:1px solid $grey06;
-					background-color:$colorCorporate02; }
-
-				&:hover {
-					background-color:$colorCorporate02; }
-			}
+			&:hover {
+				background-color:$colorCorporate02; }
 		}
 	}
 }
