@@ -52,19 +52,19 @@ class TodoyuTokenManager {
 	 *
 	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
-	 * @param	Integer		$idPersonOwner
+	 * @param	Integer		$idPerson
 	 * @return	Integer
 	 */
-	public static function getTokenIdByOwner($extID, $idTokenType, $idPersonOwner) {
+	public static function getTokenIdByPerson($extID, $idTokenType, $idPerson = 0) {
 		$extID			= (int) $extID;
 		$idTokenType	= (int) $idTokenType;
-		$idPersonOwner	= Todoyu::personid($idPersonOwner);
+		$idPerson		= Todoyu::personid($idPerson);
 
 		$field	= 'id';
 		$table	= self::TABLE;
 		$where	= '		ext				= ' . $extID
 				. ' AND	token_type		= ' . $idTokenType
-				. ' AND	id_person_owner	= ' . $idPersonOwner
+				. ' AND	id_person_owner	= ' . $idPerson
 				. ' AND deleted			= 0';
 
 		return (int) Todoyu::db()->getFieldValue($field, $table, $where);
@@ -77,13 +77,17 @@ class TodoyuTokenManager {
 	 *
 	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
-	 * @param	Integer		$idPersonOwner
+	 * @param	Integer		$idPerson
 	 * @return	TodoyuToken|Boolean
 	 */
-	public static function getTokenByOwner($extID, $idTokenType, $idPersonOwner = 0) {
-		$idToken	= self::getTokenIdByOwner($extID, $idTokenType, $idPersonOwner);
+	public static function getTokenByPerson($extID, $idTokenType, $idPerson = 0) {
+		$idToken	= self::getTokenIdByPerson($extID, $idTokenType, $idPerson);
 
-		return $idToken > 0 ? self::getToken($idToken) : false;
+		if( $idToken !== 0 ) {
+			return self::getToken($idToken);
+		}
+
+		return false;
 	}
 
 
@@ -110,24 +114,24 @@ class TodoyuTokenManager {
 	 *
 	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
-	 * @param	Integer		$idPersonOwner
+	 * @param	Integer		$idPerson
 	 * @param	Boolean		$storeInSession
 	 * @return	String							Hash
 	 */
-	public static function generateHash($extID, $idTokenType, $idPersonOwner = 0, $storeInSession = false) {
+	public static function generateHash($extID, $idTokenType, $idPerson = 0, $storeInSession = false) {
 		$extID			= (int) $extID;
 		$idTokenType	= (int) $idTokenType;
-		$idPersonOwner	= Todoyu::personid($idPersonOwner);
+		$idPerson		= Todoyu::personid($idPerson);
 		$idPersonCreate	= Todoyu::personid();
 
 			// Generate new hash
-		$prefix	= $extID . $idTokenType . $idPersonCreate . $idPersonOwner;
+		$prefix	= $extID . $idTokenType . $idPersonCreate . $idPerson;
 		$salt	= uniqid($prefix, microtime(true));
 		$hash	= md5($salt);
 
 			// Ensure the hash not being used yet
-		if( ! self::isUnusedHash($hash) ) {
-			$hash	= self::generateHash($extID, $idTokenType, $idPersonOwner, $storeInSession);
+		if( !self::isUnusedHash($hash) ) {
+			$hash	= self::generateHash($extID, $idTokenType, $idPerson, $storeInSession);
 		}
 
 			// Cache the hash in the session
@@ -160,14 +164,13 @@ class TodoyuTokenManager {
 	 * @param	Integer		$idTokenType
 	 * @param	Integer		$extID
 	 * @param	String		$hash
-	 * @param	Integer		$idPersonOwner
+	 * @param	Integer		$idPerson
 	 */
-	public static function storeHashInSession($extID, $idTokenType, $hash, $idPersonOwner = 0) {
-		$idTokenType	= (int) $idTokenType;
-		$extID			= (int) $extID;
-		$idPersonOwner	= Todoyu::personid($idPersonOwner);
-
-		$hashPath	= self::getTokenHashSessionPath($extID, $idTokenType, $idPersonOwner);
+	public static function storeHashInSession($extID, $idTokenType, $hash, $idPerson = 0) {
+		$idTokenType= (int) $idTokenType;
+		$extID		= (int) $extID;
+		$idPerson	= Todoyu::personid($idPerson);
+		$hashPath	= self::getTokenHashSessionPath($extID, $idTokenType, $idPerson);
 
 		TodoyuSession::set($hashPath, $hash);
 	}
@@ -179,15 +182,15 @@ class TodoyuTokenManager {
 	 *
 	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
-	 * @param	Integer		$idPersonOwner
+	 * @param	Integer		$idPerson
 	 * @return	String
 	 */
-	public static function getTokenHashSessionPath($extID, $idTokenType, $idPersonOwner) {
-		$extID			= (int) $extID;
-		$idTokenType	= (int) $idTokenType;
-		$idPersonOwner	= Todoyu::personid($idPersonOwner);
+	public static function getTokenHashSessionPath($extID, $idTokenType, $idPerson = 0) {
+		$extID		= (int) $extID;
+		$idTokenType= (int) $idTokenType;
+		$idPerson	= Todoyu::personid($idPerson);
 
-		return 'tokenHash/' . $extID . '/' . $idTokenType . '/' . $idPersonOwner;
+		return 'tokenHash/' . $extID . '/' . $idTokenType . '/' . $idPerson;
 	}
 
 
@@ -197,15 +200,13 @@ class TodoyuTokenManager {
 	 *
 	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
-	 * @param	Integer		$idPersonOwner
+	 * @param	Integer		$idPerson
 	 * @return	String
 	 */
-	public static function getHashFromSession($extID, $idTokenType, $idPersonOwner = 0) {
-		$idTokenType	= (int) $idTokenType;
-		$extID			= (int) $extID;
-		$idPersonOwner	= Todoyu::personid($idPersonOwner);
-
-		$hashPath	= self::getTokenHashSessionPath($extID, $idTokenType, $idPersonOwner);
+	public static function getHashFromSession($extID, $idTokenType, $idPerson = 0) {
+		$idTokenType= (int) $idTokenType;
+		$extID		= (int) $extID;
+		$hashPath	= self::getTokenHashSessionPath($extID, $idTokenType, $idPerson);
 
 		return TodoyuSession::get($hashPath);
 	}
@@ -215,23 +216,22 @@ class TodoyuTokenManager {
 	/**
 	 * Store token to database, hash value is taken from session
 	 *
-	 * @param	Integer		$idPersonOwner
+	 * @param	Integer		$idPerson
 	 * @param	Integer		$extID
 	 * @param	$idTokenType
 	 */
-	public static function saveTokenFromSession($extID, $idTokenType, $idPersonOwner = 0) {
-		$extID			= (int) $extID;
-		$idTokenType	= (int) $idTokenType;
-		$idPersonOwner	= Todoyu::personid($idPersonOwner);
-
-		$idToken= self::getTokenIdByOwner($extID, $idTokenType, $idPersonOwner);
-		$hash	= self::getHashFromSession($extID, $idTokenType, $idPersonOwner);
+	public static function saveTokenFromSession($extID, $idTokenType, $idPerson = 0) {
+		$extID		= (int) $extID;
+		$idTokenType= (int) $idTokenType;
+		$idPerson	= Todoyu::personid($idPerson);
+		$idToken	= self::getTokenIdByPerson($extID, $idTokenType, $idPerson);
+		$hash		= self::getHashFromSession($extID, $idTokenType, $idPerson);
 
 		$data	= array(
 			'id'				=> $idToken,
 			'ext'				=> $extID,
 			'token_type'		=> $idTokenType,
-			'id_person_owner'	=> $idPersonOwner,
+			'id_person_owner'	=> $idPerson,
 			'hash'				=> $hash
 		);
 
@@ -339,20 +339,21 @@ class TodoyuTokenManager {
 	 *
 	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
-	 * @param	Boolean		$download
-	 * @return	String
+	 * @param	Boolean		$asDownload
+	 * @param	Integer		$idPerson
+	 * @return	String|Boolean
 	 */
-	public static function getPublicTokenURL($extID, $idTokenType, $download = false) {
+	public static function getTokenURL($extID, $idTokenType, $asDownload = false, $idPerson = 0) {
 		$extID			= (int) $extID;
 		$idTokenType	= (int) $idTokenType;
 
-		$token	= TodoyuTokenManager::getTokenByOwner($extID, $idTokenType);
+		$token	= TodoyuTokenManager::getTokenByPerson($extID, $idTokenType, $idPerson);
 
-		if( $token !== false ) {
+		if( $token ) {
 			$urlParams = array(
 				'token'	=> $token->getHash()
 			);
-			if( $download ) {
+			if( $asDownload ) {
 				$urlParams['download']	= 1;
 			}
 
@@ -369,17 +370,15 @@ class TodoyuTokenManager {
 	 *
 	 * @param	Integer		$extID
 	 * @param	Integer		$idTokenType
-	 * @param	Integer		$idPersonOwner
-	 * @return	String|Boolean
+	 * @param	Integer		$idPerson
+	 * @return	Boolean
 	 */
-	public static function isTokenStored($extID, $idTokenType, $idPersonOwner = 0) {
+	public static function isTokenStored($extID, $idTokenType, $idPerson = 0) {
 		$extID			= (int) $extID;
 		$idTokenType	= (int) $idTokenType;
-		$idPersonOwner	= Todoyu::personid($idPersonOwner);
+		$idToken		= self::getTokenIdByPerson($extID, $idTokenType, $idPerson);
 
-		$token	= TodoyuTokenManager::getTokenByOwner($extID, $idTokenType, $idPersonOwner);
-
-		return $token ? true : false;
+		return $idToken !== 0;
 	}
 
 }
