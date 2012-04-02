@@ -499,6 +499,7 @@ div.errorMessage ul.invalidItems {
 	font-style:normal;
 	border-left:5px solid $colorAlert00;
 	padding-left:5px;
+	list-style:square inside;
 
 	li {
 		font-weight:bold;
