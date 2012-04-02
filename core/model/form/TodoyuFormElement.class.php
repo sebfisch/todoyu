@@ -415,12 +415,19 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 	/**
 	 * Check whether the field is empty
-	 * @return bool
+	 *
+	 * @return	Boolean
 	 */
 	public function isEmpty() {
 		$value	= $this->getAttribute('value');
 
-		return empty($value);
+		if( is_array($value) ) {
+			return sizeof($value) === 0;
+		} elseif( is_string($value) || is_numeric($value) ) {
+			return trim($value) === '';
+		} else {
+			return empty($value);
+		}
 	}
 
 
