@@ -61,7 +61,7 @@ class TodoyuRecordManager {
 	 *
 	 * @param	String		$className
 	 * @param	Array		$recordIDs
-	 * @return	Array		List of objects
+	 * @return	TodoyuBaseObject[]		List of objects
 	 */
 	public static function getRecordList($className, array $recordIDs) {
 		$records	= array();
