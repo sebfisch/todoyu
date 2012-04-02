@@ -260,7 +260,7 @@ Todoyu.Tabs = {
 			}
 		}
 
-		Todoyu.log('Tab with name "' + tabName + '" not found in list ' + listName + '!');
+		Todoyu.log('Error in Todoyu.Tabs.setActive(): Tab with name "' + tabName + '" not found in list ' + listName + '!');
 	},
 
 

@@ -42,8 +42,8 @@
 		}
 
 		> ul {
-			position: absolute;
-			top: 25px;
+			position:absolute;
+			top:25px;
 			left:-1px;
 			border:1px solid $grey03;
 			z-index:202;
@@ -51,7 +51,7 @@
 			background:-moz-linear-gradient($white, $grey01);
 			background:-webkit-gradient(linear, from($white), to($grey01));
 			/* filter fails in sass parser, do it without gradient in IE */
-			/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$white' , endColorstr='$grey01');*/
+			/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$white' , endColorstr='$grey01');*/
 
 
 			> li {

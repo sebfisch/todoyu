@@ -76,7 +76,7 @@
 
 .iconNotifySmall {
 	&.warn {
-		background-position: 0 -95px;
+		background-position:0 -95px;
 	}
 }
 
@@ -85,20 +85,20 @@
 	height:13px;
 
 	&.warn {
-		background-position: 0 -240px;
+		background-position:0 -240px;
 	 }
 }
 
 
 .iconNotifyLarge {
 	&.info {
-		background-position: 0 -390px;
+		background-position:0 -390px;
 	 }
 	&.warn {
-		background-position: 0 -350px;
+		background-position:0 -350px;
 	  }
 	&.reminder {
-		background-position: 0 -545px;
+		background-position:0 -545px;
 	}
 }
 
@@ -123,10 +123,10 @@
 	h1 {
 	    .label {
 	 		font-size:18px;
-			font-weight: bold;
-			margin-left: 20px;
-			white-space: normal;
-			float: none;
+			font-weight:bold;
+			margin-left:20px;
+			white-space:normal;
+			float:none;
 	    }
 	}
 }

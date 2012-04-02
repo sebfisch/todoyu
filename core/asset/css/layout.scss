@@ -180,8 +180,8 @@ body {
 		margin:0px;
 		padding:0px;
 		cursor:pointer;
-		position: relative;
-		z-index: 10;
+		position:relative;
+		z-index:10;
 		overflow:hidden;
 
 		&.expand {
@@ -203,7 +203,7 @@ body {
 				padding:0 0 0 10px;
 				line-height:26px;
 				width:205px;
-				overflow: hidden;
+				overflow:hidden;
 				font-size:11px;	 }
 
 			&.toggle {
