@@ -780,10 +780,6 @@ Todoyu.Ui = {
 	initCalendar: function(fieldConfig) {
 		fieldConfig	= this.buildCalendarFieldConfig(fieldConfig);
 
-		if( fieldConfig.disableFunc && !Object.isFunction(fieldConfig.disableFunc) ) {
-			fieldConfig.disableFunc = Todoyu.getFunctionFromString(fieldConfig.disableFunc, true);
-		}
-
 			// Store calendar options
 		this.calendarOptions[fieldConfig.inputField] = Object.clone(fieldConfig);
 
@@ -813,7 +809,40 @@ Todoyu.Ui = {
 			};
 		}
 
-		return $H(this.calendarDefaultOptions).merge(fieldConfig || {}).toObject();
+			// Merge with default options
+		fieldConfig = $H(this.calendarDefaultOptions).merge(fieldConfig || {}).toObject();
+			// Parse functions and arrays
+		fieldConfig	= this.parseCalendarConfig(fieldConfig);
+
+		return fieldConfig;
+	},
+
+
+
+	/**
+	 * Parse calendar config which is given as string
+	 * Convert functions and arrays which are given as string to their real format
+	 *
+	 * @param	{Object}	fieldConfig
+	 * @return	{Object}
+	 */
+	parseCalendarConfig: function(fieldConfig) {
+		var functions	= ['disableFunc', 'dateStatusFunc', 'flatCallback', 'onSelect', 'onClose', 'onUpdate'];
+		var arrays		= ['range', 'position'];
+
+		functions.each(function(functionName){
+			if( fieldConfig[functionName] && !Object.isFunction(fieldConfig[functionName]) ) {
+				fieldConfig[functionName] = Todoyu.getFunctionFromString(fieldConfig[functionName], true);
+			}
+		});
+
+		arrays.each(function(arrayName){
+			if( fieldConfig[arrayName] && !Object.isArray(fieldConfig[arrayName]) ) {
+				fieldConfig[arrayName] = eval(fieldConfig[arrayName]);
+			}
+		});
+
+		return fieldConfig;
 	},
 
 
