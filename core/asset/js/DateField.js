@@ -124,6 +124,12 @@ Todoyu.DateField = {
 			Todoyu.notifyError('[LLL:core.date.warning.dateformat.invalid]', 'date.formaterror');
 
 			Todoyu.Form.setFieldErrorStatus(input, true);
+		} else {
+				// Set date to result the parsing of the current value will have
+			var parts		= Todoyu.Time.getDateTimeStringParts(dateValue, format);
+			var understoodDate	= new Date(parts.year, parts.month, parts.day, parts.hours, parts.minutes);
+
+			this.setDate(input.id, understoodDate);
 		}
 	},
 
