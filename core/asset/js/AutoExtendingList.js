@@ -18,6 +18,10 @@
  *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * List which automatically extends itself when all inputs are filled out
  */
 Todoyu.AutoExtendingList = Class.create({
@@ -164,6 +168,7 @@ Todoyu.AutoExtendingList = Class.create({
 	 * Check whether all elements are "full"
 	 *
 	 * @method	areAllElementsFull
+	 * @return	{Boolean}
 	 */
 	areAllElementsFull: function() {
 		return this.getInputs().all(function(input){

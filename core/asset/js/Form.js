@@ -806,7 +806,6 @@ Todoyu.Form = {
 				errorMsg.update('');
 			}
 		}
-	},
-
+	}
 
 };

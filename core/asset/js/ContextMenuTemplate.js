@@ -28,6 +28,7 @@ Todoyu.ContextMenu.Template = {
 
 	/**
 	 * Template objects
+	 *
 	 * @property	template
 	 * @type		Object
 	 */
@@ -40,6 +41,7 @@ Todoyu.ContextMenu.Template = {
 
 	/**
 	 * HTML patterns for the templates
+	 *
 	 * @property	html
 	 * @type		Object
 	 */
@@ -52,6 +54,7 @@ Todoyu.ContextMenu.Template = {
 
 	/**
 	 * The render functions appends each item to this variable to build the menu
+	 *
 	 * @property	code
 	 * @type		String
 	 * @private

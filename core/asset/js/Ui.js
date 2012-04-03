@@ -58,6 +58,7 @@ Todoyu.Ui = {
 	/**
 	 * Get options for RTE element
 	 *
+	 * @method	getRteOptions
 	 * @param	{String}	idElement
 	 * @param	{Object}	extraOptions
 	 */
@@ -428,7 +429,7 @@ Todoyu.Ui = {
 		link.type	= 'image/x-icon';
 		link.rel	= 'shortcut icon';
 
-		link.href	= hrefIcon
+		link.href	= hrefIcon;
 
 		$$('head')[0].appendChild(link);
 	},
@@ -699,6 +700,7 @@ Todoyu.Ui = {
 	/**
 	 * Initialize RTE for element
 	 *
+	 * @method	initRTE
 	 * @param	{String}	idElement
 	 * @param	{Object}	extraOptions
 	 * @param	{Object}	config
@@ -718,6 +720,7 @@ Todoyu.Ui = {
 	/**
 	 * Focus active RTE editor
 	 *
+	 * @method	setFocusOnActiveRTE
 	 */
 	setFocusOnActiveRTE: function() {
 		if( tinyMCE.activeEditor ) {
@@ -775,6 +778,7 @@ Todoyu.Ui = {
 	/**
 	 * Initialize popup calendar
 	 *
+	 * @method	initCalendar
 	 * @param	{Object}	fieldConfig
 	 */
 	initCalendar: function(fieldConfig) {
@@ -796,6 +800,7 @@ Todoyu.Ui = {
 	/**
 	 * Get custom calendar config
 	 *
+	 * @method	buildCalendarFieldConfig
 	 * @param	{Object}	fieldConfig
 	 * @return	{Object}
 	 */
@@ -850,6 +855,7 @@ Todoyu.Ui = {
 	/**
 	 * Get calendar options for a field
 	 *
+	 * @method	getCalendarOptions
 	 * @param	{String|Element}	field
 	 */
 	getCalendarOptions: function(field) {
@@ -923,6 +929,7 @@ Todoyu.Ui = {
 	 * TinyMCE paste plugin callback
 	 * Remove first <br> tag from pasted text (prevents line break before content in webkit)
 	 *
+	 * @method	onTinyMcePasteCleanup
 	 * @param	{Object}	plugin
 	 * @param	{Object}	pasteObject
 	 */

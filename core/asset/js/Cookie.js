@@ -18,11 +18,15 @@
 *****************************************************************************/
 
 /**
- * Cookie
- *
- * @namespace	Todoyu.Cookie
+ * @module	Core
  */
 
+/**
+ * Cookie
+ *
+ * @namespace	Todoyu
+ * @class		Cookie
+ */
 Todoyu.Cookie = {
 
 	data: {},

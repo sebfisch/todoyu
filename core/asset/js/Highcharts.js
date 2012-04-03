@@ -17,10 +17,23 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
+/**
+ * @module	Core
+ */
+
+/**
+ * Highcharts helper methods
+ *
+ * @class		Highcharts
+ * @namespace	Todoyu
+ */
 Todoyu.Highcharts = {
 
 	/**
 	 * Default graph colors
+	 *
+	 * @property	colors
+	 * @type		Array
 	 */
 	colors: [
 		'#56A356',	// green
@@ -32,9 +45,10 @@ Todoyu.Highcharts = {
 	/**
 	 * Get rendering options for given type of highcharts chart
 	 *
-	 * @param	String	chartType
-	 * @param	Object	renderData
-	 * @return	Object
+	 * @method	getChartOptions
+	 * @param	{String}	chartType
+	 * @param	{Object}	renderData
+	 * @return	{Object}
 	 */
 	getChartOptions:	function(chartType, renderData) {
 		var options;
@@ -88,8 +102,8 @@ Todoyu.Highcharts = {
 	 * Get rendering options for highcharts chart type: 'stackedArea'
 	 *
 	 * @method	getAreaChartOptions
-	 * @param	Object		renderData
-	 * @return	Object
+	 * @param	{Object}		renderData
+	 * @return	{Object}
 	 */
 	getAreaChartOptions: function(renderData) {
 		return {
@@ -149,8 +163,9 @@ Todoyu.Highcharts = {
 	/**
 	 * Get rendering options for highcharts chart type: 'column'  
 	 *
-	 * @param	Object		renderData
-	 * @return	Object
+	 * @method	getColumnChartOptions
+	 * @param	{Object}		renderData
+	 * @return	{Object}
 	 */
 	getColumnChartOptions:	function(renderData) {
 		return {
@@ -185,13 +200,13 @@ Todoyu.Highcharts = {
 					pointPadding:	0,
 					borderWidth:	0,
 					dataLabels: {
-						enabled:	true,
-						rotation:	0,
-						y:			30,
-						style:	{
-							color:		'#5D7E9F',
-							fontWeight:	'normal'
-						}
+							enabled:	true,
+							rotation:	0,
+							y:			30,
+							style:	{
+								color:		'#5D7E9F',
+								fontWeight:	'normal'
+							}
 					}
 				}
 			}

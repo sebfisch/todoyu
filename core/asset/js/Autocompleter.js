@@ -18,7 +18,16 @@
 *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  *	Todoyu autocompleter (extended prototype autocompleter)
+ *
+ * @class		Autocompleter
+ * @namespace	Todoyu.Autocompleter
+ * @extends		{Ajax.Autocompleter}
+ * @constructor
  */
 Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
@@ -267,6 +276,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * Check whether the suggestion div is visible
 	 *
 	 * @method	isSuggestionVisible
+	 * @return	{Boolean}
 	 */
 	isSuggestionVisible: function() {
 		var id	= this.element.id + '-suggestions';
@@ -335,7 +345,9 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	/**
 	 * Check whether keyCode matches the return key
 	 *
+	 * @method	isReturnKey
 	 * @param	{Number}	keyCode
+	 * @return	{Boolean}
 	 */
 	isReturnKey: function(keyCode) {
 		return keyCode === Event.KEY_RETURN;

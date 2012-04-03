@@ -18,9 +18,13 @@
 *****************************************************************************/
 
 /**
- * @module	Project
+ * @module	Core
  */
 
+/**
+ * @namespace	Todoyu
+ * @class		ContentItemTab
+ */
 Todoyu.ContentItemTab = {
 
 	/**

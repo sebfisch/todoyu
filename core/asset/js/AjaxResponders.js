@@ -33,6 +33,7 @@ Todoyu.Ajax.Responders = {
 
 	/**
 	 * Hooks called when request is completed
+	 *
 	 * @property	completeHooks
 	 * @type		Array
 	 */

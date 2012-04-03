@@ -23,6 +23,7 @@
 
 /**
  * General AJAX helper functions
+ *
  * @namespace	Todoyu
  * @class		Ajax
  */

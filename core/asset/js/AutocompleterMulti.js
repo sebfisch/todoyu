@@ -18,6 +18,10 @@
  *****************************************************************************/
 
 /**
+ * @module	Core
+ */
+
+/**
  * Autocompleter which adds all selected elements to a list
  * - Add element as item to a list
  * - Add selected it to a hidden form field
