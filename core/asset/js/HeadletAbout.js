@@ -147,10 +147,8 @@ Todoyu.CoreHeadlets.About = Class.create(Todoyu.Headlet, {
 			this.nameEffect = new Effect.Move(list, {
 				x:				0,
 				y:				newY,
-				mode:			'relative',
-				duration:		list.select('li').size() * 0.5,
-				transition:		Effect.Transitions.linear,
-				afterFinish:	this.startNameScrolling.bind(this, !up)
+				duration:		8,
+				afterFinish:	this.startNameScrolling.bind(this, !up, false)
 			});
 		}
 	},
