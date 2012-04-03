@@ -470,8 +470,6 @@ class TodoyuPageAssetManager {
 	public static function parseScssStylesheet($pathScss) {
 		require_once( PATH_LIB . '/php/Phamlp/sass/SassParser.php' );
 
-		$fileName	= TodoyuFileManager::getFileName($pathScss);
-
 			// Create unique filename for parsed file
 		$pathWeb		= TodoyuFileManager::pathWeb($pathScss);
 		$filenameDashed	= str_replace('/', '-', $pathWeb);
@@ -480,15 +478,9 @@ class TodoyuPageAssetManager {
 
 			// Parse if not yet
 		if( ! file_exists($pathCss) ) {
-			$options	= array(
-				'cache_location'=> PATH_CACHE . DIR_SEP . 'css',
-				'filename'		=> $fileName,
-				'debug_info'	=> false,
-				'quiet'			=> false
-			);
-			$sass = new SassParser($options);
+			$sassParser	= self::getSassParser(TodoyuFileManager::getFileName($pathScss));
 
-			$cssCode	= $sass->toCss($pathScss, true);
+			$cssCode	= $sassParser->toCss($pathScss, true);
 			$cssCode	= self::rewriteRelativePaths($cssCode, $pathScss);
 
 			$file	= TodoyuFileManager::saveFileContent($pathCss, $cssCode) ? $pathCss : false;
@@ -496,6 +488,25 @@ class TodoyuPageAssetManager {
 		}
 
 		return $pathCss;
+	}
+
+
+
+	/**
+	 * Get SassParser instance
+	 *
+	 * @param	String	$filename
+	 * @return	SassParser
+	 */
+	public static function getSassParser($filename) {
+		$options	= array(
+			'cache_location'=> PATH_CACHE . DIR_SEP . 'scss',
+			'filename'		=> $filename,
+			'debug_info'	=> false,
+			'quiet'			=> false
+		);
+
+		return new SassParser($options);
 	}
 
 

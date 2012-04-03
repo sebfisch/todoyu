@@ -10,7 +10,7 @@ div.overflowWindow {
 	left:0px;
 	top:0px;
 	z-index:3000;
-//filter:alpha(opacity=95);
+	filter:unqoute("alpha(opacity=95)");
 	-moz-opacity:0.95;
 	-khtml-opacity:0.95;
 	opacity:0.95;

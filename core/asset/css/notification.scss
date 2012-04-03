@@ -23,7 +23,7 @@
 			-khtml-opacity:.95;
 			-moz-opacity:.95;
 			opacity:.95;
-//filter:alpha(opacity = 95);
+			filter:unquote("alpha(opacity = 95)");
 			/* cross browser shadow */
 			-webkit-box-shadow:2px 2px 7px $grey06;
 			-moz-box-shadow:2px 2px 7px $grey06;
