@@ -118,13 +118,13 @@ div.infoBox {
 .headerOptLine {
 	position:relative;
 	margin-top:5px;
-	height:25px;
+	height:26px;
 	text-align:left;
 	-moz-border-radius:5px 5px 0 0;
 	-webkit-border-radius:5px 5px 0 0;
 	border-radius:5px 5px 0 0;
-	border:1px solid $grey02;
-	border-bottom-color:$white;
+	border:none;
+	border-bottom:1px solid $grey02;
 }
 
 .headerLine {
