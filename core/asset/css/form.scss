@@ -248,7 +248,7 @@ div.fElement {
 		margin-right:5px; }
 
 	div.typeTime .fField input,
-	div.typeDuration .fField input  {
+	div.typeDuration .fField input {
 		float:left;
 		width:33px; }
 
@@ -332,7 +332,7 @@ fieldset.buttons div.fElement {
 /* ----------------------------------------------
 	Additional information after input field
    ---------------------------------------------- */
-form .textAfterField  {
+form .textAfterField {
 	position:absolute;
 	z-index:9999; /* always in front */
 	display:none;
@@ -448,7 +448,7 @@ form .error.typeCheckbox {
 	Wizard icon
    -------------------- */
 .fField {
-	span.wizardIcon  {
+	span.wizardIcon {
 		height:16px;
 		width:16px;
 		display:block;
