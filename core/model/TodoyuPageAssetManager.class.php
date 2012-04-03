@@ -483,7 +483,7 @@ class TodoyuPageAssetManager {
 			$sassParser	= self::getSassParser(TodoyuFileManager::getFileName($pathScss));
 
 			$cssCode	= $sassParser->toCss($pathScss, true);
-			$cssCode	= self::rewriteRelativePaths($cssCode, $pathScss, 7);
+			$cssCode	= self::rewriteRelativePaths($cssCode, $pathScss);
 
 			$file	= TodoyuFileManager::saveFileContent($pathCssFile, $cssCode) ? $pathCssFile : false;
 			return $file;
@@ -662,10 +662,9 @@ class TodoyuPageAssetManager {
 	 *
 	 * @param	String		$cssCode
 	 * @param	String		$pathSourceFile
-	 * @param	Integer		$levels
 	 * @return	String
 	 */
-	private static function rewriteRelativePaths($cssCode, $pathSourceFile, $levels = 2) {
+	private static function rewriteRelativePaths($cssCode, $pathSourceFile) {
 			// Remove quotes in url() elements
 		$pattern	= '|url\([\'"]{1}([^\'")]+?)[\'"]{1}\)|';
 		$replace	= 'url($1)';
@@ -673,6 +672,7 @@ class TodoyuPageAssetManager {
 
 			// Rewrite paths
 		$webDirName	= dirname( TodoyuFileManager::pathWeb($pathSourceFile) );
+		$levels 	= substr_count($webDirName, '/') + 1 + 2; // subfolder levels (needs +1) + cache folder levels
 		$search		= 'url(';
 		$replace	= 'url(' . str_repeat('../', $levels) . $webDirName . '/';
 		$cssCode	= str_replace($search, $replace, $cssCode);
