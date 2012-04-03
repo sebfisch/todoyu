@@ -300,6 +300,7 @@ Todoyu.Helper = {
 	 * Borrowed from phpjs  http://phpjs.org/functions/wordwrap
 	 * version: 1009.2513
 	 *
+	 * @method	html_entity_decode
 	 * @param	{String}	string
 	 * @param	{String}	quote_style
 	 */
@@ -333,6 +334,7 @@ Todoyu.Helper = {
 	 * Borrowed from phpjs  http://phpjs.org/functions/htmlentities
 	 * version: 1009.2513
 	 *
+	 * @method	htmlentities
 	 * @param	{String}		string
 	 * @param	{String}		quote_style
 	 */
@@ -443,6 +445,7 @@ Todoyu.Helper = {
 	 * Replacement for default calendar close event
 	 * Hide calendar and fire change event
 	 *
+	 * @method	onCalendarDateChanged
 	 * @param	{Calendar}		calendar
 	 */
 	onCalendarDateChanged: function(calendar) {
@@ -590,6 +593,7 @@ Todoyu.Helper = {
 	 * Clone an object using deep copy
 	 * Borrowed from the highcharts prototype adapter
 	 *
+	 * @method	cloneObject
 	 * @param	{Object}	originalObject
 	 * @return	{Object}
 	 */

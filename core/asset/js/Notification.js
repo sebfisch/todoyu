@@ -127,6 +127,7 @@ Todoyu.Notification = {
 	 * Convert identifier to ident clas
 	 * Replace points with dashes
 	 *
+	 * @getIdentifierClass
 	 * @param	{String}	identifier
 	 * @return	{String}
 	 */

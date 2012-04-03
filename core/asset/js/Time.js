@@ -80,6 +80,7 @@ Todoyu.Time = {
 	/**
 	 * Format duration. Hours:minutes
 	 *
+	 * @method	durationFormat
 	 * @param	{Number}	seconds
 	 * @param	{Boolean}	leadingZero
 	 * @return	{String}
@@ -531,6 +532,7 @@ Todoyu.Time = {
 	/**
 	 * Check whether timestamp is in the future
 	 *
+	 * @method	isTimeInFuture
 	 * @param	{Number}	time
 	 * @return	{Boolean}
 	 */
@@ -543,6 +545,7 @@ Todoyu.Time = {
 	/**
 	 * Check whether timestamp is in the past
 	 *
+	 * @method	isTimeInPast
 	 * @param	{Number}	time
 	 * @return	{Boolean}
 	 */
@@ -555,6 +558,7 @@ Todoyu.Time = {
 	/**
 	 * Check whether date is in the future
 	 *
+	 * @method	isDateInFuture
 	 * @param	{Date}	date
 	 * @return	{Boolean}
 	 */
@@ -569,6 +573,7 @@ Todoyu.Time = {
 	/**
 	 * Check whether date is in the past
 	 *
+	 * @method	isDateInPast
 	 * @param	{Date}	date
 	 * @return	{Boolean}
 	 */
@@ -581,6 +586,7 @@ Todoyu.Time = {
 	/**
 	 * Check whether date is in a past week
 	 *
+	 * @method	isDateInPastWeek
 	 * @param	{Date}	date
 	 * @return	{Boolean}
 	 */

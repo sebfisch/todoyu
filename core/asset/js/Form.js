@@ -172,6 +172,7 @@ Todoyu.Form = {
 	/**
 	 * Highlight a sub record
 	 *
+	 * @method	highlightRecordForm
 	 * @param	{Number}	idRecord
 	 * @param	{String}	fieldName
 	 * @param	{Number}	index
@@ -546,6 +547,7 @@ Todoyu.Form = {
 	 * Submit a form for file upload
 	 * Set special encoding type and submit into an iframe
 	 *
+	 * @method	submitFileUploadForm
 	 * @param	{Element}	form
 	 * @param	{String}	url
 	 */
@@ -572,6 +574,7 @@ Todoyu.Form = {
 	 * The custom parameters are restored after the form is submitted
 	 * Useful to convert a normal form into a file upload form
 	 *
+	 * @method	submitForm
 	 * @param	{Form}		form
 	 * @param	{Object}	tempFormAttributes
 	 */
@@ -764,6 +767,7 @@ Todoyu.Form = {
 	/**
 	 * Scroll to the first form field with an error
 	 *
+	 * @method	scrollToError
 	 * @param	{String|Element}	form
 	 */
 	scrollToError: function(form) {
@@ -779,6 +783,7 @@ Todoyu.Form = {
 	/**
 	 * Check whether the form contains a field in error status
 	 *
+	 * @method	hasError
 	 * @param	{String|Element}	form
 	 */
 	hasError: function(form) {
@@ -790,6 +795,7 @@ Todoyu.Form = {
 	/**
 	 * Mark field as error/valid
 	 *
+	 * @method	setFieldErrorStatus
 	 * @param	{String|Element}	input
 	 * @param	{Boolean}			hasError
 	 */

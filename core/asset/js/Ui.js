@@ -828,6 +828,7 @@ Todoyu.Ui = {
 	 * Parse calendar config which is given as string
 	 * Convert functions and arrays which are given as string to their real format
 	 *
+	 * @method	parseCalendarConfig
 	 * @param	{Object}	fieldConfig
 	 * @return	{Object}
 	 */

@@ -85,6 +85,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Initialize
 	 *
+	 * @method	initialize
 	 * @param	{String}	type
 	 * @param	{String}	baseID
 	 * @param	{Object}	config
@@ -120,6 +121,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Handle key input event in search field
 	 *
+	 * @method	onSearchKeyUp
 	 * @param	{Event}		event
 	 */
 	onSearchKeyUp: function(event) {
@@ -178,6 +180,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Handle blur event of search field
 	 *
+	 * @method	onSearchFieldBlur
 	 * @param	{Event}		event
 	 */
 	onSearchFieldBlur: function(event) {
@@ -233,6 +236,7 @@ Todoyu.FormRecords = Class.create({
 	 * Handle select of result item
 	 * Add it the the selection list
 	 *
+	 * @method	onResultItemSelect
 	 * @param	{Event}		event
 	 * @param	{Element}	resultItem
 	 */
@@ -260,6 +264,7 @@ Todoyu.FormRecords = Class.create({
 	 * Handle remove of selection item
 	 * Delete it from list
 	 *
+	 * @method	onSelectItemRemove
 	 * @param	{Event}		event
 	 * @param	{Element}	removeIcon
 	 */
@@ -324,6 +329,7 @@ Todoyu.FormRecords = Class.create({
 	 * The response has to be in JSON format and contain a list of objects
 	 * Format: [{id:1,label:'test'},{...}]
 	 *
+	 * @method	onSearchResponse
 	 * @param	{Ajax.Response}		response
 	 */
 	onSearchResponse: function(response) {
@@ -369,6 +375,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Add a new item the the results container
 	 *
+	 * @method	addResultItem
 	 * @param	{String}	id
 	 * @param	{String}	label
 	 */
@@ -403,6 +410,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Add a new item to the selection list
 	 *
+	 * @addSelectedItem
 	 * @param	{String}	id
 	 * @param	{String}	label
 	 */
@@ -416,6 +424,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Remove an item from the selectin list
 	 *
+	 * @method	removeSelectedItem
 	 * @param	{String}	id
 	 */
 	removeSelectedItem: function(id) {
@@ -428,6 +437,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Remove element node from the selection list
 	 *
+	 * @method	removeSelectedElement
 	 * @param	{String}	id
 	 */
 	removeSelectedElement: function(id) {
@@ -448,6 +458,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Build a result item element node
 	 *
+	 * @method	buildResultItem
 	 * @param	{String}	id
 	 * @param	{String}	label
 	 */
@@ -473,6 +484,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Build item for selection list
 	 *
+	 * @method	buildSelectedItem
 	 * @param	{String}	id
 	 * @param	{String}	label
 	 */
@@ -502,6 +514,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Check whether item is already in the selection list
 	 *
+	 * @method	isItemInSelection
 	 * @param	{String}	id
 	 * @return	{Boolean}
 	 */
@@ -514,6 +527,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Add an item to the hidden select element for later form submit
 	 *
+	 * @method	addStorageValue
 	 * @param	{String}	id
 	 * @param	{String}	label		Not required
 	 */
@@ -531,6 +545,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Remove item from select element
 	 *
+	 * @method	removeStorageValue
 	 * @param	{String}	id
 	 */
 	removeStorageValue: function(id) {
@@ -547,6 +562,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Get option element for item. Or false if not in storage list
 	 *
+	 * @method	getStorageOption
 	 * @param	{String}	id
 	 * @return	{Element|Boolean}
 	 */

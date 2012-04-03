@@ -26,6 +26,7 @@ Element.addMethods({
 	/**
 	 * Replace a class name on an element
 	 *
+	 * @method	relaceClassName
 	 * @param	{Element}	element
 	 * @param	{String}	className
 	 * @param	{String}	replacement
@@ -40,6 +41,7 @@ Element.addMethods({
 	/**
 	 * Get class names of an element
 	 *
+	 * @getClassNames
 	 * @param	{Element}	element
 	 */
 	getClassNames: function(element) {
@@ -51,6 +53,7 @@ Element.addMethods({
 	/**
 	 * Scroll to an element but consider the fixed header
 	 *
+	 * @method	scrollToElement
 	 * @param	{Element}	element
 	 */
 	scrollToElement: function(element) {
@@ -64,6 +67,7 @@ Element.addMethods({
 	/**
 	 * Convert node to HTML string
 	 *
+	 * @method	toHTML
 	 * @param	{Element}	element
 	 * @return	{String}
 	 */
@@ -78,12 +82,13 @@ Element.addMethods({
 
 
 /**
- * Extend ajax response prototype
+ * Extend AJAX response prototype
  */
 Ajax.Response.addMethods({
 	/**
 	 * Get todoyu style http headers (prefixed by 'Todoyu-')
 	 *
+	 * @method	getTodoyuHeader
 	 * @param	{String}		name
 	 */
 	getTodoyuHeader: function(name) {
@@ -97,6 +102,7 @@ Ajax.Response.addMethods({
 	/**
 	 * Check whether a todoyu header was sent
 	 *
+	 * @method	hasTodoyuHeader
 	 * @param	{String}
 	 */
 	hasTodoyuHeader: function(name) {
@@ -196,6 +202,7 @@ Ajax.Response.addMethods({
 /**
  * Add days to a date
  *
+ * @method	addDays
  * @param	{Number}	days		Amount of day
  * @param	{Boolean}	newDate		Create a new date instead updating this one
  * @return	{Date}
@@ -259,6 +266,7 @@ Date.prototype.setToWeekEnd = function() {
 /**
  * Add round method to number
  *
+ * @method	round
  * @param	{Number}	precision
  */
 Number.prototype.round = function(precision) {

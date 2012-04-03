@@ -196,6 +196,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	/**
 	 * Callback when result was empty
 	 *
+	 * @method	onEmptyResult
 	 * @param response
 	 */
 	onEmptyResult: function(response) {

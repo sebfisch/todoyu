@@ -39,6 +39,7 @@ Todoyu.DialogChoice = Class.create(Todoyu.Popup, {
 	/**
 	 * Initialize popup
 	 *
+	 * @method	initialize
 	 * @param	{Function}		$super
 	 * @param	{Object}		config			Option configuration
 	 * @param	{Object}		popupOptions
@@ -95,6 +96,7 @@ Todoyu.DialogChoice = Class.create(Todoyu.Popup, {
 	/**
 	 * Handle button clicks
 	 *
+	 * @method	onButtonClick
 	 * @param	{Event}		event
 	 * @param	{Element}	element
 	 */
@@ -110,6 +112,7 @@ Todoyu.DialogChoice = Class.create(Todoyu.Popup, {
 	/**
 	 * Call the callback with selection on data
 	 *
+	 * @method	onSelect
 	 * @param	{String}	selection
 	 */
 	onSelect: function(selection) {
@@ -125,6 +128,7 @@ Todoyu.DialogChoice = Class.create(Todoyu.Popup, {
 	/**
 	 * Create an option based on the template
 	 *
+	 * @method	createOption
 	 * @param	{Object}	option
 	 * @return	{String}
 	 */

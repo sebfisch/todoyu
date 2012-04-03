@@ -53,6 +53,7 @@ Todoyu.DateField = {
 	/**
 	 * Remove a validator if registered
 	 *
+	 * @method	removeValidator
 	 * @param	{String}	idField
 	 */
 	removeValidator: function(idField) {
@@ -67,6 +68,7 @@ Todoyu.DateField = {
 	/**
 	 * Change/replace a calendar config
 	 *
+	 * @method	changeCalendarConfig
 	 * @param	{String|Element}	field
 	 * @param	{Object}			newOptions
 	 */
@@ -85,6 +87,7 @@ Todoyu.DateField = {
 	/**
 	 * Change calendar date format
 	 *
+	 * @method	changeCalendarFormat
 	 * @param	{String|Element}	field
 	 * @param	{String}			newFormat
 	 */
@@ -158,6 +161,7 @@ Todoyu.DateField = {
 	/**
 	 * Set date for field (requires a registered field config)
 	 *
+	 * @method	setDate
 	 * @param	{Element|String}	field
 	 * @param	{Date}				date
 	 */
