@@ -796,14 +796,16 @@ Todoyu.Form = {
 		var method	= hasError ? 'addClassName' : 'removeClassName';
 		var field	= $(input).up('.fElement');
 
-		field[method]('error');
-		field.down('.fLabel')[method]('error');
+		if( field ) {
+			field[method]('error');
+			field.down('.fLabel')[method]('error');
 
-			// Clear error message
-		if( ! hasError ) {
-			var errorMsg = field.down('.errorMessage');
-			if( errorMsg ) {
-				errorMsg.update('');
+				// Clear error message
+			if( ! hasError ) {
+				var errorMsg = field.down('.errorMessage');
+				if( errorMsg ) {
+					errorMsg.update('');
+				}
 			}
 		}
 	}
