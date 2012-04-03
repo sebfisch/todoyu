@@ -479,23 +479,24 @@ Todoyu.Form = {
 	 * @param	{Element}	field
 	 */
 	assistDurationInput: function(field) {
+		field		= $(field);
 		var value	= $F(field).strip();
 
 		if( value.match(/^\d+$/) !== null ) {		// Format like "1" => "1:00", also 11, 111, 1111...
-			$(field).value  = value + ':00';
+			field.value  = value + ':00';
 		} else if( value.match(/^\:\d{1,2}$/) ) {	// Format like ":30" => "0:30", also ":3", not ":333"
-			$(field).value  = '0' + value;
+			field.value  = '0:' + Todoyu.Helper.twoDigit(value.replace(':', ''));
 		} else if( value.match(/^\d+\:$/) ) {		// Format like "2:" => "2:00", also 22, 222, 2222...
-			$(field).value  = value + '00';
+			field.value  = value + '00';
 		}
 
 			// Detect and alert on empty or otherwise illegal (containing characters other than numbers and ":") input
 		if( value === '' || value === ':' || value.match(/^[0-9\:]+$/) === null ) {
-			this.getFieldLabelElement(field).addClassName('error');
-			alert('[LL:core.form.error.duration.invalidinput]');
+			this.setFieldErrorStatus(field, true);
+			Todoyu.notifyError('[LL:core.form.error.duration.invalidinput]', 'form.duration.error');
 		} else {
-			this.getFieldLabelElement(field).removeClassName('error');
-			this.markFieldInvalid(field, false);
+			this.setFieldErrorStatus(field, false);
+			Todoyu.Notification.closeTypeNotes('form.duration.error');
 		}
 	},
 
@@ -789,8 +790,8 @@ Todoyu.Form = {
 	/**
 	 * Mark field as error/valid
 	 *
-	 * @param	{String}	input
-	 * @param	{Boolean}	hasError
+	 * @param	{String|Element}	input
+	 * @param	{Boolean}			hasError
 	 */
 	setFieldErrorStatus: function(input, hasError) {
 		var method	= hasError ? 'addClassName' : 'removeClassName';
