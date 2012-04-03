@@ -192,7 +192,7 @@ class TodoyuRoleManager {
 	 * @return	Integer		Role ID
 	 */
 	public static function saveRole(array $data) {
-		$xmlPath= 'core/config/form/role.xml';
+		$xmlPath= 'ext/sysmanager/config/form/role.xml';
 
 			// New created record?
 		$idRole	= (int) $data['id'];
