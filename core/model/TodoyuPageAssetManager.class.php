@@ -471,23 +471,25 @@ class TodoyuPageAssetManager {
 		require_once( PATH_LIB . '/php/Phamlp/sass/SassParser.php' );
 
 			// Create unique filename for parsed file
-		$pathWeb		= TodoyuFileManager::pathWeb($pathScss);
-		$filenameDashed	= str_replace('/', '-', $pathWeb);
-		$filenameCss	= str_replace('.scss', '.css', $filenameDashed);
-		$pathCss		= TodoyuFileManager::pathAbsolute('cache/css/' . $filenameCss);
+		$filenameCss= str_replace('.scss', '.css', basename($pathScss));
+		$pathWeb	= TodoyuFileManager::pathWeb($pathScss);
 
-			// Parse if not yet
-		if( ! file_exists($pathCss) ) {
+		$pathCssDir	= TodoyuFileManager::pathAbsolute('cache/css/' . dirname($pathWeb));
+		$pathCssFile= $pathCssDir. '/' . $filenameCss;
+
+        	// Parse if not yet
+		if( ! file_exists($pathCssFile) ) {
+			TodoyuFileManager::makeDirDeep($pathCssDir);
 			$sassParser	= self::getSassParser(TodoyuFileManager::getFileName($pathScss));
 
 			$cssCode	= $sassParser->toCss($pathScss, true);
-			$cssCode	= self::rewriteRelativePaths($cssCode, $pathScss);
+			$cssCode	= self::rewriteRelativePaths($cssCode, $pathScss, 7);
 
-			$file	= TodoyuFileManager::saveFileContent($pathCss, $cssCode) ? $pathCss : false;
+			$file	= TodoyuFileManager::saveFileContent($pathCssFile, $cssCode) ? $pathCssFile : false;
 			return $file;
 		}
 
-		return $pathCss;
+		return $pathCssFile;
 	}
 
 
@@ -660,9 +662,10 @@ class TodoyuPageAssetManager {
 	 *
 	 * @param	String		$cssCode
 	 * @param	String		$pathSourceFile
+	 * @param	Integer		$levels
 	 * @return	String
 	 */
-	private static function rewriteRelativePaths($cssCode, $pathSourceFile) {
+	private static function rewriteRelativePaths($cssCode, $pathSourceFile, $levels = 2) {
 			// Remove quotes in url() elements
 		$pattern	= '|url\([\'"]{1}([^\'")]+?)[\'"]{1}\)|';
 		$replace	= 'url($1)';
@@ -671,7 +674,7 @@ class TodoyuPageAssetManager {
 			// Rewrite paths
 		$webDirName	= dirname( TodoyuFileManager::pathWeb($pathSourceFile) );
 		$search		= 'url(';
-		$replace	= 'url(../../' . $webDirName . '/';
+		$replace	= 'url(' . str_repeat('../', $levels) . $webDirName . '/';
 		$cssCode	= str_replace($search, $replace, $cssCode);
 
 			// Make a real path
