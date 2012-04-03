@@ -46,6 +46,27 @@ class TodoyuInstallerRenderer {
 
 
 	/**
+	 * Assure installer assets being available (parse + cache SCSS), return config array of needed assets
+	 *
+	 * @return	Array
+	 */
+	private static function getInstallerAssetsConfig() {
+		$assetsConfig	= Todoyu::$CONFIG['INSTALLER']['assets'];
+
+			// Rewrite SCSS assets to their resp. CSS file, parse it to cache if not present yet
+		foreach($assetsConfig['css'] as $index => $stylesheetFile) {
+			if( TodoyuString::endsWith($stylesheetFile, '.scss') ) {
+				$pathCss	=	'../' . TodoyuFileManager::pathWeb(TodoyuPageAssetManager::parseScssStylesheet($stylesheetFile));
+				$assetsConfig['css'][$index]	= $pathCss;
+			}
+		}
+
+		return $assetsConfig;
+	}
+
+
+
+	/**
 	 * Render installer step: select installer language (preset for system language)
 	 *
 	 * @param	Array	$result
@@ -53,6 +74,8 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderLocale(array $result) {
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'			=> 'install.installer.locale.title',
 			'button'		=> false,
 			'text'			=> Todoyu::Label('install.installer.locale.text'),
@@ -60,6 +83,7 @@ class TodoyuInstallerRenderer {
 			'locales'		=> TodoyuInstaller::getAvailableLocaleOptions(),
 			'userLocale'	=> TodoyuBrowserInfo::getBrowserLocale(),
 		);
+
 
 		return $data;
 	}
@@ -74,6 +98,8 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderLicense(array $result) {
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'		=> 'install.installer.license.title',
 			'button'	=> 'install.installer.license.button',
 			'text'		=> Todoyu::Label('install.installer.license.text'),
@@ -95,6 +121,8 @@ class TodoyuInstallerRenderer {
 		$info	= TodoyuInstallerManager::checkServer();
 
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'		=> 'install.installer.servercheck.title',
 			'button'	=> 'install.installer.servercheck.button',
 			'info'		=> array(
@@ -126,6 +154,8 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderDbConnection(array $result) {
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'		=> 'install.installer.dbconnection.title',
 			'button'	=> 'install.installer.dbconnection.button',
 			'text'		=> Todoyu::Label('install.installer.dbconnection.text'),
@@ -163,6 +193,8 @@ class TodoyuInstallerRenderer {
 		}
 			// Setup rendering data
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'		=> 'install.installer.dbselect.title',
 			'button'	=> 'install.installer.dbselect.button',
 			'databases'	=> $dbOptions,
@@ -198,6 +230,8 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderImportDbTables(array $result) {
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'			=> 'install.installer.importtables.title',
 			'button'		=> 'install.installer.importtables.button',
 			'coreStructure'	=> TodoyuSQLManager::getCoreTablesFromFile(),
@@ -219,6 +253,8 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderSystemConfig(array $result) {
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'			=> 'install.installer.systemconfig.title',
 			'button'		=> 'install.installer.systemconfig.button',
 			'userLocale'	=> TodoyuSession::get('installer/locale'),
@@ -241,6 +277,8 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderAdminAccount(array $result) {
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'		=> 'install.installer.adminaccount.title',
 			'button'	=> 'install.installer.adminaccount.button',
 			'email'		=> TodoyuSession::get('installer/systememail'),
@@ -261,6 +299,8 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderImportDemoData(array $result) {
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'		=> 'install.installer.importdemodata.title',
 			'button'	=> 'install.installer.importdemodata.button',
 			'text'		=> Todoyu::Label('install.installer.importdemodata.text'),
@@ -280,6 +320,8 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderFinish(array $result) {
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'		=> 'install.installer.finish.title',
 			'button'	=> 'install.installer.finish.button',
 			'text'		=> Todoyu::Label('install.installer.finish.text'),
@@ -306,6 +348,8 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderUpdate(array $result) {
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'			=> 'install.installer.update.title',
 			'button'		=> 'install.installer.update.button',
 			'text'			=> Todoyu::Label('install.installer.update.title'),
@@ -325,6 +369,8 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderUpdateToCurrentVersion(array $result) {
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'			=> 'install.installer.updatetocurrentversion.title',
 			'button'		=> 'install.installer.updatetocurrentversion.button',
 			'buttonClass'	=> 'updateDatabase',
@@ -354,6 +400,8 @@ class TodoyuInstallerRenderer {
 	 */
 	public static function renderFinishUpdate(array $result) {
 		$data	= array(
+			'assets'		=> self::getInstallerAssetsConfig(),
+
 			'title'			=> 'install.installer.finish.title',
 			'button'		=> 'install.installer.finish.button',
 			'text'			=> Todoyu::Label('install.installer.finishupdate.text'),

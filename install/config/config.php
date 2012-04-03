@@ -30,4 +30,20 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 TodoyuLabelManager::addCustomPath('install', 'install');
 
+	// Assets (JS, (S)CSS) requirements for installer
+Todoyu::$CONFIG['INSTALLER']['assets']	= array(
+	'css'	=> array(
+		'core/asset/css/base.scss',
+		'core/asset/css/layout.scss',
+		'core/asset/css/panel.scss',
+		'core/asset/css/form.scss',
+		'core/asset/css/button.scss',
+		'asset/css/installer.css'
+	),
+	'js'	=> array(
+		'../lib/js/prototype.js',
+		'asset/js/TodoyuInstaller.js'
+	)
+);
+
 ?>

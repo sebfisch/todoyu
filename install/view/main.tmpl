@@ -3,21 +3,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>todoyu Installer - {Label $title}</title>
-
-	<link href="../cache/css/core-asset-css-base.css" rel="stylesheet" type="text/css" />
-	<link href="../cache/css/core-asset-css-layout.css" rel="stylesheet" type="text/css" />
-	<link href="../cache/css/core-asset-css-panel.css" rel="stylesheet" type="text/css" />
-	<link href="../cache/css/core-asset-css-form.css" rel="stylesheet" type="text/css" />
-	<link href="../cache/css/core-asset-css-button.css" rel="stylesheet" type="text/css" />
-	<link href="asset/css/installer.css" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="../favicon.ico" />
-	<script language="javascript" type="text/javascript" src="../lib/js/prototype.js"></script>
-	<script language="javascript" type="text/javascript" src="asset/js/TodoyuInstaller.js"></script>
-
+	{foreach $assets.css cssHref}
+		<link href="{$cssHref}" rel="stylesheet" type="text/css" />
+	{/foreach}
+	{foreach $assets.js jsSrc}
+		<script language="javascript" type="text/javascript" src="{$jsSrc}"></script>
+	{/foreach}
 	<meta http-equiv="expires" content="0" />
 	<meta http-equiv="cache-control" content="no-cache" />
 	<meta http-equiv="pragma" content="no-cache" />
-
 </head>
 	<body>
 		<div id="box">

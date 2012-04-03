@@ -124,14 +124,21 @@ class TodoyuPageAssetManager {
 
 
 
+	/**
+	 * Make cache folders (js, css)
+	 */
+	public static function makeCacheFolders() {
+		TodoyuFileManager::makeDirDeep(PATH_CACHE . '/js');
+		TodoyuFileManager::makeDirDeep(PATH_CACHE . '/css');
+	}
+
+
 
 	/**
 	 * Add processed assets (JS + CSS) to the page
 	 */
 	public static function addAssetsToPage() {
-			// Make cache folders
-		TodoyuFileManager::makeDirDeep(PATH_CACHE . '/js');
-		TodoyuFileManager::makeDirDeep(PATH_CACHE . '/css');
+		self::makeCacheFolders();
 
 			// Add javaScripts
 		$jsFiles	= self::getJavascripts();
