@@ -494,7 +494,7 @@ Todoyu.Form = {
 			// Detect and alert on empty or otherwise illegal (containing characters other than numbers and ":") input
 		if( value === '' || value === ':' || value.match(/^[0-9\:]+$/) === null ) {
 			this.setFieldErrorStatus(field, true);
-			Todoyu.notifyError('[LL:core.form.error.duration.invalidinput]', 'form.duration.error');
+			Todoyu.notifyError('[LLL:core.form.error.duration.invalidinput]', 'form.duration.error');
 		} else {
 			this.setFieldErrorStatus(field, false);
 			Todoyu.Notification.closeTypeNotes('form.duration.error');
