@@ -105,31 +105,26 @@ Todoyu.DateField = {
 	 * @method	validateDateFormat
 	 * @param	{String}	format
 	 * @param	{Event}		event
-	 * @param	{Element}	input
+	 * @param	{Element}	field
 	 */
-	validateDateFormat: function(format, event, input) {
-		var dateValue	= $F(input).strip();
+	validateDateFormat: function(format, event, field) {
+		field			= $(field);
+		var dateString	= $F(field).strip();
 
 			// Remove all errors
-		Todoyu.Form.setFieldErrorStatus(input, false);
+		Todoyu.Form.setFieldErrorStatus(field, false);
 		Todoyu.Notification.closeTypeNotes('date.formaterror');
 
-			// Empty is valid too
-		if( dateValue.empty() ) {
-			return;
-		}
+			// Only validate not empty field
+		if( !dateString.empty() ) {
+				// Is date in valid format?
+			if( !Todoyu.Time.hasDateValidFormat(dateString, format) ) {
+				Todoyu.notifyError('[LLL:core.date.warning.dateformat.invalid]', 'date.formaterror');
 
-			// Is date in valid format?
-		if( ! Todoyu.Time.isDateString(dateValue, format) ) {
-			Todoyu.notifyError('[LLL:core.date.warning.dateformat.invalid]', 'date.formaterror');
-
-			Todoyu.Form.setFieldErrorStatus(input, true);
-		} else {
-				// Set date to result the parsing of the current value will have
-			var parts		= Todoyu.Time.getDateTimeStringParts(dateValue, format);
-			var understoodDate	= new Date(parts.year, parts.month, parts.day, parts.hours, parts.minutes);
-
-			this.setDate(input.id, understoodDate);
+				Todoyu.Form.setFieldErrorStatus(field, true);
+			} else {
+				this.setDate(field, Date.parseDate(dateString, format));
+			}
 		}
 	},
 

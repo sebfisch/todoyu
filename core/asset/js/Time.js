@@ -331,137 +331,33 @@ Todoyu.Time = {
 
 
 	/**
-	 * Get parts (month, day, year, hours, minutes, seconds) of date string when parsed (possibly corrected) by JS calendar
-	 *
-	 * @method	getDateTimeStringParsedParts
-	 * @param	{String}	dateString
-	 * @param	{String}	format
-	 * @return	{Array}
-	 */
-	getDateTimeStringPartsParsed: function(dateString, format) {
-		var dateObj	= Date.parseDate(dateString, format);
-
-		return {
-			month:		dateObj.getMonth(),
-			day:		dateObj.getDate(),
-			year:		dateObj.getFullYear(),
-			hours:		dateObj.getHours(),
-			minutes:	dateObj.getMinutes(),
-			seconds:	dateObj.getSeconds()
-		};
-	},
-
-
-
-	/**
-	 * Extract parts (month, day, year, hours, minutes, seconds) out of datetime string w/o correction
-	 *
-	 * @method	getDateTimeStringParts
-	 * @param	{String}	datetimeString
-	 * @param	{String}	format
-	 * @return	{Array}
-	 */
-	getDateTimeStringParts: function(datetimeString, format) {
-		var today = new Date();
-
-		var year	= 0;
-		var month	= -1;
-		var day		= 0;
-		var hours	= 0;
-		var minutes = 0;
-		var seconds	= 0;
-
-		var a = datetimeString.split(/\W+/);
-		var b = format.match(/%./g);
-		var i = 0, j = 0;
-
-			// Extract parts
-		for(i = 0; i < a.length; ++i) {
-			if( ! a[i] )
-				continue;
-
-			switch (b[i]) {
-					// Extract day
-				case "%d":
-				case "%e":
-					day = parseInt(a[i], 10);
-					break;
-
-					// Extract month
-				case "%m":
-					month = parseInt(a[i], 10) - 1;
-					break;
-
-				case "%b":
-				case "%B":
-					for (j = 0; j < 12; ++j) {
-						if( Calendar._MN[j].substr(0, a[i].length).toLowerCase() == a[i].toLowerCase() ) {
-							month = j;
-							break;
-						}
-					}
-					break;
-
-					// Extract year
-				case "%Y":
-				case "%y":
-					year = parseInt(a[i], 10);
-					(year < 100) && (year += (year > 29) ? 1900 : 2000);
-					break;
-
-					// Extract hours
-				case "%H":
-				case "%I":
-				case "%k":
-				case "%l":
-					hours = parseInt(a[i], 10);
-					break;
-
-				case "%P":
-				case "%p":
-					if( /pm/i.test(a[i]) && hours < 12 ) {
-						hours += 12;
-					} else if( /am/i.test(a[i]) && hours >= 12 ) {
-						hours -= 12;
-					}
-					break;
-
-				case "%M":
-				minutes = parseInt(a[i], 10);
-				break;
-			}
-		}
-
-		return {
-			'month':	month,
-			'day':		day,
-			'year':		year,
-			'hours':	hours,
-			'minutes':	minutes,
-			'seconds':	seconds
-		};
-	},
-
-
-
-	/**
 	 * Check whether given date string contains a correct date (will not be corrected/changed when parsed)
 	 *
 	 * @method	isDateString
-	 * @param	{String}	dateString
+	 * @param	{String}	inputString
 	 * @param	{String}	format
 	 * @return	{Boolean}
 	 */
-	isDateString: function(dateString, format) {
-		var parts		= this.getDateTimeStringParts(dateString, format);
-		var partsParsed	= this.getDateTimeStringPartsParsed(dateString, format);
+	hasDateValidFormat: function(inputString, format) {
+		var inputDate		= Date.parseDate(inputString, format);
+		var compareString	= inputDate.print(format);
 
-			// Isn't date string if any part differs unparsed from parsed
-		return ! (	parts.year != partsParsed.year ||
-					parts.month != partsParsed.month ||
-					parts.day != partsParsed.day ||
-					parts.hours != partsParsed.hours ||
-					parts.minutes != partsParsed.minutes );
+		return this.areSameDates(inputString, compareString);
+	},
+
+
+
+	/**
+	 * Compare two date strings. Remove irrelavant parts to be more tollerant
+	 *
+	 * @param	{String}	dateString1
+	 * @param	{String}	dateString2
+	 */
+	areSameDates: function(dateString1, dateString2) {
+		var compareDate1	= dateString1.replace(/0*(\d*)/gi,"$1").replace(/0{1,2}:0{1,2}/gi, '').strip();
+		var compareDate2	= dateString2.replace(/0*(\d*)/gi,"$1").replace(/0{1,2}:0{1,2}/gi, '').strip();
+
+		return compareDate1 === compareDate2;
 	},
 
 
