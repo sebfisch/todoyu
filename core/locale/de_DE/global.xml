@@ -104,6 +104,7 @@
 	<label index="log.error">Normale Fehler</label>
 	<label index="log.security">Security Issues</label>
 	<label index="log.fatal">Fatal Errors</label>
+	<label index="system">System</label>
 	<label index="controllerError.oops">Hoppla!</label>
 	<label index="controllerError.info">todoyu kann diese Anfrage nicht verarbeiten</label>
 	<label index="controllerError.reason">Möglichweise haben Sie die URL falsch geschrieben oder die gewünschte Erweiterung wurde entfernt</label>
