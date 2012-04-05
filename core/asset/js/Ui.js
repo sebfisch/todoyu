@@ -788,7 +788,7 @@ Todoyu.Ui = {
 		this.calendarOptions[fieldConfig.inputField] = Object.clone(fieldConfig);
 
 			// Add validator if not disabled
-		if( !fieldConfig.noValidator ) {
+		if( fieldConfig.validate !== false ) {
 			Todoyu.DateField.addValidator(fieldConfig.inputField, fieldConfig.ifFormat);
 		}
 
