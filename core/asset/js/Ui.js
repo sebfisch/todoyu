@@ -936,6 +936,26 @@ Todoyu.Ui = {
 	 */
 	onTinyMcePasteCleanup: function(plugin, pasteObject) {
 		pasteObject.node.innerHTML = pasteObject.node.innerHTML.replace('<br />', '');
+	},
+
+
+
+	/**
+	 * @method	showInfoBalloon
+	 * @param	{String}	key
+	 */
+	showInfoBalloon: function(key) {
+		$('info-balloon-' + key).show();
+	},
+
+
+
+	/**
+	 * @method	hideInfoBalloon
+	 * @param	{String}	key
+	 */
+	hideInfoBalloon: function(key) {
+		$('info-balloon-' + key).hide();
 	}
 
 };

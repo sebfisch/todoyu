@@ -1,6 +1,8 @@
 todoyu core changelog
 
 core 2.2.0 - not released yet
+	* Added: Balloon info rendering, style and JS
+	* Added: Hooks in TodoyuMail
 	* Added: Empty listing shows "no items" notice
 	* Added: Special chars encoding of CSV exported data
 	* Added: Added core hook of loaded extension type configs: 'loadconfig.extkey.type'

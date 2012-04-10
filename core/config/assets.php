@@ -408,6 +408,11 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
+			'file'		=> 'core/asset/css/infoballoon.css',
+			'media'		=> 'all',
+			'position'	=> 10
+		),
+		array(
 			'file'		=> 'core/asset/css/headlet-ajaxloader.scss',
 			'media'		=> 'all',
 			'position'	=> 10

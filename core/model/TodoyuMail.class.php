@@ -68,6 +68,8 @@ class TodoyuMail extends PHPMailerLite {
 	 * @param	Array		$config
 	 */
 	public function __construct(array $config = array()) {
+		$config	= TodoyuHookManager::callHookDataModifier('core', 'mail.construct', $config);
+
 		$this->config	= TodoyuArray::mergeRecursive($this->config, $config);
 
 		parent::__construct($this->config['exceptions']);
@@ -88,6 +90,8 @@ class TodoyuMail extends PHPMailerLite {
 
 
 	/**
+	 * Render and set email HTML message
+	 *
 	 * @return void
 	 */
 	private function renderHtmlContent() {
@@ -142,7 +146,10 @@ class TodoyuMail extends PHPMailerLite {
 	 * @param	String		$headline
 	 */
 	public function setHeadline($headline) {
-		$this->headline	= Todoyu::Label($headline);
+		$headline	= Todoyu::Label($headline);
+		$headline	= TodoyuHookManager::callHookDataModifier('core', 'mail.setHeadline', $headline);
+
+		$this->headline	= $headline;
 	}
 
 
@@ -187,7 +194,6 @@ class TodoyuMail extends PHPMailerLite {
 
 	/**
 	 * Set system as sender of the email (system name and email)
-	 *
 	 */
 	public function setSystemAsSender() {
 		$this->SetFrom(Todoyu::$CONFIG['SYSTEM']['email'], Todoyu::$CONFIG['SYSTEM']['name'], 0);
@@ -198,7 +204,6 @@ class TodoyuMail extends PHPMailerLite {
 	/**
 	 * Set currently logged in user as sender
 	 * Fallback to system if no user is logged in
-	 *
 	 */
 	public function setCurrentUserAsSender() {
 		$idPerson	= Todoyu::personid();
@@ -219,7 +224,11 @@ class TodoyuMail extends PHPMailerLite {
 	 * @param	String		$subject
 	 */
 	public function setSubject($subject) {
-		$this->Subject = Todoyu::Label($subject);
+		$subject	= Todoyu::Label($subject);
+
+		$subject	= TodoyuHookManager::callHookDataModifier('core', 'mail.setSubject', $subject);
+
+		$this->Subject = $subject;
 	}
 
 
@@ -272,12 +281,21 @@ class TodoyuMail extends PHPMailerLite {
 		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
 		$email		= $person->getEmail();
+		$fullname	= $person->getFullName();
+
+		$hookParams	= array(
+			'idPerson'		=> $idPerson,
+			'TodoyuMail'	=> $this
+		);
+		$email		= TodoyuHookManager::callHookDataModifier('core', 'mail.addReceiver.email', $email, $hookParams);
 
 		if( !$email ) {
 			return false;
 		}
 
-		$this->AddAddress($email, $person->getFullName());
+		$fullname	= TodoyuHookManager::callHookDataModifier('core', 'mail.addReceiver.fullname', $fullname, $hookParams);
+
+		$this->AddAddress($email, $fullname);
 
 		return true;
 	}
@@ -338,6 +356,7 @@ class TodoyuMail extends PHPMailerLite {
 
 		return true;
 	}
+
 }
 
 ?>

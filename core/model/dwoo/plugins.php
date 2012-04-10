@@ -855,4 +855,19 @@ function Dwoo_Plugin_List(Dwoo $dwoo, $ext, $list, $offset = 0, $noPaging = fals
 }
 
 
+
+/**
+ * Render balloon info
+ *
+ * @param	Dwoo_Compiler 	$compiler
+ * @param	String			$label
+ * @param	String			$id
+ * @param	String			$content			If not given: renders the label as content
+ * @param	String			$balloonWidth		Default 200 is set via CSS
+ * @return	String
+ */
+function Dwoo_Plugin_infoBalloon_compile(Dwoo_Compiler $compiler, $label, $id = '', $content = '', $balloonWidth = 0) {
+	return 'Todoyu::render(\'core/view/infoballoon.tmpl\', array(\'label\'=> ' . $label . ',\'id\'=>' . $id . ',\'content\'=>' . $content . ',\'balloonWidth\'=>' . $balloonWidth . '))';
+}
+
 ?>
