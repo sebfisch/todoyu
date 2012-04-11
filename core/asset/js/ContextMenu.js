@@ -101,9 +101,9 @@ Todoyu.ContextMenu = {
 		var url		= Todoyu.getUrl('core', 'contextmenu');
 		var options	= {
 			parameters: {
-				action:		'get',
-				contextmenu:type,
-				element:	elementKey
+				action:			'get',
+				contextmenu:	type,
+				element:		elementKey
 			}
 		};
 
@@ -152,6 +152,8 @@ Todoyu.ContextMenu = {
 		var menu = this.Template.render(menuJSON);
 
 		this.updateMenuContainer(menu);
+
+		Todoyu.QuickInfo.disable();
 	},
 
 
@@ -245,8 +247,9 @@ Todoyu.ContextMenu = {
 				// Stop body click observer
 			this.bodyClickObserver.stop();
 
-				// Hide context menu
 			$('contextmenu').hide();
+
+			Todoyu.QuickInfo.enable();
 		}
 	},
 

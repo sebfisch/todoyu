@@ -27,7 +27,7 @@
  * @class		QuickInfo
  * @namespace	Todoyu
  */
-Todoyu.QuickInfo = {
+Todoyu.QuickInfo	= {
 
 	/**
 	 * ID of the quickinfo popup
@@ -42,7 +42,7 @@ Todoyu.QuickInfo = {
 	 * @property	cache
 	 * @type		Object
 	 */
-	cache:		{},
+	cache:	{},
 
 	/**
 	 * Default cache time for an element (seconds)
@@ -59,7 +59,7 @@ Todoyu.QuickInfo = {
 	 * @property	customCacheTime
 	 * @type		Object
 	 */
-	customCacheTime: {},
+	customCacheTime:	{},
 
 	/**
 	 * Template object to convert JSON into HTML
@@ -83,7 +83,7 @@ Todoyu.QuickInfo = {
 	 * @property	hidden
 	 * @type		Boolean
 	 */
-	hidden:		false,
+	hidden:	false,
 
 
 
@@ -93,7 +93,7 @@ Todoyu.QuickInfo = {
 	 * @property	delayedHide
 	 * @type		Function
 	 */
-	delayedHide: null,
+	delayedHide:	null,
 
 	/**
 	 * Delay time for hiding quickinfo
@@ -101,7 +101,7 @@ Todoyu.QuickInfo = {
 	 * @property	delayedHideTime
 	 * @type		Number
 	 */
-	delayedHideTime: 0.4,
+	delayedHideTime:	0.4,
 
 	/**
 	 * Callback for delayed show
@@ -109,7 +109,7 @@ Todoyu.QuickInfo = {
 	 * @property	delayedShow
 	 * @type		Function
 	 */
-	delayedShow: null,
+	delayedShow:	null,
 
 	/**
 	 * Delay time for showing quickinfo
@@ -117,7 +117,7 @@ Todoyu.QuickInfo = {
 	 * @property	delayedShowTime
 	 * @type		Number
 	 */
-	delayedShowTime: 0.6,
+	delayedShowTime:	0.6,
 
 	/**
 	 * Active element (DOM element)
@@ -125,15 +125,15 @@ Todoyu.QuickInfo = {
 	 * @property	active
 	 * @type		Element
 	 */
-	active: null,
+	active:	null,
 
 	/**
 	 * Trigger to deactivate quickInfo, e.g. while dragging elements
 	 *
-	 * @property	deactivated
+	 * @property	disabled
 	 * @type		Boolean
 	 */
-	deactivated: false,
+	disabled:	false,
 
 
 
@@ -147,7 +147,7 @@ Todoyu.QuickInfo = {
 		this.insertQuickInfoElement(this.popupID);
 
 			// Activate showing of quickinfos
-		this.activate();
+		this.enable();
 
 			// Observe document for clicks to close the quickinfo
 		document.body.on('click', this.onBodyClick.bind(this));
@@ -156,24 +156,25 @@ Todoyu.QuickInfo = {
 
 
 	/**
-	 * Activate showing of quickinfos
+	 * Enable showing of quickinfos
 	 *
-	 * @method	activate
+	 * @method	enable
 	 */
-	activate: function() {
-		this.deactivated	= false;
+	enable: function() {
+		this.disabled	= false;
 	},
 
 
 
 	/**
-	 * Deactivate showing of quickinfos
+	 * Disable showing of quickinfos
 	 *
-	 * @method	deactivate
+	 * @method	disable
 	 */
-	deactivate: function() {
+	disable: function() {
 		this.hide(true);
-		this.deactivated	= true;
+
+		this.disabled	= true;
 	},
 
 
@@ -208,15 +209,17 @@ Todoyu.QuickInfo = {
 	 */
 	onMouseOver: function(name, idCallback, element, event) {
 			// Hide active element if another one should be displayed
-		if( this.active !== null && this.active !== element) {
-			this.hide(true);
-		}
+		if( !this.disabled ) {
+			if( this.active !== null && this.active !== element) {
+				this.hide(true);
+			}
 
-		if( ! this.isVisible() ) {
-			this.show(event, name, idCallback, element);
-		}
+			if( ! this.isVisible() ) {
+				this.show(event, name, idCallback, element);
+			}
 
-		Todoyu.Hook.exec('core.quickinfo.mouseover', event, name, element);
+			Todoyu.Hook.exec('core.quickinfo.mouseover', event, name, element);
+		}
 	},
 
 
@@ -626,6 +629,28 @@ Todoyu.QuickInfo = {
 	 */
 	isCached: function(cacheID) {
 		return typeof(this.cache[cacheID]) === 'object' && this.cache[cacheID].time > (new Date()).getTime();
+	},
+
+
+
+	/**
+	 * Wrapper for backwards compatibility
+	 *
+	 * @deprecated
+	 */
+	activate: function() {
+		this.enable();
+	},
+
+
+
+	/**
+	 * Wrapper for backwards compatibility
+	 *
+	 * @deprecated
+	 */
+	deactivate: function() {
+		this.disable();
 	}
 
 };
