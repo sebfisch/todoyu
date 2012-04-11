@@ -161,13 +161,14 @@ var Todoyu = {
 	 * Build request url with extension and controller
 	 *
 	 * @method	getUrl
-	 * @param	{String}		ext
+	 * @param	{String}		extKey
 	 * @param	{String}		controller
+	 * @param	{Object}		params
 	 * @param	{String}		hash
 	 * @return	{String}
 	 */
-	getUrl: function(ext, controller, params, hash) {
-		var url	= 'index.php?ext=' + ext;
+	getUrl: function(extKey, controller, params, hash) {
+		var url	= 'index.php?ext=' + extKey;
 
 		if( controller ) {
 			url = url + '&controller=' + controller;
@@ -178,7 +179,7 @@ var Todoyu = {
 		}
 
 		if( hash ) {
-			url += '#hash';
+			url += '#' + hash;
 		}
 
 		return url;
@@ -187,19 +188,51 @@ var Todoyu = {
 
 
 	/**
+	 * Check whether the current browser URL is the same as the redirection URL of the given todoyu parameters
+	 *
+	 * @method	isCurrentLocationHref
+	 * @param	{String}	extKey
+	 * @param	{String}	controller
+	 * @param	{Object}	params
+	 * @param	{String}	hash
+	 * @return	{Boolean}
+	 */
+	isCurrentLocationHref: function(extKey, controller, params, hash) {
+        var url	= this.getUrl(extKey, controller, params);
+
+			// Check for each query part separately as the alphabetical order does not matter
+		var queryParts		= url.split('&');
+		var anyPartMissing	= queryParts.any(function(part) {
+			return document.location.href.indexOf(part) == -1;
+		});
+
+		if( anyPartMissing ) {
+			return false;
+		}
+
+		if( Object.isString(hash) ) {
+			return document.location.href.endsWith('#' + hash);
+		}
+
+		return true;
+	},
+
+
+
+	/**
 	 * Redirect to another page
 	 *
 	 * @method	goTo
-	 * @param	{String}	ext
+	 * @param	{String}	extKey
 	 * @param	{String}	controller
-	 * @param	{Hash}		params
+	 * @param	{Object}	params
 	 * @param	{String}	hash
 	 * @param	{Boolean}	newWindow
 	 * @param	{String}	windowName
 	 */
-	goTo: function(ext, controller, params, hash, newWindow, windowName) {
+	goTo: function(extKey, controller, params, hash, newWindow, windowName) {
 		newWindow	= newWindow ? newWindow : false;
-		var url		=  this.getUrl(ext, controller, params);
+		var url		=  this.getUrl(extKey, controller, params);
 
 		if( Object.isString(hash) ) {
 			this.goToHashURL(url, hash, newWindow, windowName);

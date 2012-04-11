@@ -55,6 +55,7 @@ Todoyu.Ui = {
 	calendarOptions: {},
 
 
+
 	/**
 	 * Get options for RTE element
 	 *
