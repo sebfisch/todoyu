@@ -137,7 +137,7 @@ class TodoyuQuickinfo {
 	 * @param	String		$html
 	 * @param	Integer		$position
 	 */
-	public function addHTML($key, $html, $position) {
+	public function addHTML($key, $html, $position = 100) {
 		$this->addInfo($key, $html, $position, false);
 	}
 
