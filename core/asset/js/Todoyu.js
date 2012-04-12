@@ -162,9 +162,9 @@ var Todoyu = {
 	 *
 	 * @method	getUrl
 	 * @param	{String}		extKey
-	 * @param	{String}		controller
-	 * @param	{Object}		params
-	 * @param	{String}		hash
+	 * @param	{String}		[controller]
+	 * @param	{Object}		[params]
+	 * @param	{String}		[hash]
 	 * @return	{String}
 	 */
 	getUrl: function(extKey, controller, params, hash) {
@@ -192,9 +192,9 @@ var Todoyu = {
 	 *
 	 * @method	isCurrentLocationHref
 	 * @param	{String}	extKey
-	 * @param	{String}	controller
-	 * @param	{Object}	params
-	 * @param	{String}	hash
+	 * @param	{String}	[controller]
+	 * @param	{Object}	[params]
+	 * @param	{String}	[hash]
 	 * @return	{Boolean}
 	 */
 	isCurrentLocationHref: function(extKey, controller, params, hash) {
@@ -224,11 +224,11 @@ var Todoyu = {
 	 *
 	 * @method	goTo
 	 * @param	{String}	extKey
-	 * @param	{String}	controller
-	 * @param	{Object}	params
-	 * @param	{String}	hash
-	 * @param	{Boolean}	newWindow
-	 * @param	{String}	windowName
+	 * @param	{String}	[controller]
+	 * @param	{Object}	[params]
+	 * @param	{String}	[hash]
+	 * @param	{Boolean}	[newWindow]
+	 * @param	{String}	[windowName]
 	 */
 	goTo: function(extKey, controller, params, hash, newWindow, windowName) {
 		newWindow	= newWindow ? newWindow : false;
