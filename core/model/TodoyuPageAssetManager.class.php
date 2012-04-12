@@ -490,10 +490,9 @@ class TodoyuPageAssetManager {
 			$sassParser	= self::getSassParser(TodoyuFileManager::getFileName($pathScss));
 
 			$cssCode	= $sassParser->toCss($pathScss, true);
-			$cssCode	= self::rewriteRelativePaths($cssCode, $pathScss);
+			$cssCode	= self::rewriteRelativePaths($cssCode, $pathScss, true);
 
-			$file	= TodoyuFileManager::saveFileContent($pathCssFile, $cssCode) ? $pathCssFile : false;
-			return $file;
+			return TodoyuFileManager::saveFileContent($pathCssFile, $cssCode) ? $pathCssFile : false;
 		}
 
 		return $pathCssFile;
@@ -667,19 +666,26 @@ class TodoyuPageAssetManager {
 	/**
 	 *  Rewrite relative CSS paths in files
 	 *
-	 * @param	String		$cssCode
-	 * @param	String		$pathSourceFile
+	 * @param	String		$cssCode				CSS code
+	 * @param	String		$pathSourceFile			Absolute path to source file
+	 * @param	Boolean		$withSubFolders			Prefix dirUp (../) for single cache files
 	 * @return	String
 	 */
-	private static function rewriteRelativePaths($cssCode, $pathSourceFile) {
+	private static function rewriteRelativePaths($cssCode, $pathSourceFile, $withSubFolders = false) {
 			// Remove quotes in url() elements
 		$pattern	= '|url\([\'"]{1}([^\'")]+?)[\'"]{1}\)|';
 		$replace	= 'url($1)';
 		$cssCode	= preg_replace($pattern, $replace, $cssCode);
 
+			// Web path
+		$webDirName	= dirname(TodoyuFileManager::pathWeb($pathSourceFile));
+			// Up dir levels
+		$levels		= 2; // cache folder levels
+		if( $withSubFolders ) {
+			$levels += substr_count($webDirName, '/') + 1; // + subfolder levels (needs +1)
+		}
+
 			// Rewrite paths
-		$webDirName	= dirname( TodoyuFileManager::pathWeb($pathSourceFile) );
-		$levels 	= substr_count($webDirName, '/') + 1 + 2; // subfolder levels (needs +1) + cache folder levels
 		$search		= 'url(';
 		$replace	= 'url(' . str_repeat('../', $levels) . $webDirName . '/';
 		$cssCode	= str_replace($search, $replace, $cssCode);
