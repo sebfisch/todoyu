@@ -8,7 +8,7 @@
 	<label index="D2MshortY2">%d. %b %y</label>
 	<label index="D2Mshort">%d. %b</label>
 	<label index="DshortDMlong">%a %e. %B</label>
-	<label index="DshortDMshort">%a %e.%b</label>
+	<label index="DshortDMshort">%a %e. %b</label>
 	<label index="DMshort">%e. %b</label>
 	<label index="D2MshortTime">%d. %b %H:%M</label>
 	<label index="dShort">%a</label>
