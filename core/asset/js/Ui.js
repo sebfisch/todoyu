@@ -457,7 +457,7 @@ Todoyu.Ui = {
 		if( location.hash !== '') {
 			var anchor	= location.hash.substr(1);
 
-			this.scrollToAnchor.bind(this, anchor).delay(0.3);
+			this.scrollToAnchor.bind(this, anchor).delay(0.4);
 		}
 	},
 
