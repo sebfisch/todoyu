@@ -162,8 +162,9 @@ Todoyu.Form = {
 
 		if( Todoyu.exists(trigger) ) {
 			$(formHtml).toggle();
+			var method	= $(formHtml).visible() ? 'addClassName' : 'removeClassName';
 
-			$(trigger).down('span')[$(formHtml).visible() ? 'addClassName' : 'removeClassName']('expanded');
+			$(trigger).down('span')[method]('expanded');
 		}
 	},
 
@@ -304,10 +305,22 @@ Todoyu.Form = {
 	 */
 	toggleForeignRecords: function(fieldNames) {
 		fieldNames = fieldNames || [];
+		var visibleMethod, classMethod;
 
-		var method	= this.isAnyFieldHidden(fieldNames) ? 'show' : 'hide';
+		if( this.isAnyFieldHidden(fieldNames) ) {
+			visibleMethod	= 'show';
+			classMethod		= 'addClassName';
+		} else {
+			visibleMethod	= 'hide';
+			classMethod		= 'removeClassName';
+		}
 
-		this.invokeForeignRecords(fieldNames, method);
+		fieldNames.each(function(fieldName){
+			var fieldBox = $$('form div.fieldname' + fieldName.replace(/_/g,'').capitalize()).first();
+			fieldBox.select('.foreignRecords .formtrigger .label').invoke(classMethod, 'expanded');
+		});
+
+		this.invokeForeignRecords(fieldNames, visibleMethod);
 	},
 
 
@@ -384,7 +397,7 @@ Todoyu.Form = {
 
 		fieldNames.each(function(fieldName){
 			var parentField = $$('form div.fieldname' + fieldName.replace(/_/g,'').capitalize()).first();
-			if( parentField !== undefined ) {
+			if( parentField ) {
 				var subForms	= parentField.select('div.databaseRelation div.databaseRelationFormhtml');
 
 				subForms.invoke(method);
