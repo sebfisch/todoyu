@@ -1004,6 +1004,8 @@ INSERT INTO `system_preference` (`id`, `id_person`, `ext`, `area`, `preference`,
 --
 
 INSERT INTO `ext_contact_person` (`id`, `date_create`, `date_update`, `id_person_create`, `deleted`, `username`, `password`, `email`, `is_admin`, `is_active`, `firstname`, `lastname`, `shortname`, `salutation`, `title`, `birthday`) VALUES
+(2, 1264581214, 1269513208, 1, 0, '', '', '', 0, 0, 'Neil', 'Aaron', 'NEAA', 'm', '', '1973-15-03'),
+(3, 1264581224, 1269513218, 1, 0, '', '', '', 0, 0, 'Seth', 'Acuna', 'SEAC', 'm', '', '1963-03-02'),
 (4, 1264581204, 1269513298, 1, 0, '', '', '', 0, 0, 'James', 'Brown', 'JABR', 'm', '', '1933-05-03'),
 (5, 1264584484, 1269513353, 1, 0, '', '', '', 0, 0, 'Ludwig', 'van Beethoven', 'LUVA', 'm', '', '1770-12-17'),
 (6, 1264584644, 1269510452, 1, 0, 'customer', '5f4dcc3b5aa765d61d8327deb882cf99', 'curt@trava.example.com', 0, 1, 'Curt', 'Customer', 'CUCU', 'm', '', '1980-04-04'),
