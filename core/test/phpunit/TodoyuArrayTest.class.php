@@ -873,6 +873,30 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(0, $newOptions[0]['value']);
 	}
+
+
+
+	public function testGetAllowedItems() {
+		$items	= array(
+			array(
+				'name'		=> 'No check'
+			),
+			array(
+				'name'		=> 'Allowed',
+				'require'	=> 'portal.general:use'
+			),
+			array(
+				'name'		=> 'Not Allowed',
+				'require'	=> 'no.ext:right'
+			)
+		);
+
+		$allowed	= TodoyuArray::getAllowedItems($items);
+
+		// rights check for admin is not useful
+		// @todo implement way to simulate user for a unittest
+	}
+
 }
 
 ?>
