@@ -750,53 +750,6 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Update old style config variables if necessary, remove old extensions (dev, user) from ext list
-	 */
-	public static function updateConfigFileVariables() {
-			// Remove deleted extensions
-		$removeExts	= array('dev', 'user');
-		$filePath	= 'config/extensions.php';
-		$extContent	= TodoyuFileManager::getFileContent($filePath);
-
-		foreach($removeExts as $ext) {
-			$extContent	= str_replace(',\'' . $ext . '\'', '', $extContent);
-		}
-
-		TodoyuFileManager::saveFileContent($filePath, $extContent);
-
-			// Fix older than RC2 config files compatibility
-		$files = array(
-			'db.php',
-			'config.php',
-			'extconf.php',
-			'extensions.php',
-			'override.php',
-			'system.php'
-		);
-
-		$currentString	= '$CONFIG[';
-		$newString		= 'Todoyu::$CONFIG[';
-
-		foreach($files as $file) {
-			$file	= TodoyuFileManager::pathAbsolute('config/' . $file);
-
-			if( is_file($file) ) {
-				$content	= file_get_contents($file);
-
-				if( ! strstr($content, $newString) ) {
-					$content = str_replace($currentString, $newString, $content);
-
-					TodoyuFileManager::saveFileContent($file, $content);
-
-					include($file);
-				}
-			}
-		}
-	}
-
-
-
-	/**
 	 * Run SQL and PHP version updates.
 	 */
 	public static function runCoreVersionUpdates() {
@@ -815,7 +768,7 @@ class TodoyuInstallerManager {
 		}
 		foreach($phpFiles as $phpFile) {
 			$version	= basename($phpFile, '.php');
-			$updates[$version]['php'] = $phpFile;
+			$updatesw[$version]['php'] = $phpFile;
 		}
 
 			// Sort by version
