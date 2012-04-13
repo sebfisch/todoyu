@@ -348,7 +348,7 @@ class TodoyuMail extends PHPMailerLite {
 
 		$email		= $person->getEmail();
 
-		if( $email ) {
+		if( !$email ) {
 			return false;
 		}
 
