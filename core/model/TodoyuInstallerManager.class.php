@@ -768,7 +768,7 @@ class TodoyuInstallerManager {
 		}
 		foreach($phpFiles as $phpFile) {
 			$version	= basename($phpFile, '.php');
-			$updatesw[$version]['php'] = $phpFile;
+			$updates[$version]['php'] = $phpFile;
 		}
 
 			// Sort by version
