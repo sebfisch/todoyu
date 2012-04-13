@@ -18,11 +18,8 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-	// Activate extensions (deactivated during install)
-Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] = false;
-
 	// Debugging
-Todoyu::$CONFIG['DEBUG'] = true;
+TodoyuDebug::setActive(false);
 
 	// Error logging
 Todoyu::$CONFIG['LOG']['active'] = array('FILE', 'FIREPHP');
@@ -31,12 +28,7 @@ Todoyu::$CONFIG['LOG']['active'] = array('FILE', 'FIREPHP');
 Todoyu::$CONFIG['CACHE']['JS']['localize']	= true;
 Todoyu::$CONFIG['CACHE']['JS']['merge']		= true;
 Todoyu::$CONFIG['CACHE']['JS']['compress']	= true;
-
 Todoyu::$CONFIG['CACHE']['CSS']['merge']	= true;
 Todoyu::$CONFIG['CACHE']['CSS']['compress']	= true;
-
-Todoyu::$CONFIG['LIST']['size']	= 30;
-
-//TodoyuRightsManager::flushRights();
 
 ?>
