@@ -97,7 +97,8 @@ CREATE TABLE IF NOT EXISTS `system_scheduler` (
 	`class` varchar(100) NOT NULL,
 	`is_success` tinyint(1) NOT NULL,
 	`message` varchar(255) NOT NULL,
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	KEY `latest` (`class`,`date_execute`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
