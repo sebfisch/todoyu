@@ -412,7 +412,6 @@ INSERT INTO `system_right` (`id`, `ext`, `right`, `id_role`) VALUES
 (886, 112, 'export:taskcsv', 2),
 (887, 112, 'export:projectcsv', 2),
 (888, 112, 'seetask:waiting:see', 2),
-(888, 112, 'seetask:waiting:see', 3),
 (889, 112, 'addtask:waiting:create', 2),
 (889, 112, 'addtask:waiting:create', 3),
 (890, 112, 'edittask:waiting:edit', 2),
@@ -420,4 +419,5 @@ INSERT INTO `system_right` (`id`, `ext`, `right`, `id_role`) VALUES
 (891, 112, 'edittaskdetail:waiting:changefrom', 2),
 (891, 112, 'edittaskdetail:waiting:changefrom', 3),
 (892, 112, 'edittaskdetail:waiting:changeto', 2),
-(892, 112, 'edittaskdetail:waiting:changeto', 3);
+(892, 112, 'edittaskdetail:waiting:changeto', 3),
+(893, 112, 'seetask:waiting:see', 3);
