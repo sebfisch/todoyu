@@ -105,11 +105,12 @@ class TodoyuSQLManager {
 			// Merge queries of all extensions
 		foreach($tableQueries as $tableQuery) {
 			$tableStructure = TodoyuSQLParser::parseCreateQuery($tableQuery);
+			$tableName		= $tableStructure['table'];
 
-			if( array_key_exists($tableStructure['table'], $tableStructures) ) {
-				$tableStructures[$tableStructure['table']]	= self::mergeTableStructure($tableStructures[$tableStructure['table']], $tableStructure);
+			if( isset($tableStructures[$tableName]) ) {
+				$tableStructures[$tableName]	= self::mergeTableStructure($tableStructures[$tableStructure['table']], $tableStructure);
 			} else {
-				$tableStructures[$tableStructure['table']]	= $tableStructure;
+				$tableStructures[$tableName]	= $tableStructure;
 			}
 		}
 

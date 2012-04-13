@@ -86,7 +86,7 @@ class TodoyuSQLParser {
 		$keys	= array();
 
 		if( $sql !== '' ) {
-			$keysSQL= explode(', ', $sql);
+			$keysSQL= explode(",\n", $sql);
 			$pattern= '/([A-Za-z]*(?:\s*)KEY) (?:`(\w+)`)*(?:\s*)\((.*)\)/';
 
 			foreach($keysSQL as $sql) {
@@ -397,8 +397,8 @@ class TodoyuSQLParser {
 			'columns'	=> array()
 		);
 
-		$pattern1	= '/CREATE TABLE ([A-Za-z ]*)`(\w+)` \((.*)\)(.*)/is';
-		preg_match_all($pattern1, $query, $matches);
+		$patternAll	= '/CREATE TABLE ([A-Za-z ]*)`(\w+)` \((.*)\)(.*)/is';
+		preg_match_all($patternAll, $query, $matches);
 
 		$columnsKeySQL	= self::splitColumnKeySQL($matches[3][0]);
 		$columnsSQL		= explode(",\n", trim($columnsKeySQL['columns']));
