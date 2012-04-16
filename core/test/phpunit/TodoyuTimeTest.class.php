@@ -28,6 +28,8 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 	protected $timezone;
 
+	protected $firstDayOfWeek;
+
 
 
 	/**
@@ -35,9 +37,10 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * This method is called before a test is executed.
 	 */
 	protected function setUp() {
-		$this->timezone = Todoyu::getTimezone();
-
-		Todoyu::setTimezone('UTC');
+//		$this->timezone = Todoyu::getTimezone();
+//
+//		Todoyu::setTimezone('UTC');
+		$this->firstDayOfWeek = Todoyu::$CONFIG['SYSTEM']['firstDayOfWeek'];
 	}
 
 
@@ -47,7 +50,8 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * This method is called after a test is executed.
 	 */
 	protected function tearDown() {
-		Todoyu::setTimezone($this->timezone);
+//		Todoyu::setTimezone($this->timezone);
+		Todoyu::$CONFIG['SYSTEM']['firstDayOfWeek'] = $this->firstDayOfWeek;
 	}
 
 
@@ -55,9 +59,9 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test getStartOfDay
 	 */
-	public function testGetStartOfDay() {
-		$timeAfternoon	= gmmktime(14, 0, 0, 1, 1, 2010);
-		$timeDaystart	= gmmktime(0, 0, 0, 1, 1, 2010);
+	public function testGetDayStart() {
+		$timeAfternoon	= mktime(14, 0, 0, 1, 1, 2010);
+		$timeDaystart	= mktime(0, 0, 0, 1, 1, 2010);
 
 		$result1	= TodoyuTime::getDayStart($timeAfternoon);
 		$result2	= TodoyuTime::getDayStart($timeDaystart);
@@ -66,14 +70,18 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($result1, $result2);
 	}
 
+	public function testGetStartOfDay() {
+		// no test
+	}
+
 
 
 	/**
 	 * Test getEndOfDay
 	 */
-	public function testGetEndOfDay() {
-		$time		= gmmktime(14, 0, 0, 1, 1, 2010);
-		$testDayend	= gmmktime(23, 59, 59, 1, 1, 2010);
+	public function testGetDayEnd() {
+		$time		= mktime(14, 0, 0, 1, 1, 2010);
+		$testDayend	= mktime(23, 59, 59, 1, 1, 2010);
 
 		$timeEnd1	= TodoyuTime::getDayEnd($time);
 		$timeEnd2	= TodoyuTime::getDayEnd($testDayend);
@@ -82,15 +90,19 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($testDayend, $timeEnd2);
 	}
 
+	public function testGetEndOfDay() {
+		// no test
+	}
+
 
 
 	/**
 	 * Test getDayRange
 	 */
 	public function testGetDayRange() {
-		$time		= gmmktime(14, 33, 59, 8, 3, 2010);
-		$testStart	= gmmktime(0, 0, 0, 8, 3, 2010);
-		$testEnd	= gmmktime(23, 59, 59, 8, 3, 2010);
+		$time		= mktime(14, 33, 59, 8, 3, 2010);
+		$testStart	= mktime(0, 0, 0, 8, 3, 2010);
+		$testEnd	= mktime(23, 59, 59, 8, 3, 2010);
 		$range		= TodoyuTime::getDayRange($time);
 
 		$this->assertEquals($testStart, $range['start']);
@@ -103,9 +115,9 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * Test getWeekRange
 	 */
 	public function testGetWeekRange() {
-		$time		= gmmktime(14, 33, 59, 8, 3, 2010);
-		$testStart	= gmmktime(0, 0, 0, 8, 2, 2010);
-		$testEnd	= gmmktime(23, 59, 59, 8, 8, 2010);
+		$time		= mktime(14, 33, 59, 8, 3, 2010);
+		$testStart	= mktime(0, 0, 0, 8, 2, 2010);
+		$testEnd	= mktime(23, 59, 59, 8, 8, 2010);
 		$range		= TodoyuTime::getWeekRange($time);
 
 		$this->assertEquals($testStart, $range['start']);
@@ -118,9 +130,9 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * Test getMonthRange
 	 */
 	public function testGetMonthRange() {
-		$time		= gmmktime(14, 33, 59, 8, 3, 2010);
-		$testStart	= gmmktime(0, 0, 0, 8, 1, 2010);
-		$testEnd	= gmmktime(23, 59, 59, 8, 31, 2010);
+		$time		= mktime(14, 33, 59, 8, 3, 2010);
+		$testStart	= mktime(0, 0, 0, 8, 1, 2010);
+		$testEnd	= mktime(23, 59, 59, 8, 31, 2010);
 		$range		= TodoyuTime::getMonthRange($time);
 
 		$this->assertEquals($testStart, $range['start']);
@@ -156,8 +168,8 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * Test getMonthStart
 	 */
 	public function testGetMonthStart() {
-		$time		= gmmktime(14, 33, 59, 8, 3, 2010);
-		$testStart	= gmmktime(0, 0, 0, 8, 1, 2010);
+		$time		= mktime(14, 33, 59, 8, 3, 2010);
+		$testStart	= mktime(0, 0, 0, 8, 1, 2010);
 		$monthStart	= TodoyuTime::getMonthStart($time);
 
 		$this->assertEquals($testStart, $monthStart);
@@ -169,7 +181,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * Test getWeekday
 	 */
 	public function testGetWeekday() {
-		$time		= gmmktime(14, 33, 59, 8, 3, 2010);
+		$time		= mktime(14, 33, 59, 8, 3, 2010);
 		$testWeekday= 1;
 		$weekday	= TodoyuTime::getWeekday($time);
 
@@ -261,7 +273,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 		Todoyu::setLocale('en_GB');
 
-		$time	= gmmktime(14, 36, 5, 3, 9, 1984);
+		$time	= mktime(14, 36, 5, 3, 9, 1984);
 
 		$formattedEN= TodoyuTime::format($time, 'datetime');
 		$expectedEN	= '09/03/84 14:36';
@@ -310,7 +322,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	 * Test parseDateString
 	 */
 	public function testParseDateString() {
-		$time	= gmmktime(13, 46, 0, 4, 19, 2016);
+		$time	= mktime(13, 46, 0, 4, 19, 2016);
 		$date1	= date('r', $time);
 		$date2	= date('Y-m-d H:i:s', $time);
 		$date3	= TodoyuTime::format($time, 'datetime');
@@ -463,52 +475,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($test2, $rounded6);
 		$this->assertEquals($test4, $rounded7);
 		$this->assertEquals($test5, $rounded8);
-	}
-
-
-
-	/**
-	 * Check week timestamps
-	 * Force UTC to test
-	 */
-	public function testGetTimestampsForWeekdays() {
-		$expectedTimestamps = array(
-			gmmktime(0,0,0,6,7,2010),	// 07.06.2010 00:00
-			gmmktime(0,0,0,6,8,2010),	// 08.06.2010 00:00
-			gmmktime(0,0,0,6,9,2010),	// 09.06.2010 00:00
-			gmmktime(0,0,0,6,10,2010),	// 10.06.2010 00:00
-			gmmktime(0,0,0,6,11,2010),	// 11.06.2010 00:00
-			gmmktime(0,0,0,6,12,2010),	// 12.06.2010 00:00
-			gmmktime(0,0,0,6,13,2010)	// 13.06.2010 00:00
-		);
-
-		$timestamps	= TodoyuTime::getTimestampsForWeekdays($expectedTimestamps[2]);
-
-		$this->assertEquals($expectedTimestamps, $timestamps);
-	}
-
-
-
-	/**
-	 * Test getDaysInMonth
-	 */
-	public function testGetDaysInMonth() {
-		$timeJune2010	= gmmktime(0, 0, 0, 6, 1, 2010);
-		$timeFeb2010	= gmmktime(0, 0, 0, 2, 1, 2010);
-
-		$resDaysJune2010	= TodoyuTime::getDaysInMonth($timeJune2010);
-		$resDaysFeb2010		= TodoyuTime::getDaysInMonth($timeFeb2010);
-		$resDaysJan2010		= TodoyuTime::getDaysInMonth($timeFeb2010, -1);
-		$resDaysMarch2010	= TodoyuTime::getDaysInMonth($timeFeb2010, 1);
-		$resDaysApril2010	= TodoyuTime::getDaysInMonth($timeFeb2010, 2);
-		$resDaysFeb2012		= TodoyuTime::getDaysInMonth($timeFeb2010, 24);
-
-		$this->assertEquals($resDaysJune2010, 30);
-		$this->assertEquals($resDaysFeb2010, 28);
-		$this->assertEquals($resDaysJan2010, 31);
-		$this->assertEquals($resDaysMarch2010, 31);
-		$this->assertEquals($resDaysApril2010, 30);
-		$this->assertEquals($resDaysFeb2012, 29);
 	}
 
 
@@ -671,40 +637,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 
 	/**
-	 * Test getIntersectingDayTimestamps
-	 */
-	public function testGetIntersectingDayTimestamps() {
-		$dateStart1	= mktime(0, 0, 0, 3, 1, 2011);
-		$dateEnd1	= mktime(0, 0, 0, 3, 15, 2011);
-		$dateStart2	= mktime(0, 0, 0, 3, 10, 2011);
-		$dateEnd2	= mktime(0, 0, 0, 3, 20, 2011);
-
-		$intersection	= TodoyuTime::getIntersectingDayTimestamps($dateStart1, $dateEnd1, $dateStart2, $dateEnd2);
-
-		$this->assertEquals(6, sizeof($intersection));
-		$this->assertEquals($dateEnd1, $intersection[5]);
-		$this->assertEquals($dateStart2, $intersection[0]);
-	}
-
-
-
-	/**
-	 * Test getDayTimestampsInRange
-	 */
-	public function testGetDayTimestampsInRange() {
-		$dateStart	= mktime(0, 0, 0, 3, 1, 2011);
-		$dateEnd	= mktime(0, 0, 0, 3, 31, 2011);
-
-		$days		= TodoyuTime::getDayTimestampsInRange($dateStart, $dateEnd);
-
-		$this->assertEquals(31, sizeof($days));
-		$this->assertEquals($dateStart, $days[0]);
-		$this->assertEquals($dateEnd, $days[30]);
-	}
-
-
-
-	/**
 	 * Test parsesqldate
 	 */
 	public function testparsesqldate() {
@@ -750,22 +682,22 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 			// Check 1 minute
 		$duration60	= TodoyuTime::formatDuration(60);
-		$expect60	= '01:00 Minute';
+		$expect60	= '1 Minute';
 		$this->assertEquals($expect60, $duration60);
 
 			// Check 5 minutes
 		$duration300	= TodoyuTime::formatDuration(300);
-		$expect300	= '05:00 Minutes';
+		$expect300	= '5 Minutes';
 		$this->assertEquals($expect300, $duration300);
 
 			// Check 1 hour
 		$duration3600	= TodoyuTime::formatDuration(3600);
-		$expect3600	= '01:00 Hour';
+		$expect3600	= '1 Hour';
 		$this->assertEquals($expect3600, $duration3600);
 
 			// Check 5 hours
 		$duration3600	= TodoyuTime::formatDuration(18000);
-		$expect3600	= '05:00 Hours';
+		$expect3600	= '5 Hours';
 		$this->assertEquals($expect3600, $duration3600);
 
 			// Check 1 day
@@ -796,12 +728,6 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($expectHours, $resultHours);
 
-			// Check timespan within same day with duration
-		$expectHours2	= 'Sat, Jan 01 11, 10:00 - 12:00 (02:00 Hours)';
-		$resultHours2	= TodoyuTime::formatRange($startHours, $endHours, true);
-
-		$this->assertEquals($expectHours2, $resultHours2);
-
 			// Check timespan over multiple days
 		$startDays		= mktime(10, 0, 0, 1, 1, 2011);
 		$endDays		= mktime(10, 0, 0, 1, 2, 2011);
@@ -811,8 +737,8 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expectDays, $resultDays);
 
 			// Check timespan over multiple days with duration
-		$expectDays2	= 'Sat, Jan 01 11 - Sun, Jan 02 11 (1 Day)';
-		$resultDays2	= TodoyuTime::formatRange($startDays, $endDays, true);
+		$expectDays2	= 'Sat, Jan 01 11 - Sun, Jan 02 11';
+		$resultDays2	= TodoyuTime::formatRange($startDays, $endDays);
 
 		$this->assertEquals($expectDays2, $resultDays2);
 	}
@@ -840,6 +766,99 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue(TodoyuTime::isStandardDate('2011-08-05'));
 		$this->assertTrue(TodoyuTime::isStandardDate('1999-01-01'));
 		$this->assertFalse(TodoyuTime::isStandardDate('1999-1-01'));
+	}
+
+
+	public function testTime() {
+		$time1	= TodoyuTime::time();
+		$time2	= TodoyuTime::time(0);
+		$time3	= TodoyuTime::time(NOW);
+
+		$this->assertEquals(NOW, $time1);
+		$this->assertEquals(NOW, $time2);
+		$this->assertEquals(NOW, $time3);
+	}
+
+
+	public function testGetYearStart() {
+		$date	= strtotime('2012-03-03');
+		$expect	= strtotime('2012-01-01');
+
+		$yearStart	= TodoyuTime::getYearStart($date);
+
+		$this->assertEquals($expect, $yearStart);
+	}
+
+	public function testGetYearEnd() {
+		$date	= strtotime('2012-03-03');
+		$expect	= strtotime('2012-12-31 23:59:59');
+
+		$yearEnd	= TodoyuTime::getYearEnd($date);
+
+		$this->assertEquals($expect, $yearEnd);
+	}
+
+
+	public function testFormatHours() {
+		$seconds1	= 3600;
+		$format1	= TodoyuTime::formatHours($seconds1);
+		$expect1	= '01:00';
+
+		$seconds2	= 7200;
+		$format2	= TodoyuTime::formatHours($seconds2, false);
+		$expect2	= '2:00';
+
+		$this->assertEquals($expect1, $format1);
+		$this->assertEquals($expect2, $format2);
+	}
+
+	public function testCleanFormatForWindows() {
+		$format	= '%e %Y';
+		$expect	= TodoyuServer::isWindows() ? '%d %Y' : '%e %Y';
+		$result	= TodoyuTime::cleanFormatForWindows($format);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testIsWeekendDate() {
+		$dateNotWeekend	= strtotime('2012-04-13');
+		$dateWeekend	= strtotime('2012-04-14');
+
+		$isWeekend		= TodoyuTime::isWeekendDate($dateWeekend);
+		$notWeekend		= TodoyuTime::isWeekendDate($dateNotWeekend);
+
+		$this->assertTrue($isWeekend);
+		$this->assertFalse($notWeekend);
+	}
+
+	public function testGetWeekEndDayIndexes() {
+		$indexes	= TodoyuTime::getWeekEndDayIndexes();
+
+		$this->assertInternalType('array', $indexes);
+		$this->assertEquals(6, $indexes[0]);
+		$this->assertEquals(0, $indexes[1]);
+	}
+
+	public function testFormatRange() {
+		$dateStart1	= strtotime('2012-01-01 14:15');
+		$dateEnd1	= strtotime('2012-01-01 18:00');
+		$dateEnd2	= strtotime('2012-01-06 12:00');
+
+		$labelSame	= TodoyuTime::formatRange($dateStart1, $dateStart1);
+		$expectSame	= 'Sun, Jan 01 12, 14:15';
+
+		$labelSameDay	= TodoyuTime::formatRange($dateStart1, $dateEnd1);
+		$expectSameDay	= 'Sun, Jan 01 12, 14:15 - 18:00';
+
+		$labelLong		= TodoyuTime::formatRange($dateStart1, $dateEnd2);
+		$expectLong		= 'Sun, Jan 01 12, 14:15 - Fri, Jan 06 12, 18:00';
+		
+		TodoyuDebug::printInFirebug($labelLong);
+
+		$this->assertEquals($expectSame, $labelSame);
+		$this->assertEquals($expectSameDay, $labelSameDay);
+		$this->assertEquals($expectLong, $labelLong);
 	}
 
 }

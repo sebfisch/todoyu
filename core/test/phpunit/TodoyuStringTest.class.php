@@ -345,6 +345,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+	public function testToPhpCodeString() {
+		// no test, see testToPhpCode()
+	}
+
 
 	/**
 	 * Test phpCodeString
@@ -384,35 +388,39 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+	public function testToPhpCodeArray() {
+		$array	= array('a' => 1, 'b' => 'test', 3 => 'xxx');
+		$expect	= 'array(\'a\'=>1,\'b\'=>\'test\',3=>\'xxx\')';
+
+		$result	= TodoyuString::toPhpCodeArray($array);
+
+		$this->assertEquals($expect, $result);
+	}
+
+
 
 	/**
 	 * Test buildUrl
 	 */
 	public function testBuildUrl() {
-//		$params	= array(
-//			'a'	=> 'alpha',
-//			'b'	=> 'beta',
-//			'g'	=> 'gamma'
-//		);
-//		$hash	= 'task-123';
-//
-//			// Check relative URL
-//		$result1	= TodoyuString::buildUrl($params, $hash);
-//		$expect1	= '/index.php?a=alpha&b=beta&g=gamma#task-123';
-//
-//		$this->assertEquals($expect1, $result1);
-//
-//			// Check absolute URL
-//		$result2	= TodoyuString::buildUrl($params, $hash, true);
-//		$expect2	= SERVER_URL . '/index.php?a=alpha&b=beta&g=gamma#task-123';
-//
-//		$this->assertEquals($expect2, $result2);
-
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
+		$params	= array(
+			'a'	=> 'alpha',
+			'b'	=> 'beta',
+			'g'	=> 'gamma'
 		);
+		$hash	= 'task-123';
 
+			// Check relative URL
+		$result1	= TodoyuString::buildUrl($params, $hash);
+		$expect1	= PATH_WEB . 'index.php?a=alpha&b=beta&g=gamma#task-123';
+
+		$this->assertEquals($expect1, $result1);
+
+			// Check absolute URL
+		$result2	= TodoyuString::buildUrl($params, $hash, true);
+		$expect2	= SERVER_URL . '/index.php?a=alpha&b=beta&g=gamma#task-123';
+
+		$this->assertEquals($expect2, $result2);
 	}
 
 
@@ -620,11 +628,10 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 			'ext'		=> 'project',
 			'controller'=> 'test',
 		);
-		$expect1	= '<a href="' . PATH_WEB . '/index.php?ext=project&controller=test">Link Text</a>';
+		$expect1	= '<a href="' . PATH_WEB . 'index.php?ext=project&controller=test">Link Text</a>';
 		$result1	= TodoyuString::wrapTodoyuLink('Link Text', 'project', $params1);
 
 		$this->assertEquals($expect1, $result1);
-
 
 			// Check wrapped link with hash parameter and target attribute
 		$params2	= array(
@@ -632,7 +639,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 			'controller'	=> 'test',
 			'action'		=> 'foo'
 		);
-		$expect2	= '<a href="' . PATH_WEB . '/index.php?ext=project&controller=test&action=foo#myHash" target="_blank">Link</a>';
+		$expect2	= '<a href="' . PATH_WEB . 'index.php?ext=project&controller=test&action=foo#myHash" target="_blank">Link</a>';
 		$result2	= TodoyuString::wrapTodoyuLink('Link', 'project', $params2, 'myHash', '_blank');
 
 		$this->assertEquals($expect2, $result2);
@@ -704,6 +711,54 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$this->assertRegExp('/[a-z]/', $password);
 		$this->assertRegExp('/[A-Z]/', $password);
 		$this->assertRegExp('/[#&@$_%?+-]/', $password);
+	}
+
+
+	public function testRemovePathParts() {
+		$input1		= '/etc/passwd';
+		$expect1	= 'passwd';
+		$result1	= TodoyuString::removePathParts($input1);
+
+		$input2		= '../../../other/folder/file.txt';
+		$expect2	= 'file';
+		$result2	= TodoyuString::removePathParts($input2);
+
+		$this->assertEquals($expect1, $result1);
+		$this->assertEquals($expect2, $result2);
+	}
+
+
+	public function testEndsWith() {
+		$text	= 'Hallo World';
+
+		$isEnding	= TodoyuString::endsWith($text, 'World');
+		$notEnding	= TodoyuString::endsWith($text, 'todoyu');
+
+		$this->assertTrue($isEnding);
+		$this->assertFalse($notEnding);
+	}
+
+	public function testIsUcFirst() {
+		$text1	= 'Hello World';
+		$text2	= 'hello world';
+
+		$isUcFirst	= TodoyuString::isUcFirst($text1);
+		$notUcFirst	= TodoyuString::isUcFirst($text2);
+
+		$this->assertTrue($isUcFirst);
+		$this->assertFalse($notUcFirst);
+	}
+
+
+	public function testIsContainingHtml() {
+		$textHtml	= 'test <strong>strong</strong>';
+		$textPlain	= 'test not strong';
+
+		$hasHtml	= TodoyuString::isContainingHTML($textHtml);
+		$noHtml		= TodoyuString::isContainingHTML($textPlain);
+
+		$this->assertTrue($hasHtml);
+		$this->assertFalse($noHtml);
 	}
 
 }

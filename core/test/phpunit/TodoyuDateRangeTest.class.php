@@ -52,6 +52,13 @@ class TodoyuDateRangeTest extends PHPUnit_Framework_TestCase {
 		return new TodoyuDateRange(self::$dateStart, self::$dateEnd);
 	}
 
+	public function testGetId() {
+		$result	= $this->range->getID();
+		$expect	= '2011010100000020110102000000';
+
+		$this->assertEquals($expect, $result);
+	}
+
 	public function testGetStart() {
 		$this->assertEquals(self::$dateStart, $this->range->getStart());
 	}
@@ -279,6 +286,206 @@ class TodoyuDateRangeTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($expected, trim($this->range));
 	}
+
+
+	public function testSetMaxRanges() {
+		$this->range->setMaxRanges();
+
+		$this->assertEquals(PHP_INT_MIN, $this->range->getStart());
+		$this->assertEquals(PHP_INT_MAX, $this->range->getEnd());
+	}
+
+	public function testSetDateStart() {
+		$this->range->setDateStart(2012, 8, 1);
+		$expect	= mktime(0, 0, 0, 8, 1, 2012);
+		$result	= $this->range->getStart();
+
+		$this->assertEquals($expect, $result);
+	}
+
+
+	public function testSetDateEnd() {
+		$this->range->setDateEnd(2012, 8, 1);
+		$expect	= mktime(0, 0, 0, 8, 1, 2012);
+		$result	= $this->range->getEnd();
+
+		$this->assertEquals($expect, $result);
+	}
+
+	public function testSetMinLength() {
+		$this->range->setDateStart(2012, 1, 1, 0);
+		$this->range->setDateEnd(2012, 1, 1, 2);
+
+		$minLenght	= 3 * TodoyuTime::SECONDS_HOUR;
+		$this->range->setMinLength($minLenght);
+
+		$expect		= mktime(3, 0, 0, 1, 1, 2012);
+		$result		= $this->range->getEnd();
+
+		$this->assertEquals($expect, $result);
+	}
+
+	public function testIsInRange() {
+		$inRangeDate	= mktime(0, 0, 0, 1, 14, 2011);
+		$notInRangeDate	= mktime(0, 0, 0, 2, 2, 2011);
+
+		$isInRange		= $this->range->isInRange($inRangeDate);
+		$isNotInRange	= $this->range->isInRange($notInRangeDate);
+
+		$this->assertTrue($isInRange);
+		$this->assertFalse($isNotInRange);
+
+		$limitDate		= mktime(0, 0, 0, 1, 1, 2011);
+		$withLimit		= $this->range->isInRange($limitDate);
+		$withoutLimit	= $this->range->isInRange($limitDate, false);
+
+		$this->assertTrue($withLimit);
+		$this->assertFalse($withoutLimit);
+	}
+
+
+	public function testContains() {
+		$containedRange		= new TodoyuDateRange(strtotime('2011-01-02'), strtotime('2011-01-15'));
+		$notContainedRange	= new TodoyuDayRange(strtotime('2011-01-20'), strtotime('2011-02-10'));
+
+		$isConained		= $this->range->contains($containedRange);
+		$notContained	= $this->range->contains($notContainedRange);
+
+		$this->assertTrue($isConained);
+		$this->assertFalse($notContained);
+	}
+
+
+	public function testIsOverlapping() {
+		$overlappingRange		= new TodoyuDateRange(strtotime('2010-12-02'), strtotime('2011-01-15'));
+		$notOverlappingRange	= new TodoyuDayRange(strtotime('2011-02-20'), strtotime('2011-02-25'));
+
+		$isOverlapping		= $this->range->isOverlapping($overlappingRange);
+		$notOverlapping		= $this->range->isOverlapping($notOverlappingRange);
+
+		$this->assertTrue($isOverlapping);
+		$this->assertFalse($notOverlapping);
+	}
+
+
+	public function testGetDuration() {
+		$expectedDuration	= 31 * TodoyuTime::SECONDS_DAY;
+		$duration			= $this->range->getDuration();
+
+		$this->assertEquals($expectedDuration, $duration);
+	}
+
+
+	public function testSetRangeLimits() {
+		$dateStart	= strtotime('2011-01-05');
+		$dateEnd	= strtotime('2011-01-10');
+		$limitRange	= new TodoyuDateRange($dateStart, $dateEnd);
+
+		$this->range->setRangeLimits($limitRange);
+
+		$newDateStart	= $this->range->getStart();
+		$newDateEnd		= $this->range->getEnd();
+
+		$this->assertEquals($dateStart, $newDateStart);
+		$this->assertEquals($dateEnd, $newDateEnd);
+	}
+
+
+	public function testIsInOneDay() {
+		$oneDayRange	= new TodoyuDateRange(strtotime('2011-01-01 15:00:00'), strtotime('2011-01-01 16:00:00'));
+		$multiDayRange	= new TodoyuDateRange(strtotime('2011-01-01 15:00:00'), strtotime('2011-01-02 16:00:00'));
+
+		$isOneDay		= $oneDayRange->isInOneDay();
+		$isNotOneDay	= $multiDayRange->isInOneDay();
+
+		$this->assertTrue($isOneDay);
+		$this->assertFalse($isNotOneDay);
+	}
+
+	public function testGetDates() {
+		$dates		= $this->range->getDates();
+		$dateStart	= $this->range->getStart();
+		$dateEnd	= $this->range->getEnd();
+
+		$this->assertInternalType('array', $dates);
+		$this->assertArrayHasKey('start', $dates);
+		$this->assertArrayHasKey('end', $dates);
+
+		$this->assertEquals($dateStart, $dates['start']);
+		$this->assertEquals($dateEnd, $dates['end']);
+	}
+
+	public function testGetDayTimestamps() {
+		$timestamps	= $this->range->getDayTimestamps();
+		$dateStart	= $this->range->getStart();
+
+		$this->assertInternalType('array', $timestamps);
+		$this->assertEquals($dateStart, $timestamps[0]);
+		$this->assertEquals(32, sizeof($timestamps));
+
+
+		$timestampsFormat	= $this->range->getDayTimestamps('Y-m-d');
+		$this->assertEquals('2011-01-02', $timestampsFormat[1]);
+		$this->assertEquals('2011-02-01', $timestampsFormat[31]);
+	}
+
+
+	public function testGetDayTimestampsMap() {
+		// no tests
+		// @see testGetDayMap()
+	}
+
+	public function testGetDayMap() {
+		$dayMap1	= $this->range->getDayMap();
+		$dateStart	= $this->range->getStart();
+
+		$this->assertEquals(32, sizeof($dayMap1));
+		$this->assertArrayHasKey($dateStart, $dayMap1);
+
+		$dayMap2	= $this->range->getDayMap('Ymd', 2);
+
+		$this->assertInternalType('array', $dayMap2);
+		$this->assertEquals(64, array_sum($dayMap2));
+		$this->assertArrayHasKey('20110101', $dayMap2);
+		$this->assertEquals(2, $dayMap2['20110115']);
+	}
+
+
+	public function testGetOverlappingRange() {
+		$otherRange			= new TodoyuDateRange(strtotime('2011-01-20'), strtotime('2011-02-10'));
+		$overlappingRange	= $this->range->getOverlappingRange($otherRange);
+
+		$dateStart	= strtotime('2011-01-20');
+		$dateEnd	= strtotime('2011-02-01');
+
+		$this->assertInstanceOf('TodoyuDateRange', $overlappingRange);
+		$this->assertEquals($dateStart, $overlappingRange->getStart());
+		$this->assertEquals($dateEnd, $overlappingRange->getEnd());
+	}
+
+
+	public function testGetAmountOfDays() {
+		$amountDays	= $this->range->getAmountOfDays();
+
+		$this->assertEquals(32, $amountDays);
+	}
+
+
+	public function testGetLabelWithTime() {
+		$oneDayRange	= new TodoyuDateRange(strtotime('2011-01-01 15:20:00'), strtotime('2011-01-01 18:00:00'));
+		$multiDayRange	= new TodoyuDateRange(strtotime('2011-01-01 11:15:00'), strtotime('2011-01-06 22:01:00'));
+
+		$oneDayLabel	= $oneDayRange->getLabelWithTime();
+		$multiDayLabel	= $multiDayRange->getLabelWithTime();
+
+		$expectedOneDayLabel	= 'January 01 2011, 15:20 - 18:00';
+		$expectedMultiDayLabel	= 'January 01 2011 11:15 - January 06 2011 22:01';
+
+		$this->assertEquals($expectedOneDayLabel, $oneDayLabel);
+		$this->assertEquals($expectedMultiDayLabel, $multiDayLabel);
+
+	}
+
 
 }
 

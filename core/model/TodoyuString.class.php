@@ -41,7 +41,7 @@ class TodoyuString {
 	/**
 	 * Check whether the given string has an upper-cased first letter
 	 *
-	 * @param	String	$word
+	 * @param	String		$string
 	 * @return	Boolean
 	 */
 	public static function isUcFirst($string) {
@@ -977,7 +977,7 @@ class TodoyuString {
 			case 'double';
 				break;
 			case 'string':
-				$value = '\'' . $value . '\'';
+				$value = '\'' . addslashes($value) . '\'';
 				break;
 			case 'NULL':
 				$value = 'null';
@@ -1002,13 +1002,13 @@ class TodoyuString {
 	/**
 	 * Convert an array to it's php code representation
 	 *
-	 * @param	Array		$data
+	 * @param	Array		$array
 	 * @return	String
 	 */
-	public static function toPhpCodeArray(array $data) {
+	public static function toPhpCodeArray(array $array) {
 		$pairs	= array();
 
-		foreach($data as $key => $value) {
+		foreach($array as $key => $value) {
 			$pairs[] = self::toPhpCode($key) . '=>' . self::toPhpCode($value);
 		}
 
@@ -1038,7 +1038,7 @@ class TodoyuString {
 	 * @param	String		$pathString
 	 * @return	String
 	 */
-	public static function removePathInfos($pathString) {
+	public static function removePathParts($pathString) {
 		return pathinfo($pathString, PATHINFO_FILENAME);
 	}
 

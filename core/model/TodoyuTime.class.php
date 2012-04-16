@@ -491,6 +491,9 @@ class TodoyuTime {
 		} elseif( $duration === self::SECONDS_MIN ) { // 1 minute
 			$value	= 1;
 			$unit	= 'time.minute';
+		} elseif( $duration === 1 ) { // 1 second
+			$value	= $duration;
+			$unit	= 'time.second';
 		} else { // seconds
 			$value	= $duration;
 			$unit	= 'time.seconds';
@@ -512,11 +515,11 @@ class TodoyuTime {
 		$dateStart	= intval($dateStart);
 		$dateEnd	= intval($dateEnd);
 
-		if( $dateStart === $dateEnd ) {
+		if( $dateStart === $dateEnd ) { // Start and end identical
 			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ', ' . self::format($dateStart, 'time');
 		} elseif( self::getDayStart($dateStart) === self::getDayStart($dateEnd) ) { // Start and end at same day
 			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ', ' . self::format($dateStart, 'time') . ' - ' . self::format($dateEnd, 'time');
-		} else { 	// Different days
+		} else { // Different days
 			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ' - ' . self::format($dateEnd, 'DshortD2MshortY2');
 		}
 
@@ -753,116 +756,6 @@ class TodoyuTime {
 
 
 	/**
-	 * Get dates of the (days of) full week which the given date is in
-	 *
-	 * @param		Mixed		$timestamp
-	 * @return		Array		Dates of the week
-	 */
-	public static function getTimestampsForWeekdays($timestamp) {
-		$timestamp		= (int) $timestamp;
-		$weekRange	= self::getWeekRange($timestamp);
-		$dayTimes	= array();
-
-		for($dayTime = $weekRange['start']; $dayTime < $weekRange['end']; $dayTime += self::SECONDS_DAY) {
-			$dayTimes[] = $dayTime;
-		}
-
-		return $dayTimes;
-	}
-
-
-
-	/**
-	 * Get (timestamps at 00:00 of) days inside given timespan
-	 *
-	 * @param	Integer		$dateStart
-	 * @param	Integer		$dateEnd
-	 * @param	Boolean		$excludeWeekendDays
-	 * @return	Integer[]	Array of day timestamps
-	 */
-	public static function getDayTimestampsInRange($dateStart, $dateEnd, $excludeWeekendDays = false) {
-		$dateStart	= self::getDayStart($dateStart);
-		$dateEnd	= self::getDayEnd($dateEnd);
-
-		$timestamp	= $dateStart;
-		$days		= array();
-
-		while($timestamp <= $dateEnd) {
-			if( $excludeWeekendDays === false || ! self::isWeekendDate($timestamp) ) {
-				$days[]		= $timestamp;
-			}
-
-			$timestamp	= self::addDays($timestamp, 1);
-		}
-
-		return $days;
-	}
-
-
-
-	/**
-	 * Get amount of days between given dates
-	 *
-	 * @param	Integer		$dateStart
-	 * @param	Integer		$dateEnd
-	 * @return	Integer
-	 */
-	public static function getAmountDaysInRange($dateStart, $dateEnd) {
-		$daysInRange	= self::getDayTimestampsInRange($dateStart, $dateEnd);
-
-		return sizeof($daysInRange);
-	}
-
-
-
-	/**
-	 * Get dates of the days (at 00:00) which intersect the two given timespans
-	 *
-	 * @param	Integer		$dateStart1
-	 * @param	Integer		$dateEnd1
-	 * @param	Integer		$start2
-	 * @param	Integer		$end2
-	 * @return	Array
-	 */
-	public static function getIntersectingDayTimestamps($dateStart1, $dateEnd1, $start2, $end2) {
-		$dateStart1	= (int) $dateStart1;
-		$dateEnd1	= (int) $dateEnd1;
-		$start2		= (int) $start2;
-		$end2		= (int) $end2;
-
-		$span1	= self::getDayTimestampsInRange($dateStart1, $dateEnd1);	// View
-		$span2	= self::getDayTimestampsInRange($start2, $end2);			// Event
-
-		return array_intersect($span2, $span1);
-	}
-
-
-
-	/**
-	 * Get days in month for the month of the timestamp
-	 * Use monthDelta to query another month (ex: last = -1, next = 1, etc)
-	 *
-	 * @param	Integer		$timestamp
-	 * @param	Integer		$monthDelta
-	 * @return	Integer
-	 */
-	public static function getDaysInMonth($timestamp, $monthDelta = 0) {
-		$monthDelta	= (int) $monthDelta;
-
-		if( $monthDelta !== 0 ) {
-			$year	= date('Y', $timestamp);
-			$month	= date('n', $timestamp);
-
-				// Get timestamp of previous month
-			$timestamp	= mktime(0, 0, 0, ($month + $monthDelta), 1, $year);
-		}
-
-		return date('t', $timestamp);
-	}
-
-
-
-	/**
 	 * Check whether two time ranges overlap.
 	 *
 	 * Border touching example:
@@ -943,12 +836,13 @@ class TodoyuTime {
 
 
 	/**
-	 * Get index of week end day (compare to date('w')
+	 * Get indexes of weekend days (compare to date('w')
+	 * Fixed to 6=Saturday and 0=Sunday
 	 *
 	 * @return	Array
 	 */
 	public static function getWeekEndDayIndexes() {
-		return self::isMondayFirstDayOfWeek() ? array(6, 0) : array(5, 6);
+		return  array(6, 0);
 	}
 
 

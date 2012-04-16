@@ -38,6 +38,51 @@ class TodoyuHtmlFilter {
 
 
 	/**
+	 * Callback to escape bad simple HTML tags
+	 *
+	 * @param	Array		$match
+	 * @return	String
+	 */
+	private static function escapeBadTag(array $match) {
+		return htmlentities($match[0], ENT_QUOTES, 'UTF-8', false);
+	}
+
+
+
+	/**
+	 * Callback to escape bad HTML tags
+	 *
+	 * @param	Array		$match
+	 * @return	String
+	 */
+	private static function escapeBadTags(array $match) {
+		return '&lt;' . $match[1] . $match[2] . '&gt;' . $match[3] . '&lt;/' . $match[1] . '&gt;';
+	}
+
+
+
+	/**
+	 * Escape comments in HTML
+	 *
+	 * @param	String	$html
+	 * @return	String
+	 */
+	private static function escapeHtmlComments($html) {
+		$replace	= array(
+			'<![CDATA['	=> '&lt;![CDATA[',
+			']]>'		=> ']]&gt;',
+			'<!--'		=> '&lt;!--',
+			'-->'		=> '--&gt;'
+		);
+
+		$html	= str_replace(array_keys($replace), array_values($replace), $html);
+
+		return $html;
+	}
+
+
+
+	/**
 	 * Clean HTML code: escape all found "bad" tags (and comments)
 	 *
 	 * @param	String		$html
@@ -59,54 +104,9 @@ class TodoyuHtmlFilter {
 		}
 
 			// Escape comment variations
-		$html	= self::escapeComments($html);
+		$html	= self::escapeHtmlComments($html);
 
 		return $html;
-	}
-
-
-
-	/**
-	 * Escape comments in HTML
-	 *
-	 * @param	String	$html
-	 * @return	String
-	 */
-	public static function escapeComments($html) {
-		$replace	= array(
-			'<![CDATA['	=> '&lt;![CDATA[',
-			']]>'		=> ']]&gt;',
-			'<!--'		=> '&lt;!--',
-			'<!--'		=> '--&gt;'
-		);
-
-		$html	= str_replace(array_keys($replace), array_values($replace), $html);
-
-		return $html;
-	}
-
-
-
-	/**
-	 * Callback to escape bad simple HTML tags
-	 *
-	 * @param	Array		$match
-	 * @return	String
-	 */
-	private static function escapeBadTag(array $match) {
-		return htmlentities($match[0], ENT_QUOTES, 'UTF-8', false);
-	}
-
-
-
-	/**
-	 * Callback to escape bad HTML tags
-	 *
-	 * @param	Array		$match
-	 * @return	String
-	 */
-	private static function escapeBadTags(array $match) {
-		return '&lt;' . $match[1] . $match[2] . '&gt;' . $match[3] . '&lt;/' . $match[1] . '&gt;';
 	}
 
 }

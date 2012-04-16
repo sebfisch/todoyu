@@ -48,18 +48,6 @@ class TodoyuHtmlFilterTest extends PHPUnit_Framework_TestCase {
 
 
 	/**
-	 * Test getBadTags
-	 */
-	public function testGetBadTags() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
-	}
-
-
-
-	/**
 	 * Test TodoyuHtmlFilter::clean
 	 */
 	public function testClean() {
@@ -83,42 +71,6 @@ class TodoyuHtmlFilterTest extends PHPUnit_Framework_TestCase {
 		$cleanIframe	= TodoyuHtmlFilter::clean($htmlIframe);
 
 		$this->assertEquals($expectIframe, $cleanIframe);
-	}
-
-
-
-	/**
-	 * Test escapeComments
-	 */
-	public function testEscapeComments() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
-	}
-
-
-
-	/**
-	 * Test escapeBadTags
-	 */
-	public function testEscapeBadTags() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
-	}
-
-
-
-	/**
-	 * Test escapeBadTag
-	 */
-	public function testEscapeBadTag() {
-		// Remove the following lines when you implement this test.
-		$this->markTestIncomplete(
-			'This test has not been implemented yet.'
-		);
 	}
 
 }
