@@ -509,9 +509,10 @@ class TodoyuTime {
 	 *
 	 * @param	Integer		$dateStart
 	 * @param	Integer		$dateEnd
+	 * @param	Boolean		$withMultidayTime
 	 * @return	String
 	 */
-	public static function formatRange($dateStart, $dateEnd) {
+	public static function formatRange($dateStart, $dateEnd, $withMultidayTime = false) {
 		$dateStart	= intval($dateStart);
 		$dateEnd	= intval($dateEnd);
 
@@ -519,6 +520,8 @@ class TodoyuTime {
 			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ', ' . self::format($dateStart, 'time');
 		} elseif( self::getDayStart($dateStart) === self::getDayStart($dateEnd) ) { // Start and end at same day
 			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ', ' . self::format($dateStart, 'time') . ' - ' . self::format($dateEnd, 'time');
+		} elseif( $withMultidayTime ) {
+			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ', ' . self::format($dateStart, 'time') . ' - ' . self::format($dateEnd, 'DshortD2MshortY2'). ', ' . self::format($dateStart, 'time');
 		} else { // Different days
 			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ' - ' . self::format($dateEnd, 'DshortD2MshortY2');
 		}
