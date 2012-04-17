@@ -312,7 +312,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testWrapscript() {
 		$script	= 'var x = 44;';
-		$expect	= '<script language="javascript" type="text/javascript">' . $script . '</script>';
+		$expect	= '<script type="text/javascript">' . $script . '</script>';
 		$result	= TodoyuString::wrapscript($script);
 
 		$this->assertEquals($expect, $result);

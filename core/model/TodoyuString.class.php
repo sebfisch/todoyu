@@ -493,7 +493,7 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function wrapScript($jsCode) {
-		return '<script language="javascript" type="text/javascript">' . $jsCode . '</script>';
+		return '<script type="text/javascript">' . $jsCode . '</script>';
 	}
 
 
@@ -515,7 +515,7 @@ class TodoyuString {
 		}
 
 			// Add all parameters encoded
-		$query .= http_build_query($params);
+		$query .= http_build_query($params, null, '&amp;');
 
 			// Add hash
 		if( ! empty($hash) ) {
