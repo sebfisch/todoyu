@@ -87,7 +87,7 @@ class TodoyuAutoloader {
 	 * Hook to clear the cache
 	 *
 	 */
-	public static function clearCacheHook() {
+	public static function hookClearCache() {
 		self::clearCache();
 	}
 

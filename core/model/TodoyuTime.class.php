@@ -521,7 +521,7 @@ class TodoyuTime {
 		} elseif( self::getDayStart($dateStart) === self::getDayStart($dateEnd) ) { // Start and end at same day
 			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ', ' . self::format($dateStart, 'time') . ' - ' . self::format($dateEnd, 'time');
 		} elseif( $withMultidayTime ) {
-			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ', ' . self::format($dateStart, 'time') . ' - ' . self::format($dateEnd, 'DshortD2MshortY2'). ', ' . self::format($dateStart, 'time');
+			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ', ' . self::format($dateStart, 'time') . ' - ' . self::format($dateEnd, 'DshortD2MshortY2'). ', ' . self::format($dateEnd, 'time');
 		} else { // Different days
 			$formatted = self::format($dateStart, 'DshortD2MshortY2') . ' - ' . self::format($dateEnd, 'DshortD2MshortY2');
 		}

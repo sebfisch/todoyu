@@ -71,11 +71,12 @@ class TodoyuSql {
 	 */
 	public static function buildINSERTquery($table, array $fieldNameValues, array $noQuoteFields = array()) {
 		$fieldNames		= implode(',', self::backtickArray(array_keys($fieldNameValues)));
-		$fieldValues	= implode(',', self::quoteArray(array_values($fieldNameValues), $noQuoteFields));
+		$fieldValues	= implode(',', array_values(self::quoteArray($fieldNameValues, $noQuoteFields, true)));
+		$table			= self::quoteTablename($table);
 
-		$query = '	INSERT INTO ' . $table
+		$query = 'INSERT INTO ' . $table
 				. ' (' . $fieldNames . ')'
-				. ' VALUES (' . $fieldValues . ')';
+				. ' VALUES(' . $fieldValues . ')';
 
 		return $query;
 	}
@@ -91,6 +92,7 @@ class TodoyuSql {
 	 * @return	String
 	 */
 	public static function buildDELETEquery($table, $where, $limit = '') {
+		$table	= self::quoteTablename($table);
 		$query	= 'DELETE FROM ' . $table . ' WHERE ' . $where;
 
 		if( $limit != '' ) {
@@ -113,14 +115,11 @@ class TodoyuSql {
 	 */
 	public static function buildUPDATEquery($table, $where, array $fieldNameValues, array $noQuoteFields = array()) {
 		$fieldNameValues= self::escapeArray($fieldNameValues, true, $noQuoteFields);
+		$table			= self::quoteTablename($table);
 		$fields			= array();
 
 		foreach($fieldNameValues as $key => $quotedValue) {
-			if( in_array($key, $noQuoteFields) ) {
-				$fields[] = $key . ' = ' . $quotedValue;
-			} else {
-				$fields[] = self::backtick($key) . ' = ' . $quotedValue;
-			}
+			$fields[] = self::backtick($key) . ' = ' . $quotedValue;
 		}
 
 		$query = 'UPDATE ' . $table . ' SET ';
@@ -139,28 +138,29 @@ class TodoyuSql {
 	 * Build "WHERE IN()" query part
 	 *
 	 * @param	Array		$values
-	 * @param	String		$searchField
+	 * @param	String		$fieldName
 	 * @param	Boolean		$isInt			Values are integers?
 	 * @param	Boolean		$negate			Negate using NOT?
 	 * @param	Boolean		$quote			Quote non-integer values?
 	 * @return	String
 	 */
-	public static function buildInArrayQuery(array $values, $searchField = 'id', $isInt = true, $negate = false, $quote = true) {
-		if( empty($values) ) {
-			return '0';
+	public static function buildInListQueryPart(array $values, $fieldName, $isInt = true, $negate = false, $quote = true) {
+		if( sizeof($values) === 0 ) {
+			return '0'; // no values = never successful query
 		}
-		$values = array_unique($values);
+		$values 	= array_unique($values);
+		$fieldName= self::backtick($fieldName);
 
 			// Implode values array to list
 		if( $isInt ) {
-			$values = TodoyuArray::intImplode($values);
+			$values = TodoyuArray::intImplode($values, ',');
 		} elseif( $quote ) {
 			$values = TodoyuArray::implodeQuoted($values, ',');
 		} else {
 			$values = implode(',', $values);
 		}
 
-		return ' ' . $searchField . ($negate ? ' NOT ' : ' ') . 'IN (' . $values . ') ';
+		return $fieldName . ($negate ? ' NOT ' : ' ') . 'IN(' . $values . ')';
 	}
 
 
@@ -197,11 +197,11 @@ class TodoyuSql {
 	/**
 	 * Build a boolean invert SQL command
 	 *
-	 * @param	String		$table
 	 * @param	String		$fieldName
+	 * @param	String		$table
 	 * @return	String
 	 */
-	public static function buildBooleanInvert($table, $fieldName) {
+	public static function buildBooleanInvertQueryPart($fieldName, $table = '') {
 		return self::quoteFieldname($fieldName, $table) . ' XOR 1';
 	}
 
@@ -210,14 +210,15 @@ class TodoyuSql {
 	/**
 	 * Build a FIND_IN_SET SQL statement so search in a comma separated field
 	 *
-	 * @param	String		$itemToFind
+	 * @param	String		$value
 	 * @param	String		$fieldName
 	 * @return	String
 	 */
-	public static function buildFindInSetQuery($itemToFind, $fieldName) {
-		$itemToFind = self::escape($itemToFind);
+	public static function buildFindInSetQueryPart($value, $fieldName) {
+		$value		= self::quote($value, true);
+		$fieldName	= self::quoteFieldname($fieldName);
 
-		return "FIND_IN_SET('$itemToFind', $fieldName) != 0";
+		return 'FIND_IN_SET(' . $value . ', ' . $fieldName . ') != 0';
 	}
 
 
@@ -230,26 +231,26 @@ class TodoyuSql {
 	 * @param	Boolean		$negate
 	 * @return	String		Where part condition
 	 */
-	public static function buildLikeQuery(array $searchWords, array $searchInFields, $negate = false) {
-		$searchWords= self::escapeArray($searchWords);
-		$fieldWheres= array();
+	public static function buildLikeQueryPart(array $searchWords, array $searchInFields, $negate = false) {
+		$searchWords		= self::escapeArray($searchWords);
+		$fieldWheres		= array();
+		$innerConjunction	= $negate ? ' AND ' : ' OR ';
+		$negation			= $negate ? ' NOT ' : ' ';
 
 			// Build an AND-group for all search words
 		foreach($searchWords as $searchWord) {
-			$fieldParts = array();
+			$fieldCompare = array();
 
 				// Build an OR-group for all search fields
 			foreach($searchInFields as $fieldName) {
-				$fieldParts[] = $fieldName . ($negate ? ' NOT ' : '') . ' LIKE \'%' . $searchWord . '%\'';
+				$fieldCompare[] = self::quoteFieldname($fieldName) . $negation . 'LIKE \'%' . $searchWord . '%\'';
 			}
 
 				// Concatenate field WHEREs with each words inside
-			$fieldWheres[] = implode(' OR ', $fieldParts);
+			$fieldWheres[] = implode($innerConjunction, $fieldCompare);
 		}
 
-		$where = '((' . implode(') AND (', $fieldWheres) . '))';
-
-		return $where;
+		return '((' . implode(') AND (', $fieldWheres) . '))';
 	}
 
 
@@ -261,10 +262,10 @@ class TodoyuSql {
 	 * @param	String		$tableName
 	 * @return	String		Field name in backticks
 	 */
-	public static function quoteFieldname($fieldName, $tableName = null) {
+	public static function quoteFieldname($fieldName, $tableName = '') {
 		$fieldName	= self::backtick($fieldName);
 
-		if( ! is_null($tableName) ) {
+		if( $tableName !== '' ) {
 			$fieldName = self::quoteTablename($tableName) . '.' . $fieldName;
 		}
 
@@ -305,12 +306,13 @@ class TodoyuSql {
 	 *
 	 * @param	Array		$array
 	 * @param	Array		$noQuoteFields
+	 * @param	Boolean		$escape
 	 * @return	Array
 	 */
-	public static function quoteArray(array $array, array $noQuoteFields = array()) {
+	public static function quoteArray(array $array, array $noQuoteFields = array(), $escape = true) {
 		foreach($array as $key => $value) {
 			if( !in_array($key, $noQuoteFields) ) {
-				$array[$key] = self::quote($value, true);
+				$array[$key] = self::quote($value, $escape);
 			}
 		}
 
@@ -343,7 +345,7 @@ class TodoyuSql {
 	public static function escapeArray(array $array, $quoteFields = false, array $noQuoteFields = array()) {
 			// Only escape the field if they will not be quoted, quoteArray() escapes the field by itself
 		if( $quoteFields  ) {
-			$array = self::quoteArray($array, $noQuoteFields);
+			$array = self::quoteArray($array, $noQuoteFields, true);
 		} else {
 			foreach($array as $key => $value) {
 				$array[$key] =  self::escape($value);
@@ -352,11 +354,6 @@ class TodoyuSql {
 
 		return $array;
 	}
-
-
-
-
-
 
 }
 

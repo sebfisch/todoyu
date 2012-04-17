@@ -843,7 +843,7 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 	public function testFormatRange() {
 		$dateStart1	= strtotime('2012-01-01 14:15');
 		$dateEnd1	= strtotime('2012-01-01 18:00');
-		$dateEnd2	= strtotime('2012-01-06 12:00');
+		$dateEnd2	= strtotime('2012-01-06 20:00');
 
 		$labelSame	= TodoyuTime::formatRange($dateStart1, $dateStart1);
 		$expectSame	= 'Sun, Jan 01 12, 14:15';
@@ -851,11 +851,9 @@ class TodoyuTimeTest extends PHPUnit_Framework_TestCase {
 		$labelSameDay	= TodoyuTime::formatRange($dateStart1, $dateEnd1);
 		$expectSameDay	= 'Sun, Jan 01 12, 14:15 - 18:00';
 
-		$labelLong		= TodoyuTime::formatRange($dateStart1, $dateEnd2);
-		$expectLong		= 'Sun, Jan 01 12, 14:15 - Fri, Jan 06 12, 18:00';
+		$labelLong		= TodoyuTime::formatRange($dateStart1, $dateEnd2, true);
+		$expectLong		= 'Sun, Jan 01 12, 14:15 - Fri, Jan 06 12, 20:00';
 		
-		TodoyuDebug::printInFirebug($labelLong);
-
 		$this->assertEquals($expectSame, $labelSame);
 		$this->assertEquals($expectSameDay, $labelSameDay);
 		$this->assertEquals($expectLong, $labelLong);

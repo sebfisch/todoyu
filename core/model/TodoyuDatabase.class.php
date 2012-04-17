@@ -362,11 +362,14 @@ class TodoyuDatabase {
 	public function doBooleanInvert($table, $idRecord, $fieldName) {
 		$idRecord	= (int) $idRecord;
 
-		$where	= 'id = ' . $idRecord;
-		$toggle	= TodoyuSql::buildBooleanInvert($table, $fieldName);
-		$update	= array($fieldName => $toggle);
+		$where			= '`id` = ' . $idRecord;
+		$toggleCommand	= TodoyuSql::buildBooleanInvertQueryPart($fieldName, $table);
+		$data			= array(
+			$fieldName => $toggleCommand
+		);
+		$noQuoteFields	= array($fieldName);
 
-		return $this->doUpdate($table, $where, $update, array($fieldName)) === 1;
+		return $this->doUpdate($table, $where, $data, $noQuoteFields) === 1;
 	}
 
 
@@ -778,7 +781,6 @@ class TodoyuDatabase {
 	 * @return	Boolean
 	 */
 	public function updateRecord($table, $idRecord, array $fieldValues, array $noQuoteFields = array()) {
-		$table	= '`' . $table . '`';
 		$where	= '`id` = ' . (int) $idRecord;
 
 		return $this->doUpdate($table, $where, $fieldValues, $noQuoteFields) === 1;
@@ -899,7 +901,7 @@ class TodoyuDatabase {
 	public function getTables() {
 		$dbName	= $this->config['database'];
 
-		$query	= 'SHOW TABLES FROM ' . TodoyuSql::quoteFieldname($dbName);
+		$query	= 'SHOW TABLES FROM ' . TodoyuSql::quoteTablename($dbName);
 		$result	= $this->query($query);
 
 		$rows	= $this->resourceToArray($result);
@@ -932,7 +934,7 @@ class TodoyuDatabase {
 	 * @return	Integer
 	 */
 	public function getRowCount($table, $where = '') {
-		$query = 'SELECT COUNT(*) as total FROM ' . TodoyuSql::quoteFieldname($table);
+		$query = 'SELECT COUNT(*) as total FROM ' . TodoyuSql::quoteTablename($table);
 
 		if( $where ) {
 			$query .= ' WHERE ' . $where;
@@ -954,7 +956,7 @@ class TodoyuDatabase {
 	 */
 	public function truncateTable($table) {
 		if( $this->hasTable($table) ) {
-			$this->query('TRUNCATE TABLE ' . TodoyuSql::quoteFieldname($table));
+			$this->query('TRUNCATE TABLE ' . TodoyuSql::quoteTablename($table));
 
 			return $this->getAffectedRows() > 0;
 		} else {
@@ -970,7 +972,7 @@ class TodoyuDatabase {
 	 * @param	String		$table
 	 */
 	public function dropTable($table) {
-		$this->query('DROP TABLE IF EXISTS ' . TodoyuSql::quoteFieldname($table));
+		$this->query('DROP TABLE IF EXISTS ' . TodoyuSql::quoteTablename($table));
 	}
 
 

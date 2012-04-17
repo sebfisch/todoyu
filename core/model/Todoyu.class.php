@@ -94,7 +94,7 @@ class Todoyu {
 		self::db();
 
 			// Add autoloader clear cache hook
-		TodoyuHookManager::registerHook('core', 'clearCache', 'TodoyuAutoloader::clearCacheHook');
+		TodoyuHookManager::registerHook('core', 'clearCache', 'TodoyuAutoloader::hookClearCache');
 	}
 
 
