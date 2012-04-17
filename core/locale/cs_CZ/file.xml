@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
+	<label index="files">Soubory</label>
 	<label index="download">Stáhnout</label>
 	<label index="upload">Nahrát</label>
 	<label index="size.gb">GB</label>
 	<label index="size.mb">MB</label>
 	<label index="size.kb">KB</label>
 	<label index="size.b">B</label>
-	<label index="filename">Jméno souboru</label>
-	<label index="filesize">Velikost</label>
+	<label index="filename">Název souboru</label>
+	<label index="filesize">Velikost souboru</label>
+	<label index="upload.progressmessage">Nahrávám soubor</label>
+	<label index="upload.succeeded">Soubor úspěšně nahrán</label>
+	<label index="upload.selectfile">Vyber soubor k nahrávání:</label>
+	<label index="upload.error.uploadfailed">Nahrávání se nezdařilo.</label>
+	<label index="upload.failed.maxFileSizeExceeded">Nahrávání se nezdařilo: překročena maximální velikost souboru.</label>
+	<label index="confirm.delete">Smazat vybraný soubor</label>
+	<label index="notify.delete.success">Soubor úspěšně smazán:</label>
+	<label index="notify.delete.error">Smazání souboru selhalo:</label>
 </labels>

@@ -5,9 +5,10 @@
 	<label index="field.hasError">Zadaná hodnota je neplatná</label>
 	<label index="field.save">Uložit</label>
 	<label index="field.cancel">Storno</label>
-	<label index="records.add">Přídat záznam</label>
+	<label index="records.add">Přidat záznam</label>
 	<label index="records.remove">Odstranit záznam</label>
 	<label index="records.edit">Upravit záznam</label>
+	<label index="records.removeconfirm">Opravdu chcete odstranit tento záznam?</label>
 	<label index="databaserelation.nolabel">[Nová položka]</label>
 	<label index="databaserelation.expandAllRecords">Zobrazit</label>
 	<label index="error.notUnique">Tento záznam již existuje</label>
@@ -15,4 +16,13 @@
 	<label index="is_preferred">Upřednostnit</label>
 	<label index="dateselector.open">Otevřte kalendář a zvolte datum</label>
 	<label index="autocompleteInfo">Začněte psát a text se automaticky doplní</label>
-</labels>
+	<label index="legend.main">Definice rolí</label>
+	<label index="daterange.choose">Vyberte časový rozsah</label>
+	<label index="daterange.monthToDate">Měsíc k datu</label>
+	<label index="daterange.yearToDate">Rok k datu</label>
+	<label index="daterange.quarterToDate">Kvartál k datu</label>
+	<label index="daterange.previousMonth">Předchozí měsíc</label>
+	<label index="daterange.previousQuarter">Předchozí kvartál</label>
+	<label index="daterange.previousYear">Předchozí rok</label>
+	<label index="daterange.fullTimeRange">Veškerý časový rozsah</label>
+/labels>
