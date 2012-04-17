@@ -418,7 +418,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 			// Check absolute URL
 		$result2	= TodoyuString::buildUrl($params, $hash, true);
-		$expect2	= SERVER_URL . '/index.php?a=alpha&b=beta&g=gamma#task-123';
+		$expect2	= TODOYU_URL . '/index.php?a=alpha&b=beta&g=gamma#task-123';
 
 		$this->assertEquals($expect2, $result2);
 	}
@@ -445,13 +445,18 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test getATag
 	 */
-	public function testGetATag() {
-		$url	= 'unit/test.html';
-		$label	= 'Link Text';
-		$expect	= '<a href="' . $url . '" target="_blank">' . $label . '</a>';
-		$result	= TodoyuString::getATag($url, $label);
+	public function testbuildATag() {
+		$url		= 'unit/test.html';
+		$label		= 'Link Text';
 
-		$this->assertEquals($expect, $result);
+		$expect1	= '<a href="' . $url . '">' . $label . '</a>';
+		$result1	= TodoyuString::buildATag($url, $label);
+
+		$expect2	= '<a href="' . $url . '" target="_customFrame">' . $label . '</a>';
+		$result2	= TodoyuString::buildATag($url, $label, '_customFrame');
+
+		$this->assertEquals($expect1, $result1);
+		$this->assertEquals($expect2, $result2);
 	}
 
 
@@ -459,7 +464,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Test getMailtoTag
 	 */
-	public function testGetMailtoTag() {
+	public function testBuildMailtoATag() {
 		$email	= 'team@todoyu.com';
 		$label	= 'Send message to todoyu team';
 		$subject= 'Mail Subject';
@@ -467,7 +472,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$cc		= 'sales@todoyu.com';
 
 		$expect	= '<a href="mailto:' . $email . '?subject=' . urlencode($subject) . '&body=' . urlencode($content) . '&cc=' . $cc . '">' . $label . '</a>';
-		$result	= TodoyuString::getMailtoTag($email, $label, false, $subject, $content, $cc);
+		$result	= TodoyuString::buildMailtoATag($email, $label, false, $subject, $content, $cc);
 
 		$this->assertEquals($expect, $result);
 	}

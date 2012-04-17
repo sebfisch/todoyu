@@ -507,8 +507,8 @@ class TodoyuString {
 	 * @return	String
 	 */
 	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {
-		$query	= '/' . ltrim(rtrim(PATH_WEB, '/\\') . '/index.php', '/');
-		
+		$query	= '/' . ltrim(PATH_WEB . '/index.php', '/');
+
 			// Add question mark if there are query parameters
 		if( sizeof($params) > 0 ) {
 			$query .= '?';
@@ -787,8 +787,7 @@ class TodoyuString {
 	 * @param	String	$bcc
 	 * @return	String
 	 */
-	public static function getMailtoTag($emailAddress, $label = '', $returnAsArray = false, $subject = '', $mailBody = '', $cc ='', $bcc = '') {
-		$attributes	= array();
+	public static function buildMailtoATag($emailAddress, $label = '', $returnAsArray = false, $subject = '', $mailBody = '', $cc ='', $bcc = '') {
 		$linkParts	= array();
 
 		if( $subject ) {
@@ -804,13 +803,13 @@ class TodoyuString {
 			$linkParts[] = 'ccc=' . $bcc;
 		}
 
-		$attributes['href']	= 'mailto:' . $emailAddress . '?' . implode('&', $linkParts);
+		$url				= 'mailto:' . $emailAddress . '?' . implode('&', $linkParts);
 
 		if( $label === '' ) {
 			$label = $emailAddress;
 		}
 
-		$aTag	= self::buildHtmlTag('a', $attributes, $label);
+		$aTag	= self::buildATag($url, $label);
 
 		if( $returnAsArray ) {
 			return array(
@@ -832,11 +831,14 @@ class TodoyuString {
 	 * @param	String	$target
 	 * @return	String
 	 */
-	public static function getATag($url, $label, $target = '_blank') {
+	public static function buildATag($url, $label, $target = '') {
 		$attributes	= array(
-			'href'	=> $url,
-			'target'=> $target
+			'href'	=> $url
 		);
+
+		if( $target ) {
+			$attributes['target'] = $target;
+		}
 
 		return self::buildHtmlTag('a', $attributes, $label);
 	}
