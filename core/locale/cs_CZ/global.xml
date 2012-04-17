@@ -10,6 +10,7 @@
 	<label index="author">Autor</label>
 	<label index="title">Název</label>
 	<label index="description">Popis</label>
+	<label index="notice">Poznámka</label>
 	<label index="date">Datum</label>
 	<label index="quickcreate.title">Vytvořit</label>
 	<label index="quickcreate.alltypes.label">Všechny datové typy:</label>
@@ -22,7 +23,9 @@
 	<label index="delete">Odstranit</label>
 	<label index="deleteRecord">Odstranit záznam</label>
 	<label index="show">Zobrazit</label>
-	<label index="showDetails">Ukaž podrobnosti</label>
+	<label index="showDetails">Ukázat podrobnosti</label>
+	<label index="showMore">Ukázat více</label>
+	<label index="listing.noItems">Nin nenalezeno.</label>
 	<label index="hide">Skrýt</label>
 	<label index="unhide">Zobrazit</label>
 	<label index="rename">Přejmenovat</label>
@@ -69,7 +72,7 @@
 	<label index="footer.api">API</label>
 	<label index="footer.api.title">Doxygen API Documentation</label>
 	<label index="footer.devmanual">Dev</label>
-	<label index="footer.devmanual.title">Příručka pro vývojáře a jiné znalce</label>
+	<label index="footer.devmanual.title">Příručka pro vývojáře a jiné odborníky</label>
 	<label index="paging.page">Stránka</label>
 	<label index="input.autocompleter">Autodoplňování</label>
 	<label index="ajax.requestFailed">Nelze navázat spojení se serverem (spojení nebo server je mimo provoz?)</label>
@@ -86,6 +89,7 @@
 	<label index="date_update">Datum poslední změny</label>
 	<label index="date_create">Vytvořeno</label>
 	<label index="id_person_create">Vytvořil</label>
+	<label index="Total">Celkově</label>
 	<label index="of">z</label>
 	<label index="public">Veřejné</label>
 	<label index="notpublic">Neveřejné</label>
@@ -100,6 +104,7 @@
 	<label index="log.error">Normal Errors</label>
 	<label index="log.security">Security Issues</label>
 	<label index="log.fatal">Fatal Errors</label>
+	<label index="system">Systém</label>
 	<label index="controllerError.oops">Hopla!</label>
 	<label index="controllerError.info">todoyu nemůže zpracovat tento požadavek</label>
 	<label index="controllerError.reason">Zkontrolujte jestli máte správně napsanou adresu, nebo je možné, že požadované rozšíření bylo odstraněno. Zkuste vymazat cache prohlížeče.</label>

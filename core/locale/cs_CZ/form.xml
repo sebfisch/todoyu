@@ -12,8 +12,11 @@
 	<label index="databaserelation.nolabel">[Nová položka]</label>
 	<label index="databaserelation.expandAllRecords">Zobrazit</label>
 	<label index="error.notUnique">Tento záznam již existuje</label>
+	<label index="error.duration.invalidinput">Chybná vstupní délka, prosím opravte.</label>
 	<label index="ac.noResults">Autodoplňování: nenalezeno</label>
 	<label index="is_preferred">Upřednostnit</label>
+	<label index="confirm.toggle.is_preferred.on">Pouze jeden záznam tohoto typu může být upřednostňován. Opravdu chcete vybrat tento záznam jako přednostní?</label>
+	<label index="confirm.toggle.is_preferred.off">Pouze jeden záznam tohoto typu může být upřednostňován. Opravdu chcete zrušit tento záznam jako přednostní?</label>
 	<label index="dateselector.open">Otevřte kalendář a zvolte datum</label>
 	<label index="autocompleteInfo">Začněte psát a text se automaticky doplní</label>
 	<label index="legend.main">Definice rolí</label>
@@ -25,4 +28,4 @@
 	<label index="daterange.previousQuarter">Předchozí kvartál</label>
 	<label index="daterange.previousYear">Předchozí rok</label>
 	<label index="daterange.fullTimeRange">Veškerý časový rozsah</label>
-/labels>
+</labels>

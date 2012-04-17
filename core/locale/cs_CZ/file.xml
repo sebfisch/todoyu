@@ -11,10 +11,13 @@
 	<label index="filesize">Velikost souboru</label>
 	<label index="upload.progressmessage">Nahrávám soubor</label>
 	<label index="upload.succeeded">Soubor úspěšně nahrán</label>
-	<label index="upload.selectfile">Vyber soubor k nahrávání:</label>
+	<label index="upload.selectfile">Vyberte soubor k nahrání:</label>
 	<label index="upload.error.uploadfailed">Nahrávání se nezdařilo.</label>
 	<label index="upload.failed.maxFileSizeExceeded">Nahrávání se nezdařilo: překročena maximální velikost souboru.</label>
 	<label index="confirm.delete">Smazat vybraný soubor</label>
 	<label index="notify.delete.success">Soubor úspěšně smazán:</label>
 	<label index="notify.delete.error">Smazání souboru selhalo:</label>
+	<label index="error.notFround">Soubor nenalezen</label>
+	<label index="error.notReadable">Soubor nelze přečíst</label>
+	<label index="error.notInDownloadPath">Cesta k souboru není přístupná</label>
 </labels>

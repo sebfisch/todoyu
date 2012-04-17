@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <labels>
 	<label index="date">Datum</label>
+	<label index="date_update">Datum aktualizace</label>
+	<label index="date_create">Datum vytvoření</label>
 	<label index="time">Čas</label>
 	<label index="hrs">h</label>
 	<label index="month.january">Leden</label>
@@ -50,6 +52,7 @@
 	<label index="monthly">Měsíčně</label>
 	<label index="yearly">Ročně</label>
 	<label index="today">Dnes</label>
+	<label index="warning.dateformat.invalid">Zjištěn vadný formát data (bude upraven při uložení).</label>
 	<label index="dyndate.today">Dnes</label>
 	<label index="dyndate.tomorrow">Zítra</label>
 	<label index="dyndate.dayaftertomorrow">Pozítří</label>
@@ -58,6 +61,8 @@
 	<label index="dyndate.currentweek">Tento týden</label>
 	<label index="dyndate.nextweek">Příští týden</label>
 	<label index="dyndate.lastweek">Minulý týden</label>
+	<label index="dyndate.currentmonth">Aktuální měsíc</label>
+	<label index="dyndate.currentyear">Aktuální rok</label>
 	<label index="dyndate.lastyear">Příští rok</label>
 	<label index="dyndate.nextyear">Minulý rok</label>
 </labels>
