@@ -186,6 +186,18 @@ class TodoyuString {
 
 
 	/**
+	 * Remove all whitespace from given string
+	 *
+	 * @param	String	$string
+	 * @return	String
+	 */
+	public static function removeAllWhitespace($string) {
+		return preg_replace('/\s+/','',$string);
+	}
+
+
+
+	/**
 	 * Wrap string with given pipe-separated wrapper string, e.g. HTML tags
 	 *
 	 * @param	String	$string

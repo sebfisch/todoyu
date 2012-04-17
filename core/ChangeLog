@@ -1,7 +1,6 @@
 todoyu core changelog
 
 core 2.2.0 - not released yet
-	* Changed: Removed currencyFormat from core
 	* Added: Balloon info rendering, style and JS
 	* Added: Hooks in TodoyuMail
 	* Added: Empty listing shows "no items" notice
@@ -35,6 +34,7 @@ core 2.2.0 - not released yet
 	* Added: Dwoo plugin {restrictAdmin}retricted content{/restrictAdmin}
 	* Added: Moved dwoo plugins from calendar extension to core: {formatDuration}, {formatRange}
 	* Added: date locale format label "dateMshort"
+	* Changed: Removed currencyFormat from core
 	* Changed: Listing renderer requires and renders additionally to columns now also record ID
 	* Changed: Moved static database and query functions to TodoyuSql
 	* Changed: Removing valueless foreign records does not require confirmation anymore
@@ -118,7 +118,6 @@ core 2.1.3 - 2011-11-17
 	* Library: tinyMCE 3.4.7
 	* Library: Highcharts 2.1.9
 
-
 core 2.1.2 - 2011-09-15
 	* Bugfix: Tab layout for chrome fixed
 	* Bugfix: labels of dynamic tabs float over bounding box of the tab in chrome (ex: view/edit event)
@@ -156,8 +155,6 @@ core 2.1.2 - 2011-09-15
 	* Updated: JsCalendar library updated. Added some extra utf-8 language packages (provided by Captain_FLAM)
 	* Updated: tinyMCE 3.4.4
 
-	
-
 core 2.1.1 - 2011-07-25
 	* Feature: Added optional event identifier to error/success notifications- notifications of the same event are now closing preceding notes of the same event (if present)
 	* Bugfix: Installer- Fixed icon display bug of installer steps with long labels
@@ -185,8 +182,6 @@ core 2.1.1 - 2011-07-25
 	* Changed: Frequency of a cronjob if given to the job to calculate next expected execution time
 	* Changed: Merged duration wizard icon into general sprite
 	* Added: Array.prototype.sum()
-
-
 
 core 2.1.0 - 2011-06-17
 	1. Note: Since release 2.1.0, the todoyu extension repository is enabling us to decouple version updates of the todoyu core and basic extensions from one another.
@@ -233,7 +228,6 @@ core 2.1.0 - 2011-06-17
 	* Added: Todoyu.Helper.cropText() to crop text in js
 	* Added: addJsOnloadedFunction has now an autobind parameter
 	* Translation: Updated german, russian and japanese translation updates
-
 
 core 2.0.8 - beta
 	* Bugfix: Added forgotten button label to "add person" button of role form

@@ -18,7 +18,7 @@
 *****************************************************************************/
 
 todoyu Requirements
-===================
+==================
 	* Web server:						Apache (version 2.0 or greater) is recommended (http://apache.org/).
 	* Middleware:						PHP 5.2.5 (or greater) (http://www.php.net/).
 	* Required PHP extensions:			mbstring, zlib, mcrypt, zip, json, pcre, libxml, SimpleXML, gd
