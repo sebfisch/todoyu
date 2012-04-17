@@ -110,10 +110,4 @@ Todoyu::$CONFIG['EXPORT']['CSV']	= array(
 
 Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] = false;
 
-	// Force merging of files in IE
-if( TodoyuBrowserInfo::isIE() ) {
-	Todoyu::$CONFIG['CACHE']['JS']['merge']		= true;
-	Todoyu::$CONFIG['CACHE']['CSS']['merge']	= true;
-}
-
 ?>
