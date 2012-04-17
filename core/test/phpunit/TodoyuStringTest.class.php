@@ -412,7 +412,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 			// Check relative URL
 		$result1	= TodoyuString::buildUrl($params, $hash);
-		$expect1	= PATH_WEB . 'index.php?a=alpha&b=beta&g=gamma#task-123';
+		$expect1	= PATH_WEB . '/index.php?a=alpha&b=beta&g=gamma#task-123';
 
 		$this->assertEquals($expect1, $result1);
 
@@ -628,7 +628,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 			'ext'		=> 'project',
 			'controller'=> 'test',
 		);
-		$expect1	= '<a href="' . PATH_WEB . 'index.php?ext=project&controller=test">Link Text</a>';
+		$expect1	= '<a href="' . PATH_WEB . '/index.php?ext=project&controller=test">Link Text</a>';
 		$result1	= TodoyuString::wrapTodoyuLink('Link Text', 'project', $params1);
 
 		$this->assertEquals($expect1, $result1);
@@ -639,7 +639,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 			'controller'	=> 'test',
 			'action'		=> 'foo'
 		);
-		$expect2	= '<a href="' . PATH_WEB . 'index.php?ext=project&controller=test&action=foo#myHash" target="_blank">Link</a>';
+		$expect2	= '<a href="' . PATH_WEB . '/index.php?ext=project&controller=test&action=foo#myHash" target="_blank">Link</a>';
 		$result2	= TodoyuString::wrapTodoyuLink('Link', 'project', $params2, 'myHash', '_blank');
 
 		$this->assertEquals($expect2, $result2);
@@ -759,6 +759,15 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertTrue($hasHtml);
 		$this->assertFalse($noHtml);
+	}
+
+
+	public function testRemoveAllWhitespace() {
+		$text	= ' 	 d df ad	sdfasdf   ';
+		$expect	= 'ddfadsdfasdf';
+		$result	= TodoyuString::removeAllWhitespace($text);
+
+		$this->assertEquals($expect, $result);
 	}
 
 }

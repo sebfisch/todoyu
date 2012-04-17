@@ -60,7 +60,7 @@ if( $_SERVER['HTTP_HOST'] ) {
 	} else {
 		$pathWeb = dirname($_SERVER['SCRIPT_NAME']) === '.' ? '' : dirname($_SERVER['SCRIPT_NAME']);
 	}
-	$pathWeb = str_replace('\\', '/', $pathWeb);
+	$pathWeb = rtrim(str_replace('\\', '/', $pathWeb), '/');
 
 	define('PATH_WEB', $pathWeb);
 	
