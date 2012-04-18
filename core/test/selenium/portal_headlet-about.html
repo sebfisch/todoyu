@@ -44,7 +44,12 @@
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>© 2006-2011 snowflake productions GmbH, Zurich.</td>
+	<td>© 2006-</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>snowflake productions GmbH, Zurich.</td>
 	<td></td>
 </tr>
 <tr>
@@ -94,8 +99,19 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertVisible</td>
+	<td>//div[@id=&quot;about-libs&quot;]/h1</td>
+	<td></td>
+</tr>
+<!--Return to team list display-->
+<tr>
 	<td>click</td>
 	<td>css=button#about-toggle-credits.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotVisible</td>
+	<td>css=div#about-libs.creditsbox</td>
 	<td></td>
 </tr>
 <!--close popup-->
@@ -112,6 +128,11 @@
 <tr>
 	<td>pause</td>
 	<td>500</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>css=div#popup-about.dialog div#popup-about_close.dialog_close</td>
 	<td></td>
 </tr>
 </tbody></table>

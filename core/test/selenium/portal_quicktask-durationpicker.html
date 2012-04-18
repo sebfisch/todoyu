@@ -97,12 +97,17 @@
 <!--select: 02:00-->
 <tr>
 	<td>click</td>
-	<td>//html/body/div[9]/div[2]/div[3]</td>
+	<td>//div[@id=&quot;quicktask-0-field-workload-done-durationpicker-hour&quot;]/div[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>pause</td>
 	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotVisible</td>
+	<td>css=div#quicktask-0-field-workload-done-durationpicker.dpPicker</td>
 	<td></td>
 </tr>
 <tr>
@@ -126,7 +131,6 @@
 	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
 	<td>10000</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

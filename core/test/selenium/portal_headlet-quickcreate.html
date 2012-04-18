@@ -11,6 +11,7 @@
 <tr><td rowspan="1" colspan="3">portal > headlet: quickcreate INCOMPLETE</td></tr>
 </thead><tbody>
 <!------ portal > headlet: quickcreate-->
+<!--headlet icon there?-->
 <tr>
 	<td>assertElementPresent</td>
 	<td>todoyuheadletquickcreate-button</td>
@@ -21,6 +22,7 @@
 	<td>css=ul#todoyuheadletquickcreate-content.content</td>
 	<td></td>
 </tr>
+<!--Open  headlet dropdown with types-->
 <tr>
 	<td>click</td>
 	<td>todoyuheadletquickcreate-button</td>
@@ -41,6 +43,7 @@
 	<td>css=ul#todoyuheadletquickcreate-content.content</td>
 	<td></td>
 </tr>
+<!--All types there: task, project, event, person, company-->
 <tr>
 	<td>assertElementPresent</td>
 	<td>link=New Task</td>
@@ -66,9 +69,15 @@
 	<td>link=New Company</td>
 	<td>New Company</td>
 </tr>
+<!--Close the types dropdown-->
 <tr>
 	<td>click</td>
 	<td>todoyuheadletquickcreate-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>200</td>
 	<td></td>
 </tr>
 <tr>

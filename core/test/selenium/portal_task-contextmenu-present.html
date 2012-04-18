@@ -14,12 +14,12 @@
 <!--open todos tab-->
 <tr>
 	<td>assertElementPresent</td>
-	<td>//p[@id='portal-tab-todo-label']/span[3]</td>
+	<td>//p[@id='portal-tab-todo-label']/span[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>//p[@id='portal-tab-todo-label']/span[3]</td>
+	<td>//p[@id='portal-tab-todo-label']/span[2]</td>
 	<td></td>
 </tr>
 <tr>
@@ -31,6 +31,42 @@
 	<td>waitForCondition</td>
 	<td>selenium.browserbot.getUserWindow().Ajax.activeRequestCount == 0</td>
 	<td>10000</td>
+</tr>
+<!--tab activated? (but tabs are there: filter, todo, feedback, events)-->
+<tr>
+	<td>assertElementPresent</td>
+	<td>//li[@id=&quot;portal-tab-todo&quot;][contains(@class,&quot;active&quot;)]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//li[@id=&quot;portal-tab-selection&quot;][contains(@class,&quot;active&quot;)]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//li[@id=&quot;portal-tab-feedback&quot;][contains(@class,&quot;active&quot;)]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//li[@id=&quot;portal-tab-appointment&quot;][contains(@class,&quot;active&quot;)]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//li[@id=&quot;portal-tab-selection&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//li[@id=&quot;portal-tab-feedback&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//li[@id=&quot;portal-tab-appointment&quot;]</td>
+	<td></td>
 </tr>
 <!--open context menu of 1st task-->
 <tr>
@@ -61,12 +97,12 @@
 </tr>
 <tr>
 	<td>assertVisible</td>
-	<td>css=li#contextmenu-showinproject.showinproject a.task-showinproject</td>
+	<td>css=li#contextmenu-edit a.taskEdit</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertVisible</td>
-	<td>css=li#contextmenu-edit a.taskEdit</td>
+	<td>css=li#contextmenu-showinproject.showinproject a.task-showinproject</td>
 	<td></td>
 </tr>
 <tr>
@@ -86,7 +122,7 @@
 </tr>
 <tr>
 	<td>assertVisible</td>
-	<td>css=li#contextmenu-removebookmark a.task-bookmark</td>
+	<td>css=li#contextmenu-addbookmark a.task-bookmark</td>
 	<td></td>
 </tr>
 <tr>
@@ -97,7 +133,7 @@
 <!--click to close contextmenu, hidden?-->
 <tr>
 	<td>clickAt</td>
-	<td>css=div#main div#panel.panel div.panelHeader</td>
+	<td>css=div#main div#panel.panel</td>
 	<td></td>
 </tr>
 <tr>
@@ -110,7 +146,6 @@
 	<td>css=html body ul#contextmenu</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
