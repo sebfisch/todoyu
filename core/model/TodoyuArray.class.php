@@ -312,10 +312,10 @@ class TodoyuArray {
 	 *
 	 * Only keep items which have a uid between 1 and 9 AND have 352, 80, 440 or 240 pages
 	 *
-	 * $products	= $this->getArray('*', 'ext_shop_products');
+	 * $products	= Todoyu::db()->getArray('*', 'ext_shop_products');
 	 * $filter		= array('uid'	=> array(1,2,3,4,5,6,7,8,9),
 	 *						'pages'	=> array(352,80,440,240));
-	 * $filteredProducts = tx_sfp::arrayFilter($prodcuts, $filter);
+	 * $filteredProducts = TodoyuArray::filter($prodcuts, $filter);
 	 *
 	 *
 	 * @param	Array		$dataArray			Array with the element which are checked against the filter

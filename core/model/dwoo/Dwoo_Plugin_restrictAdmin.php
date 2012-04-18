@@ -21,7 +21,8 @@
 /**
  * Dwoo plugin to restrict access to template parts to internal persons
  *
- * @example		{restrictAdmin}Restricted parts{else}Unrestricted{/restrictAdmin}
+ * @example
+ * {restrictAdmin}Restricted parts{else}Unrestricted{/restrictAdmin}
  *
  * @package		Todoyu
  * @subpackage	Template

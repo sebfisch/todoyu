@@ -21,7 +21,8 @@
 /**
  * Dwoo plugin to restrict access to template parts
  *
- * @example		{restrict 'extkey' 'rightskey'}Restricted parts{else}Unrestricted{/restrict}
+ * @example
+ * {restrict 'extkey' 'rightskey'}Restricted parts{else}Unrestricted{/restrict}
  *
  * @package		Todoyu
  * @subpackage	Template
