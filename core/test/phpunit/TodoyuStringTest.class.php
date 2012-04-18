@@ -411,14 +411,14 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$hash	= 'task-123';
 
 			// Check relative URL
-		$result1	= TodoyuString::buildUrl($params, $hash);
+		$result1	= TodoyuString::buildUrl($params, $hash, false, true);
 		$expect1	= PATH_WEB . '/index.php?a=alpha&b=beta&g=gamma#task-123';
 
 		$this->assertEquals($expect1, $result1);
 
 			// Check absolute URL
 		$result2	= TodoyuString::buildUrl($params, $hash, true);
-		$expect2	= TODOYU_URL . '/index.php?a=alpha&b=beta&g=gamma#task-123';
+		$expect2	= TODOYU_URL . '/index.php?a=alpha&amp;b=beta&amp;g=gamma#task-123';
 
 		$this->assertEquals($expect2, $result2);
 	}
@@ -633,7 +633,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 			'ext'		=> 'project',
 			'controller'=> 'test',
 		);
-		$expect1	= '<a href="' . PATH_WEB . '/index.php?ext=project&controller=test">Link Text</a>';
+		$expect1	= '<a href="' . PATH_WEB . '/index.php?ext=project&amp;controller=test">Link Text</a>';
 		$result1	= TodoyuString::wrapTodoyuLink('Link Text', 'project', $params1);
 
 		$this->assertEquals($expect1, $result1);
@@ -644,7 +644,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 			'controller'	=> 'test',
 			'action'		=> 'foo'
 		);
-		$expect2	= '<a href="' . PATH_WEB . '/index.php?ext=project&controller=test&action=foo#myHash" target="_blank">Link</a>';
+		$expect2	= '<a href="' . PATH_WEB . '/index.php?ext=project&amp;controller=test&amp;action=foo#myHash" target="_blank">Link</a>';
 		$result2	= TodoyuString::wrapTodoyuLink('Link', 'project', $params2, 'myHash', '_blank');
 
 		$this->assertEquals($expect2, $result2);

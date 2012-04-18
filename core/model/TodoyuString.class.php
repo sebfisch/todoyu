@@ -501,13 +501,15 @@ class TodoyuString {
 	/**
 	 * Build an URL with given parameters prefixed with todoyu path
 	 *
-	 * @param	Array		$params		Parameters as key=>value
-	 * @param	String		$hash		Hash (#hash)
-	 * @param	Boolean		$absolute	Absolute URL with host server
+	 * @param	Array		$params			Parameters as key=>value
+	 * @param	String		$hash			Hash (#hash)
+	 * @param	Boolean		$absolute		Absolute URL with host server
+	 * @param	Boolean		$dontEncode		Don't encode html entities (use & instead of &amp; as argument separator)
 	 * @return	String
 	 */
-	public static function buildUrl(array $params = array(), $hash = '', $absolute = false) {
-		$query	= '/' . ltrim(PATH_WEB . '/index.php', '/');
+	public static function buildUrl(array $params = array(), $hash = '', $absolute = false, $dontEncode = false) {
+		$query			= '/' . ltrim(PATH_WEB . '/index.php', '/');
+		$argSeparator	= $dontEncode ? '&' : '&amp;';
 
 			// Add question mark if there are query parameters
 		if( sizeof($params) > 0 ) {
@@ -515,7 +517,7 @@ class TodoyuString {
 		}
 
 			// Add all parameters encoded
-		$query .= http_build_query($params, null, '&amp;');
+		$query .= http_build_query($params, null, $argSeparator);
 
 			// Add hash
 		if( ! empty($hash) ) {
