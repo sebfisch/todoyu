@@ -509,50 +509,37 @@ class TodoyuDatabase {
 
 
 	/**
-	 * Get a row by ID (Primary key)
-	 *
-	 * @param	String			$table
-	 * @param	Integer			$idRow
-	 * @return	Array|Boolean	Or false if row doesn't exist
-	 */
-	public function getRowByID($table, $idRow) {
-			// Build cache ID
-		$cacheKey	= TodoyuRecordManager::makeRecordQueryKey($table, $idRow);
-
-			// Check if row is already cached
-		if( TodoyuCache::isIn($cacheKey) ) {
-			return TodoyuCache::get($cacheKey);
-		} else {
-				// Fetch row from database, if not in cache
-			$where		= 'id = ' . abs($idRow);
-			$resource	= $this->doSelect('*', $table, $where);
-
-				// Is a record was found, fetch it
-			if( $this->hasRows($resource) ) {
-				$row	= $this->fetchAssoc($resource);
-					// Remove resource form memory
-				$this->freeResult($resource);
-					// Add row to cache
-				TodoyuCache::set($cacheKey, $row);
-			} else {
-				$row	= false;
-			}
-
-			return $row;
-		}
-	}
-
-
-
-	/**
-	 * Get record from table. Alias for getRowByID()
+	 * Get record from table
 	 *
 	 * @param	String		$table
 	 * @param	Integer		$idRecord
 	 * @return	Array		Or false if row doesn't exist
 	 */
 	public function getRecord($table, $idRecord) {
-		return $this->getRowByID($table, $idRecord);
+			// Build cache ID
+		$cacheKey	= TodoyuRecordManager::makeRecordQueryKey($table, $idRecord);
+
+			// Check if row is already cached
+		if( TodoyuCache::isIn($cacheKey) ) {
+			return TodoyuCache::get($cacheKey);
+		} else {
+				// Fetch row from database, if not in cache
+			$where		= 'id = ' . abs($idRecord);
+			$resource	= $this->doSelect('*', $table, $where, '', '', 1);
+
+				// Is a record was found, fetch it
+			if( $this->hasRows($resource) ) {
+				$recordData	= $this->fetchAssoc($resource);
+					// Remove resource form memory
+				$this->freeResult($resource);
+					// Add row to cache
+				TodoyuCache::set($cacheKey, $recordData);
+			} else {
+				$recordData	= false;
+			}
+
+			return $recordData;
+		}
 	}
 
 

@@ -33,7 +33,7 @@ class TodoyuSQLParser {
 	 * @param	String	$sql
 	 * @return	Array
 	 */
-	public static function extractTableNames($sql) {
+	private static function extractTableNames($sql) {
 		$tableNames	= array();
 
 		$parts	= explode(';', $sql);
@@ -44,7 +44,7 @@ class TodoyuSQLParser {
 			foreach($matches as $match) {
 				$tableName	= str_replace(
 					array('TABLE ', 'IF NOT EXISTS', '', '(', '\'', '`', ' '),
-					array('', '', '', '', '', '', ''),
+					'',
 					$match
 				);
 

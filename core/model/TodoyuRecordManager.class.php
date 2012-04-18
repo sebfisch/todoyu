@@ -173,13 +173,12 @@ class TodoyuRecordManager {
 	 * Save a record
 	 *
 	 * @param	String		$table
-	 * @param	Integer		$idRecord
 	 * @param	Array		$data
 	 * @param	Array		$noQuoteFields
 	 * @return	Integer
 	 */
-	public static function saveRecord($table, $idRecord, array $data, array $noQuoteFields = array()) {
-		$idRecord	= (int) $idRecord;
+	public static function saveRecord($table, array $data, array $noQuoteFields = array()) {
+		$idRecord	= intval($data['id']);
 
 		if( $idRecord === 0 ) {
 			$idRecord	= self::addRecord($table, $data, $noQuoteFields);
