@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.todoyu.com"
+		   xmlns="http://www.todoyu.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="allow">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute type="xs:string" name="ext" use="optional"/>
+					<xs:attribute type="xs:string" name="right" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="attribute">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute type="xs:string" name="name" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="validate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="isNotEmpty" minOccurs="0"/>
+				<xs:element ref="dateBefore" minOccurs="0"/>
+				<xs:element ref="dateNotBefore" minOccurs="0"/>
+				<xs:element ref="dateNotAfter" minOccurs="0"/>
+				<xs:element ref="dateAfter" minOccurs="0"/>
+				<xs:element ref="isNotZero" minOccurs="0"/>
+				<xs:element ref="isNotZerotime" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="function" type="xs:string"/>
+	<xs:element name="extraAttributes" type="xs:string"/>
+	<xs:element name="onComplete" type="xs:string"/>
+	<xs:element name="onSelected" type="xs:string"/>
+	<xs:element name="dateNotBefore">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="field"/>
+				<xs:element ref="allowEmpty" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="msg" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dateBefore">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="field"/>
+				<xs:element ref="allowEmpty" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="msg" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dateNotAfter">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="field"/>
+				<xs:element ref="allowEmpty" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="msg" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dateAfter">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="field"/>
+				<xs:element ref="allowEmpty" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="msg" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="config">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="acLabel"/>
+				<xs:element ref="options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fieldset">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="restrict" minOccurs="0"/>
+				<xs:element ref="legend" minOccurs="0"/>
+				<xs:element ref="class" minOccurs="0"/>
+				<xs:element ref="elements" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="name" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="required">
+		<xs:complexType>
+			<xs:attribute type="xs:string" name="label" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="wizard">
+		<xs:complexType>
+			<xs:attribute type="xs:string" name="name" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fieldsets">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fieldset" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="elements">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="field" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="allowEmpty" type="xs:string"/>
+	<xs:element name="options">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="acName"/>
+				<xs:element ref="onComplete" minOccurs="0"/>
+				<xs:element ref="onSelected" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="isNotEmpty">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute type="xs:string" name="msg"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="lazyInit" type="xs:string"/>
+	<xs:element name="form">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="attributes" minOccurs="0"/>
+				<xs:element ref="hiddenFields" minOccurs="0"/>
+				<xs:element ref="fieldsets" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="noPleaseSelect" type="xs:string"/>
+	<xs:element name="hiddenFields">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="field" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="isNotZerotime">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute type="xs:string" name="msg"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="class" type="xs:string"/>
+	<xs:element name="label" type="xs:string"/>
+	<xs:element name="addLabel" type="xs:string"/>
+	<xs:element name="restrict">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="allow"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="field">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="label"/>
+				<xs:element ref="addLabel"/>
+				<xs:element ref="validate"/>
+				<xs:element ref="restrict"/>
+				<xs:element ref="required"/>
+				<xs:element ref="source"/>
+				<xs:element ref="noPleaseSelect"/>
+				<xs:element ref="config"/>
+				<xs:element ref="extraAttributes"/>
+				<xs:element ref="onclick"/>
+				<xs:element ref="wizard"/>
+				<xs:element ref="record"/>
+			</xs:choice>
+			<xs:attribute type="xs:string" name="name" use="optional"/>
+			<xs:attribute type="xs:string" name="type" use="optional"/>
+			<xs:attribute type="xs:string" name="noWrap" use="optional"/>
+			<xs:attribute type="xs:string" name="noStorage" use="optional"/>
+			<xs:attribute type="xs:string" name="value" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="acLabel" type="xs:string"/>
+	<xs:element name="acName" type="xs:string"/>
+	<xs:element name="source">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="function"/>
+				<xs:element ref="lazyInit" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="type" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="legend" type="xs:string"/>
+	<xs:element name="onclick" type="xs:string"/>
+	<xs:element name="attributes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="attribute" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="isNotZero">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute type="xs:string" name="msg"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="record">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="form"/>
+				<xs:element type="urlType" name="url"/>
+				<xs:element type="labelType" name="label"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="urlType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="ext"/>
+			<xs:element type="xs:string" name="controller"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="labelType">
+		<xs:sequence>
+			<xs:element type="xs:string" name="function"/>
+			<xs:element type="xs:string" name="noLabel"/>
+		</xs:sequence>
+		<xs:attribute type="xs:string" name="type"/>
+	</xs:complexType>
+</xs:schema>
