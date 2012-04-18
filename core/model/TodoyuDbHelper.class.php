@@ -249,11 +249,15 @@ class TodoyuDbHelper {
 	public static function deleteOtherMmRecords($mmTable, $recordTable, $idLinkRecord, array $ignoreRecordIDs, $fieldRecord, $fieldLink) {
 		$idLinkRecord	= (int) $idLinkRecord;
 		$ignoreRecordIDs= TodoyuArray::intval($ignoreRecordIDs, true, true);
+		$recordTable	= TodoyuSql::quoteTablename($recordTable);
+		$mmTable		= TodoyuSql::quoteTablename($mmTable);
+		$fieldRecord	= TodoyuSql::quoteFieldname('mm.' . $fieldRecord);
+		$fieldLink		= TodoyuSql::quoteFieldname('mm.' . $fieldLink);
 
 		$tables		=	$recordTable . ' r,' .
 						$mmTable . ' mm';
-		$where		= '		mm.' . $fieldRecord . ' = ' . $idLinkRecord .
-					  ' AND	mm.' . $fieldLink . '	= r.id';
+		$where		= '		' . $fieldRecord . ' = ' . $idLinkRecord .
+					  ' AND	' . $fieldLink . '	= r.id';
 
 		if( sizeof($ignoreRecordIDs) > 0 ) {
 			$where .= ' AND	r.id NOT IN(' . implode(',', $ignoreRecordIDs) . ')';

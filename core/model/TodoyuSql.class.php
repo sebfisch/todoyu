@@ -184,12 +184,13 @@ class TodoyuSql {
 	/**
 	 * Quote table name with backticks
 	 * tablename => `tablename`
+	 * Don't quote if the table name contains a whitespace => this means there may be multiple tables or an alias
 	 *
 	 * @param	String		$tableName
 	 * @return	String
 	 */
 	public static function quoteTablename($tableName) {
-		return self::backtick($tableName);
+		return strpos($tableName, ' ') === false ? self::backtick($tableName) : $tableName;
 	}
 
 
