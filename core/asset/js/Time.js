@@ -357,7 +357,34 @@ Todoyu.Time = {
 		var compareDate1	= dateString1.replace(/0*(\d*)/gi,"$1").replace(/0{1,2}:0{1,2}/gi, '').strip();
 		var compareDate2	= dateString2.replace(/0*(\d*)/gi,"$1").replace(/0{1,2}:0{1,2}/gi, '').strip();
 
+		compareDate1		= this.reduceYear(compareDate1);
+		compareDate2		= this.reduceYear(compareDate2);
+
 		return compareDate1 === compareDate2;
+	},
+
+	
+
+	/**
+	 * Reduce year to two digit year for better comparison
+	 * 2012 => 12
+	 * 12	=> 12
+	 *
+	 * @param	{String}	dateString
+	 * @return	{String}
+	 */
+	reduceYear: function(dateString) {
+		var dateParts	= dateString.split(/\W+/);
+		var yearPart	= dateParts.find(function(datePart){
+			return datePart > 1000;
+		});
+
+		if( yearPart ) {
+			var smallYear = yearPart.substr(2);
+			dateString = dateString.replace(yearPart, smallYear);
+		}
+
+		return dateString;
 	},
 
 
