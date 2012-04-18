@@ -388,11 +388,6 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/listing.scss',
-			'media'		=> 'all',
-			'position'	=> 10
-		),
-		array(
 			'file'		=> 'core/asset/css/panel.scss',
 			'media'		=> 'all',
 			'position'	=> 10

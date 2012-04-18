@@ -51,13 +51,13 @@ Todoyu.Listing = {
 		var url	= update.split('/');
 
 		this.config[name] = {
-			'name':		name,
-			'size':		size,
-			'offset':	offset,
-			'total':	total,
-			'url': {
-				'ext':			url[0],
-				'controller': 	url[1],
+			name:	name,
+			size:	size,
+			offset:	offset,
+			total:	total,
+			url: {
+				ext:		url[0],
+				controller: url[1],
 				action:		url[2]
 			}
 		};
@@ -99,10 +99,10 @@ Todoyu.Listing = {
 		var url		= Todoyu.getUrl(this.config[name].url.ext, this.config[name].url.controller);
 		var options	= {
 			parameters: {
-				action:			this.config[name].url.action,
-				'name':			name,
-				'listParams':	Object.toJSON(listParams),
-				'offset':		offset
+				action:		this.config[name].url.action,
+				name:		name,
+				listParams:	Object.toJSON(listParams),
+				offset:		offset
 			},
 			onComplete: this.onExtended.bind(this, name, offset)
 		};

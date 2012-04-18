@@ -65,7 +65,7 @@ class TodoyuPage {
 			// Add all assets of allowed extensions
 		self::addExtAssets();
 
-		self::addMetatag('Content-Type', Todoyu::$CONFIG['FE']['ContentType']);
+		self::addMetatag('', 'text/html; charset=utf-8', 'content-type');
 		self::addMetatag('robots', 'noindex,nofollow');
 
 		self::addJsInit('Todoyu.init()', 1);

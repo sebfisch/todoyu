@@ -29,8 +29,6 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 	 */
 	protected function init() {
 		$this->setJsHeadlet('Todoyu.CoreHeadlets.QuickCreate');
-
-//		TodoyuPage::addJsInit('Todoyu.Headlets.QuickCreate.init.bind(Todoyu.Headlets.QuickCreate)', 100);
 	}
 
 
@@ -42,11 +40,6 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 	 */
 	protected function getMenuItems() {
 		$engines= TodoyuQuickCreateManager::getEngines();
-
-			// If there's only one engine: remove primary (no need of primary entry when there's only a single one)
-		if( sizeof($engines['all']) === 1 ) {
-			unset($engines['primary']);
-		}
 
 		$items	= array();
 		if( is_array($engines['primary']) ) {
@@ -61,7 +54,8 @@ class TodoyuHeadletQuickCreate extends TodoyuHeadletTypeMenu {
 			);
 
 			if( $engine['isPrimary'] ) {
-				$item['class'] .= ' primary';
+				$item['class']	.= ' primary';
+				$item['id']		.= '-primary';
 			}
 
 			$items[] = $item;

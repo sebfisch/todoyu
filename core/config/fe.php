@@ -36,8 +36,7 @@ Todoyu::$CONFIG['FE'] = array(
 	),
 	'PAGE' => array(
 		'finish'	=> array()
-	),
-	'ContentType'	=> 'text/html; charset=utf-8'
+	)
 );
 
 ?>

@@ -55,6 +55,7 @@ li.even {
 	font-weight:bold;
 	padding:9px 0 9px 20px;
 	background:url(../img/icons.png) no-repeat 5px -289px;
+	cursor:pointer;
 
 	&:hover {
 		background-color:$grey00;

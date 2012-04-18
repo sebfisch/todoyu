@@ -2,8 +2,6 @@
 	<div class="paging-container" id="paging-{$config.name}">
 {/if}
 
-	<a id="{$offset}"></a>
-
 {if !empty($rows)}
 	<table class="list {$config.name}Listing withMouseHover" id="paging-{$config.name}-table-{$page}" >
 
@@ -15,9 +13,9 @@
 				{/foreach}
 			</tr>
 		</thead>
-		<tbody>
 
 	{*-------------- Rows ---------------*}
+		<tbody>
 		{foreach $rows row}
 			<tr class="{cycle values="odd,even"}" id="{$config.name}-listingrow-{$row.id}">
 				{foreach $config.columns colName label}
@@ -34,12 +32,12 @@
 						{$onClick	= ''}
 					{/if}
 					<td class="{$colName} {$row[$fieldClass]}">
-						<span id="{$spanID}" class="{$colName} {$className}" {if $colName != 'actions'}title="{htmlencode($colContent)}"{/if} {if !empty($onClick)}onclick="{$onClick}"{/if}>
+						<span {if $spanID}id="{$spanID}"{/if} class="{$colName} {$className}" {if $colContent && $colName!='actions'}title="{htmlencode $colContent}"{/if} {if $onClick}onclick="{$onClick}"{/if}>
 							{if $colName == 'actions'}
 								{cleanHtml $colContent}
 							{else}
 								{$maxLen = intval($config.truncate.$colName)}
-								{if $maxLen == 0}{$maxLen = 16}{/if}
+								{if !$maxLen}{$maxLen = 16}{/if}
 								{htmlencode(truncate($colContent,$maxLen,'...',true))}
 							{/if}
 						</span>
@@ -55,14 +53,17 @@
 {/if}
 
 	{*-------------- Listing show more entries option ---------------*}
-{if ! $noPaging && $page < $pages}
+
+{if !$noPaging && $page < $pages}
 	<div id="extendlisting">
-		<a href="#pos{$nextPos}" onclick='Todoyu.Listing.more("{$name}", {$page}, {$listingParams})'>{Label core.global.showMore}</a>
+		<a onclick='Todoyu.Listing.more("{$name}", {$page}, {$listingParams})'>{Label core.global.showMore}</a>
 	</div>
 
-	<script>
+	<script type="text/javascript">
 	Todoyu.Listing.init('{$config.name}', '{$config.update}', {$config.size}, {$offset}, {$total});
 	</script>
+{/if}
 
-	</div>
+{if $noPaging || $page == 1}
+	</div> {* Close pading container *}
 {/if}
