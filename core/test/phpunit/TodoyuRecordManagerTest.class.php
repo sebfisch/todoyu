@@ -138,13 +138,15 @@ class TodoyuRecordManagerTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testUpdateRecord() {
+		TodoyuCache::disable();
 		TodoyuRecordManager::updateRecord('system_role', 3, array(
 			'title'	=> 'testUpdateRecord'
 		));
-
 		$role	= TodoyuRecordManager::getRecord('TodoyuRole', 3);
 
 		$this->assertEquals('testUpdateRecord', $role->getTitle());
+
+		TodoyuCache::enable();
 	}
 
 	public function testIsRecord() {
@@ -188,11 +190,13 @@ class TodoyuRecordManagerTest extends PHPUnit_Framework_TestCase {
 
 
 	public function testDeleteRecordsByID() {
+		TodoyuCache::disable();
 		TodoyuRecordManager::deleteRecordsByID('system_role', array(1,2));
 
 		$role	= TodoyuRecordManager::getRecord('TodoyuRole', 2);
 
 		$this->assertTrue($role->isDeleted());
+		TodoyuCache::enable();
 	}
 
 }
