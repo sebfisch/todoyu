@@ -27,7 +27,7 @@ Calendar._MN = new Array
  "Prosinac");
 
 // tooltips
-//Calendar._TT = {};
+Calendar._TT = {};
 Calendar._TT["TOGGLE"] = "Promjeni dan s kojim počinje tjedan";
 Calendar._TT["PREV_YEAR"] = "Prethodna godina (dugi pritisak za meni)";
 Calendar._TT["PREV_MONTH"] = "Prethodni mjesec (dugi pritisak za meni)";
