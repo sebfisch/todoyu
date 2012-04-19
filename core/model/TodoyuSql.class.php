@@ -190,7 +190,7 @@ class TodoyuSql {
 	 * @return	String
 	 */
 	public static function quoteTablename($tableName) {
-		return strpos($tableName, ' ') === false ? self::backtick($tableName) : $tableName;
+		return strpos($tableName, ' ') === false && strpos($tableName, ',') === false ? self::backtick($tableName) : $tableName;
 	}
 
 
