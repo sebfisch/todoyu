@@ -7,7 +7,7 @@
 			<ul id="navi-main-list-{$entry.key}" class="navilist">
 				{foreach $entry.submenu sub name=navimainsub}
 					<li class="item item{ucfirst $sub.key}{if $sub.active} active{/if}{if $dwoo.foreach.navimainsub.first} first{/if} bcl02">
-						<a href="{$sub.href}" title="{if $sub.desc}{htmlencode $sub.desc}{else}{htmlencode $sub.label}{/if}" {if $sub.active}class="active"{/if}>{htmlencode(cropText($sub.label,30,false))}</a>
+						<a href="{$sub.href}" title="{if $sub.desc}{htmlencode $sub.desc}{else}{htmlencode $sub.label}{/if}" {if $sub.active}class="active"{/if}>{htmlencode(cropText($sub.label,29,false))}</a>
 					</li>
 				{/foreach}
 				<li class="item last bcl02"> </li>
