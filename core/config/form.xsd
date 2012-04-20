@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.todoyu.com"
-		   xmlns="http://www.todoyu.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified"
+		   elementFormDefault="qualified"
+		   targetNamespace="http://www.todoyu.com"
+		   xmlns="http://www.todoyu.com"
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:element name="allow">
 		<xs:complexType>
 			<xs:simpleContent>
@@ -30,6 +33,10 @@
 				<xs:element ref="dateAfter" minOccurs="0"/>
 				<xs:element ref="isNotZero" minOccurs="0"/>
 				<xs:element ref="isNotZerotime" minOccurs="0"/>
+				<xs:element ref="greaterThan" minOccurs="0"/>
+				<xs:element ref="user" minOccurs="0"/>
+				<xs:element ref="email" minOccurs="0"/>
+				<xs:element ref="dateTimeNotBefore" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -42,6 +49,7 @@
 			<xs:all>
 				<xs:element ref="field"/>
 				<xs:element ref="allowEmpty" minOccurs="0"/>
+				<xs:element name="allow" type="xs:anyType" minOccurs="0"/>
 			</xs:all>
 			<xs:attribute type="xs:string" name="msg" use="optional"/>
 		</xs:complexType>
@@ -51,6 +59,7 @@
 			<xs:all>
 				<xs:element ref="field"/>
 				<xs:element ref="allowEmpty" minOccurs="0"/>
+				<xs:element name="allow" type="xs:anyType" minOccurs="0"/>
 			</xs:all>
 			<xs:attribute type="xs:string" name="msg" use="optional"/>
 		</xs:complexType>
@@ -60,6 +69,7 @@
 			<xs:all>
 				<xs:element ref="field"/>
 				<xs:element ref="allowEmpty" minOccurs="0"/>
+				<xs:element name="allow" type="xs:anyType" minOccurs="0"/>
 			</xs:all>
 			<xs:attribute type="xs:string" name="msg" use="optional"/>
 		</xs:complexType>
@@ -69,6 +79,35 @@
 			<xs:all>
 				<xs:element ref="field"/>
 				<xs:element ref="allowEmpty" minOccurs="0"/>
+				<xs:element name="allow" type="xs:anyType" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="msg" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="greaterThan">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="field"/>
+				<xs:element ref="allowEmpty" minOccurs="0"/>
+				<xs:element name="allow" type="xs:anyType" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="msg" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dateTimeNotBefore">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="field"/>
+				<xs:element ref="allowEmpty" minOccurs="0"/>
+				<xs:element name="allow" type="xs:anyType" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="msg" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="user">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="function"/>
 			</xs:all>
 			<xs:attribute type="xs:string" name="msg" use="optional"/>
 		</xs:complexType>
@@ -78,6 +117,20 @@
 			<xs:all>
 				<xs:element ref="acLabel"/>
 				<xs:element ref="options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="calendar">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="disableFunc" type="xs:string" minOccurs="0"/>
+				<xs:element name="dateStatusFunc" type="xs:string" minOccurs="0"/>
+				<xs:element name="flatCallback" type="xs:string" minOccurs="0"/>
+				<xs:element name="onSelect" type="xs:string" minOccurs="0"/>
+				<xs:element name="onClose" type="xs:string" minOccurs="0"/>
+				<xs:element name="onUpdate" type="xs:string" minOccurs="0"/>
+				<xs:element name="position" type="xs:string" minOccurs="0"/>
+				<xs:element name="range" type="xs:string" minOccurs="0"/>
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -110,10 +163,11 @@
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="elements">
-		<xs:complexType>
-			<xs:sequence>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
 				<xs:element ref="field" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
+				<xs:element ref="fieldset" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="allowEmpty" type="xs:string"/>
@@ -164,6 +218,18 @@
 	</xs:element>
 	<xs:element name="class" type="xs:string"/>
 	<xs:element name="label" type="xs:string"/>
+	<xs:element name="multiple" type="xs:string"/>
+	<xs:element name="size" type="xs:integer"/>
+	<xs:element name="rows" type="xs:integer"/>
+	<xs:element name="fieldClass" type="xs:string"/>
+	<xs:element name="noStorage" type="xs:string"/>
+	<xs:element name="email" type="xs:string"/>
+	<xs:element name="style" type="xs:string"/>
+	<xs:element name="disable" type="xs:string"/>
+	<xs:element name="text" type="xs:string"/>
+	<xs:element name="onchange" type="xs:string"/>
+	<xs:element name="storeAsDate" type="xs:string"/>
+	<xs:element name="hasIcon" type="xs:string"/>
 	<xs:element name="addLabel" type="xs:string"/>
 	<xs:element name="restrict">
 		<xs:complexType>
@@ -187,6 +253,20 @@
 				<xs:element ref="onclick"/>
 				<xs:element ref="wizard"/>
 				<xs:element ref="record"/>
+				<xs:element ref="onchange"/>
+				<xs:element ref="class"/>
+				<xs:element ref="text"/>
+				<xs:element ref="hasIcon"/>
+				<xs:element ref="size"/>
+				<xs:element ref="fieldClass"/>
+				<xs:element ref="disable"/>
+				<xs:element ref="style"/>
+				<xs:element ref="noStorage"/>
+				<xs:element ref="multiple"/>
+				<xs:element ref="comment"/>
+				<xs:element ref="calendar"/>
+				<xs:element ref="storeAsDate"/>
+				<xs:element ref="rows"/>
 			</xs:choice>
 			<xs:attribute type="xs:string" name="name" use="optional"/>
 			<xs:attribute type="xs:string" name="type" use="optional"/>
@@ -199,10 +279,11 @@
 	<xs:element name="acName" type="xs:string"/>
 	<xs:element name="source">
 		<xs:complexType>
-			<xs:all>
-				<xs:element ref="function"/>
+			<xs:sequence>
+				<xs:element ref="function" minOccurs="0"/>
 				<xs:element ref="lazyInit" minOccurs="0"/>
-			</xs:all>
+				<xs:element type="xs:anyType" name="option" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
 			<xs:attribute type="xs:string" name="type" use="optional"/>
 		</xs:complexType>
 	</xs:element>
@@ -233,6 +314,23 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="recordLabel">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="field"/>
+				<xs:element type="xs:string" name="noLabel"/>
+			</xs:sequence>
+			<xs:attribute type="xs:string" name="type"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="comment">
+		<xs:complexType mixed="true">
+			<xs:all>
+				<xs:element type="xs:string" name="function" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="type"/>
+		</xs:complexType>
+	</xs:element>
 	<xs:complexType name="urlType">
 		<xs:sequence>
 			<xs:element type="xs:string" name="ext"/>
@@ -240,10 +338,11 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="labelType">
-		<xs:sequence>
-			<xs:element type="xs:string" name="function"/>
-			<xs:element type="xs:string" name="noLabel"/>
-		</xs:sequence>
+		<xs:all>
+			<xs:element type="xs:string" name="function" minOccurs="0"/>
+			<xs:element type="xs:string" name="noLabel" minOccurs="0"/>
+			<xs:element type="xs:string" name="field" minOccurs="0"/>
+		</xs:all>
 		<xs:attribute type="xs:string" name="type"/>
 	</xs:complexType>
 </xs:schema>
