@@ -361,8 +361,8 @@ var Todoyu = {
 	 *
 	 * @method	notifySuccess
 	 * @param	{String}		message
-	 * @param	{String}		identifier
-	 * @param	{Number}		delay
+	 * @param	{String}		[identifier]
+	 * @param	{Number}		[delay]
 	 */
 	notifySuccess: function(message, identifier, delay) {
 		Todoyu.Notification.notifySuccess(message, false, delay, identifier);
@@ -375,8 +375,8 @@ var Todoyu = {
 	 *
 	 * @method	notifyInfo
 	 * @param	{String}		message
-	 * @param	{Number}		delay
-	 * @param	{String}		identifier
+	 * @param	{Number}		[delay]
+	 * @param	{String}		[identifier]
 	 */
 	notifyInfo: function(message, delay, identifier) {
 		Todoyu.Notification.notifyInfo(message, false, delay, identifier);

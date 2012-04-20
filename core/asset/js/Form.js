@@ -542,8 +542,8 @@ Todoyu.Form = {
 
 		if( !Todoyu.exists(idIFrame) ) {
 			var iFrame	= new Element('iframe', {
-				name:		'upload-iframe-' + key,
-				id:			'upload-iframe-' + key,
+				name:		idIFrame,
+				id:			idIFrame,
 				className:	'uploadIframe'
 			});
 
@@ -562,7 +562,7 @@ Todoyu.Form = {
 	 *
 	 * @method	submitFileUploadForm
 	 * @param	{Element}	form
-	 * @param	{String}	url
+	 * @param	{String}	[url]
 	 */
 	submitFileUploadForm: function(form, url) {
 		var iFrame	= this.addIFrame(form.id);
