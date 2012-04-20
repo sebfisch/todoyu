@@ -28,7 +28,7 @@ TodoyuCli::init();
 TodoyuExtensions::loadAllBoot();
 
 	// Load all init.php files of the installed extensions
-TodoyuExtensions::loadAllInit();
+TodoyuExtensions::initExtensions();
 
 	// Prevent HTTP request
 TodoyuCli::assertShell();

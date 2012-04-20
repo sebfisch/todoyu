@@ -435,6 +435,28 @@ class TodoyuExtensions {
 	}
 
 
+
+	/**
+	 * Init extensions
+	 * Load init.php and global extconf
+	 *
+	 */
+	public static function initExtensions() {
+		self::loadAllInit();
+		self::loadExtConf();
+	}
+
+
+
+	/**
+	 * Load extension config from config/extconf.php
+	 *
+	 */
+	public static function loadExtConf() {
+		require( PATH_LOCALCONF . '/extconf.php');
+	}
+
+
 	
 	/**
 	 * Only for backwards compatibility
@@ -592,7 +614,7 @@ class TodoyuExtensions {
 	 */
 	public static function loadAllExtensions() {
 		self::loadAllBoot();
-		self::loadAllInit();
+		self::initExtensions();
 	}
 
 }

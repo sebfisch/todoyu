@@ -41,7 +41,7 @@ try {
 	TodoyuRequest::initRequest();
 
 		// Load all init.php files of the installed extensions
-	TodoyuExtensions::loadAllInit();
+	TodoyuExtensions::initExtensions();
 
 		// Process sharing token if any
 	if( TodoyuTokenManager::hasRequestToken() ) {
