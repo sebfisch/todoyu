@@ -248,6 +248,8 @@ class TodoyuString {
 		$text	= str_replace(array("\n", "\r"), '', $text);
 		$text	= self::br2nl($text);
 		$text	= str_replace('</p>', "\n\n", $text);
+		$text	= str_replace('</li>', "\n", $text);
+		$text	= str_replace('<li>', ' - ', $text);
 		$text	= strip_tags($text);
 
 		if( $decodeEntity ) {
