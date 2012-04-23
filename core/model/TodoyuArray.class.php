@@ -637,6 +637,25 @@ class TodoyuArray {
 
 
 	/**
+	 * Merge data from $fallbackData into $baseData if not set or empty
+	 *
+	 * @param	Array		$baseData
+	 * @param	Array		$fallbackData
+	 * @return	Array
+	 */
+	public static function mergeEmptyFields(array $baseData, array $fallbackData) {
+		foreach($fallbackData as $key => $value) {
+			if( !isset($baseData[$key]) || empty($baseData[$key]) ) {
+				$baseData[$key] = $fallbackData[$key];
+			}
+		}
+
+		return $baseData;
+	}
+
+
+
+	/**
 	 * Merges any number of arrays / parameters recursively, replacing
 	 * entries with string keys with values from latter arrays.
 	 * If the entry or the next value to be assigned is an array, then it

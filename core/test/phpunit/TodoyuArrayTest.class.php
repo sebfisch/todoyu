@@ -897,6 +897,29 @@ class TodoyuArrayTest extends PHPUnit_Framework_TestCase {
 		// @todo implement way to simulate user for a unittest
 	}
 
+
+	public function testMergeEmptyFields() {
+		$base	= array(
+			'a'	=> 1,
+			'b'	=> '',
+			'c'	=> 0,
+			'd'	=> 'xxxxxxxxx'
+		);
+		$fallback = array(
+			'a'	=> 'override',
+			'b'	=> 'override',
+			'c'	=> 'override',
+			'd'	=> 'override',
+		);
+
+		$merged	= TodoyuArray::mergeEmptyFields($base, $fallback);
+
+		$this->assertEquals(1, $merged['a']);
+		$this->assertEquals('override', $merged['b']);
+		$this->assertEquals('override', $merged['c']);
+		$this->assertEquals('xxxxxxxxx', $merged['d']);
+	}
+
 }
 
 ?>
