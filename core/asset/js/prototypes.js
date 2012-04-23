@@ -203,8 +203,8 @@ Ajax.Response.addMethods({
  * Add days to a date
  *
  * @method	addDays
- * @param	{Number}	days		Amount of day
- * @param	{Boolean}	newDate		Create a new date instead updating this one
+ * @param	{Number}	days			Amount of day
+ * @param	{Boolean}	[newDate]		Create a new date instead updating this one
  * @return	{Date}
  */
 Date.prototype.addDays = function(days, newDate) {
@@ -267,7 +267,7 @@ Date.prototype.setToWeekEnd = function() {
  * Add round method to number
  *
  * @method	round
- * @param	{Number}	precision
+ * @param	{Number}	[precision]
  */
 Number.prototype.round = function(precision) {
 	var factor	= Math.pow(10, precision || 0);
