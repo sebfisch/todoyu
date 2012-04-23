@@ -188,29 +188,31 @@ Todoyu.Time = {
 
 
 	/**
-	 * Get timestamp at start of week (being sunday or monday depending on system config)
+	 * Get date at start of week (being sunday or monday depending on system config)
 	 *
 	 * @method	getWeekStart
 	 * @param	{Date}		date
 	 * @return	{Date}
 	 */
 	getWeekStart: function(date) {
+		var newDate, shiftByDays;
 		date.setHours(0);
 		date.setMinutes(0);
 		date.setSeconds(0);
 
-		var newTime = parseInt(date.getTime() / 1000, 10);
-		var shift = (((date.getDay() % 7) - 1) * -1);
-
-			// Adjust 1st day of week from monday to sunday
-		var firstDayIsSunday	=  Todoyu.Config.system.firstDayOfWeek === 0;
-		if( firstDayIsSunday ) {
-			shift = shift -1;
+		if( date.getDay() !== Todoyu.Config.system.firstDayOfWeek ) {
+				// Adjust 1st day of week from monday to sunday
+			if( Todoyu.Config.system.firstDayOfWeek === 0 ) {
+				shiftByDays = date.getDay();
+			} else {
+				shiftByDays = (date.getDay()+6) % 7;
+			}
+			newDate = date.addDays(-shiftByDays, true);
+		} else {
+			newDate = new Date(date);
 		}
 
-		newTime += shift * this.seconds.day;
-
-		return new Date(newTime*1000);
+		return newDate;
 	},
 
 
