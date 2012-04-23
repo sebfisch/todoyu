@@ -759,17 +759,19 @@ Todoyu.Ui = {
 	 * Prevents "ghost" objects which will break the save process
 	 *
 	 * @method	closeRTE
-	 * @param	{Element}	area		Area to look for tinyMCE instances (Can be a form, the whole window or the element itself)
+	 * @param	{Element|String}	area		Area to look for tinyMCE instances (Can be a form, the whole window or the element itself)
 	 */
 	closeRTE: function(area) {
 		this.saveRTE();
 
-		if( area === null || ! Todoyu.exists(area) ) {
-			area = document.body;
+		area	= $(area);
+
+		if( !area ) {
+			area = $(document.body);
 		}
 
 			// Remove controls for all editors in the range
-		$(area).select('textarea.RTE').each(function(textarea){
+		area.select('textarea.RTE').each(function(textarea){
 			if( tinyMCE.editors[textarea.id] ) {
 				tinyMCE.execCommand('mceRemoveControl', false, textarea.id);
 			}
