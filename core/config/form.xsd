@@ -270,6 +270,7 @@
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="noPleaseSelect" type="xs:string"/>
+	<xs:element name="pleaseSelectLabel" type="xs:string"/>
 	<xs:element name="hiddenFields">
 		<xs:complexType>
 			<xs:sequence>
@@ -329,6 +330,7 @@
 				<xs:element ref="required"/>
 				<xs:element ref="source"/>
 				<xs:element ref="noPleaseSelect"/>
+				<xs:element ref="pleaseSelectLabel"/>
 				<xs:element name="config" type="xs:anyType"/>
 				<xs:element ref="extraAttributes"/>
 				<xs:element ref="onclick"/>
