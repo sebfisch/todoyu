@@ -457,23 +457,7 @@ Todoyu.Ui = {
 		if( location.hash !== '') {
 			var anchor	= location.hash.substr(1);
 
-			this.scrollToAnchor.bind(this, anchor).delay(0.4);
-		}
-	},
-
-
-
-	/**
-	 * Scroll view to the anchor in the document
-	 *
-	 * @method	scrollToAnchor
-	 * @param	{String}	name
-	 */
-	scrollToAnchor: function(name) {
-		var element = document.getElementsByName(name)[0];
-
-		if(element) {
-			this.scrollToElement(element);
+			this.scrollToElement.bind(this, anchor).delay(0.4);
 		}
 	},
 
