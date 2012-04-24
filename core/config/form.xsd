@@ -25,25 +25,25 @@
 	</xs:element>
 	<xs:element name="validate">
 		<xs:complexType>
-			<xs:all>
-				<xs:element ref="isNotEmpty" minOccurs="0"/>
-				<xs:element ref="dateBefore" minOccurs="0"/>
-				<xs:element ref="dateNotBefore" minOccurs="0"/>
-				<xs:element ref="dateNotAfter" minOccurs="0"/>
-				<xs:element ref="dateAfter" minOccurs="0"/>
-				<xs:element ref="isNotZero" minOccurs="0"/>
-				<xs:element ref="isNotZerotime" minOccurs="0"/>
-				<xs:element ref="greaterThan" minOccurs="0"/>
-				<xs:element ref="equals" minOccurs="0"/>
-				<xs:element ref="user" minOccurs="0"/>
-				<xs:element ref="email" minOccurs="0"/>
-				<xs:element ref="dateTimeNotBefore" minOccurs="0"/>
-				<xs:element ref="dateInFuture" minOccurs="0"/>
-				<xs:element ref="unique" minOccurs="0"/>
-				<xs:element ref="goodPassword" minOccurs="0"/>
-				<xs:element ref="requiredIfNotEmpty" minOccurs="0"/>
-				<xs:element ref="range" minOccurs="0"/>
-			</xs:all>
+			<xs:sequence>
+				<xs:element ref="isNotEmpty" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dateBefore" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dateNotBefore" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dateNotAfter" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dateAfter" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="isNotZero" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="isNotZerotime" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="greaterThan" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="equals" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="user" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="email" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dateTimeNotBefore" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dateInFuture" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="unique" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="goodPassword" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="requiredIfNotEmpty" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="range" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="function" type="xs:string"/>
