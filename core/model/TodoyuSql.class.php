@@ -154,7 +154,7 @@ class TodoyuSql {
 			// Implode values array to list
 		if( $isInt ) {
 			$values = TodoyuArray::intImplode($values, ',');
-		} elseif( $quote ) {
+		} elseif( $quote && !$isInt ) {
 			$values = TodoyuArray::implodeQuoted($values, ',');
 		} else {
 			$values = implode(',', $values);
