@@ -799,12 +799,14 @@ class TodoyuTime {
 	 *
 	 * @param	Integer		$timestamp
 	 * @param	Integer		$roundingMinute		Round to number of minutes (10min, 15min, etc)
-	 * @return	Integer							rounded time in seconds
+	 * @return	Integer		Rounded duration in seconds
 	 */
 	public static function roundUpTime($timestamp, $roundingMinute = 1) {
-		$roundingSeconds	=	$roundingMinute * self::SECONDS_MIN;
+		$timestamp			= intval($timestamp);
+		$roundingMinute		= max(1, $roundingMinute);
+		$roundingSeconds	= $roundingMinute * self::SECONDS_MIN;
 
-		return (int) (ceil( intval($timestamp) / $roundingSeconds ) * $roundingSeconds);
+		return (int) (ceil($timestamp / $roundingSeconds) * $roundingSeconds);
 	}
 
 
