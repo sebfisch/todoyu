@@ -172,6 +172,7 @@ class TodoyuBrowserInfo {
 
 	/**
 	 * Get browser locale
+	 * Example of input string: de-ch,de-de;q=0.8,de;q=0.6,en-us;q=0.4,en;q=0.2
 	 *
 	 * @return	String		Or FALSE if not found
 	 */
@@ -179,10 +180,12 @@ class TodoyuBrowserInfo {
 		$locale		= false;
 		$accepted	= explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 
-		foreach($accepted as $localeString) {
+		foreach($accepted as $acceptedLocale) {
+			list($localeString, $quality) = explode(';', $acceptedLocale);
+
 			if( strstr($localeString, '-') ) {
-				$localeParts= explode('-', $localeString);
-				$locale		= $localeParts[0] . '_' . strtoupper($localeParts[1]);
+				list($lang, $country) = explode('-', $localeString);
+				$locale		= strtolower($lang) . '_' . strtoupper($country);
 				break;
 			}
 		}

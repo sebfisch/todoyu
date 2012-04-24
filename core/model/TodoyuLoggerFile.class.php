@@ -36,7 +36,7 @@ class TodoyuLoggerFile implements TodoyuLoggerIf {
 	/**
 	 * Log file pattern
 	 */
-	private $pattern	= "%s :: %s - L:%d [%s:%d] :: %s\n";
+	private $pattern	= "%s :: %s - L:%d - U:%s [%s:%d] :: %s\n";
 
 
 
@@ -92,7 +92,7 @@ class TodoyuLoggerFile implements TodoyuLoggerIf {
 	 * @param	String		$requestKey
 	 */
 	public function log($message, $level, $data, $info, $requestKey) {
-		$logLine	= sprintf($this->pattern, $requestKey, date('Y-m-d H:i:s'), $level, $info['fileshort'], $info['line'], $message);
+		$logLine	= sprintf($this->pattern, $requestKey, date('Y-m-d H:i:s'), $level, TodoyuAuth::getPerson()->getUsername(), $info['fileshort'], $info['line'], $message);
 
 		fwrite($this->filePointer, $logLine);
 	}
