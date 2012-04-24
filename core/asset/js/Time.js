@@ -519,6 +519,29 @@ Todoyu.Time = {
 		var compare = new Date(date).setToWeekEnd();
 
 		return this.isDateInPast(compare);
+	},
+
+
+
+	/**
+	 * Get date from ISO date string
+	 * YEAR-MONTH-DAY
+	 *
+	 * @param	{String}	dateString
+	 * @param	{Date}
+	 */
+	parseIsoString: function(dateString) {
+		var date;
+
+		if( Prototype.Browser.WebKit ) {
+			var parts = dateString.match(/(\d+)/g);
+
+			date = new Date(parts[0], parts[1]-1, parts[2]);
+		} else {
+			date = new Date(dateString);
+		}
+
+		return date;
 	}
 
 };
