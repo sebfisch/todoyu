@@ -30,7 +30,7 @@
 			<tr>
 				<td><label for="database_new">{Label install.installer.dbselect.orCreateDB}</label></td>
 				<td>
-					<input onkeyup="Todoyu.Installer.checkDbSelect()" type="text" id="database_new" name="database_new" value="{$postData.database_new}" />
+					<input onkeyup="TodoyuInstaller.checkDbSelect()" type="text" id="database_new" name="database_new" value="{$postData.database_new}" />
 					<span id="error-newnameTaken" style="display:none;" class="error">{Label install.installer.error.nameTaken}</span>
 				</td>
 			</tr>

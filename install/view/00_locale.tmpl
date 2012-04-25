@@ -3,7 +3,7 @@
 {block name="box"}
 	<ul class="installationLocales">
 	{foreach $locales locale}
-		<li onclick="Todoyu.Installer.selectLocale('{$locale.key}')">
+		<li onclick="TodoyuInstaller.selectLocale('{$locale.key}')">
 			<a href="#" class="{if $locale.key==$userLocale}emphasized"{/if}">
 				{$locale.label} ({$locale.key})
 			</a>

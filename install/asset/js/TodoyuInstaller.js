@@ -18,8 +18,8 @@
 *****************************************************************************/
 
 
-if( ! Todoyu ) {
-	var Todoyu = {};
+if( ! TodoyuInstaller ) {
+	var TodoyuInstaller = {};
 }
 
 
@@ -27,7 +27,7 @@ if( ! Todoyu ) {
  * Todoyu installer namespace
  *
  */
-Todoyu.Installer = {
+TodoyuInstaller = {
 
 	/**
 	 * Focus first form field

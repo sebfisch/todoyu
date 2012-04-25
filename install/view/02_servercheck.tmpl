@@ -52,7 +52,7 @@
 	<input type="hidden" name="checked" value="1" />
 	{if $info.stop}
 	<script type="text/javascript">
-		document.observe('dom:loaded', Todoyu.Installer.hideButton.bind(Todoyu.Installer));
+		document.observe('dom:loaded', TodoyuInstaller.hideButton.bind(Todoyu.Installer));
 	</script>
 	{Button label="LLL:install.installer.servercheck.buttonRecheck" onclick="location.href=location.href"}
 	{/if}
