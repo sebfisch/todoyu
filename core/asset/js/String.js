@@ -382,6 +382,24 @@ Todoyu.String = {
 		}
 
 		return number;
+	},
+
+
+
+	/**
+	 * Replace count number in string
+	 * The count number has to be wrapper in braces
+	 * Example: Label (3)
+	 *
+	 * @param	{String}	label
+	 * @param	{Number}	newCount
+	 * @return	{String}
+	 */
+	replaceCounter: function(label, newCount) {
+		var pattern	= /\(\d+\)/;
+		var replace	= '(' + newCount + ')';
+
+		return label.replace(pattern, replace);
 	}
 
 };
