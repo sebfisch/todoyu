@@ -521,64 +521,6 @@ var Todoyu = {
 				window.console.log(element);
 			}
 		}
-	},
-
-
-
-	/**
-	 * Observe zoom event in browser with callback function
-	 * Ported to prototype from http://mlntn.com/2008/12/11/javascript-jquery-zoom-event-plugin/
-	 *
-	 * @method	observeZoom
-	 * @param	{Function}	callback
-	 */
-	observeZoom: function(callback) {
-			// Observe mouse wheel
-		document.on('mousewheel', function(e){
-			if( e.ctrlKey ) {
-				callback();
-			}
-		});
-		document.on('DOMMouseScroll', function(e){
-			if( e.ctrlKey ) {
-				callback();
-			}
-		});
-
-			// Observe zoom keys
-		document.on('keydown', function(e) {
-			switch (true) {
-				case Prototype.Browser.Gecko || Prototype.Browser.IE :
-					if( e.ctrlKey && (
-						e.which === 187 ||
-						e.which === 189 ||
-						e.which === 107 ||
-						e.which === 109 ||
-						e.which === 96  ||
-						e.which === 48
-					) ) {
-						callback();
-					}
-				break;
-
-				case Prototype.Browser.Opera :
-					if(
-						e.which === 43 ||
-						e.which === 45 ||
-						e.which === 42 ||
-						(e.ctrlKey && e.which === 48)
-						) {
-						callback();
-					}
-				break;
-
-				case Prototype.Browser.WebKit :
-					if( e.metaKey && (e.charCode === 43 || e.charCode === 45) ) {
-						callback();
-					}
-				break;
-			}
-		});
 	}
 
 };
