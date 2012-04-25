@@ -69,7 +69,7 @@ Todoyu.SortablePanelList = Class.create({
 	 */
 	_initToggle: function(callback) {
 		this.list.select('li.groupTitle').each(function(callback, groupItem){
-			var groupName = Todoyu.Helper.getClassKey(groupItem, 'groupName');
+			var groupName = Todoyu.String.getClassKey(groupItem, 'groupName');
 			if( groupName ) {
 				groupItem.on('click', 'li', this._toggle.bind(this, groupItem, groupName, callback));
 			}

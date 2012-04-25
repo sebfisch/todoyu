@@ -182,7 +182,7 @@ Ajax.Response.addMethods({
 	 * @return	{Number}
 	 */
 	getNumAcElements: function() {
-		return Todoyu.Helper.intval(this.getTodoyuHeader('acElements'));
+		return Todoyu.Number.intval(this.getTodoyuHeader('acElements'));
 	},
 
 

@@ -98,7 +98,7 @@ Todoyu.CoreHeadlets.QuickCreate = Class.create(Todoyu.Headlet, {
 	onPopupOpened: function(ext, type) {
 		$(this.name).addClassName(type);
 
-		var quickCreateObject	= 'Todoyu.Ext.' + ext + '.QuickCreate' + Todoyu.Helper.ucwords(type);
+		var quickCreateObject	= 'Todoyu.Ext.' + ext + '.QuickCreate' + Todoyu.String.ucwords(type);
 
 		Todoyu.Popups.focusFirstField();
 

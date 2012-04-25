@@ -203,7 +203,7 @@ Todoyu.TimePicker = Class.create({
 	 * @method	updateElement
 	 */
 	updateElement: function() {
-		this.element.value = this.hour + ':' + Todoyu.Helper.twoDigit(this.minute);
+		this.element.value = this.hour + ':' + Todoyu.String.twoDigit(this.minute);
 	},
 
 
@@ -307,7 +307,7 @@ Todoyu.TimePicker = Class.create({
 	 */
 	_insertMinute: function() {
 		for(var i = this.config.rangeMinute[0]; i <= this.config.rangeMinute[1]; i += this.config.stepMinute) {
-			this.divMinute.insert(new Element('div').update(Todoyu.Helper.twoDigit(i)));
+			this.divMinute.insert(new Element('div').update(Todoyu.String.twoDigit(i)));
 		}
 	},
 
@@ -361,7 +361,7 @@ Todoyu.TimePicker = Class.create({
 
 		if( column !== event.element() ) {
 			var type = column.id.split('-').last();
-			var value= Todoyu.Helper.intval(event.element().innerHTML);
+			var value= Todoyu.Number.intval(event.element().innerHTML);
 
 			if( type == 'hour' ) {
 				this.setHour(value);
@@ -461,13 +461,13 @@ Todoyu.TimePicker = Class.create({
 
 		if( value !== '' ) {
 			if( value.indexOf(':') === -1 ) {
-				dur.hour = Todoyu.Helper.intval(value);
+				dur.hour = Todoyu.Number.intval(value);
 			} else {
 				var parts	= value.split(':');
 
 				if( parts.size() === 2 ) {
-					dur.hour = Todoyu.Helper.intval(parts[0]);
-					dur.min = Todoyu.Helper.intval(parts[1]);
+					dur.hour = Todoyu.Number.intval(parts[0]);
+					dur.min = Todoyu.Number.intval(parts[1]);
 				}
 			}
 		}

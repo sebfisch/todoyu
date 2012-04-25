@@ -56,7 +56,7 @@ Todoyu.Time = {
 	timeFormat: function(hours, minutes, seconds, separator) {
 		separator	= separator || ':';
 
-		return Todoyu.Helper.twoDigit(hours) + separator + Todoyu.Helper.twoDigit(minutes) + separator + Todoyu.Helper.twoDigit(seconds);
+		return Todoyu.String.twoDigit(hours) + separator + Todoyu.String.twoDigit(minutes) + separator + Todoyu.String.twoDigit(seconds);
 	},
 
 
@@ -90,10 +90,10 @@ Todoyu.Time = {
 		var hours		= timeParts.hours;
 
 		if( timeParts.hours < 10 && leadingZero) {
-			hours = Todoyu.Helper.twoDigit(timeParts.hours);
+			hours = Todoyu.String.twoDigit(timeParts.hours);
 		}
 
-		return hours + ':' + Todoyu.Helper.twoDigit(timeParts.minutes);
+		return hours + ':' + Todoyu.String.twoDigit(timeParts.minutes);
 	},
 
 
@@ -108,7 +108,7 @@ Todoyu.Time = {
 	parseTimeToSeconds: function(timeString) {
 		var parts	= timeString.stripTags().split(':');
 
-		return Todoyu.Helper.intval(parts[0]) * this.seconds.hour + (Todoyu.Helper.intval(parts[1]) * this.seconds.minute) + Todoyu.Helper.intval(parts[2]);
+		return Todoyu.Number.intval(parts[0]) * this.seconds.hour + (Todoyu.Number.intval(parts[1]) * this.seconds.minute) + Todoyu.Number.intval(parts[2]);
 	},
 
 
@@ -121,7 +121,7 @@ Todoyu.Time = {
 	 * @return	{Object}
 	 */
 	getTimeParts: function(time) {
-		time = Todoyu.Helper.intval(time);
+		time = Todoyu.Number.intval(time);
 
 		var hours	= Math.floor(time / this.seconds.hour);
 		var minutes	= Math.floor((time - hours * this.seconds.hour) / this.seconds.minute);
@@ -295,7 +295,7 @@ Todoyu.Time = {
 	 * @return	{String}
 	 */
 	getDateString: function(date) {
-		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth() + 1) + '-' + date.getDate();
+		return date.getFullYear() + '-' + Todoyu.String.twoDigit(date.getMonth() + 1) + '-' + date.getDate();
 	},
 
 
@@ -312,7 +312,7 @@ Todoyu.Time = {
 			date = new Date(date * 1000);
 		}
 
-		return date.getFullYear() + '-' + Todoyu.Helper.twoDigit(date.getMonth() + 1) + '-' + Todoyu.Helper.twoDigit(date.getDate()) + ' ' + Todoyu.Helper.twoDigit(date.getHours()) + ':' + Todoyu.Helper.twoDigit(date.getMinutes());
+		return date.getFullYear() + '-' + Todoyu.String.twoDigit(date.getMonth() + 1) + '-' + Todoyu.String.twoDigit(date.getDate()) + ' ' + Todoyu.String.twoDigit(date.getHours()) + ':' + Todoyu.String.twoDigit(date.getMinutes());
 	},
 
 

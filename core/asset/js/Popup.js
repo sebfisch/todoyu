@@ -256,7 +256,7 @@ Todoyu.Popup = Class.create(Window, {
 			var button	= this.content.down('button.cancelButton');
 			if( button ) {
 				this.isClosing = true;
-				Todoyu.Helper.fireEvent(button, 'click');
+				Todoyu.Event.fireEvent(button, 'click');
 			}
 		}
 

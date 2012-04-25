@@ -499,7 +499,7 @@ Todoyu.Form = {
 		if( value.match(/^\d+$/) !== null ) {		// Format like "1" => "1:00", also 11, 111, 1111...
 			field.value  = value + ':00';
 		} else if( value.match(/^\:\d{1,2}$/) ) {	// Format like ":30" => "0:30", also ":3", not ":333"
-			field.value  = '0:' + Todoyu.Helper.twoDigit(value.replace(':', ''));
+			field.value  = '0:' + Todoyu.String.twoDigit(value.replace(':', ''));
 		} else if( value.match(/^\d+\:$/) ) {		// Format like "2:" => "2:00", also 22, 222, 2222...
 			field.value  = value + '00';
 		}
@@ -770,7 +770,7 @@ Todoyu.Form = {
 	autoResizeTextArea: function(idElement) {
 		var element		= $(idElement);
 		var content		= $F(element).strip();
-		var numTextRows	= Todoyu.Helper.countLines(content);
+		var numTextRows	= Todoyu.String.countLines(content);
 
 		element.rows = numTextRows < 2 ? 2 : numTextRows+1;
 	},

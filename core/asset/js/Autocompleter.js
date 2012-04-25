@@ -227,7 +227,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 
 			// Fire change event, but prevent internal handling
 		this.ignoreNextChange = true;
-		Todoyu.Helper.fireEvent.bind(Todoyu.Helper, inputField, 'change').delay(0.2);
+		Todoyu.Event.fireEvent.bind(Todoyu.Helper, inputField, 'change').delay(0.2);
 	},
 
 

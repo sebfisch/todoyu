@@ -158,6 +158,18 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 57
 		),
 		array(
+			'file'		=> 'core/asset/js/Event.js',
+			'position'	=> 57
+		),
+		array(
+			'file'		=> 'core/asset/js/Number.js',
+			'position'	=> 57
+		),
+		array(
+			'file'		=> 'core/asset/js/String.js',
+			'position'	=> 57
+		),
+		array(
 			'file'		=> 'core/asset/js/Helper.js',
 			'position'	=> 58
 		),

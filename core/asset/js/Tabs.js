@@ -143,7 +143,7 @@ Todoyu.Tabs = {
 					// Is tab longer than the crop width?
 				if( tabWidth > cropToWidth ) {
 					tabLabelEl	= tab.down('span.labeltext');
-					tabLabel	= Todoyu.Helper.html_entity_decode(tabLabelEl.innerHTML);
+					tabLabel	= Todoyu.String.html_entity_decode(tabLabelEl.innerHTML);
 
 						// Remove postFix if added
 					
@@ -154,7 +154,7 @@ Todoyu.Tabs = {
 						// Shorten label
 					shortenedLabel = tabLabel.substr(0, tabLabel.length - 1).strip();
 						// Update element with label and postfix
-					tabLabelEl.innerHTML = Todoyu.Helper.htmlentities(shortenedLabel + postFix);
+					tabLabelEl.innerHTML = Todoyu.String.htmlentities(shortenedLabel + postFix);
 				}
 			}, this);
 

@@ -536,7 +536,7 @@ Todoyu.FormRecords = Class.create({
 
 		if( ! this.getStorageOption(id) ) {
 			this.storageField.options[this.storageField.length] = new Option(label, id, true, true);
-			Todoyu.Helper.fireEvent(this.storageField, 'change');
+			Todoyu.Event.fireEvent(this.storageField, 'change');
 		}
 	},
 
@@ -553,7 +553,7 @@ Todoyu.FormRecords = Class.create({
 
 		if( option ) {
 			option.remove();
-			Todoyu.Helper.fireEvent(this.storageField, 'change');
+			Todoyu.Event.fireEvent(this.storageField, 'change');
 		}
 	},
 
