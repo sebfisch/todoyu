@@ -50,9 +50,9 @@ class TodoyuCookieLogin {
 
 					// If
 				if( is_array($cookieData) ) {
-					$userAgendHash	= self::getUserAgentShortHash();
+					$userAgentHash	= self::getUserAgentShortHash();
 
-					if( $cookieData['useragentHash'] === $userAgendHash ) {
+					if( $cookieData['useragentHash'] === $userAgentHash ) {
 						if( TodoyuAuth::isValidLogin($cookieData['username'], $cookieData['passhash']) ) {
 							$idPerson = TodoyuContactPersonManager::getPersonIDByUsername($cookieData['username']);
 							TodoyuAuth::login($idPerson);
@@ -68,7 +68,7 @@ class TodoyuCookieLogin {
 					} else {
 						TodoyuLogger::logNotice('Cookie login failed for user [' . $cookieData['username'] . '] (useragent is different than in the encrypted login cookie)', TodoyuLogger::LEVEL_SECURITY);
 						TodoyuLogger::logDebug('Current user agent', '<' . $_SERVER['HTTP_USER_AGENT'] . '>');
-						TodoyuLogger::logDebug('User Agent Hash Compare: expect: <' . $cookieData['useragentHash'] . '>, actual <' . $userAgendHash . '>');
+						TodoyuLogger::logDebug('User Agent Hash Compare: expect: <' . $cookieData['useragentHash'] . '>, actual <' . $userAgentHash . '>');
 					}
 				} else {
 					TodoyuLogger::logNotice('Decrypted cookie date is not an array', TodoyuLogger::LEVEL_ERROR, $cookieData);
