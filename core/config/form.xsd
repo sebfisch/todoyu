@@ -31,6 +31,8 @@
 				<xs:element ref="dateNotBefore" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="dateNotAfter" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="dateAfter" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dateTimeAfter" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dateTimeBefore" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="isNotZero" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="isNotZerotime" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="greaterThan" minOccurs="0" maxOccurs="unbounded"/>
@@ -82,6 +84,26 @@
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="dateAfter">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="field"/>
+				<xs:element ref="allowEmpty" minOccurs="0"/>
+				<xs:element name="allow" type="xs:anyType" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="msg" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dateTimeAfter">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="field"/>
+				<xs:element ref="allowEmpty" minOccurs="0"/>
+				<xs:element name="allow" type="xs:anyType" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="msg" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dateTimeBefore">
 		<xs:complexType>
 			<xs:all>
 				<xs:element ref="field"/>
