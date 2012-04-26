@@ -33,13 +33,14 @@
 				<xs:element ref="dateAfter" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="dateTimeAfter" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="dateTimeBefore" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dateTimeNotAfter" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dateTimeNotBefore" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="isNotZero" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="isNotZerotime" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="greaterThan" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="equals" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="user" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="email" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="dateTimeNotBefore" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="dateInFuture" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="unique" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="goodPassword" minOccurs="0" maxOccurs="unbounded"/>
@@ -134,6 +135,16 @@
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="dateTimeNotBefore">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="field"/>
+				<xs:element ref="allowEmpty" minOccurs="0"/>
+				<xs:element name="allow" type="xs:anyType" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="msg" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dateTimeNotAfter">
 		<xs:complexType>
 			<xs:all>
 				<xs:element ref="field"/>

@@ -85,7 +85,7 @@ class TodoyuValidator {
 	 * @return	String
 	 */
 	public static function isNotEmpty($value) {
-		return trim($value) !== '';
+		return trim($value) !== '' && trim($value) !== '0';
 	}
 
 
