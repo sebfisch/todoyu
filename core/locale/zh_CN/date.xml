@@ -53,4 +53,16 @@
 	<label index="yearly">每年</label>
 	<label index="today">今天</label>
 	<label index="warning.dateformat.invalid">错误的日期格式(保存时将被修改).</label>
+	<label index="dyndate.today">今天</label>
+	<label index="dyndate.tomorrow">明天</label>
+	<label index="dyndate.dayaftertomorrow">后天</label>
+	<label index="dyndate.yesterday">昨天</label>
+	<label index="dyndate.daybeforeyesterday">前天</label>
+	<label index="dyndate.currentweek">本周</label>
+	<label index="dyndate.nextweek">下周</label>
+	<label index="dyndate.lastweek">上周</label>
+	<label index="dyndate.currentmonth">本月</label>
+	<label index="dyndate.currentyear">今年</label>
+	<label index="dyndate.lastyear">去年</label>
+	<label index="dyndate.nextyear">明年</label>
 </labels>

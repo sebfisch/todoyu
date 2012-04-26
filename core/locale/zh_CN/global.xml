@@ -10,6 +10,7 @@
 	<label index="author">作者</label>
 	<label index="title">标题</label>
 	<label index="description">描述</label>
+	<label index="notice">通知</label>
 	<label index="date">日期</label>
 	<label index="quickcreate.title">创建</label>
 	<label index="quickcreate.alltypes.label">所有数据类型:</label>
@@ -23,6 +24,8 @@
 	<label index="deleteRecord">删除 Record</label>
 	<label index="show">显示</label>
 	<label index="showDetails">显示详情</label>
+	<label index="showMore">显示更多</label>
+	<label index="listing.noItems">没有找到.</label>
 	<label index="hide">隐藏</label>
 	<label index="unhide">取消隐藏</label>
 	<label index="rename">更名</label>
@@ -82,10 +85,11 @@
 	<label index="headlet.about.label">关于 todoyu</label>
 	<label index="unknown">n/a</label>
 	<label index="loaderBox.title">正在处理</label>
-    <label index="panelwidget.toggle">打开/关闭页面小工具</label>
+	<label index="panelwidget.toggle">打开/关闭页面小工具</label>
 	<label index="date_update">更新日期</label>
 	<label index="date_create">创建日期</label>
 	<label index="id_person_create">创建人</label>
+	<label index="Total">总共</label>
 	<label index="of">of</label>
 	<label index="public">公开</label>
 	<label index="notpublic">非公开</label>
@@ -100,6 +104,7 @@
 	<label index="log.error">普通错误</label>
 	<label index="log.security">安全问题</label>
 	<label index="log.fatal">安全错误</label>
+	<label index="system">系统</label>
 	<label index="controllerError.oops">Oops!</label>
 	<label index="controllerError.info">todoyu 无法处理这个请求</label>
 	<label index="controllerError.reason">敲错了地址? 请求的内容已删除? 新的控制器? 清空缓存?</label>
