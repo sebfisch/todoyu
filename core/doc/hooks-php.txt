@@ -17,8 +17,13 @@ Event Hooks
 	Cache was cleared
 
 
+#core.loadconfig.{EXT}.{TYPE}
+	An extension config file was loaded automatically
+	Example: core.loadconfig.project.asset
+
+
 #core.renderPage
-	Before page is rendered
+	Before page is rendered. You still can modify the page at this point
 
 
 #core.removeCacheRecord
@@ -61,4 +66,38 @@ Data modification
 
 #core.requestVars
 	Modify request vars before the action dispatcher handles them
-	@param	Array		$requestVars
+	@param	Array		$requestVars	[datavar]
+
+
+#core.javascript.config
+	Collect data for dynamic javascript user config file
+	@param	Integer		$idPerson		[datavar]
+
+
+#core.mail.construct
+	Modify basic configuration for mail object
+	@param	Array		$config			[datavar]
+
+
+#core.mail.setHeadline
+	Modify headline of email
+	@param	String		$headline		[datavar]
+
+
+#core.mail.setSubject
+	Modify subject of email
+	@param	String		$subject		[datavar]
+
+
+#core.mail.addReceiver.email
+	Check receiver email. If return value is false, the address will not be added to the receiver list
+	@param	String		$email			[datavar]
+	@param	Integer		$idPerson
+	@param	TodoyuMail	$mail
+
+
+#core.mail.addReceiver.fullname
+	Modify full name of email receiver
+	@param	String		$fullname		[datavar]
+	@param	Integer		$idPerson
+    @param	TodoyuMail	$mail
