@@ -21,10 +21,10 @@
 	<label index="be_BY">Belarusian (Belarus)</label>
 	<label index="bg_BG">Bulgarian (Bulgaria)</label>
 	<label index="ca_ES">Catalan (Spain)</label>
-	<label index="zh_CN">Chinese (China)</label>
-	<label index="zh_HK">Chinese (Hong Kong)</label>
-	<label index="zh_SG">Chinese (Singapore)</label>
-	<label index="zh_TW">Chinese (Taiwan)</label>
+	<label index="zh_CN">中国的 (中国)</label>
+	<label index="zh_HK">中国的 (香港)</label>
+	<label index="zh_SG">中国的 (新加坡)</label>
+	<label index="zh_TW">中国的 (台湾)</label>
 	<label index="hr_HR">克罗地亚语 (克罗地亚)</label>
 	<label index="cs_CZ">捷克语 (捷克共和国)</label>
 	<label index="da_DK">Danish (Denmark)</label>
