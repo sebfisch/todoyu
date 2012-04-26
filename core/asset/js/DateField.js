@@ -73,13 +73,15 @@ Todoyu.DateField = {
 	 * @param	{Object}			newOptions
 	 */
 	changeCalendarConfig: function(field, newOptions) {
-		var date	= this.getDate(field);
+		var date		= this.getDate(field, false);
 		var oldOptions	= Todoyu.Ui.getCalendarOptions(field);
 		var options		= Object.extend(oldOptions, newOptions);
 
 		Todoyu.Ui.initCalendar(options);
 
-		this.setDate(field, date);
+		if( date ) {
+			this.setDate(field, date);
+		}
 	},
 
 
@@ -151,10 +153,21 @@ Todoyu.DateField = {
 	 *
 	 * @method	getDate
 	 * @param	{String|Element}	field
-	 * @return	{Date}
+	 * @param	{Boolean}			[todayAsDefault]
+	 * @return	{Date|Boolean}
 	 */
-	getDate: function(field) {
-		return Date.parseDate($F(field), this.getFormat(field));
+	getDate: function(field, todayAsDefault) {
+		var fieldValue	= $F(field).strip();
+
+		if( fieldValue === '' ) {
+			if( todayAsDefault ) {
+				return new Date();
+			} else {
+				return false;
+			}
+		} else {
+			return Date.parseDate($F(field), this.getFormat(field));
+		}
 	},
 
 
@@ -181,7 +194,7 @@ Todoyu.DateField = {
 	 * @param	{Number}			minute
 	 */
 	setTime: function(field, hour, minute) {
-		var date	= this.getDate(field);
+		var date	= this.getDate(field, true);
 
 		date.setHours(hour);
 		date.setMinutes(minute);
@@ -201,7 +214,7 @@ Todoyu.DateField = {
 	 * @param	{Number}			day
 	 */
 	setDateByDay: function(field, year, month, day) {
-		var date	= this.getDate(field);
+		var date	= this.getDate(field, true);
 
 		date.setFullYear(year);
 		date.setMonth(month);
