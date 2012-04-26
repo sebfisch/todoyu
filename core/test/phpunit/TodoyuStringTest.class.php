@@ -172,7 +172,7 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$html_2		= 'line1<br>line2<br />line3';
 		$expect_2	= "line1\nline2\nline3";
 		$html_3		= '<ul><li>繁体字</li></ul>';
-		$expect_3	= "繁体字";
+		$expect_3	= "- 繁体字";
 
 		$result_1	= TodoyuString::html2text($html_1);
 		$result_2	= TodoyuString::html2text($html_2, true);
