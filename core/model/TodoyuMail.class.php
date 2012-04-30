@@ -245,7 +245,7 @@ class TodoyuMail extends PHPMailerLite {
 
 
 	/**
-	 * Set text content of the mail
+	 * Set plaintext content of the mail
 	 *
 	 * @param	String		$text
 	 */
