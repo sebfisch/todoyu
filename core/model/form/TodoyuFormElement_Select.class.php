@@ -123,6 +123,8 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	 * Load select options from database
 	 *
 	 * @param	Array		$source
+	 * @deprecated
+	 * @todo	Remove
 	 */
 	protected function initSourceSql(array $source) {
 		$data	= Todoyu::db()->getArray(
