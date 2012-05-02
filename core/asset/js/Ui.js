@@ -365,6 +365,29 @@ Todoyu.Ui = {
 
 
 	/**
+	 * Refresh odd/even classnames of given list items
+	 *
+	 * @method	refreshListItemsParity
+	 * @param	{Element[]}				items
+	 */
+	refreshListItemsParity: function(items) {
+		var parity	= 'odd';
+
+		items.each(function(item) {
+			if( parity === 'odd' ) {
+				item.replaceClassName('even', 'odd');
+				parity	= 'even';
+			} else {
+				item.replaceClassName('odd', 'even');
+				parity	= 'odd';
+			}
+		});
+
+	},
+
+
+
+	/**
 	 * Disable screen by adding todoyu overlay
 	 *
 	 * @method	disableScreen

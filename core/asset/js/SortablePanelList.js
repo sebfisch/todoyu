@@ -122,7 +122,7 @@ Todoyu.SortablePanelList = Class.create({
 
 
 	/**
-	 * Sorting handler
+	 * Method to handle change of sorting
 	 *
 	 * @method	_onSort
 	 * @param	{Function}	callback
@@ -132,7 +132,27 @@ Todoyu.SortablePanelList = Class.create({
 		var group	= listItem.id.split('-').last();
 		var items	= Sortable.sequence(listItem);
 
+		this._refreshItemsParity(group);
+
 		callback(group, items);
+	},
+
+
+
+	/**
+	 * Refresh odd/even classnames of list items
+	 *
+	 * @method	_refreshItemsParity
+	 * @param	{Element[]}		group
+	 */
+	_refreshItemsParity: function(group) {
+			// Get type lists
+		var typeLists	= this.list.select('li.itemList');
+
+			// Refresh items parity of all lists
+		typeLists.each(function(typeList) {
+			Todoyu.Ui.refreshListItemsParity(typeList.select('li'));
+		});
 	},
 
 
