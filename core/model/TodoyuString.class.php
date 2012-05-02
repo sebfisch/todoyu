@@ -33,7 +33,7 @@ class TodoyuString {
 	 * @return	String		Encoding type (one of the values from the list)
 	 */
 	public static function getEncoding($string) {
-		return mb_detect_encoding($string, 'UTF-16,UTF-8,ISO-8859-15,ISO-8859-1,ASCII');
+		return mb_detect_encoding($string, 'UTF-16,UTF-8,GBK,ISO-8859-15,ISO-8859-1,ASCII');
 	}
 
 
