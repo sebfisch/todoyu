@@ -61,7 +61,7 @@
 	<label index="dyndate.currentweek">Aktuelle Woche</label>
 	<label index="dyndate.nextweek">Nächste Woche</label>
 	<label index="dyndate.lastweek">Letzte Woche</label>
-	<label index="dyndate.currentmonth">Aktuelle Woche</label>
+	<label index="dyndate.currentmonth">Aktueller Monat</label>
 	<label index="dyndate.currentyear">Aktuelles Jahr</label>
 	<label index="dyndate.lastyear">Letztes Jahr</label>
 	<label index="dyndate.nextyear">Nächstes Jahr</label>
