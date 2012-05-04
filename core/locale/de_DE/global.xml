@@ -100,7 +100,7 @@
 	<label index="wizard.next">Weiter</label>
 	<label index="log.core">Core Debug Information</label>
 	<label index="log.debug">Debug Information</label>
-	<label index="log.notice">Warnungen</label>
+	<label index="log.notice">Hinweise / Informative Warnungen</label>
 	<label index="log.error">Normale Fehler</label>
 	<label index="log.security">Security Issues</label>
 	<label index="log.fatal">Fatal Errors</label>
