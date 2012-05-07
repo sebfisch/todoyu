@@ -241,7 +241,7 @@
 				<xs:element ref="class" minOccurs="0"/>
 				<xs:element ref="elements" minOccurs="0"/>
 			</xs:all>
-			<xs:attribute type="xs:string" name="name" use="optional"/>
+			<xs:attribute type="xs:string" name="name" use="required"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="required">
@@ -388,8 +388,34 @@
 				<xs:element ref="storeAsDate"/>
 				<xs:element ref="rows"/>
 			</xs:choice>
-			<xs:attribute type="xs:string" name="name" use="optional"/>
-			<xs:attribute type="xs:string" name="type" use="optional"/>
+			<xs:attribute type="xs:string" name="name" use="required"/>
+			<xs:attribute name="type" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="text" />
+						<xs:enumeration value="checkbox" />
+						<xs:enumeration value="select" />
+						<xs:enumeration value="selectgrouped" />
+						<xs:enumeration value="radio" />
+						<xs:enumeration value="textarea" />
+						<xs:enumeration value="RTE" />
+						<xs:enumeration value="date" />
+						<xs:enumeration value="datetime" />
+						<xs:enumeration value="button" />
+						<xs:enumeration value="saveButton" />
+						<xs:enumeration value="cancelButton" />
+						<xs:enumeration value="expandAllButton" />
+						<xs:enumeration value="duration" />
+						<xs:enumeration value="upload" />
+						<xs:enumeration value="textAC" />
+						<xs:enumeration value="comment" />
+						<xs:enumeration value="selectIcon" />
+						<xs:enumeration value="databaseRelation" />
+						<xs:enumeration value="recordsStaff" />
+						<xs:enumeration value="recordsMailCc" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
 			<xs:attribute type="xs:string" name="noWrap" use="optional"/>
 			<xs:attribute type="xs:string" name="noStorage" use="optional"/>
 			<xs:attribute type="xs:string" name="value" use="optional"/>
@@ -404,7 +430,7 @@
 				<xs:element ref="lazyInit" minOccurs="0"/>
 				<xs:element type="xs:anyType" name="option" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
-			<xs:attribute type="xs:string" name="type" use="optional"/>
+			<xs:attribute type="xs:string" name="type" use="required"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="legend" type="xs:string"/>
