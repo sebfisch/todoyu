@@ -146,7 +146,7 @@ class TodoyuSql {
 	 */
 	public static function buildInListQueryPart(array $values, $fieldName, $isInt = true, $negate = false, $quote = true) {
 		if( sizeof($values) === 0 ) {
-			return '0'; // no values = never successful query
+			return $negate ? '1' : '0'; // no values: negate = always ok, normal = no result
 		}
 		$values 	= array_unique($values);
 		$fieldName= self::backtick($fieldName);
