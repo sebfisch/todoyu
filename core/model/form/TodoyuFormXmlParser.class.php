@@ -31,21 +31,21 @@ class TodoyuFormXmlParser {
 	 *
 	 * @var	TodoyuForm
 	 */
-	private static $form;
+	private $form;
 
 	/**
 	 * File where form structure is defined
 	 *
 	 * @var	String
 	 */
-	private static $xmlFile;
+	private $xmlFile;
 
 	/**
 	 * XML object to process
 	 *
 	 * @var	SimpleXMLElement
 	 */
-	private static $xml;
+	private $xml;
 
 
 
@@ -55,15 +55,30 @@ class TodoyuFormXmlParser {
 	 * @param	TodoyuForm		$form
 	 * @param	String			$xmlFile
 	 * @param	Array			$preParseMarkers
-	 * @return	Boolean
+	 * @return	TodoyuForm
 	 */
-	public static function parse($form, $xmlFile, $preParseMarkers = array()) {
-		self::$form		= $form;
-		self::$xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
+	public static function parse(TodoyuForm $form, $xmlFile, $preParseMarkers = array()) {
+		$xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
+		$parser		= new self($xmlFile, $preParseMarkers);
 
-		if( ! is_file($xmlFile) ) {
-			TodoyuLogger::logFatal('Form XML file not found (\'' . self::$xmlFile . '\')');
-			return false;
+		$parser->addElementsToForm($form);
+
+		return $form;
+	}
+
+
+	/**
+	 * Initialize
+	 *
+	 * @param	String		$xmlFile
+	 * @param	Array		$preParseMarkers
+	 */
+	private function __construct($xmlFile, $preParseMarkers = array()) {
+		$this->xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
+
+		if( !is_file($xmlFile) ) {
+			TodoyuLogger::logFatal('Form XML file not found (' . $xmlFile . ')');
+			return;
 		}
 
 		if( sizeof($preParseMarkers) > 0 ) {
@@ -71,33 +86,41 @@ class TodoyuFormXmlParser {
 			foreach($preParseMarkers as $key => $value) {
 				$xmlString	= str_replace($key, $value, $xmlString);
 			}
-			self::$xml	= simplexml_load_string($xmlString, null, LIBXML_NOCDATA);
+			$this->xml	= simplexml_load_string($xmlString, null, LIBXML_NOCDATA);
 		} else {
 				// Load xml file as simple xml object
-			self::$xml	= simplexml_load_file($xmlFile, null, LIBXML_NOCDATA);
+			$this->xml	= simplexml_load_file($xmlFile, null, LIBXML_NOCDATA);
 		}
+	}
 
 
+
+	/**
+	 * All elements of xml structure to form object
+	 *
+	 * @param	TodoyuForm		$form
+	 */
+	private function addElementsToForm(TodoyuForm $form) {
+		$this->form = $form;
 
 			// Parse form attributes
-		self::parseAttributes();
+		$this->parseAttributes();
 			// Parse hidden fields
-		self::parseHiddenFields();
+		$this->parseHiddenFields();
 			// Parse main fieldsets
-		self::parseTopFieldsets();
-
-		return true;
+		$this->parseTopFieldsets();
 	}
 
 
 
 	/**
 	 * Parse form attributes from xml
+	 *
 	 */
-	private static function parseAttributes() {
-		if( self::$xml->attributes ) {
-			foreach( self::$xml->attributes->attribute as $attribute ) {
-				self::$form->setAttribute((string)$attribute['name'], (string)$attribute);
+	private function parseAttributes() {
+		if( $this->xml->attributes ) {
+			foreach( $this->xml->attributes->attribute as $attribute ) {
+				$this->form->setAttribute((string)$attribute['name'], (string)$attribute);
 			}
 		}
 	}
@@ -106,11 +129,12 @@ class TodoyuFormXmlParser {
 
 	/**
 	 * Parse hidden fields from xml
+	 *
 	 */
-	private static function parseHiddenFields() {
-		if( self::$xml->hiddenFields ) {
-			foreach( self::$xml->hiddenFields->field as $field ) {
-				self::$form->addHiddenField((string)$field['name'], (string)$field['value'], ((string)$field['noStorage']==='true'), ((string)$field['noWrap']==='true'));
+	private function parseHiddenFields() {
+		if( $this->xml->hiddenFields ) {
+			foreach( $this->xml->hiddenFields->field as $field ) {
+				$this->form->addHiddenField((string)$field['name'], (string)$field['value'], ((string)$field['noStorage']==='true'), ((string)$field['noWrap']==='true'));
 			}
 		}
 	}
@@ -119,13 +143,14 @@ class TodoyuFormXmlParser {
 
 	/**
 	 * Parse fieldsets with their fields from XML
+	 *
 	 */
-	private static function parseTopFieldsets() {
-		$children	= self::$xml->fieldsets->children();
+	private function parseTopFieldsets() {
+		$children	= $this->xml->fieldsets->children();
 
 		if( is_object($children) ) {
 			foreach($children as $fieldset) {
-				self::addFieldset(self::$form, $fieldset);
+				$this->addFieldset($this->form, $fieldset);
 			}
 		}
 	}
@@ -137,9 +162,9 @@ class TodoyuFormXmlParser {
 	 *
 	 * @param	TodoyuFormFieldset			$parentElement
 	 * @param	SimpleXmlElement	$fieldsetXmlObj
-	 * @return	Boolean|Void
+	 * @return	Boolean
 	 */
-	private static function addFieldset(&$parentElement, SimpleXmlElement $fieldsetXmlObj) {
+	private function addFieldset(&$parentElement, SimpleXmlElement $fieldsetXmlObj) {
 			// If restricted to internal persons
 		if( $fieldsetXmlObj->restrictInternal ) {
 			if( ! Todoyu::person()->isAdmin() && ! Todoyu::person()->isInternal() ) {
@@ -152,10 +177,12 @@ class TodoyuFormXmlParser {
 			$config	= TodoyuArray::fromSimpleXML($fieldsetXmlObj);
 
 				// Check if fieldset has restrictions and if they match
-			if( ! self::isAllowed($config) ) {
+			if( ! $this->isAllowed($config) ) {
 				return false;
 			}
 		}
+
+
 
 		$fieldset = $parentElement->addFieldset((string)$fieldsetXmlObj['name']);
 
@@ -174,11 +201,11 @@ class TodoyuFormXmlParser {
 			foreach( $fieldsetXmlObj->elements->children() as $nodeName => $element ) {
 				switch( $nodeName ) {
 					case 'fieldset':
-						self::addFieldset($fieldset, $element);
+						$this->addFieldset($fieldset, $element);
 						break;
 
 					case 'field':
-						self::addField($fieldset, $element);
+						$this->addField($fieldset, $element);
 						break;
 
 					default:
@@ -186,6 +213,8 @@ class TodoyuFormXmlParser {
 				}
 			}
 		}
+
+		return true;
 	}
 
 
@@ -193,25 +222,25 @@ class TodoyuFormXmlParser {
 	/**
 	 * Add a field to a fieldset from an XML node
 	 *
-	 * @param	TodoyuFormFieldset			$fieldset
-	 * @param	SimpleXmlElement	$fieldXmlObj
+	 * @param	TodoyuFormFieldset		$parentFieldset
+	 * @param	SimpleXmlElement		$fieldXmlObj
 	 * @return	Boolean
 	 */
-	private static function addField(TodoyuFormFieldset $fieldset, SimpleXmlElement $fieldXmlObj) {
+	private function addField(TodoyuFormFieldset $parentFieldset, SimpleXmlElement $fieldXmlObj) {
 		$type	= trim($fieldXmlObj['type']);
 		$name	= trim($fieldXmlObj['name']);
 
 		$config	= TodoyuArray::fromSimpleXML($fieldXmlObj);
 
 			// Check if field has restrictions and if they match
-		if( ! self::isAllowed($config) ) {
+		if( ! $this->isAllowed($config) ) {
 			return false;
 		}
 
-		$field	= TodoyuFormFactory::createField($type, $name, $fieldset, $config);
+		$field	= TodoyuFormFactory::createField($type, $name, $parentFieldset, $config);
 
 		if( $field instanceof TodoyuFormElement ) {
-			$fieldset->addField($name, $field);
+			$parentFieldset->addField($name, $field);
 			return true;
 		} else {
 			TodoyuLogger::logError('Can\'t create field object. Invalid config?', $config);
@@ -228,7 +257,7 @@ class TodoyuFormXmlParser {
 	 * @param	Array		$config			Field config
 	 * @return	Boolean
 	 */
-	private static function isAllowed(array $config) {
+	private function isAllowed(array $config) {
 		if( isset($config['restrictAdmin']) ) {
 			return TodoyuAuth::isAdmin();
 		} elseif( isset($config['restrict']) ) {
