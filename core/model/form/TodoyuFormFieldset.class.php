@@ -214,10 +214,25 @@ class TodoyuFormFieldset implements ArrayAccess {
 	/**
 	 * Set fieldset class(es)
 	 *
-	 * @param	String		$class
+	 * @param	String		$className
 	 */
-	public function setClass($class) {
-		$this->setAttribute('class', $class);
+	public function setClass($className) {
+		$this->setAttribute('class', $className);
+	}
+
+
+
+	/**
+	 * Add class name
+	 *
+	 * @param	String		$classNames
+	 */
+	public function addClass($classNames) {
+		$addClasses	= TodoyuArray::trimExplode(' ', $classNames);
+		$classes	= TodoyuArray::trimExplode(' ', $this->getAttribute('class'));
+		$classes	= TodoyuArray::mergeUnique($addClasses, $classes);
+
+		$this->setClass(implode(' ', $classes));
 	}
 
 

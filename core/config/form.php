@@ -105,6 +105,11 @@ Todoyu::$CONFIG['FORM']['TYPES']['duration'] = array(
 	'template'	=> 'core/view/form/FormElement_Duration.tmpl'
 );
 
+Todoyu::$CONFIG['FORM']['TYPES']['time'] = array(
+	'class'		=> 'TodoyuFormElement_Time',
+	'template'	=> 'core/view/form/FormElement_Duration.tmpl'
+);
+
 Todoyu::$CONFIG['FORM']['TYPES']['RTE'] = array(
 	'class'		=> 'TodoyuFormElement_RTE',
 	'template'	=> 'core/view/form/FormElement_RTE.tmpl'

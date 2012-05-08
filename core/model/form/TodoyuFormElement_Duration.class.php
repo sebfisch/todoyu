@@ -42,6 +42,18 @@ class TodoyuFormElement_Duration extends TodoyuFormElement_Time {
 
 
 	/**
+	 * Initialize js config for time picker
+	 *
+	 */
+	protected function initJsConfig() {
+		$this->setJsConfig(array(
+			'rangeHour' => array(0,99)
+		));
+	}
+
+
+
+	/**
 	 * Set field value (seconds)
 	 *
 	 * @param	Mixed		$value
@@ -55,7 +67,6 @@ class TodoyuFormElement_Duration extends TodoyuFormElement_Time {
 
 		parent::setValue($value);
 	}
-
 
 }
 

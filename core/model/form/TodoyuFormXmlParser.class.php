@@ -193,7 +193,7 @@ class TodoyuFormXmlParser {
 
 			// Set class if available
 		if( $fieldsetXmlObj->class ) {
-			$fieldset->setClass((string)$fieldsetXmlObj->class);
+			$fieldset->addClass((string)$fieldsetXmlObj->class);
 		}
 
 			// If fieldset has an "elements" tag, add all elements

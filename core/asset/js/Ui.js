@@ -612,10 +612,7 @@ Todoyu.Ui = {
 	 * @return	Todoyu.TimePicker
 	 */
 	showDurationPicker: function(idElement, config) {
-//		config = $H({
-//			rangeHour:		[0,99],
-//			rangeMinute:	[0,55]
-//		}).merge(config || {}).toObject();
+		config	= config || {};
 
 			// Form element is part of a dialog? close picker when dialog is closed
 		var parentDialog	= $(idElement).up('.dialog');
@@ -623,7 +620,7 @@ Todoyu.Ui = {
 			parentDialog.on('close', this.hideDurationPicker.bind(this, idElement));
 		}
 
-		return new Todoyu.TimePicker(idElement);
+		return new Todoyu.TimePicker(idElement, config);
 	},
 
 

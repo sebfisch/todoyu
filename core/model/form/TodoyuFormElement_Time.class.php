@@ -46,6 +46,55 @@ class TodoyuFormElement_Time extends TodoyuFormElement_Text {
 	 */
 	protected function init() {
 		$this->setInputType('text');
+		$this->initJsConfig();
+	}
+
+
+
+	/**
+	 * Initialize js config
+	 *
+	 */
+	protected function initJsConfig() {
+		$this->setJsConfig(array(
+			'rangeHour' => array(0,23)
+		));
+	}
+
+
+	/**
+	 * Set js config for time picker
+	 *
+	 * @param	Array	$jsConfig
+	 */
+	protected function setJsConfig(array $jsConfig) {
+		$this->config['jsConfig'] = $jsConfig;
+	}
+
+
+	/**
+	 * Get js config for timepicker
+	 *
+	 * @return	Array
+	 */
+	public function getJsConfig() {
+		return $this->config['jsConfig'];
+	}
+
+
+
+	/**
+	 * Get element data
+	 * Add js config
+	 *
+	 * @return	Array
+	 */
+	public function getData() {
+		$data	= parent::getData();
+
+		$data['jsConfig'] = json_encode($this->getJsConfig());
+
+		return $data;
 	}
 
 

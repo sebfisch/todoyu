@@ -406,13 +406,15 @@
 						<xs:enumeration value="cancelButton" />
 						<xs:enumeration value="expandAllButton" />
 						<xs:enumeration value="duration" />
+						<xs:enumeration value="time" />
 						<xs:enumeration value="upload" />
 						<xs:enumeration value="textAC" />
 						<xs:enumeration value="comment" />
 						<xs:enumeration value="selectIcon" />
 						<xs:enumeration value="databaseRelation" />
 						<xs:enumeration value="recordsStaff" />
-						<xs:enumeration value="recordsMailCc" />
+						<xs:enumeration value="recordsPerson" />
+						<xs:enumeration value="recordsMailAddress" />
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:attribute>
