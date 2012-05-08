@@ -377,7 +377,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	/**
 	 * Get form element label
 	 *
-	 * @return unknown
+	 * @return	String
 	 */
 	public function getLabel() {
 		return $this->getAttribute('label');
