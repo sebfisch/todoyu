@@ -5,7 +5,7 @@
 	{/if}
 	{foreach $options label group}
 		{if $label != "none"}
-			<optgroup label="{$label}">
+			<optgroup label="{Label $label}">
 		{/if}
 		{foreach $group option}
 			{$isSelected = false}
