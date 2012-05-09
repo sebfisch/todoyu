@@ -1,5 +1,8 @@
 todoyu core changelog
 
+core 2.3.0 - not released yet
+	*
+
 core 2.2.0 - 2012-05-03
 	* Added: Parity of list items in widgets is refreshed on drop/resort
 	* Added: Balloon info rendering, style and JS
