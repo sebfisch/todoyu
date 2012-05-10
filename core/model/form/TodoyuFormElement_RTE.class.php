@@ -52,7 +52,7 @@ class TodoyuFormElement_RTE extends TodoyuFormElement_Textarea {
 		$config			= array();
 
 			// Add own callback to focus the active editor (auto_focus fails because of a bug)
-		if( $this->isFirstElement() && TodoyuRequest::isAjaxRequest() ) {
+		if( TodoyuRequest::isAjaxRequest() ) {
 			$config['focus'] = true;
 		}
 

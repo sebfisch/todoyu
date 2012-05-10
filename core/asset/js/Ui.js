@@ -715,7 +715,7 @@ Todoyu.Ui = {
 
 		tinyMCE.init(options);
 
-		if( config.focus ) {
+		if( config.focus && Todoyu.Form.isFirstInputInForm(idElement) ) {
 			this.setFocusOnActiveRTE.bind(this).delay(2);
 		}
 	},

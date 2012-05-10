@@ -1001,8 +1001,11 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 	/**
-	 * Check whether current elemenet is first element in form
+	 * Check whether current element is first element in form
 	 *
+	 * @deprecated
+	 * @todo	Remove, because the check fails when a hook inserts fields before. Or fix it.
+	 * @notice	We have a solution in js: Todoyu.Form.isFirstInputInForm()
 	 * @return	Boolean
 	 */
 	public function isFirstElement() {

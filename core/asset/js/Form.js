@@ -828,6 +828,30 @@ Todoyu.Form = {
 				}
 			}
 		}
+	},
+
+
+
+	/**
+	 * Check whether element is first input in form
+	 * Ignore hidden fields
+	 *
+	 * @param	{String}	idElement
+	 * @return	{Boolean}
+	 */
+	isFirstInputInForm: function(idElement) {
+		var element = $(idElement);
+
+		if( element ) {
+			var firstElement = element.up('form').down(':input[type!=hidden]');
+
+			if( firstElement ) {
+				return firstElement.id === idElement;
+			}
+		}
+
+		return false;
 	}
+
 
 };
