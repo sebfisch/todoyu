@@ -135,10 +135,9 @@ class TodoyuForm implements ArrayAccess {
 	 * Initialize form by parsing the XML file to load elements
 	 *
 	 * @param	String		$xmlFile		Path to XML form definition
-	 * @param	Array		$preParseValues	Optional markers to be initially replaced inside the XML before parsing
 	 * @param	Integer		$idRecord
 	 */
-	public function __construct($xmlFile, $preParseValues = array(), $idRecord = 0) {
+	public function __construct($xmlFile, $idRecord = 0) {
 		$this->xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
 
 		$this->setRecordID($idRecord);
@@ -147,7 +146,7 @@ class TodoyuForm implements ArrayAccess {
 		TodoyuExtensions::loadAllForm();
 
 			// Parse the XML file into this form
-		TodoyuFormXmlParser::parse($this, $this->xmlFile, $preParseValues);
+		TodoyuFormXmlParser::parse($this, $this->xmlFile);
 	}
 
 

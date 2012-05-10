@@ -53,13 +53,12 @@ class TodoyuFormXmlParser {
 	 * Parse form definition into a form object
 	 *
 	 * @param	TodoyuForm		$form
-	 * @param	String			$xmlFile
-	 * @param	Array			$preParseMarkers
+	 * @param	String			$xmlPath
 	 * @return	TodoyuForm
 	 */
-	public static function parse(TodoyuForm $form, $xmlFile, $preParseMarkers = array()) {
-		$xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
-		$parser		= new self($xmlFile, $preParseMarkers);
+	public static function parse(TodoyuForm $form, $xmlPath) {
+		$xmlPath	= TodoyuFileManager::pathAbsolute($xmlPath);
+		$parser		= new self($xmlPath);
 
 		$parser->addElementsToForm($form);
 
@@ -70,27 +69,19 @@ class TodoyuFormXmlParser {
 	/**
 	 * Initialize
 	 *
-	 * @param	String		$xmlFile
-	 * @param	Array		$preParseMarkers
+	 * @param	String		$xmlPath
 	 */
-	private function __construct($xmlFile, $preParseMarkers = array()) {
-		$this->xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
+	private function __construct($xmlPath) {
+		$this->xmlFile	= TodoyuFileManager::pathAbsolute($xmlPath);
 
-		if( !is_file($xmlFile) ) {
-			TodoyuLogger::logFatal('Form XML file not found (' . $xmlFile . ')');
+		if( !is_file($xmlPath) ) {
+			TodoyuLogger::logFatal('Form XML file not found (' . $xmlPath . ')');
 			return;
 		}
 
-		if( sizeof($preParseMarkers) > 0 ) {
-			$xmlString	= file_get_contents($xmlFile);
-			foreach($preParseMarkers as $key => $value) {
-				$xmlString	= str_replace($key, $value, $xmlString);
-			}
-			$this->xml	= simplexml_load_string($xmlString, null, LIBXML_NOCDATA);
-		} else {
-				// Load xml file as simple xml object
-			$this->xml	= simplexml_load_file($xmlFile, null, LIBXML_NOCDATA);
-		}
+			// Load xml file as simple xml object
+		$this->xml	= simplexml_load_file($xmlPath, null, LIBXML_NOCDATA);
+
 	}
 
 
