@@ -682,7 +682,7 @@ class TodoyuDatabase {
 	 * @param	String			$orderBy
 	 * @param	String			$limit
 	 * @param	String|Boolean	$indexField
-	 * @return	Array
+	 * @return	Array[]
 	 */
 	public function getArray($fields, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '', $indexField = false) {
 		$cacheID	= sha1(serialize(func_get_args()));
