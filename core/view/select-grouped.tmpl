@@ -14,7 +14,7 @@
 				{$value	= unsetArrayValue($value, $option.value)}
 			{/if}
 			<option value="{htmlencode $option.value}" {if $option.class}class="{$option.class}"{/if} {if $isSelected} selected="selected"{/if} {if $option.disabled}disabled="disabled"{/if}>
-				{$option.label}
+				{Label $option.label}
 			</option>
 		{/foreach}
 		{if $label != "none"}
