@@ -16,7 +16,7 @@ core 2.2.1 - not released yet
 	* Changed: Added $formData as default $params value in form instantiation
 	* Changed: Parse label for grouped select options
 	* Library: Highcharts 2.2.3
-	* Library: tinyMCE 3.5
+	* Library: tinyMCE 3.5.0.1
 
 core 2.2.0 - 2012-05-03
 	* Added: Parity of list items in widgets is refreshed on drop/resort
