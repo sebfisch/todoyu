@@ -408,7 +408,7 @@ class TodoyuForm implements ArrayAccess {
 	 * @param	TodoyuFormElement	$field
 	 */
 	protected function checkRequiredFields($field) {
-		if( $field->hasAttribute('required') ) {
+		if( $field->isRequired() ) {
 			if( ! TodoyuValidator::isNotEmpty($this->formdata[$field->getName()]) ) {
 				$this->invalidFields[$field->getName()] = true;
 				$field->setAttribute('errorLabel', 'core.form.field.isrequired');

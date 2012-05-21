@@ -1,7 +1,22 @@
 todoyu core changelog
 
-core 2.3.0 - not released yet
-	*
+core 2.2.1 - not released yet
+	* Bugfix: TodoyuSql::buildInListQueryPart() value when negated and input is empty
+	* Bugfix: Duration Pickers configuration failed
+	* Bugfix: Class for fieldset didn't work properly/clean
+	* Bugfix: isRequired() checks now for available field and for false value
+	* Added: Form element time was not available
+	* Added: Todoyu.Form.isFirstInputInForm()
+	* Added: TodoyuFormElement::removeAttribute()
+	* Changed: Use js version instead of php the check for the first input in form
+	* Changed: Update form XSD validation to match know field types only
+	* Changed: Created instances for parsing form xml files to prevent overlapping when multiple forms are parsed parallel
+	* Changed: Group label of selectgrouped is now parsed as label
+	* Changed: Removed unused parameter $preParseValues from form instantiation
+	* Changed: Added $formData as default $params value in form instantiation
+	* Changed: Parse label for grouped select options
+	* Library: Highcharts 2.2.3
+	* Library: tinyMCE 3.5
 
 core 2.2.0 - 2012-05-03
 	* Added: Parity of list items in widgets is refreshed on drop/resort

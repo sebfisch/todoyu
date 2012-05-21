@@ -201,7 +201,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 //		$this->config['label']			= $this->config['label'] ? TodoyuString::getLabel($this->config['label']) : '&nbsp;';
 		$this->config['containerClass']	= 'type' . ucfirst($this->type) . ' fieldname' . ucfirst(str_replace('_', '', $this->name));
 		$this->config['inputClass']		= $this->type;
-		$this->config['required']		= $this->hasAttribute('required');
+		$this->config['required']		= $this->isRequired();
 		$this->config['hasErrorClass']	= $this->hasAttribute('hasError') ? 'fieldHasError':'';
 		$this->config['hasIconClass']	= $this->hasAttribute('hasIcon') ? 'hasIcon icon' . ucfirst($this->name):'';
 		$this->config['wizard']			= $this->hasAttribute('wizard') ? $this->getWizardConfiguration() : false;
@@ -266,7 +266,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @param	Boolean		$required
 	 */
 	public function setRequired($required = true) {
-		$this->setAttribute('required', $required?true:false);
+		$this->setAttribute('required', !!$required);
 	}
 
 
@@ -335,6 +335,17 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 */
 	public function getAttribute($name) {
 		return $this->config[$name];
+	}
+
+
+
+	/**
+	 * Remove attribute
+	 *
+	 * @param	String		$name
+	 */
+	public function removeAttribute($name) {
+		unset($this->config[$name]);
 	}
 
 
@@ -778,7 +789,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @return	Boolean
 	 */
 	public function isRequired() {
-		return $this->hasAttribute('required');
+		return $this->hasAttribute('required') && $this->getAttribute('required') !== false;
 	}
 
 
