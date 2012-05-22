@@ -58,10 +58,13 @@ class TodoyuContentItemTabPreferences {
 	/**
 	 * Save active tab in project
 	 *
+	 * @param	String		$extKey
+	 * @param	String		$itemKey
 	 * @param	Integer		$idItem
 	 * @param	String		$tabKey
 	 */
-	public static function saveActiveTab($extID, $itemKey, $idItem, $tabKey) {
+	public static function saveActiveTab($extKey, $itemKey, $idItem, $tabKey) {
+		$extID		= TodoyuExtensions::getExtID($extKey);
 		$idItem		= intval($idItem);
 		$preference	= $itemKey . '-tab';
 
