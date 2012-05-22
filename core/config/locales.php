@@ -52,7 +52,7 @@ Todoyu::$CONFIG['LOCALE']['SYSTEMLOCALES'] = array(
 	'ja_JP' => array('ja_JP', 'ja', 'ja_JP.eucjp', 'ja_JP.ujis', 'japanese', 'japanese.euc'), // Japanese
 	'sl_SI'	=> array('sl_SI.utf8'),
 	'zh_TW' => array('zh_TW', 'tw', 'Taiwan_Traditional_Chinese'), // Taiwan Traditional Chinese
-	'pl_PL' => array('pl_PL', 'pl_PL.utf8'), // Polish
+	'pl_PL' => array('pl_PL', 'pl_PL.utf8', 'Polish_Poland.1250'), // Polish
 	'zh_CN' => array('zh_CN', 'zh_CN.utf8') // Chinese
 );
 
