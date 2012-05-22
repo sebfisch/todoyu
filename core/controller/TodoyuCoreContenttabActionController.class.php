@@ -19,10 +19,19 @@
  *****************************************************************************/
 
 
+/**
+ * Controller to load tabs in content area generic
+ *
+ * @package		Todoyu
+ * @subpackage	Core
+ */
 class TodoyuCoreContenttabActionController extends TodoyuActionController {
 
 	/**
+	 * Load tab
+	 *
 	 * @param	Array		$params
+	 * @return	String
 	 */
 	public function tabloadAction(array $params) {
 		$idItem		= intval($params['idItem']);
@@ -38,6 +47,8 @@ class TodoyuCoreContenttabActionController extends TodoyuActionController {
 
 
 	/**
+	 * Select tab
+	 *
 	 * @param	Array		$params
 	 */
 	public function tabselectedAction(array $params) {
