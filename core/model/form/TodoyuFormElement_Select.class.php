@@ -398,6 +398,17 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 		return ! empty($firstValue);
 	}
 
+
+
+	/**
+	 * Set please select label which replaces the default text 'please select'
+	 *
+	 * @param	String		$label
+	 */
+	public function setPleaseSelectLabel($label) {
+		$this->setAttribute('pleaseSelectLabel', $label);
+	}
+
 }
 
 ?>
