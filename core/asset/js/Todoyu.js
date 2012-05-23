@@ -128,9 +128,9 @@ var Todoyu = {
 	initConsole: function() {
 		if( !window.console ) {
 			window.console = {
-				log:	function(){},
-				info:	function(){},
-				warn:	function(){}
+				log:	function(msg){},
+				info:	function(msg){},
+				warn:	function(msg){}
 			};
 		}
 	},
