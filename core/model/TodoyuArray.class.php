@@ -885,8 +885,8 @@ class TodoyuArray {
 		$new = array();
 
 		foreach($array as $index => $item) {
-			$item['_oldIndex'] = $index;
-			$new[$item[$fieldName]] = $item;
+			$item['_oldIndex']		= $index;
+			$new[$item[$fieldName]]	= $item;
 		}
 
 		return $new;
