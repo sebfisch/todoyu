@@ -1077,6 +1077,50 @@ class TodoyuFileManager {
 		return $elements;
 	}
 
+
+
+	/**
+	 * Detect mime type of a file
+	 * If mime_content_type() is not available, try to guess it by file extension
+	 *
+	 * @param	String			$pathFile
+	 * @param	String|null		$fileName
+	 * @return	String			Empty if nothing found
+	 */
+	public static function getMimeType($pathFile, $fileName = null) {
+		$pathFile	= self::pathAbsolute($pathFile);
+
+		if( function_exists('mime_content_type') ) {
+			return mime_content_type($pathFile);
+		} elseif( !is_null($fileName) ) {
+			$extension = pathinfo($fileName, PATHINFO_EXTENSION);
+
+			return self::getMimeTypeByFileExtension($extension);
+		} else {
+			return '';
+		}
+	}
+
+
+
+	/**
+	 * Try to guess the mime type by extension
+	 *
+	 * @param	String		$extension
+	 * @return	String		Mime type
+	 */
+	private static function getMimeTypeByFileExtension($extension) {
+		require_once( PATH_CONFIG . '/mime.php' );
+
+		$extension	= trim(strtolower(str_replace('.', '', $extension)));
+
+		if( isset(Todoyu::$CONFIG['mimeTypes'][$extension]) ) {
+			return Todoyu::$CONFIG['mimeTypes'][$extension];
+		} else {
+			return '';
+		}
+	}
+
 }
 
 ?>
