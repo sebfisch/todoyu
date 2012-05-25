@@ -69,6 +69,39 @@ class TodoyuFormElement_Button extends TodoyuFormElement {
 
 
 	/**
+	 * Set button text
+	 *
+	 * @param	String		$label
+	 */
+	public function setText($label) {
+		$this->setAttribute('text', $label);
+	}
+
+
+
+	/**
+	 * Set class
+	 *
+	 * @param	String		$class
+	 */
+	public function setClass($class) {
+		$this->setAttribute('class', $class);
+	}
+
+
+
+	/**
+	 * Set onClick javascript action
+	 *
+	 * @param	$onClickAction
+	 */
+	public function setOnClick($onClickAction) {
+		$this->setAttribute('onclick', $onClickAction);
+	}
+
+
+
+	/**
 	 * Set button type
 	 *
 	 * @param	String		$type		A valid button type (button,cancel,submit)

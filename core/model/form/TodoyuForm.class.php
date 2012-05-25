@@ -807,6 +807,25 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
+	 * Set action url
+	 *
+	 * @param	String		$ext
+	 * @param	String		$controller
+	 * @param	String		$action
+	 */
+	public function setActionUrl($ext, $controller, $action = '') {
+		$url = TodoyuString::buildUrl(array(
+			'ext'		=> $ext,
+			'controller'	=> $controller,
+			'action'		=> $action
+		));
+
+		$this->setAction($url);
+	}
+
+
+
+	/**
 	 * Set method attribute
 	 *
 	 * @param	String		$method

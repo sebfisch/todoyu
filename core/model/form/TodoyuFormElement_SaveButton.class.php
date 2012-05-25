@@ -43,11 +43,11 @@ class TodoyuFormElement_SaveButton extends TodoyuFormElement_Button {
 	 * Init: Set default values for save button
 	 */
 	protected function init() {
-		if( ! $this->hasAttribute('text') ) {
-			$this->setAttribute('text', 'core.form.field.save');
+		if( !$this->hasAttribute('text') ) {
+			$this->setText('core.form.field.save');
 		}
-		if( ! $this->hasAttribute('class') ) {
-			$this->setAttribute('class', 'save');
+		if( !$this->hasAttribute('class') ) {
+			$this->setClass('save');
 		}
 
 		parent::init();
