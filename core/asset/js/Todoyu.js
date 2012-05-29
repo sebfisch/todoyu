@@ -348,7 +348,7 @@ var Todoyu = {
 	 *
 	 * @method	notifyError
 	 * @param	{String}		message
-	 * @param	{String}		identifier
+	 * @param	{String}		[identifier]
 	 */
 	notifyError: function(message, identifier) {
 		Todoyu.Notification.notifyError(message, identifier);

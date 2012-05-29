@@ -85,9 +85,9 @@ Todoyu.Notification = {
 	 * @method	notify
 	 * @param	{String}		type
 	 * @param	{String}		message
-	 * @param	{Boolean}		sticky			Don't hide note
-	 * @param	{Number}		delay			Overwrite default delay time
-	 * @param	{String}		identifier		Optional identifier to remove preceding notifications of the same event
+	 * @param	{Boolean}		[sticky]		Don't hide note
+	 * @param	{Number}		[delay]			Overwrite default delay time
+	 * @param	{String}		[identifier]	Optional identifier to remove preceding notifications of the same event
 	 */
 	notify: function(type, message, sticky, delay, identifier) {
 		delay			= delay || this.closeDelay;
@@ -175,9 +175,9 @@ Todoyu.Notification = {
 	 *
 	 * @method	notifyInfo
 	 * @param	{String}		message
-	 * @param	{Boolean}		sticky
-	 * @param	{Number}		delay
-	 * @param	{String}		identifier
+	 * @param	{Boolean}		[sticky]
+	 * @param	{Number}		[delay]
+	 * @param	{String}		[identifier]
 	 */
 	notifyInfo: function(message, sticky, delay, identifier) {
 		this.notify(this.INFO, message, sticky, delay, identifier);
@@ -190,7 +190,7 @@ Todoyu.Notification = {
 	 *
 	 * @method	notifyError
 	 * @param	{String}		message
-	 * @param	{String}		identifier
+	 * @param	{String}		[identifier]
 	 */
 	notifyError: function(message, identifier) {
 		this.notify(this.ERROR, message, true, this.closeDelay, identifier);
@@ -203,9 +203,9 @@ Todoyu.Notification = {
 	 *
 	 * @method	notifySuccess
 	 * @param	{String}		message
-	 * @param	{Boolean}		sticky
-	 * @param	{Number}		delay
-	 * @param	{String}		identifier
+	 * @param	{Boolean}		[sticky]
+	 * @param	{Number}		[delay]
+	 * @param	{String}		[identifier]
 	 */
 	notifySuccess: function(message, sticky, delay, identifier) {
 		this.notify(this.SUCCESS, message, sticky, delay, identifier);
