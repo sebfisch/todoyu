@@ -18,7 +18,7 @@
 * This copyright notice MUST APPEAR in all copies of the script.
 *****************************************************************************/
 
-require_once( PATH_LIB . '/php/phpmailer/class.phpmailer-lite.php' );
+require_once( PATH_LIB . '/php/phpmailer/class.phpmailer.php' );
 
 /**
  * Todoyu mail
@@ -26,7 +26,7 @@ require_once( PATH_LIB . '/php/phpmailer/class.phpmailer-lite.php' );
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuMail extends PHPMailerLite {
+class TodoyuMail extends PHPMailer {
 
 	/**
 	 * Temporary HTML content. Render it before sending
@@ -186,6 +186,8 @@ class TodoyuMail extends PHPMailerLite {
 		} else {
 			$status = parent::Send();
 		}
+
+		TodoyuDebug::printInFirebug($status ? 1:0, 's');
 
 		return $status;
 	}

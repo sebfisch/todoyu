@@ -105,11 +105,11 @@ class TodoyuCoreAboutActionController extends TodoyuActionController {
 					'licenseUrl'=> 'http://opensource.org/licenses/mit-license.php'
 				),
 				'phpMailer'	=> array(
-					'title'		=> 'PHPMailer Lite',
-					'url'		=> 'http://phpmailer.worxware.com/',
-					'copyright'	=> '2001-2003, Brent R. Matzelle, 2004-2009, Andy Prevost.',
+					'title'		=> 'PHPMailer',
+					'url'		=> 'http://code.google.com/a/apache-extras.org/p/phpmailer/',
+					'copyright'	=> '2010 - 2012 Jim Jagielski, 2004-2009, Andy Prevost.',
 					'license'	=> 'GNU LGPL',
-					'licenseUrl'=> 'http://www.gnu.org/copyleft/lesser.html'
+					'licenseUrl'=> 'http://www.gnu.org/licenses/lgpl.html'
 				),
 				'pclzip'	=> array(
 					'title'		=> 'PclZip',
