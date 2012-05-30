@@ -71,6 +71,7 @@ class TodoyuMail extends PHPMailer {
 		$config	= TodoyuHookManager::callHookDataModifier('core', 'mail.construct', $config);
 
 		$this->config['mailer']	= Todoyu::$CONFIG['SYSTEM']['mailer'];
+
 		if( Todoyu::$CONFIG['SYSTEM']['mailer'] === 'smtp' ) {
 			$this->config['smtp_host']			= Todoyu::$CONFIG['SYSTEM']['smtp_host'];
 			$this->config['smtp_port']			= Todoyu::$CONFIG['SYSTEM']['smtp_port'];
@@ -91,12 +92,16 @@ class TodoyuMail extends PHPMailer {
 			// Set SMTP config
 		if( $this->config['mailer'] === 'smtp' ) {
 		 	$this->IsSMTP();
-			$this->Host	= $this->config['smtp_host'];
-			$this->Port	= $this->config['smtp_port'];
+			$this->SMTPAuth	= intval($this->config['smtp_authentication']) === 1;
+			$this->Host		= $this->config['smtp_host'];
+			$this->Port		= intval($this->config['smtp_port']);
+
 			if( intval($this->config['smtp_authentication']) === 1 ) {
 				$this->Username	= $this->config['smtp_username'];
 				$this->Password	= $this->config['smtp_password'];
 			}
+
+			$this->SMTPDebug  = 0; // 0 = disable debug/ 1 = echo errors+messages/ 2 = messages only
 		}
 
 		if( is_array($this->config['from']) ) {
@@ -106,16 +111,12 @@ class TodoyuMail extends PHPMailer {
 		} elseif( $this->config['from'] !== false ) {
 			$this->setSystemAsSender();
 		}
-
-
 	}
 
 
 
 	/**
 	 * Render and set email HTML message
-	 *
-	 * @return void
 	 */
 	private function renderHtmlContent() {
 		$tmpl	= 'core/view/email-html.tmpl';
@@ -163,8 +164,7 @@ class TodoyuMail extends PHPMailer {
 
 
 	/**
-	 * Set email headline
-	 * Can be a label
+	 * Set email headline (can be a label)
 	 *
 	 * @param	String		$headline
 	 */
@@ -209,8 +209,6 @@ class TodoyuMail extends PHPMailer {
 		} else {
 			$status = parent::Send();
 		}
-
-		TodoyuDebug::printInFirebug($status ? 1:0, 's');
 
 		return $status;
 	}
@@ -277,7 +275,6 @@ class TodoyuMail extends PHPMailer {
 	public function setTextContent($text) {
 		$this->AltBody = $text;
 	}
-
 
 
 
