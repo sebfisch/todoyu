@@ -126,11 +126,11 @@ class TodoyuRole extends TodoyuBaseObject {
 	/**
 	 * Get templating data
 	 *
-	 * @param	Boolean		$loadForeignRecords
+	 * @param	Boolean		$loadForeignData
 	 * @return	Array
 	 */
-	public function getTemplateData($loadForeignRecords = false) {
-		if( $loadForeignRecords ) {
+	public function getTemplateData($loadForeignData = false) {
+		if( $loadForeignData ) {
 			$this->loadForeignData();
 		}
 
