@@ -20,6 +20,7 @@ core 2.2.1 - not released yet
 	* Changed: Removed unused parameter $preParseValues from form instantiation
 	* Changed: Added $formData as default $params value in form instantiation
 	* Changed: Parse label for grouped select options
+	* Library: Upgraded from PHPMailer-lite 5.1 to PHPMailer 5.2.1
 	* Library: Highcharts 2.2.3
 	* Library: tinyMCE 3.5.0.1
 

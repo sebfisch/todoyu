@@ -21,8 +21,21 @@
 
 	// General system settings
 Todoyu::$CONFIG['SYSTEM']['name'] 			= '{addslashes($name)}';
-Todoyu::$CONFIG['SYSTEM']['email']			= '{addslashes($email)}';
 Todoyu::$CONFIG['SYSTEM']['locale']			= '{$locale}';
+Todoyu::$CONFIG['SYSTEM']['email']			= '{addslashes($email)}';
+
+	// Mailer settings
+Todoyu::$CONFIG['SYSTEM']['mailer']				= '{$mailer}';
+{if $mailer=='smtp'}
+Todoyu::$CONFIG['SYSTEM']['smtp_host'] 			= '{$smtp_host}';
+Todoyu::$CONFIG['SYSTEM']['smtp_port']			= '{$smtp_port}';
+Todoyu::$CONFIG['SYSTEM']['smtp_authentication']= '{$smtp_authentication}';
+	{if $smtp_authentication=='1'}
+
+Todoyu::$CONFIG['SYSTEM']['smtp_username'] 		= '{$smtp_username}';
+Todoyu::$CONFIG['SYSTEM']['smtp_password'] 		= '{$smtp_password}';
+	{/if}
+{/if}
 
 	// Date and time settings
 Todoyu::$CONFIG['SYSTEM']['timezone']		= '{$timezone}';

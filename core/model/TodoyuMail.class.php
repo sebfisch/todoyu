@@ -70,6 +70,16 @@ class TodoyuMail extends PHPMailer {
 	public function __construct(array $config = array()) {
 		$config	= TodoyuHookManager::callHookDataModifier('core', 'mail.construct', $config);
 
+		$this->config['mailer']	= Todoyu::$CONFIG['SYSTEM']['mailer'];
+		if( Todoyu::$CONFIG['SYSTEM']['mailer'] === 'smtp' ) {
+			$this->config['smtp_host']			= Todoyu::$CONFIG['SYSTEM']['smtp_host'];
+			$this->config['smtp_port']			= Todoyu::$CONFIG['SYSTEM']['smtp_port'];
+			$this->config['smtp_authentication']= Todoyu::$CONFIG['SYSTEM']['smtp_authentication'];
+			if( intval(Todoyu::$CONFIG['SYSTEM']['smtp_authentication']) === 1 ) {
+				$this->config['smtp_username']	= Todoyu::$CONFIG['SYSTEM']['smtp_username'];
+				$this->config['smtp_password']	= Todoyu::$CONFIG['SYSTEM']['smtp_password'];
+			}
+		}
 		$this->config	= TodoyuArray::mergeRecursive($this->config, $config);
 
 		parent::__construct($this->config['exceptions']);
@@ -78,6 +88,17 @@ class TodoyuMail extends PHPMailer {
 		$this->Mailer	= $this->config['mailer'];
 		$this->CharSet	= $this->config['charset'];
 
+			// Set SMTP config
+		if( $this->config['mailer'] === 'smtp' ) {
+		 	$this->IsSMTP();
+			$this->Host	= $this->config['smtp_host'];
+			$this->Port	= $this->config['smtp_port'];
+			if( intval($this->config['smtp_authentication']) === 1 ) {
+				$this->Username	= $this->config['smtp_username'];
+				$this->Password	= $this->config['smtp_password'];
+			}
+		}
+
 		if( is_array($this->config['from']) ) {
 			$this->SetFrom($this->config['from']['email'], $this->config['from']['name'], 0);
 		} elseif( is_numeric($this->config['from']) ) {
@@ -85,6 +106,8 @@ class TodoyuMail extends PHPMailer {
 		} elseif( $this->config['from'] !== false ) {
 			$this->setSystemAsSender();
 		}
+
+
 	}
 
 

@@ -98,7 +98,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 * Update element
+	 * Update content of element
 	 *
 	 * @method	update
 	 * @param	{String}	container
@@ -120,7 +120,7 @@ Todoyu.Ui = {
 
 
 	/**
-	 * Replace element
+	 * Replace whole element
 	 *
 	 * @method	replace
 	 * @param	{String}	container
