@@ -55,7 +55,7 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 	protected function initRecords($type, $ext = null, $controller = null, $action = null) {
 		$this->type				= 'records' . ucfirst($type);
 		$this->config['type']	= $type;
-		$this->config['class'] .= 'typeRecords records' . ucfirst($type);
+		$this->config['class'] .= ' typeRecords records' . ucfirst($type);
 
 		if( $ext ) {
 			$this->config['options']['url'] = array(
