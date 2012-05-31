@@ -73,13 +73,8 @@ class TodoyuMail extends PHPMailer {
 		$this->config['mailer']	= Todoyu::$CONFIG['SYSTEM']['mailer'];
 
 		if( Todoyu::$CONFIG['SYSTEM']['mailer'] === 'smtp' ) {
-			$this->config['smtp_host']			= Todoyu::$CONFIG['SYSTEM']['smtp_host'];
-			$this->config['smtp_port']			= Todoyu::$CONFIG['SYSTEM']['smtp_port'];
-			$this->config['smtp_authentication']= Todoyu::$CONFIG['SYSTEM']['smtp_authentication'];
-			if( intval(Todoyu::$CONFIG['SYSTEM']['smtp_authentication']) === 1 ) {
-				$this->config['smtp_username']	= Todoyu::$CONFIG['SYSTEM']['smtp_username'];
-				$this->config['smtp_password']	= Todoyu::$CONFIG['SYSTEM']['smtp_password'];
-			}
+			$idSmtpAccount	= Todoyu::$CONFIG['SYSTEM']['id_smtpaccount'];
+			$this->initSmtpConfig($idSmtpAccount);
 		}
 		$this->config	= TodoyuArray::mergeRecursive($this->config, $config);
 
@@ -110,6 +105,26 @@ class TodoyuMail extends PHPMailer {
 			$this->setSender($this->config['from']);
 		} elseif( $this->config['from'] !== false ) {
 			$this->setSystemAsSender();
+		}
+	}
+
+
+
+	/**
+	 * Initialize SMTP configuration: add credentials from given record
+	 *
+	 * @param	Integer		$idSmtpAccount
+	 */
+	public function initSmtpConfig($idSmtpAccount) {
+		$idSmtpAccount	= intval($idSmtpAccount);
+		$smtpAccount	= TodoyuSysmanagerSmtpAccountManager::getAccount($idSmtpAccount);
+
+		$this->config['smtp_host']			= $smtpAccount->getHost();
+		$this->config['smtp_port']			= $smtpAccount->getPort();
+		$this->config['smtp_authentication']= $smtpAccount->getAuthentication();
+		if( $this->config['smtp_authentication'] === 1 ) {
+			$this->config['smtp_username']	= $smtpAccount->getUsername();
+			$this->config['smtp_password']	= $smtpAccount->getPassword();
 		}
 	}
 

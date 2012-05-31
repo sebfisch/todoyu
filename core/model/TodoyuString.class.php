@@ -314,6 +314,21 @@ class TodoyuString {
 
 
 	/**
+	 * Check whether the given string has the given beginning
+	 *
+	 * @param   String  $string
+	 * @param   String  $start
+	 * @return  Boolean
+	 */
+	public static function startsWith($string, $start) {
+		$lenStart  = strlen($start);
+
+		return substr($string, 0, $lenStart) === $start;
+	}
+
+
+
+	/**
 	 * Check whether the given string has the given ending
 	 *
 	 * @param   String  $string

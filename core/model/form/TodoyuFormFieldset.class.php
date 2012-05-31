@@ -408,7 +408,10 @@ class TodoyuFormFieldset implements ArrayAccess {
 		$fieldNames	= $this->getFieldNames();
 
 		foreach($fieldNames as $fieldName) {
-			$this->getField($fieldName)->remove();
+			$field	= $this->getField($fieldName);
+			if( !is_null($field)) {
+				$this->getField($fieldName)->remove();
+			}
 		}
 
 		$this->getForm()->removeFieldset($this->getName());
