@@ -13,6 +13,8 @@ core 2.2.1 - not released yet
 	* Added: TodoyuFileManager::getMimeType() to detect the mime type of a file, even if mime_content_type() is not available
 	* Added: TodoyuForm::setActionUrl() as helper for setAction()
 	* Added: TodoyuFormElement_Button functions: setText(), setClass(), setOnClick()
+	* Added: Option $asAttachment for TodoyuFileManager::sendFile() and TodoyuHeader::sendDownloadHeaders() to send also files directly
+	* Added: Try to auto detect the mime type in TodoyuFileManager::sendFile() when not defined
 	* Changed: Use js version instead of php the check for the first input in form
 	* Changed: Update form XSD validation to match know field types only
 	* Changed: Created instances for parsing form xml files to prevent overlapping when multiple forms are parsed parallel

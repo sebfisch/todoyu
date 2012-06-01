@@ -91,17 +91,21 @@ class TodoyuHeader {
 	 * @param	String		$filename
 	 * @param	Integer		$fileSize
 	 * @param	Integer		$fileModTime
+	 * @param	Boolean		$asAttachment
 	 */
-	public static function sendDownloadHeaders($mimeType, $filename, $fileSize, $fileModTime = null) {
+	public static function sendDownloadHeaders($mimeType, $filename, $fileSize, $fileModTime = null, $asAttachment = true) {
 		$fileSize	= (int) $fileSize;
 
 		self::sendHeader('Content-Description', 'File Transfer');
 		self::sendHeader('Content-Type', $mimeType);
-		self::sendHeader('Content-disposition', 'attachment; filename="' . addslashes($filename) . '"');
 		self::sendHeader('Content-Transfer-Encoding', 'binary');
 		self::sendHeader('Expires', date('r', NOW + 600));
 		self::sendHeader('Cache-Control', 'must-revalidate');	// Attention: no-cache will not work with https + internet explorer!
 		self::sendHeader('Pragma', 'public');
+
+		if( $asAttachment ) {
+			self::sendHeader('Content-disposition', 'attachment; filename="' . addslashes($filename) . '"');
+		}
 
 			// Chrome seems to have problems with content length
 			// (temporary) workaround

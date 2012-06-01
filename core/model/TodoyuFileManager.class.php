@@ -505,9 +505,10 @@ class TodoyuFileManager {
 	 * @param	String		$pathFile
 	 * @param	String		$mimeType			Mime type of the file
 	 * @param	String		$fileName			Name of the downloaded file shown in the browser
+	 * @param	Boolean		$asAttachment
 	 * @return	Boolean		File was allowed to download and sent to browser
 	 */
-	public static function sendFile($pathFile, $mimeType = null, $fileName = null) {
+	public static function sendFile($pathFile, $mimeType = null, $fileName = null, $asAttachment = true) {
 			// Get real path
 		$pathFile	= self::pathAbsolute($pathFile);
 		$status		= self::canSendFile($pathFile);
@@ -524,10 +525,14 @@ class TodoyuFileManager {
 		$fileName	= is_null($fileName) ? basename($pathFile) : $fileName;
 		$fileModTime= filemtime($pathFile);
 
+		if( is_null($mimeType) ) {
+			$mimeType = TodoyuFileManager::getMimeType($pathFile);
+		}
+
 			// Clear output buffer to prevent invalid file content
 		ob_clean();
 			// Send headers, file data
-		TodoyuHeader::sendDownloadHeaders($mimeType, $fileName, $fileSize, $fileModTime);
+		TodoyuHeader::sendDownloadHeaders($mimeType, $fileName, $fileSize, $fileModTime, $asAttachment);
 
 		return readfile($pathFile) !== false;
 	}
@@ -1094,6 +1099,10 @@ class TodoyuFileManager {
 			return mime_content_type($pathFile);
 		} elseif( !is_null($fileName) ) {
 			$extension = pathinfo($fileName, PATHINFO_EXTENSION);
+
+			return self::getMimeTypeByFileExtension($extension);
+		} elseif( strstr($pathFile, '.') !== false ) {
+			$extension = pathinfo($pathFile, PATHINFO_EXTENSION);
 
 			return self::getMimeTypeByFileExtension($extension);
 		} else {
