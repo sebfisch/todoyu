@@ -230,12 +230,14 @@ class TodoyuSql {
 	 * @param	Array		$searchWords			Words to search for
 	 * @param	Array		$searchInFields			Fields which have to match the $searchWords
 	 * @param	Boolean		$negate
+	 * @param	Boolean		$allOr
 	 * @return	String		Where part condition
 	 */
-	public static function buildLikeQueryPart(array $searchWords, array $searchInFields, $negate = false) {
+	public static function buildLikeQueryPart(array $searchWords, array $searchInFields, $negate = false, $allOr = false) {
 		$searchWords		= self::escapeArray($searchWords);
 		$fieldWheres		= array();
 		$innerConjunction	= $negate ? ' AND ' : ' OR ';
+		$outerConjunction	= $allOr ? ' OR ' : ' AND ';
 		$negation			= $negate ? ' NOT ' : ' ';
 
 			// Build an AND-group for all search words
@@ -251,7 +253,7 @@ class TodoyuSql {
 			$fieldWheres[] = implode($innerConjunction, $fieldCompare);
 		}
 
-		return '((' . implode(') AND (', $fieldWheres) . '))';
+		return '((' . implode(') ' . $outerConjunction . ' (', $fieldWheres) . '))';
 	}
 
 
