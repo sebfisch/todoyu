@@ -80,6 +80,11 @@ Todoyu.FormRecords = Class.create({
 	 */
 	timeoutClear: null,
 
+	/**
+	 * Max length of the label
+	 */
+	maxLabelLength: 47,
+
 
 
 	/**
@@ -245,8 +250,9 @@ Todoyu.FormRecords = Class.create({
 
 		var id		= resultItem.id.split('-').last();
 		var label	= resultItem.down('.label').innerHTML.strip();
+		var title	= resultItem.down('.label').title;
 
-		this.addSelectedItem(id, label);
+		this.addSelectedItem(id, label, title);
 		resultItem.remove();
 
 		this.markFirstAsHot();
@@ -417,9 +423,10 @@ Todoyu.FormRecords = Class.create({
 	 * @addSelectedItem
 	 * @param	{String}	id
 	 * @param	{String}	label
+	 * @param	{String}	[title]
 	 */
-	addSelectedItem: function(id, label) {
-		this.selection.insert(this.buildSelectedItem(id, label));
+	addSelectedItem: function(id, label, title) {
+		this.selection.insert(this.buildSelectedItem(id, label, title));
 		this.addStorageValue(id, label);
 	},
 
@@ -471,11 +478,18 @@ Todoyu.FormRecords = Class.create({
 			id: this.baseID + '-results-' + id
 		});
 		var iconEl	= new Element('span', {
-			'class': 'icon recordIcon'
+			className: 'icon recordIcon'
 		});
 		var labelEl	= new Element('span', {
-			'class': 'label'
-		}).update(label);
+			className: 'label'
+		});
+
+		if( label.length > this.maxLabelLength ) {
+			labelEl.title = label;
+			label = Todoyu.String.cropText(label, 45);
+		}
+
+		labelEl.update(label);
 
 		item.insert(iconEl);
 		item.insert(labelEl);
@@ -491,20 +505,27 @@ Todoyu.FormRecords = Class.create({
 	 * @method	buildSelectedItem
 	 * @param	{String}	id
 	 * @param	{String}	label
+	 * @param	{String}	[title]
 	 */
-	buildSelectedItem: function(id, label) {
+	buildSelectedItem: function(id, label, title) {
 		var item = new Element('li', {
 			id:	this.baseID + '-selection-' + id
 		});
 		var iconEl	= new Element('span', {
-			'class': 'icon recordIcon'
+			className: 'icon recordIcon'
 		});
 		var labelEl	= new Element('span', {
-			'class': 'label'
-		}).update(label);
-		var removeEl	= new Element('span', {
-			'class': 'icon remove'
+			className: 'label'
 		});
+		var removeEl	= new Element('span', {
+			className: 'icon remove'
+		});
+
+		if( title ) {
+			labelEl.title = title;
+		}
+
+		labelEl.update(label);
 
 		item.insert(iconEl);
 		item.insert(labelEl);
