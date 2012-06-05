@@ -186,7 +186,7 @@ Todoyu.Popups = {
 	 * @param	{Number}		minWidth
 	 * @param	{String}		contentUrl
 	 * @param	{Object}		requestOptions
-	 * @param	{Number}		positionTop
+	 * @param	{Number}		[positionTop]
 	 * @return	{Todoyu.Popup}
 	 */
 	open: function(idPopup, title, minWidth, contentUrl, requestOptions, positionTop) {
