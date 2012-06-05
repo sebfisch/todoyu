@@ -416,6 +416,9 @@
 						<xs:enumeration value="recordsPerson" />
 						<xs:enumeration value="recordsMailAddress" />
 						<xs:enumeration value="recordsEmailPerson" />
+						<xs:enumeration value="recordsTaskAsset" />
+						<xs:enumeration value="recordsProjectAsset" />
+						<xs:enumeration value="recordsAsset" />
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:attribute>

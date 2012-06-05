@@ -34,7 +34,7 @@ class TodoyuFormFactory {
 	 * @return	String
 	 */
 	public static function getClass($type) {
-		return Todoyu::$CONFIG['FORM']['TYPES'][$type]['class'];
+		return TodoyuFormManager::getTypeClass($type);
 	}
 
 
@@ -46,7 +46,7 @@ class TodoyuFormFactory {
 	 * @return	String
 	 */
 	public static function getTemplate($type) {
-		return Todoyu::$CONFIG['FORM']['TYPES'][$type]['template'];
+		return TodoyuFormManager::getTypeTemplate($type);
 	}
 
 

@@ -40,104 +40,43 @@ Todoyu::$CONFIG['FORM']['templates'] = array(
 	'hidden'	=> 'core/view/form/HiddenField.tmpl'
 );
 
-Todoyu::$CONFIG['FORM']['TYPES']['text'] = array(
-	'class'		=> 'TodoyuFormElement_Text',
-	'template'	=> 'core/view/form/FormElement_Text.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['select'] = array(
-	'class'		=> 'TodoyuFormElement_Select',
-	'template'	=> 'core/view/form/FormElement_Select.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['radio'] = array(
-	'class'		=> 'TodoyuFormElement_Radio',
-	'template'	=> 'core/view/form/FormElement_Radio.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['selectgrouped'] = array(
-	'class'		=> 'TodoyuFormElement_SelectGrouped',
-	'template'	=> 'core/view/form/FormElement_SelectGrouped.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['textarea'] = array(
-	'class'		=> 'TodoyuFormElement_Textarea',
-	'template'	=> 'core/view/form/FormElement_Textarea.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['checkbox'] = array(
-	'class'		=> 'TodoyuFormElement_Checkbox',
-	'template'	=> 'core/view/form/FormElement_Checkbox.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['date'] = array(
-	'class'		=> 'TodoyuFormElement_Date',
-	'template'	=> 'core/view/form/FormElement_Date.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['datetime'] = array(
-	'class'		=> 'TodoyuFormElement_DateTime',
-	'template'	=> 'core/view/form/FormElement_Date.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['button'] = array(
-	'class'		=> 'TodoyuFormElement_Button',
-	'template'	=> 'core/view/form/FormElement_Button.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['saveButton'] = array(
-	'class'		=> 'TodoyuFormElement_SaveButton',
-	'template'	=> 'core/view/form/FormElement_Button.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['cancelButton'] = array(
-	'class'		=> 'TodoyuFormElement_CancelButton',
-	'template'	=> 'core/view/form/FormElement_Button.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['expandAllButton'] = array(
-	'class'		=> 'TodoyuFormElement_ExpandAllButton',
-	'template'	=> 'core/view/form/FormElement_Button.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['duration'] = array(
-	'class'		=> 'TodoyuFormElement_Duration',
-	'template'	=> 'core/view/form/FormElement_Duration.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['time'] = array(
-	'class'		=> 'TodoyuFormElement_Time',
-	'template'	=> 'core/view/form/FormElement_Duration.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['RTE'] = array(
-	'class'		=> 'TodoyuFormElement_RTE',
-	'template'	=> 'core/view/form/FormElement_RTE.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['upload'] = array(
-	'class'		=> 'TodoyuFormElement_Upload',
-	'template'	=> 'core/view/form/FormElement_Upload.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['textAC'] = array(
-	'class'		=> 'TodoyuFormElement_TextAC',
-	'template'	=> 'core/view/form/FormElement_TextAC.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['databaseRelation'] = array(
-	'class'		=> 'TodoyuFormElement_DatabaseRelation',
-	'template'	=> 'core/view/form/FormElement_DatabaseRelation.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['comment'] = array(
-	'class'		=> 'TodoyuFormElement_Comment',
-	'template'	=> 'core/view/form/FormElement_Comment.tmpl'
-);
-
-Todoyu::$CONFIG['FORM']['TYPES']['selectIcon'] = array(
-	'class'		=> 'TodoyuFormElement_SelectIcon',
-	'template'	=> 'core/view/form/FormElement_SelectIcon.tmpl'
-);
+	// Text
+TodoyuFormManager::addFieldType('text', 'TodoyuFormElement_Text', 'core/view/form/FormElement_Text.tmpl');
+	// Select
+TodoyuFormManager::addFieldType('select', 'TodoyuFormElement_Select', 'core/view/form/FormElement_Select.tmpl');
+	// Select grouped
+TodoyuFormManager::addFieldType('selectgrouped', 'TodoyuFormElement_SelectGrouped', 'core/view/form/FormElement_SelectGrouped.tmpl');
+	// Radio
+TodoyuFormManager::addFieldType('radio', 'TodoyuFormElement_Radio', 'core/view/form/FormElement_Radio.tmpl');
+	// Text area
+TodoyuFormManager::addFieldType('textarea', 'TodoyuFormElement_Textarea', 'core/view/form/FormElement_Textarea.tmpl');
+	// Checkbox
+TodoyuFormManager::addFieldType('checkbox', 'TodoyuFormElement_Checkbox', 'core/view/form/FormElement_Checkbox.tmpl');
+	// Date
+TodoyuFormManager::addFieldType('date', 'TodoyuFormElement_Date', 'core/view/form/FormElement_Date.tmpl');
+	// Date and time
+TodoyuFormManager::addFieldType('datetime', 'TodoyuFormElement_DateTime', 'core/view/form/FormElement_Date.tmpl');
+	// Button
+TodoyuFormManager::addFieldType('button', 'TodoyuFormElement_Button', 'core/view/form/FormElement_Button.tmpl');
+	// Save button
+TodoyuFormManager::addFieldType('saveButton', 'TodoyuFormElement_SaveButton', 'core/view/form/FormElement_Button.tmpl');
+	// Cancel button
+TodoyuFormManager::addFieldType('cancelButton', 'TodoyuFormElement_CancelButton', 'core/view/form/FormElement_Button.tmpl');
+	// Expand all sub records button
+TodoyuFormManager::addFieldType('expandAllButton', 'TodoyuFormElement_ExpandAllButton', 'core/view/form/FormElement_Button.tmpl');
+	// duration
+TodoyuFormManager::addFieldType('duration', 'TodoyuFormElement_Duration', 'core/view/form/FormElement_Duration.tmpl');
+	// time
+TodoyuFormManager::addFieldType('time', 'TodoyuFormElement_Time', 'core/view/form/FormElement_Duration.tmpl');
+	// Rich text editor
+TodoyuFormManager::addFieldType('RTE', 'TodoyuFormElement_RTE', 'core/view/form/FormElement_RTE.tmpl');
+	// Text autocompleter
+TodoyuFormManager::addFieldType('textAC', 'TodoyuFormElement_TextAC', 'core/view/form/FormElement_TextAC.tmpl');
+	// Database relation (sub records)
+TodoyuFormManager::addFieldType('databaseRelation', 'TodoyuFormElement_DatabaseRelation', 'core/view/form/FormElement_DatabaseRelation.tmpl');
+	// Comment (text only element)
+TodoyuFormManager::addFieldType('comment', 'TodoyuFormElement_Comment', 'core/view/form/FormElement_Comment.tmpl');
+	// Icon selector
+TodoyuFormManager::addFieldType('selectIcon', 'TodoyuFormElement_SelectIcon', 'core/view/form/FormElement_SelectIcon.tmpl');
 
 ?>

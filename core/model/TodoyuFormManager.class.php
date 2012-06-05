@@ -83,6 +83,61 @@ class TodoyuFormManager {
 		return $field->renderNewRecord($index);
 	}
 
+
+
+	/**
+	 * Add a field type
+	 *
+	 * @param	String		$name
+	 * @param	String		$className
+	 * @param	String		$pathTemplate
+	 */
+	public static function addFieldType($name, $className, $pathTemplate) {
+		Todoyu::$CONFIG['FORM']['TYPES'][$name] = array(
+			'class'		=> $className,
+			'template'	=> $pathTemplate
+		);
+	}
+
+
+
+	/**
+	 * Add field type records
+	 *
+	 * @param	String		$name
+	 * @param	String		$className
+	 */
+	public static function addFieldTypeRecords($name, $className) {
+		$pathTemplate	= 'core/view/form/FormElement_Records.tmpl';
+
+		self::addFieldType($name, $className, $pathTemplate);
+	}
+
+
+
+	/**
+	 * Get class which represents an object of the requested type
+	 * A new instance will be created with the NEW operator
+	 *
+	 * @param	String		$type
+	 * @return	String
+	 */
+	public static function getTypeClass($type) {
+		return Todoyu::$CONFIG['FORM']['TYPES'][$type]['class'];
+	}
+
+
+
+	/**
+	 * Get the template for the input type
+	 *
+	 * @param	String		$type
+	 * @return	String
+	 */
+	public static function getTypeTemplate($type) {
+		return Todoyu::$CONFIG['FORM']['TYPES'][$type]['template'];
+	}
+
 }
 
 ?>

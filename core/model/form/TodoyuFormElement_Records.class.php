@@ -57,6 +57,8 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 		$this->config['type']	= $type;
 		$this->config['class'] .= ' typeRecords records' . ucfirst($type);
 
+		$this->config['options']['params']	= array();
+
 		if( $ext ) {
 			$this->config['options']['url'] = array(
 				'ext'	=> $ext,
@@ -64,6 +66,17 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 				'action'=> $action
 			);
 		}
+	}
+
+
+
+	/**
+	 * Add params to options config value
+	 *
+	 * @param	Array	$params
+	 */
+	protected function addOptionParams(array $params) {
+		$this->config['options']['params'] = array_merge($this->config['options']['params'], $params);
 	}
 
 
@@ -80,12 +93,17 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 
 
 	/**
-	 * Set selected values
-	 * Should be an array, but can also be a single value
+	 * Set value
+	 * Fix data if value contains whole records instead of IDs
 	 *
-	 * @param	Mixed		$value
+	 * @param	Array		$value
 	 */
 	public function setValue($value) {
+		$first	= reset($value);
+		if( is_array($first) ) {
+			$value	= TodoyuArray::getColumn($value, 'id');
+		}
+
 		parent::setValue($value);
 	}
 
@@ -94,7 +112,7 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 	/**
 	 * Get selected option values as array
 	 *
-	 * @return	Array
+	 * @return Array
 	 */
 	public function getValue() {
 		return TodoyuArray::assure(parent::getValue());
@@ -108,6 +126,8 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 	 * @return	Array
 	 */
 	protected function getData() {
+		$this->beforeGetData();
+
 		$this->config['jsonOptions']= json_encode($this->getOptions());
 		$this->config['records']	= $this->getRecords();
 
@@ -115,6 +135,23 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 	}
 
 
+
+	/**
+	 * Overwrite this method to set additional config before element is rendered
+	 * Ex: Set option params
+	 */
+	protected function beforeGetData() {
+
+	}
+
+
+
+	/**
+	 * Get display data for selected records
+	 *
+	 * @abstract
+	 * @return	Array[]
+	 */
 	abstract protected function getRecords();
 
 

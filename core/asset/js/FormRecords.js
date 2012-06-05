@@ -317,6 +317,10 @@ Todoyu.FormRecords = Class.create({
 			onComplete:	this.onSearchResponse.bind(this)
 		};
 
+		if( this.config.params ) {
+			options.parameters.params = Object.toJSON(this.config.params);
+		}
+
 		this.lastText = this.getSearchText();
 
 		Todoyu.send(url, options);
