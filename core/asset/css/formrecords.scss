@@ -1,0 +1,48 @@
+.typeRecords {
+	.results {
+		border:1px solid #ccc;
+		background-color:#fcfcfc;
+		border-top:none;
+		margin-top:-1px;
+		padding:0px;
+		list-style:none inside;
+
+		li {
+			padding:4px;
+			cursor:pointer;
+
+			&:hover {
+				background-color:#EEE;
+			}
+
+			.hot {
+				font-weight:bold;
+			}
+		}
+	}
+
+	.selection {
+		margin-top:5px;
+		list-style:none inside;
+		line-height:150%;
+
+		li {
+			clear:both;
+			padding:3px 0;
+
+			span {
+				display:inline-block;
+			}
+
+			.recordIcon {
+				margin-right:5px;
+			}
+
+			.remove {
+				float:right;
+				background:url(../img/icons.png) no-repeat 2px -358px;
+				cursor:pointer;
+			}
+		}
+	}
+}

@@ -70,7 +70,9 @@ TodoyuFormManager::addFieldType('duration', 'TodoyuFormElement_Duration', 'core/
 TodoyuFormManager::addFieldType('time', 'TodoyuFormElement_Time', 'core/view/form/FormElement_Duration.tmpl');
 	// Rich text editor
 TodoyuFormManager::addFieldType('RTE', 'TodoyuFormElement_RTE', 'core/view/form/FormElement_RTE.tmpl');
-	// Text autocompleter
+	// File upload
+TodoyuFormManager::addFieldType('upload', 'TodoyuFormElement_Upload', 'core/view/form/FormElement_Upload.tmpl');
+		// Text autocompleter
 TodoyuFormManager::addFieldType('textAC', 'TodoyuFormElement_TextAC', 'core/view/form/FormElement_TextAC.tmpl');
 	// Database relation (sub records)
 TodoyuFormManager::addFieldType('databaseRelation', 'TodoyuFormElement_DatabaseRelation', 'core/view/form/FormElement_DatabaseRelation.tmpl');

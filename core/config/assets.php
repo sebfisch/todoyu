@@ -475,7 +475,7 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/formrecords.css',
+			'file'		=> 'core/asset/css/formrecords.scss',
 			'position'	=> 10
 		),
 		array(

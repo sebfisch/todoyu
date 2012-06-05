@@ -83,7 +83,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Max length of the label
 	 */
-	maxLabelLength: 47,
+	maxLabelLength: 49,
 
 
 
