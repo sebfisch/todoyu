@@ -36,7 +36,7 @@ class TodoyuFormManager {
 	 * @return	TodoyuForm
 	 */
 	public static function getForm($xmlPath, $idRecord = 0, array $params = array(), array $formData = array()) {
-		$form	= new TodoyuForm($xmlPath, $idRecord);
+		$form	= new TodoyuForm($xmlPath, $idRecord, $params);
 
 		if( !isset($params['formData']) ) {
 			$params['formData'] = $formData;

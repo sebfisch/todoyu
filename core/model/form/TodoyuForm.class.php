@@ -31,7 +31,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var	String
 	 */
-	private $xmlFile;
+	protected $xmlFile;
 
 
 
@@ -40,7 +40,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var	Array
 	 */
-	private $fieldsets = array();
+	protected $fieldsets = array();
 
 
 
@@ -49,7 +49,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var	Array
 	 */
-	private $hiddenFields = array();
+	protected $hiddenFields = array();
 
 
 
@@ -58,7 +58,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var	Array
 	 */
-	private $attributes = array();
+	protected $attributes = array();
 
 
 
@@ -67,7 +67,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var	Array
 	 */
-	public $fields = array();
+	protected $fields = array();
 
 
 
@@ -76,7 +76,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var	Array
 	 */
-	private $fieldsetRegister = array();
+	protected $fieldsetRegister = array();
 
 
 
@@ -85,7 +85,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var	Array
 	 */
-	private $formdata = array();
+	protected $formdata = array();
 
 
 
@@ -94,7 +94,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var	Integer
 	 */
-	private $idRecord = null;
+	protected $idRecord = null;
 
 
 	/**
@@ -102,7 +102,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var	Boolean
 	 */
-	private $useRecordID = true;
+	protected $useRecordID = true;
 
 
 	/**
@@ -110,7 +110,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var array
 	 */
-	private $invalidFields = array();
+	protected $invalidFields = array();
 
 
 	/**
@@ -118,7 +118,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var	Array
 	 */
-	public $vars	= array();
+	protected $vars	= array();
 
 
 	/**
@@ -126,7 +126,12 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @var Boolean
 	 */
-	private $validateSubforms = false;
+	protected $validateSubforms = false;
+
+	/**
+	 * @var	Array		Form params
+	 */
+	protected $params = array();
 
 
 
@@ -134,13 +139,14 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Initialize form by parsing the XML file to load elements
 	 *
-	 * @param	String		$xmlFile		Path to XML form definition
-	 * @param	Integer		$idRecord
+	 * @param	String			$xmlFile		Path to XML form definition
+	 * @param	Integer|String	$idRecord
+	 * @param	Array			$params			Form parameters
 	 */
-	public function __construct($xmlFile, $idRecord = 0) {
+	public function __construct($xmlFile, $idRecord = 0, array $params = array()) {
 		$this->xmlFile	= TodoyuFileManager::pathAbsolute($xmlFile);
-
-		$this->setRecordID($idRecord);
+		$this->idRecord	= $idRecord;
+		$this->params	= $params;
 
 			// Load all available form configuration
 		TodoyuExtensions::loadAllForm();
@@ -211,6 +217,34 @@ class TodoyuForm implements ArrayAccess {
 		$this->updateFieldValues();
 
 		return $this;
+	}
+
+
+
+	/**
+	 * Get form params
+	 *
+	 * @return	Array
+	 */
+	public function getParams() {
+		return $this->params;
+	}
+
+
+
+	/**
+	 * Get param
+	 *
+	 * @param	String		$name
+	 * @param	Boolean		$asInt
+	 * @return	Mixed
+	 */
+	public function getParam($name, $asInt = false) {
+		if( $asInt ) {
+			return intval($this->params[$name]);
+		} else {
+			return $this->params[$name];
+		}
 	}
 
 

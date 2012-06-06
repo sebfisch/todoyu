@@ -19,6 +19,9 @@ core 2.2.1 - not released yet
 	* Added: TodoyuFormManager::addFieldType(). Cleaner replacement for form field type config like Todoyu::$CONFIG['FORM']['TYPES']['text'] = array(...)
 	* Added: TodoyuFormManager::addFieldTypeRecords() as shortcut to TodoyuFormManager::addFieldType() with default records template
 	* Added: $allOr parameter to TodoyuSql::buildLikeQueryPart() which changes the outer conjunction to OR
+	* Added: TodoyuForm takes to $params data and makes it available over ->getParams() and ->getParam()
+	* Added: $limit parameter for TodoyuArray::trimExplode() which is passed directly to explode()
+	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()
 	* Changed: Use js version instead of php the check for the first input in form
 	* Changed: Update form XSD validation to match know field types only
 	* Changed: Created instances for parsing form xml files to prevent overlapping when multiple forms are parsed parallel
@@ -26,6 +29,7 @@ core 2.2.1 - not released yet
 	* Changed: Removed unused parameter $preParseValues from form instantiation
 	* Changed: Added $formData as default $params value in form instantiation
 	* Changed: Parse label for grouped select options
+	* Changed: Cleanup radio form element. Removed sql as source type. Support default value
 	* Library: Upgraded from PHPMailer-lite 5.1 to PHPMailer 5.2.1
 	* Library: Highcharts 2.2.3
 	* Library: tinyMCE 3.5.0.1

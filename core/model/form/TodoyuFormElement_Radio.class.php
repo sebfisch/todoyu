@@ -35,10 +35,6 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 */
 	function __construct($name, TodoyuFormFieldset $fieldset, array $config  = array()) {
 		parent::__construct('radio', $name, $fieldset, $config);
-
-//		if( ! $this->isLazyInit() ) {
-//			$this->init();
-//		}
 	}
 
 
@@ -56,19 +52,8 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 					$this->initSourceList($source);
 					break;
 
-
 				case 'function':
 					$this->initSourceFunction($source);
-					break;
-
-
-				case 'sql':
-					$this->initSourceSql($source);
-					break;
-
-
-				default:
-					die("Unknown source tpye");
 					break;
 			}
 		}
@@ -84,57 +69,8 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	protected function initSourceList(array $source) {
 		if( is_array($source['option']) ) {
 			foreach($source['option'] as $option) {
-				$this->addOption($option['value'], $option['label'], $option['checked']);
+				$this->addOption($option['value'], $option['label']);
 			}
-		}
-	}
-
-
-
-	/**
-	 * Load select options from database
-	 *
-	 * @param	Array		$source
-	 * @deprecated
-	 * @todo	Remove
-	 */
-	protected function initSourceSql(array $source) {
-		$data	= Todoyu::db()->getArray(
-			$source['fields'],
-			$source['tables'],
-			$source['where'],
-			$source['group'],
-			$source['order'],
-			$source['limit']
-		);
-
-			// Key for label and value
-		$valueKey	= $source['value'];
-		$labelKey	= $source['label'];
-
-			// Set flag
-		$useValueFunc = false;
-		$useLabelFunc = false;
-
-		if( strstr($valueKey, '::') !== false ) {
-			$valueFunc = explode('::', $valueKey);
-			if( method_exists($valueFunc[0], $valueFunc[1]) ) {
-				$useValueFunc = true;
-			}
-		}
-
-		if( strstr($labelKey, '::') !== false ) {
-			$labelFunc = explode('::', $labelKey);
-			if( method_exists($labelFunc[0], $labelFunc[1]) ) {
-				$useLabelFunc = true;
-			}
-		}
-
-		foreach( $data as $option ) {
-			$value	= $useValueFunc ? call_user_func($valueFunc, $this, $option) : $option[$valueKey];
-			$label	= $useLabelFunc ? call_user_func($labelFunc, $this, $option) : $option[$labelKey];
-
-			$this->addOption($value, $label);
 		}
 	}
 
@@ -150,7 +86,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 			$options	= TodoyuFunction::callUserFunction($source['function'], $this->getForm());
 
 			foreach($options as $option) {
-				$this->addOption($option['value'], $option['label'], $option['checked']);
+				$this->addOption($option['value'], $option['label']);
 			}
 		}
 	}
@@ -184,20 +120,14 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 *
 	 * @param	String		$value
 	 * @param	String		$label
-	 * @param	Boolean		$checked
 	 * @param	Boolean		$disabled
 	 */
-	public function addOption($value, $label, $checked = false, $disabled = false) {
+	public function addOption($value, $label, $disabled = false) {
 		$this->config['options'][] = array(
 			'value'		=> $value,
-			'label'		=> Todoyu::Label($label),
-			'checked'	=> $checked,
+			'label'		=> $label,
 			'disabled'	=> $disabled
 		);
-
-		if( $checked ) {
-			$this->addCheckedValue($value);
-		}
 	}
 
 
@@ -208,19 +138,19 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 *
 	 * @param	String		$value
 	 * @param	String		$label
-	 * @param	Boolean		$checked
 	 * @param	Boolean		$disabled
+	 * @deprecated
 	 */
-	public function setOption($value, $label, $checked = false, $disabled = false) {
+	public function setOption($value, $label, $disabled = false) {
 		$index = $this->getOptionIndexByValue($value);
 
 		if( !$index ) {
-			$this->addOption($value, $label, $checked, $disabled);
+			$this->addOption($value, $label, $disabled);
 		} else {
 			$this->config['options'][$index] =  array(
 				'value'		=> $value,
 				'label'		=> $label,
-				'checked'	=> $checked
+				'disabled'	=> $disabled
 			);
 		}
 	}
@@ -232,6 +162,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 *
 	 * @param	String		$value
 	 * @return	Integer		Or false if not found
+	 * @deprecated
 	 */
 	protected function getOptionIndexByValue($value) {
 		$optionIndex = false;
@@ -249,26 +180,6 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 
 
 	/**
-	 * Get selected value
-	 *
-	 * @return	Mixed		An array or a string
-	 */
-	public function getValue() {
-		return $this->config['checked'];
-	}
-
-
-
-	/**
-	 * Set selected value
-	 *
-	 * @param	Mixed		$value		An array or a string
-	 */
-	public function setValue($value) {
-		$this->config['checked'] = $value;
-	}
-
-
 
 	/**
 	 * Add value to selected-values list
@@ -290,7 +201,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 		if( $this->isLazyInit() ) {
 			$this->init();
 		}
-
+		
 		return parent::getData();
 	}
 

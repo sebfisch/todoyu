@@ -785,23 +785,22 @@ class TodoyuArray {
 	/**
 	 * Explode a list of integers
 	 *
-	 * @todo	change parameters order: move $delimiter behind $string, add default ',' to $delimiter
-	 * @param	String		$delimiter			Character to split the list
-	 * @param	String		$string				The list
-	 * @param	Boolean		$onlyPositive		Set negative values zero
-	 * @param	Boolean		$removeZeros		Remove all zero values
-	 * @param	Boolean		$parseConstants		Parse constants?
+	 * @param	String			$delimiter			Character to split the list
+	 * @param	String			$string				The list
+	 * @param	Boolean			$onlyPositive		Set negative values zero
+	 * @param	Boolean			$removeZeros		Remove all zero values
+	 * @param	Integer|Null	$limit				Explode to maximum $limit parts (as in explode())
 	 * @return	Integer[]
 	 */
-	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false, $parseConstants = false) {
+	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false, $limit = null) {
 		$string	= trim($string);
 
 		if( $string === '' ) {
 			return array();
 		} else {
-			$parts	= explode($delimiter, $string);
+			$parts	= explode($delimiter, $string, $limit);
 
-			return self::intval($parts, $onlyPositive, $removeZeros, $parseConstants);
+			return self::intval($parts, $onlyPositive, $removeZeros);
 		}
 	}
 
@@ -810,12 +809,13 @@ class TodoyuArray {
 	/**
 	 * Explode a list and remove whitespace around the values
 	 *
-	 * @param	String		$delimiter				Character to split the list
-	 * @param	String		$string					The list
-	 * @param	Boolean		$removeEmptyValues		Remove values which are empty after trim()
+	 * @param	String			$delimiter				Character to split the list
+	 * @param	String			$string					The list
+	 * @param	Boolean			$removeEmptyValues		Remove values which are empty after trim()
+	 * @param	Integer|Null	$limit					Explode to maximum $limit parts (as in explode())
 	 * @return	Array
 	 */
-	public static function trimExplode($delimiter, $string, $removeEmptyValues = false) {
+	public static function trimExplode($delimiter, $string, $removeEmptyValues = false, $limit = null) {
 		$string	= trim($string);
 		$array	= array();
 
@@ -823,7 +823,7 @@ class TodoyuArray {
 			return $array;
 		}
 
-		$parts	= explode($delimiter, $string);
+		$parts	= explode($delimiter, $string, $limit);
 
 		foreach($parts as $value) {
 			$value = trim($value);
