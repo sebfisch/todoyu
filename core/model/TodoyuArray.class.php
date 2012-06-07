@@ -789,16 +789,17 @@ class TodoyuArray {
 	 * @param	String			$string				The list
 	 * @param	Boolean			$onlyPositive		Set negative values zero
 	 * @param	Boolean			$removeZeros		Remove all zero values
-	 * @param	Integer|Null	$limit				Explode to maximum $limit parts (as in explode())
+	 * @param	Integer|Boolean	$limit				Explode to maximum $limit parts (as in explode())
 	 * @return	Integer[]
 	 */
-	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false, $limit = null) {
+	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false, $limit = false) {
 		$string	= trim($string);
 
 		if( $string === '' ) {
 			return array();
 		} else {
-			$parts	= explode($delimiter, $string, $limit);
+				// Explode with or without limit (there is no 'not defined' value, so both calls are required)
+			$parts	= $limit ? explode($delimiter, $string, $limit) : explode($delimiter, $string);
 
 			return self::intval($parts, $onlyPositive, $removeZeros);
 		}
