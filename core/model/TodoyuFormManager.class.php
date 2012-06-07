@@ -137,28 +137,11 @@ class TodoyuFormManager {
 	public static function getTypeTemplate($type) {
 		$template	= Todoyu::$CONFIG['FORM']['TYPES'][$type]['template'];
 
-		if( strlen($template) === 0) {
+		if( empty($template) ) {
 			TodoyuLogger::logError('Form Manager Error: No form type template found for type: "' . $type . '"');
 		}
 
 		return $template;
-	}
-
-
-
-	/**
-	 * Prefix the ID attribute of all given records with the given string
-	 *
-	 * @param	Array	$records
-	 * @param	String	$prefix
-	 * @return	Array
-	 */
-	public static function prefixRecordsId(array $records, $prefix) {
-		foreach($records as $index => $recordData) {
-			$records[$index]['id']	= $prefix . $recordData['id'];
-		}
-
-		return $records;
 	}
 
 }

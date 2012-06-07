@@ -366,7 +366,8 @@ Todoyu.FormRecords = Class.create({
 		if( response.responseJSON ) {
 			response.responseJSON.each(function(resultItem){
 				if( !this.isItemInSelection(resultItem.id) ) {
-					this.addResultItem(resultItem.id, resultItem.label);
+					var classname	= resultItem.classname || '';
+					this.addResultItem(resultItem.id, resultItem.label, classname);
 				} else {
 					// Notify about matching items in list?
 				}
@@ -409,9 +410,12 @@ Todoyu.FormRecords = Class.create({
 	 * @method	addResultItem
 	 * @param	{String}	id
 	 * @param	{String}	label
+	 * @param	{String}	[classname]
 	 */
-	addResultItem: function(id, label) {
-		this.results.insert(this.buildResultItem(id, label));
+	addResultItem: function(id, label, classname) {
+		classname	= classname || '';
+
+		this.results.insert(this.buildResultItem(id, label, classname));
 	},
 
 
@@ -495,16 +499,20 @@ Todoyu.FormRecords = Class.create({
 	 * @method	buildResultItem
 	 * @param	{String}	id
 	 * @param	{String}	label
+	 * @param	{String}	[classname]
 	 */
-	buildResultItem: function(id, label) {
+	buildResultItem: function(id, label, classname) {
+		classname	= classname || '';
+
 		var item = new Element('li', {
-			id: this.baseID + '-results-' + id
+			id:			this.baseID + '-results-' + id,
+			class:	classname
 		});
 		var iconEl	= new Element('span', {
-			className: 'icon recordIcon'
+			class: 'icon recordIcon'
 		});
 		var labelEl	= new Element('span', {
-			className: 'label'
+			class: 'label'
 		});
 
 		if( label.length > this.maxLabelLength ) {
