@@ -135,7 +135,13 @@ class TodoyuFormManager {
 	 * @return	String
 	 */
 	public static function getTypeTemplate($type) {
-		return Todoyu::$CONFIG['FORM']['TYPES'][$type]['template'];
+		$template	= Todoyu::$CONFIG['FORM']['TYPES'][$type]['template'];
+
+		if( strlen($template) === 0) {
+			TodoyuLogger::logError('Form Manager Error: No form type template found for type: "' . $type . '"');
+		}
+
+		return $template;
 	}
 
 }
