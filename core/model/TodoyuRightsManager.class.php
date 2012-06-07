@@ -431,7 +431,7 @@ class TodoyuRightsManager {
 
 
 	/**
-	 * Flush all rights from session. The rights will automaticly be reloaded
+	 * Flush all rights from session. The rights will automatically be reloaded
 	 * on the next request on isAllowed. Use this function if you update the rights configuration
 	 */
 	public static function flushRights() {

@@ -308,20 +308,20 @@ class TodoyuMail extends PHPMailer {
 
 
 	/**
-	 * Add a person as receiver
+	 * Add receiver from TodoyuMailReceiver
 	 *
-	 * @param	Integer		$idPerson
+	 * @param	String		$mailReceiverID
 	 * @return	Boolean
 	 */
-	public function addReceiver($idPerson) {
-		$idPerson	= (int) $idPerson;
-		$person		= TodoyuContactPersonManager::getPerson($idPerson);
+	public function addReceiver($mailReceiverID) {
+		$mailReceiver	= TodoyuMailReceiverManager::getMailReceiverObject($mailReceiverID);
 
-		$email		= $person->getEmail();
-		$fullname	= $person->getFullName();
+		$email		= $mailReceiver->getAddress();
+		$fullname	= $mailReceiver->getName();
 
 		$hookParams	= array(
-			'idPerson'		=> $idPerson,
+//			'idPerson'		=> $idPerson,
+			'receiver'		=> $mailReceiver,
 			'TodoyuMail'	=> $this
 		);
 		$email		= TodoyuHookManager::callHookDataModifier('core', 'mail.addReceiver.email', $email, $hookParams);

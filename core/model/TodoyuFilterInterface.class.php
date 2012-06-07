@@ -20,7 +20,7 @@
 
 /**
  * Filter interface
- * All filter main classes have to implement this interface, so they can be called automaticly
+ * All filter main classes have to implement this interface, so they can be called automatically
  *
  * @package		Todoyu
  * @subpackage	Core
