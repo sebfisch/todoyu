@@ -17,6 +17,16 @@
  * This copyright notice MUST APPEAR in all copies of the script.
  *****************************************************************************/
 
+/**
+ * @module	Core
+ */
+
+/**
+ * Methods for handling record items in forms
+ *
+ * @class		FormRecords
+ * @namespace	Todoyu
+ */
 Todoyu.FormRecords = Class.create({
 
 	/**
@@ -113,6 +123,8 @@ Todoyu.FormRecords = Class.create({
 
 	/**
 	 * Observe elements
+	 *
+	 * @method	init
 	 */
 	init: function() {
 		this.searchField.on('keyup', this.onSearchKeyUp.bind(this));
@@ -198,6 +210,8 @@ Todoyu.FormRecords = Class.create({
 	 * Start delayed clear
 	 * The delay is required, because a direct click on the result list
 	 * causes a blur too. In this case, we stop the timeout right after the click
+	 *
+	 * @method	startDelayedClear
 	 */
 	startDelayedClear: function() {
 		this.stopDelayedClear();
@@ -209,6 +223,8 @@ Todoyu.FormRecords = Class.create({
 
 	/**
 	 * Stop the clear timeout
+	 *
+	 * @method	stopDelayedClear
 	 */
 	stopDelayedClear: function() {
 		if( this.timeoutClear ) {
@@ -288,6 +304,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Check whether result list is empty
 	 *
+	 * @method	isResultListEmpty
 	 * @return	{Boolean}
 	 */
 	isResultListEmpty: function() {
@@ -311,6 +328,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Send search request
 	 *
+	 * @method	search
 	 */
 	search: function() {
 		var url		= Todoyu.getUrl(this.config.url.ext, this.config.url.ctrl);
@@ -365,6 +383,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Clear results container
 	 *
+	 * @method	clearResults
 	 */
 	clearResults: function() {
 		this.results.update('');
@@ -374,6 +393,8 @@ Todoyu.FormRecords = Class.create({
 
 	/**
 	 * Search search results and search field
+	 *
+	 * @method	clear
 	 */
 	clear: function() {
 		this.clearResults();
@@ -398,6 +419,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Search search text
 	 *
+	 * @method	getSearchText
 	 * @return	{String}
 	 */
 	getSearchText: function() {
@@ -409,6 +431,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Get selected item IDs
 	 *
+	 * @method	getSelectedItemIDs
 	 * @return	{Array}
 	 */
 	getSelectedItemIDs: function() {
@@ -420,7 +443,7 @@ Todoyu.FormRecords = Class.create({
 	/**
 	 * Add a new item to the selection list
 	 *
-	 * @addSelectedItem
+	 * @method	addSelectedItem
 	 * @param	{String}	id
 	 * @param	{String}	label
 	 * @param	{String}	[title]
@@ -433,7 +456,7 @@ Todoyu.FormRecords = Class.create({
 
 
 	/**
-	 * Remove an item from the selectin list
+	 * Remove an item from the selection list
 	 *
 	 * @method	removeSelectedItem
 	 * @param	{String}	id

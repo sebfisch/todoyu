@@ -144,6 +144,23 @@ class TodoyuFormManager {
 		return $template;
 	}
 
+
+
+	/**
+	 * Prefix the ID attribute of all given records with the given string
+	 *
+	 * @param	Array	$records
+	 * @param	String	$prefix
+	 * @return	Array
+	 */
+	public static function prefixRecordsId(array $records, $prefix) {
+		foreach($records as $index => $recordData) {
+			$records[$index]['id']	= $prefix . $recordData['id'];
+		}
+
+		return $records;
+	}
+
 }
 
 ?>
