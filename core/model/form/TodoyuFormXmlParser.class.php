@@ -234,7 +234,7 @@ class TodoyuFormXmlParser {
 			$parentFieldset->addField($name, $field);
 			return true;
 		} else {
-			TodoyuLogger::logError('Can\'t create field object. Invalid config?', $config);
+			TodoyuLogger::logError('Invalid form config? Can\'t create field object for field: "' . $name . '"', $config);
 			return false;
 		}
 
