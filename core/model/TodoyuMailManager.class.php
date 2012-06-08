@@ -91,40 +91,34 @@ class TodoyuMailManager {
 
 
 	/**
-	 * Get persons the given comment has been sent to by email
+	 * Get receivers the given comment has been emailed to
 	 *
 	 * @param	Integer		$extID			EXTID of extension the record belongs to
 	 * @param	Integer		$type			Type of record (comment, event, etc.) the email refers to
 	 * @param	Integer		$idRecord		ID of record the email refers to
-	 * @return	Array[]
+	 * @return	TodoyuMailReceiver[]
 	 */
-	public static function getEmailPersons($extID, $type, $idRecord) {
+	public static function getEmailReceivers($extID, $type, $idRecord) {
 		$extID		= (int) $extID;
 		$type		= (int) $type;
 		$idRecord	= (int) $idRecord;
 
-		$fields	= '	p.id,
-					p.username,
-					p.email,
-					p.firstname,
-					p.lastname,
-					e.date_create';
-		$tables	= '		ext_contact_person p,' .
-					'	system_log_email e';
+		$fields	= '	e.id_receiver,
+					e.receiver_type';
+		$table	= '		system_log_email e';
 		$where	= '		e.ext				= ' . $extID .
 				'	AND	e.record_type		= \'' . $type . '\' ' .
-				'	AND	e.id_record			= ' . $idRecord .
-				  ' AND	e.id_receiver		= p.id
-				    AND e.receiver_type		= \'contactperson\'
-					AND	p.deleted			= 0';
-		$group	= '	p.id';
-		$order	= '	p.lastname,
-					p.firstname';
-		$indexField	= 'id';
+				'	AND	e.id_record			= ' . $idRecord;
 
-TodoyuLogger::logNotice('TodoyuMailManager::getEmailPersons - @todo this gets only receivers of the type person, other types must be added still.');
+		$receiverRecords	= Todoyu::db()->getArray($fields, $table, $where);
 
-		return Todoyu::db()->getArray($fields, $tables, $where, $group, $order, '', $indexField);
+		$receiverObjects	= array();
+		foreach($receiverRecords as $recordData) {
+			$receiverTuple	= $recordData['receiver_type'] . ':' . $recordData['id_receiver'];
+			$receiverObjects[$receiverTuple]	= TodoyuMailReceiverManager::getMailReceiverObject($receiverTuple);
+		}
+
+		return $receiverObjects;
 	}
 
 }

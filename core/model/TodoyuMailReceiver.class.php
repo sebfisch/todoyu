@@ -38,14 +38,14 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	 *
 	 * @var	String
 	 */
-	public $name;
+	private $name;
 
 	/**
 	 * Email address of receiver
 	 *
 	 * @var	String
 	 */
-	public $address;
+	private $address;
 
 	/**
 	 * Receiver type (e.g. 'ext_contact_person') record ID
@@ -130,6 +130,49 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	 */
 	public function getType() {
 		return $this->type;
+	}
+
+
+
+	/**
+	 * Get receiver tuple ('type:ID')
+	 *
+	 * @return	String
+	 */
+	public function getTuple() {
+	    return $this->type . ':' . $this->idReceiver;
+	}
+
+
+
+	/**
+	 * @return	Array
+	 */
+	public function getData() {
+		return array(
+//			'receiver_type'	=> $this->getType(),
+//			'id_receiver'	=> $this->getIdReceiver(),
+			'name'		=> $this->getName(),
+			'address'		=> $this->getAddress()
+		);
+	}
+
+
+
+	/**
+	 * Get receiver label
+	 *
+	 * @param	Boolean	$withAddress
+	 * @return	String
+	 */
+	public function getLabel($withAddress = true) {
+		$label	= $this->getName();
+
+		if( empty($label) || $withAddress ) {
+			$label .= '&lt;' . $this->getAddress() . '&gt;';
+		}
+
+		return $label;
 	}
 
 }
