@@ -84,6 +84,19 @@ function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
 
 
 /**
+ * Returns a wrapped label tag of a mail receiver, evoking person-info tooltip on rollOver
+ *
+ * @param	Dwoo			$dwoo
+ * @param	Integer			$receiverTuple
+ * @return	String
+ */
+function Dwoo_Plugin_mailreceiverLabel(Dwoo $dwoo, $receiverTuple = 0) {
+	return TodoyuMailReceiverManager::getMailReceiverObject($receiverTuple)->getLabel();
+}
+
+
+
+/**
  * Include given file's content with special- or all applicable characters converted to HTML character entities
  *
  * @package		Todoyu
