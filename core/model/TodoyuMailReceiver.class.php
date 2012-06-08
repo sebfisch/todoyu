@@ -27,21 +27,29 @@
 class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 
 	/**
+	 * Type key, default: 'contactperson'
+	 *
 	 * @var	String
 	 */
-	private $typeKey = 'contactperson';
+	private $type = 'contactperson';
 
 	/**
+	 * The receiver's full name
+	 *
 	 * @var	String
 	 */
 	public $name;
 
 	/**
+	 * Email address of receiver
+	 *
 	 * @var	String
 	 */
 	public $address;
 
 	/**
+	 * Receiver type (e.g. 'ext_contact_person') record ID
+	 *
 	 * @var	Integer
 	 */
 	private $idReceiver;
@@ -116,8 +124,8 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	 *
 	 * @return	String
 	 */
-	public function getReceiverTypeKey() {
-		return $this->typeKey;
+	public function getType() {
+		return $this->type;
 	}
 
 }

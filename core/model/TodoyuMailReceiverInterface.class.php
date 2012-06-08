@@ -29,9 +29,15 @@ interface TodoyuMailReceiverInterface {
 
 	public function __construct($idRecord);
 
+	public function init($name, $address, $idReceiver = 0);
+
 	public function getName();
 
 	public function getAddress();
+
+	public function getIdReceiver();
+
+	public function getType();
 }
 
 ?>

@@ -41,18 +41,20 @@ class TodoyuMailManager {
 	 * @param	Integer		$extID				EXTID of extension the record belongs to
 	 * @param	Integer		$type				Type of record (comment, event, etc.) the email refers to
 	 * @param	Integer		$idRecord			ID of record the email refers to
-	 * @param	Array		$receiverIDs		Receivers (e.g. persons) the comment has been sent to
+	 * @param	Array		$receiverTuples		Mail receiver tuples ('type:ID' or 'ID' which defaults the type to 'contactperson')
 	 */
-	public static function saveMailsSent($extID, $type, $idRecord, array $receiverIDs = array() ) {
+	public static function saveMailsSent($extID, $type, $idRecord, array $receiverTuples = array() ) {
 		$extID		= (int) $extID;
 		$type		= (int) $type;
 		$idRecord	= (int) $idRecord;
-		$receiverIDs	= TodoyuArray::trim($receiverIDs);
+		$receiverTuples	= TodoyuArray::trim($receiverTuples);
 
-//		die( print_r($receiverIDs, true) );
-		foreach($receiverIDs as $idPerson) {
-			$receiverType	= 'contactperson';
-			self::addMailSent($extID, $type, $idRecord, $idPerson, $receiverType);
+		foreach($receiverTuples as $receiverTuple) {
+			$mailReceiver	= TodoyuMailReceiverManager::getMailReceiverObject($receiverTuple);
+
+			$receiverType	= $mailReceiver->getType();
+
+			self::addMailSent($extID, $type, $idRecord, $receiverTuple, $receiverType);
 		}
 	}
 

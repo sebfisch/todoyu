@@ -29,11 +29,11 @@ class TodoyuMailReceiverManager {
 	/**
 	 * Register an email receiver type
 	 *
-	 * @param	String		$typeKey
+	 * @param	String		$type
 	 * @param	String		$callbackObject
 	 */
-	public static function registerType($typeKey, $callbackObject) {
-		Todoyu::$CONFIG['MailReceiver'][$typeKey] = $callbackObject;
+	public static function registerType($type, $callbackObject) {
+		Todoyu::$CONFIG['MailReceiver'][$type] = $callbackObject;
 	}
 
 
@@ -41,34 +41,34 @@ class TodoyuMailReceiverManager {
 	/**
 	 * Get email receiver type configuration
 	 *
-	 * @param	String		$typeKey
-	 * @return	String						Object callback
+	 * @param	String		$type
+	 * @return	String					Object callback
 	 */
-	public static function getTypeConfig($typeKey) {
-		return Todoyu::$CONFIG['MailReceiver'][$typeKey];
+	public static function getTypeConfig($type) {
+		return Todoyu::$CONFIG['MailReceiver'][$type];
 	}
 
 
 
 	/**
-	 * @param	String				$itemID		Can be numeric (= person ID) or prefixed with a registered type key
+	 * @param	String				$receiverTuple		Tuple: 'type:ID', e.g. 'contactperson:232' or just ID, which sets default type: 'contactperson'
 	 * @return	TodoyuMailReceiver
 	 */
-	public static function getMailReceiverObject($itemID) {
-		$itemID	= trim($itemID);
+	public static function getMailReceiverObject($receiverTuple) {
+		$receiverTuple	= trim($receiverTuple);
 
-		if( is_numeric($itemID) ) {
+		if( is_numeric($receiverTuple) ) {
 				// Default type: person
-			$typeKey	= 'contactperson';
-			$idRecord	= $itemID;
+			$type		= 'contactperson';
+			$idRecord	= $receiverTuple;
 		} else {
 				// ID is prefixed with registered key of receiver type
-			list($typeKey, $idRecord)	= explode(':', $itemID);
+			list($type, $idRecord)	= explode(':', $receiverTuple);
 		}
 
-		$objectClass	= self::getTypeConfig($typeKey);
+		$objectClass	= self::getTypeConfig($type);
 		if( !class_exists($objectClass)) {
-			TodoyuLogger::logError('Undefined email Receiver type key: "' . $typeKey . '"', $itemID);
+			TodoyuLogger::logError('Undefined email Receiver type key: "' . $type . '"', $receiverTuple);
 			return false;
 		}
 
@@ -80,11 +80,11 @@ class TodoyuMailReceiverManager {
 	/**
 	 * Check whether the given type key is registered
 	 *
-	 * @param	String		$typeKey
+	 * @param	String		$type
 	 * @return	Boolean
 	 */
-	public static function isTypeRegistered($typeKey) {
-		return array_key_exists($typeKey, Todoyu::$CONFIG['MailReceiver']);
+	public static function isTypeRegistered($type) {
+		return array_key_exists($type, Todoyu::$CONFIG['MailReceiver']);
 	}
 
 }
