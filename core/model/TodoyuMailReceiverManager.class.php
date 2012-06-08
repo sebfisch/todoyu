@@ -58,9 +58,11 @@ class TodoyuMailReceiverManager {
 		$itemID	= trim($itemID);
 
 		if( is_numeric($itemID) ) {
+				// Default type: person
 			$typeKey	= 'contactperson';
 			$idRecord	= $itemID;
 		} else {
+				// ID is prefixed with registered key of receiver type
 			list($typeKey, $idRecord)	= explode(':', $itemID);
 		}
 

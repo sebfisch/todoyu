@@ -36,21 +36,23 @@ class TodoyuMailManager {
 
 
 	/**
-	 * Save log record about persons the given mail has been sent to
+	 * Save log record about receivers (e.g. persons) the given mail has been sent to
 	 *
-	 * @param	Integer		$extID			EXTID of extension the record belongs to
-	 * @param	Integer		$type			Type of record (comment, event, etc.) the email refers to
-	 * @param	Integer		$idRecord		ID of record the email refers to
-	 * @param	Array		$personIDs		Persons the comment has been sent to
+	 * @param	Integer		$extID				EXTID of extension the record belongs to
+	 * @param	Integer		$type				Type of record (comment, event, etc.) the email refers to
+	 * @param	Integer		$idRecord			ID of record the email refers to
+	 * @param	Array		$receiverIDs		Receivers (e.g. persons) the comment has been sent to
 	 */
-	public static function saveMailsSent($extID, $type, $idRecord, array $personIDs = array() ) {
+	public static function saveMailsSent($extID, $type, $idRecord, array $receiverIDs = array() ) {
 		$extID		= (int) $extID;
 		$type		= (int) $type;
 		$idRecord	= (int) $idRecord;
-		$personIDs	= TodoyuArray::intval($personIDs);
+		$receiverIDs	= TodoyuArray::trim($receiverIDs);
 
-		foreach($personIDs as $idPerson) {
-			self::addMailSent($extID, $type, $idRecord, $idPerson);
+//		die( print_r($receiverIDs, true) );
+		foreach($receiverIDs as $idPerson) {
+			$receiverType	= 'contactperson';
+			self::addMailSent($extID, $type, $idRecord, $idPerson, $receiverType);
 		}
 	}
 
@@ -62,13 +64,14 @@ class TodoyuMailManager {
 	 * @param	Integer		$extID			EXTID of extension the record belongs to
 	 * @param	Integer		$type			Type of record (comment, event, etc.) the email refers to
 	 * @param	Integer		$idRecord		ID of record the email refers to
-	 * @param	Integer		$idPerson
+	 * @param	Integer		$idReceiver
+	 * @param	String		$receiverType
 	 */
-	public static function addMailSent($extID, $type, $idRecord, $idPerson) {
+	public static function addMailSent($extID, $type, $idRecord, $idReceiver, $receiverType = 'contactperson') {
 		$extID		= (int) $extID;
 		$type		= (int) $type;
 		$idRecord	= (int) $idRecord;
-		$idPerson	= (int) $idPerson;
+		$idReceiver	= (int) $idReceiver;
 
 		$data	= array(
 			'date_create'		=> NOW,
@@ -76,7 +79,8 @@ class TodoyuMailManager {
 			'ext'				=> $extID,
 			'record_type'		=> $type,
 			'id_record'			=> $idRecord,
-			'id_person_email'	=> $idPerson,
+			'id_receiver'		=> $idReceiver,
+			'receiver_type'		=> $receiverType
 		);
 
 		TodoyuRecordManager::addRecord(self::TABLE, $data);
@@ -108,12 +112,15 @@ class TodoyuMailManager {
 		$where	= '		e.ext				= ' . $extID .
 				'	AND	e.record_type		= \'' . $type . '\' ' .
 				'	AND	e.id_record			= ' . $idRecord .
-				  ' AND	e.id_person_email	= p.id
+				  ' AND	e.id_receiver		= p.id
+				    AND e.receiver_type		= \'contactperson\'
 					AND	p.deleted			= 0';
 		$group	= '	p.id';
 		$order	= '	p.lastname,
 					p.firstname';
 		$indexField	= 'id';
+
+TodoyuLogger::logNotice('TodoyuMailManager::getEmailPersons - @todo this gets only receivers of the type person, other types must be added still.');
 
 		return Todoyu::db()->getArray($fields, $tables, $where, $group, $order, '', $indexField);
 	}

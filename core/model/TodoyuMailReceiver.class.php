@@ -29,12 +29,22 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	/**
 	 * @var	String
 	 */
+	private $typeKey = 'contactperson';
+
+	/**
+	 * @var	String
+	 */
 	public $name;
 
 	/**
 	 * @var	String
 	 */
 	public $address;
+
+	/**
+	 * @var	Integer
+	 */
+	private $idReceiver;
 
 
 
@@ -44,8 +54,10 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	 * @param	Integer		$idPerson
 	 */
 	public function __construct($idPerson) {
+		$idPerson	= intval($idPerson);
+
 		$record	= TodoyuContactPersonManager::getPerson($idPerson);
-		$this->init($record->getFullName(), $record->getEmail());
+		$this->init($record->getFullName(), $record->getEmail(), $idPerson);
 	}
 
 
@@ -53,10 +65,13 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	/**
 	 * Init - set properties: name, email address
 	 *
-	 * @param	String	$name
-	 * @param	String	$address
+	 * @param	String		$name
+	 * @param	String		$address
+	 * @param	Integer		$idReceiver
 	 */
-	public function init($name, $address) {
+	public function init($name, $address, $idReceiver = 0) {
+		$this->idReceiver	= $idReceiver;
+
 		$this->name		= $name;
 		$this->address	= $address;
 	}
@@ -81,6 +96,28 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	 */
 	public function getAddress() {
 		return $this->address;
+	}
+
+
+
+	/**
+	 * Get ID of receiver record (e.g. ext_contact_person)
+	 *
+	 * @return	Integer
+	 */
+	public function getIdReceiver() {
+		return $this->idReceiver;
+	}
+
+
+
+	/**
+	 * Get key of registered receiver type, e.g. 'contactperson'
+	 *
+	 * @return	String
+	 */
+	public function getReceiverTypeKey() {
+		return $this->typeKey;
 	}
 
 }

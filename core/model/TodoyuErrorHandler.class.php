@@ -70,7 +70,8 @@ class TodoyuErrorHandler {
 
 			exit();
 		} else {
-			self::endScriptClean('Database error!' /* . print_r(debug_backtrace(), true)*/ );
+			TodoyuLogger::logError('Database error backtrace: ' . print_r(debug_backtrace(), true));
+			self::endScriptClean('Database error!');
 		}
 	}
 
