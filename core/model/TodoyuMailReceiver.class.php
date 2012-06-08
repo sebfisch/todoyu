@@ -31,7 +31,7 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	 *
 	 * @var	String
 	 */
-	private $type = 'contactperson';
+	private $type;
 
 	/**
 	 * The receiver's full name
@@ -65,7 +65,9 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 		$idPerson	= intval($idPerson);
 
 		$record	= TodoyuContactPersonManager::getPerson($idPerson);
-		$this->init($record->getFullName(), $record->getEmail(), $idPerson);
+		$type	= 'contacterson';
+
+		$this->init($record->getFullName(), $record->getEmail(), $idPerson, $type);
 	}
 
 
@@ -73,11 +75,13 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	/**
 	 * Init - set properties: name, email address
 	 *
-	 * @param	String		$name
-	 * @param	String		$address
-	 * @param	Integer		$idReceiver
+	 * @param	String		$name			Full person name of receiver
+	 * @param	String		$address		Email address of receiver
+	 * @param	Integer		$idReceiver		ID of receiver object record, e.g. in table ext_contact_person
+	 * @param	String		$type			Registered receiver type identifier
 	 */
-	public function init($name, $address, $idReceiver = 0) {
+	public function init($name, $address, $idReceiver = 0, $type = 'contactperson') {
+		$this->type			= $type;
 		$this->idReceiver	= $idReceiver;
 
 		$this->name		= $name;
