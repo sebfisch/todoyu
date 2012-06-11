@@ -46,7 +46,7 @@ class TodoyuPageAssetManager {
 	 * Add a JavaScript file to the page (it will be processed as configured)
 	 *
 	 * @param	String		$pathToFile			Path to original file
-	 * @param	Integer		$position			Position in filelist
+	 * @param	Integer		$position			Position in files list
 	 * @param	Boolean		$compress			Compress content?
 	 * @param	Boolean		$merge				Include file into merge file?
 	 * @param	Boolean		$localize			Parse locale labels
@@ -94,7 +94,7 @@ class TodoyuPageAssetManager {
 	 *
 	 * @param	String		$pathToFile			Path to original file
 	 * @param	String		$media				Media type
-	 * @param	Integer		$position			Position in filelist
+	 * @param	Integer		$position			Position in files list
 	 * @param	Boolean		$compress			Compress content?
 	 * @param	Boolean		$merge				Include file into merge file?
 	 */
@@ -173,7 +173,7 @@ class TodoyuPageAssetManager {
 
 
 	/**
-	 * Build a unique mergefile name
+	 * Build a unique merge file name
 	 * The md5 hash is based on the content of the configuration and the
 	 * modification times of all included files
 	 *
@@ -471,12 +471,10 @@ class TodoyuPageAssetManager {
 	/**
 	 * Parse given SCSS file into cache/css/ and return the new file path
 	 *
-	 * @param	String	$pathScss
-	 * @return	String|Boolean		Path of created CSS file in cache / false if failed
+	 * @param	String			$pathScss
+	 * @return	String|Boolean	Path of created CSS file in cache / false if failed
 	 */
 	public static function parseScssStylesheet($pathScss) {
-		require_once( PATH_LIB . '/php/Phamlp/sass/SassParser.php' );
-
 			// Create unique filename for parsed file
 		$filenameCss= str_replace('.scss', '.css', basename($pathScss));
 		$pathWeb	= TodoyuFileManager::pathWeb($pathScss);
@@ -487,7 +485,7 @@ class TodoyuPageAssetManager {
         	// Parse if not yet
 		if( ! file_exists($pathCssFile) ) {
 			TodoyuFileManager::makeDirDeep($pathCssDir);
-			$sassParser	= self::getSassParser(TodoyuFileManager::getFileName($pathScss));
+			$sassParser	= self::getSassParser($pathScss); /*(TodoyuFileManager::getFileName($pathScss));*/
 
 			$cssCode	= $sassParser->toCss($pathScss, true);
 			$cssCode	= self::rewriteRelativePaths($cssCode, $pathScss, true);
@@ -503,16 +501,26 @@ class TodoyuPageAssetManager {
 	/**
 	 * Get SassParser instance
 	 *
-	 * @param	String	$filename
+	 * @param	String		$pathScss
 	 * @return	SassParser
 	 */
-	public static function getSassParser($filename) {
-		$options	= array(
-			'cache_location'=> PATH_CACHE . DIR_SEP . 'scss',
-			'filename'		=> $filename,
-			'debug_info'	=> false,
-			'quiet'			=> false
-		);
+	public static function getSassParser($pathScss) {
+		require_once( PATH_LIB . '/php/phpsass/SassParser.php');
+
+		$options = array(
+			'filename' 		=> array(
+					'dirname' 	=> dirname($pathScss),
+					'basename'	=> TodoyuFileManager::getFileName($pathScss)
+			),
+	        'style'			=> SassRenderer::STYLE_NESTED,
+	        'cache'			=> false,
+	        'syntax'		=> SassFile::SCSS,
+	        'debug'			=> true,
+	        'callbacks'	=> array(
+					'warn'	=> false,	//'cb_warn',
+					'debug' => false	//'cb_debug'
+			),
+	     );
 
 		return new SassParser($options);
 	}
