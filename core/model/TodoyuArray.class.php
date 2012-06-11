@@ -824,7 +824,11 @@ class TodoyuArray {
 			return $array;
 		}
 
-		$parts	= explode($delimiter, $string, $limit);
+		if( $limit ) {
+			$parts	= explode($delimiter, $string, $limit);
+		} else {
+			$parts	= explode($delimiter, $string);
+		}
 
 		foreach($parts as $value) {
 			$value = trim($value);
