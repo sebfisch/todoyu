@@ -1,14 +1,30 @@
+@import "../../config/theme.scss";
+
 .typeRecords {
+	.results,
+	.selection {
+		list-style:none inside;
+		padding-left: 4px;
+		padding-bottom: 0;
+		line-height:150%;
+
+		li {
+			padding:4px;
+			display:block;
+
+			.recordIcon {
+				margin-right:5px;
+			}
+		}
+	}
+
 	.results {
 		border:1px solid $colorNeutral03;
 		background-color:$colorNeutral00;
 		border-top:none;
 		margin-top:-1px;
-		padding:0px;
-		list-style:none inside;
 
 		li {
-			padding:4px;
 			cursor:pointer;
 
 			&:hover {
@@ -23,21 +39,8 @@
 
 	.selection {
 		margin-top:5px;
-		list-style:none inside;
-		line-height:150%;
 
 		li {
-			clear:both;
-			padding:3px 0;
-
-			span {
-				display:inline-block;
-			}
-
-			.recordIcon {
-				margin-right:5px;
-			}
-
 			.remove {
 				float:right;
 				background:url(../img/icons.png) no-repeat 2px -358px;
@@ -46,3 +49,4 @@
 		}
 	}
 }
+

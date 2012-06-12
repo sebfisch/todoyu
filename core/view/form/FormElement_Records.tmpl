@@ -11,9 +11,9 @@
 	{** Selection list **}
 	<ul id="{$htmlId}-selection" class="selection">
 		{foreach $records record}
-			<li id="{$htmlId}-selection-{$record.id}">
+			<li id="{$htmlId}-selection-{$record.id}" class="{$record.class}">
 				<span class="icon recordIcon"></span>
-				<span class="label">{$record.label}</span>
+				<span class="label">{htmlencode $record.label}</span>
 				<span class="icon remove"></span>
 			</li>
 		{/foreach}

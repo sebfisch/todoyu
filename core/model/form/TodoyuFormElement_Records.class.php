@@ -157,17 +157,6 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 
 
 	/**
-	 * Get storage data as comma separated list (if multiple values are selected)
-	 *
-	 * @return	String
-	 */
-	protected function getStorageDataInternal() {
-		return $this->getValue();
-	}
-
-
-
-	/**
 	 * Validate required status
 	 * The first value shall not be 0 (means please select)
 	 *
