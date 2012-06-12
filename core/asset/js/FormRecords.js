@@ -264,11 +264,12 @@ Todoyu.FormRecords = Class.create({
 	onResultItemSelect: function(event, resultItem) {
 		this.stopDelayedClear();
 
-		var id		= resultItem.id.split('-').last();
-		var label	= resultItem.down('.label').innerHTML.strip();
-		var title	= resultItem.down('.label').title;
+		var id			= resultItem.id.split('-').last();
+		var label		= resultItem.down('.label').innerHTML.strip();
+		var title		= resultItem.down('.label').title;
+		var className	= resultItem.getClassNames().without('hot').join(' ').strip();
 
-		this.addSelectedItem(id, label, title);
+		this.addSelectedItem(id, label, title, className);
 		resultItem.remove();
 
 		this.markFirstAsHot();
@@ -398,8 +399,8 @@ Todoyu.FormRecords = Class.create({
 	 * @method	clear
 	 */
 	clear: function() {
-		this.clearResults();
-		this.searchField.value = '';
+//		this.clearResults();
+//		this.searchField.value = '';
 	},
 
 
@@ -451,9 +452,10 @@ Todoyu.FormRecords = Class.create({
 	 * @param	{String}	id
 	 * @param	{String}	label
 	 * @param	{String}	[title]
+	 * @param	{String}	[className]
 	 */
-	addSelectedItem: function(id, label, title) {
-		this.selection.insert(this.buildSelectedItem(id, label, title));
+	addSelectedItem: function(id, label, title, className) {
+		this.selection.insert(this.buildSelectedItem(id, label, title, className));
 		this.addStorageValue(id, label);
 	},
 
@@ -537,8 +539,9 @@ Todoyu.FormRecords = Class.create({
 	 * @param	{String}	id
 	 * @param	{String}	label
 	 * @param	{String}	[title]
+	 * @param	{String}	[className]
 	 */
-	buildSelectedItem: function(id, label, title) {
+	buildSelectedItem: function(id, label, title, className) {
 		var item = new Element('li', {
 			id:	this.baseID + '-selection-' + id
 		});
@@ -554,6 +557,9 @@ Todoyu.FormRecords = Class.create({
 
 		if( title ) {
 			labelEl.title = title;
+		}
+		if( className ) {
+			item.addClassName(className);
 		}
 
 		labelEl.update(label);
