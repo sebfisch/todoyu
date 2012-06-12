@@ -54,7 +54,7 @@ class TodoyuMailReceiverManager {
 	 * @param	String				$receiverTuple		Tuple: 'type:ID', e.g. 'contactperson:232' or just ID, which sets default type: 'contactperson'
 	 * @return	TodoyuMailReceiver
 	 */
-	public static function getMailReceiverObject($receiverTuple) {
+	public static function getMailReceiver($receiverTuple) {
 		$receiverTuple	= trim($receiverTuple);
 
 		if( is_numeric($receiverTuple) ) {
@@ -68,11 +68,34 @@ class TodoyuMailReceiverManager {
 
 		$objectClass	= self::getTypeConfig($type);
 		if( !class_exists($objectClass)) {
-			TodoyuLogger::logError('Undefined email Receiver type key: "' . $type . '"', $receiverTuple);
+			TodoyuLogger::logError('Unknown email receiver type key in tuple <' . $receiverTuple . '>');
 			return false;
 		}
 
 		return new $objectClass($idRecord);
+	}
+
+
+
+	/**
+	 * Get mail receiver objects for tuples
+	 * Tuples are the indexes
+	 *
+	 * @param	String[]	$receiverTuples
+	 * @return	TodoyuMailReceiverInterface[]
+	 */
+	public static function getMailReceivers(array $receiverTuples) {
+		$receivers	= array();
+
+		foreach($receiverTuples as $receiverTuple) {
+			$receiver	= self::getMailReceiver($receiverTuple);
+
+			if( $receiver ) {
+				$receivers[$receiverTuple] = $receiver;
+			}
+		}
+
+		return $receivers;
 	}
 
 

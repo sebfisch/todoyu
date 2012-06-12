@@ -50,7 +50,7 @@ class TodoyuMailManager {
 		$receiverTuples	= TodoyuArray::trim($receiverTuples);
 
 		foreach($receiverTuples as $receiverTuple) {
-			$mailReceiver	= TodoyuMailReceiverManager::getMailReceiverObject($receiverTuple);
+			$mailReceiver	= TodoyuMailReceiverManager::getMailReceiver($receiverTuple);
 
 			$receiverType	= $mailReceiver->getType();
 
@@ -115,7 +115,7 @@ class TodoyuMailManager {
 		$receiverObjects	= array();
 		foreach($receiverRecords as $recordData) {
 			$receiverTuple	= $recordData['receiver_type'] . ':' . $recordData['id_receiver'];
-			$receiverObjects[$receiverTuple]	= TodoyuMailReceiverManager::getMailReceiverObject($receiverTuple);
+			$receiverObjects[$receiverTuple]	= TodoyuMailReceiverManager::getMailReceiver($receiverTuple);
 		}
 
 		return $receiverObjects;

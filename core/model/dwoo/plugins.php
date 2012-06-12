@@ -91,7 +91,7 @@ function Dwoo_Plugin_countryName(Dwoo $dwoo, $idCountry) {
  * @return	String
  */
 function Dwoo_Plugin_mailreceiverLabel(Dwoo $dwoo, $receiverTuple = 0) {
-	return TodoyuMailReceiverManager::getMailReceiverObject($receiverTuple)->getLabel();
+	return TodoyuMailReceiverManager::getMailReceiver($receiverTuple)->getLabel();
 }
 
 

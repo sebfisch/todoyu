@@ -272,6 +272,17 @@ class TodoyuMail extends PHPMailer {
 
 
 	/**
+	 * Get subject
+	 *
+	 * @return	String
+	 */
+	public function getSubject() {
+		return $this->Subject;
+	}
+
+
+
+	/**
 	 * Set html content of the mail
 	 *
 	 * @param	String		$html
@@ -310,28 +321,26 @@ class TodoyuMail extends PHPMailer {
 	/**
 	 * Set name and email address from mail receiver object of given tuple
 	 *
-	 * @param	String		$receiverTuple		'type:ID' or just 'ID' which defaults the type to 'contactperson'
+	 * @param	TodoyuMailReceiverInterface		$mailReceiver
 	 * @return	Boolean
 	 */
-	public function addReceiver($receiverTuple) {
-		$mailReceiver	= TodoyuMailReceiverManager::getMailReceiverObject($receiverTuple);
-
-		$email		= $mailReceiver->getAddress();
-		$fullname	= $mailReceiver->getName();
+	public function addReceiver(TodoyuMailReceiverInterface $mailReceiver) {
+		$address	= $mailReceiver->getAddress();
+		$name		= $mailReceiver->getName();
 
 		$hookParams	= array(
-			'receiver'		=> $receiverTuple,
-			'TodoyuMail'	=> $this
+			'receiver'	=> $mailReceiver,
+			'mail'		=> $this
 		);
-		$email	= TodoyuHookManager::callHookDataModifier('core', 'mail.addReceiver.email', $email, $hookParams);
+		$address	= TodoyuHookManager::callHookDataModifier('core', 'mail.addReceiver.email', $address, $hookParams);
 
-		if( !$email ) {
+		if( !$address ) {
 			return false;
 		}
 
-		$fullname	= TodoyuHookManager::callHookDataModifier('core', 'mail.addReceiver.fullname', $fullname, $hookParams);
+		$name	= TodoyuHookManager::callHookDataModifier('core', 'mail.addReceiver.fullname', $name, $hookParams);
 
-		$this->AddAddress($email, $fullname);
+		$this->AddAddress($address, $name);
 
 		return true;
 	}

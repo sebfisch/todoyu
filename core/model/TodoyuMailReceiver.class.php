@@ -169,7 +169,7 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 		$label	= $this->getName();
 
 		if( empty($label) || $withAddress ) {
-			$label .= '&lt;' . $this->getAddress() . '&gt;';
+			$label .= ' <' . $this->getAddress() . '>';
 		}
 
 		return $label;

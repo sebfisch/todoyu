@@ -399,8 +399,8 @@ Todoyu.FormRecords = Class.create({
 	 * @method	clear
 	 */
 	clear: function() {
-//		this.clearResults();
-//		this.searchField.value = '';
+		this.clearResults();
+		this.searchField.value = '';
 	},
 
 
