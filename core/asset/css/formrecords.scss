@@ -1,7 +1,7 @@
 .typeRecords {
 	.results {
-		border:1px solid #ccc;
-		background-color:#fcfcfc;
+		border:1px solid $colorNeutral03;
+		background-color:$colorNeutral00;
 		border-top:none;
 		margin-top:-1px;
 		padding:0px;
@@ -12,7 +12,7 @@
 			cursor:pointer;
 
 			&:hover {
-				background-color:#EEE;
+				background-color:$colorNeutral01;
 			}
 
 			.hot {
