@@ -11,7 +11,7 @@
 			size:11px;
 			weight:bold; }
 
-		border-bottom:1px solid $grey02;
+		border-bottom:1px solid $colorNeutral02;
 		cursor:pointer;
 		padding-bottom:2px; }
 
@@ -30,10 +30,10 @@
 		padding:5px 0 6px 5px;
 		height:auto !important;
 		height:1px;
-		border-bottom:1px solid $grey02;
+		border-bottom:1px solid $colorNeutral02;
 
 		.odd {
-			background-color:$grey01; }
+			background-color:$colorNeutral01; }
 
 		&.current {
 			background-color:$colorCorporate02; }

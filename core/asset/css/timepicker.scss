@@ -16,11 +16,11 @@
 		size:16px;
 	}
 	cursor:pointer;
-	background-color:$grey00;
-	border:1px solid $grey03;
-	-webkit-box-shadow:2px 2px 5px $grey06;
-	-moz-box-shadow:2px 2px 5px $grey06;
-	box-shadow:2px 2px 5px $grey06;
+	background-color:$colorNeutral00;
+	border:1px solid $colorNeutral03;
+	-webkit-box-shadow:2px 2px 5px $colorNeutral06;
+	-moz-box-shadow:2px 2px 5px $colorNeutral06;
+	box-shadow:2px 2px 5px $colorNeutral06;
 
 	.dpHour {
 		position:absolute;
@@ -32,7 +32,7 @@
 		float:left;
 		clear:none;
 		z-index:10;
-		border-right:1px solid $grey02; }
+		border-right:1px solid $colorNeutral02; }
 
 	.dpMinute {
 		position:absolute;
@@ -57,7 +57,7 @@
 	top:43px;
 	left:0px;
 	z-index:9;
-	background-color:$grey02;
+	background-color:$colorNeutral02;
 	width:50px;
 	height:22px; }
 

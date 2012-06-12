@@ -380,7 +380,7 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/js/jscalendar/jscalendar.css',
+			'file'		=> 'core/asset/js/jscalendar/jscalendar.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
@@ -479,7 +479,7 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/contentitemtabs.css',
+			'file'		=> 'core/asset/css/contentitemtabs.scss',
 			'position'	=> 10
 		)
 	)

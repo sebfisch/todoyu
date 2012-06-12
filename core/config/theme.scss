@@ -15,27 +15,27 @@ $black:#000000;
 $colorTextGeneral:#010101;
 
 	// Greys for general interface elements (backgrounds, headers, forms, etc)
-$grey00:#f8f8f8;
-$grey01:#eeeeee;
-$grey02:#dddddd;
-$grey03:#cccccc;
-$grey04:#bbbbbb;
-$grey05:#aaaaaa;
-$grey06:#999999; // Most prominent grey
-$grey07:#666666;
-$grey08:#444444;
-$grey09:#222222;
+$colorNeutral00:#f8f8f8;
+$colorNeutral01:#eeeeee;
+$colorNeutral02:#dddddd;
+$colorNeutral03:#cccccc;
+$colorNeutral04:#bbbbbb;
+$colorNeutral05:#aaaaaa;
+$colorNeutral06:#999999; // Most prominent grey
+$colorNeutral07:#666666;
+$colorNeutral08:#444444;
+$colorNeutral09:#222222;
 
 	// Highlightning, todoyu CI: yellow
 $colorHighlight01:#e9eda1;
 
 	// Positive marking, todoyu CI: green
-$colorPositive01:#b0d026;
-$colorPositive02:#c9dbd4;
-$colorPositive03:#c8d215;
-$colorPositive04:#c8ddbe;
-$colorPositive05:#9dc08e;
-$colorPositive06:#779124;
+$colorApprove01:#b0d026;
+$colorApprove02:#c9dbd4;
+$colorApprove03:#c8d215;
+$colorApprove04:#c8ddbe;
+$colorApprove05:#9dc08e;
+$colorApprove06:#779124;
 
 	// Alert marking, todoyu CI: red
 $colorAlert00:#ff0000;
@@ -48,3 +48,4 @@ $blue01:#a8c7de;
 $blue02:#50c5b5;
 $blue03:#4f8ab4;
 $blue04:#24a5c3;
+$blue05:#316AC5;

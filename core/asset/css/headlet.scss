@@ -9,9 +9,9 @@
 	z-index:200;
 
 	ul.content {
-		-webkit-box-shadow:2px 2px 7px $grey06;
-		-moz-box-shadow:2px 2px 7px $grey06;
-		box-shadow:2px 2px 7px $grey06;
+		-webkit-box-shadow:2px 2px 7px $colorNeutral06;
+		-moz-box-shadow:2px 2px 7px $colorNeutral06;
+		box-shadow:2px 2px 7px $colorNeutral06;
 		background-color:$white; }
 
 	> li {
@@ -24,7 +24,7 @@
 			z-index:202;
 
 			> a {
-				border-color:$grey03;
+				border-color:$colorNeutral03;
 				z-index:203;
 				background-color:$white;}
 		}
@@ -45,13 +45,13 @@
 			position:absolute;
 			top:25px;
 			left:-1px;
-			border:1px solid $grey03;
+			border:1px solid $colorNeutral03;
 			z-index:202;
 			background-color:$white;
-			background:-moz-linear-gradient($white, $grey01);
-			background:-webkit-gradient(linear, from($white), to($grey01));
+			background:-moz-linear-gradient($white, $colorNeutral01);
+			background:-webkit-gradient(linear, from($white), to($colorNeutral01));
 			/* filter fails in sass parser, do it without gradient in IE */
-			/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$white' , endColorstr='$grey01');*/
+			/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='$white' , endColorstr='$colorNeutral01');*/
 
 
 			> li {
@@ -71,7 +71,7 @@
 					display:block;
 
 					&.primary {
-						border-bottom:1px solid $grey03; }
+						border-bottom:1px solid $colorNeutral03; }
 				}
 			}
 		}

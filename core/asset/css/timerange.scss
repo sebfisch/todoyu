@@ -108,15 +108,15 @@
 			text-align:center;
 			white-space:nowrap;
 			background:url(../img/bg-button-css3.png) repeat-x 0 50% $white;
-			border:1px solid $grey04;
+			border:1px solid $colorNeutral04;
 			border-radius:13px;
 
 			&:hover {
 				margin:-7px -15px -10px -80px;
 				padding:5px 10px 10px 10px;
-				-webkit-box-shadow:2px 2px 7px $grey06;
-				-moz-box-shadow:2px 2px 7px $grey06;
-				box-shadow:2px 2px 7px $grey06;
+				-webkit-box-shadow:2px 2px 7px $colorNeutral06;
+				-moz-box-shadow:2px 2px 7px $colorNeutral06;
+				box-shadow:2px 2px 7px $colorNeutral06;
 				-webkit-border-radius:5px;
 				-moz-border-radius:5px;
 				border-radius:5px;
@@ -134,16 +134,16 @@
 				display:none;
 				z-index:9999; /* always in front */
 				padding:0px;
-				color:$grey07;
+				color:$colorNeutral07;
 				text-align:left;
 
 				li {
 					cursor:pointer;
 					line-height:18px;
-					border-bottom:1px solid $grey02;
+					border-bottom:1px solid $colorNeutral02;
 
 					&:hover {
-						background-color:$grey01; }
+						background-color:$colorNeutral01; }
 				}
 			}
 		}

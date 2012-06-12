@@ -1,3 +1,7 @@
+@import "../../config/theme.scss";
+
+
+
 /* ----------------------
 	contentItem Tabs
    ---------------------- */
@@ -13,7 +17,7 @@
 }
 
 contentItemTabContainer .tabs li {
-	background-color:#edf1e0 !important;
+	background-color:$colorCorporate01 !important;
 }
 
 .contentItemTabContainer .tabs li:hover,
@@ -34,11 +38,11 @@ contentItemTabContainer .tabs li {
 
 .contentItemTabContainer .tabContent .tabBlock {
 	position:relative;
-	background:#fff;
+	background:$white;
 }
 .contentItemTabContainer .tabContent .tab {
 	padding:5px;
-	background:#fff;
+	background:$white;
 }
 .contentItemTabContainer .tabContent .tabBlock .toggle {
 	display:block;

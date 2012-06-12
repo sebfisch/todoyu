@@ -7,7 +7,7 @@
 	z-index:300;
 	background-color:$white;
 	border:1px solid $white;
-	-moz-box-shadow:2px 2px 7px $grey06;
+	-moz-box-shadow:2px 2px 7px $colorNeutral06;
 
 	div,
 	img {
@@ -18,7 +18,7 @@
 		 	clear:both;
 		 	width:282px;
 		 	padding:5px;
-		 	background-color:$grey01;
+		 	background-color:$colorNeutral01;
 		 	font-weight:bold; }
 
 		&.content {

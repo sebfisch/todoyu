@@ -5,10 +5,10 @@
 .inlineFilters {
 	padding:6px;
 	margin-bottom:10px;
-	background-color:$grey01;
+	background-color:$colorNeutral01;
 
 	.filter {
-		border:1px solid $grey02;
+		border:1px solid $colorNeutral02;
 		background-color:$white;
 		padding:10px;
 		margin-bottom:5px;
@@ -48,10 +48,10 @@
 		/* itemList */
 		ul.itemList li {
 			padding:2px 20px 2px 2px;
-			border-bottom:1px solid $grey02;
+			border-bottom:1px solid $colorNeutral02;
 
 			&:hover {
-				background-color:$grey01; }
+				background-color:$colorNeutral01; }
 
 			span.remove {
 				float:right;

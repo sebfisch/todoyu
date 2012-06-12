@@ -8,12 +8,12 @@
 	position:absolute;
 	top:200px;
 	width:212px;
-	border:1px solid $grey03;
+	border:1px solid $colorNeutral03;
 	background-color:$colorCorporate02;
 	z-index:3000;
-	-webkit-box-shadow:2px 2px 5px $grey06;
-	-moz-box-shadow:2px 2px 5px $grey06;
-	box-shadow:2px 2px 5px $grey06;
+	-webkit-box-shadow:2px 2px 5px $colorNeutral06;
+	-moz-box-shadow:2px 2px 5px $colorNeutral06;
+	box-shadow:2px 2px 5px $colorNeutral06;
 
 	dl {
 		dt {

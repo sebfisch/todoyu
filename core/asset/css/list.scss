@@ -30,7 +30,7 @@ table.withMouseHover tr:hover .odd,
 table.withMouseHover tr:hover .even,
 ul.withMouseHover li.odd:hover,
 ul.withMouseHover li.even:hover {
-	background-color:$grey00 !important; }
+	background-color:$colorNeutral00 !important; }
 
 table.withMouseHover tr.header:hover {
 	background-color:transparent !important; }
@@ -43,7 +43,7 @@ table.withMouseHover tr.header:hover {
 table.list tr.odd,
 table.listsimple tr.odd,
 li.odd {
-	background-color:$grey01; }
+	background-color:$colorNeutral01; }
 
 table.list tr.even,
 table.listsimple tr.even,
@@ -58,6 +58,6 @@ li.even {
 	cursor:pointer;
 
 	&:hover {
-		background-color:$grey00;
+		background-color:$colorNeutral00;
 	}
 }

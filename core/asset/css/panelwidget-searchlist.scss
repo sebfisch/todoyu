@@ -15,7 +15,7 @@
 			width:95%;
 			padding:1px 5px;
 			margin-top:3px;
-			border:1px solid $grey02;
+			border:1px solid $colorNeutral02;
 			border-bottom:none; }
 	}
 
@@ -23,7 +23,7 @@
 		display:inline-block;
 		width:95%;
 		padding:5px;
-		border:1px solid $grey02;
+		border:1px solid $colorNeutral02;
 		border-top:none; }
 
 	li {
@@ -32,7 +32,7 @@
 		overflow:hidden;
 
 		&:hover {
-			background-color:$grey01; }
+			background-color:$colorNeutral01; }
 
 		a {
 			display:block;

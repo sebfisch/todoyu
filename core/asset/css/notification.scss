@@ -25,9 +25,9 @@
 			opacity:.95;
 			filter:unquote("alpha(opacity = 95)");
 			/* cross browser shadow */
-			-webkit-box-shadow:2px 2px 7px $grey06;
-			-moz-box-shadow:2px 2px 7px $grey06;
-			box-shadow:2px 2px 7px $grey06;
+			-webkit-box-shadow:2px 2px 7px $colorNeutral06;
+			-moz-box-shadow:2px 2px 7px $colorNeutral06;
+			box-shadow:2px 2px 7px $colorNeutral06;
 
 			td {
 				&.icon {
@@ -35,7 +35,7 @@
 
 				&.message {
 					font-size:14px;
-					color:$grey09;
+					color:$colorNeutral09;
 					text-align:left; }
 
 				&.close {

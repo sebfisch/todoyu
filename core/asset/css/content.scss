@@ -74,7 +74,7 @@ ul.ulList li.listItem {
 }
 
 ul.ulListDotted li.listItem {
-	border-bottom:1px solid $grey02; }
+	border-bottom:1px solid $colorNeutral02; }
 
 * html ul.ulList li.listItem {
 	overflow:visible;
@@ -95,7 +95,7 @@ li.listItem a.editableItem {
    -----------------*/
 .infoBoxOuter {
 	padding:7px;
-	background-color:$grey01;
+	background-color:$colorNeutral01;
 
 	&.edit form {
 		margin:-7px; }
@@ -157,7 +157,7 @@ div.infoBox {
 
 .headerLine span,
 .button {
-	text-shadow:1px 1px $grey01; }
+	text-shadow:1px 1px $colorNeutral01; }
 
 h1.headerLine {
 	.hasIcon {
@@ -186,13 +186,13 @@ tr.headerLine {
 	th {
 		background:url('../img/bg-headerline.png') repeat-x 0 0;
 		border: {
-			top:1px solid $grey02;
+			top:1px solid $colorNeutral02;
 			bottom:1px solid $white;
 		}
 
 		&:first-child {
 			border: {
-				left:1px solid $grey02;
+				left:1px solid $colorNeutral02;
 				radius:5px 0 0 0;
 			}
 			-moz-border-radius:5px 0 0 0;
@@ -201,7 +201,7 @@ tr.headerLine {
 
 		&:last-child {
 			border: {
-				right:1px solid $grey02;
+				right:1px solid $colorNeutral02;
 				radius:0 5px 0 0;
 			}
 			-moz-border-radius:0 5px 0 0;

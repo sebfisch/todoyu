@@ -8,7 +8,7 @@ form {
 
 	&.fForm {
 		padding:7px;
-		background-color:$grey01; }
+		background-color:$colorNeutral01; }
 
 	.databaseRelation {
 		margin-top:5px;
@@ -98,7 +98,7 @@ form {
 			transform:uppercase;
 		}
 		font-weight:bold;
-		border-bottom:1px solid $grey01;
+		border-bottom:1px solid $colorNeutral01;
 
 		& a.ajaxloader {
 			padding-left:32px;
@@ -189,8 +189,8 @@ select {
 		color:$colorAlert02; }
 
 [disabled] {
-	background-color:$grey02;
-	color:$grey08; }
+	background-color:$colorNeutral02;
+	color:$colorNeutral08; }
 
 
 
@@ -271,7 +271,7 @@ div.fElement {
 
 		.databaseRelation {
 			position:relative;
-			border-top:1px solid $grey03;
+			border-top:1px solid $colorNeutral03;
 
 			.formtrigger {
 				cursor:pointer; }
@@ -316,7 +316,7 @@ div.fElement {
 	Design
    -----------------*/
 input, textarea, select {
-	border-color:$grey06 $grey01 $grey01 $grey06; }
+	border-color:$colorNeutral06 $colorNeutral01 $colorNeutral01 $colorNeutral06; }
 
 fieldset.buttons div.fElement {
 	float:right; }
@@ -338,11 +338,11 @@ form .textAfterField {
 	display:none;
 	padding:10px;
 	margin:1px 2px 0 0;
-	color:$grey07;
+	color:$colorNeutral07;
 	text-align:left;
-	-webkit-box-shadow:2px 2px 7px $grey06;
-	-moz-box-shadow:2px 2px 7px $grey06;
-	box-shadow:2px 2px 7px $grey06;
+	-webkit-box-shadow:2px 2px 7px $colorNeutral06;
+	-moz-box-shadow:2px 2px 7px $colorNeutral06;
+	box-shadow:2px 2px 7px $colorNeutral06;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
 	border-radius:5px;
@@ -372,17 +372,17 @@ form .error.typeCheckbox {
    ------------------------- */
 .acResultContainer {
 	z-index:100;
-	border-top:1px solid $grey03;
-	-webkit-box-shadow:2px 2px 5px $grey06;
-	-moz-box-shadow:2px 2px 5px $grey06;
-	box-shadow:2px 2px 5px $grey06;
+	border-top:1px solid $colorNeutral03;
+	-webkit-box-shadow:2px 2px 5px $colorNeutral06;
+	-moz-box-shadow:2px 2px 5px $colorNeutral06;
+	box-shadow:2px 2px 5px $colorNeutral06;
 
 	ul {
 		padding:0 !important; }
 
 	li{
 		background:$white;
-		border:1px solid $grey03;
+		border:1px solid $colorNeutral03;
 		border-top:none;
 		padding:5px;
 		cursor:pointer;
@@ -468,11 +468,11 @@ form .error.typeCheckbox {
 		li {
 			float:left;
 			cursor:pointer;
-			background-color:$grey01;
-			border:1px dotted $grey06;
+			background-color:$colorNeutral01;
+			border:1px dotted $colorNeutral06;
 
 			&.selected {
-				border:1px solid $grey06;
+				border:1px solid $colorNeutral06;
 				background-color:$colorCorporate02; }
 
 			&:hover {

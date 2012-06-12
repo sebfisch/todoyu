@@ -48,7 +48,7 @@
 		}
 
 		&.item a {
-			color:$grey08;
+			color:$colorNeutral08;
 
 			&.active,
 			&:hover {
@@ -102,9 +102,9 @@ ul#navi-main-list li {
 		margin-top:1px;
 		text-transform:none;
 		clip:rect(0px, 277px, 277px, -7px);
-		-webkit-box-shadow:2px 2px 5px $grey06;
-		-moz-box-shadow:2px 2px 5px $grey06;
-		box-shadow:2px 2px 5px $grey06;
+		-webkit-box-shadow:2px 2px 5px $colorNeutral06;
+		-moz-box-shadow:2px 2px 5px $colorNeutral06;
+		box-shadow:2px 2px 5px $colorNeutral06;
 
 		li {
 			width:100%;

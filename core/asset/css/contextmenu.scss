@@ -7,13 +7,13 @@
 	position:absolute;
 	width:180px;
 	z-index:100000;
-	background-color:$grey01;
-	-webkit-box-shadow:2px 2px 7px $grey06;
-	-moz-box-shadow:2px 2px 7px $grey06;
-	box-shadow:2px 2px 7px $grey06;
+	background-color:$colorNeutral01;
+	-webkit-box-shadow:2px 2px 7px $colorNeutral06;
+	-moz-box-shadow:2px 2px 7px $colorNeutral06;
+	box-shadow:2px 2px 7px $colorNeutral06;
 
 	li {
-		border:1px solid $grey02;
+		border:1px solid $colorNeutral02;
 		margin-bottom:-1px;
 
 		a,
@@ -25,7 +25,7 @@
 			text-align:left;
 
 			background: {
-				color:$grey00;
+				color:$colorNeutral00;
 				repeat:no-repeat; };
 		}
 
@@ -38,9 +38,9 @@
 			position:absolute;
 			z-index:100001;
 			width:156px;
-			-webkit-box-shadow:2px 2px 7px $grey06;
-			-moz-box-shadow:2px 2px 7px $grey06;
-			box-shadow:2px 2px 7px $grey06; }
+			-webkit-box-shadow:2px 2px 7px $colorNeutral06;
+			-moz-box-shadow:2px 2px 7px $colorNeutral06;
+			box-shadow:2px 2px 7px $colorNeutral06; }
 
 		&.header a {
 			padding:0 5px;
@@ -61,10 +61,10 @@
    ----------------------------------- */
 ul.context-menu li a.selected,
 ul.context-submenu li a.selected {
-	background:url(../../asset/img/icons.png) no-repeat 12px -870px $colorPositive02; }
+	background:url(../../asset/img/icons.png) no-repeat 12px -870px $colorApprove02; }
 
 .context-menu li a.disabled,
 .context-submenu li a.disabled {
 	cursor:default !important;
-	color:$grey06 !important;
+	color:$colorNeutral06 !important;
 	background:url(../../asset/img/icons.png) repeat-x 0 -1540px !important; }

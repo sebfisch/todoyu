@@ -1,18 +1,22 @@
+@import "../../config/theme.scss";
+
+
+
 /* The main calendar widget.  DIV containing a table. */
 
 div.calendar {
 	z-index:3000;
-	-webkit-box-shadow:2px 2px 5px #999;
-	-moz-box-shadow:2px 2px 5px #999;
-	box-shadow:2px 2px 5px #999;
+	-webkit-box-shadow:2px 2px 5px $colorNeutral06;
+	-moz-box-shadow:2px 2px 5px $colorNeutral06;
+	box-shadow:2px 2px 5px $colorNeutral06;
 }
 
 div.calendar, div.calendar table {
 	font-size:11px;
-	color:#000;
+	color:$black;
 	cursor:default;
 	font-family:tahoma,verdana,sans-serif;
-	background:#fff url(../../../asset/img/bg-headers.png) no-repeat center -215px;
+	background:$white url(../../../asset/img/bg-headers.png) no-repeat center -215px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -37,7 +41,7 @@ div.calendar .button { /* "<<", "<", ">", ">>" buttons have this class */
 	text-align:center;
 	vertical-align:middle; /* They are the navigation buttons */
 	padding:4px;
-	border-bottom:1px solid #fff;
+	border-bottom:1px solid $white;
 }
 
 div.calendar .nav {
@@ -46,12 +50,12 @@ div.calendar .nav {
 
 div.calendar thead .title {	/* This holds the current "month, year" */
 	text-align:center;
-	color:#000;
+	color:$black;
 	padding:2px;
 	vertical-align:middle;
 	text-transform:uppercase;
 	letter-spacing: 1px;
-	border-bottom:1px solid #fff;
+	border-bottom:1px solid $white;
 }
 
 div.calendar thead .button {
@@ -59,11 +63,11 @@ div.calendar thead .button {
 
 div.calendar thead .headrow { /* Row <TR> containing navigation buttons */
 	background:#D7DCC6;
-	color:#fff;
+	color:$white;
 }
 
 div.calendar thead .headrow .button {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid $colorNeutral03;
 }
 
 div.calendar thead .daynames { /* Row <TR> containing the day names */
@@ -71,40 +75,36 @@ div.calendar thead .daynames { /* Row <TR> containing the day names */
 }
 
 div.calendar thead .name { /* Cells <TD> containing the day names */
-	border-bottom:1px solid #ccc;
+	border-bottom:1px solid $colorNeutral03;
 	padding:2px;
 	text-align:center;
 	text-transform:uppercase;
-	color:#000;
+	color:$black;
 }
 
 div.calendar thead .weekend { /* How a weekend day name shows in header */
-	color:#000;
+	color:$black;
 	text-transform:uppercase;
 }
 
 div.calendar thead .hilite { /* How do the buttons in header appear when hover */
-	background-color:#fff;
-	color:#000;
-}
-
-div.calendar thead .active { /* Active (pressed) buttons in header */
-
+	background-color:$white;
+	color:$black;
 }
 
 /* The body part -- contains all the days in month. */
 
 div.calendar tbody .day { /* Cells <TD> containing month days dates */
 	width:2em;
-	color:#000;
+	color:$black;
 	text-align:right;
 	padding:2px 4px 2px 2px;
-	border-right:1px dotted #818181;
-	border-bottom:1px dotted #818181;
+	border-right:1px dotted $colorNeutral07;
+	border-bottom:1px dotted $colorNeutral07;
 }
 div.calendar tbody .day.othermonth {
 	font-size:80%;
-	color:#bbb;
+	color:$colorNeutral04;
 }
 div.calendar tbody .day.othermonth.oweekend {
 	color:#fbb;
@@ -112,21 +112,21 @@ div.calendar tbody .day.othermonth.oweekend {
 
 div.calendar table .wn {
 	padding:2px 3px 2px 2px;
-	border-right:1px solid #ccc;
-	background:#E4EACE;
+	border-right:1px solid $colorNeutral03;
+	background:$colorCorporate02;
 }
 
 div.calendar tbody .rowhilite td {
-	background:#EDF1E0;
+	background:$colorCorporate01;
 }
 
 div.calendar tbody .rowhilite td.wn {
-	background:#D7DCC6;
+	background:$colorCorporate04;
 }
 
 div.calendar tbody td.hilite { /* Hovered cells <TD> */
-	background:#316AC5;
-	color:#fff;
+	background:$blue05;
+	color:$white;
 }
 
 div.calendar tbody td.active { /* Active (pressed) cells <TD> */
@@ -136,20 +136,20 @@ div.calendar tbody td.active { /* Active (pressed) cells <TD> */
 div.calendar tbody td.selected { /* Cell showing today date */
 	font-weight:bold;
 	padding:1px 3px 1px 1px;
-	background:#fff;
-	color:#000;
+	background:$white;
+	color:$black;
 }
 
 div.calendar tbody td.weekend { /* Cells showing weekend days */
-	color:#999999;
+	color:$colorNeutral06;
 }
 div.calendar tbody td.hilite.weekend { /* Cells showing weekend days */
-	color:#fff;
+	color:$white;
 }
 
 div.calendar tbody td.today { /* Cell showing selected date */
 	font-weight:bold;
-	color:#000;
+	color:$black;
 	background-color:#E4EACE;
 }
 
@@ -158,7 +158,9 @@ div.calendar tbody td.selected {
 	font-weight:normal;
 }
 
-div.calendar tbody .disabled { color:#999; }
+div.calendar tbody .disabled {
+	color:$colorNeutral06;
+}
 
 div.calendar tbody .emptycell { /* Empty cells (the best is to hide them) */
 	visibility:hidden;
@@ -173,20 +175,20 @@ div.calendar tbody .emptycell { /* Empty cells (the best is to hide them) */
 div.calendar tfoot .footrow { /* The <TR> in footer (only one right now) */
 	text-align:center;
 	background:#556;
-	color:#fff;
+	color:$white;
 }
 
 div.calendar tfoot .ttip { /* Tooltip (status bar) cell <TD> */
-	background:#fff;
+	background:$white;
 	color:#445;
-	border-top:1px solid #ccc;
+	border-top:1px solid $colorNeutral03;
 	padding:4px;
 }
 
 div.calendar tfoot .hilite { /* Hover style for buttons in footer */
 	background:#aaf;
 	border:1px solid #04f;
-	color:#000;
+	color:$black;
 	padding:1px;
 }
 
@@ -205,12 +207,12 @@ div.calendar .combo {
 	width:4em;
 	cursor:default;
 	background:#d7dcc6;
-	color:#000;
+	color:$black;
 	font-size:90%;
 	z-index:3000;
-	-webkit-box-shadow:2px 2px 5px #999;
-	-moz-box-shadow:2px 2px 5px #999;
-	box-shadow:2px 2px 5px #999;
+	-webkit-box-shadow:2px 2px 5px $colorNeutral06;
+	-moz-box-shadow:2px 2px 5px $colorNeutral06;
+	box-shadow:2px 2px 5px $colorNeutral06;
 }
 
 div.calendar .combo .label,
@@ -228,14 +230,14 @@ div.calendar .combo .hilite {
 }
 
 div.calendar .combo .active {
-	background:#fff;
+	background:$white;
 	font-weight:bold;
 }
 
 div.calendar td.time {
 	padding:5px 0;
 	text-align:center;
-	background-color:#fff;
+	background-color:$white;
 }
 
 div.calendar td.time .hour,
@@ -244,7 +246,7 @@ div.calendar td.time .ampm {
 	padding:0 3px 0 4px;
 	border:1px solid #889;
 	font-weight:bold;
-	background-color:#fff;
+	background-color:$white;
 }
 
 div.calendar td.time .ampm {
@@ -257,14 +259,14 @@ div.calendar td.time .colon {
 }
 
 div.calendar td.time span.hilite {
-	border-color:#000;
+	border-color:$black;
 	background-color:#667;
-	color:#fff;
+	color:$white;
 }
 
 div.calendar td.time span.active {
 	border-color:#f00;
-	background-color:#000;
+	background-color:$black;
 	color:#0f0;
 }
 
