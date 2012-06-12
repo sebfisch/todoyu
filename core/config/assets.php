@@ -415,7 +415,7 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/infoballoon.css',
+			'file'		=> 'core/asset/css/infoballoon.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
