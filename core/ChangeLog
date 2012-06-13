@@ -21,6 +21,8 @@ core 2.2.1 - not released yet
 	* Added: $allOr parameter to TodoyuSql::buildLikeQueryPart() which changes the outer conjunction to OR
 	* Added: TodoyuForm takes to $params data and makes it available over ->getParams() and ->getParam()
 	* Added: $limit parameter for TodoyuArray::trimExplode() which is passed directly to explode()
+	* Added: TodoyuBaseObject->isUpdated() to check whether the record was updated at least once
+	* Added: TodoyuBaseObject->isFlagSet() as a shortcut to check whether a field has the value 0 or 1 (example: is_active)
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()
 	* Changed: Use js version instead of php the check for the first input in form
 	* Changed: Update form XSD validation to match know field types only

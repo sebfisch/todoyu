@@ -154,11 +154,24 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	/**
 	 * Get data as integer
 	 *
-	 * @param	String		$key
+	 * @param	String		$fieldName
 	 * @return	Integer
 	 */
-	public function getInt($key) {
-		return intval($this->get($key));
+	public function getInt($fieldName) {
+		return intval($this->get($fieldName));
+	}
+
+
+
+	/**
+	 * Check whether a 'flag' field is set
+	 * Flag fields are boolean fields (tinyint(1) with 0 or 1) in the database
+	 *
+	 * @param	String		$flagName
+	 * @return	Boolean
+	 */
+	public function isFlagSet($flagName) {
+		return $this->getInt($flagName) === 1;
 	}
 
 
@@ -282,6 +295,17 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 */
 	public function getDateUpdate() {
 		return $this->getInt('date_update');
+	}
+
+
+
+	/**
+	 * Check whether record was updated at least once
+	 *
+	 * @return	Boolean
+	 */
+	public function isUpdated() {
+		return $this->getDateCreate() !== $this->getDateUpdate();
 	}
 
 
