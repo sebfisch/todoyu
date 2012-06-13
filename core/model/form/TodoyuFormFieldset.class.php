@@ -293,9 +293,9 @@ class TodoyuFormFieldset implements ArrayAccess {
 			$this->elements[$fieldName] = $field;
 		} else {
 				// If position available, insert element at given position
-			$pos = explode(':', $position);
+			list($insertMode, $insertReference) = explode(':', $position, 2);
 
-			$this->elements = TodoyuArray::insertElement($this->elements, $fieldName, $field, $pos[0], $pos[1]);
+			$this->elements = TodoyuArray::insertElement($this->elements, $fieldName, $field, $insertMode, $insertReference);
 		}
 
 		$this->getForm()->registerField($field);
