@@ -33,9 +33,14 @@ class TodoyuFormManager {
 	 * @param	Integer		$idRecord
 	 * @param	Array		$params			Optional parameters for the form hooks
 	 * @param	Array		$formData		Already available form data
-	 * @return	TodoyuForm
+	 * @return	TodoyuForm|Boolean
 	 */
 	public static function getForm($xmlPath, $idRecord = 0, array $params = array(), array $formData = array()) {
+		if( !TodoyuFileManager::isFile($xmlPath) ) {
+			TodoyuLogger::logFatal('Failed to create form. No form XML found at <' . $xmlPath . '>');
+			return false;
+		}
+
 		$form	= new TodoyuForm($xmlPath, $idRecord, $params);
 
 		if( !isset($params['formData']) ) {
