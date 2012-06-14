@@ -917,7 +917,7 @@ class TodoyuDatabase {
 	 * optional where clause to return a subset of the table.
 	 *
 	 * @param	String			$table
-	 * @param	String		$where
+	 * @param	String			$where
 	 * @return	Integer
 	 */
 	public function getRowCount($table, $where = '') {
