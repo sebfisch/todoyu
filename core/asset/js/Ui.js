@@ -70,7 +70,7 @@ Todoyu.Ui = {
 				plugins:				'autoresize,paste',
 				theme:					'advanced',
 				width:					'100%',
-				content_css:			'core/asset/css/tinymce.css',
+				content_css:			'core/asset/css/tinymce.scss',
 				valid_elements:			'strong/b,em/i,p,br,u,ol,ul,li,pre,span[style],hr,a[href|title|target=_blank]',
 					/* Plugin Autoresize */
 				autoresize_max_height:	400,
