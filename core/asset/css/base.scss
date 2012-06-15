@@ -5,8 +5,8 @@
 * {
 	color:$colorTextGeneral;
 	font: {
-		size:11px;
-		family:Arial, Verdana, Helvetica, sans-serif;
+		size:$fontSizeMain;
+		family:$fontFamilyMain;
 	}
 	margin:0;
 	padding:0px;
