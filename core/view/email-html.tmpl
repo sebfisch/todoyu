@@ -54,13 +54,28 @@ td.label {
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
-			<td class="mailHeader">{$headline|default:$subject}</td>
+		<td class="mailHeader">
+			{$headline|default:$subject}
+		</td>
 	</tr>
 	<tr>
-			<td class="mailContent">{$content}</td>
+		<td class="mailContent">
+			{$content}
+		</td>
 	</tr>
+
+	{if $signature}
+		<tr>
+			<td class="signature">
+				{$signature}
+			</td>
+		</tr>
+	{/if}
+
 	<tr>
-			<td class="mailFooter">This email was sent with todoyu: <a href="{constant(TODOYU_URL)}">{constant(TODOYU_URL)}</a></td>
+		<td class="mailFooter">
+			This email was sent with todoyu: <a href="{constant(TODOYU_URL)}">{constant(TODOYU_URL)}</a>
+		</td>
 	</tr>
 </table>
 

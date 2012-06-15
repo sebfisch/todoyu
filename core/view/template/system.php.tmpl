@@ -23,11 +23,7 @@
 Todoyu::$CONFIG['SYSTEM']['name'] 			= '{addslashes($name)}';
 Todoyu::$CONFIG['SYSTEM']['locale']			= '{$locale}';
 Todoyu::$CONFIG['SYSTEM']['email']			= '{addslashes($email)}';
-
 Todoyu::$CONFIG['SYSTEM']['mailer']			= '{$mailer}';
-{if $mailer=='smtp'}
-Todoyu::$CONFIG['SYSTEM']['id_smtpaccount']	= {$idSmtpAccount};
-{/if}
 
 	// Date and time settings
 Todoyu::$CONFIG['SYSTEM']['timezone']		= '{$timezone}';
@@ -42,3 +38,4 @@ Todoyu::$CONFIG['SYSTEM']['logLevel']		= {$logLevel};
 
 
 Todoyu::$CONFIG['SYSTEM']['encryptionKey']	= '{$encryptionKey}';
+

@@ -29,32 +29,39 @@ require_once( PATH_LIB . '/php/phpmailer/class.phpmailer.php' );
 class TodoyuMail extends PHPMailer {
 
 	/**
-	 * Temporary HTML content. Render it before sending
+	 * Temporary HTML content
 	 *
 	 * @var	String
 	 */
-	private $contentHTML = '';
+	protected $contentHTML = '';
+
+	/**
+	 * Temporary text content
+	 *
+	 * @var	String
+	 */
+	protected $contentText = '';
 
 	/**
 	 * Additional CSS styles
 	 *
 	 * @var	Array
 	 */
-	private $cssStyles	= array();
+	protected $cssStyles	= array();
 
 	/**
 	 * Headline of the todoyu email
 	 *
 	 * @var	String
 	 */
-	private $headline	= null;
+	protected $headline	= null;
 
 	/**
 	 * Default config
 	 *
 	 * @var	Array
 	 */
-	private $config = array(
+	protected $config = array(
 		'exceptions'=> true,
 		'mailer'	=> 'mail',
 		'charset'	=> 'utf-8'
@@ -70,35 +77,32 @@ class TodoyuMail extends PHPMailer {
 	public function __construct(array $config = array()) {
 		$config	= TodoyuHookManager::callHookDataModifier('core', 'mail.construct', $config);
 
-		$this->config['mailer']	= Todoyu::$CONFIG['SYSTEM']['mailer'];
+		parent::__construct(!!$this->config['exceptions']);
 
-		if( Todoyu::$CONFIG['SYSTEM']['mailer'] === 'smtp' ) {
-			$idSmtpAccount	= Todoyu::$CONFIG['SYSTEM']['id_smtpaccount'];
-			$this->initSmtpConfig($idSmtpAccount);
-		}
 		$this->config	= TodoyuArray::mergeRecursive($this->config, $config);
 
-		parent::__construct($this->config['exceptions']);
-
 			// Config
-		$this->Mailer	= $this->config['mailer'];
-		$this->CharSet	= $this->config['charset'];
+		$this->initConfig();
+	}
 
-			// Set SMTP config
-		if( $this->config['mailer'] === 'smtp' ) {
-		 	$this->IsSMTP();
-			$this->SMTPAuth	= intval($this->config['smtp_authentication']) === 1;
-			$this->Host		= $this->config['smtp_host'];
-			$this->Port		= intval($this->config['smtp_port']);
 
-			if( intval($this->config['smtp_authentication']) === 1 ) {
-				$this->Username	= $this->config['smtp_username'];
-				$this->Password	= $this->config['smtp_password'];
-			}
 
-			$this->SMTPDebug  = 0; // 0 = disable debug/ 1 = echo errors+messages/ 2 = messages only
-		}
+	/**
+	 * Check whether current person has an SMTP account for sending emails
+	 *
+	 * @return	Boolean
+	 */
+	protected function hasCurrentPersonSmtpSenderAccount() {
+		return Todoyu::person()->hasSmtpAccount();
+	}
 
+
+
+	/**
+	 * Set sender address/name from config and use system mail as fallback
+	 *
+	 */
+	protected function setSenderFromConfig() {
 		if( is_array($this->config['from']) ) {
 			$this->SetFrom($this->config['from']['email'], $this->config['from']['name'], 0);
 		} elseif( is_numeric($this->config['from']) ) {
@@ -111,29 +115,130 @@ class TodoyuMail extends PHPMailer {
 
 
 	/**
-	 * Initialize SMTP configuration: add credentials from given record
+	 * Initialize config
 	 *
-	 * @param	Integer		$idSmtpAccount
 	 */
-	public function initSmtpConfig($idSmtpAccount) {
-		$idSmtpAccount	= intval($idSmtpAccount);
-		$smtpAccount	= TodoyuSysmanagerSmtpAccountManager::getAccount($idSmtpAccount);
+	protected function initConfig() {
+		$this->CharSet	= $this->config['charset'];
 
-		$this->config['smtp_host']			= $smtpAccount->getHost();
-		$this->config['smtp_port']			= $smtpAccount->getPort();
-		$this->config['smtp_authentication']= $smtpAccount->getAuthentication();
-		if( $this->config['smtp_authentication'] === 1 ) {
-			$this->config['smtp_username']	= $smtpAccount->getUsername();
-			$this->config['smtp_password']	= $smtpAccount->getPassword();
+		$this->initMailer();
+
+		if( !$this->hasCurrentPersonSmtpSenderAccount() ) {
+			$this->setSenderFromConfig();
 		}
 	}
 
 
 
 	/**
-	 * Render and set email HTML message
+	 * Initialize mailer config
+	 * Use persons smtp account if set.
+	 * Fallback to system config which can be normal mail() or an smtp account
+	 *
 	 */
-	private function renderHtmlContent() {
+	protected function initMailer() {
+		$currentPerson	= TodoyuAuth::getPerson();
+
+		if( $this->hasCurrentPersonSmtpSenderAccount() ) {
+			$this->initSmtpConfig($currentPerson->getSmtpAccountID());
+		} else {
+			$this->initMailerFromSystem();
+		}
+	}
+
+
+
+	/**
+	 * Initialize mailer from system configuration
+	 */
+	protected function initMailerFromSystem() {
+		$mailerType	= TodoyuMailManager::getSystemMailerType();
+
+		if( strstr($mailerType, '_') !== false ) {
+			list($type, $key) = explode('_', $mailerType, 2);
+
+			switch( $type ) {
+				case 'smtp':
+					$this->initSmtpConfig($key);
+					break;
+
+				default:
+					TodoyuLogger::logError('Unknown mailer type <' . $mailerType . '>');
+					break;
+			}
+		} else {
+			$this->initPhpMail();
+		}
+	}
+
+
+
+	/**
+	 * Init for default mail() sender
+	 *
+	 */
+	protected function initPhpMail() {
+
+	}
+
+
+
+	/**
+	 * Initialize SMTP configuration: add credentials from given record
+	 *
+	 * @param	Integer		$idAccount
+	 */
+	protected function initSmtpConfig($idAccount) {
+		$idAccount	= intval($idAccount);
+		$account	= TodoyuSysmanagerSmtpAccountManager::getAccount($idAccount);
+
+		$this->Mailer	= 'smtp';
+		$this->Host		= $account->getHost();
+		$this->Port		= $account->getPort();
+
+		if( $account->isAuthenticationRequired() ) {
+			$this->SMTPAuth	= true;
+			$this->Username	= $account->getUsername();
+			$this->Password	= $account->getPassword();
+		}
+
+		$senderName	= $account->hasForcedName() ? $account->getForcedName() : Todoyu::person()->getFullName();
+
+		$this->SetFrom($account->getUsername(), $senderName);
+
+		$this->SMTPDebug  = 0; // 0 = disable debug/ 1 = echo errors+messages/ 2 = messages only
+	}
+
+
+
+	/**
+	 * Render and set email HTML message
+	 *
+	 * @deprecated
+	 * @see	setupHtmlContent
+	 */
+	protected function renderHtmlContent() {
+		$this->setupHtmlContent();
+	}
+
+
+
+	/**
+	 * Setup text and html content
+	 *
+	 */
+	protected function setupContent() {
+		$this->setupHtmlContent();
+		$this->setupTextContent();
+	}
+
+
+
+	/**
+	 * Render and set email HTML message
+	 *
+	 */
+	protected function setupHtmlContent() {
 		$tmpl	= 'core/view/email-html.tmpl';
 		$data	= array(
 			'content'	=> $this->fullyQualifyLinksInHtml($this->contentHTML),
@@ -142,9 +247,29 @@ class TodoyuMail extends PHPMailer {
 			'cssStyles'	=> $this->cssStyles
 		);
 
+		if( Todoyu::person()->hasMailSignature() ) {
+			$data['signature'] = Todoyu::person()->getMailSignatureAsHtml();
+		}
+
 		$html	= Todoyu::render($tmpl, $data);
 
 		$this->MsgHTML($html, PATH);
+	}
+
+
+
+	/**
+	 * Prepare text content before sending
+	 *
+	 */
+	protected function setupTextContent() {
+		$text	= $this->contentText;
+
+		if( Todoyu::person()->hasMailSignature() ) {
+			$text .= "\n\n" . Todoyu::person()->getMailSignature();
+		}
+
+		$this->AltBody = $text;
 	}
 
 
@@ -156,7 +281,7 @@ class TodoyuMail extends PHPMailer {
 	 * @param	String		$html
 	 * @return	String
 	 */
-	private function fullyQualifyLinksInHtml($html) {
+	protected function fullyQualifyLinksInHtml($html) {
 		$pattern	= '/href=["\']{1}([^"\']*?)["\']{1}/is';
 		$replace	= array();
 
@@ -210,7 +335,8 @@ class TodoyuMail extends PHPMailer {
 	 * @return	Boolean		Sending was successful
 	 */
 	public function send($catchExceptions = true) {
-		$this->renderHtmlContent();
+		$this->setupContent();
+
 		$status = false;
 
 		if( $catchExceptions ) {
@@ -299,7 +425,7 @@ class TodoyuMail extends PHPMailer {
 	 * @param	String		$text
 	 */
 	public function setTextContent($text) {
-		$this->AltBody = $text;
+		$this->contentText = $text;
 	}
 
 
@@ -391,13 +517,17 @@ class TodoyuMail extends PHPMailer {
 		$idPerson	= (int) $idPerson;
 		$person		= TodoyuContactPersonManager::getPerson($idPerson);
 
-		$email		= $person->getEmail();
+		if( $person->hasSmtpAccount() ) {
+			$this->initSmtpConfig($person->getSmtpAccountID());
+		} else {
+			$email		= $person->getEmail();
 
-		if( !$email ) {
-			return false;
+			if( !$email ) {
+				return false;
+			}
+
+			$this->SetFrom($email, $person->getFullName());
 		}
-
-		$this->SetFrom($email, $person->getFullName());
 
 		return true;
 	}

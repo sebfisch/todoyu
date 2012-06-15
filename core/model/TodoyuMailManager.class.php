@@ -36,6 +36,19 @@ class TodoyuMailManager {
 
 
 	/**
+	 * Get mailer type
+	 * 0 = mail() function
+	 * string = custom type
+	 *
+	 * @return	String
+	 */
+	public static function getSystemMailerType() {
+		return Todoyu::$CONFIG['SYSTEM']['mailer'];
+	}
+
+
+
+	/**
 	 * Save log record about receivers (e.g. persons) the given mail has been sent to
 	 *
 	 * @param	Integer		$extID				EXTID of extension the record belongs to

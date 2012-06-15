@@ -24,6 +24,8 @@ core 2.2.1 - not released yet
 	* Added: TodoyuBaseObject->isUpdated() to check whether the record was updated at least once
 	* Added: TodoyuRecordManager::updateRecordRaw() which bypasses the cleanup of updateRecord()
 	* Added: TodoyuBaseObject->isFlagSet() as a shortcut to check whether a field has the value 0 or 1 (example: is_active)
+	* Added: Support for SMTP accounts. Send emails over a (shared) SMTP account.
+	* Added: Signature in email from contact person record
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()
 	* Changed: Use js version instead of php the check for the first input in form
 	* Changed: Update form XSD validation to match know field types only
