@@ -365,7 +365,7 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/toppanel.css',
+			'file'		=> 'core/asset/css/toppanel.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
@@ -385,7 +385,7 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/js/prototype-window/themes/todoyu.css',
+			'file'		=> 'core/asset/js/prototype-window/themes/todoyu.scss',
 			'media'		=> 'all',
 			'position'	=> 10
 		),
@@ -466,12 +466,12 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/print.css',
+			'file'		=> 'core/asset/css/print.scss',
 			'media'		=> 'print',
 			'position'	=> 10
 		),
 		array(
-			'file'		=> 'core/asset/css/dialogchoice.css',
+			'file'		=> 'core/asset/css/dialogchoice.scss',
 			'position'	=> 10
 		),
 		array(

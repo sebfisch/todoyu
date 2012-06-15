@@ -732,7 +732,7 @@ class TodoyuPageAssetManager {
 	 */
 	function addInternetExplorerAssets() {
 		if( TodoyuBrowserInfo::isIE() ) {
-			self::addStylesheet('core/asset/css/ie.css', 'all', 1000);
+			self::addStylesheet('core/asset/css/ie.scss', 'all', 1000);
 		}
 	}
 
