@@ -76,8 +76,12 @@ class TodoyuFormElement_TextAC extends TodoyuFormElement {
 			// Check label function
 		$labelFunc	= $this->config['config']['acLabel'];
 
-		if( TodoyuFunction::isFunctionReference($labelFunc) && !is_null($this->getValue()) ) {
-			$data['displayLabel'] = TodoyuFunction::callUserFunction($labelFunc, $this->getValue());
+		if( TodoyuFunction::isFunctionReference($labelFunc) ) {
+			if( !is_null($this->getValue()) ) {
+				$data['displayLabel'] = TodoyuFunction::callUserFunction($labelFunc, $this->getValue());
+			}
+		} else {
+			TodoyuLogger::logError('Autocompleter label function not found! <' . $labelFunc . '>');
 		}
 
 		return $data;
