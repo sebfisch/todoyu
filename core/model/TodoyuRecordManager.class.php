@@ -234,6 +234,25 @@ class TodoyuRecordManager {
 
 		$data['date_update'] = NOW;
 
+		return self::updateRecordRaw($table, $idRecord, $data, $noQuoteFields);
+	}
+
+
+
+	/**
+	 * Update a record in the database without any automatic cleanup
+	 *
+	 * @internal
+	 * @note	Use updateRecord() method, except you have very special requirements!
+	 * @param	String		$table
+	 * @param	Integer		$idRecord
+	 * @param	Array		$data
+	 * @param	Array		$noQuoteFields
+	 * @return	Boolean
+	 */
+	public static function updateRecordRaw($table, $idRecord, array $data, array $noQuoteFields = array()) {
+		$idRecord	= (int) $idRecord;
+
 			// Remove from cache
 		self::removeRecordQueryCache($table, $idRecord);
 
