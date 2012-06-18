@@ -51,8 +51,10 @@ class TodoyuMailReceiverManager {
 
 
 	/**
+	 * Get mail receiver for tuple
+	 *
 	 * @param	String				$receiverTuple		Tuple: 'type:ID', e.g. 'contactperson:232' or just ID, which sets default type: 'contactperson'
-	 * @return	TodoyuMailReceiver
+	 * @return	TodoyuMailReceiverInterface
 	 */
 	public static function getMailReceiver($receiverTuple) {
 		$receiverTuple	= trim($receiverTuple);

@@ -19,7 +19,7 @@
 *****************************************************************************/
 
 /**
- * Email receiver type interface
+ * Email receiver interface
  * All email receiver type classes have to implement this interface, so they can be called automatically
  *
  * @package		Todoyu
@@ -27,17 +27,74 @@
  */
 interface TodoyuMailReceiverInterface {
 
-	public function __construct($idRecord);
-
-	public function init($name, $address, $idReceiver = 0);
-
+	/**
+	 * Get the name of the receiver
+	 *
+	 * @return	String
+	 */
 	public function getName();
 
+
+
+	/**
+	 * Get the email address
+	 *
+	 * @return	String
+	 */
 	public function getAddress();
 
-	public function getIdReceiver();
 
+
+	/**
+	 * Get the type
+	 *
+	 * @return	Integer
+	 */
 	public function getType();
+
+
+
+	/**
+	 * Get record ID
+	 *
+	 * @return	Integer
+	 */
+	public function getRecordID();
+
+
+
+	/**
+	 * Disable receiver
+	 *
+	 */
+	public function disable();
+
+
+
+	/**
+	 * Enable receiver
+	 *
+	 */
+	public function enable();
+
+
+
+	/**
+	 * Check whether receiver is disabled
+	 *
+	 * @return	Boolean
+	 */
+	public function isDisabled();
+
+
+
+	/**
+	 * Check whether receiver is enabled
+	 *
+	 * @return	Boolean
+	 */
+	public function isEnabled();
+
 }
 
 ?>

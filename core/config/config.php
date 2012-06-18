@@ -108,6 +108,10 @@ Todoyu::$CONFIG['EXPORT']['CSV']	= array(
 	'useTableHeaders'	=> true				// Print headers in the file?
 );
 
+	// Add email receiver type: 'simple'
+TodoyuMailReceiverManager::registerType('simple', 'TodoyuMailReceiverSimple');
+
+
 Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] = false;
 
 ?>

@@ -109,7 +109,7 @@ class TodoyuMailManager {
 	 * @param	Integer		$extID			EXTID of extension the record belongs to
 	 * @param	Integer		$type			Type of record (comment, event, etc.) the email refers to
 	 * @param	Integer		$idRecord		ID of record the email refers to
-	 * @return	TodoyuMailReceiver[]
+	 * @return	TodoyuMailReceiverInterface[]
 	 */
 	public static function getEmailReceivers($extID, $type, $idRecord) {
 		$extID		= (int) $extID;

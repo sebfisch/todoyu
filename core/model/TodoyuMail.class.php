@@ -57,6 +57,21 @@ class TodoyuMail extends PHPMailer {
 	protected $headline	= null;
 
 	/**
+	 * @var	TodoyuMailReceiverInterface[]		To
+	 */
+	protected $_receivers = array();
+
+	/**
+	 * @var	TodoyuMailReceiverInterface[]		Reply to
+	 */
+	protected $_replyto = array();
+
+	/**
+	 * @var	TodoyuMailReceiverInterface[]		CC
+	 */
+	protected $_cc = array();
+
+	/**
 	 * Default config
 	 *
 	 * @var	Array
@@ -310,7 +325,7 @@ class TodoyuMail extends PHPMailer {
 	 */
 	public function setHeadline($headline) {
 		$headline	= Todoyu::Label($headline);
-		$headline	= TodoyuHookManager::callHookDataModifier('core', 'mail.setHeadline', $headline);
+		$headline	= TodoyuHookManager::callHookDataModifier('core', 'mail.headline', $headline, array($this));
 
 		$this->headline	= $headline;
 	}
@@ -329,19 +344,102 @@ class TodoyuMail extends PHPMailer {
 
 
 	/**
+	 * Task to process before email is sent
+	 *
+	 */
+	protected function beforeSend() {
+		TodoyuHookManager::callHook('core', 'mail.beforeSend', array($this));
+
+			// Prepare content
+		$this->setupContent();
+
+			// Modify subject
+		$this->Subject = TodoyuHookManager::callHookDataModifier('core', 'mail.subject', $this->Subject, array($this));
+
+			// Add all addresses
+		$this->addAllAddresses();
+	}
+
+
+
+	/**
+	 * Add all mail receivers as addresses to the phpmailer object
+	 *
+	 */
+	protected function addAllAddresses() {
+			// Receivers
+		foreach($this->_receivers as $mailReceiver) {
+			/**
+			 * @var	TodoyuMailReceiverInterface	$mailReceiver
+			 */
+			$mailReceiver	= TodoyuHookManager::callHookDataModifier('core', 'mail.receiver', $mailReceiver, array('to'));
+
+			if( $mailReceiver instanceof TodoyuMailReceiverInterface ) {
+				if( $mailReceiver->isEnabled() ) {
+					$this->AddAddress($mailReceiver->getAddress(), $mailReceiver->getName());
+
+					TodoyuLogger::logCore('Add email receiver <' . $mailReceiver->getName() . '><' . $mailReceiver->getAddress() . '>');
+					continue;
+				}
+			}
+			TodoyuLogger::logCore('Rejected email receiver <' . $mailReceiver->getName() . '><' . $mailReceiver->getAddress() . '>');
+		}
+
+			// Reply to
+		foreach($this->_replyto as $mailReceiver) {
+			/**
+			 * @var	TodoyuMailReceiverInterface	$mailReceiver
+			 */
+			$mailReceiver	= TodoyuHookManager::callHookDataModifier('core', 'mail.receiver', $mailReceiver, array('replyto'));
+
+			if( $mailReceiver instanceof TodoyuMailReceiverInterface ) {
+				if( $mailReceiver->isEnabled() ) {
+					parent::AddReplyTo($mailReceiver->getAddress(), $mailReceiver->getName());
+
+					TodoyuLogger::logCore('Add email reply to <' . $mailReceiver->getName() . '><' . $mailReceiver->getAddress() . '>');
+					continue;
+				}
+			}
+			TodoyuLogger::logCore('Rejected email reply to <' . $mailReceiver->getName() . '><' . $mailReceiver->getAddress() . '>');
+		}
+
+
+			// CC
+		foreach($this->_replyto as $mailReceiver) {
+			/**
+			 * @var	TodoyuMailReceiverInterface	$mailReceiver
+			 */
+			$mailReceiver	= TodoyuHookManager::callHookDataModifier('core', 'mail.receiver', $mailReceiver, array('cc'));
+
+			if( $mailReceiver instanceof TodoyuMailReceiverInterface ) {
+				if( $mailReceiver->isEnabled() ) {
+					parent::AddCC($mailReceiver->getAddress(), $mailReceiver->getName());
+
+					TodoyuLogger::logCore('Add email cc <' . $mailReceiver->getName() . '><' . $mailReceiver->getAddress() . '>');
+					continue;
+				}
+			}
+			TodoyuLogger::logCore('Rejected email cc <' . $mailReceiver->getName() . '><' . $mailReceiver->getAddress() . '>');
+		}
+	}
+
+
+
+	/**
 	 * Send mail
 	 *
 	 * @param	Boolean		$catchExceptions		Catch the exceptions and log them automatically. Returns true or false
 	 * @return	Boolean		Sending was successful
 	 */
 	public function send($catchExceptions = true) {
-		$this->setupContent();
+		$this->beforeSend();
 
 		$status = false;
 
 		if( $catchExceptions ) {
 			try {
 				$status = parent::Send();
+				TodoyuLogger::logCore('Sent email - staus: ' . ($status?'ok':'error'));
 			} catch(phpmailerException $e) {
 				TodoyuLogger::logError($e->getMessage());
 			} catch(Exception $e) {
@@ -389,8 +487,6 @@ class TodoyuMail extends PHPMailer {
 	 */
 	public function setSubject($subject) {
 		$subject	= Todoyu::Label($subject);
-
-		$subject	= TodoyuHookManager::callHookDataModifier('core', 'mail.setSubject', $subject);
 
 		$this->Subject = $subject;
 	}
@@ -448,27 +544,9 @@ class TodoyuMail extends PHPMailer {
 	 * Set name and email address from mail receiver object of given tuple
 	 *
 	 * @param	TodoyuMailReceiverInterface		$mailReceiver
-	 * @return	Boolean
 	 */
 	public function addReceiver(TodoyuMailReceiverInterface $mailReceiver) {
-		$address	= $mailReceiver->getAddress();
-		$name		= $mailReceiver->getName();
-
-		$hookParams	= array(
-			'receiver'	=> $mailReceiver,
-			'mail'		=> $this
-		);
-		$address	= TodoyuHookManager::callHookDataModifier('core', 'mail.addReceiver.email', $address, $hookParams);
-
-		if( !$address ) {
-			return false;
-		}
-
-		$name	= TodoyuHookManager::callHookDataModifier('core', 'mail.addReceiver.fullname', $name, $hookParams);
-
-		$this->AddAddress($address, $name);
-
-		return true;
+		$this->_receivers[] = $mailReceiver;
 	}
 
 
@@ -480,18 +558,21 @@ class TodoyuMail extends PHPMailer {
 	 * @return	Boolean
 	 */
 	public function addReplyToPerson($idPerson) {
-		$idPerson	= (int) $idPerson;
-		$person		= TodoyuContactPersonManager::getPerson($idPerson);
+		$idPerson		= (int) $idPerson;
+		$mailReceiver	= new TodoyuContactMailReceiverPerson($idPerson);
 
-		$email		= $person->getEmail();
+		$this->addReplyTo($mailReceiver);
+	}
 
-		if( !$email ) {
-			return false;
-		}
 
-		$this->AddReplyTo($email, $person->getFullName());
 
-		return true;
+	/**
+	 * Add reply to receiver
+	 *
+	 * @param	TodoyuMailReceiverInterface		$mailReceiver
+	 */
+	public function addReplyTo(TodoyuMailReceiverInterface $mailReceiver) {
+		$this->_replyto[] = $mailReceiver;
 	}
 
 
@@ -503,6 +584,18 @@ class TodoyuMail extends PHPMailer {
 	 */
 	public function addCurrentPersonAsReplyTo() {
 		return $this->addReplyToPerson(Todoyu::personid());
+	}
+
+
+
+	/**
+	 * Add CC receiver
+	 *
+	 * @param TodoyuMailReceiverInterface $mailReceiver
+	 * @return bool|void
+	 */
+	public function addCC(TodoyuMailReceiverInterface $mailReceiver) {
+		$this->_cc[] = $mailReceiver;
 	}
 
 

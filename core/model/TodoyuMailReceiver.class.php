@@ -24,103 +24,60 @@
  * @package		Todoyu
  * @subpackage	Core
  */
-class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
+abstract class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 
 	/**
-	 * Type key, default: 'contactperson'
+	 * Type key
 	 *
-	 * @var	String
+	 * @var	String		Type
 	 */
-	private $type;
+	protected $type;
 
 	/**
-	 * The receiver's full name
-	 *
-	 * @var	String
+	 * @var	Integer		Record ID
 	 */
-	private $name;
+	protected $idRecord = 0;
 
 	/**
-	 * Email address of receiver
-	 *
-	 * @var	String
+	 * @var	Boolean		Receiver is enabled
 	 */
-	private $address;
-
-	/**
-	 * Receiver type (e.g. 'ext_contact_person') record ID
-	 *
-	 * @var	Integer
-	 */
-	private $idReceiver;
+	protected $enabled = true;
 
 
 
 	/**
-	 * Construct object
+	 * Initialize
 	 *
-	 * @param	Integer		$idPerson
+	 * @param	String		$type
+	 * @param	Integer		$idRecord
 	 */
-	public function __construct($idPerson) {
-		$idPerson	= intval($idPerson);
-
-		$record	= TodoyuContactPersonManager::getPerson($idPerson);
-		$type	= 'contacterson';
-
-		$this->init($record->getFullName(), $record->getEmail(), $idPerson, $type);
+	protected function __construct($type, $idRecord) {
+		$this->type		= trim($type);
+		$this->idRecord	= intval($idRecord);
 	}
 
 
 
 	/**
-	 * Init - set properties: name, email address
-	 *
-	 * @param	String		$name			Full person name of receiver
-	 * @param	String		$address		Email address of receiver
-	 * @param	Integer		$idReceiver		ID of receiver object record, e.g. in table ext_contact_person
-	 * @param	String		$type			Registered receiver type identifier
-	 */
-	public function init($name, $address, $idReceiver = 0, $type = 'contactperson') {
-		$this->type			= $type;
-		$this->idReceiver	= $idReceiver;
-
-		$this->name		= $name;
-		$this->address	= $address;
-	}
-
-
-
-	/**
-	 * Get person name of IMAP address
-	 *
-	 * @return	String
-	 */
-	public function getName() {
-		return $this->name;
-	}
-
-
-
-	/**
-	 * Get email address of IMAP address
-	 *
-	 * @return	String
-	 */
-	public function getAddress() {
-		return $this->address;
-	}
-
-
-
-	/**
-	 * Get ID of receiver record (e.g. ext_contact_person)
+	 * Get person ID if available
 	 *
 	 * @return	Integer
 	 */
-	public function getIdReceiver() {
-		return $this->idReceiver;
+	public function getPersonID() {
+		return 0;
 	}
 
+
+
+	/**
+	 * Check whether person is available
+	 * Not available by default
+	 *
+	 * @return	Boolean
+	 */
+	public function hasPerson() {
+		return false;
+	}
 
 
 	/**
@@ -135,34 +92,31 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 
 
 	/**
+	 * Get record ID
+	 *
+	 * @return	Integer
+	 */
+	public function getRecordID() {
+		return $this->idRecord;
+	}
+
+
+
+	/**
 	 * Get receiver tuple ('type:ID')
 	 *
 	 * @return	String
 	 */
 	public function getTuple() {
-	    return $this->type . ':' . $this->idReceiver;
+	    return $this->getType() . ':' . $this->getRecordID();
 	}
 
 
 
 	/**
-	 * @return	Array
-	 */
-	public function getData() {
-		return array(
-//			'receiver_type'	=> $this->getType(),
-//			'id_receiver'	=> $this->getIdReceiver(),
-			'name'		=> $this->getName(),
-			'address'		=> $this->getAddress()
-		);
-	}
-
-
-
-	/**
-	 * Get receiver label
+	 * Get label
 	 *
-	 * @param	Boolean	$withAddress
+	 * @param	Boolean		$withAddress
 	 * @return	String
 	 */
 	public function getLabel($withAddress = true) {
@@ -173,6 +127,62 @@ class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 		}
 
 		return $label;
+	}
+
+
+
+	/**
+	 * Check whether receiver is enabled
+	 *
+	 * @return	Boolean
+	 */
+	public function isEnabled() {
+		return $this->enabled;
+	}
+
+
+
+	/**
+	 * Check whether receiver is disabled
+	 *
+	 * @return	Boolean
+	 */
+	public function isDisabled() {
+		return !$this->enabled;
+	}
+
+
+
+	/**
+	 * Enable receiver
+	 *
+	 */
+	public function enable() {
+		$this->enabled = true;
+	}
+
+
+
+	/**
+	 * Disable receiver
+	 *
+	 */
+	public function disable() {
+		$this->enabled = false;
+	}
+
+
+
+	/**
+	 * Get data
+	 *
+	 * @return	Array
+	 */
+	public function getData() {
+		return array(
+			'name'		=> $this->getName(),
+			'address'	=> $this->getAddress()
+		);
 	}
 
 }
