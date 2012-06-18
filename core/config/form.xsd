@@ -285,11 +285,10 @@
 	</xs:element>
 	<xs:element name="isNotEmpty">
 		<xs:complexType>
-			<xs:simpleContent>
-				<xs:extension base="xs:string">
-					<xs:attribute type="xs:string" name="msg"/>
-				</xs:extension>
-			</xs:simpleContent>
+			<xs:all>
+				<xs:element name="allow" type="xs:anyType" minOccurs="0"/>
+			</xs:all>
+			<xs:attribute type="xs:string" name="msg"/>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="lazyInit" type="xs:string"/>
