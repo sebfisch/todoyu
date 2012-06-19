@@ -1,6 +1,8 @@
 todoyu core changelog
 
 core 2.2.1 - not released yet
+	* Changed: extracted select-group-options from template
+	* Added: additional definition in form.xsd
 	* Bugfix: TodoyuSql::buildInListQueryPart() value when negated and input is empty
 	* Bugfix: Duration Pickers configuration failed
 	* Bugfix: Class for fieldset didn't work properly/clean
