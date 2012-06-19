@@ -179,6 +179,7 @@ abstract class TodoyuActionController {
 	 * extended object, print error
 	 *
 	 * @param	Array		$params
+	 * @return	String
 	 */
 	public function defaultAction(array $params) {
 		die('THERE IS NO DEFAULT ACTION DEFINED');
