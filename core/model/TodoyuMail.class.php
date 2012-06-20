@@ -531,7 +531,7 @@ class TodoyuMail extends PHPMailer {
 	 *
 	 * @param	String		$path
 	 * @param	String		$name
-	 * @return	Boolean
+ 	 * @return	Boolean
 	 */
 	public function addAttachment($path, $name) {
 		$path	= TodoyuFileManager::pathAbsolute($path);
