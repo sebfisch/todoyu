@@ -200,7 +200,7 @@ body {
 				float:left;
 				clear:none;
 				margin:0px;
-				padding:0 0 0 10px;
+				padding:0 0 0 8px;
 				line-height:26px;
 				width:205px;
 				overflow:hidden;
@@ -218,21 +218,11 @@ body {
 		}
 	}
 
-	&.hasIcon span.title {
-		padding-left:27px;
-		background: {
-			image:url(../img/icons.png);
-			repeat:no-repeat;
-			position:1000px 50%;
-		}
-	}
-
 	.content select {
 		border:0 none;
 
 		option {
 			padding:2px;
-			background-color:$white;
 			border-bottom:1px solid $colorNeutral02;
 			color:$colorNeutral08;
 
