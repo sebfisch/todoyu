@@ -324,8 +324,27 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 	public function getValue() {
 		$value	= parent::getValue();
 
-		if( ! is_array($value) ) {
+		if( !is_array($value) ) {
 			$value = array($value);
+		}
+
+		return $value;
+	}
+
+
+
+	/**
+	 * Get selected value of select is not multiple
+	 *
+	 * @param	Boolean		$asInt		Convert value to integer
+	 * @return	String|Integer
+	 */
+	public function getSelectedValue($asInt = false) {
+		$values	= $this->getValue();
+		$value	= reset($values);
+
+		if( $asInt ) {
+			$value = intval($value);
 		}
 
 		return $value;
