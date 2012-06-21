@@ -231,7 +231,7 @@ class Todoyu {
 	 */
 	public static function getLocale() {
 		if( is_null(self::$locale) ) {
-			self::$locale = self::$CONFIG['SYSTEM']['locale'];
+			self::$locale = self::getSystemLocale();
 
 			$cookieLocale	= TodoyuLocaleManager::getCookieLocale();
 			$browserLocale	= TodoyuBrowserInfo::getBrowserLocale();
@@ -249,6 +249,19 @@ class Todoyu {
 		}
 
 		return self::$locale;
+	}
+
+
+
+	/**
+	 * Get base locale defined for system
+	 * This is the last fallback locale if not other config is found
+	 *
+	 * @see		getLocale		For user defined locale
+	 * @return	String
+	 */
+	public static function getSystemLocale() {
+		return self::$CONFIG['SYSTEM']['locale'];
 	}
 
 

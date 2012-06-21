@@ -140,7 +140,7 @@ class TodoyuLocaleManager {
 	/**
 	 * Get option array with locale key and label
 	 *
-	 * @return	Array
+	 * @return	Array[]
 	 */
 	public static function getLocaleOptions() {
 		$locales	= self::getAvailableLocales();

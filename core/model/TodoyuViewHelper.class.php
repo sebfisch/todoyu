@@ -45,6 +45,18 @@ class TodoyuViewHelper {
 		return $options;
 	}
 
+
+
+	/**
+	 * Get locale options
+	 *
+	 * @param	TodoyuFormElement	$field
+	 * @return	Array
+	 */
+	public static function getLocaleOptions(TodoyuFormElement $field) {
+		return TodoyuSysmanagerSystemConfigManager::getLocaleOptions();
+	}
+
 }
 
 ?>
