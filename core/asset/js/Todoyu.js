@@ -175,7 +175,9 @@ var Todoyu = {
 		}
 
 		if( typeof params === 'object' ) {
-			url += '&' + Object.toQueryString(params);
+			if( Object.keys(params).size() > 0 ) {
+				url += '&' + Object.toQueryString(params);
+			}
 		}
 
 		if( hash ) {
@@ -234,7 +236,7 @@ var Todoyu = {
 		newWindow	= newWindow ? newWindow : false;
 		var url		=  this.getUrl(extKey, controller, params);
 
-		if( Object.isString(hash) ) {
+		if( hash ) {
 			this.goToHashURL(url, hash, newWindow, windowName);
 		} else {
 			if( newWindow === false ) {

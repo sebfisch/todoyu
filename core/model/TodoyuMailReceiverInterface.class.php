@@ -64,6 +64,16 @@ interface TodoyuMailReceiverInterface {
 
 
 	/**
+	 * Get tuple
+	 * Combined type and record ID
+	 *
+	 * @return	String
+	 */
+	public function getTuple();
+
+
+
+	/**
 	 * Disable receiver
 	 *
 	 */
