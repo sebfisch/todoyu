@@ -38,7 +38,7 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Fieldsets in the form which can contain fields
 	 *
-	 * @var	Array
+	 * @var	TodoyuFormFieldset[]
 	 */
 	protected $fieldsets = array();
 
@@ -1077,6 +1077,17 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
+	 * Add js callback for form display
+	 *
+	 * @param	String		$jsCallback
+	 */
+	public function addOnDisplayJsCallback($jsCallback) {
+		$this->setAttribute('onDisplayJsCallback', $jsCallback);
+	}
+
+
+
+	/**
 	 * Check forms field values being valid
 	 *
 	 * @return	Boolean
@@ -1179,7 +1190,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @return	String
 	 */
-	private function renderFieldsets() {
+	protected function renderFieldsets() {
 		$content = '';
 
 		foreach($this->fieldsets as $fieldset) {
@@ -1196,11 +1207,11 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @return	Array
 	 */
-	private function getData() {
+	protected function getData() {
 		$this->setDefaultAttributes();
 		$this->updateFieldValues();
 
-		$data	= $this->getParsedData();
+		$data	= $this->getParsedAttributes();
 
 		$data['hiddenFields']	= $this->renderHiddenFields();
 		$data['fieldsets']		= $this->renderFieldsets();
@@ -1218,14 +1229,14 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 * @return	Array
 	 */
-	private function getParsedData() {
-		$data	= array();
+	protected function getParsedAttributes() {
+		$parsedAttributes = array();
 
 		foreach($this->attributes as $attrName => $attrValue) {
-			$data[$attrName] = $this->parseWithFormData($attrValue);
+			$parsedAttributes[$attrName] = $this->parseWithFormData($attrValue);
 		}
 
-		return $data;
+		return $parsedAttributes;
 	}
 
 
@@ -1235,7 +1246,7 @@ class TodoyuForm implements ArrayAccess {
 	 *
 	 *
 	 */
-	private function setDefaultAttributes() {
+	protected function setDefaultAttributes() {
 		$this->setAttributeIfNotSet('action', TodoyuRequest::getRequestUrl());
 		$this->setAttributeIfNotSet('method', 'post');
 
@@ -1249,7 +1260,7 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Remove all fieldsets which contain no elements
 	 */
-	private function removeEmptyFieldsetsBeforeRendering() {
+	protected function removeEmptyFieldsetsBeforeRendering() {
 		$allFieldsetNames		= $this->getFieldsetNames();
 		$activeFieldsetNames	= array();
 

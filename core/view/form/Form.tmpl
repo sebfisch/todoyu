@@ -9,11 +9,18 @@
 	</form>
 
 	<script type="text/javascript">
-	{if $extraOnDisplay}{$extraOnDisplay}{/if}
 	{if $isAjax}
 		Todoyu.Form.onFormDisplay('{$htmlId}', '{$name}', '{$id}');
+		{if $onDisplayJsCallback}{$onDisplayJsCallback};{/if}
+		{if $extraOnDisplay}{$extraOnDisplay};{/if}
 	{else}
-		document.observe('dom:loaded', function(){ Todoyu.Form.onFormDisplay.bind(Todoyu.Form, '{$htmlId}', '{$name}', '{$id}').defer(); });
+		document.observe('dom:loaded', function(){
+			function() {
+				Todoyu.Form.onFormDisplay('{$htmlId}', '{$name}', '{$id}');
+				{if $onDisplayJsCallback}{$onDisplayJsCallback};{/if}
+				{if $extraOnDisplay}{$extraOnDisplay};{/if}
+			}.defer();
+		});
 	{/if}
 	</script>
 {/if}

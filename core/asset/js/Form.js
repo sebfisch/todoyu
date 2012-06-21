@@ -70,6 +70,7 @@ Todoyu.Form = {
 	 */
 	callFormDisplayHooks: function(idForm, name, idRecord) {
 		Todoyu.Hook.exec('form.display', idForm, name, idRecord);
+		Todoyu.Hook.exec('form.display.' + name, idForm, name, idRecord);
 	},
 
 

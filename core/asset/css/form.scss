@@ -8,7 +8,8 @@ form {
 
 	&.fForm {
 		padding:7px;
-		background-color:$colorNeutral01; }
+		background-color:$colorNeutral01;
+	}
 
 	.databaseRelation {
 		margin-top:5px;
@@ -16,28 +17,33 @@ form {
 
 		&.isPreferred1 div.formtrigger span.label {
 			padding-left:20px;
-			background:url(../img/icons.png) no-repeat 0 -1790px; }
+			background:url(../img/icons.png) no-repeat 0 -1790px;
+		}
 		&.isPreferred0 div.formtrigger span.label {
 			padding-left:20px;
-			background:url(../img/icons.png) no-repeat 0 -1825px; }
+			background:url(../img/icons.png) no-repeat 0 -1825px;
+		}
 	}
 
 	div.typeDatabaseRelation div.formtrigger span.label.expanded {
-		font-weight:bold; }
+		font-weight:bold;
+	}
 
 	&.formGeneral,
 	&.formPerson,
 	&.formRecord,
 	&.formRightseditor,
 	&.formConfig {
-		padding-top:10px; }
+		padding-top:10px;
+	}
 	/* -------------------------------------------
 		End: Special styles for involved persons
 	---------------------------------------------- */
 }
 
 * html form {
-	height:1%; }
+	height:1%;
+}
 
 	fieldset {
 		position:relative;
@@ -52,16 +58,19 @@ form {
 			margin:0px;
 			padding:0px;
 			border:none;
-			background:none; }
+			background:none;
+		}
 
 	}
 
 	fieldset fieldset {
 		width:100%;
-		margin-top:10px; }
+		margin-top:10px; 
+	}
 
 	* html fieldset {
-		height:1%;	/* IE6 */ }
+		height:1%;	/* IE6 */ 
+	}
 
 
 
@@ -74,16 +83,17 @@ form {
 		text-align:right;
 
 		.fElement {
-			margin-left:5px; }
+			margin-left:5px; 
+		}
 	}
 
-	.fForm fieldset#config-fieldset-save{
+	.fForm fieldset#config-fieldset-save {
 		padding:10px 0; }
 
 	legend,
 	.fForm fieldset fieldset legend,
 	.fForm .buttons legend,
-	.fForm legend#config-fieldset-save-legend{
+	.fForm legend#config-fieldset-save-legend {
 		display:none;
 	}
 
@@ -120,18 +130,21 @@ input {
 	-ms-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	-khtml-box-sizing:border-box;
-	-o-box-sizing:border-box; }
+	-o-box-sizing:border-box;
+}
 
 	input.checkbox,
 	input.radio,
 	input.button {
 		border:none;
-		width:auto; }
+		width:auto;
+	}
 
 	input.datetime {
 		float:left;
 		width:95px;
-		margin-right:5px; }
+		margin-right:5px;
+	}
 
 	input.textAC {
 		background: {
@@ -140,57 +153,69 @@ input {
 			position:6px -808px;
 			color:$colorCorporate02;
 		}
-		padding-left:25px; }
+		padding-left:25px;
+	}
 
 
 textarea {
-	font-size:1.0em; }
+	font-size:1.0em;
+}
 
 .scrollbarHide select {
 	min-width:107%;
 	width:100% !important;
-	width:107%; }
+	width:107%;
+}
 
 select {
 	text-transform:none;
 
 	&.auto {
-		width:auto; }
+		width:auto;
+	}
 
 	&.day,
 	&.month {
 		width:40px;
-		margin-right:2px; }
+		margin-right:2px;
+	}
 
 	&.monthnames {
-		margin-left:2px; }
+		margin-left:2px;
+	}
 
 	&.year {
-		width:60px; }
+		width:60px;
+	}
 
 	&.datetime {
-		width:150px; }
+		width:150px;
+	}
 
 	option {
 		text-transform:none;
-		padding-left:5px; }
+		padding-left:5px;
+	}
 
 	optgroup {
 		padding-top:10px;
 		font-size:11px;
 
 		option {
-			background:$white; }
+			background:$white;
+		}
 	}
 }
 
 	select option.error,
 	selectgrouped option.error {
-		color:$colorAlert02; }
+		color:$colorAlert02;
+	}
 
 [disabled] {
 	background-color:$colorNeutral02;
-	color:$colorNeutral08; }
+	color:$colorNeutral08;
+}
 
 
 
@@ -209,7 +234,8 @@ div.fElement {
 		float:left;
 		width:140px;
 		padding:2px 0;
-		text-align:left; }
+		text-align:left;
+	}
 
 	.fField {
 		/* input */
@@ -218,19 +244,27 @@ div.fElement {
 		margin-left:5px;
 
 		.fLabel {
-			width:100px; }
+			width:100px;
+		}
 
 		.fField {
-			width:215px; }
+			width:215px;
+		}
 	}
 
 	.fClear {
-		clear:both; }
+		clear:both;
+	}
 }
 
-.fField span.commenttext a,
-.fField span.commenttext a:link {
-	text-decoration:underline; }
+.fField {
+	span.commenttext {
+		a,
+		a:link {
+			text-decoration:underline;
+		}
+	}
+}
 
 
 
@@ -240,41 +274,56 @@ div.fElement {
 	div.typeDate .fField input {
 		float:left;
 		width:70px;
-		margin-right:5px; }
+		margin-right:5px;
+	}
 
 	div.typeDatetime .fField input {
 		float:left;
 		width:90px;
-		margin-right:5px; }
+		margin-right:5px;
+	}
 
 	div.typeTime .fField input,
 	div.typeDuration .fField input {
 		float:left;
-		width:33px; }
+		width:33px;
+	}
 
 	/* Checkbox in a fField element. */
 	/* Example:Address in Ext Contact */
-	.typeCheckbox .fField {
-		position:relative;
-		top:3px; }
-
-	div.typeCheckbox .fField input.checkbox {
-		width:auto; }
+	.typeCheckbox {
+		.fField {
+			position:relative;
+			top:3px;
+			
+			input.checkbox {
+				width:auto;
+			}
+		}
+		.fLabel {
+			label {
+				cursor: pointer;
+			}
+		}
+	}
 
 	.typeDatabaseRelation {
 		.foreignRecordsActionControl {
-			display:block; }
+			display:block;
+		}
 
 		button.addForeignRecord .icon {
 			background:url(../img/icons.png) no-repeat 6px -567px;
-			width:23px; }
+			width:23px;
+		}
 
 		.databaseRelation {
 			position:relative;
 			border-top:1px solid $colorNeutral03;
 
 			.formtrigger {
-				cursor:pointer; }
+				cursor:pointer;
+			}
 
 			span {
 				&.additionalStuff {
@@ -283,7 +332,8 @@ div.fElement {
 					right:0px;
 
 					a.remove {
-						background:url(../img/icons.png) no-repeat 0 -539px; }
+						background:url(../img/icons.png) no-repeat 0 -539px;
+					}
 				}
 			}
 		}
@@ -291,24 +341,29 @@ div.fElement {
 
 	button.updateDatabase .icon {
 		width:24px;
-		background:url(../img/icons.png) no-repeat 4px -928px; }
+		background:url(../img/icons.png) no-repeat 4px -928px;
+	}
 
 	.fElement .fField.hasWizard {
 		input {
 			width:90%;
-			float:left; }
+			float:left;
+		}
 
 		.wizardIcon {
-			cursor:pointer; }
+			cursor:pointer;
+		}
 	}
 
 	fieldset.buttons div,
 	fieldset.buttons div.fElement .fField {
 		float:left;
-		width:auto; }
+		width:auto;
+	}
 	fieldset.buttons div.fElement .fLabel {
 		display:none;
-		width:auto; }
+		width:auto;
+	}
 
 
 
@@ -316,16 +371,19 @@ div.fElement {
 	Design
    -----------------*/
 input, textarea, select {
-	border-color:$colorNeutral06 $colorNeutral01 $colorNeutral01 $colorNeutral06; }
+	border-color:$colorNeutral06 $colorNeutral01 $colorNeutral01 $colorNeutral06;
+}
 
 fieldset.buttons div.fElement {
-	float:right; }
+	float:right;
+}
 
 	/* --- right floating Input --- */
 .formElement .formField {
 	width:58%;
 	display:inline;
-	float:right; }
+	float:right;
+}
 
 
 
@@ -346,24 +404,29 @@ form .textAfterField {
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
 	border-radius:5px;
-	background-color:$white; }
+	background-color:$white;
+}
 
 form .fField:hover .textAfterField {
-	display:block; }
+	display:block;
+}
 
 .dateElement input {
 	width:73px !important;
 	width:77px;
 	margin-right:10px;
-	float:left; }
+	float:left;
+}
 
 form .fElement.error .fLabel.error label,
 form div.error div.errorMessage {
 	color:$colorAlert00;
-	font-style:italic; }
+	font-style:italic;
+}
 
 form .error.typeCheckbox {
-	height:30px !important; }
+	height:30px !important;
+}
 
 
 
@@ -378,7 +441,8 @@ form .error.typeCheckbox {
 	box-shadow:2px 2px 5px $colorNeutral06;
 
 	ul {
-		padding:0 !important; }
+		padding:0 !important;
+	}
 
 	li{
 		background:$white;
@@ -389,18 +453,21 @@ form .error.typeCheckbox {
 		text-align:left;
 
 		&.selected {
-			background:$colorCorporate01; }
+			background:$colorCorporate01;
+		}
 	}
 
 	.empty{
 		background:none;
 		border:none;
 		border-width:0px;
-		padding:0px; }
+		padding:0px;
+	}
 }
 
 .fField .acResultContainer ul {
-	list-style:none; }
+	list-style:none;
+}
 
 
 
@@ -419,7 +486,8 @@ form .error.typeCheckbox {
 			height:16px;
 			width:16px;
 			position:absolute;
-			right:5px; }
+			right:5px;
+		}
 	}
 }
 
@@ -439,7 +507,8 @@ form .error.typeCheckbox {
 		width:17px;
 		position:absolute;
 		top:7px;
-		right:7px; }
+		right:7px; 
+	}
 }
 
 
@@ -463,7 +532,8 @@ form .error.typeCheckbox {
 			height:25px;
 			width:25px;
 			margin:9px 0 0 9px;
-			text-indent:-9999px; }
+			text-indent:-9999px;
+		}
 
 		li {
 			float:left;
@@ -473,10 +543,12 @@ form .error.typeCheckbox {
 
 			&.selected {
 				border:1px solid $colorNeutral06;
-				background-color:$colorCorporate02; }
+				background-color:$colorCorporate02;
+			}
 
 			&:hover {
-				background-color:$colorCorporate02; }
+				background-color:$colorCorporate02;
+			}
 		}
 	}
 }
@@ -488,7 +560,8 @@ form .error.typeCheckbox {
    ---------------------------------- */
 #quickcreate,
 #quicktask {
-	text-align:left; }
+	text-align:left;
+}
 
 
 
@@ -509,7 +582,8 @@ div.errorMessage ul.invalidItems {
 
 			li {
 				font-weight:normal;
-				margin-left:20px; }
+				margin-left:20px;
+			}
 		}
 	}
 }
