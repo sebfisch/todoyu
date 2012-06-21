@@ -95,6 +95,26 @@ interface TodoyuMailReceiverInterface {
 	 */
 	public function isEnabled();
 
+
+
+	/**
+	 * Check whether receiver has a todoyu person
+	 * In this case, the object should provide a getPerson() method which returns a TodoyuContactPerson
+	 *
+	 * @return	Boolean
+	 */
+	public function hasPerson();
+
+
+
+	/**
+	 * Get receiver person if available in the object
+	 * Use hasPerson() to check first!
+	 *
+	 * @return	TodoyuContactPerson|Boolean
+	 */
+	public function getPerson();
+
 }
 
 ?>

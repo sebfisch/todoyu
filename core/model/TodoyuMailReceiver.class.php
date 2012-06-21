@@ -80,6 +80,7 @@ abstract class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	}
 
 
+
 	/**
 	 * Get key of registered receiver type, e.g. 'contactperson'
 	 *
