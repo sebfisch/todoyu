@@ -284,6 +284,9 @@ class TodoyuFormFieldset implements ArrayAccess {
 	 * @return	TodoyuFormElement
 	 */
 	public function addField($fieldName, TodoyuFormElement $field, $position = null) {
+			// Prevent back reference to original field
+		$field = clone $field;
+
 			// Set the new parent fieldset
 		$field->setFieldset($this);
 		$field->setName($fieldName);

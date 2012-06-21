@@ -33,6 +33,7 @@ core 2.2.1 - not released yet
 	* Added: TodoyuViewHelper for general view helpers from core
 	* Added: Todoyu::getSystemLocale() to access system fallback locale directly
 	* Added: TodoyuViewHelper::getLocaleOptions()
+	* Added: TodoyuFormElement_Select->setSourceFunction() to modify source function
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()
 	* Changed: Use js version instead of php the check for the first input in form
 	* Changed: Update form XSD validation to match know field types only
@@ -42,6 +43,7 @@ core 2.2.1 - not released yet
 	* Changed: Added $formData as default $params value in form instantiation
 	* Changed: Parse label for grouped select options
 	* Changed: Cleanup radio form element. Removed sql as source type. Support default value
+	* Changed: Clone field objects when added to a fieldset. Allows to add a field multiple times under different names
 	* Library: Upgraded from PHPMailer-lite 5.1 to PHPMailer 5.2.1
 	* Library: Highcharts 2.2.3
 	* Library: tinyMCE 3.5.0.1

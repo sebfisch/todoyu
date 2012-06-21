@@ -428,6 +428,18 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 		$this->setAttribute('pleaseSelectLabel', $label);
 	}
 
+
+
+	/**
+	 * Set an alternative source function
+	 *
+	 * @param	String		$sourceFunction
+	 */
+	public function setSourceFunction($sourceFunction) {
+		$this->config['source']['@attributes']['type'] = 'function';
+		$this->config['source']['function'] = $sourceFunction;
+	}
+
 }
 
 ?>
