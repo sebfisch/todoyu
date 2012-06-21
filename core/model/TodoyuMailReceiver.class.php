@@ -70,6 +70,20 @@ abstract class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 
 
 	/**
+	 * Get person
+	 * This functions needs to be overridden if the derived object supports it
+	 *
+	 * @return	TodoyuContactPerson|Boolean
+	 */
+	public function getPerson() {
+		TodoyuLogger::logFatal('Called getPerson() on a MailReceiver Object which doesn\'t implement this feature');
+
+		return false;
+	}
+
+
+
+	/**
 	 * Check whether person is available
 	 * Not available by default
 	 *
