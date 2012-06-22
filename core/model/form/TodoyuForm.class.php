@@ -288,6 +288,18 @@ class TodoyuForm implements ArrayAccess {
 
 
 	/**
+	 * Get form data of a field
+	 *
+	 * @param	String		$fieldName
+	 * @return	Mixed
+	 */
+	public function getFieldData($fieldName) {
+		return $this->formdata[$fieldName];
+	}
+
+
+
+	/**
 	 * Update form data for a field
 	 *
 	 * @param	String		$fieldName
