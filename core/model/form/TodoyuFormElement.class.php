@@ -180,6 +180,18 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 	/**
+	 * Set parent
+	 * Wrapper for setFieldset() to provide the same interface as a fieldset
+	 *
+	 * @param	TodoyuFormFieldset		$fieldset
+	 */
+	public final function setParent(TodoyuFormFieldset $fieldset) {
+		$this->setFieldset($fieldset);
+	}
+
+
+
+	/**
 	 * Get data to render the element
 	 * A lot of config fields have to be processed and transformed, before
 	 * the element can be rendered with its template

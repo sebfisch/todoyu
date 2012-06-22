@@ -45,6 +45,7 @@ core 2.2.1 - not released yet
 	* Changed: Parse label for grouped select options
 	* Changed: Cleanup radio form element. Removed sql as source type. Support default value
 	* Changed: Clone field objects when added to a fieldset. Allows to add a field multiple times under different names
+	* Changed: Clone fieldsets when added to a form or another fieldset
 	* Library: Upgraded from PHPMailer-lite 5.1 to PHPMailer 5.2.1
 	* Library: Highcharts 2.2.3
 	* Library: tinyMCE 3.5.0.1

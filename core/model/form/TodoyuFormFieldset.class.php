@@ -70,6 +70,18 @@ class TodoyuFormFieldset implements ArrayAccess {
 
 
 	/**
+	 * Update elements parent to new cloned fieldset object
+	 *
+	 */
+	public function __clone() {
+		foreach($this->elements as $element) {
+			$element->setParent($this);
+		}
+	}
+
+
+
+	/**
 	 * Get the form instance
 	 *
 	 * @return	TodoyuForm

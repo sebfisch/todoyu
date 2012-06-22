@@ -481,15 +481,16 @@ class TodoyuForm implements ArrayAccess {
 	/**
 	 * Add a new fieldset and return a reference to it
 	 *
-	 * @param	String			$name
+	 * @param	String				$name
 	 * @param	TodoyuFormFieldset	$fieldset
-	 * @param	Integer			$position
+	 * @param	Integer				$position
 	 * @return	TodoyuFormFieldset
 	 */
 	public function addFieldset($name, TodoyuFormFieldset $fieldset = null, $position = null) {
 		if( is_null($fieldset) ) {
 			$fieldset	= new TodoyuFormFieldset($this, $name);
 		} else {
+			$fieldset	= clone $fieldset;
 				// Set form parent to this form and register fields in the form
 			$fieldset->setParent($this);
 			$fieldset->setFieldsToForm($this);
@@ -500,9 +501,9 @@ class TodoyuForm implements ArrayAccess {
 			$this->fieldsets[$name] = $fieldset;
 		} else {
 				// If position available, insert element at given position
-			$pos = explode(':', $position);
+			list($insertMode, $insertRef) = explode(':', $position, 2);
 
-			$this->fieldsets = TodoyuArray::insertElement($this->fieldsets, $name, $fieldset, $pos[0], $pos[1]);
+			$this->fieldsets = TodoyuArray::insertElement($this->fieldsets, $name, $fieldset, $insertMode, $insertRef);
 		}
 
 			// Register fieldset
@@ -1231,7 +1232,7 @@ class TodoyuForm implements ArrayAccess {
 	 */
 	protected function getParsedAttributes() {
 		$parsedAttributes = array();
-
+		
 		foreach($this->attributes as $attrName => $attrValue) {
 			$parsedAttributes[$attrName] = $this->parseWithFormData($attrValue);
 		}
