@@ -783,26 +783,39 @@ class TodoyuArray {
 
 
 	/**
-	 * Explode a list of integers
+	 * Explode string
+	 * Wrapper for explode to get an empty array for empty strings
 	 *
-	 * @param	String			$delimiter			Character to split the list
-	 * @param	String			$string				The list
-	 * @param	Boolean			$onlyPositive		Set negative values zero
-	 * @param	Boolean			$removeZeros		Remove all zero values
-	 * @param	Integer|Boolean	$limit				Explode to maximum $limit parts (as in explode())
-	 * @return	Integer[]
+	 * @param	String				$delimiter
+	 * @param	String				$string
+	 * @param	Integer|Boolean		$limit
+	 * @return	Array
 	 */
-	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false, $limit = false) {
+	public static function explode($delimiter, $string, $limit = false) {
 		$string	= trim($string);
 
 		if( $string === '' ) {
 			return array();
 		} else {
 				// Explode with or without limit (there is no 'not defined' value, so both calls are required)
-			$parts	= $limit ? explode($delimiter, $string, $limit) : explode($delimiter, $string);
-
-			return self::intval($parts, $onlyPositive, $removeZeros);
+			return $limit ? explode($delimiter, $string, $limit) : explode($delimiter, $string);
 		}
+	}
+
+
+
+	/**
+	 * Explode a list of integers
+	 *
+	 * @param	String				$delimiter			Character to split the list
+	 * @param	String				$string				The list
+	 * @param	Boolean				$onlyPositive		Set negative values zero
+	 * @param	Boolean				$removeZeros		Remove all zero values
+	 * @param	Integer|Boolean		$limit				Explode to maximum $limit parts (as in explode())
+	 * @return	Integer[]
+	 */
+	public static function intExplode($delimiter, $string, $onlyPositive = false, $removeZeros = false, $limit = false) {
+		return self::intval(self::explode($delimiter, $string, $limit), $onlyPositive, $removeZeros);
 	}
 
 
@@ -810,34 +823,41 @@ class TodoyuArray {
 	/**
 	 * Explode a list and remove whitespace around the values
 	 *
-	 * @param	String			$delimiter				Character to split the list
-	 * @param	String			$string					The list
-	 * @param	Boolean			$removeEmptyValues		Remove values which are empty after trim()
-	 * @param	Integer|Null	$limit					Explode to maximum $limit parts (as in explode())
+	 * @param	String				$delimiter				Character to split the list
+	 * @param	String				$string					The list
+	 * @param	Boolean				$removeEmptyValues		Remove values which are empty after trim()
+	 * @param	Integer|Boolean		$limit					Explode to maximum $limit parts (as in explode())
 	 * @return	Array
 	 */
-	public static function trimExplode($delimiter, $string, $removeEmptyValues = false, $limit = null) {
-		$string	= trim($string);
+	public static function trimExplode($delimiter, $string, $removeEmptyValues = false, $limit = false) {
+		$parts	= self::explode($delimiter, $string, $limit);
 		$array	= array();
-
-		if( $string === '' ) {
-			return $array;
-		}
-
-		if( $limit ) {
-			$parts	= explode($delimiter, $string, $limit);
-		} else {
-			$parts	= explode($delimiter, $string);
-		}
 
 		foreach($parts as $value) {
 			$value = trim($value);
-			if( $value !== '' || !$removeEmptyValues ) {
-				$array[] = $value;
+
+			if( $removeEmptyValues && $value === '' ) {
+				continue;
 			}
+
+			$array[] = $value;
 		}
 
 		return $array;
+	}
+
+
+
+	/**
+	 * Implode array
+	 * Save fallback if not an array
+	 *
+	 * @param	String		$glue
+	 * @param	Mixed		$array
+	 * @return	String
+	 */
+	public static function implode($glue, $array) {
+		return is_array($array) ? implode($glue, $array) : trim($array);
 	}
 
 

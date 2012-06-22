@@ -35,6 +35,7 @@ core 2.2.1 - not released yet
 	* Added: TodoyuViewHelper::getLocaleOptions()
 	* Added: TodoyuFormElement_Select->setSourceFunction() to modify source function
 	* Added: TodoyuForm->addOnDisplayJsCallback() to call a js callback when form is displayed
+	* Added: TodoyuArray::implode() and ::explode()
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()
 	* Changed: Use js version instead of php the check for the first input in form
 	* Changed: Update form XSD validation to match know field types only
