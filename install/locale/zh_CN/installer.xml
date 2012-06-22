@@ -69,13 +69,13 @@
 	<label index="importdemodata.title">导入样例数据</label>
 	<label index="importdemodata.checkboxlabel">导入样例数据</label>
 	<label index="importdemodata.button">下一步</label>
-	<label index="importdemodata.text">可以导入样例数据, 以安全后试用 Todoyu. 你也可以不导入样例数据, 这样你就可以获得一个崭新的 Todoyu, 安装后你可以定制.</label>
+	<label index="importdemodata.text">可以导入样例数据, 以安全后试用 todoyu. 你也可以不导入样例数据, 这样你就可以获得一个崭新的 todoyu, 安装后你可以定制.</label>
 	<label index="importdemodata.contains">样例数据包括: 项目, 任务, 地址, 公司, 评论, 反馈, 角色, 活动类型, 过滤器等等.</label>
 	<label index="finish.title">安装成功</label>
 	<label index="finish.text">已经安装成功u</label>
 	<label index="finish.button">跳转到登陆面面</label>
 	<label index="finish.note">现在可以登陆. 需要稍等几秒, 时间长短取决于你的CPU. 系统将准备数据, 合并和生成缓存文件等等.</label>
-	<label index="update.title">更新 Todoyu</label>
+	<label index="update.title">更新 todoyu</label>
 	<label index="update.button">开始更新</label>
 	<label index="update.info">为你的当前版本应用数据库更新.</label>
 	<label index="updatetocurrentversion.title">更新数据库结构</label>
