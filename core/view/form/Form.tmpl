@@ -15,11 +15,11 @@
 		{if $extraOnDisplay}{$extraOnDisplay};{/if}
 	{else}
 		document.observe('dom:loaded', function(){
-			function() {
+			(function() {
 				Todoyu.Form.onFormDisplay('{$htmlId}', '{$name}', '{$id}');
 				{if $onDisplayJsCallback}{$onDisplayJsCallback};{/if}
 				{if $extraOnDisplay}{$extraOnDisplay};{/if}
-			}.defer();
+			}).defer();
 		});
 	{/if}
 	</script>
