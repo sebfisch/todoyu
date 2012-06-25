@@ -141,9 +141,48 @@ class TodoyuLocaleManager {
 	 * Get option array with locale key and label
 	 *
 	 * @return	Array[]
+	 * @deprecated
+	 * @see		getAvailableLocales()
 	 */
 	public static function getLocaleOptions() {
+		return self::getAvailableLocaleOptions();
+	}
+
+
+
+	/**
+	 * Get options for all available locales
+	 *
+	 * @return	Array[]
+	 */
+	public static function getAvailableLocaleOptions() {
 		$locales	= self::getAvailableLocales();
+
+		return self::buildLocaleOptions($locales);
+	}
+
+
+
+	/**
+	 * Get options for all known locales
+	 *
+	 * @return	Array[]
+	 */
+	public static function getAllLocaleOptions() {
+		$locales	= self::getAllLocaleKeys();
+
+		return self::buildLocaleOptions($locales);
+	}
+
+
+
+	/**
+	 * Build options based on locale keys
+	 *
+	 * @param	String[]	$locales
+	 * @return	Array[]
+	 */
+	private static function buildLocaleOptions(array $locales) {
 		$options	= array();
 
 		foreach($locales as $locale) {
@@ -154,6 +193,19 @@ class TodoyuLocaleManager {
 		}
 
 		return $options;
+	}
+
+
+
+	/**
+	 * Get keys of all know locales
+	 *
+	 * @return	String[]
+	 */
+	private static function getAllLocaleKeys() {
+		$allLocaleLabels	= TodoyuLabelManager::getXmlFileLabels('core', 'locale', 'en_GB');
+
+		return array_keys($allLocaleLabels);
 	}
 
 

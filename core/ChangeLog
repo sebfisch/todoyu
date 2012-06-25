@@ -32,7 +32,7 @@ core 2.2.1 - not released yet
 	* Added: TodoyuFormElement_Select->getSelectedValue() which returns the first selected value which is ok if multiple flag is not set
 	* Added: TodoyuViewHelper for general view helpers from core
 	* Added: Todoyu::getSystemLocale() to access system fallback locale directly
-	* Added: TodoyuViewHelper::getLocaleOptions()
+	* Added: TodoyuViewHelper::getAvailableLocaleOptions() and TodoyuViewHelper::geAllLocaleOptions()
 	* Added: TodoyuFormElement_Select->setSourceFunction() to modify source function
 	* Added: TodoyuForm->addOnDisplayJsCallback() to call a js callback when form is displayed
 	* Added: TodoyuArray::implode() and ::explode()
