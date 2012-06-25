@@ -431,6 +431,21 @@ class TodoyuFormElement_Select extends TodoyuFormElement {
 
 
 	/**
+	 * Set/unset noPleaseSelect attribute
+	 *
+	 * @param	Boolean		$active
+	 */
+	public function setNoPleaseSelect($active = true) {
+		if( $active ) {
+			$this->setAttribute('noPleaseSelect', 1);
+		} else {
+			$this->removeAttribute('noPleaseSelect');
+		}
+	}
+
+
+
+	/**
 	 * Set an alternative source function
 	 *
 	 * @param	String		$sourceFunction

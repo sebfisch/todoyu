@@ -351,6 +351,21 @@ class TodoyuArray {
 
 
 	/**
+	 * Prefix values
+	 *
+	 * @param	Array	$array
+	 * @param	String	$prefix
+	 * @param	String	$postfix
+	 * @return	Array
+	 * @deprecated
+	 */
+	public static function prefix(array $array, $prefix, $postfix = '') {
+		return self::prefixValues($array, $prefix, $postfix);
+	}
+
+
+
+	/**
 	 * Prefix array value with a string. PostFix is also available
 	 *
 	 * @param	Array		$array
@@ -358,12 +373,34 @@ class TodoyuArray {
 	 * @param	String		$postfix
 	 * @return	Array
 	 */
-	public static function prefix(array $array, $prefix = '', $postfix = '') {
+	public static function prefixValues(array $array, $prefix, $postfix = '') {
 		foreach($array as $index => $value) {
 			$array[$index] = $prefix . $value . $postfix;
 		}
 
 		return $array;
+	}
+
+
+
+	/**
+	 * Prefix/postfix array keys
+	 * Example:
+	 * a: 1, b:2, c:3 => prefixKeys(..,'test_'); => test_a:1, test_b:2, test_c:3
+	 *
+	 * @param	Array		$array
+	 * @param	String		$prefix
+	 * @param	String		$postfix
+	 * @return	Array
+	 */
+	public static function prefixKeys(array $array, $prefix, $postfix = '') {
+		$newArray = array();
+
+		foreach($array as $index => $value) {
+			$newArray[$prefix . $index . $postfix] = $value;
+		}
+
+		return $newArray;
 	}
 
 
