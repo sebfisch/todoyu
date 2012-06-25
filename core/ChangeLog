@@ -1,8 +1,7 @@
 todoyu core changelog
 
 core 2.2.1 - not released yet
-	* Changed: extracted select-group-options from template
-	* Added: additional definition in form.xsd
+	* Bugfix: Autolinking found also background image source as link
 	* Bugfix: TodoyuSql::buildInListQueryPart() value when negated and input is empty
 	* Bugfix: Duration Pickers configuration failed
 	* Bugfix: Class for fieldset didn't work properly/clean
@@ -39,6 +38,8 @@ core 2.2.1 - not released yet
 	* Added: TodoyuForm->getFieldData() to get a single field value from formdata
 	* Added: TodoyuFormElement_Select->setNoPleaseSelect()
 	* Added: TodoyuArray::prefixKeys()
+	* Added: additional definition in form.xsd
+	* Changed: extracted select-group-options from template
 	* Changed: Renamed TodoyuArray::prefix() to prefixValues()
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()
 	* Changed: Use js version instead of php the check for the first input in form
