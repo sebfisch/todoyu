@@ -51,6 +51,11 @@
 				weight:bold;
 				size:10px; }
 		}
+
+		.disabled {
+			color:$colorNeutral03;
+			cursor: no-drop;
+		}
 	}
 }
 
