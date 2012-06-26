@@ -27,6 +27,13 @@
 abstract class TodoyuPanelWidgetSearchBox extends TodoyuPanelWidget {
 
 	/**
+	 * @var	String
+	 */
+	protected $jsObject;
+
+
+	
+	/**
 	 * Initialize
 	 *
 	 * @param	String		$extKey
@@ -50,6 +57,17 @@ abstract class TodoyuPanelWidgetSearchBox extends TodoyuPanelWidget {
 
 
 	/**
+	 * Set js object
+	 *
+	 * @param	String		$jsObject
+	 */
+	protected function setJsObject($jsObject) {
+		$this->jsObject = $jsObject;
+	}
+
+
+
+	/**
 	 * Get template
 	 *
 	 * @return	String
@@ -68,8 +86,20 @@ abstract class TodoyuPanelWidgetSearchBox extends TodoyuPanelWidget {
 	protected function getContentData() {
 		return array(
 			'id'		=> $this->getID(),
-			'searchWord'=> $this->getSearchWord()
+			'searchWord'=> $this->getSearchWord(),
+			'jsInit'	=> $this->getJsObjectInitCode()
 		);
+	}
+
+
+
+	/**
+	 * Build js ini code for panelwidget
+	 *
+	 * @return	String
+	 */
+	protected function getJsObjectInitCode() {
+		return '(function(){Todoyu.R[\'panelwidgetsearchbox-' . $this->getID() . '\'] = new ' . $this->jsObject . '();})()';
 	}
 
 
