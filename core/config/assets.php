@@ -310,6 +310,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 91
 		),
 		array(
+			'file'		=> 'core/asset/js/PanelWidgetSearchBox.js',
+			'position'	=> 91
+		),
+		array(
 			'file'		=> 'core/asset/js/DialogChoice.js',
 			'position'	=> 91
 		),
@@ -463,6 +467,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		),
 		array(
 			'file'		=> 'core/asset/css/panelwidget-searchlist.scss',
+			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/asset/css/panelwidget-searchbox.scss',
 			'position'	=> 10
 		),
 		array(
