@@ -127,7 +127,7 @@ class TodoyuContentItemTabRenderer {
 	 * @return	String
 	 */
 	public static function renderTabContent($extKey, $itemKey, $idItem, $tab) {
-		$idItem	= intval($idItem);
+		$idItem		= intval($idItem);
 		$tabConfig	= TodoyuContentItemTabManager::getTabConfig($extKey, $itemKey, $tab);
 
 		return TodoyuFunction::callUserFunction($tabConfig['content'], $idItem);
