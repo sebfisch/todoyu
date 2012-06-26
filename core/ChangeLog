@@ -40,6 +40,7 @@ core 2.2.1 - not released yet
 	* Added: TodoyuFormElement_Select->setNoPleaseSelect()
 	* Added: TodoyuArray::prefixKeys()
 	* Added: additional definition in form.xsd
+	* Added: PanelWidgetSearchBox basic classes
 	* Changed: extracted select-group-options from template
 	* Changed: Renamed TodoyuArray::prefix() to prefixValues()
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()
