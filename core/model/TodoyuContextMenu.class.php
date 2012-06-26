@@ -69,28 +69,12 @@ class TodoyuContextMenu {
 	 * Initialize context menu with elements
 	 */
 	private function init() {
-		TodoyuExtensions::loadAllContextMenus();
-
-		$funcRefs	= TodoyuContextMenuManager::getTypeFunctions($this->type);
-
-			// Get items from all functions
-		foreach($funcRefs as $funcRef) {
-//			TodoyuDebug::printInFirebug($funcRef, 'funcRef');
-//			die($funcRef['function']);
-
-			$modified	=  TodoyuFunction::callUserFunction($funcRef['function'], $this->idElement, $this->elements);
-
-			if( is_array($modified) ) {
-				$this->elements	= $modified;
-			}
-		}
-
-			// Sort items
-		$this->elements = TodoyuArray::sortByLabel($this->elements, 'position');
+		$this->elements	= TodoyuContextMenuManager::getTypeContextMenuItems($this->type, $this->idElement);
 
 			// Parse labels and jsActions
 		$this->elements	= $this->parseElements($this->elements);
 	}
+
 
 
 

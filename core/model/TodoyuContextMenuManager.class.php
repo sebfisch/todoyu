@@ -59,6 +59,33 @@ class TodoyuContextMenuManager {
 		return TodoyuArray::sortByLabel($funcRefs, 'position');
 	}
 
+
+
+	/**
+	 * @param	String		$type
+	 * @param	Integer		$idElement
+	 * @return	Array
+	 */
+	public static function getTypeContextMenuItems($type, $idElement) {
+		TodoyuExtensions::loadAllContextMenus();
+
+		$funcRefs = TodoyuContextMenuManager::getTypeFunctions($type);
+		$elements = array();
+
+		// Get items from all functions
+		foreach ($funcRefs as $funcRef) {
+			$modified = TodoyuFunction::callUserFunction($funcRef['function'], $idElement, $elements);
+
+			if (is_array($modified)) {
+				$elements = $modified;
+			}
+		}
+
+			// Sort items
+		$elements = TodoyuArray::sortByLabel($elements, 'position');
+
+		return $elements;
+	}
 }
 
 ?>
