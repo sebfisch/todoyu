@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.2.1 - not released yet
+	* Bugfix: Active item tabs are unique
 	* Bugfix: Autolinking found also background image source as link
 	* Bugfix: TodoyuSql::buildInListQueryPart() value when negated and input is empty
 	* Bugfix: Duration Pickers configuration failed

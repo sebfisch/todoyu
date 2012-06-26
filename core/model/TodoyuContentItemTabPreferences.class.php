@@ -68,7 +68,7 @@ class TodoyuContentItemTabPreferences {
 		$idItem		= intval($idItem);
 		$preference	= $itemKey . '-tab';
 
-		TodoyuPreferenceManager::savePreference($extID, $preference, $tabKey, $idItem);
+		TodoyuPreferenceManager::savePreference($extID, $preference, $tabKey, $idItem, true);
 	}
 
 
