@@ -63,9 +63,10 @@ class TodoyuContentItemTabManager {
 	 * @param	String		$itemKey		'project' / 'task' / ...
 	 * @param	Integer		$idItem
 	 * @param	Boolean		$evalLabel		If true, all labels with a function reference will be parsed
+	 * @param	Boolean		$noCache		Don't cache tabs
 	 * @return	Array
 	 */
-	public static function getTabs($extKey, $itemKey, $idItem, $evalLabel = true) {
+	public static function getTabs($extKey, $itemKey, $idItem, $evalLabel = true, $noCache = false) {
 		if( is_null(self::$tabs[$itemKey]) ) {
 			$tabs	= TodoyuArray::assure(Todoyu::$CONFIG['EXT'][$extKey][$itemKey]['tabs']);
 			self::$tabs[$itemKey] = TodoyuArray::sortByLabel($tabs);
@@ -78,6 +79,11 @@ class TodoyuContentItemTabManager {
 				$labelFunc				= $tab['label'];
 				$tabs[$index]['label']	= TodoyuFunction::callUserFunction($labelFunc, $idItem);
 			}
+		}
+
+			// No cache = remove
+		if( $noCache ) {
+			unset(self::$tabs[$itemKey]);
 		}
 
 		return $tabs;
@@ -105,10 +111,11 @@ class TodoyuContentItemTabManager {
 	 * @param	String		$extKey		Extension that originally implements the item
 	 * @param	String		$itemKey
 	 * @param	Integer		$idItem
+	 * @param	Boolean		$noCache
 	 * @return	String
 	 */
-	public static function getDefaultTab($extKey, $itemKey, $idItem) {
-		$tabs	= self::getTabs($extKey, $itemKey, $idItem, false);
+	public static function getDefaultTab($extKey, $itemKey, $idItem, $noCache = false) {
+		$tabs	= self::getTabs($extKey, $itemKey, $idItem, false, $noCache);
 		$first	= array_shift($tabs);
 
 		return $first['id'];
