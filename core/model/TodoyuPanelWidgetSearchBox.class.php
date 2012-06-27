@@ -32,7 +32,7 @@ abstract class TodoyuPanelWidgetSearchBox extends TodoyuPanelWidget {
 	protected $jsObject;
 
 
-	
+
 	/**
 	 * Initialize
 	 *
