@@ -1130,6 +1130,31 @@ class TodoyuFileManager {
 		}
 	}
 
+
+
+	/**
+	 * Include a file
+	 * Wrapper for include()
+	 *
+	 * @param	String		$pathFile
+	 * @param	Boolean		$includeOnce	use include_once() instead of include()
+	 * @param	Boolean		$silent			Ignore missing file
+	 * @return	Boolean
+	 */
+	public static function includeFile($pathFile, $includeOnce = false, $silent = false) {
+		$pathFile	= self::pathAbsolute($pathFile);
+
+		if( is_file($pathFile) ) {
+			$includeOnce ? include_once($pathFile) : include($pathFile);
+			return true;
+		} else {
+			if( !$silent ) {
+				TodoyuLogger::logError('Include file <' . $pathFile . '> not found');
+			}
+			return false;
+		}
+	}
+
 }
 
 ?>

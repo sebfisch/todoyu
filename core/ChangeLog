@@ -43,6 +43,7 @@ core 2.2.1 - not released yet
 	* Added: additional definition in form.xsd
 	* Added: PanelWidgetSearchBox basic classes
 	* Added: Prevent auto focus of first form element with form class noAutoFocus
+	* Added: TodoyuFileManager::includeFile() was wrapper for include()/include_once()
 	* Changed: extracted select-group-options from template
 	* Changed: Renamed TodoyuArray::prefix() to prefixValues()
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()
