@@ -44,6 +44,8 @@ core 2.2.1 - not released yet
 	* Added: PanelWidgetSearchBox basic classes
 	* Added: Prevent auto focus of first form element with form class noAutoFocus
 	* Added: TodoyuFileManager::includeFile() was wrapper for include()/include_once()
+	* Added: Todoyu.String.getCounter() to extract a counter value from a string
+	* Added: Todoyu.Tabs.updateTabCounter() and .getTabCounter()
 	* Changed: extracted select-group-options from template
 	* Changed: Renamed TodoyuArray::prefix() to prefixValues()
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()

@@ -650,6 +650,37 @@ Todoyu.Tabs = {
 	 */
 	getAllTabs: function(list) {
 		return $(list + '-tabs').select('li.item');
+	},
+
+
+
+	/**
+	 * Update counter value of a tab
+	 *
+	 * @param	{String}	list
+	 * @param	{String}	tabKey
+	 * @param	{Number}	counter
+	 */
+	updateTabCounter: function(list, tabKey, counter) {
+		var labelEl	= $(list + '-tab-' + tabKey + '-label').down('span.labeltext');
+		var newLabel= Todoyu.String.replaceCounter(labelEl.innerHTML, counter);
+
+		labelEl.update(newLabel);
+	},
+
+
+
+	/**
+	 * Get counter value from tab label
+	 *
+	 * @param	{String}	list
+	 * @param	{String}	tabKey
+	 * @return	{Number}
+	 */
+	getTabCounter: function(list, tabKey) {
+		var label	= $(list + '-tab-' + tabKey + '-label').down('span.labeltext').innerHTML;
+
+		return Todoyu.String.getCounter(label);
 	}
 
 };

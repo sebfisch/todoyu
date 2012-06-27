@@ -400,6 +400,21 @@ Todoyu.String = {
 		var replace	= '(' + newCount + ')';
 
 		return label.replace(pattern, replace);
+	},
+
+
+
+	/**
+	 * Get counter value (integer part of the label which is in braces)
+	 *
+	 * @param	{String}	label
+	 * @return	{Number}
+	 */
+	getCounter: function(label) {
+		var pattern	= /\((\d+)\)/;
+		var match	= label.match(pattern);
+
+		return match[1] ? match[1] : 0;
 	}
 
 };
