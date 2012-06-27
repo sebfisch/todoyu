@@ -285,9 +285,14 @@ Todoyu.Form = {
 	 * @param	{String}	form
 	 */
 	focusFirstFormField: function(form) {
-		form	= $(form);
+		form = $(form);
 
 		if( form ) {
+				// Stop if auto focus is disabled
+			if( form.hasClassName('noAutoFocus') ) {
+				return;
+			}
+
 			var firstField = form.down(':input[type!=hidden]');
 
 			if( firstField ) {
