@@ -61,7 +61,7 @@ core 2.2.1 - not released yet
 	* Changed: Clone fieldsets when added to a form or another fieldset
 	* Library: Upgraded from PHPMailer-lite 5.1 to PHPMailer 5.2.1
 	* Library: Highcharts 2.2.3
-	* Library: tinyMCE 3.5.0.1
+	* Library: tinyMCE 3.5.4.1
 
 core 2.2.0 - 2012-05-03
 	* Added: Parity of list items in widgets is refreshed on drop/resort

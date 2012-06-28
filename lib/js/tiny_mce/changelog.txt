@@ -1,3 +1,63 @@
+Version 3.5.4.1 (2012-06-24)
+	Fixed issue with Shift+A selecting all contents on Chrome.
+Version 3.5.4 (2012-06-21)
+	Added missing mouse events to HTML5 schema. Some events needs to be manually defined though since the spec is huge.
+	Added image resizing for WebKit browsers by faking the whole resize behavior.
+	Fixed bug in context menu plugin where listener to hide menu wasn't removed correctly.
+	Fixed bug where media plugin wouldn't use placeholder size for the object/video elements.
+	Fixed bug where jQuery plugin would break attr function in jQuery 1.7.2.
+	Fixed bug where jQuery plugin would throw an error if you used the tinymce pseudo selector when TinyMCE wasn't loaded.
+	Fixed so encoding option gets applied when using jQuery val() or attr() to extract the contents.
+	Fixed so any non valid width/height passed to media plugin would get parsed to proper integer or percent values.
+Version 3.5.3 (2012-06-19)
+	Added missing wbr element to HTML5 schema.
+	Added new mceToggleFormat command. Enabled you to toggle a specific format on/off.
+	Fixed bug where undo/redo state didn't update correctly after executing an execCommand call.
+	Fixed bug where the editor would get auto focused on IE running in quirks mode.
+	Fixed bug where pressing enter before an IMG or INPUT element wouldn't properly split the block.
+	Fixed bug where backspace would navigate back when selecting control types on IE.
+	Fixed bug where the editor remove method would unbind events for controls outside the editor instance UI.
+	Fixed bug where the autosave plugin would try to store a draft copy of editors that where removed.
+	Fixed bug where floated elements wouldn't expand the block created when pressing enter on non IE browsers.
+	Fixed bug where the caret would be placed in the wrong location when pressing enter at the beginning of a block.
+	Fixed bug where it wasn't possible to block events using the handle_event_callback option.
+	Fixed bug where keyboard navigation of the ColorSplitButton.js didn't work correctly.
+	Fixed bug where keyboard navigation didn't work correctly on split buttons.
+	Fixed bug where the legacy Event.add function didn't properly handle multiple id:s passed in.
+	Fixed bug where the caret would disappear on IE when selecting all contents and pressing backspace/delete.
+	Fixed bug where the getStart/getEnd methods would sometimes return elements from the wrong document on IE.
+	Fixed so paragraphs gets created if you press enter inside a form element.
+Version 3.5.2 (2012-05-31)
+	Added new formatChanged method to tinymce.Formatter class. Enables easier state change handling of formats.
+	Added new selectorChanged method to tinymce.dom.Selection class. Enables easier state change handling of matching CSS selectors.
+	Changed the default theme to be advanced instead of simple since most users uses the advanced theme.
+	Changed so the theme_advanced_buttons doesn't have a default set if one button row is specified.
+	Changed the theme_advanced_toolbar_align default value to "left".
+	Changed the theme_advanced_toolbar_location default value to "top".
+	Changed the theme_advanced_statusbar_location default value to "bottom".
+	Fixed bug where the simple link dialog would remove class and target attributes from links when updating them if the drop downs wasn't visible.
+	Fixed bug where the link/unlink buttons wouldn't get disabled once a link was created by the autolink plugin logic.
+	Fixed bug where the border attribute was missing in the HTML5 schema.
+	Fixed bug where the legacyoutput plugin would use inline styles for font color.
+	Fixed bug where editing of anchor names wouldn't produce an undo level.
+	Fixed bug where the table plugin would delete the last empty block element in the editor.
+	Fixed bug where pasting table rows when they where selected would make it impossible to editor that table row.
+	Fixed bug with pressing enter in IE while having a select list focused would produce a JS error.
+	Fixed bug where it wasn't possible to merge table cells by selecting them and using merge from context menu.
+	Removed summary from HTML5 table attributes and fixed so this and other deprecated table fields gets hidden in the table dialog.
+Version 3.5.1.1 (2012-05-25)
+	Fixed bug with control creation where plugin specific controls didn't work as expected.
+Version 3.5.1 (2012-05-25)
+	Added new onBeforeAdd event to UndoManager patch contributed by Dan Rumney.
+	Added support for overriding the theme rendering logic by using a custom function.
+	Fixed bug where links wasn't automatically created by the autolink plugin on old IE versions when pressing enter in BR mode.
+	Fixed bug where enter on older IE versions wouldn't produce a new paragraph if the previous sibling paragraph was empty.
+	Fixed bug where toString on a faked DOM range on older IE versions wouldn't return a proper string.
+	Fixed bug where named anchors wouldn't work properly when schema was set to HTML5.
+	Fixed bug where HTML5 datalist options wasn't correctly parsed or indented.
+	Fixed bug where linking would add anchors around block elements when the HTML5 schema was used.
+	Fixed issue where the autolink plugin wouldn't properly handle mailto:user@domain.com.
+	Optimized initialization and reduced rendering flicker by hiding the target element while initializing.
 Version 3.5.0.1 (2012-05-10)
 	Fixed bug where selection normalization logic would break the selections of parent elements using the element path.
 	Fixed bug where the autolink plugin would include trailing dots in domain names in the link creation.
