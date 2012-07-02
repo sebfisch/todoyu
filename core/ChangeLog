@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.2.1 - not released yet
+	* Changed: enlarged content width
 	* Changed: context menu refactoring
 	* Bugfix: Active item tabs are unique
 	* Bugfix: Autolinking found also background image source as link
