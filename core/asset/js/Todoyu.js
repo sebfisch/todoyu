@@ -510,9 +510,9 @@ var Todoyu = {
 	 * Todoyu log. Check level and if console exists
 	 *
 	 * @method	log
-	 * @param	{Object}		element
-	 * @param	{Number}		level
-	 * @param	{String}		title
+	 * @param	{Object|String|Array|Number|Element}		element
+	 * @param	{Number}									[level]
+	 * @param	{String}									[title]
 	 */
 	log: function(element, level, title) {
 		if( level === undefined || (Object.isNumber(level) && level >= this.logLevel) ) {

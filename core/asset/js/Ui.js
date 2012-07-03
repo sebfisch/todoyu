@@ -101,17 +101,18 @@ Todoyu.Ui = {
 	 * Update content of element
 	 *
 	 * @method	update
-	 * @param	{String}	container
-	 * @param	{String}	url
-	 * @param	{Object}	options
+	 * @param	{Element|String}	container
+	 * @param	{String}			url
+	 * @param	{Object}			options
 	 */
 	update: function(container, url, options) {
-		options = Todoyu.Ajax.getDefaultOptions(options);
+		var containerEl	= $(container);
+		options 		= Todoyu.Ajax.getDefaultOptions(options);
 
-		this.closeRTE(container);
+		this.closeRTE(containerEl);
 
-		if( Todoyu.exists(container) ) {
-			return new Ajax.Updater(container, url, options);
+		if( containerEl ) {
+			return new Ajax.Updater(containerEl, url, options);
 		} else {
 			Todoyu.log('You tried to update "' + container + '" which is not part of the DOM! (No request sent)');
 		}
@@ -123,17 +124,18 @@ Todoyu.Ui = {
 	 * Replace whole element
 	 *
 	 * @method	replace
-	 * @param	{String}	container
-	 * @param	{String}	url
-	 * @param	{Object}	options
+	 * @param	{Element|String}	container
+	 * @param	{String}			url
+	 * @param	{Object}			options
 	 */
 	replace: function(container, url, options) {
-		options = Todoyu.Ajax.getDefaultOptions(options);
+		var containerEl	= $(container);
+		options 		= Todoyu.Ajax.getDefaultOptions(options);
 
-		this.closeRTE(container);
+		this.closeRTE(containerEl);
 
-		if( Todoyu.exists(container) ) {
-			return new Todoyu.Ajax.Replacer(container, url, options);
+		if( containerEl ) {
+			return new Todoyu.Ajax.Replacer(containerEl, url, options);
 		} else {
 			Todoyu.log('You tried to replace "' + container + '" which is not part of the DOM!');
 		}
@@ -763,19 +765,19 @@ Todoyu.Ui = {
 	 * Prevents "ghost" objects which will break the save process
 	 *
 	 * @method	closeRTE
-	 * @param	{Element|String}	area		Area to look for tinyMCE instances (Can be a form, the whole window or the element itself)
+	 * @param	{Element|String}	container		Area to look for tinyMCE instances (Can be a form, the whole window or the element itself)
 	 */
-	closeRTE: function(area) {
+	closeRTE: function(container) {
+		container	= $(container);
+
 		this.saveRTE();
 
-		area	= $(area);
-
-		if( !area ) {
-			area = $(document.body);
+		if( !container ) {
+			container = $(document.body);
 		}
 
 			// Remove controls for all editors in the range
-		area.select('textarea.RTE').each(function(textarea){
+		container.select('textarea.RTE').each(function(textarea){
 			if( tinyMCE.editors[textarea.id] ) {
 				tinyMCE.execCommand('mceRemoveControl', false, textarea.id);
 			}
