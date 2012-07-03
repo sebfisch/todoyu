@@ -139,12 +139,12 @@ class TodoyuSql {
 	 *
 	 * @param	Array		$values
 	 * @param	String		$fieldName
-	 * @param	Boolean		$isInt			Values are integers?
-	 * @param	Boolean		$negate			Negate using NOT?
-	 * @param	Boolean		$quote			Quote non-integer values?
+	 * @param	Boolean		$isInt				Values are integers?
+	 * @param	Boolean		$negate				Negate using NOT?
+	 * @param	Boolean		$quoteStrings		Quote non-integer values?
 	 * @return	String
 	 */
-	public static function buildInListQueryPart(array $values, $fieldName, $isInt = true, $negate = false, $quote = true) {
+	public static function buildInListQueryPart(array $values, $fieldName, $isInt = true, $negate = false, $quoteStrings = true) {
 		if( sizeof($values) === 0 ) {
 			return $negate ? '1' : '0'; // no values: negate = always ok, normal = no result
 		}
@@ -154,7 +154,7 @@ class TodoyuSql {
 			// Implode values array to list
 		if( $isInt ) {
 			$values = TodoyuArray::intImplode($values, ',');
-		} elseif( $quote && !$isInt ) {
+		} elseif( $quoteStrings && !$isInt ) {
 			$values = TodoyuArray::implodeQuoted($values, ',');
 		} else {
 			$values = implode(',', $values);
