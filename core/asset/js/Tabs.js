@@ -40,7 +40,7 @@ Todoyu.Tabs = {
 	/**
 	 * Max width of all tab
 	 */
-	maxWidth: 672,
+	maxWidth: 910,
 
 
 	/**
