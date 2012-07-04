@@ -735,7 +735,7 @@ class TodoyuDatabase {
 	 * @param	String		$resultFieldName		If field isn't the field name in the result set (possibly with table prefix...), set the name here
 	 * @return	String|Boolean
 	 */
-	public function getFieldValue($field, $table, $where = null, $groupBy = null, $orderBy = null, $limit = null, $resultFieldName = null) {
+	public function getFieldValue($field, $table, $where = '', $groupBy = '', $orderBy = '', $limit = '', $resultFieldName = null) {
 		$cacheID	= sha1(serialize(func_get_args()));
 
 		if( TodoyuCache::isIn($cacheID) ) {

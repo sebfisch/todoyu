@@ -59,7 +59,7 @@ abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 	 * @param	Integer		$idRecord
 	 * @param	String		$table
 	 */
-	public function __construct($idRecord, $table) {
+	protected function __construct($idRecord, $table) {
 		$idRecord	= (int) $idRecord;
 		$this->table= trim(strtolower($table));
 
