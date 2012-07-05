@@ -265,15 +265,42 @@ class TodoyuDebug {
 
 	/**
 	 * Print function backtrace debug
+	 *
+	 * @param	Integer		$limit
 	 */
-	public static function printBacktrace() {
-		$backtrace	= debug_backtrace(false);
-		array_shift($backtrace);
+	public static function printBacktrace($limit = 0) {
+		$backtrace	= self::getBacktrace($limit, 1);
 
 		self::printHtml($backtrace, 'Backtrace');
 	}
 
 
+
+	/**
+	 * Get backtrace info
+	 *
+	 * @param	Integer		$limit
+	 * @param	Integer		$cut
+	 * @return	Array[]
+	 */
+	public static function getBacktrace($limit = 0, $cut = 0) {
+		$backtrace	= debug_backtrace(false);
+		array_shift($backtrace);
+
+		if( $limit > 0 ) {
+			$backtrace = array_slice($backtrace, $cut, $limit);
+		}
+
+		return $backtrace;
+	}
+
+
+
+	/**
+	 * Print error page for fatal (uncaught) exception
+	 *
+	 * @param	TodoyuException		$exception
+	 */
 	public static function printFatalExceptionPage(TodoyuException $exception) {
 		$tmpl	= 'core/view/uncaught-exception.tmpl';
 		$data	= array(

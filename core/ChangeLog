@@ -49,6 +49,7 @@ core 2.2.1 - not released yet
 	* Added: Todoyu.Tabs.updateTabCounter() and .getTabCounter()
 	* Added: Dwoo plugin escapeQuotesForHtmlAttributes which replaces quotes by ASCII codes
 	* Added: TodoyuArray::assureFromSerialized()
+	* Added: TodoyuDebug::getBacktrace()
 	* Changed: extracted select-group-options from template
 	* Changed: Renamed TodoyuArray::prefix() to prefixValues()
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()
@@ -64,6 +65,7 @@ core 2.2.1 - not released yet
 	* Changed: Clone fieldsets when added to a form or another fieldset
 	* Changed: Send 404 http status if controller is not found
 	* Changed: TodoyuArray::explode() return the $string if it is already an array
+	* Changed: Added limit parameter for TodoyuDebug::printBacktrace()
 	* Library: Upgraded from PHPMailer-lite 5.1 to PHPMailer 5.2.1
 	* Library: Highcharts 2.2.3
 	* Library: tinyMCE 3.5.4.1
