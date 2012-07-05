@@ -641,6 +641,18 @@ class TodoyuArray {
 
 
 	/**
+	 * Get array from serialized string
+	 *
+	 * @param	String		$serializedInput
+	 * @return	Array
+	 */
+	public static function assureFromSerialized($serializedInput) {
+		return self::assure(unserialize($serializedInput));
+	}
+
+
+
+	/**
 	 * Merge all sub arrays of the array to a single array
 	 *
 	 * @param	Array		$array
@@ -829,6 +841,9 @@ class TodoyuArray {
 	 * @return	Array
 	 */
 	public static function explode($delimiter, $string, $limit = false) {
+		if( is_array($string) ) {
+			return $string;
+		}
 		$string	= trim($string);
 
 		if( $string === '' ) {

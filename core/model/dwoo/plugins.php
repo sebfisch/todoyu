@@ -186,6 +186,24 @@ function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string, $doubl
 
 
 /**
+ * Encode quotes to not interfere with html attribute quote parting
+ * " => \042
+ * ' => \047
+ *
+ * @package		Todoyu
+ * @subpackage	Template
+ *
+ * @param	Dwoo_Compiler	$compiler
+ * @param	String			$string
+ * @return	String
+ */
+function Dwoo_Plugin_escapeQuotesForHtmlAttributes_compile(Dwoo_Compiler $compiler, $string) {
+	return "str_replace(\"'\", '\\047', str_replace('\"', '\\042', " . $string . "))";
+}
+
+
+
+/**
  * Format an integer to hours:minutes:seconds
  *
  * @package		Todoyu
