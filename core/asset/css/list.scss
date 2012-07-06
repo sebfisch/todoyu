@@ -14,19 +14,20 @@ table.list {
 		padding:3px 0 3px 12px;
 		vertical-align:top;
 
-		.nowrap {
-        		white-space:nowrap;
-
-        }
-
 		> span.icon {
 			height:25px;
-			margin:-2px 4px -8px -2px; }
+			margin:-2px 4px -8px -2px;
+		}
 	}
 
 
-}
+	tr {
+		&.nowrap {
+			white-space:nowrap;
+		}
+	}
 
+}
 
 
 /* ------------
