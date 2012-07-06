@@ -1075,6 +1075,20 @@ class TodoyuString {
 		return pathinfo($pathString, PATHINFO_FILENAME);
 	}
 
+
+
+	/**
+	 * Replace quotes with numeric ascii values
+	 * " => \042
+	 * ' => \047
+	 *
+	 * @param	String		$string
+	 * @return	String
+	 */
+	public static function escapeQuotesForHtmlAttributes($string) {
+		return str_replace(array("'", '"'), array('\047', '\042'), $string);
+	}
+
 }
 
 ?>

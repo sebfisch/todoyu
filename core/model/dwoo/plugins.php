@@ -198,7 +198,7 @@ function Dwoo_Plugin_htmlencode_compile(Dwoo_Compiler $compiler, $string, $doubl
  * @return	String
  */
 function Dwoo_Plugin_escapeQuotesForHtmlAttributes_compile(Dwoo_Compiler $compiler, $string) {
-	return "str_replace(\"'\", '\\047', str_replace('\"', '\\042', " . $string . "))";
+	return 'TodoyuString::escapeQuotesForHtmlAttributes(' . $string . ')';
 }
 
 
