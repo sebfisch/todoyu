@@ -324,6 +324,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/asset/js/ContentItemTab.js',
 			'position'	=> 91
+		),
+		array(
+			'file'		=> 'core/asset/js/ListScrollLoader.js',
+			'position'	=> 91
 		)
 	),
 

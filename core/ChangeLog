@@ -50,6 +50,7 @@ core 2.2.1 - not released yet
 	* Added: Dwoo plugin escapeQuotesForHtmlAttributes which replaces quotes by ASCII codes
 	* Added: TodoyuArray::assureFromSerialized()
 	* Added: TodoyuDebug::getBacktrace()
+	* Added: Todoyu.ListScrollLoader()
 	* Changed: extracted select-group-options from template
 	* Changed: Renamed TodoyuArray::prefix() to prefixValues()
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()
