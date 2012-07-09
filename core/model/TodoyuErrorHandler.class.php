@@ -134,8 +134,8 @@ class TodoyuErrorHandler {
 	/**
 	 * Render simple error message
 	 *
-	 * @param	$title			Error title
-	 * @param	$message		Error message
+	 * @param	String		$title			Error title
+	 * @param	String		$message		Error message
 	 * @return	String
 	 */
 	public static function renderError($title, $message) {
