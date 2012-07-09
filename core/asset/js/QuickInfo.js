@@ -534,7 +534,7 @@ Todoyu.QuickInfo	= {
 	 */
 	buildQuickInfo: function(json) {
 		if( this.template === null ) {
-			this.template = new Template('<dt class="#{key}Icon">&nbsp;</dt><dd class="#{key}Label">#{label}&nbsp;</dd>');
+			this.template = new Template('<dt class="#{class}Icon #{key}Icon">&nbsp;</dt><dd class="#{class}Label #{key}Label">#{label}&nbsp;</dd>');
 		}
 
 		var content	= '';

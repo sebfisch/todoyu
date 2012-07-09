@@ -1,13 +1,11 @@
 @import "../../config/theme.scss";
 
-
-
 #quickinfo {
 	display:block;
 	left:200px;
 	position:absolute;
 	top:200px;
-	width:212px;
+	width:382px;
 	border:1px solid $colorNeutral03;
 	background-color:$colorCorporate02;
 	z-index:3000;
@@ -19,13 +17,13 @@
 		dt {
 			float:left;
 			width:20px;
-			min-height:15px;
+			min-height:25px;
 			padding:2px; }
 
 		dd {
 			float:left;
-			width:180px;
-			min-height:15px;
+			width:350px;
+			min-height:25px;
 			padding:2px 4px;
 			background-color:$colorCorporate01;
 			text-align:left;

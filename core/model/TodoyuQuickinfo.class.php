@@ -91,13 +91,14 @@ class TodoyuQuickinfo {
 	 * @param	Integer		$position
 	 * @param	Boolean		$escape
 	 */
-	public function addInfo($key, $label, $position = 100, $escape = true) {
+	public function addInfo($key, $label, $position = 100, $escape = true, $class = '') {
 		if( $escape ) {
 			$label	= htmlentities($label, ENT_QUOTES, 'UTF-8', false);
 		}
 		$label	= str_replace("\n", '<br />', $label);
 
 		$this->elements[$key] = array(
+			'class'		=> $class ? $class : $key,
 			'key'		=> $key,
 			'label'		=> $label,
 			'position'	=> (int) $position
@@ -137,8 +138,8 @@ class TodoyuQuickinfo {
 	 * @param	String		$html
 	 * @param	Integer		$position
 	 */
-	public function addHTML($key, $html, $position = 100) {
-		$this->addInfo($key, $html, $position, false);
+	public function addHTML($key, $html, $position = 100, $class = '') {
+		$this->addInfo($key, $html, $position, false, $class);
 	}
 
 
