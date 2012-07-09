@@ -144,8 +144,8 @@ Todoyu.ListScrollLoader = Class.create({
 
 		this.cache.offset 	+= this.options.pageSize;
 
-		options.offset 		= this.cache.offset;
-		options.onComplete	= (options.onComplete || Prototype.emptyFunction).wrap(this.onMoreLoaded.bind(this));
+		options.parameters.offset	= this.cache.offset;
+		options.onComplete			= (options.onComplete || Prototype.emptyFunction).wrap(this.onMoreLoaded.bind(this));
 
 		Todoyu.send(url, options);
 	},
