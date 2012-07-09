@@ -493,6 +493,10 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 		array(
 			'file'		=> 'core/asset/css/contentitemtabs.scss',
 			'position'	=> 10
+		),
+		array(
+			'file'		=> 'core/asset/css/listscrollloader.scss',
+			'position'	=> 10
 		)
 	)
 );

@@ -25,6 +25,7 @@
 	<label index="show">Show</label>
 	<label index="showDetails">Show Details</label>
 	<label index="showMore">Show More</label>
+	<label index="loadingMore">Loading more...</label>
 	<label index="inactive">inactive</label>
 	<label index="listing.noItems">No Items found.</label>
 	<label index="hide">Hide</label>

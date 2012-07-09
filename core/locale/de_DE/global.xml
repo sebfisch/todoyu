@@ -25,6 +25,7 @@
 	<label index="show">Zeigen</label>
 	<label index="showDetails">Details anzeigen</label>
 	<label index="showMore">Mehr anzeigen</label>
+	<label index="loadingMore">Lade weitere Daten ...</label>
 	<label index="inactive">inaktiv</label>
 	<label index="listing.noItems">Es wurden keine Einträge gefunden.</label>
 	<label index="hide">Verstecken</label>

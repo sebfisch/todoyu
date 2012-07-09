@@ -37,6 +37,11 @@ Todoyu.ListScrollLoader = Class.create({
 	table: null,
 
 	/**
+	 * @var	{Element}		Loading info box
+	 */
+	loader: null,
+
+	/**
 	 * Options
 	 */
 	options: {
@@ -147,6 +152,8 @@ Todoyu.ListScrollLoader = Class.create({
 		options.parameters.offset	= this.cache.offset;
 		options.onComplete			= (options.onComplete || Prototype.emptyFunction).wrap(this.onMoreLoaded.bind(this));
 
+		this.showLoader();
+
 		Todoyu.send(url, options);
 	},
 
@@ -160,6 +167,8 @@ Todoyu.ListScrollLoader = Class.create({
 	onMoreLoaded: function(proceed, response) {
 		var updated = false;
 
+		this.hideLoader();
+
 		if( response.responseText ) {
 			updated = true;
 
@@ -168,6 +177,45 @@ Todoyu.ListScrollLoader = Class.create({
 
 			// Call original onComplete handler
 		proceed(response, updated, this.cache.offset);
+	},
+
+
+
+	/**
+	 * Show the loader
+	 */
+	showLoader: function() {
+		this.getLoader().appear();
+	},
+
+
+
+	/**
+	 * Hide the loader
+	 *
+	 */
+	hideLoader: function() {
+		this.getLoader().fade();
+	},
+
+
+
+	/**
+	 * Get loader element
+	 *
+	 * @return	{Element}
+	 */
+	getLoader: function() {
+		if( !this.loader ) {
+			this.loader = new Element('div', {
+				id:			this.box.id + '-loader',
+				className: 'scrollLoaderInfo'
+			});
+			this.loader.update('[LLL:core.global.loadingMore]');
+			this.box.insert(this.loader);
+		}
+
+		return this.loader;
 	},
 
 
