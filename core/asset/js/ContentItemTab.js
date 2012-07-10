@@ -140,7 +140,7 @@ Todoyu.ContentItemTab = {
 			top: new Element(
 				'div', {
 					id:		this.buildTabID(idItem, tabKey, itemKey),
-					'class':	'tab'
+					'class':	'tab ' + tabKey
 				}
 			)
 		});

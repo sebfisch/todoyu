@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.3.0 - not released yet
+	* Bugfix: Add tabkey as class name for contentitemtabs
 	* Changed: enlarged content width
 	* Changed: context menu refactoring
 	* Bugfix: Active item tabs are unique
