@@ -258,7 +258,7 @@ class TodoyuInstallerRenderer {
 			'title'			=> 'install.installer.systemconfig.title',
 			'button'		=> 'install.installer.systemconfig.button',
 			'userLocale'	=> TodoyuSession::get('installer/locale'),
-			'locales'		=> TodoyuLocaleManager::getAvailableLocales(),
+			'locales'		=> TodoyuLocaleManager::getAvailableLocaleOptions(),
 			'timezones'		=> TodoyuStaticRecords::getAllTimezones(),
 			'text'			=> Todoyu::Label('install.installer.systemconfig.text'),
 			'textClass'		=> 'info'
