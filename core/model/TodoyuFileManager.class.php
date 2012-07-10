@@ -361,7 +361,13 @@ class TodoyuFileManager {
 	 * @return	String|Boolean	New file path or FALSE
 	 */
 	public static function addFileToStorage($storagePath, $sourceFile, $realFileName, $prependTimestamp = true) {
+		$sourceFile	= self::pathAbsolute($sourceFile);
 		$fileName	= self::makeCleanFilename($realFileName);
+
+		if( !self::isFile($sourceFile) ) {
+			TodoyuLogger::logError('Tried to add not existing file to storage <' . $sourceFile . '>');
+			return false;
+		}
 
 		if( $prependTimestamp ) {
 			$fileName	= NOW . '_' . $fileName;
