@@ -35,12 +35,12 @@ Todoyu.ContextMenu = {
 	bodyClickObserver: null,
 
 	/**
-	 * Currently visible submenu (for the delay workaround)
+	 * Currently visible sub menu (for the delay workaround)
 	 */
 	visibleSubmenu: null,
 
 	/**
-	 * Timeout callback for submenu (for the delay workaround)
+	 * Timeout callback for sub menu (for the delay workaround)
 	 */
 	hideSubmenuDelay: null,
 
@@ -51,7 +51,7 @@ Todoyu.ContextMenu = {
 	 * Automatically prevents double context menus by removing registered ones before adding the new one
 	 *
 	 * @method	attach
-	 * @param	{String}		name		Name of the contextmenu type (php callbacks are registered for this type)
+	 * @param	{String}		name		Name of the context menu type (php callbacks are registered for this type)
 	 * @param	{String}		selector	CSS selector expression
 	 * @param	{Function}		callback	Callback function to find element if on the observed DomElement
 	 */
@@ -86,7 +86,7 @@ Todoyu.ContextMenu = {
 	 *
 	 * @private
 	 * @method	load
-	 * @param	{String}		type				Name of the contextmenu type
+	 * @param	{String}		type				Name of the context menu type
 	 * @param	{Function}		callback			Callback function to parse ID from element
 	 * @param	{Element}		observedElement		Observed element
 	 * @param	{Event}			event				Click event object
@@ -203,7 +203,7 @@ Todoyu.ContextMenu = {
 
 			// Observe outside clicks
 		this.bodyClickObserver = document.body.on('click', this.hide.bind(this));
-			// Observe context-menu-clicks on contextmenu
+			// Observe context-menu-clicks on context menu
 		menu.on('contextmenu', this.preventContextMenu.bind(this));
 
 		Todoyu.Hook.exec('core.contextmenu', type, elementKey, left, top);

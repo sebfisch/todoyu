@@ -423,7 +423,7 @@ class TodoyuPageAssetManager {
 	 * Get style sheets which have to be included in the page
 	 * The files are merged and compressed as configured in the asset array
 	 *
-     * @param   Array   $styleSheets    optional
+	 * @param   Array   $styleSheets	optional
 	 * @return	Array
 	 */
 	public static function getStyleSheets($styleSheets = array()) {
@@ -431,9 +431,9 @@ class TodoyuPageAssetManager {
 		$merge	= array();
 		$single	= array();
 
-        if( count($styleSheets) === 0 ) {
+		if( count($styleSheets) === 0 ) {
 			$styleSheets= TodoyuArray::sortByLabel(self::$styleSheets, 'position');
-        }
+		}
 
 		$doMerging	= Todoyu::$CONFIG['CACHE']['CSS']['merge'];
 
@@ -482,7 +482,7 @@ class TodoyuPageAssetManager {
 		$pathCssDir	= TodoyuFileManager::pathAbsolute('cache/css/' . dirname($pathWeb));
 		$pathCssFile= $pathCssDir. '/' . $filenameCss;
 
-        	// Parse if not yet
+			// Parse if not yet
 		if( ! file_exists($pathCssFile) ) {
 			TodoyuFileManager::makeDirDeep($pathCssDir);
 			$sassParser	= self::getSassParser($pathScss); /*(TodoyuFileManager::getFileName($pathScss));*/
@@ -512,15 +512,15 @@ class TodoyuPageAssetManager {
 					'dirname' 	=> dirname($pathScss),
 					'basename'	=> TodoyuFileManager::getFileName($pathScss)
 			),
-	        'style'			=> SassRenderer::STYLE_NESTED,
-	        'cache'			=> false,
-	        'syntax'		=> SassFile::SCSS,
-	        'debug'			=> true,
-	        'callbacks'	=> array(
+			'style'			=> SassRenderer::STYLE_NESTED,
+			'cache'			=> false,
+			'syntax'		=> SassFile::SCSS,
+			'debug'			=> true,
+			'callbacks'	=> array(
 					'warn'	=> false,	//'cb_warn',
 					'debug' => false	//'cb_debug'
 			),
-	     );
+		);
 
 		return new SassParser($options);
 	}

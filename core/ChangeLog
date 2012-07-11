@@ -1,16 +1,17 @@
 todoyu core changelog
 
 core 2.3.0 - not released yet
-	* Bugfix: Add tabkey as class name for contentitemtabs
+	* Bugfix: Add tab key as class name for content item tabs
 	* Changed: enlarged content width
 	* Changed: context menu refactoring
+	* Changed: Open duration picker closes on body click
 	* Bugfix: Active item tabs are unique
-	* Bugfix: Autolinking found also background image source as link
+	* Bugfix: Auto linking found also background image source as link
 	* Bugfix: TodoyuSql::buildInListQueryPart() value when negated and input is empty
 	* Bugfix: Duration Pickers configuration failed
 	* Bugfix: Class for fieldset didn't work properly/clean
 	* Bugfix: isRequired() checks now for available field and for false value
-	* Bugfix: Contenttab did not store selected tab correctly
+	* Bugfix: Content tab did not store selected tab correctly
 	* Added: Form element time was not available
 	* Added: Todoyu.Form.isFirstInputInForm()
 	* Added: TodoyuFormElement::removeAttribute()

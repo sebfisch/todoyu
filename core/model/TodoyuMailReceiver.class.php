@@ -123,7 +123,7 @@ abstract class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	 * @return	String
 	 */
 	public function getTuple() {
-	    return $this->getType() . ':' . $this->getRecordID();
+		return $this->getType() . ':' . $this->getRecordID();
 	}
 
 

@@ -70,6 +70,11 @@ Todoyu.TimePicker = Class.create({
 	 */
 	divMinute:	null,
 
+	/**
+	 * Callback for body clicks
+	 */
+	bodyClickObserver:	null,
+
 
 
 	/**
@@ -128,6 +133,9 @@ Todoyu.TimePicker = Class.create({
 	show: function() {
 		this._setPosition();
 		this.picker.show();
+
+			// Install outside clicks observer
+		this.bodyClickObserver	= document.body.on('click', '', this._onBodyClick.bind(this));
 	},
 
 
@@ -139,6 +147,10 @@ Todoyu.TimePicker = Class.create({
 	 */
 	hide: function() {
 		this.picker.hide();
+
+		if( this.bodyClickObserver ) {
+			this.bodyClickObserver.stop();
+		}
 	},
 
 
@@ -343,8 +355,12 @@ Todoyu.TimePicker = Class.create({
 		this.divHour.on(wheelEventName, this._onHourScroll.bind(this));
 		this.divMinute.on(wheelEventName, this._onMinuteScroll.bind(this));
 
-		this.element.on('click', this._onElementClick.bind(this));
+			// Observe outside clicks
+//		this.element.on('click', this._onElementClick.bind(this));
 	},
+
+
+
 
 
 
@@ -379,14 +395,17 @@ Todoyu.TimePicker = Class.create({
 
 
 	/**
-	 * Event handler for element click
+	 * Handler for body click events
 	 *
-	 * @private
-	 * @method	_onElementClick
-	 * @param	{Event}		event
+	 * @method	_onBodyClick
+	 * @param	{Event}			event
+	 * @param	{Element}		element
 	 */
-	_onElementClick: function(event) {
-		this.hide();
+	_onBodyClick: function(event, element) {
+			// Ignore clicks on this element's duration picker icon
+		if ( element.siblings().indexOf(this.element) === -1 ) {
+			this.hide();
+		}
 	},
 
 

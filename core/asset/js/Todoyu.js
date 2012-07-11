@@ -200,7 +200,7 @@ var Todoyu = {
 	 * @return	{Boolean}
 	 */
 	isCurrentLocationHref: function(extKey, controller, params, hash) {
-        var url	= this.getUrl(extKey, controller, params);
+		var url	= this.getUrl(extKey, controller, params);
 
 			// Check for each query part separately as the alphabetical order does not matter
 		var queryParts		= url.split('&');

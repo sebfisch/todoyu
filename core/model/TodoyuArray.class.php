@@ -771,10 +771,10 @@ class TodoyuArray {
 	public static function flatten(array $array){
 		$flattened = array();
 
-		foreach($array as $value){
-			if( is_array($value) ){
+		foreach($array as $value) {
+			if( is_array($value) ) {
 				$flattened = array_merge($flattened, self::flatten($value));
-			}else{
+			} else {
 				array_push($flattened, $value);
 			}
 		}

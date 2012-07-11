@@ -100,4 +100,4 @@ Data modification
 	Modify full name of email receiver
 	@param	String		$fullname		[datavar]
 	@param	Integer		$idPerson
-    @param	TodoyuMail	$mail
+	@param	TodoyuMail	$mail

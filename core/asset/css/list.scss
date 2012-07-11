@@ -31,15 +31,15 @@ table.list {
 	}
 
 	a {
-    	text-decoration:underline;
+		text-decoration:underline;
 
-    	&:focus {
-    		outline:none; }
-    }
+		&:focus {
+			outline:none; }
+	}
 
-    a:hover {
+	a:hover {
 		background-color:$colorNeutral01;
-    }
+	}
 }
 
 

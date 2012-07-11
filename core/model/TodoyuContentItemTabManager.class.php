@@ -65,7 +65,7 @@ class TodoyuContentItemTabManager {
 	/**
 	 * Get project detail tabs config array
 	 *
-	 * @param	String		$extKey         Extension that originally implements the item
+	 * @param	String		$extKey			Extension that originally implements the item
 	 * @param	String		$itemKey		'project' / 'task' / ...
 	 * @param	Integer		$idItem
 	 * @param	Boolean		$evalLabel		If true, all labels with a function reference will be parsed
