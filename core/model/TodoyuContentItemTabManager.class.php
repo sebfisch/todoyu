@@ -27,11 +27,17 @@
 class TodoyuContentItemTabManager {
 
 	/**
-	 * Installed tabs for tasks
-	 *
-	 * @var	Array
+	 * @var	Array		Registered tabs
 	 */
-	private static $tabs = array();
+	protected static $tabs = array();
+
+
+	
+	/**
+	 * @var	Array		Parsed and prepared tabs
+	 */
+	protected static $parsedTabs = null;
+
 
 
 
@@ -46,7 +52,7 @@ class TodoyuContentItemTabManager {
 	 * @param	Integer		$position
 	 */
 	public static function registerTab($extKey, $itemKey, $tabKey, $labelFunction, $contentFunction, $position = 100) {
-		Todoyu::$CONFIG['EXT'][$extKey][$itemKey]['tabs'][$tabKey] = array(
+		self::$tabs[$extKey][$itemKey][$tabKey] = array(
 			'id'		=> $tabKey,
 			'label'		=> $labelFunction,
 			'position'	=> intval($position),
@@ -64,26 +70,24 @@ class TodoyuContentItemTabManager {
 	 * @param	Integer		$idItem
 	 * @param	Boolean		$evalLabel		If true, all labels with a function reference will be parsed
 	 * @param	Boolean		$noCache		Don't cache tabs
-	 * @return	Array
+	 * @return	Array[]
 	 */
 	public static function getTabs($extKey, $itemKey, $idItem, $evalLabel = true, $noCache = false) {
-		if( is_null(self::$tabs[$itemKey]) ) {
-			$tabs	= TodoyuArray::assure(Todoyu::$CONFIG['EXT'][$extKey][$itemKey]['tabs']);
-			self::$tabs[$itemKey] = TodoyuArray::sortByLabel($tabs);
+		if( is_null(self::$parsedTabs[$itemKey]) ) {
+			self::$parsedTabs[$itemKey] = self::getTabConfigs($extKey, $itemKey, true);
 		}
 
-		$tabs = self::$tabs[$itemKey];
+		$tabs = TodoyuArray::assure(self::$parsedTabs[$itemKey]);
 
 		if( $evalLabel ) {
 			foreach($tabs as $index => $tab) {
-				$labelFunc				= $tab['label'];
-				$tabs[$index]['label']	= TodoyuFunction::callUserFunction($labelFunc, $idItem);
+				$tabs[$index]['label']	= TodoyuFunction::callUserFunction($tab['label'], $idItem);
 			}
 		}
 
 			// No cache = remove
 		if( $noCache ) {
-			unset(self::$tabs[$itemKey]);
+			unset(self::$parsedTabs[$itemKey]);
 		}
 
 		return $tabs;
@@ -100,7 +104,27 @@ class TodoyuContentItemTabManager {
 	 * @return	Array
 	 */
 	public static function getTabConfig($extKey, $itemKey, $tabKey) {
-		return Todoyu::$CONFIG['EXT'][$extKey][$itemKey]['tabs'][$tabKey];
+		return TodoyuArray::assure(self::$tabs[$extKey][$itemKey][$tabKey]);
+	}
+
+
+
+	/**
+	 * Get all tab configs for an item type
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$itemKey
+	 * @param	Boolean		$sort		Sort by position
+	 * @return	Array[]
+	 */
+	public static function getTabConfigs($extKey, $itemKey, $sort = true) {
+		$tabs	= TodoyuArray::assure(self::$tabs[$extKey][$itemKey]);
+
+		if( $sort ) {
+			$tabs = TodoyuArray::sortByLabel($tabs, 'position');
+		}
+
+		return $tabs;
 	}
 
 
@@ -119,6 +143,21 @@ class TodoyuContentItemTabManager {
 		$first	= array_shift($tabs);
 
 		return $first['id'];
+	}
+
+
+
+	/**
+	 * Check whether tabs are registered for type
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$itemKey
+	 * @return	Boolean
+	 */
+	public static function hasTabs($extKey, $itemKey) {
+		$tabs = self::getTabConfigs($extKey, $itemKey, false);
+
+		return sizeof($tabs) > 0;
 	}
 
 }

@@ -38,7 +38,7 @@ class TodoyuContentItemTabPreferences {
 			// Override selected tab
 		$forceTab	= self::getForcedTab($extKey, $itemKey);
 
-		if( $forceTab !== false ) {
+		if( $forceTab ) {
 			$prefTab = $forceTab;
 		} else {
 			$extID		= TodoyuExtensions::getExtID($extKey);

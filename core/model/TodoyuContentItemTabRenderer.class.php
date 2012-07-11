@@ -51,6 +51,7 @@ class TodoyuContentItemTabRenderer {
 	}
 
 
+
 	/**
 	 * Render the heads of all project detail tabs
 	 *
