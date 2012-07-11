@@ -27,7 +27,7 @@
  * @subpackage	Core
  * @abstract
  */
-abstract class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
+class TodoyuBaseObject implements ArrayAccess, Dwoo_IDataProvider {
 
 	/**
 	 * Record data (database row)
