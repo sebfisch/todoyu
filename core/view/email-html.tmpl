@@ -4,80 +4,56 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>{$subject}</title>
 <style type="text/css">
-body, p {
-	margin:0;
+body {
+	margin:10px;
 	padding:0;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 }
-body {
-	background-color:#F8FFF0;
-}
-td {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
-	vertical-align:top;
-	padding:5px;
+
+.mailFooter pre {
+	color: #666;
 }
 
-td.label {
-	white-space:nowrap;
-	font-weight:bold;
+/* ------------------------- */
+
+.commentLink {
+	margin-top: 30px;
 }
 
-.mailHeader {
-	background-color:#F8FFF0;
-	padding:10px 0 10px 20px;
-	font-weight:bold;
-	font-size:12px;
+.commentTask {
+	border: dashed #666;
+	border-width: 1px 0;
+	padding: 10px 0;
 }
-.mailContent {
-	border-top:1px solid #000;
-	border-bottom:1px solid #000;
-	padding:10px;
-	background-color:#fff;
-}
-.mailFooter {
-	padding:10px 0 0 20px;
-	background-color:#F8FFF0;
-	font-size:10px;
-}
-{foreach $cssStyles cssStyle}
-	{$cssStyle}
 
-{/foreach}
+.commentCompany {
+	margin: 5px 0;
+	font-size: 12px;
+}
+
+.commentTaskHeader {
+	 margin: 5px 0 15px 0;
+	 font-size: 12px;
+}
+
+.commentTask,
+.commentTask * {
+	color: #666;
+}
 
 </style>
 </head>
 
 <body>
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr>
-		<td class="mailHeader">
-			{$headline|default:$subject}
-		</td>
-	</tr>
-	<tr>
-		<td class="mailContent">
-			{$content}
-		</td>
-	</tr>
-
-	{if $signature}
-		<tr>
-			<td class="signature">
-				{$signature}
-			</td>
-		</tr>
-	{/if}
-
-	<tr>
-		<td class="mailFooter">
-			This email was sent with todoyu: <a href="{constant(TODOYU_URL)}">{constant(TODOYU_URL)}</a>
-		</td>
-	</tr>
-</table>
-
+<div class="mailContent">
+	{$content}
+</div>
+<div class="mailFooter">
+{if $signature}
+{$signature}
+{/if}
+<pre>This email was sent with todoyu: <a href="{constant(TODOYU_URL)}">{constant(TODOYU_URL)}</a></pre>
+</div>
 </body>
 </html>
