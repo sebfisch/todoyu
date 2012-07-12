@@ -122,7 +122,9 @@ class TodoyuMail extends PHPMailer {
 			$this->SetFrom($this->config['from']['email'], $this->config['from']['name'], 0);
 		} elseif( is_numeric($this->config['from']) ) {
 			$this->setSender($this->config['from']);
-		} elseif( $this->config['from'] !== false ) {
+		} elseif( TodoyuAuth::isLoggedIn() ) {
+			$this->setCurrentUserAsSender();
+		} else {
 			$this->setSystemAsSender();
 		}
 	}
