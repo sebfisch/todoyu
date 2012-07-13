@@ -125,6 +125,25 @@ interface TodoyuMailReceiverInterface {
 	 */
 	public function getPerson();
 
+
+
+	/**
+	 * Get label
+	 *
+	 * @param	Boolean		$withAddress
+	 * @return	String
+	 */
+	public function getLabel($withAddress = true);
+
+
+
+	/**
+	 * Get mail format
+	 * "name@company.com" or "Name <name@company.com>"
+	 *
+	 * @return	String
+	 */
+	public function getMailFormat();
 }
 
 ?>

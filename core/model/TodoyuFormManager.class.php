@@ -114,6 +114,7 @@ class TodoyuFormManager {
 	 */
 	public static function addFieldTypeRecords($name, $className) {
 		$pathTemplate	= 'core/view/form/FormElement_Records.tmpl';
+		$name			= 'records' . ucfirst($name);
 
 		self::addFieldType($name, $className, $pathTemplate);
 	}

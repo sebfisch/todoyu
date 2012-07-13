@@ -135,14 +135,37 @@ abstract class TodoyuMailReceiver implements TodoyuMailReceiverInterface {
 	 * @return	String
 	 */
 	public function getLabel($withAddress = true) {
-		$label	= $this->getName();
+		$name	= $this->getName();
+		$address= $this->getAddress();
 
-		if( empty($label) || $withAddress ) {
-			$label .= ' <' . $this->getAddress() . '>';
+		if( empty($name) ) {
+			return $address;
+		} elseif( $withAddress ) {
+			return $name . ' (' . $address . ')';
+		} else {
+			return $name;
 		}
-
-		return $label;
 	}
+
+
+
+	/**
+	 * Get address as mail format
+	 *
+	 * @return	String
+	 */
+	public function getMailFormat() {
+		$name	= $this->getName();
+		$address= $this->getAddress();
+
+		if( empty($name) ) {
+			return $address;
+		} else {
+			return $name . ' <' . $address . '>';
+		}
+	}
+
+
 
 
 

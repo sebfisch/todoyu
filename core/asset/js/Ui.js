@@ -788,6 +788,19 @@ Todoyu.Ui = {
 
 
 	/**
+	 * Initialize form records element
+	 *
+	 * @param	{String}	type
+	 * @param	{String}	htmlId
+	 * @param	{Object}	options
+	 */
+	initFormRecords: function(type, htmlId, options) {
+		var x = new Todoyu.FormRecords(type, htmlId, options);
+	},
+
+
+
+	/**
 	 * Initialize popup calendar
 	 *
 	 * @method	initCalendar

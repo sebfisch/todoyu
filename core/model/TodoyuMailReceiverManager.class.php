@@ -27,13 +27,25 @@
 class TodoyuMailReceiverManager {
 
 	/**
+	 * @var	String[]		Mail receiver types
+	 */
+	private static $types = array();
+
+	/**
+	 * @var	String[]		Search callbacks for mail receiver records element
+	 */
+	private static $searchCallbacks = array();
+
+
+
+	/**
 	 * Register an email receiver type
 	 *
 	 * @param	String		$type
-	 * @param	String		$callbackObject
+	 * @param	String		$object
 	 */
-	public static function registerType($type, $callbackObject) {
-		Todoyu::$CONFIG['MailReceiver'][$type] = $callbackObject;
+	public static function addType($type, $object) {
+		self::$types[$type] = $object;
 	}
 
 
@@ -42,10 +54,21 @@ class TodoyuMailReceiverManager {
 	 * Get email receiver type configuration
 	 *
 	 * @param	String		$type
-	 * @return	String					Object callback
+	 * @return	String
 	 */
-	public static function getTypeConfig($type) {
-		return Todoyu::$CONFIG['MailReceiver'][$type];
+	public static function getTypeClass($type) {
+		return self::$types[$type];
+	}
+
+
+
+	/**
+	 * Add a search callback as source for the mail receivers records selector form element
+	 *
+	 * @param	String		$callback
+	 */
+	public static function addSearchCallback($callback) {
+		self::$searchCallbacks[$callback] = $callback;
 	}
 
 
@@ -65,16 +88,16 @@ class TodoyuMailReceiverManager {
 			$idRecord	= $receiverTuple;
 		} else {
 				// ID is prefixed with registered key of receiver type
-			list($type, $idRecord)	= explode(':', $receiverTuple);
+			list($type, $idRecord)	= explode(':', $receiverTuple, 2);
 		}
 
-		$objectClass	= self::getTypeConfig($type);
-		if( !class_exists($objectClass)) {
+		$class = self::getTypeClass($type);
+		if( !class_exists($class)) {
 			TodoyuLogger::logError('Unknown email receiver type key in tuple <' . $receiverTuple . '>');
 			return false;
 		}
 
-		return new $objectClass($idRecord);
+		return new $class($idRecord);
 	}
 
 
@@ -109,7 +132,50 @@ class TodoyuMailReceiverManager {
 	 * @return	Boolean
 	 */
 	public static function isTypeRegistered($type) {
-		return array_key_exists($type, Todoyu::$CONFIG['MailReceiver']);
+		return isset(self::$types[$type]);
+	}
+
+
+
+	/**
+	 * Get matching email receivers as list items
+	 *
+	 * @param	String[]		$searchWords
+	 * @param	String[]		$ignoreTuples
+	 * @param	Array			$params
+	 * @param	String			$type
+	 * @return	Array[]
+	 */
+	public static function getMatchingMailReceivers(array $searchWords, array $ignoreTuples = array(), array $params = array(), $type) {
+		$searchWords	= TodoyuArray::trim($searchWords);
+		$ignoreTuples	= TodoyuArray::trim($ignoreTuples);
+		$receiverTuples	= array();
+		$listItems		= array();
+
+			// Search with all callbacks
+		foreach(self::$searchCallbacks as $searchCallback) {
+			$typeReceiverTuples	= TodoyuFunction::callUserFunction($searchCallback, $searchWords, $ignoreTuples, $params);
+
+			if( is_array($typeReceiverTuples) ) {
+				$receiverTuples	= array_merge($receiverTuples, $typeReceiverTuples);
+			}
+		}
+
+		$receiverTuples = array_unique($receiverTuples);
+
+			// Convert receiver tuples in records list items
+		foreach($receiverTuples as $receiverTuple) {
+			list($type, $idRecord) = explode(':', $receiverTuple);
+			$mailReceiver	= TodoyuMailReceiverManager::getMailReceiver($receiverTuple);
+
+			$listItems[] = array(
+				'id'		=> $receiverTuple,
+				'label'		=> $mailReceiver->getLabel(),
+				'className'	=> 'type' . ucfirst($type)
+			);
+		}
+
+		return $listItems;
 	}
 
 }

@@ -29,43 +29,35 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 	/**
 	 * Initialize
 	 *
-	 * @param	String			$name
+	 * @param	String				$type
+	 * @param	String				$name
 	 * @param	TodoyuFormFieldset	$fieldset
-	 * @param	Array			$config
+	 * @param	Array				$config
 	 */
-	public function __construct($name, TodoyuFormFieldset $fieldset, array $config = array()) {
+	public function __construct($type, $name, TodoyuFormFieldset $fieldset, array $config = array()) {
 		parent::__construct('records', $name, $fieldset, $config);
 
 		if( !is_array($this->config['options']) ) {
 			$this->config['options'] = array();
 		}
 		$this->config['multiple'] = true;
+
+		$this->initRecords($type);
 	}
 
 
 
 	/**
-	 * Init
+	 * Init records config
 	 *
 	 * @param	String		$type
-	 * @param	String		$ext
-	 * @param	String		$controller
-	 * @param	String		$action
 	 */
-	protected function initRecords($type, $ext = null, $controller = null, $action = null) {
+	protected function initRecords($type) {
 		$this->type				= 'records' . ucfirst($type);
 		$this->config['type']	= $type;
 		$this->config['class'] .= ' typeRecords records' . ucfirst($type);
 
 		$this->config['options']['params']	= array();
-
-		if( $ext ) {
-			$this->config['options']['url'] = array(
-				'ext'	=> $ext,
-				'ctrl'	=> $controller,
-				'action'=> $action
-			);
-		}
 	}
 
 

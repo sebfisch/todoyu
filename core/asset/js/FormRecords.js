@@ -332,10 +332,11 @@ Todoyu.FormRecords = Class.create({
 	 * @method	search
 	 */
 	search: function() {
-		var url		= Todoyu.getUrl(this.config.url.ext, this.config.url.ctrl);
+		var url		= Todoyu.getUrl('core', 'records');
 		var options	= {
 			parameters: {
-				action:	this.config.url.action,
+				action:	'list',
+				type:	this.type,
 				search:	this.getSearchText(),
 				ignore: this.getSelectedItemIDs().join(',')
 			},
@@ -367,8 +368,7 @@ Todoyu.FormRecords = Class.create({
 		if( response.responseJSON ) {
 			response.responseJSON.each(function(resultItem){
 				if( !this.isItemInSelection(resultItem.id) ) {
-					var classname	= resultItem.classname || '';
-					this.addResultItem(resultItem.id, resultItem.label, classname);
+					this.addResultItem(resultItem.id, resultItem.label, resultItem.className);
 				} else {
 					// Notify about matching items in list?
 				}
@@ -411,12 +411,12 @@ Todoyu.FormRecords = Class.create({
 	 * @method	addResultItem
 	 * @param	{String}	id
 	 * @param	{String}	label
-	 * @param	{String}	[classname]
+	 * @param	{String}	[className]
 	 */
-	addResultItem: function(id, label, classname) {
-		classname	= classname || '';
+	addResultItem: function(id, label, className) {
+		className	= className || '';
 
-		this.results.insert(this.buildResultItem(id, label, classname));
+		this.results.insert(this.buildResultItem(id, label, className));
 	},
 
 
@@ -501,14 +501,14 @@ Todoyu.FormRecords = Class.create({
 	 * @method	buildResultItem
 	 * @param	{String}	id
 	 * @param	{String}	label
-	 * @param	{String}	[classname]
+	 * @param	{String}	[className]
 	 */
-	buildResultItem: function(id, label, classname) {
-		classname	= classname || '';
+	buildResultItem: function(id, label, className) {
+		className	= className || '';
 
 		var item = new Element('li', {
-			id:			this.baseID + '-results-' + id,
-			class:	classname
+			id:		this.baseID + '-results-' + id,
+			class:	className
 		});
 		var iconEl	= new Element('span', {
 			class: 'icon recordIcon'

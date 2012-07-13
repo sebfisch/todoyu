@@ -80,5 +80,7 @@ TodoyuFormManager::addFieldType('databaseRelation', 'TodoyuFormElement_DatabaseR
 TodoyuFormManager::addFieldType('comment', 'TodoyuFormElement_Comment', 'core/view/form/FormElement_Comment.tmpl');
 	// Icon selector
 TodoyuFormManager::addFieldType('selectIcon', 'TodoyuFormElement_SelectIcon', 'core/view/form/FormElement_SelectIcon.tmpl');
+	// General mail receivers records selector
+TodoyuFormRecordsManager::addType('mailReceivers', 'TodoyuFormElement_RecordsMailReceivers', 'TodoyuMailReceiverManager::getMatchingMailReceivers');
 
 ?>

@@ -11,7 +11,7 @@
 	{** Selection list **}
 	<ul id="{$htmlId}-selection" class="selection">
 		{foreach $records record}
-			<li id="{$htmlId}-selection-{$record.id}" class="{$record.class}">
+			<li id="{$htmlId}-selection-{$record.id}" class="type{ucfirst $record.className}">
 				<span class="icon recordIcon"></span>
 				<span class="label">{htmlencode $record.label}</span>
 				<span class="icon remove"></span>
@@ -28,7 +28,7 @@
 
 	{** Init js **}
 	<script type="text/javascript">
-		var x = new Todoyu.FormRecords('{$type}', '{$htmlId}', {$jsonOptions});
+		Todoyu.Ui.initFormRecords('{$type}', '{$htmlId}', {$jsonOptions});
 	</script>
 
 {/block}

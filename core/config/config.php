@@ -109,7 +109,7 @@ Todoyu::$CONFIG['EXPORT']['CSV']	= array(
 );
 
 	// Add email receiver type: 'simple'
-TodoyuMailReceiverManager::registerType('simple', 'TodoyuMailReceiverSimple');
+TodoyuMailReceiverManager::addType('simple', 'TodoyuMailReceiverSimple');
 
 
 Todoyu::$CONFIG['WITHOUT_EXTENSIONS'] = false;
