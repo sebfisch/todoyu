@@ -69,7 +69,12 @@ Todoyu.FormRecords = Class.create({
 	 */
 	ignoreKeyInputs: [
 		Event.KEY_RETURN,
-		32 // Space
+		32, // Space,
+		16, // Shift
+		17, // Ctrl,
+		18, // Alt
+		93, // Contextmenu
+		20 // Caps lock
 	],
 
 	/**

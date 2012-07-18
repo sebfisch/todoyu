@@ -38,7 +38,11 @@ class TodoyuCoreRecordsActionController extends TodoyuActionController {
 		$ignoreKeys		= TodoyuArray::intExplode(',', $params['ignore']);
 		$params			= TodoyuArray::assure($params['params']);
 
-		$listItems		= TodoyuFormRecordsManager::getListItems($type, $searchWords, $ignoreKeys, $params);
+		if( sizeof($searchWords) > 0 ) {
+			$listItems	= TodoyuFormRecordsManager::getListItems($type, $searchWords, $ignoreKeys, $params);
+		} else {
+			$listItems	= array();
+		}
 
 		TodoyuHeader::sendTypeJSON();
 

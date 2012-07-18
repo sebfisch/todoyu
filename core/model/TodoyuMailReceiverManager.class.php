@@ -152,6 +152,10 @@ class TodoyuMailReceiverManager {
 		$receiverTuples	= array();
 		$listItems		= array();
 
+		if( sizeof($searchWords) === 0 ) {
+			return array();
+		}
+
 			// Search with all callbacks
 		foreach(self::$searchCallbacks as $searchCallback) {
 			$typeReceiverTuples	= TodoyuFunction::callUserFunction($searchCallback, $searchWords, $ignoreTuples, $params);
