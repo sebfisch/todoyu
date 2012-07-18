@@ -2,9 +2,6 @@ todoyu core changelog
 
 core 2.3.0 - not released yet
 	* Bugfix: Add tab key as class name for content item tabs
-	* Changed: enlarged content width
-	* Changed: context menu refactoring
-	* Changed: Open duration picker closes on body click
 	* Bugfix: Active item tabs are unique
 	* Bugfix: Auto linking found also background image source as link
 	* Bugfix: TodoyuSql::buildInListQueryPart() value when negated and input is empty
@@ -70,6 +67,9 @@ core 2.3.0 - not released yet
 	* Changed: Send 404 http status if controller is not found
 	* Changed: TodoyuArray::explode() return the $string if it is already an array
 	* Changed: Added limit parameter for TodoyuDebug::printBacktrace()
+	* Changed: enlarged content width
+	* Changed: context menu refactoring
+	* Changed: Open duration picker closes on body click
 	* Library: Upgraded from PHPMailer-lite 5.1 to PHPMailer 5.2.1
 	* Library: Highcharts 2.2.3
 	* Library: tinyMCE 3.5.4.1
