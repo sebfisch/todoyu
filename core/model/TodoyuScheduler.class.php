@@ -96,11 +96,20 @@ class TodoyuScheduler {
 	}
 
 
+	/**
+	 * Echos schedular-usage
+	 */
 	private static function printUsageInfoForConsole() {
 		echo TodoyuFileManager::getFileContent('core/view/scheduler-usage.tmpl');
 	}
 
 
+
+	/**
+	 * Execute the given job or all due jobs if no job is given
+	 *
+	 * @param	String|Boolean		$jobClassName			False or name of a specific job
+	 */
 	private static function executeJobs($jobClassName = false) {
 			// Cache last execution dates for all jobs
 		self::cacheLastExecutionDates();
@@ -144,13 +153,13 @@ class TodoyuScheduler {
 	 * Add a job. Will be executed when it's due
 	 *
 	 * @param	String			$className		Class which implements the job
-	 * @param	String|Integer	$crontime		Crontab syntax or offset in minutes
+	 * @param	String|Integer	$cronTime		Crontab syntax or offset in minutes
 	 * @param	Array			$options		Job options
 	 */
-	public static function addJob($className, $crontime, array $options = array()) {
+	public static function addJob($className, $cronTime, array $options = array()) {
 		self::$jobs[$className] = array(
 			'class'		=> $className,
-			'crontime'	=> $crontime,
+			'crontime'	=> $cronTime,
 			'options'	=> $options
 		);
 	}
@@ -213,7 +222,7 @@ class TodoyuScheduler {
 	 *
 	 * @return	Array
 	 */
-	private static function getDueJobs() {
+	public static function getDueJobs() {
 		$dueJobs	= array();
 
 		foreach(self::$jobs as $jobConfig) {
@@ -231,12 +240,12 @@ class TodoyuScheduler {
 	 * Compare interval with last execution and current time
 	 *
 	 * @param	String			$className
-	 * @param	String|Integer	$crontime
+	 * @param	String|Integer	$cronTime
 	 * @return	Boolean
 	 */
-	private static function isJobDue($className, $crontime) {
+	private static function isJobDue($className, $cronTime) {
 			// Shortcut for forced execution
-		if( $crontime === 0 ) {
+		if( $cronTime === 0 ) {
 			return true;
 		}
 
@@ -246,12 +255,12 @@ class TodoyuScheduler {
 			return true;
 		}
 
-		if( is_numeric($crontime) ) {
-			$seconds	= ((int) $crontime) * 60;
+		if( is_numeric($cronTime) ) {
+			$seconds	= ((int) $cronTime) * 60;
 
 			return $lastExecutionDate + $seconds < NOW;
 		} else {
-			return self::isJobDueByCrontime($crontime, $lastExecutionDate);
+			return self::isJobDueByCrontime($cronTime, $lastExecutionDate);
 		}
 	}
 
@@ -261,11 +270,11 @@ class TodoyuScheduler {
 	 * Check whether a job is due by Crontab syntax
 	 *
 	 * @todo	Implement
-	 * @param	String		$crontime
+	 * @param	String		$cronTime
 	 * @param	Integer		$lastExecutionDate
 	 * @return	Boolean
 	 */
-	private static function isJobDueByCrontime($crontime, $lastExecutionDate) {
+	private static function isJobDueByCrontime($cronTime, $lastExecutionDate) {
 		return true;
 	}
 
@@ -301,7 +310,6 @@ class TodoyuScheduler {
 
 	/**
 	 * Cache last execution dates of all jobs which are registered
-	 *
 	 */
 	private static function cacheLastExecutionDates() {
 		if( is_null(self::$lastExecutionDates) ) {
