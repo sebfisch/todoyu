@@ -51,6 +51,7 @@ core 2.3.0 - not released yet
 	* Added: TodoyuDebug::getBacktrace()
 	* Added: Todoyu.ListScrollLoader()
 	* Added: class TodoyuTimezoneManager
+	* Added: Set timezone in database for date calculations
 	* Changed: extracted select-group-options from template
 	* Changed: Renamed TodoyuArray::prefix() to prefixValues()
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()

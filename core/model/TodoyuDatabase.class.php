@@ -1045,6 +1045,17 @@ class TodoyuDatabase {
 
 
 	/**
+	 * Set session timezone in database
+	 *
+	 * @param	String		$timezone
+	 */
+	public function setTimezone($timezone) {
+		$this->query('SET @@session.time_zone = \'' . $timezone . '\'');
+	}
+
+
+
+	/**
 	 * Print database connection error message
 	 *
 	 * @param	String		$error

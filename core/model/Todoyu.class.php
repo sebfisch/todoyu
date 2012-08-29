@@ -114,6 +114,11 @@ class Todoyu {
 
 			// Set default timezone
 		date_default_timezone_set($timezone);
+
+			// Set DB timezone offset
+		$timeZone = new DateTimeZone($timezone);
+		$timeZoneOffsetHours = (new DateTime(null, $timeZone))->format('P');
+		self::db()->setTimezone($timeZoneOffsetHours);
 	}
 
 
