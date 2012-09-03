@@ -9,6 +9,7 @@
 	<label index="expandall">Expand All</label>
 	<label index="author">Author</label>
 	<label index="title">Title</label>
+	<label index="name">Name</label>
 	<label index="description">Description</label>
 	<label index="notice">Notice</label>
 	<label index="date">Date</label>
@@ -49,6 +50,9 @@
 	<label index="when">When</label>
 	<label index="new">New</label>
 	<label index="until">Until</label>
+	<label index="history">History</label>
+	<label index="before">Before</label>
+	<label index="after">After</label>
 	<label index="private">Private</label>
 	<label index="start">Start</label>
 	<label index="stop">Stop</label>
