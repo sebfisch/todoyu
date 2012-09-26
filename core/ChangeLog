@@ -9,6 +9,7 @@ core 2.3.0 - not released yet
 	* Bugfix: Class for fieldset didn't work properly/clean
 	* Bugfix: isRequired() checks now for available field and for false value
 	* Bugfix: Content tab did not store selected tab correctly
+	* Added: TodoyuHookManager::getHooks can now also get hooks anonymously (w/o name)
 	* Added: Form element time was not available
 	* Added: Todoyu.Form.isFirstInputInForm()
 	* Added: TodoyuFormElement::removeAttribute()
