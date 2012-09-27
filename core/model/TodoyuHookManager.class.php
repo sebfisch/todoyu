@@ -39,27 +39,29 @@ class TodoyuHookManager {
 	 * Get registered hooks
 	 *
 	 * @param	String		$extKey
-	 * @param	String		$name		If empty: get all hooks of given extension
+	 * @param	String		$name		If empty: get all hooks+names
 	 * @return	Array
 	 */
 	public static function getHooks($extKey, $name = '') {
 		$extKey	= strtolower($extKey);
 		$name	= trim(strtolower($name));
 
-		if( !empty($name) ) {
-			$hooks	= TodoyuArray::assure(self::$hooks[$extKey][$name]);
-		} else {
-			$hooks	= array();
-			$hooksOfAllNames = TodoyuArray::assure(self::$hooks[$extKey]);
-			foreach($hooksOfAllNames as $hooksOfName) {
-				$hooks	= array_merge($hooks, $hooksOfName);
-			}
-		}
-
-			// Sort hooks by position
+		$hooks	= TodoyuArray::assure(self::$hooks[$extKey][$name]);
 		$hooks	= TodoyuArray::sortByLabel($hooks, 'position');
 
 		return TodoyuArray::getColumn($hooks, 'function');
+	}
+
+
+
+	/**
+	 * Get all hooks of given extension
+	 *
+	 * @param	String
+	 * @return	Array
+	 */
+	public static function getAllHooksOfExtension($extKey) {
+		return TodoyuArray::assure(self::$hooks[$extKey]);
 	}
 
 
