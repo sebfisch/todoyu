@@ -597,23 +597,18 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 		$text4		= 'Test <span>team@todoyu.com</span> Email address';
 		$expected4	= 'Test <span><a href="mailto:team@todoyu.com">team@todoyu.com</a></span> Email address';
 
-		echo 'text' . chr(10);
 		$result	= TodoyuString::replaceUrlWithLink($text);
 		$this->assertEquals($text, $result);
 
-		echo 'text1' . chr(10);
 		$result	= TodoyuString::replaceUrlWithLink($text1);
 		$this->assertEquals($text1, $result);
 
-		echo 'text2' . chr(10);
 		$result	= TodoyuString::replaceUrlWithLink($text2);
 		$this->assertEquals($expected2, $result);
 
-		echo 'text3' . chr(10);
 		$result	= TodoyuString::replaceUrlWithLink($text3);
 		$this->assertEquals($expected3, $result);
 
-		echo 'text4' . chr(10);
 		$result	= TodoyuString::replaceUrlWithLink($text4);
 		$this->assertEquals($expected4, $result);
 	}
