@@ -699,15 +699,31 @@ class TodoyuString {
 		$replaceSimple	= '\1<a href="http://\2" target="_blank">\2</a>';
 
 			// Find mailto links
-		$patternEmail	= '/(^|[">;: ])((?:[\w-\.]+)@(?:[\w-\.]{2,})\.(?:\w{2,6}))/is';
-		$replaceEmail	= '\1<a href="mailto:\2">\2</a>';
+		$patternEmail	= '/(?<completeTag><(?<tagOpen>\w+)(?<tagattributes>[^>]?)*>)?(?<content>[\w-\.]+@[\w-\.]+)(?<tagClose><\/\2>)?/';
 
 			// Replace URLs
 		$htmlContent	= preg_replace($patternFull, $replaceFull, $htmlContent);
 		$htmlContent	= preg_replace($patternSimple, $replaceSimple, $htmlContent);
-		$htmlContent	= preg_replace($patternEmail, $replaceEmail, $htmlContent);
+		$htmlContent	= preg_replace_callback($patternEmail, array(self, "replaceEmailInText"), $htmlContent);
 
 		return $htmlContent;
+	}
+
+
+
+	/**
+	 * @param	Array	$matches
+	 */
+	public static function replaceEmailInText($matches) {
+		$replaceEmail	= '<a href="mailto:%s">%s</a>';
+
+		if( $matches['completeTag'] === '' ) {
+			return sprintf($replaceEmail, $matches['content'], $matches['content']);
+		} else if( $matches['tagOpen'] !== 'a' ) {
+			return $matches['completeTag'] . sprintf($replaceEmail, $matches['content'], $matches['content']) . $matches['tagClose'];
+		}
+
+		return $matches[0];
 	}
 
 

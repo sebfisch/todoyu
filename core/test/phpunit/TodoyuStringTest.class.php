@@ -581,6 +581,46 @@ class TodoyuStringTest extends PHPUnit_Framework_TestCase {
 
 
 	/**
+	 * Test replaceUrlWithLink
+	 */
+	public function testReplaceUrlWithLinkEmail() {
+		$text		= 'Test an embedded <a href="mailto:team@todoyu.com" target="_blank">team@todoyu.com</a> Email address';
+
+		$text1		= 'Test an embedded <b><a href="mailto:team@todoyu.com" target="_blank">team@todoyu.com</a></b> Email address';
+
+		$text2		= 'Test an team@todoyu.com Email address';
+		$expected2	= 'Test an <a href="mailto:team@todoyu.com">team@todoyu.com</a> Email address';
+
+		$text3		= 'Test <span>Email: team@todoyu.com </span> with surrounding other tags';
+		$expected3	= 'Test <span>Email: <a href="mailto:team@todoyu.com">team@todoyu.com</a> </span> with surrounding other tags';
+
+		$text4		= 'Test <span>team@todoyu.com</span> Email address';
+		$expected4	= 'Test <span><a href="mailto:team@todoyu.com">team@todoyu.com</a></span> Email address';
+
+		echo 'text' . chr(10);
+		$result	= TodoyuString::replaceUrlWithLink($text);
+		$this->assertEquals($text, $result);
+
+		echo 'text1' . chr(10);
+		$result	= TodoyuString::replaceUrlWithLink($text1);
+		$this->assertEquals($text1, $result);
+
+		echo 'text2' . chr(10);
+		$result	= TodoyuString::replaceUrlWithLink($text2);
+		$this->assertEquals($expected2, $result);
+
+		echo 'text3' . chr(10);
+		$result	= TodoyuString::replaceUrlWithLink($text3);
+		$this->assertEquals($expected3, $result);
+
+		echo 'text4' . chr(10);
+		$result	= TodoyuString::replaceUrlWithLink($text4);
+		$this->assertEquals($expected4, $result);
+	}
+
+
+
+	/**
 	 * Test Extracthttpstatuscode
 	 */
 	public function testExtracthttpstatuscode() {

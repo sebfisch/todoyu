@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.3.0 - not released yet
+	* Bugfix: Fixed e-mail parsing
 	* Bugfix: Removed boundaries of submenu entries
 	* Bugfix: Add tab key as class name for content item tabs
 	* Bugfix: Active item tabs are unique

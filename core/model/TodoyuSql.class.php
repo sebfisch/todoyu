@@ -253,7 +253,7 @@ class TodoyuSql {
 			$fieldWheres[] = implode($innerConjunction, $fieldCompare);
 		}
 
-		return '((' . implode(') ' . $outerConjunction . ' (', $fieldWheres) . '))';
+		return '((' . implode(')' . $outerConjunction . '(', $fieldWheres) . '))';
 	}
 
 
