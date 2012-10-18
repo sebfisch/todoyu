@@ -329,6 +329,7 @@
 	<xs:element name="readonly" type="xs:string"/>
 	<xs:element name="default" type="xs:string"/>
 	<xs:element name="value" type="xs:string"/>
+	<xs:element name="maxlength" type="xs:decimal"/>
 	<xs:element name="size" type="xs:integer"/>
 	<xs:element name="rows" type="xs:integer"/>
 	<xs:element name="fieldClass" type="xs:string"/>
@@ -379,6 +380,7 @@
 				<xs:element ref="disabled"/>
 				<xs:element ref="readonly"/>
 				<xs:element ref="default"/>
+				<xs:element ref="maxlength"/>
 				<xs:element ref="value"/>
 				<xs:element ref="noStorage"/>
 				<xs:element ref="multiple"/>
