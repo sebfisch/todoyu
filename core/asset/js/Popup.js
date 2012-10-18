@@ -225,8 +225,8 @@ Todoyu.Popup = Class.create(Window, {
 	 * Prevent close callback loops
 	 *
 	 * @method	close
-	 * @param	{Function}	$super		Parent close function: Window.close
-	 * @param	{Boolean}	forced		Close was forced by code, not by an event of the window
+	 * @param	{Function}	[$super]	Parent close function: Window.close
+	 * @param	{Boolean}	[forced]	Close was forced by code, not by an event of the window
 	 */
 	close: function($super, forced) {
 		if( forced ) {
