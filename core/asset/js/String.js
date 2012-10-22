@@ -31,12 +31,27 @@
 Todoyu.String = {
 
 	/**
-	 * Cron text to requested length
+	 * Replace all occurrences of the search string with the replacement string
+	 *
+	 * @method	replaceAll
+	 * @param	{String}	txt
+	 * @param	{String}	search
+	 * @param	{String}	replace
+	 * @return	{String}
+	 */
+	replaceAll: function(txt, search, replace) {
+	  return txt.replace(new RegExp(search, 'g'), replace);
+	},
+
+
+
+	/**
+	 * Crop text to requested length
 	 *
 	 * @method	cropText
 	 * @param	{String}		text
 	 * @param	{Number=100}	length
-	 * @param	{String=...}	append		Appendix
+	 * @param	{String}		append		Appendix
 	 */
 	cropText: function(text, length, append) {
 		length	= length || 100;
@@ -358,11 +373,11 @@ Todoyu.String = {
 	 * Get amount of lines in given string
 	 *
 	 * @method	countLines
-	 * @param	{String}	multilineText
+	 * @param	{String}	multiLineText
 	 * @return	{Number}
 	 */
-	countLines: function(multilineText) {
-		return multilineText.split("\n").length;
+	countLines: function(multiLineText) {
+		return multiLineText.split("\n").length;
 	},
 
 
