@@ -2,7 +2,7 @@ todoyu core changelog
 
 core 2.3.0 - not released yet
 	* Bugfix: Fixed e-mail parsing
-	* Bugfix: Removed boundaries of submenu entries
+	* Bugfix: Removed boundaries of sub menu entries
 	* Bugfix: Add tab key as class name for content item tabs
 	* Bugfix: Active item tabs are unique
 	* Bugfix: Auto linking found also background image source as link
@@ -55,6 +55,7 @@ core 2.3.0 - not released yet
 	* Added: Todoyu.ListScrollLoader()
 	* Added: class TodoyuTimezoneManager
 	* Added: Set timezone in database for date calculations
+	* Changed: Sticky notification mode: info now stays (was: stays 15s)
 	* Changed: extracted select-group-options from template
 	* Changed: Renamed TodoyuArray::prefix() to prefixValues()
 	* Changed: Removed $parseConstants from TodoyuArray::intExplode(). Was not used and supported. Added $limi parameter as for trimExplode()

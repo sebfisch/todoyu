@@ -40,7 +40,8 @@ define( 'PATH_FILES',		PATH . DIR_SEP . 'files' );
 
 
 	// Constants
-define( 'NOW', time() );
+#define( 'NOW', time() );
+define( 'NOW', strtotime('2012-10-04 14:15:00'));
 
 	// int min
 if( !defined('PHP_INT_MIN') ) {

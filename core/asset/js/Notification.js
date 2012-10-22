@@ -118,16 +118,18 @@ Todoyu.Notification = {
 		this.appendNote.bind(this, id, note).delay(delayBeforeAppend);
 
 			// Setup timeout to auto-close the note
-		this.closeNote.bind(this, id).delay(delayBeforeClose);
+		if( ! sticky ) {
+			this.closeNote.bind(this, id).delay(delayBeforeClose);
+		}
 	},
 
 
 
 	/**
-	 * Convert identifier to ident clas
+	 * Convert identifier to ident class
 	 * Replace points with dashes
 	 *
-	 * @getIdentifierClass
+	 * @method	getIdentifierClass
 	 * @param	{String}	identifier
 	 * @return	{String}
 	 */
@@ -286,8 +288,9 @@ Todoyu.Notification = {
 	 * @param	{Number}		id
 	 */
 	onNoteClosed: function(id) {
-		if( $('notification-note-' + id) ) {
-			$('notification-note-' + id).remove();
+		var noteElement	= $('notification-note-' + id);
+		if( noteElement ) {
+			noteElement.remove();
 		}
 	},
 
