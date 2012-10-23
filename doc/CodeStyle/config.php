@@ -24,8 +24,7 @@ define('TC_PROJECT_STATUS_PLANNING', 1);
 Todoyu::$CONFIG['EXT']['project']['status']['task'] = array(
 	'key1'	=> 'planning',
 	'key2'	=> 'open',
-	'key3'	=> 'progress',
-	...
+	'key3'	=> 'progress'
 );
 
 ?>
