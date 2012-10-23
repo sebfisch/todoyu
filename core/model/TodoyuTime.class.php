@@ -356,6 +356,24 @@ class TodoyuTime {
 	}
 
 
+
+	/**
+	 * Get time parts (days, hours, minutes, seconds) from an integer which represents seconds
+	 *
+	 * @param	Integer		$seconds		Number of seconds
+	 * @return	Array		[days,hours,minutes,seconds]
+	 */
+	public static function getTimePartsDHMS($seconds) {
+		$parts	= self::getTimeParts($seconds);
+
+		$parts['days']	= floor($parts['hours'] / self::SECONDS_DAY);
+		$parts['hours']	= $parts['hours'] - $parts['days'] * self::SECONDS_DAY;
+
+		return $parts;
+	}
+
+
+
 	/**
 	 * Convert seconds (integer) to a readable format with hours and minutes (03:10 = 3 hours and 10 minutes)
 	 *
