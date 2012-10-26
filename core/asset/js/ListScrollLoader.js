@@ -60,6 +60,11 @@ Todoyu.ListScrollLoader = Class.create({
 	 */
 	timeout: null,
 
+	/**
+	 * Message displayed while loading more records
+	 */
+	loadingMessage: '[LLL:core.global.loadingMore]',
+
 
 
 	/**
@@ -98,10 +103,10 @@ Todoyu.ListScrollLoader = Class.create({
 	 */
 	initCache: function() {
 		this.cache = {
-			tableHeight: 	this.table.getHeight(),	// Height of the table => grows
-			boxHeight: 		this.box.getHeight(),	// Height of the box => static
-			lastLoadScroll: 0,						// Last scroll position. Prevent check when all loaded or scrolling up
-			offset: 		0						// List offset => grows per loading
+			tableHeight:	this.table.getHeight(),	// Height of the table => grows
+			boxHeight:		this.box.getHeight(),	// Height of the box => static
+			lastLoadScroll:	0,						// Last scroll position. Prevent check when all loaded or scrolling up
+			offset:			0						// List offset => grows per loading
 		};
 	},
 
@@ -143,11 +148,10 @@ Todoyu.ListScrollLoader = Class.create({
 	 *
 	 */
 	loadMore: function() {
-		console.log('loadMore');
 		var url		= this.getRequestUrl();
 		var options	= this.getRequestOptions();
 
-		this.cache.offset 	+= this.options.pageSize;
+		this.cache.offset += this.options.pageSize;
 
 		options.parameters.offset	= this.cache.offset;
 		options.onComplete			= (options.onComplete || Prototype.emptyFunction).wrap(this.onMoreLoaded.bind(this));
@@ -162,6 +166,7 @@ Todoyu.ListScrollLoader = Class.create({
 	/**
 	 * Insert the loaded list items
 	 *
+	 * @param	{Function}			proceed		Proceed function
 	 * @param	{Ajax.Response}		response
 	 */
 	onMoreLoaded: function(proceed, response) {
@@ -211,7 +216,7 @@ Todoyu.ListScrollLoader = Class.create({
 				id:			this.box.id + '-loader',
 				className: 'scrollLoaderInfo'
 			});
-			this.loader.update('[LLL:core.global.loadingMore]');
+			this.loader.update(this.loadingMessage);
 			this.box.insert(this.loader);
 		}
 
