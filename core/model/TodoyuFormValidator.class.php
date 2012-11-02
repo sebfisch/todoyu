@@ -279,7 +279,7 @@ class TodoyuFormValidator {
 			return true;
 		}
 
-		$min	= floatval($validatorConfig);
+		$min	= floatval($validatorConfig['value']);
 
 		return TodoyuValidator::isMin($value, $min);
 	}

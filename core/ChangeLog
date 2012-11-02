@@ -1,6 +1,8 @@
 todoyu core changelog
 
 core 2.3.0 - not released yet
+	* Changed: Adapted form.xsd
+	* Bugfix: Min - form - validator was wrong
 	* Bugfix: Fixed e-mail parsing
 	* Bugfix: Removed boundaries of sub menu entries
 	* Bugfix: Add tab key as class name for content item tabs

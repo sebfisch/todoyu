@@ -26,6 +26,7 @@
 	<xs:element name="validate">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element ref="isDecimal" minOccurs="0" maxOccurs="unbounded" />
 				<xs:element ref="isNotEmpty" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="dateBefore" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="dateNotBefore" minOccurs="0" maxOccurs="unbounded"/>
@@ -46,6 +47,8 @@
 				<xs:element ref="goodPassword" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="requiredIfNotEmpty" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="range" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="min" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="max" minOccurs="0" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -134,6 +137,9 @@
 			<xs:attribute type="xs:string" name="msg" use="optional"/>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="min" type="xs:decimal" />
+	<xs:element name="max" type="xs:decimal" />
+	<xs:element name="isDecimal" type="xs:string" />
 	<xs:element name="dateTimeNotBefore">
 		<xs:complexType>
 			<xs:all>
