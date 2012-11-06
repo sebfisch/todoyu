@@ -131,31 +131,34 @@ input {
 	-webkit-box-sizing:border-box;
 	-khtml-box-sizing:border-box;
 	-o-box-sizing:border-box;
+}
+
+select {
 	background-color: transparent;
 }
 
-	input.checkbox,
-	input.radio,
-	input.button {
-		border:none;
-		width:auto;
-	}
+input.checkbox,
+input.radio,
+input.button {
+	border:none;
+	width:auto;
+}
 
-	input.datetime {
-		float:left;
-		width:95px;
-		margin-right:5px;
-	}
+input.datetime {
+	float:left;
+	width:95px;
+	margin-right:5px;
+}
 
-	input.textAC {
-		background: {
-			image:url(../img/icons.png);
-			repeat:no-repeat;
-			position:6px -808px;
-			color:$colorCorporate02;
-		}
-		padding-left:25px;
+input.textAC {
+	background: {
+		image:url(../img/icons.png);
+		repeat:no-repeat;
+		position:6px -808px;
+		color:$colorCorporate02;
 	}
+	padding-left:25px;
+}
 
 
 textarea {
