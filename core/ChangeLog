@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.3.0 - not released yet
+	* Bugfix: Fixed linux-chrome-styling-bug
 	* Changed: Adapted form.xsd
 	* Bugfix: Min - form - validator was wrong
 	* Bugfix: Fixed e-mail parsing
