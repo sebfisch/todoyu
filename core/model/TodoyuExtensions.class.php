@@ -159,6 +159,7 @@ class TodoyuExtensions {
 	 */
 	public static function getExtInfo($extKey) {
 		self::loadConfig($extKey, 'extinfo');
+		self::setDefaultDocumentationLink($extKey);
 
 		if( is_array(Todoyu::$CONFIG['EXT'][$extKey]['info']) ) {
 			return Todoyu::$CONFIG['EXT'][$extKey]['info'];
@@ -213,20 +214,18 @@ class TodoyuExtensions {
 	 * @return	Boolean		Loading status
 	 */
 	public static function loadConfig($extKey, $type) {
-		$filePath	= realpath(PATH_EXT . DIR_SEP . $extKey . DIR_SEP . 'config' . DIR_SEP . $type . '.php');
+		if( !isset(self::$loadedExtConfigTypes[$extKey . $type]) ) {
+			$pathConfig	= 'ext/' . $extKey . '/config/' . $type . '.php';
 
-		if( ! isset(self::$loadedExtConfigTypes[$extKey . $type]) ) {
 				// Attempt load given config
-			if( $filePath !== false && self::isPathInExtDir($extKey, $filePath) ) {
-				if( is_file($filePath) ) {
-					include_once($filePath);
-					self::setDefaultDocumentationLink($extKey);
+			if( self::isPathInExtDir($extKey, $pathConfig) && TodoyuFileManager::isFile($pathConfig) ) {
+					// Load config file
+				TodoyuFileManager::includeFile($pathConfig, true, true);
+					// Register the type config to be loaded
+				self::$loadedExtConfigTypes[$extKey . $type] = true;
+					// Call hook, e.g. 'loadconfig.contact.filters'
+				TodoyuHookManager::callHook('core', 'loadconfig.' . $extKey . '.' . $type);
 
-						// Call hook, e.g. 'loadconfig.contact.filter'
-					TodoyuHookManager::callHook('core', 'loadconfig.' . $extKey . '.' . $type);
-						// Register the type config to be loaded
-					self::$loadedExtConfigTypes[$extKey . $type]	= true;
-				}
 					// Config loaded
 				return true;
 			}
@@ -241,7 +240,8 @@ class TodoyuExtensions {
 
 
 	/**
-	 * @static
+	 * Set default doc link if not defined in extension config
+	 *
 	 * @param	String		$extKey
 	 */
 	private static function setDefaultDocumentationLink($extKey) {
