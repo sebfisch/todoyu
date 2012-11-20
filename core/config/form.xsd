@@ -57,6 +57,7 @@
 			<xs:sequence>
 				<xs:element ref="isNumeric" minOccurs="0" maxOccurs="unbounded" />
 				<xs:element ref="isNotZero" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="function" minOccurs="0" maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
