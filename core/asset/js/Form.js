@@ -819,16 +819,43 @@ Todoyu.Form = {
 	 * @param	{Boolean}			hasError
 	 */
 	setFieldErrorStatus: function(input, hasError) {
+		this.setFieldStatus(input, hasError, 'error', 'errorMessge');
+	},
+
+
+
+	/**
+	 * Mark field as warning/valid
+	 *
+	 * @method	setFieldErrorStatus
+	 * @param	{String|Element}	input
+	 * @param	{Boolean}			hasError
+	 */
+	setFieldWarningStatus: function(input, hasError) {
+		this.setFieldStatus(input, hasError, 'warning', 'warningMessage');
+	},
+
+
+
+	/**
+	 * Mark field with given error-level and handle Message field
+	 *
+	 * @param	{String|Element}	input
+	 * @param	{Boolean}			hasError
+	 * @param	{String}			level
+	 * @param	{String}			htmlClassName
+	 */
+	setFieldStatus: function(input, hasError, level, htmlClassName) {
 		var method	= hasError ? 'addClassName' : 'removeClassName';
 		var field	= $(input).up('.fElement');
 
 		if( field ) {
-			field[method]('error');
-			field.down('.fLabel')[method]('error');
+			field[method](level);
+			field.down('.fLabel')[method](level);
 
 				// Clear error message
 			if( ! hasError ) {
-				var errorMsg = field.down('.errorMessage');
+				var errorMsg = field.down('.' + htmlClassName);
 				if( errorMsg ) {
 					errorMsg.update('');
 				}

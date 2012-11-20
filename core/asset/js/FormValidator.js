@@ -71,7 +71,11 @@ Todoyu.FormValidator = {
 	validate: function(fieldID) {
 		this.validators[fieldID].hasError = false;
 		this.validators[fieldID].validatorMethods.each(function(element) {
-			this[element](fieldID);
+			if(this[element]) {
+				this[element](fieldID);
+			} else {
+				Todoyu.callUserFunction(element, fieldID);
+			}
 		}.bind(this));
 	},
 

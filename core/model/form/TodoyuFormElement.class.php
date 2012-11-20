@@ -1078,9 +1078,12 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 			$initScript = 'Todoyu.FormValidator.initField(\'' . $this->getHtmlID() . '\');';
 
 			foreach($validatorArray as $validator => $validatorConfig) {
+				if( $validator === 'function' ) {
+					$validator = trim($validatorConfig);
+				}
+
 				$initScript.= 'Todoyu.FormValidator.addValidator(\'' . $this->getHtmlID() . '\', \'' . $validator . '\');';
 			}
-
 
 			$initScript = TodoyuString::wrapScript($initScript);
 		}

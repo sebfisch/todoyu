@@ -429,12 +429,21 @@ form .fElement.error {
 		color:$colorAlert00;
 		font-style:italic;
 	}
+}
+
+
+form .fElement.warning {
+
+	& .fLabel.warning label {
+		color: $blue06;
+		font-style: italic;
+	}
 
 	& div.warningMessage {
 		color: $blue06;
 		border: 1px solid $blue06;
-		background: $blue00 url('../img/icons.png') no-repeat 3px -628px;
-		padding: 2px 0 2px 25px;
+		background-color: $blue00;
+		padding: 2px 0 2px 3px;
 	}
 }
 
