@@ -122,7 +122,7 @@ Todoyu.FormValidator = {
 		this.form.setFieldErrorStatus($(fieldID), error);
 
 		if( error ) {
-			this.addWarningMessage(fieldID, '[LLL:core.form.field.hasError]');
+			this.addErrorMessage(fieldID, '[LLL:core.form.field.hasError]');
 		}
 	},
 
