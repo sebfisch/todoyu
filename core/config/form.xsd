@@ -52,6 +52,14 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="validateLive">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="isNumeric" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="isNotZero" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 	<xs:element name="function" type="xs:string"/>
 	<xs:element name="extraAttributes" type="xs:string"/>
 	<xs:element name="onComplete" type="xs:string"/>
@@ -140,6 +148,7 @@
 	<xs:element name="min" type="xs:decimal" />
 	<xs:element name="max" type="xs:decimal" />
 	<xs:element name="isDecimal" type="xs:string" />
+	<xs:element name="isNumeric" type="xs:string" />
 	<xs:element name="dateTimeNotBefore">
 		<xs:complexType>
 			<xs:all>
@@ -364,6 +373,7 @@
 				<xs:element ref="textAfterField"/>
 				<xs:element ref="textBeforeField"/>
 				<xs:element ref="validate"/>
+				<xs:element ref="validateLive"/>
 				<xs:element ref="restrict"/>
 				<xs:element ref="restrictAdmin"/>
 				<xs:element ref="required"/>

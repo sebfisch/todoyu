@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.3.0 - not released yet
+	* Added: Basics for live-validation for form-fields
 	* Bugfix: Fixed linux-chrome-styling-bug
 	* Changed: Adapted form.xsd
 	* Bugfix: Min - form - validator was wrong

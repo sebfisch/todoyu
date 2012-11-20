@@ -422,11 +422,23 @@ form .fField:hover .textAfterField {
 	float:left;
 }
 
-form .fElement.error .fLabel.error label,
-form div.error div.errorMessage {
-	color:$colorAlert00;
-	font-style:italic;
+form .fElement.error {
+
+	& .fLabel.error label,
+	& div.errorMessage {
+		color:$colorAlert00;
+		font-style:italic;
+	}
+
+	& div.warningMessage {
+		color: $blue06;
+		border: 1px solid $blue06;
+		background: $blue00 url('../img/icons.png') no-repeat 3px -628px;
+		padding: 2px 0 2px 25px;
+	}
 }
+
+
 
 form .error.typeCheckbox {
 	height:30px !important;

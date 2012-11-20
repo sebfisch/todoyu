@@ -219,6 +219,7 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		$this->config['wizard']			= $this->hasAttribute('wizard') ? $this->getWizardConfiguration() : false;
 		$this->config['valueTemplate']	= $this->getValueForTemplate();
 		$this->config['value']			= $this->getValue();
+		$this->config['validateLive']	= $this->getLiveValidation();
 
 		return $this->config;
 	}
@@ -1061,6 +1062,30 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 */
 	public function removeValidator($validatorName) {
 		unset($this->config['validate'][$validatorName]);
+	}
+
+
+
+	/**
+	 *
+	 */
+	protected function getLiveValidation() {
+		$initScript = '';
+
+		if( $this->hasAttribute('validateLive') ) {
+			$validatorArray = $this->getAttribute('validateLive');
+
+			$initScript = 'Todoyu.FormValidator.initField(\'' . $this->getHtmlID() . '\');';
+
+			foreach($validatorArray as $validator => $validatorConfig) {
+				$initScript.= 'Todoyu.FormValidator.addValidator(\'' . $this->getHtmlID() . '\', \'' . $validator . '\');';
+			}
+
+
+			$initScript = TodoyuString::wrapScript($initScript);
+		}
+
+		return $initScript;
 	}
 
 }

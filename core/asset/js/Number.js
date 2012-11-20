@@ -73,6 +73,18 @@ Todoyu.Number = {
 		var factor	= Math.pow(10, precision);
 
 		return Math.round((value*factor))/factor;
+	},
+
+
+
+	/**
+	 * Check for Numeric input
+	 *
+	 * @param	{String|Boolean|Number|Object}		value
+	 * @return	{Boolean}
+	 */
+	isNumeric: function(value) {
+		return isFinite(value);
 	}
 
 };

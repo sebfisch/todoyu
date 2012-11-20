@@ -22,6 +22,11 @@
 			<span title="{Label $wizard.title}" class="wizardIcon createWizard{ucfirst($wizard.name)}" onclick='Todoyu.Form.openCreateWizard("{$htmlId}", {json_encode($wizard.jsParams)})'></span>
 			<div class="clear"></div>
 		{/if}
+
+		{if $validateLive }
+			{$validateLive}
+		{/if}
+
 		{if $error && $errorMessage}
 			<div class="errorMessage">{Label $errorMessage plain=true}</div>
 		{/if}
