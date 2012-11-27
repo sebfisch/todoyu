@@ -435,16 +435,8 @@ form .fElement.error {
 form .fElement.warning {
 
 	& .fLabel.warning label {
-		color: $blue06;
+		color: $colorNotice02;
 		font-style: italic;
-	}
-
-	& div.warningMessage {
-		color: $blue06;
-		border: 1px solid $blue06;
-		background-color: $blue00;
-		padding: 2px 0 2px 3px;
-		min-width: 210px;
 	}
 }
 

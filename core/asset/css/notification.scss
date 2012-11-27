@@ -130,3 +130,20 @@
 		}
 	}
 }
+
+div.warningMessage {
+	background-color:$colorNotice03;
+	box-shadow:2px 2px 7px $colorNotice00;
+	border:1px solid $colorNotice02;
+	padding:7px;
+
+	& .icon {
+		background: url(../../../../core/asset/img/icons.png) no-repeat 3px -629px;
+	}
+
+	& .label {
+		display: block;
+		margin-left: 32px;
+		vertical-align: middle;
+	}
+}
