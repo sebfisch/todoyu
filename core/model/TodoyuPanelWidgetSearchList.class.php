@@ -51,7 +51,10 @@ abstract class TodoyuPanelWidgetSearchList extends TodoyuPanelWidget {
 		$data['listOnly']	= $listOnly;
 
 		if( ! TodoyuRequest::isAjaxRequest() ) {
-			TodoyuPage::addJsInit('Todoyu.R[\'' . $this->getID() . '\'] = new ' . $this->jsObject . '(\'' . htmlentities($this->getSearchText(), ENT_QUOTES, 'UTF-8', false) . '\')');
+			$searchWord	= str_replace('\\', '', trim($this->getSearchText()) );
+			$searchWord	= htmlentities($searchWord, ENT_QUOTES, 'UTF-8', false);
+
+			TodoyuPage::addJsInit('Todoyu.R[\'' . $this->getID() . '\'] = new ' . $this->jsObject . '(\'' . $searchWord . '\')');
 		}
 
 		return trim(Todoyu::render($tmpl, $data));
@@ -162,9 +165,10 @@ abstract class TodoyuPanelWidgetSearchList extends TodoyuPanelWidget {
 	 * @return	String
 	 */
 	public function getSearchText() {
-		$pref	= 'panelwidgetsearchlist-' . $this->getID() . '-search';
+		$pref		= 'panelwidgetsearchlist-' . $this->getID() . '-search';
+		$searchWord	= TodoyuPreferenceManager::getPreference($this->getExtID(), $pref, 0, AREA);
 
-		return trim(TodoyuPreferenceManager::getPreference($this->getExtID(), $pref, 0, AREA));
+		return trim($searchWord);
 	}
 
 

@@ -49,8 +49,8 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	timeoutSearch: null,
 
 	/**
-	 * Keys which are ignored on entering
-	 * No request will be fired
+	 * Keys which are ignored on entering - no request will be fired
+	 * @var	{Array}	ignoreKeyInputs
 	 */
 	ignoreKeyInputs: [
 		Event.KEY_RETURN,
@@ -117,7 +117,11 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	onSearchKeyUp: function(event) {
 		event.stop();
 
+			// Remove backslashes from input
+		this.input.value	= this.input.value.replace(/\\/, "");
+
 		if( ! this.ignoreKeyInputs.include(event.keyCode) ) {
+				// Stop request for ignored input characters
 			if( this.lastText !== this.getSearchText() ) {
 				this.startNewTimeout();
 			} else {
