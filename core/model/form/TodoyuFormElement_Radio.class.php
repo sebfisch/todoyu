@@ -124,7 +124,7 @@ class TodoyuFormElement_Radio extends TodoyuFormElement {
 	 */
 	public function addOption($value, $label, $disabled = false) {
 		$this->config['options'][] = array(
-			'value'		=> $value,
+			'value'		=> defined($value) ? constant($value) : $value,
 			'label'		=> $label,
 			'disabled'	=> $disabled
 		);
