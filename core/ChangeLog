@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.3.0 - not released yet
+	* Changed: Set default error - logging on error instead of debug
 	* Added: Accept exclamation mark in link parsing
 	* Added: Basic style for warning messages
 	* Added: Possibility to add custom live-validator

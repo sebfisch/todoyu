@@ -508,7 +508,7 @@ class TodoyuInstallerManager {
 	 */
 	public static function saveSystemConfig(array $config) {
 		$config['todoyuURL']	= TODOYU_URL;
-		$config['logLevel']		= TodoyuLogger::LEVEL_DEBUG;
+		$config['logLevel']		= TodoyuLogger::LEVEL_ERROR;
 
 		TodoyuConfigManager::saveSystemConfigConfig($config, true);
 	}
