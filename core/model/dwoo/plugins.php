@@ -473,11 +473,12 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
  * @param	String		$class
  * @return	String
  */
-function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '') {
+function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '', $encode = true) {
 	$tmpl	= 'core/view/headerLine.tmpl';
 	$data	= array(
-		'title'	=> Todoyu::Label($title),
-		'class'	=> $class
+		'title'		=> Todoyu::Label($title),
+		'class'		=> $class,
+		'encode'	=> $encode
 	);
 
 	return Todoyu::render($tmpl, $data);
