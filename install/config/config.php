@@ -38,7 +38,7 @@ Todoyu::$CONFIG['INSTALLER']['assets']	= array(
 		'core/asset/css/panel.scss',
 		'core/asset/css/form.scss',
 		'core/asset/css/button.scss',
-		'asset/css/installer.css'
+		'install/asset/css/installer.scss'
 	),
 	'js'	=> array(
 		'../lib/js/prototype.js',
