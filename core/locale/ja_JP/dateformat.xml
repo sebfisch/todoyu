@@ -17,7 +17,7 @@
 	<label index="DshortD2MshortY2">%y年%m月%d日 (%a)</label>
 	<label index="DshortD2MlongY4">%Y年%m月%d日 (%a)</label>
 	<label index="DlongD2MlongY4">%Y年%m月%d日 (%A)</label>
-	<label index="calendarweek">%W 週目</label>
+	<label index="calendarweek">%V 週目</label>
 	<label index="date">%Y/%m/%d</label>
 	<label index="time">%H:%M</label>
 	<label index="timesec">%H:%M:%S</label>

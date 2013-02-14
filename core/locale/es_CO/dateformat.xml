@@ -16,7 +16,7 @@
 	<label index="DshortD2MshortY2">%a, %b %d %y</label>
 	<label index="DshortD2MlongY4">%a, %B %d %Y</label>
 	<label index="DlongD2MlongY4">%A, %B %d %Y</label>
-	<label index="calendarweek">CW %W</label>
+	<label index="calendarweek">CW %V</label>
 	<label index="date">%m/%d/%Y</label>
 	<label index="time">%H:%M</label>
 	<label index="timesec">%H:%M:%S</label>
