@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.3.0 - not released yet
+	* Bugfix: Fixed bug in the assistNumericInput method
 	* Bugfix: Changed date-format for calendar week to ISO-8601
 	* Changed: Encoding of title in header-template is now optional
 	* Changed: Set default error - logging on error instead of debug

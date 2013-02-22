@@ -467,6 +467,7 @@ Todoyu.Form = {
 	assistNumericInput: function(field, allowFloat) {
 		allowFloat		= allowFloat || false;
 		var value		= $F(field);
+		var orig		= value;
 		var allowedChars= '0123456789.-';
 
 		if(allowFloat) {
@@ -487,7 +488,9 @@ Todoyu.Form = {
 			}
 		}
 
-		$(field).value = value;
+		if( orig != value ) {
+			$(field).value = value;
+		}
 	},
 
 
