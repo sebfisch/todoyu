@@ -118,7 +118,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 		event.stop();
 
 			// Remove backslashes from input
-		this.input.value	= this.input.value.replace(/\\/, "");
+		this.clearSearchInput();
 
 		if( ! this.ignoreKeyInputs.include(event.keyCode) ) {
 				// Stop request for ignored input characters
@@ -229,6 +229,19 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 */
 	getSearchText: function() {
 		return $F(this.input).strip();
-	}
+	},
 
+
+
+	/**
+	 *
+	 */
+	clearSearchInput: function() {
+		var value = this.input.value;
+		value	= value.replace(/\\/, "");
+
+		if( this.input.value !== value ) {
+			this.input.value = value;
+		}
+	}
 });
