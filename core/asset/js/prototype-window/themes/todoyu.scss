@@ -7,15 +7,10 @@
 }
 
 .overlay_dialog {
-	filter:Alpha(opacity=70);
-	_filter:Alpha(opacity=70);
-	-moz-opacity:0.7;
 	opacity:0.7;
 }
 
 .overlay___invisible__ {
-	_filter:Alpha(opacity=0);
-	-moz-opacity:0;
 	opacity:0;
 }
 
