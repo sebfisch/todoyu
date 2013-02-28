@@ -19,14 +19,8 @@
 			padding:15px;
 			font-weight:bold;
 			background-color:$white;
-			/* cross browser opacity */
-			-khtml-opacity:.95;
-			-moz-opacity:.95;
 			opacity:.95;
 			filter:unquote("alpha(opacity=95)");
-			/* cross browser shadow */
-			-webkit-box-shadow:2px 2px 7px $colorNeutral06;
-			-moz-box-shadow:2px 2px 7px $colorNeutral06;
 			box-shadow:2px 2px 7px $colorNeutral06;
 
 			td {

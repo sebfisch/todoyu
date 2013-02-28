@@ -18,16 +18,11 @@
 		margin-right:3px;
 
 		&.level1 {
-		 	-moz-border-radius:10px 10px 0 0;
-		 	-webkit-border-radius:10px 10px 0 0;
-		 	border-radius:10px 10px 0 0;
-		 	-webkit-box-shadow:0 -1px 1px $colorCorporate04 inset;
+		  	border-radius:10px 10px 0 0;
 		 	box-shadow:0 -1px 1px $colorCorporate04 inset;
 
 			&:hover,
 			&.active {
-				-moz-box-shadow:none;
-				-webkit-box-shadow:none;
 				box-shadow:none; }
 		}
 
@@ -101,8 +96,6 @@ ul#navi-main-list li {
 		width:270px !important;
 		margin-top:1px;
 		text-transform:none;
-		-webkit-box-shadow:2px 2px 5px $colorNeutral06;
-		-moz-box-shadow:2px 2px 5px $colorNeutral06;
 		box-shadow:2px 2px 5px $colorNeutral06;
 
 		li {

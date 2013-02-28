@@ -11,11 +11,7 @@ div.overflowWindow {
 	top:0px;
 	z-index:3000;
 	filter:unqoute("alpha(opacity=95)");
-	-moz-opacity:0.95;
-	-khtml-opacity:0.95;
 	opacity:0.95;
-	-webkit-box-shadow:2px 2px 5px $colorNeutral06;
-	-moz-box-shadow:2px 2px 5px $colorNeutral06;
 	box-shadow:2px 2px 5px $colorNeutral06;
 
 	div.close {

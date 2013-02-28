@@ -8,8 +8,6 @@
 	width:180px;
 	z-index:100000;
 	background-color:$colorNeutral01;
-	-webkit-box-shadow:2px 2px 7px $colorNeutral06;
-	-moz-box-shadow:2px 2px 7px $colorNeutral06;
 	box-shadow:2px 2px 7px $colorNeutral06;
 
 	li {
@@ -38,8 +36,6 @@
 			position:absolute;
 			z-index:100001;
 			width:156px;
-			-webkit-box-shadow:2px 2px 7px $colorNeutral06;
-			-moz-box-shadow:2px 2px 7px $colorNeutral06;
 			box-shadow:2px 2px 7px $colorNeutral06; }
 
 		&.header a {

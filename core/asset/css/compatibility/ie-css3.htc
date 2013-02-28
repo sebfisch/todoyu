@@ -53,7 +53,7 @@ function findPos(obj) {
 }
 
 function createBoxShadow(element, vml_parent) {
-	var style = element.currentStyle['iecss3-box-shadow'] || element.currentStyle['-moz-box-shadow'] || element.currentStyle['-webkit-box-shadow'] || element.currentStyle['box-shadow'] || '';
+	var style = element.currentStyle['box-shadow'] || '';
 	var match = style.match(/^(\d+)px (\d+)px (\d+)px/);
 	if (!match) { return(false); }
 
@@ -242,11 +242,7 @@ function ondocumentready(classID) {
 
 
 	// These attrs are for the script and have no meaning to the browser:
-	this.borderRadius = parseInt(this.currentStyle['iecss3-border-radius'] ||
-								 this.currentStyle['-moz-border-radius'] ||
-								 this.currentStyle['-webkit-border-radius'] ||
-								 this.currentStyle['border-radius'] ||
-								 this.currentStyle['-khtml-border-radius']);
+	this.borderRadius = parseInt(this.currentStyle['border-radius']);
 	this.arcSize = Math.min(this.borderRadius / Math.min(this.offsetWidth, this.offsetHeight), 1);
 	this.fillColor = this.currentStyle.backgroundColor;
 	this.fillSrc = this.currentStyle.backgroundImage.replace(/^url\("(.+)"\)$/, '$1');

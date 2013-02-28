@@ -126,11 +126,6 @@ input {
 	padding:1px;
 	/* hack to fix form elements width */
 	box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	-ms-box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-	-khtml-box-sizing:border-box;
-	-o-box-sizing:border-box;
 }
 
 select {
@@ -402,11 +397,7 @@ form .textAfterField {
 	margin:1px 2px 0 0;
 	color:$colorNeutral07;
 	text-align:left;
-	-webkit-box-shadow:2px 2px 7px $colorNeutral06;
-	-moz-box-shadow:2px 2px 7px $colorNeutral06;
 	box-shadow:2px 2px 7px $colorNeutral06;
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
 	border-radius:5px;
 	background-color:$white;
 }
@@ -454,8 +445,6 @@ form .error.typeCheckbox {
 .acResultContainer {
 	z-index:100;
 	border-top:1px solid $colorNeutral03;
-	-webkit-box-shadow:2px 2px 5px $colorNeutral06;
-	-moz-box-shadow:2px 2px 5px $colorNeutral06;
 	box-shadow:2px 2px 5px $colorNeutral06;
 
 	ul {

@@ -120,8 +120,6 @@ div.infoBox {
 	margin-top:5px;
 	height:26px;
 	text-align:left;
-	-moz-border-radius:5px 5px 0 0;
-	-webkit-border-radius:5px 5px 0 0;
 	border-radius:5px 5px 0 0;
 	border:none;
 	border-bottom:1px solid $white;
@@ -195,8 +193,6 @@ tr.headerLine {
 				left:1px solid $colorNeutral02;
 				radius:5px 0 0 0;
 			}
-			-moz-border-radius:5px 0 0 0;
-			-webkit-border-radius:5px 0 0 0;
 		}
 
 		&:last-child {
@@ -204,8 +200,6 @@ tr.headerLine {
 				right:1px solid $colorNeutral02;
 				radius:0 5px 0 0;
 			}
-			-moz-border-radius:0 5px 0 0;
-			-webkit-border-radius:0 5px 0 0;
 		}
 	}
 }

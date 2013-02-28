@@ -10,13 +10,8 @@ button {
 	cursor:pointer;
 	padding:0px;
 	background:$white url('../img/bg-button-css3.png') repeat-x 0 50%;
-
 	border:1px solid $colorNeutral04;
-	-moz-border-radius:13px;
-	-khtml-border-radius:13px;
-	-webkit-border-radius:13px;
-	-o-border-radius:13px;
-	border-radius:13px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+	border-radius:13px;
 
 	&[disabled] {
 		opacity:0.6;

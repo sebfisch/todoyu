@@ -32,10 +32,7 @@
 		float:left;
 		margin-right:3px;
 		cursor:pointer;
-		-moz-border-radius:10px 10px 0 0;
-		-webkit-border-radius:10px 10px 0 0;
 		border-radius:10px 10px 0 0;
-		-webkit-box-shadow:0 -1px 1px $colorCorporate04 inset;
 		box-shadow:0 -1px 1px $colorCorporate04 inset;
 
 		p {
@@ -70,8 +67,6 @@
 		&:hover,
 		&.active {
 			background-color:$white;
-			-moz-box-shadow:none;
-			-webkit-box-shadow:none;
 			box-shadow:none; }
 	}
 }
