@@ -23,7 +23,7 @@
 			-khtml-opacity:.95;
 			-moz-opacity:.95;
 			opacity:.95;
-			filter:unquote("alpha(opacity = 95)");
+			filter:unquote("alpha(opacity=95)");
 			/* cross browser shadow */
 			-webkit-box-shadow:2px 2px 7px $colorNeutral06;
 			-moz-box-shadow:2px 2px 7px $colorNeutral06;
@@ -102,19 +102,6 @@
 	}
 }
 
-
-/*span.iconLarge {*/
-	/*margin:12px 12px 0 12px;*/
-
-	/*div.notification & {*/
-		/*background:url(../img/notify.png) 0 -348px no-repeat !important; }*/
-
-	/*div.notifictation.reminder & {*/
-		/*background:url(../img/notify.png) 0 -544px no-repeat !important; }*/
-
-	/*div.confirmation & {*/
-		/*background:url(../img/notify.png) 0 -466px no-repeat !important; }*/
-/*}*/
 
 
 .dialog .notification {
