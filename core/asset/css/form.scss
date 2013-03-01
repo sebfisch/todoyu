@@ -476,50 +476,6 @@ form .error.typeCheckbox {
 	list-style:none;
 }
 
-
-
-/* ----------------------------------
-	Form element: databaseRelation
-   ---------------------------------- */
-.formElement .databaseRelation {
-	margin-top:5px;
-
-	.formtrigger {
-		padding:5px 0 5px 19px;
-
-// @todo remap to icons.png and remove formelements.png
-		a.remove {
-			background:transparent url(../img/formelements.png) no-repeat 3px 3px;
-			height:16px;
-			width:16px;
-			position:absolute;
-			right:5px;
-		}
-	}
-}
-
-
-
-/* ------------------------------------------------------
-	Form element: foreignRecordsActionControl
-   ------------------------------------------------------ */
-.formElement .foreignRecordsActionControl {
-	height:30px;
-	background-color:$blue01;
-
-// @todo remap to icons.png and remove formelements.png
-	a {
-		background:transparent url(../img/formelements.png) no-repeat 0 -30px;
-		height:16px;
-		width:17px;
-		position:absolute;
-		top:7px;
-		right:7px; 
-	}
-}
-
-
-
 /* --------------------
 	Wizard icon
    -------------------- */
