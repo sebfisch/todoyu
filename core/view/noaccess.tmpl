@@ -17,9 +17,6 @@
 	width:680px;
 	padding:0;
 }
-#right span.lt {
-	display:block;
-}
 .message {
 	float:left;
 	clear:both;
@@ -40,6 +37,10 @@
 	color:#990000;
 	text-decoration:underline;
 }
+
+#right {
+	border-radius: 10px 10px 10px 10px;
+}
 </style>
 </head>
 <body>
@@ -48,18 +49,9 @@
 	<div id="contentBox">
 		<div id="main">
 			<div class="content bclFF" id="right">
-				<span class="lt">
-					<!-- left / top -->
-				</span> <span class="rt">
-					<!-- right / top -->
-				</span> <span class="lb">
-					<!-- left / bottom -->
-				</span> <span class="rb">
-					<!-- right / bottom -->
-				</span>
 				<div id="content">
 					<div class="message">
-						<p><strong>{Label core.global.noAccess.pageTitle}</strong></h2>
+						<h2><strong>{Label core.global.noAccess.pageTitle}</strong></h2>
 						<p>{Label core.global.noAccess.errorMessage}</p>
 						<p><a href="javascript:history.back()">{Label core.global.noAccess.goBackToLastPage}</a></p>
 						<p>{Label core.global.noAccess.contactAdmin}</p>
