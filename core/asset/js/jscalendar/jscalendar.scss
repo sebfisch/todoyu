@@ -1,4 +1,4 @@
-@import "../../config/theme.scss";
+@import "../../../config/theme.scss";
 
 
 
@@ -14,8 +14,15 @@ div.calendar, div.calendar table {
 	color:$black;
 	cursor:default;
 	font-family:tahoma,verdana,sans-serif;
-	background:$white url(../../../asset/img/bg-headers.png) no-repeat center -215px;
+	background-color: $colorNeutral01;
 	border-radius: 5px;
+
+	tr:first-child {
+		border: {
+			color: $colorNeutral02;
+			width: 1px 1px 0 1px;
+		};
+	}
 }
 
 /* remove border-radius and box-shadow for panelwidget */
