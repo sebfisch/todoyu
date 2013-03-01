@@ -28,28 +28,22 @@
 
 				&.message {
 					font-size:14px;
-					color:$colorNeutral09;
+					color: $colorNeutral09;
 					text-align:left; }
 
-				&.close {
-					width:20px;
-					background:url(../img/notify.png) 0 -47px no-repeat;
-					cursor:pointer;
-					padding-right:12px; }
-
 				&.icon {
-					background:url(../img/notify.png) no-repeat; }
+					background:url(../img/icons.png) no-repeat; }
 			}
 		}
 
 		&.success td.icon {
-			background-position:0 -1px; }
+			background-position:0 -1920px; }
 
 		&.error td.icon {
-			background-position:0 -96px; }
+			background-position:0 -660px; }
 
 		&.info td.icon {
-			background-position:0 -189px; }
+			background-position:0 -630px; }
 	}
 }
 
@@ -58,44 +52,32 @@
 /* -------------------
 	Icons
    ------------------- */
+.iconNotifySmall {
+	background: {
+		image:url(../img/icons.png);
+		repeat: no-repeat;
+	}
 
-.iconNotifyMini,
-.iconNotifySmall,
+	&.warn {
+		background-position:0 -658px;
+	}
+}
+
 .iconNotifyLarge {
 	background: {
-		image:url(../img/notify.png);
+		image:url(../img/icons-large.png);
 		repeat:no-repeat; }
-}
 
-.iconNotifySmall {
-	&.warn {
-		background-position:0 -95px;
-	}
-}
-
-.iconNotifyMini {
-	width:13px;
-	height:13px;
-
-	&.warn {
-		background-position:0 -240px;
-	 }
-}
-
-
-.iconNotifyLarge {
 	&.info {
-		background-position:0 -390px;
+		background-position:0 -119px;
 	 }
 	&.warn {
-		background-position:0 -350px;
+		background-position:0 -75px;
 	  }
 	&.reminder {
-		background-position:0 -545px;
+		background-position:0 -274px;
 	}
 }
-
-
 
 .dialog .notification {
 	padding:7px;
