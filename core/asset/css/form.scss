@@ -126,6 +126,7 @@ input {
 	padding:1px;
 	/* hack to fix form elements width */
 	box-sizing:border-box;
+	-moz-box-sizing:border-box;
 }
 
 select {
