@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.3.0 - not released yet
+	* Bugfix: styling bug in sortable panel list
 	* Bugfix: Fixed and clean-up js-calendar styling
 	* Bugfix: SearchList-input value clearing disabled text-navigation
 	* Bugfix: Fixed bug in the assistNumericInput method
