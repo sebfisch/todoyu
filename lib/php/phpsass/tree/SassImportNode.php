@@ -18,7 +18,7 @@
 class SassImportNode extends SassNode {
   const IDENTIFIER = '@';
   const MATCH = '/^@import\s+(.+)/i';
-  const MATCH_CSS = '/^((url)\((.+)\)|.+" \w+|"http|.+\.css)/im';
+  const MATCH_CSS = '/^((url)\((.+)\)|.+" \w+|http|.+\.css$)/im';
   const FILES = 1;
 
   /**
@@ -35,7 +35,8 @@ class SassImportNode extends SassNode {
     parent::__construct($token);
     $this->parent = $parent;
     preg_match(self::MATCH, $token->source, $matches);
-    foreach (explode(',', $matches[self::FILES]) as $file) {
+
+    foreach (SassList::_build_list($matches[self::FILES]) as $file) {
       $this->files[] = trim($file, '"\'; ');
     }
   }
@@ -56,7 +57,7 @@ class SassImportNode extends SassNode {
           } else {
             $file = "url('$file')";
           }
-          return array(new SassString("@import $file;\n"));
+          return array(new SassString("@import $file;"), new SassString("\n"));
         }
         $file = trim($file, '\'"');
         $files = SassFile::get_file($file, $this->parser);
@@ -71,11 +72,12 @@ class SassImportNode extends SassNode {
             $tree->children = array();
           } else {
             $tree = new SassRootNode($this->parser);
+            $tree->extend_parent = $this->parent;
           }
 
           foreach ($files as $subfile) {
             if (preg_match(self::MATCH_CSS, $subfile)) {
-              $tree->addChild(new SassString("@import url('$subfile');\n"));
+              $tree->addChild(new SassString("@import url('$subfile');"));
             }
             else {
               $this->parser->filename = $subfile;

@@ -114,7 +114,7 @@ class SassFile {
       }
     }
     foreach ($parser->load_path_functions as $function) {
-      if (function_exists($function) && $paths = call_user_func($function, $filename, $parser)) {
+      if (is_callable($function) && $paths = call_user_func($function, $filename, $parser)) {
         return $paths;
       }
     }

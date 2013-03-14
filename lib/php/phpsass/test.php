@@ -49,34 +49,7 @@
         }
         else {
           print "\n\t<p class='fail'><em>FAIL</em> $name</p>";
-          foreach ($result as $name => $set) {
-            $names = array_keys($set);
-            $one = trim(current(array_pop($set)));
-            $two = trim(current(array_pop($set)));
-
-            $one = str_replace('"', "'", $one);
-            $two = str_replace('"', "'", $two);
-
-            $out = '';
-            for ($i = 0; $i < strlen($one); $i++) {
-              $a = substr($one, $i, 1);
-              $b = substr($two, $i, 1);
-
-              if ($a == $b) {
-                $out .= $a;
-              }
-              else {
-                $two = $out . '?????' . substr($two, $i);
-                $out .= '?????' . substr($one, $i);
-                break;
-              }
-            }
-            print "\n\n" . $names[0] . "\n";
-            print strlen($out) . ' ' . $out;
-            print "\n\n";
-            print "\n\n" . $names[1] . "\n";
-            print strlen($two) . ' ' . $two;
-          }
+          print "<pre>$result</pre>";
         }
         flush();
 
@@ -87,8 +60,7 @@
     }
 
     function test_files($files, $dir = '.') {
-      $return = array();
-      $trimmed = array();
+      sort($files);
       foreach ($files as $i => $file) {
         $name = explode('.', $file);
         $ext = array_pop($name);
@@ -97,36 +69,22 @@
         if (function_exists($fn)) {
           try {
             $result = $fn($dir . '/' . $file);
-            $trim = preg_replace('/[\s;]+/', '', $result);
-            $trim = preg_replace('/\/\*.+?\*\//m', '', $trim);
-            $trim = str_replace('"', "'", $trim);
           } catch (Exception $e) {
             $result = $e->__toString();
-            $trim = $result;
           }
-          $return[$file] = $result;
-          $trimmed[$file] = $trim;
+          file_put_contents('/tmp/scss_test_' . $i, trim($result) . "\n");
         }
       }
 
-      $failures = array();
-      foreach ($trimmed as $file_1 => $val_1) {
-        foreach ($trimmed as $file_2 => $val_2) {
-          if ($file_1 != $file_2 && $val_1 != $val_2) {
-            $names = array($file_1, $file_2);
-            sort($names);
-            $hash = preg_replace('/[^a-z-]+/', '', implode('-', $names));
-
-            if (!isset($failures[$hash])) {
-              $failures[$hash] = array(
-                $file_1 => array($val_1, $return[$file_1]),
-                $file_2 => array($val_2, $return[$file_2]),
-              );
-            }
-          }
+      $diff = exec('diff -ibwB /tmp/scss_test_0 /tmp/scss_test_1', $out);
+      if (count($out)) {
+        if (isset($_GET['full'])) {
+          $out[] = "\n\n\n" . $result;
         }
+        return implode("\n", $out);
+      } else {
+        return TRUE;
       }
-      return count($failures) ? $failures : TRUE;
     }
 
 

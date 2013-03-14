@@ -105,7 +105,7 @@ class SassRuleNode extends SassNode {
       else {
         $properties[] = $child->render();
       }
-    } // foreach
+    }
 
     return $this->renderer->renderRule($this, $properties, $rules);
   }
@@ -117,7 +117,7 @@ class SassRuleNode extends SassNode {
    * $selector a selector or selector sequence that is to be extended
    */
   public function extend() {
-    foreach ($this->root->extenders as $extendee=>$extenders) {
+    foreach ($this->root->getExtenders() as $extendee => $extenders) {
       if ($this->isPsuedo($extendee)) {
         $extendee = explode(':', $extendee);
         $pattern = preg_quote($extendee[0]).'((\.[-\w]+)*):'.preg_quote($extendee[1]);

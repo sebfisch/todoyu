@@ -42,3 +42,13 @@ foo#{1 + 1}bar {
 nex3_is_weird {
 	flabnabbit: flabnabbit('#{1 + 'foo'}');
 }
+
+$media: screen;
+$feature: -webkit-min-device-pixel-ratio;
+$value: 1.5;
+
+@media #{$media} and ($feature: $value) {
+  webkit-only {
+  	color: green;
+  }
+}

@@ -29,7 +29,7 @@ class SassMixinNode extends SassNode {
   /**
    * @var array arguments for the mixin
    */
-  private $args = array();
+  private $args = '';
 
   /**
    * SassMixinDefinitionNode constructor.
@@ -45,7 +45,7 @@ class SassMixinNode extends SassNode {
     }
     $this->name = $matches[self::NAME];
     if (isset($matches[self::ARGS]) && strlen($matches[self::ARGS])) {
-      $this->args = SassScriptFunction::extractArgs($matches[self::ARGS], false);
+      $this->args = $matches[self::ARGS];
     }
   }
 
@@ -63,7 +63,9 @@ class SassMixinNode extends SassNode {
     $argc = count($this->args);
     $count = 0;
 
-    list($arguments) = SassScriptFunction::fill_parameters($mixin->args, $this->args, $context, $this);
+    $args = SassScriptFunction::extractArgs($this->args, false, $context);
+
+    list($arguments) = SassScriptFunction::fill_parameters($mixin->args, $args, $context, $this);
     $context->setVariables($arguments);
 
     $children = array();

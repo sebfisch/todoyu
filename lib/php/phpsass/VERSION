@@ -1,3 +1,10 @@
+Version 201211282000 - Version bump to reflect multiple pull requests being merged over time.
+Version 201209040040 - Fixed a bunch of issues
+Version 201209031740 - Almost up to 3.2.1; Directive interp, splats, new functions, some fixes
+Version 201207301030 - Fix to issue 28, extending from included files
+Version 201207271000 - Fixed scale-color function (attrib: Steve Jones)
+Version 201207262300 - Various issue fixes, better testing framework
+Version 201206291700 - Fixed some tests, minor changes to string and import handling
 Version 201203071100 - Hotfix to functions, overhauled evaluation method to be less rubbish
 Version 201203061130 - Added min/max functions, fix to lists (evaluation instead of just lexing of values)
 Version 201203042100 - Fixes to interpolation in selectors, test coverage, and some cleanup

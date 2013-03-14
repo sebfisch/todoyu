@@ -257,12 +257,21 @@ class SassParser {
 
     $options = array_merge($defaultOptions, $options);
 
+    // We don't want to allow setting of internal only property syntax value
+    if (isset($options["property_syntax"]) && $options["property_syntax"] == "scss") {
+        unset($options["property_syntax"]);
+    }
+
     self::$instance = $this;
     self::$functions = $options['functions'];
     unset($options['functions']);
 
     foreach ($options as $name=>$value) {
       $this->$name = $value;
+    }
+
+    if (!$this->property_syntax && $this->syntax == SassFile::SCSS) {
+        $this->property_syntax = "scss";
     }
 
     $GLOBALS['SassParser_debug'] = $this->debug;
@@ -359,7 +368,7 @@ class SassParser {
       'line_numbers' => $this->line_numbers,
       'load_path_functions' => $this->load_path_functions,
       'load_paths' => $this->load_paths,
-      'property_syntax' => $this->property_syntax,
+      'property_syntax' => ($this->property_syntax == "scss" ? null : $this->property_syntax),
       'quiet' => $this->quiet,
       'style' => $this->style,
       'syntax' => $this->syntax,
@@ -402,9 +411,14 @@ class SassParser {
       $files_source = '';
       foreach ($files as $file) {
         $this->filename = $file;
+        $this->syntax = substr(strrchr($file, '.'), 1);
+        if($this->syntax == SassFile::CSS){
+            $this->property_syntax = "css";
+        }elseif (!$this->property_syntax && $this->syntax == SassFile::SCSS) {
+            $this->property_syntax = "scss";
+        }
 
-        $this->syntax = substr($this->filename, -4);
-        if ($this->syntax !== SassFile::SASS && $this->syntax !== SassFile::SCSS) {
+        if ($this->syntax !== SassFile::SASS && $this->syntax !== SassFile::SCSS && $this->syntax !== SassFile::CSS) {
           if ($this->debug) {
             throw new SassException('Invalid {what}', array('{what}' => 'syntax option'));
           }
@@ -624,7 +638,14 @@ class SassParser {
       switch ($c) {
         case self::BEGIN_COMMENT:
           if (substr($this->source, $srcpos-1, strlen(self::BEGIN_SASS_COMMENT)) === self::BEGIN_SASS_COMMENT) {
-            while ($this->source[$srcpos++] !== "\n");
+            while ($this->source[$srcpos++] !== "\n") {
+              if ($srcpos >= $srclen)
+                throw new SassException('Unterminated commend', (object) array(
+                  'source' => $statement,
+                  'filename' => $this->filename,
+                  'line' => $this->line,
+                ));
+            }
             $statement .= "\n";
           }
           elseif (substr($this->source, $srcpos-1, strlen(self::BEGIN_CSS_COMMENT)) === self::BEGIN_CSS_COMMENT) {

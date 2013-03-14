@@ -70,7 +70,7 @@ class SassScriptLexer {
       elseif (($match = SassScriptFunction::isa($string)) !== false) {
         preg_match(SassScriptFunction::MATCH_FUNC, $match, $matches);
         $args = array();
-        foreach (SassScriptFunction::extractArgs($matches[SassScriptFunction::ARGS], false) as $key => $expression) {
+        foreach (SassScriptFunction::extractArgs($matches[SassScriptFunction::ARGS], false, $context) as $key => $expression) {
           $args[$key] = $this->parser->evaluate($expression, $context);
         }
         $tokens[] = new SassScriptFunction($matches[SassScriptFunction::NAME], $args);

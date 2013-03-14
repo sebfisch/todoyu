@@ -1,3 +1,5 @@
-a { branch: if; }
+a {
+	branch: if; }
 
-b { branch: else; }
+b {
+	branch: else; }

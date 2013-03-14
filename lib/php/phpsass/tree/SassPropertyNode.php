@@ -16,8 +16,9 @@
  * @subpackage  Sass.tree
  */
 class SassPropertyNode extends SassNode {
-  const MATCH_PROPERTY_NEW = '/^([^\s=:"]+)\s*(?:(= )|:)([^\:].*?)?$/';
-  const MATCH_PROPERTY_OLD = '/^:([^\s=:]+)(?:\s*(=)\s*|\s+|$)(.*)/';
+  const MATCH_PROPERTY_SCSS = '/^([^\s=:"(\\\\:)]*)\s*(?:(= )|:)([^\:].*?)?(\s*!important.*)?$/';
+  const MATCH_PROPERTY_NEW = '/^([^\s=:"]+)\s*(?:(= )|:)([^\:].*?)?(\s*!important.*)?$/';
+  const MATCH_PROPERTY_OLD = '/^:([^\s=:]+)(?:\s*(=)\s*|\s+|$)(.*)(\s*!important.*)?/';
   const MATCH_PSUEDO_SELECTOR = '/^:*\w[-\w]+\(?/i';
   const MATCH_INTERPOLATION = '/^#\{(.*?)\}/i';
   const MATCH_PROPRIETARY_SELECTOR = '/^:?-(moz|webkit|o|ms)-/';
@@ -71,6 +72,12 @@ class SassPropertyNode extends SassNode {
    */
   public $value;
 
+
+  /**
+   * @var boolean, wether the property is important
+   */
+  public $important;
+
   /**
    * SassPropertyNode constructor.
    * @param object source token
@@ -92,6 +99,7 @@ class SassPropertyNode extends SassNode {
         );
       }
     }
+    $this->important = trim(array_pop($matches)) == '!important';
   }
 
   /**
@@ -218,6 +226,9 @@ class SassPropertyNode extends SassNode {
    */
   public static function match($token, $syntax) {
     switch ($syntax) {
+      case 'scss':
+        preg_match(self::MATCH_PROPERTY_SCSS, $token->source, $matches);
+        break;
       case 'new':
         preg_match(self::MATCH_PROPERTY_NEW, $token->source, $matches);
         break;

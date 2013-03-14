@@ -91,3 +91,13 @@ li {
   @extend .error;
   border-width: 3px;
 }
+
+git20 {
+  $fluidGridGutterWidth: 1%;
+  $gridRowWidth: 60px;
+  *margin-left: $fluidGridGutterWidth - (0.5 / $gridRowWidth * 100px * 1%);
+}
+
+git30 {
+  width: 30px!important;
+}

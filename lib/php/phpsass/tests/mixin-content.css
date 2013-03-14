@@ -1,6 +1,4 @@
 #logo {
-	background-image: url("/images/logo.png");
-}
+	background-image: url("/images/logo.png"); }
 * html #logo {
-	background-image: url("/images/logo.gif");
-}
+	background-image: url("/images/logo.gif"); }

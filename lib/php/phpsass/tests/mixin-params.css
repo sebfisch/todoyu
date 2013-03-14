@@ -1,19 +1,15 @@
 default {
 	one: 'foo';
-	two: 'bar';
-}
+	two: 'bar'; }
 
 one {
 	one: 'one';
-	two: 'bar';
-}
+	two: 'bar'; }
 
 two {
 	one: 'foo';
-	two: 'two';
-}
+	two: 'two'; }
 
 both {
 	one: 'one';
-	two: 'two';
-}
+	two: 'two'; }

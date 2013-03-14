@@ -45,7 +45,11 @@ body.holmes-debug marquee,
 body.holmes-debug plaintext,
 body.holmes-debug xmp {
   border: 2px solid #a9a9a9; }
-body.holmes-debug[bgproperties], body.holmes-debug[topmargin], body.holmes-debug[rightmargin], body.holmes-debug[bottommargin], body.holmes-debug[leftmargin] {
+body.holmes-debug[bgproperties],
+body.holmes-debug[topmargin],
+body.holmes-debug[rightmargin],
+body.holmes-debug[bottommargin], 
+body.holmes-debug[leftmargin] {
   outline: 2px solid #a9a9a9; }
 body.holmes-debug *[bordercolor],
 body.holmes-debug *[bordercolordark],
@@ -135,7 +139,11 @@ body.holmes-debug table[frame]:hover::after {
   left: 0;
   top: 0;
   z-index: 9999; }
-body.holmes-debug[bgproperties]:hover::after, body.holmes-debug[topmargin]:hover::after, body.holmes-debug[rightmargin]:hover::after, body.holmes-debug[bottommargin]:hover::after, body.holmes-debug[leftmargin]:hover::after {
+body.holmes-debug[bgproperties]:hover::after,
+body.holmes-debug[topmargin]:hover::after,
+body.holmes-debug[rightmargin]:hover::after,
+body.holmes-debug[bottommargin]:hover::after,
+body.holmes-debug[leftmargin]:hover::after {
   border-radius: 0.5em;
   display: block;
   padding: 1em;
@@ -199,7 +207,10 @@ body.holmes-debug xmp:hover::after {
   content: "Deprecated or Non-W3C element"; }
 body.holmes-debug[bgproperties]:hover::after {
   content: "Deprecated or Non-W3C body attribute bgproperties"; }
-body.holmes-debug[topmargin]:hover::after, body.holmes-debug[rightmargin]:hover::after, body.holmes-debug[bottommargin]:hover::after, body.holmes-debug[leftmargin]:hover::after {
+body.holmes-debug[topmargin]:hover::after,
+body.holmes-debug[rightmargin]:hover::after,
+body.holmes-debug[bottommargin]:hover::after,
+body.holmes-debug[leftmargin]:hover::after {
   content: "Deprecated or Non-W3C body attribute *margin"; }
 body.holmes-debug *[bordercolor]:hover::after,
 body.holmes-debug *[bordercolordark]:hover::after,

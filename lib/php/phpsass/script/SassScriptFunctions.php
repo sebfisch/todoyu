@@ -572,15 +572,24 @@ class SassScriptFunctions {
   /**
    * Scales one or more property of the color by the percentage requested.
    * @param SassColour the colour to adjust
-   * @param SassNumber (red, green, blue, hue, saturation, lightness, alpha) - the amount(s) to scale by
+   * @param SassNumber (red, green, blue, saturation, lightness, alpha) - the amount(s) to scale by
    * @return SassColour
    */
-  public static function scale_color($color, $red = 0, $green = 0, $blue = 0, $hue = 0, $saturation = 0, $lightness = 0, $alpha = 0) {
+  public static function scale_color($color, $red = 0, $green = 0, $blue = 0, $saturation = 0, $lightness = 0, $alpha = 0) {
+    $maxes = array(
+      'red' => 255,
+      'green' => 255,
+      'blue' => 255,
+      'saturation' => 100,
+      'lightness' => 100,
+      'alpha' => 1,
+    );
     $color->rgb2hsl();
-    foreach (array('red', 'green', 'blue', 'hue', 'saturation', 'lightness', 'alpha') as $i => $property) {
+    foreach ($maxes as $property => $max) {
       $obj = $$property;
-      $new = $color->$property + $color->$property * (0.01 * $obj->value);
-      $color->$property = $new;
+      $scale = 0.01 * $obj->value;
+      $diff = $scale > 0 ? $max - $color->$property : $color->$property;
+      $color->$property = $color->$property + $diff * $scale;
     }
     $color->hsl2rgb();
     return $color;
@@ -640,6 +649,21 @@ class SassScriptFunctions {
     }
     return $colour;
   }
+
+  /**
+   * returns an IE hex string for a color with an alpha channel
+   * suitable for passing to IE filters.
+   */
+  public static function ie_hex_str($color) {
+    if (!($color instanceof SassColour)) {
+      $color = new SassColour($color);
+    }
+    $alpha = str_replace(',','.',round($color->alpha * 255));
+    $alpha_str = str_pad(dechex($alpha), 2, '0', STR_PAD_LEFT);
+    $col = $color->asHex(FALSE);
+    return new SassString(strtoupper('#' . $alpha_str . $col));
+  }
+
 
   /*
    * Number Functions
@@ -702,7 +726,7 @@ class SassScriptFunctions {
    */
   public static function round($number) {
     SassLiteral::assertType($number, 'SassNumber');
-    return new SassNumber(round($number->value).$number->units);
+    return new SassNumber(str_replace(',','.',round($number->value)).$number->units);
   }
 
   /**
@@ -735,28 +759,24 @@ class SassScriptFunctions {
     return $number;
   }
 
-  public static function max($n1, $n2, $n3 = false, $n4 = false, $n5 = false) {
-    $max = $n1;
-    for ($i = 2; $i <= 5; $i++) {
-      $var = 'n' . $i;
-      $var = $$var;
-      if ($var instanceof SassNumber && $var->op_gt($max)) {
+  public static function max() {
+    $max = func_get_arg(0);
+    foreach (func_get_args() as $var) {
+      if ($var instanceOf SassNumber && $var->op_gt($max)->value) {
         $max = $var;
       }
     }
     return $max;
   }
 
-  public static function min($n1, $n2, $n3 = false, $n4 = false, $n5 = false) {
-    $max = $n1;
-    for ($i = 2; $i <= 5; $i++) {
-      $var = 'n' . $i;
-      $var = $$var;
-      if ($var instanceof SassNumber && $var->op_lt($max)) {
-        $max = $var;
+  public static function min() {
+    $min = func_get_arg(0);
+    foreach (func_get_args() as $var) {
+      if ($var instanceOf SassNumber && $var->op_lt($min)->value) {
+        $min = $var;
       }
     }
-    return $max;
+    return $min;
   }
 
 
@@ -882,6 +902,26 @@ class SassScriptFunctions {
     return $list;
   }
 
+  public static function index($list, $value) {
+    if (!($list instanceOf SassList)) {
+      $list = new SassList($list->toString());
+    }
+    return $list->index($value);
+  }
+
+
+  // New function zip allows several lists to be combined into one list of lists. For example: zip(1px 1px 3px, solid dashed solid, red green blue) becomes 1px solid red, 1px dashed green, 3px solid blue
+  function zip() {
+    $result = new SassList('', ',');
+    foreach (func_get_args() as $i => $arg) {
+      $list = new SassList($arg);
+      foreach ($list->value as $j => $val) {
+        $result->value += array($j => new SassList('', 'space'));
+        $result->value[$j]->value[] = (string) $val;
+      }
+    }
+    return $result;
+  }
 
   /*
    * Misc. Functions

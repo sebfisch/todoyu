@@ -41,7 +41,7 @@ class SassExtendNode extends SassNode {
    * @return array An empty array
    */
   public function parse($context) {
-    # Richard Lyon, 25/10/2011 - resolve selectors in relation to variables
+    # resolve selectors in relation to variables
     # allows extend inside nested loops.
     $this->root->extend($this->value, $this->parent->resolveSelectors($context));
     return array();

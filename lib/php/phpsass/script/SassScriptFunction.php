@@ -103,7 +103,7 @@ class SassScriptFunction {
 
     if (isset(SassParser::$functions) && count(SassParser::$functions)) {
       foreach (SassParser::$functions as $fn => $callback) {
-        if (($fn == $name || $fn == $this->name) && function_exists($callback)) {
+        if (($fn == $name || $fn == $this->name) && is_callable($callback)) {
           $result = call_user_func_array($callback, $args);
           if (!is_object($result)) {
             $lexed = SassScriptLexer::$instance->lex($result, self::$context);
@@ -184,7 +184,7 @@ class SassScriptFunction {
     return $match;
   }
 
-  public static function extractArgs($string, $include_null = TRUE) {
+  public static function extractArgs($string, $include_null = TRUE, $context) {
     $args = array();
     $arg = '';
     $paren = 0;
@@ -195,6 +195,14 @@ class SassScriptFunction {
     $return = array();
 
     foreach ($list as $k => $value) {
+      if (substr($value, -3, 3) == '...' && preg_match(SassVariableNode::MATCH, substr($value, 0, -3) . ':', $match)) {
+        $list = new SassList($context->getVariable($match[SassVariableNode::NAME]));
+        if (count($list->value) > 1) {
+          $return = array_merge($return, $list->value);
+          continue;
+        }
+      }
+
       if (strpos($value, ':') !== false && preg_match(SassVariableNode::MATCH, $value, $match)) {
         $return[$match[SassVariableNode::NAME]] = $match[SassVariableNode::VALUE];
       } else if(substr($value, 0, 1) == '$' && $include_null) {
@@ -235,6 +243,7 @@ class SassScriptFunction {
     $_required = array_merge(array(), $required); // need to array_merge?
     $fill = $_required;
 
+
     foreach ($required as $name=>$default) {
       // we require that named variables provide a default.
       if (isset($provided[$name]) && $default !== NULL) {
@@ -243,6 +252,8 @@ class SassScriptFunction {
         unset($required[$name]);
       }
     }
+
+    // print_r(array($required, $provided, $_required));
 
     foreach ($required as $name=>$default) {
       if (count($provided)) {
@@ -254,8 +265,18 @@ class SassScriptFunction {
       else {
         throw new SassMixinNodeException("Function::$name: Required variable ($name) not given.\nFunction defined: " . $source->token->filename . '::' . $source->token->line . "\nFunction used", $source);
       }
-      $_required[$name] = $arg;
+      // splats
+      if (substr($name, -3, 3) == '...') {
+        unset ($_required[$name]);
+        $name = substr($name, 0, -3);
+        $_required[$name] = new SassList('', ',');
+        $_required[$name]->value = array_merge(array($arg), $provided);
+        continue;
+      } else {
+        $_required[$name] = $arg;
+      }
     }
+
     $_required = array_merge($_required, $provided); // any remaining args get tacked onto the end
 
     foreach ($_required as $key => $value) {

@@ -61,21 +61,25 @@ class SassMediaNode extends SassNode {
    * @return array An empty array
    */
   public function parse($context) {
+    $this->token->source = SassDirectiveNode::interpolate_nonstrict($this->token->source, $context);
+
     $node = new SassRuleNode($this->token, $context);
     $node->root = $this->parent->root;
 
     $rule = clone $this->parent;
     $rule->root = $node->root;
     $rule->children = $this->children;
-    
+
     $try = $rule->parse($context);
     if (is_array($try)) {
       $rule->children = $try;
-    } else if (is_object($try) && method_exists($try, 'render')) {
-      $rule = $try;
     }
+    // Tests were failing with this, but I'm not sure if we cover every case.
+    //else if (is_object($try) && method_exists($try, 'render')) {
+    //  $rule = $try;
+    //}
 
-    $node->children = array(new SassString($rule->render()));
+    $node->children = array(new SassString($rule->render($context)));
 
     return array($node);
   }

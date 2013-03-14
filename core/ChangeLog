@@ -92,6 +92,7 @@ core 2.3.0 - not released yet
 	* Bugfix: Class for fieldset didn't work properly/clean
 	* Bugfix: isRequired() checks now for available field and for false value
 	* Bugfix: Content tab did not store selected tab correctly
+	* Library: Upgraded PHPsass from version 201203071100 to 201211282000
 	* Library: Upgraded from PHPMailer-lite 5.1 to PHPMailer 5.2.1
 	* Library: Highcharts 2.2.3
 	* Library: tinyMCE 3.5.4.1

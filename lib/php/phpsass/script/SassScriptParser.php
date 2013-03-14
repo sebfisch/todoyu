@@ -182,6 +182,7 @@ class SassScriptParser {
           // If the stack runs out without finding a left parenthesis
           // there are mismatched parentheses.
           if ($c <= 0) {
+            array_push($outputQueue, new SassString(')'));
             break;
             throw new SassScriptParserException('Unmatched parentheses', $context->node);
           }
@@ -217,6 +218,7 @@ class SassScriptParser {
         throw new SassScriptParserException('Unmatched parentheses', $context->node);
       }
     }
+
     return $outputQueue;
   }
 

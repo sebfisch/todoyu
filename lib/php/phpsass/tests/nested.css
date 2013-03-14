@@ -1,4 +1,4 @@
-/*#main {
+#main {
   width: 15em;
   color: blue; }
   #main p {
@@ -12,13 +12,13 @@
   font-weight: bold;
   float: left; }
 
-#right .header {
-  border-style: solid; }
-#right .body {
-  border-style: dotted; }
-#right .footer {
-  border-style: dashed; }*/
+  #right .header {
+    border-style: solid; }
+  #right .body {
+    border-style: dotted; }
+  #right .footer {
+    border-style: dashed; }
 
-body[bgproperties] {
-  outline: 2px solid blue;
-}
+
+  body[bgproperties] {
+    outline: 2px solid blue; }

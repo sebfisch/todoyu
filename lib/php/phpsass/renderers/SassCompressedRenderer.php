@@ -77,7 +77,8 @@ class SassCompressedRenderer extends SassRenderer {
    * @return string the rendered property
    */
   public function renderProperty($node) {
-    return "{$node->name}:{$node->value};";
+    $node->important = $node->important ? '!important' : '';
+    return "{$node->name}:{$node->value}{$node->important};";
   }
 
   /**

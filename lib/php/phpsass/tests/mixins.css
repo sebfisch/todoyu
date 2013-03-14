@@ -1,10 +1,11 @@
+/*
+ * test that variable context evaluates correctly
+ */
 test {
-  one: two
-}
+  one: two; }
 #main {
   width: 15em;
-  color: blue;
-}
+  color: blue; }
 #main p {
   border-top-width: 2px;
   border-top-color: #ffcc00;
@@ -12,11 +13,9 @@ test {
   border-left-color: black;
   -moz-border-radius: 10px;
   border-style: dotted;
-  border-width: 2px;
-}
+  border-width: 2px; }
 #main .cool {
-  width: 100px;
-}
+  width: 100px; }
 
 #left {
   border-top-width: 2px;
@@ -26,8 +25,7 @@ test {
   -moz-border-radius: 10px;
   font-size: 2em;
   font-weight: bold;
-  float: left;
-}
+  float: left; }
 
 #right {
   border-top-width: 2px;
@@ -37,34 +35,29 @@ test {
   -moz-border-radius: 10px;
   color: red;
   font-size: 20px;
-  float: right;
-}
+  float: right; }
 
 .bordered {
   border-top-width: 2px;
   border-top-color: #ffcc00;
   border-left-width: 1px;
   border-left-color: black;
-  -moz-border-radius: 10px;
-}
+  -moz-border-radius: 10px; }
 
 .complex {
   color: red;
   font-size: 20px;
-  text-decoration: none;
-}
+  text-decoration: none; }
 .complex:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
-  visibility: hidden;
-}
+  visibility: hidden; }
 * html .complex {
   height: 1px;
   color: red;
-  font-size: 20px;
-}
+  font-size: 20px; }
 
 .more-complex {
   color: red;
@@ -72,20 +65,17 @@ test {
   text-decoration: none;
   display: inline;
   -webkit-nonsense-top-right: 1px;
-  -webkit-nonsense-bottom-left: 1px;
-}
+  -webkit-nonsense-bottom-left: 1px; }
 .more-complex:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
-  visibility: hidden;
-}
+  visibility: hidden; }
 * html .more-complex {
   height: 1px;
   color: red;
-  font-size: 20px;
-}
+  font-size: 20px; }
 .more-complex a:hover {
   text-decoration: underline;
   color: red;
@@ -94,5 +84,4 @@ test {
   border-top-color: #ffcc00;
   border-left-width: 1px;
   border-left-color: black;
-  -moz-border-radius: 10px;
-}
+  -moz-border-radius: 10px; }

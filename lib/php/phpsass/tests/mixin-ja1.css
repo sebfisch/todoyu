@@ -3,8 +3,6 @@
   -moz-box-orient: vertical;
   display: inline-block;
   vertical-align: middle;
-  *vertical-align: auto;
-}
+  *vertical-align: auto; }
 .messages h2 {
-  *display: inline;
-}
+  *display: inline; }
