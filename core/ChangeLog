@@ -1,30 +1,10 @@
 todoyu core changelog
 
 core 2.3.0 - not released yet
-	* Bugfix: styling bug in sortable panel list
-	* Bugfix: Fixed and clean-up js-calendar styling
-	* Bugfix: SearchList-input value clearing disabled text-navigation
-	* Bugfix: Fixed bug in the assistNumericInput method
-	* Bugfix: Changed date-format for calendar week to ISO-8601
-	* Changed: Encoding of title in header-template is now optional
-	* Changed: Set default error - logging on error instead of debug
 	* Added: Accept exclamation mark in link parsing
 	* Added: Basic style for warning messages
 	* Added: Possibility to add custom live-validator
 	* Added: Basics for live-validation for form-fields
-	* Bugfix: Fixed linux-chrome-styling-bug
-	* Changed: Adapted form.xsd
-	* Bugfix: Min - form - validator was wrong
-	* Bugfix: Fixed e-mail parsing
-	* Bugfix: Removed boundaries of sub menu entries
-	* Bugfix: Add tab key as class name for content item tabs
-	* Bugfix: Active item tabs are unique
-	* Bugfix: Auto linking found also background image source as link
-	* Bugfix: TodoyuSql::buildInListQueryPart() value when negated and input is empty
-	* Bugfix: Duration Pickers configuration failed
-	* Bugfix: Class for fieldset didn't work properly/clean
-	* Bugfix: isRequired() checks now for available field and for false value
-	* Bugfix: Content tab did not store selected tab correctly
 	* Added: TodoyuTime::getTimePartsDHMS()
 	* Added: Todoyu.String.replaceAll()
 	* Added: TodoyuHookManager::getHooks can now also get hooks anonymously (w/o name)
@@ -71,6 +51,8 @@ core 2.3.0 - not released yet
 	* Added: Todoyu.ListScrollLoader()
 	* Added: class TodoyuTimezoneManager
 	* Added: Set timezone in database for date calculations
+	* Changed: Encoding of title in header-template is now optional
+    * Changed: Set default error - logging on error instead of debug
 	* Changed: Sticky notification mode: info now stays (was: stays 15s)
 	* Changed: extracted select-group-options from template
 	* Changed: Renamed TodoyuArray::prefix() to prefixValues()
@@ -91,6 +73,24 @@ core 2.3.0 - not released yet
 	* Changed: enlarged content width
 	* Changed: context menu refactoring
 	* Changed: Open duration picker closes on body click
+	* Changed: Adapted form.xsd
+	* Bugfix: Fixed linux-chrome-styling-bug
+	* Bugfix: styling bug in sortable panel list
+	* Bugfix: Fixed and clean-up js-calendar styling
+	* Bugfix: SearchList-input value clearing disabled text-navigation
+	* Bugfix: Fixed bug in the assistNumericInput method
+	* Bugfix: Changed date-format for calendar week to ISO-8601
+	* Bugfix: Min - form - validator was wrong
+	* Bugfix: Fixed e-mail parsing
+	* Bugfix: Removed boundaries of sub menu entries
+	* Bugfix: Add tab key as class name for content item tabs
+	* Bugfix: Active item tabs are unique
+	* Bugfix: Auto linking found also background image source as link
+	* Bugfix: TodoyuSql::buildInListQueryPart() value when negated and input is empty
+	* Bugfix: Duration Pickers configuration failed
+	* Bugfix: Class for fieldset didn't work properly/clean
+	* Bugfix: isRequired() checks now for available field and for false value
+	* Bugfix: Content tab did not store selected tab correctly
 	* Library: Upgraded from PHPMailer-lite 5.1 to PHPMailer 5.2.1
 	* Library: Highcharts 2.2.3
 	* Library: tinyMCE 3.5.4.1
