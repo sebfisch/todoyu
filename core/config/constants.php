@@ -75,4 +75,11 @@ if( $_SERVER['HTTP_HOST'] ) {
 	define('TODOYU_URL', SERVER_URL . PATH_WEB);
 }
 
+
+	// Hook voting results
+define('HOOK_VOTING_YES', 0);		// Yes - allow override
+define('HOOK_VOTING_NO', 1);		// No  - allow override
+define('HOOK_VOTING_NEVER', 2);		// No  - ignore all others (overrules NO,YES)
+define('HOOK_VOTING_ALWAYS', 3);	// Yes - ignore all others (overrules NEVER,NO,YES)
+
 ?>

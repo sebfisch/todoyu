@@ -118,6 +118,53 @@ class TodoyuHookManager {
 
 
 	/**
+	 * Call voting hook
+	 * This is a normal hook call, but the results of the hooks have to be one of the HOOK_VOTING_* constants
+	 * The default for voting is TRUE - you can set an alternative default if no votes are available
+	 * ALWAYS will always ignore other votes and return true
+	 * NEVER will ignore other votes (except ALWAYS) and return false
+	 * One no voting will result in FALSE
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$name
+	 * @param	Array		$params
+	 * @param	Boolean		$noVotingDefault
+	 * @return	Boolean
+	 */
+	public static function callHookVoting($extKey, $name, array $params = array(), $noVotingDefault = true) {
+		$hookResults= self::callHook($extKey, $name, $params);
+
+			// No voting,
+		if( sizeof($hookResults) ) {
+				// Reverse order (later results have higher priority)
+			$reversedResults	= array_reverse($hookResults);
+
+				// Change for special results (always and never) which override all others
+			if( in_array(HOOK_VOTING_ALWAYS, $reversedResults) ) {
+				return true;
+			}
+			if( in_array(HOOK_VOTING_NEVER, $reversedResults) ) {
+				return false;
+			}
+
+				// Check for NO votings (one no means no)
+			foreach($hookResults as $hookResult) {
+				if( $hookResult === HOOK_VOTING_NO ) {
+					return false;
+				}
+			}
+
+				// Default (all votes were YES)
+			return true;
+		}
+
+			// Default (no votes at all)
+		return $noVotingDefault;
+	}
+
+
+
+	/**
 	 * Add a new hook functions for a hook event
 	 *
 	 * @param	String		$extKey			Extension key (of Ext to be extended)
