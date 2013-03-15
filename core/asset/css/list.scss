@@ -7,15 +7,25 @@
 
 table.list {
 	width:100%;
+	max-width: 100%;
 	background-color:$white;
+	table-layout: fixed;
 
 	&.autoWidthTable {
-		width:auto; }
+		width:auto;
+	}
+	
+	col.icon {
+		width: 30px;
+	}
 
 	th,
 	td {
 		padding:3px 12px 3px 12px;
 		vertical-align:top;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 
 		> span.icon {
 			height:25px;

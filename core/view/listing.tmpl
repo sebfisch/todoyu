@@ -4,6 +4,12 @@
 
 {if !empty($rows)}
 	<table class="list {$config.name}Listing withMouseHover" id="paging-{$config.name}-table-{$page}" >
+		{*-------------- column definitions used to control width of table columns ---------------*}
+		<colgroup>
+			{foreach $config.columns colName label}
+				<col class="{$colName}" />
+			{/foreach}
+		</colgroup>
 
 	{*-------------- Column titles ---------------*}
 		<thead>
@@ -36,9 +42,7 @@
 							{if $colName == 'actions'}
 								{cleanHtml $colContent}
 							{else}
-								{$maxLen = intval($config.truncate.$colName)}
-								{if !$maxLen}{$maxLen = 16}{/if}
-								{htmlencode(truncate($colContent,$maxLen,'...',true))}
+								{htmlencode $colContent}
 							{/if}
 						</span>
 					</td>
