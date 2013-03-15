@@ -35,9 +35,11 @@ Todoyu.Wizard = {
 	 *
 	 * @method	open
 	 * @param	{String}	wizardName
-	 * @param	{Function}	onLoadCallback
+	 * @param	{Function}	[onLoadCallback]
 	 */
 	open: function(wizardName, onLoadCallback) {
+		onLoadCallback	= onLoadCallback || Prototype.emptyFunction;
+
 		var url		= Todoyu.getUrl('core', 'wizard');
 		var options	= {
 			parameters: {
@@ -50,7 +52,7 @@ Todoyu.Wizard = {
 		this.wizard = {
 			name: 		wizardName,
 			popup: 		Todoyu.Popups.open('wizard' + wizardName, 'Wizard', 900, url, options),
-			callback: 	onLoadCallback || Prototype.emptyFunction
+			callback: 	onLoadCallback
 		};
 	},
 
@@ -94,6 +96,8 @@ Todoyu.Wizard = {
 	 * Submit the wizard form. Set direction if provided
 	 *
 	 * @method	submit
+	 * @param	{String}	[direction]
+	 * @param	{String}	[callback]
 	 */
 	submit: function(direction, callback) {
 		if( typeof direction === 'string' ) {
@@ -212,6 +216,7 @@ Todoyu.Wizard = {
 	 * Close wizard
 	 *
 	 * @method	close
+	 * @param	{Boolean}	[noConfirm]
 	 */
 	close: function(noConfirm) {
 		noConfirm	= noConfirm === true;

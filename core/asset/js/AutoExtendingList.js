@@ -58,8 +58,8 @@ Todoyu.AutoExtendingList = Class.create({
 	 *
 	 * @method	initialize
 	 * @param	{Element}	list
-	 * @param	{String}	listItemTag		Tag name of the list elements (default: li)
-	 * @param	{String}	inputSelector	Selector for input elements (default: input[type=text])
+	 * @param	{String}	[listItemTag]		Tag name of the list elements (default: li)
+	 * @param	{String}	[inputSelector]	Selector for input elements (default: input[type=text])
 	 */
 	initialize: function(list, listItemTag, inputSelector) {
 		this.list			= $(list);

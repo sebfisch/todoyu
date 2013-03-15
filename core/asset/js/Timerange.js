@@ -83,7 +83,7 @@ Todoyu.Timerange = Class.create({
 	 * @param	{Array|Function}	validDates
 	 * @param	{Array}				selectedDates
 	 * @param	{Object}			sliderOptions
-	 * @param	{Object}			timerangeOptions
+	 * @param	{Object}			[timerangeOptions]
 	 */
 	initialize: function(name, validDates, selectedDates, sliderOptions, timerangeOptions) {
 		this.name			= name;

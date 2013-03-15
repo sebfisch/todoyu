@@ -307,7 +307,7 @@ Todoyu.Form = {
 	 * Expand / collapse foreign record fields
 	 *
 	 * @method	toggleForeignRecords
-	 * @param	{Array}		fieldNames
+	 * @param	{Array}		[fieldNames]
 	 */
 	toggleForeignRecords: function(fieldNames) {
 		fieldNames = fieldNames || [];
@@ -394,8 +394,8 @@ Todoyu.Form = {
 	 * Invoke given method (e.g. 'show', 'hide') on all fields inside the parent of the given field names
 	 *
 	 * @method	invokeForeignRecords
-	 * @param	{Array}		fieldNames
-	 * @param	{String}	method
+	 * @param	{Array}		[fieldNames]
+	 * @param	{String}	[method]
 	 */
 	invokeForeignRecords: function(fieldNames, method) {
 		fieldNames	= fieldNames || [];
@@ -462,7 +462,7 @@ Todoyu.Form = {
 	 *
 	 * @method	assistNumericInput
 	 * @param	{Element}			field
-	 * @param	{Boolean}			allowFloat
+	 * @param	{Boolean}			[allowFloat]
 	 */
 	assistNumericInput: function(field, allowFloat) {
 		allowFloat		= allowFloat || false;

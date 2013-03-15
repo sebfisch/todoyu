@@ -75,7 +75,7 @@ Todoyu.Autocompleter = Class.create(Ajax.Autocompleter, {
 	 * @param	{Element}	inputField
 	 * @param	{Element}	suggestDiv
 	 * @param	{String}	url
-	 * @param	{Object}	options
+	 * @param	{Object}	[options]
 	 */
 	initialize: function($super, inputField, suggestDiv, url, options) {
 		options	= options	|| {};

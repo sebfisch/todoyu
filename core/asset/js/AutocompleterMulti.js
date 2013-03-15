@@ -60,8 +60,8 @@ Todoyu.AutocompleterMulti = Class.create(Todoyu.Autocompleter, {
 	 * @param	{String|Element}		fieldSuggest
 	 * @param	{String}				url
 	 * @param	{Object}				acOptions
-	 * @param	{Function}				callbackAdd
-	 * @param	{Function}				callbackRemove
+	 * @param	{Function}				[callbackAdd]
+	 * @param	{Function}				[callbackRemove]
 	 */
 	initialize: function($super, field, fieldSuggest, url, acOptions, callbackAdd, callbackRemove) {
 		this.callbacks = {

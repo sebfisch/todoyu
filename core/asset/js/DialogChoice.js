@@ -41,8 +41,8 @@ Todoyu.DialogChoice = Class.create(Todoyu.Popup, {
 	 *
 	 * @method	initialize
 	 * @param	{Function}		$super
-	 * @param	{Object}		config			Option configuration
-	 * @param	{Object}		popupOptions
+	 * @param	{Object}		[config]			Option configuration
+	 * @param	{Object}		[popupOptions]
 	 */
 	initialize: function($super, config, popupOptions) {
 		this.config				= config || {};

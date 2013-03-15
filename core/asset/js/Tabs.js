@@ -606,7 +606,7 @@ Todoyu.Tabs = {
 	 *
 	 * @method	getTab
 	 * @param	{String}	list
-	 * @param	{Number}	index
+	 * @param	{Number}	[index]
 	 * @return	{Element}
 	 */
 	getTabByIndex: function(list, index) {

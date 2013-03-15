@@ -40,7 +40,7 @@ Todoyu.ItemList = Class.create({
 	 *
 	 * @method	initialize
 	 * @param	{Element|String}	list
-	 * @param	{Object}			options
+	 * @param	{Object}			[options]
 	 */
 	initialize: function(list, options) {
 		this.list 		= $(list);

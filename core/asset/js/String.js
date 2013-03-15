@@ -50,8 +50,8 @@ Todoyu.String = {
 	 *
 	 * @method	cropText
 	 * @param	{String}		text
-	 * @param	{Number=100}	length
-	 * @param	{String}		append		Appendix
+	 * @param	{Number=100}	[length]
+	 * @param	{String}		[append]		Appendix
 	 */
 	cropText: function(text, length, append) {
 		length	= length || 100;

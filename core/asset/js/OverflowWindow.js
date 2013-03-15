@@ -265,9 +265,9 @@ Todoyu.OverflowWindow = Class.create({
 	 * Update windows content
 	 *
 	 * @method	update
-	 * @param	{String}	url
-	 * @param	{Object}	options
-	 * @param	{Boolean}	replaceOptions
+	 * @param	{String}	[url]
+	 * @param	{Object}	[options]
+	 * @param	{Boolean}	[replaceOptions]
 	 */
 	update: function(url, options, replaceOptions) {
 		url		= url || this.config.url;

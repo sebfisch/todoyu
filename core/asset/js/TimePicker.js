@@ -97,6 +97,7 @@ Todoyu.TimePicker = Class.create({
 	 *
 	 * @method	initialize
 	 * @param	{String}		idElement
+	 * @param	{Object}		[config]
 	 */
 	initialize: function(idElement, config) {
 		this.element= $(idElement);

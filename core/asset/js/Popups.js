@@ -117,7 +117,7 @@ Todoyu.Popups = {
 	 *
 	 * @method	show
 	 * @param	{Object}		options
-	 * @param	{Number}		positionTop		Relative to current scrollTop
+	 * @param	{Number}		[positionTop]		Relative to current scrollTop
 	 * @return	{Todoyu.Popup}
 	 */
 	show: function(options, positionTop) {
@@ -146,7 +146,7 @@ Todoyu.Popups = {
 	 * Focus first field (of first form) inside given/ most recent popup
 	 *
 	 * @method	focusFirstField
-	 * @param	{String}	idPopup
+	 * @param	{String}	[idPopup]
 	 */
 	focusFirstField: function(idPopup) {
 		idPopup	=	idPopup || this.getLast().element.id;
@@ -183,9 +183,9 @@ Todoyu.Popups = {
 	 * @method	open
 	 * @param	{String}		idPopup
 	 * @param	{String}		title
-	 * @param	{Number}		minWidth
+	 * @param	{Number}		[minWidth]
 	 * @param	{String}		contentUrl
-	 * @param	{Object}		requestOptions
+	 * @param	{Object}		[requestOptions]
 	 * @param	{Number}		[positionTop]
 	 * @return	{Todoyu.Popup}
 	 */

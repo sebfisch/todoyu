@@ -45,10 +45,10 @@ Todoyu.Cookie = {
 	 *
 	 * @method	init
 	 * @param	{Object}	options
-	 * @param	{Object}	data
+	 * @param	{Object}	[data]
 	 */
 	init: function(options, data) {
-		data	= data ? data : false;
+		data	= data || false;
 
 		Todoyu.Cookie.options = Object.extend(Todoyu.Cookie.options, options || {});
 

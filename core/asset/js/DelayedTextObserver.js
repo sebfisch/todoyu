@@ -58,7 +58,7 @@ Todoyu.DelayedTextObserver = Class.create({
 	 * @method	initialize
 	 * @param	{Element}	field
 	 * @param	{Function}	callback		Callback. Parameters: field, fieldValue
-	 * @param	{Number}	delay			Number of seconds to delay the request in seconds. Default: 0.5s
+	 * @param	{Number}	[delay]			Number of seconds to delay the request in seconds. Default: 0.5s
 	 */
 	initialize: function(field, callback, delay) {
 		this.field		= $(field);

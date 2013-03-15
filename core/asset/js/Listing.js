@@ -71,7 +71,7 @@ Todoyu.Listing = {
 	 * @method	more
 	 * @param	{String}	name
 	 * @param	{Number}	pagenum
-	 * @param	{Object}	listParams		List function parameters
+	 * @param	{Object}	[listParams]		List function parameters
 	 */
 	more: function(name, pagenum, listParams) {
 		listParams	= listParams || {};
@@ -91,7 +91,7 @@ Todoyu.Listing = {
 	 * @param	{String}		name
 	 * @param	{Number}		offset
 	 * @param	{Number}		pagenum
-	 * @param	{Object}		listParams		List function parameters, e.g. search-word config
+	 * @param	{Object}		[listParams]		List function parameters, e.g. search-word config
 	 */
 	extend: function(name, offset, pagenum, listParams) {
 		listParams	= listParams || {};

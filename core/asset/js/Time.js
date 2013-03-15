@@ -50,7 +50,7 @@ Todoyu.Time = {
 	 * @param	{Number}		hours
 	 * @param	{Number}		minutes
 	 * @param	{Number}		seconds
-	 * @param	{String}		separator
+	 * @param	{String}		[separator]
 	 * @return	{String}
 	 */
 	timeFormat: function(hours, minutes, seconds, separator) {

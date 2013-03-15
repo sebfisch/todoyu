@@ -108,7 +108,7 @@ Todoyu.FormRecords = Class.create({
 	 * @method	initialize
 	 * @param	{String}	type
 	 * @param	{String}	baseID
-	 * @param	{Object}	config
+	 * @param	{Object}	[config]
 	 */
 	initialize: function(type, baseID, config) {
 		this.type	= type;
@@ -596,7 +596,7 @@ Todoyu.FormRecords = Class.create({
 	 *
 	 * @method	addStorageValue
 	 * @param	{String}	id
-	 * @param	{String}	label		Not required
+	 * @param	{String}	[label]
 	 */
 	addStorageValue: function(id, label) {
 		label	= label || '';

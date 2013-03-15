@@ -61,9 +61,11 @@ Todoyu.Ui = {
 	 *
 	 * @method	getRteOptions
 	 * @param	{String}	idElement
-	 * @param	{Object}	extraOptions
+	 * @param	{Object}	[extraOptions]
 	 */
 	getRteOptions: function(idElement, extraOptions) {
+		extraOptions	= extraOptions || {};
+
 		if( !this.rteOptions ) {
 			this.rteOptions = {
 				mode:					'exact',
@@ -90,7 +92,7 @@ Todoyu.Ui = {
 
 			// Set element ID
 		var elementOptions		= Object.clone(this.rteOptions);
-		elementOptions			= Object.extend(elementOptions, extraOptions || {});
+		elementOptions			= Object.extend(elementOptions, extraOptions);
 		elementOptions.elements = idElement;
 
 		return elementOptions;
@@ -612,6 +614,7 @@ Todoyu.Ui = {
 	 *
 	 * @method	showDurationPicker
 	 * @param	{String}			idElement		ID of element the picker belongs to
+	 * @param	{Object}			[config]
 	 * @return	Todoyu.TimePicker
 	 */
 	showDurationPicker: function(idElement, config) {
@@ -826,10 +829,12 @@ Todoyu.Ui = {
 	 * Get custom calendar config
 	 *
 	 * @method	buildCalendarFieldConfig
-	 * @param	{Object}	fieldConfig
+	 * @param	{Object}	[fieldConfig]
 	 * @return	{Object}
 	 */
 	buildCalendarFieldConfig: function(fieldConfig) {
+		fieldConfig	= fieldConfig || {};
+
 		if( !this.calendarDefaultOptions ) {
 			this.calendarDefaultOptions = {
 				range:		[1990,2020],
@@ -840,7 +845,7 @@ Todoyu.Ui = {
 		}
 
 			// Merge with default options
-		fieldConfig = $H(this.calendarDefaultOptions).merge(fieldConfig || {}).toObject();
+		fieldConfig = $H(this.calendarDefaultOptions).merge(fieldConfig).toObject();
 			// Parse functions and arrays
 		fieldConfig	= this.parseCalendarConfig(fieldConfig);
 

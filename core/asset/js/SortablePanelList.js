@@ -41,7 +41,7 @@ Todoyu.SortablePanelList = Class.create({
 	 * @param	{Element|String}	list
 	 * @param	{Function}			callbackToggle
 	 * @param	{Function}			callbackSort
-	 * @param	{Boolean}			onlyOneActive
+	 * @param	{Boolean}			[onlyOneActive]
 	 */
 	initialize: function(list, callbackToggle, callbackSort, onlyOneActive) {
 		if( ! Todoyu.exists(list) ) {

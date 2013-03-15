@@ -130,7 +130,7 @@ Todoyu.Notification = {
 	 * Replace points with dashes
 	 *
 	 * @method	getIdentifierClass
-	 * @param	{String}	identifier
+	 * @param	{String}	[identifier]
 	 * @return	{String}
 	 */
 	getIdentifierClass: function(identifier) {
