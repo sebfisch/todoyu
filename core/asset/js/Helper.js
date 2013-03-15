@@ -215,6 +215,8 @@ Todoyu.Helper = {
 	 * @method	fireEvent
 	 * @param	{Element}		element
 	 * @param	{String}		eventType e.g. 'click'
+	 * @param	{Number}		x
+	 * @param	{Number}		y
 	 * @return	{String|Object}
 	 * @deprecated
 	 */
@@ -337,6 +339,5 @@ Todoyu.Helper = {
 
 		return doCopy({}, originalObject)
 	}
-
 
 };

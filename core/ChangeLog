@@ -1,6 +1,7 @@
 todoyu core changelog
 
 core 2.3.0 - not released yet
+	* Added: JS Array.prototype.remove - make array items removable
 	* Added: Accept exclamation mark in link parsing
 	* Added: Basic style for warning messages
 	* Added: Possibility to add custom live-validator

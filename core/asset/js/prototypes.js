@@ -103,7 +103,7 @@ Ajax.Response.addMethods({
 	 * Check whether a todoyu header was sent
 	 *
 	 * @method	hasTodoyuHeader
-	 * @param	{String}
+	 * @param	{String}	name
 	 */
 	hasTodoyuHeader: function(name) {
 		return this.getTodoyuHeader(name) !== null;
@@ -285,9 +285,23 @@ Array.prototype.sum = function(){
 };
 
 
+/**
+ * Array Remove - By John Resig (MIT Licensed)
+ *
+ * @param	{Number}	from
+ * @param	{Number}	to
+ * @returns {Number}
+ */
+Array.prototype.remove = function(from, to) {
+	var rest = this.slice((to || from) + 1 || this.length);
+	this.length = from < 0 ? this.length + from : from;
+	return this.push.apply(this, rest);
+};
+
+
 
 /*
- * Orginal: http://adomas.org/javascript-mouse-wheel/
+ * Original: http://adomas.org/javascript-mouse-wheel/
  * prototype extension by "Frank Monnerjahn" <themonnie@gmail.com>
  */
 Object.extend(Event, {
