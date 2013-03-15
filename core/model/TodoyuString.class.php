@@ -699,7 +699,7 @@ class TodoyuString {
 		$replaceSimple	= '\1<a href="http://\2" target="_blank">\2</a>';
 
 			// Find mailto links
-		$patternEmail	= '/(?<completeTag><(?<tagOpen>\w+)(?<tagattributes>[^>]?)*>)?(?<content>[\w-\.]+@[\w-\.]+)(?<tagClose><\/\2>)?/';
+		$patternEmail	= '/(?<before>mailto:)(?<completeTag><(?<tagOpen>\w+)(?<tagattributes>[^>]?)*>)?(?<content>[\w-\.]+@[\w-\.]+)(?<tagClose><\/\2>)?/';
 
 			// Replace URLs
 		$htmlContent	= preg_replace($patternFull, $replaceFull, $htmlContent);
@@ -712,10 +712,18 @@ class TodoyuString {
 
 
 	/**
+	 * Add linking for email addresses
+	 * 
 	 * @param	Array	$matches
+	 * @return	String
 	 */
 	public static function replaceEmailInText($matches) {
 		$replaceEmail	= '<a href="mailto:%s">%s</a>';
+
+			// Ignore already linked elements
+		if( $matches['before'] === 'mailto:' ) {
+			return $matches[0];
+		}
 
 		if( $matches['completeTag'] === '' ) {
 			return sprintf($replaceEmail, $matches['content'], $matches['content']);
