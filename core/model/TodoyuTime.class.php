@@ -452,7 +452,7 @@ class TodoyuTime {
 	 *
 	 * @see		core/config/dateformat.xml
 	 * @param	Integer			$timestamp
-	 * @param	String			$formatName
+	 * @param	String|Null		$formatName
 	 * @param	String|Boolean	$format				Ignore formatName and use directly this format
 	 * @return	String		Formatted date
 	 */
@@ -605,7 +605,8 @@ class TodoyuTime {
 	public static function cleanFormatForWindows($format) {
 		if( strpos($format, '%e') !== false ) {
 			if( TodoyuServer::isWindows() ) {
-				$format = str_replace('%e', '%d', $format);
+				$format = str_replace('%e', '%#d', $format);
+				$format = str_replace('%V', '%W', $format);
 			}
 		}
 
