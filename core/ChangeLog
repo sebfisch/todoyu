@@ -96,7 +96,7 @@ core 2.3.0 - not released yet
 	* Bugfix: Content tab did not store selected tab correctly
 	* Bugfix: Prevent double linking of email addresses in RTE text
 	* Library: Upgraded PHPsass from version 201203071100 to 201211282000
-	* Library: Upgraded from PHPMailer-lite 5.1 to PHPMailer 5.2.1
+	* Library: Upgraded from PHPMailer-lite 5.1 to PHPMailer 5.2.4
 	* Library: Highcharts 2.2.3
 	* Library: tinyMCE 3.5.4.1
 
