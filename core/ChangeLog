@@ -77,6 +77,7 @@ core 2.3.0 - not released yet
 	* Changed: context menu refactoring
 	* Changed: Open duration picker closes on body click
 	* Changed: Adapted form.xsd
+	* Changed: Raise php memory limit when a mail is sent with attachments
 	* Bugfix: Fixed linux-chrome-styling-bug
 	* Bugfix: styling bug in sortable panel list
 	* Bugfix: Fixed and clean-up js-calendar styling

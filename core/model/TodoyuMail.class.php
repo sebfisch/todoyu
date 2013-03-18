@@ -360,6 +360,23 @@ class TodoyuMail extends PHPMailer {
 
 			// Add all addresses
 		$this->addAllAddresses();
+
+			// Raise memory when attachments are sent
+		$this->raiseMemoryForAttachments();
+	}
+
+
+
+	/**
+	 * Raise php memory limit when attachments are added.
+	 * Because the files are loaded into memory for processing, problems may occure
+	 *
+	 */
+	protected function raiseMemoryForAttachments() {
+			// Are there attachments?
+		if( sizeof($this->attachment) ) {
+			@ini_set('memory_limit', '128M');
+		}
 	}
 
 
