@@ -149,7 +149,15 @@ body {
 	left:0px;
 	width:100%;
 	height:5px;
-	background:$colorApprove01 url(../img/bg-footer.png) repeat-y 0 top; }
+	background: #122a4c; /* Old browsers */
+	background: -moz-linear-gradient(left, #122a4c 0%, #3db8bf 50%, #7bc75b 75%, #afd027 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#122a4c), color-stop(21%,#7bc75b), color-stop(50%,#3db8bf), color-stop(75%,#7bc75b), color-stop(100%,#afd027)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, #122a4c 0%,#3db8bf 50%,#7bc75b 75%,#afd027 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, #122a4c 0%,#3db8bf 50%,#7bc75b 75%,#afd027 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, #122a4c 0%,#3db8bf 50%,#7bc75b 75%,#afd027 100%); /* IE10+ */
+	background: linear-gradient(to right, #122a4c 0%,#3db8bf 50%,#7bc75b 75%,#afd027 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#122a4c', endColorstr='#afd027',GradientType=1 ); /* IE6-9 */
+}
 
 
 
