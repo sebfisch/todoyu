@@ -521,6 +521,7 @@ var Todoyu = {
 					window.console.log('Log: ' + title);
 				}
 				window.console.log(element);
+//				console.error('error');
 			}
 		}
 	}
