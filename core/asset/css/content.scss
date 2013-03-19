@@ -126,7 +126,19 @@ div.infoBox {
 }
 
 .headerLine {
-	background:url('../img/bg-headerline.png') repeat-x 0 0;
+	background: #ececec; /* Old browsers */
+	background: -moz-linear-gradient(top, #ececec 0%, #cecece 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ececec), color-stop(100%,#cecece)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ececec 0%,#cecece 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ececec 0%,#cecece 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ececec 0%,#cecece 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ececec 0%,#cecece 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ececec', endColorstr='#cecece',GradientType=0 ); /* IE6-9 */
+	border: {
+		radius:5px 5px 0 0;
+		top:1px solid $colorNeutral02;
+		bottom:1px solid $white;
+	}
 
 	label {
 		text-transform:uppercase;
@@ -148,10 +160,6 @@ div.infoBox {
 	button span {
 		line-height:20px; }
 }
-
-.headerOptLine {
-	background:url('../img/bg-headerline.png') repeat-x 0 -46px;
-	border-color:$colorCorporate04; }
 
 .headerLine span,
 .button {
@@ -182,7 +190,15 @@ tr.headerLine {
 	background:none;
 
 	th {
-		background:url('../img/bg-headerline.png') repeat-x 0 0;
+		background: #ececec; /* Old browsers */
+		background: -moz-linear-gradient(top, #ececec 0%, #cecece 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ececec), color-stop(100%,#cecece)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #ececec 0%,#cecece 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #ececec 0%,#cecece 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, #ececec 0%,#cecece 100%); /* IE10+ */
+		background: linear-gradient(to bottom, #ececec 0%,#cecece 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ececec', endColorstr='#cecece',GradientType=0 ); /* IE6-9 */
+
 		border: {
 			top:1px solid $colorNeutral02;
 			bottom:1px solid $white;
