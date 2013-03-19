@@ -26,7 +26,6 @@
 	// ****************************************************************************
 
 	// Extension config
-Todoyu::$CONFIG['EXT']['admin']['extConf'] = unserialize(stripslashes('a:0:{}'));
 Todoyu::$CONFIG['EXT']['project']['extConf'] = unserialize(stripslashes('a:0:{}'));
 Todoyu::$CONFIG['EXT']['sysmanager']['extConf'] = unserialize(stripslashes('a:0:{}'));
 Todoyu::$CONFIG['EXT']['loginpage']['extConf'] = unserialize(stripslashes('a:0:{}'));
