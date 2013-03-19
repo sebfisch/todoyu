@@ -1,43 +1,41 @@
-#dialogchoice .wrapper {
-	padding:10px;
-}
+@import "../../config/theme.scss";
 
-#dialogchoice .description {
-	margin-bottom:10px;
-	border-bottom:1px solid #CCC;
-}
 
-#dialogchoice .choices {
-}
 
-#dialogchoice .choice {
-	margin-bottom:5px;
-	padding:8px;
-	background-color:#FFF;
-	border:1px solid #FFF;
-	border-radius:5px;
-}
+#dialogchoice {
+	.wrapper {
+		padding:10px; }
 
-#dialogchoice .choice div {
-	display:inline-block;
-}
+	.description {
+		margin-bottom:10px;
+		border-bottom:1px solid $colorNeutral03; }
 
-#dialogchoice .choice .boxButton {
-	width:170px;
-}
+	.choice {
+		margin-bottom:5px;
+		padding:8px;
+		background-color:$white;
+		border:1px solid $white;
+		border-radius:5px;
 
-#dialogchoice .choice button {
-	width:150px;
-}
+		button {
+			width:150px;
 
-#dialogchoice .choice button .label {
-	margin:0;
-	width:100%;
-	text-align:center;
-}
+			.label {
+				margin:0;
+				width:100%;
+				text-align:center; }
+		}
 
-#dialogchoice .choice .boxLabel {
-	width:280px;
-	height:20px;
-	vertical-align:bottom;
+		div {
+			display:inline-block; }
+
+		.boxButton {
+			width:170px; }
+
+		.boxLabel {
+			width:280px;
+			height:20px;
+			vertical-align:bottom;
+		}
+	}
 }

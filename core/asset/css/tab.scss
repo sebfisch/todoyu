@@ -32,8 +32,11 @@
 		float:left;
 		margin-right:3px;
 		cursor:pointer;
-		border-radius:10px 10px 0 0;
-		box-shadow:0 -1px 1px $colorCorporate04 inset;
+		border: {
+			radius:5px 5px 0 0;
+			top:1px solid $colorNeutral02;
+			bottom:1px solid $white; }
+		box-shadow:0 -1px -1px $colorCorporate04 inset;
 
 		p {
 			display:block;

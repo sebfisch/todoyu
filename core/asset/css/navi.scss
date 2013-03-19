@@ -50,11 +50,8 @@
 				color:$colorTextGeneral; }
 		}
 
-		&.active {
-		 	background-color:$colorCorporate02; }
-
+		&.active,
 		&:hover {
-			/* bcl03 */
 		 	background-color:$colorCorporate02; }
 
 		&.itemTodoyu {
