@@ -32,14 +32,6 @@ class TodoyuContentItemTabManager {
 	protected static $tabs = array();
 
 
-	
-	/**
-	 * @var	Array		Parsed and prepared tabs
-	 */
-	protected static $parsedTabs = null;
-
-
-
 
 	/**
 	 * Register an items tab
@@ -68,26 +60,24 @@ class TodoyuContentItemTabManager {
 	 * @param	String		$extKey			Extension that originally implements the item
 	 * @param	String		$itemKey		'project' / 'task' / ...
 	 * @param	Integer		$idItem
-	 * @param	Boolean		$evalLabel		If true, all labels with a function reference will be parsed
-	 * @param	Boolean		$noCache		Don't cache tabs
 	 * @return	Array[]
 	 */
-	public static function getTabs($extKey, $itemKey, $idItem, $evalLabel = true, $noCache = false) {
-		if( is_null(self::$parsedTabs[$itemKey]) ) {
-			self::$parsedTabs[$itemKey] = self::getTabConfigs($extKey, $itemKey, true);
-		}
+	public static function getTabs($extKey, $itemKey, $idItem) {
+		$tabs = self::getTabConfigs($extKey, $itemKey, true);
 
-		$tabs = TodoyuArray::assure(self::$parsedTabs[$itemKey]);
-
-		if( $evalLabel ) {
-			foreach($tabs as $index => $tab) {
-				$tabs[$index]['label']	= TodoyuFunction::callUserFunction($tab['label'], $idItem);
+		foreach($tabs as $index => $tab) {
+				// Is the label a method? A method can also return false and remove the tab
+			if( TodoyuFunction::isFunctionReference($tab['label']) ) {
+				$tabLabel	= TodoyuFunction::callUserFunction($tab['label'], $idItem);
+			} else {
+				$tabLabel	= Todoyu::Label($tab['label']);
 			}
-		}
 
-			// No cache = remove
-		if( $noCache ) {
-			unset(self::$parsedTabs[$itemKey]);
+			if( $tabLabel === false ) {
+				unset($tabs[$index]);
+			} else {
+				$tabs[$index]['label']	= $tabLabel;
+			}
 		}
 
 		return $tabs;
@@ -135,11 +125,10 @@ class TodoyuContentItemTabManager {
 	 * @param	String		$extKey		Extension that originally implements the item
 	 * @param	String		$itemKey
 	 * @param	Integer		$idItem
-	 * @param	Boolean		$noCache
 	 * @return	String
 	 */
-	public static function getDefaultTab($extKey, $itemKey, $idItem, $noCache = false) {
-		$tabs	= self::getTabs($extKey, $itemKey, $idItem, false, $noCache);
+	public static function getDefaultTab($extKey, $itemKey, $idItem) {
+		$tabs	= self::getTabs($extKey, $itemKey, $idItem);
 		$first	= array_shift($tabs);
 
 		return $first['id'];
