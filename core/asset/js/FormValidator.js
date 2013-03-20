@@ -30,21 +30,23 @@
 Todoyu.FormValidator = {
 
 	/**
-	 *
+	 * @property	validators
+	 * @type		Object
 	 */
 	validators: {},
 
-
-
 	/**
+	 * Reference to form helper
 	 *
+	 * @property	ext
+	 * @type		Object
 	 */
 	form: Todoyu.Form,
 
 
 
-	 /**
-	 *
+	/**
+	 * @method	initField
 	 * @param	{String}		fieldID
 	 */
 	initField: function(fieldID) {
@@ -57,7 +59,9 @@ Todoyu.FormValidator = {
 
 
 	/**
-	 *
+	 * @method	addValidator
+	 * @param	{String}	fieldID
+	 * @param	{Function}	validatorMethod
 	 */
 	addValidator: function(fieldID, validatorMethod) {
 		this.validators[fieldID].validatorMethods.push(validatorMethod);
@@ -66,7 +70,8 @@ Todoyu.FormValidator = {
 
 
 	/**
-	 *
+	 * @method	validate
+	 * @param	{String}	fieldID
 	 */
 	validate: function(fieldID) {
 		this.validators[fieldID].hasError = false;
@@ -82,8 +87,7 @@ Todoyu.FormValidator = {
 
 
 	/**
-	 *
-	 *
+	 * @method	initValidators
 	 * @param	{String}		fieldID
 	 */
 	initValidators:function (fieldID) {
@@ -102,6 +106,7 @@ Todoyu.FormValidator = {
 	/**
 	 * Stop all validation events of object
 	 *
+	 * @method	initObserver
 	 * @param	{String}		fieldID
 	 */
 	initObserver: function(fieldID) {
@@ -115,8 +120,8 @@ Todoyu.FormValidator = {
 
 
 	/**
-	 *
-	 * @param fieldID
+	 * @method	isNumeric
+	 * @param	{String}	fieldID
 	 */
 	isNumeric: function(fieldID) {
 		var value = $(fieldID).getValue();
@@ -133,7 +138,7 @@ Todoyu.FormValidator = {
 
 
 	/**
-	 *
+	 * @method	isNotZero
 	 * @param	{String}		fieldID
 	 */
 	isNotZero: function(fieldID) {
@@ -149,7 +154,7 @@ Todoyu.FormValidator = {
 
 
 	/**
-	 *
+	 * @method	getError
 	 * @param	{String}		fieldID
 	 * @param	{Boolean}		errorFromValidation
 	 */
@@ -166,7 +171,7 @@ Todoyu.FormValidator = {
 
 
 	/**
-	 *
+	 * @method	addErrorMessage
 	 * @param	{String}		fieldID
 	 * @param	{String}		msg
 	 */
@@ -177,9 +182,10 @@ Todoyu.FormValidator = {
 
 
 	/**
-	 *
+	 * @method	addWarningMessage
 	 * @param	{String}		fieldID
 	 * @param	{String}		msg
+	 * @param	{Number}		positionRight
 	 */
 	addWarningMessage: function(fieldID, msg, positionRight) {
 		var element = this.addMessageElement(fieldID, 'warningMessage', msg);
@@ -194,6 +200,7 @@ Todoyu.FormValidator = {
 	/**
 	 * Relative positioning of Warning Message
 	 *
+	 * @method	positionRight
 	 * @param	{Object}	element
 	 */
 	positionRight: function(element) {
@@ -212,9 +219,10 @@ Todoyu.FormValidator = {
 	/**
 	 * Add Html element containing the error/warning Message
 	 *
+	 * @method	addMessageElement
 	 * @param	{String}		fieldID
 	 * @param	{String}	htmlClassName
-	 * @param	{msg}
+	 * @param	{String}	msg
 	 */
 	addMessageElement: function(fieldID, htmlClassName, msg) {
 		var errorElement = $(fieldID).up('.fElement').down('.'+htmlClassName);

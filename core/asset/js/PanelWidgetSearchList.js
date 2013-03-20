@@ -190,6 +190,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 * Handler when list was updated
 	 *
 	 * @method	onUpdated
+	 * @param	{Ajax.Response}		response
 	 */
 	onUpdated: function(response) {
 		// Override
@@ -201,7 +202,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 * Callback when result was empty
 	 *
 	 * @method	onEmptyResult
-	 * @param response
+	 * @param	{Ajax.Response}	response
 	 */
 	onEmptyResult: function(response) {
 		// Override
@@ -213,7 +214,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 	 * Get label of given item, e.g. the person or group name
 	 *
 	 * @method	getItemLabel
-	 * @param   {Element}  item
+	 * @param	{Element}  item
 	 */
 	getItemLabel: function(item) {
 		return item.down('a').innerHTML.stripTags().trim();
@@ -234,7 +235,7 @@ Todoyu.PanelWidgetSearchList = Class.create({
 
 
 	/**
-	 *
+	 * @method	clearSearchInput
 	 */
 	clearSearchInput: function() {
 		var value = this.input.value;

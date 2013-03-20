@@ -471,6 +471,7 @@ function Dwoo_Plugin_Button(Dwoo $dwoo, $label = '', $onclick = '', $class ='', 
  * @param	Dwoo		$dwoo
  * @param	String		$title
  * @param	String		$class
+ * @param	Boolean		$encode
  * @return	String
  */
 function Dwoo_Plugin_Header(Dwoo $dwoo, $title, $class = '', $encode = true) {
@@ -894,11 +895,11 @@ function Dwoo_Plugin_List(Dwoo $dwoo, $ext, $list, $offset = 0, $noPaging = fals
 /**
  * Render balloon info
  *
- * @param	Dwoo_Compiler 	$compiler
- * @param	String			$label
- * @param	String			$id
- * @param	String			$content			If not given: renders the label as content
- * @param	String			$balloonWidth		Default 200 is set via CSS
+ * @param 	Dwoo_Compiler	$compiler
+ * @param 	String			$label
+ * @param 	String			$id
+ * @param 	String 			$content		If not given: renders the label as content
+ * @param 	Integer			$balloonWidth	Default 200 is set via CSS
  * @return	String
  */
 function Dwoo_Plugin_infoBalloon_compile(Dwoo_Compiler $compiler, $label, $id = '', $content = '', $balloonWidth = 0) {
