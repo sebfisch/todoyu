@@ -167,8 +167,7 @@ div.infoBox {
 
 h1.headerLine {
 	.hasIcon {
-		padding-left:2px;
-	}
+		padding-left:2px; }
 
 	span{
 		float:left;
@@ -182,6 +181,9 @@ h1.headerLine {
 			margin:0px;
 			padding:0 0 0 15px; }
 	}
+
+	&.noPadLeft span.title {
+		padding-left:0; }
 }
 
 /* table header */
