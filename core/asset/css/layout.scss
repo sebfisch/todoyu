@@ -78,26 +78,28 @@ body {
 	height:13px;
 }
 
-#right span.lt {
-	display:none; }
+#right span {
+	&.lt {
+		display:none; }
+
+	&.rt {
+		top:0px;
+		right:0px;
+		background-position:100% 0; }
+
+	&.lb {
+		bottom:0px;
+		left:0px;
+		background-position:0 100%; }
+
+	&.rb {
+		bottom:0px;
+		right:0px;
+		background-position:100% 100%; }
+}
 
 #todoyu-loginpage #right span.lt {
 	display:block; }
-
-#right span.rt {
-	top:0px;
-	right:0px;
-	background-position:100% 0; }
-
-#right span.lb {
-	bottom:0px;
-	left:0px;
-	background-position:0 100%; }
-
-#right span.rb {
-	bottom:0px;
-	right:0px;
-	background-position:100% 100%; }
 
 #content {
 	padding:1px;
