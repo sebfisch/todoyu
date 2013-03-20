@@ -1119,6 +1119,34 @@ class TodoyuArray {
 		return $filtered;
 	}
 
+
+
+	/**
+	 * Calculate average (optional of a sub element)
+	 *
+	 * @param	Array				$data
+	 * @param	String|Null			$subKey
+	 * @param	Boolean|Integer		$round
+	 * @return	Float|Integer
+	 */
+	public static function average(array $data, $subKey = null, $round = false) {
+		$average	= 0;
+
+		if( $subKey ) {
+			$data	= self::getColumn($data, $subKey);
+		}
+
+		if( sizeof($data) ) {
+			$average = array_sum($data) / sizeof($data);
+		}
+
+		if( $round !== false ) {
+			$average = round($average, $round);
+		}
+
+		return $average;
+	}
+
 }
 
 ?>
