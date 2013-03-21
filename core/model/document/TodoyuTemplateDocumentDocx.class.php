@@ -47,7 +47,6 @@ class TodoyuTemplateDocumentDocx extends TodoyuTemplateDocumentOpenXML {
 	 */
 	protected function prepareXML() {
 		$this->prepareConditions();
-		$this->prepareForeach();
 //		$this->prepareRowXML();
 	}
 
@@ -73,67 +72,6 @@ class TodoyuTemplateDocumentDocx extends TodoyuTemplateDocumentOpenXML {
 		}
 
 		$this->xmlContent = str_replace(array_keys($replace), array_values($replace), $this->xmlContent);
-	}
-
-
-
-	/**
-	 * @todo	cleanup
-	 */
-	protected function prepareForeach() {
-		$pPattern	= '|<w:p[^>]*?>((?!</w:p>).)*?foreach((?!</w:p>).)*?</w:p>|s';
-
-//		preg_match_all($pPattern, $this->xmlContent, $pMatches);
-//
-//
-//
-//		$
-
-
-
-
-
-//		foreach($pMatches[0] as $pMatch) {
-//
-//		}
-
-//
-//		TodoyuHeader::sendTypeText();
-//		print_r($matches);
-//		exit();
-
-
-
-
-		$pattern	= '/<w:p[^>]*?>((?!<\/w:p>).)*<w:r>(((?!<\/w:p>).)*){((?!<\/w:p>).)*foreach((?!<\/w:p>).)* (\$((?!<\/w:p>).)*)}(((?!<\/w:p>).)*)<\/w:r>((?!<\/w:p>).)*<\/w:p>/s';
-//		$pattern	= '/foreach/';
-//		die($this->xmlContent);
-
-//		phpinfo();
-//		exit();
-
-		preg_match_all($pattern, $this->xmlContent, $matches);
-
-		die("TEST");
-
-		$new = preg_replace_callback($pattern, array(self,'callbackForeach'), $this->xmlContent);
-
-		die("YYY");
-	}
-
-
-
-	/**
-	 * @todo	comment,implement or remove
-	 * @param	String	$match
-	 * @return	String
-	 */
-	private function callbackForeach($match) {
-		TodoyuDebug::printInFireBug($match);
-		print_r($match);
-
-
-		return 'forexxxxach';
 	}
 
 

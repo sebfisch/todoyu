@@ -751,8 +751,6 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 	 * @param	TodoyuFormElement		$field
 	 */
 	public function bubbleError(TodoyuFormElement $field) {
-//		TodoyuDebug::printInFirebug($field->getName(), 'FIELD=' . $this->getName());
-
 		$this->setErrorTrue();
 		$this->getFieldset()->bubbleError($field);
 	}

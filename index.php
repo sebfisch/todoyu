@@ -56,9 +56,6 @@ try {
 	define('TIME_END', microtime(true));
 	define('TIME_TOTAL', TIME_END - TIME_START);
 
-		// Include finishing script
-	require( PATH_CORE. '/inc/finish.php' );
-
 		// Send output
 	ob_end_flush();
 } catch(TodoyuException $e) {

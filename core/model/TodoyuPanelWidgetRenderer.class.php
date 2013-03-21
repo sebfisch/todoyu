@@ -46,8 +46,7 @@ class TodoyuPanelWidgetRenderer {
 					$widget		= TodoyuPanelWidgetManager::getPanelWidget($widgetConfig['ext'], $widgetConfig['name'], $params);
 					$content	.= $widget->render();
 				} else {
-						// Widget not allowed
-//					TodoyuDebug::printInFirebug('PanelWidget ' . $widgetClass . ' is not allowed');
+					// Widget not allowed
 				}
 			} else {
 				$debug	= 'Can\'t find requested panel widget: "' . $widgetConfig['class'] . '"';

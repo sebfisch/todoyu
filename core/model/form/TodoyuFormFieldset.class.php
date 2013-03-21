@@ -624,7 +624,6 @@ class TodoyuFormFieldset implements ArrayAccess {
 	 * @param	TodoyuFormElement		$field
 	 */
 	public function bubbleError(TodoyuFormElement $field) {
-//		TodoyuDebug::printInFirebug($field->getName(), 'FIELDSET=' . $this->getName());
 		$this->getParent()->bubbleError($field);
 	}
 }

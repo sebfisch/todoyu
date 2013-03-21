@@ -144,7 +144,6 @@ class TodoyuInstaller {
 	private static function saveVersionDetection() {
 		if( TodoyuRequest::isPostRequest() ) {
 			if( isset($_POST['version']) ) {
-				TodoyuDebug::printInFireBug('save version');
 				$version	= trim($_POST['version']);
 
 				TodoyuFileManager::saveFileContent(self::$versionFile, $version);
