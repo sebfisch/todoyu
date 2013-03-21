@@ -10,8 +10,7 @@ button {
 	cursor:pointer;
 	padding:0px;
 	@include gradient-button;
-	border:1px solid $colorNeutral04;
-	border-radius:13px;
+	@include border-button;
 
 	&[disabled] {
 		opacity:0.6;

@@ -11,11 +11,11 @@
 		border-bottom:1px solid $colorNeutral03; }
 
 	.choice {
+		background-color:$white;
+		border-radius:5px;
+		border:1px solid $white;
 		margin-bottom:5px;
 		padding:8px;
-		background-color:$white;
-		border:1px solid $white;
-		border-radius:5px;
 
 		button {
 			width:150px;

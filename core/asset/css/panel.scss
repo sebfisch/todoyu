@@ -3,22 +3,22 @@
 
 
 #panel {
-	position:relative;
-	top:20px;
-	float:left;
-	clear:both;
-	width:270px;
-	padding:0px;
-	margin:0 10px 0 0;
 	background-color:$white;
 	border-radius:10px 10px 0 0;
+	clear:both;
+	float:left;
+	margin:0 10px 0 0;
+	padding:0px;
+	position:relative;
+	top:20px;
+	width:270px;
 
 	div.panelFooter {
 		position:absolute;
 		z-index:1;
 		width:100%;
 		height:51px;
-		margin-top:-3px;
+		margin-top: -3px;
 		background:url(../img/panel-footer.png) no-repeat 0 0; }
 
 	div.panelWidget {

@@ -65,7 +65,7 @@
 
 	&-todoyu {
 		/* Todoyu sub menu */
-		margin-left:-146px !important;
+		margin-left: -146px !important;
 	}
 }
 
@@ -88,7 +88,7 @@ ul#navi-main-list li {
 	ul {
 		position:absolute;
 		top:29px;
-		left:-9999px;
+		left: -9999px;
 		z-index:1;
 		width:270px !important;
 		margin-top:1px;
@@ -111,7 +111,7 @@ ul#navi-main-list li {
 					weight:normal; }
 
 				&:hover {
-					background-color:$colorCorporate01; }
+					background-color:$colorCorporate00; }
 			}
 		}
 	}

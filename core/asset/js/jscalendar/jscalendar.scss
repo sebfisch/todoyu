@@ -11,13 +11,13 @@ div.calendar {
 
 div.calendar,
 div.calendar table {
-	font-size:11px;
+	background-color: $colorNeutral01;
+	background-color: $white;
+	border-radius: 5px;
 	color:$black;
 	cursor:default;
 	font-family:tahoma,verdana,sans-serif;
-	background-color: $colorNeutral01;
-	border-radius: 5px;
-	background-color: $white;
+	font-size:11px;
 
 	tr:first-child {
 		border: {

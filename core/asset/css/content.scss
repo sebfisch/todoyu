@@ -98,7 +98,7 @@ li.listItem a.editableItem {
 	background-color:$colorNeutral01;
 
 	&.edit form {
-		margin:-7px; }
+		margin: -7px; }
 }
 
 
@@ -116,13 +116,13 @@ div.infoBox {
 
 .headerLine,
 .headerOptLine {
-	position:relative;
-	margin-top:5px;
-	height:26px;
-	text-align:left;
+	border-bottom:1px solid $white;
 	border-radius:5px 5px 0 0;
 	border:none;
-	border-bottom:1px solid $white;
+	height:26px;
+	margin-top:5px;
+	position:relative;
+	text-align:left;
 }
 
 .headerLine {

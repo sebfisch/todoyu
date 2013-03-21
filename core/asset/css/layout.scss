@@ -39,7 +39,7 @@ body {
 	position:absolute;
 	height:85px;
 	width:1234px;
-	margin:-1px -2px 0 -3px; }
+	margin: -1px -2px 0 -3px; }
 
 #main {
 	position:relative;
@@ -58,11 +58,11 @@ body {
 	Content column
    ----------------------*/
 #right {
+	border-radius:0 10px 10px 10px;
+	float:left;
 	position:relative;
 	top:46px;
-	float:left;
-	width:936px;
-	border-radius:0 10px 10px 10px; }
+	width:936px; }
 
 *+html #right .inner {
 	height:1%;
@@ -107,8 +107,8 @@ body {
 
 #content-body {
 	position:relative;
-	top:-28px;
-	margin-bottom:-28px; }
+	top: -28px;
+	margin-bottom: -28px; }
 
 
 
