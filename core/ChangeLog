@@ -56,6 +56,7 @@ core 2.3.0 - not released yet
 	* Added: Hook based voting - TodoyuHookManager::callHookVoting
 	* Added: TodoyuArray::average()
 	* Added: New cache clear hook for records. Hook is dynamically named after class name: "removeCacheRecord{CLASSNAME}"
+	* Changed: Moved repeatedly used gradients (headers, buttons) into SASS mix-ins
 	* Changed: Removed various CSS background images, replaced by CSS3 gradients and rounded corners
 	* Changed: Encoding of title in header-template is now optional
 	* Changed: Set default error - logging on error instead of debug

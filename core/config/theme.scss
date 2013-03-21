@@ -1,15 +1,14 @@
 //  @see core/doc/theme.html for todoyu corporate identity color-table
 
-	// background color
+	// Background color
 $colorBackground:#e3eace;
 
-
-	// fonts
-	// main fonts
+	// Fonts
+	// Main fonts
 $fontFamilyMain:Arial, Verdana, Helvetica, sans-serif;
 $fontSizeMain:11px;
 
-	// fonts used for code
+	// Fonts used for source code
 $fontFamilyCode:Courier,monospace;
 
 
@@ -30,7 +29,7 @@ $colorTextGeneral:#010101;
 	// Link colors
 $colorLinkHover:#dddddd;
 
-	// Greys for general interface elements (backgrounds, headers, forms, etc)
+	// Grey tones for general interface elements (backgrounds, headers, forms, etc)
 $colorNeutral00:#f8f8f8;
 $colorNeutral01:#eeeeee;
 $colorNeutral02:#dddddd;
@@ -53,7 +52,7 @@ $colorHighlight05:#f6f6c8;
 $colorNotice00:#ffac00;	//rename to colorNoticeBoxshadow
 $colorNotice01:#ffdd99;	//rename to colorNoticeBorder, change color to current colorNotice02
 $colorNotice02:#ff8000;	//rename to colorNoticeText
-$colorNotice03:#ffecc5; //rename to colorNoticeBackground
+$colorNotice03:#ffecc5;	//rename to colorNoticeBackground
 
 	// Positive marking, todoyu CI: green
 $colorApprove01:#b0d026;
@@ -73,12 +72,39 @@ $colorAlert03:#ffa07a;
 $colorAlert04:#f6e0e0;
 
 	// todoyu CI: blue
-$blue00:#b9eefc;
-$blue01:#ccd6e2;
-$blue02:#50c5b5;
+$blue00:#b9eefc;	// change_color($colorNeutral00, $blue:99);
+$blue01:#ccd6e2;	// change_color($colorNeutral01, $blue:99);
+$blue02:#50c5b5;	// change_color($colorNeutral02, $blue:99);
 $blue03:#4f8ab4;
 $blue04:#24a5c3;
 $blue05:#316ac5;
 $blue06:#0065a6;
 $blue07:#88aacc;
 $blue08:#aaccee;
+
+
+
+	// Mix-ins: repeatedly used elements and attributes
+
+	// Gradient for headers
+@mixin gradient-header {
+	background:#ececec; /* Old browsers */
+	background:-moz-linear-gradient(top, #ececec 0%, #cecece 100%); /* FF3.6+ */
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ececec), color-stop(100%,#cecece)); /* Chrome,Safari4+ */
+	background:-webkit-linear-gradient(top, #ececec 0%,#cecece 100%); /* Chrome10+,Safari5.1+ */
+	background:-o-linear-gradient(top, #ececec 0%,#cecece 100%); /* Opera 11.10+ */
+	background:-ms-linear-gradient(top, #ececec 0%,#cecece 100%); /* IE10+ */
+	background:linear-gradient(to bottom, #ececec 0%,#cecece 100%); /* W3C */
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ececec', endColorstr='#cecece',GradientType=0 ); /* IE6-9 */
+}
+	// Gradient for buttons
+@mixin gradient-button {
+	background:#ffffff; /* Old browsers */
+	background:-moz-linear-gradient(top, #ffffff 0%, #e0e0e0 100%); /* FF3.6+ */
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
+	background:-webkit-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* Chrome10+,Safari5.1+ */
+	background:-o-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* Opera 11.10+ */
+	background:-ms-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* IE10+ */
+	background:linear-gradient(to bottom, #ffffff 0%,#e0e0e0 100%); /* W3C */
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
+}

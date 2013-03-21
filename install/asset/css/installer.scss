@@ -1,76 +1,72 @@
 @import "../../../core/config/theme.scss";
 
 #contentBox {
-	top:20px;
-	float:left;
-	width:680px !important;
-	background-color:#fff;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
+	background-color:#fff;
 	border-radius:10px;
+	float:left;
+	top:20px;
+	width:680px !important;
 }
 
 p.installMessage {
-	padding:10px 10px 10px 40px;
-	margin:0 12px 12px 12px;
-	border:2px solid $white;
 	background:$colorCorporate00 url(../img/icons.png) 0 1000px no-repeat;
-	font-weight:bold;
+	border:2px solid $white;
 	color:#000;
+	font-weight:bold;
+	margin:0 12px 12px 12px;
+	padding:10px 10px 10px 40px;
 
 	&.success {
+		background-position:10px -20px;
 		border-color:	$colorApprove07;
 		color:			$colorApprove07;
-		background-position:10px -20px;
 	}
 
 	&.error {
+		background-position:10px 10px;
 		border-color:	$colorAlert00;
 		color:			$colorAlert00;
-		background-position:10px 10px;
 	}
 }
 
 #footer {
-	width:auto !important;
-	border:1px solid $colorCorporate04;
 	background-color:$colorCorporate01;
+	border:1px solid $colorCorporate04;
 	clear:both;
 	margin:20px 8px 10px 8px;
 	padding:15px;
+	width:auto !important;
 }
 
-
-
 .sqlQuery {
-	width:600px;
-	height:380px;
-	overflow-x:scroll;
-	margin:12px 0;
+	background-color:$colorNotice03;
 	border:1px dotted $colorNotice00;
-	background-color: $colorNotice03;
+	height:380px;
+	margin:12px 0;
+	overflow-x:scroll;
 	padding:5px;
+	width:600px;
 
 	& ul li {
 		margin-left:20px;
 	}
-
-
 }
 
 .blockcontent span.title {
 	background-color:$colorCorporate01;
 	border:1px solid $colorCorporate00;
-	padding:8px 0 8px 12px;
 	display:block;
-	margin-bottom:12px;
 	font-size:14px;
 	font-weight:bold;
+	margin-bottom:12px;
+	padding:8px 0 8px 12px;
 }
 
 
 select#database option.disabled {
-	color: $colorNeutral03;
+	color:$colorNeutral03;
 }
 
 
@@ -91,25 +87,25 @@ select#database option.disabled {
 	}
 
 	& ul li {
-		font-size: 12px;
-		padding: 8px 8px 8px 20px;
-		color: $colorNeutral03;
+		color:$colorNeutral03;
+		font-size:12px;
+		padding:8px 8px 8px 20px;
 
 		&.done {
-			color: $black;
+			color:$black;
 
 			& .icon {
-				display:block;
-				position:absolute;
-				left:0;
-				width:16px;
-				height:16px;
 				background:url(../img/icons.png) no-repeat 0 -29px;
+				display:block;
+				height:16px;
+				left:0;
+				position:absolute;
+				width:16px;
 			}
 		}
 
 		&.current {
-			color: $colorAlert02;
+			color:$colorAlert02;
 			font-weight:bold;
 		}
 	}
@@ -118,8 +114,8 @@ select#database option.disabled {
 table.dbstruct {
 
 	td {
-		padding:5px;
 		border-left:1px solid $colorNotice00;
+		padding:5px;
 
 		&.table {
 			font-weight:bold;
@@ -127,10 +123,10 @@ table.dbstruct {
 	}
 
 	th {
-		padding:5px;
-		text-align:left;
 		background-color:$colorNotice00;
 		border-bottom:2px dashed $black;
+		padding:5px;
+		text-align:left;
 
 		&.table,
 		&.column {
@@ -144,8 +140,8 @@ table.dbstruct {
 }
 
 p.section {
-	font-weight:bold;
 	font-size:14px;
+	font-weight:bold;
 	margin:10px;
 }
 
@@ -179,8 +175,8 @@ input#email.adminaccount {
 	padding:1px;
 
 	& .boxContent {
+		background-color:$colorCorporate02;
 		padding-top:12px;
-		background-color: $colorCorporate02;
 
 		& form {
 			padding:0 12px;
@@ -204,22 +200,22 @@ input#email.adminaccount {
 }
 
 .textError{
+	background-color:$colorAlert04;
+	border-color:$colorAlert00 !important;
 	margin:0 0 8px 12px;
 	padding:8px 0 8px 12px;
-	border-color: $colorAlert00 !important;
-	background-color: $colorAlert04;
 }
 
 .textInfo{
-	border-color: $colorNotice00;
 	background-color:$colorNotice03;
+	border-color:$colorNotice00;
 }
 
 .textSuccess{
+	background-color:$colorApprove04;
+	border-color:$colorApprove08;
 	margin:0 0 8px 12px;
 	padding:8px 0 8px 12px;
-	border-color: $colorApprove08;
-	background-color: $colorApprove04;
 }
 
 .bullet {
@@ -228,7 +224,7 @@ input#email.adminaccount {
 }
 
 .redLabel {
-	color: $colorAlert00;
+	color:$colorAlert00;
 }
 
 
@@ -238,6 +234,7 @@ input#email.adminaccount {
    ----------------------- */
 #licence,
 #panelx {
+	background-color:$white;
 	clear:both;
 	float:left;
 	margin:0 10px 0 0;
@@ -245,12 +242,11 @@ input#email.adminaccount {
 	position:relative;
 	top:20px;
 	width:270px;
-	background-color: $white;
 
 	& .panelFooter {
+		background:$colorCorporate03 url('../img/panel-footer.png') no-repeat 0 0;
 		height:51px;
 		margin-top:-2px;
-		background: $colorCorporate03 url('../img/panel-footer.png') no-repeat 0 0;
 	}
 }
 
@@ -262,16 +258,16 @@ input#email.adminaccount {
 }
 
 .panelWidget p.slogan {
-	position:absolute;
 	bottom:0;
-	right:0;
-	height:34px;
-	padding:12px 10px;
-	text-transform:uppercase;
 	color:white;
 	font-size:13px !important;
 	font-weight:bold;
+	height:34px;
+	padding:12px 10px;
+	position:absolute;
+	right:0;
 	text-align:right;
+	text-transform:uppercase;
 }
 
 
@@ -280,25 +276,25 @@ input#email.adminaccount {
 	License agreement
    --------------------------- */
 #licenseagreement {
-	background-color: $colorCorporate00;
+	background-color:$colorCorporate00;
 	padding:20px 0 28px 24px;
 
 	& h2 {
-		font-weight:normal;
 		font-size:11px;
-		text-transform:uppercase;
+		font-weight:normal;
 		letter-spacing:1px;
+		text-transform:uppercase;
 	}
 }
 
 .enduserlicense {
-	width:580px;
-	height:270px;
+	background-color:$white;
 	border:1px solid $colorNeutral02;
-	overflow-y:scroll;
-	background-color: $white;
+	height:270px;
 	margin:8px 0 28px 0;
+	overflow-y:scroll;
 	padding:4px;
+	width:580px;
 
 	& pre {
 		font-family:monospace;
@@ -307,11 +303,11 @@ input#email.adminaccount {
 }
 
 ul.thirdPartyLibs {
+	background-color:$white;
+	border:1px solid $colorNeutral02;
+	margin:8px 0 26px 0;
 	padding:4px 0 6px 20px;
 	width:520px;
-	border:1px solid $colorNeutral02;
-	background-color: $white;
-	margin:8px 0 26px 0;
 
 	& li {
 		list-style-type:disc;
@@ -326,23 +322,23 @@ ul.installationLocales {
 	margin-top:20px;
 
 	& li {
+		-khtml-border-radius:5px;
+		-moz-border-radius:5px;
+		-webkit-border-radius:5px;
 		background-color:$colorNeutral00;
 		margin:0 0 6px 0;
 		padding:6px 0 6px 18px;
 		width:60%;
-		-moz-border-radius:5px;
-		-khtml-border-radius:5px;
-		-webkit-border-radius:5px;
 
 		&:hover {
-			background-color: $white;
-			font-weight:bold;
+			background-color:$white;
 			cursor:pointer;
+			font-weight:bold;
 		}
 
 		& a {
+			color:$colorNeutral08;
 			font-size:14px;
-			color: $colorNeutral08;
 		}
 	}
 }
@@ -351,42 +347,34 @@ ul.installationLocales {
 	Headers, footers
    --------------------------- */
 h1.headerLine {
-	background: #ececec; /* Old browsers */
-	background: -moz-linear-gradient(top, #ececec 0%, #cecece 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ececec), color-stop(100%,#cecece)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, #ececec 0%,#cecece 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, #ececec 0%,#cecece 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, #ececec 0%,#cecece 100%); /* IE10+ */
-	background: linear-gradient(to bottom, #ececec 0%,#cecece 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ececec', endColorstr='#cecece',GradientType=0 ); /* IE6-9 */
+	@include gradient-header;
 	border: {
+		bottom:1px solid $white;
 		radius:5px 5px 0 0;
 		top:1px solid $colorNeutral02;
-		bottom:1px solid $white;
 	}
 
-	position:relative;
-	height:25px;
-	text-align:left;
 	-moz-border-radius:5px 5px 0 0;
 	-webkit-border-radius:5px 5px 0 0;
 	border-radius:5px 5px 0 0;
+	height:25px;
+	position:relative;
+	text-align:left;
 }
 
 h1 span.title {
 	float:left;
-	line-height:25px;
-	margin:0 0 0 10px;
-	/*text-transform:uppercase;*/
 	font-size:10px;
 	letter-spacing:0.3px;
+	line-height:25px;
+	margin:0 0 0 10px;
 }
 
 /* ---------------------------------------
 	Hyperlinks, buttons, labels, etc.
    --------------------------------------- */
 a, a:link {
-	color: $colorNeutral08;
+	color:$colorNeutral08;
 }
 
 label {
@@ -399,10 +387,10 @@ label {
 	Icons, decorations
    ---------------------------- */
 .servercheckicon {
+	background:transparent url('../img/icons.png') no-repeat 0 0;
+	display:block;
 	height:16px;
 	width:16px;
-	display:block;
-	background:transparent url('../img/icons.png') no-repeat 0 0;
 
 	&.ok {
 		background-position:0 -28px;
@@ -410,9 +398,9 @@ label {
 }
 
 .toggler {
+	background:transparent url('../img/icons.png') no-repeat 4px -56px;
 	height:16px;
 	padding:0 0 0 16px;
-	background:transparent url('../img/icons.png') no-repeat 4px -56px;
 
 	&.expanded {
 		background:transparent url('../img/icons.png') no-repeat 4px -85px;
