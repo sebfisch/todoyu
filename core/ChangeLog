@@ -1,6 +1,6 @@
 todoyu core changelog
 
-core 2.3.0 - not released yet
+core 2.3.0 - 2013-03-27
 	* Added: CSS-cropping of list table content
 	* Added: JS Array.prototype.remove - make array items removable
 	* Added: Accept exclamation mark in link parsing

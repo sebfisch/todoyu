@@ -71,11 +71,7 @@ try {
 	ob_end_clean();
 
 	if( TodoyuDebug::isActive() ) {
-		if( version_compare(PHP_VERSION, '5.3.0') === -1 ) {
-			throw new Exception($e->getMessage(), $e->getCode());
-		} else {
-			throw new Exception($e->getMessage(), $e->getCode(), $e);
-		}
+		throw $e;
 	} else {
 		echo "Oops. A fatal error occurred. Please enable debugging to see more details";
 		exit();
