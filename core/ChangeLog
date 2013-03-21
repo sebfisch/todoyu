@@ -82,6 +82,7 @@ core 2.3.0 - not released yet
 	* Changed: Adapted form.xsd
 	* Changed: Raise php memory limit when a mail is sent with attachments
 	* Changed: Tabs can now be disabled per item (return value false of label method removes the tab)
+	* Changed: Prevent context menu and its submenus to display outside of the screen
 	* Bugfix: Visual optimization of sortable-panel-list handle
 	* Bugfix: Fixed linux-chrome-styling-bug
 	* Bugfix: styling bug in sortable panel list

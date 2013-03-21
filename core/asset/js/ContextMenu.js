@@ -47,6 +47,17 @@ Todoyu.ContextMenu = {
 
 
 	/**
+	 * Get context menu element
+	 *
+	 * @returns	{Element}
+	 */
+	getMenu: function() {
+		return $('contextmenu');
+	},
+
+
+
+	/**
 	 * Attach contextmenu to a group of elements
 	 * Automatically prevents double context menus by removing registered ones before adding the new one
 	 *
@@ -163,50 +174,35 @@ Todoyu.ContextMenu = {
 	 *
 	 * @private
 	 * @method	setMenuDimensions
-	 * @param	{Event}		event
-	 * @param	{String}	type
-	 * @param	{String}	elementKey
+	 * @param	{Event}		event			Event object
+	 * @param	{String}	type			Menu type
+	 * @param	{String}	elementKey		Key of the element in context (record id or combined string)
 	 */
 	setMenuDimensions: function(event, type, elementKey) {
 			// Fetch menu dimension data
-		var menu		= $('contextmenu');
-		var left		= event.pointerX();
-		var top			= event.pointerY();
-		var menuHeight	= parseInt(menu.clientHeight, 10);
-		var menuWidth	= parseInt(menu.clientWidth, 10);
-		var screenHeight= document.viewport.getHeight();
-		var screenWidth	= document.viewport.getWidth();
-
-			// Bugfix for FF2
-		if( (top === 0 || top - window.scrollY === 0) && event.screenX ) {
-			top		= event.screenY + window.scrollY;
-			left	= event.screenX + window.scrollX;
-		}
-
-			// Render menu on top of the pointer if clicked to near of the page bottom
-		if( (event.clientY + menuHeight) > screenHeight ) {
-			top = top - menuHeight;
-		}
-
-			// Render menu on the left of the pointer if clicked to near of the right page border
-		if( (event.clientX + menuWidth) > screenWidth ) {
-			left = left - menuWidth;
-		}
+		var menuElement	= this.getMenu(),
+			menuHeight	= menuElement.getHeight(),
+			menuWidth	= menuElement.getWidth(),
+			scrollOffset= document.viewport.getScrollOffsets(),
+			mouseLeft	= event.pointerX(),
+			mouseTop	= event.pointerY(),
+			menuLeft	= mouseLeft - scrollOffset.left + menuWidth > document.viewport.getWidth() ? mouseLeft - menuWidth : mouseLeft,
+			menuTop		= mouseTop - scrollOffset.top + menuHeight > document.viewport.getHeight() ? mouseTop - menuHeight : mouseTop;
 
 			// Set position of the menu
-		menu.setStyle({
+		menuElement.setStyle({
 			position:	'absolute',
 			display:	'block',
-			left:		left + 'px',
-			top:		top + 'px'
+			left:		menuLeft + 'px',
+			top:		menuTop + 'px'
 		});
 
 			// Observe outside clicks
 		this.bodyClickObserver = document.body.on('click', this.hide.bind(this));
 			// Observe context-menu-clicks on context menu
-		menu.on('contextmenu', this.preventContextMenu.bind(this));
+		menuElement.on('contextmenu', this.preventContextMenu);
 
-		Todoyu.Hook.exec('core.contextmenu', type, elementKey, left, top);
+		Todoyu.Hook.exec('core.contextmenu', type, elementKey, menuLeft, menuTop);
 	},
 
 
@@ -218,7 +214,7 @@ Todoyu.ContextMenu = {
 	 * @param	{String}		menuHTML
 	 */
 	updateMenuContainer: function(menuHTML) {
-		$('contextmenu').update(menuHTML);
+		this.getMenu().update(menuHTML);
 	},
 
 
@@ -243,11 +239,13 @@ Todoyu.ContextMenu = {
 	 * @method	hide
 	 */
 	hide: function() {
-		if( $('contextmenu') && this.bodyClickObserver ) {
+		var menu = this.getMenu();
+
+		if( menu && this.bodyClickObserver ) {
 				// Stop body click observer
 			this.bodyClickObserver.stop();
 
-			$('contextmenu').hide();
+			menu.hide();
 
 			Todoyu.QuickInfo.enable();
 		}
@@ -266,48 +264,61 @@ Todoyu.ContextMenu = {
 	 * @return	{Boolean}
 	 */
 	submenu: function(key, show, noDelay) {
-		var ctxMenuID	= 'contextmenu';
-		var itemID		= 'contextmenu-' + key;
-		var submenuID	= itemID + '-submenu';
+		show	= show !== false;
+		noDelay	= noDelay === true;
 
-		if( ! Todoyu.exists(submenuID) ) {
+		var menuElement	= this.getMenu(),
+			menuItem	= $(menuElement.id + '-' + key),
+			subMenuItem	= $(menuElement.id + '-' + key + '-submenu');
+
+		if( !menuElement || !menuItem || !subMenuItem ) {
 			return false;
 		}
 
 			// Already show another submenu, hide last visible
-		if( show === true && this.visibleSubmenu !== key && this.visibleSubmenu !== undefined ) {
-			this.submenu(this.visibleSubmenu, false, true);
+		if( show && this.visibleSubmenu && this.visibleSubmenu !== key ) {
+			this.submenu(this.visibleSubmenu, false, true); // hide
 		}
 
 			// Hide request for current submenu. Prevent closing while navigating in the submenu, so start delayed call
-		if( show === false && noDelay !== true && key === this.visibleSubmenu ) {
+		if( !show && !noDelay && key === this.visibleSubmenu ) {
 			clearTimeout(this.hideSubmenuDelay);
 			this.hideSubmenuDelay = this.submenu.bind(this, key, false, true).delay(0.1);
 			return true;
 		}
 
 			// Show submenu, cancel delayed hide callback
-		if( show === true && key === this.visibleSubmenu ) {
+		if( show && key === this.visibleSubmenu ) {
 			clearTimeout(this.hideSubmenuDelay);
 		}
 
-		var submenu	= $(submenuID);
 
 		if( show ) {
-			var item	= $(itemID);
-			var ctxMenu	= $(ctxMenuID);
+			var menuOffset		= menuElement.viewportOffset(),
+				itemOffset		= menuItem.viewportOffset(),
+				subMenuHeight	= subMenuItem.getHeight(),
+				subMenuWidth	= subMenuItem.getWidth(),
+				subMenuLeft		= menuItem.getWidth() - 5,
+				subMenuTop		= itemOffset.top - menuOffset.top + 5;
 
-			var itemWidth	= item.getWidth();
-			var posCtxMenu	= ctxMenu.viewportOffset();
-			var posItem		= item.viewportOffset();
+				// Fix top position
+			if( subMenuHeight + itemOffset.top > document.viewport.getHeight() ) {
+				subMenuTop	= subMenuTop - subMenuHeight + 20;
+			} else {
+				subMenuTop	+= 5;
+			}
 
-			var left	= itemWidth - 5;
-			var top		= posItem.top - posCtxMenu.top + 5;
+				// Fix left position
+			if( subMenuWidth + itemOffset.left + menuItem.getWidth() > document.viewport.getWidth() ) {
+				subMenuLeft	= subMenuLeft - subMenuWidth - menuItem.getWidth()  + 10;
+			} else {
+				subMenuLeft	-= 5;
+			}
 
-			submenu.setStyle({
-				'display':	'block',
-				'left':		left + 'px',
-				'top':		top + 'px'
+			subMenuItem.setStyle({
+				display:'block',
+				left:	subMenuLeft + 'px',
+				top:	subMenuTop + 'px'
 			});
 
 				// Set current visible context menu
@@ -318,7 +329,7 @@ Todoyu.ContextMenu = {
 				clearTimeout(this.hideSubmenuDelay);
 			}
 			this.visibleSubmenu = null;
-			submenu.hide();
+			subMenuItem.hide();
 		}
 
 		return true;
