@@ -89,6 +89,7 @@ class TodoyuRecordManager {
 
 			// Call cache cleanup hooks
 		TodoyuHookManager::callHook('core', 'removeCacheRecord', array($className, $idRecord, $cacheKey));
+		TodoyuHookManager::callHook('core', 'removeCacheRecord' . $className, array($idRecord, $cacheKey));
 	}
 
 
