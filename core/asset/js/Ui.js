@@ -650,6 +650,8 @@ Todoyu.Ui = {
 	 * @param	{String}		title
 	 */
 	setTitle: function(title) {
+		title	= Todoyu.String.html_entity_decode(title);
+
 		document.title = title + ' - todoyu';
 	},
 
