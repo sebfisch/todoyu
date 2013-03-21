@@ -40,7 +40,7 @@ class TodoyuLogger {
 	/**
 	 * Log instance. Singleton
 	 *
-	 * @var	Log
+	 * @var	TodoyuLogger
 	 */
 	private static $instance = null;
 

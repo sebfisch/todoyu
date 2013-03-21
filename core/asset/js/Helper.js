@@ -269,10 +269,12 @@ Todoyu.Helper = {
 	 */
 	onUpdateChromeSafariScrollTop: function(elementID, step) {
 		switch(step) {
-			case 0: case 1:
+			case 0:
+			case 1:
 				$(elementID).style.overflow = ( step == 0 ) ? 'scroll' : '';
 				break;
-			case 2: case 3:
+			case 2:
+			case 3:
 				window.scrollBy(0,( step == 2 ) ? 1 : -1);
 				break;
 		}

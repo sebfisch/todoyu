@@ -395,6 +395,8 @@ class TodoyuFileManager {
 		} elseif( is_dir($path) ) {
 			return self::setDefaultFolderAccess($path);
 		}
+
+		return false; // a special element we don't handle here
 	}
 
 

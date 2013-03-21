@@ -169,6 +169,8 @@ abstract class TodoyuActionController {
 		} catch(Exception $e) {
 			die("Error: " . $e->getMessage());
 		}
+
+		return ''; // make sure to return always a string
 	}
 
 
