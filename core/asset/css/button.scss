@@ -9,7 +9,14 @@ button {
 	color:$colorTextGeneral;
 	cursor:pointer;
 	padding:0px;
-	background:$white url('../img/bg-button-css3.png') repeat-x 0 50%;
+	background:#ffffff; /* Old browsers */
+	background:-moz-linear-gradient(top, #ffffff 0%, #e0e0e0 100%); /* FF3.6+ */
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
+	background:-webkit-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* Chrome10+,Safari5.1+ */
+	background:-o-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* Opera 11.10+ */
+	background:-ms-linear-gradient(top, #ffffff 0%,#e0e0e0 100%); /* IE10+ */
+	background:linear-gradient(to bottom, #ffffff 0%,#e0e0e0 100%); /* W3C */
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
 	border:1px solid $colorNeutral04;
 	border-radius:13px;
 

@@ -56,8 +56,9 @@ core 2.3.0 - not released yet
 	* Added: Hook based voting - TodoyuHookManager::callHookVoting
 	* Added: TodoyuArray::average()
 	* Added: New cache clear hook for records. Hook is dynamically named after class name: "removeCacheRecord{CLASSNAME}"
+	* Changed: Removed various CSS background images, replaced by CSS3 gradients and rounded corners
 	* Changed: Encoding of title in header-template is now optional
-    * Changed: Set default error - logging on error instead of debug
+	* Changed: Set default error - logging on error instead of debug
 	* Changed: Sticky notification mode: info now stays (was: stays 15s)
 	* Changed: extracted select-group-options from template
 	* Changed: Renamed TodoyuArray::prefix() to prefixValues()
