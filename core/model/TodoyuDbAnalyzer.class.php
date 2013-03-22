@@ -42,7 +42,7 @@ class TodoyuDbAnalyzer {
 
 		$link	= mysql_connect($dbConfig['server'], $dbConfig['username'], $dbConfig['password']);
 		if( $link !== false ) {
-			$resource	= mysql_list_dbs($link);
+			$resource	= mysql_query('SHOW DATABASES', $link);
 
 			if( $resource !== false ) {
 				$rows		= TodoyuDatabase::resourceToArray($resource);
