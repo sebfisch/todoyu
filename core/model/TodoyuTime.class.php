@@ -70,7 +70,7 @@ class TodoyuTime {
 	public static function time($time = 0) {
 		$time	= (int) $time;
 		
-		return $time === 0 || $time >= self::MAX || $time <= self::MAX ? NOW : $time;
+		return $time === 0 || $time >= self::MAX || $time <= -self::MAX ? NOW : $time;
 	}
 
 
