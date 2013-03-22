@@ -498,12 +498,13 @@ Todoyu.Ui = {
 	 * @param	{Element}		element
 	 */
 	scrollToElement: function(element) {
+		var header = $('header'),
+			fixedTop;
+
 		element = $(element);
 
-		if( Todoyu.exists('header') ) {
-			var headerHeight	= $('header').getHeight();
-			var elementTop		= element.cumulativeOffset().top;
-			var fixedTop		= elementTop - headerHeight;
+		if( header && element ) {
+			fixedTop	= element.cumulativeOffset().top - header.getHeight();
 
 			window.scrollTo(0, fixedTop);
 		}

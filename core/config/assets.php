@@ -114,10 +114,6 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 50
 		),
 		array(
-			'file'		=> 'core/asset/js/Ext.js',
-			'position'	=> 51
-		),
-		array(
 			'file'		=> 'core/asset/js/Autocompleter.js',
 			'position'	=> 51
 		),

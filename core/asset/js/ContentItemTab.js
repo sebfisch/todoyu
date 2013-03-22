@@ -48,8 +48,9 @@ Todoyu.ContentItemTab = {
 	 * @method	show
 	 * @param	{Number}	idItem
 	 * @param	{String}	tabKey
+	 * @param	{String}	itemKey
 	 * @param	{String}	extKey
-	 * @param	{String}	onComplete
+	 * @param	{Function}	onComplete
 	 */
 	show: function(idItem, tabKey, itemKey, extKey, onComplete) {
 		var tabContainer = this.buildTabID(idItem, tabKey, itemKey);
@@ -57,12 +58,12 @@ Todoyu.ContentItemTab = {
 		if( ! Todoyu.exists(tabContainer) ) {
 			this.createTabContainer(idItem, tabKey, itemKey);
 			this.load(idItem, tabKey, itemKey, extKey, onComplete);
+			this.activate(idItem, tabKey, itemKey);
 		} else {
 			this.saveSelection(idItem, tabKey, itemKey, extKey);
+			this.activate(idItem, tabKey, itemKey);
 			Todoyu.callIfExists(onComplete, this, idItem, tabKey, itemKey);
 		}
-
-		this.activate(idItem, tabKey, itemKey);
 	},
 
 
@@ -75,7 +76,7 @@ Todoyu.ContentItemTab = {
 	 * @param	{String}	tabKey	(e.g 'timetracking' / 'comment' / 'assets')
 	 * @param	{String}	itemKey
 	 * @param	{String}	extKey
-	 * @param	{String}	onComplete
+	 * @param	{Function}	onComplete
 	 */
 	load: function(idItem, tabKey, itemKey, extKey, onComplete) {
 		var url 	= Todoyu.getUrl('core', 'contenttab');
@@ -102,7 +103,8 @@ Todoyu.ContentItemTab = {
 	 * @method	onLoaded
 	 * @param	{Number}		idItem
 	 * @param	{String}		tabKey
-	 * @param	{Function}	onComplete callback
+	 * @param	{String}		itemKey
+	 * @param	{Function}		onComplete callback
 	 */
 	onLoaded: function(idItem, tabKey, itemKey, onComplete) {
 		this.activate(idItem, tabKey, itemKey);
