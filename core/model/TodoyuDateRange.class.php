@@ -52,14 +52,14 @@ class TodoyuDateRange {
 	 *
 	 * @var	Integer
 	 */
-	protected $dateMin = -2145920400;
+	protected $dateMin = -2000000000;
 
 	/**
 	 * Maximal date for maximal range
 	 *
 	 * @var	Integer
 	 */
-	protected $dateMax = 2145913200;
+	protected $dateMax = 2000000000;
 	
 
 
