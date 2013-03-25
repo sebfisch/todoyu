@@ -631,30 +631,6 @@ class TodoyuInstallerManager {
 
 
 	/**
-	 * Get current version of the database
-	 *
-	 * @return	String
-	 */
-	public static function getDBVersion() {
-		$dbVersion	= 'rc2';
-		$tables		= Todoyu::db()->getTables();
-
-		if( in_array('ext_portal_tab', $tables) ) {
-			$dbVersion	= 'beta1';
-		} elseif( in_array('ext_user_customerrole', $tables) ) {
-			$dbVersion	= 'beta2';
-		} elseif( in_array('history', $tables) ) {
-			$dbVersion	= 'beta3';
-		} elseif( in_array('ext_user_user', $tables) ) {
-			$dbVersion	= 'rc1';
-		}
-
-		return $dbVersion;
-	}
-
-
-
-	/**
 	 * Check whether the installation has been carried out before
 	 *
 	 * @return	Boolean
