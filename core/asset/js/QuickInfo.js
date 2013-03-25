@@ -540,9 +540,9 @@ Todoyu.QuickInfo	= {
 		var content	= '';
 		json.each(function(item){
 				// Ensure maximum word length not to break layout: add wordwrap. But only if string doesn't contain html
-			if( item.label.indexOf('<') === -1 ) {
-				item.label	= Todoyu.String.wordwrapEntities(item.label, 16, ' ', true);
-			}
+//			if( item.label.indexOf('<') === -1 ) {
+//				item.label	= Todoyu.String.wordwrapEntities(item.label, 16, ' ', true);
+//			}
 
 				// Add template row with item
 			content += this.template.evaluate(item);
