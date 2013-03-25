@@ -128,11 +128,15 @@ Todoyu.Ajax.Responders = {
 	 */
 	hasPhpFatalError: function(response) {
 		if( response.responseText ) {
-			if( response.responseText.indexOf('xdebug-error') !== -1 ) { // error with xdebug
-				return true;
+			if( response.responseText.indexOf("class='xdebug-error") !== -1 ) { // error with xdebug
+				if( response.responseText.indexOf('Call Stack') !== -1 && response.responseText.indexOf("<font size='1'>") !== -1) { // second check to prevent false positives
+					return true;
+				}
 			}
 			if( response.responseText.indexOf('<b>Parse error</b>:') !== -1 ) { // php error (no xdebug)
-				return true;
+				if( response.responseText.indexOf('<br />') !== -1 ) {
+					return true;
+				}
 			}
 		}
 
@@ -149,7 +153,7 @@ Todoyu.Ajax.Responders = {
 	handlePhpFatalError: function(response) {
 		var message	= '[LLL:core.global.fatalErrorMessage]';
 
-		Todoyu.notifyError(message);
+		Todoyu.notifyError(message, 'phpFatalError');
 		Todoyu.log(message);
 
 		Todoyu.Ajax.stopSpinner();
