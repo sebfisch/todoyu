@@ -125,6 +125,32 @@ Todoyu.Ajax = {
 		}
 
 		return options;
+	},
+
+
+
+	/**
+	 * Start spinner when headlet is preset
+	 *
+	 */
+	startSpinner: function() {
+		if( Todoyu.Headlets.isHeadlet('todoyuheadletajaxloader') ) {
+			Todoyu.Headlets.getHeadlet('todoyuheadletajaxloader').active();
+		}
+	},
+
+
+
+	/**
+	 * Stop spinner when headlet is present and no more requests are running
+	 *
+	 */
+	stopSpinner: function() {
+		if( Ajax.activeRequestCount < 1 ) {
+			if( Todoyu.Headlets.isHeadlet('todoyuheadletajaxloader') ) {
+				Todoyu.Headlets.getHeadlet('todoyuheadletajaxloader').inactive();
+			}
+		}
 	}
 
 };

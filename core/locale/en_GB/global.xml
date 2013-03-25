@@ -116,4 +116,5 @@
 	<label index="controllerError.info">todoyu can't handle this request</label>
 	<label index="controllerError.reason">Maybe you misstyped the URL or the requested extension has been removed? If you added a new controller- did you empty the cache?</label>
 	<label index="controllerError.goBack">Go back to todoyu</label>
+	<label index="fatalErrorMessage">Server Fatal Error: The request crashed on the server. Your data may not have been saved or processed completely. Contact your administrator!</label>
 </labels>

@@ -116,4 +116,5 @@
 	<label index="controllerError.info">todoyu kann diese Anfrage nicht verarbeiten</label>
 	<label index="controllerError.reason">Möglichweise haben Sie die URL falsch geschrieben oder die gewünschte Erweiterung wurde entfernt</label>
 	<label index="controllerError.goBack">Zurück zu todoyu</label>
+	<label index="fatalErrorMessage">Schwerer Server Fehler: Die Anfrage konnte vom Server nicht verarbeitet werden. Ihre Daten wurden möglicherweise nicht vollständig verarbeitet oder gespeichert! Kontaktieren Sie Ihren Administrator!</label>
 </labels>
