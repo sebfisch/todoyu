@@ -197,3 +197,9 @@ h5 {
 
 .textIndent {
 	text-indent: -9999px; }
+
+
+article, aside, figure, footer, header, hgroup,
+menu, nav, section {
+	display:block;
+}
