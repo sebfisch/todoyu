@@ -242,11 +242,12 @@ class TodoyuSql {
 
 			// Build an AND-group for all search words
 		foreach($searchWords as $searchWord) {
-			$fieldCompare = array();
+			$fieldCompare 		= array();
+			$preparedSearchWord	= self::escapeLikeWildCards($searchWord);
 
 				// Build an OR-group for all search fields
 			foreach($searchInFields as $fieldName) {
-				$fieldCompare[] = self::quoteFieldname($fieldName) . $negation . 'LIKE \'%' . $searchWord . '%\'';
+				$fieldCompare[] = self::quoteFieldname($fieldName) . $negation . 'LIKE \'%' . $preparedSearchWord . '%\'';
 			}
 
 				// Concatenate field WHEREs with each words inside
@@ -254,6 +255,20 @@ class TodoyuSql {
 		}
 
 		return '((' . implode(')' . $outerConjunction . '(', $fieldWheres) . '))';
+	}
+
+
+
+	/**
+	 * Escape like wild cards in string
+	 * Info: The string should already be escaped for mysql,
+	 * which prevents problems with double escaping and dangerous combinations of backslashes
+	 *
+	 * @param	String		$string
+	 * @return	String
+	 */
+	public static function escapeLikeWildCards($string) {
+		return str_replace(array('%', '?'), array('\\%', '\\?'), $string);
 	}
 
 
