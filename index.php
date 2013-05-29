@@ -21,6 +21,8 @@
 	// Measure processing time
 define('TIME_START', microtime(true));
 
+ini_set('display_errors', true);
+
 try {
 		// Include global include file
 	require_once('core/inc/global.php');
