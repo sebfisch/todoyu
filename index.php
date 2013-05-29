@@ -20,7 +20,6 @@
 
 	// Measure processing time
 define('TIME_START', microtime(true));
-//ini_set('display_errors', true);
 
 try {
 		// Include global include file
