@@ -53,11 +53,11 @@ class TodoyuQuickinfo {
 	 * Create a new quickinfo object
 	 * Call all registered functions to let them add items
 	 *
-	 * @param	String	$type			element type, e.g. 'person'
+	 * @param	String	$recordType		element type, e.g. 'person'
 	 * @param	String	$element		ID of element item
 	 */
-	public function __construct($type, $element) {
-		$this->type		= $type;
+	public function __construct($recordType, $element) {
+		$this->type		= $recordType;
 		$this->element	= $element;
 
 		$this->init();
