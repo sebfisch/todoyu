@@ -79,9 +79,14 @@ Todoyu.Navi = {
 	updateScrollTopButtonPosition: function() {
 		var scrollTopButton	= this.getScrollTopButton();
 
+		var leftPosition = window.innerWidth - 100;
+		if( leftPosition > 1470) {
+			leftPosition = 1470;
+		}
+
 		scrollTopButton.setStyle({
-			top:	(window.innerHeight - 28) + 'px',
-			right:	'10px'
+			left:	leftPosition + 'px',
+			top:	(window.innerHeight - (window.innerHeight / 6) ) + 'px'
 		});
 	}
 
