@@ -36,6 +36,12 @@ Todoyu.Ui = {
 	bodyClickObservers: [],
 
 	/**
+	 * @property	windwScrollObservers
+	 * @type		Array
+	 */
+	windowScrollObservers: [],
+
+	/**
 	 * RTE options "cache"
 	 */
 	rteOptions: false,
@@ -698,6 +704,28 @@ Todoyu.Ui = {
 	},
 
 
+	/**
+	 * Observe for scroll events
+	 *
+	 * @method	observeScroll
+	 */
+	observeScroll: function() {
+		Event.observe(window, 'scroll', this.onWindowScroll.bind(this));
+	},
+
+
+
+	/**
+	 * @method	onWindowScroll
+	 * @param	{Event}		event
+	 */
+	onWindowScroll:function(event) {
+		this.windowScrollObservers.each(function(func){
+			func(event);
+		}, this);
+	},
+
+
 
 	/**
 	 * Add an observer for the body
@@ -707,6 +735,18 @@ Todoyu.Ui = {
 	 */
 	addBodyClickObserver: function(func) {
 		this.bodyClickObservers.push(func);
+	},
+
+
+
+	/**
+	 * Add a window scroll observer
+	 *
+	 * @method	addBodyClickObserver
+	 * @param	{Function}	func
+	 */
+	addWindowScrollObservers: function(func) {
+		this.windowScrollObservers.push(func);
 	},
 
 
@@ -989,6 +1029,38 @@ Todoyu.Ui = {
 	 */
 	hideInfoBalloon: function(key) {
 		$('info-balloon-' + key).hide();
+	},
+
+
+
+	/**
+	 * Get window vertical scroll offset
+	 *
+	 * @method	getScrollTop
+	 * @returns {Number}
+	 */
+	getScrollTop: function(){
+	    if(typeof pageYOffset!= 'undefined'){
+	        return pageYOffset;
+	    } else{
+	        var elBody		= document.body; //IE 'quirks'
+	        var elDocument	= document.documentElement; //IE with doctype
+
+	        elDocument		= elDocument.clientHeight? elDocument : elBody;
+
+	        return elDocument.scrollTop;
+	    }
+	},
+
+
+
+	/**
+	 * Get window inner height
+	 *
+	 * @returns {Number}
+	 */
+	getWindowInnerHeight: function() {
+		return window.innerHeight || window.document.documentElement.clientHeight ||  window.document.body.clientHeight;
 	}
 
 };

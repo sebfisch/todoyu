@@ -122,164 +122,168 @@ Todoyu::$CONFIG['FE']['PAGE']['assets'] = array(
 			'position'	=> 52
 		),
 		array(
-			'file'		=> 'core/asset/js/Notification.js',
+			'file'		=> 'core/asset/js/Navi.js',
 			'position'	=> 53
 		),
 		array(
-			'file'		=> 'core/asset/js/Popup.js',
+			'file'		=> 'core/asset/js/Notification.js',
 			'position'	=> 54
+		),
+		array(
+			'file'		=> 'core/asset/js/Popup.js',
+			'position'	=> 55
 		),
 		array(
 			'file'		=> 'core/asset/js/Popups.js',
-			'position'	=> 54
+			'position'	=> 55
 		),
 		array(
 			'file'		=> 'core/asset/js/QuickInfo.js',
-			'position'	=> 55
-		),
-		array(
-			'file'		=> 'core/asset/js/SortablePanelList.js',
-			'position'	=> 55
-		),
-		array(
-			'file'		=> 'core/asset/js/Ajax.js',
 			'position'	=> 56
 		),
 		array(
-			'file'		=> 'core/asset/js/AjaxResponders.js',
+			'file'		=> 'core/asset/js/SortablePanelList.js',
 			'position'	=> 57
+		),
+		array(
+			'file'		=> 'core/asset/js/Ajax.js',
+			'position'	=> 58
+		),
+		array(
+			'file'		=> 'core/asset/js/AjaxResponders.js',
+			'position'	=> 59
 		),
 		array(
 			'file'		=> 'core/asset/js/AjaxReplacer.js',
-			'position'	=> 57
-		),
-		array(
-			'file'		=> 'core/asset/js/Event.js',
-			'position'	=> 57
-		),
-		array(
-			'file'		=> 'core/asset/js/Number.js',
-			'position'	=> 57
-		),
-		array(
-			'file'		=> 'core/asset/js/String.js',
-			'position'	=> 57
-		),
-		array(
-			'file'		=> 'core/asset/js/Helper.js',
-			'position'	=> 58
-		),
-		array(
-			'file'		=> 'core/asset/js/Hook.js',
-			'position'	=> 58
-		),
-		array(
-			'file'		=> 'core/asset/js/Time.js',
-			'position'	=> 59
-		),
-		array(
-			'file'		=> 'core/asset/js/DateField.js',
-			'position'	=> 59
-		),
-		array(
-			'file'		=> 'core/asset/js/ContextMenu.js',
 			'position'	=> 60
 		),
 		array(
-			'file'		=> 'core/asset/js/ContextMenuTemplate.js',
+			'file'		=> 'core/asset/js/Event.js',
 			'position'	=> 61
 		),
 		array(
-			'file'		=> 'core/asset/js/Tabs.js',
+			'file'		=> 'core/asset/js/Number.js',
+			'position'	=> 61
+		),
+		array(
+			'file'		=> 'core/asset/js/String.js',
+			'position'	=> 61
+		),
+		array(
+			'file'		=> 'core/asset/js/Helper.js',
 			'position'	=> 62
 		),
 		array(
-			'file'		=> 'core/asset/js/PanelWidget.js',
+			'file'		=> 'core/asset/js/Hook.js',
+			'position'	=> 62
+		),
+		array(
+			'file'		=> 'core/asset/js/Time.js',
 			'position'	=> 63
 		),
 		array(
-			'file'		=> 'core/asset/js/Pref.js',
+			'file'		=> 'core/asset/js/DateField.js',
+			'position'	=> 63
+		),
+		array(
+			'file'		=> 'core/asset/js/ContextMenu.js',
 			'position'	=> 64
-		)	,
+		),
 		array(
-			'file'		=> 'core/asset/js/Form.js',
+			'file'		=> 'core/asset/js/ContextMenuTemplate.js',
 			'position'	=> 65
 		),
 		array(
-			'file'		=> 'core/asset/js/FormValidator.js',
-			'position'	=> 65
-		),
-		array(
-			'file'		=> 'core/asset/js/Validate.js',
+			'file'		=> 'core/asset/js/Tabs.js',
 			'position'	=> 66
 		),
 		array(
-			'file'		=> 'core/asset/js/Autocomplete.js',
+			'file'		=> 'core/asset/js/PanelWidget.js',
 			'position'	=> 67
 		),
 		array(
-			'file'		=> 'core/asset/js/TimePicker.js',
+			'file'		=> 'core/asset/js/Pref.js',
 			'position'	=> 68
-		),
+		)	,
 		array(
-			'file'		=> 'core/asset/js/Listing.js',
+			'file'		=> 'core/asset/js/Form.js',
 			'position'	=> 69
 		),
 		array(
-			'file'		=> 'core/asset/js/Cookie.js',
+			'file'		=> 'core/asset/js/FormValidator.js',
+			'position'	=> 69
+		),
+		array(
+			'file'		=> 'core/asset/js/Validate.js',
 			'position'	=> 70
 		),
 		array(
-			'file'		=> 'core/asset/js/DelayedTextObserver.js',
+			'file'		=> 'core/asset/js/Autocomplete.js',
 			'position'	=> 71
 		),
 		array(
-			'file'		=> 'core/asset/js/PanelWidgetStatusSelector.js',
+			'file'		=> 'core/asset/js/TimePicker.js',
 			'position'	=> 72
 		),
 		array(
-			'file'		=> 'core/asset/js/LoaderBox.js',
+			'file'		=> 'core/asset/js/Listing.js',
 			'position'	=> 73
 		),
 		array(
-			'file'		=> 'core/asset/js/ProgressBox.js',
+			'file'		=> 'core/asset/js/Cookie.js',
 			'position'	=> 74
 		),
 		array(
-			'file'		=> 'core/asset/js/Highcharts.js',
-			'position'	=> 74
-		),
-		array(
-			'file'		=> 'core/asset/js/OverflowWindow.js',
+			'file'		=> 'core/asset/js/DelayedTextObserver.js',
 			'position'	=> 75
 		),
 		array(
-			'file'		=> 'core/asset/js/Timerange.js',
+			'file'		=> 'core/asset/js/PanelWidgetStatusSelector.js',
 			'position'	=> 76
 		),
 		array(
-			'file'		=> 'core/asset/js/ItemList.js',
+			'file'		=> 'core/asset/js/LoaderBox.js',
 			'position'	=> 77
 		),
 		array(
-			'file'		=> 'core/asset/js/FieldList.js',
+			'file'		=> 'core/asset/js/ProgressBox.js',
 			'position'	=> 78
 		),
 		array(
-			'file'		=> 'core/asset/js/SelectMulti.js',
+			'file'		=> 'core/asset/js/Highcharts.js',
 			'position'	=> 79
 		),
 		array(
-			'file'		=> 'core/asset/js/AutocompleterMulti.js',
+			'file'		=> 'core/asset/js/OverflowWindow.js',
 			'position'	=> 80
 		),
 		array(
-			'file'		=> 'core/asset/js/Wizard.js',
+			'file'		=> 'core/asset/js/Timerange.js',
 			'position'	=> 81
 		),
 		array(
-			'file'		=> 'core/asset/js/AutoExtendingList.js',
+			'file'		=> 'core/asset/js/ItemList.js',
 			'position'	=> 82
+		),
+		array(
+			'file'		=> 'core/asset/js/FieldList.js',
+			'position'	=> 83
+		),
+		array(
+			'file'		=> 'core/asset/js/SelectMulti.js',
+			'position'	=> 84
+		),
+		array(
+			'file'		=> 'core/asset/js/AutocompleterMulti.js',
+			'position'	=> 85
+		),
+		array(
+			'file'		=> 'core/asset/js/Wizard.js',
+			'position'	=> 86
+		),
+		array(
+			'file'		=> 'core/asset/js/AutoExtendingList.js',
+			'position'	=> 87
 		),
 		array(
 			'file'		=> 'core/asset/js/Headlets.js',

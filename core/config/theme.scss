@@ -97,6 +97,18 @@ $blue08:#aaccee;
 	background:linear-gradient(to bottom, #ececec 0%,#cecece 100%); /* W3C */
 	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ececec', endColorstr='#cecece',GradientType=0 ); /* IE6-9 */
 }
+
+@mixin gradient-header-highlight {
+	background:#f0f0f0; /* Old browsers */
+	background: -moz-linear-gradient(top, #f1f1f1 0%, #d3d3d3 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f1f1f1), color-stop(100%,#d3d3d3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #f1f1f1 0%,#d3d3d3 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #f1f1f1 0%,#d3d3d3 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #f1f1f1 0%,#d3d3d3 100%); /* IE10+ */
+	background:linear-gradient(to bottom, #f1f1f1 0%,#d3d3d3 100%); /* W3C */
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f1f1', endColorstr='#d3d3d3',GradientType=0 ); /* IE6-9 */
+}
+
 	// Gradient for buttons
 @mixin gradient-button {
 	background:#ffffff; /* Old browsers */

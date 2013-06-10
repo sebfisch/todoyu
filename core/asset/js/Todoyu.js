@@ -100,9 +100,11 @@ var Todoyu = {
 		this.loadConfig();
 		this.Ajax.Responders.init();
 		this.Headlets.init();
+		this.Navi.init();
 		this.QuickInfo.init();
 		this.Ui.fixAnchorPosition();
 		this.Ui.observeBody();
+		this.Ui.observeScroll();
 		this.initExtensions();
 		this.initConsole();
 	},

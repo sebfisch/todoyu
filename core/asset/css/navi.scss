@@ -116,3 +116,33 @@ ul#navi-main-list li {
 		}
 	}
 }
+
+
+
+/* ---------------------------------------------
+	To top button (appears when scrolling down)
+   --------------------------------------------- */
+#to-top {
+	@include gradient-header;
+	cursor:pointer;
+	padding:0 5px 5px 5px;
+	border-radius:10px 10px 0 0;
+	box-shadow:0 -1px 1px $colorCorporate04 inset;
+	z-index:200;
+	position:absolute;
+	border:1px solid #cacaca;
+
+	span.label {
+		padding:10px 0 0 3px;
+	}
+	span.arrow {
+		width:24px;
+		height:32px;
+		margin-left:5px;
+		background:url(../img/ico-toggle.png) no-repeat scroll 6px 50% transparent;
+	}
+
+	&:hover {
+		@include gradient-header-highlight;
+	}
+}
