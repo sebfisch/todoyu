@@ -51,7 +51,7 @@ Todoyu.Navi = {
 		var scrollTopButton	= this.getScrollTopButton();
 		var isTopLinkVisible= Todoyu.Ui.isVisible(scrollTopButton);
 
-		if( scrollTop > window.innerHeight ) {
+		if( scrollTop > window.innerHeight / 8 ) {
 			this.updateScrollTopButtonPosition();
 			scrollTopButton.show();
 		} else if( isTopLinkVisible ) {
