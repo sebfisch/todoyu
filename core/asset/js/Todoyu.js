@@ -105,6 +105,7 @@ var Todoyu = {
 		this.Ui.fixAnchorPosition();
 		this.Ui.observeBody();
 		this.Ui.observeScroll();
+		this.Ui.observeResize();
 		this.initExtensions();
 		this.initConsole();
 	},

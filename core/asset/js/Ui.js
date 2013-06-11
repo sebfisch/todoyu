@@ -42,6 +42,12 @@ Todoyu.Ui = {
 	windowScrollObservers: [],
 
 	/**
+	 * @property	windowResizeObservers
+	 * @type		Array
+	 */
+	windowResizeObservers: [],
+
+	/**
 	 * RTE options "cache"
 	 */
 	rteOptions: false,
@@ -716,11 +722,34 @@ Todoyu.Ui = {
 
 
 	/**
+	 * Observe for window resize
+	 *
+	 * @method	observeResize
+	 */
+	observeResize: function() {
+		Event.observe(window, 'resize', this.onWindowScroll.bind(this));
+	},
+
+
+
+	/**
 	 * @method	onWindowScroll
 	 * @param	{Event}		event
 	 */
 	onWindowScroll:function(event) {
 		this.windowScrollObservers.each(function(func){
+			func(event);
+		}, this);
+	},
+
+
+
+	/**
+	 * @method	onWindowResize
+	 * @param	{Event}		event
+	 */
+	onWindowResize:function(event) {
+		this.windowResizeObservers.each(function(func){
 			func(event);
 		}, this);
 	},
@@ -742,11 +771,23 @@ Todoyu.Ui = {
 	/**
 	 * Add a window scroll observer
 	 *
-	 * @method	addBodyClickObserver
+	 * @method	addWindowScrollObservers
 	 * @param	{Function}	func
 	 */
 	addWindowScrollObservers: function(func) {
 		this.windowScrollObservers.push(func);
+	},
+
+
+
+	/**
+	 * Add a window resize observer
+	 *
+	 * @method	addBodyClickObserver
+	 * @param	{Function}	func
+	 */
+	addWindowResizeObservers: function(func) {
+		this.windowResizeObservers.push(func);
 	},
 
 

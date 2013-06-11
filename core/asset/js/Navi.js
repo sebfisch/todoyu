@@ -37,6 +37,7 @@ Todoyu.Navi = {
 	 */
 	init: function() {
 		Todoyu.Ui.addWindowScrollObservers(this.onWindowScroll.bind(this));
+		Todoyu.Ui.addWindowResizeObservers(this.onWindowResize.bind(this));
 	},
 
 
@@ -45,8 +46,28 @@ Todoyu.Navi = {
 	 * Un/hide to-top option depending on current window vertical scroll offset
 	 *
 	 * @method	onWindowScroll
+	 * @param	{Event}		event
 	 */
 	onWindowScroll: function(event) {
+		this.updateToTopButton();
+	},
+
+
+	/**
+	 * @param	{Event}		event
+	 */
+	onWindowResize: function(event) {
+		this.updateToTopButton();
+	},
+
+
+
+	/**
+	 * Show or hide to-top button depending on scrollTop, update it' position
+	 *
+	 * @method	updateToTopButton
+	 */
+	updateToTopButton: function() {
 		var scrollTop		= Todoyu.Ui.getScrollTop();
 		var scrollTopButton	= this.getScrollTopButton();
 		var isTopLinkVisible= Todoyu.Ui.isVisible(scrollTopButton);
@@ -78,11 +99,8 @@ Todoyu.Navi = {
 	 */
 	updateScrollTopButtonPosition: function() {
 		var scrollTopButton	= this.getScrollTopButton();
-
-		var leftPosition = window.innerWidth - 100;
-		if( leftPosition > 1470) {
-			leftPosition = 1470;
-		}
+		var rightContentEl	= $('right');
+		var leftPosition	= Element.cumulativeOffset(rightContentEl).left + Element.getDimensions(rightContentEl).width + 50;
 
 		scrollTopButton.setStyle({
 			left:	leftPosition + 'px',
