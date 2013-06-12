@@ -3,6 +3,7 @@ todoyu core changelog
 core 2.3.1 - not released yet
 	* Added: Button for scrolling to top, that appears when scrolling down on long pages
 	* Bugfix: Fixed css for error-messages of checkboxes
+	* Bugifx: Fixed styling of quickinfo
 
 core 2.3.0 - 2013-03-27
 	* Added: CSS-cropping of list table content
