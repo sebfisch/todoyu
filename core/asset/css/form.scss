@@ -255,6 +255,13 @@ div.fElement {
 	.fClear {
 		clear:both;
 	}
+
+
+	&.typeRTE  {
+		.fField {
+			width: 455px;
+		}
+	}
 }
 
 .fField {
@@ -541,6 +548,20 @@ div.errorMessage ul.invalidItems {
 			li {
 				font-weight:normal;
 				margin-left:20px;
+			}
+		}
+	}
+}
+
+/* ---------------------------------------
+	Dialog behaviour (content smaller)
+   --------------------------------------- */
+
+.dialog {
+	.fElement {
+		&.typeRTE  {
+			.fField {
+				width: 400px;
 			}
 		}
 	}
