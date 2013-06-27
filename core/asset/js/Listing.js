@@ -125,7 +125,7 @@ Todoyu.Listing = {
 	 * @param	{Ajax.Response}		response
 	 */
 	onExtended: function(name, offset, response) {
-
+		Todoyu.Hook.exec('core.listing.extended', name, offset, response, this);
 	}
 
 };
