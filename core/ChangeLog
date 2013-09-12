@@ -4,6 +4,7 @@ core 2.3.1 - not released yet
 	* Added: Enlarged width of rte - input
 	* Added: Button for scrolling to top, that appears when scrolling down on long pages
 	* Added: Hook for paging of lists
+	* Added: Catalan language. Credits to Carles Baiges Camprubí LaCol (www.lacol.org)
 	* Bugfix: Fixed css for error-messages of checkboxes
 	* Bugifx: Fixed styling of quickinfo
 
