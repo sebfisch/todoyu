@@ -311,19 +311,37 @@ class TodoyuRightsManager {
 			self::$checkRightsCache[$extKey] = self::loadExtRightsMatrixFromXml($extKey);
 		}
 
-		$rightNode	= false;
-		foreach(self::$checkRightsCache[$extKey] as $section) {
-			foreach($section as $sectionElements) {
-				if( $sectionElements['@attributes']['name'] === $sectionName ) {
-					if( sizeof($sectionElements['right']) === 1 ) {
-						$sectionRights	= array($sectionElements['right']);
+		if( sizeof(self::$checkRightsCache[$extKey]) > 1 )
+			return self::extractRightNodeMultipleSection($extKey, $sectionName, $right);
+
+		return self::extractRightNodeSingleSection($extKey, $sectionName, $right);
+	}
+
+
+
+	/**
+	 * Search for the right if multiple right sections exist
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$sectionName
+	 * @param	String		$right
+	 * @return	Array | Boolean
+	 */
+	protected static function extractRightNodeMultipleSection($extKey, $sectionName, $right) {
+		$rightNode = false;
+
+		foreach (self::$checkRightsCache[$extKey] as $section) {
+			foreach ($section as $sectionElements) {
+				if ( $sectionElements['@attributes']['name'] === $sectionName ) {
+					if ( sizeof($sectionElements['right']) === 1 ) {
+						$sectionRights = array($sectionElements['right']);
 					} else {
-						$sectionRights	= $sectionElements['right'];
+						$sectionRights = $sectionElements['right'];
 					}
-					foreach($sectionRights as $rightNode) {
-						if( $rightNode['@attributes']['name'] === $right ) {
-								// Found the right
-							break 3;
+					foreach ($sectionRights as $rightNode) {
+						if ( $rightNode['@attributes']['name'] === $right ) {
+							// Found the right
+							return $rightNode;
 						}
 					}
 				}
@@ -331,6 +349,31 @@ class TodoyuRightsManager {
 		}
 
 		return $rightNode;
+	}
+
+
+
+	/**
+	 * Search for the right if only one right section exist
+	 * Because it has different Simple-XML result
+	 *
+	 * @param	String		$extKey
+	 * @param	String		$sectionName
+	 * @param	String		$right
+	 * @return	Array | Boolean
+	 */
+	protected static function extractRightNodeSingleSection($extKey, $sectionName, $rightNode) {
+		$section = self::$checkRightsCache[$extKey]['section'];
+
+		if( !is_array($section['right'])) return false;
+
+		foreach($section['right'] as $right ) {
+			if( $right['@attributes']['name'] === $rightNode ) {
+				return $right;
+			}
+		}
+
+		return false;
 	}
 
 
@@ -561,7 +604,6 @@ class TodoyuRightsManager {
 	public static function getCachedRights() {
 		return self::$rights;
 	}
-
 }
 
 ?>
