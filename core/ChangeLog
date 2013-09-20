@@ -8,6 +8,7 @@ core 2.3.1 - not released yet
 	* Bugfix: Fixed css for error-messages of checkboxes
 	* Bugifx: Fixed styling of quickinfo
 	* Bugfix: Right requirement wasn't parsed correctly if there is only one rights-section
+	* Bugfix: Enable live validation for record selector
 
 core 2.3.0 - 2013-03-27
 	* Added: CSS-cropping of list table content

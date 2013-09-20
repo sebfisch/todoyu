@@ -1065,7 +1065,9 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 
 
 	/**
+	 * Prepares the live validation
 	 *
+	 * @return	String
 	 */
 	protected function getLiveValidation() {
 		$initScript = '';
@@ -1073,20 +1075,31 @@ abstract class TodoyuFormElement implements TodoyuFormElementInterface {
 		if( $this->hasAttribute('validateLive') ) {
 			$validatorArray = $this->getAttribute('validateLive');
 
-			$initScript = 'Todoyu.FormValidator.initField(\'' . $this->getHtmlID() . '\');';
+			$initScript = 'Todoyu.FormValidator.initField(\'' . $this->getLiveValidationFieldId() . '\');';
 
 			foreach($validatorArray as $validator => $validatorConfig) {
 				if( $validator === 'function' ) {
 					$validator = trim($validatorConfig);
 				}
 
-				$initScript.= 'Todoyu.FormValidator.addValidator(\'' . $this->getHtmlID() . '\', \'' . $validator . '\');';
+				$initScript .= 'Todoyu.FormValidator.addValidator(\'' . $this->getLiveValidationFieldId() . '\', \'' . $validator . '\');';
 			}
 
 			$initScript = TodoyuString::wrapScript($initScript);
 		}
 
 		return $initScript;
+	}
+
+
+
+	/**
+	 * Get the html-Id of the field, which should be live-validated
+	 *
+	 * @return	String
+	 */
+	protected function getLiveValidationFieldId() {
+		return $this->getHtmlID();
 	}
 
 }

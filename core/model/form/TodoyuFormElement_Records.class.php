@@ -162,6 +162,17 @@ abstract class TodoyuFormElement_Records extends TodoyuFormElement {
 		return !empty($firstValue);
 	}
 
+
+
+	/**
+	 * For live validation observe the storage field (select)
+	 *
+	 * @return	String
+	 */
+	protected function getLiveValidationFieldId() {
+		return $this->getHtmlID() . '-storage';
+	}
+
 }
 
 ?>
