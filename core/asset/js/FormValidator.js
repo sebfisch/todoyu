@@ -198,6 +198,20 @@ Todoyu.FormValidator = {
 
 
 	/**
+	 * @method	removeWarningMessage
+	 * @param	{String}	fieldID
+	 */
+	removeWarningMessage: function(fieldID) {
+		var element = this.getMessageElement(fieldID, 'warningMessage');
+
+		if( element ) {
+			element.remove();
+		}
+	},
+
+
+
+	/**
 	 * Relative positioning of Warning Message
 	 *
 	 * @method	positionRight
@@ -225,7 +239,7 @@ Todoyu.FormValidator = {
 	 * @param	{String}	msg
 	 */
 	addMessageElement: function(fieldID, htmlClassName, msg) {
-		var errorElement = $(fieldID).up('.fElement').down('.'+htmlClassName);
+		var errorElement = this.getMessageElement(fieldID, htmlClassName);
 
 		if( errorElement ) {
 			errorElement.remove();
@@ -238,5 +252,18 @@ Todoyu.FormValidator = {
 		$(fieldID).up('.fElement').down('.clear').insert({before: element});
 
 		return element;
+	},
+
+
+
+	/**
+	 *
+	 * @method	getErrorElement
+	 * @param	{String}	fieldID
+	 * @param	{String}	htmlClassName
+	 * @returns	{*|HTMLElement}
+	 */
+	getMessageElement: function (fieldID, htmlClassName) {
+		return $(fieldID).up('.fElement').down('.' + htmlClassName);
 	}
 };
