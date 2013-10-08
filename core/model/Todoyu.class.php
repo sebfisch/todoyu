@@ -112,7 +112,24 @@ class Todoyu {
 			self::$timezone	= $forceTimezone;
 		}
 
-			// Set default timezone
+		// initialize the timezone, keep fallback to prevent from fatal error
+		try {
+			self::initTimezone($timezone);
+		} catch(Exception $e) {
+			TodoyuLogger::logError('No valid Timezone given from user and system. Initialized with fallback timezone: Europe/Zurich');
+			self::initTimezone('Europe/Zurich');
+		}
+	}
+
+
+
+	/**
+	 * Initialization Stack for setting the timezone
+	 *
+	 * @param	String		$timezone
+	 */
+	protected static function initTimezone($timezone) {
+		// Set default timezone
 		date_default_timezone_set($timezone);
 
 			// Set DB timezone offset
