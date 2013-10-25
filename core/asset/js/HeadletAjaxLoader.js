@@ -36,12 +36,14 @@ Todoyu.CoreHeadlets.AjaxLoader = Class.create(Todoyu.HeadletButton, {
 	 * @method	show
 	 */
 	active: function() {
-		Effect.Appear(this.getButton(), {
-			'duration': 0.2,
-			'from': 0.3,
-			'to': 1.0,
-			'transition': Effect.Transitions.spring
-		});
+		if( this.getButton() ) {
+			Effect.Appear(this.getButton(), {
+				'duration': 0.2,
+				'from': 0.3,
+				'to': 1.0,
+				'transition': Effect.Transitions.spring
+			});
+		}
 	},
 
 
@@ -52,9 +54,11 @@ Todoyu.CoreHeadlets.AjaxLoader = Class.create(Todoyu.HeadletButton, {
 	 * @method	hide
 	 */
 	inactive: function() {
-		Effect.Fade.delay(0.2, this.getButton(), {
-			'duration': 0.3
-		});
+		if( this.getButton() ) {
+			Effect.Fade.delay(0.2, this.getButton(), {
+					'duration': 0.3
+			});
+		}
 	}
 
 });

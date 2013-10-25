@@ -56,7 +56,11 @@ Todoyu.Headlet = Class.create({
 	 * @method	observeButton
 	 */
 	observeButton: function() {
-		this.getButton().on('click', 'a', this._handleButtonClick.bind(this));
+		var button = this.getButton();
+
+		if( button ) {
+			button.on('click', 'a', this._handleButtonClick.bind(this));
+		}
 	},
 
 
@@ -329,7 +333,11 @@ Todoyu.Headlet = Class.create({
 	 * @return	{String}
 	 */
 	getType: function() {
-		var classNames	= $w(this.getButton().className);
+		var button = this.getButton();
+
+		if( !button ) return '';
+
+		var classNames	= $w(button.className);
 		var typeClass	= classNames.detect(function(className){
 			return className.indexOf('headletType') !== -1;
 		});
