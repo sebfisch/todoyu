@@ -38,6 +38,9 @@ define( 'PATH_PEAR',		PATH_LIB . DIR_SEP . 'php' . DIR_SEP . 'PEAR' );
 define( 'PATH_TEMP',		PATH_CACHE . DIR_SEP . 'temp' );
 define( 'PATH_FILES',		PATH . DIR_SEP . 'files' );
 
+	// Set temporary folder of pclzip extension to writable folder
+define('PCLZIP_TEMPORARY_DIR', PATH_TEMP . DIR_SEP);
+
 
 	// Constants
 define( 'NOW', time() );

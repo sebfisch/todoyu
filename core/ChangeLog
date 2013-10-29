@@ -12,6 +12,7 @@ core 2.3.1 - not released yet
 	* Bugfix: Enable live validation for record selector
 	* Bugfix: Possibility to remove warning-message of live-validator
 	* Bugfix: Fallback for setting timezone to prevent fatal errors
+	* Bugfix: Set PCLZIP temporary folder to cache/temp folder. Caused problems with write-permissions
 
 core 2.3.0 - 2013-03-27
 	* Added: CSS-cropping of list table content
