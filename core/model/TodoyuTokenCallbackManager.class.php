@@ -91,7 +91,7 @@ class TodoyuTokenCallbackManager {
 
 		$params		= $token->get('callback_params');
 		if( ! empty($params) ) {
-			$params	= json_decode($params);
+			$params	= json_decode($params, true);
 		} else {
 			$params	= array();
 		}
