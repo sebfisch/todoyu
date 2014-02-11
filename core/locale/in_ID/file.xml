@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="files">Berkas</label>
+	<label index="download">Unduh</label>
+	<label index="upload">Unggah</label>
+	<label index="size.gb">GB</label>
+	<label index="size.mb">MB</label>
+	<label index="size.kb">KB</label>
+	<label index="size.b">B</label>
+	<label index="filename">Nama Berkas</label>
+	<label index="filesize">Ukuran Berkas</label>
+	<label index="upload.progressmessage">Unggah Berkas</label>
+	<label index="upload.succeeded">Unggah Berkas Berhasil</label>
+	<label index="upload.selectfile">Pilih Berkas untuk Diunggah:</label>
+	<label index="upload.error.uploadfailed">Unggah Gagal.</label>
+	<label index="upload.failed.maxFileSizeExceeded">Unggah Gagal: ukuran file maksimum yang diizinkan terlampaui.</label>
+	<label index="confirm.delete">Hapus Berkas Terpilih</label>
+	<label index="notify.delete.success">Berkas telah terhapus:</label>
+	<label index="notify.delete.error">Berkas gagal dihapus:</label>
+	<label index="error.notFround">Berkas tidak ditemukan</label>
+	<label index="error.notReadable">Berkas tidak terbaca</label>
+	<label index="error.notInDownloadPath">Berkas tidak dalam sebuah jalur Unduh yang diperbolehkan</label>
+</labels>

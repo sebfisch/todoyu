@@ -1,5 +1,8 @@
 todoyu core changelog
 
+core 2.3.2 - not released yet
+	* Added: Indonesian Language. Credits to Abdush Shomad.
+
 core 2.3.1 - 2013-12-31
 	* Added: Enlarged width of rte - input
 	* Added: Button for scrolling to top, that appears when scrolling down on long pages

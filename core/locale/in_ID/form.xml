@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels>
+	<label index="select.pleaseSelect">Silakan Pilih</label>
+	<label index="field.isrequired">Ini adalah bidang yang diperlukan</label>
+	<label index="field.hasError">Nilai yang dimasukkan tidak valid</label>
+	<label index="field.save">Simpan</label>
+	<label index="field.cancel">Batal</label>
+	<label index="records.add">Tambah Rekaman</label>
+	<label index="records.remove">Hapus Rekaman</label>
+	<label index="records.edit">Ubah Rekaman</label>
+	<label index="records.removeconfirm">Apakah Anda benar-benar ingin menghapus Rekam ini?</label>
+	<label index="databaserelation.nolabel">[Masukan Baru]</label>
+	<label index="databaserelation.expandAllRecords">Lihat Detail</label>
+	<label index="error.notUnique">Catatan ini sudah ada</label>
+	<label index="error.duration.invalidinput">Masukan durasi tidak valid, mohon koreksi.</label>
+	<label index="ac.noResults">Pelengkap Otomatis: tidak ada hasil yang ditemukan</label>
+	<label index="is_preferred">Disukai</label>
+	<label index="confirm.toggle.is_preferred.on">Hanya satu catatan jenis ini dapat lebih disukai pada suatu waktu. Benar-benar pilih catatan ini lebih disukai?</label>
+	<label index="confirm.toggle.is_preferred.off">Hanya satu catatan jenis ini dapat lebih disukai pada suatu waktu. Benar-benar hapus record ini dari yang disukai?</label>
+	<label index="dateselector.open">TANGGAL BUKA pemilih untuk memilih tanggal</label>
+	<label index="autocompleteInfo">Ini adalah bidang Pelengkap Otomatis. Mulai mengetik untuk mendapatkan saran</label>
+	<label index="legend.main">Definisi Peran</label>
+	<label index="daterange.choose">Pilih sebuah rentang waktu</label>
+	<label index="daterange.monthToDate">Bulan Ke Tanggal</label>
+	<label index="daterange.yearToDate">Tahun Ke Tanggal</label>
+	<label index="daterange.quarterToDate">Kuartal Ke Tanggal</label>
+	<label index="daterange.previousMonth">Bulan Sebelumnya</label>
+	<label index="daterange.previousQuarter">Kuartal Sebelumnya</label>
+	<label index="daterange.previousYear">Tahun Sebelumnya</label>
+	<label index="daterange.fullTimeRange">Rentang Waktu yang Penuh Kemungkinan</label>
+</labels>
