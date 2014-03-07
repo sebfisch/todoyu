@@ -1,0 +1,45 @@
+[submodule "ext/admin"]
+	path = ext/admin
+	url = git@github.com:sebfisch/todoyu-admin.git
+[submodule "ext/assets"]
+	path = ext/assets
+	url = git@github.com:sebfisch/todoyu-assets.git
+[submodule "ext/bookmark"]
+	path = ext/bookmark
+	url = git@github.com:sebfisch/todoyu-bookmark.git
+[submodule "ext/calendar"]
+	path = ext/calendar
+	url = git@github.com:sebfisch/todoyu-calendar.git
+[submodule "ext/comment"]
+	path = ext/comment
+	url = git@github.com:sebfisch/todoyu-comment.git
+[submodule "ext/contact"]
+	path = ext/contact
+	url = git@github.com:sebfisch/todoyu-contact.git
+[submodule "ext/daytracks"]
+	path = ext/daytracks
+	url = git@github.com:sebfisch/todoyu-daytracks.git
+[submodule "ext/firststeps"]
+	path = ext/firststeps
+	url = git@github.com:sebfisch/todoyu-firststeps.git
+[submodule "ext/loginpage"]
+	path = ext/loginpage
+	url = git@github.com:sebfisch/todoyu-loginpage.git
+[submodule "ext/portal"]
+	path = ext/portal
+	url = git@github.com:sebfisch/todoyu-portal.git
+[submodule "ext/profile"]
+	path = ext/profile
+	url = git@github.com:sebfisch/todoyu-profile.git
+[submodule "ext/project"]
+	path = ext/project
+	url = git@github.com:sebfisch/todoyu-project.git
+[submodule "ext/search"]
+	path = ext/search
+	url = git@github.com:sebfisch/todoyu-search.git
+[submodule "ext/sysmanager"]
+	path = ext/sysmanager
+	url = git@github.com:sebfisch/todoyu-sysmanager.git
+[submodule "ext/timetracking"]
+	path = ext/timetracking
+	url = git@github.com:sebfisch/todoyu-timetracking.git

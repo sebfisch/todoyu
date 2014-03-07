@@ -8,3 +8,39 @@ this repository to include later changes.
 [Todoyu]: http://www.todoyu.com/
 [SVN repository]: https://code.todoyu.com/wiki/usesvn
 [svn2git]: https://github.com/nirvdrum/svn2git
+
+This repository contains several submodules with basic extensions.
+They too have been created from SVN and are available as separate git
+repositories.
+
+  * [admin]
+  * [assets]
+  * [bookmark]
+  * [calendar]
+  * [comment]
+  * [contact]
+  * [daytracks]
+  * [firststeps]
+  * [loginpage]
+  * [portal]
+  * [profile]
+  * [project]
+  * [search]
+  * [sysmanager]
+  * [timetracking]
+
+[admin]: https://github.com/sebfisch/todoyu-admin
+[assets]: https://github.com/sebfisch/todoyu-assets
+[bookmark]: https://github.com/sebfisch/todoyu-bookmark
+[calendar]: https://github.com/sebfisch/todoyu-calendar
+[comment]: https://github.com/sebfisch/todoyu-comment
+[contact]: https://github.com/sebfisch/todoyu-contact
+[daytracks]: https://github.com/sebfisch/todoyu-daytracks
+[firststeps]: https://github.com/sebfisch/todoyu-firststeps
+[loginpage]: https://github.com/sebfisch/todoyu-loginpage
+[portal]: https://github.com/sebfisch/todoyu-portal
+[profile]: https://github.com/sebfisch/todoyu-profile
+[project]: https://github.com/sebfisch/todoyu-project
+[search]: https://github.com/sebfisch/todoyu-search
+[sysmanager]: https://github.com/sebfisch/todoyu-sysmanager
+[timetracking]: https://github.com/sebfisch/todoyu-timetracking
